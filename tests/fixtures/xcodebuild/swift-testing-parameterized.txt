@@ -1,0 +1,41 @@
+Test Suite 'Selected tests' started at 2026-10-25 12:00:00.000
+Test Suite 'DemoTests.xctest' started at 2026-10-25 12:00:00.000
+Test Suite 'DemoTests.xctest' passed at 2026-10-25 12:00:00.000
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-25 12:00:00.000
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Suite "Widget behaviour" started.
+◇ Test "a failure names what failed" started.
+◇ Test case passing 1 argument check → a refusal to "a failure names what failed" started.
+​◇ Test case passing 1 argument check → a bad address to "a failure names what failed" started.
+​◇ Test case passing 1 argument check → an error answer to "a failure names what failed" started.
+​◇ Test case passing 1 argument check → an empty answer to "a failure names what failed" started.
+​◇ Test case passing 1 argument check → no answer to "a failure names what failed" started.
+​✔ Test "a failure names what failed" with 5 test cases passed after 0.001 seconds.
+◇ Test "one" started.
+✔ Test "one" passed after 0.012 seconds.
+◇ Test "two" started.
+✔ Test "two" passed after 0.004 seconds.
+◇ Test "three" started.
+✔ Test "three" passed after 0.004 seconds.
+◇ Test "four" started.
+✔ Test "four" passed after 0.005 seconds.
+◇ Test "five" started.
+✔ Test "five" passed after 0.004 seconds.
+◇ Test "six" started.
+✔ Test "six" passed after 0.004 seconds.
+✔ Suite "Widget behaviour" passed after 0.037 seconds.
+✔ Test run with 7 tests in 1 suite passed after 0.037 seconds.
+2026-10-25 12:00:00.000 xcodebuild[1000:2000] [MT] IDETestOperationsObserverDebug: 0.847 elapsed -- Testing started completed.
+2026-10-25 12:00:00.000 xcodebuild[1000:2000] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-25 12:00:00.000 xcodebuild[1000:2000] [MT] IDETestOperationsObserverDebug: 0.847 sec, +0.847 sec -- end
+
+Test session results, code coverage, and logs:
+	<checkout>/build/Logs/Test/Test-Demo.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

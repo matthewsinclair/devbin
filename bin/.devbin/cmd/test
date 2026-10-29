@@ -1,0 +1,165 @@
+#!/usr/bin/env bash
+#
+# devbin: summary = Run the Devbin test suite
+# devbin: group   = Test
+#
+# Devbin's own test handler.
+#
+# The `bats` option is not a built-in devbin ships -- devbin's built-in test
+# gates are mix, credo, rust, swift, lua and shell. It is declared in
+# bin/.devbin/config.yaml, which is the activation rule's third route: naming an
+# option activates it whatever the project's languages say. This is how a
+# project adds a gate the framework never anticipated.
+#
+set -euo pipefail
+
+# shellcheck source=lib/helpers
+. "${DEVBIN_LIB:?run me through bin/devbin}/helpers"
+# shellcheck source=lib/runlog
+. "${DEVBIN_LIB}/runlog"
+
+cd "$PROJECT_ROOT"
+
+usage() {
+  printf 'usage: %s test bats [paths...] [bats flags...] | %s test --failed | %s test all\n' \
+    "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}"
+}
+
+# failed_in <errors file> -- each test a bats seal names as failed, one
+# `<file>\t<name>` line apiece: the name from its `not ok N <name>` line, the
+# file from the `in test file <file>, line N` bats writes in the detail below it.
+failed_in() {
+  awk '
+    /^not ok [0-9]+ / { name = $0; sub(/^not ok [0-9]+ /, "", name); next }
+    name != "" && /^# *\(?in test file / {
+      f = $0
+      sub(/^# *\(?in test file /, "", f)
+      sub(/, line [0-9]+\)$/, "", f)
+      print f "\t" name
+      name = ""
+    }
+  ' "$1"
+}
+
+# THE LAST RUN'S FAILURES AGAIN, as `mix test --failed` reruns them: the
+# newest bats seal under tmp/test/ names what failed, and bats runs those tests
+# alone, in their own files, matched by --filter on each whole name with every
+# regex character escaped (bats matches the name with bash's =~). That run
+# seals as any targeted run does, so the next --failed reads its failures. A
+# seal that names no failure, being green, runs nothing and says so; one that
+# failed without naming a test, or never finished, cannot say what to run.
+run_failed() {
+  local -a seals files=() names=()
+  local seal f n re="" line i c
+  shopt -s nullglob
+  seals=(tmp/test/*.bats.errors)
+  shopt -u nullglob
+  [ "${#seals[@]}" -gt 0 ] || die "no bats run is sealed under tmp/test/, so no test is known to have failed -- run ${DEVBIN_INVOKE:-bin/devbin} test all"
+  seal="${seals[${#seals[@]} - 1]}"
+  if [ ! -s "$seal" ]; then
+    printf 'no test failed in the last bats run (%s): nothing to run\n' "$seal"
+    return 0
+  fi
+  while IFS=$'\t' read -r f n; do
+    [ -n "$n" ] || continue
+    [ -f "$f" ] || die "the last run's failure \"$n\" was in $f, which is not there now -- run ${DEVBIN_INVOKE:-bin/devbin} test all"
+    names+=("$n")
+    case " ${files[*]-} " in *" $f "*) ;; *) files+=("$f") ;; esac
+  done < <(failed_in "$seal")
+  [ "${#names[@]}" -gt 0 ] || die "the last bats run failed without naming a failed test, or never finished ($seal) -- run ${DEVBIN_INVOKE:-bin/devbin} test all"
+  for n in "${names[@]}"; do
+    line=""
+    for ((i = 0; i < ${#n}; i++)); do
+      c="${n:i:1}"
+      case "$c" in
+        [][\\.^\$\|?*+\(\)\{\}]) line+="\\$c" ;;
+        *) line+="$c" ;;
+      esac
+    done
+    re="${re:+$re|}$line"
+  done
+  printf 'rerunning the %s test(s) the last run failed (%s), in %s file(s)\n' "${#names[@]}" "$seal" "${#files[@]}"
+  run_gate --label "tests (bats, failed)" --suffix bats --grammar shell \
+    --out-dir tmp/test \
+    --source "devbin's own test handler -- a literal command line in bin/.devbin/cmd/test, not config" \
+    -- bats --filter "^($re)\$" "${files[@]}"
+}
+
+case "${1:-}" in
+  --failed)
+    shift
+    [ "$#" -eq 0 ] || die "test --failed takes nothing more: it reruns what the last bats run failed"
+    require_tool bats "install with: brew install bats-core, or apt-get install bats"
+    run_failed
+    ;;
+  bats)
+    shift
+    require_tool bats "install with: brew install bats-core, or apt-get install bats"
+    # PATHS AND FLAGS GO TO BATS AS GIVEN (issue 0092), which is what help
+    # promises: `test bats tests/unit/help.bats` runs that file, and
+    # `--filter` is bats's own. Until 0092 this ran `bats tests/unit` whatever
+    # it was handed, so a targeted run through devbin was a full suite.
+    # tests/unit is added only when no argument is a path. A flag's VALUE is
+    # never read as one: `--filter tests` names a pattern, not the directory.
+    # The list is a copy of bats's vocabulary, so testhandler.bats holds it against
+    # the installed bats's own --help, which once caught a missing --negative-filter.
+    #
+    # THE WRAPPER FLAGS ARE THE GATE'S, split off by gate_split_args, the one
+    # parser every gate site uses (0087). Before 0092 they were dropped with
+    # everything else, so `test bats --purge` purged nothing; forwarded whole,
+    # bats would refuse them.
+    gate_split_args "$@"
+    have_path=0
+    skip_next=0
+    for arg in ${DEVBIN_GATE_ARGS[@]+"${DEVBIN_GATE_ARGS[@]}"}; do
+      if [ "$skip_next" = 1 ]; then
+        skip_next=0
+        continue
+      fi
+      case "$arg" in
+        -f | --filter | --negative-filter | -j | --jobs | -F | --formatter | -o | --output | \
+          --filter-status | --filter-tags | --report-formatter | \
+          --setup-suite-file | --gather-test-outputs-in | \
+          --code-quote-style | --line-reference-format | --parallel-binary-name)
+          skip_next=1
+          ;;
+        -*) ;;
+        *) have_path=1 ;;
+      esac
+    done
+    # THE WHOLE SUITE RUNS IN TWO LANES (issue 0190): handed nothing for bats,
+    # which is what `test all` hands it, the run goes to .lib/bats-lanes. That
+    # runs the suite under bats --jobs where GNU parallel is installed, then
+    # the tests tagged serial one at a time, and says on its first line which
+    # it did and why. A run handed paths or bats flags is a targeted run, and
+    # bats gets exactly what it was handed, as before. The split args stay
+    # visible on the run_gate line, where dispatch.bats's raw-argv scan reads
+    # them; for the lanes there are none.
+    if [ "${#DEVBIN_GATE_ARGS[@]}" -eq 0 ]; then
+      gate_cmd=(bin/.devbin/cmd/.lib/bats-lanes tests/unit)
+    else
+      [ "$have_path" = 1 ] || DEVBIN_GATE_ARGS+=(tests/unit)
+      gate_cmd=(bats)
+    fi
+    # Through run_gate, so Devbin's own suite is SEALED like any other gate:
+    # the run writes tmp/test/<stamp>.bats.{out,errors} and prints its own
+    # verdict path. If the sealed-gate subsystem breaks, Devbin's own test
+    # command breaks before it can reach a live project.
+    run_gate --label "tests (bats)" --suffix bats --grammar shell \
+      ${DEVBIN_GATE_FLAGS[@]+"${DEVBIN_GATE_FLAGS[@]}"} \
+      --out-dir tmp/test \
+      --source "devbin's own test handler -- a literal command line in bin/.devbin/cmd/test, not config" \
+      -- "${gate_cmd[@]}" ${DEVBIN_GATE_ARGS[@]+"${DEVBIN_GATE_ARGS[@]}"}
+    ;;
+  -h | --help)
+    usage
+    ;;
+  "")
+    # Bare EXITS 1, not 0. Asking for usage succeeded; being unable to run
+    # because no gate was named did not, and a gate command that exits 0 having
+    # run nothing reads as "passed" to every `&&` chain and CI step.
+    usage
+    exit 1
+    ;;
+  *) die "unknown test option: $1 (try: ${DEVBIN_INVOKE:-bin/devbin} test all)" ;;
+esac

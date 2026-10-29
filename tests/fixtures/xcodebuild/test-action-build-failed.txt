@@ -1,0 +1,16 @@
+Test session results, code coverage, and logs:
+	<checkout>/build/Logs/Test/Test-Demo.xcresult
+
+Testing failed:
+	Cannot use optional chaining on non-optional value of type '[String]'
+	Testing cancelled because the build failed.
+
+** TEST FAILED **
+
+
+The following build commands failed:
+	SwiftCompile normal arm64 Compiling\ Helper.swift,\ WidgetTests.swift <checkout>/DemoTests/Helper.swift <checkout>/DemoTests/WidgetTests.swift (in target 'DemoTests' from project 'Demo')
+	SwiftCompile normal arm64 <checkout>/DemoTests/Helper.swift (in target 'DemoTests' from project 'Demo')
+	SwiftCompile normal arm64 <checkout>/DemoTests/WidgetTests.swift (in target 'DemoTests' from project 'Demo')
+	Testing project Demo with scheme Demo
+(4 failures)

@@ -1,0 +1,23 @@
+# The paths devbin's public snapshot carries, one git pathspec per line. The
+# workroom scan (tests/unit/workroom.bats) and the snapshot builder both read
+# this list, so what is scanned is what ships. A `:(exclude)` line leaves a path out:
+# the fleet command is private to the development tree and does not ship.
+bin/
+lib/
+tests/
+docs/
+packaging/
+.github/
+design/
+README.md
+LICENSE
+CHANGELOG.md
+RELEASES/
+RELEASES.md
+VERSION
+.gitattributes
+.gitignore
+:(exclude)bin/.devbin/cmd/fleet
+:(exclude)bin/.devbin/fleet.roots
+:(exclude)bin/.devbin/help/fleet.md
+:(exclude)tests/unit/fleet.bats

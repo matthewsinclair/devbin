@@ -1,0 +1,4 @@
+# LF in the repository, not in each clone's git settings (ST0008): every
+# clone checks out LF, Windows included. Every file, not `*.sh`, since most of
+# devbin's scripts have no extension; text=auto leaves a binary alone.
+* text=auto eol=lf

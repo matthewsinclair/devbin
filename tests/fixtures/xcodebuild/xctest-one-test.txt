@@ -1,0 +1,5 @@
+Test Case '-[DemoTests.WidgetTests testOne]' started.
+Test Case '-[DemoTests.WidgetTests testOne]' passed (0.001 seconds).
+Test Suite 'WidgetTests' passed at 2026-10-25 12:00:00.000
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+** TEST SUCCEEDED **

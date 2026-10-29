@@ -1,0 +1,16 @@
+Test Suite 'Selected tests' started at 2026-10-25 12:00:00.000
+Test Suite 'DemoTests.xctest' started at 2026-10-25 12:00:00.000
+Test Suite 'DemoTests.xctest' passed at 2026-10-25 12:00:00.000
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-25 12:00:00.000
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+2026-10-25 12:00:00.000 xcodebuild[1000:2000] [MT] IDETestOperationsObserverDebug: 0.828 elapsed -- Testing started completed.
+2026-10-25 12:00:00.000 xcodebuild[1000:2000] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-25 12:00:00.000 xcodebuild[1000:2000] [MT] IDETestOperationsObserverDebug: 0.828 sec, +0.828 sec -- end
+
+Test session results, code coverage, and logs:
+	<checkout>/build/Logs/Test/Test-Demo.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

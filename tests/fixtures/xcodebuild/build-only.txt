@@ -1,0 +1,9 @@
+Validate <checkout>/build/Build/Products/Debug/Demo.app (in target 'Demo' from project 'Demo')
+    cd <checkout>/native/macos/Demo
+    builtin-validationUtility <checkout>/build/Build/Products/Debug/Demo.app -no-validate-extension -infoplist-subpath Contents/Info.plist
+
+RegisterWithLaunchServices <checkout>/build/Build/Products/Debug/Demo.app (in target 'Demo' from project 'Demo')
+    cd <checkout>/native/macos/Demo
+    /System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister -f -R -trusted <checkout>/build/Build/Products/Debug/Demo.app
+
+** BUILD SUCCEEDED **

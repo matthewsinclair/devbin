@@ -1,0 +1,357 @@
+#!/usr/bin/env bash
+#
+# Devbin's own shell gates: syntax, lint, rules.
+#
+# THIS IS NOT A COMMAND HANDLER, and the leading dot on `.lib/` is what says so.
+# `cmd/<name>` files become commands; `cmd/.lib/` is skipped by the same glob
+# that finds them, so this is a script config points at rather than a verb
+# anybody can type.
+#
+# It replaces `cmd/check`, which was a handler at a BUILT-IN NAME and therefore
+# displaced the whole built-in option set (a handler shadows totally, working as
+# designed). It was written before lib/cmd/check existed, and was never retired
+# when the framework grew its own -- so `check critic` meant one thing here and
+# another at every install, and devbin was the only tree where that was true
+# (issue 0018). Retiring it also un-hides `format` and
+# `toolchain`, which the catalogue offers to any project and which this tree
+# could not reach while a handler stood in front of them.
+#
+# These gates stay HERE rather than becoming built-ins because they are
+# genuinely devbin's: discovery is by shebang, which is a fact about a repository
+# whose scripts carry no extension, not a fact about shell projects generally.
+#
+# Sealing is the framework's now. This prints and exits; `grammar:` and `log:`
+# in config.yaml say how to seal it, which is also what puts the datestamped
+# pair under the same UPPERCASE suffix every other project uses -- the lowercase
+# `.critic.` seals this tree used to mint were the clue that a second
+# implementation existed.
+#
+set -euo pipefail
+
+# shellcheck source=lib/helpers
+. "${DEVBIN_LIB:?run me through bin/devbin}/helpers"
+
+cd "$PROJECT_ROOT"
+
+# shell_files -- every file the shell gates apply to, one per line.
+#
+# ONE HOME for the corpus, because every shell gate asks the same question and a
+# second copy is how two of them come to disagree about what they cover.
+#
+# Devbin's scripts carry no extension (bin/devbin, lib/config), so discovery is
+# by shebang, with *.bash for sourced libraries that have none. .bats files are
+# excluded from both gates: `@test "x" { }` is not bash, so the syntax and lint
+# gates would both report errors on valid tests.
+#
+# (Note the rewrap: a comment line STARTING with the word shellcheck is parsed
+# as a directive, and SC1072/SC1073 fire on the prose.)
+#
+# A CORPUS THAT COULD NOT BE LISTED WHOLE RETURNS 1, having printed what it did
+# list (issue 0139). find's errors went to /dev/null in a process substitution,
+# and so did head's, so a directory find could not read and a file head could
+# not open were both a file that is not shell: never gated, and the gate green
+# over it -- "syntax: 47 file(s), 0 breach(es)" beside a planted breach it
+# could not see. find's and head's own errors name the path.
+shell_files() {
+  local f listing rc=0
+  listing="$(find_walk bin lib tests -type f -print)" || rc=1
+  while IFS= read -r f; do
+    [ -n "$f" ] || continue
+    case "$f" in
+      *.bats) continue ;;
+      *.bash)
+        printf '%s\n' "$f"
+        continue
+        ;;
+    esac
+    if [ ! -r "$f" ]; then
+      warn "cannot read $f to tell whether it is a shell file"
+      rc=1
+      continue
+    fi
+    # pipe-sound: head -n1 writes one line and grep decides only on a whole
+    # line, so grep decides at or after head's last byte -- 0031 measured this
+    # shape at its twin in .github/workflows/tests.yml.
+    if head -n1 "$f" | grep -qE '^#!.*(bash|sh)\b'; then
+      printf '%s\n' "$f"
+    fi
+  done <<<"$(printf '%s\n' "$listing" | LC_ALL=C sort)"
+  return "$rc"
+}
+
+# shell_corpus <gate> -- the corpus for one gate, or a refusal that fails the
+# gate: a gate over part of the corpus is not a pass (issue 0139).
+shell_corpus() {
+  local files
+  if ! files="$(shell_files)"; then
+    warn "$1: could not list every file (the errors above name them) -- a gate over part of the corpus is not a pass"
+    return 1
+  fi
+  printf '%s\n' "$files"
+}
+
+gate_syntax() {
+  local f n=0 bad=0 corpus
+  corpus="$(shell_corpus syntax)" || return 1
+  while IFS= read -r f; do
+    [ -n "$f" ] || continue
+    n=$((n + 1))
+    bash -n "$f" || bad=$((bad + 1))
+  done <<<"$corpus"
+  printf 'syntax: %s file(s), %s breach(es)\n' "$n" "$bad"
+  # A GATE THAT EXAMINED NOTHING IS NOT A PASS. The corpus is discovered rather
+  # than declared, so a broken `find` or a moved directory would otherwise print
+  # `0 file(s), 0 breach(es)` and seal green.
+  [ "$n" -gt 0 ] || {
+    warn "syntax examined NO files -- that is a broken corpus, not a clean tree"
+    return 1
+  }
+  [ "$bad" -eq 0 ]
+}
+
+# lint_checks <scratch> <jobs> -- shellcheck -x over the files named on stdin,
+# as NUL-separated pairs of an index and a path, at most <jobs> at once. Each
+# check's output goes to <scratch>/<index>.out and its status to
+# <scratch>/<index>.rc. It returns xargs's status, and only once every worker
+# has exited. ONE HOME for the check and its wait, since the parallel run and
+# the second run (issue 0184) are the same check at a different width.
+#
+# NO STATUS IS READ BACK WHILE A WORKER CAN STILL WRITE ONE (issue 0180). xargs
+# stops at a worker killed by a signal, and GNU xargs 4.9.0 then exits without
+# waiting for the workers still running, so a file nothing was wrong with lost
+# its verdict and its worker wrote into the scratch after the gate had removed
+# it; BSD xargs and GNU 4.11.0 wait. So xargs's output goes through cat, which
+# ends only once every process holding that pipe has exited, and cat's own
+# output goes to /dev/null, so it cannot fail first. Each worker sh holds the
+# pipe until it has written its .rc and exited, whether xargs waited for it or
+# not: at fd 1, or, while dash runs the redirected shellcheck, as the copy dash
+# saves and restores, which shellcheck does not inherit. Every path in the
+# scratch is created by a process holding the pipe; a check whose worker is
+# killed writes on only to the .out it has open. A worker that never exits
+# holds the gate, as it already did on any xargs that waits. A worker program
+# that redirected its own stdout, eg with exec, would silently stop being waited
+# for: contract.bats's arm that takes xargs away goes red then, as it does
+# without the cat. Nothing is written to the pipe, since each check writes to
+# its own files. xargs's status is this function's only through pipefail, set
+# at the top of this file, and each caller reads it rather than let it end the
+# gate under errexit.
+lint_checks() {
+  # shellcheck disable=SC2016 # the $0, $1 and $2 in the sh -c program are its own
+  xargs -0 -n 2 -P "$2" sh -c 'shellcheck -x "$2" >"$0/$1.out" 2>&1; echo "$?" >"$0/$1.rc"' "$1" |
+    cat >/dev/null
+}
+
+# lint_verdict <scratch> <index> <file> -- one file's verdict, from the
+# parallel run's files in <scratch>: its output printed, any line about it
+# said, and 0 returned only for a pass. It is called under ||, so errexit is
+# off in it: every status in it is read by hand.
+#
+# A CHECK KILLED IN THE PARALLEL RUN, OR LEFT WITH NO VERDICT, IS CHECKED AGAIN
+# ALONE BEFORE IT COUNTS (issue 0184). The parallel run is sized by CPUs and
+# never by memory, and shellcheck -x peaks at over 2 GB on bin/devbin, so a
+# host with many CPUs and too little free memory has checks killed: a status
+# above 128, 137 for the kernel's SIGKILL, with dash's "Killed" as the file's
+# output, and each was a breach with no defect behind it. Above 128 is not
+# always a signal: shellcheck denied memory, as under ulimit -v, exits 251,
+# "out of memory", so the line gives the status rather than naming a kill.
+# Such a file, and one the parallel run left with no verdict or never started,
+# is checked here, by itself, once every worker of the parallel run has
+# exited, and that verdict is the one that counts; the line says both. Only a
+# check whose worker was killed can still be running then, as lint_checks
+# says, and the kernel short of memory kills the largest process, the check,
+# not its worker. A check that failed on its own terms, a status from 1 to 128,
+# is never run again, so a real breach costs nothing more. The second run is
+# lint_checks at one job, one file to an xargs, so it has the same wait, and a
+# worker killed there stops no other file's.
+lint_verdict() {
+  local scratch="$1" i="$2" f="$3" k="$2" rc first="" again xrc=0
+  rc="$(cat "$scratch/$i.rc" 2>/dev/null || true)"
+  if [[ "$rc" =~ ^[0-9]+$ ]]; then
+    [ "$rc" -le 128 ] || first="exited $rc in the parallel run; checked again alone"
+  elif [ -e "$scratch/$i.out" ]; then
+    first="had no verdict from the parallel run; checked again alone"
+  else
+    first="was not checked in the parallel run; checked alone"
+  fi
+  if [ -n "$first" ]; then
+    k="a$i"
+    printf '%s\0%s\0' "$k" "$f" | lint_checks "$scratch" 1 || xrc=$?
+    [ "$xrc" -eq 0 ] || warn "lint: the run of $f alone exited $xrc"
+    rc="$(cat "$scratch/$k.rc" 2>/dev/null || true)"
+    again="exited $rc"
+    [ "$rc" != 0 ] || again="ok"
+    [[ "$rc" =~ ^[0-9]+$ ]] || again="no verdict"
+    warn "lint: $f $first: $again"
+  fi
+  [ ! -s "$scratch/$k.out" ] || cat "$scratch/$k.out" || true
+  if [ -z "$first" ] && [ "$rc" != 0 ] && [ ! -s "$scratch/$k.out" ]; then
+    warn "lint: $f exited $rc with no output"
+  fi
+  [ "$rc" = 0 ]
+}
+
+# gate_lint -- shellcheck -x over the corpus, one verdict per file.
+#
+# IN PARALLEL, SO IT CAN SIT IN EVERY TARGETED RUN (issue 0155). In series it
+# took over a minute, so it ran only at the cut and on CI, after landing: two
+# breaches reached a release commit that way. Measured over this tree's 48
+# files on a loaded machine: 106 s in series, 105 s as one shellcheck call, 27 s
+# with eight at once. Each file still gets its own run and its own status, kept
+# in a scratch directory and read back in corpus order, so the output reads as
+# the serial loop's did, and a file whose verdict is missing is never a pass.
+gate_lint() {
+  command -v shellcheck >/dev/null 2>&1 || die "shellcheck not installed"
+  local f i n=0 bad=0 corpus scratch jobs xrc=0
+  corpus="$(shell_corpus lint)" || return 1
+  scratch="$(mktemp -d "${TMPDIR:-/tmp}/devbin-lint.XXXXXX")" || die "lint: cannot make a scratch directory"
+  # shellcheck disable=SC2064 # the path is fixed now, on purpose
+  trap "rm -rf '$scratch'" EXIT
+  jobs="$(cpu_count)"
+  [ "$jobs" -le 8 ] || jobs=8
+  # A WORKER THAT DIES IS NOT THE END OF THE VERDICT (issue 0155).
+  # xargs stops at it, so its status is read here rather than ending the gate
+  # under errexit, and the arms that kill a worker or xargs itself assert the
+  # warning it gives; every file it left without a status, a dead worker's or
+  # one xargs never started, is checked alone by lint_verdict. An empty corpus
+  # never reaches xargs, which GNU would run once over nothing.
+  if [ -n "$corpus" ]; then
+    i=0
+    while IFS= read -r f; do
+      [ -n "$f" ] || continue
+      i=$((i + 1))
+      printf '%s\0%s\0' "$i" "$f"
+    done <<<"$corpus" | lint_checks "$scratch" "$jobs" || xrc=$?
+    [ "$xrc" -eq 0 ] || warn "lint: the parallel run exited $xrc, so a file may have no verdict (named below)"
+  fi
+  i=0
+  while IFS= read -r f; do
+    [ -n "$f" ] || continue
+    i=$((i + 1))
+    n=$((n + 1))
+    lint_verdict "$scratch" "$i" "$f" || bad=$((bad + 1))
+  done <<<"$corpus"
+  printf 'lint: %s file(s), %s breach(es)\n' "$n" "$bad"
+  [ "$n" -gt 0 ] || {
+    warn "lint examined NO files -- that is a broken corpus, not a clean tree"
+    return 1
+  }
+  [ "$bad" -eq 0 ]
+}
+
+# gate_critic -- the rules of the road over the WHOLE corpus, deliberately.
+#
+# `intent critic` scans nothing unless it is told what to scan, and the built-in
+# `check critic` tells it `--staged`, which is the right default for a
+# pre-commit gate and a vacuous one for CI, where nothing is ever staged. Devbin
+# is the framework's own source, so its gate examines every shell file it ships
+# rather than whichever happened to be in the index.
+#
+# THAT DIVERGENCE IS NOW A DECLARATION RATHER THAN AN ACCIDENT (issue 0018). It
+# lives in config.yaml as a `run:` line anybody can read, instead of being an
+# emergent property of which tree you were standing in.
+gate_critic() {
+  command -v intent >/dev/null 2>&1 || die "intent not on PATH"
+  local f rc=0 n
+  # ONE `--files` PER PATH (issue 0075). The runner documents the flag as
+  # repeatable and takes one value each; Intent 3.0.3 refuses a second path
+  # after a single flag with rc 2 and no output. An array also stops the corpus
+  # being word-split, which a path with a space in it would have broken anyway.
+  local -a fargs=()
+  local corpus
+  corpus="$(shell_corpus critic)" || return 1
+  while IFS= read -r f; do
+    [ -n "$f" ] && fargs+=(--files "$f")
+  done <<<"$corpus"
+  n=$((${#fargs[@]} / 2))
+  [ "$n" -gt 0 ] || {
+    warn "critic examined NO files -- that is a broken corpus, not a clean tree"
+    return 1
+  }
+  # THE GATE ASKS WHETHER IT WAS ARMED BEFORE IT ASKS WHETHER IT PASSED.
+  #
+  # The move to Intent 3 once took this tree from `2 of 6 rule(s) ASKED; 2
+  # armed in total` to `0 of 0; 0 armed`, and the verdict line did not change by
+  # one character: both printed `ok: no shell findings ... across 28 file(s)`
+  # and both exited 0. Two commits landed through it. A run that armed nothing
+  # has not passed, it has ABSTAINED, and the two must not share an exit code.
+  #
+  # The count is read from `--format json`, never from the census line in the
+  # text output. Parsing display text is what `.git/hooks/pre-commit.intent`
+  # does to recover INTENT_HOME, and that file carries its own comment about
+  # what a renderer change would cost it; one of those in this repository is
+  # one more than it needs. `armed` is a documented field of a machine format.
+  #
+  # jq is already this framework's dependency (lib/cmd/check:89), so requiring
+  # it here adds nothing a devbin install did not already need.
+  require_tool jq "brew install jq, or apt-get install jq"
+  local census census_err armed census_rc=0 said
+  census_err="$(mktemp)"
+  census="$(intent critic shell "${fargs[@]}" --format json 2>"$census_err")" || census_rc=$?
+  armed="$(printf '%s' "$census" | jq -r 'if type == "object" then (.armed // empty) else empty end' 2>/dev/null || true)"
+
+  # EACH RUNNER HAS ITS OWN JSON CONTRACT, AND ONLY V3'S CARRIES THE COUNT.
+  #
+  #   v3.0.0   {"armed": 2, "asked": 2, "census": [...], "findings": [...]}
+  #   v2.19.0  []                    <- findings only; the census goes to STDERR
+  #
+  # So under v2 there is no machine-readable denominator, and the choice is to
+  # parse its stderr census or to refuse a runner that demonstrably works (v2
+  # arms 2 of 6 here). Refusing a healthy gate is its own outage, so the census
+  # is read -- and the reason that is acceptable HERE and not in the INTENT_HOME
+  # case is the whole argument: **v2 is frozen at 2.19.0 and its renderer can
+  # never change again.** Parsing display text is a bet on a format holding
+  # still; this is the one case where that is not a bet. When the v2 path is
+  # retired, this branch goes with it and nothing else has to move.
+  if [ -z "$armed" ]; then
+    armed="$(sed -n 's/.*; \([0-9][0-9]*\) armed in total.*/\1/p' "$census_err")"
+    armed="${armed%%$'\n'*}"
+  fi
+  said="$(grep -m1 . "$census_err" || true)"
+  rm -f "$census_err"
+
+  # THE ABSENCES ARE KEPT APART, because they have different remedies and
+  # collapsing them is how a diagnosis comes to name the wrong cause.
+  if [ -z "$armed" ] && [ "$census_rc" -ne 0 ]; then
+    # The runner REFUSED the call rather than answering in an unknown shape.
+    # Until 0075 this reached the reader as the sentence below, which sent them
+    # after the toolchain while the runner's own stderr named the argument it
+    # would not take.
+    die "critic: the runner refused this gate's call (exited $census_rc), so no \`armed\` count was produced. It said: ${said:-(nothing on stderr)}"
+  fi
+  if [ -z "$armed" ]; then
+    # The runner answered in no shape this gate understands -- neither v3's
+    # `armed` field nor v2's census line. That is a broken or unknown toolchain,
+    # NOT a clean corpus and NOT an empty library, and it must not be reported
+    # as either.
+    local ver vrc=0
+    ver="$(intent --version 2>&1)" || vrc=$?
+    die "critic: no \`armed\` count from this runner -- neither v3's JSON \`armed\` field nor v2's census line was readable, so this gate cannot tell an armed run from a disarmed one. It is refusing rather than guessing. \`intent --version\` exits $vrc and says: ${ver%%$'\n'*}"
+  fi
+  if [ "$armed" -eq 0 ]; then
+    warn "critic: 0 rules armed -- the rule library answered EMPTY, so this run examined $n file(s) against nothing"
+    printf 'critic: a gate that armed no rules has not passed, it has abstained; refusing rather than sealing ok over an empty denominator\n' >&2
+    return 1
+  fi
+
+  intent critic shell "${fargs[@]}" || rc=$?
+  # Exit 1 is findings, 2 is a critic error. Neither is swallowed
+  # (IN-AG-NO-SILENT-001), but they are different breaches and say so.
+  case "$rc" in
+    0) return 0 ;;
+    1)
+      printf 'critic: findings above\n' >&2
+      return 1
+      ;;
+    *)
+      printf 'critic: exited %s\n' "$rc" >&2
+      return 1
+      ;;
+  esac
+}
+
+case "${1:-}" in
+  syntax) gate_syntax ;;
+  lint) gate_lint ;;
+  critic) gate_critic ;;
+  *) die "usage: shell-gate <syntax|lint|critic>" ;;
+esac

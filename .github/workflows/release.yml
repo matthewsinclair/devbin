@@ -1,0 +1,71 @@
+name: Release
+
+# Fires only on a version tag, which is a deliberate human act. Nothing here
+# runs on a push to main.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Publish the GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      # THE TAG AND THE TREE MUST AGREE. A v0.2.0 tag on a tree whose VERSION
+      # says 0.1.0 publishes a release nobody can reproduce, and the mismatch is
+      # invisible in the release page itself -- the tag name looks authoritative
+      # and the tree it points at is what people actually get.
+      - name: Assert the tag matches VERSION
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME#v}"
+          file="$(tr -d '[:space:]' < VERSION)"
+          printf 'tag=%s VERSION=%s\n' "$tag" "$file"
+          if [ "$tag" != "$file" ]; then
+            echo "tag v$tag does not match VERSION ($file) -- refusing to publish"
+            exit 1
+          fi
+
+      # The release body comes from the note, so the published text and the
+      # committed record are the same bytes rather than two accounts of one
+      # release. The header block is stripped: it is metadata for the generator,
+      # not prose for a reader.
+      - name: Extract the release note
+        run: |
+          set -euo pipefail
+          version="${GITHUB_REF_NAME#v}"
+          note="RELEASES/${version}.md"
+          if [ ! -f "$note" ]; then
+            echo "no release note at $note -- write one before tagging (see docs/releasing.md)"
+            exit 1
+          fi
+          awk 'BEGIN { body = 0 } body { print } !body && /^$/ { body = 1 }' "$note" > /tmp/release-body.md
+          if [ ! -s /tmp/release-body.md ]; then
+            echo "$note has a header block and no body -- refusing to publish an empty release"
+            exit 1
+          fi
+          echo "--- body ---"
+          cat /tmp/release-body.md
+
+      # The generated views must already match their source. Publishing from a
+      # tree whose CHANGELOG is stale ships a release the repository disagrees
+      # with, and `release check` is a predicate that writes nothing.
+      - name: Assert the generated views are current
+        run: bin/devbin release check
+
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create "$GITHUB_REF_NAME" \
+            --title "devbin ${GITHUB_REF_NAME#v}" \
+            --notes-file /tmp/release-body.md \
+            --verify-tag

@@ -1,0 +1,174 @@
+# Devbin's own devbin config.
+#
+# Devbin uses devbin. This file is both the project's real
+# configuration and the worked example the documentation points at -- if the
+# framework is awkward to configure, it is awkward here first.
+#
+# It is also a config whose language is not Elixir, which makes it the live
+# test of devbin's language scoping: nothing Elixir-shaped should
+# appear in `bin/devbin help`, and `bin/devbin test all` must never try to run
+# `mix test`.
+
+project:
+  name: devbin
+  alias: db
+  languages:
+    - shell
+
+devbin_version: "^0.1.1"
+
+# Where `bin/devbin install` publishes this runtime to (ST0005). Consumers vendor
+# FROM there rather than from this working tree, which is what stops a dirty
+# checkout reaching a consumer: a copy vendored from a working tree can carry
+# bytes stamped `+dirty -- THESE BYTES MATCH NO COMMIT`.
+install:
+  prefix: ~/Devel/opt/devbin
+
+# The release core (ST0007). The block names only what differs from the
+# defaults: devbin's notes are RELEASES/<version>.md with CHANGELOG.md and
+# RELEASES.md generated from them, and .github/workflows/release.yml makes the
+# GitHub release from a pushed tag, so the core must never make a second one.
+# `release` itself is opt-in and is enabled under commands below.
+#
+# devbin PUBLISHES A SNAPSHOT (ST0010, issue 0240). It is developed in one
+# repository, and the public one, at publish.url below, holds one commit of the
+# product a release, made of the release tag over tests/shipped.paths. So a
+# cut pushes to `local` alone, a directory, and stops there, and
+# `bin/devbin release publish v<version>` makes the tag's snapshot public: it
+# pushes it to a candidate branch, reads CI green on it, and only then moves
+# the public main and pushes the tag. `repo` names that public repository, where
+# release.yml makes the GitHub release from the tag. `doctor` joins the gates
+# because it is what reads devbin_version above against the VERSION the stamp
+# writes, so a constraint the new version outgrew fails the release commit
+# rather than the first consumer to run doctor.
+#
+# `after:` publishes the Homebrew formula (ST0009). release publish runs it once
+# the tag is public, so the tap never names a tag brew cannot fetch, and a
+# failure is the after step's FAILED row with the release standing, never a
+# quiet 0: run `bin/devbin formula publish` by hand once the cause is fixed.
+release:
+  remotes:
+    - local
+  notes:
+    kind: releases
+  gates:
+    - check all
+    - test all
+    - doctor
+  # CI GREEN BEFORE ANYTHING IS PUBLIC (issue 0240): release publish asks
+  # ci-state about the snapshot on its candidate branch, whose push runs the
+  # whole matrix a tag runs, macOS and WSL included, and moves nothing public
+  # until it reads green. A run still going at ci.wait stops the publish with
+  # nothing public, and running it again reads CI again. ci.tag is off: the
+  # tag's run is of the same commit, so it is read after the publish rather than
+  # waited for. The query names the repository repo: names, which ci-state.bats
+  # holds equal.
+  ci:
+    query: bin/.devbin/cmd/.lib/ci-state matthewsinclair/devbin
+    tag: false
+    # A candidate runs the whole matrix, macOS and WSL beside Ubuntu, which
+    # alone takes about 47 minutes, so the default 20m would stop every
+    # first publish before its verdict.
+    wait: 90m
+  object: ci
+  repo: matthewsinclair/devbin
+  after:
+    - bin/devbin formula publish
+  # THE PUBLIC SNAPSHOT (issue 0239, ST0010): `release snapshot` makes one
+  # commit of a tag's tracked files over tests/shipped.paths, the one list of
+  # what ships, which the workroom scan reads too, and release publish makes the
+  # same commit. Every snapshot is made under the identity below.
+  snapshot:
+    list: tests/shipped.paths
+    author: "Matthew Sinclair <hello@matthewsinclair.com>"
+  # THE PUBLIC REPOSITORY, read over https, as brew reads it. A push to it goes
+  # through the maintainer's own git config (url.<base>.pushInsteadOf), so no
+  # host alias of one machine ships here. No remote of this workroom may name
+  # it: a cut and release publish each refuse one that does.
+  publish:
+    url: https://github.com/matthewsinclair/devbin.git
+
+# The built-in formula (issue 0227), in source mode: brew builds from the
+# release tag's checkout, so packaging/homebrew/devbin.rb holds one placeholder
+# for the tag and one for its commit. Every other key is left at its default:
+# the template at packaging/homebrew/devbin.rb, and the tap homebrew-devbin under
+# release.repo's owner, over ssh.
+formula:
+  mode: source
+
+help:
+  tagline: "the dev launcher framework"
+  preamble: "This config is devbin configuring itself, so it doubles as the worked example. Devbin uses devbin: a defect in the framework breaks Devbin's own build first."
+  groups:
+    - Test (SEALED gates -- the verdict is a FILE, not a scroll-past)
+    - Check
+    - Docs
+    - Build
+    - Ship
+
+commands:
+  # Opt-in (ST0007): the release core runs only where a project asks for it.
+  # This replaced devbin's own bin/.devbin/cmd/release, whose notes generator
+  # moved into the core as the `releases` notes kind.
+  release:
+    enabled: true
+
+  # Opt-in, as release is: the built-in renders and publishes the formula, and
+  # replaced devbin's own bin/.devbin/cmd/formula (issue 0227).
+  formula:
+    enabled: true
+
+  # The project's own suite. `bats` is not a built-in devbin ships -- it is
+  # declared here, which is the third activation route of the language scoping:
+  # naming an option activates it whatever the languages say. Naming it is ALL
+  # this block does:
+  # bin/.devbin/cmd/test owns the option and runs it, so a `run:`, `grammar:` or
+  # `log:` here would never be read. They were here, dead, until issue 0092, and
+  # the help described the seal they would have made rather than the one made.
+  test:
+    group: Test
+    summary: Run the Devbin test suite
+    options:
+      bats:
+        summary: BATS unit suite
+
+  # The gates that tests/gate runs today. Once this resolves, tests/gate is
+  # deleted -- it is a second implementation of the same concern, a Highlander
+  # watch-item.
+  check:
+    group: Check
+    summary: Read-only gates; each exits non-zero on a breach
+    options:
+      # These options name a real script, which they did NOT until issue 0018:
+      # `run: devbin-internal-syntax` and its siblings resolved to nothing
+      # anywhere in the repository and never executed, because a handler at
+      # bin/.devbin/cmd/check displaced them. Dead run: targets, sitting in the
+      # config the documentation points at as the worked example. The handler is
+      # retired; these now run, and the framework seals them from `grammar:` and
+      # `log:` below rather than the script minting its own pair.
+      syntax:
+        summary: bash -n over every shell file
+        run: bin/.devbin/cmd/.lib/shell-gate syntax
+        grammar: generic
+        log: SYNTAX
+      lint:
+        summary: shellcheck -x
+        run: bin/.devbin/cmd/.lib/shell-gate lint
+        grammar: shell
+        log: LINT
+      # DECLARED rather than left to the built-in, and that is the point of
+      # 0018's fix. The built-in `check critic` defaults to `--staged`, which is
+      # right for a pre-commit gate and vacuous in CI, where nothing is ever
+      # staged. Devbin is the framework's own source, so its gate reads every
+      # shell file it ships. The divergence is a line anybody can read here,
+      # instead of an emergent property of which tree you were standing in.
+      # `grammar: critic`, NOT generic (issue 0019). The critic grammar carries a
+      # COUNTER, and run_gate promotes a counted run that executed nothing to
+      # FAILED. Declaring `generic` here left this gate with no counter and so
+      # structurally incapable of failing on an empty examination -- the exact
+      # state the counter was written for, in the one tree that was not using it.
+      critic:
+        summary: intent critic shell (whole corpus, not --staged)
+        run: bin/.devbin/cmd/.lib/shell-gate critic
+        grammar: critic
+        log: CRITIC

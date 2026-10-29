@@ -1,0 +1,623 @@
+name: Devbin Tests
+
+on:
+  push:
+    # main, and a release's candidate (issue 0240). release publish pushes a
+    # release's snapshot to candidate/<tag> and reads CI on it before the public
+    # main or the tag moves, so a candidate runs the whole matrix a tag runs,
+    # macOS and WSL included (the jobs' conditions below). The prefix is
+    # release.publish.candidate's default, and tests/unit/ci-workflow.bats
+    # holds this filter and those conditions to it.
+    branches: [main, 'candidate/**']
+    # ONE TAG FILTER FOR EVERY PROJECT THAT COPIES THIS FILE, matching both
+    # release forms: devbin tags `v0.1.5`, and Utilz has tagged bare since 2.7.0.
+    # This line is the only place in this file where a tag's FORM is written.
+    # The macOS condition below asks the ref's TYPE and never its spelling, so
+    # a project whose tags look different changes this line and nothing else.
+    tags: ['v[0-9]*', '[0-9]*']
+    # A PUSH THAT ONLY MOVES COORDINATION STATE STARTS NOTHING (issue 0110).
+    # JUSTIFIED BY WHAT NO JOB READS, not by a hit rate: nothing in this
+    # workflow opens intent/whiteboard/ or intent/.canon/, so a push touching
+    # only those has nothing here to verify. That stays true as commit habits
+    # change and it transfers to every project unaltered, which a percentage
+    # does not -- the percentage this comment used to carry was wrong three
+    # separate ways at once (see RELEASES/0.1.6.md).
+    #
+    # BOTH PATHS, OR THE FILTER DOES NOTHING. GitHub skips a push only when
+    # EVERY changed path matches an entry here, and `intent wb` writes a canon
+    # event beside the board view it renders -- so a board write touches both
+    # trees and the intent/whiteboard/ line ALONE suppresses nothing a board
+    # write does. Measured over fourteen days of pushes: 0 of 32 skipped with
+    # the intent/whiteboard/ line, 6 of 32 with the canon line beside it.
+    #
+    # THIS CANNOT SUPPRESS THE TAG RUN ABOVE, however much it reads as though it
+    # could: GitHub does not evaluate path filters for pushes of tags at all,
+    # and where branches and paths-ignore are both given it is a BRANCH push
+    # that must satisfy both. The two lines are independent, and a release tag
+    # always runs. The sentence is here because the inference is one step away
+    # and its conclusion would be to delete a correct line.
+    #
+    # The consequence is in docs/releasing.md: a board-only push has no run of
+    # its own, so "CI is green on the pushed commit" reads on the last run.
+    paths-ignore:
+      - 'intent/whiteboard/**'
+      - 'intent/.canon/**'
+  pull_request:
+    branches: [main]
+  # ON DEMAND. The macOS leg no longer runs on a push (issue 0108), so this is
+  # how it is asked for between releases:
+  #
+  #   gh workflow run tests.yml --ref main
+  workflow_dispatch:
+
+# SUPERSEDED RUNS ARE CANCELLED (issue 0108).
+#
+# THE EVENT IS PART OF THE KEY, which is not decoration: a push to main and a
+# workflow_dispatch on main share a ref, so a group keyed on the ref alone would
+# let a push cancel an on-demand macOS run after its ten-times minutes had
+# already been spent, and let a dispatch cancel a push's run. A tag carries its
+# own ref, so a release run is never cancelled by a push to main.
+#
+# WHAT THIS ADDS is narrower than it reads: GitHub already replaces a PENDING
+# run in the same group. `cancel-in-progress` adds the one that is RUNNING,
+# which is where the minutes actually are.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-linux:
+    name: Test on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install bats-core
+        run: |
+          set -euo pipefail
+          wget -q https://github.com/bats-core/bats-core/archive/v1.12.0.tar.gz
+          tar -xzf v1.12.0.tar.gz
+          cd bats-core-1.12.0
+          sudo ./install.sh /usr/local
+          bats --version
+
+      # Deliberately NO yq. By design devbin has a single awk-based config
+      # reader and no yq dependency at all, so installing it here would only
+      # mask a reintroduced call. tests/unit/config.bats asserts both that the
+      # reader never invokes yq and that it parses with yq off PATH.
+      - name: Install dependencies
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          # zsh and xmllint: NOT optional, and the suite now says so.
+          # This runner ships neither, macOS ships both, so the DMARC `parse`
+          # arms needing xmllint and the `dvb` arms needing zsh had never run
+          # on Linux at all. They surfaced as a red run that was FIRST
+          # EXPOSURE rather than regression: the files landed while nothing
+          # was being pushed, so CI had never seen them.
+          #
+          # Installing them rather than skipping them is the rule. A skip on
+          # a runner the project provisions converts a coverage hole into a
+          # passing run -- and `require_command` FAILS instead of skipping when
+          # CI is set, so deleting either package below turns CI red naming the
+          # tool rather than quietly shrinking the population.
+          #
+          # jq is deliberately absent from this line: it is already present on
+          # the runner, proven by the `report:` arms that passed on the same
+          # red run through `require_tool jq`.
+          #
+          # parallel is GNU parallel, which `test all` runs its parallel lane
+          # under (issue 0190). The image ships it today, but unlike jq it
+          # decides how the whole suite runs, so it is provisioned here rather
+          # than left to the image: without it the suite would run one test at
+          # a time, and the lane arms in testhandler.bats fail under CI.
+          sudo apt-get install -y zsh libxml2-utils zip unzip parallel
+          bash .github/install-shellcheck.sh
+
+      # NO INTENT ON THIS RUNNER, AND THE GATES STEP BELOW SAYS SO (issue 0077).
+      # Intent is a native binary published for macOS arm64 only, by design, so
+      # there is nothing to install here. This step used to clone Intent's
+      # repository and put its bin/ on PATH, which stopped providing `intent`
+      # when Intent went native -- and `check critic` refused with "intent not on
+      # PATH" on both runners from then on.
+
+      # Through devbin, not bats directly: Devbin uses devbin, so a
+      # defect in the dispatcher breaks Devbin's own build before it can reach a
+      # live project. Running bats straight would route around the thing under
+      # test.
+      - name: Run tests
+        run: bin/devbin test all
+
+      # EVERY `check` GATE EXCEPT `critic` AND `lint`, each for its own reason.
+      # critic reads an Intent project, and CI runs on the public snapshot,
+      # which carries no intent/, so it refuses on every runner (issue 0293);
+      # the commit gate runs the critic before anything is public. lint has
+      # already run in this job: `test all` above runs the suite's full-tree
+      # lint test (contract.bats, issue 0155), which runs the gate `check lint`
+      # runs, turns this job red on a breach, and fails rather than skips here
+      # when shellcheck is missing. Running it again below linted the tree twice
+      # in a row, about two minutes each time (issue 0191).
+      #
+      # The gates are LISTED because `check all` would run critic and refuse. A
+      # list is how a gate added later goes missing from a runner without
+      # anyone noticing, so the marker line below, and the macOS job's, are
+      # read by tests/unit/ci-workflow.bats, which holds each equal to check's
+      # active options minus critic and lint. Keep the list on the line after
+      # the marker.
+      #
+      # It does not stop at the first failure, for the same reason `all` does
+      # not: one pass that surfaces every breach.
+      - name: Run gates (all but critic and lint -- critic needs intent/, lint ran in the tests above)
+        run: |
+          set -euo pipefail
+          failed=""
+          # ci-linux-gates:
+          for opt in syntax format toolchain; do
+            bin/devbin check "$opt" || failed="$failed $opt"
+          done
+          if [ -n "$failed" ]; then
+            printf 'FAILED:%s\n' "$failed"
+            exit 1
+          fi
+
+  test-macos:
+    name: Test on macOS (bash >= 5 floor)
+    # ON TAGS, A RELEASE'S CANDIDATES AND ON DEMAND, NEVER ON A PUSH TO main
+    # (issues 0108 and 0240). A macOS minute costs ten times a Linux one, so
+    # this job does not run on every push.
+    #
+    # The tag half asks github.ref_type, which GitHub documents as `branch` or
+    # `tag`, and never the tag's spelling: on.push.tags above decides WHICH tags
+    # start a run, and this decides whether a run carries the macOS leg. Test
+    # Summary repeats this expression, and tests/unit/ci-workflow.bats holds the
+    # two equal AND pins what they say -- two copies agreeing on something wrong
+    # would skip macOS on a release and then accept the skip, which is a guard
+    # failing in the same direction as the bug it guards.
+    #
+    # AND ON A RELEASE'S CANDIDATE (issue 0240), the snapshot release publish
+    # pushes to candidate/<tag> before anything is public: CI green there is
+    # what lets the public main and the tag move, so it is the release's whole
+    # matrix, as a tag's run is. Asked by the branch's prefix, which on.push
+    # above names too.
+    #
+    # AND IT TAKES THE LEG OFF PULL REQUESTS TOO, which is worth saying out loud
+    # because nothing else here would say it: a pull_request's ref is
+    # refs/pull/N/merge, whose ref_type is `branch`, so the condition is false
+    # and the leg skips. Devbin never sees one -- this repository works without
+    # branches -- but this file is the shape Intent, Utilz, Molt and another project
+    # copy, and there a pull request is the normal way work arrives. A project
+    # that wants macOS on pull requests adds that event here deliberately,
+    # rather than discovering the gap after a merge.
+    #
+    # THE COST, stated because it is real: drift on this runner -- the image,
+    # Homebrew -- now surfaces at a tag or a dispatch rather
+    # than on the next push. docs/releasing.md says to run this leg on demand
+    # before a cut when the macOS side has been quiet.
+    if: ${{ github.ref_type == 'tag' || github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install dependencies
+        run: |
+          set -euo pipefail
+          # bash first: the floor (issue 0022). The runner's /bin/bash is
+          # 3.2.57 and PATH carries nothing newer until brew provides it.
+          # parallel is GNU parallel, for the suite's parallel lane (issue
+          # 0190): this leg bills at ten times a Linux minute, so it is where
+          # running side by side saves the most.
+          brew install bash bats-core parallel
+          bash .github/install-shellcheck.sh
+          bats --version
+
+      # The real reason this job exists, inverted by issue 0022 (which set the
+      # >= 5 floor): /bin/bash on macOS is 3.2.57 permanently, which makes this
+      # the only runner carrying a real old bash -- so it is where the
+      # dispatcher's >= 5 floor is PROVEN to refuse rather than assumed to.
+      # The refusal test in dispatch.bats drives /bin/bash; this job is what
+      # keeps that test from silently skipping forever.
+      #
+      # The suite itself runs under the brew bash installed above. The step
+      # below fails loudly if PATH did not pick it up, because a suite quietly
+      # running under 3.2 would refuse everything and report it as noise.
+      - name: Report the system and PATH bash, and assert the floor
+        run: |
+          set -euo pipefail
+          sysv="$(/bin/bash --version)"
+          pathv="$(bash --version)"
+          printf 'system  /bin/bash: %s\n' "${sysv%%$'\n'*}"
+          printf 'PATH    bash:      %s (%s)\n' "$(command -v bash)" "${pathv%%$'\n'*}"
+          if [ "$(bash -c 'printf "%s" "${BASH_VERSINFO[0]}"')" -lt 5 ]; then
+            echo "PATH bash is below the >= 5 floor -- brew bash did not land first on PATH"
+            exit 1
+          fi
+
+      - name: Prove the floor refuses the system bash 3.2
+        run: |
+          set -euo pipefail
+          out=""
+          if out="$(/bin/bash bin/devbin --version 2>&1)"; then
+            echo "the dispatcher ACCEPTED bash 3.2 -- the floor guard is gone or broken"
+            printf '%s\n' "$out"
+            exit 1
+          fi
+          printf '%s\n' "$out"
+          # NOT `printf ... | grep -q`: this step sets pipefail, grep -q returns
+          # the instant it matches, and printf then takes SIGPIPE on a write that
+          # has not landed -- 141 becomes the pipeline's status, and because this
+          # is the last command of the step, the step goes RED on a race rather
+          # than on the thing it is testing. No pipeline, no promotion.
+          grep -q "bash >= 5" <<<"$out"
+
+      # NAMED for what it does: bats runs under the PATH bash asserted >= 5
+      # above. The old-bash coverage is the refusal proof, not this step.
+      - name: Run tests
+        run: bin/devbin test all
+
+      # THE UBUNTU JOB'S GATES, BY NAME, AND NOT `check all` (issue 0293).
+      # critic reads an Intent project and the public snapshot carries no
+      # intent/, so `check all` refused here at critic after a green suite.
+      # lint ran in the tests above, as on Ubuntu. The marker line is read by
+      # tests/unit/ci-workflow.bats, which holds it equal to the Ubuntu list's
+      # population: check's active options minus critic and lint.
+      - name: Run gates (all but critic and lint -- critic needs intent/, lint ran in the tests above)
+        run: |
+          set -euo pipefail
+          failed=""
+          # ci-macos-gates:
+          for opt in syntax format toolchain; do
+            bin/devbin check "$opt" || failed="$failed $opt"
+          done
+          if [ -n "$failed" ]; then
+            printf 'FAILED:%s\n' "$failed"
+            exit 1
+          fi
+
+  shellcheck:
+    name: Shell Script Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install the pinned ShellCheck
+        run: bash .github/install-shellcheck.sh
+
+      - name: Run ShellCheck
+        run: |
+          set -euo pipefail
+          # Collect every shell file: Devbin's scripts carry no extension
+          # (bin/devbin, lib/config), so discovery is by shebang, with *.bash
+          # included for sourced libraries that have none. .bats files are
+          # excluded -- `@test "x" { }` is not bash and shellcheck would report
+          # syntax errors on valid tests.
+          #
+          # Test helpers are deliberately NOT excluded. Utilz's workflow skips
+          # */test/* and its own comment records the cost: fifteen findings
+          # accumulated unseen in the file every utility sources. An exclusion
+          # that hides one warning hides all the others too.
+          #
+          # THE LISTING IS WRITTEN TO A FILE AND THEN READ, SO find's STATUS
+          # COUNTS. It was read from a process
+          # substitution, whose status nothing reads, with find's errors sent
+          # to /dev/null, so a directory find could not read left the corpus
+          # short and the job green: the walk issue 0139 fixed in shell-gate.
+          # Under pipefail a failed find now fails this step, and its own error
+          # names the directory.
+          find bin lib tests -type f | sort >"$RUNNER_TEMP/files"
+          FILES=()
+          while IFS= read -r s; do
+            case "$s" in
+              *.bats) continue ;;
+              *.bash) FILES+=("$s") ;;
+              # pipe-sound: head -n1 writes one line and grep decides only on a
+              # whole line, so grep decides at or after head's last byte.
+              # SOUND, and measured to be, because `head -n1` writes exactly ONE
+              # line and `grep` is line-oriented: grep cannot decide until it has
+              # a COMPLETE line, so its decision point is at or after head's last
+              # byte and there is no unread remainder to strand. That is what
+              # separates this from the pipefail/SIGPIPE class in issue 0031 --
+              # the rule is "the reader decides before consuming everything the
+              # writer will write", not "the reader can exit early". Measured
+              # under load, 6000 iterations, against a positive control that lost
+              # 1 in the same run: 0 dropped. Do not "fix" this.
+              *) if head -n1 "$s" | grep -qE '^#!.*(bash|sh)\b'; then FILES+=("$s"); fi ;;
+            esac
+          done <"$RUNNER_TEMP/files"
+
+          if [ ${#FILES[@]} -eq 0 ]; then
+            echo "No shell scripts found -- the collector is broken, failing loudly."
+            exit 1
+          fi
+
+          echo "Running ShellCheck on ${#FILES[@]} file(s):"
+          printf '  %s\n' "${FILES[@]}"
+
+          # BLOCKING. No `|| true`, no "(non-blocking)" tail: a lint job that
+          # cannot fail the build is a lint job nobody reads.
+          shellcheck -x "${FILES[@]}"
+          echo "ShellCheck clean."
+
+  test-wsl:
+    # THE SUITE AND THE SMOKE LIST INSIDE WSL, ON A WINDOWS RUNNER (ST0008).
+    # On tags, a release's candidates and on demand only, on exactly the macOS
+    # leg's expression: a Windows minute costs twice a Linux one, and
+    # tests/unit/ci-workflow.bats holds the two expressions equal.
+    #
+    # IT BLOCKS NOTHING FOR NOW, by choice, so it is
+    # deliberately absent from Test Summary's needs below, and
+    # tests/unit/ci-workflow.bats holds that absence. A red run here is read
+    # job by job and fixed or filed (AC-6.3); it does not stop a release.
+    #
+    # THE NAME SAYS WHICH WSL VERSION RAN, and the first step inside WSL asserts
+    # the kernel agrees, so the name cannot claim a version the run did not
+    # have. WSL 1 would count for devbin, the intent CLI and the critic gate,
+    # and not for intentd's file watching or WSL 2's kernel.
+    name: Test in WSL ${{ matrix.wsl }} (Ubuntu 26.04)
+    if: ${{ github.ref_type == 'tag' || github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        wsl: ['2']
+    # NOTHING CROSSES INTO WSL UNLESS WSLENV NAMES IT. /p translates the
+    # workspace's Windows path into WSL's. CI is passed so `require_command`
+    # fails rather than skips, as it does on the other legs. The Intent
+    # install's pins are named here for the one step that reads them.
+    env:
+      WSL_WANT: ${{ matrix.wsl }}
+      WSLENV: GITHUB_WORKSPACE/p:GITHUB_SHA:WSL_WANT:CI:INTENT_TAG:INTENT_ASSET:INTENT_SHA256
+    steps:
+      - uses: actions/checkout@v7
+
+      # Ubuntu 26.04 because a new WSL install reaches it, and it carries
+      # uutils as its coreutils. The packages are the Ubuntu leg's, plus
+      # what that leg's image already has and this distribution does not.
+      #
+      # THE EXACT TAG, NOT @v7: setup-wsl's v7 is a BRANCH, not a tag, so it
+      # moves under a workflow that names it, and a run read against it proves
+      # less than it claims.
+      #
+      # NOT AS ROOT, AND SET HERE, IN THE ONE CALL. The suite's arms that make a
+      # file unreadable prove nothing to root, which reads it anyway, so every
+      # step below runs as `dev`, an ordinary user, as a developer inside WSL
+      # does; setup-wsl adds the user when it does not exist. Set in a SECOND
+      # call, it does not rewrite the wrapper the first call wrote unless
+      # wsl-shell-command is given too, so every step runs as root and the
+      # unreadable-file arms fail. A step that must be root says
+      # so with the wrapper's own `wsl-bash -u root`.
+      - uses: Vampire/setup-wsl@v7.2.0
+        with:
+          distribution: Ubuntu-26.04
+          wsl-version: ${{ matrix.wsl }}
+          wsl-shell-user: dev
+          additional-packages: git jq zsh libxml2-utils zip unzip parallel curl wget xz-utils sudo ca-certificates
+
+      # The one step that runs as root: `dev` may sudo without a password, for
+      # the bats install and Intent's /opt/intent below.
+      - name: Let the non-root user sudo
+        shell: wsl-bash -u root {0}
+        run: |
+          set -euo pipefail
+          id dev
+          printf 'dev ALL=(ALL) NOPASSWD:ALL\n' >/etc/sudoers.d/dev
+          chmod 0440 /etc/sudoers.d/dev
+
+      - name: Report and assert the WSL version and the user
+        shell: wsl-bash {0}
+        run: |
+          set -euo pipefail
+          osrelease="$(cat /proc/sys/kernel/osrelease)"
+          printf 'kernel: %s\n' "$osrelease"
+          case "$osrelease" in
+            *WSL2*) got=2 ;;
+            *[Mm]icrosoft*) got=1 ;;
+            *) got="none" ;;
+          esac
+          if [ "$got" != "$WSL_WANT" ]; then
+            echo "asked for WSL $WSL_WANT, the kernel reads as WSL $got -- the job's name would claim a version this run did not have"
+            exit 1
+          fi
+          id
+          # A ROOT RUN STOPS HERE, by name, before the suite, rather than
+          # reaching it as a score of unreadable-file arms that root can read.
+          if [ "$(id -u)" -eq 0 ]; then
+            echo "the steps run as root, so the suite's unreadable-file arms cannot hold -- setup-wsl's wsl-shell-user did not reach the wrapper"
+            exit 1
+          fi
+
+      # INSIDE WSL'S OWN FILESYSTEM, never the runner's Windows workspace under
+      # /mnt, which is the place the README tells a developer not to work. The
+      # clone is made from the checkout's own repository, so it is the commit
+      # under test; safe.directory because that repository belongs to Windows.
+      - name: Clone into WSL's filesystem
+        shell: wsl-bash {0}
+        run: |
+          set -euo pipefail
+          git config --global --add safe.directory '*'
+          git clone -q "$GITHUB_WORKSPACE" "$HOME/devbin"
+          git -C "$HOME/devbin" checkout -q --detach "$GITHUB_SHA"
+          git -C "$HOME/devbin" log -1 --format='%H %s'
+
+      - name: Install bats-core and ShellCheck
+        shell: wsl-bash {0}
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          cd "$tmp"
+          wget -q https://github.com/bats-core/bats-core/archive/v1.12.0.tar.gz
+          tar -xzf v1.12.0.tar.gz
+          cd bats-core-1.12.0
+          sudo ./install.sh /usr/local
+          bats --version
+          bash "$HOME/devbin/.github/install-shellcheck.sh"
+
+      - name: Run tests
+        shell: wsl-bash {0}
+        run: |
+          set -euo pipefail
+          cd "$HOME/devbin"
+          bin/devbin test all
+
+      # INTENT'S LINUX PACKAGE, SO THE CRITIC GATE RUNS (ST0008 AC-6.5).
+      # Intent's repository is public, so the asset is
+      # fetched anonymously from its release; no token or secret is involved.
+      #
+      # THE TAG IS PINNED, NEVER latest, and so is the asset's sha256. Intent
+      # publishes no checksum file of its own. The pin is the sha256 GitHub
+      # recorded for the asset when it was uploaded, read from the release when
+      # this line was written, so a mismatch means the asset was replaced since.
+      #
+      # THE TARBALL IS THE WHOLE INSTALL: bin/intent and bin/intentd beside the
+      # support tree (intent/plugins, lib/templates), laid out as Homebrew's
+      # libexec. intent-support.tar.gz carries the same files and is for the
+      # bare macOS binary, so it is not fetched. The link on PATH is the same
+      # shape as Homebrew's, and `intent bootstrap` writes the install pointer
+      # a project's commit gate reads, as Intent's install page says to.
+      - name: Install Intent
+        shell: wsl-bash {0}
+        env:
+          INTENT_TAG: v3.2.4
+          INTENT_ASSET: intent-x86_64-unknown-linux-musl.tar.gz
+          INTENT_SHA256: 1feeed1a17024f21b280dff2c4d90f89d32576b301ebe460de169c8456ff0441
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          cd "$tmp"
+          curl -fsSL --retry 3 -o "$INTENT_ASSET" \
+            "https://github.com/matthewsinclair/intent/releases/download/$INTENT_TAG/$INTENT_ASSET"
+          got="$(sha256sum "$INTENT_ASSET")"
+          got="${got%% *}"
+          printf 'sha256: %s\npinned: %s\n' "$got" "$INTENT_SHA256"
+          if [ "$got" != "$INTENT_SHA256" ]; then
+            echo "$INTENT_ASSET from Intent $INTENT_TAG is not the asset pinned here: it was replaced after the pin was written"
+            exit 1
+          fi
+          tar -xzf "$INTENT_ASSET"
+          sudo mv "${INTENT_ASSET%.tar.gz}" /opt/intent
+          sudo ln -s /opt/intent/bin/intent /usr/local/bin/intent
+          version="$(intent --version)"
+          printf '%s\n' "$version"
+          case "$version" in
+            "intent ${INTENT_TAG#v} "*) ;;
+            *)
+              echo "the intent on PATH is not $INTENT_TAG"
+              exit 1
+              ;;
+          esac
+          intent bootstrap
+
+      # THE SMOKE LIST ON TWO FIXTURE PROJECTS, one without intent/ and
+      # one with it. With Intent installed by the step above, the script
+      # asserts that `check all` on the second runs the critic gate and passes
+      # (AC-6.5); with no intent on PATH it would assert the refusal instead.
+      - name: Run the smoke list
+        shell: wsl-bash {0}
+        run: |
+          set -euo pipefail
+          bash "$HOME/devbin/.github/wsl-smoke.sh" "$HOME/devbin" "$HOME/smoke"
+
+  test-summary:
+    name: Test Summary
+    runs-on: ubuntu-latest
+    needs: [test-linux, test-macos, shellcheck]
+    # NOT always(), AND THE DIFFERENCE IS NEW. Cancelling superseded runs makes
+    # a cancelled run an ordinary event rather than a rare one, and always()
+    # would print a FAILED line into the log of every push that overtook
+    # another. A verdict that is red in ordinary operation is one people stop
+    # reading, which is the failure this whole job exists to avoid.
+    #
+    # `cancelled()` asks about the RUN, not a job, so a cancelled or failed LEG
+    # inside a live run still reaches the decision below and is still reported.
+    # Only a run that was itself superseded goes quiet, and its conclusion
+    # already says cancelled.
+    if: ${{ !cancelled() }}
+    # THE DECISION'S INPUTS COME THROUGH env RATHER THAN INLINE ${{ }}, so that
+    # the script below is a script: tests/unit/ci-workflow.bats extracts it and
+    # RUNS it on each combination of results. An inline expression can only be
+    # text-matched by a test, and the case that matters -- a release tag whose
+    # macOS leg was skipped -- is exactly the one no text match can catch.
+    env:
+      LINUX: ${{ needs.test-linux.result }}
+      MACOS: ${{ needs.test-macos.result }}
+      SHELLCHECK: ${{ needs.shellcheck.result }}
+      MACOS_REQUIRED: ${{ github.ref_type == 'tag' || github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
+    steps:
+      - name: Summary
+        run: |
+          set -euo pipefail
+          # Every job is listed in `needs` deliberately. A failing job already
+          # fails the workflow run, so this is redundant today -- but if branch
+          # protection is ever keyed on "Test Summary" alone, an omitted job is
+          # an ungated job.
+          #
+          # PRINTED BEFORE THE DECISION, unconditionally, so a refusal names the
+          # inputs it refused on. AND THE LIMIT OF THAT: a run whose needs all
+          # look green can still fail because a job was never started, eg when
+          # the account's Actions spending limit has been reached, and only the
+          # run's ANNOTATIONS say so. A job that never starts prints nothing,
+          # so no echo in this step can ever reach that case; `gh run view
+          # <id>` can, because annotations outlive the logs.
+          #
+          # `result` is empty rather than "success" for a job that never ran,
+          # and the job's `if: !cancelled()` above means this step still runs to
+          # report it. Quoted so an empty value is visible as '' instead of
+          # vanishing.
+          #
+          # THE CONDITION IS `!cancelled()`, NOT `always()`, since 0108 moved
+          # it, and the two differ in exactly the cancelled case. A comment
+          # that still described `always()` here would state both, two hundred
+          # lines apart, at the one place a reader comes to learn what makes
+          # this step run. A comment that outlives the code it describes is not
+          # stale documentation, it is a second, wrong specification.
+          echo "test-linux     = '$LINUX'"
+          echo "test-macos     = '$MACOS'"
+          echo "shellcheck     = '$SHELLCHECK'"
+          echo "macos required = '$MACOS_REQUIRED'"
+          failed=""
+          notrun=""
+          # refuse <leg> <result> -- AN ABANDONED LEG IS NAMED APART (0238). GitHub
+          # gives a job no runner took the result `abandoned`, a value its docs do
+          # not list: the v0.1.15 tag's macOS leg (run 40373607694) was never
+          # acquired, ran no step, and still printed the FAILED line a failing
+          # test prints, so a capacity shortfall read as a devbin failure. It is
+          # still a refusal: a required leg with no verdict is not a pass.
+          refuse() {
+            case "$2" in
+              abandoned) notrun="$notrun $1" ;;
+              *) failed="$failed $1" ;;
+            esac
+          }
+          [ "$LINUX" = success ] || refuse test-linux "$LINUX"
+          [ "$SHELLCHECK" = success ] || refuse shellcheck "$SHELLCHECK"
+          # A SKIPPED macOS LEG IS A PASS ONLY WHERE IT WAS NOT ASKED FOR. On a
+          # tag or a dispatch it is a missing verdict wearing a pass, on the one
+          # run that carries the bash 3.2 refusal proof. An
+          # EMPTY result -- a job that never started -- is never acceptable, on
+          # any event.
+          # AN UNRECOGNISED REQUIREMENT REFUSES rather than falling through to
+          # the permissive branch. Written as `if [ "$MACOS_REQUIRED" = true ]`
+          # it sent every other value -- a renamed env key, an expression that
+          # failed to evaluate -- to the arm that ACCEPTS a skip, which is the
+          # one direction this job must never fail in.
+          case "$MACOS_REQUIRED" in
+            true)
+              [ "$MACOS" = success ] || refuse test-macos "$MACOS"
+              ;;
+            false)
+              case "$MACOS" in
+                success | skipped) ;;
+                *) refuse test-macos "$MACOS" ;;
+              esac
+              ;;
+            *)
+              echo "macos required is '$MACOS_REQUIRED', which is neither true nor false -- refusing to decide"
+              exit 1
+              ;;
+          esac
+          if [ -n "$notrun" ]; then
+            printf 'NOT RUN:%s -- GitHub acquired no runner, so no step ran and no test failed; re-run the failed jobs once a runner is free\n' "$notrun"
+          fi
+          if [ -n "$failed" ]; then
+            printf 'FAILED:%s\n' "$failed"
+          fi
+          [ -z "$failed$notrun" ] || exit 1
+          echo "All required checks passed."
