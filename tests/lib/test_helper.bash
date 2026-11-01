@@ -422,6 +422,12 @@ devbin_isolate_machine() {
   # machine-wide profile under XDG_CONFIG_HOME, so an arm would read the
   # runner's own profile. Unset, it is the test home's ~/.config.
   unset XDG_CONFIG_HOME
+  # Nor the runner's artefact registry (ST0011): the cache command writes under
+  # DEVBIN_CACHE_HOME, or the XDG cache directory's devbin when that is unset,
+  # and its gc removes from there, so an arm that reached either would change the
+  # registry the runner's own builds pull from. Both unset, the registry is the
+  # test home's ~/.cache/devbin. An arm that means a root sets one.
+  unset DEVBIN_CACHE_HOME XDG_CACHE_HOME
   mkdir -p "$HOME" || return 1
   # And that home's ~/.local/bin first on PATH, the order the switch assumes of
   # a login shell (docs/dev-opt-brew.md, T5), so a link an arm points with
@@ -1372,6 +1378,47 @@ devbin_run() {
   local proj="$1"
   shift
   ( cd "$proj" && ./bin/devbin "$@" </dev/null )
+}
+
+# stub_uname <flag> <variable> -- a uname first on PATH that answers `uname
+# <flag>` alone, with the value <variable> holds when it runs, and hands every
+# other question to the uname that was first on PATH before it, so only that
+# answer changes: the architecture a cache key reads (-m), or the OS name the
+# platform word is read from (-s). Every devbin call after it sets <variable>.
+stub_uname() {
+  local flag="$1" var="$2" real dir="$DEVBIN_TEST_TMPDIR/uname-stub$1"
+  real="$(command -v uname)" || {
+    fail "there is no uname on PATH to hand the other questions to"
+    return 1
+  }
+  mkdir -p "$dir"
+  # <flag>, <variable> and the real uname's path are written in now; the
+  # escaped expansions are the stub's own, read when it runs.
+  printf '%s\n' '#!/usr/bin/env bash' \
+    "if [ \"\$*\" = $flag ]; then printf \"%s\\n\" \"\${$var:-}\"; exit 0; fi" \
+    "exec '$real' \"\$@\"" >"$dir/uname"
+  chmod +x "$dir/uname"
+  export PATH="$dir:$PATH"
+}
+
+# stub_cargo -- a cargo first on PATH that answers --version alone, as `cargo
+# <version> (stub)`: the version in ./.stub-toolchain where it is run, else
+# CARGO_STUB_VERSION, 1.0.0 unless set. It fails when CARGO_STUB_FAIL is set,
+# and with CARGO_STUB_CHATTER set says a line on stderr first, as rustup can.
+stub_cargo() {
+  mkdir -p "$DEVBIN_TEST_TMPDIR/stubs"
+  # shellcheck disable=SC2016 # expanded when the stub runs
+  printf '%s\n' '#!/usr/bin/env bash' \
+    '[ -z "${CARGO_STUB_CHATTER:-}" ] || echo "info: syncing channel updates" >&2' \
+    '[ -z "${CARGO_STUB_FAIL:-}" ] || exit 1' \
+    'v="${CARGO_STUB_VERSION:-1.0.0}"' \
+    '[ ! -f .stub-toolchain ] || v="$(cat .stub-toolchain)"' \
+    'case "${1:-}" in' \
+    '  --version) printf "cargo %s (stub)\n" "$v" ;;' \
+    '  *) echo "stub cargo: only --version, not: $*" >&2; exit 64 ;;' \
+    'esac' >"$DEVBIN_TEST_TMPDIR/stubs/cargo"
+  chmod +x "$DEVBIN_TEST_TMPDIR/stubs/cargo"
+  export PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH"
 }
 
 # windows_path -- print PATH with a Windows PATH appended, as WSL appends it

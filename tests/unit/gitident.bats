@@ -132,6 +132,25 @@ mkworktree() {
   assert_output_matches '^[0-9a-f]{40} \+dirty$'
 }
 
+# AN UNTRACKED FILE IS DIRT WHATEVER GIT'S CONFIG SAYS (ST0011). Under
+# status.showUntrackedFiles=no a bare status lists no untracked file, so the
+# identity read clean over a file the commit does not hold, which the release
+# core's tree rule refuses. The control first: the same file under git's default.
+# AT-1.2
+@test "an untracked file marks the tree dirty where status.showUntrackedFiles is no, as under git's default (ST0011)" {
+  repo="$(mkrepo)"
+  local sha
+  sha="$(git -C "$repo" rev-parse HEAD)"
+  echo "untracked" > "$repo/scratch.txt"
+  run git_head_identity "$repo"
+  assert_success
+  assert_output "$sha +dirty"
+  git -C "$repo" config status.showUntrackedFiles no
+  run git_head_identity "$repo"
+  assert_success
+  assert_output "$sha +dirty"
+}
+
 # A FAILED STATUS IS NO CLEAN TREE (issue 0186). Over an index git cannot read,
 # rev-parse still names the commit and status fails, and the failure read as
 # empty output: the bare sha, over a tree whose state nobody read.

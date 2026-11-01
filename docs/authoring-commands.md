@@ -183,15 +183,16 @@ If you test your own use of this, **the fixture has to be a real `git worktree a
 
 This table is the one place devbin's exit codes are listed.
 
-| Code | Means                                                                           |
-| ---- | ------------------------------------------------------------------------------- |
-| 0    | it worked                                                                       |
-| 1    | the command's own failure, **or a usage error**                                 |
-| 2    | unknown command, or one scoped out of this project                              |
-| 3    | resolves, but nothing here implements it                                        |
-| 4    | wrong tree: the dispatcher refusing to act on a project you are not standing in |
-| 5    | install tree: the dispatcher refusing to run from a machine install             |
-| 6    | devbin's own trees only: `use` refused in a project that vendors devbin         |
+| Code | Means                                                                                                    |
+| ---- | -------------------------------------------------------------------------------------------------------- |
+| 0    | it worked                                                                                                |
+| 1    | the command's own failure, **or a usage error**                                                          |
+| 2    | unknown command, or one scoped out of this project                                                       |
+| 3    | resolves, but nothing here implements it                                                                 |
+| 4    | wrong tree: the dispatcher refusing to act on a project you are not standing in                          |
+| 5    | install tree: the dispatcher refusing to run from a machine install                                      |
+| 6    | devbin's own trees only: `use` refused in a project that vendors devbin                                  |
+| 7    | `cache` refusing: no key to make, nothing to record, a root it cannot use, or an argument it cannot read |
 
 The one worth spelling out: **a bare command that needs an option exits 1, not 0.** It prints its usage either way, but naming no option is a usage error, and `devbin test && deploy` reads a 0 as permission to deploy. An explicit `-h` or `--help` still exits 0 -- that request succeeded.
 

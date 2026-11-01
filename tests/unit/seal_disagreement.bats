@@ -96,6 +96,17 @@ teardown() {
   assert_output_contains "RECORDS A FAILURE"
 }
 
+@test "rc=0 beside a seal that cannot be read is refused as a green nothing confirms, never read as a recorded failure (ST0011 WP02)" {
+  [ "$(id -u)" -ne 0 ] || skip "root reads a file whatever its mode, so no unreadable seal can be made"
+  printf 'test foo FAILED\n' >"$SEAL"
+  chmod 000 "$SEAL"
+  run seal_disagreement_reason 0 "$SEAL"
+  chmod 644 "$SEAL"
+  assert_success
+  assert_output_contains "CANNOT BE READ"
+  refute_output_contains "RECORDS A FAILURE"
+}
+
 @test "the positive arms say DIFFERENT things -- they send a reader to different places" {
   # One means "find the killed run"; the other means "find the failing test".
   # A single message for both would send someone hunting for a failure that does

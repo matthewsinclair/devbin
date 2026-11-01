@@ -146,17 +146,23 @@ Built-ins are **offered** by language or on request. A language-scoped command a
 
 Always offered:
 
-| Command     | What it does                                                                 |
-| ----------- | ---------------------------------------------------------------------------- |
-| `check`     | Read-only gates; each exits non-zero on a breach                             |
-| `fmt`       | Format sources in place                                                      |
-| `build`     | Build this project's targets, which it declares itself                       |
-| `worktrees` | Report linked worktrees, landed, held or unknown, and remove the landed ones |
-| `docs`      | Regenerate generated documentation (AGENTS.md); needs intent/                |
-| `version`   | Show, set, bump, sync and check the project version                          |
-| `infra`     | Profile and check this estate's DNS and mail configuration                   |
+| Command     | What it does                                                                       |
+| ----------- | ---------------------------------------------------------------------------------- |
+| `check`     | Read-only gates; each exits non-zero on a breach                                   |
+| `fmt`       | Format sources in place                                                            |
+| `build`     | Build this project's targets, which it declares itself                             |
+| `cache`     | Reuse a built artefact while its inputs are unchanged: key, get, put, list, rm, gc |
+| `worktrees` | Report linked worktrees, landed, held or unknown, and remove the landed ones       |
+| `docs`      | Regenerate generated documentation (AGENTS.md); needs intent/                      |
+| `version`   | Show, set, bump, sync and check the project version                                |
+| `ci-state`  | Read CI's verdict on a commit: green, failed, pending, none or unknown             |
+| `infra`     | Profile and check this estate's DNS and mail configuration                         |
 
 `build` is listed in every project and runs nothing until the project says what it builds: `commands.build.run`, options under `commands.build.options`, or a handler, at `bin/.devbin/cmd/build` or mapped with `commands.build.handler`. devbin ships the name only, and doctor notes it as offered with nothing to run until then. A declared language also gives `check` options for elixir and rust, and `fmt` options for elixir, rust and swift.
+
+`cache` keeps what a project's build handler builds under a key made from the inputs its `build:` block declares ([configuration](docs/configuration.md)), so a handler that runs `bin/devbin cache get` before it builds and `cache put` after pulls an artefact whose inputs have not changed instead of building it again; `bin/devbin cache --help` gives its answers.
+
+`ci-state` reads CI's verdict on one commit through `gh`, in the release core's own words, so it is the query a release names as `release.ci.query`: `bin/devbin ci-state <sha>` prints `<verdict><TAB><detail>`, and `release.ci.workflow` and `release.ci.summary` say which workflow's runs count and whose verdict a run's is ([configuration](docs/configuration.md#release), `bin/devbin help ci-state`).
 
 Offered when the project declares the language. `test` and `clean` have an option for each language they serve, so each appears once the project declares any one of those:
 
@@ -181,11 +187,11 @@ Shipped as names, absent until the project asks for them -- `enabled: true`, or 
 | `content`   | Content pipeline tasks                          |
 | `which`     | Report which binary or build a name resolves to |
 
-`release` is opt-in the same way, and devbin implements it itself: one release sequence shared by every project that releases, declared in a `release:` block ([configuration](docs/configuration.md#release)). It was built under ST0007. `release check` validates and prints the declaration and then checks the notes -- the generated views match their source, and the project's version has a note -- `release notes` regenerates the generated views, and `release status <version>` reads every step of the sequence from the repository, its remotes and the release object and prints where a release stands, writing nothing. A cut resolves the version, pre-flights, stamps, commits, runs the gates on the release commit, asks once (or takes `--yes`), then tags, pushes and makes the release object, and seals its own run as `tmp/release/<stamp>.RELEASE.{out,errors}`; with `--dry-run`, the same reads and gates with every other write reported as `would` (it writes nothing tracked; its gates still write their run logs under the ignored `tmp/`). Under `object: ci` it waits for the project's workflow to make the release object, and makes none itself. It then runs `after:` and, when `ci.query` is declared, reports the CI verdict on the tagged commit: the release stands either way, and anything but green exits 1, naming the remedy -- the next release.
+`release` is opt-in the same way, and devbin implements it itself: one release sequence shared by every project that releases, declared in a `release:` block ([configuration](docs/configuration.md#release)). It was built under ST0007. `release check` validates and prints the declaration and then checks the notes -- the generated views match their source, and the project's version has a note -- `release notes` regenerates the generated views, and `release status <version>` reads every step of the sequence from the repository, its remotes and the release object and prints where a release stands, writing nothing. A cut resolves the version, pre-flights, asks once (or takes `--yes`), stamps and commits, then starts every leg together on the release commit under one wait -- the gates in place and, unless `ci.query` is `-`, CI on that commit pushed to its candidate ref -- and only when every leg is green tags, pushes, deletes the candidate and makes the release object; a red leg or a timeout leaves no tag and nothing public. It seals its own run as `tmp/release/<stamp>.RELEASE.{out,errors}`; `--dry-run` does the same reads, runs no gate and writes nothing, printing every write as `would`. Under `object: ci` it waits for the project's workflow to make the release object, and makes none itself. It then runs `after:`: the release stands whatever they do, and one that fails exits 1, naming it.
 
-| Command   | What it does                                                                                          |
-| --------- | ----------------------------------------------------------------------------------------------------- |
-| `release` | Cut a release: stamp, commit, gate, confirm, tag, push, the release object, after: and the CI verdict |
+| Command   | What it does                                                                                                    |
+| --------- | --------------------------------------------------------------------------------------------------------------- |
+| `release` | Cut a release: confirm once, then stamp, commit, legs under one wait, tag, push, the release object and after:  |
 
 `macos` is opt-in the same way, and devbin implements it too: a macOS app's release, on macOS only. It signs a staged copy of the project's `.app` with the Developer ID and the hardened runtime, notarises and staples it, checks it as a download meets it, and attaches it zipped to the release at its tag through `release attach --from`, the core's one way an asset reaches a release. The notary credentials live in the login keychain and nowhere else, and nothing prints a value. It is declared in a `macos:` block ([configuration](docs/configuration.md#macos)), and a project's own `macos` handler or `run:` still wins.
 

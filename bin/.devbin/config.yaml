@@ -32,18 +32,19 @@ install:
 #
 # devbin PUBLISHES A SNAPSHOT (ST0010, issue 0240). It is developed in one
 # repository, and the public one, at publish.url below, holds one commit of the
-# product a release, made of the release tag over tests/shipped.paths. So a
-# cut pushes to `local` alone, a directory, and stops there, and
-# `bin/devbin release publish v<version>` makes the tag's snapshot public: it
-# pushes it to a candidate branch, reads CI green on it, and only then moves
-# the public main and pushes the tag. `repo` names that public repository, where
-# release.yml makes the GitHub release from the tag. `doctor` joins the gates
-# because it is what reads devbin_version above against the VERSION the stamp
-# writes, so a constraint the new version outgrew fails the release commit
-# rather than the first consumer to run doctor.
+# product a release, made of the release commit over tests/shipped.paths. So a
+# cut pushes the workroom to `local` alone, a directory, and makes the
+# snapshot public itself: it pushes the snapshot to a candidate branch there,
+# reads CI green on it beside the local gates, and only then tags, moves the
+# public main to the snapshot and pushes the tag at it. `repo` names that
+# public repository, where release.yml makes the GitHub release from the tag.
+# `doctor` joins the gates because it is what reads devbin_version above
+# against the VERSION the stamp writes, so a constraint the new version
+# outgrew fails the release commit rather than the first consumer to run
+# doctor.
 #
-# `after:` publishes the Homebrew formula (ST0009). release publish runs it once
-# the tag is public, so the tap never names a tag brew cannot fetch, and a
+# `after:` publishes the Homebrew formula (ST0009). The cut runs it once the
+# tag is public, so the tap never names a tag brew cannot fetch, and a
 # failure is the after step's FAILED row with the release standing, never a
 # quiet 0: run `bin/devbin formula publish` by hand once the cause is fixed.
 release:
@@ -55,20 +56,28 @@ release:
     - check all
     - test all
     - doctor
-  # CI GREEN BEFORE ANYTHING IS PUBLIC (issue 0240): release publish asks
-  # ci-state about the snapshot on its candidate branch, whose push runs the
-  # whole matrix a tag runs, macOS and WSL included, and moves nothing public
-  # until it reads green. A run still going at ci.wait stops the publish with
-  # nothing public, and running it again reads CI again. ci.tag is off: the
-  # tag's run is of the same commit, so it is read after the publish rather than
-  # waited for. The query names the repository repo: names, which ci-state.bats
-  # holds equal.
+  # A REMOTE LEG (ST0011 WP-05): kovacs runs the gates above at the release
+  # commit beside the local ones, and its seal is copied back and read by the
+  # same reader. A cut that cannot reach it names it absent, records it as not
+  # run, and goes on without it.
+  legs:
+    - kovacs
+  # CI GREEN BEFORE ANYTHING IS PUBLIC (issue 0240): the cut asks the built-in
+  # ci-state, ci.query's default (ST0011 WP-02c), about the snapshot on its
+  # candidate branch, whose push runs the whole matrix, macOS and WSL included,
+  # and tags nothing until it reads green, asking first, once it has made the
+  # snapshot, whether that push starts tests.yml at all. A run still going at
+  # ci.wait stops the cut with nothing public, and running it again reads CI
+  # again. A tag starts no run of tests.yml (ST0011 WP-04), so nothing waits on
+  # one. The query reads release.repo below and tests.yml, the default
+  # workflow; its summary is the job the WSL leg's red does not reach, since
+  # that leg blocks nothing, and ci-state.bats holds the name to the job's in
+  # tests.yml.
   ci:
-    query: bin/.devbin/cmd/.lib/ci-state matthewsinclair/devbin
-    tag: false
+    summary: Test Summary
     # A candidate runs the whole matrix, macOS and WSL beside Ubuntu, which
-    # alone takes about 47 minutes, so the default 20m would stop every
-    # first publish before its verdict.
+    # alone takes about 47 minutes, and a macOS runner can wait in a queue
+    # before it starts, so the default 60m leaves too little room.
     wait: 90m
   object: ci
   repo: matthewsinclair/devbin
@@ -76,15 +85,16 @@ release:
     - bin/devbin formula publish
   # THE PUBLIC SNAPSHOT (issue 0239, ST0010): `release snapshot` makes one
   # commit of a tag's tracked files over tests/shipped.paths, the one list of
-  # what ships, which the workroom scan reads too, and release publish makes the
-  # same commit. Every snapshot is made under the identity below.
+  # what ships, which the workroom scan reads too, and the cut makes the same
+  # commit of its release commit. Every snapshot is made under the identity
+  # below.
   snapshot:
     list: tests/shipped.paths
     author: "Matthew Sinclair <hello@matthewsinclair.com>"
   # THE PUBLIC REPOSITORY, read over https, as brew reads it. A push to it goes
   # through the maintainer's own git config (url.<base>.pushInsteadOf), so no
   # host alias of one machine ships here. No remote of this workroom may name
-  # it: a cut and release publish each refuse one that does.
+  # it: a cut refuses one that does.
   publish:
     url: https://github.com/matthewsinclair/devbin.git
 

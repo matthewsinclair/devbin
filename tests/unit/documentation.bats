@@ -407,12 +407,12 @@ contract_exit_codes() {
   # builds only some of them is caught there too: a list under a live block, a
   # key under a live parent two levels down, a key under a commented parent, a
   # key after a commented sibling, and the example in the iex comment.
-  for want in release.remotes release.notes.run release.ci.query release.object_wait options.iex.commands; do
+  for want in release.remotes release.notes.run release.publish.url release.object_wait options.iex.commands; do
     grep -qxF "$want" <<<"$keys" || fail "the extractor did not read $want"
   done
   # A commented parent is named by its children's paths, never on its own.
-  if grep -qxF release.ci <<<"$keys"; then
-    fail "the extractor read the parent release.ci as a key"
+  if grep -qxF release.publish <<<"$keys"; then
+    fail "the extractor read the parent release.publish as a key"
   fi
 
   # THE RULES, ON A FIXTURE OF THEIR OWN AND COMPARED WHOLE, line numbers and

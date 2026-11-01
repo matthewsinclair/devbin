@@ -301,16 +301,16 @@ YAML
 @test "every release key validates at its documented default, each in a mode that reads it (0240)" {
   # A block for each mode that reads keys of its own, because the cross-key
   # rules refuse a key the declared mode never reads: notes.run needs
-  # notes.kind: command, object_wait object: ci, and the snapshot's and the
-  # publish keys snapshot.list (issue 0239). Between them the blocks name every
-  # row of the table, and the loop after them holds that to the table's own rows
-  # (ST0008 WP-08: repo was in none).
+  # notes.kind: command, object_wait object: ci, the snapshot's and the
+  # publish keys snapshot.list (issue 0239), and publish.candidate ci.query.
+  # Between them the blocks name every row of the table, and the loop after
+  # them holds that to the table's own rows (ST0008 WP-08: repo was in none).
   local block shape key all="" declared
   local -a blocks=(
-    '  tag: "v{version}"\n  remotes:\n    - origin\n  branch: main\n  notes:\n    kind: changelog\n  derived:\n    - cargo update --workspace\n  gates:\n    - check all\n    - test all\n  ci:\n    query: bin/ci-state\n    wait: 20m\n    tag: true\n    base: false\n  object: local\n  title: "{tag}"\n  repo: owner/name\n  after:\n    - bin/announce\n  verbs:\n    - cut\n    - status\n    - notes\n    - check\n    - attach\n  assets:\n    workflow: linux-release.yml\n    wait: 30m'
+    '  tag: "v{version}"\n  remotes:\n    - origin\n  branch: main\n  notes:\n    kind: changelog\n  derived:\n    - cargo update --workspace\n  gates:\n    - check all\n    - test all\n  legs:\n    - "-"\n  ci:\n    query: bin/devbin ci-state\n    workflow: tests.yml\n    summary: Test Summary\n    wait: 20m\n  object: local\n  title: "{tag}"\n  repo: owner/name\n  after:\n    - bin/announce\n  verbs:\n    - cut\n    - status\n    - notes\n    - check\n    - attach\n  assets:\n    workflow: linux-release.yml\n    wait: 30m'
     '  notes:\n    kind: command\n    run: bin/release-notes'
     '  object: ci\n  object_wait: 20m'
-    '  snapshot:\n    list: tests/shipped.paths\n    author: "A B <a@b>"\n    message: "{name} {version}"\n  publish:\n    url: https://example.com/o/n.git\n    branch: main\n    candidate: candidate/{tag}'
+    '  ci:\n    query: bin/devbin ci-state\n  snapshot:\n    list: tests/shipped.paths\n    author: "A B <a@b>"\n    message: "{name} {version}"\n  publish:\n    url: https://example.com/o/n.git\n    branch: main\n    candidate: candidate/{tag}'
   )
   for block in "${blocks[@]}"; do
     cfg_load_string <<YAML
@@ -354,9 +354,9 @@ YAML
   v="$(cfg_release_get notes.run)"
   [ -z "$v" ]
   v="$(cfg_release_get ci.query)"
-  [ -z "$v" ]
+  [ "$v" = "bin/devbin ci-state" ]
   v="$(cfg_release_get ci.wait)"
-  [ "$v" = 20m ]
+  [ "$v" = 60m ]
   v="$(cfg_release_get object)"
   [ "$v" = local ]
   v="$(cfg_release_get title)"
@@ -379,7 +379,7 @@ notes
 check
 attach
 snapshot
-publish" ]
+gates" ]
   v="$(cfg_release_get publish.candidate)"
   [ "$v" = "candidate/{tag}" ]
   v="$(cfg_release_get assets.workflow)"
@@ -502,7 +502,7 @@ YAML
 }
 
 # AT-1.1
-@test "every value refusal in the release schema names the key and the reason" {
+@test "every value refusal in the release schema names the key and the reason (WP03, ST0011 WP02b)" {
   # THE THREE DURATION ROWS ARE NOT REPEATS. "20 minutes" is refused as a word,
   # "20" holds the unit as required, and "1h20m" holds both anchors: without ^
   # the pattern finds 20m in it, and without $ it finds 1h.
@@ -541,13 +541,12 @@ YAML
   ci:\n    query: bin/ci\n    wait: 20 minutes|release.ci.wait: "20 minutes" must be a whole number of s, m or h
   ci:\n    query: bin/ci\n    wait: "20"|release.ci.wait: "20" must be a whole number of s, m or h
   ci:\n    query: bin/ci\n    wait: 1h20m|release.ci.wait: "1h20m" must be a whole number of s, m or h
-  ci:\n    wait: 10m|release.ci.wait is read only when release.ci.query is declared
   ci:\n    query: ""|release.ci.query: "" is empty
-  ci:\n    base: true|release.ci.base is read only when release.ci.query is declared
-  ci:\n    query: bin/ci\n    base: maybe|release.ci.base: "maybe" is not a yes or a no
-  ci:\n    tag: false|release.ci.tag is read only when release.ci.query is declared
-  ci:\n    query: bin/ci\n    tag: later|release.ci.tag: "later" is not a yes or a no
-  ci:\n    query: bin/ci\n    tag: false|release.ci.query is never asked: ci.tag is off and ci.base is off
+  ci:\n    query: bin/ci\n    base: true|unknown key: release.ci.base -- retired: a cut reads CI on its release commit, through its candidate, before the tag
+  ci:\n    query: bin/ci\n    tag: false|unknown key: release.ci.tag -- retired: a cut reads CI before the tag, on its candidate ref
+  ci:\n    query: bin/devbin ci-state\n    workflow: .github/workflows/ci.yml|release.ci.workflow: ".github/workflows/ci.yml" must be the file name of a workflow in .github/workflows
+  ci:\n    query: bin/ci\n    workflow: ci.yml|release.ci.workflow is read only by the built-in query, bin/devbin ci-state, and release.ci.query is "bin/ci"
+  ci:\n    query: bin/ci\n    summary: Test Summary|release.ci.summary is read only by the built-in query, bin/devbin ci-state, and release.ci.query is "bin/ci"
   gates:\n    - ""|release.gates.0: "" is empty
   gates:\n    - "-"\n    - test all|release.gates: "-" declares the list empty, so it must be the only item
   after:\n    - ""|release.after.0: "" is empty
@@ -556,6 +555,171 @@ YAML
   remotes:\n    - "-"|release.remotes: "-" would push the release to no remote
   remotes:\n    - "-"\n    - origin|release.remotes: "-" declares the list empty, so it must be the only item
 EOF
+}
+
+@test "release.legs takes host aliases alone: a value no alias can be is refused naming the key and the value, and an alias, or the list's '-', is accepted (ST0011 WP-05)" {
+  local v
+  for v in -n "near far" .hidden a/b "near;true"; do
+    cfg_load_string <<YAML
+project:
+  name: demo
+release:
+  legs:
+    - "$v"
+YAML
+    run cfg_validate
+    assert_failure
+    assert_output_contains "release.legs.0: \"$v\" is not a host alias"
+  done
+  for v in kovacs build-01.lan_2 -; do
+    cfg_load_string <<YAML
+project:
+  name: demo
+release:
+  legs:
+    - "$v"
+YAML
+    run cfg_validate
+    assert_success
+  done
+}
+
+@test "release.ci.wait is read wherever a leg other than the local gates can run: beside a host in release.legs, or beside the macOS stage, with the candidate opted out, and refused beside neither, naming them (ST0011 WP-05, WP-06)" {
+  # Each opts out of the candidate (ci.query: -), whose leg reads the wait too
+  # (ST0011 WP-02c), so the legs and the stage are what read it here.
+  cfg_load_string <<YAML
+project:
+  name: demo
+release:
+  legs:
+    - kovacs
+  ci:
+    query: "-"
+    wait: 60m
+YAML
+  run cfg_validate
+  assert_success
+  cfg_load_string <<YAML
+project:
+  name: demo
+commands:
+  macos:
+    enabled: true
+release:
+  ci:
+    query: "-"
+    wait: 60m
+YAML
+  run cfg_validate
+  assert_success
+  # The list's '-' names no host, so nothing here reads the wait.
+  cfg_load_string <<YAML
+project:
+  name: demo
+release:
+  legs:
+    - "-"
+  ci:
+    query: "-"
+    wait: 60m
+YAML
+  run cfg_validate
+  assert_failure
+  assert_output_contains "release.ci.wait is read only where a leg other than the local gates runs: a candidate, and release.ci.query is -, the opt-out; a host in release.legs; or the macOS stage (commands.macos.enabled)"
+}
+
+@test "release.ci.query reads the built-in when undeclared, so a block of ci keys alone is valid and a cut has a candidate; ci.query: - opts out, and the keys only a candidate reads are then refused, each naming the opt-out (ST0011 WP-02c)" {
+  local block want
+  cfg_load_string <<YAML
+project:
+  name: demo
+release:
+  ci:
+    workflow: ci.yml
+    summary: Test Summary
+    wait: 10m
+YAML
+  run cfg_validate
+  assert_success
+  [ "$(cfg_release_get ci.query)" = "bin/devbin ci-state" ] || fail "an undeclared ci.query does not read the built-in: $(cfg_release_get ci.query)"
+  cut_candidate_declared || fail "a cut with no ci.query declared has no candidate"
+  cfg_load_string <<YAML
+project:
+  name: demo
+release:
+  ci:
+    query: "-"
+YAML
+  run cfg_validate
+  assert_success
+  if cut_candidate_declared; then fail "ci.query: - left the cut a candidate"; fi
+  while IFS='|' read -r block want; do
+    [ -n "$block" ] || continue
+    cfg_load_string <<YAML
+project:
+  name: demo
+release:
+  ci:
+    query: "-"
+$(printf '%b' "$block")
+YAML
+    run cfg_validate
+    [ "$status" -ne 0 ] || fail "accepted beside ci.query: -: $block"
+    assert_output_contains "$want"
+  done <<'EOF'
+    workflow: ci.yml|release.ci.workflow is read only by the built-in query, bin/devbin ci-state, and release.ci.query is -, the opt-out, which reads no CI
+    summary: Test Summary|release.ci.summary is read only by the built-in query, bin/devbin ci-state, and release.ci.query is -, the opt-out, which reads no CI
+    wait: 10m|release.ci.wait is read only where a leg other than the local gates runs
+EOF
+}
+
+@test "release.tag, filled, must be a name git takes for a tag, and release.snapshot.message, filled as the snapshot carries it, must hold no skip marker in any case, each refused naming the key and the value (ST0011 WP-02c)" {
+  local block want
+  while IFS='|' read -r block want; do
+    [ -n "$block" ] || continue
+    cfg_load_string <<YAML
+project:
+  name: demo
+release:
+$(printf '%b' "$block")
+YAML
+    run cfg_validate
+    [ "$status" -ne 0 ] || fail "accepted: $block"
+    assert_output_contains "$want"
+  done <<'EOF'
+  tag: "v{version} [skip ci]"|release.tag: "v{version} [skip ci]" filled, is not a name git takes for a tag
+  tag: "v{version}..x"|release.tag: "v{version}..x" filled, is not a name git takes for a tag
+  tag: "-v{version}"|release.tag: "-v{version}" filled, is not a name git takes for a tag
+  snapshot:\n    list: x\n    author: "A B <a@b>"\n    message: "{name} {version} [Skip CI]"|release.snapshot.message, filled, is "demo 0.0.0 [Skip CI]", which holds [skip ci], a skip marker
+  snapshot:\n    list: x\n    author: "A B <a@b>"\n    message: "[NO CI] {name}"|release.snapshot.message, filled, is "[NO CI] demo", which holds [no ci], a skip marker
+EOF
+  # A template with no marker of its own whose {name} supplies one is refused,
+  # as the snapshot would carry it, filled.
+  cfg_load_string <<YAML
+project:
+  name: ci
+release:
+  snapshot:
+    list: x
+    author: "A B <a@b>"
+    message: "[skip {name}] {version}"
+YAML
+  run cfg_validate
+  [ "$status" -ne 0 ] || fail "accepted a message whose {name} fills in a skip marker"
+  assert_output_contains 'release.snapshot.message, filled, is "[skip ci] 0.0.0", which holds [skip ci], a skip marker'
+  # THE CONTROL: the default tag and message, and another tag a ref can carry.
+  cfg_load_string <<YAML
+project:
+  name: demo
+release:
+  tag: "release-{version}"
+  snapshot:
+    list: x
+    author: "A B <a@b>"
+    message: "{name} {version}"
+YAML
+  run cfg_validate
+  assert_success
 }
 
 # reference_values -- `<path><TAB><value>` for each key the reference config's
@@ -772,7 +936,7 @@ YAML
     assert_output_contains "$want"
     refute_output_contains "is not available here"
   done <<'EOF2'
-    - check\n    - atach|release.verbs.1: "atach" must be one of cut, status, notes, check, attach, snapshot, publish
+    - check\n    - atach|release.verbs.1: "atach" must be one of cut, status, notes, check, attach, snapshot, gates
     - "-"|release.verbs: "-" would offer no verb
 EOF2
 }
@@ -844,7 +1008,7 @@ YAML
     [ "$status" -ne 0 ] || fail "accepted: $block"
     assert_output_contains "$want"
   done <<'EOF2'
-  verbs:\n    - cut\n    - ship|release.verbs.1: "ship" must be one of cut, status, notes, check, attach, snapshot, publish
+  verbs:\n    - cut\n    - ship|release.verbs.1: "ship" must be one of cut, status, notes, check, attach, snapshot, gates
   verbs:\n    - "-"|release.verbs: "-" would offer no verb -- a release with none is commands.release.enabled: false
   verbs:\n    - "-"\n    - check|release.verbs: "-" declares the list empty, so it must be the only item
 EOF2
@@ -865,8 +1029,10 @@ YAML
 
 # AT-8.1
 @test "a release key no offered verb reads is refused as unread config, read from the table's readers column (0240)" {
-  # With the cut and status off, the keys only they read are refused; the ones
-  # check and attach read are not; remotes is read by attach only while repo is
+  # With the cut and status off, the keys only they read are refused, and the
+  # ones the table names check or attach as reading are not: ci.query among
+  # them, as the table holds it, though release check asks the trigger only
+  # where a cut is offered. remotes is read by attach only while repo is
   # undeclared, so with repo declared it is refused too.
   local block want
   while IFS='|' read -r block want; do
@@ -888,17 +1054,79 @@ YAML
       assert_output_contains "$want, and release.verbs offers check, attach"
     fi
   done <<'EOF2'
-  gates:\n    - check all|release.gates is read only by cut and status
+  gates:\n    - check all|release.gates is read only by cut, status and gates
   derived:\n    - x|release.derived is read only by cut
-  after:\n    - y|release.after is read only by cut, status and publish
-  ci:\n    query: q|release.ci.query is read only by cut, status and publish
-  title: t|release.title is read only by cut, status and publish
-  branch: main|release.branch is read only by cut, status, snapshot while release.publish.branch is not declared and publish while release.publish.branch is not declared
-  object: ci\n  object_wait: 5m|release.object_wait is read only by cut and publish
+  after:\n    - y|release.after is read only by cut and status
+  ci:\n    wait: 5m|release.ci.wait is read only by cut
+  ci:\n    query: q|
+  title: t|release.title is read only by cut and status
+  branch: main|release.branch is read only by cut, status and snapshot while release.publish.branch is not declared
+  object: ci\n  object_wait: 5m|release.object_wait is read only by cut
   repo: a/b\n  remotes:\n    - origin|release.remotes is read only by cut, status and attach while release.repo is not declared
   remotes:\n    - origin|
   tag: "{version}"\n  notes:\n    kind: releases\n  object: local\n  repo: a/b\n  assets:\n    workflow: x.yml\n    wait: 5m|
 EOF2
+}
+
+# ============================================================================
+# THE PUBLISHING CUT'S KEYS: release publish retired, its keys the cut's
+# ============================================================================
+
+@test "release.verbs naming publish, the verb a cut under release.publish.url replaced, is refused at validation, saying what replaced it (ST0011 WP02b-2)" {
+  cfg_load_string <<'YAML'
+project:
+  name: demo
+release:
+  verbs:
+    - cut
+    - publish
+YAML
+  run cfg_validate </dev/null
+  [ "$status" -ne 0 ] || fail "verbs: [cut, publish] was accepted: $output"
+  assert_output_contains 'release.verbs.1: "publish" must be one of '
+  assert_output_contains ' -- retired: a cut whose release.publish.url is declared makes its snapshot public itself, once every leg is green; leave it out'
+  ! grep -qxF publish <<<"$(cfg_release_verbs)" || fail "publish is still a verb of release: $(cfg_release_verbs)"
+}
+
+@test "a publishing block whose release.verbs offers the cut alone validates: the cut reads the snapshot's keys and every publish key (ST0011 WP02b-2)" {
+  cfg_load_string <<'YAML'
+project:
+  name: demo
+release:
+  verbs:
+    - cut
+  ci:
+    query: bin/devbin ci-state
+  snapshot:
+    list: tests/shipped.paths
+    author: "A B <a@b>"
+    message: "{name} {version}"
+  publish:
+    url: https://example.com/o/n.git
+    branch: main
+    candidate: candidate/{tag}
+YAML
+  run cfg_validate </dev/null
+  [ "$status" -eq 0 ] || fail "a publishing block offering the cut alone was refused: $output"
+}
+
+@test "release.publish.candidate under ci.query: - is refused under release.publish.url too: opted out, a cut has no candidate leg to read it (ST0011 WP02b-2, WP-02c)" {
+  cfg_load_string <<'YAML'
+project:
+  name: demo
+release:
+  ci:
+    query: "-"
+  snapshot:
+    list: tests/shipped.paths
+    author: "A B <a@b>"
+  publish:
+    url: https://example.com/o/n.git
+    candidate: rc/{tag}
+YAML
+  run cfg_validate </dev/null
+  [ "$status" -ne 0 ] || fail "publish.candidate under ci.query: - was accepted: $output"
+  assert_output_contains "release.publish.candidate is read only where a cut has a candidate, and release.ci.query is -, the opt-out"
 }
 
 # AT-8.1
@@ -980,7 +1208,9 @@ workflow_files() {
     ".github/workflows/continued.yml:5 runs gh release create"
   )
   for step in "${steps[@]}"; do assert_output_contains "WARNING: $step, and object is local"; done
-  refute_output_contains "tests.yml"
+  # The workflow by its path: tests.yml is also the default ci.workflow, which
+  # the declaration's table above the warnings prints by its name.
+  refute_output_contains ".github/workflows/tests.yml"
   n="$(workflow_files "$w")"
   assert_output_contains "release: read $n of $n workflow file(s) in .github/workflows: ${#steps[@]} release-writing step(s), named above"
 }

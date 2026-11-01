@@ -859,10 +859,13 @@ YAML
   # 3.2, which lib/helpers refuses at load (issue 0076). Before the floor
   # reached handlers this arm ran the handler on 3.2 without anyone knowing.
   ln -s "$BASH" "$NODIG/bash"
+  # Each name is linked once, where it is first found. The test is -L, not -e:
+  # -e follows the link, and a system's /usr/bin can hold a dangling one, which
+  # comes round again wherever /bin is /usr/bin, and ln -s then refuses it.
   for d in /usr/bin /bin; do
     for f in "$d"/*; do
       b="${f##*/}"
-      [ "$b" = dig ] || [ -e "$NODIG/$b" ] || ln -s "$f" "$NODIG/$b"
+      [ "$b" = dig ] || [ -L "$NODIG/$b" ] || ln -s "$f" "$NODIG/$b"
     done
   done
   run env -i PATH="$NODIG" HOME="$HOME" XDG_DATA_HOME="$XDG_DATA_HOME" DEVBIN_LIB="$DEVBIN_HOME/lib" \

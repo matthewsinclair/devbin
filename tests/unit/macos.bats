@@ -524,6 +524,41 @@ YAML
   [ -n "$(stage_of)" ] || fail "nothing staged: $output"
 }
 
+@test "app-sign builds the app and puts it into the artefact cache when the cache does not hold it at the release commit, and pulls it, running no macos.build, when it does (ST0011 WP-06)" {
+  local key
+  on_macos
+  apple_stubs
+  keychain_full
+  stub_cargo
+  export DEVBIN_CACHE_HOME="$DEVBIN_TEST_TMPDIR/cache"
+  proj="$(app_project "  build: ./mkapp")"
+  rm -rf "$proj/build/Products/Release/Demo.app"
+  printf '#!/usr/bin/env bash\nprintf "built\\n" >>"%s/built.calls"\n' "$DEVBIN_TEST_TMPDIR" >"$proj/mkapp"
+  declare -f make_app >>"$proj/mkapp"
+  printf 'make_app build/Products/Release\n' >>"$proj/mkapp"
+  chmod +x "$proj/mkapp"
+  # The app is the build: block's artefact `app`: its path is macos.app's.
+  printf '%s\n' 'build:' '  inputs:' '    - mkapp' '  artefacts:' '    app:' '      tool: cargo' \
+    '      path: build/Products/Release/Demo.app' >>"$proj/bin/.devbin/config.yaml"
+  git -C "$proj" add -A
+  git -C "$proj" -c user.name=t -c user.email=t@t commit -qm "the app, through the cache"
+  git -C "$proj" -c user.name=t -c user.email=t@t tag -f -a v1.0.0 -m "- first" >/dev/null
+  key="$(devbin_run "$proj" cache key app)" || fail "the arm cannot key app: $key"
+  run macos_in "$proj" app-sign
+  assert_success
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/built.calls")" = built ] || fail "the build did not run once with the cache empty: $output"
+  assert_output_contains "putting app into the artefact cache"
+  [ -d "$DEVBIN_CACHE_HOME/demo/app/$key" ] || fail "app-sign put nothing under $key: $output"
+  rm -f "$DEVBIN_TEST_TMPDIR/built.calls"
+  rm -rf "$proj/build/Products/Release/Demo.app"
+  run macos_in "$proj" app-sign
+  assert_success
+  assert_output_contains "pulled app $key"
+  assert_output_contains "pulled, so macos.build is not run"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/built.calls" ] || fail "macos.build ran though the cache held the app: $output"
+  [ -n "$(stage_of)" ] || fail "nothing staged: $output"
+}
+
 @test "a stage inside the project is refused before it is made, and nothing is signed" {
   on_macos
   apple_stubs
@@ -589,6 +624,238 @@ YAML
   assert_output_contains "with changes"
   [ ! -e "$DEVBIN_TEST_TMPDIR/built" ] || fail "a refused app-sign ran the build"
   [ "$(calls '^codesign')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+}
+
+# cut_untagged <proj> -- the release commit of 1.1.0 as a cut's stamp leaves it,
+# before its tag: VERSION 1.1.0 and its note dated, committed, with no tag
+# v1.1.0 yet; with --app, the app is built at 1.1.0 too. Prints its sha.
+cut_untagged() {
+  printf '1.1.0\n' >"$1/VERSION"
+  printf '# Changelog\n\n## [1.1.0] - 2026-02-01\n\n- second\n\n## [1.0.0] - 2026-01-01\n\n- first\n' >"$1/CHANGELOG.md"
+  [ "${2:-}" != --app ] || make_app "$1/build/Products/Release" com.example.demo 1.1.0
+  git -C "$1" -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -qam "release 1.1.0"
+  git -C "$1" rev-parse HEAD
+}
+
+# cut_tag <proj> -- v1.1.0 cut at HEAD and pushed, with its release object, as
+# the cut makes them after its legs are green.
+cut_tag() {
+  git -C "$1" -c user.name=t -c user.email=t@t tag -a v1.1.0 -m "- second" --cleanup=whitespace
+  git -C "$1" push -q origin v1.1.0
+  gh_object v1.1.0 v1.1.0 "- second"
+}
+
+# AT-3.4
+@test "app-sign signs at the release commit before its tag is cut, and records beside the stage the commit it signed at (WP06)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local release stage
+  proj="$(app_project)"
+  release="$(cut_untagged "$proj" --app)"
+  run macos_in "$proj" app-sign
+  assert_success
+  # Said, not assumed: an absent tag is what the untagged path stands on.
+  assert_output_contains "no tag v1.1.0 here: HEAD ${release:0:12} is taken as the release commit"
+  assert_output_contains "signed: "
+  [ "$(calls '^codesign .*--sign')" -gt 0 ] || fail "app-sign at the release commit signed nothing: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  stage="$(stage_of)"
+  [ -n "$stage" ] || fail "no stage was made"
+  [ "$(cat "${stage%/*}/commit")" = "$release" ] || fail "the stage records [$(cat "${stage%/*}/commit" 2>&1)], not the release commit $release"
+}
+
+# AT-3.4
+@test "publish ships only a copy signed at the tag's commit: one signed at the release commit and tagged elsewhere, and one with no record, are refused, uploading nothing (WP06)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local release tagged stage
+  proj="$(app_project)"
+  release="$(cut_untagged "$proj" --app)"
+  signed_and_stapled "$proj"
+  # The tag cut at a commit after the one signed.
+  git -C "$proj" -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -q --allow-empty -m "after the signing"
+  cut_tag "$proj"
+  tagged="$(git -C "$proj" rev-parse 'v1.1.0^{commit}')"
+  [ "$tagged" != "$release" ] || fail "the fixture tagged the commit it signed"
+  run macos_in "$proj" publish
+  assert_failure
+  assert_output_contains "the staged Demo.app was signed at ${release:0:12}, and v1.1.0 names ${tagged:0:12}: another commit's build -- nothing uploaded"
+  [ "$(gh_calls '^gh release upload')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+  # No record at all is no build anybody can name, never a pass.
+  stage="$(stage_of)"
+  rm "${stage%/*}/commit"
+  run macos_in "$proj" publish
+  assert_failure
+  assert_output_contains "the staged Demo.app carries no record of the commit it was signed at"
+  [ "$(gh_calls '^gh release upload')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+}
+
+# AT-3.4
+@test "a copy signed at the release commit before its tag ships once the tag is cut there, as a cut's macos leg leaves it (WP06)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  proj="$(app_project)"
+  cut_untagged "$proj" --app >/dev/null
+  signed_and_stapled "$proj"
+  cut_tag "$proj"
+  # Development moves on past the tag before publish: publish holds the copy to
+  # the tag's commit, never to HEAD, so it still ships.
+  git -C "$proj" -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -q --allow-empty -m "past the tag"
+  run macos_in "$proj" publish
+  assert_success
+  assert_output_contains "published: Demo.app.zip on release v1.1.0"
+  [ "$(gh_calls '^gh release upload .* v1.1.0 Demo.app.zip$')" -eq 1 ] ||
+    fail "the asset did not go to release v1.1.0: $(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+}
+
+# AT-3.4
+@test "before its tag is cut, a commit stamp is read against the release commit, HEAD, and one built off it is refused at app-sign (WP06)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local app release other
+  proj="$(app_project "$APART_YAML" 0.4.7)"
+  release="$(cut_untagged "$proj")"
+  app="$(product "$proj")"
+  stamp_app "$app" AppCommit "$release"
+  run macos_in "$proj" app-sign
+  assert_success
+  other="$(not_a_prefix_of "$release")"
+  stamp_app "$app" AppCommit "$other"
+  run macos_in "$proj" app-sign
+  assert_failure
+  assert_output_contains "its AppCommit is $other, and the release commit, HEAD until the tag v1.1.0 is cut, is ${release:0:12} -- it was built off another commit"
+}
+
+# AT-3.4
+@test "app-sign refuses a dirty tree at the release commit before its tag is cut, building and signing nothing (WP06)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  proj="$(app_project "  build: ./mkapp")"
+  printf '#!/bin/sh\n: >"%s/built"\n' "$DEVBIN_TEST_TMPDIR" >"$proj/mkapp"
+  chmod +x "$proj/mkapp"
+  git -C "$proj" add mkapp
+  cut_untagged "$proj" --app >/dev/null
+  printf 'x\n' >"$proj/dirt"
+  run macos_in "$proj" app-sign
+  assert_failure
+  assert_output_contains "the release commit of v1.1.0 until it is cut, has changes -- nothing built or signed"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/built" ] || fail "a refused app-sign ran the build"
+  [ "$(calls '^codesign')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  [ -z "$(stage_of)" ] || fail "a stage was made: $(stage_of)"
+}
+
+# AT-3.4
+@test "app-sign refuses a build that moved HEAD, removing the stage and recording nothing for publish (WP06)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local release moved
+  proj="$(app_project "  build: ./mkapp")"
+  printf '#!/bin/sh\ngit -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -q --allow-empty -m "moved by the build"\n' >"$proj/mkapp"
+  chmod +x "$proj/mkapp"
+  git -C "$proj" add mkapp
+  release="$(cut_untagged "$proj" --app)"
+  run macos_in "$proj" app-sign
+  assert_failure
+  moved="$(git -C "$proj" rev-parse HEAD)"
+  [ "$moved" != "$release" ] || fail "the fixture's build did not move HEAD"
+  assert_output_contains "HEAD moved while"
+  assert_output_contains "from ${release:0:12} to ${moved:0:12}"
+  [ -z "$(stage_of)" ] || fail "the stage of a moved HEAD's build was kept: $(stage_of)"
+}
+
+# AT-3.4
+@test "app-sign refuses a build that left the tree with changes, removing the stage and recording nothing for publish (WP06)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local release
+  proj="$(app_project "  build: ./mkapp")"
+  # A file the fixture's tree does not ignore (it ignores build/ and tmp/).
+  printf '#!/bin/sh\n: >left-by-the-build\n' >"$proj/mkapp"
+  chmod +x "$proj/mkapp"
+  git -C "$proj" add mkapp
+  release="$(cut_untagged "$proj" --app)"
+  run macos_in "$proj" app-sign
+  assert_failure
+  [ -e "$proj/left-by-the-build" ] || fail "the fixture's build did not run"
+  assert_output_contains "the build left"
+  assert_output_contains "is not ${release:0:12}'s build -- the stage is removed and nothing recorded"
+  [ -z "$(stage_of)" ] || fail "the stage of a build that changed the tree was kept: $(stage_of)"
+}
+
+# AT-3.4
+@test "app-sign stops on a repository git refuses to read, with git's own words, building and signing nothing (WP06)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  proj="$(app_project "  build: ./mkapp")"
+  printf '#!/bin/sh\n: >"%s/built"\n' "$DEVBIN_TEST_TMPDIR" >"$proj/mkapp"
+  chmod +x "$proj/mkapp"
+  git -C "$proj" add mkapp
+  cut_untagged "$proj" --app >/dev/null
+  require_git_refusal "$proj"
+  GIT_TEST_ASSUME_DIFFERENT_OWNER=1 run macos_in "$proj" app-sign
+  assert_failure
+  assert_output_contains "dubious ownership"
+  assert_output_contains "release: git cannot read this repository, so there is no release commit"
+  assert_output_contains "the release commit of v1.1.0 could not be read (above) -- nothing built or signed"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/built" ] || fail "a refused app-sign ran the build"
+  [ "$(calls '^codesign')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+}
+
+# AT-3.4
+@test "app-sign stops on a tag whose object the repository lacks, with git's own words, rather than signing HEAD as untagged (WP06)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local obj file
+  proj="$(app_project "  build: ./mkapp")"
+  printf '#!/bin/sh\n: >"%s/built"\n' "$DEVBIN_TEST_TMPDIR" >"$proj/mkapp"
+  chmod +x "$proj/mkapp"
+  git -C "$proj" add mkapp
+  git -C "$proj" -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -qm "the build script"
+  git -C "$proj" -c user.name=t -c user.email=t@t tag -f -a v1.0.0 -m "- first" >/dev/null
+  obj="$(git -C "$proj" rev-parse refs/tags/v1.0.0)"
+  [ "$(git -C "$proj" cat-file -t "$obj")" = tag ] || fail "the fixture's v1.0.0 is no annotated tag"
+  file="$proj/.git/objects/${obj:0:2}/${obj:2}"
+  [ -f "$file" ] || fail "the tag object $obj is not loose at $file"
+  # The ref stays and its object goes: the peel then fails with -q's quiet
+  # status 1, the one a reader would take for a tag not cut yet.
+  rm -f "$file"
+  run macos_in "$proj" app-sign
+  assert_failure
+  assert_output_contains "fatal: Needed a single revision"
+  assert_output_contains "release: the tag v1.0.0 exists, and git cannot read a commit it names, so the release commit is not known"
+  assert_output_contains "the release commit of v1.0.0 could not be read (above) -- nothing built or signed"
+  refute_output_contains "is taken as the release commit"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/built" ] || fail "app-sign ran the build at a tag it could not read"
+  [ "$(calls '^codesign')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+}
+
+# AT-3.4
+@test "app-sign reads the release commit and HEAD from the project's own repository, whatever GIT_DIR it inherits, and names the variable it cleared (WP06, ST0011 WP02)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local release other stage
+  other="$DEVBIN_TEST_TMPDIR/other"
+  git init -q -b main "$other"
+  git -C "$other" -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -q --allow-empty -m "another repository"
+  proj="$(app_project)"
+  release="$(cut_untagged "$proj" --app)"
+  [ "$(git -C "$other" rev-parse HEAD)" != "$release" ] || fail "the two repositories share a commit"
+  GIT_DIR="$other/.git" run macos_in "$proj" app-sign
+  assert_success
+  assert_output_contains "macos: GIT_DIR inherited and cleared: every git read and write here is in the repository at"
+  assert_output_contains "no tag v1.1.0 here: HEAD ${release:0:12} is taken as the release commit"
+  stage="$(stage_of)"
+  [ "$(cat "${stage%/*}/commit")" = "$release" ] ||
+    fail "the stage records [$(cat "${stage%/*}/commit" 2>&1)], not the project's release commit $release"
 }
 
 @test "a staged copy with another bundle id, or another version, is refused and removed, with nothing signed" {
@@ -694,12 +961,10 @@ product() { printf '%s\n' "$1/build/Products/Release/Demo.app"; }
 # tag_commit <proj> -- the commit v1.0.0 names.
 tag_commit() { git -C "$1" rev-parse 'v1.0.0^{commit}'; }
 
-# not_the_tag <proj> -- 16 hex characters that are no prefix of the tag's
-# commit: its own, with the first changed.
-not_the_tag() {
-  local t
-  t="$(tag_commit "$1")"
-  printf '%s%s\n' "$([ "${t:0:1}" = 0 ] && printf 1 || printf 0)" "${t:1:15}"
+# not_a_prefix_of <sha> -- 16 hex characters that are no prefix of <sha>: its
+# own first sixteen, with the first changed.
+not_a_prefix_of() {
+  printf '%s%s\n' "$([ "${1:0:1}" = 0 ] && printf 1 || printf 0)" "${1:1:15}"
 }
 
 # physical <dir> -- <dir> as Launch Services lists it.
@@ -735,13 +1000,13 @@ signed_and_stapled() {
   proj="$(app_project "$APART_YAML" 0.4.7)"
   local app bad tagged
   app="$(product "$proj")"
-  bad="$(not_the_tag "$proj")"
   tagged="$(tag_commit "$proj")"
+  bad="$(not_a_prefix_of "$tagged")"
   stamp_app "$app" AppCommit "$bad"
   run macos_in "$proj" app-sign
   assert_failure
   assert_output_contains "the staged Demo.app cannot ship with release v1.0.0 -- nothing signed"
-  assert_output_contains "its AppCommit is $bad, and the tag v1.0.0 names ${tagged:0:12} -- it was built off the tag"
+  assert_output_contains "its AppCommit is $bad, and the tag v1.0.0's commit is ${tagged:0:12} -- it was built off another commit"
   stamp_app "$app" AppCommit not-a-commit
   run macos_in "$proj" app-sign
   assert_failure
@@ -801,10 +1066,12 @@ signed_and_stapled() {
   refute_output_contains "is not the project's version file"
 }
 
-@test "with the tag gone from the tree, app-sign and publish refuse, naming it (0243)" {
+# AT-3.4
+@test "with the tag gone from the tree, publish refuses, naming it, and app-sign signs HEAD as the release commit, recording it for publish to hold to the tag (0243, WP06)" {
   on_macos
   apple_stubs
   keychain_full
+  local head stage
   proj="$(app_project "$APART_YAML" 0.4.7)"
   stamp_app "$(product "$proj")" AppCommit "$(tag_commit "$proj")"
   signed_and_stapled "$proj"
@@ -812,10 +1079,14 @@ signed_and_stapled() {
   run macos_in "$proj" publish
   assert_failure
   assert_output_contains "there is no tag v1.0.0 here"
-  assert_output_contains "nothing uploaded"
+  assert_output_contains "nothing uploaded; cut the release first (or fetch its tag)"
+  # With no tag, HEAD is the release commit (ST0011 WP-06): app-sign signs it
+  # and records it, and publish ships it only under a tag that names it.
+  head="$(git -C "$proj" rev-parse HEAD)"
   run macos_in "$proj" app-sign
-  assert_failure
-  assert_output_contains "there is no tag v1.0.0 here"
+  assert_success
+  stage="$(stage_of)"
+  [ "$(cat "${stage%/*}/commit")" = "$head" ] || fail "the stage records [$(cat "${stage%/*}/commit" 2>&1)], not HEAD $head"
 }
 
 @test "a declared kind stamp with another value is refused at app-sign, and at publish (0243)" {
@@ -828,7 +1099,7 @@ signed_and_stapled() {
   stamp_app "$app" AppKind debug
   run macos_in "$proj" app-sign
   assert_failure
-  assert_output_contains "its AppKind is debug, not release -- it was built off the tag v1.0.0 or from a dirty tree"
+  assert_output_contains "its AppKind is debug, not release -- it was built off the tag v1.0.0's commit or from a dirty tree"
   stamp_app "$app" AppKind release
   signed_and_stapled "$proj"
   stamp_app "$(stage_of)" AppKind debug

@@ -513,15 +513,16 @@ mkinstall() {
 
 @test "0079: one sha check and one direction reader, across lib/, bin/devbin and bin/.devbin/cmd" {
   # Every root a copy could hide in, as 0066's vocabulary test searches. A
-  # definition in either spelling, the charset test, and the ancestry question
-  # itself are each held to their one home.
+  # definition in either spelling, the charset test (a whole sha's regex too,
+  # since is_commit_sha's full form answers that, ST0011), and the ancestry
+  # question itself are each held to their one home.
   local f roots hits
   roots=("$DEVBIN_LIB_DIR" "$DEVBIN_HOME/bin/devbin" "$DEVBIN_HOME/bin/.devbin/cmd")
   for f in is_commit_sha source_direction commit_direction install_direction manifest_ancestry; do
     hits="$(grep -rlE "^(function +)?$f *(\(\))? *(\{|$)" "${roots[@]}" | sort -u)"
     [ "$hits" = "$DEVBIN_LIB_DIR/helpers" ] || fail "$f defined in: [${hits//$'\n'/ }]"
   done
-  hits="$(grep -rn -e '\[!0-9a-f\]' -e '\[\[:xdigit:\]\]' -e '\[0-9a-f\]{7' "${roots[@]}")"
+  hits="$(grep -rn -e '\[!0-9a-f\]' -e '\[\[:xdigit:\]\]' -e '\[0-9a-f\]{7' -e '\[0-9a-f\]{40' "${roots[@]}")"
   [ "$(printf '%s\n' "$hits" | grep -c .)" = 1 ] || fail "sha checks: $hits"
   case "$hits" in "$DEVBIN_LIB_DIR/helpers:"*) ;; *) fail "the sha check is not in lib/helpers: $hits" ;; esac
   hits="$(grep -rn 'merge-base --is-ancestor' "${roots[@]}" | grep -v '^[^:]*:[0-9]*: *#')"

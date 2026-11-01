@@ -723,7 +723,10 @@ $hits"
   # And keep_case_twin's mv lines (issue 0140) MOVE the one copy of a file devbin
   # renamed only in case, where rename_staged removes what it was renaming when
   # the rename fails: the case rename in one step, then the two steps through a
-  # mktemp name, the put-back beside the second on its line.
+  # mktemp name, the put-back beside the second on its line. And
+  # lib/release.legs's rename of a leg's exit status, inside the `bash -c` that
+  # runs a project's gates detached on a test host (ST0011 WP-05), renames the
+  # status it just wrote, beside the run, so a reader never takes a half of it.
   #
   # WHAT THIS ARM CANNOT SEE: an mv behind a variable, an alias or a function
   # of another name; an mv spelled so its text does not read mv, "m""v" or
@@ -737,14 +740,18 @@ $hits"
   # none can prompt today. A test that moves over a read-only
   # fixture would hang the suite the same way and this arm would not see it.
   local known
-  # The lines are compared as TEXT, so their `$1` and `$tmp` stay unexpanded.
+  # The lines are compared as TEXT, so their `$1` and `$tmp` stay unexpanded;
+  # release.legs's line holds single quotes, each closed, given as "'", and
+  # reopened.
   # shellcheck disable=SC2016
   known="$(printf '%s\t%s\n' \
+    lib/cmd/cache '  mv -f -- "$CACHE_TMP" "$entry" || refuse "the entry for $art $key could not be renamed into place under the cache root $root (above)"' \
     lib/helpers '  if ! mv -f "$1" "$file"; then' \
     lib/install '  mv -f "$tmp" "$dst" || {' \
     lib/install '  mv -f -- "$root/$rel" "$root/$to" 2>/dev/null || :' \
     lib/install '    if mv -f -- "$root/$rel" "$tmp"; then' \
-    lib/install '      mv -f -- "$tmp" "$root/$to" || mv -f -- "$tmp" "$root/$rel" || warn "could not put $rel back: it is at $tmp"')"
+    lib/install '      mv -f -- "$tmp" "$root/$to" || mv -f -- "$tmp" "$root/$rel" || warn "could not put $rel back: it is at $tmp"' \
+    lib/release.legs '  set -- bash -c '"'"'bin/devbin release gates; printf "%s\n" "$?" >"$1.rc.part" && mv -f "$1.rc.part" "$1.rc"'"'"' release-leg "$wt"')"
 
   local found
   found="$(scan_tree '(^|[^_[:alnum:]])mv([[:space:]]|$)' |
@@ -2386,4 +2393,60 @@ EOF2
   rc=0
   xdg_dir bogus >/dev/null || rc=$?
   [ "$rc" -eq 2 ] || fail "xdg_dir took a word that names no XDG directory: rc $rc"
+}
+
+# ---------------------------------------------------------------------------
+# ST0011 WP03: IS_COMMIT_SHA'S FULL FORM, THE ONE WHOLE-NAME CHECK
+#
+# The whole names are read off real repositories, one of each object format, so
+# no length is written here: a near miss is a whole name one character short or
+# one long, and the default form still takes the short one.
+
+@test "is_commit_sha full takes a whole object name alone, sha1 or sha256, and the default form is unchanged (ST0011 WP03)" {
+  local f w sha1 sha256
+  for f in sha1 sha256; do
+    git init -q --object-format="$f" "$DEVBIN_TEST_TMPDIR/$f"
+  done
+  sha1="$(git -C "$DEVBIN_TEST_TMPDIR/sha1" hash-object --stdin <<<x)"
+  sha256="$(git -C "$DEVBIN_TEST_TMPDIR/sha256" hash-object --stdin <<<x)"
+  # `! cmd` never trips errexit, so each refusal is asserted rather than negated.
+  for w in "$sha1" "$sha256"; do
+    is_commit_sha "$w" full || fail "the whole name $w was refused"
+  done
+  for w in "${sha1%?}" "${sha256%?}" "${sha1}0" "${sha256}0" "${sha1^^}" ""; do
+    if is_commit_sha "$w" full; then fail "'$w' was taken as a whole name"; fi
+  done
+  is_commit_sha "${sha1%?}" || fail "the default form refused ${sha1%?}"
+  # A form it does not know stops the caller rather than answering, whatever
+  # the word: an empty one too, which the charset test would refuse first if
+  # the form were read second. In a shell of its own, as the die arm runs, so a
+  # stop and an answer read differently.
+  run bash -c "set -euo pipefail
+    . '$DEVBIN_LIB_DIR/helpers'
+    is_commit_sha '' whole || echo answered"
+  assert_exit_code 1
+  assert_output_contains "is_commit_sha: no form 'whole'"
+  refute_output_contains "answered"
+}
+
+@test "is_branch_name and is_tag_name pass back git's own word on a ref name, and platform_word_of maps an OS name to its platform word, the one map platform_word reads through (ST0011 WP-02c)" {
+  local w
+  # `! cmd` never trips errexit, so each refusal is asserted rather than negated.
+  for w in main candidate/v1.0.1 release-1.2; do
+    is_branch_name "$w" || fail "the branch name $w was refused"
+    is_tag_name "$w" || fail "the tag name $w was refused"
+  done
+  for w in "two words" "a..b" "x[skip ci]" "trailing/" "a.lock"; do
+    if is_branch_name "$w"; then fail "'$w' was taken as a branch name"; fi
+    if is_tag_name "$w"; then fail "'$w' was taken as a tag name"; fi
+  done
+  # A name that opens with a dash, which check-ref-format takes as a ref, is one
+  # git tag reads as an option.
+  if is_tag_name -v1.0.1; then fail "'-v1.0.1' was taken as a tag name"; fi
+  [ "$(platform_word_of Darwin)" = macos ] || fail "Darwin did not map to macos"
+  [ "$(platform_word_of Linux)" = linux ] || fail "Linux did not map to linux"
+  if platform_word_of FreeBSD >/dev/null; then fail "an OS with no word answered one"; fi
+  # platform_word reads this host's OS name through the same map.
+  [ "$(platform_word)" = "$(platform_word_of "$(uname -s)")" ] ||
+    fail "platform_word and platform_word_of disagree about this host"
 }

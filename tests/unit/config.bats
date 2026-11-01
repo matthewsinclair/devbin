@@ -515,6 +515,53 @@ YAML
   assert_output_contains "unknown key: commands.test.options.mix.group"
 }
 
+# AT-6.2
+@test "validation refuses a platforms: value that is not a platform word, naming the key and the value, accepts the words, and reads a single word not written as a list as an unknown key (ST0011 WP-17, AC-6.2)" {
+  local w yaml words=()
+  read -r -a words <<<"$_DEVBIN_PLATFORM_WORDS"
+  [ "${#words[@]}" -gt 0 ] || fail "lib/helpers states no platform words"
+  # Not piped: parse loads a shell variable, which a pipeline's subshell drops.
+  yaml="$(printf '%s\n' 'project:' '  name: myapp' 'commands:' '  test:' '    options:' '      app:' '        platforms:'
+    for w in "${words[@]}"; do printf '          - %s\n' "$w"; done)"
+  parse <<<"$yaml"
+  run cfg_validate
+  assert_success
+  parse <<'YAML'
+project:
+  name: myapp
+commands:
+  test:
+    options:
+      app:
+        platforms:
+          - macos
+          - windows
+YAML
+  run cfg_validate
+  assert_failure
+  assert_output_contains "commands.test.options.app.platforms.1: \"windows\" is not a platform word -- use one of: $_DEVBIN_PLATFORM_WORDS"
+  # Every word in one item, spaced, is none of them: read as a platform, it
+  # would hold the option back on every host.
+  [ "${#words[@]}" -gt 1 ] || fail "lib/helpers states one platform word, so no item can hold two"
+  yaml="$(printf '%s\n' 'project:' '  name: myapp' 'commands:' '  test:' '    options:' '      app:' '        platforms:' "          - ${words[*]}")"
+  parse <<<"$yaml"
+  run cfg_validate
+  assert_failure
+  assert_output_contains "commands.test.options.app.platforms.0: \"${words[*]}\" is not a platform word"
+  parse <<'YAML'
+project:
+  name: myapp
+commands:
+  test:
+    options:
+      app:
+        platforms: macos
+YAML
+  run cfg_validate
+  assert_failure
+  assert_output_contains "unknown key: commands.test.options.app.platforms"
+}
+
 @test "validation requires sequence indices to be numeric" {
   parse <<'YAML'
 project:

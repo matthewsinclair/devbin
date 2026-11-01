@@ -26,12 +26,20 @@ setup() {
 }
 teardown() { devbin_teardown; }
 
-# attach_project [wait] [workflow] -- a project whose release.assets.workflow is
-# <workflow> (default linux-release.yml), waiting <wait> (default 5s), with
-# .github/workflows/linux-release.yml committed, its v1.0.0 tagged (annotated)
-# and pushed, and a release object for it.
+# attach_project [wait] [workflow] [release-yaml] -- a project whose
+# release.assets.workflow is <workflow> (default linux-release.yml), waiting
+# <wait> (default 5s), <release-yaml> as further release: lines when given,
+# with .github/workflows/linux-release.yml committed, its v1.0.0 tagged
+# (annotated) and pushed, and a release object for it. Its release: lines go
+# through no_candidate_body, as every release fixture's do, so a project whose
+# <release-yaml> declares no ci: opts out of the candidate, and one that
+# declares a ci: block keeps its own.
 attach_project() {
-  local proj
+  local proj body
+  body="$(no_candidate_body "  assets:
+    workflow: ${2:-linux-release.yml}
+    wait: ${1:-5s}${3:+
+$3}")"
   proj="$(mkproj demo <<YAML
 project:
   name: demo
@@ -39,9 +47,7 @@ commands:
   release:
     enabled: true
 release:
-  assets:
-    workflow: ${2:-linux-release.yml}
-    wait: ${1:-5s}
+$body
 YAML
   )"
   with_dated_note "$proj"
@@ -159,6 +165,80 @@ run_json() {
   [ "$(gh_calls '^gh run download --repo t/demo 101 ')" -eq 1 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
   [ "$(gh_calls '^gh run download')" -eq 1 ] || fail "another run was downloaded: $(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
   [ "$(gh_calls '^gh workflow')" -eq 0 ] || fail "the attach dispatched a run"
+}
+
+# AT-3.8
+@test "release attach reads the run CI made on the candidate's branch at the release commit: the earliest success there or at the tag ships, and a run of that commit on main never does (ST0011 WP07)" {
+  proj="$(attach_project 5s linux-release.yml "$(ci_query_decl 0s)")"
+  sha="$(tag_commit "$proj")"
+  # The candidate's run, on candidate/v1.0.0 at the release commit.
+  gh_run 101 "$sha" candidate/v1.0.0 completed success 2026-10-22T20:47:40Z
+  gh_artifact 101 linux-x86 demo-x86.tar.gz "x86 from the candidate"
+  # A later success at the tag, and an earlier one on main at the same commit:
+  # neither ships.
+  gh_run 102 "$sha" v1.0.0 completed success 2026-10-22T21:06:43Z
+  gh_artifact 102 linux-x86 demo-x86.tar.gz "x86 from the tag"
+  gh_run 100 "$sha" main completed success 2026-10-22T20:39:10Z
+  gh_artifact 100 linux-x86 demo-x86.tar.gz "x86 from main"
+  run release_in "$proj" attach v1.0.0
+  assert_success
+  assert_output_matches 'run +already +run 101, the earliest successful linux-release\.yml run on candidate/v1\.0\.0'
+  [ "$(asset v1.0.0 demo-x86.tar.gz)" = "x86 from the candidate" ] || fail "demo-x86.tar.gz is not the candidate run's: $(asset v1.0.0 demo-x86.tar.gz)"
+  [ "$(gh_calls "^gh run list .*--commit $sha")" -ge 1 ] || fail "the run list was not asked by the release commit: $(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+}
+
+@test "a green run of the release commit on main is never the attach's: with none on the candidate's branch or at the tag, the attach waits out assets.wait and uploads nothing (ST0011 WP07)" {
+  proj="$(attach_project 2s linux-release.yml "$(ci_query_decl 0s)")"
+  sha="$(tag_commit "$proj")"
+  gh_run 100 "$sha" main completed success 2026-10-22T20:39:10Z
+  gh_artifact 100 linux-x86 demo-x86.tar.gz "x86 from main"
+  run release_in "$proj" attach v1.0.0
+  assert_failure
+  assert_output_matches 'run +FAILED +no successful run within 2s \(assets\.wait\): pending, no run of linux-release\.yml on candidate/v1\.0\.0 or at v1\.0\.0'
+  [ -z "$(uploads)" ] || fail "something was uploaded: $(uploads)"
+}
+
+@test "with a candidate in effect, a success at the tag earlier than any on the candidate's branch is the one that ships (ST0011 WP07)" {
+  proj="$(attach_project 5s linux-release.yml "$(ci_query_decl 0s)")"
+  sha="$(tag_commit "$proj")"
+  gh_run 101 "$sha" v1.0.0 completed success 2026-10-22T20:39:10Z
+  gh_artifact 101 linux-x86 demo-x86.tar.gz "x86 from the tag"
+  gh_run 102 "$sha" candidate/v1.0.0 completed success 2026-10-22T20:47:40Z
+  gh_artifact 102 linux-x86 demo-x86.tar.gz "x86 from the candidate"
+  run release_in "$proj" attach v1.0.0
+  assert_success
+  assert_output_matches 'run +already +run 101, the earliest successful linux-release\.yml run at v1\.0\.0'
+  [ "$(asset v1.0.0 demo-x86.tar.gz)" = "x86 from the tag" ] || fail "demo-x86.tar.gz is not the tag run's: $(asset v1.0.0 demo-x86.tar.gz)"
+}
+
+@test "release attach under release.publish.url reads the run on the commit the public tag names, the release commit's snapshot, never the run on the workroom's commit (ST0011 WP07)" {
+  local pub="$DEVBIN_TEST_TMPDIR/public.git" other="$DEVBIN_TEST_TMPDIR/other" snap
+  git init -q --bare -b main "$pub"
+  # release.publish.url is read only where the snapshot's keys are declared;
+  # the attach makes no snapshot, so they are never used.
+  proj="$(attach_project 5s linux-release.yml "  repo: t/public
+  snapshot:
+    list: shipped.paths
+    author: \"Snap Shot <snap@example.com>\"
+  publish:
+    url: $pub")"
+  sha="$(tag_commit "$proj")"
+  # The public tag, at a commit of its own, as a publishing cut tags its snapshot.
+  git init -q -b main "$other"
+  git -C "$other" -c user.name=o -c user.email=o@o -c maintenance.auto=false commit -q --allow-empty -m snapshot
+  snap="$(git -C "$other" rev-parse HEAD)"
+  git -C "$other" push -q "$pub" "$snap:refs/tags/v1.0.0"
+  gh_run 101 "$snap" v1.0.0 completed success 2026-10-22T20:47:40Z
+  gh_artifact 101 linux-x86 demo-x86.tar.gz "x86 from the snapshot"
+  # An earlier run at the tag on the workroom's commit, which never ships here.
+  gh_run 100 "$sha" v1.0.0 completed success 2026-10-22T20:39:10Z
+  gh_artifact 100 linux-x86 demo-x86.tar.gz "x86 from the workroom"
+  run release_in "$proj" attach v1.0.0
+  assert_success
+  assert_output_matches "run +already +run 101, the earliest successful linux-release\\.yml run at v1\\.0\\.0 \\(${snap:0:12}\\)"
+  [ "$(asset v1.0.0 demo-x86.tar.gz)" = "x86 from the snapshot" ] || fail "demo-x86.tar.gz is not the snapshot run's: $(asset v1.0.0 demo-x86.tar.gz)"
+  # Asked of the public repository release.repo names, by the snapshot's commit.
+  [ "$(gh_calls "^gh run list --repo t/public .*--commit $snap")" -ge 1 ] || fail "the run list did not ask t/public by the snapshot: $(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
 }
 
 # calls_since <n> <pattern> -- how many recorded gh calls after the first <n>
@@ -433,7 +513,7 @@ calls_since() {
   local limit
   limit="$(awk '/^gh run list / { for (i = 1; i < NF; i++) if ($i == "--limit") { print $(i + 1); exit } }' "$DEVBIN_TEST_TMPDIR/gh.calls")"
   [ -n "$limit" ] || fail "the run list was asked with no --limit: $(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
-  assert_output_matches "run +FAILED +gh lists $limit runs of linux-release\\.yml at v1\\.0\\.0, as many as it was asked for, so the earliest cannot be told"
+  assert_output_matches "run +FAILED +gh lists $limit runs of linux-release\\.yml on ${sha:0:12}, as many as it was asked for, so the earliest cannot be told"
 }
 
 # AT-8.2
@@ -443,7 +523,7 @@ calls_since() {
   : >"$DEVBIN_TEST_TMPDIR/gh.expired.101.linux-arm"
   run release_in "$proj" attach v1.0.0
   assert_failure
-  assert_output_matches 'download +FAILED +run 101, the earliest successful run at v1\.0\.0, has expired artifacts \(linux-arm\), and the attach ships that run.s files alone -- a rerun of it \(gh run rerun 101\) is the one way that might give them back, and whether it does is not measured'
+  assert_output_matches 'download +FAILED +run 101, the earliest successful run, has expired artifacts \(linux-arm\), and the attach ships that run.s files alone -- a rerun of it \(gh run rerun 101\) is the one way that might give them back, and whether it does is not measured'
   # A run dispatched now is never the earliest, so it is not offered.
   refute_output_contains "gh workflow run"
   [ "$(gh_calls '^gh run download')" -eq 0 ] || fail "an expired run was downloaded"
@@ -679,17 +759,18 @@ SH
   chmod +x "$hooks/post-receive"
 }
 
-# assets_cut_project [wait] [workflow] -- cut_project with
+# assets_cut_project [wait] [workflow] [release-yaml] -- cut_project with
 # release.assets.workflow declared as <workflow> (default linux-release.yml),
-# waiting <wait> (default 30s), and .github/workflows/linux-release.yml
-# committed and pushed.
+# waiting <wait> (default 30s), <release-yaml> as further release: lines when
+# given, and .github/workflows/linux-release.yml committed and pushed.
 assets_cut_project() {
   local proj
   proj="$(cut_project "  gates:
     - probe
   assets:
     workflow: ${2:-linux-release.yml}
-    wait: ${1:-30s}")"
+    wait: ${1:-30s}${3:+
+$3}")"
   mkdir -p "$proj/.github/workflows"
   printf 'on: push\n' >"$proj/.github/workflows/linux-release.yml"
   git -C "$proj" add .github/workflows/linux-release.yml
@@ -782,6 +863,23 @@ assets_cut_project() {
   assert_state object FAILED
   assert_output_contains "made the release object for v1.0.1, uploaded $(assets_held v1.0.1) asset(s) to the release object for v1.0.1."
   [ ! -e "$DEVBIN_TEST_TMPDIR/gh.assets/v1.0.1/SHA256SUMS" ] || fail "SHA256SUMS was written"
+}
+
+@test "an attach whose upload fails ends the cut red: exit 1, its RELEASE seal closed red, its verdict line naming it, and no after: command run (0297, ST0011 WP02b-2)" {
+  local seal
+  proj="$(assets_cut_project 30s linux-release.yml "  after:
+    - touch $DEVBIN_TEST_TMPDIR/after.ran")"
+  ci_builds_tag v1.0.1 301
+  gh_artifact 301 linux-x86 demo-x86.tar.gz "x86 for 1.0.1"
+  : >"$DEVBIN_TEST_TMPDIR/gh.fail.upload"
+  run release_in "$proj" v1.0.1 --yes
+  [ "$status" -eq 1 ] || fail "want exit 1, got $status: $output"
+  # Stopped by the attach's upload, at the object step, and by nothing earlier.
+  assert_state object FAILED
+  [[ "$(row_of object)" == *"the attach stopped at upload"* ]] || fail "the object row: $(row_of object)"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/after.ran" ] || fail "an after: command ran after the attach failed: $output"
+  seal="$(release_seal "$proj")" || fail "$output"
+  assert_release_seal "$seal" failed "$output"
 }
 
 # ============================================================================

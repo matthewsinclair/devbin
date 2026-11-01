@@ -634,7 +634,7 @@ fx_publishes() {
   assert_output_contains "revision: \"$commit\""
   [ "$(git -C "$TAP" log -1 --format=%s main)" = "devbin 0.0.10" ] ||
     fail "the tap's commit is not 'devbin 0.0.10': $(git -C "$TAP" log -1 --format=%s main)"
-  [ "$(git -C "$TAP" rev-parse main^)" = "$seed" ] && [ "$(git -C "$TAP" rev-list --count "$seed..main")" = 1 ] ||
+  [ "$(git -C "$TAP" rev-parse main^)" = "$seed" ] ||
     fail "the tap's main does not hold exactly the seed and the formula"
   [ "$(git -C "$FX" rev-parse HEAD)" = "$head" ] || fail "publish moved the checkout's HEAD"
   [ -z "$(git -C "$FX" status --porcelain)" ] || fail "publish changed the checkout: $(git -C "$FX" status --porcelain)"
@@ -908,7 +908,7 @@ $(cat "$keg/libexec/.tool-install")"
   assert_success
   assert_output_contains "tool v1.2.4"
   assert_output_contains "(Formula/tool.rb Casks/tool-app.rb)"
-  [ "$(git -C "$TAP" rev-list --count "$seed..main")" = 1 ] || fail "the tap's main does not hold one new commit"
+  [ "$(git -C "$TAP" rev-parse main^)" = "$seed" ] || fail "the tap's main is not one commit on the seed"
   [ "$(git -C "$TAP" log -1 --format=%s main)" = "tool 1.2.4" ] ||
     fail "the tap's commit is not 'tool 1.2.4': $(git -C "$TAP" log -1 --format=%s main)"
   run git -C "$TAP" show main:Casks/tool-app.rb
@@ -917,6 +917,71 @@ $(cat "$keg/libexec/.tool-install")"
   run git -C "$TAP" show main:Formula/tool.rb
   assert_success
   assert_output_contains "  sha256 \"$SHA_MAC\""
+  [ -z "$(tmp_left)" ] || fail "publish left its clone behind: $(tmp_left)"
+}
+
+# AT-3.9
+@test "assets publish takes the cut's yes when DEVBIN_RELEASE_CONFIRMED names the tag: the formula and the cask go to the tap in one commit, with no question, and it says so (ST0011 WP08)" {
+  local seed
+  assets_checkout
+  formula_tap
+  seed="$(git -C "$TAP" rev-parse main)"
+  DEVBIN_RELEASE_CONFIRMED=v1.2.4 run formula publish --tap "$TAP"
+  assert_success
+  assert_output_contains "formula: confirmed at the cut of v1.2.4, so it is pushed without a second question"
+  assert_output_contains "(Formula/tool.rb Casks/tool-app.rb)"
+  [ "$(git -C "$TAP" rev-parse main^)" = "$seed" ] || fail "the tap's main is not one commit on the seed"
+  [ "$(git -C "$TAP" log -1 --format=%s main)" = "tool 1.2.4" ] ||
+    fail "the tap's commit is not 'tool 1.2.4': $(git -C "$TAP" log -1 --format=%s main)"
+  run git -C "$TAP" show main:Casks/tool-app.rb
+  assert_success
+  assert_output_contains "  sha256 \"$SHA_PKG\""
+  run git -C "$TAP" show main:Formula/tool.rb
+  assert_success
+  assert_output_contains "  sha256 \"$SHA_MAC\""
+  [ -z "$(tmp_left)" ] || fail "publish left its clone behind: $(tmp_left)"
+}
+
+# --- the release repository is the cut's (0296) ------------------------------
+
+# assets_remotes -- $FX as assets_checkout makes it, its config declaring no
+# release.repo and no formula.repo, and two remotes naming two repositories:
+# origin, at oo/tool, and up, at ff/tool, which release.remotes declares first.
+# The cut and ci-state read ff/tool; so must the formula. No url is fetched.
+assets_remotes() {
+  assets_checkout
+  printf '%s\n' 'project:' '  name: tool' 'release:' '  remotes:' '    - up' 'formula:' '  mode: assets' \
+    '  cask: packaging/homebrew/tool-app.rb' '  assets:' '    - tool-aarch64-apple-darwin' \
+    '    - "tool-{version}-aarch64-linux.tar.gz"' '    - "Tool-{version}.pkg"' '  bin:' '    - bin/tool' \
+    >"$FX/bin/.devbin/config.yaml"
+  git -C "$FX" remote add origin https://github.com/oo/tool.git
+  git -C "$FX" remote add up https://github.com/ff/tool.git
+}
+
+@test "with remotes: declared and no release.repo or formula.repo, assets render reads the sums from the first declared remote's repository, never origin's (0296, ST0011 WP08)" {
+  assets_remotes
+  run formula render v1.2.4 "$DEVBIN_TEST_TMPDIR/tool.rb" "$DEVBIN_TEST_TMPDIR/tool-app.rb"
+  assert_success
+  assert_file_contains "$DEVBIN_TEST_TMPDIR/gh.calls" "gh release download --repo ff/tool v1.2.4 --pattern SHA256SUMS --dir"
+  refute_file_contains "$DEVBIN_TEST_TMPDIR/gh.calls" "oo/tool"
+}
+
+@test "with remotes: declared and no release.repo or formula.tap, publish pushes to homebrew-<name> under the first declared remote's owner, never origin's (0296, ST0011 WP08)" {
+  local seed
+  assets_remotes
+  formula_tap
+  seed="$(git -C "$TAP" rev-parse main)"
+  # The default tap's url is sent to the bare tap by insteadOf; any other url
+  # reaches ssh, which GIT_SSH_COMMAND=false refuses at once.
+  printf '[user]\n\tname = t\n\temail = t@t\n[url "%s"]\n\tinsteadOf = ssh://git@github.com/ff/homebrew-tool.git\n' \
+    "$TAP" >"$DEVBIN_TEST_TMPDIR/tap.gitconfig"
+  GIT_CONFIG_GLOBAL="$DEVBIN_TEST_TMPDIR/tap.gitconfig" GIT_SSH_COMMAND=false DEVBIN_RELEASE_CONFIRMED=v1.2.4 \
+    run formula publish
+  assert_success
+  assert_output_contains "is ready to push to the tap at ssh://git@github.com/ff/homebrew-tool.git"
+  refute_output_contains "github.com/oo/"
+  [ "$(git -C "$TAP" rev-parse main^)" = "$seed" ] || fail "the tap's main is not one commit on the seed"
+  assert_file_contains "$DEVBIN_TEST_TMPDIR/gh.calls" "gh release download --repo ff/tool v1.2.4"
   [ -z "$(tmp_left)" ] || fail "publish left its clone behind: $(tmp_left)"
 }
 

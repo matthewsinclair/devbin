@@ -631,6 +631,8 @@ content|3|resolves, but nothing here runs it
 publish|3|resolves, but nothing here runs it
 macos|1|macos: unknown subcommand 'all'
 formula|1|formula has no verb 'all'
+ci-state|1|'all' is not a full commit sha
+cache|7|'all' is not a cache verb
 which|3|resolves, but nothing here runs it
 fullcycle|1|fullcycle: unknown argument 'all'
 dormancy|1|dormancy: unknown argument 'all'

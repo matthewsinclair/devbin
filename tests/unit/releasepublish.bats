@@ -1,15 +1,17 @@
 #!/usr/bin/env bats
-# releasepublish.bats - a release made public as its snapshot, through CI on
-# that very commit (issue 0240, ST0010)
+# releasepublish.bats - a release made public as its snapshot, by its cut,
+# through CI on that very commit (issue 0240, ST0010, ST0011 WP02b-2)
 #
-# A project that declares release.publish.url cuts to release.remotes and stops
-# after the push step, and `release publish <v>` makes the tag's snapshot
-# public: pushed to candidate/<tag>, then, once ci.query reads green on its
-# sha, the publish branch fast-forwarded and a lightweight tag pushed, each
-# read back, and the candidate deleted. $PUB, an empty bare repository, stands
-# in for the public repository, and the fixture's ci.query (ci_query_decl)
-# answers what each arm says. Nothing here reaches a network: a url naming a
-# GitHub repository is refused before it is read.
+# A project that declares release.publish.url publishes a snapshot, never its
+# workroom, and its cut does it: the legs step makes S, the release commit's
+# snapshot, and pushes it to candidate/<tag> at the url, where ci.query reads
+# it by that ref; once every leg is green the push step pushes the release to
+# release.remotes, then fast-forwards the publish branch at the url to S and
+# tags S, lightweight, each read back, and the candidate is deleted. $PUB, an
+# empty bare repository, stands in for the public repository, and the
+# fixture's ci.query (ci_query_decl) answers what each arm says. Nothing here
+# reaches a network: a url naming a GitHub repository is refused before it is
+# read.
 
 load "../lib/test_helper"
 load "../lib/release_fixtures"
@@ -17,6 +19,9 @@ load "../lib/release_fixtures"
 setup() {
   devbin_setup
   PUB="$DEVBIN_TEST_TMPDIR/public.git"
+  # The legs loop's rest, so a cut waiting on its local gates reads again
+  # within a second of their end.
+  export DEVBIN_RELEASE_POLL_SECONDS=1
 }
 teardown() { devbin_teardown; }
 
@@ -54,11 +59,16 @@ publish_project() {
   printf '%s\n' "$proj"
 }
 
-# cut_v101 <proj> -- the cut of v1.0.1, with --yes, which must succeed.
-cut_v101() {
-  run release_in "$1" v1.0.1 --yes
-  assert_success
-}
+# cut_v101 <proj> -- `run` the cut of v1.0.1, given --yes.
+cut_v101() { run release_in "$1" v1.0.1 --yes; }
+
+# ci_none_then <line> -- the query answers none on its first ask, as CI does
+# for a commit it has no run of before the candidate is pushed, then <line> on
+# every ask after it.
+ci_none_then() { ci_answers "$(printf 'none\tno run yet')" "$1"; }
+
+# asked_shas -- each sha the query was asked about, in order, one per line.
+asked_shas() { awk '{ print $1 }' "$DEVBIN_TEST_TMPDIR/ci.calls"; }
 
 # pub_at <ref> -- the sha $PUB's <ref> is at, or nothing when it has no such ref.
 pub_at() { git -C "$PUB" rev-parse -q --verify "$1" 2>/dev/null || true; }
@@ -86,18 +96,28 @@ no_publish_yet() {
   [ -z "$(pub_at refs/tags/v1.0.1)" ] || fail "the public v1.0.1 was pushed: $(pub_at refs/tags/v1.0.1)"
 }
 
+# snapshot_of_head <proj> -- the sha of the snapshot release snapshot makes of
+# <proj>'s HEAD, the release commit a cut made, in a new directory at
+# $DEVBIN_TEST_TMPDIR/look: the commit the cut's own snapshot is, made on the
+# same public tip.
+snapshot_of_head() {
+  local out
+  out="$(PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" devbin_run "$1" release snapshot --commit HEAD "$DEVBIN_TEST_TMPDIR/look")" ||
+    fail "release snapshot of HEAD failed: $out"
+  sed -n 's/^  commit  //p' <<<"$out"
+}
+
 # ============================================================================
 # THE CUT, WITH AND WITHOUT release.publish.url
 # ============================================================================
 
-@test "a project without publish.url cuts as before: the snapshot, candidate and publish rows skipped, the release pushed and made (0240)" {
+@test "a project without publish.url cuts with no snapshot, candidate or publish step: no such row, and the release pushed and made (0240, ST0011 WP02b-2)" {
   proj="$(cut_project)"
   run release_in "$proj" v1.0.1 --yes
   assert_success
   local s rel
   for s in snapshot candidate publish; do
-    assert_state "$s" skipped
-    [[ "$(row_of "$s")" == *"no publish.url declared" ]] || fail "the $s row does not say why it is skipped: $(row_of "$s")"
+    [ "$(state_of "$s")" = "(no row $s)" ] || fail "a cut still prints a $s row: $(row_of "$s")"
   done
   assert_state push done
   assert_state object done
@@ -106,44 +126,129 @@ no_publish_yet() {
   [ "$(git -C "$DEVBIN_TEST_TMPDIR/remote.git" rev-parse refs/heads/main)" = "$rel" ] || fail "origin's main is not the release commit"
 }
 
-@test "a publishing project's dry-run cut plans its push to local alone, and its snapshot, candidate and publish rows wait on release publish (0240)" {
+@test "a publishing cut's dry run plans the candidate's snapshot, the push to local alone and the public branch and tag, writes nothing public, and asks no query before the release commit exists (0240, ST0011 WP02b-2)" {
   proj="$(publish_project)"
-  local before s
+  local before
   before="$(pub_fingerprint)"
   run release_in "$proj" v1.0.1 --dry-run
   assert_success
-  [[ "$(row_of push)" == *" local commit tag" ]] || fail "the push row does not plan the push to local: $(row_of push)"
+  assert_state legs would
+  assert_state push would
+  [[ "$(row_of push)" == *"local commit tag; $PUB: fast-forward main to the snapshot of the release commit the commit step makes, and tag v1.0.1 at it, lightweight"* ]] ||
+    fail "the push row does not plan local and the public repository: $(row_of push)"
   [[ "$(row_of push)" != *origin* ]] || fail "the push row plans a push to origin, which release.remotes leaves out: $(row_of push)"
+  [[ "$(row_of confirm)" == *"push the snapshot of the release commit the commit step makes to candidate/v1.0.1 at $PUB, for CI"* ]] ||
+    fail "the confirm row does not name the candidate's push: $(row_of confirm)"
+  [[ "$(row_of confirm)" == *"make the snapshot public at $PUB"* ]] || fail "the confirm row does not name the public side: $(row_of confirm)"
   [[ "$(row_of confirm)" != *origin* ]] || fail "the confirm row plans a push to origin: $(row_of confirm)"
-  for s in snapshot candidate publish; do
-    assert_state "$s" pending
-    [[ "$(row_of "$s")" == *"release publish v1.0.1" ]] || fail "the $s row does not name release publish: $(row_of "$s")"
-  done
-  for s in object after ci; do assert_state "$s" "not reached"; done
   [ "$(pub_fingerprint)" = "$before" ] || fail "a dry run wrote to the public repository"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/ci.calls" ] || fail "a dry run with no release commit asked the query"
 }
 
-@test "a publishing project's cut pushes to local alone and stops after the push, and the stand-in public repository receives nothing (0240)" {
+# AT-2.8
+@test "a publishing cut pushes the snapshot, never a workroom commit, to candidate/<tag> for CI read by that ref, then once every leg is green pushes the release to local alone, moves the public main, tags it lightweight, each read back, and deletes the candidate (0240, AC-2.3, ST0011 WP02b-2)" {
   proj="$(publish_project)"
-  # A ROUTE TO IT, which release.remotes leaves out: a cut that pushed to every
-  # remote, as one did, would reach the public repository through it.
-  git -C "$proj" remote add public "$PUB"
-  local before origin_before s rel
-  before="$(pub_fingerprint)"
+  local origin_before
   origin_before="$(git -C "$DEVBIN_TEST_TMPDIR/remote.git" for-each-ref)"
-  run release_in "$proj" v1.0.1 --yes
+  # Each ask of the query records the public refs as they stood when asked.
+  cat >"$DEVBIN_TEST_TMPDIR/ciq.sh" <<SH
+printf 'ask %s\n' "\${DEVBIN_RELEASE_TAG-<unset>}" >>"$DEVBIN_TEST_TMPDIR/at.ci"
+git -C "$PUB" for-each-ref --format='%(refname) %(objectname)' >>"$DEVBIN_TEST_TMPDIR/at.ci"
+SH
+  ci_none_then "$(printf 'green\trun 7')"
+  cut_v101 "$proj"
   assert_success
+  assert_state legs done
   assert_state push done
-  for s in snapshot candidate publish; do assert_state "$s" pending; done
-  for s in object after ci; do assert_state "$s" "not reached"; done
-  assert_output_contains "nothing of it is public yet: bin/devbin release publish v1.0.1 makes its snapshot public"
-  refute_output_contains "v1.0.1 is released"
-  [ "$(pub_fingerprint)" = "$before" ] || fail "the cut wrote to the public repository"
-  [ "$(git -C "$DEVBIN_TEST_TMPDIR/remote.git" for-each-ref)" = "$origin_before" ] || fail "the cut pushed to origin, which release.remotes leaves out"
+  local snap rel want got all reachable at_green
+  snap="$(pub_at refs/heads/main)"
   rel="$(git -C "$proj" rev-parse 'refs/tags/v1.0.1^{commit}')"
+  [ -n "$snap" ] || fail "the public main is not there"
+  [ "$(git -C "$PUB" cat-file -t refs/tags/v1.0.1)" = commit ] || fail "the public v1.0.1 is not lightweight"
+  [ "$(pub_at refs/tags/v1.0.1)" = "$snap" ] || fail "the public v1.0.1 is not at the snapshot"
+  [ -z "$(pub_at refs/heads/candidate/v1.0.1)" ] || fail "the candidate branch is still there"
+  # THE SNAPSHOT, NEVER A WORKROOM COMMIT: made under the snapshot's identity,
+  # its tree the release commit's files over the list, and no object in the
+  # public repository but what it reaches.
+  [ "$snap" != "$rel" ] || fail "the release commit itself went public"
+  if git -C "$PUB" cat-file -e "$rel" 2>/dev/null; then fail "the workroom's release commit reached the public repository"; fi
+  [ "$(git -C "$PUB" log -1 --format='%an <%ae>%n%cn <%ce>' "$snap")" = "$SNAP_AUTHOR"$'\n'"$SNAP_AUTHOR" ] ||
+    fail "the public main is not made by the snapshot's identity"
+  want="$(git -C "$proj" ls-tree -r "$rel" -- VERSION CHANGELOG.md README.md)"
+  got="$(git -C "$PUB" ls-tree -r "$snap")"
+  [ -n "$want" ] && [ "$got" = "$want" ] || fail "the snapshot's tree is not the release commit's files over the list:
+--- want
+$want
+--- got
+$got"
+  all="$(git -C "$PUB" cat-file --batch-all-objects --batch-check='%(objectname)' | LC_ALL=C sort)"
+  reachable="$(git -C "$PUB" rev-list --objects --all | cut -d' ' -f1 | LC_ALL=C sort)"
+  [ -n "$all" ] && [ "$all" = "$reachable" ] || fail "the public repository holds objects the snapshot does not reach"
+  # THE WORKROOM'S RELEASE WENT TO local ALONE, release.remotes leaving origin out.
   [ "$(git -C "$DEVBIN_TEST_TMPDIR/local.git" rev-parse refs/heads/main)" = "$rel" ] || fail "local's main is not the release commit"
-  [ "$(git -C "$DEVBIN_TEST_TMPDIR/local.git" rev-parse refs/tags/v1.0.1)" = "$(git -C "$proj" rev-parse refs/tags/v1.0.1)" ] ||
-    fail "local does not carry the release tag"
+  [ "$(git -C "$DEVBIN_TEST_TMPDIR/remote.git" for-each-ref)" = "$origin_before" ] || fail "the cut pushed to origin, which release.remotes leaves out"
+  # CI WAS READ ON THE SNAPSHOT, BY THE CANDIDATE'S REF, BEFORE ANYTHING PUBLIC
+  # MOVED: every ask about the snapshot under that ref, and the green one while
+  # the public repository held the candidate alone.
+  [ -z "$(asked_shas | grep -v -x -F "$snap")" ] || fail "the query was asked about another commit than the snapshot: $(cat "$DEVBIN_TEST_TMPDIR/ci.calls")"
+  grep -q -x -F "$snap tag=candidate/v1.0.1" "$DEVBIN_TEST_TMPDIR/ci.calls" ||
+    fail "the query was not asked about the snapshot by its candidate ref: $(cat "$DEVBIN_TEST_TMPDIR/ci.calls")"
+  at_green="$(awk '/^ask / { n++; next } n == 2' "$DEVBIN_TEST_TMPDIR/at.ci")"
+  [ "$at_green" = "refs/heads/candidate/v1.0.1 $snap" ] || fail "when CI read green the public repository held: $at_green"
+}
+
+# AT-2.8
+@test "a red candidate makes nothing public and tags nothing: the legs step stops naming the run, and the candidate is deleted (0240, AC-2.3, ST0011 WP02b-2)" {
+  proj="$(publish_project)"
+  local local_before
+  local_before="$(git -C "$DEVBIN_TEST_TMPDIR/local.git" for-each-ref)"
+  ci_none_then "$(printf 'failed\trun 42')"
+  cut_v101 "$proj"
+  assert_failure
+  assert_state legs FAILED
+  assert_output_contains "candidate is red"
+  assert_output_contains "run 42"
+  no_publish_yet
+  [ -z "$(pub_at refs/heads/candidate/v1.0.1)" ] || fail "the red candidate was not deleted"
+  if git -C "$proj" rev-parse -q --verify refs/tags/v1.0.1 >/dev/null; then fail "a red candidate's cut made the tag"; fi
+  [ "$(git -C "$DEVBIN_TEST_TMPDIR/local.git" for-each-ref)" = "$local_before" ] || fail "a red candidate's cut pushed to local"
+}
+
+@test "a candidate run still going past ci.wait makes nothing public, and the cut run again reads CI on the same snapshot again and publishes it (0240, ST0011 WP02b-2)" {
+  proj="$(publish_project)"
+  ci_none_then "$(printf 'pending\trun 9')"
+  cut_v101 "$proj"
+  assert_failure
+  assert_state legs FAILED
+  assert_output_contains "not green within 0s (ci.wait)"
+  assert_output_contains "run 9"
+  no_publish_yet
+  local first
+  first="$(asked_shas | sed -n '$p')"
+  [ -n "$first" ] || fail "the query was never asked"
+  ci_none_then "$(printf 'green\trun 9')"
+  cut_v101 "$proj"
+  assert_success
+  [ "$(asked_shas | sed -n '$p')" = "$first" ] || fail "the cut run again read CI on another commit"
+  [ "$(pub_at refs/heads/main)" = "$first" ] || fail "the cut run again published another commit than the one CI read"
+  [ "$(pub_at refs/tags/v1.0.1)" = "$first" ] || fail "the tag is not at the snapshot CI read"
+}
+
+@test "a verdict that cannot be read, from a query that fails or one that answers no verdict, makes nothing public (0240, ST0011 WP02b-2)" {
+  proj="$(publish_project)"
+  printf 'echo "gh: HTTP 502" >&2; exit 4\n' >"$DEVBIN_TEST_TMPDIR/ciq.sh"
+  cut_v101 "$proj"
+  assert_failure
+  assert_state legs FAILED
+  assert_output_contains "HTTP 502"
+  no_publish_yet
+  rm -f "$DEVBIN_TEST_TMPDIR/ciq.sh"
+  ci_answers "success"
+  cut_v101 "$proj"
+  assert_failure
+  assert_state legs FAILED
+  assert_output_contains '"success", which is not a verdict'
+  no_publish_yet
 }
 
 @test "a publishing cut refuses at pre-flight to push to a remote that names the publish repository, naming it, and writes nothing (0240)" {
@@ -183,168 +288,37 @@ no_publish_yet() {
   [ "$(fingerprint "$proj")" = "$before" ] || fail "the refused cut wrote something"
 }
 
-# ============================================================================
-# release publish
-# ============================================================================
-
-@test "release publish pushes the snapshot, never a workroom commit, to candidate/<tag>, then on green moves main and pushes a lightweight tag, each read back, and deletes the candidate (0240)" {
-  proj="$(publish_project)"
-  cut_v101 "$proj"
-  # Each ask of the query records the public refs as they stood when asked.
-  cat >"$DEVBIN_TEST_TMPDIR/ciq.sh" <<SH
-printf 'ask %s\n' "\${DEVBIN_RELEASE_TAG-<unset>}" >>"$DEVBIN_TEST_TMPDIR/at.ci"
-git -C "$PUB" for-each-ref --format='%(refname) %(objectname)' >>"$DEVBIN_TEST_TMPDIR/at.ci"
-SH
-  ci_answers "$(printf 'green\trun 7')"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_success
-  assert_state snapshot done
-  assert_state confirm done
-  assert_state candidate done
-  assert_state publish done
-  local snap rel want got all reachable at_ci
-  snap="$(pub_at refs/heads/main)"
-  rel="$(git -C "$proj" rev-parse 'refs/tags/v1.0.1^{commit}')"
-  [ -n "$snap" ] || fail "the public main is not there"
-  [ "$(git -C "$PUB" cat-file -t refs/tags/v1.0.1)" = commit ] || fail "the public v1.0.1 is not lightweight"
-  [ "$(pub_at refs/tags/v1.0.1)" = "$snap" ] || fail "the public v1.0.1 is not at the snapshot"
-  [ -z "$(pub_at refs/heads/candidate/v1.0.1)" ] || fail "the candidate branch is still there"
-  # THE SNAPSHOT, NEVER A WORKROOM COMMIT: made under the snapshot's identity,
-  # its tree the release commit's files over the list, and no object in the
-  # public repository but what it reaches.
-  [ "$snap" != "$rel" ] || fail "the release commit itself went public"
-  if git -C "$PUB" cat-file -e "$rel" 2>/dev/null; then fail "the workroom's release commit reached the public repository"; fi
-  [ "$(git -C "$PUB" log -1 --format='%an <%ae>%n%cn <%ce>' "$snap")" = "$SNAP_AUTHOR"$'\n'"$SNAP_AUTHOR" ] ||
-    fail "the public main is not made by the snapshot's identity"
-  want="$(git -C "$proj" ls-tree -r "$rel" -- VERSION CHANGELOG.md README.md)"
-  got="$(git -C "$PUB" ls-tree -r "$snap")"
-  [ -n "$want" ] && [ "$got" = "$want" ] || fail "the snapshot's tree is not the release commit's files over the list:
---- want
-$want
---- got
-$got"
-  all="$(git -C "$PUB" cat-file --batch-all-objects --batch-check='%(objectname)' | LC_ALL=C sort)"
-  reachable="$(git -C "$PUB" rev-list --objects --all | cut -d' ' -f1 | LC_ALL=C sort)"
-  [ -n "$all" ] && [ "$all" = "$reachable" ] || fail "the public repository holds objects the snapshot does not reach"
-  # CI WAS READ BEFORE ANYTHING MOVED: about the snapshot, with no tag, while the
-  # candidate held it and neither main nor the tag was there.
-  [ "$(head -n 1 "$DEVBIN_TEST_TMPDIR/ci.calls")" = "$snap tag=<unset>" ] ||
-    fail "the first ask was not about the snapshot with no tag: $(cat "$DEVBIN_TEST_TMPDIR/ci.calls")"
-  [ "$(head -n 1 "$DEVBIN_TEST_TMPDIR/at.ci")" = "ask <unset>" ] || fail "the candidate's ask was not the first: $(cat "$DEVBIN_TEST_TMPDIR/at.ci")"
-  at_ci="$(awk '/^ask / { n++; next } n == 1' "$DEVBIN_TEST_TMPDIR/at.ci")"
-  [ "$at_ci" = "refs/heads/candidate/v1.0.1 $snap" ] || fail "when CI was read the public repository held: $at_ci"
-}
-
-@test "a red candidate moves neither main nor the tag, says why, and stays as the record of it (0240)" {
-  proj="$(publish_project)"
-  cut_v101 "$proj"
-  ci_answers "$(printf 'failed\trun 42')"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_failure
-  assert_state candidate FAILED
-  assert_output_contains "ci.query answers failed for"
-  assert_output_contains "run 42"
-  assert_output_contains "main and v1.0.1 did not move"
-  no_publish_yet
-  local cand
-  cand="$(pub_at refs/heads/candidate/v1.0.1)"
-  [ -n "$cand" ] || fail "the red candidate was not kept"
-  [ "$(git -C "$PUB" log -1 --format='%an <%ae>' "$cand")" = "$SNAP_AUTHOR" ] || fail "the candidate is not the snapshot"
-  [ "$(state_of publish)" = "(no row publish)" ] || fail "the publish step ran after a red candidate: $(row_of publish)"
-}
-
-@test "a candidate run still going past ci.wait moves neither main nor the tag, and the same command run again reads CI again and publishes that candidate (0240)" {
-  proj="$(publish_project)"
-  cut_v101 "$proj"
-  ci_answers "$(printf 'pending\trun 9')"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_failure
-  assert_state candidate FAILED
-  assert_output_contains "ci.query gave no verdict within 0s (ci.wait)"
-  assert_output_contains "run 9"
-  no_publish_yet
-  local cand
-  cand="$(pub_at refs/heads/candidate/v1.0.1)"
-  [ -n "$cand" ] || fail "the candidate is not there"
-  ci_answers "$(printf 'green\trun 9')"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_success
-  [[ "$(row_of candidate)" == *"candidate/v1.0.1 holds ${cand:0:12} already"* ]] || fail "the re-run pushed the candidate again: $(row_of candidate)"
-  [ "$(pub_at refs/heads/main)" = "$cand" ] || fail "the re-run published another commit than the one CI read"
-  [ "$(pub_at refs/tags/v1.0.1)" = "$cand" ] || fail "the tag is not at the candidate CI read"
-}
-
-@test "a verdict that cannot be read, from a query that fails or one that answers no verdict, moves neither main nor the tag (0240)" {
-  proj="$(publish_project)"
-  cut_v101 "$proj"
-  printf 'echo "gh: HTTP 502" >&2; exit 4\n' >"$DEVBIN_TEST_TMPDIR/ciq.sh"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_failure
-  assert_state candidate FAILED
-  assert_output_contains "no verdict from ci.query for"
-  assert_output_contains "HTTP 502"
-  no_publish_yet
-  rm -f "$DEVBIN_TEST_TMPDIR/ciq.sh"
-  ci_answers "success"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_failure
-  assert_state candidate FAILED
-  assert_output_contains '"success", which is not a verdict'
-  no_publish_yet
-}
-
-@test "--expect refuses a snapshot of any other sha, pushing nothing, and publishes the one release snapshot printed (0240)" {
-  proj="$(publish_project)"
-  cut_v101 "$proj"
-  local other before snap
-  other="$(printf '%040d' 0)"
-  before="$(pub_fingerprint)"
-  ci_answers "$(printf 'green\trun 7')"
-  run release_in "$proj" publish v1.0.1 --yes --expect "$other"
-  assert_failure
-  assert_state snapshot FAILED
-  assert_output_contains "and --expect names $other"
-  assert_output_contains "nothing pushed"
-  [ "$(pub_fingerprint)" = "$before" ] || fail "the refusal wrote to the public repository"
-  [ ! -e "$DEVBIN_TEST_TMPDIR/ci.calls" ] || fail "CI was asked about a snapshot --expect refused"
-  # The sha release snapshot prints is the sha the publish makes.
-  run release_in "$proj" snapshot v1.0.1 "$DEVBIN_TEST_TMPDIR/look"
-  assert_success
-  snap="$(sed -n 's/^  commit  //p' <<<"$output")"
-  [ -n "$snap" ] || fail "release snapshot printed no commit: $output"
-  run release_in "$proj" publish v1.0.1 --yes --expect "$snap"
-  assert_success
-  assert_state publish done
-  [ "$(pub_at refs/heads/main)" = "$snap" ] || fail "the publish did not publish the sha --expect named"
-}
-
-@test "release publish refuses at pre-flight a remote that names the publish repository through an ssh host alias, naming it, reading nothing and writing nothing (0240)" {
-  # origin names t/demo over https; this url names it through a host alias and
-  # in another case, which GitHub reads as one repository.
+@test "a publishing cut refuses at pre-flight any remote of the project that names the publish repository, one it does not push to and through an ssh host alias too, reading nothing and writing nothing, and release status does not read it either (0240, ST0011 WP02b-2)" {
+  # origin names t/demo over https, and release.remotes leaves it out; this url
+  # names it through a host alias and in another case, which GitHub reads as
+  # one repository.
   proj="$(publish_project 'git@gh-alias:T/Demo.git')"
-  cut_v101 "$proj"
-  rm -rf "$proj/tmp/release"
   local before
   before="$(fingerprint "$proj")"
-  run release_in "$proj" publish v1.0.1 --yes
+  cut_v101 "$proj"
   assert_failure
   assert_state pre-flight FAILED
   assert_output_contains "this project's remote origin names t/demo, the repository release.publish.url names"
   # Never read: a read would have tried the alias's host and said it did not answer.
   refute_output_contains "did not answer"
+  [ ! -s "$DEVBIN_TEST_TMPDIR/gate.calls" ] || fail "a gate ran after pre-flight refused"
   rm -rf "$proj/tmp/release"
   [ "$(fingerprint "$proj")" = "$before" ] || fail "the refusal wrote something"
+  # release status does not read it either: its push row cannot say.
+  run release_in "$proj" status v1.0.1
+  [ "$status" -eq 1 ] || fail "want exit 1, got $status: $output"
+  assert_state push UNREADABLE
+  assert_output_contains "is not read: this project's remote origin names t/demo"
+  refute_output_contains "did not answer"
 }
 
-@test "release publish refuses at pre-flight a remote whose pushurl alone names the publish repository, naming it, and writes nothing (0240)" {
+@test "a publishing cut refuses at pre-flight a remote whose pushurl alone names the publish repository, naming it, and writes nothing (0240, ST0011 WP02b-2)" {
   proj="$(publish_project https://github.com/t/public.git)"
   git -C "$proj" remote add mirror "$DEVBIN_TEST_TMPDIR/mirror.git"
   git -C "$proj" config remote.mirror.pushurl ssh://git@github.com/t/public.git
-  cut_v101 "$proj"
-  rm -rf "$proj/tmp/release"
   local before
   before="$(fingerprint "$proj")"
-  run release_in "$proj" publish v1.0.1 --yes
+  cut_v101 "$proj"
   assert_failure
   assert_state pre-flight FAILED
   assert_output_contains "this project's remote mirror names t/public, the repository release.publish.url names"
@@ -353,124 +327,246 @@ $got"
   [ "$(fingerprint "$proj")" = "$before" ] || fail "the refusal wrote something"
 }
 
-@test "a public tag already at another commit is refused before anything is pushed, and CI is not asked (0240)" {
+@test "a public tag already at another commit is refused at the legs step, before anything is pushed or the query asked, a tag being never moved (0240, ST0011 WP02b-2)" {
   proj="$(publish_project)"
-  cut_v101 "$proj"
   local x before
   x="$(an_unrelated_commit)"
   git -C "$DEVBIN_TEST_TMPDIR/other" push -q "$PUB" "$x:refs/tags/v1.0.1"
   before="$(pub_fingerprint)"
-  ci_answers "$(printf 'green\trun 7')"
-  run release_in "$proj" publish v1.0.1 --yes
+  ci_none_then "$(printf 'green\trun 7')"
+  cut_v101 "$proj"
   assert_failure
-  assert_state publish FAILED
+  assert_state legs FAILED
   assert_output_contains "carries v1.0.1 at ${x:0:12}, and this release's snapshot is"
   assert_output_contains "a tag is never moved -- nothing pushed"
   [ "$(pub_fingerprint)" = "$before" ] || fail "the refusal wrote to the public repository"
   [ ! -e "$DEVBIN_TEST_TMPDIR/ci.calls" ] || fail "CI was asked about a snapshot that cannot be published"
 }
 
-@test "a candidate branch holding another commit is refused before anything is pushed (0240)" {
+@test "a candidate ref at the public repository holding another commit stops the cut at the legs step, its push refused and nothing forced, and the ref is left as it is, named (0240, ST0011 WP02b-2)" {
   proj="$(publish_project)"
-  cut_v101 "$proj"
   local x before
   x="$(an_unrelated_commit)"
   git -C "$DEVBIN_TEST_TMPDIR/other" push -q "$PUB" "$x:refs/heads/candidate/v1.0.1"
   before="$(pub_fingerprint)"
-  ci_answers "$(printf 'green\trun 7')"
-  run release_in "$proj" publish v1.0.1 --yes
+  ci_none_then "$(printf 'green\trun 7')"
+  cut_v101 "$proj"
   assert_failure
-  assert_state candidate FAILED
-  assert_output_contains "candidate/v1.0.1 at $PUB holds ${x:0:12}, not this release's snapshot"
-  [ "$(pub_fingerprint)" = "$before" ] || fail "the refusal wrote to the public repository"
+  assert_state legs FAILED
+  assert_output_contains "the candidate did not start"
+  assert_output_contains "it holds ${x:0:12}, not this release's"
+  [ "$(pub_fingerprint)" = "$before" ] || fail "the refused candidate changed the public repository"
 }
 
-@test "a publish branch that moves while CI runs is never forced: the publish step stops and the tag is not pushed (0240)" {
+@test "a publish branch that moves while CI runs is never forced: the push step stops at the public repository, and the public tag is not pushed (0240, ST0011 WP02b-2)" {
   proj="$(publish_project)"
-  cut_v101 "$proj"
   local x
   x="$(an_unrelated_commit)"
-  # The candidate's ask, the one with no tag, moves the public main elsewhere.
+  # The ask made once the candidate is at the public repository moves the
+  # public main elsewhere.
   cat >"$DEVBIN_TEST_TMPDIR/ciq.sh" <<SH
-[ -n "\${DEVBIN_RELEASE_TAG-}" ] || git -C "$DEVBIN_TEST_TMPDIR/other" push -q "$PUB" "$x:refs/heads/main"
+if git -C "$PUB" rev-parse -q --verify refs/heads/candidate/v1.0.1 >/dev/null; then git -C "$DEVBIN_TEST_TMPDIR/other" push -q "$PUB" "$x:refs/heads/main"; fi
 SH
-  ci_answers "$(printf 'green\trun 7')"
-  run release_in "$proj" publish v1.0.1 --yes
+  ci_none_then "$(printf 'green\trun 7')"
+  cut_v101 "$proj"
   assert_failure
-  assert_state candidate done
-  assert_state publish FAILED
+  assert_state legs done
+  assert_state push FAILED
   assert_output_contains "is at ${x:0:12}, and the snapshot was made on no parent, so it cannot fast-forward, and nothing is forced"
   [ "$(pub_at refs/heads/main)" = "$x" ] || fail "main was moved over another commit"
   [ -z "$(pub_at refs/tags/v1.0.1)" ] || fail "the tag was pushed though main could not follow"
 }
 
-@test "a finished publish run again finds the snapshot published, asks nothing and pushes nothing (0240)" {
+@test "a tag another hand pushes while CI runs is refused at the push step, and the public main does not move (0240, ST0011 WP02b-2)" {
   proj="$(publish_project)"
+  local x
+  x="$(an_unrelated_commit)"
+  cat >"$DEVBIN_TEST_TMPDIR/ciq.sh" <<SH
+if git -C "$PUB" rev-parse -q --verify refs/heads/candidate/v1.0.1 >/dev/null; then git -C "$DEVBIN_TEST_TMPDIR/other" push -q "$PUB" "$x:refs/tags/v1.0.1"; fi
+SH
+  ci_none_then "$(printf 'green\trun 7')"
   cut_v101 "$proj"
-  ci_answers "$(printf 'green\trun 7')"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_success
-  local snap before
-  snap="$(pub_at refs/heads/main)"
-  before="$(pub_fingerprint)"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_success
-  [[ "$(row_of snapshot)" == *"${snap:0:12}"*"the tip of main is this snapshot already"* ]] || fail "the snapshot was not found published: $(row_of snapshot)"
-  assert_state confirm "not re-run"
-  assert_state candidate already
-  assert_state publish already
-  [ "$(pub_fingerprint)" = "$before" ] || fail "a re-run of a finished publish wrote to the public repository"
-}
-
-@test "release publish --dry-run makes the snapshot, asks nothing, and pushes nothing (0240)" {
-  proj="$(publish_project)"
-  cut_v101 "$proj"
-  local before
-  before="$(pub_fingerprint)"
-  run release_in "$proj" publish v1.0.1 --dry-run
-  assert_success
-  assert_state snapshot done
-  assert_state confirm would
-  assert_state candidate would
-  assert_state publish would
-  assert_output_contains "dry run of v1.0.1 -- no step failed; the publish stops to ask at the confirm step"
-  [ "$(pub_fingerprint)" = "$before" ] || fail "a dry run wrote to the public repository"
-  [ ! -e "$DEVBIN_TEST_TMPDIR/ci.calls" ] || fail "a dry run asked the query"
-}
-
-@test "release publish in a project without publish.url is refused, naming the key (0240)" {
-  proj="$(cut_project)"
-  run release_in "$proj" publish v1.0.0 --yes
   assert_failure
-  assert_output_contains "release.publish.url is not declared, so this project publishes no snapshot"
+  assert_state legs done
+  assert_state push FAILED
+  assert_output_contains "carries v1.0.1 at ${x:0:12}, not at the snapshot"
+  [ -z "$(pub_at refs/heads/main)" ] || fail "main moved for a tag that could not follow it"
 }
 
-@test "release status reads the snapshot, candidate and publish rows as skipped without publish.url (0240)" {
+@test "a finished publishing cut run again finds its snapshot public: nothing to ask about, no leg re-run, and nothing pushed (0240, ST0011 WP02b-2)" {
+  proj="$(publish_project)"
+  ci_none_then "$(printf 'green\trun 7')"
+  cut_v101 "$proj"
+  assert_success
+  local before snap
+  snap="$(pub_at refs/heads/main)"
+  [ -n "$snap" ] && [ "$(pub_at refs/tags/v1.0.1)" = "$snap" ] || fail "the first cut did not make its snapshot public"
+  before="$(pub_fingerprint)"
+  cut_v101 "$proj"
+  assert_success
+  assert_state confirm "not re-run"
+  assert_state legs "not re-run"
+  assert_state push already
+  [[ "$(row_of push)" == *"main and v1.0.1 are at the snapshot ${snap:0:12}"* ]] || fail "the push row does not find the snapshot public: $(row_of push)"
+  [ "$(pub_fingerprint)" = "$before" ] || fail "a finished cut run again wrote to the public repository"
+}
+
+@test "a cut resumed after the public repository refused its tag reads CI on the snapshot again, finds the public main at it, and pushes the tag at that snapshot (0240, ST0011 WP02b-2)" {
+  proj="$(publish_project)"
+  # THE PUBLIC REPOSITORY REFUSES TAGS for the first cut, which stops at the
+  # push step with the public main at the snapshot and no public tag.
+  # shellcheck disable=SC2016 # the hook's own $r, expanded when it runs
+  printf '#!/bin/sh\nwhile read -r o n r; do case "$r" in refs/tags/*) echo "the fixture refuses tags" >&2; exit 1 ;; esac; done\n' >"$PUB/hooks/pre-receive"
+  chmod +x "$PUB/hooks/pre-receive"
+  ci_none_then "$(printf 'green\trun 8')"
+  cut_v101 "$proj"
+  assert_failure
+  assert_state push FAILED
+  assert_output_contains "the fixture refuses tags"
+  local snap asks
+  snap="$(pub_at refs/heads/main)"
+  [ -n "$snap" ] || fail "the public main did not move before its tag was refused"
+  [ -z "$(pub_at refs/tags/v1.0.1)" ] || fail "the refused tag is there"
+  rm -f "$PUB/hooks/pre-receive"
+  asks="$(grep -c . "$DEVBIN_TEST_TMPDIR/ci.calls")"
+  ci_answers "$(printf 'green\trun 8')"
+  cut_v101 "$proj"
+  assert_success
+  [ "$(grep -c . "$DEVBIN_TEST_TMPDIR/ci.calls")" -gt "$asks" ] || fail "the resumed cut did not read CI on the candidate again"
+  [ "$(asked_shas | sed -n '$p')" = "$snap" ] || fail "the resumed cut read CI on another commit than the public main"
+  [[ "$(row_of push)" == *"main was at ${snap:0:12} already"* ]] || fail "the public main was moved again: $(row_of push)"
+  [ "$(pub_at refs/tags/v1.0.1)" = "$snap" ] || fail "the tag is not at the snapshot"
+  [ -z "$(pub_at refs/heads/candidate/v1.0.1)" ] || fail "the candidate was not deleted"
+}
+
+@test "a second release is made on the first: its snapshot's parent is the public tip, main fast-forwards, a cut run again finds it, release status reads the first as public, and the first release cut again is refused as public already (0240, ST0011 WP02b-2)" {
+  proj="$(publish_project)"
+  ci_none_then "$(printf 'green\trun 7')"
+  cut_v101 "$proj"
+  assert_success
+  local first second before
+  first="$(pub_at refs/heads/main)"
+  awk 'done == 0 && /^## \[/ { print "## [1.0.2] - Unreleased"; print ""; print "- third"; print ""; done = 1 } { print }' \
+    "$proj/CHANGELOG.md" >"$proj/CHANGELOG.md.new" && mv "$proj/CHANGELOG.md.new" "$proj/CHANGELOG.md"
+  git -C "$proj" commit -qam "notes for 1.0.2"
+  ci_none_then "$(printf 'green\trun 8')"
+  run release_in "$proj" v1.0.2 --yes
+  assert_success
+  second="$(pub_at refs/heads/main)"
+  [ -n "$second" ] && [ "$second" != "$first" ] || fail "main did not move to a second snapshot"
+  [ "$(git -C "$PUB" rev-parse "$second^")" = "$first" ] || fail "the second snapshot is not made on the first"
+  [ "$(pub_at refs/tags/v1.0.2)" = "$second" ] || fail "v1.0.2 is not at the second snapshot"
+  [ "$(pub_at refs/tags/v1.0.1)" = "$first" ] || fail "v1.0.1 moved"
+  # Found again on a tip that has a parent.
+  before="$(pub_fingerprint)"
+  run release_in "$proj" v1.0.2 --yes
+  assert_success
+  assert_state push already
+  [ "$(pub_fingerprint)" = "$before" ] || fail "the second release cut again wrote to the public repository"
+  # release status reads the first as public, its tag in main's history.
+  run release_in "$proj" status v1.0.1
+  assert_success
+  assert_state push already
+  [[ "$(row_of push)" == *"$PUB has v1.0.1 at ${first:0:12}, in the history of main, at ${second:0:12}: public already"* ]] ||
+    fail "status does not read the first release as public: $(row_of push)"
+  # The first, cut again, is public already, in main's history.
+  cut_v101 "$proj"
+  assert_failure
+  assert_state legs FAILED
+  assert_output_contains "v1.0.1 is public already, at ${first:0:12}, in the history of main"
+  [ "$(pub_fingerprint)" = "$before" ] || fail "the first release cut again wrote to the public repository"
+}
+
+@test "a public tag already at the snapshot does not stand for CI: with main still to move, a red candidate moves nothing (0240, ST0011 WP02b-2)" {
+  proj="$(publish_project)"
+  # A first cut stops red at the legs step, so the release commit is there and
+  # nothing is public.
+  ci_none_then "$(printf 'failed\trun 4')"
+  cut_v101 "$proj"
+  assert_failure
+  assert_state legs FAILED
+  local snap
+  snap="$(snapshot_of_head "$proj")"
+  [ -n "$snap" ] || fail "release snapshot printed no commit"
+  # Another hand pushed the tag at it; the branch has not moved.
+  git -C "$DEVBIN_TEST_TMPDIR/look" push -q "$PUB" "$snap:refs/tags/v1.0.1"
+  ci_none_then "$(printf 'failed\trun 5')"
+  cut_v101 "$proj"
+  assert_failure
+  assert_state legs FAILED
+  assert_output_contains "run 5"
+  [ -z "$(pub_at refs/heads/main)" ] || fail "main moved with CI red on the candidate"
+  [ "$(asked_shas | sed -n '$p')" = "$snap" ] || fail "CI was not asked about the snapshot the public tag names"
+}
+
+@test "a publishing cut's dry run once the release commit exists makes the snapshot in its scratch, asks the query about it, and pushes nothing (0240, ST0011 WP02b-2)" {
+  proj="$(publish_project)"
+  ci_none_then "$(printf 'failed\trun 4')"
+  cut_v101 "$proj"
+  assert_failure
+  local before snap
+  before="$(pub_fingerprint)"
+  rm -f "$DEVBIN_TEST_TMPDIR/ci.calls"
+  ci_answers "$(printf 'none\tno run yet')"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_success
+  assert_state legs would
+  [ "$(pub_fingerprint)" = "$before" ] || fail "a dry run wrote to the public repository"
+  snap="$(snapshot_of_head "$proj")"
+  [ -n "$snap" ] || fail "release snapshot printed no commit"
+  [ "$(asked_shas | sed -n '$p')" = "$snap" ] || fail "the dry run did not ask the query about the snapshot: $(cat "$DEVBIN_TEST_TMPDIR/ci.calls" 2>/dev/null)"
+}
+
+# ============================================================================
+# release status, AND THE RETIRED VERB
+# ============================================================================
+
+@test "release status without publish.url prints no snapshot, candidate or publish row (0240, ST0011 WP02b-2)" {
   proj="$(cut_project)"
   run release_in "$proj" status v1.0.1
   assert_success
   local s
   for s in snapshot candidate publish; do
-    assert_state "$s" skipped
-    [[ "$(row_of "$s")" == *"no publish.url declared" ]] || fail "the $s row does not say why: $(row_of "$s")"
+    [ "$(state_of "$s")" = "(no row $s)" ] || fail "status prints a $s row: $(row_of "$s")"
   done
 }
 
-@test "release status reads the snapshot, candidate and publish rows as not read, naming release publish, under publish.url (0240)" {
+@test "release status under publish.url names the public repository on its push row: pending while the snapshot is not public there, already once it is (0240, ST0011 WP02b-2)" {
   proj="$(publish_project)"
-  cut_v101 "$proj"
   run release_in "$proj" status v1.0.1
   assert_success
-  local s
-  for s in snapshot candidate publish; do
-    assert_state "$s" "not read"
-    [[ "$(row_of "$s")" == *"release publish v1.0.1"* ]] || fail "the $s row does not name release publish: $(row_of "$s")"
-  done
+  assert_state push pending
+  [[ "$(row_of push)" == *"$PUB takes the release's snapshot, and has it not yet"* ]] ||
+    fail "the push row does not name the public repository's work: $(row_of push)"
+  ci_none_then "$(printf 'green\trun 7')"
+  cut_v101 "$proj"
+  assert_success
+  run release_in "$proj" status v1.0.1
+  assert_success
   assert_state push already
   assert_state confirm "not re-run"
+  [[ "$(row_of push)" == *"$PUB has main and v1.0.1 at"* ]] || fail "the push row does not name the public repository: $(row_of push)"
+  local s
+  for s in snapshot candidate publish; do
+    [ "$(state_of "$s")" = "(no row $s)" ] || fail "status prints a $s row: $(row_of "$s")"
+  done
 }
 
-@test "under publish.url validation refuses ci.base, and publish.candidate needs publish.url and must hold the tag and more (0240)" {
+@test "release publish is retired: refused before anything acts, naming the cut that publishes now, and gone from the usage (AC-2.4, ST0011 WP02b-2)" {
+  proj="$(publish_project)"
+  local before
+  before="$(fingerprint "$proj")"
+  run release_in "$proj" publish v1.0.1 --yes
+  assert_failure
+  assert_output_contains "release publish is retired: a cut under release.publish.url pushes the release commit's snapshot to its candidate branch, and makes it public once every leg is green"
+  [ "$(fingerprint "$proj")" = "$before" ] || fail "the refused verb wrote something"
+  run release_in "$proj" --help
+  assert_success
+  refute_output_contains "release publish"
+  refute_output_contains "--expect"
+}
+
+@test "publish.candidate needs ci.query, which a cut's candidate reads in either shape, and must hold the tag and more (0240, ST0011 WP02b)" {
   # shellcheck source=lib/helpers
   . "$DEVBIN_LIB_DIR/helpers"
   # shellcheck source=lib/config
@@ -488,23 +584,18 @@ YAML
     [ "$status" -ne 0 ] || fail "accepted: $block"
     assert_output_contains "$want"
   done <<'EOF2'
-  ci:\n    query: q\n    base: false\n  snapshot:\n    list: x\n    author: "A B <a@b>"\n  publish:\n    url: /srv/p.git|release.ci.base is refused under release.publish.url
-  ci:\n    query: q\n    base: true\n  snapshot:\n    list: x\n    author: "A B <a@b>"\n  publish:\n    url: /srv/p.git|release.ci.base is refused under release.publish.url
-  snapshot:\n    list: x\n    author: "A B <a@b>"\n  publish:\n    candidate: rc/{tag}|release.publish.candidate is read only when release.publish.url is declared
+  ci:\n    query: "-"\n  snapshot:\n    list: x\n    author: "A B <a@b>"\n  publish:\n    candidate: rc/{tag}|release.publish.candidate is read only where a cut has a candidate, and release.ci.query is -, the opt-out
   snapshot:\n    list: x\n    author: "A B <a@b>"\n  publish:\n    url: /srv/p.git\n    candidate: rc|release.publish.candidate: "rc" must be a branch name holding {tag}
   snapshot:\n    list: x\n    author: "A B <a@b>"\n  publish:\n    url: /srv/p.git\n    candidate: "{tag}"|release.publish.candidate: "{tag}" must be a branch name holding {tag} and more
-  verbs:\n    - cut\n    - status\n    - snapshot\n  snapshot:\n    list: x\n    author: "A B <a@b>"\n  publish:\n    url: /srv/p.git|release.publish.url is declared, and release.verbs leaves out publish
 EOF2
-  # ACCEPTED UNDER publish.url (Done when 5): a query with ci.tag off and no
-  # ci.base is asked at the candidate, so it validates, as a candidate template
-  # does.
+  # ACCEPTED UNDER publish.url (Done when 5): a query is asked at the
+  # candidate, so it validates, as a candidate template does.
   cfg_load_string <<'YAML'
 project:
   name: demo
 release:
   ci:
     query: q
-    tag: false
   snapshot:
     list: x
     author: "A B <a@b>"
@@ -516,31 +607,8 @@ YAML
   [ "$status" -eq 0 ] || fail "the publishing block was refused: $output"
 }
 
-@test "release publish's arguments are read before anything acts: one version, and --expect a whole sha, for release publish alone (0240)" {
-  proj="$(publish_project)"
-  local before args want
-  before="$(fingerprint "$proj")"
-  while IFS='|' read -r args want; do
-    [ -n "$args" ] || continue
-    # shellcheck disable=SC2086  # each line is an argument list
-    run release_in "$proj" $args </dev/null
-    assert_failure
-    assert_output_contains "$want"
-  done <<'EOF2'
-publish|release publish needs a version
-publish v1.0.1 v1.0.2|release publish takes one version, got 1.0.1 and v1.0.2
-publish v1.0.1 --expect abc123|--expect takes the snapshot's whole sha, as release snapshot prints it, not abc123
-publish v1.0.1 --expect|--expect takes the snapshot's whole sha
-status v1.0.1 --expect 0000000000000000000000000000000000000000|--expect applies to release publish, not to release status
-EOF2
-  [ "$(fingerprint "$proj")" = "$before" ] || fail "a refused argument list wrote something"
-  run release_in "$proj" --help
-  assert_success
-  assert_output_contains "release publish <vX.Y.Z> [--expect <sha>] [--dry-run] [--yes]"
-}
-
 # ============================================================================
-# WHAT NAMES THE PUBLISH REPOSITORY, AND THE RELEASES AFTER THE FIRST
+# WHAT NAMES THE PUBLISH REPOSITORY
 # ============================================================================
 
 @test "a remote names the publish repository however its path is spelled, or as the same local path, and one whose url says too little to tell is refused as unknown (0240)" {
@@ -570,94 +638,64 @@ $PUB|$DEVBIN_TEST_TMPDIR/elsewhere/../public.git|0:r	$PUB
 EOF2
 }
 
-@test "a public tag already at the snapshot does not stand for CI: with main still to move, a red candidate moves nothing (0240)" {
-  proj="$(publish_project)"
-  cut_v101 "$proj"
-  local snap
-  run release_in "$proj" snapshot v1.0.1 "$DEVBIN_TEST_TMPDIR/look"
-  assert_success
-  snap="$(sed -n 's/^  commit  //p' <<<"$output")"
-  [ -n "$snap" ] || fail "release snapshot printed no commit: $output"
-  # Another hand pushed the tag; the branch has not moved.
-  git -C "$DEVBIN_TEST_TMPDIR/look" push -q "$PUB" "$snap:refs/tags/v1.0.1"
-  ci_answers "$(printf 'failed\trun 5')"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_failure
-  assert_state candidate FAILED
-  assert_output_contains "ci.query answers failed for ${snap:0:12}"
-  [ -z "$(pub_at refs/heads/main)" ] || fail "main moved with CI red on the candidate"
-  [ "$(head -n 1 "$DEVBIN_TEST_TMPDIR/ci.calls")" = "$snap tag=<unset>" ] || fail "CI was not asked about the candidate: $(cat "$DEVBIN_TEST_TMPDIR/ci.calls" 2>/dev/null)"
+# ============================================================================
+# THE SNAPSHOT'S TRIGGER, READ BEFORE ANYTHING IS PUSHED (ST0011 WP-02c)
+# ============================================================================
+
+# builtin_publish_project <shipped-list> <branches> [<paths>] --
+# publish_project's demo with no ci.query declared, so the built-in query reads
+# its candidate, the snapshot, and a .github/workflows/tests.yml whose push
+# trigger takes <branches>, filtered on <paths> where given
+# (write_tests_workflow); <shipped-list> is tests/shipped.paths' lines,
+# \n-separated.
+builtin_publish_project() {
+  local proj
+  git init -q --bare -b main "$PUB"
+  proj="$(cut_project "$(printf '  remotes:\n    - local\n  gates:\n    - probe\n  object: none\n  ci:\n    wait: 0s\n  snapshot:\n    list: tests/shipped.paths\n    author: "%s"\n  publish:\n    url: %s' "$SNAP_AUTHOR" "$PUB")")"
+  mkdir -p "$proj/tests"
+  printf '%b\n' "$1" >"$proj/tests/shipped.paths"
+  write_tests_workflow "$proj" "$2" "${3:-}"
+  git -C "$proj" add -A
+  git -C "$proj" commit -qm "the shipped list and the workflow"
+  git -C "$proj" push -q origin main
+  git init -q --bare -b main "$DEVBIN_TEST_TMPDIR/local.git"
+  git -C "$proj" remote add local "$DEVBIN_TEST_TMPDIR/local.git"
+  git -C "$proj" push -q local main v1.0.0
+  printf '%s\n' "$proj"
 }
 
-@test "a resume with main moved and no tag pushed reads CI on the candidate again, then pushes the tag at the same snapshot (0240)" {
-  proj="$(publish_project)"
-  cut_v101 "$proj"
-  local snap
-  run release_in "$proj" snapshot v1.0.1 "$DEVBIN_TEST_TMPDIR/look"
-  assert_success
-  snap="$(sed -n 's/^  commit  //p' <<<"$output")"
-  [ -n "$snap" ] || fail "release snapshot printed no commit: $output"
-  # A publish that stopped after main moved: the candidate and main hold the
-  # snapshot, and the tag is not there.
-  git -C "$DEVBIN_TEST_TMPDIR/look" push -q "$PUB" "$snap:refs/heads/candidate/v1.0.1" "$snap:refs/heads/main"
-  ci_answers "$(printf 'green\trun 8')"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_success
-  [[ "$(row_of snapshot)" == *"the tip of main is this snapshot already"* ]] || fail "the snapshot on the moved main was made again: $(row_of snapshot)"
-  [[ "$(row_of candidate)" == *"holds ${snap:0:12} already"*"answers green"* ]] || fail "CI was not read on the candidate: $(row_of candidate)"
-  [[ "$(row_of publish)" == *"main was at ${snap:0:12} already"* ]] || fail "main was moved again: $(row_of publish)"
-  [ "$(pub_at refs/tags/v1.0.1)" = "$snap" ] || fail "the tag is not at the snapshot"
-  [ -z "$(pub_at refs/heads/candidate/v1.0.1)" ] || fail "the candidate was not deleted"
-}
-
-@test "a second release is made on the first: its snapshot's parent is the public tip, main fast-forwards, a re-run finds it, and the first release run again is refused as public already (0240)" {
-  proj="$(publish_project)"
-  cut_v101 "$proj"
-  ci_answers "$(printf 'green\trun 7')"
-  run release_in "$proj" publish v1.0.1 --yes
-  assert_success
-  local first second before
-  first="$(pub_at refs/heads/main)"
-  awk 'done == 0 && /^## \[/ { print "## [1.0.2] - Unreleased"; print ""; print "- third"; print ""; done = 1 } { print }' \
-    "$proj/CHANGELOG.md" >"$proj/CHANGELOG.md.new" && mv "$proj/CHANGELOG.md.new" "$proj/CHANGELOG.md"
-  git -C "$proj" commit -qam "notes for 1.0.2"
-  run release_in "$proj" v1.0.2 --yes
-  assert_success
-  run release_in "$proj" publish v1.0.2 --yes
-  assert_success
-  second="$(pub_at refs/heads/main)"
-  [ -n "$second" ] && [ "$second" != "$first" ] || fail "main did not move to a second snapshot"
-  [ "$(git -C "$PUB" rev-parse "$second^")" = "$first" ] || fail "the second snapshot is not made on the first"
-  [ "$(pub_at refs/tags/v1.0.2)" = "$second" ] || fail "v1.0.2 is not at the second snapshot"
-  [ "$(pub_at refs/tags/v1.0.1)" = "$first" ] || fail "v1.0.1 moved"
-  # Found again on a tip that has a parent.
+@test "a publishing cut asks, once it has made the snapshot and before anything is pushed, whether the snapshot's push starts the workflow, read at the release commit with the files the snapshot changes: one that does not stops it at the legs step with nothing public (ST0011 WP-02c)" {
+  local before
+  proj="$(builtin_publish_project 'VERSION\nCHANGELOG.md\nREADME.md\n.github/workflows/tests.yml' "main")"
   before="$(pub_fingerprint)"
-  run release_in "$proj" publish v1.0.2 --yes
-  assert_success
-  [[ "$(row_of snapshot)" == *"${second:0:12}"*"on ${first:0:12}; the tip of main is this snapshot already"* ]] ||
-    fail "the second snapshot was not found on its own parent: $(row_of snapshot)"
-  assert_state publish already
-  [ "$(pub_fingerprint)" = "$before" ] || fail "a re-run of the second publish wrote to the public repository"
-  # The first, run again, is public already, in main's history.
-  run release_in "$proj" publish v1.0.1 --yes
+  cut_v101 "$proj"
   assert_failure
-  assert_output_contains "v1.0.1 is public already, at ${first:0:12}, in the history of main"
-  [ "$(pub_fingerprint)" = "$before" ] || fail "the first release run again wrote to the public repository"
+  assert_state legs FAILED
+  [[ "$(row_of legs)" == *"the snapshot's push, read at the release commit "*"ci-state --fires answers quiet"*"nothing pushed"* ]] ||
+    fail "the legs row does not refuse the snapshot whose push starts no run: $(row_of legs)"
+  [ "$(pub_fingerprint)" = "$before" ] || fail "the refused cut wrote to the public repository"
 }
 
-@test "a tag another hand pushes while CI runs is refused at the publish step, and main does not move (0240)" {
-  proj="$(publish_project)"
+@test "a publishing cut whose snapshot's push starts the workflow, its paths: filter met by the files the snapshot changes, VERSION among them, passes that check and pushes its candidate (ST0011 WP-02c)" {
+  proj="$(builtin_publish_project 'VERSION\nCHANGELOG.md\nREADME.md\n.github/workflows/tests.yml' "main, 'candidate/**'" "VERSION")"
   cut_v101 "$proj"
-  local x
-  x="$(an_unrelated_commit)"
-  cat >"$DEVBIN_TEST_TMPDIR/ciq.sh" <<SH
-[ -n "\${DEVBIN_RELEASE_TAG-}" ] || git -C "$DEVBIN_TEST_TMPDIR/other" push -q "$PUB" "$x:refs/tags/v1.0.1"
-SH
-  ci_answers "$(printf 'green\trun 7')"
-  run release_in "$proj" publish v1.0.1 --yes
+  # Past the check, the candidate is pushed and then read, here within ci.wait
+  # 0s, so the cut stops at the legs step for want of a verdict, never at the
+  # check. Asked with no files, a paths: filter answers unknown, which is
+  # refused, so the pass says the snapshot's files were passed and read.
+  [[ "$(row_of legs)" != *"the snapshot's push, read at the release commit"* ]] ||
+    fail "the check refused a snapshot whose push starts the workflow: $(row_of legs)"
+  assert_output_contains "pushed the candidate candidate/v1.0.1"
+}
+
+@test "a publishing cut refuses, before anything is pushed, a snapshot that does not carry the release commit's workflow unchanged, since its push could not be read at the release commit (ST0011 WP-02c)" {
+  local before
+  proj="$(builtin_publish_project 'VERSION\nCHANGELOG.md\nREADME.md' "main, 'candidate/**'")"
+  before="$(pub_fingerprint)"
+  cut_v101 "$proj"
   assert_failure
-  assert_state candidate done
-  assert_state publish FAILED
-  assert_output_contains "carries v1.0.1 at ${x:0:12}, not at the snapshot"
-  [ -z "$(pub_at refs/heads/main)" ] || fail "main moved for a tag that could not follow it"
+  assert_state legs FAILED
+  [[ "$(row_of legs)" == *"does not carry "*"'s .github/workflows/tests.yml unchanged"*"nothing pushed"* ]] ||
+    fail "the legs row does not refuse the snapshot that leaves the workflow out: $(row_of legs)"
+  [ "$(pub_fingerprint)" = "$before" ] || fail "the refused cut wrote to the public repository"
 }

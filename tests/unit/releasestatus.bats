@@ -18,9 +18,11 @@ teardown() { devbin_teardown; }
 # released_project [config-tail] -- a release-enabled project at VERSION 1.0.0
 # with a dated note, committed, and main pushed to one bare remote. No tag, no
 # release object. Extra YAML on stdin is appended under the release: key's
-# siblings, so an arm can declare what it needs.
+# siblings, so an arm can declare what it needs. A tail that declares no ci:
+# of its own opts out of the candidate (no_candidate_body): under its own
+# release: block when it has one, else in one of its own.
 released_project() {
-  local proj
+  local proj tail="${1:-}"
   proj="$(mkproj demo <<'YAML'
 project:
   name: demo
@@ -29,9 +31,14 @@ commands:
     enabled: true
 YAML
   )"
-  if [ -n "${1:-}" ]; then
-    printf '%s\n' "$1" >>"$proj/bin/.devbin/config.yaml"
-  fi
+  case $'\n'"$tail" in
+    *$'\n  ci:'*) ;;
+    *$'\nrelease:'*)
+      tail="$(OPT_OUT="$(no_candidate_body "")" awk '{ print } $0 == "release:" { print ENVIRON["OPT_OUT"] }' <<<"$tail")"
+      ;;
+    *) tail="${tail:+$tail$'\n'}release:"$'\n'"$(no_candidate_body "")" ;;
+  esac
+  printf '%s\n' "$tail" >>"$proj/bin/.devbin/config.yaml"
   with_dated_note "$proj"
   git_project "$proj"
   printf '%s\n' "$proj"
@@ -53,7 +60,7 @@ tag_release() {
 # ============================================================================
 
 # AT-3.1
-@test "a fresh release reads every row: stamp and commit already, the rest pending or skipped" {
+@test "a fresh release reads every row: stamp and commit already, the rest pending or skipped, and no ci row (ST0011 WP02b)" {
   proj="$(released_project)"
   run release_in "$proj" status v1.0.0
   assert_success
@@ -61,13 +68,13 @@ tag_release() {
   assert_state pre-flight pending
   assert_state stamp already
   assert_state commit already
-  assert_state gates pending
+  assert_state legs pending
   assert_state confirm pending
   assert_state tag pending
   assert_state push pending
   assert_state object pending
   assert_state after skipped
-  assert_state ci skipped
+  assert_state ci "(no row ci)"
   # A row a step of the core's sequence, in order, and nothing else claiming to
   # be one: the steps are read from the core's own table, not counted here.
   local want
@@ -156,6 +163,23 @@ release:
   run release_in "$proj" status v1.0.0
   assert_success
   assert_state tag already
+}
+
+# AT-3.5
+@test "a tag whose object the repository lacks stops release status with git's own words, never read as no tag with HEAD the release commit (ST0011 WP06)" {
+  local obj file
+  proj="$(released_project)"
+  tag_release "$proj"
+  obj="$(git -C "$proj" rev-parse refs/tags/v1.0.0)"
+  [ "$(git -C "$proj" cat-file -t "$obj")" = tag ] || fail "the fixture's v1.0.0 is no annotated tag"
+  file="$proj/.git/objects/${obj:0:2}/${obj:2}"
+  [ -f "$file" ] || fail "the tag object $obj is not loose at $file"
+  rm -f "$file"
+  run release_in "$proj" status v1.0.0
+  assert_failure
+  assert_output_contains "fatal: Needed a single revision"
+  assert_output_contains "release: the tag v1.0.0 exists, and git cannot read a commit it names, so the release commit is not known"
+  refute_output_contains "no tag yet"
 }
 
 # AT-3.1
@@ -251,17 +275,81 @@ release:
 # ============================================================================
 
 # AT-3.2
-@test "the gates are never already: pending until the tag exists, then not re-run" {
-  proj="$(released_project)"
+@test "the gates are already once a sealed green stands for the release commit on this platform, pending before it, and not re-run past the tag (ST0011)" {
+  proj="$(released_project '
+release:
+  gates:
+    - probe')"
+  create_test_command "$proj" probe "$(printf '#!/usr/bin/env bash\nexit 0\n')" >/dev/null
+  # An open note, so the cut dates it, makes the release commit and gates that:
+  # released_project's note is dated already, and a cut never dates one again.
+  printf '# Changelog\n\n## [1.0.0] - Unreleased\n\n- first\n' >"$proj/CHANGELOG.md"
+  commit_all "$proj" "a probe gate"
   run release_in "$proj" status v1.0.0
-  assert_state gates pending
+  assert_state legs pending
+  # A cut given --yes and stopped before its tag gates the release commit and
+  # seals it.
+  cut_to_tag_stop "$proj" v1.0.0
+  run release_in "$proj" status v1.0.0
+  assert_state legs already
+  [[ "$(row_of legs)" == *"$(git -C "$proj" rev-parse HEAD | cut -c1-12)"*GATES.errors* ]] ||
+    fail "the legs row does not name the release commit and its seal: $(row_of legs)"
   tag_release "$proj"
   git -C "$proj" push -q origin v1.0.0
   gh_object v1.0.0 v1.0.0 '- first'
   run release_in "$proj" status v1.0.0
   assert_success
-  assert_state gates "not re-run"
+  assert_state legs "not re-run"
   refute_output_contains "passed"
+}
+
+# AT-3.1
+@test "a gates record that stands for no commit leaves the gates pending, naming the record and why, and one that cannot be read is UNREADABLE, naming it (ST0011 WP02)" {
+  local out sha
+  proj="$(released_project '
+release:
+  gates:
+    - probe')"
+  create_test_command "$proj" probe "$(printf '#!/usr/bin/env bash\nexit 0\n')" >/dev/null
+  printf '# Changelog\n\n## [1.0.0] - Unreleased\n\n- first\n' >"$proj/CHANGELOG.md"
+  commit_all "$proj" "a probe gate"
+  cut_to_tag_stop "$proj" v1.0.0
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  out="$(readlink -f "$proj/tmp/release/LATEST_GATES.out")" && [ -f "$out" ] || fail "the cut left no GATES pair"
+  # A green whose close line names no clean commit: a record of nothing.
+  sed "s/^devbin| commit at close: .*/devbin| commit at close: $sha +dirty/" "$out" >"$out.new" && mv "$out.new" "$out"
+  run release_in "$proj" status v1.0.0
+  assert_state legs pending
+  [[ "$(row_of legs)" == *"$(basename "${out%.out}").errors"*"stands for no commit"* ]] ||
+    fail "the legs row does not name the record and why it stands for no commit: $(row_of legs)"
+  [ "$(id -u)" -ne 0 ] || skip "root reads a file whatever its mode, so no unreadable record can be made"
+  chmod 000 "$out"
+  run release_in "$proj" status v1.0.0
+  chmod 644 "$out"
+  assert_failure
+  assert_state legs UNREADABLE
+  [[ "$(row_of legs)" == *"$(basename "$out")"* ]] || fail "the legs row does not name the record it could not read: $(row_of legs)"
+}
+
+# AT-3.1
+@test "the legs row is UNREADABLE while the commit row is, never pending on a release commit that could not be read (ST0011 WP02)" {
+  proj="$(released_project '
+release:
+  gates:
+    - probe')"
+  create_test_command "$proj" probe "$(printf '#!/usr/bin/env bash\nexit 0\n')" >/dev/null
+  printf 'CHANGELOG.md filter=boom\n' >"$proj/.gitattributes"
+  commit_all "$proj" "a filter on the changelog"
+  # Declared after the commit, so only the materialiser meets it, as in the
+  # tag-message arm below.
+  git -C "$proj" config filter.boom.smudge false
+  git -C "$proj" config filter.boom.clean cat
+  git -C "$proj" config filter.boom.required true
+  run release_in "$proj" status v1.0.0
+  assert_failure
+  assert_state commit UNREADABLE
+  assert_state legs UNREADABLE
+  assert_output_contains "whether the release commit exists cannot be read"
 }
 
 # AT-3.2
@@ -294,7 +382,7 @@ release:
 }
 
 # AT-3.2
-@test "object: none, an undeclared after: and an undeclared ci.query are skipped, and a declared one is not" {
+@test "object: none, an undeclared after: is skipped and a declared one is not, there is no ci row, and a declared ci.query makes the legs row name the candidate as a cut's to read (ST0011 WP02b)" {
   proj="$(released_project '
 release:
   object: none')"
@@ -302,7 +390,7 @@ release:
   assert_success
   assert_state object skipped
   assert_state after skipped
-  assert_state ci skipped
+  assert_state ci "(no row ci)"
 
   proj2="$(released_project '
 release:
@@ -313,7 +401,28 @@ release:
   run release_in "$proj2" status v1.0.0
   assert_success
   assert_state after pending
-  assert_state ci pending
+  assert_state legs pending
+  [[ "$(row_of legs)" == *"the candidate's run is read by a cut, not by status"* ]] ||
+    fail "the legs row does not say the candidate is a cut's to read: $(row_of legs)"
+}
+
+@test "release.legs and the built-in macos make the legs row name the remote legs and the macOS stage as a cut's to read (ST0011 WP-05, WP-06)" {
+  proj="$(released_project '
+release:
+  legs:
+    - near
+    - far')"
+  perl -0pi -e 's/\ncommands:\n  release:\n    enabled: true\n/\ncommands:\n  release:\n    enabled: true\n  macos:\n    enabled: true\n/' \
+    "$proj/bin/.devbin/config.yaml"
+  grep -q '^  macos:$' "$proj/bin/.devbin/config.yaml" || fail "the fixture's config does not enable macos"
+  commit_all "$proj" "the macOS stage"
+  run release_in "$proj" status v1.0.0
+  assert_success
+  assert_state legs pending
+  [[ "$(row_of legs)" == *"the remote legs (near, far) are read by a cut, not by status"* ]] ||
+    fail "the legs row does not name the remote legs as a cut's to read: $(row_of legs)"
+  [[ "$(row_of legs)" == *"the macOS stage is read by a cut, not by status"* ]] ||
+    fail "the legs row does not name the macOS stage as a cut's to read: $(row_of legs)"
 }
 
 # ============================================================================

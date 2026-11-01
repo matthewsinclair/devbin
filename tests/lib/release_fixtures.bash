@@ -30,11 +30,12 @@ YAML
 # one, so an arm decides what the gate reads, writes or answers. A
 # <release-yaml> argument replaces the release: block's body, and a
 # <project-yaml> argument adds lines under project:. HERE, not in
-# releasecut.bats, since releaseattach.bats cuts it too (ST0008 WP-08).
+# releasecut.bats, since releaseattach.bats cuts it too (ST0008 WP-08). A body
+# that declares no ci: of its own opts out of the candidate (no_candidate_body).
 cut_project() {
   local proj body
-  body="${1:-  gates:
-    - probe}"
+  body="$(no_candidate_body "${1:-  gates:
+    - probe}")"
   proj="$(
     mkproj demo <<YAML
 project:
@@ -53,8 +54,6 @@ YAML
   create_test_command "$proj" probe "$(printf '#!/usr/bin/env bash\necho "probe $*" >>"%s/gate.calls"\nif [ -f "%s/gate.sh" ]; then . "%s/gate.sh"; fi\nexit 0\n' \
     "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR")" >/dev/null
   git_project "$proj"
-  git -C "$proj" config user.name t
-  git -C "$proj" config user.email t@t
   git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace
   git -C "$proj" push -q origin v1.0.0
   printf '# Changelog\n\n## [1.0.1] - Unreleased\n\n- second\n\n## [1.0.0] - 2026-01-01\n\n- first\n' >"$proj/CHANGELOG.md"
@@ -63,8 +62,46 @@ YAML
   printf '%s\n' "$proj"
 }
 
-# git_project <proj> -- a committed repository with a bare remote holding main,
-# and a `gh` stub on PATH that records every call outside the project.
+# no_candidate_body <release-body> -- <release-body>, a release: block's lines,
+# with `ci: query: "-"` added unless it declares a ci: block of its own (ST0011
+# WP-02c): every cut has a candidate unless its project opts out, and a
+# fixture holds no workflow a candidate's push could start, so a fixture that
+# declares no CI opts out, and one that declares any ci: key keeps its own.
+no_candidate_body() {
+  case $'\n'"$1" in
+    *$'\n  ci:'*) printf '%s\n' "$1" ;;
+    *)
+      [ -z "$1" ] || printf '%s\n' "$1"
+      printf '  ci:\n    query: "-"\n'
+      ;;
+  esac
+}
+
+# write_tests_workflow <proj> <branches> [<paths>] -- <proj>'s
+# .github/workflows/tests.yml, the built-in query's default workflow: a push
+# trigger taking <branches> and, given <paths>, filtered on them, and one job.
+# Written, not committed: each caller commits it as its fixture needs. HERE,
+# since the cut's arms (releasecut.bats) and a publishing cut's
+# (releasepublish.bats) both write it (ST0011 WP-02c).
+write_tests_workflow() {
+  mkdir -p "$1/.github/workflows"
+  {
+    printf 'name: Tests\non:\n  push:\n    branches: [%s]\n' "$2"
+    [ -z "${3:-}" ] || printf '    paths: [%s]\n' "$3"
+    printf 'jobs:\n  t:\n    runs-on: ubuntu-latest\n    steps:\n      - run: "true"\n'
+  } >"$1/.github/workflows/tests.yml"
+}
+
+# git_project <proj> -- a committed repository with its own identity, a bare
+# remote holding main, and a `gh` stub in $DEVBIN_TEST_TMPDIR/stubs, which
+# release_in and macos_in put on PATH, recording every call outside the
+# project.
+#
+# THE IDENTITY IS IN THE PROJECT'S CONFIG, so every commit and tag made in it
+# reads the same on every host, the release commit the cut makes as much as the
+# fixture's own: the harness reads no global or system config, and git with no
+# identity set guesses one from the host's name, which a host without a domain
+# refuses (issue 0300).
 #
 # AN OBJECT MADE BY A WORKFLOW (`object: ci`) is $DEVBIN_TEST_TMPDIR/gh.appear,
 # "<tag> <n>": the tag joins the list on the nth `release view` of it, so an
@@ -79,8 +116,10 @@ YAML
 git_project() {
   local proj="$1"
   git -C "$proj" init -q -b main
+  git -C "$proj" config user.name t
+  git -C "$proj" config user.email t@t
   git -C "$proj" add -A
-  git -C "$proj" -c user.name=t -c user.email=t@t commit -qm init
+  git -C "$proj" commit -qm init
   # -b main, as for the project: a clone takes the remote's HEAD, and a runner
   # with no init.defaultBranch (CI's) points it at master, so a clone had no main.
   git init -q --bare -b main "$DEVBIN_TEST_TMPDIR/remote.git"
@@ -513,6 +552,35 @@ release_in() {
   PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" devbin_run "$proj" release "$@"
 }
 
+# release_seal <proj> -- the cut's RELEASE seal, the .errors file
+# LATEST_RELEASE.errors points at, as an absolute path; rc 1, saying so on
+# stderr, when the cut left none.
+release_seal() {
+  local seal
+  if seal="$(readlink -f "$1/tmp/release/LATEST_RELEASE.errors")" && [ -f "$seal" ]; then
+    printf '%s\n' "$seal"
+    return 0
+  fi
+  printf 'the cut left no RELEASE seal under %s/tmp/release/\n' "$1" >&2
+  return 1
+}
+
+# assert_release_seal <seal> <state> <text> -- the cut's RELEASE seal <seal>
+# is closed in <state>, `green` or `failed`, as lib/runlog's seal_state words
+# it: the one classifier every reader of a seal asks, so the arm reads the
+# seal as they do, and neither state is the in-flight marker a run that never
+# sealed leaves. And <text>, the cut's output, carries the verdict line that
+# names that seal, the line a person reads it by (issue 0297).
+assert_release_seal() {
+  local seal="$1" want="$2" got named
+  got="$(bash -c '. "$1/helpers" && . "$1/runlog" && seal_state "$2"' _ "$DEVBIN_LIB_DIR" "$seal")" ||
+    fail "lib/runlog's seal_state could not read $seal"
+  [ "$got" = "$want" ] || fail "the RELEASE seal is $got, want $want: $(cat "$seal")"
+  named="$(sed -n 's/^verdict: \(.*\.RELEASE\.errors\)$/\1/p' <<<"$3")"
+  [ -n "$named" ] && [ "$named" -ef "$seal" ] ||
+    fail "the cut's output has no verdict line naming its RELEASE seal $seal: ${named:-no RELEASE verdict line}"
+}
+
 # ci_query_decl <wait> -- the release: lines declaring the fixture's ci.query:
 # $DEVBIN_TEST_TMPDIR/ciq, which records the arguments it was given in ci.calls,
 # with the DEVBIN_RELEASE_TAG it was run under as a last word `tag=<tag>`,
@@ -577,9 +645,8 @@ row_of() {
 }
 
 # state_of <step> -- the state column of the <step> row (row_of), `(no row
-# <step>)` when the table has none. A state of two words is read whole: `not
-# re-run`, a publishing cut's `not reached` and status's `not read` (0240),
-# which reading the first word alone would take for one another.
+# <step>)` when the table has none. A state of two words, `not re-run`, is read
+# whole, so a row reads the same whatever word comes after `not`.
 state_of() {
   local row
   row="$(row_of "$1")" || return
@@ -597,4 +664,185 @@ assert_state() {
   got="$(state_of "$1")"
   [ "$got" = "$2" ] || fail "the $1 row is '$got', want '$2':
 $output"
+}
+
+# assert_stopped_at_confirm -- with no terminal and no --yes the run stopped at
+# the confirm step with exit 1, its row saying nobody was there to ask. Exit 1 since issue
+# 0130 (2 is the dispatcher's), so the ROW is what tells this from a person
+# declining, or from any other step failing, and every such check asserts it.
+# THE CONFIRM STEP COMES BEFORE ANYTHING RUNS (ST0011), so a stop there has no
+# stamp row after it, and tagged and pushed nothing.
+assert_stopped_at_confirm() {
+  # $status is bats's, set by the caller's `run`; this file never assigns it.
+  # shellcheck disable=SC2154
+  [ "$status" -eq 1 ] || fail "want exit 1 at the confirmation, got $status:
+$output"
+  assert_state confirm FAILED
+  assert_output_contains "nobody to ask"
+  assert_state stamp "(no row stamp)"
+  assert_output_contains "This run tagged nothing and pushed nothing"
+}
+
+# tag_refused_path -- PATH with a git in front whose `tag -a` fails, saying so,
+# and which runs the real git for everything else. A cut given --yes under it
+# stamps, commits and runs its legs, then stops at the tag step, having tagged
+# nothing: what a cut that stopped after its legs leaves, now that the confirm
+# step comes before them (ST0011). HERE, not in releasecut.bats, since
+# releasestatus.bats cuts too, to make the record its legs row reads.
+tag_refused_path() {
+  local shim="$DEVBIN_TEST_TMPDIR/tagrefused" real
+  real="$(command -v git)"
+  mkdir -p "$shim"
+  # shellcheck disable=SC2016 # the shim's own $1 and $2, expanded when it runs
+  printf '#!/bin/sh\nif [ "$1" = tag ] && [ "$2" = -a ]; then echo "the fixture refuses git tag -a" >&2; exit 1; fi\nexec "%s" "$@"\n' "$real" >"$shim/git"
+  chmod +x "$shim/git"
+  printf '%s:%s\n' "$shim" "$PATH"
+}
+
+# cut_to_tag_stop [--candidate] <proj> <target> [args...] -- `run` a cut of
+# <target> given --yes under tag_refused_path, and assert that it stopped at
+# the tag step on the fixture's refusal of `git tag -a`, with the legs passed
+# or already, tagging and pushing nothing. With --candidate, given by an arm
+# whose project declares ci.query and whose query reads no green before the
+# push, nothing but the candidate the legs step pushed to origin, git_project's
+# one remote, as candidate/<target>, which the stop deleted (ST0011, AC-2.3).
+# THE ARM SAYS WHETHER A CANDIDATE IS DUE, never the output under test, so a
+# cut that pushed none where one was due, or one where none was, fails here;
+# and the remote itself, git_project's bare repository, is read for any
+# candidate left, never the cut's word for it. The refusal is asserted by
+# name: the tag step can stop for another reason, the remotes reading
+# otherwise than confirmed, and leave the same rows, which every caller would
+# then read as this stop.
+cut_to_tag_stop() {
+  local due=no proj left
+  if [ "$1" = --candidate ]; then
+    due=yes
+    shift
+  fi
+  proj="$1"
+  shift
+  PATH="$(tag_refused_path)" run release_in "$proj" "$@" --yes
+  [ "$status" -eq 1 ] || fail "want exit 1 at the tag step, got $status:
+$output"
+  assert_state tag FAILED
+  assert_output_contains "the fixture refuses git tag -a"
+  [[ "$(row_of tag)" == *"git tag failed"* ]] ||
+    fail "the tag row is not the fixture's refusal of git tag -a: $(row_of tag)"
+  if [ "$due" = yes ]; then
+    assert_output_contains "This run pushed the candidate candidate/$1 to origin, deleted the candidate candidate/$1 from origin."
+  else
+    assert_output_contains "This run tagged nothing and pushed nothing"
+  fi
+  left="$(git --git-dir="$DEVBIN_TEST_TMPDIR/remote.git" for-each-ref --format='%(refname)' refs/heads/candidate/)"
+  [ -z "$left" ] || fail "the remote holds a candidate after the stop: $left"
+  case "$(state_of legs)" in
+    done | already) ;;
+    *) fail "the legs row is '$(state_of legs)', want done or already:
+$output" ;;
+  esac
+}
+
+# THE FAKE HOSTS (ST0011 WP-05): releaselegs.bats drives the remote legs'
+# runner against them, and releasecut.bats a cut whose release.legs names
+# them. A caller sets HOSTS, the directory holding one directory per host,
+# and makes $DEVBIN_TEST_TMPDIR/stubs, then puts that first on PATH.
+
+# fake_ssh -- an `ssh` that logs its whole argv to ssh.calls, reaches a host only
+# when $HOSTS/<host> exists, and there runs the command it was handed under
+# that directory as HOME, as a login would. Given -n it reads /dev/null for its
+# stdin, as ssh does, and otherwise its caller's. A host holding .unreachable answers
+# as one ssh cannot reach (255), and one holding .broken as a host whose shell
+# fails what it is given (1). .fail-receive-pack fails git's receive-pack
+# there, and .fail-start fails a script that starts the gates. A host's own
+# commands go in its .bin, first on the PATH a command runs under there, so a
+# host can answer `uname -s` for itself (ST0011 WP-02c).
+fake_ssh() {
+  cat >"$DEVBIN_TEST_TMPDIR/stubs/ssh" <<SH
+#!/usr/bin/env bash
+printf '%s\n' "\$*" >>"$DEVBIN_TEST_TMPDIR/ssh.calls"
+while [ \$# -gt 0 ]; do
+  case "\$1" in
+    -o) shift 2 ;;
+    -n)
+      exec </dev/null
+      shift
+      ;;
+    -*) shift ;;
+    *) break ;;
+  esac
+done
+host="\$1"
+shift
+home="$HOSTS/\$host"
+if [ ! -d "\$home" ]; then
+  printf 'ssh: Could not resolve hostname %s: nodename nor servname provided, or not known\n' "\$host" >&2
+  exit 255
+fi
+if [ -e "\$home/.unreachable" ]; then
+  printf 'ssh: connect to host %s port 22: Operation timed out\n' "\$host" >&2
+  exit 255
+fi
+if [ -e "\$home/.broken" ]; then
+  printf 'the shell on %s fails what it is given\n' "\$host" >&2
+  exit 1
+fi
+cd "\$home" || exit 255
+case "\$*" in
+  git-receive-pack*)
+    if [ -e "\$home/.fail-receive-pack" ]; then
+      printf 'fatal: the receiving end refused the pack\n' >&2
+      exit 1
+    fi
+    HOME="\$home" PATH="\$(git --exec-path):\$PATH" exec sh -c "\$*"
+    ;;
+esac
+script="\$(cat)"
+if [ -e "\$home/.fail-start" ] && [[ "\$script" == *_release_leg_remote_start* ]]; then
+  printf 'the host refused to start anything\n' >&2
+  exit 1
+fi
+HOME="\$home" PATH="\$home/.bin:\$(git --exec-path):\$PATH" exec sh -c "\$*" <<<"\$script"
+SH
+  chmod +x "$DEVBIN_TEST_TMPDIR/stubs/ssh"
+}
+
+# fake_scp -- an `scp` logging its argv to ssh.calls and copying <host>:<path>
+# out of that host's home, its glob expanded there, keeping the files' times
+# only when given -p, under fake_ssh's reach rules; .fail-scp fails it.
+fake_scp() {
+  cat >"$DEVBIN_TEST_TMPDIR/stubs/scp" <<SH
+#!/usr/bin/env bash
+printf 'scp %s\n' "\$*" >>"$DEVBIN_TEST_TMPDIR/ssh.calls"
+keep=()
+while [ \$# -gt 0 ]; do
+  case "\$1" in
+    -o) shift 2 ;;
+    -p)
+      keep=(-p)
+      shift
+      ;;
+    -*) shift ;;
+    *) break ;;
+  esac
+done
+src="\$1" dest="\$2"
+host="\${src%%:*}" path="\${src#*:}"
+home="$HOSTS/\$host"
+if [ ! -d "\$home" ] || [ -e "\$home/.unreachable" ]; then
+  printf 'ssh: connect to host %s port 22: Operation timed out\n' "\$host" >&2
+  exit 255
+fi
+if [ -e "\$home/.fail-scp" ]; then
+  printf 'scp: %s: Permission denied\n' "\$path" >&2
+  exit 1
+fi
+shopt -s nullglob
+files=("\$home/"\$path)
+if [ "\${#files[@]}" -eq 0 ]; then
+  printf 'scp: %s: No such file or directory\n' "\$path" >&2
+  exit 1
+fi
+cp "\${keep[@]}" "\${files[@]}" "\$dest"
+SH
+  chmod +x "$DEVBIN_TEST_TMPDIR/stubs/scp"
 }

@@ -2,19 +2,21 @@ name: Devbin Tests
 
 on:
   push:
-    # main, and a release's candidate (issue 0240). release publish pushes a
-    # release's snapshot to candidate/<tag> and reads CI on it before the public
-    # main or the tag moves, so a candidate runs the whole matrix a tag runs,
-    # macOS and WSL included (the jobs' conditions below). The prefix is
-    # release.publish.candidate's default, and tests/unit/ci-workflow.bats
+    # main, and a release's candidate (issue 0240). A cut pushes its candidate,
+    # under release.publish.url the release's snapshot, to candidate/<tag> and
+    # reads CI on it before anything is tagged, so a candidate runs the whole
+    # matrix, macOS and WSL included (the jobs' conditions below). The prefix
+    # is release.publish.candidate's default, and tests/unit/ci-workflow.bats
     # holds this filter and those conditions to it.
+    #
+    # NO TAG STARTS A RUN (ST0011 WP-04). The tag is pushed only once every leg
+    # is green, the candidate's run among them, on the very commit it names, so
+    # a run of its own would give the same verdict again, at about an hour of
+    # macOS. release.yml, which makes the release object, still runs on it. A
+    # project that copies this file and whose cut has no candidate, declaring
+    # no release.ci.query, keeps a tag filter here: its cut reads no CI before
+    # the tag, so a run on the tag is the only one its release gets.
     branches: [main, 'candidate/**']
-    # ONE TAG FILTER FOR EVERY PROJECT THAT COPIES THIS FILE, matching both
-    # release forms: devbin tags `v0.1.5`, and Utilz has tagged bare since 2.7.0.
-    # This line is the only place in this file where a tag's FORM is written.
-    # The macOS condition below asks the ref's TYPE and never its spelling, so
-    # a project whose tags look different changes this line and nothing else.
-    tags: ['v[0-9]*', '[0-9]*']
     # A PUSH THAT ONLY MOVES COORDINATION STATE STARTS NOTHING (issue 0110).
     # JUSTIFIED BY WHAT NO JOB READS, not by a hit rate: nothing in this
     # workflow opens intent/whiteboard/ or intent/.canon/, so a push touching
@@ -29,13 +31,6 @@ on:
     # trees and the intent/whiteboard/ line ALONE suppresses nothing a board
     # write does. Measured over fourteen days of pushes: 0 of 32 skipped with
     # the intent/whiteboard/ line, 6 of 32 with the canon line beside it.
-    #
-    # THIS CANNOT SUPPRESS THE TAG RUN ABOVE, however much it reads as though it
-    # could: GitHub does not evaluate path filters for pushes of tags at all,
-    # and where branches and paths-ignore are both given it is a BRANCH push
-    # that must satisfy both. The two lines are independent, and a release tag
-    # always runs. The sentence is here because the inference is one step away
-    # and its conclusion would be to delete a correct line.
     #
     # The consequence is in docs/releasing.md: a board-only push has no run of
     # its own, so "CI is green on the pushed commit" reads on the last run.
@@ -55,8 +50,8 @@ on:
 # THE EVENT IS PART OF THE KEY, which is not decoration: a push to main and a
 # workflow_dispatch on main share a ref, so a group keyed on the ref alone would
 # let a push cancel an on-demand macOS run after its ten-times minutes had
-# already been spent, and let a dispatch cancel a push's run. A tag carries its
-# own ref, so a release run is never cancelled by a push to main.
+# already been spent, and let a dispatch cancel a push's run. A candidate carries
+# its own ref, so a release's run is never cancelled by a push to main.
 #
 # WHAT THIS ADDS is narrower than it reads: GitHub already replaces a PENDING
 # run in the same group. `cancel-in-progress` adds the one that is RUNNING,
@@ -124,8 +119,12 @@ jobs:
       # Through devbin, not bats directly: Devbin uses devbin, so a
       # defect in the dispatcher breaks Devbin's own build before it can reach a
       # live project. Running bats straight would route around the thing under
-      # test.
+      # test. EVERY CPU THE RUNNER HAS (ST0011 WP-04): nothing shares a runner,
+      # so the parallel lane takes them all, counted by the suite's own probe
+      # (bats-lanes, cpu_probe) and never written here as a number.
       - name: Run tests
+        env:
+          DEVBIN_TEST_JOBS: all
         run: bin/devbin test all
 
       # EVERY `check` GATE EXCEPT `critic` AND `lint`, each for its own reason.
@@ -162,38 +161,35 @@ jobs:
 
   test-macos:
     name: Test on macOS (bash >= 5 floor)
-    # ON TAGS, A RELEASE'S CANDIDATES AND ON DEMAND, NEVER ON A PUSH TO main
-    # (issues 0108 and 0240). A macOS minute costs ten times a Linux one, so
-    # this job does not run on every push.
+    # ON A RELEASE'S CANDIDATES AND ON DEMAND, NEVER ON A PUSH TO main (issues
+    # 0108 and 0240). A macOS minute costs ten times a Linux one, so this job
+    # does not run on every push.
     #
-    # The tag half asks github.ref_type, which GitHub documents as `branch` or
-    # `tag`, and never the tag's spelling: on.push.tags above decides WHICH tags
-    # start a run, and this decides whether a run carries the macOS leg. Test
-    # Summary repeats this expression, and tests/unit/ci-workflow.bats holds the
-    # two equal AND pins what they say -- two copies agreeing on something wrong
-    # would skip macOS on a release and then accept the skip, which is a guard
-    # failing in the same direction as the bug it guards.
+    # Test Summary repeats this expression, and tests/unit/ci-workflow.bats holds
+    # the two equal AND pins what they say -- two copies agreeing on something
+    # wrong would skip macOS on a release and then accept the skip, which is a
+    # guard failing in the same direction as the bug it guards.
     #
-    # AND ON A RELEASE'S CANDIDATE (issue 0240), the snapshot release publish
-    # pushes to candidate/<tag> before anything is public: CI green there is
-    # what lets the public main and the tag move, so it is the release's whole
-    # matrix, as a tag's run is. Asked by the branch's prefix, which on.push
-    # above names too.
+    # A RELEASE'S CANDIDATE (issue 0240), the snapshot a cut pushes to
+    # candidate/<tag> before anything is public: CI green there is what lets
+    # the public main and the tag move, so it is the release's whole matrix,
+    # and the tag starts no run of its own (ST0011 WP-04). Asked by the
+    # branch's prefix, which on.push above names too.
     #
     # AND IT TAKES THE LEG OFF PULL REQUESTS TOO, which is worth saying out loud
     # because nothing else here would say it: a pull_request's ref is
-    # refs/pull/N/merge, whose ref_type is `branch`, so the condition is false
-    # and the leg skips. Devbin never sees one -- this repository works without
+    # refs/pull/N/merge, which is no candidate's branch, so the condition is
+    # false and the leg skips. Devbin never sees one -- this repository works without
     # branches -- but this file is the shape Intent, Utilz, Molt and another project
     # copy, and there a pull request is the normal way work arrives. A project
     # that wants macOS on pull requests adds that event here deliberately,
     # rather than discovering the gap after a merge.
     #
     # THE COST, stated because it is real: drift on this runner -- the image,
-    # Homebrew -- now surfaces at a tag or a dispatch rather
+    # Homebrew -- now surfaces at a candidate or a dispatch rather
     # than on the next push. docs/releasing.md says to run this leg on demand
     # before a cut when the macOS side has been quiet.
-    if: ${{ github.ref_type == 'tag' || github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
+    if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
@@ -250,8 +246,11 @@ jobs:
           grep -q "bash >= 5" <<<"$out"
 
       # NAMED for what it does: bats runs under the PATH bash asserted >= 5
-      # above. The old-bash coverage is the refusal proof, not this step.
+      # above. The old-bash coverage is the refusal proof, not this step. Every
+      # CPU the runner has, as on Ubuntu (ST0011 WP-04).
       - name: Run tests
+        env:
+          DEVBIN_TEST_JOBS: all
         run: bin/devbin test all
 
       # THE UBUNTU JOB'S GATES, BY NAME, AND NOT `check all` (issue 0293).
@@ -339,8 +338,8 @@ jobs:
 
   test-wsl:
     # THE SUITE AND THE SMOKE LIST INSIDE WSL, ON A WINDOWS RUNNER (ST0008).
-    # On tags, a release's candidates and on demand only, on exactly the macOS
-    # leg's expression: a Windows minute costs twice a Linux one, and
+    # On a release's candidates and on demand only, on exactly the macOS leg's
+    # expression: a Windows minute costs twice a Linux one, and
     # tests/unit/ci-workflow.bats holds the two expressions equal.
     #
     # IT BLOCKS NOTHING FOR NOW, by choice, so it is
@@ -353,7 +352,7 @@ jobs:
     # have. WSL 1 would count for devbin, the intent CLI and the critic gate,
     # and not for intentd's file watching or WSL 2's kernel.
     name: Test in WSL ${{ matrix.wsl }} (Ubuntu 26.04)
-    if: ${{ github.ref_type == 'tag' || github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
+    if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
     runs-on: windows-latest
     strategy:
       matrix:
@@ -361,10 +360,11 @@ jobs:
     # NOTHING CROSSES INTO WSL UNLESS WSLENV NAMES IT. /p translates the
     # workspace's Windows path into WSL's. CI is passed so `require_command`
     # fails rather than skips, as it does on the other legs. The Intent
-    # install's pins are named here for the one step that reads them.
+    # install's pins are named here for the one step that reads them, and
+    # DEVBIN_TEST_JOBS for the suite's step, which sets it (ST0011 WP-04).
     env:
       WSL_WANT: ${{ matrix.wsl }}
-      WSLENV: GITHUB_WORKSPACE/p:GITHUB_SHA:WSL_WANT:CI:INTENT_TAG:INTENT_ASSET:INTENT_SHA256
+      WSLENV: GITHUB_WORKSPACE/p:GITHUB_SHA:WSL_WANT:CI:INTENT_TAG:INTENT_ASSET:INTENT_SHA256:DEVBIN_TEST_JOBS
     steps:
       - uses: actions/checkout@v7
 
@@ -450,8 +450,11 @@ jobs:
           bats --version
           bash "$HOME/devbin/.github/install-shellcheck.sh"
 
+      # Every CPU the runner has, as on Ubuntu and macOS (ST0011 WP-04).
       - name: Run tests
         shell: wsl-bash {0}
+        env:
+          DEVBIN_TEST_JOBS: all
         run: |
           set -euo pipefail
           cd "$HOME/devbin"
@@ -533,13 +536,14 @@ jobs:
     # THE DECISION'S INPUTS COME THROUGH env RATHER THAN INLINE ${{ }}, so that
     # the script below is a script: tests/unit/ci-workflow.bats extracts it and
     # RUNS it on each combination of results. An inline expression can only be
-    # text-matched by a test, and the case that matters -- a release tag whose
-    # macOS leg was skipped -- is exactly the one no text match can catch.
+    # text-matched by a test, and the case that matters -- a release's
+    # candidate whose macOS leg was skipped -- is exactly the one no text match
+    # can catch.
     env:
       LINUX: ${{ needs.test-linux.result }}
       MACOS: ${{ needs.test-macos.result }}
       SHELLCHECK: ${{ needs.shellcheck.result }}
-      MACOS_REQUIRED: ${{ github.ref_type == 'tag' || github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
+      MACOS_REQUIRED: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
     steps:
       - name: Summary
         run: |
@@ -589,10 +593,10 @@ jobs:
           [ "$LINUX" = success ] || refuse test-linux "$LINUX"
           [ "$SHELLCHECK" = success ] || refuse shellcheck "$SHELLCHECK"
           # A SKIPPED macOS LEG IS A PASS ONLY WHERE IT WAS NOT ASKED FOR. On a
-          # tag or a dispatch it is a missing verdict wearing a pass, on the one
-          # run that carries the bash 3.2 refusal proof. An
-          # EMPTY result -- a job that never started -- is never acceptable, on
-          # any event.
+          # candidate or a dispatch it is a missing verdict wearing a pass, on
+          # the one run that carries the bash 3.2 refusal proof. An EMPTY
+          # result -- a job that never started -- is never acceptable, on any
+          # event.
           # AN UNRECOGNISED REQUIREMENT REFUSES rather than falling through to
           # the permissive branch. Written as `if [ "$MACOS_REQUIRED" = true ]`
           # it sent every other value -- a renamed env key, an expression that

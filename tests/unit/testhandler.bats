@@ -311,6 +311,36 @@ $(cat "$DEVBIN_TEST_TMPDIR/bats.argv")"
   handed "--jobs 2 --filter-tags !serial tests/unit"
 }
 
+@test "DEVBIN_TEST_JOBS=all runs the parallel lane on every CPU the probe counts, one lane on one CPU, and is refused where nothing counts them (WP04)" {
+  require_command parallel "no GNU parallel on this runner"
+  local root rec counted
+  root="$(lanes_fixture)"
+  mkdir -p "$DEVBIN_TEST_TMPDIR/cpus"
+  # The probe's answer is the stub's, and every expectation is read from it.
+  for counted in 6 1; do
+    printf '#!/bin/sh\necho %s\n' "$counted" >"$DEVBIN_TEST_TMPDIR/cpus/nproc"
+    chmod +x "$DEVBIN_TEST_TMPDIR/cpus/nproc"
+    rec="$(bats_recorder)"
+    run lanes_run "$root" DEVBIN_TEST_JOBS=all PATH="$rec:$DEVBIN_TEST_TMPDIR/cpus:$PATH"
+    assert_success
+    if [ "$counted" -gt 1 ]; then
+      assert_output_contains "lanes: two. First $counted tests at a time under GNU parallel"
+      handed "--jobs $counted --filter-tags !serial tests/unit"
+    else
+      assert_output_contains "lanes: one, serial, because DEVBIN_TEST_JOBS is all, and this machine has one CPU"
+    fi
+  done
+  # Neither nproc nor getconf answering: refused, naming the setting, and no
+  # bats ran -- never cpu_count's guess of 4 taken as every CPU.
+  printf '#!/bin/sh\nexit 1\n' >"$DEVBIN_TEST_TMPDIR/cpus/nproc"
+  printf '#!/bin/sh\nexit 1\n' >"$DEVBIN_TEST_TMPDIR/cpus/getconf"
+  chmod +x "$DEVBIN_TEST_TMPDIR/cpus/nproc" "$DEVBIN_TEST_TMPDIR/cpus/getconf"
+  run lanes_run "$root" DEVBIN_TEST_JOBS=all PATH="$DEVBIN_TEST_TMPDIR/cpus:$PATH"
+  [ "$status" -ne 0 ] || fail "DEVBIN_TEST_JOBS=all was taken where nothing counts the CPUs: $output"
+  assert_output_contains "DEVBIN_TEST_JOBS is 'all', and neither nproc nor getconf could count this machine's CPUs"
+  ! grep -qE '^1\.\.[0-9]+$' <<<"$output" || fail "DEVBIN_TEST_JOBS=all was refused, and bats ran anyway:\n$output"
+}
+
 @test "with no test tagged serial there is no serial lane, and the run says so (0190)" {
   require_command parallel "no GNU parallel on this runner"
   local root all serial tally

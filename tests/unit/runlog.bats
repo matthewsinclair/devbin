@@ -73,6 +73,62 @@ teardown() { devbin_teardown; }
   assert_file_contains logs/gone.errors "run FAILED (exit 3)"
 }
 
+@test "a red run's seal reads in flight to every reader until its red text replaces it whole, from the failure blocks and from the log tail alike, and no temporary is left beside it (0306)" {
+  # seal_state reads an EMPTY seal as a completed green run, and a seal written
+  # in place was emptied by its redirect before the red text reached it. Each
+  # pipeline that makes the red text ends in strip_ansi, run as a process of
+  # its own, so redefined here it reads the seal as any reader would while the
+  # text is made: by the time its body runs, a redirect onto the seal has
+  # already emptied it.
+  strip_ansi() {
+    seal_state logs/run.errors >>logs/states
+    cat
+  }
+  local line state left
+  mkdir -p logs
+  for line in 'Error: it broke' 'total gibberish no grammar matches this'; do
+    printf '%s\n' "$line" >logs/run.out
+    inflight_marker >logs/run.errors
+    : >logs/states
+    write_errors_file 1 logs/run.out logs/run.errors "$(grammar_for generic)"
+    [ -s logs/states ] || fail "nothing read the seal while the red text was made from '$line'"
+    while IFS= read -r state; do
+      case "$state" in
+        inflight | failed) ;;
+        *) fail "a reader read the seal as $state while the red text was made from '$line'" ;;
+      esac
+    done <logs/states
+    [ "$(seal_state logs/run.errors)" = failed ] || fail "the red run from '$line' sealed $(seal_state logs/run.errors)"
+    left="$(compgen -G 'logs/run.errors.*')" || true
+    [ -z "$left" ] || fail "a temporary was left beside the seal: $left"
+  done
+}
+
+@test "a red seal that cannot be staged beside the seal is left unsealed, says so, and is never written in place, whether it held the in-flight marker or was empty (0306)" {
+  # Written in place, the seal reads green until the red text lands, so that is
+  # no fallback: where no temporary can be made beside it, the seal keeps the
+  # in-flight marker, which no reader takes for green. An EMPTY seal reads
+  # green already, so it takes the marker first.
+  local start
+  mkdir -p logs
+  printf 'Error: it broke\n' >logs/run.out
+  for start in marker empty; do
+    if [ "$start" = marker ]; then inflight_marker >logs/run.errors; else : >logs/run.errors; fi
+    chmod a-w logs
+    if [ -w logs ]; then
+      chmod u+w logs
+      [[ -z "${CI:-}" ]] || fail "this CI runner writes a directory without its write bits (logs), so the seal that cannot be staged cannot be built: run the job as a user that cannot"
+      skip "running with permissions that write a read-only directory: the seal that cannot be staged was NOT checked"
+    fi
+    run write_errors_file 1 logs/run.out logs/run.errors "$(grammar_for generic)"
+    chmod u+w logs
+    assert_success
+    assert_output_contains "cannot seal logs/run.errors -- the run was RED"
+    assert_output_contains "so it is left unsealed"
+    [ "$(seal_state logs/run.errors)" = inflight ] || fail "the seal that started $start reads $(seal_state logs/run.errors), not in flight"
+  done
+}
+
 @test "write_errors_file is a no-op when no companion is kept" {
   # The --no-out case: errors is empty, so there is nothing to seal.
   run write_errors_file 1 /dev/null "" "$(grammar_for generic)"
@@ -1394,6 +1450,227 @@ $(grep platform "$log" || echo '(no platform line at all)')"
   run_gate --suffix demo --grammar credo --out-dir logs -- true
   assert_file_empty logs/LATEST_DEMO.errors
   grep -q "^devbin| *platform:" "$(readlink -f logs/LATEST_DEMO.out)"
+}
+
+# ============================================================================
+# THE COMMIT A SEAL STANDS ON (ST0011 WP01)
+#
+# A green is remembered for (commit, platform) only when the seal names the
+# commit at open and again at close, both clean and the same; seal_verdict is
+# the one reader, answering ci-state's words: green, failed, pending, none,
+# unknown.
+# ============================================================================
+
+# commit_repo -- a committed repository at $DEVBIN_TEST_TMPDIR/repo with logs/
+# ignored, entered and set as PROJECT_ROOT, so a gate run here stands on a
+# clean commit.
+commit_repo() {
+  local repo="$DEVBIN_TEST_TMPDIR/repo"
+  mkdir -p "$repo" || return 1
+  git -C "$repo" init -q -b main || return 1
+  printf 'logs/\n' >"$repo/.gitignore"
+  printf 'one\n' >"$repo/file"
+  git -C "$repo" add -A || return 1
+  git -C "$repo" -c user.name=t -c user.email=t@t commit -qm one || return 1
+  export PROJECT_ROOT="$repo"
+  cd "$repo" || return 1
+}
+
+# seal_commits <out> -- the seal's commit at open, then its commit at close.
+seal_commits() {
+  sed -n -e 's/^devbin|   commit: //p' -e 's/^devbin| commit at close: //p' "$1"
+}
+
+# verdict_word -- the word of the last `run seal_verdict`.
+verdict_word() { printf '%s' "${output%%$'\t'*}"; }
+
+# AT-1.1
+@test "a seal names the commit it ran on at open and again at close: the bare sha on a clean tree, +dirty on a dirty one, unknown outside a checkout (ST0011)" {
+  commit_repo
+  local sha
+  sha="$(git rev-parse HEAD)"
+  run_gate --suffix demo --out-dir logs -- true
+  [ "$(seal_commits "$(readlink -f logs/LATEST_DEMO.out)")" = "$sha"$'\n'"$sha" ] ||
+    fail "on a clean tree: '$(seal_commits "$(readlink -f logs/LATEST_DEMO.out)")'"
+  printf 'two\n' >file
+  run_gate --suffix demo --out-dir logs -- true
+  [ "$(seal_commits "$(readlink -f logs/LATEST_DEMO.out)")" = "$sha +dirty"$'\n'"$sha +dirty" ] ||
+    fail "on a dirty tree: '$(seal_commits "$(readlink -f logs/LATEST_DEMO.out)")'"
+  mkdir -p "$DEVBIN_TEST_TMPDIR/plain"
+  cd "$DEVBIN_TEST_TMPDIR/plain"
+  export PROJECT_ROOT="$PWD"
+  run_gate --suffix demo --out-dir logs -- true
+  [ "$(seal_commits "$(readlink -f logs/LATEST_DEMO.out)")" = "unknown"$'\n'"unknown" ] ||
+    fail "outside a checkout: '$(seal_commits "$(readlink -f logs/LATEST_DEMO.out)")'"
+}
+
+# AT-1.4
+@test "seal_verdict reads a sealed green as green for its own commit and platform, naming the seal, and as none for another commit or another platform (ST0011)" {
+  commit_repo
+  local sha plat
+  sha="$(git rev-parse HEAD)"
+  plat="$(platform_identity)"
+  run_gate --suffix demo --out-dir logs -- true
+  run seal_verdict logs demo "$sha" "$plat"
+  assert_success
+  [ "$(verdict_word)" = green ] || fail "its own commit: $output"
+  assert_output_contains "$(basename "$(readlink -f logs/LATEST_DEMO.errors)")"
+  run seal_verdict logs demo "$(printf '%040d' 0)" "$plat"
+  [ "$(verdict_word)" = none ] || fail "another commit: $output"
+  run seal_verdict logs demo "$sha" "Plan9 4 mips / bash 9.9"
+  [ "$(verdict_word)" = none ] || fail "another platform: $output"
+}
+
+# AT-3.2
+@test "seal_verdict with an empty platform reads the newest record's own, as a remote leg's pairs need, and a platform left out stops it (ST0011 WP05)" {
+  commit_repo
+  local sha plat other green red
+  sha="$(git rev-parse HEAD)"
+  plat="$(platform_identity)"
+  other="Plan9 4 mips / bash 9.9"
+  run_gate --suffix demo --out-dir logs -- true
+  green="$(readlink -f logs/LATEST_DEMO.out)"
+  run seal_verdict logs demo "$sha" ""
+  [ "$(verdict_word)" = green ] || fail "one green run, no platform named: $output"
+  # Left out, the platform is a caller's slip, never read as empty.
+  run seal_verdict logs demo "$sha"
+  assert_failure
+  assert_output_contains "<platform> is required"
+  # A newer red, its pair written on another platform: named, this platform
+  # reads its own older green; unnamed, the newest record's platform decides.
+  run run_gate --suffix demo --out-dir logs -- false
+  red="$(readlink -f logs/LATEST_DEMO.out)"
+  [ "$green" != "$red" ] || fail "the two runs share one pair"
+  sed "s#^devbin|   platform: .*#devbin|   platform: $other#" "$red" >"$red.new" && mv "$red.new" "$red"
+  grep -qxF "devbin|   platform: $other" "$red" || fail "the red pair's platform line was not rewritten: $(grep 'platform:' "$red")"
+  touch -t 202601010000.00 "$green"
+  touch -t 202601010001.00 "$red"
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = green ] || fail "this platform named: $output"
+  run seal_verdict logs demo "$sha" ""
+  [ "$(verdict_word)" = failed ] || fail "no platform named, the newest record's own: $output"
+  # The two in one instant: the platform the newest names is fixed first, so
+  # the other platform's record is passed over and no tie is read. Read with
+  # no platform at all, the two would tie, unknown.
+  touch -t 202601010002.00 "$green" "$red"
+  run seal_verdict logs demo "$sha" ""
+  [ "$(verdict_word)" = green ] || [ "$(verdict_word)" = failed ] ||
+    fail "two records in one instant on two platforms, no platform named: $output"
+  # No record at all names no platform to read.
+  run seal_verdict logs demo "$(printf '%040d' 0)" ""
+  [ "$(verdict_word)" = none ] || fail "another commit, no platform named: $output"
+  assert_output_contains "on any platform"
+}
+
+# AT-1.4
+@test "seal_verdict reads a sha that is not whole as unknown, naming it, never as none (ST0011)" {
+  commit_repo
+  local sha plat
+  sha="$(git rev-parse HEAD)"
+  plat="$(platform_identity)"
+  run_gate --suffix demo --out-dir logs -- true
+  # THE CONTROL: the whole sha reads the green that stands for it.
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = green ] || fail "the whole sha: $output"
+  run seal_verdict logs demo "${sha:0:12}" "$plat"
+  assert_success
+  [ "$(verdict_word)" = unknown ] || fail "an abbreviated sha: $output"
+  assert_output_contains "${sha:0:12} is not a whole commit sha"
+  run seal_verdict logs demo "" "$plat"
+  [ "$(verdict_word)" = unknown ] || fail "an empty sha: $output"
+}
+
+# AT-1.4
+@test "seal_verdict never reads a dirty seal as green, nor one whose tree moved during the run, which stands for no commit and reads none, naming why, and a newer red whose tree moved outranks an older green (ST0011 WP02)" {
+  commit_repo
+  local sha plat
+  sha="$(git rev-parse HEAD)"
+  plat="$(platform_identity)"
+  printf 'two\n' >file
+  run_gate --suffix demo --out-dir logs -- true
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = none ] || fail "dirty at open, the only run: $output"
+  git checkout -q -- file
+  run_gate --suffix demo --out-dir logs -- bash -c 'printf "moved\n" >file'
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = none ] || fail "a green whose tree was dirtied during the run: $output"
+  assert_output_contains "stands for no commit"
+  git checkout -q -- file
+  run_gate --suffix demo --out-dir logs -- true
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = green ] || fail "the same commit, left alone: $output"
+  run run_gate --suffix demo --out-dir logs -- bash -c 'printf "moved\n" >file; exit 1'
+  git checkout -q -- file
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = failed ] || fail "a newer red whose tree moved, over an older green: $output"
+}
+
+# AT-1.4
+@test "seal_verdict reads a red seal as failed and one in flight as pending, the newest run deciding, and two runs of one commit in the same instant as none, since neither stands for it (ST0011 WP02)" {
+  commit_repo
+  local sha plat green red
+  sha="$(git rev-parse HEAD)"
+  plat="$(platform_identity)"
+  run_gate --suffix demo --out-dir logs -- true
+  green="$(readlink -f logs/LATEST_DEMO.out)"
+  run run_gate --suffix demo --out-dir logs -- false
+  red="$(readlink -f logs/LATEST_DEMO.out)"
+  [ "$green" != "$red" ] || fail "the two runs share one pair"
+  touch -t 202601010000.00 "$green"
+  touch -t 202601010001.00 "$red"
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = failed ] || fail "a red newer than a green: $output"
+  touch -t 202601010002.00 "$green"
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = green ] || fail "a green newer than a red: $output"
+  touch -t 202601010002.00 "$red"
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = none ] || fail "two runs in the same instant: $output"
+  assert_output_contains "neither is the newer"
+  # An opened pair that was never sealed, newer than both: a run killed mid-way.
+  (open_run_log 1 logs demo >/dev/null && note_invocation "$log" "" true)
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = pending ] || fail "in flight: $output"
+}
+
+@test "seal_verdict reads nothing strictly older than the record that decided it: an older log it cannot read does not unmake a newer green (ST0011 WP02)" {
+  [ "$(id -u)" -ne 0 ] || skip "root reads a file whatever its mode, so no unreadable log can be made"
+  commit_repo
+  local sha plat old new
+  sha="$(git rev-parse HEAD)"
+  plat="$(platform_identity)"
+  run_gate --suffix demo --out-dir logs -- true
+  old="$(readlink -f logs/LATEST_DEMO.out)"
+  run_gate --suffix demo --out-dir logs -- true
+  new="$(readlink -f logs/LATEST_DEMO.out)"
+  [ "$old" != "$new" ] || fail "the two runs share one pair"
+  touch -t 202601010000.00 "$old"
+  touch -t 202601010001.00 "$new"
+  chmod 000 "$old"
+  run seal_verdict logs demo "$sha" "$plat"
+  chmod 644 "$old"
+  [ "$(verdict_word)" = green ] || fail "an older log it cannot read unmade a newer green: $output"
+  assert_output_contains "$(basename "${new%.out}").errors"
+}
+
+# AT-1.4
+@test "seal_verdict reads a seal it cannot read, or a log with no seal beside it, as unknown, naming it, never as none (ST0011)" {
+  [ "$(id -u)" -ne 0 ] || skip "root reads a file whatever its mode, so no unreadable seal can be made"
+  commit_repo
+  local sha plat out
+  sha="$(git rev-parse HEAD)"
+  plat="$(platform_identity)"
+  run_gate --suffix demo --out-dir logs -- true
+  out="$(readlink -f logs/LATEST_DEMO.out)"
+  chmod 000 "$out"
+  run seal_verdict logs demo "$sha" "$plat"
+  chmod 644 "$out"
+  [ "$(verdict_word)" = unknown ] || fail "an unreadable log: $output"
+  assert_output_contains "$(basename "$out")"
+  rm -f "${out%.out}.errors"
+  run seal_verdict logs demo "$sha" "$plat"
+  [ "$(verdict_word)" = unknown ] || fail "a log with no seal beside it: $output"
+  assert_output_contains "$(basename "$out")"
 }
 
 # ============================================================================

@@ -559,6 +559,157 @@ printf "ran:%s\n" "$1"'
   assert_output_contains "2 of 2 gate options ran; 0 inactive here, 0 skipped (in_all: false)"
 }
 
+# AT-6.1
+@test "an option whose platforms: leave this host out is inactive here: all runs the rest and counts it, help --why names it with its reason, and by name it is refused with that reason; one naming this host, or declaring no platforms:, runs (ST0011 WP-17, AC-6.1)" {
+  # The host's word is the arm's own: uname -s answers Linux, whatever runs it.
+  local o opts=(here there anywhere) ran=(here anywhere) inactive=(there) skipped=()
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+commands:
+  gate:
+    summary: gates
+    options:
+      here:
+        summary: runs on linux
+        platforms:
+          - linux
+      there:
+        summary: runs on macos
+        platforms:
+          - macos
+      anywhere:
+        summary: runs everywhere
+YAML
+  )"
+  create_test_command "$proj" gate '#!/usr/bin/env bash
+printf "ran:%s\n" "$1"'
+  stub_uname -s UNAME_STUB_OS
+
+  UNAME_STUB_OS=Linux run devbin_run "$proj" gate all
+  assert_success
+  for o in "${ran[@]}"; do assert_output_contains "ran:$o"; done
+  for o in "${inactive[@]}"; do refute_output_contains "ran:$o"; done
+  assert_output_contains "${#ran[@]} of ${#opts[@]} gate options ran; ${#inactive[@]} inactive here (bin/devbin help --why names them), ${#skipped[@]} skipped (in_all: false)"
+
+  UNAME_STUB_OS=Linux run devbin_run "$proj" help --why
+  assert_success
+  grep -qE '^  gate there +it runs on macos, and this host is linux$' <<<"$output" ||
+    fail "help --why does not name gate there with its reason:
+$output"
+
+  UNAME_STUB_OS=Linux run devbin_run "$proj" gate there
+  [ "$status" -eq 2 ] || fail "gate there ran by name on linux: exit $status, want 2: $output"
+  assert_output_contains "'bin/devbin gate there' is not available here: it runs on macos, and this host is linux"
+  refute_output_contains "ran:there"
+}
+
+@test "on a host with no platform word an option that declares platforms: runs nowhere, and a command whose every option is inactive, one by its platforms, is refused by name naming each with its reason (ST0011 WP-17)" {
+  # uname -s answers FreeBSD, which has no platform word.
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+commands:
+  gate:
+    summary: gates
+    options:
+      both:
+        summary: runs on macos and linux
+        platforms:
+          - macos
+          - linux
+      anywhere:
+        summary: runs everywhere
+  app:
+    summary: the app
+    options:
+      build:
+        summary: builds it
+        run: echo ran:build
+        platforms:
+          - macos
+      check:
+        summary: checks it
+        run: echo ran:check
+        enabled: false
+YAML
+  )"
+  # No handler for app: a command the project owns stays active whatever its
+  # options say, so app is offered here only through its options.
+  create_test_command "$proj" gate '#!/usr/bin/env bash
+printf "ran:%s\n" "$1"'
+  stub_uname -s UNAME_STUB_OS
+
+  UNAME_STUB_OS=FreeBSD run devbin_run "$proj" gate both
+  [ "$status" -eq 2 ] || fail "gate both ran by name on a host with no platform word: exit $status, want 2: $output"
+  assert_output_contains "'bin/devbin gate both' is not available here: it runs on macos and linux, and this host has no platform word"
+  UNAME_STUB_OS=FreeBSD run devbin_run "$proj" gate anywhere
+  assert_success
+  assert_output_contains "ran:anywhere"
+
+  UNAME_STUB_OS=FreeBSD run devbin_run "$proj" app build
+  [ "$status" -eq 2 ] || fail "app build ran on a host with no platform word: exit $status, want 2: $output"
+  assert_output_contains "'bin/devbin app' is not available here: every option it offers is inactive here: build: it runs on macos, and this host has no platform word; check: it is disabled in bin/.devbin/config.yaml"
+  refute_output_contains "ran:build"
+}
+
+@test "a platforms: list holding a value that is not a platform word reads as absent, so the option runs on every host, and doctor refuses the value, naming the key and the value (ST0011 WP-17)" {
+  # Linux is uname's spelling, not a platform word. Read as another platform it
+  # would make the gate never run and never fail, on every host.
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+commands:
+  gate:
+    summary: gates
+    options:
+      spelt:
+        summary: names uname's spelling
+        platforms:
+          - Linux
+YAML
+  )"
+  create_test_command "$proj" gate '#!/usr/bin/env bash
+printf "ran:%s\n" "$1"'
+  run devbin_run "$proj" doctor
+  assert_output_contains "commands.gate.options.spelt.platforms.0: \"Linux\" is not a platform word"
+  stub_uname -s UNAME_STUB_OS
+  local os
+  for os in Linux Darwin; do
+    UNAME_STUB_OS="$os" run devbin_run "$proj" gate spelt
+    assert_success
+    assert_output_contains "ran:spelt"
+  done
+}
+
+@test "a built-in command whose last active option is held back by its platforms: names it with its reason, never a language the project already declares (ST0011 WP-17)" {
+  # test.shell is active by the declared language until its platforms: leave
+  # this host out; every other test option is held back by its language.
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+  languages:
+    - shell
+commands:
+  test:
+    options:
+      shell:
+        platforms:
+          - macos
+YAML
+  )"
+  stub_uname -s UNAME_STUB_OS
+  UNAME_STUB_OS=Linux run devbin_run "$proj" test
+  [ "$status" -eq 2 ] || fail "test ran on linux with its one active option declared for macos: exit $status, want 2: $output"
+  assert_output_contains "'bin/devbin test' is not available here: every option it offers is inactive here: shell: it runs on macos, and this host is linux"
+  refute_output_contains "declare project.languages"
+  UNAME_STUB_OS=Linux run devbin_run "$proj" help --why
+  assert_success
+  grep -qE '^  test +every option it offers is inactive here: shell: it runs on macos, and this host is linux' <<<"$output" ||
+    fail "help --why does not name test's shell option with its reason:
+$output"
+}
+
 @test "run_all's count line reaches its no-options refusal, with the shipped options counted inactive" {
   # The dispatcher sends one shape here with zero options, a command-level
   # `run:` with no option to run (issue 0128, its option (b)), and a `run:`

@@ -18,11 +18,12 @@ lanes when GNU parallel is installed:
   1. every test not tagged `serial`, N at a time, under `bats --jobs N`;
   2. then the tests tagged `serial`, one at a time.
 
-The run's first line names N and the GNU parallel it found. N is half the CPUs
-and never fewer than two, so another project's run on the same machine keeps the
-other half. `DEVBIN_TEST_JOBS` sets it:
+The run's first line names N and the GNU parallel it found. N is half the CPUs and never fewer than two, so another project's run on the same machine keeps the other half. `DEVBIN_TEST_JOBS` sets it, to a whole number or to `all`, every CPU the machine has:
 
   DEVBIN_TEST_JOBS=4 bin/devbin test all
+  DEVBIN_TEST_JOBS=all bin/devbin test all
+
+The default is for a machine someone shares, and `all` for one nobody does, as a CI runner: devbin's own workflow sets it on every job that runs the suite. A machine whose CPUs neither nproc nor getconf can count refuses `all`, rather than guessing a number.
 
 The two lanes write one seal and give one verdict. The run fails when either
 lane fails, and when the lanes did not run every test `bats --count` counts,

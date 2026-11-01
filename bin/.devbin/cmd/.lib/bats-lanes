@@ -31,9 +31,12 @@
 # DEVBIN_TEST_JOBS is 1: `bats <dir>` runs everything one test at a time, and the
 # first line of the run says why.
 #
-# N IS PRINTED ON THE FIRST LINE and DEVBIN_TEST_JOBS sets it. The default is
-# half the CPUs and never below two, so another project's run on the same
-# machine keeps half of it, and CI's two-CPU runner still runs two at once.
+# N IS PRINTED ON THE FIRST LINE and DEVBIN_TEST_JOBS sets it: a whole number,
+# or `all` for every CPU the machine has. The default, half the CPUs and never
+# below two, is for a machine someone shares: another project's run on it
+# keeps half. `all` is for a runner nobody shares, as CI's are (tests.yml sets
+# it on every job that runs the suite), and it counts with cpu_probe, refusing
+# rather than guessing when nothing can count (ST0011 WP-04).
 #
 # BATS 1.12 AND 1.14 BOTH RUN THIS, and they differ where it matters: on a
 # selection of no tests, 1.12 prints `1..0` and exits 0 while 1.14 exits 1 and
@@ -57,6 +60,7 @@ _LANES_SERIAL_TAG='^[[:blank:]]*#[[:blank:]]*bats[[:blank:]]+(test|file)_tags=(.
 # lanes_jobs <cpus> <setting> -- how many tests the parallel lane runs at once:
 # <setting> when it is given, which must be a whole number of at least 1, else
 # half of <cpus> and never below two. Returns 1 for a setting it cannot use.
+# `all` never reaches it: the caller reads it once, as the probe's count.
 lanes_jobs() {
   local cpus="$1" set="$2" n
   if [ -n "$set" ]; then
@@ -130,15 +134,30 @@ lane() {
 }
 
 dir="${1:?usage: bats-lanes <test directory>}"
-cpus="$(cpu_count)"
-jobs="$(lanes_jobs "$cpus" "${DEVBIN_TEST_JOBS:-}")" ||
-  die "DEVBIN_TEST_JOBS is '${DEVBIN_TEST_JOBS:-}', and it must be a whole number of jobs, 1 or more"
+# `all` IS EVERY CPU THE PROBE COUNTS, never cpu_count's guess of 4: a runner
+# whose CPUs cannot be counted is refused, naming the setting, rather than run
+# at a number nobody measured. It is read here once, and is the probe's count
+# from here on; `every` remembers it was asked for.
+setting="${DEVBIN_TEST_JOBS:-}"
+every=no
+if [ "$setting" = all ]; then
+  cpus="$(cpu_probe)" ||
+    die "DEVBIN_TEST_JOBS is 'all', and neither nproc nor getconf could count this machine's CPUs, so every CPU is no number -- set a whole number of jobs instead"
+  setting="$cpus"
+  every=yes
+else
+  cpus="$(cpu_count)"
+fi
+jobs="$(lanes_jobs "$cpus" "$setting")" ||
+  die "DEVBIN_TEST_JOBS is '$setting', and it must be a whole number of jobs, 1 or more, or all"
 
 # The program bats --jobs will run, by bats's own setting, so what is probed
 # here is what bats runs.
 parallel_program="${BATS_PARALLEL_BINARY_NAME:-parallel}"
 why="" version=""
-if [ "$jobs" -eq 1 ]; then
+if [ "$jobs" -eq 1 ] && [ "$every" = yes ]; then
+  why="DEVBIN_TEST_JOBS is all, and this machine has one CPU"
+elif [ "$jobs" -eq 1 ]; then
   why="DEVBIN_TEST_JOBS is 1"
 elif ! command -v "$parallel_program" >/dev/null 2>&1; then
   why="GNU parallel is not installed: there is no $parallel_program on PATH (brew install parallel, or apt-get install parallel)"

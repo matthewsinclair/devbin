@@ -110,8 +110,8 @@ summary_script() {
 # script, executed on one combination of job results.
 #
 # This is why 0108 moved the decision out of ${{ }} and into env: an inline
-# expression can only ever be text-matched, and the case that matters -- a tag
-# whose macOS leg was skipped -- is the one a text match cannot catch.
+# expression can only ever be text-matched, and the case that matters -- a
+# candidate whose macOS leg was skipped -- is the one a text match cannot catch.
 run_summary() {
   local script tmp
   script="$(summary_script)"
@@ -170,6 +170,62 @@ run_summary() {
   done
 }
 
+# step_lines <job id> <step name> -- that step's lines in that job, from its
+# `- name:` to the next step's, whatever key opens it, so what is read is the
+# step's own and never a neighbour's. The block is read whole first: an awk
+# that stops early on a pipe would take its writer down with SIGPIPE.
+step_lines() {
+  local block
+  block="$(job_block "$1")" || return 1
+  awk -v want="      - name: $2" '
+    $0 == want { on = 1; print; next }
+    on && /^      - / { exit }
+    on { print }
+  ' <<<"$block"
+}
+
+# suite_jobs -- every job whose steps run devbin's suite, `bin/devbin test all`
+# as a step's run line or a line of its script, read from the workflow and
+# never listed by hand.
+suite_jobs() {
+  local job block ids
+  ids="$(awk '/^jobs:/ { on = 1; next } on && /^[^ #]/ { exit } on && /^  [a-z][a-z0-9-]*:$/ { sub(/^  /, ""); sub(/:$/, ""); print }' "$WORKFLOW")" || return 1
+  while IFS= read -r job; do
+    [ -n "$job" ] || continue
+    # Read whole, its status kept: a block that could not be read is no job
+    # quietly left out of the set.
+    block="$(job_block "$job")" || return 1
+    if grep -qE '^[[:space:]]+(run: )?bin/devbin test all$' <<<"$block"; then
+      printf '%s\n' "$job"
+    fi
+  done <<<"$ids"
+  return 0
+}
+
+@test "every job that runs the suite runs it on every CPU its runner has, DEVBIN_TEST_JOBS all, and no line writes a number for it (WP04)" {
+  local job jobs lines wslenv rc out
+  jobs="$(suite_jobs)" || fail "the jobs of $WORKFLOW could not be read"
+  [ -n "$jobs" ] || fail "no job in $WORKFLOW runs bin/devbin test all -- the suite's jobs could not be read"
+  # WSL's crossing is held below, so the derived set must hold it.
+  grep -qx test-wsl <<<"$jobs" || fail "the jobs read as running the suite do not include test-wsl: $jobs"
+  for job in $jobs; do
+    lines="$(step_lines "$job" "Run tests")"
+    [ -n "$lines" ] || fail "the $job job has no Run tests step"
+    grep -qxF '          DEVBIN_TEST_JOBS: all' <<<"$lines" ||
+      fail "the $job job's Run tests step does not set DEVBIN_TEST_JOBS to all:
+$lines"
+  done
+  # WSL sees only what WSLENV names.
+  wslenv="$(job_block test-wsl | sed -n 's/^      WSLENV: //p')"
+  [ -n "$wslenv" ] || fail "the test-wsl job carries no WSLENV"
+  [[ ":$wslenv:" == *:DEVBIN_TEST_JOBS:* ]] || fail "WSLENV does not carry DEVBIN_TEST_JOBS into WSL: $wslenv"
+  # NO NUMBER, IN ANY QUOTING. grep's status is read: 1 is no line found, and
+  # an error is no pass.
+  rc=0
+  out="$(grep -nE "DEVBIN_TEST_JOBS[[:space:]]*[:=][[:space:]]*[\"']?[0-9]" "$WORKFLOW")" || rc=$?
+  [ "$rc" -eq 1 ] || fail "grep found a number written for DEVBIN_TEST_JOBS, or could not read $WORKFLOW (status $rc): $out"
+}
+
 @test "the Ubuntu job does not run check all, which would refuse on a runner with no intent" {
   local linux
   linux="$(job_block test-linux)"
@@ -178,41 +234,51 @@ run_summary() {
 }
 
 # ============================================================================
-# 0108 -- macOS on tags and on demand, and superseded runs cancelled
+# 0108 -- macOS on a candidate and on demand, and superseded runs cancelled
 # ============================================================================
 #
 # WHAT THESE ARMS DO NOT COVER, said here so a green cannot read wider than it
 # is: they hold what this workflow SAYS. What GitHub does with it rests on its
-# documentation plus the first tag pushed under this spec, and that observation
-# does not exist yet. These arms catch the file drifting away from 0108. They
-# say nothing about how a runner behaves.
+# documentation plus the first candidate pushed under this spec, and that
+# observation does not exist yet. These arms catch the file drifting away from
+# 0108. They say nothing about how a runner behaves.
 
-@test "the workflow runs on a release tag, a candidate branch and on demand, as well as on a push to main (0108) (0240)" {
-  local on_block tags
+@test "the workflow runs on a candidate branch and on demand, as well as on a push to main (0108) (0240)" {
+  local on_block
   on_block="$(top_block on)"
   [ -n "$on_block" ] || fail "no on: block in $WORKFLOW"
-  # main, and a release's candidate, which release publish pushes before
-  # anything is public (0240).
+  # main, and a release's candidate, which a cut pushes before anything is
+  # tagged (0240).
   grep -qF "    branches: [main, 'candidate/**']" <<<"$on_block" || fail "on.push does not carry branches: [main, 'candidate/**']"
-  tags="$(sed -n 's/^    tags: //p' <<<"$on_block")"
-  [ -n "$tags" ] || fail "no tags: filter under on.push -- the macOS leg could never run on a release"
-  # ONE FILTER, BOTH RELEASE FORMS: devbin tags v0.1.5, and Utilz has tagged
-  # bare since 2.7.0. This line is the only place in the file where a tag's form
-  # is written.
-  case "$tags" in *"'v[0-9]*'"*) ;; *) fail "the tag filter does not match a v-prefixed release tag: $tags" ;; esac
-  case "$tags" in *"'[0-9]*'"*) ;; *) fail "the tag filter does not match a bare release tag: $tags" ;; esac
   grep -q '^  workflow_dispatch:$' <<<"$on_block" || fail "no workflow_dispatch trigger -- macOS could not be run on demand"
 }
 
-@test "the macOS job is gated on the ref TYPE, a candidate branch and on demand, never on a tag's form (0108) (0240)" {
+@test "no tag starts a run: on.push holds no tag filter, and no line of the workflow names the candidate-verdict job (ST0011 WP-04)" {
+  # The tag is pushed only once every leg is green, the candidate's run among
+  # them, on the commit it names, so a run of its own would give that verdict
+  # again, and a job asking the candidate for it has nothing left to skip.
+  # on.push is read and held present first, so a block that could not be read
+  # is no absence of a filter.
+  local on_block rc out
+  on_block="$(top_block on)"
+  [ -n "$on_block" ] || fail "no on: block in $WORKFLOW"
+  grep -q '^  push:$' <<<"$on_block" || fail "could not read on.push in $WORKFLOW"
+  # tags-ignore is a tag filter too: every tag it does not name starts a run.
+  ! grep -qE '^    tags(-ignore)?:' <<<"$on_block" ||
+    fail "on.push carries a tag filter, so a release tag starts a run:
+$(grep -E '^    tags' <<<"$on_block")"
+  # grep's status is read: 1 is no line found, and an error is no pass.
+  rc=0
+  out="$(grep -nF 'candidate-verdict' "$WORKFLOW")" || rc=$?
+  [ "$rc" -eq 1 ] || fail "the workflow still names the candidate-verdict job, or could not be read (status $rc): $out"
+}
+
+@test "the macOS job is gated on a candidate branch and on demand, never on a push to main (0108) (0240)" {
   local cond
   cond="$(job_gate test-macos)"
   [ -n "$cond" ] || fail "the macOS job has no if: -- it runs on every push, which is the defect 0108 closed"
-  [ "$cond" = "\${{ github.ref_type == 'tag' || github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}" ] \
+  [ "$cond" = "\${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}" ] \
     || fail "the macOS condition is not the one 0108 and 0240 set: $cond"
-  # A condition that also tested the tag's FORM would be a second place to keep
-  # in step with on.push.tags, and Utilz's bare tags are the case it would miss.
-  case "$cond" in *"refs/tags/"*) fail "the macOS condition tests a tag's form: $cond" ;; esac
 }
 
 @test "Test Summary requires macOS on exactly the expression the job runs it on (0108)" {
@@ -222,17 +288,18 @@ run_summary() {
   [ -n "$cond" ] || fail "the macOS job has no if:"
   [ -n "$req" ] || fail "test-summary declares no MACOS_REQUIRED"
   # Equality alone would be satisfied by two copies of a WRONG expression, and
-  # then macOS would skip on a tag and the summary would accept the skip -- a
-  # guard failing in the same direction as the bug it guards. The arm above
-  # pins what the expression says; this one holds the second copy to it.
+  # then macOS would skip on a candidate and the summary would accept the skip
+  # -- a guard failing in the same direction as the bug it guards. The arm
+  # above pins what the expression says; this one holds the second copy to it.
   [ "$cond" = "$req" ] || fail "the job runs macOS on [$cond] and the summary requires it on [$req]"
 }
 
 @test "a release's candidate runs the whole matrix: the push filter and the macOS, WSL and summary conditions name the branch release.publish.candidate's default makes (0240)" {
-  # release publish pushes the snapshot to the candidate branch and moves
-  # nothing public until CI is green there, so the candidate's run must be the
-  # one a tag gets. The prefix is read from the config's own default, so a
-  # default renamed without the workflow, or the other way round, goes red.
+  # A cut pushes its candidate, under release.publish.url the snapshot, to the
+  # candidate branch and tags nothing until CI is green there, so the
+  # candidate's run is the release's whole matrix, and the tag starts none. The
+  # prefix is read from the config's own default, so a default renamed without
+  # the workflow, or the other way round, goes red.
   # shellcheck source=lib/helpers
   . "$DEVBIN_LIB_DIR/helpers"
   # shellcheck source=lib/config
@@ -243,14 +310,14 @@ run_summary() {
   [ -n "$prefix" ] && [ "$prefix" != "$tpl" ] || fail "publish.candidate's default [$tpl] opens with no fixed prefix before {tag}"
   on_block="$(top_block on)"
   [ -n "$on_block" ] || fail "no on: block in $WORKFLOW"
-  grep -qF "'$prefix**'" <<<"$on_block" || fail "on.push does not run on '$prefix**', where release publish pushes a candidate"
+  grep -qF "'$prefix**'" <<<"$on_block" || fail "on.push does not run on '$prefix**', where a cut pushes its candidate"
   for job in test-macos test-wsl; do
     cond="$(job_gate "$job")"
     [[ "$cond" == *"startsWith(github.ref, 'refs/heads/$prefix')"* ]] || fail "$job does not run on a candidate: [$cond]"
   done
   [[ "$(summary_required_expr)" == *"startsWith(github.ref, 'refs/heads/$prefix')"* ]] ||
     fail "Test Summary does not require macOS on a candidate: [$(summary_required_expr)]"
-  # And on a candidate a skipped macOS leg is no pass, as on a tag.
+  # And on a candidate a skipped macOS leg is no pass.
   _expect_summary fail " test-macos" success skipped success true
 }
 
@@ -351,9 +418,9 @@ _expect_summary() {
 @test "the summary requires macOS exactly where the workflow asked for it (0108)" {
   # A push to main: the leg was not asked for, and its skip is the design.
   _expect_summary pass "" success skipped success false
-  # A TAG WHOSE macOS LEG DID NOT RUN. This is the one false green 0108 could
-  # ship: a missing verdict wearing a pass, on the only run that carries the
-  # bash 3.2 refusal proof and the critic gate.
+  # A CANDIDATE WHOSE macOS LEG DID NOT RUN. This is the one false green 0108
+  # could ship: a missing verdict wearing a pass, on the only run that carries
+  # the bash 3.2 refusal proof and the critic gate.
   _expect_summary fail " test-macos" success skipped success true
   _expect_summary pass "" success success success true
   _expect_summary pass "" success success success false
@@ -371,7 +438,7 @@ _expect_summary() {
   # AND THE SAME TWO WHERE macOS WAS NOT REQUIRED. Only `success` or `skipped`
   # is ever acceptable there, on any event. Added because a mutation widening
   # the accepted list to include `cancelled` survived every case above: each of
-  # them asked about a tag, where the requirement branch refuses anyway, so
+  # them asked about a candidate, where the requirement branch refuses anyway, so
   # nothing here had ever exercised the branch the mutation changed.
   _expect_summary fail " test-macos" success cancelled success false
   _expect_summary fail " test-macos" success failure success false
@@ -405,7 +472,7 @@ _expect_summary() {
   # The permissive branch is the one an unrecognised value must NOT reach: a
   # renamed env key, or an expression that failed to evaluate, would otherwise
   # be read as "macOS was not asked for" and a missing leg would pass on a
-  # release tag. Both shapes are driven -- empty, and a word.
+  # release's candidate. Both shapes are driven -- empty, and a word.
   run run_summary success skipped success ""
   assert_failure
   assert_output_contains "neither true nor false"
@@ -472,7 +539,7 @@ checkout_versions() {
 # contradicted while every assertion below stayed green. An arm's title is what
 # a later reader carries away; it does not get to outrun the assertions under
 # it.
-@test "on.push ignores the board AND the canon store, and the tag filter is independent of both (0110)" {
+@test "on.push ignores the board AND the canon store (0110)" {
   local on_block
   on_block="$(top_block on)"
   [ -n "$on_block" ] || fail "no on: block in $WORKFLOW"
@@ -489,12 +556,6 @@ checkout_versions() {
   # hit rate in a comment decays and does not transfer between projects.
   grep -q "^      - 'intent/\.canon/\*\*'$" <<<"$on_block" \
     || fail "the canon store is not under paths-ignore, so every board write still starts a run"
-  # ASSERTED IN THE SAME ARM as the tag filter, because the hazard is a reader
-  # removing one in the belief that it affects the other. GitHub does not
-  # evaluate path filters for pushes of tags at all, so these two are
-  # independent -- and the file says so at the paths-ignore line.
-  grep -q '^    tags:' <<<"$on_block" \
-    || fail "the tag filter is gone, so 0108's macOS leg would never run on a release"
 }
 
 @test "superseded runs are cancelled, and the group separates events that share a ref (0108)" {
@@ -521,7 +582,7 @@ checkout_versions() {
 }
 
 # ============================================================================
-# ST0008 -- the WSL leg, on tags and on demand, blocking nothing
+# ST0008 -- the WSL leg, on a candidate and on demand, blocking nothing
 # ============================================================================
 #
 # As with 0108's arms, these hold what the workflow SAYS. Whether a Windows
