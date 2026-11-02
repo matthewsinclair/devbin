@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 321,
+  "slug": "comments-still-say-the-public-tree-carries-no-in",
+  "title": "Comments still say the public tree carries no intent/, which the switch made untrue",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-02",
+  "reporter": "Matthew Sinclair",
+  "body": "Since the switch of 2026-11-02 (vc decision 132) the public tree is the whole workroom: it tracks intent/, intent/llm/unshipped-names among it, and CI runs on that tree. Several comments still rest on the old premise that the public tree is a snapshot carrying no intent/. Nothing is broken; the comments now give wrong reasons.\n\n- `.github/workflows/tests.yml`: the push filter's comment and the macOS condition's comment call the candidate the release's snapshot; the two gates comments say critic is left out because the public snapshot carries no intent/. Critic stays out of CI's Ubuntu and macOS jobs because those runners install no Intent (the Ubuntu job's own comment says so), and the commit gate runs it. The macOS gates step's name, which ci-workflow.bats reads as a marker, says the same; renaming it means changing the arm with it.\n- `tests/unit/ci-workflow.bats`: its header, one comment and one arm's title restate that premise.\n- `tests/unit/workroom.bats`: its header says the shipped paths are what a public reader gets, and that the public tree carries the names arm and none of the names, so it skips there. Now the public tree carries the list, so the arm reads it on CI and checks every shipped line; the shipped paths are what a consumer vendors and brew installs.\n- `intent/llm/unshipped-names`: its header says the public snapshot names Intent, Molt and Utilz and no other project, and that the list never ships. Since hv's ruling of 2026-11-02, decision 78 (issue 0242) governs the shipped files alone, and the list is public with the workroom.\n- `intent/llm/ARCHITECTURE-shell.md`: its CI line says the same of critic.\n\nObserved with it, for hv: Riffle, Cdtempl and MicroGPTEx, on the unshipped list, have public repositories now; by decision 78's own terms they could leave the list.\n\n## Done when\n\nEach comment, title and the step name above gives the reason that holds today, the arms that read them pass, and nothing else changes.\n"
+}
