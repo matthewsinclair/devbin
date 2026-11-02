@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 2447704e-9b32-4895-a2d5-91ce50fb96e3
-heartbeat_at: 2026-11-02 07:39Z
+heartbeat_at: 2026-11-02 07:51Z
 status: active
-focus: "HOLD for hv's /compact at hv's fold order relayed by vc, then for the go after it. The parked 0301, 0302 and 0305 wait as the todos say."
+focus: "HOLD after hv's /compact for the go: no work until hv or vc names cc's next. The parked 0301, 0302 and 0305 wait as the todos say."
 claims: [ISSUE:0301, ISSUE:0302, ISSUE:0305]
 ---
 
