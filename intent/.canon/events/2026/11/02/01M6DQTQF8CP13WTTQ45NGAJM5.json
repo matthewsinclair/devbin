@@ -1,0 +1,15 @@
+{
+  "id": "01M6DQTQF8CP13WTTQ45NGAJM5",
+  "ts": "2026-11-02T09:00:46.952Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Holding dc's day plan until hv rules its two questions, put in dc's window 2026-11-02: Q1, brief vc on Utilz 2.14.9's cache facts (Menuz builds out of tree, so no cache saving and no AC-5.4 there) and file the commit-stamp cache gap as an issue (rec: both); Q2, dc's lane until the consumer cuts (rec: draft the cache adoption for Gtools, Intent and Laksa as notes for their vcs)."
+  }
+}
