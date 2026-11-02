@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "2447704e-9b32-4895-a2d5-91ce50fb96e3",
-    "heartbeat_at": "2026-11-02T05:36:04.413Z",
+    "heartbeat_at": "2026-11-02T07:39:32.258Z",
     "status": "active",
-    "focus": "HOLD at hv's word to boot then hold: no work until hv or vc names cc's next. devbin 0.1.19 is released and swept, and the parked 0301, 0302 and 0305 wait as the todos say.",
+    "focus": "HOLD for hv's /compact at hv's fold order relayed by vc, then for the go after it. The parked 0301, 0302 and 0305 wait as the todos say.",
     "claims": [
       "ISSUE:0301",
       "ISSUE:0302",
