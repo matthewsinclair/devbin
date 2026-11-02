@@ -1,5 +1,5 @@
-# devbin's Homebrew formula, kept as a TEMPLATE in devbin's own tree, outside
-# the set a publish copies. It is never installed from this file:
+# devbin's Homebrew formula, kept as a TEMPLATE in devbin's own tree. It is
+# never installed from this file:
 # `bin/devbin formula render <tag> <out>` writes the formula for a release tag,
 # reading the tag's commit from git, and `bin/devbin formula publish` renders
 # the newest release into the tap and pushes it. The tag and the revision below
@@ -12,11 +12,10 @@
 class Devbin < Formula
   desc "Dev launcher framework that projects vendor as bin/devbin"
   homepage "https://github.com/matthewsinclair/devbin"
-  # HTTPS, THE PUBLIC REPOSITORY. devbin publishes each release as a snapshot
-  # of the product in a public repository, so brew fetches it with no
-  # credential, and the formula installs for anyone. The tag below is that
-  # repository's, and render reads the revision there, the snapshot's commit,
-  # which a development checkout does not hold.
+  # HTTPS, THE PUBLIC REPOSITORY. devbin is developed in a public repository,
+  # so brew fetches it with no credential, and the formula installs for anyone.
+  # The tag below names the release commit there, and render reads the revision
+  # from that tag in the checkout that cut it.
   url "https://github.com/matthewsinclair/devbin.git",
       tag:      "@@TAG@@",
       revision: "@@REVISION@@"

@@ -30,14 +30,13 @@ install:
 # GitHub release from a pushed tag, so the core must never make a second one.
 # `release` itself is opt-in and is enabled under commands below.
 #
-# devbin PUBLISHES A SNAPSHOT (ST0010, issue 0240). It is developed in one
-# repository, and the public one, at publish.url below, holds one commit of the
-# product a release, made of the release commit over tests/shipped.paths. So a
-# cut pushes the workroom to `local` alone, a directory, and makes the
-# snapshot public itself: it pushes the snapshot to a candidate branch there,
-# reads CI green on it beside the local gates, and only then tags, moves the
-# public main to the snapshot and pushes the tag at it. `repo` names that
-# public repository, where release.yml makes the GitHub release from the tag.
+# devbin RELEASES IN THE CORE'S STANDARD SHAPE. It is developed in its public
+# repository, the one `repo` names below, and the remotes below take every
+# push: `local`, a directory, and `upstream`, that public repository. The legs
+# step pushes the release commit to its candidate branch on upstream, the
+# remote that pushes to `repo`, and reads CI green there beside the local
+# gates; only then does the cut tag, and push the release commit and the tag to
+# each remote in turn. release.yml makes the GitHub release from the tag.
 # `doctor` joins the gates because it is what reads devbin_version above
 # against the VERSION the stamp writes, so a constraint the new version
 # outgrew fails the release commit rather than the first consumer to run
@@ -50,6 +49,7 @@ install:
 release:
   remotes:
     - local
+    - upstream
   notes:
     kind: releases
   gates:
@@ -62,12 +62,12 @@ release:
   # run, and goes on without it.
   legs:
     - kovacs
-  # CI GREEN BEFORE ANYTHING IS PUBLIC (issue 0240): the cut asks the built-in
-  # ci-state, ci.query's default (ST0011 WP-02c), about the snapshot on its
-  # candidate branch, whose push runs the whole matrix, macOS and WSL included,
-  # and tags nothing until it reads green, asking first, once it has made the
-  # snapshot, whether that push starts tests.yml at all. A run still going at
-  # ci.wait stops the cut with nothing public, and running it again reads CI
+  # CI GREEN BEFORE ANYTHING IS TAGGED (issue 0240): the cut asks the built-in
+  # ci-state, ci.query's default (ST0011 WP-02c), about the release commit on
+  # its candidate branch, whose push runs the whole matrix, macOS and WSL
+  # included, and tags nothing until it reads green, asking first, at
+  # pre-flight, whether that push starts tests.yml at all. A run still going at
+  # ci.wait stops the cut with nothing tagged, and running it again reads CI
   # again. A tag starts no run of tests.yml (ST0011 WP-04), so nothing waits on
   # one. The query reads release.repo below and tests.yml, the default
   # workflow; its summary is the job the WSL leg's red does not reach, since
@@ -83,20 +83,6 @@ release:
   repo: matthewsinclair/devbin
   after:
     - bin/devbin formula publish
-  # THE PUBLIC SNAPSHOT (issue 0239, ST0010): `release snapshot` makes one
-  # commit of a tag's tracked files over tests/shipped.paths, the one list of
-  # what ships, which the workroom scan reads too, and the cut makes the same
-  # commit of its release commit. Every snapshot is made under the identity
-  # below.
-  snapshot:
-    list: tests/shipped.paths
-    author: "Matthew Sinclair <hello@matthewsinclair.com>"
-  # THE PUBLIC REPOSITORY, read over https, as brew reads it. A push to it goes
-  # through the maintainer's own git config (url.<base>.pushInsteadOf), so no
-  # host alias of one machine ships here. No remote of this workroom may name
-  # it: a cut refuses one that does.
-  publish:
-    url: https://github.com/matthewsinclair/devbin.git
 
 # The built-in formula (issue 0227), in source mode: brew builds from the
 # release tag's checkout, so packaging/homebrew/devbin.rb holds one placeholder

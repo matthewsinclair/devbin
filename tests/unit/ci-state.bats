@@ -555,18 +555,21 @@ calls() { cat "$DEVBIN_TEST_TMPDIR/gh.calls" 2>/dev/null || printf '(no call)'; 
     fail "devbin's release.ci.summary is '$(cfg_release_get ci.summary)', and $wf names its test-summary job '$want'"
 }
 
-@test "devbin publishes through CI on its candidate: publish.url the public repository, its cut to local alone, the built-in asked about release.repo (0240, WP03)" {
+@test "devbin releases through CI on its candidate in the standard shape: no publish.url, its cut to local then upstream, the built-in asked about release.repo (0240, WP03)" {
   # shellcheck source=lib/helpers
   . "$DEVBIN_LIB_DIR/helpers"
   # shellcheck source=lib/config
   . "$DEVBIN_LIB_DIR/config"
   cfg_load "$DEVBIN_HOME/bin/.devbin/config.yaml"
   cfg_validate
-  # A cut asks this query about the snapshot on its candidate before anything
-  # is public.
-  [ "$(cfg_release_get publish.url)" = "https://github.com/$(cfg_release_get repo).git" ] ||
-    fail "devbin's release.publish.url is not the https url of release.repo: $(cfg_release_get publish.url)"
-  [ "$(cfg_release_list remotes)" = local ] || fail "devbin's cut does not push to local alone: $(cfg_release_list remotes)"
+  # A cut asks this query about the release commit on its candidate branch, at
+  # the remote that pushes to release.repo, before anything is tagged. Under
+  # release.publish.url it would publish a snapshot instead, a commit this
+  # repository's main never holds.
+  [ -z "$(cfg_release_get publish.url)" ] ||
+    fail "devbin declares release.publish.url, so its cut would publish a snapshot: $(cfg_release_get publish.url)"
+  [ "$(cfg_release_list remotes)" = "$(printf 'local\nupstream')" ] ||
+    fail "devbin's cut does not push to local then upstream: $(cfg_release_list remotes | tr '\n' ' ')"
   [ "$(cfg_release_get ci.query)" = "bin/devbin ci-state" ] ||
     fail "devbin's ci.query is not the built-in, which reads release.repo: $(cfg_release_get ci.query)"
   [ -x "$DEVBIN_HOME/lib/cmd/ci-state" ] || fail "the built-in ci-state is not executable"
