@@ -1,0 +1,15 @@
+{
+  "id": "01M6DQVPK7MJP743PX5NBD2FN2",
+  "ts": "2026-11-02T09:01:18.824Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Utilz 2.14.9's candidate CI would skip macOS: utilz's tests.yml runs test-macos (:115), the rust matrix's macOS row (:285), menuz-app (:534) and Test Summary's MACOS_REQUIRED (:598) only on a tag or a dispatch, while 0.1.19's cut tags only after CI is green on candidate/<tag>, so unless utilz/dc's ST0031/04 moves all four to devbin's own startsWith(github.ref, 'refs/heads/candidate/') (devbin's tests.yml :192, :355, :546) the candidate reads green on Linux alone. AC-5.4's Utilz facts are dc's (its hold of 2026-11-02). Held until hv answers Q1 of cc's plan of 2026-11-02: cc sends it to devbin-vc for utilz/vc and utilz/dc, hv says it in utilz/vc's window, or it is left to ST0031/04's review."
+  }
+}

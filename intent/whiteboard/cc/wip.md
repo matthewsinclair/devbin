@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 48951425-5788-4dc2-8b93-36d2b98dc769
-heartbeat_at: 2026-11-02 08:19Z
+heartbeat_at: 2026-11-02 09:01Z
 status: active
-focus: "HOLD after hv's /compact for the go: no work until hv or vc names cc's next. The parked 0301, 0302 and 0305 wait as the todos say."
+focus: "HOLD for hv's pickup after the move (hv's quiesce, relayed by devbin-vc): cc's plan of 2026-11-02 waits on hv's Q1 to Q3 (hold 35, the Utilz CI finding; cc's lane; 0321). The parked 0301, 0302 and 0305 wait as the todos say."
 claims: [ISSUE:0301, ISSUE:0302, ISSUE:0305]
 ---
 
@@ -23,7 +23,7 @@ _(none)_
 
 ## Holds
 
-_(none)_
+- Utilz 2.14.9's candidate CI would skip macOS: utilz's tests.yml runs test-macos (:115), the rust matrix's macOS row (:285), menuz-app (:534) and Test Summary's MACOS_REQUIRED (:598) only on a tag or a dispatch, while 0.1.19's cut tags only after CI is green on candidate/<tag>, so unless utilz/dc's ST0031/04 moves all four to devbin's own startsWith(github.ref, 'refs/heads/candidate/') (devbin's tests.yml :192, :355, :546) the candidate reads green on Linux alone. AC-5.4's Utilz facts are dc's (its hold of 2026-11-02). Held until hv answers Q1 of cc's plan of 2026-11-02: cc sends it to devbin-vc for utilz/vc and utilz/dc, hv says it in utilz/vc's window, or it is left to ST0031/04's review.
 
 ## Watch-outs
 
