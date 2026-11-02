@@ -1,0 +1,16 @@
+{
+  "id": "01M6DNNK003R83FT6CD792QJ61",
+  "ts": "2026-11-02T08:23:01.376Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 195,
+    "text": "hv cuts Utilz 2.14.9, 0132's fix, through devbin 0.1.19's core once 0132 lands (hv in vc's window, 2026-11-02, before the clock read 07:36Z by date -u): the first consumer cut in the new shape, ST0011 WP10 (utilz#ST0031). utilz-vc and utilz-dc bring vc and hv one plan first: tests.yml fires on candidate/** and not on tags (today it fires on main and tags, so pre-flight would refuse); tools/post-cut against the macOS leg the cut now runs at the release commit; a build: block wired to the cache. Its release check and dry run come to vc before hv cuts; every run books on this desk. After the cut vc reads its RELEASE seal for AC-3.4 (sign and notarise at the release commit as a leg), Utilz's part of AC-4.3, and AC-5.4 if a build: block is in. GO (hv in vc's window through the TUI, and in utilz-vc's at 08:22Z, Utilz vc decision 87; recorded 2026-11-02 08:23Z by date -u): utilz-vc's plan as sent. ST0031/04 by utilz-dc: U1 tests.yml (candidate/** trigger, tags dropped, macOS jobs on candidate refs) and U2 post-cut (app steps go; it keeps macos publish, since the 0.1.19 cut attaches no app); then R1 post-cut 2.14.8 smoke, R2 release check, R3 dry run, each booked here; hv pushes main and vc reads CI; then hv's cut with a freeze. The build: block is not in this cut. After the cut, vc files the core asks: attach the app in the cut, stop after: at the first failure, pull the tap."
+  }
+}
