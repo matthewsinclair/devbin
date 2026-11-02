@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "0efaf266-99de-43e5-b477-f36ee9e1d9d9",
-    "heartbeat_at": "2026-11-02T05:35:07.389Z",
+    "heartbeat_at": "2026-11-02T06:31:25.927Z",
     "status": "active",
-    "focus": "HOLDING at hv's order to fold, close and hold (2026-11-02). devbin 0.1.19 released and swept; after hv's brew steps the fleet was re-swept from Homebrew's install at 04:07Z, every estate recording 0b5e4fa0f540, nothing pushed. 0318 corrected (cause unknown; no code, no run); 0319 filed. ST0011 reads 18 of 21, waiting on the consumers' cuts. ON hv's GO: the sweep's notices as each estate's vc comes up (todo 194); hv's remaining items (todo 184: the Intranet's upgrade, kovacs's leftovers); then WP10 to WP14.",
+    "focus": "Repo switch DONE at hv's go (decision 132, 2026-11-02 06:28Z): main be65353e is GitHub's history with the workroom public; local and upstream are ordinary remotes, archive takes pushes only. NOW: devbin's own release config to the core's standard shape (no snapshot; remotes local and upstream), its tests on the desk, then hold. After that, on hv's go: the sweep's notices (todo 194), hv's items (todo 184), then WP10 to WP14.",
     "claims": [
       "ST0011"
     ],
@@ -3237,7 +3237,8 @@
       "kind": "decision",
       "seq": 52,
       "text": "hv 2026-10-17: devbin goes public as a NEW repository from one audited commit (product allow-list, no intent/); this repository stays private as the workroom (ST0010).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-02T06:31:15.391Z",
       "recorded_at": "2026-10-17T14:42:15.256Z",
       "edited_at": "2026-10-28T19:56:21.721Z"
     },
@@ -3338,7 +3339,8 @@
       "kind": "decision",
       "seq": 56,
       "text": "hv 2026-10-24: public devbin is MIT; the workroom lives only in the local mirror once the GitHub repository is recreated public.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-02T06:31:15.604Z",
       "recorded_at": "2026-10-24T06:47:31.847Z",
       "edited_at": "2026-10-28T19:56:22.274Z"
     },
@@ -3842,7 +3844,8 @@
       "kind": "hold",
       "seq": 34,
       "text": "Repo setup, until hv's go (hv 2026-10-30): this checkout pushes to local and upstream; local push-only, keeping the old history; a fresh .git from upstream is fine. Open: a home for intent/ and the 12 other files upstream lacks; local's clashing main and v0.1.18. Plan: memory repo-model-open-20261029. 2026-11-01: the fetch-only upstream (push url disabled), which named the public repository, is removed on hv's TUI answer, since devbin's cut refuses any remote naming it (publish_url_named), and hv called it 'the literal opposite of what I asked for'. Its config is saved at ~/Devel/scratch/devbin-vc/st0011/upstream-remote-saved.txt. The switch plan puts that rule to hv.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-02T06:31:15.997Z",
       "recorded_at": "2026-10-29T19:58:31.641Z",
       "edited_at": "2026-11-01T20:38:42.029Z"
     },
@@ -4398,6 +4401,14 @@
       "text": "hv's rulings of 2026-11-02 in vc's window through the TUI. First, answered before the clock read 03:52Z by date -u: the 0.1.19 candidate's WSL 2 red (0318, localinstall's 0059 FORWARD arm) stays filed with its record corrected, and nothing else follows, no code and no run; the suspect first named, the fixture commits' background maintenance, does not hold on WSL's git 2.53, and the cause is unknown. Then, answered before the clock read 04:07Z by date -u: the candidate's WSL 2 job is not re-run; after hv's brew steps (brew upgrade devbin, then devbin use brew, so the switch names Homebrew's install) the fleet is re-swept from Homebrew's install, so every estate records its commit 0b5e4fa0f540, one commit per estate, the manifest alone, nothing pushed (done at 04:07Z); and the opt/brew notice gap is filed, as 0319. None of these to be put again. This decision carries decision 130's ruling, archived into it.",
       "state": "live",
       "recorded_at": "2026-11-02T04:10:31.651Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 132,
+      "text": "hv's ruling of 2026-11-02 in vc's window, the go received before the clock read 06:28Z by date -u (the switch commit's own stamp): this checkout pushes to local and upstream as ordinary remotes; archive, hv's private copy of the old local, takes pushes only and is never fetched or pulled from; and the workroom goes public with the product (hv: \"I'm happy for the intent/ dir to go to gh\"). Executed at 06:28Z by vc's switch.sh, run by hv after two dry runs on a full copy, with a bundle of every ref and an intent backup taken first: archive took the old main as private-main at d7bb22784b45 with the 17 bank refs and the 20 old tags; main moved onto GitHub's history by reset --soft, no file on disk changed, and the workroom was committed through the gate as be65353e6911 over the 0.1.19 snapshot 0b5e4fa0f540, its tree equal to d7bb22784b45's; the 20 old tags here gave way to GitHub's v0.1.18 and v0.1.19; GitHub fast-forwarded to be65353e6911, and local's and archive's main were forced to it once, local's tags pruned to the two. Every sha in the records before today names a commit in archive's history. This supersedes decisions 52 and 56 and closes hold 34. Next: devbin's own release config takes the core's standard shape (no publish.url, no snapshot; remotes local and upstream) before any cut, since today's cut refuses a remote naming the public repository.",
+      "state": "live",
+      "recorded_at": "2026-11-02T06:31:15.794Z"
     }
   ],
   "sent": [
