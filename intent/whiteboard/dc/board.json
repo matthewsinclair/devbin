@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "3349cc41-d0ab-4fdc-866e-0e9d5265af24",
-    "heartbeat_at": "2026-11-02T05:35:09.970Z",
+    "heartbeat_at": "2026-11-02T07:43:36.903Z",
     "status": "active",
-    "focus": "HOLD until vc names dc's next work: devbin 0.1.19 is released and WP04 is done; WP16 stays WIP for AC-5.4 at the first consumer cut.",
+    "focus": "HOLD for hv's /compact and the go after it (hv's fold order of 2026-11-02, relayed by vc); WP16 stays WIP until AC-5.4 is satisfied at the first consumer cut.",
     "claims": [
       "ST0011/16"
     ],
