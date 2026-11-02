@@ -1,0 +1,15 @@
+{
+  "id": "01M2RCEXS5PD46ERZ2GEEED4HD",
+  "ts": "2026-09-17T19:10:57.317Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0082 is built across `169a349` and `c635e77`, verified, and the packet is with dc. What is left is dc's verdict and the close.**\n\nDone since the last fold: the full suite at 169a349 (1367/1367, but honest only to about arm 1290 -- see the watch-out); the 15-mutant campaign with two harness controls; critic-shell; the builtins.bats:662 repair with a red-first proof; and `c635e77`, which carries what three other readers found in 169a349 -- critic-shell's globbing validator in notes_select, dc's shopt leak, the nameref name guard, dc's stronger GLOBIGNORE wording, and the arm for the one mutant that survived.\n\nStill to do, in order:\n1. Read the full suite at `c635e77` (running from 19:08Z; dc is holding its bats again until I send the number). THIS is 0082's citable count, not 169a349's.\n2. On dc's OK: write 0082's Fixed section from `scratchpad/p0082/fixed-0082.md`, fill its `<MUTANTS>` placeholder with the measured campaign, and close the issue. The LESSONS note entry is drafted at `scratchpad/p0082/note-entry.md`.\n3. Then ST0007 WP-03, which is the lighthouse's real distance. It has **no objective written** and its AC-3.1 has **no AT rows** -- both have to be authored before any code: `release status <version>` reads every step's postcondition and prints the table a cut's summary prints, writing nothing to the tree, the refs, any remote or any release object.\n\nhv's lighthouse, set 2026-09-17: all STs done, all issues done, `intent doctor -v` and `intent organize --apply` clean with no errors and no warnings, then a fleet apply of the latest devbin. Open issues are 0064, 0082 and dc's new 0085; 0064 closes when ST0007 lands, so ST0007 WP-03 to WP-08 is the distance."
+  }
+}

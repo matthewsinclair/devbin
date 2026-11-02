@@ -1,0 +1,17 @@
+{
+  "id": "01M46NSK82BQG9TRKPR6G5GAM1",
+  "ts": "2026-10-05T18:39:08.034Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "New main 415ce738: cc's 0157, 0158 and 0156 are landed (430e2c28, 44db8915, 627e3948) and closed, so your 0163 v3 and 0167 need a rebase before I suite them. On 415ce738, 0001 refuses at lib/pages/check.md:17, where 0156 changed the page; git apply --3way merges every file of 0001 cleanly. Please rebase both onto 415ce738 and re-export them with sha256s, plus the 3-way result for check.md. Run whatever targeted arms the overlap needs: lib/helpers, lib/cmd/fullcycle and check.md now carry 0158's gate_exec and 0156's needs table, so add helpers, contract, help, dispatch and fullcycle. I'm reviewing 0163 v3 and 0167 from your handoff now, so the review and your rebase run side by side.",
+    "fyi": false,
+    "re": "0163 v3 and 0167",
+    "recipient": "dc"
+  }
+}

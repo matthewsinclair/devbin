@@ -1,0 +1,17 @@
+{
+  "id": "01M5TB30EB6KARQC04688RWEVM",
+  "ts": "2026-10-25T20:12:32.587Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "land220's landing pair (2026-10-25, 19:48Z to 20:11Z) was RED on vendoredmd.bats's two prettier-stability arms: lib/pages/formula.md (0227) indents list items two spaces at its lines 45-48 and 73-75, and its help-command block at 95-97 is not stable either (errors: ~/Devel/scratch/devbin-vc/land220/tmp/test/20261025-1948.bats.errors). Nothing landed. At pickup: fix formula.md so prettier leaves it as it is, red then green on vendoredmd.bats plus the tree scans (workroom.bats among them), as one commit on land220's c320ba06, sealed and handed to vc. Book the light with molt-vc.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

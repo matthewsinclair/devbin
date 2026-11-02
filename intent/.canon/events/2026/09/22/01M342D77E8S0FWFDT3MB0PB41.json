@@ -1,0 +1,15 @@
+{
+  "id": "01M342D77E8S0FWFDT3MB0PB41",
+  "ts": "2026-09-22T08:06:08.878Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "A PUSH IS DONE when CI is GREEN on the pushed sha, or RED with exactly the baseline failures named (hv, 2026-09-22). Baseline measured today, and no unpushed local commit in any of these trees touches the failing test: arca_config (mix format, test/deps_audit_test.exs:33, a line over the limit because it names bin/devbin test credo, which is our own decision 6 -- trivially fixable); Baize (10 unused deps in mix.lock, red since 09-08); Cdtempl (devbin 0109, plus .mcp.json in its release archive -- both trivially fixable, the second being one export-ignore line); Lamplight (two conformance tests, FenceCensusTest and NoCorpusCouplingTest, with 58 commits landed since that verdict, so only their own run can say); Prolix (CliFixturesTest two_player_game 005). Lamplight and Prolix go to their own vcs. Lamplight's suite is hv-run only under standing directive 4, so I do not run it. Two readings this rule now needs: after 0108 only a tag or an on-demand run carries macOS, so a release reads the tag run as well as main; and with the board path filter a board-only push starts no run at all, so its verdict is the last run that ran."
+  }
+}

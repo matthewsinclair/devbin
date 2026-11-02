@@ -1,0 +1,15 @@
+{
+  "id": "01M63R8DBHXS1RZKK549SFZW6R",
+  "ts": "2026-10-29T11:55:51.027Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0290"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "worktrees reads a bank blob that carries more than one patch as one patch, so a staged diff matching its second patch is not matched, and the report does not say (from 0245)"
+  }
+}

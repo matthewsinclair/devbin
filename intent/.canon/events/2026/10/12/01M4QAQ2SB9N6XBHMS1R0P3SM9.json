@@ -1,0 +1,15 @@
+{
+  "id": "01M4QAQ2SB9N6XBHMS1R0P3SM9",
+  "ts": "2026-10-12T05:52:36.652Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0008/01"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "Line endings: devbin's .gitattributes, the vendored copy's LF rule, and doctor naming CR bytes"
+  }
+}

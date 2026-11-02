@@ -1,0 +1,17 @@
+{
+  "id": "01M2WHHPPQQC14C2Q55PN3WK5D",
+  "ts": "2026-09-19T09:56:48.983Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv is running 'time dvb test all' right now to get a baseline time for the suite. Please run no tests at all, targeted ones included, until hv's run finishes, so the timing isn't skewed by our load. I'm holding mine. I'll tell you when it's done. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

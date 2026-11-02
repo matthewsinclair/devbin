@@ -1,0 +1,17 @@
+{
+  "id": "01M66FM9CMG980KB6KE25F5M96",
+  "ts": "2026-10-30T13:22:46.292Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv's go (2026-10-30, in vc's session): build 0294. The ask is the issue's own: a release tag whose commit is already green on candidate/<tag> must not run the tests workflow's whole matrix again (.github/workflows/tests.yml: tags trigger at :17; the tag-only macOS/WSL conditions at :196, :356 and MACOS_REQUIRED at :542). It must hold for both shapes: a project that cuts without a publish repository still needs CI on its tag, so key the skip on the candidate's green verdict for that sha (or on the project publishing), never drop tag CI outright. Change with it: docs/releasing.md's 'A publish produces three runs of the tests workflow on one commit' paragraph, and ci-workflow.bats' trigger arms (watch each new arm go red on the old workflow first). Correct the issue's record too: CI holds no main-push run for a9b8cd7c, only candidate 40919937412 (green), tag 40928750135 (cancelled) and Release 40928750466 (green). Note: hv's repo-setup switch (vc hold 34) may change the release flow later; build against today's flow, no anticipation. Process as usual: claim ISSUE:0294, critic-shell review settled before the first run, targeted run booked through estate slots with the tree-scan files and help added, then hand vc the bank and the run's seal for validation. No cut, no push.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

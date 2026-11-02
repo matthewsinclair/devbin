@@ -1,0 +1,16 @@
+{
+  "id": "01M4DQQ83Z35GVTA9G9HKD2MNS",
+  "ts": "2026-10-08T12:27:29.279Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "NEXT RELEASE (hv, 2026-10-07; to vc on 2026-10-08: \"coordinate DC and CC to get this next release done. I want all open issues closed before we do the release\"; at the go after hv's meeting, 12:22Z: \"I want all of these issues closed out asap\"; 12:24Z: \"I DO NOT WANT ANY YAK SHAVING NONSENSE HERE. Tests that test tests that test tests are BANNED.\"). THIRTEEN FILED, 0177 to 0189; TWELVE CLOSED, batch 5 the latest: 0181 at f52f4d92 and 0188 at 7263bc00, records 6bc4d708, on vc's full suite of the landing tree, 2273 of 2273 ok (seal 20261008-0906). OPEN: 0189 (cc), BATCH 6 alone. cc: arms red on main and green under BSD and GNU, one targeted run, shellcheck, critic-shell once, its three surviving mutants a line each, no full suite of its own; patch against main 6bc4d708. vc: review with no mutants of its own, then one full suite of the landing tree, land, close. THEN RELEASES/0.1.10.md from notes/0.1.10.md, read by cc and dc against the code, then hv's dry run and cut."
+  }
+}

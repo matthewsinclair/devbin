@@ -1,0 +1,16 @@
+{
+  "id": "01M6B7YKPN6GC457E1MM0ZWT2A",
+  "ts": "2026-11-01T09:44:48.085Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115), FOLDED for hv's /compact (localfold, not released) WITH ITS RUN IN FLIGHT: slot 01M6B6NHXN88QP5C0H6EHHYVPK (heavy; granted by vc on bats, cargo and heavy), STARTED 09:34:38Z by date -u at acc813e06b93abb65efe84e863058457f218071a (refs/bank/dc/ST0011-16; -wip at 6e88550c, the same tree), run-wp16.sh detached in this session, logging to wp16/run-wp16.log. AT THE DRIVER'S EXIT, FIRST: release the slot with --result, END to vc. EXPECTED RED, read off the tree (wp16/settle3-probes/scans.sh): helpers.bats's mv-list arm (lib/cmd/cache:419's mv -f not in its known list) and its raw-sha256 arm (cache.bats's sha_sums and fail_sha256), under GNU and BSD; the fix, test files only with lib/ and bin/ byte-identical, is written in wp16/settle4-scans.sh, NOT applied. Then: apply it with whatever else the TAPs show, squash and re-bank by CAS, send vc the reds, the fix and the byte-identical diff, ask vc the re-run's shape (dc's proposal: a new red clone, cache.bats and helpers.bats under BSD and GNU, the tree scans and help), the desk; then the handover and the AT rows at the landing (decision 101). The state: wp16/NOTES.md."
+  }
+}

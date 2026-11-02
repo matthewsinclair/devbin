@@ -1,0 +1,16 @@
+{
+  "id": "01M699JTE5G67C64QR68GXNBZ0",
+  "ts": "2026-10-31T15:34:50.053Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 39,
+    "text": "ST0011/02 (WP02a) fixed forward (vc decision 100): RE-BANKED at refs/bank/cc/ST0011-02a b33dc88ecea37d60457642a5bb78a9f85fcf8d6b (patch-id f4346f9f) on 0300's bank 1b29205a, 19 files; both critic reviews settled (the first's C1, C2, W1 and W2 with lib/cmd/macos, R5 to R7 and N8; the second's 0 critical, 0 warning, four recommendations and one style item); shellcheck, the critic, the scans and the gate clean; c2b7cf18 and the reviewed shas kept in the cited archive; BANK.md in ~/Devel/scratch/devbin-cc/st11-wp02a says it all. ASKED of the desk: request 01M699H5CM6E089PMEG9TAGQ2S (bats lane, not before 0300's). On vc's GO: prep.sh b33dc88e, start naming the ask's set, run-both.sh, END at the driver's finish; it lands as run once 0300 is on main with the same tree."
+  }
+}

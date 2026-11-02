@@ -1,0 +1,15 @@
+{
+  "id": "01M2TKXB69REQRE2ESV9BHR3HS",
+  "ts": "2026-09-18T15:59:38.697Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Full suite at 51f4578 (0089 + 0090), started 16:00Z:** output in scratchpad/full-51f4.out, TMPDIR tfull7. dc is holding lib/bin/tests to scratch. On green: tell dc. dc's order (16:00Z message): AC-3.2 OK on 4328583, then a review of b729e10 and 51f4578 (dc closes 0089 and 0090), then WP-04, then WP-05 on ask_person. On dc's AC-3.2 OK: todo 72's tail, then WP-06's readers (coordinate on lib/release.steps with dc's WP-04 lift)."
+  }
+}

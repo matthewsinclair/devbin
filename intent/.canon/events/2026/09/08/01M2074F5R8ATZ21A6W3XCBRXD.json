@@ -1,0 +1,15 @@
+{
+  "id": "01M2074F5R8ATZ21A6W3XCBRXD",
+  "ts": "2026-09-08T09:56:05.433Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0003/03"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "infra init: propose by standard then majority, deviations into unreviewed"
+  }
+}

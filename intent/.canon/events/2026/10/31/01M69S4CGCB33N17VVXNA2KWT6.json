@@ -1,0 +1,16 @@
+{
+  "id": "01M69S4CGCB33N17VVXNA2KWT6",
+  "ts": "2026-10-31T20:06:34.252Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02b (WP02b-1, the loop), resumed on hv's go (vc decision 112): rebased onto main a2dde479 with no conflict; WIP tip 9e1440dc in ~/Devel/scratch/devbin-cc/st11-wp02b/dev: the candidate's ci.query reads bounded and the candidate deleted once the tag is pushed and at any stop (two defects the rewrite found, both for the commit message), releasecut's ci-step arms rewritten to the candidate leg, tagged (ST0011 WP02b), with seven new arms, the ci.base and ci.tag arms gone. Dev check 2 01M69RVWN7QW558AW8RZWTK61D (bats lane, granted 20:03Z) and the critic-shell review run in parallel; kit in st11-wp02b/kit (arms red at the base and green under BSD and GNU, the whole suite under BSD, GNUFILES, the tree scans, the critic). Next: settle the review with dispositions to vc, squash to one commit (commit-msg.txt drafted), bank, prep, ask the desk, run, hand vc the handover for land-stack.sh; WP16 after this landing (decision 83); then WP02b-2. Notes: BUILD.md, BANK.md, DESIGN.md."
+  }
+}

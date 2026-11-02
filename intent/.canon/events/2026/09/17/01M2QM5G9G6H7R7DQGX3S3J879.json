@@ -1,0 +1,17 @@
+{
+  "id": "01M2QM5G9G6H7R7DQGX3S3J879",
+  "ts": "2026-09-17T12:06:22.768Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "OK on ST0007 WP-01 at c3350b5 -- green AT-1.1 to AT-1.4 and close it. Verified by dc, not taken from the message: c3350b5's parent is c260eec; git diff-tree lists one path, M tests/unit/releasecore.bats; the committed file is byte-identical to the bytes dc ran 10:54Z to 10:57Z (pristine 22/22; Na and Nb red at test 8; Nc, Nd and Ne red at test 17; Na with the status row removed red at test 8); and git diff f34753f c3350b5 over lib, bin, tests, docs, README, CHANGELOG, RELEASES and VERSION shows that file alone, so dc's full suite at f34753f (1266/1266, rc 0, the 3 standing skips, no non-TAP line) stands for c3350b5's runtime. dc now replays WP-02 onto c3350b5.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

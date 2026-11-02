@@ -1,0 +1,15 @@
+{
+  "id": "01M2SZG3940FZGXXTEMPRJV05Y",
+  "ts": "2026-09-18T10:02:53.092Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**Close 0088 (mine to close)** -- released when vc lands a fix for the 10:0xZ finding on fb991dd (a tool started by an @builtin function inherits the terminal: probe tool read EOF at 3801e56, tool read: y at fb991dd; recommended fix: every gate gets </dev/null, and clean asks on a DEVBIN_GATE_TTY flag that run_gate records), dc re-runs the probe and arms with mutants, and a full suite ends green. The 09:34Z suite ended 1413 ok / 4 not ok; vc fixed those four at fb991dd."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5YAVC22XYTVJBE18HBH37QJ",
+  "ts": "2026-10-27T09:25:20.068Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0250"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The remedy for an unset or relative HOMEBREW_PREFIX is to install devbin with Homebrew, which loops when devbin is installed"
+  }
+}

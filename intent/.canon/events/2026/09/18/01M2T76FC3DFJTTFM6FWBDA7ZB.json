@@ -1,0 +1,15 @@
+{
+  "id": "01M2T76FC3DFJTTFM6FWBDA7ZB",
+  "ts": "2026-09-18T12:17:26.403Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**WP-03 AC-3.2 fix, mine (told dc 12:17Z):** when the suite at 84f9870 ends, release_materialise switches from git archive to GIT_INDEX_FILE read-tree plus checkout-index. Drive it red first on dc's two-note RELEASES/0.9.0.md export-ignore shape. Keep the post-check as a guard and drop limits 1 and 2 from the design draft. Take dc's eight arms (scratchpad/wp03f/probe-arms.bats in dc's scratch), renamed, and re-run dc's mut.sh. Then send it to dc for the AC-3.2 OK. On the OK, re-run design-wp03.py, adjusted, then st attach design.md, then wp done ST0007/03."
+  }
+}

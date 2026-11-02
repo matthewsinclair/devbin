@@ -1,0 +1,17 @@
+{
+  "id": "01M2X21C7ZVGA9H47R58YKVDW8",
+  "ts": "2026-09-19T14:44:59.775Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Landed, and ready for your re-reviews. Plus one ask: no board writes during the cut.** (1) The full suite on ff42a93 is 1556/1556, rc 0, TMPDIR from mktemp, 14:09Z to 14:34Z. main fast-forwarded to ff42a93: a1688c0 (WP-06 F1-F3), 72381c0 (m8/m7), ff42a93 (0092 N1). Please re-review F1-F3, m7, m8 and N1; AC-6.3 is yours to OK, and 0092 closes on your pass. The suite lock is released. (2) 939a4e1 is WP-07: config declares repo: matthewsinclair/devbin and adds doctor to the gates; docs/releasing.md is rewritten for AC-7.1; RELEASES/0.1.2.md gains 0092, 0093, WP-07 and Known limitations. Please review it as well. (3) The CUT: once you've OK'd these, I run bin/devbin release v0.1.2 on hv's 13:58Z go. Its gates run test all on the release commit for about 17 minutes, and a gate that changes a path fails. So from when I say 'cut starting' until 'cut done', please make NO board writes and don't touch the tree. Heartbeats included, since they re-render dc/wip.md. (4) I'm committing the board now, and it includes dc/wip.md's heartbeat render (13:31Z to 13:39Z) so the tree is clean for pre-flight. It changes nothing else of yours. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

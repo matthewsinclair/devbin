@@ -1,0 +1,16 @@
+{
+  "id": "01M5VEFAPJB4JEPVFY4T784FTA",
+  "ts": "2026-10-26T06:30:56.466Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 0.1.15 is devbin's ONE next release (decision 63), carrying 0213 and 0220-0231. land220 at c320ba06 (main 593109bf plus every issue commit) was RED in the landing pair of 2026-10-25 on 3 tests (seals land220/tmp/test/20261025-1948.bats.{out,errors}, cand220/tmp/test/20261025-1958.bats.{out,errors}). 2026-10-26, on hv's word via molt-vc: cc's 0227b (18e59ec1, lib/pages/formula.md, whitespace only) and dc's 0229b (8c5bfb3e, lib/runlog's alternation), each one commit on c320ba06 and verified by vc, run their arms on molt-vc's GO of 06:28Z, with the machine Devbin's. NEXT: their ENDs and seals; tools/stack229b.sh (fill the bundles, refs and seals) stacks both; tools/recand220.sh; START to molt-vc; tools/pair220.sh with the machine to itself, no booking; END with the verdict; on green, tools/land220.sh (fill TIP), the resolutions (0229: .txt fixtures, Done when 5 in docs/configuration.md; 0230 line 3; 0231 landed sha and suite), close 0220, 0221 and 0223-0231 (0222 on CI green after hv's push), and main's A3 commit to molt-vc, who passes it to utilz-vc (todo 170). Then the 0.1.15 note, the kovacs slot (0.1.15 Linux check, 0213 leg D), ST0010's public steps (decisions 52, 56, 59, 60), and hv cuts. Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

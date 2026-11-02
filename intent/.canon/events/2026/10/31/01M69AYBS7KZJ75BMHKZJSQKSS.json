@@ -1,0 +1,16 @@
+{
+  "id": "01M69AYBS7KZJ75BMHKZJSQKSS",
+  "ts": "2026-10-31T15:58:36.839Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 36,
+    "text": "Every lib/cmd/release line of WP05 and WP06 (the leg hook-ins, which turn AT-3.3 and AT-3.6 green) and WP04's last piece, the tag trigger's removal: held until cc's WP02b, the wait loop, lands on main (vc, read by 2026-10-31 15:58Z); the hook-ins route through vc. Not dc's: WP03's two call lines (pre-flight and release check, gated on cfg_ci_query_is_builtin), is_branch_name through lib/helpers and AC-6.3 land in cc's WP02c, after dc's WP03 remainder and WP17."
+  }
+}

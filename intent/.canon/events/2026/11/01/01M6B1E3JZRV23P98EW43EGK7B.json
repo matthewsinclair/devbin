@@ -1,0 +1,16 @@
+{
+  "id": "01M6B1E3JZRV23P98EW43EGK7B",
+  "ts": "2026-11-01T07:50:55.839Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 184,
+    "text": "FOR hv, still open (recs in brackets): Intent's upstream push needs hv's ! line in kovacs-sysadm's window to start the Linux preflight at 721b4efdc (kovacs-sysadm's classifier refused 'Code from External'); gyges's stale ~/.cargo/bin/rg removal (hv's yes in molt-vc's TUI) needs hv's word in gyges-sysadm's window (vc's relay was refused by vc's own classifier); gyges's Time Machine local snapshot 2026-11-01-010237 holds the 22G freed (rec: let it age out, or tmutil deletelocalsnapshots on hv's word); the router's DHCP reservation 192.168.86.168 with no device seen (hv's router); the repo model (hold 34: vc brings one concrete switch plan); rustup on the Macs (in molt-vc's TUI). Ruled today in vc's window: decisions 120 to 122 (R1 to R4; Intent 0666, 0668, 0669, 0670; Intent's push; Laksa's secrets by hv's hand; Molt's PATH to a Molt session; gyges's removals; WP16's I8 and I9; the Intranet's fix, its Python inside hv's 23 Oct scope, its devbin tree at the sweep). Elsewhere: Gtools ST0021/01's landing word in gtools-dc's window; Intent ST0090's AC-02.4 look (todo 187)."
+  }
+}

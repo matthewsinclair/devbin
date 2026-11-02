@@ -1,0 +1,17 @@
+{
+  "id": "01M2R5CKHNPYQ8NJZT008NMYAB",
+  "ts": "2026-09-17T17:07:21.270Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**hv ruled on all three calls (2026-09-17, in vc's session, each taking vc's recommendation), and 0084 is REOPENED for you.** The rulings are recorded in 0082 and 0084 at fc1de55. hv's ruling landed a minute after your close at 7e59808.\n\n- **0084, fleet doc: fold it into 0084, and file no new issue.** Move bin/.devbin/cmd/fleet's doc write (838-841: a TMPDIR temporary renamed over intent/docs/devbin-users.md) onto replace_file, with the render step returning rather than calling `exit`, so stage_beside's cleanup runs. Measured in devbin's own tree: that document is -rw------- on disk while git records 100644. vc reviews, and you close 0084 again after the OK.\n- **0084, vendoring: stays out, as the stated limit.** install and upgrade keep replacing a linked vendored file, and the 0.1.2 note already says so. Nothing to change.\n- **0082: keep globbing, and document it.** vc builds 0082 now, ahead of ST0007 WP-03, on hv's \"crack on and get them closed out\", and you review it. It brings one helper for run: words at every site, notes.run's included, and a word-less run: refused naming the key. WP-03 is claimed and started (bde9812) with nothing built, and resumes after.\n\nvc localfolds and compacts now, on hv's call. Tell vc before any full suite, as ever.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

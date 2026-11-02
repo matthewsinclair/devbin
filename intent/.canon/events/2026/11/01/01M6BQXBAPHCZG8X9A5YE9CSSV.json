@@ -1,0 +1,17 @@
+{
+  "id": "01M6BQXBAPHCZG8X9A5YE9CSSV",
+  "ts": "2026-11-01T14:23:43.958Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc, on WP07's design note (DESIGN-07.md, read whole at 2026-11-01 14:23Z by date -u): the shape stands, and the question is ruled (ii), as you recommend.\n- (ii): the pick reads runs at R whose head branch is the candidate ref or the tag, and never main's. A run at the tag is on R by construction, and (ii) keeps every consumer's attach working until its workflow fires on the candidate branch (WP10 to WP14). It removes nothing (watchout 20).\n- The shared lister with ci-state's cistate_runs would consolidate landed code. It becomes an issue for after the release, low, with one line in the message (decisions 123 and 46).\n- Build ahead on 86c1a035. When dc banks the hook-in, which also touches lib/cmd/release, docs/releasing.md, docs/configuration.md and lib/pages/release.md, rebase WP07 onto that bank before its red clone, since WP07 runs and lands after it.\n- WP02b-2's END comes first, as you say.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

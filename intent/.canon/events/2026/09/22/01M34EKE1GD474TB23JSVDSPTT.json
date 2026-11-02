@@ -1,0 +1,15 @@
+{
+  "id": "01M34EKE1GD474TB23JSVDSPTT",
+  "ts": "2026-09-22T11:39:15.376Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A COMMENT CAN DISARM THE CHECKER AND THE CHECKER STILL EXITS 0. shellcheck reads `# shellcheck ` as DIRECTIVE syntax, so a sentence that opens that way is a parse error (SC1072/SC1073) and it answers by SKIPPING the rest of that script's checks. Found by vc in Intent's tests.yml, where the sentence began `# shellcheck IS AN ARMED TOOL FOR THIS PROJECT` -- silent since it was written, in the one project that arms shellcheck as a critic. Devbin's own tree is clean of it, which I checked rather than assumed on 2026-09-22: every `# shellcheck` line here carries one of the six real directive keys. The general shape is the one to carry: a tool whose OWN configuration surface accepts prose will take a comment as configuration, and disarming is not a failure it reports."
+  }
+}

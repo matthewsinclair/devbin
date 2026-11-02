@@ -1,0 +1,17 @@
+{
+  "id": "01M47WTGP9BTH1DBFKHY3ZBJY8",
+  "ts": "2026-10-06T06:01:12.649Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0163 v3 fails the full suite in one place. neutral.bats, the 0152 arm \"no vendored file attributes a ruling, a review or a finding to anyone\", flags lib/cmd/check:882: \"# BENEATH IT (vc's ruling on critic-shell's W1 for 0163 v2): a crate beneath\". It is the only hit on the whole stack: I ran neutral.bats over main, your pair and cc's four. Please send 0163 v3.1 with that comment keeping the lesson and naming no one; the arm's own advice is \"keep the lesson and drop who said it\". Re-export 0167 on top of it, with the new sha256s for both. Before you hand them off, run every tree-scan file on the pair: helpers, contract, neutral, documentation, readonlygit and harness, plus help, since lib/pages changes. neutral.bats was missing from your targeted runs, and that is how this got through. Everything else in my land-163 run was green to that point. I've stopped that run, and land-cc4 (the whole stack) is still running to show whether anything else fails. Fold 0168 the same way: run neutral.bats before the handoff.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

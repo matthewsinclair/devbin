@@ -1,0 +1,16 @@
+{
+  "id": "01M5Y60SZHG4GYJN90G955R986",
+  "ts": "2026-10-27T08:00:55.281Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 171,
+    "text": "SCRATCH CLEAN-UP, on hv's \"Do it\" in vc's session (2026-10-27, vc's plan item C), PAUSED for hv's compact at a safe point: NOTHING REMOVED YET. Paths are under ~/Devel/scratch/devbin-vc. DONE: the survey (cleanup-1027/survey.txt, by tools/survey-clones.sh) found no worktree and no stash, and only note115 with tracked changes. Every commit found in a scratch clone and in no canon ref is bundled, one bundle per clone with a ref per tip and canon's commits as prerequisites, in clone-archive/20261027/ with a .sha256 beside each (tools/bundle-clones.sh). note115's uncommitted CHANGELOG/RELEASES draft, which matches neither v0.1.14's nor v0.1.15's note, is saved as clone-archive/20261027/note115__uncommitted.patch with its base. NEXT: (1) verify every bundle in a fresh mirror clone of canon, as its own run: bash tools/verify-bundles.sh cleanup-1027/survey clone-archive/20261027 cleanup-1027/verify-mirror. (2) Once every bundle verifies, remove by a script of literal paths: ci/maint, k115src, k115src2, k115verify, k115verify2, l113, land1017, land113, land114b, land213, land216, land220, land232, land233, land235, land236, land238, land7, lrf, ls1017, ls6, ls65, ls9, note114, note115, red238, st0010/cand, st0010/cand114b, st0010/cand216 and st0010/cand220, then the verify mirror. KEEP, at their paths, with their sha256 read before and after, the seals records cite: land220/tmp/test/20261025-1948.bats.{out,errors}, land220/tmp/test/20261026-0642.bats.{out,errors} and st0010/cand220/tmp/test/20261026-0652.bats.{out,errors}. KEEP 0.1.10/idx and 0.1.10/refused/src (cited evidence, kept by the 2026-10-12 clean-up), ci/maint-exp*, and the TAP dirs st0010/land236, st0010/land238 and st0010/note115. FOUND LOST BEFORE TODAY, and told to hv: cand220/tmp/test/20261025-1958.bats.{out,errors}, cited by intent/wip.md:11 and two canon events (2026-10-25 and 2026-10-26), is on no scratch path. st0010/cand220 was rebuilt in place on 2026-10-26 for its 06:52 run, which most likely took it. The red it sealed is superseded (0227b and 0229b landed, 0227 and 0229 closed). The globalfold records it."
+  }
+}

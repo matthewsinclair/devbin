@@ -1,0 +1,16 @@
+{
+  "id": "01M5WNYJDPEC0WS0P5CC4B1ZEV",
+  "ts": "2026-10-26T18:00:50.358Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "ISSUE:0222 close: RESOLUTION-0222-v3.md is written and vc accepted it (2026-10-26): ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0222-v3.md, sha256 27b1d72db10bc807a8a7e7e5d01850293f784a210440dba674d00c3588292d63, sealed in SHA256SUMS-0222-v3 beside v2 (v2 stays as sealed at 4ffd6529: commits cite it). It cites CI run 40349359447 on a81f0f98, the head that lands 0236, green, with every arm that failed in run 40121933255 passing unskipped. hv's 0.1.15 cut is done (4efb6e17, tag v0.1.15), and vc closes 0222 with it through setres.sh in todo 171. Released once 0222 is closed; then unclaim ISSUE:0222 and clear 0220's scratch clones (~/Devel/scratch/devbin-dc/0220/build, vf20, vf21, vf22), surveyed and archived first"
+  }
+}

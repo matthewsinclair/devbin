@@ -1,0 +1,15 @@
+{
+  "id": "01M5T3BJE3HCNNAFKEK1ENVZHJ",
+  "ts": "2026-10-25T17:57:24.547Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "THE DEV/OPT/BREW CONTRACT'S SIGNATORIES are devbin (author), Molt, Utilz, Intent and Gtools (its ST0018). Every amendment goes to molt-vc, utilz-vc, intent-vc AND gtools-vc, and is agreed when each has answered. A3 went to three and reached Gtools only through devbin 0230 and Intent 0647, after its WP-03 was about to land the old line (gtools-vc, 2026-10-25 17:57Z by date -u)."
+  }
+}

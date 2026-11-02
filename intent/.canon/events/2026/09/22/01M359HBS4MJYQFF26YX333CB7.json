@@ -1,0 +1,15 @@
+{
+  "id": "01M359HBS4MJYQFF26YX333CB7",
+  "ts": "2026-09-22T19:29:59.076Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0112 CLOSED AS FILED AT 3a4cd53, AND ITS DELIVERY GAP SHIPS AS THE FIRST KNOWN LIMITATION IN RELEASES/0.1.7.md; WHETHER IT BECOMES AN ISSUE IS hv's CALL. help_file reads only a project's own bin/.devbin/help/ and vendored_paths ships bin/devbin plus lib/**, so an estate that has not written its own page gets the generated stub for every built-in -- measured before 0.1.7 for `help upgrade` in Utilz, Laksa, Conflab and Intent, and for `help release` in Utilz. The note adds what cc's proposal missed: the pages say things only true of devbin, so shipping them is a design decision about what a shared page says and how a project extends it, not a move. cc's proposal, not ruled: devbin's pages for its built-ins move under lib/ so vendored_paths ships them with no second list; help_file reads the project's page first and devbin's second; the stub stops telling estates to write devbin's docs; fleet.md stays, fleet being devbin's own command; each moved page is rewritten for a consumer, re-read for truth in one, and checked formatter-stable. For dc, the adoption owner: Conflab's own help/release.md documents its own cmd/release and must retire when Conflab adopts the core."
+  }
+}

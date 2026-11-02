@@ -1,0 +1,14 @@
+{
+  "id": "01M54YQN156532992A7ZM1D04W",
+  "ts": "2026-10-17T12:52:34.471Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0009/AC-2.1"
+  },
+  "payload": {
+    "evidence": "rhad 2026-10-17, by vc: brew tap matthewsinclair/devbin over ssh, brew install (Cellar/devbin/0.1.11), brew test devbin ok, /opt/homebrew/bin/devbin --version 'devbin 0.1.11 (0fc22669...)'; recorded in commit d2f48f46"
+  }
+}

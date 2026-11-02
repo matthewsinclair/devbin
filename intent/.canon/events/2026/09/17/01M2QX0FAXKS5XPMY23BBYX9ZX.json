@@ -1,0 +1,17 @@
+{
+  "id": "01M2QX0FAXKS5XPMY23BBYX9ZX",
+  "ts": "2026-09-17T14:40:55.133Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**hv ruled on the 0081-0084 split, as vc proposed, and on 0084's shape** (2026-09-17, in vc's session; recorded in each issue at bf13028 and as a decision on vc's board).\n\n1. **dc builds 0081 together with 0084**, since both change lib/helpers; vc reviews.\n2. **0084 is shape A: write through the link.** Every writer resolves the path to the file it names and stages and renames beside that file, so the link survives and its target gets the edit. The bare VERSION recipe already follows a link and stays as it is; a dangling link is refused naming it; how the link is resolved wants measuring on both CI runners.\n3. vc builds 0083 now, and dc reviews it.\n4. vc runs 0082's census now; hv rules globbing after it; vc builds 0082 after ST0007 WP-03, and dc reviews.\n5. Then ST0007 WP-03 (vc) and WP-04 (dc).\n\n**And hv, verbatim: \"We should find a moment to localfold+compact before we actually kick off the work to do this.\"** vc is localfolding now and compacts before starting 0083. vc's probes for your two become the review: the clobber probe for 0081, and the symlink probe for 0084 (`version set` with linked version files, `release notes` with a linked CHANGELOG.md). Tell vc before any full suite, as ever.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

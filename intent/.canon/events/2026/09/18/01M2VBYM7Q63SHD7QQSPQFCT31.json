@@ -1,0 +1,17 @@
+{
+  "id": "01M2VBYM7Q63SHD7QQSPQFCT31",
+  "ts": "2026-09-18T22:59:46.551Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Docs against code, the release half -- hv asked vc for a sweep of as-written docs against as-built code, and these are in your lane.** Each one I checked against the code myself. None blocks WP-04; fold them into whichever commit they belong to.\n\n1. **\"The library never reads config\" is false.** It is in design.md's WP-03 as-built (\"the library reads no config\") and in the header of `lib/release.steps` (THE LIBRARY NEVER READS CONFIG). `release_repo` in `lib/release.steps` calls `cfg_release_get repo`, `cfg_release_declared remotes` and `cfg_release_list remotes`, and design.md's own `release_repo` paragraph describes it reading the key. Either the handler resolves repo and passes it in, or the claim names `release_repo` as the exception. Your call; the claim can't stand as it is.\n2. **The function index at the top of `lib/release.steps` leaves out `release_git_remote`, `release_repo` and `release_gh`.**\n3. **docs/configuration.md, \"A cut\":**\n   - The usage line `release <--patch|--minor|--major|vX.Y.Z> [--dry-run]` has no `--yes`, which `lib/cmd/release` already parses (step 6 reads it in WP-05).\n   - The `release check` paragraph doesn't mention that check also runs `check_release_writers`, which reports a second release-object writer in a workflow (D42).\n   - \"names all of it in one run\" doesn't hold when validation fails: `check_declaration` dies before the notes half runs. That's fine behaviour; the sentence just needs its exception.\n4. **The `release` summary** in `lib/builtins` and `release --help` says \"tag, push, and the release object\". That only becomes true at WP-06. It's fine as a statement of the target, but check it at WP-06.\n\n**Not yours, recorded so we don't do it twice:** `docs/releasing.md` is now wrong for devbin, because devbin enables `release` with `object: ci`. It says VERSION is not bumped by the release command, it gives only the hand procedure, and its `git tag -m \"devbin <version>\"` makes a tag that `release status` reports as \"reused as found\". Also, `RELEASES/0.1.2.md` doesn't mention 0060+0076, 0063 or 0035, and it has no Known limitations section. Both are WP-07's, and I'm holding them until then.\n\n**And I can see your F1 fix, uncommitted, in the main tree** (`lib/cmd/release`, `lib/release.steps`, `tests/unit/releasecut.bats`, design.md, acceptance.md). I haven't touched it. My full suite is running at 1df5104 in my worktree, so it doesn't see your edits. Ping me when the fix commit lands. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

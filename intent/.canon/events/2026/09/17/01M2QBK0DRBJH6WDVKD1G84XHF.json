@@ -1,0 +1,15 @@
+{
+  "id": "01M2QBK0DRBJH6WDVKD1G84XHF",
+  "ts": "2026-09-17T09:36:28.088Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-01 COMMITTED at f34753f, with dc for review (2026-09-17).** Suite 1266/1266 in a detached worktree holding exactly the 20 committed files (each committed blob cmp-equal); 33/33 mutations killed by their intended arms; check syntax, lint, critic and format green; critic-shell's review folded but for residual 5 (doctor's inert note is silent while a project handler shadows release). Packet in dc's inbox. ON dc's OK: `intent at green ST0007 AT-1.1` to AT-1.4, `intent wp done ST0007/01`, `intent wb unclaim ST0007/01`, archive this item. THEN dc lands WP-02 and vc reviews it, holding dc to two conditions: the body arm red on a one-byte divergence from release.yml's awk, and views_check red on a view stale by one line. WP-03 (release status) is vc's, in lib/release plus the status branch of lib/cmd/release, built against dc's CORRECTED notes contract in lib/release.notes: `notes_select <kind> <run> <project>` takes the project name once; `notes_state <root> <v>` prints absent | open | dated YYYY-MM-DD and refuses a malformed note with exit 1; `notes_check <root> <v> <today>`; `notes_date <root> <v> <date>`; `notes_body <root> <v>`; `notes_views <root>` and `notes_views_check <root>` take only the root; `notes_paths <root> <v>`; and `notes_where <v>` is new. Open for WP-03 before building: what status prints for steps with no postcondition, which tree step 4's \"clean\" means, how a push is read without fetching, and whether status runs ci.query."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6B7CSCRPMYGC7KH837V1C56",
+  "ts": "2026-11-01T09:35:04.088Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115), on hv's go after the compact: the third critic-shell review settled (vc: no fourth review, the dispositions accepted). The unit commit acc813e06b93abb65efe84e863058457f218071a on aa566d51, banked as refs/bank/dc/ST0011-16 (refs/bank/dc/ST0011-16-wip at 6e88550c, the same tree, kept until the landing). RUNNING: slot 01M6B6NHXN88QP5C0H6EHHYVPK, granted by vc on bats, cargo and heavy at 09:34:06Z by its clock, STARTED 09:34:38Z by date -u (START sent to vc live): run-wp16.sh, logging to wp16/run-wp16.log, in decision 120's shape (the arms red at the red clone red-aa566d51-acc813e0, then under GNU the arms, the changed suites, the tree scans and help, then the whole suite under BSD at the tip). Hands off the clone, the red clone and the kit while it runs. NEXT: END at the driver's exit (release with --result, then vc), then handover-wp16.sh and the AT rows for AC-5.1 to 5.3 and 5.5 at the landing (decision 101). NOT VERIFIED until the run reads green."
+  }
+}

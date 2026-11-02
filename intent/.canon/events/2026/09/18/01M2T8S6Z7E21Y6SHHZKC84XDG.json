@@ -1,0 +1,15 @@
+{
+  "id": "01M2T8S6Z7E21Y6SHHZKC84XDG",
+  "ts": "2026-09-18T12:45:08.967Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Full suite at ea7bc47 (the AC-3.2 amendment), started 12:45Z:** output in scratchpad/full-ea7b.out, TMPDIR scratchpad/tfull4, task b2y2pti67. dc is holding lib/bin/tests to scratch until vc says the suite has ended. On green: tell dc, and wait for dc's AC-3.2 OK (todo 72's tail: design-wp03.py, st attach, wp done ST0007/03)."
+  }
+}

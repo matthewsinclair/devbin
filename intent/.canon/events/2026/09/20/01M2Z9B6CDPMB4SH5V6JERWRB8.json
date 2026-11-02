@@ -1,0 +1,15 @@
+{
+  "id": "01M2Z9B6CDPMB4SH5V6JERWRB8",
+  "ts": "2026-09-20T11:31:10.349Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.2 FLEET SWEEP, hv's go 11:22Z 2026-09-20. Pre-notice sent to utilz-vc, laksa-vc, lamplight-vc, intent-vc (draft at tmp/vc/prenotice-0.1.2.md, hv LGTM). Install republished from 86b6bac (45 files), fleet upgrade --apply: 16 upgraded, 0 held back, 0 failed, Intentv2 frozen. COMMITTED in 14, each through its own gates, no --no-verify: arca_cli 1cd512e, arca_config ea4d138, Baize 7330c8f, Cards/Design 96a4a05, Cdtempl 037f581 (21 files: its manifest is git-ignored there), Conflab 0760be03, Gtools a479852, Intent 42915c049 (verified by intent-vc; hv pushes there), Lamplight a43efa17f, MicroGPTEx f46d597, Molt d53c2e3, Prodinfra 66e6ead, Prolix 7d7cafb, Riffle e5efe67. HELD and RESTORED to their prior bytes at their own request: Laksa (deploy in flight) and Utilz (hv's decision: 2.10.0 tags first). NOT PUSHED: awaiting hv's call, with the Actions budget at about 20 USD. Not swept until each estate's CI is green on its pushed commit (todo 82)."
+  }
+}

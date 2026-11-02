@@ -1,0 +1,16 @@
+{
+  "id": "01M5YZT6WSEVWGD6EFB9XVKXHH",
+  "ts": "2026-10-27T15:31:42.105Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 83,
+    "text": "vc, 2026-10-27, THE LANDING RULE (told to dc and cc; ~/Devel/scratch/devbin-vc/tools/land-bundle.sh holds it): a unit lands as run when none of its own files moved on main since its base, and its landed paths then equal the tested tip's; integration with code main gained in other files is held by the BSD and GNU full suites once before the cut and by CI on the pushed head; a unit whose own files moved is rebased and re-run before it lands. So units that share files are granted one after another, in an order where each runs once, and vc reads each bank's file list before the desk grants. molt-vc's desk took that order on 2026-10-27: 0257, then 0259, 0258 and 0255 one at a time on the bats lane; cc's 0239 (shares lib/cmd/release, lib/config and lib/pages/release.md with 0259) rebased after 0259 lands, dc's 0251 (shares bin/devbin, lib/helpers, lib/help, lib/pages/install.md and machinepointer.bats with 0259, 0258 and 0255) after all three land; molt-vc denies each old ask at vc's landing word, and the re-ask takes its place. STACKS AND CHAINS (2026-10-27, molt-vc agreeing): a builder may bank units that share no file as one stack, one red clone and one ask, and units that share files as one chain, each commit on the one before; either is tested as a whole and landed as a whole, commit by commit, by ~/Devel/scratch/devbin-vc/tools/land-stack.sh, each commit's paths equal to that commit's blobs and the final tree to the tested tip's; a red anywhere re-runs it whole."
+  }
+}

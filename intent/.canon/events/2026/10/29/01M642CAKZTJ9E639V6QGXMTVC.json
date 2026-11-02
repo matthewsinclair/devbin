@@ -1,0 +1,15 @@
+{
+  "id": "01M642CAKZTJ9E639V6QGXMTVC",
+  "ts": "2026-10-29T14:52:45.055Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-29: v0.1.17 is published as cut (snapshot 2cde3ee6, tree afa938fc); the comment-level references both rereads found (directive 15, amendment A5, fleet) are fixed forward in 0.1.18 with a workroom guard (issue 0292)."
+  }
+}

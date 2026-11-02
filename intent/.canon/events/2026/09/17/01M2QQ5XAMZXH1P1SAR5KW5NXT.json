@@ -1,0 +1,15 @@
+{
+  "id": "01M2QQ5XAMZXH1P1SAR5KW5NXT",
+  "ts": "2026-09-17T12:59:01.844Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates from vc's WP-02 review (2026-09-17 afternoon), vc's call at a fold.** (dd) A mutant that removes several things at once is killed by the strongest and says nothing about the rest: removing every path re-point died on PROJECT_ROOT, while DEVBIN_INVOKE's own re-point was never tested alone, and V01 survived. (ee) A test critic that traces \"stays green\" by reading makes claims, not measurements: all twelve of its gaps held when run, and they went to the builder only after that. (ff) Under umask 027 every base mode from 0640 to 0666 comes out -rw-r-----, so a mode arm must run where the base shows through (umask 000 or 002). (gg) \"Refused, not reported done\" is not \"refused, nothing changed\": notes_date's read-back refused after it had already rewritten the note."
+  }
+}

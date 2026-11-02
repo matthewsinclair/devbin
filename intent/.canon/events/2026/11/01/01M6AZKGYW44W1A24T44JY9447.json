@@ -1,0 +1,16 @@
+{
+  "id": "01M6AZKGYW44W1A24T44JY9447",
+  "ts": "2026-11-01T07:18:56.220Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 87,
+    "text": "ST0011 fix phase, day 2 on hv's go (2026-11-01 06:46Z by date -u; decisions 119 to 121; vc holds the pen and the desk, every lane open). ON MAIN since 2026-10-31: WP01 (done), WP02a, WP03 both halves (WIP until WP02c turns AT-3.15 green), WP04 (WIP until its trigger removal), the dc stack WP06b and WP05 (WIP until the hook-ins), 0300's fix; code tip ebc38b18; main pushed to local at f9eb26e6 (R4), upstream untouched. IN FLIGHT: cc's WP02b-1 (dev check 3 green at 7ca8ea42, all six release suites; part 1 of its dispositions ruled, W8 in part; the settle delta review running; W8's refusal and arm, the AT-2.5 and AT-2.6 lines and AT-2.8 red next; the squash on vc's word); dc's WP16 (its 22 dispositions accepted; the fix-delta review running; its run, the whole suite under BSD, after vc rules on it); AT-2.7 minted red under AC-2.2 for the hook-in unit (dc, 8b870d05). ORDER (decision 120): first ready runs first until cc asks, then WP02b-1; 0306 dc's after WP16; WP17; the hook-in unit (AT-2.7, AT-3.3, AT-3.6); WP02b-2 (0297 rides it; 0304 decided in its design note); WP02c (AT-3.15, AC-6.3); WP07 (AT-3.8); WP08 (AT-3.9, 0296); both full suites at the landed head (k0118 on kovacs, up since 06:45Z; 0300 closes on its green); WP09 at 0.1.19 on hv's explicit word; the sweep; WP10 to WP14; WP15; WP18. GATE: intent ac status ST0011 BLOCKED on 22 findings until each unit's id lines land. ESTATES: Intent's main pushed to local at 086bfc9e1, its upstream push waiting for a green kovacs preflight at 721b4efdc (Intent's own gate); Intent 0666, 0668, 0669 and 0670 ruled and building; Laksa S2's window red at 06:59Z, back with laksa-vc; Molt's PATH fix with molt-vc, hv's word in molt-vc's window; gyges cleaned of about 22G on hv's yes, held by a Time Machine snapshot until it ages out."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M553P8YVYG8XCQRZGYFG8WZM",
+  "ts": "2026-10-17T14:19:12.219Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 51,
+    "text": "hv, 2026-10-17 evening: ST0008 AC-6.5's route is (a), the WSL job installs Intent's Linux musl binary from Intent's GitHub release (pinned tag v3.2.4) before the smoke list, and wsl-smoke.sh then asserts the critic gate passes on the intent/ fixture. CORRECTED the same evening: vc had said Intent's repository is private and needs a read-only token secret; it is PUBLIC (gh repo view: PUBLIC, and the v3.2.4 asset downloads anonymously, HTTP 200), so NO token and NO secret: the step downloads anonymously. Found while filling in GitHub's token form at hv's ask, before any token was generated; the form was abandoned unsubmitted. Not (b) Homebrew inside WSL, not (c) waiting."
+  }
+}

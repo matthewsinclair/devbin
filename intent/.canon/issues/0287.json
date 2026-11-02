@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 287,
+  "slug": "doctor-s-switch-row-names-a-homebrew-keg-by-its",
+  "title": "doctor's switch row names a Homebrew keg by its Cellar path, which the next brew upgrade removes, where every other reader names the opt link",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-28",
+  "closed": "2026-10-29",
+  "reporter": "Matthew Sinclair",
+  "body": "After `devbin use` points the switch at Homebrew's keg, doctor's switch row prints `ok switch: the link names <prefix>/Cellar/devbin/<version>/libexec`: machine_link_state (lib/helpers, from :3839 on main at 1b4812f7; about :4335-4339 in dc's stage 7 build) names the keg by its physical path. Every other reader names a keg by its opt link, through install_named_root (lib/helpers:3655), and a Cellar path names a version the next `brew upgrade devbin` removes, so the line a user copies from doctor goes stale. use.bats' fixture hid it, since it built a real opt directory rather than Homebrew's opt link. Measured by the critic-shell review of 0270 (2026-10-28) at dc's stage 7 build. Filed by vc; low, and not in 0.1.16.\n\n## Fix\n\nmachine_link_state names a keg through install_named_root, as every other reader does.\n\n## Done when\n\n1. With the switch pointed at a keg reached through Homebrew's opt link, doctor's switch row and a bare `devbin use` name the opt path, and no line names `Cellar/devbin`. The use.bats arm asserts both, red on main.\n2. use.bats and doctor.bats pass under BSD and GNU, with the tree scans and help, and CI is green on the pushed head.\n\n## Resolution\n\n- machine_link_state names a Homebrew keg by its opt link, through install_named_root, as every other reader does, so doctor's switch row no longer names a Cellar path the next brew upgrade removes.\n- Landed on main: `0017e2b2`.\n- Arm: use.bats, with the link into the keg through Homebrew's opt link: doctor's switch row names the opt path, a bare use reports the link, and neither prints Cellar/devbin.\n- Desk evidence: hv's full run 20261029-1314, 2826 counted, ran every arm above ok.\n- Run 20261029-1336 (`--failed`) ran that run's two reds, neither in this issue's arms, ok at their fixes, 2 of 2, so main at 5085ae24 is green.\n"
+}

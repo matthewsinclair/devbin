@@ -1,0 +1,15 @@
+{
+  "id": "01M36Y6GKKE2ANFQH3RCZWCEK2",
+  "ts": "2026-09-23T10:50:18.099Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0113 LANDED AND VERIFIED against the artefact at 10:50Z: 719e8a1 (parent 47be3ea) touches exactly the 45 paths of the approved patch (sha256 142b0a1ba2045586) and nothing else, and every one is byte-identical to the parent plus that patch (32 identical, 13 deleted in both, 0 differing). 9919c5c re-cites ST0001's AT-12.11 and AT-12.12. 4c9d5a7 closes 0113 and 0118 and files 0127 (the vendored set's find errors, medium) and 0128 (D2's tiers, low); 0129 (install --force never removes a retired file, medium) is filed as vc asked. 0.1.8 now carries 14 open issues. NEXT, vc's series per the agreed order: finish 0121, the 0126 header, cc's two notes (todo 121), rebase build018 onto the landed tree (drop the scratch base bdf16bc, replay vc's commits), build 0116, run the full suite in the clone, then hand cc the patches."
+  }
+}

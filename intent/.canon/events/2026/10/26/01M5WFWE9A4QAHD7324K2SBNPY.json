@@ -1,0 +1,16 @@
+{
+  "id": "01M5WFWE9A4QAHD7324K2SBNPY",
+  "ts": "2026-10-26T16:14:49.130Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 171,
+    "text": "AFTER hv CUTS 0.1.15: (1) Read the tag's CI run. (2) Close 0222 and 0232 to 0236 on CI run 40349359447 on a81f0f98 (the head that lands 0236; green, read 16:13Z), through tools/setres.sh, each draft re-sealed after filling: 0222 dc's ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0222-v3.md (sha256 27b1d72d, accepted); 0232 cc's ~/Devel/scratch/devbin-cc/0232/handover/RESOLUTION-0232.md (953f6ae8), landed c0b47cf6; 0233 cc's .../0233/handover/RESOLUTION-0233.md (7debdda7), landed 4c4c890d; 0234 cc's .../0234/handover/RESOLUTION-0234.md (8442db85), landed bc9d80c0; 0235 cc's ~/Devel/scratch/devbin-cc/0235/RESOLUTION-0235-v2.md (437d525b, accepted), landed f5df4614; 0236 vc's own, landed a81f0f98 (landing TAPs st0010/land236, red on main = run 40331608642). (3) Archive watchout 37. (4) Clear vc's scratch clones (land232, land233, land235, land236, k115src2, k115verify2, note115, k115src, k115verify, land220, cand220), first surveying each against main and bundling any leftover a record cites (261286d6 among them), KEEPING the seals 0220 to 0222 cite (land220/tmp/test/20261026-0642.bats.{out,errors} and st0010/cand220/tmp/test/20261026-0652.bats.{out,errors}); and ci/maint once 0233 closes, keeping the maint-exp outputs 0233 cites."
+  }
+}

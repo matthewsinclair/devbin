@@ -1,0 +1,15 @@
+{
+  "id": "01M4ZXCJQ06ZKJW95F1TRGTH76",
+  "ts": "2026-10-15T13:52:50.912Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "NO SUITE, WHOLE-FILE RUN OR BATCH ON THIS MAC until intent-vc says intent/cc's booking of it (ST0083 WP-01) has ended, as vc relays it (vc, 2026-10-15); single arms go on meanwhile. For 0195 that holds formula.bats and the touched suites as whole files, and the targeted run vc books."
+  }
+}

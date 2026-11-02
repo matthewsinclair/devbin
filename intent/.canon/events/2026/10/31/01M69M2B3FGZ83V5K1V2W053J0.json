@@ -1,0 +1,16 @@
+{
+  "id": "01M69M2B3FGZ83V5K1V2W053J0",
+  "ts": "2026-10-31T18:38:04.399Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109 and 110), folded on hv's estate-wide order (read 2026-10-31 18:37Z): WIP banked as refs/bank/dc/ST0011-16-wip da47fe42 (tree ~/Devel/scratch/devbin-dc/wp16/build, clean). Built: lib/cmd/cache (key, get, put, list, rm, gc; refusals exit 3; gc keeps 3 and the newest RELEASE seal's cache lines), platform_word and the toolchain table and the cache root's resolution (lib/helpers), the build: schema and tool check (lib/config), doctor's cache row, the builtins row, lib/pages/cache.md, the reference config and docs/configuration.md; a development probe answers as designed. Next: tests/unit/cache.bats to the spec in wp16/NOTES.md, design.md s13's words (exit 3, the seal line, block-form YAML) and AC-5.1/AC-5.5's text, critic, the pre-bank grep, the desk; AC-5.1 to 5.3 and 5.5's ATs at the landing."
+  }
+}

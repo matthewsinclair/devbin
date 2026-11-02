@@ -1,0 +1,16 @@
+{
+  "id": "01M3AEEAT5PDE5MDPJ65E9XERG",
+  "ts": "2026-09-24T19:31:54.821Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 9,
+    "text": "2026-09-24, 0.1.8 on hv's Go (everything in it). 0131+0137 v2 CARRYING 0141 is APPROVED BY vc TO LAND, and the LANDING IS HELD: vc's HOLD says no devbin landing until Intent's v3.2.1 tag exists (watch-out 18) and vc then gives the go. Approval text for the resolutions' {REVIEW}: \"vc, 2026-09-24, approved on the brief, the interdiff and the evidence\". vc's answers: (a) partial over a read-but-not-search dir, accepted; (b) two levels, accepted; (c) /bin/sh -c, accepted; (d) the page matches. One clean.md prose nit (the CARGO_CACHE_RUSTC_INFO=0 sentence reads as a fragment) is PARKED for the line, not to be fixed now. ON THE GO: land with DSP/land.sh DSP/rebase0131 TSP/0131.v2i.patch <main's HEAD, 9a7f002 unless it moves> TSP/0131-commit.v2i.draft.msg, tell vc the commit, then close 0131, 0137 and 0141 with TSP/res0131/*.md, filling {COMMIT} and {REVIEW}. If main's lib/, tests/ or bin/ move first, re-apply and ask vc whether the suite is re-run. Patch sha256 3fe0454c9f76d9fe1a66f2da45b449c040276c200251db43414d9b1ac6b1faa8, 8 files. Evidence: full suite 1749 of 1749 (TSP/suite0131v2i.tap), the matrix 10 of 10 per configuration (TSP/matrix0131v2i/), and 75 of 75 mutants. No heavy run until intent-vc sends END for Intent's build. DSP = ~/Devel/scratch/devbin-cc/sp-2026-09-23-8203ddaa/, TSP = ~/Devel/scratch/devbin-cc/sp-2026-09-24/."
+  }
+}

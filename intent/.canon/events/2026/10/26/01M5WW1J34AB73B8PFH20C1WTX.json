@@ -1,0 +1,15 @@
+{
+  "id": "01M5WW1J34AB73B8PFH20C1WTX",
+  "ts": "2026-10-26T19:47:19.780Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0238 LANDED at 22fcf435, on hv's \"Just ship it\", and PUSHED 4efb6e17..22fcf435 to local and upstream (read back 19:39:40Z), along with the closes, folds and canon refresh. Landing run (light slot 01M5WSYG7B9STDAFMTKMER6ND1, 19:11:45Z to 19:42:24Z, rc 0; TAPs at ~/Devel/scratch/devbin-vc/st0010/land238): the new arm failed on main (red238 at 893ceb9d), and ci-workflow, the tree scans by population (plus vendoredmd) and help passed under BSD and GNU, skipping only the standing ones. NEXT: read CI run 40388712863 on 22fcf435 from its jobs, TAP and skips. On green, close 0238 with vc's Resolution citing that run, and field red run 40373607694."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5W212W25593DNGGVYQDTTXK",
+  "ts": "2026-10-26T12:12:41.218Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 171,
+    "text": "AFTER hv CUTS 0.1.15: (1) Read the tag's CI run. (2) Close 0222 and 0232 to 0235 on the green CI run of the head that lands 0235 (it replaces 40302760947 on 39300b37, green before T5 was ruled in; decisions 70, 71 and 73), through tools/setres.sh, each draft re-sealed after filling. 0222: dc re-fills its RESOLUTION-0222-v2.md (accepted by vc on run 40302760947, sha256 4ffd6529) with the new run and sends the new path and sha256. 0232 takes cc's ~/Devel/scratch/devbin-cc/0232/handover/RESOLUTION-0232.md (sha256 953f6ae8), landed at c0b47cf6; 0233 cc's ~/Devel/scratch/devbin-cc/0233/handover/RESOLUTION-0233.md (sha256 7debdda7), landed at 4c4c890d; 0234 cc's ~/Devel/scratch/devbin-cc/0234/handover/RESOLUTION-0234.md (sha256 8442db85), landed at bc9d80c0; 0235 cc's handover draft; each with CI run <id> on <sha> as the new run on the new head. (3) Archive watchout 37. (4) Clear vc's scratch clones (land232, land233, k115src2, k115verify2, note115, k115src, k115verify, land220, cand220 and 0235's landing clone), first surveying each against main and bundling any leftover a record cites (261286d6 among them), KEEPING at their paths the seals the resolutions of 0220, 0221 and 0222 cite (land220/tmp/test/20261026-0642.bats.{out,errors} and st0010/cand220/tmp/test/20261026-0652.bats.{out,errors}); and the fixtures under ~/Devel/scratch/devbin-vc/ci/maint once 0233 closes, keeping the maint-exp outputs 0233 cites."
+  }
+}

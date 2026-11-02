@@ -1,0 +1,16 @@
+{
+  "id": "01M4D23JD5Z13YXNWD41DX3N43",
+  "ts": "2026-10-08T06:09:44.357Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 14,
+    "text": "TWO CLOCKS IN ONE DIRECTORY, and it manufactured a false UTC stamp today (dc's gate run, 2026-09-20). devbin's run seals are NAMED in UTC (tmp/test/20260920-1235.bats.out was named at 12:35Z) and ls or stat shows their mtimes in LOCAL time, BST, so the same file reads as 1235 in its name and 13:35 in a listing. dc read a local mtime, appended Z, and reported a window of 13:35Z to 13:52Z whose end had no source at all; both numbers looked consistent because both read 13:xx from two different clocks. Verified here from the seal itself: created 12:35:22Z, last written 13:33:05Z, so the run was 58 minutes, not 17. I reproduced the trap while checking it: stat -t '%H:%M:%SZ' prints a LOCAL time with a Z I supplied, which is a UTC claim made out of a BST number. Read mtimes with TZ=UTC stat, or compare against date -u in the same breath; never append Z to a listing. Sits beside the rule that timestamps come from date -u: this is the same defect arriving through a file listing instead of memory. AND THE LOCAL ZONE IS NOT FIXED AT BST: on 2026-10-08 date read +04 against date -u, so a listing was four hours off UTC, not one (cc's read). The rule does not change: read the zone off the clock every time."
+  }
+}

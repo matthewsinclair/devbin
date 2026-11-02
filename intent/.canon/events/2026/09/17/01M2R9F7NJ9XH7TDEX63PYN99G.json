@@ -1,0 +1,15 @@
+{
+  "id": "01M2R9F7NJ9XH7TDEX63PYN99G",
+  "ts": "2026-09-17T18:18:41.714Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Fix builtins.bats:662's vacuous half, found while building 0082.** The arm \"a declared option runs at the project root, not the caller's directory\" cd's to `$proj/deep/nested` and then calls `devbin_run`, whose own subshell cd's to the project first -- so the caller's directory is the project root in every run and the arm cannot fail for the reason it names. Its other half (the seal lands under the root) is real. runwords.bats holds the real question by invoking `\"$proj/bin/devbin\"` from a subdirectory, so the fix is to spend the same shape there, or to drop the claim from the name. Do it with 0082's fold, since it is the same claim about where a command runs."
+  }
+}

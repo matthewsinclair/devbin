@@ -1,0 +1,15 @@
+{
+  "id": "01M4AJHH55KQC8RW8H1ACTVFG8",
+  "ts": "2026-10-07T06:59:15.749Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "vc TO FILE AND RECORD, after the compact. (1) The release dry run prints no overall verdict, so hv read a passing one as a failure, and its rows 6 and 7 name HEAD where the cut tags the release commit that step 4 makes. (2) fleet's frozen list matches basenames (watchout below). (3) Records: 0163's Resolution and the comment at targetdir.bats:979 say \"stays failed\", where 0.1.8 passed that case; 0168's Resolution says the INCOMPLETE summary names the three causes, where it names two (0177 holds the code half). (4) LESSONS.md: a release note assembled from issue Resolutions inherits their baselines. Each \"still\", \"stays\", \"no longer\" and \"now\" was written against a review draft, not the last release, so read each one against the last release's code before the cut. (5) Globalfold at end of day: intent/wip.md (the bundle is done; the rollout replaces it) and restart.md (0.1.9 shipped, the machine pointer exists, every estate but Laksa carries 0.1.9)."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M4AJHHH5KFYYYYQ79N202W92",
+  "ts": "2026-10-07T06:59:16.133Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A CUT'S SEALED LOG PRINTS NO STEP ROW UNTIL THE END, which corrects watchout 27 (measured on the 0.1.9 cut, 2026-10-07). The step table prints once, after step 11. What lands as it happens is each gate's own output: \"release: gate: <cmd>\", the test seal, then doctor's \"N checks, M failed\" line, which is the gates-done signal, and the prompt \"release: go ahead? [y/N]\", which DOES land in the log. Watch for doctor's summary line after its gate header, and fail on a \"FAILED: \" line, never on the word \"failed\": TAP test names contain it, and the first watcher fired on one."
+  }
+}

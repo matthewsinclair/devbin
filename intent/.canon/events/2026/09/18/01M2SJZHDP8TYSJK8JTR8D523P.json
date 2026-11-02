@@ -1,0 +1,15 @@
+{
+  "id": "01M2SJZHDP8TYSJK8JTR8D523P",
+  "ts": "2026-09-18T06:24:07.606Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**hv's rulings, 2026-09-18 ~06:25Z, in vc's session.** (1) Hold 8 lifted: hv's terminal suite at 3fcc71a passed, 1377 ok, 0 not ok, tmp/test/20260918-0601.bats.* -- the first run past the read-only arm on a tty. (2) The D19 wrapper-flag defect is filed as 0087 (high) and is FIXED BEFORE THE SWEEP; vc builds, dc reviews. (3) AC-3.2 minted on ST0007 (the materialiser). (4) **ONE NEXT RELEASE CARRIES EVERYTHING OUTSTANDING -- no interim tags or versions.** Every open issue and ST0007 land first; then the release is cut and the fleet swept from it. (5) dc takes the terminal-blocking census after 0085, time-boxed, written as an issue, ahead of WP-04; anything high it finds is fixed before the release."
+  }
+}

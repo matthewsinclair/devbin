@@ -1,0 +1,17 @@
+{
+  "id": "01M68RSRGWKBGJ01AJMCRGQ1EH",
+  "ts": "2026-10-31T10:41:31.676Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "One more item for the WP01 re-bank, from WP06a's critic: the full-sha regex has four copies (your release:207, WP01's new release:3401, WP03's ci-state:446, WP06a's macos:840). The one check is is_commit_sha <word> [full] in lib/helpers (full: exactly 40 or 64 lowercase hex), landing in WP03, which runs first as a stack with WP04. When you rebase onto that landing, use is_commit_sha \"${2,,}\" full at release:207 and the same at :3401, so WP01 adds no copy. Run 2 chains your WP01 re-bank with dc's WP06a re-bank when both are ready, else the ready one runs alone.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

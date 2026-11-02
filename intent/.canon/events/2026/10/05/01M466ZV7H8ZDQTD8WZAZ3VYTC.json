@@ -1,0 +1,16 @@
+{
+  "id": "01M466ZV7H8ZDQTD8WZAZ3VYTC",
+  "ts": "2026-10-05T14:20:24.177Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE: every open issue closes before the cut (hv, 2026-10-05); the order is ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. W1 (the client-name scrub) is DONE. LANDED AND CLOSED: 0154 (831aec59), 0174 (7e3f580c), 0173 (bd81574c), 0169 (ce72a4ff), 0166 (b3f37f92), 0153 (73a0e43b), 0175 (eb9166e1), 0164 (64d80788), 0176 (f7bd9984); closures f53a6a45, d4c48ede, 393b1158, 760460d2. hv's words today: \"JUST RUN THE TESTS. Nothing else is running anything test-wise here right now\" (the box is off, heavy runs go in parallel) and \"delete the scratch clones. Yes, always.\" RUNNING at the 2026-10-05 end of day: the full suite over main plus cc's 0159 v3.1 (800ab424..., reviewed and approved), in ~/Devel/scratch/devbin-vc/0.1.9/land-159, from 13:48:28Z, 2140 tests, console land/suite-159.console. Its tree is main c1d46ed0 plus 0164 v2, 0176 and 0159; main has since landed 0164 and 0176 exactly, so the tree equals main plus 0159 (checked). On pickup, read land-159/tmp/test/20261005-1348.bats.out and .errors: rc, ok and not ok counts, and .errors empty. A suite killed when the session ended leaves a short .out, and then reruns in a fresh no-local clone of main plus 0159. Land 0159 on green, with cc's final 0159-commit.v3.msg and 0159-resolution.v3.md ({MYSUITE} filled by cc). Each landing: git apply the patch in the shared tree; cmp each path with the suited clone; git commit --only its paths -F its message; check each committed blob against the suited clone; then the store body (issues.body) plus a blank line plus the Resolution, through intent issues edit N --from, then intent issues close N; then commit the issue's view, canon record, .intentfiles and new events with --only, git adding the events first. Scan every text first with ~/Devel/scratch/devbin-vc/0.1.9/w1/rawscan.py on stdin. When only part of a suited batch lands, the landed part's own test files and every tree scan run again on its exact tree (WORKPLAN; 0173 was the case). NEXT: dc's 0163 v3 (option B, the probe asked from each hole's parent; W1 ruled (a): a workspace pinning its own target over an unreadable directory beneath it fails closed, naming the remedy), handed off on main plus 0159, then 0167 rebased onto it, then 0168, 0165, 0170, 0171, and 0172 last. cc's 0157 v2.1, 0158 v2.2 and 0156 v2.1 come as one handoff, with 0158 rebased onto main now that 0164 and 0176 have landed; then 0155, 0160, 0161 and 0162. For hv at the cut: only a publish or publish-upgrade of the machine install writes the pointer (cc's OUT-4); the rollout's publish-upgrade does that, and a sweep refuses until it has. hv said yes to deleting cc's 12 parked files; cc deleted them at 13:12:31Z, and clientscan reads 0 over what remains."
+  }
+}

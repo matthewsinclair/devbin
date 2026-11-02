@@ -1,0 +1,16 @@
+{
+  "id": "01M68R3D6R25MJ09B0AWESSAH0",
+  "ts": "2026-10-31T10:29:19.192Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 86,
+    "text": "ST0011 fix phase (hv's go 2026-10-31; folded and holding on hv's order): WP01 (cc, af82fe4c) ran, review approved, RED on four light arms (releasecore 13, 28; releasecut 140; the releasestatus D57 arm), banked refs/bank/cc/ST0011-01, not landable until cc re-banks; WP03 (dc) red at fb41ad98 on four population arms, fix plus the critic's items folded, banked refs/bank/dc/ST0011-03 unrun; WP04, WP05, WP06a banked unrun under refs/bank/dc/; hv answered the twelve (decision 90), granted the decision 40 carve-out (91) and set D67 (artefact cache, WP16); every ruling is in design.md s8, s11, s12 and the WP objectives; the desk is on hold."
+  }
+}

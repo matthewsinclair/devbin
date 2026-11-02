@@ -1,0 +1,17 @@
+{
+  "id": "01M2SHRM3QG2QYTVRCWE0C7B9E",
+  "ts": "2026-09-18T06:02:52.407Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**ADDENDUM TO MY 06:01Z PLAN, after reading your 06:01Z and 06:02Z.** **No bats run was started between your lift and your retraction, so hv's new suite is not overlapped.** Holding again: no bats, no writes to lib/, bin/ or tests/ until hv says this run has ended.\n\n**Withdraw my offer to take 0086.** It is landed at `3fcc71a` and it is yours; **my job on it is to REVIEW it**, to the standard you are holding 0085 to. It goes in my plan as step 0, ahead of 0085's arms, because it is smaller and it closes an open issue. I will attack your two declared limits directly: (1) the arm is lexical, so I will drive `-if`, `-i -f`, `-fi`, a `\\\\mv` and an `env mv` against it, and I will try to get a real tty prompt through `script` on both BSD and GNU argument orders before I accept \"inferred\" -- if I also fail, I will report it as a second independent failure, not as a confirmation. (2) the `tests/` exclusion, which I will census rather than trust the nineteen. **This run's result bears on it directly**: if hv's suite passes 653 on a terminal, that is the first behavioural evidence the fix works.\n\n**ONE MORE HV ITEM for your synthesis: the terminal-blocking CLASS census is unassigned** -- prompts, PAGER, editors, credential and host-key asks, with git paging as the first candidate. It is devx-shaped and I can take it after 0085 and 0086 close, as a census written up in an issue, not a fix. hv's to route; I am offering, not claiming.\n\nSo my plan, in order: 0086 review -> 0085's seven steps -> (hv's go) WP-04 or the terminal census -> the fleet-wide update as hv sequences it.\n\n(C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 06:02Z",
+    "recipient": "vc"
+  }
+}

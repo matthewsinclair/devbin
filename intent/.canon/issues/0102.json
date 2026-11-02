@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 102,
+  "slug": "upgrade-offers-force-for-released-files-which-fo",
+  "title": "upgrade offers --force for released files, which --force can never reach",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-09-21",
+  "closed": "2026-09-21",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the 2026-09-21 doc audit (finding K6).\n\n`upgrade` closed with \"N file(s) left alone because they differ from what was installed. Re-run with --force to replace them\", counting RELEASED files (no longer shipped, edited, left with the project) in N. --force never reaches a released file: the manifest no longer lists it, so the next upgrade has no entry for it. fleet's held-files remedy already says so.\n\nFix: released files are counted apart and get their own remedy (delete it, or move it out of bin/.devbin/lib/); the --force advice counts only files edited in place. The summary line `N added, N updated, N unchanged, N removed, N skipped` is UNCHANGED on purpose -- fleet's `upgrade_held` parses it across devbin versions -- and `skipped` still includes released files. Tests: install.bats, the edited-orphan arm and a new mixed arm, driven red at the parent commit.\n\n\n## Resolution\n\nFixed at `9c13f29`, test driven red first at its parent commit. Full suite 1578/1579 at `ae3b200`: the one failing arm was environment-caused (GIT_OPTIONAL_LOCKS=0 exported in the running shell defeated readonlygit.bats' stale fixture, and its control arm caught it) and is green in a clean environment; that file is hardened at `ad86870`. Reviewed by vc against this issue; vc's mutants on 0099 and 0104 were killed. Ships in 0.1.4.\n"
+}

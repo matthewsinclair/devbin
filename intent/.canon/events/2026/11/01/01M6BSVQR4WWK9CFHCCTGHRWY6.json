@@ -1,0 +1,16 @@
+{
+  "id": "01M6BSVQR4WWK9CFHCCTGHRWY6",
+  "ts": "2026-11-01T14:57:48.292Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 42,
+    "text": "ST0011/02 (WP02b-2, the publish shape folded into the cut, release publish and --expect retired, AC-2.3 in every shape; issue 0304 in it, issue 0297 riding it). RUN 1 in slot 01M6BQGK5AHADGZZT0D92GPDDC (START 14:18:55Z, END 14:55:28Z, by date -u), rc 1: arms rc 0 (red at the base but the three guards, green under BSD and GNU); light: the whole suite 2952 ok and 1 not ok, helpers.bats 0066 on publish_read's - sentinel test, a line the critic settle added; gnu-scan-helpers red on the same line; the other 22 GNU legs green; the critic leg exit 0; records in ~/Devel/scratch/devbin-cc/st11-wp02b/kit2/run/runs. FIXED (f49b3151, dash_to_empty) and RE-BANKED at refs/bank/cc/ST0011-02b2 62e1c34bdfd5df7292487e0592e5d1171f62d6d0 on main 30dbc0f1 (14:56Z, CAS from 86c1a035, which is archived in cited-archive.git); the handover rebuilt; kit2r prepped, its red tree the first run's (7e3ebf03); RE-ASKED as 01M6BQGK5AHADGZZT0D92GPDDC's successor 01M6BST84VK7FS9GWSGABTYXKW. Open: the grant, START, END, finish-handover-02b2.sh with the run's record, vc's landing, and AT-2.8 green over releasepublish.bats's two '# AT-2.8' arms. dc's hook-in rebases onto 62e1c34b."
+  }
+}

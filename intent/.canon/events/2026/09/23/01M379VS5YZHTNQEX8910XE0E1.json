@@ -1,0 +1,15 @@
+{
+  "id": "01M379VS5YZHTNQEX8910XE0E1",
+  "ts": "2026-09-23T14:14:09.342Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.8, vc's share, 14:14Z. LANDED ON cc's REVIEW, each gate passing and each commit verified against its build: the series (0119 0a97f20, 0124 c35c930, 0125 4637f94, 0122 eee4ed0, 0117 70faf4c, 0126 fbccaa5, 0121 2b9d1a5; closed at 341ded1), 0116 v2 at 1a3bbc8 with cc's two should-fixes and the NOT KNOWN arm, and 0138 (filed today: builtins.bats's @builtin arm had checked nothing since 9b8a5e7) at a69b21b; both closed at 00b19ed. cc landed 0120 at 2218a3f, verified byte-identical to the patch vc approved. REVIEWED: 0115 v2 approved (lands after 0123); 0123+0127+0129 HELD on a must-fix vc drove at 14:08Z -- on this case-insensitive APFS a case-only rename in lib/ makes publish, install --force AND plain project upgrade (lib/cmd/upgrade:366, shipped in 0.1.7) delete the file just shipped, rc 0; cc to fix with one helper and file upgrade's as its own issue. NEXT: build 0132 in scratchpad/build0132 (341ded1 + 0115 v2, scratch-committed): reset out of db all by a catalogue default beside the table (_DEVBIN_BUILTIN_NOT_IN_ALL, config's in_all wins); the unknown-option refusal names the options and help <cmd>, never <cmd> all; the MIX_ENV=prod refusal moves out of lib/cmd/db into a catalogue row the dispatcher checks before any path, a project handler the one way past it -- lib/builtins and lib/resolve edited, bin/devbin, lib/cmd/db, lib/gatecmd, db.md, docs/configuration.md and the arms to do. Then 0136. Then tell hv (todo 127)."
+  }
+}

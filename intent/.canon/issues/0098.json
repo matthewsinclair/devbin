@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 98,
+  "slug": "help-why-does-not-name-an-option-the-project-dec",
+  "title": "help --why does not name an option the project declared and switched off, though all's count line says it does",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-09-21",
+  "closed": "2026-09-21",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the 2026-09-21 doc audit (finding K2).\n\n`all`'s count line says `N inactive here (bin/devbin help --why names them)`, and the docs say the same of options switched off with `enabled: false`. `_print_unavailable` (lib/help) walked only the catalogue -- `builtin_commands` and `builtin_options_for` -- so an option a project declared in config and switched off was counted by `all` and named nowhere.\n\nFix: `_print_unavailable` walks config's commands as well as the catalogue's, and each command's `command_option_candidates` (config's options, then the built-ins), deduplicated. Test: tests/unit/help.bats, \"--why names an option the project declared and switched off, not only devbin's own\", driven red at the parent commit.\n\n\n## Resolution\n\nFixed at `9ebeaef`, test driven red first at its parent commit. Full suite 1578/1579 at `ae3b200`: the one failing arm was environment-caused (GIT_OPTIONAL_LOCKS=0 exported in the running shell defeated readonlygit.bats' stale fixture, and its control arm caught it) and is green in a clean environment; that file is hardened at `ad86870`. Reviewed by vc against this issue; vc's mutants on 0099 and 0104 were killed. Ships in 0.1.4.\n"
+}

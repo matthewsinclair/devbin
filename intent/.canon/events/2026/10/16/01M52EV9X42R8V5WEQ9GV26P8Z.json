@@ -1,0 +1,16 @@
+{
+  "id": "01M52EV9X42R8V5WEQ9GV26P8Z",
+  "ts": "2026-10-16T13:36:28.068Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 47,
+    "text": "After 0200 lands: ST0008 WP-04 (D48 Windows PATH, D49 checkout on a Windows drive), started with intent wp start; waits for vc's word"
+  }
+}

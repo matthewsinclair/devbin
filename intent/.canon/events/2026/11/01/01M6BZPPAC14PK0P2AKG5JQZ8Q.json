@@ -1,0 +1,15 @@
+{
+  "id": "01M6BZPPAC14PK0P2AKG5JQZ8Q",
+  "ts": "2026-11-01T16:39:54.444Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/08 (WP08, the formula under the yes; assets mode with the cask verified; AC-3.3's WP08 clause, AT-3.9 in formula.bats; issue 0296's two call sites through cfg_release_first_remote): moved to cc by hv through vc's TUI, as vc recommended (vc's message of 16:38Z, read 2026-11-01 16:39Z by date -u); dc unclaimed it, cc claims ST0011/08 and ISSUE:0296. Built on WP07's re-bank (after rebank-07.sh and bank-07.sh), from cc's notes at ~/Devel/scratch/devbin-dc/wp08/cc-notes.md. Then the critic before its first run, the pre-bank probes (the four scan arms too), the bank and the ask. WP02c (dc) and WP08 both build on WP07's bank: the first banked carries the other, and they run as one stack once both are ready (decision 125 (4))."
+  }
+}

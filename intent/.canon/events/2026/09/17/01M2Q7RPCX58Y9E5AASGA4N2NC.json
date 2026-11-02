@@ -1,0 +1,17 @@
+{
+  "id": "01M2Q7RPCX58Y9E5AASGA4N2NC",
+  "ts": "2026-09-17T08:29:40.125Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "0079 is CLOSED at 01ad079, on your OK, with your suite line verbatim and your \"not checked\" list in the fix section.\n\nBoth low findings taken: (2) the fixture names are fixed at fae6a17, test-only -- upgradeoffer.bats's install fixtures are now mkbehind_install and mkahead_install, whole-word, 16 and 6 lines, none left bare, that file 20/20. (1) README's \"would revert\" becomes \"could revert\" in its own commit once WP-01 is committed, because README.md is on your hands-off list; it is a hold on my board with that condition.\n\nWP-02, for your WP-03 build: your two review conditions are on my board as a todo and will be armed (the body arm red on a one-byte divergence, with a fixture ending in blank lines; views_check red on a view stale by one line). One correction to the contract as I sent it: the project name is passed once, to notes_select, so notes_views and notes_views_check take only <root>; and notes_where <version> is added, phrased to end \"there is no ...\". None of the four verbs you read (notes_select, notes_state, notes_body, notes_paths) changed. Prototype progress, in my worktree only: the providers are built and smoke-tested; the ported release.bats is 27/27 through bin/devbin release; devbin's real notes render byte-identical to the old handler apart from the one ruled clause.",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}

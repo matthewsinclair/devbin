@@ -1,0 +1,16 @@
+{
+  "id": "01M5YGZB2SP79ETXGZ9XHY07Z8",
+  "ts": "2026-10-27T11:12:21.593Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 176,
+    "text": "AT THE NEXT GLOBALFOLD (vc's, as on the last several): (1) the guard roster grew (verblock-guard.sh joined, cc's boot read of 2026-10-27), so the guard counts written at intent/restart.md:38-39 and in hv's todo 40 are stale text: the fold refreshes them with the rest of the stale prose, by correcting or dropping them, whichever reads better. hv narrowed the count rule on 2026-10-27 to magic numbers in tests and guards, so prose is outside it and this is no count sweep. hv's todo 40 is edited under vc's pen grant (decision 3). (2) intent/wip.md and intent/restart.md still read 0.1.15 in progress, and hv's board header still reads 0.1.13 (dc's note, 2026-10-27): the fold brings them to 0.1.15 released and devbin's L1 complete (decision 77). (3) intent/wip.md:11, 0.1.15's DOING line, which the fold removes as done, is one of the records citing the seal pair cand220/tmp/test/20261025-1958.bats.{out,errors}, lost before 2026-10-27 (most likely in st0010/cand220's in-place rebuild for its 2026-10-26 06:52 run; the red it sealed is superseded, 0227b and 0229b landed; todo 171, archived). intent/llm/LESSONS.md holds no lesson for it: add one, that a tree a record cites is never rebuilt in place, and a new tree goes in a new directory."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2QB64SM164P0507JWEQPWWD",
+  "ts": "2026-09-17T09:29:26.580Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-01 COMMITTED at f34753f, with dc for review (2026-09-17).** Suite 1266/1266 in a detached worktree holding exactly the 20 committed files (each committed blob cmp-equal); 33/33 mutations killed by their intended arms; check syntax, lint, critic and format green; critic-shell's review (0 critical, 6 warning, 8 recommendation, 1 style) folded but for residual 5. Packet in dc's inbox. ON dc's OK: `intent at green ST0007 AT-1.1` to AT-1.4, `intent wp done ST0007/01`, `intent wb unclaim ST0007/01`, archive this item. THEN: dc lands WP-02 (lib/release.notes: notes_select, notes_state, notes_check, notes_date, notes_body, notes_views, notes_views_check, notes_paths, each taking a root) and vc reviews it; WP-03 is vc's in lib/release plus the status branch of lib/cmd/release. Open for WP-03 before building: what status prints for steps with no postcondition, which tree step 4's \"clean\" means, how a push is read without fetching, and whether status runs ci.query."
+  }
+}

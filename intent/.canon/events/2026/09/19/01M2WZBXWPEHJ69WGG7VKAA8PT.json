@@ -1,0 +1,15 @@
+{
+  "id": "01M2WZBXWPEHJ69WGG7VKAA8PT",
+  "ts": "2026-09-19T13:58:19.798Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's GO, 2026-09-19 13:58Z, in vc's session: 'I'm happy to release it all. I want this closed out so go for it.' Covers WP-05/06 closing, 0092, and WP-07: devbin adopts the core and cuts its release with it, including the tag, the push and the published release. The pre-notice and the fleet sweep (WP-08) are the next steps in decision 20's order; vc confirms the sweep with hv before starting it."
+  }
+}

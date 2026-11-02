@@ -1,0 +1,16 @@
+{
+  "id": "01M6AYNMPKBFFBH3FVQS9VRSAT",
+  "ts": "2026-11-01T07:02:37.011Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 184,
+    "text": "FOR hv, still open after hv's two TUI batches in vc's window on 2026-11-01 (recs in brackets): Molt's PATH order (rustup's cargo before Homebrew's, since brew's cargo ignores a rust-toolchain file; a Molt session or hv's hand); the Intranet ads check ignoring optional: true hosts (an Intranet fix) and whether the sweep reaches the Intranet checkout under Dropbox, outside the fleet frame; gyges's disk at 98 percent; the repo model (hold 34: vc brings one concrete switch plan). Ruled in those batches: R1 to R4 (decision 120); Intent 0666 (refuse, naming the running pid and the stop-then-enrol remedy), 0668 (--place-of accepts a request revoked before its start) and 0669 (every in-process search door reconciles first), each relayed to intent-vc to record in Intent's issues; Laksa 0052's clean-up (hv revokes the token and deletes both repository secrets now; prod's rotation only if the values matched), relayed to laksa-vc. Still hv's hand elsewhere: Gtools ST0021/01's landing word in gtools-dc's window; Intent ST0090's AC-02.4 look (todo 187); Intent's main push after its build all."
+  }
+}

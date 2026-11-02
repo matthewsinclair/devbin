@@ -1,0 +1,15 @@
+{
+  "id": "01M32XWDM0RR761BXS2T3E32H7",
+  "ts": "2026-09-21T21:27:49.632Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0.1.5 is ready for hv's cut: 0106 and 0107 closed (64b556b), full suite 1585/1585 at 96ec3db, note RELEASES/0.1.5.md committed at ed3e028. Next: hv pushes; CI green on the pushed sha; hv runs bin/devbin release v0.1.5; vc verifies the tag on both remotes and the GitHub release. Then the sweep on hv's go: pre-notice first, population from fleet audit, Utilz first for its first core cut, CI condition (todo 82) unless hv relaxes it."
+  }
+}

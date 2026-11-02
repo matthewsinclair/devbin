@@ -1,0 +1,15 @@
+{
+  "id": "01M529NMXBWJFMER9CG9RV44VS",
+  "ts": "2026-10-16T12:05:59.851Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-16: ST0008 design v0.8's open questions ruled, each as vc recommended: Q2 (a), Q4 (b) one marked block per tool, Q5 yes, Q6 (a), Q8 (a), Q9 (a), Q10 (a) ST0009 started as devbin's Homebrew thread with ST0008 depending on it, Q11 (b) the next release cuts once Linux is proven on kovacs and the brew install is proven. Design v0.9 at fb532bd4 carries them; they are not put to hv again."
+  }
+}

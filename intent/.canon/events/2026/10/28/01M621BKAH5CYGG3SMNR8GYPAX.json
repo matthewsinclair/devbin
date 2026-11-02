@@ -1,0 +1,16 @@
+{
+  "id": "01M621BKAH5CYGG3SMNR8GYPAX",
+  "ts": "2026-10-28T19:56:23.762Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 69,
+    "text": "hv 2026-10-25: anything needing hv goes to molt-vc as one \"FOR hv:\" message; cc and dc send theirs through vc."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2T46DNCMBT187800CPV734P",
+  "ts": "2026-09-18T11:24:58.924Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**ST0007: gh is always told which repository -- a new `release.repo:` key (owner/name), default the GitHub repo of the first remote the release pushes to; unresolvable is UNREADABLE naming the key, never gh's guess** (hv, 2026-09-18, taking vc's recommendation on dc's WP-03 finding 2: with no tty gh silently picked another remote's repo). One door, `release_gh` (GH_PROMPT_DISABLED=1, stdin /dev/null, --repo), lands with WP-03's fixes; WP-05's create and WP-06's wait go through it."
+  }
+}

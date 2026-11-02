@@ -1,0 +1,16 @@
+{
+  "id": "01M5T3BC3GCR3TXEWRZHNKP73M",
+  "ts": "2026-10-25T17:57:18.064Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 67,
+    "text": "A3, 2026-10-25: the dev/opt/brew contract's T4 drops ' at <root>' from the version line on hv's ruling (relayed by intent-ic and molt-vc; verbatim held by intent-vc): the line is <tool> <version> (<tree>, <sha12>[+dirty]), it names no path (command -v answers where), a compiled tool's provenance word sits directly after the parenthesis, and a reader reads up to the closing parenthesis and ignores the rest, so the old shape still reads and no reader carries two formats. Drafted by devbin-vc (~/Devel/scratch/devbin-vc/trees/contract-A3.md, sha256 b19ffcb9), SAME from molt-vc, utilz-vc and intent-vc; Gtools (a signatory, ST0018) was left off the round by vc and found A3 itself at 17:05Z; gtools-vc takes it (hv ruled it into Gtools' WP-03 rework, its one release this cycle) and is copied on every amendment from here. Each tool ships it in its next release; devbin's is issue 0230, in 0.1.15. Not put to hv again."
+  }
+}

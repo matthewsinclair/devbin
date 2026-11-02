@@ -1,0 +1,15 @@
+{
+  "id": "01M6920HEXTHJ9RXFH42MTFZR8",
+  "ts": "2026-10-31T13:22:31.005Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Sweep additions (decision 93): each sweep commit also sets release.ci.workflow where the project's test workflow is not tests.yml (Gtools ci.yml, Conflab ci.yml, Laksa ci_cd.yml; Intent declares linux-release.yml, Utilz has tests.yml), else the candidate leg reads a workflow the repository lacks (gtools-vc's F1, 2026-10-31 13:22Z); the pre-flight refusing a workflow the tree does not hold is WP03's reopened scope. WP03 reopened to WIP at 2026-10-31 13:22Z: its checker half (AC-3.1) is not on main; the pure trigger reader and the failed detail naming the failed jobs are dc's after run 3, the two call lines cc's in WP02b. kovacs-sysadm wants prep-korder.sh's path and sha256 with the full-suite booking. hv started rhadamanth-sysadm for local sysadm work."
+  }
+}

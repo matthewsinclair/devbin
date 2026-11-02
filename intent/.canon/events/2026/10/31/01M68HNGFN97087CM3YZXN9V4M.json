@@ -1,0 +1,17 @@
+{
+  "id": "01M68HNGFN97087CM3YZXN9V4M",
+  "ts": "2026-10-31T08:36:52.341Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "FOR hv (vc, 2026-10-31, ST0011 fix phase under your AFK go; none of these blocks the build). (1) Question: may devbin's remote-leg runner (WP05) ssh into kovacs on its own during a cut (git push of the release commit to a bare repo under ~/work, the gates in a worktree, the seal copied back) while kovacs-sysadm is up? For: a lights-out release with the kovacs leg you ruled stays. Options: (a) a standing carve-out from molt-vc's decision 40 for the runner's own ssh, each run announced in the cut's log; (b) the runner asks kovacs-sysadm to drive the leg (not lights out); (c) the leg runs only when kovacs-sysadm is down. Rec: (a). Until you rule, dc announces every runner test to kovacs-sysadm and books it through vc. (2) Report: vc's diagnosis session read kovacs over ssh at 07:11Z (evidence E) while kovacs-sysadm was up, read-only, crossing decision 40; kovacs-sysadm flagged it and treats it as explained. (3) When the core lands, WP09's cut needs your go and the version (vc recommends 0.2.0: a command, an option and two keys retire); nothing public, no tag and no push to a public remote until then.",
+    "fyi": false,
+    "re": null,
+    "recipient": "hv"
+  }
+}

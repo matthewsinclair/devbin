@@ -1,0 +1,16 @@
+{
+  "id": "01M6BCTD76SQ1VV1RX8S6PNGQV",
+  "ts": "2026-11-01T11:09:53.254Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 185,
+    "text": "Sweep additions (decision 93): each sweep commit also sets release.ci.workflow where the project's test workflow is not tests.yml (Gtools ci.yml; Conflab and Laksa at their adoption), and the sweep's message to each estate vc names the retired release publish verb (decision 107) and that the ci.query drop presumes WP02c's built-in default. The Intranet checkout under Dropbox, outside the frame, is vc's to upgrade by hand at the sweep (decision 122): read its 62-file half-applied update's diff with rhadamanth-sysadm first, then upgrade to 0.1.19 and commit the sweep pathspec, on hv's yes before it goes live on gyges (gyges's refresh runs from that working tree). WP03 stays WIP until cc's WP02c call lines turn AT-3.15 green. Each kovacs full-suite booking carries prep-korder.sh's filled order path and sha256 for kovacs-sysadm (the next at the landed head before the cut; 0300 closes on its green; the order's cleanup list names ~/work/tmp, and Gtools cc's kovacs exhaust under /var/tmp/cc-* (gtools-vc's fold line), by the exact paths read on kovacs first, since other estates' cc sessions may write there too). D68's cache root: neither Molt nor Molt-matts exports DEVBIN_CACHE_HOME yet (read 2026-11-01 11:09Z by date -u), and the fleet's chosen root stands empty; molt-vc adds the export before the first WP10 to WP14 adoption, its push on hv's word. Intent's own project command bin/.devbin/cmd/cache (a cargo target staleness report, 2026-08) shadows the core's new cache built-in from 0.1.19, a doctor note and never a failure; the sweep's message to intent-vc says so, and WP12's adoption renames it."
+  }
+}

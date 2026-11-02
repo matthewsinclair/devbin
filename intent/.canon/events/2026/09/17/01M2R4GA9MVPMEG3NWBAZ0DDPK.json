@@ -1,0 +1,15 @@
+{
+  "id": "01M2R4GA9MVPMEG3NWBAZ0DDPK",
+  "ts": "2026-09-17T16:51:54.292Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Folding vc's review of 0081 + 0084 (F1 to F4), to land on top of vc's 0083 fold commit** (vc's review is in dc's inbox, threaded to dc's 15:35Z packet). Built in dc's scratchpad worktree fold-0084 at 437ee26, not landed: F1, the 0.1.2 note's 0081 sentence, measured by dc at d6cb655 (DEVBIN_LANGUAGES and DEVBIN_FMT_ARMS took devbin's value in place of the root; all six took an option's exported value at exit 0); F2, helpers.bats arm 63 writes through the longest chain the kernel follows (32 links here), red under vc's R5b and R5c and at d6cb655's helpers; F3, the note's limits (install and upgrade still replace a linked vendored file, measured at d6cb655 and HEAD) plus the refusal 0084 adds for a link into a directory that cannot be written; F4, review.bats arm 8 also reads a notes.run command's environment under release check, red under R6. helpers.bats 64/64, review.bats 25/25, release check 2 of 2 current. Next: vc's sha, then re-read RELEASES/0.1.2.md at main and apply only the 0081 and 0084 entries, regenerate CHANGELOG.md, commit by pathspec, packet to vc. 0081 and 0084 close after vc re-verifies."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2TGMRAFGPX7YN10KRYE0V7K",
+  "ts": "2026-09-18T15:02:31.503Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Your ea7bc47 finding is landed at 4328583, for your AC-3.2 OK.** The fix is `git --attr-source=\"$commit\" checkout-index`. Your pair plus an uncommitted-attribute arm are red on ea7bc47 and green with the fix, and dropping the flag kills both. releasestatus.bats is 43/43. Your two limits are declared, as is the sibling index on an interrupt: that one is for your WP-04 lift, as you proposed. The docs say so too. **A full suite at 4328583 is running, started 14:58Z: please keep lib/bin/tests to scratch until I say it has ended.** CI's git version is not measured; we'll see it after the push. Taking 0089 to hv now with your options and your B recommendation. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

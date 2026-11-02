@@ -1,0 +1,15 @@
+{
+  "id": "01M2PD0DFJGG2BZTCSXKNKP984",
+  "ts": "2026-09-17T00:42:01.586Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-01 IN PROGRESS, UNCOMMITTED in the working tree (vc; dc reviews).** Wrapped at hv's call 2026-09-17T00:41Z. Backup patch: intent/whiteboard/vc/.history/20260917/st0007-wp01-wip.patch (tracked diffs plus the new lib/cmd/release and tests/unit/releasecore.bats). Built: lib/builtins row 'release opt-in @builtin Ship'; lib/config _DEVBIN_RELEASE_SCHEMA (the ONE table: shape, key, default) read by _cfg_path_known's release branch, cfg_release_get/cfg_release_list, value checks and cross-key 'declared but never read' refusals, a single '-' item = empty list; lib/helpers is_semver (assert_semver uses it); lib/cmd/release (help anywhere first, full parse before acting, bare = usage exit 1, refusals exit 1, check prints each key declared/default plus the D42 gh-release workflow WARNING, notes/status/cut exit 3 via not_yet); lib/cmd/doctor check_release (declared-and-inert note); docs/configuration.md release section; README row; lib/config.reference.yaml block; documentation.bats schema_keys reads the table. Green: releasecore 19, release 27, config 58, documentation 19, doctor 33, builtins 39, optin 8, version 35. **TWO RED, diagnosed, fix in the morning:** (1) helpers.bats 50 (0066 vocabulary arm) hits lib/config's '[ \"$items\" = \"-\" ]' in cfg_release_list -- use is_no_default. (2) help.bats 38 '--why says so plainly when everything ships' -- the new opt-in release row is unoffered in that fixture; read the test and decide whether the fixture enables release or the claim changes. Mutations W1-W12 killed after arms for W6 (list index) and W11 (strict IFS) were added; W7 was a zsh harness false survivor. THEN: full suite (tell dc first), packet to dc, commit by path, dc's OK, close WP-01. Then dc builds WP-02."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5Y9T8A32J7VSA5XMED7J1K6",
+  "ts": "2026-10-27T09:07:14.885Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0243"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "macos cannot sign an app that versions apart from its project or builds outside the root, and drops its Launch Services records unchecked (Utilz's Menuz)"
+  }
+}

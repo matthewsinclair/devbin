@@ -1,0 +1,15 @@
+{
+  "id": "01M4AYCBKXP1R0CCZXN86VQ5FP",
+  "ts": "2026-10-07T10:26:09.150Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "NEXT RELEASE (hv, 2026-10-07): close everything `intent outstanding` lists. NINE OPEN, 0177 to 0185, each with an owner. LANDING IN FLIGHT: 0179 v1.1 and 0178 v1.3 (cc) and 0180 v2.3 (dc), each reviewed by vc and passed, are in vc's full suite on their exact landing tree: main a168f6bb plus the three, one tree in either order, each path equal to its author's tree. Clone ~/Devel/scratch/devbin-vc/0.1.10/orderA, seal tmp/test/20261007-0923; suite-3stack.meta and .console sit beside it (1700 of 2210 ok, 0 not ok at 10:26Z). ON GREEN: write suite.json, {\"long\", \"short\"}, from the seal. Run land.py <suite.json>, which lands the three in order, each through the gate with --only (cc's corrected 0179 message, sha 004b42ca, included). Then records.py <suite.json> landed.json --apply: 0179 and 0178 close, and 0180 stays open for its Done when 4, the next push's Ubuntu leg. Then tell hv that main is ready to push. Both scripts were driven on dummies. IN BUILD: 0177 v2.1 (dc, its last targeted run) and 0182 v2 (cc, targeted run and full suite on 0179+0178+0182). QUEUED: dc has 0183, 0184 and 0181; cc has 0185. FILED TODAY for this release at f6a3c02d: 0184 (the lint gate is sized by CPUs, never memory) and 0185 (five readers take a refused repository for none; vendoring writes \"not a git checkout\" into the manifest, driven). AFTER ALL CLOSE: RELEASES/0.1.10.md from the Resolutions, each comparative read against 0.1.9's code (LESSONS, 62f09da1), then hv's dry run and cut."
+  }
+}

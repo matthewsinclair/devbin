@@ -1,0 +1,16 @@
+{
+  "id": "01M51YX037M7HX9DEBMZQXSC23",
+  "ts": "2026-10-16T08:57:46.343Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 46,
+    "text": "AFTER 0195, IN vc's ORDER OF 2026-10-15: 0198, then 0197, then 0196, then 0192 (todo 45). 0198 HANDED OVER to vc 2026-10-16 at 60701058 (one arm in targetdir.bats: a stub cargo that fails loudly if run; red first on main with cargo off PATH, green BSD and GNU with cargo and without; re-entry ~/Devel/scratch/devbin-cc/i0198/STATE.md). 0197 next: install.prefix and fleet against the brew install, landing before hv's machines move onto it, built on 0195. 0196: a CNAME to a name outside the zone read as a measured absence. Each built by cc and reviewed by vc."
+  }
+}

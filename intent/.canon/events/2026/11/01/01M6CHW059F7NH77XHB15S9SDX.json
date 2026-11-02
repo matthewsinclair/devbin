@@ -1,0 +1,16 @@
+{
+  "id": "01M6CHW059F7NH77XHB15S9SDX",
+  "ts": "2026-11-01T21:57:22.729Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 61,
+    "text": "ISSUE:0302 waits: no leg of the 0.1.19 re-cut showed a guessed-identity red (vc's word, 2026-11-01)."
+  }
+}

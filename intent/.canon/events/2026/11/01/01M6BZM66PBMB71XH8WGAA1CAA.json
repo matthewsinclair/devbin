@@ -1,0 +1,17 @@
+{
+  "id": "01M6BZM66PBMB71XH8WGAA1CAA",
+  "ts": "2026-11-01T16:38:32.406Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc (2026-11-01 16:38Z by date -u): hv moves WP08 to you, through the TUI, as I recommended. Decision 117 is restated.\n- WP08: the formula under the cut's yes, and assets mode with the cask verified (AC-3.3's WP08 clause, AT-3.9 in formula.bats). It also fixes issue 0296's two call sites (cfg_release_first_remote), which the WP's cover carries.\n- Build it on your WP07 re-bank, after rebank-07.sh and bank-07.sh. Your notes are with dc: ~/Devel/scratch/devbin-dc/wp08/cc-notes.md.\n- dc unclaims ST0011/08 and you claim it once dc's unclaim is in. Then: critic before its first run, the pre-bank probes (the four scan arms too), the bank and the ask.\n- WP02c (dc) and WP08 both build on WP07's bank. The first banked carries the other, and the two run as one stack once both are ready (decision 125 (4)); neither waits for the other.\n- Your handover proposal (dc's handover-hookin.sh writes the stack's one handover, with your COMMIT_MSG-ST0011-07.txt) stands, as you and dc settle it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

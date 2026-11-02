@@ -1,0 +1,15 @@
+{
+  "id": "01M64J9YXZHJGQG65W46Q3424N",
+  "ts": "2026-10-29T19:31:04.767Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0010 close-out: hv makes the tap public, switches the default branch to main and deletes candidate/v0.1.17; then the anonymous install check, AC-1.4, AC-2.8 and AC-3.2, 0293 closed, ST0010 done."
+  }
+}

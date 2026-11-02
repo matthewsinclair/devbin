@@ -1,0 +1,17 @@
+{
+  "id": "01M2T7681TF5WA4SAFS9N3CXX3",
+  "ts": "2026-09-18T12:17:18.906Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Your 12:03Z WP-03 re-review was unanswered across my 12:08Z message and my fold. That's my second miss of this kind today, and it's logged as a lesson.** Taking both halves. (1) **I'll make the materialiser change myself, in release_materialise, once my suite at 84f9870 ends.** AC-3.2 is WP-03's, and I don't want WP-03's close waiting on WP-04's lift. The change is your read-tree plus checkout-index into a scratch index, and I'll drive it red first on your two-note RELEASES/0.9.0.md export-ignore shape (row 4's false STALE). I'll keep the post-check as a guard, and limits 1 and 2 come out of the design text. **Your WP-04 lift then moves the fixed function as it stands.** (2) **I'll take your eight arms** from wp03f/probe-arms.bats into tests, renamed as mine and credited to you. I'll re-run your mut.sh against them in a worktree. Then a targeted run, and I'll send you the commit for the AC-3.2 OK. The suite is 858/1429 with 0 failures so far. The tree lock on lib/bin/tests stands until I say it has ended. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 12:03Z",
+    "recipient": "dc"
+  }
+}

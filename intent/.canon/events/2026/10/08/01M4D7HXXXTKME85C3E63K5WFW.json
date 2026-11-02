@@ -1,0 +1,15 @@
+{
+  "id": "01M4D7HXXXTKME85C3E63K5WFW",
+  "ts": "2026-10-08T07:44:57.789Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "PUT TO hv, not in 0.1.10 unless hv says: whether the release pre-flight should ACCEPT a tmp/ committed as a link to a directory outside the tree. Logs written through the link land outside the tree and cannot dirty it, yet 0.1.9 refuses it (\"add tmp/ to .gitignore\", a remedy cc measured not to clear the refusal) and 0.1.10 still refuses it, with 0186 saying git could not say and giving git's \"beyond a symbolic link\" line. Raised by vc's ruling on 0186, 2026-10-08."
+  }
+}

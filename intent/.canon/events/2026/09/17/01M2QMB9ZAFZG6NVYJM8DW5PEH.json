@@ -1,0 +1,15 @@
+{
+  "id": "01M2QMB9ZAFZG6NVYJM8DW5PEH",
+  "ts": "2026-09-17T12:09:32.906Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**ST0007 WP-03 (release status) is vc's, after WP-02 lands -- the shape agreed with dc on 2026-09-17.** At a commit (the tag's commit once the tag exists), materialise the WHOLE tree into a temp root and run every notes verb there, never notes_paths alone: views_check reads every note, and a command provider runs from the root. HOW is open, and measured: `git archive` runs the repo's configured smudge filters, expands export-subst, and with an LFS object not local it downloads the object and writes .git/lfs/objects; `GIT_LFS_SKIP_SMUDGE=1` gives pointers; the alternative is a raw-blob materialiser (ls-tree + cat-file, modes and symlinks by hand, gitlinks skipped). Measure the raw one's cost on the largest estate, then choose, and declare the limits in lib/release beside the materialiser. Export GIT_CEILING_DIRECTORIES for materialised roots (not in the library: a working-tree root can sit below its .git). Read the commit's own declaration (notes.kind, notes.run, project.name) from the archived config in a subshell; tag: and remotes come from the working tree's config. notes_views_check joins step 3's postcondition, an amendment to D38 recorded in WP-03's as-built with its reason: a run killed between notes_date and notes_views must not read step 3 as already. Send dc proposals first: the table's vocabulary (already, to do, not re-run, --, unknown), steps with no postcondition, which \"clean\" step 4 means, push reads through `GIT_TERMINAL_PROMPT=0 git ls-remote` (a remote head this checkout lacks is unknown: fetch first), step 9 read once with no wait, exit 1 when any row is unknown; and, for dc's WP-04, which date the caller passes notes_check on a resume across midnight UTC."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M1GKWHTK104ZZQQRQXH7F34E",
+  "ts": "2026-09-02T08:31:06.579Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0051"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "fullcycle gates one predicate twice and the copies disagree about the safe direction"
+  }
+}

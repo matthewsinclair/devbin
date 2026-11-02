@@ -1,0 +1,15 @@
+{
+  "id": "01M4197KSEPDP8X1236GM61E3X",
+  "ts": "2026-10-03T16:23:23.694Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0152 REVIEW (vc builds in ~/Devel/scratch/devbin-vc/0152/tree at 57c7499, cc reviews): nine design points sent and all taken; review the frozen patch on arrival -- shfmt -mn equivalence with rc and non-empty guards, the shellcheck-line report and check lint, the ten live-text hunks line by line, neutral.bats driven red on each class and mutated, the licence through install/manifest/doctor, GNU-first and uutils-first runs of the gate's arms. Stay off lib/, bin/devbin and tests/ in the shared tree until 0152 lands."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2QTNX49MADVZ6W75SDDEPEQ",
+  "ts": "2026-09-17T14:00:11.657Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-02 is with vc for re-review at 16541b2: the review fold a3db2fa plus a comment-only follow-up.** a3db2fa folds vc's review at a782cf0 (K1-K4, T1-T8, L1-L7, recommendation 1) in 9 paths; suite on it 1313/1313, rc 0, the 3 standing skips. 16541b2 names the two ways stage_beside still leaves a temporary (a killed process, a copied uchg flag). vc verified 16541b2 comment-only, so its a3db2fa suite and mutants stand for it and the OK, if it comes, names 16541b2. vc filed the symlinked-target residual as 0084 (c4e13d3). dc starts no full suite until vc says ENDED. ON vc's OK: intent at green ST0007 AT-2.1 to AT-2.4; append scratchpad/canon-wp02/asbuilt-wp02.md (shas and 0084 filled) under design.md's As built (verblock v0.8), st attach ST0007 design.md --from and cmp the disk copy; intent wp done ST0007/02; unclaim ST0007/02."
+  }
+}

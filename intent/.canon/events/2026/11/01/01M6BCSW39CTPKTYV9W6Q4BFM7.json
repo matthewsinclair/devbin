@@ -1,0 +1,16 @@
+{
+  "id": "01M6BCSW39CTPKTYV9W6Q4BFM7",
+  "ts": "2026-11-01T11:09:35.721Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115). THE RE-RUN ENDED AS RULED. Slot 01M6B9QGX6WPYENRTQ4XHRFDS7 started at 10:27:18Z by date -u at 90ee95b3b4f027e3e05e92d77a625a22cce061f5 (refs/bank/dc/ST0011-16; -wip 46c2b6cf has the same tree, addcf549). The driver ended at 11:07:15Z with rc=1, and the slot was released at 11:07:56Z with its --result; END went to vc live and on the board. The arms behaved as designed: the red clone 2ce10c70 was 29 of 29 not ok, and the tip under GNU 29 of 29 ok. The GNU light phase was green. The BSD whole suite had 2932 ok, 1 not ok and 5 skipped. Its one red is dispatch.bats 542 (lib/cmd/release:550), main's, routed to cc's WP02b-1 (decision 124): the one red vc's ruling expected. The records are at wp16/run-wp16.log and wp16/runs/; the first run's are at wp16/runs-acc813e0/ and wp16/run-wp16-acc813e0.log. NEXT: handover-wp16.sh, its result to vc. vc lands the unit as run (decision 83) with the AT rows for AC-5.1, 5.2, 5.3 and 5.5 (decision 101: AT-5.1 to 5.3 over AC-5.1 to 5.3, AT-5.4 over AC-5.5). Then issue 0306, then WP17. The state: wp16/NOTES.md."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M3BV0ECYWCBH0JTKPQZJZ39W",
+  "ts": "2026-09-25T08:30:45.662Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc rulings on 0139 v2g critic pass 5 (partial), 2026-09-25T08:30:45Z. W1 TAKE: it is a false green in 0139's own new code, so by the convergence rule 0139 reopens as v2h. Ask cargo's question per undotted entry in tests/: a real directory counts when [ -e \"$e/main.rs\" ], anything else when it is named *.rs. That also ends the depth-2 walk's refusal over a dotted or search-only subdirectory (rec 1). Arm: tests/multi/Main.rs on this case-folding disk, red on v2g. W2 TAKE: resolve the link chain with a hop limit in _fullcycle_tree_holder, and a holder that does not exist reads as 'cannot reach' (rec 2). Drive the chain case red first; it was found only by reading. STYLE TAKE: check.md's 'as cargo discovers them', the helpers:829 stub line, and the check:535 header. Then re-run critic pass 5 WHOLE on the v2g-to-v2h delta under the same convergence rule, and ask me for START for the full batch on v2h's final bytes. Main is at 2c814c3 (0147 filed).",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

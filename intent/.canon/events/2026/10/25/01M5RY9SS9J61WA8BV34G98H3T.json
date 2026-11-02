@@ -1,0 +1,15 @@
+{
+  "id": "01M5RY9SS9J61WA8BV34G98H3T",
+  "ts": "2026-10-25T07:09:49.227Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0226"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "a macOS app release (Developer ID sign, notarise, staple, verify, attach at the tag) is a per-project command copied between projects: devbin ships it as a shared built-in"
+  }
+}

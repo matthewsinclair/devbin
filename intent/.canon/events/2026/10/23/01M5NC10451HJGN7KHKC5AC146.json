@@ -1,0 +1,16 @@
+{
+  "id": "01M5NC10451HJGN7KHKC5AC146",
+  "ts": "2026-10-23T21:52:43.141Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 82,
+    "text": "LINUX AND BREW (hv, 2026-10-14): devbin and Intent work properly on Ubuntu, proven on kovacs, and install with brew on Linux and macOS (hv: \"I want BOTH devbin and intent work from 'brew install' and for them to BOTH work seamlessly on Unix (the kovacs VM in this case)\"). Planned by devbin-vc and intent-vc with hv; kovacs-sysadm, a Remote Control session on kovacs, runs orders from either vc, in intent-vc's one queue, each copied to the other vc. kovacs: Ubuntu 26.04.1 on aarch64, 2 CPUs, 3.3 GiB, uutils coreutils 0.10.0, mawk, bats 1.12.0 first on PATH, shellcheck 0.11.0, Rust 1.99.0 (~/.cargo/bin, which only interactive zsh adds), expect from apt, Homebrew 7.0.9 off PATH; prettier absent. Every order script detaches, ends with the run's own status, and is read by vc over ssh, read-only. RESULTS: D1 (2026-10-14, 2ff34a98) 2306 of 2307, its failure 0198, landed 2026-10-16. D1b (2026-10-15, 89cae16e, cargo on PATH, expect) 2306 of 2307 with 22 skips (one a GNU readlink arm uutils leaves unchecked), its one failure fleet.bats:974. D1c (2026-10-16, on hv's \"Yes, tell kovacs-sysadm\") ran that arm alone: ok, rc 0, so the failure was the pause of hv's move, and nothing is filed. D2 (2026-10-16) stopped at its control with rc 2 on vc's defect (`intent critic shell <file>`; it takes --files); D2b ran it corrected, 10:26:15Z to 10:34:33Z: with Intent 3.2.3's aarch64 musl package (11017d7bd, sha256 f289e5f1) first on PATH and no bootstrap, check all at 89cae16e passed: syntax and lint 49 files 0 breaches, critic 0 findings across 49 files (2 of 6 shell rules asked, 4 declared unanswerable), format and toolchain inactive, every .errors file empty. STILL TO DO: one order at the release head, the full suite and check all on main's HEAD, which now carries 0195 to 0198; and the brew proof on kovacs, from the tap, which waits on hv creating it (ST0009). Then hv pushes main. STALE AT THE 2026-10-23 WRAP: written on 2026-10-17; since then the tap exists and rhad and kovacs run devbin from Homebrew (decisions 50 and 53), 0.1.12 and 0.1.13 are released, and 0201 carries kovacs's brew-upgrade proof. Re-read what of this is left against kovacs-sysadm's orders since 2026-10-17 at the next pickup, then rewrite or archive it."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2R9RMJSSXYKRS4YZW4HWGBK",
+  "ts": "2026-09-17T18:23:49.849Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Review vc's 0082 when vc hands over the packet.** dc measured the PRE-STATE at e818428 first, since it dies when the fix lands: scratchpad/review-0082/pre-state.md, with probe.sh and the runs beside it. It carries dc's own census (the gate's 45-file corpus through shellcheck --include=SC2086, 0 unsuppressed, plus the 12 disable=SC2086 sites; the 8 config-value sites agree with vc's, and the other 4 are out of scope and named), every site's behaviour today, the [%s] format matching a file named sn, the three environments that silently change globbing, and the run banner at lib/resolve:764 as a documentation surface. Two of those went to vc live. The review's checklist is the file's last section."
+  }
+}

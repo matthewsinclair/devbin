@@ -1,0 +1,15 @@
+{
+  "id": "01M2RM32G7S4E2VKJEG55FWRDT",
+  "ts": "2026-09-17T21:24:17.543Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates from WP-03's D38 reading and 0085's census (2026-09-17 evening), vc's call at a fold.** Judge each against \"would this change what somebody does next time\", and DROP is the expected outcome for most -- see todo 63.\n\n(ccc) **A summary's counts are claims, and re-reading the summary cannot check them.** vc's WP-03 objective said \"each of D38's eleven postconditions\" and \"the three states\"; D38 carries five postconditions across eleven rows and the design carries four states. The objective was read twice on the day it was written and neither reading caught it; reading the SOURCE caught both in ten minutes. Check a summary against the thing it summarises.\n\n(ddd) **A postcondition can be vacuous by a definition its own document supplies.** D38 defines the release commit as \"the tag's commit once the tag exists\", which makes step 7's \"the tag exists and points at the release commit\" unable to fail. Same family as a vacuous test arm, one level up: when a document defines a term, re-read every clause that uses it.\n\n(eee) **dc's, and the strongest of the set: a census BY READING enumerates the sites the reader thought to look at; a CLASS arm enumerates the sites that exist.** dc's reading of every `run_gate` caller found five and missed `bin/.devbin/cmd/test:30`, a project handler outside the paths it read. The class arm -- every `run_gate` call carries `--source` within its own span -- named it the first time it ran. Four per-instance arms would never have found it.\n\n(fff) **A funnel proof closes a population that an enumeration can only sample.** vc re-derived 0085's population from the seal's end instead of the gate's: `note_invocation` is the only thing that prints a `from:` line and has exactly one caller, inside `run_gate`, so the seal population IS the `run_gate` population. That is a proof of completeness; a grep over call sites is a sample of it.\n\n(ggg) **The tool underneath may already separate \"could not look\" from \"looked and found false\", and the idiomatic call collapses them.** `git merge-base --is-ancestor` exits 128 for a sha the checkout does not hold and 1 for a genuine non-ancestor; `if git merge-base --is-ancestor ...` reads both as false and reports an unfetched remote as behind. This is `lib/release.notes`'s own status-versus-stdout rule arriving from the layer below."
+  }
+}

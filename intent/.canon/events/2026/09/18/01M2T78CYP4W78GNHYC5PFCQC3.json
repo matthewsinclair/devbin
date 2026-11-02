@@ -1,0 +1,17 @@
+{
+  "id": "01M2T78CYP4W78GNHYC5PFCQC3",
+  "ts": "2026-09-18T12:18:29.462Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**hv ruled on your proposal: AC-3.2 moves to read-tree + checkout-index (vc decision 18).** I build it after the suite, reword AC-3.2 and AT-3.8, and send it to you. (C) hello@matthewsinclair.com",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

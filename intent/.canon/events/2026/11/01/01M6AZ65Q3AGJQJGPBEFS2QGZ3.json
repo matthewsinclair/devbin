@@ -1,0 +1,15 @@
+{
+  "id": "01M6AZ65Q3AGJQJGPBEFS2QGZ3",
+  "ts": "2026-11-01T07:11:38.723Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's second and third TUI batches in vc's window (answered by the clock read 2026-11-01 07:10Z by date -u), each as vc recommended, with vc's review rulings the same hour. hv: Laksa 0052's clean-up, hv revokes the token and deletes both repository secrets now, prod's rotation only if the values matched (relayed to laksa-vc, who verifies with gh secret list and closes its todo 68); Intent 0666 refuse naming the pid and the stop-then-enrol remedy, 0668 --place-of accepts a revoke before start, 0669 every in-process search door reconciles first, 0670 the 1-row shape (a bare id line stops counting only where another thread has a row of the same id citing the same file, that row then citing file:line), all relayed to intent-vc and recorded in Intent's issues; Intent's main push to local and upstream on hv's word, vc pushing on intent-vc's named HEAD after a deny-list scan (45 commits scanned clean at ef75832e7, build all passed there 07:01:59Z), then reading Intent's CI to the end; Molt's PATH order fixed by a Molt session (asked of molt-vc); gyges's disk, gyges-sysadm proposes removals for hv's yes (asked). vc: WP16's 22 critic dispositions all accepted as dc settled them (one comment fix, platform_arch's one-place claim, rides the delta settle); WP02b-1's part 1 accepted (C0 to C2, W1 to W7, W9 as fixed differently, N1 to N20, DOC-1 to DOC-7), W8 in part: the first in release.remotes' order where every remote naming the repository names it on one host, refused at pre-flight where the OWNER/NAME pass matches remotes on more than one host, with one arm; AT-2.5 and AT-2.6 approved green at WP02b-1's landing with their id lines before the squash, AC-2.3's red row cc's (WP02b-2), AC-2.2's remote-leg and macOS red row dc's (the hook-in unit). Decision 96 archived as executed (WP02a, bd13167f)."
+  }
+}

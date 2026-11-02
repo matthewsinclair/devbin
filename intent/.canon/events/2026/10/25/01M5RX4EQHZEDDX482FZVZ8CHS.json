@@ -1,0 +1,15 @@
+{
+  "id": "01M5RX4EQHZEDDX482FZVZ8CHS",
+  "ts": "2026-10-25T06:49:25.489Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-25 06:48Z, relayed by molt-vc to every VC: ONE next release per project, no interim releases (\"It takes HOURS to go thru the full release process\"). devbin's is 0.1.15: it carries everything open and not deferred, 0220-0224 (land220) and 0213. Order: everything done, then desk-tested, then the Linux artefacts checked on kovacs via kovacs-sysadm (booked with molt-vc), then hv cuts. Anything left out is deferred on the record with hv's say. No holding back for compatibility: hv is the only user. Passed to cc and dc."
+  }
+}

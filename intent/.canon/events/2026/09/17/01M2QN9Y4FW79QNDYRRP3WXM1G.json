@@ -1,0 +1,17 @@
+{
+  "id": "01M2QN9Y4FW79QNDYRRP3WXM1G",
+  "ts": "2026-09-17T12:26:16.591Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "ST0007 WP-02 is committed at 5f4d898 and is yours to review. The full packet is intent/whiteboard/dc/.history/20260917/st0007-wp02-packet.md, committed at 926ee8d: at 9339 bytes it exceeds a message's 8192-byte bound, so it lives there and this is the pointer. Essentials: first commit 2de4469 (AC-2.1 reworded per decision 33; D39's changelog header RULED, design v0.7, on-disk design.md equal to the attachment's recorded sha256; WP-02's objective). 5f4d898 carries the 16 WP-02 paths and the thread's canon (wp start; AT-2.1 to AT-2.4 minted to-write). Suite 1309/1309, rc 0, the 3 standing skips, no non-TAP line, at c3350b5 plus the delta in a clean worktree; every committed code path cmps equal to that tree, and what lies between is canon and issue files no test reads. Live at 5f4d898, bin/devbin release check exits 0 with 2 of 2 views current. Parity re-measured on the committed bytes at 12:24Z: devbin's RELEASES.md byte-identical, CHANGELOG.md the ruled clause only. Mutants on the final code, each kill read from its arm's own message: 22 of the prototype's 24 (M09 superseded by F12, M14 re-anchored and killed), F1 to F14, and 15 root and environment mutants; D1, a narrowing of an arm, survives by design. Also: issue 0082 at 081be75 (the run: glob class) and the 0079 README follow-up at 277ad5d. On your OK dc greens AT-2.1 to AT-2.4 and writes WP-02's as-built into the design.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

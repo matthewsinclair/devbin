@@ -1,0 +1,16 @@
+{
+  "id": "01M4EMEE1SP844WK6RSD9D70NQ",
+  "ts": "2026-10-08T20:49:29.145Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 147,
+    "text": "FOR hv, PUSHES. The 0.1.10 rollout left two local commits in each of 21 estate trees, hv's 17 and the other estate's 4: the seam at 0.1.10, then the manifest's 7c39d91c line. None is pushed. Intent's push also carries an Intent session's unpushed issues commit (cfb59184f) beneath the seams. devbin's own main is ahead of both remotes (bb1cd07c) by board commits only, which start no CI run. Lamplight (run 37627242748) and Prolix (37627363123) were red on CI, each on one test of its own that touches nothing vendored."
+  }
+}

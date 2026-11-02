@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 289,
+  "slug": "version-check-words-an-empty-sidecar-as-empty-ex",
+  "title": "version check words an empty sidecar as `empty (expected <version>)` in report_drift's own column, a second wording of the empty state beside 0265's one table",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-29",
+  "closed": "2026-10-29",
+  "reporter": "Matthew Sinclair",
+  "body": "lib/cmd/version's report_drift prints an empty bare sidecar as `<file>  empty (expected <version>)` (lib/cmd/version:270 and :273 at main c4f8e15d), in its own column. That is a second wording of the empty state, beside the one table 0265 made the only place a version file's or a sidecar's state is worded for `set`, `check`, `show` and `doctor`. 0265's Done when 1 (\"each state ... worded in one place, and no reader decides a state for itself\") was left unticked at its landing for this residue (vc's ruling at the landing, 2026-10-28); 0265 landed and closed with the residue named here. Filed by vc; low, and not in 0.1.16.\n\n## Fix\n\nreport_drift words an empty sidecar through the table that words every other state, so `check`'s drift line and `show`'s and `doctor`'s say the empty state in the same words.\n\n## Done when\n\n1. No reader under lib/ words the empty state but the one table, and report_drift asks it.\n2. version.bats's drift arms hold `check`'s line for an empty sidecar in the table's words, and pass under BSD and GNU, with the tree scans and help; CI is green on the pushed head.\n\n## Resolution\n\n- `version check` words an empty bare sidecar through the one table 0265 made, as `show` and `doctor` do: report_drift takes version_unread's clause, so the drift line reads `<file>  holds nothing (expected <version>)`, with `-- cannot be written` after it where sync could not write the file. No reader under lib/ words the empty state but the table.\n- Landed on main at b120c4dd.\n- Arms: three tests/unit/version.bats arms that held `empty (expected` now hold the table's words and refute the old: check's empty sidecar in a build directory, the read-only sidecar arm (`holds nothing (expected 1.0.1) -- cannot be written`), and the empty Cargo.toml arm, which refutes both wordings.\n- Desk evidence: hv's full run on rhadamanth, sealed at tmp/test/20261029-1314.bats.out and .bats.errors: 2824 ok and 2 not ok, neither of them this issue's.\n"
+}

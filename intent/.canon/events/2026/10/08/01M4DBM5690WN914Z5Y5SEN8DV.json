@@ -1,0 +1,15 @@
+{
+  "id": "01M4DBM5690WN914Z5Y5SEN8DV",
+  "ts": "2026-10-08T08:56:05.066Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0189"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "the release core prints git's own error text about a remote, which carries part of a credential when the remote URL's password holds a raw @ or /"
+  }
+}

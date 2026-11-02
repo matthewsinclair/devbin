@@ -1,0 +1,15 @@
+{
+  "id": "01M14GV53ZWKYERTS3ZJG002SD",
+  "ts": "2026-08-28T15:47:01.893Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0039"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "The wrong-tree guard diagnoses an unknown command by where the caller stands"
+  }
+}

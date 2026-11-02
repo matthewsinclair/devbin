@@ -1,0 +1,16 @@
+{
+  "id": "01M6BDFRB8NYJRH05SJW548FJK",
+  "ts": "2026-11-01T11:21:32.776Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 183,
+    "text": "WP18, LAST (hv 2026-10-31 13:11Z, in vc's session: 'a task to do (not now, but right at the end when this is all landed) ... Let's not forget about that'): docs/assembly-and-the-build-cache.md, 'Devbin's Build Cache for Optimised Release Assembly', a detailed design and tech note plus how-to, written from the as-built after WP01 to WP17 and WP10 to WP14 have landed and WP15 has measured. Objective on the WP; intent/wip.md v3.53 carries it. Its pass over the design also amends s13's registry line ('hv's fleet sets it ... through Molt'), superseded by hv's XDG word (decision 123)."
+  }
+}

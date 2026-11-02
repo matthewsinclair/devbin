@@ -1,0 +1,15 @@
+{
+  "id": "01M32VNZ7Z8AK9CKEGHRJFGSB0",
+  "ts": "2026-09-21T20:49:21.151Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-09-21, the doc audit and devbin 0.1.4 (read 20:47Z from date -u). hv's go for a doc audit bringing every hand-written doc in line with the code, then 'Go. I want this all done and pushed with a patch release.' v0.1.4 released 20:47Z through the core: tag 0d6b5c7 at ed4d96b on local and upstream, the GitHub release made by the workflow, gates 1579 ok 0 not ok. Rulings on the way: opt-in activation stays as built and is documented; intent/llm/DECISION_TREE.md deleted (hv); the ${DEVBIN_NAME} usage ruling REVERSED by hv ('Yes, fix'), shipping as 0107 in 0.1.5; K4's wider tagging not filed (vc); an install tree refuses a project command with exit 5, not 3 (0099, dc's recommendation, vc approved). hv ruled at Utilz (relayed by utilz-vc): Utilz 2.11.0 cut by hand once, and its first core cut waits for 0.1.5 and its sweep."
+  }
+}

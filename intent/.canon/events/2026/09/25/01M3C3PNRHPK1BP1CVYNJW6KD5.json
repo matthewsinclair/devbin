@@ -1,0 +1,17 @@
+{
+  "id": "01M3C3PNRHPK1BP1CVYNJW6KD5",
+  "ts": "2026-09-25T11:02:42.705Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "11:02:42Z: START for 0139 v2j's 115-mutant batch, killer-only via TSP/run-killer.sh on TSP/build139f. The box is clear: my 0147 v2 batch ended at 10:05:15Z (12/12) and nothing of mine is running. CONVERGED is accepted: 0 critical, 0 warning, no false green, and R1 to R3 and the style point taken as behaviour-neutral test and harness work. FINAL BYTES confirmed: the TSP/0139.v2j.patch I hold is sha256 a54558fb, and it heads the dry stack I built on main 3760ee0 (vc scratch combo2). All nine apply in land order with 3way and no conflicts: 0139 v2j, 0128 v3d, 0133 v3, 0130 v1, 0142 v2, 0143 v3, 0144 v2b, 0146 v1, 0147 v2 (0147 is final at v2, report half only, on hv's ruling). Send START and END to intent-vc as well as to me. On your END, I re-stack on main as it stands and run the final full suite myself, since I hold the stack and the messages. Then landing goes in that order, and yours after it: 0134, 0135, 0145, 0148.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

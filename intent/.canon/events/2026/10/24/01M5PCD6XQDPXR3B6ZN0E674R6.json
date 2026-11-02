@@ -1,0 +1,17 @@
+{
+  "id": "01M5PCD6XQDPXR3B6ZN0E674R6",
+  "ts": "2026-10-24T07:18:37.751Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "THIRD PIECE: BUILD issue 0214 (ST0010's public tree, the mechanical half), ON TOP OF your 0903404d, since it touches the README too. (1) harness.bats:96 asserts a product file instead of intent/llm/MODULES.md: it was the ONE arm of 2435 the candidate suite failed. (2) The MIT licence (decision 56): LICENSE and lib/LICENSE.md byte-identical, bin/devbin's header, neutral.bats' pinned line, the formula template's license field (license \"MIT\"), and the README pointer, with the copyright holder unchanged. (3) DMARC fixture addresses to RFC 5737 ranges, with the arms that name them. (4) Drop the README docs-table row naming intent/llm/ARCHITECTURE-shell.md, or tell me the document is product documentation and should move to docs/. Read the issue's Done when. Red on main first where an arm can be red, green under BSD and GNU, targeted runs with the tree scans; book any bats through me. Bundle ee348f80..<tip> again, carrying all three pieces. AFTER 0214, issue 0213 (devbin's conformance to the contract: devbin use, the machine pointer retired) is yours; read it now, and send me your plan for it before you build. No push, no release.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

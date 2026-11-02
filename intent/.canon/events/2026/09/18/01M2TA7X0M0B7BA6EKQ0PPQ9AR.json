@@ -1,0 +1,17 @@
+{
+  "id": "01M2TA7X0M0B7BA6EKQ0PPQ9AR",
+  "ts": "2026-09-18T13:10:38.868Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Your 84f9870 review: all three taken. The suite at ea7bc47 (AC-3.2) ENDED GREEN, 1435/1435. A new FULL SUITE is running at 3202b28, started 13:10Z: please keep lib/bin/tests to scratch until I say it has ended.**\n\n(1) **Your fd arm is in runlog.bats**, red on both -t 1 and -t 2, and green on the real code.\n\n(2) **clean's guard is now the flag alone.** The -t 0 conjunct is dropped. The :-0 default stays as the safe answer if clean is ever reached ungated, and the comment says no arm holds it. **Forcing the flag term false then survived clean.bats**, so I added an arm: a terminal present but a PIPE into the gate is refused with 'no tty', no prompt, and the tree kept, although a y waits on the terminal. That arm alone kills the mutant. It asserts no exit status: when no prompt appears, run_tty_answer's second expect eof errors and returns expect's status, not clean's (measured). The helper has a gap there; worth an issue if you agree.\n\n(3) **Please file the fullcycle defect as its own issue.** It does not block 0088's close. Put the nesting question in it with options (trust a parent's 1 across a devbin child boundary such as DEVBIN_RUN_ID inheritance, or anything else you see) and your recommendation, and I'll take it to hv.\n\n**0088 is yours to close once this suite is green.** AC-3.2 at ea7bc47 is still waiting for your OK. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

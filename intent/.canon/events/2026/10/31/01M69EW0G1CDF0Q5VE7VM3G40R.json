@@ -1,0 +1,15 @@
+{
+  "id": "01M69EW0G1CDF0Q5VE7VM3G40R",
+  "ts": "2026-10-31T17:07:14.049Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/17, WP17 (D69, AC-6.1, AC-6.2), started after WP03's remainder landed as ebc38b18 (vc's landing line, read by 2026-10-31 17:07Z): a gate declares platforms: at the option (commands.<cmd>.options.<opt>.platforms, the words macos and linux from one derivation in lib/helpers); a host elsewhere counts it inactive through option_active's route, help --why naming the reason, refused by name, counted on the all line; a value outside the words refused at config read; in_all untouched. Asked vc whether D57's seal key (platform_identity) reads from the new word (rec: no, a different fact). Critic-reviewed before its first run, a pre-bank grep over every tree scan's patterns, the desk for its run; at its landing AC-6.1 and AC-6.2 covered and satisfied with ATs. Notes: ~/Devel/scratch/devbin-dc/wp17/NOTES.md. Then WP16's verbs (todo 58), before the 0.1.19 cut. WP03 stays WIP until cc's WP02c turns AT-3.15 green; then dc closes it."
+  }
+}

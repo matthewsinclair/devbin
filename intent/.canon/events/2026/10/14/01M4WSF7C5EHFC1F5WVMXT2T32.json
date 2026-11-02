@@ -1,0 +1,16 @@
+{
+  "id": "01M4WSF7C5EHFC1F5WVMXT2T32",
+  "ts": "2026-10-14T08:46:40.005Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 152,
+    "text": "CI ON THE RELEASE, READ 2026-10-12: the v0.1.10 tag's run 37840059863 on bb1cd07c was red on Ubuntu on ONE test-only arm, tests/unit/ci-workflow.bats:266, issue 0031's class (a reader that exits early, in a pipe under pipefail, exposed by two lanes on a 2-CPU runner); main's run on 73fd0fd3 and macOS were green. hv folded the fix into ST0008 as WP-07, which landed at 99dd3106, unpushed. STILL OPEN: 0190's Done when 5 asks for CI's wall time after the lanes, and its Resolution gives only the before, 39.5 min (run 37818416586, 9fedef14). Re-read from GitHub's job and step times on 2026-10-14, after dc caught that this item's figures named no run: the Ubuntu job took 42.1 min with one lane (run 37818416586, 9fedef14, whose Run tests step took 39.7 min), and with two lanes 42.5 min (run 37840059863, the tag, red) and 43.5 min (run 37842539047, 73fd0fd3, green, Run tests 43.1 min). The step figures are not like for like, since lint moved from the gates step into the tests between those runs, so the whole job is the comparison: on CI's 2-CPU runner the lanes bought no time. Amend 0190's Resolution with the after figure, naming run 37842539047, and raise it with hv at the first CI read after the kovacs proof."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M359KC3Y1ED5E7K7VRECH13F",
+  "ts": "2026-09-22T19:31:04.958Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "devbin 0.1.7 RELEASED 2026-09-22, cut by vc through the release core on hv's 'fix all of that now': tag v0.1.7 annotated 9a84608 on release commit 142763d, pushed to local and upstream, the release object published 19:25:45Z by the Release workflow, gates 3 of 3 on 142763d with the tree unwritten. It carries 0111 (both refusal sites say what actually runs), 0112's authored pages (which reach NO estate: help_file reads only a project's own bin/.devbin/help/, unvendored -- a known limitation, the shipping decision hv's), 6800d9f, the fleet scan fix 72f61dc (a worktree is known by its .git FILE naming .git/worktrees/; rows labelled by path) and infra manual: docs. The vendored runtime is byte-identical to bc28860, so the version now names the bytes hv's 18:25Z sweep carried under the 0.1.6 label. Machine install republished (manifest 0.1.7 @ 142763d). Swept into 15 estates with Laksa held; each committed seam-only by git commit --only, paths re-read immediately before, every commit verified seam-only with the seam left clean and doctor 0 failed: Arca/arca_cli 2325201, Arca/arca_config b824033, Baize 8d98360, Cards/Design 608eda9, Cdtempl b5063ed, Conflab d2d588ce, Gtools c1e7aa2, Intent 8b934cc82, Lamplight 103ae873a, MicroGPTEx 1dda932, Molt 12a4958, Prodinfra a4b3b47, Prolix 8bef803, Riffle d3a785e, Utilz f082d5f. NONE PUSHED -- pushes are hv's. Intent/tmp/wt-0516 skipped as a worktree."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M549ZRXKW55KDTEZV625PVDJ",
+  "ts": "2026-10-17T06:50:00.499Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "0.1.11 RELEASE, hv's word 2026-10-17 before going AFK: \"All holds are off. Do what you need to do\"; utilz-vc holds the pen across Utilz, Devbin and Intent, and approved vc's plan as 0.1.11. LANDED 2026-10-17 on vc's landing suite 20261017-0636 at ca557b4d (2384 of 2384 ok, 5 skips, .errors empty; seal in ~/Devel/scratch/devbin-vc/clone-archive/seals/20261017-0636/): 0200 9daa07fe, ST0008 WP-01 d3032299, 0194 60b79891, the AT-id commits 0f918740 and db657de9, ST0008 WP-04 f7b34793 (with dc's fix 7d4015d3 for its run's two reds); records 8a2e0737 (AT-1.1 to 1.3, AT-4.1, AT-4.2 green; WP-01 and WP-04 done; 0200 and 0194 closed; at lint ST0008 8 of 8). kovacs ORDER R1 at 8a2e0737 (r1.sh f5666262, bundle devbin-8a2e0737.bundle 29fc4a0d) STARTed by intent-vc 06:49Z; done marker ~/work/devbin-vc/r1.rc on kovacs. THE NOTE: cc's RELEASES/0.1.11.md v1 a64189a0, claim-checked by dc (9 findings, all accepted, one material: the .gitattributes block arrives at the upgrade AFTER the one that brings 0.1.11 in), v2 with a release-page fix for 0194 in build by cc on 8a2e0737. THEN `bin/devbin release v0.1.11` (gates check all, test all, doctor on the Mac; booked with intent-vc after R1 and utilz-vc's check all; --yes put to utilz-vc). THEN installs: rhad's ~/Devel/opt/devbin re-published from the tag, kovacs from a clone of the tag through kovacs-sysadm; the tap matthewsinclair/homebrew-devbin stays hv's to create. Then tell utilz-vc the tag sha and CI's answer; the fleet sweep to 0.1.11 follows the tag, its pathspec gaining .gitattributes."
+  }
+}

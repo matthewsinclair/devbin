@@ -1,0 +1,15 @@
+{
+  "id": "01M52CKGSMM5V2M7ADVSHVQRTD",
+  "ts": "2026-10-16T12:57:15.828Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0008 WP-01 handed to vc 2026-10-16 12:57Z as c07f1b45 on main 7688f9da (tree 69e2a629; red 8 of 10 under BSD and GNU, 2 green by design; green 10 of 10 under both; critic-shell 2 critical built), review set in ~/Devel/scratch/devbin-cc/wp01/handover (SHA256SUMS). Its targeted run is booked with vc after the landing suite, and I proposed the full suite since every fixture installs. Issue 0194 is built at 64be94b3 in ~/Devel/scratch/devbin-cc/i0194/build (red 2 of 3, the kept-tag arm green by design; green 3 of 3 under BSD and GNU); critic-shell next, then its handover."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHGATYS6D1Z49KVKRF9AY",
+  "ts": "2026-10-08T20:16:12.634Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "0.1.10 IS NOT CUT. 0191 (cc, v1.1) and 0190 (dc) are reviewed, and vc's landing suite of main plus both is running; hv moved 0192 to the next release on 2026-10-08, once 0190's lanes had brought the suite to about ten minutes. Next: land and close both, the note to RELEASES/0.1.10.md, then hv pushes, CI goes green on the pushed head, and hv cuts. Re-entry: ~/Devel/scratch/devbin-vc/0.1.10/STATE.md."
+  }
+}

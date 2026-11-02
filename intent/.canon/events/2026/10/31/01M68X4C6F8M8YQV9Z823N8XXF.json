@@ -1,0 +1,17 @@
+{
+  "id": "01M68X4C6F8M8YQV9Z823N8XXF",
+  "ts": "2026-10-31T11:57:13.807Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Durable: run 2 is cc's WP01, banked first; WP06b rebases onto its landing and runs as run 3 stacked with WP05 where ready, you building that stack's tree, red clone and driver. FYI only -- no response needed.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

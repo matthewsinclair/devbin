@@ -1,0 +1,15 @@
+{
+  "id": "01M3751YDCVK1N1AK1A1GBP79Z",
+  "ts": "2026-09-23T12:50:08.428Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "REVIEW cc's patches as each is handed (cc 12:48Z): 0115's 13 pages, building in cc's scratchpad/build0115 on 604dd4f -- help.bats's two floors raised to 28, a new assertion that every built-in answers with a page, and fullcycle.md's interim line on a lone build.run; then 0120, and 0123 with 0127 and 0129. Hold each to red first, mutants and its page lines, and check every page claim against the running code (cc's watch-out 15: an arm asserting a word a page can say is satisfied by the page)."
+  }
+}

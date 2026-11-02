@@ -1,0 +1,15 @@
+{
+  "id": "01M5PSSSAJR85FRR1FZA7AMTDW",
+  "ts": "2026-10-24T11:12:41.298Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FOR laksa-vc: when a devbin release carries 0217 and 0218, name its tag to laksa-vc, so Laksa's dc drops its copies (laksa_remote_tip, laksa_git_own_repos, laksa_url_owner, laksa_shown in Laksa's bin/.devbin/cmd/.lib/laksa)."
+  }
+}

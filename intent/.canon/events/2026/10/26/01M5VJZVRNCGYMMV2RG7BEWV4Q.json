@@ -1,0 +1,16 @@
+{
+  "id": "01M5VJZVRNCGYMMV2RG7BEWV4Q",
+  "ts": "2026-10-26T07:49:52.533Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "HOLD: devbin's kovacs slot (molt-vc's GO, 07:33Z; orders in ~/Devel/scratch/devbin-vc/kovacs/ORDERS-slot-0.1.15.md, sha256 6a3f07cc), run by hv in kovacs-sysadm's session, with molt-vc relaying each status. LEGD runs now (legd.sh 88796665; refuses any keg but 0.1.14): read legd.rc and its outputs against P1 and P2, record leg D in 0213's resolution as cc's, run by vc, then close 0213. K115 is HELD (molt-vc): it runs ONCE, at the head carrying 0232's fix. Rebuild its bundle there, re-pin and re-hash k115.sh, and send molt-vc the new order. Read its seal, never its status, and send molt-vc END the moment its status lands. Utilz's 0109 v2 takes kovacs meanwhile. Released when LEGD's status is relayed (0213), and when 0232 has landed and been pushed (K115's new order)."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2NRNEG9FRDRVHHWBNCQE5F6",
+  "ts": "2026-09-16T18:46:30.665Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0063, from cc's design** -- next, now 0.1.1 is out (tagged `v0.1.1` at `1a0671f`). Then the ST0007 re-review when dc's v0.3 lands. cc reviews 0062 and 0063 on return."
+  }
+}

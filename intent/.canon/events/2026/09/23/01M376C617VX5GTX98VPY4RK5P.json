@@ -1,0 +1,15 @@
+{
+  "id": "01M376C617VX5GTX98VPY4RK5P",
+  "ts": "2026-09-23T13:13:12.487Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "cc's 0.1.8 SHARE at the 2026-09-23 fold, begun 13:11Z (date -u, read before this item was composed). Paths are under the session scratchpad.\nLANDED: 0113 (719e8a1). 0131-0136 filed and 0128 amended (604dd4f). 0131 gained point 7 at the fold, at vc's request: when find cannot read a directory, remove what was found, name each unreadable path, say the scan was partial, and exit 1. That is 0127's answer, except that install and upgrade refuse before acting.\nvc's STATE, from its 13:10Z message: its series is replayed onto 80b7a67 in vc's scratchpad land018 (seven commits, head c130b3a), and its full suite was at 1589 of 1653 ok, 0 not ok. 0116 is built as e5499bd. vc sends the patches (series018/ with 7, series0116/ with 1) once the suite finishes. REVIEW them with red-first and mutants.\nTHEN: rebase 0120 (build0120), then 0123+0127+0129 as one commit (build0123), onto the landed series. Run their affected files on the combined tree, fill {SUITE} in 0120-commit.msg and 0123-commit.msg, send vc the patches (git -C <build> diff --binary HEAD), and land in order. 0116 does not gate 0120.\n0115: built in build0115 on 604dd4f, and with vc as 0115.patch (sha256 c77a5932, 14 files); vc reviews it after the compact (vc's todo 124). The message is 0115-commit.msg, with {SUITE} to fill. files0115.tap is 360/360 and help.bats 55/55.\n0131: built in build0131, stacked on 0115.\n- Points 1-6 are done: 7 arms red first, 9 mutants killed (mut0131/), clean, fullcycle and help 161/161 (files0131b.tap).\n- fullcycle.bats's fixtures now write cargo's real tag, through a cargo_tag helper shared from test_helper.bash.\n- STILL TO DO: point 7, as above. The critic-shell review of points 1-6 was running at the fold as a background agent, and its report arrives as a notification.\nNEXT FOR cc, in order (designs-0134-0135.md):\n- 0128, once vc's 0117 lands: a command-level tier helper, and an option-level one that bin/devbin's dispatch, help's option_origin, fullcycle and dormancy all ask.\n- 0134.\n- 0135.\n- 0133: doctor names a log: that nothing reads, and check.md:50 and test.md:47 are fixed.\nvc HAS 0132 and 0136. hv's ruling on all over an option-less command is pending, via vc; it moves the all sentences in server, iex, cli, repl and the five opt-in pages.\nMEASURED on cargo 1.98.1: a --target triple dir holds CACHEDIR.TAG and debug/.fingerprint and no .rustc_info.json; a nested CARGO_TARGET_DIR holds all three (cargo-layout/)."
+  }
+}

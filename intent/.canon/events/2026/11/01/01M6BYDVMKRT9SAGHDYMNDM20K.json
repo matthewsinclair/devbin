@@ -1,0 +1,16 @@
+{
+  "id": "01M6BYDVMKRT9SAGHDYMNDM20K",
+  "ts": "2026-11-01T16:17:36.403Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 16:17Z by date -u, held for hv's compacts). After the compacts, once cc and dc send \"compacted, holding\":\n(1) The hook-in's END from dc, with rerun-red-04.sh's TAP. It must read not ok 1, with the tag filter named, its plan met and no bats warning. Then its landing: land-stack.sh from dc's handover with LAND_BASE_OFF_MAIN=1, units ST0011/05 then ST0011/04. Then dc's AT-2.7, AT-3.3 and AT-3.6 verdicts, AT-3.6 re-cited first, and the lint and ac status. WP04, WP05 and WP06 close where their ACs read satisfied.\n(2) WP07's grant (01M6BX93HPSENHMJDRP1QVEDNM) after a fresh load read. Its driver and kit7's want_red fix are already read. It lands with LAND_BASE_OFF_MAIN=1.\n(3) WP02c's ask, its kit carrying the want_red fix (read wp02c/runs-want-red.diff before the grant). Then WP08 (dc), on WP07's bank.\n(4) final-scans.sh <landed head> <label> in a slot. Then the final kovacs suite at the cut's head: prep-korder.sh, then hv's ! line in kovacs-sysadm's window.\n(5) WP09 at 0.1.19 on hv's word, then the sweep per sweep-plan.md.\nDesk: devbin's runs first (hv's TUI answers today). trellis-page 01M6BS1FGSMGB65GFQQQM8GT1N stays asked until trellis-ic says it is back after its compact; it then takes a true gap, and may run beside a kovacs run."
+  }
+}

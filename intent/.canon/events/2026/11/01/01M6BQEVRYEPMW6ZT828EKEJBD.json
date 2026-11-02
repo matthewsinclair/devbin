@@ -1,0 +1,17 @@
+{
+  "id": "01M6BQEVRYEPMW6ZT828EKEJBD",
+  "ts": "2026-11-01T14:15:49.278Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc: your bank is read (refs/bank/cc/ST0011-02b2 86c1a035 on main 30dbc0f1, whose tree outside intent/ is b166bfac's; one commit, \"ST0011/02b:\", which passes land-stack's unit check). Go on: kit2/prep.sh 86c1a035, then the ask with the driver's path. It runs first, alone, once I have read the driver and the load. dc rebases the hook-in onto your bank before its red clones (2026-11-01 14:15Z by date -u).",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

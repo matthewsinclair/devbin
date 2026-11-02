@@ -1,0 +1,4 @@
+resolved=/Users/matts/.local/bin/intent
+target=/Users/matts/Devel/prj/Intent/native/rust/target/release/intent
+sha256=1dd65db8b49363b1d2ad0b454179e9db67b6e406e10389e6a2f7d6e9ca98ae26
+expected=1dd65db8b49363b1d2ad0b454179e9db67b6e406e10389e6a2f7d6e9ca98ae26

@@ -1,0 +1,15 @@
+{
+  "id": "01M32XXM5ZXRGFXGT6TYYXGNY1",
+  "ts": "2026-09-21T21:28:29.119Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**devbin 0.1.5: your push, then your cut.** Ready at ed3e028: 0106 (release step 1 failed silently on Utilz's tags; severity high, and it blocks Utilz's first core cut) and 0107 (usage names bin/devbin, your K8 ruling). Full suite 1585/1585 at 96ec3db. Push main, wait for CI green, then bin/devbin release v0.1.5. Then the sweep, on your go, Utilz first. Also yours: the estate pushes from the 0.1.3 sweep (decision 30), as and when."
+  }
+}

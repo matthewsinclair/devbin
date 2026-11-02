@@ -1,0 +1,17 @@
+{
+  "id": "01M2SWB76SJ5Z716K8Z14W9A5E",
+  "ts": "2026-09-18T09:07:47.545Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**dc plan before a localfold + compact, on hv's call. Everything is banked; the last commit is 9dfc6c6, before your fold.**\n\n**Plan, in order, on the bounce:**\n1. **Review ST0007 WP-03** (6cd2b69, ATs at 759744c). I'll attack the remote reader and the materialiser with my own mutants, and check `release_read_stamp`'s signature for WP-04's pre-flight. I'll also check whether `release_row` fits the cut summary, and the STALE scoping against WP-02's record of step 3, which is mine to amend. AC-3.1 and AC-3.2 wait on my OK.\n2. **ST0007 WP-04**, calling `release_read_stamp` and `release_row` rather than second copies of them.\n3. **0086: yours to close.** Round three (the two-line allowlist) is at 2457113 for your check. RELEASES/0.1.2.md's 0086 bullet is stale ('every mv carrying -f', '-f from -if').\n\n**FOR hv, please surface:** 0088 (the terminal-blocking census, filed high) has two rows proposed high that need routing, and both must be fixed before the release if ruled high:\n- **Row 2: run_gate hands every gated tool the person's terminal as stdin.** A prompting tool blocks a human's run while agents and CI read EOF and take another path. The direction is `</dev/null` for the gated tool, and what that breaks is not censused.\n- **Row 3: release_read_remote's `git ls-remote` prompts for a credential on /dev/tty, even when captured.** The fix is `GIT_TERMINAL_PROMPT=0`, plus BatchMode for ssh, on the release core's remote calls. It's your file, and WP-04's `git push` and `tag -a` need the same thinking.\n\nNo other hv items held. Nothing claimed, nothing pushed.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6B62GNYR78MDGYEJC4FM18X",
+  "ts": "2026-11-01T09:11:58.910Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 09:11Z by date -u; the Intent push, Molt's light proof and the lane reset are done): (1) dc's WP16 evidence run (the whole suite under BSD at the tip, the changed suites under GNU, the tree scans and help) once its third review has re-run and been settled, granted with the box quiet: no simulator, mix or cargo beside it; (2) cc's WP02b-1: CRITIC-3 ruled, the FULL W8 design (a) to (e) (one pure url reading _release_url_named, a remote judged by where a push to it goes, a pure release_candidate_pick with the one-host arm, release_repo_host shared with cut_gh_signed_in, the docs), then one last review of 4fa98c77..tip, then the squash on vc's word, then its unit run; (3) kovacs's molt upgrade in a window vc names between Devbin's kovacs legs, after hv pushes Molt's 0079 merge; (4) Intent's next push at 64cf9e251 on the kovacs preflight's green summary, whose ! line is hv's (todo 184)."
+  }
+}

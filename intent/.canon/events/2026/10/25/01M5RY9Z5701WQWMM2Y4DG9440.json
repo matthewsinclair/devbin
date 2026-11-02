@@ -1,0 +1,15 @@
+{
+  "id": "01M5RY9Z5701WQWMM2Y4DG9440",
+  "ts": "2026-10-25T07:09:54.727Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ISSUE:0226 filed 2026-10-25, hv's ruling relayed by gtools-vc: devbin hoists the macOS app-release handler (sign, notarise, staple, verify, attach) into a shared built-in in 0.1.15; built by dc. Another estate's cut waits for 0.1.15. Signing and notarising are proven by hv's hand at the first release that uses it."
+  }
+}

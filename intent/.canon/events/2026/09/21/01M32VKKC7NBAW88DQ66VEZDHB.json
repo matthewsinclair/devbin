@@ -1,0 +1,17 @@
+{
+  "id": "01M32VKKC7NBAW88DQ66VEZDHB",
+  "ts": "2026-09-21T20:48:03.463Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "v0.1.4 IS RELEASED; THE TREE LOCK IS RELEASED. Read by vc at 20:47Z: all 11 steps done or skipped; gates 1579 ok, 0 not ok on ed4d96b; tag v0.1.4 (0d6b5c7 -> ed4d96b) on local and upstream; gh release v0.1.4 published 20:47:27Z by the workflow. (1) Your localfold may commit now, by path. (2) GO for the 0.1.5 bats in scratch/fix015: red/green per fix (0106 release_versions, 0107 K8), then releasecut.bats, infra-profile.bats and version.bats whole. No GIT_OPTIONAL_LOCKS in the environment. (3) Then land 0106 and 0107 in the tree, one commit per issue, AC-1.9's restatement in the 0107 commit, and tell me: I review with mutants before the full suite. Tell me before any full suite; vc is writing its fold now (board, wip.md, restart.md) and commits it by path.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "schema": "intent/thread@3.0",
+  "id": "ST0005",
+  "title": "Fix devbin install/upgrade and make use of Devel/opt/devbin",
+  "slug": "fix-devbin-install-upgrade-and-make-use-of-devel",
+  "status": "completed",
+  "created": "2026-09-06",
+  "completed": "2026-09-08",
+  "objective": "Publish devbin to a local install tree and have every consuming estate vendor and upgrade from there, rather than from the development checkout it is edited in.\n\nDone means: `install` and `upgrade` are CONTEXT-AWARE rather than new verbs -- inside devbin's own tree they act on the machine install, inside a consumer they mean what they already mean -- and each ANNOUNCES the mode it took before it acts, so a misdetection lands in the output instead of in the filesystem. Both refuse to publish from a dirty tree, which is the rule the rest of this rests on. The install tree is a DISTRIBUTION POINT and not a runnable devbin: it carries `bin/devbin`, `lib/` and a stamp naming the commit, time and digest it was cut from, and no `config.yaml`, so `bin/devbin` refuses to run there by construction. A consumer NOTICES when its recorded source has moved ahead and offers the upgrade interactively, never prompting inside a gate. `fleet upgrade` sweeps the estate from the dev tree while distributing the INSTALL TREE's bytes, dry-run by default.\n\nThe install location is configuration (`install.prefix`, with a `--prefix` flag so the suite can publish into a temporary directory) and never a path written into code.",
+  "context": "**The vendor source is a working tree, so it can be dirty, and it is.** Measured 2026-09-06 16:35Z across the thirteen `bin/.devbin/manifest.sha256` files: five estates -- Baize, Conflab, Laksa, Lamplight and Prolix -- record `source_commit: 8f5c328... +dirty -- THESE BYTES MATCH NO COMMIT`. They are running a devbin that exists in no commit anywhere, vendored straight out of `~/Devel/prj/Devbin` mid-edit.\n\n**The stamp cannot tell two dirty vendors apart, and that is the sharp end.** Lamplight was vendored at 14:35Z and the other four at 14:45Z. In those ten minutes `lib/cmd/infra`, `infra.d/mail` and `infra.d/mail.d/dmarc` moved -- 3 of 36 entries. The four match the working tree; **Lamplight matches neither a commit nor the working tree**, and its `source_commit` line is byte-identical to theirs. Six distinct stamps across thirteen estates resolve to four distinct BYTE-STATES: counting stamps counts re-vendor events, not divergence.\n\n**Homebrew was considered and dropped** (hv, 2026-09-06). devbin is a private repo used on one machine, so a tap would require publishing it -- and the deeper objection is that **brew is a distribution answer to a provenance problem**. A formula would have made devbin easier to obtain while leaving untouched the thing that is actually wrong, which is that the source a consumer vendors from can be an uncommitted working tree. It would also have imported a known failure: on this machine `brew list --pinned` reports `intent` pinned, `/opt/homebrew/opt/intent` points into the Cellar, `/opt/homebrew/bin/intent` is absent, and `command -v intent` resolves through `~/.local/bin` into a live cargo build tree. Three instruments, three answers, none agreeing.\n\n**A separate directory is not the fix; the clean-tree gate is.** An install tree that can be cut from a dirty checkout launders the same bytes through one more hop and gives them the appearance of provenance, which is worse than the present state because the present state at least says `THESE BYTES MATCH NO COMMIT` out loud.\n\nInsulation comes from WHAT IS DISTRIBUTED and not from where the operator is standing. That is why the estate sweep stays a dev-tree verb -- `fleet` lives at `bin/.devbin/cmd/fleet`, the project half rather than the vendored runtime -- while the bytes it pushes come from the install tree.",
+  "body": "",
+  "preamble": "",
+  "wps": [
+    {
+      "seq": 1,
+      "title": "install/upgrade context-awareness, the dirty gate, and the install manifest",
+      "scope": "S",
+      "status": "done",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 2,
+      "title": "the staleness notice and the tty-gated upgrade prompt",
+      "scope": "S",
+      "status": "done",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 3,
+      "title": "fleet upgrade: dry-run default, install bytes, source rewrite",
+      "scope": "S",
+      "status": "done",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    }
+  ],
+  "criteria": [
+    {
+      "id": "AC-1.1",
+      "text": "Publishing writes the runtime (bin/devbin + bin/.devbin/lib) and OMITS the project half -- no config.yaml, no cmd/, no help/. The absence is the mechanism, not tidiness.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.10",
+      "text": "The provenance report names the header that ACTUALLY moved. Re-pointing a consumer from the dev tree at the install moves the source path and not the commit -- a pair that could not move independently before an install tree existed -- and the report must not print two equal shas as evidence of a change.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.11",
+      "text": "Every remediation devbin prints must name a command that resolves FROM WHERE THE READER IS STANDING, not only from the project root. The operator drives devbin through 'dvb', a shell function that walks up from PWD and runs bin/devbin without changing directory, so a subdirectory is the ordinary case rather than the edge.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.2",
+      "text": "An install declares 'kind: install' in its manifest, so the kind is READ and never inferred from which files are missing. A consumer manifest carries no kind.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.3",
+      "text": "A dirty source tree refuses to publish AND to publish-upgrade, names the offending paths, and writes nothing. A gate on one verb only is a gate on neither.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.4",
+      "text": "A source that is not a git repository is REFUSED rather than treated as clean: 'no changes' and 'cannot tell' must not render as the same answer.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.5",
+      "text": "install refuses an existing install naming upgrade; upgrade refuses a missing install naming install. Neither refusal is a dead end.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.6",
+      "text": "The mode is announced before anything is written, in BOTH modes -- a mode line on one branch only is indistinguishable from one that failed to print.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.7",
+      "text": "Provenance is transitive: the commit recorded by a consumer vendored from an install equals the dev tree HEAD the install was cut from. Without this the install RECORDS LESS provenance than no install at all.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.8",
+      "text": "An install tree refuses to be run from, exits 3, and does not advise 'devbin install' -- advice that would turn the machine install into a project.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.9",
+      "text": "The install location is configuration (install.prefix), with --prefix overriding for one run and leaving the configured location untouched. --prefix in VENDOR mode is a usage error, never silently discarded.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.1",
+      "text": "A consumer whose recorded source has moved ahead prints a staleness notice on every run, at the cost of one file read.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.2",
+      "text": "The upgrade prompt appears only with a real terminal, tested on BOTH arms (-r /dev/tty AND -t 0) per issue 0058 -- a tty device node is not a human.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.3",
+      "text": "No prompt ever appears inside a gate. A gate stopping to ask about upgrades is 0058 wearing a friendlier face.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.4",
+      "text": "A staleness check that cannot reach the install SAYS SO rather than rendering as up to date. Absent is not clean.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.1",
+      "text": "fleet upgrade is dry-run by DEFAULT and prints the plan; applying takes an explicit flag, because a whole-of-estate write is fleet-blast-radius.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.2",
+      "text": "What the sweep distributes is the INSTALL's bytes, never the dev tree's. Insulation comes from what is distributed, not from where the operator stands.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.3",
+      "text": "The sweep rewrites each estate's recorded source and reports that count SEPARATELY from the upgrade count: two things happened and one number cannot say so.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.4",
+      "text": "An estate the sweep cannot reach is reported, never silently skipped -- a sweep that drops unreachable entries is a population filter wearing no clothes.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "id": "AT-1.1",
+      "kind": "test",
+      "file": "tests/unit/localinstall.bats",
+      "covers": [
+        "AC-1.1"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.10",
+      "kind": "test",
+      "file": "tests/unit/localinstall.bats",
+      "covers": [
+        "AC-1.10"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.11",
+      "kind": "test",
+      "file": "tests/unit/dispatch.bats",
+      "covers": [
+        "AC-1.11"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.2",
+      "kind": "test",
+      "file": "tests/unit/localinstall.bats",
+      "covers": [
+        "AC-1.2"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.3",
+      "kind": "test",
+      "file": "tests/unit/localinstall.bats",
+      "covers": [
+        "AC-1.3"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.4",
+      "kind": "test",
+      "file": "tests/unit/localinstall.bats",
+      "covers": [
+        "AC-1.4"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.5",
+      "kind": "test",
+      "file": "tests/unit/localinstall.bats",
+      "covers": [
+        "AC-1.5"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.6",
+      "kind": "test",
+      "file": "tests/unit/localinstall.bats",
+      "covers": [
+        "AC-1.6"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.7",
+      "kind": "test",
+      "file": "tests/unit/localinstall.bats",
+      "covers": [
+        "AC-1.7"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.8",
+      "kind": "test",
+      "file": "tests/unit/localinstall.bats",
+      "covers": [
+        "AC-1.8"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.9",
+      "kind": "test",
+      "file": "tests/unit/localinstall.bats",
+      "covers": [
+        "AC-1.9"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.1",
+      "kind": "test",
+      "file": "tests/unit/updatenotice.bats",
+      "covers": [
+        "AC-2.1"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.2",
+      "kind": "test",
+      "file": "tests/unit/upgradeoffer.bats",
+      "covers": [
+        "AC-2.2"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.3",
+      "kind": "test",
+      "file": "tests/unit/upgradeoffer.bats",
+      "covers": [
+        "AC-2.3"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.4",
+      "kind": "test",
+      "file": "tests/unit/updatenotice.bats",
+      "covers": [
+        "AC-2.4"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-3.1",
+      "kind": "test",
+      "file": "tests/unit/fleet.bats",
+      "covers": [
+        "AC-3.1"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-3.2",
+      "kind": "test",
+      "file": "tests/unit/fleet.bats",
+      "covers": [
+        "AC-3.2"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-3.3",
+      "kind": "test",
+      "file": "tests/unit/fleet.bats",
+      "covers": [
+        "AC-3.3"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-3.4",
+      "kind": "test",
+      "file": "tests/unit/fleet.bats",
+      "covers": [
+        "AC-3.4"
+      ],
+      "status": "green"
+    }
+  ],
+  "attachments": [
+    {
+      "path": "design.md",
+      "text": "---\nverblock: \"06 Sep 2026:v0.1: vc - The local install: shape, decisions and work packages\"\n---\n\n# ST0005 Design: the local install\n\n## The shape\n\n```\n~/Devel/prj/Devbin        the DEV TREE   bin/devbin + lib/          + .git + bin/.devbin/{cmd,help,config.yaml}\n~/Devel/opt/devbin        the INSTALL    bin/devbin + bin/.devbin/{lib,manifest.sha256}\n~/Devel/prj/<estate>      a CONSUMER     bin/devbin + bin/.devbin/{lib,manifest.sha256,cmd,help,config.yaml}\n```\n\n**The install is CONSUMER-SHAPED with the project half missing**, which is the whole of its definition: no `config.yaml`, no `cmd/`, no `help/`. That is not a cosmetic choice -- see D33.\n\n| you type | standing in | it does |\n| --- | --- | --- |\n| `devbin install` | dev tree | publish to `install.prefix`; refuses if the install exists, naming `upgrade` |\n| `devbin upgrade` | dev tree | re-publish over an existing install |\n| `devbin install --into <dir>` | dev tree or a consumer | seed a consumer -- unchanged behaviour |\n| `devbin install` | consumer | vendor into this project -- unchanged behaviour |\n| `devbin upgrade` | consumer | upgrade this project from its recorded `source:` -- unchanged behaviour |\n| `bin/devbin fleet upgrade` | dev tree | sweep the estate with the INSTALL's bytes; dry-run by default |\n\n## What is actually wrong, stated once\n\nThe vendor source is a working tree, so it can be dirty. Five of thirteen estates are running bytes that match no commit, and two vendors taken ten minutes apart from the same dirty tree carry byte-identical `source_commit` lines over three differing files. The full measurement is in `info.md`'s Context and is not restated here.\n\n**The fix is the clean-tree gate. The directory is only where the gate's output goes.** An install tree cut from a dirty checkout is strictly worse than today, because today's manifest at least says `THESE BYTES MATCH NO COMMIT` out loud, and a laundered copy would not.\n\n## Decisions\n\nContinuing ST0001's global numbering, which ended at D25. These are cited from code the way D5, D7 and D12 already are.\n\n### D26 -- `install` and `upgrade` are CONTEXT-AWARE, and the mode is ANNOUNCED\n\nNot new verbs. Inside devbin's own tree they act on the machine install; inside a consumer they mean exactly what they mean today. **hv rejected a new verb twice over**: `release` reads as _release to the outside world_, and `bin/.devbin/cmd/release` already exists as the release-notes generator.\n\nThis is consistent with devbin rather than an exception to it. The wrong-tree guard already makes _the tree you are standing in_ decide what a run is about; one more verb obeying that rule adds no new principle.\n\n**Every run announces the mode before it acts.** A discriminator that is merely correct is not enough -- a misdetection has to be visible in the output rather than discovered later in the filesystem. This is `IN-AG-NO-SILENT-001` applied to a branch rather than to an error.\n\n### D27 -- the install tree is a DISTRIBUTION POINT, not a runnable devbin\n\n**Ruled by hv from three options.** The install holds `bin/devbin`, `lib/` and a manifest, and **no `config.yaml`** -- so `bin/devbin:146` refuses to run there by construction. It is always a `--from` and never a cwd.\n\n**This is what collapses the problem back to two contexts.** A runnable install would be a third, and it would be structurally indistinguishable from the dev tree: both resolve their runtime to `$PROJECT_ROOT/lib` (`bin/devbin:54`), so the obvious discriminator misclassifies it and bare `install` there would try to publish the install onto itself. Neither runnable variant survives that without an extra marker; the files-only variant needs no marker at all.\n\nThe rejected two are recorded because the reasons outlive the choice:\n\n- **Move discovery into `lib/` so the install can sweep** -- puts \"enumerate every project on this machine\" into the runtime that ships to thirteen estates, none of which will ever call it.\n- **Vendor `fleet` into the install as well** -- the install stops being a clean copy of the vendored set, so _is the install level with the dev tree_ acquires a fuzzy answer, and the manifest does not cover the extras.\n\n### D28 -- a dirty tree STOPS `install` and `upgrade` in the dev tree\n\n`git status --porcelain` non-empty over the WHOLE tree, not just the vendored set. The manifest's claim is _these bytes are commit X_, and that claim is only true when nothing in the tree is uncommitted.\n\n**No `--force`.** hv's instruction is that it stops, and a force flag would restore the exact state this thread exists to end -- with the added harm that the resulting install would look provenanced. A 3am escape hatch that reintroduces the defect is not an escape hatch.\n\nThe refusal names the dirty paths, because a gate that says only _no_ sends the reader to `git status` to find out what it meant.\n\n### D29 -- the estate sweep is a DEV-TREE verb that distributes the INSTALL's bytes\n\n`fleet upgrade`, beside `fleet audit` and `fleet doc`. `fleet` lives at `bin/.devbin/cmd/fleet` -- devbin's project half, not the vendored runtime -- so an install that could sweep would need discovery moved or copied, which is D27's two rejected options.\n\n**Insulation comes from what is distributed, not from where the operator is standing.** Pointing `--from` at the install delivers the entire guarantee; standing in the install adds nothing to it. The case that would justify the alternative -- a machine with the install but no dev tree -- does not exist: this is one machine and the dev tree is on it.\n\n**Dry-run is the DEFAULT.** A whole-of-estate write is fleet-blast-radius by hv's standing directive, so the plan prints and applying takes an explicit flag and hv's go.\n\n### D30 -- staleness is a NOTICE always and a PROMPT only interactively\n\nThe consumer compares its own manifest against the install's on every run -- one file read -- and prints one line when they differ. **The prompt is separate and strictly gated.**\n\n`[ -r /dev/tty ] && [ -t 0 ]`, **both arms**, which is `0058`'s test verbatim: a tty device node is not a human. That is not a theoretical hazard here. `0058` was filed and fixed on 2026-09-06 after the suite blocked for 6m30s on the operator's terminal, in this repository, in a check that was doing exactly this.\n\n**Never inside a gate.** `devbin test all` stopping to ask about upgrades would be the same defect wearing a friendlier face. The notice is free and universal; the prompt belongs to interactive, non-gate entry only.\n\n**Answering yes rewrites ~36 files in the consumer's working tree, so the prompt says so before asking.**\n\n### D31 -- NO REGISTRY of installs; discovery is DERIVED\n\nThe install does not keep a list of where it has been installed. A maintained list lies the first time a project is moved, renamed or cloned, and a sweep that silently skips unreachable entries is a population filter wearing no clothes -- this project's recurring defect, and `0056` is already open on the census having one blind side.\n\n`fleet_roots` already derives the population by scan and already carries `DEVBIN_FLEET_ROOTS` plus a comment recording a machine-specific default that walked a nonexistent directory for months. One answer to _who runs devbin_, derived rather than kept.\n\n### D32 -- the install location is CONFIGURATION, never a path in code\n\n- **Where do I publish to** is a property of the dev tree: `install.prefix` in devbin's own `bin/.devbin/config.yaml`, defaulting to `~/Devel/opt/devbin`.\n- **Where do I upgrade from** is a property of each consumer and **needs nothing new**: the manifest's `source:` line already records it and simply comes to name the install.\n- **Where are the estates** is `DEVBIN_FLEET_ROOTS`, unchanged.\n\nA `--prefix <dir>` flag exists so the suite publishes into a temporary directory. **A flag rather than an environment variable**: this project's convention is that tests are fixed by standing in the right place rather than by an escape hatch, and an env var that redirects a write is reachable by anything in the environment.\n\n### D33 -- the install is a CONSUMER-SHAPED tree, and reuses the manifest unchanged **[vc, revised after measuring]**\n\n**This decision was first written the other way and the measurement reversed it.** The obvious layout is to mirror the DEV tree -- `<prefix>/bin/devbin` plus `<prefix>/lib/` -- because that is what a source checkout looks like. Reading `lib/install` shows that layout would need a second path mapper, a second manifest location and a second set of helpers, because **every existing function is written against the consumer shape**: `vendored_paths` emits `bin/.devbin/lib/...`, `manifest_path` resolves to `bin/.devbin/manifest.sha256`, and `copy_vendored` follows both.\n\nSo the install is laid out as a consumer, and the entire existing apparatus applies with **no new path logic at all**:\n\n| helper | on the install tree |\n| --- | --- |\n| `is_devbin_source` | true -- `bin/devbin` plus `bin/.devbin/lib/helpers` |\n| `is_devbin_installed` | true -- `bin/.devbin/lib` exists |\n| `vendored_paths` / `copy_vendored` | unchanged |\n| `manifest_write` / `manifest_check` | unchanged, at `bin/.devbin/manifest.sha256` |\n| `upgrade --from <prefix>` | **needs no change whatever** |\n\nThat last row is the point. `lib/cmd/install`'s own header already says the source is _whatever devbin is RUNNING, not a hard-coded checkout: a devbin installed in project A can seed project B_. **The install tree is that sentence taken literally** -- it is project A with nobody living in it.\n\n**What makes it an install rather than a project is the ABSENCE of the project half**, and `bin/devbin:146` turns that absence into the refusal D27 asks for, by construction rather than by a check: no `config.yaml`, so it dies before dispatching. There is no code to write for that and no flag that can switch it off.\n\n**A `# kind: install` line goes in the manifest anyway.** The layout difference is real but it is an absence, and a reader distinguishing an install from a half-broken project by noticing which files are missing will eventually get it wrong. A discriminator that has to be inferred is one that will be inferred incorrectly.\n\n### D34 -- the first sweep REWRITES `source:` and says how many it changed **[vc]**\n\nAll thirteen estates currently record `source: /Users/matts/Devel/prj/Devbin`. They keep pointing at the dev tree until something touches them, so `fleet upgrade` repoints each estate as it goes and **reports the count separately from the upgrade count**. Two different things happened and one number cannot say so.\n\n## What must be able to go red\n\nThe cardinal constraint from ST0003 applies unchanged, and this thread has three controls that could each be built unfailable:\n\n| control | the green that would mean nothing | what makes it fail |\n| --- | --- | --- |\n| the dirty gate | a publish from a clean tree, which is the ordinary case | a fixture tree with one uncommitted byte must REFUSE, and the refusal must name that path |\n| the mode announcement | correct detection in both contexts | a tree constructed to be ambiguous must announce ONE mode, loudly, rather than guessing quietly |\n| the staleness notice | two manifests that agree, which is the state right after an upgrade | a consumer one release behind must PRINT, and a consumer with no reachable install must say SO rather than nothing |\n\n**A staleness check that cannot reach the install must not read as up to date.** Absent is not clean -- that is the estate's own defect from ST0003, met again in a different file.\n\n## Work packages\n\n| WP | scope |\n| --- | --- |\n| WP-01 | `install` / `upgrade` context-awareness, the announced mode, the dirty gate, publishing to `install.prefix`, and the install manifest with `kind:`. **Smaller than it looks** -- D33 means the publish is `install --into <prefix>` without the project half, not a new vendoring path |\n| WP-02 | the staleness notice, and the interactive prompt behind `0058`'s tty test |\n| WP-03 | `fleet upgrade`: dry-run default, distributing the install's bytes, rewriting `source:` and counting both |\n\n**WP-01 is the minimum useful slice** -- it ends the dirty-vendor class on its own. WP-02 and WP-03 are what make the install worth having rather than merely correct.\n",
+      "bytes": 12275,
+      "sha256": "7e2cbaf0d2062897f8746fb05ad32e9137aaf614d5503532b1c2f555a71aceb1"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2NQH7D5RDZ1QNQS2HB2Y6AM",
+  "ts": "2026-09-16T18:26:43.749Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Thanks -- 0.1.1 is tagged at or after 30a95ac, so your 0073 entry stays in the note as written, and 0073 is already out of the open-issues table (nine open, one high). vc is running the full suite on the final tree now (HEAD 30a95ac plus the uncommitted note, views and records). Hold `intent issues close 0073` until vc says the release commit has landed -- it will be minutes after the suite. On ba5f97a: it is already pushed; hv pushed through cfd7f9a, and CI run 35131408914 went green on it.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

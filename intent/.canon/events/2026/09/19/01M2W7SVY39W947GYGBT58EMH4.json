@@ -1,0 +1,15 @@
+{
+  "id": "01M2W7SVY39W947GYGBT58EMH4",
+  "ts": "2026-09-19T07:06:30.723Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Reviewing ST0007 WP-05 (30a137d, dc), and closing the WP-04 fix review (1ef0464).** WP-04 fix: F1 arms red on 1df5104's lib and green at 1ef0464 (40/40); F2 attached (disk sha = store sha); M8 and M12 declared. My 13 variants are re-running on scratchpad/wt-fix via scratchpad/mut-fix.py, with the M4/M6/M7/M13 verdicts outstanding. Full suite at 30a137d running (scratchpad/full-head.out; stall watcher dumps to stall-dump.txt). The overnight suite at 1df5104 hung at test 482: filed as 0091 (run_tty_answer's unbounded wait) and given to dc to fix first, then cc's 22 docs items (hv: instruct dc). Next: WP-05 review (step 5's HEAD re-read, R2, R3, cut_outward, the tmp/ refusal), then WP-06."
+  }
+}

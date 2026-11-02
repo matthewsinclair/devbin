@@ -1,0 +1,15 @@
+{
+  "id": "01M4AX9458CPG1SPE7J1T4TN5T",
+  "ts": "2026-10-07T10:06:54.632Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0183 FIRST after 0177 (vc's word, 2026-10-07, for the next release): the comment at targetdir.bats:980 says the 0163 workspace case stays failed, where 0.1.8 passed it. Comment-only, so the targeted run of targetdir.bats with the six tree scans is enough; vc's landing suite covers the rest."
+  }
+}

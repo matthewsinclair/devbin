@@ -1,0 +1,12 @@
+{
+  "id": "01M2PD1W54WZFBMGGT82NYPN58",
+  "ts": "2026-09-17T00:42:49.380Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.release",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {}
+}

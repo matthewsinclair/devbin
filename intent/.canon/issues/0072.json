@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 72,
+  "slug": "a-clean-that-fails-partway-leaves-fullcycle-repo",
+  "title": "a clean that fails partway leaves fullcycle reporting nothing about the links it darkened",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-09-16",
+  "closed": "2026-09-16",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by critic-shell reviewing the fix for issue `0068` on 2026-09-16, by reading the code. Not reproduced in a run.\n\n`lib/cmd/fullcycle` sets `cleaned=1` only when `clean rust` exits 0. `lib/cmd/clean` removes trees one at a time -- `rm -rf \"$d\" || die \"could not remove $d\"` inside a loop -- so a clean that fails can already have removed earlier trees, and `rm -rf` itself can fail partway through one.\n\nWith `cleaned` unset, both reports that exist for this damage are skipped: the loop's `THE BUILD TREES WERE ALREADY REMOVED` branch, and the after-half link check, which is gated on `cleaned`. A PATH link darkened by a partial clean is not reported. The run does go red, with `STOPPING: clean rust failed`, which reads as nothing having been touched.\n\n## Why it is worth an issue\n\nThe link check needs no `cleaned` flag to be right: a link that resolved at the start and does not resolve now is evidence on its own. Gating it on a clean's exit code makes it blind in the one case where the clean's own report cannot be trusted either.\n\n## Shape of a fix, not a ruling\n\nRun the after-half link check whenever `atrisk` is non-empty, whatever the phases did. Say on a failed clean that it may have removed some trees before failing. Hold it with an arm: a clean stub that removes one tree and exits non-zero, with a watched link into the removed tree.\n"
+}

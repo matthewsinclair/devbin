@@ -1,0 +1,15 @@
+{
+  "id": "01M2RK91SBFWA88E79JK24QH8J",
+  "ts": "2026-09-17T21:10:04.843Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**THE LESSONS BACKLOG IS 11 TODOS DEEP AND IT IS THE TAIL OF hv'S \"NOTHING LEFT TO DO\".** Todos 40, 41, 42, 43, 45, 49, 50, 53, 57, 60 and 61 are all *LESSONS candidates, vc's call at a fold* and none has been called. Two candidates were promoted on 2026-09-17 (`9957324`) and both landed as COROLLARIES of entries already in the file rather than as new ones, which is the shape to expect for most of the rest -- so the work is mostly *find the entry this belongs under, or drop it*, not *write eleven new entries*.\n\n**Drop is a real outcome and should be the common one.** A candidate that cannot be attached to an existing entry, and is not general beyond the day it happened, belongs nowhere: LESSONS.md is already 106KB and its value falls as it grows. Judge each against \"would this change what somebody does next time\", and archive the todo either way so the backlog cannot silently become permanent."
+  }
+}

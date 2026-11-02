@@ -1,0 +1,15 @@
+{
+  "id": "01M41AH4SHM8PMJ93JFEP7JCNM",
+  "ts": "2026-10-03T16:46:04.594Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0155"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "shellcheck reaches a change only at the release cut: no test runs the lint gate"
+  }
+}

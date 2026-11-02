@@ -1,0 +1,15 @@
+{
+  "id": "01M4EDBVQ11CPCESWF8TJACADM",
+  "ts": "2026-10-08T18:45:44.801Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0192 SECOND (ISSUE:0192 claimed), built on 0191's head: install once per file and copy, amending D24 on hv's ruling of today. The issue carries dc's measurements and its Done when: one real install per file and one copy per test with no other route to a fixture, what guards the cache, which tests still install per test, the per-file build done before a file's tests so it holds under --jobs, and the profiled files' wall time before and after. dc's profile: ~/Devel/scratch/devbin-dc/slowbats/REPORT.md. Same rules and hand-off as 0191; two heavy runs at once at most."
+  }
+}

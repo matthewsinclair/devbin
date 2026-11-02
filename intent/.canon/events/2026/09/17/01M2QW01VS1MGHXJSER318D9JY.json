@@ -1,0 +1,15 @@
+{
+  "id": "01M2QW01VS1MGHXJSER318D9JY",
+  "ts": "2026-09-17T14:23:12.761Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates from vc's WP-02 re-verification (2026-09-17 afternoon), vc's call at a fold.** (hh) This Bash tool runs zsh: an unmatched glob in `rm -rf dir/*` aborted an && chain, the probe then sourced nothing and still exited 0, and only the normalised before/after diff showed it -- a probe must exit non-zero when its subject fails to load, and zsh-isms go through bash -c. (ii) An equivalent mutant is a finding about the code, not the tests: W07 showed a newline strip no caller can reach, because every caller passes a $(...) capture. (jj) One command held two rules for one input (0084): version's bare recipe follows a symlink while its sed recipes replace it, and version check agreed with both. (kk) dc's two: a second copy of a guarded library sourced into a shell that already has the first keeps the first, so a before/after probe compared new code with itself until it ran in a clean process; and a kill must be read at the arm meant for it (V10 dies only at the second-render arm)."
+  }
+}

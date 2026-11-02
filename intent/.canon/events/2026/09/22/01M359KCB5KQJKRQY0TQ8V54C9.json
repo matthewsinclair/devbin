@@ -1,0 +1,15 @@
+{
+  "id": "01M359KCB5KQJKRQY0TQ8V54C9",
+  "ts": "2026-09-22T19:31:05.189Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A BACKGROUND COMMAND PIPED THROUGH tail SHOWS NOTHING UNTIL IT ENDS, AND A WATCHER KEYED ON A GUESSED NEXT LINE MISSES THE EVENT (2026-09-22, the 0.1.7 cut). I promised intent-dc a line the moment step 5 passed; the cut ran as 'release ... | tail -40', so its own output was empty until the end, and my watcher on the sealed log waited for a post-doctor line whose wording I had guessed. The line reached intent-dc minutes late, after the whole cut. Watch the sealed log (tmp/release/<stamp>.RELEASE.out) for the step table's own row ('5  gates       done'), and never tail a command whose progress someone is waiting on. Today's other errors of mine, one line each: the guard roster census truncated by a comment block (4 guards reported, 5 exist); a '0 dirty' restore check that restored to HEAD rather than the state found; a broken name-join that returned 0 redundant log: lines (21 of 46); a tail-pipe rc read as devbin's; the WP-08 exposure reported 12, then 1, before the true 0; and the tag-path 'first sighting' told to gtools-vc when devbin v0.1.6 run 35714259048 had already shown it."
+  }
+}

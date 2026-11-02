@@ -1,0 +1,16 @@
+{
+  "id": "01M6BQQ5961H7RGC0G9WFTKNQV",
+  "ts": "2026-11-01T14:20:21.158Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 42,
+    "text": "ST0011/02 (WP02b-2, the publish shape folded into the cut, release publish and --expect retired, AC-2.3 in every shape; issue 0304 in it, issue 0297 riding it): BANKED at refs/bank/cc/ST0011-02b2 86c1a035f11cea68d4732fb07fa8b5d4bb2f177a on main 30dbc0f1 (2026-11-01 14:14:29Z by date -u, fetch and CAS on an absent ref): the squash of the dev clone's wp02b2, six WIP commits on f3462610 with the critic's settle fa3a9abe last; the WIP bank refs/bank/cc/ST0011-02b2-wip cdd2b429 stays, cited. The critic (critic-shell over f3462610..33cec86a: 0 critical, 4 warning, 2 info), settled as vc ruled (13:58Z): W1, W2 with W3, I5 and the attach guard fixed in the unit; W4 (issue 0311) and I6 a line each in the message. The resolve onto main had no conflict: lib/runlog, lib/config, lib/config.reference.yaml and docs/configuration.md carry the chain's own hunks, and the other 16 files are the chain tip's. Light checks clean (shellcheck, prebank-scan, ASCII, duplicates, bats --count, the lint gate at 57 files, 0 breaches); the settle's arms probed outside bats, all PASS. RUNNING in slot 01M6BQGK5AHADGZZT0D92GPDDC (granted 14:18:30Z, START 14:18:55Z, by date -u): kit2's run-both.sh at kit2/run, build 86c1a035, red d4bd1c78. Open: END at the driver's exit; the run's record; handover-02b2.sh and finish-handover-02b2.sh for land-stack; at the landing, AT-2.8 green over releasepublish.bats's two '# AT-2.8' arms. dc's hook-in rebases onto this bank. Then WP07 (todo 58), stacked on WP02b-2."
+  }
+}

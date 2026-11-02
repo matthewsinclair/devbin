@@ -1,0 +1,15 @@
+{
+  "id": "01M2TKZBEZT24YZET0X17N2NSA",
+  "ts": "2026-09-18T16:00:44.511Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-03 (release status) is built and every review is fixed; waiting only on dc's AC-3.2 OK on 4328583.** Commits: 6cd2b69, then 759744c, 750a91f, 44c989c, ea7bc47 (AC-3.2 amended to read-tree + checkout-index; hv, vc decision 18) and 4328583 (--attr-source). dc OK'd AC-3.1 at 12:03Z. Closing steps: todo 73."
+  }
+}

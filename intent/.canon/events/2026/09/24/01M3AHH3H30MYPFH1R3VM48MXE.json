@@ -1,0 +1,15 @@
+{
+  "id": "01M3AHH3H30MYPFH1R3VM48MXE",
+  "ts": "2026-09-24T20:25:51.395Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0145, HIGH, into 0.1.8, mine to build. Its filing is COMMITTED, by vc at db7fdb9 with 0146. macOS find passes over a directory it can list but not search, at 0444 or 0644, below the start point, with no error and rc 0; only walks that descend, and only under BSD find, are exposed, clean's excepted. THE DESIGN IS APPROVED BY vc: TSP/design0145.md, whose rulings section closes the file, and the prototype TSP/p145-find_walk.proto.bash. The rulings: find_walk and find_list stay two layered helpers; the sentence 'cannot search <dir> -- nothing beneath it was looked at'; refuse under GNU too; measure fleet's census walk before and after and give the numbers in the message; say what happens with no /bin/sh; one issue; plus two arms, two start paths at different depths and an empty find-walk mark flagged. 0131 LANDED at 81a8274. BUILD on main once 0139 lands too. 0139's close names 0145."
+  }
+}

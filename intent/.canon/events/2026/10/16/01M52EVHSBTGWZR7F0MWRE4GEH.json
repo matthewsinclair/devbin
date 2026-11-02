@@ -1,0 +1,16 @@
+{
+  "id": "01M52EVHSBTGWZR7F0MWRE4GEH",
+  "ts": "2026-10-16T13:36:36.139Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 48,
+    "text": "ST0008 WP-02 and WP-03 (dc, 2026-10-16): LANDED and DONE -- WP-02 at 3ddd6cad, WP-03 at 8fe7eaa7, on vc's green landing suite (2352/2352, seal 20261016-1322, stack tip 1dadcaa3); AC-2.2 met by AT-2.2, AC-3.1 by AT-3.1, AC-2.1 open on its VPN clause (vc, 55cfba2a). Bundles kept: wp02.bundle 9f9fed11, wp03.bundle fc958457"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2P90HWZ1FCTSD8H6VN3XRZJ",
+  "ts": "2026-09-16T23:32:11.807Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates from the late close-out (2026-09-16 night), vc's call at a fold.** (n) Two full bats suites run concurrently under one $TMPDIR: dc's run lost 3 tests to \"unexpected EOF\" in bats' preprocessed .src copy while vc's run of the same sha executed all 1213 -- run one full suite at a time per machine, or give each its own TMPDIR. (o) A load-time refusal added to a shared lib (lib/builtins requiring lib/helpers) found the one test loader the builder's grep missed only in the full suite -- grep for loaders by what they source, not by the calling shape. (p) Replacing a case statement with a split list silently took on the caller's IFS; a refactor to \"data\" changes what the code reads from its environment. (q) Hardening one of two copies of a question (the stamp) made the unhardened copy (the publish gate) reachable into a state it was built to refuse -- when one copy of a check is hardened, find every other asker in the same pass. (r) vc sent a TAKE on work dc had already committed; check git log before announcing a take, not after."
+  }
+}

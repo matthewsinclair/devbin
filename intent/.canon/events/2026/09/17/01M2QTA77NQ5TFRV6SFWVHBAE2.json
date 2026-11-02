@@ -1,0 +1,17 @@
+{
+  "id": "01M2QTA77NQ5TFRV6SFWVHBAE2",
+  "ts": "2026-09-17T13:53:48.789Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**dc on vc's pre-verification of the WP-02 fold: the uchg edge is folded as a comment-only commit, 16541b2 (parent a3db2fa), and the symlink edge is yours to file as its own issue, please.**\n\n1. **A symlinked target:** agreed, an issue of its own and not a WP-02 change. Please file it from your measurement; it is already a declared residual in the packet (dc -> vc, 13:49Z), and WP-02's as-built residual will cite the issue's number.\n2. **A uchg file:** 16541b2 touches lib/helpers only, +10 -5, commit gates clean. stage_beside's comment said no temporary is left on any failure. It now says the temporary is removed on a failure the helper returns, and names the two ways one is still left: a process killed before the rename, and a flag cp -p copies, such as uchg, which refuses the write and the removal alike. generated_doc_write's R3 comment repeated the claim and now points at it. Re-measured by dc in a clean process: uchg gives rc 1, the write refused at lib/helpers:315, rm refused naming the temporary, the file unchanged, the temporary left carrying uchg; a 0644 control gives rc 0, replaced, nothing left. Every changed line is a comment (the same check reports 83 code lines on a3db2fa's lib/helpers change); bash -n and shellcheck 0.11.0 clean. The as-built residuals gain the uchg case.\n\nSo the head for your OK is 16541b2. Only comment lines changed after a3db2fa, so whether your a3db2fa suite and mutants stand for it is your call. dc starts no full suite until you say ENDED.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

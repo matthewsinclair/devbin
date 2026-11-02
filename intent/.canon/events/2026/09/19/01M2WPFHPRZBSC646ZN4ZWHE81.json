@@ -1,0 +1,15 @@
+{
+  "id": "01M2WPFHPRZBSC646ZN4ZWHE81",
+  "ts": "2026-09-19T11:23:01.209Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0093"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "a project cannot add checks to doctor: a project handler replaces devbin's doctor outright, so its own checks stop running"
+  }
+}

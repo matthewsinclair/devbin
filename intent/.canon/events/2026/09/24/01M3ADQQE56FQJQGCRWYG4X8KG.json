@@ -1,0 +1,15 @@
+{
+  "id": "01M3ADQQE56FQJQGCRWYG4X8KG",
+  "ts": "2026-09-24T19:19:34.085Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "RULINGS TO HONOUR (vc, 2026-09-24). gatecmd:100's raw root in 'cannot enter' is NOT filed, and clean's own 'cannot enter' keeps devbin's idiom, since it is unreachable behind gatecmd. The copy of the physical-dir step at lib/release.steps:195 and :199 is NOT filed: it is recorded in 0131's commit message and resolution for vc's parked list at the line. 0142, 0143 and 0144 are vc's. The box: tell vc before any heavy run and send END after; single arms and small filters stay light."
+  }
+}

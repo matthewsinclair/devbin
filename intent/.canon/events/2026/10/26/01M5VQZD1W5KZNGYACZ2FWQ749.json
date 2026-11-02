@@ -1,0 +1,15 @@
+{
+  "id": "01M5VQZD1W5KZNGYACZ2FWQ749",
+  "ts": "2026-10-26T09:17:00.348Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0233, claimed on vc's GO (hv ruled fix A at 09:13Z, relayed by molt-vc): every fixture commit in tests/unit/readonlygit.bats passes -c maintenance.auto=false -c gc.auto=0 on the commit itself, through one helper, so it starts no background maintenance; never in the fixture repo's config or the suite's environment. Built in a scratch clone of main at a1ca020c. Evidence: readonlygit.bats under GIT_TRACE on main and at the fix (Done when 1), readonlygit.bats alone green under BSD and GNU (Done when 2), the critic leg read as asked nothing; START and END to vc for the runs. Handover as for 0232: bundle with ref issue-0233, commit message, count-free resolution draft, each with its sha256"
+  }
+}

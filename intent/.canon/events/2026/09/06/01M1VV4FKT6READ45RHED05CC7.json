@@ -1,0 +1,14 @@
+{
+  "id": "01M1VV4FKT6READ45RHED05CC7",
+  "ts": "2026-09-06T17:09:25.242Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "st.new",
+  "subject": {
+    "type": "thread",
+    "id": "ST0005"
+  },
+  "payload": {
+    "title": "Fix devbin install/upgrade and make use of Devel/opt/devbin"
+  }
+}

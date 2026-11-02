@@ -1,0 +1,17 @@
+{
+  "id": "01M4800H6JAZ69G5HV32TFAM7P",
+  "ts": "2026-10-06T06:56:55.506Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "New main 9b369360: dc's 0163 v3.1 (6438b958) and 0167 (09f73fed) are landed and closed, on vc's full suite of the whole six-patch stack: 2190 of 2190 ok, .errors empty, seal 20261006-0607. 9 issues open. cc's four are suited green on that same tree and wait only for {TIMING155}. I call the quiet window when land-ch (the stack plus dc's chain) ends. hv has asked for a localfold and compact, so after the window I hold until hv speaks.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

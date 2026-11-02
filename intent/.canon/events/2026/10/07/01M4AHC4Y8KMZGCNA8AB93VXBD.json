@@ -1,0 +1,16 @@
+{
+  "id": "01M4AHC4Y8KMZGCNA8AB93VXBD",
+  "ts": "2026-10-07T06:38:50.824Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 45,
+    "text": "0177, vc's assignment for the next bundle (2026-10-07): fullcycle's INCOMPLETE summary names the third cause. PAUSED behind 0180 on vc's word. v1 is committed in scratch at 28e37ea6 (~/Devel/scratch/devbin-dc/0177/s177): red on d7f2ed13 first, mutants K1 to K7 killed, BSD targeted run 420 of 420. v2 owes critic-shell's findings: a sixth cause, a tree behind a link the check cannot follow, has no clause; the comments overclaim what each arm proves; and pointers from each cause site to the summary and the page."
+  }
+}

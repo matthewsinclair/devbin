@@ -1,0 +1,16 @@
+{
+  "id": "01M69AYWQ07H3HZW65M78F8TVJ",
+  "ts": "2026-10-31T15:58:54.176Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 54,
+    "text": "ST0011/02 (WP02b), THE LOOP, vc's choice (b), after WP02a lands: every leg (the local gates, the candidate matrix, each declared remote leg, the macOS stage) started once in parallel at the release commit R under one wait loop, one line per state change with the clock (AC-2.2), the legs behind leg_start and leg_read (cc's local and candidate; dc's remote and macos hook in after, one arm each); the tag and push only after every leg is green, to every remote in release.remotes, one push per distinct URL; release publish folded into the cut under the one yes, the publish shape's fast-forward and lightweight tag at S after green; the candidate in every shape, R to candidate/<tag> on the remote release.repo maps to, or S to publish.url's, read by its ref and deleted on the tag or any stop (AC-2.3); a remote leg's pair under tmp/release/legs/<name>/; the absent leg word; WSL blocks nothing; the retirements (AC-2.4: release publish, --expect, the ci step, ci.tag, ci.base) with their cascades (the readers column, the formula's text, ci-state.bats:540); and todo 55's former items: the RELEASE seal's verdict after the after: commands (a Utilz 2.14.8 cut left it in flight), and a failing attach ends the cut red, naming the step, publishing no formula and running no after: command. FIRST a design note to vc, saying how release.repo maps to the candidate's remote and what the cut does when that push is refused. Map and notes: ~/Devel/scratch/devbin-cc/st11-wp02b/MAP.md and NOTES.md."
+  }
+}

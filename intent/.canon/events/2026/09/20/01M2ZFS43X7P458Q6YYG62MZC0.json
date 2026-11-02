@@ -1,0 +1,15 @@
+{
+  "id": "01M2ZFS43X7P458Q6YYG62MZC0",
+  "ts": "2026-09-20T13:23:38.237Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "UTILZ IS SWEPT, confirmed 2026-09-20 13:23Z by reading the run myself rather than relaying: gh run view 35512936209 reads headSha 633a1a12d, completed, success, all 7 jobs success (Test on macOS, Test on Ubuntu, Rust macos, Rust ubuntu, Rust Lint clippy, Shell Script Analysis, Test Summary). utilz-vc verified the commit independently: vendored seam only at 22 files by pathspec check, its globbing run word still matching 16 directories, and 0080's refusal DRIVEN rather than inferred from a clean doctor. One devbin behaviour learned there:  REFUSES at Utilz because it declares no build command and will not delete a target/ it cannot rebuild -- fail-closed, and the refusal names  +  as the substitute, which is the phase 0083 changed anyway. REMAINING: Laksa alone, held for its deploy; its vc opens the window."
+  }
+}

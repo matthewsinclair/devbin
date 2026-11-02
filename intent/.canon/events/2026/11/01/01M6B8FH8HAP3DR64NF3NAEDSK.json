@@ -1,0 +1,16 @@
+{
+  "id": "01M6B8FH8HAP3DR64NF3NAEDSK",
+  "ts": "2026-11-01T09:54:02.641Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 184,
+    "text": "FOR hv on return (recs in brackets; through vc's TUI): gyges's stale ~/.cargo/bin/rg removal needs hv's word in gyges-sysadm's window (vc's relay was refused by vc's own classifier; vc asked gyges-sysadm at 2026-11-01 09:52Z whether it is already gone, for molt-vc); gyges's Time Machine local snapshot 2026-11-01-010237 holds the 22G freed [let it age out]; the router's DHCP reservation 192.168.86.168 with no device seen (hv's router); the repo model (hold 34: vc brings one concrete switch plan); rustup on the Macs (in molt-vc's TUI); kovacs: hv logs out of GNOME and back in, so the systemd user manager takes molt.conf's new PATH (0079's kovacs rollout green at 09:36Z by kovacs's clock, molt doctor 16 of 17 with env red until then; kovacs-sysadm then checks the manager's PATH and doctor's env, which closes 0079's kovacs proof; do it while nothing runs on kovacs, and restart kovacs-sysadm after if its terminal lives in that session). Conflab, on conflab-vc's board: its todo 19 (four closed packages with no vc check on the record) and four questions on its focus line (whether ic runs today, ic's todo 24 and its 31 view properties, the push, devbin-vc's pen). Gtools, on gtools-vc's board: Gtools's main unpushed until hv's word (decision 98). Laksa, on laksa-vc's board: 0052's secrets by hv's hand (decision 121), then laksa-vc's gh secret list check; laksa-dc's uncited 1.9G window clone in its session scratchpad (dc's classifier refused the delete; hv's word in laksa-dc's window); dc's holds 36 and 37 and the hold-20 parked list, 0009 first; hold 19 for the rest of Laksa. Intent, on intent-vc's board: the preflight re-run at 64cf9e251 (desk ask 01M6B7CCN2SGDKXQ13ZWWRHTVC; the 09:23Z run went red on testkit's own sweep race, verified on the source) needs hv's ! line in kovacs-sysadm's window when its turn comes, after WP16's run and Trellis's and Laksa's, then vc pushes on intent-vc's word; intentd's at-login enrolment on rhadamanth, ruled under decision 98 (rhadamanth-sysadm on hv's word in its window, at a quiet moment vc names: stop then enrol, per 0666), carrying CLAUDE_CONFIG_DIR so the estate page sees the sessions; ST0090's AC-02.4 look (todo 187), by intent-dc's dev-app route now or at the 3.2.9 cut. Left for its own next session: intent-ic's uncommitted pickup files (no ic session running). Ruled in vc's window today: decisions 120 to 123."
+  }
+}

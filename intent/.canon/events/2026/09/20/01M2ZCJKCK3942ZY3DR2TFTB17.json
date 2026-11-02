@@ -1,0 +1,15 @@
+{
+  "id": "01M2ZCJKCK3942ZY3DR2TFTB17",
+  "ts": "2026-09-20T12:27:38.771Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-09-20 12:27Z (read from date -u before this item was written): todo 82's condition -- a sweep is not done until every consumer's CI is green on its pushed commit -- is RELAXED for the 0.1.2 sweep ('We can relax that for now'). The 14 estates are counted as swept on their committed and mirrored state, with no GitHub push and no CI read. The rule is not withdrawn: it was written after Laksa's red run went unread for a day (todo 82), and it applies again at the next sweep unless hv says otherwise. What is untested as a result: no estate's suite has run against the 0.1.2 seam on this machine or in CI, so the first reader of a regression will be whoever next runs that estate's gates."
+  }
+}

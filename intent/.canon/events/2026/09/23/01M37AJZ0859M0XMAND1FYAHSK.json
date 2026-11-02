@@ -1,0 +1,15 @@
+{
+  "id": "01M37AJZ0859M0XMAND1FYAHSK",
+  "ts": "2026-09-23T14:26:48.968Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.8, vc's share, 14:27Z. LANDED (each on cc's review, gate passing, verified against its build): the series 0a97f20..2b9d1a5 (closed 341ded1), 0116 v2 1a3bbc8 and 0138 a69b21b (closed 00b19ed); cc's 0120 at 2218a3f verified. BUILT, NOT YET HANDED: 0132 in scratchpad/build0132b at 0ea5787 on ea5fdd1 + 0115 v2 (scratch-committed) -- reset outside db all by a catalogue default beside the table, the unknown-option refusal names the options and help <cmd>, MIX_ENV=prod refused by a catalogue row the dispatcher asks before any path (a project handler the one way past); 4 arms red first, 10 mutants each parsing and killed by its arm, full suite full0132 running (1..1670, 558 ok at 14:26Z). 0136 in scratchpad/build0136 at aacabf7 stacked on 0132 -- switched-off options named as such, a filled name-only command shadows nothing, a non-executable handler named with the chmod at both refusals, a declared --iex keeps devbin's summary; 6 arms (5 red first, 1 guard arm green by construction), 10 mutants running; shellcheck and critic clean over all 13 files of both. NEXT: when full0132 ends, start the combined full suite on build0136 and hand cc both patches (0132, then 0136, each a format-patch); land on approval. HELD FOR cc: 0123+0127+0129 on the case-twin must-fix (0140, cc's). THEN: the hv report (todo 127), and reviews as cc hands them (todo 129)."
+  }
+}

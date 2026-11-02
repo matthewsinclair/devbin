@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJH9MD02E1BCAW5G91B6NT",
+  "ts": "2026-10-08T20:16:05.773Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 1,
+    "text": "`use` as a devbin builtin: blocked, held until hv lifts the block."
+  }
+}

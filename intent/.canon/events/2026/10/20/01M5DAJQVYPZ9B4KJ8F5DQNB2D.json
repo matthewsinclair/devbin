@@ -1,0 +1,15 @@
+{
+  "id": "01M5DAJQVYPZ9B4KJ8F5DQNB2D",
+  "ts": "2026-10-20T18:53:31.903Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0203"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "README's Homebrew section says the tap does not exist, and its short-name install is refused by Homebrew 7.0.10"
+  }
+}

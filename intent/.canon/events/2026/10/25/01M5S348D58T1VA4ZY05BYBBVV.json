@@ -1,0 +1,15 @@
+{
+  "id": "01M5S348D58T1VA4ZY05BYBBVV",
+  "ts": "2026-10-25T08:34:10.469Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0225 handed to vc 2026-10-25 08:34Z: ~/Devel/scratch/devbin-cc/0225/handover/0225.bundle (feb2b42a on 4488f3bc, tree 15c6eda7, sha256 18d9f14c...4129), message and resolution drafted; vc picks it onto 376a56c5 (0226's tip), clean there. Released when vc has landed it, its changed lines match the bundle's, and the clones (build, base, verify, pick) are archived and cleared"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5Y9KMWYWSTDPP3AG26WG8E3",
+  "ts": "2026-10-27T09:03:38.398Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-27, answered in vc's session before 09:01Z (read by date -u): \"Yep, that's all good. Carry on.\", to vc's four asks, each as vc recommended. (1) vc files devbin's next-release issues now (vc's plan item D): the landed-worktree tool (decision 72, todo 173), 0235's review follow-ups (todo 174), the T4 amendment round and then its issue (todo 169), and utilz-vc's macos ask (todo 177). (2) cc drafts todo 174's issue bodies, read-only and touching no code, for vc to measure on main and file. (3) dc walks 0.1.15 from brew as a user meets it, read-only and light, with any finding filed for the next release. (4) ST0010's audit plan draft v0.1 (vc's scratch st0010/audit-plan-v0.1.md, sha256 4ae1ee6d) is APPROVED in its order with its draft ACs, and Q1 to Q7 are ruled as vc recommended there: Q1 the snapshot ships VERSION, .gitignore, .gitattributes and design/, and leaves out usage-rules.md, .intent_critic.yml and .prettierignore; Q2 the first public version is 0.1.16; Q3 CI runs on the snapshot commit pushed to a candidate branch of the public repository, with main and the tag following once it is green (a release-tool change); Q4 the tap goes public as it stands once both readers have read its history; Q5 Intent, Molt and Utilz stay named, and hv's non-public project names become neutral in main with a guard; Q6 the release notes ship after Q5; Q7 each release publishes one snapshot by the same builder, with the scans in full each time, full reads the first time and reads of what changed after. Told molt-vc. Not put to hv again."
+  }
+}

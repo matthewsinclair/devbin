@@ -1,0 +1,16 @@
+{
+  "id": "01M2N957Z4G5AY80A3063ZFZTT",
+  "ts": "2026-09-16T14:15:31.045Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.cancel",
+  "subject": {
+    "type": "wp",
+    "id": "ST0003/06"
+  },
+  "payload": {
+    "from": "wip",
+    "reason": "The invariant library moved to ST0006/WP-03 on 2026-09-08 with AC-6.1 and AC-6.2, and is unbuilt. AC-6.3, the parse-time refusal of an undefined sender, landed here and stays satisfied. Cancelled on 2026-09-16 because the descope moved the criteria and left this record open.",
+    "to": "cancelled"
+  }
+}

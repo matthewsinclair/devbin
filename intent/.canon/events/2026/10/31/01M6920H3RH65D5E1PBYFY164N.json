@@ -1,0 +1,15 @@
+{
+  "id": "01M6920H3RH65D5E1PBYFY164N",
+  "ts": "2026-10-31T13:22:30.648Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 13:22Z (on conflab-dc's read of main 3ac0616a, confirmed by conflab-vc): the release gates verb reads the verdict first through the one function the cut and status use (release_gates_state): already prints the cut's row and runs nothing on a sealed green for HEAD on this platform; pending runs the list; UNREADABLE runs it over, printing why; one flag forces a run; a remote leg's host reads its own fresh worktree's record and so runs (D62). Lands in cc's WP02a, in 0.1.19; D57's as-built note changes from 'the verb that writes it' to reads, then writes. Rejected (B), a separate verdict-only reader: two entry points for one question."
+  }
+}

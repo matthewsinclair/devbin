@@ -1,0 +1,14 @@
+{
+  "id": "01M21E4AATBSVH95AAWR7J8S5V",
+  "ts": "2026-09-08T21:17:34.938Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0003/AC-3.5"
+  },
+  "payload": {
+    "text": "devbin ships NO assertion that can go stale. init proposes only from the RFC-derived rules and the structural pair invariant -- neither of which rots on a vendor's schedule -- and every vendor-derived field goes to unreviewed:, populated from the live estate. Reworded from 'check must report the standard's age on every run' by hv's ruling of 2026-09-08: that wording presumed a shipped vendor table, and the recovered one proposed NOTHING at N=1 (two rows estate-inferred and self-barred, one an absence, one a prohibition), so there is no age to report. The requirement is met by construction rather than by machinery -- nothing shipped can go stale, so no staleness can hide."
+  }
+}

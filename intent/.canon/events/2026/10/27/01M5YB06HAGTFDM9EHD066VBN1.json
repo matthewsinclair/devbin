@@ -1,0 +1,15 @@
+{
+  "id": "01M5YB06HAGTFDM9EHD066VBN1",
+  "ts": "2026-10-27T09:27:58.252Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0253"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "Without Homebrew's bin on PATH (cron, a GUI-started hook) every brewed devbin invocation is refused for bash 3.2, with brew install bash as the remedy though the formula's bash is installed"
+  }
+}

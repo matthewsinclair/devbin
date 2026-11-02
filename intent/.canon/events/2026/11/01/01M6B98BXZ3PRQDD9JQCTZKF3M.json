@@ -1,0 +1,16 @@
+{
+  "id": "01M6B98BXZ3PRQDD9JQCTZKF3M",
+  "ts": "2026-11-01T10:07:36.383Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 124,
+    "text": "WP16's run and its reds (restated 2026-11-01 10:07Z by date -u). The first ruling, at 09:52Z before the run's END, covered three reds; that conditional shape is void by its own terms.\n\nWP16's own reds, fixed in its re-bank:\n- helpers.bats 45: cache.bats spells the raw sha256 tools.\n- helpers.bats 47: lib/cmd/cache's mv -f is not on the known list.\n- surfaces.bats 26: cache has no row in 0128's option-less built-in table.\n- contract.bats 36, also BSD 416, the lint gate: cfg_build_input_paths's new local -a paths and local -A seen in lib/config reach shellcheck -x through lib/cmd/ci-state and lib/cmd/fullcycle, which source lib/config.\n- neutral.bats 8: the comment at lib/config.reference.yaml:673 cites the tracker.\n\nMain's own red, not WP16's: BSD 542, dispatch.bats's raw-argv arm (0087), at lib/cmd/release:550. There release_gates_run's run_gate forwards its raw positional list after the bare --. It comes from WP02a's bd13167f, is identical at the base aa566d51, and is still in cc's WP02b-1 bank. It is fixed in WP02b-1, which reworks that function. The design is cc's: either the call forwards as the arm accepts, or the arm learns that this argv is not user argv while staying red on a real raw forward. dispatch.bats joins WP02b-1's unit run whole, under BSD and GNU.\n\nThe re-run's shape is ruled at END on every TAP. vc reads the re-bank's diff from acc813e0 first."
+  }
+}

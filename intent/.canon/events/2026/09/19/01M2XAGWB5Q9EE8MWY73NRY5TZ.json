@@ -1,0 +1,14 @@
+{
+  "id": "01M2XAGWB5Q9EE8MWY73NRY5TZ",
+  "ts": "2026-09-19T17:13:16.390Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0007/AC-7.1"
+  },
+  "payload": {
+    "evidence": "v0.1.2 cut with bin/devbin release v0.1.2 --yes, 2026-09-19: every step done or skipped; tag v0.1.2 at df56014 on local and upstream; GitHub release 'devbin 0.1.2' published 16:42:43Z by release.yml (object: ci). docs/releasing.md rewritten at 939a4e1 (the human steps and bin/devbin release; no devbin-only procedure), passed by dc's review."
+  }
+}

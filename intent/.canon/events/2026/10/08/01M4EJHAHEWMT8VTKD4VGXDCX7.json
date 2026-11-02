@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHAHEWMT8VTKD4VGXDCX7",
+  "ts": "2026-10-08T20:16:06.702Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 4,
+    "text": "`--profile <name>`: held until hv asks for it directly. `--profile <path>` is the specified interface (lib/cmd/infra, help infra, infra-profile.bats), and a name form needs a lookup rule nobody has written; a peer relaying hv's ask is not hv asking."
+  }
+}

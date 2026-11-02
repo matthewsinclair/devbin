@@ -1,0 +1,15 @@
+{
+  "id": "01M2T5XRHKMD9RMV8N17WV9SE6",
+  "ts": "2026-09-18T11:55:12.307Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates, 2026-09-18 midday, vc's call at a fold (drop is the expected outcome -- todo 63).** (a) **A census that narrows its population without saying so produced a false claim that reached hv's ruling**: vc censused the fleet's `run:` scripts for 0088 row 2, wrote 'no gate reads input' into a commit, a comment, the docs and the question to hv -- and never looked at devbin's own @builtin gates, where `clean` asks. The full suite caught it (clean.bats 106/114). Name the population in the claim ('no fleet `run:` gate'), not the class. (b) **Targeted runs picked by 'what I touched' miss cross-cutting arms**: WP-03 passed its own files and failed documentation.bats (a version literal) and updatenotice.bats (0079's one-ancestry-reader rule) -- class arms live in files named for another feature. (c) **A default that reads `git remote` order is alphabetical, not intent**; and `git remote get-url` expands insteadOf, so it answers where bytes go, not what the project names."
+  }
+}

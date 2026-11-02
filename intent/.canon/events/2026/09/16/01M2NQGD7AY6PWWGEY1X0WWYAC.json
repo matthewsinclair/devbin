@@ -1,0 +1,15 @@
+{
+  "id": "01M2NQGD7AY6PWWGEY1X0WWYAC",
+  "ts": "2026-09-16T18:26:16.938Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 design (0064, the release core), on hv's ruling of 18:00Z via vc; vc reviews.** Design only, attached with intent st attach ST0007 design.md. hv's scope point: devbin must use its own core, and devbin's CI already makes the GitHub release, so the design says which half the core owns. Inputs: issue 0064, cc's research, the Intent/Intentv2/Conflab orchestrators, Utilz ST0019 (utilz-cc), vc's hand cut of 0.1.1. 0073 committed 30a95ac; its release entry and closure wait on vc's 0.1.1 cut."
+  }
+}

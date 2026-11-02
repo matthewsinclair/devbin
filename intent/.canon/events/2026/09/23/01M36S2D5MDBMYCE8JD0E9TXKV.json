@@ -1,0 +1,15 @@
+{
+  "id": "01M36S2D5MDBMYCE8JD0E9TXKV",
+  "ts": "2026-09-23T09:20:40.628Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-09-23 09:20Z (read from date -u), hv on vc's 0120-0125 scheduling question: \"EVERYTHING is going into the next release. I don't want to be constantly making new releases for minor things. Just ship the lot in the next release. The end.\" So 0.1.8 carries ALL 12 open issues: 0113 (with 0118, which closes with it), 0115, 0116, 0117, 0119, 0120, 0121, 0122, 0123, 0124 and 0125. This replaces decision 40(4), which put 0115's pages in 0.1.9, and vc's advice that 0121 wait for ST0006. hv ruled the scope; vc allocated the builders, extending hv's earlier split (vc builds, cc reviews): cc lands 0113 and builds 0115's pages, 0120 and 0123; vc builds 0116, 0117, 0119, 0121, 0122, 0124 and 0125; each reviews the other's. A fix that changes behaviour a shipped page describes edits that page in the same change: doctor.md:58 (0120), shell-init.md:19, :23 and :28 (0119, 0125, 0124), upgrade.md:79 and install.md:37 (0123)."
+  }
+}

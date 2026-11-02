@@ -1,0 +1,17 @@
+{
+  "id": "01M5PBARVWNV07GGZAT42RGRM3",
+  "ts": "2026-10-24T06:59:49.244Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Two small issues for the release before devbin's public push (ST0010), while hold 26 waits on kovacs: BUILD 0211 (tests/unit/fullcycle.bats:3654 never runs its [ -e ] existence check, two statements on one line: a false green; and :708's doubled comment; look for the same shape across tests/) and 0212 (CHANGELOG.md empty for 0.1.7 to 0.1.13: _notes_releases_section in lib/release.notes matches a note heading only when it equals '## <section>', and every note since 0.1.7 suffixes its headings; fix in the core as a default, either the generator reads a heading that begins with a section name, or release check refuses a note the changelog would render empty, your proposal first; then regenerate). Read each issue's Done when. Red on main first, green under BSD and GNU, targeted runs include the tree scans; book any bats through me (molt-vc is the slot desk while hv is AFK). Hand over one bundle with seals and drafts on main as it stands; I land them with 0210 and the dev/opt/brew doc under one full suite. Work in your scratch, never in the real tree. No push, no release.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

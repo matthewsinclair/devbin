@@ -1,0 +1,15 @@
+{
+  "id": "01M349H2JH6N7TNVHBS2Y67KHR",
+  "ts": "2026-09-22T10:10:35.217Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A LINE-ORIENTED FILTER CANNOT SEE A PROMPT, AND A PROMPT IS THE EVENT MOST WORTH WAKING SOMEONE FOR. 2026-09-22, my own monitor over the 0.1.6 cut. Its filter carried a [y/N] arm and that arm NEVER FIRED: release: go ahead? [y/N] is printed WITHOUT a trailing newline, so grep --line-buffered had no complete line to flush and held it indefinitely. What actually reached me was the ordinary release: line printed immediately above the prompt -- luck, not design. A cut that printed the prompt with no preamble would have sat blocked in silence, and silence is indistinguishable from still running, which is the couldnt-look-equals-found-nothing collapse arriving through my own instrument for the second time today. Watch the ARTEFACT for a block (the tag ref appearing, a log mtime going stale against date, a process state), never a line filter over a log."
+  }
+}

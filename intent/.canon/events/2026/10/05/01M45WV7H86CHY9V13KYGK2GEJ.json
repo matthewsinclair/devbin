@@ -1,0 +1,16 @@
+{
+  "id": "01M45WV7H86CHY9V13KYGK2GEJ",
+  "ts": "2026-10-05T11:23:07.176Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 13,
+    "text": "BUNDLE BUILD, 0.1.9 (hv 2026-10-05: every open issue closes before the cut; fix and fail forward, ONE release). cc builds 0153 to 0162 and 0175; 0163 to 0174 are dc's. 0154 v5.2 (patch sha256 9783feeb..., base dd49aa7) is approved and in vc's combined full suite with 0174 v1 (since 11:09:17Z, vc's figure); on green vc fills {SUITE} in cc's message, lands both and closes both. 0153 v2 (SP/b153 branch v2, rebased onto 0154 v5.2): v1's critic and vc findings are built in scratch with their arms red-first; critic-shell on v2 was running at the fold; next is its targeted run, which is the full suite since it changes test_helper.bash, on START, then its mutants. 0175 after 0154 lands; then 0159 v2.3 (rebase, G1, its heavy batch), 0157, 0158, 0156, 0155, 0160, 0161 and 0162. Heavy runs only on vc's START. Both remotes read 0598304a (vc's ls-remote, 11:20:57Z). Workplan: ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md (SP)."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M34PQ5J6938ZEYNATHCP4KN9",
+  "ts": "2026-09-22T14:01:06.374Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A COMMENT'S PREMISE IS AN ASSERTION ABOUT THE FILE IT SITS IN, AND A SWEEP COPIES IT TO ESTATES WHERE IT IS FALSE (2026-09-22, my text, caught at Laksa by laksa/dc). The 0108 concurrency comment I wrote says 'a push and a workflow_dispatch on main share a ref'. TRUE where I wrote it -- devbin, Molt, Cdtempl and Gtools all have workflow_dispatch -- and FALSE in Riffle, Conflab, Prolix, Baize and Lamplight, whose only triggers are push and pull_request. In those five the sentence tells a later reader the estate has on-demand runs it does not have. THE FIX IS NEVER THE GROUP KEY: one spelling across every estate is the point, and the hazard is real, just the FLEET's rather than that estate's -- so the comment says so and the key is untouched. Fixed comment-only in Riffle 1f14ecf, Conflab 0df7593d, Prolix 5d3907c, Baize ada44fd, each verified at zero non-comment diff lines and actionlint rc 0 before commit; Lamplight is live so it went to lamplight/vc. Intent tests.yml already caveated it correctly and was left alone. THE GENERAL FORM, and it is the same shape as watchout 19 one level up: a rate does not transfer between estates AND NEITHER DOES A PREMISE. When a sweep carries prose, every sentence stating a fact about 'this repository' has to be true in each tree it lands in, and the only way to know is to check the trigger, the path or the job IN THAT TREE. Checked here for all 14 estates rather than assumed from one reading, which is what turned one estate's defect into five."
+  }
+}

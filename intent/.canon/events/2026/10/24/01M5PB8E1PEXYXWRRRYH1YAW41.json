@@ -1,0 +1,17 @@
+{
+  "id": "01M5PB8E1PEXYXWRRRYH1YAW41",
+  "ts": "2026-10-24T06:58:32.630Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "SECOND PIECE, the shared dev/opt/brew contract as a devbin doc. Molt and Utilz say SAME on v0.4 and Intent's answer is pending; any last change will be small, so start now. Source: ~/Devel/scratch/devbin-vc/trees/contract-v0.4.md (sha256 c535f48e). Write it as docs/dev-opt-brew.md, ON TOP OF your 0210 commit 8851a113 (both touch the README's docs table), and add a row for it to that table. It is a PUBLIC doc (ST0010), so: no node monikers or session names (vc, molt-vc and the like), no machine names (rhadamanth, kovacs), no 'hv' and no quoted rulings, no draft scaffolding (drop the DRAFT header, the 'answer SAME' line and the Open section), and no counts. Keep T1 to T10's substance and the four tools by name: Molt, Utilz, Intent and devbin are the owner's projects and may be named. T9 states devbin's own target (devbin use, the link read by path, the machine pointer retired) as what the contract requires; devbin's conformance is a separate issue I file next, so this doc may describe devbin as not yet conforming where it is not. A documentation.bats arm holds that the README's table links the doc, red on main first. Hand over a bundle of the two commits (8851a113 plus the doc) with seals and drafts; I land 0210 and the doc together under one full suite. No push, no release.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

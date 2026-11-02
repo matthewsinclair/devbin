@@ -1,0 +1,15 @@
+{
+  "id": "01M54NHMVX32JDAH0EVMKDWBB7",
+  "ts": "2026-10-17T10:12:00.509Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLD ON THE FOLD until hv's word after the compact (hv, 2026-10-17 about 10:0xZ: localfold and compact while CI and the kovacs install wait). devbin 0.1.11 is released (0fc22669) and R1 is green. AT THE RESTART: /in-session, the pickup, commit it by path; then read CI's Devbin Tests on the tag (run 39022565532) and main (39022561611) with `gh run view <id> --repo matthewsinclair/devbin`, record them in todo 154 and tell utilz-vc; and K011's result when kovacs-sysadm reports it (intent-vc STARTs it after Utilz's kovacs runbook), checking ~/Devel/opt/devbin on kovacs reports 0.1.11 over ssh."
+  }
+}

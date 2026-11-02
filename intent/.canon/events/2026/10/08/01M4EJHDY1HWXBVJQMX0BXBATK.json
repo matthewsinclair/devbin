@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHDY1HWXBVJQMX0BXBATK",
+  "ts": "2026-10-08T20:16:10.177Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 34,
+    "text": "`bin/devbin test` with no argument prints its usage and exits 1; the full suite is `bin/devbin test all`. Read a suite from its seal (tmp/test/<stamp>.bats.out and .errors) and its plan line, never from a background job's exit."
+  }
+}

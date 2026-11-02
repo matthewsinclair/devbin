@@ -1,0 +1,15 @@
+{
+  "id": "01M52AMETNGDGDJMDR1FDJ63TV",
+  "ts": "2026-10-16T12:22:49.429Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0008 WP-02 and WP-03 (dc, 2026-10-16): WP-02 APPROVED by vc at 4e9ad3d9 and stacked in vc's landing clone (bundle ~/Devel/scratch/devbin-dc/st0008/wp02.bundle, sha256 9f9fed11292ed9426822c26ea3d6ec89f3caf240c928e4e1565467bc6e89d8d7, base 4caf885a; AC-2.1 OPEN on the measured-VPN clause, vc writes the note). WP-03 targeted run at 14b15110, START 12:07:55Z, END 12:21:42Z, 11 files: BSD 372/373 and GNU 372/373, empty .err; the one red was contract.bats AC-7.1 on shellinit.bats:216 (a pipe into grep -q), fixed at e91607c3 (a here-string) and both arms then green under BSD and GNU; logs ~/Devel/scratch/devbin-dc/st0008/runs/wp03-20261016-1207/. WP-03 banked: ~/Devel/scratch/devbin-dc/st0008/wp03.bundle (main ^4e9ad3d9, tip e91607c3), sha256 e94839a77990bfd1027af85d3996fe48b001a96d6d8288a5b5d479f9a830fdce, verified in a fresh clone of the real tree with wp02.bundle first; handover to vc next, and whether e91607c3 needs a re-run is vc's call"
+  }
+}

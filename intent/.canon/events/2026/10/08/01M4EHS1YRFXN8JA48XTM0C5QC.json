@@ -1,0 +1,16 @@
+{
+  "id": "01M4EHS1YRFXN8JA48XTM0C5QC",
+  "ts": "2026-10-08T20:02:51.480Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 47,
+    "text": "0190, parallel test runs: HANDED OVER to vc. The patch is ~/Devel/scratch/devbin-dc/0190/drafts/0190-2231259e.patch (sha256 3aa75fd3...), git diff 21f523d9..2231259e: 6 commits on cc's 0191 v1.1 in the scratch clone fin190, branch b190, with a bundle beside it; the Resolution draft and the message are in drafts/. The two-lane suites are green on v1.1 (on 0191's 542711c1): BSD 627.0 s and GNU 586.7 s, 2294 of 2294 each, against 40.6 min serial. At the rebase heartbeat.bats went whole into the serial lane by one file tag, which vc agreed; it ran alone 9 of 9, and 0191 v1.1 changed none of its inputs. vc reviews and runs one full suite of the landing tree; cc rebases 0192 onto b190 and holds the box for its heavy runs. NEXT, once vc lands 0190: check the landed bytes against the patch, delete the 0190 scratch clones (keeping runs/ and drafts/), archive this and unclaim ISSUE:0190. State: ~/Devel/scratch/devbin-dc/STATE.md"
+  }
+}

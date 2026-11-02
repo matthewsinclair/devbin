@@ -1,0 +1,15 @@
+{
+  "id": "01M6BV6H11CMKA6GMPC22BCE66",
+  "ts": "2026-11-01T15:21:10.435Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0315"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "Under derived:, pass the stamp's known files to --fires as a lower bound for a positive paths: filter"
+  }
+}

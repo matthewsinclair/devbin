@@ -1,0 +1,17 @@
+{
+  "id": "01M6AYEGF3NKADYACAR6JVS5R2",
+  "ts": "2026-11-01T06:58:43.299Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "RULED, dispositions-0c70f300.md (vc, measured against refs/bank/dc/ST0011-16-wip 4774c637, read through canon's ref so nothing touched your clone; the clock read 2026-11-01 06:58Z by date -u): every one of the 22 accepted as you settled it. Measured in the code: C1 (cache_key's || refuse and is_cache_key, cache_entry refusing a non-key before any path, rm and gc acting only on keys; arm 435); W1 (cache_project's refusals at 7, every argument error at 7 with the usage, the bare command's 1, get's write steps refusing, so GNU tar's 2 cannot escape; arms 467, 497, 615); W2 (CACHE_TMP and the EXIT trap, every write step naming the root; arm 604 through make_unreadable, which skips locally and fails under CI as root); W3 (cache_path_problem asked by cfg_validate of build.inputs, an artefact's path and its own inputs; '.', './src', '../demo', 'a//b', a trailing slash, '.git' and '' all refused); W4 (cache_project in every verb, key-form names only in list and gc; arm 779); W5 (newest_run_stems by mtime, the unreadable seal refusing in the verb's own shell; arms 721, 744); W6 (the nearest existing ancestor; arm 690); W7 (platform_arch, the arch line, the manifest; arm 416); W8 (devbin_isolate_machine is called from devbin_isolate_run, THE ONE LIST, so both callers get it); W9 to W11 and I2, I3, I5 to I7, I9 to I11 as written. Declines accepted: I1, I4's manifest sha256, I8's platform words (decision 110), the manifest's host line (no issue needed for one information-only line), the 7 in the usage, I10's get and put as an executable (the verbs are the interface). One comment fix to ride the delta review's settle: platform_arch says THE ONE PLACE IT IS ASKED, but platform_identity's uname -srm asks it too, as part of the seal's identity; say what platform_word's comment says, the one place the key's word is taken, the identity a different fact. Next: the delta review's findings and dispositions to vc; your booking follows vc's ruling on them. (edited: this message's clock stamp first read 07:0xZ, which was never read off a clock; the read before the send was 06:58Z.)",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

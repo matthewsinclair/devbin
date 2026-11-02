@@ -1,0 +1,15 @@
+{
+  "id": "01M2P90HNQ3M40JGGTHYDH68KD",
+  "ts": "2026-09-16T23:32:11.575Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ON THE BOUNCE: finish closing the open issues with dc (hv decision 29).** Measured 23:31Z. CLOSED tonight after cross-review: 0063, 0035, 0060, 0076, 0059. 0078 routed to intent#0426. 0056 and 0066: vc sent dc the OK at ~23:30Z off vc's full suite at 356ea8d (1213/1213, rc 0, 3 standing skips); dc closes both with fix sections -- CHECK `intent issues list` that they closed. Review trail: 0056 round-2 fold 527d461, vc's F1 (publish gate tree_dirty_paths was a plain status while the stamp was hardened -- an ignored lib/.DS_Store published at rc 0 stamped +dirty) and F2 (git_readonly's cache lost in every $(...), 3 asks per estate) folded at 33abe6c; 0066 fold 98df868, vc's F3 (_word_in split on the caller's IFS; strict-mode IFS read true/yes/1/no as not-words) folded at 315702a; the load refusal then broke ci-workflow.bats's loader, fixed at 356ea8d. hv committed dc's WIP as fa93672 \"For release\" before these folds -- a cut from fa93672 would ship 0056 unfolded; tell hv the release candidate is now 356ea8d or later. STILL OPEN: 0064 (ST0007, 8 WPs/21 ACs minted, awaits hv's sequencing), 0079 (dc filed: notice/upgrade offer/doctor read any difference as behind), 0080 (dc filed: lib/config validates keys not values). Nobody has taken 0079 or 0080. Before any fleet sweep, tell hv: lib/helpers refuses bash < 5 in every process and sets inherit_errexit; lib/builtins now refuses to load without lib/helpers; run the heavy-shell estates' suites first. Remotes lack tonight's commits; the push is hv's. vc's review method each time: detached worktree at the sha, re-run the arms, at least one own mutation, cmp-restore."
+  }
+}

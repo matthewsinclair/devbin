@@ -1,0 +1,17 @@
+{
+  "id": "01M6AZ4TQD9HXPWDVQSBGAN0MN",
+  "ts": "2026-11-01T07:10:54.701Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "AT row for decision 101, before WP02b-1 lands: AC-2.2's clause 'each declared remote leg, the macOS stage where declared' is proved by your hook-in unit, so its red row is yours. Mint it under AC-2.2 now with intent at new (the next free id after cc's AT-2.5 and AT-2.6, so AT-2.7 unless one is taken), its note naming the hook-in unit as what turns it green, with NO id line in any bats file (no arm yet; Intent 0670's ruling), and commit the store's wrote: lines by path through your own index, leaving nothing staged. cc mints AT-2.5 and AT-2.6 green at its landing, and AC-2.3's red row for WP02b-2.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

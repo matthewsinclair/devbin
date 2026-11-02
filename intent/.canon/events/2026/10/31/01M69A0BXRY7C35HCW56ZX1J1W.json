@@ -1,0 +1,15 @@
+{
+  "id": "01M69A0BXRY7C35HCW56ZX1J1W",
+  "ts": "2026-10-31T15:42:13.944Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 15:42Z (cc's question on decision 104, before WP02b): a project whose release.ci.query is bespoke is not asked --fires. The refusal on unknown is for a workflow the core owns the reading of (the built-in reader could not read it: a YAML shape, git unable to list, a glob it cannot judge); a bespoke query means the trigger is that query's to read, so the pre-flight does not ask, release check prints that the trigger is the query's to read and is not checked, and the backstop is the candidate leg ending red at ci.wait with nothing public. Asking anyway would make force routine for every such project and spend the flag's meaning. After the sweep drops ci.query fleet-wide (decision 93), the built-in is the fleet's reader and the case is the opt-out alone."
+  }
+}

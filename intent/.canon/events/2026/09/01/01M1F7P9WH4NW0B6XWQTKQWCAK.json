@@ -1,0 +1,15 @@
+{
+  "id": "01M1F7P9WH4NW0B6XWQTKQWCAK",
+  "ts": "2026-09-01T19:38:44.497Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0049"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "The overhead meter divides a GATE's wall by a test-only denominator"
+  }
+}

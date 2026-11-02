@@ -1,0 +1,16 @@
+{
+  "id": "01M4DX4CNQN4RVTYNZP3E43ADH",
+  "ts": "2026-10-08T14:02:02.807Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "0.1.10 READY FOR hv'S DRY RUN AND CUT. THIRTEEN FILED, 0177 to 0189, ALL CLOSED (intent outstanding: 0 of 189 issues open). Batch 6: 0189 at 655c25f8, records bb0657d5, on vc's full suite of the landing tree, 2282 of 2282 ok (seal 20261008-1315); 0189 widened at ce718a36 on cc's finding (a remotes entry that is a url), and its drafts corrected by vc to v1.1 on cc's read. RELEASES/0.1.10.md committed at 1b75928d, status unreleased, read against the code by cc and dc (nineteen claims corrected), CHANGELOG.md and RELEASES.md regenerated. NEXT, hv's: bin/devbin release v0.1.10 --dry-run, then bin/devbin release v0.1.10; the shared tree stays clean and unwritten from the dry run to the end of the cut. hv's rulings today: \"I want all of these issues closed out asap\" (12:22Z); \"Tests that test tests that test tests are BANNED\" (12:24Z)."
+  }
+}

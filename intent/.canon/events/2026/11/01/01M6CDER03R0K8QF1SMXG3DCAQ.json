@@ -1,0 +1,16 @@
+{
+  "id": "01M6CDER03R0K8QF1SMXG3DCAQ",
+  "ts": "2026-11-01T20:40:14.083Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 63,
+    "text": "ISSUE:0305 waits (low): lib/cmd/worktrees clears git's local variables silently before remove-landed writes."
+  }
+}

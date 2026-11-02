@@ -1,0 +1,16 @@
+{
+  "id": "01M556F1QBC8YFBKK7TJ0HGF3G",
+  "ts": "2026-10-17T15:07:41.163Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "2026-10-17 STATE (localfold for hv's compact). devbin 0.1.11 RELEASED (0fc22669), CI green on its tag; INSTALLED by Homebrew from the private tap (main 3f2fecf) on rhad and kovacs; hv put brew on the login PATH on kovacs (not yet read by vc: kovacs is down for the night). SWEPT: hv's fleet in ~/Devel/prj by dc (15 estates; Utilz by utilz-vc), and five of another estate's trees by vc on its second word (the sixth left to its own session; never named here). ST0009 CLOSED (1857d44b). ST0010 OPENED, not started (devbin public, decision 52; licence still to choose). Issue 0202 filed (shipped code names no project). Hygiene: the tree holds only open threads and issues (52effa41). Devbin's own Intent 3.2.4 step at ac472c32. hv PUSHED main at ac472c32; since then main carries the AC-6.5 Intent step (b6d54917), AT-6.5 (ac763a6c) and board commits, unpushed. ST0008 WP-06: first WSL run (39039832569) RED on one finding, the job ran as root (todo 163); dc's fix is in ~/Devel/scratch/devbin-dc/st0008/wp06c (d0505834 red, 868c948e green, on 2f642150), in critic-shell; vc gave dc START for its targeted run on vc's own census. NEXT AFTER THE COMPACT: dc's handover; vc's landing suite on vc's own census if intent-vc is closed; land; hv pushes and dispatches; vc reads that run for AC-6.1, AC-6.2, AC-6.3 (finding fixed), AC-6.5, AT-6.2 and AT-6.5 red then green, wp done ST0008/06. ST0008 then waits on AC-6.4 (the adopting estate's word) and AC-2.1 (VPN settings on real WSL). Issue 0201 at the next batch release."
+  }
+}

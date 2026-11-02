@@ -1,0 +1,15 @@
+{
+  "id": "01M5YB067MVQYBH9VCA5TP3KRF",
+  "ts": "2026-10-27T09:27:57.941Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0251"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "Outside a project the brewed devbin refuses help and -h with exit 5, and its refusal names the keg's long path and an upgrade --from a project does not need"
+  }
+}

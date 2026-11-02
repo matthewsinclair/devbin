@@ -1,0 +1,16 @@
+{
+  "id": "01M692ANBDVB0RYWXTDSS0BE8E",
+  "ts": "2026-10-31T13:28:02.669Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 184,
+    "text": "FOR hv, open at 2026-10-31 13:28Z (relayed as they came, recs in brackets): Gtools: setup --yes links a dev tree onto PATH when no link stands, a silent brew-to-dev switch on a brew host, the cause of gyges's 2026-10-31 incident (rec: setup makes no link when Homebrew's gtools would answer, printing the gtools use dev remedy instead); Intent: ST0090's builders cc and ic are not running, and intent-vc asks whether intent-dc builds its two S packages meanwhile (rec yes, under intent-vc's judgement, until the sweep); intentd at login (rec intent daemon start --at-login on the Macs, brew services on Linux); Utilz: push main (upstream 1434e764's run is red) then one tests.yml dispatch proving 0130 and 0131, and ST0031/03's owner (menuz reads the release stamp, not the tag; it gates the first cut in the new shape); Laksa: the five CI reds on main (rec dc fixes all five; while they stand CI saves no cache at all), and the push of 0058 S2's release-job fix once laksa-vc has verified it (the job drops the /priv/ paths .dockerignore excludes, read from .dockerignore; fallback untrack the 18 links); Conflab: the trial run (rec the cut's legs are it) and check contract as a gate (rec yes); Intranet: net refresh exits 1 on farcaster and pihole host-key verification and on gyges's ads check, present since 07:30; Molt's PATH order (rustup before brew); two Trash folders on rhadamanth to empty, utilz-dc-exhaust-20261031 and utilz-vc-exhaust-20261031 (rhadamanth-sysadm could, on hv's word). Closed: kovacs's ten marker files; gyges's estate-pull job (Intranet 7cb2b96, installed, net check amber until the next refresh)."
+  }
+}

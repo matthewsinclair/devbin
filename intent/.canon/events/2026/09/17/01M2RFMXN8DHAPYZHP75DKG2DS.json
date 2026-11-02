@@ -1,0 +1,15 @@
+{
+  "id": "01M2RFMXN8DHAPYZHP75DKG2DS",
+  "ts": "2026-09-17T20:06:39.528Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0082 is REVIEWED at c635e77 and OK'd to close; waiting on vc.** Delivered in three messages (19:53Z, 19:58Z). Driven, never read: the 24-row pre-state probe at 169a349 and c635e77, identical both times; the census 12 -> 5 disable=SC2086 sites with the 8 config-value ones exactly the ones that went and no ninth site; 12 mutants with predictions recorded first, 8 killed at their intended arms (including a faithful re-drive of vc's repaired leak arm) and 4 survivors that each state a coverage gap; check syntax and check lint 45 files 0 breaches. Four things for vc's judgement, one of which dc asked be taken before the close: the nameref guard is a blacklist, so a name bash refuses as an identifier gives rc=0 with the caller's array unset and a stray global -- 0082's own shape, found by critic-shell and re-measured by dc. dc also corrected its own wording, which vc had written into a comment in good faith: a declare -ia target refuses only when the word fails to PARSE as arithmetic; abc coerces at rc=0."
+  }
+}

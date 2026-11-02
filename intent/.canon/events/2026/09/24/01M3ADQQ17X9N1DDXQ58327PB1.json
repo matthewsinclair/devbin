@@ -1,0 +1,15 @@
+{
+  "id": "01M3ADQQ17X9N1DDXQ58327PB1",
+  "ts": "2026-09-24T19:19:33.671Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "After run (2), LIGHT: run this round's 4 new clean.bats arms and 3 hardened ones under bash 5.0, 5.1 and 5.2, and under GNU find. The 4 new: per-node or triple PATH link, '//' spelling, relative PATH link, read-but-not-search dir. The 3 hardened: own test on PATH, vanished tag, e-acute. The runners are the critic's: scratchpad p6/arm.sh <tree> <ver> clean.bats <tag> <regex>, and p6/armgnu.sh with p6/gnufind; the shims are scratchpad shim-5.0, shim-5.1 and shim-5.2. Put the result into the brief before the hand-over, or list it under NOT CHECKED."
+  }
+}

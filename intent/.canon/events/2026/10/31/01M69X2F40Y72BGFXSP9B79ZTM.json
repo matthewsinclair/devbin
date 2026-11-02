@@ -1,0 +1,16 @@
+{
+  "id": "01M69X2F40Y72BGFXSP9B79ZTM",
+  "ts": "2026-10-31T21:15:25.696Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115), held at hv's hard close (decision 118, read 2026-10-31 21:14Z by date -u): WIP banked at refs/bank/dc/ST0011-16-wip 4774c637 (tree ~/Devel/scratch/devbin-dc/wp16/build, clean; the state in wp16/NOTES.md). Fixed and sent to vc (wp16/dispositions-0c70f300.md): the critic-shell review of 0c70f300 (1 critical, 11 warning, 10 info) settled, the critical first (the key held to 64 hex before any path is made from it, a sha256 it cannot take refused); hv's decision 115, the CPU architecture as the key's arch line (platform_arch in lib/helpers, design.md s13, the page, the arms); the literal AT id lines over releaselegs.bats (AT-3.1) and macos.bats (AT-3.4); two more defects found while fixing (a directory's tar held its basename; docs/configuration.md's stale exit 3). Verified: shellcheck, the headless critic, the docs, scan and dispatcher probes. Not verified: no bats run of the 26 arms; the critic-shell review of the delta 0c70f300..4774c637 was stopped unfinished at the close. Next, on hv's go through vc: that delta review first; then hold until vc says cc's WP02b-1 is on main (five shared files, decision 83); rebase, build-red.sh, the desk, the run, the handover with AT rows for AC-5.1 to 5.3 and 5.5 (decision 101)."
+  }
+}

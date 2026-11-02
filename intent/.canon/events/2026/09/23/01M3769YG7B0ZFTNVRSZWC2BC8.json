@@ -1,0 +1,15 @@
+{
+  "id": "01M3769YG7B0ZFTNVRSZWC2BC8",
+  "ts": "2026-09-23T13:11:59.239Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.8, vc's share, at the 13:11Z localfold (hv: localfold and compact, continue on the bounce). SERIES REPLAYED onto 80b7a67 in scratchpad/land018, one commit per issue in the agreed order: 0119 48f82b1, 0124 d4a9549, 0125 b0734ca, 0122 c817fed, 0117 2d4890d, 0126 a81075a, 0121 c130b3a. Two conflicts were resolved in contract.bats, and the head tree 360f565 is IDENTICAL to scratchpad/ref018, which is 80b7a67 plus the whole series diff (series018.patch, sha256 1a3fcc9a0b98303a). FULL SUITE GREEN on land018, from full018.tap and .meta: plan 1..1653, 1653 ok, 0 not ok, 4 skips (127, 135, 624, 626), 1653 distinct indices, rc 0, 12:39:28Z to 13:11:35Z, and the tree clean afterwards. Evidence per issue: 0121 red first 9 of 11 at 4e0df83, 12 mutants killed; the 0126 headers; cc's two notes with arms, 5 mutants killed. Headless critic and shellcheck clean over the 15 changed shell files. 0116 BUILT as e5499bd in scratchpad/build0116 on c130b3a: a tracked bin/.devbin/fleet.roots (~/Devel/prj and ~/Devel/cfg), and every run walks DEVBIN_FLEET_HOME for installs outside the frame (audit on stderr, doc in its own section, upgrade in its not-swept table). 9 arms red at the series head; 12 mutants killed (F6 re-aimed at outside_roots, having first hit find_installs); fleet.bats 97/97; documentation, help and doctor 117/117. PATCHES: scratchpad/series018/0001-0007 and series0116/0001. NEXT, on the bounce: hand cc the patches (the series, then 0116); on cc's approval land them onto the shared tree, which has moved only in intent/, verify byte-identity, and tell cc to rebase 0120; then build 0132 (db, high) and 0136 (wrong reason or remedy, low)."
+  }
+}

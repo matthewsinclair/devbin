@@ -1,0 +1,14 @@
+{
+  "id": "01M3C7ZKXDMBFAD3VK40CG2N23",
+  "ts": "2026-09-25T12:17:30.031Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.edit",
+  "subject": {
+    "type": "issue",
+    "id": "0133"
+  },
+  "payload": {
+    "bytes": 4186
+  }
+}

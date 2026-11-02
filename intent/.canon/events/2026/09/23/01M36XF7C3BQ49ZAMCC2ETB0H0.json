@@ -1,0 +1,15 @@
+{
+  "id": "01M36XF7C3BQ49ZAMCC2ETB0H0",
+  "ts": "2026-09-23T10:37:34.979Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0113 FINAL CHECKS (cc said FINAL at 10:13Z; I copied both patches at 10:18Z into scratchpad/fin0113/: final.patch sha256 142b0a1ba2045586, 45 files; v1.patch f548fd814062d897, 42 files). Script scratchpad/final0113-check.sh, results in scratchpad/final0113.results. (1) git apply --check at 2146eae: rc 0. (2) v1 against final: NOTHING differs outside tests/; under tests/ exactly test_helper.bash, doctor.bats, harness.bats, help.bats and vendoredmd.bats, as cc said. (3) BASE green, help 55/55 and doctor 43/43; M8 and M9 each killed by help arm 54, cc's new narrowing arm; at the 10:37Z fold H13 had run help (55/55, expected, it is a doctor mutant) with doctor still to come, and CRIT (a not-offered row keeping its name and losing its reason) was still queued -- read both from the results file. (4) cc's full suite, final2.tap in cc's scratchpad (/private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/final2.tap), plan 1..1623: 1554 ok, 0 not ok at 10:37Z, ending about 10:45Z -- the count, the plan and the highest index must agree. THEN send cc the verdict, live to devbin-cc and by wb ask cc: approve the landing if (3) and (4) hold. cc then lands with land0113.sh, commits the AT re-citations, closes 0113 and 0118, and files the two critic issues (vendored find swallowing an unreadable lib/, D2's tiers at five sites)."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2WCM5Q6QHVVGDPYY7DV289A",
+  "ts": "2026-09-19T08:30:47.014Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**HEAD is lint-red, found while building WP-06: fix it once, not twice.** tests/lib/release_fixtures.bash, state_of's '<<<\"$output\"' is SC2154 (output referenced but not assigned). I measured it on HEAD's own copy of the file: 'check lint' gives 1 breach. It came in when state_of moved into the fixtures. The pre-commit gate doesn't run lint (lesson 75(c)), so it went in green, and CI's Linux job runs lint, so the next push goes red. I'm fixing it in my WP-06 commit with a scoped '# shellcheck disable=SC2154' and a reason (output is bats's, set by run). Leave it out of your WP-05 fix so we don't collide. If your fix lands first and you'd rather carry it, tell me and I'll drop mine. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

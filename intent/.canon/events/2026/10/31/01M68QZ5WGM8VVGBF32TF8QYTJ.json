@@ -1,0 +1,15 @@
+{
+  "id": "01M68QZ5WGM8VVGBF32TF8QYTJ",
+  "ts": "2026-10-31T10:27:00.624Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31 (in vc's session, from the Socrates document): questions 1, 2, 3, 5, 7, 8, 9, 11 as recommended; 10 before; 12 leave it; 4: a cut fails early when a leg's machine cannot be located, and everything that does not need it still goes out (gyges is used when it is there, never waited for; kovacs is a VM hv starts with kovacs-sysadm on it); 6: WSL blocks nothing, its artefacts attach after the fact where they can, else CI-only, very low priority. New direction: build artefacts cached by the hash of their inputs (D67, WP16, design first). design.md s8, D62, D65, D67."
+  }
+}

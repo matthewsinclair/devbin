@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 103,
+  "slug": "upgrade-ignores-flags-that-do-not-apply-to-its-m",
+  "title": "upgrade ignores flags that do not apply to its mode, and install ignores the vendor-only ones when publishing",
+  "status": "closed",
+  "severity": "medium",
+  "created": "2026-09-21",
+  "closed": "2026-09-21",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the 2026-09-21 doc audit (finding K7).\n\n`install` refused `--prefix` in VENDOR mode (\"A flag that is meaningless in the mode you are actually in is a usage error, not something to ignore\") and ignored the mirror: `--force`, `--name`, `--alias` and `--lang` while publishing. `upgrade` ignored all of them: `--prefix` in a project upgraded from the manifest's source while the operator believed they had named another, and `--from` or `--force` in devbin's own tree did nothing.\n\nFix: install refuses a VENDOR-only flag when publishing; upgrade refuses `--from` and `--force` in devbin's own tree and `--prefix` in a project; each message names the mode and the remedy, in install's shape. Tests: localinstall.bats, two arms, driven red at the parent commit. Fixture installs are under the test's tmpdir, so a red run could not publish anywhere real.\n\n\n## Resolution\n\nFixed at `b11d0ec`, test driven red first at its parent commit. Full suite 1578/1579 at `ae3b200`: the one failing arm was environment-caused (GIT_OPTIONAL_LOCKS=0 exported in the running shell defeated readonlygit.bats' stale fixture, and its control arm caught it) and is green in a clean environment; that file is hardened at `ad86870`. Reviewed by vc against this issue; vc's mutants on 0099 and 0104 were killed. Ships in 0.1.4.\n"
+}

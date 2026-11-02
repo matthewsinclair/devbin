@@ -1,0 +1,15 @@
+{
+  "id": "01M5WP5N6T94KR0KA2NE4KPJHX",
+  "ts": "2026-10-26T18:04:42.587Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0237"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "check critic fails on Intent's critic exit 4 (nothing judged), so every cut with nothing staged is red"
+  }
+}

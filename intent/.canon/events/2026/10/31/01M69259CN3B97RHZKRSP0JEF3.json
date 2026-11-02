@@ -1,0 +1,16 @@
+{
+  "id": "01M69259CN3B97RHZKRSP0JEF3",
+  "ts": "2026-10-31T13:25:06.581Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 68,
+    "text": "ST0011 run 3 on hv's go (read 12:54Z) and vc's GO (12:58Z), ready 13:24Z: tip 8f3d95fe (WP05, amended with WP05's second critic's takes on vc's rulings: F2, F9, F3, F5, F1's start half, F4, F6, F8) on WP06b 1f37e5eb on main d708e37b, in ~/Devel/scratch/devbin-dc/run3c/build; re-banked (refs/bank/dc/ST0011-06b 1f37e5eb, ST0011-05 8f3d95fe; 7cbc085f, d282e845, 452335e9 archived); red clone red-d708e37b-8f3d95fe; slots asked and sent to vc: heavy 01M6922YDEYTDZ3EG4EFFR8WD0 (run 3), light 01M692341PTAJCCHY5KT96YPQH (the kovacs proof, from run3c/proof, announced to kovacs-sysadm). START on vc's GO, END at the driver's exit; END to vc with the tip, the seal path and the proof's record; vc lands with land-stack.sh. The note is run3c/BANK.md."
+  }
+}

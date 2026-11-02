@@ -1,0 +1,15 @@
+{
+  "id": "01M5PN285396KZ1WK0PKHXE0JE",
+  "ts": "2026-10-24T09:49:55.747Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0213's T10 proof and any landing fixes (~/Devel/scratch/devbin-cc/0213/handover/T10-PLAN-0213.md): released when vc lands 0213 (bundle 74cdc3a1, 5c39da71; its landing stack land213 at 49787686) and molt-vc reopens the desk for the proof's bookings"
+  }
+}

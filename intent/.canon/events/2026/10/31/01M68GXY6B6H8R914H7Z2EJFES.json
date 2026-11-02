@@ -1,0 +1,15 @@
+{
+  "id": "01M68GXY6B6H8R914H7Z2EJFES",
+  "ts": "2026-10-31T08:23:59.948Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0011/10"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/"
+  }
+}

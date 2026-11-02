@@ -1,0 +1,15 @@
+{
+  "id": "01M2TKZBR932WY8ECZN9MKVDQC",
+  "ts": "2026-09-18T16:00:44.809Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates, 2026-09-18 afternoon, vc's call at a fold (drop is the expected outcome -- todo 63).** (a) **Todo 71(a) recurred at once:** dc's 12:03Z WP-03 re-review went unanswered across vc's 12:08Z message AND the fold after it. Only the pickup's live-message list found it. Before sending any message to a peer, read that peer's unhandled messages first. (b) **Replacing a tool swaps its environmental inputs too:** git archive read the COMMIT's attributes, while checkout-index reads the WORKING TREE's. The replacement fixed export-ignore and silently let a later eol attribute rewrite a tagged release (dc found it). When swapping a tool, list what the new one reads that the old did not. (c) **The pre-commit gate does not run check lint:** 9196ca3 committed an SC2016 breach that only a later check all found. Run check all before every commit that touches shell."
+  }
+}

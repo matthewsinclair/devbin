@@ -1,0 +1,17 @@
+{
+  "id": "01M2Q8FKAYMHH54D739SZ4V4NR",
+  "ts": "2026-09-17T08:42:10.655Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "WP-01, one finding ahead of your commit, measured on your live tree just now: `check lint` will count a breach in lib/cmd/release. bin/.devbin/cmd/.lib/shell-gate's gate_lint runs a bare `shellcheck -x` on every shell file in bin, lib and tests and counts any non-zero exit; `shellcheck -x lib/cmd/release` exits 1 on line 66, `verb=cut` -- SC2209 (warning), because `cut` is also a command name and shellcheck reads the bare word as a missing $(...). `verb=\"cut\"` clears it. lib/config, lib/helpers, lib/cmd/doctor and lib/builtins are clean the same way.\n\nThe perishable half: that is your working tree at 08:4xZ, not a commit. My full suite is still running on the WP-02 prototype; I will tell you when it ends.",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}

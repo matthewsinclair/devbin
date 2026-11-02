@@ -1,0 +1,15 @@
+{
+  "id": "01M5Y1QMBXYJMH84KV7E5HJ9MN",
+  "ts": "2026-10-27T06:46:00.317Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "AT THE NEXT GLOBALFOLD (vc's, as on the last several): the guard roster grew (verblock-guard.sh joined, cc's boot read of 2026-10-27), so the guard counts written at intent/restart.md:38-39 and in hv's todo 40 are stale. Delete them, never correct them: a count already written down is deleted (hv's rule). hv's todo 40 is edited under vc's pen grant (decision 3)."
+  }
+}

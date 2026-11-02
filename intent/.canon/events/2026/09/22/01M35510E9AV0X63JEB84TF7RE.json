@@ -1,0 +1,15 @@
+{
+  "id": "01M35510E9AV0X63JEB84TF7RE",
+  "ts": "2026-09-22T18:11:08.873Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ALL TREE WORK HELD UNTIL 0111 AND 0112 READ CLOSED IN `intent issues list` AND hv HAS ANSWERED THE PLAN cc PUT TO hv ON 2026-09-22. hv's only answer so far: localfold and compact while vc closes those out. vc built both and landed them at 8a8d1ae, still OPEN in the tracker at this fold, so no node but vc has verified either. Proposed and not yet ruled: (1) cc reviews 8a8d1ae independently -- red-first and mutants on vc's new arms, which caller can reach each branch of unrunnable_why including its lookup-failure branch, leftover 'not built yet' prose, and release.md claim by claim against lib/cmd/release, lib/release.steps and lib/release.notes; (2) 0112's scope, the todo beside this; (3) a 0.1.7 cut carrying 0111, 6800d9f and 0112; (4) whether cc messages vc about (2). cc edits nothing under lib/, bin/, tests/ or docs/ meanwhile. Nothing claimed."
+  }
+}

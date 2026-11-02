@@ -1,0 +1,108 @@
+{
+  "schema": "intent/thread@3.0",
+  "id": "ST0006",
+  "title": "devbin infra: apply, the Fly runtime leg, dmarc check, and the known-sender library",
+  "slug": "devbin-infra-apply-the-fly-runtime-leg-dmarc-che",
+  "status": "triage",
+  "created": "2026-09-08",
+  "objective": "",
+  "context": "",
+  "body": "",
+  "preamble": "",
+  "wps": [
+    {
+      "seq": 1,
+      "title": "infra apply: Fly end-to-end, DNS and Workspace emit an ordered record list",
+      "scope": "S",
+      "status": "not-started",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 2,
+      "title": "infra mail dmarc check: the assertion leg, red on a silently missing domain",
+      "scope": "S",
+      "status": "not-started",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 3,
+      "title": "Known-sender INVARIANT library, profile-overridable",
+      "scope": "S",
+      "status": "not-started",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 4,
+      "title": "Fly runtime leg of check: certs, address agreement, release_command, staged secrets",
+      "scope": "S",
+      "status": "not-started",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    }
+  ],
+  "criteria": [
+    {
+      "id": "AC-1.1",
+      "text": "Fly is driven end to end via flyctl, while DNS and Workspace emit an ordered, copy-pasteable record list rather than pretending to apply.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.2",
+      "text": "apply exits NON-ZERO when it hands work back. A partial apply reporting success reads as done, and the operator stops.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.3",
+      "text": "The legs are ASYMMETRIC and the output must not pretend otherwise. Hover has no public API and no credentials exist in any tree, so a uniform plan-apply-verify would overpromise on the leg that carries the estate.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.1",
+      "text": "check owns the ASSERTION and goes RED on a domain that published rua and is silently missing from the reports. That comparison needs a profile, which is why it cannot live in report -- a boundary drawn by what a component CAN know outlasts one drawn by what it should do.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.1",
+      "text": "The library ships pair-SHAPE and required-record-CLASS invariants, never values. A shipped value commits to an answer nobody has: a vendor include would have been wrong for a live domain on 2026-09-06, and whether that split is account-specific or generational is unresolved.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.2",
+      "text": "Every invariant is profile-overridable, so a project whose vendor differs does not have to fork the library.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-4.1",
+      "text": "The runtime leg checks certificates, A and AAAA agreement, release_command path validity, and staged-secret detection.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    }
+  ]
+}

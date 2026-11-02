@@ -1,0 +1,15 @@
+{
+  "id": "01M5Z10V080ANKXNZ1ZGPB3ESW",
+  "ts": "2026-10-27T15:52:47.881Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0275"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "use dev and use opt exit 1 on a shadowed link having pointed it, which the help page does not say: the page and the message say so (not in 0.1.16)"
+  }
+}

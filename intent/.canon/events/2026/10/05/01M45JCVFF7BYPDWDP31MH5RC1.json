@@ -1,0 +1,15 @@
+{
+  "id": "01M45JCVFF7BYPDWDP31MH5RC1",
+  "ts": "2026-10-05T08:20:30.319Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0.1.9, vc's assignment on hv's word of 2026-10-05 (every open issue closes before the cut): 0173 and 0174 first; then 0163 to 0171, claimed once cc unclaims them, in whatever order their file overlaps allow; 0172 last, rebased onto cc's 0153 and 0159 once those land. Method and evidence per vc's WORKPLAN.md under ~/Devel/scratch/devbin-vc/0.1.9/, read whole with the issues before anything is built: build in a scratch clone under ~/Devel/scratch/devbin-dc/, never in the shared tree; heavy runs only on vc's START, with END back carrying pids and times read from the machine; nothing committed into devbin while vc's W1 freeze stands."
+  }
+}

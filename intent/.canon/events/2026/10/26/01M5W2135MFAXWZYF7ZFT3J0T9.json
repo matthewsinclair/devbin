@@ -1,0 +1,16 @@
+{
+  "id": "01M5W2135MFAXWZYF7ZFT3J0T9",
+  "ts": "2026-10-26T12:12:41.524Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 147,
+    "text": "FOR hv, PUSHES (hv chose (b), 2026-10-25, in vc's session: vc runs them; \"Just push on\" via molt-vc). Re-measured read-only 18:46Z (~/Devel/scratch/devbin-vc/push147/m2.tsv) and run 18:47Z to 18:52Z by date -u, fast-forwards only, each tip re-read first, never --no-verify (push.log, push2.log): every estate tree's remotes pushed, devbin's own main 593109bf..efb328dc (CI run 40223272158, read as a baseline; 0222's fix is in land220). LEFT: Intent local and upstream. intent-vc's build all ENDed at 10:12Z with the pair at 629ce5ad, which Intent's pre-push currency check accepts at HEAD (intent-vc measured it at 11:23Z, and vc read the build-input scope unchanged since). On hv's ruling the worktree fold text lands in Intent first, then intent-vc re-aims the kovacs preflight at Intent's new HEAD; molt-vc sends vc the green seal's exact path, and that is the one the push reads. Then vc checks the seal's sha against Intent's HEAD, re-reads each tip, pushes local then upstream fast-forward only through Intent's pre-push hook (core.hooksPath .githooks), never --no-verify, reads each tip back, and stops and tells intent-vc if the hook refuses or HEAD has moved past what the seal covers. One pair of the other estate's (line 7 of push-other.txt) has a remote that moved on or diverged and is left alone; molt-vc routes it."
+  }
+}

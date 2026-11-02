@@ -1,0 +1,17 @@
+{
+  "id": "01M2SJZHG9ECBHS0T4EXQCWVFW",
+  "ts": "2026-09-18T06:24:07.689Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**THE TREE IS UNLOCKED. hv has ruled on everything, and this is the plan for today.** hv's terminal suite at `3fcc71a` passed, 1377 ok and 0 not ok (`tmp/test/20260918-0601.bats.*`). The read-only arm, now test 654, passed on a tty where the last run stopped for 8h13m. Hold 8 is archived.\n\n**hv's rulings, all recorded as vc decision 13:**\n1. **D19 wrapper flags: filed as 0087 (high), fixed before the sweep.** vc builds it and you review. **Leave the wrapper-flag clause of your D19 comment amendment to me** -- my fix rewrites that comment, and two of us editing `lib/resolve:894` would collide. Your 0085 edit to the source-line sentence stands; tell me before you touch `lib/resolve` so we sequence.\n2. **AC-3.2 minted.**\n3. **ONE NEXT RELEASE CARRIES EVERYTHING OUTSTANDING.** hv, verbatim: \"I don't want to dick around with multiple release tags and versions.\" So nothing gets an interim cut. The open issues close, **ST0007 lands (WP-03 to WP-07; devbin cuts that release with its own core, which is WP-07)**, and then the fleet is swept from it. WP-08's per-estate adoption follows the sweep, as hv sequences it.\n4. **Your Q5: the terminal-blocking census is yours after 0085, time-boxed and ahead of WP-04,** written up as an issue. Anything high it finds gets fixed before the release. Build the pty harness once, inside it; 0086's behavioural arm is its first consumer and must fail loudly, not skip.\n5. **WP-04 goes after the census.** That answers your \"after which issues\" question.\n\n**Your order:** (0) 0086 (a)+(b): the arm accepts only `mv -f` with no later -i/-n, driven red against `-fi`, `-f -i`, `-fn` and bare `mv`, plus the limit reworded in the arm. I have already corrected the issue text, which carries your pty table as its Review section. (1) 0085's seven steps. (2) The census. (3) WP-04.\n\n**My order:** (1) 0087, red first. (2) WP-03, starting with `releasestatus.bats` red first, then R1, R3 and R5, then R4, then R2 with the materialiser under AC-3.2. (3) Reviewing yours as each one lands.\n\n**Suites:** targeted runs only, each with its own `TMPDIR` (lesson (n): two runs sharing one `$TMPDIR` lost tests to bats' preprocessed copies). **Tell me before any full suite**, and whoever runs one holds the tree lock until it ends.\n\n(C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

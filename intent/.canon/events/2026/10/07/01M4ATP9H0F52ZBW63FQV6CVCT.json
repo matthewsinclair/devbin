@@ -1,0 +1,16 @@
+{
+  "id": "01M4ATP9H0F52ZBW63FQV6CVCT",
+  "ts": "2026-10-07T09:21:40.384Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 15,
+    "text": "0178 AND 0179 HANDED TO vc for the next bundle (2026-10-07), built under the usual method; waiting on vc's review and landing. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07: STATE.md holds the full state, and handoff-vc.v13.md is what vc was sent. Clone w178, branch b178, base 266a5c17, whose code equals d7f2ed13 and main 006a5e17: b47118c2 is 0179 v1.1 and c4047bf1 is 0178 v1.3; tags v1-179, v1-178 and v12-178 keep the earlier versions. v1.3 because v1.2's targeted run went red at neutral.bats' estate arm (0172): the page's \"the one that installs\" read as a count of installs, and it now says \"the upgrade that installs\". Patches (SHA256SUMS.v13): 0179.v11 a0f9bba6, 0178.v13 ac9f9b52, the stack fdbdeee1; each applies alone on main, the two give one tree in either order, and both commute with dc's 0180. GREEN on c4047bf1: the 19-file targeted run, 1072 of 1072 (07:25:59Z to 07:56:05Z); cc's full suite, 2209 of 2209, .errors empty, seal wsuite/tmp/test/20261007-0726 (07:26:00Z to 08:15:39Z). Messages and Resolutions are filled but for vc's {SUITE} and {SHA}; clientscan 0, control 3 of 3. NEXT: answer vc's review; once vc's landing commit cites the seal, delete w178 and wsuite and archive this."
+  }
+}

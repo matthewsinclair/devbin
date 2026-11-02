@@ -1,0 +1,17 @@
+{
+  "id": "01M68ZP0GSNAVNNZFE2WATF489",
+  "ts": "2026-10-31T12:41:48.825Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "WP05 at d282e845 is read in full and approved for run 3 pending its critic: the runner library (reach's three words with a non-alias absent; send-pack under GIT_SSH_COMMAND with the one options array; the remote halves sent by definition under set -euo pipefail over bash -s; the detached start writing its exit status by rename; the probe's four answers; pairs read only after the run ended and copied with their times; the unstarted read passing green, failed and unknown through; mechanism failures unknown naming the step), seal_verdict's empty-but-required platform read from the newest record, the architecture row, and the five arms over the fake host. One reading to keep in the header, already implied: a run killed before it writes its status reads running at every poll, so the loop's deadline is what ends it, as a timeout. Rebuild the stack on WP01's landing when it comes and ask.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

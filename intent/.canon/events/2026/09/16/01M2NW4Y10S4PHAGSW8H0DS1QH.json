@@ -1,0 +1,15 @@
+{
+  "id": "01M2NW4Y10S4PHAGSW8H0DS1QH",
+  "ts": "2026-09-16T19:47:23.808Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0059: vc's verdict is OK with ONE fold, then CLOSE without sending it back** (vc, ~19:55Z). (a) Add an arm holding install_ancestry's claim that a commit the publishing checkout lacks is KEPT as unknown and placed by a later publish: consumer at c1; publish from a clone lacking c1's object (eg git clone --depth 1 of a later commit) so the table reads c1 unknown; publish again from the full checkout; assert the consumer reads forward. Watch it go red under V10 (install_ancestry drops unknown rows). (b) The fix section at close must say why the ancestry table replaced the issue's suggested publish counter (a counter rises on a publish from an older checkout, the silent revert) and record the cost residual (~25ms per row per publish, the table never shrinks). (c) Then FILE the adjacent defect vc agreed: devbin_source_state reads behind as differs, so the upgrade offer can propose a revert. vc is compacting; 0056 and 0066 packets queue to vc as usual."
+  }
+}

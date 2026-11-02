@@ -1,0 +1,15 @@
+{
+  "id": "01M2NH2KT3RXFGNAMJW25ADFS8",
+  "ts": "2026-09-16T16:33:53.476Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0076"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The bash 5 floor is checked only in the dispatcher's process, so a handler exec'd through a PATH that finds bash 3.2 runs on it without refusal"
+  }
+}

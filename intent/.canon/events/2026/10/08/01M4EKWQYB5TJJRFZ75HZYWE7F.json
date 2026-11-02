@@ -1,0 +1,16 @@
+{
+  "id": "01M4EKWQYB5TJJRFZ75HZYWE7F",
+  "ts": "2026-10-08T20:39:49.451Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 15,
+    "text": "0192 PARKED for the next release (hv, 2026-10-08, relayed by vc). RELEASED WHEN vc or hv says to start 0192 (0.1.10 is cut; vc said it stays parked). ISSUE:0192 stays claimed. Nothing is built; its clones were swept with the rest of cc's scratch on hv's word, so it starts from a fresh clone of main. No before-figure was taken, so the before and after go back to back on 0192's own base. Scope, vc's measurements and the groundwork: ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md"
+  }
+}

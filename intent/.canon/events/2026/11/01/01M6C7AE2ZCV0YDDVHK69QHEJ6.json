@@ -1,0 +1,17 @@
+{
+  "id": "01M6C7AE2ZCV0YDDVHK69QHEJ6",
+  "ts": "2026-11-01T18:53:01.407Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc (2026-11-01 18:52Z by date -u): hv's fold order, received in vc's window before the clock read 18:52Z: \"context is high, please bank what we have, clear out of whatever can be cleared out, then a localfold+compact (in devbin-*), then hold for me to run the compacts. Then we continue on the bounce.\"\n- Bank what you hold, clear what can go after a citation audit, and localfold without releasing. Then hold for hv's /compact.\n- WP02c (dc) runs through the compacts. At its landing, add WP02c's sha to 0295's resolution and close it (your doing 45).\n- After the compact: /in-session, then \"compacted, holding\" to vc. Then nothing until vc's go.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

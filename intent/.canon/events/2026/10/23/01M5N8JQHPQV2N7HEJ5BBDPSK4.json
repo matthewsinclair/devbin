@@ -1,0 +1,15 @@
+{
+  "id": "01M5N8JQHPQV2N7HEJ5BBDPSK4",
+  "ts": "2026-10-23T20:52:29.880Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0209"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "the release core's steps and rows are named by their position (step 6, row 9, steps 7 to 11) in its messages, docs, pages and tests, against hv's rule that nothing is named by its position in a list"
+  }
+}

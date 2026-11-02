@@ -1,0 +1,15 @@
+{
+  "author": "matts",
+  "backup": {
+    "schedule": "daily"
+  },
+  "created": "2026-08-05",
+  "dft_width": 120,
+  "intent_version": "3.1.0",
+  "languages": [
+    "shell"
+  ],
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "project_name": "Devbin",
+  "st_prefix": "ST"
+}

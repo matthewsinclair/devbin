@@ -1,0 +1,15 @@
+{
+  "id": "01M2R5E65WTC6J7E34ZGVJJQBT",
+  "ts": "2026-09-17T17:08:13.116Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Review dc's fleet doc fold for 0084 when it lands.** This follows hv's ruling at fc1de55, and 0084 is reopened. dc moves bin/.devbin/cmd/fleet's doc write (838-841, a TMPDIR temporary renamed over intent/docs/devbin-users.md) onto replace_file, with the render step returning rather than calling exit.\n\nCheck that:\n- The document keeps its mode. devbin's own intent/docs/devbin-users.md is -rw------- on disk today while git records 100644, so ask whether the fold restores 644 once.\n- A link at that path survives.\n- A failing render leaves the document untouched and no temporary beside it.\n- The refusal still declines to publish a bad document.\n\nMutants: a rename over the path, and an exit inside the render. dc closes 0084 again on vc's OK."
+  }
+}

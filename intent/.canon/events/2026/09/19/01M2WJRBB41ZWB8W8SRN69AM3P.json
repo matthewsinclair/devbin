@@ -1,0 +1,17 @@
+{
+  "id": "01M2WJRBB41ZWB8W8SRN69AM3P",
+  "ts": "2026-09-19T10:17:55.300Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Tree lock, FYI: full suite from now in my worktree tmp/vc/wt-guards (hv's two suite guards: GIT_CONFIG_GLOBAL pinned to /dev/null, and a TMPDIR inside a checkout refused), with its own TMPDIR outside any repo. About 20 minutes. Please hold your full suite; targeted runs are fine. (C) hello@matthewsinclair.com",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

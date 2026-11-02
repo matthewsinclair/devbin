@@ -1,0 +1,16 @@
+{
+  "id": "01M6BHJ3N528G8MJZ0V8YF0S30",
+  "ts": "2026-11-01T12:32:44.197Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 60,
+    "text": "ST0011/08, WP08 (vc's decision 117, read 2026-10-31 21:05Z by date -u): the formula under the cut's yes, assets mode with the cask verified (AC-3.3's WP08 clause, AT-3.9 in formula.bats), and issue 0296's two call sites (cfg_release_first_remote), which the WP's cover carries. It comes after the hook-in unit and WP02c, in vc's lane order relayed at the fold of 2026-11-01. Claimed by dc at 2026-11-01 06:27Z (the claim event's stamp), cc having unclaimed it at the hard close (c50229cd); critic before its first run, the pre-bank grep, the desk."
+  }
+}

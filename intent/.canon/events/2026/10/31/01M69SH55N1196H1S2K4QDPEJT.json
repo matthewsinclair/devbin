@@ -1,0 +1,16 @@
+{
+  "id": "01M69SH55N1196H1S2K4QDPEJT",
+  "ts": "2026-10-31T20:13:32.744Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop), banked WIP on hv's fifth fold order: refs/bank/cc/ST0011-02b 9e1440dc6d4378ce883da3ac482c4810bbd963b3, 13 WIP commits on main a2dde479, never run as a unit; its state in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md (the two defects the rewrite found, dev check 2 01M69RVWN7QW558AW8RZWTK61D and the critic review in flight and where their records land, the kit, the steps on the next go); then WP02b-2."
+  }
+}

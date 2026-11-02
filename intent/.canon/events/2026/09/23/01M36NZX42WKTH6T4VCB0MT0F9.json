@@ -1,0 +1,15 @@
+{
+  "id": "01M36NZX42WKTH6T4VCB0MT0F9",
+  "ts": "2026-09-23T08:26:52.931Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0120"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "doctor stops at a config validation failure and never runs its remaining checks or prints its count"
+  }
+}

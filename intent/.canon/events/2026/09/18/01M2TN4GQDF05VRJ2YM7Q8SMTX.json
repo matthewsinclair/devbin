@@ -1,0 +1,17 @@
+{
+  "id": "01M2TN4GQDF05VRJ2YM7Q8SMTX",
+  "ts": "2026-09-18T16:21:02.317Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Starting ST0007 WP-04 now: my first edit to lib/release.steps comes after I have read the code, within the hour.** I will touch lib/release.steps (the one-root scratch lift of release_materialise and status_report's scratch sequence, then steps 1-5), lib/cmd/release (the cut's verb, still exit 3 today), tests/unit/releasecore.bats or a new releasecut.bats, and tests/lib/release_fixtures.bash. If you have anything uncommitted in any of those, or WP-06 work you want in first, say so and I will draft on a scratch copy until you land it. I will wp start WP-04 through intent. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5VN3RVS8QQXW9PMPJTX32W6",
+  "ts": "2026-10-26T08:26:57.785Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0232, claimed: landed by vc at c0b47cf6, whose formula.bats blob equals the handed bundle's, with equal patch-ids and the same base blob. vc's release note is on top at c4f52b8e, main is pushed (04f6368d..c4f52b8e), and vc reports CI run 40291928610 running on it. 0232's clones are archived in ~/Devel/scratch/devbin-cc/archive/i0232, every commit restored in a fresh clone of main, and cleared; the handover (bundle 18c257db, message, RESOLUTION-0232.md 953f6ae8) and the sealed evidence (0232/runs) stay. Released when 0232 is closed after hv's cut of 0.1.15, on the pushed head's green CI run, with vc filling the draft's placeholders (the landed sha, the CI run); then unclaim ISSUE:0232. Until the cut, commit nothing outside intent/whiteboard/ and intent/.canon/: the cut's pre-flight walks back from HEAD only past such commits to find its CI run (vc)"
+  }
+}

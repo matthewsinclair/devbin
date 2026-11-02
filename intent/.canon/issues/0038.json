@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 38,
+  "slug": "a-green-suite-raises-a-bw01-advisory-which-train",
+  "title": "A green suite raises a BW01 advisory, which trains the reader to skip advisories",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-08-28",
+  "closed": "2026-08-28",
+  "reporter": "Matthew Sinclair",
+  "body": "`usage-rules.md` carries a rule about how to read a bats result, and the project's own green suite now raises a **BW01** advisory against it.\n\n## What fires\n\n`tests/unit/shellinit.bats:98` uses:\n\n```\nrun zsh -f -c \"source '$DEVBIN_TEST_TMPDIR/dvb.zsh'; cd '$deep'; dvb\"\nassert_exit_code 127\n```\n\nThe bats-reading predicate in `usage-rules.md` expects the `run -127` form, so a green suite emits an advisory.\n\n## Why it is low, and why it is filed anyway\n\n**The suite is green and the assertion is correct** -- 717/717, 0 failures, rc 0. Nothing is broken, and `assert_exit_code 127` tests exactly what it claims to test. This is a style predicate and a test disagreeing, with the test right on substance.\n\nIt is filed because of what an advisory on a green run does over time: **it trains a reader to skip advisories.** This project's cardinal rule is to ask of a success path what it actually verified, and a standing benign warning on every green run is the exact conditioning that makes the next non-benign one invisible.\n\n## Two ways to close it, and they are not equivalent\n\n- **Move the test to `run -127`**, if the two forms are genuinely equivalent here. Cheap, but only correct if the rule is right.\n- **Qualify the rule** in `usage-rules.md`, if `run <cmd>` followed by `assert_exit_code` is a legitimate form the rule over-reaches on.\n\nEstablish which before doing either. Changing the test to satisfy a rule that is itself too broad is how a rule stops describing anything.\n"
+}

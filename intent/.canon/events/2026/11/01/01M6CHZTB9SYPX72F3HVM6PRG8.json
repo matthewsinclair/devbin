@@ -1,0 +1,16 @@
+{
+  "id": "01M6CHZTB9SYPX72F3HVM6PRG8",
+  "ts": "2026-11-01T21:59:27.850Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 65,
+    "text": "ST0011 WP04's closure: WP04 stays WIP until vc marks AC-4.1, non-test, from main's own Ubuntu run on the 0.1.19 snapshot 0b5e4fa0 (run 41354285878, running at vc's word of 21:54Z), then sends dc the go to close it (vc's ruling, 2026-11-01: whether Ubuntu runs twice on S under the publish shape goes to hv then)."
+  }
+}

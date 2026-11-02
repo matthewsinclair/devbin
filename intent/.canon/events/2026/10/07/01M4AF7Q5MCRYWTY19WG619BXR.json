@@ -1,0 +1,15 @@
+{
+  "id": "01M4AF7Q5MCRYWTY19WG619BXR",
+  "ts": "2026-10-07T06:01:28.502Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0179"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "a gate's log directory under tmp/ is given an ignore file in a repository git refuses to read, a directory the project tracks included, because the refusal is read as no repository"
+  }
+}

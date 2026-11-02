@@ -1,0 +1,16 @@
+{
+  "id": "01M69CD6E0XSFF3JB5J15Y7X7R",
+  "ts": "2026-10-31T16:24:11.456Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 70,
+    "text": "ST0011/03 remainder, banked for its run: one commit e604637e on main 1b07bb45 in ~/Devel/scratch/devbin-dc/wp03r/build (lib/cmd/ci-state, lib/pages/ci-state.md, tests/unit/ci-state.bats). It adds ci-state --fires <ref> <sha> [<path>...] (fires, quiet, missing or unknown, from the one push-block reader the walk shares) and the failed detail naming the failed jobs inside the run's parenthesis. Two critic-shell passes are settled on vc's rulings; W5, W7 and is_branch_name go to cc's WP02c. Asked 01M69CCR2Q8DFAR1Z97GRQK1T9 (heavy, lane bats) at 16:23:56Z; START on vc's GO, END at run-wp03r.sh's exit (arms: 21 AC-3.1 arms and 7 changed red at red-1b07bb45-e604637e; light: ci-state, ci-workflow, releasecore, surfaces, help, documentation, the GNU scans, the install guard, shellcheck, the critic leg). At its landing: AC-3.1's ATs for fires, quiet, missing, unknown and the excluded-paths answer. Unit note: wp03r/BANK.md."
+  }
+}

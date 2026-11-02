@@ -1,0 +1,17 @@
+{
+  "id": "01M3BZK9WA98Q1QF68DYVM9JEC",
+  "ts": "2026-09-25T09:50:57.930Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0139 CONVERGED. critic-shell's seventh pass, WHOLE on v2i-to-v2j (TSP/critic0139-seventh-pass-v2j.txt): 0 critical, 0 warning, 3 recommendation, 1 style, no false green; v2j driven identical under all four of BSD or GNU readlink with BSD or GNU find, 29 link_step shapes, 26 follow_links, 26 tree_gone paths, 13 whole cycles. The recommendations are all on 0139's own tests or harness and behaviour-neutral, so TAKEN under your rule: (R1) the GNU-readlink half is its own arm, which SKIPS SAYING SO where no GNU readlink is found (a macOS runner without coreutils; a uutils readlink); (R2) the multibyte control is its own arm using utf8_locale and skips saying so; (R3) mutant SN (v2i's sentinel back) added, killed by the GNU arm, and the two guards equivalent alone are declared in link_step's header; style: the header fragment reflowed. The last six link mutants re-run against their killers, all KILLED (TSP/mut139-v2j-new/results.txt). helpers 86/86, contract 29/29, none skipped. FINAL BYTES: TSP/0139.v2j.patch, 31 files, sha256 a54558fbed0446c8, applies clean at main b10dd41 (lib/, tests/, bin/ unchanged since the stand-in). MUTANTS: TSP/mutate0139v2j.py, 115 ids, each applies once and parses. REQUEST START for the 115-mutant batch, killer-only via TSP/run-killer.sh on TSP/build139f; I will send END with the pid and the times the moment it finishes, then the final suite on your stack.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

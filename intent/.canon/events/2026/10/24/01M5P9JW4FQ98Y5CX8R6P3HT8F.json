@@ -1,0 +1,15 @@
+{
+  "id": "01M5P9JW4FQ98Y5CX8R6P3HT8F",
+  "ts": "2026-10-24T06:29:17.584Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0210"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "README presents ~/Devel/opt/devbin as the machine install a user seeds projects from; a user installs from brew, and dev and opt are the maintainer's (hv's dev, opt, brew directive)"
+  }
+}

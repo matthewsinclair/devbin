@@ -1,0 +1,16 @@
+{
+  "id": "01M699TDZ9TKARV4CC5CJFCJBH",
+  "ts": "2026-10-31T15:38:59.433Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 38,
+    "text": "ISSUE:0300 as its own unit on main (vc decision 100): git_project sets the project's identity in its config, so the cut's own release commit and tag find one on every host. RUN GREEN on desk request 01M698EDPDVGEW7R9YC4357WB8 (START 15:25:19Z, driver rc 0 15:36:56Z, released 15:37:30Z, END sent): the arm with git told never to guess red at main 22d0536b for git's own reason ('auto-detection is disabled', the commit row FAILED) and green at the bank under BSD and GNU; releasestatus, help and every tree scan green. LANDING INPUTS SENT to vc: handover ~/Devel/scratch/devbin-cc/i0300/handover, refs/bank/cc/0300 1b29205a4f4f00c88257d48d79fcd63c6fdd3ec6 on main 22d0536b. Next: vc lands it; then its clones go (cc), keeping the handover, which the record cites."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M69JW0REYZEVF4SXPZ5HJJMZ",
+  "ts": "2026-10-31T18:17:08.622Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 18:17Z (hv, twice: nothing in .cache): WP16's verbs move ahead of WP17 in dc's lane. Nothing writes the cache until WP16 is built (no cache verb is shipped; WP16 Not Started; dc paused at its usage limit with WP17 started and no code), WP17 unblocks WP02c's AC-6.3 and Gtools's kovacs leg, both behind cc's WP02b, a long unit, so WP16 first costs the cut nothing and gives hv the cache soonest. dc builds WP16 to design.md s13 (cache key, get, put, list, rm, gc and the build: block; DEVBIN_CACHE_HOME per D68; AC-5.1 to AC-5.5) on resume, WP17 after it, both before the cut (decision 102). WP17's platform_word ruling (decision 108) stands for when it is built."
+  }
+}

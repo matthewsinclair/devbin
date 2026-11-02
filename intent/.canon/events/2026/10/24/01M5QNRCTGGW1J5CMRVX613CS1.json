@@ -1,0 +1,15 @@
+{
+  "id": "01M5QNRCTGGW1J5CMRVX613CS1",
+  "ts": "2026-10-24T19:21:15.858Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0222"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "CI's Ubuntu job is red on v0.1.14: 0213 gives every arm its own HOME, so rustup's cargo proxy on the runner finds no toolchain (RUSTUP_HOME is not pinned)"
+  }
+}

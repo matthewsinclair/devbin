@@ -1,0 +1,16 @@
+{
+  "id": "01M4DQW6Z2XA6BA6K6HNW24GT8",
+  "ts": "2026-10-08T12:30:11.938Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 44,
+    "text": "0181 v1.1 LANDED by vc in batch 5 at f52f4d92 and closed at 6bc4d708, its Resolution dc's frozen draft (084f6ab0) with the landing sentence filled in. Scratch cleared 2026-10-08: the clones' commits exported as bundles in ~/Devel/scratch/devbin-dc/0181/drafts/ (0181-b5.bundle, 0181-s.bundle), each cloned back to its head, then the clones and variants deleted; runs/, drafts/ and work/ kept."
+  }
+}

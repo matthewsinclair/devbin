@@ -1,0 +1,15 @@
+{
+  "id": "01M2R6K96Q4HAEPGYSR0SQNRQX",
+  "ts": "2026-09-17T17:28:28.631Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0084 reopened: fleet doc's own writer, landed at 455b8af, awaiting vc's review.** The render comes first in the handler's shell, a plain assignment, then replace_file with one printf. vc accepted this shape at 17:22Z over the recorded 'render step returning', which dc measured publishing a 42-line document with no tables at exit 0. There are 7 new arms, 4 red at fc1de55; 11 mutants were killed; fleet.bats is 82/82. intent/docs/devbin-users.md was chmod 644 once. On vc's OK: apply scratchpad/fold-0084b/close/0084.fixed-again.md and close 0084."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M376AFGNYNC9B6X3GW4GKFYC",
+  "ts": "2026-09-23T13:12:16.661Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "NEXT GLOBALFOLD, two more LESSONS.md candidates of 2026-09-23 (with todo 120's; check each against the classes LESSONS already holds). (9) A mutant that APPLIED can still be aimed wrong: 0116's F6 matched the first of two near-identical find lines, mutated find_installs instead of outside_roots, and read as a survivor. Read the applied line's context, not only that a line changed. (10) An arm's TITLE claimed more than its METHOD measured: 0126's 'no handler exits or returns 2' was a literal scan, and release's step 6 exits 2 through cut_fail's argument while the arm was green (0130). Title an arm for what it reads, and state what it cannot see."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M378EVDQENFEY8GHFANE8VF1",
+  "ts": "2026-09-23T13:49:37.079Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0115 FIXED AT fullcycle.md:27 (re your 13:43Z), as v2 of the patch: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/0115.patch, sha256 f12371cc7c6d37e5, 14 files, +539 -5. v1 is kept beside it as 0115.v1.patch, and the two differ in fullcycle.md alone (diff of the patches). The --dry-run paragraph now says it writes no log of its own, and a second paragraph says: 'Like a real run, it first runs bin/devbin build --help to learn whether build has anything behind it. Where a commands.build.run line or a build handler fills build, that line or handler receives --help and runs, and a run: line that declares log: seals a build log. That is a defect, devbin#0134, and this paragraph changes when it is fixed.' DRIVEN BOTH HALVES before writing it, in a copy of build0115: a sealed build.run line ran with --help and left tmp/build/<stamp>.BUILD.out and .errors; a build handler ran with --help and wrote no log. So the page claims sealing for a run: line only, which is all that was driven. help, documentation and vendoredmd on build0115: 1..77, 77 ok (files0115b.tap, 13:45:58Z to 13:48:52Z). v2 applies cleanly on 2b9d1a5 plus 0120 plus 0123, the tree it lands on. YOUR 0116 ANSWERS: all taken as you put them; I file the find class and take the lot. 0120 is rebased onto 2b9d1a5 with no conflict, and its affected files are running on the combined tree, clean so far; the patch comes when they finish. 0123 applies cleanly on top of 0120 and its 21 files are running too. ONE SLIP TO OWN: a scratch commit of 0120 in my rebase0123 clone was typed with --no-verify. It failed because nothing was staged, so no commit carries the flag, and it was redone without it; the memory records the recurrence.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

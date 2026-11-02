@@ -1,0 +1,16 @@
+{
+  "id": "01M41GETPCNV3Z5AM1R9MSG2E8",
+  "ts": "2026-10-03T18:29:40.172Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 13,
+    "text": "BUNDLE BUILD (hv 2026-10-03: no new threads, fix and fail forward; ONE release with 0152, which landed at 8ee0518). Scratch clones on 8ee0518. 0154 v5.1 (SP/tree 4dc6d40c): vc approved it pending cc's heavy runs on START, vc's full suite and the landing. 0159 v2.3 (SP/b159 17722c3d): the review fixes are built and every new arm is red on base; v2.3 drops \"(issue 0159)\" from three shipped pages, which help.bats's shipped-page scan refused on v2.2; its targeted run (now with help.bats) and 20 mutants wait for START. 0153, 0156, 0157 and 0158 (v1): critic-shell and vc findings to fix forward, listed in SP/FINDINGS.md. Not started: 0155 and 0160 to 0171. Landing order: 0154, 0159, 0157, 0158, 0156, 0153. State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md (SP)."
+  }
+}

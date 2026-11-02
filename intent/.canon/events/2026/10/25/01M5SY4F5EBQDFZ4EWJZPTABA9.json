@@ -1,0 +1,16 @@
+{
+  "id": "01M5SY4F5EBQDFZ4EWJZPTABA9",
+  "ts": "2026-10-25T16:26:08.942Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). Resume state 2026-10-25 16:25Z (localfold on hv's call via molt-vc; no new GOs until hv says continue): 0.1.15 is devbin's ONE next release (decision 63) carrying 0213 and 0220-0231. LANDING STACK: land220 at a30c8ab2 (tree 42423f71) = main (593109bf outside intent/) + 0220, 0221, 0220b, 0222 (dc), 0223, 0224 (cc), 0226 (dc), 0225 (cc), 0226b (dc, 1b748f0a), 0227 (cc, 431e02e6), 0228 (dc, 6424bf39), 0226c (dc, ea816117) (tools/stack228.sh), 0229 (dc, a30c8ab2); cand220 at 03e7f15 (208 files, fleet absent); critic clean. STILL TO STACK, both built on a30c8ab2: 0230 (cc, contract A3 version line, build 23d06dd3 in ~/Devel/scratch/devbin-cc/0230/build; its light was running at the fold; then squash, seal, RESOLUTION, COMMIT_MSG) and 0231 (dc, awk LC_ALL=C via log_awk, high, wip 4e947979 in ~/Devel/scratch/devbin-dc/0231/build; arms red on 593109bf and a30c8ab2, green BSD+GNU; its light is next in the light lane after the continue; a vanished log now red, kept red by vc). Stack them in seal order (the second by cherry-pick with tree check), rebuild cand220, re-send READY to molt-vc. PAIR: last among the heavies; on GO run bash tools/pair220.sh with START/END, read both seals, write the land script into main (COMMIT_MSGs: dc 0220/0221/0220b/0222/0226/0226b/0228/0226c/0229/0231, cc 0223/0224/0225/0227/0230), fill resolutions (0229: .txt fixtures, Done when 5 in docs/configuration.md), close 0220, 0221, 0223-0231, ping hv; 0222 closes on CI green after hv's push. Critic legs carry NO known-positive sample (decision 68). Then the 0.1.15 note, kovacs booking (0.1.15 Linux check + 0213 leg D), ST0010 public steps (decisions 52/56/60), hv cuts."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6C0QFC9W00XY1N44NPC4G8M",
+  "ts": "2026-11-01T16:57:48.681Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "ST0011/08 (WP08; AT-3.9 in formula.bats; issue 0296): BUILT AHEAD in the dev clone's wp08 (6cf50484, one WIP commit on WP07's bank ba5a8270). The code is 0296's two call sites in lib/cmd/formula (release_sums, default_tap) passing cfg_release_first_remote; the yes, the cask render and releasing.md's yes paragraph landed with WP02a and 0227. Three arms tagged ST0011 WP08 in formula.bats: AT-3.9's (assets publish under the cut's yes, the formula and the cask in one commit, no question), a guard in GREEN_AT_BASE as vc ruled at 16:55Z, its note naming WP02a and 0227; and 0296's two (render's sums, publish's default tap), the red legs, probed FAIL at the base and PASS on wp08. No cache line (vc, Q2); no confirm wording (vc, Q3). Light checks green (2026-11-01 16:57Z by date -u): shellcheck, the pre-bank scan, helpers' four scans, the four whole-suite scans, the lint gate 58 files, 0 breaches. RUNNING: the critic. NEXT: its settle, the squash, the bank at refs/bank/cc/ST0011-08, the red clone; then the next stack with dc's WP02c (vc: the first banked carries the other)."
+  }
+}

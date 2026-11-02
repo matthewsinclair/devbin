@@ -1,0 +1,15 @@
+{
+  "id": "01M36Y4Q5K5FYSEVX3AERKFJQR",
+  "ts": "2026-09-23T10:49:19.284Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0129"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "install --force into a project never removes a file devbin stopped shipping, and once the manifest drops it no upgrade will: a retired lib/cmd/<name> goes on dispatching"
+  }
+}

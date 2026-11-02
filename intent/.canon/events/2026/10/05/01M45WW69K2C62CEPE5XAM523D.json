@@ -1,0 +1,15 @@
+{
+  "id": "01M45WW69K2C62CEPE5XAM523D",
+  "ts": "2026-10-05T11:23:38.675Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "No write in the shared tree after dc's localfold commit: no intent wb verb, no commit, and no git command there (vc, 2026-10-05, ahead of hv's compact, while vc runs git reflog expire and gc --prune=now). Released when vc says the gc is done."
+  }
+}

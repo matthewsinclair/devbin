@@ -1,0 +1,15 @@
+{
+  "id": "01M36KDKMY7YXFH9SABFR1SEX3",
+  "ts": "2026-09-23T07:41:56.254Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0113 IS cc's TO BUILD UNDER vc's REVIEW (hv, 2026-09-23: \"CC should do it, under your review\"). The red half is measured at 0.1.7 and the design is written into the issue at 1d2fab1, marked NOT YET REVIEWED; the build waits for vc's review of the design. The tree is cc's for 0113 today -- vc writes nothing under lib/, bin/, tests/ or docs/ -- and vc is told before any full suite. `intent issues show 0113` is the one home."
+  }
+}

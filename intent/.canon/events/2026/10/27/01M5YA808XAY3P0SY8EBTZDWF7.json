@@ -1,0 +1,15 @@
+{
+  "id": "01M5YA808XAY3P0SY8EBTZDWF7",
+  "ts": "2026-10-27T09:14:45.406Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0246"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "Contract amendment A5: doctor prints the version line unchanged, and devbin's doctor prints it under a label and with the install link's path beside it"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6BB6X9FXR90EFXMRZ13R71Y",
+  "ts": "2026-11-01T10:41:45.775Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop), banked as WIP at refs/bank/cc/ST0011-02b 4ea0da422f769688349a73ed8f86af0581b5b4f2, 36 WIP commits on a2dde479, branch wp02b-c2 in ~/Devel/scratch/devbin-cc/st11-wp02b/fix-c2, with vc's ruling on CRITIC-4 applied: cc-1 8a4957c3, VC-1 dd6dcd8d, W1 with G1 75c71bf9, the text cfa67526, the pushurl set 4ea0da42; issues 0308 to 0310 and the notes on 0307 and 0304 at canon 60a21f1f. The probes p12 and p8 ran on light slot 01M6BAZZBF33MVC1BKTHJ4SP73 (2026-11-01 10:40:12Z to 10:41:07Z by date -u) at the tip: every case stopped the gate at 143 with STOPPED yes, and an unreadable job table now gets its full poll; vc accepted them as the evidence for W1 and G1. HOLD until vc sends main's new head once WP16 lands (decision 83, five shared files); then squash onto it with commit-msg.draft.txt, the five shared files resolved, the checks and the prebank scan, archive the WIP chain in cited-archive.git, re-bank by fetch and compare-and-swap, and ask the desk for the unit run in kit/runs.conf's shape (dispatch.bats red at the base and green at the tip under BSD and GNU). Not verified: no bats after 7ca8ea42. State in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md."
+  }
+}

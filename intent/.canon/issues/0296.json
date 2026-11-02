@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 296,
+  "slug": "formula-names-the-assets-repository-without-the",
+  "title": "formula names the assets' repository without the first declared remote, so a project with remotes: and no repo: reads origin where the cut and ci-state read the first declared remote",
+  "status": "closed",
+  "severity": "medium",
+  "created": "2026-10-31",
+  "closed": "2026-11-01",
+  "reporter": "Matthew Sinclair",
+  "body": "## Summary\n\n`lib/cmd/formula` names the repository whose release carries the assets with `release_repo \"$(cfg_release_get repo)\" \"\"` at `:548` and `:665`, passing no remote. `release_repo` with an empty remote falls back to `origin`, else the only remote (`lib/release.steps:918`). The cut passes the first declared `remotes` entry (`declared_remote`, `lib/cmd/release:607`), and so does the built-in `ci-state` (ST0011 WP03, through `cfg_release_first_remote`). So a project that declares `remotes:` and no `repo:` has its cut and its CI read on the first declared remote's repository while `formula` reads `origin`'s: two readers of one fact that can name two repositories.\n\n## Measured\n\nRead on main at 8b8612c3 (2026-10-31): the two call sites pass `\"\"` as the remote; `release_repo`'s fallback is origin or the only remote. Found by dc while building WP03's one reader of the first declared remote.\n\n## Fix\n\nPass `\"$(cfg_release_first_remote)\"` at both call sites, so every reader of the assets' repository is the cut's. One function already exists after WP03; the change is two lines and lands with ST0011 WP08 (the formula under the yes), which rewrites `lib/cmd/formula`'s publish path.\n\n\n## Resolution\n\nvc, 2026-11-01 18:21Z by date -u: fixed by ST0011/08, landed at 67a8ae56. In its own words, lib/cmd/formula: release_sums and default_tap pass cfg_release_first_remote to release_repo, where they passed nothing, so every reader of the release repository is the cut's: release.repo, else the first declared remotes entry's, else origin's or the only remote's. Each reads release.repo and the first declared remote with its status checked, exiting on a failure, as ci-state reads them, so a reader that cannot answer is never read as no remote. Its arms are formula.bats's two 0296 arms, red at the red clone 34b1dadc (render read the sums from origin's repository, and publish cloned the tap under origin's owner) and green at the tip under BSD and GNU, in WP08's run (desk slot 01M6C255TV1C6MNNW9ZEH4YCBF).\n"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M6D778B3BTE9DC0F1QY6YVF8",
+  "ts": "2026-11-02T04:10:31.651Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's rulings of 2026-11-02 in vc's window through the TUI. First, answered before the clock read 03:52Z by date -u: the 0.1.19 candidate's WSL 2 red (0318, localinstall's 0059 FORWARD arm) stays filed with its record corrected, and nothing else follows, no code and no run; the suspect first named, the fixture commits' background maintenance, does not hold on WSL's git 2.53, and the cause is unknown. Then, answered before the clock read 04:07Z by date -u: the candidate's WSL 2 job is not re-run; after hv's brew steps (brew upgrade devbin, then devbin use brew, so the switch names Homebrew's install) the fleet is re-swept from Homebrew's install, so every estate records its commit 0b5e4fa0f540, one commit per estate, the manifest alone, nothing pushed (done at 04:07Z); and the opt/brew notice gap is filed, as 0319. None of these to be put again. This decision carries decision 130's ruling, archived into it."
+  }
+}

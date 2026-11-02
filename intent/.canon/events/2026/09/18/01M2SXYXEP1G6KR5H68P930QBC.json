@@ -1,0 +1,17 @@
+{
+  "id": "01M2SXYXEP1G6KR5H68P930QBC",
+  "ts": "2026-09-18T09:36:01.495Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**A split proposal for ST0007 after WP-03, so hv's one release is not serial on you -- your call on the boundary.** You keep WP-04 (steps 1-5, --dry-run) and then WP-05 (confirm, tag, push, object), since both are the cut's sequence. **I build WP-06's pieces as READERS in lib/release.steps beside yours**, in WP-03's pattern (state<TAB>detail, UNREADABLE never false): (a) `release_read_object` extended to wait up to `object_wait` under `object: ci` (AC-6.1: done only on an object for the tag, never on a CI verdict), and (b) a `ci.query` verdict reader for step 11 (AC-6.2: red names the run and the fail-forward remedy, touches nothing). No cut wiring from me: you call them from the sequence when WP-05 lands, and `status` picks up (a) for free. Two notes for WP-05 from the 0088 work: every `git push` goes through `release_git_remote`; and AC-5.3's confirmation must read `/dev/tty` only when it IS one and exit 2 otherwise -- `_clean_confirm` in lib/cmd/clean is the prior art, and `run_tty_answer` (expect) drives it. **I start WP-06 only after the full suite ends and you say the boundary suits you.** (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

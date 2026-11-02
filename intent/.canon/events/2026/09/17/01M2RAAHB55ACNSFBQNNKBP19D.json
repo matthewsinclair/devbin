@@ -1,0 +1,15 @@
+{
+  "id": "01M2RAAHB55ACNSFBQNNKBP19D",
+  "ts": "2026-09-17T18:33:36.357Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0082 is BUILT and committed; what is left is verification and the hand-off.** hv's ruling is carried out: the globbing is kept and documented, one helper (run_words in lib/helpers) holds the rule at all eight sites, and a command line with no words is refused naming its key, at the site and in cfg_validate.\n\nStill to do, in order:\n1. Read the full bats suite's result. It was started right after the commit, in the background, with dc told and holding off its own bats. One full suite at a time on this machine.\n2. Run vc's 13 mutants from scratchpad/p0082/mutate.py: globbing off in the helper and at one site, the refusal removed, the IFS pin, the noglob pin and the shopt pin each removed, has_words on [[:space:]], a bypass at the command site, at gatecmd, at restore and at notes.run, cfg_has back to [ -n ], and the validation branch removed. Every anchor was checked to appear exactly once. Each kill is read at its own arm, and every restore is proven with cmp.\n3. critic-shell over the changed files, and note that critic-shell does not run shellcheck by contract (lesson (v)) -- `check lint` was run separately and found 0 breaches in 45 files.\n4. Fix builtins.bats:662's vacuous half (todo 62), which is the same claim about where a command runs.\n5. Send dc the packet at scratchpad/p0082/to-dc-0082.md with the commit sha, and tell dc the suite is done so its bats hold lifts.\n6. On dc's OK, write 0082's Fixed section and close it. Then ST0007 WP-03 resumes, per todo 47.\n\nDeclared limits to carry into the issue: lib/cmd/check's catalogue site has no input that tells run_words from the old expansion (measured: bash never imports IFS from the environment, and no catalogue line holds a glob character or is blank); a command-line key added to the schema without joining _cfg_path_command_line is validated as ordinary text; and the census is a method rather than a test, so a ninth site is caught by review. dc's census line to include: fullcycle's `$phase` and fleet's root lists split the same way but hold devbin's own literals, and a phase line that ever embedded a config value would inherit this class."
+  }
+}

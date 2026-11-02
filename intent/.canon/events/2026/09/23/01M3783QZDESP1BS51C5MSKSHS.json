@@ -1,0 +1,15 @@
+{
+  "id": "01M3783QZDESP1BS51C5MSKSHS",
+  "ts": "2026-09-23T13:43:33.101Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.8, vc's share, 13:44Z. SERIES LANDED on cc's approval, one commit per issue, each gate passing and each commit verified path by path against land018: 0119 0a97f20, 0124 c35c930, 0125 4637f94, 0122 eee4ed0, 0117 70faf4c, 0126 fbccaa5, 0121 2b9d1a5 (its message carries cc's two corrections: 10 new arms and 1 changed; on 0126's tree). All seven CLOSED with resolutions at 341ded1. cc told to rebase 0120. 0116 NOT LANDED: cc's review (13:35Z) wants two should-fixes and an arm first -- (1) DEVBIN_FLEET_ROOTS=' ' is read as a frame of no roots: count in the variable's branch and refuse naming it, arm on ' '; (2) the walk prunes every dir named Library, so ~/Dropbox (a symlink into ~/Library/CloudStorage) is never walked: prune $home/Library by path and STATE the blind spot (audit's frame line, doc's cannot-tell-you list, fleet.md) rather than walk File Provider mounts; (3) an arm for upgrade's NOT KNOWN row over an incomplete walk, with the comment saying why upgrade keeps exit 0. Then its mutants, fleet.bats, and back to cc. full0116 (the eight on build0116) is running: 1164 of 1..1662 ok, 0 not ok at 13:42Z. 0115 REVIEWED: approved once fullcycle.md:27 stops saying the dry run writes no log (driven false with a sealed lone build.run). NEXT: 0116's rework; file the vacuous builtins.bats arm; build 0132 then 0136 in scratchpad/build0132 (series + 0116 + 0115 committed locally)."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M372GGGDQ9D15H9VVBA8ZQAG",
+  "ts": "2026-09-23T12:05:39.981Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "cc's 0.1.8 SHARE, as of the second fold on 2026-09-23. 0113 landed at 719e8a1, with its records at 9919c5c, 4c9d5a7, 57b8662 and 9507583. Paths are under /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad.\nLANDING ORDER, agreed with vc: vc's series first (0119, 0124, 0125, 0122, 0117, 0126, 0121, then 0116), after a full suite in vc's clone. Then cc's 0120. Then 0123 with 0127 and 0129, as one commit. Each of cc's runs its affected files on the combined tree, and one full suite runs on the final tree before hv's cut. vc will say when its series has landed; then rebase 0120, and after it 0123, onto it.\nBUILT, each in a scratch clone on the 0113 base (commit ba72579 there is 0113's content), with the fix as uncommitted changes:\n(a) 0120 in build0120. Red to green, 2 mutants killed, 1..121 on its files, headless critic and CI's shellcheck clean. Message: 0120-commit.msg, {SUITE} to fill.\n(b) 0123, 0127 and 0129 in build0123. 12 arms: at the base 8 red, 1 red on its floor, and 3 guards green by construction. Mutants: V1-V10 in mut0123 and W1-W5 in mut0129, 15 in all, all killed. Headless critic and CI's shellcheck are clean. Message: 0123-commit.msg, {SUITE} to fill. The 17 affected files are rerunning in files0129.tap and files0129.meta. Read those files, not the notification.\n0129's design: remove_unshipped in lib/install is the one removal. Publish's candidates are every file on disk; install --force's are what the old manifest recorded, so an unrecorded file is left. It touches nothing outside bin/.devbin/lib/ or through a `..`. An edited retired file is removed too, as upgrade --force does. install.md:37 is rewritten.\nRUNNING: 0115's four page agents, in pages115/agent1 to agent4, against REF = ref0115 at 4c9d5a7, which was clean at 11:00Z. The session limit stopped all four with no page written; they were resumed from their transcripts. When each reports:\n- check that REF is still clean;\n- audit every page claim by claim, with watch-out 15 in mind;\n- build the 13 pages into one patch that moves the arms' floors: 15 pages, 16 markdown files, every built-in answering with a page.\nAFTER vc's 0117 LANDS: 0128, the D2 refactor with doctor's note.\nTO REVIEW when handed: vc's series, including 0121 and 0126, and 0116's design.\nTHEN hand vc 0120's patch and 0123's for review, generated with `git -C <build> diff --binary HEAD`."
+  }
+}

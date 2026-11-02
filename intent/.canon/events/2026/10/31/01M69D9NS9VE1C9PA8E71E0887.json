@@ -1,0 +1,17 @@
+{
+  "id": "01M69D9NS9VE1C9PA8E71E0887",
+  "ts": "2026-10-31T16:39:44.681Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "WP02b's design note is ready for your read before any code: ~/Devel/scratch/devbin-cc/st11-wp02b/DESIGN.md, beside MAP.md (the cut's tail at WP02a's bank) and NOTES.md. Your two questions are its sections A and B. A, release.repo to the candidate's remote: release_repo's own parse (url_host_path over each remote's configured url, never get-url) run the other way; the first remote naming the repository, in release.remotes' order then git's, gets the one push; none naming it is a pre-flight refusal naming the repository and every remote read (urls through release_url_shown), before anything is stamped; the publish shape keeps S to publish.url's candidate; no ci.query, no candidate leg in WP02b (WP02c's default brings it); the candidate read by its ref. B, a refused candidate push: the push is the legs step's first act, bounded and read back, before any other leg starts; a refusal stops the cut red at once, git's own words, nothing started, nothing public, no tag, the RELEASE seal's leg line saying so; a push that does not answer is unknown and stops the same way; the person fixes what git named and runs the same cut again (R in history, stamp and commit already, green legs already); a candidate pushed and then a red is deleted on any stop with --force-with-lease and read back, a refused delete named in the summary with its sha. Then C the loop (the legs step, already per leg, one line per state change with the clock, poll as today, ci.wait the deadline, the stop's kill and keep), D tag on green and release publish folded in (the yes names R and S in words; resume), E the retirements and their cascades, F todo 55's two items, G the tests (about 70 arms move; the new arms), H what is not in it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

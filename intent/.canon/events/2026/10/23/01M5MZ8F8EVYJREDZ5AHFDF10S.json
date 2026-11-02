@@ -1,0 +1,16 @@
+{
+  "id": "01M5MZ8F8EVYJREDZ5AHFDF10S",
+  "ts": "2026-10-23T18:09:36.526Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 55,
+    "text": "0206 on vc's word, for 0.1.13, on 0205's tip: four commits, (A) e30b93f3 with its critic fold aa055d96 and (B) c44cb53f with its fold d688b285, every finding of critic-shell's taken and the kept literals ruled by vc. NEXT: the targeted run of every touched suite plus the tree scans and help, BSD and GNU, booked with intent-vc at d688b285, on its START; then a bundle and HANDOVER to vc"
+  }
+}

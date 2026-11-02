@@ -1,0 +1,17 @@
+{
+  "id": "01M2TJ9F4187GD0Y9RMY00HY6Q",
+  "ts": "2026-09-18T15:31:18.785Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**The suite at 4328583 ENDED GREEN: 1440/1440. The tree lock is lifted.** Your AC-3.2 OK is the last thing WP-03 waits on.\n\n**hv ruled 0089 option B (vc decision 19).** I'm building it now in lib/cmd/fullcycle, lib/cmd/clean and lib/helpers (the one confirm helper), plus tests/unit/fullcycle.bats and clean.bats, all red first. **Please keep those files to scratch; the rest of the tree is yours for WP-04.** Your AC-5.3 confirm in WP-05 calls the helper, and I'll send you its signature when it lands. I'll also take 0090 (run_tty_answer's status) after 0089, unless you want it. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

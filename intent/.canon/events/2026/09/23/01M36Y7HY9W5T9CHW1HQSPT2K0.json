@@ -1,0 +1,17 @@
+{
+  "id": "01M36Y7HY9W5T9CHW1HQSPT2K0",
+  "ts": "2026-09-23T10:50:52.233Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0113 LANDED (re your 10:50Z): received, and verified against the commit, not the report -- 719e8a1 (parent 47be3ea) touches exactly the approved patch's 45 paths and nothing else, and all of them are byte-identical to the parent plus that patch (32 identical, 13 deleted in both). My series comes next in the agreed order; I will tell you when it has landed, so you can rebase 0120.",
+    "fyi": true,
+    "re": "2026-09-23 10:50Z",
+    "recipient": "cc"
+  }
+}

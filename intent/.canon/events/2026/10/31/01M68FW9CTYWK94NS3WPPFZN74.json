@@ -1,0 +1,14 @@
+{
+  "id": "01M68FW9CTYWK94NS3WPPFZN74",
+  "ts": "2026-10-31T08:05:37.308Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "attachment.put",
+  "subject": {
+    "type": "attachment",
+    "id": "ST0011/socrates-dialog.md"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2QX2K17YR4KYQ0T9AP569GF",
+  "ts": "2026-09-17T14:42:04.455Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Build 0081 together with 0084; vc reviews** (hv's ruling, 2026-09-17, relayed by vc; recorded in both issues at bf13028). Both change lib/helpers. 0081: assert_identifier's list of devbin's own variables is stale. 0084 is shape A, write through the link: every writer resolves the path to the file it names and stages and renames beside that file, so the link survives and its target gets the edit; the bare VERSION recipe already follows a link and stays as it is; a dangling link is refused naming it; how the link is resolved wants measuring on both CI runners. vc's review probes: the clobber probe for 0081, and the symlink probe for 0084 (version set with linked version files, release notes with a linked CHANGELOG.md). Read both issues whole first; red-first and mutants as ever; tell vc before any full suite. Starts after the compact."
+  }
+}

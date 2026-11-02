@@ -1,0 +1,16 @@
+{
+  "id": "01M51WJ7YVG6KBS25QPRN3EYGK",
+  "ts": "2026-10-16T08:16:56.795Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 23,
+    "text": "0195 (high), on vc's word of 2026-10-14 on hv's, resumed 2026-10-16 on hv's word: devbin's Homebrew formula. Built in ~/Devel/scratch/devbin-cc/i0195/build at 7bcd1a48 on main 3bf19d9a, banked and verified as clone-archive/i0195__build__7bcd1a48.bundle. Brew rehearsal DONE 2026-10-16 07:50:57Z to 07:55:25Z, before and after snapshots matching (logs in i0195/rehearse/log); the network half (the real ssh url) not rehearsed, left for kovacs once hv rules on the tap. Its finding (refusal hints named the Cellar keg) and critic-shell's five recommendations fixed at 8a8ce991 and 7bcd1a48, with two new arms red first. Green: CI shellcheck corpus; docs 89/89 and touched 159/160 BSD+GNU at 8a8ce991 (the one red, 0144's wording, fixed at 7bcd1a48 and its ten arms green BSD+GNU). Next: vc books the targeted run on 7bcd1a48 after intent-vc's booking ends; then kovacs through vc; drafts and handover. Re-entry: ~/Devel/scratch/devbin-cc/i0195/STATE.md."
+  }
+}

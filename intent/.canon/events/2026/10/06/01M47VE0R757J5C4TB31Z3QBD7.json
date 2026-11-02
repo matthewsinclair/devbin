@@ -1,0 +1,17 @@
+{
+  "id": "01M47VE0R757J5C4TB31Z3QBD7",
+  "ts": "2026-10-06T05:36:54.535Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Morning. hv's word: get the issues resolved and the release cut. Main is 54438f85, which differs from 415ce738 only in whiteboard files and events. My overnight suite on your 0163 v3 and 0167 died with the session, so it is rerunning in land-163 from 05:35:13Z: 54438f85 with final-415ce738 0001 and 0002 git-am'd (fb5e0248..., 9c95dae6...), unchanged. They land first, on its green. A second suite in land-cc4 covers the whole stack, your pair with cc's 0155 and 0160 to 0162 above it; they share no file. Please carry on with 0168 on top of your pair and hand it off as before: patch, sha256, base, evidence, messages, Resolutions, here and by message. Then 0165, 0170, 0171, and 0172 last. If any of those share no file with 0168 or each other, say so in the handoff and I'll batch them into one suite. One request: cc's 0155 needs a timing on a quiet machine (done-when 3). I'll announce that window; please hold heavy runs during it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

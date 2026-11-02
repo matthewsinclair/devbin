@@ -1,0 +1,15 @@
+{
+  "id": "01M5YB07ENCEJ91MNN5YNZDD85",
+  "ts": "2026-10-27T09:27:59.190Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0259"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "With no version file, version show prints unknown at exit 0 and version check passes, so a script reads unknown as a version"
+  }
+}

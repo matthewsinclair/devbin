@@ -1,0 +1,15 @@
+{
+  "id": "01M2WRAH8NH3RHKQTC8R89J5K0",
+  "ts": "2026-09-19T11:55:14.069Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Pre-notice additions (todo 74), 2026-09-19:** (1) 0093: lib/cmd/doctor runs every executable in a project's bin/.devbin/cmd/doctor.d/ after its own checks, and 'doctor <check>' runs one; a project whose cmd/doctor.d/ holds anything will see it run. (2) WP-06: release's cut runs all eleven steps (object: ci, after:, ci.query), bounded after the push. (3) The test helper's two guards are devbin's own tests, not vendored: no pre-notice. (4) 0092 is devbin's own test handler, not vendored: no pre-notice."
+  }
+}

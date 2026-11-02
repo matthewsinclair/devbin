@@ -1,0 +1,14 @@
+{
+  "id": "01M643TTZZ3K7JDX6C32PQM15F",
+  "ts": "2026-10-29T15:18:09.152Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-2.3"
+  },
+  "payload": {
+    "evidence": "deny list over snapshot 2cde3ee6: 6 terms, 0 text files, 0 commit-message lines, 0 files as raw bytes (snap-scan.sh, scan-v0117)"
+  }
+}

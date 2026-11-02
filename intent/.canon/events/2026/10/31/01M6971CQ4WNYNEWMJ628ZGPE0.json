@@ -1,0 +1,16 @@
+{
+  "id": "01M6971CQ4WNYNEWMJ628ZGPE0",
+  "ts": "2026-10-31T14:50:21.796Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 69,
+    "text": "ST0011 stack landing: run 3b GREEN rc 0 at aa2fb1d2 (14:43:07Z to 14:55:30Z; slot 01M696HE2CXGH3SW7HHYCEDCTM released 14:57:10Z; record ~/Devel/scratch/devbin-dc/run3d/runs/light/summary; END sent to vc). handover-run3b.sh done: ~/Devel/scratch/devbin-dc/run3d/handover holds st0011-run3b.bundle (st0011-06 1f37e5eb and st0011-05 aa2fb1d2 on d708e37b) and SHA256SUMS, verified in a fresh clone of canon. AT rows per vc's ruling: AT-3.2 green and AT-3.3 red covering AC-3.2; AT-3.4 and AT-3.5 green and AT-3.6 red covering AC-3.3. AT-3.1 (releaselegs.bats) is made and left to-write, since Intent refuses a verdict on a row whose file is absent and the file reaches main only at the landing: set it red then green right after vc's landing line. AT-3.7 was refused (a non-test row cannot cover a test-backed AC) and is back with vc. Move nothing in run3d or its clone until vc's landing line; no kovacs login before vc's order."
+  }
+}

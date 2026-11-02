@@ -1,0 +1,16 @@
+{
+  "id": "01M68SQJ8JRY1GNRGVF03G5KDQ",
+  "ts": "2026-10-31T10:57:48.307Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 36,
+    "text": "ST0011/01 (WP01) fix on hv's go via vc (2026-10-31 10:38Z): the eight reds of N9CEEZ fixed as one order (vc approved), squashed on 80137589 in ~/Devel/scratch/devbin-cc/st11-wp01/fix (branch st11-01-squash), shellcheck clean, and a trial rebase onto WP03 and WP04's banks clean; END sent, slot released; WP03 (dc) takes the bats lane first, then rebase onto main, use is_commit_sha \"${2,,}\" full at release:207 and :3401 so WP01 adds no regex copy, and add the full-sha pattern to updatenotice's 0079 one-sha-check arm (dc's note); critic once, re-bank refs/bank/cc/ST0011-01 with a fresh handover and ask vc for a slot (run 2 chains with dc's WP06a when both are ready, else the ready one alone); run kit in ~/Devel/scratch/devbin-cc/st11-wp01b; evidence: changed arms red on main then green under BSD and GNU, one targeted run with the tree scans and help."
+  }
+}

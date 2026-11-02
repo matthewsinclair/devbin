@@ -1,0 +1,16 @@
+{
+  "id": "01M68VQ1GVDG3Z8SN7H8Y0KTWC",
+  "ts": "2026-10-31T11:32:28.316Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 36,
+    "text": "ST0011/01 (WP01) re-bank on hv's go via vc (2026-10-31 10:38Z): the eight reds of N9CEEZ fixed as one order and squashed on 80137589 (branch st11-01-squash in ~/Devel/scratch/devbin-cc/st11-wp01/fix); the critic's one review (trial tip 9cc110f0 on WP04's bank) ruled by vc: its critical (git_head_identity pins --untracked-files=normal, the arm in gitident.bats, the function's home) and the this-platform wording done on branch crit, and R4 (seal_verdict answers unknown for a sha that is not whole, one arm) goes in with the is_commit_sha swap; WP03 (dc) takes the bats lane first, then rebase onto main, use is_commit_sha \"${2,,}\" full at release:207 and :3401, add the full-sha pattern to updatenotice's 0079 arm, re-bank refs/bank/cc/ST0011-01 with a fresh handover and ask vc for a slot (run 2 chains with dc's WP06a when both are ready); run kit in ~/Devel/scratch/devbin-cc/st11-wp01b; evidence: changed arms red on main then green under BSD and GNU, one targeted run with the tree scans and help."
+  }
+}

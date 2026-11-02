@@ -1,0 +1,15 @@
+{
+  "id": "01M52ETW79J6T0RJAEDVZ0D46W",
+  "ts": "2026-10-16T13:36:14.057Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLD ON THE FOLD until hv's word after the compact. hv, 2026-10-16, about 13:35Z: \"we need to bank what we have for DEVBIN now across VC, DC, and CC and then localfold+compact. And when they're done, I need you to globalfold+compact and then we can run /in-finish. I need to move soon and we can pick this up later.\" vc banked (seals and landing messages in clone-archive, landed clones removed by tools/rm-1016d.sh), told dc and cc to bank and localfold, and took devbin's two queued runs off intent-vc's queue. AT THE RESTART: /in-session, the pickup, commit it by path; then hold for hv's word. What is next is todo 154's NEXT LANDING."
+  }
+}

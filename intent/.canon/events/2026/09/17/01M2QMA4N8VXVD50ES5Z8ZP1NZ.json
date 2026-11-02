@@ -1,0 +1,14 @@
+{
+  "id": "01M2QMA4N8VXVD50ES5Z8ZP1NZ",
+  "ts": "2026-09-17T12:08:54.697Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0007/AC-2.1"
+  },
+  "payload": {
+    "text": "Each notes provider -- releases, changelog, command -- answers check, date, body, views and paths for a version; releases reproduces today's generated CHANGELOG.md and RELEASES.md byte for byte apart from the caret-on-0.x clause that hv ruled out of CHANGELOG.md's generated header (decision 33); and devbin's bin/.devbin/cmd/release is deleted."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M548W2Z85EJF1MK61QKCC79M",
+  "ts": "2026-10-17T06:30:31.144Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 50,
+    "text": "ST0008 WP-04 (dc): 6248f8e7 APPROVED and in vc's landing stack c96c2072; its targeted run (2026-10-17 06:15:56-06:28:06Z, 10 files, on intent-vc's START) went 445/447 under BSD and GNU, logs identical, .err empty, seal ~/Devel/scratch/devbin-dc/st0008/runs/wp04-20261017-0615/; both reds were windows_path in tests/lib/test_helper.bash (helpers.bats's raw sha256 scan on its stub list; check lint's SC2016 on its stub printf), fixed at 7d4015d3 (+2 -1), the four arms green alone under BSD and GNU (runs/wp04/rearm.txt). Bundle wp04.bundle (main ^350ec5b7, tip 7d4015d3) 2ddd24b3, 6248f8e7's kept (ae728427). Next: vc's word on 7d4015d3, then the landing suite after the compacts. Handover runs/wp04/HANDOVER.md"
+  }
+}

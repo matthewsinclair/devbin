@@ -1,0 +1,15 @@
+{
+  "id": "01M2ZCYJCRGN39V2DBJ1BS504X",
+  "ts": "2026-09-20T12:34:10.968Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "Running devbin's own gates (check all, test all, doctor) against the 0.1.2 seam at 80e7528, on hv's word -- vc's decision 23 names that no estate's suite has run against it anywhere. Measurement only: no tree edits, nothing claimed beyond this."
+  }
+}

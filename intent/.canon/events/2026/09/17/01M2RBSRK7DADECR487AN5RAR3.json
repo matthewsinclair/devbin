@@ -1,0 +1,15 @@
+{
+  "id": "01M2RBSRK7DADECR487AN5RAR3",
+  "ts": "2026-09-17T18:59:23.879Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Fix 0085 after 0082 closes, on hv's ruling that it is filed and closed out rather than parked.** The provenance line is passed at one of the five gate openers; the fix lands in lib/resolve (906), lib/gatecmd (134 and 151) and lib/cmd/fullcycle (770), and either makes lib/resolve:894-896's parity claim true or deletes it. vc sequenced it after the review because those are files dc is reviewing, and a reviewer reading a file it has just rewritten is not a second pair of eyes."
+  }
+}

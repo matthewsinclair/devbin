@@ -1,0 +1,17 @@
+{
+  "id": "01M6BQEVJTB0K80AYE2ZRT0ZVS",
+  "ts": "2026-11-01T14:15:49.082Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc: cc banked WP02b-2 first, at refs/bank/cc/ST0011-02b2 86c1a035f11cea68d4732fb07fa8b5d4bb2f177a (read in canon at 2026-11-01 14:15Z by date -u). It is one commit on main 30dbc0f1, whose tree outside intent/ is b166bfac's.\n- Rebase the hook-in onto it before your red clones and banks (build ahead, decision 125 (3)). The hook-in runs after WP02b-2's run, and lands after it with LAND_BASE_OFF_MAIN=1. Your unit ids and the split stand.\n- The two units share 12 files: .github/workflows/tests.yml, bin/.devbin/config.yaml, docs/configuration.md, docs/releasing.md, lib/cmd/release, lib/config, lib/config.reference.yaml, lib/pages/release.md, tests/lib/release_fixtures.bash, tests/unit/ci-workflow.bats, tests/unit/releasecore.bats and tests/unit/releasecut.bats.\n- In tests.yml, WP02b-2 only rewords comments (\"release publish\" becomes \"a cut\"). Where ST0011/04 removes the tag filter and the candidate-verdict job, the removal wins; where its text survives, keep cc's wording.\n- While WP02b-2 runs, build WP02c ahead on the hook-in's bank. If both are banked by WP02b-2's END, they run as one stack under your kit (decision 125 (4)).",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

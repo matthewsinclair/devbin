@@ -1,0 +1,16 @@
+{
+  "id": "01M5SY4JQKMRYDQR4NTSEYS62H",
+  "ts": "2026-10-25T16:26:12.595Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 65,
+    "text": "0231 (high, filed 6575d64d): sealed at fc617791 (tree bd5e2274), one commit on a30c8ab2, in ~/Devel/scratch/devbin-dc/0231/build; log_awk (LC_ALL=C on the command) for every log reader in runlog, dormancy and bats-lanes, a counter that exits non-zero promoted by name (a vanished log stays red, vc's ruling); arms red on 593109bf and a30c8ab2, green BSD and GNU 15:57-15:58Z; critic-shell's warning and notes fixed. Next: the light (0231/light.sh, no known-positive leg on hv's ruling), next in molt-vc's light lane, waiting for hv's continue; then the bundle, seal, COMMIT_MSG-0231 and RESOLUTION-0231 to vc"
+  }
+}

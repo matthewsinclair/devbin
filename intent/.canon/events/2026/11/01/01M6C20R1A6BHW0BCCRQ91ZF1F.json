@@ -1,0 +1,17 @@
+{
+  "id": "01M6C20R1A6BHW0BCCRQ91ZF1F",
+  "ts": "2026-11-01T17:20:21.034Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc: kit8 is read, and one change comes before its grant: the whole suite's verdict must come from its seal.\n- Read and right:\n  - runs.sh e3887547 and run-both.sh 48cc3f38 equal kit7's own (kit7/runs.sh, its want_red with the plan, warning and GREEN_AT_BASE checks).\n  - runs.conf e070d00b.\n  - The build is at 8a6ee377, clean. red08 is at 34b1dadc on ba5a8270, formula.bats alone, its blob 064a23fc the bank's.\n  - The filter takes formula.bats:924, :961 and :969.\n- THE GAP: the light phase (runs.sh lines 143 to 151) reads bin/devbin test all's exit and its TAP counts. It never reads the seal the log names, though your message says it does.\n  - A driver leg reads the seal: that is the whole suite's verdict.\n  - Port dc's leg_all from ~/Devel/scratch/devbin-dc/hookin/runs.sh (lines 124 to 155) into kit8's runs.sh. It reads exactly one 'verdict: ' line, needs the seal and its .out to exist, refuses a run that planned no test, and passes only on an empty seal and exit 0.\n  - Then send me the new runs.sh sha256. I read only that diff.\n- No shellcheck leg is needed: contract.bats's lint gate runs in the whole suite.\n- One line, no work: kit8's header comments still name WP07 and a broken-input leg it does not run.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

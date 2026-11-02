@@ -1,0 +1,15 @@
+{
+  "id": "01M39FCMP6JWWXSR48AHB6D28J",
+  "ts": "2026-09-24T10:29:13.542Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLDING on hv's word (2026-09-24 10:29:13Z: \"Please hold\"). Released when hv says go, directly or through vc. Nothing new starts meanwhile. Still running, read-only and light: critic-shell's fifth pass on 0131 v2, which will report. Queued behind the hold, and behind the box protocol's START: 0131 v2's 58 mutants (TSP/run0131v2b.sh) and its full suite (TSP/full0131); then 0139 v2, trial-rebased onto 0131 v2 in TSP/rebase0139b. Doing 8 holds the rest."
+  }
+}

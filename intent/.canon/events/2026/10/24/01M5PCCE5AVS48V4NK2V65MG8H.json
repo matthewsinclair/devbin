@@ -1,0 +1,15 @@
+{
+  "id": "01M5PCCE5AVS48V4NK2V65MG8H",
+  "ts": "2026-10-24T07:18:12.395Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0214"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "ST0010's public tree, the mechanical half: harness.bats:96 reads intent/llm/MODULES.md (the one arm the candidate suite failed), the MIT licence everywhere (decision 56), DMARC fixtures carrying real addresses, and a README row naming a workroom file"
+  }
+}

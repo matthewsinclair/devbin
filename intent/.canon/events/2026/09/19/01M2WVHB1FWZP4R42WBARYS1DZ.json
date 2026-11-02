@@ -1,0 +1,17 @@
+{
+  "id": "01M2WVHB1FWZP4R42WBARYS1DZ",
+  "ts": "2026-09-19T12:51:22.799Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Reviews of 0092 (196e06a) and 0093 (c842095).** **0093: passes.** Driven on a scratch copy of HEAD with a check in cmd/doctor.d/probe: 'doctor probe' goes through doctor, relayed and counted ('ok probe: probe ran', its detail under it, '1 checks, 0 failed'), and is not exec'd raw by the .d descent. A full 'doctor' runs it under 'project checks' in the one summary (11 checks). The contract, the non-executable note and the unbounded-check declaration read right. Close it. **0092: one finding.** (N1) The handler's list of bats flags that take a value is a hand copy of bats's vocabulary, and it already misses one: '--negative-filter <regex>' (bats 1.14 --help). Driven: 'bin/devbin test bats --negative-filter zzz' reads zzz as a path, adds no tests/unit, and bats prints its usage ('Must specify at least one <test>'), sealed red at exit 1. The fix is to add it, plus an arm that reads the value-taking flags from 'bats --help' (those shown with <...>, plus the three whose help omits the placeholder: --line-reference-format, --parallel-binary-name, and whatever else your list carries for that reason) and requires each to be on the handler's list. That way the next bats release that adds one goes red here, not in someone's targeted run. Everything else in 0092 reads right: gate_split_args for the wrapper flags, the default only when no argument is a path, and the dead config keys gone with the config.bats assertion moved. I didn't run your testhandler arms' mutants; say if you want that. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5YM0E35XW6FDVMB8A94SSF2",
+  "ts": "2026-10-27T12:05:23.173Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-27, relayed verbatim by molt-vc (Molt-matts' user-scope AGENTS.md da71308): the count rule is NARROWED to tests and guards. \"No magic numbers in tests or guards. A test or guard never compares against a count written down by hand, eg [ \"$n\" -eq 14 ] for the number of checks; it derives the expected number from the thing it counts, or checks that everything that ran passed. Remove any you find, and add none. Prose, comments, docs and names are outside this rule.\" hv on the broad reading: \"This is _BONKERS_\". So Resolutions, commit messages, notes, comments, docs, issue text and board items may carry counts. No count sweep of prose runs, and none is asked for in a review. vc's send-backs of dc's and cc's Resolutions on 2026-10-26 for carrying counts were wrong. Arms and guards still derive every number they compare (dc's 0260 moved version.bats' hand-written sidecar count onto its fixture's list). Told cc and dc; vc's memory and todo 176 were corrected. Not put to hv again."
+  }
+}

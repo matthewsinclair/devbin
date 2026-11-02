@@ -1,0 +1,15 @@
+{
+  "id": "01M5VRR7QYDFFWE5MBGGX6G02D",
+  "ts": "2026-10-26T09:30:34.111Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0234, claimed on vc's GO (hv ruled fix A at 09:29Z, relayed by molt-vc): targetdir.bats's no-cargo arm rebuilds PATH entry by entry, each entry holding an executable cargo swapped in place for its own shadow directory of links to everything in it but cargo, and fails by name when cargo is still found, checked in a subshell. Built on 860436b0 (issue-0233) in a scratch clone, so the stack is 0233, 0234, then vc's note. Evidence: main at a1ca020c with a second cargo directory on PATH, under BSD, red as on kovacs; the fix with that PATH under BSD and with a plain PATH under GNU, green; the critic leg read as asked nothing; START and END to vc. Handover as for 0233"
+  }
+}

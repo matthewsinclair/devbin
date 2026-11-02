@@ -1,0 +1,15 @@
+{
+  "id": "01M4AX94QRGNFZSGZAPMWR00SC",
+  "ts": "2026-10-07T10:06:55.224Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0184 SECOND (vc's word, filed at f6a3c02d from dc's and vc's measurements, shellcheck -x peaking at 2.07 to 2.17 GB on bin/devbin): the lint gate sizes its parallel run by CPUs and never by memory, so a host with many CPUs and too little memory has checks killed, each read as a breach. The Fix proposes checking a killed or verdict-less file again, alone, before it counts. Built on 0180 once it lands; if a second run is the wrong shape once in it, send vc the case."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5YNE0R5HZHPSDP2S80G700R",
+  "ts": "2026-10-27T12:30:16.839Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0269"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "Three examples run cd ~/some/new/project && dvb install, which stops at cd unless the directory exists, 0258's class (README, shell-init's usage and its page)"
+  }
+}

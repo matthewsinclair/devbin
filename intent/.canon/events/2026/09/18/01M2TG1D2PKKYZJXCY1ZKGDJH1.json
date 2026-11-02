@@ -1,0 +1,15 @@
+{
+  "id": "01M2TG1D2PKKYZJXCY1ZKGDJH1",
+  "ts": "2026-09-18T14:51:57.398Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**ST0007 WP-03 AC-3.2 OK (mine to give)** -- ea7bc47 reviewed 14:51Z: held on one finding. checkout-index reads the WORKING TREE's attributes, so a .gitattributes committed after the tag turns rows 3+4 UNREADABLE for a clean, correctly tagged release. Released when release_materialise calls `git --attr-source=\"$commit\" checkout-index` with the arm red first (scratchpad r0088/attr-arms.bats; 42/42 with the fix), landed by vc or as my WP-04 first commit, whichever vc says. Everything else OK: my eight mutants killed by vc's arms alone, control 40/40."
+  }
+}

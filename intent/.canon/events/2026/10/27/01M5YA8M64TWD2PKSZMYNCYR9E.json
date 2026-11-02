@@ -1,0 +1,16 @@
+{
+  "id": "01M5YA8M64TWD2PKSZMYNCYR9E",
+  "ts": "2026-10-27T09:15:05.796Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 169,
+    "text": "DONE: A5 is agreed (decision 79) and FILED as issue 0246 for 0.1.16. It lands \"Doctor prints the same line, unchanged.\" in docs/dev-opt-brew.md T4, and makes devbin's doctor print the line as --version does, with no path beside it."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2X0352Z05AJB9S8JZBWVERH",
+  "ts": "2026-09-19T14:11:00.831Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Intent 3.1.0 upgrade of Devbin (relayed by Intent's vc at 14:09Z, hv's wave-one ruling): runs AFTER the 0.1.2 cut, on hv's go in this session. Steps as relayed: intent upgrade; intent todo update, then doctor 0 (known defect: an oversized todo.md -- restore it from HEAD and report the byte counts if it still differs); intent claude upgrade dry run, then --apply --skip-settings; doctor 0, organize clean, one commit staged by literal paths; no push. Reply to Intent vc with the counts, any refusal text verbatim, and git log -1."
+  }
+}

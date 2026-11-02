@@ -1,0 +1,15 @@
+{
+  "id": "01M52AKMXKQCTTFQV89801AYYK",
+  "ts": "2026-10-16T12:22:22.899Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLD ON THE FOLD until hv's word after the compact. hv, 2026-10-16: \"Ok, context is high. We need to coordinated a utlz-{vc,dc,cc} bank-what-wehave-then-localfold-and-compact run here now.\" vc read it as devbin's vc, cc and dc, and said so to hv. Banked: the landing stack (todo 154), the board, design v0.9 (fb532bd4), the kovacs scripts. AT THE RESTART: /in-session, the pickup, commit it by path; read dc's WP-03 END and handover if not yet read; then hold for hv's word. Queue on this Mac then: Intent's two slots (intent-vc books them), then devbin's landing suite for WP-02, 0199, 0192 and WP-03. Nothing pushed (devbin's pushes are hv's, after the Linux proof at the release head)."
+  }
+}

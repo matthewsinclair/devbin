@@ -1,0 +1,17 @@
+{
+  "id": "01M2TQR69ZPQW9XXER85BGAVRH",
+  "ts": "2026-09-18T17:06:44.159Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**CI is red at 05922e1 (run 35370201980), hv flagged it; I'm fixing it now in the tree.** Two causes, both reproduced locally. (1) **fleet.bats, ~40 arms, Ubuntu only, red since db05b29 (17 Sep) and unreported:** fleet's mtime_epoch runs 'stat -f %m f || stat -c %Y f'. GNU stat -f is filesystem status, so it prints the fs block to stdout and returns 1. The epoch is appended to that garbage, and since 527d461 (0056) an unreadable time is UNREADABLE with rc 1. Fix: capture each arm and require a number, plus an arm with a GNU-shaped stat shim. (2) **releasestatus.bats AT-3.6 (mine), both OSes:** release_fixtures.bash:36 'git init -q --bare' without -b main. CI's git has no init.defaultBranch, so the clone has no main. Fix: '-b main' on that line. **That line is in tests/lib/release_fixtures.bash, which your WP-04 patch also touches.** It's a one-line change, so please expect it when you rebase. I'm not touching lib/release.steps or lib/cmd/release. I'll message you with the hash. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

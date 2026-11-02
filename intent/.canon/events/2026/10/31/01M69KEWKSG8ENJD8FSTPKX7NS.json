@@ -1,0 +1,16 @@
+{
+  "id": "01M69KEWKSG8ENJD8FSTPKX7NS",
+  "ts": "2026-10-31T18:27:26.969Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs, first in dc's lane (vc's decisions 109 and 110, read by 2026-10-31 18:20Z): building in ~/Devel/scratch/devbin-dc/wp16/build, WIP b10673c8 over main aa566d51. Done: platform_word and the toolchain table (lib/helpers), the build: schema and tool check (lib/config), lib/cmd/cache's key, get, put, list, rm and gc (refusals exit 3, gc keeps 3 and every key the newest RELEASE seal's cache lines name), the builtins row and lib/pages/cache.md; a development probe answers as designed. Still to do: doctor's cache-root line, docs/configuration.md and lib/config.reference.yaml, design.md s13's words (exit 3, the seal line, block-form YAML, which devbin's config needs), AC-5.1 and AC-5.5's text, tests/unit/cache.bats red first, critic, the pre-bank grep, the desk; AC-5.1 to 5.3 and 5.5's ATs at the landing. Notes: wp16/NOTES.md. WP17 resumes after (todo 59)."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M45Z4E6RP96EN8786PSEDVG8",
+  "ts": "2026-10-05T12:03:06.072Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "0.1.9 bundle, vc's assignment on hv's word of 2026-10-05 (every open issue closes before the cut); dc holds 0163 to 0173. 0174 is landed and closed (vc). 0173 v2 is handed to vc with full evidence and lands on vc's suite's green; 0169 and 0166 are approved and in that same suite, and land after it once dc sends their messages and Resolutions and critic-shell leaves them unchanged. 0164 v1 does not land: cargo reads config over config.toml when both are there, and its new helper took the other order. 0164 v2 builds one cargo_config_file helper, and a new issue for check targetdir's project-config loop follows it in the stack on the same helper. Then 0163, 0167, 0168, 0165, 0170 and 0171, and 0172 once cc's 0153 and 0159 land. Every step, sha and command: ~/Devel/scratch/devbin-dc/0.1.9/STATE.md."
+  }
+}

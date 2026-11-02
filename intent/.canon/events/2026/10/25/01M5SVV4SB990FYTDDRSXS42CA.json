@@ -1,0 +1,15 @@
+{
+  "id": "01M5SVV4SB990FYTDDRSXS42CA",
+  "ts": "2026-10-25T15:46:06.251Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0230 (2026-10-25 15:45Z, vc's ask): the version line drops ' at <root>' (contract A3). Built in ~/Devel/scratch/devbin-cc/0230/build at 23d06dd3 on land220's a30c8ab2: devbin_tree_line prints no path, tree_line_head (lib/helpers) is the reader rule and doctor reads through it, release's note back to brew prints the whole new line, A3 carried into docs/dev-opt-brew.md T4, the use/release/releasing pages and the pinning tests (use, localinstall, machinepointer, dispatch, releasecut) rewritten, one reader arm. Changed arms red on 593109bf, green alone on BSD and GNU, critic rc 0. Targeted run of 16 cargo-free files booked with molt-vc (READY 15:45Z). Next on its GO: the run, then squash on a30c8ab2, seal, RESOLUTION and COMMIT_MSG-0230 to vc"
+  }
+}

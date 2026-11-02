@@ -1,0 +1,16 @@
+{
+  "id": "01M66BB6EER90Z4XE2RES9HQER",
+  "ts": "2026-10-30T12:07:54.062Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 34,
+    "text": "Repo setup, until hv's go on the switch (hv 2026-10-30, in vc's session): this checkout pushes to local and upstream; local is push-only and keeps the old history; rm -rf .git and a fresh start from upstream is fine; today's setup must change. Open: a home for intent/ and the 12 other tracked files upstream lacks, and local's clashing main and v0.1.18. Measured: the 215 shipped files equal upstream/main; .git holds hooks to carry, no worktrees, no stash."
+  }
+}

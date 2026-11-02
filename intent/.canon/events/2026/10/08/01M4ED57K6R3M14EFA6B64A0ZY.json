@@ -1,0 +1,15 @@
+{
+  "id": "01M4ED57K6R3M14EFA6B64A0ZY",
+  "ts": "2026-10-08T18:42:07.592Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0191"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "the suite and CI wait on things they need not: CI lints the tree twice, the hung-query test waits out a 15 s floor, and the heartbeat takes whole seconds only"
+  }
+}

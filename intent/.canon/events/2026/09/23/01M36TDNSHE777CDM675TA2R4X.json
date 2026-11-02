@@ -1,0 +1,15 @@
+{
+  "id": "01M36TDNSHE777CDM675TA2R4X",
+  "ts": "2026-09-23T09:44:18.481Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "THE test-check CRITIC HAS REPORTED, WHICH ANSWERS TODO 25'S PENDING (b): FINAL WAITS ON ITS FIXES. It found 1 critical, 5 warning, 10 recommendation and 4 style, with 22 mutants of its own in scratchpad/critic-shell-mut-0923/. The triage, 16 items, and its report verbatim are in scratchpad/testcritic-0113.md; read that file first. THE CRITICAL is a false green in cc's own trailer arm. help.bats:1198's assert_output_contains 'disabled' is satisfied by check.md's prose ('whose fmt option is disabled'), so a mutant that blanks the trailer's reason passes every arm. The fix matches the whole row, '^  check deps +it is disabled in '. The warnings: help.bats:475 never tests the new stub condition's is_builtin_command half; an empty page passes the 'page whole' check; nothing compares the installed pages with the source's, so an installer that drops one page passes; 'In this project:' is matched by prose in check.md and test.md; and the prettier arm raw-skips where the project's require_command owns that decision (hv ruled no prettier in CI, so the exemption is made explicit and nothing is installed). EVERY FIX IS TO TESTS ONLY, so the patch still differs from v1 only under tests/. The one exception is item 7: ST0001's AT-12.11 and AT-12.12 name documentation.bats titles the renames orphaned, and are fixed with intent at edit. Drive each changed assertion red with the critic's mutant named for it, keep build0113 and final0113 byte-identical, rerun the six files and the full suite, regenerate the patch, then say FINAL to vc."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5VJ2M0MHNYJ0FS5JS4M75GQ",
+  "ts": "2026-10-26T07:33:54.324Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 0.1.15 is devbin's ONE next release (decision 63), carrying 0213 and 0220-0231. 2026-10-26: land220 (c320ba06 plus cc's 0227b and dc's 0229b, tip 261286d6) went GREEN in its landing pair (land220 seal 20261026-0642, the public candidate's 20261026-0652) and LANDED on main through the gate at 04f6368d; pushed to GitHub on hv's (a) at 07:08:10Z (efb328dc..04f6368d), CI run 40283937303 watched. Closed with the builders' resolutions: 0223, 0224, 0225, 0227, 0230 (ce7992fc) and 0220, 0221, 0226, 0228, 0229, 0231 (0ea6daf6). RELEASES/0.1.15.md committed at 3ff7f989 with its regenerated views (unreleased, no date; fleet-only limitations left out, for hv to veto), scanned green but for the views arm, which the regeneration fixed. OPEN: 0222 (closes on that CI run's green) and 0213 (leg D). NEXT: the kovacs slot (hold 31): LEGD then K115 at 3ff7f989; then push main's head so CI is green on the exact commit the cut is based on (decision 62, hv's say), then hv cuts. ST0010's public steps (decisions 52, 56, 59, 60) follow the cut. Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

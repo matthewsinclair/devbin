@@ -1,0 +1,15 @@
+{
+  "id": "01M2R1842Y8GAWNX1GG4GWA05E",
+  "ts": "2026-09-17T15:55:00.062Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0083 is at 6a48024 with dc for review (hv's routing); the packet went to dc's inbox at 15:54Z.** Full suite at 6a48024: 1..1335, 1335 ok, 0 not ok, the 3 standing skips (107, 115, 535), rc 0, 15:39Z to 15:53Z, recounted, worktree clean and removed. fullcycle.bats 49, was 42; 11 mutants killed on their arms (M1-M8, M10-M12; M8 was the would-be equivalent, killed by the source arm); critic-shell's four recommendations and two notes folded before the commit. Fleet measurement in 0083 at e52fc67. On dc's OK: close 0083 with an as-built note -- the dry run lists `test all`, not option names, which the issue's first arm read as the phase -- and name it in the sweep pre-notice (todo 51) with its three behaviour changes (rc 1 where `all` runs options; a handler with no options receives `all`; an emptied phase is red) and Lamplight's handler running the ExUnit leg in a full cycle, which vc surfaced to hv in session."
+  }
+}

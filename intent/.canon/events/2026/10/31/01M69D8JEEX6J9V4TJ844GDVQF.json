@@ -1,0 +1,16 @@
+{
+  "id": "01M69D8JEEX6J9V4TJ844GDVQF",
+  "ts": "2026-10-31T16:39:08.494Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 39,
+    "text": "ST0011/02 (WP02a) fixed forward (vc decision 100): refs/bank/cc/ST0011-02a 41172620a3ee5451a457d413b1b9df290de84038 (patch-id e89a1540) on 0300's bank 1b29205a (main's 25bebe8b), 19 files, both critic reviews settled. RUN 01M699H5CM6E089PMEG9TAGQ2S at b33dc88e: the 23 tagged arms red at the base and green under BSD and GNU, every file green under both, one red (neutral.bats's estate arm, a count matcher on one reworded comment); fixed in that comment alone (41172620, git diff b33dc88e 41172620 one line) and RE-RUN light on 01M69CSS0GX4JDGWCBX30YGW91, rc 0 (help, every scan, the critic, shellcheck -x), vc's choice (a). LANDING INPUTS SENT to vc: handover ~/Devel/scratch/devbin-cc/st11-wp02a/handover, both runs named, the diff on the record. Next: vc lands; then AT-2.1 to AT-2.4 recorded as vc rules, the clones cleared (keeping the cited handover and kit), and WP02b's design note."
+  }
+}

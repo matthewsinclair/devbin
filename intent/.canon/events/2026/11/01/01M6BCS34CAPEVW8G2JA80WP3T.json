@@ -1,0 +1,17 @@
+{
+  "id": "01M6BCS34CAPEVW8G2JA80WP3T",
+  "ts": "2026-11-01T11:09:10.156Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "END: WP16's re-run at 90ee95b3b4f027e3e05e92d77a625a22cce061f5 meets your ruling. It had one red, dispatch.bats 542 under BSD, which is main's. The driver ended at 11:07:15Z with rc=1, and slot 01M6B9QGX6WPYENRTQ4XHRFDS7 was released at 11:07:56Z by date -u, with its --result.\n\nARMS, red as designed: red-cache at red-aa566d51-90ee95b3 (2ce10c70) exited 1 with 29 of 29 not ok, so the arms fail without the unit's code. gnu-cache at the tip was 29 of 29 ok.\n\nGNU LIGHT, green, every file exit 0:\n- cache 29, doctor 71, config 64, helpers 120, runlog 131, builtins 43, surfaces 44, install 107 (1 skipped), vendor 33, releaselegs 5, macos 46 and help 61.\n- The tree scans: contract 45, neutral 10, documentation 32, readonlygit 11, harness 35 (2 skipped), vendoredmd 3, workroom 8, installhints 1 and lineendings 11.\n- shellcheck -x on the changed shell exit 0, and the critic exit 0.\nThe first run's five WP16 reds (helpers 45 and 47, surfaces 26, contract 36, neutral 8) are green.\n\nBSD WHOLE: plans of 2924 and 9, with 2932 ok, 1 not ok and 5 skipped; seal build/tmp/test/20261101-1052.bats.errors RED. The first run's five BSD twins (416, 1248, 1250, 1826, 2558) are green.\n\nTHE ONE RED, ATTRIBUTED TO THE BASE (main's): not ok 542 at tests/unit/dispatch.bats:3011, 'no gate forwards a raw argv: every run_gate call passes the split flags and the split args (0087)'. Its FAILURE line, 'lib/cmd/release:550: raw argv', is the first run's 542 byte for byte.\n- lib/cmd/release and dispatch.bats are outside aa566d51..90ee95b3.\n- Line 550 reads the same at main 7d8c76a5 and at the tip.\n- WP16's one test_helper.bash change unsets DEVBIN_CACHE_HOME and XDG_CACHE_HOME in devbin_isolate_machine; it touches neither gate_spans nor fail.\nYou routed it to cc's WP02b-1 (decision 124).\n\nRECORDS: wp16/run-wp16.log, and wp16/runs/arms, light and whole (TAPs, summaries, critic.txt, shellcheck.txt, whole/bsd-all.log). The first run's records stay at wp16/runs-acc813e0/ and wp16/run-wp16-acc813e0.log.\n\nNEXT (dc, now): handover-wp16.sh. It checks that HEAD is TESTED, the tree is clean and the tip is one commit on aa566d51 carrying COMMIT_MSG-ST0011-16.txt, then verifies the bundle in a fresh clone of canon. I will send you its result.\nThe landing is yours, as run (decision 83), with the AT rows for AC-5.1, 5.2, 5.3 and 5.5 (decision 101): AT-5.1 to 5.3 over AC-5.1 to 5.3, and AT-5.4 over AC-5.5. Their id lines are already over the arms in tests/unit/cache.bats. Tell me if dc should mint the rows. Then 0306 and WP17 on your word.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

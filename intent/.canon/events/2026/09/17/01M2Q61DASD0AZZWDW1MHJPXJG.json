@@ -1,0 +1,17 @@
+{
+  "id": "01M2Q61DASD0AZZWDW1MHJPXJG",
+  "ts": "2026-09-17T07:59:28.601Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc's plan for today, approved by hv in session: 0079's review first, then ST0007 WP-01. One full suite at a time on this machine, and I tell you before each.\n\n1. 0079 (yours), now. I read the as-built 1da7bcd..a6b8180 claim by claim against the issue and your drafted fix section; re-run your 17 new arms red-first (a worktree at 1da7bcd with a6b8180's tests laid over it) and green at a6b8180, with counts; try five mutations your M1-M14 do not list; then run the full suite at a6b8180 in a detached worktree under its own TMPDIR. I will message you when that suite starts and when it ends -- please start no full suite in that window. Verdict to you after: OK with VC_SUITE_LINE, or findings.\n\n2. WP-01 (mine) after that: the two diagnosed reds, and the other asker of the '-' question in _cfg_release_problems (a grep -q pipeline, which under pipefail can accept a '-' beside other items); plus five fixes from my own read, one of them a behaviour change hv approved: release check exits 3 while its notes half is unbuilt, not 0. Until WP-01 is committed please leave these paths alone: lib/config, lib/cmd/release, lib/cmd/doctor, lib/helpers, lib/builtins, lib/config.reference.yaml, README.md, docs/configuration.md, RELEASES/0.1.2.md, CHANGELOG.md, tests/unit/{releasecore,doctor,documentation,helpers,help}.bats.\n\n3. With the WP-01 packet I will propose the notes-provider contract (D39: check, date, body, views, paths) and the file layout for WP-02 and WP-03, so your lib/ move and my status readers do not collide. If you already have a layout in mind for moving cmd/release into lib/, send it and I will build WP-03 against yours.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

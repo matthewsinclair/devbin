@@ -1,0 +1,16 @@
+{
+  "id": "01M69K4M54FZDN5AXVHFXJ6CVN",
+  "ts": "2026-10-31T18:21:50.629Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 100,
+    "text": "hv 2026-10-31 14:34Z (in vc's window, on the ST0011 summary after the third fold): \"go\", and right after it on WP02a's base: \"I know the old base is rubbish and any improvements will be worth it. I suggest we just bite the bullet and fix forward.\" Executed: desk hold 01M694Y7ZGK0PKD94NVSHGCSCQ released; run 3b at aa2fb1d2 on 1f37e5eb first (dc, the bats lane, from run3d), then vc lands the dc stack with land-stack.sh at its tip; cc fixes forward now, no lane needed: WP02a rebased onto the dc stack's tip aa2fb1d2 with its two critical critic findings and the two macos warnings applied in the rebase, re-banked there, run when a lane frees and landed as run under decision 83 once the stack is on main with the same trees; issue 0300 as its own unit; AC-1.1 and AC-1.2 covered and satisfied from WP01's landed tests; WP02 started in the store; then WP02b (WP03's two call lines, the ci.wait default of 60m under D61, AC-6.3, the ci keys), WP02c, WP07, WP08; the landing tree's full suite on rhadamanth (suite-landing.sh) and kovacs (prep-korder.sh, kovacs-sysadm reading the order's path and sha256 first, every login announced under decision 91); dc after the landing: WP03's remainder, WP17 (D69), WP16's verbs, each its own unit; WP09 at 0.1.19 under decision 93's conditions and the cut's one yes; the sweep per sweep-plan.md; WP10 to WP14; WP15; WP18 last. From now every landing covers and satisfies its ACs (the thread's twenty stand uncovered); the stale bank refs of landed work (cc/ST0011-01, dc/0292) go once their authors confirm main carries them. Estates: intent-dc re-asks the desk for ST0090/01 on the cargo lane under the 4-core cap; Gtools books ST0021/01's runs at cf079ed5; Laksa verifies S2 then laksa-vc pushes and reads CI to the end (decision 98); Utilz resumes ST0031/03 from a2e9756e and books menuz.bats alone; Conflab holds for the sweep; the sysadm sessions hold until the kovacs order (vc wrote at 14:34Z that no Trash exhaust folders stood on rhadamanth; that read was a permission failure, the agent's shell cannot list ~/.Trash, so the four folders Utilz names are rhadamanth-sysadm's to read and remove under this go). Nothing public without hv's word (directive 3)."
+  }
+}

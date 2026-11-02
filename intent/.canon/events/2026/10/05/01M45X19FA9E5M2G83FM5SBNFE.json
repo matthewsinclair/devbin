@@ -1,0 +1,16 @@
+{
+  "id": "01M45X19FA9E5M2G83FM5SBNFE",
+  "ts": "2026-10-05T11:26:25.770Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE, every open issue closed before the cut (hv, 2026-10-05); the order is ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. W1, the client-name scrub, is DONE AND PUSHED: hv ran git filter-repo over 57c7499 onward (1ef5536 onward now; main 72296c2 -> 8c80d2b) and vc's store-scrub.py on Intent's own event log, and both remotes read 0598304a by ls-remote at 11:20:57Z with every tag unchanged. The local gc is done too: every reflog expired and gc --prune=now at 11:25:36Z with every node holding still, fsck clean, and 0 of 16705 objects and 0 of 47 plain files under .git name the client (before it the same scan found 10 commits, 40 blobs and 2 reflogs). W1 tail: the Dropbox bare repo's gc waits for hv's yes; the rollback points (intent/.backup/db/2026-10-05T10-49-22-484Z.db, w1/pre-rewrite.bundle, w1/tree) go once hv agrees. W2: 0154 v5.2 (sha256 9783feeb...) and 0174 v1 (77c902d6...) are APPROVED and in vc's combined full suite in ~/Devel/scratch/devbin-vc/0.1.9/land-154-174 (main 0598304a plus both), started 11:09:17Z, seal tmp/test/20261005-1109.bats.out in that clone. On green: fill {SUITE} in cc's SP/0154-commit.v52.msg (sha256 dce48c42...), apply each patch to the shared tree and commit each with --only (0174 with land/0174.msg), verify each path against the landing clone, close each with land/0154.resolution.md and land/0174.resolution.md, then END to cc and dc. Next on the box: dc's 0173 mutant batch. cc: 0175 after 0154, 0153 v2 in SP/b153, then 0159, 0157, 0158, 0156 and the rest; dc: 0173, then 0163 to 0171, 0172 last."
+  }
+}

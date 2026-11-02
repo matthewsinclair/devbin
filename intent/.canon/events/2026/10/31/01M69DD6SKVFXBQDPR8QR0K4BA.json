@@ -1,0 +1,15 @@
+{
+  "id": "01M69DD6SKVFXBQDPR8QR0K4BA",
+  "ts": "2026-10-31T16:41:40.403Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 16:41Z: WP02a landed on main at bd13167f from 41172620 (arms run at b33dc88e, scans at 41172620, the one-comment diff on the record; base 1b29205a off main, held by its files unmoved). cc's WP02b design note (~/Devel/scratch/devbin-cc/st11-wp02b/DESIGN.md) is approved to build, sections A to H as written, with these rulings: (1) no ci.poll key; the poll stays RELEASE_POLL_SECONDS, the environment's, and the deadline is ci.wait from the loop's start; (2) the one pair behind which every leg starts and is read, leg_start <leg> and leg_read <leg> answering one <word><TAB><detail> line in ci-state's words, has its exact names and argument shapes agreed with dc before code, so WP05's and WP06's hook-ins are one line each; (3) a stop's summary names each remote leg left to finish and where its seal lands, beside the killed local run and the deleted candidate; (4) in WP02b a project with no ci.query has no candidate leg, and WP02c's built-in default gives every GitHub project the leg, so the sweep's drop of ci.query (decision 93) presumes WP02c landed, which the order already holds (WP02c before WP09); (5) the retired release publish verb is named in the sweep's message to each estate vc, since a bespoke post-cut script calling it breaks at the sweep and WP10 to WP14 retire those scripts; (6) one unit unless a clean seam appears between the new shape (legs, loop, tag on green, publish folded in) and the retirements, in which case two stacked units, each critic-reviewed before its first run; (7) at the landing cc records AC-2.2 and AC-2.3's rows green and turns AT-2.2 and AT-2.4 green where WP02b completes them. Devbin's own config drops ci.tag in this unit as the note says; its ci.wait is WP02c's."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJK4C18JTMWF5RBT3NTYBA",
+  "ts": "2026-10-08T20:17:05.921Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 15,
+    "text": "0192 PARKED for the next release (hv, 2026-10-08, relayed by vc). RELEASED WHEN 0.1.10 is cut and vc or hv says to start 0192. ISSUE:0192 stays claimed. Nothing is built (clones at 2231259e) and no before-figure was taken, so the before and after go back to back on 0192's own base. Scope, vc's measurements and the groundwork: ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md"
+  }
+}

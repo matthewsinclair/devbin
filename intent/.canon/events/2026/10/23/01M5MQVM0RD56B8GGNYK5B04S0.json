@@ -1,0 +1,15 @@
+{
+  "id": "01M5MQVM0RD56B8GGNYK5B04S0",
+  "ts": "2026-10-23T16:00:15.384Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0206 on vc's word, for 0.1.13, after 0205 and built on its tip: each hardcoded count in the suite keeps its purpose through a referent read at run time, a presence check or a named arm, and every current count in failure text and comments is deleted, each hunk kept to the line it replaces; its targeted run is the files it touches plus the tree scans and help, BSD and GNU, booked with intent-vc; then a bundle and HANDOVER to vc, who applies it after WP-08"
+  }
+}

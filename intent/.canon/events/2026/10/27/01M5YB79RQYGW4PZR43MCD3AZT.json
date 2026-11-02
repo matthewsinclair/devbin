@@ -1,0 +1,15 @@
+{
+  "id": "01M5YB79RQYGW4PZR43MCD3AZT",
+  "ts": "2026-10-27T09:31:50.935Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-27, answered in molt-vc's session after 09:27Z (relayed verbatim by molt-vc: \"1: Yes\" and \"2: Yes\") and confirmed in vc's session (\"Yes to both. Correct.\"), on vc's two calls, each as vc recommended. (1) devbin-dc builds its from-brew walk findings, 0251 to 0259, in parallel, while devbin-cc builds 0239 to 0250; their runs book with molt-vc after Gtools' end-point. (2) The empty ~/.local/share/devbin on rhadamanth, left from the machine pointer's removal (decision 53), is removed with a plain rmdir. vc read it first: it held no entry, and devbin's code names that directory only as the retired pointer's (devbin_home_pointer, which doctor reads only to name a leftover pointer). vc removed it at 09:31:35Z by date -u, rc 0, and read it back gone. Told molt-vc, cc and dc. Not put to hv again."
+  }
+}

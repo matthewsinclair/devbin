@@ -1,0 +1,16 @@
+{
+  "id": "01M4EHT948KWPRR7K53VM0NWBY",
+  "ts": "2026-10-08T20:03:31.592Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 41,
+    "text": "0191 v1.1 HANDED TO vc by 2026-10-08 20:03Z: head 21f523d9 (one commit on v1's 2b719467, b191 in ~/Devel/scratch/devbin-cc/sp-2026-10-08/0191/w191), patch patches/0191.v1.1.on-348ff735.patch e92a724e (git am verified on main 348ff735, 179 entries, second am refused, control differs), interdiff 762ee27e, drafts 0191-commit.v1.1.msg 9977078e and 0191-resolution.v1.1.md d9ede784. The two riders: the Shell Script Analysis job lists into a file under set -euo pipefail (critic-shell's find; the extracted collector lists the same 48 files before and after, GNU and BSD), and contract.bats:1144 rewrapped (found by cc's own ShellCheck run, not critic-shell: vc told). The Resolution says why 12.2 s. dc rebased 0190 onto 21f523d9 (2231259e, handed to vc). vc reviews, runs one full suite of the landing tree, lands. After vc lands: export b191, verify in a fresh clone of the shared tree, delete the 0191 clones, archive this, unclaim ISSUE:0191."
+  }
+}

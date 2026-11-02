@@ -1,0 +1,15 @@
+{
+  "id": "01M4AKEZEP60YXHDBECGF3T9AV",
+  "ts": "2026-10-07T07:15:20.662Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "GLOBALFOLD AT END OF DAY (from todo 148, whose filing is done: 0181, 0182 and 0183 at b72d4313, 0163's and 0168's Resolutions corrected there, the LESSONS entry at 62f09da1). intent/wip.md: the 0.1.9 bundle is done and the rollout replaces it, with the open issues 0177 to 0183 as the next bundle. restart.md: 0.1.9 shipped, the machine pointer exists, and every estate but Laksa carries 0.1.9. hv's board: its focus still reads 0.1.7, from 2026-09-23."
+  }
+}

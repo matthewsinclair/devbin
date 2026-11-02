@@ -1,0 +1,15 @@
+{
+  "id": "01M5VE70BK8WBJ3J2YZ6Y9REEW",
+  "ts": "2026-10-26T06:26:23.731Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0227b (vc's 2026-10-25 20:12Z ask, re-stated 2026-10-26 06:19Z): lib/pages/formula.md left as prettier leaves it, committed 18e59ec1 (tree 4e909bd3) on c320ba06 in ~/Devel/scratch/devbin-cc/0227/fmt, draft in 0227/handover-b. Its arms wait for vc's END relay of Molt's kovacs run: red vendoredmd on c320ba06, green vendoredmd plus every tree scan plus help on 18e59ec1, BSD and GNU (0227/fmt-arms.sh). Then seal, bundle, hand to vc"
+  }
+}

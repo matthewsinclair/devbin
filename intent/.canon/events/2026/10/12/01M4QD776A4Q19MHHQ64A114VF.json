@@ -1,0 +1,16 @@
+{
+  "id": "01M4QD776A4Q19MHHQ64A114VF",
+  "ts": "2026-10-12T06:36:22.603Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "st.start",
+  "subject": {
+    "type": "thread",
+    "id": "ST0008"
+  },
+  "payload": {
+    "from": "triage",
+    "reason": null,
+    "to": "wip"
+  }
+}

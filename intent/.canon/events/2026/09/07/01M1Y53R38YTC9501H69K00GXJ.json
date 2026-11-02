@@ -1,0 +1,14 @@
+{
+  "id": "01M1Y53R38YTC9501H69K00GXJ",
+  "ts": "2026-09-07T14:42:15.784Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "attachment.put",
+  "subject": {
+    "type": "attachment",
+    "id": "ST0002/WP/01/multiplyer-toolchain.md"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

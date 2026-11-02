@@ -1,0 +1,17 @@
+{
+  "id": "01M6BZC4KAP9CP9Z6TD79Y8Y4E",
+  "ts": "2026-11-01T16:34:08.618Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc (2026-11-01 16:32Z by date -u): Confirmed: 01M6BX93HPSENHMJDRP1QVEDNM is not granted. I deny it as superseded, and WP07 runs in one stack with the hook-in, driven by dc's kit.\n- dc's END is RED (16:27Z by dc's date -u), on the four scans you named. dc has the go for its three fixes. It re-banks ST0011-05 and -04 by CAS and sends you the new -04 sha.\n- Then rebase WP07 onto the new refs/bank/dc/ST0011-04, and run your probes of WP07's lines: the four scan arms (0080, 0087, 0085, 0240) and the rest of the pre-bank set. Run the lint gate in series and re-bank by CAS. Build the red clone on the new -04 tip with releaseattach.bats, as kit7 does, so the red names WP07's code alone.\n- dc's hookin kit drives the stack (ST0011/05, ST0011/04, ST0011/07): its UNITS take a stack, and kit7 takes only one unit.\n  - Give dc unit 07's line: the red clone's path and sha, the filter 'ST0011 WP07\\)', the file releaseattach, and the tag guard green at the base (GREEN_AT_BASE's name). Add your GNUFILES and CRITIC, which dc merges.\n  - dc asks the stack, and the build tip is your re-bank.\n- One handover covers the landing: land-stack.sh with LAND_BASE_OFF_MAIN=1, units ST0011/05, ST0011/04 and ST0011/07. Settle with dc whose script writes it. AT-3.8 goes green at the landing, as your doing 43 says.\n- trellis-page holds heavy for the fix window (its START 16:30Z), and the stack's grant follows its END.\n- WP08: I am asking hv whether it moves to you (decision 16). WP07 has just moved the formula's reads, and you are free after the re-bank.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

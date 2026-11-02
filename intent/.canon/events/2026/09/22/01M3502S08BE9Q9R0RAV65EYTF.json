@@ -1,0 +1,15 @@
+{
+  "id": "01M3502S08BE9Q9R0RAV65EYTF",
+  "ts": "2026-09-22T16:44:43.912Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "THE GUARDS ARE PROVEN ARMED AND DISCRIMINATING AGAINST THE BODIES IN FORCE AS OF 2026-09-22, FOR FOUR OF THE FIVE GUARDS ON THE ROSTER. This replaces todo 39, which vc wrote through cc and which said THE ROSTER DID NOT GROW. It grew, and it grew the same day: pre-commit-guards.sh carries FIVE entries, and the fifth, staged-format-guard.sh, was added on 2026-09-22 by f6ad0f990 (canon ships the staged-blob format guard, so no estate hand-wires a formatter again) and 646fc29b0 (not-applicable becomes an answer a dispatched guard can give). vc measured the roster, read the first four entries, and stopped at the comment block that sits between the fourth and the fifth -- so the census that established the roster was itself truncated, which is the same census-hole class vc was caught on this morning over docs/, occurring inside the instrument built to check the guards. THE FIFTH IS NOT APPLICABLE IN DEVBIN AND CANNOT BE DRIVEN HERE. It reads intent/.config/config.json and dispatches only on a formatters array; devbin declares no formatters key at all, so the guard resolves an empty set and the commit gate reports it honestly as guards: 4 ran, 1 skipped (not applicable). It is untestable in this estate for the SAME STRUCTURAL REASON intent/events.jsonl was untestable in August -- the subject does not exist here -- and that symmetry is the durable part: this drive has now met the identical shape twice, once resolved by the subject moving to canon and once fresh. VC DROVE IT TWICE AND BOTH ARMS WERE FALSE POSITIVES ON VC'S SIDE, recorded because a wrong finding against a guard is worse than none. Arm one staged malformed markdown: markdown is not a devbin-declared formatter, so the guard was right to pass. Arm two staged malformed shell, on the reasoning that shell IS devbin's declared LANGUAGE -- and the guard knows only markdown, elixir and rust, having no shell arm to miss with. A language is not a formatter and vc read one for the other. WHAT HV MAY WANT TO DECIDE, and it is the only live consequence: devbin ships a markdown doc surface that five files of it were edited in today, and declares no formatters, so no commit-time guard checks staged doc bytes here. This is not an unguarded estate -- check format is a declared gate in devbin own catalogue and covers formatting in every declared language -- it is a gap between the commit gate and the run gate, and whether devbin declares formatters is hv call rather than vc. EVERYTHING ELSE IN TODO 39 STANDS AND IS NOT REPEATED HERE: the dead exception, the six arms all refusing at rc=1 with HEAD unmoved, the append-only subject migration from events.jsonl to canon events, the real green control, and the residue (clock check C undriven, false negatives untouched, devbin only, critic gate untested). Read it in the archive at 64."
+  }
+}

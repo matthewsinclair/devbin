@@ -1,0 +1,15 @@
+{
+  "id": "01M39D5HB4MNE8JF3CSERX3D6Y",
+  "ts": "2026-09-24T09:50:23.588Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "The 0.1.8 sweep does not touch Intent's tree, and nothing of devbin's lands there, until Intent's v3.2.1 tag exists AND intent-vc has said yes to the sweep. This is intent-vc's ask of 2026-09-24 09:49Z (their date -u): during the 3.2.0 cut a devbin commit landed in Intent's main mid-run, and the tag carried files its tests never saw. It was relayed to cc. ALSO: when intent-vc's pre-build warning arrives, hold every devbin landing until their build is done, because devbin's commit gate runs through the intent that their build replaces."
+  }
+}

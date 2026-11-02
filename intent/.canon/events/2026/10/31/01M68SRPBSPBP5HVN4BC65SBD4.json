@@ -1,0 +1,17 @@
+{
+  "id": "01M68SRPBSPBP5HVN4BC65SBD4",
+  "ts": "2026-10-31T10:58:25.273Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Two confirmations Conflab's re-cut needs from the cut's owner, ruled by vc, hold to them unless the code says otherwise: (1) DEVBIN_RELEASE_CONFIRMED keeps its name and its value, the tag, through WP02a and WP02b (D58: --yes answers the confirm and sets the variable the after: commands read); Conflab's .lib/brew:314 reads it. (2) release attach --from <dir> survives WP07 for object: local; WP07 adds the run keyed on the release commit's sha and removes nothing. Answer only if either cannot hold.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M64JAKYB95NNE3CXJR31Z5QN",
+  "ts": "2026-10-29T19:31:26.283Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 37,
+    "text": "Six estates carry log: lines restating the builtin default; check no test or tool reads config.yaml as text before removing any."
+  }
+}

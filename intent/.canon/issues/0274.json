@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 274,
+  "slug": "hand-run-suites-in-several-projects-at-once-cont",
+  "title": "Hand-run suites in several projects at once contend for one machine and time out: a run of a project's gates takes a machine-wide lock (not in 0.1.16)",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-27",
+  "closed": "2026-10-28",
+  "reporter": "Matthew Sinclair",
+  "body": "Hand-run test suites in several projects at once contend for one machine, and each suite's own timeouts then fail it for the load, not for its code. On 2026-10-27, from about 14:42Z, hv ran about ten projects' suites at the same time on rhadamanth (molt-vc's report), and every timeout that day came from that. The estate's agents book their runs through Intent's desk, but nothing serialises the runs a person starts. gtools-vc floated `dvb test` taking a machine-wide lock. Gtools is meanwhile capping its own concurrency (its WP-01). Filed by vc on 2026-10-27. On molt-vc's word, with hv's pen (\"optional for 0.1.16\"), it is not in 0.1.16.\n\n## Fix\n\nA run of a project's gates takes one machine-wide lock before its first gate and holds it to its last, so a second run started meanwhile waits, saying which project's run holds it and since when. It never fails because another run holds the lock.\n- The lock lives in one place devbin names, under the XDG state directory, and is freed when its holder dies, so a killed run never leaves it held.\n- A run that is already holding the lock never waits for itself. That covers a gate calling `test`, a release's gate step, and `all` over options.\n- CI, where one job is the whole machine, and a person who asks with a flag or a variable, run without it.\n- The design settles which commands take it (`test` and `check` at least), what the wait prints, and whether a run that waits too long gives up, naming the holder.\n\n## Done when\n\n1. Two runs started together in two fixture projects run one after the other, the second saying what it waits for. A run whose holder was killed takes the lock at once. A nested run does not wait on its own lock. An arm for each.\n2. The landing suite passes under BSD and GNU, with the tree scans and help, and CI is green on the pushed head.\n\n## Resolution\n\nClosed as not doing, on hv's ruling of 2026-10-28: \"defer E to 0.1.17, close 0274 and 0278\" (relayed verbatim by molt-vc at 18:11Z by date -u), after vc's triage rated it P4. No code changed.\n"
+}

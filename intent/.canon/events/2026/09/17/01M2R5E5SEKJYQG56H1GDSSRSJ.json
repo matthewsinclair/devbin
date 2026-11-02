@@ -1,0 +1,15 @@
+{
+  "id": "01M2R5E5SEKJYQG56H1GDSSRSJ",
+  "ts": "2026-09-17T17:08:12.718Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**hv's rulings of 2026-09-17 on 0082 and 0084, and the order of work.** hv ruled in vc's session, each ruling taking vc's recommendation, and they are recorded in the issues at fc1de55.\n1. 0082 keeps globbing and documents it. The one word-splitting helper and the refusal of a word-less run: stand.\n2. For 0084, install and upgrade replacing a linked vendored file stays the stated limit.\n3. fleet doc's own TMPDIR rename folds into 0084, and no new issue is filed. 0084 was reopened, because the ruling landed a minute after dc's close at 7e59808.\n4. \"Crack on and get them closed out\": the open issues come first. vc builds 0082 ahead of ST0007 WP-03, dc folds fleet doc into 0084, and each reviews the other's work.\n5. Localfold and compact now, then continue on the bounce."
+  }
+}

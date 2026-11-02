@@ -1,0 +1,15 @@
+{
+  "id": "01M66FWAJNS95GB3218A6T4YGF",
+  "ts": "2026-10-30T13:27:09.653Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-30, in vc's session: intent-vc is in charge of proceedings; vc follows its instructions, within hv's standing directives."
+  }
+}

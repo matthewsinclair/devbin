@@ -1,0 +1,16 @@
+{
+  "id": "01M5T6H4KV6FN6TZJM7SW41CJJ",
+  "ts": "2026-10-25T18:52:52.731Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 147,
+    "text": "FOR hv, PUSHES (hv chose (b), 2026-10-25, in vc's session: vc runs them; \"Just push on\" via molt-vc). Re-measured read-only 18:46Z (~/Devel/scratch/devbin-vc/push147/m2.tsv) and run 18:47Z to 18:52Z by date -u, fast-forwards only, each tip re-read first, never --no-verify (push.log, push2.log): every estate tree's remotes pushed, devbin's own main 593109bf..efb328dc (CI run 40223272158, read as a baseline; 0222's fix is in land220). LEFT: Intent local and upstream, refused by Intent's pre-push hook (its native pair behind HEAD); intent-vc names vc when build all has rebuilt the pair at HEAD and dc's .DS_Store test fix has landed, then vc pushes both, re-checked. One pair of the other estate's (line 7 of push-other.txt) has a remote that moved on or diverged and is left alone; molt-vc routes it."
+  }
+}

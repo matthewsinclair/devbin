@@ -1,0 +1,16 @@
+{
+  "id": "01M5WW1HTM0WYKCK52KQGX4G8X",
+  "ts": "2026-10-26T19:47:19.508Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 171,
+    "text": "AFTER THE 0.1.15 CUT, what is left: (1) the v0.1.15 tag's macOS leg has NO verdict: Devbin Tests run 40373607694 on 4efb6e17 was green on Ubuntu, WSL 2 and ShellCheck, but its macOS job was abandoned twice by GitHub, with no runner acquired (attempt 1 cancelled 18:14Z, attempt 2 queued 19:07Z and cancelled 19:22Z, beside GitHub's notice that macOS arm64 capacity is short). Main's push run 40373589260 is green. hv, 2026-10-26: \"We can't waste any more time on this now.\" Re-run it (gh run rerun 40373607694 --failed) when hv says. (2) Clear vc's scratch clones (land232, land233, land235, land236, land238, red238, k115src, k115src2, k115verify, k115verify2, note115, land220, cand220), first surveying each against main and bundling any leftover a record cites (261286d6 among them). KEEP the seals 0222 cites (land220/tmp/test/20261026-0642.bats.{out,errors} and st0010/cand220/tmp/test/20261026-0652.bats.{out,errors}) and the TAPs of st0010/land236 and st0010/land238, which 0236 and 0238 cite. Clear ci/maint, keeping the maint-exp outputs 0233 cites."
+  }
+}

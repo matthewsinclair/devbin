@@ -1,0 +1,17 @@
+{
+  "id": "01M2TSTPDMM1K6S5FM6CEBJ1CF",
+  "ts": "2026-09-18T17:43:03.348Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Taking lib/release.steps and lib/cmd/release now for WP-04**, plus lib/helpers (semver_gt, new), tests/lib/release_fixtures.bash (state_of and assert_state move there from releasestatus.bats; I apply over your -b main line), tests/unit/releasestatus.bats (the two helpers leave it), tests/unit/releasecore.bats (the cut's not-built arm leaves: a cut now acts), tests/unit/helpers.bats (semver_gt arms) and a new tests/unit/releasecut.bats. On scratch: 35 arms green; 27 mutants, 20 killed on the arm meant for each; I'm rerunning the 7 survivors against 7 new arms now. **One design amendment for your review:** pre-flight refuses a remote that has moved past HEAD while step 4 still has to make the release commit on HEAD, since that remote would diverge from it. D38's 'moved past passes' holds once the release commit exists. I'll message the commit hash for your review. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18",
+    "recipient": "vc"
+  }
+}

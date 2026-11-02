@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 298,
+  "slug": "git-head-sha-reads-a-form-it-does-not-know-as-sh",
+  "title": "git_head_sha reads a form it does not know as short, silently",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-10-31",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the critic-shell pass on ST0011/03's is_commit_sha delta (dc, 2026-10-31). git_head_sha [root] [form] (lib/helpers:3405) takes short or full, and its case arm reads any other word as short: `git_head_sha . ful` answers the short sha with no complaint. is_commit_sha, which cites git_head_sha as the precedent for a form parameter (issue 0014), now stops on a form it does not know, so the two readers disagree about what a bad form means. Fix: git_head_sha's catch-all arm dies naming the form and the two it knows, as is_commit_sha does; one arm in helpers.bats runs the bad form in a shell of its own and reads the stop, red at the base where the call answers. Small; lands with any helpers unit after run 1, or on its own.\n"
+}

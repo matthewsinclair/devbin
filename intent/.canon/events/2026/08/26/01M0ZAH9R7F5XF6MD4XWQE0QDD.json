@@ -1,0 +1,14 @@
+{
+  "id": "01M0ZAH9R7F5XF6MD4XWQE0QDD",
+  "ts": "2026-08-26T15:20:35.339Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0001/AC-10.5"
+  },
+  "payload": {
+    "evidence": "Conflab 5f8d20b0: bin/.devbin/cmd/ holds .lib + FOURTEEN handlers at the flip (app build cli daemon db deploy docs iex macos precommit release server use which), ten of them from 73e4fed5; count is AS AT THAT COMMIT -- deploy and docs (1660396d, back to the builtin) removed later by decision, leaving twelve today"
+  }
+}

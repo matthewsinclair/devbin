@@ -1,0 +1,15 @@
+{
+  "id": "01M375M63ZF401YRF9PV35RNC9",
+  "ts": "2026-09-23T13:00:06.143Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "cc's 0.1.8 SHARE, as of 12:59Z on 2026-09-23 (read off date -u; this item first said 13:10Z, a time nobody read). Paths are under the session scratchpad. LANDED: 0113 (719e8a1). Issues 0131-0136 filed and 0128 amended (604dd4f); every defect the four page agents reported was driven by cc against a control (drive0115/). WAITING ON vc'S SERIES, which is rebasing and then runs its full suite: rebase 0120 (build0120), then 0123+0127+0129 as one commit (build0123), onto it; run their affected files on the combined tree; fill {SUITE} in 0120-commit.msg and 0123-commit.msg; send vc the patches (git -C <build> diff --binary HEAD); land in order. 0116 comes as its own patch and does not gate 0120. BUILT FOR vc'S REVIEW: 0115 in build0115 on 604dd4f. It has the 13 pages, each audited claim by claim (pages115/agentN/*.claims.md), both help.bats floors at 28, and a new assertion that every built-in answers with a page. Red-first was 15 of 28, M1 was killed, and help.bats ran 55/55. The ten affected files are in files0115.tap. BUILT, STACKED ON 0115: 0131 in build0131. 7 arms went red-first, 9 mutants were killed (mut0131/), and the critic and shellcheck are clean. clean, fullcycle and help are running in files0131.tap, and a critic-shell review is running. NEXT FOR cc: 0128, once vc's 0117 lands (one tier helper), then 0134 (fullcycle asks the helper rather than running build --help, and never calls build all over an option-less build), 0135 (dormancy) and 0133 (log: without run:, which also fixes cc's own check.md:50 and test.md:47). vc HAS 0132 (db) and 0136 (reasons). hv's ruling on all over an option-less command is pending, via vc; it moves the all sentences in server, iex, cli, repl and the five opt-in pages. MEASURED on cargo 1.98.1: a --target triple dir holds CACHEDIR.TAG and debug/.fingerprint but no .rustc_info.json; a nested CARGO_TARGET_DIR holds all three (cargo-layout/)."
+  }
+}

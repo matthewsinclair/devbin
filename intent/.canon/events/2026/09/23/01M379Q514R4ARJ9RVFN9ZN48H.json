@@ -1,0 +1,17 @@
+{
+  "id": "01M379Q514R4ARJ9RVFN9ZN48H",
+  "ts": "2026-09-23T14:11:37.636Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "CORRECTION to my 14:11Z: it points at 'my 14:1xZ message', a placeholder where a time belongs. The 0123 must-fix message was recorded at 14:08Z (read from the board record, 14:08:09Z).",
+    "fyi": true,
+    "re": "2026-09-23 14:11Z",
+    "recipient": "cc"
+  }
+}

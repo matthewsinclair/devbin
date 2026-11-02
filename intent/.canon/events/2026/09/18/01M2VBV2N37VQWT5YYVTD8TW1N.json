@@ -1,0 +1,14 @@
+{
+  "id": "01M2VBV2N37VQWT5YYVTD8TW1N",
+  "ts": "2026-09-18T22:57:50.245Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0007/AC-4.4"
+  },
+  "payload": {
+    "text": "Pre-flight refuses, naming the remote, when a remote's branch neither contains the release commit nor is an ancestor of it, before any gate runs; a remote whose branch has moved past the release commit passes with its push already, once that commit exists; while the release commit is still to be made on HEAD, a remote whose branch has moved past HEAD is refused too, since the commit step 4 makes would diverge from it."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M34KFWHY89D35NS6CZ9T7MMG",
+  "ts": "2026-09-22T13:04:42.046Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A MECHANISM WHOSE DISABLED STATE IS INDISTINGUISHABLE FROM ITS ENABLED STATE BY INSPECTION -- three instances found on 2026-09-22, in three different tools, none of which reported being off. (a) Intent tests.yml carried a prose comment beginning \"# shellcheck IS AN ARMED TOOL FOR THIS PROJECT\". A comment beginning \"# shellcheck \" is DIRECTIVE syntax taking one of six keys; \"IS\" is not one, so shellcheck reported SC1072/SC1073 and answered by SKIPPING the rest of that script checks. Silently, since the comment was written, in the one project that arms shellcheck as a critic -- and the sentence written to stress that shellcheck is armed is what disarmed it. Measured: actionlint at HEAD extracted into a clean tree showed the codes predated any edit, and nothing after the reword, so the re-enabled checks came back clean. (b) Laksa ci_cd.yml had a well-formed concurrency block whose cancel-in-progress was ${{ github.event_name == pull_request }} -- cancelling PRs and never pushes, the inverse of hv ruling, and a fleet audit grepping concurrency: counted it compliant. Found only by asking for a literal true. (c) Cdtempl gitignored its devbin manifest for a reason that expired when devbin 0069 made the source path home-relative; the ignore then EXEMPTED the one file anyone suspected from AT-00.6, which greps every TRACKED file for a home path. THE GENERAL FORM: when a guard is configured through a surface that also accepts prose, or through an expression rather than a literal, or by excluding a file from a check, ask what its OFF state looks like -- if it looks identical to ON, only driving it can tell you which it is. Grep for the literal, not the key."
+  }
+}

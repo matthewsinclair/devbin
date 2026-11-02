@@ -1,0 +1,16 @@
+{
+  "id": "01M5Q6RVXMEGZTCP8TJ0VACXY8",
+  "ts": "2026-10-24T14:59:22.676Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). STATE AT THE 2026-10-24 14:59Z LOCALFOLD: LANDED today on main (unpushed): 0210, docs/dev-opt-brew.md, 0214, 0211, 0212 (suite 20261024-0831); 0213 at 76b3d790 (suite 20261024-1122); 0216 at 5e39f6c7 and 108c46d5, 0217 at 3950fcd7, 0218 at 19d15680 (suite 20261024-1249 at 4c2f866f, 2472 of 2472; seals in ~/Devel/scratch/devbin-vc/clone-archive/seals/). OPEN: 0213 until T10 legs C (Intent, after its re-vendor from 0.1.14) and D (kovacs, after brew upgrade to 0.1.14). 0216 until the fleet-less candidate suite is green. 0218 until 0.1.14 is tagged and laksa-vc told (todo 166). HANDED OVER, READY: cc 0215 (~/Devel/scratch/devbin-cc/0215/handover/0215.bundle sha 5c0950c2, 9f71ba86 on 4c2f866f) and cc 0207-0209 (~/Devel/scratch/devbin-cc/0207-9/handover/0207-9.bundle sha256 c30def0e...9418 checked, range 9f71ba86..split-0207-9: 44dab6cb 0209, 0028b10a 0207, 1b83166a 0208; drafts COMMIT_MSG-* and RESOLUTION-* beside it). IN BUILD, dc: the 0216 guard fix 65a91012 plus 0219 (grammar counts, comments only) dfcb603c, both on main 19d15680 in ~/Devel/scratch/devbin-dc/0216/f0216; its light runs (workroom x3, updatenotice, runlog, scans, help) rebook with molt-vc after the compact, then ONE bundle to vc. Checked: cc stack touches lib/runlog only at 1441, dc not; cc 0208 already removes helpers.bats four-spellings count check. NEXT: stack main + 0215 + 0209,0207,0208 + dc 65a91012, dfcb603c in a fresh clone (templates in ~/Devel/scratch/devbin-vc/tools: stack216.sh, land216.sh, cand.sh, suite-land216.sh, suite-cand216.sh); book ONE heavy pair with molt-vc (noted ahead of the cut); land; close 0215, 0207, 0208, 0209, 0216, 0219. THEN vc drafts RELEASES/0.1.14.md, hv cuts privately; send the tag to intent-vc (todo 165) and laksa-vc (todo 166), close 0218. AFTER THE CUT: dc builds 0220 (about 150 count lines, positional list) on vc word (dc hold 29). LATER 0.1.15 public: backup, recreate matthewsinclair/devbin, https urls, public tap; fleet stays out (decision 59)."
+  }
+}

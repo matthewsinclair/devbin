@@ -1,0 +1,15 @@
+{
+  "id": "01M68MMGK5JVHG4144PARVVJ8J",
+  "ts": "2026-10-31T09:28:45.415Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0296"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "formula names the assets' repository without the first declared remote, so a project with remotes: and no repo: reads origin where the cut and ci-state read the first declared remote"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M34YZ77SN4P2YQAH1M4XARAZ",
+  "ts": "2026-09-22T16:25:18.842Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A CHECK THAT ANSWERS CLEANLY HAS NOT NECESSARILY MEASURED WHAT YOU ASKED, AND THE CLEAN ANSWER CARRIES NO SIGN OF IT. Four instances to 2026-09-22, not one of which errored. (1) BSD `cmp -n <bytes of the shorter file>` reaches EOF and exits 1 though every compared byte matched, reporting two appended issue bodies as CHANGED; its control used a shorter limit and never reached EOF, so the control had the right polarity and the wrong SHAPE -- `diff` was the evidence. (2) shellcheck parses `# shellcheck ` as DIRECTIVE syntax, so a sentence opening that way is SC1072/SC1073 and it SKIPS the rest of that script's checks -- found by vc in Intent's tests.yml, silent since it was written, in the one project that arms shellcheck as a critic; devbin's own tree was checked clean on 2026-09-22 rather than assumed. (3) Three wrong populations in one day: a grep for a node name returned ZERO cc event files in both candidate commits because `subject.type` and `subject.id` sit on separate lines; `git rev-list <remote-tracking>..HEAD` read 23 unpushed in a repo whose HEAD was on a pushed branch, and four repos as NOT BACKED UP whose remote was simply not named `origin`, one keystroke from a false data-loss emergency; `jq ... select(.kind==\"todo\")` returned 34 where the board prints 10, because a generated board carries archived rows beside live ones -- `select(.kind==\"todo\" and .state==\"live\")` is the query. (4) vc's own, 2026-09-22: a command's exit status measured through a pipe read `tail`'s status rather than the command's, giving rc=0 for a command that exits 3. Re-reading that number could never have found it; only re-taking the measurement bare did. THE TELL IS NEVER IN THE ANSWER. A tracking ref is a cached opinion, not the remote; a JSON view is the whole store, not the rendering; a pipeline's status belongs to its LAST stage; and a linter that skipped your file exits 0 exactly like one that passed it. Ask what the instrument actually read before trusting its zero, its silence or its clean total -- and when a count and a rendering disagree, that disagreement is the only free error detection on offer."
+  }
+}

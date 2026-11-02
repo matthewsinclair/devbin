@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJ4Q1FDDXZBQAWSPAKJNGK",
+  "ts": "2026-10-08T20:09:13.519Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 41,
+    "text": "0191 v1.1 ACCEPTED by vc and frozen for landing (vc's word received after 2026-10-08 20:03Z by the clock: sums verified, git am on main 348ff735 gives 21f523d9's tree, interdiff and drafts read true, the correction on who found rider (b) taken). 0.1.10 lands 0191 and 0190 alone on hv's ruling (0192 parked, see the hold); vc runs one landing suite of both and lands. Handed: head 21f523d9 (b191 in ~/Devel/scratch/devbin-cc/sp-2026-10-08/0191/w191), patch patches/0191.v1.1.on-348ff735.patch e92a724e, interdiff 762ee27e, drafts 0191-commit.v1.1.msg 9977078e and 0191-resolution.v1.1.md d9ede784. WHEN vc SAYS 0191 IS IN: export b191 (b58b5e21..21f523d9), verify it in a fresh clone of the shared tree, delete w191, wbase191 and wcrit191, archive this, unclaim ISSUE:0191."
+  }
+}

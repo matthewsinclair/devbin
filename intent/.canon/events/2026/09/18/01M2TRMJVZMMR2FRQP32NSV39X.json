@@ -1,0 +1,15 @@
+{
+  "id": "01M2TRMJVZMMR2FRQP32NSV39X",
+  "ts": "2026-09-18T17:22:14.527Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**CI is vc's to read after every push (lesson, 2026-09-18).** CI was red at db05b29 on 17 Sep and nobody reported it until hv found it again at 05922e1. The local full suite can't see it: my git config supplies init.defaultBranch, and macOS supplies BSD stat. Proposed to hv: (a) after each hv push, vc reads 'gh run list' and reports; (b) test_helper pins GIT_CONFIG_GLOBAL to a fixture file, so local runs stop inheriting the person's git config."
+  }
+}

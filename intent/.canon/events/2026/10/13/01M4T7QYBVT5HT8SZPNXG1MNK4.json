@@ -1,0 +1,15 @@
+{
+  "id": "01M4T7QYBVT5HT8SZPNXG1MNK4",
+  "ts": "2026-10-13T08:58:22.460Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLD FOR TODAY'S DEMO, on hv's word relayed by vc (2026-10-13): nothing is touched in devbin or any other estate -- no builds, no runs heavy or light, no landings, pushes, sweeps or installs, no change to a scratch clone; the only commit is dc's own board, and dc takes no claim. After a compact: boot, commit the pickup at once, and hold. RELEASED WHEN hv says today's demo is finished, directly or through vc."
+  }
+}

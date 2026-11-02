@@ -1,0 +1,16 @@
+{
+  "id": "01M4D23J2NS2KDCSDEC52Z9F61",
+  "ts": "2026-10-08T06:09:44.021Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 147,
+    "text": "PUSHES, on hv's word of 2026-10-07. DONE: devbin main at 7d1a3f4c on both remotes, its run green on Ubuntu, which closed 0180. DONE: 13 of hv's estates' 0.1.9 seam commits on every remote each has, each push carrying the seam alone. CI, read 2026-10-08: green on arca_cli, arca_config, Baize, Cdtempl, Conflab, Gtools, Molt, Riffle and Utilz (37627418151, its six jobs); RED at Run tests on Lamplight (37627242748) and Prolix (37627363123), each on one test of its own that touches nothing vendored, and each repository red on every run listed back to 2026-09-26 and 2026-09-18 respectively (the older logs have expired): Lamplight's app 3515 of 3516, its gen3 quarantine test finding the token in its own .gitignore and a tech note; Prolix 765 of 766, a CLI fixture whose expected Ash error lacks the required? field the current Ash prints. Both are the estates' own, for hv. MicroGPTEx and Prodinfra have no workflows. HELD FOR hv's WORD: Intent, whose push would also publish an Intent session's unpushed issues commit beneath the seam (cfb59184f, its 0589 and 0590). NOT vc's: Gtools-geodica (its own session pushes it) and Cards (no remote). The other estate's 3 wait for its supervising session's own audit."
+  }
+}

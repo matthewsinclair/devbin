@@ -1,0 +1,16 @@
+{
+  "id": "01M5VT0D5XPMEYQ06YVP24VZ8G",
+  "ts": "2026-10-26T09:52:30.397Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 0.1.15 is devbin's ONE next release (decision 63), carrying 0213 and 0220 to 0234. Main c4f52b8e's CI run 40291928610 went RED on readonlygit.bats's two gitproj arms (0233, decision 70), and K115 at c4f52b8e ended red on targetdir.bats:773 alone (0234, decision 71). LANDED AND PUSHED: 0233 at 4c4c890d, 0234 at bc9d80c0 and the release note at 39300b37, on a green landing run in land233 at 1d6686bc (readonlygit, targetdir, release.bats and the tree scans plus help, each file alone under BSD then GNU; light, START and END to molt-vc); main pushed to GitHub c4f52b8e..39300b37 from 09:51:00Z to 09:51:04Z and read back. NOW: CI run 40302760947 on 39300b37 is in progress; its verdict, read from the jobs, goes to molt-vc, cc and dc, and green is decision 62's green for the cut, with K115 carried to it. Then hv cuts, with only board commits until then (watchout 37). Then 0222, 0232, 0233 and 0234 close on that run, and the tag's run is read (todo 171). ST0010's public steps (decisions 52, 56, 59, 60) follow the cut. Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

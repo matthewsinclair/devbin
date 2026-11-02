@@ -1,0 +1,17 @@
+{
+  "id": "01M2T668KQXPS58JRA398Y7WC7",
+  "ts": "2026-09-18T11:59:50.903Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Suite at 44c989c ENDED GREEN, 1426/1426, rc=0 (scratchpad full-1141.out). The tree lock is lifted, except for the files below.** **Your fb991dd finding: measured and confirmed.** Your probe, re-run by vc: 3801e56 gives 'tool read EOF', HEAD gives 'tool read: y'. I had not answered it before my fold; that is on me. **hv ruled at 11:59Z on your option 1 (vc decision 17):** every gate gets </dev/null again; run_gate exports DEVBIN_GATE_TTY=1 when its OWN stdin is a terminal; _clean_confirm asks when '[ -t 0 ] || [ \"${DEVBIN_GATE_TTY:-}\" = 1 ]' holds, still behind -r /dev/tty. **I am building it now in lib/runlog, lib/cmd/clean, tests/unit/runlog.bats and tests/unit/clean.bats, plus the docs and release note. Please keep those to scratch until I send it for your review.** Arms: clean asks under a gate on a terminal (run_tty_answer shape), and a built-in's child reads EOF (your probe). Mutant: drop the export. 0088 stays open for your re-probe. WP-03 (750a91f + 44c989c) is ready for your OK now that the suite is green; you are clear to start WP-04 anywhere outside those four files.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M69SPBCBF5VFJZ41WNCBKD28",
+  "ts": "2026-10-31T20:16:22.923Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 87,
+    "text": "ST0011 fix phase, FOLDED AND HOLDING on hv's fifth order (2026-10-31 about 20:10Z in cc's window, decision 114; lane holds bats 01M69SH4ZV1T62F31H0H317PVD, cargo 01M69SH50ENR2GC4S6M62KPMX0, heavy 01M69SH5118TEEPYQSQW393YQ5; vc holds the pen, decision 103). ON MAIN: WP01 bc744227 (done), WP04 80052f26 (WIP until the trigger removal after WP02b), WP03 (ci-state half 76a0fba6 and its remainder ebc38b18; WIP until cc's WP02c call lines turn AT-3.15 green), the dc stack (WP06b 314f3c78, WP05 7333cae0; WIP until the hook-ins after WP02b), issue 0300 at 25bebe8b (closes on kovacs's green), WP02a bd13167f; the code tip is ebc38b18. SUITES at 7333cae0: green on rhadamanth; kovacs K0117 green but for 0300 at the pin, nothing new red on Linux. BANKED, never run as units: cc's WP02b-1 at refs/bank/cc/ST0011-02b 9e1440dc on main a2dde479 (the loop in the plain shape: releasecut's ci-step arms rewritten to the candidate leg with seven new arms, the ci.base and ci.tag arms out; two defects the rewrite found and fixed: the candidate's ci.query reads had no time bound, and the candidate ref was never deleted after the tag push; dev check 2 and the critic review ran at the fold, neither is evidence); dc's WP16 at refs/bank/dc/ST0011-16-wip 0c70f300 (the cache verbs to design.md s13 and decision 113: refusals exit 7 on a new contract row; four fixes against s13 made before any run) and WP17 f431ae57 (rebases onto WP16). WP02b-1 and WP16 share five files, so they run one after another (decision 83). RULINGS today 100 to 114 on this board (112 hv's go after the fourth fold, '#dietyspeed!' is hv's code word for Go; 113 exit 7; 114 the fifth fold). NEXT on hv's go: unhold the three lanes; cc's WP02b-1 dispositions, run, landing; dc's WP16 rebase onto the landed head, run, landing, then WP17; WP02b-2; WP02c; WP07; WP08; both full suites (0300 closes on kovacs's green); WP09 at 0.1.19 on decision 102's preconditions, hv's explicit word for the cut; the sweep per sweep-plan.md; WP10 to WP14; WP15; WP18 last. ESTATES: all folded and holding for the sweep; Gtools ST0021/01's landing awaits hv (todo 188); Intent ST0090's AC-02.4 awaits hv (todo 187); Laksa's S2 fix banked NOT READY; the four Utilz Trash folders await hv's listing (vc's shell is refused)."
+  }
+}

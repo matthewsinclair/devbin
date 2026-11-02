@@ -1,0 +1,16 @@
+{
+  "id": "01M64JAN4D7EZ4WZ7MQBZZ7WAB",
+  "ts": "2026-10-29T19:31:27.501Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 41,
+    "text": "ST0006 is in triage with no objective or design; WP-01 (infra apply through flyctl) is its one live write. Starting it is hv's (directive 1), its first live drive too (directive 3)."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5PQ1TY4GYC7C50ZFN6K0JCJ",
+  "ts": "2026-10-24T10:24:39.364Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FOR intent-vc (asked 2026-10-24 after its compact): send intent-vc 0213's landing commit as soon as it lands, and later the release tag that carries it. Intent's dev/opt/brew thread is third in Intent's 3.2.7 queue, after Intent issue 0635 and Intent's devbin re-vendor. If a devbin release with 0213 is out before that re-vendor starts, Intent takes it instead of 0.1.13, so it re-vendors once. devbin's switch proof in the Intent checkout runs after that re-vendor (doctor per tree, upgrade only in a scratch clone). Intent is frozen until its v3.2.6 tag."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 311,
+  "slug": "macos-s-drop-check-copy-restores-only-the-traps",
+  "title": "macos's drop_check_copy restores only the traps trap -p printed, so a caller that saved INT alone would leave TERM and HUP ignored",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-01",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the issue 0297 fork's review of ST0011 WP02b-2 (2026-11-01), off that unit's path, and held for after the release on vc's word. lib/cmd/macos:717, in drop_check_copy, restores only the traps `trap -p` printed. A caller that saved INT alone would be left with TERM and HUP ignored. No caller does that today: lib/cmd/macos's one trap set, at line 591, covers INT, TERM and HUP together, so the three are always saved and restored as one. Fix, after the release: reset each of the three to its default before the saved handlers are evaluated, as run_gate's restore does (0297)."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M4AX6R6BK82WBK418VDD28A4",
+  "ts": "2026-10-07T10:05:36.847Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0184"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "the lint gate sizes its parallel run by CPUs and never by memory, so a host with many CPUs and too little memory has checks killed, each read as a breach"
+  }
+}

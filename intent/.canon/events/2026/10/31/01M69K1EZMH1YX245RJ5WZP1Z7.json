@@ -1,0 +1,15 @@
+{
+  "id": "01M69K1EZMH1YX245RJ5WZP1Z7",
+  "ts": "2026-10-31T18:20:07.028Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 18:20Z (dc's WP16 questions): (1) the cache verbs' refusals exit 3, with 0 answered or pulled and 1 absent; design.md section 13 and AC-5.1 said 2, which contract.bats (0119, 0126) reserves for the dispatcher's 'not available here', so the tree's law wins and dc amends section 13's words on disk and AC-5.1's text (intent ac edit) in the unit, AC-5.5 likewise if it names the code. (2) gc keeps 3 per artefact by default, a named constant in lib/cmd/cache, --keep overriding; the arms read the constant, never the number. (3) gc reads the newest RELEASE seal under the release's run logs and keeps every key it names; the seal's line grammar is defined in WP16 now, one line per artefact the cut used, cache<TAB><artefact><TAB><key>, so WP02b-2 and WP08 write it with no second spelling; until a seal carries such lines gc keeps the newest n alone and prints that no seal named a key. (4) Callers per section 13: a project's build handler calls get before its build and put after, a derived: command may, and where the handler is the core's own (WP06's macOS stage, WP08's formula) the core calls them at those hook-ins; the core's build command does not change; AC-5.2's arm uses a fixture project whose handler calls get then put. Dependency: WP16 brings the three lib/helpers definitions (the platform words, platform_word, is_platform_word; decision 108) and WP17 rebases onto them, one definition each."
+  }
+}

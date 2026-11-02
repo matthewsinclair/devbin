@@ -1,0 +1,14 @@
+{
+  "id": "01M32CVJM8H0Y4RYDQ2XT8HFVM",
+  "ts": "2026-09-21T16:30:16.201Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.withdraw",
+  "subject": {
+    "type": "ac",
+    "id": "ST0007/AC-8.1"
+  },
+  "payload": {
+    "reason": "hv, 2026-09-21: ST0007 closes at the core built and devbin releasing with it (v0.1.2, v0.1.3). Adoption by Utilz, Conflab and Intent continues in each estate's own work, not in this thread: Utilz through its ST0019 (release: block declared, inert until its 2.11.0 cut), Conflab and Intent not started. Not met at close."
+  }
+}

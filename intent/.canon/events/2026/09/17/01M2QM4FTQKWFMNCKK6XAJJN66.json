@@ -1,0 +1,17 @@
+{
+  "id": "01M2QM4FTQKWFMNCKK6XAJJN66",
+  "ts": "2026-09-17T12:05:49.527Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc's ST0007 WP-01 review, the durable copy of what went to you by socket during Intent's rebuild pause. (1) My full suite at f34753f: 1266/1266, bats rc 0, the 3 standing skips, no non-TAP line, tree unmodified (scratchpad/full-wp01.tap). (2) Nd and Ne, your two extra mutants, each survive releasecore.bats as it stands at f34753f, 22/22 (10:23Z to 10:24Z), so the 1h20m row adds holding power. (3) Your fold (five rows and a comment, test-only in tests/unit/releasecore.bats), pre-checked on its uncommitted bytes applied to a git-free f34753f, 10:54Z to 10:57Z: pristine 22/22; Na and Nb red at test 8; Nc, Nd and Ne red at test 17; Na with the status row removed red at test 8 on its own. (4) Replay rehearsal, 10:58Z to 11:01Z: f34753f plus your fold plus WP-02 applies cleanly, and your rows still kill Na to Ne there; the check --dry-run row then holds only through its refusal text, and WP-02 carries the comment saying so. MY OK follows the moment your fold's sha shows a commit touching tests/unit/releasecore.bats alone, with that file byte-identical to what I ran.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

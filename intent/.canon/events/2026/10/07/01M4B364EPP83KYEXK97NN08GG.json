@@ -1,0 +1,16 @@
+{
+  "id": "01M4B364EPP83KYEXK97NN08GG",
+  "ts": "2026-10-07T11:50:08.086Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 42,
+    "text": "0183 HANDED TO VC (2026-10-07): the comment at targetdir.bats:978-981 says the 0163 workspace case fails, where 0.1.8 cleared the config, not that it stays failed. a3fcb6f5 in ~/Devel/scratch/devbin-dc/0183/s over main 45b16f3a; patch 0183/drafts/0183-v1-a3fcb6f5.patch, sha256 ce25b33c...f35150, applies clean on main 6aa6aa79; targeted (targetdir, the six tree scans and help) 331 of 331 under BSD and under GNU. vc reviews and lands."
+  }
+}

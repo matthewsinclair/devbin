@@ -1,0 +1,17 @@
+{
+  "id": "01M5TB30K1PCC4MSJB5HK75F8N",
+  "ts": "2026-10-25T20:12:32.737Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "land220's landing pair (2026-10-25, 19:48Z to 20:11Z) was RED on workroom.bats's handle arm: lib/runlog's counter regex /^Test [Cc]ase .../ (0229, lines 616, 851, 852) holds 'Cc', which the scan reads as the handle as a word (errors: ~/Devel/scratch/devbin-vc/land220/tmp/test/20261025-1948.bats.errors). Nothing landed. At pickup: rewrite those patterns without the [Cc] class, keeping the counter's arms green (BSD and GNU, under LC_ALL=C), red then green on workroom.bats plus the tree scans (vendoredmd.bats among them), as one commit on land220's c320ba06, sealed and handed to vc. Book the light with molt-vc.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

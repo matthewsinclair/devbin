@@ -1,0 +1,16 @@
+{
+  "id": "01M5QKPMNSC7D8RK1MS68WF4Y5",
+  "ts": "2026-10-24T18:45:21.209Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 2026-10-24 18:42Z: devbin 0.1.14 RELEASED by hv's cut (tag v0.1.14 at 593109bf, pushed to local and upstream, formula published to homebrew-devbin at 6ee81e4d; gates green on suite 20261024-1832, 2474 of 2474 ok, 5 skips, errors empty). After the tag: intent-vc and laksa-vc told; 0218 CLOSED; 0221 filed (positional names outside the release core, from dc's 0220 read); dc released from hold 29 to build 0220, then 0221; cc's hold 22 moves to Intent's re-vendor and hv's kovacs brew upgrade. NEXT, 0.1.15 public: 0220 and 0221 land; the audit on one fresh commit (allow-list minus fleet, name scan, secret scan, two reads, full suite, public brew install); backup bundle and mirror verified by fetch-back; hv recreates matthewsinclair/devbin public; https urls, public tap."
+  }
+}

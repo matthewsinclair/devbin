@@ -1,0 +1,15 @@
+{
+  "id": "01M41BD266NGW2KM4GW6C7G7YW",
+  "ts": "2026-10-03T17:01:19.432Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0160"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "An empty command-level run: is refused by all with a pointer to a bare command that cannot run"
+  }
+}

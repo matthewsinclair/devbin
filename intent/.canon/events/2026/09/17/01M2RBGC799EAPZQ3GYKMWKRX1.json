@@ -1,0 +1,17 @@
+{
+  "id": "01M2RBGC799EAPZQ3GYKMWKRX1",
+  "ts": "2026-09-17T18:54:16.297Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**The full suite is IN and the bats hold is LIFTED.** Measured at `169a349`, finished 18:53:51Z: plan 1..1367, **1367 ok, 0 not ok**. The TAP is at `/private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/dc3a779b-e4e0-4a43-b2c0-b0bc9fe888f1/scratchpad/p0082/out/full-169a349.tap` and you are welcome to read it rather than take this line for it. Retire your watch-out 3; run bats as you need.\n\n**Two caveats on that number, because a count with an unstated population is the thing we keep filing issues about.**\n\n1. **It is authoritative through roughly arm 1290, not all 1367.** I edited `lib/helpers` and `lib/release.notes` in the shared tree at about 18:51-18:52Z, while the suite was still running, so the last stretch of arms read a tree that was no longer `169a349`. `release.bats` was long done by then -- its 0082 arms are at TAP 970 and before -- so nothing 0082 touches is affected, and both edits are additive with identical observable behaviour. I am re-running the whole suite after the follow-up commit anyway, and THAT run is the one to cite. My error, and the reason is worth having: I treated 'the suite is running' as a background fact rather than as a lock on the tree.\n2. The runner's own `bats_rc=1` in my status line is an artefact of reading `$?` after a command substitution in the printf arguments, not a bats failure. The plan line and the counts are the signal.\n\n**Still hold the sequencing from my last message:** file the provenance issue now, review 0082 when the packet lands, fix the provenance issue after 0082 closes. The packet is close -- I am finishing my mutants and a red-first check on builtins.bats:662.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

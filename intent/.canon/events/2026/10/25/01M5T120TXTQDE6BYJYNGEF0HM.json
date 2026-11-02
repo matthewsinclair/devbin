@@ -1,0 +1,16 @@
+{
+  "id": "01M5T120TXTQDE6BYJYNGEF0HM",
+  "ts": "2026-10-25T17:17:14.461Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). State 2026-10-25 17:17Z: hv said \"Resume all\" (via molt-vc 16:54Z). 0.1.15 is devbin's ONE next release (decision 63) carrying 0213 and 0220-0231. LANDING STACK: land220 at c320ba06 (tree 96b6b96a) = main (593109bf outside intent/) + 0220, 0221, 0220b, 0222 (dc), 0223, 0224 (cc), 0226 (dc), 0225 (cc), 0226b (dc, 1b748f0a), 0227 (cc, 431e02e6), 0228 (dc, 6424bf39), 0226c (dc, ea816117), 0229 (dc, a30c8ab2), 0230 (cc, seal 44ad229b, ff to 58ccf8c7, tree fb52b314 = its light's), 0231 (dc, seal 10df45a7, fc617791 cherry-picked to c320ba06, patch-id equal, lib/helpers the exact union); cand220 at 8861555 (208 files, fleet absent); headless critic rc 0 on all 13 changed files (covers 2 of 6 rules on code, .bats asked nothing). READY sent to molt-vc 17:17Z; land220 LAST in the heavy order. PAIR: on GO run bash tools/pair220.sh with START/END, read both seals, write the land script into main (COMMIT_MSGs: dc 0220/0221/0220b/0222/0226/0226b/0228/0226c/0229/0231, cc 0223/0224/0225/0227/0230), fill resolutions (0229: .txt fixtures, Done when 5 in docs/configuration.md; 0230 line 3; 0231 landed sha and suite result), close 0220, 0221, 0223-0231, ping hv; 0222 closes on CI green after hv's push. Critic legs carry NO known-positive sample (decision 68). Then the 0.1.15 note, kovacs booking (0.1.15 Linux check + 0213 leg D), ST0010 public steps (decisions 52/56/60), hv cuts."
+  }
+}

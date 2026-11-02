@@ -1,0 +1,15 @@
+{
+  "id": "01M2ZG185STTNRWCA41CA194B3",
+  "ts": "2026-09-20T13:28:04.537Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "Fixture race found at Utilz (their issue 0042, relayed 2026-09-20): a test fixture built with cp -a of a LIVE checkout, .git included, is not an atomic walk. A commit landing mid-copy gives a fixture whose .git carries files its worktree lacks, so git add -A stages deletions and an append-only guard refuses them -- which reads like data loss in the event store and is not. Their fix is ordering: copy .git FIRST and the worktree SECOND, so any tear stages as additions. IT IS NOT A LOAD ARTIFACT, and utilz-vc's correction of my first wording is the half to carry: load only widens the window, because a slower copy is more likely to contain a peer's commit; on an idle machine the same interleaving is less likely and just as fatal. Recording it as flaky-under-load is what stops the fix being made -- the reader re-runs, passes, and moves on, which is plausibly what happened at Utilz on 8 Sep, leaving a comment about an undiagnosable flake where a fix belonged. MEASURED FOR DEVBIN, not assumed: devbin is not exposed, structurally rather than by timing. Its three recursive copies (tests/lib/source_fixtures.bash:41-42, tests/lib/test_helper.bash:844) take lib/ and bin/.devbin only, never .git and never the checkout root, and mkdevsrc runs git init plus one commit INSIDE the fixture after the bytes are there, so there is no pre-existing history to be copied at a different instant from the worktree. Keep both halves for any future devbin fixture that copies a checkout."
+  }
+}

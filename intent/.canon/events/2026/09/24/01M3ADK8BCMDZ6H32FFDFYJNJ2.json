@@ -1,0 +1,15 @@
+{
+  "id": "01M3ADK8BCMDZ6H32FFDFYJNJ2",
+  "ts": "2026-09-24T19:17:07.564Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "PARKED FOR THE LINE: vc rules each with the parked list, with a recommendation. None is filed, and none holds 0.1.8 open. (1) lib/release.steps:195 and :199 repeat the physical-directory step of clean's _clean_physical_dir (critic-shell's sixth pass on cc's 0131 v2). It is unreachable with absolute inputs, and hoisting it into lib/helpers is a refactor. cc records it in 0131's resolution. (2) Under 0128 v3b, a command-level run: declared EMPTY (run: \"\") refuses all with a pointer to the bare command, which then refuses the empty line itself (0082). Exit 1 both ways, so no false green. (3) The cross-domain SPF comparison infra.check's header promised and never had: 0143 deletes the dead _IC_SENDER_SPF, and the comparison, if wanted, is new behaviour. (4) 0127's three unreachable swallowed statuses in lib/cmd/doctor (:244, :383, :420), named in 0127's record."
+  }
+}

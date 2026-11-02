@@ -1,0 +1,16 @@
+{
+  "id": "01M4DA17GS9ECCN10X65BBSC90",
+  "ts": "2026-10-08T08:28:16.281Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 45,
+    "text": "0188 BATCH 5, on 0181's rebased head 95dbeef7 in ~/Devel/scratch/devbin-dc/0188/b5, branch b188, head 24461561. release_url_shown in lib/release.steps leaves a url's userinfo out of release_repo's two refusals. Arms: three in releasestatus.bats (not HOST/OWNER/NAME in four shapes, names no host, the controls) and one in releasecut.bats (a cut's terminal and sealed log). Red on main a19ce006 (3 red, the control green), green 4/4 BSD and GNU, shellcheck clean, the helper driven over 15 urls; critic-shell running. Next, after 0181's targeted run, in series: red on main 476cf82e, its 9 mutants, targeted BSD then GNU; cut against 95dbeef7; hand to vc with 0181 or after it."
+  }
+}

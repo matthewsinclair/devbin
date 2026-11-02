@@ -1,0 +1,15 @@
+{
+  "id": "01M5PB29HJ5BXPZ7S53D59EPVC",
+  "ts": "2026-10-24T06:55:11.411Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0211"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "tests/unit/fullcycle.bats:3654 never runs its [ -e ] check: two statements on one line make the check arguments of refute_output_contains (a false green), and :708 carries a doubled comment line"
+  }
+}

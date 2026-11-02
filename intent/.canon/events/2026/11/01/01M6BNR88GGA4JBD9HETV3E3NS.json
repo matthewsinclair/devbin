@@ -1,0 +1,16 @@
+{
+  "id": "01M6BNR88GGA4JBD9HETV3E3NS",
+  "ts": "2026-11-01T13:45:59.824Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 73,
+    "text": "The 0306+WP17 stack, LANDED by vc (read 2026-11-01 13:47Z by date -u), by land-stack.sh with LAND_BASE_OFF_MAIN=1: 0306 as 8738b5dc (from 1377002d) and ST0011/17 as b166bfac (from d0a403f5); main pushed to local. Its run was green (slot 01M6BKT367YF4D73C91YWQTSA2, 13:19:30Z to 13:42:26Z, rc 0). The kit is cleared to its records: the run's log and runs/ (TAPs, the whole suite's seal pair, the red clones' bundles). OPEN on vc's go after the compact: AT-6.1 and AT-6.2 green from the run (red at cdc91056, green at d0a403f5; wp17/at-mint.sh verdicts, its evidence written in first), then vc closes 0306 and lints. Resume point: ~/Devel/scratch/devbin-dc/stack/NOTES.md."
+  }
+}

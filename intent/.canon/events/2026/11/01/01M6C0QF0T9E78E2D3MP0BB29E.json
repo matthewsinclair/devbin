@@ -1,0 +1,16 @@
+{
+  "id": "01M6C0QF0T9E78E2D3MP0BB29E",
+  "ts": "2026-11-01T16:57:48.314Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 43,
+    "text": "ST0011/07 (WP07, attach reads the candidate run; AT-3.8): RE-BANKED by CAS at refs/bank/cc/ST0011-07 ba5a8270d48a00c6fd18e19013cb06943eb3e423 on dc's re-banked hook-in refs/bank/dc/ST0011-04 edada49b (from 7a70cb2f, which is archived with the old red tip b63ccc94 and chain tip 32fea4b3). Its red clone red07 (~/Devel/scratch/devbin-cc/st11-wp02b/kit7/red07, 6a09815c) is edada49b with releaseattach.bats alone. Pre-bank in plain bash: helpers' four scans, 0080, 0087, 0085, 0240 and its readers arm PASS; the lint gate 58 files, 0 breaches. RUNNING in one stack with the hook-in (vc's ruling of 16:32Z), driven by dc's hookin kit: 01M6C0GKNE2H3SM6TPRM9MCWB6 (05 6b99ed46, 04 edada49b, 07 ba5a8270 on 62e1c34b), granted (2026-11-01 16:57Z by date -u); cc's 01M6BX93 denied as superseded. Hands off red07 and the bank until dc's END. At the driver's exit: cc writes COMMIT_MSG-ST0011-07.txt in handover7/ with the record line \"The hook-in's run, at ba5a8270\", which dc's handover-hookin.sh copies into the stack's one handover (land-stack.sh, LAND_BASE_OFF_MAIN=1, units 05, 04, 07). At the landing: AT-3.8 red, then green, over releaseattach.bats's # AT-3.8 arm."
+  }
+}

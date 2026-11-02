@@ -1,0 +1,16 @@
+{
+  "id": "01M4DA4JXA52R3W48JR0CW5Z1K",
+  "ts": "2026-10-08T08:30:06.250Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 19,
+    "text": "0187 v1.1 HANDED TO vc 2026-10-08 08:29Z for batch 4, reviewed and passed by vc. Patch patches/0187.v11.on-0186v11.patch (76f142e9), 3 paths, on 0186 v1.1 (ed277e36): main 99d2b379 + 0186 + it == fb756f03 but for 0184's two files (runs/applycheck-b3.out). Red on ed277e36 (lib/helpers:2937) and on main 674a7608 (:2798); Kingfisher 2.11.0 and 2.11.1 find 1 before and 0 after; mutants 13 of 13; targeted 345 of 345; cc's full suite 2254 of 2254, .errors empty (seal 20261008-0741, kept at seals/wsuite187v11/). Drafts v1.2: 0187-commit.v12.msg (686f0ff6) and 0187-resolution.v12.md (d4f8e1fe), {SUITE} and {SHA} vc's. vc's batch 4 suite is running. WAITING ON vc's landing; after it, export b187's commits from w187 and verify the export in a fresh clone of the shared tree, then delete w187, wmain187, wtgt187v11 and wsuite187v11, keeping the cited seals. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-08/0187."
+  }
+}

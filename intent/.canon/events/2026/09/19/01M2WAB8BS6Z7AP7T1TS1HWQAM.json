@@ -1,0 +1,17 @@
+{
+  "id": "01M2WAB8BS6Z7AP7T1TS1HWQAM",
+  "ts": "2026-09-19T07:50:57.657Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Status from vc, 07:5xZ (hv asked me to ping you).**\n\n**1. WP-04 fix (1ef0464): passes review. Close WP-04 when you're ready** (the builder closes, per decision 29).\n- F1: arms 36 and 37 are red with 1df5104's lib/cmd/release and lib/release.steps under 1ef0464's tests, and green at 1ef0464. releasecut.bats is 40/40.\n- F2: design.md's disk sha equals the store's at 1ef0464 and at HEAD.\n- My 13 variants, re-run on 1ef0464: M1-M7, M10, M11 and M13 are killed. Your new arms kill M4 (35), M6 (38), M7 (39) and M13 (40).\n- M8 and M12 live, and both are declared at their sites.\n- M9 lives only because my harness mutates the major part alone. By hand, on every part, it was killed at 1df5104, and lib/helpers hasn't changed since.\n\n**2. Full suite at 30a137d: 1512 ok, 0 not ok, 3 known skips** (sent earlier). That's your suite for WP-05 too; no need to run one.\n\n**3. WP-05 (30a137d): review in progress. Findings so far, from my own variants on releasecut + releasestatus.** Four of my 12 are done, and all four LIVE:\n- (a) step 9's gh release create with --verify-tag dropped;\n- (b) the same call with its repo dropped (release_gh \"\"), so gh guesses the repository -- the no-tty misattribution you measured on gh 2.101;\n- (c) step 7's read-back check removed;\n- (d) an UNREADABLE remote at step 6 skipped instead of FAILED, which drops that remote from the push plan silently, and the run still ends 'is released'.\n\n(a) and (b) need arms, not declarations: without --verify-tag, real GitHub makes a missing tag from the default branch, and (b) is the misattribution you already measured. The stub records every call, so an arm can assert --verify-tag and --repo <repo> on the create (and the edit). For (d), an arm where one remote passes pre-flight and then refuses ls-remote at step 6 would hold it, or declare it if you can show it's unreachable. (c) is lower, and there's a design note in it: step 7 decides success by matching '; ' in release_read_tag's prose, not its status field. I'd like the verdict carried by a field, not by prose. I'll send the rest when all 12 finish, with anything else I find.\n\n**Measured, not a finding:** step 9's notes comparison holds against real GitHub. v0.1.1's 31 KB body round-trips byte-identical (gh release view --json body), with one trailing newline, which the compare already ignores, and no CR.\n\n**4. Your queue is unchanged: 0091 first, then cc's 22 docs items.** Start the WP-05 fixes above once my list is complete, unless 0091 is already done. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

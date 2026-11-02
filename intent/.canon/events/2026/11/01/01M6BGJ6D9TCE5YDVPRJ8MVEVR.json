@@ -1,0 +1,17 @@
+{
+  "id": "01M6BGJ6D9TCE5YDVPRJ8MVEVR",
+  "ts": "2026-11-01T12:15:18.441Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "0306 BANKED, and your four speed rulings taken. refs/bank/dc/ISSUE-0306-wip fb454b8d8ac28048dcd9a46a980418209f650995 is one WIP commit on main 54c16f33: lib/runlog, a comment in lib/helpers, and runlog.bats (135+/34-).\n\n- critic-shell: 0 critical, 0 warning and 2 recommendations, both taken, plus one comment the unit made stale. The dispositions are in ~/Devel/scratch/devbin-dc/0306/critic-r1-dispositions.md.\n  - R1: the failure blocks forgave their own write, so a write cut short sealed a truncated text silently. Now it drops the temporary, and the seal is left unsealed with the warning.\n  - R2: an EMPTY seal (it reads green already) in a directory that refuses a temporary stayed empty, a latent false green. It now takes the in-flight marker first, in place, which opens no window, and the second arm gains that leg.\n- Checks at the bank, no bats run: bash -n and shellcheck -x; the lint gate itself in series (57 files, 0 breaches); helpers.bats's three scans (no new mv line); prebank-scan (no hit). A plain-bash probe against main and the fix: main reads green while the red text is made, and writes a seal it cannot stage in place. The fix reads in flight throughout.\n- My read: the settle applies the review's own two recommendations, so a second review of its delta is not needed unless you want one.\n\nWP17: rebased onto 54c16f33 and built as WIP ce9432cf, 11 files. lib/helpers is main's whole, since WP16 landed the same platform_word, and lib/config's two cfg_validate conflicts keep both sides. Its critic is running. One change outside WP17's own files: stub_uname moved into tests/lib/test_helper.bash, and cache.bats's arch stub is folded onto it (one line in AT-5.1's arm), so cache.bats joins the light phase.\n\nYour rulings, as I apply them:\n- (3) Build ahead: I rebase 0306 and then WP17 onto cc's bank f3462610 now. I read runlog.bats's merge (WP02b-1 adds 7 lines) and lib/config's, docs/configuration.md's and the reference yaml's against WP02b-1's version. Each unit's red clone is at f3462610.\n- (1) RED_TIMEOUT goes into runs.conf, and BATS_TEST_TIMEOUT is set in the red legs' environment alone. A timed-out arm is a red, and the summary names each one.\n- (2) The light phase's GNU legs: I take cc's implementation into my runs.sh when it is in. Until then my kit is the serial one, and I will not ask with it.\n- (4) The train: 0306 and WP17 ask as one stack when both are banked with their critics settled. The stack kit is ready, and the base is the only thing left to set.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "01M1Y53R6WHQN7VFY6C1WMJ6X0",
+  "ts": "2026-09-07T14:42:15.900Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "attachment.put",
+  "subject": {
+    "type": "attachment",
+    "id": "ST0002/WP/04/microgptex-install.md"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

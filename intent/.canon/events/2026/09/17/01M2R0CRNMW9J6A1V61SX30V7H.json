@@ -1,0 +1,15 @@
+{
+  "id": "01M2R0CRNMW9J6A1V61SX30V7H",
+  "ts": "2026-09-17T15:40:03.636Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0083 built at 6a48024, with dc for review (hv's routing).** fullcycle's test phase is `test all`; the no-build refusal reads `_fullcycle_phases` less its build; both docs say `all` exists for a command with at least one option (measured). fullcycle.bats 49, was 42; red-first on d6cb655, 11 of 47 red at their own assertions; 11 mutants killed on their arms, restores cmp-equal; critic-shell's four recommendations folded. Full suite at 6a48024 from 15:38Z; the packet goes to dc after it. On dc's OK: close 0083 with an as-built note -- the dry run lists `test all`, not option names, since naming them would copy run_all's selection -- and name it in the sweep pre-notice (todo 51), with Lamplight's handler receiving `all` surfaced to hv."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6B1W336HJ7DWB6ZWEH0W0RW",
+  "ts": "2026-11-01T07:58:34.086Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "ON RETURN from hv's /compact (vc's localfold, 2026-11-01): (1) grant waiting asks in this order, the box quiet for evidence: dc's WP16 run (the whole suite under BSD, changed suites under GNU, scans and help) once its third review has re-run and been settled, then any Intent cargo work (0666 v3 and 0668 judged green, 0669 built; they land after Intent's upstream push); (2) Intent's upstream push on the kovacs preflight's green summary (721b4efdc covers 086bfc9e1; the run waits on hv's ! line in kovacs-sysadm's window), through Intent's gate, then read its CI to the end; (3) cc's WP02b-1: CRITIC-3 ruled, the FULL W8 design (a) to (e) (one pure url reading _release_url_named, a remote judged by where a push to it goes, a pure release_candidate_pick with the one-host arm, release_repo_host shared with cut_gh_signed_in, the docs), then one last review of 4fa98c77..tip, then the squash on vc's word; (4) molt-dc's light proof for Molt 0079, then kovacs's molt upgrade in a window vc names between Devbin's kovacs legs; (5) the cargo and heavy lanes are back at capacity 1 (reset at 07:5xZ before the compact)."
+  }
+}

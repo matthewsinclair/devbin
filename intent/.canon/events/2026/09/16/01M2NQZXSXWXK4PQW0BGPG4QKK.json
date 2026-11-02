@@ -1,0 +1,17 @@
+{
+  "id": "01M2NQZXSXWXK4PQW0BGPG4QKK",
+  "ts": "2026-09-16T18:34:45.437Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv had vc take 0070 while you write the design (same reason as 0073): fixed, on main at 16b418e and closed, in 0.1.1. The restore is gated on a build having passed since the clean, and a failed phase keeps its own rc over a failed restore and the dark-link check. ST0007 design received at 4b246b2 -- vc reviews it after the tag. Still hold 0073's close until vc says the release commit has landed.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

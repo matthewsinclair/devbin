@@ -1,0 +1,16 @@
+{
+  "id": "01M6BHJ1M5GTWSJW4XMF9YJQ68",
+  "ts": "2026-11-01T12:32:42.117Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 73,
+    "text": "ISSUE:0306 (vc decision 120), FOLDED at hv's order relayed by vc, read by 2026-11-01 12:32Z by date -u. Built, critic-settled and banked as refs/bank/dc/ISSUE-0306-wip fb454b8d on main 54c16f33 (the lint gate in series clean; no bats run). On vc's build-ahead ruling it is the stack's first unit commit 1377002d on cc's bank f3462610, in ~/Devel/scratch/devbin-dc/stack/build; runlog.bats's merge was read (cc's 7 lines are AT id comments far from 0306's arms). Its red clone red-0306-f3462610-1377002d is built and named in runs.conf. The stack (0306, then WP17) asks as one after cc's WP02b-1 run ENDs and lands, in the shape vc approved (stack/run-stack.sh): each unit's arms red at its own red clone, bounded by RED_TIMEOUT=60, then green under GNU; the BSD whole suite first and alone; then the GNU legs in parallel, cc's pattern. The state and the resume point are in stack/NOTES.md."
+  }
+}

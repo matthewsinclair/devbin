@@ -1,0 +1,16 @@
+{
+  "id": "01M55K9H99E5KG8MME6GTWPQJQ",
+  "ts": "2026-10-17T18:51:51.977Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "2026-10-17 18:51Z STATE. devbin 0.1.11 RELEASED (0fc22669) and INSTALLED by brew on rhad and kovacs; ST0009 CLOSED; ST0010 opened, not started (devbin public, decision 52). ISSUE 0202 LANDED at 60bec9e4 and CLOSED (landing suite 20261017-1803, seal clone-archive/seals/l202-20261017-1803; 70ca78da kept in clone-archive/l202__70ca78da.bundle). ST0008 WP-06 DONE: dispatch 39055655481 on ea43e4b9 ALL GREEN (Ubuntu, macOS, lint, summary; WSL job 117462973144 as uid=1000(dev), test all 2392 ok 0 not ok, smoke list 18 of 18 PASS on both fixtures, Intent v3.2.4 installed from its public release at the pinned sha256); AT-6.2 and AT-6.5 red on 39039832569 then green, AC-6.1 and AC-6.3 satisfied by evidence; gate 13/15, ST0008 waits on AC-6.4 (the adopting estate confirms the smoke list on one of its repositories inside WSL) and AC-2.1 (measured VPN on ST0082 WP-02's real Windows machine). NOTE for a later issue if hv wants it: wsl-smoke.sh asserts the intented check all only by its exit (the gate is active by construction), and smoke.log stays inside WSL, so the critic's own lines are not readable from CI. Main is UNPUSHED from 60bec9e4 (pushing is hv's). Issue 0201 at the next batch release."
+  }
+}

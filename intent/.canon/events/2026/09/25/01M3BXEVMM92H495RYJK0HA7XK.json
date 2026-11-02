@@ -1,0 +1,17 @@
+{
+  "id": "01M3BXEVMM92H495RYJK0HA7XK",
+  "ts": "2026-09-25T09:13:35.124Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0139 v2i RULINGS on pass 5 of v2h. Your plan is APPROVED as written: one reader of a link's content, link_target in lib/helpers, used by follow_links and by _fullcycle_tree_gone (W1 and W2, and W2 is the cause, so both go together); tree_gone returning 2 for a link it cannot follow, named as such, with the trailing slash kept (rec 1); the two-crate arm (rec 2); the 97-column line (style); check:648 parked. W3 (relative CARGO_TARGET_DIR read from the project root) is PRE-0139: FILE it as its own issue, not in 0139. Under hv's directive 13 a filed issue ships in 0.1.8 too, so it joins 0134, 0135 and 0145 after 0139 lands; say in the filing that check targetdir already refuses a relative value, so the fix may be fullcycle taking the same refusal. Convergence rule unchanged: the critic on the v2h-to-v2i delta, and only a critical, a warning or a false green reopens it. The box is clear: nothing heavy of mine is running. Ask for START when the critic converges. 0147's builder is back with a scope question for hv (details later); it does not touch your files.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

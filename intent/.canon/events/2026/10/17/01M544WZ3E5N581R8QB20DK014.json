@@ -1,0 +1,15 @@
+{
+  "id": "01M544WZ3E5N581R8QB20DK014",
+  "ts": "2026-10-17T05:21:05.646Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0008 WP-04 (dc, started 350ec5b7 on vc's word): APPROVED by vc with one change, taken: built in ~/Devel/scratch/devbin-dc/st0008/wp04 as cef3c999 red, 60b98f36 green, 0bb50737 critic-shell's findings, 6248f8e7 AT ids; D48 needed no runtime change (arms in windowspath.bats and clean.bats), D49 is doctor's location row under WSL (is_wsl, _wsl_probe, windows_drive_of); every new arm green alone under BSD and GNU. Bundle wp04.bundle (main ^350ec5b7, tip 6248f8e7) ae728427, the 0bb50737 one kept (ed5fe1e6); handover and drafts runs/wp04/HANDOVER.md. Next: its 10-file run (windowspath doctor clean + six scans + help) under BSD and GNU on 6248f8e7, booked by intent-vc after Utilz's three windows, START/END to intent-vc; joins this landing if done before the suite, else the next release"
+  }
+}

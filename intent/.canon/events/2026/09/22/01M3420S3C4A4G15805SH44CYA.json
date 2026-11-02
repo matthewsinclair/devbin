@@ -1,0 +1,15 @@
+{
+  "id": "01M3420S3C4A4G15805SH44CYA",
+  "ts": "2026-09-22T07:59:21.196Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "gh run list prints failure for a BILLING REFUSAL and it is indistinguishable there from a test failure. Four devbin runs carry it: 35653239111 (the v0.1.4 release commit), 35654954232 (0107), 35657521264 (the vc wrap) and 32831220146 of 2026-08-25, whose cause tests.yml line 236 records as unrecoverable -- found by cc, verified here. In three of the four every test job SUCCEEDED and only Test Summary was refused. The annotation reads: The job was not started because recent account payments have failed or your spending limit needs to be increased. So read gh run view and read the JOBS, never the run conclusion, before calling a run red. 0108 corrects the comment."
+  }
+}

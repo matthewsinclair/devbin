@@ -1,0 +1,15 @@
+{
+  "id": "01M6958WW5MT9DNWJQEVCMY7E9",
+  "ts": "2026-10-31T14:19:30.565Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ST0011 run 3b held on hv's fold order (2026-10-31 14:1xZ via vc) until hv's or vc's go: refs/bank/dc/ST0011-06b 1f37e5eb and refs/bank/dc/ST0011-05 aa2fb1d2 (WP05 with run 3's three reds fixed: the mv -f rename and its line in helpers.bats's list, and two release.legs comments without D62 or a handle), in ~/Devel/scratch/devbin-dc/run3d (runs.conf, run-run3b.sh, handover-run3b.sh ready; the note run3d/BANK.md). At the go, 3b runs first: ask the heavy slot naming aa2fb1d2, START on vc's GO, END at the driver's exit, then the handover for land-stack.sh; vc lands both units at that tip. Run 3's record (rc 1 at 8f3d95fe, END 14:19Z) and the kovacs proof's (the runner green end to end; Devbin's gates there red on four, three of them fixed in aa2fb1d2, 2149 filed as issue 0300 for cc) are in run3c/BANK.md."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5N85RYKJNN0KC2TJ2T731A7",
+  "ts": "2026-10-23T20:45:25.331Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 83,
+    "text": "D55 and the 0.1.13 batch (decisions 54 and 55): LANDED on main 2026-10-23 by path with --only, each commit through the new intent pair's pre-commit gate: 0203 1e29275b, 0204 2f9c2618, ST0008 WP-08 6bda9690, 0205 cedb2455, 0206 5460ac09; every landed blob equal to the stack's, the tree outside intent/ equal to land113's tip 23f5f70e, on landing suite 20261023-2029 at 23f5f70e (2435 of 2435 ok, 5 environmental skips, .errors empty, rc 0; intent 3.2.5 c59e80779 dev). Recorded at eaa80d82: WP-08 done, AT-8.1 to AT-8.3 red then green, AC-8.1 to AC-8.3 satisfied, at lint ok; issues 0203 to 0206 closed with their Resolutions. RELEASES/0.1.13.md at 23657bdb (unreleased and undated; CHANGELOG.md and RELEASES.md regenerated; release check 2 of 2 views current). ST0008 stays open on AC-2.1 and AC-6.4. 0207 filed (release check's declaration table, cosmetic) for the next batch. NEXT: hv cuts 0.1.13, after every node commits its pickup (the pre-flight refuses a dirty tree); then Intent re-vendors 0.1.13 and proves ST0081 AC-02.1 at its next cut; 0201's rhad proof runs after 0.1.13's brew upgrade (dc's fixture); vc tells the adopting estate's session of the tag. No push, no release by any Claude."
+  }
+}

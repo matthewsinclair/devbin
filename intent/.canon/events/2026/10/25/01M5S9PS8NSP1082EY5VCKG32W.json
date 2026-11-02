@@ -1,0 +1,15 @@
+{
+  "id": "01M5S9PS8NSP1082EY5VCKG32W",
+  "ts": "2026-10-25T10:29:09.014Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0229"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "test swift --only with a filter xcodebuild matches to no test runs zero tests and seals passed: the xcodebuild counter sees no trailer, so the empty-run refusal never fires"
+  }
+}

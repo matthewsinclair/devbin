@@ -1,0 +1,15 @@
+{
+  "id": "01M5SE8WPD3P49SCHCNPE182SE",
+  "ts": "2026-10-25T11:48:56.653Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "T5 amendment round after 0228 lands: intent-vc's clarification (2026-10-25) that use brew refuses BEFORE removing the link set when no brew-managed copy would then answer on PATH (keg unlinked or absent), naming what would be left and the tool's own remedy. Put to molt-vc, utilz-vc and intent-vc. devbin has the same gap (lib/cmd/use brew branch removes, then reports 'Homebrew has no devbin here'): an issue once the sentence is agreed; whether it rides 0.1.15 is hv's call."
+  }
+}

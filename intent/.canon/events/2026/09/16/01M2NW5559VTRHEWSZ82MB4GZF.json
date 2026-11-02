@@ -1,0 +1,15 @@
+{
+  "id": "01M2NW5559VTRHEWSZ82MB4GZF",
+  "ts": "2026-09-16T19:47:31.113Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates from the close-out (2026-09-16 evening), vc's call at a fold.** (j) A pathspec built with `$(git ls-files --others ...)` AFTER `git add` comes out empty, because the file is no longer untracked, so the commit silently left intent#0426's view staged in Intent's shared index. (k) vc sent a peer-estate node a stray message while correcting nothing; a send cannot be taken back, so address before composing. (l) A guard that only a real old bash can reach is killed only by arms that skip on Linux, so one CI leg carries it; say so where the guard lives. (m) The same review pattern found an unarmed claim three times in one evening (0063's not-an-option-here walk, 0076's two refusals, 0059's unknown-row carry). Every claim in a comment needs an arm or a residual line."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2NSD7FQBRAA37FBCF3W8RBK",
+  "ts": "2026-09-16T18:59:29.911Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**0073's release entry and closure -- until vc's 0.1.1 cut is committed.** Fixed at 30a95ac. The entry sits uncommitted in RELEASES/0.1.1.md, which vc's cut has open; 'intent issues close 0073' rewrites intent/.intentfiles, which vc also has dirty. vc was asked whether the entry stays in 0.1.1 or moves out."
+  }
+}

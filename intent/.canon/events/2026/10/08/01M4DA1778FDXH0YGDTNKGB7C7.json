@@ -1,0 +1,16 @@
+{
+  "id": "01M4DA1778FDXH0YGDTNKGB7C7",
+  "ts": "2026-10-08T08:28:15.976Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 44,
+    "text": "0181 BATCH 5 (vc, 2026-10-08: batch 4 is cc's 0186 and 0187 alone; 0181 and 0188 are batch 5). Rebased onto main 476cf82e + git am 0186 v1.1 + git am 0187 v1.1 in ~/Devel/scratch/devbin-dc/0181/b5, branch b5, head 95dbeef7: A..D cherry-picked clean, the diff unchanged. Its patch, drafts/0181-v1-95dbeef7.patch, is byte-identical to 8c6c6aeb, which vc reviewed on main 1c291c48 + 0186 + 0187: red 9 of 10 at their aims, green 10/10 BSD and GNU, releasestatus + releasecore 66/66; vc's mutants next. vc needs from dc the targeted run on 95dbeef7, BSD then GNU (running), then the handoff. Mutants: D's 26, 60 of 60, read at their failure lines; the rebased head's were trimmed on vc's word. Full state: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

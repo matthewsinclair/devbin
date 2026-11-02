@@ -1,0 +1,16 @@
+{
+  "id": "01M6BZMXCEVZC41C47GH0QBAKB",
+  "ts": "2026-11-01T16:38:56.142Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 16:34Z by date -u, after hv's compacts; resumed on hv's 'crack on', which cc relayed as received before 16:25Z):\n    (1) The hook-in ENDed RED (01M6BVYT, 16:27Z by dc's date -u). Its BSD whole suite failed four whole-tree scans of the unit's own lines: config.bats 0080, dispatch.bats 0087, runlog.bats 0085 and releasecore.bats 0240. Its GNU legs failed 0080 and 0240. Its red legs stand as evidence, unit 04's from the rerun's TAP. dc has the go (16:32Z) for the three fixes in hookin/NOTES.md, then the probes, the lint gate, the squash, the new red clones and the re-bank by CAS.\n    (2) THE STACK (decision 125 (4)): ST0011/05, ST0011/04 and cc's ST0011/07, rebased onto the new -04, run as one stack in dc's hookin kit, with unit 07's line from cc. FILES gains dispatch and runlog, CRITIC gains lib/cmd/formula, and the kit takes the stricter want_red. dc asks it. Before the grant, read the driver, runs.conf and the want_red change against the ask, then the load. The grant follows trellis-page's END. At END, read every TAP and .rc. Then land it with land-stack.sh and LAND_BASE_OFF_MAIN=1, units ST0011/05, ST0011/04 and ST0011/07, from one handover. After the landing: dc's AT-2.7, AT-3.3 and AT-3.6 (AT-3.6 re-cited first), cc's AT-3.8, then lint and ac status. WP04, WP05, WP06 and WP07 close where their ACs read satisfied. WP07's old ask 01M6BX93 is denied as superseded.\n    (3) The next stack: dc's WP02c, rebased onto WP07's re-bank (critic r2, AT-6.3 to-write, the red clone, the bank; read wp02c/runs-want-red.diff before the grant), with cc's WP08 (hv moved it to cc through the TUI; decision 117 restated). Both build on WP07's bank, the first banked carries the other, and the two run as one stack once both are ready.\n    (4) K0120, the full suite on kovacs at the stack's landed head, beside the next stack's run (decision 125 (6)): prep-korder.sh, then hv's ! line in kovacs-sysadm's window. Its reds are fixed forward in the next stack.\n    (5) final-scans.sh <landed head> <label> in a slot, then the final kovacs suite at the cut's head (prep-korder.sh, then hv's ! line). Then WP09 at 0.1.19 on hv's word, then the sweep per sweep-plan.md.\n    Desk: trellis-page 01M6BS1FGSMGB65GFQQQM8GT1N took the fix window: granted at the hook-in's END, when no devbin run could start before the re-banks, STARTed 16:30Z and ENDed green 16:36Z, by trellis-ic's word. trellis-ic will ask afresh when its page fix needs a run, and that run takes a gap with no devbin run in it."
+  }
+}

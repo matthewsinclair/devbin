@@ -1,0 +1,15 @@
+{
+  "id": "01M525TF0W2TQSGQMMBZ4NXPDV",
+  "ts": "2026-10-16T10:58:43.358Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0200"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "shell-init puts the install path into sed's replacement and then unquoted into the eval'd dvb body, so an & renders a wrong path at rc 0 and a } $ or quote is interpreted as code"
+  }
+}

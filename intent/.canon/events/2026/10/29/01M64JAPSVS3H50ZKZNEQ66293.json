@@ -1,0 +1,16 @@
+{
+  "id": "01M64JAPSVS3H50ZKZNEQ66293",
+  "ts": "2026-10-29T19:31:29.211Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 3,
+    "text": "Re-drive guards only in a quiet tree: under live peers an arm aborts on their staged paths and the drive reports more coverage than it got."
+  }
+}

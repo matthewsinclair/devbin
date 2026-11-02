@@ -1,0 +1,15 @@
+{
+  "id": "01M5RQMWV9V90J6BG98163XRZ0",
+  "ts": "2026-10-25T05:13:32.778Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0224"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "a vendored project is told devbin \"has moved on\" when the source's commit moved forward but no vendored file changed (doctor's source note and the update notice)"
+  }
+}

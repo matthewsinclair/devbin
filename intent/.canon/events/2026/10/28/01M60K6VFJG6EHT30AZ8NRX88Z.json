@@ -1,0 +1,15 @@
+{
+  "id": "01M60K6VFJG6EHT30AZ8NRX88Z",
+  "ts": "2026-10-28T06:29:53.779Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0288"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "three test helpers each write a stub machine install by hand (fake_install, mkinstall_prefix, brew_keg --stub), differing only in their manifest lines"
+  }
+}

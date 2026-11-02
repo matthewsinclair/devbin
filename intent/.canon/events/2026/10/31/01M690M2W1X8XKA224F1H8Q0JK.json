@@ -1,0 +1,15 @@
+{
+  "id": "01M690M2W1X8XKA224F1H8Q0JK",
+  "ts": "2026-10-31T12:58:14.273Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31 12:58Z, in every window (\"Ok, crack on.\"): the go after the second fold. Desk hold 01M68ZTWPXSM7VC65CHX6BKHVF released at 12:56Z. Order of play as recorded in doing 86: run 3 (dc: WP06b then WP05 re-stacked onto main) in the bats lane, the real-host proof of the runner against kovacs on a light slot with the login announced to kovacs-sysadm (decision 91), vc lands with land-stack.sh; the landing tree's full suite on rhadamanth and kovacs; then cc's WP02a (built now on the stack, run after run 3 lands, rebased onto the landing), WP02b, WP02c, WP07, WP08; WP09 at 0.1.19 and the sweep (decision 93); WP10 to WP14 after the sweep. The FOR hv items stay open; nothing public without hv's word (directive 3)."
+  }
+}

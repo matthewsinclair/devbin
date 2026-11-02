@@ -1,0 +1,15 @@
+{
+  "id": "01M41FTH84PJM37T7Y0GNC5CTK",
+  "ts": "2026-10-03T18:18:35.140Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.9 BUNDLE REVIEW (hv 2026-10-03: fix forward, one release hv cuts). 0154 v5.1 (cc's SP/tree 4dc6d40c) passed vc's light review: the 19 fleet arms and the seam unit arm green under BSD and GNU-first, the six reds on v4 driven, neutral 5/5, seam_git_state byte-identical over 11 states for every caller without the option, S6 killed. Next: cc's heavy runs on START (36 mutants; fleet, install, localinstall, vendor, gitident, releasecut, updatenotice, neutral, vendoredmd, helpers, contract; census timing on a quiet box), then vc's full suite on ~/Devel/scratch/devbin-vc/0154/land (main f2a725a plus the v5.1 patch, sha256 4dcc7dd9...), then land with commit --only and close 0154 with the census numbers. Pre-reads with cc: 0153 v1 F1-F3, 0159 v1 G1-G3 (cc fixing), 0156 v1 H1-H4; 0157 and 0158 wait on cc's critic fixes; 13 not started. Asked hv whether to batch full suites over reviewed patches: no answer, so one suite per landing. Note draft: ~/Devel/scratch/devbin-vc/0.1.9/notes-draft.md."
+  }
+}

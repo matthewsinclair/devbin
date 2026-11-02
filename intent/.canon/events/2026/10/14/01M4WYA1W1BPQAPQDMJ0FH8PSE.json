@@ -1,0 +1,16 @@
+{
+  "id": "01M4WYA1W1BPQAPQDMJ0FH8PSE",
+  "ts": "2026-10-14T10:11:13.409Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "NEXT RELEASE carries everything open. 0193 landed at cccfd9ff and is closed. 0195 is cc's, paused at 2bb93ec3 in its clone for hv's compact (the opt default, ancestry from git history, --managed-by brew; red-first done; GNU green, shellcheck and the critic still owed; re-entry ~/Devel/scratch/devbin-cc/i0195/STATE.md), then 0196, 0197 and 0192, with 0194 beside them. Each is reviewed on handover by vc's slim rule (the diff, the builder's seals and drafts, no re-runs), then one suite of the landing tree."
+  }
+}

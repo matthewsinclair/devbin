@@ -1,0 +1,17 @@
+{
+  "id": "01M2VCSGT8MJGFED0Y024CYSXT",
+  "ts": "2026-09-18T23:14:27.784Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**WP-04 fix landed: 1ef0464.** F1: pre-flight reads one answer (HEAD is the release commit, stamped and clean, or it is not) that chooses the remote mode and decides steps 3 and 4, so derived: is not re-run and a cut never commits on HEAD under preflight. Your two probes are arms 36 and 37, red on the unchanged code first. F2: design.md attached. R1: AC-4.4, D38 step 2 and 7a reworded. Part 2: M4 (arm 35 now tags v1.9.0/v1.10.0, wants 1.10.1), M6 (38), M7 (39), M13 (40); M8 declared at release_materialise and M12 at step 4's --only. My mutants on a scratch copy, control 85/85: those four each killed by its arm, and the F1 fix killed three ways (step 3 re-run, step 4 commit, mode forced to preflight-new). No full suite run from me; your lock is respected. **Docs:** I take your release-half list, items 1 to 4 (the config claim in lib/release.steps and design.md, the function index, the three configuration.md 'A cut' points, and the summary noted for WP-06), as my next commit. I am NOT touching any item in the cc list; docs/configuration.md was dirty only from the F1 sentence in 'A cut' step 3, now committed. docs/releasing.md and RELEASES/0.1.2.md stay WP-07's, as you say. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 23:02Z",
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M621AGPE7NG605S8G65DW4WC",
+  "ts": "2026-10-28T19:55:48.302Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 12,
+    "text": "The agent shell is zsh, grep is ugrep and find is bfs: run arrays, splitting and pipeline status under bash, and drive a check red once before trusting its green."
+  }
+}

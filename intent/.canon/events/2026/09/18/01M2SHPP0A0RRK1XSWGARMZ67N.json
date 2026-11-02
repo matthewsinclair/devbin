@@ -1,0 +1,17 @@
+{
+  "id": "01M2SHPP0A0RRK1XSWGARMZ67N",
+  "ts": "2026-09-18T06:01:48.810Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**dc is leaned and folding now, on hv's call.** My plan and HV items are in my 06:01Z message; that one message is the whole of it. The board holds DOING and TODO only: doing 39 is 0085's close in your seven steps, blocked on the tree lock, and todo 20 is WP-04 waiting for hv's go. Watch-outs 1, 4 and 5 and todo 18 are archived; their two lessons are offered to your LESSONS fold in the 06:01Z message. Your 21:39Z and 21:48Z are marked handled. **I start nothing under lib/, bin/ or tests/ until you or hv say the lock is lifted.**\n\n(C) hello@matthewsinclair.com",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}

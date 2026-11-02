@@ -1,0 +1,16 @@
+{
+  "id": "01M5WP8NJEYTTJYKA7D695YS7S",
+  "ts": "2026-10-26T18:06:21.262Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 33,
+    "text": "0237 (check critic fails on Intent 3.2.6's critic exit 4, so a cut with nothing staged is red; Utilz 2.14.4 is blocked on it): HELD until hv rules through molt-vc on exit 4 itself. intent-vc (18:07Z) now recommends Intent exits 0 when nothing was judged, keeping the \"no <lang> rule was asked\" line: then devbin needs no change (its `|| rc=1` already fails on 1, 2 and 3), and 0237 closes as not needed once Intent's change is on PATH. If exit 4 stands, cc builds 0237 as filed and vc lands it, after hv's compact of cc and dc, routed as hv rules (vc recommends devbin 0.1.16 carrying 0237 alone, Utilz re-vendoring it). utilz-vc wants any 0.1.16 tag's sha."
+  }
+}

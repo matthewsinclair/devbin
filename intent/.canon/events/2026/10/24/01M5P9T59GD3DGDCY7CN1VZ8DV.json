@@ -1,0 +1,14 @@
+{
+  "id": "01M5P9T59GD3DGDCY7CN1VZ8DV",
+  "ts": "2026-10-24T06:33:16.337Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0008/AC-2.1"
+  },
+  "payload": {
+    "evidence": "README.md, section 'On Windows: WSL 2, and nothing native' (items 1 to 6 and the check all paragraph) and the Known limitations line, at main eebd24a9; read by vc 2026-10-24"
+  }
+}

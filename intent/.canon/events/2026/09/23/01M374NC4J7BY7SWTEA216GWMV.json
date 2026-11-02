@@ -1,0 +1,15 @@
+{
+  "id": "01M374NC4J7BY7SWTEA216GWMV",
+  "ts": "2026-09-23T12:43:16.499Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0135"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "dormancy: a suite wholly behind features reads INCONCLUSIVE, --all-features lands after a --, and the declared line it prints can name a command that never runs"
+  }
+}

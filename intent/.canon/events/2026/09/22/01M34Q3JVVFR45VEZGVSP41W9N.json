@@ -1,0 +1,15 @@
+{
+  "id": "01M34Q3JVVFR45VEZGVSP41W9N",
+  "ts": "2026-09-22T14:07:53.211Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A CAUTION WRITTEN FROM A SINGLE LIVED INSTANCE INHERITS THAT INSTANCE'S DIRECTION (lamplight/vc, 780946818, 2026-09-22). Lamplight's SdlDrift fence already warned that regenerating the contract is not the whole fix -- fixed on 2026-08-20 after a schema change ADDED filter fields and broke an exhaustive struct literal in ops/frontdesk.rs. Today the same three fields LEFT, frontdesk.rs still named them, and regenerating alone moved the red from Elixir to Rust. A reader following the warning faithfully would have checked whether anything had been added, found nothing, concluded it did not apply, and committed a broken CLI build. The warning was present, accurate, and pointed at the WRONG HALF OF ITS OWN MECHANISM: the mechanism was always any change to the field set, the incident that taught it was an addition, and the text recorded the addition. Different from a missing warning and worse, because it reads as covering the case it excludes. THE CHECK: when writing a caution from an incident, name the MECHANISM and ask what its symmetric case looks like -- a departure as well as an arrival, a shrink as well as a growth -- and say whether the guard catches both. The fence now says any change in both directions and cites both instances, and the exhaustive struct literal is the property worth naming because neither an arrival nor a departure can be silently absent from it. SECOND CLAUSE, same fix: a remedy-text sweep must distinguish INSTRUCTION from DESCRIPTION from QUOTATION, and only the first ages. Eleven citations of a mix task looked like one defect; eight were correct (devbin's contract verb covers generate and check, NOT operations, and there is no playtest verb at all), and of the remaining five only three were remedy text -- one described what the task emits, one quoted the fence's own earlier wording as the record of this defect. A sweep keying on the string rather than the FUNCTION would have replaced eight working instructions with names that resolve to nothing and eaten its own fossil record."
+  }
+}

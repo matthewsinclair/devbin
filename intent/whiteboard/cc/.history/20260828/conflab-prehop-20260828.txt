@@ -1,0 +1,54 @@
+# Conflab PRE-HOP state, captured 2026-08-28 09:11Z by devbin-cc, read-only
+# population = git ls-files, NOT a shell glob: 'cmd/*' skips the dotfile dir .lib/ and returns 12 of 20
+
+## carrier .git/hooks/pre-commit.intent
+  sha256 814d055e9e45422223947e213897981f1f8cbfcf0eaeee2f674368d7ecc3360b
+  bytes  5090
+  guard-runner refs 0
+  arg handling      0
+
+## shim .git/hooks/pre-commit
+  sha256 3816004095191b94c56b80dc39d7cad0989474a05b1a3168761623367246f3d5
+  bytes  968
+  --where support 0
+
+## ALL 20 files under bin/.devbin/cmd/ (git-tracked population)
+c9c814d196de42e5124940dc1aa0557ee71e9d2fbfb761f40bbc35bc6171fb12  bin/.devbin/cmd/.lib/check-clippy
+3a80cdf01920be8ddde96bb4bd793cb8b31add7aaa60b4e03c87fbb3c8149602  bin/.devbin/cmd/.lib/check-contract
+5fc81d875c96a340aeacaa0853db4f2466642428b39d76dba3d46db74dad9bcc  bin/.devbin/cmd/.lib/check-format
+ace156f9f7be12c19d1fcd75545ba819f4e32130c3c1b252896fd8f5d19ad900  bin/.devbin/cmd/.lib/check-parity
+af2d5cbb35bf453533f76d44f488fe3c1d665baab275c8df264eaa5bf0faa812  bin/.devbin/cmd/.lib/conflab
+04daad514575b9646c2a2fbc244b829268a100aed9da883a65763149915d856e  bin/.devbin/cmd/.lib/fmt-rust
+185ebd6e2ccd0843c43aa8ed9be497a00e386f28a0f820bea5fb6ab534e9735c  bin/.devbin/cmd/.lib/test-rust
+974d69fba6e7623102f4bd5d857a02576915411c48885d69addf3034798d2095  bin/.devbin/cmd/.lib/test-swift
+a4660e62f0437252706a5ec06b77d3b01b487e0a57a23e63f3c9550a4d63a28c  bin/.devbin/cmd/app
+be1d5d8110fb08afc430f90cf356127617bb4df24d2e965178fade9659876582  bin/.devbin/cmd/build
+c7cac5773bbf49f66fd343cfb3bc4babdc40f49408c2f62ab75c7b71a3e0b24e  bin/.devbin/cmd/cli
+fb345129bbecc02e9c2e4b19365917dcfce2b4eddc673e35ee88c0ba45448b33  bin/.devbin/cmd/daemon
+c500f860e1aa9ce1556144c224d4ec3bb23de8d2e677d9c2fe1ceb115508d7ae  bin/.devbin/cmd/db
+871fe45f61579d66bc68149971c5a21c6726280cec8d3996e28dddc1fb978e38  bin/.devbin/cmd/iex
+649fbdce98c7dac89f18ca950eca62df3605ae96a8d002107e9ac52f34adc31b  bin/.devbin/cmd/macos
+04ba90a41b78867293d2fe4afe8531ecbbdb5e64777de08b223836ba4eff5d9b  bin/.devbin/cmd/precommit
+f9f650c5bea9b50520ead05ae705b1c092df1abd0642e9b9132bbabca48bdcdc  bin/.devbin/cmd/release
+a91c99b62265502d22f761b1bd85684d3646bd1bb2168474a9616d3a42d4268b  bin/.devbin/cmd/server
+73eaf731afebdf211fbd39cfed300d353bc1fdb404725dec08569b3929a07a24  bin/.devbin/cmd/use
+80e50057c9a71fc7bc28dd08b26f2dd89014c64ff73ee0eb894a2c6e74bd4d4e  bin/.devbin/cmd/which
+
+## worktree status for that path (empty = clean)
+(end)
+
+## ADDED 2026-08-28 11:26Z on intent-vc's instruction -- live-service + tracked-lockfile before-state
+### running daemon (no file check can see this)
+  conflabd pid: 7438
+  cmd: pgrep -f 'conflabd start'
+  conflab -> /Users/matts/Devel/prj/Conflab/native/target/release/conflab
+    sha256 897c99f509ae08b0f144a39e79ee69e2ed5a1272504a1e4f03cfcdde605d06fa
+    mtime  2026-08-27 12:17Z
+  conflabd -> /Users/matts/Devel/prj/Conflab/native/target/release/conflabd
+    sha256 ff16e479ebfb754934311b11ed457960b0f4b1c4adcdfa48574997abdf4a5f35
+    mtime  2026-08-27 12:18Z
+### tracked lockfiles a build could legitimately move
+  fc9c66b0a67f82c90e2342f4e3afa90170e755f6bedcf8d66f6fa145a6d9efe4  mix.lock
+    mtime 2026-08-27 17:14Z  bytes 49691
+  e2f0f1f5c69439313d9f469eec5e20725709471d92c193085bc6be1494a4d17c  native/Cargo.lock
+    mtime 2026-08-27 12:14Z  bytes 119153

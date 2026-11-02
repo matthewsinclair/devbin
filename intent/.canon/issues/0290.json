@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 290,
+  "slug": "worktrees-reads-a-bank-blob-that-carries-more-th",
+  "title": "worktrees reads a bank blob that carries more than one patch as one patch, so a staged diff matching its second patch is not matched, and the report does not say (from 0245)",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-29",
+  "closed": "2026-10-29",
+  "reporter": "Matthew Sinclair",
+  "body": "`worktrees` reads each ref `worktrees.banks` matches as one patch (_wt_banks_read, lib/cmd/worktrees, at main c4f8e15d): a blob is taken as a patch, its patch-id taken once. A bank blob that carries more than one patch, as one of Intent's does (refs/bank/ic/ref326/regen-reference.sh holds two), is read as one, and nothing in the report says so: intent-vc's inventory, which reads each patch, counted 629 where the report counted 628 (intent-vc's read of 0245's Done when 4, 2026-10-28). A staged diff matching that bank's second patch is not matched to the bank. Filed by vc; low, and not in 0.1.16.\n\n## Fix\n\n_wt_banks_read takes every patch-id `git patch-id` gives for a bank, so each patch a bank carries is matched as that bank's, and the report's banks line says how many patches each bank carrying more than one holds.\n\n## Done when\n\n1. A bank carrying two patches is read as two, each matched to its own staged diff as the bank's, and the report names the bank with its count.\n2. worktrees.bats holds it, red on main first, then green under BSD and GNU, with the tree scans and help; CI is green on the pushed head.\n\n## Resolution\n\n- `worktrees` reads every patch a bank carries. _wt_patch_ids is the one reader of git patch-id's output, an id a line, and _wt_patch_id, for a worktree's own diff, takes its first. _wt_banks_read keeps an entry for each patch, all naming the bank, so a staged diff matching a bank's second patch is matched to that bank.\n- The banks line reads `<n> read, holding <m> patches`, with `<ref> holds <k> patches, each read as this bank's` beneath it for each bank carrying more than one. lib/pages/worktrees.md says how a bank is read.\n- Landed on main at c335ba7e.\n- Arm: tests/unit/worktrees.bats, \"a bank blob carrying two patches is read as two, each staged diff matched to it, and the banks line names its count (0290)\". It counts both numbers from its fixture.\n- Desk evidence: hv's full run on rhadamanth, sealed at tmp/test/20261029-1314.bats.out and .bats.errors: 2824 ok and 2 not ok, neither of them this issue's.\n"
+}

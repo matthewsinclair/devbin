@@ -1,0 +1,16 @@
+{
+  "id": "01M695B854SBBZJK8PB8148FG4",
+  "ts": "2026-10-31T14:20:47.652Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 86,
+    "text": "ST0011 fix phase, FOLDED AND HOLDING on hv's third order at 2026-10-31 14:13Z (desk hold 01M694Y7ZGK0PKD94NVSHGCSCQ; vc holds the pen). LANDED on main: WP01 bc744227 (done), WP04 80052f26 (WIP until WP02b removes the trigger), WP03's ci-state half 76a0fba6 (WP03 reopened for its checker half, AC-3.1: dc's pure trigger reader and failed-jobs detail, cc's call lines in WP02b). BANKED, not landed: dc's stack refs/bank/dc/ST0011-06b 1f37e5eb and ST0011-05 aa2fb1d2 (8f3d95fe and d1911183 archived); cc's WP02a refs/bank/cc/ST0011-02a c2b7cf18 on d282e845, critic findings unapplied (two critical; the two macos warnings ruled yes), to rebase onto run 3b's landing. Run 3 at 8f3d95fe (13:25Z to 14:19Z, END rc 1): arms red at the red clone then green under BSD and GNU; light phase green on 36 of 39 legs, red on helpers arm 47 (the mv allowlist, BSD and GNU) and gnu-workroom's two comment lines, both fixed in aa2fb1d2 UNRUN; record in ~/Devel/scratch/devbin-dc/run3c/runs. The kovacs proof worked end to end at 8f3d95fe (reach, start, 46 pending reads, failed from the copied-back seal, pair and log kept, run cleared; kovacs holds only ~/work/devbin-leg.git) and found Devbin's gates red on kovacs on 4 of 2873: the same two causes plus 2149, the cut fixture leaning on git's auto-detected identity (issue 0300, cc's). NEXT on hv's go: run 3b at aa2fb1d2 (ready in ~/Devel/scratch/devbin-dc/run3d), vc lands with land-stack.sh, the full suite on rhadamanth and kovacs (prep-korder; kovacs-sysadm reads the order's sha256; mind LANG for Elixir there), cc's WP02a rebase and run, WP02b, WP02c, WP07, WP08, dc's WP03 remainder, WP17, WP16 code, WP09 at 0.1.19, the sweep (~/Devel/scratch/devbin-vc/st0011/sweep-plan.md), WP10 to WP14, WP15, WP18 last. Estates folded on hv's decision-98 go: Utilz (main a21dde9c green; ST0031/03 banked as a patch; two more Trash exhaust folders for rhadamanth-sysadm), Laksa (S2 fix banked unverified, hold 25; the five reds hold 26), Intent (ST0090/01 banked untested, re-ask at the next go; issues 0666 and 0667), Gtools (ST0021/01), Conflab (WP-06 records); kovacs census done, every Gtools tool from brew, librsvg and the fonts installed, intentd not enrolled; gyges folded."
+  }
+}

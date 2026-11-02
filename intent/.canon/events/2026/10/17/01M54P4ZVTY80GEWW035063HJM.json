@@ -1,0 +1,16 @@
+{
+  "id": "01M54P4ZVTY80GEWW035063HJM",
+  "ts": "2026-10-17T10:22:34.362Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "0.1.11 RELEASED 2026-10-17 by hv at hv's terminal: release commit 0fc22669, annotated tag v0.1.11 (02cbc967) on local and upstream, GitHub release published 09:49:22Z by the Release workflow (run 39022565481, success); gates on 0fc22669 green (check all clean, 2384 of 2384, doctor 0 failed; log tmp/release/20261017-0928.RELEASE.out, .errors empty). Carried: 0192 to 0200 and ST0008 WP-07, WP-02, WP-03, WP-01, WP-04 (landing suite 20261017-0636; dry run 20261017-0655; seals in ~/Devel/scratch/devbin-vc/clone-archive/seals/). CI GREEN, read 10:22Z: the tag's run 39022565532 on 0fc22669, Ubuntu success (09:49:16Z to 10:21:37Z), macOS success, Shell Script Analysis success, Test Summary success; main's push run 39022561611 green (Ubuntu, lint, summary; macOS skipped by design). So the release push is DONE (todo 96). utilz-vc told. (2) kovacs ORDER R1 at 8a2e0737 GREEN, 09:27:08Z to 09:59:32Z, rc 0, read by vc over ssh: suite 2384 ok 0 not ok, .errors empty; check all with Intent 3.2.3's package all passed, every .errors empty; brew rehearsal on Linux Homebrew PASS, 24 steps each at its wanted rc, brew left as found. So Linux is proven at the release head, after the cut (8a2e0737 is 0fc22669 less the note and stamp). (3) INSTALLS: rhad DONE, ~/Devel/opt/devbin publish-upgraded from the tag, devbin 0.1.11 (0fc22669), dvb 0.1.11; kovacs by brew only (decision 50, hv chose (a)): K011 WITHDRAWN, never run. STILL OPEN: (4) The fleet sweep to 0.1.11 follows Utilz 2.14.0's close on utilz-vc's word; its pathspec gains .gitattributes from the upgrade AFTER the one that brings 0.1.11 in. (5) hv's: create the tap matthewsinclair/homebrew-devbin, then the install-from-tap proof on rhad and kovacs."
+  }
+}

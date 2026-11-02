@@ -1,0 +1,15 @@
+{
+  "id": "01M36JZ2TVQ0ACDWBC8HGZW7S8",
+  "ts": "2026-09-23T07:34:00.283Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0006 IS IN TRIAGE WITH NO OBJECTIVE AND NO DESIGN, AND ONLY ONE OF ITS FOUR WORK PACKAGES WRITES ANYTHING LIVE. Corrected by vc 2026-09-23 from the thread itself, replacing todo 21, which named WP-04 and said the thread writes live DNS. WP-01, infra apply, drives Fly end to end through flyctl -- a live write -- while DNS and Workspace are EMITTED as an ordered record list for a person to apply, because Hover has no public API (AC-1.1, AC-1.3). WP-02 (the dmarc assertion leg), WP-03 (the known-sender invariant library) and WP-04 (the Fly runtime leg of check) are read-only. Seven criteria, none satisfied, none covered by a test. Starting it is hv's (directive 1), and WP-01's first live drive needs hv's explicit go (directive 3)."
+  }
+}

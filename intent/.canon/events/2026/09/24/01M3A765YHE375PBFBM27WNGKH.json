@@ -1,0 +1,15 @@
+{
+  "id": "01M3A765YHE375PBFBM27WNGKH",
+  "ts": "2026-09-24T17:25:07.665Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv RULED on 2026-09-24, in hv's words \"Yes, all in 0.1.8, please. Then (b).\" (received between vc's date -u reads of 16:32:16Z and 17:17:30Z; vc takes it as the go that also lifts hv's 10:29Z \"Please hold\"). (1) BOTH of prodinfra-cc's infra findings go into 0.1.8, as two issues: infra check's authority read (retry it, and say what was observed), and the profile schema's missing fields for a zone's wildcard A and TXT and for DMARC sp=, carrying the MailerSend two-DKIM-key gap of 2026-09-08. vc files and builds both, since cc's line is full. (2) OPTION (b): \"all\" over a command-level run: with no declared options is REFUSED at exit 1, as before 0128, naming the bare command. It still passes through to a project handler with no declared options, and to devbin's option-less built-ins that exec a program (server, iex, cli, repl). WHY: \"test all\" over \"commands.test.run: cargo test\" ran \"cargo test all\", a name filter that matches nothing, so 0 tests ran at exit 0 -- a false green, found by the test-check critic on 0128 v1's arms. So 0128 v3 is v2 plus (b) plus that critic's items."
+  }
+}

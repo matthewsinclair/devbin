@@ -1,0 +1,9 @@
+# The census frame for `bin/devbin fleet`: every directory audit, doc and
+# upgrade walk for devbin installs, one a line, `~` for the home directory.
+#
+# Tracked, so changing the frame is a commit someone can read (issue 0116).
+# DEVBIN_FLEET_ROOTS overrides this file for one run. Every run also walks the
+# rest of the home directory and names each install no root here covers, so a
+# frame the disk has outgrown says so rather than going quiet.
+~/Devel/prj
+~/Devel/cfg

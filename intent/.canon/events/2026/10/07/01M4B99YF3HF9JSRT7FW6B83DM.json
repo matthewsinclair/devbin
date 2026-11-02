@@ -1,0 +1,16 @@
+{
+  "id": "01M4B99YF3HF9JSRT7FW6B83DM",
+  "ts": "2026-10-07T13:37:04.483Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 46,
+    "text": "0180 LANDED at b6a39287 (vc, 2026-10-07, on vc's full suite of the landing tree, 2210 of 2210): 0.1.9's CI red on Ubuntu, arms 309 (0155) and 1086 (0158); the lint gate waits on a pipe every worker holds, and the 0158 arm guards its pty half with require_pty. hv pushed main at 7d1a3f4c, and its Ubuntu leg, the issue's Done when 4, was running at the fold; vc closes 0180 on green, and a red there comes back to dc."
+  }
+}

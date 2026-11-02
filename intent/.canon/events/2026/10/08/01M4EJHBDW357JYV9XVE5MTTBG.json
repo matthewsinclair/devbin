@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHBDW357JYV9XVE5MTTBG",
+  "ts": "2026-10-08T20:16:07.613Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 32,
+    "text": "hv, 2026-09-21: a macOS CI job runs only on release tags and on demand, never on every push, in devbin and every repository with macOS artefacts; every repository cancels superseded runs on push; devbin goes public once it is more stable, in October or November."
+  }
+}

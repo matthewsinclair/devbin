@@ -1,0 +1,15 @@
+{
+  "id": "01M68H6WFX279FRW4JFRMH734Q",
+  "ts": "2026-10-31T08:28:53.117Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Every lib/cmd/release line of WP03 (check and pre-flight refusal), WP05 and WP06 (leg hook-ins), and WP04's tag trigger and Candidate verdict job removal: held until cc's WP02 lands on main; the hook-ins route through vc."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M35510ZY94VXXVYQP2JKQ3S0",
+  "ts": "2026-09-22T18:11:09.438Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0112 AS LANDED REACHES DEVBIN'S OWN CHECKOUT AND NO CONSUMER, AND WHETHER THAT CLOSES IT IS hv's CALL. Measured 2026-09-22: `help_file` in lib/help reads only the project's bin/.devbin/help/, and `vendored_paths` in lib/install ships bin/devbin plus lib/** -- so `bin/devbin help upgrade` prints the stub in Utilz, Laksa, Conflab and Intent although devbin carries an 8.5 KB upgrade.md, and Utilz, which has release enabled, gets the stub for `help release`. The stub then tells each estate to write devbin's page itself. vc's seven pages at 8a8d1ae went into that same directory, so they share the gap. Second instance of the LESSONS entry 'only the shipped half reaches anyone'. Proposed to hv, not ruled: devbin's pages for its built-ins move under lib/, so vendored_paths ships them with no second list; help_file reads the project's page first and devbin's second; the stub stops sending estates to write devbin's docs; fleet.md stays, fleet being devbin's own command; every moved page is re-read for truth in a consumer and checked formatter-stable. For dc, the adoption owner: Conflab's own help/release.md documents its own cmd/release and must retire when Conflab adopts the core."
+  }
+}

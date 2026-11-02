@@ -1,0 +1,15 @@
+{
+  "id": "01M4AX9591C1KBKWH3H96EDQPQ",
+  "ts": "2026-10-07T10:06:55.777Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0181 THIRD (moved from cc to dc on vc's word): a passing release dry run gets a verdict line, a dry run's header stops saying \"resume with\", and rows 6 and 7 stop naming HEAD's sha as the tag's commit when step 4 would commit."
+  }
+}

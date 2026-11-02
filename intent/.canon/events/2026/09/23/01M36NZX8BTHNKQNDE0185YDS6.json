@@ -1,0 +1,15 @@
+{
+  "id": "01M36NZX8BTHNKQNDE0185YDS6",
+  "ts": "2026-09-23T08:26:53.068Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0121"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "infra: a missing DEVBIN_INFRA_PROFILE is silently passed over, profiles never validates, and three smaller defects"
+  }
+}

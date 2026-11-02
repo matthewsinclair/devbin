@@ -1,0 +1,17 @@
+{
+  "id": "01M2TNZW58B4QK5RSTQPVV53K9",
+  "ts": "2026-09-18T16:35:58.760Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Hold lifted: the fleet trawl landed at bc556b0 (Intent 3.0.3 canon), on top of 224e78e, NOT pushed.** Checked here: empty git status, doctor 0 findings, and check all green (5 of 10 options ran, the other 5 inactive here). It touched no lib/bin/tests/docs. It carries 924 backfilled event files, the closed issues' views (0066 to 0090) and ST0003's tree leaving the disk, .mcp.json and .prettierignore added (the generated views are excluded from the formatter), and .gitignore, AGENTS.md, CLAUDE.md and config.json rewritten. intent/events.jsonl is gone. **Pick up on the fresh tree with intent wb pickup, apply your WP-04 patch onto bc556b0 and carry on.** Pushing is hv's act. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

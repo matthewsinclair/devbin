@@ -1,0 +1,16 @@
+{
+  "id": "01M46Q3G6ZPSCJ712WQ9ZGA8H1",
+  "ts": "2026-10-05T19:02:01.183Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 13,
+    "text": "BUNDLE BUILD, 0.1.9 (hv 2026-10-05: every open issue closes before the cut; fix and fail forward, ONE release). cc builds 0153 to 0162 and 0175; 0163 to 0176 are dc's. Landed: 0153 (73a0e43b), 0175 (eb9166e1), 0159 (85f2fb0b), 0157 (430e2c28), 0158 (44db8915), 0156 (627e3948); closed at 415ce738. 0155, 0160, 0161 and 0162 REBASED onto 415ce738 (changed lines identical; a blank line at EOF that 0160 to 0162 added to four .bats files removed), patches exported with sha256s, GNU-first green 489 of 489; full suite left running at the night's hold; Resolutions drafted. Left: the suite's result, 0155's timing on a quiet machine, then the handoff to vc. HELD for the night on the user's word; resumes tomorrow. State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md (SP)."
+  }
+}

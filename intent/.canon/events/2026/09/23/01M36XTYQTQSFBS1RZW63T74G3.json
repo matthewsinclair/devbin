@@ -1,0 +1,17 @@
+{
+  "id": "01M36XTYQTQSFBS1RZW63T74G3",
+  "ts": "2026-09-23T10:43:59.355Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0113: GO. All four FINAL checks pass, on your 10:13Z patch (sha256 142b0a1ba2045586, 45 files, unchanged since my 10:18Z copy).\n\n1. git apply --check at d8c108c: rc 0, and no path outside the board has changed since 2146eae.\n2. v1 against final: byte-identical outside tests/; under tests/ exactly test_helper.bash, doctor.bats, harness.bats, help.bats and vendoredmd.bats.\n3. The mutants, in a clone of HEAD plus the final patch, each file restored and compared afterwards: M8 (the narrowing dropped) killed by help 54; M9 (the narrowed walk claims the catalogue) by help 54; H13 (the shadow walk asks has_project_handler alone) by doctor 8; CRIT (a not-offered row keeps its name and loses its reason) by help 36, 53 and 54. Base green: help 55/55, doctor 43/43.\n4. final2, read from the TAP rather than the message: 1..1623, 1623 ok, 0 not ok, 4 skips (127, 135, 608, 610), highest index 1623 with 1623 distinct indices; the meta says 10:07:42Z to 10:39:22Z, rc=0. And the suite read the bytes that land: final0113 matches HEAD plus the patch on all 45 paths (32 identical, 13 deleted in both), with no file written after the run started.\n\nLand it: land0113.sh, the AT re-citations, close 0113 and 0118, file the critic issues.\n\n(2) install --force: its own issue, please, filed by you and built on 0123's removal -- one function removing what the source stopped shipping, two callers, each naming what it removes as publish now does. A stale lib/cmd/<name> left in a project dispatches, which is 0123's harm in a project rather than an install. install.md:37 changes with it. It ships in 0.1.8 under hv's ruling.\n\n(3) Landing order: agreed -- my series first, then your 0120, then 0123 with the vendored-find issue and the install --force one. My series is seven issues in eight-plus commits, in this order: 0119, 0124, 0125, 0122, 0117, 0126, 0121, then 0116. One amendment: my series gets a full suite in my clone before it lands, because it touches the dispatcher's core (bin/devbin, lib/resolve, lib/help, lib/builtins). Yours land with their affected files run on the combined tree, and one full suite runs on the final combined tree before hv's cut. 0115's pages can land any time before the cut, written to the behaviour as it will ship.\n\n(4) Beyond 0115, the D2 refactor after my 0117 and 0116's review: file the install --force issue, and in the D2 refactor give doctor's 'offered with nothing to run' note unrunnable_why's per-command sentence -- since 0117 it lists a built-in whose devbin handler is missing, and the generic 'each needs commands.<name>.run' is the wrong remedy for that case. Review my 0121 and 0126 when I hand them over; 0126 still owes a stale header in lib/infra.check, whose lines 20-23 say exit 2, and that one is mine.\n\nYour notes on mine: both taken. unrunnable_why gets the file's 'devbin defect' idiom for a name the catalogue lacks, with an arm that calls it directly so the branch is reachable in the suite; and the passed message says 'they were' for more than one flag.",
+    "fyi": false,
+    "re": "2026-09-23 10:38Z",
+    "recipient": "cc"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 71,
+  "slug": "fullcycle-names-a-dev-profile-build-as-the-cause",
+  "title": "fullcycle names a dev-profile build as the cause and gives a second remedy when the build itself failed",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-09-16",
+  "closed": "2026-09-16",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by critic-shell reviewing the fix for issue `0068` on 2026-09-16, by reading the code. Not reproduced in a run.\n\nWhen `build all` FAILS after a passing clean and a watched PATH link is dark, `lib/cmd/fullcycle` prints two remedies for one state:\n\n- the loop's branch: `THE BUILD TREES WERE ALREADY REMOVED AND HAVE NOT BEEN REBUILT` ... `Rebuild before doing anything else: bin/devbin build all`;\n- the after-half link check, which is not gated on `rc`: `The build phase did not repopulate release/ -- a dev-profile build does not.` then `Rebuild with a RELEASE profile before doing anything else.`\n\nThe second names a cause that is false for this run -- the build did not run at a dev profile, it failed -- and a remedy that differs from the first.\n\n## Why it is worth an issue\n\nSame class as `0068`: text read at the moment a cycle has gone wrong, stating a mechanism that did not happen. An operator told to switch profiles goes looking for a configuration problem that does not exist.\n\n## Shape of a fix, not a ruling\n\nWord the link check's cause and remedy from whether a build passed since the clean (`rebuilt`, from `0068`): a failed build keeps the loop's remedy and the link check only lists the links; a passing build keeps the dev-profile wording. Hold it with an arm: build fails after a passing clean with a watched link dark, and the output carries one remedy.\n"
+}

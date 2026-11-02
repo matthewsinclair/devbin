@@ -1,0 +1,15 @@
+{
+  "id": "01M5P6AEJ0AV7FXD03CH0HC7SC",
+  "ts": "2026-10-24T05:32:15.808Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0201's rhad half at 0.1.13 is proven and handed to vc (~/Devel/scratch/devbin-dc/0201/HANDOVER.md, records in rhad-0.1.13/): brew upgrade 0.1.12 to 0.1.13, the fixture's bare upgrade took 0.1.13 through HOMEBREW_PREFIX/opt/devbin, doctor passed reading it, nothing names the removed keg; the Resolution's rhad half is drafted there; kovacs's half follows as vc's kovacs-sysadm order. RELEASED WHEN vc has taken the HANDOVER into 0201's Resolution, or asks for a change to it"
+  }
+}

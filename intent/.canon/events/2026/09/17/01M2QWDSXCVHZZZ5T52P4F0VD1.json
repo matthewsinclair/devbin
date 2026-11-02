@@ -1,0 +1,14 @@
+{
+  "id": "01M2QWDSXCVHZZZ5T52P4F0VD1",
+  "ts": "2026-09-17T14:30:43.372Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.clear",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "sender": "dc"
+  }
+}

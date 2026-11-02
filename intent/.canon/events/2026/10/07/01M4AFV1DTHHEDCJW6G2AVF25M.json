@@ -1,0 +1,15 @@
+{
+  "id": "01M4AFV1DTHHEDCJW6G2AVF25M",
+  "ts": "2026-10-07T06:12:01.594Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0177, vc's assignment for the next bundle (2026-10-07): fullcycle's INCOMPLETE summary names the third cause, a tree the check can search but not list whose own release/ holds no binary, as vc prefers over narrowing the summary to the causes that held. Built in a --no-local scratch clone: red on d7f2ed13 first, mutants, critic-shell, the targeted run (fullcycle plus the six tree scans plus help, BSD and GNU first), the shellcheck gate, then the patch to vc against a named HEAD."
+  }
+}

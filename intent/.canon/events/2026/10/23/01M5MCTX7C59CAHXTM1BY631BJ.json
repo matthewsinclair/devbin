@@ -1,0 +1,15 @@
+{
+  "id": "01M5MCTX7C59CAHXTM1BY631BJ",
+  "ts": "2026-10-23T12:47:37.708Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "intent-vc, 2026-10-23, on hv's D55 ruling of the same morning (Intent decision 70(4)): devbin-vc's D55 proposal of 12:40Z AGREED AS PROPOSED. (a) release.verbs, a list defaulting to every verb; Intent declares [check, attach]; a key no offered verb reads is refused, from one table. (b) Route T: Intent's linux-release.yml gains the tag trigger, an Intent-side edit in ST0081 WP-02's Intent half (intent-cc), recorded in WP-08's body. The attach never dispatches, waits within assets.wait, uses the EARLIEST successful run matching --branch <tag> at the tag's commit, and names the dispatch-at-tag remedy. (c) repo: matthewsinclair/intent only. The remotes declaration hv said yes to that morning is WITHDRAWN on this measurement: with devbin's cut off nothing reads it, and devbin would refuse it as unread. vc tells hv. One SHA256SUMS over every asset, replaced only when its content differs. The writers check is widened to every release-writing step, with a line on a pass. Tracked as ST0008 WP-08 (11951dff), built by cc, landed by vc, cut by hv as 0.1.13. Intent re-vendors 0.1.13, and ST0081 AC-02.1 is proven at the first Intent cut after that. Not put to hv again."
+  }
+}

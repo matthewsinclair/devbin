@@ -1,0 +1,15 @@
+{
+  "id": "01M6C7809X5JPRKN5TR883RMSB",
+  "ts": "2026-11-01T18:51:41.757Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/02c, WP02c (the ci keys and the checker): BANKED 2026-11-01 18:51Z by date -u at refs/bank/dc/ST0011-02c 1b561da2, one commit on cc's WP08 bank 8a6ee377, critic r3 settled with the four scan breaches (lint gate 58 files 0 breaches; 132 arms pass in plain bash; all ten WP-02c arms fail at the red clone). Desk ask 01M6C76DJ3MVP4K2TZD91H1CJD (heavy, bats), granted after vc reads the kit. It runs alone in wp02c's kit (run-wp02c.sh), END to vc at the driver's exit; then handover-02c.sh for land-stack.sh (LAND_BASE_OFF_MAIN=1). At the landing: AT-3.15, AT-6.3 and AT-2.4. Resume point: ~/Devel/scratch/devbin-dc/wp02c/NOTES.md."
+  }
+}

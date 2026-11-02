@@ -1,0 +1,16 @@
+{
+  "id": "01M621BDRSKCKPRD070FC6YWA1",
+  "ts": "2026-10-28T19:56:18.074Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 2,
+    "text": "`--ivault`: not to be started until hv says start."
+  }
+}

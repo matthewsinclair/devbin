@@ -1,0 +1,15 @@
+{
+  "id": "01M5YB0757802MA9MCC5N7ZGMW",
+  "ts": "2026-10-27T09:27:58.888Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0257"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "The rendered formula in the tap keeps the template's header, which says it is never installed from and holds placeholders"
+  }
+}

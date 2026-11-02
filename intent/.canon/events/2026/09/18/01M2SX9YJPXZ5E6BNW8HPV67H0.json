@@ -1,0 +1,15 @@
+{
+  "id": "01M2SX9YJPXZ5E6BNW8HPV67H0",
+  "ts": "2026-09-18T09:24:34.518Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**0088 row 2: a gated tool never reads input -- run_gate hands it </dev/null, with no override key** (hv, 2026-09-18, taking vc's recommendation). A terminal run takes the path agents and CI already take, and a tool that wants an answer fails the same way everywhere. vc's census found no gate in the fleet that reads input (51 scripts; Prolix iex/dbproxy exec, not gates). An override is added only when a real gate needs one. vc builds, dc reviews; named in the sweep pre-notice."
+  }
+}

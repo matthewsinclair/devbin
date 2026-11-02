@@ -1,0 +1,15 @@
+{
+  "id": "01M2RM1ZCFN7YEGWXQCE48FBP4",
+  "ts": "2026-09-17T21:23:41.583Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-03 -- `release status <target>`, the resume map. The contract is minted; nothing in `lib/` is written.**\n\nLanded at `104446e`: **six AT rows for AC-3.1**, all `to-write`, citing `tests/unit/releasestatus.bats` (a name checked free first -- lesson (s)). `intent at lint ST0007` clean. AC-3.1's `covered-by:` is no longer empty.\n\n**The objective was corrected before the ATs were minted, because reading D38 disproved two of its own sentences.** It said \"each of D38's eleven postconditions\" -- there are FIVE (steps 3, 4, 7, 8, 9); four rows carry none and steps 5 and 6 carry a predicate over other rows' readers rather than one of their own. It said three states -- there are FOUR, the fourth being `skipped`, which comes from the declaration rather than from the repository (`object: none`, no `after:`, no `ci.query`).\n\n**The reader list is the work package and it is written**, at `scratchpad/wp03-readers.md`: R1 stamp, R2 commit (via the materialiser), R3 tag, R4 push per remote, R5 object, plus a release-commit resolver. **R2 is also pre-flight's tag-sanity refusal** -- one reader, a report and a refusal -- which is the WP's whole point in one sentence.\n\n**Three git facts measured on 2.55.0, each changing what gets built.** `merge-base --is-ancestor` exits **128** for a sha this checkout does not hold against **1** for a genuine non-ancestor, so \"could not look\" and \"looked and found it false\" already differ and the reader must keep them apart. `ls-remote` prints **two** lines for an annotated tag and **one** for a lightweight one, so the remote's tag shape is readable without fetching. `git archive` **drops an export-ignored path**, materialises a submodule as an **empty directory**, and on LFS writes `.git/lfs/objects`.\n\n**WITH hv, AWAITING A RULING: AC-3.2 for the materialiser** (sent 21:19Z). WP-02's as-built put the materialiser in WP-03's scope, but AC-3.1 as minted covers the status table alone, so it would close uncovered. Do not build the materialiser's refusal behaviour until hv rules, but R1 and R3 need neither.\n\n**NEXT, in order:** (1) dc's 0085 review, which is `doing 30`. (2) Write `tests/unit/releasestatus.bats` red first -- the six arms before any `lib/`. (3) Build R1, R3, R5, then R4, then R2 and the materialiser."
+  }
+}

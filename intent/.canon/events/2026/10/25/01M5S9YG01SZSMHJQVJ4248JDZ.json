@@ -1,0 +1,16 @@
+{
+  "id": "01M5S9YG01SZSMHJQVJ4248JDZ",
+  "ts": "2026-10-25T10:33:21.665Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 62,
+    "text": "ISSUE:0228: built on cc's 0227 WIP abf8ffdd as trial0228 4c16c5a5 in ~/Devel/scratch/devbin-dc/0228/build; LIGHT done (red on 593109bf, 0228 arms green under GNU; scan reds all on 0227's lines, cc fixing); at cc's sealed 0227: restack as one commit, compare -U0 lines with 4c16c5a5, re-run the six scans as a light, bundle + seal + drafts to vc"
+  }
+}

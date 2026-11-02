@@ -1,0 +1,16 @@
+{
+  "id": "01M6C5H8AW26RB0MP60XQCQ90V",
+  "ts": "2026-11-01T18:21:47.740Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 65,
+    "text": "ST0011 WP04's closure: WP04 stays WIP until AC-4.1, non-test, is read from the first cut's CI (vc's ruling, 2026-11-01: whether Ubuntu runs twice on S under the publish shape goes to hv then)."
+  }
+}

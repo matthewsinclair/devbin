@@ -1,0 +1,15 @@
+{
+  "id": "01M4AEXKF9BRBDX01HKBXFQZ5A",
+  "ts": "2026-10-07T05:55:57.033Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.9 FOLLOW-UPS, on vc's word after the cut (2026-10-07; release d7f2ed13, tag v0.1.9). (1) FILE: lib/pages/upgrade.md still says a manifest's next upgrade writes the kind, where a hand upgrade to 0.1.9 runs the project's older runtime and records the path again; and it says a refusal of a source DEVBIN_INSTALL_PREFIX places names the variable, where only the refusal of a tree that is no devbin does. (2) DRIVE, THEN FILE: the tmp/<command> ignore file where git refuses the repository itself (eg dubious ownership). git_readonly sets no safe.directory, so ls-files and rev-parse should both fail, and lib/runlog then takes the tree for one with no repository and writes the ignore file unannounced, a tracked directory included. Inferred, not yet driven. (3) Then delete the spent scratch clones (hv's standing yes). State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "01M66F4YDET7RC6ABAP1NFTMJX",
+  "ts": "2026-10-30T13:14:23.536Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-3.2"
+  },
+  "payload": {
+    "evidence": "accepted by hv 2026-10-30 in vc's session: anonymous https ls-remote (no credential helper, no global git config) reads the PUBLIC source at a9b8cd7c (HEAD, main, v0.1.18) and the PUBLIC tap at acebdc9; rhadamanth's brew answers devbin 0.1.18 (brew, a9b8cd7c11a9), its install receipt naming tap_git_head acebdc9 and scm_revision a9b8cd7c. Gap accepted by name: rhadamanth's tap is cloned over ssh and is not a clean account"
+  }
+}

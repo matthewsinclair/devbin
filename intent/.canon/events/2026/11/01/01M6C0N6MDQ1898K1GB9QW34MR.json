@@ -1,0 +1,16 @@
+{
+  "id": "01M6C0N6MDQ1898K1GB9QW34MR",
+  "ts": "2026-11-01T16:56:34.189Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 74,
+    "text": "The hook-in stack's run, 01M6C0GKNE2H3SM6TPRM9MCWB6, RUNNING since 2026-11-01 16:56Z by date -u (GRANTED by vc on bats, cargo and heavy after trellis-page's END; START named tip=ba5a8270): ST0011/05 6b99ed46 and ST0011/04 edada49b (dc's hook-in, fixed and re-banked), then cc's ST0011/07 ba5a8270 (WP07), on 62e1c34b, as one stack under decision 125 (4). Driver hookin/run-hookin.sh, log hookin/run-hookin-ba5a8270.log, records under hookin/runs/; the last run's records are in hookin/runs-01M6BVYT/. Red clones: red-05-62e1c34b-6b99ed46 3c9e5669, red-04-62e1c34b-edada49b 1602e1a3, and cc's kit7/red07 6a09815c (hands off until END). AT THE DRIVER'S EXIT: rerun-red.sh for any leg want_red reads as dropped, then END to vc and the slot released with the result. If green: the record line \"The hook-in's run, at ba5a8270\" into COMMIT_MSG-ST0011-05 and -04 (cc writes -07's), then handover-hookin.sh, then tell vc and cc. After the landing: AT-3.6's re-cite. Resume point: hookin/NOTES.md."
+  }
+}

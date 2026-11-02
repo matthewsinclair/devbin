@@ -1,0 +1,15 @@
+{
+  "id": "01M5RYB2Q078PHCXVQNKB23JTW",
+  "ts": "2026-10-25T07:10:31.139Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0226 (vc's ask, 07:10Z): the macOS app release as a shared built-in, for 0.1.15. Build in ~/Devel/scratch/devbin-dc/0226/build on land220's tip 4488f3bc; read Utilz's and Intent's bin/.devbin/cmd/macos, never write them; bundle to vc. Heavy runs by molt-vc's GO through devbin-vc"
+  }
+}

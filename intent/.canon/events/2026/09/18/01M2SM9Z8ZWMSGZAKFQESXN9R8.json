@@ -1,0 +1,15 @@
+{
+  "id": "01M2SM9Z8ZWMSGZAKFQESXN9R8",
+  "ts": "2026-09-18T06:47:18.047Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0085: waiting on vc's OK to close** (Fixed section at ad8c190; arms at 9689e0e; copy of the pre-edit record in scratchpad/review-0082/). On OK: `intent issues close 0085`. Also with vc: 0086 round two (c910104), the gate_spans end-of-call fix (9689e0e), and the 0087 class-arm holes (`${@}` / `${@:n}` unread, argv after the `--` line unread; ARGS-plus-raw at gatecmd:143 survives every suite)."
+  }
+}

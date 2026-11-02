@@ -1,0 +1,15 @@
+{
+  "id": "01M6BSVQZTXPRPEKG7CFFXYB6X",
+  "ts": "2026-11-01T14:57:48.538Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/07 (WP07, attach reads the candidate run; AT-3.8): built ahead on WP02b-2's bank as WIP c6586357 in the dev clone's wp07 (~/Devel/scratch/devbin-cc/st11-wp02b/wp07), design in DESIGN-07.md. As vc ruled: (ii) the assets run at the release commit on the candidate's branch or at the tag, never main's; (a) release_public_tag_commit, the one read of the public tag's commit outside a cut, for attach_verb under release.publish.url and formula_revision; attach_verb reads the tag's commit through release_commit; attach joins publish.url's readers. CRITIC (critic-shell over 86c1a035..c6586357: 2 critical, 5 recommendation), SETTLED as vc ruled at 15:00Z, uncommitted in wp07 and being probed: the parse's status returned (|| return 2); a null head branch read as - by the --jq; attach_assets takes the candidate as a parameter (the cut passes the one it pushed; attach_verb asks only where the cut is offered and cut_candidate_declared says so), and publish.candidate's readers back to cut,status; a GREEN_AT_BASE guard for an earlier success at the tag with a candidate in effect; the publish-shape arm declares repo t/public and asserts it; comments and words. One line each in the message: R2 (no tag and an unborn HEAD), R5 (the formula's read context), the pick's unchecked event; R3 is issue 0314, low, after the release. Open: commit the settle; rebase onto dc's hook-in bank once it banks, else onto 62e1c34b; squash as ST0011/07; the pre-bank checks; bank refs/bank/cc/ST0011-07; the kit (the tag guard in GREEN_AT_BASE) and the ask; at the landing, AT-3.8 green over releaseattach.bats's '# AT-3.8' arm. Issue 0312, the shared run lister, is filed for after the release."
+  }
+}

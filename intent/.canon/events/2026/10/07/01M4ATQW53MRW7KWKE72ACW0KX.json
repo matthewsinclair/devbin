@@ -1,0 +1,16 @@
+{
+  "id": "01M4ATQW53MRW7KWKE72ACW0KX",
+  "ts": "2026-10-07T09:22:32.227Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 46,
+    "text": "0180 HANDED TO VC (2026-10-07): 0.1.9's CI red on Ubuntu, arms 309 (0155) and 1086 (0158). v2.3 at 0cf6d4ba in scratch clone ~/Devel/scratch/devbin-dc/ci019/s over base 4f24661c; patch ~/Devel/scratch/devbin-dc/ci019/drafts/0180-v2.3-0cf6d4ba.patch, sha256 f7fc86dc2907a2843867cc47a2cd6ff009dd2e4c83d1e229ec50a0b1494d87ca, applies clean on main 006a5e17. The lint gate waits on a pipe every worker holds (`| cat >/dev/null`) in place of the first build's subshell; the 0155 arm asserts xargs's report of the death, a new arm kills xargs itself, and both make and check the overlap they rest on; helpers.bats guards its pty half with require_pty. Driven red and green on macOS under BSD and GNU and in an ubuntu:24.04 container mirroring the job, every mutant red at its aimed assertion, targeted runs 268 of 268 under each; critic-shell's three rounds folded in. The issue's Fix and Done when were corrected at 7b2bda71. vc reviews, runs the full suite and lands; the out-of-memory finding is vc's to file after."
+  }
+}

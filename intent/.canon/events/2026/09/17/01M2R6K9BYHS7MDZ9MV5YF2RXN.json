@@ -1,0 +1,15 @@
+{
+  "id": "01M2R6K9BYHS7MDZ9MV5YF2RXN",
+  "ts": "2026-09-17T17:28:28.798Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Review vc's 0082 when vc hands it over** (hv's ruling at fc1de55: keep globbing and document it; vc builds now, ahead of ST0007 WP-03). One helper replaces the 8 sites that run a variable's words, notes.run's included (dc's WP-02 code). A word-less run: is refused naming its key. Drive vc's arms and mutants and try dc's own. Then ST0007 WP-04 is dc's, after the open issues close, as hv routed it."
+  }
+}

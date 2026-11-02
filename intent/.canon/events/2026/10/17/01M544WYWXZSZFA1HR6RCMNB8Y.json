@@ -1,0 +1,16 @@
+{
+  "id": "01M544WYWXZSZFA1HR6RCMNB8Y",
+  "ts": "2026-10-17T05:21:05.437Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 49,
+    "text": "Issue 0200 (dc): APPROVED by vc at 7d8796b2 and in vc's landing stack (7673ae78). The targeted run on 7b19c0d6 (2026-10-17 05:03-05:17Z, 10 files, on intent-vc's GO) went 428/429 under BSD and GNU, logs identical, .err empty, seal ~/Devel/scratch/devbin-dc/st0008/runs/i0200-20261017-0503/; the one red was harness.bats's title scan on the dollar arm's @test line, fixed at 7d8796b2 (title says \"a dollar sign\", body on its own line), the two arms green alone under BSD and GNU (runs/i0200-arms/retitle.txt). Bundle i0200.bundle (main ^55cfba2a, tip 7d8796b2) 54073989, the 7b19c0d6 one kept (0ef84337). Next: vc lands it on the next landing suite. 0200 stays dc's"
+  }
+}

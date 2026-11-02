@@ -1,0 +1,1143 @@
+diff --git a/README.md b/README.md
+index 37006b9..a2449de 100644
+--- a/README.md
++++ b/README.md
+@@ -149,6 +149,12 @@ Shipped as names, absent until the project enables them. Devbin ships no command
+ | `which`     | Report which binary or build a name resolves to        |
+ | `infra`     | Resolve, check and apply this estate's DNS, mail and runtime configuration |
+ 
++`release` is opt-in the same way, and it is the one opt-in command devbin implements itself: one release sequence shared by every project that releases, declared in a `release:` block ([configuration](docs/configuration.md#release)). It is being built under ST0007. Today it parses its arguments and checks its declaration, and every other step exits 3, naming the work package that builds it.
++
++| Command   | What it does                                                           |
++| --------- | ---------------------------------------------------------------------- |
++| `release` | Cut a release: stamp, commit, gate, tag, push, and the release object |
++
+ Devbin's own lifecycle, always offered:
+ 
+ | Command      | What it does                                                  |
+diff --git a/docs/configuration.md b/docs/configuration.md
+index 21d172a..7475226 100644
+--- a/docs/configuration.md
++++ b/docs/configuration.md
+@@ -254,6 +254,46 @@ commands:
+     enabled: false
+ ```
+ 
++## `release`
++
++The release core (ST0007): one release sequence shared by every project that releases, declared here as data. **`release` is opt-in, like `publish`**: enable it with `commands.release.enabled: true`. A `release:` block does not enable it by being present.
++
++**Every key has a default, and a block names only what differs.** A project that enables `release` and declares no block releases with every default below. A duration is a whole number of `s`, `m` or `h`. **A list is declared empty as the single item `"-"`**, because the grammar has no `[]`; that is how a project declares no gates.
++
++| Key                   | Type                                   | Default                             | Meaning                                                               |
++| --------------------- | -------------------------------------- | ----------------------------------- | --------------------------------------------------------------------- |
++| `release.tag`         | string                                 | `v{version}`                        | the tag name; must contain `{version}`                                |
++| `release.remotes`     | list                                   | every remote, in `git remote` order | the remotes pushed to, in order                                       |
++| `release.branch`      | string                                 | `main`                              | the branch a release is cut from and pushed to                        |
++| `release.notes.kind`  | `changelog` \| `releases` \| `command` | `changelog`                         | where the release notes live                                          |
++| `release.notes.run`   | command                                | none                                | `notes.kind: command` only, and required there                        |
++| `release.derived`     | list of commands                       | none                                | regenerate derived files, each printing the paths it wrote            |
++| `release.gates`       | list of devbin verbs                   | `check all`, `test all`             | run in order on the release commit; each must exit 0                  |
++| `release.ci.query`    | command                                | none: CI is not consulted           | prints a commit's CI verdict, read after the release                  |
++| `release.ci.wait`     | duration                               | `20m`                               | how long that verdict is waited for; needs `ci.query`                 |
++| `release.object`      | `local` \| `ci` \| `none`              | `local`                             | who makes the release object                                          |
++| `release.title`       | string                                 | `{tag}`                             | `object: local` only; `{tag}` and `{version}` expand                  |
++| `release.object_wait` | duration                               | `20m`                               | `object: ci` only; how long to wait for the workflow's object         |
++| `release.after`       | list of commands                       | none                                | run after the release object, reported, outside the core's guarantees |
++
++**A key the declared mode never reads is refused, not ignored**: `title` outside `object: local`, `object_wait` outside `object: ci`, `ci.wait` without `ci.query`, and `notes.run` outside `notes.kind: command`. `bin/devbin release check` prints every key with its value and whether it was declared or is the default. The annotated example is the `release:` block at the end of `bin/.devbin/lib/config.reference.yaml`.
++
++```yaml
++commands:
++  release:
++    enabled: true
++release:
++  notes:
++    kind: releases
++  gates:
++    - test all
++    - check all
++    - doctor
++  object: ci
++```
++
++That is devbin's own declaration: its notes are `RELEASES/<version>.md`, its gates add `doctor`, and its GitHub workflow makes the release object.
++
+ ## Two things config deliberately cannot do
+ 
+ **The YAML never grows control flow.** If a declaration needs an `if`, it is a script. This is a review gate on every change to devbin, not an aspiration -- the moment config can branch, it is a bad programming language with no debugger.
+diff --git a/lib/builtins b/lib/builtins
+index 0806a47..6d9b1b8 100644
+--- a/lib/builtins
++++ b/lib/builtins
+@@ -90,6 +90,7 @@ db               elixir  -           -          Data      - | Database lifecycle
+ docs             any     -           -          Docs      @builtin | Generate and publish documentation
+ content          opt-in  -           -          Docs      - | Content pipeline tasks
+ version          any     -           -          Ship      @builtin | Show, set and bump the project version
++release          opt-in  -           -          Ship      @builtin | Cut a release: stamp, commit, gate, tag, push, and the release object
+ publish          opt-in  -           -          Ship      - | Publish a release artifact
+ macos            opt-in  -           -          Ship      - | macOS bundle and platform tasks
+ which            opt-in  -           -          Install   - | Report which binary or build a name resolves to
+diff --git a/lib/cmd/doctor b/lib/cmd/doctor
+index b8ce4a8..69d673c 100755
+--- a/lib/cmd/doctor
++++ b/lib/cmd/doctor
+@@ -117,6 +117,22 @@ check_config() {
+   return 0
+ }
+ 
++# check_release -- a release: block that nothing reads (ST0007, design D35).
++#
++# `release` is opt-in, and a release: block does not enable it by being
++# present: that would be a second activation route for one row. So a block in
++# a project that has not enabled `release` configures nothing, and inert
++# configuration otherwise says nothing. A note, not a failure: declaring the
++# block before enabling the command is a legitimate order to adopt in.
++check_release() {
++  cfg_load "$DEVBIN_DIR/config.yaml" >/dev/null 2>&1 || return 0
++  [ -n "$(cfg_list release)" ] || return 0
++  command_active release && return 0
++  _note "release: a release: block is declared and inert -- release is not enabled here"
++  _detail "enable it with commands.release.enabled: true, or remove the block"
++  return 0
++}
++
+ # check_languages -- which languages this project arms devbin's built-ins for.
+ #
+ # A NOTE WHEN THERE ARE NONE, NEVER A FAILURE (issue 0062). `project.languages`
+@@ -602,6 +618,7 @@ main() {
+   check_runtime
+   check_config
+   check_languages
++  check_release
+   check_devbin_version
+   check_manifest
+   check_commands
+diff --git a/lib/cmd/release b/lib/cmd/release
+new file mode 100755
+index 0000000..eafc62b
+--- /dev/null
++++ b/lib/cmd/release
+@@ -0,0 +1,190 @@
++#!/usr/bin/env bash
++#
++# The built-in `release` (ST0007): one copy of the release sequence for every
++# project that releases. Opt-in, like `publish` (design D35): a project enables
++# it with `commands.release.enabled: true`, and a `release:` block does not
++# enable it by being present.
++#
++#   release <--patch|--minor|--major|vX.Y.Z> [--dry-run] [--yes]   cut a release
++#   release status <vX.Y.Z>                                         the resume map
++#   release notes                                                   regenerate the notes views
++#   release check                                                   the declaration, and the notes views
++#   release                                                         usage, exit 1
++#
++# EVERY ARGUMENT IS PARSED BEFORE ANYTHING ACTS, and `-h` or `--help` in any
++# position prints usage and exits 0 (D36). Issue 0064 recorded
++# `macos prepare --help` rebuilding Intent.app: a handler that acts on its
++# first word before reading the rest cannot promise that --help is safe.
++#
++# AS BUILT BY WP-01: the argument loop and `release check`'s declaration half.
++# A well-formed cut, `status` and `notes` parse and then exit 3 naming the work
++# package that builds them, and `check` says its notes half is not examined. An
++# unbuilt step that exited 0 would read as a step that ran.
++#
++set -euo pipefail
++
++# shellcheck source=lib/helpers
++. "${DEVBIN_LIB:?run me through bin/devbin}/helpers"
++# shellcheck source=lib/config
++. "$DEVBIN_LIB/config"
++
++usage() {
++  local me="${DEVBIN_INVOKE:-bin/devbin} release"
++  printf 'usage: %s <--patch|--minor|--major|vX.Y.Z> [--dry-run] [--yes]\n' "$me"
++  printf '       %s status <vX.Y.Z>\n' "$me"
++  printf '       %s notes\n' "$me"
++  printf '       %s check\n\n' "$me"
++  printf '  Cut a release: stamp, commit, gate, tag, push, and the release object,\n'
++  printf '  each step checked first so a re-run continues. Declared in the release:\n'
++  printf '  block of bin/.devbin/config.yaml; see docs/configuration.md.\n'
++}
++
++# refuse <message> -- a usage refusal: usage on stderr, the reason, exit 1.
++refuse() {
++  usage >&2
++  printf '\n' >&2
++  die "release: $1"
++}
++
++# --help first, over every argument, so no later word can act or refuse first.
++for arg in "$@"; do
++  case "$arg" in
++    -h | --help)
++      usage
++      exit 0
++      ;;
++  esac
++done
++
++if [ $# -eq 0 ]; then
++  usage >&2
++  exit 1
++fi
++
++# --- parse ----------------------------------------------------------------
++verb=cut
++target=""
++version=""
++dry_run=0
++assume_yes=0
++
++case "$1" in
++  status | notes | check)
++    verb="$1"
++    shift
++    ;;
++esac
++
++while [ $# -gt 0 ]; do
++  case "$1" in
++    --patch | --minor | --major)
++      [ "$verb" = cut ] || refuse "$1 is a cut's target, and this is release $verb"
++      [ -z "$target" ] || refuse "one target only, got $target and $1"
++      target="$1"
++      ;;
++    --dry-run)
++      [ "$verb" = cut ] || refuse "--dry-run applies to a cut, not to release $verb"
++      dry_run=1
++      ;;
++    --yes)
++      [ "$verb" = cut ] || refuse "--yes applies to a cut, not to release $verb"
++      assume_yes=1
++      ;;
++    -*)
++      refuse "unknown argument: $1"
++      ;;
++    *)
++      case "$verb" in
++        cut)
++          [ -z "$target" ] || refuse "one target only, got $target and $1"
++          is_semver "${1#v}" || refuse "not a version: $1 (want vX.Y.Z or X.Y.Z)"
++          target="v${1#v}"
++          ;;
++        status)
++          [ -z "$version" ] || refuse "release status takes one version, got $version and $1"
++          is_semver "${1#v}" || refuse "not a version: $1 (want vX.Y.Z or X.Y.Z)"
++          version="${1#v}"
++          ;;
++        *)
++          refuse "release $verb takes no argument, got: $1"
++          ;;
++      esac
++      ;;
++  esac
++  shift
++done
++
++case "$verb" in
++  cut) [ -n "$target" ] || refuse "a cut needs a target: --patch, --minor, --major or vX.Y.Z" ;;
++  status) [ -n "$version" ] || refuse "release status needs a version" ;;
++esac
++
++# --- act ------------------------------------------------------------------
++
++cd "${PROJECT_ROOT:?}" || die "cannot enter $PROJECT_ROOT"
++
++# THE CONFIG CACHE DOES NOT CROSS INTO A HANDLER, and an empty cache would read
++# as "declared nothing" -- every key at its default, in a project that declared
++# otherwise. So a config that does not load stops the command.
++cfg_load "${DEVBIN_DIR:?}/config.yaml" || die "release: cannot read $DEVBIN_DIR/config.yaml"
++
++# check_declaration -- validate, then print every release key with its value
++# and whether the project declared it or it is the default.
++check_declaration() {
++  local key shape value from IFS=$' \t\n'
++  if ! cfg_validate; then
++    die "release check: $DEVBIN_DIR/config.yaml does not validate (above)"
++  fi
++  printf 'release: declaration (%s)\n' "$DEVBIN_DIR/config.yaml"
++  while read -r shape key _; do
++    [ -n "$shape" ] || continue
++    if cfg_has "release.$key" || [ -n "$(cfg_list "release.$key")" ]; then from=declared; else from=default; fi
++    if [ "$shape" = scalar ]; then
++      value="$(cfg_release_get "$key")"
++    else
++      value="$(cfg_release_list "$key")"
++      value="${value//$'\n'/, }"
++      if [ -z "$value" ] && [ "$key" = remotes ]; then
++        value="every remote git lists"
++      fi
++    fi
++    printf '  %-12s %-28s %s\n' "$key" "${value:-(none)}" "$from"
++  done <<<"$_DEVBIN_RELEASE_SCHEMA"
++  check_release_writers
++}
++
++# check_release_writers -- D42: one writer per release object. A tag-triggered
++# workflow that calls `gh release` races a local `gh release create`, and a
++# workflow that recreates its release discards the local one. Reported for the
++# project to decide, never guessed.
++check_release_writers() {
++  local wf
++  [ "$(cfg_release_get object)" = local ] || return 0
++  [ -d .github/workflows ] || return 0
++  for wf in .github/workflows/*.yml .github/workflows/*.yaml; do
++    [ -f "$wf" ] || continue
++    grep -qE '^[[:space:]]*tags:' "$wf" || continue
++    grep -qE 'gh release' "$wf" || continue
++    printf 'release: WARNING: %s runs gh release on a pushed tag, and object is local:\n' "$wf"
++    printf '         both would make the release object. Declare release.object: ci if the\n'
++    printf '         workflow makes it, or remove its gh release step.\n'
++  done
++  return 0
++}
++
++case "$verb" in
++  check)
++    check_declaration
++    printf 'release: the notes half is not built yet (ST0007 WP-02) -- the notes views were not examined\n'
++    ;;
++  notes)
++    not_yet "release notes" "ST0007 WP-02 (notes providers)"
++    ;;
++  status)
++    not_yet "release status" "ST0007 WP-03"
++    ;;
++  cut)
++    : "$dry_run" "$assume_yes"
++    not_yet "release $target" "ST0007 WP-04 to WP-06 (the sequence)"
++    ;;
++esac
+diff --git a/lib/config b/lib/config
+index 3f14260..fd524a1 100644
+--- a/lib/config
++++ b/lib/config
+@@ -30,6 +30,8 @@
+ #   cfg_has <path>           true when the path has a value
+ #   cfg_list <path>          immediate child keys under path, document order
+ #   cfg_validate             schema check of the loaded config (needs lib/helpers)
++#   cfg_release_get <key>    a release: scalar, or its D37 default (ST0007)
++#   cfg_release_list <key>   a release: list, one item per line, or its default
+ #   cfg_dump                 the flattened form (debugging, doctor)
+ #
+ [ -n "${_DEVBIN_CONFIG_LOADED:-}" ] && return 0
+@@ -408,6 +410,13 @@ _cfg_path_known() {
+       [ "$n" -eq 4 ] && [ "${p[2]}" = commands ] && _cfg_is_index "${p[3]}" && return 0
+       return 1
+       ;;
++    release)
++      # ST0007's release: block. Its keys, shapes and defaults are ONE table,
++      # _DEVBIN_RELEASE_SCHEMA below, and this branch reads it rather than
++      # listing the keys a second time.
++      [ "$n" -ge 2 ] && _cfg_release_known "${path#release.}" && return 0
++      return 1
++      ;;
+     commands)
+       if [ "$n" -eq 3 ]; then
+         # `log` and `grammar` at COMMAND level, not just option level: a
+@@ -442,6 +451,181 @@ _cfg_path_known() {
+   return 1
+ }
+ 
++# --- the release: block (ST0007, design D37) -------------------------------
++#
++# THE ONE STATEMENT OF THE RELEASE KEYS: shape, dotted key under `release.`,
++# and default. The schema branch above, the readers below and the value checks
++# all read it, so a key added here is known, defaulted and validated in one
++# edit. Every key has a default and every default can be overridden (hv,
++# 2026-09-16, decision 26).
++#
++# A list's default items are separated by `|`. A project declares a list
++# EXPLICITLY EMPTY as the single item `-` (devbin's no-default sentinel): the
++# grammar has no `[]`, and without it `gates` could not be overridden to none.
++# An undeclared `remotes` means every remote `git remote` lists, in that order,
++# which only the release command can read.
++_DEVBIN_RELEASE_SCHEMA="
++scalar tag         v{version}
++list   remotes
++scalar branch      main
++scalar notes.kind  changelog
++scalar notes.run
++list   derived
++list   gates       check all|test all
++scalar ci.query
++scalar ci.wait     20m
++scalar object      local
++scalar title       {tag}
++scalar object_wait 20m
++list   after
++"
++
++# _cfg_release_row <key> -- `<shape><TAB><default>` for a release key, or
++# non-zero when the schema has no such key.
++_cfg_release_row() {
++  local want="$1" shape key def IFS=$' \t\n'
++  while read -r shape key def; do
++    [ -n "$shape" ] || continue
++    if [ "$key" = "$want" ]; then
++      printf '%s\t%s\n' "$shape" "$def"
++      return 0
++    fi
++  done <<<"$_DEVBIN_RELEASE_SCHEMA"
++  return 1
++}
++
++# _cfg_release_known <sub> -- true when `release.<sub>` is a legal path: a
++# scalar key exactly, or a list key followed by an index.
++_cfg_release_known() {
++  local sub="$1" row
++  if row="$(_cfg_release_row "$sub")"; then
++    [ "${row%%$'\t'*}" = scalar ]
++    return
++  fi
++  case "$sub" in *.*) ;; *) return 1 ;; esac
++  _cfg_is_index "${sub##*.}" || return 1
++  row="$(_cfg_release_row "${sub%.*}")" || return 1
++  [ "${row%%$'\t'*}" = list ]
++}
++
++# _cfg_release_default <key> -- the default, a list's items joined by `|`.
++_cfg_release_default() {
++  local row
++  row="$(_cfg_release_row "$1")" || return 1
++  printf '%s\n' "${row#*$'\t'}"
++}
++
++# _cfg_release_shape_is <key> <shape> -- refuse, naming the key, a key the
++# schema lacks or one read in the wrong shape. A reader asking for `bump`
++# would otherwise get an empty default and read it as "declared nothing".
++_cfg_release_shape_is() {
++  local row
++  if ! row="$(_cfg_release_row "$1")"; then
++    printf 'config: the release: schema has no key: %s\n' "$1" >&2
++    return 1
++  fi
++  if [ "${row%%$'\t'*}" != "$2" ]; then
++    printf 'config: release.%s is a %s, not a %s\n' "$1" "${row%%$'\t'*}" "$2" >&2
++    return 1
++  fi
++}
++
++# cfg_release_get <key> -- the declared value of a release scalar, or its default.
++cfg_release_get() {
++  _cfg_release_shape_is "$1" scalar || return 1
++  if cfg_has "release.$1"; then
++    cfg_get "release.$1"
++  else
++    _cfg_release_default "$1"
++  fi
++}
++
++# cfg_release_list <key> -- a release list's items, one per line: the declared
++# items, nothing when declared as `-`, or the default items.
++cfg_release_list() {
++  local key="$1" i items="" def
++  _cfg_release_shape_is "$key" list || return 1
++  for i in $(cfg_list "release.$key"); do
++    items="${items:+$items
++}$(cfg_get "release.$key.$i")"
++  done
++  if [ -n "$(cfg_list "release.$key")" ]; then
++    [ "$items" = "-" ] || printf '%s\n' "$items"
++    return 0
++  fi
++  def="$(_cfg_release_default "$key")"
++  [ -z "$def" ] || printf '%s\n' "${def//|/$'\n'}"
++  return 0
++}
++
++# _cfg_release_value_problem <path> <value> -- print why a release value
++# cannot be read, and succeed; fail when the value is fine.
++_cfg_release_value_problem() {
++  local path="$1" v="$2" key="${1#release.}"
++  case "$key" in
++    tag)
++      case "$v" in *"{version}"*) return 1 ;; esac
++      printf 'must contain {version}, or every release would carry the same tag'
++      ;;
++    notes.kind)
++      case "$v" in changelog | releases | command) return 1 ;; esac
++      printf 'must be changelog, releases or command'
++      ;;
++    object)
++      case "$v" in local | ci | none) return 1 ;; esac
++      printf 'must be local, ci or none'
++      ;;
++    ci.wait | object_wait)
++      [[ "$v" =~ ^[0-9]+[smh]$ ]] && return 1
++      printf 'must be a whole number of s, m or h, eg 20m'
++      ;;
++    *)
++      [ -n "$v" ] && return 1
++      printf 'is empty -- leave the key out to take its default'
++      ;;
++  esac
++  return 0
++}
++
++# _cfg_release_problems -- the checks that need more than one key: a list
++# declared `-` beside other items, and a declared key the declared (or
++# default) mode never reads. A key nothing reads is silently ignored config,
++# the class issue 0080 closed for booleans.
++_cfg_release_problems() {
++  local rc=0 key i n kind object
++  for key in remotes derived gates after; do
++    n=0
++    for i in $(cfg_list "release.$key"); do n=$((n + 1)); done
++    if [ "$n" -gt 1 ] && cfg_list "release.$key" | while read -r i; do cfg_get "release.$key.$i"; done | grep -qx -- -; then
++      printf 'config: %s: release.%s: "-" declares the list empty, so it must be the only item\n' "$_DEVBIN_CFG_FILE" "$key" >&2
++      rc=1
++    fi
++  done
++  kind="$(cfg_release_get notes.kind)"
++  object="$(cfg_release_get object)"
++  if [ "$kind" = command ] && ! cfg_has release.notes.run; then
++    printf 'config: %s: release.notes.run is required under notes.kind: command -- it is what does the work\n' "$_DEVBIN_CFG_FILE" >&2
++    rc=1
++  fi
++  if [ "$kind" != command ] && cfg_has release.notes.run; then
++    printf 'config: %s: release.notes.run is read only under notes.kind: command, and kind is %s\n' "$_DEVBIN_CFG_FILE" "$kind" >&2
++    rc=1
++  fi
++  if cfg_has release.ci.wait && ! cfg_has release.ci.query; then
++    printf 'config: %s: release.ci.wait is read only when release.ci.query is declared\n' "$_DEVBIN_CFG_FILE" >&2
++    rc=1
++  fi
++  if cfg_has release.title && [ "$object" != local ]; then
++    printf 'config: %s: release.title is read only under object: local, and object is %s\n' "$_DEVBIN_CFG_FILE" "$object" >&2
++    rc=1
++  fi
++  if cfg_has release.object_wait && [ "$object" != ci ]; then
++    printf 'config: %s: release.object_wait is read only under object: ci, and object is %s\n' "$_DEVBIN_CFG_FILE" "$object" >&2
++    rc=1
++  fi
++  return "$rc"
++}
++
+ # _cfg_path_boolean <path> -- true when devbin reads the path's value as a yes
+ # or a no, through is_true_word or is_false_word (issue 0080).
+ #
+@@ -472,7 +656,7 @@ _cfg_path_boolean() {
+ # on a missing function is true, so every boolean value would be reported as
+ # wrong, naming the project's file for a defect in the loader.
+ cfg_validate() {
+-  local k v rc=0
++  local k v why rc=0
+   if ! declare -F is_true_word >/dev/null || ! declare -F is_false_word >/dev/null; then
+     printf 'config: cfg_validate needs lib/helpers sourced first -- it reads the boolean words there\n' >&2
+     return 1
+@@ -490,9 +674,15 @@ cfg_validate() {
+       printf 'config: %s: %s: "%s" is not a yes or a no -- use one of: %s (yes) or %s (no)\n' \
+         "$_DEVBIN_CFG_FILE" "$k" "$v" "$_DEVBIN_TRUE_WORDS" "$_DEVBIN_FALSE_WORDS" >&2
+       rc=1
++    elif [ "${k%%.*}" = release ] && why="$(_cfg_release_value_problem "$k" "$v")"; then
++      printf 'config: %s: %s: "%s" %s\n' "$_DEVBIN_CFG_FILE" "$k" "$v" "$why" >&2
++      rc=1
+     fi
+   done <<EOF
+ $_DEVBIN_CFG
+ EOF
++  if [ -n "$(cfg_list release)" ]; then
++    _cfg_release_problems || rc=1
++  fi
+   return "$rc"
+ }
+diff --git a/lib/config.reference.yaml b/lib/config.reference.yaml
+index a29d0d3..6d9895f 100644
+--- a/lib/config.reference.yaml
++++ b/lib/config.reference.yaml
+@@ -465,3 +465,39 @@ commands:
+     summary: Push a release to the registry
+     group: Ship
+     run: mix hex.publish
++
++# The release core (ST0007). `release` is OPT-IN, like `publish`: enable it
++# with `commands.release.enabled: true`. This block does NOT enable it by being
++# present, and `doctor` reports a block in a project that has not enabled
++# `release` as declared and inert.
++#
++# EVERY VALUE SHOWN IS THE DEFAULT. A project that enables `release` and
++# declares no block releases with all of them, and a block names only what
++# differs (hv, 2026-09-16: every key has a default, and every default can be
++# overridden). A key the declared mode never reads is refused, not ignored:
++# `title` outside object: local, `object_wait` outside object: ci, `ci.wait`
++# without `ci.query`, `notes.run` outside notes.kind: command. Those are shown
++# commented out for that reason.
++#
++# A list is declared EMPTY as the single item "-": the grammar has no `[]`.
++release:
++  tag: "v{version}"          # must contain {version}. Utilz declares "{version}".
++  # remotes:                 # undeclared: every remote `git remote` lists, in that order
++  #   - origin
++  branch: main
++  notes:
++    kind: changelog          # changelog | releases | command
++    # run: bin/release-notes # notes.kind: command only -- receives the verb and the version
++  # derived:                 # commands that regenerate derived files, each printing the paths it wrote
++  #   - cargo update --workspace
++  gates:                     # devbin verbs, run in order on the release commit; each must exit 0
++    - check all
++    - test all
++  # ci:                      # undeclared: CI is not consulted
++  #   query: bin/ci-state    # prints green | failed | pending | none | unknown for a commit sha
++  #   wait: 20m              # how long the post-release verdict waits on pending or none
++  object: local              # local | ci | none -- who makes the release object
++  title: "{tag}"             # object: local only. {tag} and {version} expand.
++  # object_wait: 20m         # object: ci only -- how long to wait for the workflow's release object
++  # after:                   # commands run after the release object, reported, outside the core's guarantees
++  #   - bin/announce
+diff --git a/lib/helpers b/lib/helpers
+index ad975b7..b11bf70 100644
+--- a/lib/helpers
++++ b/lib/helpers
+@@ -813,8 +813,14 @@ assert_identifier() {
+ # The corpus put each project's own current version in the error message, which
+ # is why four copies existed at all. The example is generic here; the value the
+ # caller passed is what the reader actually needs to see.
++# is_semver <value> -- true for MAJOR.MINOR.PATCH, digits only. The one test;
++# assert_semver dies on it, and release reads a target through it.
++is_semver() {
++  [[ "${1:-}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
++}
++
+ assert_semver() {
+-  [[ "${1:-}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] ||
++  is_semver "${1:-}" ||
+     die "version must be semver (eg 1.2.3), got '${1:-}'"
+ }
+ 
+diff --git a/tests/unit/doctor.bats b/tests/unit/doctor.bats
+index 8bacab8..c0205b0 100644
+--- a/tests/unit/doctor.bats
++++ b/tests/unit/doctor.bats
+@@ -342,6 +342,26 @@ EOF
+   assert_output_contains 'commands.test.enabled: "off" is not a yes or a no'
+ }
+ 
++@test "doctor reports a release: block in a project that has not enabled release as declared and inert (ST0007 AC-1.2)" {
++  proj="$(mkinstalled)"
++  printf '\nrelease:\n  object: none\n' >>"$proj/bin/.devbin/config.yaml"
++  run devbin_run "$proj" doctor
++  assert_success
++  assert_output_contains "release: a release: block is declared and inert"
++  assert_output_contains "commands.release.enabled: true"
++}
++
++@test "doctor says nothing about release when the block is absent, or when release is enabled (ST0007 AC-1.2)" {
++  proj="$(mkinstalled)"
++  run devbin_run "$proj" doctor
++  assert_success
++  refute_output_contains "declared and inert"
++  printf '\ncommands:\n  release:\n    enabled: true\nrelease:\n  object: none\n' >>"$proj/bin/.devbin/config.yaml"
++  run devbin_run "$proj" doctor
++  assert_success
++  refute_output_contains "declared and inert"
++}
++
+ @test "doctor PASSES on bin/devbin, which is the launcher now" {
+   proj="$(mkinstalled)"
+   run devbin_run "$proj" doctor
+diff --git a/tests/unit/documentation.bats b/tests/unit/documentation.bats
+index 8c71832..7b67f03 100644
+--- a/tests/unit/documentation.bats
++++ b/tests/unit/documentation.bats
+@@ -38,6 +38,7 @@ teardown() {
+ # Scoped to that function's body so an unrelated case statement elsewhere in the
+ # file cannot contribute a key that is not part of the schema.
+ schema_keys() {
++  {
+   awk '
+     /^_cfg_path_known\(\)/ { inf = 1 }
+     inf && /^}/            { inf = 0 }
+@@ -61,7 +62,16 @@ schema_keys() {
+         s = substr(s, RSTART + RLENGTH)
+       }
+     }
+-  ' "$DEVBIN_LIB_DIR/config" | LC_ALL=C sort -u
++  ' "$DEVBIN_LIB_DIR/config"
++  # The release: keys are a TABLE, _DEVBIN_RELEASE_SCHEMA, which the release
++  # branch of _cfg_path_known reads rather than restating, so every segment of
++  # every key in it is a schema key too.
++  awk '
++    /^_DEVBIN_RELEASE_SCHEMA="/ { inr = 1; next }
++    inr && /^"/                 { inr = 0 }
++    inr && NF >= 2              { n = split($2, a, "."); for (i = 1; i <= n; i++) print a[i] }
++  ' "$DEVBIN_LIB_DIR/config"
++  } | LC_ALL=C sort -u
+ }
+ 
+ # documented_keys -- every key SEGMENT docs/configuration.md actually documents,
+diff --git a/tests/unit/releasecore.bats b/tests/unit/releasecore.bats
+new file mode 100644
+index 0000000..5706702
+--- /dev/null
++++ b/tests/unit/releasecore.bats
+@@ -0,0 +1,467 @@
++#!/usr/bin/env bats
++# release.bats - the release core (ST0007)
++#
++# WP-01: the opt-in row, the `release:` schema and its defaults (D35, D37), the
++# declaration half of `release check`, and the argument loop (D36). Every
++# argument is parsed before anything acts, and `--help` anywhere never acts:
++# issue 0064 recorded `macos prepare --help` rebuilding Intent.app.
++
++load "../lib/test_helper"
++
++setup() {
++  devbin_setup
++  export PROJECT_ROOT="$DEVBIN_TEST_TMPDIR"
++  # shellcheck source=lib/helpers
++  . "$DEVBIN_LIB_DIR/helpers"
++  # shellcheck source=lib/config
++  . "$DEVBIN_LIB_DIR/config"
++  init_colors off
++}
++teardown() { devbin_teardown; }
++
++enabled_project() {
++  mkproj demo <<'YAML'
++project:
++  name: demo
++commands:
++  release:
++    enabled: true
++YAML
++}
++
++# git_project <proj> -- a committed repository with a bare remote holding main,
++# and a `gh` stub on PATH that records every call outside the project.
++git_project() {
++  local proj="$1"
++  git -C "$proj" init -q -b main
++  git -C "$proj" add -A
++  git -C "$proj" -c user.name=t -c user.email=t@t commit -qm init
++  git init -q --bare "$DEVBIN_TEST_TMPDIR/remote.git"
++  git -C "$proj" remote add origin "$DEVBIN_TEST_TMPDIR/remote.git"
++  git -C "$proj" push -q origin main
++  mkdir -p "$DEVBIN_TEST_TMPDIR/stubs"
++  printf '#!/bin/sh\necho "gh $*" >>"%s/gh.calls"\n' "$DEVBIN_TEST_TMPDIR" >"$DEVBIN_TEST_TMPDIR/stubs/gh"
++  chmod +x "$DEVBIN_TEST_TMPDIR/stubs/gh"
++}
++
++# fingerprint <proj> -- every file's bytes, every ref, the remote's refs, and
++# whether gh was ever called. Anything a release could write changes this.
++fingerprint() {
++  local proj="$1"
++  (
++    cd "$proj" &&
++      find . -path ./.git -prune -o -type f -print | LC_ALL=C sort | while IFS= read -r f; do
++        printf '%s %s\n' "$(cksum <"$f")" "$f"
++      done
++  )
++  git -C "$proj" for-each-ref
++  git -C "$proj" status --porcelain --ignored --untracked-files=all
++  git -C "$DEVBIN_TEST_TMPDIR/remote.git" for-each-ref
++  [ ! -e "$DEVBIN_TEST_TMPDIR/gh.calls" ] || cat "$DEVBIN_TEST_TMPDIR/gh.calls"
++}
++
++# ============================================================================
++# OPT-IN (D35, AC-1.2)
++# ============================================================================
++
++@test "release is absent, and refused as not enabled, in a project that has not asked for it" {
++  proj="$(mkproj demo <<'YAML'
++project:
++  name: demo
++YAML
++  )"
++  run devbin_run "$proj" help
++  assert_success
++  refute_output_matches '(^|'$'\n'')  release '
++  run devbin_run "$proj" release --help
++  assert_failure
++  assert_output_contains "devbin ships it"
++  assert_output_contains "commands.release.enabled: true"
++}
++
++@test "a release: block does not enable release by being present" {
++  proj="$(mkproj demo <<'YAML'
++project:
++  name: demo
++release:
++  object: none
++YAML
++  )"
++  run devbin_run "$proj" release --help
++  assert_failure
++  assert_output_contains "commands.release.enabled: true"
++}
++
++@test "enabled: true offers release, and runs devbin's handler" {
++  proj="$(enabled_project)"
++  run devbin_run "$proj" help
++  assert_success
++  assert_output_matches '(^|'$'\n'')  release '
++  run devbin_run "$proj" release --help
++  assert_success
++  assert_output_contains "usage:"
++}
++
++# ============================================================================
++# THE ARGUMENT LOOP (D36, AC-1.3)
++# ============================================================================
++
++@test "a bare release prints usage and exits 1" {
++  proj="$(enabled_project)"
++  run devbin_run "$proj" release
++  [ "$status" -eq 1 ]
++  assert_output_contains "usage:"
++}
++
++@test "--help or -h anywhere in any release invocation prints usage and changes no file, ref, remote or release object" {
++  proj="$(enabled_project)"
++  git_project "$proj"
++  before="$(fingerprint "$proj")"
++  local inv
++  while IFS= read -r inv; do
++    [ -n "$inv" ] || continue
++    # shellcheck disable=SC2086  # each line is an argument list
++    run env PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" bash -c 'cd "$1" && shift && ./bin/devbin release "$@" </dev/null' _ "$proj" $inv
++    [ "$status" -eq 0 ] || {
++      echo "release $inv exited $status: $output" >&2
++      return 1
++    }
++    assert_output_contains "usage:"
++    [ "$(fingerprint "$proj")" = "$before" ] || {
++      echo "release $inv changed the repository, a remote or gh" >&2
++      return 1
++    }
++  done <<'EOF'
++--help
++-h
++--patch --help
++--minor -h
++--major --yes --help
++v1.2.3 --help
++1.2.3 -h
++--dry-run --patch --help
++--help --patch
++status v1.0.0 --help
++status --help
++notes -h
++check --help
++--bogus --help
++v1.2.3 v1.2.4 -h
++EOF
++}
++
++@test "--help is an argument, not a substring: a version is never read as a help flag" {
++  proj="$(enabled_project)"
++  run devbin_run "$proj" release status --helpful
++  [ "$status" -eq 1 ]
++  assert_output_contains "--helpful"
++}
++
++@test "every refusal in the argument loop exits 1 naming the argument, before anything runs" {
++  proj="$(enabled_project)"
++  git_project "$proj"
++  before="$(fingerprint "$proj")"
++  local line args want
++  while IFS='|' read -r args want; do
++    [ -n "$args" ] || continue
++    # shellcheck disable=SC2086
++    run env PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" bash -c 'cd "$1" && shift && ./bin/devbin release "$@" </dev/null' _ "$proj" $args
++    [ "$status" -eq 1 ] || {
++      echo "release $args exited $status, want 1: $output" >&2
++      return 1
++    }
++    printf '%s' "$output" | grep -qF -- "$want" || {
++      echo "release $args did not name: $want -- got: $output" >&2
++      return 1
++    }
++  done <<'EOF'
++--bogus|--bogus
++--patch --minor|--minor
++--patch v1.2.3|v1.2.3
++v1.2|v1.2
++v1.2.3.4|v1.2.3.4
++status|status needs a version
++status v1.0|v1.0
++status v1.0.0 v1.0.1|v1.0.1
++status --patch|--patch
++check --patch|--patch
++notes v1.2.3|v1.2.3
++check notes|notes
++--dry-run|a target
++--yes|a target
++EOF
++  [ "$(fingerprint "$proj")" = "$before" ]
++}
++
++@test "a well-formed cut, status or notes invocation is parsed and says the step is not built yet, exiting 3 and writing nothing" {
++  proj="$(enabled_project)"
++  git_project "$proj"
++  before="$(fingerprint "$proj")"
++  local inv
++  for inv in "--patch" "v1.2.3" "--dry-run --major" "--yes 2.0.0" "status v1.0.0" "notes"; do
++    # shellcheck disable=SC2086
++    run env PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" bash -c 'cd "$1" && shift && ./bin/devbin release "$@" </dev/null' _ "$proj" $inv
++    [ "$status" -eq 3 ] || {
++      echo "release $inv exited $status, want 3: $output" >&2
++      return 1
++    }
++    assert_output_contains "not built yet"
++  done
++  [ "$(fingerprint "$proj")" = "$before" ]
++}
++
++# ============================================================================
++# THE SCHEMA AND ITS DEFAULTS (D37, AC-1.1)
++# ============================================================================
++
++@test "devbin's own declaration (D43) validates" {
++  cfg_load_string <<'YAML'
++project:
++  name: devbin
++commands:
++  release:
++    enabled: true
++release:
++  notes:
++    kind: releases
++  gates:
++    - test all
++    - check all
++    - doctor
++  object: ci
++YAML
++  run cfg_validate
++  assert_success
++}
++
++@test "every D37 key validates at its documented default" {
++  cfg_load_string <<'YAML'
++project:
++  name: demo
++release:
++  tag: "v{version}"
++  remotes:
++    - origin
++  branch: main
++  notes:
++    kind: changelog
++  derived:
++    - cargo update --workspace
++  gates:
++    - check all
++    - test all
++  ci:
++    query: bin/ci-state
++    wait: 20m
++  object: local
++  title: "{tag}"
++  after:
++    - bin/announce
++YAML
++  run cfg_validate
++  assert_success
++}
++
++@test "with no release: block, every key reads its D37 default" {
++  cfg_load_string <<'YAML'
++project:
++  name: demo
++commands:
++  release:
++    enabled: true
++YAML
++  cfg_validate
++  [ "$(cfg_release_get tag)" = "v{version}" ]
++  [ "$(cfg_release_get branch)" = main ]
++  [ "$(cfg_release_get notes.kind)" = changelog ]
++  [ "$(cfg_release_get notes.run)" = "" ]
++  [ "$(cfg_release_get ci.query)" = "" ]
++  [ "$(cfg_release_get ci.wait)" = 20m ]
++  [ "$(cfg_release_get object)" = local ]
++  [ "$(cfg_release_get title)" = "{tag}" ]
++  [ "$(cfg_release_get object_wait)" = 20m ]
++  [ "$(cfg_release_list gates)" = "check all
++test all" ]
++  [ -z "$(cfg_release_list remotes)" ]
++  [ -z "$(cfg_release_list derived)" ]
++  [ -z "$(cfg_release_list after)" ]
++}
++
++@test "a declared key overrides its default, and a list declared as - is explicitly empty" {
++  cfg_load_string <<'YAML'
++project:
++  name: demo
++release:
++  tag: "{version}"
++  gates:
++    - "-"
++  remotes:
++    - upstream
++    - local
++YAML
++  cfg_validate
++  [ "$(cfg_release_get tag)" = "{version}" ]
++  [ -z "$(cfg_release_list gates)" ]
++  [ "$(cfg_release_list remotes)" = "upstream
++local" ]
++}
++
++@test "the schema reads the same under a strict-mode IFS" {
++  # Lesson (p) of 2026-09-16: a table split with read takes on the caller's IFS.
++  cfg_load_string <<'YAML'
++project:
++  name: demo
++release:
++  object: none
++  gates:
++    - test all
++YAML
++  local IFS=$'\n\t'
++  cfg_validate
++  [ "$(cfg_release_get tag)" = "v{version}" ]
++  [ "$(cfg_release_get object)" = none ]
++  [ "$(cfg_release_list gates)" = "test all" ]
++}
++
++@test "the reader refuses a key the release schema does not have, and a list read as a scalar" {
++  cfg_load_string <<'YAML'
++project:
++  name: demo
++YAML
++  run cfg_release_get bump
++  assert_failure
++  assert_output_contains "bump"
++  run cfg_release_get gates
++  assert_failure
++  run cfg_release_list tag
++  assert_failure
++}
++
++@test "every value refusal in the release schema names the key and the reason" {
++  local block want
++  while IFS='|' read -r block want; do
++    [ -n "$block" ] || continue
++    cfg_load_string <<YAML
++project:
++  name: demo
++release:
++$(printf '%b' "$block")
++YAML
++    run cfg_validate
++    [ "$status" -ne 0 ] || {
++      echo "accepted: $block" >&2
++      return 1
++    }
++    printf '%s' "$output" | grep -qF -- "$want" || {
++      echo "for $block, want: $want -- got: $output" >&2
++      return 1
++    }
++  done <<'EOF'
++  bump: patch|unknown key: release.bump
++  notes:\n    path: CHANGELOG.md|unknown key: release.notes.path
++  tag: release-1|release.tag
++  branch: ""|release.branch
++  notes:\n    kind: markdown|release.notes.kind
++  notes:\n    kind: command|release.notes.run
++  notes:\n    run: bin/notes|release.notes.run
++  object: github|release.object
++  object: ci\n  title: devbin {version}|release.title
++  object_wait: 5m|release.object_wait
++  object: ci\n  object_wait: soon|release.object_wait
++  ci:\n    query: bin/ci\n    wait: 20 minutes|release.ci.wait
++  ci:\n    wait: 10m|release.ci.wait
++  ci:\n    query: ""|release.ci.query
++  gates:\n    - ""|release.gates.0
++  gates:\n    - "-"\n    - test all|release.gates
++  after:\n    - ""|release.after.0
++  gates:\n    first: check all|unknown key: release.gates.first
++  tag:\n    0: x|unknown key: release.tag.0
++EOF
++}
++
++@test "the reference config's release block shows every key at the default the reader uses" {
++  # Keys the default mode never reads are shown commented out, since declaring
++  # them is refused, so each value is read from the block's text either way.
++  cfg_load "$DEVBIN_LIB_DIR/config.reference.yaml"
++  cfg_validate
++  local block key leaf v n=0
++  block="$(awk '/^release:/ { f = 1; next } f && /^[a-z]/ { exit } f' "$DEVBIN_LIB_DIR/config.reference.yaml")"
++  for key in tag branch notes.kind ci.wait object title object_wait; do
++    leaf="${key##*.}"
++    v="$(printf '%s\n' "$block" | sed -nE "s/^ *#? *${leaf}: *\"?([^\" ]*)\"?( .*)?$/\\1/p" | sed -n 1p)"
++    [ -n "$v" ] || {
++      echo "lib/config.reference.yaml does not show release.$key" >&2
++      return 1
++    }
++    [ "$v" = "$(_cfg_release_default "$key")" ] || {
++      echo "release.$key: reference shows $v, the reader defaults to $(_cfg_release_default "$key")" >&2
++      return 1
++    }
++    n=$((n + 1))
++  done
++  [ "$n" -eq 7 ]
++  [ "$(cfg_release_list gates)" = "$(_cfg_release_default gates | tr '|' '\n')" ]
++  [ -n "$(cfg_list release.gates)" ]
++}
++
++# ============================================================================
++# release check -- THE DECLARATION HALF (D36)
++# ============================================================================
++
++@test "release check prints every key with its value and whether it is declared or the default, and says the notes half is not built" {
++  proj="$(mkproj demo <<'YAML'
++project:
++  name: demo
++commands:
++  release:
++    enabled: true
++release:
++  object: none
++YAML
++  )"
++  run devbin_run "$proj" release check
++  assert_success
++  assert_output_matches 'object +none +declared'
++  assert_output_matches 'tag +v\{version\} +default'
++  assert_output_matches 'gates +check all, test all +default'
++  assert_output_matches 'remotes +every remote git lists +default'
++  assert_output_contains "notes half is not built yet"
++}
++
++@test "release check fails on a malformed release: block, naming the key" {
++  proj="$(mkproj demo <<'YAML'
++project:
++  name: demo
++commands:
++  release:
++    enabled: true
++release:
++  object: github
++YAML
++  )"
++  run devbin_run "$proj" release check
++  [ "$status" -eq 1 ]
++  assert_output_contains "release.object"
++}
++
++@test "release check warns when a tag-triggered workflow calls gh release and object is local, and not under object: ci" {
++  proj="$(enabled_project)"
++  mkdir -p "$proj/.github/workflows"
++  cat >"$proj/.github/workflows/release.yml" <<'YML'
++on:
++  push:
++    tags: ["v*"]
++jobs:
++  release:
++    steps:
++      - run: gh release create "$GITHUB_REF_NAME"
++YML
++  run devbin_run "$proj" release check
++  assert_success
++  assert_output_contains "WARNING"
++  assert_output_contains ".github/workflows/release.yml"
++  printf 'release:\n  object: ci\n' >>"$proj/bin/.devbin/config.yaml"
++  run devbin_run "$proj" release check
++  assert_success
++  refute_output_contains "WARNING"
++}

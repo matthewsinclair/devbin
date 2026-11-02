@@ -1,0 +1,15 @@
+{
+  "id": "01M2PD1QJ9E4HD7MZ2CQT4CCD6",
+  "ts": "2026-09-17T00:42:44.681Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**FIRST IN THE MORNING: review 0079 at a6b8180 (dc's packet, received after the wrap).** Fix 2989a8d, critic fold a6b8180. dc's suite: 1240/1240 at a6b8180, rc 0, 3 skips. Arms: bats -f 0079 tests/unit/updatenotice.bats (8) and upgradeoffer.bats (9); 14 of 17 red on 1da7bcd, the other 3 are controls. dc killed 14 mutations (M1-M14). Change: source_direction/is_commit_sha/commit_direction/manifest_ancestry/install_direction moved lib/install -> lib/helpers; devbin_source_state answers level|behind|ahead|differs <why>|unknown <reason>; offer only on behind; ahead and differs point at vendor, never upgrade. dc's declared residuals: a forward move with no seam byte change is still offered; bare git (not git_readonly) in _devbin_source_head and commit_direction; prefix same vs exact match; merge-base 128 reads unrelated; level ignores a dirty source; the equal-sha unknown branch infers its cause. Fix-section draft: intent/whiteboard/dc/.history/20260917/0079-issue-body-with-fix-section.md, where VC_SUITE_LINE is a placeholder for vc's re-run. Close is dc's after vc's OK. Run the full suite in a detached worktree at a6b8180, not in the working tree, which holds vc's uncommitted WP-01."
+  }
+}

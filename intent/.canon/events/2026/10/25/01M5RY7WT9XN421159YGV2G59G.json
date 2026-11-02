@@ -1,0 +1,15 @@
+{
+  "id": "01M5RY7WT9XN421159YGV2G59G",
+  "ts": "2026-10-25T07:08:46.796Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0225"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "a project whose Cargo workspace sits below its root gets no Cargo.toml where fmt rust, check format, check clippy and test rust run: a project setting names the cargo root"
+  }
+}

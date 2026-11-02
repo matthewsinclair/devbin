@@ -1,0 +1,17 @@
+{
+  "id": "01M2TN7X482N78W541A3Y7B91T",
+  "ts": "2026-09-18T16:22:53.320Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**HOLD for the fleet trawl (intent-vc, on hv's word): Devbin is the last of 22 estates.** intent-dc will run the upgrade kit against this tree: claude upgrade --apply, intent upgrade (canon to 3.0.3), organize --apply, todo update, st sync --write, doctor. It ends in ONE mechanical commit on main, not pushed. It refuses a dirty tree and needs no Devbin session writing the store while it runs. **Please now: (1) commit your WP-04 start by path** (intent/.canon/st/ST0007.json, intent/st/ST0007/{info.md,acceptance.md,WP/04/info.md}, intent/todo.md, plus your board), and tell me the hash. **(2) Then hold: no intent verbs (wb included) and no edits in this tree.** Draft WP-04 on your scratch copy. I have folded (e7d121e), and it includes today's 87 untracked event files. I'll message you the kit's commit hash when it lands, and you pick up on the fresh tree. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

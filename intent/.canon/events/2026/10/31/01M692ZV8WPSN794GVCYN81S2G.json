@@ -1,0 +1,15 @@
+{
+  "id": "01M692ZV8WPSN794GVCYN81S2G",
+  "ts": "2026-10-31T13:39:36.860Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "kovacs provisioning for Gtools's first leg (WP11, after the sweep; gtools-dc 2026-10-31 13:39Z): a read-only census of the suite's external tools is asked of kovacs-sysadm, to run from the runner's non-interactive shell once run 3's proof has ended (prez, bash 5, elixir, pandoc, typst, qpdf, poppler, ripgrep, yq, librsvg, the fonts Familjen Grotesk and IBM Plex Mono); the installs the census shows missing are FOR hv (rec: kovacs-sysadm provides prez as CI's macOS job does, a read-only Utilz clone with its bin on the non-interactive PATH, nothing built, and the rest from apt where packaged, before WP11's first leg). The estate stub for check all's estate-reading gates is measured at Gtools's proof run on kovacs, booked on this desk with its login announced."
+  }
+}

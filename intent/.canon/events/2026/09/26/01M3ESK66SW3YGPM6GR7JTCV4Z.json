@@ -1,0 +1,15 @@
+{
+  "id": "01M3ESK66SW3YGPM6GR7JTCV4Z",
+  "ts": "2026-09-26T12:03:46.009Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Vendoring devbin 0.1.8 into Gtools-geodica (~/Devel/cfg) -- until hv gives the word: gtools-vc cannot say yes for another estate's repo and no geodica session is live. Then ~/Devel/scratch/devbin-vc/sweep018.sh <its dir>."
+  }
+}

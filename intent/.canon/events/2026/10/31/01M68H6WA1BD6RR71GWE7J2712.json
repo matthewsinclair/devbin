@@ -1,0 +1,15 @@
+{
+  "id": "01M68H6WA1BD6RR71GWE7J2712",
+  "ts": "2026-10-31T08:28:52.929Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011 WP03 (vc's assignment, 2026-10-31 08:28Z): ci-state as a core built-in in a lib file of its own, with its arms and docs; read-only prep first, then code in a scratch clone."
+  }
+}

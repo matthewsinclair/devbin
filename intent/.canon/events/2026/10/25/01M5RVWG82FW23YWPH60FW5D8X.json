@@ -1,0 +1,16 @@
+{
+  "id": "01M5RVWG82FW23YWPH60FW5D8X",
+  "ts": "2026-10-25T06:27:36.322Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). Resume state 2026-10-25 (localfold on molt-vc's call for hv): 0.1.14 released 2026-10-24 (tag v0.1.14 at 593109bf, formula 6ee81e4d); CI red on its Ubuntu job (0222), so hv ruled CI green before the cut (decision 62, 0223). LANDING PAIR: land220 at 4488f3bc = main (593109bf outside intent/) + dc's 0220 (3cd5eee4, 4fafaefa), 0221 (c3798a72), 0222 (3dcdd1a0) and cc's 0223 (ec7e5120) and 0224 (8403fafc); stacked by tools/stack220.sh then tools/stack224.sh, cand220 rebuilt from 4488f3bc (fleet's four absent). Last in molt-vc's queue as hv asked; on the GO: bash tools/pair220.sh with START/END to molt-vc, read both seals, write the land script (per-commit messages: dc's COMMIT_MSG-0220/0221/0220b/0222, cc's COMMIT_MSG-0223 and -0224), fill the resolutions (dc's RESOLUTION-0220-0222.md, cc's RESOLUTION-0223.md with vc's live ci-state read, RESOLUTION-0224.md), close 0220, 0221, 0223, 0224, ping hv. 0222 closes only on CI green after hv's push. Then the 0.1.15 note (vc's), then the public steps of decision 52/56/60. 0213: T10 leg C green 2026-10-25 (Intent at 141dcf9ff on 0.1.14); leg D waits for hv to brew upgrade kovacs to 0.1.14."
+  }
+}

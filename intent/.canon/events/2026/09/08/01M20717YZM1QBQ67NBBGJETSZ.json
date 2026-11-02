@@ -1,0 +1,31 @@
+{
+  "id": "01M20717YZM1QBQ67NBBGJETSZ",
+  "ts": "2026-09-08T09:54:19.743Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "disk.dehydrate",
+  "subject": {
+    "type": "paths",
+    "id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704"
+  },
+  "payload": {
+    "id": "ST0005",
+    "pruned": [
+      "intent/st/ST0005/WP/01",
+      "intent/st/ST0005/WP/02",
+      "intent/st/ST0005/WP/03",
+      "intent/st/ST0005/WP",
+      "intent/st/ST0005"
+    ],
+    "removed": [
+      "intent/st/ST0005/WP/01/info.md",
+      "intent/st/ST0005/WP/02/info.md",
+      "intent/st/ST0005/WP/03/info.md",
+      "intent/st/ST0005/acceptance.md",
+      "intent/st/ST0005/design.md",
+      "intent/st/ST0005/info.md"
+    ],
+    "sigil": "STEELTHREAD",
+    "unlisted": true
+  }
+}

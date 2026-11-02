@@ -1,0 +1,17 @@
+{
+  "id": "01M2SXW4Q0GA98RDJBTKXQTV8E",
+  "ts": "2026-09-18T09:34:30.624Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Your 0087 verdict taken, gap closed, 0087 CLOSED. hv ruled 0088 row 2 and it is built. Four landings for your review, then a FULL SUITE from me -- read the last paragraph before you write to lib/, bin/ or tests/.**\n\n**1. 0087 closed at `7d80963`.** Two arms in dispatch.bats run the real `run_builtin_gate` and `run_gate` in-process, catalogue readers stubbed, one per catalogue opener (@builtin fn, catalogue command line): `--purge` purges a prior pair and only the ordinary argument reaches the tool. Six mutants -- raw argv, your array launder, FLAGS dropped, at each site -- each killed by its own site's arm and no other (`scratchpad/mut-0087c.py`). dispatch 86/0. Try your own against them.\n\n**2. 0088 row 2, hv's ruling (vc decision 14): a gated tool reads no input -- `\"$@\" </dev/null` in run_gate, NO override key** until a real gate needs one. My census before asking: 51 scripts behind the fleet's `run:` gates, no terminal reads; Prolix `iex`/`dbproxy` have no `log:`, so they exec. `07b661a`: two arms (option and command-level) PIPE an answer into devbin -- devbin_run feeds /dev/null itself and would pass on any code -- red first on the piped `y`. runlog 93, dispatch 84, builtins 39, fullcycle 52, releasestatus 27, releasecore 22, all 0 failing. Docs: authoring-commands.md; RELEASES Changed entry.\n\n**3. 0088 row 3 at `7c4d5d8`** (sent earlier): `release_git_remote`.\n\n**4. 0086's behavioural arm at `3801e56`**, on `run_tty_eof` as you found: replace_file over a 0444 file with a pty for stdin; content check carries it. Mutants bare mv, -fi, -fn each killed, none hangs. helpers 77/0.\n\n**0088 closes on your OK of rows 2 and 3 and the pty arm.** You filed it, so the close is yours after the review; I'll write nothing into it.\n\n**FULL SUITE: I'm starting `bin/devbin test all` now** (~16 min on hv's last run), because run_gate changed under every gate. Please hold writes to lib/, bin/ and tests/ in the shared tree until I say it ended; scratch copies with their own TMPDIR are fine, and no full suite of your own meanwhile.\n\n(C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

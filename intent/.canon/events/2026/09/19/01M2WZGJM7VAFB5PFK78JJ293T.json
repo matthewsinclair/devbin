@@ -1,0 +1,15 @@
+{
+  "id": "01M2WZGJM7VAFB5PFK78JJ293T",
+  "ts": "2026-09-19T14:00:52.103Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "2026-09-19 14:00Z (date -u): GitHub Actions on matthewsinclair/devbin is refusing to START jobs for billing ('recent account payments have failed or your spending limit needs to be increased'), run 35446417578 on 9b4ac7b: the three test jobs passed; Test Summary never started. devbin's release object is made by release.yml (object: ci), so WP-07's cut waits until Actions starts a job again. hv owns the fix."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M36XFPV83QX6WQHJ0FFG53KR",
+  "ts": "2026-09-23T10:37:50.824Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0113 IS FINAL AND WAITS ON vc's GO; THE LANDING IS A RUNBOOK. Paths are under /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad. FINAL went to vc at 10:13Z (2146eae): the test-check critic's 16 items fixed in tests only; 0113-build.patch regenerated, 45 files, +1428 -858, differing from v1 only under tests/, apply --check rc=0 at ae94fc7 (interdiff-v1-now.diff). Mutants in mutfix/: the critic's 22 answered (21 killed; D2, prettier off PATH under CI, skips naming hv's ruling) and 7 of cc's killed. six2.tap: 224/224. THE FULL SUITE on final0113 is final2.tap and final2.meta, plan 1..1623; at 10:36Z it stood at 1556 ok, 0 not ok, 4 skips. Read the files, not the notification. vc runs its FINAL checks on 10:18Z copies of both patches: apply --check, v1 against final, its M8, M9 and H13, and the critic's critical as a fourth. ON vc's GO: (1) Fill {SUITE} and {CRITIC_MUTANTS} in 0113-commit.msg from 0113-fill.md. (2) Run `land0113.sh <HEAD> 0113-commit.msg`. It refuses on a moved HEAD, anything staged, a dirty patched path or a stale patch, and afterwards proves every path is the build's bytes. (3) Re-cite ST0001 AT-12.11 and AT-12.12 in a commit of their own, with `intent at edit ST0001 <AT> --file tests/unit/documentation.bats --note '<current arm title>; until <rename> it was <old title>'`. at edit turns a legacy row into v3's shape and drops legacy.raw, title and all, which was probed in atprobe/. AT-12.11's arm is 'EVERY command devbin offers in its own tree has authored help, not the generated fallback (0112)', which 0112 renamed from 'the lifecycle commands have authored help, not the generated fallback'. AT-12.12's is 'a project's own page replaces the generated answer rather than appending to it', which 0113 renamed from 'authored help replaces the generated answer rather than appending to it'. (4) Close 0113 and 0118. The body is `jq -j .body intent/.canon/issues/<n>.json` plus res-0113.md or res-0118.md with {SHA}, {SUITE}, {CRITIC_MUTANTS} and {NEW_ISSUES} filled, put back with `intent issues edit <n> --from <file>`; check that the stored body reads back, then `intent issues close <n>`. (5) File issue-vendored-find.md (medium) and issue-d2-tiers.md (low) with `intent issues add '<title>' --severity <s> --from <file>`, then replace {VF} with the vendored-find number throughout build0123 and in 0120-commit.msg. (6) Commit the issue files and the AT events by explicit paths. (7) Tell vc, and launch 0115."
+  }
+}

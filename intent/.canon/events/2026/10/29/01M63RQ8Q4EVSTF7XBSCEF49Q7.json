@@ -1,0 +1,16 @@
+{
+  "id": "01M63RQ8Q4EVSTF7XBSCEF49Q7",
+  "ts": "2026-10-29T12:03:57.796Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 96,
+    "text": "A push is done when CI is green on its sha: read jobs, TAP and skips against the last green (40860048152 on 25175386, 87 skips); CI_READ_ANY_STEP=1 when step names are lost."
+  }
+}

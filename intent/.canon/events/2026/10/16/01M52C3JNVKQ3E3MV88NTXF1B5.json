@@ -1,0 +1,16 @@
+{
+  "id": "01M52C3JNVKQ3E3MV88NTXF1B5",
+  "ts": "2026-10-16T12:48:33.467Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 49,
+    "text": "Issue 0200 (dc, 2026-10-16, on vc's word): shell-init's install prefix filled as data, in clone ~/Devel/scratch/devbin-dc/i0200 on WP-03's tip d170adb0. Red beb1306a (seven of eight arms red; the space arm a guard), green 64d93379 (the body single-quotes the prefix, bash's quoted replacement fills it after the --autoload unwrap, one fill for every body), critic-shell's 4 recommendations and 2 style taken at 85ae5e4e; 20 affected arms green under BSD and GNU; banked ~/Devel/scratch/devbin-dc/st0008/i0200.bundle (main ^d170adb0, tip 85ae5e4e) sha256 f7e8f809, verified in a fresh clone; handover and drafts sent to vc 12:48Z (~/Devel/scratch/devbin-dc/st0008/runs/i0200-arms/HANDOVER.md). Next: the targeted run, booked with vc, intent-vc and utilz-vc once the landing suite ENDs"
+  }
+}

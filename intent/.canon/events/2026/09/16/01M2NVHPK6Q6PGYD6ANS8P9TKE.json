@@ -1,0 +1,15 @@
+{
+  "id": "01M2NVHPK6Q6PGYD6ANS8P9TKE",
+  "ts": "2026-09-16T19:36:53.607Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0007/06"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "object ci with object_wait, and step 11's CI verdict after the release"
+  }
+}

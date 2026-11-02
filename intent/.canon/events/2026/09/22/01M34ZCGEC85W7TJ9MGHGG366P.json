@@ -1,0 +1,15 @@
+{
+  "id": "01M34ZCGEC85W7TJ9MGHGG366P",
+  "ts": "2026-09-22T16:32:34.252Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "PROLIX: THE THREAD WRITTEN TO GOVERN DEPENDENCY MOVEMENT SITS UNSTARTED WHILE THE DEPENDENCIES MOVE. Measured fresh by vc on 2026-09-22 and replacing todos 23, 24 and 25 -- all prolix's node's, none re-read since 2026-09-02. (1) ST0028 is WIP with zero work packages and fourteen acceptance criteria: AC-1.1 through AC-1.10 all satisfied, AC-2.1 through AC-2.4 all UNsatisfied, AT-2.1 still `to-write`. AC-2 is the dependency half exactly -- constraint-blocked deps onto current majors, each move measured against a sealed baseline taken before it, phoenix_live_view moving deliberately in its own commit, the suite passing on the upgraded set. And the lockfile HAS moved since, on 2026-09-11, under \"Updated deps\" and \"Fix seven ash_admin CVEs: 0.13.26 -> 1.3.1\". So the true reading is not \"the dependency half has not started\": dependency work is happening OUTSIDE the discipline written to contain it, and AC-2.2 -- measure each move against the sealed baseline -- is the criterion that ungoverned movement defeats. Whether those commits ARE ST0028's work with the record not updated, or separate work, is prolix's node to settle; vc did not guess. (2) The Dockerfile change is no longer an uncommitted change riding along: it landed at cf06d8e and has never been BUILT. The estate is 5 ahead of `local` and 7 ahead of `upstream`, so none of this is pushed, let alone deployed, and more rides now than the two migrations the original item named. Whether the image builds is a Fly question and directive 3 makes it owner-run. (3) CLEARED, and recorded rather than dropped: there are NO committed credentials at Prolix. `config/.env` is tracked and its five keys are two paths and three APNS identifiers; the `.p8` it points at is untracked, and no `.p8`, `.pem`, `.key`, `.jks` or `.p12` is tracked anywhere in the repo. The two `priv/resource_snapshots` files that match a secret-shaped grep are Ash schema. The one real credential was removed at 92e7983. It survives in history BEFORE that commit; the commit calls it dead, so rotation is not implied, but only prolix's node can say whether it was also revoked. vc read no value in establishing any of this -- every check was on names, paths and tracking state."
+  }
+}

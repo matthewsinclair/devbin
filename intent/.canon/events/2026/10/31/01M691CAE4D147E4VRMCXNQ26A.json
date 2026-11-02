@@ -1,0 +1,17 @@
+{
+  "id": "01M691CAE4D147E4VRMCXNQ26A",
+  "ts": "2026-10-31T13:11:28.453Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "WP02a's nine points of 13:07Z: all approved, two conditions and one addition. (6) the git local-variable clear runs once at each verb's start and, when any was set, prints one line naming it and the repository used instead, never a silent switch; release_commit stays as WP06b landed it, one reader, no second mechanism. (5) the reason travels: a none for a moved tree or a tie names the record and why in status and in the cut's line, and UNREADABLE names the record and the read's error; the five words stand. Addition for WP02b, with the ci keys in todo 54: AC-6.3 (D69, minted 2026-10-31 13:11Z), the plan refuses at pre-flight a gate in all active on none of the legs the cut will run, naming the gate and its platforms, reading WP17's predicate (dc, after run 3) against each leg's probed platform. Order stands: run 3, landing, full suite, your run rebased onto the landing.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M3BV4K81YXWTEMR6C2C7SP68",
+  "ts": "2026-09-25T08:33:01.697Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.8 BUILD-OUT, localfold of 2026-09-25T08:33:01Z for hv's compact. hv's rulings since 2026-09-24 19:34Z: everything ships in 0.1.8 (scope A); test --purge all refused, and qa --purge one fixed (0128 v3d); 0146 and 0147 fixed now; the leaked-TMPDIR sweep yes (the classifier denied it, so hv runs it). LANDED: 0131+0137+0141 at 81a8274, closed fb479d1. READY, as patches in the session scratchpad (the worklist AFTER THE COMPACT section names each sha): 0128 v3d da653b28 (its 77-mutant batch was STOPPED at 24 of 77 for Intent's build all at 08:29:46Z; restart the rest with mutrun.py's only-ids once intent-vc sends END), 0133 v3, 0130 v1, 0142 v2 036884f8 (48/48), 0143 v3 7150e04e (48/49, M46 declared), 0144 v2b 046c4272 (26/30, all declared or equivalent). BUILDING: 0146 (a builder is running its first red/green runs on b0146), 0147 (a builder over 0142+0143 in b0147), and cc's 0139 v2h (rulings on the board, ask of this time). THEN: 0139's batch on cc's START request; one final full suite on the re-stacked combo (0128 v3d, 0139 v2h, 0144 v2b, 0146, 0147 added); land in order 0139, 0128, 0133, 0130, 0142, 0143, 0144, 0146, 0147, closing each; then cc's 0134, 0135 and 0145; then RELEASES/0.1.8.md, the cut, the install and the fleet sweep, pushes on hv's word, and the line."
+  }
+}

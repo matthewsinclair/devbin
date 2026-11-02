@@ -1,0 +1,15 @@
+{
+  "id": "01M5YNE0FWZB57YEBT1ZYQD2A3",
+  "ts": "2026-10-27T12:30:16.574Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0268"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "install --into \"\" is read as no --into: a machine install vendors into the current directory, and a dev checkout's launcher selects PUBLISH (from 0258's review)"
+  }
+}

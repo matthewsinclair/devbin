@@ -1,0 +1,15 @@
+{
+  "id": "01M2SHRMF09XEZMHJF8TPT1TSM",
+  "ts": "2026-09-18T06:02:52.768Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Then, on hv's routing: ST0007 WP-04 (needs hv's go), or the terminal-blocking class census (unassigned; dc offered through vc at 06:03Z).** Then the fleet-wide devbin update, as hv sequences it."
+  }
+}

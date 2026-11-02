@@ -1,0 +1,14 @@
+{
+  "id": "01M2T8QWKCTEMBWNVX9JNRA2M2",
+  "ts": "2026-09-18T12:44:25.581Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0007/AC-3.2"
+  },
+  "payload": {
+    "text": "Asking a notes verb about a commit materialises that commit's whole tree, its own bytes, at a root outside the project and removes it on every exit path including a refusal, so a status run cannot alter the dirt it reports; the tree is written from an index of its own rather than by git archive, so no export attribute can drop or rewrite a path and make a correct release read as unstamped or its views STALE, and the limits that remain -- smudge filters and submodules -- are declared."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M36XFQ71KZHV9FNYHV7B0538",
+  "ts": "2026-09-23T10:37:51.201Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "AN ASSERTION ON A WORD A SHIPPED PAGE CAN SAY IS SATISFIED BY THE PAGE, NOT BY THE CODE UNDER TEST (vc's line, 2026-09-23). 0113's trailer arm asserted 'disabled' and 'In this project:', and check.md's own prose says both, so the trailer's reason or its whole header could vanish with every arm green. Only the test-check critic's mutants found it. help.bats now matches what the trailer prints as whole lines (_output_line). THIS BINDS 0115's AUDIT: every new page is new prose that such an assertion can match. Grep each page for every string an arm asserts about help output, as was done for 0113's arms, before trusting a green."
+  }
+}

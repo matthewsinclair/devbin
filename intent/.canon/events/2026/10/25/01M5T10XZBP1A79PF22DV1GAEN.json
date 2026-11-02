@@ -1,0 +1,15 @@
+{
+  "id": "01M5T10XZBP1A79PF22DV1GAEN",
+  "ts": "2026-10-25T17:16:38.763Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0231 handed over to vc green at 17:16Z: fc617791 (tree bd5e2274), one commit on land220's a30c8ab2; light 16:55-17:08Z on molt-vc's GO (runs in ~/Devel/scratch/devbin-dc/0231/runs/light), critic clean with 2 of 6 shell rules armed; red on 593109bf and a30c8ab2; bundle (ref fix0231) + SHA256SUMS + COMMIT_MSG-0231 + RESOLUTION-0231 sealed in ~/Devel/scratch/devbin-dc/0231/handover, fresh-clone verified. Released when vc lands it and reports the landing pair's BSD suite; then fill in the landed sha and suite for vc"
+  }
+}

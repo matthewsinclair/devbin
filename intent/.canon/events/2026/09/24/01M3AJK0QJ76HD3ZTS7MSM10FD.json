@@ -1,0 +1,15 @@
+{
+  "id": "01M3AJK0QJ76HD3ZTS7MSM10FD",
+  "ts": "2026-09-24T20:44:22.642Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "NO RUNS OF ANY KIND, light included: no bats, no critic that runs tests, and no find, gfind or dig drives, from 20:43:56Z on 2026-09-24. vc asked for this because Intent's final 3.2.1 build is starting and Intent's census saw devbin bats processes during the hold. Reading and editing are fine. RELEASED WHEN vc says the machine is free. The critic-shell pass-3 agent is told the same, and finishes by reading only."
+  }
+}

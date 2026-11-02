@@ -1,0 +1,16 @@
+{
+  "id": "01M5VRRQT0WDA4QZQ5ZDD8H70Q",
+  "ts": "2026-10-26T09:30:50.561Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 37,
+    "text": "UNTIL hv CUTS 0.1.15, ONCE vc HAS PUSHED THE HEAD THAT LANDS 0233 AND 0234, COMMIT NOTHING OUTSIDE intent/whiteboard/ AND intent/.canon/ (told cc and dc, 2026-10-26; the rule first held from c4f52b8e, whose CI run 40291928610 went red, so it moved to the new head under decisions 70 and 71). The cut's pre-flight (ci.base, 0223) reads CI back from HEAD only past commits confined to those trees (bin/.devbin/cmd/.lib/ci-state; docs/releasing.md step 4). An issue edit or close rewrites intent/issues/NNNN.md, which leaves HEAD with no run, so the cut refuses. 0222, 0232, 0233 and 0234 close after the cut. Archive this once the cut is made."
+  }
+}

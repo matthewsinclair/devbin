@@ -1,0 +1,15 @@
+{
+  "id": "01M4AJHGW1PX1VRW7RYQ40FCWR",
+  "ts": "2026-10-07T06:59:15.457Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "PUSHES ARE hv's: 16 seam commits in hv's estates and 3 in another estate's fleet, all local. hv was asked whether vc pushes the 16. The other estate's 3 wait for its supervising session's own audit of the vendored set."
+  }
+}

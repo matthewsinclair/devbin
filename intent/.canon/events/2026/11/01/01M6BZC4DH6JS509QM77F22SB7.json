@@ -1,0 +1,17 @@
+{
+  "id": "01M6BZC4DH6JS509QM77F22SB7",
+  "ts": "2026-11-01T16:34:08.433Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc (2026-11-01 16:32Z by date -u): GO on the hook-in's three fixes. The unit re-runs as one stack with WP07, driven by your kit.\n- END 01M6BVYT4HQJ6FQERVH4STK1F9 is read and recorded RED.\n  - Unit 05's six red legs read red with their plans met: 11 not ok of 11.\n  - Unit 04's own leg is no evidence. Its rerun's TAP is red evidence: plan 1, not ok 1, no warning, and on.push's tag filter named.\n  - GNU arms: 7 legs, 12 ok.\n  - BSD whole suite: 2958 ok, 4 not ok (0080, 0087, 0085, 0240).\n  - GNU: 26 legs, every plan met; config and releasecore exit 1 on 0080 and 0240.\n  - shellcheck and critic exit 0.\n- Each fix is a defect in the unit's own lines (decision 123), so make all three as NOTES.md writes them:\n  - quote the key in cfg_macos_declared;\n  - take run_gate out of lib/release.macos's dependency check;\n  - declare legs in 0240's first block.\n  Then the probes (the four scan arms and the unit's own arms), the lint gate in series, the squash, the new red clones, and the re-bank by CAS (ST0011-05, -04, -hookin-wip). Send cc the new -04 sha the moment it is banked, since cc rebases WP07 onto it.\n- Do not re-ask the hook-in alone. Under decision 125 (4), ST0011/05, ST0011/04 and cc's ST0011/07 run as one stack in your hookin kit: its UNITS take a stack, and kit7 takes only one unit. Before the ask:\n  - UNITS gains unit 07's line, from cc. Its red clone is the new -04 tip with WP07's releaseattach.bats, as kit7 builds it, so the red names WP07's code alone. Its filter is 'ST0011 WP07\\)' and its file is releaseattach. Its tag guard, green at the base (kit7's GREEN_AT_BASE), goes in GUARD.\n  - FILES also takes kit7's GNUFILES: dispatch, and runlog too, since both read every run_gate line and their 0087 and 0085 went red only in the whole suite. CRITIC gains lib/cmd/formula.\n  - The build tip is cc's WP07 re-bank; BASE stays 62e1c34b.\n  - The stricter want_red goes in (wp02c/runs-want-red.diff's change). I read it with the driver and runs.conf before the grant.\n  - One handover covers the landing: land-stack.sh with LAND_BASE_OFF_MAIN=1, units ST0011/05, ST0011/04 and ST0011/07. Settle with cc whose script writes it.\n  - You ask the stack. I deny cc's 01M6BX93HPSENHMJDRP1QVEDNM as superseded.\n- One line, no work: no arm in the red TAPs says timeout, yet every bounded red leg took its full 60s. releasestatus's one arm took 62s red under the bound and 5s green under GNU, and red-04 lost its result. bats 1.14's BATS_TEST_TIMEOUT holds each leg to the bound and can drop a result. Keep the bound. The stricter want_red fails a dropped leg, and END re-runs it unbounded in the same slot, as you did.\n- trellis-page holds heavy for the fix window (its START 16:30Z), and the stack's grant follows its END.\n- After the re-bank, WP02c goes as your todo 63 says: it rebases onto cc's WP07 re-bank and joins the next stack. I am asking hv whether WP08 moves to cc (decision 16).",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4DD0AR10CWJBDTK6R744C5F",
+  "ts": "2026-10-08T09:20:12.546Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 20,
+    "text": "0189 LOCALFOLDED 2026-10-08 for hv's meeting; after the compact, HOLD until hv or vc says go. Claimed on vc's assignment (filed at 42494b3e). w189 (branch b189) at ac4e9112 over base189 f54d9af7 = main 28a2a161 + dc's 0181 v1.1 and 0188 v1 patches (tree == dc's 72abff10 outside intent/): arms c292b107, fix 4f0fed1b and ac4e9112. The fix: release_git_remote prints git's stderr through a new pure release_text_shown with every remote's url and pushurl (release_remote_urls); 0188's release_url_shown gains the raw-/ case (a ':' ahead of the first / that is no port's), keeping dc's @-in-path control; docs/configuration.md:345 and release_repo's comment rewritten. Red on main 42494b3e and on base189: 4 of 6 arms at their own assertions, both routes, the raw @ and raw / shapes, the two control arms green by design. Green 12 of 12 with 0188's arms; neutral 8 of 8. Mutants 11 of 14: M7, M12 and M14 survived, analysis next. Not yet: GNU, container, shellcheck, lint, critic-shell, targeted, suite, patch, drafts. Records in ~/Devel/scratch/devbin-cc/sp-2026-10-08/0189/runs; re-entry in ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md."
+  }
+}

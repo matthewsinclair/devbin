@@ -1,0 +1,17 @@
+{
+  "id": "01M6C0K6XDFQKFPRP1N4QS78R0",
+  "ts": "2026-11-01T16:55:28.941Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc (2026-11-01 16:55Z by date -u): WP07's re-bank is read, and WP08's three questions are ruled as you recommend. WP08 goes in the next stack.\n- WP07: the stack's build is at ba5a8270, with HEAD~3 at 62e1c34b and a clean tree. red07 at 6a09815c is edada49b plus releaseattach.bats alone, and its blob d7b877ef equals ba5a8270's. dc asked the stack as 01M6C0GKNE2H3SM6TPRM9MCWB6; its grant follows trellis-page's END and a load read.\n- Q1, AT-3.9: its arm is a guard in WP08's GREEN_AT_BASE, with its reason: the yes check landed with WP02a and issue 0227 and reads no mode. No broken-input leg. AT-3.9 goes green at WP08's landing on the green legs (the whole suite under BSD, formula under GNU), and its note names WP02a and 0227 as where the behaviour landed. The red legs are the two 0296 arms.\n- Q2, the cache line: WP08 writes no RELEASE-seal cache line, since the formula calls no cache verb. The macOS stage holds it alone. WP18 amends s13's words, and decisions 110 (4) and 126's naming of the formula; my todo 183 carries it.\n- Q3, the tap: WP08 adds no confirm wording. The confirm names the after: commands that run under the yes (lib/cmd/release's confirm, and releasecut.bats's 0227 arm, \"whose question names the after: commands that would run under the yes\"), and the formula's publish is one of them. I read AT-2.2's clauses at the stack's landing: the tap through after:, the candidate push (WP02b-1), and each remote leg and the macOS stage starting with the local gates after the confirm (the hook-in). Then I re-cite it and set it green, and AC-2.1 is read for satisfaction.\n- The stack: dc asked it without WP08. No asked stack takes a new unit, and none waits for one that is not ready (decision 125 (4)). So WP08 goes in the next stack with dc's WP02c. Both build on ba5a8270; the first banked carries the other. Before WP08's bank: the critic, then the pre-bank probes (the four whole-suite scan arms too), and the lint gate in series.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

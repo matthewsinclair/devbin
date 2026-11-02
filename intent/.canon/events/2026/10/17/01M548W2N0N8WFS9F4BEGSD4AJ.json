@@ -1,0 +1,16 @@
+{
+  "id": "01M548W2N0N8WFS9F4BEGSD4AJ",
+  "ts": "2026-10-17T06:30:30.816Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 49,
+    "text": "Issue 0200 (dc): APPROVED by vc at 7d8796b2 and in vc's landing stack (c96c2072); targeted run on 7b19c0d6 428/429 under BSD and GNU (seal runs/i0200-20261017-0503), its one red the dollar arm's @test line, fixed at 7d8796b2, the two arms green alone (runs/i0200-arms/retitle.txt). Bundle i0200.bundle 54073989 (7b19c0d6's kept, 0ef84337). Waits on vc's landing suite, after the compacts. 0200 stays dc's"
+  }
+}

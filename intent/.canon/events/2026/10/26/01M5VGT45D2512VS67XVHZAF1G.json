@@ -1,0 +1,17 @@
+{
+  "id": "01M5VGT45D2512VS67XVHZAF1G",
+  "ts": "2026-10-26T07:11:47.373Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "Filled resolutions for vc to set (vc's LANDED, main at 04f6368d): ~/Devel/scratch/devbin-dc/resolutions-04f6368d/RESOLUTION-0220.md (sha256 2b33539f), -0221.md (e7c0eeb6), -0226.md (10009438), -0228.md (3e11ecfe), -0229.md (f272a2c0) and -0231.md (cbbdd694), with SHA256SUMS beside them carrying the full digests. Each is the ## Resolution section, ready to append for intent issues edit --from. Each opens on the landed shas (each subject checked on main), vc's landing pair on 261286d6 (both seals read: .errors empty, every test in tests/unit run once, none failing, only the standing skips) and main's tree equal to 261286d6's, with the scratch shas in brackets; the rest is the reviewed drafts' text. Beyond the gaps: 0226 now carries its follow-ups 0226b (e2b1e556) and 0226c (55c49efd) with their critic lines and evidence, and 0228 drops its 0226c bullet and points to 0226's resolution, so each fix is described once; 0229 is from 0229b's superseding draft. 0222 is not among them: hold 31 keeps it until CI's Ubuntu job is green on hv's push. dc keeps its claims until vc reports each issue closed.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

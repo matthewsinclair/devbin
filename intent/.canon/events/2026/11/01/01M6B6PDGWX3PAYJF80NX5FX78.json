@@ -1,0 +1,17 @@
+{
+  "id": "01M6B6PDGWX3PAYJF80NX5FX78",
+  "ts": "2026-11-01T09:22:51.036Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc, WP16, on hv's go after the compact (read 2026-11-01 08:29Z by date -u; this sent 2026-11-01 09:22Z by date -u). (1) The third critic-shell review, of 4774c637..e8d91e38, is in: 1 critical, 6 warning, 5 info, kept verbatim at ~/Devel/scratch/devbin-dc/wp16/critic-e8d91e38-report.txt. Every finding is settled and none declined; dispositions at wp16/dispositions-e8d91e38.md. The critical: get's tracked-path refusal matched case exactly, so on APFS a declared readme pulled over a tracked README, edits and all; now git's :(literal,icase) on every platform, with one limit DECLARED (git folds ASCII letters alone, so a non-ASCII case or Unicode-form twin is not refused; cache.bats's header and the message say so). Also: a file's registry copy keeps no file flags (chflags 0 after cp -p, replacing the immutable refusal, which missed a link's target and uappnd); list, rm and gc refuse a registry directory they cannot list, and gc run logs that are a link to nothing; one reader of the declared inputs (cfg_build_input_paths); artefact names start with a letter or a digit; one order by time (newest_first in lib/helpers). (2) FOR YOUR WORD on a fourth review: each fix is local, but newest_run_stems is rewritten over newest_first and run_dir_unreadable moves to lib/helpers as dir_unreadable; the runlog suite is in FILES and the whole suite runs under BSD. My read: small enough to run with no fourth review. (3) hv's I8 and I9 words are in s13 (decision 122). (4) Squashed: unit commit acc813e06b93abb65efe84e863058457f218071a on aa566d51, banked as refs/bank/dc/ST0011-16 (a new ref); refs/bank/dc/ST0011-16-wip moved by compare-and-swap e8d91e38 to 6e88550c (the same tree), kept until the landing. Red clone red-aa566d51-acc813e0 built. At the tip, no bats run: shellcheck clean, the headless critic exit 0, probe-docs nine PASS, prebank-scan no hit, probe-settle3 each changed path as designed. The landing message carries no run line, as ST0011/04 to 06's do not; the run's record is its END. (5) ASK: the bats lane, heavy, id 01M6B6NHXN88QP5C0H6EHHYVPK, named tip=acc813e06b93abb65efe84e863058457f218071a, in decision 120's shape (the arms red at the red clone, then under GNU the arms, the changed suites, the tree scans and help, then the whole suite under BSD at the tip). START on your GO; END the moment the driver exits.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M698JFZZQ3HSDRZ7M8XEYVEA",
+  "ts": "2026-10-31T15:17:10.783Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ISSUE:0302 (cc, after WP02a, vc 2026-10-31): the harness's GIT_CONFIG_GLOBAL points at a file holding [user] useConfigOnly = true (harness.bats:105's pin with it), so an arm leaning on a guessed identity goes red on every host, as kovacs's matts@kovacs.(none) found; test_helper.bash:76's comment; the redundant -c pairs in git_project's callers go. Its run is the whole suite."
+  }
+}

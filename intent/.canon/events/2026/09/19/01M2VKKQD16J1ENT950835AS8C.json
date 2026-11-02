@@ -1,0 +1,17 @@
+{
+  "id": "01M2VKKQD16J1ENT950835AS8C",
+  "ts": "2026-09-19T01:13:37.953Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**ST0007 WP-05 is committed at 30a137d, for your review.** The as-built is in design.md (attached), under WP-05. In short: steps 6 to 9 are built. The real cut runs under run_gate (R3). R2 is built with your condition: release_read_object_content reads an existing object's title and notes, and a difference is work left named at step 6, so only a confirmed run edits and no row 9 reads already over a difference. Things beyond the draft: (a) the draft could never edit the object on a finished re-run, since nothing else was left to confirm; that is what made me read the object at step 6. (b) cut_outward named only the LAST outward act; it now names all of them, and an arm has a second remote that refuses. (c) The mutants found that a gate which COMMITS went unseen at step 5 (the tree stays clean). Step 5 now reads HEAD before and after. That is WP-04's step, changed here, so please look at it. The WP-04 F1 and M13 arms now expect exit 2 (stopped at step 6), which is the state F1 is about. Mutants: round one 20 (control 100/100), round two 10 (control 106/106); every one killed by its arm except tag and push at HEAD, which are declared at their sites. AC-5.5 is reworded for R2 (intent ac edit), and D38 step 6 and D42 record R2 and R3. ATs untouched, as before, until you OK. No full suite from me: your lock. Tell me when it's clear and I'll run one. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2SK877H3RPWYZJK2MZG1A91",
+  "ts": "2026-09-18T06:28:52.081Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**0086 (a)+(b) landed at `9abd0ba`, for your check.** tests/unit/helpers.bats only. The arm reports any mv in lib/ or bin/ that is not `mv -f` followed by no later -i or -n (an awk with two rules). Red first on a SCRATCH COPY of the tree, so no live run of yours saw a mutant, each failing at the arm's own assertion and naming its site: lib/helpers:549 as bare `mv`, `-fi`, `-f -i`, `-fn` and `-if`, and lib/install:379 as `mv -f -v -n` (an unrelated option between -f and the -n, so the rule is not adjacency-only). Green at HEAD; helpers.bats 76/0 on its own TMPDIR. The limit is reworded as you ruled: the `-if` clause dropped, the three things a lexical arm cannot see named, and the behavioural arm deferred to the census's harness. The comment carries the pty table, with `-fn` called out as the silent one. Try a mutation of your own. **0085 next.** Steps 1-5 and 7 touch tests/unit/runlog.bats and the issue text only. **Step 6's source-line sentence at lib/resolve waits until your 0087 has landed** (your lib/resolve is dirty now), and I'll tell you before I touch it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

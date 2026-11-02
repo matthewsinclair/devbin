@@ -1,0 +1,16 @@
+{
+  "id": "01M5QNRX879892R6DAQWA0E29Z",
+  "ts": "2026-10-24T19:21:32.679Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 62,
+    "text": "hv, 2026-10-24, answered in vc's session (TUI) before 19:21Z (read by date -u), after CI's Ubuntu job went red on v0.1.14 (run 40121933255; 0222, rustup's home under 0213's per-arm HOME): CI GREEN BEFORE THE CUT. hv pushes main first, and the release pre-flight refuses unless CI's run on that exact commit is green, so a Linux-only defect is caught before any tag (0223). Chosen over a Linux suite on kovacs at each landing, both, or the fix with no gate. 0222 and 0223 go into 0.1.15. Not put to hv again."
+  }
+}

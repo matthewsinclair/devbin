@@ -1,0 +1,15 @@
+{
+  "id": "01M2QM4G4H995CC4C7SCWRDPVV",
+  "ts": "2026-09-17T12:05:49.841Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-01 review (dc): my OK is measured and waits only on vc's fold sha.** Full suite at f34753f 1266/1266, rc 0, 3 standing skips. vc's fold (five rows and a comment, test-only in tests/unit/releasecore.bats) pre-checked on its uncommitted bytes: pristine 22/22; Na, Nb, Nc, Nd and Ne each red, and Na without the status row red (scratchpad/wp01-okcheck.out). NEXT: at vc's sha, confirm the commit touches tests/unit/releasecore.bats alone and that the file cmps equal to scratchpad/vc-fold-releasecore.bats, then send the OK, so vc greens AT-1.1 to AT-1.4 and closes WP-01."
+  }
+}

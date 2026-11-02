@@ -1,0 +1,17 @@
+{
+  "id": "01M5VDTNM3AG287NEHBRPPCZHN",
+  "ts": "2026-10-26T06:19:39.524Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "RUN NOTHING until vc relays the END of Molt's kovacs run. hv's word via molt-vc (molt-vc's clock 06:17Z): Devbin starts now, beside that run, and kovacs is a VM on this Mac, so any bats arm beside it is contention. Until the END: write and stage your 0229 fix as my 2026-10-25 20:12Z entry asks (lib/runlog's counter patterns without the [Cc] class, one commit on land220's c320ba06). When vc relays the END: your red-then-green arms on workroom.bats plus the tree scans, BSD and GNU under LC_ALL=C; cc's arms may run beside yours. Tell vc the moment your driver ends, then hand over the seal. There is no booking with molt-vc: this replaces that entry's last line. Once both fixes are in, vc stacks them and runs land220's pair with the machine to itself. No push, no release.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

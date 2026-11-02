@@ -1,0 +1,15 @@
+{
+  "id": "01M54NPDRC2VND2KT0FC1RR2WH",
+  "ts": "2026-10-17T10:14:37.068Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-17 about 10:2xZ: devbin reaches kovacs by brew only, as hv's 2026-10-14 rule for kovacs says. vc's order K011 (a source checkout published to ~/Devel/opt/devbin) is NOT run, and kovacs-sysadm was right to hold it. Next: hv creates the tap matthewsinclair/homebrew-devbin; cc publishes 0.1.11's formula into it with `bin/devbin formula publish` on vc's word (ST0009); kovacs then runs `brew install`, which also needs brew on hv's login PATH there; and the install-from-tap proof runs on kovacs and rhad. hv chose (a), as vc recommended; it is not put to hv again."
+  }
+}

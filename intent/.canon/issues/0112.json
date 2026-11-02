@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 112,
+  "slug": "seven-verbs-have-no-authored-help-and-release-33",
+  "title": "seven verbs have no authored help, and release -- 3305 lines and 27 functions -- is one of them",
+  "status": "closed",
+  "severity": "medium",
+  "created": "2026-09-22",
+  "closed": "2026-09-22",
+  "reporter": "Matthew Sinclair",
+  "body": "Seven of devbin's sixteen user-facing verbs have no `bin/.devbin/help/<cmd>.md` and fall through to the stub `lib/help` prints -- `No authored detail yet. Write it at .../help/<cmd>.md`.\n\n    docs  build  fmt  release  version  devbin  shell-init\n\nInline `--help` covers some of the gap and not evenly: version, fmt, docs and devbin print a single usage line; shell-init prints 22 lines; build prints its gating error (issue 0111). `release` prints 10 thin lines and has nothing else anywhere.\n\nRELEASE IS THE ONE THAT MATTERS AND IT IS NOT A NEAR MISS. The subsystem is 1252 lines in `lib/cmd/release`, 962 in `lib/release.steps` and 1091 in `lib/release.notes` -- 3305 lines and 27 `release_*` functions, built under ST0007, carrying an 11-step sequence with resume, a dry-run mode, a `--yes` path, `object: ci` handling, `after:` and a CI verdict. The authored long-form help for it is absent, and `docs/releasing.md` is 53 lines. The most complex thing devbin does is the thing a reader can learn least about from the tool itself.\n\nThis is a gap rather than a drift: nothing here is WRONG, and that is exactly why a mechanical audit does not surface it. An absent file makes no false claim. The help surface reports its own absence honestly at the stub, which is good behaviour and is not a substitute for the page.\n\nSCOPE IS NOT UNIFORM AND SHOULD NOT BE TREATED AS SEVEN EQUAL TASKS. version, fmt and docs are thin commands whose usage line may genuinely be sufficient -- for those the honest outcome may be to decide no page is owed rather than to write one. devbin and shell-init are framework-facing and small. release is a page of its own and probably the only one that blocks anything.\n\nFound by cc during the 2026-09-22 as-written-vs-as-built doc audit, by running `help <cmd>` for each verb in the catalogue and reading which answers were the stub.\n"
+}

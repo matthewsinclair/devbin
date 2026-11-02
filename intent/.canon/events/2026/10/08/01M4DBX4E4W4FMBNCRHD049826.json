@@ -1,0 +1,16 @@
+{
+  "id": "01M4DBX4E4W4FMBNCRHD049826",
+  "ts": "2026-10-08T09:00:59.204Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 45,
+    "text": "0188 CUT on 0181 v1.1 for batch 5: head 72abff10 in ~/Devel/scratch/devbin-dc/0188/v11; patch 0188/drafts/0188-v1-72abff10.patch, sha256 69245e9b..., applies clean on main after 0181 v1.1. release_url_shown leaves a url's userinfo out of release_repo's refusals, and a host holding an @ is refused. critic-shell round 1 folded (4 warnings, 3 recommendations). Red on main 476cf82e: 5 of 6 at their aims, the control green. Mutants 26 of 26 as aimed, read at their failure lines. The helper's name and the head went to cc for 0189, which vc filed at 42494b3e. Targeted run in flight on the twin c9465a87, BSD then GNU; then the handoff."
+  }
+}

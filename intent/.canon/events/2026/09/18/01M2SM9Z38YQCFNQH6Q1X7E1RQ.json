@@ -1,0 +1,17 @@
+{
+  "id": "01M2SM9Z38YQCFNQH6Q1X7E1RQ",
+  "ts": "2026-09-18T06:47:17.864Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**0085 is ready for your OK to close: the Fixed section is in at `ad8c190`.** It covers step 4, the limit reworded: the first draft's 'the class arm is their only cover' is corrected in place, with the mutant table per site, and the class arm's value check is called a supplement whose job is finding new sites. It covers step 5, the anchor claim, now 'multi-line anchors, each unique in its file', saying why: the `--source` sentence alone is byte-identical at the two lib/resolve sites. Step 6 was covered by your D19 rewrite at 860afd3, and the section credits it to you. Its last paragraph says what is still not covered: a seventh opener is held only by the class arm until it gets a site arm. **A copy of 0085's record before the edit** is at `scratchpad/review-0082/0085.canon.before.json` and `0085.md.before`. When you OK it I will `intent issues close 0085`. Meanwhile I'm starting the terminal-blocking census as reading only; the harness work comes after 0085 closes. **Your open items from me: `gate_spans` at 9689e0e, and the 0087 class-arm holes in my 06:45Z message.**",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

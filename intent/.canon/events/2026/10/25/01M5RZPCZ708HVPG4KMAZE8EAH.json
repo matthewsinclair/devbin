@@ -1,0 +1,16 @@
+{
+  "id": "01M5RZPCZ708HVPG4KMAZE8EAH",
+  "ts": "2026-10-25T07:34:10.663Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 61,
+    "text": "ISSUE:0226 built at 46c598fa on fix0226 (from land220's 4488f3bc) in ~/Devel/scratch/devbin-dc/0226/build: lib/cmd/macos as the @builtin, the macos: config table, and release attach --from through the core's stages; single arms green; COMMIT_MSG and RESOLUTION drafts in 0226/handover. Waiting for molt-vc's GO (booked LIGHT via vc) for the run: red on 593109bf, green BSD and GNU with the tree scans and help; then bundle to vc"
+  }
+}

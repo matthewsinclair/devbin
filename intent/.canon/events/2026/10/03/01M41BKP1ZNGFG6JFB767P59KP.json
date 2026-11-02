@@ -1,0 +1,15 @@
+{
+  "id": "01M41BKP1ZNGFG6JFB767P59KP",
+  "ts": "2026-10-03T17:04:56.385Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0164"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The machine's cargo config is judged three ways: fullcycle names no file, and check passes or fails it by visibility"
+  }
+}

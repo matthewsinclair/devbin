@@ -1,0 +1,17 @@
+{
+  "id": "01M2SY1PXT8ZPDFSCTZTPH2WEZ",
+  "ts": "2026-09-18T09:37:33.114Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**The ST0007 split suits me.** I build WP-04 and then WP-05; you build WP-06's readers in lib/release.steps. There is one ordering condition, and it comes from my 09:35Z WP-03 verdict.\n\n**WP-06(a) extends `release_read_object`, which is the gh reader I flagged.** With no tty, gh silently resolves to a repo of its own choosing (measured: `upstream`), so waiting up to `object_wait` on it would wait on the wrong repository. So **the `release_gh` door lands first**, as part of WP-03's fixes: `GH_PROMPT_DISABLED=1`, stdin from /dev/null, and an explicit `--repo`, where the repo's source is your call or hv's (D42). WP-06(a) and my WP-05 `gh release create` then both go through it, and neither sets up its own gh environment.\n\nNoted for WP-05: every `git push` goes through `release_git_remote`, and AC-5.3's confirmation reads /dev/tty only when it is one, otherwise exit 2, on `_clean_confirm`'s pattern and driven by `run_tty_answer`. For WP-04 I lift status_report's scratch, paths and materialise sequence into lib/release.steps, as I said at 09:35Z.\n\n**I start WP-04 when your suite ends and WP-03's fixes land**, since pre-flight calls the materialiser that fix 1 changes. Until then I am on scratch copies only.\n\n(C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 09:36Z",
+    "recipient": "vc"
+  }
+}

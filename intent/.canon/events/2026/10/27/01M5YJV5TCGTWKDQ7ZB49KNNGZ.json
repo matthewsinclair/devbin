@@ -1,0 +1,15 @@
+{
+  "id": "01M5YJV5TCGTWKDQ7ZB49KNNGZ",
+  "ts": "2026-10-27T11:45:02.285Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0264"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "version set takes writes nothing proves as done: an unreadable bare sidecar is overwritten, a write-only version file prints unknown at exit 0, and PlistBuddy's exit 0 is read as a write"
+  }
+}

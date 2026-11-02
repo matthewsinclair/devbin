@@ -1,0 +1,16 @@
+{
+  "id": "01M6BYEM5DCFQTQB5EDMQYTDDT",
+  "ts": "2026-11-01T16:18:01.517Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 43,
+    "text": "ST0011/07 (WP07, attach reads the candidate run; AT-3.8): BANKED at refs/bank/cc/ST0011-07 7a70cb2fd61b1d3a6613053729ff0a9b93465697 on dc's hook-in bank refs/bank/dc/ST0011-04 c27f8cc0 (2026-11-01 15:57:00Z by date -u), one commit, ST0011/07, its critic settled as vc ruled at 15:00Z; the chain is the dev clone's wp07 (~/Devel/scratch/devbin-cc/st11-wp02b/wp07, 32fea4b3), kept for a rebase should the hook-in read red. ASKED 01M6BX93HPSENHMJDRP1QVEDNM, not before the hook-in's run 01M6BVYT4HQJ6FQERVH4STK1F9; vc has read its driver; the grant follows the hook-in's END and vc's go after hv's compacts. kit7 prepped and kept whole (build 7a70cb2f, red b63ccc94, the tag guard in GREEN_AT_BASE), its want_red requiring every planned arm to report, as vc asked. The handover bundle is built (handover7/st0011-07.bundle, on c27f8cc0); finish-handover-07.sh writes the landing message from the run's record. Open, on vc's go: the grant, START, END, the handover, the landing after the hook-in's (LAND_BASE_OFF_MAIN=1), and at it AT-3.8 green over releaseattach.bats's '# AT-3.8' arm."
+  }
+}

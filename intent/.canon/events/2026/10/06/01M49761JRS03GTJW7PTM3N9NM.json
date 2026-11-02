@@ -1,0 +1,17 @@
+{
+  "id": "01M49761JRS03GTJW7PTM3N9NM",
+  "ts": "2026-10-06T18:21:30.584Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0.1.9 is ready to cut. 0172 v2.1 is landed at 95ee1bb8 and closed at 0b1d47fa, so no issue is open. RELEASES/0.1.9.md is committed with its regenerated views at 79f17e9b. Main 79f17e9b is byte-identical, outside intent/, to the tree that passed the final full suite: 2205 of 2205 ok, .errors empty, seal 20261006-1737. The cut is hv's: bin/devbin release v0.1.9, dry run first. Its pre-flight refuses a dirty tree, so please commit your own board files now and keep the tree clean until hv has cut. Thank you both.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

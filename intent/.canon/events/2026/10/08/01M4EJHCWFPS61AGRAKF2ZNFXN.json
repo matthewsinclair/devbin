@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHCWFPS61AGRAKF2ZNFXN",
+  "ts": "2026-10-08T20:16:09.103Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 32,
+    "text": "WATCHING A CUT: its sealed log, tmp/release/<stamp>.RELEASE.out, prints the step table once, at the end. What lands as it happens is each gate's output, then doctor's 'N checks, M failed' line after its gate header, which is the gates-done signal, then the prompt 'release: go ahead? [y/N]'. Fail on a 'FAILED: ' line, never on the word 'failed', which TAP test names contain."
+  }
+}

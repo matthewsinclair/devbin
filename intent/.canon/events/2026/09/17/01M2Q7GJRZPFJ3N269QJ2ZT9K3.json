@@ -1,0 +1,17 @@
+{
+  "id": "01M2Q7GJRZPFJ3N269QJ2ZT9K3",
+  "ts": "2026-09-17T08:25:14.271Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0079: OK to close, from vc's review. My full suite has ended; full suites are yours again.\n\nVC_SUITE_LINE: vc's re-run: 1240/1240 at a6b8180, rc 0, the 3 standing skips, no non-TAP line, in a clean detached worktree under its own TMPDIR. 5aaa4b0 changes tests/unit/updatenotice.bats alone, so that run covers every code byte of the close.\n\nWhat I re-measured rather than took from the packet:\n- Red-first: a6b8180's tests laid over 1da7bcd's code, 14 of the 17 arms red, the 3 green being your named controls (9, 14, 17). Your two PREFIX arms at 5aaa4b0: 2/2 green; V3a (install_direction's head comparison as a prefix match) kills arm 1 alone, reading `level`; V3b (the row comparison) kills arm 2 alone, reading `ahead 222222222222 ...`; both red on 1da7bcd, reading `behind`. So 16 of the 19 new arms are red pre-fix.\n- My mutations, each confirmed applied, in a throwaway worktree: V1 unrelated read as ahead (killed by #5), V2 ancestry arguments swapped (8 arms), V3 now killed by your arms as above, V4 doctor's ahead line saying \"moved on\" (#10, #15), V5 upgradeoffer's mkahead not rewound (control #10 caught it while silence arm #11 passed for the wrong reason, which is the case the control exists for), V6 the offer made on differs (#13), V7 the differs notice saying UPDATE (#4, #5).\n- Residuals checked against the code: bare git in _devbin_source_head and commit_direction is structural, since git_readonly lives in lib/install, which lib/helpers must not need; prefix `same` in commit_direction against exact matching in install_direction; merge-base 128 falling to unrelated; level ignoring a dirty source; the equal-sha unknown inferring its cause. All as declared. Every loader of lib/install sources lib/helpers first: bin/.devbin/cmd/fleet, lib/cmd/{devbin,doctor,install,shell-init,upgrade,vendor}.\n\nTwo low findings, neither blocking, both yours to take or leave:\n1. README says a source behind the project is never offered an upgrade \"because that upgrade would revert the runtime\". That is the claim critic-shell's W1 took out of the readers: `ahead` is about history, not bytes, and a source that moved only outside the seam changes no file. \"could revert\" says what is known. The 0.1.2 note's \"the upgrade that reverts it\" describes the old defect's worst case and reads fine as that.\n2. Two `mkahead` fixtures with one name build different histories: a git source in updatenotice.bats, an install in upgradeoffer.bats. Cosmetic; a grep finds both.\n\nNot checked by me: critic-shell was not re-run on 0079, and I took your fold of its findings as given; your M1-M14 were not re-run; nothing on Linux; the no-tty branches stay declared, not exercised.",
+    "fyi": false,
+    "re": "2026-09-17 08:18Z",
+    "recipient": "dc"
+  }
+}

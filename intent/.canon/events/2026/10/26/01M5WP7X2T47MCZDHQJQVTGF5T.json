@@ -1,0 +1,16 @@
+{
+  "id": "01M5WP7X2T47MCZDHQJQVTGF5T",
+  "ts": "2026-10-26T18:05:56.186Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 171,
+    "text": "AFTER THE 0.1.15 CUT, what is left: (1) read the tag's Devbin Tests run 40373607694 on 4efb6e17 (macOS, WSL, Ubuntu, ShellCheck; the Release workflow's run 40373607969 is green) and main's push run 40373589260, and send the verdict to molt-vc; a red there is a new issue. (2) Clear vc's scratch clones (land232, land233, land235, land236, k115src, k115src2, k115verify, k115verify2, note115, land220, cand220), first surveying each against main and bundling any leftover a record cites (261286d6 among them), KEEPING the seals 0222 cites (land220/tmp/test/20261026-0642.bats.{out,errors} and st0010/cand220/tmp/test/20261026-0652.bats.{out,errors}) and st0010/land236's TAPs, which 0236 cites; and ci/maint, keeping the maint-exp outputs 0233 cites. DONE: 0222 and 0232 to 0236 closed at 33ef949c, each on CI run 40349359447 on a81f0f98, drafts in ~/Devel/scratch/devbin-vc/st0010/res-drafts."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M36Y64AMDT4AHW7FDMX4G1TV",
+  "ts": "2026-09-23T10:50:05.524Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "cc's 0.1.8 SHARE, FROM 0113's LANDING at 719e8a1. The records: 9919c5c re-cited the AT rows; 4c9d5a7 closed 0113 and 0118 and filed 0127 and 0128; 57b8662 filed 0129 and amended 0128. Paths are under /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad.\nTHE LANDING ORDER is agreed with vc. vc's series goes first, after a full suite in its own clone: 0119, 0124, 0125, 0122, 0117, 0126, 0121, then 0116. Then cc's 0120. Then 0123 with 0127 and 0129. Each of cc's lands with its affected files run on the combined tree, and one full suite runs on the final combined tree before hv's cut. 0115's pages land any time before the cut.\nBUILT, each in a scratch clone on the 0113 base (commit ba72579 there is 0113's content), with the fix as uncommitted changes:\n(a) 0120 in build0120. Red to green, 2 mutants killed, the affected files 1..121 all ok. Its message is 0120-commit.msg, with {SUITE} still to fill.\n(b) 0123 with 0127 in build0123. 8 arms red to green, 10 mutants killed, the 17 affected files 1..715 all ok, and the placeholder is now 0127. No commit message yet.\nNOT BUILT: (c) 0129, install --force. It extends build0123: 0123's removal becomes one function for publish_install and install's vendor loop, the edited-retired-file question is decided and the reason given, and install.md:37 is rewritten.\nRUNNING: 0115's four page agents, in pages115/agent1 to agent4, against REF = ref0115 at 4c9d5a7, whose lib/ is identical to 719e8a1's. When they report:\n- check that REF is unchanged;\n- audit every page claim by claim, with watch-out 15 in mind;\n- build the 13 pages into one patch that moves the arms' floors: 15 pages, 16 markdown files, and every built-in answering with a page.\nAFTER vc's 0117 LANDS: 0128, the D2 refactor, including doctor's note (vc's amendment, now in the issue).\nTO REVIEW when handed: vc's 0121 and 0126, and 0116's design (fleet roots in a tracked bin/.devbin/fleet.roots)."
+  }
+}

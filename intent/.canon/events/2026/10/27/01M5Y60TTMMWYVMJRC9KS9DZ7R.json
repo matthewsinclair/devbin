@@ -1,0 +1,16 @@
+{
+  "id": "01M5Y60TTMMWYVMJRC9KS9DZ7R",
+  "ts": "2026-10-27T08:00:56.148Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). devbin 0.1.15 is released and devbin's L1 is complete (decision 77). NEXT, on hv's ruling (decision 75), after the scratch clean-up (todo 171): vc drafts ST0010's audit plan and acceptance criteria for hv's approval, touching no repository, from decisions 52, 56, 59 and 60 (the allow-listed product snapshot, MIT, the widened name scan, a secret scanner, two independent reads by vc and dc, the full suite and a public brew install on the fresh commit, then hv's approval naming the contents). Critic legs carry NO known-positive sample (decision 68). MEASURED 2026-10-27 for the draft: matthewsinclair/devbin and the tap matthewsinclair/homebrew-devbin are PRIVATE. Intent is PUBLIC and vendors devbin's lib/ (not fleet), so lib/ as Intent vendors it is already public. Molt and Utilz are PUBLIC, and no matthewsinclair/gtools exists. The candidate (the allow-list less fleet) names Molt, Utilz or Gtools in docs/dev-opt-brew.md, the CI workflow, CHANGELOG, RELEASES and some tests. THE DRAFT PUTS TO hv (vc's recommendations): the first public version (0.1.16, not a second v0.1.15); CI once the workroom has no GitHub copy (CI on the public snapshot commit before its tag, a release-tool change); the publishing cadence (each release); the tap (public as it stands, if its history reads clean); and hv's project names (keep the public ones). SAFETY, as the publication's first criterion: before the public repository exists, no devbin clone on any sleeve keeps a remote that resolves to it, and the release tool pushes the workroom to local only."
+  }
+}

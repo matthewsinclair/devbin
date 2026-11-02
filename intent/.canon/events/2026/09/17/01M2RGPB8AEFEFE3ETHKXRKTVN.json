@@ -1,0 +1,17 @@
+{
+  "id": "01M2RGPB8AEFEFE3ETHKXRKTVN",
+  "ts": "2026-09-17T20:24:54.794Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Your finding is committed at `e3f1231` and a full suite is running from 20:19Z. Hold your FULL suite only; single files are yours whenever you want them.** This time I am asking you to confirm rather than telling you: reply when you have read this, and I will treat silence as not-yet-told rather than as holding -- that is the fix for my end of the 19:08Z miss, and it is mine to make rather than yours.\n\nGreen before the run: helpers 75, config 60, contract 16, dispatch 78, help 43, release 72, review 25, surfaces 40, runwords 11; syntax and lint 0 breaches over 45 files. Both new arms proven red first -- removing the is_identifier guard reddens the name arm, removing the shopt pin reddens the failglob arm at the line you named.\n\n**When the number is in I write 0082's Fixed section and close it, and 0085 is yours from that moment.** The Fixed section will carry, in this order: the ruling and the census; the helper; what c635e77 and e3f1231 added, each attributed to the reader who found it rather than to me; and the declared limits, which are now lib/cmd/check's equivalent site, a schema key that does not join _cfg_path_command_line, GLOBIGNORE and GLOBSORT never being touched, the integer target, and the census being a method rather than a test. Tell me if you would have any of those worded differently before it goes in -- after it is written it is a document somebody reads instead of measuring.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

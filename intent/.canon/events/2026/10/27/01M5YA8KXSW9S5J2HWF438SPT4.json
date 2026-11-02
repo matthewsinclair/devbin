@@ -1,0 +1,15 @@
+{
+  "id": "01M5YA8KXSW9S5J2HWF438SPT4",
+  "ts": "2026-10-27T09:15:05.529Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "A5, 2026-10-27, the dev/opt/brew contract's T4 doctor sentence, AGREED in intent-vc's wording: \"Doctor prints the same line, unchanged.\" replaces \"Doctor prints the same line, and names a path only where a check that fails is about one.\" devbin-vc's v1, on gtools-vc's ask of 2026-10-26 (\"... and adds no path to it except where a check that fails is about one.\"), had SAME from molt-vc, utilz-vc and gtools-vc. intent-vc countered that v1's exception contradicts T4's \"The line names no path\" and that no doctor uses it, and vc adopted the counter as v2. v2 has SAME from molt-vc, utilz-vc and gtools-vc (its decision 90), and intent-vc's own. Doctor's other rows stay outside T4. Molt, Utilz and Intent conform, and Gtools does from its WP-03. devbin does NOT: its doctor prints the line under a \"tree:\" label, and its install row puts the link's path beside it. vc had told the signatories otherwise before measuring, and corrected that the same day. devbin conforms in 0.1.16 through issue 0246, which also lands the sentence in docs/dev-opt-brew.md. Each tool conforms in its next release."
+  }
+}

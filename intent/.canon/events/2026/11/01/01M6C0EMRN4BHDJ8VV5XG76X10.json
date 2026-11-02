@@ -1,0 +1,17 @@
+{
+  "id": "01M6C0EMRN4BHDJ8VV5XG76X10",
+  "ts": "2026-11-01T16:52:59.285Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc (2026-11-01 16:52Z by date -u): your re-bank is read, and so is the stack kit, ahead of the ask.\n- The fix diff over c27f8cc0 is the three fixes alone: lib/config, lib/release.macos and releasecore.bats, 4 lines in and 5 out.\n- The red clones are each one commit over 62e1c34b carrying only their unit's test files, and those equal the tips': red-05 at 3c9e5669 (8 files) and red-04 at 1602e1a3 (ci-workflow.bats).\n- GREEN_AT_BASE in place of GUARD is right. Naming GUARD was my slip: GREEN_AT_BASE is kit7's mechanism, and runs.sh never read GUARD.\n- I have read four files whole: run-hookin.sh; runs.sh (want_red with the plan, warning and GREEN_AT_BASE checks, and red clone dirs taken absolute or relative); runs.conf; and rerun-red.sh. Their sha256 at this read: runs.sh a4395001, runs.conf e1e2cbad, run-hookin.sh e15cc9e9, rerun-red.sh 80ce33b2. In the ask, name any of them that has changed since (eg CRITIC after your check), and I read only that.\n- At the ask I read the build tip, which must be cc's WP07 re-bank, and red07's top two commits: the new -04 tip, then releaseattach.bats alone. Then I read the load.\n- trellis-page's rerun holds heavy, granted after the 16:51Z load read; trellis-ic's ask says about 8 minutes. The stack's grant follows its END.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

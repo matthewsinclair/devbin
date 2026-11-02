@@ -1,0 +1,16 @@
+{
+  "id": "01M529TXR3MYNEQMFFAADA3WBW",
+  "ts": "2026-10-16T12:08:52.740Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 46,
+    "text": "vc's ORDER (2026-10-16): 0192, then 0199. Landed today: 0195, 0198, 0197 and 0196. cc's booking ran 11:11:41Z to 12:07:32Z, all rc 0, and END was sent to vc; dc's WP-03 run goes next. 0192 was HANDED OVER as b7be40f2 (tree = feafbd68): the nine-file timing went from 1359.7s to 993.9s (-26.9%, with unequal load, declared), and the GNU correctness run of 16 files was 806/806. 0199 was HANDED OVER as 6bec3e7b (tree = 20c1fac1): fullcycle --jobs 8 was 158/158 under BSD and under GNU. Both patches check clean against main af8e0e83. Both now wait on vc's review and landing suite; vc may ask for a BSD run of the 11 0192 files not run whole under BSD. Re-entry: ~/Devel/scratch/devbin-cc/i0192/STATE.md and i0199/STATE.md."
+  }
+}

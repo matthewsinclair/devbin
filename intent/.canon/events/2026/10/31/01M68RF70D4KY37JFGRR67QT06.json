@@ -1,0 +1,15 @@
+{
+  "id": "01M68RF70D4KY37JFGRR67QT06",
+  "ts": "2026-10-31T10:35:46.061Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31 10:34Z (in vc's session, then AFK): go after the fold; vc holds the pen (decision 88 stands). Order of play: WP03 (dc, 43142be2, ready) takes the bats lane first; WP01 runs after cc fixes its four reds and rebases onto WP03's landing; then WP04, WP05, WP06a in turn, stacked where their files are disjoint; units sharing files run one after another and the ready unit takes a free lane (decision 83). The desk hold is lifted; cc's WP01 run keeps its slot until its END."
+  }
+}

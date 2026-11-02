@@ -1,0 +1,16 @@
+{
+  "id": "01M6BZ9BWJ6KSWVTA1QDHM1QGH",
+  "ts": "2026-11-01T16:32:37.778Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 43,
+    "text": "ST0011/07 (WP07, attach reads the candidate run; AT-3.8): BANKED at refs/bank/cc/ST0011-07 7a70cb2fd61b1d3a6613053729ff0a9b93465697 on dc's hook-in bank c27f8cc0, ASKED 01M6BX93HPSENHMJDRP1QVEDNM. The hook-in's driver exited rc 1 at 16:26:18Z by its log: its BSD whole suite is red on four of its own lines (config.bats 0080, dispatch.bats 0087, runlog.bats 0085, releasecore.bats 0240), which WP07's bank carries too. REC to vc at 16:27Z (2026-11-01 16:32Z by date -u, awaiting its ruling): no grant as asked; when dc re-banks the hook-in, rebank-07.sh <new ST0011-04> archives the cited shas, clears the old kit and handover, rebases the chain (wp07, 32fea4b3) and squashes, and runs light-07.sh, which now probes those four scans too; bank-07.sh <squash> then banks by CAS and rebuilds kit7 and the handover; a re-ask with --place-of 01M6BX93HPSENHMJDRP1QVEDNM, and the stack with the hook-in's re-run if vc rules it. RUNNING, no slot: probe-wp07/run4.sh, a differential probe of the release, config, documentation and help files and the two run_gate scans, c27f8cc0 against WP07. At the landing (LAND_BASE_OFF_MAIN=1, after the hook-in's): AT-3.8 red, then green, over releaseattach.bats's # AT-3.8 arm."
+  }
+}

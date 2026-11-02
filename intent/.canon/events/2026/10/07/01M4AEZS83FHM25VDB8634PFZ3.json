@@ -1,0 +1,15 @@
+{
+  "id": "01M4AEZS83FHM25VDB8634PFZ3",
+  "ts": "2026-10-07T05:57:08.483Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0177 filed on vc's word (2026-10-07): fullcycle's INCOMPLETE summary names two of the three causes it fails a tree for, and a tree it can search but not list goes unnamed. Found reading 0.1.9's note for vc before the cut. dc builds it when vc assigns it, for the next release (hv's directive 13)."
+  }
+}

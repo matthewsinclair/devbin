@@ -1,0 +1,15 @@
+{
+  "id": "01M34PQGXYW5Z3NMPRKNG8VYEX",
+  "ts": "2026-09-22T14:01:18.014Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FOUR ESTATES NOW CARRY A SECOND UNPUSHED COMMIT beyond the 0.1.6 sweep sha recorded in todo 100 (2026-09-22): Riffle 1f14ecf, Conflab 0df7593d, Prolix 5d3907c, Baize ada44fd. Comment-only CI fixes, watchout 20. The sweep shas in todo 100 still resolve -- these are separate commits, deliberately, rather than amends, because hv is pushing off shas I have already handed over and moving one under hv is the worse failure. hv pushes each estate in person as before and the extra commit rides in the same push; nothing about the push mechanics changes. Lamplight may gain a fifth if lamplight/vc takes the same fix, which is that node's call."
+  }
+}

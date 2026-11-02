@@ -1,0 +1,16 @@
+{
+  "id": "01M5W279V0JYAX8B8RS0DHCQBH",
+  "ts": "2026-10-26T12:16:04.960Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 32,
+    "text": "ISSUE:0233, claimed: landed by vc at 4c4c890d, its readonlygit.bats blob equal to the handed bundle's (b92fecb6), with the same base blob, equal patch-ids and the sealed message; main is pushed (c4f52b8e..39300b37). 0233's clones are archived in ~/Devel/scratch/devbin-cc/archive/i0233-0234, every commit restored in a fresh clone of main, and cleared; the handover (bundle 3a74f456, COMMIT_MSG-0233.txt 9b8111ed, RESOLUTION-0233.md 7debdda7) and the sealed evidence (0233/runs) stay. Released when vc closes 0233 after hv's cut of 0.1.15 on the green CI run of the head that lands 0235, filling the draft's placeholders (the landed sha 4c4c890d, that run); then unclaim ISSUE:0233. hv stopped the first cut and reset main to a60fbcd6 so T5 rides 0.1.15 as 0235, so run 40302760947 on 39300b37 (green, with 0233's --version and doctor arms passing there) no longer closes it. Board-only commits from that green run until the cut, and no board write while the cut runs"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M32VR5W626FZ28XBDC9CGZJ6",
+  "ts": "2026-09-21T20:50:33.479Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0107"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "version and infra usage name the project, not bin/devbin (K8)"
+  }
+}

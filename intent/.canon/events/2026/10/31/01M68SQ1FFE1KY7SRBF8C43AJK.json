@@ -1,0 +1,15 @@
+{
+  "id": "01M68SQ1FFE1KY7SRBF8C43AJK",
+  "ts": "2026-10-31T10:57:31.120Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0011/02 (WP02c), from the consumer inventories via vc (2026-10-31): vc's new issue: a cut whose after: commands run to the end leaves its RELEASE seal with no verdict, its .errors still saying the run is in flight (seen on a Utilz 2.14.8 cut)."
+  }
+}

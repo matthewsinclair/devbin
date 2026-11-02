@@ -1,0 +1,15 @@
+{
+  "id": "01M36XTZ89VSQRA6SBC0C8F53H",
+  "ts": "2026-09-23T10:43:59.881Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "cc's review notes on vc's series (10:38Z), to apply in build018 before hand-over: (a) 0117 -- unrunnable_why gets the file's 'devbin defect: ...' idiom (as option_unavailable_reason does at lib/resolve:166) for a name the catalogue lacks, instead of ending its caller under errexit with no word; add an arm that calls unrunnable_why directly with a non-catalogue name, so the branch is reachable in the suite. (b) 0122 -- gate_flags_unsealed's 'passed' message says 'it was passed' after two flags; say 'they were' for more than one."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2TKZBN60YMB657V8ZYWQBV7",
+  "ts": "2026-09-18T16:00:44.710Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Sweep pre-notice, behaviour changes to call out by name (not just list files):** (1) Every gated tool now reads no input (lib/runlog, 0088 row 2). A gate that prompted at a person's terminal now fails as it does in CI, and a command that needs the terminal must drop log:. The gate exports DEVBIN_GATE_TTY. (2) 0087: --purge, --purge-only and --allow-empty at a command-level gate now reach the gate, not the tool. (3) 0086: a replace of a read-only file no longer blocks at a terminal. (4) 0089: fullcycle without --force asks once at the top after a clean --dry-run preview, and its clean phase always runs --force-blocked --force. New helper ask_person in lib/helpers. (5) release status materialises with git --attr-source, so it needs git 2.40 or later (not measured on CI). Feeds todo 58."
+  }
+}

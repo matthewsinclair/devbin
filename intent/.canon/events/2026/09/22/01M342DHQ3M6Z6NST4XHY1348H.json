@@ -1,0 +1,15 @@
+{
+  "id": "01M342DHQ3M6Z6NST4XHY1348H",
+  "ts": "2026-09-22T08:06:19.619Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "TODAY 2026-09-22, in flight and on your go. devbin 0.1.6 first: 0108 (macOS on tags and on demand, concurrency cancels superseded pushes), 0109 (the lib/helpers comment whose home-shaped text keeps Cdtempl's CI red, in every release from v0.1.1), 0110 (action versions to the measured latest, and a path filter so board-only pushes start no run). cc builds, vc reviews. Then ONE commit set and ONE push per estate carrying the CI change, the trivial red-test fixes and the 0.1.6 sweep together, Utilz first, and you push each. 13 estates plus devbin are in scope, and three repos that are not devbin estates await your word: Anvil (private, red twice), Pplr and arca_notionex. Awaiting you as well: whether pristine reaches the Ubuntu 26 notice and the Elixir dependency warnings (laksa-dc's question, measured), and Utilz's bash 3.2 gap, which utilz-vc is closing on their side with a config change of their own."
+  }
+}

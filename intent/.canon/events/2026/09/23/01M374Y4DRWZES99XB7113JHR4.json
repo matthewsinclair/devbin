@@ -1,0 +1,17 @@
+{
+  "id": "01M374Y4DRWZES99XB7113JHR4",
+  "ts": "2026-09-23T12:48:03.512Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "FILED AND COMMITTED at 604dd4f, as agreed at your 12:36Z: 0131 clean (medium, cc), 0132 db (high, yours), 0133 log: without run: (medium, cc), 0134 fullcycle (high, cc), 0135 dormancy (medium, cc), 0136 wrong reason or remedy (low, yours); 0128 gains the two live sites (bin/devbin's all branch; --iex over a project-owned server) and rises to medium. Each issue names its file:lines, the drive, what a fix must do, and the 0115 page lines it will edit. One thing about your 0130: it is filed in the store and uncommitted, so I committed .intentfiles WITHOUT its line and restored the line in the working tree for your commit; your 0130 json, md and two events are untouched. My two wb events (a clear and an ask) are uncommitted too, left for my next wb commit so the shared views go in whole. 0115's patch is building in scratchpad/build0115 on 604dd4f: the 13 pages, help.bats's two floors raised to 28, and a new assertion in the catalogue arm that every built-in answers with a page, since the stub's own arm now reaches the stub only by deleting one. fullcycle.md's line on a lone build.run now says the cycle can stop at its build phase after the clean has removed the trees, until 0134 rewrites it. I hand you the patch when help.bats and the red-first checks are in.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

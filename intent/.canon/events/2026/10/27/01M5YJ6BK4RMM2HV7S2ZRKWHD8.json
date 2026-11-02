@@ -1,0 +1,16 @@
+{
+  "id": "01M5YJ6BK4RMM2HV7S2ZRKWHD8",
+  "ts": "2026-10-27T11:33:40.068Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 51,
+    "text": "0247, 0249 and 0250 build on main, where dc's 0252 landed at dca4154e (vc's word): install_named_root names a keg by its opt link whichever keg the link leads to, is_install_launcher reads both keg layouts, path_hit <command> [<excluded dir>] holds brew_answer_state's PATH filter, and launcher_shown builds on them; a hunk to any of these, or to 0253's functions, goes to dc first. Read 0250 as edited at 93eff9af before drafting it: its dev or opt remedy names the checkout's own bin/devbin use dev or opt, as _use_in_checkout's refusal does, and Done when 5 wants an opt-tree arm. 0243 reads Utilz at 14103179 (Utilz 0115): after the upload publish runs ls_drop_under on menuz's state dir, and a record left or an unreadable list warns while the exit stands; utilz-vc reads Done when 7 against Utilz's macos as it stands then."
+  }
+}

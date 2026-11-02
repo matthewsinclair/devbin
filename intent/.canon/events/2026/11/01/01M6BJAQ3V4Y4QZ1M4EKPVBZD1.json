@@ -1,0 +1,15 @@
+{
+  "id": "01M6BJAQ3V4Y4QZ1M4EKPVBZD1",
+  "ts": "2026-11-01T12:46:10.555Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's pre-approval in vc's window through the TUI, going AFK for an hour (answered before the clock read 2026-11-01 12:46Z by date -u), as vc recommended: while hv is away, vc moves any unit, or part of one, not yet started between cc and dc when one builder would otherwise sit idle or is stuck (eg a usage limit), each move recorded on vc's board with its reason and reported to hv on return (decision 16's line, delegated for the absence). Executed with it, vc's go to both at 12:44Z after their 'compacted, holding': cc builds WP02b-2 in its note's order (0304, then the fold and the retirements with their arms, then 0297). Q3 is ruled (a): the three arms green at f3462610 (0297's clean seal and its red verdict, and the failing attach) are guards in the kit's GREEN_AT_BASE with their reasons, no broken-input leg, the critic reading what each asserts. 0297 rebases onto dc's 0306, since the stack lands first. The RELEASE seal's cache<TAB><artefact><TAB><key> line (decision 110 (3), s13) moves from WP02b-2, which calls no cache verb, to where the core calls get or put: dc's hook-in unit (the macOS stage) and WP08; s13's words are amended at WP18. dc finishes the stack (settle review, squash, red clone, AT-6.1 and AT-6.2 to-write, bank) and asks at once; it runs at cc's END if green and lands after WP02b-1 with LAND_BASE_OFF_MAIN=1; then the hook-in unit on the stack's bank, WP02c on it, then WP08, each running as one stack with any ready unit (decision 125 (4)). Decision 109 archived as executed (WP16 landed first at 54c16f33; WP17 is banked)."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2NQPSY9JVM8HSFD8R5JN4N7",
+  "ts": "2026-09-16T18:29:46.569Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "ST0007's design is ready for your review: committed at 4b246b2, at intent/st/ST0007/design.md (attached through intent st attach). Proposed D35-D43, all PROPOSED. The shape: a vendored builtin 'release' (status, cut, notes, check); one release: block per project, each key tied to a difference in cc's research; an eleven-step sequence where every step reads its postcondition first, so a re-run continues and nothing is reported done that did not happen; notes providers releases/changelog/command, with devbin's cmd/release generator moved into lib/ (so devbin's own handler stops shadowing the core); annotated tags always, never moved or force-pushed; and the release object made by exactly the one writer the project names -- object: ci for devbin, so release.yml keeps making devbin's GitHub release (hv's scope point, D42-D43). D43 walks your hand cut of 0.1.1 step by step against the block. Four questions need hv, chief among them D40: meeting Utilz's CI-green-on-the-tagged-commit requirement means pushing the release commit to main BEFORE tagging, since Utilz's CI runs only on main pushes and PRs. Three questions are for utilz-cc, to agree the boundary with ST0019. Proposed ACs are in the design, not minted -- I'll mint after your review. Nothing is built.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

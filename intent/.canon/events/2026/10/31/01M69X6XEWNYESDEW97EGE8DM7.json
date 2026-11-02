@@ -1,0 +1,16 @@
+{
+  "id": "01M69X6XEWNYESDEW97EGE8DM7",
+  "ts": "2026-10-31T21:17:51.452Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 87,
+    "text": "ST0011 fix phase, HARD CLOSED for the day on hv's order (2026-10-31 21:11Z in vc's window, decision 118; every lane held: bats 01M69WVYS0Y0BA3CDER9FMK4BW, cargo 01M69WVYT73JZRXPJXF8Z96WKN, heavy 01M69WVYV8SE050K4JGDWVFMN0, launchsvc 01M69WVYWB87GRBVYVQBG5AFR8, light 01M69WVYXET4795HB4TFVJ9PKJ; vc holds the pen, decision 103). ON MAIN: WP01 bc744227 (done), WP04 80052f26 (WIP until the trigger removal), WP03 (76a0fba6 and ebc38b18; WIP until WP02c turns AT-3.15 green), the dc stack (WP06b 314f3c78, WP05 7333cae0; WIP until the hook-ins), issue 0300 at 25bebe8b (closes on kovacs's green), WP02a bd13167f; the code tip is ebc38b18. SUITES at 7333cae0: green on rhadamanth; kovacs K0117 green but for 0300 at the pin. GATE: intent ac status ST0011 reads BLOCKED until every AT row's bats file carries its '# AT-x.y' line over an arm (todo 189; Intent issue 0670 for the check's false pass; no bare marker lines). BANKED, no bats run yet: cc's WP02b-1 at refs/bank/cc/ST0011-02b 5d84a12b (14 WIP commits on a2dde479; the critic's 3 critical, 9 warnings and 20 notes settled in code, the process-group fix for the criticals, verified by a bash probe and the commit gate only; left in order: the docs re-pad, a dev check of the six release suites, the AT lines over arms with AT-2.2 staying red, the dispositions to vc, the squash with the prebank scan and the re-bank, the unit's run with START and END, vc's landing by the checklist in vc's scratch; BANK.md); dc's WP16 at refs/bank/dc/ST0011-16-wip 4774c637 (all 22 critic findings settled, the key held to 64 hex, the CPU architecture in the key per decision 115, 26 arms, AT-3.1 and AT-3.4 lines in; the critic review of the fix delta re-runs first, then the run after WP02b-1 lands, decision 83) and WP17 f431ae57 (rebases onto WP16). Issue 0306 (write_errors_file's seal window, high) filed by cc; a slot before the cut if a lane has room. LANES (decision 117): cc keeps WP02b-1, WP02b-2, WP02c and WP07; after WP16 and WP17 dc takes the hook-in unit (WP04's trigger removal, the WP05 and WP06 hook-ins; AT-3.3, AT-3.6; dc hold 36) and WP08 (AT-3.9). RULINGS today 100 to 118 on vc's board (intent wb show vc). NEXT on hv's go: unhold the lanes; cc's six steps and vc's landing; dc's WP16 run and landing, WP17, then the hook-ins and WP08; WP02b-2; WP02c; WP07; both full suites (0300 closes on kovacs's green; k0118 by prep-korder at the landed head); WP09 at 0.1.19 on decision 102's preconditions, hv's explicit word for the cut, the first measured release; the sweep per sweep-plan.md; WP10 to WP14; WP15; WP18 last. ESTATES closed and released on decision 118: Gtools ST0021/01's landing approved by hv (gtools-vc decision 102); Intent ST0090's AC-02.4 awaits hv's look (todo 187); Laksa's S2 pushes have hv's Go once READY and verified; Utilz and Conflab wait for the sweep."
+  }
+}

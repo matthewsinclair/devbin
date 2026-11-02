@@ -1,0 +1,15 @@
+{
+  "id": "01M6BHJ4MXJSNGZ0NVCQ6VMFZY",
+  "ts": "2026-11-01T12:32:45.213Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "The hook-in unit (decision 117): every lib/cmd/release line of WP05 and WP06 (the leg hook-ins, turning AT-3.3 and AT-3.6 green, and AT-2.7 with them) and WP04's last piece, the tag trigger's removal. Released from hold 36 by vc's speed ruling 3 (hv's word, relayed by vc, read by 2026-11-01 12:32Z by date -u): it is built ahead on cc's bank tip, where leg_start and leg_read are defined (refs/bank/cc/ST0011-02b f3462610), not on its landing. The agreed shape is in archived hold 36: the release.legs source line, the legs.*) and macos) dispatch, and LEG_ROOT, LEG_PROJECT, LEG_SHA and LEG_REF. After the 0306+WP17 stack, before WP02c."
+  }
+}

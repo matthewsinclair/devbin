@@ -1,0 +1,15 @@
+{
+  "id": "01M642CAESFV0BEJ03TEPJ1CWM",
+  "ts": "2026-10-29T14:52:44.890Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0292"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "shipped comments cite a directive, contract amendments and fleet, which a public reader cannot look up; and a workroom arm refuses those shapes"
+  }
+}

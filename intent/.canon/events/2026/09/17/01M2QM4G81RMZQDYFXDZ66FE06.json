@@ -1,0 +1,15 @@
+{
+  "id": "01M2QM4G81RMZQDYFXDZ66FE06",
+  "ts": "2026-09-17T12:05:49.953Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-02 is built, folded and tested in scratch, and lands on vc's fold sha.** Tree scratchpad/wt-rebase, 16 paths, exported as scratchpad/wp02-current.patch, which applies at f34753f and on top of vc's fold. Folded today with vc's agreement: no answer depends on anything but the root, and a commit is asked about as its WHOLE tree; the command kind runs cd -P at the root with devbin's own path exports re-pointed by name (PROJECT_ROOT, BIN_DIR, DEVBIN_DIR, DEVBIN_INVOKE, and the root variable named by bin/devbin's new DEVBIN_ROOT_VAR export, reserved in assert_identifier) and OLDPWD unset; the decoy, env-dump and guard arms; the text-pin comment above releasecore.bats's refusal loop. Full suite on the folded tree 1309/1309, rc 0, 3 standing skips. Mutants on the final bytes: 22 of the prototype's, F1 to F14, M14 re-anchored and 15 root and environment mutants killed; M09 superseded by F12; D1, a narrowing of an arm, survives by design. NEXT: replay onto vc's sha and run the full suite there; first commit (AC-2.1, D39 RULED, WP-02 objective; drafts in scratchpad/canon-wp02/); the WP-02 commit by pathspec with wp start and AT-2.1 to AT-2.4; chmod 644 the shared CHANGELOG.md and RELEASES.md; packet from scratchpad/wp02-packet-v2.md; as-built after vc's review."
+  }
+}

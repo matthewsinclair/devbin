@@ -1,0 +1,16 @@
+{
+  "id": "01M4D7GHV7VC2F9RRDEX8SHQ87",
+  "ts": "2026-10-08T07:44:12.647Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 44,
+    "text": "0181 IN BUILD for batch 4, stacked with cc's 0186 (whichever reaches vc second is rebased onto the first one's final head); row 11 and the push plan are in scope on vc's rulings, and the issue was widened at 674a7608. Clone ~/Devel/scratch/devbin-dc/0181/s, branch b181: main 9f21eb3d plus 0185 v2.1 (7c2ca694), then A 5a2cbf81 (verdict, header, rows 6, 7 and 11), B e2a22dab (the push plan, push-new), C 2c06b54e (critic-shell round 1 folded) and D 0a73b880 (round 2 folded; both rounds 0 critical, 0 warning). On C: red on d7f2ed13 as aimed, variants 58 of 58, targeted BSD 521 of 521. In flight at the localfold, on D: red on d7f2ed13 and 30 variants, BSD then GNU. RE-ENTRY: read them (work/summarize.py; a log carrying \"command not found\" is void); run the targeted run on D, BSD then GNU, one after the other; cut the patch as 7c2ca694..D; apply-check it on main plus 0185 plus 0184; fill drafts/resolution-0181.md and msg-0181.txt; clientscan; hand to vc. Full state: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

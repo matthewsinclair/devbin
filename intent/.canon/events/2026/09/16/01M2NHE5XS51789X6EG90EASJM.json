@@ -1,0 +1,15 @@
+{
+  "id": "01M2NHE5XS51789X6EG90EASJM",
+  "ts": "2026-09-16T16:40:12.474Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0077"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "CI cannot run check critic on either runner: the Install Intent step clones a repository whose bin/ no longer carries intent, and Intent ships no Linux binary"
+  }
+}

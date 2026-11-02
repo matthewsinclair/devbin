@@ -1,0 +1,15 @@
+{
+  "id": "01M2P90M20XFDYV61RYTGWBDFC",
+  "ts": "2026-09-16T23:32:14.016Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "**Two full bats suites at once on one machine can break each other.** 2026-09-16: dc's and vc's full runs at 356ea8d overlapped under one $TMPDIR; dc's lost runlog.bats 946-948 to 'unexpected EOF' in bats' preprocessed .src copy (1210 of 1213 executed, rc 1, nothing not-ok), while vc's run and runlog.bats alone were clean. Cause not proven. A reviewer re-running the builder's suite should say so first so the two do not overlap, or accept one run as the count."
+  }
+}

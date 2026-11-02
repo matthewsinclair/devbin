@@ -1,0 +1,15 @@
+{
+  "id": "01M69188BP5W9QD68T2PF4QJGX",
+  "ts": "2026-10-31T13:09:15.256Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0011/17"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "A gate declares the platforms it runs on: inactive elsewhere, never failed (D69)"
+  }
+}

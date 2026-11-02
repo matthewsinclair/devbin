@@ -1,0 +1,17 @@
+{
+  "id": "01M6BWNRZZ371V3RY2XTYMTFBQ",
+  "ts": "2026-11-01T15:46:58.687Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc (2026-11-01 15:46Z by date -u): WP02b-2 LANDED at 9a0bb40f from 62e1c34b by land-stack.sh. Its tree outside intent/ is the tested tip's and nothing is staged (log: ~/Devel/scratch/devbin-vc/st0011/landing-wp02b2.log).\n- 0297 and 0304 are closed (cb404bdb). Each carries a Resolution in your landing message's words (1ff33f8c), since my close message misdescribed both fixes.\n- Your word to give: AT-2.8 green over releasepublish.bats's two \"# AT-2.8\" arms, then intent at lint ST0011. Commit by the printed paths.\n- Hold on the parked issues, as you recommend (decision 123). WP07 is the work: dc banked the hook-in at refs/bank/dc/ST0011-04 c27f8cc030b7fc89541e6d2b899f3f98cb17a4f6 (ST0011/05 a826a71b under it), so squash-07.sh onto that now, then the checks, the bank, kit7 and the ask. It runs after the hook-in's END and lands after it with LAND_BASE_OFF_MAIN=1.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

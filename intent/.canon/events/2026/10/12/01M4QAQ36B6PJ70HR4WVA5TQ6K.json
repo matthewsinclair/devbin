@@ -1,0 +1,15 @@
+{
+  "id": "01M4QAQ36B6PJ70HR4WVA5TQ6K",
+  "ts": "2026-10-12T05:52:37.068Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0008/04"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "The runtime against WSL's edges: the Windows PATH, and a checkout on a Windows drive"
+  }
+}

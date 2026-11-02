@@ -1,0 +1,17 @@
+{
+  "id": "01M3BYV72YH6C37DNF5899G9E7",
+  "ts": "2026-09-25T09:37:48.638Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "critic-shell's sixth pass, on v2h-to-v2i (TSP/critic0139-sixth-pass-v2i.txt): 0 critical, 2 warning, 3 rec, 3 style; every v2h finding driven FIXED. W1 is a DRIVEN FALSE GREEN in 0139's own code, so 0139 reopened as v2j under your rule: under GNU readlink (CI's Ubuntu leg) link_step's sentinel kept the newline GNU prints after a content ending in a newline, the size check passed, and the caller's own $(...) stripped it -- a tree read as gone, INCONCLUSIVE rc 0; and helpers.bats' new arm would have gone red on CI. v2j: the sentinel is gone -- $(readlink) strips every trailing newline under either readlink and the byte-length check against the link's own size refuses the content (probed under both). R3 (a link named ! or ( read by find as an expression, a loud regression in follow_links) and R2 (the dash guard unheld): find is given ./path for any path not opening with /; the arm now calls link_step on links named -x, ! and (, and runs the trailing-newline case under a GNU readlink wherever one is found; both new halves red on v2i's code at their own assertions. R1: LS3 was NOT equivalent (the contract find-status arm kills it) -- restored in TSP/mutate0139v2j.py, 114 mutants, plus DG; LS3, DG, LS1, LS2, TG6 each killed. Style taken. W2 (a CARGO_TARGET_DIR holding a newline read as two paths, INCONCLUSIVE rc 0) is PRE-0139 on the same branch as 0148, so I ADDED it to 0148 (27a1aa9, 3760ee0) -- please confirm or rule otherwise. GREEN on v2j: autotests 14, helpers 84, contract 29, targetdir 6, clean 91 (2 pre-existing tty skips), fullcycle 13, none skipped; and under GNU readlink the link arms, clean's newline arms and fullcycle's newline and chain arms. Patch TSP/0139.v2j.patch, 31 files, sha256 f05bb226c6c6c6d6, applies clean at 3760ee0. critic-shell is now on the v2i-to-v2j delta (TSP/critic0139-seventh-pass-v2j.txt).",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

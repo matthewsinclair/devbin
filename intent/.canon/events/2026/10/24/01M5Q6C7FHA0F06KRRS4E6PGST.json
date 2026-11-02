@@ -1,0 +1,15 @@
+{
+  "id": "01M5Q6C7FHA0F06KRRS4E6PGST",
+  "ts": "2026-10-24T14:52:28.529Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ISSUE:0219 (the extraction-grammar count in comments): build as commit 2 on 65a91012 (main 19d15680) in ~/Devel/scratch/devbin-dc/0216/f0216, comments only, at updatenotice.bats:114, lib/runlog:57, :454, :494 and :1149 (never :1441, which is 0209's), lib/helpers:4410 and :4411, and runlog.bats:893. After molt-vc reopens the desk: run updatenotice.bats and runlog.bats, plus the six tree scans and help, under BSD and then GNU. Then hand vc one bundle with both commits (the 0216 guard fix and 0219), its seals, COMMIT_MSG and RESOLUTION drafts. No push, no release"
+  }
+}

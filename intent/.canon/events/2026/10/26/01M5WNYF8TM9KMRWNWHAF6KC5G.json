@@ -1,0 +1,16 @@
+{
+  "id": "01M5WNYF8TM9KMRWNWHAF6KC5G",
+  "ts": "2026-10-26T18:00:47.130Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 33,
+    "text": "ISSUE:0234, claimed: landed by vc at bc9d80c0; draft RESOLUTION-0234.md 8442db85 in the handover, sealed evidence in ~/Devel/scratch/devbin-cc/0234/runs with 0234/cargo2. Released when vc closes 0234 in its todo 171, filling the draft's placeholders with the landed sha bc9d80c0 and CI run 40349359447 on a81f0f98, the head v0.1.15 (4efb6e17, tag 098dc033) was cut from; then unclaim ISSUE:0234"
+  }
+}

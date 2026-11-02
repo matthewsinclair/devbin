@@ -1,0 +1,16 @@
+{
+  "id": "01M5VWN8GTBJDNWCJD4EMXEM9W",
+  "ts": "2026-10-26T10:38:50.906Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 0.1.15 is devbin's ONE next release (decision 63), carrying 0213 and 0220 to 0234. Main c4f52b8e's CI run 40291928610 went RED on readonlygit.bats's two gitproj arms (0233, decision 70), and K115 at c4f52b8e ended red on targetdir.bats:773 alone (0234, decision 71). 0233 (4c4c890d), 0234 (bc9d80c0) and the release note (39300b37) landed on a green landing run under BSD and GNU, and main was pushed c4f52b8e..39300b37 at 09:51Z. CI run 40302760947 on 39300b37 is GREEN (Test Summary: All required checks passed; both plans ran in full with no not-ok; 0233's two arms and 0234's arm ok; the skip set equal to c4f52b8e's run's), read from its jobs at 10:36Z, and ci-state from HEAD reads it green past board-only commits; K115 carries to it. NOW: 0.1.15 is ready for hv's cut, asked of hv via molt-vc as FOR hv (bin/devbin release v0.1.15, after its --dry-run), with todo 169's T5 gap named as deferred to the next release unless hv holds the cut. Only board commits until the cut, each committed at once so the tree stays clean (watchout 37). Then 0222, 0232, 0233 and 0234 close on that run, and the tag's run is read (todo 171). ST0010's public steps (decisions 52, 56, 59, 60) follow the cut. Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

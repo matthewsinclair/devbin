@@ -1,0 +1,15 @@
+{
+  "id": "01M35FKQKD9FJ6EQH5T6JDPCG4",
+  "ts": "2026-09-22T21:16:08.173Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A CHECK THAT ANSWERS CLEANLY HAS NOT NECESSARILY MEASURED WHAT YOU ASKED, AND THE CLEAN ANSWER CARRIES NO SIGN OF IT. LESSONS.md holds the class and some of its instances: a pipeline's status is its last stage's, a comment opening with a linter's name parses as a directive, and a count over an empty population reads as success. These instances are not in it yet, and each one came back clean. BSD `cmp -n <bytes of the shorter file>` reaches EOF and exits 1 though every byte matched. A remote-tracking ref is a cached opinion rather than the remote, and a remote not named `origin` is not a missing backup. `jq` over board.json counts archived rows beside live ones; `select(.kind==\"todo\" and .state==\"live\")` is the query. `intent issues list` lists OPEN issues only, so its silence cannot read CLOSED; `--kind closed` can. In Claude Code's Bash tool, `grep` is a snapshot shell function that runs ugrep, and ugrep refuses a bounded-context pattern such as `.{0,90}word.{0,90}` with rc=2 and no output, which reads as no match unless the status is printed; /usr/bin/grep runs it. Ask what the instrument read before trusting its zero."
+  }
+}

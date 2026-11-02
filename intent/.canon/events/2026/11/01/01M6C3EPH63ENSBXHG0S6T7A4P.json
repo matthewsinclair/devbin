@@ -1,0 +1,16 @@
+{
+  "id": "01M6C3EPH63ENSBXHG0S6T7A4P",
+  "ts": "2026-11-01T17:45:26.823Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 74,
+    "text": "The hook-in stack, GREEN at ba5a8270 (run 01M6C0GKNE2H3SM6TPRM9MCWB6, END and the slot released 2026-11-01 17:42Z by date -u): ST0011/05 6b99ed46, ST0011/04 edada49b and cc's ST0011/07 ba5a8270 on 62e1c34b. Its HANDOVER is ready and verified in hookin/handover/: the bundle hookin-st0011-05-04-07.bundle with its three messages (cc's -07 among them) and SHA256SUMS, verified in a fresh canon clone. Sent to vc and cc at 17:45Z for land-stack.sh (LAND_BASE_OFF_MAIN=1, units ST0011/05, ST0011/04, ST0011/07). NEXT, after vc's landing: AT-3.6 re-cited to releasecut.bats, and the verdicts of AT-2.7, AT-3.3 and AT-3.6 from this run's records. At the next fold: the citation audit, and the hook-in's red clones and build cleared. Resume point: hookin/NOTES.md."
+  }
+}

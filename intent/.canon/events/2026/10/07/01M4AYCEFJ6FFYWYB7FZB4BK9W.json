@@ -1,0 +1,16 @@
+{
+  "id": "01M4AYCEFJ6FFYWYB7FZB4BK9W",
+  "ts": "2026-10-07T10:26:12.082Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 147,
+    "text": "PUSHES ARE hv's: 16 seam commits in hv's estates and 3 in another estate's fleet, all local. hv was asked whether vc pushes the 16. The other estate's 3 wait for its supervising session's own audit of the vendored set. ALSO devbin main, once 0179, 0178 and 0180 land: its CI is 0180's Done when 4."
+  }
+}

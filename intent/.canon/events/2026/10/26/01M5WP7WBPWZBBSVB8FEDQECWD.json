@@ -1,0 +1,16 @@
+{
+  "id": "01M5WP7WBPWZBBSVB8FEDQECWD",
+  "ts": "2026-10-26T18:05:55.446Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). devbin 0.1.15 is RELEASED: hv cut it on 2026-10-26, release commit 4efb6e17, tag v0.1.15 (098dc033), pushed to local and upstream, release object made, formula published to the tap (23cf1ce2); sealed log tmp/release/20261026-1720.RELEASE.out, errors empty; gates check, test (both lanes) and doctor all passed. 0222 and 0232 to 0236 closed at 33ef949c on CI run 40349359447 on a81f0f98. NEXT, on hv's ruling (decision 75): vc drafts ST0010's audit plan and acceptance criteria for hv's approval, touching no repository, from decisions 52, 56, 59 and 60 (the allow-listed product snapshot, MIT, the widened name scan, a secret scanner, two independent reads by vc and dc, the full suite and a public brew install on the fresh commit, then hv's approval naming the contents). Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

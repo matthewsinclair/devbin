@@ -1,0 +1,15 @@
+{
+  "id": "01M5YB070DC4FHG8QTFBMH9BMZ",
+  "ts": "2026-10-27T09:27:58.734Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0256"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "README's Always offered table lists test and clean, which a fresh install does not offer"
+  }
+}

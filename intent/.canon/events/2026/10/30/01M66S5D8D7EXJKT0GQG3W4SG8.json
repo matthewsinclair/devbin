@@ -1,0 +1,16 @@
+{
+  "id": "01M66S5D8D7EXJKT0GQG3W4SG8",
+  "ts": "2026-10-30T16:09:24.493Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 34,
+    "text": "Repo setup, until hv's go (hv 2026-10-30): this checkout pushes to local and upstream; local push-only, keeping the old history; a fresh .git from upstream is fine. Open: a home for intent/ and the 12 other files upstream lacks; local's clashing main and v0.1.18. Plan: memory repo-model-open-20261029."
+  }
+}

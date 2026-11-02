@@ -1,0 +1,15 @@
+{
+  "id": "01M5YJV5MB4STT3Y0K9JCFVZFC",
+  "ts": "2026-10-27T11:45:02.093Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0263"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "version set rewrites every version line in a Cargo.toml, a dependency table's included, at exit 0, where read_version reads only the first (package.json's nested keys and mix.exs alike)"
+  }
+}

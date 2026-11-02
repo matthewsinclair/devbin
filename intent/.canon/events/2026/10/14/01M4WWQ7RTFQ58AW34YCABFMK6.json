@@ -1,0 +1,15 @@
+{
+  "id": "01M4WWQ7RTFQ58AW34YCABFMK6",
+  "ts": "2026-10-14T09:43:28.282Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0195 (high), on vc's word of 2026-10-14 on hv's: devbin has no Homebrew formula. Building it after 0193 and ahead of 0192: a formula shaped like Utilz's that fetches the release tag by git and runs bin/devbin install --prefix libexec; a tap named like Intent's and Utilz's, built and rehearsed locally until hv decides its visibility; a release step that writes the formula's tag and commit from git; projects finding the brew install by default at Homebrew's opt/devbin path, with doctor saying which install and why; a measured url form that works while the repo is private; proof on this Mac and on kovacs, booked through vc. Scratch under ~/Devel/scratch/devbin-cc/i0195."
+  }
+}

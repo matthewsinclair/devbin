@@ -1,0 +1,15 @@
+{
+  "id": "01M69AXY1XK3XS7S0YX5MVSHYT",
+  "ts": "2026-10-31T15:58:22.781Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 15:58Z (on cc's WP02b scope question, map in ~/Devel/scratch/devbin-cc/st11-wp02b/): the loop first. WP02b is the loop: every leg once in parallel under one wait loop at the release commit, the tag moved after every leg is green, release publish folded into the cut under the one yes, the candidate's pushable remote (nothing maps release.repo to one today), the retirements of today's tail (about seventy arms pin it) and todo 55's items; a design note comes to vc before any code. WP02c is the ci keys and the checker: ci.wait's default of 60m (D61), the ci keys, is_branch_name in lib/helpers for all three sites, the two call lines passing the stamp's paths to dc's reader, the bespoke-query rule (decision 105) and AC-6.3, once dc's WP03 remainder and WP17 land. Where decisions 104 and 105, todo 185 and intent/wip.md say WP02b for those checker items, read WP02c. WP04's last piece, the tag trigger's removal from Devbin's workflow, is dc's after WP02b lands, since the loop is what stops the cut relying on the tag."
+  }
+}

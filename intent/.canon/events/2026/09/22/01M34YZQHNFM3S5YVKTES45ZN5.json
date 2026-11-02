@@ -1,0 +1,15 @@
+{
+  "id": "01M34YZQHNFM3S5YVKTES45ZN5",
+  "ts": "2026-09-22T16:25:35.541Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's board has ONE writer at a time and vc holds that pen by standing arrangement. EXCEPTION IN FORCE 2026-09-22: cc holds it for the flense hv asked cc for directly, vc writes nothing to hv's board meanwhile, and every hv line for the flense -- vc's settled verdicts included -- goes on through cc. The pen returns to vc the moment the flense lands. Agreed by both nodes rather than assumed: a standing grant that blocks a specific live instruction is being held for its own sake, and which single node writes matters far less than that only one does."
+  }
+}

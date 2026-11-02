@@ -1,0 +1,16 @@
+{
+  "id": "01M4D7H2675YWV7PMG8SXSS86Z",
+  "ts": "2026-10-08T07:44:29.383Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 18,
+    "text": "0186 v1.1 READY BUT FOR cc's FULL SUITE, batch 4 (localfold 2026-10-08 for hv's compact; continue on the bounce). Head ed277e36 on w186/b186 over 0185 v2.1 (d51f1592): critic-shell's 2 warnings and 4 recommendations built, and vc's ruling: Done when 3's one exception, a check-ignore that fails over a tmp/ committed as a link out of the tree, held by an arm (issue amended at 674a7608). Red on d51f1592 11 of 14 (3 guards by design), green 14 of 14 under BSD, GNU and an Ubuntu 24.04 container, mutants 28 of 28, shellcheck clean, check lint 48/0 (seal 20261008-0636). Targeted 1235 of 1235, 06:56:49Z to 07:33:05Z. Patch patches/0186.v11.on-0185v21.patch (aefddb93), 18 paths: main + 0185 v2.1 + it == ed277e36 outside intent/. Drafts 0186-commit.v11.msg, 0186-resolution.v11.md, handoff-vc.0186.v11.md, clientscan 0. RUNNING at the fold: cc's full suite on ed277e36 (runs/suite186v11.meta). RE-ENTRY: an end line with rc 0, plan 1..2253, .errors empty; fill {MYSUITE} and {CLIENTSCAN}, rescan, copy the seal to seals/wsuite186v11/, send devbin-vc the handoff. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0186."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "01M32W66P2THDGCZWKTZNCHGQ1",
+  "ts": "2026-09-21T20:58:13.059Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0003/AC-1.9"
+  },
+  "payload": {
+    "text": "Every message names how the dispatcher is invoked, ${DEVBIN_INVOKE:-bin/devbin}, as every other built-in does, never the project's name or the literal devbin. The project's name named a command only while each estate had a launcher of that name; those launchers are retired, so a message carrying it tells the reader to type a command that does not exist (issue 0107, hv's ruling K8)."
+  }
+}

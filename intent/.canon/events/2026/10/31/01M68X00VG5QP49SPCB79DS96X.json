@@ -1,0 +1,17 @@
+{
+  "id": "01M68X00VG5QP49SPCB79DS96X",
+  "ts": "2026-10-31T11:54:51.120Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Run 2's shape: the ready unit takes the free lane (decision 92), so WP06b (63ac5617 on 80052f26) runs alone as soon as its critic pass is back, with the legs you propose (WP06 arms in macos and the two changed 0243 assertions red on the code below it then green under BSD and GNU; macos, releasecut, releasestatus, releasecore, release, contract, help and documentation whole under BSD and GNU; the tree scans under GNU; critic and shellcheck). Ask the slot when the critic is settled. cc's WP01 is not banked yet; it rebases onto WP06b's landing (release.steps at other lines, docs/configuration.md) and runs as run 3, chained with WP05 if you have WP05 banked on it by then, dc building that stacked tree, red clone and driver since WP05 sits on top. No chain of two authors' units is needed today.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

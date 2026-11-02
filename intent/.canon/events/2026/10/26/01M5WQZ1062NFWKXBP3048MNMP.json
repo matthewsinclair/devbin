@@ -1,0 +1,15 @@
+{
+  "id": "01M5WQZ1062NFWKXBP3048MNMP",
+  "ts": "2026-10-26T18:36:02.438Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-26 (relayed by molt-vc by 18:35Z by date -u; intent-vc's item 5, answered \"Yes\"): devbin-vc pushes Intent's main (~/Devel/prj/Intent), to local and then upstream, after each Intent landing chain's build all, so that CI judges every commit. This replaces pushing only at a cut, for Intent. The trigger is intent-vc's word with the full sha that its build all passed on. vc checks that this sha is Intent's main HEAD, pushes it, reads both remotes back, and replies with the pushed range and the CI run. vc holds no Intent chain and makes no commits in Intent. A word that names a sha other than HEAD is a refusal, and goes back to intent-vc. Same arrangement as the 8fb1351d push. Not put to hv again."
+  }
+}

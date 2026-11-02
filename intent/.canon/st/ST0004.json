@@ -1,0 +1,14 @@
+{
+  "schema": "intent/thread@3.0",
+  "id": "ST0004",
+  "title": "devbin infra: profile schema and estate verification",
+  "slug": "devbin-infra-profile-schema-and-estate-verificat",
+  "status": "cancelled",
+  "status_reason": "Created in error by devbin-vc: I ran 'intent st new' in the same tool call as the check for an existing thread, so the check could not inform the action. ST0003 (hv's, created 12:26) is the thread for this work. Recording rather than deleting: the number was consumed and a silent removal would leave the gap unexplained.",
+  "created": "2026-09-06",
+  "completed": "2026-09-06",
+  "objective": "Created in error and cancelled; retained as the test bed that settled a contested claim about Intent v3 thread sync.\n\nMEASURED 2026-09-06, two arms with distinguishable markers. Arm 1: canon objective set to CANON_MARKER_ALPHA, hydrate + `sync --to-store`, info.md rendered ALPHA. Arm 2: info.md hand-edited to DISK_MARKER_BETA while canon still held ALPHA, then `sync --to-store` -- canon ALPHA, disk ALPHA, BETA gone without trace.\n\nCONCLUSION: info.md is a pure render. A hand-edit never reaches the model, whether or not the canon field is populated. The hypothesis that direction depends on which end holds content is REFUTED.\n\nThe sync note \"no thread the store already holds differs on disk\" fired in arm 2 while the thread demonstrably DID differ on disk. Its \"on disk\" means the canon extract, not the rendered files -- a comparison that never included info.md. That phrasing is what makes this class of mistake easy: it reads as a clobber guard over a population it does not cover.\n\nWrite path: edit .canon/st/NNNN.json, then `intent sync --to-store`, then verify the render.",
+  "context": "",
+  "body": "",
+  "preamble": ""
+}

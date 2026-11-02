@@ -1,0 +1,16 @@
+{
+  "id": "01M6C0A1BADYQ2052PSJHVS0BV",
+  "ts": "2026-11-01T16:50:28.330Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 63,
+    "text": "ST0011/02c, WP02c (the ci keys and the checker), built to vc's 14:42Z rulings, critic r1 settled, BANKED as WIP at refs/bank/dc/ST0011-02c-wip 90891657 on the old hook-in bank c27f8cc0. Its kit carries the stricter want_red. NEXT, in vc's order of 2026-11-01 16:38Z (after the hook-in's re-bank and the hook-in stack's ask): rebase onto cc's WP07 re-bank, then the probes (its arms, and the whole suite's scan arms 0080, 0087, 0085 and 0240), the lint gate, critic r2 on the settle, AT-6.3's row minted to-write, the unit id from vc, the squash, the red clone, the bank and the ask. WP02c and cc's WP08 (now cc's, hv's word through vc) both build on WP07's bank: the first banked carries the other, and the two run as one stack once both are ready (decision 125 (4)). Resume point: ~/Devel/scratch/devbin-dc/wp02c/NOTES.md."
+  }
+}

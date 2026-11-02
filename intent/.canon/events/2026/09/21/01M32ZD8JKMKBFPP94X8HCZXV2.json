@@ -1,0 +1,15 @@
+{
+  "id": "01M32ZD8JKMKBFPP94X8HCZXV2",
+  "ts": "2026-09-21T21:54:30.099Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "TOMORROW 2026-09-22, the fleet CI pass (hv decision 32). Each estate in its own tree, committed there, and hv pushes. Cancel superseded runs on push (cancel-in-progress true, a group keyed on github.ref): devbin (0108), Conflab, Intent, Laksa, Lamplight, Prolix, Utilz, Molt, Riffle, arca_cli, arca_config, Baize. Conflab, Laksa, Lamplight, Prolix, arca_cli and Baize have a block that cancels pull-request runs only. Gtools and Cdtempl already cancel on push. macOS on v* tags plus workflow_dispatch only: devbin (0108), Gtools (private, geodica budget, 45m timeout), Intent (tests.yml and the rust.yml matrix), Utilz, Molt, Cdtempl. Conflab is already compliant (tags only, behind MACOS_RELEASE_CI). Laksa, Lamplight and Prolix have no macOS. Re-scan first; do not trust this list. Tell each estate's own node where one is active. Also 0.1.5 is released and in no estate: its sweep, Utilz first, is on hv's go."
+  }
+}

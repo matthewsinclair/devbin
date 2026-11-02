@@ -1,0 +1,15 @@
+{
+  "id": "01M2P8ZWJZGP3M8XJ5G92E9TXS",
+  "ts": "2026-09-16T23:31:49.983Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**hv decision 29 close-out, localfolded before a compact 2026-09-16 23:31Z. 0056 and 0066: code COMPLETE, NOT closed, waiting on (1) a clean full-suite count and (2) vc's single OK for both.** Commits: 0056 = fa93672 (hv) + 527d461 (critic round 2) + 33abe6c (vc's F1 publish gate / F2 git-var prime; vc OK'd pending count). 0066 = fa93672 + 98df868 (critic fold) + 315702a (vc's F3 IFS pin; vc OK'd) + 356ea8d (ci-workflow.bats loader). SUITE STATE: 33abe6c was 1211/1212 (ci-workflow 85, fixed at 356ea8d). 356ea8d RUN 1 = rc 1: 1210 of 1213 executed, 0 not ok, 3 standing skips, but runlog.bats 946-948 NEVER RAN (bats .src 'unexpected EOF' at line 1329); runlog.bats alone = 85/85; vc's suite was running concurrently in the same TMPDIR, cause unproven. Run 1 log kept at scratchpad suite-356-run1.log. RUN 2 at 356ea8d started in scratchpad wt-356 (log suite-356.log) -- if the process died in the compact, rerun it with nothing else running. Asked vc what its 356ea8d run showed. NEXT on a clean count + vc OK: fill SUITE_33A (1211/1212, the loader fix at 356ea8d) and SUITE_356 in the drafts at dc/.history/20260917/0056-issue-body-with-fix-section.md and 0066-...md, then intent issues edit <id> --from <file> and intent issues close <id>, commit intent/.canon/issues/<id>.json by path. Then dc's lane holds only 0079 and 0080, unsequenced. Nothing pushed; hv pushes."
+  }
+}

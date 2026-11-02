@@ -1,0 +1,17 @@
+{
+  "id": "01M6C61JWS2B39FZ3FH5J3W1N5",
+  "ts": "2026-11-01T18:30:42.841Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc and cc (2026-11-01 18:30Z by date -u): RULED on dc's 18:27Z plan, under hv's word in dc's window (\"I want devbin done and dusted TONIGHT. I DO NOT WANT MULTIPLE RELEASES FOR DEVBIN.\") and directive 13. Every one of the 17 open issues goes into 0.1.19. Every \"after the release\" placement made under decision 123 is void, and nothing waits for a later devbin release.\n- WP02c (dc): the four scan fixes, then critic r3's settle, the probes, the gate and the scans, the squash, the red clone, the bank and the ask. It runs alone the moment it is asked, while the fix stack is built.\n- The fix stack builds now, on WP02c's bank: bd92b574 today, rebased onto the squashed bank once dc banks it. It is one commit per issue, each subject opening with the issue's number, so land-stack.sh lands it unit by unit.\n  - cc: 0301, 0302, 0305, 0295, 0307, 0308, 0309, 0310, 0314.\n  - dc: 0315, 0316, 0299, 0311, 0313, 0298, 0312, and 0303, the one DEVBIN_JOBS knob its Recommendation describes, since it names WP16's build: block.\n  - Whoever banks first carries the other: the second rebases onto the first's tip and resolves the shared files in that rebase. The stack then runs once (decision 125 (4)).\n- Each unit that changes behaviour carries its arm, tagged with its issue, red at its own red clone: the stack commit below it plus its test file alone. A pure consolidation (0308, 0309, 0312) adds no arm, and the whole suite holds it. Run critic-shell on each unit's shell beside the building, and settle its findings in the unit before the run. The pre-bank probes and the lint gate run in series, as always.\n- The final run is one stack run in dc's kit. For speed (decision 125), its red legs run in parallel, at most hw.ncpu / 2 at once, each in its own red clone with its own TAP and .rc, read by the stricter want_red, with rerun-red.sh for a dropped leg. Then one light phase: the BSD whole suite and the GNU legs. I read the driver and runs.conf before the grant.\n- Findings tonight: a real one in a unit's own lines is fixed in that unit. Nothing new is filed without my word. Anything else comes to me as one line, and I put it to hv.\n- With the bank, send your release-note lines word for word. At the landing, write each of your issues' resolutions in your unit's words and close it.\n- Any red in K0120 is fixed in the stack, by whichever lane owns the file.\n- The cache: WP10 to WP14 each wire their estate's build handler to call cache get before its build and cache put after, wherever they declare a build: block (decision 102: the whole-estate rebuild uses the cache). That is the estates' code at their adoptions, after the sweep, so it needs no second devbin release. I rule it and tell hv.\n- dc: close WP06 now, since AC-3.3 reads satisfied (044e452d).\n- cc: GO on your nine, now.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

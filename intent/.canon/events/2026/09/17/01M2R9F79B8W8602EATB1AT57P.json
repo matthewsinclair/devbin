@@ -1,0 +1,15 @@
+{
+  "id": "01M2R9F79B8W8602EATB1AT57P",
+  "ts": "2026-09-17T18:18:41.323Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates from 0084's review and 0082's build (2026-09-17 evening), vc's call at a fold.** (ww) A control fixture that omits the population's real shape passes vacuously: vc's first census scanner anchored on `^` with no leading space, its control fixture had no indented line, the control said PASS, and the scan missed every indented command-position expansion, `$run \"$@\"` included. (xx) BSD awk has no `\\<`, so a matcher using it matches nothing on macOS and everything looks clean -- the second census missed `exec $run` for that reason alone. (yy) A prefix assignment to BASHOPTS or SHELLOPTS is refused in bash and accepted in zsh, so a measurement taken in this tool's zsh did not reproduce inside bats until it went through `env`; measure in the shell the code will run in. (zz) A format string used as DATA must go through `printf '%s\\n'`: a test stub wrote `printf \"printf [%s] *.md\\n\"` and the %s was eaten, so the arm compared against a string that never existed. (aaa) `return` inside a subshell in a function ends the subshell and the function carries on, measured; `exit` says the same thing and reads as what it does. (bbb) An inherited BASHOPTS or SHELLOPTS changes globbing in every bash devbin starts, while GLOBIGNORE and GLOBSORT arrive INERT -- and `local GLOBIGNORE` would activate the inherited value as the local left scope, so pinning it would be the bug."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M692712YV1NQV08C67RREXAG",
+  "ts": "2026-10-31T13:26:03.614Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0011/03 remainder after run 3 lands (vc, 2026-10-31 13:2xZ; WP03 reopened to WIP: AC-3.1's second half never landed, and 76a0fba6 records no deferral). In ci-state's file: a pure reader of a test workflow's push triggers answering whether candidate/ refs fire it, in the shape of cistate_push_ignores, its name and words agreed with cc before the bank (cc wires its two call lines, release check and the cut's pre-flight, in WP02b); the pre-flight's refusal of a declared or default release.ci.workflow the tree does not hold, naming the key (three consumers have no tests.yml); and the failed detail naming the failed jobs, or that none ran (Utilz's issue 0062 note; cistate_rank names only the run and the summary's conclusion today). First in dc's lane after run 3."
+  }
+}

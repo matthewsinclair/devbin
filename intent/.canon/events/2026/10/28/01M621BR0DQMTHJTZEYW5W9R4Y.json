@@ -1,0 +1,16 @@
+{
+  "id": "01M621BR0DQMTHJTZEYW5W9R4Y",
+  "ts": "2026-10-28T19:56:28.557Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 159,
+    "text": "When a Prodinfra session is up, tell it hv's 2026-10-15 ruling (`infra --profile` takes a path, no name form), then archive this."
+  }
+}

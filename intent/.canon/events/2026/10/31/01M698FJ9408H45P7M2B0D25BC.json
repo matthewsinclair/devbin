@@ -1,0 +1,16 @@
+{
+  "id": "01M698FJ9408H45P7M2B0D25BC",
+  "ts": "2026-10-31T15:15:34.820Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 38,
+    "text": "ISSUE:0300 as its own unit on main (vc decision 100): the cut's release commit (lib/cmd/release:1033) and tag find no identity in a git_project repository, the harness reading no global or system config, so git guesses one and a host without a domain refuses it; git_project now sets user.name and user.email in the project's config and cut_project's two lines go. BANKED at refs/bank/cc/0300 1b29205a4f4f00c88257d48d79fcd63c6fdd3ec6 on main 22d0536b, critic-reviewed (the fix reaches the code that failed; its header and message corrected; d5262b0e archived). ASKED of the desk: request 01M698EDPDVGEW7R9YC4357WB8 (bats lane), the clones ready in ~/Devel/scratch/devbin-cc/i0300/run: the arm with git told never to guess, red at main for git's own reason, green at the bank under BSD and GNU, then releasestatus under BSD and GNU, help and every tree scan. On vc's GO: start, run-both.sh, END at the driver's finish. Proposed to vc: follow-up issues (A) the fixture builders return their failures and (B) the harness stops git guessing an identity, both after WP02a."
+  }
+}

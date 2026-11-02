@@ -1,0 +1,15 @@
+{
+  "id": "01M39D6SNVCBV8P23V0KZE3GDS",
+  "ts": "2026-09-24T09:51:04.891Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "INTENT CUTS 3.2.1 TODAY (2026-09-24; intent-vc through vc, 09:49Z by their clock). Until the v3.2.1 tag exists: never touch Intent's tree, and never vendor devbin into Intent's bin/.devbin. From intent-vc's pre-build warning until the tag, hold every devbin landing, because this tree's commit gate runs through Intent's hooks and the build replaces the intent and intentd every estate runs. During the 3.2.0 cut a devbin commit landed in Intent mid-run, and the tag carried files its own tests never saw. Retire this when the tag exists."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4B9B53DVG44YXJHGWX7D2MF",
+  "ts": "2026-10-07T13:37:44.045Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "NEXT RELEASE (hv, 2026-10-07): close everything `intent outstanding` lists. TEN FILED, 0177 to 0186; SIX CLOSED: batch 1 (seal 20261007-0923) 0179 at 79a06fd4 and 0178 at ff238421, records 5cfb99ac; batch 2 (seal 20261007-1151) 0182 at 3d170d3f, 0177 at 2948439c and 0183 at 6888bf18, records 3ac94a41. OPEN: 0180, landed at b6a39287, closes when the Ubuntu leg of run 37626021387 (devbin main pushed at 7d1a3f4c, 13:07Z) reads green: read its JOBS with `gh run view 37626021387 --json jobs`, then fill its Resolution's closing line and close it. BATCH 3, IN BUILD at the wrap: 0185 v2.1 (cc; its targeted run and full suite on d51f1592 in flight, seal wsuite185/tmp/test/20261007-1250 under ~/Devel/scratch/devbin-cc/sp-2026-10-07/0185/); 0186 (cc, claimed, built on 0185); 0184 v2.1 (dc, at aed7af10, ready but for its container run, in flight at the wrap) and 0181 (dc, queued; it takes row 11 too, lib/cmd/release:1009, which names HEAD under a dry run as rows 6 and 7 do: vc agreed with dc, and widens the record at review). RE-ENTRY: take each handoff, review it (red on main first, mutants of vc's own), write batch3.json on batch2.json's model, run one full suite with run-suite.sh in a fresh clone of main plus the batch, then `landb.py batch3.json suite-batch3.json` and `recordsb.py ... --apply`, and commit the records by name; all of it is in ~/Devel/scratch/devbin-vc/0.1.10/, whose seals/ holds the two cited seals. THEN RELEASES/0.1.10.md from notes/0.1.10.md, each comparative read against 0.1.9's code (LESSONS, 62f09da1), then hv's dry run and cut; devbin_version ^0.1.1 admits 0.1.10."
+  }
+}

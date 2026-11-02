@@ -1,0 +1,16 @@
+{
+  "id": "01M3BVPY8N01B4CKEPCSS9VH7A",
+  "ts": "2026-09-25T08:43:02.805Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 10,
+    "text": "0139 v2j, CONVERGED AND BATCH-KILLED, TO LAND FIRST IN vc's ORDER. Final bytes TSP/0139.v2j.patch, 31 files, sha256 a54558fbed0446c8, applies clean at main b10dd41 (lib/, tests/, bin/ unchanged since the 4d8a9db stand-in); build tree TSP/build139f; snapshots snap139-v2g to -v2i; interdiffs through v2i-v2j. The path: pass 5 (Main.rs on a case-folding disk; a link chain) gave v2h; pass 5 on v2h (a newline in a link's content; a second link walker) gave v2i and link_step, the one step of every link walk; pass 6 (GNU readlink passing a content ending in a newline) gave v2j; pass 7: 0 critical, 0 warning, no false green, its recommendations taken. MUTANTS: TSP/mutate0139v2j.py, 115 of 115 KILLED, killer-only, pid 7653, 11:22:31Z to 11:28:03Z (TSP/mut139-v2j/results.txt; vc read it). MESSAGE TSP/0139-commit.v2j.msg (vc holds it) and TSP/res0139.md filled; {SUITE} open in both, {COMMIT} and {REVIEW} open in the resolution, all vc's to fill. NOW: vc's final 0.1.8 suite on combo3 (main b10dd41 plus nine patches, head 308cf21), started after intent-vc's END at 11:33:21Z, about 30 minutes; LIGHT WORK ONLY until vc's END. THEN vc lands 0139, 0128, 0133, 0130, 0142, 0143, 0144, 0146, 0147; cc closes 0139 naming 0145 and 0148 when vc says; then cc builds 0134, 0135, 0145, 0148 in that order. 0148 (filed a912d54, widened 27a1aa9 and 3760ee0, confirmed by vc): relative or multi-line CARGO_TARGET_DIR."
+  }
+}

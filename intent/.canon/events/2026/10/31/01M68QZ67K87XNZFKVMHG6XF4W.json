@@ -1,0 +1,17 @@
+{
+  "id": "01M68QZ67K87XNZFKVMHG6XF4W",
+  "ts": "2026-10-31T10:27:00.979Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "WP02 amendment from hv's answers (vc, 2026-10-31): (a) question 4: a declared leg whose host pre-flight could not reach is `absent`, named at pre-flight and in the plan the confirm shows; the loop runs the legs that are present, the tag waits only for them, and the RELEASE seal records the absent leg as not run and why; `absent` is the sixth leg word (dc's WP05 produces it). (b) question 6: WSL blocks nothing, as today, and no mechanism is built for it. (c) hv set a direction the diagnosis did not have, build artefacts cached by the hash of their inputs (D67, WP16, design first); nothing in WP02 changes for it, but the RELEASE seal's per-leg lines gain nothing new either. Hold stands; take these into WP02b when the hold lifts.",
+    "fyi": true,
+    "re": null,
+    "recipient": "cc"
+  }
+}

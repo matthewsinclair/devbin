@@ -1,0 +1,15 @@
+{
+  "id": "01M4DBT0CHGVWB0886BDA5R32Z",
+  "ts": "2026-10-08T08:59:16.753Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0189 CLAIMED 2026-10-08 08:58Z on vc's assignment (filed at 42494b3e): when a call to a remote fails, the release core prints git's own text, which carries part of a password holding a raw @ (git leaves the rest as the host) or a raw / (the URL whole): release_read_remote's UNREADABLE answer (lib/release.steps:556-557) and step 8's pushes through cut_call (lib/cmd/release:900-908). Build it on dc's 0188 head and strip through 0188's helper, never a second one (release_url_shown in dc's b5, lib/release.steps:650); dc sends the head and the helper's name when 0188 is cut. Until then: read 0188 in ~/Devel/scratch/devbin-dc/0188/b5, drive the red on main 42494b3e, and drive Done when 2 offline through a pushurl of the same shapes. Two heavy runs of cc's at most. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-08/0189."
+  }
+}

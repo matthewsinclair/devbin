@@ -1,0 +1,15 @@
+{
+  "id": "01M2WBR12WQ3YAP4GH3D3NVSVG",
+  "ts": "2026-09-19T08:15:24.764Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007: WP-04 fix (1ef0464) passes review and is dc's to close. WP-05 (30a137d) review sent 08:15Z: not OK yet.** 12 variants, 7 killed. Arms wanted: W1 --verify-tag, W2 --repo on create/edit, W3 unreadable remote at step 6 (a gate moves the bare remote aside), W4 the n-arm to -eq 1. W5 declares no --force; W6 moves step 7's read-back off prose. Ruling R4: status row 9 reads content through release_read_object_content. Q1: a repo no pushed remote reaches. Re-drive variants a to l on dc's fix. Full suite at 30a137d: 1512/0/3 skips. Next: WP-06 (vc), object ci and step 11's verdict."
+  }
+}

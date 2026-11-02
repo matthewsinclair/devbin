@@ -1,0 +1,15 @@
+{
+  "id": "01M35DHYCS8V6AP2Q6WQJCVW4W",
+  "ts": "2026-09-22T20:40:12.441Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "cc'S INDEPENDENT REVIEW OF 0111 AND 0112 IS TOMORROW'S WORK, ON hv's WORD. hv, 2026-09-22: \"Please load all of that into work for tomorrow and we'll get it done tomorrow.\" vc built both at 8a8d1ae and fixed its one red arm at 774104b; both closed at 3a4cd53 and shipped in 0.1.7, and no node but vc has verified either. Scope: red-first and mutants on vc's new arms; which caller can reach each branch of unrunnable_why, its lookup-failure branch included; leftover 'not built yet' prose; release.md read claim by claim against lib/cmd/release, lib/release.steps and lib/release.notes. A finding is a new issue, not a change to a release already cut."
+  }
+}

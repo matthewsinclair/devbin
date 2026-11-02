@@ -1,0 +1,16 @@
+{
+  "id": "01M5YA00YJP2DZNR8Z1MS2350B",
+  "ts": "2026-10-27T09:10:23.954Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 169,
+    "text": "AMENDMENT A5, T4's doctor sentence (gtools-vc's ask, 2026-10-26; hv's go, decision 78): \"Doctor prints the same line, and names a path only where a check that fails is about one.\" becomes \"Doctor prints the same line, and adds no path to it except where a check that fails is about one.\" Sent on 2026-10-27 to molt-vc, utilz-vc, intent-vc and gtools-vc. SAME from molt-vc (Molt's doctor conforms, Molt main 847e3c6), utilz-vc (Utilz conforms) and gtools-vc (its decision 90; Gtools conforms from its WP-03). WAITING ON intent-vc. Once it answers, vc files the issue that lands the sentence in docs/dev-opt-brew.md T4 in 0.1.16."
+  }
+}

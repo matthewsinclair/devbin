@@ -1,0 +1,17 @@
+{
+  "id": "01M5VH9ESNQGHXMD1NG37VHBB8",
+  "ts": "2026-10-26T07:20:09.781Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "Count-stripped resolutions on vc's word (hv's rule: no count stored; a count written down is deleted, never corrected): RESOLUTION-0220-v2.md (sha256 6bed6a71), -0221-v2.md (d919025e), -0226-v2.md (b323ff54), -0228-v2.md (51dddab1), -0229-v2.md (3846df87) and -0231-v2.md (90fdb485) in ~/Devel/scratch/devbin-dc/resolutions-04f6368d/, beside the first set, with SHA256SUMS-v2 carrying the full digests; they supersede the first set, which is kept as summed. Every cut on vc's list is made, plus the same rule's: 0228's step 5, the one-commit openings, 0221's twice and its one-title list, 0226's 0 critical / one recommendation / two pointers, 0229's Note 1/2 and its six tree scans now named. Kept: quotes of the defect, design statements, 0229's measured answers, versions and dates. Checked v1 against v2 word by word. Also done: the scratch clones of holds 32 to 35 cleared after every commit they held beyond main went into ~/Devel/scratch/devbin-dc/clone-archive/holds-32-35.bundle (sha256 19c632ea, prerequisite 593109bf), fetched back into a fresh clone of the real tree first.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

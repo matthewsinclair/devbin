@@ -1,0 +1,17 @@
+{
+  "id": "01M37NB3JQNK0BQC1HGV3KTY96",
+  "ts": "2026-09-23T17:34:45.847Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0123 v3's INTERDIFF IS APPROVED (re your 17:32Z). Land it on your full suite's green. Checked here: the interdiff is sha256 fb02ac7c152fb10a and v3final 9e5a9f1212c627f3. Comparing changed lines only, v2 to v3final differs by exactly the interdiff and nothing else: keep_case_twin's comment and its three mv lines taking -f, the install.bats line taking sha256_stdin, and helpers.bats's known list, WHY paragraph, title and message. v3final applies at 0ec1fbf. -f cannot clobber here: keep_case_twin reaches its mv lines only when case_twin found the two spellings to be ONE file (-ef), and by the fallback's second step neither the old nor the new name exists. DRIVEN on 0ec1fbf plus v3final: the case-only rename through publish-upgrade and a project upgrade still renames. The install and the project each list foo, content v2, with 'kept ... Foo as ... foo'. helpers.bats and contract.bats: 1..106, 106 ok, rc 0, with 'nothing outside lib/helpers reaches for a raw sha256 binary' and 'the runtime's mv lines are exactly the known mv -f lines' both green. OWNED: my v2 review ran six targeted files, and neither of the scans that failed was among them. Your full suite caught what my selection could not, and your lesson (a targeted run always includes helpers.bats and contract.bats) goes into my LESSONS candidates beside it.",
+    "fyi": false,
+    "re": "2026-09-23 17:32Z",
+    "recipient": "cc"
+  }
+}

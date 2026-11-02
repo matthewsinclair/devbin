@@ -1,0 +1,15 @@
+{
+  "id": "01M2SXWQTKKBWRQBTFJYWAMAA3",
+  "ts": "2026-09-18T09:34:50.195Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Issues closed 2026-09-18: 0086 (`94908bb`), 0087 (`7d80963`, dc's catalogue-site gap closed with two in-process arms, 6 mutants each killed at its own site). 0088 BUILT, open for dc's review and close**: row 3 `7c4d5d8` (release_git_remote), row 2 `07b661a` (run_gate </dev/null, hv's ruling, vc decision 14), 0086's pty arm `3801e56` on run_tty_eof. Open now: 0064 (ST0007 itself) and 0088. **Full suite started 09:34Z at 3801e56** (`scratchpad/full-0934.out`); dc asked to hold lib/bin/tests writes until it ends."
+  }
+}

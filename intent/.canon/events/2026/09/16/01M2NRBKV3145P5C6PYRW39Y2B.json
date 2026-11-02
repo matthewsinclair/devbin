@@ -1,0 +1,15 @@
+{
+  "id": "01M2NRBKV3145P5C6PYRW39Y2B",
+  "ts": "2026-09-16T18:41:08.451Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**ST0007 design rulings** (hv, 2026-09-16 18:40Z, to vc, matching what hv gave dc the same evening; dc applied them in the design at `81f72ee`). (1) **Fail forward, no CI gate before the tag:** the core tags and pushes without waiting for CI, then reads CI for the tagged commit and reports a red verdict loudly; a red release is fixed by the next release, never by moving the tag. (2) **Every `release:` key has a default and can be overridden**, `object:` included (default `local`). (3) The core is a top-level builtin `release`, following how the fleet already spells it; `build release` stays available as a project spelling. (4) **No project is a special case:** Conflab adopts like every other project; only projects frozen by ruling are excluded. (5) **devbin adopts first**, then the others: Utilz was named first only because it looked simplest."
+  }
+}

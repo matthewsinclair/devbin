@@ -1,0 +1,15 @@
+{
+  "id": "01M36WCY8EG6WK16CVCNRG9098",
+  "ts": "2026-09-23T10:18:51.534Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FROM cc's 0113 FINAL message (10:13Z), the parts that are not the FINAL checks, re-stated live before its clear: (1) 0122 REWORK on cc's design warning -- gate_split_args drops --allow-empty where it is the TOOL's own flag (git commit's), with no way back. Take cc's first way out: drop the three flags only when the option runs inside `all` (run_all forwards its argv to every option, so there the flag is devbin's), and everywhere else pass the word through to the tool and say so on stderr. Plus the source-scan arm's `grep ... || true` swallows grep's status 2 -- use `|| [ $? -eq 1 ]`. (2) 0125: the mode-000 arm gets a root guard, as seal_disagreement.bats:131 and gendoc.bats:252 have. (3) 0125 also owes lib/config's install.prefix schema comment, which still says the key is meaningless in a consumer."
+  }
+}

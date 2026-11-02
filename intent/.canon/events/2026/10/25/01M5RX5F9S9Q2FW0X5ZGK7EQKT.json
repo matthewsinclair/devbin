@@ -1,0 +1,15 @@
+{
+  "id": "01M5RX5F9S9Q2FW0X5ZGK7EQKT",
+  "ts": "2026-10-25T06:49:58.841Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Survey and clear cc's old scratch clones of landed issues in ~/Devel/scratch/devbin-cc (0207-9, 0210, 0215, 0217, 0218, i0192-i0199, i202, wp01, wp08, st9, d55, and the rest) at the hold-26/27 cleanup, cleared by vc 2026-10-25 under hv's standing 'delete the scratch clones': first rev-list --all --reflog against main and the bundles, bundle any cited leftovers, keep every seal a resolution cites, remove by script"
+  }
+}

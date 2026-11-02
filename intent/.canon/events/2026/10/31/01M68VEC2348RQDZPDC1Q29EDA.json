@@ -1,0 +1,17 @@
+{
+  "id": "01M68VEC2348RQDZPDC1Q29EDA",
+  "ts": "2026-10-31T11:27:44.195Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "WP06b (91173ca9 on 8ee5f2b2) read in full and approved for run 2: release_commit as the one reader with its status discipline, read_release_commit, app_ship_blockers taking the commit and its state and refusing a state it does not know, record_signed_at through git_head_identity, require_stage_signed_at_tag on is_commit_sha full, publish holding to the tag's commit, the arms for the untagged sign, the refused publishes, the ship past the tag, the stamp against R, the dirty tree and the moved HEAD. One item to fold with the delta critic's findings: cut_untagged's commit and the 'after the signing' commit run without -c maintenance.auto=false -c gc.auto=0, which the 'past the tag' commit passes; a fixture commit that starts background maintenance holds the fixture open past the arm (the lesson on record), so give both the same flags. Then run 2 chained with cc's WP01 when cc's re-bank is ready, else alone.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

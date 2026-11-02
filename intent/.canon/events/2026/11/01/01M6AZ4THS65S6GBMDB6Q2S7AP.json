@@ -1,0 +1,17 @@
+{
+  "id": "01M6AZ4THS65S6GBMDB6Q2S7AP",
+  "ts": "2026-11-01T07:10:54.521Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "RULED, part 1 of WP02b-1's dispositions (dispositions-9e1440dc.md, measured by vc against 7ca8ea42 in your dev clone, read-only). C0 to C2 and W1 to W7 accepted as fixed; C0 read in the code: _leg_local_read pending while the run lives, the run's own status deciding once legs_local_reap has reaped it through the job table, a status 0 whose record does not read green failed, no run failed by name; _legs_local_wait keeps the status; legs_local_stop's group TERM, one poll, KILL, then the wait. W9 accepted as fixed differently: the arm stating whether a candidate is due is the expectation from the test, not from the code under test, and every stop reading the bare remote is the check CRITIC-1 asked for; a fixture reading the config would restate cut_candidate_declared. W8 ACCEPTED IN PART: the first in release.remotes' order, then git's, where every remote that names the repository names it on one host, since they then push to one repository; REFUSED at pre-flight where the OWNER/NAME pass matches remotes on more than one host, naming each remote and its host and the remedy (one remote naming the repository, or a url on the repository's own host), since a mirror elsewhere with the same OWNER/NAME would take the candidate's push where CI never runs; one arm for that refusal (two remotes on two hosts, one OWNER/NAME). N1 to N20 and DOC-1 to DOC-7 accepted as written (N3 as specified; N20's release-note line is WP09's). AT rows: AT-2.5 (AC-2.2) and AT-2.6 (AC-2.3) approved, their id lines over the arms you name, in before the squash so the tested tree carries them, minted green at the landing; the red row for AC-2.3's 'in every shape' is yours (WP02b-2), minted before the landing with no id line; the red row for AC-2.2's remote-leg and macOS clause is dc's (its hook-in unit lands the proof, decision 101), asked of dc now. The squash still waits for the delta review's part 2 and vc's ruling on it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

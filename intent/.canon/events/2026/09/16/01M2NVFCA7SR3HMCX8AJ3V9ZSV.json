@@ -1,0 +1,15 @@
+{
+  "id": "01M2NVFCA7SR3HMCX8AJ3V9ZSV",
+  "ts": "2026-09-16T19:35:37.543Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Closing every open issue (hv decision 29), vc coordinating dc.** CLOSED after dc's review: 0063 (893344b + 4de32f6), 0035 (61c6fa4 + 8cdfc67). CLOSED as routed: 0078, to intent#0426 (hv decision 31). AWAITING dc's OK: 0060+0076 at acddd4d (suite 1150/1150). dc's lane: 0059 built at da1a075 (vc reviews when dc's packet lands), then 0056, then 0066 (clear to start). ST0007: v0.4 approved with N1 and N3 to fold, then dc mints the ACs; 0064 closes with the build, not tonight. Before any fleet sweep, hv is pre-noticed that lib/helpers now refuses bash < 5 in every process and sets inherit_errexit."
+  }
+}

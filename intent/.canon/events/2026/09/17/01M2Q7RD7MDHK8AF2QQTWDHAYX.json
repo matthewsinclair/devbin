@@ -1,0 +1,15 @@
+{
+  "id": "01M2Q7RD7MDHK8AF2QQTWDHAYX",
+  "ts": "2026-09-17T08:29:30.740Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**0079 review finding 1 (vc, low): README.md says a source behind the project is never offered an upgrade 'because that upgrade would revert the runtime'; make it 'could revert', in its own commit citing 0079.** Held until ST0007 WP-01 is committed, because README.md is on vc's WP-01 hands-off list. 0079 itself closed at 01ad079; finding 2, the mkahead fixture name, is fixed at fae6a17."
+  }
+}

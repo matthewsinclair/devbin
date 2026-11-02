@@ -1,0 +1,15 @@
+{
+  "id": "01M45TGBJQQQR3T6YBYW0BKCCN",
+  "ts": "2026-10-05T10:42:13.719Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.9 bundle, vc's assignment on hv's word of 2026-10-05 (every open issue closes before the cut); dc claims 0163 to 0174. Order: 0173 and 0174 first; then 0163 to 0171 as one stack designed together, in an order their file overlaps allow (cc's proposal: 0169, 0166, 0164, 0163, 0167, 0168, 0165, 0170, 0171; 0163's cargo metadata probe must be one 0165's lib/helpers arm admits); 0172 last, rebased onto cc's 0153 and 0159 once those land. Method and evidence per vc's WORKPLAN.md under ~/Devel/scratch/devbin-vc/0.1.9/: built in a scratch clone under ~/Devel/scratch/devbin-dc/, never in the shared tree; each patch goes to vc with its sha256, its base and the evidence; heavy runs only on vc's START, with END back carrying pids and times read from the machine; nothing committed into devbin while vc's W1 freeze stands. The cargo issues were measured on cargo 1.98.1 and cargo here is 1.99.0, so every red on base is re-measured."
+  }
+}

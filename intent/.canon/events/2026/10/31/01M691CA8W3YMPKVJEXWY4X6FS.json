@@ -1,0 +1,15 @@
+{
+  "id": "01M691CA8W3YMPKVJEXWY4X6FS",
+  "ts": "2026-10-31T13:11:28.284Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FOR hv, open at 2026-10-31 13:11Z (relayed as they came, recs in brackets): Intent ST0090's builders cc and ic are not running; intent-vc asks whether intent-dc builds its two S packages meanwhile (rec yes, under intent-vc's judgement, until the sweep); intentd at login (rec intent daemon start --at-login on the Macs, brew services on Linux); Utilz: push main (upstream 1434e764's run is red) then one tests.yml dispatch proving 0130 and 0131, and ST0031/03's owner; Laksa: the five CI reds on main (rec dc fixes all five), and 0058 S2's CI release job red on CI's checkout because 18 tracked links under priv/laksa/sites point into hv's sibling repos (rec dc fixes, the job dropping the /priv/ paths .dockerignore excludes, read from .dockerignore; fallback untrack the links), then the fix's push; Conflab: the trial run (rec the cut's legs are it) and check contract as a gate (rec yes); Molt's PATH order (rustup before brew); two Trash folders on rhadamanth to empty, utilz-dc-exhaust-20261031 and utilz-vc-exhaust-20261031. Closed: kovacs's ten marker files (hv, via kovacs-sysadm)."
+  }
+}

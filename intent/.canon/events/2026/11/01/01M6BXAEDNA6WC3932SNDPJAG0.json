@@ -1,0 +1,16 @@
+{
+  "id": "01M6BXAEDNA6WC3932SNDPJAG0",
+  "ts": "2026-11-01T15:58:15.989Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 43,
+    "text": "ST0011/07 (WP07, attach reads the candidate run; AT-3.8): BANKED at refs/bank/cc/ST0011-07 7a70cb2fd61b1d3a6613053729ff0a9b93465697 on dc's hook-in bank refs/bank/dc/ST0011-04 c27f8cc0 (2026-11-01 15:57:00Z by date -u, fetch and CAS on an absent ref), squashed once as ST0011/07 from the dev clone's wp07 (two WIP commits on c27f8cc0: the unit and the critic's settle as vc ruled at 15:00Z; the cited WIP c6586357 archived). The rebase stopped once, in docs/configuration.md's release table, which the hook-in re-padded; resolved by taking its table and putting WP07's cell back at the 258-wide column. On the merged tree: the WP07 and formula arms and helpers.bats's four scans PASS through the probe; shellcheck, prebank-scan, ASCII, duplicates and bats --count clean; the lint gate at 58 files, 0 breaches. ASKED 01M6BX93HPSENHMJDRP1QVEDNM, not before the hook-in's run 01M6BVYT4HQJ6FQERVH4STK1F9; kit7 prepped (build 7a70cb2f, red b63ccc94, the tag guard in GREEN_AT_BASE). Open: the grant, START, END, the handover, the landing after the hook-in's (LAND_BASE_OFF_MAIN=1), and at it AT-3.8 green over releaseattach.bats's '# AT-3.8' arm."
+  }
+}

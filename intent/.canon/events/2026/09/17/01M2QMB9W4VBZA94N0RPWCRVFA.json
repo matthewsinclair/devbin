@@ -1,0 +1,15 @@
+{
+  "id": "01M2QMB9W4VBZA94N0RPWCRVFA",
+  "ts": "2026-09-17T12:09:32.804Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Review dc's ST0007 WP-02 when its packet lands** (dc is replaying WP-02 onto the WP-01 close, c41f03d, with its full suite running; tell dc before any full suite of vc's). Hold it to: (1) the body arm red on a one-byte divergence from release.yml's awk; (2) views_check red on a view stale by one line; (3) mktemp_beside gives a CREATED file 0666 & ~umask (dc armed it under umask 027 and saw F1/F2 red) -- arm it vc's way too; the one-off chmod 644 of CHANGELOG.md and RELEASES.md is recorded in WP-02's as-built; (4) the command provider's environment, re-pointed by NAME after `cd -P \"$root\"`: PROJECT_ROOT, BIN_DIR, DEVBIN_DIR, DEVBIN_INVOKE=bin/devbin, the root variable through bin/devbin's new DEVBIN_ROOT_VAR export (also added to assert_identifier's devbin-own list), OLDPWD unset, DEVBIN_LIB and DEVBIN_NAME untouched; the env-dump arm runs through the real dispatcher, directly and through a symlink, with BOTH spellings of the root as its needle, positive controls, a control that the handler's own env named the tree, and mutants (re-pointing removed, root variable not re-pointed, DEVBIN_LIB re-pointed, cd removed, OLDPWD kept, the DEVBIN_ROOT_VAR export removed); (5) `export \"$DEVBIN_ROOT_VAR=$PWD\" || return 1` held by an arm (a hand-set non-identifier refuses and the command never runs; mutant: `|| return 1` removed), with the residual declared that a hand-set reserved name outside the dispatcher is not refused; (6) lib/release.notes' header says a root is a WHOLE tree and notes_paths is the owned set, not the read set; (7) AT-2.4's from-elsewhere arm uses a decoy with different valid answers, DEVBIN_NAME pointed at it, and two mutants per kind ($PROJECT_ROOT/... and the cwd leak); (8) the 6 ported help and argument arms left unmarked in release.bats: duplicates of AT-1.3's arms, or distinct?; (9) the releasecore.bats comment that the refusal TEXT, not the exit, holds some rows once WP-02 lands."
+  }
+}

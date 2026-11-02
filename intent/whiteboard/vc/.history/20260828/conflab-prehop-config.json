@@ -1,0 +1,22 @@
+{
+  "project_name": "Conflab",
+  "author": "matts",
+  "created": "2026-02-17",
+  "st_prefix": "ST",
+  "intent_version": "2.19.0",
+  "plugins": {
+    "claude": {
+      "subagents_path": "intent/plugins/claude/subagents"
+    },
+    "agents": {
+      "config_path": "intent/plugins/agents"
+    }
+  },
+  "languages": [
+    "shell",
+    "elixir",
+    "lua",
+    "rust",
+    "swift"
+  ]
+}

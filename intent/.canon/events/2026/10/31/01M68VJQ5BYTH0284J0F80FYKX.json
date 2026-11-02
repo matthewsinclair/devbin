@@ -1,0 +1,17 @@
+{
+  "id": "01M68VJQ5BYTH0284J0F80FYKX",
+  "ts": "2026-10-31T11:30:06.635Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "For WP05, from WP01's critic: a remote leg's seal pair is copied back only under its own leg directory (tmp/release/legs/<name>/, D62) and never into the local record directory, because the local GATES record is keyed on (commit, platform) and two Macs on one OS build and bash share a platform string; the leg's verdict is read from its own directory. FYI only -- no response needed.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

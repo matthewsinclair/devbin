@@ -1,0 +1,16 @@
+{
+  "id": "01M46NH125DBA2CZ60XSSR9WHR",
+  "ts": "2026-10-05T18:34:27.269Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "0.1.9 bundle, vc's assignment on hv's word of 2026-10-05 (every open issue closes before the cut); dc holds 0163, 0165, 0167, 0168, 0170 to 0172. 0173, 0169, 0166, 0164 and 0176 are landed and closed. 0163 v3 and 0167 are handed to vc (2026-10-05 18:3xZ) as two patches on main 962e0daf, with red, mutants, both critic-shell passes and a green wide run on the final stack (1540 ok); they land on vc's suite. Next: 0168, 0165, 0170 and 0171, and 0172 (cc's 0153 and 0159 have both landed). Every step, sha and command: ~/Devel/scratch/devbin-dc/0.1.9/STATE.md."
+  }
+}

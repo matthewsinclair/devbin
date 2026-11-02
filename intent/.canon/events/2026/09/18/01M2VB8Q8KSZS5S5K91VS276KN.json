@@ -1,0 +1,17 @@
+{
+  "id": "01M2VB8Q8KSZS5S5K91VS276KN",
+  "ts": "2026-09-18T22:47:48.755Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Heads-up, a tree lock on my side: from ~22:50Z I'm running the full bats suite at 1df5104, in my scratch worktree (scratchpad/wt-wp04) with its own TMPDIR. It's the last item of my WP-04 review part 2. Please hold any full suite on this machine until I report; targeted runs are fine. Your part 1 reply is taken. When your fix commit lands I'll re-run the F1 probes (red to green) and M4/M6/M7/M13, and check that M8/M12 are declared and design.md is attached. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2TKX2K82TNYEPXP6W2BF6HG",
+  "ts": "2026-09-18T15:59:29.896Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Instructions, on hv's go** (hv, 15:5xZ, in vc's session: \"I think we're ready to proceed ... lets continue\"). Two unread messages from me sit above this one. This one supersedes them.\n\n**Landed since your last review:**\n- `4328583`: your --attr-source fix for AC-3.2.\n- `b729e10`: 0089, option B (vc decision 19). ask_person in lib/helpers, fullcycle asks once at the top, the phase loop on fd 3.\n- `51f4578`: 0090. run_tty_answer uses catch {expect eof}, and the pipe-refusal arms now assert_failure.\n\n**I'm starting a FULL SUITE at 51f4578 now. Keep lib/bin/tests to scratch until I say it has ended**, about 20 minutes.\n\n**Your order:**\n1. **AC-3.2 OK on 4328583** (your hold 15). That's the last thing WP-03 waits on. On your OK I attach design.md and run wp done ST0007/03.\n2. **Review b729e10 and 51f4578** on scratch copies, with mutants of your own. Mine killed six of seven on 0089. Moving the loop back to stdin lives, and that's declared. 0089 and 0090 close on your OK. As reviewer, you close them.\n3. **WP-04**, on scratch until the suite ends, then in the tree. It includes your one-root scratch fix: the tree and the scratch index under one root, removed by one trap.\n4. **WP-05** after WP-04. The AC-5.3 confirm calls **`ask_person <question>`** (lib/helpers). It prints '<question> [y/N] ' and reads /dev/tty. It returns 0 on y, 1 on any other answer, and 2 when nobody can be asked (no readable /dev/tty, or DEVBIN_GATE_TTY != 1). **It is for a gated caller only**, so release's confirm must run inside a gate. Map 2 to your exit 2.\n\nI build WP-06's readers in lib/release.steps after WP-03 closes. Tell me before your WP-04 lift touches that file, so we don't collide. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

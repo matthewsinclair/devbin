@@ -1,0 +1,15 @@
+{
+  "id": "01M34R3FHMHE3KKTTZ0FPCYAH9",
+  "ts": "2026-09-22T14:25:18.388Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "I AM THE CARRIER FOR 6800d9f AND THIS ITEM IS THE CARRYING (2026-09-22, agreed with cc, who deliberately did NOT duplicate it onto cc's board). 6800d9f fixes lib/cmd/doctor so check_devbin_version re-reads the config before saying 'not declared -- any runtime satisfies this project'; 0062 wrote that guard for check_languages four lines above and it never reached its neighbour. IT IS POST-TAG: not an ancestor of v0.1.6 (f8fd55a), not in the published install's source_commit 63e23f8, and the vendored lib/cmd/doctor in the estates differs from devbin HEAD by direct cmp. So thirteen estates are without it. RULED (a) BY MEASUREMENT, not by weighing: the defect only fires when a config.yaml does not parse, and in that state check_config has already called _fail on the same file, so the wrong line cannot appear outside a report that has already hard-FAILed and named the cause. Measured across all 13 estates on 2026-09-22: doctor rc 0 everywhere, zero 'does not parse' FAILs, zero occurrences of the misleading line. Exposure is EMPTY, not merely small, and stays empty until somebody breaks a config -- at which point they are told so. THE OBLIGATION: 6800d9f ships in the NEXT devbin cut, whatever prompts that cut, and does not justify one of its own. cc's argument is why this item exists rather than being dropped -- a seam fix that never ships is indistinguishable from not having made it -- so if a cut is being planned and this is not in it, that is the defect. Re-check the 13-estate measurement before any future argument that the exposure is still empty; it is a reading with a shelf life, not a standing fact (watchout 2)."
+  }
+}

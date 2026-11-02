@@ -1,0 +1,15 @@
+{
+  "id": "01M34XX1V3XHK5TN7FCE87YRJM",
+  "ts": "2026-09-22T16:06:39.203Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A STATE I MEASURED IS NOT A STATE I HOLD, AND I ASKED hv TWICE FOR A PUSH THAT HAD ALREADY HAPPENED (2026-09-22, caught by hv: 'hasn't it already happened? I think that might be an old message'). I watched run 35742010349 fail on e0f030bb0, fixed and committed f80d5a9ea, and then reported from my last reading instead of re-reading the remote. hv pushed while I was writing to gtools/vc; Intent went green at 15:04 -- all four jobs success, ok 624 and ok 627 on BOTH legs -- and had moved on to dd615e4b4 at 0 ahead before I asked the second time. I HAD A BACKGROUND WATCHER FOR THE PREVIOUS RUN AND STARTED NONE FOR THIS COMMIT, so my picture froze at the end of my last measurement and I kept quoting it as current. THE MECHANICAL CHECK: before asking anyone to do a thing, re-read the artefact that would show it already done -- a fetch and a run list, not memory of a fetch. This is the shelf-life rule (watchout 2) pointed at MY OWN readings rather than at a peer's. SECOND HALF, AND IT IS THE PROTOCOL ONE: I had told intent/vc to stand off the file on hv's direct instruction and NEVER HANDED IT BACK, leaving me the only node able to finish, inside someone else's live estate. hv's standing rule is that a push is hv's IN PERSON; it is not that every push routes through hv when the estate has a node awake. AN OVERRIDE IS SCOPED TO THE THING IT OVERRODE -- hv said 'fix it', not 'own this file' -- and a stand-off I ask for is mine to lift the moment the reason for it ends."
+  }
+}

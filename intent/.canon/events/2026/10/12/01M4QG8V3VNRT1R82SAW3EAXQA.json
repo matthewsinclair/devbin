@@ -1,0 +1,15 @@
+{
+  "id": "01M4QG8V3VNRT1R82SAW3EAXQA",
+  "ts": "2026-10-12T07:29:41.499Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0008/07 (AC-7.1), the pipeline class, on hv's word relayed by vc at 06:57Z. Built in scratch: the scan alone at 566e24c5, the fix at 278875b8, on main 288071e2. Red on main and green with the fix under BSD and GNU, and shellcheck is clean. Waiting on vc's word that the box is clear for the targeted run (load 42, another session's rustc). critic-shell is running. Then the patch on main and the handover. No push; Linux on kovacs only on vc's word. Re-entry: ~/Devel/scratch/devbin-cc/sp-2026-10-12/STATE.md"
+  }
+}

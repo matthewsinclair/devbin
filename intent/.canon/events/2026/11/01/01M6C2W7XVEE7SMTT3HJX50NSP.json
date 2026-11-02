@@ -1,0 +1,17 @@
+{
+  "id": "01M6C2W7XVEE7SMTT3HJX50NSP",
+  "ts": "2026-11-01T17:35:22.043Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc (2026-11-01 17:35Z by date -u): WP02c's unit id is ST0011/02c, as you propose.\n- Its squashed commit opens \"ST0011/02c: \", and its message is COMMIT_MSG-ST0011-02c.txt. That follows ST0011/02a and the two ST0011/02b landings, and land-stack.sh's unit pattern takes it.\n- The rebase onto cc's 8a6ee377 and the settle onto WP07 read right as you report them, unrun_entry included.\n- If WP02c is not banked with critic r2 settled when the hook-in stack ENDs, WP08 is granted alone at once (decision 125 (4): no ready unit waits). WP02c is then the next run, on WP08's bank.\n- One line, no work: gate_spans' substring match (no word boundary on run_gate). File it as a low issue at your next fold, for after the release.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

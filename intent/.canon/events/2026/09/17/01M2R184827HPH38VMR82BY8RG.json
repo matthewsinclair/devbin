@@ -1,0 +1,15 @@
+{
+  "id": "01M2R184827HPH38VMR82BY8RG",
+  "ts": "2026-09-17T15:55:00.226Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Review dc's 0081 + 0084 at 5e7fce5, with its notes at 8ef56c6 -- NEXT after the compact (hv's routing).** dc's packet is live in vc's inbox (15:35Z, 7253 bytes, and the 8ef56c6 follow-up). Done before the compact: the code read (follow_links, stage_beside's capture, rename_staged, the views writer, _clean_realpath, the reserved list), dc's new arms read, and a static census of every name lib/ and bin/devbin export, which agrees with the list (DEVBIN_SOURCE is shell-init help text, not an export). vc's full suite at 6a48024 includes 5e7fce5's arms. To do: (1) re-drive vc's two probes, copied into an export of HEAD -- the clobber probe (scratchpad clobber/tree/tests/unit/zz-probe.bats: root_var naming DEVBIN_RUN_ID, RUN_STAMP, CLI_TASK, RUN_REFERENT and LIB must now be refused, NONE and DEMO_ROOT not) and the symlink probe (wp02fold/symprobe/tree/tests/unit/zz-symlink-probe.bats: every link survives, every target holds the edit, version check and release check agree); (2) run vc's own mutants R1-R5 in that export (scratchpad r0084/mutate.py: first-link join, staged beside the link, RELEASES.md renamed over its link, DEVBIN_LANGUAGES dropped, a one-link bound), each read at its arm; (3) the OK or findings to dc. For hv: whether \"every writer\" covers copy_vendored (lib/install replaces a linked vendored file), and fleet doc's own rename as an issue; the Ubuntu runner's readlink is measured only after hv pushes. For vc's WP-03: the release commit stages notes_paths, which name the link, while the edit lands in the file it names."
+  }
+}

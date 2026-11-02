@@ -1,0 +1,16 @@
+{
+  "id": "01M5SRJBW2MJZWEBVXVQ0M0Q21",
+  "ts": "2026-10-25T14:48:52.866Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). State 2026-10-25 14:48Z: 0.1.15 is devbin's ONE next release (decision 63) carrying 0213 and 0220-0229. LANDING STACK: land220 at a30c8ab2 (tree 42423f71) = main (593109bf outside intent/) + 0220, 0221, 0220b, 0222 (dc), 0223, 0224 (cc), 0226 (dc), 0225 (cc), then fast-forwarded: 0226b (dc, 1b748f0a), 0227 (cc, 431e02e6, formula built-in), 0228 (dc, 6424bf39, back-to-brew note + contract A1/A2), 0226c (dc, ea816117) by tools/stack228.sh, and 0229 (dc, a30c8ab2, xcodebuild counter); the builders' lights green at each tip. cand220 rebuilt at 03e7f15 (208 files, fleet absent); critic shell clean over the changed files. PAIR booked READY at a30c8ab2 with molt-vc, last among the heavies (long queue): on GO run bash tools/pair220.sh with START/END, read both seals, write the land script into main (COMMIT_MSGs: dc 0220/0221/0220b/0222/0226/0226b/0228/0226c/0229, cc 0223/0224/0225/0227), fill resolutions (0229: fixtures are .txt; Done when 5 met in docs/configuration.md), close 0220, 0221, 0223-0229, ping hv; 0222 closes on CI green after hv's push. Then the 0.1.15 note, kovacs booking (0.1.15 Linux check + 0213 leg D), ST0010 public steps (decisions 52/56/60), hv cuts."
+  }
+}

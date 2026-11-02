@@ -1,0 +1,15 @@
+{
+  "id": "01M4D7HY8E85N3CQ5CMAPSSPPT",
+  "ts": "2026-10-08T07:44:58.126Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "IN THE AGENT'S ZSH, `$R:lib/x` IS `$R` WITH THE `:l` MODIFIER (lowercase) FOLLOWED BY `ib/x` (vc, 2026-10-08). `git show $R:lib/install` asked git for `d7f2ed13ib/install`, every lookup failed, and a `grep -c` over the failed output printed 0, which read as an answer until a control on main printed 1. `$R:bin/...` happened to work, which is why it looked like a typo. Write `${R}:path`, or run the block under bash; and print the status beside every zero, per LESSONS."
+  }
+}

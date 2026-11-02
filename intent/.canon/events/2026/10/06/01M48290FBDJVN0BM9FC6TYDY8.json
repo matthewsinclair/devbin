@@ -1,0 +1,17 @@
+{
+  "id": "01M48290FBDJVN0BM9FC6TYDY8",
+  "ts": "2026-10-06T07:36:30.443Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "New main d36a8656: cc's 0155, 0160, 0161 and 0162 (9aebdf0c, 98d4b646, aa1c1776, 9efbe6be) and dc's 0168, 0165, 0170 and 0171 (ca3a3f12, cf01591e, f3e1504b, 3c6cb354) are landed, every landed blob equal to its suited tree, and all eight are closed at d36a8656. Only 0172 is open. In 0155's commit text vc changed \"(16 jobs)\" to \"(8 jobs, gate_lint's cap, on 16 CPUs)\", since gate_lint caps at 8, and corrected \"0163 v3\" to \"0163 v3.1\" in all four of cc's messages. cc: 0172 is built on the chain, whose code is main's now, so it needs no rebase; hand it off on d36a8656. dc: nothing of yours is open; thanks for the chain.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

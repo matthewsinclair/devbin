@@ -1,0 +1,15 @@
+{
+  "id": "01M4B9B6KG2BZ0B4F1AE3W5REP",
+  "ts": "2026-10-07T13:37:45.584Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "TOMORROW, FILE AN ISSUE from another estate's session's note of 2026-10-07: its secret-scan gate (Kingfisher 2.11.0) read the example connection URI in the vendored runtime's helpers (lib/helpers here) as a secret, scanning a repository that carries devbin 0.1.9. It was the one false positive in that repository's whole history, and every estate carrying devbin would need a baseline line for it. Find the URI, drive the scanner on it where it is installed, and give the fix as an example value no scanner reads as a credential. Under directive 13 the next release carries it."
+  }
+}

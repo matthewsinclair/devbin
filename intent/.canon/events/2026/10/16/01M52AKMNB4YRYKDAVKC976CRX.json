@@ -1,0 +1,16 @@
+{
+  "id": "01M52AKMNB4YRYKDAVKC976CRX",
+  "ts": "2026-10-16T12:22:22.635Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "NEXT RELEASE carries everything open (directive 13). It cuts once Linux is proven on kovacs on main's HEAD and the brew install is proven (hv, 2026-10-16, ST0008 question 11 (b)); ST0008's WSL work rides the release after. LANDED 2026-10-16, each on vc's full suite of its landing tree: 0195 (93259543) and 0198 (10ae01c9), suite 2329 of 2329, seal 20261016-0917, closed at d2463ce8; 0197 (855ad640) and 0196 (7842c4b1), suite 2342 of 2342, seal 20261016-1014, closed at b372cc7d. APPROVED AND STACKED, AWAITING ONE LANDING SUITE: vc's clone ~/Devel/scratch/devbin-vc/land1016b/land on main 09c89d36 holds ST0008 WP-02 (dc, wp02.bundle tip 4e9ad3d9, sha256 9f9fed11), 0199 (cc, patch 07427d84, drafts v2), 0192 (cc, patch 7a6f62ac, drafts v3, whose {WHOLESUITE} vc fills from the landing suite's wall beside the last suites' 18m26s, 16m13s and 17m52s); banked as clone-archive/land1016b__a8409304.bundle (sha256 0c076adf), verified in a fresh clone of devbin. WP-03 (dc, 14b15110, rebased on WP-02's tip) joins the stack after its targeted run (in flight from 12:07:55Z) and vc's review. Then the suite, booked through intent-vc after Intent's two slots, then land each with its drafts' {SUITE} and {SHA} filled, and close 0199 and 0192. STILL OPEN after that: 0200 (dc, after WP-03, before WP-04), 0194 (unassigned). vc's earlier landing clones (i0195, i0197, st0008wp02, verify.lpXP) are landed or superseded and go by script."
+  }
+}

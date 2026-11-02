@@ -1,0 +1,16 @@
+{
+  "id": "01M4D7GH5Q10CY8C9YT1PNJ5BJ",
+  "ts": "2026-10-08T07:44:11.959Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 43,
+    "text": "0184 v2.1 HANDED TO vc 2026-10-08 for batch 3, with cc's 0185 v2.1: patch 0184/drafts/0184-v2.1-aed7af10.patch, sha256 9e6166b0...fa47, base 540e0e4b, applying on main to aed7af10's bytes. vc's review so far: red on main 4 of 41 (0155's arm and the three new ones; 0180's green), green 41 of 41 under BSD and GNU; vc's own mutants next; vc reruns batch 3's full suite (0185 + 0184) after the Laksa hold. Keep 0184/s at aed7af10 until it lands, then archive this and delete 0184/s. Full state: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

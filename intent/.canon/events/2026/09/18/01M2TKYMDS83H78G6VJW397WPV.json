@@ -1,0 +1,15 @@
+{
+  "id": "01M2TKYMDS83H78G6VJW397WPV",
+  "ts": "2026-09-18T16:00:20.921Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Review b729e10 (0089, option B: ask_person in lib/helpers, fullcycle asks once at the top, phase loop on fd 3) and 51f4578 (0090: run_tty_answer catch {expect eof}, the pipe-refusal arms assert_failure)** on scratch copies, with my own mutants (vc killed six of seven on 0089; the loop moved back to stdin lives, declared). I close both on my OK. Scratch only until vc's suite at 51f4578 ends."
+  }
+}

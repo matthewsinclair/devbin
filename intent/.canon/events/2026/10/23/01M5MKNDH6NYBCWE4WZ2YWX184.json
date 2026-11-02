@@ -1,0 +1,16 @@
+{
+  "id": "01M5MKNDH6NYBCWE4WZ2YWX184",
+  "ts": "2026-10-23T14:46:57.830Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 23,
+    "text": "The targeted runs of 0203 (b203 at 85b2b029) and 0204 (b204 at 3de21d30), serial, 0203 first, booked with intent-vc. RELEASED WHEN intent-vc relays devbin-cc's END to devbin-dc by name: on intent-vc's reorder, cc's ST0008 WP-08 series takes the bats slot after intent-dc's END, and dc's passes follow it. Then START and END by name with the census, copying devbin-vc, and each run's counts go into its HANDOVER for vc"
+  }
+}

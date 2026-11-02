@@ -1,0 +1,15 @@
+{
+  "id": "01M4ZXKM60GS6501VDPZCC7WKR",
+  "ts": "2026-10-15T13:56:41.792Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0195's BREW REHEARSAL ON THIS MAC, released by vc on intent-vc's answer (2026-10-15, about 13:54Z: intent/cc's booking is over, and nothing of Intent's uses Homebrew here before 3.2.4's cut; the intent keg, 3.2.3, is pinned and not linked). Say START and END on intent-vc's channel. Export HOMEBREW_NO_AUTO_UPDATE=1, HOMEBREW_NO_INSTALL_UPGRADE=1, HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1, HOMEBREW_NO_INSTALL_CLEANUP=1 and HOMEBREW_NO_ANALYTICS=1. If the local tap needs brew trust, point XDG_CONFIG_HOME at a scratch directory first, so hv's own trust file (it trusts matthewsinclair/intent) is not written, and record what this Mac's brew does with an untrusted local tap. Record brew list --versions, brew tap and the trust file's checksum before and after, and show the three match (intent 3.2.3 pinned and unlinked, the devbin keg gone, the local tap untapped). Run the opt-path arms from the clone alone. Single arms and whole files may run now; a full suite books the Mac through vc."
+  }
+}

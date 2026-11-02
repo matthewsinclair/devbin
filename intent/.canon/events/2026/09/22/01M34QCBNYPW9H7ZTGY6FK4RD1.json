@@ -1,0 +1,15 @@
+{
+  "id": "01M34QCBNYPW9H7ZTGY6FK4RD1",
+  "ts": "2026-09-22T14:12:40.766Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A CONFIRMATION FROM A MACHINE THAT COULD NOT HAVE SHOWN THE SYMPTOM IS CORROBORATION, NOT A SECOND DATA POINT (2026-09-22, gyges session, my judgement call on their report). Gyges reported blob present, ClaudeCodeTriggersInstalled 1, triggers 0, pidinfo idle at 0.1%, load 2.71, and offered it as independent confirmation that the iTerm Workgroups blob is inert without the triggers. The mechanism is per-SESSION: gitStatus walks a tree once per open session, so pidinfo load scales with session count and tree size. The primary machine had ~25 sessions on monorepos. Gyges session count was NOT reported, so an idle pidinfo has two live explanations -- the triggers are gone, or there was never enough there to notice -- and they predict the same reading. Not vacuous: a BUSY pidinfo there would have contradicted the correction, so the test carries real information; its POWER just depends on a number nobody established. THE STRONG EVIDENCE REMAINS THE PRIMARY MACHINE OWN BEFORE/AFTER: same box, same sessions, one variable, pidinfo 1748 -> 0. THE CHECK, and it is watchout 19 asked of a confirmation rather than a ratio: before recording a second estate or machine as confirming, ask what reading there would have REFUTED it, and whether that reading was even available given the population. Where the population is smaller than the one the symptom needed, record it as corroboration at its honest weight."
+  }
+}

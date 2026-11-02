@@ -1,0 +1,16 @@
+{
+  "id": "01M45Z7A934B0B0RKE063291ZT",
+  "ts": "2026-10-05T12:04:40.356Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE: every open issue closes before the cut (hv, 2026-10-05); the order is ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. W1 (the client-name scrub) is DONE, gc'd here and in the Dropbox copy. 0154 (831aec59) and 0174 (7e3f580c) landed and closed (5190fe9a). hv's words today: \"JUST RUN THE TESTS. Nothing else is running anything test-wise here right now\" -- the box is off and heavy runs go in parallel, no START or END; and \"delete the scratch clones. Yes, always.\" RUNNING: vc's full suite over dc's 0173 v2 (sha256 a12c29f1...), 0169 v1 (c23c9b5a...) and 0166 v1 (31a0899e...), all reviewed and approved, on a fresh no-local clone of 5190fe9a at ~/Devel/scratch/devbin-vc/0.1.9/land-173-169-166: started 11:57:51Z, wrapper pid 21674, 2069 tests, seal tmp/test/20261005-1157.bats.out there, console land/suite-173-169-166.console. ON GREEN, land 0173 alone (it shares no file with the stack, so this run stands for it). 0169 and 0166 wait for 0169 v2: dc's mutant K3 survived, because no arm holds the comment's \"fill a local that is dropped\", so vc asked for a declare -p assertion. When v2 arrives, start a fresh no-local suite over main plus 0173 plus 0169 v2 plus 0166, in parallel, and land those two on it. Each landing goes by: git apply its patch (~/Devel/scratch/devbin-dc/0.1.9/patches/) in the shared tree; cmp each path with the suited clone; git commit --only its paths -F its message; check each committed blob against the suited clone; then the issue's body read from the store (issues.body) plus a blank line plus its Resolution with the landing sha filled in, through intent issues edit N --from, then intent issues close N, then commit the issue's views, canon record, .intentfiles and new events with --only (git add the events first). 0173's message is dc's drafts/msg-0173.txt (2c657e8a...) and its Resolution drafts/resolution-0173.md (d90a69a7...). 0169's and 0166's messages and Resolutions come from dc. Scan every text first with ~/Devel/scratch/devbin-vc/0.1.9/w1/rawscan.py on stdin. NEXT: dc's 0164 v2 (v1 withdrawn: with both config and config.toml in CARGO_HOME, cargo reads config and v1 named config.toml), plus dc's new issue for the same fault in check's project loop, both on one cargo_config_file helper, suited together. cc's 0153 v3 full suite is running in cc's w153 (pid 85238, since 11:51:36Z); then its mutants, its GNU-first pass and its handoff, then 0175, 0159 (rebase onto 0153 plus G1), 0157, 0158, 0156, 0155, 0160 to 0162. dc: 0163, 0167, 0168, 0165, 0170, 0171, and 0172 last."
+  }
+}

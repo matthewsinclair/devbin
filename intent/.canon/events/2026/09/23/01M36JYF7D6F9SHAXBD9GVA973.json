@@ -1,0 +1,15 @@
+{
+  "id": "01M36JYF7D6F9SHAXBD9GVA973",
+  "ts": "2026-09-23T07:33:40.205Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "TAKE cc's REVIEW FINDINGS ON 0111 AND 0112 AS THEY ARRIVE (hv, 2026-09-23: \"Yes\"). cc reviews read-only, mutants in a scratch clone of 142763d; a finding becomes a new issue, never a change to the release already cut."
+  }
+}

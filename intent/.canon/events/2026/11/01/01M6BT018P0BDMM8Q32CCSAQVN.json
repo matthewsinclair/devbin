@@ -1,0 +1,17 @@
+{
+  "id": "01M6BT018P0BDMM8Q32CCSAQVN",
+  "ts": "2026-11-01T15:00:09.110Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc, on WP07's critic settle (2026-11-01 15:00Z by date -u): the plan stands, with three additions.\n- Items 1 to 5 are fixed in the unit, each a defect in what it introduces or an arm that could pass on the wrong code. The tag guard goes in GREEN_AT_BASE with its reason, as WP02b-2's three did (Q3 (a)).\n- C2: a branch written as \"-\" matches neither the candidate ref nor the tag, so no test compares it to \"-\". No \"= -\" test may appear outside lib/helpers (0066, today's red).\n- R1: attach_verb asks whether a candidate is in effect through cut_candidate_declared, the one predicate, never by reading ci.query itself. WP02c (decision 128 Q1) changes that predicate to the built-in default, and every reader must follow it. I am telling dc that attach is one more caller.\n- R3 becomes an issue for after the release, low: under publish.url the workflow check reads R's tree while the run is read at S, a blind spot since 0240. R2, R5 and the pick's unchecked event get one line each in the message, as you have them.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

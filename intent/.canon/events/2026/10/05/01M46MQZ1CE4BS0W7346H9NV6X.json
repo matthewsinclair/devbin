@@ -1,0 +1,16 @@
+{
+  "id": "01M46MQZ1CE4BS0W7346H9NV6X",
+  "ts": "2026-10-05T18:20:45.996Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE: every open issue closes before the cut (hv, 2026-10-05); the order is ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. W1 (the client-name scrub) is DONE. LANDED AND CLOSED: 0154 (831aec59), 0174 (7e3f580c), 0173 (bd81574c), 0169 (ce72a4ff), 0166 (b3f37f92), 0153 (73a0e43b), 0175 (eb9166e1), 0164 (64d80788), 0176 (f7bd9984), 0159 (85f2fb0b, closed 962e0daf, seal 20261005-1657 kept in land/seals/1657). 14 open. hv's words today: \"JUST RUN THE TESTS\" (the box is off, heavy runs go in parallel) and \"delete the scratch clones. Yes, always.\" RUNNING at this localfold: the full suite over main 962e0daf plus cc's 0157 v2.1 (1e9003ec...), 0158 v2.2 (09593fa8...) and 0156 v2.1 (cd5e5bc4...), applied in that order, in ~/Devel/scratch/devbin-vc/0.1.9/land-156, from 17:49:31Z, 2159 tests, console land/suite-156.console; 1395 ok, 0 not ok at 18:19:40Z. The three are REVIEWED AND APPROVED (review/0156-0158-0157-v2-notes.md; the root-.gitignore arm is declared, not built or filed) and cc's HANDOFF is in: patches in ~/Devel/scratch/devbin-cc/sp-2026-10-03/patches (copies in land/), messages 0157-commit.v21.msg, 0158-commit.v22.msg, 0156-commit.v21.msg and Resolutions 0157-resolution.v21.md, 0158-resolution.v22.md, 0156-resolution.v21.md, only {SUITE} and {SHA} open. ON PICKUP: read land-156/tmp/test/<stamp>.bats.out and .errors (rc, ok and not ok counts, .errors empty, skips the five expected). On green, land ONE AT A TIME in the shared tree, because they share lib/runlog, lib/cmd/release, runlog.bats and releasecut.bats: apply 0157, commit --only its paths; apply 0158, commit; apply 0156, commit; then cmp every path of the three against land-156 and git apply --check -R each. Fill {SUITE} with vc's result and {SHA} with each landing sha; store body plus a blank line plus the Resolution, through intent issues edit N --from, then intent issues close N; commit the views, canon json, .intentfiles and new events (git add the events first, only the issue's). Scan every text with ~/Devel/scratch/devbin-vc/0.1.9/w1/rawscan.py on stdin. Keep the seal in land/seals, delete the clone. Then tell cc the new main sha. NEXT: cc rebases 0155, 0160, 0161 and 0162 onto that main. dc's 0163 v3 and 0167 shared lib/helpers, lib/cmd/fullcycle and lib/pages/check.md with these three, so they suite on main after them; then 0168, 0165, 0170, 0171, and 0172 last. For hv at the cut: publish-upgrade the machine install before any sweep (cc's OUT-4); then todo 145."
+  }
+}

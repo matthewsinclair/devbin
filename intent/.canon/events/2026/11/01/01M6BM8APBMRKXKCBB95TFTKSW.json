@@ -1,0 +1,16 @@
+{
+  "id": "01M6BM8APBMRKXKCBB95TFTKSW",
+  "ts": "2026-11-01T13:19:49.451Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 73,
+    "text": "The 0306+WP17 stack, RUNNING in slot 01M6BKT367YF4D73C91YWQTSA2 (granted by vc 13:12:48Z), the driver started 2026-11-01 13:19:30Z at refs/bank/dc/ST0011-17 d0a403f5 (0306 1377002d, WP17 d0a403f5 with its critic r1 and r2 settles squashed; r3 settled, its one recommendation, a stale comment in lib/helpers, carried by the hook-in unit) on f3462610, main ac18a7de's tree, so it lands by land-stack.sh with LAND_BASE_OFF_MAIN=1. Driver ~/Devel/scratch/devbin-dc/stack/run-stack.sh, log stack/run-stack-d0a403f5.log. END to vc the moment the driver exits; hands off the stack's clones until then. AT-6.1 and AT-6.2 (to-write, 60ce1c1c) take verdicts after the landing. Kit and resume point: stack/NOTES.md."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M419B00X8K7GY0RG029BJXAT",
+  "ts": "2026-10-03T16:25:14.526Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0153"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The tracked manifest records where devbin was vendored from, a machine path, in every consumer"
+  }
+}

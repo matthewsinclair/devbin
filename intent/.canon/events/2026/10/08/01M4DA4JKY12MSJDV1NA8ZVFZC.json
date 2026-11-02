@@ -1,0 +1,16 @@
+{
+  "id": "01M4DA4JKY12MSJDV1NA8ZVFZC",
+  "ts": "2026-10-08T08:30:05.950Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 18,
+    "text": "0186 v1.1 IN BATCH 4, reviewed and passed by vc on 2026-10-08. Handed 07:58Z. vc's review on main 476cf82e: it applies there, differing from ed277e36 only at 0184's two files; red 11 of 14 by a tests-only apply; green 14 of 14 under BSD and GNU; vc's mutants 20 of 20; shellcheck clean. Drafts v1.2, with vc's two wording fixes, ACCEPTED: 0186-commit.v12.msg (83457f82) and 0186-resolution.v12.md (3170df72), {SUITE} and {SHA} vc's. Patch unchanged: patches/0186.v11.on-0185v21.patch (aefddb93), 18 paths. cc's evidence: targeted 1235 of 1235, full suite 2253 of 2253 (seal 20261008-0656, kept at seals/wsuite186v11/). vc's batch 4 suite of main a19ce006 + 0186 + 0187 is running. WAITING ON vc's landing; after it, export b186's commits from w186 and verify the export in a fresh clone of the shared tree, then delete w186, wtgt186v11 and wsuite186v11, keeping the cited seals. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0186."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M68QVKP2G149XJRBMHR64TCA",
+  "ts": "2026-10-31T10:25:03.683Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ST0011's dc lane is banked and unrun, on hv's order of 2026-10-31 (bank, clear out, fold, compact, hold): refs/bank/dc/ST0011-03 at 43142be2 (the folded WP03), -04 at b7e8a906, -05 at 285e2b83 (WIP: only lib/release.legs) and -06a at 447566f7; each note is in ~/Devel/scratch/devbin-dc/wp0N/BANK.md. Held, with no code and no runs, until hv or vc says go; then WP03 rebases onto the landed WP01 and asks for its slot."
+  }
+}

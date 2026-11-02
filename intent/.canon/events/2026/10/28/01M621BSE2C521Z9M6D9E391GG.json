@@ -1,0 +1,16 @@
+{
+  "id": "01M621BSE2C521Z9M6D9E391GG",
+  "ts": "2026-10-28T19:56:30.018Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 31,
+    "text": "Never run `fleet doc` while fleet lives in devbin: it writes a client's installs into a tracked doc."
+  }
+}

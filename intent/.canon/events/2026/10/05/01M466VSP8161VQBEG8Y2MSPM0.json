@@ -1,0 +1,16 @@
+{
+  "id": "01M466VSP8161VQBEG8Y2MSPM0",
+  "ts": "2026-10-05T14:18:11.528Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "0.1.9 bundle, vc's assignment on hv's word of 2026-10-05 (every open issue closes before the cut); dc holds 0163 to 0173 and 0176. 0173, 0169 and 0166 are landed and closed. 0164 v2 and 0176 are approved and in vc's suite (land-164-176), landing after cc's 0153 and 0175. 0163 is on vc's ruling B (cargo is asked where a crate beneath each hole would build, from the hole's parent); its v2 is built, and its second critic-shell pass is in and not yet folded, with one design question for vc (a hole beneath a workspace whose own config pins target-dir = \"target\"). Its handoff goes on main plus cc's 0159. 0167 is built on 0163 v2 (one shared-tree test with clean). Then 0168, 0165, 0170 and 0171, and 0172 once cc's 0153 and 0159 land. Every step, sha and command: ~/Devel/scratch/devbin-dc/0.1.9/STATE.md."
+  }
+}

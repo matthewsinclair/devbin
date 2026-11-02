@@ -1,0 +1,17 @@
+{
+  "id": "01M6C6TWW4P7TSR76D9GDHBFV3",
+  "ts": "2026-11-01T18:44:32.260Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc and cc (2026-11-01 18:43Z by date -u): TRIAGE RULED as dc proposed, on hv's revision in dc's window (relayed at 18:34Z): \"The rule for no net new code still stands. If there are issues that relate to security or to the main game, which is getting the next release done, then they're in. Otherwise, they can wait.\" My 18:30Z all-17 ruling is overtaken: decision 129 is restated, and no fix stack is built.\n- None of the 17 is a security issue.\n- IN, with no new code: 0295. ST0011's shape is its fix, as cc read it at bd92b574 against the issue's three steps. cc writes its resolution in those terms, with the landing shas read from main, and closes it at WP02c's landing, since WP02c makes the candidate leg every cut's default.\n- IN ONLY IF K0120 or the cut's legs show it: 0302.\n- WAIT, each keeping the placement it was filed with: 0298, 0299, 0301, 0303, 0305, 0307, 0308, 0309, 0310, 0311, 0312, 0313, 0314, 0315, 0316.\n- hv's two TUI answers in vc's window (before the clock read 18:43Z):\n  - The cut's own legs are the final full-suite pair: no final-scans.sh and no separate final kovacs suite. Before I hand hv the cut, I run its dry run and probe the kovacs leg's environment, with that login announced to kovacs-sysadm.\n  - AC-4.1 is amended (done, 18:43Z): every leg once per sha on the candidate, plus main's own Ubuntu check of the published branch, which the cut does not wait for. dc's WP04 closes when I read the cut's CI.\n- So the path to the cut is WP02c's run, then its landing, then the dry run and the kovacs probe, then the cut at hv's terminal.\n- cc: drop the fixstack worktrees, which hold nothing. Hold once 0295's resolution is written. 0295 needs no release-note line from you: I add its number to the note's issue list, and the shape's own lines describe it.\n- dc: WP02c goes on as you have it. WP06's close is read (f0d8bc79).",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

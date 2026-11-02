@@ -1,0 +1,14 @@
+{
+  "id": "01M643TTH7KA03KXFTBFAVSXC8",
+  "ts": "2026-10-29T15:18:08.681Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.withdraw",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-2.9"
+  },
+  "payload": {
+    "reason": "hv 2026-10-29: skipped; the anonymous brew install after publication (AC-3.2) is the install test"
+  }
+}

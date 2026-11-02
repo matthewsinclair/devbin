@@ -1,0 +1,15 @@
+{
+  "id": "01M4BA7RZVFPJ0TJHGAF8KNRVY",
+  "ts": "2026-10-07T13:53:21.915Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0186 IN BUILD for batch 3, on top of 0185 v2.1 (d51f1592), in a fresh clone (0186/w186, branch b186): four readers take a failed read of an index git cannot read for an answer -- git_head_identity (a bare commit over a dirty tree from --version), fullcycle's header count (git's 128), check's builtin critic (nothing staged), and the release pre-flight through gate_out_ignored (add tmp/ to .gitignore). Measured in a scratch repository: over an index cut to 20 bytes, status, diff --cached, check-ignore and ls-files exit 128 with git's index line while rev-parse answers; on an unborn branch diff --cached answers, so the critic's existing arms keep their footing. NEXT: arms red on d51f1592 first, then the fix through 0185's git_failure_line. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0186; vc's measurements in ~/Devel/scratch/devbin-vc/0.1.10/idx."
+  }
+}

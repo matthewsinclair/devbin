@@ -1,0 +1,15 @@
+{
+  "id": "01M2NVE0E35S02CS98GJGC1VXK",
+  "ts": "2026-09-16T19:34:52.611Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**0078: Intent owns hook wiring** (hv, 2026-09-16, to vc in session, taking vc's recommendation over a devbin doctor detector or devbin setting core.hooksPath). Filed at Intent as intent#0426 (d74121952); devbin's 0078 closed as routed."
+  }
+}

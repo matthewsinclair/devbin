@@ -1,0 +1,15 @@
+{
+  "id": "01M45J50B4TT5S92DM6F9GSKSH",
+  "ts": "2026-10-05T08:16:13.156Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "NEVER RUN fleet doc WHILE FLEET LIVES IN DEVBIN: it writes every install outside the roots into a tracked doc, a client's among them, and fleet audit prints the same list to stderr. Audit output stays in scratch, and only numbers go into a commit or a resolution. Found 2026-10-05 while measuring the client-name exposure; the census doc last generated on 2026-09-22 names no client."
+  }
+}

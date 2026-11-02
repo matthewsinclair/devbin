@@ -1,0 +1,16 @@
+{
+  "id": "01M621BNBFXRWZZMHTZPPVE7E8",
+  "ts": "2026-10-28T19:56:25.839Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 82,
+    "text": "hv 2026-10-27: no magic numbers in tests or guards; prose, Resolutions and boards may carry counts."
+  }
+}

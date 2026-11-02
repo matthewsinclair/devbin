@@ -1,0 +1,16 @@
+{
+  "id": "01M6B9Q0N297F86WKD5WS68SFB",
+  "ts": "2026-11-01T10:15:36.354Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 124,
+    "text": "WP16's run and its re-run (restated 2026-11-01 10:15Z by date -u, at the run's END). The run ended red at acc813e0, with exactly six reds: the driver ended at 10:11:41Z by dc's clock and the slot was released at 10:11:55Z. The first ruling, at 09:52Z before the END, covered three reds; that conditional shape is void by its own terms.\n\nWP16's own five reds, each red under GNU and BSD, are fixed in a re-bank of exactly five files:\n- helpers.bats 45: cache.bats spelled the raw sha256 tools; it now takes them from lib/helpers.\n- helpers.bats 47: lib/cmd/cache's mv -f joins the known mv -f lines.\n- surfaces.bats 26: cache gets its row in 0128's option-less built-in table.\n- contract.bats 36, the lint gate: the array locals of cfg_build_input_paths in lib/config are renamed _bip_paths and _bip_seen. shellcheck -x read the old names through lib/cmd/ci-state and lib/cmd/fullcycle, which source lib/config. dc ran the gate over the fix: 57 files, 0 breaches.\n- neutral.bats 8: the comment at lib/config.reference.yaml:673 no longer cites the tracker; it is reworded on the same line.\n\nMain's own red, not WP16's: BSD 542, dispatch.bats's raw-argv arm (0087), at lib/cmd/release:550. There release_gates_run's run_gate forwards its raw positional list after the bare --. It comes from WP02a's bd13167f, is identical at the base aa566d51, and is still in cc's WP02b-1 bank. It is fixed in WP02b-1, which reworks that function. The design is cc's: either the call forwards as the arm accepts, or the arm learns that this argv is not user argv while staying red on a real raw forward. dispatch.bats joins WP02b-1's unit run whole, under BSD and GNU.\n\nThe re-run is decision 120's shape again, at the new tip, by runs.sh with runs.conf unchanged except RED:\n- the arms at a new red clone. The base carries the sha256 helpers the new cache.bats uses, so the cache arms go red only because the cache command is missing.\n- the light phase under GNU.\n- the whole suite under BSD. It runs again because every command sources lib/config and eleven suites read the reference yaml.\n\nExactly one red is expected, dispatch.bats 542 under BSD; any other red stops the landing. vc reads the re-bank's diff from acc813e0 before the ask. On the desk, the re-run takes the place of devbin-vc's own Intent preflight."
+  }
+}

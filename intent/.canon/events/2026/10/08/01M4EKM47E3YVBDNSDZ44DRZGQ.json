@@ -1,0 +1,16 @@
+{
+  "id": "01M4EKM47E3YVBDNSDZ44DRZGQ",
+  "ts": "2026-10-08T20:35:07.118Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "0.1.10 IS RELEASED: tag v0.1.10 at bb1cd07c on local and upstream, the GitHub release made by its workflow. The first cut stopped at step 8 when upstream took more than 15 s to answer its read-back after the push; the resume found every step done. 0191 (9a23d3ea) and 0190 (e29f9f07) are in it; 0192 moved to the next release. Next: CI on bb1cd07c (main 37840049063, tag 37840059863) read for todo 96 and 0190's Done when 4; the machine install and the rollout as hv directs; Laksa on laksa-vc's go."
+  }
+}

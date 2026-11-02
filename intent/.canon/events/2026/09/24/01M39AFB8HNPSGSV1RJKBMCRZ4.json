@@ -1,0 +1,15 @@
+{
+  "id": "01M39AFB8HNPSGSV1RJKBMCRZ4",
+  "ts": "2026-09-24T09:03:19.313Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Tell intent/vc, at low urgency (hv accepted this in the day's plan), that Intent's index reports complete: true in devbin while shell has no grammar. cc re-measured it at 08:36Z on 3.2.0 (4c687eaadbf1): a def query for vendored_paths returns 0 hits under complete: true, while git grep finds it at lib/install:258, and intent index status says shell no-grammar. So CLAUDE.md's fall-back rule never fires here. The ask: complete should account for a declared language that has no grammar. Filing it is intent's call."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5Z10YF3ZCN4G2S6VBTH3VCF",
+  "ts": "2026-10-27T15:52:51.428Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0276"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "upgrade from an older install says it cannot tell the direction, when both manifests' versions tell it: where the commits answer unknown, the versions decide (not in 0.1.16)"
+  }
+}

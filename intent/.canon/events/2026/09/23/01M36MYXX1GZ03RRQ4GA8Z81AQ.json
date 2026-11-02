@@ -1,0 +1,15 @@
+{
+  "id": "01M36MYXX1GZ03RRQ4GA8Z81AQ",
+  "ts": "2026-09-23T08:08:52.386Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0119"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "bare shell-init exits 2, the code the contract reserves for an unknown or inactive command"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5PBC4V0N7KV6JFZ258K60XH",
+  "ts": "2026-10-24T07:00:34.272Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0211: split fullcycle.bats:3654 into its two statements and drive the existence check red with the tree removed; repair :708's doubled comment; find every line in tests/ carrying an assertion helper and a second statement. Red on main first, green BSD and GNU, targeted run with the tree scans, booked through devbin-vc; seal and draft in the bundle for vc"
+  }
+}

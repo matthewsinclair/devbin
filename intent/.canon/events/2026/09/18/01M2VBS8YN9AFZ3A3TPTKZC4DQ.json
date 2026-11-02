@@ -1,0 +1,15 @@
+{
+  "id": "01M2VBS8YN9AFZ3A3TPTKZC4DQ",
+  "ts": "2026-09-18T22:56:51.157Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Docs sweep, hv's ask (2026-09-18 22:5xZ): as-written docs against as-built code, in dc's lane** (README, docs/configuration.md, docs/releasing.md, ST0007 design.md as-built, CHANGELOG/RELEASES). Anything outside dc's lane goes to its owner as a note, not an edit. Start once todo 34 is committed."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "01M5P9T5DRK47AKZRE6CJZKGSE",
+  "ts": "2026-10-24T06:33:16.473Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.withdraw",
+  "subject": {
+    "type": "ac",
+    "id": "ST0008/AC-6.4"
+  },
+  "payload": {
+    "reason": "hv, 2026-10-24: there is no Windows machine or licence here, and devbin on Windows is tested on client machines, taking it from there; the smoke list itself runs green in CI's WSL 2 job on every release tag (AC-6.5), so no estate's confirmation is awaited"
+  }
+}

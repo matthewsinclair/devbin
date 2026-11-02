@@ -1,0 +1,15 @@
+{
+  "id": "01M68SWD8TC7RFRZTBG4MRCMQQ",
+  "ts": "2026-10-31T11:00:27.034Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "Hold through WP02a, WP02b and WP07 (vc, 2026-10-31, for a consumer's re-cut): DEVBIN_RELEASE_CONFIRMED keeps its name and its value, the tag (--yes answers the confirm and sets it for the after: commands; a consumer's brew helper reads it), and release attach --from <dir> survives for object: local, WP07 adding the run keyed on the release commit's sha and removing nothing."
+  }
+}

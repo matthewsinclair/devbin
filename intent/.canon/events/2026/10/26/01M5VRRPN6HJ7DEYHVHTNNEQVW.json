@@ -1,0 +1,15 @@
+{
+  "id": "01M5VRRPN6HJ7DEYHVHTNNEQVW",
+  "ts": "2026-10-26T09:30:49.382Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-26 09:29Z, relayed by molt-vc: K115 at c4f52b8e ended red on one arm (k115.rc 1, run 08:52:53Z to 09:22:41Z), tests/unit/targetdir.bats:773 (2357, 0164's no-cargo arm), with both readonlygit gitproj arms green there. The arm hides only the first cargo on PATH, and kovacs has two (Homebrew's, then rustup's). hv chose (A), test-only issue 0234 (filed at 63d46530), over (B) a kovacs PATH change and (C) a deferral: the arm shadows every PATH entry holding a cargo, rebuilt entry by entry, and fails by name when one is still found. cc builds it on 0233 (860436b0), with light evidence on rhadamanth (main red under a PATH with a second cargo directory, green at the fix, targetdir.bats green under BSD and GNU); it lands and pushes with 0233, and one CI run on the new head is the cut's green. K115's verdict carries to the new head with 2357 covered by 0234, as 0233 covers the readonlygit arms; no kovacs re-run. On the record: K115 ran Homebrew's cargo, not rustup's proxy as CI does (sourcing ~/.cargo/env does not reorder a PATH that already holds ~/.cargo/bin), so CI's run on the new head covers the proxy path 0222 fixed. Not put to hv again."
+  }
+}

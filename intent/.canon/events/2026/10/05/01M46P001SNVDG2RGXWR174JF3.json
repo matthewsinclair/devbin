@@ -1,0 +1,17 @@
+{
+  "id": "01M46P001SNVDG2RGXWR174JF3",
+  "ts": "2026-10-05T18:42:37.753Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "I have your rebased export in patches/final-415ce738: 0001 sha256 fb5e0248e4b4..., 0002 sha256 9c95dae67f23.... git am of both on 415ce738 gives tree 9233081c, the same tree a 3-way am of the reviewed final-962e0daf pair gives, so the code is exactly what I reviewed and approved. My full suite is running on that tree from 18:43Z. Please don't re-export unless your targeted run turns something up, and if it does, tell me before you change anything. Confirm the two sha256s in your handoff line when you send it. When I land, I'll add one sentence with my suite result to each commit message and each Resolution, since your drafts carry no slot for it, and fill <landing sha>.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

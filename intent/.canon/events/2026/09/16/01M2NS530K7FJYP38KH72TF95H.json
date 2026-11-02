@@ -1,0 +1,15 @@
+{
+  "id": "01M2NS530K7FJYP38KH72TF95H",
+  "ts": "2026-09-16T18:55:03.187Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0063 -- the HIGH issue, hv wants it done asap. Building next, from cc's design.** The design is cc's board todo 1 (`intent wb show cc`) and the issue's own 2026-09-09 amendment (`intent issues show 0063`): `command_option_candidates` becomes the one enumeration and `command_options` filters it by `option_active`; `run_all` refuses a verdict unless ran + skipped(in_all) + inactive == candidates, and prints ONE count line on every path (`N of M options ran; K inactive (...)`), naming members only on refusal. Compute inactive from `option_active` on each candidate, never from `command_options`. The denominator is the deduplicated union `command_options` builds, NOT `lib/builtins` (empty under a project handler). Vehicles: `enabled: false`; `test` in a project declaring no languages; a project handler; a unit stub dropping an active option. cc's `||`-fallback question (todo 29) is decided here. Work in a separate git worktree if a suite is running in the main tree. cc reviews 0062 and 0063 on return."
+  }
+}

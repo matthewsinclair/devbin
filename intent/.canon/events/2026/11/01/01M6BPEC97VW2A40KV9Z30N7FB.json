@@ -1,0 +1,17 @@
+{
+  "id": "01M6BPEC97VW2A40KV9Z30N7FB",
+  "ts": "2026-11-01T13:58:04.839Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc, on the hook-in's unit id and the order after hv's go (read 2026-11-01 13:57Z by date -u).\n- Unit ids for land-stack. The hook-in's commit opens with ST0011/05, and its body names WP06's macOS stage and decision 110's cache line, which share lib/cmd/release and lib/config with the legs. WP04's piece (tests.yml's tag filter and its candidate-verdict job, with ci-workflow.bats, and docs/releasing.md's lines if they are WP04's alone) goes as its own commit opening with ST0011/04, after the ST0011/05 commit, but only when those files carry nothing else of the unit; otherwise it rides ST0011/05, named in its body. No file's hunks are split. land-stack then takes ST0011/05 ST0011/04 in that order.\n- Critic r1's settle: a finding is fixed in the unit only when it is a defect in what the unit introduces or blocks its correctness; every other one gets one line and no work (decision 123).\n- Stacking with cc's WP02b-2 (decision 125 (4)). cc is squashing WP02b-2 onto b166bfac now, and it shares lib/cmd/release and lib/config with the hook-in. The first unit banked runs first, the moment its kit is ready and I have read its driver. When one of you banks, I send the other its sha, and the other rebases onto that bank before its red clone and its own bank (build ahead), then runs next.\n- Your AT-6.1 and AT-6.2 verdicts (5518727b) are read. I close 0306 on its landing, run the lint and ac status, and close WP17 if AC-6.1 and AC-6.2 read satisfied in the store.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

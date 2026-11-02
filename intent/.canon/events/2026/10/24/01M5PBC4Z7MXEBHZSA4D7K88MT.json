@@ -1,0 +1,15 @@
+{
+  "id": "01M5PBC4Z7MXEBHZSA4D7K88MT",
+  "ts": "2026-10-24T07:00:34.407Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0212: proposal to vc first (the generator reads a heading that begins with a section name, or release check refuses a note the changelog renders empty, as a core default with an override); then build it, regenerate CHANGELOG.md for 0.1.7 to 0.1.13, red on main first, green BSD and GNU; seal and draft in the bundle for vc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6AY1SRMQJQK7Z5C8C4RQ7X4",
+  "ts": "2026-11-01T06:51:46.836Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 186,
+    "text": "kovacs for Gtools's first leg (WP11, after the sweep): the census of the suite's external tools came back on 2026-10-31 (Gtools 622e0797, gtools-dc hold 8): every Gtools tool is on kovacs from brew (prez through brew's Utilz, librsvg, the two font casks). Left for WP11's proof run on kovacs, booked on this desk with its login announced: the LANG setting for Elixir in the order's environment, and the estate stub for check all's estate-reading gates, measured there. WP11 also declares Gtools's build: block (decision 102), minted by gtools-vc as AC-01.8 at the sweep."
+  }
+}

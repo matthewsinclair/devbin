@@ -1,0 +1,16 @@
+{
+  "id": "01M5Y60QV1S5SFESFHD2D1H0N4",
+  "ts": "2026-10-27T08:00:53.090Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 96,
+    "text": "A PUSH IS DONE when CI is green on the pushed sha (hv, 2026-09-22), and a cut needs CI green on its base first (decision 62, 0223). Baseline: run 40465956795 on 1ed432d8, green (Ubuntu, ShellCheck, Test Summary), read in full on 2026-10-27; it is the head of vc's push of 349bf03e..1ed432d8 on hv's word. devbin 0.1.15 was cut on run 40349359447 on a81f0f98. Read every push's run from its jobs, its TAP and its skips against the last green's. A job log GitHub serves with no step names (every line UNKNOWN STEP, as every log read on 2026-10-27 was) is read with CI_READ_ANY_STEP=1 in ~/Devel/scratch/devbin-vc/tools/ci-read.sh, never taken as an empty plan."
+  }
+}

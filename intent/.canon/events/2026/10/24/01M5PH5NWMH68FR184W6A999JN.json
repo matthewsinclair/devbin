@@ -1,0 +1,16 @@
+{
+  "id": "01M5PH5NWMH68FR184W6A999JN",
+  "ts": "2026-10-24T08:41:53.812Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public: STARTED 2026-10-24 (vc claims it); decision 56 (MIT; the workroom in the local mirror only). LANDED 2026-10-24 on landing suite 20261024-0831 (2442 of 2442 ok; seal clone-archive/seals/land114-20261024-0831, bundle clone-archive/land114__6cc594fb.bundle): 0210 at 4339a60e (README brew-first, one maintainer section), docs/dev-opt-brew.md at aeed31e4 (the shared contract, decision 57; path and commit sent to molt-vc, utilz-vc, intent-vc), 0214 at e779464e (MIT everywhere, harness arm, DMARC fixtures), 0211 at 44e41b6d, 0212 at 9aac2f1b; closed at a99481ca. 0201 CLOSED (64bb6a91). IN FLIGHT: 0213 (devbin use, the machine pointer retired, the tree line, install --force, T3 keys, and decision 58's T3 amendment in the doc), built by cc in ~/Devel/scratch/devbin-cc/0213/dev; its touched-files run showed the expected moves (fleet and upgradeoffer likely one shared fixture); cc fixes, rebases onto main, re-runs through vc on molt-vc's desk, bundles; then one landing suite, then T10's proof per tree in Molt, Utilz, Intent (through intent-vc) and devbin checkouts. FOR hv WHEN BACK (~/Devel/scratch/devbin-vc/st0010/review/SUMMARY.md): (1) the scope of the workroom-text scrub, vc recommends main plus a guard as one issue; (2) fleet leaves the public tree; (3) whether ctrlaltcompete.com (tests/unit/infra-check.bats:485) is hv's own. LEFT: the scrub and fleet on hv's word; the backup, hv's delete and recreate of matthewsinclair/devbin, https urls and a public tap, the first public release 0.1.14, every estate re-vendored; the fleet to 0.1.13 and issues 0207 to 0209 on hv's go. main is unpushed (pushes are hv's)."
+  }
+}

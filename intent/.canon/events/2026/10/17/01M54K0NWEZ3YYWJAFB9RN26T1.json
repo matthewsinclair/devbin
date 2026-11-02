@@ -1,0 +1,15 @@
+{
+  "id": "01M54K0NWEZ3YYWJAFB9RN26T1",
+  "ts": "2026-10-17T09:27:47.342Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLD ON THE FOLD until hv's word after the compact (hv, 2026-10-17 about 09:2xZ, relayed by utilz-vc: \"context is high... bank what we have then localfold and compact\" across Intent, Devbin, Utilz and kovacs). Devbin is cut-ready at 7dcb442e and R1 runs on kovacs (started 09:27:08Z). AT THE RESTART: /in-session, the pickup, commit it by path; read R1's END (intent-vc relays it, or ~/work/devbin-vc/r1.rc over ssh) and record it in todo 154; if green, tell utilz-vc and leave the cut to hv's terminal; if red, read the seals and file what failed. After hv cuts: installs on rhad and kovacs, CI's answer, the tag sha to utilz-vc."
+  }
+}

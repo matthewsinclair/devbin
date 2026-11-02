@@ -1,0 +1,15 @@
+{
+  "id": "01M698HZPNEAJ26R8CBT4MYDRG",
+  "ts": "2026-10-31T15:16:54.104Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0301"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The release fixtures' project builders let a failed step pass: git_project, cut_project and the builders around them check no step, so a failure inside $(...) reads as a project made"
+  }
+}

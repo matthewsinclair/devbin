@@ -1,0 +1,15 @@
+{
+  "id": "01M2W7RDZXKFQ9A3MKVZDYVHJZ",
+  "ts": "2026-09-19T07:05:43.677Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0091"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "run_tty_answer waits forever when the prompt is slower than its 30s timeout, so a loaded machine hangs the full suite silently"
+  }
+}

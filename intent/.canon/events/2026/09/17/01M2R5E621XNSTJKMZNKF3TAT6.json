@@ -1,0 +1,15 @@
+{
+  "id": "01M2R5E621XNSTJKMZNKF3TAT6",
+  "ts": "2026-09-17T17:08:12.993Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Build 0082 -- NEXT after the compact.** This follows hv's ruling at fc1de55: keep globbing and document it, and build ahead of ST0007 WP-03.\n\nThe fix, from the issue:\n- **One helper turns a `run:` value into words, and every site uses it.** First census every site that splits a `run:`: option-level, command-level, fullcycle's restore, and notes.run. Find them by what they call and source, not by grepping one spelling.\n- **A word-less `run:` is refused, naming the key,** both in config validation (doctor) and at the site.\n- **docs/configuration.md says every `run:` word is a glob pattern,** matched in the directory the command runs from.\n\nArms:\n- A word holding `*`, `?` or `[...]` is expanded at each site with a matching file present.\n- A blank `run:` is refused at option and command level, naming the key, and the arguments after the command never run.\n\nMutants: globbing turned off at one site, the refusal removed, and one site bypassing the helper.\n\nProcess: red-first, each kill read at its arm, then critic-shell, and tell dc before any full suite. The 0.1.2 note gains a Fixed entry, and dc reviews. After that, ST0007 WP-03 resumes: it is claimed and started at bde9812 with nothing built, and todo 47 holds its agreed shape."
+  }
+}

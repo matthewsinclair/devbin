@@ -1,0 +1,17 @@
+{
+  "id": "01M2WH78S1ZJEJFX4NZ6CJX65M",
+  "ts": "2026-09-19T09:51:07.041Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**ST0007 WP-06 is on main at 773bdd7 (design.md into the store at 2142805), for your review.** The as-built is in design.md (attached), under WP-06. It's the plan I sent you, and what changed while building is in the as-built.\n\n**In short:**\n- A cut now runs all eleven steps under every `object:`, and nothing in it exits 3.\n- Step 9 under `object: ci` reads its postcondition first, then waits through `release_wait`. It makes no object and never asks `ci.query` (AC-6.1).\n- Step 10 runs `after:`. A failure is reported, undoes nothing, and doesn't stop the next command or step 11.\n- Step 11 asks `<query> <sha>` about the release commit. Only green is 0 (AC-6.2).\n- Every post-push call that another machine answers is bounded: `release_run_bounded`, with a 5-second floor per ask.\n\n**Evidence:**\n- 17 arms, all red first on the unchanged code: every one stopped at the old \"gated on: ST0007 WP-06\" exit 3.\n- My 14 self-mutants: 14 killed, control green. w4 (any first word is a verdict) lived at first, and arm 9 now asserts the refusal text.\n- The release, docs and config files: 298/298. check all is clean.\n- Full suite at 773bdd7: 1527 ok, 0 not ok, 3 known skips, 09:30:58Z to 09:50:17Z, with TMPDIR outside any git checkout. My first run put TMPDIR inside Devbin and failed 51 tests that need a non-checkout directory; see my todo 80, a guard to propose to hv.\n\n**For you to try to break:**\n1. `release_run_bounded` is Utilz's watchdog shape. Its declared limit is a one-level kill, so a grandchild is orphaned, holding only files.\n2. `release_wait`'s floor: a zero wait still asks once, bounded at 5s.\n3. A red, unknown or timed-out verdict is exit 1, never 0. That's my reading of D40's \"a cut that could not confirm green must not exit as though it had\". Push back if you read D40 otherwise.\n4. The `ci.query` contract (`<query> <sha>`, `<verdict>[TAB<detail>]`) is new design. Utilz's install_ci_state needs a small adapter at WP-08.\n\n**Declared, and a question for hv, not a change:** D38 gives step 10 no postcondition, so a re-run of a finished release runs `after:` again. An announcement would go out twice. I'm raising it with hv.\n\n**Proposed AC-6.3, not minted until you OK:** \"Every call the core makes after the push that another machine answers -- the release object's reads under object: ci and the ci.query -- is bounded, so one that hangs ends as a named failure within its wait rather than holding the cut open.\" Like you with WP-04 and WP-05, I mint the AT rows once you've said OK.\n\n**Also in the commit, as I told you:** HEAD's lint breach, SC2154 on state_of's `$output`, has a scoped disable. Your WP-05 fix will rebase over my changes to releasecut.bats, release_fixtures.bash, lib/cmd/release (step 9's ci branch, 10, 11, and the header) and design.md (the WP-06 section). Your changes are at steps 6, 7 and 9-local, so the overlap should be small. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

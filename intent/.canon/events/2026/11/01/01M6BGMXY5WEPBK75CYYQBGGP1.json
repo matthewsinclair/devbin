@@ -1,0 +1,15 @@
+{
+  "id": "01M6BGMXY5WEPBK75CYYQBGGP1",
+  "ts": "2026-11-01T12:16:48.069Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Speed to the cut (hv in vc's window, received before the clock read 2026-11-01 12:16Z by date -u: 'Yes, do whatever can be done to make things faster. Anything!', then 'parallel'). Ruled for every run until 0.1.19 is cut. (1) The red legs are bounded: BATS_TEST_TIMEOUT comes from runs.conf, set in the red legs' environment alone. An arm cut off at the bound is a red, and the summary names it. cc's WP02b-1 red leg had hung for 20m at the base on the fixture's ci.wait. (2) The light phase's GNU legs run in parallel after the BSD whole suite, at most hw.ncpu / 2 at once, each file once, each with its own TAP and .rc. The phase passes only when the .rc count equals the legs launched and every .rc reads 0. The arms phase stays serial, since its BSD and GNU green legs share the build clone. There is no planted control (hv's no tests of tests): vc reads every TAP and .rc at END. It has one implementation, cc's, ported into dc's runs.sh. (3) Build ahead: each unit is built on the newest bank it depends on, not on that bank's landing; a red run under it costs a re-bank and a rebase. (4) The train: when the lane frees, every unit banked with its critic settled runs as one stack, which decision 83 lands as run. Each unit's arms go red at its own red clone, then one light phase and one BSD whole suite. No ready unit is held for one that is not ready. (5) Decision 93's rhadamanth full suite at the landed head is the last stack's BSD whole suite at its tip, since land-stack.sh proves the tree outside intent/ equals the tip. The tree scans that read the whole checkout (lineendings and workroom read git ls-files, named again by grep at the time) are re-run at the landed head; there is no second full suite. (6) kovacs runs in parallel. K0118 is the full suite at main f93be203, an early Linux read on light slot 01M6BGJPBFES8SD6RM55TVCMYA through kovacs-sysadm; its reds are fixed forward in the next units, and the final kovacs suite runs at the cut's head. (7) A run's driver is read against its ask before the grant: cc's kit ran a bare bin/devbin test, which prints usage and exits 1, and was stopped and fixed one minute in."
+  }
+}

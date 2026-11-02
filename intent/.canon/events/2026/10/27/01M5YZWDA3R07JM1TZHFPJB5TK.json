@@ -1,0 +1,15 @@
+{
+  "id": "01M5YZWDA3R07JM1TZHFPJB5TK",
+  "ts": "2026-10-27T15:32:54.213Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0274"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "Hand-run suites in several projects at once contend for one machine and time out: a run of a project's gates takes a machine-wide lock (not in 0.1.16)"
+  }
+}

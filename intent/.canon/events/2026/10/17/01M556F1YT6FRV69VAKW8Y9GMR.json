@@ -1,0 +1,15 @@
+{
+  "id": "01M556F1YT6FRV69VAKW8Y9GMR",
+  "ts": "2026-10-17T15:07:41.402Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLD ON THE FOLD until hv's word after the compact (hv, 2026-10-17 about 15:1xZ: localfold and compact devbin-vc, dc and cc). AT THE RESTART: /in-session, the pickup, commit it by path; then take dc's handover of the WSL root fix (wp06c) and carry on per todo 154's NEXT."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5SAGE6TSQ84GWAC27X0DYQA",
+  "ts": "2026-10-25T10:43:09.694Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). Resume state 2026-10-25 10:42Z (localfold on hv's call via molt-vc; no new heavy until hv says continue): 0.1.15 is devbin's ONE next release (decision 63) carrying 0213 and 0220-0229. LANDING STACK: land220 at 9fab8100 = main (593109bf outside intent/) + 0220, 0221, 0220b, 0222 (dc), 0223, 0224 (cc), 0226 (dc, 20361def, tools/stack226.sh), 0225 (cc, feb2b42a, tools/stack225.sh, -U0 lines identical); cand220 rebuilt from 9fab8100 (203 files, fleet absent); critic shell clean over its 91 changed files. NEXT INTO THE STACK: 0227 (cc, formula built-in, decision 65's design) once sealed clean on the scans and critic (dc's light found 8 scan findings on 0227's WIP abf8ffdd; cc's heavy was running at the fold), then 0228 (dc, back-to-brew note plus contract A1/A2, decision 66) restacked on sealed 0227 with a scan re-run as its light green and the pair as its BSD green. ON molt-vc's GO (land220 last in the heavy queue): bash tools/pair220.sh with START/END to molt-vc, read both seals, run the critic leg, write the land script (per-commit messages from each handover's COMMIT_MSG), fill the resolutions, close 0220, 0221, 0223-0228, ping hv; 0222 closes on CI green after hv's push. 0229 (xcodebuild counter, high, dc after 0228, fixtures from conflab-dc's logs) gets its own pair if it misses this one. Then the 0.1.15 note, the kovacs booking (0.1.15's Linux check plus 0213 leg D; kovacs is on brew 0.1.14), then ST0010's public steps (decision 52/56/60), then hv cuts. Contract amendments A1 and A2 agreed by molt-vc, utilz-vc and intent-vc, A2 approved by hv; they land with 0228."
+  }
+}

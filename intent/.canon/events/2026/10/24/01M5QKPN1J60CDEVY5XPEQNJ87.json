@@ -1,0 +1,16 @@
+{
+  "id": "01M5QKPN1J60CDEVY5XPEQNJ87",
+  "ts": "2026-10-24T18:45:21.586Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 165,
+    "text": "FOR intent-vc: the v0.1.14 tag was SENT 2026-10-24 18:44Z. Intent re-vendors once from it, after Intent's 3.2.6 tag and Intent issue 0635; then Intent's T10 leg of 0213 runs (cc, on vc's word)."
+  }
+}

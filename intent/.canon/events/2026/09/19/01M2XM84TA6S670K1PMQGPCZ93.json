@@ -1,0 +1,15 @@
+{
+  "id": "01M2XM84TA6S670K1PMQGPCZ93",
+  "ts": "2026-09-19T20:03:15.914Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "The 0.1.2 sweep pre-notice is DRAFTED for hv at tmp/vc/prenotice-0.1.2.md (git-ignored, 2026-09-19). It supersedes todos 58, 74, 77 and 81 as the list: re-derived from fleet audit (the estates hold 87a0d47, before the v0.1.1 tag; 52 seam commits, 21 files). Next: hv reviews it, it goes out, then ONE sweep on hv's go, done only when each estate's CI is green on its pushed commit (todo 82)."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M6D66F4PCRARS091EEM011WD",
+  "ts": "2026-11-02T03:52:37.270Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-11-02, in vc's window through the TUI, read 03:52Z by date -u: the 0.1.19 candidate's WSL 2 red (0318, localinstall's 0059 FORWARD arm) stays filed with its record corrected, and nothing else follows: no code and no run. The suspect first named, the fixture commits' background maintenance, does not hold on WSL's git 2.53, and the cause is unknown. Not to be put again."
+  }
+}

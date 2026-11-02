@@ -1,0 +1,15 @@
+{
+  "id": "01M3783R3E2NKKH0QGJ7Y2WX59",
+  "ts": "2026-09-23T13:43:33.230Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "TELL hv at the next report: (a) the series landed and closed (shas on doing 64); (b) 0116's census walk costs time -- cc measured audit at 17 s before and 52 s after, doc and upgrade pay it too -- and walking ~/Library/CloudStorage (Dropbox, Google Drive) is possible but network-backed, so vc states it as a blind spot instead; hv may want either changed; (c) decision 40 said devbin's own config names the roots, and they live in bin/.devbin/fleet.roots beside config.yaml, because lib/config refuses an unknown key and a key would enter the schema every estate vendors (cc agrees); (d) the two open decisions, the all ruling (todo 123) and 0130 (hold 10)."
+  }
+}

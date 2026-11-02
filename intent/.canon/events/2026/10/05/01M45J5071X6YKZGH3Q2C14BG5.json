@@ -1,0 +1,15 @@
+{
+  "id": "01M45J5071X6YKZGH3Q2C14BG5",
+  "ts": "2026-10-05T08:16:13.026Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-05: every open issue (0153 to 0174 today) is closed before the 0.1.9 cut, so the cut waits for the whole bundle; and the client-name scrub comes first. The client's own date is Tue 2026-10-13; if it is at risk the lever is batching full suites over patches with no file in common, not dropping issues."
+  }
+}

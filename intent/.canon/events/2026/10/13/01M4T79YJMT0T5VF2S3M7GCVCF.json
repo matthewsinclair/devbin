@@ -1,0 +1,15 @@
+{
+  "id": "01M4T79YJMT0T5VF2S3M7GCVCF",
+  "ts": "2026-10-13T08:50:43.924Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "EVERYTHING HELD UNTIL hv SAYS TODAY'S DEMO IS FINISHED (hv, 2026-10-13: nothing is touched before today's demo). Until then: no builds, runs, landings, pushes, sweeps, installs or scratch-clone changes, in devbin or any estate, and no word to cc to start 0192. The only writes are vc's own board, committed by id so the shared tree stays clean. cc and dc were told the same by live message on 2026-10-13, each asked to localfold, record its own hold and acknowledge live. When hv's word comes, the boot plan (the todo beside this hold) goes to hv again."
+  }
+}

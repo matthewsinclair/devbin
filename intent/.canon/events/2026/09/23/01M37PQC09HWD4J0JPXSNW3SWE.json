@@ -1,0 +1,15 @@
+{
+  "id": "01M37PQC09HWD4J0JPXSNW3SWE",
+  "ts": "2026-09-23T17:58:56.265Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "WATCH TODAY'S FLEET USE (hv, 2026-09-23: \"Yes\") -- PAUSED at the 17:58Z localfold for hv's hold. Re-arm it when hv lifts the hold: scratchpad/fleet-watch.sh watch 180, run in the background. Since its 07:40Z baseline it logged only Molt's five green runs (last 10:49Z) and no read failure across 14 repos. Still owed: one fleet audit to confirm every estate reads 0.1.7."
+  }
+}

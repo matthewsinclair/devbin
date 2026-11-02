@@ -1,0 +1,16 @@
+{
+  "id": "01M64JANF0QVVD2P0RBRJM8732",
+  "ts": "2026-10-29T19:31:27.840Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 42,
+    "text": "0.1.6 residue for hv: Anvil and arca_notionex await hv's word; laksa/dc asks whether pristine reaches the Ubuntu 26 notice and Elixir dependency warnings; Utilz's bash 3.2 gap is utilz-vc's."
+  }
+}

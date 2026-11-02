@@ -1,0 +1,15 @@
+{
+  "id": "01M14JXHMZSKHRT3W5K61PXM5P",
+  "ts": "2026-08-28T16:23:17.412Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0042"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "clean can preview or delete, but cannot preview without a terminal"
+  }
+}

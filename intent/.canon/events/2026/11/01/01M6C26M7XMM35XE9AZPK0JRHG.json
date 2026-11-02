@@ -1,0 +1,16 @@
+{
+  "id": "01M6C26M7XMM35XE9AZPK0JRHG",
+  "ts": "2026-11-01T17:23:33.758Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "ST0011/08 (WP08; AT-3.9 in formula.bats; issue 0296): BANKED by CAS at refs/bank/cc/ST0011-08 8a6ee3770a971bb45154eb3124d166db0adc4d78 on WP07's bank ba5a8270, the first of WP08 and dc's WP02c, so WP02c rebases onto it (vc, 16:55Z). One commit: issue 0296's two call sites in lib/cmd/formula read release.repo and the first declared remote with their statuses checked and pass both to release_repo; three arms tagged ST0011 WP08 in formula.bats (AT-3.9's guard, in GREEN_AT_BASE as vc ruled; 0296's two, the red legs); two 0227 arms' written-down counts replaced by main^ = seed. Critic: 0 critical, 0 warning, 3 recommendation (two settled; one line: one release-repository function, a unit of its own). red08: ~/Devel/scratch/devbin-cc/st11-wp02b/kit8/red08 34b1dadc. THE RUN, ruled both ways by vc: with WP02c banked and settled at the hook-in stack's END, the two run as one stack in dc's WP02c kit with cc's unit 08 line; else WP08 alone in kit8 (runs.sh 135637fd, kit7's with dc's leg_all reading the seal, as vc required; runs.conf e070d00b; run-both.sh 48cc3f38; build 8a6ee377), ASKED as 01M6C255TV1C6MNNW9ZEH4YCBF, not before 01M6C0GKNE2H3SM6TPRM9MCWB6, read by vc and granted after that END and a load read (2026-11-01 17:23Z by date -u); 01M6C1XB denied as superseded. Hands off red08, kit8/run and the bank. At its landing: AT-3.9 green on the green legs, its note naming WP02a and 0227."
+  }
+}

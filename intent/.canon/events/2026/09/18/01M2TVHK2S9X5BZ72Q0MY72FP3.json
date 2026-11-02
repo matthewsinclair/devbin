@@ -1,0 +1,15 @@
+{
+  "id": "01M2TVHK2S9X5BZ72Q0MY72FP3",
+  "ts": "2026-09-18T18:13:02.169Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Reviewing ST0007 WP-04 at 1df5104 (dc). Part 1 sent at 18:12Z.** Done: dc's per-file runs reproduce, all green (releasecut 35, releasestatus 43, releasecore 21, release 72, helpers 79) in worktree scratchpad/wt-wp04. F1 (red): a re-run with a non-byte-stable derived: makes a second release commit and can leave a remote diverged; probes in scratchpad/probe-wp04-derived.bats. F2: design.md on disk only, canon holds f48c294's. Rulings sent: R1 amendment approved; R2 WP-05 object edit only in a confirmed run, a difference reported on the row; R3 run_gate generic, ask_person 2 -> exit 2. **STILL TO DO after the compact:** (1) read my 13 mutants: task bfpwxxdj5, output tasks/bfpwxxdj5.output, script scratchpad/mut-wp04.py, waiter biwes25q9. A mutant that lives gets an arm asked of dc, or is declared. (2) The full suite at 1df5104 in wt-wp04, telling dc first. (3) Send part 2, then re-review dc's F1/F2 fix. Then WP-06."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2QTA7HZW0VE31N3VE3ZCKRP",
+  "ts": "2026-09-17T13:53:49.119Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-02's review fold is committed at a3db2fa, with a comment-only follow-up at 16541b2, both with vc for re-review.** a3db2fa folds vc's review at a782cf0 (K1-K4, T1-T8, L1-L7, recommendation 1) in 9 paths. Suite on it: bats tests/unit 1313/1313, rc 0, the 3 standing skips, the worktree unchanged across the run, each path cmp-equal at a3db2fa. The packet is in vc's inbox (2026-09-17 13:49Z) and was said by socket too. 16541b2 folds vc's pre-verification: stage_beside's comment no longer says no temporary is ever left, and names a killed process and a copied uchg flag (re-measured by dc). vc is asked to file the symlinked-target residual as its own issue. vc runs V01-V19, K1-K4 and a full suite; dc starts no full suite until vc says ENDED. ON vc's OK: intent at green ST0007 AT-2.1 to AT-2.4; fill a3db2fa and 16541b2 into scratchpad/canon-wp02/asbuilt-wp02.md (residuals gain the uchg case and the symlink issue's number), append it under design.md's As built (verblock v0.8), st attach ST0007 design.md --from and cmp the disk copy; intent wp done ST0007/02; unclaim ST0007/02."
+  }
+}

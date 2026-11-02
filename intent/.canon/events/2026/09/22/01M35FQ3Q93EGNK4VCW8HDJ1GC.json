@@ -1,0 +1,15 @@
+{
+  "id": "01M35FQ3Q93EGNK4VCW8HDJ1GC",
+  "ts": "2026-09-22T21:17:58.889Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "NEXT GLOBALFOLD, LESSONS.md candidates from devbin-cc (2026-09-22 night, grep-checked absent from LESSONS.md): (1) In the Claude Code Bash tool, grep is a snapshot function running embedded ugrep with --ignore-files, so grep -r silently skips anything a .gitignore inside the searched tree excludes. cc measured it: 1 of 2 identical files found, rc=0; /usr/bin/grep -r found both. (2) The same ugrep refuses a bounded-context pattern like .{0,90}word.{0,90} with rc=2 and no output, which reads as 'no match' unless the status is printed. (3) intent issues list shows OPEN issues only, so its silence cannot mean CLOSED; use --kind closed. (4) cc watch-out 12 carries three more: BSD cmp -n reaching EOF, a remote-tracking ref taken for the remote, and jq over board.json counting archived rows."
+  }
+}

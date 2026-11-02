@@ -1,0 +1,20 @@
+{
+  "id": "01M68E6BSE1PJN50C6XTE5XZJY",
+  "ts": "2026-10-31T07:36:10.286Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "disk.hydrate",
+  "subject": {
+    "type": "paths",
+    "id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704"
+  },
+  "payload": {
+    "hydrated": [
+      "intent/st/ST0011/evidence/C-gtools-conflab-laksa.md"
+    ],
+    "id": "ST0011",
+    "pinned": false,
+    "rewritten": [],
+    "sigil": "STEELTHREAD"
+  }
+}

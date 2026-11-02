@@ -1,0 +1,15 @@
+{
+  "id": "01M68SQ1N3K94KXHHNG7DXA283",
+  "ts": "2026-10-31T10:57:31.299Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0011/08 (WP08), from the consumer inventories via vc (2026-10-31): the built-in formula carries intent#0634's cask sha check, gives brew smoke a home (an after: command or a formula verb), and pulls this Mac's tap clone after the publish, as Utilz's post-cut does; with issue 0296 (the formula's repository reader)."
+  }
+}

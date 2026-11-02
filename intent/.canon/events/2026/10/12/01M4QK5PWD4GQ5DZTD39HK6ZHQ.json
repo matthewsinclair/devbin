@@ -1,0 +1,16 @@
+{
+  "id": "01M4QK5PWD4GQ5DZTD39HK6ZHQ",
+  "ts": "2026-10-12T08:20:24.589Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 21,
+    "text": "ST0008/07 (AC-7.1), the pipeline class: HANDED OVER to vc on 2026-10-12. Patch wp07.v2.on-c5c86da4.patch (sha256 6f3e08b9...): b1457869's tree on 288071e2, verified with git am on main c5c86da4. Red on main and green with the fix, under BSD and GNU. The targeted run (29 suites) was green on both, 1674 of 1674. critic-shell's findings were fixed. Waiting on vc's review and landing, and on vc's word for Linux on kovacs. Re-entry: ~/Devel/scratch/devbin-cc/sp-2026-10-12/STATE.md"
+  }
+}

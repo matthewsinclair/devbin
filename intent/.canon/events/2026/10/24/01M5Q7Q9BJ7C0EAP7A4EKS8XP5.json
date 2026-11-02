@@ -1,0 +1,16 @@
+{
+  "id": "01M5Q7Q9BJ7C0EAP7A4EKS8XP5",
+  "ts": "2026-10-24T15:15:59.474Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 50,
+    "text": "0216 guard fix 65a91012 HANDED OVER to vc in one bundle with 0219 (~/Devel/scratch/devbin-dc/0216/handover/0219.bundle, seal 6f742341, HANDOVER-0219.md, RESOLUTION-0216-addendum.md). W1 was red on the old candidate (list arm only), and W2 and W3 were green, BSD and GNU. Waiting for vc to land it and close 0216. Keep the scratch clones until then. No push, no release"
+  }
+}

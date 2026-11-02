@@ -1,0 +1,16 @@
+{
+  "id": "01M6BNR8N9891TECBDVRDYQKY5",
+  "ts": "2026-11-01T13:46:00.233Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 62,
+    "text": "The hook-in unit (decisions 117 and 127), BUILT and banked as WIP refs/bank/dc/ST0011-hookin-wip 664abab6 (by CAS at hv's fold, 2026-11-01 13:45Z by date -u), on the stack's tip d0a403f5: WP04's last piece (tests.yml's tag filter and candidate-verdict job; release.yml stays), WP05's and WP06's hook-ins (release.legs with is_host_alias; the macOS stage as a leg in lib/release.macos, refused on a host that is not macos), the cache at the stage and the RELEASE seal's cache line, Devbin's release.legs: - kovacs; nine arms (AT-2.7, AT-3.3, AT-3.6), probed in plain bash against the tree. Lint gate r1 58 files 0 breaches; scans clean. The fork's WP04 commit is kept in hookin/wp04-8e2f0a25.bundle. OPEN on vc's go: the critic r1 review's settle, the gate again, the squash (its unit id asked of vc), the red clone, the bank, the ask after the stack lands. Resume point: ~/Devel/scratch/devbin-dc/hookin/NOTES.md. Then WP02c (todo 63), then WP08 (todo 60)."
+  }
+}

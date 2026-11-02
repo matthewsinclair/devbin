@@ -1,0 +1,16 @@
+{
+  "id": "01M5TB3CPS05PQH9ZTJ54S8J1X",
+  "ts": "2026-10-25T20:12:45.145Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). State at hv's close, 2026-10-25 20:11Z: 0.1.15 is devbin's ONE next release (decision 63) carrying 0213 and 0220-0231. land220 at c320ba06 (main 593109bf plus every issue commit; 0230 seal 44ad229b, 0231 seal 10df45a7), cand220 at 88615559. The landing pair ran on molt-vc's GO, 19:48Z to 20:11Z: RED in both on the same 3 tests, so NOTHING LANDED: vendoredmd.bats 2509 and 2511 (lib/pages/formula.md, 0227, cc: list items indented) and workroom.bats 2558 (lib/runlog's /^Test [Cc]ase/, 0229, dc: 'Cc' read as the handle). Seals land220/tmp/test/20261025-1948.bats.{out,errors}, cand220/tmp/test/20261025-1958.bats.{out,errors}, logs st0010/pair220/. NEXT: cc and dc each fix theirs as one commit on c320ba06 (asked in their inboxes), vc stacks both, rebuilds cand220 (tools/recand220.sh), books one HEAVY slot with molt-vc, runs tools/pair220.sh, and on green runs tools/land220.sh (extend its stack depth and message list for the two fixes), fills resolutions (0229: .txt fixtures, Done when 5 in docs/configuration.md; 0230 line 3; 0231 landed sha and suite), closes 0220, 0221, 0223-0231 (0222 on CI green after hv's push), sends utilz-vc, gtools-vc, intent-vc and molt-vc main's A3 commit (Utilz's 0109 waits on it). Then the 0.1.15 note, the kovacs slot (0.1.15 Linux check + 0213 leg D), ST0010's public steps (decisions 52/56/59/60), hv cuts. Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

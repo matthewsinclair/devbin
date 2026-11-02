@@ -1,0 +1,16 @@
+{
+  "id": "01M68WJCXG8WMX35H5CY700CGR",
+  "ts": "2026-10-31T11:47:24.720Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 67,
+    "text": "ST0011 run 1 GREEN (2026-10-31, slot 01M68T5WW2K5RRE8VBG99SSSN7, 11:06Z to 11:46Z): the stack WP03 1ad679e7 + WP04 8c6d2ec3 on main 8d67d778, both units' arms red at red clone d53e5375 and green under BSD and GNU, the light set, tree scans, guards, shellcheck and critic all green. Handover in ~/Devel/scratch/devbin-dc/run1/handover (st0011-run1.bundle, both messages, SHA256SUMS), END sent to vc; landing is vc's, by land-stack.sh. Next: WP06a (91173ca9, approved) rebases onto the landing for run 2."
+  }
+}

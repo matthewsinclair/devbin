@@ -1,0 +1,14 @@
+{
+  "id": "01M1Y523PJ9JTHDRA4ZANPMX3E",
+  "ts": "2026-09-07T14:41:22.131Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "attachment.put",
+  "subject": {
+    "type": "attachment",
+    "id": "ST0001/design.md"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

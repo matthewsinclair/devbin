@@ -1,0 +1,15 @@
+{
+  "id": "01M3A46E0HRSK25EE0EYCC37RP",
+  "ts": "2026-09-24T16:32:50.194Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FROM prodinfra-cc, 2026-09-24 (their clock reads 16:24Z to 16:31Z; vc's date -u read 16:32:16Z): two devbin infra findings, filed only on hv's word, and their release is hv's to name. (1) infra check's authority read, infra_dns_authority in lib/infra.dns, runs 'dig +short NS' against the machine's resolver with no @server and reads any empty answer as COULD NOT MEASURE. Six runs at Prodinfra each had one to three transient misses, the domains answered SOA and NS moments later, and each run took 7 to 8 s, so the misses were fast empty answers, not timeouts. lib/infra.check's text, 'no authoritative nameserver answered', says what the read never tested. vc verified this against the source. The fix: retry the authority read, and say what was observed. 0126 already moves the exit code to 1 in 0.1.8. (2) The profile schema has no field for a zone's wildcard A or TXT, or for DMARC sp=; those live in manual: prose that check cannot see drift in (geodica.com, playprolix.com). It sits beside the MailerSend two-DKIM-key gap of 2026-09-08."
+  }
+}

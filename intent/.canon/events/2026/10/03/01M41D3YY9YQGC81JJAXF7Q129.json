@@ -1,0 +1,15 @@
+{
+  "id": "01M41D3YY9YQGC81JJAXF7Q129",
+  "ts": "2026-10-03T17:31:18.345Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "BUNDLE BUILD (hv 2026-10-03: no new threads, all fix and fail forward; ONE release with 0152, which landed at 8ee0518 and is pushed at 79a4d40). Built in scratch clones REBASED ON 8ee0518, each red first then green: 0154 + rider (SP/tree a9d4b6cd, v4 fixes a census regression a real-machine run found), 0153 (SP/b153), 0159 HIGH (SP/b159), 0157 (SP/b157), 0158 (SP/b158), 0156 (SP/b156). Next per branch: mutants, the targeted files plus helpers and contract, critic, hand to vc. Not started: 0155 and 0160 to 0171. Every branch's state and next step: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md. SP = that directory."
+  }
+}

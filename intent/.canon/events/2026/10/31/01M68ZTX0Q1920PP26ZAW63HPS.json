@@ -1,0 +1,16 @@
+{
+  "id": "01M68ZTX0Q1920PP26ZAW63HPS",
+  "ts": "2026-10-31T12:44:29.079Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 86,
+    "text": "ST0011 fix phase, FOLDED AND HOLDING on hv's order at 2026-10-31 12:43Z (vc holds the pen; the desk is held, hold 01M68ZTWPXSM7VC65CHX6BKHVF). LANDED on main: WP03 (76a0fba6, done), WP04 (80052f26, WIP for the trigger removal after WP02b), WP01 (bc744227, done; its run 01M68X45FGFSJMR3R1M20S7Q43 green 11:58Z to 12:43Z). BANKED, read and approved by vc, not landed: dc's WP06b 7cbc085f on 80052f26 (refs/bank/dc/ST0011-06b) and WP05 d282e845 stacked on WP06b on WP01's bank (refs/bank/dc/ST0011-05, critic pending). Next on hv's go: dc rebuilds run 3's stack (WP06b then WP05) onto bc744227, runs, lands; then the landing tree's full suite on rhadamanth and kovacs; then cc's WP02 a/b/c, WP07, WP08; then WP09 at 0.1.19 and the sweep (decision 93). Consumer estates inventoried and baselined (baselines.md): utilz#ST0031 (0131 landed unpushed), gtools#ST0020, intent#ST0091, conflab#ST0126/WP-06 (re-cut landed as records), laksa#ISSUE:0058 (S1 to S5 landed unpushed). Issues 0297, 0298, 0299 filed. WP16 designed (design.md s13, D67, D68, AC-5.1 to 5.4). gyges clear; kovacs holds ten empty 2026-10-24 marker files under /tmp, hv's rm."
+  }
+}

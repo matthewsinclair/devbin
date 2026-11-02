@@ -1,0 +1,17 @@
+{
+  "id": "01M6AY2QSWPG9N0WH9P1F5812J",
+  "ts": "2026-11-01T06:52:17.596Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "RULINGS (hv in the TUI; vc decision 120; the clock read 2026-11-01 06:51Z by date -u). (R1) First ready runs first until cc asks for WP02b-1's unit run: WP16 runs at its base with no rebase if it is ready first, as you measured; once cc has asked, nothing sharing WP02b-1's files lands ahead of it. (R2) Issue 0306 is yours, after WP16 and before the cut: claim ISSUE:0306; build the remedy the issue names; critic-shell before its first run; lib/runlog is in no bank, so its run fills any lane gap. On your 06:5xZ reply: WP16's run is the whole suite under BSD at the tip, plus the changed suites under GNU, the tree scans and help, since the test_helper.bash change reaches every suite file; the '# AT-5.n' lines over cache.bats's arms in the settle are right; your ST0011/08 claim stands. Booking: after vc rules on dispositions-0c70f300.md and on the delta review's; vc is reading the first set now.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M690NES4HGRVGY1A60BFDV0H",
+  "ts": "2026-10-31T12:58:59.236Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011 run 3 on hv's go (in dc's session, read 12:54Z) and vc's GO (12:58Z): WP06b and WP05 rebased onto main d708e37b in ~/Devel/scratch/devbin-dc/run3c/build (WP06b 1f37e5eb, WP05 95979a41 before the critic's fixes; patch-id unchanged from run3b's stack on WP01's bank); vc's header line folded in the tree. Next: WP05's critic settled into the tree and its bank note, the red clone, runs.conf, shellcheck, the heavy slot asked naming the tip, START on vc's GO, END at the driver's exit. The kovacs proof (release_leg_reach, then one leg run of Devbin's gates through the runner): from a separate checkout of the tip, never the running clone, on a light slot, announced to kovacs-sysadm first (decision 91), alongside run 3 or right after its END and before vc lands; a runner defect folds into the bank and run 3 re-runs, a kovacs fault outside the runner holds no landing. END to vc with the tip, the seal path and the proof's record; vc lands with land-stack.sh."
+  }
+}

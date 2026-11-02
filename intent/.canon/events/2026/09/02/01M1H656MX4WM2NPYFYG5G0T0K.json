@@ -1,0 +1,15 @@
+{
+  "id": "01M1H656MX4WM2NPYFYG5G0T0K",
+  "ts": "2026-09-02T13:50:24.413Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0052"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "CI has been red on main since 2026-08-27 and the tagged release commit never ran it at all"
+  }
+}

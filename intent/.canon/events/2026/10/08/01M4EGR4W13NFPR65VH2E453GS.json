@@ -1,0 +1,16 @@
+{
+  "id": "01M4EGR4W13NFPR65VH2E453GS",
+  "ts": "2026-10-08T19:44:53.121Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 41,
+    "text": "0191 HANDED TO vc at 2026-10-08 19:44Z (ISSUE:0191 claimed; vc's assignment of 18:43Z on hv's go): patch ~/Devel/scratch/devbin-cc/sp-2026-10-08/0191/patches/0191.v1.on-437ab0c0.patch (sha256 b494ef39...f9ed5), one commit carrying 2b719467's tree (branch b191 in w191) on b58b5e21; git am verified on main 437ab0c0. Drafts 0191-commit.v1.msg and 0191-resolution.v1.md (SHA256SUMS.drafts.v1) and handoff-vc.0191.v1.md beside it. Red on main first, green BSD and GNU, critic-shell's 8 findings folded; targeted 540/540 on 542711c1 BSD and GNU. dc has 2b719467 for the 0190 rebase. Left for vc: one full suite of the landing tree, then land. AFTER LANDING: export b191 and verify in a fresh clone of the shared tree, delete w191, wbase191, wcrit191, archive this item and unclaim ISSUE:0191. Re-entry: ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md"
+  }
+}

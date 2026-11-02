@@ -1,0 +1,15 @@
+{
+  "id": "01M2NW5529TF4TTP620ETDFAXP",
+  "ts": "2026-09-16T19:47:31.017Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ON THE BOUNCE: finish closing the open issues with dc (hv decision 29).** Measured 19:47Z. CLOSED tonight after cross-review: 0063, 0035, 0060, 0076. 0078 routed to intent#0426. STILL OPEN: 0059 (dc; vc said OK with one finding, V10: arm install_ancestry's unknown-row carry; dc closes after the arm, then files the update offer that proposes a revert as a new issue), 0056 and 0066 (dc built both, critic passes running; their packets come to vc for review), 0064 (ST0007: design v0.5 approved, 8 WPs and 21 ACs minted at 5d2e8d5, in Triage for hv to sequence; closes with the build). vc's job: review each packet dc sends (read the diff, re-run the arms in a detached worktree at the sha, try at least one mutation of vc's own), reply OK or with findings. Before any fleet sweep, tell hv: lib/helpers now refuses bash < 5 in every process and sets inherit_errexit, so run the heavy-shell estates' suites first (0060's fix section). The remotes lack tonight's commits; the push is hv's."
+  }
+}

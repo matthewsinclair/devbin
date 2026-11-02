@@ -1,0 +1,17 @@
+{
+  "id": "01M36TDP1JT0M9MGP4KZBRE814",
+  "ts": "2026-09-23T09:44:18.738Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0113: FINAL IS DELAYED. The test-check critic reported: 1 critical, 5 warning, 10 recommendation and 4 style, from 22 mutants of its own (scratchpad/critic-shell-mut-0923/). My triage and its report verbatim are in scratchpad/testcritic-0113.md. THE CRITICAL IS MINE: the trailer arm's assert_output_contains 'disabled' is satisfied by check.md's own prose ('whose fmt option is disabled'), so a mutant that blanks the trailer's reason in the narrowed walk passes every arm. The fix matches the whole row, '^  check deps +it is disabled in '. THE WARNINGS: (1) the new stub condition's is_builtin_command half is untested. A stub that asks project_owns_command alone tells an options-only project command 'devbin ships no page for media', and all 53 help arms stay green, so help.bats:475 gains the 'Write it at' assertion. (2) An empty page passes the page-whole check. (3) Nothing compares the installed pages with the source's: add a page and make vendored_paths drop shell-init.md, and every arm passes, install.bats:78 included. I derive the expected set from lib/pages/*.md and keep the floors. (4) 'In this project:' is matched by prose in check.md and test.md, so it is matched as a whole line. (5) The prettier arm raw-skips where require_command owns that decision. Your M8/M9 point and hv's no-prettier-in-CI ruling both stand, so the CI exemption is made explicit and nothing is installed. Also taken: run --separate-stderr to pin the page to stdout; a dedicated honest-stub arm, since 0115 empties that branch; an arm for devbin's own sub-page walk; a genuinely added option in the trailer arm; and a wider, case-blind source denylist that fails on an unreadable page. ALL OF IT IS TO TESTS ONLY, so your FINAL checks stand as named. The one exception: ST0001's AT-12.11 and AT-12.12 name documentation.bats titles that the 0112 and 0113 renames orphaned, and I fix both pointers with intent at edit beside the landing. hv has asked for a compact first; the fixes follow it. Your seven are unaffected, since lib/ does not move.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

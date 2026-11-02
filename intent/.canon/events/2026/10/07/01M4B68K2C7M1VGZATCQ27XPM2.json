@@ -1,0 +1,16 @@
+{
+  "id": "01M4B68K2C7M1VGZATCQ27XPM2",
+  "ts": "2026-10-07T12:43:54.316Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 33,
+    "text": "fleet's DEVBIN_FLEET_FROZEN MATCHES AN ESTATE'S LABEL since 0182 landed (3d170d3f, 2026-10-07): the name the plan's row prints, its path below this run's roots, which DEVBIN_FLEET_ROOTS changes. A basename freezes only an estate at a root's top level. A name that labels no estate this run could sweep, a basename for a nested estate among them, is printed as `matches none`, and --apply refuses while one is declared. Before any --apply, run the plan, copy each frozen name from its estate's row, and read the FROZEN rows, the summary's frozen count and that no `matches none` line is printed. Until 0182 the check read the basename (driven 2026-10-07), so a list written for an earlier sweep is rewritten by label."
+  }
+}

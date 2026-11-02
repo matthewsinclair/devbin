@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 174,
+  "slug": "two-release-notes-name-local-directories-on-the",
+  "title": "Two release notes name local directories on the operator's machine",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-05",
+  "closed": "2026-10-05",
+  "reporter": "Matthew Sinclair",
+  "body": "## Problem\n\nhv's rule (2026-10-05): devbin may name the operator's other projects in its docs and commits, but never their local directories. Two release notes do. `RELEASES/0.1.1.md:13` lists another project by its path on the operator's machine, in a census table. `RELEASES/0.1.8.md:50` quotes the census frame's old default, a directory on the operator's machine that holds every project.\n\n## Measured at dbce992\n\nA search of the tracked product files (code, tests, docs and release notes) for a path under the operator's project directories found these two. Three other hits are not in scope:\n\n- `README.md:197-205` shows devbin's own checkout in a layout example and names no other project.\n- `tests/unit/neutral.bats:217` plants a synthetic path to prove the runtime's gate refuses one.\n- The census doc, `fleet.roots` and fleet's own tests and comments belong to fleet, and leave devbin with it.\n\n## Fix\n\nReword both lines so they say the same thing without the path: the project by its name, and the frame as the directory that holds the projects.\n\n## Done when\n\n1. No release note names a path under the operator's directories.\n2. `bin/devbin release notes` views are regenerated and `release check` is green.\n\n## Resolution\n\nFixed at 7e3f580c. RELEASES/0.1.1.md's version table names each project rather than its path, and RELEASES/0.1.8.md's census-frame entry says \"the directory that holds the projects\" and \"a second directory of projects\" rather than quoting either path. `bin/devbin release notes` regenerated CHANGELOG.md and RELEASES.md byte-identically, since neither carries those lines, and `release check` reads 2 of 2 views current. A search of RELEASES/, CHANGELOG.md and RELEASES.md for a path under the operator's project directories finds nothing, and the same search finds a path planted in a copy of a note. devbin's own install prefix, ~/Devel/opt/devbin, is devbin's and stays. The full suite on the landing tree, with 0154 applied beside it since the two share no file: 2065 of 2065 ok and 0 not ok (seal 20261005-1109, .errors empty).\n"
+}

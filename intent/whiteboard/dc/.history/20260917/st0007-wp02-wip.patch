@@ -1,0 +1,2790 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 8f97876..4458752 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -4,7 +4,7 @@ All notable changes to devbin are recorded here.
+ 
+ **GENERATED from `RELEASES/*.md`. Do not hand-edit** -- regenerate with `bin/devbin release notes`. The per-release notes are the source; this file and `RELEASES.md` are views of them, so a release cannot appear in one and be missing from another.
+ 
+-The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html) with one documented deviation: a caret on a `0.x` version admits the next minor, because the strict reading pins every project to a patch series and makes `upgrade` a lie.
++The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+ 
+ ## [0.1.2] - Unreleased
+ 
+diff --git a/README.md b/README.md
+index 544fbed..5b9d5e2 100644
+--- a/README.md
++++ b/README.md
+@@ -149,7 +149,7 @@ Shipped as names, absent until the project enables them. Devbin ships no command
+ | `which`     | Report which binary or build a name resolves to        |
+ | `infra`     | Resolve, check and apply this estate's DNS, mail and runtime configuration |
+ 
+-`release` is opt-in the same way, and it is the one opt-in command devbin implements itself: one release sequence shared by every project that releases, declared in a `release:` block ([configuration](docs/configuration.md#release)). It is being built under ST0007. Today it parses its arguments and `release check` validates and prints its declaration; everything else exits 3 naming the work package that builds it, and so does `release check` once its declaration half is done, because the notes views are not examined yet.
++`release` is opt-in the same way, and it is the one opt-in command devbin implements itself: one release sequence shared by every project that releases, declared in a `release:` block ([configuration](docs/configuration.md#release)). It is being built under ST0007. Today `release check` validates and prints the declaration and then checks the notes -- the generated views match their source, and the project's version has a note -- and `release notes` regenerates the generated views; a cut and `release status` parse their arguments and exit 3 naming the work package that builds them.
+ 
+ | Command   | What it does                                                           |
+ | --------- | ---------------------------------------------------------------------- |
+diff --git a/bin/.devbin/cmd/release b/bin/.devbin/cmd/release
+deleted file mode 100755
+index ba037e2..0000000
+--- a/bin/.devbin/cmd/release
++++ /dev/null
+@@ -1,309 +0,0 @@
+-#!/usr/bin/env bash
+-#
+-# devbin: summary = Release notes: one source, two generated views
+-# devbin: group   = Ship
+-#
+-# THE HIGHLANDER PROBLEM THIS SOLVES. A release is described in three places by
+-# convention -- a per-release note, a CHANGELOG, and an index of releases -- and
+-# all three are about the same events. Hand-written, they are three copies that
+-# agree on the day they are written and drift afterwards, silently, because
+-# nothing fails when a changelog omits a release.
+-#
+-# So there is ONE home for a release's content, `RELEASES/<version>.md`, and
+-# `CHANGELOG.md` and `RELEASES.md` are GENERATED views of it. Adding a release
+-# means adding one file. The two views cannot omit it, cannot contradict it, and
+-# cannot disagree with each other, because none of them is written by hand.
+-#
+-# `release check` regenerates into a temporary and compares, so the suite can
+-# assert the committed views match their source without writing anything.
+-#
+-set -euo pipefail
+-# EVERY `die` BELOW REFUSES AT ANY DEPTH because lib/helpers sets
+-# `inherit_errexit` for every handler that sources it (issue 0060). This file
+-# carried its own copy first: a release note with no `status:` made
+-# `note_status` print its refusal twice from inside `$( )` while `release notes`
+-# wrote both views and exited 0. The arm asserting the views are ABSENT is what
+-# holds the helpers line in place.
+-
+-# shellcheck source=lib/helpers
+-. "${DEVBIN_LIB:?run me through bin/devbin}/helpers"
+-
+-cd "$PROJECT_ROOT"
+-
+-RELEASES_DIR="RELEASES"
+-CHANGELOG="CHANGELOG.md"
+-INDEX="RELEASES.md"
+-
+-# The sections a changelog carries, in Keep a Changelog's own order. A release
+-# note may use any subset; anything else in the note is narrative and stays in
+-# the note.
+-CHANGELOG_SECTIONS='Added Changed Deprecated Removed Fixed Security'
+-
+-# release_files -- every release note, NEWEST VERSION FIRST.
+-#
+-# `sort -V` so 0.10.0 sorts above 0.9.0. Lexical sort puts them the other way
+-# round and the error only appears at the tenth release, by which time the
+-# changelog has been wrong for a while.
+-release_files() {
+-  [ -d "$RELEASES_DIR" ] || return 0
+-  find "$RELEASES_DIR" -maxdepth 1 -name '*.md' -type f 2>/dev/null |
+-    sed "s|^$RELEASES_DIR/||; s|\.md$||" | sort -V -r
+-}
+-
+-# note_field <version> <key> -- one value from the note's leading header block.
+-#
+-# Line-oriented `key: value`, the same shape the whiteboard protocol uses and
+-# for the same reason: it is hand-written prose-heavy text, and a quoting-
+-# sensitive format invites a `headline:` containing a colon to become invalid.
+-# Everything after the first ': ' to end of line is the value.
+-note_field() {
+-  awk -v k="$2" '
+-    /^$/ { exit }
+-    $0 ~ ("^" k ": ") { sub("^" k ": ", ""); print; exit }
+-  ' "$RELEASES_DIR/$1.md"
+-}
+-
+-# note_status <version> -- `released` or `unreleased`, and REFUSED if neither.
+-#
+-# WHY IT IS REQUIRED RATHER THAN DEFAULTED. This field was written into the
+-# 0.1.0 note and READ BY NOTHING for the whole of that release -- it looked
+-# like a control and controlled nothing, which is this repository's cardinal
+-# class. Defaulting an absent status to `released` would rebuild the hole one
+-# layer down: a note that MEANT unreleased and forgot the field would render
+-# as shipped in both views, and forgetting the field is precisely the mistake
+-# the field exists to catch. So absent is an error here, never a default.
+-note_status() {
+-  local s
+-  s="$(note_field "$1" status)"
+-  case "$s" in
+-    released | unreleased) printf '%s\n' "$s" ;;
+-    "") die "RELEASES/$1.md has no \`status:\` -- it must be \`released\` or \`unreleased\`" ;;
+-    *) die "RELEASES/$1.md has status: $s -- it must be \`released\` or \`unreleased\`" ;;
+-  esac
+-}
+-
+-# note_when <version> -- what goes in the date column of both views.
+-#
+-# An unreleased note renders `Unreleased`, per Keep a Changelog. Its `date:` is
+-# REFUSED rather than ignored: an ignored date survives the flip to `released`
+-# and ships as a claim nobody re-checked, which is how a stale value quietly
+-# becomes an assertion. A released note without one is refused for the mirror
+-# reason -- the views would carry an empty date column and read as formatting.
+-note_when() {
+-  local v="$1" d st
+-  d="$(note_field "$v" date)"
+-  # NOT `[ "$(note_status "$v")" = unreleased ]`, and not `local st="$(...)"`
+-  # either. Both swallow the refusal: `die` inside a command substitution exits
+-  # only the SUBSHELL, so a condition sees an empty string and falls through to
+-  # the released arm, and `local` is a builtin whose own exit status masks the
+-  # substitution's. Measured, not reasoned -- the first cut of this function
+-  # used the condition form and five arms carrying no `status:` at all rendered
+-  # green, which is the refusal-that-cannot-refuse this file exists to catch.
+-  # A bare assignment is the one form where `set -e` sees the failure.
+-  st="$(note_status "$v")"
+-  if [ "$st" = unreleased ]; then
+-    [ -z "$d" ] || die "RELEASES/$v.md is unreleased but carries date: $d -- an unreleased note has no date"
+-    printf 'Unreleased\n'
+-    return 0
+-  fi
+-  [ -n "$d" ] || die "RELEASES/$v.md is released but carries no \`date:\`"
+-  printf '%s\n' "$d"
+-}
+-
+-# note_section <version> <name> -- the body of one `## <name>` section.
+-note_section() {
+-  awk -v want="## $2" '
+-    $0 == want { f = 1; next }
+-    f && /^## / { exit }
+-    f { print }
+-  ' "$RELEASES_DIR/$1.md"
+-}
+-
+-# render_changelog -- Keep a Changelog, assembled from the notes.
+-# SC2016 is suppressed for the renderers, not line by line: every printf below
+-# emits MARKDOWN, whose inline-code delimiter is the backtick, so a format
+-# string mentioning `RELEASES.md` trips "expressions don't expand in single
+-# quotes" on text that is deliberately literal. Single quotes are correct here
+-# for exactly the reason shellcheck is warning about.
+-# shellcheck disable=SC2016
+-render_changelog() {
+-  local v date sec body any
+-  printf '# Changelog\n\n'
+-  printf 'All notable changes to devbin are recorded here.\n\n'
+-  printf '**GENERATED from `RELEASES/*.md`. Do not hand-edit** -- regenerate with `bin/devbin release notes`. The per-release notes are the source; this file and `RELEASES.md` are views of them, so a release cannot appear in one and be missing from another.\n\n'
+-  printf 'The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html) with one documented deviation: a caret on a `0.x` version admits the next minor, because the strict reading pins every project to a patch series and makes `upgrade` a lie.\n\n'
+-
+-  while IFS= read -r v; do
+-    [ -n "$v" ] || continue
+-    date="$(note_when "$v")"
+-    printf '## [%s] - %s\n\n' "$v" "$date"
+-    any=0
+-    for sec in $CHANGELOG_SECTIONS; do
+-      body="$(note_section "$v" "$sec")"
+-      # Blank-only sections are omitted rather than printed empty: a heading
+-      # with nothing under it reads as "nothing changed here" when it means
+-      # "the note did not use this section".
+-      if printf '%s' "$body" | grep -q '[^[:space:]]'; then
+-        printf '### %s\n\n' "$sec"
+-        printf '%s\n' "$body" | sed '/^[[:space:]]*$/d'
+-        printf '\n'
+-        any=1
+-      fi
+-    done
+-    [ "$any" -eq 1 ] || printf '_No changelog sections in this release note._\n\n'
+-    printf 'Full note: [RELEASES/%s.md](RELEASES/%s.md)\n\n' "$v" "$v"
+-  done < <(release_files)
+-}
+-
+-# render_index -- the release index.
+-# SC2016 is suppressed for the renderers, not line by line: every printf below
+-# emits MARKDOWN, whose inline-code delimiter is the backtick, so a format
+-# string mentioning `RELEASES.md` trips "expressions don't expand in single
+-# quotes" on text that is deliberately literal. Single quotes are correct here
+-# for exactly the reason shellcheck is warning about.
+-# shellcheck disable=SC2016
+-render_index() {
+-  local v date headline rows
+-  printf '# Releases\n\n'
+-  printf '**GENERATED from `RELEASES/*.md`. Do not hand-edit** -- regenerate with `bin/devbin release notes`.\n\n'
+-  printf 'One file per release under `RELEASES/`, newest first. `CHANGELOG.md` is the terse chronological view of the same source; this is the index.\n\n'
+-
+-  rows="$(
+-    while IFS= read -r v; do
+-      [ -n "$v" ] || continue
+-      date="$(note_when "$v")"
+-      headline="$(note_field "$v" headline)"
+-      printf '[%s](RELEASES/%s.md)\t%s\t%s\n' "$v" "$v" "$date" "$headline"
+-    done < <(release_files)
+-  )"
+-
+-  if [ -z "$rows" ]; then
+-    printf '_No releases yet._\n'
+-    return 0
+-  fi
+-
+-  { printf 'Version\tDate\tHeadline\n'; printf '%s\n' "$rows"; } | md_table
+-  printf '\n'
+-}
+-
+-# md_table -- TSV on stdin (first line the header) -> a column-aligned table.
+-md_table() {
+-  awk -F'\t' '
+-    { for (i = 1; i <= NF; i++) { r[NR, i] = $i; if (length($i) > w[i]) w[i] = length($i) }
+-      if (NF > nf) nf = NF; rows = NR }
+-    END {
+-      for (n = 1; n <= rows; n++) {
+-        line = "|"
+-        for (i = 1; i <= nf; i++) line = line " " sprintf("%-*s", w[i], r[n, i]) " |"
+-        print line
+-        if (n == 1) {
+-          sep = "|"
+-          for (i = 1; i <= nf; i++) { d = ""; for (k = 0; k < w[i] + 2; k++) d = d "-"; sep = sep d "|" }
+-          print sep
+-        }
+-      }
+-    }
+-  '
+-}
+-
+-# require_notes -- refuse to generate a view of nothing.
+-#
+-# An empty RELEASES/ would render two well-formed files saying there are no
+-# releases, overwriting two correct ones. A generator that cannot find its
+-# source has failed; it has not discovered that the source is empty.
+-require_notes() {
+-  [ -n "$(release_files)" ] ||
+-    die "no release notes under $RELEASES_DIR/ -- refusing to generate a view of nothing"
+-}
+-
+-# check_current_note -- warn (rc 1) when the CURRENT version has no note.
+-#
+-# THE GAP THIS CLOSES, found on 2026-09-07 by walking straight into it: VERSION
+-# was bumped to 0.1.1, RELEASES/ held only 0.1.0.md, and `release check` said
+-# `release views are current` and exited 0. That was TRUE and NARROW -- it
+-# compares two views against the notes and they did agree. Nothing in this file
+-# had ever read VERSION, so NO state of the version file could turn any of the
+-# seventeen arms in tests/unit/release.bats red. A green whose population
+-# excludes the thing you are asking about is the false green this project
+-# refuses, and it survived a whole release because its name sounded broader
+-# than its scope.
+-#
+-# A predicate, matching the view comparison beside it: it warns and returns,
+-# never dies, so one run of `check` names everything wrong at once.
+-check_current_note() {
+-  local v
+-  v="$(read_version)"
+-  [ -f "$RELEASES_DIR/$v.md" ] && return 0
+-  warn "VERSION is $v and there is no $RELEASES_DIR/$v.md -- the views describe a version this project no longer claims to be"
+-  return 1
+-}
+-
+-# write_view <renderer> <path> -- render to a temporary and move into place.
+-#
+-# NEVER through a redirect onto the target. `render > path` truncates before the
+-# renderer runs, so a renderer that dies leaves the previous good file empty --
+-# the same defect this repository already carries as issue 0002, and the same
+-# one the fleet generator was caught by.
+-write_view() {
+-  local renderer="$1" path="$2" tmp
+-  tmp="$(mktemp "${TMPDIR:-/tmp}/devbin-release.XXXXXX")"
+-  # shellcheck disable=SC2064
+-  trap "rm -f '$tmp'" EXIT
+-  "$renderer" > "$tmp"
+-  mv "$tmp" "$path"
+-  trap - EXIT
+-}
+-
+-# EVERY ARGUMENT IS READ BEFORE ANY VERB ACTS (issue 0067). This read only its
+-# first, so `notes --help` regenerated both views -- discarding a hand edit,
+-# the state `check` exists to catch -- and `check --help` ran the check. Asking
+-# a command what it does must never do it. `--help` anywhere answers; any other
+-# word after the verb is refused before anything is written, since neither verb
+-# takes one.
+-for arg in "$@"; do
+-  case "$arg" in
+-    -h | --help)
+-      printf 'usage: devbin release <notes|check>\n'
+-      exit 0
+-      ;;
+-  esac
+-done
+-if [ $# -gt 1 ]; then
+-  case "$1" in
+-    notes | check) die "release $1 takes no arguments, and was given: ${*:2}" ;;
+-  esac
+-fi
+-
+-case "${1:-}" in
+-  notes)
+-    require_notes
+-    write_view render_changelog "$CHANGELOG"
+-    write_view render_index "$INDEX"
+-    printf 'wrote %s and %s from %s/ (%s release(s))\n' \
+-      "$CHANGELOG" "$INDEX" "$RELEASES_DIR" "$(release_files | grep -c .)"
+-    ;;
+-  check)
+-    require_notes
+-    rc=0
+-    check_current_note || rc=1
+-    for pair in "render_changelog:$CHANGELOG" "render_index:$INDEX"; do
+-      renderer="${pair%%:*}"
+-      path="${pair#*:}"
+-      tmp="$(mktemp "${TMPDIR:-/tmp}/devbin-release.XXXXXX")"
+-      "$renderer" > "$tmp"
+-      if ! cmp -s "$tmp" "$path"; then
+-        warn "$path is STALE -- regenerate with: bin/devbin release notes"
+-        diff -u "$path" "$tmp" | head -40 >&2 || true
+-        rc=1
+-      fi
+-      rm -f "$tmp"
+-    done
+-    [ "$rc" -eq 0 ] && printf 'release views are current\n'
+-    exit "$rc"
+-    ;;
+-  "")
+-    printf 'usage: devbin release <notes|check>\n'
+-    exit 1
+-    ;;
+-  *) die "unknown release option: $1 (try: devbin release notes)" ;;
+-esac
+diff --git a/bin/.devbin/config.yaml b/bin/.devbin/config.yaml
+index 8aef381..675bff8 100644
+--- a/bin/.devbin/config.yaml
++++ b/bin/.devbin/config.yaml
+@@ -24,6 +24,16 @@ devbin_version: "^0.1.1"
+ install:
+   prefix: ~/Devel/opt/devbin
+ 
++# The release core (ST0007). The block names only what differs from the
++# defaults: devbin's notes are RELEASES/<version>.md with CHANGELOG.md and
++# RELEASES.md generated from them, and .github/workflows/release.yml makes the
++# GitHub release from a pushed tag, so the core must never make a second one.
++# `release` itself is opt-in and is enabled under commands below.
++release:
++  notes:
++    kind: releases
++  object: ci
++
+ help:
+   tagline: "the dev launcher framework"
+   preamble: "This config is devbin configuring itself, so it doubles as the worked example. Devbin uses devbin (design D12): a defect in the framework breaks Devbin's own build first."
+@@ -35,6 +45,12 @@ help:
+     - Ship
+ 
+ commands:
++  # Opt-in (ST0007): the release core runs only where a project asks for it.
++  # This replaced devbin's own bin/.devbin/cmd/release, whose notes generator
++  # moved into the core as the `releases` notes kind.
++  release:
++    enabled: true
++
+   # The project's own suite. `bats` is not a built-in devbin ships -- it is
+   # declared here, which is the third activation route in D11: naming an option
+   # activates it whatever the languages say.
+diff --git a/docs/configuration.md b/docs/configuration.md
+index fa7e1aa..79d9ef0 100644
+--- a/docs/configuration.md
++++ b/docs/configuration.md
+@@ -276,7 +276,7 @@ The release core (ST0007): one release sequence shared by every project that rel
+ | `release.object_wait` | duration                               | `20m`                               | `object: ci` only; how long to wait for the workflow's object         |
+ | `release.after`       | list of commands                       | none                                | run after the release object, reported, outside the core's guarantees |
+ 
+-**A key the declared mode never reads is refused, not ignored**: `title` outside `object: local`, `object_wait` outside `object: ci`, `ci.wait` without `ci.query`, and `notes.run` outside `notes.kind: command`. `bin/devbin release check` prints every key with its value and whether it was declared or is the default, and exits 3 while the notes half of the check is not built. The annotated example is the `release:` block at the end of `bin/.devbin/lib/config.reference.yaml`.
++**A key the declared mode never reads is refused, not ignored**: `title` outside `object: local`, `object_wait` outside `object: ci`, `ci.wait` without `ci.query`, and `notes.run` outside `notes.kind: command`. `bin/devbin release check` prints every key with its value and whether it was declared or is the default, then checks the notes: every generated view matches its source, and the project's version has a note. It exits 1 if either half finds anything, and names all of it in one run. `bin/devbin release notes` regenerates the generated views. The annotated example is the `release:` block at the end of `bin/.devbin/lib/config.reference.yaml`.
+ 
+ ```yaml
+ commands:
+@@ -292,7 +292,23 @@ release:
+   object: ci
+ ```
+ 
+-That is devbin's own declaration: its notes are `RELEASES/<version>.md`, its gates add `doctor`, and its GitHub workflow makes the release object.
++That is the block for a project whose notes are `RELEASES/<version>.md`, whose gates add `doctor`, and whose GitHub workflow makes the release object -- devbin's shape (ST0007, D43).
++
++### The notes kinds
++
++`release.notes.kind` names where a release's notes live. Every kind answers the same questions about a version -- is its note open or dated, what its body is, which paths a release of it owns -- so nothing else in the core reads a note.
++
++| Kind        | A version's note                                                         | Open while                                  | Dated when                                | Generated views                  |
++| ----------- | ------------------------------------------------------------------------ | ------------------------------------------- | ----------------------------------------- | -------------------------------- |
++| `releases`  | `RELEASES/<version>.md`: a `key: value` header, then the body            | `status: unreleased`, with no `date:`       | `status: released` and `date: YYYY-MM-DD` | `CHANGELOG.md` and `RELEASES.md` |
++| `changelog` | the `## [<version>] - <marker>` section of a hand-written `CHANGELOG.md` | the marker is `unreleased` or `in progress` | the marker is `YYYY-MM-DD`                | none                             |
++| `command`   | whatever `release.notes.run` answers                                     | its `state` prints `open`                   | its `state` prints `dated YYYY-MM-DD`     | whatever its `views` writes      |
++
++**`releases`** renders `CHANGELOG.md` from each note's `## Added` to `## Security` sections and `RELEASES.md` as the index, and `release check` compares both with a fresh render without writing. Only a file named `X.Y.Z.md` is a note: any other `.md` under `RELEASES/` is refused by name. A released note is never re-dated.
++
++**`changelog`** reads only the heading of the version asked about, so a history of free-text headings is never parsed. A heading for that version with no marker, a marker that is none of the three, or a second heading for it is refused. The body is the section up to the next `## ` heading, without its leading and trailing blank lines.
++
++**`command`** runs `release.notes.run` at the project root with a verb, split into words and never `eval`'d. `state <version>` prints `absent`, `open` or `dated YYYY-MM-DD`; `date <version> <YYYY-MM-DD>` dates the note and prints each path it wrote; `body <version>` prints the body; `views` regenerates any generated views and prints each path; `views-check` prints `current <path>` or `STALE <path>` for each view and writes nothing; `paths <version>` prints every path a release of that version owns. Paths are relative to the project root, and an answer in any other shape is refused, naming what was printed.
+ 
+ ## Two things config deliberately cannot do
+ 
+diff --git a/intent/llm/MODULES.md b/intent/llm/MODULES.md
+index 926dc12..5091b47 100644
+--- a/intent/llm/MODULES.md
++++ b/intent/llm/MODULES.md
+@@ -50,6 +50,7 @@
+ | Sub-command routing       | `lib/cmd/<name>.d/` | An executable at `<name>.d/<word>` routes `devbin <name> <word>`, at any depth. `infra` is its first user |
+ | Framework self-management | `lib/cmd/<name>` | `install upgrade vendor doctor new` -- group `Devbin`, always offered       |
+ | What `new` scaffolds      | `lib/tmpl/`      | `handler`, `help.md`, `test.bats`. `tmpl/handler` must itself parse as bash |
++| Release notes providers   | `lib/release.notes` | ST0007 D39: `notes_select` once, then every verb against a root. `releases`, `changelog`, `command`. The core's only reader of notes, and it reads no config |
+ 
+ ### Documentation
+ 
+diff --git a/lib/cmd/release b/lib/cmd/release
+index 8eee04d..cecb882 100755
+--- a/lib/cmd/release
++++ b/lib/cmd/release
+@@ -16,11 +16,10 @@
+ # `macos prepare --help` rebuilding Intent.app: a handler that acts on its
+ # first word before reading the rest cannot promise that --help is safe.
+ #
+-# AS BUILT BY WP-01: the argument loop and `release check`'s declaration half.
+-# A well-formed cut, `status` and `notes` parse and then exit 3 naming the work
+-# package that builds them. `check` validates and prints the declaration, then
+-# exits 3 too, because its notes half is not built. An unbuilt step that exited
+-# 0 would read as a step that ran.
++# AS BUILT BY WP-02: the argument loop, `release check` (the declaration and the
++# notes) and `release notes`, whose providers are lib/release.notes. A
++# well-formed cut and `status` parse and then exit 3 naming the work package
++# that builds them. An unbuilt step that exited 0 would read as a step that ran.
+ #
+ set -euo pipefail
+ 
+@@ -28,6 +27,8 @@ set -euo pipefail
+ . "${DEVBIN_LIB:?run me through bin/devbin}/helpers"
+ # shellcheck source=lib/config
+ . "$DEVBIN_LIB/config"
++# shellcheck source=lib/release.notes
++. "$DEVBIN_LIB/release.notes"
+ 
+ usage() {
+   local me="${DEVBIN_INVOKE:-bin/devbin} release"
+@@ -185,18 +186,98 @@ check_release_writers() {
+   return 0
+ }
+ 
++# select_notes -- the notes provider this project declares (D39). The library
++# never reads config, so the facts it needs are read here and passed in.
++select_notes() {
++  local kind run
++  kind="$(cfg_release_get notes.kind)" || die "release: cannot read release.notes.kind"
++  run="$(cfg_release_get notes.run)" || die "release: cannot read release.notes.run"
++  notes_select "$kind" "$run" "${DEVBIN_NAME:?}" || die "release: no notes provider (above)"
++}
++
++# check_notes -- the notes half of `release check` (D36): the generated views
++# match their source, and the version this project claims has a note.
++#
++# BOTH HALVES WARN AND CARRY ON, so one run names everything wrong; the status
++# is 1 if either found anything. A kind that generates no views says so, in
++# words that cannot be read as "every view is current" -- zero views compared is
++# a fact about the kind, and a count of zero printed as a pass would hide it.
++check_notes() {
++  local kind compare verdict path n=0 stale=0 rc=0 v state
++  kind="$(cfg_release_get notes.kind)" || die "release: cannot read release.notes.kind"
++  if compare="$(notes_views_check "$PROJECT_ROOT")"; then
++    while read -r verdict path; do
++      [ -n "$verdict" ] || continue
++      n=$((n + 1))
++      case "$verdict" in
++        current) ;;
++        STALE)
++          warn "$path is STALE -- regenerate with: $DEVBIN_INVOKE release notes"
++          stale=$((stale + 1))
++          ;;
++        *)
++          # Not reachable through the three kinds, which print only the two
++          # verdicts; refused here all the same, because an answer this reader
++          # does not recognise must never count as current.
++          warn "release check: the notes provider answered '$verdict $path', which is neither current nor STALE"
++          stale=$((stale + 1))
++          ;;
++      esac
++    done <<<"$compare"
++    if [ "$n" -eq 0 ]; then
++      printf 'release: notes.kind %s generates no views, so none were compared\n' "$kind"
++    else
++      printf 'release: %s of %s generated view(s) current\n' "$((n - stale))" "$n"
++    fi
++    [ "$stale" -eq 0 ] || rc=1
++  else
++    warn "release check: the generated views could not be compared (above)"
++    rc=1
++  fi
++
++  v="$(read_version)"
++  if ! is_semver "$v"; then
++    warn "release check: this project's version reads '$v', which is not X.Y.Z, so its note cannot be looked up"
++    rc=1
++  elif ! state="$(notes_state "$PROJECT_ROOT" "$v")"; then
++    warn "release check: the note for $v could not be read (above)"
++    rc=1
++  elif [ "$state" = absent ]; then
++    warn "this project's version is $v and there is no $(notes_where "$v") -- the notes describe a version it no longer claims to be"
++    rc=1
++  else
++    printf 'release: the note for %s is %s\n' "$v" "$state"
++  fi
++  return "$rc"
++}
++
++# write_notes -- `release notes`: regenerate the generated views (D39).
++write_notes() {
++  local written path n=0
++  written="$(notes_views "$PROJECT_ROOT")" || die "release notes: the views were not regenerated (above)"
++  while IFS= read -r path; do
++    [ -n "$path" ] || continue
++    printf 'release: wrote %s\n' "$path"
++    n=$((n + 1))
++  done <<<"$written"
++  if [ "$n" -eq 0 ]; then
++    printf 'release: notes.kind %s generates no views, so nothing was written\n' "$(cfg_release_get notes.kind)"
++  fi
++  return 0
++}
++
+ case "$verb" in
+   check)
+-    # NOT EXIT 0 WHILE HALF THE PREDICATE IS UNBUILT. D36 makes `check` a
+-    # predicate over the declaration AND the notes views, so a 0 here would
+-    # certify views nothing examined. A malformed declaration still exits 1,
+-    # before this line.
+     check_declaration
+-    printf 'release: the notes views were not examined\n'
+-    not_yet "release check's notes half" "ST0007 WP-02 (notes providers)"
++    select_notes
++    check_notes || exit 1
+     ;;
+   notes)
+-    not_yet "release notes" "ST0007 WP-02 (notes providers)"
++    # Validated first, as `check` is: a malformed release: block must never be
++    # read as its defaults and regenerate views from the wrong provider.
++    cfg_validate || die "release notes: $DEVBIN_DIR/config.yaml does not validate (above)"
++    select_notes
++    write_notes
+     ;;
+   status)
+     not_yet "release status" "ST0007 WP-03"
+diff --git a/lib/helpers b/lib/helpers
+index e13c61d..af02e05 100644
+--- a/lib/helpers
++++ b/lib/helpers
+@@ -255,18 +255,51 @@ is_true_word() { _word_in "$1" "$_DEVBIN_TRUE_WORDS"; }
+ is_false_word() { _word_in "$1" "$_DEVBIN_FALSE_WORDS"; }
+ is_no_default() { _word_in "$1" "$_DEVBIN_NO_DEFAULT"; }
+ 
++# mktemp_beside <file> -- a temporary that will REPLACE <file>, on stdout.
++#
++# THE ONE HOME FOR "write a temporary, then rename it over the file", which had
++# a copy in every writer that replaced a file. Two things are true of the
++# temporary it makes, and each copy had got one of them wrong:
++#
++# - IT IS BESIDE THE FILE, NOT IN TMPDIR. A rename is atomic only within one
++#   filesystem; across two, `mv` quietly copies, and a kill mid-copy leaves the
++#   truncated file this pattern exists to rule out (issue 0002).
++# - IT HAS THE FILE'S MODE. mktemp creates 0600, and the rename carries that
++#   onto the file, so every writer that renamed a temporary into place left a
++#   0644 file 0600 -- CHANGELOG.md and RELEASES.md were, on the machine that
++#   generated them, with nothing to show it, since git records only the
++#   executable bit. `cp -p` gives the temporary the file's mode; a writer's `>`
++#   into it truncates and keeps that mode. A file that does not exist yet gets
++#   the mode the umask gives a new file.
++mktemp_beside() {
++  local file="$1" tmp
++  tmp="$(mktemp "${file}.XXXXXX")" || return 1
++  if [ -e "$file" ]; then
++    cp -p "$file" "$tmp" || {
++      rm -f "$tmp"
++      return 1
++    }
++  else
++    chmod "$(printf '%o' "$((0666 & ~$(umask)))")" "$tmp" || {
++      rm -f "$tmp"
++      return 1
++    }
++  fi
++  printf '%s\n' "$tmp"
++}
++
+ # sed_inplace <expression> <file> -- edit a file in place, portably.
+ #
+ # `sed -i` is not portable: BSD sed (macOS) requires an argument to -i and GNU
+ # sed (Linux CI) refuses one. The corpus wrote `sed -i ''`, which is correct on
+ # a Mac and fails on Ubuntu. Writing through a temporary and renaming sidesteps
+ # the divergence and is atomic besides, which matters when the file being
+-# rewritten is the project's version.
++# rewritten is the project's version. The rename's own status is the answer too:
++# a replace that did not happen is not an edit that did.
+ sed_inplace() {
+   local expr="$1" file="$2" tmp
+-  tmp="$(mktemp "${file}.XXXXXX")" || return 1
+-  if sed "$expr" "$file" >"$tmp"; then
+-    mv "$tmp" "$file"
++  tmp="$(mktemp_beside "$file")" || return 1
++  if sed "$expr" "$file" >"$tmp" && mv "$tmp" "$file"; then
+     return 0
+   fi
+   rm -f "$tmp"
+@@ -1046,15 +1079,15 @@ generated_doc_write() {
+ 
+   # R3 -- ATOMIC REPLACE. The temp is created BESIDE THE TARGET, not in TMPDIR:
+   # rename is atomic only within a filesystem, so a temp under /tmp renaming
+-  # onto a project path can fail cross-device. sed_inplace above already learned
+-  # this; the pattern is shared deliberately.
++  # onto a project path can fail cross-device. mktemp_beside above is the one
++  # home for that, and it also gives the temp the target's mode.
+   #
+   # What this gives and does NOT give: the reader sees the old file or the new
+   # one and never a half-written one. It is not a durability guarantee -- shell
+   # has no portable fsync, so a machine losing power at the wrong moment may
+   # have neither. Atomicity is the property that matters here, and claiming the
+   # other one would be the wrong kind of confident.
+-  if ! tmp="$(mktemp "${target}.XXXXXX")"; then
++  if ! tmp="$(mktemp_beside "$target")"; then
+     warn "generated_doc_write: could not create a temporary file beside $target -- untouched"
+     return 1
+   fi
+diff --git a/lib/infra b/lib/infra
+index 03995de..4ce34fd 100755
+--- a/lib/infra
++++ b/lib/infra
+@@ -213,7 +213,7 @@ infra_sender_pair_complete() {
+ 
+ #
+ # SC2016 is suppressed for the function, not line by line, for the same reason
+-# `bin/.devbin/cmd/release` suppresses it for its renderers: every message below
++# `lib/release.notes` suppresses it for its renderers: every message below
+ # names a config KEY, and the delimiter this project writes a key in is the
+ # backtick. Single quotes are correct here precisely because the contents must
+ # NOT expand -- which is the thing shellcheck is warning about. Added 2026-09-07
+diff --git a/lib/release.notes b/lib/release.notes
+new file mode 100644
+index 0000000..9e795b9
+--- /dev/null
++++ b/lib/release.notes
+@@ -0,0 +1,984 @@
++#!/usr/bin/env bash
++#
++# lib/release.notes -- the notes providers of the release core (ST0007, D39).
++#
++# Sourced, never executed. A release's notes live in one of three shapes, and
++# this file is the one place that knows each shape. The rest of the core asks a
++# provider a question and never reads a note itself:
++#
++#   notes_select <kind> <run> <project>   choose releases, changelog or command
++#   notes_state <root> <version>          absent | open | dated YYYY-MM-DD
++#   notes_check <root> <version> <today>  ready to release today, or refused naming why
++#   notes_date <root> <version> <date>    date the note, printing each path written
++#   notes_body <root> <version>           the body: the tag message and the release notes
++#   notes_views <root>                    regenerate the generated views, printing each path
++#   notes_views_check <root>              `current <path>` or `STALE <path>`, writing nothing
++#   notes_paths <root> <version>          the paths the release owns, relative to root
++#   notes_where <version>                 where the note is expected, to end a sentence
++#
++# EVERY VERB TAKES THE ROOT IT READS OR WRITES, never the working tree by
++# assumption, so a caller can ask about a commit by materialising its tree. The
++# handler reads the config and passes the facts in; nothing here reads config.
++#
++# STATUS SAYS WHETHER THE QUESTION WAS ANSWERED; STDOUT SAYS WHAT THE ANSWER IS.
++# `notes_views_check` returns 0 over a stale view, because it compared it, and
++# non-zero only when it could not compare. "Looked and found it stale" and "could
++# not look" must never share a status, or a caller keyed on the status reads one
++# as the other. `notes_check` is the one exception, and deliberately: it is a
++# refusal, answering "not ready" and "could not tell" both non-zero with the
++# reason named, because a pre-flight refuses on either.
++#
++# NO REFUSAL HERE RELIES ON `set -e`, and that was measured rather than reasoned.
++# The generator this file replaced refused a malformed note with `die` at command
++# substitution depth, which holds only while errexit is in force. The release
++# sequence tests every step's result, and under a caller that does --
++# `if notes_views ...`, `notes_views || ...` -- bash switches errexit off for
++# everything the call runs. On bash 5.3 the refusal then printed its message
++# while rendering carried on with an empty status and the caller's then-branch
++# ran: issue 0060's swallowed refusal, returning through the caller. So every
++# failure below is checked where it happens; a captured value's sentinel is
++# joined with `&&`, because after a `;` the sentinel's own status stands in for
++# the command's; and nothing here calls `die` or `exit`. A refusal warns and
++# returns, and the caller decides whether to stop.
++#
++[ -n "${_DEVBIN_RELEASE_NOTES_LOADED:-}" ] && return 0
++if ! declare -F warn >/dev/null || ! declare -F is_semver >/dev/null; then
++  printf 'lib/release.notes: source lib/helpers first -- it reads warn and is_semver there\n' >&2
++  return 1
++fi
++_DEVBIN_RELEASE_NOTES_LOADED=1
++
++_NOTES_RELEASES_DIR="RELEASES"
++_NOTES_CHANGELOG="CHANGELOG.md"
++_NOTES_INDEX="RELEASES.md"
++
++# The sections a changelog carries, in Keep a Changelog's own order. A release
++# note may use any subset; anything else in the note is narrative and stays in
++# the note.
++_NOTES_SECTIONS="Added Changed Deprecated Removed Fixed Security"
++
++_notes_kind=""
++_notes_run=""
++_notes_project=""
++
++# notes_select <kind> <run> <project> -- choose the provider every verb asks.
++#
++# `run` is read only under `command`, and `command` cannot work without it. The
++# schema refuses both mismatches too; this refuses them again because a caller
++# can reach here without having validated anything. A refused selection clears
++# the previous one, so no verb answers from a provider nobody chose.
++notes_select() {
++  _notes_kind=""
++  _notes_run=""
++  _notes_project=""
++  if [ $# -ne 3 ]; then
++    warn "notes_select: want <kind> <run> <project>, got $# argument(s)"
++    return 1
++  fi
++  case "$1" in
++    releases | changelog)
++      if [ -n "$2" ]; then
++        warn "release notes: notes.run is read only under notes.kind: command, and kind is $1"
++        return 1
++      fi
++      ;;
++    command)
++      # A notes.run of nothing but space splits into no words at all, and the
++      # verb would then run as the command.
++      if ! [[ "$2" =~ [^[:space:]] ]]; then
++        warn "release notes: notes.kind: command needs notes.run -- it is what does the work"
++        return 1
++      fi
++      ;;
++    *)
++      warn "release notes: unknown notes.kind: ${1:-(empty)} -- want releases, changelog or command"
++      return 1
++      ;;
++  esac
++  if [ -z "$3" ]; then
++    warn "release notes: no project name given -- the generated changelog names its project"
++    return 1
++  fi
++  _notes_kind="$1"
++  _notes_run="$2"
++  _notes_project="$3"
++}
++
++# _notes_args <verb> <usage> <count> [args...] -- refuse, naming the verb, a call
++# with no provider selected, the wrong number of arguments, a root that is not a
++# directory, or a version that is not X.Y.Z. The root is always the first
++# argument and the version, where there is one, the second.
++_notes_args() {
++  local verb="$1" usage="$2" want="$3"
++  shift 3
++  if [ -z "$_notes_kind" ]; then
++    warn "$verb: no notes provider is selected -- call notes_select first"
++    return 1
++  fi
++  if [ $# -ne "$want" ]; then
++    warn "$verb: want $usage, got $# argument(s)"
++    return 1
++  fi
++  if [ ! -d "$1" ]; then
++    warn "$verb: the root is not a directory: $1"
++    return 1
++  fi
++  if [ $# -ge 2 ] && ! is_semver "$2"; then
++    warn "$verb: not a version: $2 (want X.Y.Z)"
++    return 1
++  fi
++  return 0
++}
++
++# _notes_is_date <value> -- true for YYYY-MM-DD.
++_notes_is_date() {
++  [[ "${1:-}" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]
++}
++
++# _notes_lines <text> -- each non-empty line of the text, newline-terminated.
++_notes_lines() {
++  local line
++  while IFS= read -r line; do
++    if [ -n "$line" ]; then
++      printf '%s\n' "$line"
++    fi
++  done <<<"$1"
++  return 0
++}
++
++# notes_state <root> <version> -- `absent`, `open` or `dated YYYY-MM-DD`. A note
++# that exists but cannot be read as one of those is refused, never called absent.
++notes_state() {
++  _notes_args notes_state "<root> <version>" 2 "$@" || return 1
++  "_notes_${_notes_kind}_state" "$1" "$2"
++}
++
++# notes_check <root> <version> <today> -- ready to release today: the note is
++# open, or already dated today (a run that dated it and stopped). Every kind
++# answers it the same way, so it is asked of the state rather than of each kind.
++notes_check() {
++  local state
++  _notes_args notes_check "<root> <version> <today>" 3 "$@" || return 1
++  if ! _notes_is_date "$3"; then
++    warn "notes_check: today is not YYYY-MM-DD: $3"
++    return 1
++  fi
++  state="$(notes_state "$1" "$2")" || return 1
++  case "$state" in
++    open | "dated $3")
++      return 0
++      ;;
++    absent)
++      warn "release notes: there is no $("_notes_${_notes_kind}_where" "$2") -- write the note before the release"
++      return 1
++      ;;
++    *)
++      warn "release notes: the note for $2 was released on ${state#dated }, not today ($3) -- a released note is never re-dated"
++      return 1
++      ;;
++  esac
++}
++
++# notes_date <root> <version> <YYYY-MM-DD> -- date an open note for release,
++# printing each path written.
++#
++# THE DATING RULES ARE STATED HERE ONCE, for every kind, as notes_check states
++# its own: a note already dated that day is left alone and nothing is printed;
++# an open note is dated; an absent note, or one dated another day, is refused.
++# A kind supplies only its writer, and the write is read back through
++# notes_state, so a rewrite that did not take is refused rather than reported
++# done. The caller reads the clock once and passes the date in, so a release
++# carries one date from one source. It does not regenerate views: a caller
++# dating a note regenerates them next.
++notes_date() {
++  _notes_args notes_date "<root> <version> <YYYY-MM-DD>" 3 "$@" || return 1
++  local root="$1" v="$2" when="$3" state written
++  if ! _notes_is_date "$when"; then
++    warn "notes_date: not a date: $when (want YYYY-MM-DD)"
++    return 1
++  fi
++  state="$(notes_state "$root" "$v")" || return 1
++  case "$state" in
++    "dated $when")
++      return 0
++      ;;
++    open) ;;
++    absent)
++      warn "release notes: there is no $("_notes_${_notes_kind}_where" "$v") to date -- write the note before the release"
++      return 1
++      ;;
++    *)
++      warn "release notes: the note for $v was released on ${state#dated } -- a released note is never re-dated, and this release is dated $when"
++      return 1
++      ;;
++  esac
++  written="$("_notes_${_notes_kind}_write_date" "$root" "$v" "$when")" || return 1
++  state="$(notes_state "$root" "$v")" || return 1
++  if [ "$state" != "dated $when" ]; then
++    warn "release notes: dating the note for $v did not take -- it reads: $state"
++    return 1
++  fi
++  _notes_lines "$written"
++}
++
++# notes_body <root> <version> -- the notes body, byte for byte. An empty body is
++# refused: a release with nothing to say about itself is a missing note.
++notes_body() {
++  _notes_args notes_body "<root> <version>" 2 "$@" || return 1
++  "_notes_${_notes_kind}_body" "$1" "$2"
++}
++
++# notes_views <root> -- regenerate the generated views, printing each path
++# written. A kind that generates nothing prints nothing, and the caller says so.
++notes_views() {
++  _notes_args notes_views "<root>" 1 "$@" || return 1
++  "_notes_${_notes_kind}_views" "$1"
++}
++
++# notes_views_check <root> -- one line per view compared, `current <path>` or
++# `STALE <path>`, writing nothing under the root. A kind that generates nothing
++# prints nothing, and the caller must say that nothing was compared rather than
++# that everything is current.
++notes_views_check() {
++  _notes_args notes_views_check "<root>" 1 "$@" || return 1
++  "_notes_${_notes_kind}_views_check" "$1"
++}
++
++# notes_paths <root> <version> -- the paths a release of this version owns,
++# relative to the root: the note and every view generated from it.
++notes_paths() {
++  _notes_args notes_paths "<root> <version>" 2 "$@" || return 1
++  "_notes_${_notes_kind}_paths" "$1" "$2"
++}
++
++# notes_where <version> -- where the selected provider expects the version's
++# note, phrased to end the sentence "there is no ...".
++notes_where() {
++  if [ -z "$_notes_kind" ]; then
++    warn "notes_where: no notes provider is selected -- call notes_select first"
++    return 1
++  fi
++  if ! is_semver "${1:-}"; then
++    warn "notes_where: not a version: ${1:-} (want X.Y.Z)"
++    return 1
++  fi
++  "_notes_${_notes_kind}_where" "$1"
++}
++
++# _notes_show_diff <current> <fresh> -- the first lines of a unified diff, on
++# stderr, saying how many it did not show. Display only: a diff exits 1 over the
++# difference it was asked to show, so its status is not a verdict here.
++_notes_show_diff() {
++  local diff n shown=40
++  diff="$(diff -u "$1" "$2" 2>&1)" || true
++  n="$(printf '%s\n' "$diff" | wc -l)"
++  awk -v max="$shown" 'NR <= max' <<<"$diff" >&2
++  if [ "$n" -gt "$shown" ]; then
++    printf '       ... %s more diff line(s) not shown\n' "$((n - shown))" >&2
++  fi
++  return 0
++}
++
++# ============================================================================
++# releases -- RELEASES/<version>.md, with CHANGELOG.md and RELEASES.md
++# generated from it. devbin's own shape, moved here from its project handler.
++# ============================================================================
++#
++# THE HIGHLANDER PROBLEM THIS SOLVES. A release is described in three places by
++# convention -- a per-release note, a CHANGELOG, and an index of releases -- and
++# all three are about the same events. Hand-written, they are three copies that
++# agree on the day they are written and drift afterwards, silently, because
++# nothing fails when a changelog omits a release.
++#
++# So there is ONE home for a release's content, `RELEASES/<version>.md`, and
++# `CHANGELOG.md` and `RELEASES.md` are GENERATED views of it. Adding a release
++# means adding one file. The two views cannot omit it, cannot contradict it, and
++# cannot disagree with each other, because none of them is written by hand.
++
++_notes_releases_where() {
++  printf '%s/%s.md' "$_NOTES_RELEASES_DIR" "$1"
++}
++
++# _notes_releases_field <file> <key> -- one value from the note's header block.
++#
++# Line-oriented `key: value`, the same shape the whiteboard protocol uses and
++# for the same reason: it is hand-written prose-heavy text, and a quoting-
++# sensitive format invites a `headline:` containing a colon to become invalid.
++# Everything after the first ': ' to end of line is the value.
++_notes_releases_field() {
++  awk -v k="$2" '
++    /^$/ { exit }
++    $0 ~ ("^" k ": ") { sub("^" k ": ", ""); print; exit }
++  ' "$1"
++}
++
++# _notes_releases_header <root> <version> -- `open` or `dated <date>` for a note
++# that exists, refusing a header that is neither.
++#
++# WHY `status:` IS REQUIRED RATHER THAN DEFAULTED. This field was written into
++# the 0.1.0 note and READ BY NOTHING for the whole of that release -- it looked
++# like a control and controlled nothing, which is this repository's cardinal
++# class. Defaulting an absent status to `released` would rebuild the hole one
++# layer down: a note that MEANT unreleased and forgot the field would render as
++# shipped in both views, and forgetting the field is precisely the mistake the
++# field exists to catch. So absent is an error here, never a default.
++#
++# An unreleased note's `date:` is REFUSED rather than ignored: an ignored date
++# survives the flip to `released` and ships as a claim nobody re-checked, which
++# is how a stale value quietly becomes an assertion. A released note without one
++# is refused for the mirror reason -- the views would carry an empty date column
++# and read as formatting.
++_notes_releases_header() {
++  local rel="$_NOTES_RELEASES_DIR/$2.md" status date
++  if ! status="$(_notes_releases_field "$1/$rel" status)" ||
++    ! date="$(_notes_releases_field "$1/$rel" date)"; then
++    warn "release notes: cannot read $rel"
++    return 1
++  fi
++  case "$status" in
++    unreleased)
++      if [ -n "$date" ]; then
++        warn "$rel is unreleased but carries date: $date -- an unreleased note has no date"
++        return 1
++      fi
++      printf 'open\n'
++      ;;
++    released)
++      if [ -z "$date" ]; then
++        warn "$rel is released but carries no \`date:\`"
++        return 1
++      fi
++      if ! _notes_is_date "$date"; then
++        warn "$rel has date: $date -- a release date is YYYY-MM-DD"
++        return 1
++      fi
++      printf 'dated %s\n' "$date"
++      ;;
++    "")
++      warn "$rel has no \`status:\` -- it must be \`released\` or \`unreleased\`"
++      return 1
++      ;;
++    *)
++      warn "$rel has status: $status -- it must be \`released\` or \`unreleased\`"
++      return 1
++      ;;
++  esac
++}
++
++_notes_releases_state() {
++  if [ ! -e "$1/$_NOTES_RELEASES_DIR/$2.md" ]; then
++    printf 'absent\n'
++    return 0
++  fi
++  _notes_releases_header "$1" "$2"
++}
++
++# _notes_releases_versions <root> -- every note's version, NEWEST FIRST.
++#
++# `sort -V` so 0.10.0 sorts above 0.9.0. Lexical sort puts them the other way
++# round and the error only appears at the tenth release, by which time the
++# changelog has been wrong for a while.
++#
++# ONLY A FILE NAMED FOR A VERSION IS A NOTE. The generator this replaced read
++# every `*.md` under RELEASES/ as one, so a README there became a release called
++# README, or a refusal for its missing `status:` that named the wrong problem.
++# Anything else ending in `.md` is refused by name.
++_notes_releases_versions() {
++  local dir="$1/$_NOTES_RELEASES_DIR" listing f name found="" strays=""
++  [ -d "$dir" ] || return 0
++  if ! listing="$(find "$dir" -mindepth 1 -maxdepth 1 -name '*.md')"; then
++    warn "release notes: cannot list $_NOTES_RELEASES_DIR/"
++    return 1
++  fi
++  while IFS= read -r f; do
++    [ -n "$f" ] || continue
++    name="${f##*/}"
++    if [ -f "$f" ] && is_semver "${name%.md}"; then
++      found="$found${name%.md}"$'\n'
++    else
++      strays="$strays $name"
++    fi
++  done <<<"$listing"
++  if [ -n "$strays" ]; then
++    warn "$_NOTES_RELEASES_DIR/ holds .md files that are not release notes:$strays -- a note is a file named X.Y.Z.md"
++    return 1
++  fi
++  [ -n "$found" ] || return 0
++  printf '%s' "$found" | sort -V -r
++}
++
++# _notes_releases_section <file> <name> -- the body of one `## <name>` section.
++_notes_releases_section() {
++  awk -v want="## $2" '
++    $0 == want { f = 1; next }
++    f && /^## / { exit }
++    f { print }
++  ' "$1"
++}
++
++# _notes_releases_changelog <root> -- CHANGELOG.md, on stdout: Keep a Changelog,
++# assembled from the notes.
++#
++# THE HEADER IS THE CORE'S AND NAMES THE PROJECT (hv, 2026-09-17, ruling on
++# ST0007 D39). While this lived in devbin's project handler its header also
++# stated devbin's own semver deviation, which every project taking
++# `notes.kind: releases` would then have published about itself. That rule's one
++# home is docs/configuration.md, beside `devbin_version`.
++#
++# SC2016 is suppressed for the renderers, not line by line: every printf below
++# emits MARKDOWN, whose inline-code delimiter is the backtick, so a format
++# string mentioning `RELEASES.md` trips "expressions don't expand in single
++# quotes" on text that is deliberately literal. Single quotes are correct here
++# for exactly the reason the linter is warning about.
++# shellcheck disable=SC2016
++_notes_releases_changelog() {
++  local root="$1" versions v state when sec body any IFS=$' \t\n'
++  versions="$(_notes_releases_versions "$root")" || return 1
++  printf '# Changelog\n\n'
++  printf 'All notable changes to %s are recorded here.\n\n' "$_notes_project"
++  printf '**GENERATED from `RELEASES/*.md`. Do not hand-edit** -- regenerate with `bin/devbin release notes`. The per-release notes are the source; this file and `RELEASES.md` are views of them, so a release cannot appear in one and be missing from another.\n\n'
++  printf 'The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and %s aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\n' "$_notes_project"
++  while IFS= read -r v; do
++    [ -n "$v" ] || continue
++    state="$(_notes_releases_header "$root" "$v")" || return 1
++    when="${state#dated }"
++    [ "$state" != open ] || when="Unreleased"
++    printf '## [%s] - %s\n\n' "$v" "$when"
++    any=0
++    for sec in $_NOTES_SECTIONS; do
++      if ! body="$(_notes_releases_section "$root/$_NOTES_RELEASES_DIR/$v.md" "$sec")"; then
++        warn "release notes: cannot read $_NOTES_RELEASES_DIR/$v.md"
++        return 1
++      fi
++      # Blank-only sections are omitted rather than printed empty: a heading
++      # with nothing under it reads as "nothing changed here" when it means
++      # "the note did not use this section".
++      if [[ "$body" =~ [^[:space:]] ]]; then
++        printf '### %s\n\n' "$sec"
++        printf '%s\n' "$body" | sed '/^[[:space:]]*$/d' || return 1
++        printf '\n'
++        any=1
++      fi
++    done
++    [ "$any" -eq 1 ] || printf '_No changelog sections in this release note._\n\n'
++    printf 'Full note: [RELEASES/%s.md](RELEASES/%s.md)\n\n' "$v" "$v"
++  done <<<"$versions"
++}
++
++# _notes_releases_index <root> -- RELEASES.md, on stdout: the release index.
++# SC2016: as for the changelog renderer above.
++# shellcheck disable=SC2016
++_notes_releases_index() {
++  local root="$1" versions v state when headline rows="" table
++  versions="$(_notes_releases_versions "$root")" || return 1
++  printf '# Releases\n\n'
++  printf '**GENERATED from `RELEASES/*.md`. Do not hand-edit** -- regenerate with `bin/devbin release notes`.\n\n'
++  printf 'One file per release under `RELEASES/`, newest first. `CHANGELOG.md` is the terse chronological view of the same source; this is the index.\n\n'
++  while IFS= read -r v; do
++    [ -n "$v" ] || continue
++    state="$(_notes_releases_header "$root" "$v")" || return 1
++    when="${state#dated }"
++    [ "$state" != open ] || when="Unreleased"
++    if ! headline="$(_notes_releases_field "$root/$_NOTES_RELEASES_DIR/$v.md" headline)"; then
++      warn "release notes: cannot read $_NOTES_RELEASES_DIR/$v.md"
++      return 1
++    fi
++    # A TAB would open a column when the table splits its rows, so it is refused;
++    # a `|` would open a cell wherever the Markdown renders, so it is escaped.
++    if [[ "$headline" == *$'\t'* ]]; then
++      warn "release notes: the headline in $_NOTES_RELEASES_DIR/$v.md contains a tab, which the release index cannot hold"
++      return 1
++    fi
++    headline="${headline//|/\\|}"
++    rows="${rows}[${v}](RELEASES/${v}.md)"$'\t'"${when}"$'\t'"${headline}"$'\n'
++  done <<<"$versions"
++  table="$(printf 'Version\tDate\tHeadline\n%s' "$rows" | _notes_md_table)" || return 1
++  printf '%s\n\n' "$table"
++}
++
++# _notes_md_table -- TSV on stdin (first line the header) -> a column-aligned
++# Markdown table.
++_notes_md_table() {
++  awk -F'\t' '
++    { for (i = 1; i <= NF; i++) { r[NR, i] = $i; if (length($i) > w[i]) w[i] = length($i) }
++      if (NF > nf) nf = NF; rows = NR }
++    END {
++      for (n = 1; n <= rows; n++) {
++        line = "|"
++        for (i = 1; i <= nf; i++) line = line " " sprintf("%-*s", w[i], r[n, i]) " |"
++        print line
++        if (n == 1) {
++          sep = "|"
++          for (i = 1; i <= nf; i++) { d = ""; for (k = 0; k < w[i] + 2; k++) d = d "-"; sep = sep d "|" }
++          print sep
++        }
++      }
++    }
++  '
++}
++
++# _notes_releases_render <root> <renderer> <tmp> -- render one view into a
++# temporary file, keeping every trailing newline. The render happens in memory
++# first, so a renderer that refuses part way writes nothing at all.
++_notes_releases_render() {
++  local content
++  content="$("_notes_releases_$2" "$1" && printf x)" || return 1
++  if ! printf '%s' "${content%x}" >"$3"; then
++    warn "release notes: cannot write a temporary view at $3"
++    return 1
++  fi
++}
++
++# _notes_releases_views <root> -- regenerate CHANGELOG.md and RELEASES.md.
++#
++# BOTH ARE RENDERED BEFORE EITHER IS REPLACED. The generator this replaced wrote
++# the changelog before it rendered the index, so a note that broke the second
++# render left a regenerated changelog beside a stale index -- two views that
++# disagreed, which is the one state they exist to rule out.
++#
++# NEVER through a redirect onto the target. `render > path` truncates before the
++# renderer runs, so a renderer that dies leaves the previous good file empty --
++# the same defect this repository already carries as issue 0002, and the same
++# one the fleet generator was caught by. Each view is rendered in memory, written
++# to a temporary beside it with its mode (mktemp_beside), and renamed into place.
++_notes_releases_views() {
++  local root="$1" versions tmp_log tmp_index
++  versions="$(_notes_releases_versions "$root")" || return 1
++  if [ -z "$versions" ]; then
++    warn "no release notes under $_NOTES_RELEASES_DIR/ -- refusing to generate a view of nothing"
++    return 1
++  fi
++  if ! tmp_log="$(mktemp_beside "$root/$_NOTES_CHANGELOG")"; then
++    warn "release notes: cannot create a temporary file for $_NOTES_CHANGELOG"
++    return 1
++  fi
++  if ! tmp_index="$(mktemp_beside "$root/$_NOTES_INDEX")"; then
++    rm -f "$tmp_log"
++    warn "release notes: cannot create a temporary file for $_NOTES_INDEX"
++    return 1
++  fi
++  if ! _notes_releases_render "$root" changelog "$tmp_log" ||
++    ! _notes_releases_render "$root" index "$tmp_index"; then
++    rm -f "$tmp_log" "$tmp_index"
++    warn "release notes: $_NOTES_CHANGELOG and $_NOTES_INDEX are left as they were"
++    return 1
++  fi
++  if ! mv "$tmp_log" "$root/$_NOTES_CHANGELOG"; then
++    rm -f "$tmp_log" "$tmp_index"
++    warn "release notes: cannot replace $_NOTES_CHANGELOG -- neither view was replaced"
++    return 1
++  fi
++  if ! mv "$tmp_index" "$root/$_NOTES_INDEX"; then
++    rm -f "$tmp_index"
++    warn "release notes: $_NOTES_CHANGELOG was replaced and $_NOTES_INDEX could not be -- run release notes again"
++    return 1
++  fi
++  printf '%s\n%s\n' "$_NOTES_CHANGELOG" "$_NOTES_INDEX"
++}
++
++# _notes_releases_views_check <root> -- compare each view with a fresh render.
++#
++# A PREDICATE, NOT A REPAIR. A checker that silently fixed what it found would
++# make the failing state unobservable, and the next run would report clean
++# having hidden a drift. A missing view is stale: it is what regenerating
++# would write.
++_notes_releases_views_check() {
++  local root="$1" versions pair name tmp rc
++  versions="$(_notes_releases_versions "$root")" || return 1
++  if [ -z "$versions" ]; then
++    warn "no release notes under $_NOTES_RELEASES_DIR/ -- refusing to compare a view of nothing"
++    return 1
++  fi
++  for pair in "changelog:$_NOTES_CHANGELOG" "index:$_NOTES_INDEX"; do
++    name="${pair#*:}"
++    if ! tmp="$(mktemp "${TMPDIR:-/tmp}/devbin-release.XXXXXX")"; then
++      warn "release notes: cannot create a temporary file to compare $name"
++      return 1
++    fi
++    if ! _notes_releases_render "$root" "${pair%%:*}" "$tmp"; then
++      rm -f "$tmp"
++      return 1
++    fi
++    if [ ! -e "$root/$name" ]; then
++      rm -f "$tmp"
++      printf 'STALE %s\n' "$name"
++      continue
++    fi
++    rc=0
++    cmp -s "$tmp" "$root/$name" || rc=$?
++    case "$rc" in
++      0)
++        printf 'current %s\n' "$name"
++        ;;
++      1)
++        _notes_show_diff "$root/$name" "$tmp"
++        printf 'STALE %s\n' "$name"
++        ;;
++      *)
++        rm -f "$tmp"
++        warn "release notes: cannot compare $name with its fresh render"
++        return 1
++        ;;
++    esac
++    rm -f "$tmp"
++  done
++  return 0
++}
++
++# _notes_releases_body <root> <version> -- the note below its header block.
++#
++# BYTE FOR BYTE WHAT .github/workflows/release.yml PUBLISHES, because that
++# workflow makes devbin's release object from the same note: two readers of one
++# body that disagreed would tag one text and publish another. The arm holding
++# them equal runs the workflow's own awk rather than a copy of it.
++_notes_releases_body() {
++  local rel="$_NOTES_RELEASES_DIR/$2.md" body
++  if [ ! -f "$1/$rel" ]; then
++    warn "release notes: there is no $rel"
++    return 1
++  fi
++  if ! body="$(awk 'BEGIN { body = 0 } body { print } !body && /^$/ { body = 1 }' "$1/$rel" && printf x)"; then
++    warn "release notes: cannot read $rel"
++    return 1
++  fi
++  body="${body%x}"
++  if ! [[ "$body" =~ [^[:space:]] ]]; then
++    warn "release notes: $rel has a header block and no body -- a release needs notes"
++    return 1
++  fi
++  printf '%s' "$body"
++}
++
++# _notes_releases_write_date <root> <version> <date> -- `status: released` and
++# `date: <date>` in the note's header, and nothing else in the file moves; prints
++# the path written. notes_date decides whether to call it and reads it back.
++#
++# The date goes directly under `version:`, where every released note in this
++# repository carries it; a header with no `version:` line gets it first.
++_notes_releases_write_date() {
++  local root="$1" when="$3" rel="$_NOTES_RELEASES_DIR/$2.md" tmp
++  if ! tmp="$(mktemp_beside "$root/$rel")"; then
++    warn "release notes: cannot create a temporary file to date $rel"
++    return 1
++  fi
++  if ! awk -v when="$when" '
++    function flush(   i, at) {
++      for (i = 1; i <= n; i++) if (h[i] ~ /^version: /) { at = i; break }
++      if (!at) print "date: " when
++      for (i = 1; i <= n; i++) {
++        print (h[i] == "status: unreleased" ? "status: released" : h[i])
++        if (i == at) print "date: " when
++      }
++      flushed = 1
++    }
++    !flushed && /^$/ { flush(); print; next }
++    !flushed { h[++n] = $0; next }
++    { print }
++    END { if (!flushed) flush() }
++  ' "$root/$rel" >"$tmp"; then
++    rm -f "$tmp"
++    warn "release notes: cannot date $rel"
++    return 1
++  fi
++  if ! mv "$tmp" "$root/$rel"; then
++    rm -f "$tmp"
++    warn "release notes: cannot replace $rel"
++    return 1
++  fi
++  printf '%s\n' "$rel"
++}
++
++_notes_releases_paths() {
++  printf '%s/%s.md\n%s\n%s\n' "$_NOTES_RELEASES_DIR" "$2" "$_NOTES_CHANGELOG" "$_NOTES_INDEX"
++}
++
++# ============================================================================
++# changelog -- a `## [<version>]` section in a hand-written CHANGELOG.md.
++# Intent's shape and Utilz's. It generates nothing, so it has no views.
++# ============================================================================
++#
++# A version's heading is `## [<version>] - <marker>`: `unreleased` or
++# `in progress` while it is open, in any case, and a YYYY-MM-DD date once it is
++# dated.
++#
++# ONLY THE ASKED-FOR VERSION'S HEADING IS EVER PARSED. A changelog's history is
++# prose, and Intent's carries `## [2.19.1] - never released; this work shipped
++# in 3.0.0` -- a heading no rule here should have an opinion about.
++
++_notes_changelog_where() {
++  printf '## [%s] heading in %s' "$1" "$_NOTES_CHANGELOG"
++}
++
++# _notes_changelog_heading <root> <version> -- `<count><TAB><line><TAB><rest>`:
++# how many headings name the version, the first one's line number, and what
++# follows its `]`. The version is compared as a string, never as a pattern, so
++# 1.2.3 cannot match 1x2x3 and cannot match 1.2.30.
++_notes_changelog_heading() {
++  awk -v want="$2" '
++    index($0, "## [") == 1 {
++      rest = substr($0, 5)
++      close_at = index(rest, "]")
++      if (close_at > 0 && substr(rest, 1, close_at - 1) == want) {
++        n++
++        if (n == 1) { line = NR; tail = substr(rest, close_at + 1) }
++      }
++    }
++    END { printf "%d\t%d\t%s\n", n, line, tail }
++  ' "$1/$_NOTES_CHANGELOG"
++}
++
++_notes_changelog_state() {
++  local root="$1" v="$2" found count rest line tail marker
++  if [ ! -e "$root/$_NOTES_CHANGELOG" ]; then
++    printf 'absent\n'
++    return 0
++  fi
++  if ! found="$(_notes_changelog_heading "$root" "$v")"; then
++    warn "release notes: cannot read $_NOTES_CHANGELOG"
++    return 1
++  fi
++  count="${found%%$'\t'*}"
++  rest="${found#*$'\t'}"
++  line="${rest%%$'\t'*}"
++  tail="${rest#*$'\t'}"
++  case "$count" in
++    0)
++      printf 'absent\n'
++      return 0
++      ;;
++    1) ;;
++    *)
++      warn "release notes: $_NOTES_CHANGELOG has $count headings for [$v] -- one version, one section"
++      return 1
++      ;;
++  esac
++  marker="${tail# - }"
++  if [ "$marker" = "$tail" ]; then
++    warn "release notes: $_NOTES_CHANGELOG line $line reads '## [$v]$tail' -- want '## [$v] - <YYYY-MM-DD, unreleased or in progress>'"
++    return 1
++  fi
++  marker="${marker%"${marker##*[![:space:]]}"}"
++  case "${marker,,}" in
++    unreleased | "in progress")
++      printf 'open\n'
++      ;;
++    *)
++      if _notes_is_date "$marker"; then
++        printf 'dated %s\n' "$marker"
++        return 0
++      fi
++      warn "release notes: $_NOTES_CHANGELOG line $line reads '## [$v] - $marker' -- want a YYYY-MM-DD date, unreleased or in progress"
++      return 1
++      ;;
++  esac
++}
++
++# _notes_changelog_line <root> <version> -- the line number of the version's one
++# heading, for a caller that has already read its state.
++_notes_changelog_line() {
++  local found rest
++  if ! found="$(_notes_changelog_heading "$1" "$2")"; then
++    warn "release notes: cannot read $_NOTES_CHANGELOG"
++    return 1
++  fi
++  rest="${found#*$'\t'}"
++  printf '%s\n' "${rest%%$'\t'*}"
++}
++
++# _notes_changelog_write_date <root> <version> <date> -- the heading's marker
++# becomes the date; prints the path written. Every other line keeps its bytes,
++# except that a file missing its final newline gains one.
++_notes_changelog_write_date() {
++  local root="$1" v="$2" when="$3" line tmp
++  line="$(_notes_changelog_line "$root" "$v")" || return 1
++  if ! tmp="$(mktemp_beside "$root/$_NOTES_CHANGELOG")"; then
++    warn "release notes: cannot create a temporary file to date $_NOTES_CHANGELOG"
++    return 1
++  fi
++  if ! awk -v at="$line" -v heading="## [$v] - $when" 'NR == at { print heading; next } { print }' \
++    "$root/$_NOTES_CHANGELOG" >"$tmp"; then
++    rm -f "$tmp"
++    warn "release notes: cannot date $_NOTES_CHANGELOG"
++    return 1
++  fi
++  if ! mv "$tmp" "$root/$_NOTES_CHANGELOG"; then
++    rm -f "$tmp"
++    warn "release notes: cannot replace $_NOTES_CHANGELOG"
++    return 1
++  fi
++  printf '%s\n' "$_NOTES_CHANGELOG"
++}
++
++# _notes_changelog_body <root> <version> -- the section under the heading, up to
++# the next `## ` heading, without its leading and trailing blank lines.
++_notes_changelog_body() {
++  local root="$1" v="$2" state line body
++  state="$(_notes_changelog_state "$root" "$v")" || return 1
++  if [ "$state" = absent ]; then
++    warn "release notes: there is no $(_notes_changelog_where "$v")"
++    return 1
++  fi
++  line="$(_notes_changelog_line "$root" "$v")" || return 1
++  if ! body="$(awk -v at="$line" '
++    NR <= at { next }
++    /^## / { exit }
++    { lines[++n] = $0 }
++    END {
++      first = 1
++      while (first <= n && lines[first] ~ /^[[:space:]]*$/) first++
++      last = n
++      while (last >= first && lines[last] ~ /^[[:space:]]*$/) last--
++      for (i = first; i <= last; i++) print lines[i]
++    }
++  ' "$root/$_NOTES_CHANGELOG" && printf x)"; then
++    warn "release notes: cannot read $_NOTES_CHANGELOG"
++    return 1
++  fi
++  body="${body%x}"
++  if ! [[ "$body" =~ [^[:space:]] ]]; then
++    warn "release notes: the [$v] section of $_NOTES_CHANGELOG is empty -- a release needs notes"
++    return 1
++  fi
++  printf '%s' "$body"
++}
++
++_notes_changelog_views() {
++  return 0
++}
++
++_notes_changelog_views_check() {
++  return 0
++}
++
++_notes_changelog_paths() {
++  printf '%s\n' "$_NOTES_CHANGELOG"
++}
++
++# ============================================================================
++# command -- `notes.run` does the work.
++# ============================================================================
++#
++# The general case the other two are special cases of (D39), named so its use is
++# visible in config. `notes.run` runs at the root with a verb and its arguments:
++# `state <v>`, `date <v> <date>`, `body <v>`, `views`, `views-check` and
++# `paths <v>`. It is split into words and never eval'd (D1), as `run:` is
++# everywhere else.
++#
++# ITS OUTPUT IS HELD TO THE GRAMMAR THE BUILT-IN KINDS ANSWER IN, and anything
++# else is refused, naming what it printed. A project's command is a reader this
++# core cannot see into, so an answer that does not parse is not an answer.
++
++_notes_command_where() {
++  printf 'note for %s from notes.run' "$1"
++}
++
++# _notes_command_out <verb> <root> [args...] -- run notes.run at the root, its
++# stdout printed with every trailing newline kept; refused when it exits non-zero.
++_notes_command_out() {
++  local verb="$1" root="$2" out IFS=$' \t\n'
++  shift 2
++  # shellcheck disable=SC2086  # run: expands here exactly as at every run: site (D1)
++  if ! out="$(cd "$root" && $_notes_run "$verb" "$@" && printf x)"; then
++    warn "release notes: notes.run failed: $_notes_run $verb $*"
++    return 1
++  fi
++  printf '%s' "${out%x}"
++}
++
++# _notes_command_paths_ok <verb> <text> -- every non-empty line a path relative
++# to the root: not absolute, no `..` segment, no surrounding space.
++_notes_command_paths_ok() {
++  local verb="$1" p
++  while IFS= read -r p; do
++    [ -n "$p" ] || continue
++    case "$p" in
++      /*)
++        warn "release notes: notes.run $verb printed an absolute path: $p -- paths are relative to the project root"
++        return 1
++        ;;
++    esac
++    case "/$p/" in
++      */../*)
++        warn "release notes: notes.run $verb printed a path that leaves the project root: $p"
++        return 1
++        ;;
++    esac
++    if [[ "$p" =~ ^[[:space:]] || "$p" =~ [[:space:]]$ ]]; then
++      warn "release notes: notes.run $verb printed a path with surrounding space: '$p'"
++      return 1
++    fi
++  done <<<"$2"
++  return 0
++}
++
++_notes_command_state() {
++  local out
++  out="$(_notes_command_out state "$1" "$2")" || return 1
++  out="${out%$'\n'}"
++  if [[ "$out" =~ ^(absent|open|dated\ [0-9]{4}-[0-9]{2}-[0-9]{2})$ ]]; then
++    printf '%s\n' "$out"
++    return 0
++  fi
++  warn "release notes: notes.run state $2 printed '$out' -- want one line: absent, open, or dated YYYY-MM-DD"
++  return 1
++}
++
++_notes_command_write_date() {
++  local out
++  out="$(_notes_command_out date "$1" "$2" "$3")" || return 1
++  _notes_command_paths_ok date "$out" || return 1
++  _notes_lines "$out"
++}
++
++_notes_command_body() {
++  local out
++  # The sentinel again, at this capture too: _notes_command_out keeps the
++  # body's trailing newlines, and a bare capture here would strip them.
++  out="$(_notes_command_out body "$1" "$2" && printf x)" || return 1
++  out="${out%x}"
++  if ! [[ "$out" =~ [^[:space:]] ]]; then
++    warn "release notes: notes.run body $2 printed nothing -- a release needs notes"
++    return 1
++  fi
++  printf '%s' "$out"
++}
++
++_notes_command_views() {
++  local out
++  out="$(_notes_command_out views "$1")" || return 1
++  _notes_command_paths_ok views "$out" || return 1
++  _notes_lines "$out"
++}
++
++_notes_command_views_check() {
++  local out line verdict
++  out="$(_notes_command_out views-check "$1")" || return 1
++  while IFS= read -r line; do
++    [ -n "$line" ] || continue
++    verdict="${line%% *}"
++    case "$verdict" in
++      current | STALE) ;;
++      *)
++        warn "release notes: notes.run views-check printed '$line' -- want 'current <path>' or 'STALE <path>'"
++        return 1
++        ;;
++    esac
++    if [ "$verdict" = "$line" ] || [ -z "${line#* }" ]; then
++      warn "release notes: notes.run views-check printed '$line' with no path"
++      return 1
++    fi
++    _notes_command_paths_ok views-check "${line#* }" || return 1
++  done <<<"$out"
++  _notes_lines "$out"
++}
++
++_notes_command_paths() {
++  local out
++  out="$(_notes_command_out paths "$1" "$2")" || return 1
++  _notes_command_paths_ok paths "$out" || return 1
++  if ! [[ "$out" =~ [^[:space:]] ]]; then
++    warn "release notes: notes.run paths $2 printed nothing -- a release owns at least its note"
++    return 1
++  fi
++  _notes_lines "$out"
++}
+diff --git a/tests/unit/gendoc.bats b/tests/unit/gendoc.bats
+index cfc7112..aa7fe0e 100644
+--- a/tests/unit/gendoc.bats
++++ b/tests/unit/gendoc.bats
+@@ -288,3 +288,16 @@ producer() { printf 'cluster: abc123\nusers: 4\n'; }
+   assert_failure
+   assert_output_contains "--end marker is required"
+ }
++
++# ============================================================================
++# THE REPLACE KEEPS THE DOCUMENT'S MODE (mktemp_beside)
++# ============================================================================
++
++@test "a regeneration keeps the document's mode" {
++  # mktemp creates 0600 and the rename carried it onto the runbook, so a 0644
++  # document came out 0600, with nothing in git to show it.
++  chmod 644 "$DOC"
++  generated_doc_write --target "$DOC" --begin "$BEGIN_M" --end "$END_M" -- producer
++  assert_file_contains "$DOC" "cluster: abc123"
++  [ "$(ls -ld "$DOC" | cut -c1-10)" = "-rw-r--r--" ] || fail "the runbook came out $(ls -ld "$DOC" | cut -c1-10)"
++}
+diff --git a/tests/unit/helpers.bats b/tests/unit/helpers.bats
+index 994282d..ca87a63 100644
+--- a/tests/unit/helpers.bats
++++ b/tests/unit/helpers.bats
+@@ -820,3 +820,36 @@ EOF
+   [ -z "$hits" ] || fail "the vocabulary is spelled outside lib/helpers:
+ $hits"
+ }
++
++# ---- mktemp_beside: the one "replace a file through a temporary" ------------
++#
++# Every writer that renamed a temporary into place made it with mktemp, which
++# creates 0600, and the rename carried that mode onto the file. Each arm below
++# uses a mode that is not 0600, so the old behaviour cannot pass it.
++
++@test "mktemp_beside makes the temporary beside the file, with the file's mode" {
++  local f="$DEVBIN_TEST_TMPDIR/target.txt" tmp
++  printf 'one\n' >"$f"
++  chmod 640 "$f"
++  tmp="$(mktemp_beside "$f")"
++  [ "${tmp%/*}" = "$DEVBIN_TEST_TMPDIR" ] || fail "the temporary is not beside the file: $tmp"
++  [ "$(ls -ld "$tmp" | cut -c1-10)" = "-rw-r-----" ] || fail "the temporary's mode: $(ls -ld "$tmp" | cut -c1-10)"
++  rm -f "$tmp"
++}
++
++@test "mktemp_beside gives a file that does not exist yet the mode the umask gives a new file" {
++  local tmp
++  umask 027
++  tmp="$(mktemp_beside "$DEVBIN_TEST_TMPDIR/new.txt")"
++  [ "$(ls -ld "$tmp" | cut -c1-10)" = "-rw-r-----" ] || fail "the temporary's mode: $(ls -ld "$tmp" | cut -c1-10)"
++  rm -f "$tmp"
++}
++
++@test "sed_inplace keeps the file's mode" {
++  local f="$DEVBIN_TEST_TMPDIR/Cargo.toml"
++  printf 'version = "1.0.0"\n' >"$f"
++  chmod 644 "$f"
++  sed_inplace 's/1\.0\.0/1.0.1/' "$f"
++  grep -qx 'version = "1.0.1"' "$f" || fail "the edit did not land, so the mode below measures nothing"
++  [ "$(ls -ld "$f" | cut -c1-10)" = "-rw-r--r--" ] || fail "sed_inplace left the file $(ls -ld "$f" | cut -c1-10)"
++}
+diff --git a/tests/unit/release.bats b/tests/unit/release.bats
+index f7aaf64..756117f 100644
+--- a/tests/unit/release.bats
++++ b/tests/unit/release.bats
+@@ -1,6 +1,12 @@
+ #!/usr/bin/env bats
+ #
+-# `devbin release` -- one release note, two generated views.
++# The release core's notes providers (ST0007 WP-02, design D39): lib/release.notes,
++# and the `release notes` and `release check` verbs that drive them.
++#
++# THE FIRST HALF IS devbin's OWN SHAPE, `notes.kind: releases` -- one release
++# note, two generated views -- and its arms are the ones that tested
++# bin/.devbin/cmd/release until that handler moved into the core. They run
++# through `bin/devbin release` now, on a fixture that enables it.
+ #
+ # THE DRIFT THIS PREVENTS. A release is conventionally described in three places
+ # -- a per-release note, a CHANGELOG, and an index -- all about the same events.
+@@ -18,21 +24,46 @@ load "../lib/test_helper"
+ 
+ setup() {
+   devbin_setup
+-  PROJ="$DEVBIN_TEST_TMPDIR/proj"
++  PROJ="$(mkproj proj <<'YAML'
++project:
++  name: demo
++commands:
++  release:
++    enabled: true
++release:
++  notes:
++    kind: releases
++YAML
++  )"
+   mkdir -p "$PROJ/RELEASES"
+-  RELEASE="$DEVBIN_HOME/bin/.devbin/cmd/release"
+   # For sha256_of below. Six assertions here used to spell the tool by hand,
+   # which is issue 0052's portability defect -- `shasum` is the name a minimal
+   # Linux image does not carry -- reproduced in test code, where it takes a
+   # GATE down rather than a product.
+   # shellcheck source=lib/helpers
+   . "$DEVBIN_LIB_DIR/helpers"
++  # The providers themselves, for the arms that ask them directly.
++  # shellcheck source=lib/release.notes
++  . "$DEVBIN_LIB_DIR/release.notes"
+ }
+ 
+ teardown() {
+   devbin_teardown
+ }
+ 
++# tree_sum <dir> -- every file's checksum and path under a directory, sorted: a
++# fingerprint that changes if anything under it is written.
++tree_sum() {
++  (cd "$1" && find . -type f -exec cksum {} + | LC_ALL=C sort)
++}
++
++# workflow_body_awk -- the awk program .github/workflows/release.yml runs to cut
++# a release note's body, read out of the workflow itself rather than copied, so
++# the arm holding notes_body to it cannot drift from the workflow it describes.
++workflow_body_awk() {
++  sed -n "s/^ *awk '\\(BEGIN { body = 0 }[^']*\\)'.*/\\1/p" "$DEVBIN_HOME/.github/workflows/release.yml"
++}
++
+ # mknote <version> [date] [headline] [status]
+ #
+ # Also writes $PROJ/VERSION, and that is not a convenience. `release check` now
+@@ -69,13 +100,13 @@ NOTE
+ }
+ 
+ run_release() {
+-  run env PROJECT_ROOT="$PROJ" DEVBIN_LIB="$DEVBIN_LIB_DIR" bash "$RELEASE" "$@"
++  run devbin_run "$PROJ" release "$@"
+ }
+ 
+ @test "bare release exits 1 -- naming no subcommand did not succeed" {
+   run_release
+   [ "$status" -eq 1 ]
+-  [[ "$output" == *"usage: devbin release"* ]]
++  [[ "$output" == *"usage: bin/devbin release"* ]]
+ }
+ 
+ @test "release --help exits 0" {
+@@ -83,10 +114,12 @@ run_release() {
+   [ "$status" -eq 0 ]
+ }
+ 
+-@test "an unknown release option is refused" {
++@test "an unknown release word is refused, naming it" {
++  # The project handler refused this as an unknown option. The core reads a bare
++  # word as a cut's target, so the refusal is that it is not a version.
+   run_release nosuch
+-  [ "$status" -ne 0 ]
+-  [[ "$output" == *"unknown release option: nosuch"* ]]
++  [ "$status" -eq 1 ]
++  [[ "$output" == *"not a version: nosuch"* ]]
+ }
+ 
+ # ---- --help after the verb (issue 0067) ------------------------------------
+@@ -106,7 +139,7 @@ run_release() {
+   index="$(sha256_of "$PROJ/RELEASES.md")"
+   run_release notes --help
+   [ "$status" -eq 0 ]
+-  [[ "$output" == *"usage: devbin release"* ]]
++  [[ "$output" == *"usage: bin/devbin release"* ]]
+   [[ "$output" != *"wrote"* ]]
+   [ "$log" = "$(sha256_of "$PROJ/CHANGELOG.md")" ]
+   [ "$index" = "$(sha256_of "$PROJ/RELEASES.md")" ]
+@@ -119,7 +152,7 @@ run_release() {
+   mknote 0.2.0
+   run_release check --help
+   [ "$status" -eq 0 ]
+-  [[ "$output" == *"usage: devbin release"* ]]
++  [[ "$output" == *"usage: bin/devbin release"* ]]
+   [[ "$output" != *"STALE"* ]]
+ }
+ 
+@@ -164,14 +197,23 @@ run_release() {
+   run_release notes
+   [ "$status" -eq 0 ]
+   grep -q 'something added in 0.1.0' "$PROJ/CHANGELOG.md"
+-  ! grep -q 'must NOT reach the changelog' "$PROJ/CHANGELOG.md"
++  # NOT `! grep`: in bats a negated command fails the test only when it is the
++  # last one (SC2314), so an assertion written that way stops asserting the
++  # moment a line is added below it.
++  if grep -q 'must NOT reach the changelog' "$PROJ/CHANGELOG.md"; then
++    fail "the note's narrative reached the changelog"
++  fi
+ }
+ 
+ @test "a new release note appears in BOTH views without either being edited" {
+   mknote 0.1.0
+   run_release notes
+   [ "$status" -eq 0 ]
+-  ! grep -q '0.2.0' "$PROJ/CHANGELOG.md"
++  # THIS PRECONDITION COULD NEVER FAIL while it was written `! grep`: a negated
++  # command that is not a bats test's last line does not fail the test (SC2314).
++  if grep -q '0.2.0' "$PROJ/CHANGELOG.md"; then
++    fail "0.2.0 is in the changelog before its note exists"
++  fi
+ 
+   mknote 0.2.0
+   run_release notes
+@@ -204,7 +246,9 @@ run_release() {
+   run_release notes
+   [ "$status" -eq 0 ]
+   grep -q '^### Added$' "$PROJ/CHANGELOG.md"
+-  ! grep -q '^### Security$' "$PROJ/CHANGELOG.md"
++  if grep -q '^### Security$' "$PROJ/CHANGELOG.md"; then
++    fail "an unused section was printed empty"
++  fi
+ }
+ 
+ @test "check passes when the views match their source" {
+@@ -213,7 +257,8 @@ run_release() {
+   [ "$status" -eq 0 ]
+   run_release check
+   [ "$status" -eq 0 ]
+-  [[ "$output" == *"release views are current"* ]]
++  [[ "$output" == *"2 of 2 generated view(s) current"* ]]
++  [[ "$output" == *"the note for 0.1.0 is dated 2026-01-01"* ]]
+ }
+ 
+ @test "check FAILS when a view has drifted from its source" {
+@@ -253,12 +298,11 @@ run_release() {
+ }
+ 
+ @test "a run that refuses before rendering touches nothing" {
+-  # This pins require_notes, NOT the temp-and-move write. Named for what it
+-  # actually covers: the first version of this test removed every note and
+-  # claimed to prove write_view, but require_notes refuses first, so the
+-  # renderer was never reached and the assertion held against a direct
+-  # redirect too. A test whose name promises a guarantee it does not check is
+-  # worse than no test.
++  # This pins the refusal of an empty RELEASES/, NOT the write. Named for what it
++  # actually covers: an earlier version of this test removed every note and
++  # claimed to prove the write, but the refusal comes first, so the renderer was
++  # never reached and the assertion held against a direct redirect too. A test
++  # whose name promises a guarantee it does not check is worse than no test.
+   mknote 0.1.0
+   run_release notes
+   [ "$status" -eq 0 ]
+@@ -271,21 +315,22 @@ run_release() {
+   [ "$before" = "$(sha256_of "$PROJ/CHANGELOG.md")" ]
+ }
+ 
+-@test "a render that DIES PART WAY leaves the previous view byte-identical" {
+-  # THE TEMP-AND-MOVE TEST, and the one that needed the renderer to actually
+-  # start and then fail. `render > path` truncates the target before the
+-  # renderer runs, so a renderer dying halfway leaves the previous good file
+-  # truncated or empty -- issue 0002's shape, and the defect the fleet
+-  # generator was caught by for real.
++@test "a render that fails part way writes nothing, and both previous views stay byte-identical" {
++  # The render has to START and then fail, or this proves only the refusal
++  # above. `render > path` truncates the target before the renderer runs, so a
++  # renderer failing halfway would leave the previous good file truncated or
++  # empty -- issue 0002's shape, and the defect the fleet generator was caught
++  # by for real. The views are rendered in memory before anything is written,
++  # which is what this holds; that the write is a rename is held further down.
+   #
+-  # An unreadable note is the lever: release_files still lists it, so
+-  # require_notes passes and rendering begins, then note_field cannot read it
+-  # and the renderer dies under set -e with output already written.
++  # An unreadable note is the lever: it is listed as a note, so rendering
++  # begins, and then its header cannot be read.
+   mknote 0.1.0
+   run_release notes
+   [ "$status" -eq 0 ]
+-  local before
+-  before="$(sha256_of "$PROJ/CHANGELOG.md")"
++  local log index
++  log="$(sha256_of "$PROJ/CHANGELOG.md")"
++  index="$(sha256_of "$PROJ/RELEASES.md")"
+ 
+   mknote 0.2.0
+   chmod 000 "$PROJ/RELEASES/0.2.0.md"
+@@ -293,7 +338,8 @@ run_release() {
+   chmod 644 "$PROJ/RELEASES/0.2.0.md"
+ 
+   [ "$status" -ne 0 ]
+-  [ "$before" = "$(sha256_of "$PROJ/CHANGELOG.md")" ]
++  [ "$log" = "$(sha256_of "$PROJ/CHANGELOG.md")" ]
++  [ "$index" = "$(sha256_of "$PROJ/RELEASES.md")" ]
+ }
+ 
+ @test "every row of the generated index table is the same width" {
+@@ -301,19 +347,25 @@ run_release() {
+   mknote 0.2.0 2026-09-30 "a very much longer headline than the other one"
+   run_release notes
+   [ "$status" -eq 0 ]
+-  run bash -c "awk '/^\|/{ c[length(\$0)]++ } END { for (k in c) if (c[k] < 4) print \"ragged:\" k }' '$PROJ/RELEASES.md'"
+-  [ -z "$output" ]
++  # THE CONTROL FIRST: the header, its separator and one row per note. A view
++  # with no table passed the check below, because no rows are never ragged.
++  local lines
++  lines="$(grep -c '^|' "$PROJ/RELEASES.md" || true)"
++  [ "$lines" -eq 4 ] || fail "want 4 table lines in RELEASES.md, got $lines"
++  run awk '/^\|/ { w[length($0)] = 1 } END { for (k in w) print k }' "$PROJ/RELEASES.md"
++  assert_success
++  [ "$(printf '%s\n' "$output" | grep -c .)" -eq 1 ] || fail "the table's lines are not all one width: $output"
+ }
+ 
+ @test "a note with NO status: is refused, and NO view is written" {
+-  # THE SWALLOWED REFUSAL, and this arm exists because it actually happened.
+-  # `note_status` dies on an absent status -- but `die` inside `$( )` kills only
+-  # its own subshell unless `inherit_errexit` is set, so before that shopt this
+-  # exact fixture printed the refusal TWICE and `notes` then wrote both views
+-  # and exited 0, with the date rendered as though the note were released.
+-  # ASSERTING THE VIEWS ARE ABSENT is the half that catches it: the message was
+-  # already being printed, so an arm checking only the output would have passed
+-  # throughout.
++  # THE SWALLOWED REFUSAL, and this arm exists because it actually happened. The
++  # generator this core replaced refused an absent status with `die` inside
++  # `$( )`, which kills only its own subshell unless errexit reaches it, and this
++  # exact fixture once printed the refusal TWICE while `notes` wrote both views
++  # and exited 0. The provider now checks every refusal where it happens rather
++  # than trusting errexit to carry it (lib/release.notes). ASSERTING THE VIEWS ARE
++  # ABSENT is the half that catches it: the message was already being printed,
++  # so an arm checking only the output would have passed throughout.
+   mknote 0.1.0
+   grep -v '^status: ' "$PROJ/RELEASES/0.1.0.md" > "$PROJ/n" && mv "$PROJ/n" "$PROJ/RELEASES/0.1.0.md"
+   run_release notes
+@@ -407,7 +459,711 @@ NOTE
+ 
+ @test "THIS REPOSITORY's committed CHANGELOG and RELEASES.md match RELEASES/" {
+   # The one test that looks at the real tree rather than a fixture. Everything
+-  # above proves the generator behaves; this proves somebody ran it.
+-  run env PROJECT_ROOT="$DEVBIN_HOME" DEVBIN_LIB="$DEVBIN_LIB_DIR" bash "$RELEASE" check
++  # above proves the generator behaves; this proves somebody ran it -- through
++  # devbin's own declaration, which is what a pushed tag's workflow runs too.
++  run devbin_run "$DEVBIN_HOME" release check
+   [ "$status" -eq 0 ]
++  [[ "$output" == *"2 of 2 generated view(s) current"* ]]
++}
++
++@test "devbin's release resolves to the core, and no project handler of devbin's shadows it" {
++  # bin/.devbin/cmd/release was devbin's own notes generator. A project handler
++  # shadows a builtin whole (D35), so while it existed devbin's release was not
++  # the core at all, and adopting the core meant deleting it.
++  [ ! -e "$DEVBIN_HOME/bin/.devbin/cmd/release" ]
++  run devbin_run "$DEVBIN_HOME" help release
++  assert_success
++  assert_output_contains "Resolves from: devbin lib/cmd/release"
++  run devbin_run "$DEVBIN_HOME" doctor
++  # The positive control: doctor ran its shadow check, so the refutation below
++  # is about that check's list and not about an empty or failed run.
++  assert_output_contains "shadowing:"
++  assert_output_contains "test shadows the built-in"
++  refute_output_matches '(^|'$'\n'') +release shadows'
++}
++
++# ============================================================================
++# THE PROVIDERS, ASKED DIRECTLY (lib/release.notes)
++# ============================================================================
++
++@test "notes_select refuses an unknown kind, notes.run beside releases or changelog, and command without notes.run" {
++  run notes_select markdown "" demo
++  assert_failure
++  assert_output_contains "unknown notes.kind: markdown"
++  run notes_select releases bin/notes demo
++  assert_failure
++  assert_output_contains "notes.run is read only under notes.kind: command"
++  run notes_select changelog bin/notes demo
++  assert_failure
++  run notes_select command "" demo
++  assert_failure
++  assert_output_contains "needs notes.run"
++  # Space alone splits into no words, and the verb would run as the command.
++  run notes_select command "   " demo
++  assert_failure
++  assert_output_contains "needs notes.run"
++  run notes_select releases "" ""
++  assert_failure
++  assert_output_contains "no project name"
++}
++
++@test "a refused notes_select leaves nothing selected, so no verb answers for the provider chosen before it" {
++  mknote 0.1.0
++  notes_select releases "" demo
++  run notes_state "$PROJ" 0.1.0
++  assert_output "dated 2026-01-01"
++  notes_select markdown "" demo 2>/dev/null || true
++  run notes_state "$PROJ" 0.1.0
++  assert_failure
++  assert_output_contains "no notes provider is selected"
++}
++
++@test "every verb refuses a root that is not a directory, and a version that is not X.Y.Z" {
++  notes_select releases "" demo
++  local verb
++  for verb in notes_state notes_body notes_paths; do
++    run "$verb" "$DEVBIN_TEST_TMPDIR/absent" 1.0.0
++    assert_failure
++    assert_output_contains "the root is not a directory"
++    run "$verb" "$PROJ" v1.0
++    assert_failure
++    assert_output_contains "not a version: v1.0"
++  done
++  run notes_date "$PROJ" 1.0.0 17-09-2026
++  assert_failure
++  assert_output_contains "not a date: 17-09-2026"
++  run notes_views
++  assert_failure
++  assert_output_contains "want <root>"
++}
++
++@test "a refusal holds when the caller tests the result, which is how the release sequence calls every step" {
++  # MEASURED, NOT REASONED (bash 5.3). Under `if`, `||` or `&&` bash turns errexit
++  # off for everything the call runs, so a refusal made by `die` at substitution
++  # depth printed its message and rendering carried on. The generator this
++  # replaced relied on errexit; these arms call the providers the way a caller
++  # that tests them does.
++  mknote 0.1.0
++  grep -v '^status: ' "$PROJ/RELEASES/0.1.0.md" >"$PROJ/n" && mv "$PROJ/n" "$PROJ/RELEASES/0.1.0.md"
++  notes_select releases "" demo
++  if notes_views "$PROJ" 2>/dev/null; then
++    fail "notes_views succeeded over a note with no status: under a condition"
++  fi
++  [ ! -e "$PROJ/CHANGELOG.md" ]
++  [ ! -e "$PROJ/RELEASES.md" ]
++  if notes_state "$PROJ" 0.1.0 >/dev/null 2>&1; then
++    fail "notes_state answered for a note with no status: under a condition"
++  fi
++  local out rc=0
++  out="$(notes_views_check "$PROJ" 2>/dev/null)" || rc=$?
++  [ "$rc" -ne 0 ] || fail "notes_views_check compared views of a note with no status: under ||"
++  [ -z "$out" ]
++}
++
++# ---- releases ----------------------------------------------------------------
++
++@test "releases: state is absent, open or dated, and a malformed header is refused rather than called absent" {
++  mknote 0.1.0 2026-02-03
++  mknote 0.2.0 "" "open" unreleased
++  notes_select releases "" demo
++  run notes_state "$PROJ" 0.1.0
++  assert_output "dated 2026-02-03"
++  run notes_state "$PROJ" 0.2.0
++  assert_output "open"
++  run notes_state "$PROJ" 0.3.0
++  assert_success
++  assert_output "absent"
++  mknote 0.4.0 "3 February 2026"
++  run notes_state "$PROJ" 0.4.0
++  assert_failure
++  assert_output_contains "0.4.0.md has date: 3 February 2026"
++}
++
++@test "releases: a .md under RELEASES/ that is not named for a version is refused by name, a hidden one too" {
++  mknote 0.1.0
++  notes_select releases "" demo
++  printf 'version: none\n' >"$PROJ/RELEASES/README.md"
++  run notes_views "$PROJ"
++  assert_failure
++  assert_output_contains "README.md"
++  assert_output_contains "not release notes"
++  [ ! -e "$PROJ/CHANGELOG.md" ]
++  rm "$PROJ/RELEASES/README.md"
++  printf 'draft\n' >"$PROJ/RELEASES/.draft.md"
++  run notes_views_check "$PROJ"
++  assert_failure
++  assert_output_contains ".draft.md"
++}
++
++@test "releases: both views are rendered before either is replaced, so a failed second render leaves both as they were" {
++  # The generator this replaced wrote the changelog before it rendered the index,
++  # so a failure in the second left two views that disagreed.
++  mknote 0.1.0
++  notes_select releases "" demo
++  notes_views "$PROJ" >/dev/null
++  local log index
++  log="$(sha256_of "$PROJ/CHANGELOG.md")"
++  index="$(sha256_of "$PROJ/RELEASES.md")"
++  mknote 0.2.0
++  _notes_releases_index() { return 1; }
++  run notes_views "$PROJ"
++  assert_failure
++  [ "$log" = "$(sha256_of "$PROJ/CHANGELOG.md")" ] || fail "CHANGELOG.md was replaced although RELEASES.md could not be rendered"
++  [ "$index" = "$(sha256_of "$PROJ/RELEASES.md")" ]
++}
++
++# mode_of <file> -- the permission string `ls` prints, eg -rw-r-----. stat's
++# flags differ between BSD and GNU; ls's first ten columns do not.
++mode_of() {
++  ls -ld "$1" | cut -c1-10
++}
++
++# inode_of <file> -- the file's inode number. A rename puts a different file at
++# the path, so the number changes; a write in place keeps it.
++inode_of() {
++  ls -i "$1" | awk '{ print $1 }'
++}
++
++@test "releases: views are replaced by a rename beside them, keep their mode, and leave no temporary behind" {
++  mknote 0.1.0
++  notes_select releases "" demo
++  notes_views "$PROJ" >/dev/null
++  chmod 640 "$PROJ/CHANGELOG.md"
++  local inode
++  inode="$(inode_of "$PROJ/CHANGELOG.md")"
++  mknote 0.2.0
++  notes_views "$PROJ" >/dev/null
++  grep -q '^## \[0.2.0\]' "$PROJ/CHANGELOG.md" || fail "CHANGELOG.md was not regenerated, so nothing below measures a write"
++  [ "$(mode_of "$PROJ/CHANGELOG.md")" = "-rw-r-----" ] || fail "CHANGELOG.md lost its mode: $(mode_of "$PROJ/CHANGELOG.md")"
++  [ "$(inode_of "$PROJ/CHANGELOG.md")" != "$inode" ] || fail "CHANGELOG.md was written in place, not renamed over"
++  run find "$PROJ" -maxdepth 1 \( -name 'CHANGELOG.md.*' -o -name 'RELEASES.md.*' \)
++  assert_success
++  assert_output ""
++}
++
++@test "releases: a view rendered for the first time takes the mode the umask gives a new file, not mktemp's 0600" {
++  mknote 0.1.0
++  notes_select releases "" demo
++  umask 027
++  notes_views "$PROJ" >/dev/null
++  [ "$(mode_of "$PROJ/CHANGELOG.md")" = "-rw-r-----" ] || fail "CHANGELOG.md: $(mode_of "$PROJ/CHANGELOG.md")"
++  [ "$(mode_of "$PROJ/RELEASES.md")" = "-rw-r-----" ] || fail "RELEASES.md: $(mode_of "$PROJ/RELEASES.md")"
++}
++
++@test "releases: dating a note replaces it by a rename and keeps its mode" {
++  mknote 0.2.0 "" "open" unreleased
++  chmod 640 "$PROJ/RELEASES/0.2.0.md"
++  local inode
++  inode="$(inode_of "$PROJ/RELEASES/0.2.0.md")"
++  notes_select releases "" demo
++  notes_date "$PROJ" 0.2.0 2026-09-17 >/dev/null
++  run notes_state "$PROJ" 0.2.0
++  assert_output "dated 2026-09-17"
++  [ "$(mode_of "$PROJ/RELEASES/0.2.0.md")" = "-rw-r-----" ] || fail "the note lost its mode: $(mode_of "$PROJ/RELEASES/0.2.0.md")"
++  [ "$(inode_of "$PROJ/RELEASES/0.2.0.md")" != "$inode" ] || fail "the note was written in place, not renamed over"
++}
++
++@test "releases: a headline holding a tab is refused naming the note, and a | in one is escaped in the index" {
++  mknote 0.1.0 2026-01-01 "$(printf 'a\ttab')"
++  notes_select releases "" demo
++  run notes_views "$PROJ"
++  assert_failure
++  assert_output_contains "the headline in RELEASES/0.1.0.md contains a tab"
++  [ ! -e "$PROJ/RELEASES.md" ]
++  mknote 0.1.0 2026-01-01 "one | two"
++  run notes_views "$PROJ"
++  assert_success
++  grep -qF '| one \| two |' "$PROJ/RELEASES.md" || fail "the | was not escaped: $(grep -F 'one' "$PROJ/RELEASES.md")"
++  run awk '/^\|/ { w[length($0)] = 1 } END { for (k in w) print k }' "$PROJ/RELEASES.md"
++  [ "$(printf '%s\n' "$output" | grep -c .)" -eq 1 ] || fail "the escaped row is not the table's width: $output"
++}
++
++@test "releases: the changelog header names the project and states no project's own semver rule" {
++  # hv, 2026-09-17, ruling on ST0007 D39: the header is the core's. devbin's own
++  # caret rule lives in docs/configuration.md, not in every project's changelog.
++  mknote 0.1.0
++  notes_select releases "" widget
++  notes_views "$PROJ" >/dev/null
++  grep -qx 'All notable changes to widget are recorded here.' "$PROJ/CHANGELOG.md"
++  grep -qF 'and widget aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).' "$PROJ/CHANGELOG.md"
++  if grep -qi 'caret' "$PROJ/CHANGELOG.md"; then
++    fail "the changelog header states a semver rule"
++  fi
++  if grep -q 'devbin aims' "$PROJ/CHANGELOG.md"; then
++    fail "the changelog header names devbin in another project"
++  fi
++}
++
++@test "releases: views_check says current, and STALE for a view one line off or missing, writing nothing and returning 0 because it compared" {
++  mknote 0.1.0
++  notes_select releases "" demo
++  notes_views "$PROJ" >/dev/null
++  run notes_views_check "$PROJ"
++  assert_success
++  assert_output "current CHANGELOG.md
++current RELEASES.md"
++
++  sed_inplace 's/headline for 0\.1\.0/headline for 0.1.O/' "$PROJ/RELEASES.md"
++  [ "$(grep -c 'headline for 0.1.O' "$PROJ/RELEASES.md")" -eq 1 ] || fail "the one-line edit did not land"
++  local before
++  before="$(tree_sum "$PROJ")"
++  run notes_views_check "$PROJ"
++  assert_success
++  assert_output_contains "current CHANGELOG.md"
++  assert_output_contains "STALE RELEASES.md"
++  [ "$before" = "$(tree_sum "$PROJ")" ] || fail "views_check wrote under the root"
++
++  rm "$PROJ/CHANGELOG.md"
++  run notes_views_check "$PROJ"
++  assert_success
++  assert_output_contains "STALE CHANGELOG.md"
++}
++
++@test "releases: the body is byte for byte what the release workflow publishes, blank lines at the end included" {
++  local prog note v n=0
++  prog="$(workflow_body_awk)"
++  [ -n "$prog" ] || fail "no body awk found in .github/workflows/release.yml -- nothing to hold notes_body to"
++  mknote 0.1.0
++  printf '\n\n' >>"$PROJ/RELEASES/0.1.0.md"
++  notes_select releases "" demo
++  for note in "$PROJ/RELEASES/0.1.0.md" "$DEVBIN_HOME"/RELEASES/*.md; do
++    v="${note##*/}"
++    v="${v%.md}"
++    notes_body "${note%/RELEASES/*}" "$v" >"$DEVBIN_TEST_TMPDIR/body.core"
++    awk "$prog" "$note" >"$DEVBIN_TEST_TMPDIR/body.workflow"
++    cmp "$DEVBIN_TEST_TMPDIR/body.core" "$DEVBIN_TEST_TMPDIR/body.workflow" ||
++      fail "notes_body and the release workflow disagree about $note"
++    n=$((n + 1))
++  done
++  [ "$n" -ge 2 ] || fail "compared $n body(s): the fixture and at least one of this repository's notes"
++}
++
++@test "releases: a note with a header block and no body is refused" {
++  printf 'version: 0.1.0\ndate: 2026-01-01\nheadline: h\nstatus: released\n' >"$PROJ/RELEASES/0.1.0.md"
++  notes_select releases "" demo
++  run notes_body "$PROJ" 0.1.0
++  assert_failure
++  assert_output_contains "has a header block and no body"
++  run notes_body "$PROJ" 0.2.0
++  assert_failure
++  assert_output_contains "there is no RELEASES/0.2.0.md"
++}
++
++@test "releases: date writes status released and the date under version, moves no other byte, and reads back dated" {
++  mknote 0.2.0 "" "the open one" unreleased
++  cp "$PROJ/RELEASES/0.2.0.md" "$DEVBIN_TEST_TMPDIR/before.md"
++  notes_select releases "" demo
++  run notes_date "$PROJ" 0.2.0 2026-09-17
++  assert_success
++  assert_output "RELEASES/0.2.0.md"
++  [ "$(sed -n '1,4p' "$PROJ/RELEASES/0.2.0.md")" = "version: 0.2.0
++date: 2026-09-17
++headline: the open one
++status: released" ]
++  [ -z "$(sed -n '5p' "$PROJ/RELEASES/0.2.0.md")" ] || fail "the header block no longer ends at line 5"
++  awk 'f { print } /^$/ && !f { f = 1 }' "$DEVBIN_TEST_TMPDIR/before.md" >"$DEVBIN_TEST_TMPDIR/body.before"
++  awk 'f { print } /^$/ && !f { f = 1 }' "$PROJ/RELEASES/0.2.0.md" >"$DEVBIN_TEST_TMPDIR/body.after"
++  cmp "$DEVBIN_TEST_TMPDIR/body.before" "$DEVBIN_TEST_TMPDIR/body.after"
++  run notes_state "$PROJ" 0.2.0
++  assert_output "dated 2026-09-17"
++}
++
++@test "releases: dating a note already dated that day writes nothing, another day is refused, and an absent note is refused" {
++  mknote 0.2.0 "" "open" unreleased
++  notes_select releases "" demo
++  notes_date "$PROJ" 0.2.0 2026-09-17 >/dev/null
++  local sum
++  sum="$(sha256_of "$PROJ/RELEASES/0.2.0.md")"
++  run notes_date "$PROJ" 0.2.0 2026-09-17
++  assert_success
++  assert_output ""
++  [ "$sum" = "$(sha256_of "$PROJ/RELEASES/0.2.0.md")" ]
++  run notes_date "$PROJ" 0.2.0 2026-09-18
++  assert_failure
++  assert_output_contains "released on 2026-09-17"
++  assert_output_contains "never re-dated"
++  [ "$sum" = "$(sha256_of "$PROJ/RELEASES/0.2.0.md")" ]
++  run notes_date "$PROJ" 0.3.0 2026-09-17
++  assert_failure
++  assert_output_contains "there is no RELEASES/0.3.0.md to date"
++}
++
++@test "releases: a header with no version line takes the date first" {
++  printf 'headline: h\nstatus: unreleased\n\n## Added\n\n- x\n' >"$PROJ/RELEASES/0.5.0.md"
++  notes_select releases "" demo
++  notes_date "$PROJ" 0.5.0 2026-09-17 >/dev/null
++  [ "$(sed -n '1,3p' "$PROJ/RELEASES/0.5.0.md")" = "date: 2026-09-17
++headline: h
++status: released" ]
++}
++
++@test "releases: notes_check is ready for an open note or one dated today, and refuses one dated another day or absent, naming why" {
++  mknote 0.1.0 2026-09-16
++  mknote 0.2.0 "" "open" unreleased
++  notes_select releases "" demo
++  run notes_check "$PROJ" 0.2.0 2026-09-17
++  assert_success
++  run notes_check "$PROJ" 0.1.0 2026-09-16
++  assert_success
++  run notes_check "$PROJ" 0.1.0 2026-09-17
++  assert_failure
++  assert_output_contains "released on 2026-09-16, not today (2026-09-17)"
++  run notes_check "$PROJ" 0.3.0 2026-09-17
++  assert_failure
++  assert_output_contains "there is no RELEASES/0.3.0.md"
++}
++
++@test "releases: a release owns its note and both views" {
++  notes_select releases "" demo
++  run notes_paths "$PROJ" 1.2.3
++  assert_success
++  assert_output "RELEASES/1.2.3.md
++CHANGELOG.md
++RELEASES.md"
++  run notes_where 1.2.3
++  assert_output "RELEASES/1.2.3.md"
++}
++
++# ---- changelog ---------------------------------------------------------------
++
++# mkchangelog -- a hand-written CHANGELOG.md in $PROJ, in Intent's and Utilz's
++# shape, with the headings the changelog arms need.
++mkchangelog() {
++  cat >"$PROJ/CHANGELOG.md" <<'MD'
++# Changelog
++
++## [2.0.0] - in progress
++
++### Added
++
++- **a thing** with `code`
++
++### Fixed
++
++- a fix
++
++
++## [1.5.0] - Unreleased
++
++- five
++
++## [1.2.30] - 2026-01-01
++
++- thirty
++
++## [1x2x3] - 2026-01-02
++
++## [1.4.0] - never released; this work shipped elsewhere
++
++## [1.0.0] - 2025-01-01
++
++- first
++MD
++}
++
++@test "changelog: state reads the asked-for heading only, as a string, with unreleased and in progress open in any case" {
++  notes_select changelog "" demo
++  run notes_state "$PROJ" 2.0.0
++  assert_output "absent"
++  mkchangelog
++  run notes_state "$PROJ" 2.0.0
++  assert_output "open"
++  run notes_state "$PROJ" 1.5.0
++  assert_output "open"
++  run notes_state "$PROJ" 1.0.0
++  assert_output "dated 2025-01-01"
++  # 1.2.3 is neither 1.2.30 nor 1x2x3: compared as a string, never a pattern.
++  run notes_state "$PROJ" 1.2.3
++  assert_success
++  assert_output "absent"
++  # Another version's free-text heading is never parsed.
++  run notes_state "$PROJ" 1.0.0
++  assert_success
++}
++
++@test "changelog: the target's heading is refused when its marker is none of a date, unreleased or in progress, when it has none, and when it appears twice" {
++  mkchangelog
++  printf '\n## [3.0.0]\n\n## [3.1.0] - 2026-02-02\n\n## [3.1.0] - 2026-02-03\n' >>"$PROJ/CHANGELOG.md"
++  notes_select changelog "" demo
++  run notes_state "$PROJ" 1.4.0
++  assert_failure
++  assert_output_contains "reads '## [1.4.0] - never released; this work shipped elsewhere'"
++  run notes_state "$PROJ" 3.0.0
++  assert_failure
++  assert_output_contains "reads '## [3.0.0]'"
++  run notes_state "$PROJ" 3.1.0
++  assert_failure
++  assert_output_contains "2 headings for [3.1.0]"
++}
++
++@test "changelog: date rewrites the heading's marker and no other line" {
++  mkchangelog
++  cp "$PROJ/CHANGELOG.md" "$DEVBIN_TEST_TMPDIR/before.md"
++  notes_select changelog "" demo
++  run notes_date "$PROJ" 2.0.0 2026-09-17
++  assert_success
++  assert_output "CHANGELOG.md"
++  run diff "$DEVBIN_TEST_TMPDIR/before.md" "$PROJ/CHANGELOG.md"
++  assert_output "3c3
++< ## [2.0.0] - in progress
++---
++> ## [2.0.0] - 2026-09-17"
++  run notes_state "$PROJ" 2.0.0
++  assert_output "dated 2026-09-17"
++}
++
++@test "changelog: the body is the section up to the next heading, without its leading and trailing blank lines, and an empty section is refused" {
++  mkchangelog
++  notes_select changelog "" demo
++  notes_body "$PROJ" 2.0.0 >"$DEVBIN_TEST_TMPDIR/body"
++  printf '### Added\n\n- **a thing** with `code`\n\n### Fixed\n\n- a fix\n' >"$DEVBIN_TEST_TMPDIR/want"
++  cmp "$DEVBIN_TEST_TMPDIR/body" "$DEVBIN_TEST_TMPDIR/want"
++  printf '\n## [4.0.0] - unreleased\n\n\n' >>"$PROJ/CHANGELOG.md"
++  run notes_body "$PROJ" 4.0.0
++  assert_failure
++  assert_output_contains "the [4.0.0] section of CHANGELOG.md is empty"
++}
++
++@test "changelog: there are no views, so views and views_check print nothing and succeed, and a release owns CHANGELOG.md" {
++  mkchangelog
++  notes_select changelog "" demo
++  local before
++  before="$(tree_sum "$PROJ")"
++  run notes_views "$PROJ"
++  assert_success
++  assert_output ""
++  run notes_views_check "$PROJ"
++  assert_success
++  assert_output ""
++  [ "$before" = "$(tree_sum "$PROJ")" ]
++  run notes_paths "$PROJ" 2.0.0
++  assert_output "CHANGELOG.md"
++  run notes_where 2.0.0
++  assert_output "## [2.0.0] heading in CHANGELOG.md"
++}
++
++# ---- command -----------------------------------------------------------------
++
++# mknotescmd -- $PROJ/bin/notes, a notes.run that records where it ran and what it
++# was asked, and REFUSES a verb it does not know: a stub accepting anything would
++# prove only that something was called.
++mknotescmd() {
++  cat >"$PROJ/bin/notes" <<'STUB'
++#!/usr/bin/env bash
++set -euo pipefail
++printf '%s|%s\n' "$PWD" "$*" >>calls.log
++case "${1:-}" in
++  state) if [ -f dated ]; then printf 'dated %s\n' "$(cat dated)"; else printf 'open\n'; fi ;;
++  date) [ $# -eq 3 ] || exit 9; printf '%s' "$3" >dated; printf 'notes/current.md\n' ;;
++  body) printf 'the body for %s\n\n\n' "$2" ;;
++  views) printf 'docs/NOTES.md\n' ;;
++  views-check) printf 'current docs/NOTES.md\nSTALE docs/INDEX.md\n' ;;
++  paths) printf 'notes/current.md\ndocs/NOTES.md\n' ;;
++  *) printf 'stub: unknown verb: %s\n' "$*" >&2; exit 2 ;;
++esac
++STUB
++  chmod +x "$PROJ/bin/notes"
++}
++
++@test "command: notes.run runs at the root with each verb and its arguments" {
++  mknotescmd
++  notes_select command bin/notes demo
++  run notes_state "$PROJ" 1.0.0
++  assert_output "open"
++  run notes_date "$PROJ" 1.0.0 2026-09-17
++  assert_success
++  assert_output "notes/current.md"
++  run notes_views "$PROJ"
++  assert_output "docs/NOTES.md"
++  run notes_views_check "$PROJ"
++  assert_success
++  assert_output "current docs/NOTES.md
++STALE docs/INDEX.md"
++  run notes_paths "$PROJ" 1.0.0
++  assert_output "notes/current.md
++docs/NOTES.md"
++  local line
++  for line in "state 1.0.0" "date 1.0.0 2026-09-17" "views" "views-check" "paths 1.0.0"; do
++    grep -qxF "$PROJ|$line" "$PROJ/calls.log" || fail "notes.run was not called at the root as: $line"
++  done
++}
++
++@test "command: the body keeps its trailing newlines" {
++  mknotescmd
++  notes_select command bin/notes demo
++  notes_body "$PROJ" 1.0.0 >"$DEVBIN_TEST_TMPDIR/body"
++  printf 'the body for 1.0.0\n\n\n' >"$DEVBIN_TEST_TMPDIR/want"
++  cmp "$DEVBIN_TEST_TMPDIR/body" "$DEVBIN_TEST_TMPDIR/want"
++}
++
++@test "command: notes.run is split into words and never eval'd" {
++  mknotescmd
++  cd "$PROJ"
++  notes_select command 'bin/notes; touch pwned' demo
++  run notes_state "$PROJ" 1.0.0
++  assert_failure
++  assert_output_contains "notes.run failed: bin/notes; touch pwned state 1.0.0"
++  notes_select command 'bin/notes $(touch pwned)' demo
++  run notes_state "$PROJ" 1.0.0
++  assert_failure
++  assert_output_contains "stub: unknown verb: \$(touch pwned) state 1.0.0"
++  [ ! -e "$PROJ/pwned" ] || fail "notes.run was evaluated by a shell"
++  [ ! -e "$PROJ/state" ]
++}
++
++@test "command: an answer in any other shape is refused, naming what was printed" {
++  mknotescmd
++  cat >"$PROJ/bin/bad" <<'STUB'
++#!/usr/bin/env bash
++case "$1" in
++  state) printf 'released\n' ;;
++  paths) printf '/etc/passwd\n' ;;
++  views) printf 'docs/../../outside.md\n' ;;
++  views-check) printf 'fresh docs/NOTES.md\n' ;;
++  body) printf '   \n' ;;
++  date) exit 4 ;;
++esac
++STUB
++  chmod +x "$PROJ/bin/bad"
++  notes_select command bin/bad demo
++  run notes_state "$PROJ" 1.0.0
++  assert_failure
++  assert_output_contains "printed 'released'"
++  run notes_paths "$PROJ" 1.0.0
++  assert_failure
++  assert_output_contains "absolute path: /etc/passwd"
++  run notes_views "$PROJ"
++  assert_failure
++  assert_output_contains "leaves the project root: docs/../../outside.md"
++  run notes_views_check "$PROJ"
++  assert_failure
++  assert_output_contains "printed 'fresh docs/NOTES.md'"
++  run notes_body "$PROJ" 1.0.0
++  assert_failure
++  assert_output_contains "printed nothing"
++}
++
++@test "dating an absent note is refused in the same words for every kind" {
++  # The dating rules are stated once, in notes_date. While each kind carried its
++  # own copy they drifted: the command kind's refusal alone never said what to do.
++  cat >"$PROJ/bin/absent" <<'STUB'
++#!/usr/bin/env bash
++case "$1" in
++  state) printf 'absent\n' ;;
++  *) exit 2 ;;
++esac
++STUB
++  chmod +x "$PROJ/bin/absent"
++  local kind notes_run where
++  for kind in releases changelog command; do
++    notes_run=""
++    [ "$kind" != command ] || notes_run=bin/absent
++    notes_select "$kind" "$notes_run" demo
++    where="$(notes_where 1.0.0)"
++    run notes_date "$PROJ" 1.0.0 2026-09-17
++    assert_failure
++    assert_output_contains "there is no $where to date -- write the note before the release"
++  done
++}
++
++@test "a date that did not take is refused, not reported done" {
++  # notes_date reads every write back through notes_state. A writer that says it
++  # dated the note and changed nothing is the case the read-back exists for.
++  cat >"$PROJ/bin/nodate" <<'STUB'
++#!/usr/bin/env bash
++case "$1" in
++  state) printf 'open\n' ;;
++  date) printf 'notes/current.md\n' ;;
++  *) exit 2 ;;
++esac
++STUB
++  chmod +x "$PROJ/bin/nodate"
++  notes_select command bin/nodate demo
++  run notes_date "$PROJ" 1.0.0 2026-09-17
++  assert_failure
++  assert_output_contains "dating the note for 1.0.0 did not take -- it reads: open"
++  refute_output_contains "notes/current.md"
++}
++
++# ============================================================================
++# THE VERBS, THROUGH bin/devbin release, FOR THE KINDS WITHOUT VIEWS
++# ============================================================================
++
++# changelog_project -- a fixture enabling release with notes.kind: changelog.
++changelog_project() {
++  mkproj clproj <<'YAML'
++project:
++  name: demo
++commands:
++  release:
++    enabled: true
++release:
++  notes:
++    kind: changelog
++YAML
++}
++
++@test "release notes under notes.kind changelog says it generates no views and writes nothing" {
++  local proj before
++  proj="$(changelog_project)"
++  printf '1.0.0\n' >"$proj/VERSION"
++  printf '# Changelog\n\n## [1.0.0] - 2026-01-01\n\n- first\n' >"$proj/CHANGELOG.md"
++  before="$(tree_sum "$proj")"
++  run devbin_run "$proj" release notes
++  assert_success
++  assert_output_contains "notes.kind changelog generates no views, so nothing was written"
++  [ "$before" = "$(tree_sum "$proj")" ]
++}
++
++@test "release check under notes.kind changelog says no views were compared, never that they are current, and still checks the version's heading" {
++  local proj
++  proj="$(changelog_project)"
++  printf '1.0.0\n' >"$proj/VERSION"
++  printf '# Changelog\n\n## [0.9.0] - 2026-01-01\n\n- older\n' >"$proj/CHANGELOG.md"
++  run devbin_run "$proj" release check
++  [ "$status" -eq 1 ]
++  assert_output_contains "generates no views, so none were compared"
++  refute_output_contains "view(s) current"
++  assert_output_contains "there is no ## [1.0.0] heading in CHANGELOG.md"
++  printf '\n## [1.0.0] - unreleased\n\n- new\n' >>"$proj/CHANGELOG.md"
++  run devbin_run "$proj" release check
++  assert_success
++  assert_output_contains "the note for 1.0.0 is open"
++}
++
++@test "release notes refuses a malformed release: block before writing anything" {
++  # The bad key is one the provider does NOT read, with a kind it accepts, so
++  # validation is the only thing that can stop this: a malformed block read as
++  # its defaults would regenerate the views. A bad notes.kind would be refused by
++  # notes_select as well, and could not tell the two apart.
++  local proj
++  proj="$(mkproj badproj <<'YAML'
++project:
++  name: demo
++commands:
++  release:
++    enabled: true
++release:
++  notes:
++    kind: releases
++  object: github
++YAML
++  )"
++  mkdir -p "$proj/RELEASES"
++  printf 'version: 0.1.0\ndate: 2026-01-01\nheadline: h\nstatus: released\n\n## Added\n\n- x\n' >"$proj/RELEASES/0.1.0.md"
++  run devbin_run "$proj" release notes
++  [ "$status" -eq 1 ]
++  assert_output_contains 'release.object: "github" must be local, ci or none'
++  [ ! -e "$proj/CHANGELOG.md" ]
++  [ ! -e "$proj/RELEASES.md" ]
++}
++
++@test "release check names a version it cannot read rather than looking up a note for it" {
++  # No VERSION at all: read_version answers `unknown`, which is no version.
++  mknote 0.1.0
++  run_release notes
++  rm "$PROJ/VERSION"
++  run_release check
++  [ "$status" -eq 1 ]
++  assert_output_contains "version reads 'unknown', which is not X.Y.Z"
+ }
+diff --git a/tests/unit/releasecore.bats b/tests/unit/releasecore.bats
+index fc1b532..17eb50f 100644
+--- a/tests/unit/releasecore.bats
++++ b/tests/unit/releasecore.bats
+@@ -250,12 +250,12 @@ EOF
+ }
+ 
+ # AT-1.3
+-@test "a well-formed cut, status or notes invocation is parsed and says the step is not built yet, exiting 3 and writing nothing" {
++@test "a well-formed cut or status invocation is parsed and says the step is not built yet, exiting 3 and writing nothing" {
+   proj="$(enabled_project)"
+   git_project "$proj"
+   before="$(fingerprint "$proj")"
+   local inv
+-  for inv in "--patch" "v1.2.3" "--dry-run --major" "--yes 2.0.0" "status v1.0.0" "notes"; do
++  for inv in "--patch" "v1.2.3" "--dry-run --major" "--yes 2.0.0" "status v1.0.0"; do
+     # shellcheck disable=SC2086
+     run release_in "$proj" $inv
+     [ "$status" -eq 3 ] || {
+@@ -551,9 +551,9 @@ EOF
+ # ============================================================================
+ 
+ # AT-1.1
+-@test "release check prints every key with its value and whether it is declared or the default, then exits 3 because its notes half is not built" {
+-  # NOT 0. D36 makes check a predicate over the declaration AND the notes views,
+-  # and a 0 would certify views nothing examined. WP-02 builds that half.
++@test "release check prints every key with its value and whether it is declared or the default, then checks the notes" {
++  # D36 makes check a predicate over the declaration AND the notes, so the notes
++  # half runs after the table (WP-02) and the exit status answers for both.
+   proj="$(mkproj demo <<'YAML'
+ project:
+   name: demo
+@@ -566,8 +566,10 @@ release:
+     - "-"
+ YAML
+   )"
++  printf '1.0.0\n' >"$proj/VERSION"
++  printf '# Changelog\n\n## [1.0.0] - 2026-01-01\n\n- first\n' >"$proj/CHANGELOG.md"
+   run devbin_run "$proj" release check
+-  [ "$status" -eq 3 ] || fail "release check exited $status, want 3: $output"
++  assert_success
+   # One line per row of the table, the rows read from the table, not typed.
+   local shape key n=0
+   while read -r shape key _; do
+@@ -580,8 +582,9 @@ YAML
+   assert_output_matches 'gates +\(none\) +declared'
+   assert_output_matches 'tag +v\{version\} +default'
+   assert_output_matches 'remotes +every remote git lists +default'
+-  assert_output_contains "the notes views were not examined"
+-  assert_output_contains "release check's notes half is not built yet"
++  assert_output_contains "notes.kind changelog generates no views, so none were compared"
++  assert_output_contains "the note for 1.0.0 is dated 2026-01-01"
++  refute_output_contains "not built yet"
+ }
+ 
+ # AT-1.1
+@@ -596,9 +599,17 @@ release:
+   object: github
+ YAML
+   )"
++  # A version and its note, so the declaration is the only thing here that can
++  # fail: without them the notes half exits 1 too, and the status would pass
++  # whether or not the bad declaration is what stopped check.
++  printf '1.0.0\n' >"$proj/VERSION"
++  printf '# Changelog\n\n## [1.0.0] - 2026-01-01\n\n- first\n' >"$proj/CHANGELOG.md"
+   run devbin_run "$proj" release check
+   [ "$status" -eq 1 ]
+   assert_output_contains 'release.object: "github" must be local, ci or none'
++  # And it stopped there: a declaration that does not validate is never read on
++  # into the notes half as though it had.
++  refute_output_contains "the note for 1.0.0"
+ }
+ 
+ # AT-1.1
+@@ -614,15 +625,17 @@ jobs:
+     steps:
+       - run: gh release create "$GITHUB_REF_NAME"
+ YML
+-  # Exit 3 both times: the declaration half ran to its end, and the notes half
+-  # is not built (a malformed declaration would have exited 1).
++  # A version and its note, so the notes half passes and the exit status is the
++  # declaration's: the WARNING is reported for the project to decide, not failed.
++  printf '1.0.0\n' >"$proj/VERSION"
++  printf '# Changelog\n\n## [1.0.0] - 2026-01-01\n\n- first\n' >"$proj/CHANGELOG.md"
+   run devbin_run "$proj" release check
+-  [ "$status" -eq 3 ] || fail "release check exited $status, want 3: $output"
++  assert_success
+   assert_output_contains "WARNING"
+   assert_output_contains ".github/workflows/release.yml"
+   printf 'release:\n  object: ci\n' >>"$proj/bin/.devbin/config.yaml"
+   run devbin_run "$proj" release check
+-  [ "$status" -eq 3 ] || fail "release check exited $status, want 3: $output"
++  assert_success
+   assert_output_matches 'object +ci +declared'
+   refute_output_contains "WARNING"
+ }
+@@ -640,8 +653,12 @@ YML
+     chmod 644 "$proj/.github/workflows/release.yml"
+     skip "this user can read a mode-000 file, so grep cannot fail to read one here"
+   fi
++  # A version and its note, so the notes half passes and the status is the
++  # declaration's: an unread workflow is a WARNING, reported rather than failed.
++  printf '1.0.0\n' >"$proj/VERSION"
++  printf '# Changelog\n\n## [1.0.0] - 2026-01-01\n\n- first\n' >"$proj/CHANGELOG.md"
+   run devbin_run "$proj" release check
+   chmod 644 "$proj/.github/workflows/release.yml"
+-  [ "$status" -eq 3 ] || fail "release check exited $status, want 3: $output"
++  assert_success
+   assert_output_contains "could not read .github/workflows/release.yml"
+ }

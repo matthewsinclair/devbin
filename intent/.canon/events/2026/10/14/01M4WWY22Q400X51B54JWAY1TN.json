@@ -1,0 +1,15 @@
+{
+  "id": "01M4WWY22Q400X51B54JWAY1TN",
+  "ts": "2026-10-14T09:47:11.833Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0196"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "a record read answered by an authoritative CNAME to a name outside the zone reads as a measured absence -- hosted DMARC published by CNAME reads as 'NO _dmarc record', and a DKIM selector declared TXT and published as a CNAME as a HALF PAIR"
+  }
+}

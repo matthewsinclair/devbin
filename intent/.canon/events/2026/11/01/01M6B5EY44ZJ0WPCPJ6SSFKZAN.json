@@ -1,0 +1,16 @@
+{
+  "id": "01M6B5EY44ZJ0WPCPJ6SSFKZAN",
+  "ts": "2026-11-01T09:01:17.316Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop), resumed on hv's go after the compact (vc's relay, read 08:28Z by date -u), banked as WIP at refs/bank/cc/ST0011-02b 7c48c1426453c69fd4b2505b7bef732c986e7980 (fetch and compare-and-swap from 0b17f1de, 2026-11-01 09:01Z by date -u); 31 WIP commits on a2dde479, branch wp02b-c2 in the worktree ~/Devel/scratch/devbin-cc/st11-wp02b/fix-c2. In since the fold: the W8 rework, (a) to (e) as vc ruled on CRITIC-3 (ff851eda); CRITIC-2's notes as ruled, D-N1 cf853de6, D-N3 4e441a87, D-N5 43b7eede, D-N6 ecdeb039, D-N7 67288ce7, D-N8 434ee7ff, D-N9 718ef21a, and D-N2 with Part 3's docs items 3 to 5 at 7c48c142. Verified: static checks on every commit; probes, not evidence: CRITIC-3's fifteen remote sets answer as ruled, and D-N5's gate traps fire. Not verified: no bats after 7ca8ea42. Next: one last critic-shell review of 4fa98c77..7c48c142, given the commits only, its dispositions to vc before the squash; the squash on vc's word onto whatever has landed; the re-bank; the unit's run on its ask (decision 120 R1); the handover. State in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md."
+  }
+}

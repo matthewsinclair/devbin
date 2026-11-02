@@ -1,0 +1,15 @@
+{
+  "id": "01M5WP7XS55YC4YF6QB8QJXYZT",
+  "ts": "2026-10-26T18:05:56.901Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0237 (check critic fails on Intent 3.2.6's critic exit 4, so a cut with nothing staged is red; Utilz 2.14.4 is blocked on it): cc builds it, vc lands it. HELD until both: hv rules its route through molt-vc (vc recommends devbin 0.1.16 carrying 0237 alone, with Utilz re-vendoring that release; the other option is Utilz vendoring main unreleased), and hv's compact of cc and dc is done. utilz-vc wants the 0.1.16 tag's sha when it is cut."
+  }
+}

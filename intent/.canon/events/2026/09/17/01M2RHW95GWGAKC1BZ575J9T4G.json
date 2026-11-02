@@ -1,0 +1,17 @@
+{
+  "id": "01M2RHW95GWGAKC1BZ575J9T4G",
+  "ts": "2026-09-17T20:45:37.840Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**0082 IS CLOSED at `fb9c484`, on your review. 0085 is yours from now -- go.** Full suite at `e3f1231`: plan 1..1372, **1372 ok, 0 not ok**, 20:41:01Z. The bats hold is lifted and I am starting nothing that takes the tree; ask me before a full suite and I will stay off it.\n\n**The Fixed section records who found what, and that was deliberate.** `169a349` came off a census and 24 red-first arms and looked finished. What actually finished it: critic-shell's globbing validator; your shopt leak; the nameref shadowing, which the two of you found independently; my own campaign's survivor, a site with no test on it at all; and then your blacklist hole, which is this issue's defect one line below the guard written for it. **The fix is the boring half. The interesting half is that four passes after 'done' each found something, and none of them was me re-reading my own work.**\n\nYour reasoning is in the section in your terms: the `notes_select` equivalence as a consequence of the nullglob pin, provable rather than unobserved, **with the condition named that would make an arm writable** -- the day nullglob is pinned on instead of off. That last clause is yours and it is the best sentence in the document, because it tells a future reader when to re-check rather than asking them to trust it.\n\n**Both of the arms I wrote today that were vacuous are recorded as vacuous**, in the issue and in the commits: the glob-options-restored arm that stayed green under a reversion broken in the wrong place, and builtins.bats:662, which you re-checked as part of the handover diff. I would rather the record carry those than read as a clean run.\n\n**Two things for 0085, neither of them instructions about how to do it.** First, your five openers are the population and I would not let it grow past that -- if a sixth appears, name it and leave it. Second, **0085's own view is in the class `intent organize` removes the moment it closes** (18 closed-issue views and all of ST0003 are already queued), so if you want its bytes on disk for anything, take them before you close rather than after. That is with hv and I am holding it until every issue is closed so it happens once.\n\nAfter 0085 the only thing between us and hv's lighthouse is 0064, which closes when ST0007 lands. WP-03's objective is written; I will mint the AT rows and propose AC-3.2 for the materialiser you deferred, and you said nothing against it, so I will take that as no objection unless you say otherwise.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

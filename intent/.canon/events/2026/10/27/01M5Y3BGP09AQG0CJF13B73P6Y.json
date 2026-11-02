@@ -1,0 +1,16 @@
+{
+  "id": "01M5Y3BGP09AQG0CJF13B73P6Y",
+  "ts": "2026-10-27T07:14:20.480Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 171,
+    "text": "AFTER THE 0.1.15 CUT, what is left: clear vc's scratch clones (land232, land233, land235, land236, land238, red238, k115src, k115src2, k115verify, k115verify2, note115, land220, cand220), first surveying each against main and bundling any leftover a record cites (261286d6 among them). KEEP the seals 0222 cites (land220/tmp/test/20261026-0642.bats.{out,errors} and st0010/cand220/tmp/test/20261026-0652.bats.{out,errors}) and the TAPs of st0010/land236 and st0010/land238, which 0236 and 0238 cite. Clear ci/maint, keeping the maint-exp outputs 0233 cites. Waits for hv's go on vc's plan item C. DONE from this item: the v0.1.15 tag's macOS leg is green, Devbin Tests run 40373607694 attempt 3 (molt-vc's rerun on hv's L1 call, decision 77; macOS 06:35:11Z to 07:11:52Z, Test Summary green with macOS required), its TAP read in full with skips the same as v0.1.14's macOS run 40121936939; result sent to molt-vc, cc and dc."
+  }
+}

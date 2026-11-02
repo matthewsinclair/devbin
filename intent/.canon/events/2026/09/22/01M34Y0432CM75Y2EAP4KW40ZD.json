@@ -1,0 +1,15 @@
+{
+  "id": "01M34Y0432CM75Y2EAP4KW40ZD",
+  "ts": "2026-09-22T16:08:19.810Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "PUSH STATE MEASURED AT THE FOLD, 2026-09-22 ~16:10Z, SUPERSEDING todo 100. Every count from git rev-list after a fetch, not from memory -- todo 100's 'thirteen committed and unpushed' is no longer true and was becoming the kind of stale line that reads as current. FULLY PUSHED AND LEVEL: Molt eafb2a1, Lamplight e8e022d55, Laksa ff9f97fae, and devbin itself (accepted green on ba9c993). GTOOLS IS DONE TOO, and the apparent gap is not one: upstream/main is 02e1bf3, CI green on it, and the 3 commits local-only (5fafcfe, d8a8886, 79d990a) are ALL board folds written after the push -- under the new filter a board-only push starts no run at all, so todo 96's 'its verdict is the last run that ran' covers them. STILL AHEAD, as local/upstream: Riffle 5/7, Cdtempl 5/7, Prolix 5/7, Conflab 8/10, Baize 6/8, MicroGPTEx 2/4, Prodinfra 3/6, Utilz 1/1, Intent 1/1. NOTE THE ASYMMETRY, which is NOT today's doing: Riffle, Cdtempl, Prolix and MicroGPTEx are each exactly 2 further behind upstream than local, so upstream was already 2 behind before this sweep -- a bare  will NOT level upstream in those four. Conflab, Baize and Prodinfra have origin == upstream URL and both read the same count. LIVE TREES ARE DIRTY AND THAT IS NORMAL: Intent 22 paths, Utilz 5, Cdtempl 4, Gtools 3 -- other nodes working, not drift. PUSH TRAPS UNCHANGED from todo 100: Riffle, Conflab, Lamplight, Prolix, Baize and MicroGPTEx have NO tracking branch, so a bare push fails -- use ."
+  }
+}

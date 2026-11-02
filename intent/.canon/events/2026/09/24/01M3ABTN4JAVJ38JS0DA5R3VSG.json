@@ -1,0 +1,15 @@
+{
+  "id": "01M3ABTN4JAVJ38JS0DA5R3VSG",
+  "ts": "2026-09-24T18:46:12.882Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "PARKED FOR THE LINE (vc rules it with the parked list, with a recommendation): lib/release.steps:195 and :199 repeat the physical-directory step of clean's _clean_physical_dir. Found by critic-shell's sixth pass on cc's 0131 v2, 2026-09-24. Unreachable with absolute inputs; hoisting _clean_physical_dir into lib/helpers is a refactor, not a defect, so it is not filed and does not hold 0.1.8 open. cc records it in 0131's commit message and resolution. ALSO FOR THE LINE: under 0128 v3, a command-level run: declared empty (run: \"\") refuses all with a pointer to the bare command, which then refuses the empty line itself (issue 0082's refusal) -- exit 1 both ways, no false green; found by critic-shell's code pass on 0128 v3."
+  }
+}

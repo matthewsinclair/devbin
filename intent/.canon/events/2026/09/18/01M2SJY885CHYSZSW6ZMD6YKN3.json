@@ -1,0 +1,15 @@
+{
+  "id": "01M2SJY885CHYSZSW6ZMD6YKN3",
+  "ts": "2026-09-18T06:23:25.446Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0087"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "A wrapper flag typed at a command-level gate is passed to the tool as an argument, and the gate ignores it"
+  }
+}

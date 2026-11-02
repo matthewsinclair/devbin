@@ -1,0 +1,15 @@
+{
+  "id": "01M5QR98V9J2ASY83GJ861HDAY",
+  "ts": "2026-10-24T20:05:25.993Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0223 handed to vc 2026-10-24 20:04Z: ~/Devel/scratch/devbin-cc/0223/handover/0223.bundle (ec7e5120, tree daae7775, on 981594b6), message and resolution drafted; released when vc has landed it, its range-diff against the bundle is patch-identical, and the clones are archived and cleared"
+  }
+}

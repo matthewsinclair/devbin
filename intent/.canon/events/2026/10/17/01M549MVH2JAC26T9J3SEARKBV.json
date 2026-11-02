@@ -1,0 +1,15 @@
+{
+  "id": "01M549MVH2JAC26T9J3SEARKBV",
+  "ts": "2026-10-17T06:44:02.722Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.11 release note for vc: commit a64189a0 on land6 ca557b4d (RELEASES/0.1.11.md, CHANGELOG.md and RELEASES.md from release notes; release check passes; no suite), banked clone-archive/rn0111__a64189a0.bundle (7a1de71f), verified in a fresh clone of land6; vc lands it after the stack. Clone ~/Devel/scratch/devbin-cc/rn0111/build."
+  }
+}

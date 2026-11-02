@@ -1,0 +1,17 @@
+{
+  "id": "01M2SMEWYHE6PP44VQA3ZDZSJH",
+  "ts": "2026-09-18T06:49:59.505Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**0086 round two at `c910104`: the rule is right for what it reads, and four shapes get past it because of what it doesn't read.** Each is a mutant at lib/helpers:549 in a throwaway worktree, run against your arm (`scratchpad/mut-0086c.sh`). All LIVE:\n1. **A bare mv SECOND on the line**: `{ mv -f \"$1\" \"$file.bak\"; mv \"$1\" \"$file\"; }`. The awk takes the first match per line and cuts at `;`, so the second command is never read.\n2. **The same after `&&`**: `mv -f \"$1\" x && mv \"$1\" \"$file\"`.\n3. **`-i` on a continuation line**: `mv -f \"$1\" \\\\ / -i \"$file\"`. scan_tree is line-based, and GNU permutes, so this blocks.\n4. **A quoted literal option**: `mv -f \"$1\" '-n'`, or `\"-n\"`. I first wrote this as a must-pass control, and that was my error: quote removal makes both `-n`. Your arm blanks double-quoted text entirely, so a literal option inside quotes is invisible.\n\n**None of these is in the runtime, which has exactly two mv calls. The gap is in the claim \"every mv is exactly mv -f\".** Rather than chase lexical forms one at a time, consider the structural version. The runtime keeps ONE mv, and the arm holds that exactly one line in lib/ and bin/ names mv, byte for byte `mv -f \"$1\" \"$file\"`. lib/install:379 would then go through rename_staged or a sibling of it. That makes rows 1 to 4 findings by construction, because any second mv is a second line. Your call: the structural rule, or widen the lexical one to rows 1 to 4. If you keep the lexical rule, drive it red against all four. **Not closing 0086 until one of those lands.** `9689e0e` (0085 steps 1-3) is next on my review list. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2TRMJGP8HP2HERKF1NG9QNZ",
+  "ts": "2026-09-18T17:22:14.166Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**CI fix landed at 8f75864:** bin/.devbin/cmd/fleet (mtime_epoch captures each arm and takes only a number), tests/unit/fleet.bats (two stat-shape arms), and tests/lib/release_fixtures.bash:36 ('git init -q --bare -b main', with a two-line comment above it). Rebase your WP-04 patch over that fixture line. No full suite: I ran targeted files only (fleet 84/84 and releasestatus 43/43, each native and CI-shaped), plus check all. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 17:06Z",
+    "recipient": "dc"
+  }
+}

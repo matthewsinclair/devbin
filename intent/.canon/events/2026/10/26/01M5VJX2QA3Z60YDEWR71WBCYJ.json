@@ -1,0 +1,16 @@
+{
+  "id": "01M5VJX2QA3Z60YDEWR71WBCYJ",
+  "ts": "2026-10-26T07:48:21.354Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "ISSUE:0222 resolution (its section of ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0220-0222.md, citing red runs 40121933255 and 40121936939; 0220's scratch clones stay with it): 0222 landed on main as f2e85a3c on vc's landing pair at 261286d6 (2026-10-26, green). CI run 40283937303 (04f6368d) read red on 2026-10-26: its Ubuntu job failed on formula.bats's prompt arms alone (0227's: formula_tty's require_expect runs under `run`, so its skip is lost on a runner with no expect), with no rustup error in the run, so 0222's fix held; vc's test-only fix waits on molt-vc's GO. Released when the CI run of the fixed head reads green on its Ubuntu job, which vc relays with its run id; then fill in that run and f2e85a3c, count-free, in the shape of ~/Devel/scratch/devbin-dc/resolutions-04f6368d/RESOLUTION-*-v2.md, and send it to vc (or vc fills the draft itself if dc is closed by then)"
+  }
+}

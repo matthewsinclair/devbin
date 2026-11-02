@@ -1,0 +1,16 @@
+{
+  "id": "01M4AYCNA825D4ZCHQGN0RPW0N",
+  "ts": "2026-10-07T10:26:19.080Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 42,
+    "text": "0183 IN BUILD (vc's word, for the next release): the comment at targetdir.bats:980 says the 0163 workspace case fails, where 0.1.8 cleared the config, not that it stays failed. Committed in scratch at a3fcb6f5 over main 45b16f3a, clone ~/Devel/scratch/devbin-dc/0183/s; the targeted run (targetdir.bats, the six tree scans and help) under BSD then GNU is in flight; drafts ready. Next: export, apply check, hand to vc. Full state: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

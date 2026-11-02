@@ -1,0 +1,16 @@
+{
+  "id": "01M5VGT4CS82ZC9DRCHJZ4TNXM",
+  "ts": "2026-10-26T07:11:47.609Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "ISSUE:0222 resolution (its section of ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0220-0222.md, citing red runs 40121933255 and 40121936939): 0222 landed on main as f2e85a3c on vc's landing pair at 261286d6 (2026-10-26, green); released when CI's Ubuntu job is green on main after hv's push; then fill in that run and f2e85a3c in the shape of ~/Devel/scratch/devbin-dc/resolutions-04f6368d/ and send it to vc"
+  }
+}

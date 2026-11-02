@@ -1,0 +1,16 @@
+{
+  "id": "01M5WB71550KTNEQBXEGSPD5RS",
+  "ts": "2026-10-26T14:53:13.253Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "ISSUE:0222 close: hv stopped the 0.1.15 cut, took its release commit off main and ruled T5 into 0.1.15 as 0235 (relayed by vc, 2026-10-26), so 0222 no longer closes on CI run 40302760947 on 39300b37; the head that landed 0235 went red (CI run 40331608642 on f06bad4a, installhints.bats:107, from 0235's lib/cmd/use:124), so vc lands 0236 (filed at fc780638), and 0222 closes on the green CI run on 0236's head. When vc relays that run green, dc re-fills 0222's resolution count-free in the v2 shape, with that run and its head in place of 40302760947 on 39300b37, as ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0222-v3.md beside v2 (v2 stays as sealed: commits cite its sha256 4ffd6529), and sends vc its path and sha256. vc closes 0222 with it through setres.sh after hv's 0.1.15 cut, never before (vc's todo 171): from the push of 0236's head until the cut, nothing is committed outside intent/whiteboard/ and intent/.canon/ (vc's watchout 37). Released once 0222 is closed; then clear 0220's scratch clones (~/Devel/scratch/devbin-dc/0220/build, vf20, vf21, vf22), surveyed and archived first"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4DCXEVZ0MVKJN0P7F3PW3ED",
+  "ts": "2026-10-08T09:18:38.463Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "NEXT RELEASE (hv, 2026-10-07; to vc on 2026-10-08: \"coordinate DC and CC to get this next release done. I want all open issues closed before we do the release\"). THIRTEEN FILED, 0177 to 0189; TEN CLOSED (batch 3: 0185 at 9e640723, 0184 at 16599f4d; batch 4: 0186 at 48baceea, 0187 at 6490f18f, records 17b91aa8). OPEN: 0181 and 0188 (dc), BATCH 5, both reviewed by vc (0181 v1.1 patch 83804443, comment-only over the reviewed v1; 0188 patch 69245e9b: red 5 of 6 at their aims, green BSD and GNU, vc's 9 mutants at their aimed assertions, shellcheck with a control); vc's full suite of main 971fd68a plus both running from 09:06Z in ~/Devel/scratch/devbin-vc/0.1.10/batch5 (seal 20261008-0906, plan 1..2273); 0188's handoff and drafts still to come from dc. 0189 (cc), filed 42494b3e, in build on dc's 0188 head, sharing release_url_shown; BATCH 6 alone. THEN RELEASES/0.1.10.md from notes/0.1.10.md, then hv's dry run and cut. HELD 09:18Z for hv's meeting, all three nodes folded: after the compact boot and hold, land nothing, until hv's word. Re-entry: ~/Devel/scratch/devbin-vc/0.1.10/STATE.md."
+  }
+}

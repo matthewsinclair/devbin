@@ -1,0 +1,16 @@
+{
+  "id": "01M54K0NMNKK0N8K8756S39HKR",
+  "ts": "2026-10-17T09:27:47.093Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "0.1.11 RELEASE, hv's word 2026-10-17 before going AFK: \"All holds are off. Do what you need to do\"; utilz-vc holds the pen across Utilz, Devbin and Intent, and approved vc's plan as 0.1.11. LANDED 2026-10-17 on vc's landing suite 20261017-0636 at ca557b4d (2384 of 2384 ok, 5 skips, .errors empty; seal in ~/Devel/scratch/devbin-vc/clone-archive/seals/20261017-0636/): 0200 9daa07fe, ST0008 WP-01 d3032299, 0194 60b79891, the AT-id commits 0f918740 and db657de9, ST0008 WP-04 f7b34793 (with dc's fix 7d4015d3 for its run's two reds); records 8a2e0737 (AT-1.1 to 1.3, AT-4.1, AT-4.2 green; WP-01 and WP-04 done; 0200 and 0194 closed; at lint ST0008 8 of 8). kovacs ORDER R1 at 8a2e0737 (r1.sh f5666262, bundle devbin-8a2e0737.bundle 29fc4a0d) STARTED 09:27:08Z by hv's `!` in kovacs-sysadm's session (its first START was withdrawn at 06:53Z while kovacs-sysadm was still reading it, never blocked); done marker ~/work/devbin-vc/r1.rc on kovacs, read by vc over ssh; intent-vc relays its END. THE NOTE LANDED: 5eba6467 (0194's release page made to match step 8's code) and 7dcb442e (RELEASES/0.1.11.md v2 by cc, every one of dc's 9 claim-check findings taken). DRY RUN GREEN on 7dcb442e, 06:55:44Z to 07:04:34Z: check all clean, test all 2384 of 2384, doctor 12 checks 0 failed, \"no step failed; the cut stops to ask at step 6\"; seals in clone-archive/seals/dryrun-20261017-0655/. CUT POINT main 7dcb442e (later commits board or records only). THE CUT IS hv's TERMINAL (utilz-vc's ruling: vc neither cuts nor passes --yes); the one command, `cd ~/Devel/prj/Devbin && bin/devbin release v0.1.11`, is in hv's inbox (2c6e6d86), conditional on R1 green. THEN installs: rhad's ~/Devel/opt/devbin re-published from the tag, kovacs from a clone of the tag through kovacs-sysadm; the tap matthewsinclair/homebrew-devbin stays hv's to create. Then tell utilz-vc the tag sha and CI's answer; the fleet sweep to 0.1.11 follows the tag, its pathspec gaining .gitattributes."
+  }
+}

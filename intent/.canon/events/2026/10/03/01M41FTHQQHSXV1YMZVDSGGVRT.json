@@ -1,0 +1,15 @@
+{
+  "id": "01M41FTHQQHSXV1YMZVDSGGVRT",
+  "ts": "2026-10-03T18:18:35.639Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "DEVBIN'S HEAVY RUNS, 0154's first, held until client-ac sends END for the box lent to it at 17:51Z on 2026-10-03 (its client-design Chrome checks, running from about 18:05Z) and the next session opens. Then START goes to cc for 0154's queue, and the full suite after it is vc's. hv closed the day before either ran."
+  }
+}

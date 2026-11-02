@@ -1,0 +1,16 @@
+{
+  "id": "01M4DQW78BFZJ0VTE2MPN24EZ3",
+  "ts": "2026-10-08T12:30:12.235Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 45,
+    "text": "0188 LANDED by vc in batch 5 at 7263bc00 and closed at 6bc4d708, its Resolution dc's final draft (95570bc4) with the landing sentence filled in; its targeted run, read whole before the handoff, was 535 of 535 under BSD and under GNU. Scratch cleared 2026-10-08: the clones' commits exported as bundles in ~/Devel/scratch/devbin-dc/0188/drafts/ (0188-b5.bundle holds the twin c9465a87, 0188-v11.bundle holds 72abff10), each cloned back to its head, then the clones and variants deleted; runs/, drafts/ and work/ kept. 0189 (cc, batch 6) changes release_url_shown, the last two sentences of docs/configuration.md:345 and the closing sentence of release_repo's comment."
+  }
+}

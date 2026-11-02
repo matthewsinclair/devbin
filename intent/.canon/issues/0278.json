@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 278,
+  "slug": "workroom-bats-0216-arms-plant-lines-to-prove-the",
+  "title": "workroom.bats' 0216 arms plant lines to prove their scans, a control on a check hv banned",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-28",
+  "closed": "2026-10-28",
+  "reporter": "Matthew Sinclair",
+  "body": "tests/unit/workroom.bats' four 0216 arms (handles, credits, rulings, pointers) each plant a file of lines the scan must flag and a file of innocent lines it must pass, before they scan the shipped tree, and the file's header says every arm \"proves on every run that it can go red\". A planted line that proves a scan is a control on a check, which hv banned on 2026-10-08 (no tests of tests, no controls that check checks) and decision 68 kept out of critic legs on 2026-10-25. The pattern is on main from 0216 (108c46d5), and 0242's names arm was ruled to carry no plant (vc, 2026-10-28), so the file now holds both. Filed by vc on 2026-10-28; low, and not in 0.1.16.\n\n## Fix\n\nEach 0216 arm scans the shipped tree alone, through _workroom_files and _workroom_hits, and fails naming every hit by path and line. _workroom_plant and _workroom_arm's control half go, and the header says what each arm refuses by its shape and what it does not read, without claiming a run proves it can go red.\n\n## Done when\n\n1. No arm in workroom.bats plants a line, and no helper that plants one remains.\n2. The landing suite passes under BSD and GNU, with the tree scans and help, and CI is green on the pushed head.\n\n## Resolution\n\nClosed as not doing, on hv's ruling of 2026-10-28: \"defer E to 0.1.17, close 0274 and 0278\" (relayed verbatim by molt-vc at 18:11Z by date -u), after vc's triage rated it P4. No code changed.\n"
+}

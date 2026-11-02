@@ -1,0 +1,15 @@
+{
+  "id": "01M4WSECACX9P28ST4RNH35ZFS",
+  "ts": "2026-10-14T08:46:12.302Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0194"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "a cut's step 8 reads each remote back once, within 15 s, and reports a read that did not answer as the remote not holding the release -- the 0.1.10 cut stopped with both remotes holding it, and a resume finished it"
+  }
+}

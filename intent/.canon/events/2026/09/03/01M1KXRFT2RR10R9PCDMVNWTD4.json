@@ -1,0 +1,15 @@
+{
+  "id": "01M1KXRFT2RR10R9PCDMVNWTD4",
+  "ts": "2026-09-03T15:21:22.498Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0056"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The census reads disk and never asks git, so a re-vendor that was never committed reads as level"
+  }
+}

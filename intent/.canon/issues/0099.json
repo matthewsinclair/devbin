@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 99,
+  "slug": "the-install-tree-refusal-exits-3-the-code-reserv",
+  "title": "the install-tree refusal exits 3, the code reserved for resolves-but-not-implemented",
+  "status": "closed",
+  "severity": "medium",
+  "created": "2026-09-21",
+  "closed": "2026-09-21",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the 2026-09-21 doc audit (finding K3).\n\n`bin/devbin` run from a machine install -- \"this is a devbin INSTALL, not a project\" -- exited 3. usage-rules.md reserves 3 for \"resolves but not implemented\" and says a new refusal takes a NEW code, never a spare one, for the reason the wrong-tree guard has 4: a test asserting one refusal could be satisfied by the other.\n\nFix (ruled by vc: a new code, not 4): the install-tree refusal exits 5. usage-rules.md's exit-code line and docs/authoring-commands.md's exit table gain 5; documentation.bats holds the source's codes equal to that line. BEHAVIOUR CHANGE for the 0.1.4 note: anything testing for 3 from an install tree now sees 5. Tests: localinstall.bats AT-1.8 and two more arms that pinned 3 are restated to 5, driven red at the parent commit.\n\n\n## Resolution\n\nFixed at `27e8568`, test driven red first at its parent commit. Full suite 1578/1579 at `ae3b200`: the one failing arm was environment-caused (GIT_OPTIONAL_LOCKS=0 exported in the running shell defeated readonlygit.bats' stale fixture, and its control arm caught it) and is green in a clean environment; that file is hardened at `ad86870`. Reviewed by vc against this issue; vc's mutants on 0099 and 0104 were killed. Ships in 0.1.4.\n"
+}

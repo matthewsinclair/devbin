@@ -1,0 +1,15 @@
+{
+  "id": "01M2QX0F10J59J3ZA637J5Q9B1",
+  "ts": "2026-09-17T14:40:54.816Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Build 0083 (vc), dc reviews -- FIRST after the compact, on hv's routing.** fullcycle's test phase becomes `test all` (shape A), with `in_all: false` as the override and no new key. The phase list stays defined once, in `_fullcycle_phases`; the STOPPING line and the build-passed line follow it, and the dry run lists it. Arms per the issue: a second declared test option runs after `build all` and the dry run lists it; an option marked `in_all: false` is skipped and reported as skipped; a project declaring only `rust` runs exactly what `test rust` runs today; a failing second option stops the cycle naming it. Check docs/configuration.md's sentence that `all` is synthesised \"with more than one option\", which 0083 says reads narrower than the behaviour. Red-first on today's lib/cmd/fullcycle, mutate every arm, tell dc before any full suite. lib/cmd/fullcycle is vendored, so the change joins the sweep pre-notice (todo 51)."
+  }
+}

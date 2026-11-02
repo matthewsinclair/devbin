@@ -1,0 +1,16 @@
+{
+  "id": "01M45THV4ZRYKANDPEJW8KNWKY",
+  "ts": "2026-10-05T10:43:02.431Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 13,
+    "text": "The BOX: cc holds vc's START (given after 0152 landed). Heavy runs are cc's until cc sends vc END after its last one; another estate's session holds its Chrome checks until cc sends it a line then. Released when cc's last heavy run of the bundle block ends."
+  }
+}

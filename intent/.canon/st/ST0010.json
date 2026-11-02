@@ -1,0 +1,168 @@
+{
+  "schema": "intent/thread@3.0",
+  "id": "ST0010",
+  "title": "devbin public: a new public repository from one audited commit of the product, under an open-source licence",
+  "slug": "devbin-public-a-new-public-repository-from-one-a",
+  "status": "completed",
+  "created": "2026-10-17",
+  "completed": "2026-10-30",
+  "objective": "devbin is published as a new public GitHub repository holding the product only, from one commit audited so that no client or estate name, local path, machine name, secret or internal record reaches it, under an open-source licence; this repository stays private as the workroom.",
+  "context": "Opened by hv on 2026-10-17 to make devbin public safely. hv's rulings (vc decision 52, 56): a new repository from one audited snapshot commit, never this one opened; the product only, by the allow-list tests/shipped.paths, with no intent/; MIT; this repository stays private as the workroom, with the Dropbox mirror as its only copy.\n\n0.1.17 was cut but never published (its candidate CI went red, issue 0293). v0.1.18, snapshot a9b8cd7c, is the first public release, at https://github.com/matthewsinclair/devbin, with the formula in matthewsinclair/homebrew-devbin. The audit evidence is in vc's scratch, st0010/.",
+  "body": "",
+  "preamble": "",
+  "criteria": [
+    {
+      "id": "AC-1.1",
+      "text": "SAFETY (draft S1). Before the public repository exists, no devbin clone on rhadamanth, gyges or kovacs has a remote url or pushurl that resolves to matthewsinclair/devbin, and canon's upstream is removed. Evidence: each sleeve's scan of every git repository under its home at every depth, read back after the change.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "2026-10-29: rhadamanth, canon's upstream removed and an every-depth scan of $HOME reads 0 hits (brew's devbin--git fetch cache listed); kovacs, kovacs-sysadm's scan of 278 repos reads 0 hits beyond its brew cache; gyges excluded by hv ('a brew install machine, no one pushes from it')"
+      }
+    },
+    {
+      "id": "AC-1.2",
+      "text": "SAFETY (draft S2). devbin's release config names local as its only release remote, so no cut pushes the workroom anywhere else (issue 0240). Evidence: a dry-run cut's push plan naming local alone.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "release.remotes is [local] (bin/.devbin/config.yaml); the v0.1.17 cut (tmp/release/20261029-1344.RELEASE.out) read '1 remote(s) can take the push' and pushed to local alone"
+      }
+    },
+    {
+      "id": "AC-1.3",
+      "text": "SAFETY (draft S3). Before matthewsinclair/devbin is deleted, the workroom's backup bundle of every ref and the local mirror each fetch every ref back into a fresh clone. Evidence: the fetch-back run's output, its ref list equal to the workroom's.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "s3-verify.sh, 2026-10-29: bundle devbin-vc/st0010/backup-20261029.bundle (verified) and the Dropbox mirror each fetched back into a fresh bare clone, 19 branches and tags equal to canon's, ref and object, fsck clean (st0010/s3-20261029/)"
+      }
+    },
+    {
+      "id": "AC-1.4",
+      "text": "SAFETY (draft S4). The public repository is created empty, and after the first push every ref it holds points at the audited snapshot commit. Evidence: git ls-remote, read back.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "anonymous git ls-remote of https://github.com/matthewsinclair/devbin.git (no credential helper), 2026-10-29 after hv deleted candidate/v0.1.17 and set the default branch to main: HEAD, refs/heads/main and refs/tags/v0.1.18, all a9b8cd7c11a9e1e0a25ae56b45b9504eee51971e, the audited snapshot"
+      }
+    },
+    {
+      "id": "AC-2.1",
+      "text": "The snapshot is one parentless commit whose tree is the workroom's tracked files over tests/shipped.paths at a named commit, built by devbin's snapshot builder (issue 0239) in a new directory. Evidence: the builder's output and a file-by-file comparison against that commit's files over the list.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "release snapshot v0.1.17 --no-parent: commit 2cde3ee6, tree afa938fc, 214 files, equal to v0.1.17's (420547e3) tracked files over tests/shipped.paths by snap-compare.sh"
+      }
+    },
+    {
+      "id": "AC-2.2",
+      "text": "tests/shipped.paths is as hv ruled ST0010's Q1 (decision 78, issue 0241), and the snapshot carries nothing outside it: no intent/, .claude/, .mcp.json, AGENTS.md or CLAUDE.md, and none of fleet's command, roots file, help page or tests.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "snapshot 2cde3ee6 carries tests/shipped.paths' paths alone: no intent/, .claude/, .mcp.json, AGENTS.md, CLAUDE.md or fleet files (vc's scan, 2026-10-29)"
+      }
+    },
+    {
+      "id": "AC-2.3",
+      "text": "The client deny list, held outside devbin, matches nothing in the snapshot's tree or its commit message. Evidence: the scan's count, run with no term printed.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "deny list over snapshot 2cde3ee6: 6 terms, 0 text files, 0 commit-message lines, 0 files as raw bytes (snap-scan.sh, scan-v0117)"
+      }
+    },
+    {
+      "id": "AC-2.4",
+      "text": "The snapshot names no machine of hv's and no person's home path, the planted fixture lines listed and kept by name, and names hv's projects only as Q5 ruled: Intent, Molt and Utilz (issue 0242).",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "snapshot 2cde3ee6: machine names 0, unshipped names 0; the 14 home-path lines are neutral.bats' and install.bats' planted lines, the 0109 notes and config.yaml's install.prefix, accepted by hv as H9 (2026-10-29)"
+      }
+    },
+    {
+      "id": "AC-2.5",
+      "text": "workroom.bats, neutral.bats and the project-name guard (issue 0242) pass on the snapshot.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "workroom.bats and neutral.bats passed in the v0.1.17 cut's test all gate on 420547e3, the snapshot's source; hv ruled 2026-10-29 that no separate run on the snapshot is made"
+      }
+    },
+    {
+      "id": "AC-2.6",
+      "text": "gitleaks reports no leak over the snapshot's tree or its commit, with no known-positive sample planted (decision 68).",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "gitleaks dir and git over snapshot 2cde3ee6: no leaks found (scan-v0117)"
+      }
+    },
+    {
+      "id": "AC-2.7",
+      "text": "vc and dc each read every shipped file in full, independently, neither seeing the other's report until both are filed, each report's files-read ledger covering the snapshot's every file; every finding is fixed in main, or accepted by hv by name.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "vc and dc each read all 213 files of snapshot c769fb73 (review0116, devbin-dc review0116) and reread the changes to 2cde3ee6 (review-v0117 both); findings fixed by 0291 or accepted by hv (H1, H3, H5, H6, H8, H9) or fixed forward by 0292 (vc decision 86)"
+      }
+    },
+    {
+      "id": "AC-2.8",
+      "text": "The full suite passes on the snapshot commit at the desk under BSD, every skip named, and CI is green on it on the public repository's candidate branch (Q3, issue 0240), its Ubuntu leg covering GNU.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "CI run 40919937412 on candidate/v0.1.18 at snapshot a9b8cd7c, all jobs green: the macOS job ran test all under BSD, Ubuntu covered GNU, WSL 2 too. The desk run on the snapshot was dropped by hv 2026-10-29 ('I want everything merged to head on main and then I run the tests manually'); hv's full suites ran on main."
+      }
+    },
+    {
+      "id": "AC-2.9",
+      "text": "Before hv's approval, the formula, pointed at the snapshot's release tarball through a local tap, installs with no credentials and answers devbin <version> (brew, <sha12>) naming the snapshot's commit.",
+      "kind": "non-test",
+      "state": {
+        "is": "withdrawn",
+        "reason": "hv 2026-10-29: skipped; the anonymous brew install after publication (AC-3.2) is the install test",
+        "by": "hv"
+      }
+    },
+    {
+      "id": "AC-2.10",
+      "text": "Both readers have read the tap's history and its formula at every commit before the tap goes public (Q4).",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "vc (review/tap-read-vc.md, 2026-10-27) and dc (devbin-dc st0010/tap-read/REPORT.md, 2026-10-29) read all six tap commits; the 0.1.17 formula is published before the tap goes public"
+      }
+    },
+    {
+      "id": "AC-3.1",
+      "text": "hv approves publication, naming the snapshot's commit sha, its tree sha, the shipped list, the scan results and both readers' reports.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "hv approved publication, 2026-10-29: snapshot 2cde3ee69d7de3194bcce6ff5dd8f806f595f1ee, tree afa938fce846e926e5ef54058ea70705b27d323c, tests/shipped.paths, scans clean (scan-v0117), reports review0116 (vc, dc) and review-v0117 (vc, dc)"
+      }
+    },
+    {
+      "id": "AC-3.2",
+      "text": "After publication, the repository and the tap are public, and an anonymous brew install matthewsinclair/devbin/devbin on a clean account answers devbin <version> (brew, <sha12>) naming the published commit.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "accepted by hv 2026-10-30 in vc's session: anonymous https ls-remote (no credential helper, no global git config) reads the PUBLIC source at a9b8cd7c (HEAD, main, v0.1.18) and the PUBLIC tap at acebdc9; rhadamanth's brew answers devbin 0.1.18 (brew, a9b8cd7c11a9), its install receipt naming tap_git_head acebdc9 and scm_revision a9b8cd7c. Gap accepted by name: rhadamanth's tap is cloned over ssh and is not a clean account"
+      }
+    }
+  ],
+  "attachments": [
+    {
+      "path": "design.md",
+      "text": "# ST0010 audit plan and acceptance criteria -- v0.1, APPROVED\n\nhv approved this plan on 2026-10-27, in its order and with its draft ACs, and ruled Q1 to Q7 as recommended below (devbin-vc decision 78). The ACs are entered as AC-1.1 to AC-3.2 (2951ca4e). The publish tooling it needs is designed in issues 0239 and 0240 (cc's design, reviewed and approved by vc on 2026-10-27, with R1). On 2026-10-27 hv also ruled that a release candidate runs CI's whole matrix, and that snapshot commits carry Matthew Sinclair <hello@matthewsinclair.com> (decision 81). This text is the draft hv approved (vc's scratch st0010/audit-plan-v0.1.md, sha256 4ae1ee6d) less its first heading; where it says \"draft\", read \"approved\".\n\n\ndevbin-vc, 2026-10-27 08:32Z by date -u. Written under hv's ruling of 2026-10-26 (vc decision 75): vc drafts the public audit's plan and acceptance criteria, touching no repository until hv approves. Built from decisions 52, 56, 59, 60 and 68, and re-measured today on main at `4ccfde65`. Nothing below has changed anything; every fact was read.\n\n## What hv approves\n\n- The plan in its order: safety first, then the audit, then publication.\n- The acceptance criteria, which become ST0010's acceptance contract through `intent ac new` once approved.\n- An answer to each question at the end. Each carries vc's recommendation.\n\n## Where things stand\n\nMeasured on 2026-10-27, on main at `4ccfde65` unless a line says otherwise.\n\n- **Visibility.** `matthewsinclair/devbin` and the tap `matthewsinclair/homebrew-devbin` are both private (`gh repo view`). Intent, Molt and Utilz are public.\n- **Licence.** MIT is already in main (issue 0214): `LICENSE` and `lib/LICENSE.md` are byte-identical, `bin/devbin`'s header says MIT, and the formula says `license \"MIT\"`. Decision 56(1) needs nothing more.\n- **The shipped list.** `tests/shipped.paths` (issue 0216) is the one list of what the public tree carries, and the workroom scan reads it. It is decision 52's allow-list plus `design/`, `VERSION`, `usage-rules.md`, `.intent_critic.yml`, `.gitattributes`, `.gitignore` and `.prettierignore`, less fleet's command, roots file, help page and tests (decision 59(3)). No snapshot builder reads it yet: its header anticipates one.\n- **The workroom scan.** `tests/unit/workroom.bats` refuses workroom text in the shipped set by its shape. It declares what it does not read: a name in prose, the private sense of a common word (estate, fleet, session), a date or commit cited in a comment, a phrase split across lines, untracked files and binary files. The two independent reads exist to cover exactly those.\n- **fleet.** Its command, roots file, help page and tests are still tracked in main, and the shipped list excludes them. Other shipped files still name fleet: the release notes, `CHANGELOG.md`, `tests/shipped.paths` itself, and several test files (fullcycle, infra-profile, install, localinstall, neutral, releaseattach, runlog, vendor and workroom).\n- **Names.**\n  - The machine names (rhadamanth, gyges, kovacs, farcaster, pihole, yggdrasil, shrike) appear in no shipped file.\n  - Home paths appear only in `bin/.devbin/config.yaml`'s `install.prefix: ~/Devel/opt/devbin`, and a planted control line in `tests/unit/neutral.bats:305`.\n  - Of hv's projects, only Intent appears in `bin/` and `lib/`, as the tool devbin drives.\n  - The tests' comments, `README.md`, `docs/migration.md`, `docs/configuration.md`, `.github/workflows/tests.yml` and the release notes also name Molt and Utilz, which are public, and Gtools, Laksa, Lamplight, Conflab, Baize, Prolix, Prodinfra, Riffle, Cdtempl and the Arca crates, which are not (Q5).\n- **Remotes.**\n  - On rhadamanth, every git repository under `~/Devel`, `~/work` and `~/.local` was read at every depth. Only canon, `~/Devel/prj/Devbin`, has a remote that resolves to `matthewsinclair/devbin`: `upstream`, over ssh.\n  - Canon's `local` remote, the Dropbox bare repository, has no remotes of its own.\n  - gyges and kovacs have not been read.\n- **The release tool.** A cut pushes the release commit and its tag to every remote in `release.remotes`. devbin declares none, so a cut pushes to every remote: `local` and `upstream`.\n- **CI.** The cut's pre-flight refuses unless CI is green on the pushed commit (decision 62, issue 0223), and that CI reads the workroom's GitHub copy.\n- **The tap.**\n  - It holds `Formula/devbin.rb` and `README.md`.\n  - Its history is an initial commit and one commit per release from 0.1.11 to 0.1.15, all by hv.\n  - The formula's url is `ssh://git@github.com/matthewsinclair/devbin.git`, and its own comment says it becomes https once the repository is public.\n- **Scanners.** gitleaks 8.30.1 is on PATH. The client deny list is held outside devbin, in vc's scratch at `0.1.9/w1/denylist.txt`. It is scanned by count only, and its terms are never printed.\n\n## S. Safety, the publication's first criterion\n\nDecision 56 recreates `matthewsinclair/devbin` as the PUBLIC repository under the same name. So any clone with a remote that resolves to that name, and any cut that pushes to every remote, pushes the private workroom into the public repository on its first push. That would carry `intent/`, the whole history and the replaced commits that carry deny-list hits. Nothing the audit proves survives that. So safety comes first, and every S criterion holds before the public repository exists.\n\n- **S1.** No devbin clone on rhadamanth, gyges or kovacs keeps a remote url or pushurl that resolves to `matthewsinclair/devbin`. Canon's `upstream` is removed, since the workroom keeps no GitHub copy (decision 56(2)). Evidence: on each sleeve, a scan of every git repository under the sleeve's home at every depth, run after the change, which lists none. Today's rhadamanth read covered `~/Devel`, `~/work` and `~/.local`, plus canon's Dropbox remote; the criterion's scan covers the whole home. gyges is read through molt-vc, and kovacs through kovacs-sysadm.\n- **S2.** devbin's release config pushes the workroom to `local` alone (`release.remotes`). Evidence: a dry-run cut whose push plan names `local` and nothing else. Only the snapshot step writes to the public repository, and it writes the audited commit, never the workroom's history.\n- **S3.** The workroom's backup bundle of every ref, and the local mirror, are each verified by fetching every ref back into a fresh clone before `matthewsinclair/devbin` is deleted (decision 56(2)).\n- **S4.** The public repository is created empty. After the first push, every ref it holds points at the audited commit: its branch, a candidate branch if Q3 rules one, and its tag. Read back with `git ls-remote`.\n\n## The audit, in order (decision 52)\n\n1. **The snapshot.** One parentless commit, holding exactly main's tracked files over `tests/shipped.paths` at a named main commit, so the scan and the build read one list. It is built by one builder: a release-tool step if Q7 rules each release, so the first build and every later build are the same code. It is built in a NEW directory: a candidate is never rebuilt in place, because a cited seal was most likely lost that way on 2026-10-26.\n2. **The allow-list.** hv approves `tests/shipped.paths` line by line (Q1). The snapshot carries no path outside it. It carries none of `intent/`, `.claude/`, `.mcp.json`, `AGENTS.md` or `CLAUDE.md`, and none of fleet's command, roots file, help page or tests.\n3. **The widened name scan:**\n   - the client deny list over the snapshot's tree and its commit message, by count, with zero required and no term printed;\n   - the machine names and home paths, each remaining hit named and justified;\n   - hv's project names, as Q5 rules;\n   - `workroom.bats` and `neutral.bats` on the snapshot.\n4. **The secret scanner.** gitleaks over the snapshot's tree and its commit. No known-positive sample is planted, per decision 68: the run's own output says what it read.\n5. **Two independent reads of every file, vc and dc.**\n   - Neither reader sees the other's report until both are filed. Each works against the categories of the 2026-10-24 brief (`st0010/review/BRIEF.md`): names, secrets, private infrastructure, workroom text, licence, anything else.\n   - Each report carries a files-read ledger that covers every shipped file, read in full.\n   - A reader may split its read across its own subagents, as vc's 2026-10-24 review did. The reader still owns the ledger.\n   - Each finding is fixed in main, or accepted by hv by name. A fix means a new snapshot in a new directory and both reads repeated on what changed.\n6. **The full suite on the snapshot commit.** `bin/devbin test all` at the desk, booked, under BSD, with every skip named. CI runs on the same commit too (Q3), and its Ubuntu leg covers GNU. An arm that fails only because the public tree drops a file is fixed in main to not need that file, as 0214 fixed `harness.bats:96`.\n7. **A brew install with no credentials.** Decision 52 places the public brew install before hv's approval, but a public install can only run after publication. vc's reading, which hv may veto, is to run it in two halves:\n   - before approval, the formula is pointed at the snapshot's release tarball through a local tap and installs as a user would, with no credentials;\n   - after publication, the same install runs from the public tap.\n8. **hv's approval, naming the contents.** hv approves publication by the snapshot's commit sha and tree sha, the shipped list, the scan results and both readers' reports.\n9. **Publication (decision 56).**\n   - S3 first.\n   - Delete `matthewsinclair/devbin` and create it public and empty.\n   - Push the snapshot. Under Q3 (a), it goes to a candidate branch first, and main and the tag follow once CI is green. Then read back S4.\n   - Attach the release assets. Switch the formula's url to https.\n   - Make the tap public (Q4).\n   - Run the anonymous brew install on a clean account and read back its version line.\n\n## Acceptance criteria (draft)\n\nEach becomes one `intent ac new` row once hv approves. The evidence named is what satisfies it.\n\n- **AC-S1.** Before the public repository exists, no devbin clone on rhadamanth, gyges or kovacs has a remote url or pushurl that resolves to `matthewsinclair/devbin`. Evidence: each sleeve's every-depth remote scan, read back after canon's `upstream` is removed.\n- **AC-S2.** devbin's release config names `local` as its one release remote. Evidence: a dry-run cut's push plan that names `local` alone.\n- **AC-S3.** The workroom's backup bundle and the local mirror each fetch every ref back into a fresh clone before the delete. Evidence: the fetch-back run's output, its commit list equal to the workroom's.\n- **AC-S4.** After the first push, every ref the public repository holds points at the audited commit. Evidence: `git ls-remote`, read back.\n- **AC-1.** The snapshot is one parentless commit whose tree is main's tracked files over `tests/shipped.paths` at a named main commit, built in a new directory. Evidence: the builder's output and a tree comparison against main's files over that list.\n- **AC-2.** `tests/shipped.paths` is as hv approved it, and the snapshot carries nothing outside it. In particular it carries no `intent/`, `.claude/`, `.mcp.json`, `AGENTS.md` or `CLAUDE.md`, and none of fleet's command, roots file, help page or tests.\n- **AC-3.** The client deny list matches nothing in the snapshot's tree or its commit message. Evidence: the scan's count, run with no term printed.\n- **AC-4.** The snapshot names no machine of hv's and no person's home path. The planted fixture lines are listed and kept by name. hv's projects are named only as Q5 rules.\n- **AC-5.** `workroom.bats` and `neutral.bats` pass on the snapshot.\n- **AC-6.** gitleaks reports no leak over the snapshot's tree or its commit.\n- **AC-7.** vc and dc each read every shipped file in full, independently, and each files a report whose ledger covers the snapshot's every file. Every finding is fixed in main, or accepted by hv by name.\n- **AC-8.** The full suite passes on the snapshot commit at the desk under BSD, with every skip named, and CI is green on it (Q3), its Ubuntu leg covering GNU.\n- **AC-9.** Before approval, the formula, pointed at the snapshot's release tarball through a local tap, installs with no credentials and answers `devbin <version> (brew, <sha12>)` with the snapshot's sha.\n- **AC-10.** hv approves publication, naming the snapshot's commit sha, its tree sha, the shipped list, the scan results and both reports.\n- **AC-11.** Both readers have read the tap's history and its formula at every commit before it goes public (Q4).\n- **AC-12.** After publication, the repository and the tap are public, and an anonymous `brew install matthewsinclair/devbin/devbin` on a clean account answers `devbin <version> (brew, <sha12>)` with the published commit.\n\n## The work this needs in devbin before publication\n\nEach item is a devbin issue for the next release, filed with vc's plan item D on hv's go, except the hv-hand steps:\n\n- **The safety config:** `release.remotes` set to `local` (S2).\n- **Removing canon's `upstream`, and any other sleeve's matching remote (S1):** hv's hand or on hv's word. It is a deletion and deploy-affecting (hv directive 3).\n- **The snapshot builder:** reads `tests/shipped.paths` and builds the parentless commit in a new directory (audit step 1).\n- **CI on the snapshot commit before its tag:** a release-tool change, if hv rules Q3 (a).\n- **The project-name scrub in main, with a guard, if hv rules Q5 (b):** the same shape as 0216.\n- **Fleet's mentions in shipped tests:** each test that names fleet must pass without fleet's files. The fleet-less candidate suite run for 0216 (decision 61) is the baseline, and audit step 6 shows what remains.\n- **The formula's url to https:** in the first public release.\n- **Making the tap public:** hv's hand (Q4).\n\n## Questions for hv\n\nEach question has options and vc's recommendation. Nothing is built on any of them until hv rules.\n\n- **Q1. The shipped list.** `tests/shipped.paths` adds `design/` (the logo), `VERSION`, `usage-rules.md`, `.intent_critic.yml`, `.gitattributes`, `.gitignore` and `.prettierignore` to decision 52's allow-list.\n  - (a) Ship `VERSION`, which devbin reads for its own version; `.gitignore` and `.gitattributes`, which keep `tmp/` seals out and are repository hygiene; and `design/`, which is your logo. Leave out:\n    - `usage-rules.md`, a contract for working in this repository that points at `AGENTS.md`, which does not ship;\n    - `.intent_critic.yml` and `.prettierignore`, which configure workroom tools. The critic's defaults equal this config.\n  - (b) Ship everything the list names today.\n  - (c) Ship decision 52's list plus `VERSION` only.\n  - **Rec: (a).**\n- **Q2. The first public version.**\n  - (a) 0.1.16, the next release, carrying the next-release issues and this thread's work.\n  - (b) Republish 0.1.15.\n  - **Rec: (a).** `v0.1.15` is already a tag and a tap formula for the workroom's tree, which carries `intent/` and fleet. A second v0.1.15 would name two contents.\n- **Q3. CI once the workroom has no GitHub copy.** The cut's pre-flight cannot read CI on a workroom commit any more.\n  - (a) CI runs on the snapshot commit, pushed to a candidate branch of the public repository, and main and the tag follow once it is green. This is a release-tool change.\n  - (b) Keep a private GitHub copy of the workroom for CI only. This reverses decision 56(2).\n  - (c) Gate on the desk alone (BSD, GNU and kovacs) and read CI after publication.\n  - **Rec: (a).**\n- **Q4. The tap.**\n  - (a) Make it public as it stands, once both readers have read its history: an initial commit and one formula commit per release, all yours.\n  - (b) Recreate it with one commit at the first public release.\n  - **Rec: (a).**\n- **Q5. Your project names in the public tree.** Intent stays: it is public, and devbin drives it.\n  - (a) Keep every name as it stands. They are your own projects, and a name discloses only that the project exists.\n  - (b) Keep the public ones (Intent, Molt, Utilz). In main, replace the rest with neutral words (eg \"an Elixir project\", \"one project\") and add a guard, as 0216 did for workroom text, so every later snapshot stays clean.\n  - (c) As (b), with Molt and Utilz made neutral too.\n  - **Rec: (b).** The snapshot is the product only, and a name that resolves to nothing public tells a reader nothing.\n- **Q6. The release notes and CHANGELOG.** They record every private release, including fleet's entries and your project names.\n  - (a) Ship them, after whatever Q5 rules. Fleet's entries stay as the record of what those releases did.\n  - (b) Ship only the notes from the first public release on. That needs a builder that rewrites files, not one that filters paths.\n  - **Rec: (a).**\n- **Q7. The publishing cadence.**\n  - (a) Each release publishes one snapshot, built by the same builder from that release's main. The scans run in full every time. Both full reads are for the first snapshot; later snapshots get both reads of what changed since the last one.\n  - (b) Publish only on your call.\n  - **Rec: (a).**\n",
+      "bytes": 17107,
+      "sha256": "b4485c5384f0433e656a29856c17d572e672f3c87c16ecb16cca7883af70eb05"
+    }
+  ]
+}

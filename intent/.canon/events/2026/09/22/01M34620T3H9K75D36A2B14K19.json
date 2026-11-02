@@ -1,0 +1,15 @@
+{
+  "id": "01M34620T3H9K75D36A2B14K19",
+  "ts": "2026-09-22T09:09:56.163Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-09-22, two further hv rulings. (1) THE 0.1.6 NOTE IS vc's to write, allocated to cc in cc's session in answer to a three-option question (vc, cc or hv) and confirmed to vc directly: \"Ok, land it\". Landed at 38d28f9. (2) PPLR IS OUT of the fleet CI pass, in hv's words: it is not an Intent project yet, it is not using either devbin or intent at the moment, \"so we can ignore it for now\", and converting it to Rust with a local SQLite database is a later project -- \"that day is not this day\". Its uncommitted bin/pplr_tag was hv's own fix to a tagging bug, not work in progress to step around. So the CI pass population is 13 estates plus devbin plus Anvil and arca_notionex, and Pplr is not to be re-scanned or re-proposed."
+  }
+}

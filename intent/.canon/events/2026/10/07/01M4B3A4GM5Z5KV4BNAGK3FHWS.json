@@ -1,0 +1,16 @@
+{
+  "id": "01M4B3A4GM5Z5KV4BNAGK3FHWS",
+  "ts": "2026-10-07T11:52:19.220Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 147,
+    "text": "PUSHES ARE hv's: 16 seam commits in hv's estates and 3 in another estate's fleet, all local. hv was asked whether vc pushes the 16. The other estate's 3 wait for its supervising session's own audit of the vendored set. ALSO devbin main: with 0179, 0178 and 0180 landed (records at 5cfb99ac), main is 28 commits ahead of both remotes, each at d7f2ed13 (read with ls-remote, 2026-10-07). Its push's Ubuntu leg is 0180's Done when 4: read the JOBS, never the run conclusion, and close 0180 on green."
+  }
+}

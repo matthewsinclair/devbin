@@ -1,0 +1,16 @@
+{
+  "id": "01M5W0KFTPMKFD60AGV7SAQB5H",
+  "ts": "2026-10-26T11:47:47.158Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 33,
+    "text": "ISSUE:0234, claimed: landed by vc at bc9d80c0, its targetdir.bats blob equal to the handed bundle's (f9063a00), with the same base blob, equal patch-ids and the sealed message; main is pushed (c4f52b8e..39300b37). 0234's clones are archived in ~/Devel/scratch/devbin-cc/archive/i0233-0234, every commit restored in a fresh clone of main, and cleared; the handover (bundle 0675445a, COMMIT_MSG-0234.txt d3bf071b, RESOLUTION-0234.md 8442db85) and the sealed evidence (0234/runs, with 0234/cargo2) stay. Released when vc closes 0234 after hv's cut of 0.1.15 on CI run 40302760947 on 39300b37, green (vc read its jobs at 10:36Z; 0234's no-cargo arm passed there), filling the draft's placeholders (the landed sha bc9d80c0, the CI run); then unclaim ISSUE:0234. Board-only commits until the cut, and no board write at all while the cut runs"
+  }
+}

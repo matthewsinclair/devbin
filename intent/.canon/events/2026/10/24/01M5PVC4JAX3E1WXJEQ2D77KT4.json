@@ -1,0 +1,15 @@
+{
+  "id": "01M5PVC4JAX3E1WXJEQ2D77KT4",
+  "ts": "2026-10-24T11:40:11.210Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-24, answered in vc's session (TUI), after 0213 landed at 76b3d790: (1) 0216 lands BEFORE the 0.1.14 cut (on its landing suite and the fleet-less candidate suite); vc then drafts 0.1.14's note on that main and hv cuts, so 0.1.14 carries 0210 to 0214, 0213 and 0216; this refines decision 60. (2) T10's proof on rhadamanth is a GO as one machine-change slot booked with molt-vc: install --force republishes ~/Devel/opt/devbin in the new form (its one lasting change), use dev, opt and brew in turn with --version, a bare use and doctor, and Molt and Utilz scratch clones vendored from main checked under each; it ends on brew; the real Molt and Utilz checkouts are not touched; Intent's and kovacs's legs wait for 0.1.14. Not put to hv again."
+  }
+}

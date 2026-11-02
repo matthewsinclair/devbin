@@ -1,0 +1,15 @@
+{
+  "id": "01M5QMSZ02XZNFTS3W0PZF3KPW",
+  "ts": "2026-10-24T19:04:38.658Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0220 and ISSUE:0221 resolutions (drafts in ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0220-0221.md): wait for vc's landing of the bundle (4fafaefa, stacked on main as 8efd3625) and its landing suite, which replaced 0220T (withdrawn from molt-vc's queue on vc's word); then fill in the landed shas and suite for vc"
+  }
+}

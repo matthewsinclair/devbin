@@ -1,0 +1,15 @@
+{
+  "id": "01M31E1PWC5Z8MCHW2ZNN09KCZ",
+  "ts": "2026-09-21T07:31:51.309Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv GO on decision 25, given to vc at 07:31Z on 2026-09-21 (read from date -u): item (2) Go, the read-only doctor pass across the 14 swept estates; item (3) Yes, WP-08 starts now with Utilz, whose vehicle is Utilz ST0019 in Utilz's own lane. dc's holds 16 and 17 released by vc's message at 07:31Z. Nothing pushes or tags without hv."
+  }
+}

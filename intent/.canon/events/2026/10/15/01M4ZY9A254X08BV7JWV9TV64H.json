@@ -1,0 +1,16 @@
+{
+  "id": "01M4ZY9A254X08BV7JWV9TV64H",
+  "ts": "2026-10-15T14:08:32.325Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 22,
+    "text": "0031 ABSENT-WRITER SCAN FOR vc (read-only, no runs). Released on 2026-10-15 by vc's ask on hv's go (vc's 0012114b) and run that day, then PAUSED by hv's localfold for a move, the same day. Where it stands: v2 (scan_v2.py: shfmt's bash syntax tree, transitive through devbin's own functions) ran read-only on a clean clone at 89cae16e: 874 plain assignments with a command substitution, 459 unguarded, 6 flagged, and all 6 read SOUND with the guard cited (lib/cmd/check:419 by require_tool elixir at :418; dmarc:264, :300 and :301 by parse's require_tool jq at :589; dmarc:476 by :468; lib/cmd/release:703 by git add at :696 and git commit at :701, each || cut_fail, which exits); 0 masked declarations and 0 backtick forms; nothing to file so far. Bank: ~/Devel/scratch/devbin-dc/0031-scan/NOTES.md (numbers, readings, limits, the steps left), beside the v1 and v2 outputs and the clone head/. Left: list the 48 guarded sites as guarded (their guards not read), state the limits, send vc the list by wb ask plus a live message, then archive this hold and delete head/. RELEASED WHEN vc gives the word after the restart (or hv directly); a word to boot and hold does not release it."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2QBPJ66C9NJT3WKMS5D6PK6",
+  "ts": "2026-09-17T09:38:24.582Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-02 is rebased onto WP-01 and folded, and NOT yet in the shared tree.** Tree: scratchpad/wt-rebase, HEAD 01ad079 carrying exactly f34753f's bytes (its `git diff --cached f34753f`, intent/ canon excluded, shows only WP-02's 14 files). Backup: intent/whiteboard/dc/.history/20260917/st0007-wp02-wip.patch, which applies cleanly at f34753f. It holds: lib/release.notes (the three kinds; notes_date states the dating rules once, each kind supplies a writer); lib/helpers mktemp_beside, adopted by sed_inplace (whose mv is now checked) and generated_doc_write, which fixes rename-into-place leaving 0644 files 0600 -- a scope note for vc; lib/cmd/release's notes and check (an unknown verdict is refused); bin/.devbin/cmd/release deleted; config.yaml enabling release with notes.kind releases and object ci; README, docs/configuration.md (the notes kinds), MODULES.md, the lib/infra comment; CHANGELOG.md regenerated, the ruled header line only; tests in release.bats, releasecore.bats (WP-01's stubs flipped, the malformed-block arm isolated), helpers.bats (+3 mode arms) and gendoc.bats (+1). critic-shell's review of the prototype (5 critical, 1 warning, 4 recommendations) is folded, and vc's two review conditions are armed. Mutants: 24/24 and 5/5 on the prototype; 14/14 on the fold (scratchpad/mutants-fold.sh, whose site() was fixed for an empty replacement after F1 and F8 first applied the wrong mutation). Targeted green in wt-rebase before the last arm: release 62, releasecore 22, helpers 53, gendoc 22, version 35, doctor 33, documentation 19, help 43; the last arm (a date that did not take is refused) is proven only by F8 so far. NEXT: (1) rebase onto vc's arm-fold sha, expecting a releasecore.bats conflict; (2) full suite on the rebased tree; (3) first commit: `intent ac edit ST0007 AC-2.1` and D39's RULED and as-built note from scratchpad/wp02-canon-drafts.md, plus WP-02's objective -- design.md's verblock line conflicts with vc's As built: WP-01 section; (4) the WP-02 commit by pathspec, and AT-2.1 to AT-2.4 minted with # AT markers; (5) the packet to vc from scratchpad/wp02-packet-draft.md, updated for the fold, the mktemp_beside scope note and real counts."
+  }
+}

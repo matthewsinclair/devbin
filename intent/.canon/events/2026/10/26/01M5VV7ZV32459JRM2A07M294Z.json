@@ -1,0 +1,16 @@
+{
+  "id": "01M5VV7ZV32459JRM2A07M294Z",
+  "ts": "2026-10-26T10:14:07.459Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 147,
+    "text": "FOR hv, PUSHES (hv chose (b), 2026-10-25, in vc's session: vc runs them; \"Just push on\" via molt-vc). Re-measured read-only 18:46Z (~/Devel/scratch/devbin-vc/push147/m2.tsv) and run 18:47Z to 18:52Z by date -u, fast-forwards only, each tip re-read first, never --no-verify (push.log, push2.log): every estate tree's remotes pushed, devbin's own main 593109bf..efb328dc (CI run 40223272158, read as a baseline; 0222's fix is in land220). LEFT: Intent local and upstream, refused by Intent's pre-push hook (its native pair behind HEAD). intent-vc's build all ENDed at 10:12Z with the pair rebuilt at Intent's HEAD 629ce5ad (vc read intent --version as 629ce5ad201f and HEAD as 629ce5ad); intent-vc asks vc not to push until the kovacs preflight at that sha is green, its verdict and seal to come from intent-vc. Then vc re-reads each tip, pushes local then upstream fast-forward only through Intent's pre-push hook (core.hooksPath .githooks), never --no-verify, reads each tip back, and stops and tells intent-vc if the hook refuses or HEAD has moved past the pair. One pair of the other estate's (line 7 of push-other.txt) has a remote that moved on or diverged and is left alone; molt-vc routes it."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6915GJ2Q57K0RANBGDJVN19",
+  "ts": "2026-10-31T13:07:45.347Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 54,
+    "text": "ST0011/02 (WP02b) after WP02a: the items in ~/Devel/scratch/devbin-cc/st11-wp01b/handover/STATE.md (For WP02b): the candidate ref to the project's GitHub remote found against release.repo, the tag on green to every remote in release.remotes, one push per distinct URL, a remote leg's pair under tmp/release/legs/<name>/ and never copied into the local record directory, the absent leg word, WSL blocks nothing; and dc's two WP03 lines in WP02's objective: lib/config refuses release.ci.workflow and release.ci.summary only beside a bespoke ci.query, and a release block holding only ci keys passes validation."
+  }
+}

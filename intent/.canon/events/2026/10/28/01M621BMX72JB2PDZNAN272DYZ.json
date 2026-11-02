@@ -1,0 +1,16 @@
+{
+  "id": "01M621BMX72JB2PDZNAN272DYZ",
+  "ts": "2026-10-28T19:56:25.383Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 81,
+    "text": "hv 2026-10-27: release candidates run CI's whole matrix; snapshot commits carry Matthew Sinclair <hello@matthewsinclair.com>; brew changes are proven from a local scratch tap."
+  }
+}

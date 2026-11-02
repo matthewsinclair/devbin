@@ -1,0 +1,15 @@
+{
+  "id": "01M696WF30Y972GW94N5299QPM",
+  "ts": "2026-10-31T14:47:40.384Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/02 (WP02a) fixed forward (vc decision 100): refs/bank/cc/ST0011-02a c2b7cf18 rebased from d282e845 onto the dc stack's tip aa2fb1d2, and onto 0300, since both change tests/lib/release_fixtures.bash (decision 83); the critic's C1 and C2, the macos warnings (git_local_env_clear_named in lib/helpers, adopted by read_release_commit; read_head_state on git_identity_clean), R5 to R7 and N8, as ~/Devel/scratch/devbin-cc/st11-wp02a/BANK.md lists them; critic-reviewed, re-banked, its run asked of the desk naming its files; it lands as run once the dc stack is on main with the same trees."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M34ZNQ0T7YD7AXT27JRAPEN2",
+  "ts": "2026-09-22T16:37:35.898Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's board has ONE writer and vc holds that pen. cc held it for the 2026-09-22 flense by agreement with vc -- hv having instructed cc directly and specifically, against vc's standing and general grant -- and RETURNED it when the flense landed at 4e9b1e9. The arrangement and its reasoning are in that commit and in the two messages that settled it; they are not kept live here, because a spent exception left on a board reads as current."
+  }
+}

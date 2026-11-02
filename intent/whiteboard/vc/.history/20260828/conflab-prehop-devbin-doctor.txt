@@ -1,0 +1,25 @@
+devbin doctor -- /Users/matts/Devel/prj/Conflab
+
+  ok    dispatcher: bin/devbin
+  ok    runtime: devbin 0.1.0, vendored at bin/.devbin/lib
+  ok    config: bin/.devbin/config.yaml parses and validates
+  ok    devbin_version: 0.1.0 satisfies ^0.1.0
+  ok    manifest: 29 vendored files intact
+  ok    commands: 24 offered, all resolve
+  ok    handlers: every file in cmd/ is reachable
+  ok    shadowing: 9 project name(s) stand where devbin ships its own
+  note  SUPPORTED overrides (D2/D5) -- devbin's own is NOT reached for these
+        server shadows the built-in
+        iex shadows the built-in
+        cli shadows the built-in
+        build shadows the built-in
+        check format shadows the built-in
+        precommit shadows the built-in
+        db shadows the built-in
+        macos shadows the built-in
+        which shadows the built-in
+  ok    launcher: bin/devbin
+  ok    shortcut: bin/cf -> devbin
+  ok    bash: 5.3.15(1)-release at /opt/homebrew/bin/bash (floor >= 5, issue 0022)
+
+11 checks, 0 failed, 1 notes

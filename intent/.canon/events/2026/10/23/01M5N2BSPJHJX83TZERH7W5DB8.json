@@ -1,0 +1,15 @@
+{
+  "id": "01M5N2BSPJHJX83TZERH7W5DB8",
+  "ts": "2026-10-23T19:03:51.250Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "WP-08's targeted run is held until intent-vc relays START by name, which comes after utilz-vc's cut END (vc's hold 28) and Intent's build all. Then: START with scripts/census.sh to intent-vc, copied to devbin-vc; run scripts/plan3.sh in the background on build/ at 5059a26e (releaseattach.bats, then helpers, contract, neutral, documentation, readonlygit, harness and help, BSD then GNU, green only, one file list at a time, no --jobs); read each runs/arm.green3.*.meta (plan line, ok, not ok, skips, non-TAP, head, dirty 0); END with the census and the counts, any red by name, to intent-vc copied to devbin-vc."
+  }
+}

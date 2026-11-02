@@ -1,0 +1,15 @@
+{
+  "id": "01M37N3X2E10CM58Q6TAP27FJC",
+  "ts": "2026-09-23T17:30:49.806Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "AFTER intent-vc's END (Intent 3.2.1 rebuild, announced 17:29:15Z): the first intent command here migrates Devbin's store to schema 30, and intent 3.2.0 then refuses it. ROLLBACK POINT, taken with 3.2.0 at 17:30:30Z: intent/.backup/db/2026-09-23T17-30-30-281Z.db (16982016 bytes, git-ignored; nothing pruned). CHECK after END: intent --version reads 3.2.1; intent doctor is clean; git status shows what the migration rewrote under intent/, and whose it is to commit; the bats gates still pass. mcp__intent__* tools refuse in this session until it restarts, while the CLI keeps working. cc has been told of both."
+  }
+}

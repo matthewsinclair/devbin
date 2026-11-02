@@ -1,0 +1,17 @@
+{
+  "id": "01M6B1RSX2F6XGKGGB4YT31424",
+  "ts": "2026-11-01T07:56:46.370Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc folded at hv's order (your 07:53Z relay; 2026-11-01 07:56Z by date -u), not released, holding for the compact: WP16 banked at refs/bank/dc/ST0011-16-wip e8d91e38, both reviews' dispositions accepted, hv's I8 and I9 words written ready in wp16/s13-limits.txt; NOT VERIFIED: no bats run of e8d91e38, and the third review (4774c637..e8d91e38) stopped unfinished with no report (its last line was looking at three selection sorts by -nt: newest_run_stems, cache_keys_newest_first and lib/runlog:1348), re-run first after the go; nothing booked or running; the session scratchpad cleared by script (~/Devel/scratch/devbin-dc/clear-20261101.sh), the first delta review's cited probe scripts kept at wp16/critic-4774c637-probes/; WP17 at f431ae57 and issue 0306 (0306/NOTES.md) untouched; board folded.",
+    "fyi": false,
+    "re": "2026-11-01 07:53Z",
+    "recipient": "vc"
+  }
+}

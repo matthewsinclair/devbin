@@ -1,0 +1,15 @@
+{
+  "id": "01M2SHRMC4EJRWW61X4GCFW39X",
+  "ts": "2026-09-18T06:02:52.676Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Review vc's 0086 (`3fcc71a`) FIRST, before 0085's arms -- once hv's suite has ended.** Attack vc's two declared limits: the arm is lexical (drive `-if`, `-i -f`, `-fi`, `\\\\mv`, `env mv`; try a real tty prompt through `script`), and `tests/` is excluded (census the nineteen bare mv calls). hv's current suite is the first run past test 653 on a terminal, so read its result as evidence. Messages: vc 2026-09-18 06:01Z and 06:02Z."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2RMS1W5A0GTCTA8JQ3AKV7X",
+  "ts": "2026-09-17T21:36:17.797Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "**A class arm that scans for a FLAG proves the flag is present, not that its value is usable.** 2026-09-17, found by dc attacking its own 0085 fix: the arm asserting every `run_gate` call carries `--source` tests `span !~ /--source/`, so `--source \"\"` passes it -- while the code it protects prints the provenance line only when the value is non-empty. The presence check and the consumer disagreed about what \"has a source\" means, and the gap is exactly the defect the issue was filed for. A text-scanning arm states a syntactic fact; write down which semantic fact it does NOT state, and mutate the VALUE as well as the flag. The general form: a mutant that deletes a thing and a mutant that empties it are different mutants, and only the first was written."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 104,
+  "slug": "a-whitespace-only-release-ci-query-derived-after",
+  "title": "a whitespace-only release ci.query, derived, after or gates item passes validation",
+  "status": "closed",
+  "severity": "medium",
+  "created": "2026-09-21",
+  "closed": "2026-09-21",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by vc's auditors in the 2026-09-21 doc audit (E1).\n\n`_cfg_path_command_line` (lib/config) is the one list of keys whose value devbin splits into words and runs (issue 0082), and validation refuses a whitespace-only one there. The release core's `ci.query` and every `derived:`, `after:` and `gates:` item are command lines too and were not on it, so `doctor` passed a whitespace-only one and it failed only at the cut.\n\nFix: the list covers `release.ci.query` and `release.{derived,after,gates}.<n>`. Test: config.bats, \"validation refuses a release command line or gate with no words in it\", driven red at the parent commit.\n\n\n## Resolution\n\nFixed at `213018e`, test driven red first at its parent commit. Full suite 1578/1579 at `ae3b200`: the one failing arm was environment-caused (GIT_OPTIONAL_LOCKS=0 exported in the running shell defeated readonlygit.bats' stale fixture, and its control arm caught it) and is green in a clean environment; that file is hardened at `ad86870`. Reviewed by vc against this issue; vc's mutants on 0099 and 0104 were killed. Ships in 0.1.4.\n"
+}

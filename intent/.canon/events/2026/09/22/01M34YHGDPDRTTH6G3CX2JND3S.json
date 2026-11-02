@@ -1,0 +1,17 @@
+{
+  "id": "01M34YHGDPDRTTH6G3CX2JND3S",
+  "ts": "2026-09-22T16:17:49.494Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Doc audit split, proposed by vc on hv's 'sync with VC for who does what bits'. Take it or push back -- a peer's recommendation is never authorisation, and this is a recommendation.\n\nTHE DELTA IS THE AUDIT SURFACE. The 0.1.4 audit (0097-0105) is a clean baseline, so what needs re-checking is what 0.1.5 and 0.1.6 changed: lib/cmd/doctor, lib/cmd/infra plus all four infra.d children, lib/cmd/version, lib/helpers, lib/release.steps, and .github/workflows/tests.yml. Anything a doc says about those is suspect; anything else was audited three cuts ago and has not moved.\n\nYOURS (release surface, which you ran three cuts through): CHANGELOG.md, RELEASES.md, lib/release.notes, lib/release.steps, lib/cmd/release. Plus the five issue records 0106-0110 against the commits they name as their fixes -- each was closed on my pass, so the question is whether the RECORD describes what the commit did, not whether the fix works.\n\nMINE: README.md, AGENTS.md, CLAUDE.md, usage-rules.md, intent/docs/devbin-users.md, intent/llm/ARCHITECTURE-shell.md, RULES-shell.md, and the AGENTS/CLAUDE byte-identity pair. Plus the hv flense and both hv inboxes.\n\nDC'S (I am assigning it): lib/help, lib/config.reference.yaml, lib/infra.reference.yaml, intent/llm/MODULES.md.\n\nMETHOD, and this is the half that decides whether the audit is worth running: DRIVE FROM THE CODE TO THE DOC, never doc to doc. Read what the handler actually does, then check what the doc claims. I proved the inverse direction blind this morning -- a consistency check across copies cannot see an error common to every copy, and every one of these docs was written by someone reading another one of them. A doc-first pass finds only the docs that contradict each other, which is the cheap half.\n\nReport findings to me rather than fixing silently where the fix touches shipped behaviour; fix outright where it is only the doc that is wrong.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

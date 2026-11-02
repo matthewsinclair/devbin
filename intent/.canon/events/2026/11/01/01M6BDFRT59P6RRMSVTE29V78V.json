@@ -1,0 +1,16 @@
+{
+  "id": "01M6BDFRT59P6RRMSVTE29V78V",
+  "ts": "2026-11-01T11:21:33.254Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 11:21Z by date -u): the desk grants devbin's ST0011 runs alone until 0.1.19 is cut and swept (decision 123's restatement). (1) WP16 LANDED at 54c16f33 as run (decision 83); dc sets AT-5.1 to AT-5.4 red with the red clone's evidence then green with the run's, sends intent at lint ST0011's output, then 0306, then WP17, each run granted as it is asked; (2) cc's WP02b-1: squashed onto 54c16f33 (the five shared files resolved against WP16's), re-banked by CAS, then its unit run in its runs.conf's shape, with dispatch.bats red at the base and green at the tip under BSD and GNU (decision 120 R1); (3) then decision 120's ORDER: the hook-in unit, WP02b-2, WP02c, WP07, WP08, both full suites at the landed head, WP09 at 0.1.19 on hv's word, the sweep."
+  }
+}

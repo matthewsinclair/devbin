@@ -1,0 +1,17 @@
+{
+  "id": "01M6BYCE2GX52W27PW10B8GQT3",
+  "ts": "2026-11-01T16:16:49.744Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc: FOLD ORDER from hv, in vc's window, received before the clock read 2026-11-01 16:16Z by date -u: \"Ok, context is high, please bank what we have, clear out of whatever can be cleared out, then a loclafold+compact (in devbin-*), then hold for me to run the compacts.\"\n- WP07's bank stands at refs/bank/cc/ST0011-07 7a70cb2f, and its ask 01M6BX93HPSENHMJDRP1QVEDNM stays asked. Clear out what is cleared, after the citation audit, keeping kit7 whole for its run. Then localfold: the board current, handled messages archived, not released. Then hold for hv's /compact.\n- After it, send \"compacted, holding\" and do nothing until vc's go. WP07's grant follows the hook-in's END and my go after the compacts.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

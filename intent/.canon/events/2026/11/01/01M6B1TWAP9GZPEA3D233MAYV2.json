@@ -1,0 +1,16 @@
+{
+  "id": "01M6B1TWAP9GZPEA3D233MAYV2",
+  "ts": "2026-11-01T07:57:54.390Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop), banked as WIP at hv's fold for a /compact (vc's relay, 07:53Z by date -u): refs/bank/cc/ST0011-02b 0b17f1de1bef564429bfe57e0e46f6d91eb11814, moved by fetch and compare-and-swap from 5d84a12b; 22 WIP commits on a2dde479, branch wp02b-c2 in the worktree ~/Devel/scratch/devbin-cc/st11-wp02b/fix-c2. In it: the docs (7ca8ea42), the AT id lines (7377d6b7), DOC-7 (6c9d180d), N1's residues (da0d4fac), W8's refusal (4fa98c77, to rework after CRITIC-3's critical), D-W1 (176673d7), D-W2 (4a62b205), and the job-table read (0b17f1de). Verified: dev check 3 at 7ca8ea42, 355 of 355 green with no skips (not evidence); static checks on every commit. Not verified: no bats after 7ca8ea42, and no review of 4fa98c77..0b17f1de. AT-2.8 minted red (622f5d63); issue 0307 filed (the run-log copy of run_exit's note, after 0306). Next on the go, in vc's order: the W8 rework, (a) to (e) as ruled on CRITIC-3; CRITIC-2's notes; one last critic-shell review of 4fa98c77..tip; the squash on vc's word onto whatever has landed, the five shared files resolved there; the re-bank; the unit's run; the handover. State in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md."
+  }
+}

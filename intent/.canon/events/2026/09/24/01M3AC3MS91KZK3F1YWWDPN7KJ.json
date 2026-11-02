@@ -1,0 +1,15 @@
+{
+  "id": "01M3AC3MS91KZK3F1YWWDPN7KJ",
+  "ts": "2026-09-24T18:51:07.435Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0144"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "the checksum helper reports success when a file cannot be read: an install writes its manifest short of that file in silence, and vendor reads a file unreadable on both sides as level -- 0127's recorded gap, never filed"
+  }
+}

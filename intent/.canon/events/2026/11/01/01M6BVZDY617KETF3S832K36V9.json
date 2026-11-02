@@ -1,0 +1,16 @@
+{
+  "id": "01M6BVZDY617KETF3S832K36V9",
+  "ts": "2026-11-01T15:34:46.471Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 74,
+    "text": "The hook-in unit (decisions 117 and 127), BANKED and ASKED (2026-11-01 15:33Z by date -u). It is ST0011/05 a826a71b (refs/bank/dc/ST0011-05), then ST0011/04 c27f8cc0 (refs/bank/dc/ST0011-04), on cc's WP02b-2 re-bank 62e1c34b. ST0011-hookin-wip is moved to c27f8cc0. Critics r1, r2 and r3 are settled on decision 123; the records are hookin/critic-r{1,2,3}-*.md. Lint gate r4: 58 files, 0 breaches. The four scans, 0066 included, are clean. Twelve arms, all red at the red clones (red-05-62e1c34b-a826a71b, red-04-62e1c34b-c27f8cc0) and green at the tip in plain bash. docs/releasing.md rides ST0011/05, and ST0011/04 is tests.yml and ci-workflow.bats alone. Desk request 01M6BVYT4HQJ6FQERVH4STK1F9, lane bats, driver hookin/run-hookin.sh. OPEN: vc's grant, START, the run, END to vc the moment the driver exits, the handover (handover-hookin.sh, after writing the run's record into both messages), and AT-3.6's re-cite at the landing. Issues 0313 and 0315 are filed for after the release. Then WP02c (todo 63): built and rebased onto 3df437d1 as b7bcf80d, its critic r1 running; vc's rulings are in wp02c/NOTES.md. Then WP08 (todo 60)."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 74,
+  "slug": "fleet-upgrade-counts-an-estate-whose-upgrade-hel",
+  "title": "fleet upgrade counts an estate whose upgrade held back edited files as upgraded, and prints nothing about them",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-09-16",
+  "closed": "2026-09-16",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by dc on 2026-09-16, reading the result of the 0069 fleet sweep (`bin/devbin fleet upgrade --apply` from `26ec799`). Reproduced.\n\nThe sweep reported:\n\n    16 upgraded (16 needed a second pass to converge provenance), 0 FAILED\n\nLaksa was one of the 16. Its own upgrade, re-run by hand from the same prefix, says:\n\n    skipped    bin/devbin (edited in place -- upgrade with --force to replace it)\n    skipped    bin/.devbin/lib/runlog (edited in place -- upgrade with --force to replace it)\n    0 added, 0 updated, 40 unchanged, 0 removed, 2 skipped\n\nBoth are committed local patches in Laksa (`2e4fb6642`, `25c431a00`, 2026-09-12). Holding them is `upgrade` working as designed, and `devbin doctor` in Laksa reports them (`FAIL manifest: vendored files have been edited in place`). **What `fleet upgrade` does with that report is discard it**: `upgrade_one` runs each estate's upgrade with `>/dev/null 2>&1`, then decides `upgraded` from the exit code and the recorded provenance alone. The upgrade exits 0 with files skipped, and the manifest's `source_commit` is rewritten to the new commit regardless, so a partially upgraded estate is counted exactly like a whole one.\n\nThe consequence in this sweep is concrete: Laksa's `lib/runlog` does not carry `0065`'s `log:` decline (`gate_log_suffix`), although its manifest names `26ec799` as its source commit.\n\n## Why it is worth an issue\n\nA fleet summary is read INSTEAD of sixteen upgrade logs; that is its purpose. A count that folds \"some files held back\" into \"upgraded\" is a population filter with no marker -- the reader has no way to learn from the summary that one estate is not level.\n\n## Shape of a fix, not a ruling\n\nKeep each estate's upgrade output (or at least its `N skipped` count), report an estate with skipped files as its own outcome -- `upgraded, N held` with the paths -- and count it separately in the summary line. Hold it with an arm: a fixture estate with one vendored file edited in place, swept, asserting the summary does not count it as a clean upgrade and names the held file.\n"
+}

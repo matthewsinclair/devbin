@@ -1,0 +1,16 @@
+{
+  "id": "01M6C7ENJDMP45X81AJT4WX7TN",
+  "ts": "2026-11-01T18:55:20.141Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 75,
+    "text": "ST0011/02c, WP02c (the ci keys and the checker): RUNNING since 2026-11-01 18:53Z by date -u, desk request 01M6C76DJ3MVP4K2TZD91H1CJD (granted by vc at 18:52Z after a load read of 7.71), the driver run-wp02c.sh in ~/Devel/scratch/devbin-dc/wp02c, its log run-wp02c-1b561da2.log, at the bank refs/bank/dc/ST0011-02c 1b561da2 (one commit on cc's WP08 bank 8a6ee377). It runs untouched through hv's compact. END goes to vc after the compact and /in-session, with any dropped red leg rerun unbounded in the slot first (rerun-red.sh), and the slot released with the result. Then the run's record goes into COMMIT_MSG-ST0011-02c.txt, handover-02c.sh writes the bundle for land-stack.sh (LAND_BASE_OFF_MAIN=1), and at the landing come AT-3.15, AT-6.3 and AT-2.4 (green, its note naming releasecore's defaults arm and releasecut's AT-2.4 arm, no re-cite: vc, 18:52Z). Resume point: ~/Devel/scratch/devbin-dc/wp02c/NOTES.md."
+  }
+}

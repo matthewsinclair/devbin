@@ -1,0 +1,16 @@
+{
+  "id": "01M553D99KKT7HFG408Y7EYM18",
+  "ts": "2026-10-17T14:14:17.651Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "0.1.11 RELEASED 2026-10-17 by hv (0fc22669, tag v0.1.11 on both remotes, GitHub release by the Release workflow); CI green on the tag (run 39022565532, Ubuntu, macOS, lint, summary) and on main's push (39022561611), so that push is DONE. INSTALLED by Homebrew from the private tap matthewsinclair/homebrew-devbin (created by vc at hv's ask; formula published by hv, tap main 3f2fecf) on rhad and on kovacs (K012 rc 0), both proven with brew test, version 0.1.11 and a fixture vendoring from the brew install; rhad's real projects still vendor from ~/Devel/opt/devbin by its machine pointer. UTILZ swept to 0.1.11 at 5a15742, pushed by utilz-vc. ST0009 CLOSED at 1857d44b (cc's build landed at 1c34549c, suite 20261017-1323; AC-5.1 to issue 0201). ST0008 WP-06 LANDED at 66505a84 (suite 20261017-1335), started at 9c683e5d. kovacs scratch cleaned by kovacs-sysadm after vc copied every cited seal to clone-archive/seals/kovacs-20261017/. NOTHING PUSHED since 0.1.11: main carries ST0009 and WP-06. hv PUSHED main at ac472c32 and dispatched run 39039832569, the WSL job's first run (vc reads it for AC-6.1 to 6.3, AT-6.2, wp done 06). FOR hv: (2) AC-6.5's route for intent in the WSL job: (a) a read-only token as a devbin secret (vc's rec), (b) brew inside WSL, (c) wait for public; (3) brew on hv's login PATH on kovacs: DONE by hv (hv, 2026-10-17 evening); not yet read by vc, since kovacs is down for the night, so check `zsh -lc 'command -v brew devbin'` over ssh when it is back. STILL OPEN beyond: AC-6.4 (the adopting estate's word), AC-2.1 (VPN settings on real WSL, Intent ST0082 WP-02), issue 0201 at the next batch release."
+  }
+}

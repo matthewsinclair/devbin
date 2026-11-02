@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJK3GJPY0NSG8GA67BC2JF",
+  "ts": "2026-10-08T20:17:05.042Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 12,
+    "text": "TOOLS THAT ANSWER CLEANLY WITHOUT MEASURING. The Bash tool's shell is zsh: no word splitting (cb59bcf9 left four events out on it), $pipestatus[1] for ${PIPESTATUS[0]}, a glob that matches nothing aborts the command, a word opening with = is a path lookup, [ has no <, and no $EPOCHREALTIME. Bare grep is ugrep, which refuses a .{0,90} pattern with rc 2 and no output; bare find is bfs; BSD grep has no -P; git grep -E has no \\b. Also clean and wrong: BSD cmp -n exits 1 at EOF though every byte matched; a remote-tracking ref is a cached opinion; jq over board.json counts archived rows (select state==\"live\"); intent issues list lists open issues only. Run anything with arrays, splitting, string comparisons or a pipeline's status under bash <<'BASH', and drive a check red once before trusting its green."
+  }
+}

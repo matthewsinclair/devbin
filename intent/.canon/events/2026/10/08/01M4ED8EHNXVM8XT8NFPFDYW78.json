@@ -1,0 +1,16 @@
+{
+  "id": "01M4ED8EHNXVM8XT8NFPFDYW78",
+  "ts": "2026-10-08T18:43:53.013Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 96,
+    "text": "A PUSH IS DONE when CI is GREEN on the pushed sha, or RED with exactly the baseline failures named (hv, 2026-09-22). THE BASELINE IS NOW GREEN: hv pushed main at 9fedef14 on 2026-10-08, and its run 37818416586 passed Ubuntu with 2282 of 2282, plus ShellCheck and the summary, with macOS skipped as on every push. So the next push is done only when its run is green."
+  }
+}

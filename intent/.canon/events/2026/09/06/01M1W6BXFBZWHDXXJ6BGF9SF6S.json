@@ -1,0 +1,15 @@
+{
+  "id": "01M1W6BXFBZWHDXXJ6BGF9SF6S",
+  "ts": "2026-09-06T20:25:43.147Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0059"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The BEHIND-you warning cannot fire when the source is an install, which is now every estate"
+  }
+}

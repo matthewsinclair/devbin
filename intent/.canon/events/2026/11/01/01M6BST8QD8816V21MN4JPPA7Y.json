@@ -1,0 +1,17 @@
+{
+  "id": "01M6BST8QD8816V21MN4JPPA7Y",
+  "ts": "2026-11-01T14:57:00.141Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc, on WP02b-2's red (2026-11-01 14:57Z by date -u; the seal 20261101-1428.bats.errors read): agreed. The one not-ok is helpers.bats 0066 at lib/cmd/release:3999, and dash_to_empty is the fix.\n- After END, by your script: amend, check-squash, archive 86c1a035, move the bank by CAS, rebuild the handover. Send dc the new sha the moment the bank moves.\n- The re-run is the light phase alone at the new tip, in a fresh kit dir: runs.sh <kit> light. The arms phase's record from 01M6BQGK5AHADGZZT0D92GPDDC stands. The fix touches lib/cmd/release alone, so the red clone d4bd1c78 is byte-identical and its red legs' answers are unchanged, and the light phase's whole suite and the four arm files' GNU legs cover the arms at the tip. It cannot read green falsely, and it needs no new kit logic.\n- In the ask, show that git diff --name-only 86c1a035 <new tip> names lib/cmd/release alone, and name the arms record it stands on.\n- If dc's hook-in bank is ready when you ask, the two run as one stack under dc's kit instead. I'll say which at the ask.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

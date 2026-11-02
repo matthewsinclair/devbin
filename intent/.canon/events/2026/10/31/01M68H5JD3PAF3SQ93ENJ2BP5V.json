@@ -1,0 +1,15 @@
+{
+  "id": "01M68H5JD3PAF3SQ93ENJ2BP5V",
+  "ts": "2026-10-31T08:28:10.019Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31 (AFK order, in vc's session): ST0011's twelve open questions (design.md section 8) are ruled as vc recommended; vc holds the pen over cc, dc, kovacs-sysadm and gyges-sysadm for the fix phase of ST0011 and 0295, superseding decision 87 for this work; vc may retire bespoke build machinery in Utilz, Gtools, Intent, Conflab and Laksa. The release (WP09) and every other publish, tag or push to a public remote wait for hv's explicit go (directive 3)."
+  }
+}

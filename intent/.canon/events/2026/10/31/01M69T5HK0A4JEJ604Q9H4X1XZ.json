@@ -1,0 +1,15 @@
+{
+  "id": "01M69T5HK0A4JEJ604Q9H4X1XZ",
+  "ts": "2026-10-31T20:24:40.800Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "AT ids on ST0011's rows (intent ac status ST0011 read 2026-10-31 20:24Z by date -u): 21 of the 22 rows name a bats file that does not carry the literal '# AT-x.y' line the acceptance contract asks for, so the thread's gate reads BLOCKED; the convention is the '# AT-x.y' comment over the arm, as ST0005's and ST0007's tests carry (both PASS). Rec: each author adds the lines over its own landed arms in its next landing commit (cc: runlog, gitident, releasecut, ci-state; dc: releaselegs, macos); the red rows take theirs when their units are written (AT-3.8 releaseattach, AT-3.9 formula, AT-3.15 releasecut); vc re-reads intent ac status ST0011 at every landing and the thread does not close while it reads BLOCKED."
+  }
+}

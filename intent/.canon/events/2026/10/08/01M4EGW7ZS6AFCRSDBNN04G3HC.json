@@ -1,0 +1,16 @@
+{
+  "id": "01M4EGW7ZS6AFCRSDBNN04G3HC",
+  "ts": "2026-10-08T19:47:07.385Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 42,
+    "text": "0192 SECOND (ISSUE:0192 claimed), after 0191 v1.1, on 0191's head (clone 0191/w191 into 0192/w192, branch b192): install once per file and copy, amending D24 on hv's ruling of 2026-10-08. LIGHT RUNS ONLY (single arms or one file) until dc's GNU END for 0190, which vc ruled is cc's START for 0192's heavy runs (one heavy run at a time). Whichever of 0190 and 0192 is handed over second rebases onto the other's head. vc's measurements: the installer writes only under --into (bin/devbin, bin/.devbin/lib, manifest; nothing under HOME, no absolute path); the copy set is what install writes, never the cache's config.yaml; re-installs need --force's semantics, not a cp merge; pick cp -c by probing the cp on PATH; the before figures come from ~/Devel/scratch/devbin-dc/slowbats/prof/suite.json. Done when: one real install per file and one copy per test with no other route; what guards the cache; which tests still install per test; the build in setup_file so it holds under --jobs; the profiled files' wall time before and after on a quiet box. Groundwork and open design questions: ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md"
+  }
+}

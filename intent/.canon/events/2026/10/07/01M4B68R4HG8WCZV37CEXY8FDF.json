@@ -1,0 +1,16 @@
+{
+  "id": "01M4B68R4HG8WCZV37CEXY8FDF",
+  "ts": "2026-10-07T12:43:59.505Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 17,
+    "text": "0185 v2 BUILT in scratch for batch 3 (with dc's 0184 and 0181, on vc's word 2026-10-07), on main's code as it now stands (b96cae48 = batch 2's tree, f78e9454 outside intent/): git_repo_absent, the one reading of a failed git call, honours GIT_CEILING_DIRECTORIES as git does (git_ceiling); fleet's census splits a failed call three ways (no repository: not a checkout; a .git of its own: UNREADABLE; a .git only above: not its own checkout); runlog asks the shared reading; git_failure_line carries git's own line; one publish_gate holds install's and upgrade's D28 gate; could-not-read wording; fullcycle's probe through git_readonly; release unchanged, an arm holds the order. RED on base 15 of 20, on the first build 13 of 20; GREEN 20 of 20, GNU 20 of 20; mutants 27 of 27; shellcheck and check lint clean (seal 20261007-1217). critic-shell on v2: 0 critical, 1 warning (AT-1.4 passes either refusal now that git's line is appended), 7 recommendations, 1 style. NOW FOLDING it: the AT-1.4 assertion, the directory spelled through getcwd as git spells it on a case-folding disk, an unresolvable census root UNREADABLE, the harness guard under an inherited GIT_DIR, and arms. Then the targeted run and full suite on the final head, the patch, hand vc. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0185: read STATE.md first."
+  }
+}

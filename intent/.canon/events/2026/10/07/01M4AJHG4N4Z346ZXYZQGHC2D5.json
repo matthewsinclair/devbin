@@ -1,0 +1,16 @@
+{
+  "id": "01M4AJHG4N4Z346ZXYZQGHC2D5",
+  "ts": "2026-10-07T06:59:14.709Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 96,
+    "text": "A PUSH IS DONE when CI is GREEN on the pushed sha, or RED with exactly the baseline failures named (hv, 2026-09-22). BACK IN FORCE: Actions ran devbin's 0.1.9 push and its tag on 2026-10-07. Both read RED with exactly 0180's two Ubuntu arms, 0155's lint-worker arm and 0158's gate_exec arm, so that push is done under this rule, and those two are the baseline for the next push until 0180 lands."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M69D84VP5MJA4ECVMWT600P2",
+  "ts": "2026-10-31T16:38:54.582Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "WP02a's landing inputs: land-stack.sh ~/Devel/scratch/devbin-cc/st11-wp02a/handover ST0011-02a.bundle refs/bank/cc/ST0011-02a 41172620a3ee5451a457d413b1b9df290de84038 ~/Devel/scratch/devbin-cc/st11-wp02a/rerun/build 41172620a3ee5451a457d413b1b9df290de84038 ST0011/02a. The unit line: the arms ran at b33dc88e (run 01M699H5CM6E089PMEG9TAGQ2S: the 23 tagged arms red at the base, then green under BSD and GNU, and every file green under BSD and GNU, with one red, neutral.bats's estate arm on one comment line) and the scans at 41172620 (run 01M69CSS0GX4JDGWCBX30YGW91, rc 0: help, every tree scan under GNU, the critic and shellcheck -x on lib/release.steps). The handover dir holds STATE.md (both runs named, and git diff b33dc88e 41172620 in full), COMMIT_MSG-ST0011-02a.txt (the commit's message byte for byte), ST0011-02a.bundle (verified against canon, holding refs/bank/cc/ST0011-02a at the tip, its prerequisite 0300's bank 1b29205a, which main carries as 25bebe8b with the same tree), b33dc88e-to-41172620.diff, and SHA256SUMS over the four, every sum checked. The unit's 19 files have not moved on main since 0300's tree; the re-run's build clone is at the tip and clean. ACs, as you rule at the landing: AT-2.1 (green) and AT-2.2 (red, the tap and the legs after the confirm) on AC-2.1, AT-2.3 (green, the dry run runs no gate and the clock lines) and AT-2.4 (red, WP02b's retirements and WP02c's 60m) on AC-2.4, each citing tests/unit/releasecut.bats; STATE.md says which arms.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

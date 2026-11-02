@@ -1,0 +1,16 @@
+{
+  "id": "01M45VHM7YY2TK9M6D21EYYKA5",
+  "ts": "2026-10-05T11:00:23.934Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE, every open issue closed before the cut (hv, 2026-10-05); the order is ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. W1, the client-name scrub, is done locally and verified from 10:57:21Z: hv ran git filter-repo over 57c7499 onward (29 commits, main 72296c2 -> 8c80d2b), with 0 hits in the rewritten history and tags, every change exactly the name -> \"client\" under intent/, and the old history as the control (40 blobs, 10 messages). hv then ran vc's store-scrub.py on Intent's own event log (11 rows -> 0, 0 raw bytes, doctor 0), since neither intent sync nor doctor reconciles a rewritten canon file. FREEZE lifted. Left in W1: hv force-pushes local and upstream (they still hold 10 old commits, 3 messages and 13 files naming the client); vc reads both back with ls-remote, expires the reflog, runs gc and scans every object; the Dropbox bare repo's gc is hv's call; live sha citations are re-pointed from the commit map (w1/real-commit-map.txt) in one ordinary commit. 0154: cc's heavy batch is green (35 of 36 mutants killed, M3b the declared equivalent; 635 ok, 0 not ok, 3 skips; red-first and GNU-first as expected); census timing and critic-shell are running; then vc's full suite on a fresh clone of main plus v5.1, and the landing. Then 0153, 0159, 0157, 0158, 0156 and the rest; dc builds 0173 and 0174 first."
+  }
+}

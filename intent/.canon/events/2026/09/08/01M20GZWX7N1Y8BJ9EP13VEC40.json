@@ -1,0 +1,15 @@
+{
+  "id": "01M20GZWX7N1Y8BJ9EP13VEC40",
+  "ts": "2026-09-08T12:48:21.415Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0061"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "version check reports a pass over an empty sidecar list, in a string identical to a real pass"
+  }
+}

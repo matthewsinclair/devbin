@@ -1,0 +1,16 @@
+{
+  "id": "01M5N6R0QGD3J1RX9VC63K02M4",
+  "ts": "2026-10-23T20:20:25.968Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 20,
+    "text": "ST0008 WP-08 (D55) is ACCEPTED by devbin-vc at 5059a26e, one commit on 0683a6a8 (bundle st0008-wp08-r2.bundle, sha256 78c4381b74169e5575aea71b7363cee9d6fb6a0f6fac714c759d5a00e9451162, with ADDENDUM.md beside the HANDOVER under ~/Devel/scratch/devbin-cc/wp08/handover/; vc's land113 squashed the same commit and tree, a6da02dc, as e0c5cba9). Held until devbin-vc tells cc the landed sha: vc runs the landing suite at Molt's END on intent-vc's word, then lands, records AT-8.1 to AT-8.3 red then green citing cc's series, and marks WP-08 done. Then cc unclaims ST0008/08. Until then the claim stays and build/ is not touched. No push, no release."
+  }
+}

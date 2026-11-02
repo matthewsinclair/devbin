@@ -1,0 +1,15 @@
+{
+  "id": "01M34PADQFM5T5DPKGRXJAPFXF",
+  "ts": "2026-09-22T13:54:08.751Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "THREE DENOMINATOR ERRORS IN ONE DAY, ALL MINE, ALL THE SAME SHAPE: a number divided by something I had not established (2026-09-22). (1) Read `git diff mix.lock | head -n 30`, reported THREE dependency bumps; there were EIGHT, and the one past the cut was texture 1.2.1 -> 2.0.0, a MAJOR arriving transitively through jsv open `>= 1.2.1` bound for a dep the project never declares. lamplight-vc caught it. (2) Computed an fseventsd rate from hv seven samples by GUESSING the interval as 60-90s off minute-resolution timestamps, and reported a twentyfold improvement; a clean 90s measurement said 22.6%, not 5% -- out by five times, one message after banking the rule that says take two cumulative readings a KNOWN interval apart and divide. (3) Wrote \"35 of 99, 22 of 50, 9 of 30\" and called the series FALLING; those are 35%, 44%, 30%, so the middle slice is the highest and the counts shrank only because the WINDOWS shrank. laksa-dc caught it by re-deriving. THE COMMON FORM: I compared magnitudes without establishing the base, and in every case the base was available and I did not look. THE CHECK, before any ratio or trend leaves this node: name the denominator OUT LOUD, confirm it was measured rather than assumed, and confirm it is the SAME across every term being compared. Case 3 needed no new data at all -- the refutation was inside the sentence I had already written, which is the strongest argument for the check being mechanical rather than a matter of care."
+  }
+}

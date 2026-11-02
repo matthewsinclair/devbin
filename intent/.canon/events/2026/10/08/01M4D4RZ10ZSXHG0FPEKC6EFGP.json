@@ -1,0 +1,15 @@
+{
+  "id": "01M4D4RZ10ZSXHG0FPEKC6EFGP",
+  "ts": "2026-10-08T06:56:22.562Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0188"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "a remote URL carrying a token reaches the terminal and the release log whole when release_repo cannot read OWNER/NAME from it: its refusal prints the configured URL, credentials and all"
+  }
+}

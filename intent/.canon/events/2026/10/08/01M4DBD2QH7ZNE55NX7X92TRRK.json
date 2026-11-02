@@ -1,0 +1,16 @@
+{
+  "id": "01M4DBD2QH7ZNE55NX7X92TRRK",
+  "ts": "2026-10-08T08:52:13.170Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 44,
+    "text": "0181 v1.1 with vc for batch 5 (vc accepted v1 at its review, then asked for v1.1: releasecut.bats's stale header fixed, comment only, no new runs). Head 184b28f9 in ~/Devel/scratch/devbin-dc/0181/b5; patch 0181/drafts/0181-v1.1-184b28f9.patch, sha256 83804443..., cut against 4f174e97, which is main's code since batch 4 landed (0186 at 48baceea, 0187 at 6490f18f). v1's targeted runs, BSD 529/529 and GNU 529/529, hold for v1.1. vc's review: red 9 of 10 at their aims, green 10/10 BSD and GNU, vc's 20 mutants red at their aims. Keep 0181/s and 0181/b5 until it lands, export their commits, then archive this. Full state: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

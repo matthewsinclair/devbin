@@ -1,0 +1,15 @@
+{
+  "id": "01M4D7GJ8C3J1NFMSDXAKZ8WTK",
+  "ts": "2026-10-08T07:44:13.068Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0188 QUEUED after 0181, claimed, built on 0181's head since both are in lib/release.steps (vc, 2026-10-08): release_repo's two refusals print the remote's configured URL whole, a token included (main's :673, a URL that names no host, and :680, a path that is not OWNER/NAME). Plan: one helper removes everything before the authority's last @, and both warnings print through it; arms in releasestatus.bats' release_repo section, red on main first, in the URL form and the scp form, naming the remote and the remedy, with the uncredentialed and success-path controls; \"user:tok@host/path\" reaches the names-no-host refusal with a token. Read `intent issues show 0188`."
+  }
+}

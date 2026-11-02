@@ -1,0 +1,16 @@
+{
+  "id": "01M6AZ0JSEB599EDZGW57Q4MD0",
+  "ts": "2026-11-01T07:08:35.502Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop) on vc's go (decision 119, hv's go read 2026-11-01 06:46Z by vc's date -u) and ruling 120: steps 1 to 6 under way. Dev clone ~/Devel/scratch/devbin-cc/st11-wp02b/dev, wp02b at 7ca8ea42 (the settle 5d84a12b and its docs); worktree at-lines, wp02b-at at da0d4fac (the AT id lines 7377d6b7, DOC-7 6c9d180d, N1's residues da0d4fac). bash -n, shellcheck -x and the headless critic clean on the four shell files. Dev check 3 (01M6AY7C653CKMXRM9TV20KZ94, not evidence) running at 7ca8ea42; the critic-shell review of 9e1440dc..7ca8ea42 running; dispositions part 1 (CRITIC-1's 32, DOC-1 to DOC-7) with vc in dispositions-9e1440dc.md, part 2 at the review's report; AT-2.5 and AT-2.6 for AC-2.2 and AC-2.3 proposed, for vc's word. Next on vc's word: the squash onto whatever has landed (WP16 likely first), the five shared files resolved there, shellcheck, the critic and the prebank scan, 9e1440dc and 5d84a12b archived in cited-archive.git, the re-bank, then the unit's run, which goes next from its ask (ruling 120)."
+  }
+}

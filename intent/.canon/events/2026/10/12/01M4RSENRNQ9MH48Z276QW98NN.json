@@ -1,0 +1,15 @@
+{
+  "id": "01M4RSENRNQ9MH48Z276QW98NN",
+  "ts": "2026-10-12T19:29:24.245Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Bundle and remove the four 2026-10-08 container-run clones under ~/Devel/scratch/devbin-cc/sp-2026-10-08/ctr/ (v1/t186, v1/t187, v2/t186, v3/t187), on hv's standing word that scratch clones go: bundle them into clone-archive, check every tip resolves from the bundle in a clone of the shared tree, then delete. Their trees are clean, and their 0185 to 0187 scratch test commits exist nowhere else. The 2026-10-08 sweep missed them: it searched to depth 4 and they sit at depth 5. Found at the 2026-10-12 close and left for the next working session, since hv said nothing more tonight."
+  }
+}

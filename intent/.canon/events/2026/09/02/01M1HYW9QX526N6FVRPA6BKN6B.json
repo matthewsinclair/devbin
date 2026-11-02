@@ -1,0 +1,15 @@
+{
+  "id": "01M1HYW9QX526N6FVRPA6BKN6B",
+  "ts": "2026-09-02T21:02:27.069Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0053"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The upgrade notice warns about a REVERT it has not measured, because it compares commits and reports bytes"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M36SDR66EMX261NSV46TRAGX",
+  "ts": "2026-09-23T09:26:52.360Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0126"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "infra check and init exit 2 when something could not be measured -- the code the contract reserves for an unknown or inactive command"
+  }
+}

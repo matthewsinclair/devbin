@@ -1,0 +1,14 @@
+{
+  "id": "01M6442DE4Z12T8FK8YQ8AVRE1",
+  "ts": "2026-10-29T15:22:17.414Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-1.2"
+  },
+  "payload": {
+    "evidence": "release.remotes is [local] (bin/.devbin/config.yaml); the v0.1.17 cut (tmp/release/20261029-1344.RELEASE.out) read '1 remote(s) can take the push' and pushed to local alone"
+  }
+}

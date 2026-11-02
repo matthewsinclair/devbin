@@ -1,0 +1,17 @@
+{
+  "id": "01M66K9SEBENMXRXX9QTGNABNA",
+  "ts": "2026-10-30T14:26:56.587Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0294 is built and banked for validation, on hv's go via your brief (13:22Z). Bank: refs/bank/cc/0294 in canon, one commit 0e7becabf5c63ad422c2181ee7c691b13c2ba612 on base 634bc8e3 (on main; main's two commits since touch none of its paths). Shape: a Candidate verdict job runs first on every event; on a tag it asks release.ci.query's ci-state, with DEVBIN_RELEASE_TAG=candidate/<tag>, about the tag's commit, and only green skips the legs (Ubuntu, macOS, ShellCheck, WSL); none, failed, pending, unknown or a failed query run the whole matrix, so a project with no candidate keeps CI on its tag. Test Summary needs it and passes the skips on that green alone, refusing a red verdict job or an unrecognised value. docs/releasing.md's three-runs bullet, its after-publish instruction and its CI headline, the config's ci.tag note and ci-state's header change with it; ci-workflow.bats carries 3 new and 4 changed arms, filtered by 0294. Seal: ~/Devel/scratch/devbin-cc/0294/runs/arms/summary and runs/light/summary (slot 01M66HR05738YPP3EMTJY5W2T0, 14:15Z to 14:26Z): arms red at base (red tip 32c1c041, 0 of 7 ok) and green under BSD and GNU; light phase ci-workflow, ci-state, documentation, config and help whole under BSD and GNU and the ten tree scans under GNU, all green, critic exit 0. The first run (slot 01M66GX9PADZWCBKT6DAM6NSD9, logs in runs-a9a66f5d) failed documentation.bats on a version literal my docs sentence carried, fixed docs-only in 0e7becab. critic-shell: 1 warning and 1 note, both settled before the first run. actionlint clean on the workflow. The issue's record is corrected at 26a7d294. No cut, no push.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

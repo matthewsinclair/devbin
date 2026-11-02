@@ -1,0 +1,15 @@
+{
+  "id": "01M2W6JTDDCQYP16986DF9H5W9",
+  "ts": "2026-09-19T06:45:11.213Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Awaiting vc's reviews: 1ef0464 (WP-04 fix), c17f420 (release-half docs), 30a137d (WP-05).** Fix what they find. vc's full-suite lock may have died with its hung shell (2026-09-19): run the full suite at 30a137d once vc says it's clear. Then WP-06, when vc OKs WP-05 and hv sequences it. hv pushes."
+  }
+}

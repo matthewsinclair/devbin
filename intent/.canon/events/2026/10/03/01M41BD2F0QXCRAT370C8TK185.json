@@ -1,0 +1,15 @@
+{
+  "id": "01M41BD2F0QXCRAT370C8TK185",
+  "ts": "2026-10-03T17:01:19.714Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0161"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "senders.*.dkim.type takes any value, and a lower-case cname reads as a HALF PAIR over a zone that holds it"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M1F7P9X5BFYHDY1G3XC3P7S3",
+  "ts": "2026-09-01T19:38:44.517Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0050"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "fullcycle has no restore half, so it is permanently red on dev-profile estates"
+  }
+}

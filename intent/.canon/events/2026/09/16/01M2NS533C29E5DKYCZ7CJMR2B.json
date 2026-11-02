@@ -1,0 +1,15 @@
+{
+  "id": "01M2NS533C29E5DKYCZ7CJMR2B",
+  "ts": "2026-09-16T18:55:03.276Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**vc's, after 0063:** re-review dc's ST0007 design when v0.3 lands (vc's seven findings of 2026-09-16 18:35Z plus opt-in and Intent-last; hv's rulings are hv decisions 26 and 28). **0060 and 0076 land together**, after the 0.1.1 tag and with pre-notice, since `lib/helpers` is vendored: 0060 ruled option A. **0059, 0056** unchanged; 0056 has cc's held patch and four review findings on cc's board hold 2."
+  }
+}

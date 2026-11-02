@@ -1,0 +1,14 @@
+{
+  "id": "01M64K4XT7QEM85NH2ZHKCERZB",
+  "ts": "2026-10-29T19:45:48.361Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-2.8"
+  },
+  "payload": {
+    "evidence": "CI run 40919937412 on candidate/v0.1.18 at snapshot a9b8cd7c, all jobs green: the macOS job ran test all under BSD, Ubuntu covered GNU, WSL 2 too. The desk run on the snapshot was dropped by hv 2026-10-29 ('I want everything merged to head on main and then I run the tests manually'); hv's full suites ran on main."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2Z9PGGTJ92DK5PPBW7VJ8NZ",
+  "ts": "2026-09-20T11:37:21.178Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "2026-09-19 16:17Z to 2026-09-20 (Intent's 0492, relayed by intent-vc at 11:3xZ): every commit made at an estate OTHER than Intent in that window loaded its pre-commit gate and guard BODIES from the hijacked install pointer's worktree (35b902fd9), where append-only-guard.sh still names intent/events.jsonl rather than intent/.canon/events/**. So a commit that REWROTE an existing event file would not have been refused. MEASURED for Devbin, not assumed: all 9 Devbin commits in the window read with git show --name-status over intent/.canon/events -- every event change is an ADD, no M, D or R, so none is in that class. The 14 sweep commits touch only the devbin seam. Intent's own gate reads its guards from its own tree and is unaffected."
+  }
+}

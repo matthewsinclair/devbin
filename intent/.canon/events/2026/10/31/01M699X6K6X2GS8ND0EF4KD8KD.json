@@ -1,0 +1,15 @@
+{
+  "id": "01M699X6K6X2GS8ND0EF4KD8KD",
+  "ts": "2026-10-31T15:40:30.182Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 15:40Z (on dc's critic dispositions for WP03's remainder, c5682c12 in wp03r; 0 critical, 4 warnings, 6 recommendations): all four warnings taken as dc proposes (one reader of the push block yielding paths-ignore; **/ matches zero or more directories; YAML properties, explicit ? keys, tabs and '' escapes answer unknown; one shared read of a workflow at a sha, unknown at exit 0 when git cannot list its environment); R1, R3, R4 and R6 taken (GitHub's [] rule; a declared non-built-in release.ci.query answers unknown naming the query; the failed detail from the one job list already read; 'no job failed' named); the failed line carries its job list inside the run's parenthesis, run <id> (<conclusion>; failed jobs: a, b), cc's cut printing it verbatim; R5 in part as dc proposes (one helper for the scratch file and its trap; check-ref-format's failure reads unknown with git's words; the shared is_branch_name lands in WP02b, cc adding it to lib/helpers and switching all three sites, ci-state's included). R2 amended: the directory-glob and premise halves as dc proposes, and the version-file half taken as an input, not declined: --fires accepts the paths the release commit will change (the cut knows them, it writes the stamp) and, given them, answers 'does not fire' when paths or paths-ignore excludes every one of them, naming the rule; without them it names the premise. A predictable non-fire refuses at the pre-flight instead of spending the cut's wait; the reader stays pure, the cut supplies the one fact only it has. For WP02b (cc): the call line passes the stamp's file list; unknown is never read as fires, the pre-flight prints the reader's reason and refuses, and the override is the existing force route. 0300 landed on main at 25bebe8b from 1b29205a by land-stack.sh at 2026-10-31 15:40Z; WP02a (running) lands as run on it."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M34QYP9AFNQC9EYZHKCA3MT7",
+  "ts": "2026-09-22T14:22:41.450Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-09-22: ST0002/05 cancelled in the STORE and devbin's outstanding count is 0 threads, 0 work packages, 0 issues. hv asked what was left; the whole list was one work package. WP-05 was cancelled by hv on 2026-08-10 at 7c78cdc (Molt out of scope) and its status stayed WIP because INTENT v2 HAD NO wp cancel VERB -- only start and done could write the field, so the ruling went into the title prefix and the WP body said so in terms: 'that is not a mistake to correct in passing'. Correct then; v3.2.0 has intent wp cancel, so the workaround's reason expired and nothing re-read it. ANOTHER INSTANCE OF WATCHOUT 18(c), the Cdtempl gitignore whose reason expired when devbin 0069 made the source path home-relative: a documented workaround carries its justification, the justification is what makes later readers leave it alone, and nothing re-reads the justification when the constraint lifts. The note that protects a workaround from a careless fix protects it from a correct one too. THE BODY WAS LEFT ALONE deliberately -- it is the record of the v2 era and of why the divergence existed, and rewriting it would destroy the account of why the section exists (watchout 22's quotation clause). The expiry is recorded in the cancel --reason instead. STILL DIVERGENT, FLAGGED TO hv, NOT MINE: WP-01 says CANCELLED in its title and is Not Started (Multiplyer -- directive 12 says ignore it entirely, so untouched); WP-06 and WP-07 say PARKED and are Not Started inside a COMPLETED thread, and WP-07 is Pplr which hv ruled out of the fleet in decision 34. None shows in outstanding because only a WP that was actually STARTED can be stuck WIP."
+  }
+}

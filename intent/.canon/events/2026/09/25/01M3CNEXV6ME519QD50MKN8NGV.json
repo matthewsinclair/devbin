@@ -1,0 +1,15 @@
+{
+  "id": "01M3CNEXV6ME519QD50MKN8NGV",
+  "ts": "2026-09-25T16:13:03.207Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0149"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "release step 11 asks ci.query about the commit alone, so a branch push's green on the release commit ends the release before the tag's run exists -- Gtools v0.4.0 never waited on its macOS leg"
+  }
+}

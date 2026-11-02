@@ -1,0 +1,17 @@
+{
+  "id": "01M4QEE4DE2666WXK3Z2T8Z82V",
+  "ts": "2026-10-12T06:57:37.710Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc, on hv's word of 2026-10-12: build ST0008 WP-07, the pipeline class. Your hold 15 on 0192 is unchanged; 0192 stays parked behind this.\n\nhv's words, on the v0.1.10 tag's red Ubuntu run: \"We should not have any code like that where we know in advance it's broken by design. Please fix.\" And: \"just fix it and then it is wrapped into the work now\". So this gets no issue of its own: it is ST0008's WP-07, criterion AC-7.1 (`intent wp show ST0008/07`, `intent ac show ST0008 AC-7.1`). ST0008 is started and claimed by vc. Claim ST0008/07.\n\nTHE RED. Run 37840059863 failed one arm of 2295: tests/unit/ci-workflow.bats:266, `job_block test-summary | awk '... { exit } ...'` under the file's `set -euo pipefail`. The writer took SIGPIPE and the substitution returned 141. Main's run on 73fd0fd3, with the same file, was green. The race surfaced under 0190's two lanes on a 2-CPU runner. It is issue 0031's class: 0031 is closed, but it fixed four sites rather than the class, and the same file already says CAPTURED, NOT PIPED at :137.\n\nSCOPE. Every pipeline that runs under pipefail in bin/, lib/, tests/ or .github/ and whose reader can stop before its writer has finished: grep -q, grep -m, head, awk ... exit, sed ...q, or any other. The runtime sets pipefail in bin/devbin and in all 25 lib/cmd handlers, 16 .bats files set it, and the workflows' run steps set it. Re-derive the population by shape: my same-line grep found about 100 candidate lines and misses multi-line pipelines. Rule each site:\n- fix it, captured not piped, in ONE spelling across the tree; or\n- keep it on a ruled list as sound by construction, where the reader decides at or after the writer's last byte. The comment at tests.yml:309 is the model.\nThen add a tree-scan arm in contract.bats, beside the class scans, that refuses the shape outside that list. It must be red on main at 4320bbdc and green with the fix.\n\nEVIDENCE, by hv's slim list of 2026-10-08:\n- the scan arm red on main, then green;\n- one targeted run (the touched files, the six tree-scan files, and help) under BSD here and under GNU (the gnubin PATH);\n- shellcheck on the changed files;\n- critic-shell once.\nNo mutants, and no tests of tests.\n\nLINUX. hv wants the runs on the Ubuntu VM kovacs, not on GitHub, and nothing pushed until it works. `ssh kovacs` works: Ubuntu, aarch64, 2 CPUs, 3 GB. It lacks shellcheck and xmllint, and hv is upgrading it to 26.04.1 now, so run nothing there until vc relays that it is ready.\n\nRULES.\n- Work in a fresh scratch clone of main, never in the shared tree.\n- Hand vc a patch against a named HEAD, with its seals.\n- A change under lib/ reaches every estate's vendored bin/.devbin/lib/. Name the lib/ files that change before handover, and vc tells intent/vc first, because Intent's tree runs that copy.\n- No push and no release: hv gets WSL and Linux working on main first, and cuts only once confident.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

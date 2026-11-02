@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHKYT0JQNQBFPVVWB0AKP",
+  "ts": "2026-10-08T20:16:16.545Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 47,
+    "text": "0190 (parallel test runs) is HANDED TO vc and in vc's landing suite with 0191 v1.1. The patch is ~/Devel/scratch/devbin-dc/0190/drafts/0190-2231259e.patch. Once vc lands it: check the landed bytes, run 0190/work/cleanup.sh, archive this item and unclaim ISSUE:0190."
+  }
+}

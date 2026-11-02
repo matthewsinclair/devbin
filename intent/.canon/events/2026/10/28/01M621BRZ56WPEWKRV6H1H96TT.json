@@ -1,0 +1,16 @@
+{
+  "id": "01M621BRZ56WPEWKRV6H1H96TT",
+  "ts": "2026-10-28T19:56:29.541Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 178,
+    "text": "RELEASES/0.1.16.md from ~/Devel/scratch/devbin-vc/note-0.1.16/lines.md once the batch is in; regenerate its views; scan it with release.bats, documentation and the tree scans."
+  }
+}

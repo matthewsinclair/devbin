@@ -1,0 +1,15 @@
+{
+  "id": "01M4ZXCJ8B7DV8F9FGY6HQNY3K",
+  "ts": "2026-10-15T13:52:50.443Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "AFTER 0195, IN vc's ORDER OF 2026-10-15 (vc's word matching hv's go on 0195): 0198, then 0197, then 0196, then 0192 (todo 45). 0198, medium, filed today from D1 on kovacs: tests/unit/targetdir.bats:720 says it needs no cargo and fails with cargo off PATH; its body says what a fix must do, red first on main with cargo off PATH, green under BSD and GNU with cargo on PATH and without. 0197: install.prefix and fleet against the brew install, landing before hv's machines move onto it. 0196: a CNAME to a name outside the zone read as a measured absence. Each built by cc and reviewed by vc."
+  }
+}

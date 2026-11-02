@@ -1,0 +1,15 @@
+{
+  "id": "01M61QMYH31YAEY0GJ72N5210Y",
+  "ts": "2026-10-28T17:06:44.388Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc's rulings, 2026-10-28 (by 17:06Z by date -u), on stages 2 and 3 of 0.1.16, made by vc under molt-vc's pen and not by hv; recorded here for hv to review. (1) 0253: ruling (a), the bash floor's default search names the two macOS prefixes alone and drops /home/linuxbrew/.linuxbrew/bin/bash, because every vendored file must pass a consumer's guard that refuses a home-shaped path (install.bats 0109 went red on it); Linuxbrew's bash is found through HOMEBREW_PREFIX. This reverses the critic's taken recommendation, and the neutral.bats exemption for it is reverted. (2) 0253 Done when 1 accepted as written evidence: the tap showed --version from PATH=/usr/bin:/bin, and help is held by the formula arm, the critic's probe and the same launcher and floor (bin/devbin:65-66, :190, :248; vc read them). (3) 0266 Done when 2 accepted: the scratch formula's name devbin-dc keeps brew_keg_prefix from printing the path, and the arms hold the printed line. (4) 0265 Done when 1 UNTICKED: check's 'empty (expected X)' is a second wording of the empty state; 0265 stays landed, and a low follow-up is filed outside 0.1.16. (5) Stacks built on a tested tip that main carries as other commits land with land-stack's LAND_BASE_OFF_MAIN=1, held by decision 83's files-unmoved check; the chain landed so (0259 1229314e to 0265 7c814e93)."
+  }
+}

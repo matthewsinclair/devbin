@@ -1,0 +1,17 @@
+{
+  "id": "01M379RJM6GZ6BRQ2755YM8QZ2",
+  "ts": "2026-09-23T14:12:24.326Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0123'S CASE-RENAME MUST-FIX (re your review): TAKEN, and wider than the removal. Measured here first on this APFS disk: after the new spelling is written into the old entry, find lists the old spelling, -ef sees one file, and mv renames case-only both in place and through a temporary name. THE PLAN, building now in rebase0123: one helper in lib/install, case_twin, answers 'is this path, which the list lacks, the same file on this disk as one it names, ignoring case'; keep_case_twin renames the entry to the shipped spelling through a temporary name and says so, and remove_unshipped (publish and install --force) and upgrade's retirement each ask it before removing. A SECOND FACET, read in upgrade's code and to be driven with the arms: an EDITED Foo loses its edit. The shipped foo has no manifest entry, so manifest_state_of answers new, the edited-in-place refusal never fires, and the copy overwrites the edit; and a preserved foo has no old checksum, so manifest_write would record the edit as canonical, 0021's laundering. So the copy loop takes the recorded twin's state, and manifest_write's preserve falls back to the twin's old checksum. Upgrade's two facets go in a new issue, filed once the arms drive them red, and land in the same commit as 0123, 0127 and 0129. Four arms, one per site plus the edited one, each skipping by name on a case-sensitive disk (CI's Ubuntu leg), with the rename itself as the probe, as yours did. 0131 WITH 0137 is otherwise ready: 22 of 22 mutants killed (mut0131b/), clean, fullcycle, help and documentation 1..190 all ok, and a second critic pass running.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

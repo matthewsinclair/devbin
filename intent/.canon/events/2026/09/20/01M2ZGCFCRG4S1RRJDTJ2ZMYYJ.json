@@ -1,0 +1,15 @@
+{
+  "id": "01M2ZGCFCRG4S1RRJDTJ2ZMYYJ",
+  "ts": "2026-09-20T13:34:12.376Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "dc ran devbin's own three gates against the 0.1.2 seam at 80e7528, on hv's ask, and all three are GREEN: doctor 10 checks 0 failed (3 expected notes); check all 5 of 10 options ran, all passed (syntax 47 files 0 breaches, lint 47 0, critic clean at warning and above); test all 1556 ok, 0 not ok, 3 skips, empty seal, exit 0. dc accounted for the three skips rather than leaving them as a gap: two are the no-tty refusal branches (releasecut 113, 121) declared unexercised because the runner has a terminal, and one is testhandler 579's require_command skip, which fails by design under CI at 580. So decision 23's gap is closed FOR DEVBIN ONLY; the 13 estates swept this morning remain unread and decision 23 stands for them, with Utilz separately proven by its own CI. Two honesties dc recorded: the version stamp read +dirty during the run, from dc's own generated board views alone, so no source under test differed from 80e7528; and this is one estate."
+  }
+}

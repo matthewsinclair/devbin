@@ -1,0 +1,15 @@
+{
+  "id": "01M41BKQ34H2669TC04571AJXP",
+  "ts": "2026-10-03T17:04:57.445Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0168"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "fullcycle's artefact check never reads target/<triple>/, so a cross-compiled release reads missing and a lost one reads fine"
+  }
+}

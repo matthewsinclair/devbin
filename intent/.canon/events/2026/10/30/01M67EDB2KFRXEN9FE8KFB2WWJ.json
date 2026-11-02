@@ -1,0 +1,15 @@
+{
+  "id": "01M67EDB2KFRXEN9FE8KFB2WWJ",
+  "ts": "2026-10-30T22:20:44.501Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0295"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A cut with no publish.url stamps the version after the candidate's tests, so it tags a commit nothing has tested and re-runs the suite on it"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5VWN8SXR80NXNNPW618TDKN",
+  "ts": "2026-10-26T10:38:51.197Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 171,
+    "text": "AFTER hv CUTS 0.1.15: (1) Read the tag's CI run. (2) Close 0222, 0232, 0233 and 0234 on CI run 40302760947 on 39300b37, the head that lands 0233 and 0234 (pushed 09:51Z), green by its Test Summary (read 10:36Z; jobs in ~/Devel/scratch/devbin-vc/ci/run-40302760947.json, its Ubuntu and Summary logs beside it; run 40291928610 on c4f52b8e was red; decisions 70 and 71), through tools/setres.sh, each draft re-sealed after filling. 0222 takes dc's ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0220-0222.md, filled with that run by dc or by vc. 0232 takes cc's ~/Devel/scratch/devbin-cc/0232/handover/RESOLUTION-0232.md (sha256 953f6ae8), with <landed sha> as c0b47cf6 and CI run <id> on <sha> as that run on that head. 0233 takes cc's ~/Devel/scratch/devbin-cc/0233/handover/RESOLUTION-0233.md (sha256 7debdda7), landed at 4c4c890d, and 0234 cc's ~/Devel/scratch/devbin-cc/0234/handover/RESOLUTION-0234.md (sha256 8442db85), landed at bc9d80c0, each filled the same way. (3) Archive watchout 37. (4) Clear vc's scratch clones (land232, land233, k115src2, k115verify2, note115, k115src, k115verify, land220, cand220), first surveying each against main and bundling any leftover a record cites (261286d6 among them), and the fixtures under ~/Devel/scratch/devbin-vc/ci/maint once 0233 closes, keeping the maint-exp outputs 0233 cites."
+  }
+}

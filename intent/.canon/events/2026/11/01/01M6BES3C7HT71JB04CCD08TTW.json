@@ -1,0 +1,16 @@
+{
+  "id": "01M6BES3C7HT71JB04CCD08TTW",
+  "ts": "2026-11-01T11:44:07.559Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 59,
+    "text": "ST0011/17, WP17, after issue 0306 (vc's order; decision 109; GO received by 2026-11-01 11:42Z). Its WIP bank refs/bank/dc/ST0011-17-wip f431ae57 (on 87ab0d2b) changes lib/config and lib/helpers: rebase it onto WP16's landing 54c16f33, so the platform words keep the one definition WP16 landed in lib/helpers, then onto WP02b-1's landing, which changes lib/config too. Resume from ~/Devel/scratch/devbin-dc/wp17/NOTES.md; built on decision 108. critic before its first run, the pre-bank grep, then the desk; AC-6.1 and AC-6.2 at its landing. If it is banked with its critic settled when 0306 is ready to ask, the two ask as one stack."
+  }
+}

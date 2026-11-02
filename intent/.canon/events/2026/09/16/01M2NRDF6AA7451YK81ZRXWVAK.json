@@ -1,0 +1,15 @@
+{
+  "id": "01M2NRDF6AA7451YK81ZRXWVAK",
+  "ts": "2026-09-16T18:42:09.226Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**Intent adopts the ST0007 release core, last in the adoption order** (hv, 2026-09-16 18:42Z, to vc): \"Intent is very much in the mix, just do it last in the list as it's currently still in WIP.\" Intent's release work is not covered by standing directive 9's \"no durable machinery for its divergence\": it adopts the shared core like every other project, just last."
+  }
+}

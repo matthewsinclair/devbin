@@ -1,0 +1,15 @@
+{
+  "id": "01M3A8PRM7RT47MMCMY71F916F",
+  "ts": "2026-09-24T17:51:39.655Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "BOX, from intent-vc at 17:50Z by their date -u: Intent needs the host for a heavy run within about half an hour, once hv has compacted Intent's four nodes and ruled whether 3.2.1 takes one more stacked run before the build all. RELEASED WHEN intent-vc sends Intent's END for the build all, or releases the box to devbin in so many words. Until then devbin runs only light work: cc's 68-mutant pass (started 17:50:48Z, one arm at a time) and cc's targeted run (1) over clean, fullcycle, helpers and contract. HELD: cc's full suite (2) on a clone at 2b46d85, then vc's 0128 v3 mutants and the stack's full suite, in that order. Relayed to devbin-cc. intent-cc has no run in flight and is folded for hv's compact."
+  }
+}

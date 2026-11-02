@@ -1,0 +1,15 @@
+{
+  "id": "01M2R0CRTX0A18G1ECA9ACEZWQ",
+  "ts": "2026-09-17T15:40:03.805Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**0082's build -- held until hv rules globbing on the census AND ST0007 WP-03 has landed.** The census is recorded in 0082 at e52fc67: across 30 installs one run: word globs, Utilz's `bats opt/*/test` with 16 matches today, and no run: is blank. Splitting without globbing breaks Utilz's `test shell`; keeping globbing changes nothing in the fleet. On both conditions vc builds it -- one helper turning a run: value into words at every site, a word-less run: refused naming the key -- and dc reviews."
+  }
+}

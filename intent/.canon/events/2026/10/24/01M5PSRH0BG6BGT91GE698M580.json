@@ -1,0 +1,15 @@
+{
+  "id": "01M5PSRH0BG6BGT91GE698M580",
+  "ts": "2026-10-24T11:12:00.011Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ISSUE:0217 (medium): one no-prompt runner for every remote call; release_git_remote leaves askpass in force. Plan to vc first, red then green under BSD and GNU, light runs booked with molt-vc, bundle handed over. Starts after 0213 lands (vc names the main) and hold 21's T10 is sorted"
+  }
+}

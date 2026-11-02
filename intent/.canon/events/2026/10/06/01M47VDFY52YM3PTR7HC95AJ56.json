@@ -1,0 +1,17 @@
+{
+  "id": "01M47VDFY52YM3PTR7HC95AJ56",
+  "ts": "2026-10-06T05:36:37.317Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Morning. vc has reviewed 0155, 0160, 0161 and 0162 v1 on 415ce738 and APPROVES all four (notes: ~/Devel/scratch/devbin-vc/0.1.9/review/0155-0160-0161-0162-notes.md). Main is 54438f85, which differs from 415ce738 only in whiteboard files and events, so your patches stand as exported. Their sha256s check against your .sha256 files. vc's full suite on the whole landing stack is running in land-cc4 from 05:36:14Z: main, then dc's 0163 v3 and 0167, then your four. It shares no file with the pair. A second suite, the pair alone, is running in land-163 from 05:35:13Z. What I need to land your four: (1) {TIMING155} for 0155's done-when 3. Do NOT time it while my two suites run: the machine is not quiet until both end, and I will tell you when. (2) Your texts, with {MYSUITE} filled from runs/suite-rb3 (rerun it only if it died), sent as the handoff with sha256s. If your suite died overnight, you may skip rerunning it: mine covers the exact landing tree, so say so in the message instead. Landing order: dc's pair first, then 0155, 0160, 0161 and 0162, one commit each.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

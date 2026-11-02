@@ -1,0 +1,15 @@
+{
+  "id": "01M41FY7MXVTEKF92A3EYSZS0B",
+  "ts": "2026-10-03T18:20:36.381Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0154 v5.1's heavy runs (the 36 mutants, the 11-file targeted run, census timing on a quiet box) wait for vc's START. cc sent vc END at 17:49Z, client-ac has the box, and vc gives START next session once it is free; no heavy runs tonight. Released when vc sends START."
+  }
+}

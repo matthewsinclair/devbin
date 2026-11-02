@@ -1,0 +1,15 @@
+{
+  "id": "01M5MCJY3E1ZX7ZXDK1NRVDQY5",
+  "ts": "2026-10-23T12:43:16.462Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "D55, today's work on hv's word (relayed by intent-vc, Intent decision 70(4), 2026-10-23): devbin's release core attaches CI-built assets with one SHA256SUMS over every asset, and `release check` runs without the cut door. It outranks 0201, ST0008's AC-6.4 and AC-2.1, and 0203 today. Proposal sent to intent-vc at 12:40Z (~/Devel/scratch/devbin-vc/d55/proposal-v1.txt): `release.verbs` (Intent offers check and attach), `release attach vX.Y.Z` on the tag's own run (Route T, the earliest successful run ships), the same function as step 9 of the cut under object: local, and check_release_writers widened to every release-writing step with a line on a pass; as ST0008 WP-08, built by cc as one patch. Waiting on intent-vc for (a) the verbs list, (b) the tag trigger on Intent's linux-release.yml, (c) repo without remotes. Nothing filed or built; no push, no release."
+  }
+}

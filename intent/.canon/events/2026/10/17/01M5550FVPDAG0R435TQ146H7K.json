@@ -1,0 +1,15 @@
+{
+  "id": "01M5550FVPDAG0R435TQ146H7K",
+  "ts": "2026-10-17T14:42:15.544Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0202"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "Shipped code names no project: three findings from another estate's 0.1.11 reading, and the rest before devbin goes public"
+  }
+}

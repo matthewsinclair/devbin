@@ -1,0 +1,15 @@
+{
+  "id": "01M32ZD8S46ATVJZ51KK64RZX2",
+  "ts": "2026-09-21T21:54:30.308Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Tomorrow: the fleet CI pass, then the 0.1.5 sweep, both on your go.** The CI pass applies your rulings of 2026-09-21 (vc decision 32): macOS only on tags and on demand, and every repo cancels superseded pushes. It touches devbin (0108, for 0.1.6) plus 11 estates, and you push each one. devbin 0.1.5 is released (21:53Z) and in no estate yet; its sweep goes Utilz first. devbin going public is October or November."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M3ADK83354VFDR7Q0GAJS6RD",
+  "ts": "2026-09-24T19:17:07.299Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc's rulings, 2026-09-24 evening, within hv's Go, each reported to hv. (1) OPTION (b) AS BUILT in 0128 v3b: all is refused over a command-level run: when it has no option TO RUN -- none declared, or every declared one switched off. Critic-shell showed that reading 'no declared options' literally hands all to the line again, the same false green, when every declared option is switched off. The pages, the reference and the comments say 'no option to run'. (2) THE 0143 DESIGN IS ACCEPTED with vc's rulings. Labelled DKIM records under dkim:. dmarc.sp as the tag, with a blind spot for an explicit weak sp=, and refused without an effective dmarc.policy. Wildcards a, aaaa and txt, each a value or none, verified. Unknown profile keys REFUSED at parse time (measured: no fleet profile turns red). A bare dmarc: other than none refused, and so is defaults.dmarc: none. Policy values outside none, quarantine and reject refused. lib/config's nesting refusal (a key under a key with a value) carried INSIDE 0143: measured safe on all 23 fleet config and profile files, and reported to hv as a shared-parser change. The p= guard fixed in 0143. _IC_SENDER_SPF deleted; the cross-domain comparison is parked. (3) 0144 FILED into 0.1.8 at b0b32c2: the checksum helper returns 0 when a file cannot be read, a false green in vendor_states. (4) The fake dig moves into tests/lib/infra_fakes.bash in 0142 v2, made strict, and 0143 rebases onto it."
+  }
+}

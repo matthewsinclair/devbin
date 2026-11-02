@@ -1,0 +1,15 @@
+{
+  "id": "01M2QX0F4938Q37EJMF82K69B4",
+  "ts": "2026-09-17T14:40:54.921Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**0082's census (vc, read-only) alongside 0083 after the compact; then 0082's build after ST0007 WP-03.** Read every estate's `run:` values, at option and command level and `release.notes.run` where declared, for `*`, `?` and `[`: the estates and their paths from `bin/devbin fleet audit`, the values from each bin/.devbin/config.yaml, read by a python walk rather than grep (the ugrep watch-out). Report per estate: each value, which of its words would glob, and whether that word matches anything at the estate's root today. hv rules globbing on that report. vc then builds 0082 on the ruling -- one helper turning a `run:` value into words for every site, and a `run:` with no words refused naming the key -- and dc reviews."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M4WY592816AXED9DBC43FGAW",
+  "ts": "2026-10-14T10:08:36.936Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0031 ABSENT-WRITER SCAN FOR vc (read-only, no runs; vc's ask of 2026-10-14), PAUSED BY hv's ESTATE-WIDE LOCALFOLD AND COMPACT, relayed by another estate's session on 2026-10-14. The shape: a plain, unguarded x=\"$(...)\" whose substitution runs a tool that may be absent, so under errexit (inherit_errexit is global, lib/helpers:65) and pipefail the assignment ends the handler before its own refusal; cpu_count is the guarded form (lib/helpers:186), and require_tool is at lib/helpers:171. The triage script is written and NOT yet run: ~/Devel/scratch/devbin-dc/0031-scan/scan_absent.py (python3 -I, its argument the devbin root). Next: run it, read each flagged site for reachability (a prior require_tool or command -v) and for its caller's errexit context, and send vc the list with what could not be decided. RELEASED WHEN hv gives the restart after the compact."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M46NX8N75J2KD7NNERPW3739",
+  "ts": "2026-10-05T18:41:08.263Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE: every open issue closes before the cut (hv, 2026-10-05); the order is ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. W1 (the client-name scrub) is DONE. LANDED AND CLOSED: 0154 (831aec59), 0174 (7e3f580c), 0173 (bd81574c), 0169 (ce72a4ff), 0166 (b3f37f92), 0153 (73a0e43b), 0175 (eb9166e1), 0164 (64d80788), 0176 (f7bd9984), 0159 (85f2fb0b, closed 962e0daf, seal land/seals/1657), and 0157 (430e2c28), 0158 (44db8915) and 0156 (627e3948), closed at 415ce738, on vc's suite of main 962e0daf plus the three, 2159 of 2159 ok, .errors empty (seal land/seals/1749). 11 open. hv's words today: \"JUST RUN THE TESTS\" (the box is off, heavy runs go in parallel) and \"delete the scratch clones. Yes, always.\" NOW: dc's 0163 v3 and 0167 are REVIEWED AND APPROVED (review/0163v3-0167-notes.md). Their handoff was on 962e0daf, and on 415ce738 0001 refuses at lib/pages/check.md:17, which a 3-way apply merges cleanly. dc is asked to rebase and re-export them with sha256s (wb ask and SendMessage, 18:39Z). ON THEIR ARRIVAL: verify the sha256s; run the full suite in a fresh no-local clone of main plus both; land them one at a time with commit --only; cmp against the clone and check each with apply -R; close each. dc's texts are drafts/msg-016x.txt and drafts/resolution-016x.md: add one sentence with vc's suite to each and fill <landing sha>. cc is told the new main 415ce738 and rebases 0155, 0160, 0161 and 0162 onto it. Then dc's 0168, 0165, 0170, 0171, and 0172 last. For hv at the cut: publish-upgrade the machine install before any sweep (cc's OUT-4); then todo 145."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6BHD2JSSF6DTZ5341B336PZ",
+  "ts": "2026-11-01T12:29:59.258Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 12:29Z by date -u, held for hv's compacts). (1) At cc's END on slot 01M6BFAW5TJB86G7GEVSCKDP4A: read every leg's TAP and .rc and the whole suite's seal, reading red-releasecut's WANTED RED as the signal arm alone. If green, land WP02b-1 by the checklist: land-stack.sh at f3462610, then landing-wp02b1-notes.sh with the landing sha, AT-2.5 and AT-2.6 minted green by cc. Then grant trellis-ic's ask, then trellis-cc's, if no devbin run waits. (2) At K0118's END: read the seal and every not-ok. A red becomes a fix in the next unit, and test 2149's green closes 0300. (3) After hv's compacts and vc's go: dc's stack (0306 + WP17) asks once WP17's critic is settled and its red clones are built, runs next, and lands with LAND_BASE_OFF_MAIN=1 on WP02b-1's landing. vc rules WP02b-2's Q3 after reading DESIGN-02b2.md and gives cc the go. Then the train (decision 125): the hook-in unit, WP02b-2, WP02c, WP07 and WP08 as each is ready. The last stack's whole suite stands as decision 93's rhadamanth full suite, with the whole-tree scans re-run at the landed head; the kovacs suite runs at the cut's head. Then WP09 at 0.1.19 on hv's word, and the sweep."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M63TCP8GXDT07WC5DS4YPTMN",
+  "ts": "2026-10-29T12:33:08.368Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-29: the first public release is v0.1.17, carrying 0291 (the audit fixes); v0.1.16 stays a workroom-only tag. Audit rulings: H1 holder Geodica Ltd; H3, H5, H6, H8, H9 accepted as they stand; M1, M2, H2, H4, H7 changed through 0291. No DevbinOrig: the Dropbox bare repository is the workroom's copy. hv runs every full suite."
+  }
+}

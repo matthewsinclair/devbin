@@ -1,0 +1,15 @@
+{
+  "id": "01M6939DSW2H6GB85SG4NVBDJF",
+  "ts": "2026-10-31T13:44:50.748Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31 13:44Z (in vc's window): 'Go with your recommendations on the FOR hv list.' Executed as: Gtools's setup --yes makes no link when Homebrew's gtools would answer, printing the gtools use dev remedy (gtools-dc under gtools-vc; ships with Gtools's next release); intent-dc builds ST0090's two S packages under intent-vc's judgement until the sweep; intentd at login on rhadamanth (rhadamanth-sysadm, intent daemon start --at-login) and on kovacs (kovacs-sysadm, intent's own at-login form where it supports Linux, else brew services); Utilz: utilz-vc pushes main and dispatches tests.yml once to prove 0130 and 0131, reading CI to the end, and ST0031/03 (menuz reads the release stamp) is utilz-dc's under utilz-vc before Utilz's first cut in the new shape; Laksa: laksa-dc fixes the five CI reds under laksa-vc, laksa-vc pushes 0058 S2's fix once verified and the five-reds fixes once verified, reading CI to the end after each push; Conflab: no separate trial run, the first cut's legs are it, and check contract joins the gates at WP-06, its proofs hv's under Conflab decision 58; Intranet: gyges-sysadm diagnoses the refresh's farcaster and pihole host-key failures and gyges's ads check read-only and reports the fingerprints before any known_hosts change; Trash: rhadamanth-sysadm removes ~/.Trash/utilz-dc-exhaust-20261031 and ~/.Trash/utilz-vc-exhaust-20261031 after reading their manifests, nothing else; kovacs: kovacs-sysadm provides prez (a read-only Utilz clone, its bin on the non-interactive PATH, nothing built) and installs from apt what the census shows missing, after the census and after run 3's proof. Not executed: Molt's PATH order (rustup's cargo before Homebrew's) needs a Molt session or hv's hand; vc touches Molt nothing. Every other publish, tag or deploy still waits for hv's word (directive 3)."
+  }
+}

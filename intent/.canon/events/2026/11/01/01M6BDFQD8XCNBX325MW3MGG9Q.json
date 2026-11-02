@@ -1,0 +1,16 @@
+{
+  "id": "01M6BDFQD8XCNBX325MW3MGG9Q",
+  "ts": "2026-11-01T11:21:31.816Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 123,
+    "text": "hv's go after the compact and the fourth TUI batch, in vc's window (answers by the clock read 2026-11-01 08:33Z by date -u; hv's AFK word received before the clock read 2026-11-01 08:38Z), each as vc recommended unless named: the go ('Done. They're compacting now. Let's crack on.') relayed to devbin cc and dc and to every estate vc and sysadm by 08:31Z; hv typed kovacs-sysadm's ! line (Intent's preflight at 721b4efdc STARTed 08:30:00Z on slot RKPH84). Utilz: utilz-vc pushes main on hv's word (hv chose that over pushing it himself): local then upstream, one tests.yml dispatch, CI read to the end, the verdict by sha to vc; menuz goes to 0.4.10 for 2.14.9 (utilz-cc's hold 51 released; the XS bump rides the next push). Intent: 3.2.9 carries 0666, 0668 and 0669, each once judged green and landed, one not landed by the cut riding the next. Conflab: its todo 18 now (conflab-dc fixes ST0126/WP-06's records: release.ci.workflow: ci.yml declared, release.ci.summary undeclared on purpose; conflab-vc checks the rendered text). Then hv went AFK with vc holding the pen: 'I want to reiterate to you again in the STRONGEST possible terms: we are shipping ST0011 here, not finding net new code to write or new yaks to shave. Keep focussed on the end game.' Every off-path finding gets one line and no work (memory ship-st0011-no-new-yaks). hv again, first-hand in vc's window (received with the clock read 2026-11-01 11:16Z by date -u): 'IT IS NO USE DOING ANY OF THIS OTHER WORK UNTIL DEVBIN IS SHIPPED. Why are we doing work on other builds (which takes AGES) when the whole point was to get devbin fixed and up and running efficiently SO THAT THE OTHER BUILDS HAPPEN MORE QUICKLY?' So the desk grants devbin's ST0011 runs alone until 0.1.19 is cut and swept into the fleet: every other estate's ask is refused (six, 11:16Z to 11:18Z), and each estate vc is told to park its runs, asks, pushes and items for hv until vc says the sweep has reached it. And on the cache root (received before the clock read 2026-11-01 11:21Z by date -u): hv takes the XDG default, $XDG_CACHE_HOME/devbin, which is ~/.cache/devbin, with no Molt export; design.md s13's Molt line is superseded, amended at WP18."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M696AZKMJM9ZP6S9B7YRMQ2C",
+  "ts": "2026-10-31T14:38:07.476Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv's go at 2026-10-31 14:34Z (in vc's window), and hv's word right after it on WP02a: \"I know the old base is rubbish and any improvements will be worth it. I suggest we just bite the bullet and fix forward.\" So: no run and no more work on d282e845. Now, no lane needed: rebase WP02a onto the dc stack's tip refs/bank/dc/ST0011-05 aa2fb1d2 (on 1f37e5eb on d708e37b), applying your two critical critic findings and the two macos warnings in the rebase, and re-bank it there; under decision 83 it lands as run once the dc stack is on main with the same trees, so you do not wait for the landing. Also now: fix issue 0300 as its own unit (tests/releasestatus.bats:285's cut fixture sets -c user.name and -c user.email as leg_commit does), on main if the dc stack leaves that file untouched, else on the stack's tip, critic-reviewed; cover AC-1.1 and AC-1.2 with ATs and satisfy them from WP01's landed tests; confirm bc744227 carries WP01 and delete refs/bank/cc/ST0011-01; intent wp start ST0011/02. When each unit is review-clean, ask the desk for its run (the cut's and status arms under BSD and GNU, the tree scans, help, docs, guards, shellcheck, critic on the changed lib files), name its files in the ask and message me the id; run 3b holds the bats lane first and I grant a second lane as load allows. Then WP02b (WP03's two call lines, the ci.wait default of 60m under D61, AC-6.3, the ci keys), WP02c, WP07, WP08, each critic-reviewed before its first run and each landing covering and satisfying its ACs.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

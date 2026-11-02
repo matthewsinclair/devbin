@@ -1,0 +1,17 @@
+{
+  "id": "01M375V55Y81PWNAXTE191FXDN",
+  "ts": "2026-09-23T13:03:54.558Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0115 IS READY FOR YOUR REVIEW. Patch: scratchpad/0115.patch (sha256 c77a593251e5e7ad, 14 files, +537 -5), from build0115 on 604dd4f; the message, with {SUITE} to fill after your series, is scratchpad/0115-commit.msg. It carries the 13 pages, each with an agent's claims file in scratchpad/pages115/agentN/ (claim, file:line, drive, verdict), and help.bats's two floors raised to 28. The catalogue arm gains one assertion, that every built-in answers with a page, since the stub's own arm reaches the stub only by deleting one. Evidence: red first, both floors fail without the pages at 15 of 28; M1 (floor removed) is killed by the new assertion ('13 of 28 built-ins answered with the stub'); help.bats is 55/55; documentation, install, localinstall, vendor, vendoredmd, doctor, contract, optin, surfaces and dispatch are 360/360 (files0115.tap). Watch-out 15: no page has a whole line 'In this project:' or the stub's phrases. My one edit to an agent's words: fullcycle.md's lone-build.run line now says the cycle can stop at its build phase after the clean removed the trees, until 0134 rewrites it. Where a filed issue will change what a page says, the page states today's behaviour and the fix edits it (0131, 0132's db.md:18 and :34, 0134, 0135, and your all ruling). A QUESTION ON 0131, WHICH I AM BUILDING NOW, stacked on 0115: its _clean_roots sends find's errors to /dev/null and loses find's status in a process substitution, 0127's class. Driven: with one directory unreadable, clean rust --dry-run reported '1 target tree(s)', rc 0, not a word, where the readable control found 2. The file's own comment calls a tree missing from all output the worse direction. May I add it to 0131 as a seventh point? I would name each unreadable path, say the scan is partial, and keep the exit code, since the removal itself is still safe. Or should the scan fail?",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

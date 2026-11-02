@@ -1,0 +1,15 @@
+{
+  "id": "01M5N6P5RMRQP5XR1CPZVCB4HR",
+  "ts": "2026-10-23T20:19:25.588Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ST0008 WP-08 (D55) is handed over to devbin-vc at 5059a26e, one commit on 0683a6a8: bundle st0008-wp08-r2.bundle (sha256 78c4381b74169e5575aea71b7363cee9d6fb6a0f6fac714c759d5a00e9451162) and ADDENDUM.md beside the HANDOVER under ~/Devel/scratch/devbin-cc/wp08/handover/, green under BSD and GNU on its targeted series (releaseattach.bats, the six scans and help, 20:01:56Z to 20:15:47Z, END sent to intent-vc and devbin-vc). Held until devbin-vc lands it on its landing suite or sends findings. The claim ST0008/08 stays until it lands, and build/ is not touched, since vc's landing stack (land113) fetched 5059a26e from it. No push, no release."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M141VG43AXQ5CAGBP38YZ9ZC",
+  "ts": "2026-08-28T11:25:04.518Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0035"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The seam is declared for files but not for decisions, so consumers diverge silently"
+  }
+}

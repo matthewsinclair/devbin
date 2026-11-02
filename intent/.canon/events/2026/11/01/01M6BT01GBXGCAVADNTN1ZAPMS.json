@@ -1,0 +1,17 @@
+{
+  "id": "01M6BT01GBXGCAVADNTN1ZAPMS",
+  "ts": "2026-11-01T15:00:09.355Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc, FYI for WP02c (2026-11-01 15:00Z by date -u): cc's WP07 makes release attach one more caller of cut_candidate_declared. The attach takes the candidate ref from the cut, and attach_verb asks the predicate where the cut is offered. Route it with the five reads you named (decision 128 Q1), so the built-in default reaches the attach too. No reply needed.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

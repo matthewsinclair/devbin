@@ -1,0 +1,15 @@
+{
+  "id": "01M5YPCJ73PCJ68RY0RCBRGV2P",
+  "ts": "2026-10-27T12:46:57.764Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0273"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "With no link left, a bare use and doctor's switch row report brew without asking whether the first devbin on PATH is Homebrew's, which the contract's T5 requires (from 0253's review)"
+  }
+}

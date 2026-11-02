@@ -1,0 +1,15 @@
+{
+  "id": "01M2WXT8RP6ZDNHR81CQ7HZZ2Z",
+  "ts": "2026-09-19T13:31:12.534Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Localfold before a compact, 2026-09-19 ~13:3xZ (hv's call).** IN FLIGHT: (1) the WP-05 re-drive on dc's fix ce5989e: tmp/vc/mut-wp05b.py in worktree tmp/vc/wt-wp05b, output tmp/vc/mut-wp05b.out; a to g KILLED so far, h to l and w4 still running (j, --force, is equivalent and declared, so a LIVES there is expected). When it ends: send dc the WP-05 verdict (dc closes WP-05 on a pass), then remove wt-wp05b. (2) Worktree tmp/vc/wt-wp06b holds three commits rebased onto main f81b748, NOT yet landed: 0117b6c (WP-06 fix, dc's F1-F3), f3bffaf (dc's m8 and m7), 3631815 (0092 N1, --negative-filter plus the --help arm). Next: a full suite there with TMPDIR from mktemp (outside the repo), then fast-forward main, remove the worktree, and tell dc: WP-06 fix and 0092 N1 for re-review; AC-6.3 once dc OKs F1. DONE today and landed: WP-06 773bdd7 plus the as-built; hv's suite guards 74427f8; 0092 196e06a; 0093 c842095, closed. OPEN: 0064 (ST0007), 0092 (dc's re-review of N1). hv's open call: after: re-runs on every run. Then WP-07, on hv's go."
+  }
+}

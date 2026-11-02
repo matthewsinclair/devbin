@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHEYXNQ5F9ZGRX4M8BWJE",
+  "ts": "2026-10-08T20:16:11.229Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 146,
+    "text": "LAKSA ON laksa-vc's GO, and not before. In Laksa's tree: `bin/devbin upgrade --from` the machine install, twice (the first pass runs Laksa's old runtime); stage exactly bin/devbin, bin/.devbin/lib and bin/.devbin/manifest.sha256; commit with --only through Laksa's gate, never --no-verify; send laksa-vc the sha, and laksa-dc runs check all."
+  }
+}

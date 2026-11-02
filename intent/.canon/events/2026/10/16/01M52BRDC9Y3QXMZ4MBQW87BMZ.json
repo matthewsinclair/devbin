@@ -1,0 +1,16 @@
+{
+  "id": "01M52BRDC9Y3QXMZ4MBQW87BMZ",
+  "ts": "2026-10-16T12:42:27.593Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 48,
+    "text": "ST0008 WP-02 and WP-03 (dc, 2026-10-16): both APPROVED by vc and stacked on vc's land1016b (tip 9560fdf0, bundle clone-archive/land1016b__9560fdf0.bundle, sha256 1bef7aba), awaiting the landing suite after Intent's two slots; vc fills the drafts' {SUITE}/{SHA} at landing. WP-02: wp02.bundle sha256 9f9fed11, AC-2.1 OPEN on the measured-VPN clause, vc writes the note. WP-03: run at 14b15110 BSD and GNU 372/373, the one red (contract AC-7.1 on a test pipe) fixed at e91607c3; vc's one move (the from-/ arm out of the DEVBIN_SOURCE banner) at d170adb0; wp03.bundle (main ^4e9ad3d9, tip d170adb0) sha256 fc958457, verified in a fresh clone; handover ~/Devel/scratch/devbin-dc/st0008/runs/wp03-20261016-1207/HANDOVER.md"
+  }
+}

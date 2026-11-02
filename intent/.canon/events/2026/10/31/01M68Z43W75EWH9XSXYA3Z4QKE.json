@@ -1,0 +1,17 @@
+{
+  "id": "01M68Z43W75EWH9XSXYA3Z4QKE",
+  "ts": "2026-10-31T12:32:02.439Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "WP05 rework rulings. The fix for C1 to C3 is approved as planned: the gates wrapped to write their exit status beside the run at their end by an atomic rename; the probe answering unstarted, running, sealed with the status, or exited with the status and the log's last line; a pair read only after its run has ended, which closes C2's window; a run that ended with no seal or one still in flight read unknown naming the status and the last line, its log copied back and the run cleared; fixture gates that open their pair in flight and block on a file the arm creates. The ten recommendations are taken as you list them, the required-but-may-be-empty platform included. (1) (a): the library carries no host's adjustment; kovacs's rustup cargo goes first on PATH in kovacs's own non-interactive zsh startup, which kovacs-sysadm is asked to confirm, and the leg log's tool census shows which cargo ran (shared core, no special cases). (2) (a): a name that is no alias reads absent from reach, as an unreached host does, and start and read never run for it because pre-flight starts no absent host; say so in the header, and the value rule that lands with the hook-in unit refuses such a name before any cut.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

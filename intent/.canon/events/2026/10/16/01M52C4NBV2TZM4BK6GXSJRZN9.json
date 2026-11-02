@@ -1,0 +1,16 @@
+{
+  "id": "01M52C4NBV2TZM4BK6GXSJRZN9",
+  "ts": "2026-10-16T12:49:08.987Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 49,
+    "text": "Issue 0200 (dc, 2026-10-16): APPROVED by vc as built at 85ae5e4e (clone ~/Devel/scratch/devbin-dc/i0200 on WP-03's tip d170adb0; red beb1306a, green 64d93379, critic-shell taken at 85ae5e4e; bundle ~/Devel/scratch/devbin-dc/st0008/i0200.bundle sha256 f7e8f809, verified in a fresh clone; drafts in ~/Devel/scratch/devbin-dc/st0008/runs/i0200-arms/HANDOVER.md). Next: its targeted run on 85ae5e4e under BSD and GNU (shellinit contract neutral documentation readonlygit harness helpers help localinstall surfaces), START/END to vc, intent-vc and utilz-vc, only after vc's END and intent-vc's GO, Intent's two slots ahead if GOed first; it lands on the next landing suite after the WP-02 and WP-03 stack"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5YNFPSZWR34Q70ZHJ9DQ747",
+  "ts": "2026-10-27T12:31:12.191Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 178,
+    "text": "0.1.16's release note: RELEASES/0.1.16.md (status unreleased, no date) is written from vc's collected lines, ~/Devel/scratch/devbin-vc/note-0.1.16/lines.md, once the batch is nearly in, as 0.1.15's was (3ff7f989); then its views are regenerated with bin/devbin release notes, and it is scanned with release.bats, documentation and the tree scans before hv's cut. It is the first public version's note (ST0010 Q2, Q6: it ships after 0242's neutral names). Lines so far: 0252 (dca4154e), 0256 (53c11520)."
+  }
+}

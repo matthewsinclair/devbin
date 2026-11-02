@@ -1,0 +1,15 @@
+{
+  "id": "01M4WWMMKNCMQ1CJAAYPF4B8QH",
+  "ts": "2026-10-14T09:42:03.126Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0195"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "devbin has no Homebrew formula and installs only from a local checkout -- brew install it on macOS and Linux, from its release tag, as the machine install projects vendor from"
+  }
+}

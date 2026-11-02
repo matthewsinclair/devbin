@@ -1,0 +1,15 @@
+{
+  "id": "01M69SH52ANMQFQMXXZMJ6QMB3",
+  "ts": "2026-10-31T20:13:32.618Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31 about 20:10Z (in cc's window, relayed verbatim by cc): fifth fold order, 'Ok, context is high, please bank what we have and coordinate an estate wide (ignoring trellis-{vc,cc} for now) clear out of whatever can be cleared out, then a loclafold+compact, then hold. When everyone is done folding and cleaning up, please give me summary of where we are at with respect to the original objective, ie to deliver on ST0011.' Run by vc as the fourth was: the bats, cargo and heavy lanes held at 2026-10-31 20:13Z (ids in the fold's hold record), the light lane open for Trellis; cc's running dev check 01M69RVWN7QW558AW8RZWTK61D finishes and releases itself, nothing new runs; every session but trellis-vc and trellis-cc banks what is in flight, clears what can go (landed worktrees by the whiteboard checks, scratch no cited record needs, handled messages, executed decisions, spent holds), localfolds without release, sends vc one fold line, compacts when hv types it, holds. trellis-ic, trellis-9e and geodica-estate are outside this work and hv is using trellis-ic live, so vc leaves them alone and asks hv. vc writes the ST0011 summary for hv, as the pen, from cc's and dc's parts and the estates' lines; cc tells hv so in its window. Nothing public."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M68R1DRM284G4Q21R70T2FQ0",
+  "ts": "2026-10-31T10:28:14.228Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 181,
+    "text": "FOR hv (ST0011, on hv's inbox from vc 2026-10-31): WP09's go and version (rec 0.1.19: every estate pins ^0.1); the sweep path (rec: opt plus fleet upgrade). Answered 2026-10-31: the decision 40 carve-out (granted, every login announced to kovacs-sysadm) and the twelve questions (decision 90). Until hv rules on the two left, nothing is cut and nothing is swept."
+  }
+}

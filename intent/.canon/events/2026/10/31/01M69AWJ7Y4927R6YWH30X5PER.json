@@ -1,0 +1,17 @@
+{
+  "id": "01M69AWJ7Y4927R6YWH30X5PER",
+  "ts": "2026-10-31T15:57:37.918Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "WP02b's scope, for your call before I design it. Your brief named WP02b as WP03's two call lines, ci.wait's default of 60m, AC-6.3 and the ci keys; my todo 54 also carries the loop itself. A read-only map of the cut's tail at WP02a's bank (~/Devel/scratch/devbin-cc/st11-wp02b/MAP.md, with my design questions in NOTES.md beside it) shows the loop is most of the work: it moves the tag after every leg (today release publish and a resumed cut both key on the tag existing), folds release publish's candidate and publish steps into the cut, needs a pushable remote for release.repo's candidate where today nothing maps one, and about 70 arms pin today's tail (releasecut 31, releasepublish 27, releasecore 7, status, ci-state and ci-workflow the rest). Two of your four items wait on dc (--fires; AC-6.3 on WP17). Proposal: WP02b, the ci keys and the checker (ci.wait 60m with its doc and arm; ci.query defaulting to the built-in, ci.workflow and ci.summary refused only beside a bespoke query, a ci-only block valid; is_branch_name and its three sites; the --fires call lines once dc's reader lands; AC-6.3 once WP17 lands); WP02c, the loop (every leg started together and one wait loop, AC-2.2; the candidate in every shape and its deletion on any stop, AC-2.3; tag and push on green; the retirements, AC-2.4: release publish, --expect, the ci step, ci.tag, ci.base and their cascades through the readers column and the formula's text), with todo 55's two items. Options: (a) as proposed, WP02b first, building its independent half while dc's two land; (b) the loop first as WP02b, since it waits on nothing of dc's, the ci keys and checker after; (c) one unit as todo 54 has it. Rec (b): the loop is the new shape's core and its largest risk, and nothing of it waits on dc, while the checker's two call lines would wait on dc's reader either way. Whichever you pick, a design note comes to you before any code, as for WP02a.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

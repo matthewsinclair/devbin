@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHBX6Z95ZMQ94A4H9D4SB",
+  "ts": "2026-10-08T20:16:08.102Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 46,
+    "text": "hv, 2026-10-03: devbin keeps no list of who uses it, in its runtime or its tests (a gate works by shape, and review holds names); the licence is Geodica Ltd's, one text at LICENSE and lib/LICENSE.md held byte-identical by test; every open item is an issue, built by cc, reviewed by vc and landed into one bundled release that hv cuts; intent/docs/devbin-users.md is hv's convenience: ignore it."
+  }
+}

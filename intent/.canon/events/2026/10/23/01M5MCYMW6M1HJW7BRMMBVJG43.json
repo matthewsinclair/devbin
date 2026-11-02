@@ -1,0 +1,15 @@
+{
+  "id": "01M5MCYMW6M1HJW7BRMMBVJG43",
+  "ts": "2026-10-23T12:49:40.230Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-23 in vc's session: \"Ok\" to (a). devbin-dc builds issue 0203 (the README's Homebrew section: full-name install, the tap as it now is) and sets up issue 0201's rhad fixture alongside ST0008 WP-08, so that 0.1.13 carries 0203 and 0201's rhad proof can run at 0.1.13. hv chose this over waiting for WP-08 to land, on vc's recommendation. intent-vc's ranking put D55 ahead of both and still governs vc's review queue. 0201: rhad's keg moved from 0.1.11 to 0.1.12 on 2026-10-17, so a fixture vendored now reads level. It is vendored from 0.1.12 into ~/Devel/scratch/devbin-dc/0201/ and kept, and the proof that a bare upgrade takes a new runtime runs after 0.1.13's brew upgrade. kovacs's half is not part of this ruling. Not put to hv again."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5W5J7EX86RWPXCT87T44AWH",
+  "ts": "2026-10-26T13:14:28.701Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0235, claimed: built at 0ba190c2 on b2799ae6 and handed to vc in ~/Devel/scratch/devbin-cc/0235/handover (0235.bundle 98218e27, COMMIT_MSG-0235.txt 474526cb, RESOLUTION-0235.md f3a0733c), the runs sealed in runs.sha256: use.bats red on main for each refusal arm and the A4 arm, the ./bin arm red on the first build (129b38ff), and green at the fix under BSD and GNU with machinepointer, targetdir, help and the tree scans, targetdir again with 0234/cargo2 on PATH; the critic-shell review's follow-ups are with vc to file. Released when vc lands 0235: cc runs the landing check (the landed blobs equal the bundle's, the sealed message, on main), then archives and clears the clones (build, base, red2, verify.git), keeping the handover and the runs. The claim drops when vc closes 0235 after hv's 0.1.15 cut on the green CI run of the head that lands it: then unclaim ISSUE:0235. Board-only commits from that green run until the cut, and no board write while the cut runs"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M4DQW7ZCSQRQR0BYANSMSRT0",
+  "ts": "2026-10-08T12:30:12.972Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "On call for vc: read RELEASES/0.1.10.md against the code when vc sends the draft, and fix any of dc's drafts vc asks for (vc, 2026-10-08, after batch 5 landed). Under hv's 12:24Z ruling: no tests of tests, no runs beyond what lands a fix."
+  }
+}

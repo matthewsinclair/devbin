@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 300,
+  "slug": "releasestatus-bats-s-cut-fixture-leans-on-git-s",
+  "title": "releasestatus.bats's cut fixture leans on git's auto-detected identity, which a host without a domain refuses",
+  "status": "closed",
+  "severity": "medium",
+  "created": "2026-10-31",
+  "closed": "2026-11-01",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the kovacs proof run of 2026-10-31 (ST0011 WP05, tip 8f3d95fe): Devbin's own gates ran on kovacs (Ubuntu, hostname without a domain) and releasestatus.bats:285, WP01's arm \"the gates are already once a sealed green stands for the release commit on this platform, pending before it, and not re-run past the tag\", went red because its cut fixture runs git commit with no identity set. git then auto-detects one: on macOS it gets matts@<host>.local and the arm passes, on kovacs it refuses with \"unable to auto-detect email address (got 'matts@kovacs.(none)')\". The arm passes or fails on an identity the host happens to give, which is the kind of host-shaped green issue 0052 is about. Fix (cc, with WP02a or the next lib/cmd/release unit): the fixture sets its own identity, -c user.name and -c user.email on the commit as releaselegs.bats's leg_commit does, or through the shared fixture helper if one makes commits for several arms, so the arm reads the same on every host. Evidence: the copied-back leg log under ~/Devel/scratch/devbin-dc/run3c/proof/tmp/release/legs/kovacs/ (8f3d95fe2473.log) and dc's reading of 2026-10-31 14:15Z. Nothing in the remote-leg runner caused it."
+}

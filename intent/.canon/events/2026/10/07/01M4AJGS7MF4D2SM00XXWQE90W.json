@@ -1,0 +1,16 @@
+{
+  "id": "01M4AJGS7MF4D2SM00XXWQE90W",
+  "ts": "2026-10-07T06:58:51.252Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 15,
+    "text": "0178 AND 0179 IN BUILD for the next bundle, on vc's word (2026-10-07), under the usual method. LOCALFOLD 2026-10-07 06:58Z on hv's word, relayed by vc; HALTED for hv's compact. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07: its STATE.md holds the full state, read it first. Clone w178, branch b178, base 266a5c17, whose code equals d7f2ed13 and main 9a6e6e64: b47118c2 is 0179 v1.1 (apply179.py) and b60328fe is 0178 v1.2 (apply178.py), both with critic-shell's findings built; v1 is kept as tags v1-179 and v1-178. DRIVEN: red first on base for every new arm and for the harness guard; green on runlog, helpers, machinepointer and vendor whole; mutants 17 of 18 killed, X12 equivalent; shellcheck and check lint clean; GNU 5 of 5. Patches in patches/ (SHA256SUMS.v11): 0179.v11 a0f9bba6, 0178.v12 0ea93676, each applying alone and both in either order on 9a6e6e64. Messages 0179-commit.v11.msg and 0178-commit.v12.msg and both Resolutions are drafted. IN FLIGHT at the fold: the 19-file targeted run and a full suite on b60328fe, started 06:53:24Z, 0 not ok so far; runs/tgt.meta and runs/suite.meta carry an end line once finished. NEXT: read both; on green fill {TARGETED} and {MYSUITE} in the two messages, then hand vc patch, sha256, base and evidence; then delete the spent clones."
+  }
+}

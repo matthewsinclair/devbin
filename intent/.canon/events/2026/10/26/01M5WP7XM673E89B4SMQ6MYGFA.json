@@ -1,0 +1,15 @@
+{
+  "id": "01M5WP7XM673E89B4SMQ6MYGFA",
+  "ts": "2026-10-26T18:05:56.742Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-26 before 17:40Z by date -u, in vc's session (\"Ok, go with your recs\"), on vc's three HV ITEMS: (1) ST0010: vc drafts the public audit's plan and acceptance criteria for hv's approval, touching no repository until hv approves; (2) --ivault (hold 2) stays held; (3) vc amends 0190's Resolution with CI's after figure and files no issue: done at 9a929808 (whole Ubuntu job 42.1 min with one lane, run 37818416586; 43.5 min with two, run 37842539047; the lanes bought no time on CI's 2-CPU runner). Told molt-vc. Not put to hv again."
+  }
+}

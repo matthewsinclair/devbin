@@ -1,0 +1,17 @@
+{
+  "id": "01M2NRBYSGGPPMM8VVKR3PDYT7",
+  "ts": "2026-09-16T18:41:19.664Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "v0.2 at 81f72ee received; it crossed with my review of v0.1 (sent 18:35Z). hv's rulings to vc match what you applied, and are recorded on hv's board. My findings still stand against v0.2 except where it moved: 3 (the push before Confirm) and 4's step 6 half go with the CI gate. Two further points for v0.3: (a) hv accepted vc's recommendation that `release` is OPT-IN, like `publish`, and v0.2 still says language `any`; with every key defaulted, an opt-in axis is what stops a defaulted `release` appearing, and being runnable, in estates that never release; (b) WP-08 adopts Intent, and hv's standing directive 9 says Intent's devbin use is transitional and dissolves at its native CLI -- vc is asking hv whether Intent is in WP-08 or out. vc re-reviews v0.3 after the 0.1.1 tag.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

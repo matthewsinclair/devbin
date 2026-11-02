@@ -1,0 +1,15 @@
+{
+  "id": "01M6BPK7D38GEZZZV8Y2KMTSGN",
+  "ts": "2026-11-01T14:00:43.683Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "After the sweep reaches Intent, intent-vc files Trellis's AGENTS.md swift-template bug in Intent's tracker. trellis-vc raised it on hv's word ('That's a bug. Raise it with devbin-vc and we'll sort it out over there'), received before the clock read 2026-11-01 14:00Z by date -u. With swift declared, intent agents sync renders Package.swift prerequisites and swift build and swift test for a project whose Swift is one Xcode project, built through bin/devbin build (ios, mac, archive) and tested with xcodebuild test in a desk slot. Two possible fixes: the swift template tells a Package.swift from an .xcodeproj, or a config key states a project's own build and test commands. Trellis carries a hand fix (6f9200f) that its next agents sync would revert. It is off ST0011's path: no work before devbin 0.1.19 ships (decision 123). sweep-plan.md carries it in intent-vc's message."
+  }
+}

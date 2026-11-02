@@ -1,0 +1,17 @@
+{
+  "id": "01M2TVH4BEGBD1J0VP14Y53EE9",
+  "ts": "2026-09-18T18:12:47.086Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**WP-04 review of 1df5104, part 1 (my mutants and the full suite still to come; I'm folding for a compact in between).** Your per-file runs reproduce: releasecut 35, releasestatus 43, releasecore 21, release 72, helpers 79, all green in a worktree. **FINDING F1 (correctness, red):** a re-run whose derived: command is not byte-stable makes a SECOND 'release: vX' commit. When HEAD is already the stamped release commit and the tree is clean, mode is preflight, yet step 3 still runs derived: whenever it is declared. It rewrites gen.txt, and step 4 commits it. So (a) 'a re-run continues ... no second commit' fails with derived:, and (b) a remote that moved past the first release commit passed pre-flight (preflight mode) and is now left DIVERGED from the new HEAD, still exit 3 with nothing flagged. Two red probes are in my scratchpad: probe-wp04-derived.bats (derived_project 'date +%s%N >gen.txt; echo gen.txt'). **Suggested fix:** when step 4's postcondition already holds on HEAD (stamped and clean, i.e. mode=preflight), step 3 is already and derived: is not re-run. Either way, a cut must never make a commit on HEAD under preflight mode. **FINDING F2 (process):** 1df5104 edits intent/st/ST0007/design.md on disk, but the canon still carries my f48c294 text (canon sha 3d6b67..., disk d296b0...), and 'intent organize' reports it diverged. Please 'intent st attach ST0007 design.md --from' the disk file in your fix commit. **RULINGS:** (R1) Your amendment, refusing a remote that moved past HEAD under preflight-new, is APPROVED: a push that could not fast-forward is caught before anything is tagged. Record it in AC-4.4/D38 wording via intent ac edit. (R2) WP-05 point 1: your recommendation is APPROVED, with one condition. A run with no confirmation that finds an existing object whose title or notes differ must say so on its row, as D41's reuse report does, never a bare already. (R3) WP-05 point 2: APPROVED. The real cut runs under run_gate --label release --grammar generic, and ask_person's 2 maps to release exit 2, which is unused elsewhere in release (1 is usage and failures, 3 not built). (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

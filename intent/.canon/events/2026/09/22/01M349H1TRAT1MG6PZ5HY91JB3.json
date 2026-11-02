@@ -1,0 +1,15 @@
+{
+  "id": "01M349H1TRAT1MG6PZ5HY91JB3",
+  "ts": "2026-09-22T10:10:34.456Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "THE 0.1.6 NOTE CARRIES AN EXPERIMENT AND ITS OWN TEXT ORDERS THE CORRECTION. RELEASES/0.1.6.md, first Known limitation, says the tag trigger firing and the path filter not suppressing it rest on GitHub documentation alone, that this release IS the experiment, and to correct the sentence in whichever direction the two runs settle it. Settled so far, read from the JOBS and never the run conclusion (watchout 15): the pushes produced TWO separate tests.yml runs one second apart, 35714257160 on main and 35714259048 on v0.1.6, so the tag trigger fires, paths-ignore did not suppress it, and the two did not cancel each other because a tag is its own ref; and Test on macOS (bash >= 5 floor) is SKIPPED on the main-push run and REQUESTED on the tag run, neither of which has ever happened here before. STILL OPEN: both Test Summary verdicts, which is the half that would have turned every push red under the old script, and the tag run Ubuntu and macOS conclusions. Not finished until the corrected sentence is committed, and it is corrected in whichever direction the runs settle it."
+  }
+}

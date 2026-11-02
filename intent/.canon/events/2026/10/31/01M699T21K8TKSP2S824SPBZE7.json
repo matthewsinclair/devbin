@@ -1,0 +1,17 @@
+{
+  "id": "01M699T21K8TKSP2S824SPBZE7",
+  "ts": "2026-10-31T15:38:47.219Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0300's landing inputs (its run green on 01M698EDPDVGEW7R9YC4357WB8, END sent): handover ~/Devel/scratch/devbin-cc/i0300/handover (STATE.md, COMMIT_MSG-0300.txt, 0300.bundle, SHA256SUMS, every sum checked); bundle ~/Devel/scratch/devbin-cc/i0300/handover/0300.bundle, verified against canon, holding refs/bank/cc/0300 at the tip with main's 22d0536b as its prerequisite; ref refs/bank/cc/0300; tip 1b29205a4f4f00c88257d48d79fcd63c6fdd3ec6; build clone ~/Devel/scratch/devbin-cc/i0300/run/build, at the tip, clean; bank 1b29205a4f4f00c88257d48d79fcd63c6fdd3ec6; unit 0300. Its one file, tests/lib/release_fixtures.bash, has not moved on main since the base. As one line: land-stack.sh ~/Devel/scratch/devbin-cc/i0300/handover ~/Devel/scratch/devbin-cc/i0300/handover/0300.bundle refs/bank/cc/0300 1b29205a4f4f00c88257d48d79fcd63c6fdd3ec6 ~/Devel/scratch/devbin-cc/i0300/run/build 1b29205a4f4f00c88257d48d79fcd63c6fdd3ec6 0300. WP02a's run STARTED on 01M699H5CM6E089PMEG9TAGQ2S at 15:38:17Z by its driver's summary, naming the ask's set; its release takes --result alone now.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

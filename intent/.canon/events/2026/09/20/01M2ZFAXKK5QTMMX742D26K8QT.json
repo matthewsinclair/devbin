@@ -1,0 +1,15 @@
+{
+  "id": "01M2ZFAXKK5QTMMX742D26K8QT",
+  "ts": "2026-09-20T13:15:52.819Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "UTILZ SWEPT-PENDING-CI, landed 2026-09-20 13:1xZ. Utilz tagged 2.10.0 at 902a72d with CI green (run 35512150262, 7 jobs), which lifted hv's decision 8. Landed Utilz ALONE, not by re-running the fleet distribution: bin/devbin upgrade --from ~/Devel/opt/devbin inside Utilz (3 added, 18 updated, 24 unchanged), then commit 633a1a12d of the vendored pathspec only, 22 files, through Utilz's gates with no --no-verify. Mirrored to its local remote, then pushed to upstream on hv's yes; CI run 35512936209 is in flight and utilz-vc watches it. Utilz counts as swept when that reads green, by its own rule. Remaining: Laksa, held for its deploy."
+  }
+}

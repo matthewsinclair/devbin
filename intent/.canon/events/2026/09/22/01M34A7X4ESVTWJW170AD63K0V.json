@@ -1,0 +1,15 @@
+{
+  "id": "01M34A7X4ESVTWJW170AD63K0V",
+  "ts": "2026-09-22T10:23:03.310Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0110 SHIPPED A PATH FILTER THAT SUPPRESSES NOTHING, and the fix plus the note correction are both pending hv ruling for the FLEET (2026-09-22). paths-ignore on intent/whiteboard/** cannot suppress a board write, because intent wb also writes a canon event under intent/.canon/events/** and GitHub requires EVERY changed path to match. Two independent errors in the notes 47% figure, each of which alone reads as reasonable. WRONG UNIT: GitHub decides per PUSH, not per commit -- \"When all the path names match patterns in paths-ignore, the workflow will not run\" and \"A two-dot diff compares the head and base SHAs directly with each other\". WRONG ERA: the 30-day window straddles the move from hand-authored boards to generated views. Re-measured at the push, using tests.yml run head SHAs as real push boundaries (sound because before today there was no filter, so every push to main started a run) with git diff --name-only prev cur: 65 real pushes in 30 days, 9 suppressed (13%) by the whiteboard line and 15 (23%) with intent/.canon/** added; over 14 days 32 pushes, ZERO by the whiteboard line and 6 with canon. Every whiteboard-only suppressible push is 10 Aug to 3 Sep and single-commit; every one since 16 Sep needs the canon line. Last push the shipped line would have caught: 2026-09-03. PROPOSED to hv: add the canon line fleet-wide riding the unpushed sweep (ci-workflow.bats passes unchanged, it is a presence check), rewrite the 0110 claim in RELEASES/0.1.6.md to push-level figures, and rename the arm titled \"a push that moves only a board starts no run\" which makes a behavioural claim its assertions do not make. hv has ruled ADD for Utilz in utilz-vcs session; that is NOT taken as a fleet ruling (hold 4s precedent: a peer relaying hv is not hv). NOT FINISHED until hv rules for the fleet and the note reads true."
+  }
+}

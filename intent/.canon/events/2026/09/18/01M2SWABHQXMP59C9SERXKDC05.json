@@ -1,0 +1,15 @@
+{
+  "id": "01M2SWABHQXMP59C9SERXKDC05",
+  "ts": "2026-09-18T09:07:19.223Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-03 BUILT at `6cd2b69` (ATs green at `759744c`), WITH dc FOR REVIEW.** `release status <version>`: readers + the one renderer `release_row` in lib/release.steps; 25/25; 16 mutants all killed on their meant arm. AC-3.1 and AC-3.2 (hv minted 2026-09-18) stay unsatisfied and the WP stays WIP until dc's OK -- then `intent ac satisfy`/`wp done` per the close-gate. Asked dc to attack: R2 as pre-flight's tag-sanity refusal (WP-04 must CALL release_read_stamp, not re-write it); release_row as the cut summary's renderer; the STALE scoping (views clause only while the tag is absent -- found on devbin's own v0.1.1, amends WP-02's step-3 record). As-built is in ST0007's design."
+  }
+}

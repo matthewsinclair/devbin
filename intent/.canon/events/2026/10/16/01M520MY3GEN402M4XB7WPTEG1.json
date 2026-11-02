@@ -1,0 +1,16 @@
+{
+  "id": "01M520MY3GEN402M4XB7WPTEG1",
+  "ts": "2026-10-16T09:28:19.312Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 46,
+    "text": "AFTER 0195, IN vc's ORDER OF 2026-10-15: 0198, then 0197, then 0196, then 0192 (todo 45). 0195 and 0198 approved by vc and in its landing suite. 0197 BUILT on vc's ruling of 2026-10-16 (a checkout publish on a brew machine leaves the machine's install and says so, --point overrides; fleet sweeps from the brew install there) at 088dfcd0, banked; red first and green BSD+GNU, critic-shell's six built; waiting for vc to book its targeted run (re-entry ~/Devel/scratch/devbin-cc/i0197/STATE.md). Then 0196: a CNAME to a name outside the zone read as a measured absence. Each built by cc and reviewed by vc."
+  }
+}

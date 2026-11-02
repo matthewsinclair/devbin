@@ -1,0 +1,27 @@
+# .intentfiles -- WHICH DATABASE ARTEFACTS ALSO HAVE A REALISED FORM ON DISK.
+#
+# First written on hv's order 2026-08-26 from thread status, when it declared every
+# OPEN thread. Narrowed on hv's order 2026-10-31: a WIP thread and an OPEN issue are
+# declared, and nothing else. A thread in triage, completed or cancelled, and a closed
+# issue, live in the store alone; `intent st hydrate <ID>` realises one on demand and
+# `intent organize --apply` reconciles the tree with this list.
+#
+STEELTHREAD:ST0011
+ISSUE:0298
+ISSUE:0299
+ISSUE:0301
+ISSUE:0302
+ISSUE:0303
+ISSUE:0305
+ISSUE:0307
+ISSUE:0308
+ISSUE:0309
+ISSUE:0310
+ISSUE:0311
+ISSUE:0312
+ISSUE:0313
+ISSUE:0314
+ISSUE:0315
+ISSUE:0316
+ISSUE:0318
+ISSUE:0319

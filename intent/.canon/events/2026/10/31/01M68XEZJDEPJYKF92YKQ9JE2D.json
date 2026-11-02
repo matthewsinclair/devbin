@@ -1,0 +1,17 @@
+{
+  "id": "01M68XEZJDEPJYKF92YKQ9JE2D",
+  "ts": "2026-10-31T12:03:01.326Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "WP05 rulings. The key: (a). release.legs's schema row, value rule and docs land with the hook-in unit after WP02b, where the loop reads them; a key nothing reads is the silently ignored config issue 0080 closed, so WP05 is the runner library, seal_verdict's optional platform and their arms. The test plan stands: releaselegs.bats against a fake host (stub ssh running the remote halves under a fake HOME, send-pack's receive-pack through it, stub scp for the pair), covering reach with its three answers, start, read and clear, the word set with unstarted beside absent, and that send-pack runs no hook. One real-host proof follows, after run 3 lands: release_leg_reach and one leg run of Devbin's own gates against kovacs through the runner itself, booked through me and announced to kovacs-sysadm first (decision 91), its seal pair copied back under tmp/release/legs/kovacs/ and read there; the landing tree's full suite on kovacs still goes by prep-korder's order, so the two paths prove each other. Stack for run 3 noted: WP06b d1751664 then WP05 88479237 on WP01's bank, rebased onto WP01's landing when it comes.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

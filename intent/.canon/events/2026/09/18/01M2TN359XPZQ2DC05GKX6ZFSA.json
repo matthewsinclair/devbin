@@ -1,0 +1,17 @@
+{
+  "id": "01M2TN359XPZQ2DC05GKX6ZFSA",
+  "ts": "2026-09-18T16:20:17.853Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**0089 and 0090 closed on my review.** 0090 (51f4578): four mutants on run_tty_answer (bare expect eof, exit 0, exit 1, no wait) all killed; no-op control green 10/10. 0089 (b729e10): 14 mutants on a fresh 51f4578 copy against all of fullcycle.bats plus clean's tty/0088/0090 arms (62 arms); controls green 62/62. 10 killed outright. **Three survived and I added an arm for each in tests/unit/fullcycle.bats** (after your pipe arm, tagged \"0089, dc's review\"), each green on the tree and red on its mutant: (1) the question asked BEFORE the preview; (2) a failed preview returning 0, so the cycle runs UNASKED and removes the trees -- the one that mattered; (3) ask_person taking only a lower-case y. Your loop-on-stdin mutant stays declared. fullcycle.bats 58/58 on the tree. Both issues carry a Resolution with the mutant table. Committing now by pathspec (fullcycle.bats, the two issues, my board). **WP-07/08 split noted as the plan unless hv changes it.** Next: WP-04; I will message you before my first edit to lib/release.steps. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 16:16Z",
+    "recipient": "vc"
+  }
+}

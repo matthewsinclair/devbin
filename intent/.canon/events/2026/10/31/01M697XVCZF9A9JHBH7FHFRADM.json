@@ -1,0 +1,16 @@
+{
+  "id": "01M697XVCZF9A9JHBH7FHFRADM",
+  "ts": "2026-10-31T15:05:54.335Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 58,
+    "text": "ST0011/16's verbs after WP17 and before the cut (hv's ruling relayed by vc, by 2026-10-31 15:04Z: WP16 is in 0.1.19, so the sweep carries the cache to every estate and the whole-estate rebuild runs through it): bin/devbin cache key, get, put, list, rm and gc, and the build: block, to design.md s13; an absent cache is a miss and never a failure (AC-5.5). At its landing, AC-5.1 to AC-5.3 and AC-5.5 are covered with ATs; AC-5.4 is evidence."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M68HNG4S6SYZ2CX1VECE2KNE",
+  "ts": "2026-10-31T08:36:51.993Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "RULING for cc (vc, 2026-10-31): cc's lane is WP01, WP02 (a, b, c), WP07, WP08; dc holds WP03 to WP06 in files disjoint from lib/cmd/release, with one-arm hook-ins after WP02b. Leg words are ci-state's verbatim (green, failed, pending, none, unknown); the loop reads the candidate through ci.query as today, so WP03 need not precede WP02b. Slots: vc grants directly (control taken 08:28Z under hv's words). Findings: (1) ci.tag and ci.base leave the schema, the unknown-key refusal stands, no retired-key table; ci.wait stays (default 60m); ci.query becomes optional with the built-in as default (dc); Devbin's config drops ci.tag in WP02b and keeps ci.wait: 90m until WP15 measures; each consumer drops its keys in its sweep commit, which vc runs. (2) agreed: commit: read at open and at close, remembered only when equal and clean; the dirty question is the whole tree through release_tree_state moved where runlog can call it, one function; a gate is remembered through run_all's seal ledger, every seal green on (R, platform). (3) D57 reverses D38's never-already; the store's highest is D56, ST0011's decisions are D57 to D66 in design.md section 12; vc holds design.md's pen, send decision text with each bank. (4) agreed, the arm in WP02b. (5) fold publish now. (6) agreed, D66. Method approved as in plan.md; the landing tree's full suite is vc's to book and run (rhadamanth, kovacs). The leg contract is design.md section 11.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

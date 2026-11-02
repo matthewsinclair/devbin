@@ -1,0 +1,15 @@
+{
+  "id": "01M5W0JRM1H6RSZCAAM9ZERY2J",
+  "ts": "2026-10-26T11:47:23.393Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-26 (about 11:40Z by molt-vc's stamp), relayed by molt-vc: a tool to list and remove landed worktrees goes in DEVBIN, as an issue for devbin's next release (not 0.1.15), so every estate gets it; Intent adds only the fold text in 3.2.7. intent-vc's reading is the spec: each linked worktree is reported as landed, held or unknown, with evidence (ancestry, patch-id against main and the banks, the base-plus-bank tree); its remove-landed form removes only the provable ones and refuses any with untracked files, unlanded changes or a process standing in it. intent-vc's two inventory scripts are its measure (asked of intent-vc between 11:44:32Z and 11:44:52Z by date -u). vc files the issue once 0.1.15 is cut. Not put to hv again."
+  }
+}

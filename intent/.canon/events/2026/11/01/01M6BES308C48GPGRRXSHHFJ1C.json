@@ -1,0 +1,16 @@
+{
+  "id": "01M6BES308C48GPGRRXSHHFJ1C",
+  "ts": "2026-11-01T11:44:07.176Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 73,
+    "text": "ISSUE:0306 (vc decision 120). GO from vc on hv's word in vc's window, received by 2026-11-01 11:42Z: \"Ok, now everyone is on hold waiting for you to get the release out. Push on.\" Building in a fresh clone at main 54c16f33 (~/Devel/scratch/devbin-dc/0306/build2) to the design in 0306/NOTES.md: write_errors_file stages the red seal beside the seal with stage_beside (the failure blocks, or the log's tail when those come to nothing), holds RED IS NEVER EMPTY on the temporary, then renames it over the seal with rename_staged (no new mv line); on any failure the seal stays in flight with one warning, never written in place. Two arms in runlog.bats. Then critic-shell over the diff before its first run, the pre-bank scans with the lint gate in series, the WIP commit and its bank by fetch and CAS. ORDER (vc, with the go): cc's WP02b-1 adds 7 lines to runlog.bats, so its unit runs first (decisions 83 and 120 R1); 0306's red clone and run come after WP02b-1 lands, rebased onto that landing, with runlog.bats's merge read before the red clone. RUN SHAPE (vc, ruled): the arms red at a red clone at the landed base, then green at the tip under GNU; the light phase under GNU (runlog, helpers, the tree scans, help); the whole suite under BSD, since every red run seals through write_errors_file. If WP17 is banked with its critic settled when 0306 is ready to ask, the two ask as one stack (disjoint files: each unit's arms red at its own red clone, one light phase, one whole suite); 0306 never waits for WP17."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M524BXVM0JV1H17GETHX278B",
+  "ts": "2026-10-16T10:33:18.452Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 46,
+    "text": "vc's ORDER (2026-10-16): 0192 (todo 45, phase 1 on vc's ruling (a)), then 0199. Landed today: 0195 (93259543), 0198 (10ae01c9), 0197 (855ad640), 0196 (7842c4b1). 0192 BUILT (one real install per file into a read-only cache, a copy per test; tamper and leak arms red on main and green BSD+GNU) at d8b5ee3b on 2ec8ac86; critic-shell running; rebase onto main 7842c4b1, then the timing of the nine files back to back (booked by vc after dc's WP-02 run), then its handover (re-entry ~/Devel/scratch/devbin-cc/i0192/). 0199 (fullcycle.bats:1020's absolute 9s wall bound, filed at a90ad02d) after. ST0008 (hv, fb532bd4): cc stays on brew and maintenance; WP-01 to whichever of cc and dc is free first."
+  }
+}

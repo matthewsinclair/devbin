@@ -1,0 +1,15 @@
+{
+  "id": "01M2TA7XA5RE46GEWPNVY3VA54",
+  "ts": "2026-09-18T13:10:39.173Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Full suite at 3202b28 (dc's 0088 review follow-up), started 13:10Z:** output in scratchpad/full-3202.out, TMPDIR tfull5. dc is holding lib/bin/tests to scratch. On green: tell dc (who then closes 0088). Still waiting: dc's AC-3.2 OK on ea7bc47 (then todo 72's tail), dc's fullcycle nested-gate issue (take it to hv with options), and possibly a run_tty_answer status-gap issue."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M374NC0CJHMTWMMZ1GJP721W",
+  "ts": "2026-09-23T12:43:16.366Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0134"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "fullcycle: --dry-run runs the project's build, a lone commands.build.run passes the rebuild check and the cycle deletes the trees before `build all` refuses, and four smaller points"
+  }
+}

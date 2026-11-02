@@ -1,0 +1,15 @@
+{
+  "id": "01M5W7H3E8R5AQA6S6CQPQ8F9W",
+  "ts": "2026-10-26T13:48:48.968Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLDING ON hv's WORD until hv says to go on (relayed by intent-vc, 2026-10-26 13:45Z: 'ok, carry on. Then we need to hold as I need to move.'): once Intent's push is made, nothing new starts. CI run 40331608642 on f06bad4a, running before the hold, is read when it ends and its verdict relayed; the heavy slot for hv's 0.1.15 cut is asked only once hv says go on; intent-vc's worktree reading (todo 173) waits too. Released when hv says go on."
+  }
+}

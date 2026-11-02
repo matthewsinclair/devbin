@@ -1,0 +1,16 @@
+{
+  "id": "01M54835DMCYA7M5321GBCR3CE",
+  "ts": "2026-10-17T06:16:54.452Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 24,
+    "text": "ST0008 WP-01 v3 and issue 0194 APPROVED by vc; vc lands (stack 772f6b87: 0200, WP-01 v3, 0194, AT ids, WP-04; 8e85faa1 to add). Joint clone ~/Devel/scratch/devbin-cc/wp01/joint, branch joint at 8e85faa1 = 1dadcaa3 + 908fbf29 (WP-01 v2) + 6769091b (0194) + 03fd40b4 (AT-2.2/3.1/7.1) + 07543c65 (WP-01 v3: line endings notes an unreadable file, doctor find_walk form, SC1091 disable) + 8e85faa1 (AT-1.1 to AT-1.3). Joint 26-file run on 03fd40b4: 1358/1362 BSD and GNU, 4 red, all WP-01's, fixed in v3; v3 fix run (doctor, contract, lineendings) 109/109 BSD and GNU. Banked: clone-archive/wp01__joint__8e85faa1.bundle (cf2122f8). Drafts: wp01/handover/wp01-commit.v3.msg (c713c773) and HANDOVER.v3.md (0f7d8347: AC notes, AT rows to mint, WP done text). On landing: unclaim 0194, remove clones after banking. r1/r1-brew.sh (798d2bd6) approved as R1's brew half, read-only."
+  }
+}

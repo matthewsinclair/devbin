@@ -1,0 +1,15 @@
+{
+  "id": "01M5S58GEA1R53RR2GYB4AZ3VJ",
+  "ts": "2026-10-25T09:11:26.922Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc, 2026-10-25, on cc's 0227 design question (hv may veto): (1) assets mode is a template the project keeps, with devbin filling only what it reads from the release (version, per-asset sha256, revision, a generated install body); (2) at a cut, the person's yes at the confirm step is the yes for the tap push its after: step makes: the core exports DEVBIN_RELEASE_CONFIRMED=<tag> to after: commands only when confirm was answered at the prompt, never under --yes, and formula publish skips its own ask only for that exact tag; run alone, publish asks. Tighter than today (today's after: publishes with no ask). Not (2) no ask under a cut, (3) a hand publish after each cut, or (4) reopening 0158's nested-dispatcher rule."
+  }
+}

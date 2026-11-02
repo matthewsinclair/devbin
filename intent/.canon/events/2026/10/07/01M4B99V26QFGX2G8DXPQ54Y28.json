@@ -1,0 +1,16 @@
+{
+  "id": "01M4B99V26QFGX2G8DXPQ54Y28",
+  "ts": "2026-10-07T13:37:00.999Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 43,
+    "text": "0184 v2.1 READY but for its container run (localfold 2026-10-07): a lint check killed in the parallel run, or left with no verdict or never started, is checked again alone before it counts, a line says both runs' results, and a status-1 check is never run again. v2.1 at aed7af10 in ~/Devel/scratch/devbin-dc/0184/s over base 540e0e4b; patch 0184/drafts/0184-v2.1-aed7af10.patch, sha256 9e6166b0...fa47, applies clean on main 7d1a3f4c. macOS 26 of 26 variants as aimed under BSD and GNU (every mutant red at its aim, red on main first); targeted 272 of 272 under each; the v2 container run 26 of 26, and unpinned in its 4 GiB VM main's gate counted 6 breaches where 0184's checked the six killed files again and passed; critic-shell's two rounds folded in. In flight at the fold: the v2.1 container run, 0184/runs/ubuntu-v21-20261007-131816.log. Next: read it, fill the Resolution, hand to vc. Full state: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

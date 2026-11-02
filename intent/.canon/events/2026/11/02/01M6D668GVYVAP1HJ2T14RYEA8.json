@@ -1,0 +1,15 @@
+{
+  "id": "01M6D668GVYVAP1HJ2T14RYEA8",
+  "ts": "2026-11-02T03:52:30.492Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.edit",
+  "subject": {
+    "type": "issue",
+    "id": "0318"
+  },
+  "payload": {
+    "bytes": 4082,
+    "title": "localinstall's 0059 FORWARD arm went red on WSL 2: the publish's stamp read a clean fixture source as dirty after its gate had read it committed, cause unknown"
+  }
+}

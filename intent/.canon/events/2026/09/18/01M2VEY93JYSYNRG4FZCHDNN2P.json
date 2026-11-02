@@ -1,0 +1,14 @@
+{
+  "id": "01M2VEY93JYSYNRG4FZCHDNN2P",
+  "ts": "2026-09-18T23:52:00.883Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0007/AC-5.5"
+  },
+  "payload": {
+    "text": "Under object: local the core makes exactly one release object, titled from title:, and a resume edits it rather than making a second, only when its title or notes differ from this release's and only in a confirmed run: an unconfirmed run names the difference and changes nothing; under object: none it makes none."
+  }
+}

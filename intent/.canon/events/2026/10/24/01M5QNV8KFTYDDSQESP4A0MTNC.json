@@ -1,0 +1,16 @@
+{
+  "id": "01M5QNV8KFTYDDSQESP4A0MTNC",
+  "ts": "2026-10-24T19:22:49.840Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "ISSUE:0220, ISSUE:0221 and ISSUE:0222 resolutions (drafts in ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0220-0222.md): wait for vc's landing of the bundle (tip 3dcdd1a0, four commits) and its landing suite, and for 0222 the CI Ubuntu run on the pushed commit; then fill in the landed shas, suite and run for vc"
+  }
+}

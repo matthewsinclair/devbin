@@ -1,0 +1,16 @@
+{
+  "id": "01M63RQ92MZ61HH17BVE8624XT",
+  "ts": "2026-10-29T12:03:58.165Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc): 0.1.16 cut (6e193c60, local only) carries 0239-0242; next is hv's: choose the route (audit as planned, or a recreate), then audit, approval, release publish."
+  }
+}

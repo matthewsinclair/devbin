@@ -1,0 +1,16 @@
+{
+  "id": "01M5W6PS0MAZBNKF8DCJPN71Q3",
+  "ts": "2026-10-26T13:34:26.324Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 0.1.15 is devbin's ONE next release (decision 63), carrying 0213 and 0220 to 0235. hv started the cut, stopped it for T5 and took the release commit 7b10dd37 off main (decision 73); T5 is issue 0235, to contract A4 (decision 74). 0235 LANDED at f5df4614 (cc's 0ba190c2) with its release-note line at f06bad4a (vc's 4756e0af), after land235's run (use, machinepointer, targetdir, release, the tree scans and help, each file alone, BSD then GNU, 13:16:44Z to 13:32:38Z on 2026-10-26: every file ran to its plan, nothing failed, only harness's expected skips), and was PUSHED to upstream 39300b37..f06bad4a, read back at 13:33:28Z. NOW: CI run 40331608642 on f06bad4a, watched by vc and read from its jobs, its Test Summary and its TAP against 40302760947's skip set: green there is the cut's green and 0235's Linux proof, with K115 carried (hv's (a)). Then vc asks a heavy slot for hv's cut (intent estate slots ask, the id to molt-vc) and hv cuts, with only board commits between that push and the cut (watchout 37) and no board write at all once the cut is asked. Then 0222 and 0232 to 0235 close on that run, and the tag's run is read (todo 171). ST0010's public steps (decisions 52, 56, 59, 60) follow the cut. Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

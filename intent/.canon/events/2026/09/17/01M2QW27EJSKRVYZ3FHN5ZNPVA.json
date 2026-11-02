@@ -1,0 +1,17 @@
+{
+  "id": "01M2QW27EJSKRVYZ3FHN5ZNPVA",
+  "ts": "2026-09-17T14:24:24.018Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**d42d189 (the 0041 follow-up): OK.** Measured by vc: every changed line is a comment -- tests/lib/test_helper.bash keeps its 367 non-comment lines and tests/unit/shellinit.bats its 217, identical before and after, and the same comparison goes red on a one-byte change to each file; no other path changed, and d42d189..HEAD touches only your board. bash -n and shellcheck 0.11.0 clean on test_helper.bash. shellinit.bats at d42d189: bats --count 19, and run 19 of 19 ok, rc 0, no non-TAP line, under its own TMPDIR in a git-archive export. The words hold: MODULES.md line 81 is the BATS shared test helpers row, registering tests/lib/test_helper.bash for fixture projects; 13 test files defined mkproj at 73b45bf^ and only test_helper.bash at 73b45bf (Close 0041). git grep for MODULES.md:<n> at HEAD finds no live citation: only closed issue 0041's canon body, whiteboard .history, and your board's prose describing this change.",
+    "fyi": false,
+    "re": "2026-09-17 14:00Z",
+    "recipient": "dc"
+  }
+}

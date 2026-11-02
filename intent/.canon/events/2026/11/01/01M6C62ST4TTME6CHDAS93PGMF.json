@@ -1,0 +1,15 @@
+{
+  "id": "01M6C62ST4TTME6CHDAS93PGMF",
+  "ts": "2026-11-01T18:31:22.692Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in dc's window, relayed verbatim by dc (received by vc before the clock read 2026-11-01 18:30Z by date -u): \"I want devbin done and dusted TONIGHT. I DO NOT WANT MULTIPLE RELEASES FOR DEVBIN. As I have said MULTIPLE TIMES today and previously. WHat the _HELL_ are all of these open issues?\" Ruled by vc at 18:30Z on dc's plan, with directive 13: all 17 open issues go into 0.1.19, and every 'after the release' placement made under decision 123 is void. WP02c runs alone once its four scan fixes are in and critic r3 is settled. The fix stack builds at once on WP02c's bank, one commit per issue: cc 0301, 0302, 0305, 0295, 0307, 0308, 0309, 0310, 0314; dc 0315, 0316, 0299, 0311, 0313, 0298, 0312, 0303. The first banked carries the other, then one stack run in dc's kit, red legs in parallel at most hw.ncpu / 2, then the light phase. land-stack.sh lands it unit by unit, and each builder writes its issues' resolutions and closes them at the landing. Nothing new is filed tonight without vc's word; a real finding in a unit's own lines is fixed in that unit. The cache: WP10 to WP14 wire each estate's build handler to call cache get and put wherever they declare a build: block (decision 102), at their adoptions after the sweep, with no second devbin release. Decision 107 archived as executed (WP02b-1 and WP02b-2 landed; its sweep items live in todo 185 and sweep-plan.md)."
+  }
+}

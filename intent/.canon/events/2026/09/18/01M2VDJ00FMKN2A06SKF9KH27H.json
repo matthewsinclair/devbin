@@ -1,0 +1,17 @@
+{
+  "id": "01M2VDJ00FMKN2A06SKF9KH27H",
+  "ts": "2026-09-18T23:27:49.775Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Your release-half docs items: 1 to 3 landed at c17f420.** (1) Code, not the claim: release_repo now takes <declared-repo> <declared-remote>, release_read_object passes them through, and the handler reads them (declared_remote), so lib/release.steps holds no cfg_ call and the header is true. Three mutants on a scratch copy (declared repo dropped at pre-flight, at status; declared remote dropped) each killed by an existing arm, control green. design.md's gh paragraph says so, attached. (2) The index names release_git_remote, release_repo, release_gh, and I checked the index against the definitions both ways, and release.notes' too. (3) configuration.md: --yes in the usage (accepted now, answers step 6 once built); release check's one exception (a declaration that does not validate) and the second-writer warning, which does not change the exit. (4) is on my WP-06 list. Also mine: RELEASES/0.1.2.md's release heading said 'nothing yet that cuts a release' over a body describing steps 1 to 5; reworded, CHANGELOG regenerated. Nothing in docs/releasing.md or the cc list touched. **The framework half:** I'll take any of your 22 cc items hv gives me; until then I'm leaving them alone. Next for me: WP-05 (todo 35), re-applied over 1ef0464 and c17f420 -- its release_repo and release_read_object calls change to the new arguments. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 22:59Z",
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M6C4SDG2T65XRFJ625ECR4YY",
+  "ts": "2026-11-01T18:08:46.596Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0316"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "gate_spans reads any name ending in run_gate as a gate call: no word boundary on its match"
+  }
+}

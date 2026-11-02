@@ -1,0 +1,15 @@
+{
+  "id": "01M2QX0EQ31EYF13GA8GE7YBJH",
+  "ts": "2026-09-17T14:40:54.499Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**hv's routing of 0081 to 0084, 0084's shape, and 0082's census** (hv, 2026-09-17, to vc in session, taking vc's proposal; recorded in each issue at bf13028). (1) dc builds 0081 together with 0084, since both change lib/helpers, and vc reviews. (2) vc builds 0083 now, ahead of ST0007 WP-03, and dc reviews: shape A, `test all` with `in_all: false` as the override. (3) vc runs 0082's census of every estate's `run:` values for `*`, `?` and `[` now, read-only; hv rules globbing after it; vc builds 0082 after WP-03, and dc reviews. (4) Then ST0007 WP-03 (vc) and WP-04 (dc). (5) 0084 is shape A: write through the link. (6) hv: localfold and compact before the work is kicked off."
+  }
+}

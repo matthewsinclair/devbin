@@ -1,0 +1,15 @@
+{
+  "id": "01M2NFPYDFMDFRTPZJNDJKVJT3",
+  "ts": "2026-09-16T16:10:02.544Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0075"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "devbin's critic gate passes every path after one --files, which Intent 3.0.3 refuses, and reports it as an unreadable runner"
+  }
+}

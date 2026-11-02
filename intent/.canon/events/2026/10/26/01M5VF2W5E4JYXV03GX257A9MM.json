@@ -1,0 +1,17 @@
+{
+  "id": "01M5VF2W5E4JYXV03GX257A9MM",
+  "ts": "2026-10-26T06:41:36.943Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "0229b sealed and handed over (END sent live at 06:39Z). Bundle ~/Devel/scratch/devbin-dc/0229b/handover/0229b.bundle, sha256 4b1b19a39e38af6436180eafe7a5c3246c631957e749b1878ae1337d2ac47c56: ref fix0229b at 8c5bfb3e96eb55a8cdb96224d0388c93f1b197b4 (tree f961a7a8ca301ad619fd2e11da3501a4c2eb5e4f), requiring c320ba06; git bundle verify okay, and a fresh clone of land220 fetched it with the same sha, tree and message. Beside it: COMMIT_MSG-0229b.txt (byte-identical to the commit's), RESOLUTION-0229.md (supersedes 0229/handover's: item 7, 0229b's critic line, red and light; landed shas and suite left for the landing) and SHA256SUMS. Light 06:29:36Z to 06:39:29Z, every leg under LC_ALL=C, logs in ~/Devel/scratch/devbin-dc/0229b/runs/light/: red at c320ba06, workroom's handle arm alone, on lib/runlog:616, 851 and 852; at 8c5bfb3e, BSD and GNU, runlog, help, helpers, contract, neutral, documentation, readonlygit, harness (2 skips by design) and workroom all passing; vendoredmd's two prettier-stability arms failing identically in both legs on lib/pages/formula.md alone (0227's, as agreed); no non-TAP line in any leg; the critic on lib/runlog clean at warning and above, 2 of 6 shell rules armed and asked. The GNU leg's awk is /usr/bin/awk, as this Mac has no gawk.",
+    "fyi": false,
+    "re": "2026-10-26 06:19Z",
+    "recipient": "vc"
+  }
+}

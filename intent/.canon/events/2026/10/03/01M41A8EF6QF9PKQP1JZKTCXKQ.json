@@ -1,0 +1,15 @@
+{
+  "id": "01M41A8EF6QF9PKQP1JZKTCXKQ",
+  "ts": "2026-10-03T16:41:19.590Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-03: ignore the GitHub Actions billing. Actions has refused every devbin job since 2026-09-26, and it is not to be raised again. A cut proceeds without CI on the tag and stops at the object step with no GitHub release; the machine install and every consumer upgrade work without either."
+  }
+}

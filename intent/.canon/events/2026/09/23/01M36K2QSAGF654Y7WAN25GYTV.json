@@ -1,0 +1,15 @@
+{
+  "id": "01M36K2QSAGF654Y7WAN25GYTV",
+  "ts": "2026-09-23T07:36:00.042Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "THE 0.1.6 RESIDUE STILL OWED TO hv, re-cut by vc 2026-09-23 from todo 35, whose first clause is discharged and measured: every estate's 0.1.7 seam commit is on every remote that estate has (34 remote heads read with ls-remote), so the 0.1.6 sweep commits beneath them are pushed too; Cards has no remote at all. What remains: (1) Anvil (private, red twice) and arca_notionex await hv's word -- Pplr, the third, is out on hv's ruling of 2026-09-22. (2) laksa/dc's two measured questions: whether `pristine` should reach the Ubuntu 26 runner-migration notice, and whether it should reach the Elixir dependency warnings. (3) Utilz's bash 3.2 gap, being closed by utilz-vc with a config change on their own side -- tracked, not devbin's to do, and not re-verified on 2026-09-23."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M693ZNAH70V0228D3EA2XTB3",
+  "ts": "2026-10-31T13:56:59.346Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 86,
+    "text": "ST0011 fix phase, RUNNING on hv's go of 2026-10-31 12:5xZ (\"Ok, crack on.\"; vc holds the pen and the desk; hv's go on the FOR hv list 13:44Z, decision 98). LANDED on main: WP03's ci-state half (76a0fba6; WP03 reopened 13:2xZ for its checker half, AC-3.1), WP04 (80052f26, WIP for the trigger removal after WP02b), WP01 (bc744227, done). IN FLIGHT: run 3 (slot 01M6922YDEYTDZ3EG4EFFR8WD0, bats; tip 8f3d95fe = WP05 on WP06b 1f37e5eb on d708e37b; START 13:25Z): arms green, light phase green on twelve files and RED on bsd-helpers arm 47 at 13:52Z, the runtime's mv allowlist, release.legs's detached rename being a bare mv; fix ruled at 2026-10-31 13:56Z: mv -f plus the allowlist line, re-bank, run 3b at the new tip (releaselegs and helpers under BSD and GNU, guards, scans, shellcheck; no new red clone or critic), then vc lands both with land-stack.sh. The kovacs proof (slot 01M692341PTAJCCHY5KT96YPQH, light; reach reached 13:25Z, gates running on kovacs since) stands as the mechanism's proof at 8f3d95fe. cc builds WP02a (nine points approved, two conditions; release gates reads the verdict first, decision 96) in ~/Devel/scratch/devbin-cc/st11-wp02a, runs after the landing's full suite. NEXT: the landing tree's full suite on rhadamanth (suite-landing.sh) and kovacs (prep-korder.sh; kovacs-sysadm reads the order script's sha256 first); WP02b (WP03's call lines, ci.wait 60m, AC-6.3, ci keys), WP02c, WP07, WP08; dc's lane after run 3: WP03's remainder, WP17, WP16 code; WP09 at 0.1.19; the sweep (plan measured in ~/Devel/scratch/devbin-vc/st0011/sweep-plan.md: 18 estates in the frame, Utilz and Gtools the only ci keys to drop, Gtools gains ci.workflow: ci.yml, Intent gets CHAIN START and END); WP10 to WP14; WP15; WP18 last. Consumer estates on hv's go: Utilz main pushed by hv (a21dde9c), tests.yml dispatched (41207167042), ST0031/03 utilz-dc's; Laksa dc fixing S2 then the five reds, laksa-vc pushing on verification; Intent dc on ST0090's two S packages (its first run books the cargo lane after run 3 ends); Gtools ST0021/01 (setup links only where nothing would answer) building, its runs on this desk; Conflab WP-06 records carry hv's two answers (9044ad54). Sysadm: Trash folders removed (rhadamanth-sysadm, on hv's yes); intentd at login on rhadamanth blocked by an Intent defect (--at-login enrols nothing while a daemon runs; intent-vc files it); kovacs census and brew-only installs after the proof."
+  }
+}

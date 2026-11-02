@@ -1,0 +1,16 @@
+{
+  "id": "01M4RS4FRXJ43EVKMTWFKYNQKS",
+  "ts": "2026-10-12T19:23:50.429Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 152,
+    "text": "CI ON THE RELEASE, READ 2026-10-12: the v0.1.10 tag's run 37840059863 on bb1cd07c was red on Ubuntu on ONE test-only arm, tests/unit/ci-workflow.bats:266, issue 0031's class (a reader that exits early, in a pipe under pipefail, exposed by two lanes on a 2-CPU runner); main's run on 73fd0fd3 and macOS were green. hv folded the fix into ST0008 as WP-07, which landed at 99dd3106, unpushed. STILL OPEN: 0190's Done when 5 asks for CI's wall time after the lanes, and its Resolution does not give it; the tag's Ubuntu leg ran the lanes (2 at a time, 2286 parallel and 9 serial, each once) and took about 42.5 min against about 42 with one lane, so on the 2-CPU runner the lanes bought no time. Raise it with hv at the first CI read after the kovacs proof."
+  }
+}

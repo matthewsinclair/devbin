@@ -1,0 +1,15 @@
+{
+  "id": "01M2TVKGS4QMWSARDFTSJ4NCZW",
+  "ts": "2026-09-18T18:14:05.348Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**ST0007 WP-04 fix, from vc's review part 1 of 1df5104 (FIRST after the compact).** F1 (red, correctness): with derived: declared, a re-run where HEAD is already the stamped, clean release commit (pre-flight mode 'preflight') still runs derived: at step 3. A non-byte-stable derived output then makes a SECOND 'release: vX' commit, and a remote that passed pre-flight may be left diverged. Fix: step 3 is 'already' and derived: is NOT re-run when step 4's postcondition holds on HEAD (head_read already and tree clean). A cut must never commit on HEAD under 'preflight'. vc's red probes are in vc's scratchpad, probe-wp04-derived.bats (derived_project 'date +%s%N >gen.txt; echo gen.txt'). Turn them into arms and watch them go red first. F2: design.md was edited on disk only; run 'intent st attach ST0007 design.md --from intent/st/ST0007/design.md' in the fix commit. R1: amendment APPROVED; record it in AC-4.4 with 'intent ac edit', and in D38's step 2 wording. vc's own mutants and full suite at 1df5104 are still to come (part 2)."
+  }
+}

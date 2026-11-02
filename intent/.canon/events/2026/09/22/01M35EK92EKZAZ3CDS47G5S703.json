@@ -1,0 +1,15 @@
+{
+  "id": "01M35EK92EKZAZ3CDS47G5S703",
+  "ts": "2026-09-22T20:58:24.718Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "TOMORROW (2026-09-23): build issue 0114 (fleet upgrade --apply refuses an estate with a live dispatch; hv ruled build it, next patch), then put 0113 to hv with vc's recommendation: cc's proposal plus two amendments (test.md and check.md are rewritten because they describe devbin's own shadowing handlers; the .d sub-topic walk is kept on both roots). The pushes and fleet doc were done on 2026-09-22 night -- see intent/wip.md."
+  }
+}

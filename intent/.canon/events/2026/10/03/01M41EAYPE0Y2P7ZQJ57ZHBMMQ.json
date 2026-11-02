@@ -1,0 +1,15 @@
+{
+  "id": "01M41EAYPE0Y2P7ZQJ57ZHBMMQ",
+  "ts": "2026-10-03T17:52:36.046Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "ONCE 0154 LANDS, A FLEET SWEEP FREEZES NOTHING THE MACHINE HAS NOT DECLARED (its rider, on hv's 2026-10-03 ruling that devbin keeps no list of who uses it). The fleet roots take in a directory of archived estates, so a sweep's dry run plans every estate there, and its plan line reads 'frozen: none declared'. This release has no sweep: hv upgrades the estates as hv goes. If one is ever on the table, hv decides where the machine declares DEVBIN_FLEET_FROZEN before anything is applied (directives 3, 5 and 12). Raised by cc on 2026-10-03."
+  }
+}

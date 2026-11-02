@@ -1,0 +1,15 @@
+{
+  "id": "01M2SK87FTV2H2N2VEX5RW7A5B",
+  "ts": "2026-09-18T06:28:52.346Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Terminal-blocking census** (hv's ruling via vc, 06:2xZ): after 0085, time-boxed, ahead of WP-04, written up as an issue. Deliverable: a table of site, command, blocking condition, reachable from a gate, and visible without a tty -- each one MEASURED or said why not. Build the pty harness ONCE inside it; 0086's behavioural arm is its first consumer, and it must FAIL loudly where a pty should exist, never skip. Fix nothing unless it rates high; high findings are fixed before the release. Candidates: git pager, git editor (ST0007's `tag -a`), -i aliases, credential and host-key prompts, gated tools reading stdin."
+  }
+}

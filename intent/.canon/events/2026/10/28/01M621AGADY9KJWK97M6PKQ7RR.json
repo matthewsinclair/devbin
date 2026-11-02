@@ -1,0 +1,16 @@
+{
+  "id": "01M621AGADY9KJWK97M6PKQ7RR",
+  "ts": "2026-10-28T19:55:47.917Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 11,
+    "text": "Intent's index has no shell grammar here yet answers complete: true, so search lib/ with a bare query or git grep."
+  }
+}

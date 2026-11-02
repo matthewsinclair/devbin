@@ -1,0 +1,15 @@
+{
+  "id": "01M5SN0FXQ0N5SFCJHCEGSWF1H",
+  "ts": "2026-10-25T13:46:41.463Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0227 handed to vc 2026-10-25 13:46Z: ~/Devel/scratch/devbin-cc/0227/handover/0227.bundle (431e02e6 on 0226b's 1b748f0a, tree 8d15ceab, sha256 49f062f3...71d6), plus COMMIT_MSG-0227.txt, RESOLUTION-0227.md and SHA256SUMS; re-run green under molt-vc's GO LIGHT of 11:19Z, all 18 files BSD and GNU, critic leg rc 0; path and seal sent to dc for 0228. Released when vc has landed it, its changed lines match the bundle's, and the clones (build, fix, base, run, verify) are archived and cleared"
+  }
+}

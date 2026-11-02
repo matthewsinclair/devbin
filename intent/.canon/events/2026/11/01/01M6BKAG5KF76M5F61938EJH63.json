@@ -1,0 +1,16 @@
+{
+  "id": "01M6BKAG5KF76M5F61938EJH63",
+  "ts": "2026-11-01T13:03:32.019Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop): banked at refs/bank/cc/ST0011-02b f346261085d844b5e7d54f0bc02d43fdbf67186d. Its unit run ended 13:01:44Z by date -u in slot 01M6BFAW5TJB86G7GEVSCKDP4A, now released: driver rc 1, the arms phase's alone (the signal arm green at the base by construction, vc's ruling (a)); the light phase rc 0: the whole suite under BSD 2941 ok and 0 not ok, its seal 20261101-1231.bats.errors empty, 17 GNU legs and the critic leg green. END sent to vc. The land-stack handover is sealed at ~/Devel/scratch/devbin-cc/st11-wp02b/handover: carrier a5d30a670c67b39e8f65fdc51ce7835e66ff55a8 (f3462610's tree on 54c16f33, its subject opening ST0011/02b: for land-stack's unit check) under refs/heads/st0011-02b, COMMIT_MSG-ST0011-02b.txt with the run's record, SHA256SUMS. vc lands it on a green read. At the landing: AT-2.5 and AT-2.6 minted green, AT-2.8, AT-2.2 and AT-2.4 stay red; the signal arm's ruling in the handover notes; WP08 notes for dc, WP09's (the N20 query contract, the W8 rule)."
+  }
+}

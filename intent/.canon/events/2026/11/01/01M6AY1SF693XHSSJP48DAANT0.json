@@ -1,0 +1,15 @@
+{
+  "id": "01M6AY1SF693XHSSJP48DAANT0",
+  "ts": "2026-11-01T06:51:46.534Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's rulings on vc's four questions, in vc's window through the TUI (answered before the clock read 2026-11-01 06:50Z by date -u), each as vc recommended: (R1) the run order between WP16 and WP02b-1, which share five files (README.md, docs/configuration.md, lib/builtins, lib/config, lib/config.reference.yaml), is first ready runs first until cc asks for WP02b-1's unit run; cc squashes once onto whatever has landed by then, resolving the shared files in that squash; from cc's ask WP02b-1 runs next and nothing sharing its files lands ahead of it. (R2) issue 0306 lands before the cut, built by dc after WP16; lib/runlog is in no bank, so its run fills any lane gap; critic-shell before its first run. (R3) hv starts kovacs with kovacs-sysadm on it now; kovacs-sysadm holds until vc's order. (R4) vc pushes main to local, the private push-only mirror, now and at each fold, fast-forward only; upstream untouched; hold 34's repo switch stays parked. Executed at 06:50Z: main pushed to local, 9f579b36..f9eb26e6. Also ruled by vc on dc's reply: WP16's run is the whole suite under BSD at its tip, since its tests/lib/test_helper.bash change reaches every suite file, with the changed suites under GNU and the tree scans and help; the '# AT-5.n' lines over cache.bats's arms ride its settle; dc's ST0011/08 claim stands. Decisions 118 (the hard close, executed and lifted by 119) and 97 (gyges's estate-pull fix, installed; its Gtools finding executed under 98) archived for the bound."
+  }
+}

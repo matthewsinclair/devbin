@@ -1,0 +1,266 @@
+diff --git a/bin/.devbin/cmd/fleet b/bin/.devbin/cmd/fleet
+index 82a9e73..76fe7e5 100755
+--- a/bin/.devbin/cmd/fleet
++++ b/bin/.devbin/cmd/fleet
+@@ -228,7 +228,76 @@ estate_roots() {
+ recorded_commit() { awk -F': ' '/^# source_commit:/ { print $2; exit }' "$1/bin/.devbin/manifest.sha256" 2>/dev/null; }
+ recorded_source() { awk -F': ' '/^# source:/ { print $2; exit }' "$1/bin/.devbin/manifest.sha256" 2>/dev/null; }
+ 
+-# scan -- one TAB-separated record per install: kind, path, version, commit, digest, utc
++# _estate_git <args...> -- git, asked about somebody else's repository.
++#
++# `--no-optional-locks` because a plain `git status` may refresh the index and
++# take its lock: a census could fail a peer's concurrent commit with
++# `index.lock exists`, and leave a write in a repository it only meant to read.
++# GIT_DIR and friends are dropped because a value inherited from the caller
++# would point every estate's question at ONE repository and answer it
++# confidently for all of them.
++_estate_git() {
++  env -u GIT_DIR -u GIT_WORK_TREE -u GIT_INDEX_FILE git --no-optional-locks "$@"
++}
++
++# seam_committed <root> -- is this install's vendored seam COMMITTED in its own
++# repository? One of: committed, DIRTY, not a checkout, not its own checkout,
++# not tracked, UNREADABLE.
++#
++# THE CENSUS READ DISK AND NEVER ASKED GIT (issue 0056). Every other column
++# answers "what bytes are on this machine"; readers used them to answer "what
++# is the fleet running", and those diverge the moment a re-vendor is not
++# committed. Three estates were in that state the day 0056 was filed and the
++# census reported none of them. A fourth, Gtools-geodica, sat from 2026-09-11
++# to 2026-09-14 with only its manifest's source_commit moved (per gtools-vc).
++#
++# IT REPORTS AND NEVER JUDGES. Whether a dirty seam is a problem is context this
++# tool does not have -- Intentv2 is dirty by ruling and frozen -- so nothing
++# refuses on it, and `doc` publishes a DIRTY estate like any other.
++#
++# ABSENT MUST NEVER READ AS CLEAN, which is why most of the answers exist. `git
++# status` prints NOTHING both for a committed seam and for a path it is not
++# watching, so an empty status means `committed` only once two more things hold:
++# the install is the ROOT of its own repository -- a deps/ checkout inside a host
++# that ignores deps/ would otherwise read clean -- and that repository TRACKS the
++# seam at all, since one that ignores bin/ would too.
++#
++# THE PATHSPEC IS THE SEAM'S DIRECTORIES, never names found on disk: git reads a
++# directory against HEAD, so a vendored file deleted and not committed still
++# shows (usage-rules.md, The seam).
++seam_committed() {
++  local root="$1" top here out
++  if ! top="$(_estate_git -C "$root" rev-parse --show-toplevel 2>/dev/null)"; then
++    printf 'not a checkout'
++    return 0
++  fi
++  if ! here="$(cd "$root" && pwd -P)" || ! top="$(cd "$top" && pwd -P)"; then
++    printf 'UNREADABLE'
++    return 0
++  fi
++  if [ "$top" != "$here" ]; then
++    printf 'not its own checkout'
++    return 0
++  fi
++  if ! out="$(_estate_git -C "$root" status --porcelain -- \
++    bin/devbin bin/.devbin/lib bin/.devbin/manifest.sha256 2>/dev/null)"; then
++    printf 'UNREADABLE'
++    return 0
++  fi
++  if [ -n "$out" ]; then
++    printf 'DIRTY'
++    return 0
++  fi
++  if ! _estate_git -C "$root" ls-files --error-unmatch -- bin/.devbin/manifest.sha256 >/dev/null 2>&1; then
++    printf 'not tracked'
++    return 0
++  fi
++  printf 'committed'
++  return 0
++}
++
++# scan -- one TAB-separated record per install: kind, path, version, commit,
++# digest, utc, committed
+ scan() {
+   local m root ver sc dg e
+   while IFS= read -r m; do
+@@ -252,9 +321,9 @@ scan() {
+     esac
+     dg="$(seam_digest "$root")"
+     e="$(mtime_epoch "$m")"
+-    printf '%s\t%s\t%s\t%s\t%s\t%s\n' \
++    printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
+       "$(kind_of "$root")" "${root#"$HOME"/}" "$ver" "$sc" "$dg" \
+-      "$(utc_from_epoch "$e" || printf 'UNREADABLE')"
++      "$(utc_from_epoch "$e" || printf 'UNREADABLE')" "$(seam_committed "$root")"
+   done < <(find_installs)
+ }
+ 
+@@ -510,8 +579,8 @@ render_doc() {
+ 
+   printf '## Estates -- %d\n\n' "$n_estate"
+   printf 'A project someone works in. Sorted by path.\n\n'
+-  { printf 'Project\tdevbin\tSeam digest\tSource commit\tLast vendored (UTC)\n'
+-    printf '%s\n' "$estates" | awk -F'\t' 'NF {printf "%s\t%s\t%s\t%s\t%s\n", $2, $3, $5, $4, $6}'
++  { printf 'Project\tdevbin\tSeam digest\tSource commit\tSeam committed\tLast vendored (UTC)\n'
++    printf '%s\n' "$estates" | awk -F'\t' 'NF {printf "%s\t%s\t%s\t%s\t%s\t%s\n", $2, $3, $5, $4, $7, $6}'
+   } | md_table
+   printf '\n'
+ 
+@@ -530,8 +599,8 @@ render_doc() {
+     printf 'Real vendored runtimes that are **not** estates. They are listed because they can drift and because an audit that silently dropped them would under-report what is on the disk -- and listed separately because folding them into the estate count over-reports it.\n\n'
+     printf -- '- **worktree** -- a git worktree of an estate, carrying whatever devbin its branch has.\n'
+     printf -- '- **dep** -- a dependency checkout (Mix `deps/`), which is a copy of some other project'"'"'s repository that happens to ship devbin. Not tracked by the consuming project and rebuilt by its package manager.\n\n'
+-    { printf 'Kind\tPath\tdevbin\tSeam digest\tSource commit\tLast vendored (UTC)\n'
+-      printf '%s\n%s\n' "$worktrees" "$deps" | awk -F'\t' 'NF {printf "%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, $3, $5, $4, $6}'
++    { printf 'Kind\tPath\tdevbin\tSeam digest\tSource commit\tSeam committed\tLast vendored (UTC)\n'
++      printf '%s\n%s\n' "$worktrees" "$deps" | awk -F'\t' 'NF {printf "%s\t%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, $3, $5, $4, $7, $6}'
+     } | md_table
+     printf '\n'
+   fi
+@@ -539,6 +608,7 @@ render_doc() {
+   printf '## What this document cannot tell you\n\n'
+   printf -- '- **`devbin` is the same number everywhere and always will be until a release.** Every install above reports the version stamped into its manifest, and there has only ever been one. The version column therefore separates nothing today; the seam digest is the column that does. This is the argument for the release, not a defect in the audit.\n'
+   printf -- '- **`Last vendored` is the manifest'"'"'s mtime, not a git fact.** It says when devbin last wrote that file. A copy restored from backup, or synced by Dropbox, carries a stamp that is true about the file and misleading about the estate.\n'
++  printf -- '- **`Seam committed` is the one git fact in these tables, read from each estate'"'"'s own repository at scan time (issue 0056).** `committed` means the vendored seam matches that repository'"'"'s HEAD, so a clone gets these bytes. `DIRTY` means it does not, and every other column in that row then describes this checkout only. `not a checkout`, `not its own checkout` and `not tracked` each mean git could not vouch for the bytes, and none of them is a clean result. The column reports and never judges: a frozen estate can be DIRTY by ruling.\n'
+   printf -- '- **An `UNRECORDED` source commit means the manifest predates the `source_commit` field**, not that the install is broken. Those manifests are from before the field existed.\n'
+   printf -- '- **This is one machine.** Nothing here can see a clone on any other.\n'
+   printf -- '- **The scan is taken twice and this document is refused if the two disagree** about which installs exist. That control exists because one pass once reported twelve estates and the next reported thirteen, the missing one being the only root under Dropbox. Agreement here means the two passes saw the same set, not that the set is complete.\n'
+diff --git a/tests/unit/fleet.bats b/tests/unit/fleet.bats
+index 74530f7..552d264 100644
+--- a/tests/unit/fleet.bats
++++ b/tests/unit/fleet.bats
+@@ -352,6 +352,137 @@ mkinstall_dirty() {
+   [[ "$clean" != *dirty* ]] || fail "a CLEAN estate was flagged dirty -- the flag carries no information"
+ }
+ 
++# ===========================================================================
++# IS THE SEAM COMMITTED (issue 0056)
++# ===========================================================================
++#
++# Every column above answers "what bytes are on this machine". Readers used the
++# census to answer "what is the fleet running", and those diverge the moment a
++# re-vendor is not committed: three estates were in that state the day 0056 was
++# filed and the census reported none of them. The column added for it must
++# never let an ABSENT answer read as a clean one, so most arms below assert a
++# refusal to say `committed`.
++
++# mkinstall_committed <path-under-roots> -- mkinstall, then that install made a
++# repository of its own with everything committed.
++mkinstall_committed() {
++  mkinstall "$1"
++  git -C "$ROOTS/$1" init -q
++  git -C "$ROOTS/$1" add -A
++  git -C "$ROOTS/$1" -c user.email=t@t -c user.name=t commit -q -m fixture
++}
++
++# committed_field <name> -- the audit's seam-committed column for one install.
++committed_field() {
++  printf '%s\n' "$output" | awk -F'\t' -v n="$1" '$2 ~ ("/" n "$") { print $7 }'
++}
++
++@test "audit reports a seam committed in its own repository as committed" {
++  mkinstall_committed tidy
++  run_fleet audit
++  [ "$status" -eq 0 ]
++  local field
++  field="$(committed_field tidy)"
++  [ -n "$field" ] || fail "no seam-committed column for tidy in: $output"
++  [ "$field" = committed ] || fail "a fully committed seam reads '$field'"
++}
++
++@test "a re-vendor that was never committed reads DIRTY, not level" {
++  # The Gtools-geodica shape, reported by gtools-vc on 2026-09-14: a sync moved
++  # ONLY the manifest's source_commit, every file hash unchanged, and it sat
++  # uncommitted for three days while the census had no column that could say so.
++  mkinstall_committed moved
++  printf '# devbin_version: 0.1.0\n# source: /nowhere\n# source_commit: 0123456789abcdef\n' \
++    > "$ROOTS/moved/bin/.devbin/manifest.sha256"
++  run_fleet audit
++  [ "$status" -eq 0 ]
++  local field
++  field="$(committed_field moved)"
++  [ "$field" = DIRTY ] || fail "an uncommitted re-vendor reads '$field'"
++}
++
++@test "a vendored file deleted and not committed reads DIRTY" {
++  # Why the pathspec is the seam's DIRECTORY and never a list of names found on
++  # disk: a deleted file is no longer found, so a name list would ask git only
++  # about the survivors and hear clean (usage-rules.md, The seam).
++  mkinstall_committed pruned
++  rm "$ROOTS/pruned/bin/.devbin/lib/helpers"
++  run_fleet audit
++  [ "$status" -eq 0 ]
++  local field
++  field="$(committed_field pruned)"
++  [ "$field" = DIRTY ] || fail "a deleted vendored file reads '$field'"
++}
++
++@test "an install that is not a git checkout says so, and never reads committed" {
++  mkinstall loose
++  run_fleet audit
++  [ "$status" -eq 0 ]
++  local field
++  field="$(committed_field loose)"
++  [ "$field" = "not a checkout" ] || fail "an install with no repository reads '$field'"
++}
++
++@test "an install inside SOMEBODY ELSE's ignored directory does not read committed" {
++  # A deps/ checkout that is not a repository of its own lives in its host's
++  # tree, where the host ignores deps/. `git status` there prints nothing for an
++  # ignored path, which is exactly the output a clean seam produces.
++  local host="$ROOTS/host"
++  mkdir -p "$host"
++  git -C "$host" init -q
++  printf 'deps/\n' > "$host/.gitignore"
++  git -C "$host" add -A
++  git -C "$host" -c user.email=t@t -c user.name=t commit -q -m host
++  mkinstall host/deps/vendored
++  run_fleet audit
++  [ "$status" -eq 0 ]
++  local field
++  field="$(committed_field vendored)"
++  [ "$field" = "not its own checkout" ] || fail "an install inside another repository reads '$field'"
++}
++
++@test "a seam its own repository does not track reads not tracked, not committed" {
++  # The same silence from the other side: the install IS a repository root, but
++  # it ignores bin/, so status says nothing about the seam because it is not
++  # watching it.
++  mkinstall ignoring
++  local d="$ROOTS/ignoring"
++  git -C "$d" init -q
++  printf 'bin/\n' > "$d/.gitignore"
++  git -C "$d" add -A
++  git -C "$d" -c user.email=t@t -c user.name=t commit -q -m ignoring
++  run_fleet audit
++  [ "$status" -eq 0 ]
++  local field
++  field="$(committed_field ignoring)"
++  [ "$field" = "not tracked" ] || fail "an untracked seam reads '$field'"
++}
++
++@test "a DIRTY estate does not make doc refuse, and the document says which is which" {
++  # The column REPORTS and never judges: Intentv2 is dirty by ruling and frozen,
++  # and a census that would not publish while a ruled exception exists is one
++  # nobody can run.
++  mkinstall_committed unsaved
++  printf '# devbin_version: 0.1.0\n# source: /nowhere\n# source_commit: 0123456789abcdef\n' \
++    > "$ROOTS/unsaved/bin/.devbin/manifest.sha256"
++  mkinstall_committed saved
++  run_fleet doc
++  [ "$status" -eq 0 ]
++  local row clean
++  row="$(grep 'unsaved' "$PROJ/intent/docs/devbin-users.md" || true)"
++  [ -n "$row" ] || fail "unsaved is absent from the document"
++  [[ "$row" == *DIRTY* ]] || fail "the document row for an uncommitted seam reads '$row'"
++  # The control: the committed estate must not pick the flag up, or the arm
++  # above passes against a column that says DIRTY for everything.
++  # `/saved` then padding then a cell edge, rather than `saved`: every `unsaved`
++  # row contains `saved`, the path column is absolute so the name follows a
++  # slash, and md_table pads each cell to its column's width.
++  clean="$(grep -E '/saved +[|]' "$PROJ/intent/docs/devbin-users.md" || true)"
++  [ -n "$clean" ] || fail "saved is absent from the document"
++  [[ "$clean" != *DIRTY* ]] || fail "a committed estate was flagged DIRTY"
++  [[ "$clean" == *committed* ]] || fail "the committed estate's row reads '$clean'"
++}
++
+ # ===========================================================================
+ # THE SWEEP (ST0005 WP-03)
+ # ===========================================================================

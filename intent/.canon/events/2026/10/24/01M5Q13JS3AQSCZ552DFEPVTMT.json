@@ -1,0 +1,16 @@
+{
+  "id": "01M5Q13JS3AQSCZ552DFEPVTMT",
+  "ts": "2026-10-24T13:20:22.307Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). STATE AT THE 2026-10-24 13:20Z LOCALFOLD: LANDED today on main (unpushed): 0210, docs/dev-opt-brew.md, 0214, 0211, 0212 (suite 20261024-0831); 0213 at 76b3d790 (suite 20261024-1122, 2453 of 2453; devbin use, gated devbin-only per decision 59); 0216 at 5e39f6c7 and 108c46d5, 0217 at 3950fcd7, 0218 at 19d15680 (suite 20261024-1249 at 4c2f866f, 2472 of 2472; seals in ~/Devel/scratch/devbin-vc/clone-archive/seals/). OPEN: 0213 until T10's Intent leg (after Intent re-vendors from 0.1.14) and kovacs leg (after 0.1.14 is brew-upgraded there); rhadamanth's T10 passed (devbin-cc t10/out/4-dev, 5-opt, 6-brew). 0216 until the fleet-less candidate suite is green: cand216 (13:00Z) failed only workroom.bats:141, the guard demanding each :(exclude) line name a tracked file, and fleet's files are absent in the public tree; dc fixes it on main 19d15680. 0218 until 0.1.14 is tagged and laksa-vc is told (todo 166). NEXT STACK, built in a fresh clone of main by vc: dc's guard fix, cc's 0215 (bundle ~/Devel/scratch/devbin-cc/0215/handover/0215.bundle sha 5c0950c2, 9f71ba86), cc's 0207 to 0209 (three commits, in build, plan approved: steps by name, the status table's number column dropped as a declared output change); stack scripts in ~/Devel/scratch/devbin-vc/tools (stack216.sh, land216.sh, cand.sh <repo> <rev> <out>, suite-land216.sh, suite-cand216.sh are the templates); then one landing suite plus one candidate suite booked heavy with molt-vc after it reopens the desk; land; close 0216 and 0215 and 0207 to 0209. THEN (decisions 60, 61): vc drafts RELEASES/0.1.14.md on that main and hv cuts 0.1.14 privately; send intent-vc the tag (todo 165), laksa-vc the tag (todo 166). LATER for the public release 0.1.15: the backup, hv's delete and recreate of matthewsinclair/devbin, https urls and a public tap. fleet stays out of the snapshot (decision 59)."
+  }
+}

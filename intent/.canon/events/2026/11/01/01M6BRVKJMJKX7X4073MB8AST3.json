@@ -1,0 +1,16 @@
+{
+  "id": "01M6BRVKJMJKX7X4073MB8AST3",
+  "ts": "2026-11-01T14:40:15.444Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 74,
+    "text": "The hook-in unit (decisions 117 and 127), as ST0011/05 then ST0011/04 on vc's ids. Critic r1 is settled on vc's rulings of 2026-11-01 14:19Z; the dispositions are in hookin/critic-r1-dispositions.md. C1: the macOS stage is tracked through the job table, on release_run_stop, the one stop the local gates' run now uses too. W1 to W5, R1, R3, R4 and S1 are fixed. The confirm and the stop's sentence name the send to each host and the Apple submission. The design pointers are gone. Issue 0313 is filed for after the release. The unit is rebased onto cc's WP02b-2 bank 86c1a035 (vc, 14:15Z): ST0011/05 is 8bfd972b and ST0011/04 is d10b3b6b, with twelve arms, eleven tagged WP-0[56] and one WP-04. Every changed arm and the stage probe pass in plain bash. OPEN: critic r2 on the settle's delta and the merge (running), the lint gate and scans (running), the red clones, the bank (refs/bank/dc/ST0011-05 and ST0011-04), and the ask, after WP02b-2's END. AT-3.6's row is re-cited to releasecut.bats at the landing: the store refuses it until main carries the id. Resume point: ~/Devel/scratch/devbin-dc/hookin/NOTES.md. Then WP02c (todo 63; its scope map is in wp02c/scope-map.md), then WP08 (todo 60)."
+  }
+}

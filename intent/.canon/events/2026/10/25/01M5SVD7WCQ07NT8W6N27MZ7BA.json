@@ -1,0 +1,15 @@
+{
+  "id": "01M5SVD7WCQ07NT8W6N27MZ7BA",
+  "ts": "2026-10-25T15:38:30.670Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0230"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "the version line drops ' at <root>' (contract A3, hv's ruling): devbin <version> (<tree>, <sha12>[+dirty]), readers read to the closing parenthesis"
+  }
+}

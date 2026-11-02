@@ -1,0 +1,16 @@
+{
+  "id": "01M695ADD9BQN5SHM5ATSGMD26",
+  "ts": "2026-10-31T14:20:20.265Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 59,
+    "text": "ST0011/02 (WP02a) banked, not run: refs/bank/cc/ST0011-02a c2b7cf186b81800860a664982112968e5d1991c8, one commit on d282e845 (dc's run-3 stack as it stood at 12:5xZ). On hv's go: in the rebase onto run 3b's landing as vc announces it, settle every critic finding listed in ~/Devel/scratch/devbin-cc/st11-wp02a/BANK.md (two critical, two warnings, three recommendations, one note), the two warnings as vc ruled (2026-10-31): lib/cmd/macos's read_release_commit adopts the clear-and-name helper moved into lib/helpers, and its read_head_state adopts git_identity_clean, dc having no macos change pending; then re-bank and one run on vc's slot with the kit beside BANK.md."
+  }
+}

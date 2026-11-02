@@ -1,0 +1,16 @@
+{
+  "id": "01M47VFT5QM3RJPBNCV4W17GM6",
+  "ts": "2026-10-06T05:37:53.335Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 13,
+    "text": "BUNDLE BUILD, 0.1.9 (hv 2026-10-05: every open issue closes before the cut; fix and fail forward, ONE release). cc builds 0153 to 0162 and 0175; 0163 to 0176 are dc's. Landed: 0153, 0175, 0159, 0157, 0158, 0156. 0155, 0160, 0161 and 0162 v1 on 415ce738: APPROVED by vc, texts and sha256s handed off, on vc's full suite land-cc4 over the landing tree (main + dc's 0163 v3 and 0167 + the four). Left: {TIMING155} (0155 done-when 3), timed only once vc says both its suites have ended. State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md (SP)."
+  }
+}

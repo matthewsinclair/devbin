@@ -1,0 +1,15 @@
+{
+  "id": "01M342D709BJD0F0G2RA284Q0Q",
+  "ts": "2026-09-22T08:06:08.649Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "THE FLEET CI PASS, re-scanned 2026-09-22 with a yq and PyYAML parse of all 24 workflow files in 18 estates, not a grep. 13 estates plus devbin, not the 11 the archived item carried. Concurrency needed: arca_cli, arca_config, Baize, Conflab, Intent, Laksa, Lamplight, Molt, Prolix, Riffle, Utilz. Already cancelling on push: Gtools, Cdtempl. macOS gate needed: devbin, Gtools, Intent (tests.yml and the rust.yml matrix), Utilz (test-macos and the rust matrix), Molt, Cdtempl. No workflows at all: Cards/Design, MicroGPTEx, Prodinfra. Carrying CI but NOT devbin estates: Anvil (private, red on its last two runs), Pplr and arca_notionex, all three proposed to hv for inclusion; arca_optimus is left alone, last pushed 2025-10-17 and one remote is a fork of another owner project. Matrix legs that a job-level if cannot gate: Utilz rust, Intent rust.yml, Cdtempl test. No workflow anywhere uses pull_request_target or workflow_run, so checkout v7 is safe fleet-wide. Live estates do their own half and are all told and holding: Gtools, Intent, Laksa, Utilz."
+  }
+}

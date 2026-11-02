@@ -1,0 +1,17 @@
+{
+  "id": "01M68WPD69F3F9WEC4HF9KM39R",
+  "ts": "2026-10-31T11:49:36.073Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "For the WP01 re-bank, from WP06b's critic: lib/cmd/release:710 captures release_commit with 2>&1 and takes everything before the first tab as the commit, so git's stderr on a successful read (GIT_TRACE, a tag naming a tree) lands inside the sha; :3108 captures stdout alone. Make :710 capture stdout alone as :3108 does. release_commit itself (WP06b) goes quiet on success and re-runs a failing read with stderr open, so git's words still print. FYI only -- no response needed.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

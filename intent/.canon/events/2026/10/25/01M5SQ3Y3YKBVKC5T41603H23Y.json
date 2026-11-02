@@ -1,0 +1,15 @@
+{
+  "id": "01M5SQ3Y3YKBVKC5T41603H23Y",
+  "ts": "2026-10-25T14:23:31.454Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0229 on land220's ea816117, branch fix0229 in ~/Devel/scratch/devbin-dc/0229/build (tip b627d243): ZWSP stripped as a byte literal in the counter and the failure grammar; XCTest's indented Executed matched; a completed TEST action counts zero unless its build failed; scrubbed real fixtures in tests/fixtures/xcodebuild (.txt, since *.log is globally ignored); docs/configuration.md names the rule. Red on 593109bf (red clone 0229/red): 4 of 5 arms red, counting '', 6, ''; green BSD and GNU, arms alone. Next: critic leg, then on molt-vc's GO runlog.bats whole BSD and GNU, documentation BSD, six GNU scans; seal and hand to vc"
+  }
+}

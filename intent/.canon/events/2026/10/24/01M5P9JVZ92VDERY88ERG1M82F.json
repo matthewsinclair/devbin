@@ -1,0 +1,15 @@
+{
+  "id": "01M5P9JVZ92VDERY88ERG1M82F",
+  "ts": "2026-10-24T06:29:17.417Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "directive",
+    "text": "Anything released through Homebrew follows dev, opt, brew as dev, stage, prod (hv, 2026-10-24): the maintainer works in a dev checkout, publishes a working copy to opt to keep the bleeding edge (dev) apart from what works (opt), and the brew formula is the one prod publish. A user installs from brew and seeds projects from the brew install; dev and opt are maintainer-only, named only where a doc speaks to the maintainer of a dev checkout, never as the way a user installs. Applies to devbin, Intent, Utilz and every other formula."
+  }
+}

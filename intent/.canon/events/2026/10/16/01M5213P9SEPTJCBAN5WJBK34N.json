@@ -1,0 +1,15 @@
+{
+  "id": "01M5213P9SEPTJCBAN5WJBK34N",
+  "ts": "2026-10-16T09:36:22.842Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0199"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "fullcycle.bats:1020 bounds the gate's wall at 9s absolute, so the 0096 arm fails whenever the machine's load makes the phases slow, the wait left out or not"
+  }
+}

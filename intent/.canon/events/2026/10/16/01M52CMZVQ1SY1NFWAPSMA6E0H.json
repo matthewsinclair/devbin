@@ -1,0 +1,16 @@
+{
+  "id": "01M52CMZVQ1SY1NFWAPSMA6E0H",
+  "ts": "2026-10-16T12:58:04.024Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "NEXT RELEASE carries everything open (directive 13). It cuts once Linux is proven on kovacs on main's HEAD and the brew install is proven (hv, 2026-10-16, ST0008 question 11 (b)); ST0008's WSL work rides the release after. LANDED 2026-10-16, each on vc's full suite of its landing tree: 0195 (93259543) and 0198 (10ae01c9), suite 2329 of 2329, seal 20261016-0917, closed at d2463ce8; 0197 (855ad640) and 0196 (7842c4b1), suite 2342 of 2342, seal 20261016-1014, closed at b372cc7d; those seals (and 0858's) kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/, and the clones i0195, i0197, st0008wp02, verify.lpXP removed by tools/rm-1016.sh. APPROVED AND STACKED, AWAITING ONE LANDING SUITE: vc's clone ~/Devel/scratch/devbin-vc/land1016b/land on main 09c89d36 holds ST0008 WP-02 (ef1e7441; dc, wp02.bundle tip 4e9ad3d9, sha256 9f9fed11), 0199 (56045af7; cc, patch 07427d84, drafts v2), 0192 (a8409304; cc, patch 7a6f62ac, drafts v3, whose {WHOLESUITE} vc fills from the landing suite's wall beside the last suites' 18m26s, 16m13s and 17m52s) and ST0008 WP-03 (9560fdf0; dc, wp03.bundle tip d170adb0, sha256 fc958457, patch byte-equal; approved 2026-10-16 after one pure move of the from-/ arm out of the DEVBIN_SOURCE banner; handover and drafts in dc's runs/wp03-20261016-1207/HANDOVER.md); banked as clone-archive/land1016b__9560fdf0.bundle (sha256 1bef7aba), verified in a fresh clone of devbin. LANDING SUITE 1, 12:44:10Z to 12:55:59Z on 9560fdf0, seal 20261016-1244 (in land1016b/land): 2342 of 2343, rc 1, so nothing landed; the one red is 0192's, shellinit.bats's machine-install fallback arm, red alone and at a8409304 without WP-03: 0192's install_devbin copies only the launcher, lib and manifest, where the real install into a bare directory also seeds config.yaml, cmd/ and help/; cc fixes install_devbin test-only (vc's rec: the real installer where no config is there). Then the suite again, queued by intent-vc after its re-judge, then land each with its drafts' {SUITE} and {SHA} filled, and close 0199 and 0192. 0200 APPROVED (dc, 85ae5e4e on d170adb0, bundle f7e8f809), its targeted run of ten files under BSD and GNU booked after Intent's queue, landing on the next suite. ST0008 WP-01 APPROVED in code (cc, c07f1b45, patch 9f56fea1): it restacks on the fixed 0192, install_devbin writing devbin's .gitattributes block through lf_block_write, then its 19 files under BSD and GNU; uutils is covered by the kovacs order at the release head, not installed on hv's Mac; when it lands, directive 10's sweep pathspec gains .gitattributes. 0194 built by cc (64be94b3), its review set to follow."
+  }
+}

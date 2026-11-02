@@ -1,0 +1,15 @@
+{
+  "id": "01M68ZXDBB0RC7JZRF5HKE03TS",
+  "ts": "2026-10-31T12:45:51.339Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ST0011 run 3 banked and held on hv's order (2026-10-31 12:43Z via vc): refs/bank/dc/ST0011-06b 7cbc085f (WP06b, approved, on 80052f26) and refs/bank/dc/ST0011-05 d282e845 (WP05 reworked, approved pending its critic, on WP06b 452335e9 on cc's WP01 bank 8003fb63, in ~/Devel/scratch/devbin-dc/run3b); the notes are run3b/BANK.md and wp06c/BANK.md. Held until hv's go: then WP05's critic settled from the note and vc's header line folded, the stack rebased onto WP01's landing, its red clone, runs.conf, the slot asked naming the tip; after run 3 lands, the kovacs proof booked through vc and announced to kovacs-sysadm."
+  }
+}

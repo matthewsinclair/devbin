@@ -1,0 +1,15 @@
+{
+  "id": "01M3A7666EGKFC6XEVEB58QV8W",
+  "ts": "2026-09-24T17:25:07.918Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FILE INTO 0.1.8 on hv's ruling of 2026-09-24 (the decision beside this); vc files, claims and builds both. The next free numbers at this fold are 0142 and 0143, and the store assigns them. [authority read] infra_dns_authority in lib/infra.dns runs \"dig +short NS\" against the machine's resolver with no @server and reads any empty answer as COULD NOT MEASURE. Six runs at Prodinfra each had one to three transient misses; the domains answered SOA and NS moments later, and each run took 7 to 8 s, so the misses were fast empty answers, not timeouts. lib/infra.check:99's text, \"no authoritative nameserver answered\", says what the read never tested, and no arm holds it; vc verified this against the source. The fix: retry the authority read after a short pause, and say what was observed. 0126 already moves the exit code to 1 in 0.1.8. [profile schema] no field for a zone's wildcard A or TXT, or for DMARC sp=; those live in manual: prose where check cannot see drift (geodica.com, playprolix.com). It carries the MailerSend two-DKIM-key gap of 2026-09-08, whose record is not in intent/issues or its store: find it before filing. Source: prodinfra-cc, 2026-09-24, their clock 16:24Z to 16:31Z; vc's date -u read 16:32:16Z."
+  }
+}

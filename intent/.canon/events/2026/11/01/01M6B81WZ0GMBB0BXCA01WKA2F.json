@@ -1,0 +1,16 @@
+{
+  "id": "01M6B81WZ0GMBB0BXCA01WKA2F",
+  "ts": "2026-11-01T09:46:35.872Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop), folded at hv's order in cc's window for a /compact (2026-11-01 09:46Z by date -u), banked as WIP at refs/bank/cc/ST0011-02b 7c48c1426453c69fd4b2505b7bef732c986e7980 (fetch and compare-and-swap from 0b17f1de); 31 WIP commits on a2dde479, branch wp02b-c2 in the worktree ~/Devel/scratch/devbin-cc/st11-wp02b/fix-c2, clean. In: the W8 rework (a) to (e) as vc ruled on CRITIC-3 (ff851eda); CRITIC-2's notes as ruled, D-N1 cf853de6, D-N3 4e441a87, D-N5 43b7eede, D-N6 ecdeb039, D-N7 67288ce7, D-N8 434ee7ff, D-N9 718ef21a, and D-N2 with Part 3's docs items at 7c48c142. CRITIC-4, the last critic-shell review of 4fa98c77..7c48c142, given the commits only, reported 0 critical, 2 warnings (W1: a TERM or HUP to the cut's whole group can kill the run's wrapper before the exit trap reads it, so the gate runs on, predating the range; W2: release_repo_host called the one reading while two other sites split a repository's host inline), 4 recommendations; saved as CRITIC-4.md, no disposition written yet. cc's own finding, from the prebank scan: legs_local_running's literal return 2 in lib/cmd/release, which contract.bats refuses, not yet fixed. Not verified: no bats after 7ca8ea42. Next on the bounce: CRITIC-4's dispositions with that finding, to vc before the squash; settle; the squash on vc's word; the re-bank; the unit's run on its ask (decision 120 R1); the handover. State in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md."
+  }
+}

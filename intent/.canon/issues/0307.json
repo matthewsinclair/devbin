@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 307,
+  "slug": "a-cut-s-exit-notes-reach-no-log-when-the-signal",
+  "title": "A cut's exit notes reach no log when the signal that ends it takes the tee and no person is at a terminal",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-01",
+  "reporter": "Matthew Sinclair",
+  "body": "A cut's exit trap, run_exit in lib/cmd/release, writes two lines as the run ends: that the local gates were stopped, and which candidate the run pushed and never reached the delete of, with the command that deletes it. ST0011 WP02b-1 (CRITIC-2's D-W1) sends each line through run_exit_say:\n- to stderr, where tee takes it into the RELEASE log;\n- or, when that write fails because the signal that ended the run took the tee with it, to /dev/tty where a person is at a terminal.\n\nWhat is left: a signal that takes the tee where no person is at a terminal leaves the line in no log and on no screen. A TERM to a CI job or a cancelled booking's job are such signals. The next cut of the release still deletes a candidate left that way, so the release is not at risk, but the record of why is missing.\n\nWhy it is not fixed in the cut: the run's log path is a local of run_gate in lib/runlog. The cut cannot append to the log by path without run_gate publishing that path, for the gate now running.\n\nFix: run_gate publishes the log path of the gate it runs, and run_exit_say appends its line there by path whenever the stderr write fails, as well as writing to the terminal where there is one. Add an arm with a candidate leg, a TERM to the cut's whole group while its local gates run, and the note asserted in the RELEASE log.\n\nOrder: after issue 0306, which is changing lib/runlog now. Owner: set when 0306 lands.\n\n\nAlso (CRITIC-4 on ST0011 WP02b-1, its R1): two lines can be written during the exit trap outside run_exit_say, legs_local_stop's line naming a process group that was never written and legs_local_running's line naming a job table that cannot be written, so a signal that took the tee loses them even where a person is at a terminal. They go through run_exit_say with the rest.\n"
+}

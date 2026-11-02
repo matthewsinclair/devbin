@@ -1,0 +1,14 @@
+{
+  "id": "01M2QM7QPSQ3VZ1K7HGB9T652E",
+  "ts": "2026-09-17T12:07:35.897Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.unclaim",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "claim": "ST0007/01"
+  }
+}

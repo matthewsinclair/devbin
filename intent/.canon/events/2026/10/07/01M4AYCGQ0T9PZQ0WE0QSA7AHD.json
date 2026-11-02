@@ -1,0 +1,16 @@
+{
+  "id": "01M4AYCGQ0T9PZQ0WE0QSA7AHD",
+  "ts": "2026-10-07T10:26:14.368Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 16,
+    "text": "0182 v2 BUILT for the next bundle, on vc's word (2026-10-07): fleet's frozen list matches the plan's label; a name that labels no estate this run could sweep is named, and --apply refuses on it before writing, after the incomplete-scan refusal. critic-shell's warning (a label follows the run's roots, so the refusal puts renaming first) and five of its notes are built. RED on base 8 of 10 (Solo's control and the refusal-order guard green by design), GREEN 10 of 10, mutants 15 of 15, GNU 10 of 10, shellcheck and check lint clean (seal 20261007-1004), fleet.bats 145 of 145; the targeted run on the stack 0179 v1.1, 0178 v1.3 and 0182 v2 on 72f92d7c: 413 of 413. LOCALFOLD: the full suite on that stack is in flight (runs/suite182.meta). NEXT: on green fill {MYSUITE}, then hand vc patches/0182.v2.on-72f92d7c.patch (aed0947f). Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0182: read STATE.md first."
+  }
+}

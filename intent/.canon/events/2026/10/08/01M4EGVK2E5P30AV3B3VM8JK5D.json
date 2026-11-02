@@ -1,0 +1,16 @@
+{
+  "id": "01M4EGVK2E5P30AV3B3VM8JK5D",
+  "ts": "2026-10-08T19:46:45.966Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 47,
+    "text": "0190, parallel test runs (vc's assignment on hv's go, ahead of the 0.1.10 cut). v1.1 is built in scratch: rb190 branch b190 at 56740cf1, 6 commits on 0191's 542711c1. The suite runs in two lanes: bats --jobs N where GNU parallel is installed, then the tests tagged serial one at a time, one verdict, the count held against an untagged bats --count. N is half the CPUs and DEVBIN_TEST_JOBS sets it; the run is serial as before without GNU parallel or at N=1, and its first line says why. The two-lane BSD suite is GREEN: 627.0 s, 2294 of 2294, against 40.6 min serial. The GNU suite is in flight on vc's START, and the box takes one heavy run at a time between dc and cc until 0191, 0192 and 0190 land. On its END: END to vc AND cc (cc's START for 0192), then the handover to vc, rebased onto cc's 0191 v1.1, or 2b719467 until that exists. State: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

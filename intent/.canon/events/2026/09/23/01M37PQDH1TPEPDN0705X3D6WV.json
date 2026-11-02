@@ -1,0 +1,15 @@
+{
+  "id": "01M37PQDH1TPEPDN0705X3D6WV",
+  "ts": "2026-09-23T17:58:57.825Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.8, vc's share, at the 17:58Z localfold. HOLD (hv, 17:57Z: \"Localfold+compact and then hold\"): after the compact, run /in-session and pickup, then WAIT for hv's word -- do not resume work or re-arm the watch until hv says. STATE: every vc build for 0.1.8 has landed and closed -- the series 0a97f20..2b9d1a5 (closed 341ded1), 0116 v2 1a3bbc8 and 0138 a69b21b (closed 00b19ed), 0132 v2 14764df (closed f5a9d40), 0136 f484461 (closed 44d8a7b). cc's landed and verified here: 0120 2218a3f, 0115 v2 a4c1447. cc's 0123 v3 (with 0127, 0129, 0140) is approved and lands on cc's full suite, which was running at 17:32Z; verify the commit (todo 134). OPEN IN 0.1.8: cc's 0131+0137, 0133, 0134, 0135, 0139 and 0128; vc's 0130 (hold 10). Before the cut: one full suite on the final tree. INTENT was rebuilt (intent-vc's END came before 17:37Z, when vc's first command read 3.2.0 dev 3355ba2f714d): the store migrated with no tree change, doctor 0 findings; rollback snapshot intent/.backup/db/2026-09-23T17-30-30-281Z.db; the 4 hook stubs wait (todo 133). WITH hv: the all ruling (todo 123), 0130 (hold 10), the census walk's cost and CloudStorage, decision 40's reading -- all four already put to hv."
+  }
+}

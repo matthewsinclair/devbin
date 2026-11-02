@@ -1,0 +1,15 @@
+{
+  "id": "01M5VRD5SQ8Q7EJCQ06JEYR6NS",
+  "ts": "2026-10-26T09:24:31.671Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0233, claimed: handed to vc as bundle 3a74f456 (head 860436b0 refs/heads/issue-0233, requiring a1ca020c, restored in a fresh clone of main), COMMIT_MSG-0233.txt 9b8111ed and RESOLUTION-0233.md 7debdda7, in ~/Devel/scratch/devbin-cc/0233/handover; the evidence is sealed in 0233/runs: main's trace shows every fixture commit starting git maintenance and the fix's shows none, and readonlygit.bats is green under BSD and GNU at the fix. When vc lands it, cc checks the landed readonlygit.bats blob equals the bundle's (b92fecb6), then archives and clears 0233's clones, keeping the handover and the sealed evidence. Released when vc closes 0233 after hv's cut on the new head's green CI run, filling the draft's placeholders; then unclaim ISSUE:0233. Commits by path until vc pushes the new head, then board only until the cut"
+  }
+}

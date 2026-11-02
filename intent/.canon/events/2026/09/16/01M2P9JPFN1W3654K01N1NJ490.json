@@ -1,0 +1,15 @@
+{
+  "id": "01M2P9JPFN1W3654K01N1NJ490",
+  "ts": "2026-09-16T23:42:06.325Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0079 TAKEN (hv's go to close 0064/0079/0080, split agreed with vc):** route devbin_offer_upgrade, check_source_currency and _devbin_update_line through source_direction; offer only on forward; BEHIND never offered; is_commit_sha for both sha checks; +dirty never reads level. Files: lib/helpers, lib/cmd/doctor, lib/install (read). vc builds 0080 in parallel and reviews 0079. ST0007 chain after: WP-01 vc, 02 dc, 03 vc, 04 dc, 05 vc, 06 dc; WP-07/08 wait for hv's go."
+  }
+}

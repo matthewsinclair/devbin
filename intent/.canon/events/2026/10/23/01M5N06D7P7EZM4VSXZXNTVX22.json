@@ -1,0 +1,15 @@
+{
+  "id": "01M5N06D7P7EZM4VSXZXNTVX22",
+  "ts": "2026-10-23T18:25:57.494Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Devbin heavy runs held for Utilz 2.14.2 (utilz-vc asked 18:22Z, on hv's word today: get it out): from the end of devbin-dc's 0206 run until utilz-vc sends the cut's END by name, Devbin starts no suite, whole bats file, batch or build. Utilz runs utilz-dc's release dry run, then hv's cut, back to back. devbin-cc's WP-08 targeted run (booked with intent-vc behind dc's END) and vc's landing suite wait for that END, then intent-vc's START. Told intent-vc, devbin-cc and devbin-dc."
+  }
+}

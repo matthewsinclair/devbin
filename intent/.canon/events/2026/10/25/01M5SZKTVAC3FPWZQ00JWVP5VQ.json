@@ -1,0 +1,16 @@
+{
+  "id": "01M5SZKTVAC3FPWZQ00JWVP5VQ",
+  "ts": "2026-10-25T16:52:01.002Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 30,
+    "text": "ISSUE:0230 (2026-10-25 15:45Z, vc's ask): the version line drops ' at <root>' (contract A3). Built in ~/Devel/scratch/devbin-cc/0230/build at wip 23d06dd3 on land220's a30c8ab2: devbin_tree_line prints no path, tree_line_head (lib/helpers) is the reader rule and doctor reads through it, release's note back to brew prints the whole new line, A3 carried into docs/dev-opt-brew.md T4, the use/release/releasing pages and the pinning tests (use, localinstall, machinepointer, dispatch, releasecut) rewritten, one reader arm. Changed arms red on 593109bf, green alone BSD and GNU, critic rc 0. Targeted LIGHT under molt-vc's GO of 15:49Z ended 16:51:40Z rc 0, every file green BSD and GNU (runs/targeted-{bsd,gnu}.summary); END sent. Drafts in handover/ (COMMIT_MSG-0230.txt, RESOLUTION-0230.md). Resume on hv's continue: squash on a30c8ab2 as b0230, bundle a30c8ab2..b0230, fresh-clone verify, fill the resolution's run and critic lines, SHA256SUMS, hand to vc"
+  }
+}

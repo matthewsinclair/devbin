@@ -1,0 +1,15 @@
+{
+  "id": "01M68H5JWG1GKC024NMZ30V6JH",
+  "ts": "2026-10-31T08:28:10.512Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011 fix phase (hv's go 2026-10-31): WP01 to WP15 and AC-1.1 to AC-4.3 minted; cc on WP01 then WP02; dc on WP03 then WP04 to WP06; vc holds the pen, the desk's control and the reviews; WP09's release waits for hv."
+  }
+}

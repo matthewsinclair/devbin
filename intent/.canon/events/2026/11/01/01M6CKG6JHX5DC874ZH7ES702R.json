@@ -1,0 +1,14 @@
+{
+  "id": "01M6CKG6JHX5DC874ZH7ES702R",
+  "ts": "2026-11-01T22:25:53.235Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0011/AC-4.1"
+  },
+  "payload": {
+    "evidence": "devbin 0.1.19's cut at 2026-11-01 21:53:56Z by date -u: candidate run 41348944891 ran each job once on the snapshot 0b5e4fa0f540 (Ubuntu, macOS, WSL 2, Shell Script Analysis, Test Summary; no tag trigger and no Candidate verdict job; lanes from the runner's own CPU count, 4 there; WSL 2 on the candidate, red on one arm filed as 0318, which blocks nothing by design); the push's fast-forward of public main to 0b5e4fa0f540 ran Ubuntu again, run 41354285878, job 124990910238, green at 22:24:49Z (all 2824 ok, the same 107 skips), which the cut did not wait for; the v0.1.19 tag ran Release alone (41354289112), no test run"
+  }
+}

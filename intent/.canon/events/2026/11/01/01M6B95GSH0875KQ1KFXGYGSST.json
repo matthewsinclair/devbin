@@ -1,0 +1,16 @@
+{
+  "id": "01M6B95GSH0875KQ1KFXGYGSST",
+  "ts": "2026-11-01T10:06:03.058Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 09:52Z by date -u): (1) WP16's evidence run (dc, running since 09:34:38Z by dc's clock; five reds of its own so far, two needing lib/ fixes, so decision 124's first shape is void by its own terms): at its END rule the re-run's shape on every TAP (likely by runs.conf's own method: WHOLE off with test_helper.bash unchanged, FILES every suite reading a changed file or function, under BSD and GNU), then the re-run on dc's re-bank, its diff from acc813e0 read by vc first, then land it as run under decision 83 with its AT rows (decision 101), then dc's order for 0306, then WP17; (2) cc's WP02b-1: CRITIC-4's dispositions (0 critical, 2 warnings, 4 recommendations; W1 predates the range) with cc's own prebank finding (legs_local_running's literal return 2, refused by contract.bats, fixed in-unit) and main's dispatch.bats 542 fixed in-unit (decision 124), sent by cc after its compact, then the squash on vc's word, then its unit run, next on the bats lane from cc's ask (decision 120 R1); (3) the queue at WP16's END, in order, each granted with the load read first: Trellis's library-layout run, Laksa's targeted mix run (it keeps its place; laksa-dc starts it at its tip of the moment, a records-only move from 575ae6047), Intent's preflight re-run at 64cf9e251 (hv's ! line in kovacs-sysadm's window at its turn); (4) Intent's push on the re-run's green summary and intent-vc's named HEAD, by ~/Devel/scratch/devbin-vc/intent-push-20261101-2/push-check.sh then push.sh, CI read to the end; (5) the light runs granted after the 10:04Z load read: Gtools's ST0021/01 landing (01M6B8ZZ31ZZMTVJS5SN2TCKV5) and Molt's 0072 probe (01M6B904306VPQQ9VNZMR445D4), their ENDs."
+  }
+}

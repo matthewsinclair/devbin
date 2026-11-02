@@ -1,0 +1,126 @@
+---
+node: vc
+name: Validation Claude
+role: validation
+session_id: 64b942fd-acdf-4697-9bbf-a4b030b3c761
+heartbeat_at: 2026-09-02 22:55Z
+status: active
+focus: "THE SWEEP RAN AND INTENT REFUSED IT, CORRECTLY. Twelve estates committed at 9f374cc; Intent reverted to HEAD rather than bypassed, because its shared-artefact guard arm 10 named MY 0050 restore phase as a new unguarded entrance to a release path four nodes invoke. Fixed at e7725c0: devbin ships no cargo invocation at all and the project declares commands.fullcycle.restore. RE-SWEEP OF ALL THIRTEEN IS WAITING ON hv TO PUSH e7725c0. TEMPLATES filed as intent#0220. 889 tests, 0 failures"
+claims: []
+---
+
+# Validation Claude (vc)
+
+## DOING
+
+- **THE RE-SWEEP, waiting on hv to push `e7725c0`.** Twelve estates are committed at `9f374cc` and carry a `fullcycle` restore phase that reaches for cargo directly; `e7725c0` removes it. Sweeping now would stamp an unpushed commit into thirteen trees, which is the rule I held to this morning and am holding to.
+- Working detail for 2026-09-01 is archived at `.history/20260901/wip-prefold-1709Z.md`. Not restated here.
+
+## Done today, 2026-09-02
+
+- **The fullcycle block is CLOSED.** `0051` (phase list stops holding a safety decision), `0050` (targeted restore half), `0048` (artefact check needing no tripwire, dependency trees out of population), `0047` (the two consents split into two flags). `0049` closed on hv's ruling -- the label was the defect and it was already fixed.
+- **`0052` filed, diagnosed and fixed.** CI red on `main` since 2026-08-27, unread through the entire release; the tagged `e22d9a3` had never run CI at all. Eight Linux failures: six were a BSD-only `script` call in a test helper, two were real BSD-only defects in `fleet` (`shasum` bypassing the portable wrapper, bare `date -u -r`). **CI green on all four jobs at `614b424`** -- first since 2026-08-25.
+- **`RELEASES/0.1.0.md` footnoted in place** per hv's ruling. The published figures are macOS-only and now say so; not re-measured, because that would swap a dated record for an undated one.
+- **The v2 issues tree is DELETED** (`08aa004`), after a four-way confirmation: ids (canon `0001`-`0052` is a superset of the residue's `0001`-`0034`), titles 34/34, statuses exact, and canon body shorter than v2 body in **0 of 34** so nothing was truncated in the migration. **My count was wrong for the THIRD time on this row** -- board said 34 dirs, I "corrected" it to 2 OPEN / 34 CLOSED, and it was 1 OPEN / 33 CLOSED. The second wrong number was produced while correcting the first.
+- 837 tests (from 824), 0 failures, lint 33/0.
+
+### After the 20:44Z fold -- the whole ruled list, built
+
+- **`0046` CLOSED.** The `measured:` referent is written BEFORE the seal, so it reaches the run's own `.out` and the red tail fallback. It had been printed after the tee closed, so a nested gate's referent landed in its PARENT's log and a top-level gate's landed nowhere.
+- **`0053` FILED AND FIXED.** The upgrade notice warned `will REVERT the runtime` about a source that changes no vendored byte -- and then said `No vendored file differs` four lines later, in the same output. **Measured on this repository's own commits**: `08aa004` and `49e8bb2` differ by zero seam paths. `vendor` was correct on the same pair and is untouched; the difference was never the data, it was that one command asserted an outcome it had not measured.
+- **`0042` CLOSED.** `clean --dry-run`. The scan was the valuable half and was reachable only from a tty -- the prompt WAS the preview. The blocked-binaries arm now REPORTS its refusal instead of performing it, because a `die` there exits non-zero and a caller reads that as "the scan failed".
+- **`0054` FILED AND FIXED, and it was MY defect from this morning.** `0047` made fullcycle pass `--force-blocked` always and did not touch the `--dry-run` branch, which re-derived the same decision three hundred lines away. The preview printed `clean rust` for a run that executes `clean rust --force-blocked` -- **a dry run describing a strictly WEAKER command than it runs.** The test that should have caught it asserted `refute_output_contains "clean rust --force"`, which `--force-blocked` satisfies as a PREFIX.
+- **VERSION built.** `--version` carries `runtime <12 hex>` beside the commit, because `<sha> +dirty` names no bytes at all. `runtime_digest` is the one home and `fleet`'s `seam_digest` now calls it; folding paths relative to the LIB DIR is what makes a source and an install of it collide, which the old root-relative spelling made impossible. **hv ruled the word `tree` and I did not use it** -- `tree` is a git object and a reader would go looking for one. Overrule me if the git object was meant.
+- **`0052` CLOSED.** The run log names its machine: `platform: Darwin 25.6.0 arm64 / bash 5.3.15(1)-release`. **The seal itself cannot carry it** -- `.errors` is empty exactly when a completed run was green -- so it goes in the `.out`, which is the copy that travels.
+- **`0045` CLOSED, after two wrong homes.** A memoising `run_id()` called as `$(run_id)` died with its subshell; moving it out did not help either, because **a project handler is a separate process**. One `check all` produced five ids under one correct stamp -- a filename saying "one run" and a field inside saying "five". `bin/devbin` mints and exports it now. **Two of the five tests were green for the wrong reason and were replaced**: declared-`run:` options run in a SUBSHELL and inherit an unexported variable anyway, and three gates inside one minute share a prefix whether the stamp is shared or re-read.
+- **DORMANCY BUILT.** `bin/devbin dormancy`, rust-scoped, twelve tests. Runs the declared cargo invocation and the same line with `--all-features` and reports the delta in tests EXECUTED. **The value is in the four refusals**, not the subtraction: a non-cargo line has no maximum; a line already at the maximum is zero BY CONSTRUCTION; a leg with no test trailer is not a zero; a RED leg is a different suite rather than a smaller one. Both legs run `RUNLOG_WITNESS_RUN=1` so neither claims `LATEST_RUST`.
+- **`0055` FILED, not fixed.** A run log is stamped from the LOCAL clock with no zone while `fleet audit` renders UTC with a `Z`. One hour apart today, zero for half the year -- correct in winter and silently wrong in summer. **This repository is where the whiteboard clock guard lives**, and the run logs are the one surface still doing what that guard refuses.
+- 886 tests (from 837), 0 failures, `check all` green.
+
+### The sweep, and the one estate that refused it
+
+- **TWELVE ESTATES SWEPT AND COMMITTED** at `9f374cc`, identical everywhere: 1 added, 9 updated, 22 unchanged, 0 removed, **0 skipped** -- so no vendored file anywhere had been edited in place. Intentv2 excluded, FULLY FROZEN. The seam digests all moved because `runtime_digest` now folds paths relative to the lib dir, and the grouping survived exactly as claimed: twelve estates on one digest before and after.
+- **INTENT REFUSED THE SWEEP AND THE REFUSAL WAS RIGHT.** Its `shared_artefact_build_guard.sh` ran to completion, printed fourteen passing arms, and failed on **arm 10** -- the census of cargo invocations that can build RELEASE and reach the shared artefact with no guard. It named the file and the line: **my `0050` restore phase, shipped this morning.** Intent guards `native/rust/target/release/` because four nodes invoke that artefact and a build from a dirty tree poisons it for all of them.
+- **I REVERTED INTENT'S SEAM TO HEAD RATHER THAN BYPASSING.** `--no-verify` on a safety gate to land a vendor sweep is the wrong trade. Verified first that the entrance was NEW: `git show HEAD:...fullcycle` has no release build, the working copy had one at line 404.
+- **`0050` REFIXED at `e7725c0`.** devbin ships no cargo invocation at all; the project declares `commands.fullcycle.restore`. Undeclared, the phase does not run and says why -- the state `0050` found, now with the reason and the remedy attached. **`build release` was NOT the portable spelling and I checked before proposing it**: at Intent that arm is INTERACTIVE and pushes, so guessing a verb by name would have turned a restore into a publish.
+- **`intent-vc`'s mechanism was wrong and their conclusion was right.** They read it as the guard being unable to vouch for itself while my files were mid-edit. The guard vouched for itself fine; it failed on a finding. Corrected to them directly, along with the fact that my revert took an unrelated uncommitted provenance diff of theirs with it.
+- **TEMPLATES filed as `intent#0220`**, on hv's ruling: ONE issue naming the class. **The class is the REMEDY PATH, not the defect** -- `bats tests/` is a default wrong for one project shape, `gtools#0003` is a BSD platform bug, and what they share is that no consumer can act on either. **The third instance I had carried, `/in-finish` step 3, is WITHDRAWN**: re-checked before filing, installed and shipped are byte-identical at that step and every file it names exists. I could not re-establish it, so it is not cited.
+- 889 tests, 0 failures, `check all` green.
+
+## TODO
+
+- **THE PUSH of `e7725c0`, then the RE-SWEEP of all thirteen.** Twelve carry the cargo entrance today; Intent is deliberately unswept and clean.
+- **`0055`** filed and not fixed -- a run log stamped from the LOCAL clock with no zone while `fleet audit` renders UTC with a `Z`. The fix is not `date -u`: three readers depend on the filename shape. hv's to rule.
+- **`0035` PARKED deliberately** by hv. `0034`, `0036` and `0039` are open and unruled. `0036` is now also `intent#0220`'s instance 1, and its fix is upstream.
+- **hv DECLINED the tag-as-CI-trigger fix** -- recorded as declined, not pending.
+
+## Holds
+
+- **`use` as a devbin builtin -- BLOCKED, and not to be designed around.** Released only by hv lifting it.
+- **`--ivault` -- EXPLICITLY DO NOT START.** Released only by hv saying so.
+
+## Watch-outs
+
+General forms are in `intent/llm/LESSONS.md`.
+
+- **A FINDING WHOSE TRUTH DEPENDS ON AN UNREAD MECHANISM IS A QUESTION, NOT A FINDING** (`laksa/dc`, 2026-09-02, on themselves). They sent a measured crate census plus a prescription -- *absent target must be SKIPPED, not judged* -- which presumed my discovery enumerated CRATES. It enumerates BUILD TREES, so the case was invisible by construction and there was nothing to skip. **The census was measured and correct; the prescription hung off it was a guess wearing the census's credibility.** Their own form of this, sent to me two days ago, is the same shape: a measured correction lends its authority to the un-run clause beside it. The honest shape when you cannot read the code is conditional -- *if it enumerates X then this follows; if Y, ignore this half* -- which costs the reader one line instead of a fixture.
+- **AN ASSERTION CAN BE SO WIDE IT FORBIDS THE TRUTH.** My `refute_output_contains "lumis_nif"` would have gone red on `clean` correctly reporting a tree it IGNORED -- a neighbouring instrument behaving properly. **The mutant-survives problem in reverse.** Scope every assertion to the instrument under test, not to the whole output stream.
+- **READING A FUNCTION IS NOT READING A CODE PATH** (`laksa/dc`, 2026-09-02). They read `_fullcycle_phases` correctly and drew a conclusion one function wider than what they had read -- in the same message where they named scope-restatement as the house failure mode. **The tell needed no knowledge of the answer: they never asked who calls it.** That is checkable BEFORE you know whether you are wrong, which is the only kind of tell worth having, and it is a stronger form than anything I had been carrying on this class (all of mine are after-the-fact). **Naming a pattern does not inoculate you against it** -- and the instance that lands on the namer is the most informative one, so it gets recorded rather than dropped out of politeness.
+- **A DUPLICATED DECISION IS BENIGN UNTIL THE COPIES DISAGREE ABOUT THE SAFE DIRECTION.** `fullcycle` gates one predicate twice: the guard fails CLOSED and loudly, the phase list fails OPEN and silently into the net-destructive cycle the guard refuses. **Call order is the only thing holding it off, and call order is not a thing anyone edits deliberately.** Three ordinary tidy-ups arm it. Filed `0051`. The general form: when two copies of one decision differ, ask which one SURVIVES a deletion, not which one is correct.
+- **`git commit --only` LEAVES INDEX RESIDUE, AND THE RESIDUE IS A SILENT REVERT** (`laksa/dc`). The index can retain the PRE-FORMATTER blob while HEAD and the worktree hold the formatted one, so the next bare `git commit` in a shared tree undoes the gate's own formatting with nothing said. **Not stale content -- armed content.** Checked in devbin 2026-09-02: `git diff --cached` and `git diff` both empty, no residue here. **And that clean tree is NOT evidence, in either direction** -- four commits with an empty index is equally consistent with the convention holding and with nothing having exercised it. `laksa/dc` refused to carry it as corroboration of theirs and named the reason: **"no residue observed" and "residue cannot occur" produce the identical reading.** That is fullcycle's empty watch list exactly -- the same shape as `0048`, met in git rather than in a gate. What prevents the residue is a convention, not a mechanism, and no observation of a clean tree can tell you which one you are looking at.
+- **A SOUND INSTRUMENT, AIMED ONE UNIT WIDE, RETURNING CLEAN. Eight instances on 2026-09-01, most of them mine.** `[profile.dev]` read from a member manifest when cargo honours only the workspace root; `native/cli` given its sibling's status; `ci.yml:156` given the job next to it; Conflab's `--lib` asserted about Intent's `--workspace`; `tail -25` and `intent/vc`'s `head -10`; a probe for a build VERB standing in for the PROPERTY of restoring artefacts; a MESSAGE cited as a DOCUMENT. **The artefact boundary and the file boundary do not coincide, and nothing in the output says which one was measured.** `intent/vc`'s form is the sharpest: **a display limit is a population filter wearing no clothes at all** -- `-maxdepth` at least reads as scope, `head` reads as formatting.
+- **A DANGLING SYMLINK IS INVISIBLE TO A PATH RESOLVER** (`conflab/vc`). `clean`'s at-risk detector resolves basenames through PATH, so **once anything darkens a binary, every later run is CORRECTLY silent about repeating the damage.** Worse than a control that cannot go red, because it used to work. Only a before/after control sees it, and it must scope its claim to links that resolved at the start.
+- **AN ARTEFACT SET LOOKS LIKE A RUN AND IS NOT ONE.** Gates stamp per OPTION, so `20260901-1835` holds CRITIC/FORMAT/TOOLCHAIN from a run that FAILED lint and LINT/SYNTAX from the next run, which passed. **A false green assembles itself out of entirely honest files**, and the minute is the only run-key candidate present so it is the one a reader will use. Filed as `0045`. **`ls -t | head -1` returned the previous run's counter reading `33 file(s), 0 breach(es)` -- true, and about a different run.** Reconstructing the boundary took `stat` on mtimes.
+- **A SUPPRESSION BELONGS TO ITS CALL SITE, NOT TO THE FILE IT WAS WRITTEN IN.** Moving a `printf` out of `bin/devbin` into `lib/helpers` left `# shellcheck disable=SC2119` behind. Lint reddened at the new site, and the orphan left at the old one **suppressed nothing while still reading as a considered decision** -- so it had to be deleted, not just duplicated forward.
+- **ZSH DOES NOT WORD-SPLIT AN UNQUOTED `$var`, AND MY HARNESS MANUFACTURED A FALSE RED WITH IT.** A loop running `bin/devbin $c` passed `devbin --version` as ONE token and reported `unknown command` for two surfaces that work. Same root as **`PIPESTATUS` IS BASH AND THIS SHELL IS ZSH** below. **A false red is cheaper than a false green and it is not free: I nearly reported a working command broken to hv.**
+- **A TRAP DOCUMENTED BY ITS SIGNATURE IS TRIPPED BY ANYTHING THAT REPRODUCES THE SIGNATURE.** hv's board says an extractor that drops the heading reports **12** lines and *reads like a lost directive*. At pickup today my extractor reported 12 -- by dropping the TRAILING BLANK instead. Same alarm, different cause, and the documented cause is the one a reader will believe. **Both readings are 12; only 1341 vs 1319 separates them, and nothing prompts anyone to look at the byte count once the line count has already matched a named failure.** Verify against the invariant with the most bits -- the bytes and the item COUNT -- never the one the warning happens to name. This is `devbin/cc`'s *a trap described by its instance gets defended against by its instance*, inverted: theirs under-fires, this one FALSE-fires, and a false-firing alarm sends you hunting for damage that was never done.
+- **A CONTROL THAT DID NOT APPLY IS INDISTINGUISHABLE FROM ONE THAT PASSED**, and a red arm that fails for the WRONG REASON is worse, because a red arm is the one nobody re-examines (`conflab/vc`: a guard control that exited 101 on a compile error). Every break now asserts its own byte delta before its result is read.
+- **A PRINTED NUMBER GETS READ INSTEAD OF RUN** (`intent/vc`, via `intent/dc`). Stating a figure beside its regenerating command buys auditability and nothing at all for currency -- TN001's cost table went stale under exactly that caption. **Live figure: print the command, delete the number. Historical figure: date it.**
+- **A MESSAGE HAS NO REVISION, SO THE MESSAGE IS THE COPY THAT ROTS.** Citing one as a document upgrades its authority to something checkable while removing everything that would let anyone check it. Quote the channel as the channel.
+- **NEVER `head`/`tail` WHEN SIZE OR STATUS IS THE QUESTION**, and **every timestamp is READ FROM A CLOCK in the writing turn** -- a value off a tool's filename carries that tool's zone, and appending `Z` is an assertion.
+- **A RELAY IS NOT AN INSTRUCTION.** **`PIPESTATUS` IS BASH AND THIS SHELL IS ZSH.** **A pipeline's rc is its LAST command's**, so `cmd | tail` reports `tail`.
+
+## Decisions
+
+### THE DOCKET IS RULED -- hv, 2026-09-02 15:55Z, all eighteen items
+
+Taken interactively in terminal, item by item from the top. **hv overruled my recommendation on two rows and rejected the premise of a third**; those three are marked, because a docket that records only the agreements is a record of my own opinions.
+
+| item        | ruling                                                                  |
+| ----------- | ----------------------------------------------------------------------- |
+| TAG         | DONE -- pushed to both remotes, `Release` workflow green in 19s         |
+| INTENT      | vc sweeps it with the others                                            |
+| INTENTV2    | **FULLY FROZEN.** Drift reporting STOPS; recorded as deliberate         |
+| `0047`      | CONFIRMED -- option 3, the split                                        |
+| `0050`      | Targeted restore phase after `build all`                                |
+| `0048`      | Before/after on the build tree; composes with `0050`                    |
+| `0045`      | Stamp once per invocation, low priority                                 |
+| `0046`      | Move the write before the seal; settles the generalisation too          |
+| `0049`      | CLOSE -- the label was the defect and it is fixed                       |
+| VERSION     | Yes -- devbin's `--version` carries `(tree <sha>)`                      |
+| DORMANCY    | **BUILD IT NOW** -- hv overruled my "park until a second estate asks"   |
+| SYNC        | **DROPPED, and the premise was wrong.** See below                       |
+| NOTICE      | File AND fix -- compare the seam digest, not the commit                 |
+| ST ATTACH   | DROP -- a v2 question about a v2 layout                                 |
+| V2 RESIDUE  | Delete, AFTER confirming all 36 are in the canon store                  |
+| TEMPLATES   | ONE Intent issue naming the class                                       |
+| `0042`      | Add a `--dry-run` needing no tty                                        |
+| `0035`      | PARK deliberately -- it deserves its own session                        |
+| `0051`      | Delete the inner conditional; emit `build all` unconditionally          |
+| `0052`      | Footnote `0.1.0`'s Verified in place; MEASURE the 8 before fixing       |
+
+- **SYNC: the rule is dropped and my framing of it was wrong.** hv: *"Those `~/Dropbox/Repositories` are all `--bare` git repos. No work happens over there at all."* Verified: `core.bare = true`, bare layout, and **no devbin estate is under Dropbox** -- all thirteen are under `Devel/prj/`. So the "live instance" I put on the docket was not an instance of anything. **`cc` asked for a rule about WORKING TREES; I widened it to REMOTES so it would reach something in this repo.** That is the day's own class, committed in the act of asking for a rule against carelessness. **The 117-files-at-zero-bytes corpse is also withdrawn from use until somebody establishes what it was** -- I inherited it from `cc` and never checked whether those files were in a git repo at all. Owed to `cc`.
+- **DORMANCY: hv overruled the park.** My ground was D18's *never speculatively* plus one estate hitting it once. hv's is that the design is settled and conceded, so the speculative objection has already been paid off. Build it.
+- **`0052`: hv did NOT take the tag-as-CI-trigger fix**, which is the gap that left `e22d9a3` untested. Two of three taken: the seal records its platform, and the two shellcheck thresholds get reconciled. Recorded as declined, not as pending.
+
+- hv's standing directives live on `hv/wip.md`. Nothing duplicated here. **I hold that pen under hv's explicit grant; corrections factual only, standing directives byte-verified every time.**
+- **Authority chain (hv, 2026-08-28):** hv -> intent-vc -> {intent-`{dc,ic,cc}`, devbin-vc -> devbin-`{dc,ic,cc}`, conflab-vc -> conflab-`{dc,ic,cc}`}. **My branch is one node: only `devbin-cc`.** Lamplight is hv's separate track.
+- **Rule 2 (no builds in the Intent tree) is LIFTED**; rules 3 (`git add` + `commit --only` by path) and 4 (timestamps read from `date -u`) stand.
+- **`bin/devbin` is the invocation everywhere** (supersedes D6). Delivery while in development is the DEV TREE.
+- **`devbin_version` in devbin's own config is a CONSTRAINT and MUST stay a literal.** Deriving it from `VERSION` makes `doctor`'s check unfailable.
+- **`devbin-users.md` is a snapshot, not a standing fact.** A stale stamp goes to hv, not to a rebuild.
+- **The `fullcycle` criterion is silent growth, not arithmetic** (2026-09-01): declared `[[test]]` blocks pass at any count because a reviewer sees them; auto-discovery is what grows unannounced. Intent's own crates are why -- two keep a second target deliberately.
+- **ONE RENDERER FOR THE IDENTITY LINE** (hv, 2026-09-01). `version_identity` in `lib/helpers` is the single home; `--version` and the bare `version` both call it and **no third site prints that line itself**. `version show` stays bare -- it is the machine arm. A project outside git renders `(unknown)` rather than dropping the field, because omitting it rebuilds the same defect: one command, two shapes, chosen by circumstance.
+- **THE FLEET SWEEP IS COMMITTED, NOT JUST WRITTEN** (hv's go, 2026-09-01). Twelve estates at `e39fba7`, vendored paths clean in every one. **`fleet audit` reads DISK and says nothing about git**, which is how "thirteen re-vendored" was true and "thirteen committed" was false at the same time -- `intent/vc` and `laksa/dc` both found it before I did.
+- **A machine posture belongs in a file that can be re-measured, never in a commit message that cannot.**
+- **D1 to D24 are permanent in `intent/st/COMPLETED/ST0001/design.md`.**

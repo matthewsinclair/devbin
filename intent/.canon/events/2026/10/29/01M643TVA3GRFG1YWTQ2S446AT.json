@@ -1,0 +1,14 @@
+{
+  "id": "01M643TVA3GRFG1YWTQ2S446AT",
+  "ts": "2026-10-29T15:18:09.477Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-2.5"
+  },
+  "payload": {
+    "evidence": "workroom.bats and neutral.bats passed in the v0.1.17 cut's test all gate on 420547e3, the snapshot's source; hv ruled 2026-10-29 that no separate run on the snapshot is made"
+  }
+}

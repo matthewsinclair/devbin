@@ -1,0 +1,16 @@
+{
+  "id": "01M4ZY71707JCYMTDY80ZB84W2",
+  "ts": "2026-10-15T14:07:17.729Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "NEXT RELEASE carries everything open (directive 13). 0193 landed at cccfd9ff and is closed. cc's order, on vc's word of 2026-10-15 matching hv's go: 0195 (high, the Homebrew formula; moved onto main's head at 3aed1b65 in ~/Devel/scratch/devbin-cc/i0195, with the formula template and cmd/formula written; its local brew rehearsal cleared from intent-vc's side, with HOMEBREW_NO_AUTO_UPDATE, _INSTALL_UPGRADE, _INSTALLED_DEPENDENTS_CHECK, _INSTALL_CLEANUP and _ANALYTICS set, a scratch XDG_CONFIG_HOME before any brew trust, and brew's listings and the trust file's checksum matching before and after), then 0198 (filed 2026-10-15 from D1's one failure), 0197, 0196 and 0192, with 0194 unassigned beside them. Each is reviewed on handover by vc's slim rule (the diff, the builder's seals and drafts, no re-runs), then one full suite of the landing tree, booked on this Mac through intent-vc. Whether the release waits for all of ST0008 is design v0.8's question 11, put to hv on 2026-10-15 (vc recommends (b): cut once Linux is proven on kovacs and brew rehearsed)."
+  }
+}

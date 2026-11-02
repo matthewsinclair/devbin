@@ -1,0 +1,16 @@
+{
+  "id": "01M4B68JRTAV54AJ6E281B8GWR",
+  "ts": "2026-10-07T12:43:54.010Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "NEXT RELEASE (hv, 2026-10-07): close everything `intent outstanding` lists. NINE WERE OPEN, 0177 to 0185; FOUR ARE OPEN. LANDED, each through the gate on vc's full suite of its exact landing tree, the landed tree equal to the suite's on every path outside intent/. BATCH 1 (seal 20261007-0923, 2210 of 2210): 0179 at 79a06fd4 and 0178 at ff238421, closed; 0180 at b6a39287, open for its Done when 4, the next push's Ubuntu leg (todo 147); records 5cfb99ac. BATCH 2 (seal 20261007-1151, 2220 of 2220): 0182 at 3d170d3f, 0177 at 2948439c and 0183 at 6888bf18, closed; records 3ac94a41. BATCH 3, IN BUILD: 0185 (cc, on batch 2's tree, which main's code now is), 0184 (dc, v2 in scratch) and 0181 (dc). Each is reviewed, then one vc full suite over the three, then landed with landb.py and recordsb.py from a batch manifest (~/Devel/scratch/devbin-vc/0.1.10/batch2.json is the model; both scripts driven on a dummy clone). 0185's record was narrowed at 152fe2b7: release is out of its scope. THE NOTE is drafted at ~/Devel/scratch/devbin-vc/0.1.10/notes/0.1.10.md from the landed Resolutions, each comparative read against 0.1.9's code, and is finished when all close. devbin_version is ^0.1.1, which admits 0.1.10, so no config bump comes before the cut. Then hv's dry run and cut."
+  }
+}

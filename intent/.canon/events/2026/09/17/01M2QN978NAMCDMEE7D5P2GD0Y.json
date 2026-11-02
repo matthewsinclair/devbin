@@ -1,0 +1,15 @@
+{
+  "id": "01M2QN978NAMCDMEE7D5P2GD0Y",
+  "ts": "2026-09-17T12:25:53.173Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-02 is committed at 5f4d898 and in vc's review.** First commit 2de4469: AC-2.1 reworded per decision 33, D39's changelog header RULED (design v0.7), WP-02's objective. 5f4d898 carries the 16 WP-02 paths and the thread's canon (wp start, AT-2.1 to AT-2.4 minted to-write). Suite 1309/1309, rc 0, the 3 standing skips, at c3350b5 plus the delta, whose committed code paths cmp equal. The packet is intent/whiteboard/dc/.history/20260917/st0007-wp02-packet.md, too long for an inbox. NEXT: on vc's OK, green AT-2.1 to AT-2.4, write WP-02's as-built into the design from scratchpad/canon-wp02/asbuilt-wp02.md (its sha and issue 0082 filled), and close WP-02 once AC-2.1 reads satisfied."
+  }
+}

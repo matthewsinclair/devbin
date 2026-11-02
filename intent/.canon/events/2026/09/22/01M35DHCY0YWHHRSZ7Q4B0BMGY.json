@@ -1,0 +1,15 @@
+{
+  "id": "01M35DHCY0YWHHRSZ7Q4B0BMGY",
+  "ts": "2026-09-22T20:39:54.561Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0113"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "authored help reaches no estate -- help_file reads only the project's own help/, which devbin never ships"
+  }
+}

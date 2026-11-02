@@ -1,0 +1,9 @@
+st dirs (ST*)          : 123
+st info.md files       : 654
+WP dirs                : 535
+issues OPEN files      : 2
+issues CLOSED files    : 9
+intent/docs files      : 2
+intent/llm files       : 15
+intent/.canon exists   : no
+intent/history exists  : yes

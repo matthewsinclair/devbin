@@ -1,0 +1,16 @@
+{
+  "id": "01M52EV94GAAC3D6EYNBP1HW8A",
+  "ts": "2026-10-16T13:36:27.280Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 49,
+    "text": "Issue 0200 (dc, 2026-10-16): APPROVED by vc as built at 85ae5e4e; REBASED onto main 55cfba2a (after WP-02 and WP-03 landed) as 94d4f7fc red, 3026a6c8 green, 7b19c0d6 critic fixes, range-diff equal patch for patch; the 20 affected arms green alone on 7b19c0d6 under BSD and GNU (logs ~/Devel/scratch/devbin-dc/st0008/runs/i0200-arms/rebased-{bsd,gnu}.tap, identical, b405064c). Clone ~/Devel/scratch/devbin-dc/i0200; bundle ~/Devel/scratch/devbin-dc/st0008/i0200.bundle (main ^55cfba2a, tip 7b19c0d6) sha256 0ef84337, the pre-rebase one kept as i0200-85ae5e4e.bundle (f7e8f809), both verified in a fresh clone, SHA256SUMS beside them; drafts in runs/i0200-arms/HANDOVER.md. Next: send vc the rebased tip and sha256 (done at the fold), then its targeted run of 10 files (shellinit contract neutral documentation readonlygit harness helpers help localinstall surfaces) under BSD and GNU on 7b19c0d6, on intent-vc's GO after hv's build all in Intent, START/END to vc, intent-vc and utilz-vc; it lands on the next landing suite. 0200 stays dc's"
+  }
+}

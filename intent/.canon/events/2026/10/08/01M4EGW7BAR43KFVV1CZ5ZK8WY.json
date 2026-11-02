@@ -1,0 +1,16 @@
+{
+  "id": "01M4EGW7BAR43KFVV1CZ5ZK8WY",
+  "ts": "2026-10-08T19:47:06.730Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 41,
+    "text": "0191 v1 HANDED TO vc at 19:44Z; v1.1 TO BUILD on vc's rulings (by socket, during the 2026-10-08 19:47Z localfold): (1) 12.2 s for heartbeat.bats ACCEPTED with the margins, and the Resolution says why it is not a few seconds (the clock arm's 2.8 s floor; 1 s gates against a beat 0.3 s late); (2) two riders critic-shell found, named as such in the message and Resolution, no new arms: tests.yml's Shell Script Analysis collector (find ... 2>/dev/null in a process substitution, tests.yml:285 on main) collects into a file under set -euo pipefail and reads it, its extract checked once against this tree to list the same files; contract.bats:1144 rewrapped so no line opens with the word shellcheck. Send vc the v1.1 patch, the sums and an interdiff from v1; tell dc the v1.1 head. v1: head 2b719467 (b191 in ~/Devel/scratch/devbin-cc/sp-2026-10-08/0191/w191), patch 0191.v1.on-437ab0c0.patch b494ef39. After vc lands: export b191, verify in a fresh clone of the shared tree, delete the 0191 clones, archive this, unclaim ISSUE:0191. Re-entry: ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M41BAQKKBGQSYS0TX7Y9BRWJ",
+  "ts": "2026-10-03T17:00:03.061Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0158"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A project's own handler cannot run a gate tool the way run_gate does: the stdin rule has no name to call"
+  }
+}

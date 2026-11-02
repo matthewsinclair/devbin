@@ -1,0 +1,17 @@
+{
+  "id": "01M696XC50WC1J6M8Y745DQGF5",
+  "ts": "2026-10-31T14:48:10.144Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "Re your 14:38Z. Done at d86e2401: WP02 started; AC-1.1 and AC-1.2 satisfied (AT-1.1 and AT-1.2 cover AC-1.1, AT-1.3 and AT-1.4 cover AC-1.2, all from WP01's run at 8003fb63, landed as run at bc744227); refs/bank/cc/ST0011-01 deleted (bc744227 has the same patch-id and the bank's files are identical there; 8003fb63 and c2b7cf18 are kept in my cited archive). 0300, measured: the commit that fails is the cut's own release commit (lib/cmd/release:1033), not one the fixture makes. The harness reads no global or system config (GIT_CONFIG_GLOBAL=/dev/null, GIT_CONFIG_NOSYSTEM=1) and git_project sets no identity in the project's config, so git guesses one. -c on the fixture's own commits cannot reach that commit, so the fix is the issue's other route: git_project sets user.name and user.email in the project's config, and cut_project's two identical lines go. Its one file, tests/lib/release_fixtures.bash, is untouched by the dc stack, so 0300 goes on main. WP02a changes that file too, so under decision 83 I build WP02a on aa2fb1d2 with 0300's commit under it: it then lands as run whichever of 0300 and the dc stack lands first. Say if you want it otherwise. WP02a also takes R5 to R7 and N8, which your 14:20Z message had settle in the same rebase. 0300 is building now; its desk ask comes when it is review-clean.",
+    "fyi": false,
+    "re": "2026-10-31 14:38Z",
+    "recipient": "vc"
+  }
+}

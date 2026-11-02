@@ -1,0 +1,15 @@
+{
+  "id": "01M5YN1WYK2EG7G178238ZDZDC",
+  "ts": "2026-10-27T12:23:39.733Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0266"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "Paths devbin prints for a Homebrew keg name libexec's launcher, which a PATH without Homebrew's bin refuses at the bash floor (from 0253's review)"
+  }
+}

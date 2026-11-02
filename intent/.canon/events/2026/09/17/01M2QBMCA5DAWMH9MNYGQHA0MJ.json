@@ -1,0 +1,15 @@
+{
+  "id": "01M2QBMCA5DAWMH9MNYGQHA0MJ",
+  "ts": "2026-09-17T09:37:13.029Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**FIRST AFTER THE COMPACT: fold dc's WP-01 review (f34753f) as a TEST-ONLY commit before the close.** Three correct refusals no arm holds; dc's mutations Na, Nb and Nc each survive releasecore.bats 22/22. Add to the refusal table: `status v1.0.0 --dry-run|--dry-run applies to a cut, not to release status`, `notes --yes|--yes applies to a cut, not to release notes`, `check --dry-run|--dry-run applies to a cut, not to release check`; and to the value table: `ci:\\n    query: bin/ci\\n    wait: \"20\"|release.ci.wait: \"20\" must be a whole number of s, m or h`. Watch each row red under its mutation (Na: the --dry-run verb check replaced by `:`; Nb: the same for --yes; Nc: `^[0-9]+[smh]$` made `^[0-9]+[smh]?$`) before trusting it; run releasecore.bats; commit by path; tell dc, who rebases WP-02 onto it. Then, on dc's OK after dc's own full suite at f34753f: green AT-1.1 to AT-1.4, `intent wp done ST0007/01`, unclaim. dc accepted all three behaviour changes and every residual; R1 is dc's WP-04. For WP-02's review: dc's scope note that a new mktemp_beside in lib/helpers keeps a replaced file's mode (CHANGELOG.md and RELEASES.md are 0600 in the tree today), to accept or split."
+  }
+}

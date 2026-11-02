@@ -1,0 +1,15 @@
+{
+  "id": "01M6AXSHT5SR4B3M0GTTGE4CC2",
+  "ts": "2026-11-01T06:47:16.549Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's go after the hard close, in vc's window on vc's day plan (the clock read 2026-11-01 06:46Z by date -u as the turn opened): 'Ok, let's crack on.' Executed at 06:46Z: desk control taken back from the orphaned 2026-10-31 session, the five lane holds released (bats, cargo, heavy, launchsvc, light). Order of play: cc settles WP02b-1 by BANK.md's steps 1 to 5 (docs, checks, the dev check booked as not-evidence, the AT id lines over arms, the dispositions), plus a critic-shell review of its settle delta 9e1440dc..5d84a12b settled before the squash, and ST0011's own AT-3.5 line over dc's arm in releasestatus.bats; cc's squash waits for vc's word. dc runs the critic-shell review of WP16's fix delta 0c70f300..4774c637 first and books nothing until vc's word. vc measures dc's 22 dispositions (dispositions-0c70f300.md), then the delta's, then cc's 32. Put to hv in the TUI (decision 120 records the answers): the run order between WP16 and WP02b-1, issue 0306's slot, kovacs's start, a push of main to local. Nothing public without hv's explicit word (directive 3)."
+  }
+}

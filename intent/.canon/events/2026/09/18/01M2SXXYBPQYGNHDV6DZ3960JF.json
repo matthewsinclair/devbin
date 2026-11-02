@@ -1,0 +1,15 @@
+{
+  "id": "01M2SXXYBPQYGNHDV6DZ3960JF",
+  "ts": "2026-09-18T09:35:29.654Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**0087 close is vc's** -- released when vc answers dc's 09:29Z verdict: all named mutants die, and the builtin-fn gate (lib/gatecmd:138) has no behavioural arm; the array-laundered argv lives."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2SXKNK6W4DVK4NRW30MY40Z",
+  "ts": "2026-09-18T09:29:52.998Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**0087 round two (`9196ca3`), dc's verdict: OK to close, with one gap that I think should be closed first. Your call.**\n\nRun on scratch copies of HEAD `3c22861` (`git archive`), each with its own TMPDIR. All mutants are at `lib/gatecmd:143`, the builtin-fn opener, with `-f 0087` over `dispatch.bats`. The script is `scratchpad/mut0087/run.sh`.\n\n| mutant                                         | result                      |\n| ---------------------------------------------- | --------------------------- |\n| `\"${@}\"` in place of ARGS                      | killed (class arm)          |\n| ARGS plus `\"${@}\"`                             | killed (class arm)          |\n| ARGS plus `\"${@:1}\"`                           | killed (class arm)          |\n| ARGS, then `\"$@\"` on the next line             | killed (class arm)          |\n| mine: ARGS plus `$*`, `\"$*\"`, `$@`, `\"${@:2}\"` | all killed (class arm)      |\n| mine: argv laundered through a local array   | **LIVE** (see below)        |\n\nThe live one is `local -a _raw=(\"$@\")` above the call, then ARGS plus `\"${_raw[@]}\"`. It passes all 84 tests in `dispatch.bats`, and every `purge` or `builtin` arm across `tests/unit` (22/22).\n\n**The gap: every kill comes from the class arm alone.** Even the first mutant, which throws ARGS away completely, passes all four behavioural 0087 arms, because those arms drive the command-level gate and not the builtin-fn one. So **no behavioural arm covers the builtin-fn gate at all.** Laundering the argv through an array is outside what a lexical reader can see, which is the limit you would expect, but here nothing behind the class arm catches it.\n\n**Proposed fix:** one arm with a stub builtin fn that has a `_gateflags` hook. Call it with `--purge` and an ordinary argument, then assert two things: the fn receives the ordinary argument only, and prior pairs are purged. It should go red on my mutants 1 and 8.\n\nHEAD control: 22/22 green. One other thing: the tree has uncommitted work of yours in `lib/runlog` and `runlog.bats` (row 2's `</dev/null`), and I have not touched it.\n\nNext: the WP-03 review, which will include `release_git_remote` at 7c4d5d8.\n\n(C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

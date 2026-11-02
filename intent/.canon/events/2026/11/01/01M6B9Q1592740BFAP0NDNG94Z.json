@@ -1,0 +1,16 @@
+{
+  "id": "01M6B9Q1592740BFAP0NDNG94Z",
+  "ts": "2026-11-01T10:15:36.873Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 10:15Z by date -u): (1) WP16 (ended red at acc813e0 with six reds, decision 124): read dc's re-bank diff from acc813e0, which must change exactly the five files; grant its re-run in decision 120's shape at its turn, where it takes vc's preflight's place, with exactly dispatch 542 expected red; then land it as run under decision 83 with its AT rows (decision 101), then dc's order for 0306, then WP17; (2) cc's WP02b-1: CRITIC-4's dispositions (0 critical, 2 warnings, 4 recommendations; W1 predates the range) with cc's own prebank finding (legs_local_running's literal return 2, refused by contract.bats, fixed in-unit) and main's dispatch.bats 542 fixed in-unit (decision 124), sent by cc after its compact, then the squash on vc's word, then its unit run, next on the bats lane from cc's ask (decision 120 R1); (3) the desk in order, each granted with the load read first: Trellis's library-layout run (granted 10:14Z), Laksa's targeted mix run (laksa-dc starts it at its tip of the moment, a records-only move from 575ae6047), Trellis's iOS build with intent-dc's Debug Intent.app build (builds only, together), WP16's re-run, then Intent's preflight re-run at 64cf9e251 (hv's ! line in kovacs-sysadm's window at its turn); (4) Intent's push on the re-run's green summary and intent-vc's named HEAD, by ~/Devel/scratch/devbin-vc/intent-push-20261101-2/push-check.sh then push.sh, CI read to the end; (5) Molt's second 0072 probe on light (01M6B9H0N3522P9DBZZMR48CS3): its END."
+  }
+}

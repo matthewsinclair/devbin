@@ -1,0 +1,16 @@
+{
+  "id": "01M5SAG7KH73W75FGNAERVC789",
+  "ts": "2026-10-25T10:43:02.898Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 29,
+    "text": "ISSUE:0227 resume state (localfold 2026-10-25 10:43Z): the targeted run under molt-vc's GO of 10:21Z is running on ~/Devel/scratch/devbin-cc/0227/build at abf8ffdd (driver run-targeted.sh, summaries in runs/targeted-{bsd,gnu}.summary, runs/targeted.done when it ends); on END, send END to molt-vc and devbin-vc. dc's light found the eight scan findings, now FIXED in a fresh clone ~/Devel/scratch/devbin-cc/0227/fix at 054b2e1e (gate_tty_flag in lib/helpers for gate_exec and publish, no raw sha256 tool, no tracker or estate prose or ruling in user text, reserved example domain, FORMULA in the schema extractor, no early pipe reader), each flagged arm green singly. Next, only after hv says continue: ask molt-vc for a GO to re-run the targeted set on fix (adding runlog and clean, since gate_exec moved), then the critic leg on the final commit, squash, bundle on 9fab8100 with a sha256 seal, fill RESOLUTION-0227.md (drafts in 0227/handover/), hand to vc, and send dc the path and seal for 0228"
+  }
+}

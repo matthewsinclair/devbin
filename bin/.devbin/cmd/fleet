@@ -1,0 +1,1444 @@
+#!/usr/bin/env bash
+#
+# devbin: summary = Audit every devbin install on this machine, and upgrade the estates
+# devbin: group   = Fleet
+#
+# Devbin's own fleet auditor, and the generator behind intent/docs/devbin-users.md.
+#
+# WHY THIS IS A COMMAND AND NOT A DOCUMENT. The thing being recorded -- which
+# estate runs which devbin, and when it was last vendored -- is made entirely of
+# claims with expiry dates. A hand-written table of them is correct on the day
+# and wrong afterwards, silently, because nothing about a stale row looks stale.
+# The fleet census on the whiteboard was written as prose five times and was
+# wrong five times: it said eleven estates when there were twelve, uniform when
+# it was split, and three-way divergent when the bytes said two.
+#
+# So the document is GENERATED and says so, and it carries the command that
+# regenerates it next to the stamp saying when it was last true. A reader who
+# doubts a row can re-run one command instead of re-deriving the fleet by hand.
+#
+set -euo pipefail
+
+# shellcheck source=lib/helpers
+. "${DEVBIN_LIB:?run me through bin/devbin}/helpers"
+# shellcheck source=lib/config
+# `install.prefix` is read for the sweep -- handlers are reached by `exec`
+# (lib/resolve), so the config the dispatcher loaded is gone with its process.
+. "$DEVBIN_LIB/config"
+# shellcheck source=lib/install
+# The install helpers for `fleet upgrade` (ST0005).
+. "$DEVBIN_LIB/install"
+
+cd "$PROJECT_ROOT"
+
+DOC_REL="intent/docs/devbin-users.md"
+
+# THE PRUNE LIST IS PART OF THE DEFINITION, NOT AN OPTIMISATION, which is why it
+# is named here and reprinted into the document. A scan that prunes `deps/`
+# reports fifteen copies; the same scan without it reports twenty-seven. Neither
+# number is wrong and neither means anything without the list that produced it.
+#
+# AND NEVER BOUND THE DEPTH. Arca/arca_cli and Arca/arca_config sit one level
+# deeper than every other estate, so ANY `-maxdepth` is wrong here -- not just
+# the 3 that first missed them. This warning used to name the 3, and the next
+# reader defended against the NUMBER: they ran `-maxdepth 4`, got eleven of
+# thirteen, and lost the same two projects, thirteen minutes after reading the
+# sentence warning about it. A warning that names a number gets the number
+# changed; name the SHAPE, which is a tree with one uneven branch.
+PRUNES='.git node_modules _build .history .backup .elixir_ls target .venv'
+
+# THE CENSUS FRAME -- where to look, and it is DATA IN THIS TREE, NOT A DEFAULT
+# IN THIS CODE (issue 0116).
+#
+# It was `$HOME/Devel/prj` here, justified by a search of 2026-08-29 that found
+# every install under `$HOME` inside it, apart from agent fixtures. On
+# 2026-09-15 `~/Devel/cfg` appeared, and Gtools-geodica ran devbin 0.1.1 inside
+# it, unseen by every sweep from 0.1.2 to 0.1.7. The comment asked for the
+# search to be re-run when someone changed the list, and the list never changed
+# -- the disk did. So the frame now has two halves:
+#
+#   bin/.devbin/fleet.roots   the roots, tracked, so changing the frame is a
+#                             commit someone can read. DEVBIN_FLEET_ROOTS
+#                             overrides it for one run. `~` is expanded in both.
+#   outside_roots, below      the premise re-measured on every run: the rest of
+#                             the home directory is walked, and each install no
+#                             root covers is named.
+#
+# NOT A config.yaml KEY. `fleet` is devbin's own project command, not a built-in,
+# so a key for it would sit in the schema every estate vendors and be read by
+# nothing any estate runs -- a per-project special case in the shared core. Any
+# project's command can keep its own data beside the config it lives with.
+#
+# THE ROOTS ARE MACHINE-SPECIFIC, WHICH IS WHY THEY ARE DATA. A second default
+# root, `$HOME/Dropbox/Geodica/_tools`, was removed on 2026-08-29 after every scan
+# had walked it, absent, for weeks: one person's layout, written into a tool
+# other estates vendor.
+#
+# A MISSING OR EMPTY FILE IS REFUSED. A census over no roots finds nothing and
+# reads as a machine with nothing on it.
+FLEET_ROOTS_REL="bin/.devbin/fleet.roots"
+
+# fleet_roots_source -- what named the frame this run, for every report to say.
+fleet_roots_source() {
+  if [ -n "${DEVBIN_FLEET_ROOTS:-}" ]; then
+    printf 'DEVBIN_FLEET_ROOTS'
+  else
+    printf '%s' "$FLEET_ROOTS_REL"
+  fi
+}
+
+# fleet_roots_read -- the frame, one root a line, or a refusal naming the file.
+fleet_roots_read() {
+  local f="$PROJECT_ROOT/$FLEET_ROOTS_REL" line n=0
+  if [ -n "${DEVBIN_FLEET_ROOTS:-}" ]; then
+    # Deliberately unquoted: the variable is a LIST of roots and word-splitting
+    # is the parse. A root containing a space is not supported and would need a
+    # real separator, which no root on this fleet has ever wanted.
+    # shellcheck disable=SC2086
+    for line in ${DEVBIN_FLEET_ROOTS}; do
+      home_expand "$line"
+      n=$((n + 1))
+    done
+    # COUNTED AND REFUSED AS THE FILE IS. A variable of blanks is set, so it
+    # wins over the file, and splits into no root at all: audit and the upgrade
+    # plan then read an empty census as a machine with nothing on it and exit 0
+    # (cc's review of 0116).
+    [ "$n" -gt 0 ] || die "fleet: DEVBIN_FLEET_ROOTS names no root -- a census over none would find
+       nothing and read as a machine with nothing on it. Unset it to use $FLEET_ROOTS_REL."
+    return 0
+  fi
+  [ -f "$f" ] || die "fleet: no census frame -- $FLEET_ROOTS_REL is missing.
+       It names the roots every census walks. Restore it, or name roots for one
+       run with DEVBIN_FLEET_ROOTS."
+  while IFS= read -r line || [ -n "$line" ]; do
+    line="${line%%#*}"
+    line="${line#"${line%%[![:space:]]*}"}"
+    line="${line%"${line##*[![:space:]]}"}"
+    [ -n "$line" ] || continue
+    home_expand "$line"
+    n=$((n + 1))
+  done <"$f"
+  [ "$n" -gt 0 ] || die "fleet: $FLEET_ROOTS_REL names no root -- a census over none would find
+       nothing and read as a machine with nothing on it."
+}
+
+# fleet_roots -- the frame this run, READ ONCE by the verbs that walk it (see the
+# dispatch at the bottom). Once, because its readers run inside $(...) and in
+# heredocs, where a refusal from the file would be swallowed and read as a frame
+# with no roots in it.
+fleet_roots() {
+  printf '%s\n' "${_FLEET_ROOTS:?fleet: the frame was read before the dispatch resolved it -- a devbin defect}"
+}
+
+# mtime_epoch (lib/helpers) gives a file's last write in epoch seconds, BSD's
+# stat or GNU's; it was this file's own until issue 0245 hoisted it, and
+# fleet.bats still drives both stat shapes through it.
+
+# seam_digest <root> -- the bytes of one install's vendored runtime.
+#
+# COUNTING STAMPS COUNTS RE-VENDOR EVENTS, NOT DIVERGENCE. The fleet has carried
+# a `source_commit` that differed between two installs whose vendored bytes were
+# identical -- a re-vendor from a later commit that changed nothing under the
+# seam. Digesting the files answers the question the stamp only approximates.
+#
+# THE COMPUTATION MOVED TO `runtime_digest` IN lib/helpers AND THIS IS NOW THE
+# ADDRESSING HALF ALONE. It was written out here while `--version` needed the
+# same answer, which is two fingerprints of one thing: when they drift, two
+# surfaces report different identities for one tree and neither says which is
+# authoritative. Folding relative to the LIB DIRECTORY rather than the root also
+# makes this value comparable with a source checkout's, which the old spelling
+# could not be.
+#
+# A SEAM THAT IS NOT THERE HAS NO DIGEST. runtime_digest read what it could and
+# discarded its read errors, so an install whose lib was deleted digested the
+# launcher alone and published that as the seam (critic-shell, 2026-09-16). It
+# fails on what it cannot read now (issue 0139); this check stays, so a seam
+# that is not there is refused before find prints an error about it.
+seam_digest() {
+  [ -r "$1/bin/devbin" ] && [ -d "$1/bin/.devbin/lib" ] || return 1
+  runtime_digest "$1/bin/devbin" "$1/bin/.devbin/lib"
+}
+
+# INSTALL_LIB_MARK and INSTALL_MANIFEST_MARK -- what marks a directory as an
+# install, as find clauses both walks share through install_walk: its manifest,
+# or its vendored runtime (issue 0154).
+#
+# THE MANIFEST ALONE WAS THE MARK, so an install that had lost its manifest --
+# a launcher and a vendored lib with no record of what devbin wrote there, the
+# state 0146 made `upgrade` refuse unless forced -- had no row in the census, no
+# line in the outside walk and no row in the sweep, at exit 0. Either mark counts
+# now, and `install_roots` lists each install once, whichever marked it.
+#
+# THE MANIFEST CLAUSE NAMES THE MANIFEST'S OWN PATH. It matched any
+# manifest.sha256 anywhere under bin/.devbin/, which install_roots, mapping only
+# bin/.devbin/manifest.sha256 to its root, then dropped without a word.
+#
+# THE LIB IS PRUNED ONCE MARKED, because nothing beneath a vendored runtime is an
+# install -- nothing under lib/, tmpl/ included, carries a manifest or a
+# bin/.devbin/lib of its own -- and because what is wrong inside a runtime is not
+# a hole in the walk. Unpruned, a directory in a lib that cannot be searched was
+# reported as one, "installs beneath it may be missing", which nothing beneath a
+# runtime ever is; the digest is what names it.
+#
+# AND IT IS MARKED IN THE WALK'S OWN PRUNE GROUP (issue 0175), the group
+# find_walk asks before its check for a directory it can list but not search.
+# Asked after that check, a lib that had lost its x bit was named a hole by the
+# check, for the same false reason, though its clause still marked it. The mark
+# goes by shape, so the prune and the skipped check take any bin/.devbin/lib,
+# launcher or not: nothing beneath one is an install either way. So its path
+# stays exact -- a lib/, or a .devbin/lib outside bin/, is a directory like any
+# other, and one that cannot be searched is still a hole.
+#
+# A LIB IS A MARK ONLY WITH A LAUNCHER BESIDE IT, AND ONLY WHERE DEVBIN'S OWN
+# TEST COUNTS IT INSTALLED. The vendored runtime is bin/devbin plus
+# bin/.devbin/lib (vendored_paths), and a bare lib directory is not one: Intent's
+# tree-index mirror carries the directory skeleton of a project --
+# bin/.devbin/lib, empty, and no bin/devbin -- and was counted as an install whose
+# seam could not be digested, failing the census on this machine. find meets a
+# lib that is a link as a link, never as a directory, so the clause takes both,
+# and install_roots keeps a root the lib marked where is_devbin_installed does
+# (a directory, or a link to one) and a launcher is there (a link to nothing
+# included: that is a broken install the digest names, not an absent one). A
+# manifest marks one alone, as it always did.
+INSTALL_LIB_MARK=(\( -type d -o -type l \) -path '*/bin/.devbin/lib' -print)
+INSTALL_MANIFEST_MARK=(-name manifest.sha256 -path '*/bin/.devbin/manifest.sha256' -print)
+
+# install_walk <start> <prune clause>... -- find_walk from <start>, printing each
+# path an install mark matches, and entering neither what <prune clause> names
+# nor a lib it marks. The one walk for installs: find_installs and outside_roots
+# differ only in where they start and what they prune. The clause is one or more
+# find words and no bare `(` or `)`, which would defeat find_walk's lift of the
+# group; an empty one is refused, since find would read `\( \)` as an error and
+# the caller would report it as a hole.
+install_walk() {
+  local start="$1"
+  shift
+  if [ "$#" -eq 0 ]; then
+    warn "install_walk: no prune clause"
+    return 2
+  fi
+  # find-status: install_walk's own, which both callers read under `if !`
+  find_walk "$start" \( \( "$@" \) -o \( "${INSTALL_LIB_MARK[@]}" \) \) -prune -o "${INSTALL_MANIFEST_MARK[@]}"
+}
+
+# install_roots -- the paths install_walk printed, on stdin, as the install each
+# belongs to, once each, in the order first met. A root marked by its lib alone
+# is kept only as the marks' comment above says. Its status is the pipeline's,
+# so a step that fails is a failed list, never a short one.
+install_roots() {
+  local p
+  # WHICH ROOTS A MANIFEST MARKED IS A SET, NEVER AN ORDER: a root its manifest
+  # marked is a manifest's root, launcher or not, whichever mark find met first.
+  # find meets a directory's entries in the filesystem's own order, which is
+  # not the same on every machine, so nothing here may depend on it.
+  awk '{
+    p = $0
+    if (sub(/\/bin\/\.devbin\/manifest\.sha256$/, "", p)) manifest[p] = 1
+    else if (!sub(/\/bin\/\.devbin\/lib$/, "", p)) next
+    if (!(p in met)) { met[p] = 1; order[++n] = p }
+  }
+  END {
+    for (i = 1; i <= n; i++) {
+      k = (order[i] in manifest) ? "m" : "l"
+      print k "\t" order[i]
+    }
+  }' | while IFS= read -r p; do
+    case "$p" in
+      m$'\t'*) printf '%s\n' "${p#m$'\t'}" ;;
+      l$'\t'*)
+        p="${p#l$'\t'}"
+        if is_devbin_installed "$p" && { [ -e "$p/bin/devbin" ] || [ -L "$p/bin/devbin" ]; }; then
+          printf '%s\n' "$p"
+        fi
+        ;;
+    esac
+  done
+}
+
+# find_installs -- every install under the roots, its root one per line. Returns
+# 1, having listed everything it DID reach, when any root could not be read in
+# full.
+#
+# AN INCOMPLETE SCAN IS NAMED AND FAILS; IT IS NEVER A SHORTER LIST (issue 0056).
+# `find`'s errors were discarded and the loop was read through an unchecked
+# process substitution, so one unreadable directory under the first root ended
+# the scan before the second root, at exit 0, with no message -- measured by
+# critic-shell on 2026-09-14. A census that silently under-counts is the defect
+# this command exists to prevent, and it is a candidate explanation, not a
+# proven one, for the scan that once reported twelve estates and then thirteen.
+# `find` keeps walking past a directory it cannot read, so the paths it DID find
+# are still printed; its errors go to stderr, and the root is named beside them.
+#
+# THE PRUNE LIST IS A REAL `-prune`, NOT A FILTER. It was `-not -path "*/P/*"`,
+# which drops the matches and still WALKS `.git`, `_build` and `node_modules` --
+# harmless while find's status was ignored, and fatal once it meant
+# "incomplete": a build writing and deleting under `_build` mid-walk failed 154
+# of 366 scans with a vanished-directory error, and a real prune failed 0 of
+# 1437 (critic-shell, 2026-09-16).
+find_installs() {
+  local root args=() p part found="" rc=0 roots
+  for p in $PRUNES; do
+    [ "${#args[@]}" -eq 0 ] || args+=(-o)
+    args+=(-name "$p")
+  done
+  roots="$(fleet_roots)"
+  while IFS= read -r root; do
+    [ -n "$root" ] || continue
+    [ -d "$root" ] || continue
+    if ! part="$(install_walk "$root" "${args[@]}")"; then
+      warn "could not read all of $root -- installs beneath it may be missing from this scan"
+      rc=1
+    fi
+    [ -z "$part" ] || found="$found$part
+"
+  done <<EOF
+$roots
+EOF
+  if [ -n "$found" ] && ! printf '%s' "$found" | install_roots | sort; then
+    warn "could not tell which installs the walk found -- some may be missing from this scan"
+    rc=1
+  fi
+  return "$rc"
+}
+
+# kind_of <root> -- estate, worktree, or dependency checkout.
+#
+# A git worktree and a Mix dependency checkout both carry a real vendored devbin
+# and neither is an estate anybody works in. Folding them into the estate count
+# inflates it; dropping them silently loses two copies that can and do drift.
+#
+# ORDER IS LOAD-BEARING. A `deps/` checkout can sit INSIDE a worktree, and the
+# first draft tested `.worktrees/` first and labelled four package-manager
+# artifacts as worktrees. Dep-ness is the stronger claim: a worktree is a tree
+# somebody could work in, a dependency checkout is not a working tree at all.
+#
+# A WORKTREE IS KNOWN BY ITS .git FILE, NOT BY THE DIRECTORY IT SITS IN. This
+# tested `*/.worktrees/*`, the place worktrees are conventionally kept, and on
+# 2026-09-22 the sweep upgraded Intent/tmp/wt-0516 -- a linked worktree an
+# Intent node was using for its issue 0516, kept under tmp/. A linked worktree's
+# `.git` is a FILE whose gitdir names <repository>/.git/worktrees/<name>; a
+# submodule's is a file too, naming .git/modules/, and stays an estate.
+kind_of() {
+  local gitdir
+  case "$1" in
+    */deps/*)
+      printf 'dep'
+      return 0
+      ;;
+  esac
+  if [ -f "$1/.git" ] && gitdir="$(sed -n 's/^gitdir: //p' "$1/.git")" &&
+    case "$gitdir" in */.git/worktrees/*) true ;; *) false ;; esac; then
+    printf 'worktree'
+    return 0
+  fi
+  printf 'estate'
+}
+
+# estate_label <root> -- how a row names an install: its path below the scan
+# root it was found under, or HOME-relative if it is under none.
+#
+# NOT ITS BASENAME. Every row carried "${root##*/}", so the 2026-09-22 sweep's
+# not-swept table printed arca_cli and arca_config twelve times -- copies under
+# six different estates' deps/, indistinguishable -- and planned "Design" for
+# Cards/Design. The frozen check reads the label too (issue 0182), so a frozen
+# name is what its row prints.
+estate_label() {
+  local r
+  while IFS= read -r r; do
+    [ -n "$r" ] || continue
+    case "$1" in
+      "${r%/}"/*)
+        printf '%s' "${1#"${r%/}"/}"
+        return 0
+        ;;
+    esac
+  done <<EOF
+$(fleet_roots)
+EOF
+  home_relative "$1"
+}
+
+# install_kind <root> -- kind_of, plus `install` for a machine install, which
+# says so in its manifest and is neither an estate nor a copy of one.
+#
+# OR WHICH THE MACHINE NAMES (issue 0153). The census finds an install that has
+# lost its manifest by its runtime, and the machine install is the one devbin
+# itself refuses to upgrade in that state; read by its manifest alone it was
+# called an estate, and the census told the reader to add it to the roots.
+install_kind() {
+  local m
+  if is_install_tree "$1"; then
+    printf 'install'
+    return 0
+  fi
+  m="$(machine_named_state)"
+  case "$m" in
+    "at "*)
+      if [ "${m#at }" -ef "$1" ]; then
+        printf 'install'
+        return 0
+      fi
+      ;;
+  esac
+  kind_of "$1"
+}
+
+# outside_roots -- every install under the home directory that no root covers,
+# one `<kind>TAB<path>` a line, kind being install, dep, worktree or estate.
+#
+# THE FRAME'S PREMISE, RE-MEASURED ON EVERY RUN RATHER THAN CARRIED IN A COMMENT
+# (issue 0116). A frame is right only while every install is inside it, and the
+# census cannot check that from inside the frame.
+#
+# It walks DEVBIN_FLEET_HOME, which defaults to $HOME and is overridable like
+# the roots, so this is not welded to one machine and no suite walks a real home
+# directory. It prunes what the census prunes, and .claude, whose installs are
+# agent fixtures rather than estates (28 of them on 2026-09-23), by NAME,
+# wherever they sit. Each root is pruned by its path, so nothing inside the
+# frame is listed here as well.
+#
+# THE HOME DIRECTORY'S OWN Library AND .Trash ARE PRUNED BY PATH, never by name.
+# By name took every directory so called anywhere under the home, a project's
+# own Library/ included (cc's review of 0116).
+#
+# WHAT IT DOES NOT WALK IS SAID WHEREVER THE WALK IS REPORTED: outside_unwalked,
+# below. ~/Library holds ~/Library/CloudStorage, where Dropbox and Google Drive
+# keep their folders, and find follows no symlink, so ~/Dropbox -- a link into
+# CloudStorage on the machine this was written on -- is not walked either. The
+# estate a census once lost sat under Dropbox. CloudStorage is not walked
+# because its folders are File Provider mounts: reading one that is online-only
+# fetches its listing over the network, so the walk would slow, or fail
+# offline, in a census that already takes tens of seconds.
+#
+# Returns 1, having listed what it found, when the walk could not read
+# everything: a list with a hole in it is not "none outside".
+outside_roots() {
+  local home="${DEVBIN_FLEET_HOME:-$HOME}" args=() p r out found rc=0
+  home="${home%/}"
+  if [ -z "$home" ] || [ ! -d "$home" ]; then
+    warn "there is no home directory at '$home' to walk -- installs outside the roots were not looked for"
+    return 1
+  fi
+  for p in $PRUNES .claude; do
+    [ "${#args[@]}" -eq 0 ] || args+=(-o)
+    args+=(-name "$p")
+  done
+  args+=(-o -path "$home/Library" -o -path "$home/.Trash")
+  while IFS= read -r r; do
+    [ -n "$r" ] || continue
+    args+=(-o -path "${r%/}")
+  done <<EOF
+$(fleet_roots)
+EOF
+  if ! out="$(install_walk "$home" "${args[@]}")"; then
+    warn "could not read all of $home -- installs outside the roots may be missing from this list"
+    rc=1
+  fi
+  # Read into a variable and checked: inside the here-document below, a list
+  # install_roots failed to finish would have read as a short one.
+  if ! found="$(printf '%s\n' "$out" | install_roots | LC_ALL=C sort)"; then
+    warn "could not tell which installs the walk outside the roots found -- some may be missing from this list"
+    rc=1
+  fi
+  while IFS= read -r r; do
+    [ -n "$r" ] || continue
+    printf '%s\t%s\n' "$(install_kind "$r")" "$r"
+  done <<EOF
+$found
+EOF
+  return "$rc"
+}
+
+# outside_unwalked -- what the walk outside the roots does not look at, in one
+# sentence every report of the walk prints beside its count. Without it "none
+# outside" reads as none anywhere, which is the silence 0116 was filed for.
+outside_unwalked() {
+  local h
+  h="$(home_relative "${DEVBIN_FLEET_HOME:-$HOME}")"
+  printf '%s/Library, which holds Library/CloudStorage (Dropbox, Google Drive and the like), %s/.Trash, and anything reached only through a symlink' "$h" "$h"
+}
+
+# outside_summary <rows> -- one line counting outside_roots's rows by kind, or
+# `none`, for the reports to share.
+outside_summary() {
+  if [ -z "$1" ]; then
+    printf 'none'
+    return 0
+  fi
+  printf '%s\n' "$1" | awk -F'\t' 'NF { n++; k[$1]++ }
+    END {
+      printf "%d install(s) --", n; sep = " "
+      split("estate worktree dep install", order, " ")
+      for (i = 1; i <= 4; i++) if (k[order[i]]) { printf "%s%d %s", sep, k[order[i]], order[i]; sep = ", " }
+    }'
+}
+
+# --- the sweep (ST0005 WP-03) -----------------------------------------------
+#
+# WHAT IT DISTRIBUTES IS THE INSTALL'S BYTES, AND THAT IS THE WHOLE POINT.
+# The sweep runs from the DEV TREE because `fleet` lives here -- in devbin's
+# project half, not in the vendored runtime, so an install could not enumerate
+# anything. Insulation comes from what is distributed, not from where the
+# operator is standing (D29): every estate is upgraded `--from` the machine
+# install, which by D28 can only have been cut from a clean tree.
+#
+# DRY RUN IS THE DEFAULT. A whole-of-estate write is fleet-blast-radius under
+# hv's standing directive, so the plan prints and applying takes `--apply`.
+
+# FROZEN -- estates the sweep must not touch, as DEVBIN_FLEET_FROZEN names them.
+#
+# THE MACHINE NAMES THEM, NEVER THIS TREE. devbin keeps no list of the projects
+# that use it, so the built-in set is empty, and which estates a sweep must
+# leave alone is the operator's to declare, as names split on blanks. The plan
+# says which are frozen, and says so when none is declared, so an estate nobody
+# declared is never assumed to have been left alone.
+#
+# EXCLUSIONS ARE REPORTED, NEVER SILENT. A sweep that quietly drops an estate is
+# a population filter wearing no clothes -- the defect this project keeps
+# catching -- and the frozen one is exactly the estate a reader would otherwise
+# assume had been done.
+#
+# EACH NAME IS AN ESTATE'S LABEL, as this run's plan prints it: its path below
+# this run's roots (estate_label). The sweep reads the list once and compares
+# each row's label with it through _line_in (issue 0182).
+fleet_frozen() {
+  local - IFS=$' \t\n'
+  # None declared, none frozen. The guard is not tidiness: under nounset an
+  # unset list would kill the plan below, and a list of blanks would print one
+  # blank name.
+  has_words "${DEVBIN_FLEET_FROZEN:-}" || return 0
+  # Deliberately unquoted, and never globbed (`local -` puts globbing back on
+  # return): a LIST of estate names. Globbed, a `*` froze every file in the
+  # project fleet runs from, rather than naming an estate called `*`.
+  set -f
+  # shellcheck disable=SC2086
+  printf '%s\n' ${DEVBIN_FLEET_FROZEN}
+}
+
+# _line_in <value> <lines> -- <value> is exactly one of the newline-separated
+# <lines>, compared as a literal. The line counterpart of lib/helpers' _word_in,
+# for a list whose entries can carry blanks, as a label can: the one comparison
+# of a frozen name with a label, in the sweep and in frozen_matching_none.
+_line_in() {
+  local l
+  [ -n "$2" ] || return 1
+  while IFS= read -r l; do
+    [ "$l" = "$1" ] && return 0
+  done <<<"$2"
+  return 1
+}
+
+# not_an_estate <kind> -- whether a row of that kind is one the sweep names and
+# never touches: a worktree or a dependency checkout. The sweep's NOT AN ESTATE
+# row and frozen_matching_none both ask it, so a frozen name is matched against
+# the rows a freeze can reach.
+not_an_estate() {
+  case "$1" in
+    worktree | dep) return 0 ;;
+  esac
+  return 1
+}
+
+# frozen_matching_none <roots> <frozen> -- each name in <frozen>, the frozen
+# list one a line, that labels no estate this run could sweep among <roots>, as
+# sweep_roots prints them, one a line.
+#
+# A FROZEN NAME IS THE LABEL ITS ROW PRINTS (issue 0182), and one that labels no
+# estate this run could sweep freezes nothing: a mistyped or stale name, a
+# basename where the row prints a path, a label written for other roots (a
+# label is the path below THIS run's roots, which DEVBIN_FLEET_ROOTS changes),
+# an estate under a root this run leaves out, or a worktree or a dependency
+# checkout, which the sweep never touches. Echoed in the header beside
+# `0 frozen` it read as a freeze, and the estate it was meant to protect was
+# swept. So the plan names each, and --apply refuses while any is.
+frozen_matching_none() {
+  local kind root labels="" f
+  while IFS=$'\t' read -r kind root; do
+    [ -n "$root" ] || continue
+    if not_an_estate "$kind"; then
+      continue
+    fi
+    labels="$labels$(estate_label "$root")"$'\n'
+  done <<EOF
+$1
+EOF
+  while IFS= read -r f; do
+    [ -n "$f" ] || continue
+    if ! _line_in "$f" "$labels"; then
+      printf '%s\n' "$f"
+    fi
+  done <<<"$2"
+}
+
+# sweep_source -- the install the sweep distributes from: the one this
+# machine's switch names (machine_install_root: DEVBIN_INSTALL_PREFIX, else the
+# tree the link `devbin use` writes leads to, else Homebrew's install by its opt
+# path; issue 0213), which is the tree every estate it upgrades reads at its
+# next upgrade too. Dies, by name, when the switch names nothing, or names a
+# tree that is no install: a sweep distributes an install's bytes, never a
+# checkout's, so a switch on dev is refused with the step that moves it. Called
+# as a bare assignment, so a die here stops the sweep.
+#
+# NOTHING NAMED IS SAID WITH ITS CAUSE AND THAT CAUSE'S REMEDY (issue 0250):
+# Homebrew's, from brew_unplaced_fix, with use opt only when the sweep runs
+# from a dev or opt tree, since a sweep distributes an install. A switch that
+# cannot be trusted has said why above, in its own words.
+sweep_source() {
+  local root rc=0
+  root="$(machine_install_root)" || rc=$?
+  case "$rc" in
+    0) ;;
+    1) die "this machine's switch names no devbin install ($(brew_unplaced_why)) -- refusing to sweep: $(brew_unplaced_fix "${PROJECT_ROOT:-}" opt)" ;;
+    *) die "this machine's switch names no devbin install it can trust (above, it says why) -- refusing to sweep" ;;
+  esac
+  is_install_tree "$root" ||
+    die "this machine's switch names $root, which is no install -- a sweep distributes an install: run devbin use opt or devbin use brew first"
+  printf '%s\n' "$root"
+}
+
+# sweep_roots -- every install the sweep reached, one `<kind>TAB<path>` a line.
+#
+# Worktrees and dependency checkouts are EXCLUDED and counted, for the reason
+# `kind_of` already gives: neither is a tree anybody works in, a dep is rebuilt
+# by its package manager, and sweeping either would write into somebody else's
+# repository. So they are listed here with their kind rather than filtered out,
+# and cmd_upgrade names each in its not-swept table (issue 0101): filtering them
+# here dropped them without a row, where audit and doc list them apart.
+#
+# Returns 1, having listed what it reached, when the scan was incomplete.
+sweep_roots() {
+  local root installs rc=0
+  installs="$(find_installs)" || rc=1
+  while IFS= read -r root; do
+    [ -n "$root" ] || continue
+    printf '%s\t%s\n' "$(kind_of "$root")" "$root"
+  done <<EOF
+$installs
+EOF
+  return "$rc"
+}
+
+# recorded_commit <root> -- bare reader, empty when absent.
+#
+# THERE IS NO recorded_source HERE ANY MORE (issues 0069 and 0153). The source
+# is recorded as a kind, or by an older manifest as a path relative to HOME,
+# and a second reader that did not resolve it would have compared the word, or
+# `~/...`, with the absolute prefix and repointed every estate in the fleet. The
+# sweep reads it through `manifest_source` in lib/helpers, the one reader that
+# knows every form.
+#
+# Through manifest_source_commit, the one reader of a manifest header line.
+recorded_commit() { manifest_source_commit "$1" 2>/dev/null || true; }
+
+# seam_committed <root> -- does this install's vendored seam match its OWN
+# repository's HEAD? One of: committed, DIRTY, not watched, not tracked, not a
+# checkout, not its own checkout, UNREADABLE.
+#
+# THE CENSUS READ DISK AND NEVER ASKED GIT (issue 0056). Every other column
+# answers "what bytes are on this machine"; readers used them to answer "what
+# is the fleet running", and those diverge the moment a re-vendor is not
+# committed. Four estates were found in that state, none by the census.
+#
+# IT REPORTS AND NEVER JUDGES. Whether a dirty seam is a problem is context this
+# tool does not have -- an estate can be dirty by ruling and frozen -- so nothing
+# refuses on it, and `doc` publishes a DIRTY estate like any other.
+#
+# THE GIT HALF IS seam_git_state IN lib/install, the one answer to "is devbin's
+# half committed", shared with the provenance stamp `install` writes. What is
+# left here is the census's own half: is this install a repository of its own?
+#   - `not a checkout` only when git fails and git_repo_absent, the one reading
+#     of a failed git call, finds no repository: no `.git` at the root or above
+#     it, as far up as git's own discovery looks (issue 0185);
+#   - UNREADABLE when git fails on a root with a `.git` of its own -- a corrupt
+#     HEAD, a repository git refuses as dubiously owned, a dangling `.git` link,
+#     no git to ask -- or on a root that cannot be entered, because git failing
+#     to answer is not an answer (critic-shell, 2026-09-16). The census read git's words beside `-e`, which
+#     follows a link, so a dangling `.git` read as none and the root as no
+#     checkout;
+#   - `not its own checkout` when the root sits inside a repository whose top is
+#     elsewhere, asked as git's own prefix rather than by comparing two paths,
+#     which a root typed in the wrong case on a case-insensitive disk defeats.
+#     A deps/ checkout inside a host that ignores deps/ reads clean otherwise.
+#     And when git fails and the only `.git` is above the root -- a repository
+#     another user owns, one past a filesystem boundary, or a `.git` git passes
+#     over, an empty one, where `not a checkout` would be as true -- the root is
+#     still no checkout of its own, so that is said rather than failing the scan
+#     (issue 0185).
+#
+# THE SCOPE IS THE INSTALLED SEAM ITSELF: bin/devbin, bin/.devbin/lib and the
+# manifest. Not vendored_scope, which falls back to a SOURCE's `lib/` when
+# bin/.devbin/lib is not a directory -- so an Elixir estate's own `lib/` answered
+# for a deleted or symlink-replaced vendored lib, and read committed.
+#
+# A MANIFEST THAT IS GONE IS STILL ASKED ABOUT, AS A DELETION (issue 0154). Named
+# as a path that must be there, its absence read UNREADABLE and failed the
+# census for every estate that is its own checkout, though git could answer: a
+# removal not committed is DIRTY, and a committed one is the seam as HEAD has
+# it. That the manifest is missing is the NO MANIFEST cells' to say.
+seam_committed() {
+  local root="$1" prefix real lib="bin/.devbin/lib"
+  if ! prefix="$(git_readonly -C "$root" rev-parse --show-prefix 2>/dev/null)"; then
+    if git_repo_absent "$root"; then
+      printf 'not a checkout\n'
+    elif ! physical_dir "$root" real || [ -e "$real/.git" ] || [ -L "$real/.git" ]; then
+      printf 'UNREADABLE\n'
+    else
+      printf 'not its own checkout\n'
+    fi
+    return 0
+  fi
+  if [ -n "$prefix" ]; then
+    printf 'not its own checkout\n'
+    return 0
+  fi
+  if [ ! -L "$root/$lib" ] && [ ! -d "$root/$lib" ]; then
+    printf 'UNREADABLE\n'
+    return 0
+  fi
+  seam_git_state "$root" bin/devbin "$lib" --may-be-gone "$DEVBIN_MANIFEST_REL"
+}
+
+# scan -- one TAB-separated record per install: kind, path, version, commit,
+# digest, utc, committed. Returns 1, having printed every install it reached,
+# when the scan was incomplete: a root not read in full (find_installs), or any
+# cell that reads UNREADABLE, each named on stderr.
+#
+# EVERY STEP IS CHECKED WHERE IT RUNS, AND NOTHING HERE LEANS ON ERREXIT. `doc`
+# has to ask `snap="$(scan)" || die`, and the `||` turns errexit off for every
+# line of scan: a step that failed there used to be skipped, and a row whose
+# digest covered the launcher alone was published at exit 0, while `audit`,
+# running scan bare, died on the same step with no row and no message
+# (critic-shell, 2026-09-16). Checked explicitly, both paths print the row, name
+# the failure and return 1.
+scan() {
+  local m root ver sc dg e utc cm rel installs missing unvouched rc=0
+  # Primed once for every estate below, since each asks git from inside `$(...)`
+  # (lib/helpers, git_readonly). Not a check: a git that cannot answer is asked
+  # again per estate, and each estate with a `.git` of its own then reads
+  # UNREADABLE and fails the scan (seam_committed).
+  git_readonly_prime || :
+  installs="$(find_installs)" || rc=1
+  while IFS= read -r root; do
+    [ -n "$root" ] || continue
+    m="$root/$DEVBIN_MANIFEST_REL"
+    missing=""
+    # AN UNREADABLE MANIFEST IS NOT AN UNRECORDED ONE. The readers answer empty
+    # for both, and UNRECORDED means "predates the field" -- a confident, benign
+    # reading of a file nobody could open.
+    #
+    # AND A MISSING ONE IS NEITHER (issue 0154). The install was found by its
+    # runtime, so each cell its manifest would have answered says NO MANIFEST,
+    # the seam is still digested, and the scan's status is untouched: the census
+    # reports and never judges, as it does for a DIRTY seam. Missing is
+    # manifest_unvouched's word, the one `upgrade` refuses on (lib/install,
+    # issues 0146 and 0159), so a manifest that is a link to nothing is missing
+    # here as there.
+    #
+    # AND ONE THAT RECORDS NO FILES IS SAID AS THAT (issue 0159). Its header
+    # still says which devbin wrote the install, so its version and commit are
+    # read, and its last-vendored cell says NO FILES: what it vouches for is
+    # nothing, and its mtime no longer dates a vendoring. Read as healthy, it was
+    # the row doctor failed and the sweep would have run over.
+    unvouched="$(manifest_unvouched "$root" 2>/dev/null)" || unvouched=""
+    if [ "$unvouched" = missing ]; then
+      missing=1
+      ver='NO MANIFEST'
+      sc='NO MANIFEST'
+    elif manifest_readable "$root" 2>/dev/null; then
+      ver="$(manifest_version "$root" 2>/dev/null)" || ver=""
+      sc="$(recorded_commit "$root")"
+      [ -n "$ver" ] || ver='UNRECORDED'
+      [ -n "$sc" ] || sc='UNRECORDED'
+    else
+      warn "could not read the manifest of $root"
+      ver='UNREADABLE'
+      sc='UNREADABLE'
+      rc=1
+    fi
+    # `install` records a vendor taken from a DIRTY seam as
+    # `<sha> +dirty -- THESE BYTES MATCH NO COMMIT` (lib/install; issue 0033 is
+    # why the marker exists and why its scope is the seam). Truncating that to
+    # twelve characters kept the sha and discarded the sentence saying the sha
+    # does not describe these bytes -- so the column rendered "no commit matches
+    # this" as a confident commit, in the one document whose subject IS
+    # provenance. Keep the flag; the digest beside it stays the byte-level
+    # answer either way.
+    case "$sc" in
+      *' +dirty'*) sc="${sc%% *}" ; sc="${sc:0:12}+dirty" ;;
+      *) sc="${sc:0:12}" ;;
+    esac
+    if ! dg="$(seam_digest "$root")" || [ -z "$dg" ]; then
+      warn "could not digest the seam of $root"
+      dg='UNREADABLE'
+      rc=1
+    fi
+    if [ -n "$missing" ]; then
+      utc='NO MANIFEST'
+    elif [ "$unvouched" = empty ]; then
+      utc='NO FILES'
+    elif ! e="$(mtime_epoch "$m")" || ! utc="$(utc_from_epoch "$e")"; then
+      warn "could not read when $root was last vendored"
+      utc='UNREADABLE'
+      rc=1
+    fi
+    cm="$(seam_committed "$root")"
+    if [ "$cm" = UNREADABLE ]; then
+      warn "git could not say whether the seam of $root is committed"
+      rc=1
+    fi
+    # Bare and relative to HOME, through home_relative (issue 0069). A hand
+    # strip of "$HOME/" stripped nothing under a HOME ending in a slash, and
+    # printed every estate absolute into the tracked census.
+    rel="$(home_relative "$root")"
+    rel="${rel#\~/}"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
+      "$(kind_of "$root")" "$rel" "$ver" "$sc" "$dg" "$utc" "$cm"
+  done <<EOF
+$installs
+EOF
+  return "$rc"
+}
+
+# upgrade_one <root> <prefix> -- upgrade ONE estate and CONVERGE its provenance.
+#
+# TWO PASSES ARE SOMETIMES NEEDED AND THIS WAS MEASURED, NOT ASSUMED. The
+# estate's OWN vendored runtime performs the upgrade, and every estate on this
+# fleet is currently running a devbin that predates the install tree -- its
+# `source_commit_of` asks git, finds no .git in an install, and stamps
+# `not a git checkout -- these bytes name no commit`. So the FIRST pass delivers
+# the new runtime and records the wrong provenance with it. The second pass runs
+# the code it just received, copies nothing, and corrects the manifest.
+#
+# A CONVERGENCE CHECK RATHER THAN A RITUAL DOUBLE-RUN: pass twice only if the
+# provenance is not yet current, and REPORT rather than loop if it still is not.
+# An unbounded retry would turn a defect into a hang.
+#
+# Echoes a state line -- `upgraded`, `converged`, or `FAILED<TAB><reason>` --
+# then upgrade_held's rows for what the upgrade left alone.
+#
+# THE UPGRADE'S OUTPUT IS READ, NOT DISCARDED (issue 0074). An upgrade that
+# skips a file edited in place exits 0 and still stamps the new source_commit,
+# so neither the exit code nor the provenance can tell a partial upgrade from a
+# whole one. Measured in the 0069 sweep: Laksa held two patched files and the
+# summary said `16 upgraded ... 0 FAILED`. The per-file lines upgrade prints are
+# the only record of a hold.
+#
+# EVERY PASS IS READ, NOT ONLY THE LAST (critic-shell). A `released` file -- one
+# devbin no longer ships, left because it was edited -- is dropped from the
+# manifest by the pass that releases it, so a second pass never mentions it.
+upgrade_one() {
+  local root="$1" prefix="$2" want out state="" prc=0
+  want="$(recorded_commit "$prefix")"
+  # Not `die`: this runs inside a command substitution, where die would end only
+  # the substitution and the estate would be reported with the wrong reason.
+  out="$(mktemp "${TMPDIR:-/tmp}/devbin-fleet-upgrade.XXXXXX")" || {
+    printf 'FAILED\tcould not create a scratch file to read its upgrade output\n'
+    return 1
+  }
+
+  ( cd "$root" && ./bin/devbin upgrade --from "$prefix" ) >"$out" 2>&1 || prc=$?
+  if [ "$prc" -ne 0 ]; then
+    state="FAILED	upgrade exited $prc"
+  elif provenance_current "$root" "$want"; then
+    state=upgraded
+  else
+    ( cd "$root" && ./bin/devbin upgrade --from "$prefix" ) >>"$out" 2>&1 || prc=$?
+    if [ "$prc" -ne 0 ]; then
+      state="FAILED	upgrade exited $prc on its second pass"
+    elif provenance_current "$root" "$want"; then
+      state=converged
+    else
+      state="FAILED	provenance did not converge"
+    fi
+  fi
+  printf '%s\n' "$state"
+  upgrade_held "$out"
+  rm -f "$out"
+  [ "${state%%	*}" != FAILED ]
+}
+
+# upgrade_held <output> -- `held<TAB><label>` per file the passes in <output> left
+# alone, once each, plus a row for any a pass counted but did not name.
+#
+# ONE AWK, SO ONE SET OF PATTERNS BOTH NAMES AND COUNTS (critic-shell). The path
+# is everything between the verb and upgrade's own suffix, never a field: the
+# manifest carries paths with spaces (lib/install). The formats are
+# lib/cmd/upgrade's `skipped` and `released` lines, and a `skipped`/`released`
+# line in any OTHER wording -- an estate's runtime can be older or newer than
+# this fleet -- is reported as unrecognised rather than counted as named.
+#
+# The count on each pass's summary line then checks the names. What this cannot
+# see is a summary line whose own wording has moved: the check is then off, and
+# only the per-file lines stand between a hold and silence.
+upgrade_held() {
+  awk '
+    /^  skipped    .* \(edited in place -- .*\)$/ {
+      p = $0; sub(/^  skipped    /, "", p); sub(/ \(edited in place -- .*\)$/, "", p)
+      printf "held\t%s (edited in place)\n", p; named++; next
+    }
+    /^  released   / {
+      p = $0; sub(/^  released   /, "", p)
+      printf "held\t%s (no longer shipped, now untracked)\n", p; named++; next
+    }
+    /^  (skipped|released) / {
+      p = $0; sub(/^ +/, "", p)
+      printf "held\tunrecognised upgrade line: %s\n", p; named++; next
+    }
+    /^[0-9]+ added, [0-9]+ updated, [0-9]+ unchanged, [0-9]+ removed, [0-9]+ skipped$/ {
+      if ($9 + 0 > named + 0) printf "held\t%d more file(s) counted as skipped but not named\n", $9 - named
+      named = 0
+    }
+  ' "$1" | awk '!seen[$0]++'
+}
+
+# provenance_current <root> <want> -- true when an estate records the install's
+# commit AND records the install as its source, in the current form.
+#
+# ONE PREDICATE FOR TWO CALLERS. The plan's `level` and `upgrade_one`'s
+# convergence check ask the same question; two spellings of it would let the
+# plan call an estate level that the sweep would still converge, or the reverse.
+#
+# THE RECORDED FORM IS PART OF CURRENT (issues 0069 and 0153). The current form
+# is the word `install` and no path at all: the machine says where its install
+# is, and cmd_upgrade has already refused a sweep whose machine names another
+# install. Any path recorded, `~/...` or absolute, reads back equal to the
+# prefix, so comparing places would call every older estate level and never run
+# it again, leaving a machine path in each tracked manifest. And an estate's
+# FIRST pass runs the runtime it already has, which writes its older form even
+# while installing the new runtime; with the form in this check, that pass is
+# not current and the second pass records `install`.
+provenance_current() {
+  local root="$1" want="$2"
+  [ "$(recorded_commit "$root")" = "$want" ] || return 1
+  [ "$(manifest_field "$root" source 2>/dev/null || true)" = install ]
+}
+
+# sweep_prefix_note <prefix> -- one warning when DEVBIN_INSTALL_PREFIX chose the
+# install the sweep distributes from and the switch without it names another,
+# and nothing otherwise.
+#
+# A SWEEP THE VARIABLE CHOSE STILL LEAVES ESTATES THE SWITCH MUST PLACE
+# (critic-shell on 0153 v3.2). Every estate it upgrades is placed by whatever
+# names the install where it is next read, so in a shell without the variable
+# they all read the link's tree, or Homebrew's. Said before the plan, in a dry
+# run as in --apply.
+sweep_prefix_note() {
+  local prefix="$1" other
+  [ -n "${DEVBIN_INSTALL_PREFIX:-}" ] || return 0
+  other="$(unset DEVBIN_INSTALL_PREFIX && machine_install_state)"
+  case "$other" in
+    "at "*)
+      [ "${other#at }" -ef "$prefix" ] && return 0
+      other="the switch names ${other#at }"
+      ;;
+    none) other="the switch names no install" ;;
+    *) other="${other#bad }" ;;
+  esac
+  warn "DEVBIN_INSTALL_PREFIX names $prefix, and without it $other: in a shell without that variable, an estate this sweep upgrades reads that instead -- run devbin use opt in the devbin checkout to make it the switch's"
+}
+
+# cmd_upgrade [--apply] -- the sweep.
+cmd_upgrade() {
+  local apply="" prefix root label want state src roots kind outside="" frozen frozen_list nomatch
+  local n_level=0 n_work=0 n_repoint=0 n_frozen=0 n_unreachable=0 n_other=0 n_outside=0
+  local n_nomanifest=0 n_nofiles=0 n_unreadable=0 n_done=0 n_conv=0 n_failed=0 n_held=0 result held unvouched
+  local plan="" excluded="" heldrows=""
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --apply) apply=yes; shift ;;
+      -h | --help)
+        printf 'usage: %s fleet upgrade [--apply]\n\n' "${DEVBIN_INVOKE:-bin/devbin}"
+        printf '  Upgrades every estate from the machine install.\n'
+        printf '  WITHOUT --apply it prints the plan and writes nothing.\n'
+        return 0
+        ;;
+      *) die "unknown argument '$1' (try: ${DEVBIN_INVOKE:-bin/devbin} fleet upgrade --help)" ;;
+    esac
+  done
+
+  # The frame, read once for the whole sweep (see the dispatch at the bottom).
+  _FLEET_ROOTS="$(fleet_roots_read)"
+  prefix="$(sweep_source)"
+  is_devbin_installed "$prefix" ||
+    die "there is no devbin install at $prefix
+       publish one first:  $DEVBIN_INVOKE install"
+  want="$(recorded_commit "$prefix")"
+  sweep_prefix_note "$prefix"
+
+  # AN INCOMPLETE SCAN IS NOT SWEPT (issue 0056): an estate beneath a root that
+  # could not be read in full would be dropped from the sweep without a row.
+  roots="$(sweep_roots)" ||
+    die "refusing to sweep from an incomplete scan -- a root could not be read in full (above)"
+
+  # A FROZEN NAME THAT LABELS NO ESTATE STOPS AN APPLY BEFORE ANYTHING IS WRITTEN
+  # (issue 0182). It freezes nothing, and the estate it was written for may be in
+  # this run under another label. It comes AFTER the incomplete-scan refusal,
+  # the deeper cause when that estate sat where the walk could not read.
+  frozen_list="$(fleet_frozen)"
+  nomatch="$(frozen_matching_none "$roots" "$frozen_list")"
+  if [ -n "$apply" ] && [ -n "$nomatch" ]; then
+    die "refusing to sweep: DEVBIN_FLEET_FROZEN names what labels no estate this run could sweep (${nomatch//$'\n'/ }), so it freezes nothing
+       a frozen name is an estate's label as this run's plan prints it, its path below this run's roots, which DEVBIN_FLEET_ROOTS changes:
+       run without --apply, name the estate each was meant for as its row there does, and drop a name only when what it was meant for is no estate under these roots"
+  fi
+
+  printf 'fleet upgrade -- %s\n' "$([ -n "$apply" ] && printf 'APPLYING' || printf 'DRY RUN (nothing will be written)')"
+  # What chose it, in doctor's words (machine_install_by), so the two say it
+  # one way.
+  printf '  distributing: %s, named by %s\n' "$prefix" "$(machine_install_by)"
+  printf '  which holds:  %s\n' "$want"
+  # SAID EVEN WHEN EMPTY: an estate nobody declared frozen is in this plan.
+  frozen="${frozen_list//$'\n'/ }"
+  printf '  frozen:       %s\n' "${frozen:-none declared (DEVBIN_FLEET_FROZEN names the estates a sweep must not touch)}"
+  if [ -n "$nomatch" ]; then
+    printf '  matches none: %s -- no estate this run could sweep is labelled so, and --apply refuses while one is declared\n' "${nomatch//$'\n'/ }"
+  fi
+  printf '\n'
+
+  while IFS=$'\t' read -r kind root; do
+    [ -n "$root" ] || continue
+    label="$(estate_label "$root")"
+
+    if not_an_estate "$kind"; then
+      excluded="$excluded$(printf '%s\tNOT AN ESTATE -- a %s, not swept' "$label" \
+        "$([ "$kind" = dep ] && printf 'dependency checkout' || printf worktree)")\n"
+      n_other=$((n_other + 1))
+      continue
+    fi
+    if _line_in "$label" "$frozen_list"; then
+      excluded="$excluded$(printf '%s\tFROZEN by ruling -- not swept' "$label")\n"
+      n_frozen=$((n_frozen + 1))
+      continue
+    fi
+    if [ ! -x "$root/bin/devbin" ]; then
+      excluded="$excluded$(printf '%s\tUNREACHABLE -- no executable bin/devbin' "$label")\n"
+      n_unreachable=$((n_unreachable + 1))
+      continue
+    fi
+    # NO MANIFEST, NO SWEEP (issue 0154). With no manifest an upgrade cannot tell
+    # an edit from devbin's own bytes, so `upgrade` refuses unless forced (0146),
+    # and forcing it is the estate's decision, never the sweep's. The row carries
+    # the command that makes it, as the held-back table does, and the test is
+    # upgrade's own, so the sweep never plans a run upgrade would refuse.
+    #
+    # AND NONE THAT RECORDS NO FILES (issue 0159): upgrade refuses it as it does a
+    # missing one, so the sweep names it the same way, as its own row and count.
+    # And none it cannot read (issue 0144), asked first, as upgrade asks it:
+    # manifest_unvouched reads such a manifest as neither state, and an `if`
+    # would read that as one that records files, and plan the run.
+    if ! manifest_readable "$root" 2>/dev/null; then
+      excluded="$excluded$(printf '%s\tUNREADABLE MANIFEST -- not swept: which vendored files were edited there cannot be told (0144); make %s readable in it' \
+        "$label" "$DEVBIN_MANIFEST_REL")\n"
+      n_unreadable=$((n_unreadable + 1))
+      continue
+    fi
+    if unvouched="$(manifest_unvouched "$root" 2>/dev/null)"; then
+      if [ "$unvouched" = empty ]; then
+        excluded="$excluded$(printf '%s\tNO FILES -- not swept: its manifest records no files, so an edit there cannot be named (0159); in it, ./bin/devbin upgrade --from %s --force replaces every vendored file, or re-install' \
+          "$label" "$(home_relative "$prefix")")\n"
+        n_nofiles=$((n_nofiles + 1))
+      else
+        excluded="$excluded$(printf '%s\tNO MANIFEST -- not swept: an edit there cannot be named (0146); in it, ./bin/devbin upgrade --from %s --force replaces every vendored file, or re-install' \
+          "$label" "$(home_relative "$prefix")")\n"
+        n_nomanifest=$((n_nomanifest + 1))
+      fi
+      continue
+    fi
+
+    # `|| true` because an estate with no readable source is not an error here:
+    # it cannot be level, and it renders below as `upgrade + repoint` with a
+    # blank target, which names the gap on the plan rather than dropping it.
+    src="$(manifest_source "$root" 2>/dev/null || true)"
+    if provenance_current "$root" "$want"; then
+      plan="$plan$(printf '%s\tlevel\t-' "$label")\n"
+      n_level=$((n_level + 1))
+      continue
+    fi
+
+    # TWO THINGS CAN CHANGE AND ONE NUMBER CANNOT SAY SO (D34). A runtime that
+    # moves and a source pointer that moves are different events; an estate can
+    # have either, both, or -- once the fleet is settled -- only the second.
+    #
+    # A RECORDED PATH IS A REPOINT EVEN WHERE IT NAMES THE PREFIX (issue 0153):
+    # the upgrade replaces it with `install`, so the record moves although the
+    # place it resolves to does not. The place is compared with -ef, as the
+    # check above accepted the machine's install: as strings, a prefix the
+    # machine spells with a trailing slash made every behind estate a repoint.
+    if ! [ "$src" -ef "$prefix" ] || [ "$(manifest_field "$root" source 2>/dev/null || true)" != install ]; then
+      n_repoint=$((n_repoint + 1))
+      plan="$plan$(printf '%s\tupgrade + repoint\t%s' "$label" "$src")\n"
+    else
+      plan="$plan$(printf '%s\tupgrade\t%s' "$label" "$src")\n"
+    fi
+    n_work=$((n_work + 1))
+
+    if [ -n "$apply" ]; then
+      # `|| true`: upgrade_one's status only repeats the FAILED its first line
+      # already carries, and under errexit it would end the sweep mid-estate.
+      result="$(upgrade_one "$root" "$prefix" || true)"
+      state="${result%%$'\n'*}"
+      held="$(printf '%s\n' "$result" | sed -n 's/^held\t//p' | paste -sd ';' - | sed 's/;/; /g')"
+      # The rows are rendered with %b, and these paths are estate content.
+      held="${held//\\/\\\\}"
+      case "$state" in
+        FAILED*)
+          n_failed=$((n_failed + 1))
+          excluded="$excluded$(printf '%s\tFAILED -- %s%s' "$label" "${state#FAILED	}" "${held:+; held: $held}")\n"
+          ;;
+        "")
+          # Reached only if upgrade_one itself dies before its state line.
+          n_failed=$((n_failed + 1))
+          excluded="$excluded$(printf '%s\tFAILED -- its upgrade reported nothing' "$label")\n"
+          ;;
+        *)
+          if [ -n "$held" ]; then
+            # HELD IS ITS OWN OUTCOME: the estate took the upgrade and is NOT level.
+            n_held=$((n_held + 1))
+            heldrows="$heldrows$(printf '%s\t%s' "$label" "$held")\n"
+          elif [ "$state" = converged ]; then
+            n_done=$((n_done + 1)); n_conv=$((n_conv + 1))
+          else
+            n_done=$((n_done + 1))
+          fi
+          ;;
+      esac
+    fi
+  done <<EOF
+$roots
+EOF
+
+  # OUTSIDE THE FRAME: named, never swept (issue 0116). An install no root
+  # covers never reached the plan at all, so the plan read as the whole fleet
+  # without it -- Gtools-geodica, from 0.1.2 to 0.1.7.
+  #
+  # A WALK THAT COULD NOT READ EVERYTHING IS NAMED AND DOES NOT FAIL THE SWEEP,
+  # where audit fails and doc refuses. Their product is the list, so a hole in
+  # it makes their answer wrong. Here an estate outside the frame is never swept
+  # whether or not the walk finds it, so the hole cannot take one out of the
+  # sweep: it can only hide one from this table, and the NOT KNOWN row says the
+  # table has a hole (cc's review of 0116).
+  if ! outside="$(outside_roots)"; then
+    excluded="$excluded$(printf '%s\tNOT KNOWN -- the walk outside the roots could not read everything (above)' \
+      "$(home_relative "${DEVBIN_FLEET_HOME:-$HOME}")")\n"
+  fi
+  while IFS=$'\t' read -r kind root; do
+    [ -n "$root" ] || continue
+    excluded="$excluded$(printf '%s\tOUTSIDE THE ROOTS -- %s; no root in %s covers it' \
+      "$(home_relative "$root")" "$kind" "$(fleet_roots_source)")\n"
+    n_outside=$((n_outside + 1))
+  done <<EOF
+$outside
+EOF
+
+  if [ -n "$plan" ]; then
+    # %b, not %s: the rows carry literal \n escapes because command
+    # substitution strips trailing newlines and every row would otherwise
+    # concatenate into one -- which is exactly what the first run printed.
+    { printf 'Estate\tAction\tCurrently vendored from\n'; printf '%b' "$plan"; } | md_table
+    printf '\n'
+  fi
+  if [ -n "$heldrows" ]; then
+    printf 'Held back -- upgraded but NOT level, these files were left alone:\n\n'
+    { printf 'Estate\tHeld files\n'; printf '%b' "$heldrows"; } | md_table
+    printf '\n  edited in place: diff each against %s, then in the estate\n' "$prefix"
+    printf '    ./bin/devbin upgrade --from %s --force   replaces them\n' "$(home_relative "$prefix")"
+    printf '  no longer shipped: the manifest no longer lists it, so --force cannot reach\n'
+    printf '    it -- delete it if it is dead, or move it out of bin/.devbin/lib/\n\n'
+
+  fi
+  if [ -n "$excluded" ]; then
+    printf 'Not swept -- named rather than dropped:\n\n'
+    { printf 'Estate\tWhy\n'; printf '%b' "$excluded"; } | md_table
+    printf '\n'
+  fi
+
+  printf '%d to upgrade, %d of those repointed, %d already level, %d frozen, %d unreachable, %d not an estate, %d outside the roots, %d with no manifest, %d whose manifest records no files, %d whose manifest cannot be read\n' \
+    "$n_work" "$n_repoint" "$n_level" "$n_frozen" "$n_unreachable" "$n_other" "$n_outside" "$n_nomanifest" "$n_nofiles" "$n_unreadable"
+  printf 'not walked for installs outside the roots: %s\n' "$(outside_unwalked)"
+  if [ -n "$apply" ]; then
+    printf '%d upgraded (%d needed a second pass to converge provenance), %d HELD BACK, %d FAILED\n' \
+      "$n_done" "$n_conv" "$n_held" "$n_failed"
+    # A held estate is not level, so the sweep did not do what it says on the
+    # tin; an operator chaining it into anything must stop (issue 0074).
+    [ "$n_failed" -eq 0 ] && [ "$n_held" -eq 0 ] || return 1
+  elif [ -n "$nomatch" ]; then
+    printf '\nNothing was written, and --apply refuses while a frozen name matches none (above).\n'
+  else
+    printf '\nNothing was written. To do it:  %s fleet upgrade --apply\n' "$DEVBIN_INVOKE"
+  fi
+  return 0
+}
+
+# md_table -- TSV on stdin (first line is the header) -> a column-aligned
+# markdown table. ONE renderer, because the standard asks for aligned columns
+# and hand-padded tables drift the moment a value grows by a character.
+md_table() {
+  awk -F'\t' '
+    { for (i = 1; i <= NF; i++) { r[NR, i] = $i; if (length($i) > w[i]) w[i] = length($i) }
+      if (NF > nf) nf = NF; rows = NR }
+    END {
+      for (n = 1; n <= rows; n++) {
+        line = "|"
+        for (i = 1; i <= nf; i++) line = line " " sprintf("%-*s", w[i], r[n, i]) " |"
+        print line
+        if (n == 1) {
+          sep = "|"
+          for (i = 1; i <= nf; i++) { d = ""; for (k = 0; k < w[i] + 2; k++) d = d "-"; sep = sep d "|" }
+          print sep
+        }
+      }
+    }
+  '
+}
+
+# render_doc -- the whole document, off ONE scan.
+#
+# Takes a single snapshot and renders every view from it, rather than scanning
+# once per table. Two scans of a live filesystem are two different moments, and
+# a document whose tables disagree by one estate is worse than one that is
+# uniformly a minute old.
+# SC2016 is suppressed for the whole function, not line by line. Every `printf`
+# below emits MARKDOWN, and markdown's inline-code delimiter is the backtick --
+# so a format string mentioning `deps/` or `source_commit` trips "expressions
+# don't expand in single quotes" on text that is deliberately literal. Single
+# quotes are the correct quoting here for exactly the reason shellcheck is
+# warning about: nothing in these strings should expand.
+# shellcheck disable=SC2016
+render_doc() {
+  local now snap snap2 estates worktrees deps n_estate n_wt n_dep n_state root disp outside n_out
+  now="$(date -u +'%Y-%m-%d %H:%MZ')"
+
+  # TWO SCANS, AND THE DOCUMENT IS REFUSED IF THEY DISAGREE.
+  #
+  # This is not belt-and-braces. During development one run of `fleet audit`
+  # reported 13 estates and another, seconds later, reported 12 -- the missing
+  # one being the single root under Dropbox, which sorts last. It was not
+  # reproducible afterwards, which is the whole problem: a scan that silently
+  # drops an estate produces a document that looks exactly like a correct one.
+  # Dropbox evicts and rehydrates files underneath a running `find`, so a census
+  # rooted there is not reading a stable filesystem.
+  #
+  # Only the (kind, path) SET is compared. Digests and mtimes are allowed to
+  # move between the two passes -- somebody may legitimately be running
+  # `upgrade` in another window -- and a document one minute stale is the
+  # expected case. A document missing an estate is not.
+  # The `||` turns errexit off inside scan, which is why scan checks every step
+  # itself rather than leaning on it.
+  snap="$(scan)" ||
+    die "refusing to write $DOC_REL from an incomplete scan -- a root could not be read in full (above)"
+  snap2="$(scan)" ||
+    die "refusing to write $DOC_REL from an incomplete scan -- a root could not be read in full (above)"
+  if ! diff <(printf '%s\n' "$snap" | cut -f1,2 | sort) \
+            <(printf '%s\n' "$snap2" | cut -f1,2 | sort) >/dev/null 2>&1; then
+    printf 'the two scans disagree about which installs exist:\n' >&2
+    diff <(printf '%s\n' "$snap" | cut -f1,2 | sort) \
+         <(printf '%s\n' "$snap2" | cut -f1,2 | sort) >&2 || true
+    die "refusing to write $DOC_REL from an unstable scan -- re-run, and if it persists the filesystem is changing underneath it"
+  fi
+
+  estates="$(printf '%s\n' "$snap" | awk -F'\t' '$1 == "estate"')"
+  worktrees="$(printf '%s\n' "$snap" | awk -F'\t' '$1 == "worktree"')"
+  deps="$(printf '%s\n' "$snap" | awk -F'\t' '$1 == "dep"')"
+  n_estate="$(printf '%s\n' "$estates" | grep -c . || true)"
+  n_wt="$(printf '%s\n' "$worktrees" | grep -c . || true)"
+  n_dep="$(printf '%s\n' "$deps" | grep -c . || true)"
+  n_state="$(printf '%s\n' "$estates" | awk -F'\t' 'NF {print $5}' | sort -u | grep -c . || true)"
+
+  # OUTSIDE THE FRAME (issue 0116), walked once. A walk with a hole in it
+  # refuses the document, as an incomplete scan does, because the section below
+  # would otherwise say "none" about places nobody read.
+  outside="$(outside_roots)" ||
+    die "refusing to write $DOC_REL -- the walk outside the roots could not read everything (above)"
+  n_out="$(printf '%s\n' "$outside" | grep -c . || true)"
+
+  # Printed so it can be PASTED. `${PROJECT_ROOT#$HOME/}` alone yields a
+  # relative path that only works from $HOME, which is not where anyone stands.
+  # The tilde is LITERAL DISPLAY TEXT for a reader to paste into their own
+  # shell, where it will expand. Substituting $HOME here would bake this
+  # machine's home directory into a committed document. Through `home_relative`
+  # in lib/helpers, the one definition of the form (issue 0069).
+  disp="$(home_relative "$PROJECT_ROOT")"
+
+  printf '# Devbin users -- every install on this machine\n\n'
+
+  # THE STAMP IS THE FIRST THING IN THE DOCUMENT, ahead of any prose and ahead
+  # of the regeneration command, on hv's explicit instruction. A generated-at
+  # line further down is read AFTER the tables have already been believed, which
+  # is the wrong order: a reader needs to know whether to trust the rows before
+  # reading them, not after.
+  printf '> ## GENERATED AT: %s\n' "$now"
+  printf '>\n'
+  printf '> **DO NOT RELY ON ANYTHING BELOW IF THAT TIMESTAMP IS NOT FROM RIGHT NOW.** Not "recent", not "today", not "this morning". Every row here is a claim with an expiry date -- which devbin a project runs, and when it was last vendored -- and any of them is falsified by one `install` or one `upgrade` in another window. This document was true at the moment above and makes no claim about any other moment.\n'
+  printf '>\n'
+  printf '> **IF IT IS OUT OF DATE, DO NOT REGENERATE IT SILENTLY -- ASK hv FIRST.** An agent that finds this stamp stale should surface that to hv and wait for confirmation, not rebuild. Two reasons: the scan walks every root on the machine and takes about two minutes, and a document quietly refreshed mid-task changes the numbers someone is reasoning about without anyone having decided they should change.\n'
+  printf '>\n'
+  printf '> Once hv confirms: `cd %s && bin/devbin fleet doc`\n' "$disp"
+  printf '>\n'
+  printf '> **Do not hand-edit.** The tables below are rendered; an edit is overwritten by the next run and lost without trace.\n\n'
+
+  printf 'Generated rather than written because this census was written by hand five times and was wrong five times -- eleven estates when there were twelve, uniform when it was split, three-way divergent when the bytes said two, and twelve when the thirteenth had never been looked for. **A row that has gone stale looks exactly like a row that has not.**\n\n'
+
+  printf '## What counts as an install\n\n'
+  printf 'A directory carrying `bin/.devbin/manifest.sha256`, or, without one, `bin/devbin` beside a `bin/.devbin/lib/` directory or a link to one (issue 0154). The manifest is written by `devbin install` and rewritten by `devbin upgrade`, so its presence means devbin was actually vendored there and its mtime is when that last happened. An install that has lost its manifest is still listed, because it is the one an upgrade refuses to touch.\n\n'
+  if [ -n "${DEVBIN_FLEET_ROOTS:-}" ]; then
+    printf 'Roots scanned, from `DEVBIN_FLEET_ROOTS` for this run, overriding `%s`:\n\n' "$FLEET_ROOTS_REL"
+  else
+    printf 'Roots scanned, from `%s` (`DEVBIN_FLEET_ROOTS` overrides it for one run):\n\n' "$FLEET_ROOTS_REL"
+  fi
+  # Relative to HOME, like the paste line above: this document is TRACKED, and
+  # an absolute root is this machine's home directory in a committed file
+  # (issue 0069). The existence test still reads the real path.
+  fleet_roots | while IFS= read -r root; do
+    if [ -d "$root" ]; then
+      printf -- '- `%s`\n' "$(home_relative "$root")"
+    else
+      printf -- '- `%s` -- ABSENT on this machine\n' "$(home_relative "$root")"
+    fi
+  done
+  printf '\nPruned from the scan, and **this list is part of the definition rather than an optimisation**: '
+  printf '`%s`. ' "$PRUNES"
+  printf 'Change it and the answer changes: pruning `deps/` reports %d copies, keeping it reports %d. **Never bound the depth either.** `Arca/arca_cli` and `Arca/arca_config` sit one level deeper than every other estate, so ANY `-maxdepth` is wrong here rather than only the `-maxdepth 3` that first missed them. That number used to be the whole warning, and the next reader defended against the number: `-maxdepth 4`, eleven of thirteen, the same two projects lost, thirteen minutes after reading this file.\n\n' "$((n_estate + n_wt))" "$((n_estate + n_wt + n_dep))"
+
+  printf '## Estates -- %d\n\n' "$n_estate"
+  printf 'A project someone works in. Sorted by path.\n\n'
+  { printf 'Project\tdevbin\tSeam digest\tSource commit\tSeam committed\tLast vendored (UTC)\n'
+    printf '%s\n' "$estates" | awk -F'\t' 'NF {printf "%s\t%s\t%s\t%s\t%s\t%s\n", $2, $3, $5, $4, $7, $6}'
+  } | md_table
+  printf '\n'
+
+  printf '## Seam states -- %d distinct across the estates\n\n' "$n_state"
+  printf 'Grouped by the digest of the vendored runtime (`bin/devbin` plus `bin/.devbin/lib/`), **not by the recorded `source_commit`**. The stamp records which commit a re-vendor was run from; the digest records what the bytes actually are. They disagree whenever a re-vendor pulls a later commit that changed nothing under the seam, and on this fleet they have.\n\n'
+  { printf 'Seam digest\tEstates\tProjects\n'
+    printf '%s\n' "$estates" | awk -F'\t' 'NF {print $5"\t"$2}' | sort |
+      awk -F'\t' '{ if ($1 != k) { if (k != "") printf "%s\t%d\t%s\n", k, c, l; k = $1; c = 0; l = "" }
+                    c++; l = (l == "" ? $2 : l ", " $2) }
+                  END { if (k != "") printf "%s\t%d\t%s\n", k, c, l }'
+  } | md_table
+  printf '\n'
+
+  if [ "$n_wt" -gt 0 ] || [ "$n_dep" -gt 0 ]; then
+    printf '## Other on-disk copies -- %d\n\n' "$((n_wt + n_dep))"
+    printf 'Real vendored runtimes that are **not** estates. They are listed because they can drift and because an audit that silently dropped them would under-report what is on the disk -- and listed separately because folding them into the estate count over-reports it.\n\n'
+    printf -- '- **worktree** -- a git worktree of an estate, carrying whatever devbin its branch has.\n'
+    printf -- '- **dep** -- a dependency checkout (Mix `deps/`), which is a copy of some other project'"'"'s repository that happens to ship devbin. Not tracked by the consuming project and rebuilt by its package manager.\n\n'
+    { printf 'Kind\tPath\tdevbin\tSeam digest\tSource commit\tSeam committed\tLast vendored (UTC)\n'
+      printf '%s\n%s\n' "$worktrees" "$deps" | awk -F'\t' 'NF {printf "%s\t%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, $3, $5, $4, $7, $6}'
+    } | md_table
+    printf '\n'
+  fi
+
+  # EVERY RUN SAYS WHAT LIES OUTSIDE ITS FRAME, including that nothing does
+  # (issue 0116): a section that appeared only when non-empty would read the
+  # same as a census that never looked.
+  printf '## Outside the roots -- %d\n\n' "$n_out"
+  printf 'Every install under `%s` that no root above covers. The rest of the home directory is walked on every run, because a census frame is right only while everything is inside it, and nothing inside the frame can show that (issue 0116). The walk prunes the list above and `.claude`, whose installs are agent fixtures, and does not look in %s.' \
+    "$(home_relative "${DEVBIN_FLEET_HOME:-$HOME}")" "$(outside_unwalked)"
+  if [ "$n_out" -eq 0 ]; then
+    printf ' **None was found**: the roots above cover every install the walk reached.\n\n'
+  else
+    printf ' An estate listed here is in no table above and in no sweep; add its root to `%s` to count it.\n\n' "$FLEET_ROOTS_REL"
+    { printf 'Kind\tPath\n'
+      printf '%s\n' "$outside" | while IFS=$'\t' read -r k r; do
+        [ -n "$r" ] || continue
+        printf '%s\t%s\n' "$k" "$(home_relative "$r")"
+      done
+    } | md_table
+    printf '\n'
+  fi
+
+  printf '## What this document cannot tell you\n\n'
+  printf -- '- **The `devbin` column is the version stamped into each manifest, not a fact about its bytes.** Two installs of one release carry the same number whether or not their files match; the seam digest is the column that tells them apart.\n'
+  printf -- '- **`Last vendored` is the manifest'"'"'s mtime, not a git fact.** It says when devbin last wrote that file. A copy restored from backup, or synced by Dropbox, carries a stamp that is true about the file and misleading about the estate.\n'
+  printf -- '- **`Seam committed` is the one git fact in these tables, read from each estate'"'"'s own repository at scan time (issue 0056).** `committed` means the seam matches this checkout'"'"'s HEAD -- and says nothing about whether that commit is pushed, or is on the branch a clone would get. `DIRTY` means it does not, and every other column in that row then describes this checkout only. `not a checkout`, `not its own checkout`, `not tracked` (a seam file git ignores -- a stray ignored file under the lib counts, because the digest does -- or a symlink, whose target git never reads) and `not watched` (a seam file marked assume-unchanged or skip-worktree) each mean git could not vouch for the bytes, and none of them is a clean result. A cell git could not answer at all is `UNREADABLE`, and this document is refused rather than published with one. The column reports and never judges: a frozen estate can be DIRTY by ruling.\n'
+  printf -- '- **An `UNRECORDED` source commit means the manifest predates the `source_commit` field**, not that the install is broken. Those manifests are from before the field existed.\n'
+  printf -- '- **A `NO MANIFEST` row is an install whose manifest is gone** (issue 0154): its runtime is there and digested, and nothing records which devbin wrote it, or when. `upgrade` refuses it unless forced, because no edit there can be named, and `fleet upgrade` names it rather than sweeping it.\n'
+  printf -- '- **A `NO FILES` row is an install whose manifest records no files** (issue 0159): its header still says which devbin wrote it, and its version and commit are read from there, but nothing vouches for any vendored file, and the manifest no longer dates a vendoring. `upgrade` refuses it unless forced, because no edit there can be named, and `fleet upgrade` names it rather than sweeping it.\n'
+  printf -- '- **This is one machine.** Nothing here can see a clone on any other.\n'
+  printf -- '- **Outside the roots means outside in what the walk reached.** It does not look in %s. An install there is in no table above and not in the outside list either.\n' "$(outside_unwalked)"
+  printf -- '- **The scan is taken twice and this document is refused if the two disagree** about which installs exist. That control exists because one pass once reported twelve estates and the next reported thirteen, the missing one being the only root under Dropbox. Agreement here means the two passes saw the same set, not that the set is complete.\n'
+}
+
+# THE FRAME IS READ ONCE BY EVERY VERB THAT WALKS IT -- here for audit and doc,
+# which take no arguments, and in cmd_upgrade after its own parse, so that
+# `upgrade --help` needs no frame. A plain assignment in both places, so a
+# refusal from the roots file stops the run under errexit.
+case "${1:-}" in
+  audit | doc) _FLEET_ROOTS="$(fleet_roots_read)" ;;
+esac
+
+case "${1:-}" in
+  audit)
+    # The rows stay on stdout, one install a line, exactly as before. The frame
+    # and what lies outside it go to stderr, where a person reads them and a
+    # consumer of the rows does not have to parse them out.
+    audit_rc=0
+    scan || audit_rc=1
+    audit_outside="$(outside_roots)" || audit_rc=1
+    {
+      printf 'fleet: the frame, from %s: %s\n' "$(fleet_roots_source)" \
+        "$(fleet_roots | while IFS= read -r r; do home_relative "$r"; done | paste -sd ' ' -)"
+      printf 'fleet: installs under %s outside it: %s\n' \
+        "$(home_relative "${DEVBIN_FLEET_HOME:-$HOME}")" "$(outside_summary "$audit_outside")"
+      printf 'fleet: not walked for them: %s\n' "$(outside_unwalked)"
+      printf '%s\n' "$audit_outside" | while IFS=$'\t' read -r k r; do
+        [ -n "$r" ] || continue
+        printf '  %-9s %s\n' "$k" "$(home_relative "$r")"
+      done
+    } >&2
+    exit "$audit_rc"
+    ;;
+  upgrade)
+    shift
+    cmd_upgrade "$@"
+    ;;
+  doc)
+    # RENDERED IN FULL, THEN WRITTEN THROUGH replace_file, never through a
+    # redirect onto the real path. `render_doc > $DOC_REL` truncates the file
+    # BEFORE render_doc runs, so the refusal above -- whose whole purpose is to
+    # decline to publish a bad document -- destroyed the good one it was
+    # declining to replace. Caught by the negative control that drove the
+    # refusal deliberately; the doc went to 0 bytes on an rc-1 run.
+    #
+    # This is issue 0002's shape (`version set` destroying a sidecar and the
+    # gate then certifying it clean) reappearing in a command written by
+    # somebody who had read 0002 that morning.
+    #
+    # replace_file stages the document beside the file it replaces, with that
+    # file's mode, and through a link it replaces the file the link names
+    # (issue 0084). The temporary this made in TMPDIR and moved into place left
+    # the document 0600 and turned a link into a regular file, both at exit 0,
+    # and was copied rather than renamed wherever TMPDIR is another filesystem.
+    #
+    # THE RENDER RUNS HERE, BEFORE ANYTHING IS STAGED, NOT AS replace_file's
+    # COMMAND. There it runs inside a condition, where bash ignores errexit for
+    # the whole function: a table that failed to render was published without
+    # its tables at exit 0, where here errexit stops the run -- lib/helpers sets
+    # inherit_errexit, so it holds inside the capture -- with the document as
+    # it was (measured 2026-09-17). A refusal's `die` has nothing staged to
+    # leave behind.
+    #
+    # SO THE CAPTURE STAYS A PLAIN ASSIGNMENT. Under `||`, `&&`, `if` or `!`
+    # bash ignores errexit inside the render as well, and `local doc="$(...)"`
+    # would swallow its status, as sweep_source's comment says. The capture
+    # strips every trailing newline and the printf adds one, so the document
+    # always ends in exactly one.
+    doc="$(render_doc)"
+    replace_file "$PROJECT_ROOT/$DOC_REL" printf '%s\n' "$doc" ||
+      die "could not write $DOC_REL, which is left as it was"
+    printf 'wrote %s\n' "$DOC_REL"
+    # The gate is stated in the command's own output as well as in the file, so
+    # it reaches whoever just ran this and not only whoever reads the document.
+    printf 'it is a snapshot, not a standing fact -- hv confirms before the next rebuild\n'
+    ;;
+  -h | --help)
+    printf 'usage: %s fleet <audit|doc|upgrade>\n' "${DEVBIN_INVOKE:-bin/devbin}"
+    ;;
+  "")
+    # Bare EXITS 1, matching `devbin test`: being unable to run because no
+    # subcommand was named is not a success, whatever the usage line says.
+    printf 'usage: %s fleet <audit|doc|upgrade>\n' "${DEVBIN_INVOKE:-bin/devbin}"
+    exit 1
+    ;;
+  *) die "unknown fleet option: $1 (try: ${DEVBIN_INVOKE:-bin/devbin} fleet audit)" ;;
+esac

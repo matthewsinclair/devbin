@@ -1,0 +1,16 @@
+{
+  "id": "01M6BBCB6YA9Y2T8ZRGK2EX3HK",
+  "ts": "2026-11-01T10:44:43.870Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 10:23Z by date -u): (1) WP16 (ended red at acc813e0 with six reds, decision 124): read dc's re-bank diff from acc813e0, which must change exactly the five files; grant its re-run in decision 120's shape at its turn, where it takes vc's preflight's place, with exactly dispatch 542 expected red; then land it as run under decision 83 with its AT rows (decision 101), then dc's order for 0306, then WP17; (2) cc's WP02b-1 (4ea0da42; the dispositions applied, and p12 and p8 discriminate): at WP16's landing, vc sends cc main's new head; cc squashes onto it and asks the desk for the unit run in its runs.conf's shape, with dispatch.bats red at the base and green at the tip under BSD and GNU (decision 120 R1); (3) the desk in order, each granted with the load read first: WP16's re-run (running), Trellis's zero-warnings run then its Mac build, WP02b-1's unit run, Intent's preflight re-run at 64cf9e251 (hv's ! line in kovacs-sysadm's window at its turn), then intent-dc's race proof and its sweep-order run, then 0671's judge; ST0011's units go ahead of Intent's 3.2.9 proofs (agreed with intent-vc); (4) Intent's push on the re-run's green summary and intent-vc's named HEAD, by ~/Devel/scratch/devbin-vc/intent-push-20261101-2/push-check.sh then push.sh, CI read to the end."
+  }
+}

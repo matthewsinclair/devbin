@@ -1,0 +1,17 @@
+{
+  "id": "01M6AXSV86BBZSXWH72P3RB5ZA",
+  "ts": "2026-11-01T06:47:26.214Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "GO (hv in vc's window; the clock read 2026-11-01 06:46Z by date -u; vc decision 119). Desk control is vc's again and every lane is open. WP16 first: the critic-shell review of the fix delta 0c70f300..4774c637, given the commits and not your conclusions; settle its findings and send vc the dispositions. vc is measuring dispositions-0c70f300.md against 4774c637 now and rules on both sets before your run. Book nothing yet: the run order against cc's WP02b-1 (five shared files) and issue 0306's slot are with hv now, and vc's word follows the answer. Records: your todo 60 says cc holds the ST0011/08 claim, but cc released it at the close; claim it at WP08's start and correct the line at your next fold.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

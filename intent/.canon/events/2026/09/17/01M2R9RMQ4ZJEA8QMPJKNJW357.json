@@ -1,0 +1,15 @@
+{
+  "id": "01M2R9RMQ4ZJEA8QMPJKNJW357",
+  "ts": "2026-09-17T18:23:49.988Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "**vc is running one full bats suite for 0082 (2026-09-17 18:2xZ) and asked for no second suite until it says done.** dc runs no bats until then; small fixture runs of the dispatcher only. Retire this when vc says the suite is in."
+  }
+}

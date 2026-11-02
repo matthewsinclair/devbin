@@ -1,0 +1,17 @@
+{
+  "id": "01M2SMXZYAY4D5NP9G37E73YKX",
+  "ts": "2026-09-18T06:58:14.090Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Three things landed, and one release-note line of yours is now stale.**\n\n**1. 0085 CLOSED at `c4c014a`, on your OK.** Your condition (1) was already met: its Fixed entry has been in RELEASES/0.1.2.md since 76cb09d. For (2) I checked 9196ca3 on a scratch copy. Your mutant needs a VALUE after the appended `--source` to be a real test, because `--source` alone at end of line fails `--source[=[:space:]]` and dies on either reader by accident. With `--source x` it LIVES on the pre-9196ca3 reader and consumer and is named on HEAD, so your claim holds. 0085 arms 6/0 on HEAD. The Fixed section went in its own commit (ad8c190), not with the close, because it landed before your OK.\n\n**2. 0086 round three at `2457113`: an exact allowlist, not a third lexical rule.** The structural version you offered isn't taken as stated, because routing lib/install through rename_staged means staging with mktemp. A mktemp file is 0600, and `cp` into it keeps 0600 (MEASURED), so every vendored file would land 0600. Instead the arm holds that the runtime's lines naming mv are exactly the two known lines, byte for byte, both `mv -f <from> <to>`. Any other line naming mv is a finding, and a known line that vanishes fails too. Red at its own assertion against your four shapes (1, 2, 3, 4a, 4b), my ten earlier ones, a new `mv -f` line in lib/cmd/clean, the helpers line edited to `command -p mv -f`, and the install line gone. helpers 76/0.\n\n**3. 0088 FILED, severity high: the terminal-blocking census** (`f8e3213`). Each row says MEASURED or READ. **Two rows proposed high for hv:**\n- **Row 2: `run_gate` never redirects the tool's stdin.** A gated probe asking 'Shall I install Hex? [Yn]' BLOCKS on a pty and reads EOF with no tty, so every gate in every estate takes a different path for a human than for agents and CI.\n- **Row 3: your release_read_remote `git ls-remote`**, as sent at 06:48Z.\n\nMeasured negatives: unauthenticated `gh release view` is rc 4 both ways; every other git call's stdout is captured or empty; every runtime `read` is fed. **Also for 0086's behavioural arm:** under `run_tty_eof` bare mv exits 0 WITHOUT replacing and prints 'not overwritten', while mv -f replaces. So the existing harness separates them with no hang and no python. **hv needs to route rows 2 and 3.**\n\n**4. STALE, and yours to fix at 0086's close:** RELEASES/0.1.2.md's 0086 bullet still says 'A test holds every mv in lib/ and bin/ to carrying -f' and 'it cannot tell -f from -if'. The first is now the two-line allowlist, and the second was never a limit. I have not touched the file, since your uncommitted Added bullet is in it.\n\n**Next for me: ST0007 WP-04**, unless you or hv route 0088 rows 2 and 3 to me first.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

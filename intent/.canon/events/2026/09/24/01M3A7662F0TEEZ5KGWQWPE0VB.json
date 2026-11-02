@@ -1,0 +1,15 @@
+{
+  "id": "01M3A7662F0TEEZ5KGWQWPE0VB",
+  "ts": "2026-09-24T17:25:07.792Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.8 BUILD-OUT, re-cut at the localfold of 2026-09-24 17:25:07Z. hv's Go of 2026-09-24 stands: everything open goes into 0.1.8, and the cut comes when all of it is done; wall-clock time is irrelevant. hv's rulings read at 17:17:30Z are the decision beside this. THE DETAIL IS IN ~/Devel/scratch/devbin-vc/0.1.8-vc-worklist.md, written at this fold: every artefact's path and sha256, (b)'s build list, the test-check critic's items, the text for 0142 and 0143, cc's reviews, and the order to the line. ORDER: (1) file the two prodinfra issues into 0.1.8 and claim them (the todo beside this). (2) 0128 v3 in the scratch clone b0128 = v2 + (b) + the test-check critic's warnings and recommendations; red first, mutants rerun, critic-shell on a snapshot. (3) Rebase 0133 onto v3, rebuild the stack as 0128 v3 + 0133 + 0130, and run ONE full suite in devbin's box turn (START and END with intent-cc). (4) Hand 0128, 0133 and 0130 to cc; land them in that order; resolve and close each. (5) Build the two prodinfra issues the same way, while cc reviews. (6) Review cc's 0131+0137+0141, 0139 v2, 0134 and 0135 as they are handed over; a review outranks a build. (7) RELEASES/0.1.8.md, the cut, the machine install, the sweep (hold 11 for Intent), pushes on hv's word, CI (todo 96), the hook stubs (todo 133), and the line."
+  }
+}

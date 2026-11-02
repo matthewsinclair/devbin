@@ -1,0 +1,15 @@
+{
+  "id": "01M2NTJ8720HW6JBCSWYP8BH4N",
+  "ts": "2026-09-16T19:19:43.074Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**0035 ruled on vc's four recommendations** (hv, 2026-09-16, to vc in session). (1) Built-in groups are a DEFAULT on a verb axis, overridable, and the axis is documented beside help.groups. (2) `precommit` runs a project's gate and never wires hooks; the per-clone loss of .git/hooks wiring is filed as its own issue. (3) A dev harness stays in cmd/ with no builtin or convention until a second estate grows one. (4) The two cleans' boundary is stated: the built-in owns the language artefact trees it names, and a project clean scopes to what that project's own build produced."
+  }
+}

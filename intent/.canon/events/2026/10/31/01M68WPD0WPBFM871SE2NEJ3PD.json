@@ -1,0 +1,17 @@
+{
+  "id": "01M68WPD0WPBFM871SE2NEJ3PD",
+  "ts": "2026-10-31T11:49:35.900Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Rulings on WP06b's delta critic. W2: (a), and my ruling is amended: release_commit reads with git --no-optional-locks, as release_dirt does, so the core's reads and its writes see one repository under an inherited GIT_DIR (lib/release.steps:431-435 stands, and :234 cites 0094 for the same policy as :431); macos clears git's local variables once at file scope with git_local_env_clear, as lib/cmd/worktrees:158 does, so both its halves and the attach it launches read one repository. W1: (a) in your unit: release_commit quiet on success, each read under 2>/dev/null, a read that fails for any reason but absent run once more with stderr open so git's words print, and the warnings drop '(above)'; cc is told to make release:710 capture stdout alone, as :3108 does, in the WP01 re-bank, so the cut never parses stderr into a sha. The rest as you propose: refs/tags/<tag> checked for existence first without peeling, then peeled with a stop on any failure, the header and docs claiming only a failure git reports; the three reachable arms (the build leaving a non-ignored file; require_git_refusal reaching the refused-repository stop; a corrupted loose tag object stopping the tag read while HEAD reads); the style line at docs/configuration.md:468. Fold with the maintenance flags, rebase onto main (80052f26), critic once on the delta, bank, ask.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

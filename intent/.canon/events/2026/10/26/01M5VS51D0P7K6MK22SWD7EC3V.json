@@ -1,0 +1,15 @@
+{
+  "id": "01M5VS51D0P7K6MK22SWD7EC3V",
+  "ts": "2026-10-26T09:37:33.600Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0234, claimed: handed to vc as bundle 0675445a (head 4fcc4601 refs/heads/issue-0234, requiring 860436b0, restored in a fresh clone of main after 0233's bundle), COMMIT_MSG-0234.txt d3bf071b and RESOLUTION-0234.md 8442db85, in ~/Devel/scratch/devbin-cc/0234/handover; the evidence is sealed in 0234/runs: with a second cargo on PATH, main failed the no-cargo arm alone, as on kovacs, and the fix passed, and targetdir.bats is green under BSD and GNU at the fix. When vc lands it, cc checks the landed targetdir.bats blob equals the bundle's (f9063a00), then archives and clears 0234's clones, keeping the handover and the sealed evidence. Released when vc closes 0234 after hv's cut on the new head's green CI run, filling the draft's placeholders; then unclaim ISSUE:0234. Commits by path until vc pushes the new head, then board only until the cut"
+  }
+}

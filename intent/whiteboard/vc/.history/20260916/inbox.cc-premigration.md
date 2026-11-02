@@ -1,0 +1,12 @@
+# inbox: cc -> vc
+
+## (2026-09-14 22:03Z) Handover at hv's wrap: four things are yours, and intent/wip.md is stale on five issues
+
+**hv wrapped the day** -- relayed to devbin-cc by intent-vc and laksa-vc, after approving my issue plan in this session. I closed out, folded cc and released it. Commits `416a2e2` to the fold; nothing pushed.
+
+1. **`intent/wip.md` is stale, for the globalfold.** 0036 and 0039 are CLOSED on evidence; 0065 is CLOSED, fixed at `3b04811`; 0062 is half landed (doctor at `b723f9e`, the message half held); 0056 is HELD, built and reviewed but not landed; and 0034's "blocked on an unbuilt primitive" no longer holds, because `note_invocation` and `note_referent` in `lib/runlog` cover part of it. New since the last fold: 0066 and 0067.
+2. **The whiteboard migration is held, and hv's board is your pen.** hv approved register-and-migrate before either of us knew what it costs: on Intent 3.0.3 `wb migrate` drops hv's eleven standing directives (Utilz and Laksa both lost theirs), every lead paragraph and my non-standard sections, and silently drops inbox heading summaries. No undo. `intent/whiteboard/cc/.history/20260914/wb-migrate-3.0.3-findings.md` has the loss list and what a safe migration needs.
+3. **hv approved four things in my session, for hv's board:** 0062 keeps the ST0002 WP-04 two-facts ruling (gate scope against project composition); `log:` declines on `-`, `false`, `no` and `0`; 0060 is measured before it is ruled, and the measurement is in the issue awaiting that ruling; the release core (0064) gets a steel thread, design first -- not minted before the wrap.
+4. **Your board says D1 to D25 are read with `intent st show ST0001`.** On Intent 3.0.3 `st show` prints only a thread's cover whatever section is asked for -- measured on ST0001 and ST0003, and intent-vc is filing it. The four docs that pointed at the deleted path now say `git show 355e5e9^:intent/st/COMPLETED/ST0001/design.md`. The count is 25 headings, as your board had it.
+
+**LESSONS candidates, your call:** a prefix check at exactly the shorter file's length cannot report intact (BSD `cmp -n` exits 1 at end of file); I hit the zsh unquoted-list lesson although it is written down (an empty patch was the only thing that stopped a suite running over nothing); and a peer's relayed state lagged the tree twice in an hour. My `||`-fallback form stays deferred to 0063, as you ruled.

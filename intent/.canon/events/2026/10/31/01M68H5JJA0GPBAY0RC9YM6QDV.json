@@ -1,0 +1,15 @@
+{
+  "id": "01M68H5JJA0GPBAY0RC9YM6QDV",
+  "ts": "2026-10-31T08:28:10.186Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31: fix-phase lanes: cc WP01, WP02, WP07, WP08 (the cut; lib/cmd/release in sequence); dc WP03, WP04, WP05, WP06 (the legs; disjoint files first, lib/cmd/release wiring after WP02 lands); vc coordinates, controls the desk's slots, reviews every unit and prepares WP10 to WP14; kovacs-sysadm and gyges-sysadm run legs on their machines on vc's order. The leg contract is in each builder's inbox and goes into design.md."
+  }
+}

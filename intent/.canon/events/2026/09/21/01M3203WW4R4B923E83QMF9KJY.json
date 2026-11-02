@@ -1,0 +1,15 @@
+{
+  "id": "01M3203WW4R4B923E83QMF9KJY",
+  "ts": "2026-09-21T12:47:37.348Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ST0007 WP-08, devbin's side, as core owner, Utilz first (its ST0019 WP-01 is live): review each adopter's release: block against the core and fix any gap it surfaces into the next devbin release. RELEASED WHEN an adopter's release check or cut surfaces a core gap (Utilz, then Conflab, then Intent last). Each gap is a default with an override, never a per-project case, filed as an issue first; vc reviews every adoption against AC-8.1 and every core fix dc builds."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5NAXY2VZPYV8974TX731P0X",
+  "ts": "2026-10-23T21:33:34.171Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 81,
+    "text": "ST0008, devbin on Windows through WSL 2, in lock-step with Intent's ST0082 (its WSL thread), on ST0081's Linux packages; claimed by vc. Design v0.9 (fb532bd4) carries hv's rulings of 2026-10-16 (decision 49). EVERY WORK PACKAGE IS DONE: WP-01 to WP-07 shipped by 0.1.12; WP-08 (D55, decision 54) landed at 6bda9690 on 2026-10-23, AT-8.1 to AT-8.3 green and AC-8.1 to AC-8.3 satisfied at eaa80d82, and ships in 0.1.13. THE THREAD WAITS ON TWO THINGS OUTSIDE THIS REPOSITORY: AC-6.4, the adopting estate running the smoke list on one of its own repositories cloned inside WSL's filesystem (vc tells that estate's session when v0.1.13 is tagged, and records the message received, never the repository's name); and AC-2.1's measured-VPN clause, which waits on Intent ST0082 WP-02's real Windows machine. No push and no release by any Claude."
+  }
+}

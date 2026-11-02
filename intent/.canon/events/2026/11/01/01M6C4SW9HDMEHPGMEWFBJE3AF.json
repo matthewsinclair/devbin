@@ -1,0 +1,15 @@
+{
+  "id": "01M6C4SW9HDMEHPGMEWFBJE3AF",
+  "ts": "2026-11-01T18:09:01.745Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0011 WP06 and WP04 closures, after the hook-in stack's landing (ee5791e5, a4238ca6, 8a776229; WP05 done at 9e294743): WP06 is marked done once WP08 lands and AT-3.9 turns AC-3.3 green; WP04 stays WIP until AC-4.1, non-test, is read from the first cut's CI (vc's ruling, 2026-11-01: whether Ubuntu runs twice on S under the publish shape goes to hv then)."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M46NGSGSWY6HEGQREY85Y77N",
+  "ts": "2026-10-05T18:34:19.545Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "0163 v3 and 0167, ready to land, as you asked: two commits on main 962e0daf (main has no code change since), 0163 first and 0167 above it. All under ~/Devel/scratch/devbin-dc/0.1.9/.\n\nPatches (patches/final-962e0daf/, git am in order; the handoff clone s163h holds them as 4ae7d643 and a6559a44):\n- 0001 (0163 v3) sha256 1b5d51b43bbf21b9715a600c0b048ee7fd05e7f2e5f668d326cf0793caf21b10\n- 0002 (0167) sha256 375794b7164a354832e685d8bbb6ff73cd3e61f61a64313b916cf652334a3fc8\nMessages: drafts/msg-0163.txt (d848e5e4) and drafts/msg-0167.txt (ba11af01), each the commit's own message. Resolutions: drafts/resolution-0163.md (176e9d8a) and drafts/resolution-0167.md (8c39239f), with <landing sha> to fill. Every draft client-scanned, 0 hits.\n\n0163 v3 (your ruling B; W1 kept failing, as you ruled, with its remedy given only where a probe's answer put the walk in play):\n- Red on v2: runs/s163v3-red-on-v2-20261005-170308.log (7 targetdir and 2 helpers arms); red on pre-fold v3: runs/s163v3b-red-*.log (4 arms).\n- Mutants R1 to R17 (runs/mutate-163v3b-20261005-173959.log): every expected kill; R4 and R17 survive as the declared equivalents (each only re-asks cargo for the same verdict).\n- Two critic-shell passes (review and test-check), every finding folded: drafts/critic-0163v3-findings.md. The second's one live warning was the probe crate refused under a project declaring [workspace]; it now declares its own empty [workspace], pinned by an arm.\n- shellcheck: no finding new against main. Contract's 0139 find-status scan is green (the quiet re-walk carries its mark).\n- Cost: the quiet re-walk runs only when find failed with an unreadable hole recorded, about 1.8x that walk; the Resolution says so.\n\n0167 (critic-shell folded: drafts/critic-0167-findings.md, 2 warnings and 4 recommendations, all folded):\n- Red: all 4 arms red with 0167's tests over 0163's lib; the fourth, added at review, also red over 0167's pre-review lib for the false \"not each crate's own workspace target\" (runs/s163h-167red-20261005-182009.log).\n- Mutants Q1 to Q10 all KILLED on a6559a44 (runs/mutate-167final-20261005-182448.log, Q10 re-aimed at the nested arm: runs/mutate-167final-q10-20261005-182523.log). Q7 to Q10 cover the fold's wording. The page carries no mutant; nothing reads its prose.\n\nWide run on the final stack, a6559a44 over 962e0daf (runs/s163h-wide-20261005-182410.*.log): BSD 412 (targetdir, helpers, clean, contract, help, vendoredmd, buildfmt, autotests) + 529 (fleet, install, localinstall, doctor, vendor, scaffold, infra, infra-profile, version, shell-gate-critic), fullcycle 140, GNU findutils 4.11.0 459 (targetdir, helpers, clean, buildfmt, autotests, fullcycle). 1540 ok, 0 not ok; only the known no-tty and case-fold skips.\n\nBoth are yours to suite and land in your order; tell me anything to fold. I go on to 0168, 0165, 0170, 0171 and 0172.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

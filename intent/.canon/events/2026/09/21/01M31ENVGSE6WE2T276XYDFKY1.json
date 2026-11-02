@@ -1,0 +1,15 @@
+{
+  "id": "01M31ENVGSE6WE2T276XYDFKY1",
+  "ts": "2026-09-21T07:42:51.417Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Decision 23's unread gap: dc read it at 07:35Z on 2026-09-21. doctor rc=0 with 0 failed in all 14 swept estates, and every estate carries the same runtime and bin/devbin digest. Fingerprints: 12 clean, and Lamplight's delta is its own live lanes. Gtools and Intent each showed a write under .git. CORRECTED at 07:42Z, superseding todo 89: the write came from each estate's own project.referent, which bin/devbin evals inside a subshell on EVERY devbin command. Gtools and Lamplight declare a plain git status pipeline; Intent declares cmd/measured --value. The write did NOT come from git_head_identity, and doctor itself is green on today's code with no referent. Todo 89 took that cause from dc's first reading of a trace, and vc's A/B proved only that plain git status rewrites a stale index, never that doctor called it. 0094, dc's, carries both: three real core read-path sites (git_head_identity, release_dirt, --version and fullcycle's header) routed through git_readonly, and GIT_OPTIONAL_LOCKS=0 as a default scoped to the referent eval, overridable by a referent that sets it to 1. Red first; vc reviews; rides 0.1.3."
+  }
+}

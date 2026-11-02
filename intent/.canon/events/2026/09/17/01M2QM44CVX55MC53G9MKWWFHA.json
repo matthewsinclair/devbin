@@ -1,0 +1,17 @@
+{
+  "id": "01M2QM44CVX55MC53G9MKWWFHA",
+  "ts": "2026-09-17T12:05:37.819Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "WP-01 test fold committed at c3350b5 (parent c260eec): one path, tests/unit/releasecore.bats, +8. `git show c3350b5:tests/unit/releasecore.bats` cmps equal to the bytes vc measured, which are the shared-tree bytes dc ran at 10:54Z. Five rows: `status v1.0.0 --dry-run`, `check --dry-run`, `notes --yes`, `ci.wait: \"20\"`, `ci.wait: 1h20m`, plus a three-line comment on the duration rows. vc's measurement in a git-archive export: all five mutants (Na, Nb, Nc, Nd, Ne) survive HEAD's tests 22/22; with the new rows each is red on its intended row, pristine 22/22, and `check --dry-run` red on its own under Na in a variant without the status row. Gates at commit: guards 4 ran, critic (shell) enforced, doctor estate clean. On dc's OK: vc greens AT-1.1 to AT-1.4, closes WP-01, unclaims.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 171,
+  "slug": "clean-md-s-cargo-cache-rustc-info-sentence-reads",
+  "title": "clean.md's CARGO_CACHE_RUSTC_INFO sentence reads as a fragment",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-03",
+  "closed": "2026-10-06",
+  "reporter": "Matthew Sinclair",
+  "body": "## Problem\n\nlib/pages/clean.md's cargo paragraph ends \"Nor does a target directory cargo built under `CARGO_CACHE_RUSTC_INFO=0`, so that one is not listed and raises no warning.\" The sentence before it is not negative, so \"Nor does\" reads as a fragment; it means that such a target holds no `.rustc_info.json` and so is not recognised. Parked at the 0.1.8 cut (0131's review); fixed forward in the bundle on hv's word, 2026-10-03, on 0152's text of the same line.\n\n## Fix\n\nThe sentence says what it means: a target directory cargo built under `CARGO_CACHE_RUSTC_INFO=0` holds no `.rustc_info.json`, so it is not listed and raises no warning. vendoredmd.bats keeps the page prettier-stable.\n\n## Resolution\n\nFixed at 3c6cb354. The sentence now reads: \"A target directory cargo built under `CARGO_CACHE_RUSTC_INFO=0`, or with `build.build-dir` set to another directory, which takes that file there, holds no `.rustc_info.json`, so it is not listed and raises no warning.\" The `build.build-dir` clause is new. 0168's measurement on cargo 1.99.0 found that a target directory built with one set elsewhere carries no `.rustc_info.json`, so a per-session directory built that way goes unnamed by the same rule. A build-dir naming the target directory itself leaves the file there, measured by critic-shell, hence \"to another directory\". vendoredmd.bats and help.bats are green on the page, 60 of 60.\n\nThe full suite on the landing tree: vc's full suite, on main af758c10 (code at 415ce738) with 0163 v3.1 and 0167 git-am'd, cc's 0155, 0160, 0161 and 0162 applied above them, and 0168, 0165, 0170 and 0171 applied above those, in a fresh clone: 2203 of 2203 ok, 0 not ok, its .errors empty (seal 20261006-0621), 06:21:47Z to 07:07:05Z; 5 skipped, the expected five: two arms that need a runner with no controlling terminal, two require_command arms whose expected outcome is a skip, and a case-folding disk.\n"
+}

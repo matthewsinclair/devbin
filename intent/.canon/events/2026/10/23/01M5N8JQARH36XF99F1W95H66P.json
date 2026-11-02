@@ -1,0 +1,15 @@
+{
+  "id": "01M5N8JQARH36XF99F1W95H66P",
+  "ts": "2026-10-23T20:52:29.658Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0208"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "devbin's docs and help pages write counts down: the core's eleven steps, seven extraction grammars, and lists whose length is written beside them, against hv's rule that a count is deleted, never corrected"
+  }
+}

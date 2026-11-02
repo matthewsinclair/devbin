@@ -1,0 +1,16 @@
+{
+  "id": "01M4D1DYTNXJBAXSJ68G2T593F",
+  "ts": "2026-10-08T05:57:56.181Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 43,
+    "text": "0184 v2.1 HANDED TO vc 2026-10-08 for batch 3, with cc's 0185 v2.1: patch 0184/drafts/0184-v2.1-aed7af10.patch, sha256 9e6166b0...fa47, two files (shell-gate and contract.bats), base 540e0e4b, applying on a fresh clone of main 4f3d5601 to aed7af10's bytes. vc's full suite of batch 3's landing tree (main 23a27588, then 0185 v2.1, then 0184) is running, and vc reviews 0184 after 0185. Evidence, re-derived from the logs at the handoff: macOS 26 of 26 sections as aimed under BSD and GNU, the container 28 of 28, targeted 272 of 272 under each; the Resolution filled but for LANDING_SHA and client-scanned. Keep 0184/s at aed7af10 until it lands. Full state: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

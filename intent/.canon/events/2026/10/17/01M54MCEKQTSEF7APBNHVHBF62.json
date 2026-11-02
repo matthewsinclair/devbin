@@ -1,0 +1,16 @@
+{
+  "id": "01M54MCEKQTSEF7APBNHVHBF62",
+  "ts": "2026-10-17T09:51:41.687Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "0.1.11 RELEASED 2026-10-17 by hv at hv's terminal: release commit 0fc22669, annotated tag v0.1.11 (02cbc967) on local and upstream, GitHub release published 09:49:22Z by the Release workflow (run 39022565481, success); gates on 0fc22669 green (check all clean, 2384 of 2384, doctor 0 failed; log tmp/release/20261017-0928.RELEASE.out, .errors empty). Carried: 0192 to 0200 and ST0008 WP-07, WP-02, WP-03, WP-01, WP-04 (landing suite 20261017-0636; dry run 20261017-0655; seals in ~/Devel/scratch/devbin-vc/clone-archive/seals/). STILL OPEN: (1) CI's Devbin Tests on the tag (run 39022565532) and main (39022561611), in progress at 09:51Z; read both and tell utilz-vc; a PUSH IS DONE when CI is green (todo 96). (2) kovacs ORDER R1 at 8a2e0737, started 09:27:08Z by hv's `!`, now proving Linux AFTER the cut (same tree less the note and stamp); read ~/work/devbin-vc/r1.rc over ssh or intent-vc's relay; anything red is fixed forward in 0.1.12. (3) INSTALLS: rhad DONE, ~/Devel/opt/devbin publish-upgraded from the tag, devbin 0.1.11 (0fc22669), dvb 0.1.11; kovacs ORDER K011 (k011.sh 7a9ad4b3, tag bundle devbin-v0.1.11.bundle 16693247) with kovacs-sysadm, booked with intent-vc after R1's END and Utilz's kovacs runbook, installs to ~/Devel/opt/devbin from ~/Devel/src/devbin. (4) The fleet sweep to 0.1.11 follows Utilz 2.14.0's close on utilz-vc's word; its pathspec gains .gitattributes from the upgrade AFTER the one that brings 0.1.11 in. (5) hv's: create the tap matthewsinclair/homebrew-devbin, then the install-from-tap proof on rhad and kovacs."
+  }
+}

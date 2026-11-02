@@ -1,0 +1,15 @@
+{
+  "id": "01M31QAH67AWEBK0FW3NTZBKTS",
+  "ts": "2026-09-21T10:13:57.575Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "F4 DROPPED by hv at 10:13Z on 2026-09-21 ('Ok, drop it'). F4 is Laksa's parked item: in fullcycle's output, an inner gate's verdict: line prints between the phase header and fullcycle's phase: row (laksa-dc, 2026-09-03; re-driven by dc today). Dropped because nothing in it is false: the path is correct and sits under the output it describes, exactly as when the gate runs alone. Every real fix costs more than the oddity: buffering phase output loses live streaming, and a deferred-verdict run_gate contract gives one gate two output shapes. Not filed as an issue. Recorded so it does not come back as an unreconciled item."
+  }
+}

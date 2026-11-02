@@ -1,0 +1,16 @@
+{
+  "id": "01M3BSWSNEABJGF1DWJB94B8KR",
+  "ts": "2026-09-25T08:11:17.550Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 19,
+    "text": "ONE HEAVY RUN ON THE HOST AT A TIME, BETWEEN vc AND cc (started on 2026-09-24 for Intent's 3.2.1 cut; after the cut, on 2026-09-25, vc kept it for our own box). A full suite, a mutant batch or a multi-file bats run is heavy; a single arm or a small targeted filter is light and always allowed. Start a heavy run only on vc's START, and send vc END the moment it finishes, with the pid and the times read from the machine. Retire this when vc says the protocol has ended."
+  }
+}

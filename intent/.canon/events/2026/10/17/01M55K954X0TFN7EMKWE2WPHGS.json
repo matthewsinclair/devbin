@@ -1,0 +1,14 @@
+{
+  "id": "01M55K954X0TFN7EMKWE2WPHGS",
+  "ts": "2026-10-17T18:51:39.551Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0008/AC-6.3"
+  },
+  "payload": {
+    "evidence": "first run read job by job: dispatch 39039832569 on ac472c32, every job green but WSL, red at Run tests (23 not ok) with ONE finding, the steps ran as root (uid=0); fixed in this thread at e8044092 (dc's root fix: wsl-shell-user dev on the one setup-wsl call, sudoers by wsl-bash -u root, the version step exits on uid 0; ci-workflow.bats ok 125 red on main first; landing suite 20261017-1743); proven by dispatch 39055655481 on ea43e4b9, WSL job green as uid=1000(dev); nothing to file"
+  }
+}

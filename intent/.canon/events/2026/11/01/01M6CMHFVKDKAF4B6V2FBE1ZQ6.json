@@ -1,0 +1,15 @@
+{
+  "id": "01M6CMHFVKDKAF4B6V2FBE1ZQ6",
+  "ts": "2026-11-01T22:44:04.083Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "SWEEP NOTICES (sweep-plan.md's \"After the sweep\"; the sweep landed 2026-11-01 22:30Z by date -u, one commit per estate, nothing pushed): tell each estate's vc at its next session that the sweep has reached its tree, which unparks it (decision 123's restatement), and give it the commit. Utilz fc8cd495: ci.query dropped; its release check's one finding, that a push of candidate/2.14.8 starts no run of tests.yml, is WP10's. Gtools 5f21da88: ci.query dropped and ci.workflow: ci.yml declared, with ci.wait 45m kept; its matching finding is WP11's. Intent 066bd45bb: assets.workflow reads valid. No Intent session was live, so no CHAIN START or END bracketed the commit. Add the cmd/cache shadow note (a doctor note from 0.1.19, which WP12 renames) and todo 192's ask. Conflab 7ac7912f; Molt c0a6a2e; Baize a232154; Cdtempl ec521ac; Lamplight ab22e2e9c; MicroGPTEx f0f1040; Prodinfra a8e5f27; Prolix 4650a24; Riffle e9c8ca5; Arca's arca_catalog/ex 3e52ddb, arca_cli 1730f40, arca_config cbe7fea and arca_example 0424150; Cards 39f3fbc (Design, which is not its own checkout); and the cfg estate (another estate's Gtools config) 29ba6a5. Each notice names the retired release publish verb (decision 107) and the ci.query drop on WP02c's built-in default. The three with a release block (Utilz, Gtools, Intent) also hear that the candidate leg is on by default from 0.1.19, so a cut is refused at pre-flight until its test workflow fires on candidate/ or it opts out with ci.query: -. Sent before the clock read 22:41Z by date -u: trellis-vc for Trellis (ef579e5), and laksa-ac for Laksa (33da7b856), to pass to laksa-vc."
+  }
+}

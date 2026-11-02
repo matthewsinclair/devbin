@@ -1,0 +1,16 @@
+{
+  "id": "01M5WP7WQEK9JPGRR9KPM66NV9",
+  "ts": "2026-10-26T18:05:55.822Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 96,
+    "text": "A PUSH IS DONE when CI is green on the pushed sha (hv, 2026-09-22), and a cut needs CI green on its base first (decision 62, 0223). Baseline: run 40349359447 on a81f0f98, green (Ubuntu, ShellCheck, Test Summary), the base devbin 0.1.15 was cut on. Read every push's run from its jobs, its TAP and its skips against the last green's."
+  }
+}

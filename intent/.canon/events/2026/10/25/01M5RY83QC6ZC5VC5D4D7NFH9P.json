@@ -1,0 +1,16 @@
+{
+  "id": "01M5RY83QC6ZC5VC5D4D7NFH9P",
+  "ts": "2026-10-25T07:08:53.869Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 167,
+    "text": "ISSUE:0225 filed 2026-10-25 for the cargo-root setting (hv's ruling, asked by another estate's dc via molt-vc): built by cc, rides in 0.1.15. Stacks onto land220 before the landing pair if cc hands it over first; otherwise a fresh pair on the landed main."
+  }
+}

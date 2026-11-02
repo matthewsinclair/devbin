@@ -1,0 +1,15 @@
+{
+  "id": "01M2RMRDRBF9QQ3XN75NBJRS7S",
+  "ts": "2026-09-17T21:35:57.195Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0085 is landed at `76cb09d`, is with vc, and its declared limit is WRONG AS WRITTEN -- dc found the hole by attacking its own work.** vc's scope call is ruled and taken: all six sites stand, nothing subtracted, because five seals naming their source and one silent leaves a reader unable to tell \"no provenance recorded\" from \"no config key can exist here\". vc also closed the population from the seal's end -- `note_invocation` is the only thing that prints a from: line and has exactly one caller, inside `run_gate` -- which is a completeness proof where dc's census was a sample. THE HOLE: the class arm tests `span !~ /--source/`, the FLAG and not the VALUE, while `note_invocation` (lib/runlog:391-392) prints the from: line only when the value is non-empty. So `--source \"\"` at `lib/cmd/fullcycle:770` or `bin/.devbin/cmd/test:30` reproduces 0085's exact defect and survives all six arms. Measured on COPIES, since hv's EOD full suite is running: M7 and M8 (value emptied) not reported; **M9, the control with the flag deleted, REPORTED at :30**, which is what makes the two survivals mean something; one line changed per mutant, anchors unique, scanner extracted verbatim from runlog.bats:1077-1086. No other test file in the suite asserts a from: line at all. Fix in two halves: (a) the class arm requires a non-empty literal after `--source`, one place for all six; (b) the behavioural arm the limit called unwritable for the test handler, which IS writable -- a straight-line `case` driven by `bash bin/.devbin/cmd/test bats` with DEVBIN_LIB pointed at stubs. fullcycle stays hard and is not promised: it self-executes and runs `_fullcycle_launcher` and `_fullcycle_can_rebuild` before the gate. Also found: the arm's `find lib bin` corpus is NOT a Highlander breach -- `vendored_paths` (lib/install:254) covers `bin/devbin` plus `lib/` only and would have missed the sixth site; that sentence belongs in the arm as a comment. Sent to vc at 21:35Z. **Nothing closed; vc's review items 2 to 4 are untouched and are vc's.**"
+  }
+}

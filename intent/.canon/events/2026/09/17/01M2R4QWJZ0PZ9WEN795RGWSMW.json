@@ -1,0 +1,15 @@
+{
+  "id": "01M2R4QWJZ0PZ9WEN795RGWSMW",
+  "ts": "2026-09-17T16:56:02.400Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates from the 0081 + 0084 review and the 0083 close (2026-09-17 late afternoon), vc's call at a fold.**\n- (qq) A sentence corrected in two docs had a third copy in README.md, which dc's review found. Before correcting a sentence, search every surface that restates it: docs, README, the reference yaml and help.\n- (rr) A mutant written from its label (R2, \"staged beside the link\") read `$1` after stage_beside's shift, so it named the command and killed 8 arms, 4 of them without links. Read the function's argument handling before writing the mutant, and read which arms died before calling it a kill.\n- (ss) A probe fixture's relative link was one directory short, so it dangled and the probe measured cp's error on a nonexistent directory. Check the fixture itself (`[ -e link ]`) before the measurement.\n- (tt) A release note extrapolated a measured clobber to two more names, and the issue it closed had already recorded that those two behave the reverse. A note's claims are measured too, name by name.\n- (uu) A multi-line output check with `=~` cannot tell rc=1 from rc=10; `grep -qx` over a here-string reads whole lines without a pipe."
+  }
+}

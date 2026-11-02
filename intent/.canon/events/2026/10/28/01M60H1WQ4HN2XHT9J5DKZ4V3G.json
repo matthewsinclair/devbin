@@ -1,0 +1,15 @@
+{
+  "id": "01M60H1WQ4HN2XHT9J5DKZ4V3G",
+  "ts": "2026-10-28T05:52:14.054Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0281"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "a Cargo.toml with a multi-line array whose element lines open with `[` is refused as holding no version"
+  }
+}

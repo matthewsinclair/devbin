@@ -1,0 +1,15 @@
+{
+  "id": "01M691C9Y7ZPPGDTYCN4H85HZA",
+  "ts": "2026-10-31T13:11:27.944Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 13:11Z (D69, design.md s12; on gtools-dc's WP-11 question relayed by gtools-vc): a gate declares the platforms it runs on, once, at the gate (platforms:, the core's words macos and linux); a host elsewhere counts it inactive on all, help --why names it, by name it refuses with the reason; on a listed platform a gate that cannot run stays the leg's failed (D62); a value outside the words is refused at config read; the cut's plan refuses a gate active on no leg it will run. WP17 (dc, after WP05 lands, in 0.1.19) with AC-6.1 and AC-6.2; AC-6.3 lands in WP02b (cc). Rejected: in_all: false on Gtools's app (a consumer weakening its gate to fit the core), no kovacs leg for Gtools (against 0295), an app test exiting 0 off macOS (a silent green). Gtools's kovacs-leg needs (an estate stub for check's estate-reading gates, prez with Utilz's bin on PATH) are measured in WP11 on kovacs; the host carries what the gates need (D62)."
+  }
+}

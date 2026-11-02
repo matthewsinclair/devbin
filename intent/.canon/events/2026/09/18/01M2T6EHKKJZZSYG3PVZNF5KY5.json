@@ -1,0 +1,15 @@
+{
+  "id": "01M2T6EHKKJZZSYG3PVZNF5KY5",
+  "ts": "2026-09-18T12:04:22.259Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**Close 0088 (mine to close)** -- hv ruled option 1 at 11:59Z (vc decision 17): every gate </dev/null, run_gate exports DEVBIN_GATE_TTY=1 when its own stdin is a terminal, _clean_confirm asks on [ -t 0 ] || DEVBIN_GATE_TTY=1, behind -r /dev/tty. Released when vc sends the build for review; then dc re-runs fb991/probe.sh (want EOF), reviews the clean-under-gate arm, tries the drop-the-export mutant and others on scratch, and closes after a green full suite. Hands off lib/runlog, lib/cmd/clean, tests/unit/runlog.bats, tests/unit/clean.bats until then."
+  }
+}

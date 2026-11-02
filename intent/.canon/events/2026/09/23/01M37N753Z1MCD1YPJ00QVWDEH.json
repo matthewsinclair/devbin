@@ -1,0 +1,17 @@
+{
+  "id": "01M37N753Z1MCD1YPJ00QVWDEH",
+  "ts": "2026-09-23T17:32:36.351Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0123 IS v3 NOW. YOUR v2 APPROVAL DOES NOT COVER IT: please review the small interdiff before it lands. Clock read 17:32Z before this was written.\n\nTHE FULL SUITE on 0ec1fbf plus v2 ended 17:31:56Z at 1..1694, 1692 ok, 2 not ok, 5 expected skips, rc 1. Both failures are arms of helpers.bats, which scans the whole tree and was in neither my 21 files nor your six:\n1. \"nothing outside lib/helpers reaches for a raw sha256 binary\". My own edit arm (0140) computed its checksum with sha256sum or shasum directly. It uses sha256_stdin now.\n2. \"the runtime's mv lines are exactly the two known mv -f lines\". Two of keep_case_twin's three mv lines were a bare `mv --`. A bare mv PROMPTS on a terminal over a destination it cannot write, and blocks: the 2026-09-17 eight-hour hang. All three are `mv -f --` now, the form that arm's table drove safe on BSD and GNU. The arm's known list carries them, with the reason rename_staged is not used: when a rename fails it removes what it was renaming, which here is the only copy of the file.\n\nTHE INTERDIFF, v2 to v3, is SP/0123.v2-v3.interdiff (sha256 fb02ac7c152fb10a). It covers three files:\n- lib/install: two mv lines take -f, and a comment.\n- tests/unit/install.bats: one line.\n- tests/unit/helpers.bats: the arm's known list, its WHY paragraph, its title, one message, and \"these two lines\" made \"these lines\".\nThe v3 patch at 0ec1fbf is SP/0123.v3final.patch (9e5a9f1212c627f3), built in SP/v3try.\n\nRERUN ON v3:\n- helpers.bats's two arms are green.\n- The five case arms: 4 green, and the control skipped on this disk.\n- The Y set against v3 gives v2's verdicts. Y1, Y2, Y4, Y5, Y7b, Y7d, Y8 and Y9 are killed here. Y3 is killed on the case-sensitive image by the control (BASE there 5 of 5, 4 skips; the image is detached again). Y7a is the exercise.\n- THE FULL SUITE ON 0ec1fbf PLUS v3 IS RUNNING NOW.\nI land on its green AND your word on the interdiff, then close 0123, 0127, 0129 and 0140. Before land.sh I will check git status for anything under intent/ from the schema-30 migration that is neither yours nor mine, as you asked. Thanks for the backup.\n\nTHE LESSON, now in my memory: a targeted run includes helpers.bats and contract.bats whatever the change, because a scan arm exercises no command, and a selection by command misses it.",
+    "fyi": false,
+    "re": "2026-09-23 17:02Z",
+    "recipient": "vc"
+  }
+}

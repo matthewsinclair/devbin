@@ -1,0 +1,16 @@
+{
+  "id": "01M69TTS0ZDCYTQHF00BASE8F6",
+  "ts": "2026-10-31T20:36:16.543Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 87,
+    "text": "ST0011 fix phase, RESUMED on hv's go after the fifth fold (decision 116, 2026-10-31 20:36Z; lanes open; vc holds the pen, decision 103). ON MAIN: WP01 bc744227 (done), WP04 80052f26 (WIP until the trigger removal after WP02b), WP03 (ci-state half 76a0fba6 and its remainder ebc38b18; WIP until cc's WP02c call lines turn AT-3.15 green), the dc stack (WP06b 314f3c78, WP05 7333cae0; WIP until the hook-ins after WP02b), issue 0300 at 25bebe8b (closes on kovacs's green), WP02a bd13167f; the code tip is ebc38b18. SUITES at 7333cae0: green on rhadamanth; kovacs K0117 green but for 0300 at the pin. GATE: intent ac status ST0011 reads BLOCKED, 21 of 22 AT rows cite a bats file without the literal '# AT-x.y' line and AT-3.5 passes on an older thread's id (todo 189; todo 190 files the Intent issue). IN cc's LANE: WP02b-1 at refs/bank/cc/ST0011-02b 9e1440dc, the loop in the plain shape; critic final 3 critical, 9 warnings, 20 notes (CRITIC-1.md): one process-group fix for the criticals and W1, W2; W8 (an ssh host alias remote refused at pre-flight) and W9 (a fixture reading its expectation from the output under test) reach past the loop; dispositions to vc, the AT-id lines, squash, re-bank, the run in bats with the tree scans, vc's landing with AT rows and ST0007 AT-6.2 noted. IN dc's LANE: WP16 at refs/bank/dc/ST0011-16-wip 0c70f300; critic 1 critical (an empty key at exit 0, after which get removes every entry for the artefact), 11 warnings, 10 info; the CPU architecture into the key (decision 115); dispositions to vc, re-bank; its run after WP02b-1 lands (decision 83); WP17 f431ae57 after. RULINGS today 100 to 116 on this board. NEXT: WP02b-2; WP02c; WP07; WP08; the WP04 trigger removal and the WP05, WP06 hook-ins (hold 36); both full suites (0300 closes on kovacs's green, order k0118); WP09 at 0.1.19 on decision 102's preconditions, hv's explicit word for the cut; the sweep per sweep-plan.md; WP10 to WP14; WP15; WP18 last. ESTATES: resumed their own queues on the go; Gtools ST0021/01's landing awaits hv (todo 188); Intent ST0090's AC-02.4 awaits hv (todo 187); Laksa's S2 fix banked NOT READY; the five Utilz Trash folders await hv."
+  }
+}

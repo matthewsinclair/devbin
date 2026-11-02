@@ -1,0 +1,17 @@
+{
+  "id": "01M6CDB31YMCWAKGBAETG4Z0NP",
+  "ts": "2026-11-01T20:38:14.334Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "FOLD ORDER from hv (stamped 2026-11-01 20:38Z by date -u): localfold and compact NOW, while kovacs's 67fb7cda leg finishes. The freeze lifts for the fold alone: fold, commit by path, leave the tree clean, then hold for hv's /compact (not released). After the compact: /in-session, pickup, COMMIT THE PICKUP AT ONCE, then 'compacted, holding' to vc, and FROZEN again: no write to the checkout (no pickup, touch, wb write or commit) until vc says the re-cut has ended. The re-cut starts only once all three nodes are compacted with clean trees and kovacs's old leg has its .rc.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

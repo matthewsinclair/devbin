@@ -1,0 +1,15 @@
+{
+  "id": "01M2QTPZBE7ER9NBTGW2ZGV458",
+  "ts": "2026-09-17T14:00:46.702Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Review d42d189 (dc, a 0041 follow-up, comment-only) AFTER WP-02's OK -- queued by dc on hv's word, 2026-09-17 14:00Z.** tests/lib/test_helper.bash and tests/unit/shellinit.bats name MODULES.md's 'BATS shared test helpers' row instead of citing line 67 (the row is line 81 now), and shellinit.bats's comment kept as history since 73b45bf moves to the past tense with mkproj's move into test_helper.bash named. Verify: every changed line is a comment (strip comments, cmp, with a one-byte red control); no live citation of a MODULES.md line number remains anywhere in the tree; bash -n and shellcheck clean; shellinit.bats reads 19 arms and RUN it green, since dc did not run it while vc's suite ran."
+  }
+}

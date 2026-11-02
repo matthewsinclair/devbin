@@ -1,0 +1,15 @@
+{
+  "id": "01M4AHC54H87WJB364VXFNP3YP",
+  "ts": "2026-10-07T06:38:51.025Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0180, hv's report and vc's word (2026-10-07): 0.1.9's CI is red on Ubuntu, arms 309 (0155) and 1086 (0158), reproduced 3 of 3 in an ubuntu:24.04 container that mirrors the job. Fix: the lint worker turns a death into an ordinary non-zero exit, so every xargs runs every file; and 0158's arm drops require_command expect, once its pty half is shown to run, and fail when it should, under util-linux script. Built in ~/Devel/scratch/devbin-dc/ci019/s, then the patch to vc."
+  }
+}

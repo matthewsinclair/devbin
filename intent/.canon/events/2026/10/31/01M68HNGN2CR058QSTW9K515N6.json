@@ -1,0 +1,15 @@
+{
+  "id": "01M68HNGN2CR058QSTW9K515N6",
+  "ts": "2026-10-31T08:36:52.514Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FOR hv (ST0011, sent to hv's inbox 2026-10-31): decision 40 carve-out for the remote-leg runner's own ssh to kovacs (rec: grant); vc's 07:11Z ssh reads of kovacs reported; WP09's go and version (rec 0.2.0). Until hv rules, dc announces every runner test to kovacs-sysadm."
+  }
+}

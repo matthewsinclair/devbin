@@ -1,0 +1,14 @@
+{
+  "id": "01M54PC7RJXWRTGM10M4GT2B74",
+  "ts": "2026-10-17T10:26:31.828Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0008/AC-5.1"
+  },
+  "payload": {
+    "evidence": "Met on kovacs (Ubuntu 26.04.1 aarch64, uutils coreutils 0.10.0), closed here on D1, D1b and D1c per hv's ruling of Q6 (a), 2026-10-16: D1 at 2ff34a98 2306 of 2307, its one failure filed and fixed as 0198 (landed 2026-10-16); D1b at 89cae16e 2306 of 2307, its one failure fleet.bats:974 rerun alone by D1c ok rc 0 (the pause of hv's move, nothing to file); and R1 at the release head 8a2e0737 (0.1.11, 0fc22669 less note and stamp) 2384 ok 0 not ok, rc 0, 2026-10-17 09:27:08Z to 09:59:32Z, read by vc over ssh"
+  }
+}

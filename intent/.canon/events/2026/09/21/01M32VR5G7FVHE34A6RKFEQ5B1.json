@@ -1,0 +1,15 @@
+{
+  "id": "01M32VR5G7FVHE34A6RKFEQ5B1",
+  "ts": "2026-09-21T20:50:33.096Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0106"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "release step 1 fails with an empty detail when the tag listed last matches the template and names no version"
+  }
+}

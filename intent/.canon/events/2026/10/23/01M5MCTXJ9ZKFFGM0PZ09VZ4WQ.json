@@ -1,0 +1,16 @@
+{
+  "id": "01M5MCTXJ9ZKFFGM0PZ09VZ4WQ",
+  "ts": "2026-10-23T12:47:38.057Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 83,
+    "text": "D55, today's work on hv's word (relayed by intent-vc, Intent decision 70(4)). The shape was AGREED whole by intent-vc (decision 54): release.verbs, release attach on the tag's earliest successful run with one SHA256SUMS, and the writers check widened. ST0008 WP-08 was opened and started at 11951dff, with AC-8.1 to AC-8.3 and AT-8.1 to AT-8.3 still to write. cc builds it as one patch in a scratch clone, booking bats runs with intent-vc; vc reviews and lands on one full suite; hv cuts 0.1.13. Spec: WP-08's body. Proposal: ~/Devel/scratch/devbin-vc/d55/proposal-v1.txt. No push, no release."
+  }
+}

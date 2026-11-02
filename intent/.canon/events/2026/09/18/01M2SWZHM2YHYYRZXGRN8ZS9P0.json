@@ -1,0 +1,15 @@
+{
+  "id": "01M2SWZHM2YHYYRZXGRN8ZS9P0",
+  "ts": "2026-09-18T09:18:53.571Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0088 (terminal-blocking census, high, dc's filing) -- row 3 FIXED at `7c4d5d8`, row 2 WITH hv.** Row 3: `release_git_remote` in lib/release.steps (GIT_TERMINAL_PROMPT=0, BatchMode appended to the person's ssh command, stdin /dev/null); measured under a pty with a 401 origin: HEAD blocks, fix exits UNREADABLE rc 1; 2 arms red-first, 3 mutants killed. WP-04's git push must use it (told dc). Row 2 (`run_gate` hands every gated tool the terminal) is a fleet behaviour change, put to hv with vc's census: 51 scripts behind the fleet's gates, no terminal reads; Prolix iex/dbproxy exec, not gates. 0088 closes when row 2 is ruled and built."
+  }
+}

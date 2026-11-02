@@ -1,0 +1,15 @@
+{
+  "id": "01M45TKDWJTWSXSGGAM7RAAVFR",
+  "ts": "2026-10-05T10:43:54.386Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0154 v5.1's heavy batch, on vc's START of 2026-10-05: the 36 mutants (mutate0154v5.py over SP/tree), then the 14-file targeted run, both in scratch; census timing on vc's further word that the box is quiet, its output kept in scratch and only numbers sent; END to vc with pids and times read from the machine. Then 0154-commit.msg's placeholders, the patch and its sha256 to vc."
+  }
+}

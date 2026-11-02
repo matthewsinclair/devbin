@@ -1,0 +1,15 @@
+{
+  "id": "01M2T5TBRV5X1THRWTJNDKXX1G",
+  "ts": "2026-09-18T11:53:20.923Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Re-review ST0007 WP-03 fixes at 750a91f + 44c989c, then OK AC-3.1/3.2 (decides wp done)** -- hold 8 released 11:53Z. vc: (1) materialise checks the archive output with cat-file -e, naming export-ignore on the path or a parent (arm loops meta/, meta, /meta + control); (2) release_repo (first push remote's configured url) and release_gh <repo> <group> <verb> with --repo after the verb, GH_PROMPT_DISABLED=1, </dev/null (hv ruled release.repo, vc decision 16); (3) row 7 'could not be compared' on failed materialise; (4) export-subst refused; 0087 exact-line assert. Re-run the export-ignore and gh2remote probes against it, and mutants on a scratch copy. Scratch only until vc's suite at 44c989c ends. WP-05's create goes through release_gh."
+  }
+}

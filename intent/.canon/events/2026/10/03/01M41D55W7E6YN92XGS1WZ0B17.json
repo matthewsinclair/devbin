@@ -1,0 +1,16 @@
+{
+  "id": "01M41D55W7E6YN92XGS1WZ0B17",
+  "ts": "2026-10-03T17:31:58.215Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 144,
+    "text": "THE 0.1.8 PARKED LIST IS FIXED FORWARD as issues riding the one bundled release (hv, 2026-10-03: fix and fail forward, no per-item rulings), and nothing on it is left to file. Filed by cc: (1) release_scratch's physical-dir copies -> 0162; (2) the empty command-level run -> 0160; (4) doctor's swallowed statuses, including the reachable one, a manifest with no entries passing as intact -> 0159 (high); (6) fleet blind to an install without a manifest -> 0154; (7) dkim.type and the lower-case HALF PAIR -> 0161; (8) clean.md's fragment -> 0171. The 0.1.8 cut's extras: 0155 to 0158 and 0163 to 0170. Out: (3), the cross-domain SPF comparison, is new behaviour and stays out unless hv asks; (5) has nothing left; (9) is intent-vc's."
+  }
+}

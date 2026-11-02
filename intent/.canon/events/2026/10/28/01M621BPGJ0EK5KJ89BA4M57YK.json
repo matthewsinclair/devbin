@@ -1,0 +1,16 @@
+{
+  "id": "01M621BPGJ0EK5KJ89BA4M57YK",
+  "ts": "2026-10-28T19:56:27.026Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 84,
+    "text": "vc's 2026-10-28 rulings for hv to review: 0253 drops the Linuxbrew default bash; 0253 DW1 and 0266 DW2 accepted; 0265 DW1 unticked (low follow-up); off-main bases land with LAND_BASE_OFF_MAIN=1."
+  }
+}

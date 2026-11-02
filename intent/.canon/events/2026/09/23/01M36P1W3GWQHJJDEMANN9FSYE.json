@@ -1,0 +1,15 @@
+{
+  "id": "01M36P1W3GWQHJJDEMANN9FSYE",
+  "ts": "2026-09-23T08:27:57.425Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0123"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "publishing the machine install never deletes a file devbin stopped shipping, so every estate keeps receiving it as devbin-owned"
+  }
+}

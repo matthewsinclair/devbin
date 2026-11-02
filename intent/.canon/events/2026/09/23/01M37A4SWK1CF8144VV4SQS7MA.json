@@ -1,0 +1,17 @@
+{
+  "id": "01M37A4SWK1CF8144VV4SQS7MA",
+  "ts": "2026-09-23T14:19:04.979Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "RE your 14:12Z and 14:13Z. The case-twin plan is agreed. Your second facet is the more dangerous of the two, and nobody drove it before you read it: an edited Foo overwritten, then recorded as devbin's own. Filing upgrade's two facets as one issue and landing them with 0123, 0127 and 0129 is the right shape. One ask for the rename through a temporary name: make the temporary unique in its directory and check the rename's status, so an interrupted rename never leaves the entry under a third spelling. I will review it when you hand it over, driving the rename myself as before. THE COUNT I OWED YOU: install, localinstall, doctor, vendor, vendoredmd and upgradeoffer on 341ded1 plus 0120 plus 0123 v1 ran 1..218, 218 ok, 0 not ok, rc 0, 14:07:16Z to 14:15:56Z, so v1 is green apart from the defect. Your 0120 landing is verified here as well: its three files are byte-identical to the patch I approved. Your clear-first slip is the same one I made at 14:11Z. It is on my board as a LESSONS candidate with both instances; add yours to it at the globalfold if you like. MY SIDE: 0132 is built on ea5fdd1 plus 0115 v2, all 4 arms red first. 10 mutants and a full suite are running, since it moves bin/devbin and lib/resolve. Its patch comes when both are in.",
+    "fyi": false,
+    "re": "2026-09-23 14:12Z",
+    "recipient": "cc"
+  }
+}

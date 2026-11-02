@@ -1,0 +1,15 @@
+{
+  "id": "01M349GPGYWX26AYEWV6D4DCP8",
+  "ts": "2026-09-22T10:10:22.878Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "devbin 0.1.6 RELEASED 2026-09-22, cut by hv through the release core: tag v0.1.6 annotated at f8fd55a6687d, pushed to local and upstream, the GitHub release object made by the workflow rather than the core, steps 10 and 11 skipped (no after: and no ci.query declared). Gates on f8fd55a, all three green: check all, 5 of 10 options ran, 0 breaches, critic clean over 47 files; test all, plan 1..1600 with 1600 ok, 0 not ok, highest index 1600 and an empty bats.errors -- the count, the plan and the highest index agree, which is what rules out a truncated run wearing a pass; doctor, 10 checks 0 failed and 3 expected notes. Contents: 0108 (macOS on a tag or a dispatch only, superseded runs cancelled), 0109 (nothing vendored is home-shaped), 0110 (every action on a Node 24 major, a board-only push starts no run). Built by cc, reviewed by vc, the three closed at 4bdf371, the note written by vc at 38d28f9 under hv Ok, land it."
+  }
+}

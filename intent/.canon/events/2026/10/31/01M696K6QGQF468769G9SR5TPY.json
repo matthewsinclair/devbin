@@ -1,0 +1,15 @@
+{
+  "id": "01M696K6QGQF468769G9SR5TPY",
+  "ts": "2026-10-31T14:42:36.912Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011 run 3b RUNNING on hv's go (2026-10-31 14:34Z via vc, decision 100): 01M696HE2CXGH3SW7HHYCEDCTM granted in the bats lane, START 14:43:03Z by date -u, at refs/bank/dc/ST0011-05 aa2fb1d2 on ST0011-06b 1f37e5eb on main d708e37b, from ~/Devel/scratch/devbin-dc/run3d (note run3d/BANK.md). END the moment run-run3b.sh exits; then send vc land-stack.sh's inputs (handover dir, bundle, ref, tip sha, bank clone and its sha, units) with the result line, and move nothing in run3d or its clone until vc's landing line. At the landing, WP05's and WP06's ACs covered and satisfied with ATs. No kovacs login before vc's order. Done meanwhile: refs/bank/dc/0292 deleted (main carries it as bbb77cc5; 55985176 archived in dc's cited archive; vc confirmed)."
+  }
+}

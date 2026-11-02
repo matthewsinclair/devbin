@@ -1,0 +1,17 @@
+{
+  "id": "01M68HNGA1NHDT6K81S6FX21EG",
+  "ts": "2026-10-31T08:36:52.161Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "ADDENDUM dc (vc, 2026-10-31): leg words are ci-state's verbatim (green, failed, pending, none, unknown). WP03's built-in prints one of them for (repo, sha), honours the candidate ref and DEVBIN_RELEASE_TAG, and becomes ci.query's default; Devbin's config drops its ci.query line in that unit (cc's WP02b drops ci.tag from the same file; rebase under decision 83). WP04 shrinks: the config half moves to WP02b and ci.wait stays at 90m until WP15 measures; WP04 is the lanes step now and the trigger plus verdict-job removal after WP02b. WP05 facts: host alias kovacs (this Mac's ssh config, matts@10.211.55.3, key personalid); nproc 2; /usr/bin/bash 5.3.9, no brew bash, install nothing; git 2.56; brew cargo before rustup's, prepend $HOME/.cargo/bin anyway; 17G free, remove each worktree after the seal copy, keep the bare repo, release shas only, nothing onto PATH; tell kovacs-sysadm directly before every runner test until hv rules on the decision 40 carve-out. Docs: docs/releasing.md is cc's; docs/configuration.md is shared, each lane its own keys. Decisions D57 to D66 are in design.md section 12; the leg contract is section 11; vc holds design.md's pen.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

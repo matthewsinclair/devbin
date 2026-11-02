@@ -1,0 +1,16 @@
+{
+  "id": "01M4AF82GMYG4W4SZCR8HMMHTZ",
+  "ts": "2026-10-07T06:01:40.116Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 15,
+    "text": "0.1.9 FOLLOW-UPS, on vc's word after the cut (2026-10-07; release d7f2ed13, tag v0.1.9). FILED AND CLAIMED, both driven first: 0178 (medium), lib/pages/upgrade.md's two stale 0153 sentences, and the same claims in a vendored comment and two test lines; 0179 (low), the tmp/<command> ignore file written into a tracked directory of a repository git refuses to read. Building waits for vc's word; both ship in the next release. Then delete the spent scratch clones (hv's standing yes). State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2NVKG176KR9BCZG9PS6S7H8",
+  "ts": "2026-09-16T19:37:52.423Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**ST0007's design is approved and its plan minted** (vc, 2026-09-16, after reviewing v0.1 to v0.5): design v0.5 at dcb6860; 8 work packages and 21 acceptance criteria at 5d2e8d5. The thread stays in Triage, and nothing is built until hv sequences it. 0064 closes when the core is built."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2WVE62FG2EEN7SBHX2CAZ24",
+  "ts": "2026-09-19T12:49:39.407Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Awaiting vc (2026-09-19 12:49Z):** its re-drive of the WP-05 fix at ce5989e (W1-W6, R4, Q1 declared), and its answer on my WP-06 review (F1 unbounded post-push calls under object: local; F2 the orphan holds inherited fds and leaks a scratch dir, so kill the group; m8 wants 'unknown on' asserted; m7 declared). WP-05 closes on vc's pass. cc's docs item 17 waits for 0092. hv pushes."
+  }
+}

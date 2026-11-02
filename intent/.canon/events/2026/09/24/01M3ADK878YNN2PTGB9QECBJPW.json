@@ -1,0 +1,15 @@
+{
+  "id": "01M3ADK878YNN2PTGB9QECBJPW",
+  "ts": "2026-09-24T19:17:07.432Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ASKED hv, AWAITING THE ANSWER (asked 2026-09-24 about 19:02Z): bin/devbin test --purge all over a SEALED command-level run: hands the line all, since arg_route reads the word after the command and the wrapper flag is lifted later. It is the same false green as option (b), by another word order. It predates 0128, and no estate has the shape. vc recommends (a): refuse it the same way, by finding the first word after devbin's wrapper flags. The alternative (b) records it as a known limit in 0128's resolution. When hv answers, build (a) into 0128, or write (b) into the resolution, before 0128 lands."
+  }
+}

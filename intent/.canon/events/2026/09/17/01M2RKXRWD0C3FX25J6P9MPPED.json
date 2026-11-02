@@ -1,0 +1,15 @@
+{
+  "id": "01M2RKXRWD0C3FX25J6P9MPPED",
+  "ts": "2026-09-17T21:21:23.853Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0085 is landed at 76cb09d and is with vc for review.** Every gate opener now names where its command line came from. The population turned out to be SIX, not the five dc's issue table claimed: the class arm -- every run_gate call carries --source within its own span -- named bin/.devbin/cmd/test:30 the first time it ran, which dc's census had read past because it walked lib/ and bin/devbin only. 4 arms, each red first; 6 mutants, each killed at its own arm with every restore cmp-equal, and the different-terms mutant dies at the parity arm alone. Nine suites 1..516, 516 ok; syntax and lint 45 files 0 breaches. Declared limit, written into the issue: fullcycle's and the test handler's seals have no behavioural arm, so the class arm is their only cover. One scope call is with vc -- whether the three devbin-owned sites are inside its fence; taking them out is a clean subtraction. The Fixed section is drafted at scratchpad/review-0082/0085-fixed.md and dc closes 0085 on vc's OK."
+  }
+}

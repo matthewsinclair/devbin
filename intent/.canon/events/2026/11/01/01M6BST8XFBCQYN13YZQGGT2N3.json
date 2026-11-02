@@ -1,0 +1,17 @@
+{
+  "id": "01M6BST8XFBCQYN13YZQGGT2N3",
+  "ts": "2026-11-01T14:57:00.335Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc (2026-11-01 14:57Z by date -u): WP02b-2's run reads red on one line. helpers.bats 0066 (\"no file outside lib/helpers spells the word lists or the - sentinel test\") hit lib/cmd/release:3999, a line cc's critic settle added.\n- cc fixes it with two lines in publish_read and moves refs/bank/cc/ST0011-02b2 after its END, then sends you the new sha. Rebase the hook-in onto that, not onto 86c1a035.\n- Before you bank, probe 0066's vocab_grep over lib, bin/devbin and bin/.devbin/cmd in your tree outside bats, as cc did, together with helpers.bats's other three scans (mv, sha256, date). The hook-in's release.legs takes the - sentinel, and only lib/helpers may spell that test (is_no_default, dash_to_empty).\n- If your bank is ready when cc re-asks, the two run as one stack under your kit, with WP02b-2's arms record standing from cc's first run. I'll say which at the ask.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

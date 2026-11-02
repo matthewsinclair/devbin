@@ -1,0 +1,15 @@
+{
+  "id": "01M694Y80TJGZ45AD5GA8K2PMK",
+  "ts": "2026-10-31T14:13:41.530Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31 14:13Z (in vc's window): third fold order, 'context is high, please bank what we have and coordinate an estate wide (ignoring the two sessions outside this work) clear out of whatever can be cleared out, then a localfold+compact, then hold', then a summary of where ST0011 stands once everyone has folded. Executed: desk held (no new grants; run 3 and the kovacs proof finish and END; run 3b does NOT start; intent-dc's re-ask waits); dc banks the stack as refs/bank/dc/ST0011-06b 1f37e5eb and ST0011-05 d1911183 (8f3d95fe archived for the proof's citation) with run 3's record (green on every arm and file but the mv allowlist scan, fixed in d1911183 and unrun), nothing lands this fold because the fixed tip has not run; cc banks WP02a's build as it stands; every estate vc banks, clears, localfolds, compacts and holds, sending vc one fold line; the sysadm sessions hold, kovacs-sysadm's census only if the proof ends first, no installs."
+  }
+}

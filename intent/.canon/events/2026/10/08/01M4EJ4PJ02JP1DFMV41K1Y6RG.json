@@ -1,0 +1,15 @@
+{
+  "id": "01M4EJ4PJ02JP1DFMV41K1Y6RG",
+  "ts": "2026-10-08T20:09:13.024Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0192 PARKED FOR THE NEXT RELEASE on hv's ruling, relayed by vc at about 2026-10-08 20:09Z: 0.1.10 lands 0191 and 0190 alone. RELEASED WHEN 0.1.10 is cut and vc or hv says to start 0192 for the next release. ISSUE:0192 stays claimed. Nothing is built: clones w192 and wbefore192 in ~/Devel/scratch/devbin-cc/sp-2026-10-08/0192 sit at 2231259e (0190 v1.1 on 0191 v1.1), and the next start goes on whatever main is then. NO BEFORE-FIGURE WAS TAKEN: the timing run (pid 84205, from 20:06:09Z) was stopped two minutes into releasecut, the first file (runs/time192.before.2231259e.meta), so next time the before and after are taken back to back on 0192's own base. vc's scope when it restarts: arms red on main and green under BSD and GNU, one targeted run, critic-shell once, the before and after times the issue asks for, no full suite of cc's own. Groundwork: install --force (vendor mode) overwrites vendored files, keeps an extra file the old manifest does not record, keeps config.yaml, cmd/ and help/ (lib/cmd/install:280-418), so a copy over an existing fixture matches it; tests calling the installer directly are listed in STATE.md; vc's measurements and the design questions are in ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md"
+  }
+}

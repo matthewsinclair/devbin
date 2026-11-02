@@ -1,0 +1,15 @@
+{
+  "id": "01M32G58ZHBWS3WQTEGHBSZHJG",
+  "ts": "2026-09-21T17:27:59.730Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0104"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "a whitespace-only release ci.query, derived, after or gates item passes validation"
+  }
+}

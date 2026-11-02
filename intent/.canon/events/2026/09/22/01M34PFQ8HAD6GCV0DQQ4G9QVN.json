@@ -1,0 +1,15 @@
+{
+  "id": "01M34PFQ8HAD6GCV0DQQ4G9QVN",
+  "ts": "2026-09-22T13:57:02.353Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "AN INSTRUMENT POINTED AT THE WRONG THING ANSWERS CLEANLY RATHER THAN ERRORING, AND IT HAPPENED TWICE IN ONE DAY. Re-checking which commit carried cc's event files, a grep for the node name on one line returned ZERO in both candidate commits -- the shape puts subject.type and subject.id on separate lines, so it could never match, and the clean zero agreed with neither the old claim nor the true one. Then `git rev-list <remote-tracking>..HEAD` read 23 unpushed in a repo whose HEAD was already on a pushed branch, and read a missing origin/main as NOT BACKED UP in four repos whose remote was simply named something else -- one keystroke from reporting a data-loss emergency that was three real repos and two false ones. `jq` over the structure and `git ls-remote` against the live remote are what answer those two questions. A tracking ref is a cached opinion, not the remote. Ask what the instrument is actually reading before you read its zero or its silence."
+  }
+}

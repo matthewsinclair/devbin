@@ -1,0 +1,15 @@
+{
+  "id": "01M697XV3NQD12R6C9C67VS6RC",
+  "ts": "2026-10-31T15:05:54.037Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/03 remainder, building ahead on hv's word and vc's order after the landing, in ~/Devel/scratch/devbin-dc/wp03r/build (branch wp03r at aa2fb1d2, which main carries as 7333cae0). lib/cmd/ci-state gains ci-state --fires <ref> <sha>: the pure cistate_push_fires plus the walk's paths-ignore reading, answering fires, quiet, missing or unknown, with paths: unknown, as agreed with cc on 2026-10-31. It also gains the failed detail, naming the deciding run's failed jobs or that none ran. Then: ci-state.bats arms seen red first, the page, shellcheck -x, critic-shell, the slot ask; bank onto main as refs/bank/dc/ST0011-03r. At its landing, AC-3.1 is covered and satisfied with ATs for all three answers and the failed detail. cc wires the two call lines in WP02b."
+  }
+}

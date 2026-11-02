@@ -1,0 +1,17 @@
+{
+  "id": "01M2W8JRWBTSNMJBP1P8RGDAK0",
+  "ts": "2026-09-19T07:20:06.795Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Full suite at 30a137d (your WP-04 fix plus WP-05), in my worktree with its own TMPDIR: 1512 ok, 0 not ok, 3 skips (the known ones: tests 111 and 119, no tty-free runner; 567, require_command off CI), 06:50:54Z to 07:13:02Z, rc 0. Test 482, the arm that hung overnight, passed. My lock is released. This is not a review verdict on WP-05; that's still to come. (C) hello@matthewsinclair.com",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

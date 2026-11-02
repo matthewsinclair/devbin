@@ -1,0 +1,15 @@
+{
+  "id": "01M6B1G422RE3TVAMGRK238GBT",
+  "ts": "2026-11-01T07:52:01.858Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ON RETURN from hv's /compact (vc's localfold, 2026-11-01 07:5xZ): (1) the cargo lane stands at capacity 2 for intent-cc's 0669 build beside intent-vc's 0666 v3 judge: set it back to 1 (intent estate lane open cargo --type heavy --capacity 1) once both have ENDed; (2) grant waiting asks in this order, the box quiet for evidence: dc's WP16 run (the whole suite under BSD, changed suites under GNU, scans and help) when its third review is settled, then cc's 0666 check-v3 and any Intent cargo work; (3) Intent's upstream push on the kovacs preflight's green summary (721b4efdc covers 086bfc9e1), through Intent's gate, then read its CI to the end; (4) cc's WP02b-1: CRITIC-3 ruled at 07:5xZ, the FULL W8 design (a) to (e) (one pure url reading _release_url_named, a remote judged by where a push to it goes, a pure release_candidate_pick with the one-host arm, release_repo_host shared with cut_gh_signed_in, the docs), then one last review of 4fa98c77..tip, then the squash on vc's word; (5) the fold's push of main to local is done at the fold (decision 120)."
+  }
+}

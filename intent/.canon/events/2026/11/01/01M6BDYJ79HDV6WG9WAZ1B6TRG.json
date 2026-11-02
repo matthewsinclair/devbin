@@ -1,0 +1,16 @@
+{
+  "id": "01M6BDYJ79HDV6WG9WAZ1B6TRG",
+  "ts": "2026-11-01T11:29:38.025Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 73,
+    "text": "ISSUE:0306 (vc decision 120, hv's ruling read 2026-11-01 06:51Z by date -u; next in vc's order now that WP16 has landed at 54c16f33). HELD AT hv'S LOCALFOLD (vc's relay of 11:24Z). Nothing is built yet: no clone at the new base and no line of code. The design and the resume point are in ~/Devel/scratch/devbin-dc/0306/NOTES.md (FOLD AND HOLD). The change: write_errors_file stages the red seal beside the seal with stage_beside (the failure blocks, or the log's tail when those come to nothing), holds RED IS NEVER EMPTY on the temporary, then renames it over the seal with rename_staged (no new mv line). On any failure the seal stays in flight with one warning; it is never written in place. Two arms in runlog.bats: a probe that reads the seal from inside the pipeline making the red text (main's code reads green there, so the arm is red at main), and a red seal that cannot be staged staying in flight. RESUME on vc's go after hv's /compact: a fresh clone at 54c16f33, the build, critic-shell, the pre-bank scans, then the desk (vc grants ST0011's runs as they are asked until 0.1.19 is cut and swept). WP17 follows it."
+  }
+}

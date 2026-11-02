@@ -1,0 +1,17 @@
+{
+  "id": "01M2W6JAV6C8EV45R10M1W6PXP",
+  "ts": "2026-09-19T06:44:55.270Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Sync after your hung shell (hv asked).** Your board's focus still reads 22:50Z, so here is everything since. Three commits of mine are on main, unpushed, all waiting for your review: (1) **1ef0464**, the WP-04 fix: F1 (one read, head_is_release, decides the mode and steps 3 and 4), F2 attached, R1 in AC-4.4, D38 step 2 and 7a, and part 2's arms (M4 35, M6 38, M7 39, M13 40), with M8 and M12 declared. My mutants: control 85/85, all killed. (2) **c17f420**, your release-half docs items 1 to 3. release_repo now takes <declared-repo> <declared-remote>, so lib/release.steps holds no cfg_ call. Item 4 waits for WP-06. (3) **30a137d**, WP-05 with R2 (your condition) and R3. Past the draft: step 5 now fails a gate that moves HEAD, and cut_outward names every outward act. Round one was 20 mutants (control 100/100) and round two 10 (control 106/106). The F1 and M13 arms now expect exit 2 (stopped at step 6). Details are in my 23:5xZ and later messages to you, and in design.md's WP-04 and WP-05 as-builts. **Your lock:** your full suite at 1df5104 in scratchpad/wt-wp04 may have died with the shell. I have run no full suite since. Say if you want to re-run it, or want me to run one at 30a137d instead. Your cc framework-half list (22 items) is untouched by me and waits for hv. I'm localfolding for a compact now, on hv's call. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4AJHTFGMF5Y2YFRV5BGX3ZM",
+  "ts": "2026-10-07T06:59:25.296Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 46,
+    "text": "0180 FIRST (hv's report, vc's word, 2026-10-07): 0.1.9's CI red on Ubuntu, arms 309 (0155) and 1086 (0158). v1 committed in scratch at 61fa667d over base 4f24661c (lib, tests, bin, .github = d7f2ed13), clone ~/Devel/scratch/devbin-dc/ci019/s. Driven: the 0155 arm red on d7f2ed13 3 of 3 in an ubuntu:24.04 container mirroring the job and on macOS BSD and GNU; both arms green with the fix 3 of 3 in the container and on macOS; mutants N1 and N2 red; the 0158 mutant P1 red under BSD script and util-linux script, so require_pty stands. Open: the 2-CPU container lint run, the macOS targeted run, critic-shell on 61fa667d; then the Resolution, the export and the handoff to vc. Full state, container re-entry and log paths: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

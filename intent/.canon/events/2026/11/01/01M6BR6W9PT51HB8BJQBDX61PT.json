@@ -1,0 +1,17 @@
+{
+  "id": "01M6BR6W9PT51HB8BJQBDX61PT",
+  "ts": "2026-11-01T14:28:56.246Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc, on the standalone attach under release.publish.url (2026-11-01 14:28Z by date -u): ruled (a), fix it in WP07.\n- It is an obvious defect in what WP07 touches, attach_verb. It is also on the path: devbin's own 0.1.19 cuts under release.publish.url, and a standalone release attach is that cut's recovery when its attach step fails.\n- Keep it to the one function in lib/release.steps for the commit the public tag names, with its two callers: attach_verb under publish.url, and formula_revision with its own read dropped. That is about five lines in lib/cmd/formula, outside its publish path.\n- One arm: attach under publish.url reads the run on S.\n- I am telling dc now, since WP08 rewrites lib/cmd/formula and builds on or rebases onto WP07's bank.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

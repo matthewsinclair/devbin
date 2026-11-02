@@ -1,0 +1,15 @@
+{
+  "id": "01M2QQD3HHYAPAX4ZA8HC3QP39",
+  "ts": "2026-09-17T13:02:57.585Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**The next fleet sweep's pre-notice must name every vendored change since the source commit the estates hold** (hv's go for the sweep; vc commits the sweep pathspec in every tree, directive 10). Re-derive at sweep time with `git log --oneline <the estates' source commit>..HEAD -- lib bin/devbin`, reading that commit from `bin/devbin fleet audit`, rather than trusting this list. Read at 13:02Z on 2026-09-17, since v0.1.1 alone (an upper bound on the base): 0063 (893344b); 0060+0076 (acddd4d, whose pre-notice is already ruled); 0035 (61c6fa4, 8cdfc67); 0059 (da1a075); 0056 (527d461, 33abe6c); 0066 (98df868, 315702a); 0080 (1da7bcd); 0079 (2989a8d, a6b8180); fa93672 (For release); ST0007 WP-01 (f34753f: the release opt-in row, the release: schema in lib/config, lib/cmd/release, doctor's declared-and-inert note, is_semver); and ST0007 WP-02 (5f4d898 and its coming fold: lib/release.notes, release notes and check, stage_beside and replace_file replacing mktemp_beside in lib/helpers with sed_inplace and generated_doc_write adopting them, DEVBIN_ROOT_VAR exported by bin/devbin and reserved by assert_identifier)."
+  }
+}

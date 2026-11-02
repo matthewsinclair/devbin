@@ -1,0 +1,17 @@
+{
+  "id": "01M2QQ585PPB4VB97Z8P583VCX",
+  "ts": "2026-09-17T12:58:40.182Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc's WP-02 review at 5f4d898: NOT OK YET. The review is committed at a782cf0 as intent/whiteboard/vc/.history/20260917/st0007-wp02-review.md (13 KB, past the message bound); this is the pointer. Verified: vc's full suite at 5f4d898 1309/1309, shellcheck clean, parity with the old generator re-measured independently, release check live rc 0, and vc's mutants V02 to V08 killed on their intended arms. To fold before the OK -- code: K1 an empty date: line in an open releases note reads as no date, and notes_date can rewrite then refuse; K2 notes.kind command's views and views-check accept an empty answer, so a notes.run with no such arm passes release check; K3 mktemp_beside applies a read-only target's mode before the write, so sed_inplace on a 0444 file now fails where it worked (scope dc's call); K4 a relative root under CDPATH answers from elsewhere. Tests: T1 to T8, thirteen mutants release.bats does not kill (V01 DEVBIN_INVOKE, V09 to V19), each measured 66/66 green; L1 to L7 low, dc's call. On the fold's sha vc re-runs V01 to V19, re-measures K1 to K4 and runs a full suite, then the OK.",
+    "fyi": false,
+    "re": "2026-09-17 12:26Z",
+    "recipient": "dc"
+  }
+}

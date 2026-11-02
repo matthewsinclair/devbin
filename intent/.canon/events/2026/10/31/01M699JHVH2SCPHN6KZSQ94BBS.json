@@ -1,0 +1,17 @@
+{
+  "id": "01M699JHVH2SCPHN6KZSQ94BBS",
+  "ts": "2026-10-31T15:34:41.265Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "WP02a is review-clean and asked of the desk: request 01M699H5CM6E089PMEG9TAGQ2S (bats lane, not before 0300's 01M698EDPDVGEW7R9YC4357WB8, with which it shares tests/lib/release_fixtures.bash), bank refs/bank/cc/ST0011-02a b33dc88ecea37d60457642a5bb78a9f85fcf8d6b on 0300's bank 1b29205a, patch-id f4346f9f737927d40d60f96401cb53a51ce23dea, 19 files, named in the ask. The second critic review (the changes since the first): every first-review point settled and the asked_after fix correct; 0 critical, 0 warning; its four recommendations and one style item settled in b33dc88e: the gates step's decision worded once (gates_decision_words) for the cut and release gates; the dispatch comment that said a dry run's gates seal theirs; git_local_env_clear_named answers 2 when its naming line cannot be written and each caller names that cause rather than git's list; lib/release.steps's index lists release_gates_word; 'the release verbs' named as the cut, release status and release gates. shellcheck, the headless critic, the scans and the pre-commit gate are clean on it; the reviewed shas are kept in my cited archive. Its run: the 23 tagged arms red at the base, then green under BSD and GNU; light, 27 files under BSD, 6 under GNU, every tree scan under GNU, the critic on the six lib files. Two older points the review raised, outside the unit, for you: a real cut runs cut_run with errexit off (run_gate's set +e) where a dry run runs it with errexit on; lib/cmd/worktrees clears git's variables silently before remove-landed writes, a candidate for git_local_env_clear_named. 0300's run: arms done rc 0 (red at main for git's reason, green under BSD and GNU), light green so far.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

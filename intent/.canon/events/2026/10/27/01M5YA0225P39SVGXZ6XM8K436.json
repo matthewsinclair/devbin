@@ -1,0 +1,16 @@
+{
+  "id": "01M5YA0225P39SVGXZ6XM8K436",
+  "ts": "2026-10-27T09:10:25.093Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). The audit plan is APPROVED, with Q1 to Q7 as vc recommended (decision 78; draft v0.1, vc's scratch st0010/audit-plan-v0.1.md, sha256 4ae1ee6d). Its ACs are entered as AC-1.1 to AC-3.2 (2951ca4e): safety first (AC-1.1 to AC-1.4: no remote anywhere resolves to matthewsinclair/devbin, release.remotes names local alone, the backup bundle and the mirror are fetched back before the delete, and the public repository's refs sit at the audited commit), then the audit (AC-2.1 to AC-2.10), then hv's approval and the publication (AC-3.1 and AC-3.2). Its devbin work is filed for 0.1.16, the first public version (Q2): 0239 the snapshot builder; 0240 the publish flow (high: the safety config, and CI on a public candidate branch before the tag); 0241 the shipped list per Q1 (the exit-code contract moves out of usage-rules.md); 0242 hv's non-public project names made neutral, with a guard (Q5). NEXT: cc builds them, with designs first for 0239 and 0240, and vc reviews and lands them; the audit then runs on the snapshot in the plan's order; S1's read of gyges and kovacs goes through molt-vc and kovacs-sysadm before the recreate. Critic legs carry no known-positive sample (decision 68)."
+  }
+}

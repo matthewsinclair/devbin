@@ -1,0 +1,16 @@
+{
+  "id": "01M4B3A46ZJ3J45NME21ZC406E",
+  "ts": "2026-10-07T11:52:18.911Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "NEXT RELEASE (hv, 2026-10-07): close everything `intent outstanding` lists. NINE WERE OPEN, 0177 to 0185, each with an owner. LANDED 2026-10-07, each through the gate, on vc's full suite of the landing tree (2210 of 2210 ok, 0 not ok, .errors empty, seal 20261007-0923), the landed tree equal to the suite's on every path outside intent/: 0179 v1.1 at 79a06fd4 and 0178 v1.3 at ff238421 (cc), both closed; 0180 v2.3 at b6a39287 (dc), open for its Done when 4, the next push's Ubuntu leg (todo 147). Records at 5cfb99ac. BATCH 2, IN REVIEW, no file in common: 0182 v2 (cc, patch sha256 aed0947f), 0177 v2.1 (dc, 07af3ab2) and 0183 v1 (dc, ce25b33c, comment-only). Their full suite runs on main 5cfb99ac plus the three, in the fresh clone ~/Devel/scratch/devbin-vc/0.1.10/batch2 (HEAD 5dd57022, tree f78e9454, seal tmp/test/20261007-1151, driver run-suite.sh, meta and console suite-batch2.*). On green and a passed review, land the three and close them. IN BUILD: 0185 (cc, on 0182) and 0184 (dc, on 0180's landing). QUEUED: 0181 (dc). 0185's Fix and Done when 3 still name the release pre-flight, which cc measured unreachable in a repository git refuses to read: narrow them before it lands. AFTER ALL CLOSE: RELEASES/0.1.10.md from the Resolutions, each comparative read against 0.1.9's code (LESSONS, 62f09da1), then hv's dry run and cut."
+  }
+}

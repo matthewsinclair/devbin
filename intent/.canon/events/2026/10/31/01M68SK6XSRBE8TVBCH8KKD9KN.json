@@ -1,0 +1,17 @@
+{
+  "id": "01M68SK6XSRBE8TVBCH8KKD9KN",
+  "ts": "2026-10-31T10:55:25.625Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Durable copy of the three lane items from the consumer inventories (2026-10-31). (1) WP02b: the candidate ref is pushed to the project's GitHub remote only, found by its URL against release.repo, never cfg_release_first_remote's answer: Intent's first remote, local, is a push-only mirror where no CI runs; the tag on green goes to every remote in release.remotes. (2) WP08: the built-in formula carries Intent's 0634 cask sha check, gives brew smoke a home (an after: command or a formula verb), and carries Utilz's tap-pull rule (their post-cut:111-123, ST0030: pull this Mac's tap clone after the publish). (3) WP02c: the new issue on a cut whose after: commands run to the end leaving the RELEASE seal with no verdict (.errors still 'run in flight'; Utilz 2.14.8's tmp/release/20261030-2059.RELEASE.* is the evidence, its .out ending on post-cut's last line). Also approved: your eight reds fixed as one order. FYI only -- no response needed.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

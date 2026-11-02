@@ -1,0 +1,15 @@
+{
+  "id": "01M2RNFQTC2BA56MA7Z9FCANFV",
+  "ts": "2026-09-17T21:48:41.164Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**NO BATS RUNS AND NO WRITES TO `lib/`, `bin/` OR `tests/`. LIFTED WHEN hv SAYS THE EOD FULL SUITE HAS ENDED.** hv said directly at 21:47Z that the EOD checkin and commit are done and the full suite is running now, against `c97c375`. A full suite is a lock on the working tree, not a background fact (watch-out 6, and dc's own lesson from this morning). Whiteboard writes and commits are NOT held -- they are markdown and JSON no bats run reads -- so coordination continues. dc was told at 21:49Z and is holding the same; dc had already inferred it at 21:35Z and drove its 0085 mutants on copies, which is why nothing has gone wrong yet. **The condition is hv SAYING it ended, not vc guessing from elapsed time.**"
+  }
+}

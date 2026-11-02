@@ -1,0 +1,16 @@
+{
+  "id": "01M5Y7ZS6FF1QJ8SHGYV1CCAYC",
+  "ts": "2026-10-27T08:35:18.863Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). devbin 0.1.15 is released and devbin's L1 is complete (decision 77). DRAFT v0.1 WRITTEN under hv's ruling (decision 75), touching no repository: ~/Devel/scratch/devbin-vc/st0010/audit-plan-v0.1.md (sha256 4ae1ee6d), measured on main 4ccfde65, and SENT FOR hv through molt-vc on 2026-10-27. SAFETY FIRST, because a cut today pushes to every remote (devbin declares no release.remotes) and canon's upstream is matthewsinclair/devbin, so the first cut after the public recreate would push the workroom into it: S1 no devbin clone on any sleeve keeps a remote resolving to matthewsinclair/devbin (on rhadamanth only canon's upstream does, read at every depth under ~/Devel, ~/work and ~/.local); S2 release.remotes names local alone; S3 the backup bundle and the mirror fetched back before the delete; S4 every ref of the new public repository at the audited commit. Then the audit in decision 52's order: a parentless snapshot built by one builder from tests/shipped.paths (0216's list, which the workroom scan reads) in a new directory; the allow-list; the widened name scan (the deny list by count, machine names and home paths, hv's project names, workroom.bats and neutral.bats); gitleaks with no known-positive sample (decision 68); two independent reads by vc and dc with files-read ledgers; the full suite at the desk and CI on the snapshot commit; a credential-free brew install from the snapshot's tarball through a local tap before approval and from the public tap after; hv's approval naming the commit and tree shas. Draft ACs AC-S1 to AC-S4 and AC-1 to AC-12. Q1 to Q7 to hv with vc's recs: Q1 ship VERSION, .gitignore, .gitattributes and design/, leave out usage-rules.md, .intent_critic.yml and .prettierignore; Q2 the first public version is 0.1.16; Q3 CI on a candidate branch of the public repository before the tag; Q4 the tap public as it stands after both reads; Q5 keep Intent, Molt and Utilz, and make hv's non-public project names neutral in main with a guard; Q6 ship the notes after Q5; Q7 each release publishes one snapshot. NEXT, on hv's approval and answers: the ACs go in with intent ac new, and the publication work (the safety config, the snapshot builder, the CI change, the name scrub) joins plan item D."
+  }
+}

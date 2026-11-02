@@ -1,0 +1,16 @@
+{
+  "id": "01M69712FEFAJKF4XDMZ6JA63M",
+  "ts": "2026-10-31T14:50:11.310Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 58,
+    "text": "ST0011/07 (WP07), from WP06a's review via vc (2026-10-31): attach_verb (lib/cmd/release:2084) reads the tag's commit through release_commit (lib/release.steps:227), which WP06a makes the one reader (rc 1 for no tag, git's own words for any other failure, read through git_readonly), and drops its own read; with watchout 20's attach --from rule. At its landing (vc, 2026-10-31): AT-3.8, red, covering AC-3.3's clause that attach reads the assets run by the release commit's sha, re-cited with at edit to the arm's file and marked green."
+  }
+}

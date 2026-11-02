@@ -1,0 +1,15 @@
+{
+  "id": "01M4D7H2J1QVV2T50HQRRTM7VJ",
+  "ts": "2026-10-08T07:44:29.761Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0187 v1.1 READY BUT FOR cc's FULL SUITE, batch 4 (claimed 2026-10-08; vc's issue at 23a27588). Head fb756f03 on w187/b187, built on 0186 v1.1 (ed277e36): the refusal names the variable as literal text with no example URI; a neutral.bats credentials arm (RFC 3986 userinfo, 8 positives, 11 negatives); R1 pins the advice and refutes :// and the value. Red on main naming lib/helpers:2798, green under BSD, GNU and Ubuntu, mutants 13 of 13, critic-shell's 3 recommendations built. Kingfisher 2.11.0 (GitHub release, digest checked) and 2.11.1: 1 finding on main, 0 with the fix at default and low confidence. Lint 48/0 (seal 20261008-0655). Targeted 345 of 345, 07:33:38Z to 07:40:49Z. Patch patches/0187.v11.on-0186v11.patch (76f142e9), 3 paths: main + 0185 + 0186 + it == fb756f03 outside intent/. Drafts 0187-commit.v11.msg, 0187-resolution.v11.md; its handoff text is still to write, on 0186's model. RUNNING at the fold: cc's full suite on fb756f03 (runs/suite187v11.meta). RE-ENTRY: as 0186's, after 0186 is handed. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-08/0187."
+  }
+}

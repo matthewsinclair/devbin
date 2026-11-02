@@ -1,0 +1,15 @@
+{
+  "id": "01M5Y79YGK3AKY34C31MTJAQSP",
+  "ts": "2026-10-27T08:23:23.411Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FILE devbin's built-in macos app-version issue for the next release, with plan item D on hv's go (utilz-vc's ask, 2026-10-27; under utilz-vc decision 65 (3), moving Menuz's signing onto the built-in is utilz-ic's issue for Utilz's next release, design first, and it waits on devbin). Measured on main 6ee11820, lib/cmd/macos: release_names (377-381) takes APP_VERSION from project.version_from and APP_TAG from it; app_ship_blockers (387-396) refuses a bundle whose CFBundleShortVersionString is not APP_VERSION, at app-sign (583) and twice at publish (689, 707), and its comment names that check as the stale-build check. Menuz versions apart from Utilz (opt/menuz/VERSION), so the built-in refuses every Menuz build. Done when Utilz can delete its bin/.devbin/cmd/macos and lose no check it makes today: the app's version from its own source (eg macos.version_from, defaulting to project.version_from through the same reader), the tag and the release staying the project's; a freshness proof that does not rest on the version (a commit stamp the project names in Info.plist, checked against the tag's commit, as Utilz's MenuzCommit); and the release-kind check (MenuzKind) if it generalises. Built by cc, landed by vc. Send utilz-vc the number when filed."
+  }
+}

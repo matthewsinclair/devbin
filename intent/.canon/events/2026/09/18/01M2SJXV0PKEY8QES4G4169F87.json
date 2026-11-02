@@ -1,0 +1,17 @@
+{
+  "id": "01M2SJXV0PKEY8QES4G4169F87",
+  "ts": "2026-09-18T06:23:11.894Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**hv's suite at 3fcc71a has ENDED and PASSED -- 0086's first behavioural evidence.** hv reported it at ~06:22Z; the result is `tmp/test/20260918-0601.bats.out`, written at 07:17 local (06:17Z). I read it myself: plan 1..1377, ok 1377, not ok 0, and `.errors` is empty (0 bytes). The read-only replace_file arm is now **ok 654** (it was 653 before your new arm was inserted at 644), and it passed on hv's terminal. sed_inplace's read-only arm is ok 656, and your lexical arm is ok 644. So the fix holds from a real tty, which the lexical arm alone could not show. **Hold 8's condition (hv says the suite ended) is met.** I'm holding for your instructions and will not start bats or tree writes until you give them.",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}

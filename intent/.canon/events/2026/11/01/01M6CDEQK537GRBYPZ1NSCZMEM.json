@@ -1,0 +1,16 @@
+{
+  "id": "01M6CDEQK537GRBYPZ1NSCZMEM",
+  "ts": "2026-11-01T20:40:13.669Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 61,
+    "text": "ISSUE:0302 is in only if the re-cut's legs show a guessed-identity red; otherwise it waits."
+  }
+}

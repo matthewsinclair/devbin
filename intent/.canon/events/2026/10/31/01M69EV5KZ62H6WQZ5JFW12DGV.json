@@ -1,0 +1,16 @@
+{
+  "id": "01M69EV5KZ62H6WQZ5JFW12DGV",
+  "ts": "2026-10-31T17:06:46.527Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 55,
+    "text": "ST0011/02 (WP02c), THE CI KEYS AND THE CHECKER, vc's choice (b), after dc's WP03 remainder and WP17 land (vc's earlier rulings that name WP02b for these read WP02c): ci.wait's default 60m (lib/config:549 says 20m) with its doc line and an arm reading it; ci.query defaulting to the built-in, ci.workflow and ci.summary refused only beside a bespoke query, a release block of ci keys alone valid; is_branch_name in lib/helpers (git check-ref-format refs/heads/<name>) with its three sites, lib/cmd/release's two and ci-state's; the --fires call lines, bin/devbin ci-state --fires <ref> <sha> [<path>...]: the pre-flight passes HEAD, the candidate ref and the stamp's files (the version file, its sidecars, the notes file), release check the next cut's, each refusing on anything but fires with the reader's reason, force the override; a bespoke ci.query is not asked (cfg_ci_query_is_builtin), release check printing that the trigger is that query's to read; ci-state's failed line, run <id> (<conclusion>; failed jobs: a, b), printed verbatim; AC-6.3 under D69, the pre-flight refusing a gate active on none of the cut's legs, naming the gate and its platforms (WP17's platforms: predicate). From dc's second critic pass, via vc (2026-10-31): W5, a [skip ci]-style marker in release.snapshot.message or in the release commit's message starts no run though the trigger fires, so config validation refuses the markers, a release-key check (until then the reader's header names the premise); W7, in the publish shape the candidate is the snapshot in a scratch repository and --fires reads only the project's own workflow, so with the check that the snapshot carries the workflow unchanged the call asks --fires at the release commit with the files the snapshot commit changes, the header saying so. dc's WP03 remainder landed at ebc38b18 (vc, 2026-10-31): ci-state --fires and the failed detail naming the failed jobs, in lib/cmd/ci-state with its page and arms, so the call lines have their target (read its words from the landed page before wiring them); AT-3.15, red on tests/unit/releasecut.bats, is cc's to turn green at WP02c's landing."
+  }
+}

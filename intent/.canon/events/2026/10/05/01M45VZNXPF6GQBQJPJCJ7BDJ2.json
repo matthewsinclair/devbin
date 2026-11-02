@@ -1,0 +1,16 @@
+{
+  "id": "01M45VZNXPF6GQBQJPJCJ7BDJ2",
+  "ts": "2026-10-05T11:08:04.406Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 13,
+    "text": "BUNDLE BUILD, 0.1.9 (hv 2026-10-05: every open issue closes before the cut; fix and fail forward, ONE release). cc builds 0153 to 0162 and 0175; 0163 to 0174 are dc's. 0153's body names no client since fbe5407 (hv's directive 14). 0154 v5.2 (patch sha256 9783feeb..., base dd49aa7): the 36 mutants, the 14-file targeted run (635 ok), red-first, GNU-first and census timing are done, and v5.2 adds critic-shell's order-free arm, held by mutant MA; it is with vc for review and vc's combined full suite. Next: 0153 v2 (SP/b153 branch v2, rebased onto 0154; F1 to F3 and the critic's items in progress; its targeted run is the full suite, since it changes test_helper.bash), then 0175, 0159 v2.3 (rebase, G1, its heavy batch), 0157, 0158, 0156, 0155, 0160, 0161 and 0162. Heavy runs only on vc's START. Workplan: ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md (SP)."
+  }
+}

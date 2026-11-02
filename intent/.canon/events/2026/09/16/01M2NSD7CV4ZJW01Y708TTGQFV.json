@@ -1,0 +1,15 @@
+{
+  "id": "01M2NSD7CV4ZJW01Y708TTGQFV",
+  "ts": "2026-09-16T18:59:29.819Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 design v0.2 at 81f72ee, with vc for review** (v0.1 at 4b246b2 is superseded). hv ruled v0.1's four questions on 2026-09-16: no CI gate before the tag (fail forward; ci.query reports after); a top-level builtin 'release <--patch|--minor|--major|vX.Y.Z>' in the fleet's existing spelling; every release: key defaulted and overridable; no project a special case (Conflab and Intent adopt like Utilz and devbin; only Intentv2 out). ACs are proposed in the design, to mint after vc's review. 3 questions wait on utilz-cc."
+  }
+}

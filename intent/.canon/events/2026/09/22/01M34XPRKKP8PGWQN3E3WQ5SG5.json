@@ -1,0 +1,15 @@
+{
+  "id": "01M34XPRKKP8PGWQN3E3WQ5SG5",
+  "ts": "2026-09-22T16:03:13.139Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0108's SKIP CONFIRMED IN PRODUCTION AT TWO ESTATES, TWO WORKFLOW SHAPES (2026-09-22). devbin ba9c993: Ubuntu success, Shell Script Analysis success, macOS SKIPPED, Test Summary SUCCESS, run green -- so an AGGREGATING summary job does not redden on a skipped leg. Gtools 02e1bf3 (run 35751005525, gtools/vc): gates(linux) success, suite+app(macos) SKIPPED, run green, and Gtools has NO summary job -- the other shape, checked separately rather than assumed equivalent. Both were real code-carrying pushes, not board-only. Gtools timing 54s against 6m40s on the previous push, reported by gtools/vc explicitly as ONE DATA POINT rather than a trend, which is the correct handling. STILL UNPROVED FLEET-WIDE: THE TAG PATH. devbin's v0.1.6 was cut BEFORE 0108 landed, so devbin's own tag run does not exercise the new gating either; Gtools has no v* tag yet and hv has ruled its first is v0.3.0, uncut. So the first observation of a macOS leg FIRING on a tag belongs to whichever estate cuts next, and until then 'macOS runs on a tag' is inspection, not measurement. Per todo 96 the devbin push is ACCEPTED: green on the pushed sha."
+  }
+}

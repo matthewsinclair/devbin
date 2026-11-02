@@ -1,0 +1,15 @@
+{
+  "id": "01M5VQYK4CMTEA911EMBVJF2SZ",
+  "ts": "2026-10-26T09:16:33.804Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-26 09:13Z, relayed by molt-vc: CI run 40291928610 on c4f52b8e was red on tests/unit/readonlygit.bats:141 and :151, a background repack started by the fixture's own git commit, not by devbin. hv chose (A), a test-only fix as issue 0233 (filed at a1ca020c), over (B), a re-run of the job: the file's fixture commits pass -c maintenance.auto=false -c gc.auto=0 on the commit only, and devbin's own git calls keep git's defaults. cc builds it; vc adds one release-note line, lands it with readonlygit, release.bats and the tree scans under BSD and GNU (light, START and END to molt-vc) and pushes; the new head's CI run is the cut's green. K115's verdict at c4f52b8e carries to the new head, since nothing devbin ships changes: readonlygit.bats's two gitproj arms red in its seal are the same race and carry on this ruling, and anything else red in K115 is a new finding. Not put to hv again."
+  }
+}

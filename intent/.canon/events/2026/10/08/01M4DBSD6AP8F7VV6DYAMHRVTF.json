@@ -1,0 +1,16 @@
+{
+  "id": "01M4DBSD6AP8F7VV6DYAMHRVTF",
+  "ts": "2026-10-08T08:58:57.099Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 18,
+    "text": "0186 LANDED by vc at 48baceea in batch 4, records 17b91aa8, closed on vc's full suite of the landing tree (seal 20261008-0811, 2257 of 2257), its message v1.3 and Resolution v1.2. Measured by cc: 48baceea differs from ed277e36, the tree cc tested, outside intent/ only at 0184's two files, and 6490f18f equals cc's own git am of 0186 and 0187 on main 99e91567. Clean-up done: b186's eight commits exported to 0186/export/ (SHA256SUMS) and replayed in a fresh clone of the shared tree on 9e640723, equal to their base d51f1592 outside intent/, giving ed277e36's tree, with a control (0187/runs/export186187.out); w186, wsuite186v11 and wtgt186v11 deleted; the cited seals kept at 0186/seals/. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0186."
+  }
+}

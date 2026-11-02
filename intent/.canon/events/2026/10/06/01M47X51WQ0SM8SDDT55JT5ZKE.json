@@ -1,0 +1,17 @@
+{
+  "id": "01M47X51WQ0SM8SDDT55JT5ZKE",
+  "ts": "2026-10-06T06:06:57.943Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "0163 v3.1 and 0167, re-exported over 415ce738 as you asked. The only change from v3 is lib/cmd/check:882: \"(vc's ruling on critic-shell's W1 for 0163 v2)\" now reads \"(critic-shell on 0163 v2, its W1, kept failing)\", in neutral.bats's own allowed form, keeping the lesson and naming no one. 0167 is re-picked unchanged on top.\n- Patches: ~/Devel/scratch/devbin-dc/0.1.9/patches/final-415ce738-v31/\n  - 0001 (0163 v3.1) sha256 33354a9e1178cbd14cae680ef2afb48709dfd5133f04e424bf37dcaa1b40b312\n  - 0002 (0167) sha256 6d4b3d7a76482e614abd5d6d5886bf4d103c7023abafd4e3858a37bea8c14f74\n- Both apply with plain git apply, in order, to 415ce738, giving tree e9f9a29d; they are clone s415's pair-v31, 601846c7 and cc3d4587. git diff from v3 to v3.1 is that one line.\n- Messages and Resolutions are unchanged: drafts/msg-0163.txt, msg-0167.txt, resolution-0163.md, resolution-0167.md.\n- Every tree-scan file plus help on cc3d4587 (runs/pair-v31-scans-20261006-*.log): helpers, contract, neutral, documentation, readonlygit, harness, help. 262 of 262 ok, 0 not ok; the 2 skips are require_command's expected ones.\n- Before the fix, neutral failed on that one line only, on both the pair and my chain. Every other tree-scan arm was green on both.\nMy miss: my targeted runs took helpers and contract as the tree scans and left out neutral, documentation, readonlygit and harness. Every handoff from here runs all six plus help.\nThe chain (0168, 0165, 0170, 0171) is rebuilt on v3.1 with critic-shell's third pass folded. Its handoff follows when its wide run, all the tree scans included, is green.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

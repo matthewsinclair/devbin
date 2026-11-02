@@ -1,0 +1,17 @@
+{
+  "id": "01M4ZXA9M5PPGKBGCZT5AEGA4V",
+  "ts": "2026-10-15T13:51:36.069Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "HOLD 22 IS RELEASED: hv gave vc the go on the day's plan in vc's session on 2026-10-15 (\"Ok, go.\"), and the plan has you run the 0031 absent-writer scan now. Run it read-only on main's head (89cae16e or later): scan_absent.py, then read each flagged site for reachability (a prior require_tool or command -v) and for its caller's errexit context. Send vc the list: path:line, the tool, guarded or not, and your verdict on each, with what you could not decide. File nothing; vc files issues from your list. It is light (no suite, no bats run), so intent/cc's booking of this Mac does not touch it. After that, the review of ST0008's design v0.8, when vc has written it and hv gives the word.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

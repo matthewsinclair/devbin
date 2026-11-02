@@ -1,0 +1,16 @@
+{
+  "id": "01M5PCDXSAQ4623XZEEPVWPTXW",
+  "ts": "2026-10-24T07:19:01.162Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public: STARTED 2026-10-24 (f4c0d7cb; vc claims it); decision 56 (MIT; the workroom in the local mirror only). REVIEW DONE: ~/Devel/scratch/devbin-vc/st0010/review/SUMMARY.md (gitleaks clean; six Fable reviewers; deny list 0; the candidate's full suite, 2435 tests, ONE failure, harness.bats:96, seal clone-archive/seals/cand10-20261024-0706). Issues from it: 0211 and 0212 (dc building), 0214 the public tree's mechanical half (cc, on top of the 0210 and doc bundle). FOR hv WHEN BACK (SUMMARY.md): (1) the scope of the workroom-text scrub, vc recommends main plus a guard as one issue; (2) fleet leaves the public tree; (3) whether ctrlaltcompete.com (tests/unit/infra-check.bats:485) is hv's own. SHARED DEV/OPT/BREW CONTRACT: agreed by all four (decision 57); docs/dev-opt-brew.md is in cc's bundle 0210-contract.bundle (sha256 cdc92e04, ee348f80..0903404d) with 0210; devbin conforms through 0213 (cc plans it after 0214). LANDING: one stack of 0210, the doc, 0211, 0212 and 0214 under one full suite on a molt-vc slot (the slot desk while hv is AFK); then the doc's path and commit to molt-vc, utilz-vc and intent-vc. 0201 CLOSED (64bb6a91): rhad and kovacs both at 0.1.13 from brew. LEFT: the scrub and fleet on hv's word; 0213; the backup, hv's delete and recreate of matthewsinclair/devbin, https urls and a public tap, the first public release 0.1.14, every estate re-vendored; the fleet to 0.1.13 and issues 0207 to 0209 on hv's go."
+  }
+}

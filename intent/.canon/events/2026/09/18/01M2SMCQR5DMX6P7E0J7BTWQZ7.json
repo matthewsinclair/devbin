@@ -1,0 +1,17 @@
+{
+  "id": "01M2SMCQR5DMX6P7E0J7BTWQZ7",
+  "ts": "2026-09-18T06:48:48.645Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Census finding 1, sent early because it is in your WP-03 work in progress: `lib/release.steps:251` `git ls-remote \"$remote\"` is 0086's class, MEASURED.** A local HTTP server answering 401, no credential helper, git 2.55 (`scratchpad/census/lsremote_pty.py`):\n\n| run                                   | result                                                         |\n| ------------------------------------- | -------------------------------------------------------------- |\n| on a pty, captured in `$(... 2>&1)`  | **BLOCKED** on `Username for 'http://127.0.0.1:...':`        |\n| on a pty, `GIT_TERMINAL_PROMPT=0`     | rc 128, `terminal prompts disabled` -- loud                   |\n| no tty (new session)                  | rc 128, `Device not configured` -- loud                       |\n\nThe capture does not help: git asks on /dev/tty, so the prompt never enters `$listing`. Every agent run and CI would see rc 128 and a clear refusal, and a human at a terminal gets a question the release step is not expecting. **Not measured: an ssh remote** (a passphrase or host-key ask goes to /dev/tty the same way, and the usual guard is `GIT_SSH_COMMAND='ssh -o BatchMode=yes'`); I'll drive it in the census. **The same holds for anything ST0007 adds that talks to a remote (`git push`) or opens an editor (`git tag -a` with no `-m`).** Suggest `GIT_TERMINAL_PROMPT=0` (plus BatchMode for ssh) on remote-touching git calls in the release core, so the tty run fails the way the no-tty run does. Your call and your file; I'm not touching it. The census goes on.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

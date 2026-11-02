@@ -1,0 +1,15 @@
+{
+  "id": "01M4T79YQA9KBSMY3A1YXZJ7P9",
+  "ts": "2026-10-13T08:50:44.074Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "AFTER THE DEMO, THE BOOT PLAN OF 2026-10-13 WAITS ON hv's WORD (put to hv at boot; hv answered with the demo hold). (1) hv's rulings in one batch: kovacs on 26.04.1 and who provisions it; choices A (D50, questions 2 and 9), B (D46, question 4) and C (D55, question 8); questions 5 and 6; the word for dc's design review. vc folds them into design v0.8. (2) The Linux proof of main's HEAD on kovacs, booked through intent-vc. main goes there as a git bundle, since nothing past 73fd0fd3 is on either remote. One test all, read from its seal. The evidence names Ubuntu 26.04.1 on aarch64 and proves neither x86_64 nor WSL. (3) 0192: vc recommended that cc start it now, land it before ST0008's WP arms, and leave it out of the kovacs proof of today's HEAD. Hold 15 lifts only on vc's or hv's word, and vc gives none before hv rules. (4) todo 153 is filed as an issue for the next release, since directive 13 leaves no scheduling question, unless hv objects; todo 151 stays hv's yes or no. (5) Record drift for the next fold: intent/restart.md says kovacs moves from 24.04.3 where the design measured 24.04.5, and hv's board focus still describes 2026-10-07."
+  }
+}

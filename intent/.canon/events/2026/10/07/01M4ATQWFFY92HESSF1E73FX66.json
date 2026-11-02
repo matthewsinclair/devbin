@@ -1,0 +1,16 @@
+{
+  "id": "01M4ATQWFFY92HESSF1E73FX66",
+  "ts": "2026-10-07T09:22:32.559Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 45,
+    "text": "0177 NEXT, now that 0180 is with vc: fullcycle's INCOMPLETE summary names the third cause. v1 committed in scratch at 28e37ea6 over base 266a5c17, clone ~/Devel/scratch/devbin-dc/0177/s177: red on d7f2ed13 first, mutants K1 to K7 killed, BSD targeted run 420 of 420. v2 owes critic-shell's findings: a sixth cause (a tree behind a link the check cannot follow) gets a line, an arm and the page's words; the comments stop overclaiming, since the summary lists every cause whatever held; and each cause site points at the summary and the page. Full state: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

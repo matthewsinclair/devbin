@@ -1,0 +1,15 @@
+{
+  "id": "01M359HBX1EWNZ3R9AVQ193H9V",
+  "ts": "2026-09-22T19:29:59.201Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "cc'S INDEPENDENT REVIEW OF 0111 AND 0112 IS PROPOSED TO hv AND NOT RULED. vc built both at 8a8d1ae and fixed its one red arm at 774104b; both closed at 3a4cd53 and shipped in 0.1.7, and no node but vc has verified either. Scope if ruled: red-first and mutants on vc's new arms; which caller can reach each branch of unrunnable_why, its lookup-failure branch included; leftover 'not built yet' prose; release.md read claim by claim against lib/cmd/release, lib/release.steps and lib/release.notes. A finding now is a new issue, not a change to a release already cut."
+  }
+}

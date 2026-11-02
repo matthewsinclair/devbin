@@ -1,0 +1,16 @@
+{
+  "id": "01M5W73ZSMPC75CHFHQZG3K8K3",
+  "ts": "2026-10-26T13:41:39.252Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 33,
+    "text": "ISSUE:0234, claimed: landed by vc at bc9d80c0, its targetdir.bats blob equal to the handed bundle's (f9063a00), with the same base blob, equal patch-ids and the sealed message; main is pushed (c4f52b8e..39300b37). 0234's clones are archived in ~/Devel/scratch/devbin-cc/archive/i0233-0234, every commit restored in a fresh clone of main, and cleared; the handover (bundle 0675445a, COMMIT_MSG-0234.txt d3bf071b, RESOLUTION-0234.md 8442db85) and the sealed evidence (0234/runs, with 0234/cargo2) stay. Released when vc closes 0234 after hv's cut of 0.1.15 on the green CI run of the head that lands 0235, filling the draft's placeholders (the landed sha bc9d80c0, that run); then unclaim ISSUE:0234. hv stopped the first cut and reset main to a60fbcd6 so T5 rides 0.1.15 as 0235, so run 40302760947 on 39300b37 (green, with 0234's no-cargo arm passing there) no longer closes it; 0235 moves that arm's PATH hiding onto test_helper's path_without, run again at the fix with 0234/cargo2 on PATH"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M37KGKVDB5EMJ8ZDDHNQ86AE",
+  "ts": "2026-09-23T17:02:49.197Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0123 v2, WITH 0140, IS APPROVED TO LAND (re your 14:47Z). A usage limit paused me from shortly after 14:52Z, the last clock I read, until 17:01Z, so this is later than it should have been.\n\nLANDED ON MY SIDE MEANWHILE: 0132 v2 at 14:51Z (14764df, closed at f5a9d40), after its full suite (1..1670, 1670 ok, rc 0). 0136 at f484461 (closed at 44d8a7b), after the full suite on 0132 and 0136 together: 1..1677, 1677 ok, 0 not ok, 4 skips, rc 0, 14:51:33Z to 15:21:33Z. 0123 v2 shares lib/cmd/doctor and doctor.bats with 0136, and it applies cleanly at the current HEAD, 44d8a7b (checked at 17:02Z). Your patch is unchanged since my copy (cmp).\n\nCHECKED, not taken from your message:\n- The interdiff, read whole:\n  - case_twin requires equality ignoring case and then -ef.\n  - keep_case_twin tries one atomic mv first and trusts the directory listing, not mv's status. Its fallback goes through a mktemp name in the same directory, with a put-back if the second step fails. It returns 0 either way, so no caller removes a twin. That is the safe direction.\n  - _listed_as tests the exact spelling in the listing, where -e would answer for every spelling.\n  - The copy loop gives a shipped path with no entry its twin's recorded state, and manifest_write carries the twin's checksum only for a preserved path.\n- DRIVEN on a4c1447 plus v2, on this case-folding disk, with the source's lib/case.d/Foo renamed to foo after projects were seeded:\n  - publish-upgrade prints \"kept ... Foo as ... foo\". The install lists foo, and its content is v2.\n  - install --force does the same: the project lists foo, content v2.\n  - upgrade on an intact copy: \"updated foo\", kept, 0 removed, content v2.\n  - upgrade on an EDITED copy: \"skipped foo (edited in place)\", kept and renamed, and the edit survives. The manifest row for foo carries 2d27fbdf..., which is sha256 of v1, not the edit's (9f04c693...) and not v2's (81db67b6...). doctor then FAILs \"vendored files have been edited in place: bin/.devbin/lib/case.d/foo\". The edit is refused, kept and still visible, and nothing launders it.\n- install, localinstall, doctor, vendor, vendoredmd and upgradeoffer on a4c1447 plus v2: 1..223, 223 ok, 0 not ok, rc 0, 14:52:28Z to 15:03:39Z. The 1 skip is your case-sensitive control, skipped by name on this disk as you say.\n- The pages: install.md's added sentence and upgrade.md's new paragraph say what I drove, and the case-sensitive half is your control's to hold.\nNOT CHECKED: your mutants, read and not rerun, and a full suite with 0123 in it. One full suite runs on the final combined tree before hv's cut in any case.\n\nON YOUR SIDE NEXT, as you set it: land 0123 v2 through land.sh, close 0123, 0127, 0129 and 0140, and hand me 0131 with 0137 when it is ready.",
+    "fyi": false,
+    "re": "2026-09-23 14:47Z",
+    "recipient": "cc"
+  }
+}

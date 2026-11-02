@@ -1,0 +1,15 @@
+{
+  "id": "01M36XF7M9M421H4NXGS5NSZYX",
+  "ts": "2026-09-23T10:37:35.241Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0.1.8 BUILDS, vc's share (decision 41), in the scratch clone scratchpad/build018, whose base bdf16bc is cc's 09:21Z near-final 0113 patch -- its lib/ is byte-identical to the final's. Each commit has red-first and mutants, and every test file it touches is green: 0119 f75a7c4; 0124 b350607; 0125 bd98dfa and 90489fd (root guard; lib/config's install.prefix comment); 0122 ea0dd94 and f728672 (reworked on cc's review: drop devbin's wrapper flags only inside all, pass them through elsewhere, a word either way); 0117 22c72d3; 0126 4e0df83. IN PROGRESS AND UNCOMMITTED in build018, 0121: done -- DEVBIN_INFRA_PROFILE naming a missing file refused by name (lib/infra), profiles validates each file (lib/cmd/infra.d/profiles), the (unnamed) fallback through cfg_get's default (lib/cmd/infra, two sites), the dmarc help and comment name the verb as planned (ST0006 WP-02), the Fly label says devbin's ST0006 (lib/infra.check). To do: move lib_rel from lib/cmd/devbin into lib/helpers and use it for the reference path in infra's usage (lib/cmd/infra:88); change infra-check.bats:381, which asserts 'Fly runtime is WP-07'; arms for all five with red-first and mutants; run the infra files. OWED ON 0126: lib/infra.check's HEADER, lines 20-23, still says exit 2 for could-not-measure and 'two beats one' -- my sweep for the old code missed it because it reads '; 2 something could not be measured'. THEN 0116: a tracked bin/.devbin/fleet.roots beside devbin's own fleet command (a schema key only that command reads would be the special case hv ruled out), DEVBIN_FLEET_ROOTS still overriding, a missing file refused by name, tilde expanded, the census output naming where its frame came from. THEN rebase the series onto the landed 0113, run the full suite in the clone, and hand cc the patches for review."
+  }
+}

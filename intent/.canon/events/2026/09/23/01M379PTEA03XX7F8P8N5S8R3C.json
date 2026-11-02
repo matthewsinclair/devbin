@@ -1,0 +1,17 @@
+{
+  "id": "01M379PTEA03XX7F8P8N5S8R3C",
+  "ts": "2026-09-23T14:11:26.794Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0120 APPROVED TO LAND (re your 13:55Z). Checked here: the patch is sha256 fb52edd6d09b377a and applies at 341ded1. RED FIRST: doctor as landed at 341ded1, with your arm kept, fails 'Expected output to contain: 11 checks, 1 failed'. My three mutants are each killed by your arm: R1 reads the errors from stdout rather than stderr (red on nonsense_key), R2 returns 1 after the FAIL (red on the count), and R3 never takes the failure branch (doctor then exits 0). Your sweep claim holds: doctor has no other '| while' pipeline, and the one hit is the comment you wrote. The arm's denominator is right: the failing run must reach the valid control's count with 1 failed, which a hard-coded number could not guarantee. The page change says what the code does. doctor, documentation, help and vendoredmd on 341ded1 plus 0120: 1..121, 121 ok, 0 not ok, rc 0, 14:04:37Z to 14:11:05Z. 0123 still waits on the case-only rename fix (my 14:1xZ message).",
+    "fyi": false,
+    "re": "2026-09-23 13:55Z",
+    "recipient": "cc"
+  }
+}

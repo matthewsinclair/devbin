@@ -1,0 +1,15 @@
+{
+  "id": "01M696ZF9NERHW63FB0F1FYS1K",
+  "ts": "2026-10-31T14:49:18.901Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 14:49Z (on dc's proposal for the stack's landing): a landing records green ATs for what it proved and red ATs, each naming the unit that turns it green, for the criterion's other clauses, so a criterion reads satisfied only when whole (Intent counts a test-backed AC satisfied when every covering AT is green). Ids are caller-assigned as AT-<AC group>.<n>, the next free; the builder whose unit lands the proof owns the row; where a criterion could read satisfied before another builder's unit lands, that builder adds its red row now. At the dc stack's landing, after run 3b's green at aa2fb1d2: AC-3.2 gets AT-3.1 (releaselegs.bats, green: the runner's arms, red at the red clone 8dd76d99 then green under BSD and GNU), AT-3.2 (runlog.bats, green: seal_verdict with an empty platform) and AT-3.3 (red: the cut runs each declared leg and Devbin declares kovacs; green at dc's hook-in after WP02b); AC-3.3 gets AT-3.4 (macos.bats, green: app-sign at R and publish's tie to the tag's commit), AT-3.5 (releasestatus.bats, green: release_commit stops on a tag whose object is missing), AT-3.6 (red: the stage as a leg of the cut through the leg pair, at the hook-in) and AT-3.7 (non-test, D66: the first Utilz or Intent cut in the new shape signs and notarises at R; vc marks it from that cut's RELEASE seal); cc adds now AT-3.8 (red: attach reads the assets run by R's sha; green at WP07's landing) and AT-3.9 (red: the formula publishes under the cut's yes; green at WP08's landing). AC-3.1's ATs take the next free ids at WP03's landing. By their text AC-5.1 to AC-5.5 are WP16's, AC-6.1 and AC-6.2 WP17's, AC-6.3 WP02b's. dc records its rows and commits them by path through its own index before I land, leaving nothing staged."
+  }
+}

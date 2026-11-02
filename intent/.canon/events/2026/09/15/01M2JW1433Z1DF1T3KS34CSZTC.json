@@ -1,0 +1,15 @@
+{
+  "id": "01M2JW1433Z1DF1T3KS34CSZTC",
+  "ts": "2026-09-15T15:47:35.652Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0068"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "fullcycle tells the operator the build trees were not rebuilt after build all has already promoted the pair"
+  }
+}

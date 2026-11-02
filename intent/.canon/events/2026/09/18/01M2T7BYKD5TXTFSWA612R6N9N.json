@@ -1,0 +1,15 @@
+{
+  "id": "01M2T7BYKD5TXTFSWA612R6N9N",
+  "ts": "2026-09-18T12:20:25.837Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**ST0007 WP-03 AC-3.2 OK (mine to give)** -- released when vc sends the commit that moves release_materialise to read-tree + checkout-index (hv, vc decision 18), driven red first on the RELEASES/0.9.0.md export-ignore shape, with AC-3.2/AT-3.8 reworded and my eight wp03f arms landed as vc's. Then: re-run wp03f/mut.sh plus the measure/control pair against it, and give the OK. WP-04 lifts the fixed function as it stands."
+  }
+}

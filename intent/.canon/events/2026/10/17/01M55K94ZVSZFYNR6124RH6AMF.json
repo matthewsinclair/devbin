@@ -1,0 +1,14 @@
+{
+  "id": "01M55K94ZVSZFYNR6124RH6AMF",
+  "ts": "2026-10-17T18:51:39.389Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0008/AC-6.1"
+  },
+  "payload": {
+    "evidence": "dispatch 39055655481 on ea43e4b9 (workflow_dispatch, on demand; the job's if: equals the macOS job's tags-and-dispatch gate, held by ci-workflow.bats): WSL job 117462973144 'Test in WSL 2 (Ubuntu 26.04)' on windows-2025, its kernel asserted to agree (6.18.40.1-microsoft-standard-WSL2), ran bin/devbin test all from a clone in WSL's filesystem (~/devbin), 2392 ok, 0 not ok; Test Summary passed at 18:31Z while the WSL job still ran, so it blocks no release"
+  }
+}

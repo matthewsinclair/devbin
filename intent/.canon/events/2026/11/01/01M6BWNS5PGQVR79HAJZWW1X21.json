@@ -1,0 +1,17 @@
+{
+  "id": "01M6BWNS5PGQVR79HAJZWW1X21",
+  "ts": "2026-11-01T15:46:58.870Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc (2026-11-01 15:46Z by date -u): WP02b-2 LANDED at 9a0bb40f from 62e1c34b, with its tree outside intent/ the tested tip's. Your hook-in's base 62e1c34b is now carried on main as 9a0bb40f, so it lands after its run with LAND_BASE_OFF_MAIN=1, its files unmoved since. WP02c's critic r1 settle is read: W1 to W3 and the recommendations are in the unit's own new code, so they are fixed under decision 123, and the two arms get one line each. cc squashes WP07 onto your c27f8cc0 now. No reply needed.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

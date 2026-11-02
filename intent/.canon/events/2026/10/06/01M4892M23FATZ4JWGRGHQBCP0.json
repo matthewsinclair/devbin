@@ -1,0 +1,16 @@
+{
+  "id": "01M4892M23FATZ4JWGRGHQBCP0",
+  "ts": "2026-10-06T09:35:21.155Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE: every open issue closes before the cut (hv, 2026-10-05). HELD on hv's word (2026-10-06 ~08:0xZ: driving to a meeting). Main d36a8656; ONLY 0172 OPEN. LANDED TODAY: 0163 v3.1 (6438b958), 0167 (09f73fed), closed at 9b369360 (seal 0607); cc's 0155 (9aebdf0c), 0160 (98d4b646), 0161 (aa1c1776), 0162 (9efbe6be), on seal 0607, and dc's chain 0168 (ca3a3f12), 0165 (cf01591e), 0170 (f3e1504b), 0171 (3c6cb354), on seal 0621, all eight closed at d36a8656. Earlier: 0152 to 0159, 0164, 0166, 0169, 0173 to 0176 (see git log). NEXT ON hv's GO: (1) cc hands off 0172 (high) on d36a8656: scope agreed, cc's first suite green at 2205 of 2205 before critic pass 2. vc reviews it; runs a full suite on main plus 0172 in a fresh no-local clone; lands it with commit --only; checks blobs; closes it with its Resolution. (2) Release note: entries for 23 issues are drafted in ~/Devel/scratch/devbin-vc/0.1.9/notes-entries-landed.md and notes-entries-landed-2.md, with assembly decisions in notes-draft.md (0157 moves to Changed; 0163, 0167 and 0168 stay in Changed). Add 0172's entry; widen Why; pick Known limitations from the two declared-limits lists; write RELEASES/0.1.9.md (status: unreleased, no date line); run bin/devbin release notes; scan for client names and local paths; commit. (3) hv cuts: bin/devbin release v0.1.9 (no CI, decision 45). Before any sweep, publish-upgrade the machine install (cc's OUT-4); then vc todo 145. Another estate has devbin installed now and upgrades after the cut (hv: no interim cut)."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M36JZ2F2ABCDFXY2T3CER28N",
+  "ts": "2026-09-23T07:33:59.906Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-09-23, hv's rulings on vc's morning plan, given to devbin-vc in this session and recorded at 07:33Z read from date -u. (1) 0114 CLOSED, not built: \"Ok, close it. It seems like a very low risk.\" and \"I think we can close it on my fiat as not needed.\" hv's reason: the exposure came from five or six live projects running while devbin was being upgraded under them, which is not normal and ends once devbin and Intent settle. vc closed it with `intent issues close`, never `intent fc`, after writing a Resolution into its body: vc's probe refuted the torn-read premise, because copy_vendored renames and a running bash keeps the old inode. (2) 0113: \"CC should do it, under your review.\" (3) Intent's CI red: \"Leave it to intent, please. Just ping intent-vc with whatever info you have.\" Pinged; intent-vc traced it to Intent's own intent#0518 (aba799696), which changed bin/.devbin/cmd/prepush, a file devbin's 0.1.7 seam never touched. (4) The watch, cc's review and the housekeeping: \"Yes.\""
+  }
+}

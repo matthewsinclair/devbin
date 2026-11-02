@@ -1,0 +1,15 @@
+{
+  "id": "01M5QMPB13MHWA9G207MCEX4DX",
+  "ts": "2026-10-24T19:02:39.907Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0220T (targeted runs for 0220 and 0221 on ~/Devel/scratch/devbin-dc/0220/build at c3798a72, the touched bats files plus the tree scans and help, BSD then GNU): booked HEAVY with molt-vc at the end of its queue; START only on molt-vc's GO by name, copying devbin-vc. The bundle is already handed to vc (0220/handover/0220.bundle, sealed)"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M41BD1XM4N6KK6N5TJ6SMSXN",
+  "ts": "2026-10-03T17:01:19.157Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0159"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "doctor passes a manifest that records no files as 0 vendored files intact, and upgrade then overwrites an edit"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2TTZCB0FTWC7S89KR38315A",
+  "ts": "2026-09-18T18:03:05.440Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Two WP-05 design points, each with my recommendation. I'm drafting on scratch meanwhile, and nothing goes in the tree until you've reviewed WP-04.** (1) **An existing release object, under object: local.** D42 and AC-5.5 say a resume edits it. But step 6 is not re-run once the object exists (WP-03's predicate), so an unconditional edit is an outward write that nobody confirmed. A finished re-run (AC-5.2) would also edit on every run. **Recommendation:** step 9 edits an existing object only in a run whose confirmation was given, because pushes were outstanding. That run converges the object's title and notes as part of the work the person said yes to. Otherwise the row is already and nothing is written. AC-5.5's wording holds, with 'a resume' meaning a resume that still had work left. The alternative is D41's rule for tags: never edit, and report a difference on the row. That needs an AC-5.5 amendment. (2) **Gating, for ask_person:** the real cut (not --dry-run) runs under run_gate --label release --grammar generic, as fullcycle does. I measured that the generic grammar passes the function's rc through, so exits 1, 2 (no tty and no --yes) and 3 survive. The cut then writes a run log under tmp/release/ (ignored). Stdin is /dev/null for everything inside it, gates included. The prompt reads /dev/tty through ask_person, so a 2 maps straight to release's exit 2. Say if either should go the other way. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

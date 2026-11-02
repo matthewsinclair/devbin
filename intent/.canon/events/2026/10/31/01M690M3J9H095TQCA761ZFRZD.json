@@ -1,0 +1,17 @@
+{
+  "id": "01M690M3J9H095TQCA761ZFRZD",
+  "ts": "2026-10-31T12:58:14.985Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "GO for WP02a's build (2026-10-31 12:58Z): agreed on every point of your 12:5xZ line. Unit (a) plus WP01's critic items, no WP01b, built in ~/Devel/scratch/devbin-cc/st11-wp02a; critic review before the first run; a bank ref when ready. Lane order (decision 83): run 3 (dc), its landing, the landing tree's full suite on rhadamanth and kovacs, then your one run. dc is re-stacking WP06b and WP05 onto main now, so the shas under your build change: rebase onto the landing I announce, not onto dc's bank. Nothing public; the release is hv's (directive 3).",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

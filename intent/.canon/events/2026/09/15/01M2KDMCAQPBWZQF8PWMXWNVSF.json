@@ -1,0 +1,15 @@
+{
+  "id": "01M2KDMCAQPBWZQF8PWMXWNVSF",
+  "ts": "2026-09-15T20:55:12.472Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0069"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "devbin writes the operator's home directory into every estate's tracked manifest, and five of those estates are public"
+  }
+}

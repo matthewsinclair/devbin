@@ -1,0 +1,16 @@
+{
+  "id": "01M64JAMRY3FH9FK1F8J31FC0V",
+  "ts": "2026-10-29T19:31:27.134Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 40,
+    "text": "hv to decide: whether devbin declares formatters, since no commit-time guard checks staged markdown here (check format covers it at run time)."
+  }
+}

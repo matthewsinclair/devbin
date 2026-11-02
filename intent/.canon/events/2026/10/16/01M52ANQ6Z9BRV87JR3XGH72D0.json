@@ -1,0 +1,16 @@
+{
+  "id": "01M52ANQ6Z9BRV87JR3XGH72D0",
+  "ts": "2026-10-16T12:23:30.783Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 19,
+    "text": "HOLD ON THE FOLD until hv's word after the compact. hv, 2026-10-16: \"Ok, context is high. We need to coordinated a utlz-{vc,dc,cc} bank-what-wehave-then-localfold-and-compact run here now.\" vc read it as devbin's vc, cc and dc, and said so to hv. Banked: the landing stack (todo 154), the board, design v0.9 (fb532bd4), the kovacs scripts. AT THE RESTART: /in-session, the pickup, commit it by path; WP-03's END came at the fold: 12:07:55Z to 12:21:42Z on 14b15110, 372 of 373 under BSD and GNU, the one red contract.bats's AC-7.1 arm on dc's new pipe at shellinit.bats:216, fixed test-only at e91607c3 (a here-string; both arms green singly under BSD and GNU); dc banked WP-03 as wp03.bundle tip e91607c3 (sha256 e94839a7) and folded at 04360dd7; cc folded at e2cd25fa. Take dc's full WP-03 handover on vc's word, re-run shellinit.bats and contract.bats whole on e91607c3 or let the landing suite cover them, then stack WP-03 on land1016b. Then hold for hv's word. Queue on this Mac then: Intent's two slots (intent-vc books them), then devbin's landing suite for WP-02, 0199, 0192 and WP-03. Nothing pushed (devbin's pushes are hv's, after the Linux proof at the release head)."
+  }
+}

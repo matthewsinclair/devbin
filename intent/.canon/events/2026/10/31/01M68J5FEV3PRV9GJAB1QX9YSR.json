@@ -1,0 +1,16 @@
+{
+  "id": "01M68J5FEV3PRV9GJAB1QX9YSR",
+  "ts": "2026-10-31T08:45:35.579Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 181,
+    "text": "FOR hv (ST0011, sent to hv's inbox 2026-10-31): decision 40 carve-out for the remote-leg runner's own ssh to kovacs (rec: grant); vc's 07:11Z ssh reads of kovacs reported; WP09's go and version (rec 0.1.19: every estate pins ^0.1); the sweep path (rec: opt plus fleet upgrade). Until hv rules, dc announces every runner test to kovacs-sysadm and nothing is swept."
+  }
+}

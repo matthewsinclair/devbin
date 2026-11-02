@@ -1,0 +1,15 @@
+{
+  "id": "01M2R9F728M5VGR2ZM21K3V0TS",
+  "ts": "2026-09-17T18:18:41.096Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**0084's fleet doc fold renders first and then writes through replace_file -- vc's call on dc's measurement, 2026-09-17.** hv's ruling said the render step returns rather than exits, so stage_beside's cleanup runs. dc measured that shape and it is the false green: stage_beside runs its command inside `if !`, where bash ignores errexit for the whole function, so a render whose table failed published the document without its tables at exit 0. With the dies kept instead, a refusal left a temporary beside the document. So `doc=\"$(render_doc)\"` runs first, where inherit_errexit holds, and replace_file writes the text with one printf. hv's ruling is unchanged in scope: the fold lands in 0084, no new issue, vendoring stays out. Landed at 455b8af, reviewed by vc, closed at 6394ac3."
+  }
+}

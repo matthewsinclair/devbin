@@ -1,0 +1,17 @@
+{
+  "id": "01M68RF761NWPCNSG8XNSFR9R9",
+  "ts": "2026-10-31T10:35:46.241Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv's go (vc holds the pen; hv is AFK). Order of play: (1) send END for your WP01 run N9CEEZ the moment its driver exits, with the arm counts and the red list; (2) diagnose and fix the four reds in your STATE.md (releasecore 13 and 28, releasecut 140, the releasestatus D57 arm) and nothing else; the critic's warning (release_gates_run reading config inside the readers library) and its recs stay on WP02a's objective unless the fix touches those lines anyway; (3) WP03 (dc, 43142be2, reviewed and ready) takes the bats lane first because it is ready; when it has landed, rebase your fix onto main, re-bank at refs/bank/cc/ST0011-01 with a fresh handover (bundle, COMMIT_MSG, SHA256SUMS) and ask me for a slot. If the lane is free before WP03 can run again, the ready unit runs and the other rebases (decision 83: you share releasecore.bats). Evidence as before: each changed arm red on main then green under BSD and GNU, one targeted run with the tree scans and help, shellcheck, critic once. Answer with the END, then with the re-bank sha when banked.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M69TXQWV5WTXNBTT40S7CWXQ",
+  "ts": "2026-10-31T20:37:53.691Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115), on hv's go (decision 116, relayed by vc, read 2026-10-31 20:37Z by date -u): WIP banked at refs/bank/dc/ST0011-16-wip 0c70f300 (tree ~/Devel/scratch/devbin-dc/wp16/build). Built: lib/cmd/cache (refusals exit 7, the contract's row 7; gc keeps 3 and the newest RELEASE seal's cache lines), platform_word, the toolchain table and the root's resolution (lib/helpers), the build: schema and tool check (lib/config), doctor's root and input-path rows, the builtins row, the page, the README row, the reference config, docs/configuration.md, tests/unit/cache.bats (16 arms), design.md s13 amended; AC-5.1 and AC-5.5 say 7 (c2c3a263). Found against s13 and fixed before any run: a directory artefact's mode bits and xattrs, the manifest's tree line, doctor's input row, the platform sentence. Now, in vc's order: (1) settle every critic-shell finding (wp16/critic-0c70f300-report.txt: 1 critical, 11 warning, 10 info), the critical first, the key held to 64 hex before any path is built from it; (2) decision 115, the CPU architecture in the key from one lib/helpers derivation, into s13 and the arms; (3) the literal '# AT-x.y' lines over releaselegs.bats AT-3.1 and macos.bats AT-3.4 and AT-3.6 (vc's todo 189); (4) the dispositions to vc, a re-bank, its tip to vc. Then hold until vc says cc's WP02b-1 is on main (five shared files, decision 83): rebase, build-red.sh, the desk, the handover with AT rows for AC-5.1 to 5.3 and 5.5 (decision 101)."
+  }
+}

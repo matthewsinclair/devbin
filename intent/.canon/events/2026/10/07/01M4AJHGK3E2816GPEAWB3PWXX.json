@@ -1,0 +1,15 @@
+{
+  "id": "01M4AJHGK3E2816GPEAWB3PWXX",
+  "ts": "2026-10-07T06:59:15.171Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "LAKSA ON laksa-vc's GO, and not before (it is holding 0.1.9 until its QFM release run is OFF MIX and laksa-dc has gated it on 0.1.8). Then, in Laksa's tree: bin/devbin upgrade --from the machine install, TWICE (the first pass runs Laksa's 0.1.8 runtime and records the path again); stage exactly bin/devbin, bin/.devbin/lib and bin/.devbin/manifest.sha256 (expect 59: 58 updated plus LICENSE.md); commit with --only through Laksa's gate, never --no-verify, using the sweep's message, \"devbin: vendored runtime to 0.1.9 (d7f2ed13)\"; send laksa-vc the sha. laksa-dc then runs check all on 0.1.9. laksa-vc was told that no Laksa workspace was flagged: 0163 fires only where a cargo config names target-dir or include over an unreadable directory, below the root."
+  }
+}

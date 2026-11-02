@@ -1,0 +1,15 @@
+{
+  "id": "01M69271973F8JNP5GF4H7TPR3",
+  "ts": "2026-10-31T13:26:03.815Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0011/17 after the WP03 remainder (vc, 2026-10-31 13:1xZ; D69, design.md s12; AC-6.1, AC-6.2; the objective on the WP): a gate declares the platforms it runs on with platforms: on the option; one platform-word derivation in lib/helpers, reusing WP01's if D57's record keys on a word; option_active refuses a foreign platform through the existing inactive route; help --why and the all count line name it; a value outside the words refused at config read. S, in 0.1.19, before WP16's code: Gtools's kovacs leg stops at its macOS-only app gate without it."
+  }
+}

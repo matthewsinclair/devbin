@@ -1,0 +1,16 @@
+{
+  "id": "01M5N2ZN80PX0C1EQF13EC23QJ",
+  "ts": "2026-10-23T19:14:42.049Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 19,
+    "text": "WP-08's targeted run is held until devbin-vc sends START by name, which vc sends on utilz-vc's cut END as intent-vc relays it to vc (vc's hold 28, in the order intent-vc set), with the census and intent-vc copied; Intent's cargo runs beside the series. Then: run scripts/plan3.sh in the background on build/ at 5059a26e (releaseattach.bats, then helpers, contract, neutral, documentation, readonlygit, harness and help, BSD then GNU, green only, one file list at a time, no --jobs); read each runs/arm.green3.*.meta (plan line, ok, not ok, skips, non-TAP, head, dirty 0); send END with scripts/census.sh and the counts, any red by name, to both intent-vc and devbin-vc. vc's landing stack (land113) holds 5059a26e fetched from build/, so build/ is not touched."
+  }
+}

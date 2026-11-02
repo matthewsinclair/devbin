@@ -1,0 +1,15 @@
+{
+  "id": "01M69188HBJA40901BB9T169QY",
+  "ts": "2026-10-31T13:09:15.437Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0011/18"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "docs/assembly-and-the-build-cache.md: Devbin's Build Cache for Optimised Release Assembly, design and tech note plus how-to"
+  }
+}

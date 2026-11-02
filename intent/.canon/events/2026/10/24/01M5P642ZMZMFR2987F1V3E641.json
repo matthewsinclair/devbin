@@ -1,0 +1,16 @@
+{
+  "id": "01M5P642ZMZMFR2987F1V3E641",
+  "ts": "2026-10-24T05:28:47.348Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 83,
+    "text": "D55 and the 0.1.13 batch (decisions 54 and 55): RELEASED 2026-10-23 by hv's cut (6fa7b3c0, annotated tag v0.1.13, both remotes, GitHub release, formula on the tap at 853f6414). CI GREEN, read 2026-10-24 05:27Z job by job: tag run 40029604244 every job success (ShellCheck, Ubuntu, macOS, WSL 2, Summary); main run 40029594494 success (macOS and WSL skipped by design, tags only); verdicts sent to intent-vc. LEFT: 0201's rhad brew-upgrade proof by dc (released from hold 25 on hv's go, booked with intent-vc), then kovacs's half by a kovacs-sysadm order; telling the adopting estate's session of v0.1.13 (AC-6.4), its session to be named by hv; Intent re-vendors after its 3.2.6 tag (decision 54); the fleet to 0.1.13 and issues 0207 to 0209 on hv's go. Checklist ~/Devel/scratch/devbin-vc/0113/REVIEW.md."
+  }
+}

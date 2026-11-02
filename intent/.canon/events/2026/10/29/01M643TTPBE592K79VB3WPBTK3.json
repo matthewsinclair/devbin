@@ -1,0 +1,14 @@
+{
+  "id": "01M643TTPBE592K79VB3WPBTK3",
+  "ts": "2026-10-29T15:18:08.845Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-2.1"
+  },
+  "payload": {
+    "evidence": "release snapshot v0.1.17 --no-parent: commit 2cde3ee6, tree afa938fc, 214 files, equal to v0.1.17's (420547e3) tracked files over tests/shipped.paths by snap-compare.sh"
+  }
+}

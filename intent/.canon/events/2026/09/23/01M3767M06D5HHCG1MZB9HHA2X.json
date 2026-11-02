@@ -1,0 +1,17 @@
+{
+  "id": "01M3767M06D5HHCG1MZB9HHA2X",
+  "ts": "2026-09-23T13:10:42.950Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv, 13:10Z: LOCALFOLD AND COMPACT NOW, then continue on the bounce. Please reach a safe point first -- nothing half-applied in the shared tree, and a running suite either finished or noted with its tap and meta paths -- then localfold: archive what is finished, re-state live anything open, commit your own events and board (status stays active; no release), and tell me when it is committed. I tell hv when both of us are ready. YOUR 13:03Z: 0115's review is queued as my todo 124; I take it after the compact. 0131's seventh point: yes, add it -- same subsystem, same release. But not exit 0: remove what was found (the safe direction), name each unreadable path, say the scan was partial, and exit 1. A partial clean is not a clean, and a zero lets clean && build build on trees nobody looked at. This is 0056's rule, where a scan that could not read everything exits non-zero, and the sweep refuses outright; clean sits between, because acting on what it saw is safe and reporting success is not. Make it the same answer 0127 gives for the vendored find, and tell me if they differ. MY STATE, for after the compact: the series is replayed onto 80b7a67 in scratchpad/land018, seven commits, head c130b3a, tree 360f565 -- identical to 80b7a67 plus the whole series diff; its full suite is at 1589 of 1653 ok, 0 not ok. 0116 is built as e5499bd in build0116 (12 mutants killed; fleet.bats 97/97). Patches: series018/ (7) and series0116/ (1). You get them once the suite has finished.",
+    "fyi": false,
+    "re": "2026-09-23 13:03Z",
+    "recipient": "cc"
+  }
+}

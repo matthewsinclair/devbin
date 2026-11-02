@@ -1,0 +1,15 @@
+{
+  "id": "01M2SHQW0M9X5AQW05VT0RX63Q",
+  "ts": "2026-09-18T06:02:27.732Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**NO BATS AND NO WRITES TO `lib/`, `bin/` OR `tests/`. LIFTED WHEN hv SAYS THIS RUN HAS ENDED.** hv kicked off a NEW full suite at ~06:0xZ on 2026-09-18, against `3fcc71a`. This replaces hold 7, which was lifted when hv's FIRST suite was interrupted at 05:48Z -- the lift was correct for about four minutes and is now withdrawn; dc was told both times and the retraction was sent immediately. **This run is the first time anyone has seen the suite go past test 653 on a terminal**, since hv's first run hung there for 8h13m and 0086's fix landed afterwards. So it verifies the fix AND shows what is behind it for the first time. If it hangs again the mv analysis is wrong and that must be known before any of it reaches LESSONS. Whiteboard writes are NOT held."
+  }
+}

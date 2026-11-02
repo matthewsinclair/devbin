@@ -1,0 +1,16 @@
+{
+  "id": "01M6951T9R398QQMVENFSTMZF4",
+  "ts": "2026-10-31T14:15:38.552Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 86,
+    "text": "ST0011 fix phase, FOLDED AND HOLDING on hv's third order at 2026-10-31 14:13Z (desk hold 01M694Y7ZGK0PKD94NVSHGCSCQ; vc holds the pen). LANDED on main: WP01 bc744227 (done), WP04 80052f26 (WIP until WP02b removes the trigger), WP03's ci-state half 76a0fba6 (WP03 reopened for its checker half, AC-3.1: dc's pure trigger reader and failed-jobs detail, cc's two call lines in WP02b). BANKED, not landed: dc's stack refs/bank/dc/ST0011-06b 1f37e5eb and ST0011-05 d1911183 (WP05 with the critic's takes and mv -f); run 3 at 8f3d95fe green on every arm and file but helpers arm 47 (the mv allowlist), fixed in d1911183 unrun; run 3b ready in ~/Devel/scratch/devbin-dc/run3d, runs first at the next go, then vc lands with land-stack.sh. The kovacs proof worked end to end at 8f3d95fe (reach, start, 46 pending reads, failed read from the copied-back seal, pair and log kept, run cleared, no warnings) and found Devbin's gates RED on kovacs on 4 of 2873: 1200 (mv, fixed), 2149 (WP01's already arm), 2823 and 2826 (0216 shipped-line scans); dc sorts them before its END (stack defect, Linux defect on main, or kovacs environment), the fixes the next session's after run 3b; main is unpushed, so this was the first Linux run of the landings. cc's WP02a banked as built (refs/bank/cc/ST0011-02a when cc reports). NEXT on hv's go: run 3b, landing, the Linux fixes, the full suite on rhadamanth and kovacs (prep-korder; kovacs-sysadm reads the order's sha256), WP02 a/b/c, WP07, WP08, WP03 remainder, WP17, WP16 code, WP09 at 0.1.19, the sweep (plan: ~/Devel/scratch/devbin-vc/st0011/sweep-plan.md), WP10 to WP14, WP15, WP18 last. Estates on hv's decision-98 go, all folding: Utilz (main a21dde9c green, ST0031/03 dc's), Laksa (S2 fix in build), Intent (ST0090/01 re-ask denied under the hold, Intent issues 0666 and 0667), Gtools (ST0021/01), Conflab (WP-06 records). kovacs: census done, every Gtools tool from brew, librsvg and the fonts installed, intentd not enrolled; gyges folded; rhadamanth-sysadm's jobs closed."
+  }
+}

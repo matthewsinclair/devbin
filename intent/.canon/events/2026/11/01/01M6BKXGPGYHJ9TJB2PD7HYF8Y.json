@@ -1,0 +1,16 @@
+{
+  "id": "01M6BKXGPGYHJ9TJB2PD7HYF8Y",
+  "ts": "2026-11-01T13:13:55.152Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 13:13Z by date -u, hv AFK from about 12:43Z; decision 126). (1) dc's 0306 + WP17 stack on 01M6BKT367YF4D73C91YWQTSA2: at END, read every leg's TAP and .rc and the whole suite's seal; if green, land it by land-stack.sh from dc's handover with LAND_BASE_OFF_MAIN=1 on ac18a7de; 0306 closes at its landing, and AT-6.1 and AT-6.2 take their verdicts from the run. (2) The train (decision 125): the hook-in unit (decision 127), WP02b-2, WP02c, WP07 and WP08 as each is banked with its critic settled, every ready unit as one stack. The last stack's whole suite stands as decision 93's rhadamanth full suite, with the whole-tree scans re-run at the landed head; the final kovacs suite runs at the cut's head through kovacs-sysadm (hv's go in its window). (3) Then WP09 at 0.1.19 on hv's word, and the sweep. (4) For hv on return: K0118's clone, its TMPDIR and the bundle copy on kovacs go on hv's word in kovacs-sysadm's window."
+  }
+}

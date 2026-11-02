@@ -1,0 +1,16 @@
+{
+  "id": "01M5W0KC8FBR0J435NEWQZ5G7H",
+  "ts": "2026-10-26T11:47:43.503Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 169,
+    "text": "AMENDMENT ROUND to every signatory (molt-vc, utilz-vc, intent-vc and gtools-vc), due now that 0228 landed (2026-10-26, f244a44d): (1) T5, intent-vc's clarification (2026-10-25): use brew refuses BEFORE removing the link set when no brew-managed copy would then answer on PATH (keg unlinked or absent), naming what would be left and the tool's own remedy. devbin has the same gap (lib/cmd/use's brew branch removes, then reports 'Homebrew has no devbin here'): an issue once the sentence is agreed. Whether it rides 0.1.15 was put to hv with the cut on 2026-10-26 (FOR hv via molt-vc, and re-asked on the bounce as hv asked): (A) cut now and defer it to the next release on the record, recommended, or (B) hold the cut for it; hv's answer pending. (2) T4, gtools-vc's ask (2026-10-26): A3's doctor sentence read broadly to it (as covering every doctor row), so tighten it to the meaning devbin and Gtools both built: \"Doctor prints the same line, and adds no path to it except where a check that fails is about one.\""
+  }
+}

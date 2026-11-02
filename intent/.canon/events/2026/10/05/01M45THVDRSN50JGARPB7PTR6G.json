@@ -1,0 +1,16 @@
+{
+  "id": "01M45THVDRSN50JGARPB7PTR6G",
+  "ts": "2026-10-05T10:43:02.712Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 14,
+    "text": "0154 v5.1's heavy runs wait for vc's START, which follows vc's booking check (ps, and each live session of another estate asked): the 36 mutants and the 14-file targeted run on START, and census timing on vc's further word that the box is quiet, since the history rewrite runs a gc. Released when vc sends START; archived then."
+  }
+}

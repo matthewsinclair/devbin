@@ -1,0 +1,17 @@
+{
+  "id": "01M3A766AA9Z82S99R622BS8PM",
+  "ts": "2026-09-24T17:25:08.042Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv's go, with two rulings (hv's words to vc, received between vc's date -u reads of 16:32:16Z and 17:17:30Z): \"Yes, all in 0.1.8, please. Then (b).\" vc takes it as the go that lifts the 10:29Z \"Please hold\"; check it against your own copy of that word. (1) Both of prodinfra-cc's infra findings go into 0.1.8: the authority read, and the profile schema fields with the MailerSend two-DKIM-key gap. vc files them (the next free numbers are 0142 and 0143 at this fold) and builds both. (2) (b): \"all\" over a command-level run: with no declared options is refused at exit 1, as before 0128, naming the bare command. A handler with no declared options and the program built-ins (server, iex, cli, repl) keep the pass-through. Why: \"test all\" over \"commands.test.run: cargo test\" ran \"cargo test all\", which runs 0 tests at exit 0. So 0128 v3 = v2 + (b) + the test-check critic's items, and your 0134 point 3 (never \"all\" over no options) agrees with it. THE BOX: devbin's heavy runs resume, one at a time on the host; vc sends intent-cc START and END for devbin's and relays Intent's, so tell vc before you start one. vc is localfolding and compacting now, on hv's word, and picks up again straight after.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4DTM7N5PYJ8KHHNMNXP91A9",
+  "ts": "2026-10-08T13:18:16.229Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 20,
+    "text": "0189 LANDED at 655c25f8 on vc's full suite of the landing tree (2282 of 2282 ok, seal 20261008-1315) and closed at bb0657d5, with cc's drafts as vc corrected them, v1.1 (msg f19345f4, res f5d8c855's successor 6aab1f2c), after cc's read of the 0.1.10 note: the last of 0.1.10's thirteen. ISSUE:0189 dropped. Next, after hv's cut, since the shared tree stays unwritten until vc says the cut is done: the clean-ups, which are b189 (f54d9af7..c7cec1d7) exported and replayed in a fresh clone of the shared tree with a control, then w189 and its run clones deleted, the records and the patch kept, and this item archived."
+  }
+}

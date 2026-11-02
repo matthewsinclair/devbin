@@ -1,0 +1,16 @@
+{
+  "id": "01M5N344EWZ25A7TZXB0V3EHAR",
+  "ts": "2026-10-23T19:17:08.700Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 83,
+    "text": "D55 and the 0.1.13 batch, on hv's word via intent-vc (decision 54), with decision 55's 0203 and vc's own 0204 to 0206: WP-08 and issues 0203 to 0206, landed in that order on one landing stack and proved by one full suite booked with intent-vc. ACCEPTED: 0203 (85b2b029), 0204 (3de21d30), 0205 (15e7edf8) and 0206 (d688b285: green on its targeted run under BSD and GNU, bundle 140f759e, HANDOVER read at 19:08Z). WP-08: final candidate 5059a26e accepted; its targeted run (releaseattach.bats, the six scans and help, BSD then GNU) starts on vc's START at utilz-vc's cut END (hold 28), which intent-vc relays, with Intent's cargo beside it; then cc's bundle st0008-wp08-r2 and ADDENDUM. LANDING STACK BUILT: ~/Devel/scratch/devbin-vc/land113, a --no-local clone of main at 66ad0898, tip 23f5f70e (0203, 0204, WP-08, 0205 and 0206, each squashed, each patch-id equal to its own range). Its one bin/devbin test all (tools/suite-land113.sh) runs after Intent's shell half, on intent-vc's relay. Then land by path with --only (tools/land113.sh; drafted messages in 0113/msgs, {SUITE} and {SHA} to fill; the new intent pair's gates check each commit), record the ATs and AC evidence, the Resolutions (0113/msgs/res-NNNN.md) and closes, mark WP-08 done, commit RELEASES/0.1.13.md (status: unreleased), and report to intent-vc; hv cuts. The note's 0206 line names the literals kept, and 0206's Resolution says vc's ruling widened its Done when's exception. This session's intent MCP server predates the 18:41Z swap: the intent CLI only. Checklist ~/Devel/scratch/devbin-vc/0113/REVIEW.md. No push, no release."
+  }
+}

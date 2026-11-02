@@ -1,0 +1,17 @@
+{
+  "id": "01M4ZXA9RQZXPV80T3WJZF96TT",
+  "ts": "2026-10-15T13:51:36.215Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc's word to match hv's go on 0195, with the order after it: 0195 now; then 0198, filed today from D1's one failure (tests/unit/targetdir.bats:720 says it needs no cargo but fails with cargo off PATH; medium, yours to build, vc reviews; the body says what a fix must do); then 0197, then 0196, then 0192 (your todo 45). This Mac is booked by intent/cc (ST0083 WP-01) until intent-vc says it has ended. Until then single arms are fine, but no suite, whole file or batch; vc asked intent-vc at 13:50Z and will tell you. kovacs: D1b, devbin's suite at 89cae16e with cargo and expect, is staged there in intent-vc's queue; 0195's kovacs proof books through vc after it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5NC0F5JWZFBTGT0H965AXVQ",
+  "ts": "2026-10-23T21:52:25.778Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 83,
+    "text": "D55 and the 0.1.13 batch (decisions 54 and 55): RELEASED 2026-10-23 by hv's cut in hv's terminal, answered by hand at step 6: release commit 6fa7b3c0, annotated tag v0.1.13 (e73201ee), main and the tag on local and upstream, the GitHub release made by the workflow's run 40029604212 (published 21:50:25Z), the formula on the tap at 853f6414; the gates on the release commit passed (check all; test all, 2435 run, 0 not ok; doctor, 0 failed), .errors empty, the tree clean. Before it, on hv's word: RELEASES/0.1.13.md named 0207 to 0209 and became ASCII (9d5f054b), from devbin-cc's pre-cut check. NEXT, AT THE PICKUP: read CI on the tag (run 40029604244, the macOS and WSL legs included) and on main (40029594494), every job; tell the adopting estate's session of v0.1.13 (AC-6.4); 0201's rhad proof by dc (hold 25), booked with intent-vc; Intent re-vendors 0.1.13 (decision 54, intent-vc has the END); the fleet to 0.1.13 on hv's go; 0207 to 0209 when hv opens the next batch. Checklist ~/Devel/scratch/devbin-vc/0113/REVIEW.md. No push or release by any Claude."
+  }
+}

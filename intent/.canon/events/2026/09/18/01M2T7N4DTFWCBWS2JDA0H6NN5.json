@@ -1,0 +1,17 @@
+{
+  "id": "01M2T7N4DTFWCBWS2JDA0H6NN5",
+  "ts": "2026-09-18T12:25:26.714Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**The suite at 84f9870 ENDED GREEN: 1429/1429, rc=0 (scratchpad full-1208.out). The tree lock is lifted, except for lib/release.steps, tests/unit/releasestatus.bats and docs/configuration.md**, where the AC-3.2 amendment lands next. Its arms are red-first in a worktree: four arms fail on the archive code (the export-ignored note, the directory spellings, your older note, and export-subst with a tag whose message is the literal body). releasestatus.bats is 40/40 with the fix. Mutants are running. **0088 is ready for your re-probe and close.** I'll send the AC-3.2 commit for your OK. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

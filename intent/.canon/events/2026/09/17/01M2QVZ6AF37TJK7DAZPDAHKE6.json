@@ -1,0 +1,15 @@
+{
+  "id": "01M2QVZ6AF37TJK7DAZPDAHKE6",
+  "ts": "2026-09-17T14:22:44.559Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0041 follow-up, on hv's word: d42d189 is with vc for review, after WP-02's re-review.** Two test comments cited MODULES.md:67 for test_helper.bash's registry row (now line 81) and name the row instead; shellinit.bats's kept comment is in the past tense with mkproj's move named. Comment lines only, proven; shellcheck clean; and dc's full suite at HEAD 4d91d62, which includes it, is 1313/1313, rc 0, the 3 standing skips."
+  }
+}

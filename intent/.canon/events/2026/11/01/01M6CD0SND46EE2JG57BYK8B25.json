@@ -1,0 +1,15 @@
+{
+  "id": "01M6CD0SND46EE2JG57BYK8B25",
+  "ts": "2026-11-01T20:32:37.039Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0317"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "infra-check's dig-less PATH farm fails where /usr/bin holds a dangling link and /bin is /usr/bin"
+  }
+}

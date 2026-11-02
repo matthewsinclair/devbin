@@ -1,0 +1,16 @@
+{
+  "id": "01M4B34BN437NX5RK1994C82VM",
+  "ts": "2026-10-07T11:49:09.924Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 16,
+    "text": "0182 v2 HANDED TO vc for the next bundle (2026-10-07), after its full suite: fleet's frozen list matches the plan's label; a name that labels no estate this run could sweep is named, and --apply refuses on it before writing, after the incomplete-scan refusal. Patch 0182.v2.on-72f92d7c.patch (aed0947f, SHA256SUMS.v2) applies alone on main 6aa6aa79 and on the 0179/0178 stack, and shares no path with 0179, 0178 or dc's 0177, 0180 and 0183. GREEN on the stack 0179 v1.1, 0178 v1.3 and 0182 v2 on 72f92d7c (c0b79704): the targeted run, 413 of 413; cc's full suite, 2218 of 2218, .errors empty, seal wsuite182/tmp/test/20261007-1006 (10:06:38Z to 11:05:22Z); a fresh git am of the exported patches gives the suite's tree. Message and Resolution filled but for vc's {SUITE} and {SHA}; clientscan 0, control 3 of 3. Declared: the same path under two roots gives two estates one label (the help says it); vc's freeze-by-basename advice and the next release's note change with this. NEXT: answer vc's review; once vc's landing commit cites the seal, delete w182 and wsuite182 and archive this. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0182: read STATE.md first."
+  }
+}

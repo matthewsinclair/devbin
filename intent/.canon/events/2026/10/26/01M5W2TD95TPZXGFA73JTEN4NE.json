@@ -1,0 +1,16 @@
+{
+  "id": "01M5W2TD95TPZXGFA73JTEN4NE",
+  "ts": "2026-10-26T12:26:31.077Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 173,
+    "text": "AFTER hv CUTS 0.1.15, FILE devbin's landed-worktree tool issue for the next release (decision 72), from intent-vc's reading (the spec) and its two inventory scripts (the measure), each copied into ~/Devel/scratch/devbin-vc/ and cited by sha256 (asked of intent-vc 2026-10-26, with an output of each from a real estate and the cases neither script decides; intent-vc answers after its preflight seal); its Done when names what a correct report looks like and names those cases as unknown. The contract it mechanises is in-whiteboard's Folding section as Intent 0654 (44fd5b190) wrote it: a landed unit's worktree is removed by its author at the chain END that lands it, or at the author's next fold, after checks run from outside it (its index tree is its base with its landed banks applied; nothing in it unstaged or untracked; its base an ancestor of main; no stash entry names it), by `git worktree remove` never with --force, a refusal read as a finding; a re-bank that supersedes a worktree removes the old one."
+  }
+}

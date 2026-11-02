@@ -1,0 +1,15 @@
+{
+  "id": "01M3ADQQ9X5F65V2E1G13R6SM1",
+  "ts": "2026-09-24T19:19:33.949Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0134 (+W4(i)) and 0135, on vc's 0128 v3 helpers once 0128 v3 lands; the designs are in DSP/designs-0134-0135.md. hv's (b) binds 0134 point 3. vc's finding of 2026-09-24, from critic-shell on 0128 v3: fullcycle's rebuild remedy (lib/cmd/fullcycle:257) names 'bin/devbin build all', which is refused under a lone commands.build.run. 0134's remedy, which names the build phase from the phase list, fixes it; take the critic's sequence as an arm."
+  }
+}

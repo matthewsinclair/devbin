@@ -1,0 +1,15 @@
+{
+  "id": "01M3420S6TKJ1NKX7DSRD6W2C1",
+  "ts": "2026-09-22T07:59:21.306Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "directive",
+    "text": "Intentv2 and Multiplyer are DEAD. Ignore them entirely -- no scans, no sweeps, no counts, no reports, no re-verification (hv, 2026-09-22: \"Intentv2 and Multiplyer are dead. Ignore those entirely. I don't want a second of time wasted on them\"). This extends directive 5, which stays as the record of Multiplyer's EOL. The census still lists _Archive/Intentv2; exclude it without discussion."
+  }
+}

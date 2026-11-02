@@ -1,0 +1,15 @@
+{
+  "id": "01M6BDG522ESAS4ZMEYB3034RQ",
+  "ts": "2026-11-01T11:21:45.794Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0306 (vc decision 120, hv's ruling read 2026-11-01 06:51Z by date -u; next in vc's order now that WP16 has landed at 54c16f33). The change: write_errors_file stages the red seal beside the seal with stage_beside, holds RED IS NEVER EMPTY on that temporary, then renames it over the seal with rename_staged (no new mv line, for helpers.bats's mv arm). So no seal reader sees an empty seal across a red run's close; seal_state reads an empty seal as green. Its arm reads the seal from a second process across a red run's close and must see red or in flight, never green. Built in a fresh clone at main 54c16f33 (0306/build2), with the plan in ~/Devel/scratch/devbin-dc/0306/NOTES.md. critic-shell before its first run, then the desk: until 0.1.19 is cut and swept, vc grants ST0011's runs as they are asked."
+  }
+}

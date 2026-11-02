@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 202,
+  "slug": "shipped-code-names-no-project-three-findings-fro",
+  "title": "Shipped code names no project: three findings from another estate's 0.1.11 reading, and the rest before devbin goes public",
+  "status": "closed",
+  "severity": "medium",
+  "created": "2026-10-17",
+  "closed": "2026-10-17",
+  "reporter": "Matthew Sinclair",
+  "body": "Shipped code (bin/devbin and lib/) names other projects and carries wording another estate's reading of 0.1.11 flagged, and directive 14 already says hv's own projects are never named in shipped code. Three findings from that estate's reading (accepted for 0.1.11 on hv's ruling, so they block nothing already released):\n\n1. lib/install, install_managed_refusal's header comment, names Utilz (\"as Utilz's --managed-by brew does for its own keg\"). Reword without a project name, eg \"as another tool's --managed-by brew does\".\n2. \"ruled\" in devbin's comments (7 lines under bin/ and lib/ use the word), read as internal decision language in shipped code.\n3. The infra reference profile's worked example names a real mail sender; a placeholder would do.\n\nAlso needed before devbin's public repository (hv's decision of 2026-10-17): every project name in bin/devbin and lib/ found and removed, not only these; a crude search finds about 41 candidate lines, most of them the intent CLI's own name, which stays.\n\nDone when: no estate or hv project is named in bin/devbin or lib/ beyond the tools devbin really calls (intent, brew, git and the like), the three findings are fixed, and an arm in neutral.bats holds it.\n\n## Resolution\n\nFixed at 60bec9e4 (cc's build 4b7041a8): lib/install's precedent reworded; 25 decision-language lines reworded; the infra reference profile's sender is a placeholder under .example; neutral.bats's decision and example arms hold the two that have a shape, and review holds names (a name has no shape, decision 46); landing suite 20261017-1803 (vc's landing suite at 70ca78da: 2394 ok, 0 not ok, 5 skips, .errors empty, 18:03:01Z to 18:11:37Z; seal kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/l202-20261017-1803/).\n"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4DXMCFK2Z736925T3JW573E",
+  "ts": "2026-10-08T14:10:46.899Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 46,
+    "text": "DONE: read RELEASES/0.1.10.md for vc against main's code, and lines 2 and 20 against 0189's c7cec1d7, with comparatives against d7f2ed13; thirteen findings sent, every one taken by vc; the note committed at 1b75928d. By reading alone, under hv's 12:24Z ruling."
+  }
+}

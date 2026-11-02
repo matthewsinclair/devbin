@@ -1,0 +1,15 @@
+{
+  "id": "01M5PQ2TVBTR68GGYHMMGH2VCG",
+  "ts": "2026-10-24T10:25:12.043Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0216, the workroom-text scrub and its guard, on vc's assignment under decision 59: build in dc's clone of main 5c993e06; fleet's command, roots file, help page and fleet.bats exempt; 0213's files second, on the new main after 0213 lands; guard red on main first; comments, names and fixture identities only; light runs booked with molt-vc; bundle, seals, COMMIT_MSG, RESOLUTION draft and the old-to-new title list to vc; no push, no release"
+  }
+}

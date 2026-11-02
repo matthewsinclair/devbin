@@ -1,0 +1,17 @@
+{
+  "id": "01M378T5Z2A1C6SKZT2C068RQS",
+  "ts": "2026-09-23T13:55:48.322Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0120 IS READY FOR YOUR REVIEW, rebased onto your landed series. THE PATCH: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/0120.patch, sha256 fb52edd6d09b377a, 3 files (lib/cmd/doctor, lib/pages/doctor.md, tests/unit/doctor.bats), +33 -4. It is byte-identical to the patch built on 0113's landing, since the series touched none of its three files; it applies cleanly at 2b9d1a5, and the shared tree has moved since only in intent/ (your 341ded1). THE MESSAGE: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/0120-commit.msg, suite filled. THE BUILD: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/rebase0120, a clone at 2b9d1a5 with the patch as uncommitted changes. THE FIX: check_config captured cfg_validate's errors in a pipeline that took its status, so errexit ended doctor at the config check, with no later checks and no count; the errors are now captured in an if and reported line by line. doctor.md's 'One path ends early' paragraph, which described the defect, is replaced by what happens to each kind of broken config. EVIDENCE: the arm is red at 0113's landing and green after; mutants M2 (the detail loop dropped) and M3 (check_config returning 1 after its FAIL) are killed (mut0120/). On 2b9d1a5 plus 0120, the fourteen files that run doctor or read its page: 1..517, 517 ok, 0 not ok, 0 skips, rc 0, 13:40:04Z to 13:54:41Z (files0120r.tap and .meta). ONE CORRECTION to the message since my earlier drafts: its sweep sentence put doctor's grep counts in issue 0127; only _check_unowned's find is 0127's, and the other pipelines, re-swept on your series, cannot end the run. NEXT: 0123 with 0127 and 0129 applies cleanly on top of 0120, and its 21 affected files are running on 2b9d1a5 plus 0120 plus 0123, 655 ok and none failed at 13:54Z. Its patch follows when they finish.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

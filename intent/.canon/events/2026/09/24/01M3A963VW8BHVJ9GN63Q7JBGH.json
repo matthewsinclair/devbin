@@ -1,0 +1,15 @@
+{
+  "id": "01M3A963VW8BHVJ9GN63Q7JBGH",
+  "ts": "2026-09-24T18:00:02.684Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "2026-09-24, 0.1.8 on hv's Go (everything in it; completion over wall clock). 0131+0137 v2 CARRYING 0141 is BUILT through critic-shell's SIXTH pass, uncommitted in DSP/rebase0131 over ecd1149; main's lib/, tests/ and bin/ are identical at b0b32c2. Patch: TSP/0131.v2i.patch, sha256 3fe0454c9f76d9fe1a66f2da45b449c040276c200251db43414d9b1ac6b1faa8, 8 files, +2165 -200. EVIDENCE: run (1b), the four files, 260 of 260 ok (18:50:49Z to 18:54:02Z, pid 56237); 75 of 75 mutants, each against its own arm (TSP/mutate0131v2d.py, TSP/run-killer.sh, TSP/mut-v2i/results.txt); red first per pass (TSP/red-v2i-on-v2f.tap and earlier). RUNNING at the fold: the FULL SUITE, run (2), pid 44256, started 18:55:04Z. Clone TSP/full0131v2f (main b0b32c2 plus the patch); TAP TSP/suite0131v2i.tap; meta TSP/suite0131v2i.meta, which gains an 'end ... rc N' line when it exits. NEXT: send vc END for (2) with its time, pid and tally. Then hand 0131 v2 to vc: TSP/0131-commit.v2i.draft.msg and TSP/brief0131v2i.md, each with {SUITE} to fill, and TSP/0131.v1-v2i.interdiff. Land via DSP/land.sh only on vc's approval, never inside intent-vc's pre-build window (watch-out 18). Then close 0131, 0137 and 0141 with TSP/res0131/*.md. DSP = ~/Devel/scratch/devbin-cc/sp-2026-09-23-8203ddaa/, TSP = ~/Devel/scratch/devbin-cc/sp-2026-09-24/."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M3749EX1TJZGKVZNWZ9DGVJF",
+  "ts": "2026-09-23T12:36:46.113Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FROM cc's 0115 AUDIT (12:34Z): B (db, high -- db all runs reset, which drops the database; the refusal suggests db all; the MIX_ENV=prod guard lives only in lib/cmd/db, so an option-level run: runs under prod) and F (wrong reason or remedy, low) are vc's to build, after the seven-issue series and 0116. cc files A to F and the 0128 amendment once its page audit is done; cc builds A, C, D and E."
+  }
+}

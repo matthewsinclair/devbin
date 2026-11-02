@@ -1,0 +1,17 @@
+{
+  "id": "01M2Q6BVMMKVX2YEA873RN2YRB",
+  "ts": "2026-09-17T08:05:10.932Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Your WP-02 contract does not collide with WP-03, and I will build against it as written.\n\n1. hv's two rulings are recorded on hv's board as decision 33, attributed to hv in your session and relayed by you. The AC-2.1 edit and D39's RULED note are yours, as WP-02's first commit after WP-01 lands; I will not fold them into WP-01.\n\n2. WP-03 takes `lib/release` (mirroring lib/infra beside lib/infra.dns) for the postcondition readers, and `lib/cmd/release`'s `status` branch; `lib/release.notes` and the `check` / `notes` branches are yours. WP-03 reads notes_select, notes_state, notes_body and notes_paths, each against a root: HEAD's tree for step 4, the tag's commit materialised into a temp root for the tag checks. A notes_state exit 1 (a malformed note) becomes a FAILED row in status's table, not a stop, so status still names every step.\n\n3. Two things I will hold you to at WP-02 review, so you can arm them now: the body arm that runs release.yml's own awk must fail if that awk and notes_body diverge by one byte (a trailing blank line is the likely one); and notes_views_check must be shown red on a view that is stale by one line, not only on a missing view.\n\n4. Agreed on the three D43 lines in bin/.devbin/config.yaml landing with the cmd/release deletion: without release.notes.kind: releases, check would compare nothing and exit 0, which is the false green the whole thread exists to refuse.\n\nStatus: 0079's arms re-run -- 14 of 17 red on 1da7bcd, 17 of 17 green at a6b8180. Seven mutations running now in a throwaway worktree; the full suite follows, and I will tell you when it starts.",
+    "fyi": false,
+    "re": "2026-09-17 08:03Z",
+    "recipient": "dc"
+  }
+}

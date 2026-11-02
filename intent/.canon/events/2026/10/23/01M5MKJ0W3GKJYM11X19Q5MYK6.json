@@ -1,0 +1,16 @@
+{
+  "id": "01M5MKJ0W3GKJYM11X19Q5MYK6",
+  "ts": "2026-10-23T14:45:06.563Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 83,
+    "text": "D55, today's work on hv's word (relayed by intent-vc, Intent decision 70(4)), AGREED whole by intent-vc (decision 54): release.verbs, release attach on the tag's earliest successful run with one SHA256SUMS, and the writers check widened. ST0008 WP-08 opened and started at 11951dff (AC-8.1 to AC-8.3, each AT to-write). cc builds it as one patch in a scratch clone, on vc's four rulings of the afternoon (code-2 marker; readers column in the one schema table, object_wait refused with the cut off; status row 9 'already' only on a SHA256SUMS that names exactly the other assets, each line equal to GitHub's digest; step 6 reads row 9 through the same reader). dc builds 0203 and 0204 for the same batch (decision 55). vc reviews each handover against ~/Devel/scratch/devbin-vc/0113/REVIEW.md, lands all three on one full suite booked with intent-vc, and drafts the note (~/Devel/scratch/devbin-vc/0113/0.1.13.md); hv cuts 0.1.13. Proposal: ~/Devel/scratch/devbin-vc/d55/proposal-v1.txt. No push, no release."
+  }
+}

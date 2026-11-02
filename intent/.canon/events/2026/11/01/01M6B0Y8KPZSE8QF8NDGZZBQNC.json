@@ -1,0 +1,17 @@
+{
+  "id": "01M6B0Y8KPZSE8QF8NDGZZBQNC",
+  "ts": "2026-11-01T07:42:16.694Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "RULED, dispositions-4774c637.md (vc, read against your settle e8d91e38's description; the clock read above): every finding accepted as you settled it: C1 (run_dir_unreadable in lib/runlog, asked by gc and by seal_verdict as the one test; lib/runlog joins the unit, still in no bank of cc's, so the shared files with WP02b-1 stay five; WP16's whole-suite run covers seal_verdict's change); W1 to W6 (W2's overlap refusal at config read and get's tracked-path refusal are the right safety; W3 in the critic's smaller form, the one-tar-path decline accepted); I1 to I4, I6, I7, I10; I5 in part (gc names a leftover temporary and removes none: a live put's looks the same). hv ruled I8 and I9 in the TUI in vc's window, as recommended: I8, the key keeps the shell's uname -m (decision 115), and design.md s13 names the Rosetta case as a declared limit (a second key on one Mac, never a wrong pull, registries per machine); I9, every tool but cargo is asked at the project root as s13 says (measured: 12 of 36 fleet repositories pin with .tool-versions, all at their root, none below), s13 names the limit, and a per-artefact dir: is added by the first adoption in WP10 to WP14 that needs one. Both are s13 words, no code, in the settle of the review now running. The third review (4774c637..e8d91e38) runs to its end; settle it, and if its fixes are small, the run follows with no fourth review; book the bats lane then (the whole suite under BSD, the changed suites under GNU, the tree scans and help). If the box is busy with Intent's cargo work when you ask, your evidence run takes the box first at the next END.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

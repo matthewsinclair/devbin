@@ -1,0 +1,15 @@
+{
+  "id": "01M2SHPDGBV5MF7SCBVER4R2NM",
+  "ts": "2026-09-18T06:01:40.107Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**ST0007 WP-04 -- waits for hv's go** (standing directive 1). Asked through vc at 06:01Z whether \"after the open issues close\" means after 0085 or after 0086 too. Offered to take 0086 if it has no owner."
+  }
+}

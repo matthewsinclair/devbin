@@ -1,0 +1,16 @@
+{
+  "id": "01M466E186G70VXDDTFYNYR4FC",
+  "ts": "2026-10-05T14:10:40.518Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 13,
+    "text": "BUNDLE BUILD, 0.1.9 (hv 2026-10-05: every open issue closes before the cut; fix and fail forward, ONE release). cc builds 0153 to 0162 and 0175; 0163 to 0176 are dc's. 0153 and 0175 landed (73a0e43b, eb9166e1; closed 393b1158). 0159 v3.1 is approved and in vc's suite on main plus dc's 0164 v2 and 0176, landing after them; its final message waits on cc's full-stack suite. Next, one handoff: 0157 v2.1, 0158 v2.2 and 0156 v2.1, each with critic-shell's findings built, arms red first and every mutant killed; 0158 rebases once 0164 and 0176 land. Then 0155, 0160, 0161 and 0162, built with their critic findings, needing their GNU pass, a suite and 0155's quiet-machine timing. No new heavy runs tonight; cc's full-stack suite and GNU pass were left running. State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md (SP)."
+  }
+}

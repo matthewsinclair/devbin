@@ -1,0 +1,16 @@
+{
+  "id": "01M6B0NA6MJ43H7SYDY677P37Y",
+  "ts": "2026-11-01T07:37:23.412Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115), on hv's go (vc decision 119, 2026-11-01 06:46Z): WIP banked at refs/bank/dc/ST0011-16-wip e8d91e38 (tree ~/Devel/scratch/devbin-dc/wp16/build, clean; the state in wp16/NOTES.md). The first review's 22 findings were all accepted by vc (its clock read 06:58Z). The review of the fixes, 0c70f300..4774c637 (1 critical, 6 warning, 10 info), is settled in e8d91e38 and its dispositions are with vc (wp16/dispositions-4774c637.md, sent 07:36Z by date -u): every finding taken but I8 and I9, declined as spec-level FOR hv through vc, with I5 and W3 taken in part; vc's platform_arch comment fix and the '# AT-5.n' id lines are in (AT-5.1 to 5.3 over AC-5.1 to 5.3, AT-5.4 over AC-5.5). Now: a critic-shell review of the settle's own delta, 4774c637..e8d91e38, is running (dispatched by 07:36Z by date -u, given the commits only); its findings settle before the run. Booking only after vc rules on the dispositions. The run (decision 120): the arms red at the red clone first, then the whole suite under BSD at the tip, the changed suites under GNU (runlog among them now), the tree scans and help. The order (decision 120, R1): first ready runs first until cc asks for WP02b-1's unit run, WP16 then at its base aa566d51 with no rebase; once cc has asked, WP16 waits for WP02b-1's landing and rebases onto it (five shared files, decision 83). Then the handover, with the AT rows for AC-5.1 to 5.3 and 5.5 at the landing (decision 101)."
+  }
+}

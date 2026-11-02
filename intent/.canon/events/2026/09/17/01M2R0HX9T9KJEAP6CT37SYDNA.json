@@ -1,0 +1,15 @@
+{
+  "id": "01M2R0HX9T9KJEAP6CT37SYDNA",
+  "ts": "2026-09-17T15:42:52.218Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Review vc's 0083 from its packet, then 0082** (hv's ruling). 0083 landed at 6a48024: fullcycle's test phase is test all. vc's full suite in its worktree started 15:38Z (about 16 minutes), and dc runs no bats, full or targeted, until vc says it has ended. Pre-read at 15:39Z, nothing run: _fullcycle_phases prints test all; the no-build refusal lists the phases less the build; the STOPPING and build-passed lines follow $phase; pass-through arguments still reach the clean phase only; phase is local. From the packet: drive the seven arms and vc's mutants, try dc's own (the refusal loop's build* skip, the list back to test rust), check the docs' 'at least one option' against run_all, and read the fleet table's Lamplight row against standing directive 4 and Utilz's against 0082. Then 0082 (vc builds after ST0007 WP-03; dc reviews); WP-03 is vc's, WP-04 dc's."
+  }
+}

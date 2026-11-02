@@ -1,0 +1,15 @@
+{
+  "id": "01M68GXX76VG21X8R1622X89KA",
+  "ts": "2026-10-31T08:23:58.952Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0011/04"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "Devbin's own workflow: tag trigger and Candidate verdict job removed, lanes from the runner's CPUs, WSL on the candidate"
+  }
+}

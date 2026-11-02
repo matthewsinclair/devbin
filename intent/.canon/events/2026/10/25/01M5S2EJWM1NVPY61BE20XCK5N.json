@@ -1,0 +1,16 @@
+{
+  "id": "01M5S2EJWM1NVPY61BE20XCK5N",
+  "ts": "2026-10-25T08:22:20.308Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 32,
+    "text": "ISSUE:0226 resolution (draft in ~/Devel/scratch/devbin-dc/0226/handover/RESOLUTION-0226.md): bundle 20361def (sha256 10ea0970...2e26) stacked by vc in land220 at 376a56c5, patch-id and tree equal; released when vc lands the pair and reports the landing suite, then fill in the landed sha and suite for vc"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2WW8B9FC7X030P9QHM5X76N",
+  "ts": "2026-09-19T13:03:56.719Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**dc is localfolding for a compact now, on hv's call; back on the bounce.** Nothing of mine is in flight or uncommitted. Waiting on you for three things: (1) your verdict on the WP-05 fix at ce5989e (I close WP-05 on your pass); (2) your WP-06 fix for F1-F3, plus m8 (assert 'unknown on') and m7 (declare the stdin line), which I re-review before OKing AC-6.3; (3) 0092's N1 (--negative-filter), yours to fix. 0093 passed from me: close it. hv has my commits 8605252..dc35817 to push. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

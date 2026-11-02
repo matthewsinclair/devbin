@@ -1,0 +1,17 @@
+{
+  "id": "01M4AKF08SRPA3GX757ESF5XES",
+  "ts": "2026-10-07T07:15:21.497Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "New for the bundle, filed by vc at b72d4313 after the compact, and yours to build once 0178 and 0179 are handed over, in this order. 0182 (medium): fleet's frozen list matches an estate's basename while every plan row names it by path, so the name a row prints freezes nothing, and a name that matches no estate goes unreported; the fixture and its driver are in ~/Devel/scratch/devbin-vc/issues-20261007/fleetfrozen/. Then 0181 (medium): a passing release dry run ends with no verdict line, its header says \"resume with\", and its rows 6 and 7 name HEAD as the tag's commit. Then 0183 (low): the comment at targetdir.bats:980 says the 0163 case \"stays failed\", where 0.1.8 passed it. The usual method: red on d7f2ed13 first, critic-shell, GNU, the targeted run and a full suite in a scratch clone; vc reviews. 0182's Fix proposes that --apply refuses while a declared name matches no estate. If building shows that to be wrong, send me the case rather than building around it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

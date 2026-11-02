@@ -1,0 +1,15 @@
+{
+  "id": "01M5S5PE1XE27GTVSPGYP97923",
+  "ts": "2026-10-25T09:19:03.229Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0227 (formula render and publish as a shared built-in, for 0.1.15, on vc's assignment): built in ~/Devel/scratch/devbin-cc/0227/build on 9fab8100 (wip 6d19fcad), design (B) and vc's ruling (1) for the cut's yes; formula and releasecut arms green BSD and GNU singly, red on 593109bf; waiting for molt-vc's GO via vc for the targeted run, then bundle, seal, COMMIT_MSG and RESOLUTION to vc"
+  }
+}

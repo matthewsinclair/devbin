@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 283,
+  "slug": "runtime-version-reads-the-manifest-s-devbin-vers",
+  "title": "runtime_version reads the manifest's devbin_version with its own awk, not manifest_field",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-28",
+  "closed": "2026-10-29",
+  "reporter": "Matthew Sinclair",
+  "body": "\n**Read** on main (eecd642a), lib/cmd/devbin:41-49. runtime_version runs `awk -F': ' '/^# devbin_version:/ { print $2; exit }'` over the manifest. manifest_field (lib/helpers:3366) is the one reader of a manifest's header fields: it stops at the first non-comment line and trims whitespace, and the copy does neither. A manifest with `#devbin_version:` (no space), a tab after the colon, or a field after the header block is read differently by the two.\n\n**Fix.** Have runtime_version call `manifest_field \"$PROJECT_ROOT\" devbin_version` (or the root its DEVBIN_DIR names), keeping its die for a manifest that names none.\n\n**Done when.**\n1. lib/cmd/devbin holds no awk over the manifest.\n2. `devbin devbin` and `--version` print the same runtime version as before on every manifest the arms build.\n3. A contract arm finds `devbin_version` read only through manifest_field, in the shape 0262's kind arm uses.\n\nDrafted by dc (2026-10-28), measured and filed by vc; low, and not in 0.1.16.\n\n## Resolution\n\n- runtime_version reads the manifest's devbin_version through manifest_version, which is manifest_field's reading of the header, for the root its DEVBIN_DIR names. lib/cmd/devbin holds no awk over the manifest. The refusal of a manifest naming no version, and the fallback where there is no manifest, are kept.\n- Landed on main at 6c69bd96.\n- Arm: tests/unit/contract.bats, \"a manifest's devbin_version is read in one place, manifest_version through manifest_field, and by no other reader (0283)\", in the shape of 0262's kind arm. manifest_field asked for the field appears only on manifest_version's line, which the arm reads from lib/helpers itself, and no line of lib/ or bin/ reads `devbin_version:` with a tool of its own.\n- Desk evidence: hv's full run on rhadamanth, sealed at tmp/test/20261029-1314.bats.out and .bats.errors: 2824 ok and 2 not ok, neither of them this issue's.\n"
+}

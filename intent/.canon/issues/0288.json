@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 288,
+  "slug": "three-test-helpers-each-write-a-stub-machine-ins",
+  "title": "three test helpers each write a stub machine install by hand (fake_install, mkinstall_prefix, brew_keg --stub), differing only in their manifest lines",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-28",
+  "closed": "2026-10-29",
+  "reporter": "Matthew Sinclair",
+  "body": "Three test helpers each write a stub machine install by hand, and differ only in their manifest lines: machinepointer.bats' fake_install (:30 on main at 1b4812f7), fleet.bats' mkinstall_prefix (:1577), and brew_keg's --stub (tests/lib/test_helper.bash, from 0270, in 0.1.16). A change to what an install's manifest carries has to be made three times, and one missed makes its file's arms test an install devbin no longer writes. Read by the critic-shell review of 0270 (2026-10-28). Filed by vc; low, and not in 0.1.16.\n\n## Fix\n\nOne writer of a stub install in tests/lib, taking the manifest lines that differ, and the three helpers call it (or are replaced by it).\n\n## Done when\n\n1. tests/ holds one function that writes a stub install's tree and manifest, and fake_install, mkinstall_prefix and brew_keg --stub reach it.\n2. machinepointer.bats, fleet.bats and every file using brew_keg pass under BSD and GNU, with the tree scans and help, and CI is green on the pushed head.\n\n## Resolution\n\n- tests/ holds one writer of a stub install, stub_install in tests/lib/test_helper.bash. It writes the launcher, one lib file and a manifest recording devbin 0.1.0, `kind: install`, the source and a commit, then each extra header line, and every step returns its failure.\n- machinepointer.bats' fake_install, fleet.bats' mkinstall_prefix and brew_keg --stub (with `managed_by: brew`) reach it. So do the two fleet.bats arms that wrote the other install inline.\n- updatenotice.bats' mkinstall is left as it is: it writes an ancestry table, a chosen commit and file rows for an install source, a fixture of another shape.\n- Landed on main at 718b2542.\n- Arms: machinepointer.bats, fleet.bats and every file using brew_keg, all ok in run 1314.\n- Desk evidence: hv's full run on rhadamanth, sealed at tmp/test/20261029-1314.bats.out and .bats.errors: 2824 ok and 2 not ok, neither of them this issue's.\n"
+}

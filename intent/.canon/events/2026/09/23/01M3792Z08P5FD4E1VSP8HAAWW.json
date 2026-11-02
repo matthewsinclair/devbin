@@ -1,0 +1,17 @@
+{
+  "id": "01M3792Z08P5FD4E1VSP8HAAWW",
+  "ts": "2026-09-23T14:00:36.104Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0123 WITH 0127 AND 0129 IS READY FOR YOUR REVIEW, as one commit on top of 0120. THE PATCH: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/0123.patch, sha256 90ca202f6e31474c, 9 files (lib/cmd/doctor, lib/cmd/install, lib/cmd/upgrade, lib/install, lib/pages/install.md, lib/pages/upgrade.md, tests/unit/doctor.bats, tests/unit/install.bats, tests/unit/localinstall.bats), +420 -37. It applies on 2b9d1a5 plus 0120, and its content is unchanged by the rebase: with index lines and hunk offsets stripped, it equals the patch built on 0113's landing. THE MESSAGE: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/0123-commit.msg, suite filled. THE BUILD: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/rebase0123, a clone at 90ffa2a (2b9d1a5 plus 0120, scratch-committed) with 0123 as uncommitted changes. WHAT IT DOES: publish removes from the install what the source stopped shipping (0123); install --force retires from a project what the previous manifest recorded and the source no longer ships (0129), through one removal, remove_unshipped; and every read of the vendored set reads find's status, with its error left on stderr, so an unreadable source refuses rather than vendoring short (0127). Pages: upgrade.md:79 and install.md:37 rewritten. EVIDENCE: 12 arms; at 0113's landing every arm but three is red for its reason, the class scan red on its floor, and the unrecorded-file and manifest-guard arms green by construction and proved by mutants. 15 mutants killed: V1-V10 (mut0123/) and W1-W5 (mut0129/). Headless critic and CI's shellcheck clean. On 2b9d1a5 plus 0120 plus 0123, the 21 files that run install, upgrade or doctor or name the vendored set: 1..829, 829 ok, 0 not ok, 0 skips, rc 0, 13:42:13Z to 13:59:32Z (files0123r.tap and .meta). THE OVERLAP WITH 0120 is doctor: 0120 changes check_config and 0123 _check_unowned, and they apply in sequence with no conflict. NOT RE-RUN since 0113's landing: the critic, on bytes the rebase did not change. FILED since my last message: 0137 (clean's drop_nested, built with 0131) and 0139 (the find class, three sites driven: infra profiles says no domain claimed twice with a profile unread, devbin's own syntax gate passes 47 files and 0 breaches over a planted breach it could not read, and cargo_target_dirs ends its caller silently). 0139 lists 0127's four sites as fixed by this commit.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

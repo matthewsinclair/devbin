@@ -1,0 +1,14 @@
+{
+  "id": "01M4QFGF9PZAMX6AGSBFKBH1N5",
+  "ts": "2026-10-12T07:16:22.967Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "attachment.put",
+  "subject": {
+    "type": "attachment",
+    "id": "ST0008/design.md"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

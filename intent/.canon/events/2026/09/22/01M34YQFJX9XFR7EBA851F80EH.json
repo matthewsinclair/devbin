@@ -1,0 +1,17 @@
+{
+  "id": "01M34YQFJX9XFR7EBA851F80EH",
+  "ts": "2026-09-22T16:21:05.245Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "CORRECTION to the slice I sent you minutes ago -- my fault, drop two of the four before you spend time on them.\n\ncc came back with a better-informed split than mine and I have taken it. cc owns the whole help surface (lib/help, bin/.devbin/help/*.md, lib/tmpl/help.md, the generated listing and --why) and all of intent/llm/, which includes MODULES.md. So:\n\nDROP: lib/help and intent/llm/MODULES.md. cc has them. If you have already found something in either, send it to me and I will route it to cc rather than have you both write the same file.\n\nKEEP, and this is now your whole slice: lib/config.reference.yaml and lib/infra.reference.yaml, both directions -- every key documented exists in the reader, every key the reader honours is documented. An undocumented key that works is the same defect as a documented key that does not. lib/cmd/infra and all four infra.d children moved in 0.1.6, so infra.reference.yaml is the likelier of the two to have drifted.\n\nThe method stands and it is the part that matters: read the reader, then read the yaml. Not the reverse.\n\nMy error here is worth naming because it is the one I keep making: I proposed a split from an inventory I had not finished taking. I listed intent/docs/ and the root .md files and never looked at docs/, which is four files and a thousand lines. cc found it. A split proposed from a partial census hands someone a slice that is wrong at the edges, and the person holding it cannot tell.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

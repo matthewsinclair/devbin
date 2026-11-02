@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJPJV3F33378WBH7F5R8X2",
+  "ts": "2026-10-08T20:18:59.043Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "0.1.10 IS READY FOR hv's PUSH AND CUT. 0191 landed at 9a23d3ea and 0190 at e29f9f07, both closed (records edbab291), on vc's landing suite: 2295 of 2295 ok, 0 not ok, .errors empty, seal 20261008-2007, two lanes, 9 min 29 s. RELEASES/0.1.10.md finished at f2c62ace. hv moved 0192 to the next release on 2026-10-08; it is the one open issue. Next: hv pushes; CI green on the pushed head (0190's Done when 4); then hv cuts with bin/devbin release v0.1.10."
+  }
+}

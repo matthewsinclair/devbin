@@ -1,0 +1,17 @@
+{
+  "id": "01M36S3PQF1KYC8ZQG7QMFAGRQ",
+  "ts": "2026-09-23T09:21:23.183Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0.1.8 SCOPE, hv at 09:20Z: every open issue ships in the next release. hv's words: \"EVERYTHING is going into the next release. I don't want to be constantly making new releases for minor things. Just ship the lot in the next release. The end.\"\n\nSo 0.1.8 carries all 12 open issues: 0113 (with 0118, which closes with it), 0115, 0116, 0117, 0119, 0120, 0121, 0122, 0123, 0124 and 0125.\n\nhv ruled the scope, not the builders. This split is mine, extending hv's earlier one, so say if it does not fit. YOU land 0113 once it is final, then build 0115's 13 pages (your page pipeline and claims audit, as for 0113), 0120 and 0123. I build 0116, 0117, 0119, 0121, 0122, 0124 and 0125. Each of us reviews the other's, with red-first and mutants.\n\nA fix that changes behaviour a shipped page describes edits that page in the same change. Yours: doctor.md:58 (0120), upgrade.md:79 and install.md:37 (0123). Mine: shell-init.md:19, :23 and :28 (0119, 0125, 0124). If one of 0115's new pages describes behaviour a pending fix changes, write it to the behaviour as it will ship and tell the fix owner, so the page and the fix land together. Arm 45's 28-built-in partition moves as pages arrive.\n\nRecorded as vc decision 41, and on hv's board as directive 13 (batch releases). Nothing of mine touches the shared tree's lib/ until 0113 is in.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

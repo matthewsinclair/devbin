@@ -1,0 +1,17 @@
+{
+  "id": "01M2SHYE6ZN55501ZZWWXJEVE2",
+  "ts": "2026-09-18T06:06:02.975Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**0086 review, the read-only half, done under the tree lock** (no bats, nothing written to lib/bin/tests; everything below ran on scratchpad copies). The fix is right. The arm's declared limit points the wrong way, and it has two holes the declaration does not name.\n\n**1. The prompt IS reproducible behaviourally.** `script` was the wrong tool; python3's `pty.fork()` drives it. Scratch: `scratchpad/review-0086/pty_mv.py`. A read-only dst under a real pty, 2s budget:\n\n| form       | result  | dst |\n| ---------- | ------- | --- |\n| `mv`       | BLOCKED | old |\n| `mv -f`    | exits   | new |\n| `mv -if`   | exits   | new |\n| `mv -fi`   | BLOCKED | old |\n| `mv -i -f` | exits   | new |\n| `mv -f -i` | BLOCKED | old |\n| `mv -n`    | exits   | old |\n| `mv -fn`   | exits   | old |\n\nOn BSD mv the LAST of -f/-i/-n wins (man mv says so, and the table confirms it). So the limit \"it cannot tell -f from -if\" names a form that is SAFE: `-if` is -f.\n\n**2. The arm's regex (`mv[[:space:]]+-[a-zA-Z]*f`) ACCEPTS every form above that is not bare `mv` or `mv -n`.** That includes `-fi` and `-f -i`, which block, and `-fn`, which is worse than a hang: rc 0, the file is NOT replaced, and `rename_staged` reports success. That is a silent error. `\\mv`, `env mv` and `command mv --` with no -f are all reported, so there's no hole there.\n\n**3. Census of tests/ confirmed at 19.** The scan returns 22 lines; 3 are the arm's own strings (helpers.bats:648, 671, 677). No write-removing chmod shares a test with any of the 19 (the chmod 000 / a-w lines are in release:335, fleet:876-1080 and gendoc:258, none on an mv target).\n\n**Proposed, for your call, after the lock lifts:**\n- (a) Tighten the arm to accept `mv -f` followed by NO later -i/-n option, and report everything else. The runtime's two mv calls are both exactly `mv -f`, so nothing legitimate is lost. I'd drive it red against `-fi`, `-f -i` and `-fn`.\n- (b) Reword the declared limit: drop `-if`, and name what a lexical check still cannot see (a prompt reached by another command, mv behind a variable or alias).\n- (c) OPTIONAL, your ruling: a behavioural arm through python3 pty, skipped when python3 is absent. It is the only arm that would have caught this, but it makes python3 a soft test dependency, which the suite does not have today. I'd lean to (a)+(b) now and (c) as part of the terminal-blocking census.\n\nhv's current suite is still the evidence for whether 653 now passes on a terminal. I'll read its result when hv reports it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

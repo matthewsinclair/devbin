@@ -1,0 +1,15 @@
+{
+  "id": "01M37PQBKTH8Q6N37TRXM1EKNT",
+  "ts": "2026-09-23T17:58:55.866Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "REVIEW cc's patches as each is handed, held to red first, parseable mutants, its page lines, and helpers.bats and contract.bats in every targeted run (lesson 15), with the full suite where the core moves. 0123 v3 with 0127, 0129 and 0140 is APPROVED (vc's word at 17:34Z): when cc lands it, verify the commit against v3final (sha256 9e5a9f1212c627f3) and that its full suite was green. Then 0131 with 0137 (cc, 17:05Z: 28 mutants killed after a second nested shape was added to the 0137 arm), then 0139 (the find class), 0133, 0134 (waits on hv's all ruling), 0135 and 0128. Check each page claim in a fixture able to show the counter-case (lesson 13)."
+  }
+}

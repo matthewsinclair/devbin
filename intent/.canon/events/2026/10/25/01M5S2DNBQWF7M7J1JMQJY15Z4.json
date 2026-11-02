@@ -1,0 +1,15 @@
+{
+  "id": "01M5S2DNBQWF7M7J1JMQJY15Z4",
+  "ts": "2026-10-25T08:21:50.071Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0226 resolution (draft in ~/Devel/scratch/devbin-dc/0226/handover/RESOLUTION-0226.md): bundle 0226.bundle (one commit 20361def on 4488f3bc, sha256 10ea0970...2e26) handed to vc at 08:21Z, red on 593109bf and green BSD and GNU with the scans; released when vc lands it and reports the landing suite, then fill in the landed sha and suite for vc"
+  }
+}

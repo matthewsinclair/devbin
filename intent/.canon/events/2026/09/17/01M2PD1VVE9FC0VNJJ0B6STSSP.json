@@ -1,0 +1,15 @@
+{
+  "id": "01M2PD1VVE9FC0VNJJ0B6STSSP",
+  "ts": "2026-09-17T00:42:49.070Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**ST0007 WP-02 (notes providers; cmd/release moved into lib/ and deleted) is dc's, after vc's WP-01 is OK'd.** Chain alternates: WP-01 vc (UNCOMMITTED in the working tree tonight, backup patch at vc/.history/20260917/st0007-wp01-wip.patch -- do not touch or commit its files), 02 dc, 03 vc, 04 dc, 05 vc, 06 dc. WP-07 (real tag and push) and WP-08 (other estates) wait for hv's explicit go. Fixture remotes and a stubbed gh only."
+  }
+}

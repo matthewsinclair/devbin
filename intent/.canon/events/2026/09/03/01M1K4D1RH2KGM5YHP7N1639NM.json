@@ -1,0 +1,14 @@
+{
+  "id": "01M1K4D1RH2KGM5YHP7N1639NM",
+  "ts": "2026-09-03T07:58:13.266Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.edit",
+  "subject": {
+    "type": "issue",
+    "id": "0044"
+  },
+  "payload": {
+    "title": "RETRACTED -- a fleet root that does not exist was claimed to scan as empty; the census already names it ABSENT"
+  }
+}

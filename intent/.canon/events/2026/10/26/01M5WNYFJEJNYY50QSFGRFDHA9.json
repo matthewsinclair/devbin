@@ -1,0 +1,16 @@
+{
+  "id": "01M5WNYFJEJNYY50QSFGRFDHA9",
+  "ts": "2026-10-26T18:00:47.438Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 34,
+    "text": "ISSUE:0235, claimed: landed by vc at f5df4614 and corrected by 0236 at a81f0f98; vc accepted draft v2, ~/Devel/scratch/devbin-cc/0235/RESOLUTION-0235-v2.md (sha256 437d525b), which supersedes the sealed handover/RESOLUTION-0235.md f3a0733c; sealed evidence in 0235/runs and runs2. The critic-shell follow-ups are on vc's board to file. Released when vc closes 0235 in its todo 171, filling v2's placeholders with the landed sha f5df4614 and CI run 40349359447 on a81f0f98, the head v0.1.15 (4efb6e17, tag 098dc033) was cut from; then unclaim ISSUE:0235"
+  }
+}

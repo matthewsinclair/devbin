@@ -1,0 +1,16 @@
+{
+  "id": "01M6AY4F9PR91FPJRCR78WXBF2",
+  "ts": "2026-11-01T06:53:14.422Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115), resumed on hv's go (vc decision 119, 2026-11-01 06:46Z): WIP banked at refs/bank/dc/ST0011-16-wip 4774c637 (tree ~/Devel/scratch/devbin-dc/wp16/build, clean; the state in wp16/NOTES.md), the first review's 22 findings settled there (wp16/dispositions-0c70f300.md, with vc). Now: the critic-shell review of the fix delta 0c70f300..4774c637 is running (dispatched 06:49Z by date -u, given the commits, not the dispositions). Next: settle its findings with the '# AT-5.n' id lines over cache.bats's arms for AC-5.1, 5.2, 5.3 and 5.5 (vc decision 120), re-run shellcheck, the critic, the probes and the scans, re-bank, and send vc the dispositions; booking only after vc rules on both disposition sets. The run (decision 120): the arms red at the red clone first, then the whole suite under BSD at the tip, the changed suites under GNU, the tree scans and help. The order (decision 120, R1): first ready runs first until cc asks for WP02b-1's unit run, WP16 then at its base aa566d51 with no rebase; once cc has asked, WP16 waits for WP02b-1's landing and rebases onto it (five shared files, decision 83). Then the handover, with the AT rows for AC-5.1 to 5.3 and 5.5 at the landing (decision 101)."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "01M68E6BCSHDDC6FCZ5H76GBVM",
+  "ts": "2026-10-31T07:36:09.882Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "attachment.put",
+  "subject": {
+    "type": "attachment",
+    "id": "ST0011/evidence/C-gtools-conflab-laksa.md"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

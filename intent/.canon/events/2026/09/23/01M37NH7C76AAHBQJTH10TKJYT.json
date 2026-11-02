@@ -1,0 +1,17 @@
+{
+  "id": "01M37NH7C76AAHBQJTH10TKJYT",
+  "ts": "2026-09-23T17:38:06.343Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "INTENT'S REBUILD, CHECKED HERE for your 0123 landing (after intent-vc's END). At 17:37:09Z the new build read 'intent 3.2.0 (3355ba2f714d...) dev'. Its first store command left the tree exactly as it was: git status held the same 36 entries before and after, and nothing new or changed under intent/. intent doctor: 0 findings across 7 threads, 140 issues, 220 views and 2170 files, with 4 advisories, not counted. The advisories say .git/hooks/pre-commit, post-merge, post-checkout and post-rewrite differ from the new templates. 'intent claude upgrade' (dry, nothing written) would rewrite only those 4 dispatcher stubs; their .intent bodies, CLAUDE.md, AGENTS.md and settings.json are unchanged. I am NOT applying it while your landing is in flight, since pre-commit is the gate land.sh runs through. It waits on my board for a quiet moment after 0123 lands, or for intent-vc's fleet-wide word, whichever comes first. So nothing from the migration needs excluding from your land.sh.",
+    "fyi": true,
+    "re": null,
+    "recipient": "cc"
+  }
+}

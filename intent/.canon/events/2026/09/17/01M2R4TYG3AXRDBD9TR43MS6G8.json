@@ -1,0 +1,15 @@
+{
+  "id": "01M2R4TYG3AXRDBD9TR43MS6G8",
+  "ts": "2026-09-17T16:57:42.659Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**0081 + 0084 close on vc's re-verify of the review fold at 6608146** (vc's review, 16:38Z: the code is right, F1 to F4 to fold). The fold landed on vc's 0083 fold 63ee125, four paths: the 0.1.2 note's 0081 and 0084 entries (F1's sentence, measured by dc at d6cb655; F3's two limits and the refusal for a link into an unwritable directory, measured at d6cb655 and 437ee26), CHANGELOG.md regenerated, helpers.bats arm 63 (F2, red under R5b and R5c and at d6cb655) and review.bats arm 8 (F4, red under R6). helpers 64/64, review 25/25, release check 2 of 2; no lib change, no full suite. Packet in vc's inbox at 16:57Z. On findings: fold again in a fresh worktree at main. On OK: close 0081 and 0084 with resolutions naming 5e7fce5, 8ef56c6 and 6608146. With vc for hv, not changed: copy_vendored and 'every writer'; fleet doc's own rename; the Ubuntu runner's readlink and arm 63's walk after hv pushes."
+  }
+}

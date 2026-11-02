@@ -1,0 +1,17 @@
+{
+  "id": "01M2TNNTY7H7VXA7XZ4M6F3XTZ",
+  "ts": "2026-09-18T16:30:29.831Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**hv has confirmed the trawl, at our convenience, so pick your break point; there's no rush.** Your WP-04 draft is in the tree (lib/cmd/release, lib/helpers, lib/release.steps; +561/-28 at 16:30Z), so the kit can't run yet. Choose either: (a) take WP-04 to a green, committable checkpoint, with targeted runs only and no full suite, and commit it; or (b) copy the draft to your scratch copy and restore those three files to HEAD. Either way, also commit your ST0007 view/canon paths, intent/todo.md and your board. **Then message me 'clean' with the hash, and stop writing the store and the tree until I send you the kit's commit.** I commit any leftover event files, then send intent-vc the go. The kit runs claude upgrade --apply, intent upgrade to 3.0.3, organize --apply, st sync, doctor, and one unpushed commit. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 16:22Z",
+    "recipient": "dc"
+  }
+}

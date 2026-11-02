@@ -1,0 +1,16 @@
+{
+  "id": "01M525AMT76R3FSZB0DSK5FX6K",
+  "ts": "2026-10-16T10:50:04.999Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 46,
+    "text": "vc's ORDER (2026-10-16): 0192 (todo 45), then 0199. Landed today: 0195, 0198, 0197, 0196. 0192 BUILT at feafbd68 on main 2bcd567c on vc's rulings ((a) phase 1, (c) the demo/shell starter shape): one real install per file into read-only caches sealed by one helper, a copy per test; 5 harness arms red first and green BSD+GNU; critic-shell's findings taken; banked. 0199 BUILT at 20c1fac1: the slow-y arm bounded against the run's own length (vc accepted the deviation); red on a charging fullcycle, green alone BSD+GNU; critic-shell 0/0/2. Both wait for vc's booking after Intent's two slots: the nine-file timing (BSD), fullcycle --jobs 8 (BSD, GNU), and 0192's GNU correctness run; then both handovers (re-entry ~/Devel/scratch/devbin-cc/i0192/STATE.md and i0199/STATE.md)."
+  }
+}

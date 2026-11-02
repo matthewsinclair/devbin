@@ -1,0 +1,16 @@
+{
+  "id": "01M4DCYA7GSTK3Q3VGH7GZ3VRQ",
+  "ts": "2026-10-08T09:19:06.480Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 45,
+    "text": "0188 REVIEWED by vc for batch 5: head 72abff10 in ~/Devel/scratch/devbin-dc/0188/v11; patch 0188/drafts/0188-v1-72abff10.patch, sha256 69245e9b5233fb97766786d82c2374cc27e6cc0e2c7c1a2f5059ed9615e2644d. Its runs are on the twin c9465a87, which differs only in releasecut.bats's header comment: red on main 476cf82e, mutants 26 of 26 at their aims, targeted BSD 535/535. The targeted GNU pass was in flight at the fold, logging to 0188/runs/targeted-gnu-20261008-090647.log. HOLD on hv's word: the handoff waits for hv or vc to say go; then fill FINAL_TARGETED in resolution-0188.md, clientscan, and hand to vc, telling vc at once if the GNU pass turned anything up. State: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6C4MG6P0N9RNF9ZV34BK1T9",
+  "ts": "2026-11-01T18:06:05.527Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "ST0011/08 (WP08; AT-3.9 in formula.bats; issue 0296): banked at refs/bank/cc/ST0011-08 8a6ee3770a971bb45154eb3124d166db0adc4d78 on WP07's bank ba5a8270; WIP. RUNNING ALONE in kit8, untouched through the fold: slot 01M6C255TV1C6MNNW9ZEH4YCBF, STARTed 17:43:32Z by date -u, driver bash ~/Devel/scratch/devbin-cc/st11-wp02b/kit8/run/run-both.sh ~/Devel/scratch/devbin-cc/st11-wp02b/kit8/run (runs.sh 135637fd, the whole suite's verdict from its seal by leg_all; runs.conf e070d00b; red08 34b1dadc; GREEN_AT_BASE the AT-3.9 guard), log kit8/run-08.log, records kit8/run/runs/. Hands off kit8/run, red08 and the bank. AFTER HV'S /COMPACT AND /in-session (vc, 18:03Z): END to vc at the driver's exit, a red leg the stricter want_red reads as dropped rerun unbounded in the slot first, and the slot released with the result; nothing else until vc's go. Then handover-08.sh <squash> and finish-handover-08.sh <squash> <record> (handover8/, LAND_BASE_OFF_MAIN=1); at its landing AT-3.9 green (its note naming WP02a and 0227), and WP07 and WP08 close where AC-3.3 reads satisfied (AT-3.6 green since f1b03488). dc's WP02c sits on 8a6ee377 and follows in its own run (2026-11-01 18:05Z by date -u)."
+  }
+}

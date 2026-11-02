@@ -1,0 +1,15 @@
+{
+  "id": "01M2VDJ058RPXKRM1WJ397ZJ27",
+  "ts": "2026-09-18T23:27:49.928Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Docs sweep, framework half:** vc's 22 items in cc/inbox.vc.md (README 1-4, authoring-commands 2 and 10-13, configuration.md 4-8) wait for hv to say who fixes them; cc is paused. The release half landed at c17f420. At WP-06, check the release summary in lib/builtins and release --help (vc's item 4)."
+  }
+}

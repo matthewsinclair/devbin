@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJK42W42QT9PVJ4TAVK4J3",
+  "ts": "2026-10-08T20:17:05.628Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 41,
+    "text": "0191 v1.1 ACCEPTED by vc (head 21f523d9, patch e92a724e) and landing with 0190 in 0.1.10. When vc says it is in: export b191 (b58b5e21..21f523d9), verify it in a fresh clone of the shared tree, delete w191, wbase191 and wcrit191, archive this, unclaim ISSUE:0191. Paths and sums: ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md"
+  }
+}

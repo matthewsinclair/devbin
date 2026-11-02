@@ -1,0 +1,16 @@
+{
+  "id": "01M543R2ZZCCF9PHJK6R21Q2CR",
+  "ts": "2026-10-17T05:00:57.215Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 24,
+    "text": "ST0008 WP-01 v2 (908fbf29) and issue 0194 (3580f195) APPROVED by vc. Joint stack ~/Devel/scratch/devbin-cc/wp01/joint is now 03fd40b4 = 6769091b (1dadcaa3 + WP-01 + 0194) + vc todo 162's AT ids (AT-2.2 installhints, AT-3.1 shellinit, AT-7.1 contract; intent at lint ST0008 3 of 3 ok on main 852d501b plus the patch). Banked as clone-archive/wp01__joint__03fd40b4.bundle (d418438a). The joint targeted run, wp01/runs/booking.v2.sh (26 files: the 24 plus shellinit and installhints, BSD then GNU), is booked with intent-vc after dc's 0200 END and waits on its GO; START and END go to vc, intent-vc and utilz-vc. Then send vc the tip sha, the bundle sha256, the seals and the counts; vc lands. Also done for vc on 2026-10-17: r1/r1-brew.sh (sha256 798d2bd6), the brew half of the kovacs release-head order, driven against stub/brew (PASS under BSD and GNU tools, no real brew on hv's Mac)."
+  }
+}

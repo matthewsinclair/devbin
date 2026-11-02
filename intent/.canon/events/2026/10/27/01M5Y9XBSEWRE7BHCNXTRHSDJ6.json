@@ -1,0 +1,15 @@
+{
+  "id": "01M5Y9XBSEWRE7BHCNXTRHSDJ6",
+  "ts": "2026-10-27T09:08:56.752Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0244"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "The version line's sha field is not always twelve digits: a recorded commit of 7 to 11 hex digits prints short, and a 64-digit one prints more (T4, latent)"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M45HS3HE9GXRGZNR4WXQFHJD",
+  "ts": "2026-10-05T08:09:43.215Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 13,
+    "text": "BUNDLE BUILD (hv 2026-10-03: no new threads, fix and fail forward; ONE release with 0152, which landed at 8ee0518). Scratch clones on 8ee0518, still current: main has no code change since. 0154 v5.1 (SP/tree 4dc6d40c): vc approved it pending cc's heavy runs on START, vc's full suite and the landing. On START, first archive hold 14 (vc, 2026-10-05), then the 36 mutants, the 14-file targeted run and census timing; census output stays in scratch, only numbers reach the commit message, and fleet doc is not run. 0159 v2.3 (SP/b159 17722c3d): review fixes built, every new arm red on base; cc has proposed running its targeted run and mutants once, after 0154 lands and the rebase and G1 are done (vc to answer). 0153, 0156, 0157 and 0158 (v1): critic-shell and vc findings to fix forward, listed in SP/FINDINGS.md; 0153's body is reworded on hv's word under the client-name rule. Not started: 0155 and 0160 to 0171; cargo is now 1.99.0, so the cargo issues re-measure red on base. Landing order: 0154, 0159, 0157, 0158, 0156, 0153. State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md (SP)."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M69TWW26J1XN85Y9GD4MDHW9",
+  "ts": "2026-10-31T20:37:25.190Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 184,
+    "text": "FOR hv, open at the fourth fold and still open after the fifth (recs in brackets; count corrected 2026-10-31 20:37Z): Intent 0666's fix shape (intent daemon start --at-login says ok and enrols nothing while a daemon runs; rec: enrol or refuse, never ok with nothing done; intentd stays unenrolled at login on rhadamanth until then); Molt's PATH order (rustup's cargo before Homebrew's; a Molt session or hv's hand); the Intranet ads check ignoring optional: true hosts (an Intranet fix) and whether the sweep reaches the Intranet checkout under Dropbox, outside the fleet frame; the six Utilz exhaust folders in ~/.Trash by utilz-vc's count (utilz-vc-exhaust-20261031, utilz-vc-exhaust-20261031b, utilz-dc-exhaust-20261031, utilz-dc-exhaust-20261031-fold2, utilz-dc-st0031-03-20261031, utilz-dc-fold5-20261101; rhadamanth-sysadm's shell is refused the listing but reads a named path inside, so it reads their manifests by name and reports to vc before any removal under the 14:34Z go); the repo model (hold 34; main unpushed since 9f579b36). Closed today: kovacs's provisioning (brew only), gyges's estate-pull job, Intranet's known_hosts, 0667 (hv ruled it in intent-vc's window), Utilz's push and dispatch, Laksa's and Conflab's answers, the first two Trash folders."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M69M7GW124NSYSSAW66WEQKP",
+  "ts": "2026-10-31T18:40:54.145Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011 fix phase, FOLDED AND HOLDING on hv's fourth order (2026-10-31 18:38Z, decision 111; desk hold 01M69M2X7XDQNBY93WPQM657QG; vc holds the pen, decision 103). ON MAIN: WP01 bc744227 (done), WP04 80052f26 (WIP until the trigger removal after WP02b), WP03 (ci-state half 76a0fba6 and its remainder ebc38b18; WIP until cc's WP02c call lines turn AT-3.15 green), the dc stack (WP06b 314f3c78, WP05 7333cae0; WIP until the hook-ins after WP02b), issue 0300 at 25bebe8b (closes on kovacs's green), WP02a bd13167f. SUITES at 7333cae0: green on rhadamanth (15:06Z to 15:22Z); kovacs K0117 green but for 0300 at the pin, nothing new red on Linux (uutils, mawk). BANKED: cc's WP02b-1, the loop in the plain shape (the ci step, ci.tag and ci.base retired), WIP at the fold, WP02b-2 (the publish shape folded in, release publish and --expect retired) to follow; dc's WP16 WIP da47fe42 (the cache verbs, the toolchain table, platform_word, the build: schema, doctor's row, the page and docs built; cache.bats and the exit-3 words next) and WP17 WIP f431ae57 (after WP16, decision 109). RULINGS 100 to 111 on this board (104 to 110 the day's design calls: the reader takes the stamp's paths, a bespoke ci.query is not asked, WP02b the loop first, WP02b's note approved, platform_word, WP16's codes and callers, WP16 before WP17). NEXT on hv's go: unhold; cc's WP02b-1 review, run, landing; dc's WP16 arms, review, run, landing, then WP17; WP02b-2; WP02c; WP07; WP08; the full suites on rhadamanth and kovacs (0300 closes); WP09 at 0.1.19 once WP01 to WP08, WP16 and WP17 are landed and both suites green (decision 102); the sweep per sweep-plan.md naming release publish's retirement; WP10 to WP14; WP15; WP18 last. ESTATES: Utilz ST0031/03 landed locally, holding for the sweep; Intent ST0090 green and landed, AC-02.4 FOR hv (todo 187); Gtools ST0021/01 run 2 passed, re-bank 2c984024 awaits hv's landing approval (todo 188); Laksa S2 and the five reds under laksa-vc; Conflab holds for the sweep. Issues filed today: 0300 to 0305 (devbin), 0668 and 0669 (Intent)."
+  }
+}

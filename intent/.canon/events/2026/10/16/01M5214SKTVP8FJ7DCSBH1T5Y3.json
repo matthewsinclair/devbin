@@ -1,0 +1,16 @@
+{
+  "id": "01M5214SKTVP8FJ7DCSBH1T5Y3",
+  "ts": "2026-10-16T09:36:59.002Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 46,
+    "text": "vc's ORDER (2026-10-16): 0197, 0196, 0192 (todo 45), then 0199. 0195 landed at 93259543 and 0198 at 10ae01c9 (closed at d2463ce8). 0197 BUILT on vc's ruling at 088dfcd0; its targeted run (12 files, vc's booking from 09:35Z) in flight; then its handover (re-entry ~/Devel/scratch/devbin-cc/i0197/STATE.md). 0196 BUILT on vc's ruling (B: a CNAME answer with no row of the type is NOT MEASURED naming the target; following not built) at 7e460a5b, red first and green BSD+GNU; critic-shell running; then its targeted run through vc (re-entry ~/Devel/scratch/devbin-cc/i0196/). 0199 (medium, filed by vc at a90ad02d): fullcycle.bats:1020's absolute 9s wall bound. Each built by cc and reviewed by vc."
+  }
+}

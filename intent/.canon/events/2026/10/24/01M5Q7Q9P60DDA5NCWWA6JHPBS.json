@@ -1,0 +1,16 @@
+{
+  "id": "01M5Q7Q9P60DDA5NCWWA6JHPBS",
+  "ts": "2026-10-24T15:15:59.814Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 51,
+    "text": "ISSUE:0219 dfcb603c HANDED OVER to vc in the same bundle as todo 50 (RESOLUTION-0219.md drafted). T was green in f0216, BSD and GNU: updatenotice, runlog, the six tree scans and help. Waiting for vc to land it and close 0219. No push, no release"
+  }
+}

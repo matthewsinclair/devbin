@@ -1,0 +1,15 @@
+{
+  "id": "01M5YNE113KKMPV30XPC9EM71B",
+  "ts": "2026-10-27T12:30:17.126Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0270"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "Tests build a Homebrew keg three ways, brew_machine, use.bats' brewed and linked, and fleet.bats' mkbrew_keg; one shared builder (from 0258's review)"
+  }
+}

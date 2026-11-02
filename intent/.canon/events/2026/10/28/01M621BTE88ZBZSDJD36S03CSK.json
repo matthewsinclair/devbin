@@ -1,0 +1,16 @@
+{
+  "id": "01M621BTE88ZBZSDJD36S03CSK",
+  "ts": "2026-10-28T19:56:31.048Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 33,
+    "text": "`DEVBIN_FLEET_FROZEN` matches an estate's plan label; check for no \"matches none\" line before any --apply."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M553EZA3X1CYVZQBKYZSTF3Y",
+  "ts": "2026-10-17T14:15:12.963Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-17 evening: ST0008 AC-6.5's route is (a), as vc recommended: the WSL job installs Intent's Linux musl binary from Intent's GitHub release with a read-only token held as a devbin repository secret, INTENT_READ_TOKEN (a fine-grained token with Contents: read on matthewsinclair/intent only), which hv creates; dc builds the install step before the smoke list, and wsl-smoke.sh then asserts the critic gate passes on the intent/ fixture. Not (b) Homebrew inside WSL, not (c) waiting for public. Not put to hv again."
+  }
+}

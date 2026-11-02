@@ -1,0 +1,16 @@
+{
+  "id": "01M46Q2Q5ERJT9P679WT1P36MM",
+  "ts": "2026-10-05T19:01:35.534Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE: every open issue closes before the cut (hv, 2026-10-05); the order is ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. W1 (the client-name scrub) is DONE. LANDED AND CLOSED: 0154 (831aec59), 0174 (7e3f580c), 0173 (bd81574c), 0169 (ce72a4ff), 0166 (b3f37f92), 0153 (73a0e43b), 0175 (eb9166e1), 0164 (64d80788), 0176 (f7bd9984), 0159 (85f2fb0b, seal land/seals/1657), and 0157 (430e2c28), 0158 (44db8915) and 0156 (627e3948), closed at 415ce738 (seal land/seals/1749). 11 open. HELD OVERNIGHT on hv's word (2026-10-05 ~18:55Z: \"hold and continue tomorrow\"): nothing lands until hv is back. IN FLIGHT: dc's 0163 v3 and 0167, REVIEWED AND APPROVED (review/0163v3-0167-notes.md), rebased by dc onto 415ce738 in ~/Devel/scratch/devbin-dc/0.1.9/patches/final-415ce738. dc confirmed the sha256s: 0001 fb5e0248e4b4dcf9d15ebac15e361e64c6e0c15022eb0ce3e80da862135d75b2, 0002 9c95dae67f2305269385a8e0e088c29db2291a46512b6df03e6cb81503818fbd. git am of both on 415ce738 gives tree 9233081c, equal to a 3-way am of the reviewed pair. dc's targeted run: 830 of 830 ok. vc's FULL SUITE was started in ~/Devel/scratch/devbin-vc/0.1.9/land-163 (415ce738 plus both, HEAD 508a4a34) at 18:43Z: 2183 tests, console land/suite-163.console, at 383 ok and 0 not ok at 18:50Z. ON PICKUP: read land-163/tmp/test/<stamp>.bats.out and .errors (rc, 2183 ok, 0 not ok, .errors empty, skips the five expected). If the run died with the session (no seal, or the console cut short), delete land-163 and rerun in a fresh no-local clone of main with both patches git-am'd, after checking main has moved no path the pair touches. On green, land ONE AT A TIME in the shared tree: git apply 0001 and commit --only its paths, then 0002, with the messages in land/dc-msg-0163.txt and land/dc-msg-0167.txt (equal to the commit bodies), each with one paragraph before the (C) line giving vc's suite. Check every blob against land-163, run apply --check -R for each, and confirm the tree equals 9233081c. Close each issue: store body, a blank line, then land/dc-resolution-016x.md with <landing sha> filled and a final sentence giving vc's suite; intent issues edit N --from, then close; commit the issue files and only their events. Keep the seal, delete the clone, and tell cc and dc the new main. NEXT: cc rebases 0155, 0160, 0161 and 0162 onto main (told at 415ce738). dc builds 0168 on top of this pair, then 0165, 0170, 0171, and 0172 last. For hv at the cut: publish-upgrade the machine install before any sweep (cc's OUT-4); then todo 145."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2NVHPCWQ4E8TRHHTRSN2W64",
+  "ts": "2026-09-16T19:36:53.405Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0007/04"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "Steps 1 to 5 with --dry-run: resolve, pre-flight, stamp, commit, gates on the release commit"
+  }
+}

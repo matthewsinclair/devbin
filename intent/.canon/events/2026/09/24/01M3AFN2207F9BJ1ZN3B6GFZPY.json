@@ -1,0 +1,15 @@
+{
+  "id": "01M3AFN2207F9BJ1ZN3B6GFZPY",
+  "ts": "2026-09-24T19:53:03.809Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0139 v2, TO LAND ON main: 0131 is landed (81a8274), and main's lib/, tests/ and bin/ equal the 4d8a9db stand-in, so the build's bytes apply unchanged. TSP/rebase0139c holds v2e (sha256 119b78c8848678e4), 77 of 77 mutants KILLED on it. TSP/build139f holds v2f (sha256 3f772f0a7817a609). NOW v2g, all of critic-shell's fourth pass as vc ruled it: R1 (directory targets tests/<dir>/main.rs, counted as cargo counts), R2 (a tree out of reach is 'cannot reach' and tree_partial) and the ten style points, drafted as TSP/apply0139v2g.py with the mutator TSP/mutate0139v2g.py (the 77 re-aimed plus v2f's and v2g's own, about 100). Steps: apply to build139f (snapshot TSP/snap139-v2f kept), red first on v2f's code, targeted runs, critic pass 5 under vc's CONVERGENCE RULE (only a critical, a warning or a false green reopens 0139; other points on pre-0139 code go to vc's parked list; on 0139's own code take them only if small and behaviour-neutral). Then the full mutant batch on v2g's final bytes on vc's START, the final suite, the message's MUTANTS, CRITIC and SUITE, and the hand-over to vc."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M36S2ZWH4HENYGT0PVNJZK5B",
+  "ts": "2026-09-23T09:20:59.793Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0.1.8 BUILDS, vc's share (hv 09:20Z: everything open ships in 0.1.8 -- decision 41). 0116, 0117, 0119, 0121, 0122, 0124 and 0125, each reviewed by cc, all on top of 0113 once it lands. Build in a scratch clone at the post-0113 HEAD; red-first and mutants for every new arm; the full suite in the clone before handing cc a patch. 0116: devbin's own config names the fleet census roots -- find a schema home that is not a special case in the shared core. 0117: command_origin and option_origin stop counting @builtin as a command line; delete unrunnable_why's two unreachable branches; arm the refusal's stream (stderr); check the remedy key by declaring it and seeing the command run; hold the checkout's seam line; fix the four stale not-yet descriptions (run_command's header and command_active's comment in lib/resolve, ARCHITECTURE-shell.md, MODULES.md). 0119: bare shell-init returns 1, shell-init.md:19 to match, and an arm that holds the code's MEANING. 0121: infra's five -- a DEVBIN_INFRA_PROFILE naming a missing file refused by name as --profile is; profiles validates; the (unnamed) fallback fires; dmarc --help names real verbs; the two labels and the hard-coded reference path. 0122: an unsealed option refuses (naming why) or drops with a word --purge, --purge-only and --allow-empty, at run_option's and run_command's unsealed branches; choose at build, cc reviews. 0124: version and -v/--version exempt only when nothing follows or for show and check; set, bump and sync refused from outside the tree; shell-init.md:28 to match. 0125: lean -- shell-init loads its config so install.prefix reaches dvb, and a config that fails to load must not break a shell rc; shell-init.md:23 and config.reference.yaml:179 to match."
+  }
+}

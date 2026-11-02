@@ -1,0 +1,15 @@
+{
+  "id": "01M52BRDNS4RBKH9SE3QMT4FVV",
+  "ts": "2026-10-16T12:42:27.897Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "Issue 0200 (dc, 2026-10-16, on vc's word): shell-init's install prefix filled as data, in clone ~/Devel/scratch/devbin-dc/i0200 on WP-03's tip d170adb0. Red beb1306a (seven of eight arms red; the space arm green, a character already carried), green 64d93379 (the body single-quotes the prefix, bash's quoted replacement fills it after the --autoload unwrap, one fill for every body); 20 affected arms green under BSD and GNU singly; shellcheck and shfmt clean; critic-shell running; banked ~/Devel/scratch/devbin-dc/st0008/i0200.bundle (main ^d170adb0) sha256 19fcaa80, fresh-clone check after the critic. Next: the targeted run, booked with vc, intent-vc and utilz-vc once the landing suite ENDs"
+  }
+}

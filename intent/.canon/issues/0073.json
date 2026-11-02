@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 73,
+  "slug": "publish-install-and-upgrade-print-fleet-upgrade",
+  "title": "publish install and upgrade print fleet upgrade --dry-run, which fleet upgrade refuses",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-09-16",
+  "closed": "2026-09-16",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by dc on 2026-09-16, running the 0069 fleet sweep on hv's go. Reproduced.\n\nAfter a publish-upgrade, `bin/devbin upgrade` in devbin's own tree ends with:\n\n    The estate still carries the OLD bytes until each project upgrades:\n      bin/devbin fleet upgrade --dry-run\n\nRunning that line exactly as printed refuses:\n\n    devbin: unknown argument '--dry-run' (try: devbin fleet upgrade --help)\n\n`fleet upgrade` has no `--dry-run`: a dry run is its default, and `--apply` is the only flag (`bin/.devbin/cmd/fleet`, `fleet upgrade --help`). The same wrong line is printed by the publish branch of `install` (`lib/cmd/install:371`) as well as by `lib/cmd/upgrade:123`.\n\n## Why it is worth an issue\n\nIt is the next-step line printed at the moment an operator has just replaced the machine install and the whole estate is behind it. The refusal is harmless -- the parser is strict, so nothing runs -- but a remedy line that does not run teaches the reader to stop trusting the remedy lines.\n\n## Shape of a fix, not a ruling\n\nPrint `bin/devbin fleet upgrade` (it previews and writes nothing), in both places, from one home. Hold it with an arm that runs the printed line and asserts it is accepted -- a test of the string alone would pass the moment both sites were edited to agree on a wrong one.\n"
+}

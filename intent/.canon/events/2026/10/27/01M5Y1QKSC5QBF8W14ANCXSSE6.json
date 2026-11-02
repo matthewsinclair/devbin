@@ -1,0 +1,16 @@
+{
+  "id": "01M5Y1QKSC5QBF8W14ANCXSSE6",
+  "ts": "2026-10-27T06:45:59.724Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 171,
+    "text": "AFTER THE 0.1.15 CUT, what is left: (1) the v0.1.15 tag's macOS leg: Devbin Tests run 40373607694 on 4efb6e17 was green on Ubuntu, WSL 2 and ShellCheck, but GitHub abandoned its macOS job twice with no runner (attempts 1 and 2, 2026-10-26). molt-vc re-ran its failed jobs on 2026-10-27 on hv's L1 call (decision 77): attempt 3's macOS job got a runner and started at 06:35:11Z, under the tag's pre-0238 summary. vc watches it to the end (~/Devel/scratch/devbin-vc/ci/watch-40373607694.sh) and sends the result to molt-vc, cc and dc; a red is filed as an issue and goes to hv as the 0.1.16 question. (2) Clear vc's scratch clones (land232, land233, land235, land236, land238, red238, k115src, k115src2, k115verify, k115verify2, note115, land220, cand220), first surveying each against main and bundling any leftover a record cites (261286d6 among them). KEEP the seals 0222 cites (land220/tmp/test/20261026-0642.bats.{out,errors} and st0010/cand220/tmp/test/20261026-0652.bats.{out,errors}) and the TAPs of st0010/land236 and st0010/land238, which 0236 and 0238 cite. Clear ci/maint, keeping the maint-exp outputs 0233 cites."
+  }
+}

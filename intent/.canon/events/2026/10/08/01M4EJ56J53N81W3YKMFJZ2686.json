@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJ56J53N81W3YKMFJZ2686",
+  "ts": "2026-10-08T20:09:29.413Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 19,
+    "text": "ONE HEAVY RUN ON THE HOST AT A TIME (started on 2026-09-24 between vc and cc for Intent's 3.2.1 cut; after the cut, on 2026-09-25, vc kept it for our own box). A full suite, a mutant batch or a multi-file bats run is heavy; a single arm or a single file is light. Start a heavy run only on vc's START, and send vc END the moment it finishes, with the pid and the times read from the machine. SUSPENDED on 2026-10-05 on hv's word, relayed by vc; CAPPED on 2026-10-08 at two heavy runs of cc's own (load 46 with five devbin heavy runs beside a deploy). BACK IN FORCE on vc's word, received by 2026-10-08 19:19Z, until 0190 and 0191 land for 0.1.10 (0192 parked for the next release on hv's ruling, 2026-10-08): ONE heavy run on the box between cc and dc, on vc's START and our END. dc's GNU END at 19:57:11Z was cc's START for 0192; cc's END went to vc and dc after its one run stopped between 20:08:22Z and 20:08:29Z, and the box is with vc's landing suite. Retire this when vc says the protocol has ended."
+  }
+}

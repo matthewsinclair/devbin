@@ -1,0 +1,15 @@
+{
+  "id": "01M5RXQ1K03PXSGZQR00QM49CM",
+  "ts": "2026-10-25T06:59:34.624Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-25, answered in vc's session (TUI): (1) todo 151 CLOSED, never: the release pre-flight keeps refusing a tmp/ committed as a link outside the tree; tmp/ stays a real directory. (2) todo 161, the no-vendor mode (a brew devbin running a project with no vendored copy), DEFERRED past 0.1.15 on the record: a design change to the vendoring rule, revisited as its own thread once devbin is public. Not put to hv again."
+  }
+}

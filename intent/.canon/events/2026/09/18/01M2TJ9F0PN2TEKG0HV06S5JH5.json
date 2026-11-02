@@ -1,0 +1,15 @@
+{
+  "id": "01M2TJ9F0PN2TEKG0HV06S5JH5",
+  "ts": "2026-09-18T15:31:18.678Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**0089 ruled option B** (hv, 2026-09-18 ~15:30Z, taking dc's and vc's recommendation; vc decision 19). fullcycle asks once, at the top, where its own gate's flag is true: it shows clean --dry-run, asks on /dev/tty, and on a y passes --force to its clean phase. The confirm is lifted into ONE helper in lib/helpers that clean, fullcycle and ST0007 AC-5.3 all call. The phase loop moves to fd 3. run_gate's tty rule stays one site and one variable. vc builds it; dc reviews; dc's WP-05 calls the helper."
+  }
+}

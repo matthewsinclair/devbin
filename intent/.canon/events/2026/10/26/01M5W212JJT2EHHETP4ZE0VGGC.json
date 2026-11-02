@@ -1,0 +1,16 @@
+{
+  "id": "01M5W212JJT2EHHETP4ZE0VGGC",
+  "ts": "2026-10-26T12:12:40.915Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 169,
+    "text": "AMENDMENT ROUND, T4 (gtools-vc's ask, 2026-10-26), to molt-vc, utilz-vc, intent-vc and gtools-vc, now that A4 is agreed (decision 74): A3's doctor sentence read broadly to gtools-vc (as covering every doctor row), so tighten it to the meaning devbin and Gtools both built: \"Doctor prints the same line, and adds no path to it except where a check that fails is about one.\" An issue once agreed; whether it rides 0.1.15 is put to hv then."
+  }
+}

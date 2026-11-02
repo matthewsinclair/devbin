@@ -1,0 +1,15 @@
+{
+  "id": "01M554BKFGQ4WVRS8EHBC12NNA",
+  "ts": "2026-10-17T14:30:51.120Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ANOTHER ESTATE'S SIX TREES ARE HELD OUT OF ANY devbin 0.1.11 SWEEP OR UPGRADE until that estate's session says its own 0.1.11 safety record has landed (its request on hv's word, 2026-10-17 evening). They sit outside ~/Devel/prj, and today's sweep ran with DEVBIN_FLEET_ROOTS=~/Devel/prj only, so none was touched. Any later sweep that could reach them runs its plan first and reads them off it, or freezes them, before --apply. Directive 14: never name that estate here."
+  }
+}

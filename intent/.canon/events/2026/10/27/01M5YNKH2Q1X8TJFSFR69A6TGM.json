@@ -1,0 +1,15 @@
+{
+  "id": "01M5YNKH2Q1X8TJFSFR69A6TGM",
+  "ts": "2026-10-27T12:33:17.400Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0271"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "A built-in the project does not offer refuses its own --help and -h at exit 2, and the refusal does not point at help <cmd>, which prints its page once 0255 lands (from 0255's review)"
+  }
+}

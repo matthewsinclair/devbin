@@ -1,0 +1,15 @@
+{
+  "id": "01M2ZG07PBC1J3T51XZMVGDT80",
+  "ts": "2026-09-20T13:27:31.275Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "Fixture race found at Utilz (their issue 0042, relayed 2026-09-20): a test fixture built with cp -a of a LIVE checkout, .git included, is not an atomic walk. A commit landing mid-copy gives a fixture whose .git carries files its worktree lacks, so git add -A stages deletions and an append-only guard refuses them -- which reads like data loss in the event store and is not. Their fix is ordering: copy .git FIRST and the worktree SECOND, so any tear stages as additions. MEASURED FOR DEVBIN, not assumed: devbin is not exposed. Its three recursive copies (tests/lib/source_fixtures.bash:41-42, tests/lib/test_helper.bash:844) take lib/ and bin/.devbin only, never .git and never the checkout root, and mkdevsrc runs git init plus one commit INSIDE the fixture after the bytes are there, so no pre-existing history can be copied at a different instant from the worktree. Keep this in mind for any future devbin fixture that copies a checkout."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M3BV4KCFE841V0B7NCQDG1TB",
+  "ts": "2026-09-25T08:33:01.839Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "PARKED FOR THE LINE: vc rules each with the parked list, with a recommendation. None is filed, and none holds 0.1.8 open. (1) lib/release.steps:195 and :199 repeat clean's physical-directory step, and hoisting it is a refactor (cc's 0131 resolution records it). (2) An empty command-level run: (run: \"\") refuses all, then its bare run refuses the empty line: exit 1 both ways. (3) The cross-domain SPF comparison infra.check once promised: 0143 deletes the dead _IC_SENDER_SPF, and the comparison would be new behaviour. (4) 0127's three unreachable swallowed statuses in lib/cmd/doctor (:244, :383, :420). (5) 0139 S1/S2, then folded into v2g: nothing left. (6) fleet audit finds installs by their manifest, so it cannot see an install that has lost one (from 0146). (7) senders.*.dkim.type has no allowed-word check, and lower-case cname reads as a HALF PAIR (from 0143). (8) clean.md's 'Nor does a target directory cargo built under CARGO_CACHE_RUSTC_INFO=0' reads as a fragment (0131). (9) intent-vc's own: bin/.devbin/cmd/macos:2195 matches /INTENT_HOME/, which 3.2.1's 'Gate root:' line also carries, so it is on intent-vc's list, not devbin's."
+  }
+}

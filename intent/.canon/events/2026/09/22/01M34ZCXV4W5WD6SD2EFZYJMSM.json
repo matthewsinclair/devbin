@@ -1,0 +1,15 @@
+{
+  "id": "01M34ZCXV4W5WD6SD2EFZYJMSM",
+  "ts": "2026-09-22T16:32:47.972Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "SIX ESTATES CARRY `log:` LINES THAT RESTATE THE BUILTIN'S OWN DEFAULT, AND THIS COUNT IS NOT AUTHORITY TO DELETE THEM. Re-measured by vc 2026-09-22, replacing the fleet-housekeeping half of todo 28, which said five. It is SIX: 46 `log:` lines across eight estates, of which 21 restate the builtin default exactly -- Laksa 7 (check.toolchain, check.format, check.clippy, check.compile, fmt.rust, fmt.md, test.rust), Utilz 5, Conflab 4, Lamplight 3, Baize 1, and Devbin 1 (check.critic). The sixth estate is devbin's OWN tree, which is very likely why the item ever said five. The remaining 25 name options with no builtin entry and are load-bearing. DO NOT LET THE 21 BE DELETED ON THE STRENGTH OF THIS NUMBER ALONE. Removing them is behaviour-neutral in the shell, and behaviour-neutral in the shell is not consumer-neutral: laksa/vc established this morning that a Laksa test PARSES its own workflow as text, found after a redirect-quoting change of vc's reddened it. Whether any estate has a test or a tool that reads config.yaml as TEXT is the question that has to be answered before a single line comes out, and it has not been answered. Fleet housekeeping, no urgency, and the caution is the load-bearing half of this item rather than the count."
+  }
+}

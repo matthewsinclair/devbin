@@ -1,0 +1,16 @@
+{
+  "id": "01M4976J7BEGECB9EVW1E4ADYZ",
+  "ts": "2026-10-06T18:21:47.627Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 13,
+    "text": "BUNDLE BUILD, 0.1.9 (hv 2026-10-05: every open issue closes before the cut; one release). DONE: every cc issue (0153 to 0162, 0172, 0175) landed and closed; 0172 at 95ee1bb8 (v2.1). Release note committed by vc (79f17e9b); no issue open. HOLDING until hv has cut 0.1.9. State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md."
+  }
+}

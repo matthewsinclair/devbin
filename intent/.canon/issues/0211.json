@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 211,
+  "slug": "tests-unit-fullcycle-bats-3654-never-runs-its-e",
+  "title": "tests/unit/fullcycle.bats:3654 never runs its [ -e ] check: two statements on one line make the check arguments of refute_output_contains (a false green), and :708 carries a doubled comment line",
+  "status": "closed",
+  "severity": "medium",
+  "created": "2026-10-24",
+  "closed": "2026-10-24",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the ST0010 pre-publication review (2026-10-24), verified by vc on main.\n\n`tests/unit/fullcycle.bats:3654` reads `refute_output_contains \"--- phase:\"  [ -e \"$crate/target\" ] || fail \"the refused cycle removed a tree: $output\"`. The newline between the two statements is missing, so `[`, `-e`, `$crate/target` and `]` are passed to `refute_output_contains` as extra arguments, and the check that the refused cycle removed no tree never runs. The arm passes whatever happens to that tree. `tests/unit/fullcycle.bats:708` repeats the start of its comment (\"THE POSITIVE CONTROL. Without it the arm above proves# THE POSITIVE CONTROL. ...\").\n\nFix: split 3654 into its two statements and drive the arm red with the tree removed before accepting it; repair 708. Look for the same shape elsewhere: an assertion helper followed on the same line by a `[` test.\n\nDone when: the existence check runs and fails when the tree is removed; no line in tests/ carries an assertion helper and a second statement; for the release before devbin's public push.\n\n## Resolution\n\n**0211 (2026-10-24, by dc on vc's brief):** `tests/unit/fullcycle.bats:3654` is split into its two statements, so the check that a refused cycle removed no tree now runs. With the tree removed after the run, the arm fails on \"the refused cycle removed a tree\" under BSD and GNU, and unmutated it passes under both. Line 708's doubled comment is repaired. A scan of every file under `tests/` by shfmt's syntax tree finds no other line where an assertion helper carries a second statement, and none where a helper is given more arguments than it reads. Fullcycle, the six tree scans and help pass under BSD and GNU. Commit `950bbf08`.\n\nLanded at 44e41b6d by vc, on landing suite 20261024-0831 at the stack tip 6cc594fb (2442 of 2442 ok, 5 environmental skips, the errors seal empty), for the release before devbin's public push.\n"
+}

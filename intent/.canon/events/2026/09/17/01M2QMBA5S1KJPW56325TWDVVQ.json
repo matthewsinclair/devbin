@@ -1,0 +1,15 @@
+{
+  "id": "01M2QMBA5S1KJPW56325TWDVVQ",
+  "ts": "2026-09-17T12:09:33.113Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates from 2026-09-17 midday, vc's call at a fold.** (z) vc relayed a peer's limit (\"LFS objects arrive as pointers\") into a design reply without measuring it; a two-minute probe showed git archive smudges LFS, downloads a missing object and writes .git/lfs/objects -- a limit is a claim too. (aa) A peer wrote \"the check I asked you to add\"; neither the inbox nor the session held the ask, and the peer then found it only in an unsent draft -- check the record before building on a remembered agreement. (bb) vc proposed a generic rule (re-root every exported value under the project root) without walking its population; HOME and TMPDIR can sit under a root, and it was withdrawn one message later -- a generic rule's population includes what you do not own. (cc) A pattern's anchors are mutations too: dc's review found the optional unit, and measuring the same line found both anchors unheld."
+  }
+}

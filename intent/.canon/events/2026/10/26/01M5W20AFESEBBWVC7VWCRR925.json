@@ -1,0 +1,15 @@
+{
+  "id": "01M5W20AFESEBBWVC7VWCRR925",
+  "ts": "2026-10-26T12:12:16.238Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "A4, 2026-10-26, the dev/opt/brew contract's T5 amendment, AGREED in intent-vc's wording (vc read the last SAME at 12:08:26Z): \"`use brew` refuses, removing nothing, when no brew-managed copy would answer once the links are gone (the formula is not installed, its keg is not linked, or another copy comes first on PATH): it names each link it would have removed and the tree that link serves, why no Homebrew copy would answer, and the tool's own remedy (install or link the formula, or stay on dev or opt).\" SAME from intent-vc (its author), utilz-vc, gtools-vc and molt-vc. The parenthetical lists the usual causes, not a closed set: the main clause decides (gtools-vc's reading, which fits). Each tool conforms in its next release: devbin in 0.1.15 as 0235, Molt in its next (Molt 0068), Gtools in WP-04, Utilz and Intent as hv rules through molt-vc. devbin's refusal for another copy first also says to move that copy aside (molt-vc's note). It lands in docs/dev-opt-brew.md with 0235."
+  }
+}

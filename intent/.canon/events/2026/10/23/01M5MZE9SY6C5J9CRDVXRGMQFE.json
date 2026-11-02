@@ -1,0 +1,16 @@
+{
+  "id": "01M5MZE9SY6C5J9CRDVXRGMQFE",
+  "ts": "2026-10-23T18:12:47.550Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 83,
+    "text": "D55 and the 0.1.13 batch, on hv's word via intent-vc (decision 54), with decision 55's 0203 and vc's own 0204 to 0206. The batch is WP-08 and issues 0203 to 0206, landed in that order on one landing stack and proved by one full suite booked with intent-vc. 0203 (85b2b029), 0204 (3de21d30) and 0205 (15e7edf8) are ACCEPTED, with their seals and targeted runs read. 0203 and 0204 sit on vc's landing clone ~/Devel/scratch/devbin-vc/l113 (7586d82e, b3ae38c6), each patch's files equal to its tip's. WP-08: cc's handover at 2dec40a1 was reviewed; F1 (a finished attach must read its own postcondition first) came back fixed at 8a1f3186, with F2 and F3; its targeted run and addendum are due. 0206 (d688b285, A and B apart, kept literals ruled) has its targeted pass running. A trial cherry-pick of WP-08, 0205 and 0206 onto the stack applied cleanly. Checklist and evidence: ~/Devel/scratch/devbin-vc/0113/REVIEW.md; note draft: ~/Devel/scratch/devbin-vc/0113/0.1.13.md. Then vc books the landing suite, lands by path, records the ATs and Resolutions, and commits the note; hv cuts. No push, no release."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2ZCFZQVJD964005WS2BSFZ1",
+  "ts": "2026-09-20T12:26:13.115Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.2 FLEET SWEEP, state at 2026-09-20 12:25Z (date -u). hv's go 11:22Z. Install republished from 86b6bac; fleet upgrade --apply: 16 upgraded, 0 held back, 0 failed, Intentv2 frozen. COMMITTED in 14, each through its own gates, no --no-verify: arca_cli 1cd512e, arca_config ea4d138, Baize 7330c8f, Cards/Design 96a4a05, Cdtempl 037f581 (21 files; its manifest is git-ignored), Conflab 0760be03, Gtools a479852, Intent 42915c049, Lamplight a43efa17f, MicroGPTEx f46d597, Molt d53c2e3, Prodinfra 66e6ead, Prolix 7d7cafb, Riffle e5efe67. MIRRORED to each estate's local remote (11 of them), verified by ls-remote against HEAD. NOT PUSHED TO GITHUB, hv's call: no estate workflow filters by path, so a push to main starts a run and the Actions budget is about 20 USD. Intent's and Lamplight's pushes are hv's by their own lanes' rule. Cards/Design: hv ruled no push, it is being merged into another project and only needed the last devbin. HELD, restored to prior bytes: Laksa (deploy in flight) and Utilz (hv: 2.10.0 tags first). SO: todo 82's condition -- CI green on each estate's pushed commit -- is NOT met for any estate and cannot be until hv pushes to GitHub. The sweep is committed and mirrored, not swept."
+  }
+}

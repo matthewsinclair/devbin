@@ -1,0 +1,385 @@
+{
+  "schema": "intent/thread@3.0",
+  "id": "ST0008",
+  "title": "devbin on Windows through WSL 2: the prerequisite stated, LF held by the repository, shell-init for bash, proven inside WSL; no native port",
+  "slug": "devbin-on-windows-through-wsl-2-the-prerequisite",
+  "status": "completed",
+  "created": "2026-10-12",
+  "completed": "2026-10-24",
+  "objective": "Make devbin usable by developers whose machines run Windows, through WSL 2 and only through WSL: no native Windows port, and no cmd, PowerShell or Git Bash entry point. Inside WSL 2 a Linux distribution runs on a real Linux kernel, so devbin -- bash and awk, a bats suite, no compiled code -- runs as it does on Linux, which CI's Ubuntu leg already proves on every push. The work is where Windows leaks in: line endings a Windows-side git rewrites, a checkout on a Windows drive under `/mnt`, the Windows PATH and the executables that WSL's interop appends, and Windows-form paths.\n\nDone is five things. The prerequisite is stated where installing is described, starting with where to clone. LF line endings are held by the repository, for devbin's own tree and for the copy vendored into every project, however it is cloned. `shell-init` has a body for bash, WSL's default shell. The runtime is proven against WSL's edges. And the commands developers use are proven inside WSL itself, by a smoke list on a fixture project and by a GitHub Actions leg.\n\nCreated and populated on hv's word of 2026-10-12, and started the same day in lock-step with Intent's ST0081 (hv: \"Yes, start both now\"). Design first: every decision in `design.md` is proposed unless marked ruled, and nothing is built before the design is reviewed.",
+  "context": "**The ask.** hv, 2026-10-12: devbin is to be usable on Windows, with WSL as the stated prerequisite and the evidence from GitHub Actions; WSL only, no native Windows port. The ask and its detail came from another estate's session, which adopts devbin for its developers. Devbin's record names neither that estate nor its client (directive 14), and nothing in this thread is specific to it: every change is a default that any project on WSL gets.\n\n**Who runs it, and how** (that session's answers, 2026-10-12):\n\n- Windows laptops of about 16 GB, so WSL 2 gets about half of that by default, with repositories inside WSL's own filesystem: the adopting estate's own ruling of 2026-09-29. Unknown: the Windows version, the distribution and its release, the editor, and any proxy, admin-rights, antivirus, VPN or DNS constraint inside WSL. Nothing has been tried on Windows yet.\n- devbin is VENDORED there, not installed. Each project repository carries `bin/devbin` and `bin/.devbin/`, written by `install` and moved by `upgrade`, which that estate's maintainers run on their own machines. Developers run `bin/devbin`, or `dvb` after `eval \"$(bin/devbin shell-init <shell>)\"`, and there is no machine install on their side. So the exposure is every project that carries the vendored copy, not devbin's own clone.\n- The commands its docs use: `shell-init`, `check` (`lint`, `analyse`, `all`), `test`, `server`, `package`, `contract`, `cli`, `clean`, `version check` and `help`; `server`, `package` and `contract` where a project declares them. The maintainer verbs -- `install`, `upgrade`, `fleet`, `infra`, `release`, `publish` and `macos` -- are out of scope.\n- Its projects: PHP 8.5 with Composer (Laravel), Elixir with Phoenix and Ash, Rust, and a docs and design site. Its CI is GitLab on Linux runners, through shared templates that do not call devbin.\n- Every one of its project repositories carries `intent/`, and its docs use `check all`, so under WSL the critic gate decides whether `check all` works in each of them (below).\n- Its maintainers reach its internal hosts through a VPN. WSL 2 often does not inherit a Windows VPN's DNS and routes unless its mirrored networking mode or its DNS tunnelling is on: known WSL behaviour, not yet measured here.\n\n**What devbin is today** (read 2026-10-12 on main at `73fd0fd3`):\n\n- No `.gitattributes`, and no tracked file carries a CR byte (`git grep -lI $'\\r'` over 3225 tracked files). 40 bash scripts under `bin/` and `lib/` have no extension (35 in `lib/`, 5 in `bin/`), so a rule written for `*.sh` misses them.\n- `shell-init` has a body for zsh only: `shell-init bash` dies with \"no body for 'bash'. Shells with one: zsh\".\n- devbin has no PHP language. A PHP project's `check` and `test` options are the ones its `config.yaml` declares, and they run wherever PHP and Composer are installed.\n- `check.critic` is active in a project that carries `intent/` (`_DEVBIN_BUILTIN_NEEDS`, issue 0156), and it needs the `intent` binary, which ships for macOS arm64 only. In such a project under WSL, `check all` refuses at the critic gate, by design. That is why CI's Ubuntu leg lists its gates rather than running `check all`.\n- PATH is split with `IFS=: read -r -a` in `lib/cmd/clean` and `lib/cmd/fullcycle`, which keeps an entry with spaces whole. How each entry is then used has not been read.\n- Six install hints in the vendored runtime name Homebrew alone: the bash floor twice, jq, swift-format twice, and rlwrap, which the `repl` page repeats. devbin's own `bats-lanes` already names apt beside Homebrew.\n- CI: `tests.yml` runs Ubuntu on every push to main, and macOS on release tags and on demand (decision 32). Test Summary gates on its three needs, and `tests/unit/ci-workflow.bats` holds the workflow's shape. `release.yml` makes the GitHub release on `v*` tags, with no assets.\n\n**The traps** (the adopting estate's brief):\n\n1. A Windows-side git with `core.autocrlf=true` writes CRLF, and bash then fails with `$'\\r': command not found`.\n2. A checkout under `/mnt/c` is slow, takes its exec bits from the mount options, and is case-insensitive. A repository cloned there by a Windows-side tool, such as an IDE's own git, brings every trap at once, so the install doc starts with where to clone.\n3. WSL's interop appends the Windows PATH -- entries with spaces, such as `/mnt/c/Program Files/...` -- and makes Windows executables such as `git.exe` runnable. To measure rather than assume: bash does no PATHEXT lookup, so `command -v git` is not expected to find `git.exe`.\n4. `C:\\` against `/mnt/c`, wherever a Windows tool is called.\n\n**The evidence and its limits.**\n\n- GitHub's hosted Windows runners probably run WSL 1 only, having no nested virtualisation, while the developers run WSL 2. A green leg there is evidence about WSL 1 and the interop surface, not about WSL 2, and whether it counts is hv's call.\n- Windows minutes bill at twice the Linux rate while the repository is private; devbin goes public in October or November (hv, 2026-09-21).\n- Ubuntu 26.04, which a new WSL install will reach, probably ships uutils coreutils, and CI's `ubuntu-latest` starts moving to 26.04 from 2026-10-19 (vc's reading of 2026-10-03, not measured on a runner).\n\n**The dependency on Intent, and the lock-step.** In a project that carries `intent/`, `check all` runs the critic gate, which needs the `intent` binary, and Intent ships for macOS arm64 only, so under WSL that gate refuses. Intent's own WSL thread, ST0081, ships Linux x86_64 binaries on each GitHub release (intent/vc's route A, on hv's word); which Intent release carries it is hv's ruling. Once they exist the gate runs under WSL with nothing changed in devbin's code, given `intent`, `shellcheck` and `git` on PATH. hv, 2026-10-12: this thread and ST0081 advance in lock-step, both starting together; the interfaces and the joint proof's order are in `design.md`.\n\n**Distribution is unchanged.** The adopting estate mirrors devbin's GitHub tags into its own hosting after each cut, on vc's word, with no binaries (hv, 2026-10-12). Nothing reaches it from devbin's tree or its release, and this thread changes neither.",
+  "body": "",
+  "preamble": "",
+  "related": [
+    {
+      "id": "ST0009",
+      "note": "ST0008 depends on ST0009: the WSL job's fixtures vendor from devbin's Linux Homebrew install (hv, 2026-10-16, ST0008 question 10 (a))"
+    }
+  ],
+  "wps": [
+    {
+      "seq": 1,
+      "title": "Line endings: devbin's .gitattributes, the vendored copy's LF rule, and doctor naming CR bytes",
+      "scope": "M",
+      "status": "done",
+      "objective": "Hold LF line endings in the repository rather than in each clone's git settings (D46). devbin's own tree gets a root `.gitattributes` carrying `* text=auto eol=lf`, which covers the 40 extensionless scripts a `*.sh` rule would miss and changes no content today. Every project devbin vendors into gets an LF rule covering `bin/devbin` and everything under `bin/.devbin/`, in the shape the design review settles, and `doctor` checks it with `git check-attr eol`. A vendored file that already carries CR bytes is named by `doctor`, with the cause. Criteria AC-1.1 to AC-1.3.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 2,
+      "title": "The prerequisite stated in the README, and install hints naming apt",
+      "scope": "S",
+      "status": "done",
+      "objective": "The README's Install section says how to run devbin on Windows before it says anything else about Windows, starting with where to clone (D45): WSL 2 with an Ubuntu LTS, the clone and the work inside WSL's own filesystem, WSL's own git, the packages, `appendWindowsPath = false` as advice, and, once measured, the WSL 2 networking settings for working behind a VPN. It also says that `check all` refuses at the critic gate under WSL in a project that carries `intent/` until Intent ships Linux binaries (D53), and that there is no native port. The vendored runtime's install hints name apt beside Homebrew, in the spelling `bats-lanes` already uses (D54). Criteria AC-2.1 and AC-2.2.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 3,
+      "title": "shell-init bash, both bodies from one source",
+      "scope": "S",
+      "status": "done",
+      "objective": "`shell-init` gains a bash body, so `eval \"$(bin/devbin shell-init bash)\"` gives WSL's default shell the same `dvb` that the zsh line gives zsh (D47). Both bodies render from one source, the zsh-only `--autoload` form stays zsh's, and the same arms run under both shells. Criterion AC-3.1.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 4,
+      "title": "The runtime against WSL's edges: the Windows PATH, and a checkout on a Windows drive",
+      "scope": "M",
+      "status": "done",
+      "objective": "devbin works with the Windows PATH appended: every PATH split and every use keeps an entry with spaces whole, and no Windows executable stands in for a Linux tool, proven on Linux by arms that build such a PATH (D48). `doctor` reports a project rooted on a Windows drive, with the cause and the remedy, without failing on it (D49). Criteria AC-4.1 and AC-4.2.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 5,
+      "title": "The suite under uutils coreutils",
+      "scope": "S",
+      "status": "done",
+      "objective": "Run the full suite under uutils coreutils, which Ubuntu 26.04 probably ships and which both a new WSL install and CI's `ubuntu-latest` will reach. Fix what touches the commands in scope, and file the rest as issues (D52). Whether this stays in the thread is question 6 of the design. Criterion AC-5.1.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 6,
+      "title": "The Windows CI leg running the suite inside WSL, and the fixture smoke list",
+      "scope": "M",
+      "status": "done",
+      "objective": "A GitHub Actions job on a Windows runner sets up WSL, clones the commit inside WSL's filesystem and runs `bin/devbin test all`, on release tags and on demand, named by the WSL version it ran and blocking nothing until hv rules otherwise (D50). The same job vendors devbin into two fixture projects, one without `intent/` and one with it, and runs the smoke list on both (D51); the one with `intent/` passes `check all` only once the job can install Intent's Linux binary (D53). Its first run is read job by job, and the adopting estate's own run on one of its repositories is recorded as received. Depends on WP-01 to WP-04, and AC-6.5 on Intent's Linux binaries. Criteria AC-6.1 to AC-6.5.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 7,
+      "title": "No pipeline broken by design: 0031's class fixed everywhere, and a scan that keeps it out",
+      "scope": "M",
+      "status": "done",
+      "objective": "hv, 2026-10-12, on the v0.1.10 tag's red Ubuntu run: \"We should not have any code like that where we know in advance it's broken by design. Please fix.\" A pipeline whose reader can stop reading before its writer has finished is unsound under pipefail, which is issue 0031's class: the writer takes SIGPIPE, the pipeline returns 141, and a match can read as no match. 0031 fixed four sites. `tests/unit/ci-workflow.bats:266` was a fifth, and it failed the tag run. The same shape stands in the runtime, which runs under pipefail in every handler: `lib/infra:400` and `lib/cmd/upgrade:441` are two examples. Every such site in `bin/`, `lib/`, `tests/` and `.github/` gets a ruling. It is either fixed in one spelling, captured rather than piped, or kept and listed as sound by construction. A tree scan refuses the shape outside that list. hv wrapped it into this thread's work rather than an issue of its own. Criterion AC-7.1.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 8,
+      "title": "CI-built release assets attached by the core with one SHA256SUMS, release.verbs for a project's own cut, and a writers check that sees every writer",
+      "scope": "M",
+      "status": "done",
+      "objective": "D55, ST0008's question 8, which hv ruled (a) on 2026-10-16 and restated on 2026-10-23 with SHA256SUMS added (relayed by intent-vc as Intent's decision 70(4)). The shape below was agreed by intent-vc on 2026-10-23, on devbin-vc's proposal of 12:40Z. devbin's release core attaches a project's CI-built assets to the tag's GitHub release, so the cut stays the one writer of the release object, and it writes one SHA256SUMS over every asset. A project whose own command cuts its releases (Intent's `bin/devbin build release`) can offer `release check` and `release attach` without opening devbin's cut. Intent's Linux packages are the first user: today they reach the release by hand (v3.2.5). There are three parts in one patch: `release.verbs`; `release attach`; and check_release_writers widened, because Intent's ST0081 AC-02.1 (\"bin/devbin release check names no second writer of the release object\") rests on it, and today it sees only a workflow that has both a `tags:` line and the text `gh release`.",
+      "body": "## The agreed shape\n\nAgreed whole by intent-vc on 2026-10-23. The proposal text is at `~/Devel/scratch/devbin-vc/d55/proposal-v1.txt`, and devbin-cc's GitHub measurements are at `~/Devel/scratch/devbin-cc/d55/REPORT.md`.\n\n### `release.verbs` (AC-8.1)\n\n- A list key in the release schema (`lib/config`, `_DEVBIN_RELEASE_SCHEMA`). Its default is every verb: `cut`, `status`, `notes`, `check` and `attach`. The opt-in rule (D35) is unchanged: nothing is offered until `commands.release.enabled: true`.\n- The handler refuses a verb the list leaves out, before it reads anything else, with exit 2 (the dispatcher's code for \"not available here\"). The refusal names the verb and the list. A cut is named `cut`, since it has no verb word on the command line. `usage` prints only the verbs offered.\n- Validation: each item must be one of the five, and `\"-\"` is refused, because a release with no verbs is `enabled: false`. A release key that no offered verb reads is refused as unread config (issue 0080's class, as `_cfg_release_problems` already does for modes), read from ONE table of which verbs read each key. With `cut` and `status` both off, the refused keys are `gates`, `derived`, `after`, `ci.query`, `ci.wait`, `title` and `branch`. `remotes` is read by `cut` and `status`, and by `attach` only as `repo`'s fallback (release_repo).\n\n### `release attach vX.Y.Z` (AC-8.2)\n\nTwo keys, read under `object: local` only and refused under `ci` and `none`, as `title` is: `assets.workflow` (the workflow file whose run at the tag builds the assets; declaring it turns the attach on) and `assets.wait` (a duration, default `30m`). The attach reads each stage's postcondition before acting, so a re-run continues:\n\n1. The release object for the tag must exist. The attach makes none.\n2. The run: `gh run list --workflow <file> --branch <tag>`, filtered to the runs whose headSha is the tag's commit. Where several successful runs match, the EARLIEST is used and its row names it, because builds of one commit are not byte-identical: devbin-cc measured 39851900428 and 39854556183 on v3.2.5's commit building different tarballs, and the release carries the first one's bytes. While no run is listed yet, the attach keeps asking. While the run is queued or in progress, it waits. Both waits share the one bound, `assets.wait`, through `release_wait`. A run that ends in failure, or no run by the deadline, is FAILED, with the remedy named: dispatch at the tag (`gh workflow run <file> --ref <tag>`) or `gh run rerun <id>`, then run the attach again. The cause is read from the run's jobs, never from its conclusion. The attach never dispatches a run.\n3. `gh run download <id>` into the run's scratch, which gives one subdirectory per artifact. Every file inside every artifact is an asset. Hashes are computed from the downloaded files, since the artifact API's digest is the zip's. Zero files, a name that appears twice, or a file named `SHA256SUMS` is refused.\n4. A file absent from the object is uploaded with `gh release upload`, never with `--clobber`. A file present with the same sha256 is `already`. A file present with a different sha256 is refused, never replaced.\n5. `SHA256SUMS`: ONE file over EVERY asset on the object, in `sha256sum -c` format (`<sha256>  <name>`, sorted by name). Every hash comes from bytes the attach holds: the files it downloaded from the run, and every other asset downloaded from the release and hashed. `SHA256SUMS` is the only asset the attach replaces, and only when its content differs.\n6. Read back: each uploaded asset's GitHub `digest` equals its local sha256.\n\nUnder devbin's own cut, the same function runs in step 9 after the object is made, and row 9 of `release status` reads the assets too. devbin itself declares `object: ci` and no assets (its object is release.yml's, run 39063041162), so its own release is unchanged.\n\n### check_release_writers (AC-8.3)\n\nIt flags any workflow in `.github/workflows` that carries a release-writing step, whatever its trigger, and names the file and line. The steps it looks for: `gh release create`, `upload`, `edit` or `delete`; `gh api` against the releases endpoints; and the release actions (softprops/action-gh-release, ncipollo/release-action, actions/create-release, actions/upload-release-asset, svenstaro/upload-release-action). A `release:` trigger, a flow-style tag trigger and a dispatch-only writer are all caught, since the step is what is read. On a pass it prints how many workflow files it read and that none writes a release object, so a pass is never read from silence. D42's warning status is unchanged.\n\n### Docs\n\nThe `release` section of `docs/configuration.md` (the key table, `verbs`, `assets.*`, `attach`, and what the writers check reads), the annotated release block in `lib/config.reference.yaml`, the help page `lib/pages/release.md`, and the handler's header.\n\n## Intent's side, recorded here and built there\n\nIn ST0081 WP-02's Intent half (intent-cc), once devbin 0.1.13 is vendored:\n- `linux-release.yml` gains `push: tags: [\"v[0-9]*\"]`. Its own rule, that a tag is never its first run, is already met.\n- Intent declares `commands.release.enabled: true`, `release.verbs: [check, attach]`, `release.repo: matthewsinclair/intent` and `release.assets.workflow: linux-release.yml`.\n- Its cut runs `bin/devbin release attach vX.Y.Z` after `bin/int macos publish` and before `bin/int brew formula --push`.\n- `remotes` is left out until Intent cuts through devbin's core. With the cut off nothing reads it, and devbin would refuse it as unread.\n- AC-02.1 is proven at the first Intent cut after the re-vendor.\n\n## A stated limit\n\nAssets reach the release after it is published. That works because immutable releases are off on both repositories (`gh api repos/<r>/immutable-releases`: enabled false, measured 2026-10-23). A draft-first object is not built.\n\n## How it is built and landed\n\ndevbin-cc builds one patch against main's HEAD:\n- red on main first: every arm fails there for the reason its criterion names;\n- green under BSD and GNU tools in targeted runs;\n- critic-shell's findings taken;\n- handed over with its seals and drafts.\n\nvc reviews without re-running anything and lands the patch on one full suite of the landing tree. hv's cut releases it as devbin 0.1.13. Every bats run is booked with intent-vc, START and END with the census: one bats suite at a time, and a bats suite may run beside intent-cc's cargo run.\n",
+      "preamble": ""
+    }
+  ],
+  "criteria": [
+    {
+      "id": "AC-1.1",
+      "text": "devbin's own tree carries a root .gitattributes with the rule * text=auto eol=lf, and a test fails if that rule is removed or narrowed, or if any tracked text file carries a CR byte.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.2",
+      "text": "In a project that install has vendored into, and again after upgrade, git check-attr eol reports lf for bin/devbin and for every file under bin/.devbin/; and doctor names any vendored path that is not covered.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.3",
+      "text": "In a project whose vendored file carries CR bytes, doctor fails naming the file and the cause, CRLF line endings, rather than only a checksum mismatch.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.1",
+      "text": "The README states the Windows prerequisite before anything else it says about Windows: WSL 2 with a named Ubuntu LTS; the clone and the work inside WSL's own filesystem, never under /mnt; WSL's own git; the packages to install, shellcheck among them; appendWindowsPath = false as advice; behind a VPN, the WSL 2 networking settings WSL documents for inheriting the VPN's DNS and routes, said to be unmeasured here (hv, 2026-10-24: the measured-VPN clause is dropped; real Windows is tested on client machines); that check all refuses at the critic gate in a project that carries intent/ until Intent's Linux binary is installed, with a pointer to Intent's own install page rather than a copy of it; and that there is no native Windows port.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "README.md, section 'On Windows: WSL 2, and nothing native' (items 1 to 6 and the check all paragraph) and the Known limitations line, at main eebd24a9; read by vc 2026-10-24"
+      }
+    },
+    {
+      "id": "AC-2.2",
+      "text": "Every install hint in the vendored runtime that names Homebrew also names a way to install the tool on Linux that puts it on PATH: a Linux package manager where Ubuntu's archive carries it, and for swift-format, which no Ubuntu package puts on PATH, the Swift toolchain (swift.org/install); held by a scan of lib/ whose accepted spellings are declared in its arm (vc's ruling of 2026-10-16 on dc's measurement).",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.1",
+      "text": "bin/devbin shell-init bash emits a dvb function that, evaluated in bash, finds and runs the nearest bin/devbin exactly as the zsh body does in zsh, held by the same arms run under both shells; and both bodies are rendered from one source.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-4.1",
+      "text": "With PATH carrying entries with spaces and parentheses and a directory of Windows executables that includes a git.exe, every command in scope behaves as it does without them, and no .exe is run in place of a Linux tool.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-4.2",
+      "text": "Under WSL, doctor in a project rooted on a Windows drive reports the location, the cause and the remedy, and does not fail on that alone; held by arms that drive the WSL probe on Linux.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-5.1",
+      "text": "The full suite has been run under uutils coreutils, and every failure is fixed in this thread or filed as an issue.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "Met on kovacs (Ubuntu 26.04.1 aarch64, uutils coreutils 0.10.0), closed here on D1, D1b and D1c per hv's ruling of Q6 (a), 2026-10-16: D1 at 2ff34a98 2306 of 2307, its one failure filed and fixed as 0198 (landed 2026-10-16); D1b at 89cae16e 2306 of 2307, its one failure fleet.bats:974 rerun alone by D1c ok rc 0 (the pause of hv's move, nothing to file); and R1 at the release head 8a2e0737 (0.1.11, 0fc22669 less note and stamp) 2384 ok 0 not ok, rc 0, 2026-10-17 09:27:08Z to 09:59:32Z, read by vc over ssh"
+      }
+    },
+    {
+      "id": "AC-6.1",
+      "text": "A GitHub Actions job runs bin/devbin test all inside WSL on a Windows runner, from a clone in WSL's own filesystem, on release tags and on demand; its name states the WSL version it ran; and it blocks no release until hv rules that it does.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "dispatch 39055655481 on ea43e4b9 (workflow_dispatch, on demand; the job's if: equals the macOS job's tags-and-dispatch gate, held by ci-workflow.bats): WSL job 117462973144 'Test in WSL 2 (Ubuntu 26.04)' on windows-2025, its kernel asserted to agree (6.18.40.1-microsoft-standard-WSL2), ran bin/devbin test all from a clone in WSL's filesystem (~/devbin), 2392 ok, 0 not ok; Test Summary passed at 18:31Z while the WSL job still ran, so it blocks no release"
+      }
+    },
+    {
+      "id": "AC-6.2",
+      "text": "Inside WSL, on a fixture project without intent/ that devbin is vendored into, the smoke list passes: shell-init bash with dvb, check all, test, server started and stopped, package, contract, version check, clean and help.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-6.3",
+      "text": "The WSL job's first run is read job by job, and every failure is fixed in this thread or filed as an issue.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "first run read job by job: dispatch 39039832569 on ac472c32, every job green but WSL, red at Run tests (23 not ok) with ONE finding, the steps ran as root (uid=0); fixed in this thread at e8044092 (dc's root fix: wsl-shell-user dev on the one setup-wsl call, sudoers by wsl-bash -u root, the version step exits on uid 0; ci-workflow.bats ok 125 red on main first; landing suite 20261017-1743); proven by dispatch 39055655481 on ea43e4b9, WSL job green as uid=1000(dev); nothing to file"
+      }
+    },
+    {
+      "id": "AC-6.4",
+      "text": "The adopting estate confirms the smoke list on one of its own repositories, cloned inside WSL's filesystem; recorded as the message received, never by the repository's name.",
+      "kind": "non-test",
+      "state": {
+        "is": "withdrawn",
+        "reason": "hv, 2026-10-24: there is no Windows machine or licence here, and devbin on Windows is tested on client machines, taking it from there; the smoke list itself runs green in CI's WSL 2 job on every release tag (AC-6.5), so no estate's confirmation is awaited",
+        "by": "hv"
+      }
+    },
+    {
+      "id": "AC-6.5",
+      "text": "Inside WSL, on a fixture project that carries intent/, as every project of the adopting estate does, check all runs the critic gate with Intent's Linux binary, shellcheck and git installed, and passes: first against Intent ST0081's dispatch-run artifact, then against its release asset, before devbin tags. Until that binary exists, check all there refuses at the critic gate naming the cause, and this criterion waits on ST0081.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-7.1",
+      "text": "No pipeline in bin/, lib/, tests/ or .github/ that runs under pipefail lets its reader stop reading before its writer has finished, unless a ruled list names it as sound by construction; held by a tree scan that is red on main at 4320bbdc and green after the fix.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-8.1",
+      "text": "release.verbs decides which release verbs a project offers: undeclared, every verb (cut, status, notes, check, attach). A verb the list leaves out is refused at exit 2, before anything else is read, naming the verb and the list, and usage prints only the verbs offered. An item that is not one of the five verbs, or \"-\", is refused at validation. A release key that no offered verb reads is refused as unread config, read from one table of which verbs read each key.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-8.2",
+      "text": "release attach vX.Y.Z, and step 9 of a cut under object: local through the same function, attaches the assets built by the earliest successful run of assets.workflow at the tag (--branch the tag, at the tag's commit). It waits for that run within assets.wait and never dispatches one. It uploads every file of every artifact without --clobber, and refuses an asset already present with other bytes. It writes one SHA256SUMS over every asset on the object, replacing it only when its content differs, and reads back each upload's GitHub digest. Each stage reads its postcondition first, so a re-run continues. The assets.* keys are refused outside object: local.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-8.3",
+      "text": "release check names, by file and line, every workflow in .github/workflows that carries a release-writing step (gh release create, upload, edit or delete; gh api against the releases endpoints; a release action), whatever its trigger. On a pass it prints how many workflow files it read and that none writes a release object. The warning status of D42 is unchanged.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "id": "AT-1.1",
+      "kind": "test",
+      "file": "tests/unit/lineendings.bats",
+      "covers": [
+        "AC-1.1"
+      ],
+      "status": "green",
+      "note": "Red first on main 7688f9da's lib/ under WP-01's arms, BSD and GNU (8 of 10 red; the no-CR-byte arm green there by design). Met at d3032299 (ids at db657de9): devbin's root .gitattributes carries `* text=auto eol=lf`, and git reads every tracked file as text=auto eol=lf, so a rule narrowed to extensions leaves the extensionless scripts out and the arm fails; no tracked text file carries a CR byte (the one tracked file with one, design/devbin-logo.pdf, is binary); landing suite 20261017-0636 (vc's landing suite at ca557b4d: 2384 of 2384 ok, 5 skips, .errors empty, 06:36:33Z to 06:45:14Z; seal kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/20261017-0636/)."
+    },
+    {
+      "id": "AT-1.2",
+      "kind": "test",
+      "file": "tests/unit/lineendings.bats",
+      "covers": [
+        "AC-1.2"
+      ],
+      "status": "green",
+      "note": "Red first on main 7688f9da's lib/ under WP-01's arms, BSD and GNU (the last-line arm green there by design); the fixture arm red on 74fdea61 before install_devbin wrote the block. Met at d3032299 (ids at db657de9): install writes devbin's marked block into the project's root .gitattributes and git check-attr eol reports lf for bin/devbin and every file under bin/.devbin/, and again after upgrade, which puts back an edited or deleted block and keeps one as written without a word; the project's own lines are kept byte for byte, a marker that does not make one block is refused by name, and a fixture install_devbin makes leaves the same file a real install does; doctor names each vendored path a later rule takes off LF, with the fix, and outside a git checkout says the rule is not checked; landing suite 20261017-0636 (vc's landing suite at ca557b4d: 2384 of 2384 ok, 5 skips, .errors empty, 06:36:33Z to 06:45:14Z; seal kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/20261017-0636/)."
+    },
+    {
+      "id": "AT-1.3",
+      "kind": "test",
+      "file": "tests/unit/lineendings.bats",
+      "covers": [
+        "AC-1.3"
+      ],
+      "status": "green",
+      "note": "Red first on main 7688f9da's lib/ under WP-01's arm, BSD and GNU. Met at d3032299 (ids at db657de9): a vendored file carrying CR bytes fails doctor by name with CRLF line endings as the cause, and the manifest's line for it says the same, rather than a checksum mismatch alone; a file doctor cannot read is the manifest check's to fail, and line endings notes it as unchecked; landing suite 20261017-0636 (vc's landing suite at ca557b4d: 2384 of 2384 ok, 5 skips, .errors empty, 06:36:33Z to 06:45:14Z; seal kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/20261017-0636/)."
+    },
+    {
+      "id": "AT-2.2",
+      "kind": "test",
+      "file": "tests/unit/installhints.bats",
+      "covers": [
+        "AC-2.2"
+      ],
+      "status": "green",
+      "note": "Red first on main's lib/ (exactly the seven hints); landed at 3ddd6cad; red first on 4caf885a's lib/ under 2e52c85a's arm; green at 3ddd6cad: landing suite 2352 of 2352, seal 20261016-1322, at the stack tip 1dadcaa3"
+    },
+    {
+      "id": "AT-3.1",
+      "kind": "test",
+      "file": "tests/unit/shellinit.bats",
+      "covers": [
+        "AC-3.1"
+      ],
+      "status": "green",
+      "note": "Landed at 8fe7eaa7; red first at bbb94fba, the arms under bash before the bash body existed; met at 8fe7eaa7: every behavioural arm runs the emitted dvb under zsh -f and bash --norc --noprofile with nounset on, and the one-source arm goes red on any difference between the two bodies but the shell line; landing suite 2352 of 2352, seal 20261016-1322, at the stack tip 1dadcaa3"
+    },
+    {
+      "id": "AT-4.1",
+      "kind": "test",
+      "file": "tests/unit/windowspath.bats",
+      "covers": [
+        "AC-4.1"
+      ],
+      "status": "green",
+      "note": "These arms hold what the runtime already did (D48 needed no runtime change); the stubs' recording was driven by hand before the arms were written, and the off-WSL guard and the comparison passed on main as intended. Met at f7b34793: help, help --why, version, -v, doctor, check all, test all, shell-init bash and dvb each succeed and print the same with a Windows PATH appended (Program Files (x86) and System32 entries full of stub .exe files that record any run), and clean names an in-tree entry with spaces and parentheses whole (clean.bats); no stub ran; landing suite 20261017-0636 (vc's landing suite at ca557b4d: 2384 of 2384 ok, 5 skips, .errors empty, 06:36:33Z to 06:45:14Z; seal kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/20261017-0636/)."
+    },
+    {
+      "id": "AT-4.2",
+      "kind": "test",
+      "file": "tests/unit/doctor.bats",
+      "covers": [
+        "AC-4.2"
+      ],
+      "status": "green",
+      "note": "Red first on main's runtime: four of the five first doctor arms (the off-WSL arm a guard); the mount-root arm red on 60b98f36. Met at f7b34793: under WSL, doctor in a project on a Windows drive notes the drive, the cause and the fix and exits 0; a link onto a drive and a moved or linked mount root are read physically; WSL's own filesystem passes; off WSL there is no row; the probe is held on a fixture's /proc (WSLInterop, WSLInterop-late, microsoft in osrelease); landing suite 20261017-0636 (vc's landing suite at ca557b4d: 2384 of 2384 ok, 5 skips, .errors empty, 06:36:33Z to 06:45:14Z; seal kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/20261017-0636/)."
+    },
+    {
+      "id": "AT-6.2",
+      "kind": "test",
+      "file": ".github/wsl-smoke.sh",
+      "covers": [
+        "AC-6.2"
+      ],
+      "status": "green",
+      "note": "Red on the WSL job's first run, dispatch 39039832569 on ac472c32: the job ran as root, Run tests failed (23 not ok) and the smoke list was skipped, so the list never held inside WSL (dc's earlier drives of the script were off WSL, on this Mac under BSD and GNU). Green on dispatch 39055655481 on ea43e4b9, after the root fix landed at e8044092: WSL job 117462973144, Test in WSL 2 (Ubuntu 26.04), kernel 6.18.40.1-microsoft-standard-WSL2, every step as uid=1000(dev), the clone in WSL's filesystem at ~/devbin; test all 2392 ok, 0 not ok (106 skips: cargo, expect and prettier absent, case-sensitive disk). Run the smoke list: all nine steps PASS on the plain fixture without intent/ (shell-init bash and dvb, check all, test all, server started and stopped, package, contract, version check, clean, help)."
+    },
+    {
+      "id": "AT-6.5",
+      "kind": "test",
+      "file": ".github/wsl-smoke.sh",
+      "covers": [
+        "AC-6.5"
+      ],
+      "status": "green",
+      "note": "Red on the WSL job's first run, dispatch 39039832569 on ac472c32: the job ran as root, Run tests failed (23 not ok) and the smoke list was skipped, so the list never held inside WSL (dc's earlier drives of the script were off WSL, on this Mac under BSD and GNU). With no intent on PATH there, the intented fixture's check all is asserted to refuse at the critic gate naming intent (D53). Green on dispatch 39055655481 on ea43e4b9, after the root fix landed at e8044092: WSL job 117462973144, Test in WSL 2 (Ubuntu 26.04), kernel 6.18.40.1-microsoft-standard-WSL2, every step as uid=1000(dev), the clone in WSL's filesystem at ~/devbin; test all 2392 ok, 0 not ok (106 skips: cargo, expect and prettier absent, case-sensitive disk). Install Intent: v3.2.4's intent-x86_64-unknown-linux-musl.tar.gz fetched anonymously from Intent's public release, sha256 1feeed1a... equal to the pin, intent 3.2.4 (f89b8285) on PATH and bootstrapped; then all nine steps PASS on the intented fixture made by intent init --lang shell with one shell file staged, its check all exiting 0 with the critic gate active (the gate needs only intent/, lib/builtins _DEVBIN_BUILTIN_NEEDS). Against the release asset, since 3.2.4 was released before the job existed (decision 51)."
+    },
+    {
+      "id": "AT-7.1",
+      "kind": "test",
+      "file": "tests/unit/contract.bats",
+      "covers": [
+        "AC-7.1"
+      ],
+      "status": "green",
+      "note": "contract.bats: 'no reader in a pipe can stop before its writer has finished, unless the comment above it says why (ST0008 AC-7.1, 0031)'. Red on main's code (4320bbdc, at 288071e2) under BSD and GNU, with 111 sites (cc's seals runs/arm07.red.*, scan v2). Green with the fix under both, and landed at 99dd3106 by vc after vc's full suite of the landing tree passed 2296 of 2296 (seal 20261012-0833)."
+    },
+    {
+      "id": "AT-8.1",
+      "kind": "test",
+      "file": "tests/unit/releasecore.bats",
+      "covers": [
+        "AC-8.1"
+      ],
+      "status": "green",
+      "note": "minted by vc with WP-08 on 2026-10-23, before any arm exists; the builder re-cites the file with intent at edit if the arms land elsewhere. Red on the base's code (0683a6a8, WP-08's test files copied in, byte-identical to the build's) under BSD and GNU, in cc's series of 2026-10-23 14:58Z to 15:05Z (runs/arm.red.core-new.* and arm.red.core-changed.*): the new arms at releasecore.bats:690, :720, :749, :772, :806 and :844, and the changed arms at :167, :251, :282 and :526, each at its first assertion on what WP-08 adds (release.verbs, the readers column, the attach verb's parse, the new keys); the changed --help arm at :118 passes on the base by its nature, its invariant being the argument loop's. Green at 2dec40a1 under BSD and GNU (cc's runs/arm.green2.release.*); the fix round to 5059a26e changed no line of releasecore.bats, and the full suite of the landing tree passed at 23f5f70e (seal 20261023-2029). Landed at 6bda9690."
+    },
+    {
+      "id": "AT-8.2",
+      "kind": "test",
+      "file": "tests/unit/releaseattach.bats",
+      "covers": [
+        "AC-8.2"
+      ],
+      "status": "green",
+      "note": "minted by vc with WP-08 on 2026-10-23, before any arm exists; the builder re-cites the file with intent at edit if the arms land elsewhere. Red on the base's code (0683a6a8, WP-08's test files copied in) under BSD and GNU, in cc's series of 2026-10-23 14:58Z to 15:05Z (runs/arm.red.attach.*): every arm of the file as it then stood, each at its first assertion on the attach, since the base has no attach verb and refuses the assets keys. The fix round's arms were red on 2dec40a1, the reviewed candidate, run singly: the finished release's re-run (releaseattach.bats:171) at its assets already row, the finished release with expired artifacts (:189) at assert_success, the SHA256SUMS replacement (:252) at its assets pending row, and the expired-artifact message (:440) on the old message. Green at 5059a26e under BSD and GNU in cc's series of 2026-10-23 20:01Z to 20:16Z (runs/arm.green3.attach.*, every arm ok, none skipped), and in the full suite of the landing tree at 23f5f70e (seal 20261023-2029). Landed at 6bda9690."
+    },
+    {
+      "id": "AT-8.3",
+      "kind": "test",
+      "file": "tests/unit/releasecore.bats",
+      "covers": [
+        "AC-8.3"
+      ],
+      "status": "green",
+      "note": "minted by vc with WP-08 on 2026-10-23, before any arm exists; the builder re-cites the file with intent at edit if the arms land elsewhere. Red on the base's code (0683a6a8, WP-08's test files copied in) under BSD and GNU, in cc's series of 2026-10-23 14:58Z to 15:05Z (runs/arm.red.core-new.*): the arms at releasecore.bats:880, :902, :928 and :954, for want of the widened reader and the pass line. Green at 2dec40a1 under BSD and GNU (cc's runs/arm.green2.release.*); the fix round to 5059a26e changed no line of releasecore.bats, and the full suite of the landing tree passed at 23f5f70e (seal 20261023-2029). Landed at 6bda9690."
+    }
+  ],
+  "attachments": [
+    {
+      "path": "design.md",
+      "text": "---\nverblock: \"16 Oct 2026:v0.9: vc - hv's 2026-10-16 rulings on the open questions\"\n---\n\n# ST0008 Design: devbin on Windows through WSL 2\n\n**Drafted by vc on hv's word of 2026-10-12, and started the same day in lock-step with Intent's WSL thread** (ST0081 then, ST0082 since Intent renumbered on 2026-10-14). The detail comes from another estate's session, which brought the ask; its answers are in the cover's Context and are not restated here. **hv ruled every open question on 2026-10-16, each as vc recommended, and dc reviewed v0.8 the same day**; v0.9 carries both. A decision not marked RULED is the design as reviewed. WP-07 is done, and WP-01 to WP-04 may now start (question 5).\n\n## In lock-step with Intent's ST0082, on ST0081's Linux packages\n\n**hv, 2026-10-12: this thread and Intent's own WSL thread advance in lock-step.** Synced with intent/vc the same day. **On 2026-10-14 Intent renumbered, on hv's word in its vc's session**: ST0081 became \"Intent from Homebrew on Linux and macOS, with no source checkout: Linux binaries on every release\", and its WSL work became ST0082 (\"Intent on Windows through WSL 2\"), which depends on ST0081. Read first-hand in Intent's thread covers on 2026-10-15:\n\n- **ST0081 ships the Linux packages.** `intent` and `intentd` for x86_64 and aarch64, linked statically against musl and packaged with the support payload the binaries read at run time, are built by a dispatch-only workflow (`linux-release.yml`, its WP-01) and smoked in a container at an old floor. Each tag's GitHub release carries them with one writer per release object (its WP-02, which turns on D55), and the tap's formula gains Linux entries beside the macOS one (its WP-06). **So Intent's Linux install is Homebrew on Linux**: `docs/install.md#linux` (its WP-03) says Homebrew on Linux, then `brew install matthewsinclair/intent/intent`, `intent bootstrap` and `intent doctor`, with no checkout of Intent's source. It is to be proven on kovacs as a user uses it (its WP-07, in progress) and rides Intent 3.2.4.\n- **ST0082 carries the WSL work.** The WSL page `docs/windows-wsl.md` (its WP-01) links to `docs/install.md#linux` and never restates it. The first install on a real Windows machine (its WP-02) is arranged by hv through the other estate. ST0082 is in Triage.\n\nWhat that means here:\n\n- **Both threads started together**, on hv's word of 2026-10-12: \"Yes, start both now.\"\n- **Three interfaces, each reviewed against the other thread's design, and the renumbering changes none of them:** the install step (D53: devbin's README points at `docs/install.md#linux` and never restates it, so the recipe has one home, which is now a Homebrew one); the critic gate's contract (D53: `intent`, `shellcheck`, `git` and `jq` on PATH); and who writes LF rules into a project (D46).\n- **The joint proof runs before either tag** (D50). devbin's WSL job installs Intent from ST0081's Linux package, first the dispatch run's artifact. Intent then tags its release, the job runs again against the real release, and devbin tags after it. Each vc tells the adopting estate's session when its own release is tagged.\n- **ST0081 rides Intent 3.2.4**, Intent's next release (hv, 2026-10-12), and neither project's release is cut until the work runs on main's HEAD.\n- **devbin's own Homebrew half** (hv, 2026-10-14, relayed by intent/vc). **It is ST0009**, started on 2026-10-16 on hv's ruling of question 10 (a): devbin from Homebrew on macOS and Linux with no source checkout, with this thread depending on it as ST0082 depends on ST0081. Its formula is built: issue 0195 landed at `93259543`, keeping the formula as a template at `packaging/homebrew/devbin.rb` that `bin/devbin formula render|publish` fills from git, and 0197 (`install.prefix` and fleet on a machine whose install is Homebrew's) is approved and waits on its suite. The tap, `matthewsinclair/homebrew-devbin`, does not exist: creating it is publishing, and it, the release's `after:` line and the proof on kovacs wait on hv.\n\n## What the thread is for, in one paragraph\n\nUnder WSL 2 devbin is a Linux program, and CI's Ubuntu leg already proves Linux on every push. So this thread ports devbin nowhere. It closes the edges where Windows reaches into a Linux session -- line endings, a checkout on a Windows drive, the Windows PATH, Windows paths -- and it proves the commands developers use inside WSL itself rather than inferring them from Ubuntu. Every change is a default that any project on WSL gets, and no project is a special case.\n\n## Principles\n\n1. **WSL is Linux, so the fix for a WSL defect is a Linux fix.** No WSL branch changes what a command does. Where WSL is detected at all, it is to REPORT something (D49), never to behave differently.\n2. **The repository holds the line endings, not each clone's git settings.** A rule in the tree survives every git that clones it; advice in a doc reaches only the developers who read it.\n3. **A green on WSL 1 is not a green on WSL 2.** Every piece of evidence says which it ran on, so that nothing reads as more than it proved.\n4. **Follow the fleet's spelling.** Where devbin already does a thing one way -- `bats-lanes` naming apt beside Homebrew -- the rest follows it rather than growing a second way.\n\n## Decisions\n\n### D44 -- WSL 2 only; no native Windows port. RULED (hv, 2026-10-12, relayed by the adopting estate's session)\n\nNo `.cmd`, `.bat` or `.ps1` entry point, no Git Bash or MSYS2 target, and no `C:\\` path handling inside devbin. A Windows tool's path is the caller's to translate (`wslpath`), never devbin's. WSL 1 is not a developer platform; it appears only as CI evidence, and says so (D50).\n\n### D45 -- The prerequisite is stated where installing is described, and starts with where to clone\n\nThe README's Install section gains a short part on Windows, before anything else it says about Windows, in this order:\n\n1. **WSL 2** with Ubuntu 24.04 or 26.04 LTS (question 1, ruled).\n2. **Clone and work inside WSL's own filesystem** (`~/...`), never under `/mnt/<drive>`. A repository that a Windows-side tool cloned onto a Windows drive -- an IDE's own git, a Windows git -- is cloned again inside WSL rather than used through `/mnt`.\n3. **WSL's own git** (`apt install git`), so `core.autocrlf` takes Linux's default rather than Windows'. An editor works on the WSL side through its WSL integration, so its git runs inside WSL too.\n4. **The packages.** Current Ubuntu LTS releases already meet the bash >= 5 floor; then `git`, `jq`, `shellcheck` (which the critic gate calls, D53), and `parallel` for `test all`'s lanes, and each project's own toolchains. Intent itself is installed by Intent's own page, which the README points at (D53); since ST0081 that page installs it through Homebrew on Linux.\n5. **Advice, not a requirement:** `appendWindowsPath = false` under `[interop]` in `/etc/wsl.conf` keeps the Windows PATH out of WSL altogether. devbin must still work without it (D48).\n6. **Behind a VPN** (known WSL behaviour, not measured here): WSL 2 often does not inherit a Windows VPN's DNS and routes unless its mirrored networking mode or its DNS tunnelling is on -- `networkingMode=mirrored`, or `dnsTunneling=true`, under `[wsl2]` in the Windows-side `.wslconfig`, both of which need Windows 11 22H2 or later. The prerequisite names them once they are measured on a real machine.\n\n\"Constraints, stated up front\" gains one line: on Windows, WSL 2 is the prerequisite, and there is no native port. The critic gate's refusal is stated there too (D53). Criterion AC-2.1.\n\n### D46 -- LF is held by the repository: devbin's own tree, and every project's vendored copy. RULED (hv, 2026-10-16: shape (b), one marked block per tool)\n\n**devbin's own tree** gets a root `.gitattributes` carrying `* text=auto eol=lf`. Not `*.sh`: 41 of the bash scripts have no extension (40 until 0195 added `bin/.devbin/cmd/formula`). `text=auto` leaves a binary file alone, and since no tracked text file carries a CR byte today (one binary does, `design/devbin-logo.pdf`, which `text=auto` leaves alone), normalising changes no content. Criterion AC-1.1.\n\n**Every project devbin vendors into** is the exposure that matters, since the adopting estate's developers clone projects, not devbin. The vendored set must check out LF in every project, and the review settles how (question 4). Two shapes:\n\n- **(a) A vendored `bin/.devbin/.gitattributes`** carrying `* text eol=lf`: devbin's own file, replaced on upgrade like the rest of the runtime, covering everything under `bin/.devbin/`. It cannot reach the launcher `bin/devbin`, which sits beside it, so the launcher needs a line in a file the project owns.\n- **(b) A marked block** that `install` writes into the project's root `.gitattributes` and `upgrade` keeps, covering `bin/devbin` and `bin/.devbin/**`. One rule covers both, at the cost of devbin writing into a file the project owns, which today's seam does not do.\n\nEither way, `doctor` checks the rule the way git itself sees it, with `git check-attr eol`, and names any vendored path that is not covered. Criterion AC-1.2.\n\n**Intent writes into projects too** (intent/vc, 2026-10-12): `intent claude upgrade --apply` writes chain blocks into a project's tracked `.githooks/` hooks, which a CRLF checkout breaks exactly as it breaks devbin's vendored copy. v0.7 proposed that, under shape (b), one block cover both tools' files under one owner. **v0.8 proposes instead one marked block per tool in the project's root `.gitattributes`**: devbin's block covers devbin's vendored paths and Intent's covers its hooks, so each block has one writer and neither tool writes a rule for the other's files, which one shared block would need. **hv ruled (b), one block per tool, on 2026-10-16 (question 4)**, so Intent writes its own block for its hooks, settled with ST0082's review.\n\n**A file that already carries CR bytes** fails somewhere obscure: a shebang that reads `bash\\r`, or a checksum mismatch. `doctor` names the cause instead -- the file, and CRLF line endings. Criterion AC-1.3.\n\n### D47 -- `shell-init bash`, both bodies from one source\n\n`shell-init` gains a bash body beside zsh's, emitting the same `dvb` function, so `eval \"$(bin/devbin shell-init bash)\"` in `~/.bashrc` does what the zsh line does in `~/.zshrc`. The code calls `_shell_init_zsh` \"the one true body\", and that stays true: the two shells differ in a handful of lines, so one source renders both, rather than a second body that would drift (Highlander). The zsh-only `--autoload` form stays zsh's. The same arms run under both shells. Criterion AC-3.1.\n\n### D48 -- The runtime works with the Windows PATH appended\n\nWith `appendWindowsPath` left on, PATH carries entries with spaces and parentheses (`/mnt/c/Program Files (x86)/...`) and directories full of `*.exe`. Every PATH split keeps an entry whole, every use quotes it, and no Windows executable ever stands in for a Linux tool. This is tested on Linux, with no Windows needed: arms build such a PATH, with a directory holding a stub `git.exe`, and run the commands in scope under it. Criterion AC-4.1.\n\n### D49 -- A checkout on a Windows drive is reported, not refused\n\nUnder WSL, a project rooted on a Windows drive (`/mnt/<letter>/...`) works, but slowly, with exec bits from the mount options and case-insensitive names. `doctor` reports it, with the cause and the remedy (clone again inside WSL's filesystem), and does not fail on that alone: a refusal would stop a developer mid-task over something that still works. WSL is detected the way WSL marks itself (`/proc/sys/fs/binfmt_misc/WSLInterop`, or `microsoft` in the kernel release), and the probe takes an override so a test can drive it on Linux. Criterion AC-4.2.\n\n### D50 -- CI: a Windows leg runs the suite inside WSL, on release tags and on demand, blocking nothing at first. RULED (hv, 2026-10-16: questions 2 (a) and 9 (a))\n\nA job on `windows-latest` sets up WSL with an Ubuntu LTS, clones the commit INSIDE WSL's filesystem rather than using the runner's Windows workspace, installs the Ubuntu leg's packages, and runs `bin/devbin test all` there. Its trigger follows decision 32 (release tags and `workflow_dispatch`), because Windows minutes bill at twice Linux's until devbin is public. It blocks no release until hv rules that it does, so it stays out of Test Summary's decision until then -- deliberately, with `tests/unit/ci-workflow.bats` extended to hold that. **Its name says which WSL version it ran**, because on a hosted runner that is probably WSL 1 (principle 3). Its first run is read job by job, and what breaks is fixed here or filed. Criteria AC-6.1 and AC-6.3.\n\n**What WSL 1 proves, as hv ruled on 2026-10-16 (question 2 (a)):** a hosted runner's WSL 1 counts as evidence for devbin, for the `intent` CLI and for the critic gate, which make ordinary system calls, and NOT for `intentd`'s file watching or for WSL 2's kernel. The WSL 2 evidence is a first install on a real Windows machine, which hv arranges (ST0082's WP-02). **The job lives in devbin's repository** (hv, 2026-10-16, question 9 (a)): it proves devbin's commands and runs on devbin's tags, and on tags and dispatch alone it runs a handful of times, though devbin pays twice the Linux rate for Windows minutes until it is public.\n\n**The joint proof (AC-6.5) runs before either tag:** the job installs Intent from ST0081's Linux package, first the dispatch run's artifact, and runs `check all` on the fixture that carries `intent/`. Intent then tags its release, the job runs again against the real release, and devbin tags after it.\n\n### D51 -- The smoke list runs on fixture projects, never on anyone's repository\n\ndevbin's acceptance is a pair of fixture projects that declare their commands the way a consuming project does: `check.lint` and `check.analyse` as stub commands, a `test` option, a `server` that starts and stops, and `package` and `contract` as project commands. Inside WSL, `install` vendors devbin into each and the smoke list runs: `shell-init bash` and `dvb`, `check all`, `test`, `server`, `package`, `contract`, `version check`, `clean` and `help`. **One fixture carries no `intent/`**, so its `check all` has no critic gate and the smoke list passes on it. **The other carries `intent/`, as every project of the adopting estate does**, so its `check all` meets the critic gate: it refuses, naming the cause, until Intent's Linux binary is installed in the job, and passes once it is (D53). The fixture without `intent/` alone would prove `check all` in a project unlike every one the adopting estate has, which is a green that reads as more than it proved (principle 3). The adopting estate's own run, on one of its repositories, is its acceptance rather than devbin's, and this thread records it as a message received, never by the repository's name. Criteria AC-6.2, AC-6.4 and AC-6.5.\n\n### D52 -- The suite is measured under uutils coreutils\n\nUbuntu 26.04 ships uutils as its coreutils: kovacs, on 26.04.1, carries uutils 0.10.0 (measured 2026-10-14), and both a new WSL install and, in time, CI's `ubuntu-latest` will reach it. The suite is measured under it on kovacs, where mawk is the awk as well. **D1** ran the whole suite there and nothing in its one failure points at uutils, mawk or aarch64; **D1b** ran the arms D1 skipped for want of cargo and expect, and **D1c** re-ran its one failure alone (\"Proven on Linux\", below). WP-05 closes here on that evidence (hv, 2026-10-16, question 6 (a)). A failure is fixed here when it touches the commands in scope, or filed as an issue. CI's own move to 26.04 is an issue of its own, not this thread's. Criterion AC-5.1.\n\n### D53 -- `check critic` under WSL waits on Intent's Linux binaries, refusing until they exist, and the doc says so\n\n`check.critic` is active in a project that carries `intent/`, and it needs the `intent` binary on PATH. **Every project of the adopting estate carries `intent/`, and its docs use `check all`**, so under WSL this gate decides whether `check all` works in every one of them. Today Intent ships for macOS arm64 only, and the gate refuses by design: a rules check that cannot run must fail loudly. **That holds only until Intent ships Linux binaries**, which ST0081 does: static musl packages for x86_64 and aarch64 (aarch64 became required on 2026-10-14, because Homebrew on Linux is proven first on kovacs), installed through Homebrew on Linux, planned for Intent 3.2.4. Once they exist nothing in devbin's gate changes. **But an `intent` on PATH is not the whole contract** (intent/vc, 2026-10-12): Intent's runner also calls `shellcheck` for the tool-armed shell rules, and `git`, and the hooks Intent installs in a project need `jq`, without which they disarm every language critic; a rule whose tool is absent is reported unasked rather than failed. So a WSL machine without `shellcheck` or `jq` runs a weaker critic than macOS does and still passes, which is a green that reads as more than it proved; the README and the WSL job install all four. Intent is installed by Intent's own install page, which the README points at and never restates: the `## Linux` section of Intent's `docs/install.md` (`https://github.com/matthewsinclair/intent/blob/main/docs/install.md#linux`, an anchor a bare heading keeps stable), which ST0081's WP-03 writes as Homebrew on Linux, with the WSL specifics in Intent's `docs/windows-wsl.md` (ST0082's WP-01), which links back to it. Every command on that page is run on Linux before it is written down, so the README can point at the anchor before the section is filled. The WSL job installs Intent's Linux package (D50, D51), and CI's Ubuntu leg could then run the critic rather than listing its gates around it, which would be an issue of its own. Until then the README says that `check all` refuses at the critic gate under WSL in a project that carries `intent/`, and names the project's own way out, turning the gate off in its config, without making that a default. The two threads' sequencing is agreed with intent/vc through hv (question 7). Criteria AC-2.1 and AC-6.5.\n\n### D54 -- Install hints name a Linux package manager beside Homebrew\n\nSix hints in the vendored runtime name Homebrew alone (`lib/cmd/check`, two; `lib/cmd/doctor`; `lib/cmd/fmt`; `lib/helpers`, two). Each names apt beside it, in the spelling `bats-lanes` already uses -- `brew install parallel, or apt-get install parallel` -- with no platform branch (principle 4). `lib/pages/repl.md` repeats one of `lib/helpers`'s hints word for word and changes with it; `bin/.devbin`'s own hints are devbin's, outside the vendored set. Criterion AC-2.2.\n\n### D55 -- CI-built release assets: devbin's release core attaches them. RULED (hv, 2026-10-16: question 8 (a))\n\nST0081's Linux packages are built by a CI run and must reach the tag's GitHub release, and `bin/devbin release check`, in a project whose release object is local, warns on any workflow that has a `tags:` trigger and calls `gh release`, an upload included (`check_release_writers`, which returns at once for any other project), so that a release object has one writer. Two shapes (intent/vc, 2026-10-12):\n\n- **(a) devbin's release core attaches the assets:** after it creates the release, it downloads the CI run's artifacts and uploads them. One writer stays one writer, and every project that ships CI-built assets gets the same step -- the adopting estate's own command-line tool among them, once it ships binaries. It is a devbin change, so it is devbin's to build, and it would be a work package of this thread or an issue beside it.\n- **(b) Each project adds an upload-only workflow** with no `tags:` trigger, dispatched once the release exists.\n\n**hv ruled (a) on 2026-10-16.** Intent still releases through its own handler, `bin/devbin build release`, which runs `gh release create` itself, rather than through devbin's core, so (a) reaches Intent's 3.2.4 only if that handler calls the core's new step.\n\n### D56 -- No pipeline is broken by design: 0031's class is fixed everywhere, and a scan keeps it out. RULED (hv, 2026-10-12)\n\nThe v0.1.10 tag's Ubuntu run failed one arm, `tests/unit/ci-workflow.bats:266` at the tag, where a pipe into an `awk` that exits early took SIGPIPE under pipefail: a race that two lanes on a 2-CPU runner exposed. It is issue 0031's class, which 0031 fixed at four sites rather than as a class, and the shape stands in the runtime too, which runs under pipefail in every handler. hv: \"We should not have any code like that where we know in advance it's broken by design. Please fix.\" Every site in `bin/`, `lib/`, `tests/` and `.github/` is ruled -- fixed, captured rather than piped, or listed as sound by construction -- and a tree scan refuses the shape outside the list. WP-07, criterion AC-7.1. **DONE**: cc built it, vc reviewed it, and it landed at `99dd3106` on 2026-10-12 after a full suite of the landing tree passed 2296 of 2296; AC-7.1 is satisfied.\n\n## Proven on Linux before anything is pushed. RULED (hv, 2026-10-12)\n\nhv: \"I want to run the tests here in the Ubuntu VM, and not push to GH until we know it works properly.\" And: \"Let's get this _actually_ working first on HEAD on main, then we can cut the new release once we're confident it is working, and not before.\" So Linux runs go on kovacs, hv's Ubuntu VM, before anything is pushed to GitHub, and no release is cut for this work, devbin's or Intent's, until it works on main's HEAD.\n\n**kovacs**, measured and provisioned on 2026-10-14 by kovacs-sysadm, a Claude Code session on the VM: Ubuntu 26.04.1 LTS on aarch64, with 2 CPUs, 3.3 GB of memory and a 3.8 GB swap file, and a 1.7 GB tmpfs `/tmp`, so runs point TMPDIR at disk. Its coreutils are uutils 0.10.0 and its awk is mawk. bats 1.12.0 is first on PATH (CI's pin), with shellcheck 0.11.0, libxml2-utils, GNU parallel 20240222 and Rust 1.99.0, whose `~/.cargo/bin` only an interactive shell puts on PATH. Homebrew 7.0.9 is installed but off PATH, and `expect` came from apt on 2026-10-15. Its runs are orders in intent/vc's queue, run by kovacs-sysadm, each a script that detaches and exits with the suite's own status, read by vc from the seal over ssh, read-only.\n\n- **D1** (2026-10-14, at `2ff34a98`, whose code was main's until 0195 and 0198 landed on 2026-10-16): 2306 of 2307 passed and 106 skipped, 63 of them for want of cargo on PATH and 24 for want of `expect`. The one failure was devbin's own test, which said it needed no cargo but needed cargo on PATH: issue 0198, landed at `10ae01c9`, where the arm runs behind a stub cargo that fails loudly if run.\n- **D1b** (2026-10-15, at `89cae16e`, the same code with cargo on PATH and `expect` installed) ran the arms D1 skipped: 2306 of 2307 passed and 22 skipped, the skips all for things this platform cannot show or that are skipped by ruling, one of them a GNU `readlink` arm that uutils leaves unchecked. D1's failure passed. Its one failure, `tests/unit/fleet.bats:974`, had passed in D1 on the same code, and the run had gone on through hv's move of the Mac that hosts kovacs.\n- **D1c** (2026-10-16, on hv's word) re-ran that arm alone in D1b's clone: it passed (rc 0), so the failure was the pause, and nothing is filed.\n\nkovacs proves Linux on aarch64 and Ubuntu 26.04's coreutils; it does not prove WSL.\n\n## What this thread deliberately does not do\n\n- **Port devbin to Windows** (D44).\n- **Support WSL 1** as a developer platform, or a checkout under `/mnt` as a supported layout (D49 reports one).\n- **Run the maintainer verbs under WSL.** `install`, `upgrade`, `fleet`, `infra`, `release`, `publish` and `macos` stay where the maintainers run them; `install` runs inside the WSL job only to build the fixture (D51).\n- **Add PHP to devbin's languages.** A PHP project declares its own options, as it can today; a PHP language would be work of its own.\n- **Change the critic gate** (D53), or how devbin is released and distributed.\n- **Name the adopting estate, its client, or any of its repositories** anywhere in devbin (directive 14).\n\n## Work packages\n\n| WP  | What                                                                                         | Decisions     | Depends on |\n| --- | -------------------------------------------------------------------------------------------- | ------------- | ---------- |\n| 01  | Line endings: devbin's `.gitattributes`, the vendored copy's LF rule, doctor naming CR bytes | D46           | --         |\n| 02  | The prerequisite stated in the README, and install hints naming apt                          | D45, D53, D54 | --         |\n| 03  | `shell-init bash`, both bodies from one source                                               | D47           | --         |\n| 04  | The runtime against WSL's edges: the Windows PATH, a checkout on a Windows drive             | D48, D49      | --         |\n| 05  | The suite under uutils coreutils                                                             | D52           | --         |\n| 06  | The Windows CI leg running the suite inside WSL, and the fixture smoke list                  | D50, D51, D53 | 01 to 04   |\n| 07  | No pipeline broken by design: 0031's class fixed everywhere, and a scan keeps it out         | D56           | --         |\n\nWP-07 is done (D56). WP-06's AC-6.5 also waits on Intent's Linux binaries (D53). The criteria are minted in the thread's canon, AC-1.1 to AC-7.1, and are not restated here.\n\n## Questions for hv\n\nEach question says what it was for, gives the options and vc's recommendation, and now hv's ruling. hv ruled the last eight on 2026-10-16, each as recommended, shown to hv one by one with its context.\n\n1. **RULED (hv, 2026-10-12): both Ubuntu 24.04 and 26.04 LTS** (\"I don't mind\"). kovacs runs 26.04.1, so it proves 26.04 and its coreutils (D52).\n2. **RULED (hv, 2026-10-16): (a).** **The CI leg (D50): when it runs, whether it ever blocks a release, and what a hosted runner's WSL 1 proves.** It is the only automated WSL evidence, and on a private repository every Windows minute bills at twice Linux's. (a) Release tags and dispatch only, blocking nothing until hv rules otherwise, with WSL 1 counting for devbin, the `intent` CLI and the critic gate, and not for `intentd`'s file watching or WSL 2's kernel. (b) Every push, blocking. **vc recommends (a)**, as intent/vc does: it follows decision 32, and the WSL 2 evidence is ST0082's real machine.\n3. **RULED (hv, 2026-10-12): usable means the commands developers use work under WSL** (\"Isn't the answer in the question?\"): the smoke list on the fixtures (D51) and the adopting estate's own run (AC-6.4).\n4. **RULED (hv, 2026-10-16): (b), one block per tool.** **Where a project's LF rule for devbin's vendored copy lives (D46).** A CRLF checkout on Windows breaks the vendored scripts (a shebang that reads `bash\\r`) and Intent's hook blocks alike. (a) A vendored `bin/.devbin/.gitattributes`, with the launcher's line in a file the project owns. (b) A marked block that `install` writes into the project's root `.gitattributes`, covering `bin/devbin` and `bin/.devbin/**`, beside a block of Intent's own for its hooks. **vc recommends (b), one block per tool**: one rule covers devbin's launcher and runtime together, and each block has one writer that covers only its own files.\n5. **Who builds the rest.** RULED (hv, 2026-10-16: yes, as recommended), after RULED in part (hv, 2026-10-12): no release until the work runs on main's HEAD, and none of the release hopping of 0.1.10; then the next bundled release carries it (directive 13). WP-07 was cc's, by decision 46. **vc recommends** that dc build WP-02, WP-03 and WP-04 after its review of this design (dc does devx work), that cc stay on the brew and maintenance issues (then 0195, 0198, 0197, 0196 and 0192; 0195 and 0198 have landed, and cc's order is now 0197, 0196, 0192 and 0199), and that WP-01 go to whichever of them is free once question 4 is ruled. vc reviews each.\n6. **RULED (hv, 2026-10-16): (a).** **WP-05, the suite under uutils (D52): in this thread, or an issue of its own beside CI's move to 26.04.** It is the proof that Ubuntu 26.04's coreutils run devbin, and kovacs already gives it. (a) It stays here, measured by D1 and D1b. (b) An issue of its own. **vc recommends (a)**: D1 has run it and D1b completes it, so it closes here on its evidence, and CI's own move to 26.04 stays an issue.\n7. **RULED (hv, 2026-10-12): ST0008 waits for Intent's Linux binaries, and AC-6.5 waits rather than being descoped.** Every project of the adopting estate carries `intent/`, so ST0008 closing with AC-6.5 descoped would read green while `check all` refuses in all of them. The binaries are ST0081's since the renumbering, and ride Intent 3.2.4.\n8. **RULED (hv, 2026-10-16): (a).** **Release assets (D55): how CI-built assets reach a tag's release without a second writer.** Intent's Linux packages need it now, and any project that ships CI-built binaries later. (a) devbin's release core attaches the CI run's artifacts after it creates the release. (b) Each project adds an upload-only workflow, dispatched once the release exists. **vc recommends (a)**, as intent/vc does: one writer and one implementation for every project. For Intent's 3.2.4, its own release handler, `bin/devbin build release`, calls the new step.\n9. **RULED (hv, 2026-10-16): (a).** **Where the joint WSL job lives (D50).** It proves devbin's smoke list under WSL with Intent installed. In devbin's private repository, each Windows minute bills at twice Linux's rate; in Intent's public repository, minutes are free. (a) devbin's repository, on tags and dispatch. (b) Intent's repository. **vc recommends (a)**: the job proves devbin's commands and runs on devbin's tags, so it lives with the code it proves, and on tags and dispatch alone it runs a handful of times.\n10. **RULED (hv, 2026-10-16): (a): ST0009 started.** **devbin's own Homebrew thread (hv's ask of 2026-10-14, relayed by intent/vc): start it, with this thread depending on it?** It would hold running devbin from a Homebrew install on macOS and Linux with no source checkout, which Intent's ST0081 is for Intent. (a) Start it now, with 0195 (the formula and the tap) and 0197 (`install.prefix` and fleet against the brew install) as its work, and ST0008 depending on it. (b) Keep the brew work as issues in the next release, with no thread. **vc recommends (a)**, since hv asked for it, and a thread gives the brew install acceptance criteria of its own -- installed from the tap on macOS and on kovacs, and projects vendoring from it -- which no issue carries. What ST0008 would take from it: the WSL job's fixtures could vendor from devbin's Homebrew install on Linux rather than from a checkout, which would prove that install inside WSL as well. Since put: 0195's formula landed at `93259543`, and what is left of it is the tap and its proofs; 0197 is approved.\n11. **RULED (hv, 2026-10-16): (b).** **Does the next devbin release wait for all of this thread?** Directive 13 puts everything open into the next release, but this thread's WSL proof waits on a real Windows machine and on Intent's 3.2.4, while devbin's formula (0195) needs a devbin tag to point at, and the tap created (hv's), before its install from the tap can be proven. (a) The next release waits for all of ST0008. (b) The next release cuts once Linux is proven on kovacs on main's HEAD and the brew install is rehearsed, and ST0008's WSL work (WP-06, AC-6.5) rides the release after it. **vc recommends (b)**: Linux and the brew install are ready long before a Windows machine is, and (b) still keeps hv's rule that nothing is released until it works on main's HEAD.\n",
+      "bytes": 31598,
+      "sha256": "3a47f50ccbdb136492c218829b71cdda9f4cab757831ff12715fce7a2163d925"
+    }
+  ]
+}

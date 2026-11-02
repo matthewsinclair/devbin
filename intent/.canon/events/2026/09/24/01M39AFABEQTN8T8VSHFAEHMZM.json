@@ -1,0 +1,15 @@
+{
+  "id": "01M39AFABEQTN8T8VSHFAEHMZM",
+  "ts": "2026-09-24T09:03:18.382Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-09-24, hv's rulings on vc's plan for the day, recorded at 09:02Z read from date -u. The aim, in hv's words: 'The aim for today is to get this latest version done and dusted, roll-out across the current using fleet and then draw a line under devbin now as a stable release', and of the twelve open issues: 'They all need closing, too.' Then, on vc's revised plan: 'It's everything in this release cut when its down. DO NOT WORRY ABOUT WALL CLOCK TIME. It's not relevant. The only thing relevant is completion. Go.' So the hold is lifted, and 0.1.8 carries every open issue plus cc's new clean issue. It is cut only when all have landed and closed: no partial cut, no 0.1.9 split, and nothing is shortened for time. The Go answered a plan whose rulings carried recommendations ('recs accepted still works'), so vc proceeds on them. 0130 exits 1. On an option-less command, 'all' passes through, so devbin synthesises 'all' only where there are options to sweep; that is in 0128's second half, with the content, macos, precommit, publish and which pages and their arms. vc builds 0128 (its two helpers land first, because 0134 and 0135 need them), 0130 and 0133. cc builds 0131+0137 v2 carrying the new issue, 0139 v2, 0134 and 0135. 0.1.8 is the stable release and keeps its number: every estate pins ^0.1.0 or ^0.1.1, and 1.0.0 fails that caret. ST0006 stays in Triage. vc writes RELEASES/0.1.8.md and runs the cut. NOT settled by the Go, and to be asked when reached: who pushes the sweep, since that is outward-facing."
+  }
+}

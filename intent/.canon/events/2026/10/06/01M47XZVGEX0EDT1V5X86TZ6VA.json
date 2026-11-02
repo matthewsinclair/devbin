@@ -1,0 +1,16 @@
+{
+  "id": "01M47XZVGEX0EDT1V5X86TZ6VA",
+  "ts": "2026-10-06T06:21:36.142Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "0.1.9 bundle, vc's assignment on hv's word (every open issue closes before the cut). dc's six are all with vc: 0163 v3.1 and 0167 in vc's final suite over 415ce738 (sha256s confirmed), and the 0168, 0165, 0170, 0171 chain handed off over them (approved; wide run with all six tree scans green, 1730 ok). 0172 went to cc, unclaimed by agreement. Next: fold anything vc returns; otherwise free for vc's next assignment. Every step, sha and command: ~/Devel/scratch/devbin-dc/0.1.9/STATE.md."
+  }
+}

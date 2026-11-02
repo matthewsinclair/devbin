@@ -1,0 +1,16 @@
+{
+  "id": "01M6BKV5JM0CR5M69ZCM9ZA9DY",
+  "ts": "2026-11-01T13:12:38.228Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 73,
+    "text": "The 0306+WP17 stack, ASKED as desk request 01M6BKT367YF4D73C91YWQTSA2 at 2026-11-01 13:12Z by date -u, on vc's GO of 12:44Z: refs/bank/dc/ISSUE-0306 1377002d and refs/bank/dc/ST0011-17 d0a403f5 (WP17's critic r1 and r2 settles squashed into its unit commit; ST0011-17-wip moved there by CAS) on f3462610, main ac18a7de's tree, so it lands by land-stack.sh with LAND_BASE_OFF_MAIN=1. Driver ~/Devel/scratch/devbin-dc/stack/run-stack.sh, runs.conf naming both red clones (red-0306-f3462610-1377002d, red-wp17-f3462610-d0a403f5). Lint gate r3 57 files 0 breaches, scans clean. A critic review of r2's delta runs and settles before START. It runs at trellis-ic's END; END to vc the moment the driver exits; AT-6.1 and AT-6.2 (to-write, 60ce1c1c) take verdicts after the landing. Kit and resume point: stack/NOTES.md."
+  }
+}

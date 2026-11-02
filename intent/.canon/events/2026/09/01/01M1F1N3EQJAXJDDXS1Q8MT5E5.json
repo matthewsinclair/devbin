@@ -1,0 +1,15 @@
+{
+  "id": "01M1F1N3EQJAXJDDXS1Q8MT5E5",
+  "ts": "2026-09-01T17:53:13.687Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0046"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The measured: provenance line reaches the terminal and never the kept artefact"
+  }
+}

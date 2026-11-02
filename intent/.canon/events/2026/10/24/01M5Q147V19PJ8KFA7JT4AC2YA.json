@@ -1,0 +1,15 @@
+{
+  "id": "01M5Q147V19PJ8KFA7JT4AC2YA",
+  "ts": "2026-10-24T13:20:43.873Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "NEXT, after molt-vc reopens the desk: the 0216 guard fix for workroom.bats:141 (the fleet-less candidate suite cand216 failed the list arm, which required a tracked file of its :(exclude) lines too). Built: 65a91012 on main 19d15680 in ~/Devel/scratch/devbin-dc/0216/f0216, only included entries must name a tracked file, title renamed to say so; candidates built by vc's cand.sh: cand-main (from 19d15680) and cand-fix (from 65a91012), 197 files each, fleet absent. To do: book light with molt-vc and run workroom.bats in cand-main (red on the list arm), cand-fix and f0216 (green), BSD then GNU; then hand vc one commit on 19d15680 (bundle, seal, COMMIT_MSG, Resolution addendum) for its next stack with 0215 and 0207 to 0209. No push, no release"
+  }
+}

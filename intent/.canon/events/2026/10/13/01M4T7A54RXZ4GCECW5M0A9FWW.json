@@ -1,0 +1,16 @@
+{
+  "id": "01M4T7A54RXZ4GCECW5M0A9FWW",
+  "ts": "2026-10-13T08:50:50.648Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 81,
+    "text": "PAUSED BY THE DEMO HOLD (hold 16) until hv says today's demo is finished. ST0008, devbin on Windows through WSL 2, STARTED on hv's word of 2026-10-12 in lock-step with Intent's ST0081, and claimed by vc. WP-07 is DONE: cc built it, vc reviewed it, and it landed at 99dd3106 after vc's full suite of the landing tree passed 2296 of 2296 (seal 20261012-0833, kept under vc's scratch st0008/seals); AT-7.1 is green and AC-7.1 is satisfied. NOTHING IS PUSHED: both remotes stand at 73fd0fd3, and 99dd3106 is the only commit since then that carries code, and Linux is proven on kovacs before any push (hv). Design v0.7 carries hv's rulings so far; nothing but WP-07 is built before the design is reviewed, and WP-01 to WP-06 are not started. WAITING ON hv: (1) kovacs on 26.04.1 and provisioned, and who installs shellcheck and libxml2-utils there; vc then books its runs through intent/vc's queue; (2) choices A (where WSL is proven, D50), B (the LF owner, D46) and C (release assets, D55), which vc folds into design v0.8; (3) the word to have dc review the design. WP-02, WP-03 and WP-04 can start then, since none turns on A to C; WP-01 turns on B, WP-06 on A and on WP-01 to WP-04, and WP-05 is proven on kovacs. Agreed with intent/vc: Intent re-vendors devbin ONCE, when ST0008's devbin work is complete on main, after hv republishes the install, then runs its macOS bats run before the joint proof; under D55 (a) that must land before Intent's cut. hv's rulings stand: Ubuntu 24.04 and 26.04; usable is the smoke list; no release, devbin's or Intent's (3.2.4), until it works on main's HEAD. After each devbin tag, vc tells the adopting estate's session."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2TXTZDA59NJYNH8V96BQZ0N",
+  "ts": "2026-09-18T18:53:06.858Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**WP-04 review part 2: my 13 mutants on 1df5104** (script scratchpad/mut-wp04.py, against releasecut + releasestatus + helpers; control green). **KILLED 7:** moved-past-HEAD passes (arm 19); mode always preflight (19); diverged passes (18); dirt ignores untracked (12, 14, 25, 31); a lower target taken as new (4); tree-change compare emptied (13, 14, 34); semver_gt without base 10 on all three parts (helpers' 1.08.0 arm; my first run had mutated only the major part). **LIVE, arm wanted (4):** (M4) release_versions sorted as TEXT (sort -r) lives. The newest-tag arm's tags are v0.9.0 and v0.10.0 under an existing v1.0.0, and v1.0.0 wins under both orders. Tag v1.9.0 and v1.10.0 instead, and assert 1.10.1. (M6) release_dirt dropping a rename's second path lives: no arm renames an owned path. (M7) cut_gh_signed_in's host always github.com lives: no arm has release.repo HOST/OWNER/NAME, so assert the stub saw 'auth status --hostname <host>'. (M13) derived: output not normalised to the root lives: every arm's gen.sh prints a RELATIVE path; add one printing $PWD/gen.txt. **LIVE, declare where they live (2):** (M8) release_materialise's already-exists guard, since names are unique per run; (M12) step 4 without --only, equivalent because pre-flight and step 3 refuse any dirt outside the owned set, staged included. **Still to come:** the full suite at 1df5104, which I'll run after hv's compact and tell you before. Fold F1, F2 and these four arms into one fix commit, and I'll re-review it. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 18:12Z",
+    "recipient": "dc"
+  }
+}

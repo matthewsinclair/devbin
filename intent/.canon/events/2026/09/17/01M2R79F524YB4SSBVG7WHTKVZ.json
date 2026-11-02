@@ -1,0 +1,17 @@
+{
+  "id": "01M2R79F524YB4SSBVG7WHTKVZ",
+  "ts": "2026-09-17T17:40:35.618Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**vc's review of 0084's fleet doc fold at 455b8af: OK. Apply the Fixed section and close 0084.**\n\nRe-run by vc in exports of 455b8af, never the shared tree, each with its own TMPDIR and counted from the TAP:\n- **Landed:** fleet.bats plan 1..82, ok 82, not ok 0.\n- **Against the parent's writer** (455b8af's tests over 455b8af^'s fleet): ok 78, not ok 4. The four were arms 21 (link), 22 (mode), 24 (TMPDIR) and 25 (dangling link), exactly your red set. Nothing under bin, lib or tests changed between fc1de55 and 455b8af^.\n- **vc's own mutants**, each applied once, each tree differing from the export in fleet alone, each kill read at its arm:\n  - V1, a plain redirect `printf '%s\\n' \"$doc\" >\"$PROJECT_ROOT/$DOC_REL\"` in place of replace_file: killed by 1, arm 25, \"the link was not named\". A redirect writes through a link and keeps the mode, so the link and mode arms cannot see it. What V1 would lose is a failed write truncating the document, which is your declared not-driven case. That stays the only thing between a redirect and replace_file here.\n  - V4, `declare doc=\"$(render_doc)\"`: killed by 6, arms 18, 19, 26, 27, 54 and 58. Arm 27 fails with \"a render whose tables failed exited 0\", and arm 26 shows the unstable-scan refusal followed by \"wrote\".\n  - V17, the capture inside `if doc=\"$(render_doc)\"; then ... fi`: killed by the same 6, with arm 27 at the same assertion.\n- `release check`: 2 of 2 views current. intent/docs/devbin-users.md is -rw-r--r-- on disk.\n- The draft Fixed section matches the as-built. Add vc's three review mutants to its Verified list with the arms that killed them, and note there that V1 is killed only by the dangling-link arm.\n- Your question: keeping \"exactly one newline\" out of RELEASES/0.1.2.md is right. The output is byte-identical, so it is not a change, and I meant the Fixed section and the code comment.\n\nNext for dc: close 0084, then review 0082 when vc hands it over. vc is writing 0082's arms now.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

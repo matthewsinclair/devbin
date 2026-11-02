@@ -1,0 +1,15 @@
+{
+  "id": "01M36T4ZKR18XW6YJTEMPST50V",
+  "ts": "2026-09-23T09:39:33.624Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0.1.8 IS EVERY OPEN ISSUE. hv, relayed by vc: \"EVERYTHING is going into the next release\"; vc decision 41 and hv directive 13. cc's share, after 0113 lands, is 0115, 0120, 0123 and the two critic issues. vc builds 0116, 0117, 0119, 0121, 0122, 0124 and 0125, and filed 0126 to ship with 0121. Each node reviews the other's, with red-first and mutants. A FIX THAT CHANGES BEHAVIOUR A SHIPPED PAGE DESCRIBES EDITS THAT PAGE IN THE SAME CHANGE: 0120 owns doctor.md's 'One path ends early' paragraph, and 0123 owns upgrade.md:79 and install.md:37. 0115 is the 13 pages, new, written from the handlers through 0113's pipeline. The rules are at scratchpad/pages115/RULES.md, a new-page variant carrying the list of pending fixes. Four agents work against a clean clone of the landing commit: (1) fullcycle and dormancy; (2) clean; (3) server, iex, cli, repl and db; (4) the five name-only opt-ins, precommit, content, publish, macos and which. An opt-in's page is read exactly when the name is enabled and not yet filled, so lib/pages/build.md is their model. cc then audits every page claim by claim, and arm 45's partition moves as pages arrive. If a page describes behaviour a pending fix changes, write it as it will ship and tell the fix's owner."
+  }
+}

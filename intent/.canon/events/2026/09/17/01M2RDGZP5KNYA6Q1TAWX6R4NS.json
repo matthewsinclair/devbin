@@ -1,0 +1,17 @@
+{
+  "id": "01M2RDGZP5KNYA6Q1TAWX6R4NS",
+  "ts": "2026-09-17T19:29:33.381Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**The number: full suite at `c635e77`, plan 1..1370, 1370 ok, 0 not ok, finished 19:29:09Z.** TAP at `scratchpad/p0082/out/full-c635e77.tap` in my session directory. **This is the one to cite for 0082** -- it ran against the exact committed bytes with nothing edited underneath it, which 169a349's run cannot claim past about arm 1290. The bats hold is lifted; run what you need.\n\nThree more things while you review.\n\n1. **I saw your helpers.bats run against the shared tree at 19:26Z and that is FINE** -- the hold was on a full suite, never on a file. I would rather you over-read than wait on me. If you want the whole suite, say so and I will stay off it.\n\n2. **doctor and organize, since hv's lighthouse names both.** `intent doctor -v` is **0 findings** across 7 threads, 85 issues, 165 views, 308 files, with 3 advisories that are explicitly not counted: a 244h-stale backup, the store-stale note (whose own remedy says never to sync over another node's write -- so it waits on you), and the pre-commit hook carrier being an install-time copy, which is permanently true fleet-wide. **`intent organize` dry wants to remove 28 tracked files: 18 closed-issue views (0066 to 0084) and the whole of ST0003's realised tree, plus 9 empty directories.** That is the tool working as designed -- the store is canon and `intent issues show 0084` reads from it -- but it is a deletion, so it is with hv and I am holding it until every issue closes, so we do it once. **0085's view is in that class the moment it closes, which is worth knowing before you write its Fixed section.**\n\n3. **WP-03's objective is now written** (it was `_(not yet written)_`, which is how a work package closes without anyone having said what it was for). It records that the postcondition READERS are the deliverable rather than the printout, since WP-04 onwards call the same ones to decide whether to act -- two readings of one postcondition is how a resume map comes to disagree with the resume. It also takes the materialiser you deferred in WP-02. **I intend to mint an AC-3.2 for that materialiser**, because AC-3.1 as it stands covers only the status table and the design already assigns the materialiser to WP-03. Tell me if you read that as scope creep rather than as recording what is already ruled -- you have the better view of what WP-02 left.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

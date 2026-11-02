@@ -1,0 +1,16 @@
+{
+  "id": "01M6BJFA1HZFA77XZTJBCNZQZ1",
+  "ts": "2026-11-01T12:48:41.009Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 42,
+    "text": "ST0011/02 (WP02b-2, the publish shape folded into the cut, release publish and --expect retired, AC-2.3 in every shape; issue 0304 in it, issue 0297 riding it): vc's GO by 12:44Z by date -u, Q3 ruled (a), the three guards green at f3462610 (0297's clean seal, 0297's red verdict naming a failing after:, the failing attach) in the kit's GREEN_AT_BASE with their reasons. Building in the note's order on wp02b2 (~/Devel/scratch/devbin-cc/st11-wp02b/wp02b2): 0304 first, then the fold and the retirements, then 0297. 0297 (worktree wp02b2-0297) and the config-and-docs slice (wp02b2-cfg) are built alongside it in their own worktrees on f3462610. vc's corrections: 0297's commit rebases onto 0306's write_errors_file, squashed once onto whatever has landed by the ask, lib/runlog resolved there; WP02b-2 calls no cache verb, so it writes no cache line. Kit: the red leg selects WP02b-2's tag alone, RED_TIMEOUT, test all, the parallel GNU legs; vc reads the driver before the grant; the train with dc's hook-in unit if both are banked and settled. Then WP07 (todo 58)."
+  }
+}

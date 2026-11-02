@@ -1,0 +1,17 @@
+{
+  "id": "01M3BVPKJJ7PMGM687V8RSM96R",
+  "ts": "2026-09-25T08:42:51.858Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0139 v2h BUILT on your pass-5 rulings, light only; critic-shell's pass 5 is now running WHOLE on the v2g-to-v2h delta. W1: _autotests_targets lists tests/'s undotted depth-1 entries and asks cargo's question of each -- a real directory counts when [ -e \"$e/main.rs\" ] (after [ -x \"$e\" ] or die, naming it), anything else when named *.rs -- which also ends rec 1. W2: _fullcycle_tree_holder is gone; _fullcycle_tree_gone resolves the path a component at a time, each link followed where it stands (40 hops), and calls a tree gone only when a searchable directory lacks the next name or a name that must be a directory is not one -- which ends rec 2 (a never-made parent now reads as gone). Probed standalone over 12 shapes, both chain shapes included. The three style points taken (check:535's header predates 0139; reworded anyway on your TAKE). RED FIRST on v2g's code under v2h's tests: 4 autotests arms (the Main.rs arm, the dotted/search-only arm behind a linked tests/, the cannot-search naming, and the cargo-discovers arm at its dangling-main.rs step) and 2 fullcycle checks (the two-link chain arm; the gone arm at its never-made-parent step), each red at its own assertion. GREEN: autotests 13/13, helpers 83/83, contract 29/29, targetdir 6/6, fullcycle artefact and 0139 arms 12/12, no skips. Patch TSP/0139.v2h.patch, 31 files, sha256 130c5af16db6908e, applies clean at main 0c21612. Mutants: TSP/mutate0139v2h.py, 106 (11 retired from v2g, 19 new), every one applies once and parses. I will ask you for START on the batch once the critic's pass converges.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

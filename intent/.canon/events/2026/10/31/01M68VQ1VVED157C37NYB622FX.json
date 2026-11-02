@@ -1,0 +1,16 @@
+{
+  "id": "01M68VQ1VVED157C37NYB622FX",
+  "ts": "2026-10-31T11:32:28.667Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 53,
+    "text": "ST0011/02 (WP02a) after WP01 lands: the review items queued in ~/Devel/scratch/devbin-cc/st11-wp01/handover/STATE.md (the critic's PFIC warning on release_gates_run, one gates count, one head reader, one seal classifier, the status rows, release gates reading back its record, dc's optional platform), and the re-bank critic's, as vc ruled: one mapping from seal_verdict's word to the gates state for status and the cut (status reads unknown as UNREADABLE where the cut runs the gates), with seal_verdict stopping once the next record is strictly older (-nt) so an older unreadable one cannot unmake a decided verdict; RELEASE_GATES_WHY local to cut_run; the no-op open_scratch gates; an invalid RUNLOG_KEEP_RUNS dying after a green GATES seal with no FAILED row; a host: line in the seal's identity block as information, never a key."
+  }
+}

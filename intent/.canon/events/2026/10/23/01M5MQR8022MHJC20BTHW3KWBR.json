@@ -1,0 +1,15 @@
+{
+  "id": "01M5MQR8022MHJC20BTHW3KWBR",
+  "ts": "2026-10-23T15:58:24.771Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0206"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "the suite's anti-vacuity floors hardcode counts: tests compare what they read against numbers written into them, and some state today's totals in their failure text"
+  }
+}

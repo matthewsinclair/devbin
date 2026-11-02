@@ -1,0 +1,15 @@
+{
+  "id": "01M4EDBVJGXXC72GJJ80RFQNVM",
+  "ts": "2026-10-08T18:45:44.656Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0191 FIRST (ISSUE:0191 claimed; vc's assignment of 18:43Z on hv's go, the 0.1.10 cut moved back for it): three needless waits. CI's Run gates step drops lint while the suite's lint test stays, and ci-workflow.bats's rule becomes check's options minus critic and lint, saying why for each; releasecut.bats:1827 sets DEVBIN_RELEASE_ASK_FLOOR_SECONDS as its siblings do; the heartbeat (lib/runlog:1775-1780) takes a fraction of a second, a non-number still switching it off. Build in own clones on main b58b5e21: red on main first where a behaviour changes, green under BSD and GNU, critic-shell, no tests of tests and no mutants; hand vc a patch and drafts. dc rebases 0190 onto this head, so tell dc when it exists. Re-entry: ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M3BXJZT0VCH1QCFHN7P23G5M",
+  "ts": "2026-09-25T09:15:50.466Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0148"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "fullcycle's artefact check reads a relative CARGO_TARGET_DIR from the project root, where cargo reads it from its own working directory, so a build run from a crate's directory loses its release artefacts under an INCONCLUSIVE at rc 0"
+  }
+}

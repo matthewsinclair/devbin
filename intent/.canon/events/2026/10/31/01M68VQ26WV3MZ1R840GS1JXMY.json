@@ -1,0 +1,16 @@
+{
+  "id": "01M68VQ26WV3MZ1R840GS1JXMY",
+  "ts": "2026-10-31T11:32:29.020Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 54,
+    "text": "ST0011/02 (WP02b), from the consumer inventories via vc (2026-10-31): the candidate ref goes to the project's GitHub remote only, found by its URL against release.repo, never cfg_release_first_remote's answer (a first remote can be a push-only mirror where no CI runs); the tag on green goes to every remote in release.remotes; the candidate ref and the tag are each pushed once per distinct URL, remotes deduplicated by URL and never twice to one repository (two remotes can name one GitHub URL); a remote leg's pair lives under tmp/release/legs/<name>/ (D62) and is never copied into the local record directory (WP05's rule); with the absent leg word and the WSL note queued in ~/Devel/scratch/devbin-cc/st11-wp01/handover/STATE.md."
+  }
+}

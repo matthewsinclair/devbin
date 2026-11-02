@@ -1,0 +1,16 @@
+{
+  "id": "01M5W3FEJ3QET5Z1R4DP4NF1E5",
+  "ts": "2026-10-26T12:38:00.515Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 173,
+    "text": "AFTER hv CUTS 0.1.15, FILE devbin's landed-worktree tool issue for the next release (decision 72), from intent-vc's reading (the spec) and its two inventory scripts (the measure), each copied into ~/Devel/scratch/devbin-vc/ and cited by sha256 (asked of intent-vc 2026-10-26, with an output of each from a real estate and the cases neither script decides; intent-vc answers after its preflight seal); its Done when names what a correct report looks like and names those cases as unknown. The contract it mechanises is in-whiteboard's Folding section at Intent 26d8e1f39 (issue 0656, correcting 0654's first text, whose plain remove refused a banked worktree's staged bank): a landed unit's worktree is removed by its author at the chain END that lands it, or at the author's next fold, after checks run from outside it that hold whether its banks are staged or committed (its index tree is its base with its landed banks applied; nothing unstaged or untracked; its base an ancestor of main; no stash entry names it); then `git -C <path> reset --hard` drops a bank still staged and a plain `git worktree remove <path>` runs, never --force, a refusal read as a finding; a build target linked in from another tree is removed as the link alone with a plain rm; a mutant kept for a red run goes with its unit once that run's END is on the record; a re-bank that supersedes a worktree removes the old one."
+  }
+}

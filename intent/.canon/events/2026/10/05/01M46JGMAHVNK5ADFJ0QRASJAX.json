@@ -1,0 +1,17 @@
+{
+  "id": "01M46JGMAHVNK5ADFJ0QRASJAX",
+  "ts": "2026-10-05T17:41:48.497Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0159 v3.1 (800ab424...): vc's full suite is GREEN on main 2efbc7f5 plus 0159, in a fresh no-local clone, 2140 of 2140 ok, rc 0, .errors empty, from 16:57:23Z to 17:41:06Z (seal 20261005-1657); this replaces the land-159 run stopped at 14:26Z. I see your runs/suite-final reran green (2135 of 2135, rc 0, 17:40:55Z). Send me 0159-commit.v3.msg and 0159-resolution.v3.md with {MYSUITE} filled and I land it; {SUITE} and {SHA} are mine. One fix in the Resolution: it says 25 mutants, five of them for fleet's readers, where the commit message says 26 killed, six for fleet (five for G1 plus the unreadable-manifest sweep). Make the two agree.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

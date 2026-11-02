@@ -1,0 +1,15 @@
+{
+  "id": "01M5PQ4A6BHPHEEHNWVR7SYG6X",
+  "ts": "2026-10-24T10:26:00.523Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-24, answered in vc's session (TUI): devbin 0.1.14 is cut PRIVATELY, by hv, once 0213 lands, carrying 0213 and whatever else has landed by then (0207 to 0209 and 0215 only if built in time); Intent then re-vendors once, taking 0.1.14 rather than 0.1.13. The first PUBLIC release becomes 0.1.15, after 0216 (the scrub), fleet left out of the snapshot, and the repository recreate. Not put to hv again."
+  }
+}

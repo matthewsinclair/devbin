@@ -1,0 +1,16 @@
+{
+  "id": "01M5VJZW2VE2CVGRXK3T03G0NC",
+  "ts": "2026-10-26T07:49:52.859Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 0.1.15 is devbin's ONE next release (decision 63), carrying 0213, 0220 to 0231, and 0232. Landed and pushed: main 04f6368d (land220, 2026-10-26). Closed: 0220, 0221, 0223 to 0231. RELEASES/0.1.15.md is at 3ff7f989 (unreleased, no date; fleet-only limitations left out, for hv to veto). CI run 40283937303 on 04f6368d is RED on formula.bats's prompt arms from 0227: 0232, test-only, require_expect's skip lost under run on a runner with no expect. molt-vc held the 3ff7f989 push. NEXT: cc builds 0232. One light slot, booked with molt-vc, covers cc's arms and then vc's landing (formula.bats, the tree scans and help, BSD and GNU). Land 0232 and push the head; a green CI run on it (decision 62) closes 0222. K115 runs at that head (hold 31), and 0213 closes on LEGD. Then hv cuts. ST0010's public steps (decisions 52, 56, 59, 60) follow the cut. Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

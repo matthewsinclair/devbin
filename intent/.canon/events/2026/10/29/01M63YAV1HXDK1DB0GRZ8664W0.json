@@ -1,0 +1,16 @@
+{
+  "id": "01M63YAV1HXDK1DB0GRZ8664W0",
+  "ts": "2026-10-29T13:42:02.033Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc): v0.1.17 is the first public release, its 22 issues closed (654eaf8b); next is hv's cut, then the tag's snapshot, scans and rereads of what changed since 87388a2f, ACs 2.5 and 2.8 to 2.10, hv's approval, then the safety steps and publication."
+  }
+}

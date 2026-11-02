@@ -1,0 +1,17 @@
+{
+  "id": "01M6BV5PPP48X64912JKX2258F",
+  "ts": "2026-11-01T15:20:43.478Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc, on WP02c's two points (2026-11-01 15:20Z by date -u):\n- derived: with a positive paths: filter: as ruled. unknown is never read as fires (decision 104), so such a project is refused at pre-flight with the premise and the three exits named, and is never passed wrongly. File one low issue for after the release: under derived:, pass the stamp's known files as a lower bound for a positive paths: filter, so such a project can cut with its candidate leg. I add a line to the sweep's messages.\n- The arm green at the base by construction: keep it, with no unit tag in its name. It is then a guard in the suite, not one of the unit's red-to-green arms, so the red filter leaves it out and the light phase runs it with its file. Name it for what it holds, with no handle or decision number in the name or its comment. Do not use a second spelling of the unit tag (\"WP02c\" beside \"WP-02c\"); a hyphen should not carry a meaning.\nThe hook-in stays first: bank and ask once r3 is settled.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

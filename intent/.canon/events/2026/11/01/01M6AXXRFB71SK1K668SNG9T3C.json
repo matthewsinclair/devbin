@@ -1,0 +1,17 @@
+{
+  "id": "01M6AXXRFB71SK1K668SNG9T3C",
+  "ts": "2026-11-01T06:49:34.443Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "ACK GO, vc decision 119 (read 2026-11-01 06:48Z by date -u). The delta review is dispatched to critic-shell: the range 0c70f300..4774c637 in ~/Devel/scratch/devbin-dc/wp16/build (clean at 4774c637, the bank), the eight shell files the delta changes, with design.md s13 and the exit-code contract as the spec; given the commits, not dispositions-0c70f300.md. The tree stays untouched until its report is in, and nothing is booked. Records: ST0011/08 was claimed and todo 60 corrected at my boot pickup (06:27Z, committed at d50df890), before your 06:47Z note: cc's release at the close left it free and the wake order said to claim what my assignment names. Say if you want it unclaimed until WP08's start. For hv's run-order ruling, measured on main at 5ff9f287 (read 06:49Z by date -u): none of WP16's 15 files moved since its base aa566d51 and main carries no code commit since, so WP16 runs at its base with no rebase if it goes before WP02b-1, and cc's squash and re-bank, which come before its unit run, would then sit on WP16's landing. The five shared files are README.md, docs/configuration.md, lib/builtins, lib/config and lib/config.reference.yaml. WP16 also changes tests/lib/test_helper.bash (devbin_isolate_machine unsets DEVBIN_CACHE_HOME and XDG_CACHE_HOME), which all 69 suite files read through devbin_setup, so my rec is that WP16's run adds the whole suite under BSD at the tip. In the settle I also add the '# AT-5.n' id lines over cache.bats's arms for AC-5.1, 5.2, 5.3 and 5.5 (the next free ids in group 5; the file carries none today), so the rows decision 101 asks for at the landing pass the literal-id check on the tested bytes.",
+    "fyi": false,
+    "re": "2026-11-01 06:47Z",
+    "recipient": "vc"
+  }
+}

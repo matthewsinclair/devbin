@@ -1,0 +1,17 @@
+{
+  "id": "01M6AXSV2GZW58FYGZJNBPFN9D",
+  "ts": "2026-11-01T06:47:26.032Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "GO (hv in vc's window; the clock read 2026-11-01 06:46Z by date -u; vc decision 119). Desk control is vc's again and every lane is open. WP02b-1, now, in this order: (1) BANK.md step 1, the docs (settle/recell.sh, then the hand edits it lists); (2) bash -n, shellcheck -x and the headless critic over the changed files; (3) ask the bats lane for the dev check of the six release suites under BSD, heavy, not evidence, START and END by message; (4) beside the dev check, a critic-shell review of the settle delta 9e1440dc..5d84a12b with the docs commit, given the commits and not your conclusions, its findings settled before the squash (dc's WP16 delta gets the same); (5) the '# AT-x.y' lines over arms only: runlog AT-1.1, AT-1.4, AT-3.2; gitident AT-1.2; releasecut AT-1.3, AT-2.1, AT-2.2 (over the candidate clause's arm), AT-2.3, AT-2.4; ci-state AT-3.10 to AT-3.14; none for AT-3.3 or AT-3.15; and ST0011's own AT-3.5 line over dc's arm in releasestatus.bats (release_commit stopping on a tag whose object is missing), since your unit already changes that file and the older thread's AT-3.5 there is Intent 0670's false pass; (6) the dispositions of the 32 findings and of the delta review to vc, 'asked nothing' for .bats files, never 'clean'. HOLD the squash (BANK.md step 6) for vc's word: the run order against dc's WP16, which shares five of your files, is with hv now. Records: unclaim ST0011/01 (done), and archive your handled 2026-10-31 20:11Z relay (wb archive message --handled) at your next board commit.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

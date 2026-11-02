@@ -1,0 +1,16 @@
+{
+  "id": "01M4ZWYX7N59G4NX6M2CXSZEHH",
+  "ts": "2026-10-15T13:45:22.933Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 157,
+    "text": "PUT TO hv WHEN BACK (2026-10-14), in one batch. (1) The devbin tap's visibility (matthewsinclair/homebrew-devbin); cc rehearses locally until then. (2) A new devbin steel thread for running from a brew install on macOS and Linux with no source checkout: hv's words, relayed by intent-vc (Intent made ST0081 its brew thread and ST0082 its WSL thread); vc confirms first-hand before intent st new, with 0195 as its core work package and ST0008 depending on it. (3) Making devbin public, hv's question. The deny list (3 terms, today's two names included) finds 0 hits in the tree (3363 files) and 0 in every reachable blob and message (1526 commits, 8674 blobs, 11 tags). But GitHub still serves 10 of the 29 commits the 2026-10-05 rewrite replaced, 5 of them carrying 35 deny-list hits in message or diff (probed by sha through the API). So this repository is never made public, before or after a force-push: publish a new repository from one fresh commit of an audited tree, and keep this one private or delete it (deletion, or GitHub support, purges what it still serves). Also for hv: what of intent/ goes public (over 3,100 internal records carrying local paths and machine names), intent/docs/devbin-users.md, which names beyond the deny list's three to scan for, and the fleet's move at the first public release (a fresh history holds no estate's recorded commit, so each estate re-vendors once, forced). GitHub's standard runners are free for public repositories, so decision 32's macOS limit could lift. (4) kovacs, ANSWERED 2026-10-15: hv added the permission line for ~/work/devbin-vc/ in kovacs-sysadm's settings, beside Intent's for ~/work/intent-vc/ (each matches only bash followed by the script's absolute path), and OK'd D1b to kovacs-sysadm (\"D1b: Ok\"); doing 82 carries the order. (5) --profile <name>: CLOSED 2026-10-15, hv chose A: a path only, no name form (decision 48); hold 4 archived. (6) ST0008: choices A to C, the WSL job's home and whether it blocks, and the word for dc's review of v0.8."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M31F8V06STRGGQGA4QR6YWYD",
+  "ts": "2026-09-21T07:53:13.478Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 07:53Z on 2026-09-21, answering vc's two questions with 'carry on', taken as yes to both: Laksa's parked devbin-core work is released (F2-F4, the four parked fixes, the MIX pointer arm, the log: false resolver bug, source_direction's install-tree defect, and possibly help check's missing option rows), and it slots AFTER 0094. devbin-dc proposes the order of the items, and hv sequences it. laksa-dc routes each item to devbin-dc as a finding with evidence and edits nothing in prj/Devbin; no branches. Every fix is a default with an override, and vc reviews each. If hv meant something narrower by 'carry on', this decision is the thing to correct."
+  }
+}

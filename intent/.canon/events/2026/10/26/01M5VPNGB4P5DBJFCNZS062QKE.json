@@ -1,0 +1,16 @@
+{
+  "id": "01M5VPNGB4P5DBJFCNZS062QKE",
+  "ts": "2026-10-26T08:54:07.460Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "HOLD: K115, devbin 0.1.15's pre-cut Linux suite on kovacs at main c4f52b8e, the pushed head carrying 0232, is RUNNING: molt-vc sent its GO at 08:52Z, once Intent's judge had ENDed, and relayed kovacs-sysadm's START at 08:53Z; hv runs it in kovacs-sysadm's session, and kovacs-sysadm's replies reach molt-vc only while Remote Control is on in molt-vc's session. Ordered through molt-vc: ~/Devel/scratch/devbin-vc/kovacs/ORDERS-K115-c4f52b8e.md (sha256 ea8fb039), k115.sh 2276b143, bundle devbin-c4f52b8e.bundle abfb4dc1 (verified in a fresh clone, tree equal to main's). Read its seal under ~/work/devbin-vc/devbin-k115/tmp/test/, as molt-vc relays it, and never its status. Send molt-vc END the moment k115.rc lands, with the seal's verdict. kovacs has expect, so 0232's prompt arms run there. LEGD is done: 0213 closed at 660a8e9d. Released when K115's verdict is read."
+  }
+}

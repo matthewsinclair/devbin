@@ -1,0 +1,15 @@
+{
+  "id": "01M60JKY8RC2VN98Q2MNQCYFHZ",
+  "ts": "2026-10-28T06:19:34.042Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0286"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "fullcycle.bats asserts hand-written counts of watched PATH symlinks, and lib/cmd/fullcycle bounds its link walks with its own 40 beside 0247's _DEVBIN_LINK_HOPS"
+  }
+}

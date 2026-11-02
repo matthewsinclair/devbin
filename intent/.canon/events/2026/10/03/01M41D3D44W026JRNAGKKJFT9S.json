@@ -1,0 +1,15 @@
+{
+  "id": "01M41D3D44W026JRNAGKKJFT9S",
+  "ts": "2026-10-03T17:31:00.100Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-03, ruling on 0152 and the bundle. (1) devbin keeps NO list of who uses it, in its runtime or in its tests: such a list is an inverted dependency, so a gate works by shape and review holds names. (2) Licence: Geodica Ltd (geodica.com), all rights reserved, one text at LICENSE and lib/LICENSE.md, byte-identical by test, replacing the root MIT. A client may use, copy and run a delivered project's copy as part of that project and takes no ownership. (3) Fix and fail forward: every open item is an issue, never a thread, built by cc, reviewed by vc, and landed into ONE bundled release that hv cuts. (4) Intentv2's reference in fleet code comes out (cc's 0154 rider); Intentv2 is otherwise never raised. (5) intent/docs/devbin-users.md is hv's convenience: ignore it."
+  }
+}

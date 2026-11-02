@@ -1,0 +1,16 @@
+{
+  "id": "01M5VF0PHVVS2931BYNXPE4TPP",
+  "ts": "2026-10-26T06:40:25.660Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 29,
+    "text": "ISSUE:0227 handed to vc 2026-10-25 13:46Z: ~/Devel/scratch/devbin-cc/0227/handover/0227.bundle (431e02e6 on 0226b's 1b748f0a, tree 8d15ceab, sha256 49f062f3...71d6), plus COMMIT_MSG-0227.txt, RESOLUTION-0227.md and SHA256SUMS; re-run green under molt-vc's GO LIGHT of 11:19Z, all 18 files BSD and GNU, critic leg rc 0; path and seal sent to dc for 0228. land220's pair went red on its formula.md, so 0227b followed, handed to vc 2026-10-26 06:40Z: ~/Devel/scratch/devbin-cc/0227/handover-b/0227b.bundle (18e59ec1 on c320ba06, tree 4e909bd3, sha256 20ea143f...317c), plus COMMIT_MSG-0227b.txt and SHA256SUMS; arms on vc's GO of 06:28Z, red on c320ba06 on vendoredmd's two prettier arms and green on 18e59ec1 on every tree scan plus help, BSD and GNU, workroom red only on 0229's lib/runlog lines (dc's fix); evidence in 0227/runs-b. Released when vc has landed both, their changed lines match the bundles', and the clones (build, fix, base, run, verify, fmt, fbase, bverify) are archived and cleared"
+  }
+}

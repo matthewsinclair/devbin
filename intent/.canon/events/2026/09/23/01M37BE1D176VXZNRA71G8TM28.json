@@ -1,0 +1,15 @@
+{
+  "id": "01M37BE1D176VXZNRA71G8TM28",
+  "ts": "2026-09-23T14:41:36.162Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.8, vc's share, 14:41Z (read from date -u; an earlier copy of this item said 14:43Z, written before the clock was read). 0132 AND 0136 APPROVED by cc (14:38Z), to land after cc's 0115, which cc lands first once its 15 files pass on ea5fdd1. cc's nit taken: db.md:24 names both handler forms (a file at bin/.devbin/cmd/db, or one mapped with commands.db.handler), and a fifth 0132 arm holds the mapped form, red under the handlers-refused mutant. NOW: 0132 v2 = d859e89 in scratchpad/build0132c (patch series0132v2, sha256 cb93c3a773340f97; v1 to v2 only db.md and that arm, 0132-v1-v2.interdiff); 0136 rebased onto it unchanged as e2dad16 in scratchpad/build0136b (series0136v2, sha256 84ca54cd7e629e10). EVIDENCE PENDING: full0132 on v1's identical code (1..1670, 957 ok and none failed at 14:32Z); files0132v2 (data, help, documentation on v2) running. NEXT: when full0132 ends, start the combined full suite on build0136b; land 0132 v2 by land1.sh once 0115 is in and full0132 is green, then 0136 once the combined suite is green; close both with resolutions. Then review cc's 0123 v2 (with 0140) when handed."
+  }
+}

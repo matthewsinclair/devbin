@@ -1,0 +1,15 @@
+{
+  "id": "01M2TTTFZNXRJN81MFH4BWJN4S",
+  "ts": "2026-09-18T18:00:25.333Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Reviewing ST0007 WP-04 at 1df5104** (dc): steps 1-5 with --dry-run, one-root scratch, semver_gt (vendored: pre-notice), releasecut.bats 35 arms, 25/27 mutants killed with 2 declared unreachable. Rule on dc's amendment: pre-flight refuses a remote moved past HEAD while step 4 must still make the release commit. Plan: read the diff, rerun the arms and dc's mutants in a worktree, try my own, and run the full suite (tell dc first)."
+  }
+}

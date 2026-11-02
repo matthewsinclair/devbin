@@ -1,0 +1,16 @@
+{
+  "id": "01M5VMMSTG2V2Z1VDTBHB6930K",
+  "ts": "2026-10-26T08:18:47.248Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 32,
+    "text": "0232 (vc's ask under hv's fix-now rule; blocks 0.1.15's cut): 4df2d364 on d534b5a2, tests/unit/formula.bats alone, handed in ~/Devel/scratch/devbin-cc/0232/handover (bundle 18c257db, message 5adbd62b, RESOLUTION-0232.md 953f6ae8, count-free, with vc's placeholders for the landed sha and the CI run). Evidence ran under molt-vc's GO LIGHT of 08:05Z, from 08:08:12Z to 08:09:08Z, rc 0, sealed in 0232/runs: red on main without expect at the issue's own lines; the fix skips those arms without expect, and runs and passes them with it, under BSD and GNU. vc's land232 is in flight. Once vc says it has landed: check the landed lines equal the bundle, then archive and clear 0232's clones. Released when 0232 closes on the pushed head's green CI run"
+  }
+}

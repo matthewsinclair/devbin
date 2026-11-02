@@ -1,0 +1,15 @@
+{
+  "id": "01M36XF81BKQTZ820FMGV7D59Y",
+  "ts": "2026-09-23T10:37:35.659Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "NEXT GLOBALFOLD, LESSONS.md candidates of 2026-09-23 (beside todo 109's). Each may be an INSTANCE of a class LESSONS already holds, so check before adding. (1) A tool's refusal of my own malformed question, printed where the answer was expected, was read as the answer and relayed as evidence (gh api with a stray space; intent-vc caught it). (2) A census frame justified by a measurement went stale with no edit to the frame: the disk changed and the list did not (0116). (3) 0114's 'What happens' stated a mechanism, in the voice of observation, that nobody had driven; one probe with a positive control refuted it. (4) Last night's 'CI read' covered 13 of 16 estates and named no population. (5) An assertion on a word a shipped page can say is satisfied by the page, not by the code under test: 0113's trailer arm, missed by my ten mutants and caught by the test-check critic. (6) A sweep for a fact's old SPELLING is not a search for the fact: mine for infra's exit 2 missed lib/infra.check's header, which says '; 2 something could not be measured'. (7) An issue offering two options can offer two wrong ones: 0122's 'refuse or drop' both lose a word the tool owns (git commit's --allow-empty), and cc caught it reviewing my build. (8) I marked cc's FINAL message handled before answering it and re-stated its open items live afterwards; the rule's order is answer, action or re-state, THEN clear."
+  }
+}

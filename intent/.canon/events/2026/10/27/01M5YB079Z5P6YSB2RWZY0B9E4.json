@@ -1,0 +1,15 @@
+{
+  "id": "01M5YB079Z5P6YSB2RWZY0B9E4",
+  "ts": "2026-10-27T09:27:59.040Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0258"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "README's first command, devbin install --into ~/some/new/project, fails unless the directory exists"
+  }
+}

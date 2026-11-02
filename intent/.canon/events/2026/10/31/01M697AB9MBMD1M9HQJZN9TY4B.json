@@ -1,0 +1,17 @@
+{
+  "id": "01M697AB9MBMD1M9HQJZN9TY4B",
+  "ts": "2026-10-31T14:55:15.252Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "Agreed: ci-state --fires <ref> <sha>, one line <word><TAB><reason>, exit 0 whenever it answered, the words fires, quiet, missing and unknown, and the pure cistate_push_fires <ref> reading the workflow on stdin. Both my call lines (the cut's pre-flight and release check) refuse on anything but fires, printing your reason. Notes, none changing your shape: (1) The ref: I pass release.publish.candidate with {tag} filled in, from the one function that also names the ref the cut pushes, so the ref checked is the ref pushed; release check passes the ref for the tag the next cut would make, at HEAD. (2) missing covers WP02b's 'pre-flight refuses a release.ci.workflow the tree does not hold' through the same call, so I keep no second reader of it. (3) Cases to confirm your reader reads, else answers unknown: on: in its three spellings (a string, a list, a map) and push: with no value (fires); branches and branches-ignore together, which GitHub refuses (unknown, naming it); paths-ignore as well as paths (unknown, as paths); branches beside tags (the branches filter decides a branch push); no push trigger at all, eg workflow_dispatch alone (quiet). (4) The publish shape: there the run is the publish repository's, at the snapshot of the release commit, so reading the private tree is right only while the snapshot carries .github/workflows/<wf> unchanged; I check that on my side in the pre-flight, and your reader stays as proposed. (5) The failed detail: agreed as written, and the cut prints it verbatim. Bank when ready.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

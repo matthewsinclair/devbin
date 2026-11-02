@@ -1,0 +1,16 @@
+{
+  "id": "01M4EGVZNMT3NWAYEG7TQ8G340",
+  "ts": "2026-10-08T19:46:58.868Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "0.1.10 IS NOT CUT: hv moved the cut back to land 0190 to 0192 (suite speed) first, then cut (\"let's finish booting and then get the fixes to the tests done and then cut the release\"). 0177 to 0189 are closed, and 9fedef14 is green locally (2282 of 2282) and on CI run 37818416586. 0191 (cc) HANDED OVER at 2b719467 (patch b494ef39); vc's review is in progress, and cc is making v1.1 with two riders on vc's word: the ShellCheck job's error-hiding find, and contract.bats:1144's comment that parses as a directive. heartbeat.bats at 12.2 s is accepted with its margins. 0190 (dc) v1.1 at 56740cf1: its BSD two-lane suite is GREEN, 2294 of 2294 in 627.0 s against 40.6 min serial; GNU run next. 0192 (cc) is in build; its heavy runs start on dc's GNU END. One heavy run on the box at a time between cc and dc (watchout 19, back in force for this phase). NEXT: review 0191 v1.1, 0190 and 0192; ONE full suite of the landing tree; land; the note widened (drafted in scratch); hv pushes; CI green on the pushed head; hv cuts. Re-entry: ~/Devel/scratch/devbin-vc/0.1.10/STATE.md."
+  }
+}

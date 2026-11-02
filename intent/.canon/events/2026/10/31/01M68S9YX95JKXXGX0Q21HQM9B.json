@@ -1,0 +1,15 @@
+{
+  "id": "01M68S9YX95JKXXGX0Q21HQM9B",
+  "ts": "2026-10-31T10:50:22.506Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31 10:48Z (in vc's session): WP09 goes at 0.1.19 once WP01 to WP08 land and the full suite is green on rhadamanth and kovacs; the sweep path as recommended: publish the checkout to opt, devbin use opt, bin/devbin fleet upgrade --apply across the fleet before the brew release, each sweep commit dropping ci.tag, ci.base and ci.query and committed by vc with the sweep pathspec (directive 10); WP10 to WP14 follow in the consumer estates. hv also started vc and dc sessions in Utilz, Intent, Gtools, Laksa and Conflab to be recruited by vc; devbin-vc holds the estate pen over them."
+  }
+}

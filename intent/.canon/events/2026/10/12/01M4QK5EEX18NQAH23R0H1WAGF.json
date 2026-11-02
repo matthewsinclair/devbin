@@ -1,0 +1,17 @@
+{
+  "id": "01M4QK5EEX18NQAH23R0H1WAGF",
+  "ts": "2026-10-12T08:20:15.965Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc to vc, re 06:57Z: WP-07 HANDOVER.\n\nTHE PATCH: ~/Devel/scratch/devbin-cc/sp-2026-10-12/patches/wp07.v2.on-c5c86da4.patch, sha256 6f3e08b98ebad725b2ba80568d348615aff83874de65d5e4ddf420e0720fbac7. One commit carrying b1457869's tree (clone w07b) on 288071e2, checked with git am in a fresh clone of the shared tree at main c5c86da4: rc 0, tree equal to b1457869's outside intent/ (180 entries), a second am refused (runs/apply07.v2.out). 36 paths, none under intent/.\n\nTHE lib/ FILES, the list sent at c94803d5 unchanged: lib/cmd/check, lib/cmd/clean, lib/cmd/infra.d/init, lib/cmd/upgrade, lib/infra, lib/infra.check, lib/infra.dns, lib/infra.init. Since that list, upgrade:441 is a bash match, infra:277 refuses a lookup that fails, and infra_dmarc_tag checks its capture.\n\nWHAT IT DOES: an early reader takes its input captured, never piped: it reads a here-string of a variable whose status is read. The first line of a value is ${v%%$'\\n'*}, your ruling. Bytes go through a file (install-shellcheck.sh) or through od with nothing reading early (fleet.bats:817). A runtime refusal is a bash match or a lookup whose status is checked. Two pipes stay, each under a '# pipe-sound:' comment: tests.yml's head -n1 | grep -qE and its twin in shell-gate. section()'s 20 callers read a here-string.\n\nTHE SCAN, contract.bats's _early_reader_pipes and its arm: each of bin, lib, tests and .github is read on its own with its own floor (50, 300, 600 and 3, about half of the 112, 636, 1321 and 7 pipes each held today). A tree it cannot read fails it. A bar with no blank beside it is a pipe. NAME=value words, a !, a path and the usual wrappers are stripped. A pipe-sound mark covers one pipe. Its comment says what it cannot see.\n\nEVIDENCE, under ~/Devel/scratch/devbin-cc/sp-2026-10-12/runs/:\n- Red on main: scan v3 alone at 2340caca (288071e2 plus the scan), under BSD and GNU, failing at contract.bats:1163, the site list, with 111 sites (arm07.red.scan.2340caca.*, scantree07.red.2340caca.out).\n- Green with the fix, b1457869, under BSD and GNU (arm07.green.scan.b1457869.*): 0 sites in each tree, and a missing tree fails rc 1 (scantree07.green.b1457869.out).\n- The targeted run on b1457869, 29 suites in the two lanes, under BSD and under GNU: 1665 + 9 = 1674 of 1674, 0 failed, no non-TAP line (run07.b1457869.{bsd,gnu}.{meta,par.tap,ser.tap}).\n- shellcheck 0.11.0 is clean over the 11 changed shell files (shellcheck07.v3.out). bats --count of every changed suite equals the base's, plus the one new arm.\n- critic-shell, run once on 278875b8: 0 critical; 2 warnings, both fixed; 4 notes taken and 2 not (your ruling on infra_sender_defined, hv's on tests of tests).\n- runs/w1audit07.txt: a line per converted site, as you asked. W1's shape stood at four sites, and all four are checked now.\n\nNOT DONE: Linux on kovacs waits on your word. AC-7.1 is yours to mark. Nothing is pushed.",
+    "fyi": false,
+    "re": "2026-10-12 06:57Z",
+    "recipient": "vc"
+  }
+}

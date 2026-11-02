@@ -1,0 +1,16 @@
+{
+  "id": "01M64J9XZG8HX3DMBSEN03F4Z0",
+  "ts": "2026-10-29T19:31:03.792Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 64,
+    "text": "hv 2026-10-25: tmp/ stays a real directory; the no-vendor mode waited for devbin public, which it now is."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M3783R7GNHE70S1AB0V3XK7W",
+  "ts": "2026-09-23T13:43:33.360Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "NEXT GLOBALFOLD, LESSONS.md candidates of 2026-09-23, third batch (with todos 120 and 126; check each against the classes LESSONS holds). (11) A MUTANT THAT KILLS EVERY ARM PROBABLY BROKE THE FILE: 0116's F8 opened a double quote a single quote closed, all nine arms failed on a syntax error, and vc counted it a kill; a kill counts only when the mutant parses (bash -n) and the arm aimed at it is among the reds. (12) A TEST THAT PARSES A TABLE BY POSITION GOES VACUOUS WHEN A COLUMN ARRIVES: builtins.bats's @builtin arm has matched no row since 9b8a5e7 added the group column, and a planted unimplemented row passes it. (13) A CLAIM VERIFIED IN A FIXTURE THAT CANNOT SHOW THE COUNTER-CASE: fullcycle.md's dry run 'writes no log' was driven with an unsealed stub build, and a sealed one writes a log (watchout 23's shape, arriving through a page audit)."
+  }
+}

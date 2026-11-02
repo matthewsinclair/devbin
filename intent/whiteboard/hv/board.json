@@ -1,0 +1,911 @@
+{
+  "schema": "intent/board@4.0",
+  "node": {
+    "moniker": "hv",
+    "name": "Hypervisor",
+    "role": "hypervisor",
+    "session_id": "13270b02-fc50-4d4e-9ce3-c73346487bcb",
+    "heartbeat_at": "2026-10-29T19:31:29.456Z",
+    "status": "active",
+    "focus": "devbin 0.1.18 is published, devbin's first public release; the queue is intent/wip.md.",
+    "claims": [],
+    "recorded_at": "2026-09-16T06:59:44.787Z",
+    "authored_at": "2026-09-02 23:28Z",
+    "migrated_at": "2026-09-16T07:01:28.432Z"
+  },
+  "items": [
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 1,
+      "text": "**The next thread is hv's to set. Do not start one uninvited.** ST0001 and ST0002 both closed 2026-08-10.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.432Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 2,
+      "text": "**Issues, never new steel threads, for maintenance-class work.** A project with no `intent/issues/` directory yet still manages issues that way.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.432Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 3,
+      "text": "**Every migrated project is live.** Switches, deletions, publishing and deploy-affecting changes stay behind hv's explicit go. Full suites on the second fleet are the agent's to run.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 4,
+      "text": "**At Lamplight, `test all` and the full mix leg are hv-run, never agent-run** (2026-08-09). That prohibition does NOT extend to the second fleet.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 5,
+      "text": "**Do not touch Multiplyer again.** EOL, moved to `_Archive`; the salvage became Riffle.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 6,
+      "text": "**Whiteboard matter reaches hv only through vc.** A write to `hv/inbox.<node>.md` is the record; vc surfacing it is the delivery. Not delivered until surfaced.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 7,
+      "text": "**bash >= 5 is the floor** (issue 0022, reversing D9). macOS's `/bin/bash` 3.2.57 is refused, not targeted.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 8,
+      "text": "**Cross-estate citations are qualified**: `<project>#NNNN` for issues, `<project>/<node>` for monikers, lowercase by definition. Unqualified stays legal same-repo.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 9,
+      "text": "**Intent's devbin use is transitional**, dissolving at Intentv3's native Rust CLI. No durable machinery for its divergence.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 10,
+      "text": "**vc commits the sweep pathspec in every tree** when a fleet sweep runs.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 11,
+      "text": "**A guard body resolved live out of `INTENT_HOME` is EXEMPT from the pre-notice reservation** (ruled 2026-09-03 09:15Z, on vc's escalation of 2026-08-27). The reservation on fleet-blast-radius changes stands for everything else. It cannot bind here because **the commit IS the rollout**: there is no window between landing such a change and it being in force across every consuming estate, so no announcement can precede it and _sequence it and tell hv first_ is not a thing anyone can do. The 120s-to-0 tolerance change is ratified after the fact. **Report such a change promptly; do not hold it for permission that cannot arrive in time.** Attached and NOT fixed by this: `pre-commit.intent` in every estate is byte-identical to Intentv2's template, no v3 verb writes that file, and Intentv2 is frozen -- so the guard BODIES move with no ceremony available while the CARRIER cannot move at all.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "doing",
+      "seq": 1,
+      "text": "**THE PUSH of EVERYTHING AFTER `367cd2d`, then INTENT'S RE-SWEEP.** Twelve estates are level at `367cd2d`. **Intent is the one deliberately behind**, clean at HEAD, because its `shared_artefact_build_guard` arm 10 refused the sweep twice: first a `cargo build --release` in `fullcycle` (real code, vc's, from this morning's `0050`), then the documentation EXAMPLE of the config key that replaced it. **Both refusals were correct and neither was bypassed.** Retry, read arm 10, revert again if it names a third line.",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:26:06.671Z",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 1,
+      "text": "An index. **`intent/wip.md` carries the detail and is the authority**; two copies of an item list is how the last one drifted.",
+      "state": "archived",
+      "archived_at": "2026-09-16T11:24:32.298Z",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 2,
+      "text": "**THE GUARDS ARE NOW PROVEN TO CATCH, and this section's own caveat is what prompted it.** It read _`guards: 4 ran, 0 skipped` is evidence they EXECUTE, not evidence they would catch anything, since nobody has driven one red here._ Driven 2026-08-28: **six red arms -- clock A, B and C, header, append-only, canon-ignore -- every one refused with rc 1 and HEAD UNMOVED**, each naming its own check, against a **green control** that landed once its stamp came off `date -u`. **The residue is named with the result** (a fabricated stamp carrying `Z`, in the past, monotonic, still passes all three clock checks) at `vc/.history/20260828/devbin-guard-red-drive.md`.",
+      "state": "archived",
+      "archived_at": "2026-09-16T11:24:32.491Z",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 3,
+      "text": "**FOUR ISSUES ARE OPEN AND NONE IS RULED WORK** -- read live from `intent issues list` at 2026-09-02 22:13Z, not carried: `0034` `0036` `0039`, plus `0035` which hv PARKED. **Nine closed today by fix**: `0042` `0045` `0046` `0047` `0048` `0049` `0050` `0051` `0052`, and `0053` `0054` were filed and fixed within the hour. `0055` is filed and NOT fixed: a run log is stamped from the LOCAL clock with no zone while `fleet audit` renders UTC with a `Z` -- one hour apart today, zero for half the year, so it is correct in winter and silently wrong in summer, in the repository where the whiteboard clock guard lives. **The old wording of this line follows, because its warning is still the right one.** It read: EIGHT ISSUES ARE OPEN, ONE OF THEM `high` -- read live from `intent issues list` at 2026-09-02 18:13Z, not carried: `0034` `0035` `0036` `0039` `0042` `0045` `0046` `0052`. **FIVE CLOSED TODAY BY FIX**: `0047` `0048` `0049` `0050` `0051`, the entire `fullcycle` block, on hv's rulings of 15:55Z. **`0052` is the high one and it is the reason to distrust this whole section's history**: CI had been red on `main` since 2026-08-27, unread through the entire 0.1.0 release, and the TAGGED commit had never run CI at all. Now green on all four jobs. **This line has now been wrong seven times in seven days**, always in the section peers are told to trust, which is why the enumeration is dated and the count is stated separately -- a list and a count that disagree is a caught error; a list alone is a silent one. **`0035` was never \"missing a directory\"** -- v3 files to the canon store; the residue under `intent/issues/` is v2 and is **2 OPEN / 34 CLOSED**, not the flat 34 this board carried until today.",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:26:06.789Z",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 4,
+      "text": "**DEVBIN'S PARKED WORK IS LARGELY DONE.** The globalfold landed at `2fc4e0d` across all three snapshot documents; the three boot findings are filed; the two orphan writes are explained as Intent 3.0.0 output and committed. **THE FLEET RE-VENDOR IS DONE.** Measured live 2026-09-01 17:15Z by `bin/devbin fleet audit`, not carried: **THIRTEEN estates at ONE seam** -- source `08f51b754902`, digest `2a49b1d03240` -- as at 2026-09-01 17:15Z. **SUPERSEDED**: v0.1.0 rolled to eleven estates at `e22d9a3` on 2026-09-01; Intent sits at `0b7b1b3`; Intentv2 is FULLY FROZEN by hv's ruling of 2026-09-02 and is no longer reported as drift. Six further commits are unpushed, so no estate carries today's fullcycle work. The four-way split this line used to carry (`54996d4` 1 behind; `eecf4c0` 3; `96fb408` 4; `4ac3925` Gtools 5) is HISTORY, kept only because the lesson below is attached to it. **The `dep` and `worktree` rows in that audit are NOT estates** -- the vendored `arca_*` copies sit at `4dc899de522b` and three read `UNRECORDED`, but they arrive through `mix deps` and Lamplight's worktrees, never through a re-vendor. Counting them as fleet drift would re-import the exact over-wide reading this board has already corrected twice. **The \"split 7/6\" I wrote on this board at 16:12Z was never true**: I mapped thirteen estates onto two groups when the generated table in front of me already showed four digests, and in doing so I put a coarse grouping into the section I had just corrected for being stale. The number was wrong, not expired. **THE NEWEST INSTALL IS THE FURTHEST BEHIND** -- Gtools was vendored at 15:47Z from a commit dated the previous afternoon, so a fresh install is five commits back while two estates re-vendored an hour later are one. The live table is `intent/docs/devbin-users.md`, which is GENERATED (`bin/devbin fleet doc`) and carries its own expiry stamp -- and a stale stamp goes to hv, never silently to a rebuild. **The `st attach` ruling is WITHDRAWN, and the withdrawal is the finding** (hv, 2026-09-02): `intent st organize` was RETIRED in Intent v3, so the `54 unclaimed` this board carried came from a command that no longer exists and was never re-measured. There is no number here to rule on.",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:26:06.902Z",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 5,
+      "text": "**THE FLEET WAS NEVER THREE-WAY, and both this board and vc's said worse than the truth.** Three distinct `source_commit` stamps, but only **two seam states** by digest. **Counting stamps counts re-vendor events, not divergence.**",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:26:07.014Z",
+      "recorded_at": "2026-09-16T07:01:28.433Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 6,
+      "text": "A Prolix deploy carrying two migrations, with an unbuilt Dockerfile change riding along.",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:26:07.129Z",
+      "recorded_at": "2026-09-16T07:01:28.434Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 7,
+      "text": "Two committed credentials at Prolix, outside the existing `flysql` ruling.",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:26:07.242Z",
+      "recorded_at": "2026-09-16T07:01:28.434Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 8,
+      "text": "Prolix ST0028, WIP and half done -- the dependency half has not started.",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:26:07.355Z",
+      "recorded_at": "2026-09-16T07:01:28.434Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 9,
+      "text": "arca_cli's credo, never sized.",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:26:07.468Z",
+      "recorded_at": "2026-09-16T07:01:28.434Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 10,
+      "text": "Deploy-build proofs pending, owner-run: Conflab, Laksa, Lamplight.",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:26:07.581Z",
+      "recorded_at": "2026-09-16T07:01:28.434Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 11,
+      "text": "Fleet housekeeping, no urgency: redundant `log:` restatements at five projects; Baize's `db reset`.",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:26:07.696Z",
+      "recorded_at": "2026-09-16T07:01:28.434Z"
+    },
+    {
+      "node": "hv",
+      "kind": "watchout",
+      "seq": 1,
+      "text": "**A ruling about one project is not a fleet ruling.** The same call was right for one project and wrong for another inside a day. The general form of this and every other lesson is in `intent/llm/LESSONS.md`.",
+      "state": "live",
+      "recorded_at": "2026-09-16T07:01:28.434Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 1,
+      "text": "Ratified 2026-08-24, in session, listed because the record has to outlive the session that made it:",
+      "state": "archived",
+      "archived_at": "2026-09-16T11:24:31.102Z",
+      "recorded_at": "2026-09-16T07:01:28.434Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 2,
+      "text": "| Ruling                                                                                         | Where it landed       |\n| ---------------------------------------------------------------------------------------------- | --------------------- |\n| 0014 resolves as option B -- devbin owns the git axis's shared half, not the read half alone   | `lib/helpers`         |\n| 0015 closes with rc unchanged; a guard that quietly changes a verdict is a bypass              | `print_run_verdict`   |\n| 0018 resolves by RETIRING devbin's own `cmd/check` handler, not by documenting the divergence  | `cmd/.lib/shell-gate` |\n| 0019's verdict channel is fixed by EXTENDING the promotion, not by a sentinel in `.errors`     | `run_gate`            |\n| 0021: upgrade's exit status stays 0 when files were refused -- it answers \"did I complete\"     | `lib/cmd/upgrade`     |\n| 0024 resolves as option A -- doctor ANNOUNCES shadowing; the only option that closes the class | `lib/cmd/doctor`      |",
+      "state": "archived",
+      "archived_at": "2026-09-16T11:24:30.987Z",
+      "recorded_at": "2026-09-16T07:01:28.434Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 3,
+      "text": "Earlier rulings are in the closed threads' own records and in `design.md` (D1 to D24).",
+      "state": "archived",
+      "archived_at": "2026-09-16T11:24:31.212Z",
+      "recorded_at": "2026-09-16T07:01:28.434Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 4,
+      "text": "Rulings before 2026-08-24 are D1 to D25 in ST0001's design: intent st show ST0001 design.",
+      "state": "live",
+      "recorded_at": "2026-09-16T11:24:31.304Z",
+      "edited_at": "2026-10-29T19:31:28.164Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 5,
+      "text": "**0014 resolves as option B -- devbin owns the git axis's shared half, not the read half alone.** Landed in `lib/helpers`. Ratified by hv on 2026-08-24, in session.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:19.965Z",
+      "recorded_at": "2026-09-16T11:24:31.394Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 6,
+      "text": "**0015 closes with rc unchanged; a guard that quietly changes a verdict is a bypass.** Landed in `print_run_verdict`. Ratified by hv on 2026-08-24, in session.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:20.068Z",
+      "recorded_at": "2026-09-16T11:24:31.483Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 7,
+      "text": "**0018 resolves by RETIRING devbin's own `cmd/check` handler, not by documenting the divergence.** Landed in `cmd/.lib/shell-gate`. Ratified by hv on 2026-08-24, in session.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:20.172Z",
+      "recorded_at": "2026-09-16T11:24:31.573Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 8,
+      "text": "**0019's verdict channel is fixed by EXTENDING the promotion, not by a sentinel in `.errors`.** Landed in `run_gate`. Ratified by hv on 2026-08-24, in session.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:20.276Z",
+      "recorded_at": "2026-09-16T11:24:31.662Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 9,
+      "text": "**0021: upgrade's exit status stays 0 when files were refused -- it answers \"did I complete\".** Landed in `lib/cmd/upgrade`. Ratified by hv on 2026-08-24, in session.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:20.387Z",
+      "recorded_at": "2026-09-16T11:24:31.750Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 10,
+      "text": "**0024 resolves as option A -- doctor ANNOUNCES shadowing; the only option that closes the class.** Landed in `lib/cmd/doctor`. Ratified by hv on 2026-08-24, in session.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:20.503Z",
+      "recorded_at": "2026-09-16T11:24:31.840Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 11,
+      "text": "**0062 keeps the ST0002 WP-04 two-facts ruling** (hv, 2026-09-14, in cc's session; recorded here 2026-09-16): `project.languages` is gate scope and Intent's language list is project composition, and they are different facts. The doctor half landed at `b723f9e`; the message half is held on cc's board.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:20.612Z",
+      "recorded_at": "2026-09-16T11:24:31.926Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 12,
+      "text": "**`log:` declines on `-`, `false`, `no` and `0`** (hv, 2026-09-14, in cc's session; recorded here 2026-09-16). Executed: 0065, closed at `3b04811`.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:20.718Z",
+      "recorded_at": "2026-09-16T11:24:32.019Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 13,
+      "text": "**0060 is measured before it is ruled** (hv, 2026-09-14, in cc's session; recorded here 2026-09-16). cc's measurement is recorded in the issue and awaits hv's ruling.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:20.824Z",
+      "recorded_at": "2026-09-16T11:24:32.107Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 14,
+      "text": "**The release core, 0064, gets a steel thread, design first** (hv, 2026-09-14, in cc's session; recorded here 2026-09-16). Approved and not yet minted; cc's research is at `cc/.history/20260914/0064-release-orchestrator-research.md`.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:20.928Z",
+      "recorded_at": "2026-09-16T11:24:32.195Z"
+    },
+    {
+      "node": "hv",
+      "kind": "watchout",
+      "seq": 2,
+      "text": "hv's TODO is an index; intent/wip.md is the queue.",
+      "state": "live",
+      "recorded_at": "2026-09-16T11:24:32.385Z",
+      "edited_at": "2026-10-29T19:31:28.492Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 12,
+      "text": "**THE GUARD RED-DRIVE OF 2026-08-28 NO LONGER COVERS THE GUARD BODIES IN FORCE.** Re-measured by vc on 2026-09-09: five of its six arms tested bodies that have since been replaced, and only the header guard's predates the drive. Re-driving takes about 40 minutes; the harness is in `vc/.history/20260828/`. Until 2026-09-16 this line said the guards were PROVEN TO CATCH.",
+      "state": "archived",
+      "archived_at": "2026-09-22T16:35:57.654Z",
+      "recorded_at": "2026-09-16T11:24:32.586Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 13,
+      "text": "**Intent's filing of devbin's 14 whiteboard defects waits on your word at intent-vc's terminal.** intent/vc triaged all fourteen on 2026-09-16, found no open duplicate, and holds the filing because whether they join Intent's close-out is yours to decide there. The report is devbin `1824c75`, `dc/.history/20260916/wb-upstream-defects-draft.md`.",
+      "state": "archived",
+      "archived_at": "2026-09-16T12:36:38.614Z",
+      "recorded_at": "2026-09-16T12:26:07.794Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 14,
+      "text": "**UNPUSHED: 8 devbin commits after `24429c2`.** Both remotes read `24429c2`, measured with `git ls-remote` on 2026-09-16. All eight are whiteboard and records; none touches `lib/` or `bin/`.",
+      "state": "archived",
+      "archived_at": "2026-09-16T13:44:26.805Z",
+      "recorded_at": "2026-09-16T12:26:07.890Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 15,
+      "text": "**The fleet does not carry devbin's two `lib/` changes since its stamp.** 15 estates sit level at source `3bfa922`, digest `9188d4dc5751`, which predates `3b04811` (0065, your `log:` ruling) and `b723f9e` (0062's doctor half). A sweep is your go. Measured with `bin/devbin fleet audit` on 2026-09-16, which reads disk and not git (0056).",
+      "state": "archived",
+      "archived_at": "2026-09-16T13:41:10.669Z",
+      "recorded_at": "2026-09-16T12:26:07.983Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 16,
+      "text": "**Laksa's seam bytes differ under the same stamp.** Laksa reads source `3bfa922` like the other 15, but digest `8906e037b12b` against their `9188d4dc5751`, vendored 2026-09-11 15:48Z. Not investigated. Cdsync, where 0069 was found, has no census row at all.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:22.506Z",
+      "recorded_at": "2026-09-16T12:26:08.077Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 17,
+      "text": "**Sequence the three open high issues: 0062, 0063 and 0069.** 0062's doctor half landed at `b723f9e` and its message half is held on cc's board; 0063 is designed and not started; 0069 writes the operator's home directory into the tracked manifest of every estate, five of them public. `intent issues list` carries the rest.",
+      "state": "archived",
+      "archived_at": "2026-09-16T13:41:10.874Z",
+      "recorded_at": "2026-09-16T12:26:08.174Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 18,
+      "text": "**Draw the dc/cc line in devbin.** DevX Claude joined the roster on 2026-09-16, and dc's 0069 and 0068 wait on which node fixes each.",
+      "state": "archived",
+      "archived_at": "2026-09-16T13:07:00.042Z",
+      "recorded_at": "2026-09-16T12:26:08.269Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 19,
+      "text": "**Rule on 0060, and mint 0064's thread.** cc's measurement for 0060 is in the issue; the release-core thread is approved, design first, and not yet minted.",
+      "state": "archived",
+      "archived_at": "2026-09-16T16:53:13.536Z",
+      "recorded_at": "2026-09-16T12:26:08.362Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 20,
+      "text": "**THE TAG: `v0.1.0` at `e22d9a3` is 133 commits behind HEAD, and it is the only tag.** The fleet's manifests read devbin 0.1.1, which has no tag. Releases are yours.",
+      "state": "archived",
+      "archived_at": "2026-09-16T18:46:30.461Z",
+      "recorded_at": "2026-09-16T12:26:08.458Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 21,
+      "text": "**ST0006 is in Triage with no objective written.** Its WP-04 writes to live DNS and Fly.",
+      "state": "archived",
+      "archived_at": "2026-09-23T07:34:00.153Z",
+      "recorded_at": "2026-09-16T12:26:08.552Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 22,
+      "text": "**Confirm the SPF change on ctrlaltcompete.com was intended.** On 2026-09-06 its record carried `a mx include:_spf.mlsend.com`; on 2026-09-16 it reads `v=spf1 include:_spf.google.com ~all`, read via 8.8.8.8. So the conflict vc reported on 2026-09-06 is gone, and the domain no longer authorises the `_spf.mlsend.com` ranges at all. laksa.io is unchanged.",
+      "state": "archived",
+      "archived_at": "2026-09-22T16:27:34.763Z",
+      "recorded_at": "2026-09-16T12:26:08.646Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 23,
+      "text": "**Carried from 2026-09-02, not re-verified on 2026-09-16:** A Prolix deploy carrying two migrations, with an unbuilt Dockerfile change riding along.",
+      "state": "archived",
+      "archived_at": "2026-09-22T16:32:52.768Z",
+      "recorded_at": "2026-09-16T12:26:08.739Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 24,
+      "text": "**Carried from 2026-09-02, not re-verified on 2026-09-16:** Two committed credentials at Prolix, outside the existing `flysql` ruling.",
+      "state": "archived",
+      "archived_at": "2026-09-22T16:32:52.884Z",
+      "recorded_at": "2026-09-16T12:26:08.834Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 25,
+      "text": "**Carried from 2026-09-02; `intent st show` reads WIP on 2026-09-16, and the half-done detail is not re-verified:** Prolix ST0028, WIP and half done -- the dependency half has not started.",
+      "state": "archived",
+      "archived_at": "2026-09-22T16:32:53.005Z",
+      "recorded_at": "2026-09-16T12:26:08.930Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 26,
+      "text": "**Carried from 2026-09-02, not re-verified on 2026-09-16:** arca_cli's credo, never sized.",
+      "state": "archived",
+      "archived_at": "2026-09-22T16:32:53.125Z",
+      "recorded_at": "2026-09-16T12:26:09.028Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 27,
+      "text": "Deploy-build proofs, owner-run: Conflab, Laksa, Lamplight (carried from 2026-09-02, not re-verified).",
+      "state": "live",
+      "recorded_at": "2026-09-16T12:26:09.125Z",
+      "edited_at": "2026-10-29T19:31:25.387Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 28,
+      "text": "**Carried from 2026-09-02, not re-verified on 2026-09-16:** Fleet housekeeping, no urgency: redundant `log:` restatements at five projects; Baize's `db reset`.",
+      "state": "archived",
+      "archived_at": "2026-09-22T16:32:53.248Z",
+      "recorded_at": "2026-09-16T12:26:09.223Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 15,
+      "text": "**devbin's whiteboard-store defects are fixed in Intent's current release** (hv, 2026-09-16, ruled at intent/vc's terminal). Filed at Intent `aa80e6917` as intent#0403 to intent#0417, with intent#0416 found in Intent the same morning; intent#0405 closed as intended, and hv may reopen it. The letter-to-issue map is kept beside the report in `dc/.history/20260916/`.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:21.031Z",
+      "recorded_at": "2026-09-16T12:36:38.720Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 16,
+      "text": "dc does devx work (hv, 2026-09-16); where the line with cc falls is hv's to draw.",
+      "state": "live",
+      "recorded_at": "2026-09-16T13:07:00.149Z",
+      "edited_at": "2026-10-29T19:31:28.834Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 29,
+      "text": "**A fleet sweep is your go, and it now closes 0069.** 15 estates sit level at source `3bfa922`, which predates `3b04811` (0065, your `log:` ruling), `b723f9e` (0062's doctor half) and `187219e` (0069). The sweep rewrites each estate's recorded source to `~/...`, removing the home path from the public estates' manifests. Measured with `bin/devbin fleet audit` on 2026-09-16, which reads disk and not git (0056).",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:22.611Z",
+      "recorded_at": "2026-09-16T13:41:10.762Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 30,
+      "text": "**Sequence the two open high issues not yet in hand: 0062 and 0063.** 0062's doctor half landed at `b723f9e` and its message half is held on cc's board; 0063 is designed and not started. 0069 is dc's, committed, and closes with your sweep. `intent issues list` carries the rest.",
+      "state": "archived",
+      "archived_at": "2026-09-16T16:24:11.507Z",
+      "recorded_at": "2026-09-16T13:41:10.965Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 31,
+      "text": "**UNPUSHED: 19 devbin commits after `24429c2`.** Both remotes read `24429c2`, measured with `git ls-remote` on 2026-09-16. One touches code: `187219e`, dc's 0069 (`lib/helpers`, `lib/install`, `bin/.devbin/cmd/fleet` and their tests); the other eighteen are whiteboard and records.",
+      "state": "archived",
+      "archived_at": "2026-09-16T16:24:11.602Z",
+      "recorded_at": "2026-09-16T13:44:26.900Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 17,
+      "text": "**0062 first, then 0063** (hv, 2026-09-16, to vc in session). Who builds them is not yet ruled: that is the dc/cc line, still open.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:21.135Z",
+      "recorded_at": "2026-09-16T16:24:11.406Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 18,
+      "text": "**The dc/cc line, for now: vc builds 0062 from cc's held patch, then 0063 from cc's design; dc stays on devx (0070, 0073); cc reviews both when back** (hv, 2026-09-16 16:3xZ, taking vc's recommendation). Building and validating one change on one node is not independent, which is why the review is cc's.",
+      "state": "archived",
+      "archived_at": "2026-09-16T16:32:19.460Z",
+      "recorded_at": "2026-09-16T16:32:11.760Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 19,
+      "text": "**0060 is ruled option A: `shopt -s inherit_errexit` in `lib/helpers`, guarded by bash version** (hv, 2026-09-16, taking vc's recommendation). It lands AFTER 0.1.1 is tagged and is announced before the next sweep, since `lib/helpers` is vendored. The file's own \"sets no shell options\" contract changes with it. That a handler exec'd under a narrow PATH can run on bash 3.2 despite the floor is a separate issue.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:21.238Z",
+      "recorded_at": "2026-09-16T16:32:11.855Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 20,
+      "text": "**The dc/cc line, for now: vc builds 0062 from cc's held patch, then 0063 from cc's design; dc stays on devx (0070, 0073); cc reviews both when back** (hv, 2026-09-16 16:32Z, taking vc's recommendation). Building and validating one change on one node is not independent, which is why the review is cc's.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:21.343Z",
+      "recorded_at": "2026-09-16T16:32:19.553Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 21,
+      "text": "**0064's thread is minted as ST0007, design first** (vc, 2026-09-16, on hv's go). It comes after 0063 in sequence. Who writes the design is not yet ruled.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:21.447Z",
+      "recorded_at": "2026-09-16T16:53:13.723Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 22,
+      "text": "**CI runs `check critic` on the macOS job only, from Intent's Homebrew formula** (hv, 2026-09-16, taking vc's recommendation; issue 0077, built at `bf4974b`). Ubuntu runs every other gate by name, and `tests/unit/ci-workflow.bats` holds that list equal to `check`'s options minus critic. A Linux Intent binary is later work, and Intent's to decide.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:21.554Z",
+      "recorded_at": "2026-09-16T16:53:13.904Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 23,
+      "text": "**dc writes ST0007's design, and vc reviews it** (hv, 2026-09-16 18:00Z, with vc's agreement). The design covers devbin's own release as well as Utilz's: devbin's `release` project command does the notes half only, and the tag, the push and the GitHub release are by hand (`docs/releasing.md`, steps 7 and 8, with the GitHub release made by `.github/workflows/release.yml` on a pushed tag). It runs in parallel with vc building 0063, since the two touch different things.",
+      "state": "archived",
+      "archived_at": "2026-09-16T17:59:58.670Z",
+      "recorded_at": "2026-09-16T17:59:52.648Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 24,
+      "text": "**dc writes ST0007's design, and vc reviews it** (hv, 2026-09-16 17:59Z, with vc's agreement). The design covers devbin's own release as well as Utilz's: devbin's `release` project command does the notes half only, and the tag, the push and the GitHub release are by hand (`docs/releasing.md`, steps 7 and 8, with the GitHub release made by `.github/workflows/release.yml` on a pushed tag). It runs in parallel with vc building 0063, since the two touch different things.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:21.657Z",
+      "recorded_at": "2026-09-16T17:59:58.752Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 25,
+      "text": "**ST0007 design rulings** (hv, 2026-09-16 18:4xZ, to vc, reconciled with the shared-core preferences hv gave dc the same evening). (1) **Fail forward, no CI gate before the tag:** the core tags and pushes without waiting for CI, then reads CI for the release commit and reports a red verdict loudly; it undoes nothing. D40 is moot, and nothing is pushed to `main` ahead of the tag. (2) **Every `release:` key has a default and can be overridden**, `object:` included: no required key. (3) The core is a builtin named `release`, opt-in, and `build release` stays available as a project spelling. (4) **Conflab is in scope as an adopter**; no project is a special case except those frozen by ruling. (5) **devbin adopts first**, then the next project: Utilz was named first only because it looked simplest, so if another is simpler, take that one.",
+      "state": "archived",
+      "archived_at": "2026-09-16T18:41:08.360Z",
+      "recorded_at": "2026-09-16T18:40:51.441Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 26,
+      "text": "**ST0007 design rulings** (hv, 2026-09-16 18:40Z, to vc, matching what hv gave dc the same evening; dc applied them in the design at `81f72ee`). (1) **Fail forward, no CI gate before the tag:** the core tags and pushes without waiting for CI, then reads CI for the tagged commit and reports a red verdict loudly; a red release is fixed by the next release, never by moving the tag. (2) **Every `release:` key has a default and can be overridden**, `object:` included (default `local`). (3) The core is a top-level builtin `release`, following how the fleet already spells it; `build release` stays available as a project spelling. (4) **No project is a special case:** Conflab adopts like every other project; only projects frozen by ruling are excluded. (5) **devbin adopts first**, then the others: Utilz was named first only because it looked simplest.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:21.759Z",
+      "recorded_at": "2026-09-16T18:41:08.451Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 27,
+      "text": "**Intent adopts the ST0007 release core, last in the adoption order** (hv, 2026-09-16 18:43Z, to vc): \"Intent is very much in the mix, just do it last in the list as it's currently still in WIP.\" Intent's release work is not covered by standing directive 9's \"no durable machinery for its divergence\": it adopts the shared core like every other project, just last.",
+      "state": "archived",
+      "archived_at": "2026-09-16T18:42:09.136Z",
+      "recorded_at": "2026-09-16T18:42:03.319Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 28,
+      "text": "**Intent adopts the ST0007 release core, last in the adoption order** (hv, 2026-09-16 18:42Z, to vc): \"Intent is very much in the mix, just do it last in the list as it's currently still in WIP.\" Intent's release work is not covered by standing directive 9's \"no durable machinery for its divergence\": it adopts the shared core like every other project, just last.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:21.870Z",
+      "recorded_at": "2026-09-16T18:42:09.226Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 29,
+      "text": "**Close every open issue now; vc coordinates dc, and each node checks the other's homework** (hv, 2026-09-16 19:02Z, to vc in session). Split: dc takes 0073's close, 0059, 0056, then 0066 after vc's 0063 lands (both touch lib/resolve); vc takes 0063, 0060+0076 together, then 0035. The builder commits by path and the reviewer re-runs the arms and tries a mutation before the builder closes. 0064 is ST0007 and closes when the release core is built.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:21.978Z",
+      "recorded_at": "2026-09-16T19:02:31.443Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 30,
+      "text": "**0035 ruled on vc's four recommendations** (hv, 2026-09-16, to vc in session). (1) Built-in groups are a DEFAULT on a verb axis, overridable, and the axis is documented beside help.groups. (2) `precommit` runs a project's gate and never wires hooks; the per-clone loss of .git/hooks wiring is filed as its own issue. (3) A dev harness stays in cmd/ with no builtin or convention until a second estate grows one. (4) The two cleans' boundary is stated: the built-in owns the language artefact trees it names, and a project clean scopes to what that project's own build produced.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:22.083Z",
+      "recorded_at": "2026-09-16T19:19:43.074Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 31,
+      "text": "**0078: Intent owns hook wiring** (hv, 2026-09-16, to vc in session, taking vc's recommendation over a devbin doctor detector or devbin setting core.hooksPath). Filed at Intent as intent#0426 (d74121952); devbin's 0078 closed as routed.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:22.187Z",
+      "recorded_at": "2026-09-16T19:34:52.611Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 32,
+      "text": "**ST0007's design is approved and its plan minted** (vc, 2026-09-16, after reviewing v0.1 to v0.5): design v0.5 at dcb6860; 8 work packages and 21 acceptance criteria at 5d2e8d5. The thread stays in Triage, and nothing is built until hv sequences it. 0064 closes when the core is built.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:22.292Z",
+      "recorded_at": "2026-09-16T19:37:52.423Z"
+    },
+    {
+      "node": "hv",
+      "kind": "decision",
+      "seq": 33,
+      "text": "**ST0007 D39, option A: the `releases` renderer's CHANGELOG header is generic, built from `project.name`, and the caret-on-0.x clause leaves the generated header** (hv, 2026-09-17, to dc in dc's session; relayed by dc, recorded by vc). The clause's one home is the `devbin_version` note in `docs/configuration.md`; the views are regenerated once, in WP-02; AC-2.1's \"byte for byte\" gains \"apart from that clause\". dc makes the `intent ac edit` and D39's RULED note as WP-02's first commit, after WP-01 lands. In the same session hv agreed that dc prepares WP-02 in parallel in its own worktree and wires nothing into the shared tree until WP-01 lands.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:28:22.394Z",
+      "recorded_at": "2026-09-17T08:04:59.427Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 32,
+      "text": "**devbin 0.1.5: your push, then your cut.** Ready at ed3e028: 0106 (release step 1 failed silently on Utilz's tags; severity high, and it blocks Utilz's first core cut) and 0107 (usage names bin/devbin, your K8 ruling). Full suite 1585/1585 at 96ec3db. Push main, wait for CI green, then bin/devbin release v0.1.5. Then the sweep, on your go, Utilz first. Also yours: the estate pushes from the 0.1.3 sweep (decision 30), as and when.",
+      "state": "archived",
+      "archived_at": "2026-09-21T21:54:30.203Z",
+      "recorded_at": "2026-09-21T21:28:29.119Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 33,
+      "text": "**Tomorrow: the fleet CI pass, then the 0.1.5 sweep, both on your go.** The CI pass applies your rulings of 2026-09-21 (vc decision 32): macOS only on tags and on demand, and every repo cancels superseded pushes. It touches devbin (0108, for 0.1.6) plus 11 estates, and you push each one. devbin 0.1.5 is released (21:53Z) and in no estate yet; its sweep goes Utilz first. devbin going public is October or November.",
+      "state": "archived",
+      "archived_at": "2026-09-22T08:06:19.502Z",
+      "recorded_at": "2026-09-21T21:54:30.308Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 12,
+      "text": "Intentv2 and Multiplyer are DEAD. Ignore them entirely -- no scans, no sweeps, no counts, no reports, no re-verification (hv, 2026-09-22: \"Intentv2 and Multiplyer are dead. Ignore those entirely. I don't want a second of time wasted on them\"). This extends directive 5, which stays as the record of Multiplyer's EOL. The census still lists _Archive/Intentv2; exclude it without discussion.",
+      "state": "live",
+      "recorded_at": "2026-09-22T07:59:21.306Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 34,
+      "text": "TODAY 2026-09-22, in flight and on your go. devbin 0.1.6 first: 0108 (macOS on tags and on demand, concurrency cancels superseded pushes), 0109 (the lib/helpers comment whose home-shaped text keeps Cdtempl's CI red, in every release from v0.1.1), 0110 (action versions to the measured latest, and a path filter so board-only pushes start no run). cc builds, vc reviews. Then ONE commit set and ONE push per estate carrying the CI change, the trivial red-test fixes and the 0.1.6 sweep together, Utilz first, and you push each. 13 estates plus devbin are in scope, and three repos that are not devbin estates await your word: Anvil (private, red twice), Pplr and arca_notionex. Awaiting you as well: whether pristine reaches the Ubuntu 26 notice and the Elixir dependency warnings (laksa-dc's question, measured), and Utilz's bash 3.2 gap, which utilz-vc is closing on their side with a config change of their own.",
+      "state": "archived",
+      "archived_at": "2026-09-22T16:27:34.879Z",
+      "recorded_at": "2026-09-22T08:06:19.619Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 35,
+      "text": "CARRIED OUT OF TODO 34 ON 2026-09-22 WHEN THE 0.1.6 PROGRAM WAS ARCHIVED, BECAUSE THE PROGRAM SHIPPING DID NOT DISCHARGE ITS RESIDUE. Done and not in question: 0.1.6 is cut, published and swept into 13 estates, devbin itself is pushed and green, and its ledger reads 0 threads WIP, 0 work packages WIP, 0 open issues. What is still owed is owed to hv in person. (1) SEVEN estates carry unpushed sweep commits -- Riffle, Cdtempl, Prolix, Conflab, Baize, MicroGPTEx, Prodinfra -- plus Utilz and Intent one ahead each on board writes alone; hv pushes each, and vc reports these are hv's to push rather than work queued on anyone. (2) THREE repos that are not devbin estates await hv's word: Anvil (private, red twice), Pplr, arca_notionex. (3) TWO measured questions of laksa/dc's are open: whether `pristine` should reach the Ubuntu 26 runner-migration notice, and whether it should reach the Elixir dependency warnings. (4) Utilz's bash 3.2 gap is being closed by utilz-vc with a config change on their own side -- tracked, not devbin's to do. Archiving 34 bare would have left \"the 0.1.6 program shipped\" standing as a true sentence carrying an untrue implication, which is the failure mode a flense invites.",
+      "state": "archived",
+      "archived_at": "2026-09-23T07:35:59.915Z",
+      "recorded_at": "2026-09-22T16:27:30.442Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 36,
+      "text": "Prolix: ST0028's dependency half (AC-2.1 to 2.4) is unstarted while its lockfile moved outside it, and the cf06d8e Dockerfile change is unbuilt; prolix's node to settle.",
+      "state": "live",
+      "recorded_at": "2026-09-22T16:32:34.252Z",
+      "edited_at": "2026-10-29T19:31:25.850Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 37,
+      "text": "Six estates carry log: lines restating the builtin default; check no test or tool reads config.yaml as text before removing any.",
+      "state": "live",
+      "recorded_at": "2026-09-22T16:32:47.972Z",
+      "edited_at": "2026-10-29T19:31:26.283Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 38,
+      "text": "Baize's authored db reset drops with no confirmation or prod refusal, while its seed arm is prod-gated; baize's node to fix before its first deploy.",
+      "state": "live",
+      "recorded_at": "2026-09-22T16:32:48.100Z",
+      "edited_at": "2026-10-29T19:31:26.712Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 39,
+      "text": "THE GUARDS ARE PROVEN ARMED AND DISCRIMINATING AGAINST THE BODIES IN FORCE AS OF 2026-09-22 -- a deliberately narrower sentence than the one this replaces, and than \"proven to catch\", which the board said until 2026-09-16 and which was wrong then. Re-driven by vc on 2026-09-22, discharging the 2026-08-28 drive's expiry by EXECUTION rather than re-filing it. THE OLD ITEM'S ONE EXCEPTION WAS ALREADY DEAD WHEN IT WAS READ: it said only the header guard's arm predated the drive, and the header guard moved that same day at 84e1ce66f. Last change per body -- whiteboard-clock-guard 2026-09-11, canon-ignore-guard 2026-09-14, append-only-guard 2026-09-19, whiteboard-header-guard 2026-09-22, pre-commit-guards 2026-09-22 -- so ZERO of the six August arms covered a body in force, plus the dispatcher deciding which of them run. The understatement grew while the item sat. THE ROSTER DID NOT GROW BUT ONE SUBJECT MOVED, and that is the find: append-only-guard's second subject changed from `intent/events.jsonl` to `intent/.canon/events/**`. The August drive recorded that subject as its own known hole, in its words -- events.jsonl \"exists here at 0 bytes and untracked, so it has no lines to lose and git cannot see it... Untestable rather than untested.\" Canon events are populated and tracked now and every node commits them daily, so the hole became REACHABLE and nobody re-drove it. SIX ARMS, each staged by explicit pathspec, HEAD as the measurement and rc as corroboration: clock B (stamp with no Z), clock A (future stamp), header (a YAML-escaped value), append-only (.history subject), append-only (CANON subject -- untestable in August), canon-ignore (an ignore reaching canon). All six REFUSED at rc=1 with HEAD unmoved, and restoration was verified rather than assumed -- 0 dirty across all four targets, HEAD unchanged before and after. Self-identification survives: each arm names its own check and quotes the offending value. THE GREEN CONTROL IS REAL RATHER THAN CONSTRUCTED -- six refusals alone are consistent with a gate that refuses everything, and the control is that cc's 68f6872 landed the same day through these exact bodies. A commit that really lands is a better control than a built one, because nothing about it was arranged to pass. RESIDUE, NAMED RATHER THAN GLOSSED: clock check C (an inbox going backwards) is NOT re-driven -- vc stopped because cc had a canon event staged in the shared index and the harness aborts any arm that sees more than its own staged path, so C is outstanding for a reason worth making again. False negatives are untouched, exactly as in August: a fabricated stamp that carries Z, lands in the past and still increases monotonically passes all three clock checks -- a smaller target, not an empty one. Devbin only: the bodies resolve live out of INTENT_HOME, so none of this says whether another estate's carrier reaches them. And the critic gate is a separate leg of the same hook, untested here.",
+      "state": "archived",
+      "archived_at": "2026-09-22T16:44:43.800Z",
+      "recorded_at": "2026-09-22T16:35:57.512Z"
+    },
+    {
+      "node": "hv",
+      "kind": "watchout",
+      "seq": 3,
+      "text": "Re-drive guards only in a quiet tree: under live peers an arm aborts on their staged paths and the drive reports more coverage than it got.",
+      "state": "live",
+      "recorded_at": "2026-09-22T16:36:09.097Z",
+      "edited_at": "2026-10-29T19:31:29.211Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 40,
+      "text": "hv to decide: whether devbin declares formatters, since no commit-time guard checks staged markdown here (check format covers it at run time).",
+      "state": "live",
+      "recorded_at": "2026-09-22T16:44:43.912Z",
+      "edited_at": "2026-10-29T19:31:27.134Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 41,
+      "text": "ST0006 is in triage with no objective or design; WP-01 (infra apply through flyctl) is its one live write. Starting it is hv's (directive 1), its first live drive too (directive 3).",
+      "state": "live",
+      "recorded_at": "2026-09-23T07:34:00.283Z",
+      "edited_at": "2026-10-29T19:31:27.501Z"
+    },
+    {
+      "node": "hv",
+      "kind": "todo",
+      "seq": 42,
+      "text": "0.1.6 residue for hv: Anvil and arca_notionex await hv's word; laksa/dc asks whether pristine reaches the Ubuntu 26 notice and Elixir dependency warnings; Utilz's bash 3.2 gap is utilz-vc's.",
+      "state": "live",
+      "recorded_at": "2026-09-23T07:36:00.042Z",
+      "edited_at": "2026-10-29T19:31:27.840Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 13,
+      "text": "Batch releases. A release is not cut for a minor thing on its own, and the next release carries everything open, so there is no per-issue scheduling question to put to hv. hv, 2026-09-23 09:20Z, on 0.1.8: \"EVERYTHING is going into the next release. I don't want to be constantly making new releases for minor things. Just ship the lot in the next release. The end.\"",
+      "state": "live",
+      "recorded_at": "2026-09-23T09:20:40.762Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 14,
+      "text": "A CLIENT's name, or the name of a client's project, never appears anywhere in devbin: the tree, issues, boards, canon events, commit messages or release notes (hv, 2026-10-05: \"mentioning CLIENT names and projects is an UNFORGIVABLE FIRING SQUAD offence\"). A session named after client work is a client name too; in devbin's record it is \"another estate's session\". hv's own projects may be named in docs and commits, but never by their local directories, never as a dependency, and never in shipped code (bin/devbin and lib/).",
+      "state": "live",
+      "recorded_at": "2026-10-05T08:15:55.377Z"
+    },
+    {
+      "node": "hv",
+      "kind": "directive",
+      "seq": 15,
+      "text": "Anything released through Homebrew follows dev, opt, brew as dev, stage, prod (hv, 2026-10-24): the maintainer works in a dev checkout, publishes a working copy to opt to keep the bleeding edge (dev) apart from what works (opt), and the brew formula is the one prod publish. A user installs from brew and seeds projects from the brew install; dev and opt are maintainer-only, named only where a doc speaks to the maintainer of a dev checkout, never as the way a user installs. Applies to devbin, Intent, Utilz and every other formula.",
+      "state": "live",
+      "recorded_at": "2026-10-24T06:29:17.417Z"
+    }
+  ],
+  "sent": [],
+  "handled": [
+    {
+      "id": "01M2MGAFQJ00098EZPY4SRNNK8",
+      "sender": "vc",
+      "handled_at": "2026-09-16T12:26:09.416Z"
+    },
+    {
+      "id": "01M2MGAFQJ000AABXXH64MGC25",
+      "sender": "cc",
+      "handled_at": "2026-09-16T12:26:09.320Z"
+    },
+    {
+      "id": "01M2MGAFQJ000ZEGWXG3JJGRAM",
+      "sender": "vc",
+      "handled_at": "2026-09-16T12:26:09.416Z"
+    },
+    {
+      "id": "01M2MGAFQJ0010AK8NK31GAHC2",
+      "sender": "vc",
+      "handled_at": "2026-09-16T12:26:09.416Z"
+    },
+    {
+      "id": "01M2MGAFQJ001QJXV952W2JH70",
+      "sender": "vc",
+      "handled_at": "2026-09-16T12:26:09.416Z"
+    },
+    {
+      "id": "01M2MGAFQJ002DSXE03XJ61YCA",
+      "sender": "vc",
+      "handled_at": "2026-09-16T12:26:09.416Z"
+    },
+    {
+      "id": "01M2MGAFQJ002SDHJC8Z12DS0A",
+      "sender": "vc",
+      "handled_at": "2026-09-16T12:26:09.416Z"
+    },
+    {
+      "id": "01M2RKWEFR0001GB426MBFNW6F",
+      "sender": "vc",
+      "handled_at": "2026-09-21T12:49:27.227Z"
+    },
+    {
+      "id": "01M2RN0PAH000AX74TVT9RA8DF",
+      "sender": "vc",
+      "handled_at": "2026-09-21T12:49:27.227Z"
+    },
+    {
+      "id": "01M54AWC3Y0001WQKS3KMT1V5F",
+      "sender": "vc",
+      "handled_at": "2026-10-24T05:32:07.765Z"
+    },
+    {
+      "id": "01M68HNGFN97087CM3YZXN9V4N",
+      "sender": "vc",
+      "handled_at": "2026-10-31T10:50:23.029Z"
+    },
+    {
+      "id": "01M68J216K0NNH630KCB8WD80X",
+      "sender": "vc",
+      "handled_at": "2026-10-31T10:50:23.029Z"
+    }
+  ]
+}

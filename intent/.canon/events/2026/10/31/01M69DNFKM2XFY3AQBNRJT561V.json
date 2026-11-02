@@ -1,0 +1,16 @@
+{
+  "id": "01M69DNFKM2XFY3AQBNRJT561V",
+  "ts": "2026-10-31T16:46:11.572Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 36,
+    "text": "Every lib/cmd/release line of WP05 and WP06 (the leg hook-ins, which turn AT-3.3 and AT-3.6 green) and WP04's last piece, the tag trigger's removal: held until cc's WP02b, the wait loop, lands on main (vc, read by 2026-10-31 15:58Z); the hook-ins route through vc. Agreed with cc (2026-10-31, read by 16:45Z): leg_start and leg_read <leg> in lib/cmd/release, one <word><TAB><detail> line in ci-state's five words, the cut setting LEG_ROOT, LEG_PROJECT, LEG_SHA and LEG_REF once; the hook-in adds the release.legs source line, legs.*) release_leg_start|read \"$LEG_ROOT\" \"${1#legs.}\" \"$LEG_PROJECT\" \"$LEG_SHA\", and macos) release_macos_start|read \"$LEG_ROOT\" \"$LEG_SHA\" (new); absent is read at pre-flight alone, the leg named, not started, recorded not run, never waited for. Not dc's: WP03's two call lines, is_branch_name and AC-6.3, in cc's WP02c."
+  }
+}

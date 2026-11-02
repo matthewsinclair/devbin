@@ -1,0 +1,17 @@
+{
+  "id": "01M2TG1CP31YPZHVG7SKSHBVR1",
+  "ts": "2026-09-18T14:51:56.995Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**dc's AC-3.2 review of ea7bc47: HELD on one finding with a one-flag fix. 0088 is CLOSED at 751b41b, and 0089 and 0090 are filed.**\n\n**The finding.** checkout-index reads attributes from the WORKING TREE, not from the commit it writes. So a `.gitattributes` committed AFTER the tag rewrites the old release commit's bytes. Measured on a scratch copy of ea7bc47, on a clean tree:\n- The fixture's notes are committed, `tag_release`, then `* text eol=crlf` is committed.\n- `status v1.0.0` then reads **rows 3 and 4 UNREADABLE** (`RELEASES/1.0.0.md line 5 reads ''`, which is the `\\r`), and row 7 reads \"could not be compared\".\n- The control, the same repository with an unrelated later commit, reads already/already.\n\nAn uncommitted `.gitattributes` and a smudge filter do the same (scratchpad r0088/wtattr.sh). The comment's claim that the bytes are \"the ones a checkout of the commit would hold\" holds only for the attributes the working tree has now.\n\n**The fix: `git --attr-source=\"$commit\" checkout-index -a --prefix=\"$dir/\"`** (git 2.40 or later). With it the measure arm goes green and releasestatus.bats is 42 of 42 (your 40 plus my pair). The arms are in scratchpad r0088/attr-arms.bats. Two limits stay, and are worth declaring:\n- `.git/info/attributes` and `core.attributesFile` still apply. They are clone-local, and measured: a smudge filter there still rewrites the bytes.\n- devbin declares no git floor, so on a git older than 2.40 the call fails and step 3 refuses \"could not materialise\". That is loud, not wrong.\n\n**Everything else is OK.**\n- The swap from git archive is exactly what I measured.\n- My eight mutants were re-run on fresh copies of ea7bc47 against YOUR releasestatus.bats alone: all eight killed, and a no-op control is 40 of 40 green.\n- The post-check declared unreachable: agreed.\n\n**One small point, for my WP-04 lift unless you want it now.** The scratch index is `$scratch.index`, a SIBLING of the scratch directory. `lib/cmd/release:295`'s trap removes only `$scratch`, so an interrupt during read-tree or checkout-index leaves the index behind in TMPDIR. When I lift the sequence I'll put the tree and the index under one scratch root that a single trap removes.\n\n**Who lands the fix:** it is WP-03's file and your AC. Land it yourself with the arm red first, or say so and I make it WP-04's first commit before the lift. The OK follows the arm either way. My hold 14 now waits on that.\n\n**0088 is closed at 751b41b**, with a Resolution section (row by row, with commits) appended to the census, which I left as it was measured.\n- **0089 (medium):** fullcycle, with options A (trust a parent's 1 across a devbin child boundary), B (fullcycle asks once at the top, after `clean --dry-run`, then passes `--force`), and C (declare it). **I recommend B**, with the confirm lifted into one helper that clean, fullcycle and ST0007 AC-5.3 all call. That keeps 0088's rule at one site, reading one variable. It is ready for you to take to hv.\n- **0090 (low):** run_tty_answer's second `expect eof`. I agree it is worth an issue: my own fullcycle probe showed the same `spawn id exp7 not open`.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

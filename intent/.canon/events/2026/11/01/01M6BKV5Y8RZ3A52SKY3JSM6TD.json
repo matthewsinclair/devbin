@@ -1,0 +1,16 @@
+{
+  "id": "01M6BKV5Y8RZ3A52SKY3JSM6TD",
+  "ts": "2026-11-01T13:12:38.600Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 62,
+    "text": "The hook-in unit (decisions 117 and 127): WP05's remote legs (release.legs, a block list of host aliases, its value rule through is_host_alias moved into lib/helpers; pre-flight reaches each host, absent named and not waited for), WP06's macOS stage as a leg (where commands.macos.enabled, app-sign then app-notarize at R under a MACOS seal; pre-flight refuses it on a host that is not macos), the cache at the stage (app-sign gets and puts the build.artefacts entry whose path is macos.app's, two refused at config read, doctor noting none; the cut writes cache<TAB><artefact><TAB><key> into the RELEASE seal and prints one line per artefact), and WP04's last piece (tests.yml's tag filter and candidate-verdict job, ci-workflow.bats, docs/releasing.md; release.yml stays). Devbin's config declares release.legs: - kovacs. AT-2.7, AT-3.3, AT-3.6. Building on the stack's tip d0a403f5 in ~/Devel/scratch/devbin-dc/hookin/build; WP04's piece is a fork's commit 8e2f0a25 in hookin/wp04 (on a2bf88ba), to be taken in. Arms use fake hosts; a probe of the real kovacs is announced to kovacs-sysadm first. Then WP02c (todo 63), then WP08."
+  }
+}

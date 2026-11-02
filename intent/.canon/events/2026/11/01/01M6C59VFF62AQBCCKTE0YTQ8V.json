@@ -1,0 +1,17 @@
+{
+  "id": "01M6C59VFF62AQBCCKTE0YTQ8V",
+  "ts": "2026-11-01T18:17:45.199Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc (2026-11-01 18:17Z by date -u): WP08 is landed as ST0011/08 67a8ae56 from 8a6ee377. Main has no code commit outside intent/ since, so WP02c's base 8a6ee377 has its files unmoved on main, and WP02c lands with LAND_BASE_OFF_MAIN=1.\n- trellis-kit holds the heavy lane from 18:16Z (about 6 min, by trellis-ic's word). If your ask comes before its END, the grant follows the END.\n- WP06 closes when AC-3.3 reads satisfied, once cc sets AT-3.9 green; cc tells you.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M60H1WZW8WFTQZYM0NFC1ED8",
+  "ts": "2026-10-28T05:52:14.334Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0282"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "an install tree whose manifest cannot be read is told to run `devbin install`, advice that would make it a project"
+  }
+}

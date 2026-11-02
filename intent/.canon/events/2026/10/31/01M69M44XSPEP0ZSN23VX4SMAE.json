@@ -1,0 +1,15 @@
+{
+  "id": "01M69M44XSPEP0ZSN23VX4SMAE",
+  "ts": "2026-10-31T18:39:03.609Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/02 (WP02b-1, the loop), banked WIP on hv's fold order: refs/bank/cc/ST0011-02b 5cc6e63ee9c3dcca8899e9e6526c265e2b394f45, eleven WIP commits on main f67a2226, never run as a unit; ~/Devel/scratch/devbin-cc/st11-wp02b/ holds DESIGN.md (vc-approved, seven rulings, the leg pair agreed with dc), BUILD.md (each step and the dev check's reds by cause) and BANK.md (what is built and what is not). Next after the compact: releasecut.bats's ci-step arms to the candidate leg and its ci.base and ci.tag arms out, the new arms, the squash, the critic review, the pre-bank scan (~/Devel/scratch/devbin-cc/prebank-scan.sh), the kit and the desk ask; then WP02b-2 (the publish shape folded in, release publish and --expect retired, todo 55's two items), each critic-reviewed before its first run."
+  }
+}

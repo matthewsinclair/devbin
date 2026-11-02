@@ -1,0 +1,15 @@
+{
+  "id": "01M37AKNEM92VGAVJVZ1AZ0T45",
+  "ts": "2026-09-23T14:27:11.956Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "cc's 0.1.8 state at 14:27Z (date -u read before this was composed); supersedes doing 2. LANDED: 0120 at 2218a3f (closed; records ea5fdd1). vc landed 0116 (1a3bbc8) and 0138 (a69b21b) on cc's review. 0123+0127+0129 NOW CARRIES 0140 (filed high: upgrade removes a file devbin renamed only in case, and overwrites an edit to it, on a case-folding disk; vc found the removal, cc the edit facet). The fix is built in rebase0123: case_twin and keep_case_twin in lib/install, asked by remove_unshipped and upgrade's retirement; upgrade's copy loop takes the twin's state; manifest_write the twin's checksum. 4 case arms red first on v1, green now; a case-sensitive control, run on an APFS case-sensitive image (cs.sparseimage, attached only for runs and detached after). Mutants Y1-Y5, Y7b, Y7d, Y8, Y9 killed. 21 files rerunning (files0123t); then pages (upgrade.md, install.md), then v2 to vc. 0115 v2 APPROVED by vc, lands after 0123. 0131+0137: built, 22/22 mutants, green; second critic pass running; lands after 0115, rebased. THEN 0139, 0128, 0134, 0135, 0133."
+  }
+}

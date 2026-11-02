@@ -1,0 +1,15 @@
+{
+  "id": "01M374NBW44C4N85EZN9KNAK0F",
+  "ts": "2026-09-23T12:43:16.230Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0133"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "`log:` without a `run:` validates and does nothing, and check.md and test.md say `log: false` runs a shipped option unsealed"
+  }
+}

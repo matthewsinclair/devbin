@@ -1,0 +1,17 @@
+{
+  "id": "01M5VDXS1VHN53YP17HH21KW95",
+  "ts": "2026-10-26T06:21:21.339Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "GATE CHANGED (molt-vc, after my 06:19Z entry): kovacs-sysadm is not up, so Devbin no longer waits for a kovacs run that has not started; whichever starts first has the machine. Tell vc the moment your fix is committed on land220's c320ba06 in your scratch and ready for its arms. vc tells molt-vc, who GOes your arms and the other builder's at once, and vc relays the GO. Still RUN NOTHING until vc relays that GO (or, if a kovacs run starts first, its END). The rest of my 06:19Z entry stands: red then green, END to vc the moment your driver ends, then the seal.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

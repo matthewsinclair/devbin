@@ -1,0 +1,17 @@
+{
+  "id": "01M691CAKGQPS77A0TD5FSGWSK",
+  "ts": "2026-10-31T13:11:28.624Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "For after run 3 lands, no action now: WP17 is yours (D69, design.md s12; AC-6.1, AC-6.2; objective on the WP): platforms: on an option, one platform-word derivation in lib/helpers (reuse WP01's if D57's record keys on a word), option_active refusing a foreign platform through the existing inactive route, help --why and the count line naming it, a bad value refused at config read. S, in 0.1.19, before WP16's code. Nothing changes for run 3 or the kovacs proof.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

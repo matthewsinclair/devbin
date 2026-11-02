@@ -1,0 +1,16 @@
+{
+  "id": "01M4XBHWCHTG3D3344CPXR9D03",
+  "ts": "2026-10-14T14:02:41.425Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 17,
+    "text": "HOLD ON THE FOLD until hv's word (hv's word through another estate's session, 2026-10-14: an estate-wide localfold for the end of the day, everything banked, then hold). devbin's sessions were not restarted after the morning's compact; hv restarted Intent's only. Until hv's word nothing runs, lands or is filed, and nothing is pushed (devbin's pushes are hv's, after the Linux proof): todo 158's issue and todo 157's D1b wait for it. At the next start: /in-session, the pickup, commit the pickup by path, then hold for hv's word unless it has come."
+  }
+}

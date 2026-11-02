@@ -1,0 +1,15 @@
+{
+  "id": "01M2SWABQEM22HK0B4XGSMQPPR",
+  "ts": "2026-09-18T09:07:19.406Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0086 (suite hang, high) OPEN: code fix proven on hv's terminal (1377/0 at 3fcc71a); the ARM is with dc.** dc's round two `c910104` (whole-command rule, BSD+GNU pty table) still lets four shapes live, driven by vc (scratchpad/mut-0086c.sh): a bare mv second on the line (`;` and `&&`), -i on a continuation line (GNU permutes -> blocks), and a quoted literal option (`'-n'`/`\"-n\"` IS -n after quote removal). None in the runtime (two mv calls). Proposed to dc: the STRUCTURAL rule -- one mv in the runtime, pinned byte for byte -- or widen the lexical rule and drive it red on all four. Close when one lands. **0085: vc OK'd the close (9689e0e reviewed); dc closes it with its Fixed entry after checking vc's consumer change in 9196ca3.**"
+  }
+}

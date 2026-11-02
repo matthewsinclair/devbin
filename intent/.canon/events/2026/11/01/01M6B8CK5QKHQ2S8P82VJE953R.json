@@ -1,0 +1,15 @@
+{
+  "id": "01M6B8CK5QKHQ2S8P82VJE953R",
+  "ts": "2026-11-01T09:52:26.295Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "WP16's re-run (ruled 2026-11-01 09:52Z by date -u, before its END; sent to dc): its GNU light phase shows three reds, helpers.bats's mv-list and raw-sha256 arms (dc's expected two, read off the tree before the run; the fix written in wp16/settle4-scans.sh, test files only) and surfaces.bats's not ok 26, 0128's option-less built-in arm, where cache has no row (not on dc's list). If the rest of the run shows no red beyond these three and their BSD twins, and the re-bank's diff from acc813e0 leaves lib/, bin/ and tests/lib/test_helper.bash byte-identical (vc reads it from the bank), the re-run is a new red clone with the cache arms red there, then runs.sh's light phase without WHOLE at the new tip with FILES cache helpers surfaces: those files whole and help under BSD and GNU, documentation under BSD, every tree scan under GNU, and the phase's critic and ShellCheck legs. No whole suite: with that code unchanged, acc813e0's BSD greens stand for the rest. Otherwise vc rules again on the TAPs."
+  }
+}

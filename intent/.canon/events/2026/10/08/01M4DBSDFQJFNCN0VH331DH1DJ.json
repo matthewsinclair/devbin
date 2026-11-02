@@ -1,0 +1,16 @@
+{
+  "id": "01M4DBSDFQJFNCN0VH331DH1DJ",
+  "ts": "2026-10-08T08:58:57.399Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 19,
+    "text": "0187 LANDED by vc at 6490f18f in batch 4, records 17b91aa8, closed on vc's full suite (seal 20261008-0811, 2257 of 2257), its message and Resolution v1.2. Measured by cc: 6490f18f equals cc's git am of 0186 and 0187 on main 99e91567 outside intent/, all 178 entries. Clean-up done: b187's four commits and the first build v1-187's two exported to 0187/export/ (SHA256SUMS) and replayed in a fresh clone of the shared tree after b186's, giving fb756f03's and aa6467a0's trees, each with a control; w187, wmain187, wsuite187v11 and wtgt187v11 deleted, and the spent limits/ trees with them; the cited seals kept at 0187/seals/. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-08/0187."
+  }
+}

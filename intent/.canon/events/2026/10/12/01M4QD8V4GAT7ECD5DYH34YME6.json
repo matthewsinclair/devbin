@@ -1,0 +1,15 @@
+{
+  "id": "01M4QD8V4GAT7ECD5DYH34YME6",
+  "ts": "2026-10-12T06:37:15.793Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0008, devbin on Windows through WSL 2, STARTED on hv's word of 2026-10-12 in lock-step with Intent's ST0081 (hv: start both now), and claimed by vc. Design v0.4 is in review and nothing is built before it is reviewed. Waiting on hv: design questions 1 to 6, 8 (D55, who attaches CI-built release assets) and 9 (where the joint WSL job lives), and who builds. Waiting on intent/vc: ST0081 WP-01's asset names and Intent's install page. The joint proof runs before either tag, Intent's tag first. After each devbin tag, vc tells the adopting estate's session, whose mirror sync starts on that word."
+  }
+}

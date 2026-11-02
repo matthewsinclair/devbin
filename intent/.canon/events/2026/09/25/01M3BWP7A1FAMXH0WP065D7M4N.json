@@ -1,0 +1,17 @@
+{
+  "id": "01M3BWP7A1FAMXH0WP065D7M4N",
+  "ts": "2026-09-25T09:00:07.873Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "critic-shell pass 5 on the v2g-to-v2h delta is back (TSP/critic0139-fifth-pass-v2h.txt): 0 critical, 3 warning, 2 rec, 4 style. v2g's W1, W2, rec 1 and rec 2 all driven FIXED (23 autotests shapes against cargo metadata; 26 standalone and 17 whole-cycle shapes for the resolver; all 19 new mutants killed at their intended assertions, none equivalent; 41 arms re-run ok). NEW: W1, DRIVEN, a FALSE GREEN in 0139's own code, contrived trigger: _fullcycle_tree_gone splits a link's content with read, which stops at a newline, so a link naming \"$O/lk<LF>x/t\" with lk<LF>x/ at 000 reads \"does not exist\", INCONCLUSIVE rc 0 (control without the newline: INCOMPLETE rc 1). By your rule this reopens 0139 as v2i. W2, by reading, 0139's own: Highlander -- _fullcycle_tree_gone is a second walk of a link chain beside follow_links (lib/helpers, 'THE ONE WALK'), without its newline lesson; the cause of W1. W3, DRIVEN, PRE-0139 (HEAD 4d8a9db does the same): a relative CARGO_TARGET_DIR is cargo's cwd-relative, and fullcycle reads it from the project root, so a build run from crate/ reads 'rel/t does not exist', INCONCLUSIVE rc 0; check targetdir already fails any relative value. I propose it is FILED, not taken into 0139 -- your call. Rec 1 (0139's own, loud): a link loop, an empty link, a 'Cargo.toml/' link and a 35-link chain are all named 'a directory on the way cannot be searched'. Rec 2: no arm holds _autotests_targets' _at_out=() reset (no two-crate arm). PLAN for v2i, light, unless you rule otherwise: one reader of a link's content, link_target in lib/helpers (readlink past a sentinel; refuses a content holding a newline, and one it cannot read back exactly, checked against the link's own size with find -size, which catches BSD's trailing-newline misread), used by follow_links and by _fullcycle_tree_gone (W1+W2); tree_gone returns 2 for a link it cannot follow, named as such (rec 1), and keeps a trailing slash (the Cargo.toml/ shape); a two-crate arm (rec 2); the 97-column line at check:542 (style); check:648's wording parked (pre-0139). Then the critic on the v2h-to-v2i delta, and START.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

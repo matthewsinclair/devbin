@@ -1,0 +1,15 @@
+{
+  "id": "01M38CWP8Z09B4YZAG0WWF7QR0",
+  "ts": "2026-09-24T00:26:19.295Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ONE bin/devbin fleet audit to confirm every estate still reads devbin 0.1.7 -- owed from 2026-09-23's fleet watch (todo 136, archived at the 2026-09-24 wrap), which hv's \"Yes\" covered for that day only; re-arming a watch needs hv's word. The watch script sat in vc's 2026-09-23 session scratchpad, which a restart clears."
+  }
+}

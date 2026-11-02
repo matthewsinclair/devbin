@@ -1,0 +1,15 @@
+{
+  "id": "01M36P0F4YMCZC9TEDKNYA6S88",
+  "ts": "2026-09-23T08:27:11.390Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-09-23, hv accepted all five of vc's recommendations -- \"Ok, I'm good with those recs.\" -- recorded at 08:27Z read from date -u. (1) Gtools-geodica was finished by hv's own hand: 4128bf6 carried 0.1.7, and f768b7b the second pass that moved the recorded source to ~/Devel/opt/devbin; devbin reads it level and both remotes hold f768b7b. 0116 goes into the next release: devbin's own config names the census roots. (2) \"No exceptions\" covers existing installs, all 17 now on 0.1.7. Adopting devbin in Anvil and arca_notionex waits for hv's word, one at a time through their own sessions; the content and settings repos (Courses, Courses/002, A3/a3-content, Molt-flynn, Molt-matts) stay without it. (3) vc builds 0117 and 0119 on top of 0113, cc reviews, and they ship in one release with 0113 (0.1.8). (4) 0115's pages follow 0113, in order of use, in 0.1.9; who writes them is not yet named. (5) No prettier in CI for now; revisit when devbin goes public."
+  }
+}

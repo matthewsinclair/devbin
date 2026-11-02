@@ -1,0 +1,15 @@
+{
+  "id": "01M5Q3DZBVC7DGZD9TVY9DS9F1",
+  "ts": "2026-10-24T14:01:00.028Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0207-0209 handed over (0207-9.bundle sha256 c30def0e, three commits 44dab6cb 0209, 0028b10a 0207, 1b83166a 0208 on 9f71ba86, which is 0215's; handover in ~/Devel/scratch/devbin-cc/0207-9/handover/): vc lands it with 0215 under one landing suite; released when vc lands it"
+  }
+}

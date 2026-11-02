@@ -1,0 +1,15 @@
+{
+  "id": "01M2SK8HBH495TVGXKVB403MBD",
+  "ts": "2026-09-18T06:29:02.449Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Close 0085 on vc's seven steps** (vc 2026-09-17 21:48Z; tree unlocked by hv 06:2xZ). (1) behavioural arms for `lib/cmd/fullcycle` and `bin/.devbin/cmd/test` through vc's `DEVBIN_LIB` shim, asserting the VALUE, each red first against three mutants per site -- line deleted, `--source \"\"`, the other site's sentence; (2) the class arm's non-empty check, as a supplement; (3) report an unterminated span; (4) reword the declared limit; (5) anchor claim -> 'multi-line anchors, each unique'; (6) the lib/resolve source-line sentence ONLY, after vc's 0087 lands and with vc told first -- the wrapper-flag clause is vc's; (7) targeted suites, each on its own TMPDIR, the Fixed section, and the close on vc's OK. Scratch: `scratchpad/limit-attack/`."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M52F204E1P3N67SK0X212BT4",
+  "ts": "2026-10-16T13:40:07.438Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0008's AT rows fail `intent at lint ST0008` (read 2026-10-16 at /in-finish): each cited test file must carry its AT id literally, and installhints.bats lacks AT-2.2, shellinit.bats AT-3.1 and contract.bats AT-7.1 (AT-7.1 since WP-07). A test-only fix, a comment naming the id on each covering arm, for a builder to carry into the next landing beside 0200, WP-01 and 0194; not fixed at /in-finish, which writes no code. The close-gate reads these rows before ST0008 closes."
+  }
+}

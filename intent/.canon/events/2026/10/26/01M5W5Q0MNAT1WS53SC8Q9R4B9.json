@@ -1,0 +1,15 @@
+{
+  "id": "01M5W5Q0MNAT1WS53SC8Q9R4B9",
+  "ts": "2026-10-26T13:17:05.557Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "AFTER hv CUTS 0.1.15, FILE 0235's review follow-ups, from cc's independent critic-shell review of 0235 (cc's handover, 2026-10-26; none a defect devbin's own layouts reach): (1) brew_answer_state can still reach the link through a hand-made link to it (eg ~/bin/devbin -> ../.local/bin/devbin) or a PATH entry naming ~/.local/bin in another case on a case-insensitive disk: compare directories in physical_dir's getcwd mode, as devbin_link_shadow should too, and skip a hit whose chain of links passes through the link; (2) one PATH splitter for brew_answer_state, lib/cmd/clean, lib/cmd/fullcycle and path_without (IFS=: read -r -a stops at a newline and drops a trailing empty entry; only clean checks its split); (3) offpath is concluded without checking that Homebrew's bin is off PATH, so a keg launcher that lost its exec bit reads as Homebrew's bin off PATH; (4) _use_report's and lib/install's remedy for an unset or relative HOMEBREW_PREFIX (\"install devbin with Homebrew\") loops when devbin is installed (shipped before 0235)."
+  }
+}

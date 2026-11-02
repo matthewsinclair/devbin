@@ -1,0 +1,16 @@
+{
+  "id": "01M68S9Z64DN1NABNXCQAKE1WN",
+  "ts": "2026-10-31T10:50:22.788Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 181,
+    "text": "WP09 (hv's go 2026-10-31 10:48Z, version 0.1.19) after WP01 to WP08 land and the full suite is green on rhadamanth and kovacs: book the box, cut 0.1.19 through the new shape under the one yes, the RELEASE seal's clock lines onto the thread (WP15); then the sweep hv agreed the same minute: opt, devbin use opt, fleet upgrade --apply, the sweep pathspec committed by vc in every tree, each dropping ci.tag, ci.base, ci.query; then WP10 to WP14 in the consumer estates. Nothing is FOR hv now."
+  }
+}

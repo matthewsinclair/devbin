@@ -1,0 +1,15 @@
+{
+  "id": "01M5SWJEY56PEFW1EJER4H0PFD",
+  "ts": "2026-10-25T15:58:50.319Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0231 (high, filed 6575d64d): log_awk (LC_ALL=C on the command) for every log reader in runlog, dormancy and bats-lanes; a counter that exits non-zero is promoted by name; built on a30c8ab2 at 4e947979; arms red on 593109bf and a30c8ab2, green BSD and GNU 15:57-15:58Z; light booked with molt-vc behind 0230"
+  }
+}

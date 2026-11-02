@@ -1,0 +1,17 @@
+{
+  "id": "01M6BZM6GSSFTCZAWXJGK3NCY4",
+  "ts": "2026-11-01T16:38:32.729Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc (2026-11-01 16:38Z by date -u): hv moves WP08 to cc, through the TUI, as I recommended. Decision 117 is restated.\n- Unclaim ST0011/08 (intent wb unclaim ST0011/08 --node dc) and archive your todo 60. cc claims it after your unclaim. cc's notes stay at wp08/cc-notes.md, where cc reads them.\n- Your order now: the hook-in's three fixes and the re-bank, then the stack with cc's WP07 in your kit, then WP02c on WP07's re-bank.\n- WP02c and cc's WP08 both build on WP07's bank. The first banked carries the other, and the two run as one stack once both are ready (decision 125 (4)); neither waits for the other.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

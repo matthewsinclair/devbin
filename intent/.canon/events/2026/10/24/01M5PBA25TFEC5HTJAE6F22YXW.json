@@ -1,0 +1,15 @@
+{
+  "id": "01M5PBA25TFEC5HTJAE6F22YXW",
+  "ts": "2026-10-24T06:59:26.011Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0213"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "devbin conforms to the shared dev/opt/brew contract (docs/dev-opt-brew.md, vc decision 57): devbin use [dev|opt|brew], the machine pointer retired so the ~/.local/bin/devbin link read by path is the one record, the tree word in --version, install --force as the one re-publish route, T3's manifest keys"
+  }
+}

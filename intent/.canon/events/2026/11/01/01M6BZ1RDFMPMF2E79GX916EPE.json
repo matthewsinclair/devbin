@@ -1,0 +1,16 @@
+{
+  "id": "01M6BZ1RDFMPMF2E79GX916EPE",
+  "ts": "2026-11-01T16:28:28.463Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 74,
+    "text": "The hook-in unit, ST0011/05 a826a71b then ST0011/04 c27f8cc0, banked on 62e1c34b, which main now carries as 9a0bb40f. Its desk run 01M6BVYT4HQJ6FQERVH4STK1F9 ENDED RED: the driver exited rc 1 at 16:26:18Z, and END went to vc with the slot released at 2026-11-01 16:27Z by date -u. Arms: unit 05's red legs red with their plans met; red-04's leg, which ran no test in the phase, is red evidence on its rerun in the slot (plan 1, not ok 1, on.push's tag filter named); GNU arms green. Light: test all under BSD RED, seal 20261101-1552, 2958 ok and 4 not ok, the four whole-tree scans of the unit's own lines (config.bats 0080, dispatch.bats 0087, runlog.bats 0085, releasecore.bats 0240); GNU 24 of 26 legs green, config and releasecore red on 0080 and 0240; shellcheck and critic exit 0. NEXT, on vc's go: the three fixes in hookin/NOTES.md, probes of the four scan arms and the unit's arms, the stricter want_red into hookin/runs.sh, the lint gate in series, the squash, new red clones, the re-bank by CAS and the re-ask. After the landing: the handover and AT-3.6's re-cite."
+  }
+}

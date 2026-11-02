@@ -1,0 +1,16 @@
+{
+  "id": "01M6BHJ2H2F0288P4G6N2Z3QNN",
+  "ts": "2026-11-01T12:32:43.042Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 59,
+    "text": "ST0011/17, WP17, in the stack after 0306 (stack/NOTES.md). It is rebased onto f3462610 as unit commit c33769e0: lib/config, docs/configuration.md and the reference yaml auto-merged with WP02b-1's, and were read. Its critic-shell r1 (2 critical, 1 recommendation) is settled as the WIP a2bf88ba on it, banked by CAS as refs/bank/dc/ST0011-17-wip (from f431ae57), the stack's tip. The dispositions are in wp17/critic-r1-dispositions.md, and the settle was probed against the real dispatcher. OPEN after the compact: a review of the settle's delta, the lint gate and scans over it, its squash into the unit commit (the landing message updated for C1 and C2), WP17's red clone, the units' banks (refs/bank/dc/ISSUE-0306 and ST0011-17), AT-6.1 and AT-6.2 minted to-write (wp17/at-mint.sh), then the stack's ask."
+  }
+}

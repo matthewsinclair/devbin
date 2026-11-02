@@ -1,0 +1,15 @@
+{
+  "id": "01M4EMEEFVRR7KD5001P44Q3T4",
+  "ts": "2026-10-08T20:49:29.595Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "NEXT RELEASE: 0192 (cc's, claimed, parked with its clones at 2231259e) is its first issue. Review it on handover by vc's slim rule (diff, the builder's seals, drafts; no re-runs), then one suite of the landing tree."
+  }
+}

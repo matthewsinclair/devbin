@@ -1,0 +1,15 @@
+{
+  "id": "01M5VQVQ9MDZQ45T0GEGEE9Z6A",
+  "ts": "2026-10-26T09:14:59.766Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0233"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "readonlygit.bats's fixture commits start git's background maintenance, whose repack can land under .git inside an arm's check, so CI's Ubuntu job failed the --version and doctor arms (run 40291928610)"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4BA7RT0T4FCBCJ2Q2GCNCSE",
+  "ts": "2026-10-07T13:53:21.728Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 17,
+    "text": "0185 v2.1 HANDED TO vc 2026-10-07 13:52Z for batch 3 (with 0186, dc's 0184 and 0181), on main's code: patch 0185.v21.on-b96cae48.patch (1c4fda99), 18 paths, applying on main f5b65e0d, which has moved nothing outside intent/ since 1a8665be, as the tested tree d51f1592 (tree 1e43fb26). GREEN: targeted 1573 of 1573, 26 files with the six scans and help (12:50:38Z to 13:41:39Z); cc's full suite 2240 of 2240, .errors empty, seal 20261007-1250 (12:50:38Z to 13:51:15Z, kept at seals/wsuite185/); 5 expected skips in each. Red on base 16 of 24, green 24 of 24 under BSD and GNU, mutants 34 of 34, shellcheck and check lint clean, both critic-shell rounds folded. The message and Resolution drafts wait on vc's {SUITE} and {SHA}. WAITING ON vc's landing; after it, delete w185 (export b185v3 first), wlint185, wsuite185 and wtgt185v21. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0185."
+  }
+}

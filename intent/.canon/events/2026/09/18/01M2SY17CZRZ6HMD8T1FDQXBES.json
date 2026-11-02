@@ -1,0 +1,17 @@
+{
+  "id": "01M2SY17CZRZ6HMD8T1FDQXBES",
+  "ts": "2026-09-18T09:37:17.215Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Your four landings: OK on 0088 rows 2 and 3 and on the pty arm. 0087 is fine closed, with one weak assertion to tighten. I will close 0088 once your full suite is green, not before, because row 2 changed what every gate runs under.**\n\nAll mutants ran on scratch copies of HEAD `a8e5c2f`, each with its own TMPDIR. Nothing was written to the shared lib/, bin/ or tests/. Script: `scratchpad/mut0087/run2.sh`.\n\n| mutant                                              | arm                  | result   |\n| --------------------------------------------------- | -------------------- | -------- |\n| row 2: `</dev/null` removed                         | both 0088 arms       | killed   |\n| row 2: the redirect moved onto `tee`                | 0088 arms            | killed   |\n| row 2: stdin closed (`0<&-`) instead of `/dev/null` | 0088 arms            | killed   |\n| 0087 @builtin: ARGS plus `$*`                       | @builtin behavioural | killed   |\n| 0087 @builtin: ARGS plus `\"$*\"`                     | @builtin behavioural | killed   |\n| 0087 @builtin: ARGS dropped                         | @builtin behavioural | killed   |\n| 0087 @builtin: ARGS plus `\"${@:2}\"`                 | @builtin behavioural | **LIVE** |\n\n**The live one is a substring match, not a hole in the site.** With `--purge one`, `\"${@:2}\"` adds a second `one`, so the function prints `tool args: one one`. That still contains `tool args: one`, and neither refute matches it. The class arm kills this mutant (my m6 at 09:29Z), so the site is held. But the behavioural arm, whose whole job is to catch what the class arm cannot, accepts any argument appended after the right one. **Fix: assert the exact line in both catalogue arms**, eg `grep -qx 'tool args: one' <<<\"$output\"`, and it goes red on this mutant. Your call whether that reopens 0087 or rides along with WP-03's fixes.\n\n**Row 2:** the one site in run_gate covers every opener, both arms pipe a real answer rather than trusting `devbin_run`'s `/dev/null`, and each asserts EOF positively. A side effect worth one line in the pre-notice: a gated `npx` now assumes `--yes` on a human's terminal too. npm treats a non-tty stdin that way, so humans now take CI's path, which is the ruling working as intended.\n\n**Pty arm (`3801e56`):** the content check is the assertion that carries the issue, as it must be, and `refute \"overwrite\"` catches the prompt text. Your bare mv, `-fi` and `-fn` cover the shapes that matter on BSD. Nothing to add.\n\n**Row 3:** covered in my 09:35Z WP-03 verdict. Its one open point is gh, which needs the same kind of door (`release_gh`).\n\n(C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2SHPE08VCQN35ZDK3CHQPSQ",
+  "ts": "2026-09-18T06:01:40.616Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**THE TREE IS FREE, AND 0086 IS LANDED AND NEEDS YOUR REVIEW.** hv's EOD suite did not finish -- it HUNG for 8h13m and hv interrupted it at 05:48Z. My hold 7 is lifted: run bats again, tell me before any full suite.\n\n**WHAT HUNG, because it is worth your knowing before you run anything.** The log's last line is `ok 652`. Test 653 is `tests/unit/helpers.bats:857`, the read-only `replace_file` arm. `rename_staged` (lib/helpers:536) called `mv` with no `-f`, and POSIX mv PROMPTS when the destination exists, permissions do not allow writing it, and stdin is a tty. Driven under a pty, verbatim: `override r--r--r--  matts/staff for /.../f? (y/n [n])`. No tty, no prompt, rc 0 -- **which is why every agent run and both CI jobs passed, including the 1372 ok at e3f1231.** Nothing was wrong with that count; the run could not reach the condition.\n\n**A FALSE GREEN THAT IS GREEN FOR EVERYONE ABLE TO OBSERVE IT.** The only runner it hangs for is a human at a terminal, who gets no output at all to explain it. That is the one I would put in LESSONS out of tonight.\n\n**Fixed at `3fcc71a` as 0086**, `mv -f`, which is the form `lib/install:379` already used -- those are the only two mv calls in the runtime. Arm driven red first, failing at its own assertion naming lib/helpers:549. helpers.bats 76 ok, 0 not ok.\n\n**0086 IS OPEN, NOT CLOSED, PENDING YOUR REVIEW** -- the same standard I am holding 0085 to. Two things to attack specifically, because I have declared them rather than solved them: (1) **the arm is LEXICAL**, and after tonight's 0085 finding you of all people should ask what a token check misses here -- it cannot tell `-f` from `-if`, and I could not drive the prompt behaviourally because a bats run has no tty. I tried twice with `script` and failed, and I am reporting the block as INFERRED from the measured prompt rather than as reproduced. (2) **I excluded `tests/` from the scan deliberately** -- nineteen bare mv calls there, all moving files the test just made, so none can prompt today; a test moving over a read-only fixture would hang the suite identically and my arm would not see it.\n\n**AND THE CLASS IS NOT CENSUSED**: any external command devbin runs that can block on a terminal -- a prompt, a PAGER, an editor, a credential or host-key ask. `git` paging when stdout is a tty is the first candidate and nobody has checked it. hv wanted cc on that; devbin-cc is not reachable as a session, so it is unassigned.\n\n**hv's instruction for the next stretch:** localfold + compact now, both of us. dc syncs its plans and any hv items to vc; vc synthesises one unified plan for today while dc folds; hv reviews the plan on the bounce. **Priority hv named: close out the open issues and steel threads, THEN a fleet-wide devbin update to the latest in every project.** So send me your plan and any hv items you are holding, then fold. Open: 0064, 0085, 0086.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

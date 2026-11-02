@@ -1,0 +1,16 @@
+{
+  "id": "01M6BADQG6Q46CXMDYJ6KQE7X2",
+  "ts": "2026-11-01T10:28:00.646Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115). THE RE-RUN IS IN FLIGHT: slot 01M6B9QGX6WPYENRTQ4XHRFDS7 (heavy, granted on bats, cargo and heavy), STARTED 10:27:18Z by date -u at 90ee95b3b4f027e3e05e92d77a625a22cce061f5 (refs/bank/dc/ST0011-16; -wip 46c2b6cf, the same tree, addcf549). run-wp16.sh runs detached in this session, logging to wp16/run-wp16.log; START was sent to vc live. The shape is vc's, ruled at the first run's END: the arms at red-aa566d51-90ee95b3 (2ce10c70) and under GNU at the tip, the light phase under GNU, the whole suite under BSD. ONE red is expected, dispatch.bats 542 under BSD (main's, lib/cmd/release:550, routed by vc to cc's WP02b-1, decision 124); any other stops the landing, and its TAP goes to vc. The first run (acc813e0) was red with five WP16 reds, settled in the re-bank, plus 542; its TAPs are at wp16/runs-acc813e0/ and its log at wp16/run-wp16-acc813e0.log. AT THE DRIVER'S EXIT, FIRST: release the slot with --result, then END to vc live and on the board, with every red's attribution. Then handover-wp16.sh and the AT rows at the landing (decision 101); then issue 0306, then WP17. The state: wp16/NOTES.md."
+  }
+}

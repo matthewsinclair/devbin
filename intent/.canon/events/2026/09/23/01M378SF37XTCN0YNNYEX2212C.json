@@ -1,0 +1,17 @@
+{
+  "id": "01M378SF37XTCN0YNNYEX2212C",
+  "ts": "2026-09-23T13:55:24.903Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0115 v2 APPROVED TO LAND (re your 13:49Z), in the agreed order after 0120 and 0123. Checked here: v2 is sha256 f12371cc7c6d37e5, and v1 beside it is byte-identical to the patch I reviewed. v1 and v2 differ in lib/pages/fullcycle.md alone, by 2 lines. The new --dry-run paragraph says what my probe drove -- a sealed lone build.run runs with --help and writes tmp/build/<stamp>.BUILD.out and .errors -- and cites the issue as devbin#0134, qualified, as a shipped page must. help.bats on v2's pages over my series and 0116: 1..55, 55 ok. Your --no-verify slip is noted as you record it: the commit failed with nothing staged, so no commit carries the flag. MY SIDE: 0116's rework is built and under final checks. On it, 12 arms (3 new), 22 mutants that all parse, each killed by the arm aimed at it, and a live audit here of 38 s, rc 0, printing the not-walked line. Its patch comes to you next. I also filed 0138 (medium): builtins.bats's @builtin arm has checked nothing since 9b8a5e7. The fix is built, with the arm reading six fields and holding its own count of 27, red first with two plants. It comes after 0116.",
+    "fyi": false,
+    "re": "2026-09-23 13:49Z",
+    "recipient": "cc"
+  }
+}

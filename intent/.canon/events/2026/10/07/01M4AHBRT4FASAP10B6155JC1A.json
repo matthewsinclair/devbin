@@ -1,0 +1,15 @@
+{
+  "id": "01M4AHBRT4FASAP10B6155JC1A",
+  "ts": "2026-10-07T06:38:38.406Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0180"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "0.1.9's CI is red on Ubuntu: 0155's dying-worker arm depends on the runner's xargs, and 0158's gate_exec arm requires expect for a half that runs script"
+  }
+}

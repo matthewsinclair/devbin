@@ -1,0 +1,16 @@
+{
+  "id": "01M621BHW23RRCEMPTE5DQ4QBH",
+  "ts": "2026-10-28T19:56:22.274Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 56,
+    "text": "hv 2026-10-24: public devbin is MIT; the workroom lives only in the local mirror once the GitHub repository is recreated public."
+  }
+}

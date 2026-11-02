@@ -1,0 +1,16 @@
+{
+  "id": "01M3C7X6YZ4EXNHXP3YS57FEM5",
+  "ts": "2026-09-25T12:16:11.231Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 10,
+    "text": "0.1.8 BUILD STACK (cc), each in scratch sp-2026-09-25, stacked in landing order on cc824b4. 0134 FINAL v2e (675c9d6e): converged, 233/233 targeted, mutants 51 killed + PW7 equivalent, WH2/PW3 re-run; message and res0134 filled bar {SUITE}. 0135 v2e CONVERGED (e24495ea): 555/555, batch 27/28 with S5 a timing-dependent kill; v2f (arm now needs the pid halves to differ, S5 red 3/3; comment and titles corrected) waits for a 3-minute slot after laksa-vc. 0145 v1 (cef9e84e on ad9ea36): find_walk in lib/helpers, 15 walks; two prototype defects fixed (depth over two starts, path spelling); red first 17/17 at 0644 assertions; critic pass 1 running. 0148 v1 (efb58c1f on a47942c): refuse a relative/newline CARGO_TARGET_DIR up front; fleet sets none. 0149 v1 (a8b7b9ef on c9fbad1): ci.query handed the tag, tag's runs only; 4 arms incl. a LIMIT arm. Runs after laksa-vc's END: 0135 v2f, then 0145, 0148, 0149. Suite over the four (now five) stacked, then landing."
+  }
+}

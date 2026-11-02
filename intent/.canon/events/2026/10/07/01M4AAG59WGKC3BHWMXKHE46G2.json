@@ -1,0 +1,16 @@
+{
+  "id": "01M4AAG59WGKC3BHWMXKHE46G2",
+  "ts": "2026-10-07T04:38:42.237Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 CUT, P0. hv, 2026-10-07: \"P0 is getting the devbin release shipped.\" The dry run hv ran on 2026-10-06 predicted every step: each row reads done, would or skipped, and its gates are green on 58d837ac (check's five seals empty; the suite at 1..2205 with 2205 ok, seal tmp/test/20261006-1832; doctor passed). Its NOT REACHED line names only step 6's prompt, which a dry run never asks. No issue is open, and the note is at 79f17e9b. The tree is frozen for the cut on vc's word to cc and dc, with every board committed. THE CUT IS hv's: bin/devbin release v0.1.9. Step 9 stops at object_wait with no release object (decision 45). DURING THE CUT NO NODE WRITES THE TREE, vc included: after a compact, read with wb show, never pickup. AFTER THE CUT: vc verifies both remotes, the tag and the release commit; then publish-upgrade the machine install before any sweep (cc's OUT-4); then todo 145; then each estate upgrades as hv goes, another estate's archetype among them. hv'S OPEN DECISION: the old bytes in the untracked intent/.cache/intent.db, its WAL and four September backups under intent/.backup/db/; nothing tracked holds them."
+  }
+}

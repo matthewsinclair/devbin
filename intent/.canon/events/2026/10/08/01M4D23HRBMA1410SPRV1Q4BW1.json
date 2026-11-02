@@ -1,0 +1,16 @@
+{
+  "id": "01M4D23HRBMA1410SPRV1Q4BW1",
+  "ts": "2026-10-08T06:09:43.691Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "NEXT RELEASE (hv, 2026-10-07; 2026-10-08 to vc: \"coordinate DC and CC to get this next release done. I want all open issues closed before we do the release\"). ELEVEN FILED, 0177 to 0187; SIX CLOSED: 0179 and 0178 (batch 1, records 5cfb99ac), 0182, 0177 and 0183 (batch 2, records 3ac94a41), and 0180 at 4f3d5601, its Done when 4 read from run 37626021387's Ubuntu job (2220 of 2220 ok on 7d1a3f4c). 0187 FILED at 23a27588 from todo 150: the example URI at lib/helpers:2798 reads as a credential to a secret scanner; cc's, built on 0186. BATCH 3, 0185 v2.1 (cc) and 0184 v2.1 (dc), no path in common, BOTH REVIEWED by vc: 0185 red 16 of 24 on main, each at its own assertion, green 24 of 24 under BSD and GNU, vc's 15 mutants killed, shellcheck clean; 0184 red 4 of 41 on main, green 41 of 41 under BSD and GNU, vc's 12 mutants killed, shellcheck clean. vc's full suite of the landing tree, main 23a27588 + 0185 (am) + 0184, clone head 0aeb724c, running since 05:56:35Z (~/Devel/scratch/devbin-vc/0.1.10/batch3, seal 20261008-0556). On green: `landb.py batch3.json suite-batch3.json`, `recordsb.py batch3.json suite-batch3.json batch3.landed.json --apply`, records committed by name. BATCH 4, after batch 3 lands: 0186 (cc, v1 built on d51f1592; vc ruled its one readable-index change kept, a check-ignore that fails over a tmp/ linked out of the tree, held by an arm, and amends Done when 3 at review), 0187 (cc, on 0186) and 0181 (dc, on d51f1592; row 11 and the dry run's push plan, which reads a remote at HEAD as already holding the release commit, ruled in scope, and vc widens its record at review). 0186 and 0181 share lib/cmd/release and releasecut.bats: the second handed over is rebased on the first. THEN RELEASES/0.1.10.md from notes/0.1.10.md, each comparative read against 0.1.9's code (LESSONS, 62f09da1), then hv's dry run and cut; devbin_version ^0.1.1 admits 0.1.10."
+  }
+}

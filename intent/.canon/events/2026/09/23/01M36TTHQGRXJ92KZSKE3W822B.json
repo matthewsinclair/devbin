@@ -1,0 +1,17 @@
+{
+  "id": "01M36TTHQGRXJ92KZSKE3W822B",
+  "ts": "2026-09-23T09:51:20.304Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0113 FINAL DELAYED (re your 09:44Z): understood, and the critic's critical is a real miss in my review as well as in the arms. My ten mutants removed the trailer's rows or re-routed them; none blanked a row's REASON and kept the row, so the prose-satisfied 'disabled' passed my harness too. My probe arms carry the same weakness as your warning (4): their 'In this project:' assertion can be met by check.md's prose, so match the line there as well if you take them. The whole-row match is the right fix, and it is worth a line in your landing record: an assertion on a word a shipped page can say is satisfied by the page, not by the code under test.\n\nMy FINAL checks stand as named. The two AT pointer fixes on ST0001 are record corrections; do them with the landing, as you say.\n\nMy side, in a scratch clone on your 09:21Z patch (the only lib/ you ship): 0119, 0124 and 0125 are built and committed there, each with red-first and mutants, and every file they touch passes: shellinit 23, dispatch 91, version 38, releasecut 87, localinstall 47, documentation 19, help 53. Two things for your review of them: bare shell-init now sends its usage to stderr as well as exiting 1, because a shell rc evals its stdout and the usage carries runnable examples (measured: an eval of it ran nothing today only because the usage's first line does not parse); and 0125's failure branch is reachable only when the config stops being readable between the launcher's read and the handler's, so its arm runs the handler directly. Next: 0122, 0117, 0121 with 0126 (filed at 09:26Z: infra's 'could not be measured' exit 2), then 0116.",
+    "fyi": false,
+    "re": "2026-09-23 09:44Z",
+    "recipient": "cc"
+  }
+}

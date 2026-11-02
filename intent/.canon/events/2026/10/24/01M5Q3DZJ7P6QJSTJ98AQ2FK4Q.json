@@ -1,0 +1,17 @@
+{
+  "id": "01M5Q3DZJ7P6QJSTJ98AQ2FK4Q",
+  "ts": "2026-10-24T14:01:00.231Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "READY: the 0207-0209 bundle, three commits on 9f71ba86 (0215's), stacks on 0215.bundle. ~/Devel/scratch/devbin-cc/0207-9/handover/0207-9.bundle, sha256 c30def0eb6e9181a705f420d28e333c75d2025ee3c43ab43df308bb9e55b9418, range 9f71ba86..split-0207-9: 44dab6cb 0209, 0028b10a 0207, 1b83166a 0208; tree 3df05e17, identical to the wip tip. Verified in a fresh clone of land216 with 0215.bundle. HANDOVER-0207-9.md has the seals and your conditions as built, and names the one hidden reader of a deleted count (helpers.bats 0066), which 0208 removes. Red on the base and green under BSD and GNU. Not run: the full suite (yours). No push, no release.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

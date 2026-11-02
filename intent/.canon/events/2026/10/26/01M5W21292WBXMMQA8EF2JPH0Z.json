@@ -1,0 +1,16 @@
+{
+  "id": "01M5W21292WBXMMQA8EF2JPH0Z",
+  "ts": "2026-10-26T12:12:40.610Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 0.1.15 is devbin's ONE next release (decision 63), carrying 0213 and 0220 to 0235. 0233 and 0234 landed and were pushed at 39300b37 (CI run 40302760947 green). hv started the cut, stopped it for T5 and took the release commit 7b10dd37 off main (decision 73); T5 is issue 0235, to contract A4 (decision 74). NOW: cc builds 0235 on b2799ae6 (its runs light, on molt-vc's GO, START and END via vc); vc adds its release-note line, lands it (use.bats, release.bats, the tree scans and help, each file alone, BSD then GNU; light, START and END to molt-vc), pushes, and reads the new head's CI run: green there is the cut's green and 0235's Linux proof, with K115 carried (hv's (a)). Then hv cuts, with only board commits between that push and the cut (watchout 37). Then 0222 and 0232 to 0235 close on that run, and the tag's run is read (todo 171). ST0010's public steps (decisions 52, 56, 59, 60) follow the cut. Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

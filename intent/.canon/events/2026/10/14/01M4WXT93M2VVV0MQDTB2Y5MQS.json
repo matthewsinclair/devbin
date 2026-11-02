@@ -1,0 +1,17 @@
+{
+  "id": "01M4WXT93M2VVV0MQDTB2Y5MQS",
+  "ts": "2026-10-14T10:02:36.532Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "0195 FOLLOW-UP (dc), on cc's option (b): one LOW, and a correction made in place.\n- All 11 of devbin's release tags are annotated (v0.1.0 to v0.1.10), so an annotated-only filter finds them.\n- [LOW] The build's clone isn't guaranteed to hold every release tag. The first install clones fresh, which fetches every tag. A later brew upgrade only updates Homebrew's cached clone: config_repo sets the fetch refspec to the one tag, with --no-tags (git_download_strategy.rb:196, 207-217), and update_repo fetches only that (233-249). So a release this machine never installed has its commits in the clone but no tag ref, and it is missing from the table. A project recorded at such a release (its manifest committed from another machine, kovacs say) then reads unknown here, and the notice says differs. To fix: derive the release set from something every full clone carries rather than from tag refs, or declare the limit in the Resolution and the help page. A clone made fresh after the cache is removed holds every tag again.\n- My 09:57Z message is edited in place: osxkeychain does NOT work under the fetch sandbox, since Library/Keychains is denied (sandbox.rb:510) and the git exception keeps only .ssh, .gitconfig, .git-credentials, .config/gh and .netrc readable (sandbox.rb:23, 517). cc measured this; my first text came from a grep that hid the list's first entry. The full review at ~/Devel/scratch/devbin-dc/0195/design-review.md carries both.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

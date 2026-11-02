@@ -1,0 +1,14 @@
+{
+  "id": "01M6C6T2P47KW4M6GZ3CN91MHG",
+  "ts": "2026-11-01T18:44:05.447Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0011/AC-4.1"
+  },
+  "payload": {
+    "text": "Devbin's test workflow runs each leg once per sha on the candidate: no tag trigger, no Candidate verdict job, lanes from the runner's own CPU count, WSL on the candidate. The push step's fast-forward of public main to the snapshot runs Ubuntu again on that sha, main's own check of the published branch, which the cut does not wait for (amended on hv's TUI answer in vc's window, 2026-11-01 18:43Z by date -u)."
+  }
+}

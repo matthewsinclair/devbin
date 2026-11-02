@@ -1,0 +1,16 @@
+{
+  "id": "01M693EHD09ZQYGTDH6Q2RAH7K",
+  "ts": "2026-10-31T13:47:38.272Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 98,
+    "text": "hv 2026-10-31 13:44Z (in vc's window): 'Go with your recommendations on the FOR hv list.' Executed as: Gtools's setup --yes makes no link when Homebrew's gtools would answer, printing the gtools use dev remedy (gtools-dc under gtools-vc; ships with Gtools's next release); intent-dc builds ST0090's two S packages under intent-vc's judgement until the sweep; intentd at login on rhadamanth (rhadamanth-sysadm, intent daemon start --at-login) and on kovacs (kovacs-sysadm, intent's own at-login form where it supports Linux, else brew services); Utilz: utilz-vc pushes main and dispatches tests.yml once to prove 0130 and 0131, reading CI to the end, and ST0031/03 (menuz reads the release stamp) is utilz-dc's under utilz-vc before Utilz's first cut in the new shape; Laksa: laksa-dc fixes the five CI reds under laksa-vc, laksa-vc pushes 0058 S2's fix once verified and the five-reds fixes once verified, reading CI to the end after each push; Conflab: no separate trial run, the first cut's legs are it, and check contract joins the gates at WP-06, its proofs hv's under Conflab decision 58; Intranet: gyges-sysadm diagnosed the refresh's reds on hv's direct order (Molt renamed farcaster and pihole's HostNames on 2026-10-30 and known_hosts lacked the new names; six entries added, keys identical to those trusted under the old names, backup kept; the ads check reads rhadamanth.lan while rhadamanth is away and ignores optional: true, an Intranet fix); Trash: rhadamanth-sysadm removes ~/.Trash/utilz-dc-exhaust-20261031 and ~/.Trash/utilz-vc-exhaust-20261031 after reading their manifests, nothing else; kovacs, corrected at 2026-10-31 13:47Z on kovacs-sysadm's measured contract (software from Homebrew only, PATH is Molt's): brew's Utilz ships prez, so kovacs needs no clone and no PATH change; after the census, anything missing comes from brew alone, and a brew Utilz without prez is Utilz's formula to fix. Not executed: Molt's PATH order (rustup's cargo before Homebrew's) needs a Molt session or hv's hand; vc touches Molt nothing. Every other publish, tag or deploy still waits for hv's word (directive 3)."
+  }
+}

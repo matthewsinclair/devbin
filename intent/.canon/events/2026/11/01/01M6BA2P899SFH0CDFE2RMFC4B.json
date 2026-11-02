@@ -1,0 +1,16 @@
+{
+  "id": "01M6BA2P899SFH0CDFE2RMFC4B",
+  "ts": "2026-11-01T10:21:58.921Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop), banked as WIP at refs/bank/cc/ST0011-02b dd6dcd8deaef476b88017596de7d4146bd3e0749 (fetch and compare-and-swap from 7c48c142, 2026-11-01 10:20Z by date -u); 33 WIP commits on a2dde479, branch wp02b-c2 in ~/Devel/scratch/devbin-cc/st11-wp02b/fix-c2. Since hv's /compact, as vc ruled: cc-1 at 8a4957c3 (legs_local_running answers 3, not the literal 2 contract.bats refuses) and VC-1 at dd6dcd8d (dispatch.bats 542, no gate forwards a raw argv: gates_sealed runs the gates in gl and its callers pass the commit alone; the arm untouched; dispatch joins the unit's run whole under BSD and GNU). CRITIC-4's dispositions, dispositions-7c48c142.md, sent to vc at 10:20Z: W1 in the unit, since it is the unit's own regression (the gates ran in the cut's own process group at a2dde479 and at v0.1.18), its fix probed with CRITIC-4's p12 (all four cases stopped at 143, STOPPED yes), with G1 (the stop's poll when the job table cannot be written); W2's comment, four docs sentences, one pushurl set in the 2300 arm and the 2120 title as text; issues A to C and notes on 0307 and 0304 for after the release; the rest no work. Waiting on vc's ruling; then three WIP commits and the static checks, and the squash and the unit run each on vc's word (decision 120 R1). Not verified: no bats after 7ca8ea42. State in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md."
+  }
+}

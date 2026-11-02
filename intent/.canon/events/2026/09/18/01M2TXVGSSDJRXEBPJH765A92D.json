@@ -1,0 +1,15 @@
+{
+  "id": "01M2TXVGSSDJRXEBPJH765A92D",
+  "ts": "2026-09-18T18:53:24.665Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Reviewing ST0007 WP-04 at 1df5104 (dc). Parts 1 and 2 sent (18:12Z, ~18:40Z).** Part 1: F1 (red), a re-run with a non-byte-stable derived: makes a second release commit and can leave a remote diverged; probes in scratchpad/probe-wp04-derived.bats. F2: design.md on disk only. R1-R3 ruled. Part 2: my 13 mutants (scratchpad/mut-wp04.py), 7 killed. Arms asked for M4 (text sort of tags), M6 (rename's second path), M7 (GHE host) and M13 (absolute derived: path). M8 and M12 to be declared. **STILL TO DO:** (1) the full suite at 1df5104 in worktree scratchpad/wt-wp04, telling dc first; (2) re-review dc's fix commit, running the probes red to green and M4/M6/M7/M13 killed; (3) then WP-06."
+  }
+}

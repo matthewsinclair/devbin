@@ -1,0 +1,16 @@
+{
+  "id": "01M621BRGC2202V3B7874CRA6R",
+  "ts": "2026-10-28T19:56:29.068Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 176,
+    "text": "At the next globalfold: drop the stale guard counts in hv's todo 40, and add a LESSONS.md line: a tree a record cites is never rebuilt in place."
+  }
+}

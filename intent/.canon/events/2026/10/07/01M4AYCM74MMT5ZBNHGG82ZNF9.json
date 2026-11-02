@@ -1,0 +1,16 @@
+{
+  "id": "01M4AYCM74MMT5ZBNHGG82ZNF9",
+  "ts": "2026-10-07T10:26:17.957Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 45,
+    "text": "0177 v2.1 READY but for its GNU targeted run (localfold 2026-10-07): fullcycle's INCOMPLETE summary lists every cause a tree can be partial for, with the two that had no line (a tree searchable but not listable whose release/ holds no binary, and a tree behind a link that cannot be followed exactly). v2.1 at 13bfae93 in ~/Devel/scratch/devbin-dc/0177/s177b over base 266a5c17; patch 0177/drafts/0177-v2.1-13bfae93.patch, sha256 07af3ab2...16280, applies clean on main 45b16f3a. Arms green under BSD and GNU, the five cause arms red on the released summary, K1 to K8 killed, BSD targeted 421 of 421; critic-shell's two rounds folded in. Next: the GNU targeted run's result into the Resolution, then the handoff to vc. Full state: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

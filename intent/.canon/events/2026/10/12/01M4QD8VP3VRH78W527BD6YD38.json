@@ -1,0 +1,16 @@
+{
+  "id": "01M4QD8VP3VRH78W527BD6YD38",
+  "ts": "2026-10-12T06:37:16.355Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 96,
+    "text": "A PUSH IS DONE when CI is green on the pushed sha (hv, 2026-09-22). The baseline is green: run 37842539047 on 73fd0fd3, main's last push, Ubuntu in two lanes; the v0.1.10 tag's own run is red on one test-only arm (todo 152)."
+  }
+}

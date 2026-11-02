@@ -1,0 +1,16 @@
+{
+  "id": "01M69M9H1NAYV0E5BSDMWP3AF4",
+  "ts": "2026-10-31T18:41:59.861Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 111,
+    "text": "hv 2026-10-31 18:38Z (in dc's window, relayed verbatim by dc: 'Crikey. Context is stratospheric. We need an estate-wide localfold+compact. Please coordinate that now.'): the fourth fold order, run as decision 99 was. Executed: the three heavy lanes held, bats 01M69M8HKZCAMD9GMMP5CR37M4, cargo 01M69M8HMS8YHGAVG4942NMWHY and heavy 01M69M8HNB91SR7WP1R7FYWKK1, in place of the desk-wide hold 01M69M2X7XDQNBY93WPQM657QG, which blocked Trellis's runs outside this work; the light lane stays open to them; no devbin or estate run starts, granted runs finish and END; every session in this work (devbin cc and dc, the vc and dc of Utilz, Gtools, Intent, Laksa and Conflab, kovacs-sysadm, gyges-sysadm, rhadamanth-sysadm) banks what it has, localfolds without releasing, sends vc one fold line, compacts when hv types it and holds; the two sessions outside this work are left alone. vc localfolds last, after the lines are in, and gives hv the state. On the next go: cc's WP02b-1 review and run, dc's WP16 (the cache, ahead of WP17), the Gtools landing on hv's word (todo 188), the Trash folders (rhadamanth-sysadm), 0300's close on the next kovacs green."
+  }
+}

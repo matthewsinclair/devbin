@@ -1,0 +1,16 @@
+{
+  "id": "01M621BGVRSPNQTMX9JS8T05AT",
+  "ts": "2026-10-28T19:56:21.240Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 46,
+    "text": "hv 2026-10-03: devbin keeps no list of its users; one licence text at LICENSE and lib/LICENSE.md, held byte-identical by test; every open item is an issue; ignore intent/docs/devbin-users.md."
+  }
+}

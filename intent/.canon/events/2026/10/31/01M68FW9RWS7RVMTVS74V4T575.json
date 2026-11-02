@@ -1,0 +1,20 @@
+{
+  "id": "01M68FW9RWS7RVMTVS74V4T575",
+  "ts": "2026-10-31T08:05:37.692Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "disk.hydrate",
+  "subject": {
+    "type": "paths",
+    "id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704"
+  },
+  "payload": {
+    "hydrated": [
+      "intent/st/ST0011/socrates-dialog.md"
+    ],
+    "id": "ST0011",
+    "pinned": false,
+    "rewritten": [],
+    "sigil": "STEELTHREAD"
+  }
+}

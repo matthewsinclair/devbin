@@ -1,0 +1,14 @@
+{
+  "id": "01M643TVEZHTMGJYM563X2W15N",
+  "ts": "2026-10-29T15:18:09.633Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-2.6"
+  },
+  "payload": {
+    "evidence": "gitleaks dir and git over snapshot 2cde3ee6: no leaks found (scan-v0117)"
+  }
+}

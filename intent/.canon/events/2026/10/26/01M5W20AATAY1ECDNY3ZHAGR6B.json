@@ -1,0 +1,15 @@
+{
+  "id": "01M5W20AATAY1ECDNY3ZHAGR6B",
+  "ts": "2026-10-26T12:12:16.090Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-26, in vc's session (between 12:01:28Z and 12:04:44Z by date -u): T5 is fixed in devbin 0.1.15 before the cut (\"I would fix T5 now. Please do that and then I'll cut the release.\"). hv had stopped the cut at its gates (release commit 7b10dd37; sealed log tmp/release/20261026-1159.RELEASE.out) and took 7b10dd37 off main with `git reset --keep a60fbcd6` (vc read HEAD a60fbcd6, a clean tree, no v0.1.15 tag and VERSION 0.1.14 at 12:10:30Z). The fix is issue 0235, filed at b2799ae6. Then (a), answered in vc's session between 12:08:26Z and 12:10:30Z: K115 carries to the head that lands 0235, with CI's Ubuntu run on that head as 0235's Linux proof, and no kovacs run. hv cuts once 0235 is landed, pushed and CI is green. Not put to hv again."
+  }
+}

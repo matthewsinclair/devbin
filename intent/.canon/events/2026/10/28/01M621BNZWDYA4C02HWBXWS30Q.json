@@ -1,0 +1,16 @@
+{
+  "id": "01M621BNZWDYA4C02HWBXWS30Q",
+  "ts": "2026-10-28T19:56:26.492Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 83,
+    "text": "Landing rule (vc 2026-10-27): a unit, stack or chain lands as run by land-stack.sh when none of its files moved on main since its base; units sharing files run one after another."
+  }
+}

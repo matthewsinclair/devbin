@@ -1,0 +1,17 @@
+{
+  "id": "01M698EZF8FQ2DVD1KZG3FX0HJ",
+  "ts": "2026-10-31T15:15:15.560Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0300 is review-settled and asked of the desk: request 01M698EDPDVGEW7R9YC4357WB8 (bats lane), bank refs/bank/cc/0300 1b29205a4f4f00c88257d48d79fcd63c6fdd3ec6 on main 22d0536b, one file, tests/lib/release_fixtures.bash. The run: the arm under GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=user.useConfigOnly GIT_CONFIG_VALUE_0=true, red at main for git's own reason (the leg also requires git's words, 'auto-detection is disabled', in its output, so a red for any other cause fails the run) and green at the bank under BSD and GNU; then releasestatus whole under BSD and GNU, help, and every tree scan under GNU. The route reaches the commit on main: git_readonly and git_readonly_index clear git's variables in subshells only. On WP02a's tree the cut clears them at its start and names them, so the route reproduces the host only on 0300's base, which is where the run uses it. The review (critic-shell): the fix does what it says and reaches the code that failed (the commit step and the tag step both read the project's identity). Settled in 0300, amended from d5262b0e (archived): the header now says where the gh stub is written, and the message narrows its 'one place' claim to this file and says eg of the guessed identity. Proposed as two follow-up issues, cc's, after WP02a, since both touch releasestatus.bats and macos.bats, which WP02a changes, and 0300 is on WP02a's critical path: (A) the fixture builders return their failures: git_project and cut_project check every step and each builder checks git_project; the critic found releasestatus.bats:313's second released_project failing 'git remote add origin' silently (exit 3), green only because origin names the same URL; the gh stub's create and edit writes exit non-zero when they fail. (B) the harness stops git guessing an identity: GIT_CONFIG_GLOBAL points at a file the harness writes, holding user.useConfigOnly=true, with harness.bats:105's pin, so an arm that leans on a guess is red on every host, not just one without a domain; test_helper.bash:76's comment says devbin's own commits pass no identity; the 16 redundant -c pairs in git_project's callers go. File them? (rec: yes, two issues.) WP02a's second review is still running; I restack it onto 1b29205a after that.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

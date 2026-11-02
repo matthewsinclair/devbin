@@ -1,0 +1,15 @@
+{
+  "id": "01M342D7AXHRW1GSH0QP7PCW23",
+  "ts": "2026-09-22T08:06:08.989Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A WARNING CAN NAME THE WRONG OWNER, and its wording is what makes a reader edit a file that is already correct. Measured at Laksa by laksa-dc, 2026-09-22: the deprecation reading xref: exclude in your mix.exs file is emitted from DEPS own mix.exs files (assent, phoenix_ecto, postgrex, rewrite), while Laksa's mix.exs has no xref key at HEAD or at the run commit. They nearly filed it as a Laksa fix, and every Elixir estate in the fleet will meet it. Before acting on a warning that says YOUR file, check that the file it names is yours."
+  }
+}

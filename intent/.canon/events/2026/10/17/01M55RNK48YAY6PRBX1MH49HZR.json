@@ -1,0 +1,15 @@
+{
+  "id": "01M55RNK48YAY6PRBX1MH49HZR",
+  "ts": "2026-10-17T20:25:49.960Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-17 20:25Z: rhad moves onto devbin's Homebrew install. Its machine pointer (~/.local/share/devbin/home, naming the checkout install ~/Devel/opt/devbin at 0.1.11) is removed, with a copy kept in dc's scratch, so fleet distributes from $HOMEBREW_PREFIX/opt/devbin/libexec (0197) and every estate records that path. ~/Devel/opt/devbin stays on disk, stale and unused. hv chose option (1), as vc and dc recommended, so the 0.1.12 sweep could run; it is not put to hv again."
+  }
+}

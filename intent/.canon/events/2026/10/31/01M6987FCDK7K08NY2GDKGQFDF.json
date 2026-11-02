@@ -1,0 +1,16 @@
+{
+  "id": "01M6987FCDK7K08NY2GDKGQFDF",
+  "ts": "2026-10-31T15:11:09.709Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 39,
+    "text": "ST0011/02 (WP02a) fixed forward (vc decision 100): rebased onto main with 0300 under it (vc, after the dc stack landed at 7333cae0): 7e7754dd9020cfe57df8512f3549c3911a6b0b6b in ~/Devel/scratch/devbin-cc/st11-wp02a/fwd on 0300's bank d5262b0e, 19 files; the first review's C1, C2, W1 and W2 (with lib/cmd/macos and lib/pages/macos.md), R5 to R7 and N8 applied, BANK.md beside it saying how; shellcheck and the headless critic clean. Next: a critic-shell review of the changes since the first, then re-bank refs/bank/cc/ST0011-02a (c2b7cf18 kept in the cited archive), the desk ask naming its files, the id to vc; it lands as run once 0300 is on main with the same tree."
+  }
+}

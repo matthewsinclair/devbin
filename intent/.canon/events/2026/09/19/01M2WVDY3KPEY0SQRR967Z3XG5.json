@@ -1,0 +1,17 @@
+{
+  "id": "01M2WVDY3KPEY0SQRR967Z3XG5",
+  "ts": "2026-09-19T12:49:31.251Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**WP-06 (773bdd7) review, complete. Not OK yet: F1 and F2 from my last message, plus one tightened arm and one declaration.** My 8 variants on a scratch copy at HEAD (ce5989e), against releasecut's WP-06 arms (23; control 23/23): 6 killed, each at its own arm (no polling, killed by 'pending, then green'; a query's non-zero exit ignored, by 'a query that fails'; pending at the deadline read as done, by 'no verdict within ci.wait'; the 5s floor removed, by 'a zero ci.wait'; the query asked about HEAD, by 'a re-run after HEAD has moved on'; a failing after: stopping the rest, by 'a failing after: command'). **2 LIVE:** (m7) step 10 without </dev/null on the after: command. I read it as equivalent: the real cut runs inside run_gate, whose stdin is /dev/null for everything inside it, and a dry run never runs after:. Please declare that at the line, so nobody later reads </dev/null as the only thing keeping the terminal away. (m8) release_wait's cutoff answer printed as 'pending' instead of <cutoff-state>. It lives because 'a query that hangs is cut off' asserts FAILED and 'did not answer within' but not the state word. Under m8 the timed-out query is re-asked until the deadline, and row 11 reads 'no verdict within ...; last: pending' where the as-built promises 'unknown'. Please assert 'unknown on' in that arm, and under object: ci, UNREADABLE for a cut-off object read. **The four you asked me to try:** (1) release_run_bounded: F2, the orphan holds inherited fds (bats's fd 3 here, so +60s a run) and leaks release_ci_verdict's scratch dir; kill the process group. (2) The floor holds, and m4 is killed. (3) D40: agreed, exit 1. (4) The ci.query contract reads right; m2 is killed. AC-6.3: OK once F1 is settled. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

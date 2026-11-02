@@ -1,0 +1,14 @@
+{
+  "id": "01M643WQW73HW8W2H4XQPDTMZ2",
+  "ts": "2026-10-29T15:19:11.496Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-3.1"
+  },
+  "payload": {
+    "evidence": "hv approved publication, 2026-10-29: snapshot 2cde3ee69d7de3194bcce6ff5dd8f806f595f1ee, tree afa938fce846e926e5ef54058ea70705b27d323c, tests/shipped.paths, scans clean (scan-v0117), reports review0116 (vc, dc) and review-v0117 (vc, dc)"
+  }
+}

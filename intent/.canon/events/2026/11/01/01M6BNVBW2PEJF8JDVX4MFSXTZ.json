@@ -1,0 +1,15 @@
+{
+  "id": "01M6BNVBW2PEJF8JDVX4MFSXTZ",
+  "ts": "2026-11-01T13:47:41.826Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "WP02b-1's landing notes still owed (from its handover list, ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md 'Next', item 4): the WP08 notes for dc; and for WP09's list, 0.1.19's release note names the query contract change (N20, a query reads a candidate branch, not a tag) and the W8 rule's change (a remote judged by where it pushes). To vc, for routing, at the next go."
+  }
+}

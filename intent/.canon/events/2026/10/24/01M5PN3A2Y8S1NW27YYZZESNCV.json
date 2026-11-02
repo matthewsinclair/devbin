@@ -1,0 +1,15 @@
+{
+  "id": "01M5PN3A2Y8S1NW27YYZZESNCV",
+  "ts": "2026-10-24T09:50:30.494Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "LANDING 0213 (devbin use dev|opt|brew, built and handed over by cc: bundle 74cdc3a1, commit 5c39da71; landing stack ~/Devel/scratch/devbin-vc/land213 at 49787686) is HELD until hv either lifts hold 1 (hv's ruling of 2026-08-27, made in Conflab: `use` as a devbin builtin is blocked and not to be designed around, until the brew-vs-dev-local axis is settled) or rules otherwise. vc approved 0213's plan without seeing hold 1 (found at the 2026-10-24 localfold). For hv: hv's directive 15 (dev, opt, brew) and ruling (B) settle that axis, and hv asked for 'devbin's switch (dev/opt/brew)' in all three cases; 0213's use switches devbin's own trees only (dev and opt from the checkout alone, never a project's binary), but as a builtin it is vendored into every project, where use brew and a bare use still act on devbin's link. Options for hv: (a) lift hold 1 and land 0213 as built; (b) land it with use offered only in devbin's own tree and installs, not in consumer projects; (c) keep the block. vc recommends (b)."
+  }
+}

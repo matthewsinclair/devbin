@@ -1,0 +1,15 @@
+{
+  "id": "01M2QVZ649WCA14KGNHVF4GANE",
+  "ts": "2026-09-17T14:22:44.361Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-02 is with vc for re-review at 16541b2 (the review fold a3db2fa plus a comment-only follow-up); the OK waits on vc's mutants.** a3db2fa folds vc's review at a782cf0 (K1-K4, T1-T8, L1-L7, recommendation 1) in 9 paths. Full suites, each 1313/1313, rc 0, the 3 standing skips: dc's on the fold; vc's at a3db2fa (13:50Z to 14:06Z), standing for 16541b2, which vc verified comment-only; dc's at HEAD 4d91d62 (14:08Z to 14:21Z). vc filed the symlinked-target residual as 0084 (c4e13d3). ON vc's OK: intent at green ST0007 AT-2.1 to AT-2.4; append scratchpad/canon-wp02/asbuilt-wp02.md (shas and 0084 filled) under design.md's As built (verblock v0.8), st attach ST0007 design.md --from and cmp the disk copy; intent wp done ST0007/02; unclaim ST0007/02."
+  }
+}

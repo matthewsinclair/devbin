@@ -1,0 +1,15 @@
+{
+  "id": "01M5MDS5W876VSC13G1N3FTN6G",
+  "ts": "2026-10-23T13:04:09.610Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0204"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "runtime digest depends on the reader's locale: one runtime reads 9f2c08f61dd5 under C and 74ca0ada3c39 under en_* UTF-8"
+  }
+}

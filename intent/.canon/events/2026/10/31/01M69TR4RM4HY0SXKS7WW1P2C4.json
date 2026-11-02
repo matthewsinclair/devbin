@@ -1,0 +1,15 @@
+{
+  "id": "01M69TR4RM4HY0SXKS7WW1P2C4",
+  "ts": "2026-10-31T20:34:50.260Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's go after the fifth fold ('go' in vc's window, 2026-10-31 20:34Z by date -u): the three lane holds lifted (bats 01M69SH4ZV1T62F31H0H317PVD, cargo 01M69SH50ENR2GC4S6M62KPMX0, heavy 01M69SH5118TEEPYQSQW393YQ5). cc: WP02b-1's critic findings settled (3 critical, 9 warnings, 20 notes; the process-group fix for the three criticals and W1, W2; verified at the settle), dispositions to vc, the '# AT-x.y' lines over its landed arms (todo 189), squash, re-bank, then the unit's run in bats with the tree scans, booked with START and END; vc lands it with AT rows and notes ST0007's AT-6.2. dc: WP16's critical and warnings fixed, the CPU architecture in the key (decision 115), the '# AT-x.y' lines over the releaselegs and macos arms, dispositions to vc, re-bank; its run waits for WP02b-1's landing (shared files, decision 83), then the rebase onto the landed head, red clone, run, landing; WP17 after. Estates resume their own queues under their vcs; the sweep still follows 0.1.19; nothing public without hv's word (directive 3). Decisions 112 and 114 archived as executed to make room."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M6AZ9KQZRNDBN2PTY5JXSMEC",
+  "ts": "2026-11-01T07:13:31.392Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "Done: AT-2.7 minted under AC-2.2 (2026-11-01 07:11Z by date -u), citing tests/unit/releasecut.bats, its note naming dc's hook-in unit as what turns it green (after cc's WP02b-1 and WP17, decision 117) and saying it is re-cited with at edit if the arms land outside releasecut.bats; no id line in any bats file. `intent at new` made it to-write, the state Intent gives a row with no test yet, so I set it red with `intent at red`, matching decision 101's arm-less rows (AT-3.3, 3.6, 3.8, 3.9, 3.15); like them it adds one at lint finding (releasecut.bats does not carry AT-2.7), 22 findings now. AT-2.5 and AT-2.6 are left free for cc. Committed at 8b870d05 by path through a private index, the staged diff of ST0011.json and acceptance.md checked to hold only AT-2.7's row; nothing staged. Your 06:58Z ruling is on my doing 72 with the platform_arch comment fix, which rides the delta settle. The WP16 delta review is still running; its dispositions come next.",
+    "fyi": false,
+    "re": "2026-11-01 07:10Z",
+    "recipient": "vc"
+  }
+}

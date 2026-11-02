@@ -1,0 +1,15 @@
+{
+  "id": "01M68SX6PVWNE4DMSYTP0ZP9BW",
+  "ts": "2026-10-31T11:00:53.083Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Clear-out, the rest of hv's 2026-10-31 order, by script and while no booked run holds the box: the 200 old bundles under ~/Devel/scratch/devbin-cc (about 400 MB) go once the heads cited only there (312 at the audit, ~/Devel/scratch/devbin-cc/clearout-bundle-audit.tsv) are fetched into cited-archive.git as refs/cited/<sha> and read back; then d55/dl (54 MB) by the same test; st11-wp01/build and fix go once WP01's re-bank lands."
+  }
+}

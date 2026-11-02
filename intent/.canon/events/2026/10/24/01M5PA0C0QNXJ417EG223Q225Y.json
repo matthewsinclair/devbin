@@ -1,0 +1,17 @@
+{
+  "id": "01M5PA0C0QNXJ417EG223Q225Y",
+  "ts": "2026-10-24T06:36:39.831Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "ST0010 is started on hv's go (vc claims it; f4c0d7cb). Your first piece: BUILD ISSUE 0210 (medium) to its Done when, under hv's directive 15 (dev, opt, brew as dev, stage, prod): the README's user route is the brew install (brew install matthewsinclair/devbin/devbin) and seeding a project is devbin install --into <project> from it; the dev checkout and its opt publish move to one section for the maintainer of a dev checkout, named as such; check every doc a user reads (README, docs/, lib pages) for the same framing; documentation.bats holds the user docs to it, red on main first. It lands in the release before devbin's public push (0.1.14 on the new history). Hand over as the landing method has it: a bundle with your seals and drafts (commit message, Resolution); targeted runs include the tree scans; I take the one full suite in intent-vc's slot. Separately, I am running one suite on ST0010's candidate tree (allow-list only, no intent/, CLAUDE.md, .claude/, .mcp.json, AGENTS.md) to find arms that read dropped files; any fixes from that come to you as a second item. No push, no release.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

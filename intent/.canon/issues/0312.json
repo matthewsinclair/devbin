@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 312,
+  "slug": "one-lister-of-a-commit-s-workflow-runs-shared-by",
+  "title": "One lister of a commit's workflow runs, shared by ci-state and the attach",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-01",
+  "reporter": "Matthew Sinclair",
+  "body": "Two readers make the same `gh run list --commit <sha>` call over different workflows: ci-state's `cistate_runs` (lib/cmd/ci-state), over release.ci.workflow, and, from ST0011 WP07, `release_read_assets_run` (lib/release.steps), over release.assets.workflow. Each lists a commit's runs with its own field list, its own limit handling and its own error words.\n\nFix: one lister in lib/release.steps, `<repo> <workflow> <sha> <limit>` to rows with the fields both need (databaseId, headSha, headBranch, status, conclusion, createdAt), its failure and limit refusal worded once. ci-state and the attach each keep their own pick over the rows.\n\nRuled for after the 0.1.19 release, low (vc, 2026-11-01, on WP07's design note): it consolidates landed code (ci-state, WP03) and is not on the release's path.\n"
+}

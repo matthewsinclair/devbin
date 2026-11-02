@@ -1,0 +1,16 @@
+{
+  "id": "01M4DBPEKFZX9RHAN9HJS3EZEW",
+  "ts": "2026-10-08T08:57:20.239Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "NEXT RELEASE (hv, 2026-10-07; to vc on 2026-10-08: \"coordinate DC and CC to get this next release done. I want all open issues closed before we do the release\", and after the compact: \"Close out what we can now and then show me what's left\"). THIRTEEN FILED, 0177 to 0189; TEN CLOSED. BATCH 3 LANDED: 0185 at 9e640723 and 0184 at 16599f4d, records 476cf82e (suite seal 20261008-0655, 2243 of 2243). BATCH 4 LANDED: 0186 v1.1 (cc) at 48baceea and 0187 v1.1 (cc) at 6490f18f, records 17b91aa8, on vc's full suite of the landing tree (seal 20261008-0811, 2257 of 2257, .errors empty). 0189 FILED at 42494b3e from dc's critic-shell finding, driven by vc: the release core prints git's own text about a remote, which carries part of a password when the URL's password holds a raw @ or /; cc builds it on dc's 0188 head, sharing 0188's redaction helper. OPEN: 0181 (dc; handed, reviewed by vc: red 9 of 10 at their aims, green BSD and GNU, vc's 20 mutants at their aimed assertions, targeted 529 of 529 both; v1.1 asked for releasecut.bats's stale header, comment only), 0188 (dc; on 0181's head, its runs in flight) and 0189 (cc). BATCH 5: 0181 v1.1 and 0188, with 0189 if ready, else batch 6. THEN RELEASES/0.1.10.md from notes/0.1.10.md (cc read every entry against the landing tree and d7f2ed13 and found 9 points, applied; Known limitations from cc's read of each declared limit), then hv's dry run and cut. Re-entry: ~/Devel/scratch/devbin-vc/0.1.10/STATE.md."
+  }
+}

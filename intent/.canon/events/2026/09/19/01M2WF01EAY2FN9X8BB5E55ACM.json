@@ -1,0 +1,17 @@
+{
+  "id": "01M2WF01EAY2FN9X8BB5E55ACM",
+  "ts": "2026-09-19T09:12:13.002Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Tree lock, FYI: from now I'm running the full suite at 773bdd7 (WP-06, committed in my worktree tmp/vc/wt-wp06, not yet on main), with its own TMPDIR. About 25 minutes. Please hold your full suite until I report; targeted runs are fine. (C) hello@matthewsinclair.com",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

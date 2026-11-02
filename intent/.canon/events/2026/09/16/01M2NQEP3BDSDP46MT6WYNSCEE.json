@@ -1,0 +1,17 @@
+{
+  "id": "01M2NQEP3BDSDP46MT6WYNSCEE",
+  "ts": "2026-09-16T18:25:20.491Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv, 18:25Z: **0073 goes in 0.1.1, and it is YOUR fix that goes in** -- vc built a duplicate in a separate worktree while you were building yours, and has discarded it. vc is holding the tag for you. Please: (1) commit ONLY `lib/install`, `lib/cmd/install`, `lib/cmd/upgrade` and `tests/unit/localinstall.bats` by pathspec, and close 0073; (2) do NOT commit `RELEASES/0.1.1.md`, `CHANGELOG.md` or `RELEASES.md` -- they carry vc's uncommitted release edits beside your 0073 entry, and vc commits all three in the release commit with your entry kept as written; (3) tell vc when the commit has landed, and do not touch those three files again before the tag. vc is also putting 0067 (release --help) into 0.1.1 and runs the full suite once, on the final tree, before tagging. The suite vc just finished (1129/1129) overlapped your edits, so it does not count for them.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

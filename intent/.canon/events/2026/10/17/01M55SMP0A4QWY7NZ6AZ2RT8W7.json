@@ -1,0 +1,16 @@
+{
+  "id": "01M55SMP0A4QWY7NZ6AZ2RT8W7",
+  "ts": "2026-10-17T20:42:48.714Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "2026-10-17 20:42Z STATE (globalfold, end of day). devbin 0.1.12 RELEASED (8378d7d7, tag v0.1.12), tag run 39063041204 ALL GREEN incl WSL 2; main PUSHED by hv. rhad on brew only (decision 53, pointer removed, copy in dc's scratch); dc swept 23 estates to 0.1.12 (digest 74ca0ada3c39 = keg's), committed, 7 estates still ahead (hv's pushes; intent/wip.md lists them). ST0008: all WPs done, gate 13/15, waits on AC-6.4 (tell the adopting estate's session of v0.1.12 first) and AC-2.1. NEXT: issue 0201 -- rhad's brew upgrade done (dc's scratch 0201-rhad.txt); still the rhad fixture (devbin install --into from the keg, bare bin/devbin upgrade and doctor read 0.1.12 through HOMEBREW_PREFIX/opt/devbin, nothing names the removed keg), then kovacs by a kovacs-sysadm order, then the Resolution and close. ST0010 waits on hv."
+  }
+}

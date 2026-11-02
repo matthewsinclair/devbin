@@ -1,0 +1,16 @@
+{
+  "id": "01M4B97XQWZ7J2QP4EHV203A45",
+  "ts": "2026-10-07T13:35:58.204Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 17,
+    "text": "0185 v2.1 BUILT for batch 3 (with 0186, dc's 0184 and 0181), on main's code (b96cae48 = batch 2's tree): git_repo_absent, the one reading of a failed git call, honours GIT_CEILING_DIRECTORIES as git does and spells the directory through getcwd as git does; fleet's census splits a failed call three ways (no repository: not a checkout; a .git of its own or a root that cannot be entered: UNREADABLE; a .git only above: not its own checkout); runlog asks the shared reading; git_failure_line carries git's own line; one publish_gate holds install's and upgrade's D28 gate; could-not-read wording, as the issue now says; release unchanged, an arm holds the order. Both critic-shell rounds folded. RED on base 16 of 24, GREEN 24 of 24 under BSD and GNU, mutants 34 of 34, shellcheck and check lint clean (seal 20261007-1249). Patch 0185.v21.on-b96cae48.patch (1c4fda99), 18 paths, applies on main 1a8665be as the tested tree. LOCALFOLD: its targeted run (26 files, runs/tgt185v21.*) and cc's full suite (runs/suite185.*, seal wsuite185/tmp/test/20261007-1250) are in flight on d51f1592, both clean at the fold. NEXT: on green fill {TARGETED} and {MYSUITE}, clientscan, hand vc. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0185: read STATE.md's line 3 first."
+  }
+}

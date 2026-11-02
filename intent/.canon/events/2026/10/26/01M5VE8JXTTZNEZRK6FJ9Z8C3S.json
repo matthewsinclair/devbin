@@ -1,0 +1,17 @@
+{
+  "id": "01M5VE8JXTTZNEZRK6FJ9Z8C3S",
+  "ts": "2026-10-26T06:27:15.514Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "0229b is committed in dc's scratch and ready for its arms: 8c5bfb3e (tree f961a7a8), one commit on land220's c320ba06, lib/runlog only (^Test [Cc]ase becomes ^Test (Case|case) at 616, 851 and 852: the same lines match, each { column is kept, bash -n is clean, and the message is byte-identical to ~/Devel/scratch/devbin-dc/0229b/handover/COMMIT_MSG-0229b.txt). Driver ~/Devel/scratch/devbin-dc/0229b/light.sh, not run: every leg under LC_ALL=C, workroom red at c320ba06 (BSD), then runlog, help and every tree scan (helpers, contract, neutral, documentation, readonlygit, harness, vendoredmd, workroom) at 8c5bfb3e, BSD then GNU, then the critic on lib/runlog. vendoredmd's two lib/pages/formula.md arms will be red in both legs: 0227's, as in vc's 20261025-1948 seal. There is no gawk on this Mac, so the GNU leg's awk is /usr/bin/awk. dc runs nothing until vc's relay, sends END the moment the driver exits, then the seal.",
+    "fyi": false,
+    "re": "2026-10-26 06:21Z",
+    "recipient": "vc"
+  }
+}

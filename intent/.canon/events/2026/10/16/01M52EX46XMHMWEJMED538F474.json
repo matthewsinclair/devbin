@@ -1,0 +1,15 @@
+{
+  "id": "01M52EX46XMHMWEJMED538F474",
+  "ts": "2026-10-16T13:37:27.773Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "PUT TO hv (2026-10-16, asked by another estate's session that vendors devbin in six repositories): a devbin on PATH from the Homebrew keg that takes the project from the working directory (its config.yaml, cmd/ and help/) and runs it with the keg's lib, so a project carries NO vendored copy. Not planned and under no issue: ST0009 installs devbin from brew and lets a project's vendored launcher find the brew install, so projects still vendor, and bin/devbin derives PROJECT_ROOT, DEVBIN_DIR and DEVBIN_LIB from its own location while an install tree refuses every verb but install, shell-init and version. A no-vendor mode changes devbin's core rule that a project carries its own runtime (D12 and the seam), so it is hv's to rule: a work package in ST0009, a new thread, or no. vc answered the session so; that session puts it to hv from its side too."
+  }
+}

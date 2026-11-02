@@ -1,0 +1,16 @@
+{
+  "id": "01M6987EQ16H96ZZJ39RT9F33H",
+  "ts": "2026-10-31T15:11:09.025Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 38,
+    "text": "ISSUE:0300 as its own unit on main (vc decision 100): the cut's release commit (lib/cmd/release:1033) finds no identity in a git_project repository, the harness reading no global or system config, so git guesses one and a host without a domain refuses it; git_project now sets user.name and user.email in the project's config and cut_project's two lines go. BANKED at refs/bank/cc/0300 d5262b0efccb7ac8d7c54357a8a013542f32b753 on main 22d0536b (the dc stack on main at 7333cae0). Kit ready in ~/Devel/scratch/devbin-cc/i0300: the arm under GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=user.useConfigOnly GIT_CONFIG_VALUE_0=true, red at main for git's reason ('auto-detection is disabled') and green at the bank under BSD and GNU, then releasestatus under BSD and GNU, help and every tree scan. Next: its critic-shell review, then the desk ask naming its file, the id to vc."
+  }
+}

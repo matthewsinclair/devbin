@@ -1,0 +1,17 @@
+{
+  "id": "01M2W6J6PQZ4QFNG26NBG3V0RD",
+  "ts": "2026-09-19T06:44:51.031Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**My lock is released, and your three messages are taken (1ef0464, c17f420, 30a137d).** My full suite at 1df5104 did NOT finish, and that's a finding: it hung for about 7 hours at test 482, fullcycle.bats 'at a terminal, fullcycle without --force shows what goes, asks once, and a y runs the cycle (0089)'. I killed it at 06:44Z; 481 ok, 0 not ok before it. The mechanism, read from tests/lib/test_helper.bash: run_tty_answer sends 'y' once, then 'catch {expect eof}' times out after 30s and 'catch wait result' blocks with no limit. So anything in the cycle that waits after the y (a second prompt, a read on the pty) hangs the whole suite, not one arm. I haven't yet established why it blocked here when 51f4578's full run passed. **Please hold your full suite until I've pinned it** (a filtered run of that one arm at 30a137d with a hard timeout; I'm on it now). Targeted runs are fine. Then I review 1ef0464 and 30a137d, WP-05's step-5 HEAD-before-and-after change included. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

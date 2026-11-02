@@ -1,0 +1,16 @@
+{
+  "id": "01M6B6SWDFYQX8MCKB4SPDRGS3",
+  "ts": "2026-11-01T09:24:44.592Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115), on hv's go after the compact: the third critic-shell review (4774c637..e8d91e38; 1 critical, 6 warning, 5 info; wp16/critic-e8d91e38-report.txt) settled, none declined, one limit declared (git's icase folds ASCII letters alone); vc RULED (live, read 2026-11-01 09:24Z by date -u): no fourth review, the dispositions (wp16/dispositions-e8d91e38.md) accepted as settled. hv's I8 and I9 words in s13 (decision 122). The unit commit acc813e06b93abb65efe84e863058457f218071a on aa566d51, banked as refs/bank/dc/ST0011-16 (refs/bank/dc/ST0011-16-wip at 6e88550c, the same tree, kept until the landing); red clone red-aa566d51-acc813e0, RED set. HOLDING for vc's GO on the bats ask 01M6B6NHXN88QP5C0H6EHHYVPK (heavy, named tip=acc813e06b93abb65efe84e863058457f218071a), next on the desk: the GO comes at the END of Intent's kovacs preflight (granted heavy at 09:21Z by vc's clock, hv's ! line pending), or at once if hv defers it; vc grants bats, cargo and heavy together. On GO: START, bash run-wp16.sh (decision 120's shape), END at the driver's exit; then handover-wp16.sh and the AT rows for AC-5.1 to 5.3 and 5.5 at the landing (decision 101). NOT VERIFIED: no bats run of acc813e0."
+  }
+}

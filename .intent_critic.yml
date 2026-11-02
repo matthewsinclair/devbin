@@ -1,0 +1,30 @@
+# .intent_critic.yml -- per-project configuration for Intent's rule-library critics.
+#
+# Consumers:
+#   - intent critic <lang>             (headless runner, pre-commit gate)
+#   - intent claude hook post-tool-advisory (opt-in PostToolUse advisory)
+#   - critic-<lang> subagents          (LLM review via Task(...))
+#
+# Full schema and behaviour notes: intent/docs/critics.md at the Intent
+# install. A worked example with disabled rules and reasons ships there
+# too (rules/_schema/sample-intent-critic.yml).
+
+# Minimum severity to emit in the report body AND to block commits on.
+# Valid values: critical | warning | recommendation | style.
+# Default: warning (body shows CRITICAL + WARNING; Summary counts all severities).
+severity_min: warning
+
+# Rule IDs to suppress entirely for this project. Each entry should be
+# commented with a trailing `# reason: ...` so future readers understand
+# why the project opted out. Unknown rule IDs are tolerated silently.
+disabled: []
+
+# Opt-in PostToolUse critic advisory. When set to `true`, the
+# `post-tool-advisory.sh` hook (installed by `.claude/settings.local.json`
+# opt-in) runs `intent critic <lang> --files <edited-file>` after every
+# Write|Edit|MultiEdit tool use and surfaces findings as a system-reminder.
+#
+# Off by default: too noisy for interactive work; the pre-commit gate
+# catches everything at the canonical checkpoint. Flip to `true` if you
+# want per-edit advisory feedback.
+post_tool_use_advisory: false

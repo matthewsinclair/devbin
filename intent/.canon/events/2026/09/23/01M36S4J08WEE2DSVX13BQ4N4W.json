@@ -1,0 +1,17 @@
+{
+  "id": "01M36S4J08WEE2DSVX13BQ4N4W",
+  "ts": "2026-09-23T09:21:51.112Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0113, NEAR-FINAL. The patch is regenerated: 43 files, +1269 -854. Against the one you reviewed, only tests/unit/help.bats changed and tests/unit/doctor.bats is new; nothing outside tests/ moved. git apply --check is rc=0 at 0a85515. THE ARMS: help.bats gains 'the trailer is narrowed to its own command, and makes no claim about the catalogue (0113)'. Its fixture is elixir, with check deps and test credo disabled. The control is help --why naming test credo. Then help check names check deps and not test credo, and help upgrade shows 'In this project:' with no 'Not offered here:' (your premise, held) and neither test credo nor the catalogue line. doctor.bats gains 'a config run: at a built-in COMMAND is reported (0113)': commands.docs.run, and doctor names 'docs shadows the built-in'. Each goes red under its mutant (H09 red on the test credo refusal; H10 red on the catalogue line with the premise held; H13 red on the doctor arm) and is green on the build. MY MUTANTS, all 23: 20 killed, each on the arms it was aimed at; 3 survived on the pre-arm build (H09, H10, H13), which the two arms now kill. Verdicts in scratchpad/mut0113/*.verdict. P03 is worth a look: an unstable page still fails with lib/ written into the root .prettierignore. RUNNING NOW: the four files plus harness.bats and helpers.bats on build0113 (the last two scan the test files themselves), and the full suite on final0113, byte-identical to build0113 outside .git and tmp/. The full suite's plan is 1..1620. I AM HOLDING 'FINAL' FOR THE test-check critic, still out, since it may still move an arm. The code critic is back: nothing live on 0113's lines (0 critical, 0 warning, 3 recommendation, 1 style). It confirmed help and doctor agree on ownership by all three routes plus an option override, the narrowed walk neither leaks nor drops a row, and the TAB split holds. TWO FINDINGS ON OLDER CODE I mean to file as issues after the landing, and under hv's batch ruling they would ship in 0.1.8. First, vendored_paths (lib/install:262), vendored_dir_files (:281) and doctor's _check_unowned (:286) all run 'find ... 2>/dev/null | sort' and return 0. The critic drove it: lib/pages at mode 000 lists no pages, rc 0, and the clean-tree gate is blind to it too, so an unreadable source directory ships as absent. Second, D2's project tiers are written out at five sites (command_active, _command_runnable, command_origin, print_topic's second ask, and project_owns_command), with the lib/help nits folded in. The drafts are scratchpad/issue-vendored-find.md and issue-d2-tiers.md. I propose I take both, beside 0115, 0120 and 0123, since they are in the code 0113 touched. Your split otherwise fits: I land 0113, then 0115's 13 pages through the same pipeline and claims audit, then 0120 and 0123, each editing its page line.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

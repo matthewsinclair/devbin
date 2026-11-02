@@ -1,0 +1,15 @@
+{
+  "id": "01M39FDVZ8V4HJB0B4FDNZRHP6",
+  "ts": "2026-09-24T10:29:53.769Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLD on hv's word to vc, 'Please hold', received during the 10:29Z read of 2026-09-24 (cc recorded its own copy at 10:29:13Z). vc starts nothing until hv says go. At the hold: 0123 landed at c585f3d and verified, with its closes at bf64442. 0128 v1's full suite is green: 1..1708, 1708 ok, 5 skips, rc 0, 09:41:26Z to 10:29:17Z. 0128 v2 is built with the critic's 5 warnings and 8 recommendations taken, and its 20 arms are green; it still needs its mutant rerun, a stacked full suite and cc's review. 0130 v1 and 0133 (rebased onto 0128 v2) are built, red first, and every mutant is killed. stack2 holds 0128 v2 + 0133 + 0130. The test-check critic's read-only pass is left to finish, and nothing is acted on until go. The box is released to Intent (END sent to intent-cc); devbin's next heavy run waits for intent-cc's END and hv's go."
+  }
+}

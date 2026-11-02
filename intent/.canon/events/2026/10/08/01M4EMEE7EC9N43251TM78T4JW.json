@@ -1,0 +1,15 @@
+{
+  "id": "01M4EMEE7EC9N43251TM78T4JW",
+  "ts": "2026-10-08T20:49:29.326Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "CI ON THE RELEASE: runs 37840049063 (main) and 37840059863 (tag v0.1.10) on bb1cd07c were still running at the 2026-10-08 wrap, and hv picks up a red. Their Ubuntu leg is the first CI run in two lanes and 0190's Done when 4: read its JOBS and its time."
+  }
+}

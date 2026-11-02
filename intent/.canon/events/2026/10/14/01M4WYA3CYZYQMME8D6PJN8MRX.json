@@ -1,0 +1,15 @@
+{
+  "id": "01M4WYA3CYZYQMME8D6PJN8MRX",
+  "ts": "2026-10-14T10:11:14.975Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLD AFTER THE COMPACT until hv gives the restart (hv's word through another estate's session, 2026-10-14: an estate-wide localfold and compact, then /in-session and the pickup, then hold until hv restarts every session). Until then nothing runs, lands or is filed; the only commit is vc's pickup."
+  }
+}

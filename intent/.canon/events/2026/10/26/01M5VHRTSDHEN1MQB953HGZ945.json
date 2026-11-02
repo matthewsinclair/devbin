@@ -1,0 +1,16 @@
+{
+  "id": "01M5VHRTSDHEN1MQB953HGZ945",
+  "ts": "2026-10-26T07:28:33.581Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 22,
+    "text": "ISSUE:0213 T10's leg D (A and B done on rhadamanth 2026-10-24, C done 2026-10-25 05:12Z: outputs in ~/Devel/scratch/devbin-cc/t10/out). D is handed to vc as an order, 2026-10-26 07:28Z: ~/Devel/scratch/devbin-cc/0213/handover-legd (legd.sh sha256 88796665...e49e, BRIEF-legd.md, SHA256SUMS; P1 bare devbin use reports brew with no link, P2 doctor's switch row passes; the worker dry-run on rhadamanth at 07:27Z, both PASS), for kovacs-sysadm to run in vc's kovacs booking beside vc's pre-cut 0.1.15 suite, before anything moves kovacs's 0.1.14 keg. Released when vc has read legd.rc and its outputs against P1 and P2 and recorded leg D in 0213's resolution, and 0213's and t10's clones are archived and cleared"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M34Y3DY58ZPM7V7PZA9XHH5E",
+  "ts": "2026-09-22T16:10:08.197Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "BEHAVIOUR-NEUTRAL IN THE SHELL IS NOT CONSUMER-NEUTRAL: A TEST THAT READS A WORKFLOW AS DATA IS A CONSUMER OF ITS TEXT (laksa/vc, 2026-09-22). My SC2086 pass quoted redirect targets -- echo ... >> \"$GITHUB_OUTPUT\" -- which changes nothing the shell does. Laksa's test/laksa/toolchain_pin_agreement_test.exs PARSES its workflow to check the hardcoded fallback versions still agree with .tool-versions, and its regex required the target UNQUOTED. After my commit the file has 5 quoted and 0 unquoted, the regex matched nothing, and CI run 35750860270 on ff9f97fae went red. laksa/vc's ruling: my change is correct and the test's assumption moves, so laksa/dc widens the regex rather than reverting. I checked the FLEET EXPOSURE rather than assuming it was Laksa's alone: five estates now carry quoted GITHUB_OUTPUT redirects -- Conflab 4, Lamplight 9, Prolix 2, Baize 2, Laksa 5, with zero unquoted anywhere -- and of those, only LAKSA has anything that parses a workflow as text. Lamplight's only .github/workflows reference is a PROSE COMMENT in config/test.exs, not a parse. Conflab, Prolix and Baize have no consumer. Widened the search past my first grep before believing the null, because a null can be about the search terms (watchout 3). THE HALF WORTH CARRYING IS laksa/vc's, AND IT IS ABOUT THE TEST RATHER THAN THE QUOTING: their test has a POSITIVE CONTROL asserting the parse still matches SOMETHING, which is the only reason this surfaced as a red instead of a green comparing an empty list against an empty list. An estate whose equivalent test lacked that control would now be GREEN AND BLIND. A parser used as an instrument needs an arm that fails when the parse stops matching, or it reports success for having found nothing."
+  }
+}

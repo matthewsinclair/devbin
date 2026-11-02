@@ -1,0 +1,17 @@
+{
+  "id": "01M47XZHDJP4QPPQDFNMVWEZNM",
+  "ts": "2026-10-06T06:21:25.810Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "The chain is ready to land: 0168, 0165, 0170 and 0171, four commits stacked in that order over 0163 v3.1 and 0167 (cc3d4587, the pair you hold as final-415ce738-v31), so over 415ce738.\n- Patches: ~/Devel/scratch/devbin-dc/0.1.9/patches/chain-cc3d4587/, the same files you reviewed:\n  - 0001 (0168) 63003541827de70ad2f3301513c9dfd6e0276561d369c0dcfd0de1278cf6b8ee\n  - 0002 (0165) 7176ce9d236b3431588c0e507ceced80328b626166066d5ed76e29fae0d1a440\n  - 0003 (0170) 13af2c9e6ecc518df299c12a428545b674d9478da28e6393b53ec753ab18dc1d\n  - 0004 (0171) 99ab7b7ec441f69bd0da0bfe8d6d676d2ff0ee74458c3f2ff8e39b190fd0c9fe\n- All four apply with plain git apply, in order, over cc3d4587, giving tree 687a8744. They are clone s168c's f12246f4, 2bb8c235, 0bcdeb0c and f201a9e2. Files: lib/helpers, lib/cmd/fullcycle, lib/pages/fullcycle.md, lib/pages/clean.md, tests/unit/fullcycle.bats, tests/unit/clean.bats.\n- Messages (each equal to its commit body): drafts/msg-0168.txt 1489d599, msg-0165.txt fb7aaddf, msg-0170.txt 84da2126, msg-0171.txt ac046c81.\n- Resolutions, with <landing sha> to fill: drafts/resolution-0168.md 29e268b5, resolution-0165.md d987f71c, resolution-0170.md 54465b3e, resolution-0171.md 9d2dfaa2. All client-scanned, 0 hits.\n- Wide run on f201a9e2 (runs/chain2-wide-20261006-060723.*.log): 1730 ok, 0 not ok.\n  - BSD 598: helpers, contract, neutral, documentation, readonlygit, harness, help, clean, dispatch, targetdir, vendoredmd, buildfmt, autotests.\n  - BSD 529: fleet, install, localinstall, doctor, vendor, scaffold, infra, infra-profile, version, shell-gate-critic.\n  - fullcycle 153.\n  - GNU findutils 4.11.0, coreutils 9.12 and grep 3.12, 450: fullcycle, helpers, clean, targetdir, contract.\n  - Skips: only the known no-tty, case-fold and require_command ones.\n- 0168: three critic-shell passes, all folded (drafts/critic-0168-findings.md, critic-0168v2-findings.md, critic-chain-findings.md).\n  - Red on the base: runs/s168c-v3red-*.log (9 of 12 arms plus 0134's summary line; 3 controls green by design).\n  - Mutants S1 to S15 all KILLED: runs/mutate-168v3-*.log.\n  - The marker, cargo's .cargo-lock, was measured on cargo 1.99.0 with and without build.build-dir. Two real-cargo arms ran, unskipped.\n- 0165:\n  - Its plants are red on the new arms and green on the old: runs/s165-red-*.log and, for critic-shell's forms (if, !, env, $(echo)), runs/s165b-red-*.log.\n  - Its arms pass under BSD and GNU grep.\n- 0170: nine marker mutants, the half-deletion included, all red on the new arm; the old arm passed three of the issue's four (runs/s170-red-*.log, runs/s170b-red-*.log).\n- 0171: one sentence, with vendoredmd and help green; the build-dir clause is measured.\n- shellcheck: no new findings in lib/. tests/unit/fullcycle.bats has three more SC2016 notes, all deliberate single-quoted scripts, as are the file's existing 44.\n0172 is unclaimed for cc, as agreed.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

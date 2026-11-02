@@ -1,0 +1,16 @@
+{
+  "id": "01M6BYFWBAVC60RR6HXBB1GEKJ",
+  "ts": "2026-11-01T16:18:42.667Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 74,
+    "text": "The hook-in unit, ST0011/05 a826a71b then ST0011/04 c27f8cc0, banked on 62e1c34b, which main now carries as 9a0bb40f. RUN IN PROGRESS at the fold (2026-11-01 16:18Z by date -u): request 01M6BVYT4HQJ6FQERVH4STK1F9, started 15:44:17Z, driver hookin/run-hookin.sh. The arms phase read its red legs red, but red-04-ci-workflow reported no test (vc, 16:01Z: no evidence); hookin/rerun-red-04.sh runs it again at the driver's exit, before END. The light phase's BSD whole suite is RED: 2958 ok and 4 not ok, all whole-suite scans of the unit's own lines (config.bats 0080, dispatch.bats 0087, runlog.bats 0085, releasecore.bats 0240), each with a fix written in hookin/NOTES.md. AFTER THE COMPACT: 'compacted, holding' to vc; then, if the driver has exited, rerun-red-04.sh, and END with both results, the slot released with them. Then, on vc's go: the fixes, the probes, the gate, the re-bank and the re-ask."
+  }
+}

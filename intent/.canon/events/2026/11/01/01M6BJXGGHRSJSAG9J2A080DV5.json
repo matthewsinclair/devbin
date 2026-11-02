@@ -1,0 +1,15 @@
+{
+  "id": "01M6BJXGGHRSJSAG9J2A080DV5",
+  "ts": "2026-11-01T12:56:26.385Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "dc's hook-in unit design note (~/Devel/scratch/devbin-dc/hookin/DESIGN-NOTE.md, read whole; ruled at 2026-11-01 12:56Z by date -u, sent live and cleared as answered): build on the 0306 + WP17 stack's bank as written, with these. Q1 (a): one definition in lib/helpers, called by both lib/config's release.legs rule and lib/release.legs, named is_host_alias for what it checks, beside is_platform_word and WP02c's is_branch_name (no helper tests that shape today). Q2 (a): a macOS stage declared on a host whose word is not macos is refused at pre-flight, naming the stage and the host's word, D69's rule (AC-6.3) read for a stage; an unreachable remote host stays absent and is not waited for (decision 90's Q4). Q3 (a): the stage's cache artefact is the build.artefacts entry whose path is macos.app's, with no new key; two entries matching one app are refused at config read; when none matches, doctor prints one note that the stage builds uncached, so a mistyped path in an adoption shows. Q4: release.yml stays out of this unit. It is the object step's under object: ci and keeps its tag trigger, and WP02b-2 does not touch it either. WP04's piece is tests.yml's tag filter and its candidate-verdict job, with ci-workflow.bats and docs/releasing.md. Notes: Devbin's config declares release.legs in block form, since the parser refuses flow collections (s13); the arms use fake hosts, and a probe against the real kovacs is announced to kovacs-sysadm first (decision 91). Decision 115 archived as executed (WP16 landed with the arch line at 54c16f33)."
+  }
+}

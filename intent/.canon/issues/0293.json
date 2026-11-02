@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 293,
+  "slug": "ci-s-macos-job-runs-check-all-and-check-critic-r",
+  "title": "CI's macOS job runs check all, and check critic refuses on the public snapshot, which has no intent/",
+  "status": "closed",
+  "severity": "high",
+  "created": "2026-10-29",
+  "closed": "2026-10-29",
+  "reporter": "Matthew Sinclair",
+  "body": "v0.1.17's candidate CI run 40904076298 went red on the macOS job. The suite passed, then `bin/devbin check all` failed at `check critic` with \"no Intent project found\". CI runs on the public snapshot, which carries no `intent/`, so the critic gate has no project to read on any runner.\n\nThe Ubuntu job already leaves `check all` out for the same reason: it runs every gate but critic and lint, by name, from a list that tests/unit/ci-workflow.bats holds equal to check's options. The macOS job still ran `check all`, and its arm in ci-workflow.bats required it to.\n\nFix: the macOS job runs the same named list as the Ubuntu job, so it runs only the gates that apply to the public tree. It keeps the bash 3.2 refusal proof and the suite. Its Intent install goes too, because `check critic` was its only reader. ci-workflow.bats holds the macOS list to check's options as it holds the Ubuntu one, and refuses `check all` in the macOS job in the Ubuntu arm's shape. `check critic` itself is unchanged.\n\n\n## Resolution\n\n- CI's macOS job runs `test all`, then the same named `check` options as the Ubuntu job, leaving out `critic` and `lint`; its Intent install is gone. tests/unit/ci-workflow.bats holds both jobs' lists equal to check's options minus those two, and refuses `check all` in either job.\n- Landed on main at `f1173c13`, released in v0.1.18.\n- Evidence: CI run 40919937412 on candidate/v0.1.18 at the public snapshot a9b8cd7c, every job green: Test on macOS (bash >= 5 floor), Test on Ubuntu, Test in WSL 2 (Ubuntu 26.04), Shell Script Analysis and Test Summary.\n"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M379V20SBKNV1DM63MM9YHTS",
+  "ts": "2026-09-23T14:13:45.625Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0120 LANDED (re your approval): 2218a3f, on your a69b21b, through the gate (guards, critic, doctor), by land.sh -- a general copy of land0113.sh, driven red five ways and green once in a scratch clone first (moved HEAD, a doctored patch, a staged file, a dirty target path, a placeholder left in the message). It proves the commit holds the build's bytes: VERIFIED 2218a3f, 3 paths. 0120 is CLOSED with its resolution, which names your R1 to R3 and your 1..121 run. AN OWN-UP: I marked your 14:11Z approval handled before I had read it -- a clear of three messages, two of which had arrived since my last read. It is actioned now, by this landing; the order was clear first, act second, which the rule forbids. 0123: the case-rename fix is building.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

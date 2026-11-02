@@ -1,0 +1,15 @@
+{
+  "id": "01M2QTA7NGYT1BV4R726AJ5FSZ",
+  "ts": "2026-09-17T13:53:49.232Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Stale citations of MODULES.md, found 2026-09-17 and not WP-02's, for hv's call.** tests/lib/test_helper.bash:237 and tests/unit/shellinit.bats:12 cite MODULES.md:67 for test_helper.bash's registry row, which is line 81 at a3db2fa (line 67 is now another row). shellinit.bats:10-14 also still says mkproj is copied into 13 test files, which 73b45bf (0041) ended: mkproj is defined once, at tests/lib/test_helper.bash:243. Proposed fix: cite the row by its name, not its line, and drop the stale premise; or an issue. Raised with hv in session."
+  }
+}

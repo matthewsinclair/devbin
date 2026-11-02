@@ -1,0 +1,16 @@
+{
+  "id": "01M4B8CR9CYPD18M8PKN0972Z6",
+  "ts": "2026-10-07T13:21:07.884Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 147,
+    "text": "PUSHES, on hv's word of 2026-10-07 (\"Do it\" for devbin main; \"You can do it. Go ahead\" for hv's estates' 0.1.9 seam commits). DONE: devbin main on both remotes at 7d1a3f4c, pushed 13:07Z. Its CI run 37626021387: Shell Script Analysis success, macOS skipped by design on a push, Ubuntu running. That leg is 0180's Done when 4: read the JOBS, and close 0180 on Ubuntu green. DONE: 13 of hv's estates' seam commits on every remote each has, each push carrying the seam alone: Arca's arca_cli and arca_config, Baize, Cdtempl, Conflab, Gtools, Lamplight, MicroGPTEx, Molt, Prodinfra, Prolix, Riffle and Utilz. CI is green on 7 and running on 5 (Baize, Conflab, Lamplight, Prolix, Utilz), and MicroGPTEx and Prodinfra have no workflows. HELD FOR hv's WORD: Intent, whose push would also publish an Intent session's unpushed issues commit beneath the seam (cfb59184f, issues 0589 and 0590, committed 2026-09-28). NOT vc's: Gtools-geodica's seam is on its local remote, pushed by its own session, which keeps its upstream behind. Cards has no remote. The other estate's 3 wait for its supervising session's own audit of the vendored set."
+  }
+}

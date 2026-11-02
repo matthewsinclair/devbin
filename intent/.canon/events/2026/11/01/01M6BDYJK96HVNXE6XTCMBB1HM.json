@@ -1,0 +1,16 @@
+{
+  "id": "01M6BDYJK96HVNXE6XTCMBB1HM",
+  "ts": "2026-11-01T11:29:38.409Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 59,
+    "text": "ST0011/17, WP17, after issue 0306 (vc's order at WP16's landing; decision 109). Resume from ~/Devel/scratch/devbin-dc/wp17/NOTES.md and the WIP banked as refs/bank/dc/ST0011-17-wip f431ae57, rebased onto main 54c16f33, where WP16 and its platform_word landed. Built on decision 108. critic before its first run, the pre-bank grep, then the desk; AC-6.1 and AC-6.2 at its landing."
+  }
+}

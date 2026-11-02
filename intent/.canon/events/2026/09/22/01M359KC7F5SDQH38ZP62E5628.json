@@ -1,0 +1,15 @@
+{
+  "id": "01M359KC7F5SDQH38ZP62E5628",
+  "ts": "2026-09-22T19:31:05.071Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Laksa's 0.1.7 sweep -- HELD UNTIL laksa-vc says hv's deploy of 657d2dc47 is out (CI green, run 35768767290; not deployed at 19:29Z). Then: sweep Laksa alone (DEVBIN_FLEET_FROZEN=Intentv2 plus every other estate, or upgrade in Laksa's tree), confirm with laksa-vc, commit ONLY bin/.devbin/manifest.sha256 -- its runtime bytes already equal 0.1.7's."
+  }
+}

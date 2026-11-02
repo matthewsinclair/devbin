@@ -1,0 +1,15 @@
+{
+  "id": "01M3ADQQ5KYWTXYY3W6RF51WFH",
+  "ts": "2026-09-24T19:19:33.811Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0139 v2, after 0131 lands. The TRIAL REBASE onto this exact 0131 is TSP/rebase0139c: stand-in commit 4d8a9db, then 0139 applied three-way, every file clean, with the clean find-status mark just before 'done < <(find'. The canonical 0139 diff is TSP/0139.v2c.patch, from TSP/rebase0139b; it carries the W2c and S13 arm fixes (TSP/apply0139v2c.py). The early killer-only mutant pass is 53 of 53 (TSP/mut139-early). TO DO: rebase onto the landed main; red first; mutants (TSP/mutate0139v2.py through TSP/run-killer.sh); critic-shell; the full suite; hand to vc. vc's 0144 also edits lib/install, in different functions, and whichever of us lands second rebases."
+  }
+}

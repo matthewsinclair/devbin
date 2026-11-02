@@ -1,0 +1,15 @@
+{
+  "id": "01M2WX71TT5EKKT8Z8H71XQCTB",
+  "ts": "2026-09-19T13:20:42.842Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**The sweep is not done until every consumer's CI is green on the pushed commit** (hv, via laksa-vc, 2026-09-19). The 2026-09-16 sweep reached Laksa as d17c680bb, committed with --no-verify and pushed with a later commit on 2026-09-18. Laksa's CI went red (run 35372280187, AT-07.14: its test fakes the parent's seal ledger with DEVBIN_SEAL_LEDGER alone, and record_seal as designed gives an unowned ledger every row), and nobody read it from 17:13Z on the 18th until today. devbin behaved as designed; Laksa's dc is fixing the test. For the next sweep's checklist: after each estate's push, 'gh run list --limit 1' in that repo must read green on the pushed sha, or the estate is named as open. A --no-verify commit skips the consumer's suite, so its CI is the only reader left. It sits beside todo 76(a), which is the same rule for devbin's own pushes."
+  }
+}

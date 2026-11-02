@@ -1,0 +1,15 @@
+{
+  "id": "01M4B74M5FBKK4NWSXKGR8VB01",
+  "ts": "2026-10-07T12:59:12.946Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0186"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "a repository whose index git cannot read: --version prints a bare commit over a dirty tree, fullcycle --dry-run dies with git's 128, check critic says nothing is staged, and the release pre-flight says its log directory is not ignored"
+  }
+}

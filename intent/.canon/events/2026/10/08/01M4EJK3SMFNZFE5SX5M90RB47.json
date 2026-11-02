@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJK3SMFNZFE5SX5M90RB47",
+  "ts": "2026-10-08T20:17:05.332Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 19,
+    "text": "ONE HEAVY RUN ON THE BOX AT A TIME between cc and dc until 0190 and 0191 land for 0.1.10 (vc, 2026-10-08). A suite, a multi-file bats run or a mutant batch is heavy; a single arm or one file is light. Start on vc's START, and send vc END with the pid and the times read from the machine. The box is with vc's landing suite. Retire this when vc ends the protocol."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M6987Q907MRHXYY5NNFZB7Q1",
+  "ts": "2026-10-31T15:11:17.792Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31 15:11Z (in vc's window, then AFK for dinner): 'You still have the pen and authority over the other Claudes working on this devbin work. I'll be back later.' vc holds the pen over devbin-cc, devbin-dc, the sysadm sessions and the estate vcs (decisions 88, 93, 100 and 102 stand); the two sessions outside this work stay ignored; nothing public (tag, release, tap, push to a public remote) without hv's word (directive 3). Parked on hv: K0117's start on kovacs, whose chain kovacs-sysadm's classifier blocked; the exact line waits in kovacs-sysadm's window and vc does not run it around the classifier (the sysadm protocol stands while kovacs-sysadm runs), so the kovacs half of the landing check begins when hv is back. Running: the landing suite on rhadamanth (01M697Y0W23AEH3YGETSJZK7FJ); queued: Intent's build and drive (01M69848K1EKX7H4ZPKMKQ0NQ2, granted at the suite's END); building: cc's 0300 and WP02a, dc's WP03 remainder."
+  }
+}

@@ -1,0 +1,821 @@
+{
+  "schema": "intent/thread@3.0",
+  "id": "ST0003",
+  "title": "Add 'devbin infra' to help with prod estate configuration",
+  "slug": "add-devbin-infra-to-help-with-prod-estate-config",
+  "status": "completed",
+  "created": "2026-09-06",
+  "completed": "2026-09-16",
+  "objective": "Add `devbin infra`: a profile-driven command that resolves an estate's intended DNS, mail and runtime configuration, checks it against live truth, applies what it can, and emits exact instructions for what it cannot.\n\nDone means: a profile schema with parse-time validation, so a malformed profile fails before any network call; `infra check` that goes red on real drift and states in its own output what it could not check; `infra init` that adopts an existing estate without encoding that estate's drift as the target; and the earlier standalone `devbin mail` spec absorbed as `devbin infra mail` (hv, 2026-09-06). The profile is an argument rather than a location, so the command runs inside a project, outside one, or in CI.",
+  "context": "An estate's configuration drifts with no moment of carelessness to find. Every record is correct against the instructions in force on the day it was written; providers then revise their recommendations, and domains onboarded at different dates freeze different snapshots. Nothing compares them to each other, so **the drift is invisible by construction rather than by neglect**.\n\nAn audit of an 11-domain estate on 2026-09-06 found five distinct inconsistencies: three different Google MX forms; three SPF variants; one domain carrying a stale sender include, a stray `a mx` mechanism, AND no DKIM record for its declared sender; sixteen records at 900s TTL against a 300s intent; and one domain with live MX and neither SPF nor DMARC, placing it outside the reporting estate entirely.\n\n**The half-pair is the sharpest case.** SPF authorising a sender with no matching DKIM makes that domain's own legitimate mail bit-for-bit indistinguishable from a forgery of it -- and it is silent today only because no mail currently flows through that path. It is a trap armed for whoever sends first.\n\nThe target state is the USER'S -- a profile they supply -- and devbin ships no estate of its own. **This thread builds the command that enforces it.** The plan is at `design.md`; the annotated profile schema is vendored into every project at `bin/.devbin/lib/infra.reference.yaml`, and the command's own argument is at `bin/.devbin/help/infra.md`. `docs/infrastructure.md` carried both until 2026-09-07 and reached no estate, because `docs/` is devbin's own repository and consumers vendor only `bin/devbin` and `lib/`.\n\n**Cardinal design constraint: every check must be able to go red.** Every failure this estate has produced has been a control that could only report success -- absent reporting that reads as clean reporting, a cached TTL that reads as a configured one, `disposition=none` on ten of ten records while five of them were forged. A verifier built without that constraint reproduces the class it exists to catch.\n\n**Scope constraint that shapes the schema:** the requirement is that ANY project can use this. The audited estate has eleven domains; the modal project has one. A design tuned to a portfolio degenerates at N=1, and N=1 is the common case rather than the edge.",
+  "body": "",
+  "preamble": "",
+  "wps": [
+    {
+      "seq": 1,
+      "title": "Profile schema, parser, parse-time validation, and the unreviewed block",
+      "scope": "S",
+      "status": "done",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 2,
+      "title": "infra check: DNS and mail legs, authoritative reads, errors separated from drift",
+      "scope": "S",
+      "status": "done",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 3,
+      "title": "infra init: propose by standard then majority, deviations into unreviewed",
+      "scope": "S",
+      "status": "done",
+      "objective": "Adopt an existing estate without making its drift the target. `devbin infra init <domain>...` measures each domain's authoritative records and prints a profile to stdout in which a value reaches the target only when the RFC layer or the estate's own strict majority (above N=2, with every named domain in the denominator) determines it. Every other live value, and every read that could not be made, goes to `unreviewed:`, which `check` refuses to run past. Per hv's ruling of 2026-09-08 no vendor table ships: the only RFC-derived proposal is `p=none` on a mail-carrying domain with no DMARC record and no majority. The decisions the rulings left open are recorded in design.md, section `init AS BUILT`.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 4,
+      "title": "infra apply: Fly end-to-end, DNS and Workspace emit an ordered record list",
+      "scope": "S",
+      "status": "cancelled",
+      "status_reason": "Moved whole to ST0006/WP-01 on 2026-09-08 with AC-4.1 to AC-4.3; nothing was built here. Cancelled on 2026-09-16 because the descope moved the criteria and left this record open.",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 5,
+      "title": "infra mail dmarc: parse, report, fetch, check",
+      "scope": "S",
+      "status": "done",
+      "objective": "Absorb the standalone `devbin mail` spec as `devbin infra mail dmarc`: parse, report and fetch, covered by AC-5.1 to AC-5.3 and AC-5.5 to AC-5.9, all satisfied. The fourth leg in this package's title, `check` -- the assertion that goes red on a domain silently missing from the reports, AC-5.4 -- moved to ST0006/WP-02 on 2026-09-08 and was not built here.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 6,
+      "title": "Known-sender INVARIANT library, profile-overridable",
+      "scope": "S",
+      "status": "cancelled",
+      "status_reason": "The invariant library moved to ST0006/WP-03 on 2026-09-08 with AC-6.1 and AC-6.2, and is unbuilt. AC-6.3, the parse-time refusal of an undefined sender, landed here and stays satisfied. Cancelled on 2026-09-16 because the descope moved the criteria and left this record open.",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 7,
+      "title": "Fly runtime leg of check: certs, address agreement, release_command, staged secrets",
+      "scope": "S",
+      "status": "cancelled",
+      "status_reason": "The Fly runtime leg moved to ST0006/WP-04 on 2026-09-08 with AC-7.1, and is unbuilt. AC-7.2, check declaring the leg as a blind spot, landed here and stays satisfied. Cancelled on 2026-09-16 because the descope moved the criteria and left this record open.",
+      "objective": "",
+      "body": "",
+      "preamble": ""
+    }
+  ],
+  "criteria": [
+    {
+      "id": "AC-1.1",
+      "text": "A malformed profile is REFUSED before the estate is contacted, and the refusal states that nothing was checked. Failing it at check time would conflate your profile is wrong with your estate is wrong -- different problems, different fixes, different exit codes.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.10",
+      "text": "A verb invoked with no argument REFUSES with a non-zero status, while an explicit --help still exits 0. Usage text at exit 0 over a missing argument is a false green inside the command written to refuse false greens.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.11",
+      "text": "The annotated profile reference is VENDORED into every consuming estate and PARSED by the suite on every run, so the first thing a reader copies is known to load.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.2",
+      "text": "The profile is an ARGUMENT rather than a location: resolved as --profile, then $DEVBIN_INFRA_PROFILE, then ./infra.yaml, then ~/.config/devbin/infra.yaml -- and a miss NAMES every path it tried rather than only the last.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.3",
+      "text": "devbin ships NO estate. With no profile present, every verb needing one fails loudly, so a builtin carrying no profile is INERT rather than wrong -- it costs an estate that never uses it bytes and not behaviour.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.4",
+      "text": "Deviations live in a structural unreviewed: block and never as annotated comments. Accepting one is DELETING A KEY, which is an act, rather than ignoring a comment, which is an omission. Comments are the least durable content in a config file.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.5",
+      "text": "check REFUSES while ANY unreviewed: entry remains, and never warns on partial review. Five deviations reviewed down to one is still an estate with an unratified target, and a tool that goes green at mostly reviewed has rebuilt the thing being removed.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.6",
+      "text": "A valueless or empty declaration is REFUSED and NAMED, never silently skipped. A key nobody typed and a key typed with no value must not read alike.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.7",
+      "text": "One domain, one profile WITHIN a file. Two handles on one FQDN carry contradictory expectations that check evaluates against the same live records, so one goes green and one goes red on the same domain and ordering decides which the operator reads.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.8",
+      "text": "One domain, one profile ACROSS a directory of them -- and a directory holding NO profiles is an ERROR. Nothing found is a wrong path, not a clean estate, and reporting it as no collisions would be a green over an empty set.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-1.9",
+      "text": "Every message names how the dispatcher is invoked, ${DEVBIN_INVOKE:-bin/devbin}, as every other built-in does, never the project's name or the literal devbin. The project's name named a command only while each estate had a launcher of that name; those launchers are retired, so a message carrying it tells the reader to type a command that does not exist (issue 0107, hv's ruling K8).",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.1",
+      "text": "Every check can go RED on real drift: a TTL differing from the profile, a declared mail domain with no MX, two SPF records where one is allowed, a missing _dmarc where a policy is declared, a live policy differing from the target, and two domains on one mail value carrying different MX forms.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.10",
+      "text": "A manual item is NAMED on every run -- including a green one, and including one where the domain could not be reached -- and is never counted as checked.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.11",
+      "text": "A policy that enforces nothing is named as such even when the record is CLEAN, and an explicit opt-out is a NAMED opt-out rather than a silent pass. A summary that goes quiet exactly when it looks good is the thing being built against.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.12",
+      "text": "Positive controls exist, so the instrument can be shown to PASS as well as to fail. A checker that only ever goes red is a wall rather than a gate, and six refusals alone cannot tell the two apart.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.2",
+      "text": "Every record read is AUTHORITATIVE, addressed to the zone's own nameserver. There is deliberately no fallback to the system resolver, because a recursive answer returns the REMAINING TTL rather than the configured one -- a cached TTL that reads as a configured one is the false green this command exists to refuse.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.3",
+      "text": "COULD NOT MEASURE is a third verdict, never folded into clean and never into drift, and it OUTRANKS drift in the exit code. A resolver that could not be reached and an estate that is correct must not produce the same result.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.4",
+      "text": "Every run states its own BLIND SPOTS, on a green run as well as a red one. A green covering only DNS reads as infra is fine while meaning the DNS third of infra is fine -- a summary of what the tool DID, mistaken for a statement about the estate. Documentation cannot do this job, because nobody reads documentation at check time.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.5",
+      "text": "A missing resolver is ONE error naming one missing tool, never twenty unreachable domains. The fault is a single absent dependency, and twenty copies of it bury the one line that can be acted on.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.6",
+      "text": "The header count and the rendered listing AGREE. A detail spanning several lines must not make the counted population disagree with the rows a reader can see.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.7",
+      "text": "SPF authorising a sender with NO DKIM record is a HALF PAIR and is stated in full. It makes that domain's own legitimate mail bit-for-bit indistinguishable from a forgery of it, and it is silent today only because no mail currently flows through that path.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.8",
+      "text": "A population too small to compare reports NOT COMPARABLE rather than passing. At N=1 consistency has nothing to compare against, and a green over an empty or single-member set is the shape of every false green this repository has a name for.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.9",
+      "text": "A sender the profile never DEFINES is reported as unmeasurable and named, never passed over. An absence in the target is not evidence about the estate.",
+      "kind": "test",
+      "state": {
+        "is": "withdrawn",
+        "reason": "SUPERSEDED by AC-6.3 on 2026-09-08, and withdrawn rather than reworded because the two would otherwise state one rule twice. This criterion said an undefined sender is reported as UNMEASURABLE at check time. That is now false and was always the wrong channel: COULD NOT MEASURE is headed 'gaps in the INSTRUMENT, not verdicts', and nothing about the instrument was missing -- the profile named a sender it never described, which is an incomplete TARGET and the operator's to fix. It is now refused at parse time before any network call. The check-time branch was removed with it: once validation refuses first, that branch could not be reached by any caller, and a check with no reachable red state carries zero bits while still reading like coverage."
+      }
+    },
+    {
+      "id": "AC-3.1",
+      "text": "init adopts an existing estate WITHOUT encoding that estate's drift as the target. A profile that transcribes reality makes that reality the standard -- the exact false green this thread exists to detect, manufactured by the tool built to detect it.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.2",
+      "text": "Two proposal sources with different availability. The STANDARD leads and applies at any N including 1. The estate MAJORITY falls back only where the standard is silent, and is meaningful only above N=2, so a design tuned to a portfolio does not degenerate at the modal case of one domain.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.3",
+      "text": "Provenance rows carry a KIND -- rfc, vendor-stated, or estate-inferred -- and init READS it. An estate-inferred row is majority-class rather than standard-class: it proposes as target only where majority would be admissible anyway, never for a different estate than it was drawn from, and at N=1 it goes to unreviewed.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.4",
+      "text": "Wherever neither source determines a value, init declares NOTHING and emits the field into unreviewed. An honestly empty assertion beats a silently seeded one.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-3.5",
+      "text": "devbin ships NO assertion that can go stale. init proposes only from the RFC-derived rules and the structural pair invariant -- neither of which rots on a vendor's schedule -- and every vendor-derived field goes to unreviewed:, populated from the live estate. Reworded from 'check must report the standard's age on every run' by hv's ruling of 2026-09-08: that wording presumed a shipped vendor table, and the recovered one proposed NOTHING at N=1 (two rows estate-inferred and self-barred, one an absence, one a prohibition), so there is no age to report. The requirement is met by construction rather than by machinery -- nothing shipped can go stale, so no staleness can hide.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "tests/unit/infra-init.bats AT-3.5 arm (every domain agreeing still yields no mail: or senders: in the target, both in unreviewed with live values); lib/infra.init infra_init_facet_kind table (only dmarc_presence is rfc, nothing vendor-stated ships); intent/st/ST0003/design.md section init AS BUILT"
+      }
+    },
+    {
+      "id": "AC-4.1",
+      "text": "Fly is driven end to end via flyctl, while DNS and Workspace emit an ordered, copy-pasteable record list rather than pretending to apply.",
+      "kind": "test",
+      "state": {
+        "is": "descoped",
+        "to": "ST0006",
+        "by": "hv",
+        "reason": "scope correction, 2026-09-08. These criteria came from design.md's work-package TABLE, which is a plan of work rather than a completeness boundary, and vc minted them into ST0003's contract the same morning it gave the thread a contract at all. ST0003's ratified Done clause in info.md names four things -- the schema and parse-time validation, infra check, infra init, and absorbing the standalone mail spec -- and none of these is among them. Moved rather than withdrawn: this work is wanted, it is simply not what ST0003 undertook. hv ruled it 2026-09-08."
+      }
+    },
+    {
+      "id": "AC-4.2",
+      "text": "apply exits NON-ZERO when it hands work back. A partial apply reporting success reads as done, and the operator stops.",
+      "kind": "test",
+      "state": {
+        "is": "descoped",
+        "to": "ST0006",
+        "by": "hv",
+        "reason": "scope correction, 2026-09-08. These criteria came from design.md's work-package TABLE, which is a plan of work rather than a completeness boundary, and vc minted them into ST0003's contract the same morning it gave the thread a contract at all. ST0003's ratified Done clause in info.md names four things -- the schema and parse-time validation, infra check, infra init, and absorbing the standalone mail spec -- and none of these is among them. Moved rather than withdrawn: this work is wanted, it is simply not what ST0003 undertook. hv ruled it 2026-09-08."
+      }
+    },
+    {
+      "id": "AC-4.3",
+      "text": "The legs are ASYMMETRIC and the output must not pretend otherwise. Hover has no public API and no credentials exist in any tree, so a uniform plan-apply-verify would overpromise on the leg that carries the estate.",
+      "kind": "test",
+      "state": {
+        "is": "descoped",
+        "to": "ST0006",
+        "by": "hv",
+        "reason": "scope correction, 2026-09-08. These criteria came from design.md's work-package TABLE, which is a plan of work rather than a completeness boundary, and vc minted them into ST0003's contract the same morning it gave the thread a contract at all. ST0003's ratified Done clause in info.md names four things -- the schema and parse-time validation, infra check, infra init, and absorbing the standalone mail spec -- and none of these is among them. Moved rather than withdrawn: this work is wanted, it is simply not what ST0003 undertook. hv ruled it 2026-09-08."
+      }
+    },
+    {
+      "id": "AC-5.1",
+      "text": "The earlier standalone devbin mail spec is absorbed as devbin infra mail, so DMARC handling has one home rather than two.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-5.2",
+      "text": "parse is PURE -- it reads no profile and makes no network call -- and FAILS LOUDLY on a malformed report rather than emitting zero rows. An absent auth result and a present one must differ in LENGTH, never by one of them being empty.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-5.3",
+      "text": "report owns the POPULATION and never implies an estate: it names the domains it SAW. A domain with live MX and no DMARC record cannot appear in any report, so a summary phrased as your estate is clean would be reporting on its own input while sounding like it reported on the estate.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-5.4",
+      "text": "check owns the ASSERTION and goes RED on a domain that published rua and is silently missing from the reports. That comparison needs a profile, which is why it cannot live in report -- a boundary drawn by what a component CAN know outlasts one drawn by what it should do.",
+      "kind": "test",
+      "state": {
+        "is": "descoped",
+        "to": "ST0006",
+        "by": "hv",
+        "reason": "scope correction, 2026-09-08. These criteria came from design.md's work-package TABLE, which is a plan of work rather than a completeness boundary, and vc minted them into ST0003's contract the same morning it gave the thread a contract at all. ST0003's ratified Done clause in info.md names four things -- the schema and parse-time validation, infra check, infra init, and absorbing the standalone mail spec -- and none of these is among them. Moved rather than withdrawn: this work is wanted, it is simply not what ST0003 undertook. hv ruled it 2026-09-08."
+      }
+    },
+    {
+      "id": "AC-5.5",
+      "text": "The disposition-is-not-authentication callout fires EVEN WHEN every row is clean, because a reader who sees ten green rows stops reading.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-5.6",
+      "text": "parse accepts the containers reporters actually send -- .zip and .xml.gz as well as bare .xml -- and reads the kind from the file's own BYTES rather than its name. Across 17 real reports from three reporters, not one arrived as bare XML, so a parser taking only .xml reads nothing anybody receives.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-5.7",
+      "text": "A container that is ambiguous or empty is REFUSED, naming what it held. A zip carrying anything but exactly one member is an anomaly rather than a shape to guess at, and silently taking the first would be a verdict over a population the operator never saw.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-5.8",
+      "text": "parse accepts a DIRECTORY and accounts for every file beneath it -- parsed, not a report, or FAILED -- with the accounting on stderr so stdout stays pure JSON Lines. Reports arrive in folders, dated subdirectories and a .DS_Store included, so without this every consumer writes the same walk and the same classification rule itself, untested. An empty population is an error: finding no reports means the path was wrong.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-5.9",
+      "text": "No two columns in a report row ever run together. A field wider than its column is misaligned but never joined to its neighbour: seen on real output, an IPv6 source address of 22 characters in an 18-wide column rendered as 2a00:1450:4864:20::4311 msg, where ::4311 reads as a perfectly plausible address. A report that can silently fuse two fields into one wrong-looking value is worse than one that misaligns.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-6.1",
+      "text": "The library ships pair-SHAPE and required-record-CLASS invariants, never values. A shipped value commits to an answer nobody has: a vendor include would have been wrong for a live domain on 2026-09-06, and whether that split is account-specific or generational is unresolved.",
+      "kind": "test",
+      "state": {
+        "is": "descoped",
+        "to": "ST0006",
+        "by": "hv",
+        "reason": "scope correction, 2026-09-08. These criteria came from design.md's work-package TABLE, which is a plan of work rather than a completeness boundary, and vc minted them into ST0003's contract the same morning it gave the thread a contract at all. ST0003's ratified Done clause in info.md names four things -- the schema and parse-time validation, infra check, infra init, and absorbing the standalone mail spec -- and none of these is among them. Moved rather than withdrawn: this work is wanted, it is simply not what ST0003 undertook. hv ruled it 2026-09-08."
+      }
+    },
+    {
+      "id": "AC-6.2",
+      "text": "Every invariant is profile-overridable, so a project whose vendor differs does not have to fork the library.",
+      "kind": "test",
+      "state": {
+        "is": "descoped",
+        "to": "ST0006",
+        "by": "hv",
+        "reason": "scope correction, 2026-09-08. These criteria came from design.md's work-package TABLE, which is a plan of work rather than a completeness boundary, and vc minted them into ST0003's contract the same morning it gave the thread a contract at all. ST0003's ratified Done clause in info.md names four things -- the schema and parse-time validation, infra check, infra init, and absorbing the standalone mail spec -- and none of these is among them. Moved rather than withdrawn: this work is wanted, it is simply not what ST0003 undertook. hv ruled it 2026-09-08."
+      }
+    },
+    {
+      "id": "AC-6.3",
+      "text": "A domain naming a sender the profile never defines is a MALFORMED PROFILE, refused before any network call -- not an estate that could not be measured. The profile is the target state, so a sender named and not described is an incomplete target, and reporting it as an instrument gap understates a fault the operator owns and can fix.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-7.1",
+      "text": "The runtime leg checks certificates, A and AAAA agreement, release_command path validity, and staged-secret detection.",
+      "kind": "test",
+      "state": {
+        "is": "descoped",
+        "to": "ST0006",
+        "by": "hv",
+        "reason": "scope correction, 2026-09-08. These criteria came from design.md's work-package TABLE, which is a plan of work rather than a completeness boundary, and vc minted them into ST0003's contract the same morning it gave the thread a contract at all. ST0003's ratified Done clause in info.md names four things -- the schema and parse-time validation, infra check, infra init, and absorbing the standalone mail spec -- and none of these is among them. Moved rather than withdrawn: this work is wanted, it is simply not what ST0003 undertook. hv ruled it 2026-09-08."
+      }
+    },
+    {
+      "id": "AC-7.2",
+      "text": "While the leg is unbuilt, check DECLARES the Fly runtime as a blind spot in its own output rather than omitting it. An unbuilt leg that says nothing is indistinguishable from a leg that found nothing.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "id": "AT-1.1",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-1.1"
+      ],
+      "status": "green",
+      "note": "Covered 2026-09-08. The arm lives in infra-check.bats rather than infra-profile.bats because proving the network was NOT touched needs the logging dig fixture; asserting it from a suite with no fixture would trust the source order instead of measuring it."
+    },
+    {
+      "id": "AT-1.10",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-1.10"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.11",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-1.11"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.2",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-1.2"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.3",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-1.3"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.4",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-1.4"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.5",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-1.5"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.6",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-1.6"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.7",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-1.7"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.8",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-1.8"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-1.9",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-1.9"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.1",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.1"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.10",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.10"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.11",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.11"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.12",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.12"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.2",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.2"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.3",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.3"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.4",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.4"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.5",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.5"
+      ],
+      "status": "green",
+      "note": "UNCOVERED, found while writing this contract. lib/cmd/infra:154 refuses when dig is absent, naming one missing tool rather than twenty unreachable domains, and no test asserts it. Without the arm, the single-line refusal and twenty could-not-measure rows are indistinguishable to the suite."
+    },
+    {
+      "id": "AT-2.6",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.6"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.7",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.7"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.8",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.8"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-2.9",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-2.9"
+      ],
+      "status": "green",
+      "note": "ITS CRITERION IS WITHDRAWN; this row is kept pointing at the arm that survived it. The arm was REPOINTED rather than deleted on 2026-09-08: same scenario -- a profile naming a sender it never defines -- but the verdict moved from a check-time COULD NOT MEASURE at exit 2 to a parse-time refusal, which is AC-6.3. The row is green because the arm is real and passes; what it once asserted is on AC-2.9's withdrawal reason, not here. The model has no retired state for a test row, so this is the least-wrong true one rather than a claim."
+    },
+    {
+      "id": "AT-3.1",
+      "kind": "test",
+      "file": "tests/unit/infra-init.bats",
+      "covers": [
+        "AC-3.1"
+      ],
+      "status": "green",
+      "note": "Arms green: outlier ttl to unreviewed; generated profile shows and check refuses it; uniform missing DMARC gets p=none citing RFC 7489. Red-driven 2026-09-16: M3 (outlier transcribed to target) red on arm 1; M4 (presence kind none) red on arm 3. lib/infra.init restored, verified by cmp."
+    },
+    {
+      "id": "AT-3.2",
+      "kind": "test",
+      "file": "tests/unit/infra-init.bats",
+      "covers": [
+        "AC-3.2"
+      ],
+      "status": "green",
+      "note": "Arms green: N=1 proposes p=none; N=2 proposes nothing; N=3 control proposes; an unmeasured domain counts in N, rc 2. Red-driven 2026-09-16: M4 red on the N=1 arm; M1 (-gt 1) red on the N=2 arm; M2 (voter-count denominator) red on the unmeasured arm."
+    },
+    {
+      "id": "AT-3.3",
+      "kind": "test",
+      "file": "tests/unit/infra-init.bats",
+      "covers": [
+        "AC-3.3"
+      ],
+      "status": "green",
+      "note": "Arms green: facet-kind reader; unknown provenance kind is rc 2. Red-driven 2026-09-16: M1 red on the kind-reader arm; M5 (unknown kind rc 1) red on the unknown-kind arm."
+    },
+    {
+      "id": "AT-3.4",
+      "kind": "test",
+      "file": "tests/unit/infra-init.bats",
+      "covers": [
+        "AC-3.4"
+      ],
+      "status": "green",
+      "note": "Arms green: three-way ttl split proposes nothing; N=1 live policy goes to unreviewed; parked no-MX domain spells dmarc: none in unreviewed only. Red-driven 2026-09-16: M6 (ttl plurality admitted) red on the three-way arm; M7 (N=1 live policy transcribed) red on the N=1 arm; M8 (no-MX gate dropped) red on the parked arm. lib/infra.init restored, verified by cmp."
+    },
+    {
+      "id": "AT-5.1",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-5.1"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-5.2",
+      "kind": "test",
+      "file": "tests/unit/infra.bats",
+      "covers": [
+        "AC-5.2"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-5.3",
+      "kind": "test",
+      "file": "tests/unit/infra-dmarc-report.bats",
+      "covers": [
+        "AC-5.3"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-5.5",
+      "kind": "test",
+      "file": "tests/unit/infra-dmarc-report.bats",
+      "covers": [
+        "AC-5.5"
+      ],
+      "status": "green"
+    },
+    {
+      "id": "AT-5.6",
+      "kind": "test",
+      "file": "tests/unit/infra.bats",
+      "covers": [
+        "AC-5.6"
+      ],
+      "status": "green",
+      "note": "Three arms. The discriminating one is the zip NAMED .xml: under an extension-based mutation it is the only arm that goes red, which is what makes 'by bytes, not by name' a measured claim. Recorded with it: libxml2 inflates gzip transparently, so the .xml.gz arm was green before this code existed and is not evidence about it."
+    },
+    {
+      "id": "AT-5.7",
+      "kind": "test",
+      "file": "tests/unit/infra.bats",
+      "covers": [
+        "AC-5.7"
+      ],
+      "status": "green",
+      "note": "Two members, zero members, and a zero-byte unpack. The zero-member arm found a real defect in the implementation: unzip -Z1 prints 'Empty zipfile.' to STDOUT and exits 1, so counting lines named an error string as a member."
+    },
+    {
+      "id": "AT-5.8",
+      "kind": "test",
+      "file": "tests/unit/infra.bats",
+      "covers": [
+        "AC-5.8"
+      ],
+      "status": "green",
+      "note": "Five arms. The discriminating one separates a BROKEN report from a file that is not a report: under a one-bucket mutation it is the only arm that goes red. Building it found that die inside parse_one aborted the whole walk at the first broken file, so later reports were never read and the accounting never printed."
+    },
+    {
+      "id": "AT-5.9",
+      "kind": "test",
+      "file": "tests/unit/infra-dmarc-report.bats",
+      "covers": [
+        "AC-5.9"
+      ],
+      "status": "green",
+      "note": "Found on real output in a live estate, not on a fixture. Red-driven by restoring the old pad, which returned a value unchanged once it reached the column width."
+    },
+    {
+      "id": "AT-6.3",
+      "kind": "test",
+      "file": "tests/unit/infra-profile.bats",
+      "covers": [
+        "AC-6.3"
+      ],
+      "status": "green",
+      "note": "Five arms, three mutations, each red on exactly one arm with both positive controls green throughout -- so the invariant discriminates rather than refusing everything. Found on a real estate: two live domains named mailersend in profiles that never defined it."
+    },
+    {
+      "id": "AT-7.2",
+      "kind": "test",
+      "file": "tests/unit/infra-check.bats",
+      "covers": [
+        "AC-7.2"
+      ],
+      "status": "green"
+    }
+  ],
+  "attachments": [
+    {
+      "path": "design.md",
+      "text": "---\nverblock: \"06 Sep 2026:v0.1: matts - Initial version\"\n---\n\n# ST0003 Design: `devbin infra`\n\n**Authored jointly by `devbin-vc` and `lamplight-dc` under hv's 2-way review instruction of 2026-09-06.** `lamplight-dc` drafted the four principles, the schema and the work-package breakdown; `devbin-vc` reviewed and landed. Where the review changed the design rather than tightening it, the change is marked **[vc]** and the original is stated, because a design record that keeps only the agreed version is a record of one person's opinions.\n\n**The target state -- what a correct estate looks like -- is the USER'S, and devbin holds none of it.** This thread is the MACHINERY; the content is a profile somebody supplies. Two copies of a target state is the drift this whole thread exists to detect.\n\n**[vc, 2026-09-07, hv's ruling] `docs/infrastructure.md` is DELETED, and this paragraph used to point at it.** It read _the target state lives in `docs/infrastructure.md` and is NOT restated here. That document is the CONTENT; this thread is the MACHINERY._ Two things were wrong with that and only the first was visible:\n\n- **It reached nobody.** `docs/` is devbin's own repository. The fourteen estates that RUN `infra` vendor `bin/devbin` and `lib/` and nothing else, so the only documentation of the profile schema was in the one tree where `infra` is never used against a real estate. The schema example now lives at **`lib/infra.reference.yaml`**, vendored to `bin/.devbin/lib/infra.reference.yaml` in every project exactly as `config.reference.yaml` already is, and **parsed by the suite on every run** -- which is also what makes the guard impossible to retire quietly, the way `[ -f \"$doc\" ] || skip` would have.\n- **Half of it was one estate's vendor snapshot, in a tool other estates vendor.** That is `bin/.devbin/cmd/fleet:47-63` again, and it is the same ruling that removed the baked install prefix from `lib/install` on the same day. The command's argument -- why a declared target, the go-red constraint, the blind-spot rule, where apply stops -- is at `bin/.devbin/help/infra.md`; the vendor rows are gone, and the section below says what that costs.\n\n## Principles\n\n### 1. Declare intent, discover facts\n\nAnything the tool can measure must not be declared **as a fact**. Authoritative nameservers are recoverable with `dig NS`; declaring them creates a second source of truth that can drift, and a way to be confidently wrong -- profile says Hover, domain moved to Cloudflare, and every subsequent \"authoritative\" read is a lie.\n\n**[vc] The test is not discoverability.** As first drafted the rule read _could devbin find this out? If yes it does not belong in the profile_ -- which deletes `ttl: 300`, every SPF include and the DMARC policy, all of which are discoverable and all of which must be declarable. Those are ASSERTIONS, compared against truth on every run. Nameservers were a defect because they were an INPUT -- a value lookups would run THROUGH -- so nothing could ever compare them to anything.\n\nThe operational form, which is this project's cardinal rule rather than a second heuristic beside it:\n\n> **A field belongs in the profile if and only if `check` can go red on it.**\n\nThat keeps every field the original kept, cuts the one it cut, and needs no new principle. It also leaves room to declare nameservers later as an EXPECTATION -- \"this domain should be on Hover\" is a fine assertion -- which the discoverability form forbids for no reason.\n\n### 2. A sender is vendor fact, not estate data -- but ship INVARIANTS, not VALUES\n\nThat `_spf.mailersend.net` pairs with `mlsend2._domainkey` is a property of MailerSend, the same class of knowledge as Google's MX. So devbin ships a small known-sender library and the profile names a sender rather than restating its records.\n\nThis does not violate `bin/.devbin/cmd/fleet:47-63` (no estate baked into a tool other estates vendor). That ruling is about ESTATE data -- whose domains, whose paths, whose accounts. A vendor's published record shape is not estate data.\n\n**[vc] But the library must ship invariants rather than values, and the estate audit proves why.** A shipped `mailersend: {spf: _spf.mailersend.net, dkim: mlsend2}` **would have been wrong** for `ctrlaltcompete.com`, which is on `_spf.mlsend.com` -- a different hostname authorising a disjoint IP range, from the same vendor. MailerSend's own documentation says the value is account-specific. A shipped value is therefore a confidently-wrong assertion: a check whose target was never the right target.\n\nThe invariant is universal and account-independent:\n\n> **A domain declaring a sender must carry a matched SPF include and DKIM selector pair, and the two must be consistent with each other.**\n\nThat fires on `ctrlaltcompete.com`'s real defect -- SPF authorising a sender with no DKIM to match -- while asserting no hostname at all. A value-based library would have raised a false positive on the hostname and stayed silent about the missing DKIM, which is the actual bug. It also keeps the library durably on the right side of `fleet:47-63`: an account-specific value sits much closer to estate data than a record shape does.\n\n**[dc, on review] The uncertainty argument is stronger than the counter-example, and it is the one to keep.** Neither node can establish whether the `mailersend.net` / `mlsend.com` split is ACCOUNT-SPECIFIC or GENERATIONAL -- the vendor's documentation does not say, and DNS cannot tell us. If it is generational, the current value is right and `ctrlaltcompete.com` is simply stale; if account-specific, any shipped value is wrong for somebody. **Shipping a value commits to an answer neither of us has.** Invariants are correct under that uncertainty regardless of which way it later resolves, which survives the counter-example being explained away.\n\n**[dc, on review] One invariant needs no vendor knowledge at all: intra-estate consistency.** Where several domains name the same sender, they must agree on its records. That is derivable from the profile plus DNS with nothing shipped, and it is exactly the check that finds the real defect. Between the two, `ctrlaltcompete.com` fails twice on day one -- half-pair by the matched-pair invariant, odd-include by consistency -- **with zero confidently-wrong assertions anywhere in devbin.**\n\nSo the library ships pair-shape and required-record-class; the ESTATE supplies the values; and `check` compares domains against each other. The profile can always override a shipped definition.\n\n### 3. Domains as a map with inheritance\n\nMost of the ergonomics. A bare `domain.com:` inherits everything from `defaults:`; only genuine differences are spelled. `senders: []` is never written -- only the non-empty case.\n\n### 4. `init` generates the profile, and must not launder drift into target\n\nAdopting an existing estate is the common case; greenfield is rare. So `devbin infra init --domains <list>` measures the live estate and emits a profile, turning \"write one from scratch\" into \"review a generated one\".\n\n**But a profile generated by transcribing reality encodes the drift AS THE TARGET, which automates the exact defect the tool exists to eliminate.** A naive init against the audited estate would faithfully record the stale include, the stray `a mx`, the missing DKIM, sixteen 900s TTLs and an absent DMARC -- then report a green estate forever. A control that cannot go red, manufactured by the tool, on day one.\n\nSo init proposes by MAJORITY and surfaces the outliers rather than absorbing them.\n\n## The schema\n\nEleven domains in fifteen lines:\n\n```yaml\nversion: 1\nname: geodica\ndefaults:\n  mail: google\n  ttl: 300\n  dmarc: { policy: none, rua: dmarc@geodica.com }\ndomains:\n  geodica.com:\n  matthewsinclair.com: { senders: [mailersend] }\n  laksa.io: { senders: [mailersend] }\n  gyreandgymble.com:\n  ctrlaltcompete.com:\n  tiliaris.com:\n  ficton.net:\n  baize.games:\n  storyfield.io:\n  wrighter.io:\n  snorkeltoast.com: { mail: hover, dmarc: none }\nruntime:\n  fly:\n    lamplight-app: { org: geodica, hostnames: [storyfield.io, frontdesk.ficton.net] }\n```\n\n`runtime:` is omitted entirely by an estate that does not use Fly. The verbose per-domain form stays legal for anything that genuinely differs.\n\n**`dmarc: none` is a DELIBERATE opt-out and must be spelled, never achieved by omission.** Omission means inherit. An unobservable domain has to be a decision someone typed -- this is the `snorkeltoast.com` finding turned into schema, so that \"outside the reporting estate\" is impossible to enter by accident.\n\n## THE SCHEMA AS LANDED IS UNBUILDABLE, and we validated it against everything except the parser **[vc]**\n\n**Measured 2026-09-06, after the schema was agreed, reviewed both ways, ruled by hv and committed.** `lib/config` is the ONLY YAML reader devbin has, design **D7** states \"no yq\", and a second parser for one command would be the Highlander breach this project's cardinal rule exists to prevent. Three independent features of the agreed schema are refused by it:\n\n| Agreed form | What the reader says |\n| ------------- | ---------------------- |\n| `dmarc: { policy: none, rua: ... }` | `flow collections are not supported; use block form` |\n| `geodica.com:` as a domain key | `key may contain only letters, digits, _ and -` |\n| `domains:` as `- name: geodica.com` | `sequences of maps are not supported` |\n\n**The dotted-key refusal is the fatal one**, because it kills domains-as-a-map outright -- principle 3, and by dc's own account \"most of the easy-peasy\". And the third kills the obvious fallback, so neither the map form nor the list-of-objects form parses.\n\n### The form that does parse, verified rather than proposed\n\nIdentifier keys with the FQDN as a field. Nested block maps and scalar lists are both supported:\n\n```yaml\nversion: 1\nname: geodica\ndefaults:\n  mail: google\n  ttl: 300\ndomains:\n  geodica:\n    name: geodica.com\n  laksa:\n    name: laksa.io\n    senders:\n      - mailersend\n  snorkeltoast:\n    name: snorkeltoast.com\n    mail: hover\n    dmarc: none\n```\n\nFlattens to `domains.laksa.senders.0 = mailersend`, which is exactly the shape a validator wants. **The cost is one identifier per domain**, and the inheritance ergonomics survive: a bare `geodica:` with only a `name:` still inherits everything from `defaults:`.\n\n### Why this matters more than the fix\n\n**The schema was checked against four principles, an ergonomics argument, a placement ruling, `fleet:47-63`, hv's any-project requirement and a two-way adversarial review -- and against the parser, never.** Both nodes wrote YAML that reads correctly to a human and to every YAML implementation except the one that had to execute it.\n\nThat is this thread's own subject, committed by both of its authors, inside the document defining it. It is the same shape as `check` reporting on a population its wording does not cover: **every reviewer validated the artefact against the thing they had in their head, and nobody ran it.** The tell was available from the first line of the schema and cost one command to obtain.\n\n**Corollary for the rest of this build: a schema is not agreed until it has been fed to the parser that will read it.** Not a review, not a principle, not a precedent -- the parser, on the actual bytes.\n\n## `unreviewed:` -- deviations are structural, not commentary **[vc]**\n\nThe original design emitted init's deviations as annotated COMMENTS: delete the comment to accept, edit the value to fix.\n\n**Comments are the least durable content in a config file.** Formatters strip them, editors fold them, a regeneration loses them, and the modal user runs init, skims, and saves -- arriving at a green estate the tool manufactured for them. The only thing standing between a generated profile and an automated false green cannot be the part of the file with no semantics.\n\nSo deviations land in an explicit block, and **`check` REFUSES to run while it is non-empty**:\n\n```yaml\nunreviewed:\n  ctrlaltcompete.com.spf.include: \"_spf.mlsend.com (2 other domains use _spf.mailersend.net)\"\n  ctrlaltcompete.com.spf.mechanisms: \"a mx (0 other domains carry mechanisms)\"\n  ctrlaltcompete.com.dkim: \"NO DKIM for declared sender -- half pair\"\n  snorkeltoast.com: \"no SPF, no DMARC, live MX -- outside the reporting estate\"\n  ttl: \"16 records at 900 against a 300 majority\"\n```\n\nAccepting drift becomes deleting a key -- an act -- rather than ignoring a comment, which is an omission. Same review ergonomics; the failure mode is a hard stop instead of a silent pass.\n\n**[dc, on review] `check` refuses while ANY entry remains, and never warns on partial review.** Five deviations reviewed down to one is still an estate with an unratified target, and a tool that goes green at \"mostly reviewed\" has rebuilt the thing being removed.\n\n## Two proposal sources: the STANDARD leads, the estate majority falls back\n\n**The original design had one proposal source -- estate majority -- and it has no defined behaviour where the requirement bites hardest. [vc]** 8/11 is comfortable; the sender split is 2-vs-1, which is thin; 1-vs-1 has no majority; **and N=1 has none at all, which is the modal case.** The brief is that any project can use this, and a normal project has one domain and one Fly app. A schema tuned to an 11-domain portfolio degenerates exactly where it will most often be run.\n\n**[dc, on review] The resolution is that majority was never the only proposal source, and the two degrade differently.**\n\n| Source | Availability | Determines |\n| -------- | -------------- | ------------ |\n| **The STANDARD** -- universal, vendor-derived | **Any N, including 1** | One SPF record; `~all` while `p=none`; DMARC present on every mail-carrying domain; matched pairs; TTL from `defaults`; the vendor's current MX form |\n| **The estate MAJORITY** | Only meaningful at N>2 | Only what the standard does not: which senders a domain uses, which policy phase, which Fly app |\n\n**[vc, 2026-09-07] THE STANDARD NO LONGER HAS A HOME, AND WP-03 IS BLOCKED ON THAT RATHER THAN INHERITING IT SILENTLY.** This row read _from `docs/infrastructure.md`_, and that document is deleted. Everything the row's right-hand column names is still the right thing for `init` to propose; what is gone is the artefact it would read them out of. **Recorded as an open dependency of WP-03 and NOT as a repointing**, because the two sections below establish that the deleted document was never a sound source anyway: two of its rows were the estate majority relabelled, and none of them could go stale visibly. A pointer moved to `lib/infra.reference.yaml` would have looked like a fix and delivered none -- the reference is a SCHEMA, and a schema determines shape, never values.\n\n**What WP-03 has to settle before it can build:** where a vendor assertion lives such that it can go stale VISIBLY. The candidates are a dated table shipped in the vendored half and reported by `check` with its own age, or no shipped standard at all -- `init` proposing only what majority and the schema determine and putting every vendor-derived field into `unreviewed:`, which is honest at every N and thin at N=1. Not decided here; named so it cannot be assumed.\n\n**RULED BY hv, 2026-09-08: THE RFC LAYER ONLY. devbin ships no vendor table.** `init` proposes from the RFC-derived rules and the pair invariant; every vendor-derived field goes to `unreviewed:`, POPULATED FROM THE LIVE ESTATE so the N=1 user reviews real values rather than filling blanks.\n\n**The trade turned out to have an empty side, and this is the measurement that showed it.** The deleted standard was recovered (`git show 6877dc0^:docs/infrastructure.md`) and read against its own kind table, which decides whether a row may propose a target:\n\n| row | kind | may propose at N=1 |\n| ------ | ------------------- | -------------------- |\n| V1 Google's MX form | `estate-inferred` | **no** -- its own rule sends it to `unreviewed:` |\n| V2 Hover TTL defaults | `estate-inferred` | **no** -- same rule |\n| V3 Hover has no public API | `absence` | **no** -- \"Proposes nothing\" |\n| V4 MailerSend include is account-specific | `vendor-stated` | yes, and what it proposes is SHIP NO VALUE |\n\n**At N=1 the shipped vendor table proposed exactly nothing.** At N>2 only V1 and V2 could propose, and they ARE the estate majority -- which the kind table then forbids using \"for a different estate than it was drawn from\", ie for every consumer but the one they came from. The document said as much about itself: _the standard's independent authority currently rests on one row and the RFCs_, and that row is a prohibition.\n\n**Reclassifying the six things the STANDARD column claimed to determine settles the cost.** One SPF record, `~all` while `p=none`, and DMARC on every mail-carrying domain are RFC-derived. Matched pairs is structural, and shipped on 2026-09-08 as the WP-06 invariant. TTL comes from `defaults`, which is the PROFILE and never was the standard. **That leaves the vendor's current MX form as the single genuinely vendor-derived assertion of the six -- and it is V1, the estate-inferred one.** Shipping no vendor table costs exactly that one row, which never had independent authority.\n\n**And the goal the standard was defended for is met without it.** The argument for shipping one was that the modal user should get a populated profile to review rather than an empty one to fill. But the standard proposes nothing at N=1, so it was never what populated anything: `init` reading the LIVE ESTATE is. The user's own records go into `unreviewed:` -- labelled unratified precisely because transcribing reality encodes that reality's drift as the target -- and the user accepts or corrects each. Populated to review, with no shipped assertion behind it.\n\n**AC-3.5 is reworded rather than satisfied**, because \"check must report its age on every run\" presumes a shipped standard and there is now nothing to age. The requirement it was protecting is met by construction: nothing devbin ships can go stale, so no staleness can hide.\n\n**Majority is the FALLBACK where the standard is silent, not the primary mechanism.** `init` at N=1 therefore proposes everything the standard determines and puts only the genuinely estate-specific choices into `unreviewed:` -- so the modal user gets a populated profile to review rather than an empty one to fill, which is what \"easy-peasy\" required.\n\n**This also closes a hole the review had labelled merely tolerable:** an estate uniformly wrong against the standard is now caught BY the standard rather than blessed by its own majority. Eleven identically-misconfigured domains no longer make the defect the target.\n\n**Wherever neither source determines a value, `init` declares nothing and emits the field into `unreviewed:`.** An honestly empty assertion beats a silently seeded one.\n\n### But the STANDARD is itself a control that cannot go red **[vc]**\n\n**[vc, 2026-09-07] THIS SECTION IS RESOLVED BY REMOVAL, AND THAT IS NOT THE SAME AS BEING FIXED.** The remedy it asked for -- dated provenance on every row -- was built on 2026-09-06 (`000b9df`) and then deleted with the document a day later. A standard that cannot go stale visibly is no longer shipped, so no estate can now check against a stale one; and equally, nothing ships a current one either. **The finding is retained in full below because it is the specification for whatever replaces the standard**, and a design that kept only the outcome would lose the reason.\n\nPromoting the standard to primary proposal source raises the stakes on a weakness that was tolerable while it was advisory prose. `docs/infrastructure.md` asserted `MX = 1 smtp.google.com` as \"Google's **current** single-record form\" and **carried no date or provenance on any row** -- while its own Context recorded that Google had already changed this once, from the five-record `aspmx.l` set to one. It changed before; it will change again.\n\nWhen it does, every estate checks against a stale target, every generated profile seeds it, and **everything goes green** -- with the damage now reaching N=1 estates, where majority provides no cross-check at all.\n\nNothing can verify the standard is current without asking the vendor, and devbin will not do that. But the age can be made VISIBLE, which is the same move as the not-machine-checkable block:\n\n- **every row in the standard carries a dated provenance** -- what was checked, and when;\n- **`check` reports the standard's own age** alongside its blind spots, every run.\n\nAn honest gap beats an invisible one. This is the third instance in this design of the same discipline: state what the instrument did not measure, in the instrument's own output.\n\n### And two of the standard's rows ARE the estate majority, wearing the standard's hat **[vc, on dc's provenance table]**\n\nWriting the provenance table established something neither node expected, and `lamplight-dc` reported it against their own document: **V1 and V2 are not vendor statements.** V1 is _observed on 7 of 11 domains in a live estate_; V2 is _inferred from the distribution of TTLs across 11 domains_. Both were derived from **the same population they will now be used to check**.\n\nThe document states that honestly and rules the right way -- a disagreement with live vendor documentation is the document being wrong. But the consequence for THIS design was not drawn, and it is sharp:\n\n**The two-source split exists precisely so that an estate's majority cannot define its own target. For V1 and V2 it already has.** The claim that \"an estate uniformly wrong against the standard gets caught by the standard instead of blessed by its own majority\" holds only for rows with an independent source. Had all eleven domains carried the legacy MX form, V1 would now read that the legacy form IS the standard -- and the standard would bless exactly the drift it was promoted to catch. **The mechanism does not fail loudly in that case; it produces a confident green.**\n\nThis does not retire V1 and V2. They are the best available, and dating them is what makes them re-establishable. What it retires is the assumption that \"the standard\" is a single class of claim.\n\n**Provenance rows carry a KIND, and `init` reads it:**\n\n| Kind | Source | How `init` may use it |\n| ------ | -------- | ----------------------- |\n| `rfc` | versioned by RFC, does not rot | propose as target at any N |\n| `vendor-stated` | read from the vendor's own documentation | propose as target at any N |\n| `estate-inferred` | derived from an observed population | **majority-class, not standard-class** |\n\nAn `estate-inferred` row proposes as target only where majority would be admissible anyway -- N>2, and never for a DIFFERENT estate than the one it was drawn from. **At N=1 it goes to `unreviewed:`**, because a row inferred from someone else's eleven domains carries no authority over this project's one.\n\n**Stated plainly because it changes how much the mechanism currently delivers: two of the four provenance rows are `estate-inferred` today, so \"the standard leads\" has less independent content than the design implies.** V3 is an absence, which is evidence about the search rather than the world. **V4 is the only row resting on a vendor's own words** -- and it is the row that says the value is account-specific, which is why the library ships invariants. The honest summary is that the standard's independent authority currently rests on one row and the RFCs.\n\n## `init` AS BUILT -- the decisions the rulings above left open **[vc, 2026-09-16]**\n\n**hv's ruling of 2026-09-08 removed the provenance ROWS, and the KIND survives on the FACET instead.** No table ships, so there is nothing for AC-3.3's \"rows\" to be. What `init` writes is a fixed set of profile facets, and each carries the kind of the only source that could determine it. `infra_init_may_propose` reads that kind, and it is the one place the N-gate lives (`lib/infra.init`):\n\n| facet            | kind              | proposes                                      |\n| ---------------- | ----------------- | --------------------------------------------- |\n| `dmarc_presence` | `rfc`             | at any N, including 1                         |\n| `ttl`            | `estate-inferred` | only above N=2, and only a strict majority    |\n| `dmarc_policy`   | `estate-inferred` | only above N=2, and only a strict majority    |\n| `dmarc_rua`      | `estate-inferred` | only above N=2, and only a strict majority    |\n| `mail`           | `none`            | never -- a label names a vendor               |\n| `senders`        | `none`            | never -- DNS cannot enumerate a DKIM selector |\n\nAn unknown kind is refused with rc 2 rather than folded into either answer: folded into yes it writes a target nobody sourced, and folded into no it hides a misspelt kind behind an entry that looks reviewed-worthy.\n\n**The majority's denominator is every domain NAMED, not every domain that answered.** A domain that could not be measured, or carries no such record, abstains, and abstention must not shrink N: two answers out of four would otherwise become two out of three, a majority the estate never had. Driven red by making the denominator the voter count.\n\n**The RFC layer proposes exactly one value: `p=none` on a mail-carrying domain with no `_dmarc` record, and only where no majority policy exists.** RFC 7489 is the source for a record's PRESENCE. `none` is chosen because it is the one policy that asserts a record without changing delivery, so the proposal cannot break mail. Where a domain already publishes a policy and no majority exists, NOTHING is declared and the live policy goes to `unreviewed:`. That leaves an asymmetry, and it is deliberate: in `check`, declaring a policy is the only way to assert the record exists, so a lone domain with a live `p=reject` gets no presence assertion until its owner declares one. Proposing `none` there would put a red on a correctly enforced domain; proposing `reject` would be transcription.\n\n**Two RFC rules the design's standard column named are NOT proposed, because no profile field carries them.** One SPF record per domain is enforced by `check` with no field at all, so there is nothing to propose. `~all` while `p=none` has no field and no check. Under principle 1 a field `check` cannot go red on does not belong in the profile, so `init` does not invent one.\n\n**`unreviewed:` keys are `<handle>_<facet>`, or a bare facet for an estate-wide entry.** The example in the `unreviewed:` section above, `ctrlaltcompete.com.spf.include`, is refused by `lib/config`, which allows no dots in a key: the schema section's parser measurement applies to this block too, and that example was never fed to the parser. `lib/infra.reference.yaml`'s commented example is corrected to the generated form.\n\n**The generated profile is read back before it is printed.** `init` loads and validates its own output and refuses to print one its reader rejects, because a user would otherwise meet a devbin defect as a parse error in a file they believe was handed to them ready to review.\n\n**stdout only.** A generated profile written over a reviewed one erases the review, which is the only thing between it and a false green. The caller redirects, so the caller decides what is replaced.\n\n## What `check` must report\n\n**Parse-time validation is separate from check-time.** A half-pair sender, an unknown sender name, an off-domain `rua` with no authorisation plan, two SPF sources for one domain -- all are malformed PROFILE, catchable before any network call. Failing them at check conflates \"your estate is wrong\" with \"your profile is wrong\": different problems, different fixes, different exit codes.\n\n**Every run states its own blind spots, green or red. [vc]** If `check` covers DNS and prints OK, that green reads as \"infra is fine\" while meaning \"the DNS third of infra is fine\" -- a summary of what the tool DID, mistaken for a statement about the estate. That is the `disposition` versus `auth_results` defect in a new costume. So every run ends with an explicit block:\n\n```\nnot machine-checkable: Workspace groups, routing, catch-all (3 items)\n```\n\nDocumentation cannot do this job, because nobody reads documentation at check time.\n\n## The `report` / `check` seam: population versus assertion **[dc]**\n\n**`infra mail dmarc report` names the domains it SAW and never implies an estate.** A DMARC report set covers only domains that published a `rua` and only receivers that chose to report. `snorkeltoast.com` has live MX and no DMARC record at all, so it **cannot appear in any report** -- and a summary phrased as \"your estate is clean\" would be reporting on its own input while sounding like it reported on the estate. That is absent reporting reading as clean reporting, produced by the tool built to detect absent reporting.\n\n**The placement follows from capability, not taste.** The seen-versus-expected comparison is the only check that can catch a silently non-reporting domain, and it is impossible without the profile. So it lives in `infra mail dmarc check`, which has one, and would be unimplementable in `report`, which by contract does not. The same shape as `parse` staying pure and then surviving the schema collapse for a reason nobody drew it for: **a boundary drawn by what a component CAN know outlasts one drawn by what it should do.**\n\n| Command | Owns |\n| --------- | ------ |\n| `report` | the POPULATION -- \"4 domains present in these reports\" |\n| `check` | the ASSERTION -- what should have been there, red on a domain that is silently missing |\n\nA domain publishing `rua` and producing no reports for a window is either misconfigured or ignored by every receiver. Both need someone to look, so it is red rather than a warning.\n\n**Two output rules, both legs:** an explicit blind-spot block on every run, and **the disposition-is-not-authentication callout fires even when every row is clean.** The second is the sharper one -- a summary that goes quiet exactly when it looks good is the thing being built against, and it is the only defence against a reader who sees ten green rows and stops reading.\n\n## Work packages\n\n**THIS TABLE IS THE SCOPE RATIONALE AND CARRIES NO STATUS.** The packages are `intent wp` records as of 2026-09-08 -- `intent wp list ST0003` owns what is built, and `intent/st/ST0003/acceptance.md` owns what each has to satisfy. While the table below was the only home for any of it, `intent todo` showed this thread as a bare row and its status survived solely as prose in two tracking documents, which disagreed with the code inside a day.\n\n| WP | Scope |\n| ---- | ------- |\n| WP-01 | Profile schema, parser, parse-time validation, the `unreviewed:` block and the no-majority rule |\n| WP-02 | `infra check`: DNS and mail legs. Authoritative reads only. Errors separated from drift. Blind spots in the output |\n| WP-03 | `infra init`: generate by majority, deviations into `unreviewed:`, never absorbed as target |\n| WP-04 | `infra apply`: Fly end-to-end via flyctl; DNS and Workspace emit an ordered copy-pasteable record list. Non-zero when it hands work back |\n| WP-05 | `infra mail dmarc`: parse / report / fetch / check. Absorbs the earlier standalone `mail` spec (hv, 2026-09-06) |\n| WP-06 | Known-sender INVARIANT library (mailersend, sendgrid, postmark, mailgun, ses), profile-overridable |\n| WP-07 | Fly runtime leg of `check`: certs, A/AAAA agreement, `release_command` path validity, staged-secret detection |\n\n**WP-01 and WP-02 are the minimum useful slice** -- a schema plus a check that can go red. **WP-03 is what makes it adoptable.**\n\n## Apply stops in different places on each leg, and the triad must not pretend otherwise\n\n- **Fly** -- end-to-end via `flyctl`.\n- **DNS (Hover)** -- **no public API, and no Hover credentials anywhere in the tree.** Apply can only emit an exact ordered record list to type. That is most of the value; the expensive part was never the typing.\n- **Google Workspace** -- Admin-SDK territory, and real setup work.\n\nA uniform `plan / apply / verify` triad across three legs would overpromise on **the one leg that carries the estate**. This is recorded as a design constraint rather than discovered mid-build.\n\n## The three open questions -- RULED by hv, 2026-09-06\n\n### 1. The Workspace console half: DECLARABLE, EXPLICITLY UNVERIFIED -- in its own namespace\n\n**hv took the recommendation, and it reversed the position both nodes had held.** The original joint line was that an honest gap beats a field nothing can check, because a declared-and-unverifiable field reads as covered.\n\n**That argument was made before `check` gained the mandatory not-machine-checkable block, and the block defeats it.** With declared fields the block names ITEMS rather than a CATEGORY: _group `dmarc@geodica.com` must accept external senders_ instead of _Workspace groups, routing, catch-all (3 items)_. The first is a checklist an operator can walk; the second is a disclaimer. **It would have caught the most likely failure of the DMARC cutover** -- a Workspace group defaulting to members-only and silently rejecting every reporter, which no DNS check can see.\n\n**[dc] Structural condition, and it is not optional: declared-unverifiable fields get their OWN NAMESPACE.** A `manual:` block per domain, never mixed with the checkable fields.\n\nThe governing rule is _a field belongs in the profile if and only if `check` can go red on it_. A Workspace expectation cannot, so on the rule as written it does not belong at all. The argument above earns it a place, but **as a different KIND of thing** -- an intent recorded for a human to verify. If it sat in the same namespace as checkable fields, nothing in the file would distinguish \"check validates this\" from \"check merely mentions this\", which is exactly the false confidence the original position was protecting against. **The separation is what defeats it, together with the block -- neither alone.** Same move as the provenance `kind` column: the entry stays, and what it may be used for is structural rather than conventional.\n\n**Standing caveat: a `manual:` entry records what SHOULD be true and can never detect that it stopped being true.** Acceptable, because the profile is intent rather than fact -- but an operator who reads a `manual:` block as a record of VERIFICATION has re-invented the problem. Naming every entry in the block on every run is what keeps that honest.\n\n### 2. `quarantine` gating: HARD GATE IN `infra mail dmarc check`, WARNING ONLY IN `infra check`\n\nA domain declaring `p=quarantine` with no report history in the store is refused by `infra mail dmarc check` (exit 1) and warned about by `infra check` (exit 0).\n\n**`infra check` must run with no DMARC store in existence at all.** A project using only the DNS and Fly legs should not acquire a report store as a dependency, so the hard gate lives in the leg that already owns one. The phase advance stays evidence-gated without making every leg depend on the mail leg.\n\n### 3. Multi-estate: DEFERRED, and the deferral is the record\n\nOne profile, one estate. `name:` already makes a second estate a second file. D18 says never speculatively, and **the deferral is recorded here so that it is a decision rather than an omission** -- the distinction this whole thread exists to preserve.\n\n## Placement -- RULED. `infra` is an ordinary builtin\n\n**hv, 2026-09-06: _\"`devbin infra` should work like any other builtin in devbin. Why would it be different?\"_ It is not different, and the question had already been answered by hv's own scope change a session earlier.**\n\n```\nlib/cmd/infra\nlib/cmd/infra.d/{dns,mail,runtime}\nlib/cmd/infra.d/mail.d/dmarc\n```\n\nThe question was raised because `mail` had been ruled into `bin/.devbin/cmd/` -- devbin's own tree -- specifically to keep DMARC machinery out of twelve estates that will never send a report. **That ruling was correct for `mail` and was superseded the moment the scope became \"any project can use it\".** It was carried forward one beat too long by `devbin-vc`, which is worth recording: a live constraint whose premise has changed reads exactly like a live constraint.\n\nThree reasons it is an ordinary builtin, none of them novel to `infra`:\n\n- **devbin already ships builtins that do not apply.** `db` in a project with no database, `server` in a library. Applicability has never gated a builtin, and exempting `infra` would be the exception requiring justification.\n- **A builtin with no profile is inert.** Resolution is `--profile`, `$DEVBIN_INFRA_PROFILE`, `./infra.yaml`, `~/.config/devbin/infra.yaml`, and a missing profile is a hard failure naming every path tried -- never a default, never an empty estate, never a silent skip. An estate that does not use it never invokes it, so the cost of shipping is bytes rather than behaviour.\n- **`bin/.devbin/cmd/fleet:47-63` was never about machinery.** It forbids baking an ESTATE into a tool other estates vendor. Shipping machinery everywhere is what devbin IS; the profile staying absent by default is what keeps the ruling satisfied.\n\n**Consequence for `mail`:** `devbin mail ...` becomes `devbin infra mail ...` and lands in the framework tree rather than devbin's own. Nothing was written under the old placement, so the change costs nothing.\n",
+      "bytes": 37201,
+      "sha256": "b119494589b363ca750dbeae9394e08035244930fe555df73e412fb8abc3378c"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 100,
+  "slug": "fullcycle-s-consent-line-is-written-into-the-run",
+  "title": "fullcycle's consent line is written into the run log untagged, against the annotation rule",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-09-21",
+  "closed": "2026-09-21",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the 2026-09-21 doc audit (finding K4).\n\nusage-rules.md: \"NEVER write devbin's own annotations into a run log untagged. Prefix them with `_DEVBIN_INVOKE_TAG` so `write_errors_file` strips them before the extraction grammar runs.\" fullcycle's consent line (issue 0096) -- `devbin: confirmed y to ...` or `devbin: --force given ...` -- is devbin's own record, written as the first line after the invocation record, untagged. Harmless under the generic grammar today; against the rule as written.\n\nFix: both forms carry `devbin| `, like the invocation record above them. Scope, ruled by vc: the consent line only. fullcycle's older header, phase markers and STOPPING line are also untagged; STOPPING landing in .errors is useful, and a verdict file's contents are a bigger decision than 0.1.4, so they are not changed and not filed. Tests: fullcycle.bats, the 0096 consent arm and \"the preview and the real invocation come from ONE decision\", driven red at the parent commit.\n\n\n## Resolution\n\nFixed at `71e282c`, test driven red first at its parent commit. Full suite 1578/1579 at `ae3b200`: the one failing arm was environment-caused (GIT_OPTIONAL_LOCKS=0 exported in the running shell defeated readonlygit.bats' stale fixture, and its control arm caught it) and is green in a clean environment; that file is hardened at `ad86870`. Reviewed by vc against this issue; vc's mutants on 0099 and 0104 were killed. Ships in 0.1.4.\n"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M52EVZYDTVDKQDG451BNTYXQ",
+  "ts": "2026-10-16T13:36:50.637Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 24,
+    "text": "ST0008 WP-01 v2 (908fbf29 on 1dadcaa3) and issue 0194 (3580f195) are both APPROVED by vc. Their joint targeted run (24 files, BSD and GNU, ~/Devel/scratch/devbin-cc/wp01/joint at 6769091b = 1dadcaa3 + WP-01 + 0194, script wp01/runs/booking.sh) waits on intent-vc's GO after hv's build all and dc's 0200 run. START/END go to vc, intent-vc and utilz-vc. No rebase is needed: main's tree outside intent/ equals 1dadcaa3. Both then land on the next landing suite with 0200. Banked: clone-archive/wp01__build__6769091b.bundle (9e0bf4d2) and i0194__build__3580f195.bundle (c940ce9f), verified in a fresh clone of the real tree. Re-entry: ~/Devel/scratch/devbin-cc/{wp01,i0194}/STATE.md."
+  }
+}

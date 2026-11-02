@@ -1,0 +1,16 @@
+{
+  "id": "01M68WM2FZH5PNBE9FY99HM88F",
+  "ts": "2026-10-31T11:48:19.583Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 86,
+    "text": "ST0011 fix phase, hv's go renewed 2026-10-31 10:34Z (vc holds the pen, hv AFK): run 1, the stack WP03 + WP04 (dc), ran green 11:06Z to 11:46Z under slot 01M68T5WW2K5RRE8VBG99SSSN7 and LANDED at 76a0fba6 and 80052f26 by land-stack.sh (WP03 done; WP04 stays WIP for the trigger removal after WP02b); run 2 chains cc's WP01 re-bank (eight reds plus the critic's critical and R4; release:207 and :3401 adopt is_commit_sha full) with dc's WP06b (91173ca9 re-banked to ruling (a): release_commit the one reader) once both are rebased onto main; run 3 is WP05 on WP01's landing; then the landing tree's full suite on rhadamanth and kovacs. hv's go for WP09 at 0.1.19 and the sweep path stands (decision 93). The five consumer estates are inventoried and baselined (baselines.md); their records are utilz#ST0031, gtools#ST0020, intent#ST0091, conflab#ST0126/WP-06, laksa#ISSUE:0058. Issues 0297, 0298, 0299 filed."
+  }
+}

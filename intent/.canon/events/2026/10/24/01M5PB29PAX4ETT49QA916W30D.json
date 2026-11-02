@@ -1,0 +1,15 @@
+{
+  "id": "01M5PB29PAX4ETT49QA916W30D",
+  "ts": "2026-10-24T06:55:11.563Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0212"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "CHANGELOG.md has no entries for 0.1.7 to 0.1.13: the generator matches note headings exactly, and every note since 0.1.7 suffixes its headings (eg '## Fixed -- reaches every estate')"
+  }
+}

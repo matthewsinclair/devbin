@@ -1,0 +1,15 @@
+{
+  "id": "01M5N2BSGMW4K3GWY7N0W5P29W",
+  "ts": "2026-10-23T19:03:51.060Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0008 WP-08 (D55): the final candidate is 5059a26e, one commit on 0683a6a8, accepted by vc (vc's review at 2dec40a1 fixed as F1 to F3, then vc's wording fold amended in). Left: the targeted run (the hold below), then bash scripts/bundle.sh st0008-wp08-r2 verify2 for the bundle at 5059a26e, then fill handover/ADDENDUM.md's placeholders (bundle sha256, HEAD, main, window, seals) and send devbin-vc both paths. All under ~/Devel/scratch/devbin-cc/wp08/: the build clone build/, scripts/plan3.sh, scripts/census.sh, scripts/bundle.sh, handover/. The first bundle, st0008-wp08.bundle, stays as the HANDOVER cites it. No push, no release."
+  }
+}

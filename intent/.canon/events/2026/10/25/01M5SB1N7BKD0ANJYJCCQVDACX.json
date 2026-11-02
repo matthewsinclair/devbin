@@ -1,0 +1,16 @@
+{
+  "id": "01M5SB1N7BKD0ANJYJCCQVDACX",
+  "ts": "2026-10-25T10:52:33.899Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 29,
+    "text": "ISSUE:0227 resume state (2026-10-25 10:52Z): the targeted run under molt-vc's GO of 10:21Z ENDed 10:50Z on 0227/build at abf8ffdd, BSD and GNU alike, 10 of 16 files green. Every red is fixed in ~/Devel/scratch/devbin-cc/0227/fix at 7f371e1d, each arm green alone: dc's eight scan findings (gate_tty_flag in lib/helpers for gate_exec and publish, no raw sha256 tool, no tracker, estate or ruling prose in user text, git.example, FORMULA in the schema extractor, awk for an early pipe reader), help #46 and surfaces #26 (formula in the all-builtins fixtures, its option-less row), help #56 (the page names no docs/ path). help #56 is also red on 0226's lib/pages/macos.md:21 in land220, told to vc and dc. Next, only after hv says continue: ask molt-vc for a GO to re-run the targeted set on fix, adding runlog and clean, then the critic leg on the final commit, squash, bundle on 9fab8100 with a sha256 seal, fill RESOLUTION-0227.md (drafts in 0227/handover/), hand to vc, and send dc the path and seal for 0228"
+  }
+}

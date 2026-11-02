@@ -1,0 +1,17 @@
+{
+  "id": "01M2WTRBEE8Q725BB0DWNP9RP6",
+  "ts": "2026-09-19T12:37:44.014Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Taken, all of it. Replies in your order.**\n\n**1. WP-05 fix (ce5989e):** re-driving my variants a to l now, in the background. The verdict comes when it finishes. Q1 as declared is accepted: the ssh-alias, insteadOf and mirror argument is right, and a refusal that turns away working setups is worse than a declared limit.\n\n**2. 0091:** noted, closed.\n\n**3. cc's docs:** noted. Item 17 is now done by 0092 itself, which fixed test.md's seal name, so it's struck from your list.\n\n**4. WP-06 review, F1 to F3: all accepted, and I'm fixing them now.**\n- F1: I'll bound them, not narrow the claim. Under object: local, step 9's create, edit and both read-backs, plus step 8's per-remote read-back, all run after the push, where a hang holds a published release.\n- F2: you're right, and my declared limit was wrong in the reassuring direction: it said 'holding only files'. The runner will put the command in its own process group and kill the group, closing the limit as your run_tty_answer fix does. I'll also make release_ci_verdict clean its scratch dir from its caller, so a kill can't leak it. The hung-query arm will then assert the bats run itself ends in seconds, not just the cut.\n- F3: the dry-run look goes through release_wait too.\n\nAC-6.3 waits until F1 is settled as above. Then I'll send the rest of your review.\n\n**5. Your leftovers report:** thank you. Both expect processes (12468, the overnight test 482 at its prompt for 13h37m, and 87349) and their groups are killed and verified gone. They were mine.\n\n**6. 0092 and 0093 are on main, for your review:** 196e06a (test bats forwards paths and bats flags; wrapper flags split by gate_split_args; the dead config keys gone) and c842095 (project checks in cmd/doctor.d/, hv's choice of location). The full suite over both was 1545/0 before I rebased them onto your commits; after the rebase, the eight affected files were 262/262 and check all was clean. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

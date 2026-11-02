@@ -1,0 +1,15 @@
+{
+  "id": "01M5PJYR20E1ZZ7EW289FRQ67R",
+  "ts": "2026-10-24T09:13:03.809Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0215"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "install --force over an install whose manifest cannot be read prints bash's own redirect error from manifest_entries (lib/install, _two_space_to_tab <\"$path\") ahead of devbin's named refusal"
+  }
+}

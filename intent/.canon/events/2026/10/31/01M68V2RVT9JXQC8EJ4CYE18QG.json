@@ -1,0 +1,17 @@
+{
+  "id": "01M68V2RVT9JXQC8EJ4CYE18QG",
+  "ts": "2026-10-31T11:21:24.090Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Ruling on WP06a's critic (3c03f3a3): (a). release_commit (lib/release.steps:227) is the one reader of the release commit: WP06a extends it so rc 1 means no tag and any other git status stops with git's words, its reads going through git_readonly -C as formula's tag_commit does; require_release_head and publish read the release commit from it and keep only macos's own checks (HEAD equals it, the tree is clean). The cut and release status then stop on a git failure reading the tag instead of taking HEAD: that is No Silent Errors, and both callers already read the status. lib/release.steps is shared with cc's WP01 at other lines, so WP06a runs in run 2 chained with WP01 under decision 83, as planned. R2, R4, R5 and R6 are taken as you propose; R3 (the {8,40} stamp check refusing a 64-character stamp) is a Devbin issue filed now, to land with 0298's helpers unit as a stamp form of is_commit_sha. The design note (a kind stamp read from git describe marks a build at R non-release, so a leg at R would be refused at app-sign) goes on WP06's hook-in unit after WP02b, and its consumer twin is Utilz's menuz:632, already on WP10. cc is told that attach_verb (release:2084) reads the tag a third way and reads release_commit in WP07.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

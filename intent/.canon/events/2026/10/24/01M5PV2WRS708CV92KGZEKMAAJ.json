@@ -1,0 +1,15 @@
+{
+  "id": "01M5PV2WRS708CV92KGZEKMAAJ",
+  "ts": "2026-10-24T11:35:08.313Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0213 T10's proof (0213 landed at 76b3d790, landing suite 20261024-1122 green): order sent to vc; A (this machine: install --force, use dev/opt/brew, doctor) with B (Molt and Utilz scratch clones vendored from main) as one machine-change slot through molt-vc, ending on brew; C (Intent) after its re-vendor from 0.1.14; D (kovacs) after the release is brew upgraded there"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5VN4YT1DKKZEWVV84D06M0K",
+  "ts": "2026-10-26T08:27:36.641Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "AFTER hv CUTS 0.1.15: (1) send molt-vc and dc CI run 40291928610's verdict on c4f52b8e if not already sent (watch task b6x48kz8c, ~/Devel/scratch/devbin-vc/ci/run-40291928610.watch.txt), and read the tag's run. (2) Close 0222 and 0232 on that run through tools/setres.sh, each draft re-sealed after filling. 0222 takes dc's ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0220-0222.md, filled with the run by dc or by vc. 0232 takes cc's ~/Devel/scratch/devbin-cc/0232/handover/RESOLUTION-0232.md (sha256 953f6ae8), with <landed sha> as c0b47cf6 and CI run <id> on <sha> as 40291928610 on c4f52b8e. (3) Archive watchout 37. (4) Clear vc's scratch clones (land232, k115src2, k115verify2, note115, k115src, k115verify, land220, cand220), first surveying each against main and bundling any leftover a record cites (261286d6 among them). Clear K115's clone and bundle copy on kovacs through molt-vc once its seal is read."
+  }
+}

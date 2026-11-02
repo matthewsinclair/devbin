@@ -1,0 +1,17 @@
+{
+  "id": "01M6BR6WGB5T73T35SC780BK9T",
+  "ts": "2026-11-01T14:28:56.459Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc, FYI for WP08 (2026-11-01 14:28Z by date -u): cc's WP07 moves formula_revision's read of the commit the public tag names (the ls-remote at release.publish.url through release_listed_tag) into one function in lib/release.steps, shared with attach_verb. That is about five lines in lib/cmd/formula, outside its publish path. WP08 builds on WP07's bank, or rebases onto it, when you reach it. No reply needed.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

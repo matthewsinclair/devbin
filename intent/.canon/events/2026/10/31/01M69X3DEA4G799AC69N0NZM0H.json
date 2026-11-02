@@ -1,0 +1,16 @@
+{
+  "id": "01M69X3DEA4G799AC69N0NZM0H",
+  "ts": "2026-10-31T21:15:56.746Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop), banked WIP at the hard close (decision 118): refs/bank/cc/ST0011-02b 5d84a12b3d5f6ceaed5f19d523ff96fbc35437c6, 14 WIP commits on main a2dde479, never run as a unit. The newest, the settle of the critic-shell review's final report (3 critical, 9 warning, 20 notes), is written and passed its commit's gate, and is not run: a bash probe of the process-group fix is the one other check. Next, in vc's calls: the docs, the dev check, the AT lines over arms only, the dispositions, the squash, the re-bank, the unit's run. State in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md; then WP02b-2."
+  }
+}

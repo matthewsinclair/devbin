@@ -1,0 +1,15 @@
+{
+  "id": "01M3999G9BFYBA836MEMNQXRMG",
+  "ts": "2026-09-24T08:42:39.275Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "2026-09-24 boot, read with doing 5 (date -u 08:42Z); supersedes doing 6. SP in doing 5 is the 2026-09-23 session's scratchpad, NOT this session's: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad, intact (no reboot since 2026-09-22 21:27Z). Verified this boot: 0123.v3final.patch is sha256 9e5a9f1212c627f3, vc's approved bytes; git apply --check passes at 6c9fbc6, and none of its 11 paths moved since 0ec1fbf. vc runs documentation, helpers and contract on 6c9fbc6 + v3 before land.sh, and the commit gate is now Intent 4c687eaad's, so read its output line by line. None of 0131's twelve points is done (every changed file in SP/rebase0131 dates from 17:33:00Z), and SP/0131.v2.patch predates them and is not the tree's diff. 0139's critic finished at 18:31:50Z (SP/critic0139-report.md): 0 critical, 5 warnings, 7 recommendations. AGREED WITH vc (its reply, received by 08:42Z): the new clean issue is built inside 0131 v2 and closes with it; W3, W4(ii) and W4(iii) fold into 0139 v2; W4(i) folds into 0134's point 5. vc lands 0128's two helpers first, the tier helper and the option-level what-runs helper, so 0134 and 0135 can start before the rest of 0128. WHEN THE HOLD LIFTS, IN ORDER (the hold covers filing the issue too): copy SP outside the repo to ~/Devel/scratch/devbin-cc/ (vc's ask), land 0123, file the clean issue (0140 is the store's highest), then 0131 v2, 0139 v2, 0134, 0135."
+  }
+}

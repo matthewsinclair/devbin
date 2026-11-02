@@ -1,0 +1,16 @@
+{
+  "id": "01M6BD81ZCAAZSAFM2NFDVGVPP",
+  "ts": "2026-11-01T11:17:20.492Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115). READY FOR vc'S LANDING. The re-run (slot 01M6B9QGX6WPYENRTQ4XHRFDS7, 10:27:18Z to 11:07:56Z by date -u) at 90ee95b3b4f027e3e05e92d77a625a22cce061f5 met vc's ruling. Its one red was dispatch.bats 542, main's (decision 124), and vc accepted the END. handover-wp16.sh verified st0011-16.bundle (90ee95b3 on aa566d51) in a fresh clone; it is in wp16/handover/ with SHA256SUMS. The AT rows are at canon 63a599b7: AT-5.1 to 5.3 over AC-5.1 to 5.3, and AT-5.4 over AC-5.5 (decision 101; AC-5.4 is non-test and takes no row now). They are to-write because intent at red refuses a row whose cited file, tests/unit/cache.bats, is not on main. 'ready' went to vc live and on the board, with the lint (main's 22 literal-id findings, none new). AT vc'S LANDING (main's new head from vc): bash ~/Devel/scratch/devbin-dc/wp16/at-mint.sh verdicts AT-5.1 AT-5.2 AT-5.3 AT-5.4 (red with the red clone's evidence, then green with the run's); intent at lint ST0011 (20 findings expected, none on the four rows); commit by path; send vc the output and the sha. Then issue 0306, then WP17. No bats slot until vc says. The state: wp16/NOTES.md."
+  }
+}

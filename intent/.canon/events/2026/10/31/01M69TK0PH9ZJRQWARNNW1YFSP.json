@@ -1,0 +1,15 @@
+{
+  "id": "01M69TK0PH9ZJRQWARNNW1YFSP",
+  "ts": "2026-10-31T20:32:02.257Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "WP16's cache key carries the CPU architecture (hv 'Ok' on vc's rec in vc's window, 2026-10-31 20:32Z by date -u): x86_64 and arm64 runners never share a key; dc folds the architecture into design.md s13's key inputs and the arms with its critic dispositions, before WP16's run; a key already banked without it is a WIP key, not a contract."
+  }
+}

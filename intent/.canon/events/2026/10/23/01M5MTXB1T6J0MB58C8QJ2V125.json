@@ -1,0 +1,16 @@
+{
+  "id": "01M5MTXB1T6J0MB58C8QJ2V125",
+  "ts": "2026-10-23T16:53:37.466Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 24,
+    "text": "0203 (85b2b029), 0204 (3de21d30) and 0205 (15e7edf8) handed over to vc, bundles sealed and each green on its targeted run (0205's under LC_ALL=en_GB.UTF-8, END 16:50:54Z); vc accepted 0203 and 0204, and 0205's growth in principle. RELEASED WHEN vc lands them in the 0.1.13 batch, or asks for a rebase, which dc then builds"
+  }
+}

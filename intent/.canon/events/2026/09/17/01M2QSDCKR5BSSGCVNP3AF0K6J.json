@@ -1,0 +1,15 @@
+{
+  "id": "01M2QSDCKR5BSSGCVNP3AF0K6J",
+  "ts": "2026-09-17T13:38:04.024Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-02 is in vc's review, and the review fold is built, proven and NOT yet committed.** vc's review at a782cf0 was not OK: K1-K4 code, T1-T8 tests, L1-L7 low. All folded in scratchpad/wt-fold (cf65550 + 8 paths), backed up as intent/whiteboard/dc/.history/20260917/st0007-wp02-review-fold.patch (applies at HEAD). K3 is stage_beside and replace_file replacing mktemp_beside in all five writers. Red-first: every K arm red at 5f4d898, and sed_inplace on 0444 red at 847e927 too. Mutants: 30 of 30 killed on their intended arms (vc's V01-V19 plus the fold's 11). check lint 45 files, 0 breaches. Full suite on the fold running (scratchpad/full-fold2.tap, plan 1313; vc holds its suites until dc says it ended). NEXT: read that TAP in full; tell vc the suite ended; add the MODULES.md row for the replace helpers; commit the fold by pathspec; send vc the sha and scratchpad/wp02-fold2-packet.md (sha and suite filled; under the message bound); on vc's OK green AT-2.1 to AT-2.4, write WP-02's as-built from scratchpad/canon-wp02/asbuilt-wp02.md, and close WP-02."
+  }
+}

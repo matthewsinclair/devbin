@@ -1,0 +1,16 @@
+{
+  "id": "01M6C3Q38M55499XZ98RP93K6S",
+  "ts": "2026-11-01T17:50:02.004Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 17:49Z by date -u, after the hook-in stack's landing):\n    (1) WP08 alone in kit8 (01M6C255TV1C6MNNW9ZEH4YCBF, START 17:43:32Z by cc's date -u). At END, read every TAP, .rc and the seal. Land it with land-stack.sh and LAND_BASE_OFF_MAIN=1 (its base ba5a8270 is on main as 8a776229), unit ST0011/08. Then cc's AT-3.9. AC-3.3 is read once AT-3.4, 3.5, 3.6, 3.8 and 3.9 are green, and WP07 and WP08 close.\n    (2) dc's WP02c, unit ST0011/02c, on WP08's bank 8a6ee377. Order of work: critic r2's settle, the squash, the red clone, the bank, then the ask in dc's kit with the stricter want_red. AT-3.15 and AT-6.3 at its landing, then WP03 and WP02 close where their ACs read satisfied.\n    (3) K0120 on kovacs at 8a776229 (01M6C3JYKM1NVYCNZQ73X1VPAA, granted on light), beside WP08's run. kovacs-sysadm has checked both sha256s and reports 16G free. It waits for hv's ! line in kovacs-sysadm's window. At END, read the seal's lines. Any red is fixed forward in WP02c's run.\n    (4) dc closes WP04, WP05 and WP06 where their ACs read satisfied. AT-2.7, AT-3.3 and AT-3.6 are green (f1b03488), and AT-2.2 too, so AC-2.1 reads satisfied.\n    (5) final-scans.sh <last landed head> <label>, in a slot. Then the final kovacs suite at the cut's head: prep-korder.sh, then hv's ! line.\n    (6) WP09 at 0.1.19 on hv's word: RELEASES/0.1.19.md from the draft (todo 193), then the cut. Then the sweep per sweep-plan.md, then WP10 to WP14. Those adoptions give the artefact cache its first callers, as hv was told when hv asked why ~/.cache/devbin is empty: nothing in the fleet runs 0.1.19, and the core's build calls no cache verb.\n    Desk: devbin's runs go first. trellis-page ran twice in gaps, green both times."
+  }
+}

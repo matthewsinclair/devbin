@@ -1,0 +1,19 @@
+{
+  "id": "01M6B1JXEC7AZDF60PMXRD026R",
+  "ts": "2026-11-01T07:53:33.388Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.announce",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "FOLD ORDER from hv (in vc's window; the clock read above; relayed by vc): context is high, so every session in this work folds now and holds for hv's /compact. (1) Bank what you have: uncommitted work as WIP (a bank ref by fetch and CAS, or a stash named in your record). (2) A run already granted runs to its END, END sent as usual; book nothing new. (3) Clear out what can be cleared (scratch clones and dirs no longer cited), by script, never an inline rm -rf. (4) Localfold: your records and board folded, handled messages cleared, handled sends archived (wb archive message --handled); commit by path, nothing pushed; do NOT release, since a compact is not a session end. (5) Send devbin-vc ONE fold line: what is banked where, what still runs, where you stand; then hold for hv's /compact and the go after it. Nothing public anywhere.",
+    "recipients": [
+      "dc",
+      "cc",
+      "hv"
+    ]
+  }
+}

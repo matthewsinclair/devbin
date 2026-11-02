@@ -1,0 +1,16 @@
+{
+  "id": "01M4800975PGRDEFFFS2CR890F",
+  "ts": "2026-10-06T06:56:47.333Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE: every open issue closes before the cut (hv, 2026-10-05); the order is ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. LANDED AND CLOSED (each seal in land/seals): 0154 (831aec59), 0174 (7e3f580c), 0173 (bd81574c), 0169 (ce72a4ff), 0166 (b3f37f92), 0153 (73a0e43b), 0175 (eb9166e1), 0164 (64d80788), 0176 (f7bd9984), 0159 (85f2fb0b, seal 1657), 0157 (430e2c28), 0158 (44db8915) and 0156 (627e3948), all three closed at 415ce738 (seal 1749); 0163 v3.1 (6438b958) and 0167 (09f73fed), both closed at 9b369360 (seal 0607). 9 open. HELD at localfold on hv's word (2026-10-06 ~06:50Z: \"take stock, bank what we can, then localfold+compact and wait for further instructions\"). Do nothing new until hv speaks. STATE: (1) cc's 0155, 0160, 0161 and 0162 v1 are APPROVED (review/0155-0160-0161-0162-notes.md). Their landing tree passed SUITED: land-fin, 2190 of 2190 ok (seal 0607). Patches: ~/Devel/scratch/devbin-cc/sp-2026-10-03/patches/*.on-*415ce738.patch (0155 206c5d23, 0160 4d92df8f, 0161 3a12f1db, 0162 06b35c69). They share no file with the landed pair, so main 9b369360 plus the four is land-fin's code exactly. Texts snapshot: land/cc-016x-commit.v1.msg and cc-016x-resolution.v1.md; fill {SUITE} from land/fin.suite.txt and {SHA}. BLOCKED ON 0155's {TIMING155} (done-when 3): cc times it in a QUIET WINDOW that vc calls when land-ch ends; dc holds heavy runs then. Land one at a time with git apply and commit --only, check each blob against land-fin, then delete land-fin. (2) dc's chain, 0168, 0165, 0170 and 0171, is APPROVED (review/0168-0165-0170-0171-notes.md) and handed off: patches ~/Devel/scratch/devbin-dc/0.1.9/patches/chain-cc3d4587 (63003541, 7176ce9d, 13af2c9e, 99ab7b7e). Texts: land/dc-msg-016x.txt and dc-resolution-016x.md, with <landing sha> to fill; add vc's suite as a THE SUITE paragraph before the (C) line and as a last line in the Resolution. SUITE RUNNING in land-ch (main af758c10 + pair + cc's four + the chain, 2203 tests) from 06:21:41Z; at 06:56Z, 1657 ok and 0 not ok; console land/suite-ch.console, task output b0xeribad. On its green, land the chain after cc's four. (3) 0172 (high) moved to cc, with dc's unclaim, and is in build on top of the chain; scope agreed (review notes in messages). Needs all six tree scans plus help. (4) Release note: entries for the 13 issues landed by 415ce738 are drafted in notes-entries-landed.md (agent draft, read and scanned), with assembly decisions in notes-draft.md (0157 moves to Changed). Still to add: 0163, 0167, cc's four, the chain and 0172. Then assemble RELEASES/0.1.9.md and run bin/devbin release notes. For hv at the cut: publish-upgrade the machine install before any sweep (cc's OUT-4); then todo 145."
+  }
+}

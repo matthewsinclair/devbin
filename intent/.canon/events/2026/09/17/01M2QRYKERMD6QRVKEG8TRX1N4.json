@@ -1,0 +1,15 @@
+{
+  "id": "01M2QRYKERMD6QRVKEG8TRX1N4",
+  "ts": "2026-09-17T13:29:59.513Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**0083 (fullcycle's test phase is hardcoded to `test rust`) is held until hv routes it: whether it is queued, and whether dc or vc builds it.** Filed by vc at 7c29594 on intent-vc's request, relaying hv's ruling to the Intent estate that toolchain tests must run under fullcycle and test all; verified at HEAD (`_fullcycle_phases` fixes clean rust, build all, test rust). vc recommends the test phase becomes `test all`, with `in_all: false` as the per-project override and no new key; intent-vc confirmed that is Intent's choice too and that Intent will not patch lib/cmd/fullcycle locally (recorded in the issue at 57fa46f). Asked of hv in session on 2026-09-17; not yet answered. lib/cmd/fullcycle is vendored, so the change joins the next sweep's pre-notice (todo 51)."
+  }
+}

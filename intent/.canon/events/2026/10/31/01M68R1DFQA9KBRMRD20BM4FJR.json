@@ -1,0 +1,15 @@
+{
+  "id": "01M68R1DFQA9KBRMRD20BM4FJR",
+  "ts": "2026-10-31T10:28:13.943Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31, in kovacs-sysadm's window, relayed by kovacs-sysadm: devbin may log into kovacs on its own (the remote-leg runner included, while kovacs-sysadm runs), but always let kovacs-sysadm know: every login announced to it by message, what runs, where and what it touches; heavy runs still booked through vc with START and END; the rest of molt-vc's decision 40 stands for every other vc. The announcement is the desk's (vc or the operator booking the cut) and dc's for each runner test, never the core's. Also hv: rhadamanth, kovacs and hv are at +04 (Reunion), gyges at GMT; convert before comparing stamps across them."
+  }
+}

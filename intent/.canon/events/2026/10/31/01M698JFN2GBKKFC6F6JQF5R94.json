@@ -1,0 +1,15 @@
+{
+  "id": "01M698JFN2GBKKFC6F6JQF5R94",
+  "ts": "2026-10-31T15:17:10.434Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ISSUE:0301 (cc, after WP02a, vc 2026-10-31): the release fixtures' builders return their failures: every step of git_project and cut_project, each builder calling git_project || return 1; releasestatus.bats:339's second released_project clears the first's demo and remote.git, as :670 does; the gh stub's create and edit writes exit 1 when they fail. Its run: every git_project caller's file under BSD, releasestatus and releasecut under GNU, the tree scans and help."
+  }
+}

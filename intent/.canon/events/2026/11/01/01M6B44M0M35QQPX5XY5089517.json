@@ -1,0 +1,15 @@
+{
+  "id": "01M6B44M0M35QQPX5XY5089517",
+  "ts": "2026-11-01T08:38:10.708Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "The estate page (served by intentd, started 2026-11-01 06:18Z without CLAUDE_CONFIG_DIR) sees no Claude sessions, so it labels every running slot ORPHANED; reproduced by running the census with the variable unset (0 sessions, every slot orphaned) against 24 with it set. The CLI census (intent estate status) is the desk's truth: never revoke a slot on the page's word. Recorded for Intent through intent-vc; decision 98's at-login enrolment must carry the variable; no work on it under hv's no-yaks word."
+  }
+}

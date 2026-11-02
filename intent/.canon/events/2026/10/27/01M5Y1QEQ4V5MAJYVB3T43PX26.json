@@ -1,0 +1,15 @@
+{
+  "id": "01M5Y1QEQ4V5MAJYVB3T43PX26",
+  "ts": "2026-10-27T06:45:54.532Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, relayed by molt-vc on 2026-10-27 (molt-vc decision 22; molt-vc holds the verbatim): the estate works in layers, L1 utilities and devx first (devbin, Molt, Utilz, Gtools), then L2 (Intent), then the applications, and no layer starts until the one below is published, on CI, brewed, reinstalled and usable from brew. hv wants L1 done today. For devbin that is 0.1.15: cut at 4efb6e17 with its formula in the tap; rhadamanth upgraded, reading `devbin 0.1.15 (brew, 4efb6e173e70)` in a fresh login shell (molt-vc's read, 06:36Z); kovacs to follow with Utilz's upgrade through kovacs-sysadm; and the tag's macOS leg re-run (todo 171). devbin's builders build nothing unless that leg goes red. Not put to hv again."
+  }
+}

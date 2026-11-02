@@ -1,0 +1,16 @@
+{
+  "id": "01M5VX56Q4MMDFN0E04BR4QEFR",
+  "ts": "2026-10-26T10:47:33.348Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "ISSUE:0222 close: CI run 40302760947 on 39300b37 is green (relayed by vc), so dc filled 0222's resolution count-free in the v2 shape, with that run, f2e85a3c and red runs 40121933255 and 40121936939, as ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0222-v2.md (sha256 4ffd6529d6a3ef112fd51a634cc16c1505961438f53e11032061b23be69d6201), and sent vc its path and sha256. vc closes 0222 with it through setres.sh after hv's 0.1.15 cut, never before (vc's todo 171): until the cut, nothing is committed outside intent/whiteboard/ and intent/.canon/ (vc's watchout 37). Released once 0222 is closed; then clear 0220's scratch clones (~/Devel/scratch/devbin-dc/0220/build, vf20, vf21, vf22), surveyed and archived first. If vc sends the draft back, revise and re-seal it"
+  }
+}

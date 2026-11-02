@@ -1,0 +1,15 @@
+{
+  "id": "01M5RY056DWTQ9KX5HYEC9CVVY",
+  "ts": "2026-10-25T07:04:33.229Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "molt-vc FYI 2026-10-25 07:01Z, on hv's rulings: (1) Conflab cuts its release through devbin's release core; (2) Conflab's dc may ask for a cargo-root setting that would retire Conflab's Rust format pair and Intent's override together, built or not on vc's call, and if built it goes into 0.1.15. When the ask arrives: file it as an issue for cc, measure both copies it retires, and stack it ahead of the landing suite (a fresh pair if land220 has already landed), so 0.1.15 stays one release."
+  }
+}

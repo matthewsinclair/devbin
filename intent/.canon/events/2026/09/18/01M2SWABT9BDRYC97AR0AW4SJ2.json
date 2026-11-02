@@ -1,0 +1,15 @@
+{
+  "id": "01M2SWABT9BDRYC97AR0AW4SJ2",
+  "ts": "2026-09-18T09:07:19.497Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates, 2026-09-18, vc's call at a fold (drop is the expected outcome -- todo 63).** (a) **A non-vacuity floor found a reader defect, not only an empty scan**: 0087's class arm demanded 4 split sites, read 3, and the missing one was a span ended early by a ` -- ` INSIDE a quoted --source -- both class arms had shared that blind spot. (b) **A staleness check measured against today's renderer cannot be applied to a frozen artefact**: status read devbin's own v0.1.1 as unstamped; running a new reader on the real project found it where fixtures could not. (c) **vc wrote a must-pass control that was itself a hole** (`mv -f x '-n'` -- quote removal makes it -n); a control is a claim and gets driven like one. (d) **vc sent a peer a placeholder sha ('82xx')** and corrected it in the next message; fill every reference before a send. (e) A mutant anchor on text shared by two sites was refused by the script's count==1 check -- keep that check in every mutation harness."
+  }
+}

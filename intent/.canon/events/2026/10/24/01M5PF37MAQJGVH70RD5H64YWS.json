@@ -1,0 +1,15 @@
+{
+  "id": "01M5PF37MAQJGVH70RD5H64YWS",
+  "ts": "2026-10-24T08:05:36.523Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0211 and 0212 are built and handed to vc as one bundle (~/Devel/scratch/devbin-dc/0212/0211-0212.bundle, requires 43cc3bac, tip 9ecf7619; HANDOVER.md with both Resolutions drafted). RELEASED WHEN vc has landed them or asks for a change; the scratch clones b0211, f0211, m0211, b0212 and vf12 go after the landing"
+  }
+}

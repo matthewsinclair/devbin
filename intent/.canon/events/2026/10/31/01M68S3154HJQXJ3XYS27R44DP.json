@@ -1,0 +1,15 @@
+{
+  "id": "01M68S3154HJQXJ3XYS27R44DP",
+  "ts": "2026-10-31T10:46:35.428Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "WP16 code, after WP06a lands (dc's lane): bin/devbin cache key/get/put/list/rm/gc and the build: block, built to design.md s13; the consumer inventories (pre-sweep brief item 1) fill s13's repeats table before the verbs are cut; adoption in WP10 to WP14."
+  }
+}

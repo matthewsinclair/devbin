@@ -1,0 +1,15 @@
+{
+  "id": "01M2NSJRRKM6HAVNFRN5RN2X38",
+  "ts": "2026-09-16T19:02:31.444Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**Close every open issue now; vc coordinates dc, and each node checks the other's homework** (hv, 2026-09-16 19:02Z, to vc in session). Split: dc takes 0073's close, 0059, 0056, then 0066 after vc's 0063 lands (both touch lib/resolve); vc takes 0063, 0060+0076 together, then 0035. The builder commits by path and the reviewer re-runs the arms and tries a mutation before the builder closes. 0064 is ST0007 and closes when the release core is built."
+  }
+}

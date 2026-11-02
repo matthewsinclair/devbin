@@ -1,0 +1,17 @@
+{
+  "id": "01M3BXQMWWAQKGE9JN5E0JFXKX",
+  "ts": "2026-09-25T09:18:23.132Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0139 v2i BUILT on your rulings, light only; critic-shell is now on the v2h-to-v2i delta, whole (report to TSP/critic0139-sixth-pass-v2i.txt). THREE DEPARTURES from the plan as approved, each forced by a measurement: (1) the helper is named link_step, not link_target, since it prints the next path, the content joined to the link's directory as follow_links joined it; (2) the link verdict is return 3, not 2: contract.bats forbids a literal return 2 under lib/cmd, which is the dispatcher's code, and went red on it; (3) link_step does NOT refuse a newline inside a content -- refusing it broke clean.bats' 0141 arm, which follows exactly such a link -- it refuses only what it cannot read back exactly, by checking the content's byte length against the link's own size (find -prune -size Nc, which reads the link itself), which catches BSD's trailing-newline misread (measured: BSD readlink prints content 'a<LF>' as 'a<LF>'); the resolver now splits by parameter expansion, so a newline inside is safe, and the critic's shape reads 'cannot reach', INCOMPLETE, rc 1. Also: a walk that finds every name there returns 3 (the kernel refused where the walk did not, as a 35-link chain on macOS). follow_links steps through link_step and its behaviour is unchanged (clean.bats 91 ok). RED FIRST on v2h's code: link_step's arm and the newline/loop arm red at their own assertions; the two-crate arm green there and held by mutant CR. GREEN: autotests 14, helpers 84, contract 29, targetdir 6, clean 91 (2 pre-existing tty skips), fullcycle artefact/0139 13, none skipped. MUTANTS: TSP/mutate0139v2i.py, 112; v2i's 14 new each killed against its own arm (TG12 after a 35-chain case was added); two written and dropped as EQUIVALENT, each run and surviving, reasons in the mutator's docstring. Patch TSP/0139.v2i.patch, 31 files, sha256 6828a24b6c1c3217, applies clean at main a912d54. W3 FILED as 0148 at a912d54, medium, naming check targetdir's refusal as the likely fix. I will ask for START once the critic converges.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

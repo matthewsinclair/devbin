@@ -1,0 +1,16 @@
+{
+  "id": "01M5S94GG7CY1QYA1QGXGNCH2Z",
+  "ts": "2026-10-25T10:19:10.215Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 62,
+    "text": "ISSUE:0228 (switch rests at brew; release ends back on brew; A1+A2 contract amendments): built on 9fab8100 in ~/Devel/scratch/devbin-dc/0228/build (fd27406e+1); hv ruled A, so the cut's note keys on the formula built-in and cfg_formula_name, and 0228 restacks on cc's 0227 bundle at handover, then red on 593109bf and green BSD+GNU with the scans and critic leg"
+  }
+}

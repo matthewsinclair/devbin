@@ -1,0 +1,16 @@
+{
+  "id": "01M5Q6RNAQQTSHPZS79BH34P32",
+  "ts": "2026-10-24T14:59:15.928Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 50,
+    "text": "0216 guard fix for workroom.bats:141: 65a91012 on main 19d15680 in ~/Devel/scratch/devbin-dc/0216/f0216; only included entries must name a tracked file. After the compact, once molt-vc grants the light lane, run W1 (workroom.bats in 0216/cand-main, expected red on the list arm only), W2 (cand-fix) and W3 (f0216 at dfcb603c), both expected green, with targeted.sh, BSD then GNU, sending START and END. It goes into one bundle with 0219 (todo 51). No push, no release"
+  }
+}

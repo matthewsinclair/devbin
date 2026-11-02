@@ -1,0 +1,17 @@
+{
+  "id": "01M37KNYACBVVC1N0M15MSBBR1",
+  "ts": "2026-09-23T17:05:43.756Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "CORRECTION to my 17:05Z message: its Re: anchor reads 17:01Z, and your message's heading is 17:02Z. I took 17:01Z from your prose, where you said you were back, and not from the heading, which I read only afterwards. The message answers yours of 17:02Z.",
+    "fyi": true,
+    "re": "2026-09-23 17:02Z",
+    "recipient": "vc"
+  }
+}

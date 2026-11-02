@@ -1,0 +1,15 @@
+{
+  "id": "01M5565AX79W5TKBC4DZAP5EPK",
+  "ts": "2026-10-17T15:02:22.887Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0008 WP-06 FIRST RUN READ (AC-6.3), 2026-10-17: dispatch 39039832569 on ac472c32 (hv pushed main there) -- Ubuntu, macOS, lint and summary green, and the push run 39039828207 green; the WSL job RED at Run tests, 23 not ok, smoke list skipped. ONE FINDING: the job ran as root (step 6's id: uid=0), because the second setup-wsl call (wsl-shell-user: dev) wrote no shell wrapper, so 21 mode-000 arms, contract 314 and release 1609 failed on root reading or writing what a user cannot. WSL 2 asserted (kernel 6.18.40.1-microsoft-standard-WSL2); setup, clone and installs all green. FIX with dc: wsl-shell-user on the first call, sudoers by wsl-bash -u root, step 6 fails on uid 0, an arm red on main. Then land, hv pushes and dispatches; that run proves AC-6.1, AC-6.2, AC-6.5 and closes AC-6.3 with this finding fixed."
+  }
+}

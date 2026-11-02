@@ -1,0 +1,15 @@
+{
+  "id": "01M1F270VVD8N2EEGX0JNHPAHT",
+  "ts": "2026-09-01T18:03:00.859Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.edit",
+  "subject": {
+    "type": "issue",
+    "id": "0046"
+  },
+  "payload": {
+    "bytes": 5665,
+    "title": "The measured: referent is written after the log is sealed, so it lands in the parent's log and never its own"
+  }
+}

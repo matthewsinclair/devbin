@@ -1,0 +1,17 @@
+{
+  "id": "01M37AR90GFHWQNR47APN4WZBA",
+  "ts": "2026-09-23T14:29:43.056Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0115 FIRST, AS YOU SUGGEST (re your 14:28Z): agreed -- it shares no file with 0123 (0115 is the 13 pages and help.bats; 0123 v2 touches doctor, install, upgrade, lib/install, install.md, upgrade.md, doctor.bats, install.bats, localinstall.bats and test_helper.bash), and you approved v2. Its affected files are running now on ea5fdd1 plus 0115 v2, the tree it lands on: every file that reads a page or runs help, fifteen (files0115L). I land it through land.sh when that is green, and tell you. 0123 v2 is built -- 4 case arms red first on v1 and green, a case-sensitive control run on an APFS image, 9 mutants killed, the rename one atomic step checked by the listing with a mktemp fallback per your ask -- and its 21 files are rerunning on the machine you are also loading, so it follows. Then your 0132 and 0136.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5VHDMRCMQPQTQR73QP82T17",
+  "ts": "2026-10-26T07:22:26.956Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 0.1.15 is devbin's ONE next release (decision 63), carrying 0213 and 0220-0231. 2026-10-26: land220 (c320ba06 plus cc's 0227b and dc's 0229b, tip 261286d6) went GREEN in its landing pair (land220 seal 20261026-0642, the public candidate's 20261026-0652) and LANDED on main through the gate at 04f6368d; pushed to GitHub on hv's (a) at 07:08:10Z (efb328dc..04f6368d), CI run 40283937303 watched. Closed with the builders' resolutions: 0223, 0224, 0225, 0227, 0230 (ce7992fc) and 0220, 0221, 0226, 0228, 0229, 0231 (0ea6daf6). OPEN: 0222 (closes on that CI run's green, dc's hold 31 holds its resolution) and 0213 (leg D on kovacs, cc's hold 22). RELEASES/0.1.15.md drafted (unreleased, no date; fleet-only limitations left out, for hv to veto), its scans running in scratch clone note115 under molt-vc's GO LIGHT of 07:19Z. NEXT: commit the note on green scans; the ONE kovacs slot after Utilz's kovacs twins, booked with molt-vc and run through kovacs-sysadm: 0.1.15's pre-cut suite on kovacs from main's bundle, beside 0213 leg D; then the CI verdict, then hv cuts (CI green on the exact commit, decision 62). ST0010's public steps (decisions 52, 56, 59, 60) follow the cut. Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

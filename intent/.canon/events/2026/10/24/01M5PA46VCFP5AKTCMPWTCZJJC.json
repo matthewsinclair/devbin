@@ -1,0 +1,16 @@
+{
+  "id": "01M5PA46VCFP5AKTCMPWTCZJJC",
+  "ts": "2026-10-24T06:38:45.613Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public: STARTED 2026-10-24 on hv's go (f4c0d7cb; vc claims it). ST0008 CLOSED the same commit (AC-2.1 reworded without its measured-VPN clause and satisfied by the README; AC-6.4 withdrawn by hv). IN FLIGHT: (1) issue 0210 asked of cc (b02b8dd7). (2) Candidate tree ~/Devel/scratch/devbin-vc/st0010/cand from f4c0d7cb by tools/cand10.sh (allow-list, 193 files; leaves out intent/, .claude/, .mcp.json, AGENTS.md, CLAUDE.md); one full suite of it booked with intent-vc (asked 06:35Z, no START yet) to find arms reading dropped files, fixes to cc. (3) gitleaks 8.30.1 (installed by brew): no leaks in the candidate's tree or commit; control fires on a planted key. (4) Fable review: six reviewers on slices of the candidate (review/BRIEF.md, slice-N.txt, report-N.md), each finding verified by vc before hv. (5) 0201 kovacs half: ORDER K013 placed on kovacs (~/work/devbin-vc/k013.sh, sha256 24bd1ed7...; local copy scratch kovacs/k013.sh), sent to kovacs-sysadm 06:35Z: vendor a fixture at 0.1.11, brew upgrade to 0.1.13, fixture takes 0.1.13 through opt/devbin; then the Resolution from dc's HANDOVER plus K013's log, close 0201, release dc's hold 26. LEFT FOR hv: the licence (MIT or Apache-2.0), where the private workroom lives (a private GitHub repository or the local mirror only), the fork check and the delete and recreate of matthewsinclair/devbin; the first public release 0.1.14 on the new history, the tap and every estate re-vendored; the fleet to 0.1.13 and issues 0207 to 0209 on hv's go."
+  }
+}

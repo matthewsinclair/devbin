@@ -1,0 +1,15 @@
+{
+  "id": "01M69TM61APFRQTN55VJVV95T9",
+  "ts": "2026-10-31T20:32:40.490Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "At the next go, through intent-vc (hv's Ok on the rest of vc's FOR hv list, 2026-10-31 20:32Z by date -u): file an Intent issue, the acceptance contract's literal-id check accepts another thread's same-numbered id in the cited file (Devbin ST0011's AT-3.5 reads green on releasestatus.bats's older '# AT-3.5' line while 21 sibling rows are refused), so a row can pass the contract without its own id over its arm. Rec: the check looks for the id in the thread's own arm, or the row cites the arm's line."
+  }
+}

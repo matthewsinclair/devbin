@@ -1,0 +1,15 @@
+{
+  "id": "01M5WB5H4VT10BQDX0N85ZS2A8",
+  "ts": "2026-10-26T14:52:24.092Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0236"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "0235's use brew remedy writes brew install devbin with no Linux route, so installhints.bats is red on CI and the 0.1.15 cut is blocked"
+  }
+}

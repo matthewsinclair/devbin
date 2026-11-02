@@ -1,0 +1,15 @@
+{
+  "id": "01M2TTT8FQBFX0796VE4BFC7K7",
+  "ts": "2026-09-18T18:00:17.655Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**The fleet sweep waits for the one release** (hv, 2026-09-18 ~18:05Z, to vc in session, reaffirming the standing order over a sweep-now request relayed by intent-vc). ST0007 lands (WP-04 to WP-07), then devbin's one release, then the pre-notice (todo 74), then ONE sweep; 0083's fullcycle fix rides with it. intent-vc told; START/END and per-estate literal-path commits are promised for then."
+  }
+}

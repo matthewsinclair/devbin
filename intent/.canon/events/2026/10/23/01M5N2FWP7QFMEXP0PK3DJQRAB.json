@@ -1,0 +1,16 @@
+{
+  "id": "01M5N2FWP7QFMEXP0PK3DJQRAB",
+  "ts": "2026-10-23T19:06:05.384Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 55,
+    "text": "0206 on vc's word, for 0.1.13, on 0205's tip 15e7edf8: (A) e30b93f3 with its critic fold aa055d96, and (B) c44cb53f with its fold d688b285; every critic-shell finding taken and the kept literals ruled by vc. Its targeted run at d688b285 (every touched suite plus the tree scans and help, BSD then GNU) is green on both legs with nothing red; END sent by name to intent-vc and devbin-vc at 19:05Z, results at ~/Devel/scratch/devbin-dc/0206/runs/targeted. NEXT: bundle 15e7edf8..d688b285 as 0206/0206.bundle, verify it in 0206/vf06 (a fresh --no-local clone of main with 0203's and 0205's bundles fetched and their seals checked, so it stands at 15e7edf8), seal it in SHA256SUMS, fill {BUNDLE} and {RUN} in 0206/HANDOVER.md, whose kept-literal table marks each kept site arm's fixture or parser-derived with its line, and hand it to devbin-vc. Utilz's window opened on that END: until utilz-vc's cut END, Devbin starts no suite, whole bats file, batch or build"
+  }
+}

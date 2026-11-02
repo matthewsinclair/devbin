@@ -1,0 +1,15 @@
+{
+  "id": "01M2TVKGW89D3NKZTBCZA31F85",
+  "ts": "2026-09-18T18:14:05.448Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**ST0007 WP-05 (confirm, tag, push, object), DRAFTED on scratch: releasecut.bats at 46/46 green.** The patch is scratchpad/wp05/wp05-draft.patch, on 0d2c6e6, and it applies to HEAD. The tree is scratchpad/wp05/tree. Built: step 6 asks through ask_person, or takes --yes (2 -> exit 2), naming what is left; step 7 annotated tag -F body --cleanup=whitespace at the release commit; step 8 pushes per remote only the halves it lacks, through release_read_remote's new 'push' mode; step 9 local create, or edit only in a confirmed run (R2), none skipped, ci and steps 10-11 exit 3 for WP-06; real cut under run_gate --grammar generic (R3); pre-flight refuses when tmp/ is not ignored; cut_fail takes an rc and reports CUT_OUTWARD; the gh stub's create adds to gh.releases. **Still to do:** R2's condition (an unconfirmed run that finds an object whose title or notes differ reports it on row 9, never a bare 'already'); land AFTER the WP-04 fix, re-apply over it; mutants; the as-built in design.md (attach it); README, configuration.md and RELEASES/0.1.2.md say the cut releases."
+  }
+}

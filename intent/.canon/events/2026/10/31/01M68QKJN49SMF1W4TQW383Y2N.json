@@ -1,0 +1,16 @@
+{
+  "id": "01M68QKJN49SMF1W4TQW383Y2N",
+  "ts": "2026-10-31T10:20:40.484Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 86,
+    "text": "ST0011 fix phase (hv's go 2026-10-31; folded and holding on hv's order at the fold): WP01 (cc, af82fe4c) ran in the lane, review approved, bank refs/bank/cc/ST0011-01 and handover ordered, END and landing after the hold; WP03 (dc) red at fb41ad98 on four population arms, fix plus the critic's seven items folded into one re-bank, rebases onto WP01's landing; WP04 (DEVBIN_TEST_JOBS=all), WP05 (runner) and WP06a (publish-time commit tie) built or under way, banked unrun; every ruling is in design.md sections 8, 11 and 12 and the WP objectives; vc holds the pen, the desk is on hold."
+  }
+}

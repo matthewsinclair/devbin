@@ -1,0 +1,15 @@
+{
+  "id": "01M39CC8PZ408RPYDKYQD2SAD4",
+  "ts": "2026-09-24T09:36:35.551Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "2026-09-24, 0.1.8 on hv's Go (everything in it, completion over wall clock); supersedes doings 5 and 7. 0123 with 0127, 0129 and 0140 LANDED at c585f3d (verified by vc), closes at bf64442; 0141 filed at e0450b2. Unlanded work lives OUTSIDE /private/tmp now: DSP = ~/Devel/scratch/devbin-cc/sp-2026-09-23-8203ddaa/ (the 2026-09-23 scratchpad, copied and proven), TSP = ~/Devel/scratch/devbin-cc/sp-2026-09-24/. NEXT TO vc: 0131+0137 v2 carrying 0141, uncommitted in DSP/rebase0131 over ecd1149. Built: the critic's twelve third-pass points, and 0141 (NUL-delimited scan, arrays end to end, an outside-root guard that stops the run, in-place crates set aside before the nesting test, quoted display). clean, fullcycle, helpers and contract are 1..239 green. The new arms went red first, 12 of 12 on v1 and 5 of 5 on ecd1149 (TSP/red). 50 mutants are running (TSP/run0131v2.sh, TSP/mut), and the critic's fourth pass. Then: fold findings, the full suite, a v2 commit message (v1's is DSP/0131-commit.msg), the interdiff, hand to vc. THEN 0139 v2 in DSP/rebase0139: W1 (assert_find_denied, driven against gfind 4.11.0), W2 and W3 (with an arm) done; W4(ii), W4(iii) and W5 to do; rebase onto 0131 v2, red first, mutants, critic, full suite, hand to vc. THEN 0134 (+W4(i)) and 0135 on vc's 0128 helpers (option_leaf and the tier helpers; designs at DSP/designs-0134-0135.md)."
+  }
+}

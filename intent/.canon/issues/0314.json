@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 314,
+  "slug": "under-release-publish-url-the-assets-workflow-ch",
+  "title": "Under release.publish.url the assets workflow check reads the release commit, not the snapshot the run is on",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-01",
+  "reporter": "Matthew Sinclair",
+  "body": "Under release.publish.url the assets workflow runs at the public repository on S, the release commit's snapshot, but both workflow checks read R's tree: the cut's pre-flight (`git cat-file -e \"$commit:.github/workflows/$assets_wf\"` in lib/cmd/release) and, from ST0011 WP07, `release attach`'s check before it reads the run at the public tag's commit.\n\nS holds only what release.snapshot.list selects from R. A list that leaves `.github/workflows/<assets.workflow>` out passes both checks, and no run of the workflow can exist at S, so the attach waits out assets.wait and fails naming no cause.\n\nFix: under release.publish.url, check the workflow against the snapshot's selection. The cut has S's tree at its legs step and the snapshot list at pre-flight; `release attach` reads the list from R's tree. The refusal names the list.\n\nA blind spot since issue 0240's publish shape. Ruled for after the 0.1.19 release, low (vc, 2026-11-01, on WP07's critic settle).\n"
+}

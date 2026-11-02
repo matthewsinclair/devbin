@@ -1,0 +1,15 @@
+{
+  "id": "01M2P7YCA9DXA4VRC9SZR3S61Q",
+  "ts": "2026-09-16T23:13:31.977Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**hv decision 29, the close-out: 0056 and 0066 await vc's single OK off a green full suite.** 0059 CLOSED at ed01e75, with 0079 filed (the notice, the offer and doctor read any difference as behind). 0056 = fa93672 (hv) + 527d461 (critic round 2) + 33abe6c (vc's F1 publish gate, F2 git var cache); vc said OK pending the count; fix section drafted in the dc scratchpad (0056-body.md) and it records the behaviour change that an UNREADABLE cell fails the scan. 0066 = fa93672 + 98df868 (critic fold, report at dc/.history/20260916/0066-critic-findings.md) + 315702a (vc's F3, IFS pin) + 356ea8d (the ci-workflow.bats loader the load refusal broke: 33abe6c's suite was 1211/1212). Full suite at 356ea8d running in a detached worktree; vc re-running there too. On vc's OK: close both with fix sections (0066's still to write), then nothing is open in dc's lane but 0079 and 0080 (config values, filed 90d0368), neither sequenced. Nothing pushed; hv pushes."
+  }
+}

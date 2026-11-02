@@ -1,0 +1,16 @@
+{
+  "id": "01M5N2B00TA8YF1HKD6RPZPFHD",
+  "ts": "2026-10-23T19:03:24.954Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 83,
+    "text": "D55 and the 0.1.13 batch, on hv's word via intent-vc (decision 54), with decision 55's 0203 and vc's own 0204 to 0206: WP-08 and issues 0203 to 0206, landed in that order on one landing stack and proved by one full suite booked with intent-vc. ACCEPTED: 0203 (85b2b029), 0204 (3de21d30) and 0205 (15e7edf8), each diff and its seals read; 0203 and 0204 sit on vc's landing clone ~/Devel/scratch/devbin-vc/l113. WP-08: final candidate 5059a26e (one commit on 0683a6a8), with F1 to F3 and vc's wording fold accepted; its targeted run waits for Utilz's cut END (hold 28) and then intent-vc's START, and then cc's bundle and addendum at 5059a26e. 0206: d688b285 pre-read, its kept literals ruled; its targeted run's BSD pass was 2033 of 2033 (18:10:29Z to 18:37:19Z), and its GNU pass is running. AT ITS END: pass it by name to intent-vc and utilz-vc unless dc's END names them as copied (Utilz's window opens on it), then read dc's HANDOVER and bundle and correct the note's 0206 line, which must name the literals kept. Then rebuild the stack fresh at main's HEAD (0203, 0204, WP-08, 0205, 0206, each squashed), tell intent-vc the landing suite is ready, run it on its START, land by path with --only (the new intent pair's gates check each commit), record the ATs, AC evidence, Resolutions and closes, commit RELEASES/0.1.13.md (status: unreleased), and report to intent-vc; hv cuts. This session's intent MCP server predates the 18:41Z swap, so the intent CLI only. Checklist ~/Devel/scratch/devbin-vc/0113/REVIEW.md; note draft ~/Devel/scratch/devbin-vc/0113/0.1.13.md. No push, no release."
+  }
+}

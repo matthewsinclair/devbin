@@ -1,0 +1,16 @@
+{
+  "id": "01M54A2TTVBV5QD0QYMYTP1PY6",
+  "ts": "2026-10-17T06:51:40.763Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 25,
+    "text": "0.1.11 release note v2 for vc, on main 8a2e0737: a83ceb37 (0194, the release page's step 8 says an unreadable answer is a read that could not tell) and 8e41ab43 (RELEASES/0.1.11.md with dc's 9 findings and the 0192 line; views regenerated; release check, the views arm and prettier clean; no suite). Banked clone-archive/rn0111v2__8e41ab43.bundle (07969d57), verified in a fresh clone of the real tree; v1 a64189a0 superseded. vc lands it, then cuts. Clone ~/Devel/scratch/devbin-cc/rn0111/v2."
+  }
+}

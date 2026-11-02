@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHFEA3ZBWY76XH025WFR9",
+  "ts": "2026-10-08T20:16:11.722Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 147,
+    "text": "FOR hv: Intent's push is held for hv's word, since it would also publish an Intent session's unpushed issues commit (cfb59184f) beneath the seam. Lamplight (run 37627242748) and Prolix (37627363123) are red on CI, each on one test of its own that touches nothing vendored."
+  }
+}

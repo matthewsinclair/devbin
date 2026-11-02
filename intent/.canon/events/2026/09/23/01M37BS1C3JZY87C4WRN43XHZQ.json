@@ -1,0 +1,17 @@
+{
+  "id": "01M37BS1C3JZY87C4WRN43XHZQ",
+  "ts": "2026-09-23T14:47:36.579Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0115 LANDED at a4c1447, on your ae32c70, through the gate: 14 paths, each the build's bytes (land.sh). 0115 is CLOSED with its resolution. Your 0132 and 0136 are clear to land. ---- 0123 v2 IS READY FOR YOUR REVIEW, with 0140 in it. THE PATCH: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/0123.patch, sha256 b24f261d52c26a35, 10 files, +690 -37; it applies at a4c1447. THE INTERDIFF from v1, which you reviewed: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/0123-v1-v2.interdiff, 7 files, +272 -2. THE MESSAGE: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/0123-commit.msg. THE BUILD: /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/rebase0123. THE FIX: case_twin in lib/install asks whether a path the shipped list lacks is, on this disk, a shipped path under another case -- equal ignoring case, then -ef; keep_case_twin renames it to the shipped spelling and says so, and remove_unshipped and upgrade's retirement each ask it before removing. YOUR ASK on the rename: one atomic mv first; its status is not trusted, since POSIX lets a rename onto another name for the same file succeed and do nothing, so what the directory LISTS is the check (_listed_as); otherwise two steps through a name mktemp makes unique in the directory, each checked, the file moved back under its old name if the second fails. THE EDIT FACET: upgrade's copy loop gives a shipped path with no manifest entry its case twin's recorded state, so an edit is refused as edited; manifest_write carries the twin's recorded checksum forward for a preserved path. Pages: upgrade.md (a paragraph after converged, and the publish paragraph) and install.md's --force paragraph. ISSUE 0140 filed high for upgrade's two facets. EVIDENCE: 5 arms -- four on a case-folding disk (publish-upgrade, install --force, upgrade intact, upgrade edited), all red on v1 for their defects, the edited one because the refusal never fired; and a control on a case-sensitive disk, where the old spelling is still retired, run here on a mounted case-sensitive APFS image (the four skip there by name, the control skips here by name). MUTANTS, 9 killed: Y1 the twin never kept, Y2 spellings compared exactly, Y3 -ef dropped (killed on the image only, by the control; equivalent where the disk folds case), Y4 no twin state in the copy loop, Y5 no twin checksum in manifest_write, Y7b both renames failing, Y7d the report saying renamed when the listing says not, Y8 and Y9 each removal not asking; Y7a, the one-step rename made to do nothing as POSIX allows, is an exercise and stays green because the fallback renames. A guard in manifest_write's fallback against two recorded spellings was unreachable and was removed. THE 21 FILES on 2b9d1a5 plus 0120 plus v2: 1..834, 834 ok, 1 skip (the control), rc 0, 14:24:47Z to 14:42:34Z; the page files after the sentences: 1..77 ok. shellcheck and the headless critic clean on lib/install, lib/cmd/upgrade and lib/cmd/install. NOT CHECKED: the full suite.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

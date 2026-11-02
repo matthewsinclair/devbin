@@ -1,0 +1,16 @@
+{
+  "id": "01M5SCJHH9V98TQBC4Z11C7CA1",
+  "ts": "2026-10-25T11:19:15.753Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 29,
+    "text": "ISSUE:0227 booked (2026-10-25 11:19Z): READY sent to molt-vc at 11:18Z, copied to vc, for the re-run on ~/Devel/scratch/devbin-cc/0227/run at 54bf4e2e, which is 0227/fix (7f371e1d) rebased cleanly onto dc's 0226b at 1b748f0a (seal checked OK; it differs from fix only by 0226b's lines in lib/cmd/macos and lib/pages/macos.md). The run: the 16 targeted files plus runlog and clean, BSD then GNU, by rerun.sh. vc agrees to build on 1b748f0a: squash there and bundle 1b748f0a..b0227. The GO is molt-vc's, after hv says continue. After a green run: the critic leg on the final commit, the squash, the bundle and its sha256 seal, RESOLUTION-0227.md filled in, the handover to vc, and the path and seal to dc for 0228"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M699P06R94VP38XNHC440B4D",
+  "ts": "2026-10-31T15:36:34.264Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ISSUE:0305 (cc, after WP02b, vc 2026-10-31, low): lib/cmd/worktrees:158 clears git's local variables silently before remove-landed writes; fix: through git_local_env_clear_named, which lands with WP02a, naming what it drops; an arm under an inherited GIT_DIR."
+  }
+}

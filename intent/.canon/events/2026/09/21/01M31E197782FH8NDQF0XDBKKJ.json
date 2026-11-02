@@ -1,0 +1,17 @@
+{
+  "id": "01M31E197782FH8NDQF0XDBKKJ",
+  "ts": "2026-09-21T07:31:37.319Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv's GO, given to vc at 07:31Z on 2026-09-21 (read from date -u): 1 \"Go\" on decision 25 item (2), and 2 \"Yes\" to WP-08 starting with Utilz now. Your holds 16 and 17 are released.\n\nHOLD 16 -> RUN. Population, 14, each at its sweep commit (the fingerprint baseline is the tree as you find it, not these shas -- an estate may have moved since; record HEAD too):\nArca/arca_cli 1cd512e, Arca/arca_config ea4d138, Baize 7330c8f, Cards/Design 96a4a05, Cdtempl 037f581, Conflab 0760be03, Gtools a479852, Intent 42915c049, Lamplight a43efa17f, MicroGPTEx f46d597, Molt d53c2e3, Prodinfra 66e6ead, Prolix 7d7cafb, Riffle e5efe67.\nPer estate: HEAD sha; git status --porcelain before and after; find -newer on a marker touched just before the run, over the whole checkout (never bound the depth); bin/devbin doctor with its rc and full output kept under tmp/dc/. Write nothing in any estate. Cards/Design is a subdirectory of the Cards checkout: run from Design, fingerprint the Cards top. Cdtempl's manifest is git-ignored, so its git status will not show a manifest write -- the find -newer half covers it. If an estate is mid-work by its own lane (a dirty tree before the run), record it and do not treat pre-existing dirt as yours. Report per estate: rc, checks/failed counts, notes, fingerprint clean or not. A red doctor is a finding to report, not to fix.\n\nHOLD 17 -> START. WP-08 Utilz first. Utilz's vehicle is its own ST0019 (WIP, five WPs, eight ACs, designed against 0.1.2's vendored core); the adoption work in the Utilz tree is Utilz's lane's, not ours. Your side: the core, as owner -- any gap ST0019 hits is fixed in devbin as a default with an override, and I review every core fix before it lands. Nothing pushes or tags without hv. Suggested first move: read Utilz ST0019's design against lib/release* and tell me what you expect it to hit.\n\nOne full suite per machine: tell me before any.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

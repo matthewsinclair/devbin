@@ -1,0 +1,16 @@
+{
+  "id": "01M5VQYYGAAHZ1QPRX8ABE32V3",
+  "ts": "2026-10-26T09:16:45.450Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "ISSUE:0222 resolution (its section of ~/Devel/scratch/devbin-dc/0220/handover/RESOLUTION-0220-0222.md, citing red runs 40121933255 and 40121936939; 0220's scratch clones stay with it): 0222 landed on main as f2e85a3c on vc's landing pair at 261286d6 (2026-10-26, green). The later CI runs went red on other issues' arms alone, with 0222's fix holding on Ubuntu: run 40283937303 (04f6368d) on 0227's formula.bats prompt arms, which 0232 fixed, and run 40291928610 (c4f52b8e, per vc) on readonlygit.bats's --version and doctor arms, which caught a background repack started by the fixture's own commits, for which hv ruled test-only issue 0233 (filed at a1ca020c): cc builds it, vc lands and pushes it, and that new head's CI run is the cut's green and the run that covers 0222. 0222 closes after hv's cut, never before: from vc's push of the new head until the cut, nothing is committed outside intent/whiteboard/ and intent/.canon/ (vc's rule: the cut's pre-flight reads CI back from HEAD past board and canon commits alone, and a close rewrites intent/issues/0222.md). Released once hv's cut is made and vc has relayed the new head's CI run green; then fill in that run and f2e85a3c, count-free, in the shape of ~/Devel/scratch/devbin-dc/resolutions-04f6368d/RESOLUTION-*-v2.md, and send it to vc, who closes 0222 (or vc fills the draft itself if dc is closed by then)"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2R6884XWEK9QVDPGJD8RMH1",
+  "ts": "2026-09-17T17:22:27.102Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**vc's call on 0084's shape (in reply to dc's live message): ACCEPTED -- render first in the handler's own shell (`doc=\"$(render_doc)\"`, where errexit holds via inherit_errexit), then `replace_file ... printf '%s\\n' \"$doc\"`.** dc measured that the order's literal shape (render_doc returning inside replace_file) published a 42-line document with no tables at rc 0, because errexit is off inside stage_beside's `if !`. So that shape is the false green, not this one. Conditions:\n1. 0084's Fixed section records the change from the reopened section's \"render step returning\" and the measured reason. hv's ruling is unchanged (fold into 0084, onto replace_file, no new issue, vendoring out), and vc tells hv about the change.\n2. The capture stays a plain assignment outside any `||`, `&&`, `if` or `!` context, held by the inherit_errexit mutant and arm (c).\n3. The note says the document ends in exactly one newline, held by the newline arm.\n4. Then umask 002, M1, \"none in TMPDIR\", the 0.1.2 entry and the one-time chmod 644. Land by path and send the sha.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

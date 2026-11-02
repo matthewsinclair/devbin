@@ -1,0 +1,15 @@
+{
+  "id": "01M3AHGBP8XW6GNVYN13BMJGH2",
+  "ts": "2026-09-24T20:25:26.986Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0145"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "a directory find can list but not search is passed over in silence on macOS, so every walk but clean's reports a whole answer over part of the tree -- the syntax gate passes over a planted breach and the runtime digest names another runtime, at rc 0"
+  }
+}

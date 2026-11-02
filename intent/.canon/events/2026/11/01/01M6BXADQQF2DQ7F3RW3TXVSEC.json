@@ -1,0 +1,15 @@
+{
+  "id": "01M6BXADQQF2DQ7F3RW3TXVSEC",
+  "ts": "2026-11-01T15:58:15.287Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "WP02b-2's scratch trees to clear at the next fold, landed at 9a0bb40f: first copy the two cited seal pairs into their runs dirs (kit2/run/build/tmp/test/20261101-1428.bats.{errors,out} into kit2/run/runs/light/, kit2r/run/build/tmp/test/20261101-1458.bats.{errors,out} into kit2r/run/runs/light/), then remove the run clones (kit2/run/{build,red}, kit2r/run/{build,red}), the dev clone's wp02b2 and squash2 worktrees (wp02b2's tip is the chain the landing message names), handover/ and handover2/ once vc confirms land-stack is done with them, and the probes' trees; keep every runs/ record, BANK.md, the scripts and the message drafts."
+  }
+}

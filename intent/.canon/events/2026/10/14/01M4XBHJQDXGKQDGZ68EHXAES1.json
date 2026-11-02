@@ -1,0 +1,15 @@
+{
+  "id": "01M4XBHJQDXGKQDGZ68EHXAES1",
+  "ts": "2026-10-14T14:02:31.533Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FILE AT THE NEXT START, on hv's word: D1's one failure as an issue, medium, cc builds and vc reviews, in the next release. tests/unit/targetdir.bats:720 says it needs no cargo, but it needs cargo on PATH, since cargo_probe_build_dir checks for cargo (lib/helpers:1625) before it looks for a config above TMPDIR (:1650). The fix makes the arm pass with cargo off PATH (a stub cargo that fails if it is run, or need_cargo; the builder chooses) and corrects its comment; red first on main with cargo off PATH. The draft, read against the seal and the code: ~/Devel/scratch/devbin-vc/issues-20261014/targetdir-nocargo.md."
+  }
+}

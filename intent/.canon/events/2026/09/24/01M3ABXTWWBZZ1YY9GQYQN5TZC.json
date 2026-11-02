@@ -1,0 +1,15 @@
+{
+  "id": "01M3ABXTWWBZZ1YY9GQYQN5TZC",
+  "ts": "2026-09-24T18:47:57.084Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "THE BOX, released to devbin in words by intent-vc at about 18:49Z by date -u (2026-09-24), until hv rules on Intent's 3.2.1 fix set. RULE: devbin's heavy runs go one at a time, in this order, each with START sent to intent-vc before it and END after: (1) cc's full suite (2) on main 2b46d85 plus 0131 v2; (2) vc's mutant batch for 0128 v3, 0133 and 0142; (3) vc's full suite on suite3 (0128 v3 + 0133 + 0130). FROM THE MOMENT hv RULES, the devbin run in progress finishes and no further devbin heavy run starts until intent-vc sends Intent's END for the build all. Intent's worktree builds and targeted arms start at the ruling and may overlap a devbin run, so any red from that window is read against the census before it is trusted, and a load-shaped red is re-run once on a quiet machine. Intent's judging run and build all wait for devbin's END."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5W73Z457ASKQ3RJBSHFEWRN",
+  "ts": "2026-10-26T13:41:38.565Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "ISSUE:0232, claimed: landed by vc at c0b47cf6, whose formula.bats blob equals the handed bundle's, with equal patch-ids and the same base blob; vc's release note is on top at c4f52b8e, and main is pushed (04f6368d..c4f52b8e). CI run 40291928610 on c4f52b8e went red on readonlygit.bats's --version and doctor arms alone (issue 0233, since landed at 4c4c890d), and there each prompt arm 0232 names reported skip expect is not installed. 0232's clones are archived in ~/Devel/scratch/devbin-cc/archive/i0232, every commit restored in a fresh clone of main, and cleared; the handover (bundle 18c257db, message, RESOLUTION-0232.md 953f6ae8) and the sealed evidence (0232/runs) stay. Released when vc closes 0232 after hv's cut of 0.1.15 on the green CI run of the head that lands 0235, filling the draft's placeholders (the landed sha c0b47cf6, that run); then unclaim ISSUE:0232. hv stopped the first cut and reset main to a60fbcd6 so T5 rides 0.1.15 as 0235, so run 40302760947 on 39300b37 no longer closes it"
+  }
+}

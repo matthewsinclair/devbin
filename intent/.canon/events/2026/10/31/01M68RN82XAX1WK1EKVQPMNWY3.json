@@ -1,0 +1,15 @@
+{
+  "id": "01M68RN82XAX1WK1EKVQPMNWY3",
+  "ts": "2026-10-31T10:39:03.774Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/01 (WP01) fix on hv's go via vc (2026-10-31 10:38Z): fix the four reds named in ~/Devel/scratch/devbin-cc/st11-wp01/handover/STATE.md and nothing else, in a new clone off the bank; END for N9CEEZ first; WP03 (dc) takes the bats lane first, then rebase onto main, re-bank refs/bank/cc/ST0011-01 with a fresh handover and ask vc for a slot; evidence: changed arms red on main then green under BSD and GNU, one targeted run with the tree scans and help, shellcheck, critic once."
+  }
+}

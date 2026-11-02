@@ -1,0 +1,15 @@
+{
+  "id": "01M5SPSRKAG6K3JCVVQSFGTDWD",
+  "ts": "2026-10-25T14:17:58.122Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0228 and ISSUE:0226's fixups 0226b (1b748f0a) and 0226c (ea816117): handed over to vc, green at ea816117 14:07-14:17Z (runs in ~/Devel/scratch/devbin-dc/0228/runs3); bundle + COMMIT_MSG-0228, COMMIT_MSG-0226c and RESOLUTION-0228 sealed in ~/Devel/scratch/devbin-dc/0228/handover, 0226b's in ~/Devel/scratch/devbin-dc/0226b/handover. Released when vc lands the stack 0226b, 0227, 0228, 0226c and reports the landing pair's BSD suite; then fill in the landed shas and suite for vc"
+  }
+}

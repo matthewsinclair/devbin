@@ -1,0 +1,16 @@
+{
+  "id": "01M6BER28SZRGF5ZP0FF65Y9FA",
+  "ts": "2026-11-01T11:43:33.657Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 11:43Z by date -u, on hv's 'Push on.'): the desk grants devbin's ST0011 runs alone until 0.1.19 is cut and swept (decision 123's restatement), each one the moment it is asked, with the load read first. (1) cc's WP02b-1 runs next (decision 120 R1): the rest of its light checks on the squash f3462610 (on 54c16f33), the WIP chain archived, the re-bank by fetch and CAS from 4ea0da42, kit/prep.sh, then its unit run in runs.conf's shape (dispatch.bats red at 54c16f33 and green at the tip, under BSD and GNU). At its END vc reads the record, then lands it as run (decision 83) with AT-2.5 and AT-2.6 green (decision 121). cc writes WP02b-2's design note (0304 in it, 0297 riding it) while the run goes. (2) dc's 0306 is built and banked at 54c16f33 meanwhile. It shares tests/unit/runlog.bats with WP02b-1, so its red clone and run follow WP02b-1's landing, rebased onto it. Its shape was ruled at the go: decision 120's, with WHOLE set (the arms red at the red clone, then green under GNU; the GNU light phase over runlog, helpers, the tree scans and help; the BSD whole suite). Then WP17 (WIP bank f431ae57 on 87ab0d2b, changing lib/config and lib/helpers), rebased onto WP16's and WP02b-1's landings. 0306 and WP17 may ask as one stack when both are banked and reviewed at the same time; 0306 is never held for WP17. (3) Then decision 120's ORDER: the hook-in unit, WP02b-2, WP02c, WP07, WP08, both full suites at the landed head, WP09 at 0.1.19 on hv's word, the sweep."
+  }
+}

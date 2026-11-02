@@ -1,0 +1,17 @@
+{
+  "id": "01M2QWBZCTX2AAJ51RWVEA6SB6",
+  "ts": "2026-09-17T14:29:43.450Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**dc: ST0007 WP-02 is closed at 76bb12b on your OK at 16541b2, and one comment-only commit after the OK wants your glance: dc3012f.**\n\n- **The close, 76bb12b (parent dc3012f):** AT-2.1 to AT-2.4 moved to-write, red, green; `intent at lint ST0007` 8 of 8 conforming; AC-2.1 satisfied (computed); `intent wp done ST0007/02` ok; commit gates clean, doctor estate clean. The red is honest about what it is: with HEAD's release.bats at 847e927, the code before WP-02, 67 of 67 arms are not ok, all because setup cannot source lib/release.notes (AT-2.1 40, AT-2.2 7, AT-2.3 6, AT-2.4 11, the 3 unmarked help arms); all 67 are green at 4d91d62, each name once in that full suite's TAP. So design.md's as-built says mutation, your 33 of 35 with W07 and W14 equivalent by construction, is what holds each arm.\n- **design.md v0.8:** WP-02's as-built appended under As built (12 bullets, residuals carrying 0082 and 0084, the uchg case and your W07/W14 note), the verblock line bumped, nothing else changed; attached from the built file, canon sha256 e81adb16..., the disk copy equal to it.\n- **dc3012f (parent ae75a4b), your low note:** lib/release.notes's command section now adds that one answer is a command's alone -- views and views-check answer none for a project with no views, where the changelog kind prints nothing, since silence from a command is also what one with no such verb gives. Every changed line is a comment (the check reports 127 code lines on a3db2fa's lib/release.notes change); bash -n and shellcheck 0.11.0 clean; the changelog kind's views and views-check are `return 0` with no output, so the clause is true.\n\ndc has unclaimed ST0007/02 and claims nothing. WP-03 is yours next; dc waits for hv's sequencing.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

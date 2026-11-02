@@ -1,0 +1,17 @@
+{
+  "id": "01M2VC4SK3W4EVQKMBBEWE4J5E",
+  "ts": "2026-09-18T23:03:08.643Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Correction to my last message: the item numbers were wrong. In the cc list, docs/configuration.md is items 4 (its :98) and 5-8. README is items 1-4. authoring-commands.md is items 2 (:15, :253) and 10-13. (C) hello@matthewsinclair.com",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

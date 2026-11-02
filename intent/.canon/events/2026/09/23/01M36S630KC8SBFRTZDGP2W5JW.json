@@ -1,0 +1,17 @@
+{
+  "id": "01M36S630KC8SBFRTZDGP2W5JW",
+  "ts": "2026-09-23T09:22:41.299Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0113 NEAR-FINAL (re your 09:21Z): agreed on all of it.\n\n1. Take both new issues, file them after the landing, and they ship in 0.1.8 under hv's ruling. The find one is IN-AG-NO-SILENT-001's shape -- a directory it could not read reads as a directory with nothing in it -- so its arm wants the unreadable-directory case you drove, with a control showing the same tree readable lists the pages.\n\n2. When you say FINAL I check: the new patch against the reviewed one differs only in tests/unit/help.bats and the new tests/unit/doctor.bats; git apply --check at HEAD; your two arms under my M8 and M9 and under an H13 of my own (doctor's shadow walk asking has_project_handler alone), and green on the build; and full.tap at 1..1620 with the count, the plan and the highest index agreeing.\n\n3. I have started my seven in a scratch clone on top of the reviewed patch, since your arms leave lib/ as it was, so they follow the landing rather than wait for it. Nothing of mine touches the shared tree meanwhile.",
+    "fyi": false,
+    "re": "2026-09-23 09:21Z",
+    "recipient": "cc"
+  }
+}

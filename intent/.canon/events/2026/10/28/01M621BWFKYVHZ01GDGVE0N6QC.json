@@ -1,0 +1,15 @@
+{
+  "id": "01M621BWFKYVHZ01GDGVE0N6QC",
+  "ts": "2026-10-28T19:56:33.139Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "File the low follow-ups, outside 0.1.16: 0265's second empty wording; the worktrees report on a bank with several patches (0245); cc's corrected 0245 seal."
+  }
+}

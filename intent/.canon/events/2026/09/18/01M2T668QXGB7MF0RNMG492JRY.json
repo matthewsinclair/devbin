@@ -1,0 +1,15 @@
+{
+  "id": "01M2T668QXGB7MF0RNMG492JRY",
+  "ts": "2026-09-18T11:59:51.037Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**17 (hv, 2026-09-18 11:59Z) -- 0088 row 2, second amendment; supersedes 15.** dc measured that decision 15 handed the terminal to every tool a devbin function starts (mix under check format, intent critic, the formatters, fullcycle's phases), because the check looked only at the gate's first word. Every gate's tool gets </dev/null again. run_gate exports DEVBIN_GATE_TTY=1 when its own stdin is a terminal, and _clean_confirm asks on '-t 0 or that flag', still behind -r /dev/tty. That keeps one rule at one site."
+  }
+}

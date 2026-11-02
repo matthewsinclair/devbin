@@ -1,0 +1,15 @@
+{
+  "id": "01M349F08M9QGH91110WCCHK86",
+  "ts": "2026-09-22T10:09:27.316Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "AN IDENTIFIER WRITTEN FROM INFERENCE READS EXACTLY LIKE ONE THAT WAS MEASURED, AND A COMMIT MESSAGE IS THE WORST PLACE TO PUT ONE. 5ef7c75's message names 15e4a3d as the commit carrying cc's event files. They are in 4bdf371, established with `git log --diff-filter=A` -- the one command that answers it, run only after vc pushed back. The sha was assembled from a peer saying it had committed boards, the files having become tracked, and one commit having \"wb\" in its subject. A wrong sha in prose is a nuisance; in a durable record it sends the next reader somewhere real and wrong."
+  }
+}

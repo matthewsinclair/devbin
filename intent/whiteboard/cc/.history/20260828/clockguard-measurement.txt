@@ -1,0 +1,39 @@
+# clock-guard measurement, 2026-08-28 16:29-16:31Z, devbin/cc
+
+Run: bash clockguard-gnu-arm.sh ; bash clockguard-fix-arm.sh
+Machine: Darwin 25.6.0 arm64; BSD date = /bin/date; GNU date = date (GNU coreutils) 9.11
+
+== gnu-arm output ==
+=== is gdate GNU coreutils? ===
+date (GNU coreutils) 9.11
+
+=== ARM 1: differential against ground truth (seconds stated explicitly) ===
+truth (bsd, :00 explicit) = 1787934540
+truth (gnu, :00 explicit) = 1787934540
+  flavours AGREE on ground truth
+clock second before = 42, after = 42
+bsd no-seconds = 1787934582   delta vs truth = 42
+gnu no-seconds = 1787934540   delta vs truth = 0
+
+=== ARM 2: does the SAME stamp parse to a DIFFERENT value as the clock moves? ===
+bsd: 1787934582 -> 1787934585   moved by 3s across a 3s wait
+gnu: 1787934540 -> 1787934540   moved by 0s across a 3s wait
+
+=== NEGATIVE CONTROL: a stamp WITH seconds must not move under either flavour ===
+bsd control moved by 0s   (MUST be 0)
+gnu control moved by 0s   (MUST be 0)
+
+== fix-arm output ==
+=== AS SHIPPED ===
+bsd, HH:MM stamp (the unfixed path)            1787934708 -> 1787934711   moved 3s
+bsd, date-only normalised to 00:00 (fixed?)    1787875251 -> 1787875254   moved 3s
+gnu, HH:MM stamp                               1787934660 -> 1787934660   moved 0s
+
+=== PROPOSED FIX: append :00 to the value, %S to the format ===
+bsd, HH:MM:SS stamp                            1787934660 -> 1787934660   moved 0s
+bsd, midnight with :00 seconds                 1787875200 -> 1787875200   moved 0s
+gnu, HH:MM:SS stamp                            1787934660 -> 1787934660   moved 0s
+
+=== do the two flavours AGREE under the fix? ===
+bsd = 1787934660   gnu = 1787934660
+  AGREE

@@ -1,0 +1,15 @@
+{
+  "id": "01M36T4ZF030V9BKQM7DMVPD7G",
+  "ts": "2026-09-23T09:39:33.472Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0113 IS FINAL-PENDING. IT LANDS WHEN THE FULL SUITE ON THE FINAL BUILD AND THE test-check CRITIC ARE BOTH CLEAN AND vc HAS RUN ITS FINAL CHECKS. Every path below is under /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad. THE BUILD is build0113 (c9a592c plus 0113), which now carries the two new arms: help.bats 'the trailer is narrowed to its own command, and makes no claim about the catalogue (0113)' and doctor.bats 'a config run: at a built-in COMMAND is reported (0113)'. final0113 is byte-identical to it outside .git and tmp/. THE PATCH is 0113-build.patch: 43 files, +1269 -854. It differs from the reviewed one (0113-build.v1.patch) only in tests/unit/help.bats and the new tests/unit/doctor.bats, and `git apply --check` was rc=0 at 0a85515. DONE AND GREEN: (1) 23 mutants (mut0113/*.verdict): 20 killed, each on the arms it was aimed at. H09, H10 and H13 survived the pre-arm build, and the two new arms go red under each and are green on the build (fin-H09, fin-H10, fin-H13). (2) The six-file rerun on build0113 (help, documentation, vendoredmd, doctor, harness, helpers): 221/221, in six.tap and six.meta. (3) The code critic: nothing live on 0113's lines. STILL PENDING: (a) The full suite on final0113 writes final.tap and final.meta, plan 1..1620; at 09:29Z it was 918 ok, 0 failed. Read the files, not the task notification, whose exit code is the reporting line's, and check that the plan, the ok count and the highest index agree. (b) The test-check critic on help, vendoredmd and documentation.bats reports as a message. If it moves an arm, change build0113 and final0113 alike, rerun, and regenerate the patch. THEN say FINAL to vc, naming final.tap (not full.tap) and its numbers. vc checks the patch against v1, `git apply --check`, its M8 and M9 and an H13 of its own against the arms, and final.tap. ON vc's GO: (1) Fill {SUITE} in 0113-commit.msg. (2) Run land0113.sh <HEAD> 0113-commit.msg. It refuses on a moved HEAD, anything staged, a dirty path the patch touches, or a patch that is not the build, and after the commit it proves every path holds the build's bytes; it was driven red eight ways in landtest/. (3) Close 0113 and 0118, each with a ## Resolution: the fixed-at sha, red-first and where it could not reach, the mutants, vc's review, the suite, and that it ships in 0.1.8. (4) File the two critic issues from issue-vendored-find.md and issue-d2-tiers.md; vc agreed they are cc's, for 0.1.8, and their numbers are whatever `intent issues add` assigns (vc has taken 0126). (5) Tell vc it has landed."
+  }
+}

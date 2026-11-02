@@ -1,0 +1,16 @@
+{
+  "id": "01M5YA00CDCTMW8Q4E94Q41X8H",
+  "ts": "2026-10-27T09:10:23.373Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 177,
+    "text": "FILED as devbin 0243 (2026-10-27, commit 23272153) for 0.1.16, on hv's go (decision 78): macos for an app that versions apart from its project or builds outside the root, and its Launch Services drops. Its Done when is that Utilz can delete its bin/.devbin/cmd/macos and lose no check it makes today (utilz-vc's ask; utilz-vc decision 65 (3)), and the lines vc measured on main are in the issue. utilz-vc has the number. cc builds it, design first."
+  }
+}

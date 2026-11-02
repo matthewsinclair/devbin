@@ -1,0 +1,15 @@
+{
+  "id": "01M2RCEXVYKDB7YGJBPAYMF7VX",
+  "ts": "2026-09-17T19:10:57.406Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "**A full bats suite is a LOCK ON THE WORKING TREE, not a background fact.** On 2026-09-17 I edited lib/helpers and lib/release.notes while the suite at 169a349 was still running against the shared tree, so its last stretch of arms read bytes that were no longer the commit's. release.bats had already run, so nothing 0082 touches was affected and the re-run settled it -- but the count was quietly not what its label said, which is the defect class this project exists to catch. **While a suite is running against the working tree, the tree is read-only: plan, write scratch, message peers, and hold every lib/ and tests/ edit until the number is in.**"
+  }
+}

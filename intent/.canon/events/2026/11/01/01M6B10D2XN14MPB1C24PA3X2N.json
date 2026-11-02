@@ -1,0 +1,16 @@
+{
+  "id": "01M6B10D2XN14MPB1C24PA3X2N",
+  "ts": "2026-11-01T07:43:26.813Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115), on hv's go (vc decision 119, 2026-11-01 06:46Z): WIP banked at refs/bank/dc/ST0011-16-wip e8d91e38 (tree ~/Devel/scratch/devbin-dc/wp16/build, clean; the state in wp16/NOTES.md). Both reviews' dispositions are accepted by vc (dispositions-0c70f300.md at 06:58Z; dispositions-4774c637.md at 07:42Z by vc's clock), and hv ruled the two spec-level findings in the TUI: I8, the shell's uname -m stays and s13 names the Rosetta case as a declared limit; I9, the project root stays, since every pin in the fleet sits at its repository's root, and s13 names the limit, a per-artefact dir: coming with the first adoption that needs one; both s13 words only, in the next settle. Now: a critic-shell review of the settle's own delta, 4774c637..e8d91e38, is running to its end (dispatched by 07:36Z by date -u; its probes told to cd into the scratchpad first). Next: settle it with the s13 words; if its fixes are small, no fourth review (vc); squash the WIP into the one unit commit on aa566d51 with COMMIT_MSG-ST0011-16.txt; build-red.sh; ask the bats lane naming the tip; the run takes the box first at the next END of Intent's cargo work (vc). The run (decision 120): the arms red at the red clone first, then the whole suite under BSD at the tip, the changed suites under GNU, the tree scans and help. The order (decision 120, R1): first ready runs first until cc asks for WP02b-1's unit run, WP16 then at its base with no rebase; once cc has asked, WP16 waits for WP02b-1's landing and rebases onto it (five shared files, decision 83). Then the handover, with the AT rows for AC-5.1 to 5.3 and 5.5 at the landing (decision 101)."
+  }
+}

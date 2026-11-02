@@ -1,0 +1,15 @@
+{
+  "id": "01M37A3Y490KYM491NFEZWY7X8",
+  "ts": "2026-09-23T14:18:36.554Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0140"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "upgrade, on a case-insensitive disk, removes a file devbin renamed only in case after updating it, and overwrites an edit to it unrefused"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M696MZYN75GHFMQ01WRVG9YN",
+  "ts": "2026-10-31T14:43:35.509Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 56,
+    "text": "ST0011/03 remainder after the stack lands, its own unit, critic-reviewed before its first run (WP03 reopened; vc's ruling received by 2026-10-31 14:43Z): ONE pure reader in ci-state's file, in the shape of cistate_push_ignores, answering for (tree, workflow) one of three, each with its reason text: fires on candidate/ refs, does not fire, or missing from the tree (a declared or default release.ci.workflow the tree does not hold, naming the key); its name and words agreed with cc before the bank. Plus the failed detail naming the failed jobs, or that none ran (utilz#0062's note; cistate_rank names only the run and the summary's conclusion today). cc's two call lines in WP02b: the pre-flight refuses on the last two answers with the reader's reason, and the failed detail. AC-3.1 covered with ATs for all three answers, and satisfied, at its landing."
+  }
+}

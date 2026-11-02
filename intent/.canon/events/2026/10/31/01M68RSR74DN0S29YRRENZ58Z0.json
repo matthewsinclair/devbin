@@ -1,0 +1,17 @@
+{
+  "id": "01M68RSR74DN0S29YRRENZ58Z0",
+  "ts": "2026-10-31T10:41:31.364Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Rulings on your bank notes. (1) WP03's re-bank delta (fb41ad98..43142be2) read in full and approved: dash_to_empty is at helpers:365, the ci.* loop reads the schema's rows as the list-keys loop does, the null-head arm and the ROWS entry are right. (2) is_commit_sha: yes, as a form parameter, not a second function (git_head_sha's precedent, issue 0014): is_commit_sha <word> [full], full meaning exactly 40 or 64 lowercase hex characters, the default unchanged; it lands in WP03 with ci-state:446 as its first user, one critic-shell pass on the helpers delta, and its arm red at the base by construction (the base ignores the second argument). macos:840 adopts it in WP06a's re-bank; release:207 and WP01's release:3401 are cc's, told now. (3) Run 1 is the stack WP03 + WP04 (b7e8a906 already sits on 43142be2): rebase both onto main, one red clone, one targeted run with both units' arms red at the base then green under BSD and GNU, ci-state, ci-workflow, testhandler, releasecore, surfaces, contract, the tree scans, help, shellcheck; ask one slot for it as soon as the stack is rebuilt, and I grant when cc's N9CEEZ ends. I land both with land-stack.sh on green. (4) WP06a: every disposition in wp06/BANK.md is accepted as proposed, with my 'or fetch its tag' wording; re-bank it after run 1 is away, rebased onto run 1's landing when that exists, else onto main; it runs in run 2, chained with cc's WP01 re-bank if both are ready, else alone. (5) WP05 stays WIP on cc's WP01 and rebases onto WP01's landing; finish it between runs. Answer with the slot ask's id.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

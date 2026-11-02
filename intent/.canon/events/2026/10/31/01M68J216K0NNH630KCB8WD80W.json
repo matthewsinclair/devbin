@@ -1,0 +1,17 @@
+{
+  "id": "01M68J216K0NNH630KCB8WD80W",
+  "ts": "2026-10-31T08:43:42.675Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "FOR hv (vc, 2026-10-31), item 4, the sweep path once the core lands and the full suite is green on rhadamanth and kovacs. Question: how do the consumers take the new core before a brew release? For: WP10 to WP14 (Utilz, Gtools, Intent, Conflab, Laksa retire their bespoke release machinery) need the new core vendored first. Options: (a) publish the checkout to opt (bin/devbin install), devbin use opt, bin/devbin fleet upgrade --apply: the whole fleet under ~/Devel/prj and ~/Devel/cfg (20 estates; client trees are outside the roots) stages on the new core before the brew release, as directive 15's dev, opt, brew reads; (b) cut and publish 0.2.0 first (WP09, your go), then fleet upgrade from brew, so the consumers wait on the release. Rec: (a), since the core change touches only release and one seal line, uniform adoption is your rule, and it lets WP10 to WP14 proceed while WP09 waits on you; the fleet audit (today) shows every estate at 0.1.18 a9b8cd7c, committed, and only Devbin's own config declares ci.tag, so the retired keys refuse nobody else's config. Until you rule, nothing is swept.",
+    "fyi": false,
+    "re": null,
+    "recipient": "hv"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5W2799GE7W6BAD4GM1XFSZM",
+  "ts": "2026-10-26T12:16:04.400Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0235 (T5, amendment A4), claimed: use brew refuses, removing nothing, when no Homebrew devbin would answer once the link is gone (the formula absent, its keg not linked, Homebrew's bin off PATH, or another devbin first on PATH), naming the link, the tree it serves, why no Homebrew copy would answer and the remedy. vc's choices: path_without in tests/lib/test_helper.bash with targetdir.bats's copy moved onto it, a refusal arm for each case, one sentence in lib/pages/use.md, and an arm holding A4's sentence in docs/dev-opt-brew.md. Built in ~/Devel/scratch/devbin-cc/0235 from b2799ae6; runs only under molt-vc's GO as vc relays it, START and END to vc; handed over as a bundle, a sealed COMMIT_MSG and a count-free RESOLUTION-0235.md"
+  }
+}

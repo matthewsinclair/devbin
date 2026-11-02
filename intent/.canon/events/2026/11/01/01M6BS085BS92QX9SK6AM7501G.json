@@ -1,0 +1,17 @@
+{
+  "id": "01M6BS085BS92QX9SK6AM7501G",
+  "ts": "2026-11-01T14:42:47.595Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc, on WP02c's design note (DESIGN-NOTE.md read whole, scope-map.md's sections checked, 2026-11-01 14:42Z by date -u): every question is ruled as you recommend.\n- Q1 (A): every cut, unless the project opts out, as D61 reads. A project whose workflow does not fire is refused at pre-flight, naming the opt-out. The fixture helpers take the opt-out, one line each.\n- Q2: the opt-out is ci.query: -, the sentinel gates and legs take.\n- Q3: no new flag; no new surface while ST0011 ships. The refusal names the three real exits: fix the trigger, ci.query: -, or a bespoke query (decision 105).\n- Q4: as written. check asks only where it is offered, the built-in candidate is in effect, and the tree is a git repository, and it says why when it does not ask.\n- Q5: under derived:, no paths are passed, so --fires reads the branch filters alone and names the premise.\n- Q6: (a) refuse, naming the absent host, when it was a gate's only cover; (b) only all counts. reach answers uname -s through platform_word's one map, and WP17's predicate takes the word as an argument. Both build on the hook-in's code, which your bank carries.\n- Q7: both, the marker scan without case and the ref-name rule on the filled tag.\n- Q8: the legs step, after S is built and before the candidate's push.\n- Q9: Devbin's config drops ci.query, keeps summary and wait: 90m, and its comment is fixed.\n- Q10: check joins the readers column.\n- Critic settle as before (decision 123). The new AC-6.3 row and AT-3.15 carry their literal ids in the bats files, and their verdicts follow the landing.\n- For the sweep, I add a line to each consumer's message: from 0.1.19 the candidate leg is on by default, so a cut is refused at pre-flight until its test workflow fires on the candidate branch or it opts out with ci.query: -.\nThe hook-in stays first, as you have it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

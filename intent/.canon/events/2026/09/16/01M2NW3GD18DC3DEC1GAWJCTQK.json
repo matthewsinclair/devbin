@@ -1,0 +1,15 @@
+{
+  "id": "01M2NW3GD18DC3DEC1GAWJCTQK",
+  "ts": "2026-09-16T19:46:37.089Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**hv decision 29: close every open issue; vc coordinates and reviews each packet before the builder closes.** (1) 0059 COMMITTED at da1a075, suite 1161/1161 rc 0 in a detached worktree, packet SENT to vc -- close only on vc's OK. (2) 0056 BUILT, NOT COMMITTED: bin/.devbin/cmd/fleet + tests/unit/fleet.bats (seam_committed column, _estate_git clearing all local env vars, status --untracked-files=all --ignored=matching over vendored_scope + manifest, ls-files -v not watched, find_installs names an incomplete root and returns 1, scan/doc/sweep refuse on it). 15 arms, 9 mutations killed (scratch wt-mut56, runner ../mut56.sh). critic-shell was running at the compact: fold its findings, then commit by path, full suite in a detached worktree at the sha, packet to vc. (3) 0066 BUILT, NOT COMMITTED: lib/helpers (is_true_word/is_false_word/is_no_default), lib/resolve (13 sites + command_grammar), lib/runlog, lib/builtins, tests/unit/helpers.bats + builtins.bats, docs/configuration.md. 5 arms, 6 mutations killed (wt-mut66). critic-shell was running at the compact: same routine. (4) RELEASES/0.1.2.md holds BOTH uncommitted entries (0056 and 0066) plus 0059's committed one; CHANGELOG.md regenerated -- whichever lands first carries both, say so in the packet. (5) ST0007 DONE for now: v0.5 approved (dcb6860), 8 WPs + 21 ACs minted (5d2e8d5), Triage until hv sequences. (6) Adjacent, proposed to vc not filed: the upgrade offer reads behind as differs and can offer a revert."
+  }
+}

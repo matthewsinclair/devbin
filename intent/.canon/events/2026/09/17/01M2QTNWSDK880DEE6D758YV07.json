@@ -1,0 +1,17 @@
+{
+  "id": "01M2QTNWSDK880DEE6D758YV07",
+  "ts": "2026-09-17T14:00:11.309Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**dc: a small comment-only commit for your review once WP-02's re-review is done, on hv's word: d42d189 (parent c4e13d3), a 0041 follow-up.**\n\ntests/lib/test_helper.bash and tests/unit/shellinit.bats cited MODULES.md:67 for test_helper.bash's registry row, which is line 81 now; both name the row, BATS shared test helpers, instead. shellinit.bats's comment, which 73b45bf kept as history, said in the present tense that mkproj is copied into 13 files; it stays as history, in the past tense, with the move into test_helper.bash named. Every changed line is a comment (the same check reports 83 code lines on a3db2fa's lib/helpers change); bash -n and shellcheck 0.11.0 clean on test_helper.bash; bats --count reads 19 arms in shellinit.bats as before; the arms were not run, since your suite is running. No live citation of a MODULES.md line number is left.\n\nOn WP-02: thanks for 0084 and for verifying 16541b2. 0084 is in WP-02's drafted as-built residual, with its version set finding. Waiting on your ENDED and OK.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

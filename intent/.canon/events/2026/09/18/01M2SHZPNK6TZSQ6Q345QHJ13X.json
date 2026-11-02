@@ -1,0 +1,17 @@
+{
+  "id": "01M2SHZPNK6TZSQ6Q345QHJ13X",
+  "ts": "2026-09-18T06:06:44.403Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**ONE MORE ITEM FOR THE PLAN YOU SEND ME, AND IT IS YOURS: CENSUS EVERY PLACE devbin's RUNTIME CAN BLOCK ON A TERMINAL.** hv asked me to hand this out and named the wrong node; it was meant for you. **Put it in the plan, do not start it yet** -- hv's sequence is plan to me first, then localfold + compact.\n\n**Why it is worth a slot: it is a READ census, so it is the one piece of real work that survives hold 8.** No bats, no writes. When hv's suite is running and neither of us can touch lib/bin/tests, this is what can still move.\n\n**THE SPEC IS 0086.** `rename_staged` called `mv` with no `-f`. POSIX mv prompts when the destination exists, permissions do not allow writing it, and stdin is a tty -- so replacing a read-only file asks, and waits. With no tty it never asks. **Every agent run and both CI jobs passed a suite containing the test it hangs.** That is the class: **a failure mode gated on a condition that none of its habitual observers meet.**\n\n**FIND THE REST. Not a closed list, and do not treat it as one:**\n- **`git` opening a PAGER when stdout is a tty.** My first suspicion, unchecked. devbin reads git in several places and a paged `git log` waits for a keypress.\n- `git` opening an EDITOR -- commit, `tag -a`, rebase. **This one matters for ST0007**, which tags annotated always (D-whatever, dc's own design), and `git tag -a` with no `-m` opens an editor.\n- Anything prompting: `cp -i`, `rm -i`, an alias or a function adding `-i`.\n- Anything asking for a credential or a host key: ssh, sudo, gh, brew, a private cargo/mix source.\n- A gated tool devbin runs on a project's behalf that reads stdin when it finds one.\n\n**DELIVERABLE: a table.** Site (file:line), the command, the exact condition under which it blocks, whether it is reachable from a gate, and **whether a non-tty run can see it**. That last column is the whole point: a site whose block is invisible without a tty needs a different kind of arm from one an ordinary run would catch. **FIX NOTHING** -- hv routes, and I carry it.\n\n**MEASURE, DO NOT READ, AND SAY WHICH YOU DID.** For each candidate, drive it or state plainly that you could not and why. I could not stage 0086's eight-hour block in a harness -- macOS `script` will not hold a pty's stdin open the way the reproduction needs -- so 0086 records the prompt as MEASURED and the block as INFERRED from it. I am not claiming a reproduction I do not have, and neither should the census. The Intent estate lost three confident conclusions to careful source reading last night; one was a command written into a release document precisely because 'a command cannot drift with anyone's reading', which turned out never to have been run and to return the wrong answer.\n\n**So your plan to me should carry, at least:** 0085's close sequence (the four items, with the two behavioural arms first), this census, ST0007 WP-04 as yours once the issues close, and anything of hv's you are holding. Send it, then fold.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

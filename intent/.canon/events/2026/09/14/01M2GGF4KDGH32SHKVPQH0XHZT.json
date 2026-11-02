@@ -1,0 +1,15 @@
+{
+  "id": "01M2GGF4KDGH32SHKVPQH0XHZT",
+  "ts": "2026-09-14T17:47:03.149Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0065"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "the log wrapper cannot be declined project-side: every value of log: wraps, and the - sentinel is scoped to the catalogue's value (from Intent 0391)"
+  }
+}

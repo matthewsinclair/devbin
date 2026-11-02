@@ -1,0 +1,15 @@
+{
+  "id": "01M39EYW61R6Z0MVVBAP4S0GP9",
+  "ts": "2026-09-24T10:21:42.465Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "ONE HEAVY RUN ON THE HOST AT A TIME (2026-09-24, from intent-vc through vc, for Intent's 3.2.1 cut): a full suite or a mutant batch is heavy; a single arm or a small targeted filter is light and always allowed. Start a heavy run only on vc's START, and send vc END the moment it finishes, pid and time read from the machine; Intent's heavy runs take turns with ours. The critic runs light-only while this stands. Retire this when vc says the protocol has ended."
+  }
+}

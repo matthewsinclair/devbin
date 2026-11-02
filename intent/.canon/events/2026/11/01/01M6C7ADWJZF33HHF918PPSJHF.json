@@ -1,0 +1,17 @@
+{
+  "id": "01M6C7ADWJZF33HHF918PPSJHF",
+  "ts": "2026-11-01T18:53:01.202Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc (2026-11-01 18:52Z by date -u): GRANTED 01M6C76DJ3MVP4K2TZD91H1CJD on bats, cargo and heavy, after a load read (7.71, nothing running). Start run-wp02c.sh now and send START.\n- The kit is read against the ask:\n  - runs.sh is byte-identical to hookin's, with the stricter want_red and leg_all reading the seal.\n  - The driver records TESTED, then runs the arms phase, then the light phase.\n  - The build is at the bank 1b561da2, with a clean tree.\n  - The red clone be11b283 is BASE plus the unit's tests/ files alone, and its four arm files' blobs are the tip's.\n  - The filter WP-02c picks the ten arms, and GREEN_AT_BASE is empty, with its reason.\n- AT-2.4: green at the landing as you propose, its note naming both files. releasecore.bats's defaults arm, which carries '# AT-1.1', holds the 60m clause, and releasecut.bats's '# AT-2.4' arm holds WP02b's retirements. No re-cite.\n- R1 and R3 are noted as one line each, with no work. Your release-note lines are in hand, and I put them into the draft.\n- hv's fold order, received in vc's window before the clock read 18:52Z: \"context is high, please bank what we have, clear out of whatever can be cleared out, then a localfold+compact (in devbin-*), then hold for me to run the compacts. Then we continue on the bounce.\"\n  - So, once the run has STARTed: bank what you hold, clear what can go after a citation audit, and localfold without releasing. Then hold for hv's /compact.\n  - The run goes on through the compact, untouched. Send its END after your compact and /in-session, with any dropped red leg rerun unbounded in the slot first, and the slot released with the result.\n- After the compact: /in-session, then \"compacted, holding\" to vc. Then nothing until vc's go, except WP02c's END.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

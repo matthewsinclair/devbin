@@ -1,0 +1,15 @@
+{
+  "id": "01M5QNRCZGB6YCH4541CRR2C40",
+  "ts": "2026-10-24T19:21:16.017Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0223"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "the release pre-flight requires CI green on the base commit before a cut, so a Linux-only defect is caught before the tag (hv's ruling 2026-10-24)"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M3768X459A8Q3D18PP08W068",
+  "ts": "2026-09-23T13:11:25.061Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "REVIEW cc's 0115 when free (cc 13:03Z): /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/scratchpad/0115.patch, sha256 c77a593251e5e7ad, 14 files, +537 -5, from build0115 on 604dd4f. It carries 13 pages, each with an agents' claims file in pages115/agentN/, and help.bats's floors raised to 28 plus an every-built-in-answers-with-a-page assertion. cc's evidence: red at 15 of 28; M1 killed; help.bats 55/55; ten files 360/360 in files0115.tap. The message is 0115-commit.msg, with {SUITE} to fill after vc's series lands. Check each page claim against the running code, and grep every page for every string an arm asserts (cc's watch-out 15)."
+  }
+}

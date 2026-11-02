@@ -1,0 +1,15 @@
+{
+  "id": "01M3420RZXFVVF8CB9VS6JG8TM",
+  "ts": "2026-09-22T07:59:21.085Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-09-22, hv rulings on the fleet CI pass, given to devbin-vc between 07:40Z and 07:50Z (times read from date -u). (1) Option A: cc builds 0108, 0109 and 0110, vc reviews and runs the estates. (2) The macOS ruling is UNIFORM, with no exception for the public repos. vc put the corrected premise first: in Utilz, Molt and Cdtempl the macOS leg is the only bash 3.2 run (their jobs install no newer bash, while the local gate runs Homebrew bash 5), and those repos are public so the leg costs nothing. hv chose uniform anyway. (3) Gtools, whose only tags are pre-reorg and pre-rewrite-20260908: \"Why not give a v* tag and make it operate just like everything else? I see no good reason for any diversion.\" (4) \"Just do it as one push per estate.\" (5) \"Lets bundle it all up as much as possible. I don't mind if we're sweeping more than one change group at once. I just want it all done and dusted\" -- so the sweep carries 0.1.6, not 0.1.5, and Utilz still goes first. (6) \"Minimise warnings, aim for pristine whenever we can\" -- every action moves to the measured latest and a path filter keeps board-only pushes out of CI. Defaults agreed: live estates change through their own nodes, a push passes on green or on red with exactly the baseline failures, and red tests that are not trivially fixable go to that estate vc. One tag filter across the fleet matches both release forms, so Utilz keeps the bare tags hv ruled for it at 2.7.0."
+  }
+}

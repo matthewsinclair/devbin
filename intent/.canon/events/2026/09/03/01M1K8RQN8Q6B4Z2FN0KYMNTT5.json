@@ -1,0 +1,14 @@
+{
+  "id": "01M1K8RQN8Q6B4Z2FN0KYMNTT5",
+  "ts": "2026-09-03T09:14:30.440Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.edit",
+  "subject": {
+    "type": "issue",
+    "id": "0055"
+  },
+  "payload": {
+    "title": "Run logs were stamped from the local clock with no zone, while fleet audit renders UTC with a Z"
+  }
+}

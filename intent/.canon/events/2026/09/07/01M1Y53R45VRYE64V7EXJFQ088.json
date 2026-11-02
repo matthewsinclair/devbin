@@ -1,0 +1,14 @@
+{
+  "id": "01M1Y53R45VRYE64V7EXJFQ088",
+  "ts": "2026-09-07T14:42:15.813Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "attachment.put",
+  "subject": {
+    "type": "attachment",
+    "id": "ST0002/WP/02/arca_config-inventory.md"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

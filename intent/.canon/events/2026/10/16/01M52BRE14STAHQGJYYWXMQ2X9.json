@@ -1,0 +1,16 @@
+{
+  "id": "01M52BRE14STAHQGJYYWXMQ2X9",
+  "ts": "2026-10-16T12:42:28.260Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 47,
+    "text": "After 0200's handover: ST0008 WP-04 (D48 Windows PATH, D49 checkout on a Windows drive), started with intent wp start; not before vc's word"
+  }
+}

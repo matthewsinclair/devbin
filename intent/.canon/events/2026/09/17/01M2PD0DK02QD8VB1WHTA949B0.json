@@ -1,0 +1,15 @@
+{
+  "id": "01M2PD0DK02QD8VB1WHTA949B0",
+  "ts": "2026-09-17T00:42:01.696Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidate (s), 2026-09-17, vc's call at a fold:** vc wrote tests/unit/release.bats with the Write tool over an EXISTING file of 27 tests (devbin's notes generator) -- the tool's 'updated' reply was the only sign, and it was caught only by git diff --stat at the wrap. Check a path is free before creating a file under a name the tree may already use. And (t): a mutation harness under zsh passed '-f AC-1.2' as ONE word, so a filtered bats run executed nothing and a mutation 'survived' -- a harness result of zero red needs its test count too."
+  }
+}

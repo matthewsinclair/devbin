@@ -1,0 +1,15 @@
+{
+  "id": "01M34KF7G7TAD53X8ZY9T3NKG3",
+  "ts": "2026-09-22T13:04:20.487Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "THE 0.1.6 FLEET SWEEP IS COMMITTED IN THIRTEEN ESTATES AND UNPUSHED; hv pushes each in person (2026-09-22, superseding todos 95 and 97). Every estate at devbin_version 0.1.6 from the install at source_commit 63e23f8; every upgrade reported 25 updated, 20 unchanged, 0 skipped, so nothing anywhere had been edited in place and nothing was refused. Sweep commits: Utilz f22846a, Riffle a8f6475, Molt eafb2a1, Cdtempl 8a82001, Conflab 7640f6b0, Lamplight 56b1b40c3, Prolix bb07169, Baize 14e71b6, Gtools f6360f8, Intent 9d9eb6c52, Laksa b1314ae2a, MicroGPTEx f63d56d, Prodinfra 2f521c8. devbin itself at 63e23f8, 6 ahead on both remotes. Each commit stages an EXPLICIT pathspec -- bin/devbin, bin/.devbin/lib, bin/.devbin/manifest.sha256 and the one workflow file -- because Utilz, Gtools, Intent, Cdtempl and Laksa all had other nodes writing boards and canon events into those trees while the sweep ran; none of that is in any of my commits. FOUR LIVE VCs VERIFIED INDEPENDENTLY AND ALL FOUR HELD THE PUSH, correctly refusing my relay as not being hv: utilz-vc (doctor 12/0, release check exit 0, and release --minor --dry-run resolving 2.12.0 at step 1 for the first time ever), gtools-vc (doctor 11/0, build still resolves through its own handler), intent-vc, laksa-vc. lamplight-vc verified after hv booted it: 27 paths classified programmatically against the four kinds returning 0 outside them, doctor 13/0, actionlint exit 0 at source, and the stale origin ref settled by a fetch. PUSH MECHANICS, measured: six of the nine non-live estates have NO tracking branch so a bare git push fails -- Riffle, Conflab, Lamplight, Prolix, Baize, MicroGPTEx; origin and upstream are the SAME URL in Conflab, Baize and Prodinfra; Prodinfra tracks origin so a bare push misses local. Acceptance stays todo 96."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M621BMDG55MY6KBKP3HVT4F4",
+  "ts": "2026-10-28T19:56:24.880Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 79,
+    "text": "A5 2026-10-27: T4 reads \"Doctor prints the same line, unchanged.\"; devbin conforms through 0246 (deferred to 0.1.17)."
+  }
+}

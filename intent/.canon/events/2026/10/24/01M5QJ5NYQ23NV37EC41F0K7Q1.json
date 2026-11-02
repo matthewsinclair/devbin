@@ -1,0 +1,16 @@
+{
+  "id": "01M5QJ5NYQ23NV37EC41F0K7Q1",
+  "ts": "2026-10-24T18:18:36.887Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 2026-10-24 18:18Z: the second 0.1.14 batch LANDED on main (unpushed): 7d9eb82d 0215, 193c2107 0209, c8d48d07 0207, 9c2c37b1 0208, 60c4035f 0216 guard fix, 9367a65e 0219, on landing suite 20261024-1756 at 62c632b4 and the fleet-less candidate suite 20261024-1805 (both all ok, errors empty; seals in clone-archive/seals); 0207 0208 0209 0215 0216 0219 CLOSED at 2b1e7820; RELEASES/0.1.14.md committed at 89d2c142 (workroom, documentation and neutral green on its final text in note114). NEXT: hv cuts 0.1.14 privately (its test-all gate takes molt-vc's next heavy slot on hv's go; every node commits its pickup first). AFTER THE CUT: tag to intent-vc (todo 165) and laksa-vc (todo 166), close 0218; 0213 open for T10 legs C and D; dc builds 0220 on vc's word (dc hold 29). LATER 0.1.15 public: backup, recreate matthewsinclair/devbin, https urls, public tap; fleet stays out."
+  }
+}

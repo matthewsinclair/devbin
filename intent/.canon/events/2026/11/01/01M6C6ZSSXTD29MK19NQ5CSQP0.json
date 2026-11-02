@@ -1,0 +1,15 @@
+{
+  "id": "01M6C6ZSSXTD29MK19NQ5CSQP0",
+  "ts": "2026-11-01T18:47:12.957Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0295 (vc's triage, 2026-11-01 18:43Z: in, with no new code, since ST0011's cut is its fix): its resolution is written (b4e74158), in the terms of cc's read of the code at bd92b574 against the issue's three steps, with the landing shas read from main. AT WP02c'S LANDING, which makes the candidate leg every cut's default: intent issues edit 0295 --from <body with WP02c's landing sha in place of 'Its landing sha is added here at the close'> (from ~/Devel/scratch/devbin-cc/st11-wp02b/res-0295/body1.txt), then intent issues close 0295, committed by path. No release-note line: vc adds its number to the note's issue list."
+  }
+}

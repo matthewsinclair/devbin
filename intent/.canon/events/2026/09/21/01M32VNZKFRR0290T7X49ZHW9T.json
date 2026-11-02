@@ -1,0 +1,15 @@
+{
+  "id": "01M32VNZKFRR0290T7X49ZHW9T",
+  "ts": "2026-09-21T20:49:21.519Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0.1.5: dc lands 0106 (release_versions status leak, found by Utilz) and 0107 (K8, usage text through DEVBIN_INVOKE) one commit per issue; vc reviews with mutants; one full suite with no GIT_OPTIONAL_LOCKS in the runner's environment; RELEASES/0.1.5.md; hv pushes, CI, hv cuts. Then the sweep on hv's go: pre-notice, population from fleet audit, Utilz first for its core cut."
+  }
+}

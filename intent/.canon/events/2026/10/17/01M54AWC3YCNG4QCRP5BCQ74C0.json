@@ -1,0 +1,17 @@
+{
+  "id": "01M54AWC3YCNG4QCRP5BCQ74C0",
+  "ts": "2026-10-17T07:05:37.662Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "FOR hv, devbin 0.1.11 IS CUT-READY at main 7dcb442e (any later main commit is board or records only). The cut is yours at your terminal (utilz-vc's ruling, holding the pen while you were AFK: vc does not cut and does not pass --yes). THE ONE COMMAND: `cd ~/Devel/prj/Devbin && bin/devbin release v0.1.11`, and answer step 6's question. WHAT IT DOES: stamps 0.1.11 and dates the note, commits \"release: v0.1.11\", runs the gates again on that commit (check all, test all, doctor, about 9 minutes), asks you at step 6, tags v0.1.11, then pushes main and the tag to local (the Dropbox mirror) and upstream (GitHub), and waits up to 20 min for CI to make the GitHub release. CHECK FIRST: kovacs order R1 at 8a2e0737 (suite, check all with Intent 3.2.3, local brew rehearsal) is green -- vc's board todo 154 says so when it ends; if it is red, do not cut. EVIDENCE: landing suite 20261017-0636 at ca557b4d 2384 of 2384; dry run on 7dcb442e 06:55Z to 07:04Z, every gate green, \"no step failed; the cut stops to ask at step 6\"; seals in ~/Devel/scratch/devbin-vc/clone-archive/seals/. WHAT IT CARRIES: issues 0192 to 0200 and ST0008 WP-07, WP-02, WP-03, WP-01 and WP-04 (RELEASES/0.1.11.md, claim-checked by dc). AFTER THE CUT, vc does: rhad's ~/Devel/opt/devbin re-published from the tag, devbin on kovacs from a clone of the tag through kovacs-sysadm, CI's answer read, and utilz-vc told the tag sha; the fleet sweep to 0.1.11 follows, its pathspec gaining .gitattributes (the block arrives on the upgrade AFTER the one that brings 0.1.11 in). STILL YOURS: creating the Homebrew tap matthewsinclair/homebrew-devbin, then the install-from-tap proof on rhad and kovacs.",
+    "fyi": false,
+    "re": null,
+    "recipient": "hv"
+  }
+}

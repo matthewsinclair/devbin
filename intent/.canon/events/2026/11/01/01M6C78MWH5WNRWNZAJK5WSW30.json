@@ -1,0 +1,15 @@
+{
+  "id": "01M6C78MWH5WNRWNZAJK5WSW30",
+  "ts": "2026-11-01T18:52:02.833Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "K0120, devbin's full suite on kovacs at 8a776229 (vc's run 01M6C3JYKM1NVYCNZQ73X1VPAA): any red in it is fixed forward in WP02c by the lane that owns the file (vc, 18:13Z and 18:30Z), and after the bank that is a re-bank and a new ask; vc relays its seal's lines when kovacs-sysadm sends them. 0302 is in only if K0120 or the cut's legs show a guessed git identity (vc's triage, 18:43Z)."
+  }
+}

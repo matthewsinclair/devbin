@@ -1,0 +1,15 @@
+{
+  "id": "01M35511F3KA69J2ZYVA00RVAM",
+  "ts": "2026-09-22T18:11:09.923Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "INTENT'S SEARCH ANSWERS `complete: true` HERE WHILE ITS STRUCTURAL TIER CAN SEE NOTHING. The index has no shell grammar (`intent_index_status` reports shell: no-grammar), so kind=def, outline and context return zero hits for every function in lib/ -- report_not_yet, not_yet and vendored_paths all came back empty on 2026-09-22, and so did an outline of lib/resolve -- and every one of those answers still said the index was complete. CLAUDE.md's rule, fall back to grep only when the index says it is incomplete, therefore never fires in this project. Use a bare query, which the lexical tier answers, or `git grep`. Reporting it to Intent is hv's call."
+  }
+}

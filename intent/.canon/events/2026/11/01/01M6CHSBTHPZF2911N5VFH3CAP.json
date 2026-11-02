@@ -1,0 +1,15 @@
+{
+  "id": "01M6CHSBTHPZF2911N5VFH3CAP",
+  "ts": "2026-11-01T21:55:56.370Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0318"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "localinstall's 0059 FORWARD arm went red on WSL 2: the fixture source read as dirty at the stamp, and the fixture helpers' commits start background maintenance"
+  }
+}

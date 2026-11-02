@@ -1,0 +1,14 @@
+{
+  "id": "01M2QN2N4R91QVZXNDXYNTBMZK",
+  "ts": "2026-09-17T12:22:18.008Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "at.put",
+  "subject": {
+    "type": "at",
+    "id": "ST0007/AT-2.2"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

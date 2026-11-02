@@ -1,0 +1,16 @@
+{
+  "id": "01M5W7403JYWRMNTMCGJKF5C4C",
+  "ts": "2026-10-26T13:41:39.570Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 34,
+    "text": "ISSUE:0235, claimed: landed by vc at f5df4614, which changes the same paths as the handed bundle's 0ba190c2 to the same blobs from the same base blobs, with equal patch-ids and the sealed message; vc's release note is on top at f06bad4a, and main is pushed (39300b37..f06bad4a). 0235's clones are archived in ~/Devel/scratch/devbin-cc/archive/i0235, every commit restored in a fresh clone of main, and cleared; the handover (0235.bundle 98218e27, COMMIT_MSG-0235.txt 474526cb, RESOLUTION-0235.md f3a0733c) and the sealed evidence (0235/runs and runs2, in runs.sha256) stay, and the critic-shell review's follow-ups are on vc's board to file after the cut. Released when vc closes 0235 after hv's cut of 0.1.15 on the green CI run of the head that lands 0235, filling the draft's placeholders (the landed sha f5df4614, that run); then unclaim ISSUE:0235"
+  }
+}

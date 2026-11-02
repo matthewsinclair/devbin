@@ -1,0 +1,15 @@
+{
+  "id": "01M696WEWDZCSMDD3E40DYPNEY",
+  "ts": "2026-10-31T14:47:40.173Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0300 as its own unit on main (vc decision 100): the cut's release commit (lib/cmd/release:1033) finds no identity in a git_project repository, the harness reading no global or system config, so git guesses one and a host without a domain refuses it; -c on the fixture's own commits cannot reach that commit, so git_project sets user.name and user.email in the project's config and cut_project's two lines go; evidence: releasestatus.bats's arm with git told never to guess, red at main and green at the bank, then the arms of every git_project caller under BSD and GNU; critic-reviewed, banked as refs/bank/cc/0300, its run asked of the desk."
+  }
+}

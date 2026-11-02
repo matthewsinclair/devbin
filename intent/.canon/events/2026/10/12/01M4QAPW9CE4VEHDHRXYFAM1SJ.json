@@ -1,0 +1,14 @@
+{
+  "id": "01M4QAPW9CE4VEHDHRXYFAM1SJ",
+  "ts": "2026-10-12T05:52:29.997Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "st.new",
+  "subject": {
+    "type": "thread",
+    "id": "ST0008"
+  },
+  "payload": {
+    "title": "devbin on Windows through WSL 2: the prerequisite stated, LF held by the repository, shell-init for bash, proven inside WSL; no native port"
+  }
+}

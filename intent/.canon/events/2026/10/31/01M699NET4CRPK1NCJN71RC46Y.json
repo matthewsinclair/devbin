@@ -1,0 +1,15 @@
+{
+  "id": "01M699NET4CRPK1NCJN71RC46Y",
+  "ts": "2026-10-31T15:36:16.454Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0304"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A real cut runs its steps with errexit off and a dry run with it on, so an unchecked failing step stops a dry run and is passed over by the cut that publishes"
+  }
+}

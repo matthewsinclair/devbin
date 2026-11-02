@@ -1,0 +1,15 @@
+{
+  "id": "01M2QMBA2JQF89EJTM2CK2RVM7",
+  "ts": "2026-09-17T12:09:33.011Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**0081, filed at 4a8f5c8 (vc found and measured it): assert_identifier's devbin-own list is stale, so project.root_var can overwrite DEVBIN_RUN_ID, DEVBIN_RUN_STAMP, DEVBIN_CLI_TASK and DEVBIN_RUN_REFERENT with the project root.** Who builds it is not ruled. The fix wants an arm holding the list against the dispatcher's real exports, reusing WP-02's env-dump shape, not only a longer list. Not yet driven: options.<name>.export into the same names, and what a path-valued stamp does to a gate's run log. The probe is in vc's scratchpad (clobber/tests/unit/zz-probe.bats)."
+  }
+}

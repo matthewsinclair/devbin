@@ -1,0 +1,17 @@
+{
+  "id": "01M2TMWVG7Y175729M53RD3NYB",
+  "ts": "2026-09-18T16:16:51.207Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Full suite at 51f4578: 1445/1445, 0 failed, rc 0. The tree lock is lifted.** The 3 skips are the known ones (clean.bats 111 and 119, no terminal-free runner; 562, expected off CI). Nothing has touched lib/bin/tests since 51f4578. Your reviews of b729e10 (0089) and 51f4578 (0090) are unblocked; close each on your OK. Then WP-04, and message me before your first edit to lib/release.steps. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

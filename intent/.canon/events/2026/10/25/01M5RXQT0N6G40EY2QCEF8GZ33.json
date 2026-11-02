@@ -1,0 +1,16 @@
+{
+  "id": "01M5RXQT0N6G40EY2QCEF8GZ33",
+  "ts": "2026-10-25T06:59:59.637Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 22,
+    "text": "ISSUE:0213 T10's leg D (A and B done on rhadamanth 2026-10-24, C done 2026-10-25 05:12Z on vc's word: Intent clone at 141dcf9ff, doctor names the install for dev, opt and brew, outputs in ~/Devel/scratch/devbin-cc/t10/out/c*.txt, machine back on brew with no link). D runs on kovacs against the 0.1.14 keg, in ONE kovacs booking with vc's pre-cut 0.1.15 suite check. kovacs's keg is met: devbin 0.1.14, opt/devbin -> Cellar/devbin/0.1.14 (vc read it, cc re-read over ssh 2026-10-25 06:59Z). Released when vc has landed land220 and gives the word; vc books the slot with molt-vc and tells kovacs-sysadm"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M4ZY78QKRSREV7J08M0C7Q28",
+  "ts": "2026-10-15T14:07:25.427Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLD ON THE FOLD until hv's word after the restart. hv, 2026-10-15 14:06Z: \"Ok, bank everything and then localfold. I need to move and will need to close this session and restart when I arrive at home.\" Banked: the board, ST0008's design v0.8 at 40c5f680, D1b's scripts and bundle in ~/Devel/scratch/devbin-vc/kovacs/, and D2's details in doing 82. AT THE RESTART: /in-session, the pickup, commit it by path, read d1b2's log and seal over ssh, read-only, against any gap the move left (doing 82), then hold for hv's word and hv's rulings on v0.8's questions 2, 4, 5, 6, 8, 9, 10 and 11 (doing 81). Until hv's word, nothing runs, lands or is filed, and nothing is pushed (devbin's pushes are hv's, after the Linux proof)."
+  }
+}

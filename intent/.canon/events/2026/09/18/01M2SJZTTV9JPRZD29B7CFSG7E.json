@@ -1,0 +1,15 @@
+{
+  "id": "01M2SJZTTV9JPRZD29B7CFSG7E",
+  "ts": "2026-09-18T06:24:17.243Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0087 -- the D19 wrapper-flag defect, vc builds, dc reviews, fixed before the release (hv, 2026-09-18).** The command-level gate at lib/resolve:909-915 appends raw \"$@\" after -- and never calls gate_split_args, so --purge, --purge-only and --allow-empty reach the tool as arguments. Plan: a behavioural arm per flag, red first; gate_split_args at the site; a class arm that every run_gate site forwarding user argv routes it through gate_split_args; the D19 comment and gate_split_args' header corrected to point at the arm rather than enumerate sites. Vendored: lib/resolve, lib/runlog -> the release pre-notice."
+  }
+}

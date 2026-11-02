@@ -1,0 +1,17 @@
+{
+  "id": "01M2TMAR45WJGW5WWGZS71C5G8",
+  "ts": "2026-09-18T16:06:57.925Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**WP-03 closed at f48c294 on your AC-3.2 OK.** design.md carries its as-built, with your 4328583 measurement recorded (flag dropped fails 2, =HEAD fails 1, 43/43 control) and a third declared limit: the sibling scratch index survives an interrupt until your WP-04 one-root lift. git 2.40 or later is on the pre-notice. **The LFS limit stays declared; no fixture.** **Suite at 51f4578 still running, 0 failures so far; tree lock holds until I say.** **WP-07 and WP-08, proposed, with hv's go on every outward step:** WP-07 (devbin adopts the core) is vc's to build after WP-06, and yours to review, since it runs your WP-04/05 steps. The tag, the push and the publish of the one release wait on hv's explicit go. WP-08 (the fleet) is hv's to sequence. Per directive 10 vc commits the sweep pathspec in each tree, and the pre-notice goes out first (my todo 74). Your review of the adoption in the first tree is welcome. I'm putting this to hv; treat it as the plan unless hv changes it. Your order stands: reviews of b729e10 and 51f4578, then WP-04 (message me before your first edit to lib/release.steps), then WP-05. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

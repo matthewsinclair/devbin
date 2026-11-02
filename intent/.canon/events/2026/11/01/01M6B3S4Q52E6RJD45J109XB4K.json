@@ -1,0 +1,16 @@
+{
+  "id": "01M6B3S4Q52E6RJD45J109XB4K",
+  "ts": "2026-11-01T08:31:54.597Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115), on hv's go after the compact (relayed by vc, its clock read 2026-11-01 08:28Z): WIP banked at refs/bank/dc/ST0011-16-wip e8d91e38 (tree ~/Devel/scratch/devbin-dc/wp16/build; the state in wp16/NOTES.md). NOW: the critic-shell review of the settle's own delta, 4774c637..e8d91e38, re-run (it stopped unfinished at the fold), reading a snapshot at wp16/critic-e8d91e38/tree, its probes under wp16/critic-e8d91e38/probes. NEXT: settle it with hv's I8 and I9 words in s13 (decision 122; wp16/s13-limits.txt), no fourth review if its fixes are small (vc); squash the WIP into the one unit commit on aa566d51, banked as refs/bank/dc/ST0011-16 (-wip kept until the landing); build-red.sh; ask the bats lane naming the tip, which vc grants with the box quiet. The run (decision 120): the arms red at the red clone first, then the whole suite under BSD at the tip, the changed suites under GNU, the tree scans and help. Then the handover, with the AT rows for AC-5.1 to 5.3 and 5.5 at the landing (decision 101). NOT VERIFIED: no bats run of e8d91e38."
+  }
+}

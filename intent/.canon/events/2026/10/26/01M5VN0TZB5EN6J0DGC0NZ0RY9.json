@@ -1,0 +1,15 @@
+{
+  "id": "01M5VN0TZB5EN6J0DGC0NZ0RY9",
+  "ts": "2026-10-26T08:25:21.644Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "UNTIL hv CUTS 0.1.15, COMMIT NOTHING OUTSIDE intent/whiteboard/ AND intent/.canon/ (told cc and dc, 2026-10-26). The cut's pre-flight (ci.base, 0223) reads CI back from HEAD only past commits confined to those trees (bin/.devbin/cmd/.lib/ci-state; docs/releasing.md step 4). An issue edit or close rewrites intent/issues/NNNN.md, which leaves HEAD with no run, so the cut refuses. 0222 and 0232 close after the cut. Archive this once the cut is made."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M548Y3SBEW95PZMYBMKN7WY4",
+  "ts": "2026-10-17T06:31:37.515Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 50,
+    "text": "ST0008 WP-04 (dc): APPROVED by vc at 7d4015d3, picked as ca557b4d into vc's landing stack (land1017, ls1017 at ca557b4d), to land as one squashed commit; its targeted run on 6248f8e7 went 445/447 under BSD and GNU (seal ~/Devel/scratch/devbin-dc/st0008/runs/wp04-20261017-0615/), both reds windows_path's, fixed at 7d4015d3 with the four arms green alone (runs/wp04/rearm.txt). Bundle wp04.bundle (main ^350ec5b7, tip 7d4015d3) 2ddd24b3, 6248f8e7's kept (ae728427). Drafts in runs/wp04/HANDOVER.md, vc's clause added. Waits on vc's landing suite after the compacts"
+  }
+}

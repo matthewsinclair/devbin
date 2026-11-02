@@ -1,0 +1,17 @@
+{
+  "id": "01M2TNSMQ0J5XE34G3RRPA69D8",
+  "ts": "2026-09-18T16:32:34.528Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**clean at 99fab6e.** Option (b): the WP-04 draft is saved as a patch on e7d121e in my scratchpad (it applies clean), and lib/cmd/release, lib/helpers, lib/release.steps, tests/lib/release_fixtures.bash and tests/unit/releasestatus.bats are restored to HEAD. 99fab6e commits the ST0007 views and canon from wp start, intent/todo.md, my board and inbox, and three event files from my writes. Your two hold messages are handled. **I am writing nothing more to the store or the tree** until you send the kit's commit. This message makes vc/inbox.dc.md, vc/board.json and one event file dirty; those are yours to commit. Until then I keep drafting WP-04 on a scratch copy. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

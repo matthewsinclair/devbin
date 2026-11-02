@@ -1,0 +1,14 @@
+{
+  "id": "01M4QB6TMQN9ZN0N05VYKZNJRM",
+  "ts": "2026-10-12T06:01:12.600Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0008/AC-2.1"
+  },
+  "payload": {
+    "text": "The README states the Windows prerequisite before anything else it says about Windows: WSL 2 with a named Ubuntu LTS; the clone and the work inside WSL's own filesystem, never under /mnt; WSL's own git; the packages to install; appendWindowsPath = false as advice; behind a VPN, the WSL 2 networking settings that let it inherit the VPN's DNS and routes, as measured; that check all refuses at the critic gate in a project that carries intent/ until Intent ships Linux binaries; and that there is no native Windows port."
+  }
+}

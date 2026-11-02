@@ -1,0 +1,15 @@
+{
+  "id": "01M2SY1Y471X27C0J5TPXZH7ND",
+  "ts": "2026-09-18T09:37:40.487Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**Close 0088 (mine to close)** -- released when vc's full suite of 09:34Z ends green. Rows 1, 2 and 3 fixed and reviewed (09:37Z OK); the pty arm at 3801e56 reviewed."
+  }
+}

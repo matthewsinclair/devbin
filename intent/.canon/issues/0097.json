@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 97,
+  "slug": "enabled-false-does-not-hide-a-project-handler-fr",
+  "title": "enabled: false does not hide a project handler from help, while the dispatcher refuses it",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-09-21",
+  "closed": "2026-09-21",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the 2026-09-21 doc audit (dc's independent read, finding K1).\n\n`enabled: false` wins over everything, a project handler of the same name included: `docs/configuration.md`, `lib/config.reference.yaml` and `intent/llm/ARCHITECTURE-shell.md` all say so, and the dispatcher honours it -- `bin/devbin <name>` exits 2 naming the file. `help` did not. `known_commands` (lib/resolve) lists config's commands through `command_active`, then every `cmd/<name>` handler WITHOUT asking it, so a switched-off handler was listed by `help` and answered by `help <name>`: help offered a command the dispatcher refuses.\n\nFix: the handler pass asks `command_active` too, the one reading of `enabled: false`. Test: tests/unit/dispatch.bats, \"a project handler switched off with enabled: false is neither listed nor answered by help\", driven red at the parent commit.\n\n\n## Resolution\n\nFixed at `b58d1ee`, test driven red first at its parent commit. Full suite 1578/1579 at `ae3b200`: the one failing arm was environment-caused (GIT_OPTIONAL_LOCKS=0 exported in the running shell defeated readonlygit.bats' stale fixture, and its control arm caught it) and is green in a clean environment; that file is hardened at `ad86870`. Reviewed by vc against this issue; vc's mutants on 0099 and 0104 were killed. Ships in 0.1.4.\n"
+}

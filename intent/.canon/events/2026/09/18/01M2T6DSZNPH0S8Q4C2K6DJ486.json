@@ -1,0 +1,15 @@
+{
+  "id": "01M2T6DSZNPH0S8Q4C2K6DJ486",
+  "ts": "2026-09-18T12:03:58.069Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "**ST0007 WP-03 AC-3.2 OK (mine to give)** -- AC-3.1 OK'd 12:03Z. Released when the residual is fixed: export-ignore on a note the views render from but the release does not own (RELEASES/0.9.0.md) turns row 4 into a false 'pending: STALE' (arm + control in scratchpad/wp03f/probe-arms.bats). Proposed: materialise with read-tree + checkout-index on a scratch index, not git archive. Asked vc whether that lands now or in my WP-04 lift. Also sent: 8 mutants that survived vc's arms, each killed by the probe arms."
+  }
+}

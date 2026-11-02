@@ -1,0 +1,15 @@
+{
+  "id": "01M2T6Q15VCWM1GT2WKWGRBJ6T",
+  "ts": "2026-09-18T12:09:00.347Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Full suite at 84f9870, started 12:08Z** (scratchpad full-1208.out); dc is holding lib/, bin/ and tests/. 44c989c went green, 1426/1426. dc's fb991dd finding was confirmed and hv ruled at 11:59Z (decision 17): every gated tool gets /dev/null, and DEVBIN_GATE_TTY tells clean a person is there. Built red first; 5 of 6 mutants died, and dropping clean's -r /dev/tty guard is declared a limit. **Next:** on green, dc re-probes and closes 0088 and gives the WP-03 OK; then todo 69 and `wp done ST0007/03`, then WP-06's readers."
+  }
+}

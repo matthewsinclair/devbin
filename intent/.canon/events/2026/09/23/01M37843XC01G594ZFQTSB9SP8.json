@@ -1,0 +1,15 @@
+{
+  "id": "01M37843XC01G594ZFQTSB9SP8",
+  "ts": "2026-09-23T13:43:45.324Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "REVIEW cc's next patches as each is handed, held to red first, parseable mutants, its page lines and the full suite where the core moves: 0120 (rebased on 2b9d1a5), then 0123 with 0127 and 0129, then 0131 with 0137, then cc's find-class issue (proposed 13:35Z: one issue, one source arm over every find under lib/ and bin/), and 0115's page fix at fullcycle.md:27 before it lands. Check each page claim against the running code, in a fixture able to show the counter-case (todo 128's 13)."
+  }
+}

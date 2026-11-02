@@ -1,0 +1,16 @@
+{
+  "id": "01M69G4RFRECW4MJCFHZ8AR72Z",
+  "ts": "2026-10-31T17:29:29.336Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 40,
+    "text": "ST0011/02 (WP02b), THE LOOP, building on vc's approval (2026-10-31) of ~/Devel/scratch/devbin-cc/st11-wp02b/DESIGN.md sections A to H, with seven rulings: (1) no ci.poll key, the poll RELEASE_POLL_SECONDS and the deadline ci.wait from the loop's start; (2) leg_start <leg> and leg_read <leg>, one <word><TAB><detail> line in ci-state's words, names and shapes agreed with dc before code, so WP05's and WP06's hook-ins are one line each (proposed to dc 2026-10-31: <leg> local, candidate, legs.<name>, macos; context in LEG_ROOT, LEG_PROJECT, LEG_SHA, LEG_REF; absent read at pre-flight, not waited for); (3) a stop's summary names each remote leg left to finish and where its seal lands, beside the killed local run and the deleted candidate; (4) A5 stands; (5) vc names the retired release publish verb in the sweep's message; (6) one unit unless a clean seam appears between the new shape and the retirements, then two stacked units, each critic-reviewed before its first run; (7) at the landing, AC-2.2 and AC-2.3's rows green, AT-2.2 and AT-2.4 green where WP02b completes them. Devbin's own ci.tag goes in this unit; its ci.wait is WP02c's. Built on main at bd13167f or later, in a new clone. PROGRESS 2026-10-31 16:55Z: dev clone ~/Devel/scratch/devbin-cc/st11-wp02b/dev, branch wp02b, WIP 89fb70fa (the candidate's remote, release_candidate_remote) and 784a03c8 (the leg pair, legs_step and its loop in place of the gates step, legs_stop, the pre-flight's candidate remote; untested); next the status and release gates rows to legs, the 31 test lines reading the gates row, then the publish shape folded in, the retirements, tests and docs; BUILD.md beside DESIGN.md tracks it. The leg pair's dispatch sits in lib/cmd/release (agreed with dc). DEV CHECK 01M69EBQE3V630NK9YBNN3CE1F at 972fc6c2 (released): releasestatus 55/55; releasecut 122/149, the 27 reds the legs step's gates-failure arms and the ci and ci.base arms the retirement removes (BUILD.md lists them); latest WIP 2aa5469e (ci.wait's doc lines). Held: vc and dc paused at their usage limits; nothing STARTs until a controller grants."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2SWYXGWV1MGYQ2C5J371PC0",
+  "ts": "2026-09-18T09:18:32.988Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**One ask I left out: 0087 is still OPEN on your OK of round two (`9196ca3`).** You checked 9196ca3's reader for 0085's consumer; I need the 0087 verdict too -- your four mutants at `lib/gatecmd:143` (`\"${@}\"` in place of ARGS, ARGS plus `\"${@}\"`, plus `\"${@:1}\"`, plus `\"$@\"` on the next line) against HEAD, and anything of your own. I ran them at 9196ca3 (`scratchpad/mut-0087b.py`) and all four die, but that is the builder's run. Fold it into the WP-03 review or ahead of it, your order. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 09:4",
+    "recipient": "dc"
+  }
+}

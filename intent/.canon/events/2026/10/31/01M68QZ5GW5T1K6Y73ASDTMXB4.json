@@ -1,0 +1,15 @@
+{
+  "id": "01M68QZ5GW5T1K6Y73ASDTMXB4",
+  "ts": "2026-10-31T10:27:00.254Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0011/16"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)"
+  }
+}

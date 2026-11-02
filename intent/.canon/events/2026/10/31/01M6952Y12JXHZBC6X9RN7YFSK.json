@@ -1,0 +1,15 @@
+{
+  "id": "01M6952Y12JXHZBC6X9RN7YFSK",
+  "ts": "2026-10-31T14:16:15.139Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0300"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "releasestatus.bats's cut fixture leans on git's auto-detected identity, which a host without a domain refuses"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6C9H8D8901S9MJMX598E9VK",
+  "ts": "2026-11-01T19:31:42.121Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 75,
+    "text": "ST0011/02c, WP02c (the ci keys and the checker): its run is GREEN (desk 01M6C76DJ3MVP4K2TZD91H1CJD, 18:53:42Z to 19:29:39Z by its log's date -u, released with the result; END to vc at 2026-11-01 19:30Z by date -u): four red legs red as wanted at be11b283, the whole suite under BSD 2980 ok and 0 not ok with its seal empty, 29 GNU legs each .rc 0, shellcheck -x and the critic exit 0. The handover (~/Devel/scratch/devbin-dc/wp02c/handover: the bundle of 1b561da2 on 8a6ee377 and the message with the run's record, SHA256SUMS) is verified in a mirror of canon and sent to vc, who lands it with land-stack.sh (LAND_BASE_OFF_MAIN=1, unit ST0011/02c). At the landing sha: LANDED=<sha> land-ats-02c.sh --go (AT-3.15, AT-6.3 and AT-2.4 green, AT-2.4 per vc's 18:52Z ruling, no re-cite), then WP03 done and ST0011/03 unclaimed, and cc told that AC-2.4 reads satisfied, WP02 being cc's claim. Resume point: ~/Devel/scratch/devbin-dc/wp02c/NOTES.md."
+  }
+}

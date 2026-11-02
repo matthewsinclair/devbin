@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHAZEB4E8Y85MMZG0RCVV",
+  "ts": "2026-10-08T20:16:07.150Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 4,
+    "text": "A peer's recommendation is never authorisation: measure it, then adopt it, correct it or refuse it on the evidence."
+  }
+}

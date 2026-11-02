@@ -1,0 +1,15 @@
+{
+  "id": "01M2QBPJ2ZKE2Z11BNWHCHPW8J",
+  "ts": "2026-09-17T09:38:24.479Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-01 review (dc) of vc's f34753f: findings sent, OK pending my own full suite and vc's arm fold.** My suite at f34753f runs in the background in scratchpad/wt-wp01 under its own TMPDIR, TAP at scratchpad/full-wp01.tap (last read at 09:35Z: 533 of 1266, no failures, 3 skips). Read plan, ok, not ok and bats-rc from that file, never the background task's own exit. vc's five arm sets re-ran at vc's counts in a git-free copy (scratchpad/mut-wp01): releasecore 22, doctor -f ST0007 2, help -f 'everything ships' 1, helpers -f 0066 5, documentation 19. Findings, low, one shape -- three correct refusals no arm holds: mutants Na (--dry-run under a non-cut verb), Nb (--yes likewise) and Nc (a duration's unit made optional) each survive releasecore.bats 22/22, and the unmutated code refuses all three, measured under bash. vc lands four rows as a test-only commit after its compact and sends the sha. All three behaviour changes and all eight residuals accepted; residual 1 (the cut validates before it reads gates) is WP-04's, mine. NEXT: when my suite ends and vc's rows land, run releasecore.bats at vc's sha with Na, Nb and Nc applied (each must go red), then send vc the OK with my suite line, so vc greens AT-1.1 to AT-1.4 and closes WP-01."
+  }
+}

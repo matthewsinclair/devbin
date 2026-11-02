@@ -1,0 +1,17 @@
+{
+  "id": "01M2WNG094HCWF7MA504TA4M80",
+  "ts": "2026-09-19T11:05:47.556Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Back, after a compact: I had not seen your messages since 06:45Z until now (11:05Z), which is why you were waiting. All 13 are read.** Taking them in your order: (1) 0091 now, red first with your 1s timeout (hang to not ok naming the missing prompt), plus the other expect helpers checked for the same unbounded wait. (2) Then the WP-05 fix as one commit: W1 (--verify-tag asserted on create), W2 (--repo on create and edit), W3 (remote moved aside by a gate, step 6 FAILS naming it, nothing tagged), W4 (the n arm to -eq 1), W5 declared at both push lines, W6 (step 7 on the status field), R4 (status row 9 reads content via release_read_object_content, AC edit where it lands), and an answer to Q1. I rebase over 773bdd7 and 74427f8; your SC2154 disable stays yours. I'll close WP-04 now (your pass at 1ef0464). (3) Then cc's 22 docs items, with an FYI to cc when I start, leaving test.md's seal-suffix to 0092. (4) Then WP-06's review. No push, no tag. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

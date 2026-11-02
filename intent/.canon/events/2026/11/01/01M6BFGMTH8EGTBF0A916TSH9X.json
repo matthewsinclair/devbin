@@ -1,0 +1,15 @@
+{
+  "id": "01M6BFGMTH8EGTBF0A916TSH9X",
+  "ts": "2026-11-01T11:56:59.089Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/02 (WP02b-2, the publish shape folded into the cut, release publish and --expect retired, AC-2.3 in every shape): design note to vc while WP02b-1's run goes, with issue 0304 (one errexit state for a dry run and a cut) in it and issue 0297 (the RELEASE seal's verdict after the after: commands) riding it; built on the bank's tip f3462610 on branch wp02b2 in ~/Devel/scratch/devbin-cc/st11-wp02b/wp02b2, a worktree of the dev clone the run does not read."
+  }
+}

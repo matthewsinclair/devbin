@@ -1,0 +1,15 @@
+{
+  "id": "01M4WWQ81GZY28E4FHBZKFNQS6",
+  "ts": "2026-10-14T09:43:28.560Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0192 AFTER 0195, on vc's word of 2026-10-14 (0195 was put ahead of it the same morning, on hv's focus on brew): build it for the next release with vc reviewing. ISSUE:0192 stays claimed. Nothing is built; it starts from a fresh clone of main, and its before and after figures go back to back on 0192's own base, the before a heavy run to ask vc about first. Scope, vc's measurements and the groundwork: ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md"
+  }
+}

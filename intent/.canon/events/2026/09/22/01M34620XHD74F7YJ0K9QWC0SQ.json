@@ -1,0 +1,15 @@
+{
+  "id": "01M34620XHD74F7YJ0K9QWC0SQ",
+  "ts": "2026-09-22T09:09:56.273Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ELEVEN REPOSITORIES ARE COMMITTED AND UNPUSHED, waiting on hv to push each (2026-09-22). Riffle e597502; arca_cli bbfa7eb; arca_config 6af180d and cc0f6a6; Baize 1d9014f and fa7ba0b; Cdtempl 06aa378 and 3412765; Conflab ad2f09e0; Lamplight 4aeb5084b and df11390e7; Molt 1ca0122; Prolix 28c5141 and 231c8a6; Anvil 77c6016 and befa8a6; arca_notionex 6c62196. Every push also carries that estate's PRE-EXISTING unpushed work (devbin sweeps, Intent canon trawls, board folds), so the push list is not the change list: ahead counts on the day ran from 1 at Molt to 8 at Conflab. The four live estates do their own CI half through their own nodes: Utilz, Gtools, Intent, Laksa, all told and holding for the YAML, which 993c995 now fixes. ACCEPTANCE per push: green, or red with exactly the baseline failures named. Expect red at Lamplight (their 0007), Prolix (their 0001) and Anvil (their 0001), all filed in their own trackers; and at Cdtempl until the 0.1.6 sweep reaches it."
+  }
+}

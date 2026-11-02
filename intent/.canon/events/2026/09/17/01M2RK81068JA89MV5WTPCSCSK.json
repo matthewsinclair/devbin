@@ -1,0 +1,15 @@
+{
+  "id": "01M2RK81068JA89MV5WTPCSCSK",
+  "ts": "2026-09-17T21:09:31.270Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-03 -- `release status <target>`, the resume map. 0082 is closed, so this is the whole remaining distance to hv's lighthouse.**\n\nThe objective is written (`128d484`). What is NOT yet done, in order:\n1. **Mint the AT rows for AC-3.1**, which has `covered-by:` empty. Proposed: the eleven postconditions each driven in `already`, `pending` and (where it exists) `not re-run`; read-only proven by a whole-repository fingerprint either side of a run rather than by reading the code; status and a cut's summary rendering through ONE function, held by a mutant that reddens both; and the release commit being HEAD while no tag exists and the tag's commit once it does, driven with HEAD moved past the tag.\n2. **Propose AC-3.2 to hv for the materialiser.** WP-02's as-built says \"How a commit is materialised, and its limits, belong to WP-03's materialiser\", so the scope is already ruled -- but AC-3.1 as minted covers the status table alone, so the materialiser would close uncovered. dc was told and did not object.\n3. Then build it. The postcondition READERS are the deliverable; WP-04 onwards call the same ones to decide whether to act.\n\n**Do not start by writing lib/. Start by reading D38's eleven rows and writing down, per step, what a reader would have to look at to answer \"has this already happened?\" -- that list IS the work package.**\n\nhv's lighthouse, set 2026-09-17: all STs done, all issues done, `intent doctor -v` and `intent organize --apply` clean with no errors and no warnings, then a fleet apply of the latest devbin. 0064 closes when ST0007 lands; 0085 is dc's."
+  }
+}

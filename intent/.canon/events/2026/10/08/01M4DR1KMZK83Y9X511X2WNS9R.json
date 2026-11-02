@@ -1,0 +1,16 @@
+{
+  "id": "01M4DR1KMZK83Y9X511X2WNS9R",
+  "ts": "2026-10-08T12:33:08.767Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 20,
+    "text": "0189 HANDED TO vc 2026-10-08 by 13:15:28Z for batch 6, the last open issue, on hv's go (vc, 12:22Z) and hv's slimmed evidence (vc, 12:24Z), with vc's Done when 4 (a remotes entry that is a url) folded in. Patch 0189.v1.on-ce718a36.patch, sha256 a3d43a34, 5 paths (docs/configuration.md, lib/cmd/release, lib/release.steps, releasecut.bats, releasestatus.bats), one commit carrying w189's c7cec1d7 on base189; git am on main ce718a36 (code = 6bc4d708's) gives c7cec1d7's tree outside intent/ (178 entries), a second am refused. Arms: 9; red on main 6bc4d708's code 6 of 9 at their own assertions, BSD and GNU (controls and the hook arm green by design); the hook arm red at rc 124 on the first fix fdc04ef1; green 9 of 9 BSD and GNU. Targeted on c7cec1d7: 451 of 451 under BSD and under GNU. shellcheck clean on both libraries; critic-shell once: 3 warnings built (a pipe regression, now a file take; an ssh url's raw-/ lead; docs and comments), its Highlander note declined. Mutants: M7 an arm added; M12 and M14 equivalent. Drafts 0189-commit.v1.msg 1d33b35b, 0189-resolution.v1.md f5d8c855, with {SUITE} and {SHA} vc's. Waiting on vc's review, suite and landing; then export b189, verify it in a clone of the shared tree, and delete w189 and its run clones."
+  }
+}

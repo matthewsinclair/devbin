@@ -1,0 +1,15 @@
+{
+  "id": "01M5550FJR75T51G23WD2HEE0C",
+  "ts": "2026-10-17T14:42:15.256Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-17 evening: devbin goes PUBLIC as soon as it is proven safe, by a NEW repository built from one audited commit, never by opening this one (GitHub still serves replaced commits, 5 of them carrying deny-list hits). Ruled: (1) the public repository carries the PRODUCT ONLY, by an allow-list of paths (bin/, lib/, tests/, docs/, packaging/, .github/, README, LICENSE, CHANGELOG and RELEASES after review), with NO intent/; (2) it carries an OPEN-SOURCE licence, which one still to choose; (3) this repository STAYS PRIVATE as the workroom, keeping intent/ and the whole history, and the public one receives product snapshots. The audit before publishing: allow-list, a widened name scan, a secret scanner, two independent reads of every file (vc and dc), the full suite and a public brew install on the fresh commit, then hv's approval naming the contents. Not put to hv again."
+  }
+}

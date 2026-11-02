@@ -1,0 +1,94 @@
+diff --git a/tests/unit/dispatch.bats b/tests/unit/dispatch.bats
+index 3e54acb..95833d7 100644
+--- a/tests/unit/dispatch.bats
++++ b/tests/unit/dispatch.bats
+@@ -471,6 +471,40 @@ YAML
+   assert_output_contains "does not declare the 'elixir' language"
+ }
+ 
++@test "the language refusal names the list it read and the file that list lives in" {
++  # Issue 0062. project.languages in bin/.devbin/config.yaml is GATE SCOPE, and
++  # the list in intent/.config/config.json is PROJECT COMPOSITION: different
++  # facts by design (lib/config.reference.yaml). A refusal naming neither sent
++  # Utilz toward "fixing" a correct declaration -- it read "does not declare
++  # the 'rust' language" about a project whose Intent config declared rust.
++  proj="$(mkproj shellproj <<'YAML'
++project:
++  name: shellproj
++  languages:
++    - shell
++YAML
++  )"
++  run devbin_run "$proj" test mix
++  assert_exit_code 2
++  assert_output_contains "does not declare the 'elixir' language in project.languages ("
++  assert_output_contains "/config.yaml)"
++}
++
++@test "a COMMAND refused for its language names the same list and file" {
++  # One sentence for both levels. The command-level twin printed its own copy,
++  # and two spellings of one refusal are two things to keep in step.
++  proj="$(mkproj shellproj <<'YAML'
++project:
++  name: shellproj
++  languages:
++    - shell
++YAML
++  )"
++  run devbin_run "$proj" iex
++  assert_failure
++  assert_output_contains "does not declare the 'elixir' language in project.languages ("
++}
++
+ @test "a project handler is asked about its own options, not vetted against the catalogue" {
+   # The other side of the same rule: `test mix` against a PROJECT handler is the
+   # handler's business even though `mix` is a built-in option name devbin scopes
+diff --git a/tests/unit/helpers.bats b/tests/unit/helpers.bats
+index 9c4badf..4d51361 100644
+--- a/tests/unit/helpers.bats
++++ b/tests/unit/helpers.bats
+@@ -510,6 +510,44 @@ YAML
+   assert_failure
+ }
+ 
++# ============================================================================
++# option_unavailable_reason (issue 0062)
++# ============================================================================
++
++@test "an option refused for its language names project.languages and the file it lives in" {
++  load_resolve
++  cfg_load_string <<'YAML'
++project:
++  name: demo
++  languages:
++    - shell
++YAML
++  run option_unavailable_reason check autotests
++  assert_success
++  assert_output_contains "does not declare the 'rust' language in project.languages ("
++  assert_output_contains "$DEVBIN_DIR/config.yaml)"
++}
++
++@test "option_unavailable_reason never asserts a language absence it did not test" {
++  # The command-level twin has always asked project_speaks before speaking. This
++  # one relied on option_active having already failed for exactly that reason:
++  # true of today's order, and a false sentence the day the order changes.
++  # Driven by forcing option_active to refuse an option whose language IS
++  # declared, which is a state no config can reach -- so no dispatch test can.
++  load_resolve
++  cfg_load_string <<'YAML'
++project:
++  name: demo
++  languages:
++    - rust
++YAML
++  option_active() { return 1; }
++  run option_unavailable_reason check autotests
++  assert_success
++  refute_output_contains "does not declare"
++  assert_output_contains "devbin defect"
++}
++
+ # ============================================================================
+ # PORTABILITY: ONE SPELLING PER TOOL, ASSERTED ACROSS THE WHOLE TREE
+ #

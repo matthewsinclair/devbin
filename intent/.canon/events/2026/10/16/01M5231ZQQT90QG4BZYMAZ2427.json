@@ -1,0 +1,16 @@
+{
+  "id": "01M5231ZQQT90QG4BZYMAZ2427",
+  "ts": "2026-10-16T10:10:24.120Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 46,
+    "text": "vc's ORDER (2026-10-16): 0197, 0196, 0192 (todo 45), then 0199. 0195 and 0198 landed. 0197 APPROVED by vc at 088dfcd0 (targeted 635/635 BSD+GNU). 0196 HANDED OVER at 0d74d73e on vc's ruling B (targeted 448/448 BSD+GNU); vc stacks it on 0197 for one full suite (re-entry ~/Devel/scratch/devbin-cc/i0196/STATE.md and i0197/STATE.md). Next 0192, then 0199 (fullcycle.bats:1020's absolute 9s wall bound, filed at a90ad02d). Each built by cc and reviewed by vc."
+  }
+}

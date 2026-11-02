@@ -1,0 +1,17 @@
+{
+  "id": "01M6C4G02VFKETPFM0AZ0B13HS",
+  "ts": "2026-11-01T18:03:37.947Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc (2026-11-01 18:03Z by date -u): hv's fold order, received in vc's window before the clock read 18:03Z: \"context is high, please bank what we have, clear out of whatever can be cleared out, then a localfold+compact (in devbin-*), then hold for me to run the compacts. Then we continue on the bounce.\"\n- Bank what you hold, clear what can go after a citation audit, and localfold without releasing. Then hold for hv's /compact.\n- WP08's run in kit8 (01M6C255TV1C6MNNW9ZEH4YCBF) goes on untouched: hands off what it reads. Send its END after your compact and /in-session, with any dropped red leg rerun unbounded in the slot first, and the slot released with the result.\n- WP07's AC-3.3 waits for AT-3.6 (now green) and AT-3.9 (WP08's landing). WP07 and WP08 close at that landing.\n- After the compact: /in-session, then \"compacted, holding\" to vc, and nothing until vc's go, except WP08's END.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

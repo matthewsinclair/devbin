@@ -1,0 +1,15 @@
+{
+  "id": "01M2Q7RDAQF5C5DC685HSGRQKR",
+  "ts": "2026-09-17T08:29:30.839Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Two arms vc will hold WP-02's review to (vc, 2026-09-17).** (1) The body arm that runs .github/workflows/release.yml's own awk must go red when that awk and notes_body diverge by ONE byte -- a trailing blank line is the likely one, so its fixture must end in blank lines. (2) notes_views_check must be shown red on a view stale by ONE line, not only on a missing view. Also for the packet: the contract as sent said notes_views <root> <project>; as built, the project is passed once to notes_select, notes_views and notes_views_check take only the root, and notes_where <version> is added."
+  }
+}

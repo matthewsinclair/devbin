@@ -1,0 +1,16 @@
+{
+  "id": "01M4EHT9DHED3BAA3KAFQQ7Z48",
+  "ts": "2026-10-08T20:03:31.889Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 42,
+    "text": "0192 IN BUILD from 2026-10-08 20:03Z (ISSUE:0192 claimed), on 0190's head 2231259e (dc's b190 in ~/Devel/scratch/devbin-dc/0190/fin190, six commits on 0191 v1.1's 21f523d9), so 0192 goes to vc second with no rebase unless 0190 moves: install once per file and copy, amending D24 on hv's ruling of 2026-10-08. THE BOX IS cc's from dc's GNU END at 2026-10-08T19:57:11Z for 0192's heavy runs, one at a time; END to vc and dc when they finish. vc's scope, relaying hv (no yak shaving, no tests that test tests): arms red on main and green under BSD and GNU, ONE targeted run, critic-shell once, the before and after times the issue asks for, then hand over; no full suite of cc's own (vc's suite of the landing tree is the gate). vc's measurements: the installer writes only under --into (bin/devbin, bin/.devbin/lib, manifest; nothing under HOME, no absolute path); the copy set is what install writes, never the cache's config.yaml; re-installs need --force's semantics, not a cp merge; pick cp -c by probing the cp on PATH; the before figures come from ~/Devel/scratch/devbin-dc/slowbats/prof/suite.json. Done when: one real install per file and one copy per test with no other route; what guards the cache; which tests still install per test; the build in setup_file so it holds under --jobs; the profiled files' wall time before and after on a quiet box. Groundwork and open design questions: ~/Devel/scratch/devbin-cc/sp-2026-10-08/STATE.md"
+  }
+}

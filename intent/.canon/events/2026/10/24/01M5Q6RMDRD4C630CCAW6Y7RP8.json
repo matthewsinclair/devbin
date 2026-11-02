@@ -1,0 +1,16 @@
+{
+  "id": "01M5Q6RMDRD4C630CCAW6Y7RP8",
+  "ts": "2026-10-24T14:59:15.000Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 51,
+    "text": "ISSUE:0219 BUILT: dfcb603c on 65a91012 (main 19d15680) in ~/Devel/scratch/devbin-dc/0216/f0216. It deletes every count of the extraction grammars, comments only, at updatenotice.bats:114, lib/runlog:57, :454, :494 and :1149, lib/helpers:4410 and :4411, and runlog.bats:893; equiv.sh reads all four files the same, and no title changed; COMMIT_MSG at 0216/handover/COMMIT_MSG-0219.txt. After the compact, once molt-vc grants the light lane, run T (in f0216: updatenotice, runlog, the six tree scans and help) with ~/Devel/scratch/devbin-dc/bin/targeted.sh, BSD then GNU. Then hand vc one bundle with both commits (65a91012 and dfcb603c), its seals, COMMIT_MSGs and RESOLUTION drafts (0216 addendum, 0219). No push, no release"
+  }
+}

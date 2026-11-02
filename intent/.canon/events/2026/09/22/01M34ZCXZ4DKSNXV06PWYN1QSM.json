@@ -1,0 +1,15 @@
+{
+  "id": "01M34ZCXZ4DKSNXV06PWYN1QSM",
+  "ts": "2026-09-22T16:32:48.100Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "BAIZE'S `db reset` IS AN UNGATED DROP THAT BECOMES PROD-CAPABLE AT THE FIRST DEPLOY, AND ITS OWN NEIGHBOUR FOUR LINES AWAY SHOWS THE MISSING GATE. Re-measured by vc 2026-09-22, replacing the second half of todo 28. `bin/.devbin/cmd/db` at Baize is AUTHORED rather than the builtin, offering setup|migrate|codegen|reset|seed|proxy. The reset arm runs `ash.drop` then `mix setup` with NO confirmation and NO production refusal. Its immediate neighbour `seed` IS prod-gated and says so in a comment, so the asymmetry sits inside one file and is visible without leaving it. It is bounded TODAY only by an absence: Baize's prod verbs (proxy, sql) are declared and stubbed because there is no deploy yet, so reset can currently reach dev or test alone. THE BOUND DISAPPEARS AT BAIZE'S FIRST DEPLOY, which is a date nobody will think to connect back to this item. Not urgent, genuinely real, and baize's node's to fix."
+  }
+}

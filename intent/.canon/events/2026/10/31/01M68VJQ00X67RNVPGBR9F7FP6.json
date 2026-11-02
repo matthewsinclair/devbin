@@ -1,0 +1,17 @@
+{
+  "id": "01M68VJQ00X67RNVPGBR9F7FP6",
+  "ts": "2026-10-31T11:30:06.464Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Rulings on WP01's re-bank critic (trial tip 9cc110f0). CRITICAL: yes, in the re-bank: --untracked-files=normal on git_head_identity's one status call in lib/helpers, so a tree with an untracked file reads +dirty whatever status.showUntrackedFiles says, as release_dirt already refuses it; one runlog arm red on main. R4: yes, in the re-bank with the is_commit_sha swap: a sha that is not whole answers unknown naming it, one runlog arm. R2: the is_commit_sha full item, as planned. WP02a takes R1 (unknown is UNREADABLE for status and a run for the cut, plus the -nt stop so an older unreadable record cannot unmake a decided verdict), RELEASE_GATES_WHY local to cut_run, the no-op open_scratch gates, and the RUNLOG_KEEP_RUNS purge dying after a green seal with no FAILED row. Design: R3 is answered by words and a boundary, not a host key: the record is keyed on (commit, platform) as D57 says, so say 'this platform' throughout, never 'this machine'; a remote leg's pair lives under its own leg directory (tmp/release/legs/<name>/, D62) and is never copied into the local record directory, which is WP05's rule and dc is told; a host: line in the seal's identity block is welcome as information in WP02a, not as a key. The runtime digest joins D57's deferral to the no-vendor mode (vc decision 64): while the vendored lib is tracked, a devbin upgrade changes the commit and so the key. The two status scans per gate run are accepted at D57's measured cost and re-read in WP15 on the consumers' trees.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

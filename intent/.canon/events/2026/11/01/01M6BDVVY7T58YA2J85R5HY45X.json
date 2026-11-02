@@ -1,0 +1,16 @@
+{
+  "id": "01M6BDVVY7T58YA2J85R5HY45X",
+  "ts": "2026-11-01T11:28:09.672Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop): squashed onto main 54c16f33 (WP16's landing) as f346261085d844b5e7d54f0bc02d43fdbf67186d on branch wp02b-sq in ~/Devel/scratch/devbin-cc/st11-wp02b/squash, NOT banked: refs/bank/cc/ST0011-02b stays 4ea0da422f769688349a73ed8f86af0581b5b4f2. The five shared files auto-merged with no conflict, each read against WP16's version, and no line of WP16's meets one of the unit's; across the unit's 20 files the squash is the bank tip plus WP16's change, line for line. Checked so far: the raw-argv check (no finding, 4 of 4 split sites), no stale ci.tag or ci.base, no new duplicate function, the commit's gate. HOLD at hv's order (vc's relay, stamped 11:24Z) through hv's /compact; after it and /in-session, message devbin-vc 'compacted, holding'; on vc's go: the rest of the light checks (shellcheck, the critic, the prebank scan, helpers.bats's three scans, neutral's tracker and decisions patterns over the vendored set, the lint gate in series, bats --count, ASCII), the WIP chain archived in cited-archive.git, the re-bank by fetch and CAS from 4ea0da42, then kit/prep.sh and the unit run's ask (dispatch.bats red at 54c16f33 and green at the tip, under BSD and GNU). Not verified: no bats after 7ca8ea42. State in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md."
+  }
+}

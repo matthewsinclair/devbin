@@ -1,0 +1,15 @@
+{
+  "id": "01M3DD2383DFG8MPW667GCY402",
+  "ts": "2026-09-25T23:05:28.580Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0150"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "devbin reads cargo's build tree only from CARGO_TARGET_DIR, so a tree moved by CARGO_BUILD_TARGET_DIR or build.target-dir is removed by fullcycle's clean and the check reads no tree, INCONCLUSIVE at rc 0"
+  }
+}

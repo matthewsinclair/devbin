@@ -1,0 +1,17 @@
+{
+  "id": "01M68R1DZRV8TC835YKF9CVNTB",
+  "ts": "2026-10-31T10:28:14.456Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv's ruling on the decision 40 carve-out, relayed by kovacs-sysadm (2026-10-31): devbin may log into kovacs on its own, the runner included while kovacs-sysadm runs, but always let kovacs-sysadm know, by message, what runs, where and what it touches; heavy runs booked through vc with START and END. For WP05 that means the core announces nothing (no estate mechanism in the core, criterion b): the runner's log says what it did, and the announcement to kovacs-sysadm is dc's for each test and the desk's for each cut that uses the leg. Time zones from hv: rhadamanth, kovacs and hv at +04, gyges at GMT.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

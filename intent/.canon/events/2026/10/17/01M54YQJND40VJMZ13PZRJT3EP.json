@@ -1,0 +1,15 @@
+{
+  "id": "01M54YQJND40VJMZ13PZRJT3EP",
+  "ts": "2026-10-17T12:52:32.046Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0009/02"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "Installed from the tap on this Mac (rhad)"
+  }
+}

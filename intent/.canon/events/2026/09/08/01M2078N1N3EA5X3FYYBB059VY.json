@@ -1,0 +1,14 @@
+{
+  "id": "01M2078N1N3EA5X3FYYBB059VY",
+  "ts": "2026-09-08T09:58:22.518Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.put",
+  "subject": {
+    "type": "ac",
+    "id": "ST0003/AC-1.1"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5PB94S92Q134TBN36BR3SR3",
+  "ts": "2026-10-24T06:58:55.913Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-10-24, on hv's ask in vc's session (all projects released through Homebrew solve dev/opt/brew IDENTICALLY, and devbin's switch works in each case): the shared dev/opt/brew contract is AGREED at v0.4 (~/Devel/scratch/devbin-vc/trees/contract-v0.4.md, sha256 c535f48e), SAME from molt-vc (Molt, the template, its ST0008), utilz-vc (Utilz, its issue 0105) and intent-vc (Intent, a thread after its v3.2.6 tag), with devbin-vc its author. It lands as docs/dev-opt-brew.md (built by cc, landed by vc with 0210 under one suite), and each tool's design cites it by path and commit. Within hv's rulings relayed by molt-vc (option (B), your links first; the spec in devbin's docs): `use brew` removes the tool's link set, so no link means brew; the switch governs login shells only, and launchd's PATH is a sleeve decision molt-vc puts to hv. devbin conforms through one issue: `devbin use`, the machine pointer retired so the ~/.local/bin/devbin link read by path is the one record, the tree word in --version, `install --force` as the one re-publish route, the T3 manifest keys."
+  }
+}

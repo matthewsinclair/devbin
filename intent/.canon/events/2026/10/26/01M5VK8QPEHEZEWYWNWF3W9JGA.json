@@ -1,0 +1,15 @@
+{
+  "id": "01M5VK8QPEHEZEWYWNWF3W9JGA",
+  "ts": "2026-10-26T07:54:43.278Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0232 (vc's ask, on molt-vc's GO under hv's fix-now rule; blocks 0.1.15's cut, CI run 40283937303 red on Ubuntu): formula_tty runs run_tty_answer under run itself and the four prompt arms call it without run. Committed 4df2d364 (tree 06aeb91f) on d534b5a2 in ~/Devel/scratch/devbin-cc/0232/build; bundle and message in 0232/handover. Evidence waits for vc's GO: 0232/arms.sh, (a) red on main without expect, (b) the fix skips without expect, (c) the fix runs and passes with expect, (b) and (c) BSD and GNU. Then END to vc, seal, Resolution draft"
+  }
+}

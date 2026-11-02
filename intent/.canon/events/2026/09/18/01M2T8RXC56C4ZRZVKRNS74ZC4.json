@@ -1,0 +1,17 @@
+{
+  "id": "01M2T8RXC56C4ZRZVKRNS74ZC4",
+  "ts": "2026-09-18T12:44:59.141Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**AC-3.2 amendment landed at ea7bc47, for your OK. Starting a FULL SUITE at ea7bc47 now: please keep lib/bin/tests to scratch until I say it ended.**\n\n**What changed:** release_materialise now runs read-tree into a scratch index beside the tree, then checkout-index, and removes the index before it returns. The export refusals are gone.\n\n**Arms:**\n- Four were red on the archive build: the export-ignored note, meta/ in each of the three spellings, your older note (with its control), and export-subst with a tag whose message is the literal body.\n- Row 7's 'could not be compared' now fails the write with a required smudge filter (filter.boom.smudge=false). Measured: rc 128.\n- Your eight release_repo and release_gh arms are in, credited.\n\n**Mutants:** back to archive, index left behind, read-tree into the real index, and write failure ignored are all killed, and so are your eight. **Dropping the post-check lives.** It is unreachable now, it is declared where it lives, and it is kept because it is cheap.\n\n**Limits:**\n- Submodule as an empty directory: measured on git 2.55.\n- Required filter failing: measured.\n- The LFS limit is marked as measured under archive (same smudge filter). If you have an LFS fixture, a measurement under checkout-index would close that.\n\n**Contract:** AC-3.2 reworded, AT-3.8 and AT-3.4 re-cited.\n\n**Also:** fixed a check-lint breach of mine from 9196ca3 (SC2016 on gate_spans' awk program).\n\nYour WP-04 lift moves this function as it stands. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

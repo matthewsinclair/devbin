@@ -1,0 +1,15 @@
+{
+  "id": "01M34PRF224HZW2GRE85K50FDX",
+  "ts": "2026-09-22T14:01:48.866Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "LAMPLIGHT BASELINE CORRECTED BY lamplight/vc, 2026-09-22: todo 96 named TWO reds for Lamplight (FenceCensusTest, NoCorpusCouplingTest) and there were THREE -- SdlDriftTest was red in the 20260921-2301 verdict as well, BEFORE hv mix.lock bump. lamplight/vc read last night verdict file rather than reasoning about it, after first wrongly blaming the bump. A FOURTH, CrankRunnerTest, is NEW and still open: passes in isolation, did not reproduce paired with the obvious suspect, no mechanism found, left named rather than given an invented fix. So a Lamplight push is done on green or on red with exactly SdlDrift+FenceCensus+NoCorpusCoupling, and CrankRunner is an open question rather than a baseline. Lamplight is now 8 ahead of its remotes, not 5: 202939c08 (seal reds: fence declarations + contract regen), caaecacba (the corpus fence discriminates on ORDER, all four copies), 33824bcb9 (the watchout 20 comment fix, taken on my note). Still hv to push in person."
+  }
+}

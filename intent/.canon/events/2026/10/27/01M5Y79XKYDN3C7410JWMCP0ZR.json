@@ -1,0 +1,16 @@
+{
+  "id": "01M5Y79XKYDN3C7410JWMCP0ZR",
+  "ts": "2026-10-27T08:23:22.494Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 171,
+    "text": "SCRATCH CLEAN-UP DONE, 2026-10-27, on hv's \"Do it\" in vc's session (vc's plan item C); the removals ran 08:20:42Z to 08:20:53Z by date -u. Paths are under ~/Devel/scratch/devbin-vc. Every commit found in a scratch clone and in no canon ref is in clone-archive/20261027/: one bundle per clone, a ref per tip, canon's commits as prerequisites, a .sha256 beside each. Each bundle verified in a fresh mirror clone of canon (tools/verify-bundles.sh, cleanup-1027/verify3.out): its prerequisites present, it fetched, and every commit unique to its clone present after. The earlier verify runs opened no bundle (a relative bundle path under git -C) and failed; the script now names the archive absolutely. note115's uncommitted CHANGELOG/RELEASES draft is clone-archive/20261027/note115__uncommitted.patch, equal to the clone's diff at removal and applying to its base 0f1f1e31. No other project's tracked files or commit messages cite a removed path. REMOVED by a script of literal paths (tools/rm-clones-1027.sh, written by tools/gen-rm-1027.sh and read before it ran): ci/maint, k115src, k115src2, k115verify, k115verify2, l113, land1017, land113, land114b, land213, land216, land232, land233, land235, land236, land238, land7, lrf, ls1017, ls6, ls65, ls9, note114, note115, red238, st0010/cand, st0010/cand114b, st0010/cand216, the verify mirrors, and every entry of land220 and st0010/cand220 except the cited seals. KEPT at their paths, sha256 equal before and after: land220/tmp/test/20261025-1948.bats.{out,errors}, land220/tmp/test/20261026-0642.bats.{out,errors} and st0010/cand220/tmp/test/20261026-0652.bats.{out,errors}. Untouched: 0.1.10/idx and 0.1.10/refused/src (cited evidence; a find at every depth shows them the only .git dirs left in vc's scratch), ci/maint-exp*, and the TAP dirs st0010/land236, st0010/land238 and st0010/note115. The seal pair found lost before today (cand220/tmp/test/20261025-1958.bats.{out,errors}) is carried by todo 176."
+  }
+}

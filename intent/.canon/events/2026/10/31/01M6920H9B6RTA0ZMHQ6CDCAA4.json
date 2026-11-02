@@ -1,0 +1,15 @@
+{
+  "id": "01M6920H9B6RTA0ZMHQ6CDCAA4",
+  "ts": "2026-10-31T13:22:30.827Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 13:22Z (hv in vc's window: not a half-arsed hack, fixed and then patched): gyges's gtools-estate-pull is fixed in its master, Intranet/hosts/gyges/gtools-estate-pull, Intranet commit 7cb2b96 (one path, nothing pushed): one named predicate, checkout_serves, reads gtools's one record (the ~/.local/bin/gtools link, resolved with -ef as gtools's setup does); setup and the restarts run only while the checkout serves; otherwise the checkout is pulled and left and the log names what serves. Proven: shellcheck clean; the predicate held on six link shapes and the same test failed against the old script. gyges-sysadm installs it from the Dropbox-synced copy per docs/gyges.md and reports by sha256 (d57c8d2a7c94414e0bc1340cb7f8ccfbf960e5bef17c0cea3119d87acc7693af). Gtools-side finding FOR hv through gtools-vc: setup --yes links a dev tree onto PATH when no link stands, a silent brew-to-dev switch; rec: no link when Homebrew's gtools would answer."
+  }
+}

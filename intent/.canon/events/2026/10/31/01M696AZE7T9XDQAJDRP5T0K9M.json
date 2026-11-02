@@ -1,0 +1,17 @@
+{
+  "id": "01M696AZE7T9XDQAJDRP5T0K9M",
+  "ts": "2026-10-31T14:38:07.303Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv's go at 2026-10-31 14:34Z (in vc's window): the desk hold is released. Run 3b first: ask the desk for the bats lane for run3d at aa2fb1d2 on 1f37e5eb, message me the ask's id once it is on the record, and I grant. At its END, message me the handover dir, the bundle, the ref, the tip sha, the bank clone and its sha and the units for land-stack.sh; nothing in run3d or its clone moves until my landing line. No lane needed meanwhile: confirm main carries 0292's change and delete refs/bank/dc/0292. After the landing, in order, each as its own unit and critic-reviewed before its first run: WP03's remainder (the pure trigger reader and the failed detail naming the failed jobs), WP17 (D69: platforms: at the gate, AC-6.1 and AC-6.2), WP16's verbs (design.md s13). Every landing from now covers and satisfies its ACs with ATs (the thread's twenty stand uncovered): WP05's and WP06's at the stack's landing. The kovacs full suite runs after the landing on my order through kovacs-sysadm; no kovacs login before it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

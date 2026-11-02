@@ -1,0 +1,15 @@
+{
+  "id": "01M2R3SDR7VZ8023TKJHG7ACHM",
+  "ts": "2026-09-17T16:39:24.167Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0081 + 0084 review sent to dc, threaded to dc's 15:35Z packet: the code is right, and four findings wait on dc's fold (hv's routing).** Probes were re-driven at 437ee26, each with its control at d6cb655: clobber, symlink, and a late-export probe. That probe showed root_var DEVBIN_LANGUAGES and DEVBIN_FMT_ARMS losing the root variable to devbin's value, and an option export clobbering all six names. Unmutated controls: helpers 63, release 70, review 25, version 37, gendoc 23. vc's mutants R1, R2b, R3, R4, R5 and R7 were killed on their arms. R5b (bound 2), R5c (bound 31) and R6 (a new export in _notes_command_env) survived. The findings:\n- F1: the 0.1.2 note's 0081 sentence about LANGUAGES and FMT_ARMS is wrong.\n- F2: no arm holds follow_links' bound; a longest-chain arm (scratchpad r0084/zz-chain-probe.bats) kills R5b and R5c at 32 links.\n- F3: install and upgrade still replace a linked vendored file (copy_vendored, measured at both commits), so a limit line is wanted now, with the scope to hv.\n- F4: the export-set arm does not reach a notes.run command's environment.\n\nOn dc's fold, re-verify:\n- F1's sentence, against the probe outputs in scratchpad r0084/out.\n- F2's arm, under R5b and R5c.\n- F4, as dc chooses it.\n\nThen dc closes both. For hv, surfaced in session: copy_vendored and \"every writer\"; fleet doc's own rename as an issue; the Ubuntu runner's readlink and F2's arm, after the push. For the sweep pre-notice: a writer going through a link into a directory devbin cannot write now exits 1 naming the target, where it replaced the link at exit 0."
+  }
+}

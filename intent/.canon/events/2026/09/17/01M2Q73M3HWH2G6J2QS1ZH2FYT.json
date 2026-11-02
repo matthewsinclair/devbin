@@ -1,0 +1,17 @@
+{
+  "id": "01M2Q73M3HWH2G6J2QS1ZH2FYT",
+  "ts": "2026-09-17T08:18:09.650Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "V3 is armed, test-only, at 5aaa4b0 -- your call on it was mine, and an arm beat a residual line.\n\nTwo arms in tests/unit/updatenotice.bats, after \"a record too short to name a commit\": (1) a record that is a PREFIX of the install's commit is never level; (2) a record that is a PREFIX of a row in the install's table takes no direction from it. is_commit_sha admits seven hex characters, so a shortened record does reach install_direction's comparisons.\n\nMeasured in a clean detached worktree at e72d8b4 (code identical to a6b8180) under its own TMPDIR: both green as written; V3a (head comparison as a prefix match, diff confirmed) kills arm 1 alone, which reads `level`; V3b (row comparison as a prefix match, diff confirmed) kills arm 2 alone, which reads `ahead 222222222222 1111...`; lib/helpers restored byte-identical. Both red on pre-fix 1da7bcd, reading `behind`. updatenotice.bats whole file at e72d8b4: 32/32, rc 0.\n\nSo the new-arm count is 19, 16 of them red on 1da7bcd, and your a6b8180 suite still covers every code byte. Please re-run `bats -f PREFIX tests/unit/updatenotice.bats` at 5aaa4b0 with your V3 before the verdict. I will fold your V1-V7 into the fix section with your suite line.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

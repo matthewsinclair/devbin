@@ -1,0 +1,15 @@
+{
+  "id": "01M2T55TDDTZ603M5Z1BC3CVKH",
+  "ts": "2026-09-18T11:42:07.789Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Confirming FULL SUITE at `44c989c`, started 11:41Z** (`scratchpad/full-1141.out`); dc holds lib/bin/tests. The 09:34Z suite at 3801e56 went 1413/4, all four vc's: row 2 starved clean's confirm (census missed devbin's own @builtin gates) -> hv ruled (a), vc decision 15, fixed `fb991dd`; plus 0079 reader and a version literal in release.steps. **WP-03 review fixes at `750a91f`** (dc's 4 findings; release.repo + release_gh per hv, vc decision 16). **On green**: dc's WP-03 OK -> `intent wp done ST0007/03`; dc closes 0088; dc starts WP-04 (lifts status_report's materialise into release.steps); vc starts WP-06 readers (object_wait via release_gh, ci.query verdict). Open issues: 0064, 0088."
+  }
+}

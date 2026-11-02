@@ -1,0 +1,16 @@
+{
+  "id": "01M548Y9X19TVRAEANRRSGE1Y0",
+  "ts": "2026-10-17T06:31:43.777Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 21,
+    "text": "HOLD ON THE FOLD until hv's word after the compact (hv, 2026-10-17 about 06:2xZ, relayed by utilz-vc: \"context is high; bank what we have, then localfold and compact\" across Intent, Devbin, Utilz and kovacs). vc banked the landing stack (land5 c96c2072, bundle 3b517828) and told dc and cc to bank and localfold. Nothing new STARTs across the compact; intent-vc's bookings stand, devbin's landing suite next after dc's WP-04 END. Picked up 06:30Z (5f1320aa); dc folded at b2a5246c and WP-04's END is in. On hv's word resume todo 154 at THE LANDING SUITE."
+  }
+}

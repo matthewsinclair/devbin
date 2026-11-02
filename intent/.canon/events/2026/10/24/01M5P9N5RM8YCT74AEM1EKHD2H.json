@@ -1,0 +1,15 @@
+{
+  "id": "01M5P9N5RM8YCT74AEM1EKHD2H",
+  "ts": "2026-10-24T06:30:32.980Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0010, devbin public, GO from hv 2026-10-24 on the revised plan (not yet started in the store: run intent st start ST0010 and claim it at the bounce). PLAN: (1) issue 0210 first (README: users install from brew, dev and opt are the maintainer's, directive 15), in the release before the push. (2) Candidate tree in scratch from an allow-list: bin/ lib/ tests/ docs/ packaging/ .github/ design/ README LICENSE CHANGELOG RELEASES VERSION usage-rules.md .intent_critic.yml .gitattributes .gitignore .prettierignore, AGENTS.md if its test reader needs it (documentation.bats:745); NOT intent/, .claude/, CLAUDE.md, .mcp.json. One full suite of that commit; fix the arms that read dropped files. (3) Audit: a real secret scanner (gitleaks), then a Fable review reading every file against a written brief (client names, secrets, local paths, internal text), its findings verified by vc before hv. hv ruled 2026-10-24: hv's own project names stay, internal issue and thread references stay. Measured 2026-10-24 on the 198 product files: client deny list 0, token shapes 0, emails all fixtures, machine names 3 lines, local paths ~25 (most the README's opt install, which 0210 fixes). (4) Publish: back up this repository (bundle of every ref plus a mirror, verified by fetching back), hv picks the open-source licence (MIT or Apache-2.0 suggested), hv DELETES and recreates matthewsinclair/devbin public with the one commit (a force-push leaves replaced commits served by sha: measured 2026-10-17), check no forks first; then the first public release (0.1.14) on the new history, the tap's formula and every estate re-vendored once. OPEN FOR hv: where the private workroom (this checkout, intent/ and full history) lives, a private GitHub repository or the local mirror only. ALSO LEFT: 0201 rhad half GREEN (dc's HANDOVER ~/Devel/scratch/devbin-dc/0201/HANDOVER.md, dc hold 26) -> write the kovacs-sysadm order for kovacs's half, then the Resolution and close; AC-6.4 and AC-2.1: hv 2026-10-24 said the VPN clause is dropped and real Windows is tested at client site: withdraw both with those reasons (intent ac withdraw) and close ST0008; the fleet to 0.1.13 and issues 0207 to 0210 on hv's go."
+  }
+}

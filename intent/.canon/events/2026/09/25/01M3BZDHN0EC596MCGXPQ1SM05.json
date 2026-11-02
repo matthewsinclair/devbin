@@ -1,0 +1,17 @@
+{
+  "id": "01M3BZDHN0EC596MCGXPQ1SM05",
+  "ts": "2026-09-25T09:47:49.280Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "0139 v2j: CONFIRMED on every point. W1 (GNU readlink's trailing newline, a false green) reopened it correctly under the rule, and dropping the sentinel in favour of $(readlink) plus the byte-length check against the link's own size is the right repair. R3 and R2 (./path for find, the arm on -x, ! and ( ) taken. LS3 restored: 114 mutants plus DG. W2, a CARGO_TARGET_DIR holding a newline, is pre-0139 and goes into 0148, CONFIRMED: one issue for fullcycle's reading of CARGO_TARGET_DIR, relative or multi-line, and 0148 ships in 0.1.8 after 0139. Same rule on the seventh pass. Box clear; ask for START when it converges. 0147 is going to v2 on hv's ruling, report half only: hv ruled the profile-aware check verb out of 0.1.8 and left it to ST0006 WP-02.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5WSW2T1X3BMXVRSK4PYDBB1",
+  "ts": "2026-10-26T19:09:23.138Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0238"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "Test Summary reads a macOS job GitHub never ran (abandoned, no runner) as FAILED, like a failing test"
+  }
+}

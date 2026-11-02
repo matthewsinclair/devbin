@@ -1,0 +1,146 @@
+{
+  "schema": "intent/thread@3.0",
+  "id": "ST0009",
+  "title": "devbin from Homebrew on macOS and Linux, with no source checkout: the formula, the tap, and projects vendoring from the brew install",
+  "slug": "devbin-from-homebrew-on-macos-and-linux-with-no",
+  "status": "completed",
+  "created": "2026-10-16",
+  "completed": "2026-10-17",
+  "objective": "devbin installs with `brew install` on macOS and on Linux, from a tap, with nothing installed from a local checkout, and every project vendors from that install and finds it again after `brew upgrade`. Done when devbin installed from the tap works on this Mac and on kovacs (Ubuntu 26.04.1, aarch64): `brew install`, `brew test`, `devbin install --into` a fixture project, a bare `bin/devbin upgrade` and `doctor` reading the brew install, and the same after `brew upgrade` to a later tag.",
+  "context": "Started by hv on 2026-10-16, ruling question 10 of ST0008's design v0.8 (a): \"start it\". hv's ask of 2026-10-14: \"I want BOTH devbin and intent work from 'brew install' and for them to BOTH work seamlessly on Unix (the kovacs VM in this case)\", and \"devbin doesn't have a brew piepline at all, so we need to make one now\". Intent's ST0081 is the same work for Intent.\n\nAlready built, as issues: 0195 (landed at 93259543), the formula kept as a template at packaging/homebrew/devbin.rb, `bin/devbin formula render|publish`, a project finding the brew install at HOMEBREW_PREFIX's opt/devbin with no machine pointer, and devbin's own install and upgrade refusing to write into the keg; 0197 (approved 2026-10-16), what install.prefix and fleet mean on a machine whose install is Homebrew's, with `--point` as the explicit override.\n\nDone on 2026-10-17, at devbin 0.1.11 (0fc22669): the tap matthewsinclair/homebrew-devbin was created at hv's ask, private, since devbin's repository is private and the formula's url is ssh; hv ran `bin/devbin formula publish` at hv's terminal, and the tap's main is 3f2fecf, Formula/devbin.rb at tag v0.1.11, revision 0fc22669. Installed from the tap and proven on this Mac (rhad) and on kovacs (Ubuntu 26.04.1, aarch64, Homebrew 7.0.9, kovacs order K012, rc 0): brew tap over ssh, brew install, brew test, `devbin --version` reading 0.1.11 at 0fc22669, and a fixture project vendored with `devbin install --into` whose bare `bin/devbin upgrade` was already up to date and whose doctor (13 checks, 0 failed) read the install through HOMEBREW_PREFIX's opt/devbin with no machine pointer. devbin stays installed by brew on both machines.\n\nClosed on 2026-10-17 on hv's word: dc drafted the work packages and vc minted them; cc built the rest, landed at 1c34549c on landing suite 20261017-1323 (2386 ok, 0 not ok): devbin's release declares `after: bin/devbin formula publish`, so each cut publishes the formula past its push and a failed publish is step 10's FAILED row with the release standing (AC-1.2); the 0195 arm holds that a project vendored from Homebrew's install records the kind alone and resolves it to opt, never the keg (AC-4.1); and `brew audit --strict` on the tap's formula found nothing (AC-2.2). `brew upgrade` to a later tag (AC-5.1) was withdrawn to issue 0201, read at the next batch release (directive 13). brew on hv's login PATH on kovacs is hv's choice and outside this thread. ST0008 (WSL) depended on this thread: its WSL job's fixtures can vendor from the Linux brew install.",
+  "body": "",
+  "preamble": "",
+  "wps": [
+    {
+      "seq": 1,
+      "title": "The formula published to the tap, and each cut publishing it",
+      "scope": "S",
+      "status": "done",
+      "objective": "bin/devbin formula publish renders packaging/homebrew/devbin.rb at the newest release tag and commits it to the tap matthewsinclair/homebrew-devbin as Formula/devbin.rb; it runs at hv's terminal, since a push from an agent session is refused. Once the tap holds a formula, devbin's release config declares an after: step running formula publish, so each later cut publishes it, and docs/releasing.md stops saying there is no tap.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 2,
+      "title": "Installed from the tap on this Mac (rhad)",
+      "scope": "S",
+      "status": "done",
+      "objective": "On rhad, with nothing installed from a checkout for the proof, brew tap matthewsinclair/devbin and brew install devbin fetch over the formula's ssh url (the network half 0195 did not rehearse); brew test devbin passes and the devbin on PATH is the keg's; brew audit --strict is read and each finding fixed or accepted with its reason.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 3,
+      "title": "Installed from the tap on kovacs (Ubuntu 26.04.1, aarch64)",
+      "scope": "S",
+      "status": "done",
+      "objective": "The same as WP-02 on kovacs, Ubuntu 26.04.1 aarch64 under Homebrew on Linux, with uutils as coreutils and mawk as awk; the formula's on_macos bash dependency does not apply, so Ubuntu's bash meets the bash >= 5 floor. Run as a kovacs order with brew taken from its full path; brew on hv's login PATH there is hv's choice and not this package's.",
+      "body": "",
+      "preamble": ""
+    },
+    {
+      "seq": 4,
+      "title": "Projects vendor from the brew install, and find it again",
+      "scope": "S",
+      "status": "done",
+      "objective": "On each machine a fixture project vendored with devbin install --into from the brew install finds it again: a bare bin/devbin upgrade and bin/devbin doctor read it through HOMEBREW_PREFIX's opt/devbin/libexec with no machine pointer and no DEVBIN_INSTALL_PREFIX, and an arm holds this on a fixture prefix laid out as Homebrew lays one out, so it runs without brew.",
+      "body": "",
+      "preamble": ""
+    }
+  ],
+  "criteria": [
+    {
+      "id": "AC-1.1",
+      "text": "The tap's Formula/devbin.rb names the release tag and its commit as revision, and carries no @@ placeholder; the record names the tap commit.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "tap matthewsinclair/homebrew-devbin main 3f2fecf (devbin 0.1.11, published by hv with bin/devbin formula publish, 2026-10-17): Formula/devbin.rb tag v0.1.11, revision 0fc226696548573935dd42e0112fb7167f602a75, 0 @@ placeholders"
+      }
+    },
+    {
+      "id": "AC-1.2",
+      "text": "bin/.devbin/config.yaml declares a release after: step running bin/devbin formula publish; an arm holds that the declared step runs after the push and that its failure is reported, not swallowed; docs/releasing.md no longer says there is no tap.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-2.1",
+      "text": "On rhad, brew install devbin from the tap succeeds, fetching from GitHub over ssh; brew test devbin passes; devbin --version from HOMEBREW_PREFIX/bin names the release's version and commit.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "rhad 2026-10-17, by vc: brew tap matthewsinclair/devbin over ssh, brew install (Cellar/devbin/0.1.11), brew test devbin ok, /opt/homebrew/bin/devbin --version 'devbin 0.1.11 (0fc22669...)'; recorded in commit d2f48f46"
+      }
+    },
+    {
+      "id": "AC-2.2",
+      "text": "brew audit --strict matthewsinclair/devbin/devbin is read, and each finding is fixed in the template or recorded as accepted with its reason.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "brew audit --strict matthewsinclair/devbin/devbin on rhad by cc, 2026-10-17 13:13:31Z, HOMEBREW_NO_AUTO_UPDATE=1, against the tap's Formula/devbin.rb at 3f2fecf (v0.1.11, revision 0fc22669): rc 0, no findings, so nothing to fix or accept; --verbose likewise silent"
+      }
+    },
+    {
+      "id": "AC-3.1",
+      "text": "On kovacs, brew install devbin from the tap succeeds over ssh with kovacs's GitHub key; brew test devbin passes; devbin --version from HOMEBREW_PREFIX/bin names the release's version and commit; Ubuntu's bash meets the bash >= 5 floor.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "kovacs order K012 (k012.sh sha256 6d91a9e2), 2026-10-17 12:39:16Z to 12:39:35Z, rc 0, every step rc 0: tap over ssh, brew install (Cellar/devbin/0.1.11), brew test ok, /home/linuxbrew/.linuxbrew/bin/devbin --version 'devbin 0.1.11 (0fc22669...)', bash 5.3.9 at /usr/bin/bash; recorded in commit d2f48f46"
+      }
+    },
+    {
+      "id": "AC-4.1",
+      "text": "An arm holds that a project vendored from an install marked --managed-by brew records the source kind install and no path, and that a bare upgrade and doctor resolve it to HOMEBREW_PREFIX's opt/devbin/libexec, never the versioned keg, with no machine pointer present, on a fixture prefix laid out as Homebrew lays one out.",
+      "kind": "test",
+      "state": {
+        "is": "computed"
+      }
+    },
+    {
+      "id": "AC-4.2",
+      "text": "On rhad and on kovacs, devbin install --into a fixture, then bin/devbin upgrade and bin/devbin doctor in it, each name the brew install and say why.",
+      "kind": "non-test",
+      "state": {
+        "is": "satisfied",
+        "evidence": "rhad (vc, 2026-10-17) and kovacs (K012, rc 0): a fixture vendored with devbin install --into from the brew install; bare bin/devbin upgrade 'Already up to date' from HOMEBREW_PREFIX/opt/devbin/libexec; doctor 13 checks 0 failed, naming the install 'by HOMEBREW_PREFIX's opt/devbin, since no DEVBIN_INSTALL_PREFIX or machine pointer names one'; recorded in commit d2f48f46"
+      }
+    },
+    {
+      "id": "AC-5.1",
+      "text": "On rhad and on kovacs, brew upgrade devbin moves to a later tag, bin/devbin upgrade in the fixture vendors it through the opt path, and doctor passes naming the new version.",
+      "kind": "non-test",
+      "state": {
+        "is": "withdrawn",
+        "reason": "Carried to issue 0201 on hv's ruling of 2026-10-17: it can only be met once the next batch release (directive 13) is in the tap, and the thread closes on the rest without waiting for a release.",
+        "by": "hv"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "id": "AT-1.2",
+      "kind": "test",
+      "file": "tests/unit/releasecut.bats",
+      "covers": [
+        "AC-1.2"
+      ],
+      "status": "green",
+      "note": "Red first on main 18844a1b's tree under the two new arms, BSD and GNU, 0 of 2: the first at its guard (devbin's config declares no after: running formula publish), the second at row 10 (an empty after: list ends the cut before its table). Met at 1c34549c: bin/.devbin/config.yaml declares release.after: bin/devbin formula publish; two arms cut a fixture whose after: list is read from this repository's config by cfg_release_list, the reader the cut uses, the first holding that the formula reaches the tap only once the release's remote holds the tag (rows 8 and 10 done), the second that a publish the tap refuses is row 10 FAILED and exit 1 with the release standing; the tap is reached by its default url through an insteadOf with ssh refused, so the real tap is never reached; docs/releasing.md and help formula no longer say there is no tap; landing suite 20261017-1323 (vc's landing suite at 39962e40, main c9b39086 plus cc's eaa08c11: 2386 ok, 0 not ok, 5 skips, .errors empty, 13:23:37Z to 13:33:04Z; seal kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/ls9-20261017-1323/)."
+    },
+    {
+      "id": "AT-4.1",
+      "kind": "test",
+      "file": "tests/unit/machinepointer.bats",
+      "covers": [
+        "AC-4.1"
+      ],
+      "status": "green",
+      "note": "An existing arm covers it: the 0195 arm at machinepointer.bats, which already vendored from a Homebrew-shaped prefix and passed on main; the four assertions added describe behaviour that already held, so they have no red on main and no mutant was run (hv's rule). Met at 1c34549c: the 0195 arm vendors a project from an install published --managed-by brew into Cellar/devbin/<v>/libexec with opt linked; the manifest records source install with no place and no Cellar, no machine pointer is present, and a bare upgrade and doctor resolve it to HOMEBREW_PREFIX's opt/devbin/libexec, never Cellar/devbin, before and after a brew upgrade; landing suite 20261017-1323 (vc's landing suite at 39962e40, main c9b39086 plus cc's eaa08c11: 2386 ok, 0 not ok, 5 skips, .errors empty, 13:23:37Z to 13:33:04Z; seal kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/ls9-20261017-1323/)."
+    }
+  ]
+}

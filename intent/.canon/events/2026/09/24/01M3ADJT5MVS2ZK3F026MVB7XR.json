@@ -1,0 +1,15 @@
+{
+  "id": "01M3ADJT5MVS2ZK3F026MVB7XR",
+  "ts": "2026-09-24T19:16:53.044Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.8 BUILD-OUT, re-cut at the localfold of 2026-09-24 19:17Z (date -u) on hv's 'localfold+compact before we go any further'. hv's Go stands: everything open goes into 0.1.8, and the cut comes when all of it is done. THE DETAIL IS IN ~/Devel/scratch/devbin-vc/0.1.8-vc-worklist.md, its LATEST section first. STATE: 0128 v3b is built, and both critic-shell passes on v3 are taken (code 0/0/4, test-check 0/2/3/5). RED FIRST is redone over v2's code (exactly the (b) arms red) and the base's. Patch 062922d8, snapshot snap0128v3b, 63 mutants in the table. 0133 v3 rides it (8 mutants). 0130 v1 is unchanged. suite3b (main b0b32c2 + those three) is the landing gate's full-suite tree. 0142 v2 is being built by an agent with both critics' items (one strict fake in tests/lib/infra_fakes.bash, NSSEQ and STATUS fixtures, a knob validator, the sentence told apart by failure, _idns_ask). 0143 is being built by an agent over 0142 v1, and rebases onto 0142 v2. 0144 is filed at b0b32c2 and being built by an agent. ORDER: (1) after the compact, send START to intent-vc, then run the mutant batch: 0128 v3b on snap0128v3b, 0133 on suite3b. (2) Run the full suite on suite3b, with START and END. (3) Fill the 0128, 0133 and 0130 messages, hand them to cc, land them in that order, resolve and close each. (4) Review 0142 v2, run its mutants, land it; then 0143 and 0144 the same way. (5) Review cc's 0131+0137+0141 (hand-over pending), 0139 v2, 0134 and 0135; a review outranks a build. (6) RELEASES/0.1.8.md (the draft is in scratch, and the worklist says what to change), the cut, the machine install, the sweep (hold 11 for Intent), pushes on hv's word, CI (todo 96), the hook stubs (todo 133), and the line."
+  }
+}

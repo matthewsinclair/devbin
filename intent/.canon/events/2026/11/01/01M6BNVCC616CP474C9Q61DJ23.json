@@ -1,0 +1,16 @@
+{
+  "id": "01M6BNVCC616CP474C9Q61DJ23",
+  "ts": "2026-11-01T13:47:42.342Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 42,
+    "text": "ST0011/02 (WP02b-2, the publish shape folded into the cut, release publish and --expect retired, AC-2.3 in every shape; issue 0304 in it, issue 0297 riding it): on vc's GO (12:44Z), Q3 ruled (a). WIP banked in canon at refs/bank/cc/ST0011-02b2-wip cdd2b42969afaf3e56590ec0ca59f1cf2853585d: five WIP commits on f3462610 in the dev clone's wp02b2 (~/Devel/scratch/devbin-cc/st11-wp02b/wp02b2): 0304 a920dc5a; config and docs 1e411f9b (the fork's 7181bc18, archived as refs/cited/7181bc18 in cited-archive.git); the fold dc71c6e6; 0297 33cec86a (the fork's dff0e719, archived as refs/cited/dff0e719); AT-2.8's id lines cdd2b429. Probed outside bats against the real dispatcher: every publish-shape path and 0304's arm read as their arms want; the lint gate 57 files, 0 breaches. A critic-shell review of the changed shell was running at the fold, its report pending. Open, on vc's go after the compact: the critic's report and its settle; the squash once onto main b166bfac (dc's 0306 8738b5dc and WP17 landed), resolving lib/runlog against 0306's write_errors_file and every other file the stack shares (squash-02b2.sh, its message COMMIT_MSG-ST0011-02b2.draft.txt); the bank refs/bank/cc/ST0011-02b2; kit2/prep.sh; the ask with kit2 (arms releasecut releasepublish releasecore releaseattach, the three guards in GREEN_AT_BASE, RED_TIMEOUT 60, test all, the parallel GNU legs), vc reading the driver before the grant; the handover scripts are ready (handover-02b2.sh, finish-handover-02b2.sh). At the landing: AT-2.8 green over the publish shape's candidate arms. Then WP07 (todo 58), which shares lib/cmd/release and lib/release.steps and so stacks on WP02b-2."
+  }
+}

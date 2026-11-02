@@ -1,0 +1,15 @@
+{
+  "id": "01M6BRTZ3GFER87B44X2T793FZ",
+  "ts": "2026-11-01T14:39:54.483Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0313"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "Pre-flight refuses a macOS stage whose build products or artefact path git does not ignore"
+  }
+}

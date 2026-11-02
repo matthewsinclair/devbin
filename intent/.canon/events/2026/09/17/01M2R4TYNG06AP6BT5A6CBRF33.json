@@ -1,0 +1,15 @@
+{
+  "id": "01M2R4TYNG06AP6BT5A6CBRF33",
+  "ts": "2026-09-17T16:57:42.832Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.archive",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 13
+  }
+}

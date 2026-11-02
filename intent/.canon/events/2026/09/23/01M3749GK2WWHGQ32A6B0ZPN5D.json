@@ -1,0 +1,15 @@
+{
+  "id": "01M3749GK2WWHGQ32A6B0ZPN5D",
+  "ts": "2026-09-23T12:36:47.842Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "RULING TO RELAY: cc asks whether all stays reserved on an option-less command (server, iex, cli and repl refuse it with exit 1, so cli and repl can never pass all to the program; bin/devbin:641-654 reserves it by design and version.md documents it). Put to hv with both options and vc's recommendation; relay the answer to cc, whose D fix depends on it."
+  }
+}

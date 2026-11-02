@@ -1,0 +1,15 @@
+{
+  "id": "01M2QX0F7JCXCQZ2M3PRPMHHN4",
+  "ts": "2026-09-17T14:40:55.026Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Review dc's 0081 + 0084 build when dc sends it (hv's routing).** 0081: re-drive vc's clobber probe (vc's scratchpad, clobber/) through the real dispatcher for each name the list misses, and hold the arm the issue asks for, the list checked against the dispatcher's real exports (mutant: an extra `export DEVBIN_PROBE=1`). 0084, shape A, write through the link: re-drive vc's symlink probe (vc's scratchpad, wp02fold/symprobe: `version set` with VERSION, Cargo.toml, package.json and mix.exs linked; `release notes` with CHANGELOG.md linked) -- each link survives and each target gets the edit; a dangling link is refused naming it; the mode and rename arms still hold, now on the target; and how the link is resolved, measured on both CI runners. Then a full suite, telling dc first, mutations, and the OK."
+  }
+}

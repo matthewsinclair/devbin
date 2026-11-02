@@ -1,0 +1,15 @@
+{
+  "id": "01M5PSRH8J9ZMHGYNHF49TXRNR",
+  "ts": "2026-10-24T11:12:00.274Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ISSUE:0218 (low), after 0217: three library forms Laksa needs (git_readonly's clearing in the current shell, the URL-owner parse, one userinfo scrubber), with devbin's own callers rebuilt on each; Laksa's copies are in its bin/.devbin/cmd/.lib/laksa at 1224951fb, read-only reference. Same method; starts after 0217"
+  }
+}

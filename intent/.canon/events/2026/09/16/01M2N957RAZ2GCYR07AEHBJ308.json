@@ -1,0 +1,16 @@
+{
+  "id": "01M2N957RAZ2GCYR07AEHBJ308",
+  "ts": "2026-09-16T14:15:30.827Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.cancel",
+  "subject": {
+    "type": "wp",
+    "id": "ST0003/04"
+  },
+  "payload": {
+    "from": "not-started",
+    "reason": "Moved whole to ST0006/WP-01 on 2026-09-08 with AC-4.1 to AC-4.3; nothing was built here. Cancelled on 2026-09-16 because the descope moved the criteria and left this record open.",
+    "to": "cancelled"
+  }
+}

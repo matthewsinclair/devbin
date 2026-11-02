@@ -1,0 +1,15 @@
+{
+  "id": "01M4AK99HQ76E42MTXH2GNC2EH",
+  "ts": "2026-10-07T07:12:14.393Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0182"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "fleet's frozen list matches an estate's basename while the plan names it by path, so the name a row prints freezes nothing, and a name that matches no estate goes unreported"
+  }
+}

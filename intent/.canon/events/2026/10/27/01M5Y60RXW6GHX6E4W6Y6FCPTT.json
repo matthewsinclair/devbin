@@ -1,0 +1,16 @@
+{
+  "id": "01M5Y60RXW6GHX6E4W6Y6FCPTT",
+  "ts": "2026-10-27T08:00:54.204Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 77,
+    "text": "hv, relayed by molt-vc on 2026-10-27 (molt-vc decision 22; molt-vc holds the verbatim): the estate works in layers, L1 utilities and devx first (devbin, Molt, Utilz, Gtools), then L2 (Intent), then the applications, and no layer starts until the one below is published, on CI, brewed, reinstalled and usable from brew. hv wants L1 done today. DEVBIN'S L1 IS COMPLETE (molt-vc, 2026-10-27). 0.1.15 is cut at 4efb6e17 with its formula in the tap. The v0.1.15 tag's Devbin Tests run 40373607694 is green on every leg (attempt 3, molt-vc's rerun; macOS read in full by vc). Main is pushed 349bf03e..1ed432d8 with CI run 40465956795 green. It is brewed and answers exactly `devbin 0.1.15 (brew, 4efb6e173e70)` in a fresh login shell on rhadamanth (molt-vc's read, 06:36Z) and on kovacs (kovacs-sysadm, slot 01M5Y50D1KHGYE15429VPSYGP2, green at 07:45:30Z, from /home/linuxbrew/.linuxbrew/bin). The layer order still governs the other layers. Not put to hv again."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M6AY4980M7YHCJRZAC909TD8",
+  "ts": "2026-11-01T06:53:08.224Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ISSUE:0306 (vc decision 120, hv's ruling read 2026-11-01 06:51Z by date -u): write_errors_file's red seal written to a temp file beside the seal, held to RED IS NEVER EMPTY there, then renamed over the seal, so no seal reader sees an empty seal, which seal_state reads as green, across a red run's close (the remedy the issue names); an arm reading the seal from a second process across a red run's close sees red or in flight, never green. After WP16 and before the cut; critic-shell before its first run; lib/runlog is in no bank, so its run fills any lane gap."
+  }
+}

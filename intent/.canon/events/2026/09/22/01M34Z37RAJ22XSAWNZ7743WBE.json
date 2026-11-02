@@ -1,0 +1,15 @@
+{
+  "id": "01M34Z37RAJ22XSAWNZ7743WBE",
+  "ts": "2026-09-22T16:27:30.442Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "CARRIED OUT OF TODO 34 ON 2026-09-22 WHEN THE 0.1.6 PROGRAM WAS ARCHIVED, BECAUSE THE PROGRAM SHIPPING DID NOT DISCHARGE ITS RESIDUE. Done and not in question: 0.1.6 is cut, published and swept into 13 estates, devbin itself is pushed and green, and its ledger reads 0 threads WIP, 0 work packages WIP, 0 open issues. What is still owed is owed to hv in person. (1) SEVEN estates carry unpushed sweep commits -- Riffle, Cdtempl, Prolix, Conflab, Baize, MicroGPTEx, Prodinfra -- plus Utilz and Intent one ahead each on board writes alone; hv pushes each, and vc reports these are hv's to push rather than work queued on anyone. (2) THREE repos that are not devbin estates await hv's word: Anvil (private, red twice), Pplr, arca_notionex. (3) TWO measured questions of laksa/dc's are open: whether `pristine` should reach the Ubuntu 26 runner-migration notice, and whether it should reach the Elixir dependency warnings. (4) Utilz's bash 3.2 gap is being closed by utilz-vc with a config change on their own side -- tracked, not devbin's to do. Archiving 34 bare would have left \"the 0.1.6 program shipped\" standing as a true sentence carrying an untrue implication, which is the failure mode a flense invites."
+  }
+}

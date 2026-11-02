@@ -1,0 +1,15 @@
+{
+  "id": "01M5VHMH0GNMXKV2D5Z22KN0EJ",
+  "ts": "2026-10-26T07:26:12.496Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLD until molt-vc sends the next instruction (hv, 2026-10-26: localfold, compact, then hold for molt-vc). Not held, only finished: (1) the 0.1.15 note scans (background task b3hqcvfal, driver tools/note115-scans.sh, log st0010/note115/run.log): send molt-vc END the moment the driver exits, read every TAP under st0010/note115/{bsd,gnu}, send the verdict, and commit RELEASES/0.1.15.md (untracked in the real tree) only on molt-vc's word; (2) CI run 40283937303 on 04f6368d (watch task b84254slk, ci/run-40283937303.watch.txt): send molt-vc the verdict read from its jobs, and on green send dc the run id for 0222's resolution (or fill dc's draft 0220/handover/RESOLUTION-0220-0222.md if hv has closed dc), then close 0222. Waiting on: cc's answer on handing 0213 leg D over as a ready order (then tell molt-vc whether hv can close devbin-cc); the kovacs slot after Utilz's kovacs twins (kovacs/k115.sh ready but for its pin and bundle sha, filled from main after the note commit)."
+  }
+}

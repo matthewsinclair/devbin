@@ -1,0 +1,15 @@
+{
+  "id": "01M36PT80ED22EW5JAA43DXBFE",
+  "ts": "2026-09-23T08:41:16.047Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "PUT THE 0120-0125 SCHEDULING TO hv AGAIN. Asked 2026-09-23 for 0120-0123 with recommendation A: 0120, 0122 and 0123 into 0.1.8, cc building 0120 and 0123 and vc building 0122 with 0117; 0121 waits for ST0006. Unanswered when hv called the localfold. 0124 (medium: `version bump` escapes the wrong-tree guard; cc drove VERSION 1.2.3 to 1.2.4 from outside the project) and 0125 (low: shell-init never reads install.prefix) were filed since. READ BOTH before re-asking, then put all six in one question."
+  }
+}

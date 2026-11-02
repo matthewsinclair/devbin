@@ -1,0 +1,16 @@
+{
+  "id": "01M69051MYCRM3YW1090YW0MN6",
+  "ts": "2026-10-31T12:50:01.502Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 53,
+    "text": "ST0011/02 (WP02a), on hv's or vc's go: the review items in ~/Devel/scratch/devbin-cc/st11-wp01b/handover/STATE.md (Queued for WP02a), from both critics and vc's rulings: one mapping from seal_verdict's word to the gates state for status and the cut with the -nt stop, one gates count, the PFIC move of release_gates_run's list read, release gates reading back its record, one head reader, one seal classifier, the kept-run filter, RELEASE_GATES_WHY local, the no-op open_scratch, the purge after a green seal, a host: line as information, dc's optional platform."
+  }
+}

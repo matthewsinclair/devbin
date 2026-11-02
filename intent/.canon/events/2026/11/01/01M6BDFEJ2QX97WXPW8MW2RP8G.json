@@ -1,0 +1,17 @@
+{
+  "id": "01M6BDFEJ2QX97WXPW8MW2RP8G",
+  "ts": "2026-11-01T11:21:22.754Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "WP16's AT verdicts are set and committed at a979f8f7d4c68615960a2f779c89500232de9317 (canon, by path, nothing pushed), on main 54c16f33.\n\nAT-5.1 to AT-5.4 are each red with the red clone 2ce10c70's evidence, then green with the re-run's, as AT-3.10 to AT-3.14 were. intent at list: AT-5.1 green covers AC-5.1, AT-5.2 green covers AC-5.2, AT-5.3 green covers AC-5.3, AT-5.4 green covers AC-5.5. intent ac list now reads AC-5.1, AC-5.2, AC-5.3 and AC-5.5 covered and satisfied: yes; AC-5.4 (non-test) reads not covered and not satisfied, as ruled.\n\nintent at lint ST0011 at a979f8f7 (rc 1): 20 findings, all main's literal-id ones. WP16's id lines cleared AT-3.1 and AT-3.4, and the four rows have none:\ntests/unit/runlog.bats does not carry the literal id AT-1.1\ntests/unit/gitident.bats does not carry the literal id AT-1.2\ntests/unit/releasecut.bats does not carry the literal id AT-1.3\ntests/unit/runlog.bats does not carry the literal id AT-1.4\ntests/unit/releasecut.bats does not carry the literal id AT-2.1\ntests/unit/releasecut.bats does not carry the literal id AT-2.2\ntests/unit/releasecut.bats does not carry the literal id AT-2.3\ntests/unit/releasecut.bats does not carry the literal id AT-2.4\ntests/unit/releasecut.bats does not carry the literal id AT-2.7\ntests/unit/runlog.bats does not carry the literal id AT-3.2\ntests/unit/releasecut.bats does not carry the literal id AT-3.3\ntests/unit/macos.bats does not carry the literal id AT-3.6\ntests/unit/releaseattach.bats does not carry the literal id AT-3.8\ntests/unit/formula.bats does not carry the literal id AT-3.9\ntests/unit/ci-state.bats does not carry the literal id AT-3.10\ntests/unit/ci-state.bats does not carry the literal id AT-3.11\ntests/unit/ci-state.bats does not carry the literal id AT-3.12\ntests/unit/ci-state.bats does not carry the literal id AT-3.13\ntests/unit/ci-state.bats does not carry the literal id AT-3.14\ntests/unit/releasecut.bats does not carry the literal id AT-3.15\nlint: ST0011 FAILED -- 20 finding(s) over 27 of 28 AT row(s) examined; 1 not examined (1 awaiting a verdict)\nThe one not examined is AT-2.8 (to-write).\n\nWP16's own status (intent wp done ST0011/16) and dc's claim on ST0011/16 are yours to call; I leave both as they stand unless you say.\n\nNOW: issue 0306, from a fresh clone at 54c16f33. The plan is in 0306/NOTES.md: write_errors_file's red seal staged by stage_beside and renamed over by rename_staged, no new mv line. The critic-shell review comes before its first run, then the desk. WP17 follows it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

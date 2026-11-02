@@ -1,0 +1,16 @@
+{
+  "id": "01M41D2S208CP0N0MGX9H5T2FY",
+  "ts": "2026-10-03T17:30:39.552Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 96,
+    "text": "A PUSH IS DONE when CI is GREEN on the pushed sha, or RED with exactly the baseline failures named (hv, 2026-09-22). SUSPENDED for devbin while Actions refuses its jobs for billing (hv, 2026-10-03, decision 45: ignore the billing). Until then a push is done when every remote reads back the pushed sha with ls-remote. The 2026-09-22 baseline of other estates' failures is stale, and is re-measured when Actions runs again."
+  }
+}

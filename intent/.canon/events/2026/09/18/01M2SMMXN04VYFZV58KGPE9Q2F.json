@@ -1,0 +1,15 @@
+{
+  "id": "01M2SMMXN04VYFZV58KGPE9Q2F",
+  "ts": "2026-09-18T06:53:16.834Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0088"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "Terminal-blocking census: every gate hands its tool the person's terminal, and a release step can ask for a password -- two paths a no-tty run never takes"
+  }
+}

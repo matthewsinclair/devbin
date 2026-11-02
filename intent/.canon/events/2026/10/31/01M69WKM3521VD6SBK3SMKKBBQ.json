@@ -1,0 +1,16 @@
+{
+  "id": "01M69WKM3521VD6SBK3SMKKBBQ",
+  "ts": "2026-10-31T21:07:19.269Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 184,
+    "text": "FOR hv, open at the fourth fold and still open after the fifth (recs in brackets; Trash state read 2026-10-31 20:44Z): Intent 0666's fix shape (intent daemon start --at-login says ok and enrols nothing while a daemon runs; rec: enrol or refuse, never ok with nothing done; intentd stays unenrolled at login on rhadamanth until then); Molt's PATH order (rustup's cargo before Homebrew's; a Molt session or hv's hand); the Intranet ads check ignoring optional: true hosts (an Intranet fix) and whether the sweep reaches the Intranet checkout under Dropbox, outside the fleet frame; the repo model (hold 34; main unpushed since 9f579b36). Closed today: Intent's housekeeping (hv's Approved in intent-vc's window 20:54Z: the four stashes dropped and kept at attic refs, tmp/check and tmp/test removed and banked whole at refs/bank/vc/housekeep-20261031 in Intent's repository; ST0011's three citing evidence documents carry provenance notes at eb3d5c3c), kovacs's provisioning (brew only), gyges's estate-pull job, Intranet's known_hosts, 0667 (hv ruled it in intent-vc's window), Utilz's push and dispatch, Laksa's and Conflab's answers, all six Utilz Trash folders (two at about 14:00Z, four at 20:5xZ by rhadamanth-sysadm on hv's yes, each checked against its manifest first; nothing else touched, no sudo)."
+  }
+}

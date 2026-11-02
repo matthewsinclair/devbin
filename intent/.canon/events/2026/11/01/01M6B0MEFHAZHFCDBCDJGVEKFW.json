@@ -1,0 +1,17 @@
+{
+  "id": "01M6B0MEFHAZHFCDBCDJGVEKFW",
+  "ts": "2026-11-01T07:36:55.025Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "WP16's delta review is settled and re-banked: refs/bank/dc/ST0011-16-wip e8d91e38384018202272986e5ae35f6ad64b20fd, one WIP commit on 4774c637, moved by fetch and compare-and-swap (2026-11-01 07:3xZ; the clock read 07:36Z by date -u). The report is verbatim at ~/Devel/scratch/devbin-dc/wp16/critic-4774c637-report.txt (1 critical, 6 warning, 10 info), the dispositions at ~/Devel/scratch/devbin-dc/wp16/dispositions-4774c637.md. Taken: C1 (gc refuses, removing nothing, when the release's run-logs directory cannot be listed, through run_dir_unreadable in lib/runlog, now the one test seal_verdict makes too); W1 to W6; I1 to I4, I6, I7 and I10. Taken in part: I5 (gc names a put's leftover temporary entry and removes none, since a live one looks the same) and W3 in the critic's smaller form (put refuses an immutable file; bsdtar gets --no-fflags; one tar path for files too declined, since it would change what a file entry and its sha256 are). Declined as spec-level, FOR hv through you: I8 (uname -m names the shell's architecture, so an x86_64 shell under Rosetta keys arm64 code as x86_64: a second key on one machine, a wrong pull only through a registry shared between an emulated shell and a native one, which s13 keeps per machine) and I9 (swiftly's .swift-version and asdf/mise's .tool-versions resolve per directory, while s13 asks every tool but cargo at the project root; rec: ask each tool where its build runs, as cargo is). Also in the commit: your platform_arch comment fix; the '# AT-5.n' id lines, AT-5.1 to 5.3 over AC-5.1 to 5.3 and AT-5.4 over AC-5.5, sixteen in all; two new arms and seven tightened. lib/runlog joins the unit's files and is in no bank, so the files WP16 shares with WP02b-1 are still the five; runs.conf's FILES gains runlog and its CRITIC lib/runlog. Checks at e8d91e38, no bats: bash -n and shellcheck -x clean on the seven shell files; the headless critic exit 0; probe-docs.sh all nine checks pass; cc's prebank-scan.sh no hit over the settle or the whole unit; probe-settle2.sh, through the command, each changed path answering as designed. A critic-shell review of the settle's own delta, 4774c637..e8d91e38, is running now, given the commits only, and its findings settle before the run; say if you want it stopped. Booking waits for your ruling. FYI, not dc's: an untracked file named typescript (script(1)'s default output, 630 bytes, its time 07:30Z) stands in canon's root, an interactive zsh opened there and ended by EOF; no command of mine runs script; a cut's pre-flight refuses an untracked path, so its owner should remove it.",
+    "fyi": false,
+    "re": "2026-11-01 06:58Z",
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M697TJYCDSKYPHT786AB2NM8",
+  "ts": "2026-10-31T15:04:07.372Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-10-31 15:04Z (in vc's window, on vc's answer that nothing is in .cache because WP16 is not built): 'before we go anywhere near trying to rebuild the whole estate (other than devbin), we need to get this stuff rolled out in devbin so that when we do the whole estate rebuild, that we're using the cache'. Ruled: WP16's verbs land in devbin before the estate rebuild, so they are in 0.1.19 and the sweep carries the cache to every estate; WP16 joins decision 93's preconditions for the cut (WP01 to WP08, WP16 and WP17 landed, the full suite green on rhadamanth and kovacs); WP10 to WP14 each declare the estate's build: block as part of its adoption, not after, so the whole-estate rebuild writes the cache on its first build and hits it from the second. dc's lane order stands, WP03's remainder (unblocks cc's WP02b), WP17 (unblocks AC-6.3 and Gtools's kovacs leg), WP16, all three before the cut. Recorded with it: the dc stack landed on main at 2026-10-31 15:04Z by land-stack.sh, ST0011/06 at 314f3c78 from 1f37e5eb and ST0011/05 at 7333cae0 from aa2fb1d2, each by its own paths with its sealed message, the tree outside intent/ equal to the tested tip aa2fb1d2, nothing staged, run 3b's record in dc's run3d; WP05 and WP06 stay WIP until the hook-in. AT-3.7's route: Intent refuses green on a non-test row for a test criterion, so D66's acceptance run gets a criterion of its own beside AC-3.3, of the kind Intent offers for named evidence, met by evidence from the first Utilz or Intent cut's RELEASE seal and marked by vc; AC-3.3 stays decided by tests (AT-3.3, AT-3.6, AT-3.8, AT-3.9 hold it open)."
+  }
+}

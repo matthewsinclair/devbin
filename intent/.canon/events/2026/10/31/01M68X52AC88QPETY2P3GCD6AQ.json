@@ -1,0 +1,16 @@
+{
+  "id": "01M68X52AC88QPETY2P3GCD6AQ",
+  "ts": "2026-10-31T11:57:36.460Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 36,
+    "text": "ST0011/01 (WP01) re-bank on hv's go via vc (2026-10-31 10:38Z): banked at refs/bank/cc/ST0011-01 = 8003fb63 on main's 0e72eff6 (the eight reds, the critic's critical and R4, this platform throughout, is_commit_sha full at --expect and release gates, dc's 0079 arm, the cut's stdout-only release_commit read), handover in ~/Devel/scratch/devbin-cc/st11-wp01b/handover; WP01 takes the free lane as run 2 (vc's change of order under decision 92): heavy slot 01M68X45FGFSJMR3R1M20S7Q43 asked, START on vc's GO, END the moment the driver exits; dc's WP06b rebases onto WP01's landing for run 3; evidence: 20 arms red at the base then green under BSD and GNU, broken.bats red at the tip, one targeted run with the tree scans, help and the headless critic."
+  }
+}

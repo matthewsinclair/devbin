@@ -1,0 +1,15 @@
+{
+  "id": "01M2QX2K4CXEP46GGH4VJFJM9C",
+  "ts": "2026-09-17T14:42:04.556Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Review vc's 0083 when its packet lands, and later 0082** (hv's ruling, 2026-09-17). vc builds 0083 now (fullcycle's test phase hardcoded to test rust; Intent waits on it). vc runs 0082's census of run: values now; hv rules globbing after it; vc builds 0082 after ST0007 WP-03, and dc reviews. Then ST0007 WP-03 is vc's and WP-04 is dc's."
+  }
+}

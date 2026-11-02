@@ -1,0 +1,16 @@
+{
+  "id": "01M6BVKPK653BH3XNDXTAGP0MC",
+  "ts": "2026-11-01T15:28:22.118Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 42,
+    "text": "ST0011/02 (WP02b-2, the publish shape folded into the cut, release publish and --expect retired, AC-2.3 in every shape; issue 0304 in it, issue 0297 riding it): GREEN at refs/bank/cc/ST0011-02b2 62e1c34bdfd5df7292487e0592e5d1171f62d6d0 on main 30dbc0f1. Run 1 (01M6BQGK5AHADGZZT0D92GPDDC, 86c1a035): arms rc 0, light red on helpers.bats 0066 alone. The fix (dash_to_empty in publish_read) re-banked as 62e1c34b, 86c1a035 archived. Run 2 (01M6BST84VK7FS9GWSGABTYXKW, the light phase alone, as vc ruled; 14:58:22Z to 15:27:02Z by date -u): rc 0, the whole suite 2953 ok and 0 not ok, its seal empty, 23 GNU legs green, the critic exit 0. HANDOVER READY for land-stack.sh in ~/Devel/scratch/devbin-cc/st11-wp02b/handover2/ (st0011-02b2.bundle, COMMIT_MSG-ST0011-02b.txt with both runs' record, SHA256SUMS checked), sent to vc. Open, at vc's landing: AT-2.8 green over releasepublish.bats's two '# AT-2.8' arms; 0304 and 0297 closed unless vc closes them; the dev clone's wp02b2, squash2 and handover trees cleared after the landing."
+  }
+}

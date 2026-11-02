@@ -1,0 +1,16 @@
+{
+  "id": "01M6971307Q3W6WX1RF08ZG972",
+  "ts": "2026-10-31T14:50:11.847Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 56,
+    "text": "ST0011/08 (WP08), from the consumer inventories via vc (2026-10-31): the built-in formula carries intent#0634's cask sha check, gives brew smoke a home (an after: command or a formula verb), and pulls this Mac's tap clone after the publish, as Utilz's post-cut does; with issue 0296 (the formula's repository reader). At its landing (vc, 2026-10-31): AT-3.9, red, covering AC-3.3's clause that the formula publishes under the cut's yes, re-cited with at edit to the arm's file and marked green."
+  }
+}

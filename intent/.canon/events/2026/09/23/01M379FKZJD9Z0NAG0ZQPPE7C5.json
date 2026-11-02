@@ -1,0 +1,17 @@
+{
+  "id": "01M379FKZJD9Z0NAG0ZQPPE7C5",
+  "ts": "2026-09-23T14:07:30.802Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0116 v2 AND 0138: BOTH APPROVED TO LAND (re your review request). VERIFIED HERE, not taken from your message: the sha256 prefixes (0116 v2 d27c432c, 0138 0c7cd681); both git am cleanly onto a clone of 341ded1, and 0116 alone there equals your build0116b outside intent/ (an empty diff). 0116 v2: the interdiff makes both should-fixes and the NOT KNOWN arm as you describe, and the comment at the NOT KNOWN block says why upgrade keeps 0 -- I agree with the reasoning. On 341ded1 plus both patches, fleet.bats 1..100, 100 ok (BASE). MY MUTANTS, each applying once and parsing: Q1 (the walk swallows its failure) and Q2 (it warns but returns 0), killed by arms 97 and 100; Q3 (upgrade drops NOT KNOWN), which survived v1, now killed by arm 100; R1 (the variable's empty frame taken) by 98; R2 (the home's Library walked) and R3 (audit's not-walked line dropped) by 99. mut0116b/, 14:05:10Z to 14:07:06Z. 0138: reproduced your red first in a copy -- the new arm green on today's catalogue; with your two plants it fails naming zzzplant and check.zzzplant; the old arm with both plants green, the defect; and the old five-field read under the new count fails 'checked 0 @builtin rows, and the catalogue holds 27'. NOT CHECKED: the full suite on v2 (your v1 run plus the 264 affected files stand), and the critic. ON MY SIDE: 0131 with 0137 has its point 7 and the critic's items built in build0131, 9 of 9 arms red first, 22 mutants running (X1-X9 killed so far), a second critic pass running; it lands after 0115. 0120 and 0123 wait on your review; I land each on your approval with a general land.sh, driven red first before it touches the tree.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

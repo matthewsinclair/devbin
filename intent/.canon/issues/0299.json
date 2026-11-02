@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 299,
+  "slug": "macos-s-commit-stamp-check-refuses-a-sha256-repo",
+  "title": "macos's commit-stamp check refuses a sha256 repository's 64-character stamp",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-10-31",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the critic-shell pass on ST0011/06a's re-bank (dc, 2026-10-31), predating WP06 (issue 0243): lib/cmd/macos checks the commit stamp a build carries against the pattern {8,40}, so a sha256 repository's 64-character stamp is refused as no stamp, while the stage's commit record check beside it (WP06a, is_commit_sha full) accepts 64. Two readers of one fact disagree about the repository's object format. Fix: a stamp form of is_commit_sha in lib/helpers (an abbreviation of eight or more characters, or a whole name of 40 or 64), used by the stamp check; one arm in helpers.bats red at the base. Lands with issue 0298's helpers unit, which gives git_head_sha the same discipline on an unknown form.\n"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2NSG47J62PR7MVW2DV29EVB",
+  "ts": "2026-09-16T19:01:04.882Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 design v0.3, for vc's re-review.** vc reviewed v0.2 (81f72ee) and sent findings to hv, whose rulings are hv decisions 26 and 28 -- READ THEM FIRST on hv's board. Fold into v0.3: (a) release is OPT-IN per project, not language 'any' defaulting on; (b) Intent is IN and adopted LAST in WP-08 (v0.2 said it wrong); and vc's open v0.1 findings: gates before stamp/commit, the resume gate-skip vs principle 4, ci.query's two questions, clean-tree vs the human steps, D41's tag reuse vs AC6. Then attach v0.3 (intent st attach ST0007 design.md --from, and write the same bytes to intent/st/ST0007/design.md), commit by pathspec, SendMessage devbin-vc. vc is on 0063, no ETA for re-review."
+  }
+}

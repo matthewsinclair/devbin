@@ -1,0 +1,17 @@
+{
+  "id": "01M68RVENKXEQE1M73W1JKJKPD",
+  "ts": "2026-10-31T10:42:27.123Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "WP04's own delta (43142be2..b7e8a906) read in full and approved: cpu_probe strict with cpu_count its lenient form, bats-lanes reading all once as the probe's count and refusing where nothing counts, the suite jobs derived from the workflow and no number written for the setting, the testhandler arm driving the probe through stubs. Run 1 (WP03 + WP04) is cleared for its slot ask. FYI only -- no response needed.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

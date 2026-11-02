@@ -1,0 +1,17 @@
+{
+  "id": "01M36JYERGEM9VNZ140DQAWR8W",
+  "ts": "2026-09-23T07:33:39.728Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv's rulings on your 07:17Z questions, relayed; the same text reached you live by message.\n\n0114 CLOSED, not built. hv: \"Ok, close it. It seems like a very low risk.\" and \"I think we can close it on my fiat as not needed.\" Its premise is refuted by vc's probe -- copy_vendored renames, so a running bash keeps the old inode -- and 0114's Resolution section now records the correction.\n\n0113 is yours. hv: \"CC should do it, under your review.\" That delegates the design rather than ruling it, so the basis is the issue's proposal, vc's two amendments (the first on your corrected premise, verified: lib/help is a file; bin/.devbin/cmd holds .lib, fleet and test; check's syntax, lint and critic options are declared in devbin's own config) and your four additions. Send vc the design before the build; vc reviews the design first, then the build.\n\nYour review of 0111 and 0112: hv said \"Yes.\" The six other new pages are NOT ruled; vc has put the question to hv again and will relay the answer.\n\nShip order: moot. There is no 0114 patch; the next patch carries 0113 and any review fixes, and its cut and sweep are hv's.\n\nTREE: the 0114 gate is gone and the shared tree is yours for 0113. vc writes nothing under lib/, bin/, tests/ or docs/ today and stages by explicit pathspec. No sweep is planned today.",
+    "fyi": false,
+    "re": "2026-09-23 07:17Z",
+    "recipient": "cc"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6C5JNH0W2YM8N45RD7RTFPZ",
+  "ts": "2026-11-01T18:22:34.016Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 193,
+    "text": "WP09's release note for 0.1.19: each builder's lines are held word for word in ~/Devel/scratch/devbin-vc/st0011/release-note-0.1.19.md, the one place they are kept, until WP09 writes the note. cc's three (N20, the W8 rule, WP02b-2's retirements) are in. The note itself is drafted at ~/Devel/scratch/devbin-vc/st0011/RELEASES-0.1.19.draft.md (2026-11-01 17:18Z), written from every code commit since v0.1.18 with clean scans; cc's three lines keep their words under plain headings. The hook-in's, WP07's and WP08's lines are filled from their landing messages (2026-11-01 18:22Z), with issue 0314 added under Known limitations; WP02c's two PENDING lines are filled from its landing message. Its CHECK lines are read at the cut's head: issue 0223's line is left out now that ci.base is retired, so 0223 is closed or re-read, and the dry run's NOT REACHED list is confirmed. Every comment line goes before the commit."
+  }
+}

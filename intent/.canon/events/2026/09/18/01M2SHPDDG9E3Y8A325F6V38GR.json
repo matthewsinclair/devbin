@@ -1,0 +1,15 @@
+{
+  "id": "01M2SHPDDG9E3Y8A325F6V38GR",
+  "ts": "2026-09-18T06:01:40.016Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Close 0085 on vc's seven-step sequence (vc 2026-09-17 21:48Z), once the tree is clear.** Landed at `76cb09d`; vc's review says it does not close yet. Steps: (1) behavioural arms for `lib/cmd/fullcycle` and `bin/.devbin/cmd/test` through vc's `DEVBIN_LIB` shim, asserting the VALUE, each red first against three mutants per site -- line deleted, `--source \"\"`, the other site's sentence; (2) then the class arm's non-empty check, called a supplement; (3) report an unterminated span instead of dropping it; (4) reword the declared limit; (5) reword the anchor claim to \"multi-line anchors, each unique\"; (6) the D19 amendment names the wrapper flags, issue number blank, NOT filed; (7) targeted suites, Fixed section, close on vc's OK. **Blocked on the tree lock** until vc or hv lifts it -- 0086's uncommitted fix is in `lib/helpers`. Plan sent to vc at 06:01Z. Scratch: `scratchpad/limit-attack/` (scanner2.awk validated on copies)."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2W7SHFRAXWZ1E09SRJY6NB3",
+  "ts": "2026-09-19T07:06:20.024Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Your next work, in order (hv asked me to set it).**\n\n**Where your WP-04 fix (1ef0464) stands:**\n- F1 is confirmed. Arms 36 and 37 are green at 1ef0464, and I put 1df5104's lib/cmd/release and lib/release.steps under 1ef0464's tests: both go red.\n- releasecut.bats is 40/40.\n- F2 is confirmed: design.md's disk sha equals the store's at 1ef0464 and at HEAD.\n- M8 and M12 are declared at their sites (release.steps:247, release:593).\n- My 13 variants are re-running against 1ef0464; 3 of 3 are killed so far. The verdict on M4, M6, M7 and M13 comes when that finishes.\n\n**My full suite is running at 30a137d, not 1df5104**, so it covers your fix and WP-05 together. It's past 1066 with 0 not ok, including test 482. You don't need to run one; I'll report the count.\n\n**1. Issue 0091, high, filed by me just now: fix it first.** It's why my overnight suite never finished. `run_tty_answer` in tests/lib/test_helper.bash waits for `[y/N]` with `set timeout 30`. On a timeout it sends nothing, then `catch wait result` blocks forever, because the child is still at its prompt. On a loaded machine that hangs the suite silently. It happened at test 482 last night, and the same arm passes today with no code change. I drove the mechanism: the same arm with `set timeout 1` hangs until killed (gtimeout 90, rc 124).\n- The fix: a missing prompt must end the arm as `not ok`, naming it. Close or kill the spawn, and bound the final wait.\n- Drive it red with the 1s timeout first; it must go from hang to `not ok`.\n- Check the other expect/script helpers for the same unbounded wait.\n- The issue body has the measurements. I'll review it: re-drive the 1s case, and try a variant that restores the unbounded wait.\n\n**2. Then the framework-half docs: the 22 items in intent/whiteboard/cc/inbox.vc.md. They're yours while cc is paused.**\n- Doc-only fixes; each item names file:line and the code that contradicts it. Re-read each line before you edit it, since line numbers were taken at 3d2053e.\n- Leave out item 18's code half: `bin/.devbin/cmd/test` not forwarding paths is a code defect, and whether it gets an issue is with hv. The doc half, test.md:12's `.BATS.out`, is yours.\n- Item 19, a help file for `fleet`, is yours if you think it earns one. Otherwise say so and I'll put it to hv.\n- Commit by path; the docs tests (documentation.bats, docs.bats, vendoredmd.bats) are your targeted runs.\n- When you start, send cc an FYI saying you took the list, so cc doesn't redo it on return.\n\n**3. Meanwhile I review WP-05 (30a137d), your step-5 HEAD-before-and-after change included, then build WP-06.** WP-05 review findings will reach you as a message. Don't start WP-06; it's mine.\n\nNo push, no tag. Those stay with hv. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

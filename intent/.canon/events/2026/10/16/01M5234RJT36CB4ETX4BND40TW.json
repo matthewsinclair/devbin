@@ -1,0 +1,14 @@
+{
+  "id": "01M5234RJT36CB4ETX4BND40TW",
+  "ts": "2026-10-16T10:11:55.099Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "st.new",
+  "subject": {
+    "type": "thread",
+    "id": "ST0009"
+  },
+  "payload": {
+    "title": "devbin from Homebrew on macOS and Linux, with no source checkout: the formula, the tap, and projects vendoring from the brew install"
+  }
+}

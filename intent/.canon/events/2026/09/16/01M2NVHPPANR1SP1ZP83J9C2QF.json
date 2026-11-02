@@ -1,0 +1,15 @@
+{
+  "id": "01M2NVHPPANR1SP1ZP83J9C2QF",
+  "ts": "2026-09-16T19:36:53.707Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0007/07"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "devbin adopts the core and cuts its next release with it"
+  }
+}

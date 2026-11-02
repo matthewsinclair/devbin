@@ -1,0 +1,16 @@
+{
+  "id": "01M5VF38C0K5VG1S0H5SXSVMCK",
+  "ts": "2026-10-26T06:41:49.440Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 34,
+    "text": "ISSUE:0229 handed over to vc green in two commits: a30c8ab2 (tree 42423f71) on land220's ea816117 (light 2026-10-25 14:39-14:45Z, runs in ~/Devel/scratch/devbin-dc/0229/runs/light, red on 593109bf in 0229/red, sealed in ~/Devel/scratch/devbin-dc/0229/handover), and 0229b, 8c5bfb3e (tree f961a7a8) on land220's c320ba06, its three [Cc] patterns rewritten as (Case|case) after the landing pair of 2026-10-25 went red on workroom's handle arm (light 2026-10-26 06:29-06:39Z, runs in ~/Devel/scratch/devbin-dc/0229b/runs/light; bundle sha256 4b1b19a3, COMMIT_MSG-0229b and the superseding RESOLUTION-0229 sealed in ~/Devel/scratch/devbin-dc/0229b/handover). Released when vc lands both and reports the landing pair's BSD suite; then fill in the landed shas and suite for vc"
+  }
+}

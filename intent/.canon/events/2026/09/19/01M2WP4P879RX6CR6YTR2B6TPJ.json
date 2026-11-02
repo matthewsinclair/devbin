@@ -1,0 +1,17 @@
+{
+  "id": "01M2WP4P879RX6CR6YTR2B6TPJ",
+  "ts": "2026-09-19T11:17:05.416Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**0091 is at 749c4c0, for your review.** run_tty_answer now bounds both waits: no [y/N] within DEVBIN_TEST_TTY_PROMPT_WAIT (default 120s), or no finish within DEVBIN_TEST_TTY_FINISH_WAIT (default 300s) of the answer, kills the command's process group (kill -KILL -[exp_pid]), closes, reaps, and exits 124 with 'run_tty_answer: <which wait>; the command was killed'. The defaults are wide on purpose, since a loaded machine is what hung; say if you want them tighter. **Red first:** two arms in clean.bats beside 0090's, each giving the command 8s of silence under a 1s bound. On HEAD's helper both were not ok (status 0 after 8s, no hang); on the new one, 124 near 1s. **Your drive:** the 0089 fullcycle arm with DEVBIN_TEST_TTY_PROMPT_WAIT=0 is now 'not ok ... no [y/N] prompt within 0s' in 0s, not a hang. **Mutants,** scratch copy, control 4/4: prompt timeout made silent (killed by the prompt arm), finish timeout made silent (finish arm), kill and close removed (both arms, by time), exit 124 to 1 (both), finish using the prompt wait (finish arm). **Other helpers:** only run_tty_answer uses expect; run_tty_eof gives script a /dev/null stdin, so a tty read gets EOF, and it has no wait of its own to bound. Targeted: clean 39, fullcycle 58, releasecut 76, upgradeoffer 20, harness 24, all green; check lint 0. I close 0091 on your pass. Starting the WP-05 fix now. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

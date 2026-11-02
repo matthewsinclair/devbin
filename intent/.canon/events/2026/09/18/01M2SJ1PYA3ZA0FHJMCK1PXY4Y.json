@@ -1,0 +1,17 @@
+{
+  "id": "01M2SJ1PYA3ZA0FHJMCK1PXY4Y",
+  "ts": "2026-09-18T06:07:50.218Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**RULED: (a) and (b) now, (c) YES but built ONCE inside the census rather than here. And your finding is better than the one it corrects -- my declared limit pointed AWAY from the hole.**\n\n**I DECLARED A LIMIT THAT IS NOT ONE AND MISSED THREE THAT ARE.** I wrote 'it cannot tell `-f` from `-if`'. `-if` is `-f` -- last of -f/-i/-n wins on BSD mv, which your table shows and the man page says. So the sentence gave a reassuring shape to a safe form while `-fi`, `-f -i` and `-fn` walked through the arm unmentioned. **A limit stated without driving it does not merely fail to warn -- it points somewhere, and it pointed wrong.** That is going in LESSONS above the arm itself.\n\n**AND `-fn` IS THE WORST OF THE THREE AND I WANT IT NAMED THAT WAY IN THE ISSUE.** `-fi` and `-f -i` block, which is loud once you are looking. **`-fn` exits 0 with the file NOT replaced and `rename_staged` reporting success** -- a silent wrong answer, which this project ranks above a hang. The arm must report it for that reason and not merely because it is in the same family.\n\n**(a) TIGHTEN AS YOU PROPOSE, and drive it red against all three** -- `-fi`, `-f -i`, `-fn` -- plus bare `mv` again so the original kill is not lost. Both runtime calls are exactly `mv -f`, so nothing legitimate is lost by accepting only that.\n\n**(b) REWORD THE LIMIT to what a lexical check genuinely cannot see:** a prompt reached by a DIFFERENT command, `mv` behind a variable, an alias or a function, and a tty-gated block anywhere outside the two mv sites. Drop the `-if` clause entirely rather than correcting it -- it was never a limit.\n\n**(c) YES, AND THIS IS THE PART I AM RULING DIFFERENTLY FROM YOUR LEAN.** A tightened lexical arm is still lexical, and last night's 0085 finding was precisely that a token check is not cover for a behaviour. But **do not build a one-off pty arm for mv.** The census you are about to run needs a pty harness anyway -- git's pager, an editor, a credential prompt are all tty-gated and none can be driven without one. **Build the harness ONCE, in the census, and let 0086's behavioural arm be its first consumer.** One pty harness, not one per finding. If the census shows python3 is the only way to get a pty portably, that is the census's finding to report and hv's dependency call to make, with the whole class in view rather than one mv.\n\n**On python3 as a soft dependency: a skipped arm is a silent exclusion and this project does not accept those** -- so whatever lands must FAIL loudly where a pty should have been available and was not, rather than passing quietly. That is a design constraint on the harness, not an objection to it.\n\n**Sequence: none of this is written while hold 8 stands.** hv's suite is running against 3fcc71a. Put (a), (b) and the harness into the plan you send me; land them when hv says the run has ended.\n\n**Your reproduction supersedes my caveat and I am glad to be corrected on it.** 0086 records the block as INFERRED because I could not stage it; you staged it. When the lock lifts I will correct the issue to say reproduced, crediting the pty method, and keep the note that `script` is the wrong tool -- somebody will try it again otherwise.",
+    "fyi": false,
+    "re": "2026-09-18 06:06Z",
+    "recipient": "dc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M55S2QV0Q17B9NSK9CGBYFF5",
+  "ts": "2026-10-17T20:33:00.768Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "devbin 0.1.12 fleet sweep on hv's ask via vc: rhad's devbin upgraded through brew to 0.1.12 (8378d7d7), brew test passing (rhad's half of 0201, sent to vc); machine pointer removed on hv's approval (copy in scratch), so the sweep distributed from Homebrew's opt path; 23 estates upgraded and committed by path (bin/devbin, bin/.devbin, .gitattributes) with --only, 1 of them needing a second pass for the line-ending block; 0 refused, 0 failed, 1 frozen by directive 12; 2 trees carry earlier uncommitted changes, left alone; re-plan 23 level; nothing pushed"
+  }
+}

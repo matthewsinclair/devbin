@@ -1,0 +1,16 @@
+{
+  "id": "01M55GPQAEVDYCWYYGFCP17N4K",
+  "ts": "2026-10-17T18:06:38.414Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "2026-10-17 18:06Z STATE (localfold for hv's second compact). devbin 0.1.11 RELEASED (0fc22669) and INSTALLED by brew on rhad and kovacs; ST0009 CLOSED; ST0010 opened, not started (devbin public, decision 52). ST0008 WP-06 ROOT FIX LANDED at e8044092 (dc's d0505834, 868c948e, 18dc0eaa; landing suite 20261017-1743 at fb6f2da2, 2392 ok, 0 not ok, seal clone-archive/seals/lrf-20261017-1743). hv PUSHED main at ea43e4b9 (\"For release\", boards only) and DISPATCHED run 39055655481 (push run 39055648406); in progress at the fold. ISSUE 0202 (cc 4b7041a8, bundle ~/Devel/scratch/devbin-cc/clone-archive/i202__4b7041a8.bundle, sha256 4772f161...): cherry-picked onto ea43e4b9 as 70ca78da in ~/Devel/scratch/devbin-vc/l202, diff read (comments and the reference profile only), deny scan 0; its LANDING SUITE is RUNNING from 18:02Z (tools/suite-l202.sh, seal clone-archive/land1017-msgs/suite-70ca78da.{start,log,rc} and l202/tmp/test/). NEXT AFTER THE COMPACT: (1) read suite-70ca78da.rc and l202's seal; if green, seal it to clone-archive/seals/, git fetch l202 HEAD, cherry-pick -n, commit by path with cc's ~/Devel/scratch/devbin-cc/i202/commit.msg ({SHA} 4b7041a8, {SUITE} the stamp), close 0202 with cc's suggested note; (2) read run 39055655481's WSL job for AC-6.1, AC-6.2, AC-6.3 (todo 163's finding fixed), AC-6.5; if green take AT-6.2 and AT-6.5 red then green, satisfy the ACs, wp done ST0008/06; ST0008 then waits on AC-6.4 and AC-2.1. Main after the 0202 landing is unpushed. Issue 0201 at the next batch release."
+  }
+}

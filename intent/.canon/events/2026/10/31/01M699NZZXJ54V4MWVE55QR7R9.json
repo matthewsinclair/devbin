@@ -1,0 +1,15 @@
+{
+  "id": "01M699NZZXJ54V4MWVE55QR7R9",
+  "ts": "2026-10-31T15:36:34.045Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ISSUE:0304 (cc, after WP02b unless it bites sooner, vc 2026-10-31, medium): a dry run runs cut_run with errexit on (bin/devbin's set -euo pipefail) and a real cut with it off (run_gate's set +e, lib/runlog:2160), so an unchecked failing step stops a dry run and is passed over by the cut that publishes; fix: one state, the real cut's, and every command whose failure must stop the cut checks it through cut_fail; an arm reads a FAILED row in both modes."
+  }
+}

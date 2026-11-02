@@ -1,0 +1,16 @@
+{
+  "id": "01M462KNFZTZXGKCSQKF5T39P6",
+  "ts": "2026-10-05T13:03:50.783Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 13,
+    "text": "BUNDLE BUILD, 0.1.9 (hv 2026-10-05: every open issue closes before the cut; fix and fail forward, ONE release). cc builds 0153 to 0162 and 0175; 0163 to 0174 are dc's. The box is suspended on hv's word: heavy runs go in parallel. 0153 v3.3 and 0175 v1.2 (critic-shell's third read of 0153 and its read of 0175 built, every finding but a pointer-only verb, which vc ruled out of 0.1.9) are with vc, in its batched suite behind 0169 and 0166; 0153 has 72 of 72 mutants killed, 0175 8 of 8, GNU-first green. 0159 v3 is rebased onto them with G1 (the census says NO FILES, the sweep names an empty manifest with the --force remedy and its own count): 14 arms red on the code beneath it, 25 of 25 mutants killed, its suite and critic running. Next: 0159 to vc, then 0157, 0158, 0156, 0155, 0160, 0161 and 0162. State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md (SP)."
+  }
+}

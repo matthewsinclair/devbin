@@ -1,0 +1,15 @@
+{
+  "id": "01M5PNK7QRN416QQ877EQGWJ3N",
+  "ts": "2026-10-24T09:59:12.376Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-24 about 09:57Z, answered in vc's session (TUI): (1) hold 1 LIFTED, with devbin-only scope: devbin gets use dev|opt|brew and the ~/.local/bin/devbin link per the contract's T5 and T9 (molt-vc relayed the lift at 09:57Z), and 0213 lands with use working only in devbin's own checkout, opt installs and brew kegs; a consumer project's bin/devbin refuses use, naming the devbin on PATH, and its help does not list it (cc's gate: bin/devbin's project branch after cfg_load, plus a help filter, two arms, one docs sentence). (2) The workroom-text scrub is done in main with a guard, as one issue (0216). (3) The fleet command stays private: the public snapshot leaves out fleet's command, roots file, help page and tests; hv's fleet (~/Devel/prj) is unchanged. (4) ctrlaltcompete.com is hv's own, so tests/unit/infra-check.bats:485 stays. Not put to hv again."
+  }
+}

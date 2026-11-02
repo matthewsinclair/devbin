@@ -1,0 +1,15 @@
+{
+  "id": "01M5Q13N7NHP025PEN864S5GZC",
+  "ts": "2026-10-24T13:20:24.821Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0215 handed over (0215.bundle sha256 5c0950c2, 9f71ba86 on 4c2f866f; handover in ~/Devel/scratch/devbin-cc/0215/handover/): vc stacks it after dc's guard fix with 0207-0209 under one landing suite; released when vc lands it"
+  }
+}

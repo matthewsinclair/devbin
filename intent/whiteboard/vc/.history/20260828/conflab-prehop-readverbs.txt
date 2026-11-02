@@ -1,0 +1,17 @@
+### intent issues list (rc=1)
+error: this project has not been migrated to Intent v3 -- it declares Intent 2.19.0, and 123 steel threads carry v2 canon this binary cannot read (ST0001, ST0002, ST0003, and 120 more)
+  remedy: run `intent upgrade` to migrate this project to Intent v3
+
+### intent st list (rc=1)
+error: this project has not been migrated to Intent v3 -- it declares Intent 2.19.0, and 123 steel threads carry v2 canon this binary cannot read (ST0001, ST0002, ST0003, and 120 more)
+  remedy: run `intent upgrade` to migrate this project to Intent v3
+
+### intent doctor (rc=1)
+residue: intent/.config/config.json -- unmigrated -- this project has not been migrated to Intent v3 -- it declares Intent 2.19.0, and 123 steel threads carry v2 canon this binary cannot read (ST0001, ST0002, ST0003, and 120 more) -- run `intent upgrade` to migrate this project to Intent v3
+  remedy: migrate the project first -- every other finding on it is downstream of this one
+doctor: 1 finding(s) across 0 thread(s), 0 issue(s), 0 view(s), 0 file(s)
+
+### intent todo (rc=1)
+error: this project has not been migrated to Intent v3 -- it declares Intent 2.19.0, and 123 steel threads carry v2 canon this binary cannot read (ST0001, ST0002, ST0003, and 120 more)
+  remedy: run `intent upgrade` to migrate this project to Intent v3
+

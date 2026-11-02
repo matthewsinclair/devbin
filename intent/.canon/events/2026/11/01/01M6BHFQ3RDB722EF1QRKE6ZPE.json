@@ -1,0 +1,16 @@
+{
+  "id": "01M6BHFQ3RDB722EF1QRKE6ZPE",
+  "ts": "2026-11-01T12:31:25.816Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 42,
+    "text": "ST0011/02 (WP02b-2, the publish shape folded into the cut, release publish and --expect retired, AC-2.3 in every shape; issue 0304 in it, issue 0297 riding it): design note ~/Devel/scratch/devbin-cc/st11-wp02b/DESIGN-02b2.md sent to vc; vc ruled Q1 (the snapshot, candidate and publish rows retire, the public repository a target of the push step, the approved design's C1) and Q2 (0297's fix in run_gate, for every gate); Q3 (the guards green at the base) comes with vc's go after the compacts, and 0304's commit starts on that go, not before. Branch wp02b2 at f3462610 in ~/Devel/scratch/devbin-cc/st11-wp02b/wp02b2, clean; nothing written to it yet. Then WP07 (todo 58), in hv's lanes."
+  }
+}

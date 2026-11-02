@@ -1,0 +1,15 @@
+{
+  "id": "01M5S89081QMGBGJR3TCP99D32",
+  "ts": "2026-10-25T10:04:08.834Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0228"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "the dev/opt/brew contract does not say the switch rests at brew, and a release ends without returning the maintainer to the brew install it made"
+  }
+}

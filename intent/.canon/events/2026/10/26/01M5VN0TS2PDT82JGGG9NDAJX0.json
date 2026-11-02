@@ -1,0 +1,16 @@
+{
+  "id": "01M5VN0TS2PDT82JGGG9NDAJX0",
+  "ts": "2026-10-26T08:25:21.442Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc claims it). 0.1.15 is devbin's ONE next release (decision 63), carrying 0213 and 0220 to 0232. Main c4f52b8e was pushed to GitHub at 08:23:26Z: 0232 landed at c0b47cf6 and the note edit at c4f52b8e, on a green landing run, and 0213 closed at 660a8e9d on its T10 proof. CI run 40291928610 on c4f52b8e is being watched; its green is decision 62's green for the cut. NEXT: K115 at c4f52b8e (hold 31). Then hv cuts, with only board commits between the push and the cut (the watchout). Then 0222 and 0232 close on that run (dc's and cc's drafts), and the tag's run is read. ST0010's public steps (decisions 52, 56, 59, 60) follow the cut. Critic legs carry NO known-positive sample (decision 68)."
+  }
+}

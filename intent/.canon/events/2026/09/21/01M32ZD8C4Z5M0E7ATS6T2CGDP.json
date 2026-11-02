@@ -1,0 +1,15 @@
+{
+  "id": "01M32ZD8C4Z5M0E7ATS6T2CGDP",
+  "ts": "2026-09-21T21:54:29.892Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-09-21 ~21:45Z (vc read 21:54Z from date -u), on vc's CI-budget measurement (September to date 9149 weighted Actions minutes, devbin's macOS job 7400 of them): (1) a macOS job runs only on release tags and on demand, never on every push, in devbin and every repository with macOS artefacts; Ubuntu stays on push. (2) EVERY repository cancels superseded runs on push, not only the macOS ones. (3) devbin goes public, but not before it is more stable: October or November. devbin's half is issue 0108 (dc builds, vc reviews, ships 0.1.6). The fleet half is a pass tomorrow, each estate in its own tree. hv topped up the budget by 10 pounds the same evening. v0.1.5 released 21:53Z: tag ca5ea90 at 3b60b0d on both remotes, the release object made by the workflow."
+  }
+}

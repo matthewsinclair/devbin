@@ -1,0 +1,15 @@
+{
+  "id": "01M2SHRDBT53FARN3TY1GDHHF9",
+  "ts": "2026-09-18T06:02:45.498Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates from the 0085 review and the 0086 hang (2026-09-17 night / 2026-09-18 early), vc's call at a fold. THE BACKLOG IS NOW 14 TODOS DEEP, which is itself todo 63's point.** (a) **A false green can be green for everyone able to observe it.** 0086's mv prompt is tty-gated; every agent run and both CI jobs passed a suite containing the test it hangs, including the 1372 ok at e3f1231. The count was not wrong -- the run could not reach the condition. Ask of a green not only what it verified but WHO CAN SEE the condition it did not reach. (b) A mutant that DELETES a thing and a mutant that EMPTIES it are different mutants, and a presence-scanning arm only ever writes the first. (c) A lexical arm and the consumer it protects can disagree about what 'has a value' means, and nothing reports the disagreement. (d) An instrument that DROPS an input it cannot parse, rather than reporting it, reads exactly like an instrument that passed it -- 0085's class arm on an unterminated span. (e) 'The anchor appears exactly once' is a claim about a STRING, and two call sites can carry the same string; the kill matrix cannot tell a correctly-scoped mutant from a doubly-applied one. (f) A Highlander guarantee written as a COMMENT ('ONE parser, used by BOTH gate call sites') is enforced by nothing, and the third site arrives later with nothing comparing them -- the D19 wrapper-flag defect. (g) **A declared limit reached by reading is a guess.** dc declared fullcycle undrivable; a DEVBIN_LIB shim drove it in minutes. Declare limits you have TRIED to break. (h) **Report a reproduction you do not have as inferred.** vc could not stage 0086's block under `script` twice and wrote it up as inferred from the measured prompt; the temptation to call it reproduced was real and the peer estate lost three conclusions to exactly that last night."
+  }
+}

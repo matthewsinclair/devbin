@@ -1,0 +1,15 @@
+{
+  "id": "01M2TM596N01Y7914TBAE56B78",
+  "ts": "2026-09-18T16:03:58.805Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**ST0007 WP-05** (confirm, tag, push, object), after WP-04. Push through release_git_remote (GIT_TERMINAL_PROMPT=0, ssh BatchMode, </dev/null; tag -a always with -m, never an editor), the object through release_gh. **AC-5.3's confirm calls ask_person <question> (lib/helpers, b729e10)**: prints '<question> [y/N] ', reads /dev/tty, returns 0 on y, 1 on anything else, 2 when nobody can be asked (no readable /dev/tty or DEVBIN_GATE_TTY != 1). Gated callers only, so release's confirm runs inside a gate; map 2 to release's exit 2."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M52EX3YYG9M2X1EK0MH9F8ER",
+  "ts": "2026-10-16T13:37:27.518Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "NEXT RELEASE carries everything open (directive 13). It cuts once Linux is proven on kovacs on main's HEAD and the brew install is proven (hv, 2026-10-16, ST0008 question 11 (b)); ST0008's WSL work rides the release after. LANDED 2026-10-16, each on vc's full suite of its landing tree, seals kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/: 0195 (93259543) and 0198 (10ae01c9), seal 20261016-0917, closed d2463ce8; 0197 (855ad640) and 0196 (7842c4b1), seal 20261016-1014, closed b372cc7d; ST0008 WP-02 (3ddd6cad), 0199 (8488503a), 0192 (96bc97d4) and ST0008 WP-03 (8fe7eaa7), 2352 of 2352, seal 20261016-1322 on stack tip 1dadcaa3, after the stack's first run (seal 20261016-1244) found 0192's bare-directory fixture red and cc fixed it test-only; closed and WPs done at 55cfba2a; 0192's whole suite 10m16s against 17m52s and 16m13s before. NEXT LANDING, all three approved by vc: 0200 (dc, rebased onto main 55cfba2a as 7b19c0d6, each patch equal to its original by range-diff, its 20 arms green alone under BSD and GNU; bundle ~/Devel/scratch/devbin-dc/st0008/i0200.bundle sha256 0ef84337; drafts in dc's runs/i0200-arms/HANDOVER.md) waits for its targeted run (shellinit contract neutral documentation readonlygit harness helpers help localinstall surfaces, BSD and GNU); ST0008 WP-01 v2 (cc, 908fbf29 on 1dadcaa3, whose code equals main's; install_devbin writes devbin's line-ending block through lf_block_write) and 0194 (cc, 3580f195) run jointly on cc's ~/Devel/scratch/devbin-cc/wp01/joint at 6769091b, 24 files under BSD and GNU; both runs on intent-vc's GO after hv's build all in Intent and its daemon restart; then one landing suite of 0200, WP-01 and 0194, and land them with their drafts. When WP-01 lands, directive 10's sweep pathspec gains .gitattributes, and uutils is covered by the kovacs order at the release head (not installed on hv's Mac). After them: WP-04 (dc). kovacs-sysadm cleared ~/work there on hv's word (2026-10-16): the seals are kept in ~/work/devbin-vc/seals-89cae16e/, and the next order needs a fresh clone from a Mac bundle and Intent's package unpacked again."
+  }
+}

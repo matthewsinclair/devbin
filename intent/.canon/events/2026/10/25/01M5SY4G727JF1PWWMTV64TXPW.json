@@ -1,0 +1,15 @@
+{
+  "id": "01M5SY4G727JF1PWWMTV64TXPW",
+  "ts": "2026-10-25T16:26:10.018Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-25, answered in vc's session (TUI): devbin's critic legs add NO known-positive sample, declining molt-vc's desk rule of the same day (each critic leg to start with a known positive that must exit 1). hv's 2026-10-08 ban on tests of tests and controls that check checks stands. The critic's own output says what a run covered (eg 'no shell rule was asked' of a .bats file), and vc reads that as covering nothing, never as clean. Told cc, dc and molt-vc. Not put to hv again."
+  }
+}

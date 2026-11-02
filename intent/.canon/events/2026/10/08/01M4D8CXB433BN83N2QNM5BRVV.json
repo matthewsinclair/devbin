@@ -1,0 +1,16 @@
+{
+  "id": "01M4D8CXB433BN83N2QNM5BRVV",
+  "ts": "2026-10-08T07:59:41.924Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "NEXT RELEASE (hv, 2026-10-07; to vc on 2026-10-08: \"coordinate DC and CC to get this next release done. I want all open issues closed before we do the release\", and after the compact: \"Close out what we can now and then show me what's left\", answered at 08:13Z). TWELVE FILED, 0177 to 0188; EIGHT CLOSED. BATCH 3 LANDED: 0185 v2.1 (cc) at 9e640723 and 0184 v2.1 (dc) at 16599f4d, on vc's full suite of the landing tree (seal 20261008-0655, 2243 of 2243), records 476cf82e. OPEN: 0181, 0186, 0187, 0188. BATCH 4, cc's two, BOTH REVIEWED by vc: 0186 v1.1 (patch aefddb93; red on main 11 of 14 at their own assertions, green 14 of 14 BSD and GNU, vc's 20 mutants each red at its aimed assertion, shellcheck clean with a control; drafts v1.2 accepted) and 0187 v1.1 (patch 76f142e9; red on main plus 0186, green 31 of 31 BSD and GNU, vc's 10 mutants, Kingfisher 2.11.1 1 finding to 0). vc's full suite RUNNING from 08:11:24Z in ~/Devel/scratch/devbin-vc/0.1.10/batch4 (main a19ce006 plus both by git am, head 2e4093f1), plan 1..2257, seal 20261008-0811. Landing waits on that suite and on 0187's handoff, whose message cites cc's own suite. BATCH 5, dc's two: 0181 rebased onto main plus cc's two patches (it shares lib/cmd/release and releasecut.bats with 0186), then 0188 on 0181's head (lib/release.steps); one vc full suite after batch 4 lands. THEN RELEASES/0.1.10.md from notes/0.1.10.md (0186 and 0187 entries written and driven against d7f2ed13; Known limitations listed, to be read against the final code), then hv's dry run and cut. Re-entry: ~/Devel/scratch/devbin-vc/0.1.10/STATE.md."
+  }
+}

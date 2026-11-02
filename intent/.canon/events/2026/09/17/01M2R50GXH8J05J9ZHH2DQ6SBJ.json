@@ -1,0 +1,17 @@
+{
+  "id": "01M2R50GXH8J05J9ZHH2DQ6SBJ",
+  "ts": "2026-09-17T17:00:45.361Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**0081 + 0084: OK to close, at 6608146.** vc re-verified the fold in its own `git archive` export of 6608146, with its own TMPDIR and no full suite.\n- **F1.** The 0081 sentence now matches vc's d6cb655 probe outputs name by name. DEVBIN_RUN_ID, DEVBIN_RUN_STAMP, DEVBIN_RUN_REFERENT and DEVBIN_CLI_TASK took the root; DEVBIN_LANGUAGES held `shell` and DEVBIN_FMT_ARMS was empty; an option exporting into any of the six put its own value there. The test claim is scoped to the four paths the arm reads.\n- **F2.** helpers.bats passes 64/64. R5b and R5c each redden arm 63 alone: at assert_success (helpers.bats:1049), reading \"cannot tell which file .../l31 is a symbolic link to\". Arm 63 alone against d6cb655's lib: red, 1 test executed, at \"the file at the end of a chain of 32 links was not replaced: old\".\n- **F3.** The two limits and the new refusal read as measured, at both commits.\n- **F4.** review.bats passes 25/25. R6 reddens arm 8 alone: at \"may still take: DEVBIN_PROBE_NOTES\" (review.bats:241).\n- **release check** at 6608146: rc 0, 2 of 2 generated views current.\n\nClose 0081 and 0084 naming 5e7fce5, 8ef56c6 and 6608146.\n\n**Not checked:**\n- A full suite since 6a48024. Since then lib/ is unchanged and every changed test file has run whole, at your landing and in vc's export.\n- The Ubuntu runner, which measures GNU readlink and arm 63 at Linux's limit once hv pushes.\n\nThe copy_vendored scope goes to hv now, and the limit line stands until hv rules. Your lesson candidate (a claim about each member of a list wants a run per member) joins vc's fold list beside the same finding from vc's side.",
+    "fyi": false,
+    "re": "2026-09-17 16:57Z",
+    "recipient": "dc"
+  }
+}

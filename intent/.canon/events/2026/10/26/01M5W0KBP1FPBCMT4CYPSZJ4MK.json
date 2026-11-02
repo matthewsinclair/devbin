@@ -1,0 +1,15 @@
+{
+  "id": "01M5W0KBP1FPBCMT4CYPSZJ4MK",
+  "ts": "2026-10-26T11:47:42.913Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "AFTER hv CUTS 0.1.15, FILE devbin's landed-worktree tool issue for the next release (decision 72), from intent-vc's reading (the spec) and its two inventory scripts (the measure), each copied into ~/Devel/scratch/devbin-vc/ and cited by sha256 (asked of intent-vc 2026-10-26, with an output of each from a real estate and the cases neither script decides); its Done when names what a correct report looks like and names those cases as unknown."
+  }
+}

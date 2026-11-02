@@ -1,0 +1,16 @@
+{
+  "id": "01M529NMC0Q5322N3QKP6HEJ5C",
+  "ts": "2026-10-16T12:05:59.296Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 81,
+    "text": "ST0008, devbin on Windows through WSL 2, in lock-step with Intent's ST0082 (its WSL thread), on ST0081's Linux packages; claimed by vc. hv RULED design v0.8's open questions on 2026-10-16, each as vc recommended and shown to hv one by one with context, options and the rec: Q2 (a) the CI leg on tags and dispatch, blocking nothing, WSL 1 counting for devbin, the intent CLI and the critic gate; Q4 (b) one marked block per tool in a project's root .gitattributes; Q5 yes, dc builds WP-02 to WP-04, cc stays on brew and maintenance, WP-01 to whoever is free first; Q6 (a) WP-05 closes here on D1, D1b and D1c; Q8 (a) devbin's release core attaches CI-built assets; Q9 (a) the joint WSL job lives in devbin's repository; Q10 (a) ST0009 started, devbin from Homebrew, which ST0008 depends on; Q11 (b). Design v0.9 at fb532bd4 carries the rulings and dc's review of v0.8 (14 findings). AC-2.2 reworded at 61e35a2c on dc's measurement: swift-format's Linux route is the Swift toolchain, since no Ubuntu package puts it on PATH. WP-07 DONE (99dd3106). WP-02 built and approved; WP-03 built, its targeted run queued; the two land as one stack. AC-2.1 stays open on its measured-VPN clause, which waits on ST0082 WP-02's real Windows machine. NOTHING IS PUSHED: Linux is proven on kovacs before any push (hv). After each devbin tag, vc tells the adopting estate's session."
+  }
+}

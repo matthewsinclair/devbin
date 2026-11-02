@@ -1,0 +1,90 @@
+# devbin-cc Phase 4, read at 2026-08-28 12:11Z
+
+## CHECK 1 -- carrier, and the template read in the SAME command
+  cmd: shasum -a 256 $CONFLAB/.git/hooks/pre-commit.intent  AND  $INTENT/lib/templates/hooks/pre-commit-shim.sh
+  carrier  sha256 b0ed7eddcf18214c115aadd5f2ba2b920c31f7539813debabaf1c3afffad5a31
+  template sha256 b0ed7eddcf18214c115aadd5f2ba2b920c31f7539813debabaf1c3afffad5a31   <- re-read now, not carried forward
+  carrier  bytes  7332
+  carrier  mode   -rwx--x--x   (cmd: stat -f '%Sp')
+  guard refs      2   (cmd: grep -cE 'GUARD_RUNNER|pre-commit-guards.sh|intent/home')
+  --where hits    2
+  VERDICT: PASS -- carrier is byte-identical to this install's shim template, read in the same command.
+  MODE: executable -- the chain block's [ -x ] will fire.
+
+## CHECK 2 -- --where on the CARRIER, guarded
+  guard passed (sha moved AND --where present); running: bash .git/hooks/pre-commit.intent --where
+    pointer:  /Users/matts/.intent/home
+    root:     /Users/matts/Devel/prj/Intent
+    state:    OK
+    gate:     /Users/matts/Devel/prj/Intent/lib/templates/hooks/pre-commit.sh
+
+## CHECK 3 -- shadows: 20 files (git ls-files, NOT a glob)
+  population: 20  (cmd: git ls-files bin/.devbin/cmd/)
+  git verdict (cmd: git status --porcelain -- bin/.devbin/cmd/):
+    clean -- the hop touched nothing under cmd/
+  hash control vs 09:10Z before-state:
+    all 20 hashes identical to before
+  named explicitly: use=73eaf731afebdf211fbd39cfed300d353bc1fdb404725dec08569b3929a07a24
+                    precommit=04ba90a41b78867293d2fe4afe8531ecbbdb5e64777de08b223836ba4eff5d9b
+
+## CHECK 3b -- live service + tracked lockfiles (intent-vc, 11:26Z)
+  cmd: pgrep -f 'conflabd start'
+  conflabd pid now: 7438   before: 7438
+    same pid -- daemon not restarted
+  conflab sha256 897c99f509ae08b0f144a39e79ee69e2ed5a1272504a1e4f03cfcdde605d06fa  (cmd: shasum -a 256 $(readlink $(command -v conflab)))
+  conflabd sha256 ff16e479ebfb754934311b11ed457960b0f4b1c4adcdfa48574997abdf4a5f35  (cmd: shasum -a 256 $(readlink $(command -v conflabd)))
+  before: conflab  897c99f509ae08b0f144a39e79ee69e2ed5a1272504a1e4f03cfcdde605d06fa
+  before: conflabd ff16e479ebfb754934311b11ed457960b0f4b1c4adcdfa48574997abdf4a5f35
+  mix.lock sha256 fc9c66b0a67f82c90e2342f4e3afa90170e755f6bedcf8d66f6fa145a6d9efe4
+  native/Cargo.lock sha256 e2f0f1f5c69439313d9f469eec5e20725709471d92c193085bc6be1494a4d17c
+  before: mix.lock          fc9c66b0a67f82c90e2342f4e3afa90170e755f6bedcf8d66f6fa145a6d9efe4
+  before: native/Cargo.lock e2f0f1f5c69439313d9f469eec5e20725709471d92c193085bc6be1494a4d17c
+  NOTE: a moved lockfile is TRACKED, so it is attributable to the hop rather than to build artefacts.
+## CHECK 4 -- hop binary identity at read time
+  cmd: shasum -a 256 $(readlink $(command -v intent))
+  resolved /Users/matts/Devel/prj/Intent/native/rust/target/release/intent
+  sha256   1dd65db8b49363b1d2ad0b454179e9db67b6e406e10389e6a2f7d6e9ca98ae26
+  expected 1dd65db8b49363b1d2ad0b454179e9db67b6e406e10389e6a2f7d6e9ca98ae26  (captured 08:52Z; a change means rule 2 was broken)
+  version  intent 3.0.0 (b4d63b449475e24f0ab79c58abd55b972ce4ba79)
+
+## PRE-REGISTRATION SCORED against conflab-prereg-20260828.md (committed 4152335, before the hop)
+
+  P1 carrier replaced, equals template   CONFIRMED  b0ed7edd both sides, read in one command
+  P2 carrier executable                  CONFIRMED  -rwx--x--x
+  P3 --where reports OK + correct root   CONFIRMED  state: OK, root: /Users/matts/Devel/prj/Intent
+  P4 all 20 shadows unchanged            CONFIRMED  porcelain clean, 20/20 hashes identical
+  P5 intent binary unchanged             CONFIRMED  1dd65db8, rule 2 held
+  P6 conflabd pid + products unchanged   CONFIRMED  pid 7438, both product shas identical
+  P7 both tracked lockfiles unchanged    CONFIRMED  mix.lock and native/Cargo.lock identical
+  P8 config 3.0.0 + intent/.canon        CONFIRMED  3.0.0, intent/.canon present, HEAD 7652c9b4
+
+  8 of 8 confirmed, zero divergence.
+
+## WHAT THIS RUN DID NOT ESTABLISH -- read this before citing the green
+
+1. A DEFECT IN MY OWN INSTRUMENT. Check 1 prints "guard refs" from a THREE-alternative
+   pattern (GUARD_RUNNER|pre-commit-guards.sh|intent/home) and reports one number. The
+   post-hop 2 is `intent/home` twice; GUARD_RUNNER and pre-commit-guards.sh are both ZERO.
+   The number reads as "guards are wired" and counts the pointer path. Right number, wrong
+   meaning. Found by disambiguation, not by the check.
+
+2. GUARDS ARE REACHABLE, WHICH IS NOT THE SAME AS ARMED. Traced by hand, not by check 1:
+   .git/hooks/pre-commit (chain block, executable) -> pre-commit.intent (the shim, resolves
+   ~/.intent/home) -> lib/templates/hooks/pre-commit.sh (the gate, 9 guard-runner refs).
+   The path resolves end to end. I have NOT driven Conflab's gate red, so this does not
+   exclude the standing residual: an rc of 0 from a disarmed library is indistinguishable
+   from a clean pass.
+
+3. THE FROZEN UNIT NEVER TESTED THAT THE CARRIER IS INVOKED. A byte-perfect carrier that
+   nothing execs is the silent skip. Checked separately and outside the unit: chain block
+   present, `[ -x ]` test present, dispatcher mode -rwxr-xr-x.
+
+4. NOTHING ABOUT WHETHER CONFLAB STILL WORKS. Scoped out in the pre-registration and
+   unchanged by the result: hv withdrew the test baseline, so no leg of this answers
+   whether anything that was green went red.
+
+5. P3 WAS RIGHT FOR THE WRONG REASON, AND I FLAGGED IT AS MY WEAKEST IN ADVANCE. I doubted
+   it because "a v2 project has never had a recorded home file". The home file is
+   ~/.intent/home -- USER-level, not project-level -- so the risk I named did not exist and
+   four more lines of the shim would have told me. The prediction survived; the reasoning
+   under it was wrong, and a confirmed prediction is where nobody re-reads the reasoning.

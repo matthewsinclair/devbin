@@ -1,0 +1,15 @@
+{
+  "id": "01M376AHA23K66C7Q96N36NNBF",
+  "ts": "2026-09-23T13:12:18.498Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "THE BASH TOOL'S SHELL IS ZSH, AND THE TOOLS ARE BSD'S, AND BOTH BIT ON 2026-09-23. (1) An unquoted `$list` does not word-split, so a loop over paths saw one string. My commit guard refused it, which is the only reason nothing wrong landed. (2) `${PIPESTATUS[0]}` is empty, because zsh spells it `$pipestatus[1]`. (3) A glob that matches nothing aborts the whole command (nomatch). (4) An awk run inside a double-quoted `$(...)` printed nothing over a file it should have flagged -- a page agent's measurement. (5) BSD grep has no `-P`. At this localfold my ASCII check `grep -P ... && fail || true` errored on both files, the `|| true` swallowed the error, and it printed a pass it never measured -- the commit landed on it, and only a re-measure with a control showed the fact happened to hold. (6) A word opening with `=` is zsh's command-path expansion: `echo =====` fails with \"===== not found\". (7) zsh's `[` has no `<` string comparison: `[ \"$a\" \\< \"$b\" ]` fails with \"condition expected\" on every pair, which read as no overlap until a count of pairs said 0 of 6 (both on 2026-09-23, afternoon). Anything with arrays, word splitting, a string comparison or a pipeline's status runs under `bash <<'BASH' ... BASH`, and any guard is driven red once before its green is read."
+  }
+}

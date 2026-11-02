@@ -1,0 +1,16 @@
+{
+  "id": "01M4AJHF3V0FT1QRF7ZZH0FEMC",
+  "ts": "2026-10-07T06:59:13.660Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 RELEASED, 2026-10-07: release commit d7f2ed13, annotated tag v0.1.9, both remotes at the tag, and the GitHub release object made by the workflow. Every step reads done or skipped: gates 2205/2205 with check's seals empty and doctor 0 failed. Before the cut, the note was corrected at 891e700e: cc's and dc's reads found 18 claims wrong or wider than the code (0163 called a new failure \"stays failed\"; 0153's first hand upgrade records the path again), each verified by vc. The machine install is published from d7f2ed13 (74 files equal to the tag, the pointer written), seam digest c6cf154810f9. ROLLOUT: hv's fleet is 16 estates upgraded and committed, one seam commit each, 59 paths through each estate's own gate; Laksa holds (todo below); another estate's fleet is 4 upgraded, 3 committed and 1 on disk only, since it excludes bin/ from git. Its supervising session has the version and digest (0152's done-when 5) and the three shas. Nothing is pushed. CI: Ubuntu red, 2 of 2205, test-only, the same two arms on the push and the tag; macOS green on the tag; that is 0180. REVIEW QUEUE: 0180 (dc, building), then 0177 (dc), 0178 and 0179 (cc)."
+  }
+}

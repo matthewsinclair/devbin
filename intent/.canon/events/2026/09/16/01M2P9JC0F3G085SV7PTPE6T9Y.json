@@ -1,0 +1,15 @@
+{
+  "id": "01M2P9JC0F3G085SV7PTPE6T9Y",
+  "ts": "2026-09-16T23:41:55.599Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**0080 TAKEN by vc** (hv, 2026-09-17: work with dc to close 0064, 0079, 0080). Split sent to dc: dc 0079; vc 0080 then ST0007 WP-01; alternating WP-02..06 with cross-review; WP-07 and WP-08 stop for hv's go."
+  }
+}

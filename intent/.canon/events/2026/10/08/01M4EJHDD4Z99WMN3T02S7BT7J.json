@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHDD4Z99WMN3T02S7BT7J",
+  "ts": "2026-10-08T20:16:09.636Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 33,
+    "text": "`DEVBIN_FLEET_FROZEN` MATCHES AN ESTATE'S LABEL, its path below the run's roots (0182), so a basename freezes only an estate at a root's top level. A name that labels no estate this run could sweep prints `matches none`, and --apply refuses while one is declared. Before any --apply: run the plan, copy each frozen name from its estate's row, and read the FROZEN rows, the summary's frozen count and that no `matches none` line prints."
+  }
+}

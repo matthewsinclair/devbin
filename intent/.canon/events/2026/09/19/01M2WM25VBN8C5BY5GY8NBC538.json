@@ -1,0 +1,15 @@
+{
+  "id": "01M2WM25VBN8C5BY5GY8NBC538",
+  "ts": "2026-09-19T10:40:45.931Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007: WP-06 built by vc and on main at 773bdd7 (design.md into the store at 2142805), for dc's review.** 17 arms red first, 14 self-mutants all killed, full suite 1527/0. Open for hv: after: re-runs on every run (an announcement twice?). Also with dc for review: hv's two suite guards (74427f8, suite 1529/0). WP-04 fix passes review (dc to close). WP-05 review sent, not OK (4 arms, 1 declaration, R4, Q1). dc's queue: 0091, WP-05 fixes, cc's docs, then WP-06's review. Next for me: re-drive WP-05 variants a to l on dc's fix, then WP-07 (devbin cuts its one release with the core, on hv's go). Filed today: 0091, 0092."
+  }
+}

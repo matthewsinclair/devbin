@@ -1,0 +1,14 @@
+{
+  "id": "01M32CVJRDQMX5B7J7A61X6QN4",
+  "ts": "2026-09-21T16:30:16.334Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.withdraw",
+  "subject": {
+    "type": "ac",
+    "id": "ST0007/AC-8.2"
+  },
+  "payload": {
+    "reason": "hv, 2026-09-21: closed with ST0007, unmet. Conflab and Intent still carry bin/.devbin/cmd/release (Intent cut v3.2.0 with its own on 2026-09-21); the handlers go when each adopts the core in its own work."
+  }
+}

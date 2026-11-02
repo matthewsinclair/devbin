@@ -1,0 +1,15 @@
+{
+  "id": "01M54Q04GW2JHDM0JXHAKCF3ZH",
+  "ts": "2026-10-17T10:37:23.868Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "NO MAC RUNS for devbin (vc, cc, dc) until intent-vc sends END by name for hv's whole Intent 3.2.4 cut, the dry run now and the real cut when hv is back (intent-vc, 2026-10-17 about 10:5xZ: dc's shellcheck and filtered bats ran during Intent's load-sensitive cargo test gate). No bats of any size, no lint, no check, no brew; reading and drafting only. K012 on kovacs STARTs by name after the dry run exits."
+  }
+}

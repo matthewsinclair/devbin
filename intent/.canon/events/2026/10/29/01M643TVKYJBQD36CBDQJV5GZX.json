@@ -1,0 +1,14 @@
+{
+  "id": "01M643TVKYJBQD36CBDQJV5GZX",
+  "ts": "2026-10-29T15:18:09.791Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-2.7"
+  },
+  "payload": {
+    "evidence": "vc and dc each read all 213 files of snapshot c769fb73 (review0116, devbin-dc review0116) and reread the changes to 2cde3ee6 (review-v0117 both); findings fixed by 0291 or accepted by hv (H1, H3, H5, H6, H8, H9) or fixed forward by 0292 (vc decision 86)"
+  }
+}

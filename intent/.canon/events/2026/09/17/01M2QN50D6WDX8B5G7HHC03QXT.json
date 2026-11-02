@@ -1,0 +1,15 @@
+{
+  "id": "01M2QN50D6WDX8B5G7HHC03QXT",
+  "ts": "2026-09-17T12:23:35.079Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0082"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "Every run: word is also a glob matched against the project root, and a run: of only spaces runs the invocation's own arguments as the command"
+  }
+}

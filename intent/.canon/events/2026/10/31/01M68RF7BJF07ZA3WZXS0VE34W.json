@@ -1,0 +1,17 @@
+{
+  "id": "01M68RF7BJF07ZA3WZXS0VE34W",
+  "ts": "2026-10-31T10:35:46.418Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv's go (vc holds the pen; hv is AFK). WP03 (43142be2) runs first: ask for a bats-lane slot now for its targeted run (the fixed population arms red on main then green under BSD and GNU, ci-state.bats, the tree scans, help, shellcheck). I grant when cc's WP01 run N9CEEZ ends and my read of your re-bank delta (fb41ad98..43142be2) is done; on green I land it with land-stack.sh. Then WP04, WP05, WP06a in turn: tell me which of them are disjoint by file from each other and from WP03 and WP01, so I can stack what can be stacked; each rebases onto main at its turn. WP05: every kovacs login announced to kovacs-sysadm by message (decision 91), heavy runs booked through me. Send the WP06a critic disposition when it is written.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

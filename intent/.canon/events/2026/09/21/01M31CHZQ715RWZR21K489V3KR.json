@@ -1,0 +1,15 @@
+{
+  "id": "01M31CHZQ715RWZR21K489V3KR",
+  "ts": "2026-09-21T07:05:47.495Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "PLAN agreed between vc and dc on 2026-09-21 at 07:05Z, pending hvs go. (1) Laksa sweep: vc, when laksa-vc opens the window, by the Utilz method. (2) The unread gap from decision 23: dc runs bin/devbin doctor, read-only, in each of the 14 swept estates, with a git-status and find-newer fingerprint around each run so write-nothing is proved per estate; the population is 14, derived from the sweep commits (13 was a count carried from a message, corrected). Utilz is excluded as read by its own CI; Laksa as unswept. (3) WP-08: dc owns devbins side as core owner; vc reviews each adoption against AC-8.1, every core fix dc builds, and AC-8.2 across the fleet at the end; any gap is fixed as a default with an override, never a per-project case. Utilz first, Conflab next, Intent last, sequenced by hv. (4) LESSONS fold: vc. (5) 0.1.3: cut through the core when there is payload; v0.1.2 stays at df56014. hv told dc to take instruction from vc, so once hv has approved this, vc sequences dc."
+  }
+}

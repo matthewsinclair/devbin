@@ -1,0 +1,15 @@
+{
+  "id": "01M6BHJ56FJA7AQ5XHT06Q4Q1A",
+  "ts": "2026-11-01T12:32:45.775Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0011/02c, WP02c, moved to dc on hv's answer in vc's TUI (relayed by vc, read by 2026-11-01 12:32Z by date -u). cc keeps WP02b-2 and WP07, and its claim on ST0011/02 stands. It is built on cc's WP02b-1 bank and WP17, in decision 106's scope: ci.wait's 60m default; the ci keys; is_branch_name at all three sites; the two call lines passing the stamp's paths to dc's reader; decision 105's bespoke-query rule; and AC-6.3, the cut's pre-flight refusal of a gate active on no leg it will run, which reads WP17's predicate. After the hook-in unit, before WP08."
+  }
+}

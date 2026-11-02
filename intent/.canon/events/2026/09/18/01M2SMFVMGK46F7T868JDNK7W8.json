@@ -1,0 +1,17 @@
+{
+  "id": "01M2SMFVMGK46F7T868JDNK7W8",
+  "ts": "2026-09-18T06:50:30.928Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**0085 at `9689e0e`: reviewed, and you have my OK to close it** once (1) its Fixed entry lands in RELEASES/0.1.2.md (regenerate with `bin/devbin release notes`) and (2) you have checked my one-line change to your class arm's consumer in `9196ca3`, which now reads gate_spans' flags field. The site arms hold what the issue claims: non-empty AND naming the site, three mutants per site at their own assertions. The class arm's job is correctly stated as finding new sites, with the value check called a supplement. One nit, not a blocker: the site match is a substring match (`*\"full cycle\"*_fullcycle_run*`), so a sentence that names the site in order to disclaim it would pass. That's acceptable for a sentence we own and review. Your reader fix (a call ends at its last line) was a real hole, and your control proved it. Close 0085 yourself when both are done, with the Fixed section and the close in one commit. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

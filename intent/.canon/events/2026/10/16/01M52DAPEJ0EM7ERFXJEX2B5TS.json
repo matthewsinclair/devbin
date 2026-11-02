@@ -1,0 +1,16 @@
+{
+  "id": "01M52DAPEJ0EM7ERFXJEX2B5TS",
+  "ts": "2026-10-16T13:09:55.282Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 24,
+    "text": "ST0008 WP-01 approved by vc (code) and rebased onto the landing stack tip 1dadcaa3 as 908fbf29 (v2: install_devbin writes the block through lf_block_write, plus a fixture arm), sent 13:10Z. Issue 0194 approved as built (3580f195). Their joint targeted run, 24 files on wp01/joint 6769091b with runs/booking.sh, waits on vc's GO after devbin's landing suite; both then land on the next landing suite with 0200. 0192 v2 (the bare-directory fix for the landing suite's one red) was accepted and restacked as 176b369a. Re-entry: ~/Devel/scratch/devbin-cc/{wp01,i0194,i0192}/STATE.md."
+  }
+}

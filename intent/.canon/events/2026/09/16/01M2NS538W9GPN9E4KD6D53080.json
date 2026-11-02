@@ -1,0 +1,15 @@
+{
+  "id": "01M2NS538W9GPN9E4KD6D53080",
+  "ts": "2026-09-16T18:55:03.452Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates, vc's call.** From cc's handover of 2026-09-14: a prefix check at exactly the shorter file's length cannot report intact; the zsh unquoted-list lesson recurred although it was written down; a peer's relayed state lagged the tree twice in an hour. From 2026-09-16: `ugrep`'s recursive `--include` missed a matching file, twice under a conclusion; a plain `cp` of a WAL-mode store cannot be opened read-only; a remedy's effect was written into a commit as fact without being run; counting `source_commit` stamps counts re-vendor events, not divergence. Later on 2026-09-16: (a) an any-args test stub cannot see a runner change its grammar (0075); (b) a stored attachment can lag its file, and closing a thread lets organize delete the file; (c) vc claimed a fix reached every estate before checking `vendored_scope`; (d) a mutation script's saved original went stale and only `cmp` caught it. **And from the 0.1.1 cut:** (e) a peer edited the tree mid-suite, so a green run did not cover what shipped -- a code-and-notes fingerprint before and after the run is what proved the second run clean; (f) vc wrote board timestamps from memory three times in one evening (`16:3xZ`, `16:4xZ`, `18:43Z` against a clock reading 18:42) despite the rule; (g) the v0.1.0 tag predates 26 commits its own note describes, found only by reading `git log` at the next cut -- a note edited after its tag is the defect ST0007's \"one date, one source\" closes; (h) vc and dc built 0073 twice in parallel because vc started before telling dc -- announce a take before building, not after; (i) a display filter (`grep -v '^#   '`) hid the indented lines of a red test, making a correct red look unexplained."
+  }
+}

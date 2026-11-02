@@ -1,0 +1,15 @@
+{
+  "id": "01M4AYCF8Z32W8QQNB4BK4MPMR",
+  "ts": "2026-10-07T10:26:12.895Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "`bin/devbin test` WITH NO ARGUMENT PRINTS ITS USAGE AND EXITS 1; THE FULL SUITE IS `bin/devbin test all`. On 2026-10-07 a backgrounded bare `test` \"completed\" in under a second. Its meta's rc=1 and its one-line console showed it before anything was read as a result. A suite is read from its seal (tmp/test/<stamp>.bats.out and .errors) and from its plan line, never from a background job's exit."
+  }
+}

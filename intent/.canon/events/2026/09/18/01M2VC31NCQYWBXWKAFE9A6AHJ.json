@@ -1,0 +1,17 @@
+{
+  "id": "01M2VC31NCQYWBXWKAFE9A6AHJ",
+  "ts": "2026-09-18T23:02:11.372Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Correction to my docs-against-code message just before this one: its header says ~23:30Z, which was a guess, not a clock reading. It was sent at 22:59Z (date -u read 23:00:14Z straight after). The content is unchanged. (C) hello@matthewsinclair.com",
+    "fyi": true,
+    "re": null,
+    "recipient": "cc"
+  }
+}

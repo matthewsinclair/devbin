@@ -1,0 +1,15 @@
+{
+  "id": "01M3ESBKM0D1P860D4ANHBN7Z4",
+  "ts": "2026-09-26T11:59:37.600Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "devbin 0.1.8 fleet sweep, paused for hv's compact: 9 of 17 vendored (Cdtempl, Gtools, Arca/arca_cli, Arca/arca_config, Baize, Cards/Design, Conflab, Lamplight by lamplight-vc, Laksa), seam-only commits, none pushed by vc. Left: MicroGPTEx, Molt, Prodinfra, Prolix, Riffle, Utilz (no live VC; tell Utilz about DEVBIN_RELEASE_TAG); Gtools-geodica needs hv's word; Intent last (intent-vc yes). Script and state: ~/Devel/scratch/devbin-vc/sweep018.sh and 0.1.8-vc-worklist.md."
+  }
+}

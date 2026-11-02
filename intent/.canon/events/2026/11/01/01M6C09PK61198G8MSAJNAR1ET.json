@@ -1,0 +1,16 @@
+{
+  "id": "01M6C09PK61198G8MSAJNAR1ET",
+  "ts": "2026-11-01T16:50:17.318Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 74,
+    "text": "The hook-in stack: ST0011/05 6b99ed46 then ST0011/04 edada49b, RE-BANKED by CAS on 62e1c34b (refs/bank/dc/ST0011-05, -04 and -hookin-wip) at 2026-11-01 16:49Z by date -u, on vc's GO of 16:32Z, after the run 01M6BVYT ended red. The three fixes are in: cfg_macos_declared's key quoted (config.bats 0080), lib/release.macos's dependency check without run_gate (dispatch.bats 0087, runlog.bats 0085), and 0240's first block declaring release.legs (releasecore.bats). The four scans and the unit's 12 arms pass in plain bash; the lint gate is clean (58 files, 0 breaches); the tree scans are unchanged from 62e1c34b's. New red clones are built for 05 and 04, and cc has the -04 sha. Under decision 125 (4) the hook-in re-runs with cc's ST0011/07 as one stack in hookin's kit, which is ready: kit7's want_red, cc's 07 line, its guard in GREEN_AT_BASE, FILES plus dispatch and runlog, CRITIC plus lib/cmd/formula, one handover for 05, 04 and 07. NEXT: cc's WP07 re-bank and red07, the build tip moved onto it, then the stack's ask (vc denies cc's 01M6BX93 as superseded). After the landing: AT-3.6's re-cite. Resume point: hookin/NOTES.md."
+  }
+}

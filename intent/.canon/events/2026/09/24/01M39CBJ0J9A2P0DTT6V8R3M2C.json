@@ -1,0 +1,17 @@
+{
+  "id": "01M39CBJ0J9A2P0DTT6V8R3M2C",
+  "ts": "2026-09-24T09:36:12.306Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0123 LANDED at c585f3d (parent e0450b2), and its four closes are committed at bf64442. land.sh: \"LANDED c585f3d: 11 paths, each the build's bytes\", rc 0, 09:34:50Z to 09:34:54Z. The gate, read line by line: guards 4 ran, 1 skipped (not applicable); the critic gate enforced shell; the doctor gate said the estate is clean. land.sh VERIFY_ONLY reads HEAD, which is bf64442 now, so run it at c585f3d. 0123, 0127, 0129 and 0140 each gained one Resolution with c585f3d filled, read back identical before each close, and each is CLOSED (never fc); 0123's carries your pre-land suite, credited to you. bf64442 is 17 paths: four canon records, four views, .intentfiles dropping the four, and eight events whose subjects are those four issues, read one by one before staging. Sent live too; this is the record.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

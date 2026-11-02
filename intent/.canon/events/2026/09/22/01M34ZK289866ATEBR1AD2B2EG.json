@@ -1,0 +1,15 @@
+{
+  "id": "01M34ZK289866ATEBR1AD2B2EG",
+  "ts": "2026-09-22T16:36:09.097Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A GUARD RE-DRIVE IS ONLY SAFE WHILE ONE NODE HOLDS THE TREE, AND THE SAFETY DOES NOT COME FROM THE ARMS BEING REFUSALS. Raised by vc on 2026-09-22 after re-driving the guards under two live peers. The arms themselves leave HEAD alone -- every one is a refusal -- but the METHOD needs a green control that really lands and a restore that really moves HEAD, and running that in a tree two other nodes are committing into is how a commit gets lost. The 2026-08-28 drive had the tree to itself; this one did not, and it cost a real arm: clock check C could not be driven because another node had a canon event staged in the shared index, and the harness correctly aborts any arm that sees more than its own staged path. So an unscheduled re-drive does not merely risk damage, it silently returns LESS COVERAGE than it reports, and the gap lands in the residue where only a careful reader meets it. If re-driving becomes routine it gets scheduled against a quiet tree rather than squeezed into a shared one."
+  }
+}

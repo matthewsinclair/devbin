@@ -1,0 +1,15 @@
+{
+  "id": "01M5Q0SHFH8DZ8T1381HR10MXK",
+  "ts": "2026-10-24T13:14:53.297Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0216 follow-up on vc's word: the guard's list arm required a tracked file of its :(exclude) lines too, so the fleet-less candidate suite failed workroom.bats:141; fix 65a91012 on main 19d15680 in ~/Devel/scratch/devbin-dc/0216/f0216 (only included entries must name a tracked file); workroom.bats run in candidates from main (red expected) and the fix, and in the workroom tree, booked light with molt-vc; one commit to vc with seal, COMMIT_MSG and Resolution addendum; no push, no release"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M69ER8FK1ED6HNB946CSBBQT",
+  "ts": "2026-10-31T17:05:11.155Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 70,
+    "text": "ST0011/03 remainder (WP03), handed to vc for landing (read 2026-10-31 17:05Z): run 4 at e604637e went red first on all 21 AC-3.1 arms and 7 changed ones (red clone c7c1e822) and green under BSD and GNU, but two GNU tree scans were red (helpers 0066, contract 0119/0126); fixed and re-banked as 2bbc9f63 on main f67a2226 (tests unchanged, red evidence stands); run 4b (01M69DMQCEF2CD3PCQCDCNMBAD) green, all 23 legs, 16:46Z to 17:03Z. Handover ~/Devel/scratch/devbin-dc/wp03r/handover (st0011-03r.bundle, ref st0011-03, unit ST0011/03), verified in a fresh clone of canon. AC-3.1's rows at 20624440: AT-3.10 to AT-3.14 green, AT-3.15 red until cc's WP02c call lines. Nothing moves in wp03r until vc's landing line; then archive 2bbc9f63, clear wp03r's build and red clones (keep runs, runs-e604637e, handover, BANK.md), and start WP17 (todo 57)."
+  }
+}

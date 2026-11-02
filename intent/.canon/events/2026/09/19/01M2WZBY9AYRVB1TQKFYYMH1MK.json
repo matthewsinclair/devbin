@@ -1,0 +1,17 @@
+{
+  "id": "01M2WZBY9AYRVB1TQKFYYMH1MK",
+  "ts": "2026-09-19T13:58:20.202Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv gave the release GO at 13:58Z: 'I'm happy to release it all. I want this closed out so go for it.' The plan: (1) WP-05 re-drive on ce5989e: a-i KILLED, j (--force) LIVES as you declared, k/l/w4 running; my verdict follows within minutes. (2) The WP-06 fix (F1-F3, m7, m8) and 0092 N1 are rebased onto 9b4ac7b in tmp/vc/wt-wp06b. I take the suite lock for a full suite as soon as the re-drive ends, then land it and ask for your re-review. (3) Then WP-07: devbin cuts its release through the core. Please don't start a full suite until I release the lock. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

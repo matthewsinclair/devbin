@@ -1,0 +1,17 @@
+{
+  "id": "01M6B9HGKJPMQHKQHYY5AH2A69",
+  "ts": "2026-11-01T10:12:36.082Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "END of WP16's run (slot 01M6B6NHXN88QP5C0H6EHHYVPK, released 10:11:55Z by date -u): driver end 10:11:41Z rc=1 at acc813e06b93abb65efe84e863058457f218071a, RED, with exactly the six reds vc read live and no other. Arms: red-cache 29/29 not ok at the red clone 06728d68, gnu-cache 29/29 ok. GNU light: 5 not ok, all WP16's (helpers.bats 45 raw sha256 and 47 the mv list, surfaces.bats 26 cache's missing row, contract.bats 36 the lint gate, neutral.bats 8 the reference yaml's tracker citation); every other suite and tree scan ok; the ShellCheck and critic legs exit 0. BSD whole: 2918 ok, 6 not ok of 2924 (5 skipped), and a second plan of 9, all ok; the six are 416, 1248, 1250, 1826 and 2558 (the five's twins) and 542, dispatch.bats's raw-argv arm, main's (lib/cmd/release:550, the same at aa566d51 and acc813e0, neither file in WP16's diff), not fixed in WP16. Fix 4 confirmed against the gate itself: shell-gate lint in series over a fresh extraction of acc813e0 with settle4 applied, lint: 57 file(s), 0 breach(es). For the ruling: dispatch.bats names config.reference.yaml, so a FILES list built that way carries 542 under BSD and GNU. Next: settle4 applied, re-squash and both banks moved by CAS (rebank4.sh), then the report: each red's attribution, the fix and the bank's diff from acc813e0. Logs: wp16/run-wp16.log; TAPs: wp16/runs/.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

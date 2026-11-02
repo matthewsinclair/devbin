@@ -1,0 +1,15 @@
+{
+  "id": "01M4ZWYF5J6TP51B1FJT8KBAPP",
+  "ts": "2026-10-15T13:45:08.530Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-15: `infra --profile` takes a path, and devbin builds no name form (hv chose A: close it, paths only). A name such as `--profile <name>`, looked up as profiles/<name>/infra.yaml, would only save typing for the one project that keeps a profile per estate (Prodinfra), which works today by path or by DEVBIN_INFRA_PROFILE; a project that wants a shortcut keeps its own. This closes the request dc first raised on 2026-09-07 (vc's hold 4) and Prodinfra's open item on it, and it is not put to hv again."
+  }
+}

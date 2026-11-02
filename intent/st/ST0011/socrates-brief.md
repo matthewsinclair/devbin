@@ -1,0 +1,78 @@
+# Socrates brief: ST0011, the build, test, assemble, release cycle
+
+You are running CTO Review Mode for steel thread ST0011 of Devbin, at the Devbin repository. The whole dialog is kept as part of the thread's record, so write it as a document a reader opens in six months, not as a chat.
+
+## The decision under review
+
+Devbin is a bash dev-launcher framework. Its release core (`lib/cmd/release`, 3352 lines) is vendored into every project the owner maintains (Utilz, Gtools, Intent, Laksa, Conflab and Devbin itself), and a release today takes an hour or more of wall-clock, with the same test suite executing several times per release on two commits that differ by a version string and a date. The owner (hv) has ruled, 2026-10-31:
+
+- The target is the floor: one honest run per platform, run once, in parallel, nothing run twice anywhere, from the decision to cut to a brew-installable artefact with no hand on the process in between. The number falls out of the measurements; show the curve beyond it.
+- Fixed points, each of which still has to earn its place on evidence of what it uniquely catches: the kovacs (Ubuntu VM, 2 CPUs) run stays; the full CI matrix (Ubuntu, macOS, WSL where declared) is green on the exact commit that ships; a full suite runs on this Mac before the cut asks to confirm. Notarisation of macOS apps happens on this Mac, never in CI.
+- Criterion (a): every change is a general overall reduction in BOTH complexity and time. A mechanism added to save minutes fails on its face; a step removed counts twice.
+- Criterion (b): every change is generally applicable to all current and future projects: it lands in devbin's core, reaches each project at its next vendor update with nothing per-project to set up, and carries no special case for one project's shape.
+- Reach: where a project does something bespoke, slow or redundant around the core, name its remediation; those become fix-phase work. Direction: bespoke retires into the core wherever the core can carry it; a project keeps only what a config key cannot say.
+- hv's own words, 2026-10-30, while a Gtools cut waited on CI: "I really don't get why this is done twice. Why don't we just remember the hash that worked and set the release tag to that hash? It feels like we run the same damn test suite four or fives times per release ... it's utterly insane." And on kovacs: "I don't want to avoid the kovacs tests because its quicker than the CI/CD to find issues and there have been multiple stupid missed errors on the Linux build that cost hours in retesting."
+- This phase writes no code. The output is diagnosis, options and a recommendation for hv to choose from.
+
+## Read these first, whole
+
+The evidence pack, five read-only reports written this morning, in the thread's tree:
+
+- `intent/st/ST0011/evidence/A-core-anatomy.md`: the release core's step graph, every point the suite runs, the stamp problem, the 0294 skip mechanism, the serial-by-construction waits, the macos and formula built-ins, what the core records.
+- `intent/st/ST0011/evidence/B-utilz-intent.md`: Utilz and Intent pipelines end to end, gate executions per release, CI trigger matrices, caching, provenance of the vendored core.
+- `intent/st/ST0011/evidence/C-gtools-conflab-laksa.md`: the same for Gtools, Conflab and Laksa, including the macOS app sign, notarise, package path and Conflab's own handlers beside the built-ins.
+- `intent/st/ST0011/evidence/D-ci-timing.md`: 95 GitHub Actions runs and 334 jobs across the last three releases of each project: durations, duplicates on one sha, billed-equivalent minutes, critical paths, four timelines.
+- `intent/st/ST0011/evidence/E-local-kovacs-history.md`: the local seals and release logs on this Mac, kovacs and gyges, and the dated history of the rulings that produced the current shape, each marked cost or confidence.
+
+Also read `intent/st/ST0011/info.md` (the objective), `docs/releasing.md`, `usage-rules.md` (the DO / NEVER contract; the Gates and false greens section matters here), and `intent issues show 0295`. Where the dialog needs a line of code, read the file and cite `path:line`; the evidence files cite everything they rest on.
+
+## The measured shape, so the dialog starts from numbers
+
+- Devbin v0.1.18: last code commit to public tag 78.0 min; local cut 14.6 (suite 13.3 on 8 lanes); publish 56.3, nearly all waiting on a candidate matrix whose Ubuntu leg takes 31.8 to 41.7 min for the suite the Mac runs in 13, macOS 55 to 66, WSL 59; 818 billed-equivalent minutes per candidate; then the tag's run restarted all legs on the identical sha and was cancelled by hand (0294 closed that). 2026-10-29: the suite ran 13 times to ship three patch releases.
+- Gtools v0.8.3: candidate push to release 82 min. The suite ran on the dispatched CI macOS leg (14.5), on kovacs and gyges (untimed, unpreserved), locally in the cut's gates (8.6) and on the tag's macOS leg (13.7), the last two on a commit that differs from the candidate by 4 files, 4 lines; every Gtools cut holds its terminal 12.6 to 14.8 min at its `ci` row waiting for the tag's macOS leg (issue 0149).
+- Utilz 2.14.8: the cut proper (commit to tap, notarisation included) is under 3 min; candidate to tap 56 min; the 1059-test estate runs five times per release; prez cold-built five times on GitHub (no cache action anywhere in Utilz); `Menuz.app` built twice (signed locally, unsigned in CI); `ci.wait` default 20m shorter than the tag run; the release log never sealed.
+- Intent v3.2.8: candidate to tap 61.7 min; `cargo test --workspace` six times, bats six times, the release pair compiled seven times (three outputs ship); the Mac cold-builds the debug workspace three to four times per cut (private empty-target worktree gate, then the pre-push hook's clone-and-build once per remote); the largest serial block is kovacs green to release commit, 26 to 34 min, the driver re-running what it required kovacs to have run green on the same tree; post-tag five hand-sequenced commands in three independent halves, 11 to 19 min. Intent does not use the core's cut: its own 1524-line driver gates on the candidate and stamps after, which is the order issue 0295 asks the core for.
+- Gtools v0.8.3 in detail (evidence C): gtools-rs built in release profile 12 times per release, 10 of them cold on runners (no cargo cache in any Gtools job; the `gates` and `rust` Linux jobs each build the same binary); a stopped cut re-runs the whole gates step on resume (0.8.0 and 0.8.1 each ran the 7 to 9 minute suite twice on one commit); `ci.wait` 45m is the macOS job's own timeout and the cut holds the terminal for it; brew compiles gtools-rs and the CMS again on each installing machine (source formula, no assets).
+- Conflab (evidence C): does not use the core; its own 399-line `cmd/release` commits and pushes the version bump and then the tag BEFORE any gate runs, moves an existing tag with `-f`, deletes and recreates release objects on a re-run; the local path (bump, pre-flight, three cargo builds, xcodebuild, sign, notarise on this Mac, two release objects, docs sync, formula) measured about 5 minutes for v0.6.2; `release.yml` has skipped on every tag since v0.5.7 (`MACOS_RELEASE_CI` off; tn001: 80 to 120 billed macOS minutes per run); three formula writers coexist and the release calls the oldest, sed-based one; the 467-test Swift suite is in no release and no CI path; 641 commits since the last release.
+- Laksa (evidence C): no release; CI's one job takes 13 to 17 min for a suite that runs in 88 s locally (cold Hex compile, apt, Tailwind, a cold Rust toolchain and crate built to serve one nested test); the deploy compiles the prod release twice (a local `mix release` gate, then Fly's builder) and re-runs credo and the suite that CI ran on the same commit; the crate's tests run twice per `test all`; the deploy never reads CI, and the two most recent CI runs are red; 8369 lines of project-owned devbin layer, the heaviest of the six.
+- Every tagged release in the record started the same workflow twice on the same sha, 2 to 10 s apart (push to main plus tag push; concurrency keyed on the ref). Queue wait is nil everywhere: the one apparent 23-minute macOS queue (Utilz 2.14.8) was a cancelled first attempt plus a rerun, 34 macOS minutes for one leg.
+- The core writes no clock into any log; no record it keeps is keyed on a sha; the gates step is memoryless by design ("never already"); the core does not know kovacs exists; `release publish --yes` always ends with the formula step FAILED because `--yes` is no person's yes for the tap.
+
+## Hypotheses the dialog must test, each against the evidence and both criteria
+
+1. Stamp first, test once, tag what passed (0295's fix): what it removes, what it moves, what it cannot remove (the public snapshot is a third sha).
+2. A proof-of-green record per (sha, platform): every leg, local Mac, kovacs, CI, writes its verdict against the sha, and every gate consults it before running. hv's "remember the hash that worked". Where would it live for Devbin's workroom, which has no GitHub (git notes pushed to `local`? commit statuses? the seal itself?). Does it pass criterion (a), or is it a mechanism added to save minutes? Is there a simpler primitive: the branch run's own GitHub record read by `ci-state`, which already exists?
+3. Platform legs in parallel, not in series: today Mac suite, then confirm, then tag, then push, then CI, then formula. Which waits are data dependencies and which are step order (evidence A section 5).
+4. Build once, promote: binaries and the signed app built on the tested commit are what the tag attaches; the tag's job attaches, it does not rebuild or retest.
+5. Notarisation concurrent with the suite legs: it needs the release commit's build product and the keychain, nothing else; the notary wait is latency.
+6. Each leg earns its place: what the local Mac run, CI macOS (10x cost), WSL (blocks nothing), kovacs (2 CPUs, 30 min for Devbin's suite, catches Linux-only failures in minutes) and CI Ubuntu each uniquely catch, with E's ruling history as the record of what each has caught; which pairs are redundant; whether CI macOS could shrink to the macOS-only proofs (the bash 3.2 refusal, the brew image) once a local Mac verdict is recorded against the sha, and whether that passes hv's "full matrix green on the shipping commit".
+7. The tag ref and the main ref: the push-to-main run plus the tag run on one sha; the fix shape (concurrency keyed on sha, a workflow that runs on one of the two, or the 0294 verdict job generalised to read the branch run) and which is least mechanism.
+8. Lights out: where the one human yes sits, what it covers (the tap included), and what `--yes` should mean; fail-forward on red; whether the cut should be one command that ends at brew-installable.
+9. Per-leg cost: a dry run that runs the gates for real; no cargo cache in the workflows that ship binaries; bats serial in CI (Devbin's Ubuntu leg 3x the Mac's); cold builds in hooks and private worktrees; `ci.wait` defaults below measured tag runs; 15 s polling with no overlap.
+10. Devbin's own matrix: 818 billed-equivalent minutes per candidate against 126 to 316 for every consumer; whether a bash framework's suite needs a 55-minute macOS leg or whether its CI is doing the Mac's job slowly.
+11. The bespoke: Intent's driver (what in it the core should carry, what should stop), Utilz's `tools/ci-state` ignoring `DEVBIN_RELEASE_TAG` and its unsealed release log, Gtools's `derived:` builds and 14-minute `ci` wait, Conflab's five handlers beside the built-ins and its two release paths, Laksa's double-run deploy and missing deploy command. For each: retire into the core, keep as a config key, or stop.
+12. Radical: tag the tested sha and derive the version from the tag at build time. What breaks (evidence A section 3 and observation 9); whether the stamp can be made a pure function so the stamped commit's tests are the candidate's tests by construction (same tree except version strings, date, views); whether the notes model (date and views committed) should change.
+
+## The dialog
+
+Follow CTO Review Mode: Socrates (CTO) and Plato (Tech Lead), five phases (opening, exploration, challenge, synthesis, conclusion). Both personas argue from the evidence pack and cite it by file and section or fact number (eg "D fact 1", "A section 5 point 5", "E ruling 2026-09-17"). Real disagreement is expected: Socrates presses criterion (a) and asks what each mechanism costs to own; Plato defends what the history shows was bought with each run and names hidden complexity (the snapshot's third sha, the version compiled into binaries, the formula's version assertion, the keychain on one Mac, the workroom with no GitHub, hv's rule that a tag is never moved). Where the evidence is silent (eg how long the kovacs Gtools run took), say so rather than estimate. Bring in a third voice, a Release Engineer, for at most two exchanges if the signing and packaging path needs one.
+
+Every exchange must move the decision. Length is what the decision needs: complete, not padded, and not cut short. The owner asked for the full dialog.
+
+## What the document must end with
+
+1. **Recommendation**: the pipeline shape recommended, as a numbered sequence of steps with where each runs and what it waits on, and the expected wall-clock of a release under it, derived from the measured leg durations (name the legs and the numbers you add). State what it removes from the core and from the projects (lines, steps, handlers, waits) as well as what it adds.
+2. **Options table**: every option considered, ranked. Columns: option; minutes saved per release (from the measurements, with the figure's source); complexity removed and complexity added (count the steps, files, waits, handlers); confidence lost, if any, and what would catch what that run caught; which projects it reaches; cost in billed CI minutes; criterion (a) pass or fail; criterion (b) pass or fail; prerequisite options.
+3. **Per-project remediations**: for Devbin, Utilz, Gtools, Intent, Laksa, Conflab, what retires into the core, what becomes a config key, what stops, what stays and why; each item one line with the file it concerns.
+4. **Key trade-offs accepted**, and the fixed points the recommendation keeps, changes or asks hv to reconsider, each with the evidence for asking.
+5. **Open questions for hv**, each with the options and a recommendation.
+6. **Next steps**: the fix-phase work packages as a list, each one line, in dependency order, with the files it touches; no code.
+
+## Hard rules
+
+- Read-only. Run no test, build, release or dry-run; write nothing into any repository; no git add, commit, push or stash; no `intent` write verbs. The one file you write is the dialog, at `the session scratchpad (the thread keeps the copy)`, and your final message is its full text.
+- Refer to projects by name (Devbin, Utilz, Gtools, Intent, Laksa, Conflab) and machines by name (rhadamanth, kovacs, gyges). Never write a GitHub owner or organisation name, a client name, or an absolute path under the home directory; repo-relative paths prefixed by the project name.
+- Plain ASCII only: `--` and `->`, never em dashes, never curly quotes, no check marks or emoji. Write `eg`, never `e.g.`. Markdown tables column-aligned. No manual line wrapping of prose.
+- Every number traces to a file and section in the evidence pack or to a `path:line`; no number from memory. Where you infer, say "inferred" and from what.
+- No code. Describe a change as what it does and where, not as a patch.
+- The agent shell is zsh; run any multi-line script under `bash`; use `/usr/bin/grep` or `git grep`, not bare `grep`.

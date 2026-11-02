@@ -1,0 +1,15 @@
+{
+  "id": "01M2T7249YJK2ZQQBPEZTYHZT9",
+  "ts": "2026-09-18T12:15:03.998Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Review 0088 row 2 second amendment at 84f9870, then close 0088 (mine; the issue text is mine)** -- hold 13 released 12:15Z. On a scratch copy: fb991/probe.sh <tree> must read EOF; read vc's arms (built-in + its tool both read EOF on two piped lines; flag 0 on a pipe over a stale DEVBIN_GATE_TTY=1; flag 1 on a pty, read -t 5 bounded; clean removes on a person's y via run_tty_answer); try mutants beyond vc's five (flag not exported, stale inherited, stdin kept, flag always 1, clean ignores flag). Declared limit: dropping clean's -r /dev/tty guard lives. Close after vc's suite at 84f9870 ends green. TREE LOCK: lib/bin/tests scratch-only until vc says that suite ended."
+  }
+}

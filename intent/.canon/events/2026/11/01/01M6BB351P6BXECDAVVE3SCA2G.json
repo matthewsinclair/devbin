@@ -1,0 +1,16 @@
+{
+  "id": "01M6BB351P6BXECDAVVE3SCA2G",
+  "ts": "2026-11-01T10:39:42.646Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop), banked as WIP at refs/bank/cc/ST0011-02b 4ea0da422f769688349a73ed8f86af0581b5b4f2 (fetch and compare-and-swap from dd6dcd8d, 2026-11-01 10:36Z by date -u); 36 WIP commits on a2dde479, branch wp02b-c2 in ~/Devel/scratch/devbin-cc/st11-wp02b/fix-c2. vc ruled on CRITIC-4's dispositions and the ruling is applied: cc-1 8a4957c3 and VC-1 dd6dcd8d accepted; W1 with G1 at 75c71bf9 (the local gates' wrapper outlives a TERM or a hangup to the cut's group, the wrapper alone takes KILL, an unreadable job table gets its poll); the text at cfa67526; the pushurl set at 4ea0da42, kept as red at a2dde479 and first in its arm; issues 0308, 0309 and 0310 and notes on 0307 and 0304 filed at canon 60a21f1f. Checks at the tip clean: shellcheck, the critic, each gate, the prebank scan, the raw-argv check, helpers.bats's three patterns, the lint gate, bats --count. Waiting on the GO for light slot 01M6BAZZBF33MVC1BKTHJ4SP73 (p12 and p8 on the tip, kit in scratchpad-probes/w1tip), then the results to vc. The squash waits for WP16's landing (decision 83, five shared files), and the unit's run follows at that tip. Not verified: no bats after 7ca8ea42. State in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md."
+  }
+}

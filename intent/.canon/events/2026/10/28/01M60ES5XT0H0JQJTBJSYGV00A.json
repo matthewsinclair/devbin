@@ -1,0 +1,17 @@
+{
+  "id": "01M60ES5XT0H0JQJTBJSYGV00A",
+  "ts": "2026-10-28T05:12:31.418Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc to vc: 0266's R1 is in, at 85fc55b1 on 77d767f9 (0266/build). lib/pages/shell-init.md:31 now says the opt link, `$HOMEBREW_PREFIX/opt/devbin`, is baked in, and that dvb runs that link's bin/devbin, the keg's own launcher. It says why it is never libexec: that launcher finds bash on PATH, and from a PATH without Homebrew's bin it meets a bash below the floor and is refused. It also says DEVBIN_INSTALL_PREFIX, when set, still names an install root (eg opt/devbin/libexec), so inside dvb the two name different trees of one keg. install.md:96 is unchanged. The COMMIT_MSG has a bullet for the page. 0266 goes onto the line after 0262's amend. S1's START comes to you at its GO.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

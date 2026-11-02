@@ -1,0 +1,16 @@
+{
+  "id": "01M4WYA27E6AZ9FGCD9AESH35V",
+  "ts": "2026-10-14T10:11:13.774Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 155,
+    "text": "NEXT SESSION, vc's scratch clones (hv's standing word: they go): st0008/land07 holds ace31517, the suite's commit that 99dd3106's message cites, and its tree equals 99dd3106's; bundle it (4647f9bd..main), check that the sha resolves from the bundle in a clone of the source, then remove land07. issues-20261007/base018 has 57 uncommitted files on 0.1.9 (d7f2ed13) whose lib/ equals no commit, and two records cite the path; read them before deciding. 0.1.10/idx (one scratch commit of its own, the path cited in five records) and 0.1.10/refused/src (issue 0185's reproduction) stay as cited evidence. Removed on 2026-10-12: 0.1.9/cut/notefix and 0.1.10/i188/repo, which held nothing unique and which nothing cites. Added 2026-10-14: i0193/land, the 0193 landing clone, holds 252ed49a, the suite's commit that cccfd9ff's message cites; bundle it as land07 before it goes."
+  }
+}

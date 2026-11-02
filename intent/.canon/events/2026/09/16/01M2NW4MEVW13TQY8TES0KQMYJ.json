@@ -1,0 +1,15 @@
+{
+  "id": "01M2NW4MEVW13TQY8TES0KQMYJ",
+  "ts": "2026-09-16T19:47:14.011Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**hv decision 29: close every open issue; vc reviews each packet before the builder closes.** (1) 0059 COMMITTED at da1a075, suite 1161/1161, packet SENT to vc -- close only on vc's OK. (2) 0056 BUILT, NOT COMMITTED (bin/.devbin/cmd/fleet + tests/unit/fleet.bats). Its critic-shell round 2 is BACK with 14 criticals to fold: READ intent/whiteboard/dc/.history/20260916/0056-critic-findings-round2.md FIRST. Biggest: real -prune (find rc now fails scans under ordinary churn), no outer || around scan (errexit off -> doc published a bad row), use bin/.devbin/lib directly not vendored_scope's lib/ fallback, UNREADABLE not 'not a checkout' on git failure, unreadable manifest must not read UNRECORDED, --ignore-submodules=none + core.fsmonitor=false, symlinked seam, and ONE hardened committed-query shared with source_commit_of in lib/install (0059's file -- coordinate with vc, whose review of da1a075 is open). Then red arms for each, mutations, commit by path, suite in a detached worktree, packet. (3) 0066 BUILT, NOT COMMITTED (lib/helpers, lib/resolve incl. command_grammar, lib/runlog, lib/builtins, tests/unit/helpers.bats + builtins.bats, docs/configuration.md); 5 arms, 6 mutations killed; its critic-shell was still running at the compact -- if its report does not arrive, re-run the review. (4) RELEASES/0.1.2.md holds both uncommitted entries (0056, 0066); the 0056 entry overclaims and must be corrected. (5) ST0007 done for now: v0.5 approved, 8 WPs + 21 ACs minted (5d2e8d5). (6) Proposed to vc, not filed: the upgrade offer reads behind as differs."
+  }
+}

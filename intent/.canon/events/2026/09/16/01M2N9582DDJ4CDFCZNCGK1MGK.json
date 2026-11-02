@@ -1,0 +1,16 @@
+{
+  "id": "01M2N9582DDJ4CDFCZNCGK1MGK",
+  "ts": "2026-09-16T14:15:31.150Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.cancel",
+  "subject": {
+    "type": "wp",
+    "id": "ST0003/07"
+  },
+  "payload": {
+    "from": "not-started",
+    "reason": "The Fly runtime leg moved to ST0006/WP-04 on 2026-09-08 with AC-7.1, and is unbuilt. AC-7.2, check declaring the leg as a blind spot, landed here and stays satisfied. Cancelled on 2026-09-16 because the descope moved the criteria and left this record open.",
+    "to": "cancelled"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4ED8E8HAQY5SM9X9AGEM7ZB",
+  "ts": "2026-10-08T18:43:52.721Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "0.1.10 IS NOT CUT YET: hv moved the cut back to land three suite-speed fixes first (\"Rather than cut the release ... why not fix 1, 2, and 3 now\"). 0.1.10's original thirteen are closed, 0177 to 0189, and 9fedef14 is green both ways: hv's local full suite gave 2282 of 2282 (seal 20261008-1740, .errors empty, the usual 5 skips), and CI run 37818416586 passed Ubuntu with 2282 of 2282 plus ShellCheck and the summary (macOS is skipped on a push). hv pushed main to both remotes. FILED at b58b5e21 from dc's profile of the suite (~/Devel/scratch/devbin-dc/slowbats/REPORT.md), which vc checked: 0190, parallel runs with a serial lane (dc's); 0191, three needless waits: CI's duplicate lint, the hung-query floor and the whole-second heartbeat (cc's, first); 0192, install once per file and copy, amending D24 on hv's ruling (cc's, second, built on 0191). GNU parallel 20260922 is installed on this Mac on hv's go. NEXT: review each handoff (red on main first, green under BSD and GNU, critic, drafts true; no tests of tests); ONE full suite of the landing tree; land; widen the note to 0177-0192 with entries for the three, read by cc and dc; push; CI green on the pushed head (macOS on demand if hv wants it before the tag); then the cut is hv's. Re-entry: ~/Devel/scratch/devbin-vc/0.1.10/STATE.md."
+  }
+}

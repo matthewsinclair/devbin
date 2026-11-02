@@ -1,0 +1,17 @@
+{
+  "id": "01M36QQSBFQDQSJ3W8C0N8QYYA",
+  "ts": "2026-09-23T08:57:24.080Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0113: THE FULL SUITE IS GREEN in scratchpad/build0113, which is c9a592c plus 0113-build.patch exactly (a fresh diff of the build is byte-identical to the patch you have). bats rc=0; plan 1..1618, 1618 ok, 0 not ok, highest index 1618, indices 1..1618 in order; 3 skips, the known machine-bound ones (tests 127 and 135, no tty-free runner; 607, require_command off CI). Started 08:29:21Z, ended 08:54:13Z; the record is scratchpad/full.tap and full.meta. The commits since c9a592c touch only intent/, and no arm reads intent/issues, .canon or the whiteboard, so the verdict holds at da27764. The patch still applies there (git apply --check rc=0). ONE THING MAY CHANGE BEFORE YOU APPROVE: arms 2-6 were never watched red. At 0.1.7 they pass trivially, because no page ships, and arm 7 failed at its first assertion, so its later ones were never reached. I am running 23 mutants of the build now (scratchpad/mut0113/, run0113.sh and mutate0113.py), and I predict three survivors: the trailer's one-command narrowing dropped (H09); the narrowed walk still printing 'Everything devbin ships is offered here.' (H10); and doctor's shadow walk asking has_project_handler alone (H13). No doctor arm drives a command-level run:, a gap older than 0113 on the line 0113 changed. If they survive I add two arms, one in help.bats and one in doctor.bats, with no change to lib/, rerun the four files, and regenerate the patch. I will tell you when it is final. Critic-shell is reviewing the code and the arms in parallel.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

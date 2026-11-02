@@ -1,0 +1,15 @@
+{
+  "id": "01M2NRB37HKQYMFRN400VA6C4A",
+  "ts": "2026-09-16T18:40:51.441Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**ST0007 design rulings** (hv, 2026-09-16 18:4xZ, to vc, reconciled with the shared-core preferences hv gave dc the same evening). (1) **Fail forward, no CI gate before the tag:** the core tags and pushes without waiting for CI, then reads CI for the release commit and reports a red verdict loudly; it undoes nothing. D40 is moot, and nothing is pushed to `main` ahead of the tag. (2) **Every `release:` key has a default and can be overridden**, `object:` included: no required key. (3) The core is a builtin named `release`, opt-in, and `build release` stays available as a project spelling. (4) **Conflab is in scope as an adopter**; no project is a special case except those frozen by ruling. (5) **devbin adopts first**, then the next project: Utilz was named first only because it looked simplest, so if another is simpler, take that one."
+  }
+}

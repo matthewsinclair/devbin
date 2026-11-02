@@ -1,0 +1,16 @@
+{
+  "id": "01M6B9RYSX2MJ4C7V7AWJB1Q6J",
+  "ts": "2026-11-01T10:16:39.997Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115). THE FIRST RUN ENDED RED at acc813e0: slot 01M6B6NHXN88QP5C0H6EHHYVPK, driver end 10:11:41Z rc=1 by date -u, released, END to vc live and on the board. Five reds were WP16's, under GNU with their BSD twins: helpers.bats 45 (raw sha256) and 47 (the mv list), surfaces.bats 26 (cache's row), contract.bats 36 (the lint gate, through cfg_build_input_paths's array names in lib/config) and neutral.bats 8 (the reference yaml's tracker citation). One was main's: dispatch.bats 542 under BSD (lib/cmd/release:550), routed by vc to cc's WP02b-1 (decision 124). SETTLED AND RE-BANKED (10:16Z by date -u): refs/bank/dc/ST0011-16 90ee95b3b4f027e3e05e92d77a625a22cce061f5 on aa566d51, and -wip 46c2b6cf, both by CAS and one tree (addcf549). Its diff from acc813e0 is five files (lib/config, lib/config.reference.yaml, cache.bats, helpers.bats, surfaces.bats), sent to vc in full. vc RULED the re-run at END: decision 120's shape again at the new tip, with runs.conf unchanged but RED (red-aa566d51-90ee95b3, 2ce10c70): the arms, the light phase under GNU, the whole suite under BSD. ONE red is expected, dispatch.bats 542; any other stops the landing and its TAP goes to vc. ASKED the desk as 01M6B9QGX6WPYENRTQ4XHRFDS7 (heavy, lane bats, tip=90ee95b3b4f027e3e05e92d77a625a22cce061f5), granted in queue order after Trellis's and Laksa's runs, in vc's own preflight's place. NEXT: START on vc's GO, bash run-wp16.sh detached, END at the driver's exit (release with --result, then vc live and on the board); then handover-wp16.sh and the AT rows at the landing (decision 101). The state: wp16/NOTES.md."
+  }
+}

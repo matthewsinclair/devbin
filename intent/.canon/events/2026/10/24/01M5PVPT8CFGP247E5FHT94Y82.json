@@ -1,0 +1,15 @@
+{
+  "id": "01M5PVPT8CFGP247E5FHT94Y82",
+  "ts": "2026-10-24T11:46:01.101Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0213 T10's legs C and D (A and B done on rhadamanth 2026-10-24, outputs in ~/Devel/scratch/devbin-cc/t10/out/, machine on brew): C, Intent's leg, released when Intent re-vendors from 0.1.14 after its v3.2.6 tag (intent-vc); D, kovacs, released when a release carrying 0213 is brew upgraded there (kovacs-sysadm)"
+  }
+}

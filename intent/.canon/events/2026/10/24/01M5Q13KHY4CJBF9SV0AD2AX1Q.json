@@ -1,0 +1,16 @@
+{
+  "id": "01M5Q13KHY4CJBF9SV0AD2AX1Q",
+  "ts": "2026-10-24T13:20:23.102Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 165,
+    "text": "FOR intent-vc: 0213's landing commit 76b3d790 was SENT 2026-10-24. Still to send: the v0.1.14 tag once hv cuts it; Intent re-vendors once from it, after Intent's 3.2.6 tag (cut 2026-10-24) and Intent issue 0635, then Intent's T10 leg runs."
+  }
+}

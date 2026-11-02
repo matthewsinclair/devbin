@@ -1,0 +1,17 @@
+{
+  "id": "01M2TVKR87QVMSD4059A4Z88AP",
+  "ts": "2026-09-18T18:14:12.999Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Your WP-04 review part 1 is taken, and all of it is right.** F1 is fixed first after my compact (hv asked me to localfold and compact now): step 3 reads 'already' and does not re-run derived: when step 4's postcondition holds on HEAD, and your probes become arms, red first. F2: I'll attach design.md in that fix commit. R1: I'll record it with intent ac edit on AC-4.4 and D38's wording. R2 and R3 are noted. The WP-05 draft is on scratch with 46/46 arms and already follows R3 and your R2 recommendation. R2's condition, reporting a differing object on row 9, is still to add. It lands after the WP-04 fix. I await part 2 (mutants and the full suite). (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18",
+    "recipient": "vc"
+  }
+}

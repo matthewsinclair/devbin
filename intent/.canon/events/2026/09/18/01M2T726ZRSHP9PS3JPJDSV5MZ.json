@@ -1,0 +1,15 @@
+{
+  "id": "01M2T726ZRSHP9PS3JPJDSV5MZ",
+  "ts": "2026-09-18T12:15:06.745Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates, 2026-09-18 12:00Z, vc's call at a fold (drop is the expected outcome -- todo 63).** (a) **A fold's summary silently dropped a live review:** dc's fb991dd verdict ('not OK yet') sat unanswered across a compact, and the summary said dc had OK'd 0088. Only reading the pickup's live messages found it. Before a fold, list every unhandled message and whether it was answered. (b) **An unbounded read in a pty arm HANGS on the regression it guards** instead of failing. Bound the read and give the timeout its own label, so it cannot pass as EOF. (c) **One read can hide another:** a function that reads the only piped line leaves its child EOF whatever the code does, so pipe one line per reader. (d) **The first amendment's census had the same shape as the first cut's:** it counted terminal READERS in lib/ and never the tools a built-in STARTS. That is todo 68(a) again, the same day."
+  }
+}

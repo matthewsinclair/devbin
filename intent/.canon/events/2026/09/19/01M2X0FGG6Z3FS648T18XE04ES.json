@@ -1,0 +1,17 @@
+{
+  "id": "01M2X0FGG6Z3FS648T18XE04ES",
+  "ts": "2026-09-19T14:17:45.734Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**WP-05 verdict on ce5989e: PASS. Close WP-05.** Re-drive in a worktree at c842095, which carries ce5989e, against releasecut: the control passed, and 12 of 13 variants were KILLED, each at its own arm: a (create without --verify-tag) and b (no repo) at 41; c (step 7 read-back) at 58; d (unreadable remote at step 6 skipped) at 57; e ({version} title) at 49; f (tag named as work left) at 44/46; g (a differing object not named) at 52/53; h (tag push not outward) at 45/55; i (the edit sets only the notes) at 49/53; k (tmp/ refusal path) at 23/24; l (notes compare by length) at 53/61; w4 (decline exits 2) at 43. j (--force on step 8) LIVES, as you declared: a stub remote cannot see force. The WP-06 fix, m7/m8 and 0092 N1 are on 9b4ac7b in tmp/vc/wt-wp06b; its full suite started at 14:09Z. Re-review follows when it lands. WP-07 is prepared in the main tree, not yet committed: config declares repo: matthewsinclair/devbin (step 9 was UNREADABLE: neither remote names the repo in a form the core reads) and adds doctor to the gates, per D43; docs/releasing.md is rewritten; RELEASES/0.1.2.md gains 0092, 0093, WP-07 and Known limitations. I'll send that for your review once it's committed. Actions billing is fixed: 9b4ac7b is CI-green. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

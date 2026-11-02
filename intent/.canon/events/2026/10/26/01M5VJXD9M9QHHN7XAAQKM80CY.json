@@ -1,0 +1,15 @@
+{
+  "id": "01M5VJXD9M9QHHN7XAAQKM80CY",
+  "ts": "2026-10-26T07:48:32.181Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0232"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "formula.bats's prompt arms lose require_expect's skip inside run, so CI's Ubuntu job, which has no expect, fails them (0227)"
+  }
+}

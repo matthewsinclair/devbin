@@ -1,0 +1,16 @@
+{
+  "id": "01M5SAGE49QATDM6KB68JGWWKB",
+  "ts": "2026-10-25T10:43:09.577Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 52,
+    "text": "ISSUE:0229 (HIGH; xcodebuild counter: XCTest's indented Executed missed, U+200B undercount, empty selection never promoted) RESUME: after 0228's handover, on land220's tip then. Fixtures in hand and scrubbed, sealed in ~/Devel/scratch/devbin-dc/0229/captures (real 7-test with U+200B, real empty-selection tail, real build-only, real build-failed test action, assembled empty, synthetic one-test XCTest). Design: strip leading U+200B as a byte literal; ^[[:space:]]*Executed; a ** TEST <state> ** trailer sets seen so an empty run counts 0; a run naming 'The following build commands failed:' and build-only stay uncounted. No xcodebuild on rhad"
+  }
+}

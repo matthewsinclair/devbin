@@ -1,0 +1,15 @@
+{
+  "id": "01M52AMEZKTEM2EWBQAST9HPTY",
+  "ts": "2026-10-16T12:22:49.587Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "After WP-03 lands with WP-02 as one stack: issue 0200 (shell-init's install prefix carried as data, one fill for every body, arms for & | \\ space $ } ' in zsh and bash, red first on main), then ST0008 WP-04 (D48 Windows PATH, D49 checkout on a Windows drive), each started with intent wp start"
+  }
+}

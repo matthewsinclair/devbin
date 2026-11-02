@@ -1,0 +1,15 @@
+{
+  "id": "01M69JWZ0DMK2F88CF6YRDAZTR",
+  "ts": "2026-10-31T18:17:39.597Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FOR hv (gtools-vc 2026-10-31 ~18:2xZ, relayed 2026-10-31 18:17Z): Gtools ST0021/01 (setup links only where nothing would answer; decision 98's go) passed run 2 (01M69DFN7J7DQCHBWE704BQM1C: 25 mutants red on exactly their arms, the red 868/902 with the change's 34 failing, the green 902/902, M17 901/902 on AT-01.5, the commit gate clean); the re-bank 2c984024 on dc-st21-01 is ready for hv's approval of its landing on Gtools's local main (a squash by path, nothing pushed); ST0021 ships with Gtools's next release on hv's word. vc's rec: approve the local landing, since the work was authorised and nothing is public. gtools-dc is at its usage limit; its records and the landing wait for its next turn."
+  }
+}

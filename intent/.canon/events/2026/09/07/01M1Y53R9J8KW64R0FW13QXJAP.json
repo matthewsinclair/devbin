@@ -1,0 +1,14 @@
+{
+  "id": "01M1Y53R9J8KW64R0FW13QXJAP",
+  "ts": "2026-09-07T14:42:15.987Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "attachment.put",
+  "subject": {
+    "type": "attachment",
+    "id": "ST0002/WP/08/prolix-inventory.md"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

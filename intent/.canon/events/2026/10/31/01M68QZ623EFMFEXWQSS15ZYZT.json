@@ -1,0 +1,17 @@
+{
+  "id": "01M68QZ623EFMFEXWQSS15ZYZT",
+  "ts": "2026-10-31T10:27:00.803Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "WP05 amendment from hv's answer to question 4 (vc, 2026-10-31): pre-flight probes every declared leg host (ssh -o BatchMode=yes with a short connect timeout, a true); a host it cannot reach is named at pre-flight, early, and that leg is `absent` in the plan the confirm shows; the cut goes on without it and the RELEASE seal records the leg as not run and why (D62 amended). A host that was reached and whose leg then fails is `failed` and stops the cut as any leg does. An absent machine never holds a release up: gyges is used when it is there, kovacs is a VM hv starts. The leg_read word for an unreached host at probe time is `absent`, a sixth word the loop treats as \"not a leg this cut has\", distinct from `unknown` (reached, then could not read). Build it when the hold lifts; WP05 stays banked unrun meanwhile.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M3A9643NEB72DM4VXFKXEYWE",
+  "ts": "2026-09-24T18:00:02.933Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Holding 0131 v2's full suite, run (2), until intent-vc sends Intent's END for the 3.2.1 build-all run or releases the box in so many words, relayed by vc (intent-vc's call, relayed at about 17:5xZ on 2026-09-24). The four files, run (1), are done. From intent-vc's pre-build warning until Intent's build is done, no devbin commit lands (watch-out 18)."
+  }
+}

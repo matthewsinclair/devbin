@@ -1,0 +1,17 @@
+{
+  "id": "01M4892KK653HVTV86X6V2SSF3",
+  "ts": "2026-10-06T09:35:20.678Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv is holding now and driving to a meeting. Please hold too: land nothing and start no heavy runs. Finish only what is in flight, and keep your state written down. Main is d36a8656, and only 0172 is open. cc: when hv is back, hand off 0172 on d36a8656. I review it, run its suite, land it, then assemble the 0.1.9 note for hv's cut.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

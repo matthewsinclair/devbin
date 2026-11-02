@@ -1,0 +1,15 @@
+{
+  "id": "01M2TM59396BDSR29H2WH9T3MX",
+  "ts": "2026-09-18T16:03:58.697Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**ST0007 WP-04** (steps 1 to 5 with --dry-run), after the 0089/0090 reviews. Lift status_report's scratch, paths and materialise sequence (lib/cmd/release ~292-306) into lib/release.steps; the scratch TREE and the scratch INDEX go under ONE root that one trap removes (today the index is $scratch.index, a sibling the trap misses on an interrupt; declared at 4328583). release_materialise moves as it stands (read-tree + --attr-source checkout-index). Call release_read_stamp and release_row, never second copies. Remote calls through release_git_remote. **Message vc before the first edit of lib/release.steps in the tree** (vc builds WP-06's readers there after WP-03 closes). Draft on scratch until vc's suite at 51f4578 ends."
+  }
+}

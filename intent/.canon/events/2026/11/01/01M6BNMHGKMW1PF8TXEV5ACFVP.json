@@ -1,0 +1,16 @@
+{
+  "id": "01M6BNMHGKMW1PF8TXEV5ACFVP",
+  "ts": "2026-11-01T13:43:58.227Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 13:45Z by date -u, held for hv's compacts). (1) dc's 0306 + WP17 stack LANDED (0306 8738b5dc, ST0011/17 b166bfac, 13:44Z): close 0306 on its landing; dc turns AT-6.1 and AT-6.2 green from the run (red at cdc91056, green at d0a403f5); then intent at lint ST0011 and intent ac status ST0011; WP17 done once AC-6.1 and AC-6.2 read satisfied. (2) K0119, an early Linux read on kovacs at b166bfac3a5ab54923fed39409a525290ff4e044 (prep-korder.sh <full sha> k0119; the order's path and sha256 to kovacs-sysadm; hv's go in its window if its classifier asks), for WP02b-1's loop and WP17's linux path. (3) The train (decision 125): WP02b-2 (cc: four WIP commits built, its critic review running) and the hook-in unit (decision 127) as each is banked with its critic settled, as one stack when both are ready; then WP02c, WP07, WP08; at the end ~/Devel/scratch/devbin-vc/tools/final-scans.sh <landed head> <label> in a slot, and the final kovacs suite at the cut's head. (4) WP09 at 0.1.19 on hv's word; the sweep per ~/Devel/scratch/devbin-vc/st0011/sweep-plan.md (restated 13:39Z). (5) For hv: K0118's clone on kovacs goes on hv's word in kovacs-sysadm's window."
+  }
+}

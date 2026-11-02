@@ -1,0 +1,15 @@
+{
+  "id": "01M2RBPKFQ19BY5JT534SR6HAV",
+  "ts": "2026-09-17T18:57:40.344Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0085"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A gate seal records where its command line came from at one of the five sites that open one, and a comment claims the parity it does not have"
+  }
+}

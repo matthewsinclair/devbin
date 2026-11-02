@@ -1,0 +1,16 @@
+{
+  "id": "01M69052ADKYN2EDKBADHANGDQ",
+  "ts": "2026-10-31T12:50:02.189Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 57,
+    "text": "Clear-out, the rest of hv's order, by script and while no booked run holds the box: ~/Devel/scratch/devbin-cc/clearout-bundles.sh archived the cited heads it could (the archive now holds 382 of them) and removed nothing, since 13 cited heads held only in bundles failed to fetch, most likely on bundle prerequisites the archive lacks; next, give the archive those prerequisites (eg canon's main as one ref) and re-run it; d55/dl stays (its REPORT.md cites it)."
+  }
+}

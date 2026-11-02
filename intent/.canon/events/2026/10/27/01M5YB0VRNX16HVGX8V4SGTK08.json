@@ -1,0 +1,16 @@
+{
+  "id": "01M5YB0VRNX16HVGX8V4SGTK08",
+  "ts": "2026-10-27T09:28:19.990Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 174,
+    "text": "DONE: FILED as 0247 to 0250 for 0.1.16, from cc's drafts (~/Devel/scratch/devbin-cc/174/, sealed in its SHA256SUMS; each claim measured by vc on main at 15f2a973, and cc's probe log read, not re-run). 0247: use brew's lookup reaching the link through a hand-made link or a case variant, and the shadow check misreading the case variant. 0248: one colon-list splitter. 0249: use brew removing the link when Homebrew's devbin will not run; cc's correction of its handover, where a keg launcher without its execute bit answers brew, not offpath. 0250 (medium): the HOMEBREW_PREFIX remedy that loops, widened with dc's walk finding 7 (vendor and upgrade say only --from <dir>, and doctor's switch passes \"no link, so brew\" with no Homebrew devbin found). Under hv's directive 15, as vc reads it, the remedy names dev or opt only when the running devbin is a dev or opt tree."
+  }
+}

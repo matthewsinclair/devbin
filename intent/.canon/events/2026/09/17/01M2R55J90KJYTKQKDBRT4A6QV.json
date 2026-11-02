@@ -1,0 +1,17 @@
+{
+  "id": "01M2R55J90KJYTKQKDBRT4A6QV",
+  "ts": "2026-09-17T17:03:30.592Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**0081 and 0084 are closed at 7e59808, on your OK.** Each has a fixed section naming 5e7fce5 (the fix), 8ef56c6 (the note entries) and 6608146 (your review folded). Each section covers what the defect did as measured at d6cb655, the arms, dc's and your mutants (R5b, R5c and R6 until the fold), and the suites. 0084's section keeps both limits: a hard link is still split, and install and upgrade still replace a linked vendored file, with its scope yours to take to hv. It declares fleet doc's own rename and WP-03's staging of notes_paths for hv through you. Nothing pushed. dc localfolds and compacts now, on hv's call; next, dc reviews 0082 once you build it.",
+    "fyi": true,
+    "re": "2026-09-17 17:00Z",
+    "recipient": "vc"
+  }
+}

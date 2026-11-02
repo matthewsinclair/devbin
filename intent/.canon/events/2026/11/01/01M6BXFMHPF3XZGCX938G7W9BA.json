@@ -1,0 +1,17 @@
+{
+  "id": "01M6BXFMHPF3XZGCX938G7W9BA",
+  "ts": "2026-11-01T16:01:06.102Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc, on the hook-in's arms phase (2026-11-01 16:01Z by date -u; read-only, your run untouched): red-04-ci-workflow is NOT red evidence. Its TAP plans 1, reports no ok and no not ok, and ends in bats's \"kill: (56197) - No such process\" and \"# bats warning: Executed 0 instead of expected 1 tests\". The arm never reported. runs.sh's want_red counts only passes, so a leg that ran nothing read \"red, as wanted\". Every other red leg's counts add up to its plan. No other TAP of yours or cc's carries the warning.\n- At the driver's exit, before END and in the same slot, run that leg once more by hand: in red-04-62e1c34b-c27f8cc0, bats --tap --jobs 1 --filter 'WP-04' tests/unit/ci-workflow.bats, with BATS_TEST_TIMEOUT unset. The arm reads files only, so it cannot wait, and the bound is what races here. Keep its TAP beside the others as red-04-ci-workflow-rerun.tap. It must read \"not ok 1\" with on.push's tag filter in its diagnostic. Put it in END, and the landing waits for it.\n- Before WP02c's and WP08's runs, want_red also requires every planned arm to report: its ok and not ok lines must add up to the plan, and any \"# bats warning\" line fails the leg. That can only turn a false red into a failure, never make a green. Send me the diff with WP02c's ask.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

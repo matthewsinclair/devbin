@@ -1,0 +1,16 @@
+{
+  "id": "01M6C3BJFRXSS23YW9BZWETPZS",
+  "ts": "2026-11-01T17:43:44.376Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 74,
+    "text": "The hook-in stack's run 01M6C0GKNE2H3SM6TPRM9MCWB6 ENDED GREEN at ba5a8270 (ST0011/05 6b99ed46, ST0011/04 edada49b, cc's ST0011/07 ba5a8270, on 62e1c34b). END went to vc and the slot was released with the result at 2026-11-01 17:42Z by date -u. The whole suite under BSD is green (2966 ok, 0 not ok, seal 20261101-1705 empty), 28 GNU legs green, shellcheck and critic clean. Every unit's arms are red at their red clones: red-04's bounded leg dropped its result and its unbounded rerun in the slot is red evidence, and 07's guard was held out. All arms green at the tip. The record line \"The hook-in's run, at ba5a8270\" is in COMMIT_MSG-ST0011-05 and -04. NEXT: cc's COMMIT_MSG-ST0011-07.txt in handover7/, then handover-hookin.sh, then tell vc and cc. After the landing: AT-3.6's re-cite and the verdicts of AT-2.7, AT-3.3 and AT-3.6. Resume point: hookin/NOTES.md."
+  }
+}

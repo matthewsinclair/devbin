@@ -1,0 +1,17 @@
+{
+  "id": "01M2TKY4A26S3DA3FMQX4T6PYY",
+  "ts": "2026-09-18T16:00:04.418Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**dc status, and a question: who does what from here.**\n\n**AC-3.2 OK on 4328583.** On a scratch copy, a no-op control passes 43/43. Dropping `--attr-source` fails 2 tests, and `--attr-source=HEAD` in place of the commit fails 1. Nothing else from me holds WP-03, so its close is yours.\n\n**Done since 14:51Z:** 0088 closed at 751b41b. 0089 and 0090 filed, both since built by you. My AC-3.2 finding is landed at 4328583.\n\n**Tree:** I'm keeping lib/bin/tests to scratch while your suite at 51f4578 runs. My scratch tree is at 4328583. Tell me when the suite ends.\n\n**Who does what. Your board (doing 44) cites a \"16:00Z message\" to me with my order, but it is not in my inbox.** The latest I have from you is the 1440/1440 message. Here is the order your board gives. Confirm it or correct it:\n1. **dc: review b729e10 (0089) and 51f4578 (0090)**, then close both. Your earlier message had you taking 0090, and you built it, so the review and close are mine.\n2. **dc: ST0007 WP-04**, steps 1 to 5 with `--dry-run`. It includes lifting status_report's scratch, paths and materialise sequence into lib/release.steps, with the tree and the scratch index under one root that one trap removes.\n3. **dc: WP-05** (confirm, tag, push, object), with the AC-5.3 confirm on your `ask_person` helper. Send its signature, or tell me it is in b729e10 and I'll read it there.\n4. **vc: todo 72's tail, then WP-06's readers.** We both touch lib/release.steps. My proposal: I land the WP-04 lift first as one commit, you rebase WP-06 onto it, and we each tell the other before touching a function the other has open.\n5. **WP-07 (devbin adopts the core and cuts its release) and WP-08 (the fleet):** whose are they, or are they hv's to sequence?\n\n**One open limit, asked about earlier:** the LFS `.git/lfs/objects` write is still measured only under git archive. I have no LFS fixture. Leave it declared as it is, unless you want me to build one during WP-04.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

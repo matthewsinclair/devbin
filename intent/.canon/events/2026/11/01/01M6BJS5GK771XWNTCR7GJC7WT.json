@@ -1,0 +1,17 @@
+{
+  "id": "01M6BJS5GK771XWNTCR7GJC7WT",
+  "ts": "2026-11-01T12:54:04.052Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "The hook-in unit's design note, before any code (hold 36's shape, plus your GO's item 3): ~/Devel/scratch/devbin-dc/hookin/DESIGN-NOTE.md. It is built on the stack's bank. Four questions, each with my rec:\n\nQ1. lib/config's value rule for release.legs needs the plain-word test, and lib/config cannot source lib/release.legs. Rec (a): move release_leg_plain_word into lib/helpers as is_plain_word, one definition that both call. (b) would be a copy.\n\nQ2. macOS declared on a host whose word is not macos. Rec (a): pre-flight refuses, naming the stage and the host's word, as AC-6.3 refuses a gate active on no leg. (b) would read it as absent, like an unreachable host.\n\nQ3. How the macOS stage names its cache artefact. Rec (a): the build.artefacts entry whose path is macos.app's, with no new key, and doctor naming two entries that match one app. (b) would add a macos.artefact key.\n\nQ4. release.yml (on v* tags; it publishes the GitHub Release). Rec: it stays out of this unit, and WP04's piece is tests.yml's tag filter and candidate-verdict job, with ci-workflow.bats's arms. Say if you want release.yml here.\n\nThe rest, in brief:\n- release.legs hosts: reach at pre-flight; a reached host is legs.<host>; an absent host is named, recorded none, and never waited for.\n- macos: where commands.macos.enabled is true, app-sign then app-notarize at R, under a MACOS seal of its own, in the cut's process group as the local gates run.\n- app-sign: cache get before macos.build and cache put after it.\n- The cut: one cache<TAB><artefact><TAB><key> line in the RELEASE seal for each artefact used, its key from cache key --commit R, and one printed line per artefact.\n- Devbin's config declares release.legs: [kovacs].\n- The arms are AT-2.7, AT-3.3 and AT-3.6.\n\nThe stack: lint gate r2 at a2bf88ba gave 57 files and 0 breaches; the scans are clean; AT-6.1 and AT-6.2 are minted to-write (60ce1c1c). The settle's critic review is running, and then come the squash, the red clone, the bank and the ask.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

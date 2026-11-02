@@ -1,0 +1,16 @@
+{
+  "id": "01M5VJ2KQHW1HWZBMEWAB4XJM9",
+  "ts": "2026-10-26T07:33:54.033Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "HOLD: devbin's kovacs slot is GO (molt-vc, 07:33Z) and its orders are with molt-vc to relay, since kovacs-sysadm is not reachable from vc's session: ~/Devel/scratch/devbin-vc/kovacs/ORDERS-slot-0.1.15.md (sha256 6a3f07cc), read by kovacs-sysadm over ~/mac. FIRST cc's LEGD (legd.sh 88796665; refuses any keg but 0.1.14; read legd.rc and its outputs against P1 and P2, record leg D in 0213's resolution as cc's, run by vc, then close 0213), THEN K115 (k115.sh 05fad1f2, bundle devbin-3ff7f989.bundle cc90fb4a, the full suite at main 3ff7f989; read its seal under ~/work/devbin-vc/devbin-k115/tmp/test/, never its status). kovacs-sysadm's start of LEGD is devbin's START; send molt-vc END the moment K115's status lands, with the seal's verdict; Utilz's 0109 v2 heavy waits for it. Not held, only finished: CI run 40283937303 on 04f6368d (watch task b84254slk, ci/run-40283937303.watch.txt): send molt-vc the verdict read from its jobs, and on green send dc the run id for 0222's resolution (or fill dc's draft 0220/handover/RESOLUTION-0220-0222.md if hv has closed dc), then close 0222. Otherwise holding for molt-vc's next instruction (hv, 2026-10-26)."
+  }
+}

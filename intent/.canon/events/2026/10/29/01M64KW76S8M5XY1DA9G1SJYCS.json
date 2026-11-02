@@ -1,0 +1,15 @@
+{
+  "id": "01M64KW76S8M5XY1DA9G1SJYCS",
+  "ts": "2026-10-29T19:58:31.641Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Repo model, until hv rules (2026-10-30): hv wants this checkout and upstream on the clean public history and Dropbox as push-only old history; open: where intent/ lives, the Dropbox layout, release rework. upstream is fetch-only for now."
+  }
+}

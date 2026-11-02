@@ -1,0 +1,15 @@
+{
+  "id": "01M5Q6BWY8GVMZ13BR6XRAJCER",
+  "ts": "2026-10-24T14:52:17.737Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0220"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "comments and test titles across tests/, bin/ and lib/ write counts down: a set the tree grows, or a list's length beside the list, many of them already wrong"
+  }
+}

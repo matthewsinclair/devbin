@@ -1,0 +1,15 @@
+{
+  "id": "01M69Q6G6ACVAD6TEJT6KNX5YZ",
+  "ts": "2026-10-31T19:32:46.410Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's go to resume the ST0011 fix phase after the fourth fold, given in vc's window between 19:25Z and 19:30Z (2026-10-31, by date -u) as '#dietyspeed!', which hv then confirmed is hv's personal code word for Go. The three lane holds (bats 01M69M8HKZCAMD9GMMP5CR37M4, cargo 01M69M8HMS8YHGAVG4942NMWHY, heavy 01M69M8HNB91SR7WP1R7FYWKK1) released at 19:30Z. Order under the pen (decision 103): cc's WP02b-1 critic review, run and landing first; dc builds WP16's cache.bats arms and the exit-3 words meanwhile and runs WP16 after WP02b-1 lands, because the two banks share docs/configuration.md, lib/builtins, lib/config and lib/config.reference.yaml (decision 83); then WP17 rebased on WP16, WP02b-2, WP02c, WP07, WP08, both full suites (0300 closes on kovacs's green), WP09 at 0.1.19 on decision 102's preconditions, the sweep after the cut. Nothing public without hv's explicit word (directive 3). laksa-dc's compact and rhadamanth-sysadm's fold line are still owed and block nothing here. Decisions 92, 94, 99 and 111, the executed fold orders, archived to make room."
+  }
+}

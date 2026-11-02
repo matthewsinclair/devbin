@@ -1,0 +1,15 @@
+{
+  "id": "01M2QBPJ9F0VNTWJRNGTTKS1XA",
+  "ts": "2026-09-17T09:38:24.687Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**File a devbin issue: every run: word is glob-expanded against the project root, and a run: of nothing but space runs the option's own arguments as the command, rc 0.** Measured through the dispatcher at f34753f; the transcript is at scratchpad/run-glob-transcript.md (copy it into the issue verbatim). Found by critic-shell reviewing WP-02's notes.run, which expands the same way. One ruling for every run: site (split without globbing, or document that globs expand) and a refusal of a run: with no words. WP-02 already refuses a blank notes.run on its own."
+  }
+}

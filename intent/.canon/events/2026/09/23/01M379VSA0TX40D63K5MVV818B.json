@@ -1,0 +1,15 @@
+{
+  "id": "01M379VSA0TX40D63K5MVV818B",
+  "ts": "2026-09-23T14:14:09.472Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "LESSONS candidate (14), with todo 120's (8) as its first instance: intent wb clear <sender> marks EVERY live message from that sender handled, not the ones answered. At 14:11Z vc cleared cc's 14:07Z approval of 0116 and 0138 unread, in the same clear as the two messages vc had answered, and read it only because the count said 3 where vc expected 2. Before a clear, list the sender's live messages and answer each; the count the verb prints is the check."
+  }
+}

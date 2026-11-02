@@ -1,0 +1,15 @@
+{
+  "id": "01M5Q6C7M1BJHGPQ2B8SKHE40R",
+  "ts": "2026-10-24T14:52:28.673Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0220 (the other written counts in comments and titles, about 150 lines in about 55 files, triage in ~/Devel/scratch/devbin-dc/0216/counts/g1-4.result.md): no build until the 0.1.14 cut is done and vc says to build it"
+  }
+}

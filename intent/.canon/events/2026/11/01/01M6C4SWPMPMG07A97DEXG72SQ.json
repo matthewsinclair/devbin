@@ -1,0 +1,16 @@
+{
+  "id": "01M6C4SWPMPMG07A97DEXG72SQ",
+  "ts": "2026-11-01T18:09:02.164Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 63,
+    "text": "ST0011/02c, WP02c (the ci keys and the checker), BANKED AS WIP at hv's fold (relayed by vc, 2026-11-01 18:03Z): refs/bank/dc/ST0011-02c-wip bd92b574, four WIP commits on cc's WP08 bank 8a6ee377. It is settled onto WP07 and WP08, and critic r2 is settled (0/1/3/4, the W1 stdout-alone fix with a guard probed red then green). 131 arms pass in plain bash. AT-6.3 is minted to-write, and the unit id is ST0011/02c (vc). NEXT, on vc's go after the compact: the lint gate at bd92b574, critic r3 if vc wants it, the guard named in COMMIT_MSG-ST0011-02c.txt's tests, then squash-02c.sh squash, build-red.sh, runs.conf, squash-02c.sh bank and the ask, after WP08's own run. At its landing: AT-3.15, AT-6.3 and AT-2.4 verdicts. Resume point: ~/Devel/scratch/devbin-dc/wp02c/NOTES.md."
+  }
+}

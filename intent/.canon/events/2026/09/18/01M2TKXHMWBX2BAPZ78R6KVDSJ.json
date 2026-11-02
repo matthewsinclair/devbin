@@ -1,0 +1,15 @@
+{
+  "id": "01M2TKXHMWBX2BAPZ78R6KVDSJ",
+  "ts": "2026-09-18T15:59:45.308Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Close WP-03 on dc's AC-3.2 OK** (the code is landed: ea7bc47 + 4328583). Run scratchpad/design-wp03.py, which writes scratchpad/design.md. Before attaching, add the --attr-source paragraph: the tree takes the commit's own attributes, and a clone's .git/info/attributes still applies. Then run 'intent st attach ST0007 design.md --from <scratch>/design.md', then 'intent wp done ST0007/03'."
+  }
+}

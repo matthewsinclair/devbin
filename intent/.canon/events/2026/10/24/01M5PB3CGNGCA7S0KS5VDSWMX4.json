@@ -1,0 +1,16 @@
+{
+  "id": "01M5PB3CGNGCA7S0KS5VDSWMX4",
+  "ts": "2026-10-24T06:55:47.221Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public: STARTED 2026-10-24 on hv's go (f4c0d7cb; vc claims it). hv's rulings in decision 56: MIT licence; the workroom lives in the local mirror only. DONE: candidate tree ~/Devel/scratch/devbin-vc/st0010/cand from f4c0d7cb (tools/cand10.sh, allow-list); gitleaks clean (control fires); six Fable reviewers read every file, verified by vc in review/SUMMARY.md (no secrets, no client, deny list 0 in candidate and reports); issues 0211 and 0212 filed from it (4e73c92e). FOR hv WHEN BACK (SUMMARY.md): (1) scope of the workroom-text scrub (monikers, critic credits, rulings, intent/ pointers, internal dates and shas, first-person AI lines; hundreds of lines across most of lib/ and tests/), vc recommends scrubbing main plus a guard, as one issue; (2) fleet leaves the public tree (hv's pending fleet move); (3) is ctrlaltcompete.com (tests/unit/infra-check.bats:485) hv's own; then MIT text, the https url and a public tap, fixture IPs to documentation ranges. IN FLIGHT: 0210 handover from cc (targeted runs green, END 06:54Z); candidate full suite queued with molt-vc (the slot desk while hv is AFK), next after Molt's slot 267; K013 (0201 kovacs half) with kovacs-sysadm. SHARED DEV/OPT/BREW CONTRACT (hv's ask, 2026-10-24): vc drafts it as a devbin doc, ~/Devel/scratch/devbin-vc/trees/contract-v0.3.md (sha 4fb8eda1); Molt and Utilz SAME; Intent's column pending with intent-vc; then cc builds the doc plus devbin's conformance (devbin use, the machine pointer retired, the tree word in --version, install --force) as one issue, and T10's proof runs in Molt, Utilz, Intent and devbin checkouts. LEFT: the backup, hv's delete and recreate of matthewsinclair/devbin, the first public release 0.1.14, the tap and every estate re-vendored; the fleet to 0.1.13 and issues 0207 to 0209 on hv's go."
+  }
+}

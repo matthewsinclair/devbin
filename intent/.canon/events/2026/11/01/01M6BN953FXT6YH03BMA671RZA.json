@@ -1,0 +1,16 @@
+{
+  "id": "01M6BN953FXT6YH03BMA671RZA",
+  "ts": "2026-11-01T13:37:45.071Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 42,
+    "text": "ST0011/02 (WP02b-2, the publish shape folded into the cut, release publish and --expect retired, AC-2.3 in every shape; issue 0304 in it, issue 0297 riding it): on vc's GO (12:44Z), Q3 ruled (a). Built on wp02b2 (~/Devel/scratch/devbin-cc/st11-wp02b/wp02b2), four WIP commits on f3462610: 0304 a920dc5a; config and docs 1e411f9b (from wp02b2-cfg 7181bc18); the fold dc71c6e6; 0297 33cec86a (from wp02b2-0297 dff0e719). Probed outside bats against the real dispatcher: every publish-shape path and 0304's arm read as their arms want. The lint gate: 57 files, 0 breaches. Open: the critic-shell review (running), its settle, the squash onto main (onto 0306 if dc's stack lands first, lib/runlog resolved there), the bank refs/bank/cc/ST0011-02b2, and the ask with kit2 (~/Devel/scratch/devbin-cc/st11-wp02b/kit2: arms releasecut releasepublish releasecore releaseattach, the three guards in GREEN_AT_BASE, RED_TIMEOUT 60, test all, the parallel GNU legs). At the landing: AT-2.8 green over the publish shape's candidate arms. Then WP07 (todo 58)."
+  }
+}

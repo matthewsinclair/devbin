@@ -1,0 +1,15 @@
+{
+  "id": "01M5SB44EPGR5J19KBZ34QSDTP",
+  "ts": "2026-10-25T10:53:55.030Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0226 fixup 0226b for help.bats #56 (lib/pages/macos.md:21 named docs/; lib/cmd/macos:90 and :187 too): sealed on land220's 9fab8100 as 1b748f0a, bundle + COMMIT_MSG + SHA256SUMS in ~/Devel/scratch/devbin-dc/0226b/handover, sent to vc. Green held for hv's continue and molt-vc's slot: help.bats and macos.bats whole, BSD and GNU, the documentation scan (with 0228's six), critic on lib/cmd/macos. Order into land220: 0226b, 0227, 0228"
+  }
+}

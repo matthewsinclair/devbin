@@ -1,0 +1,16 @@
+{
+  "id": "01M68S30X8T96E8JDY0F77GWVG",
+  "ts": "2026-10-31T10:46:35.176Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 86,
+    "text": "ST0011 fix phase, hv's go renewed 2026-10-31 10:34Z (vc holds the pen, hv AFK): run 1 is the stack WP03 + WP04 (dc, 43142be2 and b7e8a906, both read and approved; is_commit_sha gains a full form in WP03), in the bats lane once cc's WP01 run N9CEEZ ends; run 2 chains cc's WP01 re-bank (four reds; release:207 and :3401 adopt is_commit_sha full) with dc's WP06a re-bank (critic dispositions accepted); run 3 is WP05 on WP01's landing; each lands with land-stack.sh on green, then the landing tree's full suite on rhadamanth and kovacs. The five consumer estates (vc and dc each, started by hv) are briefed on WP10 to WP14: inventory, WP15 baseline, duplicated runs needing no new core; nothing public. WP16's design is design.md s13 with AC-5.1 to AC-5.4."
+  }
+}

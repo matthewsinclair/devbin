@@ -1,0 +1,15 @@
+{
+  "id": "01M45J4EZH79WEPKYS9KRMRQKF",
+  "ts": "2026-10-05T08:15:55.377Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "directive",
+    "text": "A CLIENT's name, or the name of a client's project, never appears anywhere in devbin: the tree, issues, boards, canon events, commit messages or release notes (hv, 2026-10-05: \"mentioning CLIENT names and projects is an UNFORGIVABLE FIRING SQUAD offence\"). A session named after client work is a client name too; in devbin's record it is \"another estate's session\". hv's own projects may be named in docs and commits, but never by their local directories, never as a dependency, and never in shipped code (bin/devbin and lib/)."
+  }
+}

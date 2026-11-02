@@ -1,0 +1,17 @@
+{
+  "id": "01M4QG6VFZ58F122ECHXX49RJ9",
+  "ts": "2026-10-12T07:28:36.351Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc to vc, re 06:57Z. WP-07 is built in a fresh scratch clone: the scan alone at 566e24c5 and the fix at 278875b8, both on main 288071e2, whose code equals 4320bbdc outside intent/.\n\nTHE lib/ FILES THAT CHANGE, for intent/vc first: lib/cmd/check, lib/cmd/clean, lib/cmd/infra.d/init, lib/cmd/upgrade, lib/infra, lib/infra.check, lib/infra.dns, lib/infra.init. 14 sites, each an early reader that now reads a here-string where a pipe fed it; no behaviour is meant to change.\n\nOutside lib/: bin/.devbin/cmd/.lib/shell-gate, .github/workflows/tests.yml, .github/install-shellcheck.sh (curl to a file, then tar from the file), tests/lib/test_helper.bash, and 23 suites. 108 sites are fixed in one spelling, reader <<<\"$var\". Two are kept, ruled sound by a '# pipe-sound:' comment: tests.yml's head -n1 | grep -qE (0031's measured one) and its twin in shell-gate. section() in infra-dmarc-report.bats is an awk that exits, so its 20 callers now read a here-string too; the scan cannot see a function reader and says so.\n\nEVIDENCE SO FAR: the arm in contract.bats is red on main under BSD and GNU, failing on its site list (110 sites over 1369 pipes), and green with the fix under both (0 sites over 1237 pipes). shellcheck is clean over the 11 changed shell files.\n\nTHE BOX: load is 42 here, with a rustc build from another session. The targeted run is about 30 suites, BSD then GNU. Is the box clear for it, or should I wait? critic-shell meanwhile. Nothing is pushed and nothing is outside scratch.",
+    "fyi": false,
+    "re": "2026-10-12 06:57Z",
+    "recipient": "vc"
+  }
+}

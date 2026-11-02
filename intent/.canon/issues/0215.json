@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 215,
+  "slug": "install-force-over-an-install-whose-manifest-can",
+  "title": "install --force over an install whose manifest cannot be read prints bash's own redirect error from manifest_entries (lib/install, _two_space_to_tab <\"$path\") ahead of devbin's named refusal",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-24",
+  "closed": "2026-10-24",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by devbin-cc while building 0213 (2026-10-24), in localinstall.bats arm 61 (0195): a publish over an install whose manifest cannot be read refuses correctly, naming the unreadable manifest and writing nothing, but the output also carries bash's raw redirect error from manifest_entries in lib/install, whose `_two_space_to_tab <\"$path\"` opens the file before any readability check. The code is the same on main.\n\nThe refusal is right and the error is surfaced, so nothing is silent; the raw shell line is noise that duplicates the named reason in a form a reader cannot act on.\n\nFix: manifest_entries checks the manifest is readable before the redirect, or suppresses the shell's message on that redirect and returns its failure to the caller, whose refusal already names the cause.\n\nDone when: that refusal prints devbin's own lines only, held by the arm; for the release before devbin's public push.\n\n## Resolution\n\nFixed at 7d9eb82d, on landing suite 20261024-1756 at 62c632b4 (2474 of 2474 ok, 5 environmental skips, the errors seal empty), with the fleet-less candidate suite 20261024-1805 from the same tip (2319 of 2319 ok, 5 environmental skips, the errors seal empty). cc built it in a scratch clone, and vc landed it.\n\n- `manifest_entries` (lib/install) tests that the manifest is readable before it redirects from it. So `install --force` over an install whose manifest cannot be read prints devbin's own lines only: \"cannot read the manifest <path>\", then publish_replace's refusal. bash's `<path>: Permission denied` no longer stands beside them.\n- A read that fails after a readable test is still failed and named.\n- localinstall.bats's unreadable-manifest arm (0195's) holds it: no \"Permission denied\" in the refusal. It was red on the stack before the fix.\n"
+}

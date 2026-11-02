@@ -1,0 +1,15 @@
+{
+  "id": "01M5Q13MXS83HA2VKF0JBXYJEX",
+  "ts": "2026-10-24T13:20:24.505Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0207-0209 batch (plan approved by vc): built in ~/Devel/scratch/devbin-cc/0207-9/build on base 9f71ba86, wip tip f2603fc1 (0209 commits 0d5f25ec..145ee095 and 4c page table, 0207 a14f6ba9, 0208 83694c5b and f2603fc1); RED done (runs/red-*: releasecore 2 and releasestatus 39 not ok, as intended); GREEN under BSD was in flight at the fold (runs/green-bsd-*), read its SUMMARY; left: the GNU four (releasecore, releasecut, releasestatus, releaseattach), then split into three commits (0209, 0207, 0208) with handover/COMMIT_MSG-*.txt, bundle, verify, READY to vc. Released when molt-vc reopens the desk"
+  }
+}

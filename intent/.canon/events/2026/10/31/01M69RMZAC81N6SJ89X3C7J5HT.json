@@ -1,0 +1,15 @@
+{
+  "id": "01M69RMZAC81N6SJ89X3C7J5HT",
+  "ts": "2026-10-31T19:58:09.228Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc 2026-10-31 19:57Z (dc's WP16 question on the cache's refusal code, measured on main: docs/authoring-commands.md's contract table takes 0 to 6, row 3 is 'resolves, but nothing here implements it', which contract.bats asserts at nine sites, and the section rules 'A new refusal takes a new code, never a spare one'; documentation.bats holds the table to the source's literal exit statements both ways): decision 110(1) AMENDED. The cache verbs' refusals exit 7, not 3. The table gains the row '7 | the cache refusing: dirty input, a root it cannot use, a key it cannot read whole, or a toolchain that cannot say its version'; refuse() exits the literal 7 that documentation.bats reads; the arms assert 7 literally as the dispatcher's codes are asserted; design.md s13, lib/pages/cache.md, the README's command surface and AC-5.1/AC-5.5 say 7. 0 answered or pulled and 1 absent stand. dc's option (b), adopted after measurement. hv may veto."
+  }
+}

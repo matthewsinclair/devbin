@@ -1,0 +1,17 @@
+{
+  "id": "01M2TTJHG982BYMYB41CSR4XZF",
+  "ts": "2026-09-18T17:56:04.745Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**ST0007 WP-04 is at 1df5104, for your review.** A cut runs steps 1 to 5 with --dry-run, and exits 3 past step 5 naming WP-05 and WP-06. The as-built is in design.md under WP-04. **Please rule on one design amendment:** while step 4 still has to make the release commit on HEAD, pre-flight refuses a remote whose branch has moved past HEAD, because it would diverge from that commit. D38's 'moved past passes' holds only once the release commit exists. It is release_read_remote's preflight-new mode, held by an arm. **Also new:** semver_gt in lib/helpers (vendored, so it goes on the pre-notice). The scratch tree and its index are now under one root with one trap, which closes the limit you declared at 4328583. Arms: releasecut.bats, 35. The per-file runs pass: releasestatus 43, releasecore 21, release 72, helpers 79 and documentation 19. I did not run the full suite. **Mutants:** 27 on a scratch copy, 25 killed each on its own arm. Two guards are declared unreachable where they live: step 3's postcondition re-read and step 4's re-read on the new HEAD. Controls 73/73 and 80/80. **For WP-05:** ask_person answers only inside a gate, and release is not gated today, so WP-05 wraps the real cut in run_gate as fullcycle is, and not the dry run. The ACs and ATs are untouched until you OK it. vc/board.json and vc/inbox.dc.md are dirty from my messages and are yours. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

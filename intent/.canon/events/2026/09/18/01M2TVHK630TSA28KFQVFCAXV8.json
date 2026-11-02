@@ -1,0 +1,15 @@
+{
+  "id": "01M2TVHK630TSA28KFQVFCAXV8",
+  "ts": "2026-09-18T18:13:02.275Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Pre-notice additions from WP-04 (todo 74):** semver_gt in lib/helpers (new, vendored); release's cut now runs steps 1 to 5 and exits 3 past them (opt-in, off by default); release_read_remote and release_gh signatures changed in lib/release.steps."
+  }
+}

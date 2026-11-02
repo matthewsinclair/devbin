@@ -1,0 +1,15 @@
+{
+  "id": "01M4ZY78JMDFTKX5E4KTVTS7AQ",
+  "ts": "2026-10-15T14:07:25.268Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "GLOBALFOLD OWED since 2026-10-12, for the end of the next working day or when hv asks: intent/wip.md (v3.29) and intent/restart.md (v3.23) still name ST0081 for Intent's WSL thread (ST0082 since 2026-10-14, and ST0081 is now Intent's Linux packages and Homebrew thread), still say WP-01 to WP-06 wait on hv's questions of 2026-10-12, and carry nothing of kovacs's provisioning, D1, 0198, design v0.8, or the brew work (0195, 0197); dc flagged line 11 of each on 2026-10-15."
+  }
+}

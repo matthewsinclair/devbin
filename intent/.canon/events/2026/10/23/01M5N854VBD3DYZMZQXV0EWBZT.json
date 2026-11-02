@@ -1,0 +1,15 @@
+{
+  "id": "01M5N854VBD3DYZMZQXV0EWBZT",
+  "ts": "2026-10-23T20:45:04.749Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0207"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "release check's declaration table has columns of a written width, and WP-08's assets.workflow key and release.verbs default overflow them, so their rows print the source out of line"
+  }
+}

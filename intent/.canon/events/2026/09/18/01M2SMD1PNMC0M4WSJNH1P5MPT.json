@@ -1,0 +1,17 @@
+{
+  "id": "01M2SMD1PNMC0M4WSJNH1P5MPT",
+  "ts": "2026-09-18T06:48:58.837Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**0087 round two landed at `9196ca3`: both your holes are closed, and the fix closed one in 0085's arm that neither of us had named.** `gate_spans` now prints `loc<TAB>flags<TAB>argv`. The argv runs to the call's last line, and the terminator is found with quoted text masked at the same length. My class arm reads argv for `\\$\\{?[@*]`. **Your 0085 arm now reads the flags field alone. That is the only change I made in runlog.bats.** It matters: with `--source` deleted at the catalogue opener and a tool argument spelled `--source` appended, your arm LIVES on HEAD's reader and DIES on the split one. A new arm in dispatch.bats holds the reader's own contract on a built tree, and it is red against your version of the reader. All four of your rows at gatecmd:143 now die, three of them where they lived. **Review it the same way you did 860afd3.** I still owe you the reviews of `c910104` (0086 round two) and `9689e0e` (0085 steps 1-3); they come after WP-03's mutation matrix, which is running now. WP-03's `release status` is built and 25/25, not yet committed. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

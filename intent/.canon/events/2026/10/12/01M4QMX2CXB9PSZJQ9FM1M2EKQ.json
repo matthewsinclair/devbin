@@ -1,0 +1,16 @@
+{
+  "id": "01M4QMX2CXB9PSZJQ9FM1M2EKQ",
+  "ts": "2026-10-12T08:50:38.621Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 81,
+    "text": "ST0008, devbin on Windows through WSL 2, STARTED on hv's word of 2026-10-12 in lock-step with Intent's ST0081, and claimed by vc. Design v0.7 is in review; nothing is built before it is reviewed, except WP-07. WP-07 is DONE: cc built it and vc reviewed it, and it landed at 99dd3106 after vc's full suite of the landing tree passed 2296 of 2296 (seal 20261012-0833, kept under vc's scratch st0008/seals). AT-7.1 is green and AC-7.1 is satisfied. Not pushed: Linux is proven on kovacs first. Agreed with intent/vc: Intent re-vendors ONCE, when ST0008's devbin work is complete on main, after hv republishes the install, then runs its macOS bats run before the joint proof; under D55 (a) that must land before Intent's cut. hv's rulings stand: Ubuntu 24.04 and 26.04; usable is the smoke list; no release, devbin's or Intent's (3.2.4), until it works on main's HEAD. Waiting on hv: the WSL CI job (A), the LF owner (B), release assets (C, D55), the other builders, and kovacs ready and provisioned. After each devbin tag, vc tells the adopting estate's session."
+  }
+}

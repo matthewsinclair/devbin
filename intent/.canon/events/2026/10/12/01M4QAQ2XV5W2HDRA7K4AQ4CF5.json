@@ -1,0 +1,15 @@
+{
+  "id": "01M4QAQ2XV5W2HDRA7K4AQ4CF5",
+  "ts": "2026-10-12T05:52:36.797Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0008/02"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "The prerequisite stated in the README, and install hints naming apt"
+  }
+}

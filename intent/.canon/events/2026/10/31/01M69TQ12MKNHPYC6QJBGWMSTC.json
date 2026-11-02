@@ -1,0 +1,16 @@
+{
+  "id": "01M69TQ12MKNHPYC6QJBGWMSTC",
+  "ts": "2026-10-31T20:34:13.716Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop), banked WIP on hv's fifth fold order: refs/bank/cc/ST0011-02b 9e1440dc6d4378ce883da3ac482c4810bbd963b3, 13 WIP commits on main a2dde479, never run as a unit. The critic-shell review is final: 3 critical (C0 a false green that could tag on failed gates), 9 warning and 20 notes, all settled before the unit's first run. Dev check 2 01M69RVWN7QW558AW8RZWTK61D ended green in six release suites; it is not evidence. The state and the steps on the next go are in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md; then WP02b-2."
+  }
+}

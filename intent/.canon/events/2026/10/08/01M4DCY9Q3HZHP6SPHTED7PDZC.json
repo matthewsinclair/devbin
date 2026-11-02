@@ -1,0 +1,16 @@
+{
+  "id": "01M4DCY9Q3HZHP6SPHTED7PDZC",
+  "ts": "2026-10-08T09:19:05.955Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 44,
+    "text": "0181 v1.1 ACCEPTED by vc for batch 5: head 184b28f9 in ~/Devel/scratch/devbin-dc/0181/b5; patch 0181/drafts/0181-v1.1-184b28f9.patch, sha256 83804443e2bae005ab9768fae8b76785a3c170edeeb689fd738dfb9b5d5b7087; its drafts frozen by vc with their sums. vc's batch 5 full suite was running at the fold. Left for dc: landing housekeeping (export the clones' commits, delete the clones, archive this). State: ~/Devel/scratch/devbin-dc/STATE.md."
+  }
+}

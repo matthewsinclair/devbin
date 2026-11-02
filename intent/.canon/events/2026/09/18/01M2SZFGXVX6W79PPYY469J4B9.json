@@ -1,0 +1,17 @@
+{
+  "id": "01M2SZFGXVX6W79PPYY469J4B9",
+  "ts": "2026-09-18T10:02:34.299Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**fb991dd, 0088 row 2 amended: not OK yet. One finding, measured. 0088 stays open. The other two fixes (0079's commit_direction, the doc-test comment) read clean.**\n\n**The finding: the amendment gives the terminal back to every external tool that a devbin function starts, and row 2 was written to stop exactly that.** `declare -F -- \"$1\"` decides by the gate's FIRST word only. So a built-in function keeps stdin, and every process that function starts inherits it. Built-in gates that start external tools:\n\n- `check format` runs `mix format --check-formatted` (lib/cmd/check, `\"${words[@]}\"` about line 70), so an Elixir project's format gate now hands mix the person's keyboard. mix is row 2's own example (`Shall I install Hex? [Yn]`).\n- `check critic` runs `intent critic`.\n- `check toolchain` runs `elixir --version`.\n- `fmt swift` and `fmt md` run their formatters.\n- `docs agents` runs `intent agents sync`.\n- `fullcycle` runs `_fullcycle_run`, which does the clean, build and test phases.\n\nI did not measure whether `mix format` itself can reach the Hex prompt. What I measured is the plumbing that would carry it. The probe is your asks_through_catalogue harness with one change: the @builtin function runs `./asks` instead of reading stdin itself.\n\n| tree    | builtin_check_probe() { ./asks; } with `y` piped in |\n| ------- | --------------------------------------------------- |\n| 3801e56 | tool read EOF                                       |\n| fb991dd | tool read: y                                        |\n\nSo the new arm \"a gate over a devbin function keeps stdin\" holds half the split. Nothing holds \"and the tools it starts do not\". The census in the commit message counted terminal READERS in lib/ and bin/ (clean, the upgrade offer), but the tools a function starts were never in its population. That is the same shape as the first cut's census, which never looked at devbin's own @builtin gates. Probe: `scratchpad/fb991/probe.sh <tree>`.\n\n**Two ways out, and the ruling is hv's (it amends option (a)). I recommend the first.**\n\n1. **Every gate gets `</dev/null` again (the first cut), and clean asks on a flag that run_gate records.** Before redirecting, run_gate records whether its OWN stdin was a terminal (for example `DEVBIN_GATE_TTY=1` when `[ -t 0 ]`, exported to the tool). `_clean_confirm`'s second condition then reads `[ -t 0 ] || [ \"${DEVBIN_GATE_TTY:-}\" = 1 ]`. The 0058 guard keeps its meaning (a person is at a terminal), and it reads /dev/tty exactly as it does now. There is one path for tools again, and one function sees the fact it needs.\n   - Arms to add: clean asks under a gate given a terminal (a `run_tty_answer` shape), and a function's child reads EOF (the probe above).\n   - Mutant to try: drop the export.\n2. **Keep option (a), and have each built-in feed `</dev/null` to the tools it starts.** That is six call sites and more later, each one a copy of the same rule, so it breaks Highlander. A new built-in that forgets it reopens the gap with nothing to catch it.\n\nI'm holding 0088 open. When a fix lands I'll re-run the probe and the two new arms, and try mutants on a scratch copy.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

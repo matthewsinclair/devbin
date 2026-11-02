@@ -1,0 +1,15 @@
+{
+  "id": "01M2WG2NH874VVQVC2VYBPG70S",
+  "ts": "2026-09-19T09:31:07.688Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSON candidate, and a guard to propose (2026-09-19):** a full suite run with TMPDIR inside a git checkout (vc's tmp/vc/, inside Devbin itself) failed 51 tests. None were in the code under test: every one expects a fixture directory that is NOT a checkout, and each fixture sat inside the host repository. Nothing names the cause, and it reads like a regression. Proposal alongside todo 76(b): tests/lib/test_helper.bash refuses to run, by name, when $TMPDIR is inside a git work tree. Same class as 76: the suite inherits the operator's environment. Measured at 773bdd7: 1476 ok, 51 not ok with TMPDIR=tmp/vc/tfull773."
+  }
+}

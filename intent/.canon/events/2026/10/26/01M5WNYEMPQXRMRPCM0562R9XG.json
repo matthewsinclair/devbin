@@ -1,0 +1,16 @@
+{
+  "id": "01M5WNYEMPQXRMRPCM0562R9XG",
+  "ts": "2026-10-26T18:00:46.486Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "ISSUE:0232, claimed: landed by vc at c0b47cf6; draft RESOLUTION-0232.md 953f6ae8 in the handover, sealed evidence in ~/Devel/scratch/devbin-cc/0232/runs. Released when vc closes 0232 in its todo 171, filling the draft's placeholders with the landed sha c0b47cf6 and CI run 40349359447 on a81f0f98, the head v0.1.15 (4efb6e17, tag 098dc033) was cut from; then unclaim ISSUE:0232"
+  }
+}

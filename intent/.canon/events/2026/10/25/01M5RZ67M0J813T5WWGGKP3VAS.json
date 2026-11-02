@@ -1,0 +1,15 @@
+{
+  "id": "01M5RZ67M0J813T5WWGGKP3VAS",
+  "ts": "2026-10-25T07:25:20.896Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0225 (project.cargo_root, for 0.1.15, on vc's assignment): built in ~/Devel/scratch/devbin-cc/0225/build on land220's 4488f3bc (wip 88b4366b); new cargoroot.bats arms green BSD and GNU singly, red on main where they should be; waiting for molt-vc's GO via vc for the targeted run, then bundle, seal, COMMIT_MSG and RESOLUTION to vc"
+  }
+}

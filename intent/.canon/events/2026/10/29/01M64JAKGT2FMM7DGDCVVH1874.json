@@ -1,0 +1,16 @@
+{
+  "id": "01M64JAKGT2FMM7DGDCVVH1874",
+  "ts": "2026-10-29T19:31:25.850Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 36,
+    "text": "Prolix: ST0028's dependency half (AC-2.1 to 2.4) is unstarted while its lockfile moved outside it, and the cf06d8e Dockerfile change is unbuilt; prolix's node to settle."
+  }
+}

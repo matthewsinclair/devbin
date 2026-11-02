@@ -1,0 +1,15 @@
+{
+  "id": "01M6958JRR2YN4PNGKS6KC4BZN",
+  "ts": "2026-10-31T14:19:20.216Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0011/02 (WP02a) banked, not run: refs/bank/cc/ST0011-02a c2b7cf186b81800860a664982112968e5d1991c8, one commit on d282e845 (dc's run-3 stack as it stood at 12:5xZ). On hv's or vc's go: apply the critic's findings listed in ~/Devel/scratch/devbin-cc/st11-wp02a/BANK.md (two critical, two warnings, three recommendations, one note), rebase onto run 3's landing as vc announces it, re-bank, then one run on vc's slot with the kit beside BANK.md."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5PEG1KFQ9KTNGK83ADH1E8Y",
+  "ts": "2026-10-24T07:55:07.759Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-10-24, amending decision 57's contract (T3), agreed by molt-vc, utilz-vc and intent-vc, found while devbin-cc built 0213: an install in a tool's older manifest form is still never read as a second format, but in OPT doctor FAILS naming install --force, while in BREW doctor (or use) NOTES it naming brew upgrade <tool>, since that fix exists only once the tool's conforming release is out (otherwise every keg, and devbin's own cut gate on its maintainer's machine, would fail with nothing to do). An old brew keg still answers brew in the tree function (molt-vc's clause, as its manifest says managed_by: brew), and in brew a root under the tool's brew opt link with NO manifest counts as an old brew manifest (intent-vc's extension; Intent's kegs carry none); in opt a prefix with no manifest is not the tool's. It lands in docs/dev-opt-brew.md with devbin's 0213."
+  }
+}

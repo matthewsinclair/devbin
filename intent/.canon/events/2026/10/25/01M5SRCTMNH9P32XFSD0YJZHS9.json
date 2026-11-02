@@ -1,0 +1,15 @@
+{
+  "id": "01M5SRCTMNH9P32XFSD0YJZHS9",
+  "ts": "2026-10-25T14:45:51.382Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "ISSUE:0229 handed over to vc green: a30c8ab2 (tree 42423f71) on land220's ea816117, light 14:39-14:45Z (runs in ~/Devel/scratch/devbin-dc/0229/runs/light), red on 593109bf in 0229/red; bundle + COMMIT_MSG-0229 + RESOLUTION-0229 sealed in ~/Devel/scratch/devbin-dc/0229/handover. Released when vc lands it and reports the landing pair's BSD suite; then fill in the landed sha and suite for vc"
+  }
+}

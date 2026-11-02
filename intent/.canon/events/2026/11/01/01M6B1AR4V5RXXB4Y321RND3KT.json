@@ -1,0 +1,15 @@
+{
+  "id": "01M6B1AR4V5RXXB4Y321RND3KT",
+  "ts": "2026-11-01T07:49:05.819Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's rulings in vc's window through the TUI (answered by the clock read 2026-11-01 07:48Z by date -u), each as vc recommended. WP16 (dc's settle of the 4774c637 review): I8, the key keeps the shell's uname -m (decision 115), design.md s13 naming the Rosetta case as a declared limit; I9, every tool but cargo is asked at the project root as s13 says (measured: 12 of 36 fleet repositories pin with .tool-versions, every one at its root, none below), s13 naming the limit, a per-artefact dir: added by the first adoption in WP10 to WP14 that needs one; both s13 words, no code, the run not held. gyges: hv's yes to all of gyges-sysadm's removals A to G (about 22G, done; the blocks held by the 01:02 Time Machine local snapshot until it ages out). Intranet: rhadamanth-sysadm fixes the ads/.lan check to skip an optional host that is away (c60442c, shown red then green), banked, then landed on main on hv's second word (live on gyges at its 19:30 refresh; nothing pushed); hv's 23 Oct scope stands, no port: the Intranet's Python is house tooling outside the no-Python rule (vc's first framing misstated it and was corrected in the TUI); the Intranet's half-applied devbin update is vc's to upgrade by hand at the 0.1.19 sweep, its diff read first, on hv's yes before it goes live. Molt (in molt-vc's TUI, relayed): gyges's stale ~/.cargo/bin/rg goes; vc's relay of that removal was refused by vc's own classifier, so it waits for hv in gyges-sysadm's window."
+  }
+}

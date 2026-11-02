@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 101,
+  "slug": "fleet-upgrade-drops-worktrees-and-dependency-che",
+  "title": "fleet upgrade drops worktrees and dependency checkouts without a row or a count",
+  "status": "closed",
+  "severity": "medium",
+  "created": "2026-09-21",
+  "closed": "2026-09-21",
+  "reporter": "Matthew Sinclair",
+  "body": "Found by the 2026-09-21 doc audit (finding K5).\n\n`fleet upgrade` dropped worktrees and dependency checkouts that carry a runtime without a row or a count: `estate_roots` filtered them out, against its own comment (\"EXCLUDED and counted\"), help/fleet.md's \"not dropped\", and every other exclusion the sweep names (frozen, unreachable, failed). `audit` and `doc` list them apart.\n\nFix (the code, not the comment -- vc's ruling): `sweep_roots` lists every install with its kind, and `cmd_upgrade` names each worktree and dependency checkout in its not-swept table as `NOT AN ESTATE -- a worktree / a dependency checkout, not swept`; the summary line gains `N not an estate`. help/fleet.md says so. Tests: fleet.bats AT-3.2 is RESTATED -- it refuted the dep's name anywhere in the output, which pinned the silence itself; it now asserts the name is absent from the plan and present in the not-swept table -- plus a worktree arm; both driven red at the parent commit.\n\n\n## Resolution\n\nFixed at `ab23ec4`, test driven red first at its parent commit. Full suite 1578/1579 at `ae3b200`: the one failing arm was environment-caused (GIT_OPTIONAL_LOCKS=0 exported in the running shell defeated readonlygit.bats' stale fixture, and its control arm caught it) and is green in a clean environment; that file is hardened at `ad86870`. Reviewed by vc against this issue; vc's mutants on 0099 and 0104 were killed. Ships in 0.1.4.\n"
+}

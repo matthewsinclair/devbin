@@ -1,0 +1,15 @@
+{
+  "id": "01M5YCASWR2ZTVZWF5WN0M57E3",
+  "ts": "2026-10-27T09:51:14.328Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-27, answered in vc's session (TUI) before 09:51:14Z by date -u, each as vc recommended. (1) A release CANDIDATE runs CI's whole matrix, macOS and WSL included, as a tag does: hv's rule of 2026-09-21 (decision 32) now reads 'release tags, their candidates, and on demand'. It lands in 0240's tests.yml condition. (2) devbin's public snapshot commits carry 'Matthew Sinclair <hello@matthewsinclair.com>' as author and committer (release.snapshot.author), the identity already on the tap's history and on every devbin commit's attribution line. (3) dc proves 0253 and 0254 with a temporary install from a local scratch tap in hv's Homebrew: the rendered formula renamed devbin-dc and keg_only, fetched from a file:// scratch clone at a scratch tag, with hv's devbin keg and link untouched; checked under PATH=/usr/bin:/bin; then brew uninstall with HOMEBREW_NO_AUTOREMOVE=1, and untap; one light slot booked with molt-vc. The same technique serves ST0010's AC-2.9. Told molt-vc, cc and dc. Not put to hv again."
+  }
+}

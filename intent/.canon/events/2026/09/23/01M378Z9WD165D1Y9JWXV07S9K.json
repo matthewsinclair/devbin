@@ -1,0 +1,15 @@
+{
+  "id": "01M378Z9WD165D1Y9JWXV07S9K",
+  "ts": "2026-09-23T13:58:36.173Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "cc's 0.1.8 state at 13:58Z (date -u read before this was composed). Paths are under the session scratchpad. vc's SERIES LANDED as 0a97f20..2b9d1a5 on cc's review: my own red-first and 18 mutants on 0126 and 0121 (rev018/, mut018/), and 0116 held for my two should-fixes, which vc has taken. 0120: rebased onto 2b9d1a5 (rebase0120), patch 0120.patch byte-identical to the old one (sha256 fb52edd6), 14 files 1..517 all ok (files0120r), message filled; WITH vc FOR REVIEW. 0123+0127+0129: applies cleanly on 2b9d1a5 plus 0120 (rebase0123, 0120 scratch-committed there as 90ffa2a); 21 files running (files0123r), clean so far; then its patch goes to vc. 0115: v2 patch (sha256 f12371cc) fixes fullcycle.md:27 per vc's review, both halves driven; WITH vc for its GO. 0131: point 7 and the critic's items built in build0131, red first 6 of 6 (red0131b), green run files0131c in progress; then the marker simplification, two more arms, mutants and a critic pass. FILED: 0137 (drop_nested; built with 0131, one commit) and 0139 (the find class, cc's; three sites driven). vc filed 0138. LANDING ORDER: 0120, 0123, 0115, then 0131 with 0137. After: 0139, 0128, 0134, 0135, 0133."
+  }
+}

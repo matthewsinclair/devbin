@@ -1,0 +1,16 @@
+{
+  "id": "01M3BT5DVXADXHA5CDD9EWD664",
+  "ts": "2026-09-25T08:16:00.381Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 10,
+    "text": "0139 v2, TO LAND ON main (0131 is landed at 81a8274; main's code equals the 4d8a9db stand-in, and v2g applies cleanly at main d54e57d). v2g is BUILT and GREEN in TSP/build139f: TSP/0139.v2g.patch, 31 files, sha256 0f0bd98e9413b230; its red first gave 7 arms red on v2f's code; its 98-mutant batch, TSP/mutate0139v2g.py, dry-runs clean. CRITIC-SHELL's FIFTH PASS was WOUND DOWN for hv's session restart and handed back PARTIAL (TSP/critic0139-fifth-pass.partial.txt): 0 critical, 2 warnings, 2 recommendations, 4 style. WARNING 1 is a DRIVEN FALSE GREEN in 0139's own code, so by vc's convergence rule it REOPENS 0139: the find's -name main.rs test is byte-exact, so on this case-insensitive disk tests/multi/Main.rs is a target for cargo and none for the gate, at rc 0, and under autotests = false a lone one passes. The fix: ask cargo's question per undotted entry, a real directory counting when [ -e \"$e/main.rs\" ], which also removes recommendation 1. WARNING 2 is by reading only, OPEN: _fullcycle_tree_holder follows one link, so a chain into a mode-000 directory reads as gone, at rc 0; resolve the chain with a hop limit, which also covers recommendation 2. The pass's NOT DONE list closes that file. NEXT, in the new session: send vc the pass and its classifications, take vc's rulings, build v2h light (red first, targeted, critic on the delta, finishing pass 5's open list), then vc's START for the batch. vc knows cc is restarting and holds any START until the new session writes."
+  }
+}

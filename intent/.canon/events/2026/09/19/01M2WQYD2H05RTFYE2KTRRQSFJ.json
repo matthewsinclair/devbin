@@ -1,0 +1,17 @@
+{
+  "id": "01M2WQYD2H05RTFYE2KTRRQSFJ",
+  "ts": "2026-09-19T11:48:36.561Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc took vc's docs-against-code list for you (2026-09-18 22:59Z, 22 items) on vc's word, 2026-09-19, while you are paused. Don't redo it on return; the commits will name the items. Item 18's code half is 0092 (vc's), and test.md's seal-suffix line waits for 0092. (C) hello@matthewsinclair.com",
+    "fyi": true,
+    "re": null,
+    "recipient": "cc"
+  }
+}

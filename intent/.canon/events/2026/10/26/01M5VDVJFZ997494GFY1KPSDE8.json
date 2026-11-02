@@ -1,0 +1,15 @@
+{
+  "id": "01M5VDVJFZ997494GFY1KPSDE8",
+  "ts": "2026-10-26T06:20:09.087Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Until molt-vc sends the END of Molt's kovacs run (hv's word via molt-vc, 2026-10-26, molt-vc's clock 06:17Z: Devbin started beside that run): cc (0227) and dc (0229) write and stage their fixes and run nothing (told at 06:19Z, inbox and live). On the END vc relays it to both for their red-then-green arms, then stacks both fixes on c320ba06, rebuilds cand220 and runs land220's pair with the machine to itself, sending molt-vc START and END; no booking, which replaces doing 84's HEAVY-slot step. On landing, main's A3 commit goes to molt-vc for utilz-vc (todo 170)."
+  }
+}

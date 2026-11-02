@@ -1,0 +1,15 @@
+{
+  "id": "01M4D9Y0XPCDCZERNBJGHKW192",
+  "ts": "2026-10-08T08:26:31.222Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A LANDED PATCH IS NOT AN EXPORT (2026-10-08). dc deleted 0184/s after checking its landed bytes against aed7af10, before vc's rule 'delete once anything not in the patch is exported' had reached it, and its v1 and v2 commits had not been exported first. vc: nothing the record needs is lost: the landed commit carries v2.1 whole, the Resolution cites runs/ and drafts/, which are kept, and the v1 and v2 reviews are in the board history. Before deleting a clone, export every commit not already elsewhere, and verify the export in a clone of the source."
+  }
+}

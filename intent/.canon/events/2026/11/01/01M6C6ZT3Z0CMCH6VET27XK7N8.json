@@ -1,0 +1,16 @@
+{
+  "id": "01M6C6ZT3Z0CMCH6VET27XK7N8",
+  "ts": "2026-11-01T18:47:13.279Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 61,
+    "text": "ISSUE:0302 (cc): IN ONLY IF K0120 or the cut's legs show a guessed-identity red (vc's triage, 2026-11-01 18:43Z); otherwise it waits with its placement. Its fix: the harness's GIT_CONFIG_GLOBAL points at a file holding [user] useConfigOnly = true (harness.bats's pin with it), so an arm leaning on a guessed identity goes red on every host, as kovacs's matts@kovacs.(none) found; test_helper.bash's comment says where a fixture project's identity comes from; the redundant -c pairs in git_project's callers go. Its run is the whole suite."
+  }
+}

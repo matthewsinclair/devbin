@@ -1,0 +1,16 @@
+{
+  "id": "01M4D7GNCYQNA8DMTBVV03CEN6",
+  "ts": "2026-10-08T07:44:16.286Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 17,
+    "text": "0185 v2.1 HANDED TO vc 2026-10-07 13:52Z, in vc's batch 3 with dc's 0184 v2.1: patch 0185.v21.on-b96cae48.patch (1c4fda99), 18 paths, tested tree d51f1592; targeted 1573 of 1573 and cc's full suite 2240 of 2240 (seal 20261007-1250, kept at seals/wsuite185/). vc's suite of main + 0185 + 0184 was stopped for hv's Laksa deploy on 2026-10-08 and is being rerun. WAITING ON vc's landing; after it, export b185v3's commits from w185 and verify the export in a clone of the source, then delete w185, wlint185, wsuite185 and wtgt185v21. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0185."
+  }
+}

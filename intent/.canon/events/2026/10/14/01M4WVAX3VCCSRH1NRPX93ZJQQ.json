@@ -1,0 +1,15 @@
+{
+  "id": "01M4WVAX3VCCSRH1NRPX93ZJQQ",
+  "ts": "2026-10-14T09:19:15.579Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "LINUX AND BREW (hv, 2026-10-14): devbin and Intent work properly on Ubuntu, proven on kovacs, and install with brew on Linux and macOS (hv: \"I want BOTH devbin and intent work from 'brew install' and for them to BOTH work seamlessly on Unix (the kovacs VM in this case)\"). Planned by devbin-vc and intent-vc with hv. kovacs-sysadm, a Remote Control session on kovacs, does the VM side on orders from either vc; there is one queue for kovacs, intent-vc's, with one order per step, each copied to the other vc. kovacs, read 2026-10-14: Ubuntu 26.04.1 on aarch64, 2 CPUs, 3.3 GiB, uutils coreutils 0.10.0, bats 1.13.0, GNU parallel 20240222; missing xmllint, shellcheck and brew; GitHub auth works as hv; hv's home is readable there at ~/mac, so a bundle goes in vc's scratch. Order: provisioning; Intent's bin/int linux build, package and smoke from a bundle of its main; Intent's AT-05.1; a user-level drive of Intent; devbin's Linux proof with Intent's package on PATH (main's HEAD by bundle, test all read from its seal, check all with the critic gate); brew last, as hv rules. devbin has no formula or tap and its repo is private; Intent's formula is macOS arm64 only by hv's ruling of 2026-08-15, and ST0081 scopes Homebrew on Linux out."
+  }
+}

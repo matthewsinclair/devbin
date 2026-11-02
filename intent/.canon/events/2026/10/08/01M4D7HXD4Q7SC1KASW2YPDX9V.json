@@ -1,0 +1,16 @@
+{
+  "id": "01M4D7HXD4Q7SC1KASW2YPDX9V",
+  "ts": "2026-10-08T07:44:57.252Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 80,
+    "text": "NEXT RELEASE (hv, 2026-10-07; 2026-10-08 to vc: \"coordinate DC and CC to get this next release done. I want all open issues closed before we do the release\"). TWELVE FILED, 0177 to 0188; SIX CLOSED, 0180 at 4f3d5601 among them; OPEN 0181, 0184, 0185, 0186, 0187, 0188. BATCH 3, 0185 v2.1 (cc) and 0184 v2.1 (dc), no path in common, BOTH REVIEWED by vc (red on main first, green under BSD and GNU, vc's 15 and 12 mutants killed, shellcheck clean): vc's full suite RERUN after hv's hold, from 06:55:08Z in ~/Devel/scratch/devbin-vc/0.1.10/batch3 (head 0aeb724c = main 23a27588 + 0185 + 0184), seal 20261008-0655, 2057 of 2243 ok and 0 not ok at 07:43:57Z; the stopped first run, seal 20261008-0556, is void. RE-ENTRY: on an end line rc=0 and .errors empty, write suite-batch3.json, then `landb.py batch3.json suite-batch3.json` (dry-driven green in dryrun3/) and `recordsb.py batch3.json suite-batch3.json batch3.landed.json --apply`, commit the records by name, tell cc and dc. BATCH 4 on main after it: 0186 v1.1 (cc, ed277e36, runs rerunning; Done when 3 carries vc's ruling, 674a7608), 0187 v1.1 (cc, fb756f03, on 0186), 0181 (dc, A 5a2cbf81 + B e2a22dab, row 11 and the push plan in scope, 674a7608), 0188 (dc, filed at dcd2d9dd, on 0181); 0186 and 0181 share lib/cmd/release and releasecut.bats, so the second handed over is rebased on the first. THEN RELEASES/0.1.10.md from notes/0.1.10.md, then hv's dry run and cut. Full re-entry: ~/Devel/scratch/devbin-vc/0.1.10/STATE.md."
+  }
+}

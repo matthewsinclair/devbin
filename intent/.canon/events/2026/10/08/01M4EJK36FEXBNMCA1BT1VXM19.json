@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJK36FEXBNMCA1BT1VXM19",
+  "ts": "2026-10-08T20:17:04.719Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 11,
+    "text": "INTENT'S INDEX HAS NO SHELL GRAMMAR HERE yet answers complete: true (intent index status: shell no-grammar, re-read 2026-10-08), so kind=def, outline and context find nothing in lib/, and CLAUDE.md's fall-back-to-grep rule never fires. Use a bare query, which the lexical tier answers, or git grep."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJS9REF66N0M2YZC6448T0",
+  "ts": "2026-10-08T20:20:28.046Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 41,
+    "text": "0191 DONE: landed at 9a23d3ea (== handed head 21f523d9 outside intent/, 179 entries) and closed at edbab291, on vc's landing suite of main + 0191 v1.1 + 0190 (2295 of 2295, seal 20261008-2007). b191 exported as 7 patches to ~/Devel/scratch/devbin-cc/sp-2026-10-08/0191/export (SHA256SUMS) and verified by replay on b58b5e21 in a fresh clone of the shared tree: 21f523d9's whole tree, control differs (runs/export191.out). w191, wbase191 and wcrit191 deleted at 2026-10-08 20:20Z after each was read: every ref exported or on main, nothing dirty, untracked or ignored."
+  }
+}

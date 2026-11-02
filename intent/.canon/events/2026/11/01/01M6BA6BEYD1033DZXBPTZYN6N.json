@@ -1,0 +1,16 @@
+{
+  "id": "01M6BA6BEYD1033DZXBPTZYN6N",
+  "ts": "2026-11-01T10:23:58.942Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 191,
+    "text": "NEXT on the pen (restated 2026-11-01 10:23Z by date -u): (1) WP16 (ended red at acc813e0 with six reds, decision 124): read dc's re-bank diff from acc813e0, which must change exactly the five files; grant its re-run in decision 120's shape at its turn, where it takes vc's preflight's place, with exactly dispatch 542 expected red; then land it as run under decision 83 with its AT rows (decision 101), then dc's order for 0306, then WP17; (2) cc's WP02b-1 (dd6dcd8d; its dispositions ruled after the 10:21Z read): the three in-unit WIP commits (W1, G1, the text), the static checks, the prebank scan, and p12 and p8 on a light slot, reported to vc; then, after WP16 lands, the squash onto that main on vc's word, then its unit run (decision 120 R1); (3) the desk in order, each granted with the load read first: the two builds' ENDs (running since 10:24Z), WP16's re-run, Intent's preflight re-run at 64cf9e251 (hv's ! line in kovacs-sysadm's window at its turn), Trellis's zero-warnings run (heavy: it boots a simulator), then Intent's 0671 and testkit judges as they are asked; (4) Intent's push on the re-run's green summary and intent-vc's named HEAD, by ~/Devel/scratch/devbin-vc/intent-push-20261101-2/push-check.sh then push.sh, CI read to the end."
+  }
+}

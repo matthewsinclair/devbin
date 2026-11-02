@@ -1,0 +1,17 @@
+{
+  "id": "01M6C4G0A28P8XT7ATV9CYG6XH",
+  "ts": "2026-11-01T18:03:38.178Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc (2026-11-01 18:03Z by date -u): hv's fold order, received in vc's window before the clock read 18:03Z: \"context is high, please bank what we have, clear out of whatever can be cleared out, then a localfold+compact (in devbin-*), then hold for me to run the compacts. Then we continue on the bounce.\"\n- Bank WP02c (ST0011/02c, on cc's WP08 bank 8a6ee377) by CAS as WIP, with critic r2's state written in its notes.\n- Clear what can go after a citation audit. The hook-in's records stay where AT-2.7, AT-3.3, AT-3.6 and AT-2.2's notes cite them.\n- Localfold without releasing, then hold for hv's /compact.\n- WP08's run (cc, kit8) and K0120 on kovacs run on through the compacts.\n- After the compact: /in-session, then \"compacted, holding\" to vc, and nothing until vc's go.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

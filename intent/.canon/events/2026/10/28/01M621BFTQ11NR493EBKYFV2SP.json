@@ -1,0 +1,16 @@
+{
+  "id": "01M621BFTQ11NR493EBKYFV2SP",
+  "ts": "2026-10-28T19:56:20.183Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 6,
+    "text": "`bin/devbin` is the invocation everywhere; `devbin_version` stays a hand-written literal."
+  }
+}

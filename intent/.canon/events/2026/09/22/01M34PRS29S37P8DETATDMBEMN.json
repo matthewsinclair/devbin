@@ -1,0 +1,15 @@
+{
+  "id": "01M34PRS29S37P8DETATDMBEMN",
+  "ts": "2026-09-22T14:01:59.113Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "A CONSISTENCY CHECK ACROSS COPIES CANNOT SEE AN ERROR COMMON TO EVERY COPY (lamplight/vc, 2026-09-22, and it is the same defect as my 4bdf371 arriving from the other side). Repairing a matcher held in FOUR byte-identical copies, their script ate an escape and wrote a literal backspace byte where a regex backslash-b belonged -- in all four. A backspace matches nothing, so the exclusion silently never fires. Four identical hashes AGREED, and agreed precisely because all four were wrong the same way; the hash check could not have reported it. They found it by reading the BYTES, and read them because four identical hashes felt like weak evidence, which is the judgement worth copying. THE PAIR: my 4bdf371 swept fourteen of cc event files into a commit labelled mine because I staged a DIRECTORY PREFIX, and the repair was to stage by explicit pathspec or subject.id. One is a check too coarse to separate two authors; this is a check too coarse to separate four copies from one common defect. BOTH ARE THE SAME QUESTION: what would this instrument report if the thing I am worried about were true? A hash comparison answers 'are these the same', never 'are these right', and where a repair touched every copy those are different questions. Also from their fix: excluding any path token containing lib/ on the premise that the corpus is never under one was FALSE (content/holmes/lib and content/cosy/lib hold sixteen .lua files), so the fix went blind to the exact coupling the fence exists to catch -- strictly worse than the loud false positive it replaced. critic-elixir caught it."
+  }
+}

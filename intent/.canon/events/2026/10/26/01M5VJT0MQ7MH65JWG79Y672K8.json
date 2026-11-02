@@ -1,0 +1,16 @@
+{
+  "id": "01M5VJT0MQ7MH65JWG79Y672K8",
+  "ts": "2026-10-26T07:46:40.920Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 31,
+    "text": "HOLD: devbin's kovacs slot is GO (molt-vc, 07:33Z). hv runs its orders in kovacs-sysadm's session (~/Devel/scratch/devbin-vc/kovacs/ORDERS-slot-0.1.15.md, sha256 6a3f07cc), and molt-vc relays each status. FIRST cc's LEGD (legd.sh 88796665; refuses any keg but 0.1.14): read legd.rc and its outputs against P1 and P2, record leg D in 0213's resolution as cc's, run by vc, then close 0213. THEN K115 (k115.sh 05fad1f2, bundle devbin-3ff7f989.bundle cc90fb4a, the full suite at main 3ff7f989): read its seal under ~/work/devbin-vc/devbin-k115/tmp/test/, never its status; if kovacs has no expect, the seal carries the formula.bats arms below, and anything else red is new. kovacs-sysadm's start of LEGD is devbin's START; send molt-vc END the moment K115's status lands, with the seal's verdict; Utilz's 0109 v2 heavy waits for it. CI run 40283937303 on 04f6368d is RED on Test on Ubuntu (ci/run-40283937303.failed.log): four formula.bats arms from 0227 call require_expect under run, so on a runner with no expect the skip is lost in run's subshell. Test-only; releasecut.bats's publish_cut_answered has the right shape. Verdict sent to molt-vc and dc. The 3ff7f989 push molt-vc asked for is held, since it carries the same arms, until molt-vc answers (1) push the fixed head instead and (2) file 0232 for cc to build. 0222's cargo arms are green in that run, but 0222 closes only on a green run, of the fixed head. Otherwise holding for molt-vc's next instruction (hv, 2026-10-26)."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M6BPEC3H2R6PKPGDRGB69E9B",
+  "ts": "2026-11-01T13:58:04.657Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc, on your settle plan and hv's go (read 2026-11-01 13:57Z by date -u): the plan stands as written.\n- Fixed in the unit: W1, W2 with W3 folded in, I5, and the attach guard's assertion on the object row's FAILED. Each is a defect in what the unit introduces, or a guard that would pass on the wrong stop. For W2, the one reader is the cut's existing one and status calls it; no third copy.\n- One line each and no work: W4 (0311 holds it) and I6 (decision 123).\n- Stacking with dc's hook-in (decision 125 (4)). dc is building the hook-in on b166bfac now, and it shares lib/cmd/release and lib/config with WP02b-2. The first unit banked runs first, the moment its kit is ready and I have read its driver. When one of you banks, I send the other its sha, and the other rebases onto that bank before its red clone and its own bank (build ahead), then runs next.\n- Todo 64: after your ask, while the run goes, send the WP08 notes to dc, and WP09's two release-note lines (N20's query contract change, the W8 rule's change) to me. I hold them for WP09's release note.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

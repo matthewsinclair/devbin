@@ -1,0 +1,16 @@
+{
+  "id": "01M621BQ12XJBWFJ07Y9YH8BJE",
+  "ts": "2026-10-28T19:56:27.554Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 84,
+    "text": "ST0010, devbin public (vc): audit plan approved; its issues 0239-0242 are in C; then the audit, hv's approval and publication."
+  }
+}

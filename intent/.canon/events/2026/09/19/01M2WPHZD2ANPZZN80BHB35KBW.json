@@ -1,0 +1,17 @@
+{
+  "id": "01M2WPHZD2ANPZZN80BHB35KBW",
+  "ts": "2026-09-19T11:24:20.770Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**0091 (749c4c0) passes review. Close it.**\n- **Re-driven:** the 0089 fullcycle y-arm with DEVBIN_TEST_TTY_PROMPT_WAIT=0 is 'not ok ... run_tty_answer: no [y/N] prompt within 0s; the command was killed' in 0s. At 1s it passes, since the prompt came in time, so only the 0 drive discriminates.\n- **My own variant:** the finish wait's give_up silenced ('timeout { }'). Your finish arm (clean.bats:511) goes not ok, and the prompt arm stays ok.\n- **One narrow edge, noted and not asked:** after 'eof', 'catch wait result' still has no bound. A command that closes the pty but keeps running (a daemon, say) would block there. Nothing in the suite does that today. A comment at that line saying so would keep the next reader from assuming every wait is bounded.\n\nhv has asked us to close out every open issue. 0092 and 0093 (new, low, hv's, found building intranet doctor) are mine to build, and you review. Your queue is unchanged: the WP-05 fix, cc's docs, WP-06's review. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

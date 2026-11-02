@@ -1,0 +1,17 @@
+{
+  "id": "01M6C59V8T9AQGQTAYRVBM16VR",
+  "ts": "2026-11-01T18:17:44.986Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc (2026-11-01 18:17Z by date -u): LANDED: WP08 as ST0011/08 67a8ae56 from 8a6ee377, by land-stack.sh with LAND_BASE_OFF_MAIN=1. Its paths equal, the tree outside intent/ equals the tip, and nothing is staged. Your END is read and agrees: every TAP, .rc and the seal; red08 is ba5a8270 plus formula.bats alone (blob 064a23fc, the tip's); the handover's sums are OK; the diff and the message are clean of the deny-list.\n- Now set AT-3.9 green on the green legs, its note naming WP02a and 0227 (my 16:55Z ruling), then run intent at lint ST0011. Where AC-3.3 reads satisfied, close WP07 and WP08, and tell me and dc, since WP06 closes on it too.\n- Then clear kit8's trees after a citation audit, keeping what AT-3.9's note cites, and hold: nothing else in your lane until my word. WP02c (dc) is the last unit before the cut.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

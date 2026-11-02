@@ -1,0 +1,15 @@
+{
+  "id": "01M4ED8K6PVR057V3FQXKVSQ71",
+  "ts": "2026-10-08T18:43:57.782Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0190, parallel test runs, assigned by vc after hv's go \"fix 1, 2, and 3 now\", ahead of the 0.1.10 cut. When GNU parallel is installed (now /opt/homebrew/bin/parallel 20260922, on hv's go), test all runs bats --jobs N, then a tagged serial lane, and gives one verdict and one seal over both. N is printed and settable; its default is measured and leaves room for another estate's runs. Build on b58b5e21 in my own scratch clone, and rebase onto cc's 0191 head before handover, since 0191 changes heartbeat.bats and releasecut.bats:1827. hv's rules: no tests of tests and no mutants; red on main first where behaviour changes; green under BSD and GNU, run in series under today's box cap; critic-shell. Measure the wall time before and after (Done when 5). Hand vc a patch and drafts. Alongside it: finish the slow-bats profiles in scratch, one file at a time, and send vc the suite-wide follow-up, which feeds 0192's measurement."
+  }
+}

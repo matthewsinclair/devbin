@@ -1,0 +1,15 @@
+{
+  "id": "01M696N06DDRM92HZPKA8MW1F0",
+  "ts": "2026-10-31T14:43:35.757Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "Every landing from now covers and satisfies its ACs with ATs, and every unit is critic-reviewed before its first run (vc, decision 100, on hv's go of 2026-10-31 14:34Z); ST0011's twenty ACs stand uncovered until then."
+  }
+}

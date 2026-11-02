@@ -1,0 +1,16 @@
+{
+  "id": "01M5Y7FMJ8PZTJZAQMKA0W17E1",
+  "ts": "2026-10-27T08:26:29.832Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 177,
+    "text": "FILE devbin's built-in macos issue for the next release, with plan item D on hv's go (utilz-vc's ask, 2026-10-27; under utilz-vc decision 65 (3), moving Menuz's signing onto the built-in is utilz-ic's issue for Utilz's next release, design first, and it waits on devbin; ic's design cites this Done when). Done when Utilz can delete its bin/.devbin/cmd/macos and lose no check it makes today. Measured on main (6ee11820, then c8381ab7), lib/cmd/macos and lib/config: (1) VERSION: release_names (377-381) takes APP_VERSION from project.version_from and APP_TAG from it, and app_ship_blockers (387-396) refuses a bundle whose CFBundleShortVersionString is not APP_VERSION, at app-sign (583) and twice at publish (689, 707); its comment names that check as the stale-build check. Menuz versions apart from Utilz (opt/menuz/VERSION), so the built-in refuses every Menuz build. Wanted: the app's version from its own source (eg macos.version_from, defaulting to project.version_from through the same reader), the tag and the release staying the project's. (2) FRESHNESS: a check that does not rest on the version, a commit stamp the project names in Info.plist checked against the tag's commit (Utilz's MenuzCommit: 8 to 40 lowercase hex, a prefix of the tag's commit, on the staged copy and twice at publish, refusing when the tag is not in the tree). (3) KIND: the release-kind stamp (MenuzKind = release), if it generalises to a declared key and value. (4) PATH: macos.app goes through from_root (153-159), which passes an absolute path and reads anything else from the root, and cfg_get (lib/config 273-285) returns the text as written, so a product outside the root is reachable only by a machine-specific absolute path (Menuz builds under ${XDG_STATE_HOME:-$HOME/.local/state}, away from ~/Devel, because Launch Services registers bundles left there, Utilz 0106). Wanted: a leading ~, $HOME or $XDG_* expanded in macos.app, or a key whose command prints the path. (5) LAUNCH SERVICES: ls_forget (262-267) runs lsregister -u with its output and exit unread and reads nothing back; app-sign's forget (592) and app-notarize's (642) run only on success, so a die before them leaves the staged copy's record; the verify's (659) and the Gatekeeper check's (367) run on both outcomes; publish's (669) is its EXIT trap. Wanted, as Utilz does (its 0104 and 0106): the drop on every path out, signals held off through the drop and the removal, the record list read back, and a record left or a dir not removed failing the run. Built by cc, landed by vc. Send utilz-vc the number when filed."
+  }
+}

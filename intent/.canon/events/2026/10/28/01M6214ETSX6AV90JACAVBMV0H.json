@@ -1,0 +1,16 @@
+{
+  "id": "01M6214ETSX6AV90JACAVBMV0H",
+  "ts": "2026-10-28T19:52:29.785Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 96,
+    "text": "A PUSH IS DONE when CI is green on the pushed sha (hv, 2026-09-22), and a cut needs CI green on its base first (decision 62, 0223). Baseline: run 40752126678 on a6a875b3 (main pushed 2026-10-28, carrying S1, the chain, the line and the 0263 follow-up), green (ShellCheck, Ubuntu, Test Summary), read in full: both plans whole (1..2629 and the serial 1..9), no not ok, 68 skips: 40523720517's 66 plus 0260's and 0264's PlistBuddy arms (macOS-only). Pushes of landed main at milestones are vc's, on molt-vc's go with hv's pen (2026-10-27), each told to molt-vc with its run. devbin 0.1.15 was cut on run 40349359447 on a81f0f98. Read every push's run from its jobs, its TAP and its skips against the last green's. A job log GitHub serves with no step names (every line UNKNOWN STEP) is read with CI_READ_ANY_STEP=1 in ~/Devel/scratch/devbin-vc/tools/ci-read.sh, never taken as an empty plan."
+  }
+}

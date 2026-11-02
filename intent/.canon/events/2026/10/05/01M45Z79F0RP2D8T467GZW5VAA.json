@@ -1,0 +1,16 @@
+{
+  "id": "01M45Z79F0RP2D8T467GZW5VAA",
+  "ts": "2026-10-05T12:04:39.520Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 13,
+    "text": "BUNDLE BUILD, 0.1.9 (hv 2026-10-05: every open issue closes before the cut; fix and fail forward, ONE release). cc builds 0153 to 0162 and 0175; 0163 to 0174 are dc's. 0154 landed at 831aec59 and closed at 5190fe9a. The box is suspended on hv's word, relayed by vc after 0154 landed: run the tests now, in parallel, with no START or END. 0153 v3 (critic-shell's report on v2 folded: 1 critical, 3 warnings, 5 notes, and its 50 predicted reds re-pointed) is in its full suite in a fresh --no-local clone at 5190fe9a; v3.1 adds the arm for a source nothing places. Its 56 mutants: 54 killed, 2 survivors to answer before the handoff. Its GNU-first pass: 55 of 55 green. Every built patch's path is with vc. Next: 0153 to vc on green, then 0175, 0159 v2.3 (rebase onto 0153, G1, its batch), 0157, 0158, 0156, 0155, 0160, 0161 and 0162. The pre-rewrite scratch clones are deleted on hv's word, their work carried to fresh --no-local clones. Workplan: ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md. State: ~/Devel/scratch/devbin-cc/sp-2026-10-03/STATE.md (SP)."
+  }
+}

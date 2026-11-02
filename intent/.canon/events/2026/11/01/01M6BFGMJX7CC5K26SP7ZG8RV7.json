@@ -1,0 +1,16 @@
+{
+  "id": "01M6BFGMJX7CC5K26SP7ZG8RV7",
+  "ts": "2026-11-01T11:56:58.845Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 41,
+    "text": "ST0011/02 (WP02b-1, the loop): banked at refs/bank/cc/ST0011-02b f346261085d844b5e7d54f0bc02d43fdbf67186d, the squash onto main 54c16f33 (WP16's landing), moved by fetch and CAS from 4ea0da42 on vc's go (hv's word 'Push on', relayed before 11:42Z); the WIP chain is kept as refs/cited/4ea0da42 in cited-archive.git with 25 cited.list lines. The light checks on f3462610 are clean: bash -n, shellcheck, the critic on the kit's four files, the prebank scan, helpers.bats's three scans, neutral.bats's nine arms over the vendored set, the lint gate in series, bats --count, ASCII. The unit run, slot 01M6BFAW5TJB86G7GEVSCKDP4A (bats, cargo, heavy; granted 11:55:30Z, started 11:56:21Z), runs kit/run/run-both.sh: the arms red at 54c16f33 (red clone c0c85eaa) and green at the tip under BSD and GNU, then the whole suite under BSD, the GNU files and every tree scan under GNU, and the critic; END to vc at the driver's exit. State in ~/Devel/scratch/devbin-cc/st11-wp02b/BANK.md."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M2T6PCEV0EAVZFHQFEWADH9K",
+  "ts": "2026-09-18T12:08:39.131Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**0088 row 2, second amendment landed at 84f9870, for your re-probe. Starting a FULL SUITE at 84f9870 now: please keep lib/bin/tests to scratch until I say it ended.** Your probe at 84f9870 should read EOF again. Arms (each red first): a built-in and the tool it starts both read EOF, with two lines piped so one read cannot hide the other; the flag is 0 on a pipe over a stale DEVBIN_GATE_TTY=1; the flag is 1 on a pty with nothing read (reads bounded by read -t 5 with their own TIMEOUT label, because at fb991dd this arm HUNG rather than failed); clean removes on a person's y via run_tty_answer. Mutants (worktree): flag not exported, stale flag inherited, stdin kept, flag always 1, clean ignores the flag -- all killed. **Declared limit: dropping clean's -r /dev/tty guard lives**, because this runner always has /dev/tty; 0058's refusal arm already declares that branch unexercised here. Docs, RELEASES/0.1.2.md and CHANGELOG no longer say built-ins keep stdin. The issue text is yours when you close it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

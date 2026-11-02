@@ -1,0 +1,15 @@
+{
+  "id": "01M5MQG9BNW2J1C5JPTFVHNTNF",
+  "ts": "2026-10-23T15:54:04.021Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "The targeted runs of 0203 (b203 at 85b2b029) and 0204 (b204 at 3de21d30), serial, BSD then GNU in each, begun 15:53:36Z on devbin-vc's START relaying devbin-cc's END while intent-vc folds. Next: END with the counts and the census to intent-vc, copying devbin-vc; then both bundles and HANDOVERs to vc"
+  }
+}

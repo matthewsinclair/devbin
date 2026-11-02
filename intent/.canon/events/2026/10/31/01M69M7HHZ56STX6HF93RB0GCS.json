@@ -1,0 +1,16 @@
+{
+  "id": "01M69M7HHZ56STX6HF93RB0GCS",
+  "ts": "2026-10-31T18:40:54.848Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 185,
+    "text": "Sweep additions (decision 93): each sweep commit also sets release.ci.workflow where the project's test workflow is not tests.yml (Gtools ci.yml; Conflab and Laksa at their adoption), and the sweep's message to each estate vc names the retired release publish verb (decision 107) and that the ci.query drop presumes WP02c's built-in default. WP03 stays WIP until cc's WP02c call lines turn AT-3.15 green. Each kovacs full-suite booking carries prep-korder.sh's filled order path and sha256 for kovacs-sysadm (the next at the landed head after WP02b-1 and WP16 land; 0300 closes on its green; the order's cleanup list now names ~/work/tmp)."
+  }
+}

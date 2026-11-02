@@ -1,0 +1,15 @@
+{
+  "id": "01M3A8FKNN1C01KGS1G0MDTPKQ",
+  "ts": "2026-09-24T17:47:45.206Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0143"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "the infra profile has no field for a sender's second DKIM key, a zone's wildcard A or TXT, or DMARC sp=, and a key it has no field for parses and is never read -- MailerSend's ms1 and ms2 can only be under-declared"
+  }
+}

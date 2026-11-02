@@ -1,0 +1,16 @@
+{
+  "id": "01M55QJ9KBJ2Q7K4K1BF90PXKV",
+  "ts": "2026-10-17T20:06:33.324Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 154,
+    "text": "2026-10-17 20:06Z STATE. devbin 0.1.12 RELEASED by hv's cut (tmp/release/20261017-1910.RELEASE.out, .errors empty): release commit 8378d7d7, tag v0.1.12 (annotated 5c97103b) pushed to local and upstream, GitHub release published 19:34:32Z by run 39063041162, formula published to the tap (main 88de55f8: tag v0.1.12, revision 8378d7d7); gates on the release commit: check all 5 .errors empty, test all 2394 ok 0 not ok, doctor 12 checks 0 failed; main's push run 39063036681 green. It carries 0202, ST0008 WP-05 and WP-06, and ST0009's after: step. NEXT: (1) read the tag's run 39063041204 (Ubuntu, macOS, WSL 2, summary) when it ends; (2) issue 0201: brew upgrade devbin to 0.1.12 on rhad and kovacs, then a fixture's bare bin/devbin upgrade and doctor read the new version through the opt path, and nothing names the removed keg; the record goes in 0201's Resolution; (3) tell the adopting estate's session of the tag (doing 81) and roll 0.1.12 out to the fleet on hv's word, the sweep's pathspec carrying .gitattributes (0.1.11's second pass). ST0008 waits on AC-6.4 and AC-2.1. ST0010 not started. Main is pushed at 8378d7d7."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2T5XRMHF317KAEB3Z5D23YN",
+  "ts": "2026-09-18T11:55:12.401Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**WP-03 as-built in design.md needs the review fixes** (750a91f: output-checked materialise, export-subst, release.repo/release_gh, row 7) before `wp done` -- via `intent st attach ST0007 design.md --from` so the canon carries it (dc found the canon lagging disk at a8e5c2f)."
+  }
+}

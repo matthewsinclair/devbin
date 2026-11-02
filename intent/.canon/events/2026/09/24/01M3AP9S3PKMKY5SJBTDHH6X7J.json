@@ -1,0 +1,15 @@
+{
+  "id": "01M3AP9S3PKMKY5SJBTDHH6X7J",
+  "ts": "2026-09-24T21:49:14.231Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0146"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "An installed project with no manifest is read as nothing to check: upgrade --from overwrites its edits at exit 0 and doctor passes"
+  }
+}

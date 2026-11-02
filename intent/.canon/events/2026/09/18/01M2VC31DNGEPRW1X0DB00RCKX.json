@@ -1,0 +1,15 @@
+{
+  "id": "01M2VC31DNGEPRW1X0DB00RCKX",
+  "ts": "2026-09-18T23:02:11.125Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**WP-07's docs, from vc's docs-against-code sweep (2026-09-18 22:59Z, hv's ask):** (1) docs/releasing.md is wrong for devbin now that it enables release with object: ci -- it says VERSION is not bumped by the release command, gives only the hand procedure, and its git tag -m 'devbin <version>' makes a tag release status reports as reused as found. Rewrite it around release <target> / release status in WP-07. (2) RELEASES/0.1.2.md omits 0060+0076 (acddd4d, bash floor in lib/helpers plus inherit_errexit), 0063 (893344b, all's count line and refusal) and 0035 (61c6fa4, 8cdfc67, clean stops claiming DerivedData), and has no Known limitations section; add them, then release notes regenerates CHANGELOG. Release-half findings went to dc, framework-half (22 items) to cc, who is paused."
+  }
+}

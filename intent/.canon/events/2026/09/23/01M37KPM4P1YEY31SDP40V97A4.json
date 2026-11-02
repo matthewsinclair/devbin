@@ -1,0 +1,15 @@
+{
+  "id": "01M37KPM4P1YEY31SDP40V97A4",
+  "ts": "2026-09-23T17:06:06.102Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "cc's 0.1.8 state at 17:05Z (date -u read before this was composed); supersedes doing 3. LANDING 0123+0127+0129+0140 (v2, approved by vc in its 17:02Z message): rebuilt on 0ec1fbf in SP/land0123 because 0136 changed doctor since the old build. The change is v2's line for line (0123.v3.patch). The full suite runs on that tree (full0123.tap); then land.sh, and close 0123, 0127, 0129 and 0140. 0131+0137: all 28 Z mutants are killed. Z30 had survived, because the pruning walk never lists target/cc, and the 0137 arm now also holds a tree found by its tag (out, out/cc, out.bak). NEXT for 0131: rebase onto 0123's landing, rerun its files, a critic pass on the rework, then hand it to vc with the interdiff from v1. 0139: build0139 at ea5fdd1, arms in progress. Written: the contract scan and infra profiles. To write: fullcycle's artefact check and PATH watch, dmarc, shell-gate, swift, new, OTP and helpers. It rebases after 0131. THEN 0128, 0134, 0135, 0133. vc landed 0132 (14764df) and 0136 (f484461)."
+  }
+}

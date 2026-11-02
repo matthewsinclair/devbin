@@ -1,0 +1,16 @@
+{
+  "id": "01M41GN116R4RXMEVRJFJZZYNR",
+  "ts": "2026-10-03T18:33:03.270Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE REVIEW (hv 2026-10-03: fix forward, one release hv cuts). 0154 v5.1 (cc's SP/tree 4dc6d40c) passed vc's light review: the 19 fleet arms and the seam unit arm green under BSD and GNU-first, the six reds on v4 driven, neutral 5/5, seam_git_state byte-identical over 11 states for every caller without the option, S6 killed, and documentation.bats:546, which reads fleet.md through `help fleet`, green on the landing clone. Next: cc's heavy runs on START (36 mutants; fleet, install, localinstall, vendor, gitident, releasecut, updatenotice, neutral, vendoredmd, documentation, helpers, contract; census timing on a quiet box), then vc's full suite on ~/Devel/scratch/devbin-vc/0154/land (main f2a725a plus the v5.1 patch, sha256 4dcc7dd9...), then land with commit --only and close 0154 with the census numbers. 0159 is v2.3 (SP/b159 17722c3d): cc reports G2 and G3 fixed, every new arm red on base and its pages citing no issue; its 20 mutants are not yet run, and G1 (fleet asks manifest_unvouched) comes after 0154 lands. Pre-reads with cc: 0153 v1 F1-F3, and 0156 v1 H1-H4 plus the critic's five reds; 0157 and 0158 wait on cc's critic fixes; 13 not started. Asked hv whether to batch full suites over reviewed patches: no answer, so one suite per landing. Note draft: ~/Devel/scratch/devbin-vc/0.1.9/notes-draft.md."
+  }
+}

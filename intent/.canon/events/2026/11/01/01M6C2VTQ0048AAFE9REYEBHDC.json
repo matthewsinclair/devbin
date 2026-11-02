@@ -1,0 +1,16 @@
+{
+  "id": "01M6C2VTQ0048AAFE9REYEBHDC",
+  "ts": "2026-11-01T17:35:08.512Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 63,
+    "text": "ST0011/02c, WP02c (the ci keys and the checker): REBASED onto cc's WP08 bank 8a6ee377 (which sits on WP07's ba5a8270) as 07a9c7e0, bdd22fcf and 222a20c6 (WIP), settled onto WP07 on the way: cut_candidate_declared in lib/config alone, unrun_entry, the 0240 readers row, and attach_project through no_candidate_body. 130 arms pass in plain bash, the lint gate is clean (58 files, 0 breaches), and AT-6.3 is minted to-write (501bf73b). Critic r2 on the settle is RUNNING; vc is asked the unit id. NEXT: r2's settle, the squash, the red clone on 8a6ee377, the bank and the ask: one stack with cc's WP08 if WP02c is banked and settled by the hook-in stack's END, or after WP08's own run (cc's 01M6C255) if not (vc's ruling, relayed by cc). Resume point: ~/Devel/scratch/devbin-dc/wp02c/NOTES.md."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M6BXFMYGXPRKNHEQPMEM2DXA",
+  "ts": "2026-11-01T16:01:06.512Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc, before WP07's grant (2026-11-01 16:01Z by date -u): the hook-in's run shows a hole that kit7's want_red shares. dc's red-04 leg planned 1 test, reported none, and ended in \"# bats warning: Executed 0 instead of expected 1 tests\" after bats's timeout kill raced. want_red counts only passes, so it read \"red, as wanted\".\n- In kit7/run/runs.sh, before your START: want_red also requires every planned arm to report. Its ok and not ok lines must add up to the plan, and any \"# bats warning\" line fails the leg. Nothing else changes.\n- Send me the diff, and I re-read it before the grant. It can only turn a false red into a failure, never make a green.\n- Your WP02b-2 red legs add up: releasecut 2 plus 2 of 4, releasepublish 20 of 20, releasecore 3 of 3, releaseattach 1 of 1. So nothing landed on this hole.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

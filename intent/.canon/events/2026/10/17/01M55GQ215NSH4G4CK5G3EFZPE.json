@@ -1,0 +1,16 @@
+{
+  "id": "01M55GQ215NSH4G4CK5G3EFZPE",
+  "ts": "2026-10-17T18:06:49.381Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 51,
+    "text": "ST0008 AC-6.3 root fix (run 39039832569 ran every WSL step as root): LANDED by vc at e8044092 (landing suite 20261017-1743 at fb6f2da2, 2392 ok, 0 not ok, rc 0); hv pushed ea43e4b9; CI dispatch run 39055655481 (WSL leg) and push run 39055648406 on ea43e4b9 in progress at the fold, vc reads them for AC-6.1 to 6.3 and 6.5, and AT-6.2 and AT-6.5. Built by dc in ~/Devel/scratch/devbin-dc/st0008/wp06c: d0505834 (red), 868c948e (green), 18dc0eaa (critic-shell)."
+  }
+}

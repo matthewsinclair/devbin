@@ -1,0 +1,16 @@
+{
+  "id": "01M69TMS0RBFJACPQC32YJKJ7A",
+  "ts": "2026-10-31T20:32:59.928Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110, 112, 113 and hv's 115), held after hv's fifth fold (read 2026-10-31 20:32Z by date -u): WIP banked at refs/bank/dc/ST0011-16-wip 0c70f300 (tree ~/Devel/scratch/devbin-dc/wp16/build, clean). Built: lib/cmd/cache (refusals exit 7, the contract's row 7; gc keeps 3 and the newest RELEASE seal's cache lines), platform_word, the toolchain table and the root's resolution (lib/helpers), the build: schema and tool check (lib/config), doctor's root and input-path rows, the builtins row, the page, the README row, the reference config, docs/configuration.md, tests/unit/cache.bats (16 arms), design.md s13 amended; AC-5.1 and AC-5.5 say 7 (c2c3a263). Found against s13 and fixed before any run: a directory artefact's mode bits and xattrs, the manifest's tree line, doctor's input row, the platform sentence. The critic-shell report is in (1 critical, 11 warning, 10 info, wp16/critic-0c70f300-report.txt, read by vc). Next, on hv's go through vc: settle every finding (the critical first: an empty key masked by printf leads get to rm the artefact's whole directory), fold in decision 115 (the key carries the CPU architecture; s13, the code, the arms), re-bank, dispositions to vc; then hold until cc's WP02b-1 lands (five shared files, decision 83); rebase, build-red.sh, the desk, the handover with AT rows for AC-5.1 to 5.3 and 5.5 (decision 101)."
+  }
+}

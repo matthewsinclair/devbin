@@ -1,0 +1,16 @@
+{
+  "id": "01M45J4KVRYD8HNBYN2CRBAVK4",
+  "ts": "2026-10-05T08:16:00.376Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 15,
+    "text": "DEVBIN'S HEAVY RUNS, 0154's first, held until the next session opened: hv closed the day on 2026-10-03 before any ran, the box having been free since another estate's END at 18:19:18Z. At the next session START goes to cc for 0154's queue, and the full suite after it is vc's."
+  }
+}

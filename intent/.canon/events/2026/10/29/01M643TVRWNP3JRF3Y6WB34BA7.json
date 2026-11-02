@@ -1,0 +1,14 @@
+{
+  "id": "01M643TVRWNP3JRF3Y6WB34BA7",
+  "ts": "2026-10-29T15:18:09.950Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST0010/AC-2.10"
+  },
+  "payload": {
+    "evidence": "vc (review/tap-read-vc.md, 2026-10-27) and dc (devbin-dc st0010/tap-read/REPORT.md, 2026-10-29) read all six tap commits; the 0.1.17 formula is published before the tap goes public"
+  }
+}

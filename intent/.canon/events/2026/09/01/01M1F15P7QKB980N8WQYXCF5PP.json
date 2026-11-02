@@ -1,0 +1,15 @@
+{
+  "id": "01M1F15P7QKB980N8WQYXCF5PP",
+  "ts": "2026-09-01T17:44:48.632Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0045"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A gate stamps per option, so one stamp can hold two runs and one run two stamps"
+  }
+}

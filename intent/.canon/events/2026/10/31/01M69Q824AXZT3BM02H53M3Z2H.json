@@ -1,0 +1,16 @@
+{
+  "id": "01M69Q824AXZT3BM02H53M3Z2H",
+  "ts": "2026-10-31T19:33:37.546Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 72,
+    "text": "ST0011/16, WP16's verbs (vc's decisions 109, 110 and 112): building the arms on vc's go (read 2026-10-31 19:33Z by date -u) from refs/bank/dc/ST0011-16-wip da47fe42 (tree ~/Devel/scratch/devbin-dc/wp16/build). Built: lib/cmd/cache (key, get, put, list, rm, gc; refusals exit 3; gc keeps 3 and the newest RELEASE seal's cache lines), platform_word, the toolchain table and the cache root's resolution (lib/helpers), the build: schema and tool check (lib/config), doctor's cache row, the builtins row, lib/pages/cache.md, the reference config and docs/configuration.md. Now: tests/unit/cache.bats to the spec in wp16/NOTES.md, design.md s13's words (exit 3, the seal line, block-form YAML), AC-5.1 and AC-5.5's text, critic-shell settled, the pre-bank grep, squash and bank. The run waits for vc's word that cc's WP02b-1 has landed (shared files, decision 83): then the rebase onto the landed head, the targeted run through the desk, and the handover with the AT rows for AC-5.1 to 5.3 and 5.5 (decision 101)."
+  }
+}

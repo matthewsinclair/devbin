@@ -1,0 +1,19 @@
+{
+  "id": "01M68J5F4NAAWYHSTBSSV9T3K6",
+  "ts": "2026-10-31T08:45:35.253Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "anchor": "2026-10-31 08:36Z",
+    "event": "01M68HNGFN97087CM3YZXN9V4M",
+    "kind": "message",
+    "n": 1,
+    "text": "FOR hv (vc, 2026-10-31, ST0011 fix phase under your AFK go; none of these blocks the build). (1) Question: may devbin's remote-leg runner (WP05) ssh into kovacs on its own during a cut (git push of the release commit to a bare repo under ~/work, the gates in a worktree, the seal copied back) while kovacs-sysadm is up? For: a lights-out release with the kovacs leg you ruled stays. Options: (a) a standing carve-out from molt-vc's decision 40 for the runner's own ssh, each run announced in the cut's log; (b) the runner asks kovacs-sysadm to drive the leg (not lights out); (c) the leg runs only when kovacs-sysadm is down. Rec: (a). Until you rule, dc announces every runner test to kovacs-sysadm and books it through vc. (2) Report: vc's diagnosis session read kovacs over ssh at 07:11Z (evidence E) while kovacs-sysadm was up, read-only, crossing decision 40; kovacs-sysadm flagged it and treats it as explained. (3) When the core lands, WP09's cut needs your go and the version: vc recommends 0.1.19, not 0.2.0, because every estate pins a ^0.1 caret (0.1.18's note kept 0.1 for the same reason) and a 0.2.0 would fail each swept estate's doctor until its caret moved; the retired command, option and keys are breaking for Devbin's own config only, which WP02b drops in the same unit. Nothing public, no tag and no push to a public remote until then.",
+    "to": "hv"
+  }
+}

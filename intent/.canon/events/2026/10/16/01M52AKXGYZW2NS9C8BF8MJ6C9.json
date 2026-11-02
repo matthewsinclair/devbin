@@ -1,0 +1,16 @@
+{
+  "id": "01M52AKXGYZW2NS9C8BF8MJ6C9",
+  "ts": "2026-10-16T12:22:31.710Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 46,
+    "text": "0192 and 0199 were APPROVED by vc as they stand (2026-10-16) and stacked in vc's landing clone ~/Devel/scratch/devbin-vc/land1016b/land after ST0008 WP-02. They wait on the landing suite, which runs after WP-03's review and Intent's two slots. 0192 is b7be40f2 (tree = feafbd68), drafts v3, with {WHOLESUITE} to fill from vc's suite wall. 0199 is 6bec3e7b (tree = 20c1fac1), drafts v2. Everything is banked as verified bundles in ~/Devel/scratch/devbin-cc/clone-archive (SHA256SUMS). On landing: unclaim both and remove the clones. cc's queue is empty after them, except WP-01 (LF), which goes to whichever of cc and dc is free first. Re-entry: ~/Devel/scratch/devbin-cc/i0192/STATE.md and i0199/STATE.md."
+  }
+}

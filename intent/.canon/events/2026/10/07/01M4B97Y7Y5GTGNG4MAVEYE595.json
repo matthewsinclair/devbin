@@ -1,0 +1,15 @@
+{
+  "id": "01M4B97Y7Y5GTGNG4MAVEYE595",
+  "ts": "2026-10-07T13:35:58.719Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0186 CLAIMED NEXT, on vc's word (filed at e868612a, medium), for batch 3 on top of 0185: four readers take a failed read of an index git cannot read for an answer -- git_head_identity (a bare commit over a dirty tree from --version), fullcycle's header count (git's 128), check's builtin critic (nothing staged), and the release pre-flight through gate_out_ignored (add tmp/ to .gitignore). Built on 0185 v2.1 (d51f1592), reusing git_failure_line; red on d51f1592 first. vc's measurements: ~/Devel/scratch/devbin-vc/0.1.10/idx and idx-*.out."
+  }
+}

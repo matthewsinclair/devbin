@@ -1,0 +1,15 @@
+{
+  "id": "01M35DHYGEV5BBW0YPAEVHQ8B3",
+  "ts": "2026-09-22T20:40:12.558Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ISSUE 0113, 0112's DELIVERY GAP, IS TOMORROW'S WORK ON hv's WORD, by the same instruction. The issue carries the mechanism, the estate measurements, the design question and cc's proposal, which is not ruled; this line only points at it. The design comes first -- what a shared page says and how a project extends it -- and the red half is an estate on 0.1.7 printing the stub, measured before anything changes."
+  }
+}

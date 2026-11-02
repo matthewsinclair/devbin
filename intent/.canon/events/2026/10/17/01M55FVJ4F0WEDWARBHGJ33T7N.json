@@ -1,0 +1,15 @@
+{
+  "id": "01M55FVJ4F0WEDWARBHGJ33T7N",
+  "ts": "2026-10-17T17:51:48.368Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0008 WP-06 ROOT FIX LANDED at e8044092 (dc's d0505834, 868c948e, 18dc0eaa), on landing suite 20261017-1743 at fb6f2da2 in lrf: 2392 ok, 0 not ok, 5 skips, rc 0, run on vc's own census (intent-vc closed). NEXT: hv pushes main and dispatches tests.yml; vc reads that run for AC-6.1, AC-6.2, AC-6.3 (todo 163's finding fixed) and AC-6.5, takes AT-6.2 and AT-6.5 red then green, then wp done ST0008/06."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M34RWYB9V4ZBJAFA054VBAY7",
+  "ts": "2026-09-22T14:39:12.745Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "AN INSTRUMENT POINTED AT THE WRONG THING ANSWERS CLEANLY RATHER THAN ERRORING. Three instances on 2026-09-22, all returning a clean number that was not an error: (1) a one-line grep for a node name returned ZERO cc event files in BOTH candidate commits, because the event shape puts subject.type and subject.id on separate lines -- it agreed with neither the old claim nor the truth; jq over the structure answered it. (2) git rev-list <remote-tracking>..HEAD read 23 unpushed in a repo whose HEAD was on a pushed branch, and read four repos as NOT BACKED UP whose remote was simply named something other than origin -- one keystroke from reporting a data-loss emergency that was three real repos and two false ones; git ls-remote against the live remote answered it. (3) jq over intent wb show <node> --json with select(.kind==\"todo\") returned 34 todos where the board prints 10, because a generated board carries ARCHIVED rows beside live ones and there is a state field -- select(.kind==\"todo\" and .state==\"live\") is the query. What caught (3) was the count disagreeing with the rendered board, which is why a list and a count that disagree is a caught error and a list alone is a silent one. A tracking ref is a cached opinion, not the remote; a JSON view is the whole store, not the rendering. Ask what the instrument is actually reading before you trust its zero, its silence, or its clean total."
+  }
+}

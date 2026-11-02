@@ -1,0 +1,16 @@
+{
+  "id": "01M6C3N08NXCG2ZMKMJPAATHGY",
+  "ts": "2026-11-01T17:48:53.398Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "ST0011/08 (WP08; AT-3.9 in formula.bats; issue 0296): banked at refs/bank/cc/ST0011-08 8a6ee3770a971bb45154eb3124d166db0adc4d78 on WP07's bank ba5a8270; WIP (1bb42a1d). RUNNING ALONE in kit8 (dc's WP02c not banked at the hook-in stack's END): slot 01M6C255TV1C6MNNW9ZEH4YCBF granted by vc after a load read, STARTed 17:43:32Z by date -u; driver kit8/run/run-both.sh (runs.sh 135637fd, the whole suite's verdict from its seal by dc's leg_all; runs.conf e070d00b; red08 34b1dadc, GREEN_AT_BASE the AT-3.9 guard), log kit8/run-08.log. Hands off kit8/run, red08 and the bank until END. At the exit: END to vc and the slot released with the result (a red leg read as dropped is rerun unbounded first); then handover-08.sh <squash> and finish-handover-08.sh <squash> <record> (handover8/, LAND_BASE_OFF_MAIN=1, its base ba5a8270 landed as 8a776229); at the landing AT-3.9 green, its note naming WP02a and 0227. dc's WP02c sits on 8a6ee377 and follows in its own run (2026-11-01 17:48Z by date -u)."
+  }
+}

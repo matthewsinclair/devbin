@@ -1,0 +1,15 @@
+{
+  "id": "01M39AFB4BP9Z1DS7NVJV6K82F",
+  "ts": "2026-09-24T09:03:19.179Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.8 BUILD-OUT on hv's Go of 2026-09-24 (the decision above): everything goes in, and the cut comes when all of it is done. vc's line: (1) 0123's pre-land full suite at 6c9fbc6 + v3final, in vc's scratch clone pre0123. On green, cc lands with land.sh and closes 0123, 0127, 0129 and 0140, and vc verifies the commit path by path against v3final (sha256 9e5a9f1212c627f3) and reads the four closes. (2) 0128's two helpers first: the tier helper, and the option-level helper for what bin/devbin <cmd> <opt> runs, with the dispatch asking them, so that cc's 0134 and 0135 can target them. Then 0130 (exit 1); 0133 (cc's design is in its SP/designs-0134-0135.md); and 0128's second half (the remaining sites, four smaller points, doctor's note, and the 'all' pass-through with its five pages). Each goes to cc for review. (3) Review cc's 0131+0137 v2 (carrying the new issue), 0139 v2, 0134 and 0135 as they are handed over; a review outranks a build. (4) The hook stubs after 0123 lands and Intent 3.2.1 (todo 133). (5) Then RELEASES/0.1.8.md, the cut, the machine install, the sweep of the 17 estates, CI, and the line: wip.md and restart.md go to a maintenance posture. vc's scratch is this session's scratchpad, /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/13030d44-9334-4a86-9083-2d2389e66f8a/scratchpad; a reboot clears it, so copy anything unlanded to ~/Devel/scratch/devbin-vc/."
+  }
+}

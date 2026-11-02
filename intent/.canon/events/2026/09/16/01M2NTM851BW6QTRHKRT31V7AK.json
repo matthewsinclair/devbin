@@ -1,0 +1,15 @@
+{
+  "id": "01M2NTM851BW6QTRHKRT31V7AK",
+  "ts": "2026-09-16T19:20:48.545Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0078"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A project's own git hook wiring is lost on every fresh clone, silently, and no layer of the stack owns it"
+  }
+}

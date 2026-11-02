@@ -1,0 +1,16 @@
+{
+  "id": "01M68X1ZJ98DMQRS4TMVVTKSVG",
+  "ts": "2026-10-31T11:55:55.337Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 36,
+    "text": "ST0011/01 (WP01) re-bank on hv's go via vc (2026-10-31 10:38Z): banked at refs/bank/cc/ST0011-01 = 8003fb63 on main's 0e72eff6 (the eight reds, the critic's critical and R4, this platform throughout, is_commit_sha full at --expect and release gates, dc's 0079 arm, the cut's stdout-only release_commit read), handover in ~/Devel/scratch/devbin-cc/st11-wp01b/handover; dc's WP06b runs first (it shares lib/release.steps and docs/configuration.md): when it lands, rebase onto that landing, re-bank, cut a fresh handover and ask vc for a slot; run 3 is WP01, chained with WP05 if dc has it banked on WP01 by then; evidence: 20 arms red at the base then green under BSD and GNU, one targeted run with the tree scans and help."
+  }
+}

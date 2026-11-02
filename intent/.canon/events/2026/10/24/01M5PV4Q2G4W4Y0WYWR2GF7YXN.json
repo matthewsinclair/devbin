@@ -1,0 +1,15 @@
+{
+  "id": "01M5PV4Q2G4W4Y0WYWR2GF7YXN",
+  "ts": "2026-10-24T11:36:08.016Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0216 handed to vc: ~/Devel/scratch/devbin-dc/0216/handover/ (0216.bundle sha256 b75f87d5, 76b3d790..17b1082c: c12a10c9 the scrub of the files 0213 does not touch, 17b1082c 0213's files, tests/shipped.paths and the guard tests/unit/workroom.bats); guard red on main in all four arms under BSD and GNU (run A2); run B (24 targeted files on c0216 at 17b1082c) queued heavy with molt-vc, results to vc as an addendum. RELEASED WHEN vc has landed 0216 or asks for a change; keep b0216, c0216, r0216 and vf16 until then"
+  }
+}

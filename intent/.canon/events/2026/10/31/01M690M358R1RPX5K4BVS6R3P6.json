@@ -1,0 +1,16 @@
+{
+  "id": "01M690M358R1RPX5K4BVS6R3P6",
+  "ts": "2026-10-31T12:58:14.568Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 86,
+    "text": "ST0011 fix phase, RUNNING on hv's go of 2026-10-31 12:5xZ (\"Ok, crack on.\"; vc holds the pen and the desk, hold released 12:56Z). LANDED on main: WP03 (76a0fba6, done), WP04 (80052f26, WIP for the trigger removal after WP02b), WP01 (bc744227, done). IN FLIGHT: run 3, dc re-stacking WP06b (bank 7cbc085f) then WP05 (bank d282e845, critic settling into its bank note) onto main, red clone, shellcheck, slot ask to vc, GO on the grant; the runner's real-host proof against kovacs on a light slot, login announced to kovacs-sysadm; vc lands with land-stack.sh. cc builds WP02a (WP02 unit (a) plus WP01's critic items) in ~/Devel/scratch/devbin-cc/st11-wp02a, runs after run 3 lands, rebased onto the landing (decision 83). NEXT: the landing tree's full suite on rhadamanth (suite-landing.sh) and kovacs (prep-korder.sh); WP02b, WP02c, WP07, WP08; WP09 at 0.1.19; the sweep; WP10 to WP14. Consumer estates hold for the sweep: utilz#ST0031, gtools#ST0020, intent#ST0091, conflab#ST0126/WP-06, laksa#ISSUE:0058. Issues 0295 (WP02b), 0296 (WP08), 0297 (WP02c), 0298 and 0299 (helpers) close with their units. WP16 designed (design.md s13), code dc's after WP06."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M36PSBCN38GTH9MV2M74GZFT",
+  "ts": "2026-09-23T08:40:46.741Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0113 IS BUILT AND WITH vc FOR REVIEW. IT LANDS WHEN vc APPROVES AND THE FULL SUITE IS GREEN. hv, 2026-09-23: cc builds 0113 under vc's review; vc builds 0117, 0119 and 0116 on top of it; all four ship together in 0.1.8. 0115's pages go in 0.1.9, writer not yet named. THE BUILD is the scratch clone scratchpad/build0113 (c9a592c plus the change). THE PATCH is scratchpad/0113-build.patch: 42 files, +1205 -854, and `git apply --check` was clean against HEAD at 08:32Z. Both sit under /private/tmp/claude-501/-Users-matts-Devel-prj-Devbin/8203ddaa-7098-4870-b8d0-b01c3ee7dfa7/. THE FULL SUITE is running in build0113 into scratchpad/full.tap, with its start and end stamps in scratchpad/full.meta: 924 of 1618 ok and 0 failed at 08:40Z. Read those files, not a notification. TO LAND IT: (1) the suite is green, and its plan, its ok count and its highest index agree; (2) vc has approved, and any changes are made in build0113 with the patch regenerated; (3) a critic-shell review of the diff, per watchout 5; (4) `git apply` the patch in this tree and commit with `git commit --only` over the explicit paths, never a prefix, with the gate running; (5) `intent issues close` 0113, and 0118, whose fix is the release.md rewrite and the lib/cmd/release comment; (6) tell vc it has landed, so that 0117, 0119 and 0116 can start, and review each as it comes."
+  }
+}

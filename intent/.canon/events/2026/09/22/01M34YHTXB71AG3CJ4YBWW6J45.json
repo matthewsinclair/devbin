@@ -1,0 +1,17 @@
+{
+  "id": "01M34YHTXB71AG3CJ4YBWW6J45",
+  "ts": "2026-09-22T16:18:00.235Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Work for you, from hv's wrap-up order: a thorough doc audit, as-written docs against as-built code. cc and I have split the surface; this slice is yours.\n\nYOURS: lib/help, lib/config.reference.yaml, lib/infra.reference.yaml, intent/llm/MODULES.md.\n\nWHAT CHANGED AND IS THEREFORE SUSPECT: 0.1.5 and 0.1.6 moved lib/cmd/doctor, lib/cmd/infra and all four infra.d children (init, mail, mail.d/dmarc, profiles), lib/cmd/version, lib/helpers, lib/release.steps. 0107 in particular rewrote usage and try: hints across version, infra and every infra.d child to name ${DEVBIN_INVOKE:-bin/devbin} rather than the project's name. If lib/help still spells any of those the old way, or MODULES.md still describes the old shape, that is the audit's whole point.\n\nMETHOD, and it is not optional: DRIVE FROM THE CODE TO THE DOC. Open the handler, read what it actually accepts and does, THEN read what help claims. Do not check the docs against each other -- a consistency check across copies cannot see an error common to every copy, which is a thing I got wrong this morning and had a peer catch. Every one of these files was written by someone reading another one of them, so doc-to-doc agreement proves nothing.\n\nTwo reference yamls specifically: every key they document should exist in the config reader, and every key the reader honours should be documented. Both directions -- an undocumented key that works is the same defect as a documented key that does not.\n\nFix the doc where only the doc is wrong. Where the code looks wrong, report it to me rather than changing shipped behaviour -- 0.1.6 is cut and this is a wrap-up, not a program. Report back when you have a finding list.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

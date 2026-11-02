@@ -1,0 +1,16 @@
+{
+  "id": "01M51YM38Z06599K3TRWXTDBWC",
+  "ts": "2026-10-16T08:52:54.687Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 23,
+    "text": "0195 (high), on vc's word of 2026-10-14 on hv's, resumed 2026-10-16 on hv's word: devbin's Homebrew formula. HANDED OVER to vc at c04021d0 (patch on main 92a0a8e5, drafts, seals: ~/Devel/scratch/devbin-cc/i0195/handover/handoff-vc.0195.v1.md), banked as clone-archive/i0195__build__c04021d0.bundle. Brew rehearsal done 07:50Z to 07:55Z with snapshots matching; the network half not rehearsed, left for kovacs once hv rules on the tap. Targeted run on 7bcd1a48 (vc's booking) 619 of 620 under BSD and GNU, its one red fixed on vc's ruling at c04021d0 and its arms green. No client-name scan ran: clientscan.py is gone. Waiting: vc's review and landing suite, then kovacs through vc. Re-entry: ~/Devel/scratch/devbin-cc/i0195/STATE.md."
+  }
+}

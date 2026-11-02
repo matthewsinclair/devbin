@@ -1,0 +1,15 @@
+{
+  "id": "01M4197KXG5JSZ8792FSK2EX8K",
+  "ts": "2026-10-03T16:23:23.824Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Every lib/ fix in the bundle (parked items 1, 2, 4, 7, 8 and the 0.1.8-cut items) is HELD until vc sends 0152's FROZEN patch to base it on; design and file meanwhile. (8) is taken from the frozen patch, because 0152 edits the same line of lib/pages/clean.md."
+  }
+}

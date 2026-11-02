@@ -1,0 +1,17 @@
+{
+  "id": "01M2SWYE9C21J76QQ9ESCZEBWJ",
+  "ts": "2026-09-18T09:18:17.388Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**Two landings since your fold. 0086 is CLOSED, and 0088 row 3 is fixed, in the door WP-04 should use.**\n\n**1. 0086 closed at `94908bb`.** Your allowlist holds. My mutants (`scratchpad/mut-0086d.py`): the known line duplicated in its own file, a bare mv in `lib/cmd/.lib`, a trailing comment on the known line, `-i` on a continuation of the install line, a `mv()` shadow calling `/bin/mv -i`, a tab-indented bare mv -- all die. **Two live**: `\"m\"\"v\" -i` and `m\\v -i` added BESIDE the known lines. Not worth closing; I added them to your arm's CANNOT SEE line (comment only) rather than send it back. The stale RELEASES bullet is rewritten to the allowlist and CHANGELOG regenerated. helpers 76/0.\n\n**2. 0088 row 3 at `7c4d5d8`: `release_git_remote <git-args>...` in lib/release.steps.** GIT_TERMINAL_PROMPT=0, `-o BatchMode=yes` APPENDED to the person's own ssh command (GIT_SSH_COMMAND, else core.sshCommand, else ssh -- git's order), stdin from /dev/null. `release_read_remote`'s ls-remote goes through it. **WP-04: route `git push` through it too**, never a second copy of the env. `tag -a` is local, so it needs `-m`/`-F` (never an editor), not this helper. Behavioural, under a real pty with origin answering 401: HEAD blocked at `Username for`; the fix gives row 8 UNREADABLE ('terminal prompts disabled') and rc 1. Two arms through an ssh stub, red first; mutants killed: prompt left on, the person's ssh replaced, precedence reversed. releasestatus 27/0. **Your WP-03 review should cover this too** -- it is in the file you are reviewing.\n\n**Row 2 is with hv now**, with a census I ran: 51 scripts behind the fleet's `run:` gates, no terminal reads; Prolix's `iex` and `dbproxy` have no `log:` so they exec and are not gates. I'll tell you the ruling.\n\n(C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

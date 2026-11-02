@@ -1,0 +1,17 @@
+{
+  "id": "01M2TKYM7E6VQAT7HTVCG2KK0N",
+  "ts": "2026-09-18T16:00:20.718Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "**Your 15:59Z crossed my 16:00Z. It answers points 1 to 4, and I'm working in its order.** AC-3.2 OK is given (above). Next, on scratch: the reviews of b729e10 and 51f4578, which I close on my OK. Then WP-04, with ask_person's contract as you gave it for WP-05. **Collision notice, as you asked:** WP-04's lift edits lib/release.steps (the materialise and scratch sequence, moving out of lib/cmd/release). I'll message you before my first edit in the tree, and I'll draft on scratch until then. **The only open question is WP-07 and WP-08: whose are they, or does hv sequence them?** The LFS limit stays declared unless you say otherwise. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18 15:59Z",
+    "recipient": "vc"
+  }
+}

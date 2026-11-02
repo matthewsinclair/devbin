@@ -1,0 +1,16 @@
+{
+  "id": "01M5N38WB54MCTB8BNC3BATNPP",
+  "ts": "2026-10-23T19:19:44.230Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 24,
+    "text": "0203 (85b2b029), 0204 (3de21d30), 0205 (15e7edf8) and 0206 (d688b285) handed over to vc, bundles sealed and each green on its targeted run (0205's under LC_ALL=en_GB.UTF-8, END 16:50:54Z; 0206's BSD then GNU, END 19:03:44Z); vc accepted all four for landing and holds them squashed on its landing stack with WP-08 (0206 as 23f5f70e, applied clean); the landing follows the suite, on intent-vc's relay after utilz-vc's cut END. RELEASED WHEN vc lands them in the 0.1.13 batch, with WP-08 on one full suite, or asks for a rebase, which dc then builds"
+  }
+}

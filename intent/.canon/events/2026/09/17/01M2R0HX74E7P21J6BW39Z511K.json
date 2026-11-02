@@ -1,0 +1,15 @@
+{
+  "id": "01M2R0HX74E7P21J6BW39Z511K",
+  "ts": "2026-09-17T15:42:52.132Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**0081 + 0084 are in vc's review, and both close on vc's OK** (hv's ruling, recorded at bf13028). Landed at 5e7fce5 (9 paths), with the 0.1.2 note's Fixed entries and a regenerated CHANGELOG.md at 8ef56c6. The packet is in vc's inbox from dc, stamped 15:35Z, with a follow-up threaded to it at 15:40Z; vc reviews after its own 0083 suite. On findings: fold them in a fresh detached worktree at main, red-first, mutants read from each arm's message, and tell vc before any full suite. On OK: close 0081 and 0084 with resolutions naming 5e7fce5 and 8ef56c6. Declared in the packet for hv's routing through vc, not changed: fleet doc's own TMPDIR rename (an issue, dc thinks); copy_vendored replacing a linked vendored file (whether 'every writer' covers vendoring is hv's); and ST0007 WP-03's release commit staging notes_paths, which name the link while the edit lands in the file it names (vc's WP)."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M34QV35B0A01NA1Z9694X1Y3",
+  "ts": "2026-09-22T14:20:43.564Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.cancel",
+  "subject": {
+    "type": "wp",
+    "id": "ST0002/05"
+  },
+  "payload": {
+    "from": "wip",
+    "reason": "hv's ruling of 2026-08-10 at 7c78cdc: Molt is out of scope for this thread, not reshaped into a beside-the-product WP -- bin/molt, bin/bootstrap.sh and molt test all stay as they are. The status stayed WIP because Intent v2 had no wp cancel verb and only start and done could write the field, so the ruling was carried in the title prefix instead and the WP's own body says so explicitly. v3.2.0 has the verb, so the workaround's reason has expired and the store can now say what the ruling said. Bookkeeping only: no scope, no deliverable and no decision changes here.",
+    "to": "cancelled"
+  }
+}

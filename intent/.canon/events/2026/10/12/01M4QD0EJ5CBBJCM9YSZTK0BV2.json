@@ -1,0 +1,14 @@
+{
+  "id": "01M4QD0EJ5CBBJCM9YSZTK0BV2",
+  "ts": "2026-10-12T06:32:40.775Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0008/AC-6.5"
+  },
+  "payload": {
+    "text": "Inside WSL, on a fixture project that carries intent/, as every project of the adopting estate does, check all runs the critic gate with Intent's Linux binary, shellcheck and git installed, and passes: first against Intent ST0081's dispatch-run artifact, then against its release asset, before devbin tags. Until that binary exists, check all there refuses at the critic gate naming the cause, and this criterion waits on ST0081."
+  }
+}

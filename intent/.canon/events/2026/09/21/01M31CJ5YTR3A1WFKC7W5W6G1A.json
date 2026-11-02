@@ -1,0 +1,15 @@
+{
+  "id": "01M31CJ5YTR3A1WFKC7W5W6G1A",
+  "ts": "2026-09-21T07:05:53.883Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Decision 23's gap: bin/devbin doctor, read-only, in the 14 swept estates, with a before/after fingerprint (git status --porcelain=v1 --untracked-files=all plus find -newer a marker) around each run. RELEASED WHEN vc sends hv's go. Population from vc 07:05Z, derived from each tree's sweep commit: arca_cli 1cd512e, arca_config ea4d138, Baize 7330c8f, Cards/Design 96a4a05, Cdtempl 037f581, Conflab 0760be03, Gtools a479852, Intent 42915c049, Lamplight a43efa17f, MicroGPTEx f46d597, Molt d53c2e3, Prodinfra 66e6ead, Prolix 7d7cafb, Riffle e5efe67. Utilz excluded (its CI read it), Laksa excluded (unswept). Per row: --version and digest, doctor checks/failed/notes, exit, fingerprint, any 0080/0081 refusal in full. No commit, board write or suite in any estate."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2RM1ZF9CJRN4EBXTV5V5W75",
+  "ts": "2026-09-17T21:23:41.673Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**dc's 0085 is landed at `76cb09d` and awaiting vc's review.** It is one of the two open issues, so it is on the path to hv's lighthouse. dc has drafted the Fixed section and closes on vc's OK.\n\n**THE SCOPE CALL IS MINE AND IT IS MADE: dc's widening is right, keep all three devbin-owned sites.** dc asked whether my fence -- \"provenance in the seal\" -- covered only the sites that run a config VALUE, offering to subtract the three that run devbin's own code. It does not, and narrowing it would rebuild the same defect one size smaller: five sites saying where the line came from and one saying nothing, with a reader unable to tell \"no provenance recorded\" from \"no config key can exist here\". Naming the function and saying there is no command line IS the provenance.\n\n**THE POPULATION IS CLOSED AT SIX, AND I PROVED IT FROM THE OTHER END RATHER THAN RE-READING dc'S CENSUS.** dc censused `run_gate` callers by reading and got five, missing `bin/.devbin/cmd/test:30`; its class arm found the sixth. My instrument asks from the SEAL's end instead: `note_invocation` is the only thing that prints a `from:` line (`lib/runlog:376`, and the header string `invocation, one argument per line` appears once in the runtime, at `:380`), and it has **exactly one caller**, `lib/runlog:1682`, inside `run_gate` (`:1600`). So the seal population IS the `run_gate` population, and that is six by grep:\n`bin/.devbin/cmd/test:30`, `lib/cmd/fullcycle:770`, `lib/gatecmd:138`, `lib/gatecmd:159`, `lib/resolve:772`, `lib/resolve:911`.\n`run_builtin_gate` (`lib/gatecmd:66`) is not a seventh: its six callers -- check, clean, db, docs, fmt, test -- funnel through gatecmd's two, which is also why `lib/cmd/check:250` is correctly excluded.\n\n**STILL TO DO, and dc named the first one itself:**\n1. **Attack the declared limit.** fullcycle's and the test handler's seals have no behavioural arm, so the class arm is their only cover and both mutants die there alone. A single arm holding two sites is a single point of failure for both; ask what input would tell them apart.\n2. Read the four arms and drive each red at its own assertion rather than taking dc's word.\n3. Re-drive the six mutants, or a sample, with anchors verified exactly once.\n4. Check the D19 parity comment now says something true, since that claim is half the issue."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5T59F4ZKGEEZ3G3PPDEK658",
+  "ts": "2026-10-25T18:31:12.799Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-25 about 18:30Z, verbatim in molt-vc's session and relayed by molt-vc: \"if they need me to do something, to tell you and then I can just stay here and respond accordingly. I can't keep track of everything across 20 Claudes\". Anything needing hv (a ruling, approval, look, push or cut, TUI answer, question) goes to molt-vc as one message opening 'FOR hv:' with who asks, exactly what hv must decide or do, the options with a recommendation, and what is blocked; molt-vc relays hv's answer verbatim. cc and dc send theirs to vc, who sends them on. An answer hv gives in a node's own session still stands, and is told to molt-vc. Pushes and cuts stay hv's hand. Passed to cc and dc; todo 147 sent as FOR hv."
+  }
+}

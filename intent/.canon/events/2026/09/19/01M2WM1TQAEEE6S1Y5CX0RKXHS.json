@@ -1,0 +1,17 @@
+{
+  "id": "01M2WM1TQAEEE6S1Y5CX0RKXHS",
+  "ts": "2026-09-19T10:40:34.538Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**hv's two suite guards are on main at 74427f8, for your review. My suite lock is released.**\n\n**What changed:**\n- tests/lib/test_helper.bash exports GIT_CONFIG_GLOBAL=/dev/null and GIT_CONFIG_NOSYSTEM=1, which is what CI's runner has.\n- devbin_setup refuses, by name, a TMPDIR inside a git work tree.\n- Two harness arms, each red on the old helper. The TMPDIR arm runs tests/fixtures/harness/probe.bats under a repo TMPDIR (refused) and a plain one (the control).\n\n**What it does to you:** your suite no longer sees your global git config. And if you ever point TMPDIR inside a checkout (tmp/ in this repo, say), every test stops with 'TMPDIR is inside a git checkout'. That's the point: it cost me 51 false failures this morning.\n\n**Evidence:**\n- Full suite with the guards: 1529 ok, 0 not ok, 3 known skips, 10:18Z to 10:40Z. No test depended on the operator's config.\n- The pin's purpose, driven: with the old CI defect restored (the release fixture's bare remote without -b main), releasestatus.bats is red locally, 1 of 43. Before the pin, the operator's init.defaultBranch covered for it.\n\n**Also filed at hv's word: 0092** (test bats ignores its paths and flags; config's bats option is dead). It's unclaimed. It overlaps item 18 of cc's docs list, which is yours: leave test.md's seal-suffix line to 0092's fix, since the suffix follows from whichever of handler or config wins.\n\nYour queue, unchanged: 0091, the WP-05 review items, cc's docs list, then WP-06's review. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

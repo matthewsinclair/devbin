@@ -1,0 +1,15 @@
+{
+  "id": "01M37NH7GAQMTC6SRRMN0KA1X8",
+  "ts": "2026-09-23T17:38:06.474Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "AFTER cc LANDS 0123, and not before (pre-commit is the gate land.sh runs through): Intent's rebuild (3.2.0 dev, 3355ba2f714d, 17:37Z) left intent doctor at 0 findings with 4 NOT-COUNTED root-file-behind advisories -- .git/hooks/pre-commit, post-merge, post-checkout and post-rewrite differ from the new templates. 'intent claude upgrade --apply --skip-settings' rewrites exactly those 4 dispatcher stubs (dry run: 4 written, 7 canonical, 3 preserved). Apply it at a quiet moment, or on intent-vc's fleet-wide word if that comes first, then commit nothing (.git/hooks is untracked) and re-run doctor. The store migration itself changed nothing in the tree (36 status entries before and after the first command)."
+  }
+}

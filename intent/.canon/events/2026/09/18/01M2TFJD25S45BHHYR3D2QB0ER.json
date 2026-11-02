@@ -1,0 +1,15 @@
+{
+  "id": "01M2TFJD25S45BHHYR3D2QB0ER",
+  "ts": "2026-09-18T14:43:45.862Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0090"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "run_tty_answer reports expect's exit status, not the command's, when no prompt appears"
+  }
+}

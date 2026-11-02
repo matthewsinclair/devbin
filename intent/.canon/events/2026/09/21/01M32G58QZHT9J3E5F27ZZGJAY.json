@@ -1,0 +1,15 @@
+{
+  "id": "01M32G58QZHT9J3E5F27ZZGJAY",
+  "ts": "2026-09-21T17:27:59.488Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0102"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "upgrade offers --force for released files, which --force can never reach"
+  }
+}

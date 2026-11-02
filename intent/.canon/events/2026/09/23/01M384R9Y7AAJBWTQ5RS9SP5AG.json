@@ -1,0 +1,15 @@
+{
+  "id": "01M384R9Y7AAJBWTQ5RS9SP5AG",
+  "ts": "2026-09-23T22:04:06.983Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "HOLDING for instructions from vc (hv, 22:04Z: \"Finish booting and then hold for instructions from VC\"); supersedes hold 7. The landing of 0123 v3, 0131 v2 and 0139 all wait. Released when vc sends the next instruction. Doing 5 carries the runbook for each."
+  }
+}

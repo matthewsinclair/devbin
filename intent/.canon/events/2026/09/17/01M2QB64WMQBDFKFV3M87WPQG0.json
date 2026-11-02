@@ -1,0 +1,15 @@
+{
+  "id": "01M2QB64WMQBDFKFV3M87WPQG0",
+  "ts": "2026-09-17T09:29:26.676Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**LESSONS candidates from 2026-09-17, vc's call at a fold.** (u) The pipefail early-reader class recurred in NEW code the morning after LESSONS already carried it: `cfg_list | while ... | grep -qx -- -` in _cfg_release_problems accepted a bad list 3 of 3 at a 100 KB item with pipefail on. (v) A review's clean covers what its contract let it run: critic-shell does not run shellcheck by contract, and dc's SC2209 on `verb=cut` was a real lint failure behind a critic review with no warning about it. (w) A check run in zsh with `mapfile` compared ZERO paths and printed `differ:` blank; only the population count on the same line showed it. (x) Replacing a case statement with a split list took on the caller's IFS for the second time in two days (cfg_release_list, cfg_release_problems) -- lesson (p) did not install. (y) A test comparing `[ \"$(reader)\" = \"\" ]` passes when the reader fails; capture into a variable first so errexit sees the status."
+  }
+}

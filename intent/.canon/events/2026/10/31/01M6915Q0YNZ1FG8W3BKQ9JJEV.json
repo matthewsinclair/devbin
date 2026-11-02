@@ -1,0 +1,15 @@
+{
+  "id": "01M6915Q0YNZ1FG8W3BKQ9JJEV",
+  "ts": "2026-10-31T13:07:51.966Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/02 (WP02a), on hv's go in cc's window (between 12:53Z and 12:56Z, \"Ok, crack on.\"): building in ~/Devel/scratch/devbin-cc/st11-wp02a/build on dc's run-3 stack tip refs/bank/dc/ST0011-05 d282e845; unit (a) of WP02's objective plus WP01's review items (the list in ~/Devel/scratch/devbin-cc/st11-wp01b/handover/STATE.md, Queued for WP02a); design sent to vc 13:07Z; runs after run 3 lands, rebased onto it, on vc's slot."
+  }
+}

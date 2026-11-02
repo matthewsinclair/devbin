@@ -1,0 +1,15 @@
+{
+  "id": "01M69JXA95ERA6EARAP2MAB3RX",
+  "ts": "2026-10-31T18:17:51.141Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ST0011/16, WP16's verbs, first in dc's lane (vc's decision 109, read by 2026-10-31 18:17Z; hv wants the cache in 0.1.19): bin/devbin cache key, get, put, list, rm and gc and the build: block, to design.md s13; the root DEVBIN_CACHE_HOME (D68: default the XDG cache dir plus devbin; an absent root is a miss, never a failure); keyed on the tree hashes of the declared build-input paths at the commit; AC-5.1 to AC-5.3 and AC-5.5 with arms red first (AC-5.4 is evidence); critic before its first run, the pre-bank grep over every tree scan's patterns, the desk; consumer inventories for s13's repeats table come through vc."
+  }
+}

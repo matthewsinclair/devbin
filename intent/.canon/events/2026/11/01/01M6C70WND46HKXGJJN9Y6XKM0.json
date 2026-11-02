@@ -1,0 +1,16 @@
+{
+  "id": "01M6C70WND46HKXGJJN9Y6XKM0",
+  "ts": "2026-11-01T18:47:48.653Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 129,
+    "text": "hv in dc's window, relayed verbatim by dc (received by vc before the clock read 2026-11-01 18:30Z by date -u): \"I want devbin done and dusted TONIGHT. I DO NOT WANT MULTIPLE RELEASES FOR DEVBIN. As I have said MULTIPLE TIMES today and previously. WHat the _HELL_ are all of these open issues?\" vc's 18:30Z ruling, all 17 open issues into 0.1.19, was overtaken by hv's revision there, relayed by dc at 18:34Z: \"Ok, let's triage them. I got prematurely upset by just seeing an explosion of new issues. The rule for no net new code still stands. If there are issues that relate to security or to the main game, which is getting the next release done, then they're in. Otherwise, they can wait.\" vc ruled the triage at 18:43Z as dc proposed. None of the 17 is a security issue. 0295 is in with no new code: ST0011's shape is its fix (read by cc at bd92b574), and cc closes it at WP02c's landing with its resolution. 0302 joins only if the cut's legs show it (K0120 did not). 0298, 0299, 0301, 0303, 0305, 0307, 0308, 0309, 0310, 0311, 0312, 0313, 0314, 0315 and 0316 wait as filed, and no fix stack is built. hv's TUI answers in vc's window (before the clock read 18:43Z), each as vc recommended: the cut's own legs are the final full-suite pair (the local gates and the kovacs leg at the release commit, CI's whole matrix on the candidate), superseding decision 93's separate suites and decision 125 (5) and (6)'s final scans and final kovacs suite, with the cut's dry run first. AC-4.1 is amended (18:43Z) for main's second Ubuntu run on S, which the cut does not wait for, and is marked from the cut's CI read. The cache: vc rules that WP10 to WP14 wire each estate's build handler to call cache get and put wherever it declares a build: block (decision 102), at the adoptions after the sweep, and puts it to hv in vc's report. Decision 107 is archived as executed."
+  }
+}

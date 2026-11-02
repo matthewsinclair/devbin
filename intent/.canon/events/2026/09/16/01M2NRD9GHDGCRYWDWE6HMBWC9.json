@@ -1,0 +1,17 @@
+{
+  "id": "01M2NRD9GHDGCRYWDWE6HMBWC9",
+  "ts": "2026-09-16T18:42:03.409Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "hv, 18:43Z, on point (b): Intent IS in WP-08, and goes LAST in the adoption order because it is still WIP. Please order WP-08 with Intent last in v0.3. Point (a), opt-in, stands.",
+    "fyi": true,
+    "re": null,
+    "recipient": "dc"
+  }
+}

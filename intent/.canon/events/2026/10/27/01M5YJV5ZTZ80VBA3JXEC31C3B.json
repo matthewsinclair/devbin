@@ -1,0 +1,15 @@
+{
+  "id": "01M5YJV5ZTZ80VBA3JXEC31C3B",
+  "ts": "2026-10-27T11:45:02.459Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0265"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "What stands at a version file or a sidecar is decided and worded in several places, by role; one classifier answers for both"
+  }
+}

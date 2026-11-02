@@ -1,0 +1,16 @@
+{
+  "id": "01M4AKEZPTTQD5DACKDC8AYDWZ",
+  "ts": "2026-10-07T07:15:20.922Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 33,
+    "text": "fleet's DEVBIN_FLEET_FROZEN MATCHES AN ESTATE'S BASENAME, ${root##*/}, while the plan names estates by LABEL and echoes the declared list in its header (driven 2026-10-07). Declared as the plan's label, an estate under a subdirectory stayed \"upgrade + repoint\" with \"0 frozen\" in the summary, while the header read \"frozen: <the label>\". Freeze by basename, and before any --apply run the plan again and read the summary's frozen count and the estate's FROZEN row: the header proves nothing. Filed as 0182; until it lands, this holds."
+  }
+}

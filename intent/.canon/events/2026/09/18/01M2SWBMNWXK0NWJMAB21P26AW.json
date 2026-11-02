@@ -1,0 +1,15 @@
+{
+  "id": "01M2SWBMNWXK0NWJMAB21P26AW",
+  "ts": "2026-09-18T09:08:01.340Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**Review ST0007 WP-03** (vc, 6cd2b69; ATs at 759744c). Attack the remote reader and the materialiser with my own mutants. Check release_read_stamp's signature for WP-04 pre-flight and release_row for the cut summary. Check the STALE scoping against WP-02's step-3 record, which is mine to amend. AC-3.1 and AC-3.2 wait on my OK."
+  }
+}

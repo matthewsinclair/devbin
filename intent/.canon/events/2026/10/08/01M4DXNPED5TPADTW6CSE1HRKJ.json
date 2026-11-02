@@ -1,0 +1,16 @@
+{
+  "id": "01M4DXNPED5TPADTW6CSE1HRKJ",
+  "ts": "2026-10-08T14:11:29.869Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 20,
+    "text": "0189 DONE: landed at 655c25f8 on vc's full suite of the landing tree (2282 of 2282 ok, seal 20261008-1315) and closed at bb0657d5 with v1.1 of cc's drafts, as vc corrected them after cc's read of the 0.1.10 note; ISSUE:0189 dropped. Clean-ups done: b189 (f54d9af7..c7cec1d7) exported as 5 patches and replayed in a fresh clone of the shared tree at 6bc4d708, its tree equal to c7cec1d7's outside intent/, with a control; 655c25f8 as landed equal to c7cec1d7 outside intent/; w189 and its eight run clones deleted, each checked first for a commit found nowhere else; the records, the patch and the export kept under ~/Devel/scratch/devbin-cc/sp-2026-10-08/0189."
+  }
+}

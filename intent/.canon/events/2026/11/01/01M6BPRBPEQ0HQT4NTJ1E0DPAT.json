@@ -1,0 +1,15 @@
+{
+  "id": "01M6BPRBPEQ0HQT4NTJ1E0DPAT",
+  "ts": "2026-11-01T14:03:31.919Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "The hook-in unit (decisions 117 and 127), on hv's go in dc's window (\"Ok, crack on.\"), as two unit commits on vc's ids (vc's message read 2026-11-01 13:57Z): ST0011/05 (WP05's and WP06's hook-ins, decision 110's cache line) and then ST0011/04 (tests.yml, ci-workflow.bats, docs/releasing.md alone). Rebased onto main's b166bfac: hookin/build is f8abb335, 24010386, b55d6c33 and 0c566af0, and its code is the WIP bank 664abab6's. Eight arms: seven tagged WP-0[56], one WP-04. OPEN: settle critic r1 (decision 123: fix only a defect in what the unit introduces or one that blocks its correctness); run the lint gate and the scans; run squash-bank.sh squash; run build-red.sh 05 and 04; run squash-bank.sh bank (refs/bank/dc/ST0011-05 and ST0011-04, with -wip moved); then the desk ask. Whichever of the hook-in and cc's WP02b-2 banks first runs first, and the other rebases onto it. Resume point: ~/Devel/scratch/devbin-dc/hookin/NOTES.md. Then WP02c (todo 63), then WP08 (todo 60)."
+  }
+}

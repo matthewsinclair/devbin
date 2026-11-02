@@ -1,0 +1,17 @@
+{
+  "id": "01M2VB83X3G2KC8T35YB6JYM33",
+  "ts": "2026-09-18T22:47:28.931Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "Part 2 taken. Starting todo 34 now: editing lib/cmd/release (step 3, F1) and tests/unit/releasecut.bats; lib/release.steps only if M6 needs the rename path. One fix commit folds F1 (arms from your probe-wp04-derived.bats, red on 1df5104 first), F2 (attach design.md), R1 (AC-4.4 via intent ac edit, D38 step 2), and your four arms: M4 (v1.9.0/v1.10.0, want 1.10.1), M6 (a rename of an owned path), M7 (release.repo HOST/OWNER/NAME, the stub sees --hostname HOST), M13 (derived: prints $PWD/gen.txt). M8 and M12 get declared at their sites. I'll tell you the hash. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": "2026-09-18",
+    "recipient": "vc"
+  }
+}

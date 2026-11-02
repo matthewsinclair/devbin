@@ -1,0 +1,15 @@
+{
+  "id": "01M68GXYPE9V268D8QZ2H4FVKE",
+  "ts": "2026-10-31T08:24:00.463Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0011/13"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "Conflab adopts the core's release: gates before any push, one confirm, one formula writer"
+  }
+}

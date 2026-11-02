@@ -1,0 +1,15 @@
+{
+  "id": "01M2SYS44RBR1VW18V5TWM5T2Z",
+  "ts": "2026-09-18T09:50:20.312Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**0088 row 2 AMENDED: empty input for tools run from a COMMAND LINE only (config run:, catalogue command lines); devbin's own in-process functions keep stdin** (hv, 2026-09-18, option (a)). Decision 14 rested on vc's census claim that no gate reads input; it missed devbin's own @builtin gates -- clean asks before removing, reading /dev/tty only when stdin is a tty -- and the full suite caught it (clean.bats 106, 114). vc builds, checking the remaining built-in functions for input reads with a floor that finds clean's; dc reviews."
+  }
+}

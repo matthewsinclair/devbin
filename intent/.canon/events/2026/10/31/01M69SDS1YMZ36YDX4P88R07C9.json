@@ -1,0 +1,17 @@
+{
+  "id": "01M69SDS1YMZ36YDX4P88R07C9",
+  "ts": "2026-10-31T20:11:42.015Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "FROM hv, in cc's window (2026-10-31 20:11Z by date -u, said just before): \"Ok, context is high, please bank what we have and coordinate an estate wide (ignoring trellis-{vc,cc} for now) clear out of whatever can be cleared out, then a loclafold+compact, then hold. When everyone is done folding and cleaning up, please give me summary of where we are at with respect to the original objective, ie to deliver on ST0011.\" Relayed live too. For the estate pen: bank, clear out, localfold, compact on hv's word, hold; every session but trellis-vc and trellis-cc. cc: WP02b-1 banked WIP at refs/bank/cc/ST0011-02b 9e1440dc; dev check 2 01M69RVWN7QW558AW8RZWTK61D releases itself at its exit; cc clears its scratch and localfolds, then holds. Send cc one line when every session has folded, and cc gives hv the ST0011 summary.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

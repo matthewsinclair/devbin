@@ -1,0 +1,12 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 281,
+  "slug": "a-cargo-toml-with-a-multi-line-array-whose-eleme",
+  "title": "a Cargo.toml with a multi-line array whose element lines open with `[` is refused as holding no version",
+  "status": "closed",
+  "severity": "low",
+  "created": "2026-10-28",
+  "closed": "2026-10-29",
+  "reporter": "Matthew Sinclair",
+  "body": "\n**Measured** at 4c6fe838 by the chain's critic (`cr0260chain-0528/extra.out`). `[package]` then `keywords = [` with a following line `  [1, 2],`: version_line (0263) reads `[1, 2],` as a table header, leaves [package], and reads no version, so set refuses the file as \"holds no version devbin reads\".\n\n**Cause.** The awk takes any line opening with `[` (after whitespace) as a table header, inside an array as well.\n\n**Fix.** Track array depth in version_line's cargo branch (an open `[` after `=` with no closing `]` on the line opens it, and a line closing it ends it), and read headers only at depth zero. This errs toward refusal today, so no file is written wrongly.\n\n**Done when.**\n1. Such a Cargo.toml reads its [package] version, and set rewrites that line alone.\n2. The existing cargo arms stay green under BSD awk and mawk.\n\n\nDrafted by dc (2026-10-28), measured and filed by vc; low, and not in 0.1.16.\n\n## Resolution\n\n- A Cargo.toml's table headers are read only outside a multi-line array. version_line's cargo program counts each value's brackets outside its strings and comment, and reads a line opening with `[` as a header only at depth zero.\n- Landed on main at 2870b62d, with 0280.\n- Arms in tests/unit/version.bats:\n  - \"a Cargo.toml whose multi-line array has element lines opening with [ reads its [package] version, and set rewrites that line alone (0281)\", whose array holds a `[1, 2]` element and a `\"[x]\"` string;\n  - 0263's cargo arms, a dependency table's version and [workspace.package], still hold.\n- The program was driven by hand under BSD awk and mawk.\n- Desk evidence: hv's full run on rhadamanth, sealed at tmp/test/20261029-1314.bats.out and .bats.errors: 2824 ok and 2 not ok, neither of them this issue's.\n"
+}

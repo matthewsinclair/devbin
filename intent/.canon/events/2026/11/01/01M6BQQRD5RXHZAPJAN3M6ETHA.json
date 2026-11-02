@@ -1,0 +1,15 @@
+{
+  "id": "01M6BQQRD5RXHZAPJAN3M6ETHA",
+  "ts": "2026-11-01T14:20:40.741Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "WP09's release note for 0.1.19: each builder's lines are held word for word in ~/Devel/scratch/devbin-vc/st0011/release-note-0.1.19.md, the one place they are kept, until WP09 writes the note. cc's three (N20, the W8 rule, WP02b-2's retirements) are in."
+  }
+}

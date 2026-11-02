@@ -1,0 +1,15 @@
+{
+  "id": "01M5PAM8R70M2QRJEBY0NQDP9P",
+  "ts": "2026-10-24T06:47:31.847Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-10-24, answered in vc's session before 06:47Z (read by date -u), on ST0010: (1) public devbin carries the MIT licence (hv chose MIT over Apache-2.0 and MPL-2.0); LICENSE and lib/LICENSE.md, held byte-identical by test, and the formula's licence field change to it in the public commit; (2) the private workroom (this checkout, intent/ and the full history) lives in the local mirror only, with no private GitHub copy, once matthewsinclair/devbin is deleted and recreated public; the backup bundle and the mirror are verified by fetching back before the delete. Not put to hv again."
+  }
+}

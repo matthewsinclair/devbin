@@ -1,0 +1,16 @@
+{
+  "id": "01M4AA4PPSBWYP3B07QFS2X1NV",
+  "ts": "2026-10-07T04:32:26.841Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "0.1.9 bundle, vc's assignment on hv's word. All of dc's issues are landed and closed: 0163 6438b958 and 0167 09f73fed (closed at 9b369360), and 0168 ca3a3f12, 0165 cf01591e, 0170 f3e1504b, 0171 3c6cb354 (closed at d36a8656). cc's 0172 landed at 95ee1bb8 as v2.1, after dc's read for vc, and closed at 0b1d47fa, so no issue is open; the 0.1.9 note is committed at 79f17e9b and the cut is hv's. The s415 and s168c clones are deleted; their exports stay in ~/Devel/scratch/devbin-dc/0.1.9/patches/. Next: hold for vc's instructions (hv, 2026-10-07)."
+  }
+}

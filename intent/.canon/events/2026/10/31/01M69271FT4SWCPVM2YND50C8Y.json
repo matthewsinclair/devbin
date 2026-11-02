@@ -1,0 +1,15 @@
+{
+  "id": "01M69271FT4SWCPVM2YND50C8Y",
+  "ts": "2026-10-31T13:26:04.027Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "ST0011/16 code after WP17 (vc, 2026-10-31): the order in dc's lane after run 3 is the WP03 remainder, then WP17, then WP16's code (WP16: an absent cache is a miss and never a failure, design.md s13, AC-5.5)."
+  }
+}

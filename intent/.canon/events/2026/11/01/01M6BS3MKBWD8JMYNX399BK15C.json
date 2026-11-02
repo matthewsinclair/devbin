@@ -1,0 +1,15 @@
+{
+  "id": "01M6BS3MKBWD8JMYNX399BK15C",
+  "ts": "2026-11-01T14:44:38.635Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "dc's WP02c design note (~/Devel/scratch/devbin-dc/wp02c/DESIGN-NOTE.md, read whole; ruled at 2026-11-01 14:44Z by date -u, sent live and to the inbox). Every question is ruled as dc recommends. Q1 (A): the built-in candidate leg applies to every cut unless the project opts out, as D61 reads. This refines decision 107 (4)'s 'every GitHub project'. A workflow that does not fire is refused at pre-flight, naming the opt-out, and the fixture helpers opt out. Q2: the opt-out is ci.query: -. Q3: no new flag. Decision 104's 'existing force route' does not exist, so the refusal names the exits: fix the trigger, opt out, or a bespoke query (decision 105). Q4: release check asks only where it is offered, the built-in candidate is in effect, and the tree is a git repository. Q5: under derived:, no paths are passed. Q6: refuse, naming the host, when an absent host was a gate's only cover in all; reach answers uname -s through platform_word's map, and WP17's predicate takes the word. Q7: the marker scan without case, plus the ref-name rule on the filled tag. Q8: W7 sits in the legs step after S is built, before the candidate's push. Q9: Devbin's config drops ci.query and keeps summary and wait: 90m. Q10: check joins the readers column. The sweep's messages to Utilz, Gtools and Intent say the candidate leg is on by default from 0.1.19 (sweep-plan.md). Decision 108 archived as executed: platform_word is lib/helpers:3573 on main, and lib/cmd/macos:159 calls it."
+  }
+}

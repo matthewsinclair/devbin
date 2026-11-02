@@ -1,0 +1,16 @@
+{
+  "id": "01M69VDWJAPN1PRJQERPYX3JAJ",
+  "ts": "2026-10-31T20:46:42.763Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 184,
+    "text": "FOR hv, open at the fourth fold and still open after the fifth (recs in brackets; Trash state read 2026-10-31 20:44Z): Intent 0666's fix shape (intent daemon start --at-login says ok and enrols nothing while a daemon runs; rec: enrol or refuse, never ok with nothing done; intentd stays unenrolled at login on rhadamanth until then); Molt's PATH order (rustup's cargo before Homebrew's; a Molt session or hv's hand); the Intranet ads check ignoring optional: true hosts (an Intranet fix) and whether the sweep reaches the Intranet checkout under Dropbox, outside the fleet frame; the Utilz exhaust folders in ~/.Trash: of the six utilz-vc names, utilz-vc-exhaust-20261031 and utilz-dc-exhaust-20261031 were removed by rhadamanth-sysadm at about 14:00Z on hv's yes, and the four that remain (utilz-vc-exhaust-20261031b 104K, utilz-dc-exhaust-20261031-fold2 88K, utilz-dc-st0031-03-20261031 176K, utilz-dc-fold5-20261101 8K) verify whole against their manifests with nothing unnamed, all spent scratch; vc's word for their removal is given under the 14:34Z go, and rhadamanth-sysadm sends hv its removal script for hv's yes in its window (or hv empties the Trash by hand); the repo model (hold 34; main unpushed since 9f579b36); Intent housekeeping that is hv's alone (intent-vc, fifth fold): four stashes in Intent's repository, the newest on ST0076 WP-01 at ee57d4288 and the oldest \"Upgrade attempt v2.3.0\", a stash being the repository's, so dropping one is hv's call; and tmp/check and tmp/test in Intent's tree, devbin check and test logs from 2026-10-29, for whoever ran them. Closed today: kovacs's provisioning (brew only), gyges's estate-pull job, Intranet's known_hosts, 0667 (hv ruled it in intent-vc's window), Utilz's push and dispatch, Laksa's and Conflab's answers, the first two Trash folders."
+  }
+}

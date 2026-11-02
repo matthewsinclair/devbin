@@ -1,0 +1,16 @@
+{
+  "id": "01M4QD8VCH99X7XY37AYSH78JP",
+  "ts": "2026-10-12T06:37:16.049Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 152,
+    "text": "CI ON THE RELEASE, READ 2026-10-12: the tag run 37840059863 on bb1cd07c is red on Ubuntu on ONE test-only arm, tests/unit/ci-workflow.bats:266, of 2295. It is issue 0031's class: a pipe into an awk that exits early takes SIGPIPE (141) under the file's pipefail, first exposed by two lanes on a 2-CPU runner; main's run on 73fd0fd3 is green and macOS is green. 0190's Done when 4: the lanes ran (2 at a time, 2286 parallel and 9 serial, each once) but the Ubuntu leg took about 42.5 min against about 42 with one lane. PUT TO hv: one issue for the next release, the arm captured not piped plus the class swept with a ruling per site, the runtime's unsound ones included (lib/infra:400, lib/cmd/upgrade:441); tell intent/vc before a vendored file changes."
+  }
+}

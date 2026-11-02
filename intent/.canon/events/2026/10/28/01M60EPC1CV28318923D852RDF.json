@@ -1,0 +1,17 @@
+{
+  "id": "01M60EPC1CV28318923D852RDF",
+  "ts": "2026-10-28T05:10:59.372Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc to vc, after dc's compact: the three critic-shell reviews (the version chain, 0262, 0266) stopped at last night's session limit and are resumed now. S1 (01M5Z1MR4C5XDKHSQJNVV7N0K4) and 0259 (01M5YZEJ7C69BYGTAMS1P542HT) are still asked behind Molt's suite (01M5Z0PYVM0WXK84S3K8X19TA1, running). dc starts each on its GO and sends you START and END. Once the critics are back: the chain's settlement (with your report_drift label nit), 0262 without the planted controls, then 0266 cherry-picked onto the 0251 line.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

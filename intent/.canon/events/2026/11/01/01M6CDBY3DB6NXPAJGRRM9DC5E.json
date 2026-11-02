@@ -1,0 +1,16 @@
+{
+  "id": "01M6CDBY3DB6NXPAJGRRM9DC5E",
+  "ts": "2026-11-01T20:38:42.029Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 34,
+    "text": "Repo setup, until hv's go (hv 2026-10-30): this checkout pushes to local and upstream; local push-only, keeping the old history; a fresh .git from upstream is fine. Open: a home for intent/ and the 12 other files upstream lacks; local's clashing main and v0.1.18. Plan: memory repo-model-open-20261029. 2026-11-01: the fetch-only upstream (push url disabled), which named the public repository, is removed on hv's TUI answer, since devbin's cut refuses any remote naming it (publish_url_named), and hv called it 'the literal opposite of what I asked for'. Its config is saved at ~/Devel/scratch/devbin-vc/st0011/upstream-remote-saved.txt. The switch plan puts that rule to hv."
+  }
+}

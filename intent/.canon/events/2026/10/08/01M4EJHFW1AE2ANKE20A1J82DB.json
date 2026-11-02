@@ -1,0 +1,16 @@
+{
+  "id": "01M4EJHFW1AE2ANKE20A1J82DB",
+  "ts": "2026-10-08T20:16:12.161Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 151,
+    "text": "PUT TO hv, not in 0.1.10 unless hv says: should the release pre-flight accept a tmp/ committed as a link to a directory outside the tree? 0.1.9 and 0.1.10 both refuse it."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M5QKNVWBZZQJZ6J3GPMNBQBF",
+  "ts": "2026-10-24T18:44:55.820Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0221"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "comments and test titles outside the release core name things by their position (field five, the first two, invariant 2, four lines up), which goes stale as the list grows"
+  }
+}

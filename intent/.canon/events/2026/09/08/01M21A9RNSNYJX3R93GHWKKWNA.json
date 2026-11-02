@@ -1,0 +1,14 @@
+{
+  "id": "01M21A9RNSNYJX3R93GHWKKWNA",
+  "ts": "2026-09-08T20:10:39.161Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.descope",
+  "subject": {
+    "type": "ac",
+    "id": "ST0003/AC-4.1"
+  },
+  "payload": {
+    "to": "ST0006"
+  }
+}

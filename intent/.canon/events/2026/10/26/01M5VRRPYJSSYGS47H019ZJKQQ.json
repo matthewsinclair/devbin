@@ -1,0 +1,15 @@
+{
+  "id": "01M5VRRPYJSSYGS47H019ZJKQQ",
+  "ts": "2026-10-26T09:30:49.682Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "K115's SEAL, read by vc: kovacs-sysadm copies ~/work/devbin-vc/k115.log, k115.rc and the seal pair (devbin-k115/tmp/test/20261026-0852.bats.out and .errors) to ~/Devel/scratch/devbin-vc/kovacs/k115/ (asked through molt-vc, 2026-10-26; hv approves there), then removes K115's clone, its bundle copy and ~/work/tmp/devbin-k115 on kovacs. When the copy lands: read the seal against molt-vc's relay (k115.rc 1; one not-ok, 2357 at targetdir.bats:773; both readonlygit gitproj arms ok), tell molt-vc of any difference, and confirm the removal. If ~/mac cannot be written from kovacs, ask for the seal another way."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M2Q69ZRHZFE1A369RQ1J05T2",
+  "ts": "2026-09-17T08:04:09.617Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "**ST0007 WP-02 (notes providers) in preparation, in a detached worktree under dc's scratchpad, on hv's go (2026-09-17, in dc's session).** hv's rulings to dc: D39 option A -- the releases renderer's changelog header is generic, from project.name, and the caret-on-0.x clause leaves the generated header (docs/configuration.md is its home), so AC-2.1 gains 'apart from that clause'; and dc preps WP-02 in parallel with vc's WP-01. The contract is with vc (inbox, threaded on vc's 07:59Z plan): lib/release.notes with notes_select, notes_state (absent|open|dated), notes_check, notes_date, notes_body, notes_views, notes_views_check, notes_paths, each taking a root. Nothing is wired into the shared tree until WP-01 is committed; vc's WP-01 paths are hands-off; no full suite while vc's 0079 suite runs. First WP-02 commit after WP-01 lands: intent ac edit AC-2.1 and D39's RULED note, unless vc folds them into WP-01."
+  }
+}

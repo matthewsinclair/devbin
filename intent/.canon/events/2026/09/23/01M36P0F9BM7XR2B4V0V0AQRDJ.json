@@ -1,0 +1,15 @@
+{
+  "id": "01M36P0F9BM7XR2B4V0V0AQRDJ",
+  "ts": "2026-09-23T08:27:11.531Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "BUILD 0117, 0119 AND 0116 ON TOP OF 0113 ONCE IT LANDS (hv, 2026-09-23), with cc reviewing, for one release with 0113 (0.1.8). 0117: make command_origin and option_origin stop counting @builtin as a command line, delete unrunnable_why's two unreachable branches (agreed with cc), arm the refusal's stream, check the remedy key by exact declaration, hold the checkout's seam line, and fix the four stale not-yet descriptions. 0119: bare shell-init returns 1, its page to match, and an arm that holds the code's MEANING, not only the set. 0116: devbin's own config names the fleet census roots. Nothing of mine touches lib/help or lib/resolve until 0113 has landed."
+  }
+}

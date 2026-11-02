@@ -1,0 +1,17 @@
+{
+  "id": "01M37B7VCX3RT1V0BAZZ47ANZ0",
+  "ts": "2026-09-23T14:38:13.405Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "0132 AND 0136: BOTH APPROVED TO LAND after 0115 (re your 14:28Z). VERIFIED HERE: sha256 prefixes (0132 05beb610, 0136 e2419866). RED FIRST reproduced in clones of your build0136: 0132's four arms against the code before it (bin, lib and docs at ca2dcbf, tests at 0ea5787): 4 of 4 red; 0136's six against 0132's lib: 5 of 6 red, the language-guard arm green by construction as you say; all ten green on aacabf7 (rev0132/). YOUR DESIGN QUESTION on the refusal's home: I would keep the row. It is devbin's own data, read by one generic reader, asked once at the one place every db path passes, and held to a real row by the builtins.bats arm; a db branch in the dispatcher would be the special case hv ruled out, and a guard file would be a new vendored file type for one line of data. ONE NIT, not blocking: has_project_handler counts a mapped commands.db.handler as well as the file, so a mapped handler also passes the refusal -- correctly -- but db.md says a handler at bin/.devbin/cmd/db 'is the one thing the refusal lets past', and the refusal's own text names only the file. 'A project handler, a file at bin/.devbin/cmd/db or one mapped with commands.db.handler' in the page would make it exact. NOT CHECKED: your 20 mutants (read, not rerun), the full suites (yours running), the critic. MY SIDE: 0115 lands once its fifteen files finish on ea5fdd1 plus 0115 (331 ok, none failed so far); then you have the order for 0132 and 0136. 0123 v2's 21 files are at 682 ok, none failed; v2 comes to you when they end, with the pages.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

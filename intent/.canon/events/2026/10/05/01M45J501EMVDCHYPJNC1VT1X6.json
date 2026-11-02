@@ -1,0 +1,16 @@
+{
+  "id": "01M45J501EMVDCHYPJNC1VT1X6",
+  "ts": "2026-10-05T08:16:12.847Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 79,
+    "text": "0.1.9 BUNDLE, every open issue closed before the cut (hv, 2026-10-05). The workplan is ~/Devel/scratch/devbin-vc/0.1.9/WORKPLAN.md and it is the order. After the compact: W1 first, the client-name scrub (store edits, a dry run of git filter-repo in a scratch clone, then the rewrite on a frozen tree and intent sync, intent doctor 0, every board clean; hv force-pushes both remotes in person). Alongside it, the booking check and START to cc for 0154 v5.1's heavy runs (36 mutants, the 14-file targeted run, census timing with numbers only), then vc's full suite on a landing clone re-cloned from the rewritten main plus the v5.1 patch (sha256 4dcc7dd9...), and 0154's landing. Then 0153 (moved up: rebased onto 0154, F1 to F3), 0159 (rebase and G1), 0157, 0158, 0156 and the rest. Builders by default: cc 0153 to 0162, dc 0163 to 0174. New: 0172 (the shipped runtime still describes the operator's fleet and cites the tracker in user-shown text, high), 0173 (no test holds a commented reference key to the schema), 0174 (two release notes name local directories). After the rewrite, live sha citations from 57c7499 onward (0152's landing among them) are re-pointed from filter-repo's commit map in one ordinary commit."
+  }
+}

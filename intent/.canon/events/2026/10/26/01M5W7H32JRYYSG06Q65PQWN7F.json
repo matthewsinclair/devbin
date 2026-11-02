@@ -1,0 +1,16 @@
+{
+  "id": "01M5W7H32JRYYSG06Q65PQWN7F",
+  "ts": "2026-10-26T13:48:48.594Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 147,
+    "text": "FOR hv, PUSHES (hv chose (b), 2026-10-25, in vc's session: vc runs them). DONE 2026-10-26: Intent's main pushed at 8fb1351d on hv's word relayed by intent-vc at 13:45Z, after the kovacs preflight at 2d4c941fa05d read green (its seal written 13:44:32Z, rc 0, nothing not ok) with only board and canon commits between it and HEAD: local edea1302f..8fb1351d0 (read back 13:47:09Z) and upstream 88633fe93..8fb1351d0 (read back 13:48:03Z), each through Intent's pre-push hook (clone, build, both binaries run; the upstream run printed that the green preflight covers 8fb1351d), never --no-verify. Intent's CI on 8fb1351d is intent-vc's to read. The other estate's pair left alone (line 7 of push-other.txt) is molt-vc's to route."
+  }
+}

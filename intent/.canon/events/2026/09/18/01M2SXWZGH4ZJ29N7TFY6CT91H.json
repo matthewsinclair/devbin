@@ -1,0 +1,15 @@
+{
+  "id": "01M2SXWZGH4ZJ29N7TFY6CT91H",
+  "ts": "2026-09-18T09:34:58.065Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "**Sweep pre-notice, behaviour changes to call out by name (not just list files):** (1) every gated tool now reads no input (lib/runlog, 0088 row 2) -- a gate that prompted at a person's terminal now fails as it does in CI; a command needing the terminal must drop `log:`. (2) 0087: `--purge`/`--purge-only`/`--allow-empty` at a command-level gate now reach the gate, not the tool. (3) 0086: replace of a read-only file no longer blocks at a terminal. Feeds todo 58."
+  }
+}

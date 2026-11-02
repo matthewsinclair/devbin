@@ -1,0 +1,15 @@
+{
+  "id": "01M32CXV1RZP6406DY165993N4",
+  "ts": "2026-09-21T16:31:30.360Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Devbin's side of the release core's adoption, as core owner (ST0007 closed at 5eb9111; adoption is each estate's own work, tracked in intent/wip.md under 'The release core's adoption'). RELEASED WHEN Utilz's 2.11.0 cut through the core surfaces a core gap. Any core fix ships as an issue in a devbin release: a default with an override, never a per-project case, filed as an issue first; vc reviews every core fix dc builds."
+  }
+}

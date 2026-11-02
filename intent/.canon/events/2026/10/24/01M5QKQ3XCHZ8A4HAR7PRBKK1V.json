@@ -1,0 +1,15 @@
+{
+  "id": "01M5QKQ3XCHZ8A4HAR7PRBKK1V",
+  "ts": "2026-10-24T18:45:36.812Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0220 and ISSUE:0221 (vc's word 2026-10-24 18:45Z, after the v0.1.14 tag at 593109bf): build both in a scratch clone of main (~/Devel/scratch/devbin-dc/0220), as separate commits, 0220 first; book suites with molt-vc; hand vc a sealed bundle with drafted messages and resolutions. No push, no release"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M5QKPH1G09N65QQQMFYS1R8S",
+  "ts": "2026-10-24T18:45:17.488Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 22,
+    "text": "ISSUE:0213 T10's legs C and D (A and B done on rhadamanth 2026-10-24, outputs in ~/Devel/scratch/devbin-cc/t10/out/, machine on brew). v0.1.14 is tagged (593109bf, hv's cut 2026-10-24 18:42Z), so neither leg is waiting on the tag any more. C, Intent's leg, is released when Intent has re-vendored from 0.1.14 (vc has given intent-vc the tag). D, kovacs, is released when hv has brew upgraded kovacs to 0.1.14. Each leg runs only on vc's word."
+  }
+}

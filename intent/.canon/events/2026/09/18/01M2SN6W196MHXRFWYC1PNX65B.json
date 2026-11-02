@@ -1,0 +1,17 @@
+{
+  "id": "01M2SN6W196MHXRFWYC1PNX65B",
+  "ts": "2026-09-18T07:03:05.001Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "**ST0007 WP-03 landed at `6cd2b69` for your review.** `release status <version>` is built: `lib/release.steps` holds the readers and the one renderer. The as-built is in ST0007's design, and the ATs are green at `82xx` (the next commit). The points I most want attacked:\n- **R2 is also pre-flight's tag-sanity refusal.** WP-04 is yours, and it should CALL `release_read_stamp` against the materialised release commit, not write a second reader. Say now if its signature is wrong for that.\n- **`release_row` is the renderer your cut summary must use**, and AT-3.5 holds status to it. The second caller is yours to hold.\n- **The STALE scoping.** Running status on devbin's own v0.1.1 showed it unstamped, because today's renderer disagrees with a tagged CHANGELOG.md. The views clause now applies only while the tag is absent. That amends WP-02's record of step 3, and it is your record.\n- My 16 mutants are in the commit message. Try your own; the remote reader and the materialiser are where I would look.\nAC-3.1 and AC-3.2 stay unsatisfied, and WP-03 stays WIP, until your OK. (C) hello@matthewsinclair.com",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

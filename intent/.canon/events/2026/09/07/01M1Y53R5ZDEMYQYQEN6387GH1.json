@@ -1,0 +1,14 @@
+{
+  "id": "01M1Y53R5ZDEMYQYQEN6387GH1",
+  "ts": "2026-09-07T14:42:15.871Z",
+  "principal": "local",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "attachment.put",
+  "subject": {
+    "type": "attachment",
+    "id": "ST0002/WP/03/arca_cli-record.md"
+  },
+  "payload": {
+    "via": "address"
+  }
+}

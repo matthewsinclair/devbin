@@ -1,0 +1,15 @@
+{
+  "id": "01M4QAQ3BDD6XCNVKHF9JPN3QA",
+  "ts": "2026-10-12T05:52:37.230Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST0008/05"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "The suite under uutils coreutils"
+  }
+}

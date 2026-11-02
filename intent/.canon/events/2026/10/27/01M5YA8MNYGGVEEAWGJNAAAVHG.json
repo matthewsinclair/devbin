@@ -1,0 +1,16 @@
+{
+  "id": "01M5YA8MNYGGVEEAWGJNAAAVHG",
+  "ts": "2026-10-27T09:15:06.302Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 173,
+    "text": "DONE: FILED as issue 0245 for 0.1.16 (decision 72; hv's go, decision 78). It is devbin's read-only report of linked worktrees (landed, held or unknown, with evidence) and a remove-landed form, built to in-whiteboard's Folding contract (Intent 26d8e1f39, issue 0656). Its spec and measure came from intent-vc on 2026-10-27, copied into ~/Devel/scratch/devbin-vc/wt-tool/ with each sha256 verified: wt-reading.txt, inventory.sh with inventory.txt, and pass2.sh with wt-pass2.out. intent-vc's ten cases that neither script decides are in the issue, with cases 1 to 7 reported unknown for the author's word."
+  }
+}

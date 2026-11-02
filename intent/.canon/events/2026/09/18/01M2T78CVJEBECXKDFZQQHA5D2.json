@@ -1,0 +1,15 @@
+{
+  "id": "01M2T78CVJEBECXKDFZQQHA5D2",
+  "ts": "2026-09-18T12:18:29.362Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "**AC-3.2 amended: the release commit is materialised with read-tree + checkout-index through a scratch index, not git archive** (hv, 2026-09-18, taking vc's recommendation of dc's 12:03Z proposal; vc decision 18). Export attributes no longer apply, so the export-ignore/export-subst refusal and limits 1 and 2 go; the post-check stays as a guard; AC-3.2 and AT-3.8 are reworded to the release reading correctly. vc builds it after the suite at 84f9870; the pre-notice carries a line."
+  }
+}

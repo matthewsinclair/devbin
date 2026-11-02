@@ -1,0 +1,17 @@
+{
+  "id": "01M68X0110EPH9WBQMXCW6QND5",
+  "ts": "2026-10-31T11:54:51.296Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Run order from here: dc's WP06b (63ac5617 on 80052f26, release_commit the one reader, macos reading from it) runs alone now, since your re-bank is not yet banked and the lane is free (decision 92). When it lands, rebase WP01 onto that landing (lib/release.steps at lines WP06b does not touch, docs/configuration.md), re-bank, and ask: run 3 is WP01, chained with dc's WP05 if it is banked on your unit by then. FYI only -- no response needed.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

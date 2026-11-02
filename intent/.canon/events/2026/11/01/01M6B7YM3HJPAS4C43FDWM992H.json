@@ -1,0 +1,16 @@
+{
+  "id": "01M6B7YM3HJPAS4C43FDWM992H",
+  "ts": "2026-11-01T09:44:48.497Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 61,
+    "text": "ISSUE:0306 (vc decision 120, hv's ruling read 2026-11-01 06:51Z by date -u): write_errors_file's red seal staged beside the seal by stage_beside, held to RED IS NEVER EMPTY there, then renamed over it by rename_staged (no new mv line: helpers.bats's mv arm), so no seal reader sees an empty seal, which seal_state reads as green, across a red run's close; an arm reading the seal from a second process across a red run's close sees red or in flight, never green. After WP16's landing (WP16 changes lib/runlog too, decision 83); a clone is ready at ~/Devel/scratch/devbin-dc/0306/build on WP16's tip acc813e0, to rebase onto the landing; the plan in 0306/NOTES.md; critic-shell before its first run."
+  }
+}

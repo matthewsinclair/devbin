@@ -1,0 +1,16 @@
+{
+  "id": "01M46Q3N5RMG4BZSV43CF236E3",
+  "ts": "2026-10-05T19:02:06.264Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "0.1.9 bundle, vc's assignment on hv's word of 2026-10-05 (every open issue closes before the cut); dc holds 0163, 0165, 0167, 0168, 0170 to 0172. 0163 v3 and 0167 are with vc, rebased onto main 415ce738 (sha256s confirmed, targeted run green) and on vc's full suite. 0168 v2 is built over them (02a45605, wide run green, red and mutants done); critic-shell's second pass is to fold (build-dir hides triples: the marker becomes .cargo-lock), then it goes to vc as a third patch. Then 0165, 0170, 0171, 0172. Every step, sha and command: ~/Devel/scratch/devbin-dc/0.1.9/STATE.md (HOLD section first)."
+  }
+}

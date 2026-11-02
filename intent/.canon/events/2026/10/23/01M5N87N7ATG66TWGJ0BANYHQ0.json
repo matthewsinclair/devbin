@@ -1,0 +1,15 @@
+{
+  "id": "01M5N87N7ATG66TWGJ0BANYHQ0",
+  "ts": "2026-10-23T20:46:27.050Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0201's rhad proof at 0.1.13, per ~/Devel/scratch/devbin-dc/0201/FIXTURE.md and vc's decision 55: rhad-fixture/ was vendored from the 0.1.12 keg on 2026-10-23 and is kept untouched; after 0.1.13's brew upgrade, a bare bin/devbin upgrade there must take 0.1.13 through HOMEBREW_PREFIX/opt/devbin, doctor must read it, and nothing may name the removed keg, each step recorded in rhad-0.1.13/ and 0201's Resolution drafted from both records; kovacs's half is outside decision 55 and parked until hv rules. RELEASED WHEN hv's cut has published 0.1.13's formula to the tap and rhad's brew upgrade goes ahead on hv's word through vc"
+  }
+}

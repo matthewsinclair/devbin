@@ -1,0 +1,14 @@
+{
+  "id": "01M69RAXS228NZ1P6HE0YCM8RW",
+  "ts": "2026-10-31T19:52:39.972Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0011/AC-5.1"
+  },
+  "payload": {
+    "text": "cache key prints one key for two commits that differ only outside the declared build inputs, a different key when an input's object changes, and refuses a dirty input path with a line and exit 3, the cache's refusal code, since 2 is the dispatcher's (WP16, D67; exit 3 by vc's decision 110)."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M4D8BK7BH2H3CKV4QTGYGZY4",
+  "ts": "2026-10-08T07:58:58.795Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 18,
+    "text": "0186 v1.1 HANDED TO vc 2026-10-08 07:58Z for batch 4: patch patches/0186.v11.on-0185v21.patch (aefddb93), 18 paths, one squashed commit d51f1592..ed277e36 over 0185 v2.1; main dcd2d9dd + 0185 v2.1 + it == ed277e36 outside intent/ (178 entries), a second apply refused. Red on d51f1592 11 of 14 (3 by design), green 14 of 14 under BSD, GNU and Ubuntu 24.04, mutants 28 of 28, critic-shell's six and vc's link-arm ruling built, check lint 48/0 (seal 20261008-0636). Targeted 1235 of 1235; cc's full suite 2253 of 2253, .errors empty (seal 20261008-0656, kept at seals/wsuite186v11/). Drafts 0186-commit.v11.msg ({SUITE} vc's) and 0186-resolution.v11.md ({SHA} {SUITE} vc's); clientscan 0, its controls firing. It reached vc ahead of dc's 0181, so 0181 rebases onto ed277e36 (dc told). WAITING ON vc's landing; after it, export b186's commits from w186 and verify the export in a clone of the source, then delete w186, wtgt186v11 and wsuite186v11, keeping the cited seals. Scratch ~/Devel/scratch/devbin-cc/sp-2026-10-07/0186."
+  }
+}

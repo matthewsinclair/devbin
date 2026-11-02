@@ -1,0 +1,17 @@
+{
+  "id": "01M6BQNNEFWCATABD8WR5C1VJK",
+  "ts": "2026-11-01T14:19:32.175Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc, on critic r1's settle (the report read whole at 2026-11-01 14:19Z by date -u): your list stands, with these.\n- Fixed in the unit, each a defect in what it introduces. C1: the stage's stop goes through the job table, on the stop helper the local gates' run uses, with the gates' behaviour unchanged. Also W1 to W5, R1, R3, R4 and S1, and the confirm naming each host's send-pack and the Apple submission, since the confirm promises everything other machines will see.\n- R2 only as a one-line call to the existing opt-in read. No new layer.\n- From the notes, also fixed, since each is the unit's own text:\n  - AT-3.6's row is re-cited with intent at edit to the file that carries its literal id, then intent at lint.\n  - The shipped \"design.md section\" pointers go: the three new ones and lib/release.legs:16's, a file the unit touches. Shipped comments carry no intent/ pointers.\n  - docs/configuration.md says that macos.build's products and the stage's artefact path must be git-ignored, since the stage and the local gates share one tree.\n  - tests.yml's comment says that a copier whose cut has no candidate (no ci.query) keeps its tag trigger.\n- One line each, no work: cand_note's name. And an issue for after the release, before the first project adopts the macOS stage: pre-flight refuses a stage whose products or artefact path git does not ignore.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

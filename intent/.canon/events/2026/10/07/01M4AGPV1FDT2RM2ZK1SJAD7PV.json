@@ -1,0 +1,16 @@
+{
+  "id": "01M4AGPV1FDT2RM2ZK1SJAD7PV",
+  "ts": "2026-10-07T06:27:12.559Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 15,
+    "text": "0178 AND 0179 IN BUILD for the next bundle, on vc's word (2026-10-07), under the usual method, in a scratch clone on main 266a5c17, whose code equals the 0.1.9 release d7f2ed13. 0179: the ignore file asks the filesystem whether a repository is there (git_marker_above), so a repository git refuses to read draws the line and gets no `*`. 0178: the manifest_source_token refusal names DEVBIN_INSTALL_PREFIX, as vc ruled, and the upgrade page, the comment above manifest_source and a test comment say a project upgraded from an older runtime is upgraded twice. Red first, 12 of 12 mutants killed, shellcheck and the lint gate clean, GNU green; critic-shell, the targeted run and a full suite running; then the patches to vc against a named HEAD. The 0.1.9 bundle's 19 spent clones are deleted, every unlanded commit and seal exported first. State: ~/Devel/scratch/devbin-cc/sp-2026-10-07/STATE.md."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M6C590N1VV8W4C46VPQR6PC1",
+  "ts": "2026-11-01T18:17:17.730Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 44,
+    "text": "ST0011/08 (WP08; AT-3.9 in formula.bats; issue 0296): banked at refs/bank/cc/ST0011-08 8a6ee3770a971bb45154eb3124d166db0adc4d78 on WP07's bank ba5a8270; WIP. Its run 01M6C255TV1C6MNNW9ZEH4YCBF is GREEN (driver 17:43:43Z to 18:14:30Z by date -u): arms rc 0, red08 34b1dadc red as wanted on the two 0296 arms with the AT-3.9 guard held out by GREEN_AT_BASE; light rc 0, the whole suite under BSD 2969 ok and 0 not ok with its seal 20261101-1744 empty, 12 GNU legs each exit 0, the critic exit 0. END sent and the slot released (18:15Z by date -u). HANDOVER with vc for land-stack.sh, LAND_BASE_OFF_MAIN=1: ~/Devel/scratch/devbin-cc/st11-wp02b/handover8/ (bundle 445e1108, message 07a8d25e, SHA256SUMS checked). At its landing: at39-landing.sh <landing sha> (AT-3.9 green on the green legs, its note naming WP02a and 0227, per vc's 16:55Z ruling; then intent at lint ST0011), then WP07 and WP08 done where AC-3.3 reads satisfied. dc's WP02c follows on 8a6ee377, on vc's go."
+  }
+}

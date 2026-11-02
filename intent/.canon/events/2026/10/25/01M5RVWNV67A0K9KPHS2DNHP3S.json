@@ -1,0 +1,16 @@
+{
+  "id": "01M5RVWNV67A0K9KPHS2DNHP3S",
+  "ts": "2026-10-25T06:27:42.054Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 26,
+    "text": "ISSUE:0223 handed to vc 2026-10-24 20:04Z: ~/Devel/scratch/devbin-cc/0223/handover/0223.bundle (ec7e5120, tree daae7775, on 981594b6), message and resolution drafted; vc stacked it in land220 (87e426c6, now under 0224 at 4488f3bc), last in molt-vc's queue. Released when vc has landed it, its changed lines match the bundle's, and the clones (build, red, red2, verify) are archived and cleared"
+  }
+}
