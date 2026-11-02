@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 0efaf266-99de-43e5-b477-f36ee9e1d9d9
-heartbeat_at: 2026-11-02 07:51Z
+heartbeat_at: 2026-11-02 08:59Z
 status: active
-focus: "Utilz 2.14.9 in the new shape (todo 195): 0132 landed at Utilz efdd047d; reading utilz-vc's cut plan when it comes, then its release check and dry run before hv cuts. Desk clear, vc holds control."
+focus: "HOLD for hv's move (quiesce order, 2026-11-02 08:59Z by date -u), then hv's pickup. Then Utilz 2.14.9 resumes per todo 195: check utilz-dc's U1 and U2, grant R1 to R3, read CI on hv's push of main, then hv's cut. Desk clear, vc holds control."
 claims: [ST0011]
 ---
 
