@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 0efaf266-99de-43e5-b477-f36ee9e1d9d9
-heartbeat_at: 2026-11-02 07:36Z
+heartbeat_at: 2026-11-02 07:51Z
 status: active
-focus: "HOLDING for hv's /compact, at hv's fold order (2026-11-02, before the clock read 07:36Z by date -u). Done today: the repo switch (decision 132: one public history, archive push-only), 0320 landed at ca70e0d9 and closed with CI green, 0321 filed (low). NEXT on hv's go: Utilz's 2.14.9 cut in the new shape once utilz-vc's plan arrives (the todo for it); the other estates' sweep notices (todo 194); hv's items (todo 184)."
+focus: "Utilz 2.14.9 in the new shape (todo 195): 0132 landed at Utilz efdd047d; reading utilz-vc's cut plan when it comes, then its release check and dry run before hv cuts. Desk clear, vc holds control."
 claims: [ST0011]
 ---
 
