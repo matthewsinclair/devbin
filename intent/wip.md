@@ -1,5 +1,5 @@
 ---
-verblock: "02 Nov 2026:v3.61: Matthew Sinclair - globalfold after devbin 0.1.19: DOING and TODO only"
+verblock: "02 Nov 2026:v3.62: Matthew Sinclair - repo switch: one public history, archive push-only"
 ---
 
 # Work In Progress
@@ -18,7 +18,6 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 - LAST, after everything above (hv, 2026-10-31): WP18, `docs/assembly-and-the-build-cache.md`, "Devbin's Build Cache for Optimised Release Assembly", written from the as-built (vc's todo 183).
 - The sweep's notices: each estate's vc, at its next session, hears that devbin 0.1.19 reached its tree, with both of its commits (vc's todo 194).
 - For hv (vc's todo 184): the Intranet checkout's upgrade by hand, on hv's yes (decision 122); kovacs's leftover clones and the first cut's leg, on hv's word in kovacs-sysadm's window; the estate items carried there.
-- Repo model (vc's hold 34): vc brings hv one concrete switch plan. There is no upstream remote, and the cut refuses one naming the public repository.
 - intent-vc files Trellis's AGENTS.md swift-template bug in Intent's tracker at its next session (vc's todo 192).
 - Prodinfra's next session hears hv's 2026-10-15 ruling: `infra --profile` takes a path, with no name form (vc's todo 159).
 - The no-vendor mode, deferred until devbin was public (decision 64): hv to schedule.

@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "0efaf266-99de-43e5-b477-f36ee9e1d9d9",
-    "heartbeat_at": "2026-11-02T06:31:25.927Z",
+    "heartbeat_at": "2026-11-02T07:36:33.900Z",
     "status": "active",
-    "focus": "Repo switch DONE at hv's go (decision 132, 2026-11-02 06:28Z): main be65353e is GitHub's history with the workroom public; local and upstream are ordinary remotes, archive takes pushes only. NOW: devbin's own release config to the core's standard shape (no snapshot; remotes local and upstream), its tests on the desk, then hold. After that, on hv's go: the sweep's notices (todo 194), hv's items (todo 184), then WP10 to WP14.",
+    "focus": "HOLDING for hv's /compact, at hv's fold order (2026-11-02, before the clock read 07:36Z by date -u). Done today: the repo switch (decision 132: one public history, archive push-only), 0320 landed at ca70e0d9 and closed with CI green, 0321 filed (low). NEXT on hv's go: Utilz's 2.14.9 cut in the new shape once utilz-vc's plan arrives (the todo for it); the other estates' sweep notices (todo 194); hv's items (todo 184).",
     "claims": [
       "ST0011"
     ],
@@ -4380,10 +4380,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 194,
-      "text": "SWEEP NOTICES (sweep-plan.md's \"After the sweep\"; the sweep landed 2026-11-01 22:30Z by date -u, one commit per estate, nothing pushed): tell each estate's vc at its next session that the sweep has reached its tree, which unparks it (decision 123's restatement), and give it the commit. Utilz fc8cd495: ci.query dropped; its release check's one finding, that a push of candidate/2.14.8 starts no run of tests.yml, is WP10's. Gtools 5f21da88: ci.query dropped and ci.workflow: ci.yml declared, with ci.wait 45m kept; its matching finding is WP11's. Intent 066bd45bb: assets.workflow reads valid. No Intent session was live, so no CHAIN START or END bracketed the commit. Add the cmd/cache shadow note (a doctor note from 0.1.19, which WP12 renames) and todo 192's ask. Conflab 7ac7912f; Molt c0a6a2e; Baize a232154; Cdtempl ec521ac; Lamplight ab22e2e9c; MicroGPTEx f0f1040; Prodinfra a8e5f27; Prolix 4650a24; Riffle e9c8ca5; Arca's arca_catalog/ex 3e52ddb, arca_cli 1730f40, arca_config cbe7fea and arca_example 0424150; Cards 39f3fbc (Design, which is not its own checkout); and the cfg estate (another estate's Gtools config) 29ba6a5. Each notice names the retired release publish verb (decision 107) and the ci.query drop on WP02c's built-in default. The three with a release block (Utilz, Gtools, Intent) also hear that the candidate leg is on by default from 0.1.19, so a cut is refused at pre-flight until its test workflow fires on candidate/ or it opts out with ci.query: -. Sent before the clock read 22:41Z by date -u: trellis-vc for Trellis (ef579e5), and laksa-ac for Laksa (33da7b856), to pass to laksa-vc. Then, at hv's ruling of 2026-11-02 (decision 131), the fleet was re-swept from Homebrew's install of 0.1.19 at 04:07Z by date -u, provenance only: each manifest's source_commit moved from opt's e532a0f67250 to brew's 0b5e4fa0f540 with no vendored file changed, one commit per estate by path, nothing pushed. The cfg estate e4c458b; Arca's arca_catalog/ex 4aa17aa, arca_cli cc92a60, arca_config 583495c and arca_example 245c725; Baize c153326; Cards cd18f7a (Design); Cdtempl da15cd8; Conflab cce79b42; Gtools 5442da2a; Intent dfef527a3; Laksa b9a632ea4; Lamplight 7b8cbc87f; MicroGPTEx 0b3a241; Molt 0939f5b (hv's own upgrade there, committed with the rest); Prodinfra fafb60d; Prolix 8be99ff; Riffle 08d7bbb; Trellis 0b78a2a; Utilz 7f5167b7. Each notice names both commits, and trellis-vc and laksa-ac are owed the second.",
+      "text": "SWEEP NOTICES (sweep-plan.md's \"After the sweep\"; the sweep landed 2026-11-01 22:30Z by date -u, one commit per estate, nothing pushed): tell each estate's vc at its next session that the sweep has reached its tree, which unparks it (decision 123's restatement), and give it the commit. Utilz fc8cd495: ci.query dropped; its release check's one finding, that a push of candidate/2.14.8 starts no run of tests.yml, is WP10's. Gtools 5f21da88: ci.query dropped and ci.workflow: ci.yml declared, with ci.wait 45m kept; its matching finding is WP11's. Intent 066bd45bb: assets.workflow reads valid. No Intent session was live, so no CHAIN START or END bracketed the commit. Add the cmd/cache shadow note (a doctor note from 0.1.19, which WP12 renames) and todo 192's ask. Conflab 7ac7912f; Molt c0a6a2e; Baize a232154; Cdtempl ec521ac; Lamplight ab22e2e9c; MicroGPTEx f0f1040; Prodinfra a8e5f27; Prolix 4650a24; Riffle e9c8ca5; Arca's arca_catalog/ex 3e52ddb, arca_cli 1730f40, arca_config cbe7fea and arca_example 0424150; Cards 39f3fbc (Design, which is not its own checkout); and the cfg estate (another estate's Gtools config) 29ba6a5. Each notice names the retired release publish verb (decision 107) and the ci.query drop on WP02c's built-in default. The three with a release block (Utilz, Gtools, Intent) also hear that the candidate leg is on by default from 0.1.19, so a cut is refused at pre-flight until its test workflow fires on candidate/ or it opts out with ci.query: -. Sent before the clock read 22:41Z by date -u: trellis-vc for Trellis (ef579e5), and laksa-ac for Laksa (33da7b856), to pass to laksa-vc. Then, at hv's ruling of 2026-11-02 (decision 131), the fleet was re-swept from Homebrew's install of 0.1.19 at 04:07Z by date -u, provenance only: each manifest's source_commit moved from opt's e532a0f67250 to brew's 0b5e4fa0f540 with no vendored file changed, one commit per estate by path, nothing pushed. The cfg estate e4c458b; Arca's arca_catalog/ex 4aa17aa, arca_cli cc92a60, arca_config 583495c and arca_example 245c725; Baize c153326; Cards cd18f7a (Design); Cdtempl da15cd8; Conflab cce79b42; Gtools 5442da2a; Intent dfef527a3; Laksa b9a632ea4; Lamplight 7b8cbc87f; MicroGPTEx 0b3a241; Molt 0939f5b (hv's own upgrade there, committed with the rest); Prodinfra fafb60d; Prolix 8be99ff; Riffle 08d7bbb; Trellis 0b78a2a; Utilz 7f5167b7. Each notice names both commits, and trellis-vc and laksa-ac are owed the second. Utilz's notice went to utilz-vc before the clock read 07:36Z by date -u, naming fc8cd495 and 7f5167b7, with hv's heads-up for its 2.14.9 cut (todo below).",
       "state": "live",
       "recorded_at": "2026-11-01T22:44:04.083Z",
-      "edited_at": "2026-11-02T04:11:24.444Z"
+      "edited_at": "2026-11-02T07:36:33.479Z"
     },
     {
       "node": "vc",
@@ -4410,6 +4410,14 @@
       "state": "live",
       "recorded_at": "2026-11-02T06:31:15.794Z",
       "edited_at": "2026-11-02T06:41:08.683Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 195,
+      "text": "hv cuts Utilz 2.14.9, 0132's fix, through devbin 0.1.19's core once 0132 lands (hv in vc's window, 2026-11-02, before the clock read 07:36Z by date -u): the first consumer cut in the new shape, ST0011 WP10 (utilz#ST0031). utilz-vc and utilz-dc bring vc and hv one plan first: tests.yml fires on candidate/** and not on tags (today it fires on main and tags, so pre-flight would refuse); tools/post-cut against the macOS leg the cut now runs at the release commit; a build: block wired to the cache. Its release check and dry run come to vc before hv cuts; every run books on this desk. After the cut vc reads its RELEASE seal for AC-3.4 (sign and notarise at the release commit as a leg), Utilz's part of AC-4.3, and AC-5.4 if a build: block is in.",
+      "state": "live",
+      "recorded_at": "2026-11-02T07:36:33.719Z"
     }
   ],
   "sent": [
