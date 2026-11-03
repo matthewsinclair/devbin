@@ -4,10 +4,10 @@
     "moniker": "vc",
     "name": "Validation Claude",
     "role": "validation",
-    "session_id": "0efaf266-99de-43e5-b477-f36ee9e1d9d9",
-    "heartbeat_at": "2026-11-02T08:59:49.289Z",
+    "session_id": "b3108395-0ea5-4058-bbc0-957dc06489c6",
+    "heartbeat_at": "2026-11-03T06:54:24.386Z",
     "status": "active",
-    "focus": "HOLD for hv's move (quiesce order, 2026-11-02 08:59Z by date -u), then hv's pickup. Then Utilz 2.14.9 resumes per todo 195: check utilz-dc's U1 and U2, grant R1 to R3, read CI on hv's push of main, then hv's cut. Desk clear, vc holds control.",
+    "focus": "HOLD at hv's boot order after the move (2026-11-03 06:54Z by date -u): booted, inbox empty, holding until hv gives instructions in vc's window. Next on hv's go: Utilz 2.14.9 per todo 195 (utilz-dc's U1 and U2, R1 to R3 booked on this desk, CI on hv's push of main, then hv's cut). Desk clear, vc holds control.",
     "claims": [
       "ST0011"
     ],
