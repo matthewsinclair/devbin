@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "b3108395-0ea5-4058-bbc0-957dc06489c6",
-    "heartbeat_at": "2026-11-03T07:02:30.816Z",
-    "status": "active",
-    "focus": "HOLD (hv in vc's window, received before the clock read 2026-11-03 07:00Z by date -u): no devbin work today. The outstanding work is banked on this board (vc's hold 35: the park and hv's four questions for the resume; todo 195: Utilz 2.14.9's state and resume order; todo 184: kovacs's leftovers done) and in intent/wip.md. Holding until hv says devbin's work resumes. The desk is pplr-vc's.",
+    "heartbeat_at": "2026-11-03T09:40:43.721Z",
+    "status": "paused",
+    "focus": "RELEASED for the day (hv in vc's window, received before the clock read 2026-11-03 09:38Z by date -u): holding until hv says devbin's work resumes; the resume reads hold 35, todo 195 and todo 184.",
     "claims": [
       "ST0011"
     ],
@@ -4073,7 +4073,8 @@
       "kind": "decision",
       "seq": 104,
       "text": "vc 2026-10-31 15:40Z (on dc's critic dispositions for WP03's remainder, c5682c12 in wp03r; 0 critical, 4 warnings, 6 recommendations): all four warnings taken as dc proposes (one reader of the push block yielding paths-ignore; **/ matches zero or more directories; YAML properties, explicit ? keys, tabs and '' escapes answer unknown; one shared read of a workflow at a sha, unknown at exit 0 when git cannot list its environment); R1, R3, R4 and R6 taken (GitHub's [] rule; a declared non-built-in release.ci.query answers unknown naming the query; the failed detail from the one job list already read; 'no job failed' named); the failed line carries its job list inside the run's parenthesis, run <id> (<conclusion>; failed jobs: a, b), cc's cut printing it verbatim; R5 in part as dc proposes (one helper for the scratch file and its trap; check-ref-format's failure reads unknown with git's words; the shared is_branch_name lands in WP02b, cc adding it to lib/helpers and switching all three sites, ci-state's included). R2 amended: the directory-glob and premise halves as dc proposes, and the version-file half taken as an input, not declined: --fires accepts the paths the release commit will change (the cut knows them, it writes the stamp) and, given them, answers 'does not fire' when paths or paths-ignore excludes every one of them, naming the rule; without them it names the premise. A predictable non-fire refuses at the pre-flight instead of spending the cut's wait; the reader stays pure, the cut supplies the one fact only it has. For WP02b (cc): the call line passes the stamp's file list; unknown is never read as fires, the pre-flight prints the reader's reason and refuses, and the override is the existing force route. 0300 landed on main at 25bebe8b from 1b29205a by land-stack.sh at 2026-10-31 15:40Z; WP02a (running) lands as run on it.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-03T09:40:17.444Z",
       "recorded_at": "2026-10-31T15:40:30.182Z"
     },
     {
@@ -4081,7 +4082,8 @@
       "kind": "decision",
       "seq": 105,
       "text": "vc 2026-10-31 15:42Z (cc's question on decision 104, before WP02b): a project whose release.ci.query is bespoke is not asked --fires. The refusal on unknown is for a workflow the core owns the reading of (the built-in reader could not read it: a YAML shape, git unable to list, a glob it cannot judge); a bespoke query means the trigger is that query's to read, so the pre-flight does not ask, release check prints that the trigger is the query's to read and is not checked, and the backstop is the candidate leg ending red at ci.wait with nothing public. Asking anyway would make force routine for every such project and spend the flag's meaning. After the sweep drops ci.query fleet-wide (decision 93), the built-in is the fleet's reader and the case is the opt-out alone.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-03T09:40:17.632Z",
       "recorded_at": "2026-10-31T15:42:13.944Z"
     },
     {
@@ -4097,7 +4099,8 @@
       "kind": "decision",
       "seq": 106,
       "text": "vc 2026-10-31 15:58Z (on cc's WP02b scope question, map in ~/Devel/scratch/devbin-cc/st11-wp02b/): the loop first. WP02b is the loop: every leg once in parallel under one wait loop at the release commit, the tag moved after every leg is green, release publish folded into the cut under the one yes, the candidate's pushable remote (nothing maps release.repo to one today), the retirements of today's tail (about seventy arms pin it) and todo 55's items; a design note comes to vc before any code. WP02c is the ci keys and the checker: ci.wait's default of 60m (D61), the ci keys, is_branch_name in lib/helpers for all three sites, the two call lines passing the stamp's paths to dc's reader, the bespoke-query rule (decision 105) and AC-6.3, once dc's WP03 remainder and WP17 land. Where decisions 104 and 105, todo 185 and intent/wip.md say WP02b for those checker items, read WP02c. WP04's last piece, the tag trigger's removal from Devbin's workflow, is dc's after WP02b lands, since the loop is what stops the cut relying on the tag.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-03T09:40:17.825Z",
       "recorded_at": "2026-10-31T15:58:22.781Z"
     },
     {
@@ -4158,10 +4161,10 @@
       "node": "vc",
       "kind": "doing",
       "seq": 87,
-      "text": "ST0011 after devbin 0.1.19 (restated at 2026-11-02 04:12Z by date -u, at hv's order to fold, close and hold). RELEASED 2026-11-01 21:53:56Z: release commit e532a0f67250, its public snapshot 0b5e4fa0f540; the cut's record is ~/Devel/scratch/devbin-vc/st0011/cut-0.1.19-record.txt. SWEPT: from the opt install into the frame's 20 estates at 22:30Z, then, after hv's brew steps put the switch on Homebrew's install, re-swept from Homebrew's at 2026-11-02 04:07Z (decision 131), every estate recording 0b5e4fa0f540, one commit each, nothing pushed. WP01 to WP09 and WP17 done; WP15 started (Devbin's read in design.md at 434da8ef); WP16 (dc) WIP for AC-5.4. The thread reads 18 of 21, waiting on AC-3.4, AC-4.3 and AC-5.4, all at the consumers' cuts; its 33 AT rows lint clean. ORDER (decision 120, as it stands): WP10 to WP14 in the consumer estates, which give the cache its first callers (decision 102), WP15 read at their cuts, then WP18 last (todo 183). From the cut: 0318, WSL 2's red arm, record corrected, cause unknown, no code and no run; 0319, the opt/brew notice gap, low (decision 131). kovacs: K0118 to K0120's clones and the 67fb7cda leg wait for hv's word in kovacs-sysadm's window (todo 184). DESK: the rule that devbin's ST0011 runs go first has run its course. main is pushed to local at each fold (decision 120 R4). ESTATES (each parked until vc says the sweep has reached it, on hv's word, decision 123's restatement; Intent, Utilz and Trellis have confirmed): Intent: 0666, 0668 and 0669 landed and closed for 3.2.9; main 0a8444583, board-only since 64cf9e251, where build all passed; its preflight at 64cf9e251 went RED at 09:28Z on testkit's own sweep race (abandoned_fixtures_are_swept: a sibling test's sweep in the same binary deletes the probes before they are counted; verified on the source, unchanged since 2026-09-10), the re-run queued at the same HEAD, the race recorded as an Intent issue after the push, no fix; push-check.sh passed at 0a8444583 (fast-forward, 10 commits over both remotes at d22305536, deny-list clean); 0670 waits until after ST0011, and 3.2.9 is cut through devbin's core after 0.1.19 and its sweep (hv via intent-vc, 10:05Z). Obvious bug fixes are in (hv via intent-vc, 10:21Z): 0671's lasting fix (intent-cc) and the testkit race fix (intent-dc, test-only), each judged on this desk, both landing after the push of the three fixes. hv restarted intentd at 10:18Z with CLAUDE_CONFIG_DIR, and the estate page sees the sessions again. Utilz: CI GREEN at 510bc7db (utilz-vc read runs 41293082052 and 41293158609 to the end against a21dde9c: ST0031/03 proven on CI); cc's menuz 0.4.10 bump landed as cd34c3de and rides the next push, on hv's word. Molt: hv pushed Molt-matts 80b945d and Molt-flynn ff6fa35 (by 09:33Z); 0079's kovacs rollout green 09:35Z to 09:36Z by kovacs's clock (molt doctor 16 of 17, env red until hv's GNOME re-login, todo 184). Laksa: S2 pushed and proven (CI 41286552055); of main's five reds, r2, r4 and r5 are proven on CI (41292970116, 41294314628, 41295465458, each red only on the reds left), and r1 and r3 are green in laksa-dc's targeted mix run at 01fa30be6; all five are now proven, and CI 41298704668 on 0150de0a7 is Laksa main's first fully green run, both jobs; the records commit c349a8d8c waits on local main for hv's word (todo 184); AT-05.3 and AC-05.2 wait on hv's look at the CV panel. Conflab: the records fix 0ed7be84 checked; holds for the sweep. Gtools: hv's word in gtools-vc's window (its decision 103): cc builds the CMS unit, then 0126 and AC-01.1, each landing on hv's word in cc's window, its runs booked here by ask id; hv at 11:01Z by gtools-vc's clock (its decision 104, 5b8ae0a6): 0132 (high) is fixed now as ST0022/04, cc's after WP-01, ST0022/02's post_install proof moves to dc, and one Gtools release carries every fix (decision 98's no-push stands until hv's cut); asks to expect, each through gtools-vc: cc's ST0022/01 kit, /03 (rebuilds gtools-rs, heavy) and /04, dc's ST0022/02 scratch-tap install proof, dc's ST0020/01 at the sweep; ST0021 is done (landed at 2bf7eafb, 7/7 ACs, wp and st done, unpushed until hv's word); cc's units are now ST0022, their asks through gtools-vc; 0128 closed by gtools-vc on gyges-sysadm's report (Gtools ce4f9e5d, unpushed; no live check wanted), its allow-list live on gyges (Intranet b204f5c, not pushed). Intranet: c60442c live on gyges. gyges: the stale rg removed on hv's yes in gyges-sysadm's window (passed to molt-vc); 0128's allow-list live; the Intranet 26 commits ahead of local/main, unpushed.",
+      "text": "ST0011 after devbin 0.1.19: 18 of 21 ACs, the last three (AC-3.4, AC-4.3, AC-5.4) met only at the consumers' cuts; the order is WP10 to WP14 in the consumer estates, Utilz 2.14.9 first (todo 195), WP15 read at their cuts, WP18 last (todo 183); parked by hv on 2026-11-03 (hold 35).",
       "state": "live",
       "recorded_at": "2026-10-31T18:40:54.145Z",
-      "edited_at": "2026-11-02T04:12:25.074Z"
+      "edited_at": "2026-11-03T09:40:27.024Z"
     },
     {
       "node": "vc",
@@ -4232,7 +4235,8 @@
       "kind": "decision",
       "seq": 117,
       "text": "Lanes rebalanced for the cut (hv's Ok on vc's rec in vc's window, 2026-10-31 21:05Z by date -u; decision 16 leaves the cc/dc line to hv): after WP16 and WP17 land, dc takes the hook-in unit (WP04's trigger removal, the WP05 and WP06 hook-ins into the loop; AT-3.3, AT-3.6; dc hold 36) and WP08 (the formula under the cut's yes, assets mode with the cask verified; AC-3.3's WP08 clause, AT-3.9), and cc keeps WP02b-1, WP02b-2, WP02c and WP07; two builders on the path to WP09 instead of one. AT-3.9's row is re-noted to dc now; the WP cover's words follow at dc's start. The order to dc goes out at WP17's landing. Decision 113 archived as executed (AC-5.1 and AC-5.5 carry exit 7 at c2c3a263) to keep the bound's headroom. Restated on hv's TUI answer in vc's window (received before the clock read 2026-11-01 12:29Z by date -u), as vc recommended: WP02c moves to dc. dc builds it on cc's WP02b-1 bank and WP17 after the hook-in unit, so it builds beside cc's WP02b-2 rather than after it. cc keeps WP02b-2 and WP07; dc has the hook-in unit, WP02c and WP08. Restated again on hv's TUI answer in vc's window, as vc recommended (received before the clock read 2026-11-01 16:37Z by date -u): WP08 moves to cc. cc builds it on its WP07 re-bank, made after WP07 rebases onto dc's fixed hook-in. dc unclaims ST0011/08 and cc claims it. WP02c and WP08 both build on WP07's bank; the first banked carries the other, and the two run as one stack once both are ready (decision 125 (4)). dc has the hook-in unit and WP02c; cc has WP07 and WP08.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-03T09:40:18.020Z",
       "recorded_at": "2026-10-31T21:05:13.982Z",
       "edited_at": "2026-11-01T16:38:11.137Z"
     },
@@ -4320,7 +4324,8 @@
       "kind": "decision",
       "seq": 125,
       "text": "Speed to the cut (hv in vc's window, received before the clock read 2026-11-01 12:16Z by date -u: 'Yes, do whatever can be done to make things faster. Anything!', then 'parallel'). Ruled for every run until 0.1.19 is cut. (1) The red legs are bounded: BATS_TEST_TIMEOUT comes from runs.conf, set in the red legs' environment alone. An arm cut off at the bound is a red, and the summary names it. cc's WP02b-1 red leg had hung for 20m at the base on the fixture's ci.wait. (2) The light phase's GNU legs run in parallel after the BSD whole suite, at most hw.ncpu / 2 at once, each file once, each with its own TAP and .rc. The phase passes only when the .rc count equals the legs launched and every .rc reads 0. The arms phase stays serial, since its BSD and GNU green legs share the build clone. There is no planted control (hv's no tests of tests): vc reads every TAP and .rc at END. It has one implementation, cc's, ported into dc's runs.sh. (3) Build ahead: each unit is built on the newest bank it depends on, not on that bank's landing; a red run under it costs a re-bank and a rebase. (4) The train: when the lane frees, every unit banked with its critic settled runs as one stack, which decision 83 lands as run. Each unit's arms go red at its own red clone, then one light phase and one BSD whole suite. No ready unit is held for one that is not ready. (5) Decision 93's rhadamanth full suite at the landed head is the last stack's BSD whole suite at its tip, since land-stack.sh proves the tree outside intent/ equals the tip. The tree scans that read the whole checkout (lineendings and workroom read git ls-files, named again by grep at the time) are re-run at the landed head; there is no second full suite. (6) kovacs runs in parallel. K0118 is the full suite at main f93be203, an early Linux read on light slot 01M6BGJPBFES8SD6RM55TVCMYA through kovacs-sysadm; its reds are fixed forward in the next units, and the final kovacs suite runs at the cut's head. (7) A run's driver is read against its ask before the grant: cc's kit ran a bare bin/devbin test, which prints usage and exits 1, and was stopped and fixed one minute in.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-03T09:40:18.212Z",
       "recorded_at": "2026-11-01T12:16:48.069Z"
     },
     {
@@ -4328,7 +4333,8 @@
       "kind": "decision",
       "seq": 126,
       "text": "hv's pre-approval in vc's window through the TUI, going AFK for an hour (answered before the clock read 2026-11-01 12:46Z by date -u), as vc recommended: while hv is away, vc moves any unit, or part of one, not yet started between cc and dc when one builder would otherwise sit idle or is stuck (eg a usage limit), each move recorded on vc's board with its reason and reported to hv on return (decision 16's line, delegated for the absence). Executed with it, vc's go to both at 12:44Z after their 'compacted, holding': cc builds WP02b-2 in its note's order (0304, then the fold and the retirements with their arms, then 0297). Q3 is ruled (a): the three arms green at f3462610 (0297's clean seal and its red verdict, and the failing attach) are guards in the kit's GREEN_AT_BASE with their reasons, no broken-input leg, the critic reading what each asserts. 0297 rebases onto dc's 0306, since the stack lands first. The RELEASE seal's cache<TAB><artefact><TAB><key> line (decision 110 (3), s13) moves from WP02b-2, which calls no cache verb, to where the core calls get or put: dc's hook-in unit (the macOS stage) and WP08; s13's words are amended at WP18. dc finishes the stack (settle review, squash, red clone, AT-6.1 and AT-6.2 to-write, bank) and asks at once; it runs at cc's END if green and lands after WP02b-1 with LAND_BASE_OFF_MAIN=1; then the hook-in unit on the stack's bank, WP02c on it, then WP08, each running as one stack with any ready unit (decision 125 (4)). Decision 109 archived as executed (WP16 landed first at 54c16f33; WP17 is banked).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-03T09:40:18.400Z",
       "recorded_at": "2026-11-01T12:46:10.555Z"
     },
     {
@@ -4364,7 +4370,8 @@
       "kind": "decision",
       "seq": 128,
       "text": "dc's WP02c design note (~/Devel/scratch/devbin-dc/wp02c/DESIGN-NOTE.md, read whole; ruled at 2026-11-01 14:44Z by date -u, sent live and to the inbox). Every question is ruled as dc recommends. Q1 (A): the built-in candidate leg applies to every cut unless the project opts out, as D61 reads. This refines decision 107 (4)'s 'every GitHub project'. A workflow that does not fire is refused at pre-flight, naming the opt-out, and the fixture helpers opt out. Q2: the opt-out is ci.query: -. Q3: no new flag. Decision 104's 'existing force route' does not exist, so the refusal names the exits: fix the trigger, opt out, or a bespoke query (decision 105). Q4: release check asks only where it is offered, the built-in candidate is in effect, and the tree is a git repository. Q5: under derived:, no paths are passed. Q6: refuse, naming the host, when an absent host was a gate's only cover in all; reach answers uname -s through platform_word's map, and WP17's predicate takes the word. Q7: the marker scan without case, plus the ref-name rule on the filled tag. Q8: W7 sits in the legs step after S is built, before the candidate's push. Q9: Devbin's config drops ci.query and keeps summary and wait: 90m. Q10: check joins the readers column. The sweep's messages to Utilz, Gtools and Intent say the candidate leg is on by default from 0.1.19 (sweep-plan.md). Decision 108 archived as executed: platform_word is lib/helpers:3573 on main, and lib/cmd/macos:159 calls it.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-03T09:40:18.590Z",
       "recorded_at": "2026-11-01T14:44:38.635Z"
     },
     {
