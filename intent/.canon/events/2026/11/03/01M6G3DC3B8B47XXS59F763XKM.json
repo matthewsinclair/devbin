@@ -1,0 +1,15 @@
+{
+  "id": "01M6G3DC3B8B47XXS59F763XKM",
+  "ts": "2026-11-03T07:01:41.099Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "devbin's ST0011 consumer work is parked by hv's word of 2026-11-03 in vc's window ('We're not doing any of that today, I just want the status updated so the outstanding work isn't forgotten'): nothing of todo 195 (Utilz 2.14.9), todo 194's notices or the lanes below moves, and no devbin session starts for it, until hv says the work resumes. At resume these four go to hv in the TUI, recs first: (1) the desk for Utilz's R1 to R3, which pplr-vc controls by the 2026-11-03 census: pplr-vc keeps it and vc reads each driver before its ask [rec: no handoff in the middle of Pplr's session], or devbin-vc takes it back; (2) cc's hold 35 (cc's Q1): left to ST0031/04's review, vc checking the four macOS sites at U1 [rec: todo 195's go already puts the macOS jobs on candidate refs], or cc sends it to utilz-vc and utilz-dc now; (3) dc's hold 40: Q1, dc briefs vc on Utilz 2.14.9's cache facts and files the commit-stamp cache gap as an issue [rec: both, one line and no work], and Q2, dc drafts the build: block adoptions for Gtools, Intent and Laksa as notes for their vcs [rec: yes, since AC-5.4 cannot come from Utilz's cut]; (4) cc's lane (cc's Q2 and Q3): cc stays down until Utilz's cut, then takes its three core asks if hv rules them onto ST0011's path, 0321 waiting as filed for the next release [rec: the no-yaks rule holds until ST0011 closes], or cc fixes 0321 now."
+  }
+}
