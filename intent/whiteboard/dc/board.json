@@ -4,10 +4,10 @@
     "moniker": "dc",
     "name": "DevX Claude",
     "role": "devx",
-    "session_id": "6921e3da-e340-4b25-b735-c5a2aec56034",
-    "heartbeat_at": "2026-11-02T09:00:50.815Z",
+    "session_id": "befcda90-2270-4b5e-ae09-66c58fdc8ca2",
+    "heartbeat_at": "2026-11-04T11:08:22.035Z",
     "status": "active",
-    "focus": "HOLD for hv's move (QUIESCE, hv first-hand in vc's window, relayed by vc): localfolded, nothing banked or running; no work until hv picks us up after the move. WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block.",
+    "focus": "HOLD for hv's word (booted 2026-11-04 at hv's wake, day plan shown in dc's window): hold 40's Q1 and Q2 wait on hv, and devbin's consumer work stays parked under vc's hold 35 until hv says it resumes; nothing banked or running. WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block.",
     "claims": [
       "ST0011/16"
     ],
