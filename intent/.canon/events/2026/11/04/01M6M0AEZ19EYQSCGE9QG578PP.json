@@ -1,0 +1,16 @@
+{
+  "id": "01M6M0AEZ19EYQSCGE9QG578PP",
+  "ts": "2026-11-04T19:24:37.729Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 77,
+    "text": "Group B (vc decision 135, hv's ruling: every open issue into 0.1.20): 0298, 0299, 0311 and 0305 landed at 941e4400, 99005dbc, ac657c2c and 82cba561 and closed; 0319 next, built on B (kit ~/Devel/scratch/devbin-dc/gb/b319), rebasing onto 82cba561 for its pre-bank and run. Then group C (0301, 0302, 0303, 0316, 0318), then 0323 (design in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md, its rulings recorded there)."
+  }
+}

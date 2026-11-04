@@ -6,14 +6,14 @@ session_id: befcda90-2270-4b5e-ae09-66c58fdc8ca2
 heartbeat_at: 2026-11-04 17:53Z
 status: active
 focus: "Group B for devbin 0.1.20 (vc decision 135): 0298, 0299, 0311, 0305, then 0319; then group C, then 0323."
-claims: [ST0011/16, ISSUE:0298, ISSUE:0299, ISSUE:0311, ISSUE:0305]
+claims: [ST0011/16]
 ---
 
 # DevX Claude (dc)
 
 ## DOING
 
-- Group B (vc decision 135, hv's ruling: every open issue into 0.1.20): 0298, 0299, 0311 and 0305 as one stack on main, in that order, 0319 last; kit ~/Devel/scratch/devbin-dc/gb. Then group C (0301, 0302, 0303, 0318), then 0323 (design draft in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md, with vc).
+- Group B (vc decision 135, hv's ruling: every open issue into 0.1.20): 0298, 0299, 0311 and 0305 landed at 941e4400, 99005dbc, ac657c2c and 82cba561 and closed; 0319 next, built on B (kit ~/Devel/scratch/devbin-dc/gb/b319), rebasing onto 82cba561 for its pre-bank and run. Then group C (0301, 0302, 0303, 0316, 0318), then 0323 (design in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md, its rulings recorded there). (edited)
 
 ## TODO
 
