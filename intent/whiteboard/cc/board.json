@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "0d3e7086-f9dd-419f-97f3-a93ef5bae848",
-    "heartbeat_at": "2026-11-04T19:23:55.546Z",
+    "heartbeat_at": "2026-11-04T19:55:48.866Z",
     "status": "active",
-    "focus": "Train 1 of group A (0308, 0309, 0312) is banked at refs/bank/cc/v0120-t1 = e7133d13 and granted into bats on pplr-vc's desk (01M6M084QB56E66T6M067SEX8A); START waits for vc's read of the driver (~/Devel/scratch/devbin-cc/v0120-t1). Trains 2 and 3 wait as todos 66 and 67 say.",
+    "focus": "Holding at hv's word (Wrap, close, and hold): train 1 (0308, 0309, 0312) is banked at refs/bank/cc/v0120-t1 = e7133d13 and its run ends tonight, its END and, if every arm but main's release.bats:480 is green, its handover for vc; trains 2 and 3 wait for tomorrow (todos 66 and 67).",
     "claims": [
       "ISSUE:0307",
       "ISSUE:0308",
@@ -1621,10 +1621,10 @@
       "node": "cc",
       "kind": "todo",
       "seq": 66,
-      "text": "Train 2 (0310, 0313, 0314, 0315), after dc's B stack and train 1 land: also switch release_one_repository (lib/cmd/release:614-619) to dc's require_git_local_env_cleared from 0305, so one copy is left. 0315 as vc ruled (2026-11-04): ci-state --fires [--at-least] <ref> <sha> [<path>...]; under derived: the pre-flight and check_trigger pass release_owned's list with it; paths-ignore with every known file inside keeps fires naming the premise, the page saying that case can fail only by waiting out ci.wait, untagged; --at-least with no path a usage error at exit 1 (vc corrected its exit 2), its arm asserting exit 1, usage on stderr and no gh call; help, documentation and surfaces join the run.",
+      "text": "Train 2 (0310, 0313, 0314, 0315), after dc's B stack and train 1 land, on a base holding 1c291303: its work in progress is banked at refs/bank/cc/v0120-t2-wip (10b2b09, 0310 built); what is left, vc's 0315 ruling, release.bats in its FILES and vc's release_one_repository switch to dc's require_git_local_env_cleared are in ~/Devel/scratch/devbin-cc/v0120-t2/NOTES.md.",
       "state": "live",
       "recorded_at": "2026-11-04T18:30:29.427Z",
-      "edited_at": "2026-11-04T19:23:55.289Z"
+      "edited_at": "2026-11-04T19:55:47.411Z"
     },
     {
       "node": "cc",
@@ -2499,6 +2499,11 @@
       "id": "01M6CDB2W5KDES40CF0S66210E",
       "sender": "vc",
       "handled_at": "2026-11-01T21:57:22.446Z"
+    },
+    {
+      "id": "01M6KTYY0D3C55HHM3BZ98192S",
+      "sender": "vc",
+      "handled_at": "2026-11-04T19:55:48.189Z"
     }
   ]
 }

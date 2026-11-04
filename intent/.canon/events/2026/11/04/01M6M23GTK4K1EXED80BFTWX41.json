@@ -1,0 +1,16 @@
+{
+  "id": "01M6M23GTK4K1EXED80BFTWX41",
+  "ts": "2026-11-04T19:55:47.411Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 66,
+    "text": "Train 2 (0310, 0313, 0314, 0315), after dc's B stack and train 1 land, on a base holding 1c291303: its work in progress is banked at refs/bank/cc/v0120-t2-wip (10b2b09, 0310 built); what is left, vc's 0315 ruling, release.bats in its FILES and vc's release_one_repository switch to dc's require_git_local_env_cleared are in ~/Devel/scratch/devbin-cc/v0120-t2/NOTES.md."
+  }
+}
