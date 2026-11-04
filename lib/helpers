@@ -3494,7 +3494,9 @@ git_failure_line() {
 # point of this being issue 0014's one home: `git_head_sha_full` beside it would
 # be two readers of one fact, free to disagree about the failure string the
 # moment either is touched. `short` stays the default so every existing caller
-# is unchanged.
+# is unchanged. A form this does not know is the caller's bug, so it stops
+# rather than answers, as is_commit_sha's form does (issue 0298): read as short,
+# `full` misspelt answered a short sha with no complaint.
 git_head_sha() {
   # THROUGH git_readonly for the reason at git_head_identity (issue 0094): an
   # inherited GIT_DIR outranks `-C`, and the identity's two halves must read one
@@ -3502,7 +3504,8 @@ git_head_sha() {
   local root="${1:-${PROJECT_ROOT:-.}}" form="${2:-short}" sha
   case "$form" in
     full) sha="$(git_readonly -C "$root" rev-parse HEAD 2>/dev/null)" || sha="" ;;
-    *) sha="$(git_readonly -C "$root" rev-parse --short HEAD 2>/dev/null)" || sha="" ;;
+    short) sha="$(git_readonly -C "$root" rev-parse --short HEAD 2>/dev/null)" || sha="" ;;
+    *) die "git_head_sha: no form '$form' (the forms are short and full)" ;;
   esac
   [ -n "$sha" ] || sha=unknown
   printf '%s\n' "$sha"

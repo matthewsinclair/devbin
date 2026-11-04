@@ -2429,6 +2429,28 @@ EOF2
   refute_output_contains "answered"
 }
 
+# ---------------------------------------------------------------------------
+# ISSUE 0298: GIT_HEAD_SHA'S FORM, READ AS IS_COMMIT_SHA'S IS
+#
+# A form git_head_sha does not know is the caller's bug, as is_commit_sha's is,
+# so the call stops rather than answering a short sha.
+
+@test "git_head_sha stops on a form it does not know, naming it and the two it knows, where it answered a short sha (0298)" {
+  local repo="$DEVBIN_TEST_TMPDIR/repo"
+  git init -q "$repo"
+  git -C "$repo" -c user.name=t -c user.email=t@example.invalid -c maintenance.auto=false \
+    commit -q --allow-empty -m one
+  # In a shell of its own, as the die arm runs, so a stop and an answer read
+  # differently: at the base the misspelt form answered the short sha.
+  run bash -c "set -euo pipefail
+    . '$DEVBIN_LIB_DIR/helpers'
+    sha=\"\$(git_head_sha '$repo' ful)\"
+    echo \"answered \$sha\""
+  assert_exit_code 1
+  assert_output_contains "git_head_sha: no form 'ful' (the forms are short and full)"
+  refute_output_contains "answered"
+}
+
 @test "is_branch_name and is_tag_name pass back git's own word on a ref name, and platform_word_of maps an OS name to its platform word, the one map platform_word reads through (ST0011 WP-02c)" {
   local w
   # `! cmd` never trips errexit, so each refusal is asserted rather than negated.
