@@ -78,6 +78,8 @@ The cask, where formula.cask names one, is rendered from the same release and go
 
 In both modes, a placeholder left after filling is refused by name, so a misspelt one cannot ship, and a refusal writes nothing.
 
+In both modes, every line a render writes of its own, its header and the install body it generates, passes `brew style`, so a tap whose CI runs it needs no exception for them. The template's own lines are the project's to keep within Homebrew's style.
+
 ## The rendered file's header
 
 In both modes, each file that render writes opens with a header of its own, below any magic comment it keeps. The header says the file was rendered by devbin's formula built-in, names the template by its path from the project root, the tag and the commit the tag names, and says to edit the template rather than the file, which the next render replaces. A template declared with an absolute path is read under the project root too, and named without its leading slashes, so no path on the maintainer's machine reaches the tap.

@@ -11,7 +11,10 @@
 #
 # ASSETS: the templates hold the release's version and a sha256 per asset, read
 # from the release's sums file, and an install body devbin generates. A stubbed
-# gh serves the sums file, so nothing here reaches a network.
+# gh serves the sums file, so no arm reaches GitHub. The brew style arm runs
+# Homebrew's own check with no update and no API data, so it reaches no network
+# either, save on a brew that has never run brew style, which first installs
+# its style gems into its own tree (issue 0322).
 #
 # publish pushes to a local bare repository standing in for the tap, and asks a
 # person first: the arms that answer it run on a pty through expect
@@ -115,7 +118,9 @@ SHA_DECOY=4444444444444444444444444444444444444444444444444444444444444444
 # cask template, three assets (two named with {version}), one executable, and
 # tags v1.2.3 then v1.2.4; and the release's SHA256SUMS for v1.2.4 at $SUMS,
 # holding each asset and two decoys whose names are near theirs. The gh stub
-# serves $SUMS for `release download` and records every call in gh.calls.
+# serves $SUMS for `release download` and records every call in gh.calls. Both
+# templates' own lines are within brew style, so an arm running brew style over
+# a render reads only what the render adds (issue 0322).
 assets_checkout() {
   FX="$DEVBIN_TEST_TMPDIR/tool"
   git init -q -b main "$FX"
@@ -138,7 +143,7 @@ formula:
 YAML
   cat >"$FX/packaging/homebrew/tool.rb" <<'RUBY'
 class Tool < Formula
-  desc "A tool"
+  desc "Stand-in for a formula that installs release assets"
   homepage "https://example.invalid/tool"
   url "https://example.invalid/download/v@@VERSION@@/tool-aarch64-apple-darwin"
   sha256 "@@SHA256:tool-aarch64-apple-darwin@@"
@@ -172,6 +177,9 @@ cask "tool-app" do
 
   url "https://example.invalid/download/v#{version}/Tool-#{version}.pkg"
   name "Tool"
+
+  depends_on :macos
+
   pkg "Tool-#{version}.pkg"
 end
 RUBY
@@ -759,8 +767,8 @@ fx_publishes() {
 
 # --- assets mode -------------------------------------------------------------
 
-@test "assets render fills the version and each asset's sha256 by its exact name from the release's sums, and the cask beside it, each under the render's header (0227, 0257)" {
-  local commit out="$DEVBIN_TEST_TMPDIR/tool.rb" cask="$DEVBIN_TEST_TMPDIR/tool-app.rb"
+@test "assets render fills the version and each asset's sha256 by its exact name from the release's sums, and the cask beside it, each under the render's header (0227, 0257, 0322)" {
+  local commit block out="$DEVBIN_TEST_TMPDIR/tool.rb" cask="$DEVBIN_TEST_TMPDIR/tool-app.rb"
   assets_checkout
   commit="$(git -C "$FX" rev-parse 'v1.2.4^{commit}')"
   run formula render v1.2.4 "$out" "$cask"
@@ -779,7 +787,12 @@ fx_publishes() {
   assert_file_contains "$out" '      url "https://example.invalid/download/v1.2.4/tool-1.2.4-aarch64-linux.tar.gz"'
   assert_file_contains "$out" "      sha256 \"$SHA_LIN\""
   assert_file_contains "$out" '    chmod 0755, libexec/"bin/tool"'
-  assert_file_contains "$out" '    lines = ["# tool: tool", "# version: 1.2.4", "# source_commit: '"$commit"'", "# managed_by: brew"]'
+  # T3's header, one element a line (issue 0322), indented as the @@FINISH@@
+  # line it replaces.
+  block="$(printf '%s\n' '    lines = [' '      "# tool: tool",' '      "# version: 1.2.4",' \
+    "      \"# source_commit: $commit\"," '      "# managed_by: brew",' '    ]')"
+  [[ "$(cat "$out")" == *$'\n'"$block"$'\n'* ]] ||
+    fail "the rendered formula does not write T3's header one element a line: $(cat "$out")"
   assert_file_contains "$out" '    (libexec/".tool-install").write('
   assert_file_contains "$out" '    bin.install_symlink libexec/"bin/tool"'
   assert_file_contains "$out" '    "tool use names the tree this machine runs"'
@@ -827,6 +840,40 @@ fx_publishes() {
   [ "$(grep -v '^#' "$keg/libexec/.tool-install")" = "$(cd "$keg/libexec" && sha256_files bin/tool)" ] ||
     fail "the manifest's body is not bin/tool at its sha256:
 $(cat "$keg/libexec/.tool-install")"
+}
+
+@test "every file a render writes passes brew style: the assets formula with its generated install body in each form, its cask, and a source-mode formula, so a tap running brew style needs no exception for them (0322)" {
+  local tap="$DEVBIN_TEST_TMPDIR/tap/homebrew-tool" t text
+  local -a files=("$tap/Formula/tool.rb" "$tap/Formula/tool-tarball.rb" "$tap/Casks/tool-app.rb"
+    "$tap/Formula/devbin.rb")
+  # Homebrew's own check, never a copy of its limits: brew style applies its
+  # RuboCop config, line length and allowed patterns included, as a tap's CI does.
+  require_command brew "no brew on this runner, so nothing reads a render as a tap's brew style does" \
+    "the Ubuntu and WSL jobs install no Homebrew"
+  mkdir -p "$tap/Formula" "$tap/Casks"
+  assets_checkout
+  run formula render v1.2.4 "${files[0]}" "${files[2]}" --sums "$SUMS"
+  assert_success
+  # The @@INSTALL@@ form (install_ruby), from the same template with its install
+  # left to devbin, as a formula of its own name.
+  t="$FX/packaging/homebrew/tool.rb"
+  text="$(sed -e 's/^class Tool < Formula$/class ToolTarball < Formula/' -e '/^    (libexec\/"bin")\.install /d' \
+    -e 's/^    @@FINISH@@$/    @@INSTALL@@/' "$t")"
+  printf '%s\n' "$text" >"$t"
+  run formula render v1.2.4 "${files[1]}" "$DEVBIN_TEST_TMPDIR/tool-app.rb" --sums "$SUMS"
+  assert_success
+  assert_file_contains "${files[1]}" '    libexec.install Dir["*"]'
+  formula_checkout
+  run formula render v0.0.10 "${files[3]}"
+  assert_success
+  # Under Formula/ and Casks/, where a tap holds them, so brew style applies its
+  # cops for each kind. Never updating and reading no API data, so it needs no
+  # network and reads the brew it finds; and HOMEBREW_DEVELOPER, so brew style,
+  # a developer command, turns no developer mode on in the machine's Homebrew.
+  HOMEBREW_NO_AUTO_UPDATE=1 HOMEBREW_NO_INSTALL_FROM_API=1 HOMEBREW_DEVELOPER=1 HOMEBREW_NO_ANALYTICS=1 \
+    HOMEBREW_NO_ENV_HINTS=1 run brew style "${files[@]}"
+  assert_success
+  assert_output_contains "${#files[@]} files inspected, no offenses detected"
 }
 
 @test "assets render refuses an asset the sums file does not name, one it names twice, and a line in another shape, writing nothing (0227)" {
