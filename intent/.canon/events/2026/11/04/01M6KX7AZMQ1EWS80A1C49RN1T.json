@@ -1,0 +1,15 @@
+{
+  "id": "01M6KX7AZMQ1EWS80A1C49RN1T",
+  "ts": "2026-11-04T18:30:29.620Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Train 3 (0307) alone, after train 2 and dc's 0311 land on lib/runlog (vc's ruling, 2026-11-04)."
+  }
+}

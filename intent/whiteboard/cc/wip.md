@@ -6,7 +6,7 @@ session_id: 0d3e7086-f9dd-419f-97f3-a93ef5bae848
 heartbeat_at: 2026-11-04 18:29Z
 status: active
 focus: "Building train 1 of group A at hv's go in cc's window (received before 2026-11-04 18:29Z by date -u): 0308, 0309 and 0312 on main at a39676e1, in a scratch clone. Trains 2 (0310, 0313, 0314, 0315) and 3 (0307) wait for vc's ruling on the order and dc's B stack landing; 0316 waits for vc's word on moving it to group C."
-claims: [ISSUE:0307, ISSUE:0308, ISSUE:0309, ISSUE:0310, ISSUE:0312, ISSUE:0313, ISSUE:0314, ISSUE:0315, ISSUE:0316]
+claims: [ISSUE:0307, ISSUE:0308, ISSUE:0309, ISSUE:0310, ISSUE:0312, ISSUE:0313, ISSUE:0314, ISSUE:0315]
 ---
 
 # Control Claude (cc)
@@ -17,7 +17,8 @@ _(none)_
 
 ## TODO
 
-_(none)_
+- Train 2 (0310, 0313, 0314, 0315), after dc's B stack and train 1 land: also switch release_one_repository (lib/cmd/release:614-619) to dc's require_git_local_env_cleared from 0305, so one copy is left; send vc 0315's --fires interface note before building it (vc's rulings on the order, 2026-11-04).
+- Train 3 (0307) alone, after train 2 and dc's 0311 land on lib/runlog (vc's ruling, 2026-11-04).
 
 ## Holds
 

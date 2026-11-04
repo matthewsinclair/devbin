@@ -1,0 +1,15 @@
+{
+  "id": "01M6KX7ASKYJMSQ3K3NKHHXMWP",
+  "ts": "2026-11-04T18:30:29.427Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Train 2 (0310, 0313, 0314, 0315), after dc's B stack and train 1 land: also switch release_one_repository (lib/cmd/release:614-619) to dc's require_git_local_env_cleared from 0305, so one copy is left; send vc 0315's --fires interface note before building it (vc's rulings on the order, 2026-11-04)."
+  }
+}

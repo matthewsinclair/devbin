@@ -16,8 +16,7 @@
       "ISSUE:0312",
       "ISSUE:0313",
       "ISSUE:0314",
-      "ISSUE:0315",
-      "ISSUE:0316"
+      "ISSUE:0315"
     ],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
@@ -1617,6 +1616,22 @@
       "text": "Utilz 2.14.9's candidate CI would skip macOS: utilz's tests.yml runs test-macos (:115), the rust matrix's macOS row (:285), menuz-app (:534) and Test Summary's MACOS_REQUIRED (:598) only on a tag or a dispatch, while 0.1.19's cut tags only after CI is green on candidate/<tag>, so unless utilz/dc's ST0031/04 moves all four to devbin's own startsWith(github.ref, 'refs/heads/candidate/') (devbin's tests.yml :192, :355, :546) the candidate reads green on Linux alone. AC-5.4's Utilz facts are dc's (its hold of 2026-11-02). Held until hv answers Q1 of cc's plan of 2026-11-02: cc sends it to devbin-vc for utilz/vc and utilz/dc, hv says it in utilz/vc's window, or it is left to ST0031/04's review.",
       "state": "live",
       "recorded_at": "2026-11-02T09:01:18.824Z"
+    },
+    {
+      "node": "cc",
+      "kind": "todo",
+      "seq": 66,
+      "text": "Train 2 (0310, 0313, 0314, 0315), after dc's B stack and train 1 land: also switch release_one_repository (lib/cmd/release:614-619) to dc's require_git_local_env_cleared from 0305, so one copy is left; send vc 0315's --fires interface note before building it (vc's rulings on the order, 2026-11-04).",
+      "state": "live",
+      "recorded_at": "2026-11-04T18:30:29.427Z"
+    },
+    {
+      "node": "cc",
+      "kind": "todo",
+      "seq": 67,
+      "text": "Train 3 (0307) alone, after train 2 and dc's 0311 land on lib/runlog (vc's ruling, 2026-11-04).",
+      "state": "live",
+      "recorded_at": "2026-11-04T18:30:29.620Z"
     }
   ],
   "sent": [
