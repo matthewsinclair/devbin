@@ -1,0 +1,16 @@
+{
+  "id": "01M6M22HBDX00MFSCDA36GQKX1",
+  "ts": "2026-11-04T19:55:15.181Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 88,
+    "text": "devbin 0.1.20 carries every open issue before its cut (decision 135): cc builds group A in three trains, dc groups B and C then 0323, vc 0321 and every review and landing; landed and closed so far: 0322, 0321, 0298, 0299, 0311, 0305; held for hv's next word at the day's fold, the resume order in todo 196."
+  }
+}
