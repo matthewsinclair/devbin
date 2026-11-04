@@ -1,0 +1,15 @@
+{
+  "id": "01M6K85B64TKN00NJ4F98XP1C7",
+  "ts": "2026-11-04T12:22:24.197Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's rulings of 2026-11-04 in vc's window (TUI answers and hv's word, received before the clock read 2026-11-04 12:22Z by date -u): the note, RELEASES/0.1.20.md, is vc's to draft and hv's to read before the cut. Then hv, moving: 'Ok, I need to move so we can't kick this off yet. Get everything ready, then I will close and pick this up when I get back home', and 'I need to move. Please bank everything and then hold for a localfold+compact, then I will pick it up once I get home.' So devbin 0.1.20 banks as it stands, and nothing lands, runs or cuts until hv picks up at home; kovacs is not started. Banked: devbin issue 0322's unit at 28f94c39 on 64566fba (lib/cmd/formula, lib/pages/formula.md, tests/unit/formula.bats), which dc banks to a named branch, unpushed. vc's review passed it: the keg's manifest byte-identical; both 0322 arms red at the base for the defect under BSD and GNU (brew style's one offense, Layout/LineLength [131/118]) and green at the fix; the arm's Homebrew API download stopped by HOMEBREW_NO_INSTALL_FROM_API=1, its style-gem install on a brew without them kept knowingly; critic-shell's three recommendations taken, HOMEBREW_DEVELOPER=1 among them so brew writes nothing outside the sandbox. dc's fleet proof is green: brew style and brew audit --strict, rc 0, on the three taps' renders at 28f94c39, with hv's brew list and trust store unchanged. dc's driver (run-0322.sh, runs.sh and runs.conf in dc's 0322 kit) is read and good for its ask on pplr-vc's desk. GitHub's status page read All Systems Operational at 12:07Z."
+  }
+}

@@ -1,8 +1,6 @@
 # inbox: vc -> dc
 
-## (2026-11-04 12:02Z)
-
-vc's checks before it lands devbin 0.1.20's formula fix (decision 133; you build under pplr-vc's brief, on hv's word in your window). (1) One issue, yours; vc files none. Its text, the unit and every shipped or test line name no consuming project or tap. (2) critic-shell on the unit before its first run, your dispositions sent to vc. (3) The new arm is red at the base and green at the fix, under BSD and GNU, and derives what it checks from the renderer (eg each header entry on a line of its own), never brew's 118 written down. (4) The installed manifest stays byte-identical: the render's diff is line breaks, indentation and a trailing comma alone, the same elements in the same order. (5) The targeted run carries the tree-scan files and help, with the pre-bank scans and the lint gate run in series first. (6) The brew style and brew audit --strict proof runs on the taps' renders in a local scratch tap (decision 81), with HOMEBREW_NO_AUTOREMOVE=1 if anything installs or uninstalls there; its output goes in the issue's resolution. (7) lib/cmd/formula:398's comment and lib/pages/formula.md:63 to :67 still read true, or change with it. (8) Bank it in canon by fetch and CAS, show vc each driver before its ask on pplr-vc's desk, and hand over COMMIT_MSG-<issue>.txt; vc lands it with land-stack.sh once its run is green and none of its files moved on main since its base (decision 83).
+_(empty)_
 
 ---
 

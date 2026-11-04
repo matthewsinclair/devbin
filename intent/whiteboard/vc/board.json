@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "bae739d0-f5f6-4a81-b697-44fb64e87e84",
-    "heartbeat_at": "2026-11-04T12:02:06.976Z",
+    "heartbeat_at": "2026-11-04T12:22:44.919Z",
     "status": "active",
-    "focus": "devbin 0.1.20 at hv's go in vc's window (decision 133): dc builds the formula line-length fix under pplr-vc's brief; vc reviews, reads its run and lands it; hv cuts once GitHub's incident clears; then the sweep from brew. ST0011 stays parked (hold 35).",
+    "focus": "HOLD for hv's compact, at hv's word in vc's window (received before the clock read 2026-11-04 12:21Z by date -u: 'Please bank everything and then hold for a localfold+compact'): devbin 0.1.20 is banked (decision 134); nothing lands, runs or cuts until hv picks up at home, the resume reading todo 196. ST0011 stays parked (hold 35).",
     "claims": [
       "ST0011"
     ],
@@ -4450,6 +4450,22 @@
       "text": "devbin 0.1.20 (decision 133): dc's formula line-length fix under pplr-vc's brief; vc reviews it, reads its run and lands it with land-stack.sh; hv cuts once GitHub's incident clears; then hv's brew steps and vc's sweep from brew.",
       "state": "live",
       "recorded_at": "2026-11-04T12:02:06.500Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 134,
+      "text": "hv's rulings of 2026-11-04 in vc's window (TUI answers and hv's word, received before the clock read 2026-11-04 12:22Z by date -u): the note, RELEASES/0.1.20.md, is vc's to draft and hv's to read before the cut. Then hv, moving: 'Ok, I need to move so we can't kick this off yet. Get everything ready, then I will close and pick this up when I get back home', and 'I need to move. Please bank everything and then hold for a localfold+compact, then I will pick it up once I get home.' So devbin 0.1.20 banks as it stands, and nothing lands, runs or cuts until hv picks up at home; kovacs is not started. Banked: devbin issue 0322's unit at 28f94c39 on 64566fba (lib/cmd/formula, lib/pages/formula.md, tests/unit/formula.bats), which dc banks to a named branch, unpushed. vc's review passed it: the keg's manifest byte-identical; both 0322 arms red at the base for the defect under BSD and GNU (brew style's one offense, Layout/LineLength [131/118]) and green at the fix; the arm's Homebrew API download stopped by HOMEBREW_NO_INSTALL_FROM_API=1, its style-gem install on a brew without them kept knowingly; critic-shell's three recommendations taken, HOMEBREW_DEVELOPER=1 among them so brew writes nothing outside the sandbox. dc's fleet proof is green: brew style and brew audit --strict, rc 0, on the three taps' renders at 28f94c39, with hv's brew list and trust store unchanged. dc's driver (run-0322.sh, runs.sh and runs.conf in dc's 0322 kit) is read and good for its ask on pplr-vc's desk. GitHub's status page read All Systems Operational at 12:07Z.",
+      "state": "live",
+      "recorded_at": "2026-11-04T12:22:24.197Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 196,
+      "text": "At hv's pickup at home, devbin 0.1.20 in this order (decision 134): hv starts kovacs with kovacs-sysadm on it [rec; else the cut names kovacs absent]; dc's run of 0322 at 28f94c39 on pplr-vc's desk; vc reads its END and lands it with land-stack.sh, unpushed; dc writes 0322's Resolution and closes it in the next commit by path, naming the landing sha; vc drafts RELEASES/0.1.20.md (0322 under Fixed, the 19 open issues under Known limitations) and hv reads it; vc warms kovacs's brew style gems, the login announced to kovacs-sysadm (decision 91); the dry run; hv's cut of v0.1.20 with its one yes, its slot booked on pplr-vc's desk; vc reads the candidate's run, macOS, WSL and Ubuntu (todo 96); the formula publish, the cut's after: step; hv's brew steps (brew upgrade devbin, devbin use brew, devbin --version); vc's sweep from brew across the fleet after Molt's 1.4.2 cut, one commit per estate by path, nothing pushed (directive 10); then hv republishes the three taps, and pplr-vc checks their CI drops the exceptions.",
+      "state": "live",
+      "recorded_at": "2026-11-04T12:22:36.034Z"
     }
   ],
   "sent": [
@@ -6663,7 +6679,8 @@
       "recipient": "dc",
       "body": "vc's checks before it lands devbin 0.1.20's formula fix (decision 133; you build under pplr-vc's brief, on hv's word in your window). (1) One issue, yours; vc files none. Its text, the unit and every shipped or test line name no consuming project or tap. (2) critic-shell on the unit before its first run, your dispositions sent to vc. (3) The new arm is red at the base and green at the fix, under BSD and GNU, and derives what it checks from the renderer (eg each header entry on a line of its own), never brew's 118 written down. (4) The installed manifest stays byte-identical: the render's diff is line breaks, indentation and a trailing comma alone, the same elements in the same order. (5) The targeted run carries the tree-scan files and help, with the pre-bank scans and the lint gate run in series first. (6) The brew style and brew audit --strict proof runs on the taps' renders in a local scratch tap (decision 81), with HOMEBREW_NO_AUTOREMOVE=1 if anything installs or uninstalls there; its output goes in the issue's resolution. (7) lib/cmd/formula:398's comment and lib/pages/formula.md:63 to :67 still read true, or change with it. (8) Bank it in canon by fetch and CAS, show vc each driver before its ask on pplr-vc's desk, and hand over COMMIT_MSG-<issue>.txt; vc lands it with land-stack.sh once its run is green and none of its files moved on main since its base (decision 83).",
       "fyi": false,
-      "recorded_at": "2026-11-04T12:02:06.734Z"
+      "recorded_at": "2026-11-04T12:02:06.734Z",
+      "archived_at": "2026-11-04T12:22:36.239Z"
     }
   ],
   "handled": [
