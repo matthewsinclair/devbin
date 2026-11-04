@@ -845,8 +845,8 @@ read_head_state() {
 # ship with the release, one reason a line; empty means it may. Its bundle id;
 # its version against the app's, the project's unless macos.version_from names
 # another file; and the stamps declared: the kind against macos.kind_value, and
-# the commit, which must be 8 to 40 lowercase hex characters and a prefix of
-# <commit>, the release's commit. The caller decides which commit that is and
+# the commit, which must be a stamp is_commit_sha's stamp form takes and a
+# prefix of <commit>, the release's commit. The caller decides which commit that is and
 # says how it stands: tagged, the tag's, or untagged, the release commit before
 # its tag is cut (require_release_head; publish passes the tag's alone), so
 # no stamp is ever read against whatever HEAD happens to be. A bundle built
@@ -885,8 +885,8 @@ app_ship_blockers() {
   fi
   if [ -n "$APP_COMMIT_STAMP" ]; then
     commit="$(plist_get "$1" "$APP_COMMIT_STAMP")"
-    if [[ ! "$commit" =~ ^[0-9a-f]{8,40}$ ]]; then
-      printf "its %s is %s, not a commit of 8 to 40 lowercase hex characters, so it cannot be checked against the release's commit %s\n" "$APP_COMMIT_STAMP" "${commit:-<unreadable>}" "${2:0:12}"
+    if ! is_commit_sha "$commit" stamp; then
+      printf "its %s is %s, not a commit of eight or more lowercase hex characters, up to a whole name, so it cannot be checked against the release's commit %s\n" "$APP_COMMIT_STAMP" "${commit:-<unreadable>}" "${2:0:12}"
     elif [[ "$2" != "$commit"* ]]; then
       printf 'its %s is %s, and %s is %s -- it was built off another commit\n' "$APP_COMMIT_STAMP" "$commit" "$release" "${2:0:12}"
     fi

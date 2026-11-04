@@ -2451,6 +2451,25 @@ EOF2
   refute_output_contains "answered"
 }
 
+@test "is_commit_sha stamp takes an abbreviation of eight or more up to a whole name of either format, as a build stamps its commit, and nothing shorter, longer or not hex (0299)" {
+  local f w sha1 sha256
+  for f in sha1 sha256; do
+    git init -q --object-format="$f" "$DEVBIN_TEST_TMPDIR/$f"
+  done
+  # The whole names are read off real repositories, one of each object format.
+  # The stamp's floor sits one above the default form's seven, so an eight is a
+  # stamp and a seven, which the default form takes, is not.
+  sha1="$(git -C "$DEVBIN_TEST_TMPDIR/sha1" hash-object --stdin <<<x)"
+  sha256="$(git -C "$DEVBIN_TEST_TMPDIR/sha256" hash-object --stdin <<<x)"
+  for w in "$sha1" "$sha256" "${sha256%?}" "${sha1:0:8}"; do
+    is_commit_sha "$w" stamp || fail "the stamp $w was refused"
+  done
+  # `! cmd` never trips errexit, so each refusal is asserted rather than negated.
+  for w in "${sha1:0:7}" "${sha256}0" "${sha1^^}" "not-a-commit" ""; do
+    if is_commit_sha "$w" stamp; then fail "'$w' was taken as a stamp"; fi
+  done
+}
+
 @test "is_branch_name and is_tag_name pass back git's own word on a ref name, and platform_word_of maps an OS name to its platform word, the one map platform_word reads through (ST0011 WP-02c)" {
   local w
   # `! cmd` never trips errexit, so each refusal is asserted rather than negated.

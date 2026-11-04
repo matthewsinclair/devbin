@@ -6014,10 +6014,13 @@ version_direction() {
   fi
 }
 
-# is_commit_sha <word> [full] -- true when <word> can name a commit: lowercase
-# hex, at least seven characters. With `full`, only a whole object name: exactly
-# 40 characters, or 64 in a sha256 repository, as gh matches a run's commit and
-# as a record of the commit something was built at holds it.
+# is_commit_sha <word> [full|stamp] -- true when <word> can name a commit:
+# lowercase hex, at least seven characters. With `full`, only a whole object
+# name: exactly 40 characters, or 64 in a sha256 repository, as gh matches a
+# run's commit and as a record of the commit something was built at holds it.
+# With `stamp`, what a build may stamp its commit as: an abbreviation of eight
+# or more characters, up to a whole name of either format (issue 0299), so a
+# sha256 repository's 64-character stamp is a stamp, as its record is a record.
 #
 # ONE CHECK, because three copies of it had already drifted by the time issue
 # 0059 read them: one dropped the length test. The length test is not
@@ -6029,12 +6032,13 @@ version_direction() {
 # whatever the word: the form is read before the word is.
 is_commit_sha() {
   case "${2:-}" in
-    '' | full) ;;
-    *) die "is_commit_sha: no form '$2' (the forms are full, or none)" ;;
+    '' | full | stamp) ;;
+    *) die "is_commit_sha: no form '$2' (the forms are full and stamp, or none)" ;;
   esac
   case "$1" in '' | *[!0-9a-f]*) return 1 ;; esac
   case "${2:-}" in
     full) [ "${#1}" -eq 40 ] || [ "${#1}" -eq 64 ] ;;
+    stamp) [ "${#1}" -ge 8 ] && [ "${#1}" -le 64 ] ;;
     *) [ "${#1}" -ge 7 ] ;;
   esac
 }

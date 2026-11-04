@@ -993,7 +993,7 @@ signed_and_stapled() {
     fail "the asset did not go to the project's release v1.0.0: $(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
 }
 
-@test "a commit stamp that is not the tag's commit, or not a commit, is refused at app-sign, and at publish (0243)" {
+@test "a commit stamp that is not the tag's commit, or not a commit, is refused at app-sign, and at publish (0243, 0299)" {
   on_macos
   apple_stubs
   keychain_full
@@ -1010,7 +1010,7 @@ signed_and_stapled() {
   stamp_app "$app" AppCommit not-a-commit
   run macos_in "$proj" app-sign
   assert_failure
-  assert_output_contains "its AppCommit is not-a-commit, not a commit of 8 to 40 lowercase hex characters"
+  assert_output_contains "its AppCommit is not-a-commit, not a commit of eight or more lowercase hex characters, up to a whole name"
   [ "$(calls '^codesign .*--sign')" -eq 0 ] || fail "a refused copy was signed: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
   # Signed and stapled with the tag's stamp, then stamped otherwise: publish
   # asks the same of the copy it would ship.
