@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: befcda90-2270-4b5e-ae09-66c58fdc8ca2
-heartbeat_at: 2026-11-04 11:46Z
+heartbeat_at: 2026-11-04 12:22Z
 status: active
-focus: "Working ISSUE:0322 for devbin 0.1.20 under pplr-vc's instructions (hv's word in dc's window, 2026-11-04 11:21Z): doing 76. Hold 40 still waits on hv's Q1 and Q2; WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block."
+focus: "HOLD for hv's move (hv in dc's window, received before the clock read 2026-11-04 12:20Z by date -u: 'I need to move. Please bank everything and then hold for a localfold+compact, then I will pick it up once I get home'): localfolded, 0322 banked (doing 76), no desk ask until hv is back. Hold 40 still waits on hv's Q1 and Q2; WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block."
 claims: [ST0011/16, ISSUE:0322]
 ---
 
@@ -13,7 +13,7 @@ claims: [ST0011/16, ISSUE:0322]
 
 ## DOING
 
-- ISSUE:0322 for devbin 0.1.20, under pplr-vc's instructions at hv's word (2026-11-04 11:21Z): the formula's generated manifest header, and every line the built-in renders in either mode, fits brew style. Steps, per pplr-vc's brief: the fix and an arm whose limit comes from Homebrew, red on the one-line array and green on the fix, in a fresh clone; critic-shell before the first run; the targeted run in a slot from pplr-vc's desk, START and END; the fleet proof, brew style and brew audit --strict on pplr's, cldr's and ccusage's renders in a scratch tap whose trust is hv's call through pplr-vc, then untrust, untap and compare trust.json; landing unpushed, validated by devbin-vc, the fleet side checked by pplr-vc.
+- ISSUE:0322 (devbin 0.1.20, pplr-vc's brief at hv's word): the unit banked at refs/bank/dc/0322 (28f94c39 on 64566fba), its red clone at refs/bank/dc/0322-red2; the settle and the driver accepted by devbin-vc, the fleet proof by pplr-vc; left at hv's return: the pre-bank verdict, the run on pplr-vc's desk, the handover for devbin-vc's land-stack.sh, then the Resolution and close in the next commit. Resume order: ~/Devel/scratch/devbin-dc/0322/RESUME.md. (edited)
 
 ## TODO
 
