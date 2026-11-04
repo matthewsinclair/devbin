@@ -1,0 +1,16 @@
+{
+  "id": "01M6M095GSQFTE6TGM0G1FFEG6",
+  "ts": "2026-11-04T19:23:55.289Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 66,
+    "text": "Train 2 (0310, 0313, 0314, 0315), after dc's B stack and train 1 land: also switch release_one_repository (lib/cmd/release:614-619) to dc's require_git_local_env_cleared from 0305, so one copy is left. 0315 as vc ruled (2026-11-04): ci-state --fires [--at-least] <ref> <sha> [<path>...]; under derived: the pre-flight and check_trigger pass release_owned's list with it; paths-ignore with every known file inside keeps fires naming the premise, the page saying that case can fail only by waiting out ci.wait, untagged; --at-least with no path a usage error at exit 1 (vc corrected its exit 2), its arm asserting exit 1, usage on stderr and no gh call; help, documentation and surfaces join the run."
+  }
+}

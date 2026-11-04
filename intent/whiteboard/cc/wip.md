@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0d3e7086-f9dd-419f-97f3-a93ef5bae848
-heartbeat_at: 2026-11-04 18:29Z
+heartbeat_at: 2026-11-04 19:23Z
 status: active
-focus: "Building train 1 of group A at hv's go in cc's window (received before 2026-11-04 18:29Z by date -u): 0308, 0309 and 0312 on main at a39676e1, in a scratch clone. Trains 2 (0310, 0313, 0314, 0315) and 3 (0307) wait for vc's ruling on the order and dc's B stack landing; 0316 waits for vc's word on moving it to group C."
+focus: "Train 1 of group A (0308, 0309, 0312) is banked at refs/bank/cc/v0120-t1 = e7133d13 and granted into bats on pplr-vc's desk (01M6M084QB56E66T6M067SEX8A); START waits for vc's read of the driver (~/Devel/scratch/devbin-cc/v0120-t1). Trains 2 and 3 wait as todos 66 and 67 say."
 claims: [ISSUE:0307, ISSUE:0308, ISSUE:0309, ISSUE:0310, ISSUE:0312, ISSUE:0313, ISSUE:0314, ISSUE:0315]
 ---
 
@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-- Train 2 (0310, 0313, 0314, 0315), after dc's B stack and train 1 land: also switch release_one_repository (lib/cmd/release:614-619) to dc's require_git_local_env_cleared from 0305, so one copy is left; send vc 0315's --fires interface note before building it (vc's rulings on the order, 2026-11-04).
+- Train 2 (0310, 0313, 0314, 0315), after dc's B stack and train 1 land: also switch release_one_repository (lib/cmd/release:614-619) to dc's require_git_local_env_cleared from 0305, so one copy is left. 0315 as vc ruled (2026-11-04): ci-state --fires [--at-least] <ref> <sha> [<path>...]; under derived: the pre-flight and check_trigger pass release_owned's list with it; paths-ignore with every known file inside keeps fires naming the premise, the page saying that case can fail only by waiting out ci.wait, untagged; --at-least with no path a usage error at exit 1 (vc corrected its exit 2), its arm asserting exit 1, usage on stderr and no gh call; help, documentation and surfaces join the run. (edited)
 - Train 3 (0307) alone, after train 2 and dc's 0311 land on lib/runlog (vc's ruling, 2026-11-04).
 
 ## Holds
