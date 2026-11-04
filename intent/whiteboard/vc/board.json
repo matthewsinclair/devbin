@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "bae739d0-f5f6-4a81-b697-44fb64e87e84",
-    "heartbeat_at": "2026-11-04T11:04:43.837Z",
+    "heartbeat_at": "2026-11-04T12:02:06.976Z",
     "status": "active",
-    "focus": "HOLD at hv's word in vc's window (received before the clock read 2026-11-04 11:04Z by date -u: 'Finish booting, then please hold'): no work until hv says devbin's work resumes; the resume reads hold 35, todo 195 and todo 184.",
+    "focus": "devbin 0.1.20 at hv's go in vc's window (decision 133): dc builds the formula line-length fix under pplr-vc's brief; vc reviews, reads its run and lands it; hv cuts once GitHub's incident clears; then the sweep from brew. ST0011 stays parked (hold 35).",
     "claims": [
       "ST0011"
     ],
@@ -4434,6 +4434,22 @@
       "text": "devbin's ST0011 consumer work is parked by hv's word of 2026-11-03 in vc's window ('We're not doing any of that today, I just want the status updated so the outstanding work isn't forgotten'): nothing of todo 195 (Utilz 2.14.9), todo 194's notices or the lanes below moves, and no devbin session starts for it, until hv says the work resumes. At resume these four go to hv in the TUI, recs first: (1) the desk for Utilz's R1 to R3, which pplr-vc controls by the 2026-11-03 census: pplr-vc keeps it and vc reads each driver before its ask [rec: no handoff in the middle of Pplr's session], or devbin-vc takes it back; (2) cc's hold 35 (cc's Q1): left to ST0031/04's review, vc checking the four macOS sites at U1 [rec: todo 195's go already puts the macOS jobs on candidate refs], or cc sends it to utilz-vc and utilz-dc now; (3) dc's hold 40: Q1, dc briefs vc on Utilz 2.14.9's cache facts and files the commit-stamp cache gap as an issue [rec: both, one line and no work], and Q2, dc drafts the build: block adoptions for Gtools, Intent and Laksa as notes for their vcs [rec: yes, since AC-5.4 cannot come from Utilz's cut]; (4) cc's lane (cc's Q2 and Q3): cc stays down until Utilz's cut, then takes its three core asks if hv rules them onto ST0011's path, 0321 waiting as filed for the next release [rec: the no-yaks rule holds until ST0011 closes], or cc fixes 0321 now.",
       "state": "live",
       "recorded_at": "2026-11-03T07:01:41.099Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 133,
+      "text": "hv's rulings of 2026-11-04 in vc's window through the TUI (answered before the clock read 2026-11-04 12:01Z by date -u), each as vc recommended, on pplr-vc's relay of hv's word: devbin 0.1.20 ships today with the formula line-length fix, since lib/cmd/formula:424 renders the install manifest's header as one Ruby line, 131 columns in one tap's render against brew style's Layout/LineLength limit of 118, so a tap whose CI runs brew style or brew audit --strict goes red at publish. 0.1.20 carries the fix and what main holds since v0.1.19 (0320's release shape, the public workroom); the 19 open issues wait as filed, by hv's 1 Nov triage rule. dc builds it under pplr-vc's brief (hv in dc's window, received before dc's clock read 2026-11-04 11:21Z: 'Please ping pplr-vc for instructions'), and dc files its issue; vc validates and lands it under devbin's rules; pplr-vc controls the desk and checks the fleet side. hv cuts once GitHub's incident clears, with kovacs up and kovacs-sysadm on it for its leg; then hv's brew steps, vc's sweep from brew after Molt's 1.4.2 cut, and hv republishes the three taps' formulae. ST0011's hold 35 stands.",
+      "state": "live",
+      "recorded_at": "2026-11-04T12:01:41.413Z"
+    },
+    {
+      "node": "vc",
+      "kind": "doing",
+      "seq": 88,
+      "text": "devbin 0.1.20 (decision 133): dc's formula line-length fix under pplr-vc's brief; vc reviews it, reads its run and lands it with land-stack.sh; hv cuts once GitHub's incident clears; then hv's brew steps and vc's sweep from brew.",
+      "state": "live",
+      "recorded_at": "2026-11-04T12:02:06.500Z"
     }
   ],
   "sent": [
@@ -6641,6 +6657,13 @@
       "fyi": false,
       "recorded_at": "2026-11-01T20:38:14.334Z",
       "archived_at": "2026-11-02T04:12:28.639Z"
+    },
+    {
+      "id": "01M6K7068E3JWASN94PKNVFJ3C",
+      "recipient": "dc",
+      "body": "vc's checks before it lands devbin 0.1.20's formula fix (decision 133; you build under pplr-vc's brief, on hv's word in your window). (1) One issue, yours; vc files none. Its text, the unit and every shipped or test line name no consuming project or tap. (2) critic-shell on the unit before its first run, your dispositions sent to vc. (3) The new arm is red at the base and green at the fix, under BSD and GNU, and derives what it checks from the renderer (eg each header entry on a line of its own), never brew's 118 written down. (4) The installed manifest stays byte-identical: the render's diff is line breaks, indentation and a trailing comma alone, the same elements in the same order. (5) The targeted run carries the tree-scan files and help, with the pre-bank scans and the lint gate run in series first. (6) The brew style and brew audit --strict proof runs on the taps' renders in a local scratch tap (decision 81), with HOMEBREW_NO_AUTOREMOVE=1 if anything installs or uninstalls there; its output goes in the issue's resolution. (7) lib/cmd/formula:398's comment and lib/pages/formula.md:63 to :67 still read true, or change with it. (8) Bank it in canon by fetch and CAS, show vc each driver before its ask on pplr-vc's desk, and hand over COMMIT_MSG-<issue>.txt; vc lands it with land-stack.sh once its run is green and none of its files moved on main since its base (decision 83).",
+      "fyi": false,
+      "recorded_at": "2026-11-04T12:02:06.734Z"
     }
   ],
   "handled": [

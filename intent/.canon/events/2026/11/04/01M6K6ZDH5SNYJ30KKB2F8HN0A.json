@@ -1,0 +1,15 @@
+{
+  "id": "01M6K6ZDH5SNYJ30KKB2F8HN0A",
+  "ts": "2026-11-04T12:01:41.413Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's rulings of 2026-11-04 in vc's window through the TUI (answered before the clock read 2026-11-04 12:01Z by date -u), each as vc recommended, on pplr-vc's relay of hv's word: devbin 0.1.20 ships today with the formula line-length fix, since lib/cmd/formula:424 renders the install manifest's header as one Ruby line, 131 columns in one tap's render against brew style's Layout/LineLength limit of 118, so a tap whose CI runs brew style or brew audit --strict goes red at publish. 0.1.20 carries the fix and what main holds since v0.1.19 (0320's release shape, the public workroom); the 19 open issues wait as filed, by hv's 1 Nov triage rule. dc builds it under pplr-vc's brief (hv in dc's window, received before dc's clock read 2026-11-04 11:21Z: 'Please ping pplr-vc for instructions'), and dc files its issue; vc validates and lands it under devbin's rules; pplr-vc controls the desk and checks the fleet side. hv cuts once GitHub's incident clears, with kovacs up and kovacs-sysadm on it for its leg; then hv's brew steps, vc's sweep from brew after Molt's 1.4.2 cut, and hv republishes the three taps' formulae. ST0011's hold 35 stands."
+  }
+}

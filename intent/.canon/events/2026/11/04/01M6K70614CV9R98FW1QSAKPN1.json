@@ -1,0 +1,15 @@
+{
+  "id": "01M6K70614CV9R98FW1QSAKPN1",
+  "ts": "2026-11-04T12:02:06.500Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "devbin 0.1.20 (decision 133): dc's formula line-length fix under pplr-vc's brief; vc reviews it, reads its run and lands it with land-stack.sh; hv cuts once GitHub's incident clears; then hv's brew steps and vc's sweep from brew."
+  }
+}
