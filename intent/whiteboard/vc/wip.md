@@ -6,7 +6,7 @@ session_id: bae739d0-f5f6-4a81-b697-44fb64e87e84
 heartbeat_at: 2026-11-04 17:51Z
 status: active
 focus: "devbin 0.1.20 carries every open issue before its cut (decision 135, hv in vc's window, 2026-11-04 17:50Z by date -u): cc builds group A (the release core), dc groups B and C, then 0323; vc builds 0321, reviews, books every run on pplr-vc's desk and lands each unit with land-stack.sh. 0322 is landed and closed; the note is rewritten for the whole set before the cut."
-claims: [ST0011]
+claims: [ST0011, ISSUE:0321]
 ---
 
 # Validation Claude (vc)
