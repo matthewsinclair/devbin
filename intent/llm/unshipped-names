@@ -1,12 +1,13 @@
 # unshipped-names -- the projects no shipped file may name, one a line, `#`
-# comments allowed (issue 0242). The public snapshot names Intent, Molt and
+# comments allowed (issue 0242). The shipped files name Intent, Molt and
 # Utilz, which are public, and no other project of the owner's.
 #
 # tests/unit/workroom.bats reads this list and refuses each name in any shipped
 # line, in any case, as a whole word, and inside a session's name (`<name>-xy`)
 # or an identifier (`<name>_cli`, `<NAME>_ROOT`) too. This file is under
-# intent/, which tests/shipped.paths leaves out, so the names never ship: the
-# public tree carries the arm, which there reads no list and says so.
+# intent/, which tests/shipped.paths leaves out, so the names never ship,
+# though the list is public with the workroom; a tree without it carries the
+# arm, which there reads no list and says so.
 Gtools
 Laksa
 Lamplight

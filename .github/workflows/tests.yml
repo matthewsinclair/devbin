@@ -3,8 +3,8 @@ name: Devbin Tests
 on:
   push:
     # main, and a release's candidate (issue 0240). A cut pushes its candidate,
-    # under release.publish.url the release's snapshot, to candidate/<tag> and
-    # reads CI on it before anything is tagged, so a candidate runs the whole
+    # the release commit, to candidate/<tag> and reads CI on it before
+    # anything is tagged, so a candidate runs the whole
     # matrix, macOS and WSL included (the jobs' conditions below). The prefix
     # is release.publish.candidate's default, and tests/unit/ci-workflow.bats
     # holds this filter and those conditions to it.
@@ -128,9 +128,9 @@ jobs:
         run: bin/devbin test all
 
       # EVERY `check` GATE EXCEPT `critic` AND `lint`, each for its own reason.
-      # critic reads an Intent project, and CI runs on the public snapshot,
-      # which carries no intent/, so it refuses on every runner (issue 0293);
-      # the commit gate runs the critic before anything is public. lint has
+      # critic runs Intent, and this runner installs no Intent (the note above),
+      # so it refuses here (issue 0293); the commit gate runs the critic on
+      # every commit before it is pushed. lint has
       # already run in this job: `test all` above runs the suite's full-tree
       # lint test (contract.bats, issue 0155), which runs the gate `check lint`
       # runs, turns this job red on a breach, and fails rather than skips here
@@ -146,7 +146,7 @@ jobs:
       #
       # It does not stop at the first failure, for the same reason `all` does
       # not: one pass that surfaces every breach.
-      - name: Run gates (all but critic and lint -- critic needs intent/, lint ran in the tests above)
+      - name: Run gates (all but critic and lint -- critic needs Intent, which this runner lacks, lint ran in the tests above)
         run: |
           set -euo pipefail
           failed=""
@@ -170,9 +170,9 @@ jobs:
     # wrong would skip macOS on a release and then accept the skip, which is a
     # guard failing in the same direction as the bug it guards.
     #
-    # A RELEASE'S CANDIDATE (issue 0240), the snapshot a cut pushes to
-    # candidate/<tag> before anything is public: CI green there is what lets
-    # the public main and the tag move, so it is the release's whole matrix,
+    # A RELEASE'S CANDIDATE (issue 0240), the release commit a cut pushes to
+    # candidate/<tag> before anything is tagged: CI green there is what lets
+    # the cut tag and push it, so it is the release's whole matrix,
     # and the tag starts no run of its own (ST0011 WP-04). Asked by the
     # branch's prefix, which on.push above names too.
     #
@@ -254,12 +254,12 @@ jobs:
         run: bin/devbin test all
 
       # THE UBUNTU JOB'S GATES, BY NAME, AND NOT `check all` (issue 0293).
-      # critic reads an Intent project and the public snapshot carries no
-      # intent/, so `check all` refused here at critic after a green suite.
+      # critic runs Intent, and this runner installs no Intent, so `check all`
+      # refused here at critic after a green suite.
       # lint ran in the tests above, as on Ubuntu. The marker line is read by
       # tests/unit/ci-workflow.bats, which holds it equal to the Ubuntu list's
       # population: check's active options minus critic and lint.
-      - name: Run gates (all but critic and lint -- critic needs intent/, lint ran in the tests above)
+      - name: Run gates (all but critic and lint -- critic needs Intent, which this runner lacks, lint ran in the tests above)
         run: |
           set -euo pipefail
           failed=""

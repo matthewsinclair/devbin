@@ -176,5 +176,5 @@ v="x {{N}} y";  echo "${v//\{\{N\}\}/a & b}"
 ## Build / CI
 
 - Devbin uses devbin: CI runs `bin/devbin test all`, so a defect in the dispatcher or the sealed-gate subsystem breaks Devbin's own build first.
-- Ubuntu and macOS jobs each run `test all`, then the `check` options by name rather than `check all`: every active option except `critic` (reads an Intent project, and CI's public snapshot carries no `intent/`) and `lint` (already run by the suite's full-tree lint test). `tests/unit/ci-workflow.bats` holds each job's list equal to `check`'s active options minus those two. The critic runs in the commit gate instead.
+- Ubuntu and macOS jobs each run `test all`, then the `check` options by name rather than `check all`: every active option except `critic` (runs Intent, which CI's Ubuntu and macOS runners do not install) and `lint` (already run by the suite's full-tree lint test). `tests/unit/ci-workflow.bats` holds each job's list equal to `check`'s active options minus those two. The critic runs in the commit gate instead.
 - A comment line beginning with the word `shellcheck` is parsed as a directive; SC1072/SC1073 then fire on the prose.

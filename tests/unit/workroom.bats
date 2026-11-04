@@ -1,10 +1,11 @@
 #!/usr/bin/env bats
 # workroom.bats - the shipped tree carries no workroom text (issue 0216).
 #
-# devbin is developed in a private repository and published from it: the paths
-# tests/shipped.paths lists are what a public reader gets. Comments and test
-# titles written for the people and tools working on devbin read as noise to
-# that reader, and some of them point at files the public tree does not carry.
+# devbin is developed in its public repository, and the paths
+# tests/shipped.paths lists are what a consumer vendors and brew installs.
+# Comments and test titles written for the people and tools working on devbin
+# read as noise to that reader, and some of them point at files that reader
+# does not get.
 # So no shipped line may name a collaborator by handle, credit an automated
 # review, say how a thing was ruled, or point into intent/, where the
 # development record lives. A comment keeps its technical reason and drops who
@@ -19,8 +20,9 @@
 # intent/llm/unshipped-names: one a line, in any case, as a whole word, and
 # inside a session's name (`<name>-xy`) or an identifier (`<name>_cli`,
 # `<NAME>_ROOT`) too. The list is under intent/, which tests/shipped.paths
-# leaves out, so the public tree carries this arm and none of the names: there
-# it reads no list, and skips saying so rather than pass. It carries no
+# leaves out, so the list never ships, though it is public with the workroom.
+# A tree without the list carries this arm and none of the names: there it
+# reads no list, and skips saying so rather than pass. It carries no
 # planted control, so this file names none of the names.
 #
 # The handles are refused as words in any case, so `CC` is refused too.
@@ -29,8 +31,7 @@
 # so.
 #
 # WHAT IS READ is what ships: tests/shipped.paths, which includes and excludes
-# (the fleet command's files are left out there, as the snapshot leaves them
-# out). EXEMPT BY PATH: this file alone, whose controls plant every shape. The
+# (the fleet command's files are left out there). EXEMPT BY PATH: this file alone, whose controls plant every shape. The
 # pointer arm also passes .gitignore, which lists the development tree's
 # paths as configuration, and the citations arm passes the release notes.
 #
@@ -87,7 +88,7 @@ _WORKROOM_NAMES_LIST='intent/llm/unshipped-names'
 
 # _workroom_names -- the names the list holds, one a line, read as
 # tests/shipped.paths is read, through pathlist_specs: every line but a blank
-# one or a `#` comment. 1 when the list is absent, as in the public tree; 2
+# one or a `#` comment. 1 when the list is absent, as in a tree without the workroom; 2
 # when it is not a file that reads, holds no name, or holds a line that is not
 # one word of ASCII letters and digits, which the names arm's pattern could
 # not hold as one name.
@@ -318,11 +319,11 @@ include|:::q|'
   neg="$(_workroom_plant pointers.neg '# issue 0127, ST0007 WP-02, AC-6.1' '# ND12 and D12x' \
     '  local D1x=1' '# intent/.config/config.json' '# see intent/docs at the Intent install' \
     '# a decision about it' '# lintent/stx')"
-  _workroom_arm pointers "points into intent/, which the public tree does not carry -- say the reason in place" \
+  _workroom_arm pointers "points into intent/, which a vendored copy and brew's install do not carry -- say the reason in place" \
     "$pos" "$neg" ':!.gitignore'
 }
 
-@test "no shipped line cites a directive or a contract amendment by number, which a public reader cannot look up (0292)" {
+@test "no shipped line cites a directive or a contract amendment by number, which a reader of the shipped files cannot look up (0292)" {
   local pos neg
   pos="$(_workroom_plant citations.pos '# (directive 15; issue 0250)' '# DIRECTIVE 3 says' '# directives 14 and 15' \
     '# (T4, amendment A5; issue 0246)' '# AMENDMENT A4' '# (T5, A4)' '# A3 of T4' \
@@ -331,7 +332,7 @@ include|:::q|'
     '# T5 (0235)' '# cell A4 of the sheet' '  printf "%s" "$a4"' '# 0xA4 and T4x')"
   # The release notes ship as the record of what each release did, so a past
   # release's notes keep the wording they shipped with.
-  _workroom_arm citations "cites a directive or an amendment the public tree does not carry -- cite the contract's section and the issue" \
+  _workroom_arm citations "cites a directive or an amendment that a vendored copy and brew's install do not carry -- cite the contract's section and the issue" \
     "$pos" "$neg" ':!CHANGELOG.md' ':!RELEASES.md' ':!RELEASES/'
 }
 
@@ -339,10 +340,10 @@ include|:::q|'
   local list rc=0 files out="$DEVBIN_TEST_TMPDIR/names.out"
   local -a sf
   list="$(_workroom_names)" || rc=$?
-  # The public tree carries no list, and a scan with nothing to look for is
-  # not a clean one: it says it read none, and is never counted as a pass. The
-  # public tree is the one that tracks nothing under intent/; a workroom that
-  # lost its list fails.
+  # A tree without the list, one that tracks nothing under intent/, reads
+  # none, and a scan with nothing to look for is not a clean one: it says it
+  # read none, and is never counted as a pass. A workroom that lost its list
+  # fails.
   if [ "$rc" -eq 1 ] && [ -n "$(git -C "$DEVBIN_HOME" ls-files -- intent </dev/null)" ]; then
     fail "$_WORKROOM_NAMES_LIST is not in this tree, which tracks intent/, so it is the workroom and has lost its list"
   fi
@@ -356,5 +357,5 @@ include|:::q|'
   mapfile -t sf <<<"$files"
   _workroom_hits names "$out" "${sf[@]}" || rc=$?
   [ "$rc" -eq 0 ] || fail "the names scan could not read the shipped tree (status $rc)"
-  [ ! -s "$out" ] || fail "a shipped file names a project the public tree does not -- say what kind of project it is:\n$(sed "s|^$DEVBIN_HOME/||" "$out")"
+  [ ! -s "$out" ] || fail "a shipped file names a project on the list of unshipped names -- say what kind of project it is:\n$(sed "s|^$DEVBIN_HOME/||" "$out")"
 }

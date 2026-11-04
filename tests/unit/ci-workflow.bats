@@ -2,8 +2,8 @@
 #
 # The CI workflow's gate lists, held against what `check` actually offers.
 #
-# Issues 0077 and 0293. `check critic` reads an Intent project, and CI runs on
-# the public snapshot, which carries no intent/, so neither the Ubuntu job nor
+# Issues 0077 and 0293. `check critic` runs Intent, and CI's Ubuntu and macOS
+# runners install no Intent, so neither the Ubuntu job nor
 # the macOS job runs `check all`: each runs every other gate BY NAME, but for
 # lint, which its `test all` runs (0191). A list of names is how a gate added
 # later goes missing from one runner with every run still green: nothing fails,
@@ -122,8 +122,8 @@ run_summary() {
 }
 
 @test "the Ubuntu and macOS gate lists are each exactly check's active options minus critic and lint (0293)" {
-  # Each is left out for its own reason. critic: it reads an Intent project,
-  # and the public snapshot CI runs on carries no intent/ (0293). lint: each
+  # Each is left out for its own reason. critic: it runs Intent, and CI's
+  # runners install no Intent (0293). lint: each
   # job's `test all` runs the suite's full-tree lint test, which runs the gate
   # `check lint` runs (0155), so the list running it too linted the tree twice
   # in a row (0191). Every other option is in each list.
@@ -149,7 +149,7 @@ run_summary() {
   grep -qx critic <<<"$opts"
 }
 
-@test "the macOS job does not run check all, which would refuse on the public snapshot with no intent/ (0293)" {
+@test "the macOS job does not run check all, which would refuse at critic on a runner with no Intent (0293)" {
   local mac
   mac="$(job_block test-macos)"
   [ -n "$mac" ] || fail "no test-macos job in $WORKFLOW"
@@ -295,7 +295,7 @@ $(grep -E '^    tags' <<<"$on_block")"
 }
 
 @test "a release's candidate runs the whole matrix: the push filter and the macOS, WSL and summary conditions name the branch release.publish.candidate's default makes (0240)" {
-  # A cut pushes its candidate, under release.publish.url the snapshot, to the
+  # A cut pushes its candidate, the release commit, to the
   # candidate branch and tags nothing until CI is green there, so the
   # candidate's run is the release's whole matrix, and the tag starts none. The
   # prefix is read from the config's own default, so a default renamed without
