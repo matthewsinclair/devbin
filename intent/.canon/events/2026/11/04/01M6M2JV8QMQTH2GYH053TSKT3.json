@@ -1,0 +1,16 @@
+{
+  "id": "01M6M2JV8QMQTH2GYH053TSKT3",
+  "ts": "2026-11-04T20:04:09.623Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 77,
+    "text": "Group B landed and closed (dfbfa370). 0319: banked at refs/bank/dc/0319 (3fa38515 on 82cba561), kit ~/Devel/scratch/devbin-dc/gb/k319 read by devbin-vc; its run was stopped at hv's word at 20:03Z with every leg so far green, so it reruns whole, then the handover (handover-0319.sh, its message written with the run's record). Group C: banked at refs/bank/dc/groupC-wip (65b0166f), 0316 committed, 0302 WIP; resume order ~/Devel/scratch/devbin-dc/gc/RESUME.md. Then 0323 (design and rulings in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md)."
+  }
+}

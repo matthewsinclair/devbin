@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: befcda90-2270-4b5e-ae09-66c58fdc8ca2
-heartbeat_at: 2026-11-04 17:53Z
-status: active
-focus: "Group B for devbin 0.1.20 (vc decision 135): 0298, 0299, 0311, 0305, then 0319; then group C, then 0323."
+heartbeat_at: 2026-11-04 20:04Z
+status: paused
+focus: "HOLD for hv's word (hv in dc's window: 'close here now anyway and pick it up tomorrow'): 0319 reruns whole first, then group C from its resume order, then 0323. Nothing pushed; no slot held."
 claims: [ST0011/16, ISSUE:0316, ISSUE:0302, ISSUE:0301, ISSUE:0318, ISSUE:0303]
 ---
 
@@ -13,7 +13,7 @@ claims: [ST0011/16, ISSUE:0316, ISSUE:0302, ISSUE:0301, ISSUE:0318, ISSUE:0303]
 
 ## DOING
 
-- Group B (vc decision 135, hv's ruling: every open issue into 0.1.20): 0298, 0299, 0311 and 0305 landed at 941e4400, 99005dbc, ac657c2c and 82cba561 and closed; 0319 next, built on B (kit ~/Devel/scratch/devbin-dc/gb/b319), rebasing onto 82cba561 for its pre-bank and run. Then group C (0301, 0302, 0303, 0316, 0318), then 0323 (design in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md, its rulings recorded there). (edited)
+- Group B landed and closed (dfbfa370). 0319: banked at refs/bank/dc/0319 (3fa38515 on 82cba561), kit ~/Devel/scratch/devbin-dc/gb/k319 read by devbin-vc; its run was stopped at hv's word at 20:03Z with every leg so far green, so it reruns whole, then the handover (handover-0319.sh, its message written with the run's record). Group C: banked at refs/bank/dc/groupC-wip (65b0166f), 0316 committed, 0302 WIP; resume order ~/Devel/scratch/devbin-dc/gc/RESUME.md. Then 0323 (design and rulings in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md). (edited)
 
 ## TODO
 
