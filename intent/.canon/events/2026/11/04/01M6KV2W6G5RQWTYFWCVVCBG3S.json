@@ -1,0 +1,15 @@
+{
+  "id": "01M6KV2W6G5RQWTYFWCVVCBG3S",
+  "ts": "2026-11-04T17:53:06.256Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "Group B (vc decision 135, hv's ruling: every open issue into 0.1.20): 0298, 0299, 0311 and 0305 as one stack on main, in that order, 0319 last; kit ~/Devel/scratch/devbin-dc/gb. Then group C (0301, 0302, 0303, 0318), then 0323 (design draft in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md, with vc)."
+  }
+}

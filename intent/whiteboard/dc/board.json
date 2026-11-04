@@ -5,11 +5,15 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "befcda90-2270-4b5e-ae09-66c58fdc8ca2",
-    "heartbeat_at": "2026-11-04T17:33:21.056Z",
+    "heartbeat_at": "2026-11-04T17:53:06.486Z",
     "status": "active",
-    "focus": "HOLD until hv's 0.1.20 cut is done (hv in dc's window): 0322 landed at d5b7872e and is closed in 2eac8890; nothing waits on dc for the cut. Hold 40 still waits on hv's Q1 and Q2.",
+    "focus": "Group B for devbin 0.1.20 (vc decision 135): 0298, 0299, 0311, 0305, then 0319; then group C, then 0323.",
     "claims": [
-      "ST0011/16"
+      "ST0011/16",
+      "ISSUE:0298",
+      "ISSUE:0299",
+      "ISSUE:0311",
+      "ISSUE:0305"
     ],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -1778,6 +1782,14 @@
       "text": "hv's answer to dc's trust question for ISSUE:0322's fleet proof, asked in pplr-vc's session and relayed by pplr-vc (received before the clock read 2026-11-04 11:55Z by date -u): (a), the scratch trust store, so the proof trusts its scratch tap under a scratch XDG_CONFIG_HOME and never in hv's own trust file. Conditions: the sha256 of ~/.homebrew/trust.json read before anything runs and again after; if brew writes that file despite the scratch XDG_CONFIG_HOME, dc stops and tells pplr-vc before any audit; the scratch tap untapped after; brew list --versions diffed before and after; nothing installed. The SHA256SUMS of pplr v2.0.2, cldr v0.2.2 and ccusage v0.1.8 come from gh release download into a scratch dir. dc's plan is approved in its order, and the arm's form is dc's to choose on measurement. Not to be put again.",
       "state": "live",
       "recorded_at": "2026-11-04T11:55:15.422Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 77,
+      "text": "Group B (vc decision 135, hv's ruling: every open issue into 0.1.20): 0298, 0299, 0311 and 0305 as one stack on main, in that order, 0319 last; kit ~/Devel/scratch/devbin-dc/gb. Then group C (0301, 0302, 0303, 0318), then 0323 (design draft in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md, with vc).",
+      "state": "live",
+      "recorded_at": "2026-11-04T17:53:06.256Z"
     }
   ],
   "sent": [

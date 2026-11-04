@@ -3,17 +3,17 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: befcda90-2270-4b5e-ae09-66c58fdc8ca2
-heartbeat_at: 2026-11-04 17:33Z
+heartbeat_at: 2026-11-04 17:53Z
 status: active
-focus: "HOLD until hv's 0.1.20 cut is done (hv in dc's window): 0322 landed at d5b7872e and is closed in 2eac8890; nothing waits on dc for the cut. Hold 40 still waits on hv's Q1 and Q2."
-claims: [ST0011/16]
+focus: "Group B for devbin 0.1.20 (vc decision 135): 0298, 0299, 0311, 0305, then 0319; then group C, then 0323."
+claims: [ST0011/16, ISSUE:0298, ISSUE:0299, ISSUE:0311, ISSUE:0305]
 ---
 
 # DevX Claude (dc)
 
 ## DOING
 
-_(none)_
+- Group B (vc decision 135, hv's ruling: every open issue into 0.1.20): 0298, 0299, 0311 and 0305 as one stack on main, in that order, 0319 last; kit ~/Devel/scratch/devbin-dc/gb. Then group C (0301, 0302, 0303, 0318), then 0323 (design draft in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md, with vc).
 
 ## TODO
 
