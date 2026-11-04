@@ -5,11 +5,12 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "befcda90-2270-4b5e-ae09-66c58fdc8ca2",
-    "heartbeat_at": "2026-11-04T11:21:55.161Z",
+    "heartbeat_at": "2026-11-04T11:46:23.159Z",
     "status": "active",
-    "focus": "Taking pplr-vc's instructions, at hv's word in dc's window (received before the clock read 2026-11-04 11:21Z by date -u): 'Please ping pplr-vc for instructions. That's what we're doing here now.' Asked pplr-vc by message at 11:21Z, devbin-vc told; waiting for pplr-vc's answer. Nothing banked or running; hold 40 still waits on hv's Q1 and Q2. WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block.",
+    "focus": "Working ISSUE:0322 for devbin 0.1.20 under pplr-vc's instructions (hv's word in dc's window, 2026-11-04 11:21Z): doing 76. Hold 40 still waits on hv's Q1 and Q2; WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block.",
     "claims": [
-      "ST0011/16"
+      "ST0011/16",
+      "ISSUE:0322"
     ],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -1760,6 +1761,14 @@
       "text": "Holding dc's day plan until hv rules its two questions, put in dc's window 2026-11-02: Q1, brief vc on Utilz 2.14.9's cache facts (Menuz builds out of tree, so no cache saving and no AC-5.4 there) and file the commit-stamp cache gap as an issue (rec: both); Q2, dc's lane until the consumer cuts (rec: draft the cache adoption for Gtools, Intent and Laksa as notes for their vcs).",
       "state": "live",
       "recorded_at": "2026-11-02T09:00:46.952Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 76,
+      "text": "ISSUE:0322 for devbin 0.1.20, under pplr-vc's instructions at hv's word (2026-11-04 11:21Z): the formula's generated manifest header, and every line the built-in renders in either mode, fits brew style. Steps, per pplr-vc's brief: the fix and an arm whose limit comes from Homebrew, red on the one-line array and green on the fix, in a fresh clone; critic-shell before the first run; the targeted run in a slot from pplr-vc's desk, START and END; the fleet proof, brew style and brew audit --strict on pplr's, cldr's and ccusage's renders in a scratch tap whose trust is hv's call through pplr-vc, then untrust, untap and compare trust.json; landing unpushed, validated by devbin-vc, the fleet side checked by pplr-vc.",
+      "state": "live",
+      "recorded_at": "2026-11-04T11:46:17.073Z"
     }
   ],
   "sent": [

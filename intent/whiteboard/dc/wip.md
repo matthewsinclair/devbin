@@ -3,17 +3,17 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: befcda90-2270-4b5e-ae09-66c58fdc8ca2
-heartbeat_at: 2026-11-04 11:21Z
+heartbeat_at: 2026-11-04 11:46Z
 status: active
-focus: "Taking pplr-vc's instructions, at hv's word in dc's window (received before the clock read 2026-11-04 11:21Z by date -u): 'Please ping pplr-vc for instructions. That's what we're doing here now.' Asked pplr-vc by message at 11:21Z, devbin-vc told; waiting for pplr-vc's answer. Nothing banked or running; hold 40 still waits on hv's Q1 and Q2. WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block."
-claims: [ST0011/16]
+focus: "Working ISSUE:0322 for devbin 0.1.20 under pplr-vc's instructions (hv's word in dc's window, 2026-11-04 11:21Z): doing 76. Hold 40 still waits on hv's Q1 and Q2; WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block."
+claims: [ST0011/16, ISSUE:0322]
 ---
 
 # DevX Claude (dc)
 
 ## DOING
 
-_(none)_
+- ISSUE:0322 for devbin 0.1.20, under pplr-vc's instructions at hv's word (2026-11-04 11:21Z): the formula's generated manifest header, and every line the built-in renders in either mode, fits brew style. Steps, per pplr-vc's brief: the fix and an arm whose limit comes from Homebrew, red on the one-line array and green on the fix, in a fresh clone; critic-shell before the first run; the targeted run in a slot from pplr-vc's desk, START and END; the fleet proof, brew style and brew audit --strict on pplr's, cldr's and ccusage's renders in a scratch tap whose trust is hv's call through pplr-vc, then untrust, untap and compare trust.json; landing unpushed, validated by devbin-vc, the fleet side checked by pplr-vc.
 
 ## TODO
 

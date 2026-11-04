@@ -1,0 +1,15 @@
+{
+  "id": "01M6K61J7VRBXTR4Q8HVJ02JSW",
+  "ts": "2026-11-04T11:45:23.196Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0322"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "Assets mode renders the manifest header as one Ruby line, longer than brew style's Layout/LineLength allows"
+  }
+}

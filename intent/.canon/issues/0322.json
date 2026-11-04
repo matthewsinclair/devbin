@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 322,
+  "slug": "assets-mode-renders-the-manifest-header-as-one-r",
+  "title": "Assets mode renders the manifest header as one Ruby line, longer than brew style's Layout/LineLength allows",
+  "status": "open",
+  "severity": "medium",
+  "created": "2026-11-04",
+  "reporter": "Matthew Sinclair",
+  "body": "In assets mode the formula built-in generates the install body's closing lines (`finish_ruby` in lib/cmd/formula, filled in at `@@FINISH@@` or `@@INSTALL@@`), and it writes T3's manifest header as one Ruby statement: `lines = [\"# tool: <name>\", \"# version: <version>\", \"# source_commit: <commit>\", \"# managed_by: brew\"]`, which `fill_block` indents to the placeholder's depth, four spaces inside `def install`. The line grows with the formula's name and version, and the commit alone is 40 characters, so for a four-letter name it is 131 columns. Homebrew's RuboCop config (`Library/.rubocop.yml` in brew's repository) sets Layout/LineLength's Max to 118, and none of its allowed patterns matches the line, so `brew style` refuses every formula this mode renders.\n\nWhere it shows: hv's taps carry it today. homebrew-cldr's CI runs `brew style --except-cops Layout/LineLength`, then `brew audit --strict --skip-style`; homebrew-ccusage's CI has style and audit off (ccusage#0004); homebrew-pplr has no CI, so nothing has caught the same line there. formula.bats asserts the one-line form verbatim and no arm runs brew style on a render, so the suite stayed green.\n\nWanted: the header written so that no generated line grows past the limit with the name, the version or the commit, eg one element per line; every other line the built-in renders in either mode (the render's provenance header, the generated install body, the cask) held to brew style the same way; and an arm that would have caught it, with the limit taken from Homebrew at test time rather than written down, red on the one-line array and green on the fix.\n\nWhen: devbin 0.1.20, which carries this fix and everything on main since v0.1.19 (hv's ruling of 2026-11-04, relayed by pplr-vc). After that release the three taps' formulae are republished on the new render and their CI exceptions go; those tap writes are hv's.\n"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M6K636VHE4S65H4EXVHCA97Z",
+  "ts": "2026-11-04T11:46:17.073Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "ISSUE:0322 for devbin 0.1.20, under pplr-vc's instructions at hv's word (2026-11-04 11:21Z): the formula's generated manifest header, and every line the built-in renders in either mode, fits brew style. Steps, per pplr-vc's brief: the fix and an arm whose limit comes from Homebrew, red on the one-line array and green on the fix, in a fresh clone; critic-shell before the first run; the targeted run in a slot from pplr-vc's desk, START and END; the fleet proof, brew style and brew audit --strict on pplr's, cldr's and ccusage's renders in a scratch tap whose trust is hv's call through pplr-vc, then untrust, untap and compare trust.json; landing unpushed, validated by devbin-vc, the fleet side checked by pplr-vc."
+  }
+}
