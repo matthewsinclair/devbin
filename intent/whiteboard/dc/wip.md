@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: befcda90-2270-4b5e-ae09-66c58fdc8ca2
-heartbeat_at: 2026-11-04 12:26Z
+heartbeat_at: 2026-11-04 17:33Z
 status: active
-focus: "HOLD for hv's move (hv in dc's window, received before the clock read 2026-11-04 12:20Z by date -u: 'I need to move. Please bank everything and then hold for a localfold+compact, then I will pick it up once I get home'): localfolded, 0322 banked (doing 76), no desk ask until hv is back. Hold 40 still waits on hv's Q1 and Q2; WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block."
+focus: "HOLD until hv's 0.1.20 cut is done (hv in dc's window): 0322 landed at d5b7872e and is closed in 2eac8890; nothing waits on dc for the cut. Hold 40 still waits on hv's Q1 and Q2."
 claims: [ST0011/16]
 ---
 
