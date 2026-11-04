@@ -1,0 +1,16 @@
+{
+  "id": "01M6K8FET5HJG4BYAMSXD8TDC0",
+  "ts": "2026-11-04T12:27:55.589Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 76,
+    "text": "ISSUE:0322 (devbin 0.1.20, pplr-vc's brief at hv's word): the unit banked at refs/bank/dc/0322 (28f94c39 on 64566fba), its red clone at refs/bank/dc/0322-red2; the settle and the driver accepted by devbin-vc, the fleet proof by pplr-vc; the pre-bank at 28f94c39 clean (lint gate 58 files, 0 breaches; the scan arms' failures the base's own 53, no other; helpers' four scans PASS). Left at hv's return: the run on pplr-vc's desk, the handover for devbin-vc's land-stack.sh, then the Resolution and close in the next commit. Resume order: ~/Devel/scratch/devbin-dc/0322/RESUME.md."
+  }
+}

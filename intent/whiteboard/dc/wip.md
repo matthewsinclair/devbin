@@ -3,7 +3,7 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: befcda90-2270-4b5e-ae09-66c58fdc8ca2
-heartbeat_at: 2026-11-04 12:22Z
+heartbeat_at: 2026-11-04 12:26Z
 status: active
 focus: "HOLD for hv's move (hv in dc's window, received before the clock read 2026-11-04 12:20Z by date -u: 'I need to move. Please bank everything and then hold for a localfold+compact, then I will pick it up once I get home'): localfolded, 0322 banked (doing 76), no desk ask until hv is back. Hold 40 still waits on hv's Q1 and Q2; WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block."
 claims: [ST0011/16, ISSUE:0322]
@@ -13,7 +13,7 @@ claims: [ST0011/16, ISSUE:0322]
 
 ## DOING
 
-- ISSUE:0322 (devbin 0.1.20, pplr-vc's brief at hv's word): the unit banked at refs/bank/dc/0322 (28f94c39 on 64566fba), its red clone at refs/bank/dc/0322-red2; the settle and the driver accepted by devbin-vc, the fleet proof by pplr-vc; left at hv's return: the pre-bank verdict, the run on pplr-vc's desk, the handover for devbin-vc's land-stack.sh, then the Resolution and close in the next commit. Resume order: ~/Devel/scratch/devbin-dc/0322/RESUME.md. (edited)
+- ISSUE:0322 (devbin 0.1.20, pplr-vc's brief at hv's word): the unit banked at refs/bank/dc/0322 (28f94c39 on 64566fba), its red clone at refs/bank/dc/0322-red2; the settle and the driver accepted by devbin-vc, the fleet proof by pplr-vc; the pre-bank at 28f94c39 clean (lint gate 58 files, 0 breaches; the scan arms' failures the base's own 53, no other; helpers' four scans PASS). Left at hv's return: the run on pplr-vc's desk, the handover for devbin-vc's land-stack.sh, then the Resolution and close in the next commit. Resume order: ~/Devel/scratch/devbin-dc/0322/RESUME.md. (edited)
 
 ## TODO
 
