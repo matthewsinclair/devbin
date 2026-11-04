@@ -9,7 +9,12 @@
     "status": "active",
     "focus": "Group B for devbin 0.1.20 (vc decision 135): 0298, 0299, 0311, 0305, then 0319; then group C, then 0323.",
     "claims": [
-      "ST0011/16"
+      "ST0011/16",
+      "ISSUE:0316",
+      "ISSUE:0302",
+      "ISSUE:0301",
+      "ISSUE:0318",
+      "ISSUE:0303"
     ],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"

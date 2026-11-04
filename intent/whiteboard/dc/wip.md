@@ -6,7 +6,7 @@ session_id: befcda90-2270-4b5e-ae09-66c58fdc8ca2
 heartbeat_at: 2026-11-04 17:53Z
 status: active
 focus: "Group B for devbin 0.1.20 (vc decision 135): 0298, 0299, 0311, 0305, then 0319; then group C, then 0323."
-claims: [ST0011/16]
+claims: [ST0011/16, ISSUE:0316, ISSUE:0302, ISSUE:0301, ISSUE:0318, ISSUE:0303]
 ---
 
 # DevX Claude (dc)
