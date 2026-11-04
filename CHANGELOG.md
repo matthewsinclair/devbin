@@ -6,6 +6,23 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.20] - Unreleased
+
+### Changed
+
+#### devbin's own tree
+
+- **devbin releases from its public repository in the core's standard shape (issue `0320`).** Its config declares no `release.publish` or `release.snapshot`, and `release.remotes` names `local` then `upstream`. The cut pushes the release commit itself to `candidate/<tag>` on `upstream`, reads CI green there beside the local gates and the kovacs leg, then tags and pushes the commit and the tag to both remotes. The tag names the release commit, so the formula's revision is read from the tag in the checkout that cut it. `docs/releasing.md` says the same. The core's snapshot shape stays for any project that declares `release.publish.url`.
+- **devbin's workroom is public with the product**: its `intent/` record, its own project commands under `bin/.devbin/`, and its agent instructions. None of it is in the set a project vendors.
+
+### Fixed
+
+#### reaches every project
+
+- **A formula rendered in assets mode passes `brew style` (issue `0322`).** The install manifest's header, the `lines = [...]` list the install body writes, was one line, 131 columns in one tap's render against brew style's `Layout/LineLength` limit of 118. It is now written one element a line, with the trailing comma brew's style asks for. The manifest a keg writes is byte for byte what it was, so nothing installed reads differently. In both modes, every line a render writes of its own, its header and the install body it generates, passes `brew style`, and a test holds every file a render writes to that where brew is installed. A tap that published an assets-mode formula with an earlier devbin passes once it publishes again with this one.
+
+Full note: [RELEASES/0.1.20.md](RELEASES/0.1.20.md)
+
 ## [0.1.19] - 2026-11-02
 
 ### Added
