@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: befcda90-2270-4b5e-ae09-66c58fdc8ca2
-heartbeat_at: 2026-11-04 11:08Z
+heartbeat_at: 2026-11-04 11:21Z
 status: active
-focus: "HOLD for hv's word (booted 2026-11-04 at hv's wake, day plan shown in dc's window): hold 40's Q1 and Q2 wait on hv, and devbin's consumer work stays parked under vc's hold 35 until hv says it resumes; nothing banked or running. WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block."
+focus: "Taking pplr-vc's instructions, at hv's word in dc's window (received before the clock read 2026-11-04 11:21Z by date -u): 'Please ping pplr-vc for instructions. That's what we're doing here now.' Asked pplr-vc by message at 11:21Z, devbin-vc told; waiting for pplr-vc's answer. Nothing banked or running; hold 40 still waits on hv's Q1 and Q2. WP16 stays WIP until AC-5.4 is met: fewer builds per release at the first cut after adoption, for each project with a build: block."
 claims: [ST0011/16]
 ---
 
