@@ -5909,6 +5909,30 @@ _devbin_source_head() {
   return 0
 }
 
+# --- a caller's signal handlers, put back ----------------------------------------
+
+# traps_restore <saved> <signal>... -- the handlers `trap -p <signal>...` printed
+# into <saved> put back as they were saved, with no default between: a signal
+# <saved> names takes its handler back, and only one it does not name goes back
+# to the default. For a step that ignores signals for a while and must then
+# leave the caller's handling as it found it.
+#
+# EVERY SIGNAL NAMED IS RESET, NOT ONLY THOSE <saved> NAMES (issue 0311). `trap
+# -p` prints only the signals that have a handler, so evaluating <saved> alone
+# puts back what was saved and leaves every other signal as the step set it: a
+# caller that saved INT alone, under a step that ignored INT, TERM and HUP, was
+# left with TERM and HUP ignored. A signal that cannot be reset, or saved text
+# that does not evaluate, returns non-zero, so a restore that failed is never
+# read as done.
+traps_restore() {
+  local saved="$1" s
+  shift
+  for s in "$@"; do
+    case "$saved" in *" SIG$s" | *" SIG$s"$'\n'* | *" $s" | *" $s"$'\n'*) ;; *) trap - "$s" || return 1 ;; esac
+  done
+  [ -z "$saved" ] || eval "$saved"
+}
+
 # --- which way the source moved -------------------------------------------------
 #
 # MOVED HERE FROM lib/install (issue 0079). upgrade and vendor asked this and

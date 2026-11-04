@@ -715,11 +715,7 @@ drop_check_copy() {
   LS_LINES=""
   ls_drop "$t/$APP_NAME" "$t" yes || rc=1
   urc="$LS_URC" said="$LS_ANSWER"
-  if [ -n "$prev" ]; then
-    eval "$prev"
-  else
-    trap - INT TERM HUP
-  fi
+  traps_restore "$prev" INT TERM HUP
   ls_check "$t/$APP_NAME" "$t" "$urc" "$said" || rc=1
   _CHECK_DIR=""
   [ "$rc" -ne 0 ] || return 0

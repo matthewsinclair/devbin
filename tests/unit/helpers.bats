@@ -2470,6 +2470,22 @@ EOF2
   done
 }
 
+@test "traps_restore puts back the handlers trap -p saved and resets every other signal named, so a caller that saved one alone gets the others back at the default (0311)" {
+  # In a shell of its own, so the traps set and read are that shell's. TERM,
+  # HUP and USR1, never INT: bash starts a background job with INT ignored, and
+  # a signal ignored on entry cannot be trapped, so an INT handler set here
+  # would never take under a launcher that backgrounds the suite.
+  run bash -c "set -euo pipefail
+    . '$DEVBIN_LIB_DIR/helpers'
+    trap 'echo caught' TERM
+    saved=\"\$(trap -p TERM HUP USR1)\"
+    trap '' TERM HUP USR1
+    traps_restore \"\$saved\" TERM HUP USR1
+    printf 'TERM[%s] HUP[%s] USR1[%s]\\n' \"\$(trap -p TERM)\" \"\$(trap -p HUP)\" \"\$(trap -p USR1)\""
+  assert_success
+  assert_output_contains "TERM[trap -- 'echo caught' SIGTERM] HUP[] USR1[]"
+}
+
 @test "is_branch_name and is_tag_name pass back git's own word on a ref name, and platform_word_of maps an OS name to its platform word, the one map platform_word reads through (ST0011 WP-02c)" {
   local w
   # `! cmd` never trips errexit, so each refusal is asserted rather than negated.
