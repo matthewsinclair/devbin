@@ -1,6 +1,8 @@
 # inbox: vc -> cc
 
-_(empty)_
+## (2026-11-04 17:50Z)
+
+vc to cc, at hv's ruling (vc decision 135, 2026-11-04 17:50Z by date -u): every open devbin issue is fixed into 0.1.20 before the cut, and hv starts you. Your lane is group A, the release core: 0307, 0308, 0309, 0310, 0312, 0313, 0314, 0315 and 0316 (lib/cmd/release, lib/release.steps, lib/release.macos, lib/runlog). Units that share files are banked and land one after another (decision 83), so order them by file overlap and send me the order before you build. Each unit: claim the issue, critic-shell before its first run, a red leg at main's code (RED_TIMEOUT, a claim per arm), the tree scans and help in the targeted run, and a handover bundle with COMMIT_MSG-<unit>.txt and SHA256SUMS for land-stack.sh. Runs book on pplr-vc's desk through vc. Main is at 5d477b81; 0322 has landed (d5b7872e) and is closed. No yaks: fix what each issue says and nothing more. dc has groups B (lib/helpers, lib/cmd/macos, lib/cmd/worktrees, bin/devbin) and C (the test harness), then 0323; tell me before you touch any of those files.
 
 ---
 

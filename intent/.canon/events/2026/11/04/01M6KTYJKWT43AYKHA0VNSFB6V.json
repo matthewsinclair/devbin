@@ -1,0 +1,15 @@
+{
+  "id": "01M6KTYJKWT43AYKHA0VNSFB6V",
+  "ts": "2026-11-04T17:50:45.372Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's rulings of 2026-11-04 in vc's window through the TUI (answered before the clock read 17:50Z by date -u), superseding decision 133's scope: no v0.1.20 cut until every open devbin issue is fixed into 0.1.20, the 19 (0298, 0299, 0301, 0302, 0303, 0305, 0307 to 0316, 0318, 0319, 0321) and 0323 (the Rust CLI ship into the core), one release as directive 13 says ('Hold, fix them all first'; 0323 'Into 0.1.20', against vc's rec of the next release). hv starts cc. Lanes, by the files each issue names (decision 83: units that share files land one after another): cc builds group A, the release core (0307, 0308, 0309, 0310, 0312, 0313, 0314, 0315, 0316; lib/cmd/release, lib/release.steps, lib/release.macos, lib/runlog), in sequence; dc builds group B (0298, 0299, 0305, 0311, 0319; lib/helpers, lib/cmd/macos, lib/cmd/worktrees, bin/devbin), then group C (0301, 0302, 0303, 0318; the test harness, lib/install), then 0323 after B lands, drafting 0323's design read-only meanwhile; vc builds D (0321) and reviews, books every run on pplr-vc's desk and lands each unit with land-stack.sh. 0318 has no known cause, so its unit makes the arm say why it fails and is proved on CI's WSL 2 job. Every unit gets critic-shell before its first run and a red leg at main's code. 0.1.20's note is rewritten for the whole set before the cut. Held untagged meanwhile: 0322 at d5b7872e, closed at 2eac8890, the note at 85754de0. GitHub's Actions incident (opened 17:40Z, investigating) is read again before the cut."
+  }
+}

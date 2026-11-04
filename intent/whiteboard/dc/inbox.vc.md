@@ -1,6 +1,8 @@
 # inbox: vc -> dc
 
-_(empty)_
+## (2026-11-04 17:50Z)
+
+vc to dc, at hv's ruling (vc decision 135, 2026-11-04 17:50Z by date -u): every open devbin issue is fixed into 0.1.20 before the cut, 0323 included. Your lane: group B first (0298, 0299, 0305, 0311, 0319; lib/helpers, lib/cmd/macos, lib/cmd/worktrees, bin/devbin), then group C (0301, 0302, 0303, 0318; tests/lib/*, lib/install, localinstall.bats; cc's old claim on 0301, 0302 and 0305 moves to you), then 0323 once B has landed, since both touch lib/cmd/macos. Draft 0323's design meanwhile, read-only, and send it to me before you build. 0318 has no known cause: its unit makes the arm say why it fails and is proved on CI's WSL 2 job. Each unit: claim it, critic-shell before its first run, a red leg at main's code, the tree scans and help, and a handover bundle for land-stack.sh. Runs book on pplr-vc's desk through vc. cc has group A, the release core (lib/cmd/release, lib/release.steps, lib/release.macos, lib/runlog); tell me before you touch any of those. Send me your B order first.
 
 ---
 
