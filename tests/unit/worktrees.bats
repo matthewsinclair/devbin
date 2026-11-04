@@ -683,6 +683,20 @@ read in place:
 $own"
 }
 
+@test "remove-landed under an inherited GIT_DIR names it as cleared, with the repository it acts on, and removes the landed worktree there (0305)" {
+  local proj other wt
+  proj="$(wt_project)"
+  other="$(wt_project other)"
+  wt="$(wt_add "$proj" landed)"
+  # A hook's GIT_DIR, naming another repository: cleared in silence at the
+  # base, so the person never learnt the run ignored it.
+  GIT_DIR="$other/.git" run devbin_run "$proj" worktrees remove-landed tmp/wt/landed
+  assert_success
+  assert_output_contains "worktrees: GIT_DIR inherited and cleared: every git read and write here is in the repository at $proj"
+  assert_output_line "removed  tmp/wt/landed"
+  assert_directory_not_exists "$wt"
+}
+
 @test "remove-landed refuses --repo, and removes nothing (0245)" {
   local here there
   here="$(wt_project here)"

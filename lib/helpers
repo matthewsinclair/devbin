@@ -3143,6 +3143,23 @@ git_local_env_clear_named() {
     "$1" "${found//$'\n'/, }" "$2" || return 2
 }
 
+# require_git_local_env_cleared <who> <root> [<suffix>] -- git_local_env_clear_named,
+# stopping on either of its failures, each said one way, with <suffix> after
+# it: a git that cannot list the variables, so one inherited could point a
+# read or a write at another repository, and a clear whose naming line could
+# not be written, which would change repositories in silence. THE ONE HANDLING
+# OF THOSE FAILURES (issue 0305): the cut, release status, release gates,
+# macos and worktrees each wrote their own, and the wordings had drifted.
+require_git_local_env_cleared() {
+  local rc=0
+  git_local_env_clear_named "$1" "$2" || rc=$?
+  case "$rc" in
+    0) ;;
+    2) die "$1: git's local variables were cleared and the line naming them could not be written, so this would change repositories in silence${3:-}" ;;
+    *) die "$1: git cannot list its local variables (git rev-parse --local-env-vars), so one inherited here could point a read or a write at another repository${3:-}" ;;
+  esac
+}
+
 # pathlist_specs <text> -- the pathspecs of a path list such as
 # tests/shipped.paths, one a line: every line of <text> as written, but a blank
 # one or one whose first non-space character is `#`.

@@ -792,20 +792,15 @@ require_build_root() {
 # them as the release core's writes do, git_head_identity's, which clears them
 # for itself, and the release attach publish runs (ST0011 WP-06). An inherited
 # GIT_DIR would otherwise answer the tag from one repository and HEAD from
-# another. Cleared through git_local_env_clear_named, as the cut, release
+# another. Cleared through require_git_local_env_cleared, as the cut, release
 # status and release gates clear them, so one that was set is named, with
 # $ROOT, and never dropped in silence; a clear whose naming line could not be
 # written stops here too. Here, the first git read of app-sign and of publish,
 # and not at file scope, so doctor and the subcommands that read no git need
 # no git to run.
 read_release_commit() {
-  local line rc=0
-  git_local_env_clear_named macos "$ROOT" || rc=$?
-  case "$rc" in
-    0) ;;
-    2) die "macos: git's local variables were cleared and the line naming them could not be written, so this would change repositories in silence$1" ;;
-    *) die "macos: git cannot list its local variables (git rev-parse --local-env-vars), so one inherited here could point a read at another repository$1" ;;
-  esac
+  local line
+  require_git_local_env_cleared macos "$ROOT" "$1"
   line="$(release_commit "$APP_TAG")" ||
     die "macos: the release commit of $APP_TAG could not be read (above)$1"
   APP_RELEASE_COMMIT="${line%%$'\t'*}"
