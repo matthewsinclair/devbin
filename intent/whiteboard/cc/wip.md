@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0d3e7086-f9dd-419f-97f3-a93ef5bae848
-heartbeat_at: 2026-11-04 17:54Z
+heartbeat_at: 2026-11-04 18:29Z
 status: active
-focus: "devbin 0.1.20's group A, the release core (vc decision 135, at hv's ruling in vc's window, 2026-11-04 17:50Z by date -u): 0307, 0308, 0309, 0310, 0312, 0313, 0314, 0315 and 0316, claimed. The unit order by shared files goes to vc before any build, and nothing is built before hv's word in cc's window. 0301, 0302 and 0305 are dropped for dc's groups B and C."
+focus: "Building train 1 of group A at hv's go in cc's window (received before 2026-11-04 18:29Z by date -u): 0308, 0309 and 0312 on main at a39676e1, in a scratch clone. Trains 2 (0310, 0313, 0314, 0315) and 3 (0307) wait for vc's ruling on the order and dc's B stack landing; 0316 waits for vc's word on moving it to group C."
 claims: [ISSUE:0307, ISSUE:0308, ISSUE:0309, ISSUE:0310, ISSUE:0312, ISSUE:0313, ISSUE:0314, ISSUE:0315, ISSUE:0316]
 ---
 
