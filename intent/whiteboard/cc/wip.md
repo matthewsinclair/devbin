@@ -2,11 +2,11 @@
 node: cc
 name: Control Claude
 role: control
-session_id: 48951425-5788-4dc2-8b93-36d2b98dc769
-heartbeat_at: 2026-11-02 09:01Z
+session_id: 0d3e7086-f9dd-419f-97f3-a93ef5bae848
+heartbeat_at: 2026-11-04 17:54Z
 status: active
-focus: "HOLD for hv's pickup after the move (hv's quiesce, relayed by devbin-vc): cc's plan of 2026-11-02 waits on hv's Q1 to Q3 (hold 35, the Utilz CI finding; cc's lane; 0321). The parked 0301, 0302 and 0305 wait as the todos say."
-claims: [ISSUE:0301, ISSUE:0302, ISSUE:0305]
+focus: "devbin 0.1.20's group A, the release core (vc decision 135, at hv's ruling in vc's window, 2026-11-04 17:50Z by date -u): 0307, 0308, 0309, 0310, 0312, 0313, 0314, 0315 and 0316, claimed. The unit order by shared files goes to vc before any build, and nothing is built before hv's word in cc's window. 0301, 0302 and 0305 are dropped for dc's groups B and C."
+claims: [ISSUE:0307, ISSUE:0308, ISSUE:0309, ISSUE:0310, ISSUE:0312, ISSUE:0313, ISSUE:0314, ISSUE:0315, ISSUE:0316]
 ---
 
 # Control Claude (cc)
@@ -17,9 +17,7 @@ _(none)_
 
 ## TODO
 
-- ISSUE:0301 waits (vc's triage, 2026-11-01): the release fixtures' builders return their failures. (edited)
-- ISSUE:0302 waits: no leg of the 0.1.19 re-cut showed a guessed-identity red (vc's word, 2026-11-01). (edited)
-- ISSUE:0305 waits (low): lib/cmd/worktrees clears git's local variables silently before remove-landed writes. (edited)
+_(none)_
 
 ## Holds
 
