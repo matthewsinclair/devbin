@@ -1,0 +1,16 @@
+{
+  "id": "01M6NJAV0ERTBCYJKWXCY2FPHV",
+  "ts": "2026-11-05T09:58:38.862Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 197,
+    "text": "Utilz's 0.1.20 sweep commit 7a6a06a7 drops macos.keychain, and the comment above the block now names the notarytool profile: 0.1.20 had refused the key as unknown (Utilz doctor: 1 failed), and after the edit Utilz doctor reads 15 checks, 0 failed. Left: tell utilz-vc at its next session that notarisation moves to one notarytool keychain profile, macos.notary_profile (default devbin). macos.team picks the signing identity, and is required where the keychain holds more than one Developer ID identity. Before Utilz's next cut, hv runs bin/devbin macos store-creds once on each Mac that cuts, and macos doctor then reads the profile PRESENT. The old keychain items stay where they are, since nothing deletes them."
+  }
+}

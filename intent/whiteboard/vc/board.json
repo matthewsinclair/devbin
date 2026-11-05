@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "735381ed-cea8-4499-9bc6-35aaa3b8263b",
-    "heartbeat_at": "2026-11-05T09:32:31.432Z",
+    "heartbeat_at": "2026-11-05T09:58:46.441Z",
     "status": "active",
-    "focus": "devbin 0.1.20 is released (the cut ended 09:29:31Z by its log). Next: hv's brew upgrade devbin and devbin use brew, vc's sweep from brew (todo 197), hv's republish of the taps, then the consumer pass on hv's go, Utilz first. vc holds the desk.",
+    "focus": "Localfolded at hv's word (devbin-* localfold, compact, then hold), 2026-11-05 09:58Z by date -u: devbin 0.1.20 is released and swept to 23 estates. On the bounce, hold: no work until hv's go for the consumer pass, Utilz first (doing 88's left list; hold 35's items go to hv first). vc keeps the desk and grants asks meanwhile.",
     "claims": [
       "ST0011"
     ],
@@ -4450,10 +4450,10 @@
       "node": "vc",
       "kind": "doing",
       "seq": 88,
-      "text": "devbin 0.1.20 RELEASED at 09:29:31Z by the cut's log (tmp/release/20261105-0826.RELEASE.out): release commit be40dea7, tag v0.1.20, the release object, and the tap's main at 3c55c302. All 15 issues are closed (0323 at 1fbb25d2, its last bank 3b at 6d2db00b; 0315 unfixed, since no project reaches it). Left, in order: (1) read the WSL job's re-run (run 41994585531, job 127134808986) for its smoke list; (2) hv's brew upgrade devbin, then devbin use brew; (3) vc's sweep from brew, one commit per estate (directive 10), Utilz's dropping macos.keychain (todo 197); (4) hv's republish of the taps; (5) vc tells hv the consumer pass can start, Utilz first. Whether kovacs stays up for the consumer pass's legs is hv's call. Upstream's main is be40dea7, and local main carries the board commits above it until hv's next push.",
+      "text": "devbin 0.1.20 RELEASED at 09:29:31Z by the cut's log (tmp/release/20261105-0826.RELEASE.out): release commit be40dea7, tag v0.1.20, the release object, and the tap's main at 3c55c302. All 15 issues are closed (0323 at 1fbb25d2; 0315 unfixed, since no project reaches it). hv's brew steps are done: devbin 0.1.20 (brew, be40dea790f2), and doctor in Devbin reads 15 checks, 0 failed. SWEPT from brew (stamp 2026-11-05 09:48Z by date -u): 23 estates, one commit each by path (directive 10), _Archive/Intentv2 frozen; the fleet audit after reads 22 committed and Cards/Design (not its own checkout) at 0.1.20 be40dea790f2. Utilz's commit 7a6a06a7 drops macos.keychain (todo 197). Molt's first commit was refused by git's ref lock when molt-vc committed during the hook, nothing reverted, and it landed at 381979a once molt-vc and molt-dc held. Left: (1) read the WSL job's re-run (run 41994585531, job 127134808986) for its smoke list; (2) hv republishes the taps' formulae with 0.1.20's renderer, which carries 0322's line-length fix (the 4 Nov ruling named three taps; the estates declaring formula: are Ccusage, Cldr, Gtools and Pplr); (3) the sweep notices (todo 198); (4) after the devbin-* localfold, compact and hold at hv's word, hv's go for the consumer pass, Utilz first, with what hold 35 names put to hv first. Upstream's main is be40dea7, and local main carries the board commits above it until hv's next push.",
       "state": "live",
       "recorded_at": "2026-11-04T12:02:06.500Z",
-      "edited_at": "2026-11-05T09:34:28.618Z"
+      "edited_at": "2026-11-05T09:58:38.477Z"
     },
     {
       "node": "vc",
@@ -4519,9 +4519,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 197,
-      "text": "At devbin 0.1.20's sweep, for 0323 bank 2 (landed 89380aa5): Utilz is the one project on the built-in macos, and it declares macos.keychain, which 0.1.20 refuses as an unknown key. In Utilz's sweep commit vc drops keychain: from its macos block (directive 10). Tell utilz-vc at its next session that notarisation moves to one notarytool keychain profile, macos.notary_profile (default devbin). macos.team picks the signing identity and is required where the keychain holds more than one Developer ID identity. Before Utilz's next cut, hv runs bin/devbin macos store-creds once on each Mac that cuts, and macos doctor then reads the profile PRESENT. The old keychain items stay where they are, since nothing deletes them.",
+      "text": "Utilz's 0.1.20 sweep commit 7a6a06a7 drops macos.keychain, and the comment above the block now names the notarytool profile: 0.1.20 had refused the key as unknown (Utilz doctor: 1 failed), and after the edit Utilz doctor reads 15 checks, 0 failed. Left: tell utilz-vc at its next session that notarisation moves to one notarytool keychain profile, macos.notary_profile (default devbin). macos.team picks the signing identity, and is required where the keychain holds more than one Developer ID identity. Before Utilz's next cut, hv runs bin/devbin macos store-creds once on each Mac that cuts, and macos doctor then reads the profile PRESENT. The old keychain items stay where they are, since nothing deletes them.",
       "state": "live",
-      "recorded_at": "2026-11-05T05:53:47.492Z"
+      "recorded_at": "2026-11-05T05:53:47.492Z",
+      "edited_at": "2026-11-05T09:58:38.862Z"
     },
     {
       "node": "vc",
@@ -4554,6 +4555,14 @@
       "text": "hv's TUI answers in vc's window (received before the clock read 09:00Z by date -u) on molt-vc's answer to another estate's session's WSL2 question: its container proof run on rhadamanth comes to the desk in heavy and is granted between cuts. The three molt doctor changes it found are Molt issues 0093 to 0095, which hv then moved to now in molt-vc's window, to ship in Molt 1.4.5 after the consumer pass. A fix's single-file arm runs book the light lane under today's rules.",
       "state": "live",
       "recorded_at": "2026-11-05T09:34:28.313Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 198,
+      "text": "SWEEP NOTICES for devbin 0.1.20 (swept from brew's install of be40dea790f2, stamp 2026-11-05 09:48Z by date -u, one commit per estate by path, nothing pushed): tell each estate's vc at its next session that the sweep reached its tree, and give it the commit, with todo 194's 0.1.19 content where that notice was never given. The cfg estate (another estate's Gtools config) 3213b41; Arca's arca_catalog/ex 38c0e4b, arca_cli 6766414, arca_config 77f5ece and arca_example d460d14; Baize e9ac3fc; Cards b39808a (Design); Ccusage 3968f00; Cdtempl db5f789; Cldr 9cfc0d7; Conflab eef6731e; Gtools 590fdb5d; Intent 18a75d29c; Laksa a7dd1c8cc; Lamplight b88395c9d; MicroGPTEx 8175334; Molt 381979a (molt-vc told at the commit); Pplr 64794b6; Prodinfra 8682475; Prolix b4f6ed3; Riffle 42554ae; Trellis 5b3dd09; Utilz 7a6a06a7, with todo 197's notice. The run's records are in ~/Devel/scratch/devbin-vc/0.1.20/sweep (audit-pre, upgrade-plan-frozen, upgrade-apply, sweep-commits-part1.log, sweep-commits.log, audit-post).",
+      "state": "live",
+      "recorded_at": "2026-11-05T09:58:39.125Z"
     }
   ],
   "sent": [
@@ -6783,14 +6792,16 @@
       "recipient": "dc",
       "body": "vc to dc, at hv's ruling (vc decision 135, 2026-11-04 17:50Z by date -u): every open devbin issue is fixed into 0.1.20 before the cut, 0323 included. Your lane: group B first (0298, 0299, 0305, 0311, 0319; lib/helpers, lib/cmd/macos, lib/cmd/worktrees, bin/devbin), then group C (0301, 0302, 0303, 0318; tests/lib/*, lib/install, localinstall.bats; cc's old claim on 0301, 0302 and 0305 moves to you), then 0323 once B has landed, since both touch lib/cmd/macos. Draft 0323's design meanwhile, read-only, and send it to me before you build. 0318 has no known cause: its unit makes the arm say why it fails and is proved on CI's WSL 2 job. Each unit: claim it, critic-shell before its first run, a red leg at main's code, the tree scans and help, and a handover bundle for land-stack.sh. Runs book on pplr-vc's desk through vc. cc has group A, the release core (lib/cmd/release, lib/release.steps, lib/release.macos, lib/runlog); tell me before you touch any of those. Send me your B order first.",
       "fyi": false,
-      "recorded_at": "2026-11-04T17:50:57.242Z"
+      "recorded_at": "2026-11-04T17:50:57.242Z",
+      "archived_at": "2026-11-05T09:58:39.328Z"
     },
     {
       "id": "01M6MZWYPX4NE78MFY28WMP5DT",
       "recipient": "dc",
       "body": "devbin-vc to dc, 2026-11-05 04:35Z by date -u (also sent live): GO for devbin 0.1.20, under hv's new rule (hv in vc's window, received before 04:35Z): one release; every issue that can be fixed, fixed; each fix runs only its own test, lands and closes, then the next; the whole suite runs once, after every issue is closed. Per issue: claim it; fix it; its new or changed arms red at the base code (RED_TIMEOUT stands), and the test file(s) it touches green at the fix under BSD. No GNU legs, tree scans, whole suite or critic leg per unit: those run once at the end, and the critic's findings are fixed there, never filed. A localised run books the light lane (slots ask light naming the files and the tip, sent to vc), granted at once while the load allows, with no driver read for a run of named files. Then bank, handover, vc lands with land-stack.sh, and you write the Resolution and close. (1) 0319: claim ISSUE:0319; its own test is done (last night at 3fa38515: red as wanted at red4-0319; updatenotice 40/40, upgradeoffer 21/21, doctor 71/71, machinepointer 43/43 green under BSD), so no rerun: run handover-0319.sh, its message citing those legs, and send vc the path. (2) 0316: its own test is done (dispatch.bats green at f59f4d6 under BSD and mawk, red at its base): bank it alone, f59f4d6 on 99d678c8, with its handover. (3) Then group C through the loop: 0302 (read first why vendor, version and releasesnapshot fail under the probe), 0301, 0318 (closes once its arm says which answer it got; the WSL proof rides the candidate), 0303 (hv: fixed, it stays in). (4) Then 0323's banks through the loop, claiming ISSUE:0323 as you start; hv keeps pplr, cldr and ccusage down until Molt and devbin are stable, so 0323's fleet proof follows later, and its banks land and close on their own tests. The desk is vc's today (hv); the heavy bats lane is kept for Molt's cut and the one final suite.",
       "fyi": false,
-      "recorded_at": "2026-11-05T04:36:29.533Z"
+      "recorded_at": "2026-11-05T04:36:29.533Z",
+      "archived_at": "2026-11-05T09:58:39.328Z"
     },
     {
       "id": "01M6MZWYWX2039VCSPMCB1CMWB",
