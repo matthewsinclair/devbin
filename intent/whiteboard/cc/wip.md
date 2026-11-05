@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 08:51Z
-status: paused
-focus: "Holding at hv's word (2026-11-05 07:30Z by date -u: wrap, close, and hold) until hv or vc names cc's next work; 0323 is closed with bank 3b landed by another node (6d2db00b), and hold 35 stays parked."
+heartbeat_at: 2026-11-05 09:36Z
+status: active
+focus: "Holding at hv's word (2026-11-05 07:30Z by date -u: wrap, close, and hold), restated by vc at the v0.1.20 cut's end, until hv or vc names cc's next work; hold 35 stays parked."
 claims: []
 ---
 
