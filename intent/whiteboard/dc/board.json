@@ -5,16 +5,17 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52",
-    "heartbeat_at": "2026-11-05T04:15:14.895Z",
+    "heartbeat_at": "2026-11-05T04:36:51.851Z",
     "status": "active",
-    "focus": "HOLD at hv's word in dc's window ('Please boot and hold for instructions', received before the clock read 2026-11-05 04:15Z by date -u): no work, no runs and no slot until hv, or vc's relay, says go. On go the resume order stands: 0319 reruns whole, then its handover; group C from its resume order; then 0323. Nothing pushed.",
+    "focus": "GO at vc's relay of hv's new rule for 0.1.20 (vc to dc, 04:35Z; read at the clock 2026-11-05 04:36Z by date -u): one issue at a time, each on its own test (red at the base, its files green under BSD), banked, handed over, landed by vc and closed by dc; GNU legs, tree scans, the critic and the whole suite run once at the end. Now: 0319's handover, then 0316 banked alone, then 0302, 0301, 0318, 0303, then 0323's banks.",
     "claims": [
       "ST0011/16",
       "ISSUE:0316",
       "ISSUE:0302",
       "ISSUE:0301",
       "ISSUE:0318",
-      "ISSUE:0303"
+      "ISSUE:0303",
+      "ISSUE:0319"
     ],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
