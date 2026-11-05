@@ -6,7 +6,7 @@ session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
 heartbeat_at: 2026-11-05 07:18Z
 status: active
 focus: "0323 bank 3b built at be28d34f on 154e424e (vc's pre-read finding folded in: a pending archive is refused at confirm in bin-publish's words), kit ~/Devel/scratch/devbin-dc/k323/b3b; light ask 01M6N940PFHNJRG2WE2NY784TA waits on vc's grant at its bounce; then the run, the handover as COMMIT_MSG-0323.txt, vc's landing, and 0323's Resolution and close (focus set 2026-11-05 07:18Z by date -u)."
-claims: [ST0011/16, ISSUE:0323]
+claims: [ST0011/16]
 ---
 
 # DevX Claude (dc)
