@@ -2,11 +2,11 @@
 # macos.bats - the built-in `macos`: a macOS app's release (issue 0226)
 #
 # Everything here runs without Apple's services. security(1), codesign,
-# xcrun (notarytool and stapler), spctl and lsregister are stubs under the
-# test's tmpdir, first on PATH, each recording its calls; ditto, xattr, plutil
-# and file are the system's, so the arms run on macOS alone and skip
-# elsewhere. The one arm that runs everywhere is the refusal off macOS, with a
-# stub uname on macOS and the real one elsewhere. Real signing and
+# xcrun (notarytool and stapler), spctl, lsregister and rustc are stubs under
+# the test's tmpdir, first on PATH, each recording its calls; ditto, xattr,
+# plutil, file and tar are the system's, so the arms run on macOS alone and
+# skip elsewhere. The one arm that runs everywhere is the refusal off macOS,
+# with a stub uname on macOS and the real one elsewhere. Real signing and
 # notarisation are proven by hand, at the first release that uses the built-in.
 #
 # The stub keychain is $DEVBIN_TEST_TMPDIR/kc: kc/identities for what
@@ -50,6 +50,8 @@ on_macos() {
 # printed whole.
 TEAM="TEAMID1234"
 HOLDER="Holder Not For Output"
+# The host triple the stub rustc names, which bin-publish names its archive by.
+TRIPLE="aarch64-apple-darwin"
 
 # apple_stubs -- the stub tools, first on PATH through $APPLE.
 apple_stubs() {
@@ -74,12 +76,13 @@ SH
   # codesign: --sign marks a bundle signed (its _CodeSignature, holding the
   # team the identity names); -d prints what the bytes say, as codesign
   # does on stderr: the build's identifier and no team until a Developer ID
-  # signature is on it.
+  # signature is on it. A regular file, a bare binary, is codesign_file's.
   cat >"$APPLE/codesign" <<SH
 #!/bin/sh
 echo "codesign \$*" >>"$T/apple.calls"
 for a in "\$@"; do last="\$a"; done
 [ ! -f "$T/codesign.fails" ] || exit 1
+[ ! -f "\$last" ] || exec "$APPLE/codesign_file" "\$@"
 case " \$* " in
   *" -d "*)
     if [ -f "\$last/Contents/_CodeSignature/CodeResources" ]; then
@@ -104,11 +107,76 @@ case " \$* " in
     fi ;;
 esac
 SH
+  # codesign_file: a regular file's signature is a record keyed by its path,
+  # codesign.sig<path>, of what --sign was given: the identifier (the file's
+  # name without --identifier, as codesign takes it), the team the identity
+  # names, whether the hardened runtime was asked for, and the entitlements
+  # file. -d prints the identifier, the flags and the team from it, and with
+  # --entitlements that file; --verify fails a file with no record, and with
+  # -R =<text> passes only when <text> names its identifier and its team.
+  sed "s#@T@#$T#g" >"$APPLE/codesign_file" <<'SH'
+#!/bin/sh
+for a in "$@"; do last="$a"; done
+case "$last" in /*) f="$last" ;; *) f="$PWD/$last" ;; esac
+rec="@T@/codesign.sig$f"
+field() { sed -n "s/^$1=//p" "$rec"; }
+unsigned() {
+  echo "$last: code object is not signed at all" >&2
+  exit 1
+}
+case " $* " in
+  *" -d "*)
+    [ -f "$rec" ] || unsigned
+    case " $* " in
+      *" --entitlements "*)
+        ent="$(field entitlements)"
+        [ -z "$ent" ] || cat "$ent" ;;
+      *)
+        echo "Identifier=$(field identifier)" >&2
+        if [ "$(field runtime)" = yes ]; then
+          echo "CodeDirectory v=20500 size=1 flags=0x10000(runtime) hashes=1" >&2
+        else
+          echo "CodeDirectory v=20400 size=1 flags=0x0(none) hashes=1" >&2
+        fi
+        echo "TeamIdentifier=$(field team)" >&2 ;;
+    esac ;;
+  *" --verify "*)
+    [ -f "$rec" ] || unsigned
+    req="" prev=""
+    for a in "$@"; do
+      [ "$prev" != -R ] || req="$a"
+      prev="$a"
+    done
+    [ -n "$req" ] || exit 0
+    for want in "identifier \"$(field identifier)\"" "$(field team)"; do
+      case "$req" in
+        *"$want"*) ;;
+        *) echo "$last: does not satisfy its designated Requirement" >&2; exit 3 ;;
+      esac
+    done ;;
+  *" --sign "*)
+    id="" ent="" rt=no who="" prev=""
+    for a in "$@"; do
+      case "$prev" in
+        --identifier) id="$a" ;;
+        --entitlements) ent="$a" ;;
+        --options) case ",$a," in *,runtime,*) rt=yes ;; esac ;;
+        --sign) who="$a" ;;
+      esac
+      prev="$a"
+    done
+    team="${who##*(}"
+    mkdir -p "${rec%/*}" || exit 1
+    printf 'identifier=%s\nteam=%s\nruntime=%s\nentitlements=%s\n' "${id:-${f##*/}}" "${team%)}" "$rt" "$ent" >"$rec" || exit 1 ;;
+esac
+SH
   # xcrun: stapler staples a bundle (Contents/stapled) and validates one that
   # has it. notarytool's submit and history answer only under a profile the
   # stub keychain holds (kc/notary.<profile>), as the real one refuses any
-  # other with no submission id; submit answers Accepted with a submission id,
-  # or what notary.status holds.
+  # other with no submission id; submit keeps the archive it was sent
+  # (notary.zip) and answers with a submission id and Accepted, or what
+  # notary.status holds. Accepted marks what was sent notarised
+  # (notary.accepted), which spctl -t open reads.
   cat >"$APPLE/xcrun" <<SH
 #!/bin/sh
 echo "xcrun \$*" >>"$T/apple.calls"
@@ -132,8 +200,11 @@ case "\$1 \$2" in
     : >"\$last/Contents/stapled" ;;
   "notarytool submit")
     held || exit 1
+    verdict="\$(cat "$T/notary.status" 2>/dev/null || echo Accepted)"
+    cp "\$3" "$T/notary.zip" || exit 1
+    [ "\$verdict" != Accepted ] || : >"$T/notary.accepted"
     echo "  id: 0f0e0d0c-0b0a-0908-0706-050403020100"
-    echo "  status: \$(cat "$T/notary.status" 2>/dev/null || echo Accepted)" ;;
+    echo "  status: \$verdict" ;;
   "notarytool history")
     held || exit 1
     echo "No submission history." ;;
@@ -167,15 +238,30 @@ parent="$(ps -o ppid= -p "$top" | tr -d ' ')"
 echo "term_macos signalled $top, running: $(ps -o args= -p "$top"); its parent runs: $(ps -o args= -p "$parent")" >>"@T@/apple.calls"
 kill -TERM "$top"
 SH
-  # spctl: a stapled bundle is notarised, any other is not. With spctl.signal
-  # present it sends the macos process TERM first (term_macos).
+  # spctl: for the app's check of a quarantined copy (-t exec), a stapled
+  # bundle is notarised, any other is not. The binaries' check (-t open)
+  # meets what nothing staples, a bare binary and a bundle beside it alike, so
+  # Gatekeeper asks Apple: anything signed, a regular file by its codesign_file
+  # record and a bundle by its _CodeSignature, is notarised once notarytool
+  # has answered Accepted (notary.accepted). With spctl.signal present it
+  # sends the macos process TERM first (term_macos).
   cat >"$APPLE/spctl" <<SH
 #!/bin/sh
 echo "spctl \$*" >>"$T/apple.calls"
 for a in "\$@"; do last="\$a"; done
 [ ! -d "\$last" ] || (cd "\$last" && pwd -P) >>"$T/ls.records"
 [ ! -f "$T/spctl.signal" ] || term_macos "\$PPID"
-if [ -f "\$last/Contents/stapled" ]; then echo "source=Notarized Developer ID" >&2; else echo "source=Unnotarized Developer ID" >&2; exit 3; fi
+case " \$* " in
+  *" -t open "*)
+    if [ -f "$T/notary.accepted" ] && { [ -f "$T/codesign.sig\$last" ] || [ -f "\$last/Contents/_CodeSignature/CodeResources" ]; }; then
+      echo "source=Notarized Developer ID" >&2
+    else
+      echo "source=Unnotarized Developer ID" >&2
+      exit 3
+    fi ;;
+  *)
+    if [ -f "\$last/Contents/stapled" ]; then echo "source=Notarized Developer ID" >&2; else echo "source=Unnotarized Developer ID" >&2; exit 3; fi ;;
+esac
 SH
   # lsregister: Launch Services' records as a file, ls.records, one resolved
   # path a line, after a system app the real list always holds. codesign,
@@ -230,6 +316,15 @@ case "$1" in
     done <"$records"
     ;;
 esac
+SH
+  # rustc: -vV names the host triple, TRIPLE, which bin-publish names its
+  # archive by.
+  cat >"$APPLE/rustc" <<SH
+#!/bin/sh
+echo "rustc \$*" >>"$T/apple.calls"
+[ "\$*" = -vV ] || exit 1
+echo "rustc 1.0.0 (stub)"
+echo "host: $TRIPLE"
 SH
   printf '#!/bin/sh\necho Linux\n' >"$APPLE/uname.linux"
   chmod +x "$APPLE"/*
@@ -310,6 +405,75 @@ YAML
     printf '%s\n' "$2" >"$proj/app/VERSION" || return 1
   fi
   make_app "$proj/build/Products/Release" com.example.demo "${2:-1.0.0}" || return 1
+  with_dated_note "$proj" || return 1
+  git_project "$proj" || return 1
+  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace || return 1
+  git -C "$proj" push -q origin v1.0.0 || return 1
+  gh_object v1.0.0 v1.0.0 "- first" || return 1
+  printf '%s\n' "$proj"
+}
+
+# The binaries bin_project builds (issue 0323): a plain executable, and a
+# directory standing for a bundle, its name holding a space and a dot as a
+# .app's may, each with the identifier it is signed as.
+BIN_PLAIN="demo"
+ID_PLAIN="com.example.demo.cli"
+BIN_APP="Demo Links.app"
+ID_APP="com.example.demo.links"
+
+# The binaries bin_project declares by default: both, the plain one with
+# demo.entitlements and the bundle without, and LICENSE packed beside them.
+BIN_YAML="  binaries:
+    cli:
+      path: $BIN_PLAIN
+      identifier: $ID_PLAIN
+      entitlements: demo.entitlements
+    links:
+      path: \"$BIN_APP\"
+      identifier: $ID_APP
+  pack:
+    files:
+      - LICENSE"
+
+# The plain binary alone, with nothing to pack beside it.
+BIN_ALONE_YAML="  binaries:
+    cli:
+      path: $BIN_PLAIN
+      identifier: $ID_PLAIN"
+
+# bin_project [binaries-yaml] -- a project at VERSION 1.0.0, release and macos
+# enabled, with no app: both binaries built under macos.bin_dir, build/bin
+# (which the tree ignores, as a build product is), demo.entitlements and
+# LICENSE at the root, and <binaries-yaml>, BIN_YAML unless given, under
+# macos:; committed, tagged v1.0.0 at HEAD and pushed, with a release object
+# for v1.0.0, as app_project makes its own. Each step returns its failure, so
+# a project half made never reads as made (issue 0301).
+bin_project() {
+  local proj bin
+  proj="$(mkproj demo <<YAML
+project:
+  name: demo
+commands:
+  release:
+    enabled: true
+  macos:
+    enabled: true
+macos:
+  bin_dir: build/bin
+${1:-$BIN_YAML}
+YAML
+  )" || return 1
+  bin="$proj/build/bin"
+  printf 'build/\ntmp/\n' >"$proj/.gitignore" || return 1
+  printf '%s\n' '<?xml version="1.0" encoding="UTF-8"?>' '<plist version="1.0">' '<dict>' \
+    '  <key>com.apple.security.cs.allow-jit</key>' '  <true/>' '</dict>' '</plist>' >"$proj/demo.entitlements" || return 1
+  printf 'the licence\n' >"$proj/LICENSE" || return 1
+  mkdir -p "$bin/$BIN_APP/Contents/MacOS" || return 1
+  cp /usr/bin/true "$bin/$BIN_PLAIN" || return 1
+  plutil -create xml1 "$bin/$BIN_APP/Contents/Info.plist" || return 1
+  plutil -insert CFBundleIdentifier -string "$ID_APP" "$bin/$BIN_APP/Contents/Info.plist" || return 1
+  printf '#!/bin/sh\n' >"$bin/$BIN_APP/Contents/MacOS/links" || return 1
+  chmod +x "$bin/$BIN_APP/Contents/MacOS/links" || return 1
   with_dated_note "$proj" || return 1
   git_project "$proj" || return 1
   git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace || return 1
@@ -1456,4 +1620,174 @@ EOF2
   [ -z "$(stage_of)" ] || fail "a stage was made: $(stage_of)"
   [ "$(calls '^codesign .*--sign')" -eq 0 ] || fail "something was signed: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
   [ "$(gh_calls '^gh release upload')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+}
+
+# ============================================================================
+# THE BINARIES: SIGNED, NOTARISED AND PACKED BESIDE OR WITHOUT AN APP (0323)
+# ============================================================================
+
+# bin_stage_of -- the binaries' stage, <stage key>.bin/stage under the state
+# dir, a sibling of the app's stage.
+bin_stage_of() { find "$XDG_STATE_HOME/devbin/macos" -maxdepth 2 -path '*.bin/stage' -type d; }
+
+# bin_signed_and_notarised <proj> -- bin-sign and bin-notarize, each required
+# to pass.
+bin_signed_and_notarised() {
+  local out
+  out="$(macos_in "$1" bin-sign 2>&1)" || fail "bin-sign failed: $out"
+  out="$(macos_in "$1" bin-notarize 2>&1)" || fail "bin-notarize failed: $out"
+}
+
+@test "0323: bin-sign stages each binary outside the build tree, signs each with its identifier, the hardened runtime and a secure timestamp, its entitlements only where declared, reads each back, and records the commit" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local stage head name id
+  proj="$(bin_project)"
+  head="$(git -C "$proj" rev-parse HEAD)"
+  run macos_in "$proj" bin-sign
+  assert_success
+  stage="$(bin_stage_of)"
+  [ -n "$stage" ] || fail "no binaries' stage under $XDG_STATE_HOME: $output"
+  case "$stage" in "$proj"/*) fail "the stage $stage is inside the project" ;; esac
+  # Each signed where it is staged, as its own identifier, and read back
+  # against the requirement that identifier and the identity's team make.
+  while IFS='|' read -r name id; do
+    [ -e "$stage/$name" ] || fail "$name is not staged in $stage: $output"
+    [ "$(calls "^codesign .*--options runtime .*--timestamp .*--identifier $id .*--sign .* $stage/$name\$")" -eq 1 ] ||
+      fail "$name was not signed once as $id with the hardened runtime and a timestamp: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+    [ "$(calls "^codesign --verify --strict -R =identifier \"$id\" .*\"$TEAM\" $stage/$name\$")" -eq 1 ] ||
+      fail "$name was not read back against its requirement: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  done <<<"$BIN_PLAIN|$ID_PLAIN
+$BIN_APP|$ID_APP"
+  [ "$(calls "^codesign .*--entitlements $proj/demo.entitlements .*--sign .* $stage/$BIN_PLAIN\$")" -eq 1 ] ||
+    fail "the plain binary was not signed with the entitlements it declares: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  [ "$(calls "^codesign .*--entitlements .*--sign .* $stage/$BIN_APP\$")" -eq 0 ] ||
+    fail "the bundle was signed with entitlements it does not declare: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  [ "$(calls "^codesign .*--sign .* $proj/")" -eq 0 ] || fail "codesign signed in the project: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  assert_output_matches "  $BIN_PLAIN +requirement, hardened runtime, entitlements"$'(\n|$)'
+  assert_output_matches "  $BIN_APP +requirement, hardened runtime"$'(\n|$)'
+  assert_output_contains "signed: $BIN_PLAIN, $BIN_APP, at ${head:0:12}"
+  [ "$(cat "${stage%/stage}/commit")" = "$head" ] || fail "the stage records [$(cat "${stage%/stage}/commit" 2>&1)], not HEAD $head"
+  no_secret
+}
+
+@test "0323: bin-sign refuses a declared binary the build did not leave, naming it, and signs nothing" {
+  on_macos
+  apple_stubs
+  keychain_full
+  proj="$(bin_project)"
+  # The tree ignores build/, so it stays clean with the bundle gone.
+  rm -rf "$proj/build/bin/$BIN_APP"
+  run macos_in "$proj" bin-sign
+  assert_failure
+  assert_output_contains "macos: there is no build of $BIN_APP at $proj/build/bin/$BIN_APP -- nothing signed"
+  [ "$(calls '^codesign')" -eq 0 ] || fail "a refused bin-sign signed: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  [ -z "$(bin_stage_of)" ] || fail "a stage was made: $(bin_stage_of)"
+}
+
+@test "0323: the binaries' keys validate, a misspelt binary field is refused by name, and doctor passes a project with binaries and no app, naming each binary" {
+  on_macos
+  apple_stubs
+  keychain_full
+  proj="$(bin_project)"
+  run devbin_run "$proj" doctor
+  refute_output_contains "unknown key: macos"
+  run macos_in "$proj" doctor
+  assert_success
+  assert_output_matches "  app +none: binaries alone"$'(\n|$)'
+  assert_output_matches "  bundle id +none: no app"$'(\n|$)'
+  assert_output_matches "  binary cli +$BIN_PLAIN as $ID_PLAIN \(built\)"$'(\n|$)'
+  assert_output_matches "  binary links +$BIN_APP as $ID_APP \(built\)"$'(\n|$)'
+  printf 'project:\n  name: demo\ncommands:\n  macos:\n    enabled: true\nmacos:\n  binaries:\n    cli:\n      path: %s\n      identifer: %s\n' \
+    "$BIN_PLAIN" "$ID_PLAIN" >"$proj/bin/.devbin/config.yaml"
+  run macos_in "$proj" bin-sign
+  assert_failure
+  assert_output_contains "unknown key: macos.binaries.cli.identifer"
+  assert_output_contains "macos: $proj/bin/.devbin/config.yaml does not validate (above)"
+}
+
+@test "0323: bin-notarize submits every signed binary in one archive under the notary profile, then has Gatekeeper assess each, and a profile the keychain does not hold stops it before any is assessed" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local stage name out sub="$BATS_TEST_TMPDIR/submitted"
+  proj="$(bin_project)"
+  out="$(macos_in "$proj" bin-sign 2>&1)" || fail "bin-sign failed: $out"
+  stage="$(bin_stage_of)"
+  rm "$DEVBIN_TEST_TMPDIR/kc/notary.devbin"
+  : >"$DEVBIN_TEST_TMPDIR/apple.calls"
+  run macos_in "$proj" bin-notarize
+  assert_failure
+  assert_output_contains "notarytool gave no submission id under the notary profile devbin -- nothing is assessed; store the profile with:"
+  [ "$(calls '^spctl')" -eq 0 ] || fail "a binary was assessed with no submission: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  store_profile devbin
+  : >"$DEVBIN_TEST_TMPDIR/apple.calls"
+  run macos_in "$proj" bin-notarize
+  assert_success
+  assert_output_contains "notarised: every staged binary, each accepted by Gatekeeper"
+  [ "$(calls '^xcrun notarytool submit .* --keychain-profile devbin --wait$')" -eq 1 ] ||
+    fail "not one submission under the profile: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  mkdir "$sub"
+  ditto -x -k "$DEVBIN_TEST_TMPDIR/notary.zip" "$sub" || fail "the archive submitted does not unpack"
+  for name in "$BIN_PLAIN" "$BIN_APP"; do
+    [ -n "$(find "$sub" -name "$name")" ] || fail "the archive submitted does not hold $name: $(find "$sub")"
+    [ "$(calls "^spctl -a -t open .* $stage/$name\$")" -eq 1 ] ||
+      fail "Gatekeeper did not assess $name once: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  done
+}
+
+@test "0323: bin-publish refuses before the tag is cut, uploading nothing, and at the tag packs the binaries, an app at the archive's root, a binary under bin/ and the pack files at the root, and attaches the archive through release attach --from" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local name tgz listing
+  proj="$(bin_project)"
+  cut_untagged "$proj" >/dev/null
+  bin_signed_and_notarised "$proj"
+  run macos_in "$proj" bin-publish
+  assert_failure
+  assert_output_contains "macos: there is no tag v1.1.0 here, the tag the project's version 1.1.0 is released under -- nothing uploaded; cut the release first (or fetch its tag), then bin-publish"
+  [ "$(gh_calls '^gh release upload')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+  cut_tag "$proj"
+  run macos_in "$proj" bin-publish
+  assert_success
+  name="demo-1.1.0-$TRIPLE.tar.gz"
+  assert_output_contains "published: $name on release v1.1.0"
+  assert_output_contains "release: attach v1.1.0: the files under"
+  [ "$(gh_calls "^gh release upload .* v1.1.0 $name\$")" -eq 1 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+  tgz="$DEVBIN_TEST_TMPDIR/gh.assets/v1.1.0/$name"
+  [ -f "$tgz" ] || fail "no $name on the release object"
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/gh.assets/v1.1.0/SHA256SUMS")" = "$(sha256_of "$tgz")  $name" ] ||
+    fail "SHA256SUMS: $(cat "$DEVBIN_TEST_TMPDIR/gh.assets/v1.1.0/SHA256SUMS")"
+  listing="$(tar -tzf "$tgz")" || fail "tar could not list $name"
+  [ "$(sed 's#/.*##' <<<"$listing" | LC_ALL=C sort -u)" = "$(printf '%s\n' "$BIN_APP" LICENSE bin | LC_ALL=C sort)" ] ||
+    fail "the archive's root is not the bundle, bin/ and the pack file: $listing"
+  grep -qxF "bin/$BIN_PLAIN" <<<"$listing" || fail "the plain binary is not under bin/: $listing"
+}
+
+@test "0323: bin-publish refuses an archive whose one top-level entry would be bin/, uploading nothing" {
+  on_macos
+  apple_stubs
+  keychain_full
+  proj="$(bin_project "$BIN_ALONE_YAML")"
+  bin_signed_and_notarised "$proj"
+  run macos_in "$proj" bin-publish
+  assert_failure
+  assert_output_contains "macos: the archive would hold bin/ alone, and Homebrew installs from inside an archive's one top-level directory -- declare macos.pack.files, or ship another binary beside it; nothing uploaded"
+  [ "$(gh_calls '^gh release upload')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+}
+
+@test "0323: leg runs bin-sign, then bin-notarize, for the binaries a project declares under release.object local" {
+  on_macos
+  apple_stubs
+  keychain_full
+  # release.object is local where the project declares none.
+  proj="$(bin_project)"
+  run macos_in "$proj" leg
+  assert_success
+  assert_output_contains "signed: $BIN_PLAIN, $BIN_APP, at "
+  assert_output_contains "notarised: every staged binary, each accepted by Gatekeeper"
+  awk '/^signed: / { s = NR } /^notarised: / { n = NR } END { exit !(s && n > s) }' <<<"$output" ||
+    fail "bin-notarize did not follow bin-sign: $output"
 }

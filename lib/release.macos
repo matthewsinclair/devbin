@@ -17,7 +17,8 @@
 # words, as every leg of a cut answers, and return 0 when they answered.
 #
 # THE SEAL IS THE VERDICT'S DETAIL, as a remote leg's copied pair is: the run
-# is `macos app-sign`, then `macos app-notarize`, through the project's own
+# is `macos leg`, which signs and notarises what the project declares (its app,
+# and its binaries under release.object local; issue 0323), through its own
 # launcher, under run_gate's seal with the suffix MACOS beside the release's
 # other runs, so a green at R is the next cut's `already` and is not run again.
 #
@@ -83,25 +84,27 @@ release_macos_start() {
   RELEASE_MACOS_TABLE="$scratch/leg.macos.jobs"
   release_group_start "$RELEASE_MACOS_OUT" "" "$RELEASE_MACOS_GROUP" _release_macos_run "$root" "$sha"
   RELEASE_MACOS_PID=$! RELEASE_MACOS_STATE=running
-  printf 'pending\tthe macOS stage (macos app-sign, then app-notarize) runs at %s under a seal of its own\n' "${sha:0:12}"
+  printf 'pending\tthe macOS stage (macos leg: the app and the binaries the project declares, signed and notarised) runs at %s under a seal of its own\n' "${sha:0:12}"
 }
 
-# _release_macos_run <root> <sha> -- the stage's run, in its own group: app-sign,
-# then app-notarize, through the project's launcher, under one sealed run of
-# its own at the root, standing on the commit the tree is, <sha>.
+# _release_macos_run <root> <sha> -- the stage's run, in its own group: macos
+# leg, through the project's launcher, under one sealed run of its own at the
+# root, standing on the commit the tree is, <sha>.
 _release_macos_run() {
   cd "$1" || return 1
   run_gate --label "release macos" --suffix MACOS --grammar generic --purge \
     --out-dir "$(gate_out_dir release)" \
-    --source "the macOS stage at ${2:0:12} -- macos app-sign, then macos app-notarize, through bin/devbin" \
+    --source "the macOS stage at ${2:0:12} -- macos leg, through bin/devbin" \
     -- _release_macos_steps "$1/bin/devbin"
 }
 
-# _release_macos_steps <launcher> -- app-sign, then app-notarize; the first that
-# fails ends the run with its status.
+# _release_macos_steps <launcher> -- macos leg: app-sign then app-notarize
+# where the project declares macos.app, bin-sign then bin-notarize where it
+# declares macos.binaries under release.object local (issue 0323), the first
+# that fails ending the run with its status. macos reads what is declared, so
+# this library still reads no config.
 _release_macos_steps() {
-  "$1" macos app-sign || return
-  "$1" macos app-notarize
+  "$1" macos leg
 }
 
 # release_macos_running -- 0 while the stage's run is a running job of this

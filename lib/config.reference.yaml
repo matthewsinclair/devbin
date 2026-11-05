@@ -651,6 +651,22 @@ macos:
   # kind_stamp: AppKind                        # the Info.plist key the build writes its kind into; undeclared: not checked
   # kind_value: release                        # what kind_stamp must carry; read only with kind_stamp
   # build_root: ${XDG_STATE_HOME}/demo/build   # where publish's last Launch Services drop looks; undeclared: the app's directory
+  # Command-line binaries, and a .app beside them (issue 0323): one map a label,
+  # the label naming the entry alone, since a key cannot hold a file's dots or
+  # spaces. bin-sign, bin-notarize and bin-publish read them.
+  bin_dir: target/release      # where the build leaves the binaries, from the root
+  # binaries:
+  #   cli:
+  #     path: demo                            # its name in bin_dir; required
+  #     identifier: com.example.demo          # the identifier it is signed as; required
+  #     entitlements: native/macos/demo.entitlements  # undeclared: signed without
+  #     requirement: identifier "com.example.demo" and anchor apple generic  # undeclared: the Developer ID form from identifier and team
+  #   links:
+  #     path: "Demo Links.app"                # a .app is packed at the archive's root, a binary under bin/
+  #     identifier: com.example.demo-links
+  # pack:
+  #   files:                                  # packed at the archive's root beside the binaries, each from the root
+  #     - examples/config.toml
 
 # The built-in formula: the project's Homebrew formula, rendered
 # from a template and a release, and published to its tap, with `render <tag>

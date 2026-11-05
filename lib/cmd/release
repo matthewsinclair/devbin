@@ -2498,7 +2498,7 @@ cut_run() {
       LEGS_MACOS=yes
       legs_word="$(platform_word)" || legs_word=""
       [ "$legs_word" = macos ] ||
-        refusals+=("the macOS stage is declared (commands.macos.enabled), and this host is ${legs_word:-one devbin has no platform word for} -- cut the release on a macOS host, where the stage signs and notarises the app at the release commit")
+        refusals+=("the macOS stage is declared (commands.macos.enabled), and this host is ${legs_word:-one devbin has no platform word for} -- cut the release on a macOS host, where the stage signs and notarises what the macos: block declares at the release commit")
       # THE STAGE'S PATHS MUST BE IGNORED BY GIT (issue 0313): macos.app, the
       # bundle the build leaves, which is the path of the build: artefact the
       # stage caches (cfg_macos_artefacts), and macos.build_root where it is
@@ -2506,9 +2506,13 @@ cut_run() {
       # and the local gates share the tree at the release commit, so a path
       # either leaves that git does not ignore fails the other's clean check,
       # blamed on the leg that read it: each is refused here, before anything
-      # is stamped (release_macos_unignored).
+      # is stamped (release_macos_unignored). Where binaries are declared
+      # (issue 0323), macos.bin_dir too, where their build leaves them; it has
+      # a default, so a project with an app alone is not held to it.
       local macos_k macos_p macos_why
-      for macos_k in app build_root; do
+      local -a macos_keys=(app build_root)
+      [ -z "$(cfg_macos_binaries)" ] || macos_keys+=(bin_dir)
+      for macos_k in "${macos_keys[@]}"; do
         if ! macos_p="$(cfg_macos_path "$macos_k" "$PROJECT_ROOT")"; then
           refusals+=("macos.$macos_k cannot be read as a path, so whether git ignores it cannot be said -- ${DEVBIN_INVOKE:-bin/devbin} macos doctor names why")
           continue

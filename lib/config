@@ -453,8 +453,12 @@ _cfg_path_known() {
     macos)
       # Issue 0226's macos: block, the built-in macos's settings. Its keys and
       # defaults are ONE table, _DEVBIN_MACOS_SCHEMA below, which this branch
-      # reads rather than listing the keys a second time.
+      # reads rather than listing the keys a second time. Beside it, issue
+      # 0323's binaries: one map a label, `binaries.<label>.<field>`, its fields
+      # the one list _DEVBIN_MACOS_BINARY_FIELDS holds.
       [ "$n" -eq 2 ] && _cfg_macos_row "${p[1]}" >/dev/null && return 0
+      [ "$n" -eq 4 ] && [ "${p[1]}" = binaries ] && _cfg_macos_binary_field "${p[3]}" && return 0
+      [ "$n" -eq 4 ] && [ "${p[1]}.${p[2]}" = pack.files ] && _cfg_is_index "${p[3]}" && return 0
       return 1
       ;;
     formula)
@@ -798,6 +802,7 @@ cfg_release_verbs() {
 #   kind_stamp    the Info.plist key the build writes its kind into; none: not checked
 #   kind_value    the value kind_stamp must carry; read only with kind_stamp
 #   build_root    where publish's last Launch Services drop looks
+#   bin_dir       where the build leaves macos.binaries, from the root (issue 0323)
 _DEVBIN_MACOS_SCHEMA="
 scalar app
 scalar build
@@ -811,6 +816,7 @@ scalar commit_stamp
 scalar kind_stamp
 scalar kind_value   release
 scalar build_root
+scalar bin_dir      target/release
 "
 
 # _cfg_macos_row <key> -- the default of a macos key (empty when it has none),
@@ -879,6 +885,50 @@ cfg_macos_path() {
   local v
   v="$(cfg_macos_get "$1")" || return 1
   cfg_macos_path_of "$v" "$2"
+}
+
+# THE BINARIES (issue 0323): what the built-in macos signs, notarises and packs
+# beside or instead of an app, one map a label under macos.binaries. The label
+# is a word that names the entry and nothing else, since a key cannot hold the
+# dots and spaces a file's name can, so `path` holds the file's name:
+#
+#   path          the binary or .app, under macos.bin_dir; required
+#   identifier    the identifier it is signed as; required
+#   entitlements  the entitlements file signed in, from the root; none: without
+#   requirement   its designated requirement; none: derived from identifier
+#                 and macos.team
+_DEVBIN_MACOS_BINARY_FIELDS="path identifier entitlements requirement"
+
+# _cfg_macos_binary_field <field> -- true when <field> is a binary's field.
+_cfg_macos_binary_field() {
+  case " $_DEVBIN_MACOS_BINARY_FIELDS " in *" $1 "*) return 0 ;; esac
+  return 1
+}
+
+# cfg_macos_binaries -- each declared binary's label, one a line, in document
+# order; nothing when the project declares none.
+cfg_macos_binaries() { cfg_list macos.binaries; }
+
+# cfg_macos_binary <label> <field> -- one field of one binary, or empty when it
+# is not declared. Refuses, naming it, a field the binaries do not have, so a
+# misspelt read is never taken for one left out.
+cfg_macos_binary() {
+  if ! _cfg_macos_binary_field "$2"; then
+    printf 'config: a macos binary has no field: %s\n' "$2" >&2
+    return 1
+  fi
+  cfg_get "macos.binaries.$1.$2"
+}
+
+# cfg_macos_pack_files -- macos.pack.files, the files bin-publish packs at the
+# archive's root beside the binaries, each from the project root, one a line in
+# the order declared; nothing when none is. IFS is pinned, as cfg_release_list
+# pins it, so a caller's IFS cannot join the indices into one.
+cfg_macos_pack_files() {
+  local i IFS=$' \t\n'
+  for i in $(cfg_list macos.pack.files); do
+    cfg_get "macos.pack.files.$i"
+  done
 }
 
 # cfg_macos_declared -- 0 when the project declares the built-in macos

@@ -1,6 +1,6 @@
-    bin/devbin macos <doctor|store-creds|app-sign|app-notarize|app-verify|publish>
+    bin/devbin macos <doctor|store-creds|app-sign|app-notarize|app-verify|publish|bin-sign|bin-notarize|bin-verify|bin-publish|leg>
 
-Release a macOS app: sign a staged copy of the project's `.app` with the Developer ID and the hardened runtime, notarise and staple it, check it as a download meets it, and attach it zipped to the release at its tag. devbin implements it, on macOS only, for the app the `macos:` block of `bin/.devbin/config.yaml` declares.
+Release a macOS app: sign a staged copy of the project's `.app` with the Developer ID and the hardened runtime, notarise and staple it, check it as a download meets it, and attach it zipped to the release at its tag. Release a project's command-line binaries the same way, a `.app` beside them included: sign each, notarise them, and attach them packed as one archive. devbin implements it, on macOS only, for what the `macos:` block of `bin/.devbin/config.yaml` declares.
 
 It is opt-in: absent until a project asks for it with `commands.macos.enabled: true`. `enabled: false` switches it off again. A project's own `bin/.devbin/cmd/macos` handler, or a `commands.macos.run:` line, still wins over devbin's, as for any built-in, and then `bin/devbin help macos` prints the project's own page.
 
@@ -29,11 +29,29 @@ It is opt-in: absent until a project asks for it with `commands.macos.enabled: t
     macos.build_root    where publish's last Launch Services drop looks;
                         default the directory holding macos.app
 
+The binaries, a project's own command-line tools and any `.app` shipped beside them, are a map under `macos.binaries`, one entry a label. The label names the entry and nothing else, since a key cannot hold the dots and spaces a file's name can:
+
+    macos.binaries.<label>.path
+                        its name in macos.bin_dir, as the build leaves it;
+                        required
+    macos.binaries.<label>.identifier
+                        the identifier it is signed as; required
+    macos.binaries.<label>.entitlements
+                        the entitlements file signed in, from the root; none:
+                        signed without
+    macos.binaries.<label>.requirement
+                        its designated requirement; default the Developer ID
+                        form derived from its identifier and the team
+    macos.bin_dir       where the build leaves the binaries, from the root;
+                        default target/release
+    macos.pack.files    files packed at the archive's root beside them, each
+                        from the root; none by default
+
 A path key may open with `~`, `$HOME` or an XDG base-directory variable, expanded as the XDG spec reads it, so an app built outside the project needs no machine's own path. Each stands alone as a leading component, and an XDG variable that is unset falls back to its XDG default; any other leading `~` or `$`, such as `~user` or `${XDG_STATE_HOME:-...}`, is refused, naming it. An app that versions apart is still released under the project's tag and version. Every `macos:` key is annotated in devbin's reference config, which `bin/devbin devbin` names.
 
 ## A release
 
-A cut runs app-sign, then app-notarize, itself, as its macOS stage, where `commands.macos.enabled` is true: a leg beside the gates at the release commit, under a seal of its own, so a green stage is not run again, and refused at the cut's pre-flight on a host that is not macOS. Where macos.app is the path of an artefact of the project's `build:` block, app-sign pulls the app from the artefact cache at the release commit and runs no macos.build, or builds it and puts it there (`bin/devbin help cache`).
+A cut runs `macos leg` itself, as its macOS stage, where `commands.macos.enabled` is true: app-sign then app-notarize where macos.app is declared, and bin-sign then bin-notarize where macos.binaries is declared and `release.object` is `local`, so every Apple verdict is read before the tag. It is a leg beside the gates at the release commit, under a seal of its own, so a green stage is not run again, and refused at the cut's pre-flight on a host that is not macOS, as is a macos.app, macos.build_root or, with binaries, macos.bin_dir that git does not ignore. Where macos.app is the path of an artefact of the project's `build:` block, app-sign pulls the app from the artefact cache at the release commit and runs no macos.build, or builds it and puts it there (`bin/devbin help cache`).
 
 On the maintainer's machine, in a tree whose HEAD is the release's commit: the tag's once it is cut, or, before then, the release commit the cut's stamp made, where a cut's macos leg signs. Once main has moved past the tag, that is a worktree: `git worktree add --detach <dir> <tag>`. publish attaches to the release object, so it runs once the tag is cut and the object made. app-sign and publish read the release commit in the repository at the project root, as the cut, `release status` and `release gates` do: git's repository variables an outer command left set, such as `GIT_DIR` in a hook, are cleared first, and each one cleared is named, with the repository used instead. In order:
 
@@ -67,6 +85,35 @@ On the maintainer's machine, in a tree whose HEAD is the release's commit: the t
                   back, so publish run again uploads nothing more
 
     app-verify    the staged copy's signature and ticket; changes nothing
+
+The binaries take the same order, and the same release commit:
+
+    bin-sign      refused, building nothing, as app-sign is; then macos.build
+                  where no macos.app is declared (app-sign builds otherwise),
+                  each binary staged under XDG state outside the build tree,
+                  signed with the Developer ID identity, the hardened runtime
+                  and a secure timestamp, and read back against its designated
+                  requirement and the entitlements its file names; the commit
+                  they were signed at recorded beside them
+    bin-notarize  submit every signed binary to Apple in one archive under the
+                  notary profile and wait; once Accepted, Gatekeeper's verdict
+                  on each. Nothing is stapled: a bare binary cannot carry a
+                  ticket, and Gatekeeper asks Apple
+    bin-publish   refused, uploading nothing, unless the tag is cut and the
+                  binaries were signed at its commit, by bin-sign's record;
+                  then each checked with Gatekeeper, packed as
+                  <project>-<version>-<host triple>.tar.gz, a .app at the
+                  archive's root, every other binary under bin/ and
+                  macos.pack.files at the root, and attached with `release
+                  attach <version> --from`. An archive whose one top-level
+                  entry would be bin/ is refused: Homebrew installs from
+                  inside such a directory
+    bin-verify    each staged binary's signature and Gatekeeper's verdict;
+                  changes nothing
+    leg           the cut's macOS stage: app-sign and app-notarize where
+                  macos.app is declared, bin-sign and bin-notarize where
+                  macos.binaries is, under release.object local
+
     doctor        the platform, the declaration, the tools, the Developer ID
                   identity (counted, with its team and a test-sign) and the
                   notary profile, PRESENT or NOT USABLE; exit 1 when anything
