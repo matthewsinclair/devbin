@@ -10,10 +10,7 @@
     "focus": "Under hv's localised-test rule (vc's GO, 2026-11-05 04:35Z): train 1's handover is with vc for land-stack.sh, then its Resolutions and closes (todo 68); then 0310, 0313, 0314 and 0307, one at a time, each on main after the one before lands (todo 66). The orphaned slot 01M6M084QB56E66T6M067SEX8A is vc's to revoke as controller.",
     "claims": [
       "ISSUE:0307",
-      "ISSUE:0308",
-      "ISSUE:0309",
       "ISSUE:0310",
-      "ISSUE:0312",
       "ISSUE:0313",
       "ISSUE:0314"
     ],
@@ -1639,7 +1636,8 @@
       "kind": "todo",
       "seq": 68,
       "text": "Train 1 (0308, 0309, 0312): its handover went to vc at 2026-11-05 04:39Z (~/Devel/scratch/devbin-cc/v0120-t1/handover); once vc lands it with land-stack.sh, each issue's Resolution by issues edit (body byte-exact, Resolution appended), then its close and the claim dropped.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-05T04:44:44.819Z",
       "recorded_at": "2026-11-05T04:40:27.162Z"
     }
   ],
