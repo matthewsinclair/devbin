@@ -269,7 +269,8 @@ make_app() {
 # is), committed, tagged v1.0.0 at HEAD and pushed, with a release object for
 # v1.0.0. With <app-version>, the app is built at that version and app/VERSION
 # holds it, for an app that versions apart. <extra-project-yaml> goes under
-# project:, eg an absolute version_from.
+# project:, eg an absolute version_from. Each step returns its failure, so a
+# project half made never reads as made (issue 0301).
 app_project() {
   local proj
   proj="$(mkproj demo <<YAML
@@ -286,19 +287,19 @@ macos:
   bundle_id: com.example.demo
 ${1:-}
 YAML
-  )"
-  printf '1.0.0\n' >"$proj/VERSION"
-  printf 'build/\ntmp/\n' >"$proj/.gitignore"
+  )" || return 1
+  printf '1.0.0\n' >"$proj/VERSION" || return 1
+  printf 'build/\ntmp/\n' >"$proj/.gitignore" || return 1
   if [ -n "${2:-}" ]; then
-    mkdir -p "$proj/app"
-    printf '%s\n' "$2" >"$proj/app/VERSION"
+    mkdir -p "$proj/app" || return 1
+    printf '%s\n' "$2" >"$proj/app/VERSION" || return 1
   fi
-  make_app "$proj/build/Products/Release" com.example.demo "${2:-1.0.0}"
-  with_dated_note "$proj"
-  git_project "$proj"
-  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace
-  git -C "$proj" push -q origin v1.0.0
-  gh_object v1.0.0 v1.0.0 "- first"
+  make_app "$proj/build/Products/Release" com.example.demo "${2:-1.0.0}" || return 1
+  with_dated_note "$proj" || return 1
+  git_project "$proj" || return 1
+  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace || return 1
+  git -C "$proj" push -q origin v1.0.0 || return 1
+  gh_object v1.0.0 v1.0.0 "- first" || return 1
   printf '%s\n' "$proj"
 }
 

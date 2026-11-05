@@ -35,12 +35,14 @@ teardown() { devbin_teardown; }
 # <release-yaml> declares no ci: opts out of the candidate, and one that
 # declares a ci: block keeps its own. <shipped>, when given, is committed as
 # shipped.paths, the list a publishing project's release.snapshot.list names.
+# Each step returns its failure, so a project half made never reads as made
+# (issue 0301).
 attach_project() {
   local proj body
   body="$(no_candidate_body "  assets:
     workflow: ${2:-linux-release.yml}
     wait: ${1:-5s}${3:+
-$3}")"
+$3}")" || return 1
   proj="$(mkproj demo <<YAML
 project:
   name: demo
@@ -50,15 +52,15 @@ commands:
 release:
 $body
 YAML
-  )"
-  with_dated_note "$proj"
-  mkdir -p "$proj/.github/workflows"
-  printf 'on: push\n' >"$proj/.github/workflows/linux-release.yml"
-  [ -z "${4:-}" ] || printf '%s\n' "$4" >"$proj/shipped.paths"
-  git_project "$proj"
-  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace
-  git -C "$proj" push -q origin v1.0.0
-  gh_object v1.0.0 v1.0.0 "- first"
+  )" || return 1
+  with_dated_note "$proj" || return 1
+  mkdir -p "$proj/.github/workflows" || return 1
+  printf 'on: push\n' >"$proj/.github/workflows/linux-release.yml" || return 1
+  [ -z "${4:-}" ] || printf '%s\n' "$4" >"$proj/shipped.paths" || return 1
+  git_project "$proj" || return 1
+  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace || return 1
+  git -C "$proj" push -q origin v1.0.0 || return 1
+  gh_object v1.0.0 v1.0.0 "- first" || return 1
   printf '%s\n' "$proj"
 }
 
@@ -637,7 +639,8 @@ calls_since() {
 # ============================================================================
 
 # from_project -- attach_project with no assets.workflow: a project whose
-# assets are built on this machine and attached with --from alone.
+# assets are built on this machine and attached with --from alone. Each step
+# returns its failure, as attach_project's does (issue 0301).
 from_project() {
   local proj
   proj="$(mkproj demo <<'YAML'
@@ -647,12 +650,12 @@ commands:
   release:
     enabled: true
 YAML
-  )"
-  with_dated_note "$proj"
-  git_project "$proj"
-  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace
-  git -C "$proj" push -q origin v1.0.0
-  gh_object v1.0.0 v1.0.0 "- first"
+  )" || return 1
+  with_dated_note "$proj" || return 1
+  git_project "$proj" || return 1
+  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace || return 1
+  git -C "$proj" push -q origin v1.0.0 || return 1
+  gh_object v1.0.0 v1.0.0 "- first" || return 1
   printf '%s\n' "$proj"
 }
 

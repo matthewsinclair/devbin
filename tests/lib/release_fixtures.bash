@@ -32,10 +32,15 @@ YAML
 # <project-yaml> argument adds lines under project:. HERE, not in
 # releasecut.bats, since releaseattach.bats cuts it too (ST0008 WP-08). A body
 # that declares no ci: of its own opts out of the candidate (no_candidate_body).
+#
+# EVERY STEP RETURNS ITS FAILURE (issue 0301), as git_project's do: an arm
+# builds it as proj="$(cut_project)", where bash turns errexit off, so a step
+# that failed unchecked read as a project made, and the arm went on with one
+# half made.
 cut_project() {
   local proj body
   body="$(no_candidate_body "${1:-  gates:
-    - probe}")"
+    - probe}")" || return 1
   proj="$(
     mkproj demo <<YAML
 project:
@@ -47,18 +52,18 @@ commands:
 release:
 $body
 YAML
-  )"
-  with_dated_note "$proj"
-  printf '# demo\n' >"$proj/README.md"
-  printf 'tmp/\n' >"$proj/.gitignore"
+  )" || return 1
+  with_dated_note "$proj" || return 1
+  printf '# demo\n' >"$proj/README.md" || return 1
+  printf 'tmp/\n' >"$proj/.gitignore" || return 1
   create_test_command "$proj" probe "$(printf '#!/usr/bin/env bash\necho "probe $*" >>"%s/gate.calls"\nif [ -f "%s/gate.sh" ]; then . "%s/gate.sh"; fi\nexit 0\n' \
-    "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR")" >/dev/null
-  git_project "$proj"
-  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace
-  git -C "$proj" push -q origin v1.0.0
-  printf '# Changelog\n\n## [1.0.1] - Unreleased\n\n- second\n\n## [1.0.0] - 2026-01-01\n\n- first\n' >"$proj/CHANGELOG.md"
-  git -C "$proj" commit -qam "notes for 1.0.1"
-  git -C "$proj" push -q origin main
+    "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR")" >/dev/null || return 1
+  git_project "$proj" || return 1
+  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace || return 1
+  git -C "$proj" push -q origin v1.0.0 || return 1
+  printf '# Changelog\n\n## [1.0.1] - Unreleased\n\n- second\n\n## [1.0.0] - 2026-01-01\n\n- first\n' >"$proj/CHANGELOG.md" || return 1
+  git -C "$proj" commit -qam "notes for 1.0.1" || return 1
+  git -C "$proj" push -q origin main || return 1
   printf '%s\n' "$proj"
 }
 
@@ -113,24 +118,31 @@ write_tests_workflow() {
 # $DEVBIN_TEST_TMPDIR/gh.releases has a release object; any other tag answers
 # the way gh does, `release not found` on stderr and exit 1. `release create
 # <tag>` adds <tag> to that list, as gh would make the object. Every call is
-# recorded and exits 0.
+# recorded; a create or edit whose write fails exits 1, as gh does when it has
+# not made the change, and every other call exits 0.
+#
+# EVERY STEP RETURNS ITS FAILURE (issue 0301), as test_helper.bash asks of a
+# fixture's steps: a builder runs as proj="$(builder)", where bash turns
+# errexit off, so a step that failed unchecked (a second build in one
+# directory, whose `remote add origin` finds origin there) read as a project
+# made.
 git_project() {
   local proj="$1"
-  git -C "$proj" init -q -b main
-  git -C "$proj" config user.name t
-  git -C "$proj" config user.email t@t
-  git -C "$proj" add -A
-  git -C "$proj" commit -qm init
+  git -C "$proj" init -q -b main || return 1
+  git -C "$proj" config user.name t || return 1
+  git -C "$proj" config user.email t@t || return 1
+  git -C "$proj" add -A || return 1
+  git -C "$proj" commit -qm init || return 1
   # -b main, as for the project: a clone takes the remote's HEAD, and a runner
   # with no init.defaultBranch (CI's) points it at master, so a clone had no main.
-  git init -q --bare -b main "$DEVBIN_TEST_TMPDIR/remote.git"
+  git init -q --bare -b main "$DEVBIN_TEST_TMPDIR/remote.git" || return 1
   # origin NAMES a GitHub repository, as a real project's does, so release.repo
   # has something to be read from; insteadOf sends the bytes to the bare repo.
-  git -C "$proj" config url."$DEVBIN_TEST_TMPDIR/remote.git".insteadOf https://github.com/t/demo.git
-  git -C "$proj" remote add origin https://github.com/t/demo.git
-  git -C "$proj" push -q origin main
-  mkdir -p "$DEVBIN_TEST_TMPDIR/stubs"
-  cat >"$DEVBIN_TEST_TMPDIR/stubs/gh" <<SH
+  git -C "$proj" config url."$DEVBIN_TEST_TMPDIR/remote.git".insteadOf https://github.com/t/demo.git || return 1
+  git -C "$proj" remote add origin https://github.com/t/demo.git || return 1
+  git -C "$proj" push -q origin main || return 1
+  mkdir -p "$DEVBIN_TEST_TMPDIR/stubs" || return 1
+  cat >"$DEVBIN_TEST_TMPDIR/stubs/gh" <<SH || return 1
 #!/bin/sh
 echo "gh \$*" >>"$DEVBIN_TEST_TMPDIR/gh.calls"
 echo "prompt=\${GH_PROMPT_DISABLED-unset} \$*" >>"$DEVBIN_TEST_TMPDIR/gh.env"
@@ -175,7 +187,11 @@ if [ "\$1 \$2" = "release view" ]; then
       fi
     fi
   fi
+  # No list yet means no release has been made: grep's complaint that the file
+  # is missing is that answer, so it is dropped.
   if grep -qxF -- "\$tag" "$DEVBIN_TEST_TMPDIR/gh.releases" 2>/dev/null; then
+    # An object made with no title, or no notes, has no such file, and gh
+    # answers an empty name or body for it: cat's complaint is dropped so.
     case "\$jq" in
       .name) cat "$DEVBIN_TEST_TMPDIR/gh.obj.\$tag.name" 2>/dev/null ;;
       .body) cat "$DEVBIN_TEST_TMPDIR/gh.obj.\$tag.body" 2>/dev/null ;;
@@ -200,13 +216,14 @@ if [ "\$1 \$2" = "release create" ] || [ "\$1 \$2" = "release edit" ]; then
       *) [ -n "\$tag" ] || tag="\$1"; shift ;;
     esac
   done
-  [ "\$verb" = edit ] || printf '%s\n' "\$tag" >>"$DEVBIN_TEST_TMPDIR/gh.releases"
-  printf '%s\n' "\$title" >"$DEVBIN_TEST_TMPDIR/gh.obj.\$tag.name"
-  [ -z "\$notes" ] || cp "\$notes" "$DEVBIN_TEST_TMPDIR/gh.obj.\$tag.body"
+  # A write that fails exits 1, as gh does when it has not made the change.
+  [ "\$verb" = edit ] || printf '%s\n' "\$tag" >>"$DEVBIN_TEST_TMPDIR/gh.releases" || exit 1
+  printf '%s\n' "\$title" >"$DEVBIN_TEST_TMPDIR/gh.obj.\$tag.name" || exit 1
+  [ -z "\$notes" ] || cp "\$notes" "$DEVBIN_TEST_TMPDIR/gh.obj.\$tag.body" || exit 1
 fi
 exit 0
 SH
-  chmod +x "$DEVBIN_TEST_TMPDIR/stubs/gh"
+  chmod +x "$DEVBIN_TEST_TMPDIR/stubs/gh" || return 1
   gh_stub_more
 }
 

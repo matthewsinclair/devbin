@@ -20,7 +20,9 @@ teardown() { devbin_teardown; }
 # release object. Extra YAML on stdin is appended under the release: key's
 # siblings, so an arm can declare what it needs. A tail that declares no ci:
 # of its own opts out of the candidate (no_candidate_body): under its own
-# release: block when it has one, else in one of its own.
+# release: block when it has one, else in one of its own. Each step returns its
+# failure, so a project half made never reads as made where an arm builds it
+# in a command substitution (issue 0301).
 released_project() {
   local proj tail="${1:-}"
   proj="$(mkproj demo <<'YAML'
@@ -30,17 +32,17 @@ commands:
   release:
     enabled: true
 YAML
-  )"
+  )" || return 1
   case $'\n'"$tail" in
     *$'\n  ci:'*) ;;
     *$'\nrelease:'*)
-      tail="$(OPT_OUT="$(no_candidate_body "")" awk '{ print } $0 == "release:" { print ENVIRON["OPT_OUT"] }' <<<"$tail")"
+      tail="$(OPT_OUT="$(no_candidate_body "")" awk '{ print } $0 == "release:" { print ENVIRON["OPT_OUT"] }' <<<"$tail")" || return 1
       ;;
-    *) tail="${tail:+$tail$'\n'}release:"$'\n'"$(no_candidate_body "")" ;;
+    *) tail="${tail:+$tail$'\n'}release:"$'\n'"$(no_candidate_body "")" || return 1 ;;
   esac
-  printf '%s\n' "$tail" >>"$proj/bin/.devbin/config.yaml"
-  with_dated_note "$proj"
-  git_project "$proj"
+  printf '%s\n' "$tail" >>"$proj/bin/.devbin/config.yaml" || return 1
+  with_dated_note "$proj" || return 1
+  git_project "$proj" || return 1
   printf '%s\n' "$proj"
 }
 
@@ -392,6 +394,9 @@ release:
   assert_state after skipped
   assert_state ci "(no row ci)"
 
+  # A second project in the first one's place: its directory and its remote
+  # are cleared first, since git_project refuses a remote that is already there.
+  rm -rf "$DEVBIN_TEST_TMPDIR/demo" "$DEVBIN_TEST_TMPDIR/remote.git"
   proj2="$(released_project '
 release:
   after:
@@ -404,6 +409,26 @@ release:
   assert_state legs pending
   [[ "$(row_of legs)" == *"the candidate's run is read by a cut, not by status"* ]] ||
     fail "the legs row does not say the candidate is a cut's to read: $(row_of legs)"
+}
+
+@test "0301: a second released_project in the directory the first one made fails, since its git_project's remote add finds origin there, so a project half made never reads as made" {
+  released_project >/dev/null
+  run released_project
+  assert_failure
+}
+
+@test "0301: a second cut_project in the directory the first one made fails, since its git_project's remote add finds origin there" {
+  cut_project >/dev/null
+  run cut_project
+  assert_failure
+}
+
+@test "0301: the gh stub's release create exits 1 when it cannot write the object it was asked to make, as gh does when it has not made the change" {
+  released_project >/dev/null
+  # A directory where the stub writes the object's title.
+  mkdir -p "$DEVBIN_TEST_TMPDIR/gh.obj.v9.9.9.name"
+  run "$DEVBIN_TEST_TMPDIR/stubs/gh" release create v9.9.9 --title "a title"
+  assert_failure
 }
 
 @test "release.legs and the built-in macos make the legs row name the remote legs and the macOS stage as a cut's to read (ST0011 WP-05, WP-06)" {

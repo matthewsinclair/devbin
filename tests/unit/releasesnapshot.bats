@@ -52,9 +52,13 @@ snap_block() {
 # as a cut makes it, is on a commit made as t <t@t> at SNAP_AT and SNAP_CT. The
 # commit carries the shipped list (<list>, else SNAP_LIST), files it ships, an
 # executable and a link among them, a file it excludes, and a workroom file it
-# never names. <release-yaml> is the release: block's body.
+# never names. <release-yaml> is the release: block's body. Each step returns
+# its failure, so a project half made never reads as made (issue 0301); the
+# block is assigned apart from its `local`, whose own status would mask
+# snap_block's.
 snap_project() {
-  local proj block="${1:-$(snap_block)}"
+  local proj block
+  block="${1:-$(snap_block)}" || return 1
   proj="$(
     mkproj demo <<YAML
 project:
@@ -65,19 +69,19 @@ commands:
 release:
 $block
 YAML
-  )"
-  printf '1.0.0\n' >"$proj/VERSION"
-  printf '# demo\n' >"$proj/README.md"
-  mkdir -p "$proj/tests" "$proj/docs" "$proj/intent"
-  printf '%s\n' "${2:-$SNAP_LIST}" >"$proj/tests/shipped.paths"
-  printf 'guide\n' >"$proj/docs/guide.md"
-  printf 'private\n' >"$proj/docs/private.md"
-  printf '#!/bin/sh\necho tool\n' >"$proj/docs/tool.sh"
-  chmod +x "$proj/docs/tool.sh"
-  ln -s guide.md "$proj/docs/link.md"
-  printf 'workroom\n' >"$proj/intent/notes.md"
-  GIT_AUTHOR_DATE="$SNAP_AT" GIT_COMMITTER_DATE="$SNAP_CT" git_project "$proj"
-  git -C "$proj" tag -a -m v1.0.0 v1.0.0
+  )" || return 1
+  printf '1.0.0\n' >"$proj/VERSION" || return 1
+  printf '# demo\n' >"$proj/README.md" || return 1
+  mkdir -p "$proj/tests" "$proj/docs" "$proj/intent" || return 1
+  printf '%s\n' "${2:-$SNAP_LIST}" >"$proj/tests/shipped.paths" || return 1
+  printf 'guide\n' >"$proj/docs/guide.md" || return 1
+  printf 'private\n' >"$proj/docs/private.md" || return 1
+  printf '#!/bin/sh\necho tool\n' >"$proj/docs/tool.sh" || return 1
+  chmod +x "$proj/docs/tool.sh" || return 1
+  ln -s guide.md "$proj/docs/link.md" || return 1
+  printf 'workroom\n' >"$proj/intent/notes.md" || return 1
+  GIT_AUTHOR_DATE="$SNAP_AT" GIT_COMMITTER_DATE="$SNAP_CT" git_project "$proj" || return 1
+  git -C "$proj" tag -a -m v1.0.0 v1.0.0 || return 1
   printf '%s\n' "$proj"
 }
 
