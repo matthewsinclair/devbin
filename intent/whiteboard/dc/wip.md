@@ -29,7 +29,7 @@ _(none)_
 
 ## Decisions
 
-- hv's answer to dc's trust question for ISSUE:0322's fleet proof, asked in pplr-vc's session and relayed by pplr-vc (received before the clock read 2026-11-04 11:55Z by date -u): (a), the scratch trust store, so the proof trusts its scratch tap under a scratch XDG_CONFIG_HOME and never in hv's own trust file. Conditions: the sha256 of ~/.homebrew/trust.json read before anything runs and again after; if brew writes that file despite the scratch XDG_CONFIG_HOME, dc stops and tells pplr-vc before any audit; the scratch tap untapped after; brew list --versions diffed before and after; nothing installed. The SHA256SUMS of pplr v2.0.2, cldr v0.2.2 and ccusage v0.1.8 come from gh release download into a scratch dir. dc's plan is approved in its order, and the arm's form is dc's to choose on measurement. Not to be put again.
+_(none)_
 
 ---
 
