@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 14:13Z
+heartbeat_at: 2026-11-05 14:20Z
 status: active
-focus: "After the bounce, at hv's word in dc's window: working with another estate's session, which has estate-wide control, on that estate's release, assets, docs and workshop material; nothing in devbin moves for it, and the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 14:13Z by date -u)."
+focus: "Holding read-only and reachable: the other estate's session hv named says nothing on its release path is devbin-dc's, its own nodes build it, and its image already pours devbin 0.1.20 from the tap; the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 14:20Z by date -u)."
 claims: [ST0011/16]
 ---
 
