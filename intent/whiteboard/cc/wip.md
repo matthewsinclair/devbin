@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 06:16Z
+heartbeat_at: 2026-11-05 06:38Z
 status: active
-focus: "Holding for the cut's preparations, at vc's word (2026-11-05): every unit vc gave cc this morning is landed and closed, or landed under dc's 0323 (banks 1 and 4, the notary_submit line); 0323 waits on dc's bank 3 alone, and dc closes it. Hold 35 (Utilz's candidate CI) stays parked with ST0011's consumer work."
+focus: "0323 bank 3b, at vc's FINAL (2026-11-05): release_bin_archive in lib/release.macos, bin-publish's already-read in lib/cmd/macos, and the cut's object step calling bin-publish before the formula step, with its three arms, built in ~/Devel/scratch/devbin-cc/v0120-0323b3b on main 1c124b1f; dc reviews the macos part and the arms before the light ask, and closes 0323 once 3b lands. Hold 35 stays parked (focus set 2026-11-05 06:38Z by date -u)."
 claims: []
 ---
 
