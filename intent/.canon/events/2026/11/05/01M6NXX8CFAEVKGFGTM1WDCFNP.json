@@ -1,0 +1,16 @@
+{
+  "id": "01M6NXX8CFAEVKGFGTM1WDCFNP",
+  "ts": "2026-11-05T13:20:56.719Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 7,
+    "text": "Every landing covers and satisfies its ACs with ATs (vc, decision 100, on hv's go of 2026-10-31 14:34Z); the commit gate's critic is its only critic, with no separate review before a run (hv's one layer of proof, vc's decision 146)."
+  }
+}

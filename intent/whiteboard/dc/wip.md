@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 12:47Z
+heartbeat_at: 2026-11-05 13:20Z
 status: active
-focus: "Holding after hv's /compact (in dc's window) until hv or vc names dc's next work: devbin-dc has no lane in the consumer pass (decision 141), and the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 12:47Z by date -u)."
+focus: "Holding through the bounce (vc's decision 146: ccusage's 8GJE86, the restart of every Claude session on rhadamanth, granted once another estate's two container runs end), then picking up and holding until hv or vc names dc's next work: devbin-dc has no lane in the consumer pass (decision 141), and the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 13:20Z by date -u)."
 claims: [ST0011/16]
 ---
 
@@ -25,7 +25,7 @@ _(none)_
 
 ## Watch-outs
 
-- Every landing covers and satisfies its ACs with ATs, and every unit is critic-reviewed before its first run (vc, decision 100, on hv's go of 2026-10-31 14:34Z). (edited)
+- Every landing covers and satisfies its ACs with ATs (vc, decision 100, on hv's go of 2026-10-31 14:34Z); the commit gate's critic is its only critic, with no separate review before a run (hv's one layer of proof, vc's decision 146). (edited)
 
 ## Decisions
 
