@@ -613,3 +613,108 @@ commit_outside() {
   assert_success
   assert_output "behind $rec $head"
 }
+
+# ---------------------------------------------------------------------------
+# 0319: COMMITS THAT DIFFER WITH NO VENDORED BYTE CHANGED ARE NOT A NOTICE
+#
+# Two installs of one release can name it by two commits that nothing places
+# one against the other, so switching a machine between them read `differs` in
+# every project and the notice spoke for files that were level. Every
+# difference that is not forward now asks seam_is_level, as a forward one does
+# (0224), and reads `matches` when no vendored byte would change.
+# ---------------------------------------------------------------------------
+
+# orphan_of <src> -- a commit of <src>'s own tree on a history of its own, the
+# checkout left where it was: a commit that names the same files and that no
+# history places.
+orphan_of() {
+  local main other
+  main="$(git -C "$1" symbolic-ref --short HEAD)"
+  git -C "$1" checkout -q --orphan elsewhere || return 1
+  git -C "$1" -c user.email=t@t -c user.name=t commit -q -m elsewhere || return 1
+  other="$(git -C "$1" rev-parse HEAD)" || return 1
+  git -C "$1" checkout -q "$main" || return 1
+  printf '%s\n' "$other"
+}
+
+@test "0319: a recorded commit no history places, with every vendored file level, reads matches: the notice is quiet and doctor passes, naming both commits" {
+  local proj src rec head
+  proj="$(mkvendored)" || fail "the fixture did not build"
+  src="$(manifest_source "$proj")"
+  rec="$(orphan_of "$src")" || fail "the orphan commit was not made"
+  head="$(git -C "$src" rev-parse HEAD)"
+  set_recorded_commit "$proj" "$rec"
+  run devbin_source_state "$proj"
+  assert_success
+  assert_output "matches $rec $head the source is on a different history"
+  run _devbin_update_line "$proj"
+  assert_success
+  assert_output ""
+  run devbin_run "$proj" doctor
+  # The row is a pass, its ok marker read with it, not the text alone.
+  assert_output_matches 'ok +source: every vendored file is level with the devbin it came from'
+  assert_output_contains "its commit differs, the source is on a different history: vendored ${rec:0:12}, source now ${head:0:12}"
+  refute_output_contains "differs from what this project vendored"
+}
+
+@test "0319: a recorded commit the source does not hold, with every vendored file level, reads matches, as two installs of one release do" {
+  local proj src rec head
+  proj="$(mkvendored)" || fail "the fixture did not build"
+  src="$(manifest_source "$proj")"
+  # A whole object name the source holds no commit for: what one install's
+  # record names when the other install is the source.
+  rec="$(git -C "$src" hash-object --stdin <<<"another install's commit")"
+  head="$(git -C "$src" rev-parse HEAD)"
+  set_recorded_commit "$proj" "$rec"
+  run devbin_source_state "$proj"
+  assert_success
+  assert_output "matches $rec $head which way the source moved cannot be told from what is on disk"
+  run _devbin_update_line "$proj"
+  assert_success
+  assert_output ""
+}
+
+@test "0319: a source rewound past this project with every vendored file level reads matches, and the notice is quiet" {
+  local proj src rec head
+  proj="$(mkvendored)" || fail "the fixture did not build"
+  src="$(manifest_source "$proj")"
+  commit_outside "$src"
+  rec="$(git -C "$src" rev-parse HEAD)"
+  set_recorded_commit "$proj" "$rec"
+  git -C "$src" reset -q --hard HEAD~1
+  head="$(git -C "$src" rev-parse HEAD)"
+  run devbin_source_state "$proj"
+  assert_success
+  assert_output "matches $rec $head the source holds an older commit"
+  run _devbin_update_line "$proj"
+  assert_success
+  assert_output ""
+}
+
+@test "0319: commits that differ with a vendored byte changed still differ, and the notice still speaks" {
+  local proj src rec head
+  proj="$(mkvendored)" || fail "the fixture did not build"
+  src="$(manifest_source "$proj")"
+  rec="$(git -C "$src" hash-object --stdin <<<"another install's commit")"
+  commit_seam "$src" "a vendored byte"
+  head="$(git -C "$src" rev-parse HEAD)"
+  set_recorded_commit "$proj" "$rec"
+  run devbin_source_state "$proj"
+  assert_success
+  assert_output "differs $rec $head which way the source moved cannot be told from what is on disk"
+  run _devbin_update_line "$proj"
+  assert_output_contains "NOTE: the devbin this project came from differs from what it vendored"
+}
+
+@test "0319: when the bytes cannot be compared, commits that differ still differ" {
+  local proj src rec head
+  proj="$(mkvendored)" || fail "the fixture did not build"
+  src="$(manifest_source "$proj")"
+  rec="$(git -C "$src" hash-object --stdin <<<"another install's commit")"
+  head="$(git -C "$src" rev-parse HEAD)"
+  set_recorded_commit "$proj" "$rec"
+  make_unreadable "$proj/bin/.devbin/lib/helpers"
+  run devbin_source_state "$proj"
+  assert_success
+  assert_output "differs $rec $head which way the source moved cannot be told from what is on disk"
+}

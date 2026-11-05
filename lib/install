@@ -1757,8 +1757,9 @@ EOF
 #
 # Costs two checksum passes over the vendored set. Called only where the answer
 # changes what is printed: the backward and unrelated arms of upgrade's notice,
-# and a forward move in devbin_source_state (lib/helpers), where a move that
-# changes no vendored byte is not called an update (issue 0224).
+# and every difference of commits in devbin_source_state (lib/helpers), where
+# one that changes no vendored byte is `moved` or `matches`, never an update
+# or a note (issues 0224, 0319).
 seam_is_level() {
   local dstroot="$1" srcroot="$2" states line state
   states="$(vendor_states "$dstroot" "$srcroot")" || return 1

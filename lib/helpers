@@ -6387,14 +6387,15 @@ devbin_offer_upgrade() {
 #
 # lib/install OWNS THE BYTE ANSWER and is loaded only when this is asked. The
 # dispatcher does not source lib/install, so the install machinery stays off
-# the hot path of every command: devbin_source_state reaches this only on a
-# forward move, and the notice asks that at most once a day.
+# the hot path of every command: devbin_source_state reaches this only when
+# the commits differ, and the notice asks that at most once a day.
 #
 # Its stderr is dropped ON PURPOSE. A comparison that cannot be made is not
-# level, so the answer stays `behind`, the verdict there was before the bytes
-# were asked; the reason (a manifest that vouches for nothing, a file nobody
-# can read) is what `bin/devbin vendor` reports, and printed here it would land
-# inside the notice or in the middle of doctor's rows.
+# level, so the answer stays `behind`, `ahead` or `differs`, the verdict there
+# was before the bytes were asked; the reason (a manifest that vouches for
+# nothing, a file nobody can read) is what `bin/devbin vendor` reports, and
+# printed here it would land inside the notice or in the middle of doctor's
+# rows.
 _devbin_seam_is_level() {
   if [ -z "${_DEVBIN_INSTALL_LOADED:-}" ]; then
     # NOT FOLLOWED BY SHELLCHECK. lib/install is checked on its own, and
@@ -6414,6 +6415,8 @@ _devbin_seam_is_level() {
 #   moved <recorded> <now>          FORWARD in commits, with no vendored byte changed
 #   ahead <recorded> <now>          the source is BEHIND this project
 #   differs <recorded> <now> <why>  they differ, and in no direction anyone knows
+#   matches <recorded> <now> <why>  the commits differ, BACKWARD or in no direction
+#                                   anyone knows, and no vendored byte does
 #   unknown <reason>                it could not be established
 #
 # ONLY `behind` IS AN UPDATE (issue 0079). This had three states and compared
@@ -6443,6 +6446,16 @@ _devbin_seam_is_level() {
 # `moved`: the commits still differ, so it is kept apart from `level`, and only
 # `behind` is offered as an update. The comparison FAILS CLOSED, as
 # seam_is_level does: when the bytes cannot be read the move stays `behind`.
+#
+# `matches` IS THE SAME ANSWER FOR EVERY OTHER DIFFERENCE (issue 0319). Two
+# installs of one release can name it by two commits nothing places one
+# against the other (an opt install published from the workroom records its
+# commit, Homebrew's the public snapshot's), so switching a machine between
+# them read `differs` in every project, and the notice spoke for files that
+# were level. A backward or undirected difference now asks seam_is_level too,
+# and one that changes no vendored byte is `matches`: quiet in the notice, a
+# pass in doctor that still names the two commits. It fails closed the same
+# way: bytes that cannot be read leave `ahead` or `differs` as they were.
 #
 # WHY THIS EXISTS SEPARATELY FROM THE NOTICE. `_devbin_update_line` prints or
 # stays quiet, and quiet is its answer for BOTH "level" and "cannot tell". That
@@ -6484,8 +6497,20 @@ devbin_source_state() {
         printf 'behind %s %s\n' "$rec" "$cur"
       fi
       ;;
-    backward) printf 'ahead %s %s\n' "$rec" "$cur" ;;
-    unrelated) printf 'differs %s %s the source is on a different history\n' "$rec" "$cur" ;;
+    backward)
+      if _devbin_seam_is_level "$root" "$src"; then
+        printf 'matches %s %s the source holds an older commit\n' "$rec" "$cur"
+      else
+        printf 'ahead %s %s\n' "$rec" "$cur"
+      fi
+      ;;
+    unrelated)
+      if _devbin_seam_is_level "$root" "$src"; then
+        printf 'matches %s %s the source is on a different history\n' "$rec" "$cur"
+      else
+        printf 'differs %s %s the source is on a different history\n' "$rec" "$cur"
+      fi
+      ;;
     *)
       # EQUAL SHAS WITH NO DIRECTION. Today that is a `+dirty` record at the
       # source's own commit: the bytes started there and are not it, and it read
@@ -6493,6 +6518,8 @@ devbin_source_state() {
       # compared. The reason names what is known rather than inferring the mark.
       if [ "$rec" = "$cur" ]; then
         printf 'unknown this project records the commit the source holds, but no direction could be established for it (a +dirty record reads this way)\n'
+      elif _devbin_seam_is_level "$root" "$src"; then
+        printf 'matches %s %s which way the source moved cannot be told from what is on disk\n' "$rec" "$cur"
       else
         printf 'differs %s %s which way the source moved cannot be told from what is on disk\n' "$rec" "$cur"
       fi
