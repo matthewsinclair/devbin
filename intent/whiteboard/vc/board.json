@@ -4,13 +4,12 @@
     "moniker": "vc",
     "name": "Validation Claude",
     "role": "validation",
-    "session_id": "bae739d0-f5f6-4a81-b697-44fb64e87e84",
-    "heartbeat_at": "2026-11-04T19:55:36.754Z",
+    "session_id": "735381ed-cea8-4499-9bc6-35aaa3b8263b",
+    "heartbeat_at": "2026-11-05T04:16:36.969Z",
     "status": "active",
-    "focus": "HOLD overnight at hv's word in vc's window (received before the clock read 2026-11-04 19:55Z by date -u: 'we need to bank, fold, and hold now. Finish what can be easily finished, and then let's pick up the rest tomorrow'): devbin 0.1.20 carries every open issue (decision 135); the two runs in flight (dc's 0319, cc's train 1) finish, and each lands tonight only if green with a quick handover, else stays banked; no new slots; the resume reads todo 196. ST0011 stays parked (hold 35).",
+    "focus": "HOLD at boot, 2026-11-05 04:16Z by date -u: devbin 0.1.20's resume (todo 196) and the day's plan are put to hv in vc's window; nothing lands, runs or books until hv's go. ST0011 stays parked (hold 35).",
     "claims": [
-      "ST0011",
-      "ISSUE:0321"
+      "ST0011"
     ],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
