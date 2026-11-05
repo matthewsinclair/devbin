@@ -1,0 +1,15 @@
+{
+  "id": "01M6NMPXZY192Y44KFWDB93JKR",
+  "ts": "2026-11-05T10:40:12.286Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Scratch: k323's build clones b2, b2r, b3, b3b and b3r (~/Devel/scratch/devbin-dc/k323, 942M with its records) go by a script once a citation audit of 0323's Resolution, matching every spelling, finds them uncited; the notes, the Resolution draft and close/ stay. Left at dc's session-end fold of 2026-11-05."
+  }
+}

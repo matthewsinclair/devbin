@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 10:10Z
-status: active
-focus: "Holding after hv's /compact for hv's go on the consumer pass, Utilz first: devbin 0.1.20 is released and swept, dc's lane is done, and hold 40's two questions go to hv with vc's hold 35 at that go (focus set 2026-11-05 10:10Z by date -u)."
+heartbeat_at: 2026-11-05 10:40Z
+status: paused
+focus: "Released at hv's word via vc, at the go for the consumer pass (Utilz first), which runs each project's own vc and dc (decision 141), so devbin-dc has no lane in it: hold 40 ruled and archived (Q1, 0324 filed by vc at e3267a74; Q2 superseded); the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 10:40Z by date -u)."
 claims: [ST0011/16]
 ---
 
@@ -17,11 +17,11 @@ _(none)_
 
 ## TODO
 
-_(none)_
+- Scratch: k323's build clones b2, b2r, b3, b3b and b3r (~/Devel/scratch/devbin-dc/k323, 942M with its records) go by a script once a citation audit of 0323's Resolution, matching every spelling, finds them uncited; the notes, the Resolution draft and close/ stay. Left at dc's session-end fold of 2026-11-05.
 
 ## Holds
 
-- Holding dc's day plan until hv rules its two questions, put in dc's window 2026-11-02: Q1, brief vc on Utilz 2.14.9's cache facts (Menuz builds out of tree, so no cache saving and no AC-5.4 there) and file the commit-stamp cache gap as an issue (rec: both); Q2, dc's lane until the consumer cuts (rec: draft the cache adoption for Gtools, Intent and Laksa as notes for their vcs).
+_(none)_
 
 ## Watch-outs
 
