@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 12:21Z
+heartbeat_at: 2026-11-05 12:23Z
 status: active
-focus: "Holding until hv or vc names dc's next work: devbin-dc has no lane in the consumer pass (decision 141), and the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 12:21Z by date -u)."
+focus: "Holding through hv's /compact (localfold+compact while we wait, in dc's window) until hv or vc names dc's next work: devbin-dc has no lane in the consumer pass (decision 141), and the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 12:22Z by date -u)."
 claims: [ST0011/16]
 ---
 
