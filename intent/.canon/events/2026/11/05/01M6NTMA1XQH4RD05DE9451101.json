@@ -1,0 +1,15 @@
+{
+  "id": "01M6NTMA1XQH4RD05DE9451101",
+  "ts": "2026-11-05T12:23:37.789Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's TUI answer in vc's window (received before the clock read 2026-11-05 12:06Z by date -u), as vc recommended: the app version cache gap cc found while drafting 0324 is filed as issue 0325 (8d5ea0df), and cc fixes it once 0324's unit is banked, before Gtools's turn. The shapes agreed between vc and cc: 0324 refuses at config read an app artefact beside macos.commit_stamp (cfg_macos_artefact's status 4); 0325 refuses at config read an app artefact whose inputs do not hold the app's version file (status 5), and release_names reads that file through the same function, so the key's required input and the version app-sign compares come from one rule. 0325 builds on 0324's banked tip."
+  }
+}
