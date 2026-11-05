@@ -34,7 +34,9 @@
 #                                                the repository gh is told about
 #   release_repo_named <host-path>               a url's repository as one is written (pure)
 #   release_repo_folded <repo>                   a repository in the one form two of them compare in (pure)
+#   release_repo_split <repo>                    a repository as `<host><TAB><owner/name>`, no host for OWNER/NAME (pure)
 #   release_repo_host <repo>                     the host a repository stands on (pure)
+#   release_repo_path <repo>                     the OWNER/NAME a repository names (pure)
 #   release_candidate_remote <repo> <remotes>    the remote a cut pushes its candidate to
 #   release_candidate_pick <repo> <lines>        that remote, of each remote's push urls (pure)
 #   release_candidate_ref <template> <tag>       the candidate's branch for a tag (pure)
@@ -1155,7 +1157,7 @@ release_repo() {
 # release_repo_named <host-path> -- _release_url_named's HOST<TAB>OWNER/NAME as
 # a repository is written: OWNER/NAME on github.com, HOST/OWNER/NAME elsewhere.
 # THE ONE SPELLING of a repository read off a url, for release_repo and
-# release_candidate_pick; release_repo_host reads its host back. Pure.
+# release_candidate_pick; release_repo_split reads it back. Pure.
 release_repo_named() {
   local host="${1%%$'\t'*}" path="${1#*$'\t'}"
   if [ "$host" = github.com ]; then
@@ -1175,17 +1177,42 @@ release_repo_folded() {
   printf '%s\n' "${r#github.com/}"
 }
 
-# release_repo_host <repo> -- the host <repo>, as release_repo or release.repo
-# writes one, stands on: HOST for HOST/OWNER/NAME, github.com for OWNER/NAME,
-# release_repo_named's spelling read back. Pure. The host a cut reads for a
-# repository: gh is asked whether it is signed in there (cut_gh_signed_in),
-# and a cut's refusal of remotes that push to the candidate's OWNER/NAME on
-# other hosts names it.
-release_repo_host() {
+# release_repo_split <repo> -- <repo>, as release_repo or release.repo writes
+# one, as `<host><TAB><owner/name>`, the host empty where <repo> names none:
+# OWNER/NAME, which stands on github.com. THE SPLIT of a repository into its
+# host and its OWNER/NAME, and the one reading of whether it names a host:
+# release_repo_host and release_repo_path each read a field of it, and the
+# run's artifacts read it whole, since they name a host to gh api only where
+# the repository names one. Pure.
+release_repo_split() {
   case "$1" in
-    */*/*) printf '%s\n' "${1%%/*}" ;;
-    *) printf 'github.com\n' ;;
+    */*/*) printf '%s\t%s\n' "${1%%/*}" "${1#*/}" ;;
+    *) printf '\t%s\n' "$1" ;;
   esac
+}
+
+# release_repo_host <repo> -- the host <repo>, as release_repo or release.repo
+# writes one, stands on (release_repo_split): HOST for HOST/OWNER/NAME,
+# github.com for OWNER/NAME, release_repo_named's spelling read back. Pure. The
+# host a cut reads for a repository: gh is asked whether it is signed in there
+# (cut_gh_signed_in), a cut's refusal of remotes that push to the candidate's
+# OWNER/NAME on other hosts names it, and the default tap is on it.
+release_repo_host() {
+  local split
+  split="$(release_repo_split "$1")" || return 1
+  split="${split%%$'\t'*}"
+  printf '%s\n' "${split:-github.com}"
+}
+
+# release_repo_path <repo> -- the OWNER/NAME <repo>, as release_repo or
+# release.repo writes one, names (release_repo_split): <repo> itself for
+# OWNER/NAME, its host dropped for HOST/OWNER/NAME, its case kept. Pure. Asked
+# by the default tap, the candidate's remote pick and a cut's refusal of
+# remotes on other hosts.
+release_repo_path() {
+  local split
+  split="$(release_repo_split "$1")" || return 1
+  printf '%s\n' "${split#*$'\t'}"
 }
 
 # release_candidate_remote <repo> <remotes> -- the remote a cut pushes its
@@ -1254,10 +1281,7 @@ release_candidate_pick() {
   local want on r u hp host first="" one="" many=no seen=$'\n' hits=""
   want="$(release_repo_folded "$1")"
   # <repo>'s OWNER/NAME, its host dropped.
-  case "$want" in
-    */*/*) on="${want#*/}" ;;
-    *) on="$want" ;;
-  esac
+  on="$(release_repo_path "$want")"
   while IFS=$'\t' read -r r u; do
     [ -n "$r" ] || continue
     hp="$(_release_url_named "$u")" || continue
@@ -1523,18 +1547,15 @@ release_asset_digest() {
 # status, its words on stderr. gh run download passes over an expired artifact
 # and succeeds while any other downloads, so the attach holds what it wrote to
 # this list. `gh api` takes no --repo: a HOST/OWNER/NAME repository names its
-# host with --hostname.
+# host with --hostname, read off release_repo_split, and an OWNER/NAME one is
+# asked where gh asks by default, as --repo asks it.
 release_run_artifacts() {
-  local path="$1" host=""
+  local split host
   local -a where=()
-  case "$path" in
-    */*/*)
-      host="${path%%/*}"
-      path="${path#*/}"
-      where=(--hostname "$host")
-      ;;
-  esac
-  release_gh "" api "repos/$path/actions/runs/$2/artifacts" ${where[@]+"${where[@]}"} --paginate \
+  split="$(release_repo_split "$1")" || return 1
+  host="${split%%$'\t'*}"
+  [ -z "$host" ] || where=(--hostname "$host")
+  release_gh "" api "repos/${split#*$'\t'}/actions/runs/$2/artifacts" ${where[@]+"${where[@]}"} --paginate \
     --jq '.artifacts[] | [.name, (.expired | tostring)] | @tsv'
 }
 

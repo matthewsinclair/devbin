@@ -2272,10 +2272,9 @@ cut_run() {
             cand_named+=", $cand_hit on $cand_host"
           done <<<"$cand_remote"
           cand_remote=""
-          if ! cand_own="$(release_repo_host "$cand_repo")"; then
-            refusals+=("remotes push to the OWNER/NAME of $cand_repo on more than one host and none on its own, and its own host cannot be read from it: ${cand_named#, }")
+          if ! cand_own="$(release_repo_host "$cand_repo")" || ! cand_on="$(release_repo_path "$cand_repo")"; then
+            refusals+=("remotes push to the OWNER/NAME of $cand_repo on more than one host and none on its own, and its own host or its OWNER/NAME cannot be read from it: ${cand_named#, }")
           else
-            cand_on="${cand_repo#"$cand_own"/}"
             refusals+=("no remote pushes to $cand_on on $cand_own, the repository's own host, and remotes push to $cand_on on more than one other host: ${cand_named#, }; the candidate's push to a mirror would run no CI -- point a remote's push url at $cand_on on $cand_own: a cut takes that remote before any other")
           fi
           ;;

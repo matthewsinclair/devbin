@@ -675,18 +675,14 @@ newest_release_tag() {
 # the release repository's owner, over ssh, on the host that repository names.
 # The release repository is the cut's, as release_sums reads it (issue 0296).
 default_tap() {
-  local repo remote host="github.com" owner
+  local repo remote host owner
   repo="$(cfg_release_get repo)" || exit 1
   remote="$(cfg_release_first_remote)" || exit 1
   repo="$(release_repo "$repo" "$remote")" ||
     die "cannot name the tap: formula.tap is not declared, and the release repository cannot be read (above)"
-  case "$repo" in
-    */*/*)
-      host="${repo%%/*}"
-      repo="${repo#*/}"
-      ;;
-  esac
-  owner="${repo%%/*}"
+  host="$(release_repo_host "$repo")"
+  owner="$(release_repo_path "$repo")"
+  owner="${owner%%/*}"
   printf 'ssh://git@%s/%s/homebrew-%s.git\n' "$host" "$owner" "$F_NAME"
 }
 

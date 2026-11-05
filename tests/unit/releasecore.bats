@@ -1274,6 +1274,27 @@ workflow_files() {
   refute_output_contains "already"
 }
 
+@test "0308: release_repo_split, release_repo_host and release_repo_path split a repository into its host and its OWNER/NAME, written as OWNER/NAME or HOST/OWNER/NAME, its case kept" {
+  # The one split the run's artifacts, the default tap, the candidate's remote
+  # pick and a cut's refusal of remotes on other hosts each read: the split's
+  # host empty where the repository names none. Each answer is read on a line
+  # of its own, so a helper's failure stops the run rather than going unseen.
+  run bash -c 'set -euo pipefail; . "$1/helpers"; . "$1/release.notes"; . "$1/release.steps"; shift
+    tab="$(printf "\t")"
+    for r in "$@"; do
+      s="$(release_repo_split "$r")"
+      h="$(release_repo_host "$r")"
+      p="$(release_repo_path "$r")"
+      printf "%s|%s|%s|%s|%s\n" "$r" "${s%%"$tab"*}" "${s#*"$tab"}" "$h" "$p"
+    done' _ "$DEVBIN_LIB_DIR" owner/name github.com/owner/name ghe.example.com/owner/name Owner/Name GHE.Example.com/Owner/Name
+  assert_success
+  assert_output "owner/name||owner/name|github.com|owner/name
+github.com/owner/name|github.com|owner/name|github.com|owner/name
+ghe.example.com/owner/name|ghe.example.com|owner/name|ghe.example.com|owner/name
+Owner/Name||Owner/Name|github.com|Owner/Name
+GHE.Example.com/Owner/Name|GHE.Example.com|Owner/Name|GHE.Example.com|Owner/Name"
+}
+
 @test "release check's table sizes each column from what it prints, so every row's source stands at one column (0207)" {
   # assets.workflow is wider than the key column was written, and this after:
   # command is wider than any value the column was written for.
