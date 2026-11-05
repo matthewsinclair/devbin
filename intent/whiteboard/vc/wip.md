@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 735381ed-cea8-4499-9bc6-35aaa3b8263b
-heartbeat_at: 2026-11-05 13:23Z
+heartbeat_at: 2026-11-05 14:20Z
 status: active
-focus: "Paused for the bounce (decision 146): Utilz's 2.14.9 cut waits for after it, every run and CI green at 195b1c91; devbin-* localfolded at hv's word. The desk: another estate's image build in heavy, then its seed run, then 8GJE86, the restart of every session (todo 199), and nothing else. 0324 and 0325 are fixed and closed (96fbd874, 82a87468), nothing pushed. vc keeps the desk."
+focus: "Holding after the bounce: the desk is pipeliner-sc's at hv's word (released by vc 2026-11-05 14:20Z by date -u); devvm work is that estate's, nothing for vc. Utilz's 2.14.9 cut waits for hv's word (utilz-vc re-asks; green at 195b1c91). 0324 and 0325 landed and closed, nothing pushed."
 claims: [ST0011]
 ---
 
