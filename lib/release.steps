@@ -10,6 +10,8 @@
 #   release_scratch <project-root>               a scratch directory OUTSIDE the project
 #   release_materialise <commit> <dir> <path>... a commit's whole tree, written into <dir>
 #   release_owned <root> <version>               the paths a release owns before derived: runs
+#   release_cargo_lock <version-file>            the Cargo.lock a stamp of a Cargo.toml brings in step (pure)
+#   release_lock_own_aside <lock>                a Cargo.lock with the crate's own version line set aside (pure)
 #   release_dirt                                 every dirty path in the working tree
 #   release_outside <paths> <owned>              the paths the owned set does not hold
 #   release_tree_state                           `<hash><TAB><path>` per dirty path, now
@@ -452,6 +454,46 @@ release_owned() {
   done <<<"${DEVBIN_VERSION_SIDECARS:-}"
   notes="$(notes_paths "$root" "$v")" || return 1
   [ -z "$notes" ] || printf '%s\n' "$notes"
+}
+
+# release_cargo_lock <version-file> -- the Cargo.lock a stamp of
+# <version-file> brings in step (issue 0323), spelled as <version-file> is,
+# relative to the root: its sibling, where <version-file> is a Cargo.toml, and
+# nothing where it is not. Whether the lock is there is the caller's to read: a
+# Cargo.toml with no lock beside it has none to sync. Pure.
+release_cargo_lock() {
+  case "$1" in
+    Cargo.toml) printf 'Cargo.lock\n' ;;
+    */Cargo.toml) printf '%s/Cargo.lock\n' "${1%/Cargo.toml}" ;;
+  esac
+  return 0
+}
+
+# release_lock_own_aside <lock> -- <lock>, a Cargo.lock, with the crate's own
+# version line set aside: the `version = "..."` line of each [[package]] block
+# with no `source = ` line, which a crate of the lock's own workspace (or a
+# path dependency) lacks and every registry or git dependency has. Every other
+# line is printed as it is, so two locks that print the same differ in nothing
+# but those versions. A block is the lock's own, ended by a blank line. One
+# awk program, read alike by the BSD awk, gawk and mawk. Pure.
+release_lock_own_aside() {
+  awk '
+    function flush(  i) {
+      for (i = 1; i <= n; i++)
+        if (!(package && sourceless && block[i] ~ /^version = "/)) print block[i]
+      n = 0
+      sourceless = 1
+      package = 0
+    }
+    BEGIN { n = 0; sourceless = 1; package = 0 }
+    /^$/ { flush(); print; next }
+    {
+      block[++n] = $0
+      if (n == 1 && $0 == "[[package]]") package = 1
+      if ($0 ~ /^source = "/) sourceless = 0
+    }
+    END { flush() }
+  ' "$1"
 }
 
 # release_dirt -- every dirty path in the working tree, one per line: staged,

@@ -2031,13 +2031,54 @@ cut_stamp_read() {
   release_read_stamp "$SCRATCH/$1" "$3" "$4"
 }
 
+# cut_lock_sync <manifest> <lock> -- the lock beside <manifest>, a Cargo.toml
+# the stamp has just written, brought in step with it (issue 0323). CARGO
+# WRITES THE LOCK, through `cargo metadata`, which rewrites it as it resolves;
+# AND THE CHANGE IS BOUNDED: the lock before and after must agree once the
+# crate's own version line is set aside (release_lock_own_aside). Any other
+# change, or a cargo that could not resolve, puts the lock back from a copy in
+# the run's scratch, byte for byte, and is refused: rc 1, the reason on
+# stdout, naming the lock and what moved, so a resolver change never rides
+# into a release commit. rc 0 when the lock is in step. A path that is not
+# absolute is the root's. No --locked, since rewriting the lock is the point,
+# and no --offline, since the resolver may want the index for a target this
+# machine never builds. Run in a command substitution: it raises nothing.
+cut_lock_sync() {
+  local manifest="$1" lock="$2" lp mp before err moved what rc=0 back
+  case "$lock" in /*) lp="$lock" ;; *) lp="$PROJECT_ROOT/$lock" ;; esac
+  case "$manifest" in /*) mp="$manifest" ;; *) mp="$PROJECT_ROOT/$manifest" ;; esac
+  before="$SCRATCH/lock-sync.before"
+  if ! cp -p "$lp" "$before" 2>/dev/null; then
+    printf '%s could not be copied aside to be put back, so it was not brought in step with %s\n' "$lock" "$manifest"
+    return 1
+  fi
+  back="$lock is put back"
+  if ! err="$(CARGO_TERM_COLOR=never cargo metadata --format-version 1 --manifest-path "$mp" </dev/null 2>&1 >/dev/null)"; then
+    { cp -p "$before" "$lp" && cmp -s "$before" "$lp"; } 2>/dev/null ||
+      back="$lock could NOT be put back -- restore it with git checkout $lock"
+    printf 'cargo metadata could not resolve %s, so %s: %s\n' "$manifest" "$back" "$(one_line "$err")"
+    return 1
+  fi
+  moved="$(diff <(release_lock_own_aside "$before") <(release_lock_own_aside "$lp") 2>&1)" || rc=$?
+  [ "$rc" -ne 0 ] || return 0
+  { cp -p "$before" "$lp" && cmp -s "$before" "$lp"; } 2>/dev/null ||
+    back="$lock could NOT be put back -- restore it with git checkout $lock"
+  if [ "$rc" -eq 1 ]; then
+    what="$(sed -n -e 's/^< /was: /p' -e 's/^> /now: /p' <<<"$moved")"
+    printf 'cargo metadata changed %s beyond the crate'"'"'s own version, so %s: %s -- bring the lock up to date in a commit of its own, then cut again\n' "$lock" "$back" "${what//$'\n'/; }"
+  else
+    printf 'the lock before and after cargo metadata could not be compared, so %s: %s\n' "$back" "$(one_line "$moved")"
+  fi
+  return 1
+}
+
 # cut_run -- a cut of $target: the steps from resolve to after. With --dry-run, the
 # same reads, with every write, every wait, every gate and every after:
 # reported as `would`, and a verdict as the last line when no step failed.
 cut_run() {
   local tpl branch object today launcher line v tag how rc_line commit source
   local state detail remotes remote answer nremote=0 owned dirt outside="" deferred=""
-  local derived gates out written="" have n ignored_rc ignored_why assets_wf after_list
+  local derived gates out written="" have n ignored_rc ignored_why assets_wf after_list lock
   local -a refusals=() gl=()
   # The candidate's target, its ref and the target as a line names it, found
   # at pre-flight: the remote the legs step pushes it to, or in the publish
@@ -2067,6 +2108,16 @@ cut_run() {
   branch="$(cfg_release_get branch)" || die "release: cannot read release.branch"
   object="$(cfg_release_get object)" || die "release: cannot read release.object"
   derived="$(cfg_release_list derived)" || die "release: cannot read release.derived"
+  # THE LOCK A STAMP BRINGS IN STEP (issue 0323): where project.version_from is
+  # a Cargo.toml with a Cargo.lock beside it, the stamp step syncs the lock
+  # (cut_lock_sync), and names it as a written path, as a derived: command's
+  # is. Nothing is declared; a Cargo.toml with no lock beside it has none.
+  lock="$(release_cargo_lock "${DEVBIN_VERSION_FILE:-VERSION}")"
+  case "$lock" in
+    '') ;;
+    /*) [ -f "$lock" ] || lock="" ;;
+    *) [ -f "$PROJECT_ROOT/$lock" ] || lock="" ;;
+  esac
   # THE ONE READ OF release.gates IN A CUT (ST0011): the local leg runs the
   # list read here, and the seal names it. Read with its status, as every list
   # a step runs is: empty would skip the gates in silence.
@@ -2221,6 +2272,12 @@ cut_run() {
       deferred="$outside"
     elif [ -n "$outside" ]; then
       refusals+=("dirty outside what this release owns: ${outside//$'\n'/, } -- commit or stash it first")
+    fi
+    # THE LOCK'S SYNC IS CARGO'S (issue 0323): where the stamp step will bring
+    # the lock in step, a cargo that is not here is refused before anything is
+    # stamped, never found at the stamp step or passed over.
+    if [ -n "$lock" ] && [ "$head_is_release" = no ] && ! command -v cargo >/dev/null 2>&1; then
+      refusals+=("project.version_from is ${DEVBIN_VERSION_FILE:-VERSION}, with $lock beside it, so the stamp step brings the lock in step through cargo metadata, and cargo is not on PATH -- put cargo on PATH")
     fi
     if ! out="$(notes_check "$PROJECT_ROOT" "$v" "$today" 2>&1)"; then
       refusals+=("$(one_line "$out")")
@@ -2623,16 +2680,23 @@ cut_run() {
     detail="${answer#*$'\t'}"
     if [ "$state" = UNREADABLE ]; then
       cut_fail stamp "$detail"
-    elif [ "$state" = already ] && [ -z "$derived" ]; then
+    elif [ "$state" = already ] && [ -z "$derived" ] && [ -z "$lock" ]; then
       cut_row stamp already "$detail"
     elif [ "$dry_run" = 1 ]; then
       have="$(read_version)" || cut_fail stamp "reading the version failed (exit $?)"
-      cut_row stamp would "$([ "$have" = "$v" ] || printf 'version set %s (it is %s); ' "$v" "$have")$([ -z "$derived" ] || printf 'run derived: (%s command(s)); ' "$(grep -c . <<<"$derived")")date the note $today; regenerate the views"
+      cut_row stamp would "$([ "$have" = "$v" ] || printf 'version set %s (it is %s); ' "$v" "$have")$([ -z "$lock" ] || printf 'bring %s in step (cargo metadata); ' "$lock")$([ -z "$derived" ] || printf 'run derived: (%s command(s)); ' "$(grep -c . <<<"$derived")")date the note $today; regenerate the views"
+      [ -z "$lock" ] || CUT_UNREACHED+=("the stamp step's sync of $lock: a dry run does not run cargo metadata")
       [ -z "$derived" ] || CUT_UNREACHED+=("the stamp step's owned-set check of what derived: writes: a dry run does not run derived: commands")
     else
       have="$(read_version)" || cut_fail stamp "reading the version failed (exit $?)"
       if [ "$have" != "$v" ]; then
         gate_exec "$launcher" version set "$v" || cut_fail stamp "version set $v failed (exit $?, above)"
+      fi
+      # THE LOCK IN STEP WITH THE STAMP (issue 0323), before any derived:
+      # command runs, and named as a path the stamp wrote.
+      if [ -n "$lock" ]; then
+        out="$(cut_lock_sync "${DEVBIN_VERSION_FILE:-VERSION}" "$lock")" || cut_fail stamp "$out"
+        written+="$lock"$'\n'
       fi
       local d
       local -a words=()
@@ -2666,7 +2730,7 @@ cut_run() {
       # because it is one read, and it holds for a writer that does not.
       answer="$(release_read_stamp "$PROJECT_ROOT" "$v" count)" || cut_fail stamp "reading the stamp back failed (exit $?)"
       [ "${answer%%$'\t'*}" = already ] || cut_fail stamp "the stamp did not take: ${answer#*$'\t'}"
-      cut_row stamp "done" "${answer#*$'\t'}$([ -z "$derived" ] || printf '; derived: ran')"
+      cut_row stamp "done" "${answer#*$'\t'}$([ -z "$lock" ] || printf '; %s in step' "$lock")$([ -z "$derived" ] || printf '; derived: ran')"
     fi
   fi
 

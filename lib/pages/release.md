@@ -31,8 +31,10 @@ Cut a release: confirm once, then stamp, commit, run every leg (the gates, here 
                  each remote's push, under release.publish.url the public
                  branch and tag, the object, its assets and the after:
                  commands, which run under the same yes
-    stamp        set the version, run any derived: commands, date the note,
-                 regenerate the notes views
+    stamp        set the version, bring a Cargo.lock beside a Cargo.toml
+                 version file in step through cargo metadata, refusing any
+                 change but the crate's own version, run any derived:
+                 commands, date the note, regenerate the notes views
     commit       the release commit
     legs         every leg at once, read by one wait loop: the declared
                  gates on the release commit (default: check all, test all),
