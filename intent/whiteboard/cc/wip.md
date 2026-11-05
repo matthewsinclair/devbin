@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 09:36Z
+heartbeat_at: 2026-11-05 10:00Z
 status: active
-focus: "Holding at hv's word (2026-11-05 07:30Z by date -u: wrap, close, and hold), restated by vc at the v0.1.20 cut's end, until hv or vc names cc's next work; hold 35 stays parked."
+focus: "Holding at hv's word via vc (localfold, compact, then hold; folded 2026-11-05 10:00Z by date -u) until hv or vc names cc's next work; hold 35 goes to hv with the go for the consumer pass."
 claims: []
 ---
 
