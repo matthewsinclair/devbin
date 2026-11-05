@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 12:07Z
+heartbeat_at: 2026-11-05 12:27Z
 status: active
-focus: "0324 drafted at hv's word in cc's window, option 2 at vc's GO (config read refuses an artefact at macos.app's path beside macos.commit_stamp): tip 0959a979 on main cdb23329 in cc's scratch clone i0324, red clone 196af5e4. Slot 01M6NSKKJDSP576QVCPVTKQEWJ asked, light, held after Utilz's runs; at vc's GO, run-0324.sh, then the handover for vc to land (set 2026-11-05 12:07Z by date -u)."
-claims: [ISSUE:0324, ISSUE:0325]
+focus: "0325 at hv's word via vc, building on 0324's landed tip 96fbd874 in cc's scratch clone i0325, by the shape vc agreed (config read refuses an app artefact whose inputs hold no version file; release_names reads the one rule); its arms red at the base and green at the tip in a light slot, then the handover for vc to land, before Gtools's turn (set 2026-11-05 12:27Z by date -u)."
+claims: [ISSUE:0325]
 ---
 
 # Control Claude (cc)
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- 0325 (hv's word via vc, filed at 8d5ea0df) waits until 0324's unit is banked in canon; then cc builds it on 0324's banked tip and asks vc for a light slot, before Gtools's turn. Pick sent to vc: the refusal at config read.
+_(none)_
 
 ## Watch-outs
 
