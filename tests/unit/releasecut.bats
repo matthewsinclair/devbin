@@ -2596,6 +2596,51 @@ $output"
   [ ! -e "$DEVBIN_TEST_TMPDIR/macos.calls" ] || fail "the stage ran: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
 }
 
+@test "0313: pre-flight refuses a declared macOS stage whose app, or whose declared build root, lies in the tree where git does not ignore it, naming each, before anything is stamped" {
+  local head
+  legs_env
+  proj="$(legs_project)"
+  # The fixture ignores out/, where its app is; here the app and the build:
+  # artefact move to dist/ and the build root is work/, and git ignores neither.
+  perl -0pi -e 's{^  app: out/Demo\.app$}{  app: dist/Demo.app\n  build_root: work}m; s{^      path: out/Demo\.app$}{      path: dist/Demo.app}m' \
+    "$proj/bin/.devbin/config.yaml"
+  grep -qx '  app: dist/Demo.app' "$proj/bin/.devbin/config.yaml" || fail "the fixture's config does not move the app to dist/"
+  grep -qx '  build_root: work' "$proj/bin/.devbin/config.yaml" || fail "the fixture's config declares no build root"
+  grep -qx '      path: dist/Demo.app' "$proj/bin/.devbin/config.yaml" || fail "the fixture's config does not move the artefact to dist/"
+  git -C "$proj" commit -qam "the app and its build root where git ignores neither"
+  head="$(git -C "$proj" rev-parse HEAD)"
+  export UNAME_STUB_OS=Darwin
+  DEVBIN_RELEASE_POLL_SECONDS=1 run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"macos.app is dist/Demo.app, which git does not ignore, though the macOS stage builds there, in the tree the local gates read as clean at the release commit -- add dist/Demo.app/ to .gitignore"* ]] ||
+    fail "pre-flight does not refuse the app git does not ignore: $(row_of pre-flight)"
+  [[ "$(row_of pre-flight)" == *"macos.build_root is work, which git does not ignore, though the macOS stage builds there"*"-- add work/ to .gitignore"* ]] ||
+    fail "pre-flight does not refuse the build root git does not ignore: $(row_of pre-flight)"
+  [ "$(git -C "$proj" rev-parse HEAD)" = "$head" ] || fail "the refused cut committed: $(git -C "$proj" log --oneline -3)"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/macos.calls" ] || fail "the stage ran: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+}
+
+@test "0313: release_macos_unignored passes a path in the tree that git ignores, through its directory or a directory-only pattern before the bundle exists, and one outside the tree, and refuses one git does not ignore and the project root itself" {
+  local d
+  d="$(mktemp -d "$DEVBIN_TEST_TMPDIR/unignored.XXXXXX")"
+  git init -q -b main "$d/proj"
+  printf 'out/\n*.app/\n' >"$d/proj/.gitignore"
+  mkdir -p "$d/elsewhere"
+  run bash -c 'set -euo pipefail; . "$1/helpers"; . "$1/runlog"; . "$1/release.notes"; . "$1/release.steps"; . "$1/release.macos"
+    root="$2"
+    for row in "in-out|$root/out/Demo.app" "bundle|$root/dist/Demo.app" "work|$root/work/" "outside|$3/Demo.app" "root|$root"; do
+      rc=0
+      said="$(release_macos_unignored "$root" "the path" "${row#*|}")" || rc=$?
+      printf "%s|%s|%s\n" "${row%%|*}" "$rc" "$said"
+    done' _ "$DEVBIN_LIB_DIR" "$d/proj" "$d/elsewhere"
+  assert_success
+  assert_output "in-out|0|
+bundle|0|
+work|1|the path, which git does not ignore, though the macOS stage builds there, in the tree the local gates read as clean at the release commit -- add work/ to .gitignore
+outside|0|
+root|1|the path, the project root itself, which git cannot ignore -- declare the directory the build writes its products under"
+}
+
 @test "a remote leg whose start fails stops the cut at once, naming the leg and why, never a wait to ci.wait for a leg no read could turn green (ST0011 WP-05)" {
   legs_env
   proj="$(legs_project)"

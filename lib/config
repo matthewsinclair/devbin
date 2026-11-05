@@ -836,6 +836,48 @@ cfg_macos_get() {
   cfg_get "macos.$1" "$def"
 }
 
+# cfg_macos_path_of <value> <root> -- a macos: path value as a path: a leading
+# `~`, `$HOME` or XDG base-directory variable expanded (path_expand, lib/helpers),
+# then a relative path read from <root>; empty stays empty. THE ONE READING OF
+# A macos PATH (issue 0313): cfg_macos_path reads each path key through it, and
+# a value that is no key of its own, as a list entry's path, takes it alone.
+# rc 0 printing the path; rc 2 printing HOME, when a `~`, `$HOME` or an XDG
+# default needs HOME and it is not an absolute path below /; rc 3 printing what
+# the value opens with, for any other leading `~` or `$`, which a caller
+# refuses by name rather than read as a path in the project. Pure but for the
+# environment path_expand reads.
+cfg_macos_path_of() {
+  local p rc=0
+  [ -n "$1" ] || return 0
+  p="$(path_expand "$1")" || rc=$?
+  case "$rc" in
+    0) ;;
+    1)
+      printf '%s\n' "$p"
+      return 2
+      ;;
+    *)
+      printf '%s\n' "$p"
+      return 3
+      ;;
+  esac
+  case "$p" in
+    /*) printf '%s' "$p" ;;
+    *) printf '%s/%s' "$2" "$p" ;;
+  esac
+}
+
+# cfg_macos_path <key> <root> -- macos.<key> as a path, its value read by
+# cfg_macos_get and placed by cfg_macos_path_of, whose answers it gives; rc 1
+# when the key cannot be read, cfg_macos_get's words on stderr. Asked by macos
+# for every path key it reads and by the cut's pre-flight, which refuses a
+# macOS stage whose paths git does not ignore.
+cfg_macos_path() {
+  local v
+  v="$(cfg_macos_get "$1")" || return 1
+  cfg_macos_path_of "$v" "$2"
+}
+
 # cfg_macos_declared -- 0 when the project declares the built-in macos
 # (commands.macos.enabled), whose stage is then a leg of every cut, signing and
 # notarising the app at the release commit (ST0011 WP-06). THE ONE TEST, which

@@ -11,6 +11,7 @@
 #   release_macos_reap                          the started run, once it has ended, reaped
 #   release_macos_read <root> <sha>             the stage's word on <sha>
 #   release_macos_stop <seconds>                the started run stopped, its whole group, and reaped
+#   release_macos_unignored <root> <what> <path>  a path the stage writes, refused where git does not ignore it in <root>'s tree
 #
 # Start and read each print ONE line, `<word><TAB><detail>`, in ci-state's
 # words, as every leg of a cut answers, and return 0 when they answered.
@@ -51,6 +52,11 @@ _DEVBIN_RELEASE_MACOS_LOADED=1
 # start starts a run; the pid is let go once the run is reaped.
 RELEASE_MACOS_PID="" RELEASE_MACOS_GROUP="" RELEASE_MACOS_OUT="" RELEASE_MACOS_TABLE=""
 RELEASE_MACOS_STATE="" RELEASE_MACOS_RC=""
+
+# The file release_macos_unignored names inside a path the stage writes, to ask
+# git whether what the build puts there is ignored: a name no build writes, so
+# a pattern reads it as ignored only when it covers the whole path.
+_RELEASE_MACOS_PROBE=devbin-check-ignore-probe
 
 # release_macos_verdict <root> <sha> -- what the stage's sealed runs on this
 # platform say about <sha>: seal_verdict's word, a TAB and its detail, over the
@@ -180,4 +186,54 @@ release_macos_stop() {
     rc=$?
   _release_macos_wait
   [ "$rc" = 0 ] && release_stopped_status "$RELEASE_MACOS_RC"
+}
+
+# release_macos_unignored <root> <what> <path> -- one refusal line on stdout,
+# rc 1, naming <path> as <what>, the cut's words for it (eg `macos.app is
+# dist/Demo.app`), where <path>, a path the macOS stage writes, lies in
+# <root>'s tree and git does not ignore it, or git could not say, or it cannot
+# be placed; nothing, rc 0, where git ignores it or it lies outside the tree,
+# where it can dirty nothing (issue 0313). THE STAGE AND THE LOCAL GATES RUN AT
+# ONCE IN ONE TREE at the release commit, and each reads it as clean, so a path
+# either leaves that git does not ignore fails the other's check, blamed on the
+# leg that read it. Asked of a file inside <path>, through git_readonly, as
+# gate_out_ignored asks of a run's log, so a directory-only pattern (`build/`,
+# `*.app/`) reads it before the build has made it; placed as cargo_place
+# places a path that need not exist yet, its longest existing part resolved
+# and the rest appended as written.
+release_macos_unignored() {
+  local root what="$2" path="$3" place rel probe rc=0 why
+  while [[ "$path" == */ && "$path" != / ]]; do path="${path%/}"; done
+  if ! physical_dir "$1" root; then
+    printf '%s, and the project root %s cannot be resolved, so whether git ignores it cannot be said\n' "$what" "$1"
+    return 1
+  fi
+  if ! cargo_place "$path" place; then
+    printf '%s, which cannot be placed, so whether git ignores it cannot be said\n' "$what"
+    return 1
+  fi
+  case "$place" in
+    "$root") rel="" ;;
+    "$root"/*) rel="${place#"$root"/}" ;;
+    *) return 0 ;;
+  esac
+  if [ -z "$rel" ]; then
+    printf '%s, the project root itself, which git cannot ignore -- declare the directory the build writes its products under\n' "$what"
+    return 1
+  fi
+  probe="$rel/$_RELEASE_MACOS_PROBE"
+  if git_readonly_prime; then
+    git_readonly -C "$root" check-ignore -q -- "$probe" 2>/dev/null || rc=$?
+  else
+    rc=127
+  fi
+  case "$rc" in
+    0) return 0 ;;
+    1) printf '%s, which git does not ignore, though the macOS stage builds there, in the tree the local gates read as clean at the release commit -- add %s/ to .gitignore\n' "$what" "$rel" ;;
+    *)
+      why="$(git_failure_line "$root" check-ignore -q -- "$probe")"
+      printf '%s, and git could not say whether it is ignored%s\n' "$what" "${why:+ -- $why}"
+      ;;
+  esac
+  return 1
 }

@@ -184,24 +184,20 @@ cfg_validate || die "macos: $DEVBIN_DIR/config.yaml does not validate (above)"
 # macos_key <key> -- a macos: value, or the command stops naming the read.
 macos_key() { cfg_macos_get "$1" || die "macos: cannot read macos.$1"; }
 
-# macos_path <key> -- macos.<key> as a path: a leading `~`, `$HOME` or XDG
-# base-directory variable expanded (path_expand), then a relative path read
-# from the project root; empty stays empty. A value that opens with a `~` or a
-# `$` that cannot be expanded stops the command, naming the key and what it
-# opens with, so it is never read as a path in the project.
+# macos_path <key> -- macos.<key> as a path, read by lib/config's
+# cfg_macos_path_of, the one reading of a macos path: a leading `~`, `$HOME` or
+# XDG base-directory variable expanded, then a relative path read from the
+# project root; empty stays empty. A value that opens with a `~` or a `$` that
+# cannot be expanded stops the command, naming the key and what it opens with,
+# so it is never read as a path in the project.
 macos_path() {
   local v p rc=0
   v="$(macos_key "$1")"
-  [ -n "$v" ] || return 0
-  p="$(path_expand "$v")" || rc=$?
+  p="$(cfg_macos_path_of "$v" "$ROOT")" || rc=$?
   case "$rc" in
-    0) ;;
-    1) die "macos: macos.$1 is $v, and HOME (${HOME:-unset}) is not an absolute path below /, so it cannot be expanded" ;;
+    0) printf '%s' "$p" ;;
+    2) die "macos: macos.$1 is $v, and HOME (${HOME:-unset}) is not an absolute path below /, so it cannot be expanded" ;;
     *) die "macos: macos.$1 is $v, which opens with $p, and only ~, \$HOME, \$XDG_STATE_HOME, \$XDG_DATA_HOME, \$XDG_CONFIG_HOME and \$XDG_CACHE_HOME are expanded, each written alone as \$NAME or \${NAME}: an XDG variable that is unset falls back to its XDG default" ;;
-  esac
-  case "$p" in
-    /*) printf '%s' "$p" ;;
-    *) printf '%s/%s' "$ROOT" "$p" ;;
   esac
 }
 

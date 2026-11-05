@@ -2426,6 +2426,24 @@ cut_run() {
       legs_word="$(platform_word)" || legs_word=""
       [ "$legs_word" = macos ] ||
         refusals+=("the macOS stage is declared (commands.macos.enabled), and this host is ${legs_word:-one devbin has no platform word for} -- cut the release on a macOS host, where the stage signs and notarises the app at the release commit")
+      # THE STAGE'S PATHS MUST BE IGNORED BY GIT (issue 0313): macos.app, the
+      # bundle the build leaves, which is the path of the build: artefact the
+      # stage caches (cfg_macos_artefacts), and macos.build_root where it is
+      # declared, the directory the build writes its products under. The stage
+      # and the local gates share the tree at the release commit, so a path
+      # either leaves that git does not ignore fails the other's clean check,
+      # blamed on the leg that read it: each is refused here, before anything
+      # is stamped (release_macos_unignored).
+      local macos_k macos_p macos_why
+      for macos_k in app build_root; do
+        if ! macos_p="$(cfg_macos_path "$macos_k" "$PROJECT_ROOT")"; then
+          refusals+=("macos.$macos_k cannot be read as a path, so whether git ignores it cannot be said -- ${DEVBIN_INVOKE:-bin/devbin} macos doctor names why")
+          continue
+        fi
+        [ -n "$macos_p" ] || continue
+        macos_why="$(release_macos_unignored "$PROJECT_ROOT" "macos.$macos_k is $(cfg_macos_get "$macos_k")" "$macos_p")" ||
+          refusals+=("$macos_why")
+      done
     fi
   fi
   for legs_a in "${LEGS_ABSENT[@]}"; do
