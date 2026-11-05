@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "1ae27c22-b18d-4689-9efc-64362ad5c0d6",
-    "heartbeat_at": "2026-11-05T11:50:59.775Z",
+    "heartbeat_at": "2026-11-05T12:07:09.532Z",
     "status": "active",
-    "focus": "Drafting 0324 in a scratch clone at hv's word in cc's window (2026-11-05 11:50Z by date -u): a commit-stamped app pulled from the artefact cache at another commit fails app-sign. No desk run until Utilz's runs are done; then its arms red at the base and green at the fix, and the bank for vc to land.",
+    "focus": "0324 drafted at hv's word in cc's window, option 2 at vc's GO (config read refuses an artefact at macos.app's path beside macos.commit_stamp): tip 0959a979 on main cdb23329 in cc's scratch clone i0324, red clone 196af5e4. Slot 01M6NSKKJDSP576QVCPVTKQEWJ asked, light, held after Utilz's runs; at vc's GO, run-0324.sh, then the handover for vc to land (set 2026-11-05 12:07Z by date -u).",
     "claims": [
       "ISSUE:0324"
     ],
