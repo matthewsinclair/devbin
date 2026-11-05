@@ -2,10 +2,10 @@
 node: dc
 name: DevX Claude
 role: devx
-session_id: befcda90-2270-4b5e-ae09-66c58fdc8ca2
-heartbeat_at: 2026-11-04 20:04Z
-status: paused
-focus: "HOLD for hv's word (hv in dc's window: 'close here now anyway and pick it up tomorrow'): 0319 reruns whole first, then group C from its resume order, then 0323. Nothing pushed; no slot held."
+session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
+heartbeat_at: 2026-11-05 04:15Z
+status: active
+focus: "HOLD at hv's word in dc's window ('Please boot and hold for instructions', received before the clock read 2026-11-05 04:15Z by date -u): no work, no runs and no slot until hv, or vc's relay, says go. On go the resume order stands: 0319 reruns whole, then its handover; group C from its resume order; then 0323. Nothing pushed."
 claims: [ST0011/16, ISSUE:0316, ISSUE:0302, ISSUE:0301, ISSUE:0318, ISSUE:0303]
 ---
 
