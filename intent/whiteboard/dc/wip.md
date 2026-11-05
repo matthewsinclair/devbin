@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 09:32Z
+heartbeat_at: 2026-11-05 09:35Z
 status: paused
-focus: "Holding until vc names dc's next work: devbin 0.1.20 is released at be40dea7 (09:29:31Z) with dc's lane done; 0318's WSL proof (its FORWARD arm ok on the candidate's WSL 2 job) waits on vc's word for 0318's record (focus set 2026-11-05 09:32Z by date -u)."
+focus: "Holding for the consumer pass on hv's go, where vc says dc's next work comes: devbin 0.1.20 is released at be40dea7 with dc's lane done, and 0318's WSL proof is on its record at 2cf4e56a (focus set 2026-11-05 09:35Z by date -u)."
 claims: [ST0011/16]
 ---
 
