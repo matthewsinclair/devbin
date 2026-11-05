@@ -1,0 +1,16 @@
+{
+  "id": "01M6N28DZQXH6D3V4E08SS73BM",
+  "ts": "2026-11-05T05:17:42.775Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 66,
+    "text": "Group A and the issues moved to cc, one at a time, each on main after the one before lands, under hv's rule as tightened by vc's decision 138 (2026-11-05 05:15Z): a fix's run is its own arms alone, filtered, red at main's code and green at the fix under BSD, an arm beside them only where it calls what the fix changes; no whole file, GNU leg, tree scan or critic pass; the cut's gates, kovacs leg and CI are the one full test. Queue: 0314 (built ahead, ~/Devel/scratch/devbin-cc/v0120-0314), 0307, 0301 (after dc's 0302 lands; dc's draft and handoff at ~/Devel/scratch/devbin-dc/gc/k301/HANDOFF-0301.md), 0303 (DEVBIN_TEST_JOBS's one reader is bin/.devbin/cmd/.lib/bats-lanes:141, dc's read). Each: light ask named to vc, bank, handover, vc's land-stack.sh, Resolution and close."
+  }
+}

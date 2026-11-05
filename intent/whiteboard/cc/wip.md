@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 04:40Z
+heartbeat_at: 2026-11-05 05:12Z
 status: active
-focus: "Under hv's localised-test rule (vc's GO, 2026-11-05 04:35Z): train 1's handover is with vc for land-stack.sh, then its Resolutions and closes (todo 68); then 0310, 0313, 0314 and 0307, one at a time, each on main after the one before lands (todo 66). The orphaned slot 01M6M084QB56E66T6M067SEX8A is vc's to revoke as controller."
-claims: [ISSUE:0307, ISSUE:0313, ISSUE:0314]
+focus: "Group A one issue at a time under hv's localised-test rule (vc's GO, 2026-11-05 04:35Z): train 1 (0308, 0309, 0312) and 0310 landed and closed; 0313 running in light slot 01M6N1K0DDKBPQ4806K76YNS6S at da361079; 0314 built ahead on it; then 0307 (todo 66); then 0323's bank 1 and bank 4's release half (todo 69, vc's decision 137)."
+claims: [ISSUE:0307, ISSUE:0313, ISSUE:0314, ISSUE:0301, ISSUE:0303]
 ---
 
 # Control Claude (cc)
@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-- Group A under hv's localised-test rule (vc's GO, 2026-11-05 04:35Z), one issue at a time, each on main after the one before lands: 0310 (built at 10b2b09 on refs/bank/cc/v0120-t2-wip; rebase onto main, where docs/configuration.md moved), 0313, 0314, then 0307. Each: its new arms red at the base under RED_TIMEOUT, the test files it touches green at the fix under BSD in a light slot asked of vc, then bank, handover, vc's land-stack.sh, Resolution and close. 0315 was closed unfixed (bc857a9c), and release_one_repository's switch is dropped. (edited)
+- Group A and the issues moved to cc, one at a time, each on main after the one before lands, under hv's rule as tightened by vc's decision 138 (2026-11-05 05:15Z): a fix's run is its own arms alone, filtered, red at main's code and green at the fix under BSD, an arm beside them only where it calls what the fix changes; no whole file, GNU leg, tree scan or critic pass; the cut's gates, kovacs leg and CI are the one full test. Queue: 0314 (built ahead, ~/Devel/scratch/devbin-cc/v0120-0314), 0307, 0301 (after dc's 0302 lands; dc's draft and handoff at ~/Devel/scratch/devbin-dc/gc/k301/HANDOFF-0301.md), 0303 (DEVBIN_TEST_JOBS's one reader is bin/.devbin/cmd/.lib/bats-lanes:141, dc's read). Each: light ask named to vc, bank, handover, vc's land-stack.sh, Resolution and close. (edited)
 - 0323's two pieces, at vc's decision 137 (hv's ruling, 2026-11-05 04:51Z relay), after 0310, 0313, 0314 and 0307 close, each its own unit through the loop under dc's ISSUE:0323 claim: bank 1, the built-in lock-sync at the stamp step (version_from a Cargo.toml with a Cargo.lock beside it; cargo metadata; the lock compared with the crate's own version line set aside; put back and refused on any other change, naming the lock as a written path; the awk filter for BSD and GNU awk); and bank 4's release half, formula publish with the tap pull as the core's last built-in step, run only after a successful attach. Design: ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md, sections 1 and 4 and the Rulings. Tell dc before touching a file dc's banks reach.
 
 ## Holds
