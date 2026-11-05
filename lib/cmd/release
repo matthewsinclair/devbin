@@ -1066,37 +1066,44 @@ _leg_candidate_start() {
 
 # _leg_candidate_clear -- the candidate ref an earlier run left holding the
 # release commit, read red, deleted under a lease on that commit and read back
-# as gone, so the push after it makes a run of its own. 0, saying so on
-# stderr, when the ref is gone. 1 when the delete is refused, does not answer
-# or does not read back as gone, printing the leg's answer for that, failed
-# or unknown, which stops the cut at once, as a refused push does.
+# as gone (_legs_cand_lease_delete), so the push after it makes a run of its
+# own. 0, saying so on stderr, when the ref is gone. 1 when the delete is
+# refused, does not answer or does not read back as gone, printing the leg's
+# answer for that, failed or unknown, which stops the cut at once, as a
+# refused push does.
 _leg_candidate_clear() {
-  local rc=0 held
-  cut_call_rc --reads "git ls-remote $LEG_CAND_SHOWN refs/heads/$LEG_REF reads it" \
-    "deleting the candidate $LEG_REF an earlier run left on $LEG_CAND_SHOWN" _leg_cand_git push -q \
-    "--force-with-lease=refs/heads/$LEG_REF:$LEG_CAND_SHA" -- ":refs/heads/$LEG_REF" >&2 || rc=$?
-  case "$rc" in
-    0) ;;
-    124)
+  _legs_cand_lease_delete "deleting the candidate $LEG_REF an earlier run left on $LEG_CAND_SHOWN"
+  # ok, and the delete that went through, are the only ways on: any other
+  # answer stops the cut, as a refused push does.
+  case "$LEGS_CAND_DEL_ANSWER" in
+    ok | unreadable | held) ;;
+    unanswered)
       CUT_OUTWARD+=", tried to delete the candidate $LEG_REF an earlier run left on $LEG_CAND_SHOWN, which did not answer"
-      printf 'unknown\t%s\n' "$(one_line "$CUT_CALL_WHY")"
+      printf 'unknown\t%s\n' "$LEGS_CAND_DEL_DETAIL"
+      return 1
+      ;;
+    failed)
+      printf 'failed\t%s holds %s, read red, so a push of it would start no run, and deleting it failed: %s\n' \
+        "$LEG_REF" "${LEG_CAND_SHA:0:12}" "$LEGS_CAND_DEL_DETAIL"
       return 1
       ;;
     *)
-      printf 'failed\t%s holds %s, read red, so a push of it would start no run, and deleting it failed: %s\n' \
-        "$LEG_REF" "${LEG_CAND_SHA:0:12}" "$(one_line "$CUT_CALL_WHY")"
+      printf 'unknown\tdeleting the candidate %s an earlier run left on %s answered %s, which this does not read\n' \
+        "$LEG_REF" "$LEG_CAND_SHOWN" "${LEGS_CAND_DEL_ANSWER:-nothing}"
       return 1
       ;;
   esac
   CUT_OUTWARD+=", deleted the candidate $LEG_REF an earlier run left on $LEG_CAND_SHOWN"
-  if ! held="$(_legs_cand_held)"; then
-    printf 'unknown\tthe candidate %s an earlier run left on %s was deleted, and its ref could not be read back: %s\n' "$LEG_REF" "$LEG_CAND_SHOWN" "$held"
-    return 1
-  fi
-  if [ -n "$held" ]; then
-    printf 'unknown\tthe candidate %s an earlier run left on %s was deleted, and it reads back %s\n' "$LEG_REF" "$LEG_CAND_SHOWN" "${held:0:12}"
-    return 1
-  fi
+  case "$LEGS_CAND_DEL_ANSWER" in
+    unreadable)
+      printf 'unknown\tthe candidate %s an earlier run left on %s was deleted, and its ref could not be read back: %s\n' "$LEG_REF" "$LEG_CAND_SHOWN" "$LEGS_CAND_DEL_DETAIL"
+      return 1
+      ;;
+    held)
+      printf 'unknown\tthe candidate %s an earlier run left on %s was deleted, and it reads back %s\n' "$LEG_REF" "$LEG_CAND_SHOWN" "${LEGS_CAND_DEL_DETAIL:0:12}"
+      return 1
+      ;;
+  esac
   printf 'release: legs: the candidate %s an earlier run left on %s, holding %s and read red, was deleted, so this push makes a run of its own\n' \
     "$LEG_REF" "$LEG_CAND_SHOWN" "${LEG_CAND_SHA:0:12}" >&2
 }
@@ -1186,8 +1193,8 @@ legs_cand_delete() {
   return "$rc"
 }
 
-# _legs_cand_delete -- legs_cand_delete's read, delete and read-back, its
-# answer legs_cand_delete's.
+# _legs_cand_delete -- legs_cand_delete's read, then its delete and read-back
+# (_legs_cand_lease_delete), its answer legs_cand_delete's.
 _legs_cand_delete() {
   local held why="" remedy
   remedy=" -- delete it by hand: git push $LEG_CAND_SHOWN :refs/heads/$LEG_REF"
@@ -1199,22 +1206,65 @@ _legs_cand_delete() {
   elif [ "$held" != "$LEG_CAND_SHA" ]; then
     why="it holds ${held:0:12}, not this release's ${LEG_CAND_SHA:0:12}, so it was left as it is, not this run's to delete"
     remedy=""
-  elif ! cut_call_rc --reads "git ls-remote $LEG_CAND_SHOWN refs/heads/$LEG_REF reads it" \
-    "deleting the candidate $LEG_REF on $LEG_CAND_SHOWN" _leg_cand_git push -q \
-    "--force-with-lease=refs/heads/$LEG_REF:$LEG_CAND_SHA" -- ":refs/heads/$LEG_REF" >&2; then
-    why="$(one_line "$CUT_CALL_WHY")"
-  elif ! held="$(_legs_cand_held)"; then
-    why="the delete went through, and the ref could not be read back: $held"
-  elif [ -n "$held" ]; then
-    why="the delete went through, and the ref reads back ${held:0:12}"
   else
-    CUT_OUTWARD+=", deleted the candidate $LEG_REF from $LEG_CAND_SHOWN"
-    printf 'release: legs: the candidate %s was deleted from %s\n' "$LEG_REF" "$LEG_CAND_SHOWN"
-    return 0
+    _legs_cand_lease_delete "deleting the candidate $LEG_REF on $LEG_CAND_SHOWN"
+    case "$LEGS_CAND_DEL_ANSWER" in
+      ok)
+        CUT_OUTWARD+=", deleted the candidate $LEG_REF from $LEG_CAND_SHOWN"
+        printf 'release: legs: the candidate %s was deleted from %s\n' "$LEG_REF" "$LEG_CAND_SHOWN"
+        return 0
+        ;;
+      unreadable) why="the delete went through, and the ref could not be read back: $LEGS_CAND_DEL_DETAIL" ;;
+      held) why="the delete went through, and the ref reads back ${LEGS_CAND_DEL_DETAIL:0:12}" ;;
+      # unanswered or failed: cut_call_rc's words for the push.
+      *) why="$LEGS_CAND_DEL_DETAIL" ;;
+    esac
   fi
   LEGS_CAND_LEFT="the candidate $LEG_REF on $LEG_CAND_SHOWN was NOT deleted ($why)$remedy"
   printf 'release: legs: %s\n' "$LEGS_CAND_LEFT"
   return 1
+}
+
+# _legs_cand_lease_delete <what> -- the candidate ref deleted on its remote
+# under a lease on LEG_CAND_SHA, so a ref moved since is never deleted, then
+# read back (_legs_cand_held): THE DELETE of the candidate, which a stop or the
+# end (_legs_cand_delete) and the clear of a red candidate an earlier run left
+# (_leg_candidate_clear) each ask, each wording the answer in its own way.
+# <what> names the delete in cut_call_rc's words, and the push's own output
+# goes to stderr, as every write's does. The answer is left in
+# LEGS_CAND_DEL_ANSWER, and what it rests on in LEGS_CAND_DEL_DETAIL:
+#   ok          deleted, and read back as gone; no detail
+#   unanswered  the push did not finish within its bound, cut_call_rc's words
+#   failed      the push failed, cut_call_rc's words
+#   unreadable  deleted, and the ref could not be read back: why
+#   held        deleted, and the ref reads back a sha: the sha
+# Its status is 0 whatever the answer, which is the word it leaves. It runs in
+# the cut's own shell, as the push always has, never in a command
+# substitution, so what it sets is the caller's to read.
+LEGS_CAND_DEL_ANSWER="" LEGS_CAND_DEL_DETAIL=""
+_legs_cand_lease_delete() {
+  local rc=0 held
+  LEGS_CAND_DEL_ANSWER="" LEGS_CAND_DEL_DETAIL=""
+  cut_call_rc --reads "git ls-remote $LEG_CAND_SHOWN refs/heads/$LEG_REF reads it" "$1" _leg_cand_git push -q \
+    "--force-with-lease=refs/heads/$LEG_REF:$LEG_CAND_SHA" -- ":refs/heads/$LEG_REF" >&2 || rc=$?
+  case "$rc" in
+    0) ;;
+    124)
+      LEGS_CAND_DEL_ANSWER=unanswered LEGS_CAND_DEL_DETAIL="$(one_line "$CUT_CALL_WHY")"
+      return 0
+      ;;
+    *)
+      LEGS_CAND_DEL_ANSWER=failed LEGS_CAND_DEL_DETAIL="$(one_line "$CUT_CALL_WHY")"
+      return 0
+      ;;
+  esac
+  if ! held="$(_legs_cand_held)"; then
+    LEGS_CAND_DEL_ANSWER=unreadable LEGS_CAND_DEL_DETAIL="$held"
+  elif [ -n "$held" ]; then
+    LEGS_CAND_DEL_ANSWER=held LEGS_CAND_DEL_DETAIL="$held"
+  else
+    LEGS_CAND_DEL_ANSWER=ok
+  fi
 }
 
 # _legs_cand_held -- the sha the candidate ref holds on its remote, nothing
