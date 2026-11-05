@@ -317,8 +317,9 @@ require_identity() {
 
 # notary_submit <zip> -- <zip> submitted to Apple under the notary profile,
 # waiting for the verdict: 0 when it is Accepted; 1 when it is anything else,
-# NOTARY_STATUS holding it and notarytool's log printed; 2 when notarytool gave
-# no submission id, as it gives none for a profile the keychain does not hold.
+# NOTARY_STATUS holding it and notarytool's log printed; 3 when notarytool gave
+# no submission id, as it gives none for a profile the keychain does not hold
+# (3, never 2, which is the dispatcher's word under lib/cmd).
 # notarytool's report is printed, and it exits non-zero on an Invalid verdict,
 # so the verdict is read from the report. Every notarisation goes through here,
 # an app's and a binary's, and each caller clears its own submission and says
@@ -329,7 +330,7 @@ notary_submit() {
   printf '%s\n' "$out"
   NOTARY_STATUS="$(awk '/^  status: / { s = $2 } END { print s }' <<<"$out")"
   id="$(awk '/id: [0-9a-f-]+/ { print $2; exit }' <<<"$out")"
-  [ -n "$id" ] || return 2
+  [ -n "$id" ] || return 3
   if [ "$NOTARY_STATUS" != Accepted ]; then
     xcrun notarytool log "$id" --keychain-profile "$NOTARY_PROFILE" 2>&1 | sed -n '1,40p' || true
     return 1
@@ -341,7 +342,7 @@ notary_submit() {
 # non-zero answer, naming the profile when there was no submission at all.
 notary_refused() {
   case "$1" in
-    2) die "macos: notarytool gave no submission id under the notary profile $NOTARY_PROFILE -- $2; store the profile with: $ME store-creds (see: $ME doctor)" ;;
+    3) die "macos: notarytool gave no submission id under the notary profile $NOTARY_PROFILE -- $2; store the profile with: $ME store-creds (see: $ME doctor)" ;;
     *) die "macos: notarisation was not Accepted (status: ${NOTARY_STATUS:-unknown}) -- $2" ;;
   esac
 }
