@@ -1,0 +1,16 @@
+{
+  "id": "01M6N7P9E5AZSHK34FN7AGBJJJ",
+  "ts": "2026-11-05T06:52:39.749Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 77,
+    "text": "devbin 0.1.20 close-out under decisions 138 and 139 (each fix's own arms; 0323 built lean): closed this morning 0319 (b932de55), 0316 (6845d6d2), 0302 (03489730) and 0318 (55a13a51). 0323 (claimed): banks 1 (eb0886cc), 2 (89380aa5), 4 (7f273494) and 3 (1c124b1f) landed, with cc's 67481c78; bank 3b, the object step's bin-publish before the formula step, building in ~/Devel/scratch/devbin-dc/k323/b3b; then 0323's Resolution and close. ci-draft is not built (decision 140)."
+  }
+}

@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 06:02Z
+heartbeat_at: 2026-11-05 06:52Z
 status: active
-focus: "0323: bank 2 landed (89380aa5); bank 3 (macos binaries: bin-sign, bin-notarize, bin-verify, bin-publish, the leg as macos leg, bin_dir in pre-flight) written in ~/Devel/scratch/devbin-dc/k323/b3, its arms being written by a subagent, then a red clone, a light ask and a handover named COMMIT_MSG-0323.txt; the ci-draft path waits on hv's scope call (focus set 2026-11-05 06:02Z by date -u)."
+focus: "0323 bank 3b, at vc's go on hv's ruling: release_bin_archive and release_bins_read in lib/release.macos, bin-publish's already-read in lib/cmd/macos, and the object step's bin-publish in lib/cmd/release (vc reviews those lines at the ask), with its arms in releasecut.bats and macos.bats; building in ~/Devel/scratch/devbin-dc/k323/b3b on main 154e424e; then the light ask, the handover as COMMIT_MSG-0323.txt, and 0323's Resolution and close (focus set 2026-11-05 06:52Z by date -u)."
 claims: [ST0011/16, ISSUE:0323]
 ---
 
@@ -13,7 +13,7 @@ claims: [ST0011/16, ISSUE:0323]
 
 ## DOING
 
-- devbin 0.1.20 close-out under decisions 138 and 139 (each fix's own arms; 0323 built lean): closed this morning 0319 (b932de55), 0316 (6845d6d2), 0302 (03489730) and 0318 (55a13a51); 0301 and 0303 are cc's. 0323 (claimed): bank 2, one notarytool profile and the identity refused unpicked, banked at refs/bank/dc/0323-b2 = b1de749d, its light ask 01M6N3QTMQHSF4GV8P3QM34WJZ waiting on vc's desk hold, its announcement with vc for Utilz; bank 3, macos binaries, on bank 2's tip in ~/Devel/scratch/devbin-dc/k323/b3 (config readers written, port specs being extracted by two read-only subagents); then the ci-draft finalize path. cc builds banks 1 and 4's release half; dc closes 0323 once every bank has landed. (edited)
+- devbin 0.1.20 close-out under decisions 138 and 139 (each fix's own arms; 0323 built lean): closed this morning 0319 (b932de55), 0316 (6845d6d2), 0302 (03489730) and 0318 (55a13a51). 0323 (claimed): banks 1 (eb0886cc), 2 (89380aa5), 4 (7f273494) and 3 (1c124b1f) landed, with cc's 67481c78; bank 3b, the object step's bin-publish before the formula step, building in ~/Devel/scratch/devbin-dc/k323/b3b; then 0323's Resolution and close. ci-draft is not built (decision 140). (edited)
 
 ## TODO
 
