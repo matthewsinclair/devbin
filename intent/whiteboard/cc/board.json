@@ -8,9 +8,7 @@
     "heartbeat_at": "2026-11-05T05:12:54.429Z",
     "status": "active",
     "focus": "Group A one issue at a time under hv's localised-test rule (vc's GO, 2026-11-05 04:35Z): train 1 (0308, 0309, 0312) and 0310 landed and closed; 0313 running in light slot 01M6N1K0DDKBPQ4806K76YNS6S at da361079; 0314 built ahead on it; then 0307 (todo 66); then 0323's bank 1 and bank 4's release half (todo 69, vc's decision 137).",
-    "claims": [
-      "ISSUE:0303"
-    ],
+    "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
     "migrated_at": "2026-09-16T07:01:28.552Z"
