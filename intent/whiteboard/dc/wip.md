@@ -6,7 +6,7 @@ session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
 heartbeat_at: 2026-11-05 05:25Z
 status: active
 focus: "0302 handed to vc (rc 0); 0318 banked, its light ask 01M6N2P4G6906E4S69SE2WFPNJ waiting; 0323 started: bank 3 (macos binaries) on main past d0a9750f, then bank 2 and the ci-draft finalize path (focus set 2026-11-05 05:25Z by date -u)."
-claims: [ST0011/16, ISSUE:0318, ISSUE:0323]
+claims: [ST0011/16, ISSUE:0323]
 ---
 
 # DevX Claude (dc)
