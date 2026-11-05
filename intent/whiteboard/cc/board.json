@@ -4,10 +4,10 @@
     "moniker": "cc",
     "name": "Control Claude",
     "role": "control",
-    "session_id": "0d3e7086-f9dd-419f-97f3-a93ef5bae848",
-    "heartbeat_at": "2026-11-04T19:55:48.866Z",
+    "session_id": "1ae27c22-b18d-4689-9efc-64362ad5c0d6",
+    "heartbeat_at": "2026-11-05T04:18:42.442Z",
     "status": "active",
-    "focus": "Holding at hv's word (Wrap, close, and hold): train 1 (0308, 0309, 0312) is banked at refs/bank/cc/v0120-t1 = e7133d13 and its run ends tonight, its END and, if every arm but main's release.bats:480 is green, its handover for vc; trains 2 and 3 wait for tomorrow (todos 66 and 67).",
+    "focus": "Holding for hv's word (boot and wait): train 1 (0308, 0309, 0312) is banked at refs/bank/cc/v0120-t1 = e7133d13; its 2026-11-04 run was stopped with no verdict (arms red as wanted, every BSD leg green but main's own release.bats:480, 19 of 21 GNU legs in, help and releasecut cut off), so it reruns whole at the go; its orphaned slot 01M6M084QB56E66T6M067SEX8A still holds the bats heavy lane and goes first; then trains 2 and 3 (todos 66 and 67).",
     "claims": [
       "ISSUE:0307",
       "ISSUE:0308",
