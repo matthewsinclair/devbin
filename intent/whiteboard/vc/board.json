@@ -4508,6 +4508,14 @@
       "text": "hv in vc's window, received before the clock read 2026-11-05 05:24Z by date -u: 'This setup is a one-off thing for this session so that I can quickly close out the finalised releases of devbin and molt. It is just taking WAY too long to run the full test suite across multiple platforms for each minor change. So, I want to get all outstanding issues in devbin and molt sorted out NOW, THIS MORNING. So that I can then move back to a more normal release process.' So decisions 136 and 138's test rules, and the routing of every node through devbin-vc, hold for this close-out alone: devbin 0.1.20, with every open issue fixed, cut, and Molt's outstanding issues done. Molt's only open issue is molt#0090, which closes when Molt-matts 2f95dfe lands at the v1.4.4 rollout: hv's brew upgrade molt, molt-dc's pick, hv's molt upgrade, then hv's push. After the close-out the normal release process resumes: per-unit runs, critic before the first run, and full suites.",
       "state": "live",
       "recorded_at": "2026-11-05T05:24:37.018Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 197,
+      "text": "At devbin 0.1.20's sweep, for 0323 bank 2 (landed 89380aa5): Utilz is the one project on the built-in macos, and it declares macos.keychain, which 0.1.20 refuses as an unknown key. In Utilz's sweep commit vc drops keychain: from its macos block (directive 10). Tell utilz-vc at its next session that notarisation moves to one notarytool keychain profile, macos.notary_profile (default devbin). macos.team picks the signing identity and is required where the keychain holds more than one Developer ID identity. Before Utilz's next cut, hv runs bin/devbin macos store-creds once on each Mac that cuts, and macos doctor then reads the profile PRESENT. The old keychain items stay where they are, since nothing deletes them.",
+      "state": "live",
+      "recorded_at": "2026-11-05T05:53:47.492Z"
     }
   ],
   "sent": [
