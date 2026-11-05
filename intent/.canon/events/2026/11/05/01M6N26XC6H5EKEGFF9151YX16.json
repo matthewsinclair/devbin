@@ -1,0 +1,16 @@
+{
+  "id": "01M6N26XC6H5EKEGFF9151YX16",
+  "ts": "2026-11-05T05:16:52.998Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 77,
+    "text": "devbin 0.1.20 under hv's per-issue rule, narrowed by vc decision 138 (each fix runs its own arms alone, red at main and green at the fix under BSD; the cut's gates, kovacs leg and CI are the one full test): group B landed and closed (0319 at b932de55); 0316 landed at 6845d6d2 and closed; 0302 banked at 291ea882, its run in light slot 01M6N1ZZ1ANS8NGJ1CTZX9N8V2. 0301 and 0303 moved to cc (dc's 0301 draft: ~/Devel/scratch/devbin-dc/gc/k301/HANDOFF-0301.md). Next: 0318, then 0323's bank 3 (on main once cc's 0313 lands), bank 2 and the ci-draft finalize path; dc closes 0323 once cc's banks 1 and 4's release half have landed too."
+  }
+}

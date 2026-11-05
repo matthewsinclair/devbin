@@ -3,17 +3,17 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 04:50Z
+heartbeat_at: 2026-11-05 05:16Z
 status: active
-focus: "GO under hv's per-issue rule (vc's relay at 04:35Z): 0319 and 0316 landed and closed; now 0302, then 0301, 0318, 0303, then 0323's banks (focus set 2026-11-05 04:50Z by date -u)."
-claims: [ST0011/16, ISSUE:0302, ISSUE:0301, ISSUE:0318, ISSUE:0303]
+focus: "0302's light run under way; then its handover, landing and close. Then 0318, then 0323's banks 3 and 2 and the ci-draft finalize path (vc decision 138, focus set 2026-11-05 05:16Z by date -u)."
+claims: [ST0011/16, ISSUE:0302, ISSUE:0318]
 ---
 
 # DevX Claude (dc)
 
 ## DOING
 
-- devbin 0.1.20 under hv's per-issue rule (vc decision 136): group B landed and closed (dfbfa370; 0319 at b932de55, closed in 78251428); 0316 landed at 6845d6d2 and closed. Next: 0302 (WIP 65b0166f in ~/Devel/scratch/devbin-dc/gc/build; the first probe's reds were the probe's own, probe2-0302 re-reads nine files; 25 redundant -c identity pairs go and 3 stay), then 0301, 0318, 0303, then 0323's banks (design and rulings in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md). (edited)
+- devbin 0.1.20 under hv's per-issue rule, narrowed by vc decision 138 (each fix runs its own arms alone, red at main and green at the fix under BSD; the cut's gates, kovacs leg and CI are the one full test): group B landed and closed (0319 at b932de55); 0316 landed at 6845d6d2 and closed; 0302 banked at 291ea882, its run in light slot 01M6N1ZZ1ANS8NGJ1CTZX9N8V2. 0301 and 0303 moved to cc (dc's 0301 draft: ~/Devel/scratch/devbin-dc/gc/k301/HANDOFF-0301.md). Next: 0318, then 0323's bank 3 (on main once cc's 0313 lands), bank 2 and the ci-draft finalize path; dc closes 0323 once cc's banks 1 and 4's release half have landed too. (edited)
 
 ## TODO
 
