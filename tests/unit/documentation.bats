@@ -821,8 +821,8 @@ ${short//"$DEVBIN_HOME/"/}"
 # as_reader <home> <path> <command...> -- <command> run as a brew user's shell
 # runs it: a scrubbed environment, <home> as its home and data directory, the
 # test's HOMEBREW_PREFIX, <path>, and no system or global git configuration, as
-# the suite reads none (tests/lib/test_helper.bash). The README arms run their
-# examples so.
+# a new user's machine has none. The README arms run their examples so; an
+# example seeds a project and commits nothing, so no identity is needed.
 as_reader() {
   local home="$1" path="$2"
   shift 2

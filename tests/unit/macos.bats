@@ -296,7 +296,7 @@ YAML
   make_app "$proj/build/Products/Release" com.example.demo "${2:-1.0.0}"
   with_dated_note "$proj"
   git_project "$proj"
-  git -C "$proj" -c user.name=t -c user.email=t@t tag -a v1.0.0 -m "- first" --cleanup=whitespace
+  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace
   git -C "$proj" push -q origin v1.0.0
   gh_object v1.0.0 v1.0.0 "- first"
   printf '%s\n' "$proj"
@@ -516,8 +516,8 @@ YAML
   printf 'make_app build/Products/Release\n' >>"$proj/mkapp"
   chmod +x "$proj/mkapp"
   git -C "$proj" add mkapp
-  git -C "$proj" -c user.name=t -c user.email=t@t commit -qm build
-  git -C "$proj" -c user.name=t -c user.email=t@t tag -f -a v1.0.0 -m "- first" >/dev/null
+  git -C "$proj" commit -qm build
+  git -C "$proj" tag -f -a v1.0.0 -m "- first" >/dev/null
   run macos_in "$proj" app-sign
   assert_success
   [ "$(cat "$DEVBIN_TEST_TMPDIR/built.at")" = "$(cd "$proj" && pwd -P)" ] || fail "the build ran in $(cat "$DEVBIN_TEST_TMPDIR/built.at")"
@@ -541,8 +541,8 @@ YAML
   printf '%s\n' 'build:' '  inputs:' '    - mkapp' '  artefacts:' '    app:' '      tool: cargo' \
     '      path: build/Products/Release/Demo.app' >>"$proj/bin/.devbin/config.yaml"
   git -C "$proj" add -A
-  git -C "$proj" -c user.name=t -c user.email=t@t commit -qm "the app, through the cache"
-  git -C "$proj" -c user.name=t -c user.email=t@t tag -f -a v1.0.0 -m "- first" >/dev/null
+  git -C "$proj" commit -qm "the app, through the cache"
+  git -C "$proj" tag -f -a v1.0.0 -m "- first" >/dev/null
   key="$(devbin_run "$proj" cache key app)" || fail "the arm cannot key app: $key"
   run macos_in "$proj" app-sign
   assert_success
@@ -612,12 +612,12 @@ YAML
   printf '#!/bin/sh\n: >"%s/built"\n' "$DEVBIN_TEST_TMPDIR" >"$proj/mkapp"
   chmod +x "$proj/mkapp"
   git -C "$proj" add mkapp
-  git -C "$proj" -c user.name=t -c user.email=t@t commit -qm "past the tag"
+  git -C "$proj" commit -qm "past the tag"
   run macos_in "$proj" app-sign
   assert_failure
   assert_output_contains "app-sign signs only the release's build: HEAD at v1.0.0"
   assert_output_contains "git worktree add --detach <dir> v1.0.0"
-  git -C "$proj" -c user.name=t -c user.email=t@t tag -f -a v1.0.0 -m "- first" >/dev/null
+  git -C "$proj" tag -f -a v1.0.0 -m "- first" >/dev/null
   printf 'x\n' >"$proj/dirt"
   run macos_in "$proj" app-sign
   assert_failure
@@ -633,14 +633,14 @@ cut_untagged() {
   printf '1.1.0\n' >"$1/VERSION"
   printf '# Changelog\n\n## [1.1.0] - 2026-02-01\n\n- second\n\n## [1.0.0] - 2026-01-01\n\n- first\n' >"$1/CHANGELOG.md"
   [ "${2:-}" != --app ] || make_app "$1/build/Products/Release" com.example.demo 1.1.0
-  git -C "$1" -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -qam "release 1.1.0"
+  git -C "$1" -c maintenance.auto=false -c gc.auto=0 commit -qam "release 1.1.0"
   git -C "$1" rev-parse HEAD
 }
 
 # cut_tag <proj> -- v1.1.0 cut at HEAD and pushed, with its release object, as
 # the cut makes them after its legs are green.
 cut_tag() {
-  git -C "$1" -c user.name=t -c user.email=t@t tag -a v1.1.0 -m "- second" --cleanup=whitespace
+  git -C "$1" tag -a v1.1.0 -m "- second" --cleanup=whitespace
   git -C "$1" push -q origin v1.1.0
   gh_object v1.1.0 v1.1.0 "- second"
 }
@@ -674,7 +674,7 @@ cut_tag() {
   release="$(cut_untagged "$proj" --app)"
   signed_and_stapled "$proj"
   # The tag cut at a commit after the one signed.
-  git -C "$proj" -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -q --allow-empty -m "after the signing"
+  git -C "$proj" -c maintenance.auto=false -c gc.auto=0 commit -q --allow-empty -m "after the signing"
   cut_tag "$proj"
   tagged="$(git -C "$proj" rev-parse 'v1.1.0^{commit}')"
   [ "$tagged" != "$release" ] || fail "the fixture tagged the commit it signed"
@@ -702,7 +702,7 @@ cut_tag() {
   cut_tag "$proj"
   # Development moves on past the tag before publish: publish holds the copy to
   # the tag's commit, never to HEAD, so it still ships.
-  git -C "$proj" -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -q --allow-empty -m "past the tag"
+  git -C "$proj" -c maintenance.auto=false -c gc.auto=0 commit -q --allow-empty -m "past the tag"
   run macos_in "$proj" publish
   assert_success
   assert_output_contains "published: Demo.app.zip on release v1.1.0"
@@ -755,7 +755,7 @@ cut_tag() {
   keychain_full
   local release moved
   proj="$(app_project "  build: ./mkapp")"
-  printf '#!/bin/sh\ngit -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -q --allow-empty -m "moved by the build"\n' >"$proj/mkapp"
+  printf '#!/bin/sh\ngit -c maintenance.auto=false -c gc.auto=0 commit -q --allow-empty -m "moved by the build"\n' >"$proj/mkapp"
   chmod +x "$proj/mkapp"
   git -C "$proj" add mkapp
   release="$(cut_untagged "$proj" --app)"
@@ -818,8 +818,8 @@ cut_tag() {
   printf '#!/bin/sh\n: >"%s/built"\n' "$DEVBIN_TEST_TMPDIR" >"$proj/mkapp"
   chmod +x "$proj/mkapp"
   git -C "$proj" add mkapp
-  git -C "$proj" -c maintenance.auto=false -c gc.auto=0 -c user.name=t -c user.email=t@t commit -qm "the build script"
-  git -C "$proj" -c user.name=t -c user.email=t@t tag -f -a v1.0.0 -m "- first" >/dev/null
+  git -C "$proj" -c maintenance.auto=false -c gc.auto=0 commit -qm "the build script"
+  git -C "$proj" tag -f -a v1.0.0 -m "- first" >/dev/null
   obj="$(git -C "$proj" rev-parse refs/tags/v1.0.0)"
   [ "$(git -C "$proj" cat-file -t "$obj")" = tag ] || fail "the fixture's v1.0.0 is no annotated tag"
   file="$proj/.git/objects/${obj:0:2}/${obj:2}"

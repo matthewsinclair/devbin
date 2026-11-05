@@ -85,8 +85,9 @@ $output"
 }
 
 @test "release_git_remote never runs core.askPass, set in the repository's config" {
-  # The suite's global config is /dev/null (devbin_setup), so the repository's
-  # own: the run stands in it, and -c on the command line outranks both.
+  # The suite's global config holds user.useConfigOnly alone
+  # (tests/lib/test_helper.bash), so core.askPass is the repository's own: the
+  # run stands in it, and -c on the command line outranks both.
   git -C "$REPO" config core.askPass "$ASKPASS"
   remote_read release_git_remote
   asked_none

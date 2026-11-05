@@ -54,7 +54,7 @@ YAML
   mkdir -p "$proj/.github/workflows"
   printf 'on: push\n' >"$proj/.github/workflows/linux-release.yml"
   git_project "$proj"
-  git -C "$proj" -c user.name=t -c user.email=t@t tag -a v1.0.0 -m "- first" --cleanup=whitespace
+  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace
   git -C "$proj" push -q origin v1.0.0
   gh_object v1.0.0 v1.0.0 "- first"
   printf '%s\n' "$proj"
@@ -629,7 +629,7 @@ YAML
   )"
   with_dated_note "$proj"
   git_project "$proj"
-  git -C "$proj" -c user.name=t -c user.email=t@t tag -a v1.0.0 -m "- first" --cleanup=whitespace
+  git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace
   git -C "$proj" push -q origin v1.0.0
   gh_object v1.0.0 v1.0.0 "- first"
   printf '%s\n' "$proj"

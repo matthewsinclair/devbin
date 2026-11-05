@@ -47,12 +47,12 @@ YAML
 # commit_all <proj> <message> -- stage everything and commit.
 commit_all() {
   git -C "$1" add -A
-  git -C "$1" -c user.name=t -c user.email=t@t commit -qm "$2"
+  git -C "$1" commit -qm "$2"
 }
 
 # tag_release <proj> [tag] -- an annotated tag at HEAD, as the core makes one.
 tag_release() {
-  git -C "$1" -c user.name=t -c user.email=t@t tag -a "${2:-v1.0.0}" -m "- first" --cleanup=whitespace
+  git -C "$1" tag -a "${2:-v1.0.0}" -m "- first" --cleanup=whitespace
 }
 
 # ============================================================================
@@ -200,7 +200,7 @@ release:
   assert_state push already
 
   # A remote whose branch has moved PAST the release still holds it.
-  git -C "$proj" -c user.name=t -c user.email=t@t commit -q --allow-empty -m later
+  git -C "$proj" commit -q --allow-empty -m later
   git -C "$proj" push -q origin main
   run release_in "$proj" status v1.0.0
   assert_success
@@ -788,7 +788,7 @@ release:
   printf '# Changelog\n\n## [1.0.0] - 2026-01-01\n\n- first $Format:%%h$\n' >"$proj/CHANGELOG.md"
   printf 'CHANGELOG.md export-subst\n' >"$proj/.gitattributes"
   commit_all "$proj" "export-subst the changelog"
-  git -C "$proj" -c user.name=t -c user.email=t@t tag -a v1.0.0 -m '- first $Format:%h$' --cleanup=whitespace
+  git -C "$proj" tag -a v1.0.0 -m '- first $Format:%h$' --cleanup=whitespace
   run release_in "$proj" status v1.0.0
   assert_state commit already
   assert_state tag already

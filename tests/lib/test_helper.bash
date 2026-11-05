@@ -71,10 +71,17 @@ export TERM=dumb
 # the person's global config, whose init.defaultBranch=main covered for a
 # fixture that made its bare remote without -b main: every local suite passed,
 # and CI's runner, which sets no such thing, was red with nobody reporting it.
-# An empty global file and no system file is what that runner has, so a local
-# run now fails where CI would.
-# No identity is lost: every fixture that commits passes its own.
-export GIT_CONFIG_GLOBAL=/dev/null
+# A global file holding nothing CI's runner lacks, and no system file, is what
+# that runner has, so a local run now fails where CI would.
+#
+# GIT GUESSES NO IDENTITY HERE (issue 0302). With no identity configured git
+# guesses one from the host's name and resolver, which a host without a domain
+# refuses (kovacs: `unable to auto-detect email address`) and a Mac accepts, so
+# an arm leaning on the guess was red only on such a host. The global file sets
+# user.useConfigOnly, so such a commit fails on every host, where it is written.
+# A fixture project's identity is in its own config (git_project in
+# tests/lib/release_fixtures.bash sets it), or passed on the commit with -c.
+export GIT_CONFIG_GLOBAL="$DEVBIN_HOME/tests/fixtures/harness/gitconfig"
 export GIT_CONFIG_NOSYSTEM=1
 
 # ============================================================================
@@ -414,7 +421,8 @@ devbin_isolate_machine() {
   # runner's first, so they still find it: mix, hex and rustup. rustup's cargo
   # proxy reads its toolchains from RUSTUP_HOME, so under an empty home it can
   # choose no cargo at all (issue 0222). cargo's own home is pinned in
-  # devbin_isolate_run, and git reads no global config here.
+  # devbin_isolate_run, and git reads the harness's global config, which
+  # GIT_CONFIG_GLOBAL names, never one under HOME.
   export MIX_HOME="${MIX_HOME:-$HOME/.mix}" HEX_HOME="${HEX_HOME:-$HOME/.hex}"
   export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
   export HOME="$DEVBIN_TEST_TMPDIR/home"

@@ -1,0 +1,7 @@
+# The global git config the suite reads (tests/lib/test_helper.bash names it in
+# GIT_CONFIG_GLOBAL; an arm that names a file of its own reads that instead).
+# Its one setting stops git guessing an identity from the host, so a commit with
+# no identity configured fails on every host, as it does on one without a
+# domain.
+[user]
+	useConfigOnly = true

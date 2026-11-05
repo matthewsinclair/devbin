@@ -101,11 +101,20 @@ teardown() { devbin_teardown; }
   [ "$TERM" = dumb ]
 }
 
-@test "the suite reads no global or system git config, as CI's runner has none" {
-  [ "$GIT_CONFIG_GLOBAL" = /dev/null ] || fail "GIT_CONFIG_GLOBAL is '${GIT_CONFIG_GLOBAL:-unset}'"
+@test "the suite reads no system git config and no global one but the harness's own, as CI's runner has none, and git guesses no identity (0302)" {
+  [ "$GIT_CONFIG_GLOBAL" = "$DEVBIN_HOME/tests/fixtures/harness/gitconfig" ] || fail "GIT_CONFIG_GLOBAL is '${GIT_CONFIG_GLOBAL:-unset}'"
   [ "$GIT_CONFIG_NOSYSTEM" = 1 ] || fail "GIT_CONFIG_NOSYSTEM is '${GIT_CONFIG_NOSYSTEM:-unset}'"
   run git config --get init.defaultBranch
   [ -z "$output" ] || fail "init.defaultBranch reaches the suite as '$output' -- the operator's config covers for a fixture CI would catch"
+  # A commit with no identity configured is refused here on every host, and
+  # one with an identity given goes through: the control.
+  local repo="$DEVBIN_TEST_TMPDIR/noident"
+  git init -q "$repo"
+  run git -C "$repo" -c maintenance.auto=false commit -q --allow-empty -m guessed
+  assert_failure
+  assert_output_contains "auto-detection is disabled"
+  run git -C "$repo" -c maintenance.auto=false -c user.name=t -c user.email=t@example.invalid commit -q --allow-empty -m given
+  assert_success
 }
 
 @test "a TMPDIR inside a git checkout is refused by name, and one outside is not -- the control" {

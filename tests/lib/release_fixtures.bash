@@ -99,9 +99,10 @@ write_tests_workflow() {
 #
 # THE IDENTITY IS IN THE PROJECT'S CONFIG, so every commit and tag made in it
 # reads the same on every host, the release commit the cut makes as much as the
-# fixture's own: the harness reads no global or system config, and git with no
-# identity set guesses one from the host's name, which a host without a domain
-# refuses (issue 0300).
+# fixture's own: git with no identity set guesses one from the host's name,
+# which a host without a domain refuses (issue 0300), and the harness's global
+# config stops that guess on every host (issue 0302), so a commit made with no
+# identity fails wherever it runs.
 #
 # AN OBJECT MADE BY A WORKFLOW (`object: ci`) is $DEVBIN_TEST_TMPDIR/gh.appear,
 # "<tag> <n>": the tag joins the list on the nth `release view` of it, so an

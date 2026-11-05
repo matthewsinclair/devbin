@@ -77,7 +77,7 @@ YAML
   ln -s guide.md "$proj/docs/link.md"
   printf 'workroom\n' >"$proj/intent/notes.md"
   GIT_AUTHOR_DATE="$SNAP_AT" GIT_COMMITTER_DATE="$SNAP_CT" git_project "$proj"
-  git -C "$proj" -c user.name=t -c user.email=t@t tag -a -m v1.0.0 v1.0.0
+  git -C "$proj" tag -a -m v1.0.0 v1.0.0
   printf '%s\n' "$proj"
 }
 
@@ -86,8 +86,8 @@ YAML
 next_release() {
   printf '%s\n' "$2" >"$1/VERSION"
   printf 'guide %s\n' "$2" >"$1/docs/guide.md"
-  git -C "$1" -c user.name=t -c user.email=t@t commit -qam "release $2"
-  git -C "$1" -c user.name=t -c user.email=t@t tag -a -m "v$2" "v$2"
+  git -C "$1" commit -qam "release $2"
+  git -C "$1" tag -a -m "v$2" "v$2"
 }
 
 # snap_in <proj> <args>... -- release_in, under a TMPDIR of the test's own.
@@ -178,7 +178,7 @@ $got"
   proj="$(snap_project)"
   printf 'guide, edited\n' >"$proj/docs/guide.md"
   printf 'bin/\ndocs/\ntests/\nVERSION\n' >"$proj/tests/shipped.paths"
-  git -C "$proj" -c user.name=t -c user.email=t@t commit -qam "an audit's commit"
+  git -C "$proj" commit -qam "an audit's commit"
   # THE CHECKOUT DIFFERS FROM THE COMMIT, three ways: the guide staged
   # otherwise, the list changed and not staged, and a file git does not track.
   printf 'guide, staged\n' >"$proj/docs/guide.md"
@@ -448,7 +448,7 @@ EOF2
   # The gitlink goes in through the index, and the list alone is staged beside
   # it: `commit -a` would read the missing directory as a deletion.
   git -C "$proj" update-index --add --cacheinfo "160000,$(git -C "$proj" rev-parse HEAD),docs/sub"
-  git -C "$proj" -c user.name=t -c user.email=t@t commit -qm "a gitlink under docs"
+  git -C "$proj" commit -qm "a gitlink under docs"
   git -C "$proj" cat-file -e HEAD:docs/sub || fail "the fixture commit carries no gitlink"
   local before
   before="$(fingerprint "$proj")"
