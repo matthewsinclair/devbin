@@ -965,14 +965,25 @@ cfg_macos_artefacts() {
 # seal; nothing at 1 when no entry's path is the app's, so the stage builds
 # its app uncached; at 2 why there is none to take when two or more entries
 # name the app, which config validation refuses, so the stage never guesses
-# between them; and at 3 why there is none when macos.build is not declared,
-# since a stage that builds no app pulls and puts none.
+# between them; at 3 why there is none when macos.build is not declared,
+# since a stage that builds no app pulls and puts none; and at 4 why there is
+# none when the one entry's app carries its commit (macos.commit_stamp, issue
+# 0324), which config validation refuses too: the key holds no commit, so a
+# copy pulled at a later commit would be another commit's build, which
+# app-sign refuses, and such an app gains nothing from the cache. 4 is asked
+# before 3, since a project's own build handler can pull the app whether or
+# not macos.build is declared.
 cfg_macos_artefact() {
-  local arts build
+  local arts build stamp
   arts="$(cfg_macos_artefacts)" || return 1
   if [ "$arts" != "${arts%%$'\n'*}" ]; then
     printf "build.artefacts %s each have macos.app's path, so the macOS stage takes none of them -- declare the app's artefact once\n" "${arts//$'\n'/, }"
     return 2
+  fi
+  stamp="$(cfg_macos_get commit_stamp)" || return 1
+  if [ -n "$arts" ] && [ -n "$stamp" ]; then
+    printf "build.artefacts.%s has macos.app's path beside macos.commit_stamp (%s): the app carries the commit it was built at and its key does not, so a copy pulled at a later commit is another commit's build, which app-sign refuses -- leave the app out of build.artefacts, since it gains nothing from the cache\n" "$arts" "$stamp"
+    return 4
   fi
   build="$(cfg_macos_get build)" || return 1
   if [ -z "$build" ]; then
@@ -1618,12 +1629,17 @@ _cfg_build_problems() {
   done
   # THE APP IS ONE ARTEFACT (ST0011 WP-06): two entries whose path is
   # macos.app's would leave the macOS stage to guess which to pull and put.
+  # AND NONE WHERE IT CARRIES ITS COMMIT (issue 0324): beside
+  # macos.commit_stamp, a copy pulled at a later commit is another commit's
+  # build.
   local said s=0
   said="$(cfg_macos_artefact)" || s=$?
-  if [ "$s" -eq 2 ]; then
-    printf 'config: %s: %s\n' "$_DEVBIN_CFG_FILE" "$said" >&2
-    rc=1
-  fi
+  case "$s" in
+    2 | 4)
+      printf 'config: %s: %s\n' "$_DEVBIN_CFG_FILE" "$said" >&2
+      rc=1
+      ;;
+  esac
   return "$rc"
 }
 

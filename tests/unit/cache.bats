@@ -633,14 +633,22 @@ unusable_root() {
   refute_output_contains "not at HEAD: src"
 }
 
-# macos_config <path>... -- PROJ's config with the built-in macos enabled, its
-# app at out/Demo.app built by macos.build, and a build: block holding one
-# artefact per <path>, named a, b and on, each built by cargo from src.
+# macos_config [--stamp <key>] <path>... -- PROJ's config with the built-in
+# macos enabled, its app at out/Demo.app built by macos.build and, with
+# --stamp, stamped with its commit under the Info.plist key <key>
+# (macos.commit_stamp), and a build: block holding one artefact per <path>,
+# named a, b and on, each built by cargo from src.
 macos_config() {
-  local names=(a b c) i=0 p
+  local names=(a b c) i=0 p stamp=""
+  if [ "${1:-}" = --stamp ]; then
+    stamp="$2"
+    shift 2
+  fi
   {
     printf '%s\n' 'project:' '  name: demo' 'commands:' '  macos:' '    enabled: true' \
-      'macos:' '  app: out/Demo.app' '  build: ./mkapp' 'build:' '  inputs:' '    - "src"' '  artefacts:'
+      'macos:' '  app: out/Demo.app' '  build: ./mkapp'
+    if [ -n "$stamp" ]; then printf '  commit_stamp: %s\n' "$stamp"; fi
+    printf '%s\n' 'build:' '  inputs:' '    - "src"' '  artefacts:'
     for p in "$@"; do
       printf '    %s:\n      tool: cargo\n      path: "%s"\n' "${names[$i]}" "$p"
       i=$((i + 1))
@@ -653,6 +661,15 @@ macos_config() {
   run --separate-stderr devbin_run "$PROJ" cache key a
   assert_refused "build.artefacts a, b each have macos.app's path, so the macOS stage takes none of them"
   macos_config out/Demo.app out/other
+  run --separate-stderr devbin_run "$PROJ" cache key a
+  assert_success
+}
+
+@test "0324: a build: artefact whose path is macos.app's, beside macos.commit_stamp, is refused at config read, naming the artefact and the stamp, since a copy pulled at a later commit is another commit's build" {
+  macos_config --stamp AppCommit out/Demo.app
+  run --separate-stderr devbin_run "$PROJ" cache key a
+  assert_refused "build.artefacts.a has macos.app's path beside macos.commit_stamp (AppCommit)"
+  macos_config --stamp AppCommit out/other
   run --separate-stderr devbin_run "$PROJ" cache key a
   assert_success
 }
