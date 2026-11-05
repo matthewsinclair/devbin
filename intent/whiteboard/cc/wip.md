@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 05:12Z
+heartbeat_at: 2026-11-05 06:16Z
 status: active
-focus: "Group A one issue at a time under hv's localised-test rule (vc's GO, 2026-11-05 04:35Z): train 1 (0308, 0309, 0312) and 0310 landed and closed; 0313 running in light slot 01M6N1K0DDKBPQ4806K76YNS6S at da361079; 0314 built ahead on it; then 0307 (todo 66); then 0323's bank 1 and bank 4's release half (todo 69, vc's decision 137)."
+focus: "Holding for the cut's preparations, at vc's word (2026-11-05): every unit vc gave cc this morning is landed and closed, or landed under dc's 0323 (banks 1 and 4, the notary_submit line); 0323 waits on dc's bank 3 alone, and dc closes it. Hold 35 (Utilz's candidate CI) stays parked with ST0011's consumer work."
 claims: []
 ---
 
@@ -17,8 +17,7 @@ _(none)_
 
 ## TODO
 
-- Group A and the issues moved to cc, one at a time, each on main after the one before lands, under hv's rule as tightened by vc's decision 138 (2026-11-05 05:15Z): a fix's run is its own arms alone, filtered, red at main's code and green at the fix under BSD, an arm beside them only where it calls what the fix changes; no whole file, GNU leg, tree scan or critic pass; the cut's gates, kovacs leg and CI are the one full test. Queue: 0314 (built ahead, ~/Devel/scratch/devbin-cc/v0120-0314), 0307, 0301 (after dc's 0302 lands; dc's draft and handoff at ~/Devel/scratch/devbin-dc/gc/k301/HANDOFF-0301.md), 0303 (DEVBIN_TEST_JOBS's one reader is bin/.devbin/cmd/.lib/bats-lanes:141, dc's read). Each: light ask named to vc, bank, handover, vc's land-stack.sh, Resolution and close. (edited)
-- 0323's two pieces, at vc's decision 137 (hv's ruling, 2026-11-05 04:51Z relay), after 0310, 0313, 0314 and 0307 close, each its own unit through the loop under dc's ISSUE:0323 claim: bank 1, the built-in lock-sync at the stamp step (version_from a Cargo.toml with a Cargo.lock beside it; cargo metadata; the lock compared with the crate's own version line set aside; put back and refused on any other change, naming the lock as a written path; the awk filter for BSD and GNU awk); and bank 4's release half, formula publish with the tap pull as the core's last built-in step, run only after a successful attach. Design: ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md, sections 1 and 4 and the Rulings. Tell dc before touching a file dc's banks reach.
+_(none)_
 
 ## Holds
 
