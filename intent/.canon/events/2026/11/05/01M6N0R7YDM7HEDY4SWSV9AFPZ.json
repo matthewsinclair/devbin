@@ -1,0 +1,15 @@
+{
+  "id": "01M6N0R7YDM7HEDY4SWSV9AFPZ",
+  "ts": "2026-11-05T04:51:23.725Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's ruling of 2026-11-05 in vc's window (answered before the clock read 2026-11-05 04:51Z by date -u), as vc recommended (option a): 0323's release-side pieces go to cc once cc's own issues (0310, 0313, 0314, 0307) are closed. These are the built-in lock-sync at the stamp step (the design note's bank 1, automatic where version_from is a Cargo.toml with a Cargo.lock beside it), and formula publish with the tap pull as the core's last built-in step, run only after a successful attach (bank 4's release half). dc keeps the notarytool keychain profile across the app path (bank 2, announced to every app project before it lands), the macos binaries' sign, verify, notarise and pack with the local path as a leg before the tag (bank 3), and the ci-draft finalize path (bank 4's macOS half). dc holds ISSUE:0323 and closes it once every bank has landed. Each bank runs its own test through the loop (decision 136), and the three projects' cuts follow as the fleet proof once hv starts them. Not to be put again."
+  }
+}
