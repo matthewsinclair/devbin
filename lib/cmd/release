@@ -2081,6 +2081,9 @@ cut_run() {
   local state detail remotes remote answer nremote=0 owned dirt outside="" deferred=""
   local derived gates out written="" have n ignored_rc ignored_why assets_wf after_list lock
   local formula_on formula_step=no
+  # The binaries' archive (issue 0323): named at pre-flight where the object
+  # step runs macos bin-publish, and empty where it does not.
+  local bins_archive=""
   local -a refusals=() gl=()
   # The candidate's target, its ref and the target as a line names it, found
   # at pre-flight: the remote the legs step pushes it to, or in the publish
@@ -2523,6 +2526,24 @@ cut_run() {
       done
     fi
   fi
+  # THE BINARIES' ARCHIVE (issue 0323): under object: local, where the macOS
+  # stage is declared with macos.binaries, the object step runs macos
+  # bin-publish once the object is made, before the formula step, and reads
+  # the release for the archive by release_bin_archive's name, bin-publish's
+  # own. Named whether or not the tag exists, since a re-run past the tag reads
+  # it too, and only on a macOS host, since the name carries the host's triple:
+  # a cut elsewhere is refused above, with the stage, and a re-run past the tag
+  # here. A name that cannot be made is refused before anything is stamped.
+  if [ "$object" = local ] && cfg_macos_declared && [ -n "$(cfg_macos_binaries)" ]; then
+    local bins_word
+    bins_word="$(platform_word)" || bins_word=""
+    if [ "$bins_word" = macos ]; then
+      bins_archive="$(release_bin_archive "$(cfg_get project.name)" "$v")" ||
+        refusals+=("the binaries' archive cannot be named for the object step's macos bin-publish: project.name is not declared, or rustc -vV names no host triple")
+    elif [ "$source" = tag ]; then
+      refusals+=("macos.binaries is declared under object: local, so the object step packs the binaries' archive through macos bin-publish, whose name carries a macOS host's triple, and this host is ${bins_word:-one devbin has no platform word for} -- run the cut again on a macOS host")
+    fi
+  fi
   for legs_a in "${LEGS_ABSENT[@]}"; do
     legs_said+="; legs.${legs_a%%$'\t'*} absent, not run: ${legs_a#*$'\t'}"
   done
@@ -2623,7 +2644,7 @@ cut_run() {
   # about whether anything is left.
   local -a left=() push_plan=()
   local object_work="" object_detail="" title repo="" declared_repo drem
-  local attach_work=no assets_detail="" heading plan_words
+  local attach_work=no assets_detail="" bins_work=no bins_detail="" heading plan_words
   declared_repo="$(cfg_release_get repo)" || cut_fail confirm "release.repo cannot be read"
   drem="$(declared_remote)" || cut_fail confirm "the first declared remote cannot be read"
   cut_read_remotes "$push_mode" confirm
@@ -3021,9 +3042,10 @@ cut_push_public() {
 # named in the question and only a confirmed run changes it; no run reports
 # `already` over an object that differs. Reads the caller's tag, v, commit
 # (whose tree the notes body is read from), title, declared_repo, drem,
-# assets_wf, body_file and commit_to_make; sets its repo, object_work,
-# object_detail, attach_work and assets_detail, and adds to its left the work
-# it finds. A read that fails fails the confirm step.
+# assets_wf, bins_archive, body_file and commit_to_make; sets its repo,
+# object_work, object_detail, attach_work, assets_detail, bins_work and
+# bins_detail, and adds to its left the work it finds. A read that fails fails
+# the confirm step.
 #
 # WHILE THE COMMIT STEP HAS STILL TO MAKE THE RELEASE COMMIT (commit_to_make,
 # since the confirm step comes first, ST0011), the notes body that object must
@@ -3081,6 +3103,33 @@ cut_object_left() {
           attach_work=yes
           left+=("attach the assets $assets_wf's run at $tag built, and SHA256SUMS: ${answer#*$'\t'}")
           ;;
+        *) cut_fail confirm "${answer#*$'\t'}" ;;
+      esac
+    fi
+  fi
+  # THE BINARIES' ARCHIVE (issue 0323), named at pre-flight where the object
+  # step runs macos bin-publish, is work left unless the release carries it
+  # with SHA256SUMS naming it, read through bin-publish's own read
+  # (release_bins_read), so the question, the object step and bin-publish
+  # cannot disagree about whether it is done. One it carries with SHA256SUMS
+  # disagreeing is refused here, in bin-publish's own words
+  # (release_bins_pending), since bin-publish never packs over it: a dry run
+  # and a cut stop where bin-publish would. An object still to be made carries
+  # none yet; one to be set is read as it stands.
+  if [ -n "${bins_archive:-}" ]; then
+    if [ "$object_work" = create ]; then
+      bins_work=yes
+      left+=("pack and attach the binaries' archive $bins_archive through macos bin-publish, and SHA256SUMS")
+    else
+      answer="$(release_wait 0 "" UNREADABLE release_bins_read "$repo" "$tag" "$bins_archive")" ||
+        cut_fail confirm "reading whether $tag carries $bins_archive failed (exit $?)"
+      case "${answer%%$'\t'*}" in
+        already) bins_detail="$bins_archive attached, ${answer#*$'\t'}" ;;
+        absent)
+          bins_work=yes
+          left+=("pack and attach the binaries' archive $bins_archive through macos bin-publish, and SHA256SUMS: ${answer#*$'\t'}")
+          ;;
+        pending) cut_fail confirm "$(release_bins_pending "$tag" "$bins_archive" "${answer#*$'\t'}")" ;;
         *) cut_fail confirm "${answer#*$'\t'}" ;;
       esac
     fi
@@ -3210,8 +3259,9 @@ cut_formula_step() {
 # remote. Run in the caller's shell, it reads the caller's tag, v, commit (the
 # commit the tag names, where the attach and brew read it), rel_at, branch,
 # object, title, repo, declared_repo, drem, body_file, object_work,
-# object_detail, attach_work, assets_detail, assets_wf, after_list,
-# formula_step, confirmed, ask_next and dry_run.
+# object_detail, attach_work, assets_detail, assets_wf, bins_archive,
+# bins_work, bins_detail, launcher, after_list, formula_step, confirmed,
+# ask_next and dry_run.
 cut_tail() {
   # --- the release object ------------------------------------------
   case "$object" in
@@ -3296,10 +3346,12 @@ cut_tail() {
       fi
       # THE ATTACH, THE SAME FUNCTION `release attach` RUNS (ST0008 WP-08), after
       # the object, and only where the confirm step named it as work left.
+      local row_state="$obj_state" row_detail="$obj_detail${assets_detail:+; $assets_detail}"
       if [ "$attach_work" != yes ]; then
-        cut_row object "$obj_state" "$obj_detail${assets_detail:+; $assets_detail}"
+        :
       elif [ "$dry_run" = 1 ]; then
-        cut_row object would "$obj_detail; then attach the assets $assets_wf's run at $tag built, and SHA256SUMS, waiting up to $(cfg_release_get assets.wait) (assets.wait) for the run"
+        row_state=would
+        row_detail="$obj_detail; then attach the assets $assets_wf's run at $tag built, and SHA256SUMS, waiting up to $(cfg_release_get assets.wait) (assets.wait) for the run"
         CUT_UNREACHED+=("the object step's attach: a dry run reads no run's files and attaches nothing")
       else
         # NO ARM REACHES IT: the attach is work left, so the confirm step has confirmed it
@@ -3312,18 +3364,54 @@ cut_tail() {
         fi
         [ -z "$ATTACH_OUTWARD" ] || CUT_OUTWARD+=", $ATTACH_OUTWARD"
         if [ "$obj_state" = already ] && [ "$ATTACH_WROTE" = no ]; then
-          cut_row object already "$obj_detail; the attach found $ATTACH_DETAIL"
+          row_state=already row_detail="$obj_detail; the attach found $ATTACH_DETAIL"
         else
-          cut_row object "done" "$obj_detail; attached $ATTACH_DETAIL"
+          row_state="done" row_detail="$obj_detail; attached $ATTACH_DETAIL"
         fi
       fi
+      # THE BINARIES' ARCHIVE (issue 0323), after the object and its attach and
+      # before the formula step, whose formula installs from it: macos
+      # bin-publish through the launcher, where the confirm step named it as
+      # work left, then read back by bin-publish's own read (release_bins_read).
+      # bin-publish reads the release first itself, so one that finds the
+      # archive there says already and packs nothing. A FAILURE STOPS THE CUT
+      # HERE, the object made and standing, and the formula step unrun.
+      if [ "$bins_work" != yes ]; then
+        row_detail+="${bins_detail:+; $bins_detail}"
+      elif [ "$dry_run" = 1 ]; then
+        row_state=would
+        row_detail+="; then pack and attach the binaries' archive $bins_archive through macos bin-publish, and SHA256SUMS"
+        CUT_UNREACHED+=("the object step's bin-publish: a dry run packs and attaches nothing")
+      else
+        # NO ARM REACHES IT: the archive is work left, so the confirm step has confirmed
+        # it or stopped the run. Kept so the object step never packs on its own say-so.
+        [ "$confirmed" = yes ] || cut_fail object "the binaries' archive has work left and nobody confirmed attaching it"
+        local bins_out="$SCRATCH/bin-publish.out" bins_rc=0 bins_last
+        printf '\nrelease: bin-publish: %s macos bin-publish, the binaries'"'"' archive %s\n' "${DEVBIN_INVOKE:-bin/devbin}" "$bins_archive"
+        gate_exec "$launcher" macos bin-publish >"$bins_out" 2>&1 || bins_rc=$?
+        cat "$bins_out"
+        if grep -q '^published: ' "$bins_out"; then CUT_OUTWARD+=", attached $bins_archive to the release object for $tag"; fi
+        bins_last="$(awk 'NF { l = $0 } END { print l }' "$bins_out")"
+        [ "$bins_rc" -eq 0 ] ||
+          cut_fail object "$row_detail; macos bin-publish did not attach $bins_archive (exit $bins_rc): ${bins_last:-it said nothing}"
+        answer="$(release_wait 0 "" UNREADABLE release_bins_read "$repo" "$tag" "$bins_archive")" ||
+          cut_fail object "reading back whether $tag carries $bins_archive failed (exit $?)"
+        [ "${answer%%$'\t'*}" = already ] ||
+          cut_fail object "macos bin-publish finished, and $tag does not read back as carrying $bins_archive: ${answer#*$'\t'}"
+        if grep -q '^published: ' "$bins_out"; then
+          row_state="done" row_detail+="; attached $bins_archive through macos bin-publish, ${answer#*$'\t'}"
+        else
+          row_detail+="; $bins_archive attached, ${answer#*$'\t'}"
+        fi
+      fi
+      cut_row object "$row_state" "$row_detail"
       ;;
   esac
 
   # --- the formula -------------------------------------------------
   # THE CORE'S LAST BUILT-IN STEP (issue 0323), reached only once the object
-  # step has succeeded, its attach included, since any failure there stopped
-  # the cut (cut_fail).
+  # step has succeeded, its attach and its bin-publish included, since any
+  # failure there stopped the cut (cut_fail).
   cut_formula_step
 
   # --- after ------------------------------------------------------

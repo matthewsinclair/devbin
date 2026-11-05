@@ -2563,7 +2563,7 @@ $output"
 # at the release commit as a leg, its seal copied back from a fake host
 # (release_fixtures.bash's fake_ssh and fake_scp: nothing leaves this machine,
 # kovacs included); the macOS stage, where the built-in macos is enabled, runs
-# app-sign then app-notarize at the release commit as a leg of its own, here
+# macos leg at the release commit as a leg of its own (issue 0323), here
 # through the project's own macos handler under a uname that says Darwin, so
 # no arm needs an Apple tool and every arm runs on every host.
 # ============================================================================
@@ -2591,8 +2591,8 @@ legs_env() {
 # 3, saying so, where macos.fail stands beside macos.calls; and
 # its app, out/Demo.app, built by macos.build and the build: block's artefact
 # `app`, keyed by the stub cargo over src, so the cut names its key in the seal.
-# The handler stands in for app-sign, so it never runs macos.build (./mkapp) and
-# caches nothing: the arm holds the cut's answer, not a cache entry.
+# The handler stands in for macos leg, so it never runs macos.build (./mkapp)
+# and caches nothing: the arm holds the cut's answer, not a cache entry.
 # Committed and pushed.
 legs_project() {
   local proj
@@ -2659,9 +2659,9 @@ $output"; fi
   # near's pair, copied back from the host it ran on.
   pairs=("$proj"/tmp/release/legs/near/*.GATES.errors)
   [ -f "${pairs[0]}" ] || fail "near's seal was not copied back under tmp/release/legs/near/"
-  # The stage, app-sign then app-notarize, each at the release commit.
-  [ "$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")" = "$(printf 'app-sign %s\napp-notarize %s' "$rel" "$rel")" ] ||
-    fail "the stage did not run app-sign then app-notarize at $rel: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  # The stage, macos leg, once, at the release commit (issue 0323).
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")" = "leg $rel" ] ||
+    fail "the stage did not run macos leg once at $rel: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
   # The artefact the stage used, keyed at the release commit by the cache itself.
   key="$(devbin_run "$proj" cache key app --commit "$rel")" || fail "the arm cannot key app at $rel: $key"
   grep -qxF "devbin| cache"$'\t'"app"$'\t'"$key" "$out" || fail "the seal names no cache line for app $key: $(grep -F 'cache' "$out" || echo '(none)')"
@@ -2785,8 +2785,8 @@ root|1|the path, the project root itself, which git cannot ignore -- declare the
   assert_stopped_at legs
   [[ "$(row_of legs)" == *"macos is red: the macOS stage ended (exit "*") at "*" -- its last line: "* ]] ||
     fail "the stage's failure is not named with its exit and last line: $(row_of legs)"
-  grep -qx "app-sign $(git -C "$proj" rev-parse HEAD)" "$DEVBIN_TEST_TMPDIR/macos.calls" ||
-    fail "the stage did not run app-sign at the release commit: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls" 2>&1)"
+  grep -qx "leg $(git -C "$proj" rev-parse HEAD)" "$DEVBIN_TEST_TMPDIR/macos.calls" ||
+    fail "the stage did not run macos leg at the release commit: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls" 2>&1)"
   [ -z "$(git -C "$proj" tag -l v1.0.1)" ] || fail "the failed cut tagged v1.0.1"
 }
 
@@ -3075,6 +3075,158 @@ brew_stub() {
   assert_output_contains 'tag:      "v1.0.1",'
   [ "$(git -C "$clone" rev-parse HEAD)" = "$(git -C "$TAP" rev-parse main)" ] ||
     fail "this machine's clone of the tap is not at the tap's main: $(git -C "$clone" log --oneline -2)"
+}
+
+# The host triple cut_bins_project's stub rustc names, which the binaries'
+# archive's name carries (release_bin_archive).
+BINS_TRIPLE="aarch64-apple-darwin"
+
+# cut_bins_project -- after legs_env, publish_project with release.formula
+# true, under object: local, its default, and the built-in macos enabled with
+# one binary declared, built under macos.bin_dir out/bin, which the tree
+# ignores; and this machine's clone of the tap where brew_stub's Homebrew keeps
+# it, for the formula step's pull. The built-in is answered by the project's
+# own handler, which records each call with the commit it stood on in
+# macos.calls: `leg` stands in for the macOS stage; `bin-publish` records in
+# bins.tap how many commits the tap's main held when it ran, then attaches a
+# stand-in archive, named as release_bin_archive names it from the stub
+# rustc's host, through the project's own release attach --from, as the
+# built-in does, and says published as the built-in does. Committed and
+# pushed. Called in the arm itself, since publish_project sets proj and TAP.
+cut_bins_project() {
+  local cfg clone
+  publish_project "  formula: true"
+  cfg="$proj/bin/.devbin/config.yaml"
+  perl -0pi -e 's/\ncommands:\n  release:\n    enabled: true\n/\ncommands:\n  release:\n    enabled: true\n  macos:\n    enabled: true\n/' "$cfg"
+  grep -q '^  macos:$' "$cfg" || fail "the fixture's config does not enable macos: $(cat "$cfg")"
+  printf '%s\n' 'macos:' '  bin_dir: out/bin' '  binaries:' '    cli:' '      path: demo' '      identifier: com.example.demo.cli' >>"$cfg"
+  printf 'out/\n' >>"$proj/.gitignore"
+  # shellcheck disable=SC2016 # expanded when the stub runs
+  printf '#!/bin/sh\n[ "$*" = -vV ] || exit 1\necho "rustc 1.0.0 (stub)"\necho "host: %s"\n' "$BINS_TRIPLE" >"$DEVBIN_TEST_TMPDIR/stubs/rustc"
+  chmod +x "$DEVBIN_TEST_TMPDIR/stubs/rustc"
+  # shellcheck disable=SC2016 # expanded when the handler runs
+  create_test_command "$proj" macos "$(printf '%s\n' '#!/usr/bin/env bash' 'set -euo pipefail' \
+    "T='$DEVBIN_TEST_TMPDIR'" \
+    'cd "$(git rev-parse --show-toplevel)"' \
+    'printf "%s %s\n" "$1" "$(git rev-parse HEAD)" >>"$T/macos.calls"' \
+    'case "$1" in' \
+    '  leg) ;;' \
+    '  bin-publish)' \
+    '    git --git-dir="$T/tap.git" rev-list --count main >>"$T/bins.tap"' \
+    '    v="$(cat VERSION)"' \
+    '    name="demo-$v-$(rustc -vV | sed -n "s/^host: //p").tar.gz"' \
+    '    d="$(mktemp -d "$T/bins.XXXXXX")"' \
+    '    printf "the binaries of %s\n" "$v" >"$d/$name"' \
+    '    ./bin/devbin release attach "$v" --from "$d"' \
+    '    printf "\npublished: %s on release v%s\n" "$name" "$v"' \
+    '    ;;' \
+    '  *)' \
+    '    printf "the stub macos does not answer %s\n" "$1" >&2' \
+    '    exit 64' \
+    '    ;;' \
+    'esac')" >/dev/null
+  git -C "$proj" add -A
+  git -C "$proj" commit -qm "the binaries"
+  git -C "$proj" push -q origin main
+  brew_stub "$DEVBIN_TEST_TMPDIR/brew"
+  clone="$DEVBIN_TEST_TMPDIR/brew/Library/Taps/t/homebrew-demo"
+  git clone -q "$TAP" "$clone"
+}
+
+# sums_name <name> -- true when the release object's SHA256SUMS for v1.0.1
+# names <name>.
+sums_name() {
+  awk -v n="$1" '$2 == n { f = 1 } END { exit !f }' "$DEVBIN_TEST_TMPDIR/gh.assets/v1.0.1/SHA256SUMS"
+}
+
+@test "0323: a cut under object: local with macos.binaries declared packs and attaches the binaries' archive through macos bin-publish in its object step, once the object is made and before the formula reaches the tap" {
+  local name rel tap_before
+  legs_env
+  export UNAME_STUB_OS=Darwin
+  cut_bins_project
+  name="demo-1.0.1-$BINS_TRIPLE.tar.gz"
+  tap_before="$(git --git-dir="$TAP" rev-list --count main)"
+  PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" run publish_cut "$proj"
+  assert_success
+  rel="$(release_sha "$proj")"
+  [[ "$(row_of confirm)" == *"pack and attach the binaries' archive $name through macos bin-publish, and SHA256SUMS"* ]] ||
+    fail "the confirm does not name the archive as work left: $(row_of confirm)"
+  assert_state object done
+  [[ "$(row_of object)" == *"made the release object"*"; attached $name through macos bin-publish, SHA256SUMS names"* ]] ||
+    fail "the object row does not name the archive bin-publish attached once the object was made: $(row_of object)"
+  grep -qx "bin-publish $rel" "$DEVBIN_TEST_TMPDIR/macos.calls" ||
+    fail "bin-publish did not run at the release commit: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/bins.tap")" = "$tap_before" ] ||
+    fail "the formula had reached the tap when bin-publish ran: the tap's main held $(cat "$DEVBIN_TEST_TMPDIR/bins.tap") commit(s) then, and $tap_before before the cut"
+  assert_state formula done
+  [ "$(git --git-dir="$TAP" rev-list --count main)" -gt "$tap_before" ] || fail "the formula never reached the tap"
+  [ -f "$DEVBIN_TEST_TMPDIR/gh.assets/v1.0.1/$name" ] || fail "the release object carries no $name"
+  sums_name "$name" || fail "SHA256SUMS does not name $name: $(cat "$DEVBIN_TEST_TMPDIR/gh.assets/v1.0.1/SHA256SUMS")"
+}
+
+@test "0323: a finished cut run again with macos.binaries declared asks nothing and runs no bin-publish, its object step reading the archive attached with SHA256SUMS naming it" {
+  local name calls
+  legs_env
+  export UNAME_STUB_OS=Darwin
+  cut_bins_project
+  name="demo-1.0.1-$BINS_TRIPLE.tar.gz"
+  PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" run publish_cut "$proj"
+  assert_success
+  grep -q '^bin-publish ' "$DEVBIN_TEST_TMPDIR/macos.calls" ||
+    fail "the first cut ran no bin-publish: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  calls="$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  # No --yes and nobody at a terminal, so work left would stop the cut at its
+  # confirm step.
+  GIT_CONFIG_GLOBAL="$DEVBIN_TEST_TMPDIR/tap.gitconfig" GIT_SSH_COMMAND=false PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" \
+    run release_in "$proj" v1.0.1
+  assert_success
+  assert_state confirm "not re-run"
+  assert_state object already
+  [[ "$(row_of object)" == *"; $name attached, SHA256SUMS names"* ]] ||
+    fail "the object row does not read the archive as attached: $(row_of object)"
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")" = "$calls" ] ||
+    fail "the re-run called macos again: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+}
+
+@test "0323: a cut run again past its tag on a host that is not macOS, with macos.binaries declared under object: local, is refused at pre-flight, since the archive's name carries a macOS host's triple" {
+  local calls
+  legs_env
+  export UNAME_STUB_OS=Darwin
+  cut_bins_project
+  PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" run publish_cut "$proj"
+  assert_success
+  calls="$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  export UNAME_STUB_OS=Linux
+  PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" run publish_cut "$proj"
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"macos.binaries is declared under object: local, so the object step packs the binaries' archive through macos bin-publish, whose name carries a macOS host's triple, and this host is linux -- run the cut again on a macOS host"* ]] ||
+    fail "pre-flight does not refuse the re-run off macOS: $(row_of pre-flight)"
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")" = "$calls" ] ||
+    fail "macos ran on the refused re-run: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+}
+
+@test "0323: a cut whose release carries the binaries' archive with no SHA256SUMS naming it stops at its confirm step, its dry run too, in bin-publish's own words, and runs no bin-publish" {
+  local name calls how
+  legs_env
+  export UNAME_STUB_OS=Darwin
+  cut_bins_project
+  name="demo-1.0.1-$BINS_TRIPLE.tar.gz"
+  PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" run publish_cut "$proj"
+  assert_success
+  [ -f "$DEVBIN_TEST_TMPDIR/gh.assets/v1.0.1/$name" ] || fail "the first cut attached no $name"
+  # An attach that stopped part way: the archive on the release, and no
+  # SHA256SUMS.
+  rm "$DEVBIN_TEST_TMPDIR/gh.assets/v1.0.1/SHA256SUMS"
+  calls="$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  for how in --dry-run --yes; do
+    GIT_CONFIG_GLOBAL="$DEVBIN_TEST_TMPDIR/tap.gitconfig" GIT_SSH_COMMAND=false PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" \
+      run release_in "$proj" v1.0.1 "$how"
+    assert_stopped_at confirm
+    [[ "$(row_of confirm)" == *"release v1.0.1 carries $name, and the release object for v1.0.1 carries no SHA256SUMS -- nothing packed or uploaded: "*"or the asset removed first"* ]] ||
+      fail "the confirm row of the cut given $how does not refuse the archive in bin-publish's words: $(row_of confirm)"
+  done
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")" = "$calls" ] ||
+    fail "macos ran over the archive an attach left part way: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
 }
 
 # AT-2.4

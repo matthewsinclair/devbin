@@ -1766,6 +1766,32 @@ $BIN_APP|$ID_APP"
   grep -qxF "bin/$BIN_PLAIN" <<<"$listing" || fail "the plain binary is not under bin/: $listing"
 }
 
+@test "0323: bin-publish run again over a release that carries its archive, SHA256SUMS naming it, answers already before it asks the keychain or checks a binary, packing and uploading nothing" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local name uploads
+  proj="$(bin_project)"
+  cut_untagged "$proj" >/dev/null
+  bin_signed_and_notarised "$proj"
+  cut_tag "$proj"
+  run macos_in "$proj" bin-publish
+  assert_success
+  name="demo-1.1.0-$TRIPLE.tar.gz"
+  assert_output_contains "published: $name on release v1.1.0"
+  uploads="$(gh_calls '^gh release upload')"
+  : >"$DEVBIN_TEST_TMPDIR/apple.calls"
+  run macos_in "$proj" bin-publish
+  assert_success
+  assert_output_contains "already: $name on release v1.1.0, SHA256SUMS names the object's"
+  assert_output_contains " -- nothing packed or uploaded"
+  refute_output_contains "packing $name"
+  [ "$(gh_calls '^gh release upload')" = "$uploads" ] ||
+    fail "the second bin-publish uploaded: $(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+  [ "$(calls '^security ')" -eq 0 ] && [ "$(calls '^codesign ')" -eq 0 ] ||
+    fail "the second bin-publish asked the keychain or checked a binary: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+}
+
 @test "0323: bin-publish refuses an archive whose one top-level entry would be bin/, uploading nothing" {
   on_macos
   apple_stubs

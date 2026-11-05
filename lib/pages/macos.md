@@ -51,7 +51,7 @@ A path key may open with `~`, `$HOME` or an XDG base-directory variable, expande
 
 ## A release
 
-A cut runs `macos leg` itself, as its macOS stage, where `commands.macos.enabled` is true: app-sign then app-notarize where macos.app is declared, and bin-sign then bin-notarize where macos.binaries is declared and `release.object` is `local`, so every Apple verdict is read before the tag. It is a leg beside the gates at the release commit, under a seal of its own, so a green stage is not run again, and refused at the cut's pre-flight on a host that is not macOS, as is a macos.app, macos.build_root or, with binaries, macos.bin_dir that git does not ignore. Where macos.app is the path of an artefact of the project's `build:` block, app-sign pulls the app from the artefact cache at the release commit and runs no macos.build, or builds it and puts it there (`bin/devbin help cache`).
+A cut runs `macos leg` itself, as its macOS stage, where `commands.macos.enabled` is true: app-sign then app-notarize where macos.app is declared, and bin-sign then bin-notarize where macos.binaries is declared and `release.object` is `local`, so every Apple verdict is read before the tag. With binaries, the cut's object step then runs bin-publish once the release object is made, before the formula step, so a formula that installs from the archive never reaches its tap ahead of it; a re-run reads the archive first and packs nothing where it is attached, refuses at its confirm step, as bin-publish does, a release that carries it with SHA256SUMS disagreeing, and past the tag is refused on a host that is not macOS, since the archive's name carries a macOS host's triple. The stage is a leg beside the gates at the release commit, under a seal of its own, so a green stage is not run again, and refused at the cut's pre-flight on a host that is not macOS, as is a macos.app, macos.build_root or, with binaries, macos.bin_dir that git does not ignore. Where macos.app is the path of an artefact of the project's `build:` block, app-sign pulls the app from the artefact cache at the release commit and runs no macos.build, or builds it and puts it there (`bin/devbin help cache`).
 
 On the maintainer's machine, in a tree whose HEAD is the release's commit: the tag's once it is cut, or, before then, the release commit the cut's stamp made, where a cut's macos leg signs. Once main has moved past the tag, that is a worktree: `git worktree add --detach <dir> <tag>`. publish attaches to the release object, so it runs once the tag is cut and the object made. app-sign and publish read the release commit in the repository at the project root, as the cut, `release status` and `release gates` do: git's repository variables an outer command left set, such as `GIT_DIR` in a hook, are cleared first, and each one cleared is named, with the repository used instead. In order:
 
@@ -107,7 +107,10 @@ The binaries take the same order, and the same release commit:
                   macos.pack.files at the root, and attached with `release
                   attach <version> --from`. An archive whose one top-level
                   entry would be bin/ is refused: Homebrew installs from
-                  inside such a directory
+                  inside such a directory. Where the release carries the
+                  archive with SHA256SUMS naming it, already, read before
+                  the keychain is asked: nothing is packed or uploaded; one
+                  it carries with SHA256SUMS disagreeing is refused
     bin-verify    each staged binary's signature and Gatekeeper's verdict;
                   changes nothing
     leg           the cut's macOS stage: app-sign and app-notarize where

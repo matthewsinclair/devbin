@@ -128,7 +128,10 @@ usage: $ME <doctor|store-creds|app-sign|app-notarize|app-verify|publish|bin-sign
                 the tag's commit, by bin-sign's record; then pack them as
                 <project>-<version>-<host triple>.tar.gz, a .app at the root,
                 every other binary under bin/ and macos.pack.files at the
-                root, and attach it with release attach --from
+                root, and attach it with release attach --from. Already,
+                packing nothing, where the release carries the archive with
+                SHA256SUMS naming it; a cut runs it in its object step,
+                before the formula step, under release.object local
   bin-verify    Each staged binary's signature and Gatekeeper's verdict;
                 changes nothing
   leg           A cut's macOS stage: app-sign and app-notarize where macos.app
@@ -204,6 +207,10 @@ cfg_load "${DEVBIN_DIR:?}/config.yaml" || die "macos: cannot read $DEVBIN_DIR/co
 . "$DEVBIN_LIB/release.notes"
 # shellcheck source=lib/release.steps
 . "$DEVBIN_LIB/release.steps"
+# The binaries' archive's one naming and its one read of a release (issue
+# 0323), shared with the cut's object step.
+# shellcheck source=lib/release.macos
+. "$DEVBIN_LIB/release.macos"
 # Validated whole, as the release core validates it, so a pair rule such as
 # macos.kind_value's holds here too and not only in doctor.
 cfg_validate || die "macos: $DEVBIN_DIR/config.yaml does not validate (above)"
@@ -1652,21 +1659,43 @@ cmd_bin_verify() {
   done <<<"$(bin_labels)"
 }
 
-# bin-publish: refuses, uploading nothing, unless the tag is cut, the staged
-# binaries were signed at its commit (bin-sign's record) and each passes its
-# check with Gatekeeper; then packs them as <project>-<version>-<host
-# triple>.tar.gz, a .app at the archive's root, every other binary under bin/
-# and macos.pack.files at the root, and attaches it through release attach
-# --from, the core's one way an asset reaches a release.
+# bin-publish: refuses, uploading nothing, unless the tag is cut; answers
+# already, packing and uploading nothing, where the release carries its archive
+# with SHA256SUMS agreeing, and refuses where it carries it and SHA256SUMS
+# disagrees (release_bins_read, the read the cut's object step asks too); else
+# refuses unless the staged binaries were signed at the tag's commit (bin-sign's
+# record) and each passes its check with Gatekeeper, then packs them as
+# release_bin_archive names the archive, a .app at its root, every other binary
+# under bin/ and macos.pack.files at the root, and attaches it through release
+# attach --from, the core's one way an asset reaches a release.
 cmd_bin_publish() {
-  local label staged name f src staging tree out project triple archive launcher only
+  local label staged name f src staging tree out project archive launcher only repo answer
   require_binaries
-  load_identity
-  require_identity
   release_names
   read_release_commit " -- nothing uploaded"
   [ "$APP_RELEASE_STATE" = tagged ] ||
     die "macos: there is no tag $APP_TAG here, the tag the project's version $REL_VERSION is released under -- nothing uploaded; cut the release first (or fetch its tag), then bin-publish"
+  project="$(cfg_get project.name)"
+  [ -n "$project" ] || die "macos: project.name is not declared, so the archive cannot be named -- nothing uploaded"
+  archive="$(release_bin_archive "$project" "$REL_VERSION")" ||
+    die "macos: rustc -vV names no host triple, so the archive cannot be named -- nothing uploaded"
+  # Read before any binary is checked, since the checks ask Apple: a finished
+  # release, the cut's re-run's included, asks nothing.
+  repo="$(release_repo "$(cfg_release_get repo)" "$(cfg_release_first_remote)" 2>&1)" ||
+    die "macos: the release's repository cannot be read: ${repo//$'\n'/ } -- nothing uploaded"
+  answer="$(release_wait 0 "" UNREADABLE release_bins_read "$repo" "$APP_TAG" "$archive")" ||
+    die "macos: whether release $APP_TAG carries $archive could not be read (exit $?) -- nothing uploaded"
+  case "${answer%%$'\t'*}" in
+    already)
+      printf '\nalready: %s on release %s, %s -- nothing packed or uploaded\n' "$archive" "$APP_TAG" "${answer#*$'\t'}"
+      return 0
+      ;;
+    absent) ;;
+    pending) die "macos: $(release_bins_pending "$APP_TAG" "$archive" "${answer#*$'\t'}")" ;;
+    *) die "macos: whether release $APP_TAG carries $archive cannot be read: ${answer#*$'\t'} -- nothing uploaded" ;;
+  esac
+  load_identity
+  require_identity
   bin_require_staged
   require_stage_signed_at_tag "$APP_RELEASE_COMMIT" "$BIN_STAGE_RECORD" binaries "$ME bin-sign, then $ME bin-notarize"
   step "checking each staged binary as it ships"
@@ -1675,12 +1704,6 @@ cmd_bin_publish() {
   done <<<"$(bin_labels)"
   launcher="$ROOT/bin/devbin"
   [ -x "$launcher" ] || die "macos: no launcher at $launcher -- bin-publish attaches through this project's release command"
-  project="$(cfg_get project.name)"
-  [ -n "$project" ] || die "macos: project.name is not declared, so the archive cannot be named -- nothing uploaded"
-  # The host's triple, as the projects named their archives: rustc's host.
-  triple="$({ rustc -vV 2>/dev/null || true; } | sed -n 's/^host: //p')"
-  [ -n "$triple" ] || die "macos: rustc -vV names no host triple, so the archive cannot be named -- nothing uploaded"
-  archive="$project-$REL_VERSION-$triple.tar.gz"
   staging="$(mktemp -d)" || die "macos: could not make a staging dir -- nothing uploaded"
   # Removed on every way out, a refusal's included: no app path's drops run
   # here, so this command's EXIT is its own.
