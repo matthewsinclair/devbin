@@ -1,0 +1,15 @@
+{
+  "id": "01M6N5GHTC998JD5KWT0KXT9XH",
+  "ts": "2026-11-05T06:14:34.572Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, received before the clock read 2026-11-05 06:14Z by date -u, on 0323's ci-draft path: '(a), defer the CI-draft piece to the next release. ccusage is a trivial utility that is not that important in the grand scheme of things ... pplr and cldr are done now and done properly, and we leave ccusage alone for the time being, only coming back to it if it is absolutely necessary.' So nobody builds the ci-draft path. 0323 closes once banks 3 (macos binaries, dc) and 4's release half (formula step, cc) land, beside banks 1 and 2 and 67481c78. Its Resolution says ccusage keeps its own finalize, and that the worst case, hv's, is replacing ccusage's approach with the core's. No new issue is opened, since an open one would pull it into the next release (directive 13) against hv's 'only if absolutely necessary'. dc's SPEC-cidraft.md stays as its design if it is ever wanted. Pplr and cldr adopt the core after devbin 0.1.20 ships."
+  }
+}
