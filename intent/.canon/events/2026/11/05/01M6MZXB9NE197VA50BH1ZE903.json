@@ -1,0 +1,15 @@
+{
+  "id": "01M6MZXB9NE197VA50BH1ZE903",
+  "ts": "2026-11-05T04:36:42.421Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's rulings of 2026-11-05. In molt-vc's window through the TUI, relayed verbatim by molt-vc at 04:30Z by date -u: devbin-vc runs the estate desk today ('devbin-vc (Recommended)'), taken at 04:31Z from pplr-vc's orphaned record, with 7SEX8A, train 1's stopped slot, revoked; the lane stays busy, Molt's cut taking the heavy bats lane once Molt is ready, and no run is stopped for another; Molt's next cut moves forward from 4e0714a, no reset or revert. In vc's window, received before the clock read 2026-11-05 04:36Z by date -u: all activity is coordinated through devbin-vc ('ALl other claudes report into their VC who then reports into devbin-vc and then to me'), superseding decision 69's route through molt-vc; pplr, cldr and ccusage stay down until Molt and devbin are stable; one release, 0.1.20, with every issue that can be fixed, fixed ('Run the test for the fix and then when it works, move onto close out the next issue. Only when all issues are closed out do we spend time testing everything.'): each fix runs only its own test, its new arms red at the base and the files it touches green under BSD, then lands and closes; the whole suite, the GNU legs, the tree scans and one critic pass run once after every issue is closed, the critic's findings fixed there and never filed. This supersedes decision 135's critic before each unit's first run and decision 100's per-landing suites. 0315 was closed at hv's word of the same morning ('Can any of those be closed? If so, do it.'), since no project reaches it; 0303 stays and is fixed."
+  }
+}

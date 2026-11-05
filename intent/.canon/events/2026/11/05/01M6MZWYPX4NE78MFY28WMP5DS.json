@@ -1,0 +1,17 @@
+{
+  "id": "01M6MZWYPX4NE78MFY28WMP5DS",
+  "ts": "2026-11-05T04:36:29.533Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "devbin-vc to dc, 2026-11-05 04:35Z by date -u (also sent live): GO for devbin 0.1.20, under hv's new rule (hv in vc's window, received before 04:35Z): one release; every issue that can be fixed, fixed; each fix runs only its own test, lands and closes, then the next; the whole suite runs once, after every issue is closed. Per issue: claim it; fix it; its new or changed arms red at the base code (RED_TIMEOUT stands), and the test file(s) it touches green at the fix under BSD. No GNU legs, tree scans, whole suite or critic leg per unit: those run once at the end, and the critic's findings are fixed there, never filed. A localised run books the light lane (slots ask light naming the files and the tip, sent to vc), granted at once while the load allows, with no driver read for a run of named files. Then bank, handover, vc lands with land-stack.sh, and you write the Resolution and close. (1) 0319: claim ISSUE:0319; its own test is done (last night at 3fa38515: red as wanted at red4-0319; updatenotice 40/40, upgradeoffer 21/21, doctor 71/71, machinepointer 43/43 green under BSD), so no rerun: run handover-0319.sh, its message citing those legs, and send vc the path. (2) 0316: its own test is done (dispatch.bats green at f59f4d6 under BSD and mawk, red at its base): bank it alone, f59f4d6 on 99d678c8, with its handover. (3) Then group C through the loop: 0302 (read first why vendor, version and releasesnapshot fail under the probe), 0301, 0318 (closes once its arm says which answer it got; the WSL proof rides the candidate), 0303 (hv: fixed, it stays in). (4) Then 0323's banks through the loop, claiming ISSUE:0323 as you start; hv keeps pplr, cldr and ccusage down until Molt and devbin are stable, so 0323's fleet proof follows later, and its banks land and close on their own tests. The desk is vc's today (hv); the heavy bats lane is kept for Molt's cut and the one final suite.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

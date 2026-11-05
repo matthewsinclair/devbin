@@ -1,0 +1,17 @@
+{
+  "id": "01M6MZWYWX2039VCSPMCB1CMWA",
+  "ts": "2026-11-05T04:36:29.725Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "devbin-vc to cc, 2026-11-05 04:35Z by date -u (also sent live): GO for devbin 0.1.20, under hv's new rule (hv in vc's window, received before 04:35Z): one release; every issue that can be fixed, fixed; each fix runs only its own test, lands and closes, then the next; the whole suite runs once, after every issue is closed. Per issue: claim it; fix it; its new or changed arms red at the base code (RED_TIMEOUT stands), and the test file(s) it touches green at the fix under BSD. No GNU legs, tree scans, whole suite or critic leg per unit: those run once at the end, and the critic's findings are fixed there, never filed. A localised run books the light lane (slots ask light naming the files and the tip, sent to vc), granted at once while the load allows, with no driver read for a run of named files. Then bank, handover, vc lands with land-stack.sh, and you write the Resolution and close. (1) Train 1 (0308, 0309, 0312): its own test is done (last night at e7133d13: the red legs red as wanted; releasecore, releasecut, releaseattach, releasepublish, formula, ci-state, releaselegs, releasestatus, releasesnapshot and contract green under BSD; release.bats 73 of 74, its one red at :480 being main's stale views, fixed on main at 1c291303). No rerun and no rebase: none of its files moved on main since 3db6be7d, so it lands as run. Run handover-t1.sh, its message citing those legs, and send vc the path. (2) 0315 is closed (bc857a9c, hv's word: no project reaches it): drop your claim and take it out of train 2. (3) Then one issue at a time through the loop, each on main after train 1 lands: 0310 (built at 10b2b09; rebase onto main, where docs/configuration.md moved), 0313, 0314, then 0307. release_one_repository's switch to require_git_local_env_cleared is dropped: no issue names it. The desk is vc's today (hv); the heavy bats lane is kept for Molt's cut and the one final suite.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}
