@@ -1,0 +1,16 @@
+{
+  "id": "01M6NXNMQMXF8QP2QMM64P9HKS",
+  "ts": "2026-11-05T13:16:47.220Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 199,
+    "text": "8GJE86, ccusage's desk ask (its issue 0003 step 3: restart every Claude session on rhadamanth, so each starts with the active profile's CLAUDE_SECURESTORAGE_CONFIG_DIR), is the bounce (hv's TUI answer, decision 146). Grant it once another estate's two container runs on this desk end (its image build, then its seed run), granting nothing else after them. Every session then restarts, runs its pickup and holds, and ccusage's vc confirms from Keychain metadata that nothing renews ca646b28 before its step 4."
+  }
+}
