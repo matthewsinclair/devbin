@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 07:28Z
-status: active
-focus: "Holding for vc's next word: dc's lane in devbin 0.1.20's close-out is done, 0323 closed at 1fbb25d2 with bank 3b landed at 6d2db00b, and no devbin issue is open; the cut's order is vc's todo 196 (focus set 2026-11-05 07:28Z by date -u)."
+heartbeat_at: 2026-11-05 09:32Z
+status: paused
+focus: "Holding until vc names dc's next work: devbin 0.1.20 is released at be40dea7 (09:29:31Z) with dc's lane done; 0318's WSL proof (its FORWARD arm ok on the candidate's WSL 2 job) waits on vc's word for 0318's record (focus set 2026-11-05 09:32Z by date -u)."
 claims: [ST0011/16]
 ---
 
@@ -13,7 +13,7 @@ claims: [ST0011/16]
 
 ## DOING
 
-- devbin 0.1.20 close-out under decisions 138 and 139 (each fix's own arms; 0323 built lean): dc's lane is done. Closed this morning 0319 (b932de55), 0316 (6845d6d2), 0302 (03489730), 0318 (55a13a51) and 0323 (1fbb25d2: banks 1 eb0886cc, 2 89380aa5 with 67481c78, 4 7f273494, 3 1c124b1f and 3b 6d2db00b); no devbin issue is open. ci-draft is not built (decision 140). (edited)
+_(none)_
 
 ## TODO
 
