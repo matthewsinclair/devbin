@@ -1,0 +1,15 @@
+{
+  "id": "01M6NMGE2RQ7B82JKN74D7CMVN",
+  "ts": "2026-11-05T10:36:39.385Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0324"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A commit-stamped app pulled from the artefact cache at another commit fails app-sign"
+  }
+}
