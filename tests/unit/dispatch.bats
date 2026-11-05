@@ -3163,7 +3163,7 @@ $spans"
 $found"
 }
 
-@test "gate_spans reads a call to its last line, splits it at the bare -- outside quotes, and names an unterminated one" {
+@test "gate_spans reads a call to its last line, splits it at the bare -- outside quotes, names an unterminated one, and opens a call only where a command starts (0316)" {
   # The reader's own contract, driven on a tree built for it rather than
   # inferred from the runtime's own calls: every property the class arms
   # rest on is a row here.
@@ -3179,13 +3179,20 @@ run_gate --no-terminator \
   --still-flags
 run_gate --after-unterminated -- ok
 run_gate --source "x" -- tool --source not-a-flag
+  run_gate --indented -- tool
+x=1; run_gate --after-an-operator -- tool
+if run_gate --after-a-keyword -- tool; then :; fi
+unrun_gate NOTCALL -- a name that ends in run_gate
+declare -F run_gate >/dev/null # NOTCALL, the word as an argument
 SH
   local out calls
   out="$(DEVBIN_HOME="$home" gate_spans)"
   local -a rows
   mapfile -t rows <<<"$out"
-  # One row a call: every line of the fixture that opens a run_gate call.
-  calls="$(grep -c '^run_gate ' "$home/lib/fake")" || fail "the fixture holds no run_gate call"
+  # One row a call: every line of the fixture that names run_gate and is not
+  # a comment or one of the two marked NOTCALL, which name it and call nothing.
+  calls="$(grep 'run_gate ' "$home/lib/fake" | grep -v '^#' | grep -vc NOTCALL)" ||
+    fail "the fixture holds no run_gate call"
   [ "${#rows[@]}" -eq "$calls" ] || fail "want $calls rows, got ${#rows[@]}:
 $out"
   local loc flags argv
@@ -3201,6 +3208,13 @@ $out"
   IFS=$'\t' read -r loc flags argv <<<"${rows[4]}"
   [[ "$flags" != *not-a-flag* && "$argv" == *'--source not-a-flag'* ]] ||
     fail "a tool argument spelled --source landed in the flags: [$flags] [$argv]"
+  # Each call that opens after indentation, an operator or a keyword is a row,
+  # and neither NOTCALL line opens one.
+  local opener
+  for opener in --indented --after-an-operator --after-a-keyword; do
+    [[ "$out" == *"$opener"* ]] || fail "the call $opener was not read: $out"
+  done
+  [[ "$out" != *NOTCALL* && "$out" != *'>/dev/null'* ]] || fail "a line that calls no run_gate opened a span: $out"
 }
 
 # ----------------------------------------------------------------------------

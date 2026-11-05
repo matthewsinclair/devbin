@@ -1961,6 +1961,14 @@ devbin_run_under() {
 # line early and never contained the argv an arm was there to inspect. The
 # terminator is looked for with quoted text MASKED, same length, so the split
 # lands at the right column of the original line.
+#
+# A CALL OPENS WHERE A COMMAND STARTS (issue 0316): run_gate at the start of
+# the line after any indentation, after a shell operator (`;`, `&`, `|`, `(`,
+# `{`, `!`), or after a keyword that starts a command (`if`, `then`, `do` and
+# the rest). The reader once opened a span on `run_gate ` anywhere in a line,
+# so a variable whose name ended in run_gate (`unrun_gate`) and the word in
+# `declare -F run_gate` each read as a call, and the class arms reported a
+# run_gate with no bare `--` where there was none.
 gate_spans() {
   # shellcheck disable=SC2016 # an awk program: its $ is awk's, never the shell's
   (cd "$DEVBIN_HOME" && find lib bin -type f ! -name '*.md' ! -name '*.yaml' |
@@ -1991,7 +1999,9 @@ gate_spans() {
       }
       FNR == 1 { finish(); file = FILENAME }
       /^[[:space:]]*#/ { next }
-      /run_gate / && !inside { inside = 1; seen = 0; flags = ""; argv = ""; start = FNR }
+      !inside && (/(^|[;&|({!])[[:space:]]*run_gate / || /(^|[[:space:];&|({!])(if|then|do|else|elif|while|until|time)[[:space:]]+run_gate /) {
+        inside = 1; seen = 0; flags = ""; argv = ""; start = FNR
+      }
       inside {
         line = $0
         cont = (line ~ /\\[[:space:]]*$/)
