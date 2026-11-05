@@ -177,7 +177,7 @@ _release_macos_last_line() {
 # signalled, and its reaped status the TERM's or the KILL's. 1 when no run was
 # started, it had ended on its own, its status kept and read as the loop reads
 # it, or its group was never written, which release_run_stop names. It prints
-# nothing else, so the cut says it in its own way (run_exit_say).
+# nothing else, so the cut says it in its own way (release_say).
 release_macos_stop() {
   local rc=0
   [ "$RELEASE_MACOS_STATE" = running ] || return 1

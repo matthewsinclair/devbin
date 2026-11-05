@@ -556,7 +556,9 @@ open_scratch() {
 # cut's job reaches its whole group, the tee its output runs through
 # included, so stderr may lead to a pipe nobody reads. A write there would
 # end this trap with SIGPIPE before the scratch went (measured, bash 5.3), so
-# SIGPIPE is ignored first, and each line goes through run_exit_say.
+# SIGPIPE is ignored first, and each line goes through release_say
+# (lib/release.steps), which appends it to the run's own log by path when the
+# write fails (issue 0307).
 run_exit() {
   local stopped="$LEG_LOCAL_STOPPED" macos=no
   trap '' PIPE
@@ -565,23 +567,10 @@ run_exit() {
   if release_macos_stop "$RELEASE_POLL_SECONDS"; then macos=yes; fi
   rm -rf "$1"
   [ "$stopped" = yes ] || [ "$LEG_LOCAL_STOPPED" = no ] ||
-    run_exit_say 'release: legs: the local gates were stopped as the run ended, their whole process group'
+    release_say 'release: legs: the local gates were stopped as the run ended, their whole process group'
   [ "$macos" = no ] ||
-    run_exit_say 'release: legs: the macOS stage was stopped as the run ended, its whole process group'
+    release_say 'release: legs: the macOS stage was stopped as the run ended, its whole process group'
   legs_cand_note
-}
-
-# run_exit_say <line> -- one line of the run's exit on stderr, where tee takes
-# it into the run's log. When that write fails, the tee having gone with the
-# signal that ended the run, the line goes to the terminal where a person is
-# at one (gate_tty_flag), so a Ctrl-C still shows it. With neither, nobody can
-# read it, and the next cut of the release deletes a candidate it names.
-run_exit_say() {
-  # stdout to stderr first, then bash's own write-error notice to nowhere.
-  printf '%s\n' "$1" >&2 2>/dev/null && return 0
-  [ "$(gate_tty_flag)" = 1 ] || return 0
-  # A terminal that cannot be written has nobody at it to read the line.
-  { printf '%s\n' "$1" >/dev/tty; } 2>/dev/null || :
 }
 
 # materialise <name> <commit> <version> -- <commit>'s whole tree, written into
@@ -1303,7 +1292,7 @@ _legs_cand_read() {
 # legs_cand_note -- at the run's exit (run_exit), a candidate this run pushed,
 # tried to, or was pushing, whose delete never reached its verdict, a die or a
 # signal having ended the run before the delete or during it, named with the
-# command that removes it (run_exit_say). A stop and the end reach the delete
+# command that removes it (release_say). A stop and the end reach the delete
 # themselves (legs_cand_delete), which names what it could not do.
 legs_cand_note() {
   local what="" verdict="was NOT deleted: the run ended before its delete"
@@ -1314,7 +1303,7 @@ legs_cand_note() {
   esac
   [ "$LEGS_CAND_DELETED" = no ] || return 0
   [ "$LEGS_CAND_DELETE_STARTED" = no ] || verdict="may not be deleted: the run ended during its delete"
-  run_exit_say "release: legs: the candidate $LEG_REF on $LEG_CAND_SHOWN$what $verdict -- the next cut of this release deletes it, or delete it by hand: git push $LEG_CAND_SHOWN :refs/heads/$LEG_REF"
+  release_say "release: legs: the candidate $LEG_REF on $LEG_CAND_SHOWN$what $verdict -- the next cut of this release deletes it, or delete it by hand: git push $LEG_CAND_SHOWN :refs/heads/$LEG_REF"
 }
 
 # legs_lines -- the RELEASE seal's line per leg (cut_leg_line): its last

@@ -105,6 +105,7 @@ The recognised fields are `summary`, `group` and `args` (the usage hint in help'
 | `DEVBIN_RUN_REFERENT`     | what `project.referent` printed, when declared; a `REFERENT UNAVAILABLE` line if it printed nothing                      |
 | `DEVBIN_GATE_TTY`         | set by `gate_exec` for what it runs: `1` when a person was at the terminal, else `0`                                     |
 | `DEVBIN_IN_GATE`          | `1` for what a gate runs, which keeps the gate's flag; a devbin started there drops it                                   |
+| `DEVBIN_GATE_LOG`         | set by `run_gate` for what it runs: its own log, where a line its output can no longer reach is appended                 |
 | your shared options       | each under the `export:` name you declared                                                                               |
 | `DEVBIN_OPT_<NAME>`       | framework-owned options, under devbin's canonical name                                                                   |
 

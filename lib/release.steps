@@ -1907,6 +1907,28 @@ release_group_kill() {
   kill -"${2:-TERM}" -- "-$g" 2>/dev/null || true
 }
 
+# release_say <line> -- one line of a cut's that may have no reader (issue
+# 0307): on stderr, where the gate's tee takes it into the run's log. Where
+# that write fails, the tee having gone with the signal that ended the run, as
+# a Ctrl-C, a hangup or a TERM to the cut's whole group takes it, the line is
+# appended by path to the run's own log, which run_gate names to what it runs
+# (DEVBIN_GATE_LOG), and goes to the terminal where a person is at one
+# (gate_tty_flag), so a Ctrl-C still shows it. THE ONE WRITER of such a line:
+# the cut's exit notes, its candidate note, and the notices a stop and a read
+# of the job table give as it ends. Its status is 0 whatever it could write,
+# since a failed write must not end an exit trap before the stop and the
+# scratch's removal.
+release_say() {
+  # stdout to stderr first, then bash's own write-error notice to nowhere.
+  printf '%s\n' "$1" >&2 2>/dev/null && return 0
+  if [ -n "${DEVBIN_GATE_LOG:-}" ]; then
+    { printf '%s\n' "$1" >>"$DEVBIN_GATE_LOG"; } 2>/dev/null || :
+  fi
+  [ "$(gate_tty_flag)" = 1 ] || return 0
+  # A terminal that cannot be written has nobody at it to read the line.
+  { printf '%s\n' "$1" >/dev/tty; } 2>/dev/null || :
+}
+
 # release_job_running <pid> <table> <what> -- 0 while <pid> is a running job
 # of this shell, 1 when it is not or <pid> is empty, 3 when the job table could
 # not be written to <table> to be read, which is said once a table, naming
@@ -1922,15 +1944,16 @@ release_group_kill() {
 # the run, never in a command substitution.
 declare -gA RELEASE_JOBS_SAID=()
 release_job_running() {
-  local p
+  local p line
   [ -n "$1" ] || return 1
   if ! jobs -rp >"$2"; then
     if [ -z "${RELEASE_JOBS_SAID[$2]:-}" ]; then
       RELEASE_JOBS_SAID[$2]=said
-      # A notice: a write that fails, the cut's output gone with the signal
-      # that ended it, must not end its exit trap before the stop (run_exit).
-      # stdout to stderr first, then bash's own write-error notice to nowhere.
-      printf 'release: legs: the job table could not be written to %s, so whether the run of %s has ended cannot be read from it: the cut waits for its end, and a stop still signals it\n' "$2" "$3" >&2 2>/dev/null || :
+      # A notice, said through release_say, so a write the signal that ended
+      # the cut left no reader for still reaches its log, and never ends its
+      # exit trap before the stop (run_exit).
+      printf -v line 'release: legs: the job table could not be written to %s, so whether the run of %s has ended cannot be read from it: the cut waits for its end, and a stop still signals it' "$2" "$3"
+      release_say "$line"
     fi
     return 3
   fi
@@ -1971,7 +1994,7 @@ release_run_stop() {
   if [ ! -s "$group" ]; then
     grouped=1
     # A notice, as release_job_running's is: the kill below still runs.
-    printf '%s\n' "$unwritten" >&2 2>/dev/null || :
+    release_say "$unwritten"
   fi
   # The run may end between the read above and a kill: one that finds nothing
   # has nothing to do, so neither kill's failure is an error.

@@ -2212,6 +2212,48 @@ $output"
   [ ! -e "${scratch[0]}" ] || fail "the cut ended by a signal left its scratch behind: ${scratch[0]}"
 }
 
+@test "0307: a cut ended by a signal to its whole group while its local gates run, the tee its output runs through among them, still writes its exit notes into its RELEASE log: the gates it stopped, and the candidate it pushed with the command that deletes it" {
+  local nap=4 pid rc=0 n=0 out
+  proj="$(ci_project "$(ci_query_decl 20m)")"
+  # The gate marks its start, then sleeps; the candidate, pushed before the
+  # gates start, has no run yet, so the cut waits on both when the signal
+  # comes.
+  gate_does "touch '$DEVBIN_TEST_TMPDIR/gate.started'; sleep $nap; touch '$DEVBIN_TEST_TMPDIR/gate.woke'"
+  ci_answers "$(printf 'none\tno run yet')"
+  # The cut in a process group of its own, as a job is, so the signal reaches
+  # its group, the tee among it, and not the gates' own; bats's descriptor
+  # closed, so a run left behind cannot hold the arm.
+  set -m
+  DEVBIN_RELEASE_POLL_SECONDS=1 release_in "$proj" v1.0.1 --yes >"$DEVBIN_TEST_TMPDIR/cut.out" 2>&1 3>&- &
+  pid=$!
+  set +m
+  while [ ! -e "$DEVBIN_TEST_TMPDIR/gate.started" ] && [ "$n" -lt 30 ]; do
+    sleep 1
+    n=$((n + 1))
+  done
+  [ -e "$DEVBIN_TEST_TMPDIR/gate.started" ] || fail "the gate never started: $(cat "$DEVBIN_TEST_TMPDIR/cut.out")"
+  # TERM to the cut's whole group: the tee goes with it, so the exit notes
+  # reach no reader on the cut's output.
+  kill -TERM -- "-$pid"
+  wait "$pid" || rc=$?
+  [ "$rc" -ne 0 ] || fail "the cut ended by TERM exited 0: $(cat "$DEVBIN_TEST_TMPDIR/cut.out")"
+  # The job's leader ends at the signal; the cut's own shells end only once its
+  # exit trap has stopped the gates and said what it left, and the gate around
+  # it has sealed. So the log is read once the whole group has gone.
+  n=0
+  while kill -0 -- "-$pid" 2>/dev/null && [ "$n" -lt 30 ]; do
+    sleep 1
+    n=$((n + 1))
+  done
+  if kill -0 -- "-$pid" 2>/dev/null; then fail "the cut's process group still runs: $(cat "$DEVBIN_TEST_TMPDIR/cut.out")"; fi
+  out="$(readlink -f "$proj/tmp/release/LATEST_RELEASE.out")" && [ -f "$out" ] ||
+    fail "the cut left no RELEASE log under tmp/release/"
+  grep -qxF "release: legs: the local gates were stopped as the run ended, their whole process group" "$out" ||
+    fail "the RELEASE log does not say the gates were stopped: $(cat "$out")"
+  grep -qE "^release: legs: the candidate candidate/v1\.0\.1 on origin.* -- the next cut of this release deletes it, or delete it by hand: git push origin :refs/heads/candidate/v1\.0\.1\$" "$out" ||
+    fail "the RELEASE log does not name the candidate the cut left: $(cat "$out")"
+}
+
 @test "a cut run again after its local gates went red runs them again and decides on that run: the earlier run's red record does not stop it (ST0011 WP02b)" {
   proj="$(cut_project)"
   gate_does "exit 1"
