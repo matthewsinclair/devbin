@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 13:25Z
+heartbeat_at: 2026-11-05 16:49Z
 status: active
-focus: "Holding through the bounce at hv's word in cc's window (localfold+compact while we wait; folded 2026-11-05 13:15Z, compacted and picked up 2026-11-05 13:25Z by date -u): 0324 and 0325 are landed and closed, each its own unit (0324 at 96fbd874, closed at 251dae3f; 0325 at 82a87468, closed at 46123ad0), nothing claimed, nothing pushed. cc holds through the bounce (8GJE86, the restart of every Claude session on rhadamanth at vc's grant) and picks up after it. cc's next work is hv's to name."
+focus: "Holding at end of day (hv via pipeliner-sc, 2026-11-05: localfold, then hold; folded 2026-11-05 16:49Z by date -u): at hv's word cc wrote another estate's per-attendee practice-repository setup script, in scratch, checked by that estate's vc and ready for hv's run; nothing in devbin changed, nothing claimed, nothing pushed. cc's next work is hv's to name."
 claims: []
 ---
 
