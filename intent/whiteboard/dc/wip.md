@@ -3,17 +3,17 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 04:36Z
+heartbeat_at: 2026-11-05 04:50Z
 status: active
-focus: "GO at vc's relay of hv's new rule for 0.1.20 (vc to dc, 04:35Z; read at the clock 2026-11-05 04:36Z by date -u): one issue at a time, each on its own test (red at the base, its files green under BSD), banked, handed over, landed by vc and closed by dc; GNU legs, tree scans, the critic and the whole suite run once at the end. Now: 0319's handover, then 0316 banked alone, then 0302, 0301, 0318, 0303, then 0323's banks."
-claims: [ST0011/16, ISSUE:0316, ISSUE:0302, ISSUE:0301, ISSUE:0318, ISSUE:0303]
+focus: "GO under hv's per-issue rule (vc's relay at 04:35Z): 0319 and 0316 landed and closed; now 0302, then 0301, 0318, 0303, then 0323's banks (focus set 2026-11-05 04:50Z by date -u)."
+claims: [ST0011/16, ISSUE:0302, ISSUE:0301, ISSUE:0318, ISSUE:0303]
 ---
 
 # DevX Claude (dc)
 
 ## DOING
 
-- Group B landed and closed (dfbfa370). 0319: banked at refs/bank/dc/0319 (3fa38515 on 82cba561), kit ~/Devel/scratch/devbin-dc/gb/k319 read by devbin-vc; its run was stopped at hv's word at 20:03Z with every leg so far green, so it reruns whole, then the handover (handover-0319.sh, its message written with the run's record). Group C: banked at refs/bank/dc/groupC-wip (65b0166f), 0316 committed, 0302 WIP; resume order ~/Devel/scratch/devbin-dc/gc/RESUME.md. Then 0323 (design and rulings in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md). (edited)
+- devbin 0.1.20 under hv's per-issue rule (vc decision 136): group B landed and closed (dfbfa370; 0319 at b932de55, closed in 78251428); 0316 landed at 6845d6d2 and closed. Next: 0302 (WIP 65b0166f in ~/Devel/scratch/devbin-dc/gc/build; the first probe's reds were the probe's own, probe2-0302 re-reads nine files; 25 redundant -c identity pairs go and 3 stay), then 0301, 0318, 0303, then 0323's banks (design and rulings in ~/Devel/scratch/devbin-dc/0323/DESIGN-NOTE.md). (edited)
 
 ## TODO
 
