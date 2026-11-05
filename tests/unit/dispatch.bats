@@ -3191,7 +3191,7 @@ SH
   mapfile -t rows <<<"$out"
   # One row a call: every line of the fixture that names run_gate and is not
   # a comment or one of the two marked NOTCALL, which name it and call nothing.
-  calls="$(grep 'run_gate ' "$home/lib/fake" | grep -v '^#' | grep -vc NOTCALL)" ||
+  calls="$(grep 'run_gate ' "$home/lib/fake" | grep -v '^#' | grep -c -v NOTCALL)" ||
     fail "the fixture holds no run_gate call"
   [ "${#rows[@]}" -eq "$calls" ] || fail "want $calls rows, got ${#rows[@]}:
 $out"

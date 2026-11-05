@@ -58,7 +58,7 @@ In this order:
                     both commits, and is not offered as an update.
                     matches is a source whose commit differs backward or
                     in no known direction while no vendored file changed,
-                    as between two installs of one release: it passes,
+                    as between installs of one release: it passes,
                     naming both commits and why they differ. unknown
                     names what this machine is missing, so that no switch
                     names a source (see bin/devbin help upgrade). A

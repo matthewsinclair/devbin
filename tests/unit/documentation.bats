@@ -36,6 +36,8 @@ teardown() {
 #   project)                                    a top-level branch label
 #   case "${p[1]}" in name | alias) return 0    an alternation of leaf keys
 #   [ "${p[1]}" = languages ]                   an equality test on one key
+#   [ "${p[1]}.${p[2]}" = pack.files ]          an equality test on a dotted
+#                                               path, each segment a key
 #
 # Scoped to that function's body so an unrelated case statement elsewhere in the
 # file cannot contribute a key that is not part of the schema.
@@ -59,8 +61,10 @@ schema_keys() {
 
     {
       s = $0
-      while (match(s, /\$\{p\[[0-9]\]\}" = [a-z_]+/)) {
-        t = substr(s, RSTART, RLENGTH); sub(/^.* = /, "", t); print t
+      while (match(s, /\$\{p\[[0-9]\]\}" = [a-z_.]+/)) {
+        t = substr(s, RSTART, RLENGTH); sub(/^.* = /, "", t)
+        n = split(t, a, ".")
+        for (i = 1; i <= n; i++) if (a[i] != "") print a[i]
         s = substr(s, RSTART + RLENGTH)
       }
     }
@@ -69,8 +73,14 @@ schema_keys() {
   # _DEVBIN_MACOS_SCHEMA (issue 0226) and _DEVBIN_FORMULA_SCHEMA (issue 0227),
   # which their branches of _cfg_path_known
   # read rather than restating, so every segment of every key in each is a
-  # schema key too.
+  # schema key too. A binary's fields under macos.binaries.<label> are the one
+  # list _DEVBIN_MACOS_BINARY_FIELDS, which the macos branch reads the same way.
   awk '
+    /^_DEVBIN_MACOS_BINARY_FIELDS="/ {
+      s = $0; sub(/^[^"]*"/, "", s); sub(/".*$/, "", s)
+      n = split(s, a, " "); for (i = 1; i <= n; i++) print a[i]
+      next
+    }
     /^_DEVBIN_(RELEASE|MACOS|FORMULA)_SCHEMA="/ { inr = 1; next }
     inr && /^"/                 { inr = 0 }
     inr && NF >= 2              { n = split($2, a, "."); for (i = 1; i <= n; i++) print a[i] }

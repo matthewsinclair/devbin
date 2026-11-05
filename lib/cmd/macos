@@ -1729,6 +1729,7 @@ cmd_bin_publish() {
   # HOMEBREW INSTALLS FROM INSIDE AN ARCHIVE WHOSE ONE TOP-LEVEL ENTRY IS A
   # DIRECTORY, so bin/ alone, or one .app alone, would put what is inside it at
   # the keg's root, where a formula's bin/<name> or <name>.app finds nothing.
+  # find-walk: -maxdepth 1 -- the tree's top level alone; it never enters one
   only="$(cd "$tree" && find . -mindepth 1 -maxdepth 1)" || die "macos: could not list the archive's tree -- nothing uploaded"
   if [ "$(grep -c . <<<"$only")" -eq 1 ] && [ -d "$tree/${only#./}" ]; then
     die "macos: the archive would hold ${only#./}/ alone, and Homebrew installs from inside an archive's one top-level directory -- declare macos.pack.files, or ship another binary beside it; nothing uploaded"
