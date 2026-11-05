@@ -1,0 +1,15 @@
+{
+  "id": "01M6NQ53AEWTY1R21FNW5PMPGR",
+  "ts": "2026-11-05T11:22:53.646Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "BANK REFS left in canon after devbin-cc's and devbin-dc's releases (cc's report at its fold, 2026-11-05 10:40Z by its date -u; listed by vc with git for-each-ref refs/bank/): cc's five (ST0011-02b, -02b2, -02b2-wip, -07, -08) and dc's 28 (ST0011 units, the banks of 0298 to 0323 and their red refs). At a quiet point after the consumer pass: check that each ref's work is on main by its changed lines (git diff -U0), put the list to hv, then clear the landed ones by a script with update-ref -d and the old value. dc's todo 66 (its k323 scratch clones) stays dc's."
+  }
+}

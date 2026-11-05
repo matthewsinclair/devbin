@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "735381ed-cea8-4499-9bc6-35aaa3b8263b",
-    "heartbeat_at": "2026-11-05T10:39:45.444Z",
+    "heartbeat_at": "2026-11-05T11:22:53.892Z",
     "status": "active",
-    "focus": "Consumer pass live at hv's go (decision 144), Utilz's turn first: hv starts utilz-vc and utilz-dc, who revise ST0031/04's plan for 0.1.20, then U1 and U2, R1 to R3 on this desk, hv's push and cut. vc checks U1's macOS sites, reads each run's driver before its grant, and keeps the desk; devbin-cc and devbin-dc fold and release.",
+    "focus": "Utilz's turn (decision 144): plan accepted (Utilz decisions 89 and 90), store-creds done on rhadamanth, R2 at the base red as expected at 11:20:44Z. Next: utilz-dc's step 5 (U1, U2, CHANGELOG) to READY, vc's U1 check, then R2 at the fix, R1 (post-cut read for pushes first), R3 and the tree scans on this desk, hv's push and cut. vc keeps the desk.",
     "claims": [
       "ST0011"
     ],
@@ -4424,10 +4424,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 195,
-      "text": "hv cuts Utilz 2.14.9, 0132's fix, through devbin's core once 0132 lands (hv in vc's window, 2026-11-02, before the clock read 07:36Z by date -u): the first consumer cut in the new shape, ST0011 WP10 (utilz#ST0031). utilz-vc and utilz-dc bring vc and hv one plan first: tests.yml fires on candidate/** and not on tags (today it fires on main and tags, so pre-flight would refuse); tools/post-cut against the macOS leg the cut now runs at the release commit; a build: block wired to the cache. Its release check and dry run come to vc before hv cuts; every run books on this desk. After the cut vc reads its RELEASE seal for AC-3.4 (sign and notarise at the release commit as a leg), Utilz's part of AC-4.3, and AC-5.4 if a build: block is in. GO (hv in vc's window through the TUI, and in utilz-vc's at 08:22Z, Utilz vc decision 87; recorded 2026-11-02 08:23Z by date -u): utilz-vc's plan as sent. ST0031/04 by utilz-dc: U1 tests.yml (candidate/** trigger, tags dropped, macOS jobs on candidate refs) and U2 post-cut (app steps go; it keeps macos publish, since the 0.1.19 cut attaches no app); then R1 post-cut 2.14.8 smoke, R2 release check, R3 dry run, each booked here; hv pushes main and vc reads CI; then hv's cut with a freeze. The build: block is not in this cut. After the cut, vc files the core asks still wanted (0.1.20's formula step already covers 'pull the tap'). RESUMED at hv's go of 2026-11-05 (decision 144), on devbin 0.1.20: utilz#0132 landed at efdd047d and closed at 58e45281, so the cut's precondition is met; ST0031/04's records are in at c475fae3; utilz-dc stopped before step 2 (U1; U2, post-cut doing the macos publish, the formula publish and the tap pull with no second signing; the prez line at CHANGELOG.md:18); the resume orders, ~/Devel/scratch/utilz-vc/RESUME.md and ~/Devel/scratch/utilz-dc/RESUME.md, were written for 0.1.19; Utilz's main is 7a6a06a7, the 0.1.20 sweep. 0.1.20 moves the plan in three places, for utilz-vc's and utilz-dc's revision: notarisation reads one notarytool profile, so hv runs bin/devbin macos store-creds once on each Mac that cuts, before R2 (todo 197); release.formula: true (0323) can make the formula publish and the tap pull a step of the cut where a formula command is active, both of which U2's post-cut was to do; and pre-flight refuses an unignored in-tree app or build root (0313), so the hand check with git check-ignore is moot (Menuz builds out of tree in any case). vc's check of U1 carries cc's hold 35 (decision 144): test-macos, the rust matrix's macOS row, menuz-app and Test Summary's MACOS_REQUIRED all run on candidate refs, as devbin's own tests.yml does, or the candidate reads green on Linux alone. AC-5.4 cannot come from this cut: no build: block, and Menuz builds out of tree.",
+      "text": "hv cuts Utilz 2.14.9, 0132's fix, through devbin's core once 0132 lands (hv in vc's window, 2026-11-02, before the clock read 07:36Z by date -u): the first consumer cut in the new shape, ST0011 WP10 (utilz#ST0031). utilz-vc and utilz-dc bring vc and hv one plan first: tests.yml fires on candidate/** and not on tags (today it fires on main and tags, so pre-flight would refuse); tools/post-cut against the macOS leg the cut now runs at the release commit; a build: block wired to the cache. Its release check and dry run come to vc before hv cuts; every run books on this desk. After the cut vc reads its RELEASE seal for AC-3.4 (sign and notarise at the release commit as a leg), Utilz's part of AC-4.3, and AC-5.4 if a build: block is in. GO (hv in vc's window through the TUI, and in utilz-vc's at 08:22Z, Utilz vc decision 87; recorded 2026-11-02 08:23Z by date -u): utilz-vc's plan as sent. ST0031/04 by utilz-dc: U1 tests.yml (candidate/** trigger, tags dropped, macOS jobs on candidate refs) and U2 post-cut (app steps go; it keeps macos publish, since the cut attaches no app); then R1 post-cut 2.14.8 smoke, R2 release check, R3 dry run, each booked here; hv pushes main and vc reads CI; then hv's cut with a freeze. The build: block is not in this cut. After the cut, vc files the one core ask still wanted: the cut attaching macos.app in its object step, as bin-publish does for binaries (0.1.20's --pull covers the tap pull). RESUMED at hv's go of 2026-11-05 (decision 144), on devbin 0.1.20: utilz#0132 landed at efdd047d and closed at 58e45281, so the cut's precondition is met. The revised plan (Utilz decisions 89 and 90 at c54e89be, hv's go in utilz-vc's window) folds 0.1.20 in: hv's store-creds is done on rhadamanth, the only Mac that cuts Utilz (macos doctor: profile devbin PRESENT, one Developer ID identity, so no team:); release.formula stays undeclared and post-cut keeps the formula publish and the tap pull, since the object step attaches no Menuz.app.zip before a formula step would run (lib/cmd/release:2544, :3383-3402); 0313's pre-flight passes Menuz over, out of tree; U2 has no red arm at the base, a departure hv approved, since no suite names post-cut. R2 at the base read red as expected (utilz-dc's log r2-base-20261105T112042Z.log, sha256 a47682ca, 11:20:42Z to 11:20:44Z by its clock): the trigger, the one finding. Next: dc's step 5 as one READY (U1 tests.yml; U2 post-cut, docs/releasing.md and the config comment; CHANGELOG), vc's check of U1's four macOS sites (~/Devel/scratch/devbin-vc/consumer-pass/utilz-u1-check.md, and no ref_type == 'tag' test left anywhere in the file), then on this desk R2 at the fix, R1 (vc reads post-cut first for any push to homebrew-utilz or upload to 2.14.8), R3 and the tree-scan files (common_lib.bats, arngz.bats, macos.bats and the pin sweep's), then hv's push with CI read by sha, and hv's cut with a freeze. AC-5.4 cannot come from this cut: no build: block, and Menuz builds out of tree.",
       "state": "live",
       "recorded_at": "2026-11-02T07:36:33.719Z",
-      "edited_at": "2026-11-05T10:39:44.959Z"
+      "edited_at": "2026-11-05T11:22:53.365Z"
     },
     {
       "node": "vc",
@@ -4521,7 +4521,8 @@
       "kind": "todo",
       "seq": 197,
       "text": "Utilz's 0.1.20 sweep commit 7a6a06a7 drops macos.keychain, and the comment above the block now names the notarytool profile: 0.1.20 had refused the key as unknown (Utilz doctor: 1 failed), and after the edit Utilz doctor reads 15 checks, 0 failed. Left: tell utilz-vc at its next session that notarisation moves to one notarytool keychain profile, macos.notary_profile (default devbin). macos.team picks the signing identity, and is required where the keychain holds more than one Developer ID identity. Before Utilz's next cut, hv runs bin/devbin macos store-creds once on each Mac that cuts, and macos doctor then reads the profile PRESENT. The old keychain items stay where they are, since nothing deletes them.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-05T11:22:52.684Z",
       "recorded_at": "2026-11-05T05:53:47.492Z",
       "edited_at": "2026-11-05T09:58:38.862Z"
     },
@@ -4561,9 +4562,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 198,
-      "text": "SWEEP NOTICES for devbin 0.1.20 (swept from brew's install of be40dea790f2, stamp 2026-11-05 09:48Z by date -u, one commit per estate by path, nothing pushed): tell each estate's vc at its next session that the sweep reached its tree, and give it the commit, with todo 194's 0.1.19 content where that notice was never given. The cfg estate (another estate's Gtools config) 3213b41; Arca's arca_catalog/ex 38c0e4b, arca_cli 6766414, arca_config 77f5ece and arca_example d460d14; Baize e9ac3fc; Cards b39808a (Design); Ccusage 3968f00; Cdtempl db5f789; Cldr 9cfc0d7; Conflab eef6731e; Gtools 590fdb5d; Intent 18a75d29c; Laksa a7dd1c8cc; Lamplight b88395c9d; MicroGPTEx 8175334; Molt 381979a (molt-vc told at the commit); Pplr 64794b6; Prodinfra 8682475; Prolix b4f6ed3; Riffle 42554ae; Trellis 5b3dd09; Utilz 7a6a06a7, with todo 197's notice. The run's records are in ~/Devel/scratch/devbin-vc/0.1.20/sweep (audit-pre, upgrade-plan-frozen, upgrade-apply, sweep-commits-part1.log, sweep-commits.log, audit-post).",
+      "text": "SWEEP NOTICES for devbin 0.1.20 (swept from brew's install of be40dea790f2, stamp 2026-11-05 09:48Z by date -u, one commit per estate by path, nothing pushed): tell each estate's vc at its next session that the sweep reached its tree, and give it the commit, with todo 194's 0.1.19 content where that notice was never given. The cfg estate (another estate's Gtools config) 3213b41; Arca's arca_catalog/ex 38c0e4b, arca_cli 6766414, arca_config 77f5ece and arca_example d460d14; Baize e9ac3fc; Cards b39808a (Design); Ccusage 3968f00; Cdtempl db5f789; Cldr 9cfc0d7; Conflab eef6731e; Gtools 590fdb5d; Intent 18a75d29c; Laksa a7dd1c8cc; Lamplight b88395c9d; MicroGPTEx 8175334; Molt 381979a (molt-vc told at the commit); Pplr 64794b6; Prodinfra 8682475; Prolix b4f6ed3; Riffle 42554ae; Trellis 5b3dd09; Utilz 7a6a06a7 (told to utilz-vc with todo 197's notice, in devbin-vc's brief at Utilz's turn, before the clock read 2026-11-05 11:10Z by date -u). The run's records are in ~/Devel/scratch/devbin-vc/0.1.20/sweep (audit-pre, upgrade-plan-frozen, upgrade-apply, sweep-commits-part1.log, sweep-commits.log, audit-post).",
       "state": "live",
-      "recorded_at": "2026-11-05T09:58:39.125Z"
+      "recorded_at": "2026-11-05T09:58:39.125Z",
+      "edited_at": "2026-11-05T11:22:52.993Z"
     },
     {
       "node": "vc",
@@ -4580,6 +4582,14 @@
       "text": "Put ccusage's desk ask 8GJE86 (its issue 0003 step 3: restart every Claude session on rhadamanth, so each starts with the active profile's CLAUDE_SECURESTORAGE_CONFIG_DIR) to hv again at a quiet point, when no cut or run is in flight in any estate, at the latest between Utilz's cut and Gtools's turn (decision 144). It stays queued on the desk until then.",
       "state": "live",
       "recorded_at": "2026-11-05T10:39:45.235Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 200,
+      "text": "BANK REFS left in canon after devbin-cc's and devbin-dc's releases (cc's report at its fold, 2026-11-05 10:40Z by its date -u; listed by vc with git for-each-ref refs/bank/): cc's five (ST0011-02b, -02b2, -02b2-wip, -07, -08) and dc's 28 (ST0011 units, the banks of 0298 to 0323 and their red refs). At a quiet point after the consumer pass: check that each ref's work is on main by its changed lines (git diff -U0), put the list to hv, then clear the landed ones by a script with update-ref -d and the old value. dc's todo 66 (its k323 scratch clones) stays dc's.",
+      "state": "live",
+      "recorded_at": "2026-11-05T11:22:53.646Z"
     }
   ],
   "sent": [

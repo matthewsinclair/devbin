@@ -1,0 +1,16 @@
+{
+  "id": "01M6NQ52P1DVM2YE7W01D6XPQS",
+  "ts": "2026-11-05T11:22:52.993Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 198,
+    "text": "SWEEP NOTICES for devbin 0.1.20 (swept from brew's install of be40dea790f2, stamp 2026-11-05 09:48Z by date -u, one commit per estate by path, nothing pushed): tell each estate's vc at its next session that the sweep reached its tree, and give it the commit, with todo 194's 0.1.19 content where that notice was never given. The cfg estate (another estate's Gtools config) 3213b41; Arca's arca_catalog/ex 38c0e4b, arca_cli 6766414, arca_config 77f5ece and arca_example d460d14; Baize e9ac3fc; Cards b39808a (Design); Ccusage 3968f00; Cdtempl db5f789; Cldr 9cfc0d7; Conflab eef6731e; Gtools 590fdb5d; Intent 18a75d29c; Laksa a7dd1c8cc; Lamplight b88395c9d; MicroGPTEx 8175334; Molt 381979a (molt-vc told at the commit); Pplr 64794b6; Prodinfra 8682475; Prolix b4f6ed3; Riffle 42554ae; Trellis 5b3dd09; Utilz 7a6a06a7 (told to utilz-vc with todo 197's notice, in devbin-vc's brief at Utilz's turn, before the clock read 2026-11-05 11:10Z by date -u). The run's records are in ~/Devel/scratch/devbin-vc/0.1.20/sweep (audit-pre, upgrade-plan-frozen, upgrade-apply, sweep-commits-part1.log, sweep-commits.log, audit-post)."
+  }
+}
