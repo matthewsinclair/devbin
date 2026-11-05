@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 12:27Z
+heartbeat_at: 2026-11-05 12:44Z
 status: active
-focus: "0325 at hv's word via vc, building on 0324's landed tip 96fbd874 in cc's scratch clone i0325, by the shape vc agreed (config read refuses an app artefact whose inputs hold no version file; release_names reads the one rule); its arms red at the base and green at the tip in a light slot, then the handover for vc to land, before Gtools's turn (set 2026-11-05 12:27Z by date -u)."
-claims: [ISSUE:0325]
+focus: "Holding at hv's word: 0324 and 0325 are landed and closed, each its own unit (0325 at 82a87468), nothing claimed, nothing pushed; cc's next work is hv's to name (set 2026-11-05 12:44Z by date -u)."
+claims: []
 ---
 
 # Control Claude (cc)
