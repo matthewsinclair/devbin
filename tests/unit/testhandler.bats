@@ -142,12 +142,12 @@ lanes_tally() {
 # lanes_run <root> [NAME=value...] -- run the lane runner in <root> over its
 # tests/unit, with the environment assignments given. The variables the
 # runner and bats read for the lanes are cleared first, so an outer run's own,
-# as in help's `DEVBIN_TEST_JOBS=4 bin/devbin test all`, cannot reach an arm;
-# an assignment given here still wins.
+# as in help's `DEVBIN_TEST_JOBS=4 bin/devbin test all` or a desk's
+# DEVBIN_JOBS, cannot reach an arm; an assignment given here still wins.
 lanes_run() {
   local root="$1"
   shift
-  (cd "$root" && env -u DEVBIN_TEST_JOBS -u BATS_PARALLEL_BINARY_NAME -u BATS_NUMBER_OF_PARALLEL_JOBS \
+  (cd "$root" && env -u DEVBIN_TEST_JOBS -u DEVBIN_JOBS -u BATS_PARALLEL_BINARY_NAME -u BATS_NUMBER_OF_PARALLEL_JOBS \
     "$@" DEVBIN_LIB="$DEVBIN_LIB" PROJECT_ROOT="$root" \
     bash "$DEVBIN_HOME/bin/.devbin/cmd/.lib/bats-lanes" tests/unit </dev/null)
 }
@@ -281,6 +281,28 @@ $(cat "$DEVBIN_TEST_TMPDIR/bats.argv")"
     # No bats ran: no plan line at all, whatever the fixture's size.
     ! grep -qE '^1\.\.[0-9]+$' <<<"$output" || fail "DEVBIN_TEST_JOBS=$bad was refused, and bats ran anyway:\n$output"
   done
+}
+
+@test "0303: DEVBIN_JOBS, a desk's cap, sets the parallel lane's N where DEVBIN_TEST_JOBS is unset, the first line and a refusal naming it, and DEVBIN_TEST_JOBS wins where both are set" {
+  require_command parallel "no GNU parallel on this runner"
+  local root
+  root="$(lanes_fixture)"
+  # Six CPUs, so the default would be three: the cap's two and the suite's
+  # own four each differ from it.
+  mkdir -p "$DEVBIN_TEST_TMPDIR/cpus"
+  printf '#!/bin/sh\necho 6\n' >"$DEVBIN_TEST_TMPDIR/cpus/nproc"
+  chmod +x "$DEVBIN_TEST_TMPDIR/cpus/nproc"
+  run lanes_run "$root" DEVBIN_JOBS=2 PATH="$DEVBIN_TEST_TMPDIR/cpus:$PATH"
+  assert_success
+  assert_output_contains "lanes: two. First 2 tests at a time under GNU parallel"
+  assert_output_contains "(6 CPUs here; DEVBIN_JOBS sets the number)"
+  run lanes_run "$root" DEVBIN_JOBS=2 DEVBIN_TEST_JOBS=4 PATH="$DEVBIN_TEST_TMPDIR/cpus:$PATH"
+  assert_success
+  assert_output_contains "lanes: two. First 4 tests at a time under GNU parallel"
+  assert_output_contains "(6 CPUs here; DEVBIN_TEST_JOBS sets the number)"
+  run lanes_run "$root" DEVBIN_JOBS=x
+  [ "$status" -ne 0 ] || fail "DEVBIN_JOBS=x was accepted: $output"
+  assert_output_contains "DEVBIN_JOBS is 'x', and it must be a whole number of jobs, 1 or more"
 }
 
 @test "the jobs default to half the CPUs, and never fewer than two (0190)" {

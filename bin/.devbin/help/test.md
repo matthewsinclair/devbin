@@ -25,6 +25,8 @@ The run's first line names N and the GNU parallel it found. N is half the CPUs a
 
 The default is for a machine someone shares, and `all` for one nobody does, as a CI runner: devbin's own workflow sets it on every job that runs the suite. A machine whose CPUs neither nproc nor getconf can count refuses `all`, rather than guessing a number.
 
+Where `DEVBIN_TEST_JOBS` is unset, `DEVBIN_JOBS` sets N: a shared desk's one cap for every tool a run starts, which a declared command inherits too, to bound its own tools. `DEVBIN_TEST_JOBS` still wins where both are set, and the first line names whichever it read.
+
 The two lanes write one seal and give one verdict. The run fails when either
 lane fails, and when the lanes did not run every test `bats --count` counts,
 each exactly once; its last line says how many ran in each.
