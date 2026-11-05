@@ -6,7 +6,7 @@ session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
 heartbeat_at: 2026-11-05 04:36Z
 status: active
 focus: "GO at vc's relay of hv's new rule for 0.1.20 (vc to dc, 04:35Z; read at the clock 2026-11-05 04:36Z by date -u): one issue at a time, each on its own test (red at the base, its files green under BSD), banked, handed over, landed by vc and closed by dc; GNU legs, tree scans, the critic and the whole suite run once at the end. Now: 0319's handover, then 0316 banked alone, then 0302, 0301, 0318, 0303, then 0323's banks."
-claims: [ST0011/16, ISSUE:0316, ISSUE:0302, ISSUE:0301, ISSUE:0318, ISSUE:0303, ISSUE:0319]
+claims: [ST0011/16, ISSUE:0316, ISSUE:0302, ISSUE:0301, ISSUE:0318, ISSUE:0303]
 ---
 
 # DevX Claude (dc)
