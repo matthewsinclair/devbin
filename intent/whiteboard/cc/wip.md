@@ -3,8 +3,8 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 16:49Z
-status: active
+heartbeat_at: 2026-11-05 16:53Z
+status: paused
 focus: "Holding at end of day (hv via pipeliner-sc, 2026-11-05: localfold, then hold; folded 2026-11-05 16:49Z by date -u): at hv's word cc wrote another estate's per-attendee practice-repository setup script, in scratch, checked by that estate's vc and ready for hv's run; nothing in devbin changed, nothing claimed, nothing pushed. cc's next work is hv's to name."
 claims: []
 ---
