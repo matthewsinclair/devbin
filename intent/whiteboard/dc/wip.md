@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 11:22Z
+heartbeat_at: 2026-11-05 11:39Z
 status: active
-focus: "Holding through hv's /compact, at hv's word in dc's window ('localfold+compact while we wait'), until hv or vc names dc's next work: devbin-dc has no lane in the consumer pass (decision 141), hold 40 is ruled and archived, todo 66 waits for its citation audit, and the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 11:21Z by date -u)."
+focus: "Holding after hv's /compact until hv or vc names dc's next work: devbin-dc has no lane in the consumer pass (decision 141), todo 66 waits for its citation audit, and the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 11:39Z by date -u)."
 claims: [ST0011/16]
 ---
 
