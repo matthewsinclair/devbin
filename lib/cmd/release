@@ -2328,6 +2328,12 @@ cut_run() {
             refusals+=("no remote pushes to $cand_on on $cand_own, the repository's own host, and remotes push to $cand_on on more than one other host: ${cand_named#, }; the candidate's push to a mirror would run no CI -- point a remote's push url at $cand_on on $cand_own: a cut takes that remote before any other")
           fi
           ;;
+        # A push url whose host cannot be read is named by its remote alone:
+        # its user part may hold a password.
+        4)
+          refusals+=("remote $cand_remote has a push url whose host cannot be read, since an @ in its user part is not written %40, so whether it pushes to $cand_repo, where the candidate's CI runs, cannot be told -- write that @ as %40")
+          cand_remote=""
+          ;;
         *) refusals+=("no remote of this repository pushes to $cand_repo, the repository whose CI runs the candidate -- add a remote for it, or declare release.repo as the repository a remote pushes to") ;;
       esac
     fi

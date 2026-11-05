@@ -2362,6 +2362,20 @@ $output"
   assert_output $'a-lab\tgitlab.com\nb-berg\tcodeberg.org\nrc=3'
 }
 
+@test "0310: the candidate's remote pick refuses a push url whose host cannot be read, naming its remote alone, where passing it over would take a mirror on one other host" {
+  local d
+  d="$(mktemp -d "$DEVBIN_TEST_TMPDIR/remotes.XXXXXX")"
+  git init -q -b main "$d"
+  # origin's password holds an @ not written %40, so its host cannot be read,
+  # nor whether it pushes to O/N on github.com; the mirror names O/N on
+  # gitlab.com, and is read first, in git's order.
+  git -C "$d" config remote.origin.url 'https://u:p@ss@github.com/O/N'
+  git -C "$d" config remote.mirror.url https://gitlab.com/O/N
+  run bash -c 'set -euo pipefail; . "$1/helpers"; . "$1/release.notes"; . "$1/release.steps"; cd "$2"; rc=0; release_candidate_remote O/N "" || rc=$?; printf "rc=%s\n" "$rc"' _ "$DEVBIN_LIB_DIR" "$d"
+  assert_success
+  assert_output $'origin\nrc=4'
+}
+
 @test "pre-flight refuses a cut where remotes on two hosts push to the repository's OWNER/NAME and none to its own host, naming each remote with its host and the own host to point a push url at, before anything is stamped or asked (ST0011 WP02b)" {
   local before
   proj="$(ci_project "$(ci_query_decl 0s)
@@ -2379,6 +2393,27 @@ $output"
   assert_output_contains "origin on gh-alias"
   assert_output_contains "mirror on gitlab.example.com"
   assert_output_contains "point a remote's push url at t/demo on github.com: a cut takes that remote before any other"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/ci.calls" ] || fail "the query was asked before pre-flight refused: $(cat "$DEVBIN_TEST_TMPDIR/ci.calls")"
+  if gate_ran; then fail "a gate ran after pre-flight refused"; fi
+  rm -rf "$proj/tmp/release"
+  [ "$(fingerprint "$proj" --allow-gh-reads)" = "$before" ] || fail "a refused pre-flight wrote something"
+}
+
+@test "0310: pre-flight refuses a remote whose push url's host cannot be read, naming the remote and never its password, before anything is stamped or asked" {
+  local before
+  proj="$(ci_project "$(ci_query_decl 0s)
+  repo: t/demo")"
+  # origin's password holds an @ not written %40; a mirror on another host
+  # names t/demo too, and would take the candidate were origin passed over.
+  origin_at "$proj" 'https://u:p@ss@github.com/t/demo.git'
+  git -C "$proj" config --add url."$DEVBIN_TEST_TMPDIR/remote.git".insteadOf https://gitlab.example.com/t/demo.git
+  git -C "$proj" remote add mirror https://gitlab.example.com/t/demo.git
+  ci_answers "$(printf 'green\trun 7')"
+  before="$(fingerprint "$proj" --allow-gh-reads)"
+  run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at pre-flight
+  assert_output_contains "remote origin has a push url whose host cannot be read, since an @ in its user part is not written %40, so whether it pushes to t/demo, where the candidate's CI runs, cannot be told -- write that @ as %40"
+  refute_output_contains "p@ss"
   [ ! -e "$DEVBIN_TEST_TMPDIR/ci.calls" ] || fail "the query was asked before pre-flight refused: $(cat "$DEVBIN_TEST_TMPDIR/ci.calls")"
   if gate_ran; then fail "a gate ran after pre-flight refused"; fi
   rm -rf "$proj/tmp/release"
