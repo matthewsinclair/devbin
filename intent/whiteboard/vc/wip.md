@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 735381ed-cea8-4499-9bc6-35aaa3b8263b
-heartbeat_at: 2026-11-05 04:16Z
+heartbeat_at: 2026-11-05 06:45Z
 status: active
-focus: "HOLD at boot, 2026-11-05 04:16Z by date -u: devbin 0.1.20's resume (todo 196) and the day's plan are put to hv in vc's window; nothing lands, runs or books until hv's go. ST0011 stays parked (hold 35)."
+focus: "devbin 0.1.20 close-out at hv's one-off rules (decisions 136 to 140), 2026-11-05 06:45Z by date -u: 14 of 15 issues closed; 0323 waits on its last unit, 3b (dc; cc paused at hv's word). vc holds the desk. The note is rewritten (3c86e671) for hv's read. Then the dry run, kovacs (kovacs-sysadm holding, alias checked) and hv's cut. Molt: closed out, v1.4.4 released and rolled out."
 claims: [ST0011]
 ---
 
