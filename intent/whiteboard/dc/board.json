@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52",
-    "heartbeat_at": "2026-11-05T11:39:29.345Z",
+    "heartbeat_at": "2026-11-05T12:21:34.579Z",
     "status": "active",
-    "focus": "Holding after hv's /compact until hv or vc names dc's next work: devbin-dc has no lane in the consumer pass (decision 141), todo 66 waits for its citation audit, and the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 11:39Z by date -u).",
+    "focus": "Holding until hv or vc names dc's next work: devbin-dc has no lane in the consumer pass (decision 141), and the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 12:21Z by date -u).",
     "claims": [
       "ST0011/16"
     ],
@@ -1795,7 +1795,8 @@
       "kind": "todo",
       "seq": 66,
       "text": "Scratch: k323's build clones b2, b2r, b3, b3b and b3r (~/Devel/scratch/devbin-dc/k323, 942M with its records) go by a script once a citation audit of 0323's Resolution, matching every spelling, finds them uncited; the notes, the Resolution draft and close/ stay. Left at dc's session-end fold of 2026-11-05.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-05T12:21:34.372Z",
       "recorded_at": "2026-11-05T10:40:12.286Z"
     }
   ],
