@@ -939,6 +939,35 @@ $3}")"
   grep -qxF v1.0.1 "$DEVBIN_TEST_TMPDIR/gh.releases" || fail "the release object was not made"
 }
 
+@test "0323: an attach that fails at the object step stops the cut before the formula step, so with release.formula true nothing reaches the tap" {
+  local before
+  proj="$(assets_cut_project 2s linux-release.yml "  formula: true")"
+  # The built-in formula enabled, devbin's template as the project's own, and
+  # a tap its default url reaches (formula_tap): where the formula step would
+  # push, were it reached. No brew but a stub that names an empty repository.
+  perl -0pi -e 's/\ncommands:\n  release:\n    enabled: true\n/\ncommands:\n  release:\n    enabled: true\n  formula:\n    enabled: true\n/' \
+    "$proj/bin/.devbin/config.yaml"
+  grep -qx '  formula:' "$proj/bin/.devbin/config.yaml" || fail "the fixture's config does not enable formula"
+  mkdir -p "$proj/packaging/homebrew" "$DEVBIN_TEST_TMPDIR/stubs" "$DEVBIN_TEST_TMPDIR/brew"
+  cp "$DEVBIN_HOME/packaging/homebrew/devbin.rb" "$proj/packaging/homebrew/demo.rb"
+  git -C "$proj" add -A
+  git -C "$proj" commit -qm "the formula"
+  git -C "$proj" push -q origin main
+  formula_tap
+  before="$(git -C "$TAP" rev-parse main)"
+  printf '[user]\n\tname = t\n\temail = t@t\n[url "%s"]\n\tinsteadOf = ssh://git@github.com/t/homebrew-demo.git\n' \
+    "$TAP" >"$DEVBIN_TEST_TMPDIR/tap.gitconfig"
+  printf '#!/bin/sh\n[ "$1" = --repository ] || exit 1\nprintf "%%s\\n" "%s"\n' "$DEVBIN_TEST_TMPDIR/brew" >"$DEVBIN_TEST_TMPDIR/stubs/brew"
+  chmod +x "$DEVBIN_TEST_TMPDIR/stubs/brew"
+  GIT_CONFIG_GLOBAL="$DEVBIN_TEST_TMPDIR/tap.gitconfig" GIT_SSH_COMMAND=false PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" \
+    run release_in "$proj" v1.0.1 --yes
+  assert_failure
+  assert_state object FAILED
+  assert_state formula "(no row formula)"
+  refute_output_contains "release: formula:"
+  [ "$(git -C "$TAP" rev-parse main)" = "$before" ] || fail "the tap's main moved though the attach failed"
+}
+
 # AT-8.2
 @test "an upload that fails part way at the object step stops the cut, and its stop names the asset it uploaded" {
   proj="$(assets_cut_project)"

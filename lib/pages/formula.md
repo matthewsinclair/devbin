@@ -1,5 +1,5 @@
     bin/devbin formula render <tag> <out> [<cask-out>] [--sums <file>]
-    bin/devbin formula publish [--tap <url>]
+    bin/devbin formula publish [--tap <url>] [--pull]
 
 Render this project's Homebrew formula from a release, and publish it to the project's tap. The formula is rendered, never typed: it is kept as a template in the project, and devbin fills its placeholders from git and from the release, so nobody types a tag, a commit or a checksum.
 
@@ -13,6 +13,15 @@ It is opt-in: absent until a project asks for it with `commands.formula.enabled:
                            tap, and once you say yes, commit it and push it. A
                            tap that already carries the render is left as it is,
                            and nobody is asked
+      --pull               then bring this machine's clone of the tap forward,
+                           where Homebrew keeps it (brew --repository, then
+                           Library/Taps/<owner>/<name>), with git pull --ff-only,
+                           so brew upgrade sees the formula; no brew on PATH, a
+                           tap url that names no OWNER/NAME on a host, and no
+                           clone there are each said and are no failure, while a
+                           clone that cannot be brought forward fails, the
+                           formula published. A cut's formula step runs this
+                           (release.formula)
 
 ## The declaration
 

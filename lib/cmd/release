@@ -1661,7 +1661,8 @@ legs_step() {
 # from the one confirmed stops the run there, before anything is tagged.
 #
 # PAST THE PUSH THE RULE CHANGES. The object step under `object: ci` fails as any step
-# does, since a re-run continues it. The after step runs on a published
+# does, since a re-run continues it, and so does the formula step, which runs
+# only once the object step has succeeded. The after step runs on a published
 # release: a failed `after:`, or a candidate that would not be deleted, is
 # reported, undoes nothing, and ends the cut at exit 1 with the remedy, which
 # is forward -- the next release, never a moved tag. Every CI verdict is read
@@ -2079,6 +2080,7 @@ cut_run() {
   local tpl branch object today launcher line v tag how rc_line commit source
   local state detail remotes remote answer nremote=0 owned dirt outside="" deferred=""
   local derived gates out written="" have n ignored_rc ignored_why assets_wf after_list lock
+  local formula_on formula_step=no
   local -a refusals=() gl=()
   # The candidate's target, its ref and the target as a line names it, found
   # at pre-flight: the remote the legs step pushes it to, or in the publish
@@ -2125,6 +2127,10 @@ cut_run() {
   gates_list "$gates"
   # Read once, for the confirm step's question and the after step's run.
   after_list="$(cfg_release_list after)" || die "release: cannot read release.after"
+  # Read once, for pre-flight, the confirm step's question and the formula
+  # step's run (issue 0323); a value that is neither word is config's refusal.
+  formula_on="$(cfg_release_get formula)" || die "release: cannot read release.formula"
+  if is_true_word "$formula_on"; then formula_step=yes; fi
   # Read with its status: empty would turn the attach off in silence.
   assets_wf="$(cfg_release_get assets.workflow)" || die "release: cannot read release.assets.workflow"
   # A PUBLISHING CUT (issue 0240, folded into the cut by ST0011): the public
@@ -2333,6 +2339,15 @@ cut_run() {
   # the release public, at the end of assets.wait.
   if [ -n "$assets_wf" ] && ! git cat-file -e "$commit:.github/workflows/$assets_wf" 2>/dev/null; then
     refusals+=("release.assets.workflow is $assets_wf, and ${commit:0:12} holds no .github/workflows/$assets_wf, so no run at the tag could build the assets")
+  fi
+
+  # THE FORMULA STEP RUNS THE PROJECT'S formula COMMAND (issue 0323), its
+  # publish with --pull, so release.formula with no formula command to run is
+  # refused here, before anything is stamped, where it would otherwise fail
+  # with the release public. command_active is the one rule of whether a
+  # command runs here, as the released cut's brew note reads it.
+  if [ "$formula_step" = yes ] && ! command_active formula; then
+    refusals+=("release.formula is true, and this project has no formula command for the formula step to run -- enable the built-in (commands.formula.enabled: true), or leave release.formula out")
   fi
 
   # THE CANDIDATE'S TARGET AND REF (ST0011): where the cut has a candidate leg
@@ -3075,18 +3090,26 @@ cut_object_left() {
 # <who> names the run in a dry run's verdict (`the cut`), and <heading> opens
 # the question at a terminal. <after> is release.after as read, one command a
 # line: THE after: COMMANDS RUN UNDER THIS YES (ST0011), so wherever there is
-# work to ask about the question and the row name them too. Reads the caller's
-# left, tag, dry_run and assume_yes, and sets its confirmed and ask_next, which
-# it declares:
+# work to ask about the question and the row name them too, and so does THE
+# FORMULA STEP where release.formula is true (issue 0323), named ahead of them.
+# Reads the caller's left, tag, dry_run, assume_yes and formula_step, and sets
+# its confirmed and ask_next, which it declares:
 #   confirmed  yes once this step was answered, at the prompt or by --yes: the
-#              after step hands the tag to its commands as
+#              formula and after steps hand the tag to what they run as
 #              DEVBIN_RELEASE_CONFIRMED. No yes is given where nothing is left
 #              to ask about.
 #   ask_next   what a dry run's verdict says the run does at this step (0181)
 cut_confirm() {
-  local who="$1" heading="$2" after="${3:-}" work="" then="" yes_detail asked=0
+  local who="$1" heading="$2" after="${3:-}" work="" then="" yes_detail asked=0 formula=""
   [ "${#left[@]}" -eq 0 ] || work="$(printf '%s; ' "${left[@]}" | sed 's/; $//')"
-  [ -z "$after" ] || then="; then, under this yes, after: ${after//$'\n'/; }"
+  [ "${formula_step:-no}" = no ] ||
+    formula="the formula published to its tap (formula publish --pull), and this machine's clone of the tap pulled"
+  if [ -n "$formula" ]; then
+    then="; then, under this yes, $formula"
+    [ -z "$after" ] || then+="; after: ${after//$'\n'/; }"
+  elif [ -n "$after" ]; then
+    then="; then, under this yes, after: ${after//$'\n'/; }"
+  fi
   yes_detail="--yes given: $work$then"
   if [ "${#left[@]}" -eq 0 ]; then
     cut_row confirm "not re-run" "no irreversible step has work left"
@@ -3106,6 +3129,7 @@ cut_confirm() {
   else
     printf '\n%s. Still to do, and seen by other machines once done:\n' "$heading"
     printf '  - %s\n' "${left[@]}"
+    [ -z "$formula" ] || printf '  - then, under this yes, %s\n' "$formula"
     [ -z "$after" ] || printf '  - then, under this yes, after: %s\n' "${after//$'\n'/; }"
     ask_person "release: go ahead?" || asked=$?
     case "$asked" in
@@ -3132,15 +3156,58 @@ cut_dry_verdict() {
   printf '\nrelease: dry run of %s -- no step failed; %s\n' "$tag" "$ask_next"
 }
 
-# cut_tail -- the object and after steps, and the run's end, for a cut and
-# in either shape, in the publish one about the snapshot: what reads and writes the release
-# object and runs after:, against the repository
-# release.repo names, or the one read off the first remote. Run in the
-# caller's shell, it reads the caller's tag, v, commit (the commit the tag
-# names, where the attach and brew read it), rel_at, branch, object, title,
-# repo, declared_repo, drem, body_file, object_work, object_detail,
-# attach_work, assets_detail, assets_wf, after_list, confirmed, ask_next and
-# dry_run.
+# cut_formula_step -- the formula step, run in cut_tail's shell (issue 0323):
+# where release.formula is true, the project's formula command's publish with
+# --pull, through the project's launcher and gated as an after: line is,
+# handed the tag as DEVBIN_RELEASE_CONFIRMED where the confirm step was
+# answered: the formula rendered from the release and pushed to its tap, then
+# this machine's clone of the tap pulled. A RE-RUN PUBLISHES NOTHING TWICE:
+# publish leaves a tap that carries the release as it is, asking nobody, and a
+# clone already current pulls nothing, so the step reads no postcondition of
+# its own. A FAILURE STOPS THE CUT HERE, exit 1, the release published and
+# standing, and after: unrun: the remedy is the same publish, once the cause
+# is fixed. Reads the caller's tag, confirmed, formula_step and dry_run.
+cut_formula_step() {
+  local out="$SCRATCH/formula.out" frc=0 last published
+  local -a pub=("$PROJECT_ROOT/bin/devbin" formula publish --pull)
+  if [ "$formula_step" != yes ]; then
+    cut_row formula skipped "release.formula is not declared"
+    return 0
+  fi
+  if [ "$dry_run" = 1 ]; then
+    cut_row formula would "run formula publish --pull under the confirm step's yes: the formula pushed to its tap, then this machine's clone of the tap pulled"
+    return 0
+  fi
+  # A mark inherited from whatever started this cut is not this cut's yes.
+  unset DEVBIN_RELEASE_CONFIRMED
+  printf '\nrelease: formula: %s formula publish --pull\n' "${DEVBIN_INVOKE:-bin/devbin}"
+  if [ "$confirmed" = yes ]; then
+    DEVBIN_RELEASE_CONFIRMED="$tag" gate_exec "${pub[@]}" >"$out" 2>&1 || frc=$?
+  else
+    gate_exec "${pub[@]}" >"$out" 2>&1 || frc=$?
+  fi
+  cat "$out"
+  last="$(awk 'NF { l = $0 } END { print l }' "$out")"
+  published="$(awk '/^formula: (published |the tap at .* already carries )/ { l = $0 } END { print l }' "$out")"
+  if grep -q '^formula: published ' "$out"; then CUT_OUTWARD+=", published the formula to its tap"; fi
+  [ "$frc" -eq 0 ] ||
+    cut_fail formula "formula publish --pull failed (exit $frc): ${last:-it said nothing} -- the release is published and stands, and after: did not run; run ${DEVBIN_INVOKE:-bin/devbin} formula publish --pull once the cause is fixed"
+  if [ -n "$published" ] && [ "$published" != "$last" ]; then
+    cut_row formula "done" "${published#formula: }; ${last#formula: }"
+  else
+    cut_row formula "done" "${last#formula: }"
+  fi
+}
+
+# cut_tail -- the object, formula and after steps, and the run's end, for a
+# cut and in either shape, in the publish one about the snapshot: what reads
+# and writes the release object, publishes the formula and runs after:,
+# against the repository release.repo names, or the one read off the first
+# remote. Run in the caller's shell, it reads the caller's tag, v, commit (the
+# commit the tag names, where the attach and brew read it), rel_at, branch,
+# object, title, repo, declared_repo, drem, body_file, object_work,
+# object_detail, attach_work, assets_detail, assets_wf, after_list,
+# formula_step, confirmed, ask_next and dry_run.
 cut_tail() {
   # --- the release object ------------------------------------------
   case "$object" in
@@ -3248,6 +3315,12 @@ cut_tail() {
       fi
       ;;
   esac
+
+  # --- the formula -------------------------------------------------
+  # THE CORE'S LAST BUILT-IN STEP (issue 0323), reached only once the object
+  # step has succeeded, its attach included, since any failure there stopped
+  # the cut (cut_fail).
+  cut_formula_step
 
   # --- after ------------------------------------------------------
   # Each command in order, reported. Outside the core's guarantees: the
@@ -4930,6 +5003,16 @@ status_report() {
   row "$push_state" push "$push_detail"
   split "$object_row"
   row "$state" object "$detail"
+
+  # The formula step (issue 0323): status reads neither the tap nor this
+  # machine's clone of it, so a declared step is a cut's to run, as after: is.
+  local formula_on
+  formula_on="$(cfg_release_get formula)" || die "release status: cannot read release.formula"
+  if is_true_word "$formula_on"; then
+    row pending formula "a cut runs formula publish --pull, which leaves a tap that carries the release as it is: status reads neither the tap nor this machine's clone of it"
+  else
+    row skipped formula "release.formula is not declared"
+  fi
 
   # Checked as the gates read is: a list that could not be read is no list,
   # and would print `skipped` for a project that declares after: commands.

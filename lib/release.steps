@@ -115,8 +115,12 @@ _DEVBIN_RELEASE_STEPS_LOADED=1
 # ANYTHING RUNS (ST0011): the one yes, right after pre-flight, and the stamp,
 # the commit and the legs under it. A publishing cut has the same steps: its
 # legs step makes the snapshot and reads CI on it, and its push step makes the
-# snapshot public (issue 0240, folded into the cut).
-_RELEASE_STEP_NAMES=(resolve pre-flight confirm stamp commit legs tag push object after)
+# snapshot public (issue 0240, folded into the cut). THE FORMULA STEP COMES
+# LAST OF THE CORE'S OWN (issue 0323): the formula published and this
+# machine's clone of the tap pulled once the object step, its attach
+# included, has succeeded, and before after:, which keeps whatever else a
+# project adds.
+_RELEASE_STEP_NAMES=(resolve pre-flight confirm stamp commit legs tag push object formula after)
 
 # The states a row can be in, for the state column's width alone: a state
 # missing here still prints, a column out of line.

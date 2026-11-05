@@ -759,7 +759,7 @@ fx_publishes() {
   assert_output_contains "usage: bin/devbin formula render <tag> <out>"
   run formula publish --force
   assert_failure
-  assert_output_contains "publish takes --tap <url> and nothing else, not '--force'"
+  assert_output_contains "publish takes --tap <url> and --pull and nothing else, not '--force'"
   run formula publish --tap
   assert_failure
   assert_output_contains "--tap needs the tap's git url"

@@ -587,6 +587,7 @@ scalar object          cut,status,check,attach local
 scalar title           cut,status                     {tag}
 scalar repo            cut,status,attach
 scalar object_wait     cut                            20m
+scalar formula         cut,status                     false
 list   after           cut,status
 list   verbs           cut,status,notes,check,attach,snapshot,gates cut|status|notes|check|attach|snapshot|gates
 scalar assets.workflow cut,status,attach
@@ -1087,6 +1088,12 @@ _cfg_release_value_problem() {
     object)
       case "$v" in local | ci | none) return 1 ;; esac
       printf 'must be local, ci or none'
+      ;;
+    formula)
+      # A yes or a no, in the words every boolean of devbin's takes: another
+      # word, read as a no, would switch the cut's formula step off in silence.
+      if is_true_word "$v" || is_false_word "$v"; then return 1; fi
+      printf 'must be true or false'
       ;;
     ci.wait | object_wait | assets.wait)
       [[ "$v" =~ ^[0-9]+[smh]$ ]] && return 1

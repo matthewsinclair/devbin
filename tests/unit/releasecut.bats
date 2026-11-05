@@ -2915,11 +2915,13 @@ devbin_after() {
   )
 }
 
-# publish_project -- $proj, a cut_project whose after: is the list THIS
-# REPOSITORY's config declares, with the built-in formula enabled (issue 0227)
-# and devbin's template as the project's own, committed and pushed; the tap at
-# $TAP (formula_tap), whose pre-receive hook writes to tap.saw the v1.0.1 the
-# release's remote held when the formula reached the tap, or `none`.
+# publish_project [<release-lines>] -- $proj, a cut_project whose after: is the
+# list THIS REPOSITORY's config declares, or whose release: block takes
+# <release-lines> in its place where given (0323's formula step), with the
+# built-in formula enabled (issue 0227) and devbin's template as the project's
+# own, committed and pushed; the tap at $TAP (formula_tap), whose pre-receive
+# hook writes to tap.saw the v1.0.1 the release's remote held when the formula
+# reached the tap, or `none`.
 #
 # THE TAP IS REACHED BY ITS DEFAULT URL, since devbin's after: line names no
 # --tap and the project declares no formula.tap: homebrew-demo under the release
@@ -2927,10 +2929,13 @@ devbin_after() {
 # its ssh command is `false`, so a url the config does not catch fails rather
 # than reaches a real tap.
 publish_project() {
-  local lines cfg
-  lines="$(devbin_after)" || fail "devbin's own after: list could not be read"
-  proj="$(ci_project "  after:
-$(sed 's/^/    - /' <<<"$lines")")"
+  local lines cfg body="${1:-}"
+  if [ -z "$body" ]; then
+    lines="$(devbin_after)" || fail "devbin's own after: list could not be read"
+    body="  after:
+$(sed 's/^/    - /' <<<"$lines")"
+  fi
+  proj="$(ci_project "$body")"
   cfg="$proj/bin/.devbin/config.yaml"
   awk '{ print } /^  release:$/ { r = 1 } r && /^    enabled: true$/ { print "  formula:"; print "    enabled: true"; r = 0 }' \
     "$cfg" >"$cfg.new" && mv "$cfg.new" "$cfg"
@@ -3038,6 +3043,38 @@ publish_cut_answered() {
   assert_output_contains "  - then, under this yes, after: bin/devbin formula publish"
   if git -C "$proj" rev-parse -q --verify refs/tags/v1.0.1 >/dev/null; then fail "a tag was made"; fi
   [ "$(git -C "$TAP" rev-list --count main)" = 1 ] || fail "the tap's main moved"
+}
+
+# brew_stub <repository> -- a brew first on PATH's stub dir that answers
+# --repository with <repository> and refuses everything else, so no arm asks
+# this machine's own Homebrew anything.
+brew_stub() {
+  mkdir -p "$DEVBIN_TEST_TMPDIR/stubs" "$1"
+  printf '#!/bin/sh\n[ "$1" = --repository ] || { echo "stub brew: $*" >&2; exit 1; }\nprintf "%%s\\n" "%s"\n' "$1" >"$DEVBIN_TEST_TMPDIR/stubs/brew"
+  chmod +x "$DEVBIN_TEST_TMPDIR/stubs/brew"
+}
+
+@test "0323: a cut with release.formula true publishes the formula under its yes once the object step is done, then pulls this machine's clone of the tap, its formula row done before after:" {
+  local clone
+  publish_project "  formula: true"
+  # This machine's Homebrew keeps a clone of the tap at its seed, where the
+  # formula step's pull looks: Library/Taps/<owner>/<name> under its repository.
+  brew_stub "$DEVBIN_TEST_TMPDIR/brew"
+  clone="$DEVBIN_TEST_TMPDIR/brew/Library/Taps/t/homebrew-demo"
+  git clone -q "$TAP" "$clone"
+  PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" run publish_cut "$proj"
+  assert_success
+  assert_state formula done
+  assert_state after skipped
+  assert_output_contains "then, under this yes, the formula published to its tap (formula publish --pull), and this machine's clone of the tap pulled"
+  assert_output_contains "formula: confirmed at the cut of v1.0.1, so it is pushed without a second question"
+  [[ "$(row_of formula)" == *"this machine's clone of t/homebrew-demo pulled"* ]] ||
+    fail "the formula row does not name the pull: $(row_of formula)"
+  run git -C "$TAP" show main:Formula/demo.rb
+  assert_success
+  assert_output_contains 'tag:      "v1.0.1",'
+  [ "$(git -C "$clone" rev-parse HEAD)" = "$(git -C "$TAP" rev-parse main)" ] ||
+    fail "this machine's clone of the tap is not at the tap's main: $(git -C "$clone" log --oneline -2)"
 }
 
 # AT-2.4

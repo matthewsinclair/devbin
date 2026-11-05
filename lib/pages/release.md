@@ -64,6 +64,11 @@ Cut a release: confirm once, then stamp, commit, run every leg (the gates, here 
                  release.publish.url on the public repository; under
                  object: local, then the assets assets.workflow's run built,
                  as release attach attaches them
+    formula      where release.formula is true, and only once the object
+                 step has succeeded: formula publish --pull under the
+                 confirm step's yes, the formula pushed to its tap and this
+                 machine's clone of the tap pulled; a failure stops the cut
+                 here, the release standing, and after: does not run
     after        the declared after: commands
 
 The push step reads each remote back after pushing to it, and a remote is slowest straight after a push, so a read that does not answer is asked again every 15 seconds for about 2 minutes, the bound the push itself has. A remote that answers without the release fails the step at once, as one that does not hold the release after the push. An answer that cannot be read here, such as a branch moved to a commit this checkout does not hold, fails it at once too, as a read that could not tell whether the remote holds the release, since no later ask can clear it. One that has not answered in that time fails it as a read that could not tell, never as a remote without the release: running the same command again reads it back.
