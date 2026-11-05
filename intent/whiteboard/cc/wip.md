@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 11:41Z
+heartbeat_at: 2026-11-05 11:50Z
 status: active
-focus: "Holding at hv's word in cc's window (localfold+compact while we wait; compacted and picked up 2026-11-05 11:41Z by date -u): cc has no lane in the consumer pass's Utilz turn (vc's decision 141), core asks from Utilz's cut become issues for the next release, and cc's next work is hv's to name. Hold 35 is vc's check at U1 (vc's todo 195)."
-claims: []
+focus: "Drafting 0324 in a scratch clone at hv's word in cc's window (2026-11-05 11:50Z by date -u): a commit-stamped app pulled from the artefact cache at another commit fails app-sign. No desk run until Utilz's runs are done; then its arms red at the base and green at the fix, and the bank for vc to land."
+claims: [ISSUE:0324]
 ---
 
 # Control Claude (cc)
