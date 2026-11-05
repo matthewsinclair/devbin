@@ -1,0 +1,15 @@
+{
+  "id": "01M6N2472KXWPBKZXNVK5MZFMX",
+  "ts": "2026-11-05T05:15:24.627Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, received before the clock read 2026-11-05 05:15Z by date -u: 'Just fix the issues and run tests to JUST TEST THE FIX. I am not going to run the full test suite for every tiny fix across multiple archiecutres. THAT IS INSANE.' Ruled by vc on it, superseding decision 136's whole-file legs and its end-of-release suite and critic pass. Each fix runs only its own arms, filtered to the issue, red at the base code and green at the fix, under BSD on rhadamanth: no whole files, no GNU legs, no tree scans and no critic pass, per fix or before the cut. The cut's own gates, its kovacs leg and CI on the candidate are the one full test, and a red there is fixed and the same version re-cut that day. The two runs already started (0313, 0302) finish as granted. To keep both builders busy, cc takes 0301 and 0303 after 0314 and 0307, then its 0323 pieces; dc goes from 0302 to 0318 and then its 0323 pieces. vc moved them on hv's word to go faster, before hv's answer to the lane question, and hv may reverse that."
+  }
+}

@@ -4492,6 +4492,14 @@
       "text": "hv's ruling of 2026-11-05 in vc's window (answered before the clock read 2026-11-05 04:51Z by date -u), as vc recommended (option a): 0323's release-side pieces go to cc once cc's own issues (0310, 0313, 0314, 0307) are closed. These are the built-in lock-sync at the stamp step (the design note's bank 1, automatic where version_from is a Cargo.toml with a Cargo.lock beside it), and formula publish with the tap pull as the core's last built-in step, run only after a successful attach (bank 4's release half). dc keeps the notarytool keychain profile across the app path (bank 2, announced to every app project before it lands), the macos binaries' sign, verify, notarise and pack with the local path as a leg before the tag (bank 3), and the ci-draft finalize path (bank 4's macOS half). dc holds ISSUE:0323 and closes it once every bank has landed. Each bank runs its own test through the loop (decision 136), and the three projects' cuts follow as the fleet proof once hv starts them. Not to be put again.",
       "state": "live",
       "recorded_at": "2026-11-05T04:51:23.725Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 138,
+      "text": "hv in vc's window, received before the clock read 2026-11-05 05:15Z by date -u: 'Just fix the issues and run tests to JUST TEST THE FIX. I am not going to run the full test suite for every tiny fix across multiple archiecutres. THAT IS INSANE.' Ruled by vc on it, superseding decision 136's whole-file legs and its end-of-release suite and critic pass. Each fix runs only its own arms, filtered to the issue, red at the base code and green at the fix, under BSD on rhadamanth: no whole files, no GNU legs, no tree scans and no critic pass, per fix or before the cut. The cut's own gates, its kovacs leg and CI on the candidate are the one full test, and a red there is fixed and the same version re-cut that day. The two runs already started (0313, 0302) finish as granted. To keep both builders busy, cc takes 0301 and 0303 after 0314 and 0307, then its 0323 pieces; dc goes from 0302 to 0318 and then its 0323 pieces. vc moved them on hv's word to go faster, before hv's answer to the lane question, and hv may reverse that.",
+      "state": "live",
+      "recorded_at": "2026-11-05T05:15:24.627Z"
     }
   ],
   "sent": [
