@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52",
-    "heartbeat_at": "2026-11-05T06:52:39.430Z",
+    "heartbeat_at": "2026-11-05T07:18:38.446Z",
     "status": "active",
-    "focus": "0323 bank 3b, at vc's go on hv's ruling: release_bin_archive and release_bins_read in lib/release.macos, bin-publish's already-read in lib/cmd/macos, and the object step's bin-publish in lib/cmd/release (vc reviews those lines at the ask), with its arms in releasecut.bats and macos.bats; building in ~/Devel/scratch/devbin-dc/k323/b3b on main 154e424e; then the light ask, the handover as COMMIT_MSG-0323.txt, and 0323's Resolution and close (focus set 2026-11-05 06:52Z by date -u).",
+    "focus": "0323 bank 3b built at be28d34f on 154e424e (vc's pre-read finding folded in: a pending archive is refused at confirm in bin-publish's words), kit ~/Devel/scratch/devbin-dc/k323/b3b; light ask 01M6N940PFHNJRG2WE2NY784TA waits on vc's grant at its bounce; then the run, the handover as COMMIT_MSG-0323.txt, vc's landing, and 0323's Resolution and close (focus set 2026-11-05 07:18Z by date -u).",
     "claims": [
       "ST0011/16",
       "ISSUE:0323"
