@@ -6,7 +6,7 @@ session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
 heartbeat_at: 2026-11-05 05:12Z
 status: active
 focus: "Group A one issue at a time under hv's localised-test rule (vc's GO, 2026-11-05 04:35Z): train 1 (0308, 0309, 0312) and 0310 landed and closed; 0313 running in light slot 01M6N1K0DDKBPQ4806K76YNS6S at da361079; 0314 built ahead on it; then 0307 (todo 66); then 0323's bank 1 and bank 4's release half (todo 69, vc's decision 137)."
-claims: [ISSUE:0307, ISSUE:0301, ISSUE:0303]
+claims: [ISSUE:0303]
 ---
 
 # Control Claude (cc)
