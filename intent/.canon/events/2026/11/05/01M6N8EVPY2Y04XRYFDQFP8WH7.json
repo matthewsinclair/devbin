@@ -1,0 +1,16 @@
+{
+  "id": "01M6N8EVPY2Y04XRYFDQFP8WH7",
+  "ts": "2026-11-05T07:06:04.894Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 88,
+    "text": "devbin 0.1.20, every open issue fixed before its cut, under decisions 135 to 140 and their one-off fix-only rules for this close-out. 14 of 15 closed on 2026-11-05. 0315 closed unfixed, since no project reaches it. Closed fixed: 0319, 0308, 0309, 0312, 0310, 0316, 0313, 0302, 0318, 0314 (follow-up b548add6), 0307, 0301 and 0303. 0323 stays open: banks 1 (eb0886cc), 2 (89380aa5, 67481c78), 3 (1c124b1f) and 4 (7f273494) are landed, and its last unit, 3b, is dc's in k323/b3b, with vc reviewing lib/cmd/release's lines at dc's ask. Its ci-draft path stays with ccusage (decision 140). The note is rewritten and hv-approved (3c86e671), and the dry run at 154e424e was clean. Resume order: todo 196."
+  }
+}

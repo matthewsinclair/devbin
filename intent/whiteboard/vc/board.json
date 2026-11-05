@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "735381ed-cea8-4499-9bc6-35aaa3b8263b",
-    "heartbeat_at": "2026-11-05T06:45:11.712Z",
+    "heartbeat_at": "2026-11-05T07:06:14.956Z",
     "status": "active",
-    "focus": "devbin 0.1.20 close-out at hv's one-off rules (decisions 136 to 140), 2026-11-05 06:45Z by date -u: 14 of 15 issues closed; 0323 waits on its last unit, 3b (dc; cc paused at hv's word). vc holds the desk. The note is rewritten (3c86e671) for hv's read. Then the dry run, kovacs (kovacs-sysadm holding, alias checked) and hv's cut. Molt: closed out, v1.4.4 released and rolled out.",
+    "focus": "Localfolded at hv's word for a /compact, 2026-11-05 07:06Z by date -u; on the bounce, carry on with todo 196's order from step 1. dc's 0323 bank 3b is in flight, the last unit of devbin 0.1.20. vc holds the desk, and kovacs-sysadm holds for START. Molt is closed out.",
     "claims": [
       "ST0011"
     ],
@@ -4440,34 +4440,36 @@
       "kind": "decision",
       "seq": 133,
       "text": "hv's rulings of 2026-11-04 in vc's window through the TUI (answered before the clock read 2026-11-04 12:01Z by date -u), each as vc recommended, on pplr-vc's relay of hv's word: devbin 0.1.20 ships today with the formula line-length fix, since lib/cmd/formula:424 renders the install manifest's header as one Ruby line, 131 columns in one tap's render against brew style's Layout/LineLength limit of 118, so a tap whose CI runs brew style or brew audit --strict goes red at publish. 0.1.20 carries the fix and what main holds since v0.1.19 (0320's release shape, the public workroom); the 19 open issues wait as filed, by hv's 1 Nov triage rule. dc builds it under pplr-vc's brief (hv in dc's window, received before dc's clock read 2026-11-04 11:21Z: 'Please ping pplr-vc for instructions'), and dc files its issue; vc validates and lands it under devbin's rules; pplr-vc controls the desk and checks the fleet side. hv cuts once GitHub's incident clears, with kovacs up and kovacs-sysadm on it for its leg; then hv's brew steps, vc's sweep from brew after Molt's 1.4.2 cut, and hv republishes the three taps' formulae. ST0011's hold 35 stands.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-05T07:06:05.543Z",
       "recorded_at": "2026-11-04T12:01:41.413Z"
     },
     {
       "node": "vc",
       "kind": "doing",
       "seq": 88,
-      "text": "devbin 0.1.20 carries every open issue before its cut (decision 135): cc builds group A in three trains, dc groups B and C then 0323, vc 0321 and every review and landing; landed and closed so far: 0322, 0321, 0298, 0299, 0311, 0305; held for hv's next word at the day's fold, the resume order in todo 196.",
+      "text": "devbin 0.1.20, every open issue fixed before its cut, under decisions 135 to 140 and their one-off fix-only rules for this close-out. 14 of 15 closed on 2026-11-05. 0315 closed unfixed, since no project reaches it. Closed fixed: 0319, 0308, 0309, 0312, 0310, 0316, 0313, 0302, 0318, 0314 (follow-up b548add6), 0307, 0301 and 0303. 0323 stays open: banks 1 (eb0886cc), 2 (89380aa5, 67481c78), 3 (1c124b1f) and 4 (7f273494) are landed, and its last unit, 3b, is dc's in k323/b3b, with vc reviewing lib/cmd/release's lines at dc's ask. Its ci-draft path stays with ccusage (decision 140). The note is rewritten and hv-approved (3c86e671), and the dry run at 154e424e was clean. Resume order: todo 196.",
       "state": "live",
       "recorded_at": "2026-11-04T12:02:06.500Z",
-      "edited_at": "2026-11-04T19:55:15.181Z"
+      "edited_at": "2026-11-05T07:06:04.894Z"
     },
     {
       "node": "vc",
       "kind": "decision",
       "seq": 134,
       "text": "hv's rulings of 2026-11-04 in vc's window (TUI answers and hv's word, received before the clock read 2026-11-04 12:22Z by date -u): the note, RELEASES/0.1.20.md, is vc's to draft and hv's to read before the cut. Then hv, moving: 'Ok, I need to move so we can't kick this off yet. Get everything ready, then I will close and pick this up when I get back home', and 'I need to move. Please bank everything and then hold for a localfold+compact, then I will pick it up once I get home.' So devbin 0.1.20 banks as it stands, and nothing lands, runs or cuts until hv picks up at home; kovacs is not started. Banked: devbin issue 0322's unit at 28f94c39 on 64566fba (lib/cmd/formula, lib/pages/formula.md, tests/unit/formula.bats), which dc banks to a named branch, unpushed. vc's review passed it: the keg's manifest byte-identical; both 0322 arms red at the base for the defect under BSD and GNU (brew style's one offense, Layout/LineLength [131/118]) and green at the fix; the arm's Homebrew API download stopped by HOMEBREW_NO_INSTALL_FROM_API=1, its style-gem install on a brew without them kept knowingly; critic-shell's three recommendations taken, HOMEBREW_DEVELOPER=1 among them so brew writes nothing outside the sandbox. dc's fleet proof is green: brew style and brew audit --strict, rc 0, on the three taps' renders at 28f94c39, with hv's brew list and trust store unchanged. dc's driver (run-0322.sh, runs.sh and runs.conf in dc's 0322 kit) is read and good for its ask on pplr-vc's desk. GitHub's status page read All Systems Operational at 12:07Z.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-05T07:06:05.736Z",
       "recorded_at": "2026-11-04T12:22:24.197Z"
     },
     {
       "node": "vc",
       "kind": "todo",
       "seq": 196,
-      "text": "At hv's next word, devbin 0.1.20 (decision 135: every open issue into 0.1.20 before its cut). On main, unpushed: 0322 (d5b7872e), 0321 (49f77439), group B 0298, 0299, 0311, 0305 (941e4400 to 82cba561), each closed; views regenerated (1c291303). Both runs of 2026-11-04 evening were stopped at hv's word with no verdict, so each reruns whole: dc's 0319 (refs/bank/dc/0319 at 3fa38515 on 82cba561, kit gb/k319; slot released 20:03Z) and cc's train 1, 0308, 0309, 0312 (refs/bank/cc/v0120-t1 at e7133d13; its driver ended with cc's session after BSD contract at 19:51Z, and slot 01M6M084QB56E66T6M067SEX8A still reads started, for cc to release or pplr-vc to revoke first; its release.bats:480 red was main's own, fixed at 1c291303). Then: dc's group C (refs/bank/dc/groupC-wip at 65b0166f: 0316 committed, 0302 WIP with vendor, version and releasesnapshot arms failing and not yet read; resume in ~/Devel/scratch/devbin-dc/gc/RESUME.md; then 0301, 0303, 0318; 0302 runs the whole suite); cc's train 2 (0310, 0313, 0314, 0315 with --fires --at-least as ruled; release_one_repository onto require_git_local_env_cleared; release.bats in its FILES) after train 1; cc's train 3, 0307 alone; dc's 0323 in four banks per its design note (hv's TUI rulings: sign before the tag for object: local, one notarytool keychain profile announced first, Gtools's lock-sync retires; cldr-dc's critic input at ~/Devel/scratch/devbin-vc/0323/cldr-critic-input.md), its banks on A's files after A lands. Then vc rewrites RELEASES/0.1.20.md from ~/Devel/scratch/devbin-vc/0.1.20/RELEASES-0.1.20.v2.md, runs release notes and commits note and views together, hv reads it, the dry run, GitHub's Actions incident read, the heavy slot, kovacs-sysadm's leg notice, hv's cut, the candidate's CI read, hv's brew steps, vc's sweep from brew after Molt's 1.4.3 cut, hv's republish of the three taps.",
+      "text": "Resume order for devbin 0.1.20's cut (2026-11-05). (1) Review and land 0323 bank 3b (dc; cc is paused at hv's word), then dc writes 0323's Resolution and closes it. (2) vc edits the note's binary-signing entry to banks 3 and 3b as built: bin-sign, bin-notarize, bin-verify and bin-publish; macos.bin_dir and macos.pack.files; and the object step's bin-publish before the formula step, already where attached. vc runs release notes, commits the note and its views, and shows hv the edit. (3) The dry run again, its kovacs login announced to kovacs-sysadm and reported. (4) vc asks the bats and heavy lanes for hv's cut and STARTs it, telling kovacs-sysadm START. hv runs bin/devbin release v0.1.20 in Devbin, and kovacs-sysadm hears END at its end. (5) The candidate's CI read: Linux, and WSL for 0318's arm. (6) hv's brew upgrade devbin, then devbin use brew. (7) vc's sweep from brew, Utilz's commit dropping macos.keychain (todo 197). (8) hv's republish of the taps. (9) kovacs stops once the cut has ENDed. Held: 8GJE86, ccusage's restart, for hv's word; its active profile is engineering00, not the hold's engineering01.",
       "state": "live",
       "recorded_at": "2026-11-04T12:22:36.034Z",
-      "edited_at": "2026-11-04T20:05:21.087Z"
+      "edited_at": "2026-11-05T07:06:05.282Z"
     },
     {
       "node": "vc",
@@ -6745,7 +6747,8 @@
       "recipient": "cc",
       "body": "vc to cc, at hv's ruling (vc decision 135, 2026-11-04 17:50Z by date -u): every open devbin issue is fixed into 0.1.20 before the cut, and hv starts you. Your lane is group A, the release core: 0307, 0308, 0309, 0310, 0312, 0313, 0314, 0315 and 0316 (lib/cmd/release, lib/release.steps, lib/release.macos, lib/runlog). Units that share files are banked and land one after another (decision 83), so order them by file overlap and send me the order before you build. Each unit: claim the issue, critic-shell before its first run, a red leg at main's code (RED_TIMEOUT, a claim per arm), the tree scans and help in the targeted run, and a handover bundle with COMMIT_MSG-<unit>.txt and SHA256SUMS for land-stack.sh. Runs book on pplr-vc's desk through vc. Main is at 5d477b81; 0322 has landed (d5b7872e) and is closed. No yaks: fix what each issue says and nothing more. dc has groups B (lib/helpers, lib/cmd/macos, lib/cmd/worktrees, bin/devbin) and C (the test harness), then 0323; tell me before you touch any of those files.",
       "fyi": false,
-      "recorded_at": "2026-11-04T17:50:57.037Z"
+      "recorded_at": "2026-11-04T17:50:57.037Z",
+      "archived_at": "2026-11-05T07:06:05.930Z"
     },
     {
       "id": "01M6KTYY6TZNZZGPXFDE9MH0PG",
@@ -6766,7 +6769,8 @@
       "recipient": "cc",
       "body": "devbin-vc to cc, 2026-11-05 04:35Z by date -u (also sent live): GO for devbin 0.1.20, under hv's new rule (hv in vc's window, received before 04:35Z): one release; every issue that can be fixed, fixed; each fix runs only its own test, lands and closes, then the next; the whole suite runs once, after every issue is closed. Per issue: claim it; fix it; its new or changed arms red at the base code (RED_TIMEOUT stands), and the test file(s) it touches green at the fix under BSD. No GNU legs, tree scans, whole suite or critic leg per unit: those run once at the end, and the critic's findings are fixed there, never filed. A localised run books the light lane (slots ask light naming the files and the tip, sent to vc), granted at once while the load allows, with no driver read for a run of named files. Then bank, handover, vc lands with land-stack.sh, and you write the Resolution and close. (1) Train 1 (0308, 0309, 0312): its own test is done (last night at e7133d13: the red legs red as wanted; releasecore, releasecut, releaseattach, releasepublish, formula, ci-state, releaselegs, releasestatus, releasesnapshot and contract green under BSD; release.bats 73 of 74, its one red at :480 being main's stale views, fixed on main at 1c291303). No rerun and no rebase: none of its files moved on main since 3db6be7d, so it lands as run. Run handover-t1.sh, its message citing those legs, and send vc the path. (2) 0315 is closed (bc857a9c, hv's word: no project reaches it): drop your claim and take it out of train 2. (3) Then one issue at a time through the loop, each on main after train 1 lands: 0310 (built at 10b2b09; rebase onto main, where docs/configuration.md moved), 0313, 0314, then 0307. release_one_repository's switch to require_git_local_env_cleared is dropped: no issue names it. The desk is vc's today (hv); the heavy bats lane is kept for Molt's cut and the one final suite.",
       "fyi": false,
-      "recorded_at": "2026-11-05T04:36:29.725Z"
+      "recorded_at": "2026-11-05T04:36:29.725Z",
+      "archived_at": "2026-11-05T07:06:05.930Z"
     }
   ],
   "handled": [

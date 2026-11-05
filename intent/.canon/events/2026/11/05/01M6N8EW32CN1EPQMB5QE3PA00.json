@@ -1,0 +1,16 @@
+{
+  "id": "01M6N8EW32CN1EPQMB5QE3PA00",
+  "ts": "2026-11-05T07:06:05.282Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 196,
+    "text": "Resume order for devbin 0.1.20's cut (2026-11-05). (1) Review and land 0323 bank 3b (dc; cc is paused at hv's word), then dc writes 0323's Resolution and closes it. (2) vc edits the note's binary-signing entry to banks 3 and 3b as built: bin-sign, bin-notarize, bin-verify and bin-publish; macos.bin_dir and macos.pack.files; and the object step's bin-publish before the formula step, already where attached. vc runs release notes, commits the note and its views, and shows hv the edit. (3) The dry run again, its kovacs login announced to kovacs-sysadm and reported. (4) vc asks the bats and heavy lanes for hv's cut and STARTs it, telling kovacs-sysadm START. hv runs bin/devbin release v0.1.20 in Devbin, and kovacs-sysadm hears END at its end. (5) The candidate's CI read: Linux, and WSL for 0318's arm. (6) hv's brew upgrade devbin, then devbin use brew. (7) vc's sweep from brew, Utilz's commit dropping macos.keychain (todo 197). (8) hv's republish of the taps. (9) kovacs stops once the cut has ENDed. Held: 8GJE86, ccusage's restart, for hv's word; its active profile is engineering00, not the hold's engineering01."
+  }
+}
