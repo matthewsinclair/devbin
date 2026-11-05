@@ -4006,26 +4006,27 @@ _snapshot_select() {
 # snapshot_selects <commit> <list> <path> <work> -- rc 0 when <list>, the
 # release.snapshot.list file in <commit>'s tree, selects <path> from that tree,
 # as a snapshot of <commit> carries it (_snapshot_select, the one selection);
-# rc 1 when it does not; rc 2, with SNAPSHOT_WHY, when that cannot be read: the
-# list is no file there, it names no path, or git could not select. Its scratch,
-# an index and a listing, is under <work>. Asked of release.assets.workflow
-# under release.publish.url (issue 0314), by the cut's pre-flight and by
-# release attach: the assets' run is on the snapshot, which holds only what
-# the list selects.
+# rc 1 when it does not; rc 3, with SNAPSHOT_WHY, when that cannot be read: the
+# list is no file there, it names no path, or git could not select. Its
+# scratch, an index and a listing, is under <work>. Asked of
+# release.assets.workflow under release.publish.url (issue 0314), by the cut's
+# pre-flight and by release attach: the assets' run is on the snapshot, which
+# holds only what the list selects. 3, never 2, for what cannot be read: 2 is
+# the dispatcher's word under lib/cmd.
 snapshot_selects() {
   local commit="$1" list="$2" want="$3" work="$4" text rec
   local -a specs=()
   SNAPSHOT_WHY=""
   if ! text="$(_snapshot_git -C "$PROJECT_ROOT" cat-file blob "$commit:$list" 2>/dev/null)"; then
     SNAPSHOT_WHY="release.snapshot.list is $list, and ${commit:0:12} holds no such file to read"
-    return 2
+    return 3
   fi
   mapfile -t specs < <(pathlist_specs "$text")
   if [ "${#specs[@]}" -eq 0 ]; then
     SNAPSHOT_WHY="the list $list at ${commit:0:12} names no path"
-    return 2
+    return 3
   fi
-  _snapshot_select "$PROJECT_ROOT" "$commit" "$work/selects.index" "$work/selects.out" "${specs[@]}" || return 2
+  _snapshot_select "$PROJECT_ROOT" "$commit" "$work/selects.index" "$work/selects.out" "${specs[@]}" || return 3
   while IFS= read -r -d '' rec; do
     [ "${rec#*$'\t'}" != "$want" ] || return 0
   done <"$work/selects.out"
