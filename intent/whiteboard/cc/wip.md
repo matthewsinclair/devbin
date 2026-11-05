@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 10:11Z
-status: active
-focus: "Holding at hv's word via vc (localfold, compact, then hold; compacted and picked up 2026-11-05 10:11Z by date -u) until hv or vc names cc's next work; hold 35 goes to hv with the go for the consumer pass."
+heartbeat_at: 2026-11-05 10:40Z
+status: paused
+focus: "Paused at hv's word via vc (2026-11-05 10:40Z by date -u), the session ending: the consumer pass's Utilz turn runs only utilz/vc, utilz/dc and vc (vc's decision 141), and core asks from Utilz's cut become issues for the next release. Hold 35 is archived, since vc checks Utilz's four macOS sites when utilz/dc lands U1 (vc's todo 195). cc's next work is hv's to name."
 claims: []
 ---
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- Utilz 2.14.9's candidate CI would skip macOS: utilz's tests.yml runs test-macos (:115), the rust matrix's macOS row (:285), menuz-app (:534) and Test Summary's MACOS_REQUIRED (:598) only on a tag or a dispatch, while 0.1.19's cut tags only after CI is green on candidate/<tag>, so unless utilz/dc's ST0031/04 moves all four to devbin's own startsWith(github.ref, 'refs/heads/candidate/') (devbin's tests.yml :192, :355, :546) the candidate reads green on Linux alone. AC-5.4's Utilz facts are dc's (its hold of 2026-11-02). Held until hv answers Q1 of cc's plan of 2026-11-02: cc sends it to devbin-vc for utilz/vc and utilz/dc, hv says it in utilz/vc's window, or it is left to ST0031/04's review.
+_(none)_
 
 ## Watch-outs
 
