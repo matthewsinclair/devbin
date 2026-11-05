@@ -1,0 +1,16 @@
+{
+  "id": "01M6NMP2HEM6HB9BY0CPVF7TFX",
+  "ts": "2026-11-05T10:39:44.174Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 87,
+    "text": "ST0011 after devbin 0.1.20: 18 of 21 ACs, the last three (AC-3.4, AC-4.3, AC-5.4) met only at the consumers' cuts; the order is WP10 to WP14 in the consumer estates, Utilz 2.14.9 first (todo 195), WP15 read at their cuts, WP18 last (todo 183). UNPARKED at hv's go of 2026-11-05 (decision 144): the consumer pass runs under decision 141, Utilz's turn first."
+  }
+}

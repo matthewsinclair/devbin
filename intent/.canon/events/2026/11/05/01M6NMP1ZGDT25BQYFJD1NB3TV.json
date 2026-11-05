@@ -1,0 +1,15 @@
+{
+  "id": "01M6NMP1ZGDT25BQYFJD1NB3TV",
+  "ts": "2026-11-05T10:39:43.601Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, received before the clock read 2026-11-05 10:32Z by date -u: 'go for the consumer pass, Utilz first'. So decision 141's pass is live and vc's hold 35 lifts: Utilz's turn (ST0011 WP10, todo 195) runs utilz-vc, utilz-dc and devbin-vc alone. hv's TUI answers on what hold 35 named, each the rec (received before the clock read 10:35Z by date -u): (1) cc's hold 35, Utilz's four macOS jobs on candidate refs, is vc's to check at U1 against devbin's own candidate-ref conditions; (2) dc's hold 40 Q1, the commit-stamp cache gap, is filed as issue 0324 (e3267a74), and its Q2 is superseded by decision 141; (3) devbin-cc and devbin-dc fold and release now, and core asks from Utilz's cut become issues for the next release; (4) 8GJE86, ccusage's restart of every Claude session, waits for a quiet point and is put to hv again at the latest between Utilz's cut and Gtools's turn. Hold 35's first item, the desk, is moot: devbin-vc has held it since hv's word of 2026-11-05. Its fourth, cc's lane, is superseded, since 0321 shipped in 0.1.20. Todo 195's 0313 question is moot too: 0.1.20's pre-flight refuses an unignored in-tree app or build root."
+  }
+}

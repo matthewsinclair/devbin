@@ -1,0 +1,15 @@
+{
+  "id": "01M6NMP3JK0V7PBY6YR4HKE28M",
+  "ts": "2026-11-05T10:39:45.235Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Put ccusage's desk ask 8GJE86 (its issue 0003 step 3: restart every Claude session on rhadamanth, so each starts with the active profile's CLAUDE_SECURESTORAGE_CONFIG_DIR) to hv again at a quiet point, when no cut or run is in flight in any estate, at the latest between Utilz's cut and Gtools's turn (decision 144). It stays queued on the desk until then."
+  }
+}
