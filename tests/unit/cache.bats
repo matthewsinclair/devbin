@@ -633,22 +633,41 @@ unusable_root() {
   refute_output_contains "not at HEAD: src"
 }
 
-# macos_config [--stamp <key>] <path>... -- PROJ's config with the built-in
-# macos enabled, its app at out/Demo.app built by macos.build and, with
-# --stamp, stamped with its commit under the Info.plist key <key>
+# macos_config [--stamp <key>] [--no-version] <path>... -- PROJ's config with
+# the built-in macos enabled, its app at out/Demo.app built by macos.build and,
+# with --stamp, stamped with its commit under the Info.plist key <key>
 # (macos.commit_stamp), and a build: block holding one artefact per <path>,
-# named a, b and on, each built by cargo from src.
+# named a, b and on, each built by cargo from src and from VERSION, the
+# project's version file, which an app artefact's inputs must hold;
+# --no-version leaves VERSION out of the inputs. VERSION is committed the first
+# time, since the project holds none.
 macos_config() {
-  local names=(a b c) i=0 p stamp=""
-  if [ "${1:-}" = --stamp ]; then
-    stamp="$2"
-    shift 2
+  local names=(a b c) i=0 p stamp="" version=yes
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --stamp)
+        stamp="$2"
+        shift 2
+        ;;
+      --no-version)
+        version=no
+        shift
+        ;;
+      *) break ;;
+    esac
+  done
+  if [ ! -e "$PROJ/VERSION" ]; then
+    printf '1.0.0\n' >"$PROJ/VERSION"
+    git -C "$PROJ" add VERSION
+    git -C "$PROJ" commit -q -m "the version file"
   fi
   {
     printf '%s\n' 'project:' '  name: demo' 'commands:' '  macos:' '    enabled: true' \
       'macos:' '  app: out/Demo.app' '  build: ./mkapp'
     if [ -n "$stamp" ]; then printf '  commit_stamp: %s\n' "$stamp"; fi
-    printf '%s\n' 'build:' '  inputs:' '    - "src"' '  artefacts:'
+    printf '%s\n' 'build:' '  inputs:' '    - "src"'
+    if [ "$version" = yes ]; then printf '%s\n' '    - "VERSION"'; fi
+    printf '%s\n' '  artefacts:'
     for p in "$@"; do
       printf '    %s:\n      tool: cargo\n      path: "%s"\n' "${names[$i]}" "$p"
       i=$((i + 1))
@@ -670,6 +689,15 @@ macos_config() {
   run --separate-stderr devbin_run "$PROJ" cache key a
   assert_refused "build.artefacts.a has macos.app's path beside macos.commit_stamp (AppCommit)"
   macos_config --stamp AppCommit out/other
+  run --separate-stderr devbin_run "$PROJ" cache key a
+  assert_success
+}
+
+@test "0325: a build: artefact whose path is macos.app's, with inputs that hold no file the app's version is read from, is refused at config read, naming the file, since a release that moves the version alone would pull a copy at the old version" {
+  macos_config --no-version out/Demo.app
+  run --separate-stderr devbin_run "$PROJ" cache key a
+  assert_refused "build.artefacts.a has macos.app's path, and its inputs hold no VERSION, the file the app's version is read from"
+  macos_config out/Demo.app
   run --separate-stderr devbin_run "$PROJ" cache key a
   assert_success
 }

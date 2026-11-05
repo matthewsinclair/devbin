@@ -830,12 +830,20 @@ HEAD_LINE=""
 HEAD_SHA=""
 HEAD_STATE=""
 release_names() {
+  local vf
   REL_VERSION="$(read_version)"
   [ "$REL_VERSION" != unknown ] || die "macos: the project's version cannot be read (project.version_from), so there is no release to sign for"
   APP_TAG="$(release_tag_name "$(cfg_release_get tag)" "$REL_VERSION")"
   APP_VERSION="$REL_VERSION"
-  APP_VERSION_FILE="$(macos_path version_from)"
-  [ -n "$APP_VERSION_FILE" ] || return 0
+  # The app's version file by the one statement of it, cfg_macos_version_file
+  # (issue 0325): macos.version_from where declared, else the project's, so
+  # the file app-sign compares the app's version against is the file an app
+  # artefact's key must hold. The -ef below compares it with
+  # DEVBIN_VERSION_FILE, which the dispatcher sets from cfg_version_from and
+  # exports, so with macos.version_from undeclared both sides are one file and
+  # the app does not version apart.
+  vf="$(cfg_macos_version_file)" || die "macos: the app's version file cannot be read (macos.version_from, else project.version_from)"
+  APP_VERSION_FILE="$(macos_path_value macos.version_from "$vf")"
   ! [ "$APP_VERSION_FILE" -ef "$(version_path "${DEVBIN_VERSION_FILE:-VERSION}")" ] || return 0
   APP_APART=yes
   APP_VERSION="$(read_version "$APP_VERSION_FILE" version-file)"

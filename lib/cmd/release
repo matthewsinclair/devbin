@@ -1346,7 +1346,8 @@ legs_cache_lines() {
       ;;
     *)
       # Why there is none: macos.build is not declared, two entries name the
-      # app, or the app carries its commit (macos.commit_stamp).
+      # app, the app carries its commit (macos.commit_stamp), or the entry's
+      # inputs hold no file the app's version is read from.
       printf 'release: cache: %s\n' "$art"
       return 0
       ;;

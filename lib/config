@@ -939,6 +939,21 @@ cfg_macos_declared() {
   is_true_word "$(cfg_get "commands.macos.enabled" false)"
 }
 
+# cfg_macos_version_file -- the file the app's version is read from, as the
+# config writes it (issue 0325): macos.version_from where it is declared, else
+# the project's version file (cfg_version_from), a leading `./` dropped. THE
+# ONE STATEMENT of which file that is: config validation asks it which file an
+# app artefact's inputs must hold, and macos's release_names takes the app's
+# version file from it, so the file the key reads and the file app-sign
+# compares the app's version against are one.
+cfg_macos_version_file() {
+  local f
+  f="$(cfg_macos_get version_from)" || return 1
+  [ -n "$f" ] || f="$(cfg_version_from)"
+  while [[ "$f" == ./* ]]; do f="${f#./}"; done
+  printf '%s\n' "$f"
+}
+
 # cfg_macos_artefacts -- each build.artefacts entry whose path is macos.app's,
 # one name a line, and nothing when macos.app is undeclared or no entry's path
 # is it (ST0011 WP-06). Compared in any case of their letters, as
@@ -970,11 +985,16 @@ cfg_macos_artefacts() {
 # none when the one entry's app carries its commit (macos.commit_stamp, issue
 # 0324), which config validation refuses too: the key holds no commit, so a
 # copy pulled at a later commit would be another commit's build, which
-# app-sign refuses, and such an app gains nothing from the cache. 4 is asked
-# before 3, since a project's own build handler can pull the app whether or
-# not macos.build is declared.
+# app-sign refuses, and such an app gains nothing from the cache; and at 5 why
+# there is none when the one entry's inputs hold no file the app's version is
+# read from (cfg_macos_version_file, issue 0325), which config validation
+# refuses too: the key reads the declared inputs alone, so a release that moves
+# the version alone keeps it, and a copy pulled then is at the old version,
+# which app-sign refuses. A version file no input path can hold, one not below
+# the project root, is 5 as well. 4 and 5 are asked before 3, since a project's
+# own build handler can pull the app whether or not macos.build is declared.
 cfg_macos_artefact() {
-  local arts build stamp
+  local arts build stamp vf held p
   arts="$(cfg_macos_artefacts)" || return 1
   if [ "$arts" != "${arts%%$'\n'*}" ]; then
     printf "build.artefacts %s each have macos.app's path, so the macOS stage takes none of them -- declare the app's artefact once\n" "${arts//$'\n'/, }"
@@ -984,6 +1004,23 @@ cfg_macos_artefact() {
   if [ -n "$arts" ] && [ -n "$stamp" ]; then
     printf "build.artefacts.%s has macos.app's path beside macos.commit_stamp (%s): the app carries the commit it was built at and its key does not, so a copy pulled at a later commit is another commit's build, which app-sign refuses -- leave the app out of build.artefacts, since it gains nothing from the cache\n" "$arts" "$stamp"
     return 4
+  fi
+  if [ -n "$arts" ]; then
+    vf="$(cfg_macos_version_file)" || return 1
+    held=no
+    if ! cache_path_problem "$vf" >/dev/null; then
+      while IFS= read -r p; do
+        [ -n "$p" ] || continue
+        if cache_paths_overlap "$p" "$vf"; then
+          held=yes
+          break
+        fi
+      done <<<"$(cfg_build_input_paths "$arts")"
+    fi
+    if [ "$held" = no ]; then
+      printf "build.artefacts.%s has macos.app's path, and its inputs hold no %s, the file the app's version is read from: a release that moves the version alone keeps the key, so a copy pulled then is at the old version, which app-sign refuses -- add %s, written relative to the project root, to build.inputs or to the artefact's own inputs\n" "$arts" "$vf" "$vf"
+      return 5
+    fi
   fi
   build="$(cfg_macos_get build)" || return 1
   if [ -z "$build" ]; then
@@ -1631,11 +1668,12 @@ _cfg_build_problems() {
   # macos.app's would leave the macOS stage to guess which to pull and put.
   # AND NONE WHERE IT CARRIES ITS COMMIT (issue 0324): beside
   # macos.commit_stamp, a copy pulled at a later commit is another commit's
-  # build.
+  # build. NOR ONE WHOSE INPUTS MISS ITS VERSION FILE (issue 0325): a copy
+  # pulled after a release moved the version alone is at the old version.
   local said s=0
   said="$(cfg_macos_artefact)" || s=$?
   case "$s" in
-    2 | 4)
+    2 | 4 | 5)
       printf 'config: %s: %s\n' "$_DEVBIN_CFG_FILE" "$said" >&2
       rc=1
       ;;

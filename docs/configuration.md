@@ -544,7 +544,7 @@ The built-in `cache` (ST0011 WP-16) keeps this machine's built artefacts under a
 | `build.artefacts.<name>.path`   | path           | none    | what the build writes: recorded by `put`, written back by `get`           |
 | `build.artefacts.<name>.inputs` | list of paths  | none    | this artefact's own input paths, where it reads fewer than `build.inputs` |
 
-Every path is relative to the project root and written once, as git names it. When the config is read, an unknown key, a tool word outside the table, an artefact name that does not start with a letter or a digit, a path that could take a pull outside the project or over it, an artefact's `path` that overlaps an input path, and an artefact at `macos.app`'s path beside `macos.commit_stamp` are refused; `bin/devbin help cache` has each rule, and `get`'s own refusals.
+Every path is relative to the project root and written once, as git names it. When the config is read, an unknown key, a tool word outside the table, an artefact name that does not start with a letter or a digit, a path that could take a pull outside the project or over it, an artefact's `path` that overlaps an input path, an artefact at `macos.app`'s path beside `macos.commit_stamp`, and one there whose inputs hold no file the app's version is read from are refused; `bin/devbin help cache` has each rule, and `get`'s own refusals.
 
 The registry's root is `DEVBIN_CACHE_HOME`, an absolute path, or the XDG cache directory's `devbin` when it is unset or empty. A root that does not exist yet is an empty registry, made by the first `put`; one that cannot be used makes `get` and `put` refuse, saying so, and the build runs. `bin/devbin doctor` names the root it resolves in a project with a `build` block.
 

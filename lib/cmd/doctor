@@ -1114,9 +1114,10 @@ check_cache() {
 # there, by the one answer app-sign and a cut read too (cfg_macos_artefact;
 # ST0011 WP-06): a pass naming it, or a NOTE that the stage builds uncached,
 # so an adoption whose artefact's path missed macos.app's sees it before a
-# cut. Two entries naming the app, and one beside macos.commit_stamp, are
-# config validation's to refuse, and a stage that builds no app has nothing to
-# cache, so this says nothing of them.
+# cut. Two entries naming the app, one beside macos.commit_stamp, and one whose
+# inputs hold no file the app's version is read from are config validation's
+# to refuse, and a stage that builds no app has nothing to cache, so this says
+# nothing of them.
 check_macos_cache() {
   local art s=0
   cfg_macos_declared || return 0

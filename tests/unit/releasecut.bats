@@ -2603,7 +2603,7 @@ legs_project() {
     - far")"
   perl -0pi -e 's/\ncommands:\n  release:\n    enabled: true\n/\ncommands:\n  release:\n    enabled: true\n  macos:\n    enabled: true\n/' \
     "$proj/bin/.devbin/config.yaml"
-  printf '%s\n' 'macos:' '  app: out/Demo.app' '  build: ./mkapp' 'build:' '  inputs:' '    - src' '  artefacts:' '    app:' \
+  printf '%s\n' 'macos:' '  app: out/Demo.app' '  build: ./mkapp' 'build:' '  inputs:' '    - src' '    - VERSION' '  artefacts:' '    app:' \
     '      tool: cargo' '      path: out/Demo.app' >>"$proj/bin/.devbin/config.yaml"
   grep -q '^  macos:$' "$proj/bin/.devbin/config.yaml" || fail "the fixture's config does not enable macos"
   mkdir -p "$proj/src"

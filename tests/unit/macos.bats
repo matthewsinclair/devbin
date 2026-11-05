@@ -742,8 +742,9 @@ YAML
   declare -f make_app >>"$proj/mkapp"
   printf 'make_app build/Products/Release\n' >>"$proj/mkapp"
   chmod +x "$proj/mkapp"
-  # The app is the build: block's artefact `app`: its path is macos.app's.
-  printf '%s\n' 'build:' '  inputs:' '    - mkapp' '  artefacts:' '    app:' '      tool: cargo' \
+  # The app is the build: block's artefact `app`: its path is macos.app's, and
+  # its inputs hold VERSION, the file the app's version is read from.
+  printf '%s\n' 'build:' '  inputs:' '    - mkapp' '    - VERSION' '  artefacts:' '    app:' '      tool: cargo' \
     '      path: build/Products/Release/Demo.app' >>"$proj/bin/.devbin/config.yaml"
   git -C "$proj" add -A
   git -C "$proj" commit -qm "the app, through the cache"
