@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 05:44Z
+heartbeat_at: 2026-11-05 06:02Z
 status: active
-focus: "0323: bank 2 re-banked (b1de749d), its run waiting on the desk hold; bank 3 (macos binaries) being built on it; then the ci-draft finalize path (focus set 2026-11-05 05:44Z by date -u)."
+focus: "0323: bank 2 landed (89380aa5); bank 3 (macos binaries: bin-sign, bin-notarize, bin-verify, bin-publish, the leg as macos leg, bin_dir in pre-flight) written in ~/Devel/scratch/devbin-dc/k323/b3, its arms being written by a subagent, then a red clone, a light ask and a handover named COMMIT_MSG-0323.txt; the ci-draft path waits on hv's scope call (focus set 2026-11-05 06:02Z by date -u)."
 claims: [ST0011/16, ISSUE:0323]
 ---
 
