@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 06:38Z
-status: active
-focus: "0323 bank 3b, at vc's FINAL (2026-11-05): release_bin_archive in lib/release.macos, bin-publish's already-read in lib/cmd/macos, and the cut's object step calling bin-publish before the formula step, with its three arms, built in ~/Devel/scratch/devbin-cc/v0120-0323b3b on main 1c124b1f; dc reviews the macos part and the arms before the light ask, and closes 0323 once 3b lands. Hold 35 stays parked (focus set 2026-11-05 06:38Z by date -u)."
+heartbeat_at: 2026-11-05 06:43Z
+status: paused
+focus: "Holding at hv's word (2026-11-05 06:43Z by date -u: wrap, close, and hold) until hv or vc names cc's next work: 0323 bank 3b is unstarted and held (hold 36), and hold 35 stays parked."
 claims: []
 ---
 
@@ -22,6 +22,7 @@ _(none)_
 ## Holds
 
 - Utilz 2.14.9's candidate CI would skip macOS: utilz's tests.yml runs test-macos (:115), the rust matrix's macOS row (:285), menuz-app (:534) and Test Summary's MACOS_REQUIRED (:598) only on a tag or a dispatch, while 0.1.19's cut tags only after CI is green on candidate/<tag>, so unless utilz/dc's ST0031/04 moves all four to devbin's own startsWith(github.ref, 'refs/heads/candidate/') (devbin's tests.yml :192, :355, :546) the candidate reads green on Linux alone. AC-5.4's Utilz facts are dc's (its hold of 2026-11-02). Held until hv answers Q1 of cc's plan of 2026-11-02: cc sends it to devbin-vc for utilz/vc and utilz/dc, hv says it in utilz/vc's window, or it is left to ST0031/04's review.
+- 0323 bank 3b, vc's FINAL of 2026-11-05: release_bin_archive in lib/release.macos, bin-publish's already-read in lib/cmd/macos, and the cut's object step calling bin-publish before the formula step, with its three arms (the cut attaching in the object step before the formula row, a finished cut's re-run asking nothing, bin-publish's already answer), each red at main and green at the fix. Held at hv's word in cc's window (2026-11-05 06:43Z by date -u: wrap, close, and hold) until hv or vc says go. Nothing is written yet: ~/Devel/scratch/devbin-cc/v0120-0323b3b/tree is clean at main 1c124b1f (rebase it first if main has moved, decision 83), and the kit beside it (setup-red.sh, run-0323b3b.sh, handover-0323b3b.sh, runs.sh) waits on runs.conf's arm names. dc reviews the lib/cmd/macos part and the arms before the light ask, and closes 0323 once 3b lands.
 
 ## Watch-outs
 

@@ -1,0 +1,15 @@
+{
+  "id": "01M6N7660MXQ4MJ6V6R85QQ0DD",
+  "ts": "2026-11-05T06:43:51.956Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0323 bank 3b, vc's FINAL of 2026-11-05: release_bin_archive in lib/release.macos, bin-publish's already-read in lib/cmd/macos, and the cut's object step calling bin-publish before the formula step, with its three arms (the cut attaching in the object step before the formula row, a finished cut's re-run asking nothing, bin-publish's already answer), each red at main and green at the fix. Held at hv's word in cc's window (2026-11-05 06:43Z by date -u: wrap, close, and hold) until hv or vc says go. Nothing is written yet: ~/Devel/scratch/devbin-cc/v0120-0323b3b/tree is clean at main 1c124b1f (rebase it first if main has moved, decision 83), and the kit beside it (setup-red.sh, run-0323b3b.sh, handover-0323b3b.sh, runs.sh) waits on runs.conf's arm names. dc reviews the lib/cmd/macos part and the arms before the light ask, and closes 0323 once 3b lands."
+  }
+}

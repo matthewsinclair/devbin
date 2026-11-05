@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "1ae27c22-b18d-4689-9efc-64362ad5c0d6",
-    "heartbeat_at": "2026-11-05T06:38:58.756Z",
-    "status": "active",
-    "focus": "0323 bank 3b, at vc's FINAL (2026-11-05): release_bin_archive in lib/release.macos, bin-publish's already-read in lib/cmd/macos, and the cut's object step calling bin-publish before the formula step, with its three arms, built in ~/Devel/scratch/devbin-cc/v0120-0323b3b on main 1c124b1f; dc reviews the macos part and the arms before the light ask, and closes 0323 once 3b lands. Hold 35 stays parked (focus set 2026-11-05 06:38Z by date -u).",
+    "heartbeat_at": "2026-11-05T06:43:59.986Z",
+    "status": "paused",
+    "focus": "Holding at hv's word (2026-11-05 06:43Z by date -u: wrap, close, and hold) until hv or vc names cc's next work: 0323 bank 3b is unstarted and held (hold 36), and hold 35 stays parked.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
@@ -1644,6 +1644,14 @@
       "state": "archived",
       "archived_at": "2026-11-05T06:16:29.763Z",
       "recorded_at": "2026-11-05T04:54:37.796Z"
+    },
+    {
+      "node": "cc",
+      "kind": "hold",
+      "seq": 36,
+      "text": "0323 bank 3b, vc's FINAL of 2026-11-05: release_bin_archive in lib/release.macos, bin-publish's already-read in lib/cmd/macos, and the cut's object step calling bin-publish before the formula step, with its three arms (the cut attaching in the object step before the formula row, a finished cut's re-run asking nothing, bin-publish's already answer), each red at main and green at the fix. Held at hv's word in cc's window (2026-11-05 06:43Z by date -u: wrap, close, and hold) until hv or vc says go. Nothing is written yet: ~/Devel/scratch/devbin-cc/v0120-0323b3b/tree is clean at main 1c124b1f (rebase it first if main has moved, decision 83), and the kit beside it (setup-red.sh, run-0323b3b.sh, handover-0323b3b.sh, runs.sh) waits on runs.conf's arm names. dc reviews the lib/cmd/macos part and the arms before the light ask, and closes 0323 once 3b lands.",
+      "state": "live",
+      "recorded_at": "2026-11-05T06:43:51.956Z"
     }
   ],
   "sent": [
