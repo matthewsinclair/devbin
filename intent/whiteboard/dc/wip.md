@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 05:25Z
+heartbeat_at: 2026-11-05 05:44Z
 status: active
-focus: "0302 handed to vc (rc 0); 0318 banked, its light ask 01M6N2P4G6906E4S69SE2WFPNJ waiting; 0323 started: bank 3 (macos binaries) on main past d0a9750f, then bank 2 and the ci-draft finalize path (focus set 2026-11-05 05:25Z by date -u)."
+focus: "0323: bank 2 re-banked (b1de749d), its run waiting on the desk hold; bank 3 (macos binaries) being built on it; then the ci-draft finalize path (focus set 2026-11-05 05:44Z by date -u)."
 claims: [ST0011/16, ISSUE:0323]
 ---
 
@@ -13,7 +13,7 @@ claims: [ST0011/16, ISSUE:0323]
 
 ## DOING
 
-- devbin 0.1.20 under hv's per-issue rule, narrowed by vc decision 138 (each fix runs its own arms alone, red at main and green at the fix under BSD; the cut's gates, kovacs leg and CI are the one full test): group B landed and closed (0319 at b932de55); 0316 landed at 6845d6d2 and closed; 0302 banked at 291ea882, its run in light slot 01M6N1ZZ1ANS8NGJ1CTZX9N8V2. 0301 and 0303 moved to cc (dc's 0301 draft: ~/Devel/scratch/devbin-dc/gc/k301/HANDOFF-0301.md). Next: 0318, then 0323's bank 3 (on main once cc's 0313 lands), bank 2 and the ci-draft finalize path; dc closes 0323 once cc's banks 1 and 4's release half have landed too. (edited)
+- devbin 0.1.20 close-out under decisions 138 and 139 (each fix's own arms; 0323 built lean): closed this morning 0319 (b932de55), 0316 (6845d6d2), 0302 (03489730) and 0318 (55a13a51); 0301 and 0303 are cc's. 0323 (claimed): bank 2, one notarytool profile and the identity refused unpicked, banked at refs/bank/dc/0323-b2 = b1de749d, its light ask 01M6N3QTMQHSF4GV8P3QM34WJZ waiting on vc's desk hold, its announcement with vc for Utilz; bank 3, macos binaries, on bank 2's tip in ~/Devel/scratch/devbin-dc/k323/b3 (config readers written, port specs being extracted by two read-only subagents); then the ci-draft finalize path. cc builds banks 1 and 4's release half; dc closes 0323 once every bank has landed. (edited)
 
 ## TODO
 
