@@ -1293,6 +1293,51 @@ mkseamsrc() {
   [[ "$got" == *"MATCH NO COMMIT"* ]] || fail "a symlinked seam file stamped '$got'"
 }
 
+# THE STAMP NAMES THE ANSWER THAT MADE IT DIRTY (issue 0318). A publish whose
+# gate had read the source committed stamped it +dirty a moment later, and which
+# of seam_state_of's answers the stamp's own read got was in no log. Each answer
+# is held here as the whole stamp, so the answer, its place between +dirty and
+# the warning, and the warning itself are all read.
+@test "0318: a dirty stamp names the answer git gave: DIRTY, not tracked or not watched" {
+  local src sha got
+  src="$(mkseamsrc edited)"
+  sha="$(git -C "$src" rev-parse HEAD)"
+  printf 'edited\n' >>"$src/lib/alpha"
+  got="$(source_commit_of "$src")"
+  [ "$got" = "$sha +dirty (DIRTY) -- THESE BYTES MATCH NO COMMIT" ] || fail "a modified seam file stamped '$got'"
+
+  src="$(mkseamsrc ignored)"
+  printf '*.orig\n' >"$src/.gitignore"
+  git -C "$src" add .gitignore
+  git -C "$src" -c user.email=t@t -c user.name=t commit -qm ignore
+  sha="$(git -C "$src" rev-parse HEAD)"
+  printf 'stray\n' >"$src/lib/alpha.orig"
+  got="$(source_commit_of "$src")"
+  [ "$got" = "$sha +dirty (not tracked) -- THESE BYTES MATCH NO COMMIT" ] || fail "an ignored seam file stamped '$got'"
+
+  src="$(mkseamsrc blind)"
+  sha="$(git -C "$src" rev-parse HEAD)"
+  git -C "$src" update-index --assume-unchanged lib/beta
+  printf 'edited\n' >>"$src/lib/beta"
+  got="$(source_commit_of "$src")"
+  [ "$got" = "$sha +dirty (not watched) -- THESE BYTES MATCH NO COMMIT" ] || fail "an assume-unchanged seam edit stamped '$got'"
+}
+
+@test "0318: a dirty stamp names UNREADABLE when part of the seam cannot be read" {
+  [ "$(id -u)" != 0 ] || skip "running as root, which reads a mode-000 directory: the unreadable case was NOT checked"
+  local src sha got
+  src="$(mkseamsrc unreadable)"
+  mkdir "$src/lib/sub"
+  printf 'sub\n' >"$src/lib/sub/file"
+  git -C "$src" add lib/sub
+  git -C "$src" -c user.email=t@t -c user.name=t commit -qm sub
+  sha="$(git -C "$src" rev-parse HEAD)"
+  chmod 000 "$src/lib/sub"
+  got="$(source_commit_of "$src")"
+  chmod 755 "$src/lib/sub"
+  [ "$got" = "$sha +dirty (UNREADABLE) -- THESE BYTES MATCH NO COMMIT" ] || fail "a seam directory find cannot read stamped '$got'"
+}
+
 @test "0056: an inherited GIT_DIR does not pair another repository's status with this HEAD" {
   src="$(mkseamsrc)"
   printf 'edited\n' >>"$src/lib/alpha"

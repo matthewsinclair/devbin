@@ -756,13 +756,13 @@ scan() {
       rc=1
     fi
     # `install` records a vendor taken from a DIRTY seam as
-    # `<sha> +dirty -- THESE BYTES MATCH NO COMMIT` (lib/install; issue 0033 is
-    # why the marker exists and why its scope is the seam). Truncating that to
-    # twelve characters kept the sha and discarded the sentence saying the sha
-    # does not describe these bytes -- so the column rendered "no commit matches
-    # this" as a confident commit, in the one document whose subject IS
-    # provenance. Keep the flag; the digest beside it stays the byte-level
-    # answer either way.
+    # `<sha> +dirty (<answer>) -- THESE BYTES MATCH NO COMMIT` (lib/install;
+    # issue 0033 is why the marker exists and why its scope is the seam).
+    # Truncating that to twelve characters kept the sha and discarded the
+    # sentence saying the sha does not describe these bytes -- so the column
+    # rendered "no commit matches this" as a confident commit, in the one
+    # document whose subject IS provenance. Keep the flag; the digest beside it
+    # stays the byte-level answer either way.
     case "$sc" in
       *' +dirty'*) sc="${sc%% *}" ; sc="${sc:0:12}+dirty" ;;
       *) sc="${sc:0:12}" ;;

@@ -4641,9 +4641,10 @@ _devbin_unmanifested_keg() {
 # `unknown`, the line's one shape for a commit it cannot name in full.
 #
 # A RECORDED +dirty IS KEPT (issue 0277). An install's manifest records a dirty
-# source as `<sha> +dirty -- THESE BYTES MATCH NO COMMIT`; the mark is read
-# before the value is cut to its commit, so the line says `<sha12>+dirty` as T4
-# has it, never the bare commit a clean tree at that commit prints.
+# source as `<sha> +dirty (<answer>) -- THESE BYTES MATCH NO COMMIT`, the answer
+# named since issue 0318 and absent before it; the mark is read before the value
+# is cut to its commit, so the line says `<sha12>+dirty` as T4 has it, never the
+# bare commit a clean tree at that commit prints.
 devbin_tree_line() {
   local root="$1" tree ver sha dirty="" state
   tree="$(devbin_tree "$root")"

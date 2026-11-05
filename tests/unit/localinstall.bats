@@ -970,6 +970,9 @@ fakehome() {
   assert_success
 
   run devbin_run "$target" vendor
+  # A red here prints vendor's report, whose `vendored from` line is the first
+  # publish's stamp. A `+dirty` there names the answer the stamp's read got
+  # (issue 0318), the one fact a WSL 2 red of this arm left out.
   assert_output_contains "direction         forward --"
 }
 
