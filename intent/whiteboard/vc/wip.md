@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 735381ed-cea8-4499-9bc6-35aaa3b8263b
-heartbeat_at: 2026-11-05 07:08Z
+heartbeat_at: 2026-11-05 09:32Z
 status: active
-focus: "Localfolded at hv's word for a /compact, 2026-11-05 07:06Z by date -u; on the bounce, carry on with todo 196's order from step 1. dc's 0323 bank 3b is in flight, the last unit of devbin 0.1.20. vc holds the desk, and kovacs-sysadm holds for START. Molt is closed out."
+focus: "devbin 0.1.20 is released (the cut ended 09:29:31Z by its log). Next: hv's brew upgrade devbin and devbin use brew, vc's sweep from brew (todo 197), hv's republish of the taps, then the consumer pass on hv's go, Utilz first. vc holds the desk."
 claims: [ST0011]
 ---
 
