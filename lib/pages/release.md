@@ -80,10 +80,12 @@ A project that declares `release.publish.url` publishes each release as a snapsh
 
     pre-flight   also: release.ci.query is not -, since CI on the
                  candidate is what stands before anything is public; the
-                 tree holds release.snapshot.list; release.repo names the
-                 public repository where the release object needs gh; and
-                 the url answers, its publish branch, candidate branch and
-                 tag read
+                 tree holds release.snapshot.list, and with
+                 release.assets.workflow declared the list selects that
+                 workflow, since the assets' run is on the snapshot;
+                 release.repo names the public repository where the release
+                 object needs gh; and the url answers, its publish branch,
+                 candidate branch and tag read
     legs         once the release commit exists, its snapshot is made in the
                  run's scratch, on the publish branch's tip, where a tip that
                  is this snapshot already is found, and a public tag at

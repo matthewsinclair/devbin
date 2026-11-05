@@ -26,14 +26,15 @@ setup() {
 }
 teardown() { devbin_teardown; }
 
-# attach_project [wait] [workflow] [release-yaml] -- a project whose
+# attach_project [wait] [workflow] [release-yaml] [shipped] -- a project whose
 # release.assets.workflow is <workflow> (default linux-release.yml), waiting
 # <wait> (default 5s), <release-yaml> as further release: lines when given,
 # with .github/workflows/linux-release.yml committed, its v1.0.0 tagged
 # (annotated) and pushed, and a release object for it. Its release: lines go
 # through no_candidate_body, as every release fixture's do, so a project whose
 # <release-yaml> declares no ci: opts out of the candidate, and one that
-# declares a ci: block keeps its own.
+# declares a ci: block keeps its own. <shipped>, when given, is committed as
+# shipped.paths, the list a publishing project's release.snapshot.list names.
 attach_project() {
   local proj body
   body="$(no_candidate_body "  assets:
@@ -53,6 +54,7 @@ YAML
   with_dated_note "$proj"
   mkdir -p "$proj/.github/workflows"
   printf 'on: push\n' >"$proj/.github/workflows/linux-release.yml"
+  [ -z "${4:-}" ] || printf '%s\n' "$4" >"$proj/shipped.paths"
   git_project "$proj"
   git -C "$proj" tag -a v1.0.0 -m "- first" --cleanup=whitespace
   git -C "$proj" push -q origin v1.0.0
@@ -215,13 +217,14 @@ run_json() {
   local pub="$DEVBIN_TEST_TMPDIR/public.git" other="$DEVBIN_TEST_TMPDIR/other" snap
   git init -q --bare -b main "$pub"
   # release.publish.url is read only where the snapshot's keys are declared;
-  # the attach makes no snapshot, so they are never used.
+  # the attach makes no snapshot, and reads the list only to see that the
+  # snapshot carries the assets' workflow (0314).
   proj="$(attach_project 5s linux-release.yml "  repo: t/public
   snapshot:
     list: shipped.paths
     author: \"Snap Shot <snap@example.com>\"
   publish:
-    url: $pub")"
+    url: $pub" .github/workflows/linux-release.yml)"
   sha="$(tag_commit "$proj")"
   # The public tag, at a commit of its own, as a publishing cut tags its snapshot.
   git init -q -b main "$other"
@@ -239,6 +242,24 @@ run_json() {
   [ "$(asset v1.0.0 demo-x86.tar.gz)" = "x86 from the snapshot" ] || fail "demo-x86.tar.gz is not the snapshot run's: $(asset v1.0.0 demo-x86.tar.gz)"
   # Asked of the public repository release.repo names, by the snapshot's commit.
   [ "$(gh_calls "^gh run list --repo t/public .*--commit $snap")" -ge 1 ] || fail "the run list did not ask t/public by the snapshot: $(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+}
+
+@test "0314: under release.publish.url, release attach refuses where the list at the tag's commit leaves the assets' workflow out of the snapshot, naming the list, before any gh call" {
+  local pub="$DEVBIN_TEST_TMPDIR/public.git"
+  git init -q --bare -b main "$pub"
+  # The tag's commit holds the workflow; the list the snapshot is made by
+  # selects only README.md, so the snapshot the public tag is on would not.
+  proj="$(attach_project 5s linux-release.yml "  repo: t/public
+  snapshot:
+    list: shipped.paths
+    author: \"Snap Shot <snap@example.com>\"
+  publish:
+    url: $pub" README.md)"
+  run release_in "$proj" attach v1.0.0
+  [ "$status" -eq 1 ] || fail "exit $status: $output"
+  assert_output_contains "release.assets.workflow is linux-release.yml, and release.snapshot.list (shipped.paths) at v1.0.0's commit"
+  assert_output_contains "does not select .github/workflows/linux-release.yml, so the snapshot the public tag is on holds no such workflow, and no run of it could have built the assets -- add .github/workflows/linux-release.yml to shipped.paths"
+  [ "$(gh_calls '^gh ')" -eq 0 ] || fail "a refused attach called gh: $(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
 }
 
 # calls_since <n> <pattern> -- how many recorded gh calls after the first <n>
@@ -877,6 +898,28 @@ $3}")"
   assert_state pre-flight FAILED
   grep -qF "release.assets.workflow is other.yml, and" <<<"$(row_of pre-flight)" || fail "the pre-flight row: $(row_of pre-flight)"
   grep -qF "holds no .github/workflows/other.yml, so no run at the tag could build the assets" <<<"$(row_of pre-flight)" || fail "the pre-flight row: $(row_of pre-flight)"
+  [ ! -s "$DEVBIN_TEST_TMPDIR/gate.calls" ] || fail "a gate ran after a refused pre-flight"
+}
+
+@test "0314: under release.publish.url, pre-flight refuses a cut whose release.snapshot.list leaves the assets' workflow out of the snapshot, naming the list, before any gate" {
+  local pub="$DEVBIN_TEST_TMPDIR/public.git"
+  git init -q --bare -b main "$pub"
+  proj="$(assets_cut_project 30s linux-release.yml "  repo: t/public
+  snapshot:
+    list: shipped.paths
+    author: \"Snap Shot <snap@example.com>\"
+  publish:
+    url: $pub")"
+  # The release commit holds the workflow; the list the snapshot is made by
+  # leaves it out, so the snapshot the public tag is on would not hold it.
+  printf 'VERSION\nCHANGELOG.md\n' >"$proj/shipped.paths"
+  git -C "$proj" add shipped.paths
+  git -C "$proj" commit -qm "a shipped list that leaves the assets' workflow out"
+  run release_in "$proj" v1.0.1 --yes
+  assert_failure
+  assert_state pre-flight FAILED
+  grep -qF "release.assets.workflow is linux-release.yml, and release.snapshot.list (shipped.paths) does not select .github/workflows/linux-release.yml, so the snapshot the public tag is on holds no such workflow and no run of it could build the assets -- add .github/workflows/linux-release.yml to shipped.paths" <<<"$(row_of pre-flight)" ||
+    fail "the pre-flight row: $(row_of pre-flight)"
   [ ! -s "$DEVBIN_TEST_TMPDIR/gate.calls" ] || fail "a gate ran after a refused pre-flight"
 }
 

@@ -2351,7 +2351,7 @@ cut_run() {
   # its refs read once here, from a repository of the run's own, for the
   # confirm's question and the legs step's refusal of a public tag at another
   # commit (publish_read).
-  local snap_list pf_repo shown_pub=""
+  local snap_list pf_repo shown_pub="" snap_sel_rc
   if [ -n "$publish_url" ]; then
     shown_pub="$(release_url_shown "$publish_url")"
     if ! pbranch="$(snapshot_publish_branch)" || [ -z "$pbranch" ]; then
@@ -2364,6 +2364,18 @@ cut_run() {
       refusals+=("release.snapshot.list is not declared, so nothing says what ships to $shown_pub")
     elif ! git cat-file -e "$commit:$snap_list" 2>/dev/null; then
       refusals+=("release.snapshot.list is $snap_list, and ${commit:0:12} holds no such file, so nothing says what ships")
+    elif [ -n "$assets_wf" ] && git cat-file -e "$commit:.github/workflows/$assets_wf" 2>/dev/null; then
+      # THE ASSETS' RUN IS ON THE SNAPSHOT (issue 0314): the workflow runs at
+      # the public repository on S, which holds only what the list selects, so
+      # a list that leaves it out passes the release commit's check above and
+      # leaves no run for the attach to find.
+      snap_sel_rc=0
+      snapshot_selects "$commit" "$snap_list" ".github/workflows/$assets_wf" "$SCRATCH" || snap_sel_rc=$?
+      case "$snap_sel_rc" in
+        0) ;;
+        1) refusals+=("release.assets.workflow is $assets_wf, and release.snapshot.list ($snap_list) does not select .github/workflows/$assets_wf, so the snapshot the public tag is on holds no such workflow and no run of it could build the assets -- add .github/workflows/$assets_wf to $snap_list") ;;
+        *) refusals+=("whether the snapshot carries .github/workflows/$assets_wf cannot be read: $SNAPSHOT_WHY") ;;
+      esac
     fi
     if ! pf_repo="$(cfg_release_get repo)"; then
       refusals+=("release.repo cannot be read")
@@ -3776,7 +3788,7 @@ attach_assets() {
 # such workflow. With <from>, the files under it are attached (issue 0226). 0
 # when every stage holds, 1 when one FAILED.
 attach_verb() {
-  local v="$1" from="${2:-}" object wf tag commit repo named url rc=0 cand=""
+  local v="$1" from="${2:-}" object wf tag commit repo named url list rc=0 cand=""
   object="$(cfg_release_get object)" || die "release attach: cannot read release.object"
   [ "$object" = local ] ||
     die "release attach: object is $object, and the core attaches assets under object: local alone -- under ci the workflow writes the release object, and an attach would be its second writer"
@@ -3806,6 +3818,21 @@ attach_verb() {
     # attach reads it (ST0011 WP07): release_public_tag_commit, the one read.
     url="$(cfg_release_get publish.url)" || die "release attach: cannot read release.publish.url"
     if [ -n "$url" ]; then
+      # THE SNAPSHOT HOLDS ONLY WHAT THE LIST SELECTS (issue 0314), so the
+      # workflow must be among it: the list read from the tag's commit, the
+      # release commit the cut made the snapshot of.
+      list="$(cfg_release_get snapshot.list)" || die "release attach: cannot read release.snapshot.list"
+      [ -n "$list" ] ||
+        die "release attach: release.publish.url is declared and release.snapshot.list is not, so what the snapshot the public tag is on holds cannot be read"
+      open_scratch "release attach"
+      rc=0
+      snapshot_selects "$commit" "$list" ".github/workflows/$wf" "$SCRATCH" || rc=$?
+      case "$rc" in
+        0) ;;
+        1) die "release attach: release.assets.workflow is $wf, and release.snapshot.list ($list) at $tag's commit (${commit:0:12}) does not select .github/workflows/$wf, so the snapshot the public tag is on holds no such workflow, and no run of it could have built the assets -- add .github/workflows/$wf to $list" ;;
+        *) die "release attach: whether the snapshot carries .github/workflows/$wf cannot be read: $SNAPSHOT_WHY" ;;
+      esac
+      rc=0
       commit="$(release_public_tag_commit "$url" "$tag")" || rc=$?
       case "$rc" in
         0) ;;
@@ -3985,6 +4012,35 @@ _snapshot_select() {
     SNAPSHOT_WHY="git could not list what the list selects at ${commit:0:12}: ${err%%$'\n'*}"
     return 1
   fi
+}
+
+# snapshot_selects <commit> <list> <path> <work> -- rc 0 when <list>, the
+# release.snapshot.list file in <commit>'s tree, selects <path> from that tree,
+# as a snapshot of <commit> carries it (_snapshot_select, the one selection);
+# rc 1 when it does not; rc 2, with SNAPSHOT_WHY, when that cannot be read: the
+# list is no file there, it names no path, or git could not select. Its scratch,
+# an index and a listing, is under <work>. Asked of release.assets.workflow
+# under release.publish.url (issue 0314), by the cut's pre-flight and by
+# release attach: the assets' run is on the snapshot, which holds only what
+# the list selects.
+snapshot_selects() {
+  local commit="$1" list="$2" want="$3" work="$4" text rec
+  local -a specs=()
+  SNAPSHOT_WHY=""
+  if ! text="$(_snapshot_git -C "$PROJECT_ROOT" cat-file blob "$commit:$list" 2>/dev/null)"; then
+    SNAPSHOT_WHY="release.snapshot.list is $list, and ${commit:0:12} holds no such file to read"
+    return 2
+  fi
+  mapfile -t specs < <(pathlist_specs "$text")
+  if [ "${#specs[@]}" -eq 0 ]; then
+    SNAPSHOT_WHY="the list $list at ${commit:0:12} names no path"
+    return 2
+  fi
+  _snapshot_select "$PROJECT_ROOT" "$commit" "$work/selects.index" "$work/selects.out" "${specs[@]}" || return 2
+  while IFS= read -r -d '' rec; do
+    [ "${rec#*$'\t'}" != "$want" ] || return 0
+  done <"$work/selects.out"
+  return 1
 }
 
 # _snapshot_norm <file> <ls-files|ls-tree> -- the NUL-ended records in <file>,
