@@ -45,7 +45,9 @@
 #                                                the object step's postcondition
 #   release_read_object_content <repo> <tag> <title> <body-file>
 #                                                an existing object: this release's title and notes?
-#   release_assets_pick <commit> <tag> [<cand>]  which run ships, from gh run list's rows on stdin
+#   release_runs_list <repo> <workflow> <sha> <limit>
+#                                                a commit's runs of a workflow, as gh lists them
+#   release_assets_pick <commit> <tag> [<cand>]  which run ships, from release_runs_list's rows on stdin
 #   release_read_assets_run <repo> <workflow> <tag> <commit> [<candidate>]
 #                                                the attach's run: the earliest successful run at the
 #                                                commit, on the candidate's branch or at the tag
@@ -1419,11 +1421,57 @@ release_read_object_content() {
 # field after it.
 # ---------------------------------------------------------------------------
 
-# release_assets_pick <commit> <tag> [<candidate>] -- which run ships, from
-# `gh run list` rows on stdin,
+# RELEASE_RUNS_LIMIT -- how many runs of one commit release_runs_list is asked
+# for, by ci-state's verdict and the attach's run alike: a list as long as it
+# is refused, since the run a reader needs could be one left out.
+RELEASE_RUNS_LIMIT=200
+
+# release_runs_list <repo> <workflow> <sha> <limit> -- the runs of the
+# workflow file <workflow> that gh lists at the commit <sha>, at most <limit>,
 # `<id><TAB><head-sha><TAB><head-branch><TAB><status><TAB><created><TAB><conclusion>`
-# a line. Only runs AT <commit> count, on the branch <candidate> names or at
-# <tag>, oldest first: a run of the same commit on any other branch, the
+# a line: a head branch the JSON holds as null is written `-`, which a reader
+# makes empty again (dash_to_empty), and the conclusion goes last, since it is
+# empty while a run is going. THE ONE LISTER of a commit's runs: ci-state's
+# verdict (lib/cmd/ci-state) and the attach's run (release_read_assets_run)
+# each keep their own pick over its rows. 1, printing why on one line, when gh
+# fails (`gh run list --workflow <workflow> --commit <sha> failed: <gh's
+# words>`) or no file for its words can be made (`... was not asked: ...`); 3
+# when gh lists as many runs as <limit>, so one may be left out (`gh lists <n>
+# runs of <workflow> on <sha12>, as many as it was asked for`), for its reader
+# to say what that leaves it unable to tell. gh's own words are read from a
+# file, so they never land among the rows: under a bounded reader the file is
+# in the wait's scratch (RELEASE_WAIT_DIR), which the wait removes, so a
+# reader killed at its bound leaves nothing behind; elsewhere it is in TMPDIR,
+# where a ci-state killed mid-list leaves it, as ci-state leaves its own words.
+release_runs_list() {
+  local repo="$1" wf="$2" sha="$3" limit="$4" dir="${RELEASE_WAIT_DIR:-${TMPDIR:-/tmp}}" err rows said rc=0
+  local -a _rrl_got=()
+  if ! err="$(mktemp "$dir/devbin-runs.XXXXXX")"; then
+    printf 'gh run list --workflow %s --commit %s was not asked: no file for its words could be made under %s\n' "$wf" "$sha" "$dir"
+    return 1
+  fi
+  rows="$(release_gh "$repo" run list --workflow "$wf" --commit "$sha" --limit "$limit" \
+    --json databaseId,headSha,headBranch,status,createdAt,conclusion \
+    --jq '.[] | [(.databaseId | tostring), .headSha, (.headBranch // "-"), .status, .createdAt, .conclusion] | @tsv' 2>"$err")" || rc=$?
+  said="$(<"$err")"
+  rm -f "$err"
+  if [ "$rc" -ne 0 ]; then
+    said="${said//$'\n'/ }"
+    printf 'gh run list --workflow %s --commit %s failed: %s\n' "$wf" "$sha" "${said:-it said nothing}"
+    return 1
+  fi
+  [ -z "$rows" ] || mapfile -t _rrl_got <<<"$rows"
+  if [ "${#_rrl_got[@]}" -ge "$limit" ]; then
+    printf 'gh lists %s runs of %s on %s, as many as it was asked for\n' "${#_rrl_got[@]}" "$wf" "${sha:0:12}"
+    return 3
+  fi
+  [ -z "$rows" ] || printf '%s\n' "$rows"
+}
+
+# release_assets_pick <commit> <tag> [<candidate>] -- which run ships, from
+# release_runs_list's rows on stdin. Only runs AT <commit> count, on the
+# branch <candidate> names or at <tag>, oldest first: a run of the same commit
+# on any other branch, the
 # release branch's above all, is never the one. A run still going holds the
 # answer, `pending<TAB><id><TAB><status>`, since it may yet succeed and be the
 # earliest; the first that succeeded is the one,
@@ -1473,20 +1521,21 @@ release_assets_pick() {
 # UNREADABLE: asking again cannot shorten it, so a wait must not spend its bound
 # on it.
 release_read_assets_run() {
-  local repo="$1" wf="$2" tag="$3" commit="$4" cand="${5:-}" limit=200 rows n pick state id info extra jobs cause where
+  local repo="$1" wf="$2" tag="$3" commit="$4" cand="${5:-}" rows rc=0 pick state id info extra jobs cause where
   where="at $tag"
   [ -z "$cand" ] || where="on $cand or at $tag"
-  if ! rows="$(release_gh "$repo" run list --workflow "$wf" --commit "$commit" --limit "$limit" \
-    --json databaseId,headSha,headBranch,status,createdAt,conclusion \
-    --jq '.[] | [.databaseId, .headSha, (.headBranch // "-"), .status, .createdAt, .conclusion] | @tsv' 2>&1)"; then
-    printf 'UNREADABLE\tgh run list --workflow %s --commit %s failed: %s\n' "$wf" "$commit" "${rows//$'\n'/ }"
-    return 0
-  fi
-  n="$(grep -c . <<<"$rows")" || n=0
-  if [ "$n" -ge "$limit" ]; then
-    printf 'refused\tgh lists %s runs of %s on %s, as many as it was asked for, so the earliest cannot be told\n' "$n" "$wf" "${commit:0:12}"
-    return 0
-  fi
+  rows="$(release_runs_list "$repo" "$wf" "$commit" "$RELEASE_RUNS_LIMIT")" || rc=$?
+  case "$rc" in
+    0) ;;
+    3)
+      printf 'refused\t%s, so the earliest cannot be told\n' "$rows"
+      return 0
+      ;;
+    *)
+      printf 'UNREADABLE\t%s\n' "$rows"
+      return 0
+      ;;
+  esac
   if ! pick="$(release_assets_pick "$commit" "$tag" "$cand" <<<"$rows")"; then
     printf 'UNREADABLE\tthe runs of %s on %s could not be sorted\n' "$wf" "${commit:0:12}"
     return 0

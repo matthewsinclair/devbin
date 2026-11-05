@@ -87,8 +87,10 @@ run_on() {
 # --json jobs and --jq, each flag once and in any order, the id anywhere among
 # them as gh takes it, and refuses anything else with exit 2. The workflow must be
 # $WANT_WORKFLOW, default tests.yml. It prints as the command's --jq programs
-# print: for a list each run on the sha, id, headBranch, status and
-# conclusion; for a view each job's name, status and conclusion, a job named
+# print: for a list each run on the sha, id, headSha, headBranch, status,
+# createdAt and conclusion, as the one run lister asks for them (0312), one
+# createdAt for every run, since ci-state sorts nothing by it; for a view each
+# job's name, status and conclusion, a job named
 # "Test on Ubuntu" at failure first and then the Test Summary job, which a run
 # given `absent` lacks; tab-separated, a conclusion of - given as the empty one
 # gh gives a job still going. A run given the head `null` stands for a run
@@ -113,7 +115,7 @@ case "$verb" in
   *) echo "stub gh: not run list or run view: $*" >&2; exit 2 ;;
 esac
 shift 2
-view="" repo="" wf="" sha="" json="" jq="" limit=""
+view="" repo="" wf="" sha="" json="" jq="" limit="" created=2026-01-01T00:00:00Z
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --repo) [ -z "$repo" ] && [ -n "${2:-}" ] || exit 2; repo="$2"; shift 2 ;;
@@ -139,7 +141,7 @@ else
     i=0
     while [ "$i" -lt "$limit" ]; do
       i=$((i + 1))
-      printf '%s\t%s\t%s\t%s\n' "$((900000 + i))" main completed success
+      printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$((900000 + i))" "$sha" main completed "$created" success
     done
     exit 0
   fi
@@ -161,7 +163,7 @@ while read -r s ref st con id sst scon; do
       [ "$sst" = absent ] || printf '%s\t%s\t%s\n' "Test Summary" "$sst" "$scon"
     fi
   else
-    [ "$s" = "$sha" ] && printf '%s\t%s\t%s\t%s\n' "$id" "$ref" "$st" "$con"
+    [ "$s" = "$sha" ] && printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$id" "$s" "$ref" "$st" "$created" "$con"
   fi
 done <"$runs"
 exit 0
@@ -377,12 +379,12 @@ calls() { cat "$DEVBIN_TEST_TMPDIR/gh.calls" 2>/dev/null || printf '(no call)'; 
   [ "$output" = "$(printf 'none\tno tests.yml run for v9.9.9 on %s yet' "${sha:0:12}")" ] || fail "answered: $output"
 }
 
-@test "a gh that fails is unknown, carrying gh's words, and with no gh at all it is unknown, saying so (WP03)" {
+@test "a gh that fails is unknown, carrying gh's words as the one run lister words a failed list, and with no gh at all it is unknown, saying so (WP03, 0312)" {
   local nogh
   sha="$(git -C "$PROJ" rev-parse HEAD)"
   GH_FAIL="HTTP 401: Bad credentials" ask "$sha"
   assert_success
-  [ "$output" = "$(printf 'unknown\tgh run list failed for %s: HTTP 401: Bad credentials' "${sha:0:12}")" ] || fail "answered: $output"
+  [ "$output" = "$(printf 'unknown\tgh run list --workflow tests.yml --commit %s failed: HTTP 401: Bad credentials' "$sha")" ] || fail "answered: $output"
   nogh="$(path_without gh)" || fail "path_without could not hide gh, as its line above says"
   run bash -c 'cd "$1" && shift && exec "$@" </dev/null' _ "$PROJ" env PATH="$nogh" ./bin/devbin ci-state "$sha"
   assert_success

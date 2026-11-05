@@ -516,6 +516,48 @@ calls_since() {
   assert_output_matches "run +FAILED +gh lists $limit runs of linux-release\\.yml on ${sha:0:12}, as many as it was asked for, so the earliest cannot be told"
 }
 
+@test "0312: release_runs_list lists a commit's runs of one workflow, id, sha, branch, status, created and conclusion a line, gh's words on success kept out of them, and words a failed list and one as long as its limit once" {
+  local proj sha n
+  proj="$(attach_project)"
+  sha="$(tag_commit "$proj")"
+  gh_run 101 "$sha" candidate/v1.0.0 completed success 2026-10-22T20:00:01Z
+  gh_run 102 "$sha" v1.0.0 in_progress "" 2026-10-22T20:00:02Z
+  # Another commit's run, and another workflow's at this commit: neither is listed.
+  gh_run 103 0000000000000000000000000000000000000000 v1.0.0 completed success 2026-10-22T20:00:03Z
+  gh_run 104 "$sha" v1.0.0 completed success 2026-10-22T20:00:04Z tests.yml
+  n="$(jq --arg s "$sha" '[.[] | select(.headSha == $s and .workflow == "linux-release.yml")] | length' "$DEVBIN_TEST_TMPDIR/gh.runs.json")"
+  # lister <stubs> <arg>... -- release_runs_list with <stubs> first on PATH.
+  lister() {
+    local stubs="$1"
+    shift
+    run env PATH="$stubs:$PATH" bash -c 'set -uo pipefail; . "$1/helpers"; . "$1/release.notes"; . "$1/release.steps"; shift
+      rc=0; release_runs_list "$@" || rc=$?; printf "rc=%s\n" "$rc"' _ "$DEVBIN_LIB_DIR" "$@"
+  }
+  # Newest first, as gh lists them; the conclusion last, empty while a run goes.
+  local listed
+  listed="$(printf '102\t%s\tv1.0.0\tin_progress\t2026-10-22T20:00:02Z\t\n101\t%s\tcandidate/v1.0.0\tcompleted\t2026-10-22T20:00:01Z\tsuccess\nrc=0' "$sha" "$sha")"
+  lister "$DEVBIN_TEST_TMPDIR/stubs" t/demo linux-release.yml "$sha" "$((n + 1))"
+  assert_success
+  assert_output "$listed"
+  # A gh that says something on stderr as it succeeds: none of it is a row,
+  # and none of it counts toward the limit, which the run list is one short of.
+  mkdir -p "$DEVBIN_TEST_TMPDIR/noisygh"
+  printf '#!/bin/sh\necho "warning: a notice gh gives on stderr" >&2\nexec "%s" "$@"\n' "$DEVBIN_TEST_TMPDIR/stubs/gh" >"$DEVBIN_TEST_TMPDIR/noisygh/gh"
+  chmod +x "$DEVBIN_TEST_TMPDIR/noisygh/gh"
+  lister "$DEVBIN_TEST_TMPDIR/noisygh" t/demo linux-release.yml "$sha" "$((n + 1))"
+  assert_success
+  assert_output "$listed"
+  # As many as the limit: one may be left out, which its reader says the rest of.
+  lister "$DEVBIN_TEST_TMPDIR/stubs" t/demo linux-release.yml "$sha" "$n"
+  assert_output "$(printf 'gh lists %s runs of linux-release.yml on %s, as many as it was asked for\nrc=3' "$n" "${sha:0:12}")"
+  # A gh that fails, saying so on two lines: its words, every line, on one.
+  mkdir -p "$DEVBIN_TEST_TMPDIR/failgh"
+  printf '#!/bin/sh\necho "HTTP 502: Bad Gateway" >&2\necho "try again later" >&2\nexit 1\n' >"$DEVBIN_TEST_TMPDIR/failgh/gh"
+  chmod +x "$DEVBIN_TEST_TMPDIR/failgh/gh"
+  lister "$DEVBIN_TEST_TMPDIR/failgh" t/demo linux-release.yml "$sha" "$((n + 1))"
+  assert_output "$(printf 'gh run list --workflow linux-release.yml --commit %s failed: HTTP 502: Bad Gateway try again later\nrc=1' "$sha")"
+}
+
 # AT-8.2
 @test "the run's artifacts are held to GitHub's list: one expired, or one the download did not write, is refused, and nothing is uploaded" {
   proj="$(attach_project)"
