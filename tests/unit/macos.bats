@@ -9,9 +9,10 @@
 # stub uname on macOS and the real one elsewhere. Real signing and
 # notarisation are proven by hand, at the first release that uses the built-in.
 #
-# The stub keychain is $DEVBIN_TEST_TMPDIR/kc: one file per service, holding the
-# value, and kc/identities for what find-identity lists. Every value is a
-# word no output should hold, so an arm can look for each in what it printed.
+# The stub keychain is $DEVBIN_TEST_TMPDIR/kc: kc/identities for what
+# find-identity lists, and kc/notary.<profile> for each notary profile
+# notarytool holds. The identity's holder is a name no output should hold
+# whole, so an arm can look for it in what it printed.
 
 load "../lib/test_helper"
 load "../lib/release_fixtures"
@@ -45,10 +46,8 @@ on_macos() {
   [ "$(uname -s)" = Darwin ] || skip "macos runs on macOS only: this arm was NOT checked here"
 }
 
-# The credentials and the identity the stub keychain holds. Values no output
-# may carry, and an identity whose holder's name may never be printed whole.
-SECRET_ID="appleid-not-for-output"
-SECRET_PW="password-not-for-output"
+# The identity the stub keychain holds, whose holder's name may never be
+# printed whole.
 TEAM="TEAMID1234"
 HOLDER="Holder Not For Output"
 
@@ -106,12 +105,24 @@ case " \$* " in
 esac
 SH
   # xcrun: stapler staples a bundle (Contents/stapled) and validates one that
-  # has it; notarytool answers Accepted with a submission id, or what
-  # notary.status holds.
+  # has it. notarytool's submit and history answer only under a profile the
+  # stub keychain holds (kc/notary.<profile>), as the real one refuses any
+  # other with no submission id; submit answers Accepted with a submission id,
+  # or what notary.status holds.
   cat >"$APPLE/xcrun" <<SH
 #!/bin/sh
 echo "xcrun \$*" >>"$T/apple.calls"
-for a in "\$@"; do last="\$a"; done
+profile="" prev=""
+for a in "\$@"; do
+  [ "\$prev" != --keychain-profile ] || profile="\$a"
+  prev="\$a"
+  last="\$a"
+done
+held() {
+  [ -n "\$profile" ] && [ -f "$T/kc/notary.\$profile" ] && return 0
+  echo "Error: No Keychain password item found for profile: \$profile" >&2
+  return 1
+}
 case "\$1 \$2" in
   "stapler validate")
     [ ! -d "\$last" ] || (cd "\$last" && pwd -P) >>"$T/ls.records"
@@ -120,8 +131,13 @@ case "\$1 \$2" in
     (cd "\$last" && pwd -P) >>"$T/ls.records"
     : >"\$last/Contents/stapled" ;;
   "notarytool submit")
+    held || exit 1
     echo "  id: 0f0e0d0c-0b0a-0908-0706-050403020100"
     echo "  status: \$(cat "$T/notary.status" 2>/dev/null || echo Accepted)" ;;
+  "notarytool history")
+    held || exit 1
+    echo "No submission history." ;;
+  "notarytool store-credentials") ;;
   "notarytool log") echo "the log" ;;
   *) exit 1 ;;
 esac
@@ -219,14 +235,13 @@ SH
   chmod +x "$APPLE"/*
 }
 
-# store <name> <value> -- a credential in the stub keychain, under devbin.apple.
-store() { printf '%s' "$2" >"$DEVBIN_TEST_TMPDIR/kc/devbin.apple.$1"; }
+# store_profile <name> -- a notary profile notarytool holds, in the stub keychain.
+store_profile() { : >"$DEVBIN_TEST_TMPDIR/kc/notary.$1"; }
 
-# keychain_full -- every credential stored, and one Developer ID identity.
+# keychain_full -- the default notary profile stored, and one Developer ID
+# identity.
 keychain_full() {
-  store APPLE_ID "$SECRET_ID"
-  store APPLE_APP_PASSWORD "$SECRET_PW"
-  store APPLE_TEAM_ID "$TEAM"
+  store_profile devbin
   printf '  1) 0123456789ABCDEF "Developer ID Application: %s (%s)"\n' "$HOLDER" "$TEAM" >"$DEVBIN_TEST_TMPDIR/kc/identities"
 }
 
@@ -311,10 +326,9 @@ product_sum() {
 # stage_of <proj> -- the staged Demo.app app-sign signs, found under the stage.
 stage_of() { find "$XDG_STATE_HOME/devbin/macos" -maxdepth 2 -name Demo.app -type d; }
 
-# no_secret -- the output holds no credential value and no whole identity.
+# no_secret -- the output holds no whole identity. The notary profile's values
+# are notarytool's, never read here, so none can be printed.
 no_secret() {
-  refute_output_contains "$SECRET_ID"
-  refute_output_contains "$SECRET_PW"
   refute_output_contains "$HOLDER"
 }
 
@@ -375,7 +389,7 @@ YAML
 # THE DECLARATION (Done when 1)
 # ============================================================================
 
-@test "the macos: keys validate, an unknown one is refused by name, and keychain and asset take their defaults" {
+@test "the macos: keys validate, an unknown one is refused by name, the retired keychain names what replaced it, and notary_profile and asset take their defaults (0323)" {
   on_macos
   apple_stubs
   proj="$(mkproj demo <<'YAML'
@@ -389,7 +403,8 @@ macos:
   build: make app
   bundle_id: com.example.demo
   entitlements: Demo.entitlements
-  keychain: demo.apple
+  team: TEAMID1234
+  notary_profile: demo
   asset: Demo-mac.zip
 YAML
   )"
@@ -398,10 +413,16 @@ YAML
   printf 'project:\n  name: demo\ncommands:\n  macos:\n    enabled: true\nmacos:\n  bundle: com.example.demo\n' >"$proj/bin/.devbin/config.yaml"
   run devbin_run "$proj" doctor
   assert_output_contains "unknown key: macos.bundle"
+  printf 'project:\n  name: demo\ncommands:\n  macos:\n    enabled: true\nmacos:\n  keychain: demo.apple\n' >"$proj/bin/.devbin/config.yaml"
+  run devbin_run "$proj" doctor
+  assert_output_contains "unknown key: macos.keychain -- retired: every notarisation submits under one notarytool keychain profile, macos.notary_profile"
   printf 'project:\n  name: demo\ncommands:\n  macos:\n    enabled: true\nmacos:\n  app: build/Demo.app\n  bundle_id: com.example.demo\n' >"$proj/bin/.devbin/config.yaml"
   macos_in "$proj" doctor || true
   run macos_in "$proj" doctor
-  assert_output_contains "devbin.apple"
+  # Each row whole: the output is matched as one string, so a row ends at a
+  # newline or at the output's end, never at a bare $.
+  assert_output_matches "  notary profile +devbin"$'(\n|$)'
+  assert_output_matches "  team +none: needed when the keychain holds more than one Developer ID identity"$'(\n|$)'
   assert_output_contains "Demo.app.zip"
   assert_output_contains "none: signed without"
 }
@@ -429,7 +450,7 @@ YAML
 # DOCTOR AND THE KEYCHAIN (Done when 2)
 # ============================================================================
 
-@test "doctor reports each credential PRESENT and the identity by count and team, never a value or the identity whole" {
+@test "doctor reports the notary profile PRESENT and the identity by count and team, never the identity whole (0323)" {
   on_macos
   apple_stubs
   keychain_full
@@ -438,43 +459,62 @@ YAML
   assert_success
   assert_output_contains "1 found, team $TEAM"
   assert_output_contains "signs and verifies"
-  for k in APPLE_ID APPLE_APP_PASSWORD APPLE_TEAM_ID; do
-    assert_output_matches "  $k +PRESENT"
-  done
+  assert_output_matches "  devbin +PRESENT"$'(\n|$)'
+  [ "$(calls 'notarytool history --keychain-profile devbin')" -eq 1 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
   no_secret
 }
 
-@test "doctor reports each credential and the identity MISSING when the keychain holds none, and exits 1" {
+@test "doctor reports the identity MISSING and the notary profile NOT USABLE when the keychain holds neither, storing nothing, and exits 1 (0323)" {
   on_macos
   apple_stubs
   proj="$(app_project)"
   run macos_in "$proj" doctor
   assert_failure
   assert_output_contains 'MISSING (no "Developer ID Application" identity'
-  for k in APPLE_ID APPLE_APP_PASSWORD APPLE_TEAM_ID; do
-    assert_output_matches "  $k +MISSING"
-  done
-  # The credentials were asked for under the prefix, and nothing was written.
-  [ "$(calls 'find-generic-password .* -s devbin.apple.APPLE_ID ')" -eq 1 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  assert_output_matches "  devbin +NOT USABLE \(notarytool could not query Apple under it"
+  [ "$(calls 'notarytool store-credentials')" -eq 0 ] || fail "doctor stored a profile: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
   [ "$(calls 'add-generic-password')" -eq 0 ] || fail "doctor wrote to the keychain"
 }
 
-@test "a declared keychain prefix is the one the credentials are read under" {
+@test "a declared notary profile is the one notarytool is asked under, and a declared team picks the identity (0323)" {
   on_macos
   apple_stubs
-  proj="$(app_project "  keychain: demo.apple")"
+  store_profile demo
+  printf '  1) 0123456789ABCDEF "Developer ID Application: Someone Else (OTHERTEAM9)"\n  2) FEDCBA9876543210 "Developer ID Application: %s (%s)"\n' "$HOLDER" "$TEAM" >"$DEVBIN_TEST_TMPDIR/kc/identities"
+  proj="$(app_project "  notary_profile: demo
+  team: $TEAM")"
   run macos_in "$proj" doctor
-  [ "$(calls '-s demo.apple.APPLE_APP_PASSWORD ')" -eq 1 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
-  [ "$(calls '-s devbin.apple.')" -eq 0 ] || fail "read under the default prefix too: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  assert_success
+  assert_output_contains "2 found, team $TEAM"
+  assert_output_matches "  demo +PRESENT"$'(\n|$)'
+  [ "$(calls 'keychain-profile demo')" -eq 1 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  [ "$(calls 'keychain-profile devbin')" -eq 0 ] || fail "asked under the default profile too: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
 }
 
-@test "store-creds refuses without a terminal, writing nothing to the keychain" {
+@test "0323: with more than one Developer ID identity and no macos.team, app-sign refuses naming the teams and the key, signing nothing, and doctor reports it REFUSED" {
+  on_macos
+  apple_stubs
+  store_profile devbin
+  printf '  1) 0123456789ABCDEF "Developer ID Application: Someone Else (OTHERTEAM9)"\n  2) FEDCBA9876543210 "Developer ID Application: %s (%s)"\n' "$HOLDER" "$TEAM" >"$DEVBIN_TEST_TMPDIR/kc/identities"
+  proj="$(app_project)"
+  run macos_in "$proj" app-sign
+  assert_failure
+  assert_output_contains "holds 2 Developer ID Application identities, of the teams OTHERTEAM9, $TEAM, and no macos.team picks one -- declare macos.team as the team to sign with"
+  [ "$(calls '^codesign')" -eq 0 ] || fail "an identity nobody picked was used: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  run macos_in "$proj" doctor
+  assert_failure
+  assert_output_contains "REFUSED (2 found, of the teams OTHERTEAM9, $TEAM, and no macos.team picks one; declare macos.team)"
+  no_secret
+}
+
+@test "store-creds refuses without a terminal, storing no profile (0323)" {
   on_macos
   apple_stubs
   proj="$(app_project)"
   run macos_in "$proj" store-creds
   assert_failure
   assert_output_contains "store-creds is interactive"
+  [ "$(calls 'notarytool store-credentials')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
   [ "$(calls 'add-generic-password')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
 }
 
@@ -904,6 +944,28 @@ cut_tag() {
   [ -e "$dist/Contents/stapled" ] || fail "an Accepted submission was not stapled: $output"
   assert_output_contains "quarantined copy accepted, source=Notarized Developer ID"
   no_secret
+}
+
+@test "app-notarize submits under the notary profile alone, and a profile the keychain does not hold stops it, stapling nothing (0323)" {
+  on_macos
+  apple_stubs
+  keychain_full
+  rm "$DEVBIN_TEST_TMPDIR/kc/notary.devbin"
+  proj="$(app_project)"
+  macos_in "$proj" app-sign >/dev/null
+  dist="$(stage_of)"
+  run macos_in "$proj" app-notarize
+  assert_failure
+  assert_output_contains "notarytool gave no submission id under the notary profile devbin -- nothing stapled; store the profile with:"
+  [ ! -e "$dist/Contents/stapled" ] || fail "a submission under a profile the keychain does not hold was stapled"
+  store_profile devbin
+  run macos_in "$proj" app-notarize
+  assert_success
+  [ -e "$dist/Contents/stapled" ] || fail "an Accepted submission was not stapled: $output"
+  [ "$(calls 'notarytool submit .* --keychain-profile devbin --wait')" -eq 2 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  for flag in --apple-id --password --team-id; do
+    [ "$(calls "$flag")" -eq 0 ] || fail "$flag reached notarytool's command line: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  done
 }
 
 @test "publish attaches the stapled zip through release attach --from: one upload, SHA256SUMS over it, read back" {

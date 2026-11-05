@@ -789,7 +789,8 @@ cfg_release_verbs() {
 #   build         the command line that builds it, run at the root; none: built already
 #   bundle_id     the CFBundleIdentifier the bundle must carry and is signed as
 #   entitlements  the entitlements file signed in, from the root; none: signed without
-#   keychain      the login keychain's service prefix the notary credentials live under
+#   team          the team id that picks the Developer ID identity; required with more than one
+#   notary_profile  the notarytool keychain profile every notarisation submits under
 #   asset         the release asset's name
 #   version_from  the file the app's version is read from, when it versions apart
 #   commit_stamp  the Info.plist key the build writes its commit into; none: not checked
@@ -801,7 +802,8 @@ scalar app
 scalar build
 scalar bundle_id
 scalar entitlements
-scalar keychain     devbin.apple
+scalar team
+scalar notary_profile devbin
 scalar asset
 scalar version_from
 scalar commit_stamp
@@ -1437,6 +1439,7 @@ _cfg_path_boolean() {
 # told why, not left to look it up.
 _cfg_retired_why() {
   case "$1" in
+    macos.keychain) printf ' -- retired: every notarisation submits under one notarytool keychain profile, macos.notary_profile (default devbin), stored once with bin/devbin macos store-creds; leave it out' ;;
     release.ci.tag) printf ' -- retired: a cut reads CI before the tag, on its candidate ref, so no query is asked about the tag; leave it out' ;;
     release.ci.base) printf ' -- retired: a cut reads CI on its release commit, through its candidate, before the tag, never on the commit it is cut from; leave it out' ;;
     release.verbs.*)

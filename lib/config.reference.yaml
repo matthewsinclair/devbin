@@ -634,14 +634,16 @@ release:
 #
 # EVERY UNCOMMENTED VALUE IS THE DEFAULT. `app` and `bundle_id` have no sound
 # default and are required to sign; the commented lines show example values.
-# The notary credentials live in the login keychain under `keychain`'s prefix
-# and nowhere else: no key here holds one.
+# The notary credential is one notarytool keychain profile in the login
+# keychain, stored once with `bin/devbin macos store-creds`: no key here holds
+# a value of it.
 macos:
   # app: build/Products/Release/<Name>.app    # the .app bundle the build leaves, from the root or absolute
   # build: bin/build-app --release            # run at the root before app-sign stages; undeclared: built already
   # bundle_id: com.example.demo               # the bundle id it carries and is signed as
   # entitlements: native/macos/Demo.entitlements  # undeclared: signed without
-  keychain: devbin.apple       # the login keychain's service prefix: devbin.apple.APPLE_ID and the others
+  # team: ABCDE12345                         # the team id that picks the Developer ID identity; required when the keychain holds more than one
+  notary_profile: devbin       # the notarytool keychain profile every notarisation submits under
   # asset: <Name>-mac.zip                      # undeclared: the app's name with .zip
   # version_from: app/VERSION                  # the app's own version, when it versions apart; undeclared: project.version_from
   # commit_stamp: AppCommit                    # the Info.plist key the build writes its commit into; required with version_from

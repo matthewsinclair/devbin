@@ -19,16 +19,17 @@
 # staged its own copy of the build product and attached its own asset, so a fix
 # to notarisation or stapling had to be made in each copy. What was a project's
 # shape is a key here: the app, how it is built, its bundle id, its
-# entitlements, the keychain prefix and the asset's name (lib/config's
+# entitlements, the team, the notary profile and the asset's name (lib/config's
 # _DEVBIN_MACOS_SCHEMA). What stays a project's is what a key cannot say: its
 # icons, its other build products, its own stamps.
 #
 # CREDENTIALS LIVE IN THE LOGIN KEYCHAIN AND NOWHERE ELSE: no key material in
 # the tree, in CI config or in any file this writes, and nothing here prints a
-# value. They are read only by the subcommands that need them, never at load:
-# app-sign reads the team id alone, to choose the identity; app-notarize reads
-# the Apple id and the app password as well. doctor reports each as PRESENT or
-# MISSING, and the signing identity by count and team, never whole.
+# value. Every notarisation submits under one notarytool keychain profile,
+# macos.notary_profile, which store-creds has notarytool store; the identity is
+# found in the keychain, picked by macos.team. doctor reports the profile as
+# PRESENT or NOT USABLE, and the signing identity by count and team, never
+# whole.
 #
 # THE SUBJECT OF SIGNING IS A STAGED COPY OUTSIDE THE BUILD TREE, never the
 # build product, which any build on this machine can replace mid-notarisation.
@@ -112,11 +113,12 @@ usage: $ME <doctor|store-creds|app-sign|app-notarize|app-verify|publish>
   app-verify    The staged copy's signature and ticket; changes nothing
   doctor        The platform, the declaration, the tools, the Developer ID
                 identity (counted, with its team and a test-sign) and the
-                notary credentials (PRESENT or MISSING, never a value). Exit 1
+                notary profile (PRESENT or NOT USABLE, never a value). Exit 1
                 when anything is missing or the identity cannot sign
-  store-creds   Store the notary credentials in the login keychain under
-                macos.keychain's prefix; interactive, in a terminal only, and
-                each value is typed to security(1), never to this command
+  store-creds   Store the notary profile macos.notary_profile names in the
+                login keychain, through notarytool store-credentials, which
+                prompts for each value and checks them with Apple; interactive,
+                in a terminal only, and no value passes through this command
 
   Off macOS every subcommand refuses as not available here. See
   ${DEVBIN_INVOKE:-bin/devbin} help macos.
@@ -216,7 +218,11 @@ if [ -z "$APP_BUILD_ROOT" ] && [ -n "$APP_SRC" ]; then
   APP_BUILD_ROOT="${APP_SRC%/*}"
   [ -n "$APP_BUILD_ROOT" ] || APP_BUILD_ROOT=/
 fi
-KC_PREFIX="$(macos_key keychain)"
+# THE NOTARY CREDENTIAL IS ONE notarytool KEYCHAIN PROFILE (issue 0323), the
+# one every notarisation submits under, an app's and a binary's alike, and the
+# team picks the Developer ID identity when the keychain holds more than one.
+NOTARY_PROFILE="$(macos_key notary_profile)"
+MACOS_TEAM="$(macos_key team)"
 APP_NAME="${APP_SRC##*/}"
 APP_ASSET="$(macos_key asset)"
 [ -n "$APP_ASSET" ] || APP_ASSET="${APP_NAME:+$APP_NAME.zip}"
@@ -263,31 +269,33 @@ require_declared() {
 
 # --- the keychain -----------------------------------------------------------
 
-# kc_get <name> -- one credential from the login keychain, never from the
-# environment or a file. Silent on a miss; the callers report presence.
-kc_get() { security find-generic-password -a "${USER:-$(id -un)}" -s "$KC_PREFIX.$1" -w 2>/dev/null || true; }
-
 # load_identity -- the signing identity, FOUND in the keychain, never composed:
-# the "Developer ID Application" identity whose team is the stored team id,
-# else the first one when no team id is stored yet (signing needs no notary
-# credentials). IDENTITY_COUNT is how many the keychain lists.
+# the "Developer ID Application" identity whose team is macos.team, else the
+# one the keychain lists when it lists one. IDENTITY_COUNT is how many it
+# lists, and IDENTITY_TEAMS their teams, comma-separated.
+#
+# MORE THAN ONE AND NO TEAM IS NO PICK (issue 0323): signing with the first of
+# several is signing with an identity nobody chose, and the readback compares
+# the bundle with that same pick, so it could never catch a wrong one.
+# IDENTITY stays empty, and require_identity names the teams and the key.
 load_identity() {
-  local listed
-  APPLE_TEAM_ID="$(kc_get APPLE_TEAM_ID)"
+  local listed t
+  local -a teams=()
   listed="$({ security find-identity -v -p codesigning 2>/dev/null || true; } |
     sed -n 's/.*"\(Developer ID Application: [^"]*\)".*/\1/p' | sort -u)"
   IDENTITY_COUNT="$(grep -c . <<<"$listed" || true)"
-  if [ -n "$APPLE_TEAM_ID" ]; then
-    IDENTITY="$(grep -F "($APPLE_TEAM_ID)" <<<"$listed" | sed -n 1p || true)"
+  while IFS= read -r t; do
+    [ -z "$t" ] || teams+=("$t")
+  done < <(sed -n 's/.*(\([^()]*\))$/\1/p' <<<"$listed" | sort -u)
+  IDENTITY_TEAMS="$(printf '%s, ' ${teams[@]+"${teams[@]}"})"
+  IDENTITY_TEAMS="${IDENTITY_TEAMS%, }"
+  if [ -n "$MACOS_TEAM" ]; then
+    IDENTITY="$(grep -F "($MACOS_TEAM)" <<<"$listed" | sed -n 1p || true)"
+  elif [ "$IDENTITY_COUNT" -gt 1 ]; then
+    IDENTITY=""
   else
     IDENTITY="$(sed -n 1p <<<"$listed")"
   fi
-}
-
-# load_creds -- the notary credentials, for app-notarize and doctor alone.
-load_creds() {
-  APPLE_ID="$(kc_get APPLE_ID)"
-  APPLE_APP_PASSWORD="$(kc_get APPLE_APP_PASSWORD)"
 }
 
 # identity_team -- the team the identity names, from its trailing "(TEAMID)".
@@ -296,14 +304,46 @@ identity_team() {
   printf '%s' "${t%)}"
 }
 
+# identity_unpicked -- true when the keychain lists more than one identity and
+# no macos.team picks one.
+identity_unpicked() { [ -z "$MACOS_TEAM" ] && [ "${IDENTITY_COUNT:-0}" -gt 1 ]; }
+
 require_identity() {
-  [ -n "$IDENTITY" ] || die "macos: no Developer ID Application identity in the login keychain${APPLE_TEAM_ID:+ for the stored team} -- run: $ME doctor"
+  [ -z "$IDENTITY" ] || return 0
+  identity_unpicked &&
+    die "macos: the login keychain holds $IDENTITY_COUNT Developer ID Application identities, of the teams $IDENTITY_TEAMS, and no macos.team picks one -- declare macos.team as the team to sign with"
+  die "macos: no Developer ID Application identity in the login keychain${MACOS_TEAM:+ for the team macos.team names} -- run: $ME doctor"
 }
 
-require_creds() {
-  if [ -z "$APPLE_ID" ] || [ -z "$APPLE_APP_PASSWORD" ] || [ -z "$APPLE_TEAM_ID" ]; then
-    die "macos: notary credentials missing -- run: $ME store-creds (see: $ME doctor)"
+# notary_submit <zip> -- <zip> submitted to Apple under the notary profile,
+# waiting for the verdict: 0 when it is Accepted; 1 when it is anything else,
+# NOTARY_STATUS holding it and notarytool's log printed; 2 when notarytool gave
+# no submission id, as it gives none for a profile the keychain does not hold.
+# notarytool's report is printed, and it exits non-zero on an Invalid verdict,
+# so the verdict is read from the report. Every notarisation goes through here,
+# an app's and a binary's, and each caller clears its own submission and says
+# what it did not do.
+notary_submit() {
+  local zip="$1" out id
+  out="$(xcrun notarytool submit "$zip" --keychain-profile "$NOTARY_PROFILE" --wait 2>&1)" || true
+  printf '%s\n' "$out"
+  NOTARY_STATUS="$(awk '/^  status: / { s = $2 } END { print s }' <<<"$out")"
+  id="$(awk '/id: [0-9a-f-]+/ { print $2; exit }' <<<"$out")"
+  [ -n "$id" ] || return 2
+  if [ "$NOTARY_STATUS" != Accepted ]; then
+    xcrun notarytool log "$id" --keychain-profile "$NOTARY_PROFILE" 2>&1 | sed -n '1,40p' || true
+    return 1
   fi
+  return 0
+}
+
+# notary_refused <rc> <what was not done> -- the stop for notary_submit's
+# non-zero answer, naming the profile when there was no submission at all.
+notary_refused() {
+  case "$1" in
+    2) die "macos: notarytool gave no submission id under the notary profile $NOTARY_PROFILE -- $2; store the profile with: $ME store-creds (see: $ME doctor)" ;;
+    *) die "macos: notarisation was not Accepted (status: ${NOTARY_STATUS:-unknown}) -- $2" ;;
+  esac
 }
 
 # --- the bundle -------------------------------------------------------------
@@ -1043,7 +1083,8 @@ cmd_doctor() {
     printf '  %-21s MISSING (%s)\n' "entitlements" "$APP_ENTITLEMENTS"
     ok=0
   fi
-  printf '  %-21s %s\n' "keychain prefix" "$KC_PREFIX"
+  printf '  %-21s %s\n' "team" "${MACOS_TEAM:-none: needed when the keychain holds more than one Developer ID identity}"
+  printf '  %-21s %s\n' "notary profile" "$NOTARY_PROFILE"
   printf '  %-21s %s\n' "asset" "${APP_ASSET:-<none until macos.app is declared>}"
   printf '  %-21s %s\n' "stage" "$APP_STAGE_DIR"
   local root why
@@ -1093,41 +1134,37 @@ cmd_doctor() {
       ok=0
     fi
     rm -rf "$tmp"
+  elif identity_unpicked; then
+    printf '  %-21s REFUSED (%s found, of the teams %s, and no macos.team picks one; declare macos.team)\n' "Developer ID" "$IDENTITY_COUNT" "$IDENTITY_TEAMS"
+    ok=0
   else
     printf '  %-21s MISSING (no "Developer ID Application" identity in the login keychain)\n' "Developer ID"
     ok=0
   fi
-  load_creds
-  printf '\nnotary credentials under %s.* (values are never printed):\n' "$KC_PREFIX"
-  local k v
-  for k in APPLE_ID APPLE_APP_PASSWORD APPLE_TEAM_ID; do
-    v="${!k}"
-    if [ -n "$v" ]; then
-      printf '  %-21s PRESENT\n' "$k"
-    else
-      printf '  %-21s MISSING (run: %s store-creds)\n' "$k" "$ME"
-      ok=0
-    fi
-  done
-  [ "$ok" = 1 ] || die "macos: incomplete -- see MISSING, FAILED and REFUSED above"
+  # The profile is read the one way notarytool offers, a history query under
+  # it, which asks Apple, as the test-sign's timestamp above does; its output
+  # is never printed, so no value can be.
+  printf '\nnotary profile (its values are never printed):\n'
+  if xcrun notarytool history --keychain-profile "$NOTARY_PROFILE" >/dev/null 2>&1; then
+    printf '  %-21s PRESENT\n' "$NOTARY_PROFILE"
+  else
+    printf '  %-21s NOT USABLE (notarytool could not query Apple under it: store it with %s store-creds, or check the network)\n' "$NOTARY_PROFILE" "$ME"
+    ok=0
+  fi
+  [ "$ok" = 1 ] || die "macos: incomplete -- see MISSING, NOT USABLE, FAILED and REFUSED above"
 }
 
-# store-creds: each value typed to security(1) itself, which prompts for it
-# when -w ends its command line, so no value passes through this command, its
-# arguments or its output.
+# store-creds: notarytool store-credentials itself prompts for each value and
+# checks them with Apple before it saves the profile to the login keychain, so
+# no value passes through this command, its arguments or its output.
 cmd_store_creds() {
   [ -t 0 ] || die "macos: store-creds is interactive and reads the terminal; stdin is not one -- run it yourself in a terminal"
-  local k
-  printf 'Storing the Apple notary credentials in the login keychain under "%s.*".\n' "$KC_PREFIX"
-  printf 'security(1) prompts for each value and echoes none; nothing is written to the tree.\n'
-  printf '  APPLE_ID            the Apple account email\n'
-  printf '  APPLE_APP_PASSWORD  an app-specific password, not the account password\n'
-  printf '  APPLE_TEAM_ID       the team id the Developer ID identity names\n'
-  for k in APPLE_ID APPLE_APP_PASSWORD APPLE_TEAM_ID; do
-    printf '\n%s:\n' "$k"
-    security add-generic-password -U -a "${USER:-$(id -un)}" -s "$KC_PREFIX.$k" -w ||
-      die "macos: could not write $k to the keychain"
-  done
+  printf 'Storing the notary profile "%s" in the login keychain, through notarytool.\n' "$NOTARY_PROFILE"
+  printf 'It prompts for the Apple ID, the team id and an app-specific password (not the\n'
+  printf 'account password), checks them with Apple, and saves them; nothing is written to\n'
+  printf 'the tree.\n\n'
+  xcrun notarytool store-credentials "$NOTARY_PROFILE" ||
+    die "macos: notarytool could not store the notary profile $NOTARY_PROFILE"
   printf '\nStored. Check with: %s doctor\n' "$ME"
 }
 
@@ -1212,9 +1249,7 @@ cmd_app_notarize() {
   require_declared
   load_identity
   require_identity
-  load_creds
-  require_creds
-  local dist staging zip out status id
+  local dist staging zip rc=0
   dist="$(app_dist)"
   [ -d "$dist" ] || die "macos: no signed bundle at $dist -- run: $ME app-sign"
   arm_drops " -- nothing submitted"
@@ -1229,20 +1264,9 @@ cmd_app_notarize() {
     die "macos: could not build the submission archive"
   }
   step "submitting to Apple (notarytool waits; usually minutes)"
-  # notarytool exits non-zero on an Invalid verdict, which is read below.
-  out="$(xcrun notarytool submit "$zip" \
-    --apple-id "$APPLE_ID" --password "$APPLE_APP_PASSWORD" --team-id "$APPLE_TEAM_ID" \
-    --wait 2>&1)" || true
-  printf '%s\n' "$out"
+  notary_submit "$zip" || rc=$?
   rm -rf "$staging"
-  status="$(awk '/^  status: / { s = $2 } END { print s }' <<<"$out")"
-  id="$(awk '/id: [0-9a-f-]+/ { print $2; exit }' <<<"$out")"
-  [ -n "$id" ] || die "macos: could not read a submission id from notarytool's output -- nothing stapled"
-  if [ "$status" != Accepted ]; then
-    xcrun notarytool log "$id" \
-      --apple-id "$APPLE_ID" --password "$APPLE_APP_PASSWORD" --team-id "$APPLE_TEAM_ID" 2>&1 | sed -n '1,40p' || true
-    die "macos: notarisation was not Accepted (status: ${status:-unknown}) -- nothing stapled"
-  fi
+  [ "$rc" = 0 ] || notary_refused "$rc" "nothing stapled"
   step "stapling the ticket to the bundle"
   xcrun stapler staple "$dist" || die "macos: stapler could not staple the ticket to $dist"
   step "checking the stapled bundle as a download meets it"
