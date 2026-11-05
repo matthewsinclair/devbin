@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 10:40Z
-status: paused
-focus: "Paused at hv's word via vc (2026-11-05 10:40Z by date -u), the session ending: the consumer pass's Utilz turn runs only utilz/vc, utilz/dc and vc (vc's decision 141), and core asks from Utilz's cut become issues for the next release. Hold 35 is archived, since vc checks Utilz's four macOS sites when utilz/dc lands U1 (vc's todo 195). cc's next work is hv's to name."
+heartbeat_at: 2026-11-05 11:22Z
+status: active
+focus: "Holding at hv's word in cc's window (localfold+compact while we wait; folded 2026-11-05 11:22Z by date -u), the session kept after the 10:40Z release: cc has no lane in the consumer pass's Utilz turn (vc's decision 141), core asks from Utilz's cut become issues for the next release, and cc's next work is hv's to name. Hold 35 is vc's check at U1 (vc's todo 195)."
 claims: []
 ---
 
