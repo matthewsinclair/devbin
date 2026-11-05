@@ -1,0 +1,16 @@
+{
+  "id": "01M6N0464TQRPNR9P4JZS0PTT8",
+  "ts": "2026-11-05T04:40:26.522Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 66,
+    "text": "Group A under hv's localised-test rule (vc's GO, 2026-11-05 04:35Z), one issue at a time, each on main after the one before lands: 0310 (built at 10b2b09 on refs/bank/cc/v0120-t2-wip; rebase onto main, where docs/configuration.md moved), 0313, 0314, then 0307. Each: its new arms red at the base under RED_TIMEOUT, the test files it touches green at the fix under BSD in a light slot asked of vc, then bank, handover, vc's land-stack.sh, Resolution and close. 0315 was closed unfixed (bc857a9c), and release_one_repository's switch is dropped."
+  }
+}

@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 1ae27c22-b18d-4689-9efc-64362ad5c0d6
-heartbeat_at: 2026-11-05 04:18Z
+heartbeat_at: 2026-11-05 04:40Z
 status: active
-focus: "Holding for hv's word (boot and wait): train 1 (0308, 0309, 0312) is banked at refs/bank/cc/v0120-t1 = e7133d13; its 2026-11-04 run was stopped with no verdict (arms red as wanted, every BSD leg green but main's own release.bats:480, 19 of 21 GNU legs in, help and releasecut cut off), so it reruns whole at the go; its orphaned slot 01M6M084QB56E66T6M067SEX8A still holds the bats heavy lane and goes first; then trains 2 and 3 (todos 66 and 67)."
-claims: [ISSUE:0307, ISSUE:0308, ISSUE:0309, ISSUE:0310, ISSUE:0312, ISSUE:0313, ISSUE:0314, ISSUE:0315]
+focus: "Under hv's localised-test rule (vc's GO, 2026-11-05 04:35Z): train 1's handover is with vc for land-stack.sh, then its Resolutions and closes (todo 68); then 0310, 0313, 0314 and 0307, one at a time, each on main after the one before lands (todo 66). The orphaned slot 01M6M084QB56E66T6M067SEX8A is vc's to revoke as controller."
+claims: [ISSUE:0307, ISSUE:0308, ISSUE:0309, ISSUE:0310, ISSUE:0312, ISSUE:0313, ISSUE:0314]
 ---
 
 # Control Claude (cc)
@@ -17,8 +17,8 @@ _(none)_
 
 ## TODO
 
-- Train 2 (0310, 0313, 0314, 0315), after dc's B stack and train 1 land, on a base holding 1c291303: its work in progress is banked at refs/bank/cc/v0120-t2-wip (10b2b09, 0310 built); what is left, vc's 0315 ruling, release.bats in its FILES and vc's release_one_repository switch to dc's require_git_local_env_cleared are in ~/Devel/scratch/devbin-cc/v0120-t2/NOTES.md. (edited)
-- Train 3 (0307) alone, after train 2 and dc's 0311 land on lib/runlog (vc's ruling, 2026-11-04).
+- Group A under hv's localised-test rule (vc's GO, 2026-11-05 04:35Z), one issue at a time, each on main after the one before lands: 0310 (built at 10b2b09 on refs/bank/cc/v0120-t2-wip; rebase onto main, where docs/configuration.md moved), 0313, 0314, then 0307. Each: its new arms red at the base under RED_TIMEOUT, the test files it touches green at the fix under BSD in a light slot asked of vc, then bank, handover, vc's land-stack.sh, Resolution and close. 0315 was closed unfixed (bc857a9c), and release_one_repository's switch is dropped. (edited)
+- Train 1 (0308, 0309, 0312): its handover went to vc at 2026-11-05 04:39Z (~/Devel/scratch/devbin-cc/v0120-t1/handover); once vc lands it with land-stack.sh, each issue's Resolution by issues edit (body byte-exact, Resolution appended), then its close and the claim dropped.
 
 ## Holds
 
