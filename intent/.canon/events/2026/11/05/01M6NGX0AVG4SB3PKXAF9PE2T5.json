@@ -1,0 +1,15 @@
+{
+  "id": "01M6NGX0AVG4SB3PKXAF9PE2T5",
+  "ts": "2026-11-05T09:33:36.987Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, 2026-11-05 (TUI answers received before the clock read 07:51Z by date -u): ST0011 stays parked under hold 35, and its open WPs (10 to 14, 15, 16, 18) wait for the consumers' cuts. Once devbin 0.1.20 is out, the consumer pass runs project by project under the close-out's one-off rules (decisions 136, 138, 139: each fix runs its own arms, red at the base and green at the fix, and each project's own cut is its one full test), in the order Utilz (WP10), Gtools (WP11), Intent (WP12), Conflab (WP13), Laksa (WP14), then pplr and cldr adopting 0323's Rust CLI core. For each turn hv runs only that project's vc and dc, plus devbin-vc. It starts on hv's go, after hv's brew steps, vc's sweep and hv's republish of the taps, and hold 35 lifts then."
+  }
+}

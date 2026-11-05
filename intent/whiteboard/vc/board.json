@@ -3879,7 +3879,8 @@
       "kind": "decision",
       "seq": 89,
       "text": "vc 2026-10-31: fix-phase lanes: cc WP01, WP02, WP07, WP08 (the cut; lib/cmd/release in sequence); dc WP03, WP04, WP05, WP06 (the legs; disjoint files first, lib/cmd/release wiring after WP02 lands); vc coordinates, controls the desk's slots, reviews every unit and prepares WP10 to WP14; kovacs-sysadm and gyges-sysadm run legs on their machines on vc's order. The leg contract is in each builder's inbox and goes into design.md.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-05T09:34:27.939Z",
       "recorded_at": "2026-10-31T08:28:10.186Z"
     },
     {
@@ -4305,9 +4306,10 @@
       "node": "vc",
       "kind": "watchout",
       "seq": 38,
-      "text": "The estate page (served by intentd, started 2026-11-01 06:18Z without CLAUDE_CONFIG_DIR) sees no Claude sessions, so it labels every running slot ORPHANED; reproduced by running the census with the variable unset (0 sessions, every slot orphaned) against 24 with it set. The CLI census (intent estate status) is the desk's truth: never revoke a slot on the page's word. Recorded for Intent through intent-vc; decision 98's at-login enrolment must carry the variable; no work on it under hv's no-yaks word.",
+      "text": "The estate page (served by intentd, started 2026-11-01 06:18Z without CLAUDE_CONFIG_DIR) sees no Claude sessions, so it labels every running slot ORPHANED; reproduced by running the census with the variable unset (0 sessions, every slot orphaned) against 24 with it set. The CLI census (intent estate status) is the desk's truth: never revoke a slot on the page's word. Recorded for Intent through intent-vc; decision 98's at-login enrolment must carry the variable; no work on it under hv's no-yaks word. On 2026-11-05 hv's restart from a terminal without the variable changed nothing; vc restarted intentd at 07:25Z from its own shell (intent daemon stop and start, stdin from /dev/null), and the page named every holder. That restart lasts until the next login; Intent issue 0671 holds the fix.",
       "state": "live",
-      "recorded_at": "2026-11-01T08:38:10.708Z"
+      "recorded_at": "2026-11-01T08:38:10.708Z",
+      "edited_at": "2026-11-05T09:34:28.974Z"
     },
     {
       "node": "vc",
@@ -4448,10 +4450,10 @@
       "node": "vc",
       "kind": "doing",
       "seq": 88,
-      "text": "devbin 0.1.20, every open issue fixed before its cut, under decisions 135 to 140 and their one-off fix-only rules for this close-out. 14 of 15 closed on 2026-11-05. 0315 closed unfixed, since no project reaches it. Closed fixed: 0319, 0308, 0309, 0312, 0310, 0316, 0313, 0302, 0318, 0314 (follow-up b548add6), 0307, 0301 and 0303. 0323 stays open: banks 1 (eb0886cc), 2 (89380aa5, 67481c78), 3 (1c124b1f) and 4 (7f273494) are landed, and its last unit, 3b, is dc's in k323/b3b, with vc reviewing lib/cmd/release's lines at dc's ask. Its ci-draft path stays with ccusage (decision 140). The note is rewritten and hv-approved (3c86e671), and the dry run at 154e424e was clean. Resume order: todo 196.",
+      "text": "devbin 0.1.20 RELEASED at 09:29:31Z by the cut's log (tmp/release/20261105-0826.RELEASE.out): release commit be40dea7, tag v0.1.20, the release object, and the tap's main at 3c55c302. All 15 issues are closed (0323 at 1fbb25d2, its last bank 3b at 6d2db00b; 0315 unfixed, since no project reaches it). Left, in order: (1) read the WSL job's re-run (run 41994585531, job 127134808986) for its smoke list; (2) hv's brew upgrade devbin, then devbin use brew; (3) vc's sweep from brew, one commit per estate (directive 10), Utilz's dropping macos.keychain (todo 197); (4) hv's republish of the taps; (5) vc tells hv the consumer pass can start, Utilz first. Whether kovacs stays up for the consumer pass's legs is hv's call. Upstream's main is be40dea7, and local main carries the board commits above it until hv's next push.",
       "state": "live",
       "recorded_at": "2026-11-04T12:02:06.500Z",
-      "edited_at": "2026-11-05T07:06:04.894Z"
+      "edited_at": "2026-11-05T09:34:28.618Z"
     },
     {
       "node": "vc",
@@ -4467,7 +4469,8 @@
       "kind": "todo",
       "seq": 196,
       "text": "Resume order for devbin 0.1.20's cut (2026-11-05). (1) Review and land 0323 bank 3b (dc; cc is paused at hv's word), then dc writes 0323's Resolution and closes it. (2) vc edits the note's binary-signing entry to banks 3 and 3b as built: bin-sign, bin-notarize, bin-verify and bin-publish; macos.bin_dir and macos.pack.files; and the object step's bin-publish before the formula step, already where attached. vc runs release notes, commits the note and its views, and shows hv the edit. (3) The dry run again, its kovacs login announced to kovacs-sysadm and reported. (4) vc asks the bats and heavy lanes for hv's cut and STARTs it, telling kovacs-sysadm START. hv runs bin/devbin release v0.1.20 in Devbin, and kovacs-sysadm hears END at its end. (5) The candidate's CI read: Linux, and WSL for 0318's arm. (6) hv's brew upgrade devbin, then devbin use brew. (7) vc's sweep from brew, Utilz's commit dropping macos.keychain (todo 197). (8) hv's republish of the taps. (9) kovacs stops once the cut has ENDed. Held: 8GJE86, ccusage's restart, for hv's word; its active profile is engineering00, not the hold's engineering01.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-05T09:34:29.220Z",
       "recorded_at": "2026-11-04T12:22:36.034Z",
       "edited_at": "2026-11-05T07:06:05.282Z"
     },
@@ -4476,7 +4479,8 @@
       "kind": "decision",
       "seq": 135,
       "text": "hv's rulings of 2026-11-04 in vc's window through the TUI (answered before the clock read 17:50Z by date -u), superseding decision 133's scope: no v0.1.20 cut until every open devbin issue is fixed into 0.1.20, the 19 (0298, 0299, 0301, 0302, 0303, 0305, 0307 to 0316, 0318, 0319, 0321) and 0323 (the Rust CLI ship into the core), one release as directive 13 says ('Hold, fix them all first'; 0323 'Into 0.1.20', against vc's rec of the next release). hv starts cc. Lanes, by the files each issue names (decision 83: units that share files land one after another): cc builds group A, the release core (0307, 0308, 0309, 0310, 0312, 0313, 0314, 0315, 0316; lib/cmd/release, lib/release.steps, lib/release.macos, lib/runlog), in sequence; dc builds group B (0298, 0299, 0305, 0311, 0319; lib/helpers, lib/cmd/macos, lib/cmd/worktrees, bin/devbin), then group C (0301, 0302, 0303, 0318; the test harness, lib/install), then 0323 after B lands, drafting 0323's design read-only meanwhile; vc builds D (0321) and reviews, books every run on pplr-vc's desk and lands each unit with land-stack.sh. 0318 has no known cause, so its unit makes the arm say why it fails and is proved on CI's WSL 2 job. Every unit gets critic-shell before its first run and a red leg at main's code. 0.1.20's note is rewritten for the whole set before the cut. Held untagged meanwhile: 0322 at d5b7872e, closed at 2eac8890, the note at 85754de0. GitHub's Actions incident (opened 17:40Z, investigating) is read again before the cut.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-05T09:34:28.124Z",
       "recorded_at": "2026-11-04T17:50:45.372Z"
     },
     {
@@ -4526,6 +4530,30 @@
       "text": "hv in vc's window, received before the clock read 2026-11-05 06:14Z by date -u, on 0323's ci-draft path: '(a), defer the CI-draft piece to the next release. ccusage is a trivial utility that is not that important in the grand scheme of things ... pplr and cldr are done now and done properly, and we leave ccusage alone for the time being, only coming back to it if it is absolutely necessary.' So nobody builds the ci-draft path. 0323 closes once banks 3 (macos binaries, dc) and 4's release half (formula step, cc) land, beside banks 1 and 2 and 67481c78. Its Resolution says ccusage keeps its own finalize, and that the worst case, hv's, is replacing ccusage's approach with the core's. No new issue is opened, since an open one would pull it into the next release (directive 13) against hv's 'only if absolutely necessary'. dc's SPEC-cidraft.md stays as its design if it is ever wanted. Pplr and cldr adopt the core after devbin 0.1.20 ships.",
       "state": "live",
       "recorded_at": "2026-11-05T06:14:34.572Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 141,
+      "text": "hv in vc's window, 2026-11-05 (TUI answers received before the clock read 07:51Z by date -u): ST0011 stays parked under hold 35, and its open WPs (10 to 14, 15, 16, 18) wait for the consumers' cuts. Once devbin 0.1.20 is out, the consumer pass runs project by project under the close-out's one-off rules (decisions 136, 138, 139: each fix runs its own arms, red at the base and green at the fix, and each project's own cut is its one full test), in the order Utilz (WP10), Gtools (WP11), Intent (WP12), Conflab (WP13), Laksa (WP14), then pplr and cldr adopting 0323's Rust CLI core. For each turn hv runs only that project's vc and dc, plus devbin-vc. It starts on hv's go, after hv's brew steps, vc's sweep and hv's republish of the taps, and hold 35 lifts then.",
+      "state": "live",
+      "recorded_at": "2026-11-05T09:33:36.987Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 142,
+      "text": "devbin 0.1.20's first cut (07:35Z, release commit 2bf02f25) stopped red at its legs step at 07:58Z on seven tree-scan arms (contract 409; documentation 648 and 655; neutral 1851, 1852 and 1854; workroom 2972), the same in CI's Ubuntu and WSL (run 41988374656) and on kovacs as far as it ran; nothing was tagged or made public. hv's TUI answer (about 08:10Z): reset and re-cut the same version, and stop the kovacs leg rather than let it finish. hv reset the release commit (reset --keep d1f710c0); vc fixed the seven in the lines that day added (0d30e0c6: the four scan files whole, 95 ok); hv stopped the kovacs leg in kovacs-sysadm's window and cancelled the run. The re-cut (release commit be40dea7) went green on every leg (local gates 1194s, kovacs 3445s, candidate run 41994585531 with Test Summary green) and released at 09:29:31Z by its log; the tap's main is 3c55c302. WSL went red on GitHub's 504 fetching Intent after its suite passed whole (0318's arms ok); it blocks nothing, and vc re-ran the job. cc's localfold commit e6a239a9 landed above the release commit at 08:51Z, because the bar had reached dc alone; the cut was untouched, since it tags and pushes the release commit's sha and formula reads the tag. vc's rules from it: before each cut, run the tree-scan files whole once (contract, documentation, neutral and workroom, 3m24s on rhadamanth; a consumer project's own the same way); at a cut's ask, send the bar to every node, paused ones included; and read git log -2 before handing hv a reset line.",
+      "state": "live",
+      "recorded_at": "2026-11-05T09:33:37.192Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 143,
+      "text": "hv's TUI answers in vc's window (received before the clock read 09:00Z by date -u) on molt-vc's answer to another estate's session's WSL2 question: its container proof run on rhadamanth comes to the desk in heavy and is granted between cuts. The three molt doctor changes it found are Molt issues 0093 to 0095, which hv then moved to now in molt-vc's window, to ship in Molt 1.4.5 after the consumer pass. A fix's single-file arm runs book the light lane under today's rules.",
+      "state": "live",
+      "recorded_at": "2026-11-05T09:34:28.313Z"
     }
   ],
   "sent": [

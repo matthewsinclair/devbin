@@ -1,0 +1,15 @@
+{
+  "id": "01M6NGX0H8QTJ0FC66N4KGHKK8",
+  "ts": "2026-11-05T09:33:37.192Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "devbin 0.1.20's first cut (07:35Z, release commit 2bf02f25) stopped red at its legs step at 07:58Z on seven tree-scan arms (contract 409; documentation 648 and 655; neutral 1851, 1852 and 1854; workroom 2972), the same in CI's Ubuntu and WSL (run 41988374656) and on kovacs as far as it ran; nothing was tagged or made public. hv's TUI answer (about 08:10Z): reset and re-cut the same version, and stop the kovacs leg rather than let it finish. hv reset the release commit (reset --keep d1f710c0); vc fixed the seven in the lines that day added (0d30e0c6: the four scan files whole, 95 ok); hv stopped the kovacs leg in kovacs-sysadm's window and cancelled the run. The re-cut (release commit be40dea7) went green on every leg (local gates 1194s, kovacs 3445s, candidate run 41994585531 with Test Summary green) and released at 09:29:31Z by its log; the tap's main is 3c55c302. WSL went red on GitHub's 504 fetching Intent after its suite passed whole (0318's arms ok); it blocks nothing, and vc re-ran the job. cc's localfold commit e6a239a9 landed above the release commit at 08:51Z, because the bar had reached dc alone; the cut was untouched, since it tags and pushes the release commit's sha and formula reads the tag. vc's rules from it: before each cut, run the tree-scan files whole once (contract, documentation, neutral and workroom, 3m24s on rhadamanth; a consumer project's own the same way); at a cut's ask, send the bar to every node, paused ones included; and read git log -2 before handing hv a reset line."
+  }
+}

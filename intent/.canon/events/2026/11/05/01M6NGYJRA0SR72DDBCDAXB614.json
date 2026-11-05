@@ -1,0 +1,16 @@
+{
+  "id": "01M6NGYJRA0SR72DDBCDAXB614",
+  "ts": "2026-11-05T09:34:28.618Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 88,
+    "text": "devbin 0.1.20 RELEASED at 09:29:31Z by the cut's log (tmp/release/20261105-0826.RELEASE.out): release commit be40dea7, tag v0.1.20, the release object, and the tap's main at 3c55c302. All 15 issues are closed (0323 at 1fbb25d2, its last bank 3b at 6d2db00b; 0315 unfixed, since no project reaches it). Left, in order: (1) read the WSL job's re-run (run 41994585531, job 127134808986) for its smoke list; (2) hv's brew upgrade devbin, then devbin use brew; (3) vc's sweep from brew, one commit per estate (directive 10), Utilz's dropping macos.keychain (todo 197); (4) hv's republish of the taps; (5) vc tells hv the consumer pass can start, Utilz first. Whether kovacs stays up for the consumer pass's legs is hv's call. Upstream's main is be40dea7, and local main carries the board commits above it until hv's next push."
+  }
+}

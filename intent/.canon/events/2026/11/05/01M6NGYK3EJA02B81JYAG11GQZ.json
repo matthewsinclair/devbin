@@ -1,0 +1,16 @@
+{
+  "id": "01M6NGYK3EJA02B81JYAG11GQZ",
+  "ts": "2026-11-05T09:34:28.974Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 38,
+    "text": "The estate page (served by intentd, started 2026-11-01 06:18Z without CLAUDE_CONFIG_DIR) sees no Claude sessions, so it labels every running slot ORPHANED; reproduced by running the census with the variable unset (0 sessions, every slot orphaned) against 24 with it set. The CLI census (intent estate status) is the desk's truth: never revoke a slot on the page's word. Recorded for Intent through intent-vc; decision 98's at-login enrolment must carry the variable; no work on it under hv's no-yaks word. On 2026-11-05 hv's restart from a terminal without the variable changed nothing; vc restarted intentd at 07:25Z from its own shell (intent daemon stop and start, stdin from /dev/null), and the page named every holder. That restart lasts until the next login; Intent issue 0671 holds the fix."
+  }
+}
