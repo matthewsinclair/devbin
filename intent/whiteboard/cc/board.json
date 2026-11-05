@@ -9,7 +9,8 @@
     "status": "active",
     "focus": "0324 drafted at hv's word in cc's window, option 2 at vc's GO (config read refuses an artefact at macos.app's path beside macos.commit_stamp): tip 0959a979 on main cdb23329 in cc's scratch clone i0324, red clone 196af5e4. Slot 01M6NSKKJDSP576QVCPVTKQEWJ asked, light, held after Utilz's runs; at vc's GO, run-0324.sh, then the handover for vc to land (set 2026-11-05 12:07Z by date -u).",
     "claims": [
-      "ISSUE:0324"
+      "ISSUE:0324",
+      "ISSUE:0325"
     ],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
@@ -1656,6 +1657,14 @@
       "state": "archived",
       "archived_at": "2026-11-05T07:30:12.096Z",
       "recorded_at": "2026-11-05T06:43:51.956Z"
+    },
+    {
+      "node": "cc",
+      "kind": "hold",
+      "seq": 37,
+      "text": "0325 (hv's word via vc, filed at 8d5ea0df) waits until 0324's unit is banked in canon; then cc builds it on 0324's banked tip and asks vc for a light slot, before Gtools's turn. Pick sent to vc: the refusal at config read.",
+      "state": "live",
+      "recorded_at": "2026-11-05T12:15:56.044Z"
     }
   ],
   "sent": [

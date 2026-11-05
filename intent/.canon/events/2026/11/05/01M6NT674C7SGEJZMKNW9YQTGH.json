@@ -1,0 +1,15 @@
+{
+  "id": "01M6NT674C7SGEJZMKNW9YQTGH",
+  "ts": "2026-11-05T12:15:56.044Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0325 (hv's word via vc, filed at 8d5ea0df) waits until 0324's unit is banked in canon; then cc builds it on 0324's banked tip and asks vc for a light slot, before Gtools's turn. Pick sent to vc: the refusal at config read."
+  }
+}
