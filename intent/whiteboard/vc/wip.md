@@ -3,7 +3,7 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 43c43ff2-c91c-45b3-9f74-9df455a9fbe1
-heartbeat_at: 2026-11-06 11:43Z
+heartbeat_at: 2026-11-06 12:08Z
 status: active
 focus: "Localfold for hv's compact (focus set 2026-11-06 11:43Z by date -u). vc runs the estate desk on hv's word (since just before 06:53Z): the agentic-engineering work first, Webber's heavy runs behind it. Issue 0326, devbin's one dev/opt/brew implementation (bin/devbin use and install in every project's checkout, no tool verb), is building with devbin-cc: the contract and 0326-1 to 0326-5 are landed (a08b44db, ffb93786, 6eb8726f, e484bff7, 35239dda, 2970280d), and 0326-6 (doctor), 0326-7 (the formula) and 0326-8 (the docs and T6) follow, each unit's own arms, landed by land-stack.sh. The use fix is done in Pplr (723e426, f7cb32b), Cldr (d558d5e) and Ccusage (977589e, fad412f), each adopting when 0326 ships. Waiting on hv: Utilz's 2.14.9 cut, devbin's push, and whether the packaging replacement is filed for this release. Nothing pushed."
 claims: [ST0011]
