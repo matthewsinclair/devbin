@@ -1009,12 +1009,29 @@ $(<"$heads")"
 # gone, and the paragraph ends on that sentence.
 @test "the contract's T4 ends its version-line paragraph on the doctor sentence: doctor prints the same line, unchanged (0246)" {
   local doc="$DEVBIN_HOME/docs/dev-opt-brew.md" para
-  para="$(grep -F -- '`<tool> --version` and `<tool> version` print one line' "$doc" || true)"
+  para="$(grep -F -- '`<tool> --version` prints one line' "$doc" || true)"
   [ -n "$para" ] || fail "docs/dev-opt-brew.md has no T4 version-line paragraph"
   [[ "$para" == *" Doctor prints the same line, unchanged." ]] ||
     fail "T4's version-line paragraph does not end with the doctor sentence: $para"
   [[ "$para" != *"names a path only where a check that fails is about one"* ]] ||
     fail "T4 still carries the exception issue 0246 removed: $para"
+}
+
+# The publish and the switch are devbin's own verbs (issue 0326): the contract
+# names bin/devbin install and bin/devbin use, run in the tool's checkout, and
+# no verb of a tool's own for them, nor a version verb, since a tool's binary
+# carries only T4's line on --version. A tool's own verb named in the contract
+# is where the tools' own copies of the switch began.
+@test "the contract names bin/devbin install and bin/devbin use as the publish and the switch, and no tool's own install, use or version verb (0326)" {
+  local doc="$DEVBIN_HOME/docs/dev-opt-brew.md" own rc=0
+  grep -qF -- '## T2. Publish: `bin/devbin install' "$doc" ||
+    fail "T2 does not name bin/devbin install as the publish"
+  grep -qF -- '## T5. The switch: `bin/devbin use [dev|opt|brew]`' "$doc" ||
+    fail "T5 does not name bin/devbin use as the switch"
+  own="$(grep -nE '`<tool> (install|use|version)' "$doc")" || rc=$?
+  [ "$rc" -le 1 ] || fail "grep could not read $doc (status $rc)"
+  [ -z "$own" ] || fail "the contract names a tool's own verb:
+$own"
 }
 
 # The published tree carries the product and not the workroom under intent/,
