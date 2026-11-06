@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 38ae7ef4-fbac-4d87-a069-a92f3010a935
-heartbeat_at: 2026-11-06 11:09Z
+heartbeat_at: 2026-11-06 11:41Z
 status: active
-focus: "Building issue 0326 at hv's word, claimed (focus updated 2026-11-06 11:04Z by date -u): the core carries dev/opt/brew for every project that declares its binaries; the switch and the publish are bin/devbin use and bin/devbin install, run in the tool's checkout. Landed by vc, unpushed: the contract text (a08b44db), 0326-1 the tool-taking switch, keg and line functions (ffb93786), 0326-2 the declaration (6eb8726f), 0326-3 the build stamp (e484bff7), 0326-4 install for a tool (35239dda). Next: 0326-5 use for a tool, then 0326-6 doctor, 0326-7 the formula's one form, 0326-8 the docs. Each unit runs its own arms on vc's desk; nothing pushed."
+focus: "Building issue 0326 at hv's word, claimed (focus updated 2026-11-06 11:41Z by date -u): the core carries dev/opt/brew for every project that declares its binaries; the switch and the publish are bin/devbin use and bin/devbin install, run in the tool's checkout. Landed by vc, unpushed: the contract text (a08b44db), 0326-1 the tool-taking switch, keg and line functions (ffb93786), 0326-2 the declaration (6eb8726f), 0326-3 the build stamp (e484bff7), 0326-4 install for a tool (35239dda), 0326-5 use for a tool (2970280d). Next: 0326-6 doctor for a tool, then 0326-7 the formula's one form, 0326-8 the docs. Each unit runs its own arms on vc's desk; nothing pushed."
 claims: [ISSUE:0326]
 ---
 
