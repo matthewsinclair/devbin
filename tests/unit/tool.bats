@@ -11,7 +11,8 @@
 # A project declares its tool in an install: block, and the 0326-2 arms hold
 # the declaration's validation and its readers in lib/config; the 0326-3 arms
 # its build's line, the 0326-4 arms its publish, the 0326-5 arms its switch,
-# and the 0326-6 arms its rows in doctor.
+# the 0326-6 arms its rows in doctor, and the 0326-9 arm doctor's note when its
+# switch was left off brew.
 #
 # WHAT THIS DOES NOT CATCH, declared so a green is never read as covering it:
 #   - use's own word on a link a login shell does not run: the 0326-6 arm runs
@@ -743,4 +744,31 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
   assert_output_contains "note  demo tree: Homebrew's keg at $root has no manifest, the form written before devbin's core"
   assert_output_contains "run: brew upgrade demo, once a release that writes the new form is out"
+}
+
+@test "0326-9: doctor notes a tool's set left on dev or opt once Homebrew's copy is at that tree's version, naming brew upgrade, then bin/devbin use brew, and says nothing of a dev tree past it" {
+  local proj keg="$HOMEBREW_PREFIX/Cellar/demo/1.2.3"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" install --prefix "$keg/libexec" --managed-by brew
+  assert_success
+  mkdir -p "$keg/bin" "$HOMEBREW_PREFIX/opt" || fail "the keg's bin could not be made"
+  ln -s ../libexec/bin/demo-cli "$keg/bin/demo-cli" || fail "the keg's own link could not be made"
+  ln -sfn ../Cellar/demo/1.2.3 "$HOMEBREW_PREFIX/opt/demo" || fail "the opt link could not be made"
+  demo_bin_link 1.2.3 || fail "the fixture's bin link could not be made"
+  run devbin_run "$proj" use dev
+  assert_success
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
+  assert_output_contains "note  demo switch: on dev, and Homebrew's demo is 1.2.3, at or past dev's 1.2.3 -- the switch rests at brew"
+  assert_output_contains "once the work on dev is released: brew upgrade demo, then bin/devbin use brew"
+  printf '1.2.4\n' >"$proj/VERSION"
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
+  [[ "$output" == *" checks, "*" failed, "*" notes"* ]] || fail "doctor did not run to its count: $output"
+  refute_output_contains "demo switch: on dev"
+  git -C "$proj" checkout -q -- VERSION || fail "VERSION could not be restored"
+  run devbin_run "$proj" install
+  assert_success
+  run devbin_run "$proj" use opt
+  assert_success
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
+  assert_output_contains "note  demo switch: on opt, and Homebrew's demo is 1.2.3, at or past opt's 1.2.3 -- the switch rests at brew"
 }
