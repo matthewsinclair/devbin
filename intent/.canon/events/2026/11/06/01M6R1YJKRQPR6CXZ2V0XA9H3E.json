@@ -1,0 +1,15 @@
+{
+  "id": "01M6R1YJKRQPR6CXZ2V0XA9H3E",
+  "ts": "2026-11-06T09:10:03.128Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's rulings in ccusage-vc's window, relayed by ccusage-vc (given before the clock read 2026-11-06 09:08Z by its date -u): (1) devbin-cc builds issue 0326 now: cc writes the shared core in Devbin, devbin releases it, then Ccusage pulls it in, wires its config and formula and ships with everything, so Ccusage's next release waits for devbin's; (2) Ccusage's activate rename (ccusage#0007) lands now on its main, in its next release, one cut carrying every outstanding issue (\"Only test the changes, not the whole thing and let me know when you need to run a full test suite and I'll do it manually\"). vc gave cc the go after the clock read 09:09Z by date -u: claim ISSUE:0326, the design agreed with vc before building, a scratch clone, its runs booked here with new arms red at the base and green at the fix, landing by land-stack.sh, unpushed, for the next devbin release, whose cut is hv's; whether hv's test words hold for devbin's own release is put to hv. Decisions 131 and 120 archived as executed."
+  }
+}

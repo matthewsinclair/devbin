@@ -4265,7 +4265,8 @@
       "kind": "decision",
       "seq": 120,
       "text": "hv's rulings on vc's four questions, in vc's window through the TUI (answered before the clock read 2026-11-01 06:50Z by date -u), each as vc recommended: (R1) the run order between WP16 and WP02b-1, which share five files (README.md, docs/configuration.md, lib/builtins, lib/config, lib/config.reference.yaml), is first ready runs first until cc asks for WP02b-1's unit run; cc squashes once onto whatever has landed by then, resolving the shared files in that squash; from cc's ask WP02b-1 runs next and nothing sharing its files lands ahead of it. (R2) issue 0306 lands before the cut, built by dc after WP16; lib/runlog is in no bank, so its run fills any lane gap; critic-shell before its first run. (R3) hv starts kovacs with kovacs-sysadm on it now; kovacs-sysadm holds until vc's order. (R4) vc pushes main to local, the private push-only mirror, now and at each fold, fast-forward only; upstream untouched; hold 34's repo switch stays parked. Executed at 06:50Z: main pushed to local, 9f579b36..f9eb26e6. Also ruled by vc on dc's reply: WP16's run is the whole suite under BSD at its tip, since its tests/lib/test_helper.bash change reaches every suite file, with the changed suites under GNU and the tree scans and help; the '# AT-5.n' lines over cache.bats's arms ride its settle; dc's ST0011/08 claim stands. Decisions 118 (the hard close, executed and lifted by 119) and 97 (gyges's estate-pull fix, installed; its Gtools finding executed under 98) archived for the bound.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-06T09:09:49.023Z",
       "recorded_at": "2026-11-01T06:51:46.534Z"
     },
     {
@@ -4409,7 +4410,8 @@
       "kind": "decision",
       "seq": 131,
       "text": "hv's rulings of 2026-11-02 in vc's window through the TUI. First, answered before the clock read 03:52Z by date -u: the 0.1.19 candidate's WSL 2 red (0318, localinstall's 0059 FORWARD arm) stays filed with its record corrected, and nothing else follows, no code and no run; the suspect first named, the fixture commits' background maintenance, does not hold on WSL's git 2.53, and the cause is unknown. Then, answered before the clock read 04:07Z by date -u: the candidate's WSL 2 job is not re-run; after hv's brew steps (brew upgrade devbin, then devbin use brew, so the switch names Homebrew's install) the fleet is re-swept from Homebrew's install, so every estate records its commit 0b5e4fa0f540, one commit per estate, the manifest alone, nothing pushed (done at 04:07Z); and the opt/brew notice gap is filed, as 0319. None of these to be put again. This decision carries decision 130's ruling, archived into it.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-06T09:09:48.803Z",
       "recorded_at": "2026-11-02T04:10:31.651Z"
     },
     {
@@ -4637,6 +4639,14 @@
       "text": "When issue 0326 lands (the core's dev/opt/brew for a project's own binaries): tell pipeliner-sc, whose decision 91 holds Pipeliner's CLI to no switch of its own until then, so pipeliner-cc takes up the core's; and tell pplr-vc, cldr-vc and ccusage-vc, whose pplr#0001, cldr#0001 and ccusage#0007 adopt it, with Ccusage's account verb becoming activate (decision 148).",
       "state": "live",
       "recorded_at": "2026-11-06T08:34:32.959Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 149,
+      "text": "hv's rulings in ccusage-vc's window, relayed by ccusage-vc (given before the clock read 2026-11-06 09:08Z by its date -u): (1) devbin-cc builds issue 0326 now: cc writes the shared core in Devbin, devbin releases it, then Ccusage pulls it in, wires its config and formula and ships with everything, so Ccusage's next release waits for devbin's; (2) Ccusage's activate rename (ccusage#0007) lands now on its main, in its next release, one cut carrying every outstanding issue (\"Only test the changes, not the whole thing and let me know when you need to run a full test suite and I'll do it manually\"). vc gave cc the go after the clock read 09:09Z by date -u: claim ISSUE:0326, the design agreed with vc before building, a scratch clone, its runs booked here with new arms red at the base and green at the fix, landing by land-stack.sh, unpushed, for the next devbin release, whose cut is hv's; whether hv's test words hold for devbin's own release is put to hv. Decisions 131 and 120 archived as executed.",
+      "state": "live",
+      "recorded_at": "2026-11-06T09:10:03.128Z"
     }
   ],
   "sent": [
