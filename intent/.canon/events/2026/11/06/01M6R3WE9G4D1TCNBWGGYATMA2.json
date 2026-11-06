@@ -1,0 +1,15 @@
+{
+  "id": "01M6R3WE9G4D1TCNBWGGYATMA2",
+  "ts": "2026-11-06T09:43:50.320Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's TUI answers in vc's window, received before the clock read 2026-11-06 09:41Z by date -u, on devbin-cc's shape for issue 0326: (1) the dev/opt/brew switch and the publish are devbin's own, bin/devbin use and bin/devbin install, run in a tool's checkout (\"This should obviously ALWAYS be 'bin/devbin use' not '{{cli}} use'. This is a devbin feature, not part of the pplr, cldr, or ccusage verbs! So what ccusage just did was totally wrong!\"), superseding decision 148 (3) and decision 149 (2): no tool keeps a use or install verb, Pplr's go, Ccusage's use stays its account verb and its activate rename is reverted, its sandbox fix kept; (2) the same for every project that vendors devbin (\"See previous answer\"): Utilz, Molt and Gtools adopt too, each filed when 0326 lands, Intent under directive 9; (3) devbin's 0326 work tests the changes only: each unit its own arms, red at the base and green at the fix, the tree scans whole once before the cut, the cut the one full test, any other full suite hv's by hand. 0326's body corrected to match, and relayed to devbin-cc, ccusage-vc, cldr-vc, cldr-dc, pplr-vc and pipeliner-sc. The origin, for the record: devbin's own contract names the switch <tool> use (docs/dev-opt-brew.md T5), and vc's review carried that wording into its framing; T5 is amended under 0326."
+  }
+}
