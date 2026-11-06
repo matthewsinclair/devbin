@@ -92,11 +92,15 @@ release:
 
 # The built-in formula (issue 0227), in source mode: brew builds from the
 # release tag's checkout, so packaging/homebrew/devbin.rb holds one placeholder
-# for the tag and one for its commit. Every other key is left at its default:
-# the template at packaging/homebrew/devbin.rb, and the tap homebrew-devbin under
-# release.repo's owner, over ssh.
+# for the tag and one for its commit, and @@INSTALL@@, the install body render
+# generates (issue 0326). `bash` makes the keg's bin/devbin on macOS an env
+# script under the bash the formula depends on, since devbin's floor is bash 5.
+# Every other key is left at its default: the template at
+# packaging/homebrew/devbin.rb, and the tap homebrew-devbin under release.repo's
+# owner, over ssh.
 formula:
   mode: source
+  bash: true
 
 help:
   tagline: "the dev launcher framework"

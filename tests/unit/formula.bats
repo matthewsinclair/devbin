@@ -27,18 +27,19 @@ load "../lib/release_fixtures"
 setup() { devbin_setup; }
 teardown() { devbin_teardown; }
 
-# formula_checkout -- a fixture devbin checkout at $FX: the real template, a
-# config naming no release.tag (so the core's default, v{version}, applies),
-# and three tags: v0.0.10 on the first commit and v0.0.9 on the second, both
-# annotated and made in that order, so the newest release by version is
-# neither the newest tag made nor the last in byte order; and `light`,
-# lightweight.
+# formula_checkout -- a fixture devbin checkout at $FX: the real template; a
+# config naming no release.tag (so the core's default, v{version}, applies) and
+# formula.bash, as devbin's own does, its formula: block last, so an arm adds a
+# key there by appending it; and three tags: v0.0.10 on the first commit and
+# v0.0.9 on the second, both annotated and made in that order, so the newest
+# release by version is neither the newest tag made nor the last in byte
+# order; and `light`, lightweight.
 formula_checkout() {
   FX="$DEVBIN_TEST_TMPDIR/devbin"
   git init -q -b main "$FX"
   mkdir -p "$FX/packaging/homebrew" "$FX/bin/.devbin"
   cp "$DEVBIN_HOME/packaging/homebrew/devbin.rb" "$FX/packaging/homebrew/devbin.rb"
-  printf 'project:\n  name: devbin\n' >"$FX/bin/.devbin/config.yaml"
+  printf 'project:\n  name: devbin\nformula:\n  bash: true\n' >"$FX/bin/.devbin/config.yaml"
   fx_commit_and_tag v0.0.10 v0.0.9
   git -C "$FX" tag light
 }
@@ -115,7 +116,8 @@ SHA_DECOY=4444444444444444444444444444444444444444444444444444444444444444
 
 # assets_checkout -- a fixture project `tool` at $FX in assets mode: a formula
 # template with a top-level url for macOS and an on_linux branch with one, a
-# cask template, three assets (two named with {version}), one executable, and
+# cask template, three assets (two named with {version}), the tool's one link,
+# tool, its install.links left out, an install that is @@INSTALL@@ alone, and
 # tags v1.2.3 then v1.2.4; and the release's SHA256SUMS for v1.2.4 at $SUMS,
 # holding each asset and two decoys whose names are near theirs. The gh stub
 # serves $SUMS for `release download` and records every call in gh.calls. Both
@@ -138,8 +140,6 @@ formula:
     - tool-aarch64-apple-darwin
     - "tool-{version}-aarch64-linux.tar.gz"
     - "Tool-{version}.pkg"
-  bin:
-    - bin/tool
 YAML
   cat >"$FX/packaging/homebrew/tool.rb" <<'RUBY'
 class Tool < Formula
@@ -157,8 +157,7 @@ class Tool < Formula
   end
 
   def install
-    (libexec/"bin").install Dir["tool-*"].first => "tool"
-    @@FINISH@@
+    @@INSTALL@@
   end
 
   def caveats
@@ -203,16 +202,37 @@ SH
   chmod +x "$DEVBIN_TEST_TMPDIR/ghstub/gh"
 }
 
-# ruby_keg <formula> -- run <formula>'s install under plain Ruby, in a keg at
-# $DEVBIN_TEST_TMPDIR/keg, from a staging directory holding the macOS asset at
-# mode 0644, as GitHub serves it. NOT a brew install: the Formula DSL brew
-# supplies is stood in for by the smallest Ruby that runs the install, and
-# Pathname#sha256, which brew adds, by Ruby's own Digest.
+# ruby_keg <formula> [<layout> [<keg>]] -- run <formula>'s install under plain
+# Ruby, in a keg at <keg> (default $DEVBIN_TEST_TMPDIR/keg), from a staging
+# directory as Homebrew leaves one for <layout>: `root` (the default), an
+# archive packed rooted at the install root, bin/tool at mode 0644, as GitHub
+# serves an asset, beside share/notes.txt; `bin`, an archive holding only bin/,
+# which Homebrew enters, so the stage is bin's own files; `checkout`, a tag's
+# checkout, holding bin/devbin. NOT a brew install: the Formula DSL brew
+# supplies is stood in for by the smallest Ruby that runs the install,
+# Pathname#sha256, which brew adds, by Ruby's own Digest, and system by a line
+# appended to <keg>.calls.
 ruby_keg() {
-  local stage="$DEVBIN_TEST_TMPDIR/stage"
-  mkdir -p "$stage" "$DEVBIN_TEST_TMPDIR/keg"
-  printf 'tool binary\n' >"$stage/tool-aarch64-apple-darwin"
-  chmod 0644 "$stage/tool-aarch64-apple-darwin"
+  local layout="${2:-root}" keg="${3:-$DEVBIN_TEST_TMPDIR/keg}" stage="$DEVBIN_TEST_TMPDIR/stage-${2:-root}"
+  case "$layout" in
+    root)
+      mkdir -p "$stage/bin" "$stage/share"
+      printf 'tool binary\n' >"$stage/bin/tool"
+      chmod 0644 "$stage/bin/tool"
+      printf 'notes\n' >"$stage/share/notes.txt"
+      ;;
+    bin)
+      stage="$stage/bin"
+      mkdir -p "$stage"
+      printf 'tool binary\n' >"$stage/tool"
+      chmod 0644 "$stage/tool"
+      ;;
+    checkout)
+      mkdir -p "$stage/bin"
+      printf '#!/bin/sh\n' >"$stage/bin/devbin"
+      ;;
+  esac
+  mkdir -p "$keg"
   (cd "$stage" && ruby -e '
     require "pathname"
     require "digest"
@@ -221,9 +241,15 @@ ruby_keg() {
       def sha256
         Digest::SHA256.file(self).hexdigest
       end
-      def install(map)
+      def install(*srcs)
         mkpath
-        map.each { |src, name| FileUtils.mv(src, self/name) }
+        srcs.flatten.each do |s|
+          if s.is_a?(Hash)
+            s.each { |src, name| FileUtils.mv(src, self/name) }
+          else
+            FileUtils.mv(s, self/File.basename(s))
+          end
+        end
       end
       def install_symlink(src)
         mkpath
@@ -243,16 +269,24 @@ ruby_keg() {
       end
       attr_reader :libexec, :bin
       def initialize(root)
+        @root = root
         @libexec = Pathname(root)/"libexec"
         @bin = Pathname(root)/"bin"
+      end
+      def buildpath
+        Pathname.pwd
       end
       def chmod(mode, path)
         File.chmod(mode, path)
       end
+      def system(*args)
+        File.write("#{@root}.calls", "#{args.map(&:to_s).join(" ")}\n", mode: "a")
+        true
+      end
     end
     load ARGV[0]
     Tool.new(ARGV[1]).install
-  ' "$1" "$DEVBIN_TEST_TMPDIR/keg")
+  ' "$1" "$keg")
 }
 
 # want_header <template> <tag> <commit> -- the header a render opens with
@@ -272,6 +306,39 @@ template_body() {
   awk 'body || (!/^[[:space:]]*#/ && !/^[[:space:]]*$/) { body = 1; print }' "$1"
 }
 
+# devbin_install_body <eol> -- the install body render generates for devbin's
+# own template (issue 0326), as the rendered formula holds it at @@INSTALL@@'s
+# indent, each line ended with <eol>: the core's publish, then the launcher, on
+# macOS an env script under the formula's bash (formula.bash) and elsewhere a
+# link. Written out here rather than read from lib/cmd/formula, so an arm
+# comparing a render with it holds the body's words.
+devbin_install_body() {
+  local l
+  for l in "    # GENERATED by devbin's formula built-in: the publish, or the release's" \
+    "    # assets laid out with T3's manifest, then the tool's link set." \
+    '    system "bin/devbin", "install", "--prefix", libexec, "--managed-by", "brew"' \
+    '    if OS.mac?' \
+    '      (bin/"devbin").write_env_script libexec/"bin/devbin", PATH: "#{formula_opt_bin("bash")}:$PATH"' \
+    '    else' \
+    '      bin.install_symlink libexec/"bin/devbin"' \
+    '    end'; do
+    printf '%s%s' "$l" "$1"
+  done
+}
+
+# with_install_body -- stdin with the line holding only @@INSTALL@@, four
+# spaces in, replaced by devbin_install_body, its lines ended as that line is.
+with_install_body() {
+  local line
+  while IFS= read -r line || [ -n "$line" ]; do
+    case "$line" in
+      '    @@INSTALL@@') devbin_install_body $'\n' ;;
+      '    @@INSTALL@@'$'\r') devbin_install_body $'\r\n' ;;
+      *) printf '%s\n' "$line" ;;
+    esac
+  done
+}
+
 # --- source mode -------------------------------------------------------------
 
 @test "render fills the template's one tag and one revision from git under a header of its own, and changes no other byte (0195, 0257)" {
@@ -287,7 +354,7 @@ template_body() {
   assert_output_contains "devbin v0.0.10 at $commit"
   {
     want_header packaging/homebrew/devbin.rb v0.0.10 "$commit"
-    template_body "$FX/packaging/homebrew/devbin.rb" | sed -e 's/@@TAG@@/v0.0.10/' -e "s/@@REVISION@@/$commit/"
+    template_body "$FX/packaging/homebrew/devbin.rb" | sed -e 's/@@TAG@@/v0.0.10/' -e "s/@@REVISION@@/$commit/" | with_install_body
   } >"$want"
   cmp -s "$want" "$out" || fail "the rendered formula is not the render's header over the template, with the tag and the commit filled in:
 $(diff "$want" "$out")"
@@ -321,7 +388,7 @@ $(diff "$want" "$out")"
   {
     printf '%s\n' '# -*- coding: utf-8 -*-' '# frozen_string_literal: true' '# Warn-Indent: true' ''
     want_header packaging/homebrew/devbin.rb v0.0.10 "$commit"
-    template_body "$t" | sed -e 's/@@TAG@@/v0.0.10/' -e "s/@@REVISION@@/$commit/"
+    template_body "$t" | sed -e 's/@@TAG@@/v0.0.10/' -e "s/@@REVISION@@/$commit/" | with_install_body
   } >"$want"
   cmp -s "$want" "$out" || fail "the render does not keep the magic comments over its header and the template's body:
 $(diff "$want" "$out")"
@@ -344,7 +411,7 @@ $(diff "$want" "$out")"
   assert_success
   {
     want_header packaging/homebrew/devbin.rb v0.0.10 "$commit"
-    template_body "$t" | sed -e 's/@@TAG@@/v0.0.10/' -e "s/@@REVISION@@/$commit/"
+    template_body "$t" | sed -e 's/@@TAG@@/v0.0.10/' -e "s/@@REVISION@@/$commit/" | with_install_body
   } >"$want"
   cmp -s "$want" "$out" || fail "the CRLF template's header was not dropped, or its body changed:
 $(diff "$want" "$out")"
@@ -381,7 +448,7 @@ $(diff "$want" "$out")"
   # rendered file goes to a tap anyone with access reads.
   local out="$DEVBIN_TEST_TMPDIR/devbin.rb"
   formula_checkout
-  printf 'formula:\n  template: /packaging/homebrew/devbin.rb\n' >>"$FX/bin/.devbin/config.yaml"
+  printf '  template: /packaging/homebrew/devbin.rb\n' >>"$FX/bin/.devbin/config.yaml"
   run formula render v0.0.10 "$out"
   assert_success
   assert_file_contains "$out" '#   template  packaging/homebrew/devbin.rb'
@@ -442,11 +509,13 @@ brew_metafile() {
   return 1
 }
 
-@test "the rendered formula installs docs/, RELEASES/ and RELEASES.md into the keg after devbin's publish, and then the launcher (0254)" {
+@test "the rendered formula installs docs/, RELEASES/ and RELEASES.md into the keg after devbin's publish and its launcher, the install body render generates (0254, 0326)" {
   # Homebrew puts the README in the keg, and none of the guides it links: the
   # install names them, after the publish, which refuses a tree that is not
-  # clean and would refuse one they had been moved out of. The install's code
-  # whole and in order, its comments left out: the one compare of it.
+  # clean and would refuse one they had been moved out of. The publish and the
+  # launcher are the install body render generates for @@INSTALL@@ (issue 0326),
+  # and the guides the template's own line after it. The install's code whole
+  # and in order, its comments left out: the one compare of it.
   local out="$DEVBIN_TEST_TMPDIR/devbin.rb" block
   formula_checkout
   run formula render v0.0.10 "$out"
@@ -454,12 +523,12 @@ brew_metafile() {
   block="$(awk '/^  def install$/ { inside = 1; next } inside && /^  end$/ { exit } inside && !/^[[:space:]]*#/ { print }' "$out")" ||
     fail "could not read $out"
   [ "$block" = '    system "bin/devbin", "install", "--prefix", libexec, "--managed-by", "brew"
-    prefix.install "docs", "RELEASES", "RELEASES.md"
     if OS.mac?
       (bin/"devbin").write_env_script libexec/"bin/devbin", PATH: "#{formula_opt_bin("bash")}:$PATH"
     else
       bin.install_symlink libexec/"bin/devbin"
-    end' ] || fail "the install is not the publish, the guides beside the README, then the launcher:
+    end
+    prefix.install "docs", "RELEASES", "RELEASES.md"' ] || fail "the install is not the publish, the launcher, then the guides beside the README:
 $block"
 }
 
@@ -618,7 +687,7 @@ fx_publishes() {
 
 @test "source mode refuses a setting it reads nowhere, rather than ignoring it (0227)" {
   formula_checkout
-  printf 'formula:\n  assets:\n    - x\n' >>"$FX/bin/.devbin/config.yaml"
+  printf '  assets:\n    - x\n' >>"$FX/bin/.devbin/config.yaml"
   run formula render v0.0.10 "$DEVBIN_TEST_TMPDIR/devbin.rb"
   assert_failure
   assert_output_contains "formula.assets is declared, and formula.mode is source, which reads it nowhere"
@@ -786,14 +855,17 @@ fx_publishes() {
   assert_file_contains "$out" "  sha256 \"$SHA_MAC\""
   assert_file_contains "$out" '      url "https://example.invalid/download/v1.2.4/tool-1.2.4-aarch64-linux.tar.gz"'
   assert_file_contains "$out" "      sha256 \"$SHA_LIN\""
-  assert_file_contains "$out" '    chmod 0755, libexec/"bin/tool"'
-  # T3's header, one element a line (issue 0322), indented as the @@FINISH@@
-  # line it replaces.
-  block="$(printf '%s\n' '    lines = [' '      "# tool: tool",' '      "# version: 1.2.4",' \
-    "      \"# source_commit: $commit\"," '      "# managed_by: brew",' '    ]')"
+  # The assets' layout sits in the install body's else branch, one level in
+  # from the @@INSTALL@@ line it replaces (issue 0326).
+  assert_file_contains "$out" '      chmod 0755, libexec/"bin/tool"'
+  # T3's header, one element a line (issue 0322), and the keg's version line
+  # under `line` (issue 0326).
+  block="$(printf '%s\n' '      lines = [' '        "# tool: tool",' '        "# version: 1.2.4",' \
+    "        \"# source_commit: $commit\"," '        "# managed_by: brew",' \
+    "        \"# line: tool 1.2.4 (brew, ${commit:0:12})\"," '      ]')"
   [[ "$(cat "$out")" == *$'\n'"$block"$'\n'* ]] ||
     fail "the rendered formula does not write T3's header one element a line: $(cat "$out")"
-  assert_file_contains "$out" '    (libexec/".tool-install").write('
+  assert_file_contains "$out" '      (libexec/".tool-install").write('
   assert_file_contains "$out" '    bin.install_symlink libexec/"bin/tool"'
   assert_file_contains "$out" '    "tool use names the tree this machine runs"'
   assert_file_contains "$cask" '  version "1.2.4"'
@@ -828,43 +900,37 @@ fx_publishes() {
   assert_success
   [ "$(mode_of "$keg/libexec/bin/tool")" = -rwxr-xr-x ] || fail "bin/tool is mode $(mode_of "$keg/libexec/bin/tool")"
   [ -L "$keg/bin/tool" ] || fail "no link at bin/tool"
-  run sed -n '1,4p' "$keg/libexec/.tool-install"
+  run sed -n '1,5p' "$keg/libexec/.tool-install"
   assert_output "# tool: tool
 # version: 1.2.4
 # source_commit: $commit
-# managed_by: brew"
+# managed_by: brew
+# line: tool 1.2.4 (brew, ${commit:0:12})"
   # THE BODY IS EVERY FILE UNDER libexec BUT THE MANIFEST, each at the sha256
-  # lib/helpers takes of it, in T3's `<sha256>  <path>` form: here, bin/tool.
+  # lib/helpers takes of it, in T3's `<sha256>  <path>` form: here, bin/tool
+  # and share/notes.txt, the archive's files at their places.
   # shellcheck source=lib/helpers
   . "$DEVBIN_LIB_DIR/helpers"
-  [ "$(grep -v '^#' "$keg/libexec/.tool-install")" = "$(cd "$keg/libexec" && sha256_files bin/tool)" ] ||
-    fail "the manifest's body is not bin/tool at its sha256:
+  [ "$(grep -v '^#' "$keg/libexec/.tool-install")" = "$(cd "$keg/libexec" && sha256_files bin/tool share/notes.txt)" ] ||
+    fail "the manifest's body is not bin/tool and share/notes.txt at their sha256s:
 $(cat "$keg/libexec/.tool-install")"
 }
 
-@test "every file a render writes passes brew style: the assets formula with its generated install body in each form, its cask, and a source-mode formula, so a tap running brew style needs no exception for them (0322)" {
-  local tap="$DEVBIN_TEST_TMPDIR/tap/homebrew-tool" t text
-  local -a files=("$tap/Formula/tool.rb" "$tap/Formula/tool-tarball.rb" "$tap/Casks/tool-app.rb"
-    "$tap/Formula/devbin.rb")
+@test "every file a render writes passes brew style: the assets formula with its generated install body, its cask, and a source-mode formula, so a tap running brew style needs no exception for them (0322, 0326)" {
+  local tap="$DEVBIN_TEST_TMPDIR/tap/homebrew-tool"
+  local -a files=("$tap/Formula/tool.rb" "$tap/Casks/tool-app.rb" "$tap/Formula/devbin.rb")
   # Homebrew's own check, never a copy of its limits: brew style applies its
   # RuboCop config, line length and allowed patterns included, as a tap's CI does.
   require_command brew "no brew on this runner, so nothing reads a render as a tap's brew style does" \
     "the Ubuntu and WSL jobs install no Homebrew"
   mkdir -p "$tap/Formula" "$tap/Casks"
   assets_checkout
-  run formula render v1.2.4 "${files[0]}" "${files[2]}" --sums "$SUMS"
+  run formula render v1.2.4 "${files[0]}" "${files[1]}" --sums "$SUMS"
   assert_success
-  # The @@INSTALL@@ form (install_ruby), from the same template with its install
-  # left to devbin, as a formula of its own name.
-  t="$FX/packaging/homebrew/tool.rb"
-  text="$(sed -e 's/^class Tool < Formula$/class ToolTarball < Formula/' -e '/^    (libexec\/"bin")\.install /d' \
-    -e 's/^    @@FINISH@@$/    @@INSTALL@@/' "$t")"
-  printf '%s\n' "$text" >"$t"
-  run formula render v1.2.4 "${files[1]}" "$DEVBIN_TEST_TMPDIR/tool-app.rb" --sums "$SUMS"
-  assert_success
-  assert_file_contains "${files[1]}" '    libexec.install Dir["*"]'
+  # The one install form (install_ruby, issue 0326), in each of its branches.
+  assert_file_contains "${files[0]}" '        libexec.install Dir["*"]'
   formula_checkout
-  run formula render v0.0.10 "${files[3]}"
+  run formula render v0.0.10 "${files[2]}"
   assert_success
   # Under Formula/ and Casks/, where a tap holds them, so brew style applies its
   # cops for each kind. Never updating and reading no API data, so it needs no
@@ -914,7 +980,7 @@ $(cat "$keg/libexec/.tool-install")"
   assert_file_not_exists "$out"
 }
 
-@test "assets render refuses a sha256 placeholder for no listed asset, an asset placed twice, and both install bodies, writing nothing (0227)" {
+@test "assets render refuses a sha256 placeholder for no listed asset, an asset placed twice, and a second install body, writing nothing (0227, 0326)" {
   local out="$DEVBIN_TEST_TMPDIR/tool.rb" t
   assets_checkout
   t="$FX/packaging/homebrew/tool.rb"
@@ -932,7 +998,7 @@ $(cat "$keg/libexec/.tool-install")"
   printf '# @@INSTALL@@\n' >>"$t"
   run formula render v1.2.4 "$out" "$DEVBIN_TEST_TMPDIR/c.rb" --sums "$SUMS"
   assert_failure
-  assert_output_contains "holds 1 @@INSTALL@@ and 1 @@FINISH@@"
+  assert_output_contains "holds 2 @@INSTALL@@, and a formula holds exactly one, the install body devbin generates"
   assert_file_not_exists "$out"
 }
 
@@ -1065,4 +1131,112 @@ YAML
   run cfg_validate
   assert_failure
   assert_output_contains 'formula.mode: "binary" is not a formula mode -- use source or assets'
+}
+
+@test "0326-7: a source template's install body is @@INSTALL@@, which render fills with the core's publish and the tool's links; one holding none, or @@FINISH@@, the retired form, is refused, writing nothing" {
+  local out="$DEVBIN_TEST_TMPDIR/devbin.rb" t
+  formula_checkout
+  t="$FX/packaging/homebrew/devbin.rb"
+  assert_file_contains "$t" '    @@INSTALL@@'
+  run formula render v0.0.10 "$out"
+  assert_success
+  assert_file_contains "$out" '    system "bin/devbin", "install", "--prefix", libexec, "--managed-by", "brew"'
+  refute_file_contains "$out" 'buildpath'
+  cp "$t" "$t.orig"
+  grep -v '^    @@INSTALL@@$' "$t.orig" >"$t"
+  run formula render v0.0.10 "$DEVBIN_TEST_TMPDIR/none.rb"
+  assert_failure
+  assert_output_contains "packaging/homebrew/devbin.rb holds 0 @@INSTALL@@, and a formula holds exactly one, the install body devbin generates"
+  assert_file_not_exists "$DEVBIN_TEST_TMPDIR/none.rb"
+  sed 's/^    @@INSTALL@@$/    @@FINISH@@/' "$t.orig" >"$t"
+  run formula render v0.0.10 "$DEVBIN_TEST_TMPDIR/finish.rb"
+  assert_failure
+  assert_output_contains "packaging/homebrew/devbin.rb holds @@FINISH@@, which is retired: the install body is @@INSTALL@@ alone"
+  assert_file_not_exists "$DEVBIN_TEST_TMPDIR/finish.rb"
+}
+
+@test "0326-7: an assets template holding @@FINISH@@, the retired form, is refused by name, naming @@INSTALL@@, writing nothing" {
+  local out="$DEVBIN_TEST_TMPDIR/tool.rb" t
+  assets_checkout
+  t="$FX/packaging/homebrew/tool.rb"
+  cp "$t" "$t.orig"
+  sed 's/^    @@INSTALL@@$/    @@FINISH@@/' "$t.orig" >"$t"
+  run formula render v1.2.4 "$out" "$DEVBIN_TEST_TMPDIR/c.rb" --sums "$SUMS"
+  assert_failure
+  assert_output_contains "packaging/homebrew/tool.rb holds @@FINISH@@, which is retired: the install body is @@INSTALL@@ alone"
+  assert_file_not_exists "$out"
+}
+
+@test "0326-7: formula.bin is refused by config validation as retired, naming the tool's link set, install.links" {
+  # shellcheck source=lib/helpers
+  . "$DEVBIN_LIB_DIR/helpers"
+  # shellcheck source=lib/config
+  . "$DEVBIN_LIB_DIR/config"
+  cfg_load_string <<'YAML'
+project:
+  name: demo
+formula:
+  mode: assets
+  bin:
+    - bin/demo
+YAML
+  run cfg_validate
+  assert_failure
+  assert_output_contains "unknown key: formula.bin"
+  assert_output_contains "-- retired: the keg's executables are the tool's link set, install.links"
+}
+
+@test "0326-7: formula.bash is a yes or a no: true makes each link on macOS an env script under the formula's bash, false a plain link, and true with a template that does not depend on bash is refused" {
+  local out="$DEVBIN_TEST_TMPDIR/tool.rb" t
+  # shellcheck source=lib/helpers
+  . "$DEVBIN_LIB_DIR/helpers"
+  # shellcheck source=lib/config
+  . "$DEVBIN_LIB_DIR/config"
+  cfg_load_string <<'YAML'
+project:
+  name: demo
+formula:
+  bash: sometimes
+YAML
+  run cfg_validate
+  assert_failure
+  assert_output_contains 'formula.bash: "sometimes"'
+  assets_checkout
+  t="$FX/packaging/homebrew/tool.rb"
+  run formula render v1.2.4 "$out" "$DEVBIN_TEST_TMPDIR/c.rb" --sums "$SUMS"
+  assert_success
+  refute_file_contains "$out" 'write_env_script'
+  assert_file_contains "$out" '    bin.install_symlink libexec/"bin/tool"'
+  perl -pi -e 's/^  mode: assets$/  mode: assets\n  bash: true/' "$FX/bin/.devbin/config.yaml"
+  run formula render v1.2.4 "$DEVBIN_TEST_TMPDIR/nobash.rb" "$DEVBIN_TEST_TMPDIR/c.rb" --sums "$SUMS"
+  assert_failure
+  assert_output_contains "packaging/homebrew/tool.rb does not depend on bash, and formula.bash is true"
+  assert_file_not_exists "$DEVBIN_TEST_TMPDIR/nobash.rb"
+  perl -pi -e 's/^  license "MIT"$/  license "MIT"\n  depends_on "bash"/' "$t"
+  run formula render v1.2.4 "$out" "$DEVBIN_TEST_TMPDIR/c.rb" --sums "$SUMS"
+  assert_success
+  grep -qxF '      (bin/"tool").write_env_script libexec/"bin/tool", PATH: "#{formula_opt_bin("bash")}:$PATH"' "$out" ||
+    fail "formula.bash wrote no env script for the link on macOS: $(cat "$out")"
+  grep -qxF '      bin.install_symlink libexec/"bin/tool"' "$out" ||
+    fail "formula.bash left the link off Linux: $(cat "$out")"
+}
+
+@test "0326-7: the assets install body lays out an archive Homebrew entered at its bin/ into libexec/bin, and runs the core's publish where the stage is a tag's checkout" {
+  local out="$DEVBIN_TEST_TMPDIR/tool.rb" keg
+  command -v ruby >/dev/null 2>&1 || skip "ruby is not on this runner: the generated install body is NOT run"
+  assets_checkout
+  run formula render v1.2.4 "$out" "$DEVBIN_TEST_TMPDIR/tool-app.rb" --sums "$SUMS"
+  assert_success
+  keg="$DEVBIN_TEST_TMPDIR/keg-bin"
+  run ruby_keg "$out" bin "$keg"
+  assert_success
+  [ "$(mode_of "$keg/libexec/bin/tool")" = -rwxr-xr-x ] || fail "an archive of bin/ alone left no executable libexec/bin/tool: $(find "$keg" -print)"
+  [ -L "$keg/bin/tool" ] || fail "no link at bin/tool"
+  assert_file_contains "$keg/libexec/.tool-install" '  bin/tool'
+  keg="$DEVBIN_TEST_TMPDIR/keg-checkout"
+  run ruby_keg "$out" checkout "$keg"
+  assert_success
+  [ "$(cat "$keg.calls")" = "bin/devbin install --prefix $keg/libexec --managed-by brew" ] ||
+    fail "a stage holding bin/devbin did not run the core's publish: $(cat "$keg.calls" 2>&1)"
+  assert_file_not_exists "$keg/libexec/.tool-install"
 }

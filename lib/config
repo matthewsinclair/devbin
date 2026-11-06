@@ -1047,9 +1047,10 @@ cfg_macos_artefact() {
 # THE ONE STATEMENT OF THE FORMULA KEYS, the built-in formula's settings: shape,
 # the key under `formula.`, and its default. The schema branch above and the two
 # readers below read it. A key with no default here has one lib/cmd/formula
-# derives (name, template, tap, repo), or none that is sound (assets, bin,
-# cask: the project's own). The keg's manifest is the tool's own,
-# install.manifest (cfg_tool_manifest, issue 0326).
+# derives (name, template, tap, repo), or none that is sound (assets, cask:
+# the project's own). The keg's manifest is the tool's own,
+# install.manifest (cfg_tool_manifest, issue 0326), and so are its
+# executables, the tool's link set, install.links (cfg_tool_links).
 #
 #   mode      source (a formula built from the tag's checkout) or assets (one
 #             that installs the release's own assets)
@@ -1064,8 +1065,9 @@ cfg_macos_artefact() {
 #   cask      assets: a cask template, from the project root; none: no cask
 #   assets    assets: the asset names the templates take a sha256 of, each may
 #             hold {version}
-#   bin       assets: the keg's executables, from libexec, each set 0755 and
-#             linked into bin
+#   bash      true when the tool's links run under the bash the formula depends
+#             on: on macOS each is an env script putting that bash first on
+#             PATH; default false, a plain link
 _DEVBIN_FORMULA_SCHEMA="
 scalar mode      source
 scalar name
@@ -1075,7 +1077,7 @@ scalar repo
 scalar sums      SHA256SUMS
 scalar cask
 list   assets
-list   bin
+scalar bash      false
 "
 
 # _cfg_formula_row <key> -- the shape of a formula key, then a tab and its
@@ -1636,6 +1638,7 @@ _cfg_path_boolean() {
     3:commands) [ "${p[2]}" = enabled ] ;;
     5:commands) [ "${p[2]}" = options ] && case "${p[4]}" in enabled | in_all) return 0 ;; *) return 1 ;; esac ;;
     3:options) [ "${p[2]}" = flag ] ;;
+    2:formula) [ "${p[1]}" = bash ] ;;
     *) return 1 ;;
   esac
 }
@@ -1651,7 +1654,8 @@ _cfg_retired_why() {
     macos.keychain) printf ' -- retired: every notarisation submits under one notarytool keychain profile, macos.notary_profile (default devbin), stored once with bin/devbin macos store-creds; leave it out' ;;
     release.ci.tag) printf ' -- retired: a cut reads CI before the tag, on its candidate ref, so no query is asked about the tag; leave it out' ;;
     release.ci.base) printf ' -- retired: a cut reads CI on its release commit, through its candidate, before the tag, never on the commit it is cut from; leave it out' ;;
-    formula.manifest) printf " -- retired: the manifest is the tool's own, install.manifest, read by install and the formula alike (issue 0326); declare it there, or leave it out for .<name>-install" ;;
+    formula.manifest) printf " -- retired: the manifest is the tool's own, install.manifest, read by install and the formula alike; declare it there, or leave it out for .<name>-install" ;;
+    formula.bin | formula.bin.*) printf " -- retired: the keg's executables are the tool's link set, install.links, read by install, use and the formula alike; declare them there, or leave it out for bin/<name>" ;;
     release.verbs.*)
       [ "${2-}" != publish ] ||
         printf ' -- retired: a cut whose release.publish.url is declared makes its snapshot public itself, once every leg is green; leave it out'

@@ -500,19 +500,19 @@ macos:
 
 The built-in `formula` (issue 0227): the project's Homebrew formula, rendered from a template and a release, and published to its tap. It is the dev/opt/brew contract's formula tool (`docs/dev-opt-brew.md`, T8), with `render <tag> <out>` and `publish`. **`formula` is opt-in, like `release`**: enable it with `commands.formula.enabled: true`. A project's own `formula` handler or `run:` still wins.
 
-| Key                | Type          | Default                                                          | Meaning                                                                                   |
-| ------------------ | ------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `formula.mode`     | word          | `source`                                                         | `source`: brew builds from the tag's checkout; `assets`: it installs the release's assets |
-| `formula.name`     | string        | `project.name`                                                   | the formula's name, and its file in the tap, `Formula/<name>.rb`                          |
-| `formula.template` | path          | `packaging/homebrew/<name>.rb`                                   | the formula template, from the project root                                               |
-| `formula.tap`      | git url       | `homebrew-<name>` under the release repository's owner, over ssh | the tap publish clones, commits to and pushes                                             |
-| `formula.repo`     | `OWNER/NAME`  | the release repository                                           | assets: the repository whose release carries the assets and the sums file                 |
-| `formula.sums`     | asset name    | `SHA256SUMS`                                                     | assets: the sums file on that release, `<sha256>  <name>` a line                          |
-| `formula.assets`   | list of names | none                                                             | assets: the assets the templates take a sha256 of; each may hold `{version}`              |
-| `formula.bin`      | list of paths | none                                                             | assets: the keg's executables, from libexec, each set 0755 and linked into bin            |
-| `formula.cask`     | path          | none: no cask                                                    | assets: a cask template, from the project root, pushed beside the formula                 |
+| Key                | Type              | Default                                                          | Meaning                                                                                             |
+| ------------------ | ----------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `formula.mode`     | word              | `source`                                                         | `source`: brew builds from the tag's checkout; `assets`: it installs the release's assets           |
+| `formula.name`     | string            | `project.name`                                                   | the formula's name, and its file in the tap, `Formula/<name>.rb`                                    |
+| `formula.template` | path              | `packaging/homebrew/<name>.rb`                                   | the formula template, from the project root                                                         |
+| `formula.tap`      | git url           | `homebrew-<name>` under the release repository's owner, over ssh | the tap publish clones, commits to and pushes                                                       |
+| `formula.repo`     | `OWNER/NAME`      | the release repository                                           | assets: the repository whose release carries the assets and the sums file                           |
+| `formula.sums`     | asset name        | `SHA256SUMS`                                                     | assets: the sums file on that release, `<sha256>  <name>` a line                                    |
+| `formula.assets`   | list of names     | none                                                             | assets: the assets the templates take a sha256 of; each may hold `{version}`                        |
+| `formula.cask`     | path              | none: no cask                                                    | assets: a cask template, from the project root, pushed beside the formula                           |
+| `formula.bash`     | `true` \| `false` | `false`: a link                                                  | true: on macOS each of the tool's links is an env script that puts the formula's bash first on PATH |
 
-The template is the project's own Ruby, so its desc, caveats, install layout and any service block stay its own, and devbin fills its placeholders from git and the release, never from a person. In source mode it holds exactly one `@@TAG@@` and one `@@REVISION@@`. In assets mode it holds `@@VERSION@@`, one `@@SHA256:<asset>@@` for each asset in `assets`, read from the release's sums file by its exact name, and exactly one of `@@INSTALL@@` and `@@FINISH@@`, the install body devbin generates: 0755 on each of `bin`, the manifest in T3's form, and the links. A key the mode does not read is refused, and so is a placeholder left after filling. `publish` names the tap and asks before it pushes, with no `--yes`; as a cut's `after:` step it takes the yes given at the cut's confirm prompt, and under the cut's `--yes` it publishes nothing. `bin/devbin help formula` has every refusal.
+The template is the project's own Ruby, so its desc, caveats, install layout and any service block stay its own, and devbin fills its placeholders from git and the release, never from a person. In source mode it holds exactly one `@@TAG@@` and one `@@REVISION@@`. In assets mode it holds `@@VERSION@@` and one `@@SHA256:<asset>@@` for each asset in `assets`, read from the release's sums file by its exact name. In both it holds exactly one `@@INSTALL@@`, the install body devbin generates (issue 0326): from a tag's checkout, which holds `bin/devbin`, the core's publish, `bin/devbin install --prefix libexec --managed-by brew`; from the release's assets, each packed rooted at the install root, everything the stage holds into libexec, 0755 on each link at `bin/<name>`, and the manifest in T3's form with the keg's version line; then each link of the tool's set, `install.links`, into bin, or with `bash: true`, on macOS an env script under the formula's bash. Lines the template keeps in its install go after `@@INSTALL@@`, and `@@FINISH@@` and `formula.bin` are retired. A key the mode does not read is refused, and so is a placeholder left after filling. `publish` names the tap and asks before it pushes, with no `--yes`; as a cut's `after:` step it takes the yes given at the cut's confirm prompt, and under the cut's `--yes` it publishes nothing. `bin/devbin help formula` has every refusal.
 
 ```yaml
 commands:
@@ -524,8 +524,6 @@ formula:
   assets:
     - demo-aarch64-apple-darwin
     - "demo-{version}-x86_64-linux.tar.gz"
-  bin:
-    - bin/demo
 ```
 
 ## `worktrees`

@@ -449,9 +449,9 @@ _tool_use_report() {
 # rows both say its answer.
 #
 # A SPLIT IS NAMED BY THE TREES THE LINKS SERVE: dev, brew for no link, and
-# for a link into an install its tree's word with its root, so two installs of
-# one word are told apart. A link it cannot follow is no tree to compare: its
-# own row says why.
+# for a link into an install its tree's word with its root, so installs of one
+# word at different roots are told apart. A link it cannot follow is no tree to
+# compare: its own row says why.
 tool_set_split() {
   local name from state key first="" first_state=""
   while IFS=$'\t' read -r name from; do

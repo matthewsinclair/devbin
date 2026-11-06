@@ -197,7 +197,7 @@ devbin_version: "^1.0.0"
 
 # --- install ---------------------------------------------------------------
 #
-# THE PROJECT'S OWN TOOL (docs/dev-opt-brew.md; issue 0326). An install: block
+# THE PROJECT'S OWN TOOL (docs/dev-opt-brew.md). An install: block
 # declares the tool `bin/devbin install` publishes and `bin/devbin use`
 # switches, both run in the project's checkout; its name is the formula's
 # (formula.name, or project.name). `prefix` is its opt prefix (T1). devbin's
@@ -719,8 +719,7 @@ formula:
   # cask: packaging/homebrew/demo-app.rb   # assets: undeclared: no cask
   # assets:                   # assets: each name may hold {version}
   #   - demo-aarch64-apple-darwin
-  # bin:                      # assets: from libexec, each set 0755 and linked into bin
-  #   - bin/demo
+  bash: false                 # true: on macOS each of the tool's links is an env script putting the formula's bash first on PATH
 
 # The built-in worktrees: a read-only report of each linked worktree, landed,
 # held or unknown, with its evidence, and `remove-landed <path>...`. Offered in
