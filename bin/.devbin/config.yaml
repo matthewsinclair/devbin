@@ -21,8 +21,14 @@ devbin_version: "^0.1.1"
 # FROM there rather than from this working tree, which is what stops a dirty
 # checkout reaching a consumer: a copy vendored from a working tree can carry
 # bytes stamped `+dirty -- THESE BYTES MATCH NO COMMIT`.
+#
+# devbin's manifest is bin/.devbin/manifest.sha256, the path every vendored
+# project carries too (docs/dev-opt-brew.md, T3). devbin's opt and brew trees
+# carry no config, so its bootstrap knows the path as well (DEVBIN_MANIFEST_REL
+# in lib/helpers), and tool.bats holds the two to one value (issue 0326).
 install:
   prefix: ~/Devel/opt/devbin
+  manifest: bin/.devbin/manifest.sha256
 
 # The release core (ST0007). The block names only what differs from the
 # defaults: devbin's notes are RELEASES/<version>.md with CHANGELOG.md and

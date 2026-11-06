@@ -8,9 +8,12 @@
 # fails where one is read for the other. use.bats, machinepointer.bats and the
 # switch rows in doctor.bats hold devbin's own answers.
 #
+# A project declares its tool in an install: block, and the 0326-2 arms hold
+# the declaration's validation and its readers in lib/config.
+#
 # WHAT THIS DOES NOT CATCH, declared so a green is never read as covering it:
-#   - a project's declaration of its tool, its install, its use and its doctor
-#     rows, which later units of the issue add and test;
+#   - a tool's install, its use and its doctor rows, which later units of the
+#     issue add and test;
 #   - the keg layout on macOS, where devbin's formula writes an env script: the
 #     arms here build the Linux layout, a link into libexec.
 
@@ -20,8 +23,26 @@ setup() {
   devbin_setup
   # shellcheck source=lib/helpers
   . "$DEVBIN_LIB_DIR/helpers"
+  # shellcheck source=lib/config
+  . "$DEVBIN_LIB_DIR/config"
 }
 teardown() { devbin_teardown; }
+
+# tool_config <yaml> -- <yaml>, a project's config, loaded as the config the arm
+# reads, from the file $DEVBIN_TEST_TMPDIR/config.yaml.
+tool_config() {
+  printf '%s\n' "$1" >"$DEVBIN_TEST_TMPDIR/config.yaml" || return 1
+  cfg_load "$DEVBIN_TEST_TMPDIR/config.yaml"
+}
+
+# refused_with <yaml> <text> -- the arm: <yaml> loads, cfg_validate refuses it,
+# and what it says holds <text>.
+refused_with() {
+  tool_config "$1" || fail "the fixture's config did not load"
+  run --separate-stderr cfg_validate
+  [ "$status" -ne 0 ] || fail "validated: $1"
+  [[ "$stderr" == *"$2"* ]] || fail "refused without \"$2\": $stderr"
+}
 
 # demo_keg <version> -- the formula demo's keg for <version> as Homebrew places
 # one, at the test's $HOMEBREW_PREFIX/Cellar/demo/<version>: libexec holding the
@@ -170,4 +191,119 @@ link it (brew link demo)" ] || fail "an unlinked keg is said: $got"
   [ "$(tool_brew_none_why demo)" = "Homebrew has no demo here (no demo at $root, under HOMEBREW_PREFIX)" ] ||
     fail "no keg is said: $(tool_brew_none_why demo)"
   [ "$(tool_brew_unplaced_fix demo)" = "install demo with Homebrew" ] || fail "its remedy: $(tool_brew_unplaced_fix demo)"
+}
+
+@test "0326-2: a tool's declaration validates: its prefix, its manifest, its links, and each file's path, dev file and platforms" {
+  tool_config 'project:
+  name: demo
+install:
+  prefix: ~/opt/demo
+  manifest: .demo-install
+  links:
+    demo-cli: target/release/demo-cli
+    demo-gui: target/release/demo-gui
+  files:
+    config:
+      path: share/config.toml
+      from: examples/config.toml
+      platforms:
+        - macos' || fail "the fixture's config did not load"
+  run --separate-stderr cfg_validate
+  [ "$status" -eq 0 ] || fail "refused: $stderr"
+}
+
+@test "0326-2: a link name a link cannot carry, a path outside its root, and two files at one place are each refused by name" {
+  refused_with 'project:
+  name: demo
+install:
+  links:
+    _cli: bin/cli' 'install.links._cli: "_cli" is no link name'
+  refused_with 'project:
+  name: demo
+install:
+  links:
+    demo: /abs/demo' 'install.links.demo: "/abs/demo" is absolute -- name a path relative to the project root'
+  refused_with 'project:
+  name: demo
+install:
+  manifest: ../demo-install' "install.manifest: \"../demo-install\" has an empty, . or .. segment -- write the path once, as git names it, below the tool's tree root"
+  refused_with 'project:
+  name: demo
+install:
+  files:
+    config:
+      path: bin/demo' "install.files.config.path: \"bin/demo\" is install.links.demo's place in the tree too"
+  refused_with 'project:
+  name: demo
+install:
+  files:
+    config:
+      from: examples/config.toml' 'install.files.config declares no path'
+}
+
+@test "0326-2: formula.manifest is refused as retired, naming install.manifest, the tool's own" {
+  refused_with 'project:
+  name: demo
+formula:
+  mode: assets
+  manifest: .demo-install' "unknown key: formula.manifest -- retired: the manifest is the tool's own, install.manifest"
+}
+
+@test "0326-2: the tool's links, manifest and files are read from its declaration, and the formula's name gives what it leaves out" {
+  local tab=$'\t'
+  tool_config 'project:
+  name: demo
+install:
+  prefix: ~/opt/demo' || fail "the fixture's config did not load"
+  [ "$(cfg_tool_links)" = "demo${tab}bin/demo" ] || fail "the links left out read: $(cfg_tool_links)"
+  [ "$(cfg_tool_manifest)" = .demo-install ] || fail "the manifest left out reads: $(cfg_tool_manifest)"
+  [ -z "$(cfg_tool_files macos)" ] || fail "no files read as: $(cfg_tool_files macos)"
+  tool_config 'project:
+  name: demo
+formula:
+  name: other
+install:
+  prefix: ~/opt/other' || fail "the fixture's config did not load"
+  [ "$(cfg_tool_links)" = "other${tab}bin/other" ] || fail "the formula's name gives the link: $(cfg_tool_links)"
+  [ "$(cfg_tool_manifest)" = .other-install ] || fail "the formula's name gives the manifest: $(cfg_tool_manifest)"
+  tool_config 'project:
+  name: demo
+install:
+  manifest: var/demo.manifest
+  links:
+    demo-cli: target/release/demo-cli
+    demo-gui: target/release/demo-gui
+  files:
+    config:
+      path: share/config.toml
+      from: examples/config.toml
+      platforms:
+        - macos
+    readme:
+      path: README.md' || fail "the fixture's config did not load"
+  [ "$(cfg_tool_links)" = "demo-cli${tab}target/release/demo-cli
+demo-gui${tab}target/release/demo-gui" ] || fail "the declared links read: $(cfg_tool_links)"
+  [ "$(cfg_tool_manifest)" = var/demo.manifest ] || fail "the declared manifest reads: $(cfg_tool_manifest)"
+  [ "$(cfg_tool_files macos)" = "config${tab}share/config.toml${tab}examples/config.toml
+readme${tab}README.md${tab}README.md" ] || fail "macos's files read: $(cfg_tool_files macos)"
+  [ "$(cfg_tool_files linux)" = "readme${tab}README.md${tab}README.md" ] || fail "linux's files read: $(cfg_tool_files linux)"
+}
+
+@test "0326-2: a project with an install: block declares a tool, and one without does not" {
+  tool_config 'project:
+  name: demo
+install:
+  prefix: ~/opt/demo' || fail "the fixture's config did not load"
+  cfg_is_tool || fail "a project with an install: block is no tool"
+  tool_config 'project:
+  name: demo' || fail "the fixture's config did not load"
+  if cfg_is_tool; then
+    fail "a project with no install: block is a tool"
+  fi
+}
+
+@test "0326-2: devbin's own checkout declares the manifest path its bootstrap reads" {
+  cfg_load "$DEVBIN_HOME/bin/.devbin/config.yaml" || fail "devbin's own config did not load"
+  [ "$(cfg_tool_manifest)" = "$DEVBIN_MANIFEST_REL" ] ||
+    fail "devbin declares $(cfg_tool_manifest), and its bootstrap reads $DEVBIN_MANIFEST_REL"
 }

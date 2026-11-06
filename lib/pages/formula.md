@@ -40,10 +40,10 @@ It is opt-in: absent until a project asks for it with `commands.formula.enabled:
     formula.assets    assets: the assets the templates take a sha256 of, each
                       a name on the release, which may hold {version}
     formula.bin       assets: the keg's executables, from libexec
-    formula.manifest  assets: the keg's manifest, under libexec; default
-                      .<name>-install
     formula.cask      assets: a cask template, from the project root; none:
                       no cask
+
+The keg's manifest, under libexec, is the tool's own, `install.manifest`, or `.<name>-install` where it is not declared.
 
 A key the mode does not read is refused rather than ignored.
 

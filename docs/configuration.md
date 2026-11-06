@@ -94,13 +94,20 @@ Note that `^` on a `0.x` version admits `0.5.0` for a declared `^0.4.0`, which i
 
 ## `install`
 
-| Key              | Type   | Default                     | What it is                                                    |
-| ---------------- | ------ | --------------------------- | ------------------------------------------------------------- |
-| `install.prefix` | string | none -- required to publish | where `devbin install` publishes to, inside devbin's OWN tree |
+| Key                              | Type                   | Default                          | What it is                                                         |
+| -------------------------------- | ---------------------- | -------------------------------- | ------------------------------------------------------------------ |
+| `install.prefix`                 | string                 | none -- required to publish      | the opt prefix of the project's tool (T1)                          |
+| `install.manifest`               | path                   | `.<name>-install`, the formula's | the tool's manifest, from its tree's root (T3)                     |
+| `install.links.<name>`           | path                   | `<name>: bin/<name>`, one link   | a link of the tool's link set (T5): its file in the dev tree       |
+| `install.files.<name>.path`      | path                   | none -- required for each file   | the rest of the runtime set (T1): the file's place in opt and brew |
+| `install.files.<name>.from`      | path                   | its `path`                       | that file in the dev tree, from the project root                   |
+| `install.files.<name>.platforms` | list of platform words | every platform                   | the platforms the file ships on                                    |
+
+**An `install:` block declares the project's own tool** (issue 0326), the one `bin/devbin install` publishes and `bin/devbin use` switches, both run in the project's checkout (`docs/dev-opt-brew.md`). Its name is the formula's, `formula.name` or `project.name`. A link's name is one a key can carry: a letter or a digit, then letters, digits, `_` or `-`. A path under `links` or `from` is below the project root, and one under `path` or `manifest` below the tool's tree root. No two of the tree's places, each link's `bin/<name>`, the manifest and each file's `path`, may be one.
 
 **There is no default, and that is deliberate.** `lib/install` once carried a path under `$HOME` -- one operator's directory layout, written into the runtime every project vendors. A publish from any of them would have gone to a path named after somebody else's home directory and would have SUCCEEDED, because a publish to the wrong place is indistinguishable from a publish to the right one. `install` and `devbin use opt` now refuse by name when the key is unset, and `install` takes `--prefix <dir>` for a single run.
 
-**This key is the maintainer's: it names the opt tier of a dev checkout** (the README's [For the maintainer of a dev checkout](../README.md#for-the-maintainer-of-a-dev-checkout)). A user installs devbin from brew and never sets it. **Only devbin's own configuration has any use for this key.** Set it in a consuming project and the one thing that reads it there is `shell-init`, which writes it into `dvb` as the machine-install fallback -- that project is otherwise describing a publish it will never perform.
+**This key is the maintainer's: it names the opt tier of a dev checkout** (the README's [For the maintainer of a dev checkout](../README.md#for-the-maintainer-of-a-dev-checkout)). A user installs devbin from brew and never sets it. **A project's `install.prefix` is its own tool's** (issue 0326): devbin's own checkout's names devbin's opt tier, and there alone `shell-init` writes it into `dvb` as the machine-install fallback. Another project's names that project's tool's opt tier, which is no devbin install, so `shell-init` writes no fallback from it.
 
 Inside devbin's source tree, `install` acts on the opt install rather than on a project (ST0005): it publishes a new one, replaces an existing one only with `--force`, the one re-publish route, and refuses outright when the source tree is dirty; `upgrade` there publishes nothing and names `install --force` (issue 0213). Consumers then vendor from that install rather than from the working tree devbin is edited in, which is what stops an uncommitted change reaching a project.
 
@@ -503,7 +510,6 @@ The built-in `formula` (issue 0227): the project's Homebrew formula, rendered fr
 | `formula.sums`     | asset name    | `SHA256SUMS`                                                     | assets: the sums file on that release, `<sha256>  <name>` a line                          |
 | `formula.assets`   | list of names | none                                                             | assets: the assets the templates take a sha256 of; each may hold `{version}`              |
 | `formula.bin`      | list of paths | none                                                             | assets: the keg's executables, from libexec, each set 0755 and linked into bin            |
-| `formula.manifest` | path          | `.<name>-install`                                                | assets: the keg's T3 manifest, under libexec                                              |
 | `formula.cask`     | path          | none: no cask                                                    | assets: a cask template, from the project root, pushed beside the formula                 |
 
 The template is the project's own Ruby, so its desc, caveats, install layout and any service block stay its own, and devbin fills its placeholders from git and the release, never from a person. In source mode it holds exactly one `@@TAG@@` and one `@@REVISION@@`. In assets mode it holds `@@VERSION@@`, one `@@SHA256:<asset>@@` for each asset in `assets`, read from the release's sums file by its exact name, and exactly one of `@@INSTALL@@` and `@@FINISH@@`, the install body devbin generates: 0755 on each of `bin`, the manifest in T3's form, and the links. A key the mode does not read is refused, and so is a placeholder left after filling. `publish` names the tap and asks before it pushes, with no `--yes`; as a cut's `after:` step it takes the yes given at the cut's confirm prompt, and under the cut's `--yes` it publishes nothing. `bin/devbin help formula` has every refusal.

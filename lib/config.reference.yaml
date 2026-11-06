@@ -197,10 +197,12 @@ devbin_version: "^1.0.0"
 
 # --- install ---------------------------------------------------------------
 #
-# WHERE `devbin install` PUBLISHES TO, when run inside devbin's OWN source tree.
-# `upgrade` reads it there too. In a consumer the one reader is `shell-init`,
-# which writes it into `dvb` as the machine-install fallback -- otherwise a
-# project that sets it is describing a publish it will never perform.
+# THE PROJECT'S OWN TOOL (docs/dev-opt-brew.md; issue 0326). An install: block
+# declares the tool `bin/devbin install` publishes and `bin/devbin use`
+# switches, both run in the project's checkout; its name is the formula's
+# (formula.name, or project.name). `prefix` is its opt prefix (T1). devbin's
+# own checkout declares devbin's, which `upgrade` reads there too, and there
+# alone `shell-init` writes it into `dvb` as the machine-install fallback.
 #
 # REQUIRED TO PUBLISH, AND THERE IS NO DEFAULT. `lib/install` once fell back to
 # a path under `$HOME` -- one operator's directory layout, baked into the
@@ -219,8 +221,38 @@ devbin_version: "^1.0.0"
 # A leading `~/` is expanded. A config value is a literal string, so an
 # unexpanded tilde would create a directory actually named `~` under the cwd and
 # every later command would find an install exactly where it looked.
+#
+# The rest of the block names what the tool's trees hold, and each is read once
+# (cfg_tool_links, cfg_tool_files, cfg_tool_manifest in lib/config):
+#
+#   manifest     its manifest, from the tree's root (T3); undeclared:
+#                .<name>-install, and devbin's is bin/.devbin/manifest.sha256
+#   links        its link set in ~/.local/bin (T5), each name and its file in
+#                the dev tree, from the project root; undeclared: one link,
+#                <name>, at bin/<name>. In opt and brew a link's file is
+#                bin/<name>
+#   files        the rest of its runtime set (T1), each under a label: `path`,
+#                its place in opt and brew from the tree's root; `from`, its
+#                file in the dev tree, undeclared: its path; `platforms`, the
+#                platform words it ships on, undeclared: every one
+#
+# A link's name and a file's label start with a letter or a digit, then
+# letters, digits, _ or -. No two of the tree's places, each link's
+# bin/<name>, the manifest and each file's path, may be one.
 install:
   prefix: ~/opt/devbin
+
+  # manifest: .demo-install
+
+  # links:
+  #   demo: target/release/demo
+
+  # files:
+  #   config:
+  #     path: config.toml
+  #     from: examples/config.toml
+  #     platforms:
+  #       - macos
 
 # --- help ------------------------------------------------------------------
 #
@@ -684,7 +716,6 @@ formula:
   # tap: ssh://git@git.example/example/homebrew-demo.git   # undeclared: homebrew-<name> under the release repository's owner
   # repo: example/demo-dist   # assets: undeclared: the release repository
   sums: SHA256SUMS            # assets: the sums file's name on the release
-  # manifest: .demo-install   # assets: undeclared: .<name>-install, under libexec
   # cask: packaging/homebrew/demo-app.rb   # assets: undeclared: no cask
   # assets:                   # assets: each name may hold {version}
   #   - demo-aarch64-apple-darwin

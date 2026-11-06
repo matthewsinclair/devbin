@@ -3745,15 +3745,22 @@ cache_root_problem() {
 # no empty, `.` or `..` segment. So a pull never writes, nor removes, anything
 # outside the project or over it, and one path never makes two keys. Config
 # validation asks it of every path the block declares, and cache_paths_overlap
-# of an artefact's path against every input path.
-cache_path_problem() {
+# of an artefact's path against every input path. It is relative_path_problem
+# below the project root.
+cache_path_problem() { relative_path_problem "$1" "the project root"; }
+
+# relative_path_problem <path> <root> -- why <path> cannot be a path below the
+# directory <root> names, in cache_path_problem's terms, or nothing, at status
+# 1, when it can (issue 0326: a tool's file in the dev tree is below the
+# project root, and its place in opt and brew below the tool's tree root).
+relative_path_problem() {
   case "${1,,}" in
     '')
-      printf 'is empty -- name a path relative to the project root'
+      printf 'is empty -- name a path relative to %s' "$2"
       return 0
       ;;
     /*)
-      printf 'is absolute -- name a path relative to the project root'
+      printf 'is absolute -- name a path relative to %s' "$2"
       return 0
       ;;
     .git | .git/*)
@@ -3763,7 +3770,7 @@ cache_path_problem() {
   esac
   case "/$1/" in
     */./* | */../* | *//*)
-      printf 'has an empty, . or .. segment -- write the path once, as git names it, below the project root'
+      printf 'has an empty, . or .. segment -- write the path once, as git names it, below %s' "$2"
       return 0
       ;;
   esac

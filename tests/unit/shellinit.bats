@@ -587,7 +587,18 @@ $output"
   refute_output_contains "@@DEVBIN_INSTALL_PREFIX@@"
 }
 
-@test "a project that DECLARES install.prefix gets it baked into dvb, the tilde expanded (0125)" {
+# devsrc_with_prefix <value> -- a devbin dev checkout (mkdevsrc) whose config
+# declares install.prefix as <value>, written into the YAML as it is given: the
+# one tree whose install.prefix shell-init bakes into dvb (issue 0326). Its
+# config is rewritten after the fixture's commit, which shell-init never asks.
+devsrc_with_prefix() {
+  local d
+  d="$(mkdevsrc)" || return 1
+  printf 'project:\n  name: fixturesrc\ndevbin_version: "^0.1.0"\ninstall:\n  prefix: %s\n' "$1" >"$d/bin/.devbin/config.yaml" || return 1
+  printf '%s\n' "$d"
+}
+
+@test "devbin's own checkout's install.prefix is baked into dvb, the tilde expanded (0125)" {
   # The arm above is the other half: no declaration, no path. The reference
   # always promised this half, and it never happened until 0125 -- the handler
   # asked a config cache nothing had loaded, so every project answered empty.
@@ -595,16 +606,26 @@ $output"
   HOME="$DEVBIN_TEST_TMPDIR/fakehome"
   mkdir -p "$HOME"
   export HOME
+  proj="$(devsrc_with_prefix '~/opt/devbin')"
+  run devbin_run "$proj" shell-init zsh
+  assert_success
+  assert_output_contains "local prefix=\${DEVBIN_INSTALL_PREFIX:-'$HOME/opt/devbin'}"
+}
+
+@test "0326-2: another project's install.prefix is its own tool's, so shell-init bakes no dvb fallback from it" {
+  # A project that declares its tool names that tool's opt tier, which holds
+  # no bin/devbin, so a dvb aimed at it would find no launcher there.
   proj="$(mkproj demo <<'YAML'
 project:
   name: demo
 install:
-  prefix: ~/opt/devbin
+  prefix: /opt/demo
 YAML
   )"
   run devbin_run "$proj" shell-init zsh
   assert_success
-  assert_output_contains "local prefix=\${DEVBIN_INSTALL_PREFIX:-'$HOME/opt/devbin'}"
+  assert_output_contains "local prefix=\${DEVBIN_INSTALL_PREFIX:-''}"
+  refute_output_contains "/opt/demo"
 }
 
 # --- an install prefix is DATA in the body, whatever it holds (0200) ----------
@@ -618,7 +639,8 @@ YAML
 # finds no launcher there.
 
 # prefix_holds <char> -- the arm: install.prefix `<tmp>/pfx/a<char>b`, declared
-# in a project's config, is the launcher dvb runs from outside every project.
+# in a devbin checkout's config (devsrc_with_prefix), is the launcher dvb runs
+# from outside every project.
 # The value is single-quoted in the YAML, where a backslash is literal, and
 # double-quoted only to carry a `'`: lib/config reads either quote as a bare
 # delimiter, but a reader that learned YAML's escapes would read `"\b"` as a
@@ -629,10 +651,7 @@ prefix_holds() {
   mkdir -p "$pfx/bin"
   printf '#!/bin/sh\necho "the prefix launcher ran"\n' >"$pfx/bin/devbin"
   chmod 755 "$pfx/bin/devbin"
-  proj="$(mkproj demo <<<"project:
-  name: demo
-install:
-  prefix: $q$pfx$q")"
+  proj="$(devsrc_with_prefix "$q$pfx$q")"
   deep="$DEVBIN_TEST_TMPDIR/nowhere/deeper"
   mkdir -p "$deep"
   dvb_shells
@@ -663,10 +682,7 @@ install:
   mkdir -p "$pfx/bin"
   printf '#!/bin/sh\necho "the prefix launcher ran"\n' >"$pfx/bin/devbin"
   chmod 755 "$pfx/bin/devbin"
-  proj="$(mkproj demo <<<"project:
-  name: demo
-install:
-  prefix: \"$pfx\"")"
+  proj="$(devsrc_with_prefix "\"$pfx\"")"
   mkdir -p "$DEVBIN_TEST_TMPDIR/fp" "$DEVBIN_TEST_TMPDIR/nowhere/q"
   devbin_run "$proj" shell-init zsh --autoload >"$DEVBIN_TEST_TMPDIR/fp/dvb"
   run zsh -f -c "setopt nounset; fpath=('$DEVBIN_TEST_TMPDIR/fp' \$fpath); autoload -Uz dvb; cd '$DEVBIN_TEST_TMPDIR/nowhere/q'; unset DEVBIN_SOURCE DEVBIN_INSTALL_PREFIX; dvb"
@@ -683,13 +699,7 @@ install:
   if [ "$(id -u)" = "0" ]; then
     skip "running as root -- chmod cannot make a file unreadable, so the state cannot be built"
   fi
-  proj="$(mkproj demo <<'YAML'
-project:
-  name: demo
-install:
-  prefix: /opt/elsewhere
-YAML
-  )"
+  proj="$(devsrc_with_prefix /opt/elsewhere)"
   chmod 000 "$proj/bin/.devbin/config.yaml"
   run bash -c "DEVBIN_LIB='$DEVBIN_LIB_DIR' PROJECT_ROOT='$proj' DEVBIN_DIR='$proj/bin/.devbin' DEVBIN_INVOKE=bin/devbin bash '$DEVBIN_LIB_DIR/cmd/shell-init' zsh 2>'$DEVBIN_TEST_TMPDIR/err'"
   chmod 644 "$proj/bin/.devbin/config.yaml"
