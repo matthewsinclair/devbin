@@ -5,10 +5,12 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "38ae7ef4-fbac-4d87-a069-a92f3010a935",
-    "heartbeat_at": "2026-11-06T07:22:36.975Z",
+    "heartbeat_at": "2026-11-06T09:12:30.809Z",
     "status": "active",
-    "focus": "Holding for hv's word on cc's work today (focus updated 2026-11-06 07:22Z by date -u); the day's plan is with hv in cc's window. Nothing claimed, nothing pushed. The other estate's practice-repos script and README are landing in its devvm repository on hv's word; at its vc's ask cc dropped the README's sentence naming the two dummy files left out, and that vc passed the fix. Any later fix comes back to cc and that vc.",
-    "claims": [],
+    "focus": "Building issue 0326 at hv's word (focus updated 2026-11-06 09:12Z by date -u): the core carries dev/opt/brew for a project's own binaries, so every Homebrew'd tool runs one install, use, tree identity and version line. hv chose cc to build it in ccusage-vc's window before 09:08Z by its date -u, relayed by ccusage-vc and devbin-vc; hv's 'Go with A' in cc's window agrees. Design first: the shape goes to devbin-vc before any build; runs book through vc's desk; nothing pushed.",
+    "claims": [
+      "ISSUE:0326"
+    ],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
     "migrated_at": "2026-09-16T07:01:28.552Z"
