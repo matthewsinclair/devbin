@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 38ae7ef4-fbac-4d87-a069-a92f3010a935
-heartbeat_at: 2026-11-06 09:12Z
+heartbeat_at: 2026-11-06 09:36Z
 status: active
-focus: "Building issue 0326 at hv's word (focus updated 2026-11-06 09:12Z by date -u): the core carries dev/opt/brew for a project's own binaries, so every Homebrew'd tool runs one install, use, tree identity and version line. hv chose cc to build it in ccusage-vc's window before 09:08Z by its date -u, relayed by ccusage-vc and devbin-vc; hv's 'Go with A' in cc's window agrees. Design first: the shape goes to devbin-vc before any build; runs book through vc's desk; nothing pushed."
+focus: "Designing issue 0326 at hv's word, claimed (focus updated 2026-11-06 09:36Z by date -u): the core carries dev/opt/brew for a project's own binaries. The shape went to devbin-vc for agreement, with seven decisions asked: the switch as bin/devbin use in a tool's checkout, a compiled tool's line written by the core and printed by the binary, T2's dirty gate for every tool, and the formula's one install form among them. Nothing is built until vc agrees; runs book through vc's desk; nothing pushed."
 claims: [ISSUE:0326]
 ---
 
