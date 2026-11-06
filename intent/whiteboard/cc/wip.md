@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 38ae7ef4-fbac-4d87-a069-a92f3010a935
-heartbeat_at: 2026-11-06 12:09Z
+heartbeat_at: 2026-11-06 12:40Z
 status: active
-focus: "Resuming issue 0326's unit 0326-6, doctor for a tool, from refs/bank/cc/0326-6-wip (d80425dc, one commit on 2970280d) after hv's compact (focus set 2026-11-06 12:09Z by date -u), claimed: the core carries dev/opt/brew for every project that declares its binaries; the switch and the publish are bin/devbin use and bin/devbin install, run in the tool's checkout. Landed by vc, unpushed: the contract text (a08b44db), 0326-1 (ffb93786), 0326-2 (6eb8726f), 0326-3 (e484bff7), 0326-4 (35239dda), 0326-5 use for a tool (2970280d). Then 0326-7 the formula's one form, 0326-8 the docs. Each unit runs its own arms on vc's desk; nothing pushed."
+focus: "Issue 0326, claimed (focus set 2026-11-06 12:40Z by date -u): the core carries dev/opt/brew for every project that declares its binaries; the switch and the publish are bin/devbin use and bin/devbin install, run in the tool's checkout. Landed by vc, unpushed: the contract text (a08b44db), 0326-1 (ffb93786), 0326-2 (6eb8726f), 0326-3 (e484bff7), 0326-4 (35239dda), 0326-5 use for a tool (2970280d), 0326-6 doctor for a tool (027edc02). Asked on vc's desk: 0326-9, doctor's note when a tool's set is left off brew, tip 44984987 on 027edc02, slot 01M6RDYR2C7F1GVXBV9BKH7X5C. Then 0326-7 the formula's one form, built on 0326-9, and 0326-8 the docs. Each unit runs its own arms on vc's desk; nothing pushed."
 claims: [ISSUE:0326]
 ---
 
