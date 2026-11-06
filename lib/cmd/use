@@ -18,6 +18,11 @@
 # bare `use` run from any tree, the keg on PATH included. Once the link names
 # the checkout, the `devbin` on PATH IS the checkout, so `devbin use opt` works.
 #
+# A PROJECT'S OWN TOOL IS SWITCHED BY THE SAME VERB, in its checkout (issue
+# 0326): there `use` points the tool's own links, one for each name its
+# install: block declares (tool_use, lib/tool), and never the machine's devbin.
+# use_target (lib/config) says which of the two a tree's `use` switches.
+#
 set -euo pipefail
 
 # shellcheck source=lib/helpers
@@ -145,9 +150,43 @@ _use_no_brew() {
        $fix, then run $DEVBIN_INVOKE use brew again, or stay on dev or opt"
 }
 
+# usage_tool <tool> -- the switch's usage in a project whose tool it switches.
+usage_tool() {
+  cat <<EOF
+usage: $DEVBIN_INVOKE use [dev|opt|brew]
+
+  (none)  report which tree each of $1's links serves, and check each is
+          what a login shell runs; changes nothing
+  dev     point every link at this checkout's own copy
+  opt     point every link at the opt install, install.prefix
+  brew    remove every link, so Homebrew's $1 answers
+
+The links live in \$HOME/.local/bin, one for each name install.links declares.
+No link means brew.
+EOF
+}
+
 main() {
   local word="${1:-}" root p state brew
   [ $# -le 1 ] || die "unexpected argument '$2' (try: $DEVBIN_INVOKE use --help)"
+  # A PROJECT'S OWN TOOL IS SWITCHED HERE (docs/dev-opt-brew.md, T5; issue
+  # 0326): in a project whose config declares a tool, `use` points that tool's
+  # link set (tool_use, lib/tool). devbin's own trees still switch devbin. The
+  # answer is use_target's, the dispatcher's too, read once the config is
+  # loaded; devbin's opt and brew trees carry no config, and are devbin's by
+  # their tree alone.
+  if cfg_load "$DEVBIN_DIR/config.yaml" >/dev/null 2>&1 && [ "$(use_target "$PROJECT_ROOT")" = tool ]; then
+    case "$word" in
+      -h | --help)
+        usage_tool "$(cfg_formula_name)"
+        return 0
+        ;;
+    esac
+    # shellcheck source=lib/tool
+    . "$DEVBIN_LIB/tool"
+    tool_use "$word"
+    return $?
+  fi
   case "$word" in
     -h | --help)
       usage

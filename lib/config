@@ -1136,6 +1136,33 @@ cfg_is_tool() {
   [ -n "$(cfg_list install)" ]
 }
 
+# use_target <root> -- what `use` switches in the tree at <root>, one word
+# (docs/dev-opt-brew.md, T5; issue 0326): `devbin` in devbin's own trees, its
+# dev checkout, an opt install or a keg (devbin_tree), or an install in an
+# older form (is_install_tree); `tool` in a project whose loaded config
+# declares a tool (cfg_is_tool); `none` anywhere else. devbin's source with no
+# .git is none: its config declares devbin's own manifest, yet it is no tree
+# devbin's switch serves, so it is not read as a tool's checkout either.
+#
+# THE ONE ANSWER for the dispatcher's refusal (devbin_tree_refusal, lib/resolve)
+# and the switch (lib/cmd/use), so the trees offered `use` and what `use`
+# switches there cannot part.
+use_target() {
+  case "$(devbin_tree "$1")" in
+    dev | opt | brew)
+      printf 'devbin\n'
+      return 0
+      ;;
+  esac
+  if is_install_tree "$1"; then
+    printf 'devbin\n'
+  elif ! is_devbin_dev_tree "$1" && cfg_is_tool; then
+    printf 'tool\n'
+  else
+    printf 'none\n'
+  fi
+}
+
 # cfg_tool_links -- the tool's link set (T5), one link a line,
 # `<name><TAB><its file in the dev tree>`, in the order the block declares
 # them; with none declared, the one link the formula's name gives, at

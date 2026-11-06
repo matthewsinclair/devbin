@@ -9,11 +9,14 @@
 # switch rows in doctor.bats hold devbin's own answers.
 #
 # A project declares its tool in an install: block, and the 0326-2 arms hold
-# the declaration's validation and its readers in lib/config.
+# the declaration's validation and its readers in lib/config; the 0326-3 arms
+# its build's line, the 0326-4 arms its publish, and the 0326-5 arms its
+# switch.
 #
 # WHAT THIS DOES NOT CATCH, declared so a green is never read as covering it:
-#   - a tool's install, its use and its doctor rows, which later units of the
-#     issue add and test;
+#   - a tool's doctor rows, which a later unit of the issue adds and tests;
+#   - a tool's switch on a PATH where its link is shadowed: the arms put
+#     $HOME/.local/bin first, as the suite's setup does;
 #   - the keg layout on macOS, where devbin's formula writes an env script: the
 #     arms here build the Linux layout, a link into libexec.
 
@@ -513,4 +516,108 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   run devbin_run "$proj" install
   assert_failure
   assert_output_contains "devbin is already installed at"
+}
+
+@test "0326-5: use is offered in a tool's checkout, and still refused in a project with no tool and in devbin's source with no .git" {
+  local proj src
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" use
+  [ "$status" -ne 6 ] || fail "a tool's checkout refused use: $output"
+  refute_output_contains "does not offer it"
+  assert_output_contains "use: no link for demo-cli, so brew, and Homebrew has no demo here"
+  run devbin_run "$proj" use --help
+  assert_success
+  assert_output_contains "point every link at this checkout's own copy"
+  rm -rf "$proj"
+  proj="$(stamp_project --no-tool)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" use
+  assert_exit_code 6
+  assert_output_contains "a project's bin/devbin does not offer it"
+  # devbin's source declares an install: block of its own, and with no .git
+  # it is none of devbin's trees: still refused, never read as a tool's.
+  src="$(mkdevsrc)" || fail "the fixture's devbin source could not be made"
+  rm -rf "$src/.git"
+  run devbin_run "$src" use
+  assert_exit_code 6
+  assert_output_contains "a project's bin/devbin does not offer it"
+}
+
+@test "0326-5: use dev points the tool's link at its dev build, and the report names the build by its line" {
+  local proj sha link="$HOME/.local/bin/demo-cli" got want
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" build
+  assert_success
+  run devbin_run "$proj" use dev
+  assert_success
+  assert_output_contains "use: the link $link names the dev tree"
+  assert_output_contains "demo 1.2.3 (dev, ${sha:0:12})"
+  real_path "$link" got
+  real_path "$proj/target/release/demo-cli" want
+  [ "$got" = "$want" ] || fail "the link leads to $got"
+}
+
+@test "0326-5: use dev refuses a dev copy the build has not made, naming the build" {
+  local proj
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" use dev
+  assert_failure
+  assert_output_contains "the dev tree has no target/release/demo-cli for the link demo-cli"
+  assert_output_contains "build it:  bin/devbin build"
+  [ ! -e "$HOME/.local/bin/demo-cli" ] && [ ! -L "$HOME/.local/bin/demo-cli" ] || fail "the refused use dev left a link"
+}
+
+@test "0326-5: use opt points the link at the opt install, and refuses a prefix with none, naming the publish" {
+  local proj sha opt="$DEVBIN_TEST_TMPDIR/opt-demo" got want
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" use opt
+  assert_failure
+  assert_output_contains "there is no opt install of demo at $opt"
+  assert_output_contains "publish one:  bin/devbin install"
+  run devbin_run "$proj" install
+  assert_success
+  run devbin_run "$proj" use opt
+  assert_success
+  assert_output_contains "demo 1.2.3 (opt, ${sha:0:12})"
+  real_path "$HOME/.local/bin/demo-cli" got
+  real_path "$opt/bin/demo-cli" want
+  [ "$got" = "$want" ] || fail "the link leads to $got"
+}
+
+@test "0326-5: use brew removes the link once Homebrew's copy would answer, and refuses, removing nothing, while none would" {
+  local proj link="$HOME/.local/bin/demo-cli"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" build
+  assert_success
+  run devbin_run "$proj" use dev
+  assert_success
+  run devbin_run "$proj" use brew
+  assert_failure
+  assert_output_contains "use brew removes nothing: no Homebrew demo-cli would answer once the link is gone"
+  [ -L "$link" ] || fail "the refused use brew removed the link"
+  demo_keg 1.0.0 || fail "the fixture's keg could not be made"
+  demo_bin_link 1.0.0 || fail "the fixture's bin link could not be made"
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" use brew
+  assert_success
+  assert_output_contains "use: no link for demo-cli, so brew"
+  [ ! -e "$link" ] && [ ! -L "$link" ] || fail "use brew left the link"
+}
+
+@test "0326-5: a link set split across trees fails a bare use, naming the split" {
+  local proj cfg
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  cfg="$proj/bin/.devbin/config.yaml"
+  printf '#!/bin/sh\necho demo\n' >"$proj/bin/demo-sh"
+  chmod 755 "$proj/bin/demo-sh"
+  printf 'project:\n  name: demo\ninstall:\n  prefix: %s/opt-demo\n  links:\n    demo-cli: target/release/demo-cli\n    demo-sh: bin/demo-sh\ncommands:\n  build:\n    run: sh tools/build.sh\n' "$DEVBIN_TEST_TMPDIR" >"$cfg"
+  git -C "$proj" add -A && git -C "$proj" -c user.email=t@t -c user.name=t commit -qm "two links" || fail "the two links could not be committed"
+  run devbin_run "$proj" build
+  assert_success
+  run devbin_run "$proj" use dev
+  assert_success
+  rm -f "$HOME/.local/bin/demo-sh"
+  run devbin_run "$proj" use
+  assert_failure
+  assert_output_contains "the link set is split: demo-sh serves brew, where the set's first link serves dev"
 }

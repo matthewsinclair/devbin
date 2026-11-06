@@ -3633,7 +3633,7 @@ with_formula() {
   # The report's last line: only the seal's verdict trailer follows it, which is
   # the LAST `verdict:` line, since the gates' own sealed run prints one mid-way.
   report_last="$(awk '/^verdict: / { before = last; next } NF { last = $0 } END { print before }' <<<"$output")"
-  [ "$report_last" = "release: NOTE: the switch rests at brew -- once the tap has v1.0.1: brew upgrade demo, then demo use brew, and demo --version reads demo 1.0.1 (brew, ${commit:0:12})" ] ||
+  [ "$report_last" = "release: NOTE: the switch rests at brew -- once the tap has v1.0.1: brew upgrade demo, and demo --version reads demo 1.0.1 (brew, ${commit:0:12})" ] ||
     fail "the report's last line is: $report_last"
 }
 
@@ -3642,7 +3642,7 @@ with_formula() {
   with_formula "$proj" demo-tool
   run release_in "$proj" v1.0.1 --yes
   assert_success
-  assert_output_contains "brew upgrade demo-tool, then demo-tool use brew, and demo-tool --version reads demo-tool 1.0.1 (brew, "
+  assert_output_contains "brew upgrade demo-tool, and demo-tool --version reads demo-tool 1.0.1 (brew, "
 }
 
 @test "a cut with no formula prints no note back to brew (0228)" {
@@ -3659,7 +3659,18 @@ with_formula() {
     fail "the fixture's handler commit failed"
   run release_in "$proj" v1.0.1 --yes
   assert_success
-  assert_output_contains "release: NOTE: the switch rests at brew -- once the tap has v1.0.1: brew upgrade demo, then demo use brew"
+  assert_output_contains "release: NOTE: the switch rests at brew -- once the tap has v1.0.1: brew upgrade demo, and demo --version reads demo 1.0.1 (brew, "
+}
+
+@test "a cut whose project declares its tool names bin/devbin use brew, run in its checkout, in the note back to brew (0326)" {
+  proj="$(cut_project)"
+  with_formula "$proj"
+  printf 'install:\n  prefix: %s/opt-demo\n' "$DEVBIN_TEST_TMPDIR" >>"$proj/bin/.devbin/config.yaml"
+  git -C "$proj" commit -qam "the tool" && git -C "$proj" push -q origin main || fail "the fixture's tool commit failed"
+  run release_in "$proj" v1.0.1 --yes
+  assert_success
+  commit="$(git -C "$proj" rev-parse 'refs/tags/v1.0.1^{commit}')"
+  assert_output_contains "release: NOTE: the switch rests at brew -- once the tap has v1.0.1: brew upgrade demo, then bin/devbin use brew in this checkout, and demo --version reads demo 1.0.1 (brew, ${commit:0:12})"
 }
 
 # ============================================================================

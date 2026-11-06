@@ -321,3 +321,261 @@ _tool_publish_manifest() {
     done <<<"$sums"
   } >"$p/$m"
 }
+
+# --- the switch (T5) ---------------------------------------------------------
+#
+# A project's tool is switched by `bin/devbin use [dev|opt|brew]`, run in its
+# checkout (docs/dev-opt-brew.md, T5). Its links in ~/.local/bin are the one
+# record of which tree serves each, and no link means brew. lib/install's
+# install_prefix_configured gives `use opt` its prefix, so it is sourced too.
+
+# tool_switch_state <name> <from> -- what the tool's link <name> names, one
+# line: `none`, no link; `dev <root>`, it resolves to this checkout's <from>,
+# the dev tree's copy, a build product where it is one; `at <root>`, it leads
+# to a tree's bin/<name>, a keg named by its opt link (tool_link_state); or
+# `bad <reason>`, a file where the link belongs, or a link to no file or to one
+# no tree of this tool holds.
+tool_switch_state() {
+  local name="$1" from="$2" p got want
+  if p="$(tool_link_path "$name")" && [ -L "$p" ] && [ -e "$p" ] && [ -e "$PROJECT_ROOT/$from" ]; then
+    real_path "$p" got
+    real_path "$PROJECT_ROOT/$from" want
+    if [ "$got" = "$want" ]; then
+      printf 'dev %s\n' "$PROJECT_ROOT"
+      return 0
+    fi
+  fi
+  tool_link_state "$(cfg_formula_name)" "$name" "bin/devbin use"
+}
+
+# tool_tree_word <root> -- which of the tool's trees <root> is, one word: by its
+# install manifest (tool_install_tree_word), or brew for a keg with none that
+# resolves to the tool's opt link (tool_unmanifested_keg), else unknown.
+tool_tree_word() {
+  local name m
+  name="$(cfg_formula_name)" || return 1
+  m="$(cfg_tool_manifest)" || return 1
+  if [ -f "$1/$m" ]; then
+    tool_install_tree_word "$1" "$name" "$m"
+  elif tool_unmanifested_keg "$1" "$name" "$m"; then
+    printf 'brew\n'
+  else
+    printf 'unknown\n'
+  fi
+}
+
+# tool_tree_line <root> -- the version line an opt or brew tree of the tool
+# carries, its manifest's `line` (T4), or nothing at rc 1 where it carries none.
+tool_tree_line() {
+  local line
+  line="$(tool_manifest_field "$1" "$(cfg_tool_manifest)" line 2>/dev/null)" || return 1
+  [ -n "$line" ] || return 1
+  printf '%s\n' "$line"
+}
+
+# tool_use [dev|opt|brew] -- the switch for the project's tool, over its whole
+# link set (cfg_tool_links). Bare, it reports the tree each link serves by its
+# line, fails a link it cannot follow, a set split across trees, and a link a
+# login shell does not run (tool_link_shadow), and changes nothing. dev and opt
+# point every link at that tree's copy, refusing a tree that is not there and
+# naming the step that makes it, then report. brew removes every link, and
+# refuses, removing nothing, unless each is a link into one of the tool's trees
+# and Homebrew's copy would answer for each once it is gone.
+tool_use() {
+  local links
+  links="$(cfg_tool_links)" || return 1
+  case "${1:-}" in
+    "")
+      _tool_use_report "$links" || return 1
+      _tool_use_shadowed "$links" ""
+      ;;
+    dev | opt)
+      _tool_use_point_set "$1" "$links" || return 1
+      _tool_use_report "$links" || return 1
+      _tool_use_shadowed "$links" "$1"
+      ;;
+    brew)
+      _tool_use_brew "$links" || return 1
+      _tool_use_report "$links"
+      ;;
+    *) die "unknown tree '$1' -- bin/devbin use takes dev, opt or brew" ;;
+  esac
+}
+
+# _tool_use_report <links> -- each link's tree, by its line; rc 1 for a link it
+# cannot follow, a missing Homebrew copy with no link, or a set split across
+# trees.
+#
+# A SPLIT IS NAMED BY THE TREES THE LINKS SERVE: dev, brew for no link, and
+# for a link into an install its tree's word with its root, so two installs of
+# one word are told apart. A link it cannot follow has said why already, and is
+# no tree to compare.
+_tool_use_report() {
+  local name from state p root brew formula rc=0 first="" first_tree="" seen tree
+  formula="$(cfg_formula_name)" || return 1
+  while IFS=$'\t' read -r name from; do
+    [ -n "$name" ] || continue
+    state="$(tool_switch_state "$name" "$from")"
+    p="$(tool_link_path "$name")" || p="$name"
+    case "$state" in
+      "dev "*)
+        printf 'use: the link %s names the dev tree\n  %s\n' "$p" "$(_tool_dev_copy_line "$from")"
+        seen="dev"
+        tree="dev"
+        ;;
+      "at "*)
+        root="${state#at }"
+        tree="$(tool_tree_word "$root") at $root"
+        printf 'use: the link %s names\n  %s\n' "$p" "$(tool_tree_line "$root" || printf '%s, which records no version line' "$tree")"
+        seen="at $root"
+        ;;
+      none)
+        if brew="$(tool_brew_root "$formula")"; then
+          printf 'use: no link for %s, so brew\n  %s\n' "$name" "$(tool_tree_line "$brew" || printf 'brew at %s, which records no version line' "$brew")"
+        else
+          printf 'use: no link for %s, so brew, and %s\n' "$name" "$(tool_brew_none_why "$formula")"
+          printf '  %s, or run bin/devbin use dev or opt in this checkout\n' "$(tool_brew_unplaced_fix "$formula")"
+          rc=1
+        fi
+        seen="brew"
+        tree="brew"
+        ;;
+      *)
+        warn "${state#bad }"
+        rc=1
+        continue
+        ;;
+    esac
+    if [ -z "$first" ]; then
+      first="$seen"
+      first_tree="$tree"
+    elif [ "$seen" != "$first" ]; then
+      warn "the link set is split: $name serves $tree, where the set's first link serves $first_tree -- point them together with bin/devbin use dev, opt or brew"
+      rc=1
+    fi
+  done <<<"$1"
+  return "$rc"
+}
+
+# _tool_dev_copy_line <from> -- the line the dev tree's copy prints on
+# --version, or what stands in for one it does not print.
+_tool_dev_copy_line() {
+  local got
+  got="$("$PROJECT_ROOT/$1" --version 2>/dev/null)" || got=""
+  got="$(tree_line_head "${got%%$'\n'*}")"
+  if [ -n "$got" ]; then printf '%s\n' "$got"; else printf '%s prints no version line\n' "$1"; fi
+}
+
+# _tool_use_shadowed <links> <word> -- the shadow check for each link
+# (tool_link_shadow); rc 1 when any link is not what a login shell runs. With
+# <word>, the tree just chosen, each refusal says the links were pointed and
+# stay so, as devbin's own switch says it (issue 0275).
+_tool_use_shadowed() {
+  local name from why formula rc=0
+  formula="$(cfg_formula_name)" || return 1
+  while IFS=$'\t' read -r name from; do
+    [ -n "$name" ] || continue
+    why="$(tool_link_shadow "$formula" "$name")"
+    [ -n "$why" ] || continue
+    if [ -n "$2" ]; then
+      warn "use $2 pointed the link $(tool_link_path "$name"), and it stays pointed, but a login shell does not run it
+       $why
+       fix PATH as that says, or run bin/devbin use brew"
+    else
+      warn "$why"
+    fi
+    rc=1
+  done <<<"$1"
+  return "$rc"
+}
+
+# _tool_use_point_set <dev|opt> <links> -- point every link at the tree's copy,
+# each first found there: in dev the checkout's <from>, refusing one the build
+# has not made; in opt <prefix>/bin/<name>, refusing a prefix that holds no opt
+# install of the tool. Nothing is pointed until every copy is found.
+_tool_use_point_set() {
+  local word="$1" links="$2" name from prefix target formula
+  local -a names=() targets=()
+  formula="$(cfg_formula_name)" || return 1
+  if [ "$word" = opt ]; then
+    prefix="$(install_prefix_configured)" ||
+      die "no install prefix is configured for $formula, so there is no opt tree to point at
+       set install.prefix in this project's bin/.devbin/config.yaml"
+    [ "$(tool_tree_word "$prefix")" = opt ] ||
+      die "there is no opt install of $formula at $prefix
+       publish one:  bin/devbin install"
+  fi
+  while IFS=$'\t' read -r name from; do
+    [ -n "$name" ] || continue
+    if [ "$word" = dev ]; then
+      target="$PROJECT_ROOT/$from"
+      [ -e "$target" ] || die "the dev tree has no $from for the link $name
+       build it:  bin/devbin build"
+    else
+      target="$prefix/bin/$name"
+      [ -e "$target" ] || die "the opt install at $prefix has no bin/$name
+       republish it:  bin/devbin install --force"
+    fi
+    names+=("$name")
+    targets+=("$target")
+  done <<<"$links"
+  local i
+  for i in "${!names[@]}"; do
+    _tool_use_point "${names[$i]}" "${targets[$i]}"
+  done
+}
+
+# _tool_use_point <name> <target> -- point the link <name> at <target>. A file
+# standing where the link belongs is refused, never replaced: it is no choice
+# the switch made. An existing link is removed and made anew, never written
+# through.
+_tool_use_point() {
+  local p
+  p="$(tool_link_path "$1")" || die "there is no home directory to keep the link in"
+  if [ -e "$p" ] && [ ! -L "$p" ]; then
+    die "$p is not a link, so it is no choice bin/devbin use made -- move it aside, then run this again"
+  fi
+  mkdir -p "${p%/*}" || die "cannot create ${p%/*} for the link"
+  if [ -L "$p" ]; then rm -f "$p" || die "cannot remove the link $p"; fi
+  ln -s "$2" "$p" || die "cannot write the link $p"
+}
+
+# _tool_use_brew <links> -- remove the tool's whole link set, once each link
+# there is one into the tool's own trees and Homebrew's copy would answer for
+# each once it is gone (tool_brew_answer_state); otherwise refuse, removing
+# nothing, naming the link and why, with that cause's remedy.
+_tool_use_brew() {
+  local name from p state brew why formula
+  local -a gone=()
+  formula="$(cfg_formula_name)" || return 1
+  while IFS=$'\t' read -r name from; do
+    [ -n "$name" ] || continue
+    p="$(tool_link_path "$name")" || die "there is no home directory to look for the link in"
+    if [ -e "$p" ] && [ ! -L "$p" ]; then
+      die "$p is not a link, so it is no choice bin/devbin use made -- use brew leaves it: remove it by hand"
+    fi
+    [ -L "$p" ] || continue
+    state="$(tool_switch_state "$name" "$from")"
+    case "$state" in
+      "dev "* | "at "*) ;;
+      *) die "${state#bad }
+       it is not a link into a tree of $formula, so use brew leaves it: remove it by hand" ;;
+    esac
+    brew="$(tool_brew_answer_state "$formula" "$name")"
+    case "$brew" in
+      "brew "*) ;;
+      absent)
+        die "use brew removes nothing: no Homebrew $name would answer once the link is gone
+       $(tool_brew_none_why "$formula")
+       $(tool_brew_unplaced_fix "$formula"), then run bin/devbin use brew again, or stay on dev or opt" ;;
+      *)
+        why="$(tool_brew_path_why "$formula" "$name" "$brew" "$p")" ||
+          die "cannot tell what would answer $name on PATH once the link $p is gone: $brew"
+        die "use brew removes nothing: no Homebrew $name would answer once the link is gone
+       ${why%%$'\n'*}
+       ${why#*$'\n'}, then run bin/devbin use brew again, or stay on dev or opt" ;;
+    esac
+    gone+=("$p")
+  done <<<"$1"
+  [ "${#gone[@]}" -eq 0 ] || rm -f -- "${gone[@]}" || die "cannot remove the links: ${gone[*]}"
+}

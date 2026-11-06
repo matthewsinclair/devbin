@@ -1697,15 +1697,22 @@ cut_summary() {
 # since brew has nothing of it to upgrade. A cut whose after: failed, or whose
 # candidate would not be deleted, gets none either: its last line stays the
 # remedy (0181), and after a failed after: the tap may not have the release.
+#
+# THE SWITCH IS NAMED WHERE THIS CHECKOUT OFFERS IT (issue 0326): `bin/devbin
+# use brew` in this checkout, in devbin's own and in a project that declares
+# its tool (use_target, lib/config). A project that declares none has no link
+# devbin points, so its note is the upgrade and the line alone.
 cut_back_to_brew() {
-  local name
+  local name step=""
   command_active formula || return 0
+  [ "$(use_target "$PROJECT_ROOT")" = none ] || step="bin/devbin use brew in this checkout"
   if ! name="$(cfg_formula_name)" || [ -z "$name" ]; then
-    printf 'release: NOTE: the switch rests at brew -- once the tap has %s, upgrade it with brew and run use brew (the formula'"'"'s name could not be read: formula.name, or project.name)\n' "$1"
+    printf 'release: NOTE: the switch rests at brew -- once the tap has %s, upgrade it with brew%s (the formula'"'"'s name could not be read: formula.name, or project.name)\n' \
+      "$1" "${step:+ and run $step}"
     return 0
   fi
-  printf 'release: NOTE: the switch rests at brew -- once the tap has %s: brew upgrade %s, then %s use brew, and %s --version reads %s %s (brew, %s)\n' \
-    "$1" "$name" "$name" "$name" "$name" "$2" "${3:0:12}"
+  printf 'release: NOTE: the switch rests at brew -- once the tap has %s: brew upgrade %s,%s and %s --version reads %s %s (brew, %s)\n' \
+    "$1" "$name" "${step:+ then $step,}" "$name" "$name" "$2" "${3:0:12}"
 }
 
 # cut_fail <n> <detail> -- step <n> FAILED: its row, the table so far, and what
