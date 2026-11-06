@@ -4621,6 +4621,14 @@
       "state": "live",
       "recorded_at": "2026-11-06T06:57:36.454Z",
       "edited_at": "2026-11-06T07:12:02.284Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 148,
+      "text": "hv in vc's window, received before the clock read 2026-11-06 08:32Z by date -u, on vc's review of the dev/opt/brew switch in Pplr, Cldr and Ccusage against devbin's (recorded at hv's word as pplr#0001 at 656c6ff, cldr#0001 at 371ef66 and ccusage#0007 at d7496f1, none pushed): (1) yes, the core carries dev/opt/brew for a project's own binaries, filed as issue 0326 for the next release; (2) Pipeliner's new CLI waits for it and uses the canonical approach (\"there's no rush with pipeliner itself. It should use the canonical approach, too. Most definitely.\"), writing no switch of its own; (3) in Ccusage, use becomes the dev/opt/brew verb and account selection becomes activate (\"Prob activate given that there is an active auth in its state\"), its timing unruled. Relayed to pipeliner-sc, pipeliner-cc and ccusage-vc; 0326 sent to pplr-vc, cldr-vc and ccusage-vc for their cross-references. Cldr's clone has no pre-commit hook installed (cldr-vc's finding): one line, no work.",
+      "state": "live",
+      "recorded_at": "2026-11-06T08:33:43.076Z"
     }
   ],
   "sent": [
