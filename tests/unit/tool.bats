@@ -307,3 +307,101 @@ install:
   [ "$(cfg_tool_manifest)" = "$DEVBIN_MANIFEST_REL" ] ||
     fail "devbin declares $(cfg_tool_manifest), and its bootstrap reads $DEVBIN_MANIFEST_REL"
 }
+
+# stamp_project [--no-tool] [<yaml>] -- a project, devbin installed and
+# committed in git with target/ ignored, VERSION 1.2.3, whose declared build
+# (tools/build.sh) writes target/release/demo-cli as a program that prints the
+# DEVBIN_VERSION_LINE it was built with, writes that file's dependency record
+# naming src/main.txt, and adds the line it carried to target/runs, one line a
+# run. It declares the tool demo, with the link demo-cli at
+# target/release/demo-cli, unless --no-tool; <yaml> is added at the config's
+# top level.
+stamp_project() {
+  local tool=yes proj
+  if [ "${1:-}" = --no-tool ]; then
+    tool=""
+    shift
+  fi
+  proj="$DEVBIN_TEST_TMPDIR/stamped"
+  create_test_project stamped >/dev/null || return 1
+  install_devbin "$proj" || return 1
+  {
+    printf 'project:\n  name: demo\n'
+    if [ -n "$tool" ]; then
+      printf 'install:\n  prefix: %s/opt-demo\n  links:\n    demo-cli: target/release/demo-cli\n' "$DEVBIN_TEST_TMPDIR"
+    fi
+    printf 'commands:\n  build:\n    run: sh tools/build.sh\n'
+    [ -z "${1:-}" ] || printf '%s\n' "$1"
+  } >"$proj/bin/.devbin/config.yaml" || return 1
+  mkdir -p "$proj/tools" "$proj/src" "$proj/docs" || return 1
+  printf '1.2.3\n' >"$proj/VERSION" || return 1
+  printf 'source\n' >"$proj/src/main.txt" || return 1
+  printf 'notes\n' >"$proj/docs/notes.md" || return 1
+  printf 'target/\n' >"$proj/.gitignore" || return 1
+  {
+    printf '#!/bin/sh\nset -e\nmkdir -p target/release\n'
+    printf '%s\n' "printf \"#!/bin/sh\\necho '%s'\\n\" \"\$DEVBIN_VERSION_LINE\" >target/release/demo-cli"
+    printf 'chmod 755 target/release/demo-cli\n'
+    printf '%s\n' "printf '%s/target/release/demo-cli: %s/src/main.txt\\n' \"\$PWD\" \"\$PWD\" >target/release/demo-cli.d"
+    printf '%s\n' "printf '%s\\n' \"\$DEVBIN_VERSION_LINE\" >>target/runs"
+  } >"$proj/tools/build.sh" || return 1
+  git -C "$proj" init -q >/dev/null 2>&1 || return 1
+  git -C "$proj" add -A >/dev/null 2>&1 || return 1
+  git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -q -m fixture >/dev/null 2>&1 || return 1
+  printf '%s\n' "$proj"
+}
+
+@test "0326-3: a tool's build is handed its dev line: the tool's name, its version, and HEAD's twelve digits" {
+  local proj sha
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" build
+  assert_success
+  run "$proj/target/release/demo-cli"
+  assert_success
+  [ "$output" = "demo 1.2.3 (dev, ${sha:0:12})" ] || fail "the build carried: $output"
+}
+
+@test "0326-3: an input the build's record names, changed and uncommitted, marks the line +dirty, and a docs write does not" {
+  local proj sha
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" build
+  assert_success
+  printf 'more\n' >>"$proj/docs/notes.md"
+  run devbin_run "$proj" build
+  assert_success
+  run "$proj/target/release/demo-cli"
+  [ "$output" = "demo 1.2.3 (dev, ${sha:0:12})" ] || fail "a docs write marked the line: $output"
+  printf 'changed\n' >>"$proj/src/main.txt"
+  run devbin_run "$proj" build
+  assert_success
+  run "$proj/target/release/demo-cli"
+  [ "$output" = "demo 1.2.3 (dev, ${sha:0:12}+dirty)" ] || fail "a changed input left the line: $output"
+}
+
+@test "0326-3: when the record a build writes names a changed input its line missed, the build runs once more to carry +dirty, and says so" {
+  local proj sha clean marked
+  proj="$(stamp_project 'build:
+  inputs:
+    - VERSION')" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  clean="demo 1.2.3 (dev, ${sha:0:12})"
+  marked="demo 1.2.3 (dev, ${sha:0:12}+dirty)"
+  printf 'changed\n' >>"$proj/src/main.txt"
+  run devbin_run "$proj" build
+  assert_success
+  assert_output_contains "the build read inputs its line did not count ($clean), so it runs once more to carry: $marked"
+  [ "$(cat "$proj/target/runs")" = "$clean
+$marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
+  run "$proj/target/release/demo-cli"
+  [ "$output" = "$marked" ] || fail "the program built last carries: $output"
+}
+
+@test "0326-3: a project that declares no tool hands its build no line" {
+  local proj
+  proj="$(stamp_project --no-tool)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" build
+  assert_success
+  [ -z "$(cat "$proj/target/runs")" ] || fail "a project with no tool's build carried: $(cat "$proj/target/runs")"
+}

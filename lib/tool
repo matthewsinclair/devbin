@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+#
+# lib/tool -- the project's own tool (docs/dev-opt-brew.md; issue 0326): the
+# line its build carries.
+#
+# Sourced, not executed, after lib/helpers and lib/config with the project's
+# config loaded: a project declares its tool in its install: block, and the
+# readers there (cfg_tool_links, cfg_tool_files, cfg_build_input_paths) are what
+# this file asks. lib/helpers reads no config, so what joins the config to git
+# lives here.
+#
+# THE CORE WRITES THE LINE AND THE BINARY PRINTS IT (T4). A compiled tool's dev
+# build is handed its whole version line, `<tool> <version> (dev, <sha12>[+dirty])`,
+# in DEVBIN_VERSION_LINE, and its --version prints it; in opt and brew it prints
+# the line its tree's manifest carries. So the commit and +dirty are worked out
+# here, once, for every tool, never in a tool's own build script.
+[ -n "${_DEVBIN_TOOL_LOADED:-}" ] && return 0
+_DEVBIN_TOOL_LOADED=1
+
+# tool_build_paths -- the paths whose state the dev line's +dirty reads, below
+# the project root, one a line, each once (T4): each of the runtime set's files
+# git tracks (a link's or a file's `from`), the declared build inputs
+# (cfg_build_input_paths), and the inputs each build product's dependency
+# record names (`<from>.d`, dep_info_paths), where the build has written one.
+# A product is a `from` git does not track. Nothing printed is an answer: with
+# no file tracked, none declared and no record yet, the caller reads the whole
+# tree. rc 1 when the declaration cannot be read.
+tool_build_paths() {
+  local links files name from label
+  links="$(cfg_tool_links)" || return 1
+  files="$(cfg_tool_files)" || return 1
+  {
+    while IFS=$'\t' read -r name from; do
+      [ -n "$name" ] || continue
+      _tool_build_from "$from"
+    done <<<"$links"
+    while IFS=$'\t' read -r label _ from; do
+      [ -n "$label" ] || continue
+      _tool_build_from "$from"
+    done <<<"$files"
+    cfg_build_input_paths
+  } | LC_ALL=C sort -u
+}
+
+# _tool_build_from <from> -- a `from` git tracks, as itself; a product, as the
+# inputs its dependency record names, when there is one.
+_tool_build_from() {
+  if git_readonly -C "$PROJECT_ROOT" ls-files --error-unmatch -- ":(literal)$1" >/dev/null 2>&1; then
+    printf '%s\n' "$1"
+  elif [ -f "$PROJECT_ROOT/$1.d" ]; then
+    dep_info_paths "$PROJECT_ROOT/$1.d" "$PROJECT_ROOT" || true
+  fi
+}
+
+# tool_build_dirty -- whether the build's inputs differ from HEAD, one word:
+# `dirty` when git holds any of tool_build_paths changed, staged or untracked,
+# `clean` when none, and `unknown` when git cannot say. With no path to read,
+# the whole tree is read, so a missed input never reads clean: that is a first
+# build with nothing declared and no record yet, and the next build reads its
+# record.
+tool_build_dirty() {
+  local paths out p
+  local -a spec=()
+  if ! paths="$(tool_build_paths)"; then
+    printf 'unknown\n'
+    return 0
+  fi
+  while IFS= read -r p; do
+    [ -n "$p" ] && spec+=(":(literal)$p")
+  done <<<"$paths"
+  if ! out="$(git_readonly -C "$PROJECT_ROOT" status --porcelain --untracked-files=all -- ${spec[@]+"${spec[@]}"} 2>/dev/null)"; then
+    printf 'unknown\n'
+    return 0
+  fi
+  if [ -n "$out" ]; then printf 'dirty\n'; else printf 'clean\n'; fi
+}
+
+# tool_dev_line -- the line a dev build of the project's tool carries:
+# `<tool> <version> (dev, <sha12>[+dirty])` (tool_line), the tool's name the
+# formula's, its version the project's (cfg_version_from), and its commit
+# HEAD's, `+dirty` when tool_build_dirty says so. A checkout git cannot read
+# gives `(dev, unknown)`, T4's one shape for a commit it cannot name.
+tool_dev_line() {
+  local name ver sha mark=""
+  name="$(cfg_formula_name)" || return 1
+  ver="$(read_version "$(cfg_version_from)" version-file 2>/dev/null || true)"
+  sha="$(git_head_sha "$PROJECT_ROOT" full)"
+  if [ "$sha" != unknown ]; then
+    case "$(tool_build_dirty)" in
+      dirty) mark=+dirty ;;
+      clean) ;;
+      *) sha=unknown ;;
+    esac
+  fi
+  tool_line "$name" "$ver" dev "$sha" "$mark"
+}
+
+# tool_build <launcher> [<arg>...] -- the project's build, run by <launcher>
+# (the project's own bin/devbin) as `build <arg>...`, handed the dev line in
+# DEVBIN_VERSION_LINE. _DEVBIN_BUILD_STAMPED tells that launcher the line is
+# set, so it runs the build as any other command.
+#
+# ONE MORE BUILD, AND ONLY ONE, WHEN THE RECORD SAYS THE LINE IS WRONG. The
+# line is worked out before the build, from the record the last build left, so
+# a build reading an input that record did not name can carry a clean line over
+# a changed input. After a build that succeeds the line is worked out again from
+# the record it has just written, and where it differs the build runs once more
+# to carry it, and says so. The second build's line is final: it is bounded at
+# one, so a build whose inputs move on every run cannot loop.
+tool_build() {
+  local launcher="$1" line again
+  shift
+  line="$(tool_dev_line)" || die "cannot work out the version line the build is to carry (above)"
+  export _DEVBIN_BUILD_STAMPED=1 DEVBIN_VERSION_LINE="$line"
+  "$launcher" build "$@" || return $?
+  again="$(tool_dev_line)" || die "cannot work out the version line again after the build (above)"
+  [ "$again" != "$line" ] || return 0
+  warn "the build read inputs its line did not count ($line), so it runs once more to carry: $again"
+  export DEVBIN_VERSION_LINE="$again"
+  "$launcher" build "$@"
+}

@@ -4722,6 +4722,42 @@ tool_line() {
   printf '%s %s (%s, %s)\n' "$1" "${2:-unknown}" "$3" "$sha"
 }
 
+# dep_info_paths <dep-info file> <root> -- each input a build's dependency
+# record names (make's form, as cargo writes `<binary>.d` beside a binary),
+# that lies below <root>, relative to it, one a line, each once (issue 0326:
+# T4's +dirty reads a compiled tool's build inputs from the build system's own
+# record). A rule's target, the path before its colon, is no input. An escaped
+# space is a space, a line ending in a backslash runs on into the next, and a
+# relative path is the build's own, below <root>. An input outside <root>, as a
+# crate from cargo's registry is, has no state git can read, and is left out.
+# rc 1, printing nothing, when the file cannot be read or <root> resolved.
+dep_info_paths() {
+  local file="$1" root p
+  [ -r "$file" ] || return 1
+  physical_dir "$2" root || return 1
+  # The awk joins continued lines, cuts each rule at its first `: ` or closing
+  # `:`, and prints each input on a line of its own, an escaped space kept in a
+  # byte no path holds until the split is done.
+  awk '
+    { line = (held == "" ? $0 : held " " $0); held = "" }
+    sub(/\\$/, "", line) { held = line; next }
+    {
+      gsub(/\\ /, "\001", line)
+      c = index(line, ": ")
+      if (c == 0 && line ~ /:$/) c = length(line)
+      if (c == 0) next
+      n = split(substr(line, c + 1), w, /[ \t]+/)
+      for (i = 1; i <= n; i++) if (w[i] != "") { gsub(/\001/, " ", w[i]); print w[i] }
+    }
+  ' "$file" | while IFS= read -r p; do
+    case "$p" in
+      "$root"/*) printf '%s\n' "${p#"$root"/}" ;;
+      /*) ;;
+      *) printf '%s\n' "$p" ;;
+    esac
+  done | LC_ALL=C sort -u
+}
+
 # tree_line_head <line> -- a version line as T4's reader rule reads it: up to
 # and including its first closing parenthesis, the rest ignored. So a line in
 # the shape before issue 0230, with ` at <root>` after the parenthesis, or one
