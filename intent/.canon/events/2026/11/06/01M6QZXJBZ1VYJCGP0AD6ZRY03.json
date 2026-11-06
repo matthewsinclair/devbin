@@ -1,0 +1,15 @@
+{
+  "id": "01M6QZXJBZ1VYJCGP0AD6ZRY03",
+  "ts": "2026-11-06T08:34:32.959Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "When issue 0326 lands (the core's dev/opt/brew for a project's own binaries): tell pipeliner-sc, whose decision 91 holds Pipeliner's CLI to no switch of its own until then, so pipeliner-cc takes up the core's; and tell pplr-vc, cldr-vc and ccusage-vc, whose pplr#0001, cldr#0001 and ccusage#0007 adopt it, with Ccusage's account verb becoming activate (decision 148)."
+  }
+}
