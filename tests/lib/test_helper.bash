@@ -1647,27 +1647,33 @@ stub_install() {
   } >"$root/bin/.devbin/manifest.sha256" || return 1
 }
 
-# brew_keg [--from <src> | --stub | --empty] [--script]
-#   [--linked | --linked-to <path>] <version> --
+# brew_keg [--formula <name> --link <name>] [--from <src> | --stub | --bare |
+#   --empty] [--script] [--linked | --linked-to <path>] <version> --
 # devbin's keg for <version> as Homebrew places one, at the test's
 # $HOMEBREW_PREFIX/Cellar/devbin/<version>, with opt linked to it, as brew links
-# the keg it has just installed, moving the link off any earlier one.
+# the keg it has just installed, moving the link off any earlier one. With
+# --formula and --link, another tool's keg, its formula's and its one link's
+# names in each of those places (issue 0326); both default to devbin's, so a
+# call naming neither builds devbin's keg as it always has.
 #
 # THE ONE KEG BUILDER (issue 0270): every test file asks it, so a change to the
 # formula's layout, as 0253's env script was, is followed here once, and no arm
 # tests a layout no formula writes. Its libexec is one of:
 #
-#   published  the default: from <src>, or from a fresh dev source (mkdevsrc),
-#              as the formula does, install --prefix <keg>/libexec --managed-by brew
-#              and the guides it puts beside libexec (keg_guides, 0254)
-#   --stub     an install written by hand (stub_install), marked as Homebrew's,
-#              whose launcher nothing runs: for an arm that reads a keg and
-#              never runs it
+#   published  the default: from <src>, or for devbin from a fresh dev source
+#              (mkdevsrc), as the formula does, install --prefix <keg>/libexec
+#              --managed-by brew, and for devbin the guides it puts beside
+#              libexec (keg_guides, 0254)
+#   --stub     an install written by hand, marked as Homebrew's, whose launcher
+#              nothing runs: for an arm that reads a keg and never runs it;
+#              devbin's from stub_install, a tool's its link's file and a
+#              manifest naming it, at libexec/.<formula>-install
+#   --bare     a tool's link's file alone, from before kegs carried a manifest
 #   --empty    a directory holding no devbin: for an opt link that names no
 #              install, so the keg has no bin/devbin either
 #
-# The keg's own bin/devbin is linked to libexec's launcher, as the formula
-# writes it on Linux, or with --script is the formula's env script on macOS
+# The keg's own bin/<link> is linked to libexec's, as the formula writes it on
+# Linux, or with --script is devbin's env script on macOS
 # (brew_keg_env_script). --linked adds Homebrew's bin link to it, as `brew link`
 # makes it. --linked-to makes that bin link lead to <path> instead, as a hand
 # might make it and brew link never does: for an arm about a bin link that
@@ -1677,10 +1683,18 @@ stub_install() {
 # EVERY STEP RETURNS ITS FAILURE, as switch_to's do, rather than leaning on
 # bats' errexit, which a caller in a condition or a subshell turns off.
 brew_keg() {
-  local from="" what="" script=0 linked=0 to="" keg
+  local from="" what="" script=0 linked=0 to="" keg formula=devbin link=devbin
   while [ "$#" -gt 1 ]; do
     case "$1" in
-      --from | --stub | --empty)
+      --formula)
+        formula="$2"
+        shift
+        ;;
+      --link)
+        link="$2"
+        shift
+        ;;
+      --from | --stub | --bare | --empty)
         [ -z "$what" ] || {
           fail "brew_keg: $1 is a second choice of libexec, after --$what"
           return 1
@@ -1711,19 +1725,34 @@ brew_keg() {
       return 1
       ;;
   esac
-  keg="$HOMEBREW_PREFIX/Cellar/devbin/$1"
+  if [ "$formula" != devbin ] && { [ "$script" = 1 ] || [ -z "$what" ]; }; then
+    fail "brew_keg: --script and a fresh dev source are devbin's own: name --from, --stub, --bare or --empty for $formula"
+    return 1
+  fi
+  if [ "$what" = bare ] && [ "$formula" = devbin ]; then
+    fail "brew_keg: --bare is a tool's keg from before kegs carried a manifest; devbin's is --stub"
+    return 1
+  fi
+  keg="$HOMEBREW_PREFIX/Cellar/$formula/$1"
   case "${what:-from}" in
     from)
       [ -n "$from" ] || from="$(mkdevsrc)" || return 1
       run devbin_run "$from" install --prefix "$keg/libexec" --managed-by brew
       assert_success || return 1
-      keg_guides "$keg" || {
+      [ "$formula" != devbin ] || keg_guides "$keg" || {
         fail "brew_keg: the keg's guides could not be copied in"
         return 1
       }
       ;;
-    stub)
-      stub_install "$keg/libexec" checkout "managed_by: brew" || return 1
+    stub | bare)
+      if [ "$formula" = devbin ]; then
+        stub_install "$keg/libexec" checkout "managed_by: brew" || return 1
+      else
+        mkdir -p "$keg/libexec/bin" || return 1
+        printf '#!/bin/sh\necho %s\n' "$link" >"$keg/libexec/bin/$link" || return 1
+        chmod 0755 "$keg/libexec/bin/$link" || return 1
+        [ "$what" = bare ] || printf '# tool: %s\n# managed_by: brew\n' "$formula" >"$keg/libexec/.$formula-install" || return 1
+      fi
       ;;
     empty)
       [ "$script$linked" = 00 ] || {
@@ -1734,17 +1763,17 @@ brew_keg() {
       ;;
   esac
   mkdir -p "$HOMEBREW_PREFIX/opt" || return 1
-  ln -sfn "../Cellar/devbin/$1" "$HOMEBREW_PREFIX/opt/devbin" || return 1
+  ln -sfn "../Cellar/$formula/$1" "$HOMEBREW_PREFIX/opt/$formula" || return 1
   [ "$what" != empty ] || return 0
   if [ "$script" = 1 ]; then
     brew_keg_env_script "$1" || return 1
   else
     mkdir -p "$keg/bin" || return 1
-    ln -sfn ../libexec/bin/devbin "$keg/bin/devbin" || return 1
+    ln -sfn "../libexec/bin/$link" "$keg/bin/$link" || return 1
   fi
   [ "$linked" = 1 ] || return 0
   mkdir -p "$HOMEBREW_PREFIX/bin" || return 1
-  ln -sfn "${to:-../Cellar/devbin/$1/bin/devbin}" "$HOMEBREW_PREFIX/bin/devbin" || return 1
+  ln -sfn "${to:-../Cellar/$formula/$1/bin/$link}" "$HOMEBREW_PREFIX/bin/$link" || return 1
 }
 
 # brew_keg_env_script <version> -- the keg's bin/devbin made the script the

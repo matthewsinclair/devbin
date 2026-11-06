@@ -49,16 +49,12 @@ refused_with() {
 }
 
 # demo_keg <version> -- the formula demo's keg for <version> as Homebrew places
-# one, at the test's $HOMEBREW_PREFIX/Cellar/demo/<version>: libexec holding the
-# link demo-cli's file, executable, no manifest, the keg's own bin/demo-cli a
-# link into libexec, and opt/demo linked to the keg.
+# one, at the test's $HOMEBREW_PREFIX/Cellar/demo/<version>, built by brew_keg,
+# the one keg builder: libexec holding the link demo-cli's file, executable, no
+# manifest, the keg's own bin/demo-cli a link into libexec, and opt/demo linked
+# to the keg.
 demo_keg() {
-  local keg="$HOMEBREW_PREFIX/Cellar/demo/$1"
-  mkdir -p "$keg/libexec/bin" "$keg/bin" "$HOMEBREW_PREFIX/opt" || return 1
-  printf '#!/bin/sh\necho demo\n' >"$keg/libexec/bin/demo-cli" || return 1
-  chmod 0755 "$keg/libexec/bin/demo-cli" || return 1
-  ln -sfn ../libexec/bin/demo-cli "$keg/bin/demo-cli" || return 1
-  ln -sfn "../Cellar/demo/$1" "$HOMEBREW_PREFIX/opt/demo"
+  brew_keg --formula demo --link demo-cli --bare "$1"
 }
 
 # demo_bin_link <version> -- Homebrew's bin link for demo-cli, as `brew link
@@ -131,7 +127,7 @@ demo_tree() {
   if tool_unmanifested_keg "$keg" other .other-install; then
     fail "demo's keg read as another formula's"
   fi
-  printf '# tool: demo\n' >"$keg/.demo-install"
+  brew_keg --formula demo --link demo-cli --stub 1.0.0 || fail "the keg with a manifest could not be made"
   if tool_unmanifested_keg "$keg" demo .demo-install; then
     fail "a keg with a manifest read as one without"
   fi
@@ -445,9 +441,8 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   [ "$(tool_manifest_field "$opt" .demo-install source_commit)" = "$sha" ] || fail "its commit: $(tool_manifest_field "$opt" .demo-install source_commit)"
   [ "$(tool_manifest_field "$opt" .demo-install managed_by)" = demo ] || fail "its manager: $(tool_manifest_field "$opt" .demo-install managed_by)"
   [ "$(tool_manifest_field "$opt" .demo-install line)" = "demo 1.2.3 (opt, ${sha:0:12})" ] || fail "its line: $(tool_manifest_field "$opt" .demo-install line)"
-  run bash -c "cd '$opt' && grep -v '^#' .demo-install | shasum -a 256 -c"
-  assert_success
-  assert_output_contains "bin/demo-cli: OK"
+  [ "$(grep -v '^#' "$opt/.demo-install")" = "$(cd "$opt" && sha256_files bin/demo-cli)" ] ||
+    fail "the manifest's body is not bin/demo-cli at its sha256: $(cat "$opt/.demo-install")"
 }
 
 @test "0326-4: an input changed and uncommitted refuses the publish, naming it, and nothing is written" {
@@ -713,7 +708,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   run devbin_run "$proj" use opt
   assert_success
   root="$(cd -P "$opt" && pwd -P)"
-  n="$(grep -vc '^#' "$opt/.demo-install")"
+  n="$(grep -v -c '^#' "$opt/.demo-install")"
   run devbin_run "$proj" doctor
   assert_output_contains "ok    demo switch: the link $link names opt at $root"
   assert_output_contains "ok    demo tree: the opt install at $root, $n file(s) as its manifest records"
@@ -729,13 +724,8 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   local proj sha keg="$HOMEBREW_PREFIX/Cellar/demo/1.2.3" root="$HOMEBREW_PREFIX/opt/demo/libexec" n
   proj="$(stamp_project)" || fail "the fixture's project could not be made"
   sha="$(git -C "$proj" rev-parse HEAD)"
-  run devbin_run "$proj" install --prefix "$keg/libexec" --managed-by brew
-  assert_success
-  mkdir -p "$keg/bin" "$HOMEBREW_PREFIX/opt" || fail "the keg's bin could not be made"
-  ln -s ../libexec/bin/demo-cli "$keg/bin/demo-cli" || fail "the keg's own link could not be made"
-  ln -sfn ../Cellar/demo/1.2.3 "$HOMEBREW_PREFIX/opt/demo" || fail "the opt link could not be made"
-  demo_bin_link 1.2.3 || fail "the fixture's bin link could not be made"
-  n="$(grep -vc '^#' "$keg/libexec/.demo-install")"
+  brew_keg --formula demo --link demo-cli --from "$proj" --linked 1.2.3 || fail "the keg could not be built from the project"
+  n="$(grep -v -c '^#' "$keg/libexec/.demo-install")"
   PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
   assert_output_contains "ok    demo switch: no link for demo-cli, so brew"
   assert_output_contains "ok    demo tree: the brew install at $root, $n file(s) as its manifest records"
@@ -749,12 +739,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
 @test "0326-9: doctor notes a tool's set left on dev or opt once Homebrew's copy is at that tree's version, naming brew upgrade, then bin/devbin use brew, and says nothing of a dev tree past it" {
   local proj keg="$HOMEBREW_PREFIX/Cellar/demo/1.2.3"
   proj="$(stamp_project)" || fail "the fixture's project could not be made"
-  run devbin_run "$proj" install --prefix "$keg/libexec" --managed-by brew
-  assert_success
-  mkdir -p "$keg/bin" "$HOMEBREW_PREFIX/opt" || fail "the keg's bin could not be made"
-  ln -s ../libexec/bin/demo-cli "$keg/bin/demo-cli" || fail "the keg's own link could not be made"
-  ln -sfn ../Cellar/demo/1.2.3 "$HOMEBREW_PREFIX/opt/demo" || fail "the opt link could not be made"
-  demo_bin_link 1.2.3 || fail "the fixture's bin link could not be made"
+  brew_keg --formula demo --link demo-cli --from "$proj" --linked 1.2.3 || fail "the keg could not be built from the project"
   run devbin_run "$proj" use dev
   assert_success
   PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
