@@ -1,0 +1,15 @@
+{
+  "id": "01M6QTC266BF3AFRZQQZPA05QP",
+  "ts": "2026-11-06T06:57:36.454Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, received before the clock read 2026-11-06 06:53Z by date -u: \"Ok, I am putting devbin-vc in charge of the intent estate now.\" vc took the desk at once, handed over from pipeliner-sc, with hv's words recorded on the take. hv's priorities for it: today's main focus is the agentic-engineering work, whose sessions come first (agentic-engineering-*, run by agentic-engineering-vc; Pipeliner's, run by pipeliner-sc; and geodica-estate); Webber's Xcode sessions, run by webber-vc, take a back seat for heavy lane work; hv tells the active VCs. Asks named so far: the agentic-engineering work's release 2, a rebuild of two VM images in one heavy slot, asked by agentic-engineering-dc only if a rehearsal on another machine finds fixes and only on hv's go; Pipeliner's cargo slot for pipeliner-cc's CLI builds and one bats run of its suite, neither before hv reads pipeliner-cc's design; Webber's verify run 7CDZKF, granted into heavy at 06:57Z by date -u with nothing ahead of it. 8GJE86, the restart of every session, stays asked and ungranted unless hv says. Utilz's 2.14.9 turn, devbin's push and the third remote stay with hv."
+  }
+}

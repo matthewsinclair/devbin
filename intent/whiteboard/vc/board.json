@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "43c43ff2-c91c-45b3-9f74-9df455a9fbe1",
-    "heartbeat_at": "2026-11-06T05:48:21.173Z",
+    "heartbeat_at": "2026-11-06T06:57:36.736Z",
     "status": "active",
-    "focus": "Holding at hv's wake for the new day (focus set 2026-11-06 05:48Z by date -u): today's plan is with hv in vc's window, and vc does no work until hv names it. The desk has no controller. Utilz's 2.14.9 cut waits for hv's word (utilz-vc re-asks; nothing outside intent/ has moved in Utilz since 195b1c91). devbin's main sits above v0.1.20, unpushed.",
+    "focus": "Running the estate desk at hv's word (taken just before 06:53Z by date -u): the agentic-engineering work comes first (its sessions, Pipeliner's and geodica-estate), and Webber's heavy runs wait behind it; 8GJE86 is asked, not granted. Utilz's 2.14.9 turn, devbin's push and the third remote wait for hv.",
     "claims": [
       "ST0011"
     ],
@@ -3959,7 +3959,8 @@
       "kind": "decision",
       "seq": 95,
       "text": "vc 2026-10-31 13:11Z (D69, design.md s12; on gtools-dc's WP-11 question relayed by gtools-vc): a gate declares the platforms it runs on, once, at the gate (platforms:, the core's words macos and linux); a host elsewhere counts it inactive on all, help --why names it, by name it refuses with the reason; on a listed platform a gate that cannot run stays the leg's failed (D62); a value outside the words is refused at config read; the cut's plan refuses a gate active on no leg it will run. WP17 (dc, after WP05 lands, in 0.1.19) with AC-6.1 and AC-6.2; AC-6.3 lands in WP02b (cc). Rejected: in_all: false on Gtools's app (a consumer weakening its gate to fit the core), no kovacs leg for Gtools (against 0295), an app test exiting 0 off macOS (a silent green). Gtools's kovacs-leg needs (an estate stub for check's estate-reading gates, prez with Utilz's bin on PATH) are measured in WP11 on kovacs; the host carries what the gates need (D62).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-06T06:56:40.814Z",
       "recorded_at": "2026-10-31T13:11:27.944Z"
     },
     {
@@ -4600,7 +4601,8 @@
       "kind": "decision",
       "seq": 145,
       "text": "hv's TUI answer in vc's window (received before the clock read 2026-11-05 12:06Z by date -u), as vc recommended: the app version cache gap cc found while drafting 0324 is filed as issue 0325 (8d5ea0df), and cc fixes it once 0324's unit is banked, before Gtools's turn. The shapes agreed between vc and cc: 0324 refuses at config read an app artefact beside macos.commit_stamp (cfg_macos_artefact's status 4); 0325 refuses at config read an app artefact whose inputs do not hold the app's version file (status 5), and release_names reads that file through the same function, so the key's required input and the version app-sign compares come from one rule. 0325 builds on 0324's banked tip.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-06T06:56:40.615Z",
       "recorded_at": "2026-11-05T12:23:37.789Z"
     },
     {
@@ -4610,6 +4612,14 @@
       "text": "hv's rulings after decision 145, 2026-11-05. In vc's window: \"go\" for Utilz's 2.14.9 cut, granted into bats and heavy at 12:44:53Z by date -u; then through the TUI (answered before the clock read 13:09Z by date -u), another estate's image build first, since hv's Windows run waited on it, so the unstarted cut's grant was revoked and the cut re-asked. In utilz-vc's window, relayed by utilz-vc: \"Let's localfold and hold across utilz-* please. Then hold on the bounce.\" So the re-ask was denied; the cut never started, and utilz-vc re-asks it fresh after the bounce. In vc's window through the TUI (answered before the clock read 13:15Z by date -u): the bounce is ccusage's 8GJE86, the restart of every Claude session on rhadamanth, granted once that estate's image build and its seed run end; devbin-vc, cc and dc localfold now (hv: \"context is high across devbin-*, lets localfold+compact while we wait\"), and after the restart each session picks up and holds. Fleet-wide, first-hand to another estate's session at 12:02Z and confirmed at 13:11Z for the whole fleet, relayed to vc: one layer of proof. A thing is proved by running it once as its user would; the commit gate's critic is the only critic; no suite that tests a suite, no planted faults beyond a guard's own one red case, no check of a check, no hardening against setups nobody here has, no replay of a replay; a verdict is a read and at most one run.",
       "state": "live",
       "recorded_at": "2026-11-05T13:16:46.524Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 147,
+      "text": "hv in vc's window, received before the clock read 2026-11-06 06:53Z by date -u: \"Ok, I am putting devbin-vc in charge of the intent estate now.\" vc took the desk at once, handed over from pipeliner-sc, with hv's words recorded on the take. hv's priorities for it: today's main focus is the agentic-engineering work, whose sessions come first (agentic-engineering-*, run by agentic-engineering-vc; Pipeliner's, run by pipeliner-sc; and geodica-estate); Webber's Xcode sessions, run by webber-vc, take a back seat for heavy lane work; hv tells the active VCs. Asks named so far: the agentic-engineering work's release 2, a rebuild of two VM images in one heavy slot, asked by agentic-engineering-dc only if a rehearsal on another machine finds fixes and only on hv's go; Pipeliner's cargo slot for pipeliner-cc's CLI builds and one bats run of its suite, neither before hv reads pipeliner-cc's design; Webber's verify run 7CDZKF, granted into heavy at 06:57Z by date -u with nothing ahead of it. 8GJE86, the restart of every session, stays asked and ungranted unless hv says. Utilz's 2.14.9 turn, devbin's push and the third remote stay with hv.",
+      "state": "live",
+      "recorded_at": "2026-11-06T06:57:36.454Z"
     }
   ],
   "sent": [
