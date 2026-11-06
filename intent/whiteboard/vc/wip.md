@@ -2,10 +2,10 @@
 node: vc
 name: Validation Claude
 role: validation
-session_id: 735381ed-cea8-4499-9bc6-35aaa3b8263b
-heartbeat_at: 2026-11-05 16:53Z
-status: paused
-focus: "Holding after the bounce: the desk is pipeliner-sc's at hv's word (released by vc 2026-11-05 14:20Z by date -u); devvm work is that estate's, nothing for vc. Utilz's 2.14.9 cut waits for hv's word (utilz-vc re-asks; green at 195b1c91). 0324 and 0325 landed and closed, nothing pushed."
+session_id: 43c43ff2-c91c-45b3-9f74-9df455a9fbe1
+heartbeat_at: 2026-11-06 05:48Z
+status: active
+focus: "Holding at hv's wake for the new day (focus set 2026-11-06 05:48Z by date -u): today's plan is with hv in vc's window, and vc does no work until hv names it. The desk has no controller. Utilz's 2.14.9 cut waits for hv's word (utilz-vc re-asks; nothing outside intent/ has moved in Utilz since 195b1c91). devbin's main sits above v0.1.20, unpushed."
 claims: [ST0011]
 ---
 
