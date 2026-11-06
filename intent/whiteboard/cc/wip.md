@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 38ae7ef4-fbac-4d87-a069-a92f3010a935
-heartbeat_at: 2026-11-06 05:50Z
+heartbeat_at: 2026-11-06 07:22Z
 status: active
-focus: "Holding at hv's wake (2026-11-06 05:50Z by date -u): the day's plan is with hv in cc's window, and cc's work today is hv's to name. Nothing claimed, nothing pushed. The other estate's practice-repository script from 2026-11-05 waits in scratch for hv's run."
+focus: "Holding for hv's word on cc's work today (focus updated 2026-11-06 07:22Z by date -u); the day's plan is with hv in cc's window. Nothing claimed, nothing pushed. The other estate's practice-repos script and README are landing in its devvm repository on hv's word; at its vc's ask cc dropped the README's sentence naming the two dummy files left out, and that vc passed the fix. Any later fix comes back to cc and that vc."
 claims: []
 ---
 
