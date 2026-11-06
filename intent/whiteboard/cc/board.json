@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "38ae7ef4-fbac-4d87-a069-a92f3010a935",
-    "heartbeat_at": "2026-11-06T12:40:25.415Z",
+    "heartbeat_at": "2026-11-06T13:22:20.666Z",
     "status": "active",
-    "focus": "Issue 0326, claimed (focus set 2026-11-06 12:40Z by date -u): the core carries dev/opt/brew for every project that declares its binaries; the switch and the publish are bin/devbin use and bin/devbin install, run in the tool's checkout. Landed by vc, unpushed: the contract text (a08b44db), 0326-1 (ffb93786), 0326-2 (6eb8726f), 0326-3 (e484bff7), 0326-4 (35239dda), 0326-5 use for a tool (2970280d), 0326-6 doctor for a tool (027edc02). Asked on vc's desk: 0326-9, doctor's note when a tool's set is left off brew, tip 44984987 on 027edc02, slot 01M6RDYR2C7F1GVXBV9BKH7X5C. Then 0326-7 the formula's one form, built on 0326-9, and 0326-8 the docs. Each unit runs its own arms on vc's desk; nothing pushed.",
+    "focus": "Issue 0326, claimed (focus set 2026-11-06 13:22Z by date -u): the core carries dev/opt/brew for every project that declares its binaries. Landed by vc, unpushed: contract a08b44db, 0326-1 ffb93786, 0326-2 6eb8726f, 0326-3 e484bff7, 0326-4 35239dda, 0326-5 2970280d, 0326-6 027edc02, 0326-9 f90aabdb (the left-off-brew note). Running on vc's desk: 0326-7, the formula's one install form, tip de05c759 on f90aabdb, slot 01M6RG1Y7G32VFWT44Z04XYDXX (kit i0326/u7). Built, kit ready, not asked: 0326-10, tool.bats's kegs through brew_keg and two scan lines, b2c942cf on de05c759 in i0326/u10, to rebase onto 0326-7's landed commit, red at the base unchanged. Then 0326-8 the docs (incl. docs/configuration.md:515's install-layout wording). Tree scans and lint run on the desk only; nothing pushed.",
     "claims": [
       "ISSUE:0326"
     ],
