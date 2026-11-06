@@ -42,33 +42,44 @@ tool_build_paths() {
   } | LC_ALL=C sort -u
 }
 
+# _tool_tracked <from> -- rc 0 when git tracks <from>, a runtime file that
+# ships as committed; rc 1 when it does not, a build product.
+_tool_tracked() {
+  git_readonly -C "$PROJECT_ROOT" ls-files --error-unmatch -- ":(literal)$1" >/dev/null 2>&1
+}
+
 # _tool_build_from <from> -- a `from` git tracks, as itself; a product, as the
 # inputs its dependency record names, when there is one.
 _tool_build_from() {
-  if git_readonly -C "$PROJECT_ROOT" ls-files --error-unmatch -- ":(literal)$1" >/dev/null 2>&1; then
+  if _tool_tracked "$1"; then
     printf '%s\n' "$1"
   elif [ -f "$PROJECT_ROOT/$1.d" ]; then
     dep_info_paths "$PROJECT_ROOT/$1.d" "$PROJECT_ROOT" || true
   fi
 }
 
-# tool_build_dirty -- whether the build's inputs differ from HEAD, one word:
-# `dirty` when git holds any of tool_build_paths changed, staged or untracked,
-# `clean` when none, and `unknown` when git cannot say. With no path to read,
-# the whole tree is read, so a missed input never reads clean: that is a first
+# tool_build_state -- git's porcelain lines for the build's inputs that differ
+# from HEAD (tool_build_paths), changed, staged or untracked, nothing when none;
+# rc 1 when git, or the declaration, cannot say. With no path to read, the
+# whole tree is read, so a missed input never reads clean: that is a first
 # build with nothing declared and no record yet, and the next build reads its
 # record.
-tool_build_dirty() {
-  local paths out p
+tool_build_state() {
+  local paths p
   local -a spec=()
-  if ! paths="$(tool_build_paths)"; then
-    printf 'unknown\n'
-    return 0
-  fi
+  paths="$(tool_build_paths)" || return 1
   while IFS= read -r p; do
     [ -n "$p" ] && spec+=(":(literal)$p")
   done <<<"$paths"
-  if ! out="$(git_readonly -C "$PROJECT_ROOT" status --porcelain --untracked-files=all -- ${spec[@]+"${spec[@]}"} 2>/dev/null)"; then
+  git_readonly -C "$PROJECT_ROOT" status --porcelain --untracked-files=all -- ${spec[@]+"${spec[@]}"} 2>/dev/null
+}
+
+# tool_build_dirty -- whether the build's inputs differ from HEAD, one word:
+# `dirty` when tool_build_state names any, `clean` when none, and `unknown`
+# when it cannot say.
+tool_build_dirty() {
+  local out
+  if ! out="$(tool_build_state)"; then
     printf 'unknown\n'
     return 0
   fi
@@ -118,4 +129,195 @@ tool_build() {
   warn "the build read inputs its line did not count ($line), so it runs once more to carry: $again"
   export DEVBIN_VERSION_LINE="$again"
   "$launcher" build "$@"
+}
+
+# --- the publish (T2, T3) ----------------------------------------------------
+#
+# tool_publish needs lib/install sourced too, for its one checksum pass
+# (_sha256_of_set), so a tool's manifest and devbin's are summed alike.
+
+# tool_runtime_set -- the tool's runtime set on this host (T1), one place a
+# line, `<its place in the tree><TAB><its file in the dev tree><TAB><kind>`:
+# each link at bin/<name>, then each file at its path (cfg_tool_links,
+# cfg_tool_files), the kind `tracked` for a file git tracks, which ships as
+# committed, and `product` for one a build makes. THE ONE LIST the publish reads.
+tool_runtime_set() {
+  local links files name from label path
+  links="$(cfg_tool_links)" || return 1
+  files="$(cfg_tool_files)" || return 1
+  while IFS=$'\t' read -r name from; do
+    [ -n "$name" ] || continue
+    _tool_set_row "bin/$name" "$from"
+  done <<<"$links"
+  while IFS=$'\t' read -r label path from; do
+    [ -n "$label" ] || continue
+    _tool_set_row "$path" "$from"
+  done <<<"$files"
+}
+
+_tool_set_row() {
+  if _tool_tracked "$2"; then
+    printf '%s\t%s\ttracked\n' "$1" "$2"
+  else
+    printf '%s\t%s\tproduct\n' "$1" "$2"
+  fi
+}
+
+# tool_publish <prefix> <force> <managed> -- publish the project's tool from
+# its dev checkout to <prefix>: its opt tree, or, with <managed> `brew`, the keg
+# its formula installs into (issue 0326). <force> `yes` replaces this tool's
+# own tree there. Everything that refuses does so before a byte is written:
+# a commit git cannot name, inputs that differ from it (T2), and a prefix that
+# is Homebrew's, another tool's, this tool's without <force>, or holds files no
+# install wrote. The build runs through the stamp when the set holds a
+# product, and each linked product must then print the clean dev line for
+# HEAD on --version, so the bytes published are that commit's. The copy
+# replaces each place whole, removes what the old manifest listed and the new
+# tree does not hold, and the manifest is written last: T3's four keys, the
+# tree's version line under `line`, and each file's sum.
+tool_publish() {
+  local prefix="${1%/}" force="$2" managed="$3" name m ver sha want set place from kind got word owner files removed line n
+  name="$(cfg_formula_name)" || return 1
+  m="$(cfg_tool_manifest)" || return 1
+  ver="$(read_version "$(cfg_version_from)" version-file 2>/dev/null || true)"
+  sha="$(git_head_sha "$PROJECT_ROOT" full)"
+  [ "$sha" != unknown ] || die "cannot publish $name: git cannot name the commit of $PROJECT_ROOT, so the install would claim none"
+  _tool_publish_clean "$name" "$sha"
+  _tool_publish_target "$prefix" "$name" "$m" "$force"
+  set="$(tool_runtime_set)" || die "cannot read $name's runtime set from the install: block (above)"
+  if grep -q $'\tproduct$' <<<"$set"; then
+    "$PROJECT_ROOT/bin/devbin" build || die "the build failed (above), so $name was not published"
+  fi
+  want="$(tool_line "$name" "$ver" dev "$sha")"
+  while IFS=$'\t' read -r place from kind; do
+    [ -n "$place" ] || continue
+    [ -e "$PROJECT_ROOT/$from" ] || die "$from is not there, so it cannot be published as $place -- the build makes it: $DEVBIN_INVOKE build"
+    [ "$kind" = product ] || continue
+    case "$place" in bin/*) ;; *) continue ;; esac
+    got="$("$PROJECT_ROOT/$from" --version 2>/dev/null)" || got=""
+    [ "$(tree_line_head "$got")" = "$want" ] ||
+      die "$from prints \"$got\" for --version, where a build of $sha carries \"$want\", so its bytes are no build of this commit -- build it with $DEVBIN_INVOKE build, then publish"
+  done <<<"$set"
+  word=opt
+  owner="$name"
+  if [ "$managed" = brew ]; then
+    word=brew
+    owner=brew
+  fi
+  removed="$(_tool_publish_write "$prefix" "$m" "$set")" || die "failed to write the install at $prefix (above)"
+  files="$(_tool_tree_files "$prefix" "$set")" || die "cannot list what the install at $prefix holds (above)"
+  line="$(tool_line "$name" "$ver" "$word" "$sha")"
+  _tool_publish_manifest "$prefix" "$m" "$name" "$ver" "$sha" "$owner" "$line" "$files" ||
+    die "failed to write the manifest at $prefix/$m (above)"
+  n="$(nonempty_lines "$files")"
+  printf '  published  %s file(s) to %s\n' "$n" "$prefix"
+  while IFS= read -r place; do
+    [ -z "$place" ] || printf '  removed    %s (%s no longer ships it)\n' "$place" "$name"
+  done <<<"$removed"
+  printf '  recorded   %s\n' "$line"
+}
+
+# _tool_publish_clean <name> <sha> -- refuse, naming each, inputs that differ
+# from <sha> (tool_build_state), or a git that cannot say.
+_tool_publish_clean() {
+  local state
+  state="$(tool_build_state)" || die "cannot publish $1: git cannot say whether its inputs are committed"
+  [ -n "$state" ] || return 0
+  die "refusing to publish $1: its inputs differ from $2, so the install would claim a commit its bytes are not
+$(printf '%s\n' "$state" | sed 's/^/       /')
+       commit or stash them, then publish"
+}
+
+# _tool_publish_target <prefix> <name> <manifest> <force> -- refuse a prefix the
+# publish may not write: a file, Homebrew's keg (its manifest says
+# `managed_by: brew`), another tool's install, this tool's without --force, or
+# a directory holding files and no manifest of this tool's (T2).
+_tool_publish_target() {
+  local p="$1" name="$2" m="$3" force="$4" owner t
+  [ ! -e "$p" ] || [ -d "$p" ] || die "$p is not a directory, so $name cannot be published there"
+  if [ -f "$p/$m" ]; then
+    owner="$(tool_manifest_field "$p" "$m" managed_by 2>/dev/null || true)"
+    t="$(tool_manifest_field "$p" "$m" tool 2>/dev/null || true)"
+    [ "$owner" != brew ] || die "$p is the $name Homebrew installed, and Homebrew replaces it whole at each version, so devbin will not write into it
+       to update it:  brew upgrade $name"
+    [ "$t" = "$name" ] || die "$p holds an install whose manifest names ${t:-no tool}, not $name, so it is left as it is"
+    [ "$force" = yes ] || die "$name is already published at $p
+       to replace it:  $DEVBIN_INVOKE install --force"
+    return 0
+  fi
+  if [ -d "$p" ] && [ -n "$(ls -A -- "$p" 2>/dev/null)" ]; then
+    die "$p holds files no install of $name wrote (it has no $m), so it is left as it is -- move it aside, or publish to another prefix"
+  fi
+}
+
+# _tool_publish_write <prefix> <manifest> <set> -- each place of <set> copied
+# whole from its dev file, then each file the old manifest at <prefix> listed
+# and the new tree does not hold removed, with each directory that leaves
+# empty; prints each place removed. The old manifest is read before anything
+# is written. A place is a path below the tree's root, as config validation
+# holds it, so nothing outside <prefix> is written or removed.
+_tool_publish_write() {
+  local p="$1" m="$2" set="$3" place from kind old rel dir now
+  local -A held=()
+  old=""
+  if [ -f "$p/$m" ]; then
+    old="$(awk '/^#/ { next } { line = $0; sub(/^[^ ]+  /, "", line); print line }' "$p/$m")" || return 1
+  fi
+  mkdir -p "$p" || return 1
+  while IFS=$'\t' read -r place from kind; do
+    [ -n "$place" ] || continue
+    mkdir -p "$(dirname "$p/$place")" || return 1
+    rm -rf -- "${p:?}/$place" || return 1
+    cp -R "$PROJECT_ROOT/$from" "$p/$place" || return 1
+  done <<<"$set"
+  now="$(_tool_tree_files "$p" "$set")" || return 1
+  while IFS= read -r rel; do
+    [ -n "$rel" ] && held[$rel]=1
+  done <<<"$now"
+  while IFS= read -r rel; do
+    [ -n "$rel" ] || continue
+    case "/$rel/" in */../* | //*) continue ;; esac
+    [ -z "${held[$rel]:-}" ] || continue
+    [ -e "$p/$rel" ] || [ -L "$p/$rel" ] || continue
+    rm -f -- "${p:?}/$rel" || return 1
+    printf '%s\n' "$rel"
+    dir="${rel%/*}"
+    while [ "$dir" != "$rel" ] && [ -d "$p/$dir" ] && [ -z "$(ls -A -- "$p/$dir")" ]; do
+      rmdir -- "$p/$dir" || return 1
+      case "$dir" in */*) dir="${dir%/*}" ;; *) break ;; esac
+    done
+  done <<<"$old"
+}
+
+# _tool_tree_files <prefix> <set> -- each file the places of <set> hold under
+# <prefix>, relative to it, sorted bytewise as T3 sorts: a place that is a
+# file, or each file below a place that is a directory, as a .app bundle is.
+_tool_tree_files() {
+  local p="$1" set="$2" place from kind f
+  while IFS=$'\t' read -r place from kind; do
+    [ -n "$place" ] || continue
+    if [ -d "$p/$place" ]; then
+      f="$(find_walk "$p/$place" -type f -print)" || return 1
+      [ -z "$f" ] || printf '%s\n' "${f//"$p/"/}"
+    elif [ -f "$p/$place" ]; then
+      printf '%s\n' "$place"
+    fi
+  done <<<"$set" | LC_ALL=C sort -u
+}
+
+# _tool_publish_manifest <prefix> <manifest> <name> <version> <sha> <owner>
+# <line> <files> -- the manifest in T3's form: `tool`, `version`,
+# `source_commit` and `managed_by` (<owner>: the tool's name, or brew), then
+# `line`, the tree's version line, which a compiled binary prints from here,
+# then one `<sha256>  <path>` line a file, in <files>' order.
+_tool_publish_manifest() {
+  local p="$1" m="$2" sums row
+  sums="$(_sha256_of_set "$p" "$8")" || return 1
+  mkdir -p "$(dirname "$p/$m")" || return 1
+  {
+    printf '# tool: %s\n# version: %s\n# source_commit: %s\n# managed_by: %s\n# line: %s\n' "$3" "$4" "$5" "$6" "$7"
+    while IFS= read -r row; do
+      [ -n "$row" ] && printf '%s  %s\n' "${row%%$'\t'*}" "${row#*$'\t'}"
+    done <<<"$sums"
+  } >"$p/$m"
 }

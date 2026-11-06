@@ -308,27 +308,36 @@ install:
     fail "devbin declares $(cfg_tool_manifest), and its bootstrap reads $DEVBIN_MANIFEST_REL"
 }
 
-# stamp_project [--no-tool] [<yaml>] -- a project, devbin installed and
-# committed in git with target/ ignored, VERSION 1.2.3, whose declared build
-# (tools/build.sh) writes target/release/demo-cli as a program that prints the
-# DEVBIN_VERSION_LINE it was built with, writes that file's dependency record
-# naming src/main.txt, and adds the line it carried to target/runs, one line a
-# run. It declares the tool demo, with the link demo-cli at
-# target/release/demo-cli, unless --no-tool; <yaml> is added at the config's
-# top level.
+# stamp_project [--no-tool] [--no-prefix] [--deaf] [<yaml>] -- a project,
+# devbin installed and committed in git with target/ ignored, VERSION 1.2.3,
+# whose declared build (tools/build.sh) writes target/release/demo-cli as a
+# program that prints the DEVBIN_VERSION_LINE it was built with, writes that
+# file's dependency record naming src/main.txt, and adds the line it carried to
+# target/runs, one line a run. It declares the tool demo, with the link
+# demo-cli at target/release/demo-cli, unless --no-tool, and the prefix
+# $DEVBIN_TEST_TMPDIR/opt-demo, unless --no-prefix. With --deaf the build's
+# program prints a fixed line, never the one it is handed. <yaml> is added at
+# the config's top level.
 stamp_project() {
-  local tool=yes proj
-  if [ "${1:-}" = --no-tool ]; then
-    tool=""
+  local tool=yes prefix=yes deaf="" proj
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --no-tool) tool="" ;;
+      --no-prefix) prefix="" ;;
+      --deaf) deaf=yes ;;
+      *) break ;;
+    esac
     shift
-  fi
+  done
   proj="$DEVBIN_TEST_TMPDIR/stamped"
   create_test_project stamped >/dev/null || return 1
   install_devbin "$proj" || return 1
   {
     printf 'project:\n  name: demo\n'
     if [ -n "$tool" ]; then
-      printf 'install:\n  prefix: %s/opt-demo\n  links:\n    demo-cli: target/release/demo-cli\n' "$DEVBIN_TEST_TMPDIR"
+      printf 'install:\n'
+      [ -z "$prefix" ] || printf '  prefix: %s/opt-demo\n' "$DEVBIN_TEST_TMPDIR"
+      printf '  links:\n    demo-cli: target/release/demo-cli\n'
     fi
     printf 'commands:\n  build:\n    run: sh tools/build.sh\n'
     [ -z "${1:-}" ] || printf '%s\n' "$1"
@@ -340,7 +349,11 @@ stamp_project() {
   printf 'target/\n' >"$proj/.gitignore" || return 1
   {
     printf '#!/bin/sh\nset -e\nmkdir -p target/release\n'
-    printf '%s\n' "printf \"#!/bin/sh\\necho '%s'\\n\" \"\$DEVBIN_VERSION_LINE\" >target/release/demo-cli"
+    if [ -n "$deaf" ]; then
+      printf '%s\n' "printf \"#!/bin/sh\\necho 'demo 1.2.3 (dev, unknown)'\\n\" >target/release/demo-cli"
+    else
+      printf '%s\n' "printf \"#!/bin/sh\\necho '%s'\\n\" \"\$DEVBIN_VERSION_LINE\" >target/release/demo-cli"
+    fi
     printf 'chmod 755 target/release/demo-cli\n'
     printf '%s\n' "printf '%s/target/release/demo-cli: %s/src/main.txt\\n' \"\$PWD\" \"\$PWD\" >target/release/demo-cli.d"
     printf '%s\n' "printf '%s\\n' \"\$DEVBIN_VERSION_LINE\" >>target/runs"
@@ -404,4 +417,100 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   run devbin_run "$proj" build
   assert_success
   [ -z "$(cat "$proj/target/runs")" ] || fail "a project with no tool's build carried: $(cat "$proj/target/runs")"
+}
+
+@test "0326-4: a tool publishes from its checkout to its prefix: its link at bin/<name>, and a manifest naming it, its version, its commit and its opt line" {
+  local proj sha opt="$DEVBIN_TEST_TMPDIR/opt-demo"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" install
+  assert_success
+  assert_output_contains "recorded   demo 1.2.3 (opt, ${sha:0:12})"
+  [ -x "$opt/bin/demo-cli" ] || fail "no executable bin/demo-cli in the opt tree"
+  [ "$(tool_manifest_field "$opt" .demo-install tool)" = demo ] || fail "the manifest's tool: $(tool_manifest_field "$opt" .demo-install tool)"
+  [ "$(tool_manifest_field "$opt" .demo-install version)" = 1.2.3 ] || fail "its version: $(tool_manifest_field "$opt" .demo-install version)"
+  [ "$(tool_manifest_field "$opt" .demo-install source_commit)" = "$sha" ] || fail "its commit: $(tool_manifest_field "$opt" .demo-install source_commit)"
+  [ "$(tool_manifest_field "$opt" .demo-install managed_by)" = demo ] || fail "its manager: $(tool_manifest_field "$opt" .demo-install managed_by)"
+  [ "$(tool_manifest_field "$opt" .demo-install line)" = "demo 1.2.3 (opt, ${sha:0:12})" ] || fail "its line: $(tool_manifest_field "$opt" .demo-install line)"
+  run bash -c "cd '$opt' && grep -v '^#' .demo-install | shasum -a 256 -c"
+  assert_success
+  assert_output_contains "bin/demo-cli: OK"
+}
+
+@test "0326-4: an input changed and uncommitted refuses the publish, naming it, and nothing is written" {
+  local proj opt="$DEVBIN_TEST_TMPDIR/opt-demo"
+  proj="$(stamp_project 'build:
+  inputs:
+    - src/main.txt')" || fail "the fixture's project could not be made"
+  printf 'changed\n' >>"$proj/src/main.txt"
+  run devbin_run "$proj" install
+  assert_failure
+  assert_output_contains "refusing to publish demo: its inputs differ from"
+  assert_output_contains "src/main.txt"
+  [ ! -e "$opt" ] || fail "the refused publish wrote $opt"
+}
+
+@test "0326-4: an existing install is replaced only with --force, and a file it no longer ships is removed" {
+  local proj cfg opt="$DEVBIN_TEST_TMPDIR/opt-demo" head='project:\n  name: demo\ninstall:\n  prefix: %s\n  links:\n    demo-cli: target/release/demo-cli\n'
+  local tail='commands:\n  build:\n    run: sh tools/build.sh\n'
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  cfg="$proj/bin/.devbin/config.yaml"
+  # shellcheck disable=SC2059 # the head and tail are this arm's own formats
+  printf "$head  files:\n    notes:\n      path: share/notes.md\n      from: docs/notes.md\n$tail" "$opt" >"$cfg"
+  git -C "$proj" -c user.email=t@t -c user.name=t commit -qam "notes" || fail "the config with notes could not be committed"
+  run devbin_run "$proj" install
+  assert_success
+  [ -f "$opt/share/notes.md" ] || fail "the first publish shipped no share/notes.md"
+  run devbin_run "$proj" install
+  assert_failure
+  assert_output_contains "demo is already published at $opt"
+  # shellcheck disable=SC2059 # the head and tail are this arm's own formats
+  printf "$head$tail" "$opt" >"$cfg"
+  git -C "$proj" -c user.email=t@t -c user.name=t commit -qam "no notes" || fail "the config with no notes could not be committed"
+  run devbin_run "$proj" install --force
+  assert_success
+  assert_output_contains "removed    share/notes.md (demo no longer ships it)"
+  [ ! -e "$opt/share" ] || fail "the file and its emptied directory are still there"
+  [ -x "$opt/bin/demo-cli" ] || fail "the replace lost bin/demo-cli"
+}
+
+@test "0326-4: --managed-by brew marks the install Homebrew's, with a brew line, and a later install will not write into it" {
+  local proj sha keg="$DEVBIN_TEST_TMPDIR/keg/libexec"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" install --prefix "$keg" --managed-by brew
+  assert_success
+  [ "$(tool_manifest_field "$keg" .demo-install managed_by)" = brew ] || fail "the keg's manager: $(tool_manifest_field "$keg" .demo-install managed_by)"
+  [ "$(tool_manifest_field "$keg" .demo-install line)" = "demo 1.2.3 (brew, ${sha:0:12})" ] || fail "the keg's line: $(tool_manifest_field "$keg" .demo-install line)"
+  run devbin_run "$proj" install --prefix "$keg" --force
+  assert_failure
+  assert_output_contains "is the demo Homebrew installed"
+}
+
+@test "0326-4: a tool with no prefix refuses its publish by name, and --prefix serves one run" {
+  local proj
+  proj="$(stamp_project --no-prefix)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" install
+  assert_failure
+  assert_output_contains "set install.prefix in this project's bin/.devbin/config.yaml"
+  run devbin_run "$proj" install --prefix "$DEVBIN_TEST_TMPDIR/one-run"
+  assert_success
+  [ -x "$DEVBIN_TEST_TMPDIR/one-run/bin/demo-cli" ] || fail "--prefix published nothing there"
+}
+
+@test "0326-4: a product that does not print the dev line its build was handed refuses the publish" {
+  local proj
+  proj="$(stamp_project --deaf)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" install
+  assert_failure
+  assert_output_contains 'target/release/demo-cli prints "demo 1.2.3 (dev, unknown)" for --version'
+  [ ! -e "$DEVBIN_TEST_TMPDIR/opt-demo/.demo-install" ] || fail "a manifest was written for bytes no build of the commit made"
+}
+
+@test "0326-4: a project with no tool still vendors on install, as before" {
+  local proj
+  proj="$(stamp_project --no-tool)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" install
+  assert_failure
+  assert_output_contains "devbin is already installed at"
 }
