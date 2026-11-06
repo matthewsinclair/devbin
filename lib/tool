@@ -42,16 +42,16 @@ tool_build_paths() {
   } | LC_ALL=C sort -u
 }
 
-# _tool_tracked <from> -- rc 0 when git tracks <from>, a runtime file that
+# tool_tracked <from> -- rc 0 when git tracks <from>, a runtime file that
 # ships as committed; rc 1 when it does not, a build product.
-_tool_tracked() {
+tool_tracked() {
   git_readonly -C "$PROJECT_ROOT" ls-files --error-unmatch -- ":(literal)$1" >/dev/null 2>&1
 }
 
 # _tool_build_from <from> -- a `from` git tracks, as itself; a product, as the
 # inputs its dependency record names, when there is one.
 _tool_build_from() {
-  if _tool_tracked "$1"; then
+  if tool_tracked "$1"; then
     printf '%s\n' "$1"
   elif [ -f "$PROJECT_ROOT/$1.d" ]; then
     dep_info_paths "$PROJECT_ROOT/$1.d" "$PROJECT_ROOT" || true
@@ -156,7 +156,7 @@ tool_runtime_set() {
 }
 
 _tool_set_row() {
-  if _tool_tracked "$2"; then
+  if tool_tracked "$2"; then
     printf '%s\t%s\ttracked\n' "$1" "$2"
   else
     printf '%s\t%s\tproduct\n' "$1" "$2"
@@ -404,14 +404,9 @@ tool_use() {
 
 # _tool_use_report <links> -- each link's tree, by its line; rc 1 for a link it
 # cannot follow, a missing Homebrew copy with no link, or a set split across
-# trees.
-#
-# A SPLIT IS NAMED BY THE TREES THE LINKS SERVE: dev, brew for no link, and
-# for a link into an install its tree's word with its root, so two installs of
-# one word are told apart. A link it cannot follow has said why already, and is
-# no tree to compare.
+# trees (tool_set_split).
 _tool_use_report() {
-  local name from state p root brew formula rc=0 first="" first_tree="" seen tree
+  local name from state p root brew formula split rc=0
   formula="$(cfg_formula_name)" || return 1
   while IFS=$'\t' read -r name from; do
     [ -n "$name" ] || continue
@@ -419,15 +414,11 @@ _tool_use_report() {
     p="$(tool_link_path "$name")" || p="$name"
     case "$state" in
       "dev "*)
-        printf 'use: the link %s names the dev tree\n  %s\n' "$p" "$(_tool_dev_copy_line "$from")"
-        seen="dev"
-        tree="dev"
+        printf 'use: the link %s names the dev tree\n  %s\n' "$p" "$(tool_copy_line "$PROJECT_ROOT/$from" || printf '%s prints no version line' "$from")"
         ;;
       "at "*)
         root="${state#at }"
-        tree="$(tool_tree_word "$root") at $root"
-        printf 'use: the link %s names\n  %s\n' "$p" "$(tool_tree_line "$root" || printf '%s, which records no version line' "$tree")"
-        seen="at $root"
+        printf 'use: the link %s names\n  %s\n' "$p" "$(tool_tree_line "$root" || printf '%s, which records no version line' "$(_tool_state_words "$state")")"
         ;;
       none)
         if brew="$(tool_brew_root "$formula")"; then
@@ -437,33 +428,79 @@ _tool_use_report() {
           printf '  %s, or run bin/devbin use dev or opt in this checkout\n' "$(tool_brew_unplaced_fix "$formula")"
           rc=1
         fi
-        seen="brew"
-        tree="brew"
         ;;
       *)
         warn "${state#bad }"
         rc=1
-        continue
         ;;
     esac
-    if [ -z "$first" ]; then
-      first="$seen"
-      first_tree="$tree"
-    elif [ "$seen" != "$first" ]; then
-      warn "the link set is split: $name serves $tree, where the set's first link serves $first_tree -- point them together with bin/devbin use dev, opt or brew"
-      rc=1
-    fi
   done <<<"$1"
+  if ! split="$(tool_set_split "$1")"; then
+    warn "$split"
+    rc=1
+  fi
   return "$rc"
 }
 
-# _tool_dev_copy_line <from> -- the line the dev tree's copy prints on
-# --version, or what stands in for one it does not print.
-_tool_dev_copy_line() {
+# tool_set_split <links> -- rc 1, saying how, when the link set serves more
+# than one tree (T5): the first link whose tree is not the first link's, named
+# by the tree each serves; rc 0, printing nothing, when every link it can
+# follow serves one. THE ONE RULE for a split: use's report and doctor's switch
+# rows both say its answer.
+#
+# A SPLIT IS NAMED BY THE TREES THE LINKS SERVE: dev, brew for no link, and
+# for a link into an install its tree's word with its root, so two installs of
+# one word are told apart. A link it cannot follow is no tree to compare: its
+# own row says why.
+tool_set_split() {
+  local name from state key first="" first_state=""
+  while IFS=$'\t' read -r name from; do
+    [ -n "$name" ] || continue
+    state="$(tool_switch_state "$name" "$from")"
+    key="$(_tool_state_key "$state")" || continue
+    if [ -z "$first" ]; then
+      first="$key"
+      first_state="$state"
+    elif [ "$key" != "$first" ]; then
+      printf "the link set is split: %s serves %s, where the set's first link serves %s -- point them together with bin/devbin use dev, opt or brew\n" \
+        "$name" "$(_tool_state_words "$state")" "$(_tool_state_words "$first_state")"
+      return 1
+    fi
+  done <<<"$1"
+  return 0
+}
+
+# _tool_state_key <state> -- what a split compares of tool_switch_state's
+# <state>: `dev`, `brew` for no link, or `at <root>`; rc 1 for a link it cannot
+# follow.
+_tool_state_key() {
+  case "$1" in
+    "dev "*) printf 'dev\n' ;;
+    "at "*) printf '%s\n' "$1" ;;
+    none) printf 'brew\n' ;;
+    *) return 1 ;;
+  esac
+}
+
+# _tool_state_words <state> -- the tree <state> serves, in words: `dev`,
+# `brew` for no link, or `<tree word> at <root>`.
+_tool_state_words() {
+  case "$1" in
+    "dev "*) printf 'dev\n' ;;
+    "at "*) printf '%s at %s\n' "$(tool_tree_word "${1#at }")" "${1#at }" ;;
+    *) printf 'brew\n' ;;
+  esac
+}
+
+# tool_copy_line <file> -- the version line <file> prints on --version, its
+# first line read up to the closing parenthesis (tree_line_head); rc 1,
+# printing nothing, when it prints none or will not run.
+tool_copy_line() {
   local got
-  got="$("$PROJECT_ROOT/$1" --version 2>/dev/null)" || got=""
+  got="$("$1" --version 2>/dev/null)" || return 1
   got="$(tree_line_head "${got%%$'\n'*}")"
-  if [ -n "$got" ]; then printf '%s\n' "$got"; else printf '%s prints no version line\n' "$1"; fi
+  [ -n "$got" ] || return 1
+  printf '%s\n' "$got"
 }
 
 # _tool_use_shadowed <links> <word> -- the shadow check for each link

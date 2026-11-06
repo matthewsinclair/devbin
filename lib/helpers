@@ -4722,6 +4722,18 @@ tool_line() {
   printf '%s %s (%s, %s)\n' "$1" "${2:-unknown}" "$3" "$sha"
 }
 
+# tool_line_parse <line> -- tool_line's inverse: the parts of a line in T4's
+# shape, read up to its closing parenthesis as T4's reader reads it
+# (tree_line_head), as one line `<tool><TAB><version><TAB><tree><TAB><sha12 or
+# unknown><TAB><mark>`, the mark `+dirty` or empty; rc 1, nothing printed, for
+# a line not in that shape. Pure.
+tool_line_parse() {
+  local head
+  head="$(tree_line_head "$1")"
+  [[ "$head" =~ ^([^ ]+)\ ([^ ]+)\ \(([a-z]+),\ ([0-9a-f]{12}|unknown)(\+dirty)?\)$ ]] || return 1
+  printf '%s\t%s\t%s\t%s\t%s\n' "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}" "${BASH_REMATCH[3]}" "${BASH_REMATCH[4]}" "${BASH_REMATCH[5]}"
+}
+
 # dep_info_paths <dep-info file> <root> -- each input a build's dependency
 # record names (make's form, as cargo writes `<binary>.d` beside a binary),
 # that lies below <root>, relative to it, one a line, each once (issue 0326:

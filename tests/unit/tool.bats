@@ -10,12 +10,12 @@
 #
 # A project declares its tool in an install: block, and the 0326-2 arms hold
 # the declaration's validation and its readers in lib/config; the 0326-3 arms
-# its build's line, the 0326-4 arms its publish, and the 0326-5 arms its
-# switch.
+# its build's line, the 0326-4 arms its publish, the 0326-5 arms its switch,
+# and the 0326-6 arms its rows in doctor.
 #
 # WHAT THIS DOES NOT CATCH, declared so a green is never read as covering it:
-#   - a tool's doctor rows, which a later unit of the issue adds and tests;
-#   - a tool's switch on a PATH where its link is shadowed: the arms put
+#   - use's own word on a link a login shell does not run: the 0326-6 arm runs
+#     doctor's shadow row, which asks the same check, and the 0326-5 arms put
 #     $HOME/.local/bin first, as the suite's setup does;
 #   - the keg layout on macOS, where devbin's formula writes an env script: the
 #     arms here build the Linux layout, a link into libexec.
@@ -313,14 +313,16 @@ install:
 
 # stamp_project [--no-tool] [--no-prefix] [--deaf] [<yaml>] -- a project,
 # devbin installed and committed in git with target/ ignored, VERSION 1.2.3,
-# whose declared build (tools/build.sh) writes target/release/demo-cli as a
-# program that prints the DEVBIN_VERSION_LINE it was built with, writes that
-# file's dependency record naming src/main.txt, and adds the line it carried to
-# target/runs, one line a run. It declares the tool demo, with the link
-# demo-cli at target/release/demo-cli, unless --no-tool, and the prefix
-# $DEVBIN_TEST_TMPDIR/opt-demo, unless --no-prefix. With --deaf the build's
-# program prints a fixed line, never the one it is handed. <yaml> is added at
-# the config's top level.
+# whose declared build (tools/build.sh) writes target/release/demo-cli from
+# tools/demo-cli.in, writes that file's dependency record naming src/main.txt,
+# and adds the line it carried to target/runs, one line a run. The program
+# reads its line as a compiled tool does (T4): in an install, the line its
+# manifest records, its directory's ../.demo-install where that names demo, and
+# otherwise the DEVBIN_VERSION_LINE it was built with. It declares the tool
+# demo, with the link demo-cli at target/release/demo-cli, unless --no-tool,
+# and the prefix $DEVBIN_TEST_TMPDIR/opt-demo, unless --no-prefix. With --deaf
+# the build's program prints a fixed line, never the one it is handed. <yaml>
+# is added at the config's top level.
 stamp_project() {
   local tool=yes prefix=yes deaf="" proj
   while [ $# -gt 0 ]; do
@@ -350,12 +352,19 @@ stamp_project() {
   printf 'source\n' >"$proj/src/main.txt" || return 1
   printf 'notes\n' >"$proj/docs/notes.md" || return 1
   printf 'target/\n' >"$proj/.gitignore" || return 1
+  printf '%s\n' '#!/bin/sh' \
+    "m=\"\$(dirname \"\$0\")/../.demo-install\"" \
+    "if [ -f \"\$m\" ] && grep -qx '# tool: demo' \"\$m\"; then" \
+    "  sed -n 's/^# line: //p' \"\$m\"" \
+    '  exit 0' \
+    'fi' \
+    "echo '@LINE@'" >"$proj/tools/demo-cli.in" || return 1
   {
     printf '#!/bin/sh\nset -e\nmkdir -p target/release\n'
     if [ -n "$deaf" ]; then
       printf '%s\n' "printf \"#!/bin/sh\\necho 'demo 1.2.3 (dev, unknown)'\\n\" >target/release/demo-cli"
     else
-      printf '%s\n' "printf \"#!/bin/sh\\necho '%s'\\n\" \"\$DEVBIN_VERSION_LINE\" >target/release/demo-cli"
+      printf '%s\n' "sed \"s|@LINE@|\$DEVBIN_VERSION_LINE|\" tools/demo-cli.in >target/release/demo-cli"
     fi
     printf 'chmod 755 target/release/demo-cli\n'
     printf '%s\n' "printf '%s/target/release/demo-cli: %s/src/main.txt\\n' \"\$PWD\" \"\$PWD\" >target/release/demo-cli.d"
@@ -620,4 +629,118 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   run devbin_run "$proj" use
   assert_failure
   assert_output_contains "the link set is split: demo-sh serves brew, where the set's first link serves dev"
+}
+
+@test "0326-6: doctor passes a tool's dev copy that prints the line a build here carries, and gives a project with no tool no tool rows" {
+  local proj sha
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" build
+  assert_success
+  run devbin_run "$proj" doctor
+  assert_output_contains "ok    demo dev: target/release/demo-cli prints the line a build here carries, demo 1.2.3 (dev, ${sha:0:12})"
+  assert_output_contains "note  demo switch: no link for demo-cli, and Homebrew has no demo here"
+  rm -rf "$proj"
+  proj="$(stamp_project --no-tool)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" doctor
+  [[ "$output" == *" checks, "*" failed, "*" notes"* ]] || fail "doctor did not run to its count: $output"
+  refute_output_contains "demo dev:"
+  refute_output_contains "demo switch:"
+  refute_output_contains "demo tree:"
+}
+
+@test "0326-6: doctor notes a tool's dev copy built before an input changed or before HEAD moved, and fails one built from a commit HEAD does not contain" {
+  local proj old sha
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  old="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" build
+  assert_success
+  printf 'changed\n' >>"$proj/src/main.txt"
+  run devbin_run "$proj" doctor
+  assert_output_contains "note  demo dev: target/release/demo-cli was built from HEAD's commit, and prints demo 1.2.3 (dev, ${old:0:12}) where a build now carries demo 1.2.3 (dev, ${old:0:12}+dirty)"
+  git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -qam "the change" || fail "the change could not be committed"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" doctor
+  assert_output_contains "note  demo dev: HEAD has moved past the build: target/release/demo-cli prints demo 1.2.3 (dev, ${old:0:12}), and a build now carries demo 1.2.3 (dev, ${sha:0:12})"
+  git -C "$proj" reset -q --hard "$old" || fail "HEAD could not be reset"
+  git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -q --amend -m "amended" || fail "the commit could not be amended"
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo dev: target/release/demo-cli prints demo 1.2.3 (dev, ${old:0:12}), built from a commit HEAD does not contain"
+}
+
+@test "0326-6: doctor fails a tool's dev copy that names no commit, and one that prints no version line" {
+  local proj
+  proj="$(stamp_project --deaf)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" build
+  assert_success
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo dev: target/release/demo-cli prints demo 1.2.3 (dev, unknown), which names no commit"
+  printf '#!/bin/sh\nexit 0\n' >"$proj/target/release/demo-cli"
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo dev: target/release/demo-cli prints no version line on --version"
+}
+
+@test "0326-6: doctor fails a tool's link a login shell does not run, naming what comes first, and a link set split across trees" {
+  local proj cfg first="$DEVBIN_TEST_TMPDIR/first" link="$HOME/.local/bin/demo-cli"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  cfg="$proj/bin/.devbin/config.yaml"
+  printf '#!/bin/sh\necho demo\n' >"$proj/bin/demo-sh"
+  chmod 755 "$proj/bin/demo-sh"
+  printf 'project:\n  name: demo\ninstall:\n  prefix: %s/opt-demo\n  links:\n    demo-cli: target/release/demo-cli\n    demo-sh: bin/demo-sh\ncommands:\n  build:\n    run: sh tools/build.sh\n' "$DEVBIN_TEST_TMPDIR" >"$cfg"
+  git -C "$proj" add -A || fail "the two links could not be staged"
+  git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -qm "two links" || fail "the two links could not be committed"
+  run devbin_run "$proj" build
+  assert_success
+  run devbin_run "$proj" use dev
+  assert_success
+  mkdir -p "$first"
+  printf '#!/bin/sh\n' >"$first/demo-cli"
+  chmod 0755 "$first/demo-cli"
+  PATH="$first:$PATH" run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo switch: the link $link is shadowed: the first demo-cli on PATH is $first/demo-cli"
+  rm -f "$HOME/.local/bin/demo-sh"
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo switch: the link set is split: demo-sh serves brew, where the set's first link serves dev"
+}
+
+@test "0326-6: doctor passes a tool's opt tree that matches its manifest, and names each file that drifted with the republish" {
+  local proj sha opt="$DEVBIN_TEST_TMPDIR/opt-demo" link="$HOME/.local/bin/demo-cli" root n
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" install
+  assert_success
+  run devbin_run "$proj" use opt
+  assert_success
+  root="$(cd -P "$opt" && pwd -P)"
+  n="$(grep -vc '^#' "$opt/.demo-install")"
+  run devbin_run "$proj" doctor
+  assert_output_contains "ok    demo switch: the link $link names opt at $root"
+  assert_output_contains "ok    demo tree: the opt install at $root, $n file(s) as its manifest records"
+  assert_output_contains "ok    demo tree: $root/bin/demo-cli prints its install's line, demo 1.2.3 (opt, ${sha:0:12})"
+  printf '# drift\n' >>"$opt/bin/demo-cli"
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo tree: the opt install at $root does not match its manifest"
+  assert_output_contains "edited:  bin/demo-cli"
+  assert_output_contains "republish it from this checkout: bin/devbin install --force"
+}
+
+@test "0326-6: doctor checks the keg a formula's install writes, with no link, and notes a keg with no manifest, naming brew upgrade" {
+  local proj sha keg="$HOMEBREW_PREFIX/Cellar/demo/1.2.3" root="$HOMEBREW_PREFIX/opt/demo/libexec" n
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" install --prefix "$keg/libexec" --managed-by brew
+  assert_success
+  mkdir -p "$keg/bin" "$HOMEBREW_PREFIX/opt" || fail "the keg's bin could not be made"
+  ln -s ../libexec/bin/demo-cli "$keg/bin/demo-cli" || fail "the keg's own link could not be made"
+  ln -sfn ../Cellar/demo/1.2.3 "$HOMEBREW_PREFIX/opt/demo" || fail "the opt link could not be made"
+  demo_bin_link 1.2.3 || fail "the fixture's bin link could not be made"
+  n="$(grep -vc '^#' "$keg/libexec/.demo-install")"
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
+  assert_output_contains "ok    demo switch: no link for demo-cli, so brew"
+  assert_output_contains "ok    demo tree: the brew install at $root, $n file(s) as its manifest records"
+  assert_output_contains "ok    demo tree: $root/bin/demo-cli prints its install's line, demo 1.2.3 (brew, ${sha:0:12})"
+  rm "$keg/libexec/.demo-install"
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
+  assert_output_contains "note  demo tree: Homebrew's keg at $root has no manifest, the form written before devbin's core"
+  assert_output_contains "run: brew upgrade demo, once a release that writes the new form is out"
 }
