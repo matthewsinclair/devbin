@@ -1,0 +1,16 @@
+{
+  "id": "01M6R4282V6D7GJD38HZQP6MP0",
+  "ts": "2026-11-06T09:47:00.571Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 201,
+    "text": "When issue 0326 lands (the core's dev/opt/brew for a project's own binaries, run as bin/devbin install and bin/devbin use in a tool's checkout): tell pipeliner-sc, whose decision 91 holds Pipeliner's CLI to no switch of its own, so pipeliner-cc takes up the core's; tell pplr-vc, cldr-vc and ccusage-vc, whose pplr#0001, cldr#0001 and ccusage#0007 adopt it, with no tool keeping a use or install verb; and have the vcs of Utilz, Molt and Gtools file their adoptions (decision 150). Intent too, while it vendors devbin (decision 150)."
+  }
+}

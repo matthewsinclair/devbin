@@ -4636,10 +4636,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 201,
-      "text": "When issue 0326 lands (the core's dev/opt/brew for a project's own binaries, run as bin/devbin install and bin/devbin use in a tool's checkout): tell pipeliner-sc, whose decision 91 holds Pipeliner's CLI to no switch of its own, so pipeliner-cc takes up the core's; tell pplr-vc, cldr-vc and ccusage-vc, whose pplr#0001, cldr#0001 and ccusage#0007 adopt it, with no tool keeping a use or install verb; and have the vcs of Utilz, Molt and Gtools file their adoptions (decision 150). Intent waits under directive 9.",
+      "text": "When issue 0326 lands (the core's dev/opt/brew for a project's own binaries, run as bin/devbin install and bin/devbin use in a tool's checkout): tell pipeliner-sc, whose decision 91 holds Pipeliner's CLI to no switch of its own, so pipeliner-cc takes up the core's; tell pplr-vc, cldr-vc and ccusage-vc, whose pplr#0001, cldr#0001 and ccusage#0007 adopt it, with no tool keeping a use or install verb; and have the vcs of Utilz, Molt and Gtools file their adoptions (decision 150). Intent too, while it vendors devbin (decision 150).",
       "state": "live",
       "recorded_at": "2026-11-06T08:34:32.959Z",
-      "edited_at": "2026-11-06T09:43:50.619Z"
+      "edited_at": "2026-11-06T09:47:00.571Z"
     },
     {
       "node": "vc",
@@ -4653,9 +4653,10 @@
       "node": "vc",
       "kind": "decision",
       "seq": 150,
-      "text": "hv's TUI answers in vc's window, received before the clock read 2026-11-06 09:41Z by date -u, on devbin-cc's shape for issue 0326: (1) the dev/opt/brew switch and the publish are devbin's own, bin/devbin use and bin/devbin install, run in a tool's checkout (\"This should obviously ALWAYS be 'bin/devbin use' not '{{cli}} use'. This is a devbin feature, not part of the pplr, cldr, or ccusage verbs! So what ccusage just did was totally wrong!\"), superseding decision 148 (3) and decision 149 (2): no tool keeps a use or install verb, Pplr's go, Ccusage's use stays its account verb and its activate rename is reverted, its sandbox fix kept; (2) the same for every project that vendors devbin (\"See previous answer\"): Utilz, Molt and Gtools adopt too, each filed when 0326 lands, Intent under directive 9; (3) devbin's 0326 work tests the changes only: each unit its own arms, red at the base and green at the fix, the tree scans whole once before the cut, the cut the one full test, any other full suite hv's by hand. 0326's body corrected to match, and relayed to devbin-cc, ccusage-vc, cldr-vc, cldr-dc, pplr-vc and pipeliner-sc. The origin, for the record: devbin's own contract names the switch <tool> use (docs/dev-opt-brew.md T5), and vc's review carried that wording into its framing; T5 is amended under 0326.",
+      "text": "hv's TUI answers in vc's window, received before the clock read 2026-11-06 09:41Z by date -u, on devbin-cc's shape for issue 0326: (1) the dev/opt/brew switch and the publish are devbin's own, bin/devbin use and bin/devbin install, run in a tool's checkout (\"This should obviously ALWAYS be 'bin/devbin use' not '{{cli}} use'. This is a devbin feature, not part of the pplr, cldr, or ccusage verbs! So what ccusage just did was totally wrong!\"), superseding decision 148 (3) and decision 149 (2): no tool keeps a use or install verb, Pplr's go, Ccusage's use stays its account verb and its activate rename is reverted, its sandbox fix kept; (2) the same for every project that vendors devbin (\"See previous answer\"): Utilz, Molt and Gtools adopt too, each filed when 0326 lands, and Intent too while it vendors devbin; (3) devbin's 0326 work tests the changes only: each unit its own arms, red at the base and green at the fix, the tree scans whole once before the cut, the cut the one full test, any other full suite hv's by hand. 0326's body corrected to match, and relayed to devbin-cc, ccusage-vc, cldr-vc, cldr-dc, pplr-vc and pipeliner-sc. The origin, for the record: devbin's own contract names the switch <tool> use (docs/dev-opt-brew.md T5), and vc's review carried that wording into its framing; T5 is amended under 0326. Then hv, in vc's window (received before the clock read 2026-11-06 09:46Z by date -u), put vc in charge of the fix in Pplr, Cldr and Ccusage, across the board in every devbin project (\"THIS NEEDS FIXING ACROSS THE BOARD BEFORE IT GETS ANY WORSE\"): each project's issue is corrected to bin/devbin use and install, Ccusage's rename is reverted, the contract's T4 and T5 text is amended first, and the cut's closing note naming <tool> use brew is fixed under 0326.",
       "state": "live",
-      "recorded_at": "2026-11-06T09:43:50.320Z"
+      "recorded_at": "2026-11-06T09:43:50.320Z",
+      "edited_at": "2026-11-06T09:47:00.198Z"
     }
   ],
   "sent": [
