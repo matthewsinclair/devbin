@@ -5,12 +5,11 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "b9e34071-9e8f-449b-a0f6-750b4eda63fe",
-    "heartbeat_at": "2026-11-10T16:40:57.469Z",
+    "heartbeat_at": "2026-11-10T16:53:48.657Z",
     "status": "active",
-    "focus": "Issue 0327 landed by vc on main at 406a93cb, unpushed; its Resolution is written and the issue closed (focus set 2026-11-10 16:40Z by date -u). Issue 0328, release.trailer, rebased onto 406a93cb at ac2b6733 with its red clone rebuilt; the probe found devbin's config reader refusing a quoted list item that holds ': ' (lib/config:134), so a Key: value trailer line cannot be declared, put to vc with options (rec: fix the reader in 0328); 0328's ask waits on vc's call. 0326-8 stays banked at refs/bank/cc/0326-8 for vc's grant. Claimed: ISSUE:0326, ISSUE:0328. Nothing pushed.",
+    "focus": "Issues 0327 and 0328 landed by vc on main, unpushed, at 406a93cb and 8f5c7d44, each closed by its Resolution (focus set 2026-11-10 16:53Z by date -u). Next: 0326-8, the docs, rebased onto 8f5c7d44 in the new kit i0326/u8r and asked with its 31 green legs and no red leg, as vc ruled; its reader sweep is in u8r/sweep.md. After it lands: the Rust reader snippet to the four sessions word for word, then 0326's Resolution and close. Claimed: ISSUE:0326. Nothing pushed.",
     "claims": [
-      "ISSUE:0326",
-      "ISSUE:0328"
+      "ISSUE:0326"
     ],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
