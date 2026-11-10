@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
-heartbeat_at: 2026-11-10 17:00Z
+heartbeat_at: 2026-11-10 17:11Z
 status: active
-focus: "Localfold (focus set 2026-11-10 17:00Z by date -u), not released. Issues 0327 and 0328 landed by vc on main at 406a93cb and 8f5c7d44 and closed; issue 0326's devbin half is landed, all eleven units, the last 0326-8 at adc03db5, its Resolution written, and it stays open on vc's ruling until pplr#0001, cldr#0001 and ccusage#0007 close. The core's reader notice for those estates' sessions waits in vc's todo 201, at ~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md. Next, on vc's word: the pre-cut kit for devbin's patch release at main adc03db5, or HEAD if only intent/ moved, with every tree-scan file whole under BSD and GNU, check all and a patch dry run, sent to vc to read before a heavy and bats ask. Claimed: ISSUE:0326. Nothing pushed."
+focus: "Pre-cut run for devbin's patch release asked as slot 01M7372QZCAYXVGZ4K4NEPZPJB at main 052adf97, which carries the 0.1.21 note vc landed (focus set 2026-11-10 17:11Z by date -u): 16 legs, 15 tree-scan and population files whole and install's vendored-set arm, under BSD then GNU, then check all, then release --patch --dry-run; its kit is ~/Devel/scratch/devbin-cc/pc0121, read by vc; the grant follows intent-vc's judge and intent-cc's 0649 verify. A red scan hit becomes its own unit before the cut. Issues 0327 and 0328 closed; 0326 open on vc's ruling until pplr#0001, cldr#0001 and ccusage#0007 close, its reader notice in vc's todo 201. Claimed: ISSUE:0326. Nothing pushed."
 claims: [ISSUE:0326]
 ---
 
