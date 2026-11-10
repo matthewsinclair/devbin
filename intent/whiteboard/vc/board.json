@@ -3534,7 +3534,8 @@
       "kind": "decision",
       "seq": 69,
       "text": "hv 2026-10-25: anything needing hv goes to molt-vc as one \"FOR hv:\" message; cc and dc send theirs through vc.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-10T15:54:07.673Z",
       "recorded_at": "2026-10-25T18:31:12.799Z",
       "edited_at": "2026-10-28T19:56:23.762Z"
     },
@@ -4694,6 +4695,14 @@
       "state": "live",
       "recorded_at": "2026-11-10T12:23:31.345Z",
       "edited_at": "2026-11-10T13:39:40.437Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 153,
+      "text": "hv assigned the estate desk to devbin-vc (\"Ok, I'm assigning The Desk to you.\", in vc's window, read 2026-11-10 15:53Z by date -u). The three groups: the agentic-engineering estates; devbin, whose vc manages the desk; and Utilz. rhadamanth-sysadm, gyges-sysadm and kovacs-sysadm are available as needed. hv's order: Utilz and Intent ready for release first, then a devbin patch if needed, then the agentic-engineering group's remaining docs, with no coding there yet. vc liaises with each vc. Control is taken once agentic-engineering-vc releases it.",
+      "state": "live",
+      "recorded_at": "2026-11-10T15:54:07.864Z"
     }
   ],
   "sent": [

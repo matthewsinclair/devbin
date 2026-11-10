@@ -1,0 +1,15 @@
+{
+  "id": "01M732NB3R8T0BVWXFSZMX62EB",
+  "ts": "2026-11-10T15:54:07.864Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv assigned the estate desk to devbin-vc (\"Ok, I'm assigning The Desk to you.\", in vc's window, read 2026-11-10 15:53Z by date -u). The three groups: the agentic-engineering estates; devbin, whose vc manages the desk; and Utilz. rhadamanth-sysadm, gyges-sysadm and kovacs-sysadm are available as needed. hv's order: Utilz and Intent ready for release first, then a devbin patch if needed, then the agentic-engineering group's remaining docs, with no coding there yet. vc liaises with each vc. Control is taken once agentic-engineering-vc releases it."
+  }
+}
