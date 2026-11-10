@@ -1,0 +1,15 @@
+{
+  "id": "01M73DKXV0GJ25B8W4SEV6WEQ0",
+  "ts": "2026-11-10T19:05:35.842Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0330"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A resumed cut reads the cancelled CI run its earlier attempt left on the candidate, and stops red on it"
+  }
+}
