@@ -6,6 +6,34 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.21] - Unreleased
+
+### Added
+
+- **`release.preflight`, a project's own checks, run at pre-flight by a dry run and a cut alike (issue `0327`).** A list of devbin verbs in the gates' grammar, eg `- doctor`. While the tag is absent, pre-flight runs every one in place through the project's launcher, with no stdin, after its own checks. A command that fails, changes the tree or moves HEAD is refused by name beside pre-flight's own refusals, so a cut it refuses stops once, before anything is stamped, and leaves no release commit; a dry run refuses wherever the cut would. The pre-flight row counts the commands that passed. Past the tag none runs, and the row says so. A command whose first word is `release` is refused as config, since it would start a cut inside the cut's own pre-flight.
+- **Every command of the project's own a cut runs is handed the release's target (issue `0327`)**: `DEVBIN_RELEASE_VERSION`, the version being released, and `DEVBIN_RELEASE_TARGET_TAG`, its tag. They reach each `release.preflight` command, a dry run's included, each `derived:` command, the gates, the formula step and each `after:` command, and nothing else a cut runs. The gates are handed them wherever they run: in place, on each host `release.legs` names, and under `bin/devbin release gates`, which reads both from the tree it stands on, the version the tree declares and the tag `release.tag` makes of it. `bin/devbin help release` says so under The release's target.
+- **`release.trailer`, lines the release commit carries as its second paragraph (issue `0328`).** Where it is declared, the release commit's message is `release: <tag>`, a blank line, then its lines in order; the subject stays `release: <tag>`, declared or not, and the commit row names the trailer. A trailer line may hold `: `, as a git trailer does, when it is quoted whole: `- "Signed-off-by: A Person <a.person@example.com>"`. A line holding a skip marker, such as `[skip ci]`, is refused as config.
+- **dev, opt and brew for a project's own tool, carried by the core (issue `0326`).** A project declares its tool in an `install:` block: its opt prefix, its manifest and its links. `bin/devbin install`, run in the tool's checkout, publishes its opt copy, each product proved by its own `--version`, with a manifest carrying the tree's version line. `bin/devbin use`, run there, switches its whole link set among dev, opt and brew, and a bare `use` reports each link's tree by its line. `bin/devbin build` hands a compiled tool's build its version line in `DEVBIN_VERSION_LINE`, `+dirty` read from the runtime set, the declared inputs and the build's own dependency record, and the contract gives the one reader a compiled tool prints it with. `bin/devbin doctor` checks a tool in its checkout: each link's dev copy, the switch, and each opt or brew tree against its manifest and its line, with a note when the set is left on dev or opt once Homebrew's copy has caught up. No tool keeps a `use` or `install` verb of its own. `docs/dev-opt-brew.md` is the contract, naming the core's implementation as the one every tool uses.
+
+### Changed
+
+#### a script or a config may get a different result
+
+- **The config reader takes a list item quoted whole as one scalar, whatever it holds (issue `0328`).** It refused any list item holding `: ` as a sequence of maps, a quoted one too, so `- "Signed-off-by: A Person <a.person@example.com>"` could not be declared. It now reads as its text; a bare `- key: value` and a quoted key with its value, `- "key": "value"`, are still refused.
+- **The formula has one install form, `@@INSTALL@@`, in source and assets mode alike (issue `0326`).** `formula render` generates it from the tool's link set: the core's publish from the tag's checkout, or the release's assets laid out with the contract's manifest and its line. `@@FINISH@@` is retired and refused by name, and so is `formula.bin`, naming `install.links`; `formula.bash` is the boolean that puts a macOS link behind an env script under the formula's bash. A template holding `@@FINISH@@` must move to `@@INSTALL@@`.
+- **`formula.manifest` is retired in favour of `install.manifest` (issue `0326`)**, refused by name, so the formula and `bin/devbin install` read one path.
+- **`dvb`'s machine-install fallback comes from devbin's own checkout alone (issue `0326`).** A project's `install.prefix` is now its own tool's opt prefix, which holds no `bin/devbin`, so `shell-init` takes the fallback only from devbin's own `install.prefix`.
+- **The cut's closing note back to brew names `bin/devbin use brew`, run in the checkout, where the checkout offers it (issue `0326`)**: devbin's own and a project that declares its tool. A project that declares none is told the upgrade and the version line alone.
+- **`bin/devbin release gates` refuses a tree whose version cannot be read (issue `0327`)**, before any gate runs, since it hands the gates that version.
+
+#### devbin's own tree
+
+- **devbin's release commit ends with its `(C)` line (issue `0328`)**: its config declares the line as its `release.trailer`, as every other commit in the repository ends.
+- **The test harness unsets `DEVBIN_RELEASE_VERSION` and `DEVBIN_RELEASE_TARGET_TAG` for every arm (issue `0327`)**, so an arm never runs as part of the release devbin's own gates are cutting.
+- **devbin's own dev, opt and brew functions are the tool functions' one caller (issue `0326`)**, its keg, links, switch, shadow check and version line read through them with devbin's own names, its answers unchanged.
+
+Full note: [RELEASES/0.1.21.md](RELEASES/0.1.21.md)
+
 ## [0.1.20] - 2026-11-05
 
 ### Added
