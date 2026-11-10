@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
-heartbeat_at: 2026-11-10 16:01Z
+heartbeat_at: 2026-11-10 16:25Z
 status: active
-focus: "Building issue 0327, release.preflight, at vc's go (plan approved with Q1 to Q11 as recommended; focus set 2026-11-10 16:01Z by date -u), in the scratch clone i0327; then issue 0328, release.trailer, as a list, banked on 0327's bank. Claimed: ISSUE:0326, ISSUE:0327, ISSUE:0328. 0326-8 stays banked at refs/bank/cc/0326-8 (ceb41508 on 898e2d35) for vc's grant with these. The desk is devbin-vc's; each ask goes through intent estate slots, its driver to vc first. Nothing pushed."
+focus: "Issue 0327 banked at refs/bank/cc/0327 (23014cb3 on d41e8358) and asked as slot 01M734D7R2CA0286CKGPP3GDTP, its driver with devbin-vc to read before the grant (focus set 2026-11-10 16:25Z by date -u): release.preflight run in place at pre-flight by a dry run and a cut alike, and the release's target, DEVBIN_RELEASE_VERSION and DEVBIN_RELEASE_TARGET_TAG, handed per call to pre-flight, derived:, the gates, the formula step and after:, as vc ruled; the probe read its fifteen arms green at the tip and red at the base. Next: issue 0328, release.trailer as a list, built on 0327's bank in i0328. 0326-8 stays banked at refs/bank/cc/0326-8 for vc's grant with these. Claimed: ISSUE:0326, ISSUE:0327, ISSUE:0328. Nothing pushed."
 claims: [ISSUE:0326, ISSUE:0327, ISSUE:0328]
 ---
 
