@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
-heartbeat_at: 2026-11-10 15:49Z
+heartbeat_at: 2026-11-10 16:01Z
 status: active
-focus: "Booted on hv's word, holding for vc's instructions (focus set 2026-11-10 15:49Z by date -u): no work, no runs and no writes past this pickup until vc names cc's next work. Issue 0326, claimed: the contract and 0326-1 to 0326-7, 0326-9 and 0326-10 landed by vc on main, unpushed; 0326-8, the docs, banked at refs/bank/cc/0326-8 (ceb41508 on 898e2d35), unrun and unasked, its kit i0326/u8 holding runs.sh, the message and the tree, with runs.conf (no red and nine green legs, on vc's ruling), the driver, the handover and the ask still to write. After it lands: the Rust reader snippet to ccusage-vc, cldr-vc, cldr-dc and pplr-vc word for word; 0326's Resolution by issues edit, then close. The desk is agentic-engineering-vc's; tree scans and lint run on the desk only; nothing pushed."
-claims: [ISSUE:0326]
+focus: "Building issue 0327, release.preflight, at vc's go (plan approved with Q1 to Q11 as recommended; focus set 2026-11-10 16:01Z by date -u), in the scratch clone i0327; then issue 0328, release.trailer, as a list, banked on 0327's bank. Claimed: ISSUE:0326, ISSUE:0327, ISSUE:0328. 0326-8 stays banked at refs/bank/cc/0326-8 (ceb41508 on 898e2d35) for vc's grant with these. The desk is devbin-vc's; each ask goes through intent estate slots, its driver to vc first. Nothing pushed."
+claims: [ISSUE:0326, ISSUE:0327, ISSUE:0328]
 ---
 
 # Control Claude (cc)
