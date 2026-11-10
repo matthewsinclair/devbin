@@ -2113,7 +2113,7 @@ cut_lock_sync() {
 cut_run() {
   local tpl branch object today launcher line v tag how rc_line commit source
   local state detail remotes remote answer nremote=0 owned dirt outside="" deferred=""
-  local derived gates preflight trailer trailer_said="" out written="" have n ignored_rc ignored_why assets_wf after_list lock
+  local derived gates pf_list trailer trailer_said="" out written="" have n ignored_rc ignored_why assets_wf after_list lock
   local formula_on formula_step=no
   # The binaries' archive (issue 0323): named at pre-flight where the object
   # step runs macos bin-publish, and empty where it does not.
@@ -2170,8 +2170,8 @@ cut_run() {
   # THE ONE READ OF release.preflight IN A CUT (issue 0327), with its status, as
   # the gates are read: empty would pass over the project's own refusals in
   # silence. Pre-flight runs what it reads here.
-  preflight="$(cfg_release_list preflight)" || die "release: cannot read release.preflight"
-  release_list_into pl "$preflight"
+  pf_list="$(cfg_release_list preflight)" || die "release: cannot read release.preflight"
+  release_list_into pl "$pf_list"
   # THE RELEASE COMMIT'S TRAILER (issue 0328): release.trailer's lines, read
   # once with their status, the commit step's second paragraph where declared.
   # The subject stays `release: <tag>`, as it was before any was declared.
@@ -3539,9 +3539,11 @@ cut_tail() {
       # is handed the release's target too, as each project command is (issue
       # 0327).
       if [ "$confirmed" = yes ]; then
-        DEVBIN_RELEASE_CONFIRMED="$tag" release_target_run "$v" "$tag" gate_exec "${aw[@]}" 3<&- || arc=$?
+        DEVBIN_RELEASE_CONFIRMED="$tag" release_target_run "$v" "$tag" \
+          gate_exec "${aw[@]}" 3<&- || arc=$?
       else
-        release_target_run "$v" "$tag" gate_exec "${aw[@]}" 3<&- || arc=$?
+        release_target_run "$v" "$tag" \
+          gate_exec "${aw[@]}" 3<&- || arc=$?
       fi
       if [ "$arc" -eq 0 ]; then
         ran=$((ran + 1))

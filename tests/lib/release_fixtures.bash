@@ -75,6 +75,7 @@ YAML
 # reads, writes or answers, as cut_project's probe gate does. Each step returns
 # its failure, as cut_project's do.
 with_preflight_probe() {
+  # shellcheck disable=SC2016 # the probe's own expansions, made when it runs
   create_test_command "$1" pfprobe "$(printf '#!/usr/bin/env bash\nprintf "pfprobe %%s version=%%s tag=%%s\\n" "$*" "${DEVBIN_RELEASE_VERSION-<unset>}" "${DEVBIN_RELEASE_TARGET_TAG-<unset>}" >>"%s/pf.calls"\nif [ -f "%s/pf.sh" ]; then . "%s/pf.sh"; fi\nexit 0\n' \
     "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR")" >/dev/null || return 1
   git -C "$1" add -A || return 1
