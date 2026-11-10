@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "b9e34071-9e8f-449b-a0f6-750b4eda63fe",
-    "heartbeat_at": "2026-11-10T16:53:48.657Z",
+    "heartbeat_at": "2026-11-10T17:00:40.658Z",
     "status": "active",
-    "focus": "Issues 0327 and 0328 landed by vc on main, unpushed, at 406a93cb and 8f5c7d44, each closed by its Resolution (focus set 2026-11-10 16:53Z by date -u). Next: 0326-8, the docs, rebased onto 8f5c7d44 in the new kit i0326/u8r and asked with its 31 green legs and no red leg, as vc ruled; its reader sweep is in u8r/sweep.md. After it lands: the Rust reader snippet to the four sessions word for word, then 0326's Resolution and close. Claimed: ISSUE:0326. Nothing pushed.",
+    "focus": "Localfold (focus set 2026-11-10 17:00Z by date -u), not released. Issues 0327 and 0328 landed by vc on main at 406a93cb and 8f5c7d44 and closed; issue 0326's devbin half is landed, all eleven units, the last 0326-8 at adc03db5, its Resolution written, and it stays open on vc's ruling until pplr#0001, cldr#0001 and ccusage#0007 close. The core's reader notice for those estates' sessions waits in vc's todo 201, at ~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md. Next, on vc's word: the pre-cut kit for devbin's patch release at main adc03db5, or HEAD if only intent/ moved, with every tree-scan file whole under BSD and GNU, check all and a patch dry run, sent to vc to read before a heavy and bats ask. Claimed: ISSUE:0326. Nothing pushed.",
     "claims": [
       "ISSUE:0326"
     ],
