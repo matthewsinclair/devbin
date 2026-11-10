@@ -87,6 +87,11 @@ release:
     wait: 90m
   object: ci
   repo: matthewsinclair/devbin
+  # THE RELEASE COMMIT ENDS WITH THE HOUSE LINE (issue 0328): the cut commits
+  # `release: <tag>` with these lines as its second paragraph, as every commit
+  # here ends.
+  trailer:
+    - "(C) hello@matthewsinclair.com"
   after:
     - bin/devbin formula publish
 

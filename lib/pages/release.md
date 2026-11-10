@@ -37,7 +37,8 @@ Cut a release: confirm once, then stamp, commit, run every leg (the gates, here 
                  version file in step through cargo metadata, refusing any
                  change but the crate's own version, run any derived:
                  commands, date the note, regenerate the notes views
-    commit       the release commit
+    commit       the release commit, release: <tag>, with release.trailer's
+                 lines as its second paragraph where they are declared
     legs         every leg at once, read by one wait loop: the declared
                  gates on the release commit (default: check all, test all),
                  under one seal of their own, already where a sealed green

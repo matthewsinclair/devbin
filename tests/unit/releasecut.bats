@@ -4093,3 +4093,50 @@ $output"
   grep -qxF "home=$HOSTS/near version=1.0.1 tag=v1.0.1" "$DEVBIN_TEST_TMPDIR/gate.target" ||
     fail "near's gates were not handed the release's target: $(cat "$DEVBIN_TEST_TMPDIR/gate.target")"
 }
+
+# ============================================================================
+# THE RELEASE COMMIT'S TRAILER (issue 0328)
+# ============================================================================
+# release.trailer's lines are the release commit's second paragraph, its
+# subject `release: <tag>` whether one is declared or not.
+
+# TRAILER_LINES -- the two lines the trailer arms declare: two, so an arm
+# fails where only the first is carried, or they are carried out of order.
+TRAILER_LINES=("(C) someone@example.com" "Reviewed-by: A Person <a.person@example.com>")
+
+# trailer_project -- cut_project with the probe gate and release.trailer
+# declaring TRAILER_LINES.
+trailer_project() {
+  cut_project "  trailer:
+$(printf '    - "%s"\n' "${TRAILER_LINES[@]}")
+  gates:
+    - probe"
+}
+
+@test "0328: with release.trailer declared, the release commit is release: <tag>, a blank line, then the trailer's lines in order, its subject unchanged" {
+  proj="$(trailer_project)"
+  cut_to_tag_stop "$proj" v1.0.1
+  [ "$(git -C "$proj" log -1 --format=%s)" = "release: v1.0.1" ] ||
+    fail "the release commit's subject is: $(git -C "$proj" log -1 --format=%s)"
+  [ "$(git -C "$proj" log -1 --format=%B)" = "release: v1.0.1"$'\n\n'"$(printf '%s\n' "${TRAILER_LINES[@]}")" ] ||
+    fail "the release commit's message is:
+$(git -C "$proj" log -1 --format=%B)"
+  [[ "$(row_of commit)" == *"\"release: v1.0.1\" with release.trailer's ${#TRAILER_LINES[@]} line(s) as its second paragraph"* ]] ||
+    fail "the commit row does not name the trailer: $(row_of commit)"
+}
+
+@test "0328: a dry run's commit row names the trailer the commit step would add" {
+  proj="$(trailer_project)"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_success
+  [[ "$(row_of commit)" == *"commit the stamp as \"release: v1.0.1\" with release.trailer's ${#TRAILER_LINES[@]} line(s) as its second paragraph"* ]] ||
+    fail "the dry run's commit row does not name the trailer: $(row_of commit)"
+}
+
+@test "0328: with no release.trailer, the release commit's message is release: <tag> alone" {
+  proj="$(cut_project)"
+  cut_to_tag_stop "$proj" v1.0.1
+  [ "$(git -C "$proj" log -1 --format=%B)" = "release: v1.0.1" ] ||
+    fail "the release commit's message is:
+$(git -C "$proj" log -1 --format=%B)"
+}

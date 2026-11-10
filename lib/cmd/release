@@ -2113,7 +2113,7 @@ cut_lock_sync() {
 cut_run() {
   local tpl branch object today launcher line v tag how rc_line commit source
   local state detail remotes remote answer nremote=0 owned dirt outside="" deferred=""
-  local derived gates preflight out written="" have n ignored_rc ignored_why assets_wf after_list lock
+  local derived gates preflight trailer trailer_said="" out written="" have n ignored_rc ignored_why assets_wf after_list lock
   local formula_on formula_step=no
   # The binaries' archive (issue 0323): named at pre-flight where the object
   # step runs macos bin-publish, and empty where it does not.
@@ -2172,6 +2172,10 @@ cut_run() {
   # silence. Pre-flight runs what it reads here.
   preflight="$(cfg_release_list preflight)" || die "release: cannot read release.preflight"
   release_list_into pl "$preflight"
+  # THE RELEASE COMMIT'S TRAILER (issue 0328): release.trailer's lines, read
+  # once with their status, the commit step's second paragraph where declared.
+  # The subject stays `release: <tag>`, as it was before any was declared.
+  trailer="$(cfg_release_list trailer)" || die "release: cannot read release.trailer"
   # Read once, for the confirm step's question and the after step's run.
   after_list="$(cfg_release_list after)" || die "release: cannot read release.after"
   # Read once, for pre-flight, the confirm step's question and the formula
@@ -2851,6 +2855,13 @@ cut_run() {
   # An UNREADABLE postcondition is pre-flight's refusal now, read before the
   # confirm step asks.
   local release_made=yes
+  # The message: `release: <tag>`, and release.trailer's lines, where
+  # declared, as its second paragraph (issue 0328), each a -m of git's own.
+  local -a commit_msg=(-m "release: $tag")
+  if [ -n "$trailer" ]; then
+    commit_msg+=(-m "$trailer")
+    trailer_said=" with release.trailer's $(grep -c . <<<"$trailer") line(s) as its second paragraph"
+  fi
   if [ "$source" = tag ]; then
     cut_row commit already "${commit:0:12}, $tag's commit, is the release commit"
   else
@@ -2858,7 +2869,7 @@ cut_run() {
     if [ "$head_is_release" = yes ]; then
       cut_row commit already "${commit:0:12} carries the stamp and the tree is clean"
     elif [ "$dry_run" = 1 ]; then
-      cut_row commit would "commit the stamp as \"release: $tag\""
+      cut_row commit would "commit the stamp as \"release: $tag\"$trailer_said"
       release_made=no
     else
       dirt="$(release_dirt)" || cut_fail commit "git status failed"
@@ -2870,7 +2881,7 @@ cut_run() {
       # pre-flight and the stamp step refuse any dirt outside the owned
       # set, staged included, so the index holds nothing these paths do not.
       # Kept so the commit stays exactly these paths if that rule ever moves.
-      git commit -q --only -m "release: $tag" -- "${paths[@]}" </dev/null ||
+      git commit -q --only "${commit_msg[@]}" -- "${paths[@]}" </dev/null ||
         cut_fail commit "git commit failed (exit $?, above)"
       commit="$(git rev-parse HEAD)" || cut_fail commit "the new HEAD cannot be read: git rev-parse HEAD exited $?"
       rel_at="${commit:0:12}"
@@ -2882,7 +2893,7 @@ cut_run() {
         cut_fail commit "reading the stamp at ${commit:0:12} failed (exit $?)"
       [ "${answer%%$'\t'*}" = already ] || cut_fail commit "${commit:0:12} does not carry the stamp: ${answer#*$'\t'}"
       [ "$(release_read_clean | cut -f1)" = already ] || cut_fail commit "the tree is not clean after the commit: $(release_read_clean | cut -f2-)"
-      cut_row commit "done" "${commit:0:12} \"release: $tag\", ${#paths[@]} path(s)"
+      cut_row commit "done" "${commit:0:12} \"release: $tag\"$trailer_said, ${#paths[@]} path(s)"
     fi
   fi
 

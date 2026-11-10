@@ -63,6 +63,17 @@ YAML
   [ "$(cfg_get help.groups.2)" = "Test" ]
 }
 
+@test "0328: a sequence item quoted whole is one scalar whatever it holds, so one holding a colon and a space reads back as its text, in either quote" {
+  parse <<'YAML'
+release:
+  trailer:
+    - "Reviewed-by: A B <a@b>"
+    - 'Signed-off-by: C D <c@d>'
+YAML
+  [ "$(cfg_get release.trailer.0)" = "Reviewed-by: A B <a@b>" ] || fail "the double-quoted item read back as: $(cfg_get release.trailer.0)"
+  [ "$(cfg_get release.trailer.1)" = "Signed-off-by: C D <c@d>" ] || fail "the single-quoted item read back as: $(cfg_get release.trailer.1)"
+}
+
 @test "values keep their internal spacing and punctuation" {
   parse <<'YAML'
 commands:
@@ -227,6 +238,23 @@ YAML
 commands:
   - name: server
     run: mix phx.server
+YAML
+  assert_failure
+  assert_output_contains "sequences of maps"
+}
+
+@test "0328: a sequence item that is a quoted key with its value is still a map, refused in either quote" {
+  run parse <<'YAML'
+release:
+  trailer:
+    - "k": "v"
+YAML
+  assert_failure
+  assert_output_contains "sequences of maps"
+  run parse <<'YAML'
+release:
+  trailer:
+    - 'k': 'v'
 YAML
   assert_failure
   assert_output_contains "sequences of maps"

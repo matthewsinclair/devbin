@@ -93,6 +93,26 @@ function unquote(s) {
   if (s ~ /^'.*'$/) return substr(s, 2, length(s) - 2)
   return s
 }
+# quoted_scalar(s) -- true when s is one quoted scalar: it opens and closes
+# with the same quote, and that quote closes nowhere before the end. Inside
+# double quotes a `"` closes it unless a backslash escapes it; inside single
+# quotes a `'` closes it unless it is doubled. So `"k": "v"`, a key and a value
+# each quoted, is not one, where a pattern over the ends alone would take it
+# for one (issue 0328).
+function quoted_scalar(s,   q, inner, i, c) {
+  if (length(s) < 2) return 0
+  q = substr(s, 1, 1)
+  if ((q != "\"" && q != "'") || substr(s, length(s), 1) != q) return 0
+  inner = substr(s, 2, length(s) - 2)
+  for (i = 1; i <= length(inner); i++) {
+    c = substr(inner, i, 1)
+    if (q == "\"" && c == "\\") { i++; continue }
+    if (c != q) continue
+    if (q == "'" && substr(inner, i + 1, 1) == "'") { i++; continue }
+    return 0
+  }
+  return 1
+}
 function joinpath(upto,   i, p) {
   p = ""
   for (i = 0; i <= upto; i++) p = (p == "" ? key[i] : p "." key[i])
@@ -131,7 +151,11 @@ BEGIN { maxlevel = -1 }
 
   if (substr(body, 1, 2) == "- ") {
     val = trim(substr(body, 3))
-    if (val ~ /:[ ]/ || val ~ /:$/) err("sequences of maps are not supported")
+    # A QUOTED SCALAR IS A SCALAR, whatever it holds (issue 0328): a list item
+    # quoted whole, `- "Reviewed-by: A B <a@b>"` say, is one line of text, so
+    # its ": " makes no map of it. An item that is not one quoted scalar, a
+    # bare `k: v` or a quoted key with its value, `"k": "v"`, is still a map.
+    if (!quoted_scalar(val) && (val ~ /:[ ]/ || val ~ /:$/)) err("sequences of maps are not supported")
     if (val ~ /^[|>]/) err("block scalars are not supported")
     path = joinpath(level - 1)
     if (path == "") err("a sequence must be under a key")
@@ -593,6 +617,7 @@ scalar notes.kind      cut,status,notes,check changelog
 scalar notes.run       cut,status,notes,check
 list   derived         cut
 list   preflight       cut
+list   trailer         cut
 list   gates           cut,status,gates               check all|test all
 list   legs            cut,status
 scalar ci.query        cut,status,check               $_DEVBIN_CI_BUILTIN_QUERY
@@ -1266,7 +1291,9 @@ _cfg_release_value_problem() {
       # rule refuses, so a refusal is the template's own text. A tag git cannot
       # make would stop a cut at its tag step, after its candidate's run, and
       # git refuses brackets and spaces, so no skip marker such as [skip ci]
-      # can reach the release commit's message, `release: <tag>`. Where git
+      # can reach the release commit's message, `release: <tag>`, through the
+      # tag; release.trailer's lines, the message's second paragraph, are held
+      # to the same rule by _cfg_release_problems (issue 0328). Where git
       # cannot be asked at all (any status but 0 and 1), that is said on
       # stderr and the template is accepted, never refused for a name git might
       # take: a cut's tag step meets it.
@@ -1543,6 +1570,25 @@ _cfg_release_problems() {
       printf 'config: %s: release.snapshot.message, filled, is "%s", which holds %s, a skip marker: a push of the snapshot would start no run of CI, whatever its trigger says\n' "$_DEVBIN_CFG_FILE" "$filled" "$marker" >&2
       rc=1
     fi
+  fi
+  # NO SKIP MARKER IN THE RELEASE COMMIT'S TRAILER (issue 0328): its lines are
+  # the release commit's second paragraph, and wherever release.publish.url is
+  # not declared the candidate CI is read on is that commit, so a marker in
+  # them starts no run, whatever the trigger says. Refused in every project, a
+  # publishing one's too, since a marker has no use in a release commit. A
+  # list that cannot be read is said, never taken for one with no line.
+  local trailer_lines trailer_line trailer_marker
+  if ! trailer_lines="$(cfg_release_list trailer)"; then
+    printf 'config: %s: release.trailer could not be read, so its lines were not checked for a skip marker\n' "$_DEVBIN_CFG_FILE" >&2
+    rc=1
+  else
+    while IFS= read -r trailer_line; do
+      [ -n "$trailer_line" ] || continue
+      if trailer_marker="$(cfg_ci_skip_marker "$trailer_line")"; then
+        printf 'config: %s: release.trailer: "%s" holds %s, a skip marker: the release commit carries the trailer, and a push of it would start no run of CI, whatever its trigger says\n' "$_DEVBIN_CFG_FILE" "$trailer_line" "$trailer_marker" >&2
+        rc=1
+      fi
+    done <<<"$trailer_lines"
   fi
   if cfg_has release.publish.branch && ! cfg_has release.publish.url; then
     printf 'config: %s: release.publish.branch is read only when release.publish.url is declared\n' "$_DEVBIN_CFG_FILE" >&2

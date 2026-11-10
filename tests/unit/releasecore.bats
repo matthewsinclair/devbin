@@ -307,7 +307,7 @@ YAML
   # them holds that to the table's own rows (ST0008 WP-08: repo was in none).
   local block shape key all="" declared
   local -a blocks=(
-    '  tag: "v{version}"\n  remotes:\n    - origin\n  branch: main\n  notes:\n    kind: changelog\n  derived:\n    - cargo update --workspace\n  preflight:\n    - doctor\n  gates:\n    - check all\n    - test all\n  legs:\n    - "-"\n  ci:\n    query: bin/devbin ci-state\n    workflow: tests.yml\n    summary: Test Summary\n    wait: 20m\n  object: local\n  title: "{tag}"\n  repo: owner/name\n  formula: false\n  after:\n    - bin/announce\n  verbs:\n    - cut\n    - status\n    - notes\n    - check\n    - attach\n  assets:\n    workflow: linux-release.yml\n    wait: 30m'
+    '  tag: "v{version}"\n  remotes:\n    - origin\n  branch: main\n  notes:\n    kind: changelog\n  derived:\n    - cargo update --workspace\n  preflight:\n    - doctor\n  trailer:\n    - "(C) A B <a@b>"\n  gates:\n    - check all\n    - test all\n  legs:\n    - "-"\n  ci:\n    query: bin/devbin ci-state\n    workflow: tests.yml\n    summary: Test Summary\n    wait: 20m\n  object: local\n  title: "{tag}"\n  repo: owner/name\n  formula: false\n  after:\n    - bin/announce\n  verbs:\n    - cut\n    - status\n    - notes\n    - check\n    - attach\n  assets:\n    workflow: linux-release.yml\n    wait: 30m'
     '  notes:\n    kind: command\n    run: bin/release-notes'
     '  object: ci\n  object_wait: 20m'
     '  ci:\n    query: bin/devbin ci-state\n  snapshot:\n    list: tests/shipped.paths\n    author: "A B <a@b>"\n    message: "{name} {version}"\n  publish:\n    url: https://example.com/o/n.git\n    branch: main\n    candidate: candidate/{tag}'
@@ -717,6 +717,31 @@ release:
     list: x
     author: "A B <a@b>"
     message: "{name} {version}"
+YAML
+  run cfg_validate
+  assert_success
+}
+
+@test "0328: a release.trailer line holding a skip marker, in any case, is refused naming the key, the line and the marker, and a trailer with none validates" {
+  cfg_load_string <<YAML
+project:
+  name: demo
+release:
+  trailer:
+    - "(C) someone@example.com"
+    - "Shipped [Skip CI]"
+YAML
+  run cfg_validate
+  [ "$status" -ne 0 ] || fail "accepted a trailer holding a skip marker"
+  assert_output_contains 'release.trailer: "Shipped [Skip CI]" holds [skip ci], a skip marker'
+  # THE CONTROL: the same trailer without the marker.
+  cfg_load_string <<YAML
+project:
+  name: demo
+release:
+  trailer:
+    - "(C) someone@example.com"
+    - "Shipped"
 YAML
   run cfg_validate
   assert_success

@@ -624,6 +624,8 @@ release:
   #   - cargo update --workspace
   # preflight:               # devbin verbs, run in order in place at pre-flight, by a dry run and a cut alike, before anything is stamped; each must exit 0 and write nothing, each refusal joins pre-flight's own, and none may run release. Each command a cut runs of the project's own is handed the release's target (bin/devbin help release)
   #   - doctor
+  # trailer:                 # lines the release commit carries after release: <tag>, as its second paragraph, one line an item; none may hold a skip marker such as [skip ci]
+  #   - "(C) A Person <a.person@example.com>"
   gates:                     # devbin verbs, run in order on the release commit under one seal, tmp/release/<stamp>.GATES.*; each must exit 0, and a green that stands for the release commit on this platform is not run again
     - check all
     - test all
