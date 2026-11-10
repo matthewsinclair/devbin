@@ -1132,7 +1132,7 @@ _check_tool_dev() {
 # _check_tool_dev_copy <formula> <want> <from> -- the row for one link's copy,
 # <from> in this checkout, against <want>, the line a build here carries.
 _check_tool_dev_copy() {
-  local formula="$1" want="$2" from="$3" got parts tool tree sha full
+  local formula="$1" want="$2" from="$3" got parts tool tree sha
   if [ ! -e "$PROJECT_ROOT/$from" ]; then
     if tool_tracked "$from"; then
       _fail "$formula dev: $from is not in this checkout, though git tracks it"
@@ -1176,12 +1176,16 @@ _check_tool_dev_copy() {
       return 0
       ;;
   esac
-  if full="$(git_readonly -C "$PROJECT_ROOT" rev-parse --verify --quiet "$sha^{commit}" 2>/dev/null)" &&
-    git_readonly -C "$PROJECT_ROOT" merge-base --is-ancestor "$full" HEAD 2>/dev/null; then
-    _note "$formula dev: HEAD has moved past the build: $from prints $got, and a build now carries $want"
-    _detail "build it again: bin/devbin build"
-    return 0
-  fi
+  # Which way HEAD has moved from the build is commit_direction's to say, the
+  # one place ancestry is asked, with git's local variables cleared first, so it
+  # reads this checkout's repository whatever a hook exported.
+  case "$(git_local_env_clear && commit_direction "$PROJECT_ROOT" "$sha")" in
+    forward | same)
+      _note "$formula dev: HEAD has moved past the build: $from prints $got, and a build now carries $want"
+      _detail "build it again: bin/devbin build"
+      return 0
+      ;;
+  esac
   _fail "$formula dev: $from prints $got, built from a commit HEAD does not contain, so its bytes are no build of this checkout's"
   _detail "build it again: bin/devbin build"
 }
