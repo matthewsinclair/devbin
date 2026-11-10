@@ -2,10 +2,10 @@
 node: vc
 name: Validation Claude
 role: validation
-session_id: 43c43ff2-c91c-45b3-9f74-9df455a9fbe1
-heartbeat_at: 2026-11-06 13:42Z
+session_id: 86e8d721-4079-418e-9e48-218c8da86346
+heartbeat_at: 2026-11-10 05:13Z
 status: active
-focus: "Localfold for hv's compact before hv travels (focus set 2026-11-06 13:42Z by date -u). vc runs the estate desk on hv's word (since 06:53Z): the agentic-engineering work first, Webber's heavy runs behind it. Every estate was told at 13:41Z to bank, localfold and hold for hv's compact, with no desk asks until hv's word after the travel; webber-ic's ST0002/10 sealed run (01M6RH2B8BJTFJ4WDT0CVF9FWY, heavy) finishes and releases first. Molt 1.4.6's cut was not run (slot released 13:40Z), and Molt books it again on hv's word. Issue 0326 with devbin-cc: the contract and 0326-1 to 0326-7, 0326-9 and 0326-10 are landed (a08b44db, ffb93786, 6eb8726f, e484bff7, 35239dda, 2970280d, 027edc02, b12f21f8, f90aabdb, 898e2d35); 0326-8, the docs, is banked at refs/bank/cc/0326-8 (ceb41508 on 898e2d35), its legs ruled (green at the tip only, the non-scan arms that read its six files), then the reader goes to the consumers. 0326's acceptance names the three consumers' adoption, so its close waits for that or for hv's ruling that the core's half closes it. Before devbin's next cut: the tree-scan files whole once. Waiting on hv: devbin's push, whether the packaging replacement is filed for this release, and Utilz's 2.14.9 cut (not today). Nothing pushed."
+focus: "Booted 2026-11-10 05:13Z by date -u and holding for hv's instructions; vc not released. The desk is agentic-engineering-vc's on hv's word this morning (hv may move it depending on devbin and gtools), so vc books and grants nothing: devbin's own runs are asked of that desk, superseding decision 147's desk for now. devbin-cc and devbin-dc are not up (folded 2026-11-06 13:40Z and 2026-11-05 14:20Z). Issue 0326, the core's dev/opt/brew as bin/devbin use and install (decision 150): the contract and 0326-1 to 0326-7, 0326-9 and 0326-10 are landed and unpushed (a08b44db to 898e2d35); 0326-8, the docs, is banked at refs/bank/cc/0326-8 (ceb41508 on 898e2d35), unrun and unasked, needing cc up and a grant from that desk; after it lands, the Rust reader goes to ccusage-vc, cldr-vc, cldr-dc and pplr-vc, then 0326's Resolution, its close and todo 201's relays. Before devbin's next cut: the tree-scan files whole once. Waiting on hv: devbin's push of local main (85 commits unpushed, CI read after), the taps' republish with 0.1.20's renderer, todo 198's sweep notices, Utilz's 2.14.9 cut re-asked fresh after the bounce (decision 146), and the third remote. ST0011's consumer pass is live under decision 144, Utilz first. Nothing pushed."
 claims: [ST0011]
 ---
 
