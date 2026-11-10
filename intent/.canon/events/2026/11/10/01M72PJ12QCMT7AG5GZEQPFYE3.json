@@ -1,0 +1,15 @@
+{
+  "id": "01M72PJ12QCMT7AG5GZEQPFYE3",
+  "ts": "2026-11-10T12:22:36.377Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0328"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "The release commit carries a declared trailer, so it ends with the house (C) line in every project"
+  }
+}

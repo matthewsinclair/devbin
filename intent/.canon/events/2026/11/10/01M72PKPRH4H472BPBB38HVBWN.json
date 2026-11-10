@@ -1,0 +1,15 @@
+{
+  "id": "01M72PKPRH4H472BPBB38HVBWN",
+  "ts": "2026-11-10T12:23:31.345Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's rulings in vc's window through the TUI, received before the clock read 2026-11-10 12:22Z by date -u, on intent-vc's three core asks out of Intent's ST0091 WP-01 re-inventory (todo 202), each as vc recommended. (1) THE PRE-FLIGHT SEAM: devbin's next release carries it, and Intent's 3.3.0 waits for that release to be swept in; filed as issue 0327, a declared release.preflight list of 'bin/devbin <words>' lines in the gates' grammar, run in place at pre-flight by a dry run and a cut alike, each failure joining the set pre-flight already fails over once (lib/cmd/release:2622), a tree change refused as a gate's is. (2) brew smoke: after: is enough, so no core change and no issue; Intent declares its smoke under release.after for 3.3.0 and its AC-03.1 says in as many words that it reports after publication and gates nothing, since the core says 'the release is published and nothing was undone' when an after: command fails (lib/cmd/release:3477). The built-in formula verb named by vc's ruling of 2026-10-31 stays unbuilt, and that half of the ruling is spent. (3) THE RELEASE COMMIT'S MESSAGE: the core takes a declared trailer appended as a second paragraph, the subject left as 'release: <tag>' so the tag readers and the formula are untouched; filed as issue 0328, devbin declaring its own so its next release commit carries the (C) line, and Intent dropping its driver's addition. Both issues ride devbin's next release by directive 13, whose cut is hv's. Relayed to intent-vc, which asks nothing further of devbin and books its runs with agentic-engineering-vc. Correction accepted from intent-vc on the route: decision 136's routing of every vc through devbin-vc was scoped by decision 139 to the 2026-11-05 close-out, so citing it as standing was wrong; hv ruled on 2026-11-10 that intent-vc is the one route to hv for Intent's seats on its own board, and hv has been in both windows today. These two questions are settled in vc's window on the facts, not on that routing, and which route stands for a future cross-estate ask goes to hv when one arises (memory hv-asks-route-via-vc). Decision 136 archived as executed with this one."
+  }
+}

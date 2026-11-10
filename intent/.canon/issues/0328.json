@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 328,
+  "slug": "the-release-commit-carries-a-declared-trailer-so",
+  "title": "The release commit carries a declared trailer, so it ends with the house (C) line in every project",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-10",
+  "reporter": "Matthew Sinclair",
+  "body": "The release commit carries a declared trailer, so a project's release commit meets the house commit rule.\n\n## The gap\n\nThe core commits the release commit with `--only` and `-m \"release: $tag\"` and no body (`lib/cmd/release:2809`). So every project cutting through the core gets a one-line release commit, devbin's own included: `be40dea7`, devbin 0.1.20's release commit, reads exactly `release: v0.1.20`.\n\nThe house rule is that a commit message ends with the maintainer's `(C)` line. A machine-made commit is still a commit in the history, so the core's release commit falls short of it in every project at once. Intent's driver works around it by adding the line itself as a second paragraph, which is a local patch of a core behaviour, and the kind of divergence that drifts.\n\n## The ask\n\nA declared trailer, appended to the release commit's message as a second paragraph. The subject stays `release: <tag>`, so the tag readers, `release status`, `release_commit` and the formula are untouched.\n\nDevbin declares its own with the rest, so devbin's next release commit carries the line, and Intent drops its driver's addition.\n\n## Where it came from\n\nRaised by intent-vc on 2026-11-10 out of Intent's ST0091 WP-01 re-inventory, and measured here against devbin's own release commit. hv ruled the same day: the core takes the declared trailer, one shape for every project."
+}
