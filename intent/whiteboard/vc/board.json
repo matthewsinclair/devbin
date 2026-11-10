@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "86e8d721-4079-418e-9e48-218c8da86346",
-    "heartbeat_at": "2026-11-10T13:49:56.063Z",
+    "heartbeat_at": "2026-11-10T17:39:52.553Z",
     "status": "active",
-    "focus": "Localfold for hv's compact and the bounce for a move (focus set 2026-11-10 13:40Z by date -u); vc not released. After the bounce: pick up, then hold for hv's go, no work before it. Only devbin-vc was up; devbin-cc and devbin-dc have had no session since their own folds (2026-11-06 13:40Z and 2026-11-05 14:20Z), so nothing was sent to them. The desk is agentic-engineering-vc's on hv's word of this morning, so vc books and grants nothing, and devbin's runs are asked of that desk. Open issues, all for devbin's next release by directive 13, whose cut is hv's: 0326, the core's dev/opt/brew as bin/devbin use and install, with the contract and 0326-1 to 0326-7, 0326-9 and 0326-10 landed and unpushed, and 0326-8, the docs, banked at refs/bank/cc/0326-8 (ceb41508 on 898e2d35), unrun and unasked, needing cc up and a grant; 0327, the pre-flight seam, a declared release.preflight run in place at pre-flight by a dry run and a cut alike, which Intent's 3.3.0 waits on (decision 152); 0328, the release commit's declared trailer carrying the (C) line. Before devbin's next cut: the tree-scan files whole once. Intent's next release is 3.3.0, not 3.2.9 (decision 151), and its issue 0670 will stop devbin's AT-3.5 counting, since ST0007 and ST0011 both claim the one marker in releasestatus.bats (watchout 39); intent-vc tells vc before 0670 lands. Waiting on hv: devbin's push of local main (CI read after), the taps' republish with 0.1.20's renderer, todo 198's sweep notices, Utilz's 2.14.9 cut, the third remote. Nothing pushed.",
+    "focus": "Desk held by devbin-vc on hv's word (decision 153), localfold for hv's compact at 2026-11-10 17:39Z by date -u, vc not released. Running: devbin-cc's pre-cut run for devbin 0.1.21 (slot PZPJB, heavy+bats, at 052adf97: tree scans BSD and GNU, check all, dry run); utilz-dc's ST0034 WP01 run (slot 04N1, light, vc runs it as holder, log to utilz-vc); intent-dc's 0670 build (cargo); hv's own Utilz 2.14.9 resume (run 5e4b55cc, from 17:35Z; Utilz's tree frozen at 1401e7b3). Queued: intent-cc's 0649 verify (cargo, after the pre-cut). devbin 0.1.21 on main, unpushed: 0326's units, 0327 406a93cb, 0328 8f5c7d44, 0326-8 adc03db5, the note 052adf97; when the pre-cut reads green, the push and cut go to hv (no keychain step), then Intent sweeps it in for 3.3.0. 0326 open for its consumer adoptions (todo 201 carries the notice path); 0329 filed for the release after next. Intent: ST0091 and ic's train on its main (a86205eff, unpushed); ST0092 waits on hv's read of TERMS.md; c1d7d163d's message rewrite runs as hv just before Intent's push; 0670 lands only after vc's warning (watchout 39). Papillon: docs only, hv's open items unchanged.",
     "claims": [
       "ST0011"
     ],
@@ -4521,7 +4521,8 @@
       "kind": "decision",
       "seq": 139,
       "text": "hv in vc's window, received before the clock read 2026-11-05 05:24Z by date -u: 'This setup is a one-off thing for this session so that I can quickly close out the finalised releases of devbin and molt. It is just taking WAY too long to run the full test suite across multiple platforms for each minor change. So, I want to get all outstanding issues in devbin and molt sorted out NOW, THIS MORNING. So that I can then move back to a more normal release process.' So decisions 136 and 138's test rules, and the routing of every node through devbin-vc, hold for this close-out alone: devbin 0.1.20, with every open issue fixed, cut, and Molt's outstanding issues done. Molt's only open issue is molt#0090, which closes when Molt-matts 2f95dfe lands at the v1.4.4 rollout: hv's brew upgrade molt, molt-dc's pick, hv's molt upgrade, then hv's push. After the close-out the normal release process resumes: per-unit runs, critic before the first run, and full suites.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-10T17:39:42.887Z",
       "recorded_at": "2026-11-05T05:24:37.018Z"
     },
     {
@@ -4711,6 +4712,14 @@
       "text": "devbin-cc's finding on 0327 (2026-11-10): a release.gates entry starting with `release` runs a cut inside a cut and recurses, the same hole 0327 closes for release.preflight at validation. No work now; weigh it for the release after next.",
       "state": "live",
       "recorded_at": "2026-11-10T16:01:48.594Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 154,
+      "text": "Desk rulings, 2026-11-10 afternoon, vc holding the desk on hv's word (decision 153), read by date -u: (1) 0327 hands DEVBIN_RELEASE_VERSION and DEVBIN_RELEASE_TARGET_TAG, per call through release_target_run, to preflight, derived:, the gates (local, remote legs and release gates by hand, the last reading both from the tree), the formula step and after:; ci.query's DEVBIN_RELEASE_TAG keeps its meaning, the ref read. (2) 0328 fixes the config reader: a list item quoted whole is one scalar; a bare or quoted-key map item is still refused. (3) 0326 stays open: its Resolution covers devbin's half, and it closes with pplr#0001, cldr#0001 and ccusage#0007. (4) hv through the TUI: Utilz 2.14.9 cut from the head after ST0032's id fix, the desk holder running its full suite; Intent: a client's name is confidential in its public record, ST0092's terms wait for hv's own read, three smaller rulings as intent-vc recommended; Utilz ST0029 (Retire Python) is not for this release. (5) One layer of proof at the desk: a new arm green at the base by construction is named before the run with its claim, never given a planted fault.",
+      "state": "live",
+      "recorded_at": "2026-11-10T17:39:43.096Z"
     }
   ],
   "sent": [

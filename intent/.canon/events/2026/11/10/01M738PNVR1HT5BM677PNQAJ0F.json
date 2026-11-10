@@ -1,0 +1,15 @@
+{
+  "id": "01M738PNVR1HT5BM677PNQAJ0F",
+  "ts": "2026-11-10T17:39:43.096Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Desk rulings, 2026-11-10 afternoon, vc holding the desk on hv's word (decision 153), read by date -u: (1) 0327 hands DEVBIN_RELEASE_VERSION and DEVBIN_RELEASE_TARGET_TAG, per call through release_target_run, to preflight, derived:, the gates (local, remote legs and release gates by hand, the last reading both from the tree), the formula step and after:; ci.query's DEVBIN_RELEASE_TAG keeps its meaning, the ref read. (2) 0328 fixes the config reader: a list item quoted whole is one scalar; a bare or quoted-key map item is still refused. (3) 0326 stays open: its Resolution covers devbin's half, and it closes with pplr#0001, cldr#0001 and ccusage#0007. (4) hv through the TUI: Utilz 2.14.9 cut from the head after ST0032's id fix, the desk holder running its full suite; Intent: a client's name is confidential in its public record, ST0092's terms wait for hv's own read, three smaller rulings as intent-vc recommended; Utilz ST0029 (Retire Python) is not for this release. (5) One layer of proof at the desk: a new arm green at the base by construction is named before the run with its claim, never given a planted fault."
+  }
+}
