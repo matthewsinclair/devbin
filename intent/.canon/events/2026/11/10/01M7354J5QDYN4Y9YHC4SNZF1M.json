@@ -1,0 +1,15 @@
+{
+  "id": "01M7354J5QDYN4Y9YHC4SNZF1M",
+  "ts": "2026-11-10T16:37:23.769Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0329"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The macOS stage runs after the tag and publishes the project's declared assets by name"
+  }
+}
