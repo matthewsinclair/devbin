@@ -1,0 +1,16 @@
+{
+  "id": "01M736BH4MHG5VHBSNMC6FHQD4",
+  "ts": "2026-11-10T16:58:40.660Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 201,
+    "text": "Issue 0326 has landed on main (its last unit, 0326-8, at adc03db5, 2026-11-10, unpushed). The notice to send is ~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md, sent whole: the core's contract with the Rust reader byte-equal to adc03db5's docs/dev-opt-brew.md, for each estate to adopt on its own vc's word. Send it to pplr-vc, cldr-vc, cldr-dc and ccusage-vc (pplr#0001, cldr#0001, ccusage#0007), none of which had a session up at 2026-11-10 17:0xZ; whoever first sees one of them up sends it. Also tell pipeliner-sc (decision 91: Pipeliner's CLI keeps no switch of its own, so pipeliner-cc takes up the core's), and have the vcs of Utilz, Molt, Gtools and Intent file their adoptions after devbin's release ships (decision 150)."
+  }
+}
