@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "86e8d721-4079-418e-9e48-218c8da86346",
-    "heartbeat_at": "2026-11-10T19:12:44.851Z",
+    "heartbeat_at": "2026-11-10T20:23:25.579Z",
     "status": "active",
-    "focus": "Desk held by devbin-vc on hv's word (decision 153), localfold for hv's compact at 2026-11-10 17:39Z by date -u, vc not released. Running: devbin-cc's pre-cut run for devbin 0.1.21 (slot PZPJB, heavy+bats, at 052adf97: tree scans BSD and GNU, check all, dry run); utilz-dc's ST0034 WP01 run (slot 04N1, light, vc runs it as holder, log to utilz-vc); intent-dc's 0670 build (cargo); hv's own Utilz 2.14.9 resume (run 5e4b55cc, from 17:35Z; Utilz's tree frozen at 1401e7b3). Queued: intent-cc's 0649 verify (cargo, after the pre-cut). devbin 0.1.21 on main, unpushed: 0326's units, 0327 406a93cb, 0328 8f5c7d44, 0326-8 adc03db5, the note 052adf97; when the pre-cut reads green, the push and cut go to hv (no keychain step), then Intent sweeps it in for 3.3.0. 0326 open for its consumer adoptions (todo 201 carries the notice path); 0329 filed for the release after next. Intent: ST0091 and ic's train on its main (a86205eff, unpushed); ST0092 waits on hv's read of TERMS.md; c1d7d163d's message rewrite runs as hv just before Intent's push; 0670 lands only after vc's warning (watchout 39). Papillon: docs only, hv's open items unchanged.",
+    "focus": "Desk held by devbin-vc on hv's word (decision 153); localfold at 2026-11-10 20:23Z by date -u, vc not released. devbin 0.1.21 RELEASED (cut exit 0 at 20:22:08Z; tag v0.1.21 at 8e8e1ac5 on local and upstream; GitHub release 20:21:50Z; tap homebrew-devbin 60c7e4be; legs local, kovacs, candidate 42883142682 green); main's CI 42894508145 read for Linux next; hv's brew upgrade devbin, then bin/devbin use brew, when convenient. Utilz 2.14.10 released and verified. Intent 3.3.0 on hv's go (decision 156): intent-vc drives ST0092 WP-02 to WP-10, 0667, the 0.1.21 sweep, the scrub, docs/reference and build all, asking vc for every slot; then hv in one visit runs the c1d7d163d rewrite and the kovacs preflight line (~/Devel/scratch/devbin-vc/hv-return-queue-20261110.md), then the cut and push. Watchout 39 due when devbin first runs an Intent built with 0670. Issue 0330 for the release after next. Papillon held to tomorrow.",
     "claims": [
       "ST0011"
     ],
@@ -4718,17 +4718,27 @@
       "node": "vc",
       "kind": "decision",
       "seq": 154,
-      "text": "Desk rulings, 2026-11-10 afternoon, vc holding the desk on hv's word (decision 153), read by date -u: (1) 0327 hands DEVBIN_RELEASE_VERSION and DEVBIN_RELEASE_TARGET_TAG, per call through release_target_run, to preflight, derived:, the gates (local, remote legs and release gates by hand, the last reading both from the tree), the formula step and after:; ci.query's DEVBIN_RELEASE_TAG keeps its meaning, the ref read. (2) 0328 fixes the config reader: a list item quoted whole is one scalar; a bare or quoted-key map item is still refused. (3) 0326 stays open: its Resolution covers devbin's half, and it closes with pplr#0001, cldr#0001 and ccusage#0007. (4) hv through the TUI: Utilz 2.14.9 cut from the head after ST0032's id fix, the desk holder running its full suite; Intent: a client's name is confidential in its public record, ST0092's terms wait for hv's own read, three smaller rulings as intent-vc recommended; Utilz ST0029 (Retire Python) is not for this release. (5) One layer of proof at the desk: a new arm green at the base by construction is named before the run with its claim, never given a planted fault.",
+      "text": "Desk rulings, 2026-11-10 afternoon, vc holding the desk on hv's word (decision 153), read by date -u; the executed parts (0327, 0328, Utilz 2.14.9) archived with 0.1.21's release. (3) 0326 stays open: its Resolution covers devbin's half, and it closes with pplr#0001, cldr#0001 and ccusage#0007. (4) hv through the TUI: Intent: a client's name is confidential in its public record; Utilz ST0029 (Retire Python) is not for this release. (5) One layer of proof at the desk: a new arm green at the base by construction is named before the run with its claim, never given a planted fault.",
       "state": "live",
-      "recorded_at": "2026-11-10T17:39:43.096Z"
+      "recorded_at": "2026-11-10T17:39:43.096Z",
+      "edited_at": "2026-11-10T20:23:25.314Z"
     },
     {
       "node": "vc",
       "kind": "decision",
       "seq": 155,
       "text": "hv's go in vc's window (2026-11-10 18:24Z by date -u): vc pushes and cuts Utilz 2.14.10 (main 0342aee6, bin/devbin release) and devbin 0.1.21 (main 3312a7f8, bin/devbin release --patch), each only once its runs read green, stopping at the first red and reading CI Linux after each cut. hv ruled Intent's hold lifted for every seat (confirmed in vc's window after a conflicting answer), so intent-vc's stack judge runs after devbin's re-legs.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-10T20:23:19.161Z",
       "recorded_at": "2026-11-10T18:24:01.878Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 156,
+      "text": "devbin 0.1.21 cut, 2026-11-10: the first attempt went red before its tag on updatenotice.bats arm 2842 (0326-6's ancestry call in doctor, found only by the cut's whole test, since the pre-cut's tree scans held sixteen files and updatenotice.bats was not one); hv reset to 0f13c090; 0327-1 (3312a7f8) and 0326-11 (45b20471) landed; the re-cut stopped once at stamp on vc's own pickup heartbeat (vc's slip: no wb verb in canon during a cut), committed a9cf61a7, resumed, and released at 20:22:08Z. hv, AFK at about 19:44Z: \"Pleas crack on and get devbin and intent released\", read as the go to cut and push Intent 3.3.0 once green, the c1d7d163d rewrite and the kovacs preflight staying hv's. hv through the TUI: the eight old Intent event files naming the client stay as they are; geodica-estate stays in the rewrite message.",
+      "state": "live",
+      "recorded_at": "2026-11-10T20:23:19.360Z"
     }
   ],
   "sent": [

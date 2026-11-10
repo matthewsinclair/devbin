@@ -1,0 +1,16 @@
+{
+  "id": "01M73J2DW252FXPCMDCNGD6BHF",
+  "ts": "2026-11-10T20:23:25.314Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 154,
+    "text": "Desk rulings, 2026-11-10 afternoon, vc holding the desk on hv's word (decision 153), read by date -u; the executed parts (0327, 0328, Utilz 2.14.9) archived with 0.1.21's release. (3) 0326 stays open: its Resolution covers devbin's half, and it closes with pplr#0001, cldr#0001 and ccusage#0007. (4) hv through the TUI: Intent: a client's name is confidential in its public record; Utilz ST0029 (Retire Python) is not for this release. (5) One layer of proof at the desk: a new arm green at the base by construction is named before the run with its claim, never given a planted fault."
+  }
+}

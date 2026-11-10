@@ -1,0 +1,15 @@
+{
+  "id": "01M73J2820YSBW4150PZX80C30",
+  "ts": "2026-11-10T20:23:19.360Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "devbin 0.1.21 cut, 2026-11-10: the first attempt went red before its tag on updatenotice.bats arm 2842 (0326-6's ancestry call in doctor, found only by the cut's whole test, since the pre-cut's tree scans held sixteen files and updatenotice.bats was not one); hv reset to 0f13c090; 0327-1 (3312a7f8) and 0326-11 (45b20471) landed; the re-cut stopped once at stamp on vc's own pickup heartbeat (vc's slip: no wb verb in canon during a cut), committed a9cf61a7, resumed, and released at 20:22:08Z. hv, AFK at about 19:44Z: \"Pleas crack on and get devbin and intent released\", read as the go to cut and push Intent 3.3.0 once green, the c1d7d163d rewrite and the kovacs preflight staying hv's. hv through the TUI: the eight old Intent event files naming the client stay as they are; geodica-estate stays in the rewrite message."
+  }
+}
