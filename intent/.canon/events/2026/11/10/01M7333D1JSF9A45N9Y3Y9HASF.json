@@ -1,0 +1,15 @@
+{
+  "id": "01M7333D1JSF9A45N9Y3Y9HASF",
+  "ts": "2026-11-10T16:01:48.594Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "devbin-cc's finding on 0327 (2026-11-10): a release.gates entry starting with `release` runs a cut inside a cut and recurses, the same hole 0327 closes for release.preflight at validation. No work now; weigh it for the release after next."
+  }
+}
