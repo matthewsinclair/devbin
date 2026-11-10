@@ -2,10 +2,10 @@
 node: cc
 name: Control Claude
 role: control
-session_id: 38ae7ef4-fbac-4d87-a069-a92f3010a935
-heartbeat_at: 2026-11-06 13:40Z
+session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
+heartbeat_at: 2026-11-10 15:49Z
 status: active
-focus: "Banked for hv's compact (2026-11-06 13:40Z by date -u), then travel; resume on the bounce. Issue 0326, claimed: the core carries dev/opt/brew for every project that declares its binaries. Landed by vc, unpushed: contract a08b44db, 0326-1 ffb93786, 0326-2 6eb8726f, 0326-3 e484bff7, 0326-4 35239dda, 0326-5 2970280d, 0326-6 027edc02, 0326-9 f90aabdb, 0326-7 b12f21f8, 0326-10 898e2d35. Banked, unrun, not asked: 0326-8 the docs at refs/bank/cc/0326-8 (ceb41508, one commit on 898e2d35; kit i0326/u8: runs.sh written, its UNITS check moved into the arms phase; runs.conf with no red and nine green legs on vc's ruling, the driver, the handover and the ask still to write). After 0326-8 lands: the Rust reader to ccusage-vc, cldr-vc, cldr-dc and pplr-vc word for word; issue 0326's Resolution by issues edit, then close; board fold. Tree scans and lint run on the desk only; nothing pushed."
+focus: "Booted on hv's word, holding for vc's instructions (focus set 2026-11-10 15:49Z by date -u): no work, no runs and no writes past this pickup until vc names cc's next work. Issue 0326, claimed: the contract and 0326-1 to 0326-7, 0326-9 and 0326-10 landed by vc on main, unpushed; 0326-8, the docs, banked at refs/bank/cc/0326-8 (ceb41508 on 898e2d35), unrun and unasked, its kit i0326/u8 holding runs.sh, the message and the tree, with runs.conf (no red and nine green legs, on vc's ruling), the driver, the handover and the ask still to write. After it lands: the Rust reader snippet to ccusage-vc, cldr-vc, cldr-dc and pplr-vc word for word; 0326's Resolution by issues edit, then close. The desk is agentic-engineering-vc's; tree scans and lint run on the desk only; nothing pushed."
 claims: [ISSUE:0326]
 ---
 
