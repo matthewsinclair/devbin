@@ -1,0 +1,15 @@
+{
+  "id": "01M72BY2G2SXP1V49Q552TEA26",
+  "ts": "2026-11-10T09:16:56.706Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "devbin's AT-3.5 is claimed by two threads over one marker, so Intent's issue 0670 will stop it counting (intent-vc's warning, measured here 2026-11-10 09:16Z by date -u, decision 151): tests/unit/releasestatus.bats carries exactly one '# AT-3.5' line, at line 170, and it sits over ST0011's WP06 arm, 'a tag whose object the repository lacks stops release status with git's own words', while ST0007's AT-3.5 row (Completed 2026-09-21, covers AC-3.1, its text saying 'marked # AT-3.5') cites the same file for a different arm, status rendering only through the one function a cut summary will call. ST0011's minting of AT-3.5 on 2026-10-31 collided with the closed thread's id, and no other thread of the eleven has an AT-3.5 row. Under 0670's 1-row shape a bare id line stops counting where another thread has a row of the same id citing the same file, so both rows then need file:line, and ST0007's needs the arm that actually proves it. No work on it: an off-path finding, and a Completed thread's acceptance record is hv's call. intent-vc says it will tell vc before 0670 lands."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M72BXKC6YBX0M3SX3SR59KYH",
+  "ts": "2026-11-10T09:16:41.222Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 187,
+    "text": "FOR hv (intent-vc 2026-10-31 15:45Z, relayed 2026-10-31 15:45Z): ST0090, Intent issue 0664's fix, has both packages judged green and landed on Intent's main (WP-01 at 8406f6a15, closed ee612ba4f; WP-02 at a54f2e9e0), nothing pushed; its gate reads 7 of 8 and AC-02.4 waits for hv to see the Rebuild Search Index row's second line ('reconciled <age> ago') after a rebuild on a build carrying both halves: the next cut, 3.3.0 (brew CLI and release app; 3.2.9 is superseded, Intent's next release carries everything outstanding as 3.3.0), or before it a dev Intent.app at or after a54f2e9e0 with IntentBinary pointing at a CLI at or after 8406f6a15 (the maintainer's route alone, directive 15); today's /Applications/Intent.app 3.2.8 and brew 3.2.8 carry neither, so the row shows no second line by design. When hv has seen it, intent-vc records the build on AC-02.4, dc closes WP-02 on its word, and 0664 closes. Intent's main push waits for hv's word (decision 76, directive 3)."
+  }
+}
