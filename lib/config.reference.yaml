@@ -622,6 +622,8 @@ release:
     # run: bin/release-notes # notes.kind: command only -- receives a verb (state, date, body, paths, views, views-check) and that verb's arguments, run at the root
   # derived:                 # commands that regenerate derived files, each printing the paths it wrote
   #   - cargo update --workspace
+  # preflight:               # devbin verbs, run in order in place at pre-flight, by a dry run and a cut alike, before anything is stamped; each must exit 0 and write nothing, each refusal joins pre-flight's own, and none may run release. Each command a cut runs of the project's own is handed the release's target (bin/devbin help release)
+  #   - doctor
   gates:                     # devbin verbs, run in order on the release commit under one seal, tmp/release/<stamp>.GATES.*; each must exit 0, and a green that stands for the release commit on this platform is not run again
     - check all
     - test all

@@ -592,6 +592,7 @@ scalar branch          cut,status,snapshot!publish.branch main
 scalar notes.kind      cut,status,notes,check changelog
 scalar notes.run       cut,status,notes,check
 list   derived         cut
+list   preflight       cut
 list   gates           cut,status,gates               check all|test all
 list   legs            cut,status
 scalar ci.query        cut,status,check               $_DEVBIN_CI_BUILTIN_QUERY
@@ -1298,6 +1299,21 @@ _cfg_release_value_problem() {
     ci.wait | object_wait | assets.wait)
       [[ "$v" =~ ^[0-9]+[smh]$ ]] && return 1
       printf 'must be a whole number of s, m or h, eg 20m'
+      ;;
+    preflight.*)
+      # A PRE-FLIGHT COMMAND NEVER RUNS release (issue 0327): a cut runs each one
+      # inside its own pre-flight, a dry run's included, so one whose first word
+      # is release would start a cut there, which would run it again, without
+      # end. `-` declares none, as leaving the key out does.
+      is_no_default "$v" && return 1
+      local pf_first=""
+      IFS=$' \t\n' read -r pf_first _ <<<"$v"
+      [ -n "$pf_first" ] && [ "$pf_first" != release ] && return 1
+      if [ -z "$pf_first" ]; then
+        printf 'is empty -- leave the key out to run no pre-flight command'
+      else
+        printf 'runs release, which would start a cut inside the cut'"'"'s own pre-flight, again without end -- name the check itself'
+      fi
       ;;
     legs.*)
       # A REMOTE LEG IS A HOST ALIAS (ST0011 WP-05): ssh is handed the name as a

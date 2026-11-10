@@ -67,6 +67,21 @@ YAML
   printf '%s\n' "$proj"
 }
 
+# with_preflight_probe <proj> -- <proj> gains `pfprobe`, a project command for
+# release.preflight (issue 0327), committed and pushed so a cut's pre-flight
+# reads a clean tree level with its remote. It records each run in pf.calls,
+# its words and the release's target it was handed, then sources
+# $DEVBIN_TEST_TMPDIR/pf.sh where an arm writes one, so the arm decides what it
+# reads, writes or answers, as cut_project's probe gate does. Each step returns
+# its failure, as cut_project's do.
+with_preflight_probe() {
+  create_test_command "$1" pfprobe "$(printf '#!/usr/bin/env bash\nprintf "pfprobe %%s version=%%s tag=%%s\\n" "$*" "${DEVBIN_RELEASE_VERSION-<unset>}" "${DEVBIN_RELEASE_TARGET_TAG-<unset>}" >>"%s/pf.calls"\nif [ -f "%s/pf.sh" ]; then . "%s/pf.sh"; fi\nexit 0\n' \
+    "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR")" >/dev/null || return 1
+  git -C "$1" add -A || return 1
+  git -C "$1" commit -qm "a pre-flight probe" || return 1
+  git -C "$1" push -q origin main
+}
+
 # no_candidate_body <release-body> -- <release-body>, a release: block's lines,
 # with `ci: query: "-"` added unless it declares a ci: block of its own (ST0011
 # WP-02c): every cut has a candidate unless its project opts out, and a

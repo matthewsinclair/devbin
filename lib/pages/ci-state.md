@@ -3,7 +3,7 @@
 
 Read CI's verdict on a commit: one line, `<verdict><TAB><detail>`, the verdict one of `green`, `failed`, `pending`, `none` or `unknown`, and the detail naming the run it read or the reason it could not. It reads the project's workflow runs on GitHub through `gh`, and changes nothing anywhere.
 
-It is the release core's own words, so `bin/devbin ci-state` is a `release.ci.query` as it stands: the core runs `<query> <sha>` with no input, with a cut's candidate branch, such as `candidate/v1.2.3`, in `DEVBIN_RELEASE_TAG`, and reads the first line. It exits 0 whenever it answered, whatever the verdict, and 1 on a usage error or a config that does not validate. Read the verdict from the line, never from the exit status. The sha is a full one, as the core passes: `gh` matches a run's commit by its whole sha, so a short sha or a branch name is refused as a usage error rather than read as no run.
+It is the release core's own words, so `bin/devbin ci-state` is a `release.ci.query` as it stands: the core runs `<query> <sha>` with no input, with a cut's candidate branch, such as `candidate/v1.2.3`, in `DEVBIN_RELEASE_TAG`, and reads the first line. That variable is the query's alone, and names a ref, not the tag: the release's target, which a cut hands the project's own commands, is another pair (`bin/devbin help release`, The release's target). It exits 0 whenever it answered, whatever the verdict, and 1 on a usage error or a config that does not validate. Read the verdict from the line, never from the exit status. The sha is a full one, as the core passes: `gh` matches a run's commit by its whole sha, so a short sha or a branch name is refused as a usage error rather than read as no run.
 
 ## Which runs count
 

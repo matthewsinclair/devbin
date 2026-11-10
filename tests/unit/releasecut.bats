@@ -3866,3 +3866,230 @@ STUB
   grep -qF "s $want" <<<"$(grep -F 'leg: candidate failed ' "$out")" ||
     fail "the RELEASE seal's candidate line does not carry the failed line whole: $(grep -F 'leg:' "$out" || echo '(none)')"
 }
+
+# ============================================================================
+# THE PROJECT'S OWN PRE-FLIGHT, AND THE RELEASE'S TARGET (issue 0327)
+# ============================================================================
+# release.preflight's commands run at pre-flight, by a dry run and a cut alike,
+# every one of them, each refusal named in the pre-flight row beside the core's
+# own. Each command of the project's own a cut runs is handed the release's
+# target, DEVBIN_RELEASE_VERSION and DEVBIN_RELEASE_TARGET_TAG: the pre-flight
+# commands, derived:, the gates wherever they run, the formula step and
+# after:. A probe at each seam records what it was handed.
+
+# pf_does <script> -- what the pre-flight probe does when it runs, as bash.
+pf_does() { printf '%s\n' "$1" >"$DEVBIN_TEST_TMPDIR/pf.sh"; }
+
+# pf_project [<preflight-lines>] -- cut_project with the probe gate and
+# release.preflight declaring <preflight-lines>, `pfprobe` alone by default,
+# the probe committed and pushed (with_preflight_probe).
+pf_project() {
+  local proj
+  proj="$(cut_project "  preflight:
+${1:-    - pfprobe}
+  gates:
+    - probe")" || return 1
+  with_preflight_probe "$proj" || return 1
+  printf '%s\n' "$proj"
+}
+
+# TARGET_LINE -- the bash line a probe at a seam appends to its record: the
+# release's target it was handed, `<unset>` for either it was not.
+TARGET_LINE='printf "version=%s tag=%s\n" "${DEVBIN_RELEASE_VERSION-<unset>}" "${DEVBIN_RELEASE_TARGET_TAG-<unset>}"'
+
+# assert_pf_calls <want> <command>... -- the probe ran once for each command
+# given, in their order, each run handed <want>: pf.calls holds a line a run,
+# `pfprobe <the command's words after pfprobe> <want>`.
+assert_pf_calls() {
+  local want="$1" c args
+  local -a got=() exp=()
+  shift
+  [ -f "$DEVBIN_TEST_TMPDIR/pf.calls" ] || fail "no pre-flight command ran:
+$output"
+  mapfile -t got <"$DEVBIN_TEST_TMPDIR/pf.calls"
+  for c in "$@"; do
+    args="${c#pfprobe}"
+    exp+=("pfprobe ${args# } $want")
+  done
+  [ "$(printf '%s\n' "${got[@]}")" = "$(printf '%s\n' "${exp[@]}")" ] ||
+    fail "the pre-flight runs were:
+$(printf '%s\n' "${got[@]}")
+want:
+$(printf '%s\n' "${exp[@]}")"
+}
+
+@test "0327: a dry run runs release.preflight at pre-flight, every command handed the release's target, and its row counts the commands that passed" {
+  local -a cmds=(pfprobe "pfprobe second")
+  proj="$(pf_project "$(printf '    - %s\n' "${cmds[@]}")")"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_success
+  assert_state pre-flight done
+  [[ "$(row_of pre-flight)" == *"release.preflight: ${#cmds[@]} command(s) passed"* ]] ||
+    fail "the pre-flight row does not count the commands that passed: $(row_of pre-flight)"
+  assert_pf_calls "version=1.0.1 tag=v1.0.1" "${cmds[@]}"
+}
+
+@test "0327: a cut given --yes runs release.preflight at pre-flight too, each command handed the release's target, before anything is stamped" {
+  local -a cmds=(pfprobe)
+  proj="$(pf_project "$(printf '    - %s\n' "${cmds[@]}")")"
+  pf_does '[ "$(cat VERSION)" = 1.0.0 ] || { echo "pre-flight saw VERSION $(cat VERSION)"; exit 9; }'
+  cut_to_tag_stop "$proj" v1.0.1
+  [[ "$(row_of pre-flight)" == *"release.preflight: ${#cmds[@]} command(s) passed"* ]] ||
+    fail "the pre-flight row does not count the commands that passed: $(row_of pre-flight)"
+  assert_pf_calls "version=1.0.1 tag=v1.0.1" "${cmds[@]}"
+}
+
+@test "0327: a pre-flight command that fails stops a dry run at pre-flight, exit 1, the row naming the command and its exit, and nothing is written" {
+  local before
+  proj="$(pf_project)"
+  pf_does 'exit 3'
+  before="$(fingerprint "$proj" --allow-gh-reads)"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"the pre-flight command 'pfprobe' failed (exit 3, above)"* ]] ||
+    fail "the pre-flight row does not name the command and its exit: $(row_of pre-flight)"
+  rm -rf "$proj/tmp/release"
+  [ "$(fingerprint "$proj" --allow-gh-reads)" = "$before" ] || fail "a dry run its pre-flight refused wrote something"
+}
+
+@test "0327: a pre-flight command that fails stops a cut given --yes at pre-flight, before the confirm: nothing stamped, no release commit, no gate run" {
+  local head
+  proj="$(pf_project)"
+  head="$(git -C "$proj" rev-parse HEAD)"
+  pf_does 'exit 3'
+  run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at pre-flight
+  assert_state confirm "(no row confirm)"
+  [ "$(git -C "$proj" rev-parse HEAD)" = "$head" ] || fail "HEAD moved: $(git -C "$proj" log --oneline -2)"
+  [ "$(release_commits "$proj")" -eq 0 ] || fail "a release commit was made: $(git -C "$proj" log --oneline -2)"
+  [ "$(cat "$proj/VERSION")" = 1.0.0 ] || fail "the version was stamped: $(cat "$proj/VERSION")"
+  if gate_ran; then fail "a gate ran after pre-flight refused"; fi
+}
+
+@test "0327: every pre-flight command runs, and pre-flight names each refusal in its one stop, beside the core's own" {
+  local c
+  local -a cmds=("pfprobe one" "pfprobe two")
+  proj="$(pf_project "$(printf '    - %s\n' "${cmds[@]}")")"
+  pf_does 'exit 3'
+  : >"$proj/stray.txt"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_stopped_at pre-flight
+  assert_pf_calls "version=1.0.1 tag=v1.0.1" "${cmds[@]}"
+  for c in "${cmds[@]}"; do
+    [[ "$(row_of pre-flight)" == *"the pre-flight command '$c' failed (exit 3, above)"* ]] ||
+      fail "the pre-flight row does not name '$c': $(row_of pre-flight)"
+  done
+  [[ "$(row_of pre-flight)" == *"dirty outside what this release owns: stray.txt"* ]] ||
+    fail "the pre-flight row does not carry the core's own refusal beside them: $(row_of pre-flight)"
+}
+
+@test "0327: a pre-flight command that writes to the tree is refused, naming it and the path, and one that commits, naming HEAD's move" {
+  proj="$(pf_project "    - pfprobe writes
+    - pfprobe commits")"
+  pf_does 'case "$1" in writes) : >made-by-preflight.txt ;; commits) git commit -q --allow-empty -m "made at pre-flight" ;; esac'
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"the pre-flight command 'pfprobe writes' changed the tree: made-by-preflight.txt"* ]] ||
+    fail "the pre-flight row does not name the command that wrote and the path: $(row_of pre-flight)"
+  [[ "$(row_of pre-flight)" == *"the pre-flight command 'pfprobe commits' moved HEAD from "* ]] ||
+    fail "the pre-flight row does not name the command that committed: $(row_of pre-flight)"
+}
+
+@test "0327: a cut run again past its tag runs no release.preflight command, and its pre-flight row says so" {
+  proj="$(pf_project)"
+  run release_in "$proj" v1.0.1 --yes
+  assert_success
+  rm -f "$DEVBIN_TEST_TMPDIR/pf.calls"
+  run release_in "$proj" v1.0.1 --yes
+  assert_success
+  [[ "$(row_of pre-flight)" == *"release.preflight not run: v1.0.1 exists, so nothing is stamped or committed"* ]] ||
+    fail "the pre-flight row does not say release.preflight was not run past the tag: $(row_of pre-flight)"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/pf.calls" ] || fail "release.preflight ran past the tag: $(cat "$DEVBIN_TEST_TMPDIR/pf.calls")"
+}
+
+@test "0327: a release.preflight command that runs release is refused as config, naming why, and nothing runs" {
+  proj="$(pf_project "    - release --patch --dry-run")"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_failure
+  assert_output_contains "release.preflight.0"
+  assert_output_contains "runs release, which would start a cut inside the cut's own pre-flight"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/pf.calls" ] || fail "a pre-flight command ran: $(cat "$DEVBIN_TEST_TMPDIR/pf.calls")"
+}
+
+@test "0327: each derived: command is handed the release's target" {
+  printf '%s >>"%s/derived.target"\n' "$TARGET_LINE" "$DEVBIN_TEST_TMPDIR" >"$DEVBIN_TEST_TMPDIR/derived.sh"
+  proj="$(cut_project "  derived:
+    - bash $DEVBIN_TEST_TMPDIR/derived.sh
+  gates:
+    - probe")"
+  cut_to_tag_stop "$proj" v1.0.1
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/derived.target")" = "version=1.0.1 tag=v1.0.1" ] ||
+    fail "the derived: command was handed: $(cat "$DEVBIN_TEST_TMPDIR/derived.target")"
+}
+
+@test "0327: the local gates are handed the release's target" {
+  proj="$(cut_project)"
+  gate_does "$TARGET_LINE"' >>"'"$DEVBIN_TEST_TMPDIR"'/gate.target"'
+  cut_to_tag_stop "$proj" v1.0.1
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/gate.target")" = "version=1.0.1 tag=v1.0.1" ] ||
+    fail "the gate was handed: $(cat "$DEVBIN_TEST_TMPDIR/gate.target")"
+}
+
+@test "0327: each after: command is handed the release's target" {
+  printf '%s >>"%s/after.target"\n' "$TARGET_LINE" "$DEVBIN_TEST_TMPDIR" >"$DEVBIN_TEST_TMPDIR/after.sh"
+  proj="$(ci_project "  after:
+    - bash $DEVBIN_TEST_TMPDIR/after.sh")"
+  run release_in "$proj" v1.0.1 --yes
+  assert_success
+  assert_state after done
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/after.target")" = "version=1.0.1 tag=v1.0.1" ] ||
+    fail "the after: command was handed: $(cat "$DEVBIN_TEST_TMPDIR/after.target")"
+}
+
+@test "0327: the formula step's formula command is handed the release's target" {
+  proj="$(ci_project "  formula: true")"
+  create_test_command "$proj" formula "$(printf '#!/usr/bin/env bash\n%s >>"%s/formula.target"\nprintf "formula: published the formula\\n"\n' "$TARGET_LINE" "$DEVBIN_TEST_TMPDIR")" >/dev/null
+  git -C "$proj" add -A && git -C "$proj" commit -qm "a formula command" && git -C "$proj" push -q origin main ||
+    fail "the fixture's formula command was not committed"
+  run release_in "$proj" v1.0.1 --yes
+  assert_success
+  assert_state formula done
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/formula.target")" = "version=1.0.1 tag=v1.0.1" ] ||
+    fail "the formula command was handed: $(cat "$DEVBIN_TEST_TMPDIR/formula.target")"
+}
+
+@test "0327: release gates hands its gates the tree's target, the version the tree declares and the tag release.tag makes of it" {
+  local v
+  proj="$(cut_project)"
+  v="$(cat "$proj/VERSION")"
+  gate_does "$TARGET_LINE"' >>"'"$DEVBIN_TEST_TMPDIR"'/gate.target"'
+  run release_in "$proj" gates
+  assert_success
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/gate.target")" = "version=$v tag=v$v" ] ||
+    fail "release gates handed its gate: $(cat "$DEVBIN_TEST_TMPDIR/gate.target")"
+}
+
+@test "0327: release gates refuses a tree whose version cannot be read, in version_unread's words, before any gate runs" {
+  proj="$(cut_project)"
+  git -C "$proj" rm -q VERSION && git -C "$proj" commit -qm "no version" || fail "the fixture's VERSION was not removed"
+  run release_in "$proj" gates
+  assert_failure
+  assert_output_contains "release gates: the version cannot be read"
+  if gate_ran; then fail "a gate ran without the version it is handed"; fi
+}
+
+@test "0327: a remote leg's gates are handed the release's target, which its host reads from the release commit" {
+  legs_env
+  proj="$(cut_project "  gates:
+    - probe
+  legs:
+    - near")"
+  gate_does 'printf "home=%s version=%s tag=%s\n" "$HOME" "${DEVBIN_RELEASE_VERSION-<unset>}" "${DEVBIN_RELEASE_TARGET_TAG-<unset>}" >>"'"$DEVBIN_TEST_TMPDIR"'/gate.target"'
+  DEVBIN_RELEASE_POLL_SECONDS=1 PATH="$(tag_refused_path)" run release_in "$proj" v1.0.1 --yes
+  [ "$status" -eq 1 ] || fail "want exit 1 at the tag step, got $status:
+$output"
+  assert_state tag FAILED
+  assert_state legs done
+  grep -qxF "home=$HOSTS/near version=1.0.1 tag=v1.0.1" "$DEVBIN_TEST_TMPDIR/gate.target" ||
+    fail "near's gates were not handed the release's target: $(cat "$DEVBIN_TEST_TMPDIR/gate.target")"
+}

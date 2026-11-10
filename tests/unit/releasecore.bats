@@ -307,7 +307,7 @@ YAML
   # them holds that to the table's own rows (ST0008 WP-08: repo was in none).
   local block shape key all="" declared
   local -a blocks=(
-    '  tag: "v{version}"\n  remotes:\n    - origin\n  branch: main\n  notes:\n    kind: changelog\n  derived:\n    - cargo update --workspace\n  gates:\n    - check all\n    - test all\n  legs:\n    - "-"\n  ci:\n    query: bin/devbin ci-state\n    workflow: tests.yml\n    summary: Test Summary\n    wait: 20m\n  object: local\n  title: "{tag}"\n  repo: owner/name\n  formula: false\n  after:\n    - bin/announce\n  verbs:\n    - cut\n    - status\n    - notes\n    - check\n    - attach\n  assets:\n    workflow: linux-release.yml\n    wait: 30m'
+    '  tag: "v{version}"\n  remotes:\n    - origin\n  branch: main\n  notes:\n    kind: changelog\n  derived:\n    - cargo update --workspace\n  preflight:\n    - doctor\n  gates:\n    - check all\n    - test all\n  legs:\n    - "-"\n  ci:\n    query: bin/devbin ci-state\n    workflow: tests.yml\n    summary: Test Summary\n    wait: 20m\n  object: local\n  title: "{tag}"\n  repo: owner/name\n  formula: false\n  after:\n    - bin/announce\n  verbs:\n    - cut\n    - status\n    - notes\n    - check\n    - attach\n  assets:\n    workflow: linux-release.yml\n    wait: 30m'
     '  notes:\n    kind: command\n    run: bin/release-notes'
     '  object: ci\n  object_wait: 20m'
     '  ci:\n    query: bin/devbin ci-state\n  snapshot:\n    list: tests/shipped.paths\n    author: "A B <a@b>"\n    message: "{name} {version}"\n  publish:\n    url: https://example.com/o/n.git\n    branch: main\n    candidate: candidate/{tag}'

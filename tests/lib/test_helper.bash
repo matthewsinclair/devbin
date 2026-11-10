@@ -389,6 +389,12 @@ devbin_isolate_run() {
   # inherit its view of the person (issue 0158): each arm reads the person
   # from its own stdin unless it says otherwise.
   unset DEVBIN_GATE_TTY DEVBIN_IN_GATE
+  # Nor a cut's target (issue 0327): a cut hands DEVBIN_RELEASE_VERSION and
+  # DEVBIN_RELEASE_TARGET_TAG to each command it runs of the project's own, its
+  # gates among them, and devbin's own gates run this suite, so every arm would
+  # otherwise run as part of the release being cut. An arm that means a target
+  # sets one.
+  unset DEVBIN_RELEASE_VERSION DEVBIN_RELEASE_TARGET_TAG
 }
 
 # devbin_isolate_machine -- THE MACHINE POINTER IS THE TEST'S OWN (issue 0153).
