@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "b9e34071-9e8f-449b-a0f6-750b4eda63fe",
-    "heartbeat_at": "2026-11-10T17:11:48.936Z",
+    "heartbeat_at": "2026-11-10T18:09:12.332Z",
     "status": "active",
-    "focus": "Pre-cut run for devbin's patch release asked as slot 01M7372QZCAYXVGZ4K4NEPZPJB at main 052adf97, which carries the 0.1.21 note vc landed (focus set 2026-11-10 17:11Z by date -u): 16 legs, 15 tree-scan and population files whole and install's vendored-set arm, under BSD then GNU, then check all, then release --patch --dry-run; its kit is ~/Devel/scratch/devbin-cc/pc0121, read by vc; the grant follows intent-vc's judge and intent-cc's 0649 verify. A red scan hit becomes its own unit before the cut. Issues 0327 and 0328 closed; 0326 open on vc's ruling until pplr#0001, cldr#0001 and ccusage#0007 close, its reader notice in vc's todo 201. Claimed: ISSUE:0326. Nothing pushed.",
+    "focus": "Pre-cut re-legs for devbin's patch release asked as slot 01M73AB6V3E4DQEQM1Y3F6AH2P at main 3312a7f8, where vc landed 0327-1 (focus set 2026-11-10 18:09Z by date -u): contract.bats whole under BSD then GNU, then check all, by pc0121's precut.sh unchanged, in kit ~/Devel/scratch/devbin-cc/pc0121r; the grant follows Utilz's full run and intent-vc's judge, and the start waits on vc's driver read. 0327-1, the pre-cut's two contract reds from 0327 mended, ran green in its slot before landing. When the re-legs read green, the push and the cut go to hv. 0326 stays open on vc's ruling until pplr#0001, cldr#0001 and ccusage#0007 close, its reader notice in vc's todo 201. Claimed: ISSUE:0326. Nothing pushed.",
     "claims": [
       "ISSUE:0326"
     ],
