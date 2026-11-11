@@ -1735,7 +1735,7 @@ cut_summary() {
 cut_back_to_brew() {
   local name step="" links link
   command_active formula || return 0
-  [ "$(use_target "$PROJECT_ROOT")" = none ] || step="bin/devbin use brew in this checkout"
+  [ "$(use_target "$PROJECT_ROOT")" = none ] || step="$(cfg_tool_verb switch) brew in this checkout"
   if ! name="$(cfg_formula_name)" || [ -z "$name" ]; then
     printf 'release: NOTE: the switch rests at brew -- once the tap has %s, upgrade it with brew%s (the formula'"'"'s name could not be read: formula.name, or project.name)\n' \
       "$1" "${step:+ and run $step}"

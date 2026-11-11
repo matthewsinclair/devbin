@@ -436,7 +436,10 @@ _cfg_path_known() {
       # install.files.<label> is the rest of its runtime set (T1): path, its
       # place in opt and brew; from, its file in the dev tree; platforms, the
       # platforms it ships on. The readers are cfg_tool_links, cfg_tool_files
-      # and cfg_tool_manifest.
+      # and cfg_tool_manifest. install.switch and install.publish name the
+      # tool's own switch (T5) and publish (T2), commands devbin names and never
+      # runs, which withhold its own use and install in the tool's checkout
+      # (issue 0332); their reader is cfg_tool_own.
       #
       # ADDED IN THE SAME CHANGE AS THE READER, deliberately. `project.referent`
       # was readable by the runtime and unknown to this function for two days --
@@ -446,6 +449,7 @@ _cfg_path_known() {
       # in the validator.
       [ "$n" -eq 2 ] && [ "${p[1]}" = prefix ] && return 0
       [ "$n" -eq 2 ] && [ "${p[1]}" = manifest ] && return 0
+      [ "$n" -eq 2 ] && case "${p[1]}" in switch | publish) return 0 ;; esac
       [ "$n" -eq 3 ] && [ "${p[1]}" = links ] && return 0
       if [ "$n" -eq 4 ] && [ "${p[1]}" = files ]; then
         case "${p[3]}" in path | from) return 0 ;; esac
@@ -1223,6 +1227,35 @@ cfg_tool_manifest() {
   printf '%s\n' "$m"
 }
 
+# cfg_tool_own <switch|publish> -- the tool's own command for its switch (T5)
+# or its publish (T2), install.switch or install.publish as the project wrote
+# it, or nothing where the key is not declared (issue 0332). devbin names the
+# command and never runs it: a tool that keeps its own switch or publish has
+# devbin's use or install refuse in its checkout, naming it, while the formula,
+# doctor's rows and the link set still read install.links. THE ONE READER of
+# the two keys.
+cfg_tool_own() {
+  case "$1" in
+    switch | publish) cfg_get "install.$1" "" ;;
+    *) return 1 ;;
+  esac
+}
+
+# cfg_tool_verb <switch|publish> -- the command a remedy names for the tool's
+# switch or publish: its own (cfg_tool_own), or devbin's, bin/devbin use or
+# bin/devbin install, where it keeps none.
+cfg_tool_verb() {
+  local own
+  own="$(cfg_tool_own "$1")" || return 1
+  if [ -n "$own" ]; then
+    printf '%s\n' "$own"
+  elif [ "$1" = switch ]; then
+    printf 'bin/devbin use\n'
+  else
+    printf 'bin/devbin install\n'
+  fi
+}
+
 # cfg_tool_files [<platform word>] -- the rest of the tool's runtime set (T1)
 # that ships on <platform word>, this host's (platform_word) where none is
 # given: one file a line, `<label><TAB><its path in opt and brew><TAB><its file
@@ -1945,6 +1978,12 @@ cfg_validate() {
     elif [[ "$k" == install.manifest || "$k" == install.files.*.path ]] &&
       why="$(relative_path_problem "$v" "the tool's tree root")"; then
       printf 'config: %s: %s: "%s" %s\n' "$_DEVBIN_CFG_FILE" "$k" "$v" "$why" >&2
+      rc=1
+    elif [[ "$k" == install.switch || "$k" == install.publish ]] && ! has_words "$v"; then
+      # The tool's own command, named in devbin's refusals and remedies, so one
+      # with no words would name nothing.
+      printf "config: %s: %s is empty -- name the tool's own command, or leave the key out, and devbin's own %s serves\n" \
+        "$_DEVBIN_CFG_FILE" "$k" "${k#install.}" >&2
       rc=1
     elif _cfg_path_platform "$k" && ! is_platform_word "$v"; then
       printf 'config: %s: %s: "%s" is not a platform word -- use one of: %s\n' \

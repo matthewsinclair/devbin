@@ -3684,6 +3684,17 @@ with_formula() {
   assert_output_contains "release: NOTE: the switch rests at brew -- once the tap has v1.0.1: brew upgrade demo, then bin/devbin use brew in this checkout, and demo-cli --version reads demo-cli 1.0.1 (brew, ${commit:0:12})"
 }
 
+@test "0332-1: the note back to brew names the tool's own switch where the project declares install.switch" {
+  proj="$(cut_project)"
+  with_formula "$proj"
+  printf 'install:\n  prefix: %s/opt-demo\n  switch: demo use\n' "$DEVBIN_TEST_TMPDIR" >>"$proj/bin/.devbin/config.yaml"
+  git -C "$proj" commit -qam "the tool's own switch" && git -C "$proj" push -q origin main || fail "the fixture's tool commit failed"
+  run release_in "$proj" v1.0.1 --yes
+  assert_success
+  commit="$(git -C "$proj" rev-parse 'refs/tags/v1.0.1^{commit}')"
+  assert_output_contains "release: NOTE: the switch rests at brew -- once the tap has v1.0.1: brew upgrade demo, then demo use brew in this checkout, and demo --version reads demo 1.0.1 (brew, ${commit:0:12})"
+}
+
 # ============================================================================
 # THE CANDIDATE'S TRIGGER, AND A GATE ACTIVE ON NO LEG (ST0011 WP-02c)
 # ============================================================================

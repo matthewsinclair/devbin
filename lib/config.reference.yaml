@@ -223,7 +223,8 @@ devbin_version: "^1.0.0"
 # every later command would find an install exactly where it looked.
 #
 # The rest of the block names what the tool's trees hold, and each is read once
-# (cfg_tool_links, cfg_tool_files, cfg_tool_manifest in lib/config):
+# (cfg_tool_links, cfg_tool_files, cfg_tool_manifest and cfg_tool_own in
+# lib/config):
 #
 #   manifest     its manifest, from the tree's root (T3); undeclared:
 #                .<name>-install, and devbin's is bin/.devbin/manifest.sha256
@@ -235,6 +236,12 @@ devbin_version: "^1.0.0"
 #                its place in opt and brew from the tree's root; `from`, its
 #                file in the dev tree, undeclared: its path; `platforms`, the
 #                platform words it ships on, undeclared: every one
+#   switch       the tool's own switch (T5), a command devbin names and never
+#                runs: declared, `use` refuses in this checkout, naming it, and
+#                doctor's remedies name it; undeclared: bin/devbin use
+#   publish      the tool's own publish (T2), the same: declared, `install`
+#                refuses its opt publish, naming it, though not --managed-by
+#                brew or --into; undeclared: bin/devbin install
 #
 # A link's name and a file's label start with a letter or a digit, then
 # letters, digits, _ or -. No two of the tree's places, each link's
@@ -243,6 +250,9 @@ install:
   prefix: ~/opt/devbin
 
   # manifest: .demo-install
+
+  # switch: demo use
+  # publish: demo install
 
   # links:
   #   demo: target/release/demo

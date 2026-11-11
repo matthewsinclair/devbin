@@ -254,6 +254,14 @@ main() {
   # A PROJECT'S TOOL publishes and returns here: it vendors nothing, so none of
   # what follows, devbin's own publish and the vendor, is its.
   if [ "$mode" = tool ]; then
+    # A TOOL THAT KEEPS ITS OWN PUBLISH (install.publish; issue 0332) has its opt
+    # tree written by that command alone, so the publish refuses here, writing
+    # nothing, and names it. A keg is brew's tree, not the tool's opt tree, so
+    # the formula's publish into one, --managed-by brew, is not refused.
+    local own
+    own="$(cfg_tool_own publish)" || die "cannot read install.publish from this checkout's config"
+    [ -z "$own" ] || [ "$managed" = brew ] ||
+      die "$(cfg_formula_name) keeps its own publish, install.publish: run $own -- $DEVBIN_INVOKE install publishes no opt tree of it"
     # shellcheck source=lib/tool
     . "$DEVBIN_LIB/tool"
     if [ -z "$prefix" ]; then

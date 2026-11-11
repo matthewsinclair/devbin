@@ -1230,7 +1230,7 @@ _check_tool_switch() {
         word="$(tool_tree_word "$root")" || word=unknown
         if [ "$word" = unknown ]; then
           _fail "$formula switch: the link $p leads into $root, which is none of $formula's trees: no manifest there names $formula"
-          _detail "point it at one of them: bin/devbin use dev, opt or brew"
+          _detail "point it at one of them: $(cfg_tool_verb switch) dev, opt or brew"
           failed=yes
         else
           _pass "$formula switch: the link $p names $word at $root"
@@ -1241,7 +1241,7 @@ _check_tool_switch() {
           _pass "$formula switch: no link for $name, so brew"
         else
           _note "$formula switch: no link for $name, and $(tool_brew_none_why "$formula")"
-          _detail "$(tool_brew_unplaced_fix "$formula"), or run bin/devbin use dev or opt in this checkout"
+          _detail "$(tool_brew_unplaced_fix "$formula"), or run $(cfg_tool_verb switch) dev or opt in this checkout"
         fi
         ;;
     esac
@@ -1282,7 +1282,7 @@ _check_tool_left_off_brew() {
   brew="$(tool_brew_root "$formula")" || return 0
   [ "$(tool_tree_word "$brew")" = brew ] || return 0
   have="$(tool_manifest_field "$brew" "$m" version 2>/dev/null)" || return 0
-  _left_off_brew "$formula switch" "$formula" "$tree" "$want" "$have" "bin/devbin use"
+  _left_off_brew "$formula switch" "$formula" "$tree" "$want" "$have" "$(cfg_tool_verb switch)"
 }
 
 # _check_tool_trees <formula> <links> -- each opt or brew tree the link set
@@ -1329,7 +1329,12 @@ _check_tool_tree() {
   m="$(cfg_tool_manifest)" || return 0
   word="$(tool_tree_word "$root")" || word=unknown
   case "$word" in
-    opt) fix="republish it from this checkout: bin/devbin install --force" ;;
+    opt)
+      # A tool that keeps its own publish republishes with it (issue 0332),
+      # and devbin's republishes with --force.
+      fix="republish it from this checkout: $(cfg_tool_verb publish)"
+      [ -n "$(cfg_tool_own publish)" ] || fix+=" --force"
+      ;;
     brew) fix="reinstall it: brew reinstall $formula" ;;
     *)
       _fail "$formula tree: Homebrew's keg at $root holds a manifest that names no install of $formula, so its files cannot be checked"

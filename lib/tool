@@ -348,7 +348,7 @@ tool_switch_state() {
       return 0
     fi
   fi
-  tool_link_state "$(cfg_formula_name)" "$name" "bin/devbin use"
+  tool_link_state "$(cfg_formula_name)" "$name" "$(cfg_tool_verb switch)"
 }
 
 # tool_tree_word <root> -- which of the tool's trees <root> is, one word: by its
@@ -474,8 +474,8 @@ tool_set_split() {
       first="$key"
       first_state="$state"
     elif [ "$key" != "$first" ]; then
-      printf "the link set is split: %s serves %s, where the set's first link serves %s -- point them together with bin/devbin use dev, opt or brew\n" \
-        "$name" "$(_tool_state_words "$state")" "$(_tool_state_words "$first_state")"
+      printf "the link set is split: %s serves %s, where the set's first link serves %s -- point them together with %s dev, opt or brew\n" \
+        "$name" "$(_tool_state_words "$state")" "$(_tool_state_words "$first_state")" "$(cfg_tool_verb switch)"
       return 1
     fi
   done <<<"$1"

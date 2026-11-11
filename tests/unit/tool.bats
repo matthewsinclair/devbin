@@ -839,3 +839,94 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   assert_output_contains "ok    demo tree: $root/bin/demo-cli prints its install's line, demo-cli 1.2.3 (opt, ${sha:0:12})"
   assert_output_contains "ok    demo tree: $root/bin/demo-d prints its install's line, demo-d 1.2.3 (opt, ${sha:0:12})"
 }
+
+# stamp_own <proj> <switch|publish> <command> -- the stamped project's tool
+# keeping its own switch or publish: install.<key> declared as <command>, under
+# its install: block, and committed.
+stamp_own() {
+  local cfg="$1/bin/.devbin/config.yaml"
+  awk -v k="$2" -v c="$3" '{ print } /^install:$/ { print "  " k ": " c }' "$cfg" >"$cfg.new" || return 1
+  mv "$cfg.new" "$cfg" || return 1
+  grep -qx "  $2: $3" "$cfg" || return 1
+  git -C "$1" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -qam "the tool's own $2" >/dev/null 2>&1
+}
+
+# A TOOL MAY KEEP ITS OWN SWITCH AND PUBLISH (issue 0332): install.switch and
+# install.publish name its own commands, which devbin names and never runs, so
+# devbin's use and install refuse in its checkout while the formula, doctor's
+# rows and the link set still read install.links.
+@test "0332-1: install.switch and install.publish validate as the tool's own commands, the remedies name them, and one declared with no words is refused" {
+  tool_config 'project:
+  name: demo
+install:
+  switch: demo use
+  publish: demo install
+  links:
+    demo-cli: target/release/demo-cli' || fail "the fixture's config did not load"
+  run --separate-stderr cfg_validate
+  [ "$status" -eq 0 ] || fail "refused: $stderr"
+  [ "$(cfg_tool_own switch)" = "demo use" ] || fail "install.switch reads: $(cfg_tool_own switch)"
+  [ "$(cfg_tool_verb publish)" = "demo install" ] || fail "the publish's verb reads: $(cfg_tool_verb publish)"
+  tool_config 'project:
+  name: demo
+install:
+  links:
+    demo-cli: target/release/demo-cli' || fail "the fixture's config did not load"
+  [ -z "$(cfg_tool_own switch)" ] || fail "an undeclared install.switch reads: $(cfg_tool_own switch)"
+  [ "$(cfg_tool_verb switch)" = "bin/devbin use" ] || fail "the switch's verb with none declared reads: $(cfg_tool_verb switch)"
+  [ "$(cfg_tool_verb publish)" = "bin/devbin install" ] || fail "the publish's verb with none declared reads: $(cfg_tool_verb publish)"
+  refused_with 'project:
+  name: demo
+install:
+  switch: "  "' "install.switch is empty -- name the tool's own command"
+}
+
+@test "0332-1: use refuses in the checkout of a tool that keeps its own switch, bare and with each tree, naming the command and pointing no link, and its help names it" {
+  local proj w
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  stamp_own "$proj" switch "demo use" || fail "the fixture's own switch could not be declared"
+  run devbin_run "$proj" build
+  assert_success
+  for w in "" dev opt brew; do
+    run devbin_run "$proj" use ${w:+"$w"}
+    assert_failure
+    assert_output_contains "demo keeps its own switch, install.switch: run demo use${w:+ $w} -- bin/devbin use points no link of it"
+    [ ! -e "$HOME/.local/bin/demo-cli" ] && [ ! -L "$HOME/.local/bin/demo-cli" ] || fail "use ${w:-with no tree} left a link"
+  done
+  run devbin_run "$proj" use --help
+  assert_success
+  assert_output_contains "demo keeps its own switch, install.switch: run demo use [dev|opt|brew]"
+}
+
+@test "0332-1: install refuses the opt publish of a tool that keeps its own, naming the command and writing nothing, and --managed-by brew still publishes into a keg" {
+  local proj opt="$DEVBIN_TEST_TMPDIR/opt-demo" keg="$DEVBIN_TEST_TMPDIR/keg-demo"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  stamp_own "$proj" publish "demo install" || fail "the fixture's own publish could not be declared"
+  run devbin_run "$proj" install
+  assert_failure
+  assert_output_contains "demo keeps its own publish, install.publish: run demo install -- bin/devbin install publishes no opt tree of it"
+  [ ! -e "$opt" ] || fail "the refused publish wrote $opt"
+  run devbin_run "$proj" install --prefix "$keg" --managed-by brew
+  assert_success
+  [ -f "$keg/.demo-install" ] || fail "--managed-by brew wrote no manifest at $keg"
+}
+
+@test "0332-1: doctor names the tool's own switch and publish in its remedies, for a split link set and an opt tree that drifted" {
+  local proj opt="$DEVBIN_TEST_TMPDIR/opt-demo" root
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  stamp_second "$proj" demo-d || fail "the fixture's second link could not be added"
+  run devbin_run "$proj" install
+  assert_success
+  run devbin_run "$proj" use opt
+  assert_success
+  stamp_own "$proj" switch "demo use" || fail "the fixture's own switch could not be declared"
+  stamp_own "$proj" publish "demo install" || fail "the fixture's own publish could not be declared"
+  rm -f "$HOME/.local/bin/demo-d"
+  printf '# drift\n' >>"$opt/bin/demo-cli"
+  root="$(cd -P "$opt" && pwd -P)"
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo switch: the link set is split: demo-d serves brew, where the set's first link serves opt at $root -- point them together with demo use dev, opt or brew"
+  assert_output_contains "FAIL  demo tree: the opt install at $root does not match its manifest"
+  assert_output_contains "republish it from this checkout: demo install"
+  refute_output_contains "bin/devbin install --force"
+}
