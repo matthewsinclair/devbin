@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
-heartbeat_at: 2026-11-11 06:57Z
+heartbeat_at: 2026-11-11 07:20Z
 status: active
-focus: "Building devbin 0.1.22 for vc (decision 157; focus set 2026-11-11 05:55Z by date -u): 0331-1, 0332-1 and 0330-1 first, then 0329-1 to 0329-4, each red then green in cc's own clones under r0122/, booked on vc's desk, handed over by land-stack.sh. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154)."
+focus: "devbin 0.1.22 (vc's decision 157): the seven units landed by vc at e72d6203 to c5392751; 0329 to 0332 resolved and closed at 31ae53f1; the 0.1.22 note at 12701464; the pre-cut asked as slot 01M74QM6FE1CHMN73EMNQW8407 at 12701464 in ~/Devel/scratch/devbin-cc/pc0122, granted automatically on vc's conditions, no canon write from its grant to its END; the push and cut wait for hv's go. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). (focus set 2026-11-11 07:20Z by date -u)"
 claims: [ISSUE:0326]
 ---
 
