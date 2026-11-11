@@ -4618,7 +4618,8 @@
       "kind": "decision",
       "seq": 146,
       "text": "hv's rulings after decision 145, 2026-11-05. In vc's window: \"go\" for Utilz's 2.14.9 cut, granted into bats and heavy at 12:44:53Z by date -u; then through the TUI (answered before the clock read 13:09Z by date -u), another estate's image build first, since hv's Windows run waited on it, so the unstarted cut's grant was revoked and the cut re-asked. In utilz-vc's window, relayed by utilz-vc: \"Let's localfold and hold across utilz-* please. Then hold on the bounce.\" So the re-ask was denied; the cut never started, and utilz-vc re-asks it fresh after the bounce. In vc's window through the TUI (answered before the clock read 13:15Z by date -u): the bounce is ccusage's 8GJE86, the restart of every Claude session on rhadamanth, granted once that estate's image build and its seed run end; devbin-vc, cc and dc localfold now (hv: \"context is high across devbin-*, lets localfold+compact while we wait\"), and after the restart each session picks up and holds. Fleet-wide, first-hand to another estate's session at 12:02Z and confirmed at 13:11Z for the whole fleet, relayed to vc: one layer of proof. A thing is proved by running it once as its user would; the commit gate's critic is the only critic; no suite that tests a suite, no planted faults beyond a guard's own one red case, no check of a check, no hardening against setups nobody here has, no replay of a replay; a verdict is a read and at most one run.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-11T05:37:18.620Z",
       "recorded_at": "2026-11-05T13:16:46.524Z"
     },
     {
@@ -4739,6 +4740,14 @@
       "text": "devbin 0.1.21 cut, 2026-11-10: the first attempt went red before its tag on updatenotice.bats arm 2842 (0326-6's ancestry call in doctor, found only by the cut's whole test, since the pre-cut's tree scans held sixteen files and updatenotice.bats was not one); hv reset to 0f13c090; 0327-1 (3312a7f8) and 0326-11 (45b20471) landed; the re-cut stopped once at stamp on vc's own pickup heartbeat (vc's slip: no wb verb in canon during a cut), committed a9cf61a7, resumed, and released at 20:22:08Z. hv, AFK at about 19:44Z: \"Pleas crack on and get devbin and intent released\", read as the go to cut and push Intent 3.3.0 once green, the c1d7d163d rewrite and the kovacs preflight staying hv's. hv through the TUI: the eight old Intent event files naming the client stay as they are; geodica-estate stays in the rewrite message.",
       "state": "live",
       "recorded_at": "2026-11-10T20:23:19.360Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 157,
+      "text": "hv's rulings, 2026-11-11 (read 05:37Z by date -u). In cc's window at about 05:35Z: \"Go with the first shape for 0331\", then \"However, they should all use the same approach for reporting their versions\": each binary prints its own name in its line, doctor reads each link's line under that link's name, and every binary of every tool takes its line from the core's one reader. In intent-vc's window at about 05:30Z: \"I do not want multiple bitty releases (for the umpteenth time!) ... we cut the release -- once -- when its all ready.\" In vc's window (\"Ok, do that.\", answering vc's plan): devbin 0.1.22 carries every open devbin issue that can close in devbin alone (0329, 0330, 0331), built by devbin-cc while Intent's ST0092 runs; Intent 3.3.0, cut once, sweeps 0.1.22, declares intent and intentd under install.links and moves both binaries to the core's reader. 0326 stays open for its consumer adoptions. 0.1.22's push and cut wait for hv's go once it reads green.",
+      "state": "live",
+      "recorded_at": "2026-11-11T05:37:18.841Z"
     }
   ],
   "sent": [

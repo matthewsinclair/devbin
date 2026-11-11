@@ -1,0 +1,15 @@
+{
+  "id": "01M74HRMFSF4K35867QN2KQS0C",
+  "ts": "2026-11-11T05:37:18.841Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's rulings, 2026-11-11 (read 05:37Z by date -u). In cc's window at about 05:35Z: \"Go with the first shape for 0331\", then \"However, they should all use the same approach for reporting their versions\": each binary prints its own name in its line, doctor reads each link's line under that link's name, and every binary of every tool takes its line from the core's one reader. In intent-vc's window at about 05:30Z: \"I do not want multiple bitty releases (for the umpteenth time!) ... we cut the release -- once -- when its all ready.\" In vc's window (\"Ok, do that.\", answering vc's plan): devbin 0.1.22 carries every open devbin issue that can close in devbin alone (0329, 0330, 0331), built by devbin-cc while Intent's ST0092 runs; Intent 3.3.0, cut once, sweeps 0.1.22, declares intent and intentd under install.links and moves both binaries to the core's reader. 0326 stays open for its consumer adoptions. 0.1.22's push and cut wait for hv's go once it reads green."
+  }
+}
