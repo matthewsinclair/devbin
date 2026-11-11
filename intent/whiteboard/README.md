@@ -1,21 +1,42 @@
-# Whiteboard -- Devbin
+# Devbin whiteboard roster
 
-Live cross-session coordination for this project, under Protocol 3.0. Every file has exactly one writer; that is what keeps the board contention-free.
+This file is the roster of the whiteboard under `intent/whiteboard/`: the Team Profiles it declares and every seat registered on it. `intent wb init --apply` renders everything above the block at the end from the declared profiles and the store, so an edit there is undone by the next render and `intent doctor` reports it. The project's own notes go inside the block, which every render carries as it is.
 
-This file is the project's **node roster**. The protocol itself lives in the `in-whiteboard` skill and is not restated here.
+## Profiles
 
-## The roster
+This whiteboard declares the base profile `team`. `intent wb profile show <name>` prints a profile.
 
-| Node | Name              | Role       | Driven by | Owns                                                                                                                                          |
-| ---- | ----------------- | ---------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cc` | Control Claude    | control    | a session | the framework, its tests, its docs, and the migrations                                                                                        |
-| `vc` | Validation Claude | validation | a session | independent verification of landed and claimed work; the coordination record; surfacing `hv/inbox.*`                                          |
-| `dc` | DevX Claude       | devx       | a session | the dev-x and build environment, in hv's framing of `dc` for Intent (2026-08-15); where its line with `cc` falls in this repo is hv's to draw |
-| `hv` | Hypervisor        | hypervisor | the human | scope, sequencing, release policy, and every ratified decision                                                                                |
+## Roster
+
+| Moniker | Name              | Role       | Driven by | Remit                                                                                                                                                                                                                                                                    |
+| ------- | ----------------- | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| vc      | Validation Claude | validation | a session | Boss of the Claude team: sequencing, briefs, the shortest safe path to the release, and the one route to hv. It batches changes into as few runs as it can, reads a builder's proof and does not repeat it, and stops any check that repeats one (the profile's default) |
+| cc      | Control Claude    | control    | a session | The core: the model, its rules, and the back-end services that implement them, in whatever form they take at the time, documents and data included (the profile's default)                                                                                               |
+| ic      | Interface Claude  | interface  | a session | User-facing interfaces (UI and UX) and machine-facing interfaces (REST, GraphQL and the rest) (the profile's default)                                                                                                                                                    |
+| ac      | Authoring Claude  | authoring  | a session | Authoring and content creation (the profile's default)                                                                                                                                                                                                                   |
+| dc      | DevX Claude       | devx       | a session | The dev-x pipeline, end to end (the profile's default)                                                                                                                                                                                                                   |
+| hv      | Hypervisor        | hypervisor | the human | Scope, sequencing, release policy, and every ratified decision (the profile's default)                                                                                                                                                                                   |
+
+## Route to hv
+
+hv is reached through the mediator, `vc` (Validation Claude), the one reader of hv's inbox. What the profile asks of every other seat:
+
+You reach hv through the mediator, and only through it: send your request to the mediator and never write to hv's inbox yourself. hv may speak to you directly, and when hv rules to you directly you pass the ruling to the mediator, who records it. If you disagree with what the mediator has put to hv, say so to the mediator, who puts it to hv in your words. No seat waits idle on hv: hold only the work that depends on the answer, and carry on with the rest.
+
+## Terms
+
+The words this roster uses (seat, mediator, hat, pen, Desk) are defined once, in the terms document every profile shares: `intent wb profile terms` prints it.
+
+---
+
+_Generated by Intent v3 from `lib/templates/whiteboard/_README.md`. The project's own notes follow, inside the block._
+
+<!-- user:start -->
+## Project notes
+
+The protocol lives in the `in-whiteboard` skill and is not restated here.
 
 **`hv/wip.md` carries the standing directives.** Read it at pickup before starting anything. Until 2026-08-24 those rulings lived on whichever agent board happened to be in the room when hv made them, which made a ruling's home an accident of timing.
-
-`hv` is scaffolded but human-driven: no session loop, `session_id: none`, heartbeat advisory. **hv reads nothing on this board unprompted. The named reader of `hv/inbox.*` is `vc`, and whiteboard matter reaches the human only by vc addressing it to them** (hv's ruling, 2026-08-24). An escalation is still written durably to `hv/inbox.<you>.md` -- the write is the record and vc's surfacing is the delivery, so a write there is not delivered until vc has surfaced it.
 
 ## Reading this board
 
@@ -39,3 +60,4 @@ They are in **`intent/llm/LESSONS.md`**, and a board's `## Watch-outs` section i
 Until 2026-08-24 `cc/wip.md` carried about ninety of them and this file explained, at length, why that was deliberate. The explanation was half right. Each entry genuinely is a defect class this project produced at least once, written in the general form because the specific one never recurs -- and that is exactly why a live board is the wrong home for them. **Watch-outs are standing and boards are not**: a board is archived when its work closes, so the most durable content in the project was sitting in the least durable place, on a node that had been paused for a fortnight, growing until nobody read it.
 
 What each board keeps is the handful of cautions specific to what that node does. Everything general is promoted. Mechanical DO / NEVER rules were already in `usage-rules.md` and are not restated anywhere.
+<!-- user:end -->
