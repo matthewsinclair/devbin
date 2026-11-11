@@ -1,0 +1,15 @@
+{
+  "id": "01M75YRDMTSDY760BGFXMYTEMP",
+  "ts": "2026-11-11T18:43:37.754Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "When the devbin release carrying 0334 (leg sets its own TMPDIR) is out and on kovacs, tell kovacs-sysadm: it removes the hand-added TMPDIR line from kovacs's molt env.sh and confirms the render hash."
+  }
+}
