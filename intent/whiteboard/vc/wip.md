@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 86e8d721-4079-418e-9e48-218c8da86346
-heartbeat_at: 2026-11-11 14:02Z
+heartbeat_at: 2026-11-11 16:55Z
 status: active
-focus: "Desk held by devbin-vc (decision 153); localfold for hv's fourth compact at 2026-11-11 14:02Z by date -u, vc not released, hv AFK after, then a big push: Intent 3.3.0 P0 today, Webber P3. One layer of proof (hv, twice today): no judge repeating a green, no red halves. Intent path: ic's WP-06+WP-10 run (KRFW) lands on green; dc docs/reference; no separate build all (the cut's gates run it); rewrite dry run; hv's rewrite, kovacs line, cut. Webber: no rhadamanth lane until the cut ends; gyges after quiet. Full state: ~/Devel/scratch/devbin-vc/state-20261111-1400.md."
+focus: "Desk held by devbin-vc (decision 153); localfold for hv's compact at 2026-11-11 16:54Z by date -u, vc not released. Intent 3.3.0 P0: rewrite done, release commit 3447124a0 untagged after three kovacs-leg reds (tag, TMPDIR, XDG fixed on kovacs); dc's leg-pair fix proving on kovacs (slot R498, heavy); then hv resets to 4410d1563, dc lands + build all, hv re-cuts. One layer of proof. Webber P3 on gyges. Full state: ~/Devel/scratch/devbin-vc/state-20261111-1654.md."
 claims: [ST0011]
 ---
 
