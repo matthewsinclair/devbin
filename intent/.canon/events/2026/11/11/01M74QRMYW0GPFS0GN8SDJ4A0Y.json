@@ -1,0 +1,16 @@
+{
+  "id": "01M74QRMYW0GPFS0GN8SDJ4A0Y",
+  "ts": "2026-11-11T07:22:10.780Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 157,
+    "text": "hv's rulings, 2026-11-11 (read 05:37Z by date -u). In cc's window at about 05:35Z: \"Go with the first shape for 0331\", then \"However, they should all use the same approach for reporting their versions\": each binary prints its own name in its line, doctor reads each link's line under that link's name, and every binary of every tool takes its line from the core's one reader. In intent-vc's window at about 05:30Z: \"I do not want multiple bitty releases (for the umpteenth time!) ... we cut the release -- once -- when its all ready.\" In vc's window (\"Ok, do that.\", answering vc's plan): devbin 0.1.22 carries every open devbin issue that can close in devbin alone (0329, 0330, 0331), built by devbin-cc while Intent's ST0092 runs; Intent 3.3.0, cut once, sweeps 0.1.22, declares intent and intentd under install.links and moves both binaries to the core's reader. 0326 stays open for its consumer adoptions. 0.1.22's push and cut wait for hv's go once it reads green. Then by menu in intent-vc's window, relayed by intent-vc (read 05:40Z by its date -u), overruling devbin-vc's no-exception position: \"Links, Intent keeps verbs\" and \"devbin withholds its verbs\": 0.1.22 also gains a way for a declared tool to keep its own use and install, so Intent declares install.links in 3.3.0 and keeps intent use and intent install; Intent's own version formatter stays, 0331 reading each link under its own name. Intent issue 0678 rides 3.3.0. Confirmed by hv in vc's TUI over its earlier \"A\" (read 05:43Z by date -u): \"devbin withholds verbs\" stands. hv's go in vc's TUI (read 07:22Z by date -u): vc pushes and cuts devbin 0.1.22 (tag, push, release object, formula publish) as soon as its pre-cut reads green; a red pre-cut or cut comes back to hv."
+  }
+}
