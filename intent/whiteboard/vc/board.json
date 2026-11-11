@@ -4767,6 +4767,14 @@
       "text": "When the devbin release carrying 0334 (leg sets its own TMPDIR) is out and on kovacs, tell kovacs-sysadm: it removes the hand-added TMPDIR line from kovacs's molt env.sh and confirms the render hash.",
       "state": "live",
       "recorded_at": "2026-11-11T18:43:37.754Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 205,
+      "text": "When devbin's release carrying 0333-0339 is on the tap, tell intent-vc: Intent's dc re-vendors it and lands Intent's ST0093 (c)-(e).",
+      "state": "live",
+      "recorded_at": "2026-11-11T20:00:07.971Z"
     }
   ],
   "sent": [

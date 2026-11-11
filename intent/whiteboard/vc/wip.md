@@ -3,7 +3,7 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 86e8d721-4079-418e-9e48-218c8da86346
-heartbeat_at: 2026-11-11 17:32Z
+heartbeat_at: 2026-11-11 18:50Z
 status: active
 focus: "Desk held by devbin-vc (decision 153); localfold for hv's compact at 2026-11-11 16:54Z by date -u, vc not released. Intent 3.3.0 P0: rewrite done, release commit 3447124a0 untagged after three kovacs-leg reds (tag, TMPDIR, XDG fixed on kovacs); dc's leg-pair fix proving on kovacs (slot R498, heavy); then hv resets to 4410d1563, dc lands + build all, hv re-cuts. One layer of proof. Webber P3 on gyges. Full state: ~/Devel/scratch/devbin-vc/state-20261111-1654.md."
 claims: [ST0011]
@@ -32,6 +32,7 @@ claims: [ST0011]
 - Issue 0326 shipped in devbin 0.1.21 (its last unit, 0326-8, at adc03db5; tag v0.1.21 at 8e8e1ac5, released 2026-11-10). The notice to send is ~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md, sent whole: the core's contract with the Rust reader byte-equal to adc03db5's docs/dev-opt-brew.md, for each estate to adopt on its own vc's word. Send it to pplr-vc, cldr-vc, cldr-dc and ccusage-vc (pplr#0001, cldr#0001, ccusage#0007), none of which had a session up at 2026-11-10 17:0xZ; whoever first sees one of them up sends it. Also tell pipeliner-sc (decision 91: Pipeliner's CLI keeps no switch of its own, so pipeliner-cc takes up the core's), and have the vcs of Utilz, Molt, Gtools and Intent file their adoptions now that devbin 0.1.21 has shipped (decision 150). Their sweeps to 0.1.21 refuse until each config drops formula.bin (Ccusage, Cldr, Pplr; checked 2026-11-11) and Cldr's template drops @@FINISH@@; Intent's sweep took no install: block and kept its second binary's two lines after @@INSTALL@@ (issue 0331), which the notice names as the interim route. (edited)
 - devbin-cc's finding on 0327 (2026-11-10): a release.gates entry starting with `release` runs a cut inside a cut and recurses, the same hole 0327 closes for release.preflight at validation. No work now; weigh it for the release after next.
 - When the devbin release carrying 0334 (leg sets its own TMPDIR) is out and on kovacs, tell kovacs-sysadm: it removes the hand-added TMPDIR line from kovacs's molt env.sh and confirms the render hash.
+- When devbin's release carrying 0333-0339 is on the tap, tell intent-vc: Intent's dc re-vendors it and lands Intent's ST0093 (c)-(e).
 
 ## Holds
 
