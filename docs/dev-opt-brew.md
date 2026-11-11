@@ -36,7 +36,7 @@ This is the contract each such tool follows, so that the tools behave alike: Mol
   - `version`
   - `source_commit`, the full sha
   - `managed_by`: `<tool>` or `brew`
-  - `line`, the tree's version line (T4), which a compiled tool's binary prints there; `bin/devbin install` writes it, and so does the formula's install for release assets (T8)
+  - `line`, the tree's version line (T4), naming the tool, which each of a compiled tool's binaries prints there under its own name; `bin/devbin install` writes it, and so does the formula's install for release assets (T8)
 - **Body:** one line per runtime file in `shasum -a 256 -c` form, path relative to `<root>`, sorted by `LC_ALL=C sort`.
 - Doctor in opt and brew checks the body and names every file that drifted.
 - **An install in a tool's older manifest form** (written before this contract) is not read as a second format. The tree function and doctor name it as an old manifest, with its remedy. An opt install fails doctor until it is republished with `install --force`. A brew keg is a note naming `brew upgrade <tool>`, never a failure: only a release that writes the new form fixes it, and that release's own cut runs doctor on a machine still holding the old keg. The tree function still answers `brew` for such a keg when its old manifest says `managed_by: brew`, so `use`, upgrade and the shadow check keep working on it, and only doctor's line about its manifest is a note. In brew, an old manifest includes no manifest at all: a keg from before the contract with none, recognised by its root resolving under the tool's brew opt link (`$(brew --prefix)/opt/<tool>/libexec`), answers `brew` and gets the same note. In opt it stays strict: a prefix with no manifest is not this tool's, so `use opt` refuses it.
@@ -52,38 +52,44 @@ One function names the running tree, read in this order:
 
 Every caller asks that one function.
 
-`<tool> --version` prints one line, `<tool> <version> (<tree>, <sha12>[+dirty])`, and a tool carries no `version` verb for it; devbin's own `devbin version` prints devbin's line too. The sha is the manifest's `source_commit` in opt and brew. In dev it is the commit the running code came from: HEAD for a script tool, and for a compiled tool the commit its binary was built from, read from the binary, never HEAD at run time (doctor says when HEAD has moved past the build). `+dirty` follows it in dev while the runtime set differs from the commit the line names, or, for a compiled tool, when the binary was built from a tree whose BUILD INPUTS were dirty. The tool declares its input set and derives the build inputs from the build system's own dependency record where one exists (eg cargo's dep-info), never a hand list alone, and the runtime set it declares counts beside them, so a whiteboard or docs write never marks a build dirty and a missed input never reads clean. Never in opt or brew. A compiled tool may append one build-provenance word after the closing parenthesis (eg `release` or `dev`, saying how the binary was stamped). The line names no path: where the running copy lives is `command -v <tool>`'s answer. Doctor prints the same line, unchanged.
+`<tool> --version` prints one line, `<tool> <version> (<tree>, <sha12>[+dirty])`, and a tool carries no `version` verb for it; devbin's own `devbin version` prints devbin's line too. Each other binary of a tool prints that line under its own name, `<name> <version> (<tree>, <sha12>[+dirty])`: its own name first, then the tool's version, tree and sha, so every binary of every tool reports its version the same way, and doctor reads each link's line under that link's name. The sha is the manifest's `source_commit` in opt and brew. In dev it is the commit the running code came from: HEAD for a script tool, and for a compiled tool the commit its binary was built from, read from the binary, never HEAD at run time (doctor says when HEAD has moved past the build). `+dirty` follows it in dev while the runtime set differs from the commit the line names, or, for a compiled tool, when the binary was built from a tree whose BUILD INPUTS were dirty. The tool declares its input set and derives the build inputs from the build system's own dependency record where one exists (eg cargo's dep-info), never a hand list alone, and the runtime set it declares counts beside them, so a whiteboard or docs write never marks a build dirty and a missed input never reads clean. Never in opt or brew. A compiled tool may append one build-provenance word after the closing parenthesis (eg `release` or `dev`, saying how the binary was stamped). The line names no path: where the running copy lives is `command -v <tool>`'s answer. Doctor prints the same line, unchanged.
 
 **A reader of the line reads up to the closing parenthesis and ignores anything after it.** So a line in the old shape, with ` at <root>` and any provenance word after the parenthesis, still reads correctly, and no reader needs a second format during the change.
 
 When a dev tree's git cannot be read (eg git refuses it as an unsafe directory, or the repository is broken), the line keeps its one shape with `unknown` in the sha field, `<tool> <version> (dev, unknown)`, and doctor fails, saying why.
 
-**A compiled tool's line is the core's, and its binary only prints it.** `bin/devbin build` hands the project's declared build its dev line in `DEVBIN_VERSION_LINE`: HEAD's commit, and `+dirty` while the runtime set, the declared `build.inputs` or an input the build's dependency record names (`<binary>.d`, as cargo writes it) differs from HEAD. After the build it reads that record again, and builds once more, saying so, when the record names a changed input the line missed. In opt and brew the binary prints the `line` its tree's manifest records (T3). Every compiled tool reads its line with this one reader, its tool's name and manifest path its own (Rust):
+**A compiled tool's line is the core's, and its binary only prints it.** `bin/devbin build` hands the project's declared build its dev line in `DEVBIN_VERSION_LINE`: HEAD's commit, and `+dirty` while the runtime set, the declared `build.inputs` or an input the build's dependency record names (`<binary>.d`, as cargo writes it) differs from HEAD. After the build it reads that record again, and builds once more, saying so, when the record names a changed input the line missed. In opt and brew the binary prints the `line` its tree's manifest records (T3). Each binary prints either under its own name. Every binary of every compiled tool reads its line with this one reader, word for word, its tool's name and manifest path its own, and its own name the bin target's, which Cargo hands every binary it builds (Rust):
 
 ```rust
 // The version line, docs/dev-opt-brew.md's T4: in an opt or brew tree, the
-// `line` its manifest records; otherwise the line bin/devbin build stamped.
+// `line` its manifest records; otherwise the line bin/devbin build stamped;
+// either under this binary's own name.
 fn version_line() -> String {
     const TOOL: &str = "demo";
+    const NAME: &str = env!("CARGO_BIN_NAME");
     const MANIFEST: &str = ".demo-install";
+    let named = |line: &str| match line.split_once(' ') {
+        Some((_, rest)) => format!("{NAME} {rest}"),
+        None => line.to_string(),
+    };
     let tree = std::env::current_exe().and_then(|p| p.canonicalize());
     if let Some(root) = tree.ok().as_deref().and_then(|p| p.parent()).and_then(|p| p.parent()) {
         if let Ok(text) = std::fs::read_to_string(root.join(MANIFEST)) {
             if text.lines().any(|l| l == format!("# tool: {TOOL}")) {
                 if let Some(line) = text.lines().find_map(|l| l.strip_prefix("# line: ")) {
-                    return line.to_string();
+                    return named(line);
                 }
             }
         }
     }
     match option_env!("DEVBIN_VERSION_LINE") {
-        Some(line) if !line.is_empty() => line.to_string(),
-        _ => format!("{TOOL} {} (unknown, unknown)", env!("CARGO_PKG_VERSION")),
+        Some(line) if !line.is_empty() => named(line),
+        _ => format!("{NAME} {} (unknown, unknown)", env!("CARGO_PKG_VERSION")),
     }
 }
 ```
 
-A binary built by plain `cargo build` carries no stamp and prints `<tool> <version> (unknown, unknown)`, which doctor fails: build it with `bin/devbin build`. Cargo rebuilds when `DEVBIN_VERSION_LINE` changes, since it tracks the variables `option_env!` reads, so a tool needs no build script for it.
+A reader kept in a library the binaries share takes NAME from each binary instead, since Cargo names no bin target while it builds a library. A binary built by plain `cargo build` carries no stamp and prints `<name> <version> (unknown, unknown)`, which doctor fails: build it with `bin/devbin build`. Cargo rebuilds when `DEVBIN_VERSION_LINE` changes, since it tracks the variables `option_env!` reads, so a tool needs no build script for it.
 
 ## T5. The switch: `bin/devbin use [dev|opt|brew]`
 
@@ -93,7 +99,7 @@ A binary built by plain `cargo build` carries no stamp and prints `<tool> <versi
 - **`use dev|opt`** points every link in the set at that tree's own copy. **`use brew` removes the whole link set** (every link into one of this tool's trees, and nothing else), so Homebrew's own bin links answer. `use brew` refuses, removing nothing, when no brew-managed copy would answer once the links are gone (the formula is not installed, its keg is not linked, or another copy comes first on PATH): it names each link it would have removed and the tree that link serves, why no Homebrew copy would answer, and the tool's own remedy (install or link the formula, or stay on dev or opt). **No link means brew**: it is the one rule, and the state a brew-only user is in without ever running `use`. A bare `use` reports brew when no link is left and the first hit on PATH resolves into the keg. Each of `use dev` and `use opt` refuses a tree that is not there, naming the step that makes it, then prints the version line.
 - **PATH: your links first.** `~/.local/bin` comes before Homebrew's bin, and the machine's shell configuration owns that. It must come before the FIRST Homebrew bin entry: `brew shellenv` can put Homebrew's bin on PATH more than once, one of them ahead of the system directories, so the shell configuration prepends rather than appends. Formulae keep linking into Homebrew's bin, so a brew-only user who never runs `use` still gets a working `brew install`.
 - **Shadow check.** Doctor, and `use` with no argument, fail when a link in the set exists but is not the first hit on PATH (a stale link a brew link shadows is named as one), or when the set is split across trees, and name what shadows or splits it. The comparison is of resolved directories, never path strings, since a directory on PATH can be a link to another (eg a `~/bin` that links to `~/.local/bin`).
-- **Doctor's rows for a tool.** `bin/devbin doctor`, run in a tool's checkout, gives the tool rows under its name beside devbin's own: each link's copy in the checkout against the line a build there carries, a note when HEAD has moved past the build; each link's switch and the set as one, the shadow check and a split set failing; each opt or brew tree the set serves against its manifest (T3), every drifted file named with its tree's remedy, and each copy's `--version` against the manifest's `line`; and a note when the set rests on dev or opt while Homebrew's copy is at that tree's version or past it, the same note devbin's own switch gives.
+- **Doctor's rows for a tool.** `bin/devbin doctor`, run in a tool's checkout, gives the tool rows under its name beside devbin's own: each link's copy in the checkout against the line a build there carries, a note when HEAD has moved past the build; each link's switch and the set as one, the shadow check and a split set failing; each opt or brew tree the set serves against its manifest (T3), every drifted file named with its tree's remedy, and each copy's `--version` against the manifest's `line` under that copy's own name; and a note when the set rests on dev or opt while Homebrew's copy is at that tree's version or past it, the same note devbin's own switch gives.
 - **`bin/devbin use` is the one verb that points links.** A tool carries no verb of its own that points or removes them, a `use` or any other (eg Utilz's retired `relink`), and one that still has such a verb gives it up as it adopts the core. An option naming the link directory may exist for tests only, defaulting to `~/.local/bin`.
 - **A tool with a long-lived process** (Intent's `intentd`, one per user) restarts it as the last step of `use`, so the old tree's binary does not keep serving.
 - **What the shadow check cannot see.** A process started without the login PATH (a launchd-spawned app, cron, a GUI app's helper) may have Homebrew's bin and not `~/.local/bin`, and then runs brew's copy while the maintainer is on dev or opt: eg Claude Code's hooks and an MCP server that name a tool by its bare name. Doctor runs in a login shell and cannot speak for those processes. **The switch governs login shells only.** launchd's PATH is the machine's own configuration, outside this contract.

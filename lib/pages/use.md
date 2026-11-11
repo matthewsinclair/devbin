@@ -33,7 +33,7 @@ The switch governs login shells. A process started without the login PATH, such 
 
 ## A project's own tool
 
-In a project whose `bin/.devbin/config.yaml` declares its tool in an `install:` block, `bin/devbin use [dev|opt|brew]`, run in that checkout, switches the tool's link set in `~/.local/bin` the same way: `dev` points every link at the checkout's own copy, refusing one the build has not made, `opt` at the opt install's `bin/<name>`, refusing a prefix with none and naming `bin/devbin install`, and `brew` removes every link once Homebrew's copy would answer for each. A bare `use` reports each link's tree by its line, and fails a set split across trees and a link a login shell does not run. devbin's own switch stays `devbin use`, run with the devbin on PATH.
+In a project whose `bin/.devbin/config.yaml` declares its tool in an `install:` block, `bin/devbin use [dev|opt|brew]`, run in that checkout, switches the tool's link set in `~/.local/bin` the same way: `dev` points every link at the checkout's own copy, refusing one the build has not made, `opt` at the opt install's `bin/<name>`, refusing a prefix with none and naming `bin/devbin install`, and `brew` removes every link once Homebrew's copy would answer for each. A bare `use` reports each link's tree by its line, under the link's own name, and fails a set split across trees and a link a login shell does not run. devbin's own switch stays `devbin use`, run with the devbin on PATH.
 
 ## See also
 

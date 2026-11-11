@@ -313,13 +313,11 @@ install:
 # whose declared build (tools/build.sh) writes target/release/demo-cli from
 # tools/demo-cli.in, writes that file's dependency record naming src/main.txt,
 # and adds the line it carried to target/runs, one line a run. The program
-# reads its line as a compiled tool does (T4): in an install, the line its
-# manifest records, its directory's ../.demo-install where that names demo, and
-# otherwise the DEVBIN_VERSION_LINE it was built with. It declares the tool
-# demo, with the link demo-cli at target/release/demo-cli, unless --no-tool,
-# and the prefix $DEVBIN_TEST_TMPDIR/opt-demo, unless --no-prefix. With --deaf
-# the build's program prints a fixed line, never the one it is handed. <yaml>
-# is added at the config's top level.
+# reads its line as a compiled tool does (stamp_program; T4). It declares the
+# tool demo, with the link demo-cli at target/release/demo-cli, unless
+# --no-tool, and the prefix $DEVBIN_TEST_TMPDIR/opt-demo, unless --no-prefix.
+# With --deaf the build's program prints a fixed line under its own name, never
+# the one it is handed. <yaml> is added at the config's top level.
 stamp_project() {
   local tool=yes prefix=yes deaf="" proj
   while [ $# -gt 0 ]; do
@@ -349,17 +347,11 @@ stamp_project() {
   printf 'source\n' >"$proj/src/main.txt" || return 1
   printf 'notes\n' >"$proj/docs/notes.md" || return 1
   printf 'target/\n' >"$proj/.gitignore" || return 1
-  printf '%s\n' '#!/bin/sh' \
-    "m=\"\$(dirname \"\$0\")/../.demo-install\"" \
-    "if [ -f \"\$m\" ] && grep -qx '# tool: demo' \"\$m\"; then" \
-    "  sed -n 's/^# line: //p' \"\$m\"" \
-    '  exit 0' \
-    'fi' \
-    "echo '@LINE@'" >"$proj/tools/demo-cli.in" || return 1
+  stamp_program demo-cli >"$proj/tools/demo-cli.in" || return 1
   {
     printf '#!/bin/sh\nset -e\nmkdir -p target/release\n'
     if [ -n "$deaf" ]; then
-      printf '%s\n' "printf \"#!/bin/sh\\necho 'demo 1.2.3 (dev, unknown)'\\n\" >target/release/demo-cli"
+      printf '%s\n' "printf \"#!/bin/sh\\necho 'demo-cli 1.2.3 (dev, unknown)'\\n\" >target/release/demo-cli"
     else
       printf '%s\n' "sed \"s|@LINE@|\$DEVBIN_VERSION_LINE|\" tools/demo-cli.in >target/release/demo-cli"
     fi
@@ -373,15 +365,51 @@ stamp_project() {
   printf '%s\n' "$proj"
 }
 
+# stamp_program <name> [<word>] -- the program the tool demo's binary <name> is
+# built from, reading its line as T4's reader does: in an install, the line its
+# manifest records, its directory's ../.demo-install where that names demo, and
+# otherwise the DEVBIN_VERSION_LINE it was built with, which the build writes
+# over @LINE@; either under its own name, <name> in the first field (issue
+# 0331), with <word>, a compiled tool's provenance word, after the parenthesis.
+stamp_program() {
+  printf '%s\n' '#!/bin/sh' \
+    "m=\"\$(dirname \"\$0\")/../.demo-install\"" \
+    "if [ -f \"\$m\" ] && grep -qx '# tool: demo' \"\$m\"; then" \
+    "  line=\"\$(sed -n 's/^# line: //p' \"\$m\")\"" \
+    'else' \
+    "  line='@LINE@'" \
+    'fi' \
+    "echo \"$1 \${line#* }${2:+ $2}\""
+}
+
+# stamp_second <proj> <name> [<word>] -- a second link, <name>, added to the
+# stamped project <proj> and committed: its program (stamp_program, printing
+# <word> after the parenthesis where given), its lines in tools/build.sh, which
+# write target/release/<name> and its dependency record, and its link in the
+# install: block, after demo-cli's.
+stamp_second() {
+  local proj="$1" name="$2" cfg="$1/bin/.devbin/config.yaml"
+  stamp_program "$name" "${3:-}" >"$proj/tools/$name.in" || return 1
+  printf '%s\n' "sed \"s|@LINE@|\$DEVBIN_VERSION_LINE|\" tools/$name.in >target/release/$name" \
+    "chmod 755 target/release/$name" \
+    "printf '%s/target/release/$name: %s/src/main.txt\\n' \"\$PWD\" \"\$PWD\" >target/release/$name.d" >>"$proj/tools/build.sh" || return 1
+  awk -v n="$name" '{ print } /^    demo-cli: target\/release\/demo-cli$/ { print "    " n ": target/release/" n }' "$cfg" >"$cfg.new" || return 1
+  mv "$cfg.new" "$cfg" || return 1
+  grep -qx "    $name: target/release/$name" "$cfg" || return 1
+  git -C "$proj" add -A >/dev/null 2>&1 || return 1
+  git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -q -m "a second link" >/dev/null 2>&1
+}
+
 @test "0326-3: a tool's build is handed its dev line: the tool's name, its version, and HEAD's twelve digits" {
   local proj sha
   proj="$(stamp_project)" || fail "the fixture's project could not be made"
   sha="$(git -C "$proj" rev-parse HEAD)"
   run devbin_run "$proj" build
   assert_success
+  [ "$(cat "$proj/target/runs")" = "demo 1.2.3 (dev, ${sha:0:12})" ] || fail "the build was handed: $(cat "$proj/target/runs")"
   run "$proj/target/release/demo-cli"
   assert_success
-  [ "$output" = "demo 1.2.3 (dev, ${sha:0:12})" ] || fail "the build carried: $output"
+  [ "$output" = "demo-cli 1.2.3 (dev, ${sha:0:12})" ] || fail "the build carried: $output"
 }
 
 @test "0326-3: an input the build's record names, changed and uncommitted, marks the line +dirty, and a docs write does not" {
@@ -394,12 +422,12 @@ stamp_project() {
   run devbin_run "$proj" build
   assert_success
   run "$proj/target/release/demo-cli"
-  [ "$output" = "demo 1.2.3 (dev, ${sha:0:12})" ] || fail "a docs write marked the line: $output"
+  [ "$output" = "demo-cli 1.2.3 (dev, ${sha:0:12})" ] || fail "a docs write marked the line: $output"
   printf 'changed\n' >>"$proj/src/main.txt"
   run devbin_run "$proj" build
   assert_success
   run "$proj/target/release/demo-cli"
-  [ "$output" = "demo 1.2.3 (dev, ${sha:0:12}+dirty)" ] || fail "a changed input left the line: $output"
+  [ "$output" = "demo-cli 1.2.3 (dev, ${sha:0:12}+dirty)" ] || fail "a changed input left the line: $output"
 }
 
 @test "0326-3: when the record a build writes names a changed input its line missed, the build runs once more to carry +dirty, and says so" {
@@ -417,7 +445,7 @@ stamp_project() {
   [ "$(cat "$proj/target/runs")" = "$clean
 $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   run "$proj/target/release/demo-cli"
-  [ "$output" = "$marked" ] || fail "the program built last carries: $output"
+  [ "$output" = "demo-cli ${marked#* }" ] || fail "the program built last carries: $output"
 }
 
 @test "0326-3: a project that declares no tool hands its build no line" {
@@ -511,7 +539,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   proj="$(stamp_project --deaf)" || fail "the fixture's project could not be made"
   run devbin_run "$proj" install
   assert_failure
-  assert_output_contains 'target/release/demo-cli prints "demo 1.2.3 (dev, unknown)" for --version'
+  assert_output_contains 'target/release/demo-cli prints "demo-cli 1.2.3 (dev, unknown)" for --version'
   [ ! -e "$DEVBIN_TEST_TMPDIR/opt-demo/.demo-install" ] || fail "a manifest was written for bytes no build of the commit made"
 }
 
@@ -556,7 +584,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   run devbin_run "$proj" use dev
   assert_success
   assert_output_contains "use: the link $link names the dev tree"
-  assert_output_contains "demo 1.2.3 (dev, ${sha:0:12})"
+  assert_output_contains "demo-cli 1.2.3 (dev, ${sha:0:12})"
   real_path "$link" got
   real_path "$proj/target/release/demo-cli" want
   [ "$got" = "$want" ] || fail "the link leads to $got"
@@ -584,7 +612,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   assert_success
   run devbin_run "$proj" use opt
   assert_success
-  assert_output_contains "demo 1.2.3 (opt, ${sha:0:12})"
+  assert_output_contains "demo-cli 1.2.3 (opt, ${sha:0:12})"
   real_path "$HOME/.local/bin/demo-cli" got
   real_path "$opt/bin/demo-cli" want
   [ "$got" = "$want" ] || fail "the link leads to $got"
@@ -634,7 +662,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   run devbin_run "$proj" build
   assert_success
   run devbin_run "$proj" doctor
-  assert_output_contains "ok    demo dev: target/release/demo-cli prints the line a build here carries, demo 1.2.3 (dev, ${sha:0:12})"
+  assert_output_contains "ok    demo dev: target/release/demo-cli prints the line a build here carries, demo-cli 1.2.3 (dev, ${sha:0:12})"
   assert_output_contains "note  demo switch: no link for demo-cli, and Homebrew has no demo here"
   rm -rf "$proj"
   proj="$(stamp_project --no-tool)" || fail "the fixture's project could not be made"
@@ -653,15 +681,15 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   assert_success
   printf 'changed\n' >>"$proj/src/main.txt"
   run devbin_run "$proj" doctor
-  assert_output_contains "note  demo dev: target/release/demo-cli was built from HEAD's commit, and prints demo 1.2.3 (dev, ${old:0:12}) where a build now carries demo 1.2.3 (dev, ${old:0:12}+dirty)"
+  assert_output_contains "note  demo dev: target/release/demo-cli was built from HEAD's commit, and prints demo-cli 1.2.3 (dev, ${old:0:12}) where a build now carries demo-cli 1.2.3 (dev, ${old:0:12}+dirty)"
   git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -qam "the change" || fail "the change could not be committed"
   sha="$(git -C "$proj" rev-parse HEAD)"
   run devbin_run "$proj" doctor
-  assert_output_contains "note  demo dev: HEAD has moved past the build: target/release/demo-cli prints demo 1.2.3 (dev, ${old:0:12}), and a build now carries demo 1.2.3 (dev, ${sha:0:12})"
+  assert_output_contains "note  demo dev: HEAD has moved past the build: target/release/demo-cli prints demo-cli 1.2.3 (dev, ${old:0:12}), and a build now carries demo-cli 1.2.3 (dev, ${sha:0:12})"
   git -C "$proj" reset -q --hard "$old" || fail "HEAD could not be reset"
   git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -q --amend -m "amended" || fail "the commit could not be amended"
   run devbin_run "$proj" doctor
-  assert_output_contains "FAIL  demo dev: target/release/demo-cli prints demo 1.2.3 (dev, ${old:0:12}), built from a commit HEAD does not contain"
+  assert_output_contains "FAIL  demo dev: target/release/demo-cli prints demo-cli 1.2.3 (dev, ${old:0:12}), built from a commit HEAD does not contain"
 }
 
 @test "0326-6: doctor fails a tool's dev copy that names no commit, and one that prints no version line" {
@@ -670,7 +698,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   run devbin_run "$proj" build
   assert_success
   run devbin_run "$proj" doctor
-  assert_output_contains "FAIL  demo dev: target/release/demo-cli prints demo 1.2.3 (dev, unknown), which names no commit"
+  assert_output_contains "FAIL  demo dev: target/release/demo-cli prints demo-cli 1.2.3 (dev, unknown), which names no commit"
   printf '#!/bin/sh\nexit 0\n' >"$proj/target/release/demo-cli"
   run devbin_run "$proj" doctor
   assert_output_contains "FAIL  demo dev: target/release/demo-cli prints no version line on --version"
@@ -712,7 +740,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   run devbin_run "$proj" doctor
   assert_output_contains "ok    demo switch: the link $link names opt at $root"
   assert_output_contains "ok    demo tree: the opt install at $root, $n file(s) as its manifest records"
-  assert_output_contains "ok    demo tree: $root/bin/demo-cli prints its install's line, demo 1.2.3 (opt, ${sha:0:12})"
+  assert_output_contains "ok    demo tree: $root/bin/demo-cli prints its install's line, demo-cli 1.2.3 (opt, ${sha:0:12})"
   printf '# drift\n' >>"$opt/bin/demo-cli"
   run devbin_run "$proj" doctor
   assert_output_contains "FAIL  demo tree: the opt install at $root does not match its manifest"
@@ -729,7 +757,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
   assert_output_contains "ok    demo switch: no link for demo-cli, so brew"
   assert_output_contains "ok    demo tree: the brew install at $root, $n file(s) as its manifest records"
-  assert_output_contains "ok    demo tree: $root/bin/demo-cli prints its install's line, demo 1.2.3 (brew, ${sha:0:12})"
+  assert_output_contains "ok    demo tree: $root/bin/demo-cli prints its install's line, demo-cli 1.2.3 (brew, ${sha:0:12})"
   rm "$keg/libexec/.demo-install"
   PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
   assert_output_contains "note  demo tree: Homebrew's keg at $root has no manifest, the form written before devbin's core"
@@ -756,4 +784,58 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   assert_success
   PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
   assert_output_contains "note  demo switch: on opt, and Homebrew's demo is 1.2.3, at or past opt's 1.2.3 -- the switch rests at brew"
+}
+
+# EACH BINARY OF A TOOL PRINTS THE TOOL'S LINE UNDER ITS OWN NAME (issue 0331):
+# the line a manifest records or a build is handed names the tool, and each link
+# is read against it under the link's own name, so a tool whose second binary
+# names itself, as a daemon does, passes the publish and doctor's rows.
+@test "0331-1: tool_link_line reads a tool's line under a link's own name, a provenance word dropped, and refuses a line not in T4's shape" {
+  local sha=0123456789abcdef0123456789abcdef01234567
+  [ "$(tool_link_line "demo 1.2.3 (dev, ${sha:0:12}+dirty)" demo-d)" = "demo-d 1.2.3 (dev, ${sha:0:12}+dirty)" ] ||
+    fail "the dev line under demo-d: $(tool_link_line "demo 1.2.3 (dev, ${sha:0:12}+dirty)" demo-d)"
+  [ "$(tool_link_line "demo 1.2.3 (brew, ${sha:0:12}) release" demo-d)" = "demo-d 1.2.3 (brew, ${sha:0:12})" ] ||
+    fail "the keg's line under demo-d: $(tool_link_line "demo 1.2.3 (brew, ${sha:0:12}) release" demo-d)"
+  [ "$(tool_link_line "demo 1.2.3 (dev, unknown)" demo-d)" = "demo-d 1.2.3 (dev, unknown)" ] ||
+    fail "a line naming no commit under demo-d: $(tool_link_line "demo 1.2.3 (dev, unknown)" demo-d)"
+  run tool_link_line "demo 1.2.3" demo-d
+  assert_failure
+  assert_output ""
+}
+
+@test "0331-1: doctor reads each link's dev copy under its own name: a second binary that prints its own name and a word after the parenthesis passes, and one that prints the tool's name fails" {
+  local proj sha
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  stamp_second "$proj" demo-d release || fail "the fixture's second link could not be added"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" build
+  assert_success
+  run "$proj/target/release/demo-d"
+  [ "$output" = "demo-d 1.2.3 (dev, ${sha:0:12}) release" ] || fail "the second binary prints: $output"
+  run devbin_run "$proj" doctor
+  assert_output_contains "ok    demo dev: target/release/demo-cli prints the line a build here carries, demo-cli 1.2.3 (dev, ${sha:0:12})"
+  assert_output_contains "ok    demo dev: target/release/demo-d prints the line a build here carries, demo-d 1.2.3 (dev, ${sha:0:12})"
+  printf '#!/bin/sh\necho "demo 1.2.3 (dev, %s)"\n' "${sha:0:12}" >"$proj/target/release/demo-d"
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo dev: target/release/demo-d prints demo 1.2.3 (dev, ${sha:0:12}), which names another tool or tree than the line a build here carries, demo-d 1.2.3 (dev, ${sha:0:12})"
+}
+
+@test "0331-1: a second binary that prints its own name publishes, a bare use reports its opt line under its name, and doctor's tree row passes its copy" {
+  local proj sha opt="$DEVBIN_TEST_TMPDIR/opt-demo" root
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  stamp_second "$proj" demo-d release || fail "the fixture's second link could not be added"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" install
+  assert_success
+  assert_output_contains "recorded   demo 1.2.3 (opt, ${sha:0:12})"
+  run devbin_run "$proj" use opt
+  assert_success
+  run devbin_run "$proj" use
+  assert_success
+  assert_output_contains "demo-cli 1.2.3 (opt, ${sha:0:12})"
+  assert_output_contains "demo-d 1.2.3 (opt, ${sha:0:12})"
+  root="$(cd -P "$opt" && pwd -P)"
+  run devbin_run "$proj" doctor
+  assert_output_contains "ok    demo tree: $root/bin/demo-cli prints its install's line, demo-cli 1.2.3 (opt, ${sha:0:12})"
+  assert_output_contains "ok    demo tree: $root/bin/demo-d prints its install's line, demo-d 1.2.3 (opt, ${sha:0:12})"
 }

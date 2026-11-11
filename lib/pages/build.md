@@ -26,7 +26,7 @@ With options declared and neither a `commands.build.run` nor a handler, a bare `
 
 ## A project's own tool
 
-Where the project declares its tool in an `install:` block, `build` hands the build its version line in `DEVBIN_VERSION_LINE`, `<tool> <version> (dev, <sha12>[+dirty])`, for the binary to carry and print on `--version`: `+dirty` while the runtime set, `build.inputs` or an input the build's dependency record (`<binary>.d`) names differs from HEAD. After the build it reads that record again, and builds once more, saying so, when the record names a changed input the line missed.
+Where the project declares its tool in an `install:` block, `build` hands the build its version line in `DEVBIN_VERSION_LINE`, `<tool> <version> (dev, <sha12>[+dirty])`, for each binary of the tool to carry and print on `--version` under its own name, `<name> <version> (dev, <sha12>[+dirty])`: `+dirty` while the runtime set, `build.inputs` or an input the build's dependency record (`<binary>.d`) names differs from HEAD. After the build it reads that record again, and builds once more, saying so, when the record names a changed input the line missed.
 
 ## Why it never guesses
 

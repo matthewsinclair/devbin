@@ -1100,8 +1100,9 @@ check_tool() {
 }
 
 # _check_tool_dev <formula> <links> -- each link's copy in this checkout
-# against the line a build here carries now (tool_dev_line; T4), a pass when
-# the two are one line.
+# against the line a build here carries now (tool_dev_line; T4), read under
+# that link's own name (tool_link_line; issue 0331), a pass when the two are one
+# line.
 #
 # HEAD MAY MOVE PAST A BUILD (T4). A copy the build makes carries the commit it
 # was built from, so one built from a commit HEAD contains, or from HEAD's own
@@ -1112,7 +1113,7 @@ check_tool() {
 # A checkout git cannot read gives a line naming no commit, and fails once,
 # saying so.
 _check_tool_dev() {
-  local formula="$1" want name from
+  local formula="$1" want name from mine
   if ! want="$(tool_dev_line)"; then
     _fail "$formula dev: the line a build here carries cannot be worked out (above)"
     return 0
@@ -1125,14 +1126,19 @@ _check_tool_dev() {
   esac
   while IFS=$'\t' read -r name from; do
     [ -n "$name" ] || continue
-    _check_tool_dev_copy "$formula" "$want" "$from"
+    if ! mine="$(tool_link_line "$want" "$name")"; then
+      _fail "$formula dev: the line a build here carries, $want, is no line in T4's shape, so $name's copy cannot be read against it"
+      continue
+    fi
+    _check_tool_dev_copy "$formula" "$mine" "$name" "$from"
   done <<<"$2"
 }
 
-# _check_tool_dev_copy <formula> <want> <from> -- the row for one link's copy,
-# <from> in this checkout, against <want>, the line a build here carries.
+# _check_tool_dev_copy <formula> <want> <name> <from> -- the row for the copy of
+# the link <name>, <from> in this checkout, against <want>, the line a build
+# here carries under that link's name.
 _check_tool_dev_copy() {
-  local formula="$1" want="$2" from="$3" got parts tool tree sha
+  local formula="$1" want="$2" name="$3" from="$4" got parts tool tree sha
   if [ ! -e "$PROJECT_ROOT/$from" ]; then
     if tool_tracked "$from"; then
       _fail "$formula dev: $from is not in this checkout, though git tracks it"
@@ -1152,11 +1158,11 @@ _check_tool_dev_copy() {
     return 0
   fi
   if ! parts="$(tool_line_parse "$got")"; then
-    _fail "$formula dev: $from prints \"$got\" on --version, which is no line in T4's shape, $formula <version> (dev, <sha12>[+dirty])"
+    _fail "$formula dev: $from prints \"$got\" on --version, which is no line in T4's shape, $name <version> (dev, <sha12>[+dirty])"
     return 0
   fi
   IFS=$'\t' read -r tool _ tree sha _ <<<"$parts"
-  if [ "$tool" != "$formula" ] || [ "$tree" != dev ]; then
+  if [ "$tool" != "$name" ] || [ "$tree" != dev ]; then
     _fail "$formula dev: $from prints $got, which names another tool or tree than the line a build here carries, $want"
     return 0
   fi
@@ -1312,12 +1318,13 @@ _check_tool_trees() {
 # and the copies there of <names>, the links it serves, one a line. Its files
 # against its manifest (tool_manifest_check, T3): each that does not match is
 # named with the tree's remedy, a FAILURE, as is a manifest that records no
-# file. Each copy's --version against the line the manifest records (T4): a
-# FAILURE where it prints another. A tree in the form written before devbin's
+# file. Each copy's --version against the line the manifest records, read under
+# that copy's own name (T4; tool_link_line, issue 0331): a FAILURE where it
+# prints another. A tree in the form written before devbin's
 # core, a keg with no manifest or a manifest with no line, is a NOTE naming
 # brew upgrade in brew, and a FAILURE naming the republish in opt, as T3 has it.
 _check_tool_tree() {
-  local formula="$1" root="$2" m word fix states line state rel name got
+  local formula="$1" root="$2" m word fix states line state rel name got mine
   local -a bad=()
   m="$(cfg_tool_manifest)" || return 0
   word="$(tool_tree_word "$root")" || word=unknown
@@ -1372,14 +1379,17 @@ _check_tool_tree() {
   fi
   while IFS= read -r name; do
     [ -n "$name" ] || continue
-    if ! got="$(tool_copy_line "$root/bin/$name")"; then
+    if ! mine="$(tool_link_line "$line" "$name")"; then
+      _fail "$formula tree: $root/$m records the line $line, which is no line in T4's shape, so $root/bin/$name cannot be read against it"
+      _detail "$fix"
+    elif ! got="$(tool_copy_line "$root/bin/$name")"; then
       _fail "$formula tree: $root/bin/$name prints no version line on --version"
       _detail "$fix"
-    elif [ "$got" != "$line" ]; then
-      _fail "$formula tree: $root/bin/$name prints $got, where its install records $line"
-      _detail "a copy in an install prints the line its manifest records (T4), and this one does not read it"
+    elif [ "$got" != "$mine" ]; then
+      _fail "$formula tree: $root/bin/$name prints $got, where its install records $line, which $name prints as $mine"
+      _detail "a copy in an install prints the line its manifest records under its own name (T4), and this one does not read it"
     else
-      _pass "$formula tree: $root/bin/$name prints its install's line, $line"
+      _pass "$formula tree: $root/bin/$name prints its install's line, $mine"
     fi
   done <<<"$3"
   return 0

@@ -171,12 +171,13 @@ _tool_set_row() {
 # is Homebrew's, another tool's, this tool's without <force>, or holds files no
 # install wrote. The build runs through the stamp when the set holds a
 # product, and each linked product must then print the clean dev line for
-# HEAD on --version, so the bytes published are that commit's. The copy
+# HEAD on --version, under its own name (tool_link_line; issue 0331), so the
+# bytes published are that commit's. The copy
 # replaces each place whole, removes what the old manifest listed and the new
 # tree does not hold, and the manifest is written last: T3's four keys, the
 # tree's version line under `line`, and each file's sum.
 tool_publish() {
-  local prefix="${1%/}" force="$2" managed="$3" name m ver sha want set place from kind got word owner files removed line n
+  local prefix="${1%/}" force="$2" managed="$3" name m ver sha want set place from kind got word owner files removed line n mine
   name="$(cfg_formula_name)" || return 1
   m="$(cfg_tool_manifest)" || return 1
   ver="$(read_version "$(cfg_version_from)" version-file 2>/dev/null || true)"
@@ -194,9 +195,11 @@ tool_publish() {
     [ -e "$PROJECT_ROOT/$from" ] || die "$from is not there, so it cannot be published as $place -- the build makes it: $DEVBIN_INVOKE build"
     [ "$kind" = product ] || continue
     case "$place" in bin/*) ;; *) continue ;; esac
+    mine="$(tool_link_line "$want" "${place#bin/}")" ||
+      die "the line a build of $sha carries, \"$want\", is no line in T4's shape, so $from cannot be read against it"
     got="$("$PROJECT_ROOT/$from" --version 2>/dev/null)" || got=""
-    [ "$(tree_line_head "$got")" = "$want" ] ||
-      die "$from prints \"$got\" for --version, where a build of $sha carries \"$want\", so its bytes are no build of this commit -- build it with $DEVBIN_INVOKE build, then publish"
+    [ "$(tree_line_head "$got")" = "$mine" ] ||
+      die "$from prints \"$got\" for --version, where a build of $sha carries \"$mine\", so its bytes are no build of this commit -- build it with $DEVBIN_INVOKE build, then publish"
   done <<<"$set"
   word=opt
   owner="$name"
@@ -402,9 +405,18 @@ tool_use() {
   esac
 }
 
-# _tool_use_report <links> -- each link's tree, by its line; rc 1 for a link it
-# cannot follow, a missing Homebrew copy with no link, or a set split across
-# trees (tool_set_split).
+# _tool_link_tree_line <root> <name> -- the line the tree at <root> records, as
+# its copy of the link <name> prints it (tool_link_line; issue 0331); rc 1,
+# printing nothing, where the tree records none, or one not in T4's shape.
+_tool_link_tree_line() {
+  local line
+  line="$(tool_tree_line "$1")" || return 1
+  tool_link_line "$line" "$2"
+}
+
+# _tool_use_report <links> -- each link's tree, by its line under the link's own
+# name; rc 1 for a link it cannot follow, a missing Homebrew copy with no link,
+# or a set split across trees (tool_set_split).
 _tool_use_report() {
   local name from state p root brew formula split rc=0
   formula="$(cfg_formula_name)" || return 1
@@ -418,11 +430,11 @@ _tool_use_report() {
         ;;
       "at "*)
         root="${state#at }"
-        printf 'use: the link %s names\n  %s\n' "$p" "$(tool_tree_line "$root" || printf '%s, which records no version line' "$(_tool_state_words "$state")")"
+        printf 'use: the link %s names\n  %s\n' "$p" "$(_tool_link_tree_line "$root" "$name" || printf '%s, which records no version line' "$(_tool_state_words "$state")")"
         ;;
       none)
         if brew="$(tool_brew_root "$formula")"; then
-          printf 'use: no link for %s, so brew\n  %s\n' "$name" "$(tool_tree_line "$brew" || printf 'brew at %s, which records no version line' "$brew")"
+          printf 'use: no link for %s, so brew\n  %s\n' "$name" "$(_tool_link_tree_line "$brew" "$name" || printf 'brew at %s, which records no version line' "$brew")"
         else
           printf 'use: no link for %s, so brew, and %s\n' "$name" "$(tool_brew_none_why "$formula")"
           printf '  %s, or run bin/devbin use dev or opt in this checkout\n' "$(tool_brew_unplaced_fix "$formula")"

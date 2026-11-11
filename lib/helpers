@@ -4734,6 +4734,20 @@ tool_line_parse() {
   printf '%s\t%s\t%s\t%s\t%s\n' "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}" "${BASH_REMATCH[3]}" "${BASH_REMATCH[4]}" "${BASH_REMATCH[5]}"
 }
 
+# tool_link_line <line> <name> -- <line>, a tool's version line, as the binary
+# <name> of its link set prints it (T4; issue 0331): read up to its closing
+# parenthesis, as T4's reader reads it, with the binary's own name in its first
+# field and the tool's version, tree and commit kept. EVERY BINARY OF A TOOL
+# PRINTS THE TOOL'S ONE LINE UNDER ITS OWN NAME, so the line a manifest records
+# or a build is handed is read for each link through here, never compared whole.
+# rc 1, printing nothing, for a line not in T4's shape (tool_line_parse). Pure.
+tool_link_line() {
+  local parts ver tree sha mark
+  parts="$(tool_line_parse "$1")" || return 1
+  IFS=$'\t' read -r _ ver tree sha mark <<<"$parts"
+  tool_line "$2" "$ver" "$tree" "$sha" "$mark"
+}
+
 # dep_info_paths <dep-info file> <root> -- each input a build's dependency
 # record names (make's form, as cargo writes `<binary>.d` beside a binary),
 # that lies below <root>, relative to it, one a line, each once (issue 0326:
