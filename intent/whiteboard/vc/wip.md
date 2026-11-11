@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 86e8d721-4079-418e-9e48-218c8da86346
-heartbeat_at: 2026-11-11 18:50Z
+heartbeat_at: 2026-11-11 20:03Z
 status: active
-focus: "Desk held by devbin-vc (decision 153); localfold for hv's compact at 2026-11-11 16:54Z by date -u, vc not released. Intent 3.3.0 P0: rewrite done, release commit 3447124a0 untagged after three kovacs-leg reds (tag, TMPDIR, XDG fixed on kovacs); dc's leg-pair fix proving on kovacs (slot R498, heavy); then hv resets to 4410d1563, dc lands + build all, hv re-cuts. One layer of proof. Webber P3 on gyges. Full state: ~/Devel/scratch/devbin-vc/state-20261111-1654.md."
+focus: "Desk held by devbin-vc. Localfold for hv's close at 2026-11-11 20:03Z by date -u, vc not released. Tonight: Intent 3.3.0 shipped; 8 consumers re-vendored to devbin 0.1.22 and pushed; issues 0333-0339 filed; devbin-cc banks its 0333-0335 wip and the batch resumes tomorrow, then hv cuts. Desk idle, no grants tonight. Full state: ~/Devel/scratch/devbin-vc/state-20261111-1654.md."
 claims: [ST0011]
 ---
 
@@ -14,7 +14,6 @@ claims: [ST0011]
 ## DOING
 
 - ST0011 after devbin 0.1.20: 18 of 21 ACs, the last three (AC-3.4, AC-4.3, AC-5.4) met only at the consumers' cuts; the order is WP10 to WP14 in the consumer estates, Utilz 2.14.9 first (todo 195), WP15 read at their cuts, WP18 last (todo 183). UNPARKED at hv's go of 2026-11-05 (decision 144): the consumer pass runs under decision 141, Utilz's turn first. (edited)
-- devbin 0.1.20 RELEASED at 09:29:31Z by the cut's log (tmp/release/20261105-0826.RELEASE.out): release commit be40dea7, tag v0.1.20, the release object, and the tap's main at 3c55c302. All 15 issues are closed (0323 at 1fbb25d2; 0315 unfixed, since no project reaches it). hv's brew steps are done: devbin 0.1.20 (brew, be40dea790f2), and doctor in Devbin reads 15 checks, 0 failed. SWEPT from brew (stamp 2026-11-05 09:48Z by date -u): 23 estates, one commit each by path (directive 10), _Archive/Intentv2 frozen; the fleet audit after reads 22 committed and Cards/Design (not its own checkout) at 0.1.20 be40dea790f2. Utilz's commit 7a6a06a7 drops macos.keychain (todo 197). Molt's first commit was refused by git's ref lock when molt-vc committed during the hook, nothing reverted, and it landed at 381979a once molt-vc and molt-dc held. The WSL job's queued re-run is left as it is (hv, before the clock read 10:06Z by date -u). Left: (1) hv republishes the taps' formulae with 0.1.20's renderer, which carries 0322's line-length fix (the 4 Nov ruling named three taps; the estates declaring formula: are Ccusage, Cldr, Gtools and Pplr); it does not block Utilz's turn, since Utilz declares no formula:; (2) the sweep notices (todo 198); (3) the upstream push of local main, which carries the board commits above be40dea7, on hv's word [vc's rec: at the end of Utilz's turn, with CI read on its sha (todo 96)]. (edited)
 
 ## TODO
 
