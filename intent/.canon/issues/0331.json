@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 331,
+  "slug": "a-tool-with-a-second-binary-that-prints-its-own",
+  "title": "A tool with a second binary that prints its own name fails doctor's dev and brew rows, so it cannot declare its link set",
+  "status": "open",
+  "severity": "medium",
+  "created": "2026-11-11",
+  "reporter": "Matthew Sinclair",
+  "body": "A tool with a second binary that prints its own name fails doctor's dev and brew rows, so a tool like that cannot declare its link set\n\nThe dev/opt/brew contract (docs/dev-opt-brew.md, T4) has every binary of a tool print the tool's version line, and in opt and brew the line its manifest records. A 0.1.21 keg's manifest records one line naming the tool (lib/cmd/formula:501). Doctor's dev row runs each install.links path's --version against the line a build carries (lib/cmd/doctor:1134, failing at :1160), and its brew row fails each link whose copy prints another line (lib/cmd/doctor:1379).\n\nA consumer whose second binary names itself, its daemon printing \"<daemon> <version> (dev, <sha>)\" while the tool prints \"<tool> <version> (dev, <sha>)\", fails both rows as soon as it declares both binaries under install.links: the dev row whenever the pair is built, and the brew row on every machine that installs its next release. A fresh clone with nothing built reads green, while a working checkout reads red. devbin-cc ran this on 2026-11-11 in a scratch clone of a consumer at its v0.1.21 sweep: doctor exit 1, \"FAIL <tool> dev: native/rust/target/release/<daemon> prints <daemon> 3.2.8 (dev, ...), which names another tool or tree than the line a build here carries\".\n\nUntil this is settled, such a consumer keeps the second binary outside the link set, as two template lines after @@INSTALL@@ (chmod 0755 and bin.install_symlink), with no install: block. That renders the same keg and reads green, but the contract no longer names the second binary.\n\nExpected: one of two shapes, chosen by hv. Either the contract lets each link print the tool's line with its own name in place of the tool's (doctor reading each link's line under its link name), or it keeps one line per tool and says that every binary prints it, naming the consumer-side change that implies.\n"
+}

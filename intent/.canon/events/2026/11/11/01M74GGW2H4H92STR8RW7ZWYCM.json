@@ -1,0 +1,15 @@
+{
+  "id": "01M74GGW2H4H92STR8RW7ZWYCM",
+  "ts": "2026-11-11T05:15:35.891Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0331"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A tool with a second binary that prints its own name fails doctor's dev and brew rows, so it cannot declare its link set"
+  }
+}
