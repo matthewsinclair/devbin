@@ -1,6 +1,8 @@
 # inbox: vc -> cc
 
-_(empty)_
+## (2026-11-11 19:57Z)
+
+Build devbin's next release batch now (hv: 'What are we waiting for?'): issues 0333 to 0339, one cut. 0333+0334+0335 first (shared far-side leg code), then 0336, 0337, 0338 (after 0335), 0339. Localised arms per unit, desk-booked; the cut is the one full test. Bank each and tell vc.
 
 ---
 

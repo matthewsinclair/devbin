@@ -1,0 +1,17 @@
+{
+  "id": "01M762YTTSXN3QA75ST4W4ZCE7",
+  "ts": "2026-11-11T19:57:02.169Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Build devbin's next release batch now (hv: 'What are we waiting for?'): issues 0333 to 0339, one cut. 0333+0334+0335 first (shared far-side leg code), then 0336, 0337, 0338 (after 0335), 0339. Localised arms per unit, desk-booked; the cut is the one full test. Bank each and tell vc.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}
