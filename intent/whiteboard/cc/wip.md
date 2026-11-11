@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
-heartbeat_at: 2026-11-11 12:32Z
+heartbeat_at: 2026-11-11 14:03Z
 status: active
-focus: "devbin 0.1.22 is released and done (vc's cut, rc 0 at 11:39:32Z by date -u; CI on main green, run 43013686918 at 12:08:43Z; devbin on PATH reads devbin 0.1.22 (brew, 329c2f3339b5)). Each estate adopts on its own word. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). Not started, no work: a possible devbin-side follow-up, since Molt-matts 6bc343e (zshrc emits dvb from the devbin on PATH) is committed unpushed on hv's go, while in devbin's checkout dvb still runs the dev tree by shell-init's walk-up. Back from hv's compact with nothing live: cc holds for hv's or vc's next word while the desk serves Intent 3.3.0. (focus set 2026-11-11 12:32Z by date -u)"
+focus: "devbin 0.1.22 is released and done (vc's cut, rc 0 at 11:39:32Z by date -u; CI on main green, run 43013686918 at 12:08:43Z). ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). Holding: Intent 3.3.0 is P0 for the rest of today and the desk serves Intent alone until its cut ends, so no devbin work starts before then, the dvb follow-up included (vc). Folded for hv's compact with nothing to bank; cc not released. (focus set 2026-11-11 14:03Z by date -u)"
 claims: [ISSUE:0326]
 ---
 
