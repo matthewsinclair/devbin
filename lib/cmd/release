@@ -811,7 +811,7 @@ leg_start() {
     local) _leg_local_start ;;
     candidate) _leg_candidate_start ;;
     legs.*) _leg_remote_start "$1" ;;
-    macos) release_macos_start "$LEG_ROOT" "$LEG_SHA" "$SCRATCH" ;;
+    macos) release_macos_start "$LEG_ROOT" "$LEG_SHA" "$SCRATCH" "$LEG_VERSION" "$LEG_TAG" ;;
     *) printf 'unknown\tno such leg: %s\n' "$1" ;;
   esac
 }

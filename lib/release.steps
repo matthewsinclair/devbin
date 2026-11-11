@@ -629,7 +629,8 @@ _release_gates_refuse() {
 # commands calls it, per call and never as an export, so nothing else a cut
 # runs is handed the pair: release.preflight (release_preflight_run), each
 # derived: command, the gates (gates_sealed, handed the pair by its callers),
-# the formula step and each after: command. It is not DEVBIN_RELEASE_TAG,
+# the macOS stage (_release_macos_run, lib/release.macos; issue 0329), the
+# formula step and each after: command. It is not DEVBIN_RELEASE_TAG,
 # which names the ref a query reads its runs by, the candidate's branch, and
 # reaches ci.query alone (release_ci_verdict, issue 0149). <cmd> may be a
 # function: bash hands an assignment written in front of a function's call to

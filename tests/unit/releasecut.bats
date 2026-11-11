@@ -2822,6 +2822,29 @@ root|1|the path, the project root itself, which git cannot ignore -- declare the
   [ -z "$(git -C "$proj" tag -l v1.0.1)" ] || fail "the failed cut tagged v1.0.1"
 }
 
+# THE STAGE IS HANDED THE RELEASE'S TARGET (issue 0329): a build that stamps
+# its kind from the release's tag reads it before the tag exists, and the stage
+# stays before the tag, so nothing is public until it is green.
+@test "0329-1: the macOS stage runs before the tag, handed the release's target, DEVBIN_RELEASE_VERSION and DEVBIN_RELEASE_TARGET_TAG" {
+  local rel
+  legs_env
+  proj="$(legs_project)"
+  create_test_command "$proj" macos "$(printf '#!/usr/bin/env bash\nprintf "%%s %%s version=%%s tag=%%s\\n" "$1" "$(git rev-parse HEAD)" "${DEVBIN_RELEASE_VERSION-<unset>}" "${DEVBIN_RELEASE_TARGET_TAG-<unset>}" >>"%s/macos.calls"\n' "$DEVBIN_TEST_TMPDIR")" >/dev/null
+  git -C "$proj" add -A && git -C "$proj" commit -qm "the stage records the release's target" && git -C "$proj" push -q origin main ||
+    fail "the fixture's stage could not be committed"
+  export UNAME_STUB_OS=Darwin
+  DEVBIN_RELEASE_POLL_SECONDS=1 PATH="$(tag_refused_path)" run release_in "$proj" v1.0.1 --yes
+  [ "$status" -eq 1 ] || fail "want exit 1 at the tag step, got $status:
+$output"
+  assert_state tag FAILED
+  [ "$(state_of legs)" = done ] || fail "the legs row is '$(state_of legs)', want done:
+$output"
+  rel="$(git -C "$proj" rev-parse HEAD)"
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")" = "leg $rel version=1.0.1 tag=v1.0.1" ] ||
+    fail "the stage ran: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls" 2>&1)"
+  [ -z "$(git -C "$proj" tag -l v1.0.1)" ] || fail "the cut tagged v1.0.1 with its tag step refused"
+}
+
 # ============================================================================
 # WP-06: after:
 # ============================================================================
