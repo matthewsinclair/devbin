@@ -3,7 +3,7 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 86e8d721-4079-418e-9e48-218c8da86346
-heartbeat_at: 2026-11-11 17:09Z
+heartbeat_at: 2026-11-11 17:32Z
 status: active
 focus: "Desk held by devbin-vc (decision 153); localfold for hv's compact at 2026-11-11 16:54Z by date -u, vc not released. Intent 3.3.0 P0: rewrite done, release commit 3447124a0 untagged after three kovacs-leg reds (tag, TMPDIR, XDG fixed on kovacs); dc's leg-pair fix proving on kovacs (slot R498, heavy); then hv resets to 4410d1563, dc lands + build all, hv re-cuts. One layer of proof. Webber P3 on gyges. Full state: ~/Devel/scratch/devbin-vc/state-20261111-1654.md."
 claims: [ST0011]
