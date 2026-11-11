@@ -1167,6 +1167,26 @@ YAML
   assert_file_not_exists "$out"
 }
 
+# NO TEMPLATE LAYS ITS ASSETS OUT BY HAND (docs/dev-opt-brew.md T8; issue
+# 0329): the body devbin generates lays out the stage it is given, so a line
+# before @@INSTALL@@ in the install is refused, and only a comment or a blank
+# line may stand there.
+@test "0329-4: render refuses a template whose install runs a line before @@INSTALL@@, naming the line and T8, writing nothing, and renders one with a comment and a blank line there" {
+  local out="$DEVBIN_TEST_TMPDIR/tool.rb" t
+  assets_checkout
+  t="$FX/packaging/homebrew/tool.rb"
+  cp "$t" "$t.orig"
+  awk '{ print } /^  def install$/ { print "    # the body below lays out the stage it is given"; print "" }' "$t.orig" >"$t"
+  run formula render v1.2.4 "$out" "$DEVBIN_TEST_TMPDIR/c.rb" --sums "$SUMS"
+  assert_success
+  rm -f "$out" "$DEVBIN_TEST_TMPDIR/c.rb"
+  awk '{ print } /^  def install$/ { print "    (libexec/\"bin\").install Dir[\"tool-*\"].first => \"tool\"" }' "$t.orig" >"$t"
+  run formula render v1.2.4 "$out" "$DEVBIN_TEST_TMPDIR/c.rb" --sums "$SUMS"
+  assert_failure
+  assert_output_contains "packaging/homebrew/tool.rb runs \"(libexec/\"bin\").install Dir[\"tool-*\"].first => \"tool\"\" in its install before @@INSTALL@@, and no template lays its assets out by hand (docs/dev-opt-brew.md T8)"
+  assert_file_not_exists "$out"
+}
+
 @test "0326-7: formula.bin is refused by config validation as retired, naming the tool's link set, install.links" {
   # shellcheck source=lib/helpers
   . "$DEVBIN_LIB_DIR/helpers"

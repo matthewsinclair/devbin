@@ -529,13 +529,27 @@ links_ruby() {
   done
 }
 
+# install_before <text> -- the first line of the formula template body <text>'s
+# install, `def install`, that is neither blank nor a comment and comes before
+# the line holding @@INSTALL@@, trimmed; nothing where none does, or where the
+# body has no such install. Pure.
+install_before() {
+  awk '
+    !inside && /^[[:blank:]]*def install[[:blank:]]*(#.*)?$/ { inside = 1; next }
+    inside && /@@INSTALL@@/ { exit }
+    inside && !/^[[:blank:]]*(#.*)?$/ { sub(/^[[:blank:]]+/, ""); sub(/[[:blank:]]+$/, ""); print; exit }
+  ' <<<"$1"
+}
+
 # install_refusal <text> <what> -- why the formula template body <text> (named
 # <what>) holds no install body render can fill, or nothing (issue 0326):
 # exactly one @@INSTALL@@, the body devbin generates, and no @@FINISH@@, the
-# form it retired; and where formula.bash is true, a template that depends on
-# bash, whose bin the env scripts name. Pure.
+# form it retired; nothing but blank and comment lines before @@INSTALL@@ in
+# the template's install (install_before, issue 0329), since no template lays
+# its assets out by hand (docs/dev-opt-brew.md T8); and where formula.bash is
+# true, a template that depends on bash, whose bin the env scripts name. Pure.
 install_refusal() {
-  local n
+  local n before
   if [ "$(placeholder_count "$1" @@FINISH@@)" != 0 ]; then
     printf '%s holds @@FINISH@@, which is retired: the install body is @@INSTALL@@ alone, which devbin generates whole, and lines the template keeps go after it\n' "$2"
     return 0
@@ -543,6 +557,11 @@ install_refusal() {
   n="$(placeholder_count "$1" @@INSTALL@@)"
   if [ "$n" != 1 ]; then
     printf '%s holds %s @@INSTALL@@, and a formula holds exactly one, the install body devbin generates\n' "$2" "$n"
+    return 0
+  fi
+  before="$(install_before "$1")"
+  if [ -n "$before" ]; then
+    printf '%s runs "%s" in its install before @@INSTALL@@, and no template lays its assets out by hand (docs/dev-opt-brew.md T8): the install body devbin generates lays out the stage it is given, and lines the template keeps go after @@INSTALL@@ -- pack each asset rooted at the install root\n' "$2" "$before"
     return 0
   fi
   if [ -n "$F_BASH" ] && ! [[ $'\n'$1 =~ $'\n'[[:blank:]]*depends_on\ \"bash\" ]]; then
