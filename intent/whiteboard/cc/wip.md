@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
-heartbeat_at: 2026-11-11 11:41Z
+heartbeat_at: 2026-11-11 12:28Z
 status: active
-focus: "devbin 0.1.22 is released (vc's cut, rc 0 at 11:39:32Z by date -u): tag v0.1.22 at 329c2f33, its release object and the tap formula published, every candidate CI job green; the candidate's macOS runner had 3 CPUs (Run tests 60m20s against 0.1.21's 25m19s on 5). Next: hv's brew upgrade and use brew, then each estate adopts on its own word. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). (focus set 2026-11-11 11:41Z by date -u)"
+focus: "devbin 0.1.22 is released and done (vc's cut, rc 0 at 11:39:32Z by date -u; CI on main green, run 43013686918 at 12:08:43Z; devbin on PATH reads devbin 0.1.22 (brew, 329c2f3339b5)). Each estate adopts on its own word. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). Not started, no work: a possible devbin-side follow-up, since Molt-matts 6bc343e (zshrc emits dvb from the devbin on PATH) is committed unpushed on hv's go, while in devbin's checkout dvb still runs the dev tree by shell-init's walk-up. Localfold for hv's compact: the r0122 and pc0122 clones are cleared, their cited seals and commits kept; cc not released. (focus set 2026-11-11 12:28Z by date -u)"
 claims: [ISSUE:0326]
 ---
 
