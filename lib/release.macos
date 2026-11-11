@@ -12,7 +12,10 @@
 #   release_macos_read <root> <sha>             the stage's word on <sha>
 #   release_macos_stop <seconds>                the started run stopped, its whole group, and reaped
 #   release_macos_unignored <root> <what> <path>  a path the stage writes, refused where git does not ignore it in <root>'s tree
-#   release_bin_archive <project> <version>     the binaries' archive's name, its triple rustc's host (issue 0323)
+#   release_bin_archive <project> <version> <template>  the binaries' archive's name, macos.pack.name filled (issues 0323, 0329)
+#   release_bin_fill <template> <project> <version>  {project}, {version} and {triple}, rustc's host, filled
+#   release_bin_name_problem <name>             why a filled name cannot name the archive
+#   release_bin_root_problem <root>             why a filled root cannot be its one top-level directory
 #   release_bins_read <repo> <tag> <archive>    whether <tag>'s release carries the archive, SHA256SUMS agreeing
 #   release_bins_pending <tag> <archive> <why>  the refusal of one it carries with SHA256SUMS disagreeing
 #
@@ -256,19 +259,86 @@ release_macos_unignored() {
 
 # --- the binaries' archive (issue 0323) ---------------------------------------
 
-# release_bin_archive <project> <version> -- the name of the archive the built-in
-# macos packs a project's binaries in, `<project>-<version>-<host
-# triple>.tar.gz`, the triple rustc -vV's host line, as the projects that
-# shipped their binaries named theirs. THE ONE NAMING: bin-publish packs under
-# it, and the cut's confirm and object steps read the release for it. Prints
-# the name; answers 1, printing nothing, when an argument is empty or rustc
-# names no host, so each caller says why in its own words.
+# release_bin_archive <project> <version> <template> -- the name of the archive
+# the built-in macos packs a project's binaries in: <template>, the project's
+# macos.pack.name (cfg_macos_pack_name, by default
+# `{project}-{version}-{triple}.tar.gz`, as the projects that shipped their
+# binaries named theirs), with {project}, {version} and {triple}, rustc -vV's
+# host line, filled (release_bin_fill; issue 0329). THE ONE NAMING: bin-publish
+# packs under it, and the cut's confirm and object steps read the release for
+# it. Prints the name; answers 1, printing nothing, when an argument is empty
+# or rustc names no host where the template asks for it, so each caller says
+# why in its own words.
 release_bin_archive() {
-  local triple
-  [ -n "${1:-}" ] && [ -n "${2:-}" ] || return 1
-  triple="$({ rustc -vV 2>/dev/null || true; } | sed -n 's/^host: //p')"
-  [ -n "$triple" ] || return 1
-  printf '%s-%s-%s.tar.gz\n' "$1" "$2" "$triple"
+  [ -n "${3:-}" ] || return 1
+  release_bin_fill "$3" "${1:-}" "${2:-}"
+}
+
+# release_bin_fill <template> <project> <version> -- <template> with {project},
+# {version} and {triple}, rustc -vV's host line, filled: the one filling of
+# the archive's name and its root (macos.pack.root). rustc is asked only where
+# the template holds {triple}. Prints the text; answers 1, printing nothing,
+# when the project or the version is empty, or rustc names no host for a
+# {triple}.
+release_bin_fill() {
+  local t="$1" triple
+  [ -n "${2:-}" ] && [ -n "${3:-}" ] || return 1
+  case "$t" in
+    *"{triple}"*)
+      triple="$({ rustc -vV 2>/dev/null || true; } | sed -n 's/^host: //p')"
+      [ -n "$triple" ] || return 1
+      t="${t//"{triple}"/$triple}"
+      ;;
+  esac
+  t="${t//"{project}"/$2}"
+  t="${t//"{version}"/$3}"
+  printf '%s\n' "$t"
+}
+
+# release_bin_name_problem <name> -- why <name>, a filled macos.pack.name, cannot
+# name the archive, or nothing at status 1 when it can: a placeholder left
+# unfilled, a name the core's asset rule refuses (release_name_problem), or one
+# that does not end in .tar.gz, the gzipped tar bin-publish packs. Pure.
+release_bin_name_problem() {
+  local why
+  case "$1" in
+    *"{"* | *"}"*)
+      printf 'holds a placeholder other than {project}, {version} and {triple}'
+      return 0
+      ;;
+  esac
+  if why="$(release_name_problem "$1")"; then
+    printf '%s' "$why"
+    return 0
+  fi
+  case "$1" in
+    *.tar.gz) return 1 ;;
+    *) printf 'does not end in .tar.gz, and bin-publish packs a gzipped tar' ;;
+  esac
+}
+
+# release_bin_root_problem <root> -- why <root>, a filled macos.pack.root, cannot
+# be the archive's one top-level directory, or nothing at status 1 when it can:
+# a placeholder left unfilled, a name the asset rule refuses, which also keeps
+# out a slash, or `bin`, whose contents Homebrew's install would lay out as the
+# keg's bin alone. Pure.
+release_bin_root_problem() {
+  local why
+  case "$1" in
+    *"{"* | *"}"*)
+      printf 'holds a placeholder other than {project}, {version} and {triple}'
+      return 0
+      ;;
+    bin)
+      printf "is bin, and a formula's install lays out an archive whose one top-level directory is bin as the keg's bin alone -- name the directory the archive's files sit in, as a release's packages are named"
+      return 0
+      ;;
+  esac
+  if why="$(release_name_problem "$1")"; then
+    printf '%s' "$why"
+    return 0
+  fi
+  return 1
 }
 
 # release_bins_read <repo> <tag> <archive> -- whether <tag>'s release object

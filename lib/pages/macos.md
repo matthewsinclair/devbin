@@ -44,8 +44,13 @@ The binaries, a project's own command-line tools and any `.app` shipped beside t
                         form derived from its identifier and the team
     macos.bin_dir       where the build leaves the binaries, from the root;
                         default target/release
-    macos.pack.files    files packed at the archive's root beside them, each
-                        from the root; none by default
+    macos.pack.files    beside them, a file packed at the archive's root, a
+                        directory's tracked files at their paths, each from
+                        the root; none by default
+    macos.pack.name     the archive's name, {project}, {version} and {triple}
+                        filled; default {project}-{version}-{triple}.tar.gz
+    macos.pack.root     the archive's one top-level directory, filled as the
+                        name is, and never bin; none by default
 
 A path key may open with `~`, `$HOME` or an XDG base-directory variable, expanded as the XDG spec reads it, so an app built outside the project needs no machine's own path. Each stands alone as a leading component, and an XDG variable that is unset falls back to its XDG default; any other leading `~` or `$`, such as `~user` or `${XDG_STATE_HOME:-...}`, is refused, naming it. An app that versions apart is still released under the project's tag and version. Every `macos:` key is annotated in devbin's reference config, which `bin/devbin devbin` names.
 
@@ -101,13 +106,16 @@ The binaries take the same order, and the same release commit:
                   ticket, and Gatekeeper asks Apple
     bin-publish   refused, uploading nothing, unless the tag is cut and the
                   binaries were signed at its commit, by bin-sign's record;
-                  then each checked with Gatekeeper, packed as
-                  <project>-<version>-<host triple>.tar.gz, a .app at the
-                  archive's root, every other binary under bin/ and
-                  macos.pack.files at the root, and attached with `release
-                  attach <version> --from`. An archive whose one top-level
-                  entry would be bin/ is refused: Homebrew installs from
-                  inside such a directory. Where the release carries the
+                  then each checked with Gatekeeper, packed under
+                  macos.pack.name, by default
+                  <project>-<version>-<host triple>.tar.gz, inside
+                  macos.pack.root where it is declared: a .app at its root,
+                  every other binary under bin/, and macos.pack.files beside
+                  them, a file at the root and a directory's tracked files
+                  at their paths; then attached with `release attach
+                  <version> --from`. With no root, an archive whose one
+                  top-level entry would be bin/ is refused: Homebrew installs
+                  from inside such a directory. Where the release carries the
                   archive with SHA256SUMS naming it, already, read before
                   the keychain is asked: nothing is packed or uploaded; one
                   it carries with SHA256SUMS disagreeing is refused

@@ -3260,6 +3260,20 @@ sums_name() {
     fail "macos ran on the refused re-run: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
 }
 
+@test "0329-2: a cut with macos.binaries declared under object: local is refused at pre-flight, before anything is stamped, where macos.pack.root makes a top-level directory bin-publish would refuse" {
+  legs_env
+  export UNAME_STUB_OS=Darwin
+  cut_bins_project
+  printf '%s\n' '  pack:' '    root: bin' >>"$proj/bin/.devbin/config.yaml"
+  git -C "$proj" commit -qam "the binaries' archive's root" && git -C "$proj" push -q origin main ||
+    fail "the fixture's root could not be committed"
+  PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" run publish_cut "$proj"
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"macos.pack.root makes the binaries' archive's top-level directory bin, which is bin, and a formula's install lays out"* ]] ||
+    fail "pre-flight does not refuse the root: $(row_of pre-flight)"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/macos.calls" ] || fail "macos ran on the refused cut: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+}
+
 @test "0323: a cut whose release carries the binaries' archive with no SHA256SUMS naming it stops at its confirm step, its dry run too, in bin-publish's own words, and runs no bin-publish" {
   local name calls how
   legs_env

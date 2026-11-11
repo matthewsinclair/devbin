@@ -1801,7 +1801,117 @@ $BIN_APP|$ID_APP"
   bin_signed_and_notarised "$proj"
   run macos_in "$proj" bin-publish
   assert_failure
-  assert_output_contains "macos: the archive would hold bin/ alone, and Homebrew installs from inside an archive's one top-level directory -- declare macos.pack.files, or ship another binary beside it; nothing uploaded"
+  assert_output_contains "macos: the archive would hold bin/ alone, and Homebrew installs from inside an archive's one top-level directory -- declare macos.pack.root, or macos.pack.files, or ship another binary beside it; nothing uploaded"
+  [ "$(gh_calls '^gh release upload')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+}
+
+# THE ARCHIVE'S NAME AND ROOT ARE THE PROJECT'S (issue 0329): a project whose
+# formula installs one archive rooted at the install root, as a release's
+# packages are, packs it under its own name, inside one top-level directory,
+# its support tree beside the binaries at its paths.
+@test "0329-2: bin-publish packs under macos.pack.name, inside macos.pack.root, a pack directory's tracked files at their paths and nothing it leaves untracked" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local name tgz listing p yaml
+  yaml="  binaries:
+    cli:
+      path: $BIN_PLAIN
+      identifier: $ID_PLAIN
+      entitlements: demo.entitlements
+  pack:
+    name: \"{project}-{triple}.tar.gz\"
+    root: \"{project}-{triple}\"
+    files:
+      - LICENSE
+      - support"
+  proj="$(bin_project "$yaml")"
+  mkdir -p "$proj/support/sub"
+  printf 'a\n' >"$proj/support/a.txt"
+  printf 'b\n' >"$proj/support/sub/b.txt"
+  printf 'support/local.txt\n' >>"$proj/.gitignore"
+  git -C "$proj" add -A && git -C "$proj" commit -qm "the support tree" && git -C "$proj" push -q origin main ||
+    fail "the fixture's support tree could not be committed"
+  printf 'left beside it by an editor\n' >"$proj/support/local.txt"
+  cut_untagged "$proj" >/dev/null
+  bin_signed_and_notarised "$proj"
+  cut_tag "$proj"
+  run macos_in "$proj" bin-publish
+  assert_success
+  name="demo-$TRIPLE.tar.gz"
+  assert_output_contains "published: $name on release v1.1.0"
+  tgz="$DEVBIN_TEST_TMPDIR/gh.assets/v1.1.0/$name"
+  [ -f "$tgz" ] || fail "no $name on the release object"
+  listing="$(tar -tzf "$tgz")" || fail "tar could not list $name"
+  [ "$(sed 's#/.*##' <<<"$listing" | LC_ALL=C sort -u)" = "demo-$TRIPLE" ] ||
+    fail "the archive's one top-level entry is not its root: $listing"
+  for p in "bin/$BIN_PLAIN" LICENSE support/a.txt support/sub/b.txt; do
+    grep -qxF "demo-$TRIPLE/$p" <<<"$listing" || fail "no demo-$TRIPLE/$p in the archive: $listing"
+  done
+  if grep -qF local.txt <<<"$listing"; then
+    fail "a file git does not track was packed: $listing"
+  fi
+}
+
+@test "0329-2: with macos.pack.root declared, an archive holding bin/ alone is packed, the root its one top-level entry" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local name listing
+  proj="$(bin_project "$BIN_ALONE_YAML
+  pack:
+    root: \"{project}-{version}\"")"
+  bin_signed_and_notarised "$proj"
+  run macos_in "$proj" bin-publish
+  assert_success
+  name="demo-1.0.0-$TRIPLE.tar.gz"
+  assert_output_contains "published: $name on release v1.0.0"
+  listing="$(tar -tzf "$DEVBIN_TEST_TMPDIR/gh.assets/v1.0.0/$name")" || fail "tar could not list $name"
+  grep -qxF "demo-1.0.0/bin/$BIN_PLAIN" <<<"$listing" || fail "the binary is not under the root's bin/: $listing"
+}
+
+@test "0329-2: bin-publish refuses a pack name holding a placeholder it does not fill, uploading nothing" {
+  on_macos
+  apple_stubs
+  keychain_full
+  proj="$(bin_project "$BIN_ALONE_YAML
+  pack:
+    name: \"{project}-{os}.tar.gz\"")"
+  run macos_in "$proj" bin-publish
+  assert_failure
+  assert_output_contains "macos: macos.pack.name makes the archive's name demo-{os}.tar.gz, which holds a placeholder other than {project}, {version} and {triple} -- nothing uploaded"
+  [ "$(gh_calls '^gh release upload')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+}
+
+@test "0329-2: bin-publish refuses a pack root named bin, uploading nothing" {
+  on_macos
+  apple_stubs
+  keychain_full
+  proj="$(bin_project "$BIN_ALONE_YAML
+  pack:
+    root: bin")"
+  run macos_in "$proj" bin-publish
+  assert_failure
+  assert_output_contains "macos: macos.pack.root makes the archive's top-level directory bin, which is bin, and a formula's install lays out an archive whose one top-level directory is bin as the keg's bin alone"
+  [ "$(gh_calls '^gh release upload')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
+}
+
+@test "0329-2: bin-publish refuses a pack directory that holds no file git tracks, uploading nothing" {
+  on_macos
+  apple_stubs
+  keychain_full
+  # tmp/ is one the fixture's tree ignores, so the directory is there and
+  # holds a file, and git tracks none of it.
+  proj="$(bin_project "$BIN_ALONE_YAML
+  pack:
+    files:
+      - tmp/pack")"
+  mkdir -p "$proj/tmp/pack"
+  printf 'nothing git tracks\n' >"$proj/tmp/pack/note.txt"
+  bin_signed_and_notarised "$proj"
+  run macos_in "$proj" bin-publish
+  assert_failure
+  assert_output_contains "macos: macos.pack.files names the directory tmp/pack, which holds no file git tracks -- nothing uploaded"
   [ "$(gh_calls '^gh release upload')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/gh.calls")"
 }
 

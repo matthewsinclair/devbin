@@ -1667,17 +1667,41 @@ cmd_bin_verify() {
   done <<<"$(bin_labels)"
 }
 
+# bin_pack_dir <entry> <content> -- a directory macos.pack.files names, <entry>
+# as declared, packed into the archive's tree at <content>: each file git
+# tracks under it at HEAD, the tag's commit, at its path from the project root,
+# by ditto, so its mode and a link are kept (issue 0329). A directory not below
+# the project root, or one holding no tracked file, is refused, uploading
+# nothing: what ships is the tag's, never a file a build or an editor left
+# beside it. Its list is read from a file in the staging dir, so a git that
+# fails is said, never read as an empty directory.
+bin_pack_dir() {
+  local f="$1" content="$2" why p list="$_BIN_STAGING/pack.list" n=0
+  if why="$(cache_path_problem "$f")"; then
+    die "macos: macos.pack.files names the directory $f, which $why -- a directory is packed at its path in the project, so it lies below the root; nothing uploaded"
+  fi
+  git_readonly -C "$ROOT" ls-files -z -- ":(literal)$f" >"$list" ||
+    die "macos: git could not list the files it tracks under $f -- nothing uploaded"
+  while IFS= read -r -d '' p; do
+    ditto "$ROOT/$p" "$content/$p" || die "macos: could not place $p in the archive's tree -- nothing uploaded"
+    n=$((n + 1))
+  done <"$list"
+  [ "$n" -gt 0 ] || die "macos: macos.pack.files names the directory $f, which holds no file git tracks -- nothing uploaded"
+}
+
 # bin-publish: refuses, uploading nothing, unless the tag is cut; answers
 # already, packing and uploading nothing, where the release carries its archive
 # with SHA256SUMS agreeing, and refuses where it carries it and SHA256SUMS
 # disagrees (release_bins_read, the read the cut's object step asks too); else
 # refuses unless the staged binaries were signed at the tag's commit (bin-sign's
 # record) and each passes its check with Gatekeeper, then packs them as
-# release_bin_archive names the archive, a .app at its root, every other binary
-# under bin/ and macos.pack.files at the root, and attaches it through release
-# attach --from, the core's one way an asset reaches a release.
+# release_bin_archive names the archive (macos.pack.name), a .app at its root,
+# every other binary under bin/ and macos.pack.files beside them, a file at the
+# root and a directory's tracked files at their paths, all inside
+# macos.pack.root where it is declared (issue 0329), and attaches it through
+# release attach --from, the core's one way an asset reaches a release.
 cmd_bin_publish() {
-  local label staged name f src staging tree out project archive launcher only repo answer
+  local label staged name f src staging tree out project archive launcher only repo answer root why content
   require_binaries
   release_names
   read_release_commit " -- nothing uploaded"
@@ -1685,8 +1709,19 @@ cmd_bin_publish() {
     die "macos: there is no tag $APP_TAG here, the tag the project's version $REL_VERSION is released under -- nothing uploaded; cut the release first (or fetch its tag), then bin-publish"
   project="$(cfg_get project.name)"
   [ -n "$project" ] || die "macos: project.name is not declared, so the archive cannot be named -- nothing uploaded"
-  archive="$(release_bin_archive "$project" "$REL_VERSION")" ||
+  archive="$(release_bin_archive "$project" "$REL_VERSION" "$(cfg_macos_pack_name)")" ||
     die "macos: rustc -vV names no host triple, so the archive cannot be named -- nothing uploaded"
+  if why="$(release_bin_name_problem "$archive")"; then
+    die "macos: macos.pack.name makes the archive's name $archive, which $why -- nothing uploaded"
+  fi
+  root="$(cfg_macos_pack_root)"
+  if [ -n "$root" ]; then
+    root="$(release_bin_fill "$root" "$project" "$REL_VERSION")" ||
+      die "macos: rustc -vV names no host triple, so macos.pack.root cannot be filled -- nothing uploaded"
+    if why="$(release_bin_root_problem "$root")"; then
+      die "macos: macos.pack.root makes the archive's top-level directory $root, which $why -- nothing uploaded"
+    fi
+  fi
   # Read before any binary is checked, since the checks ask Apple: a finished
   # release, the cut's re-run's included, asks nothing.
   repo="$(release_repo "$(cfg_release_get repo)" "$(cfg_release_first_remote)" 2>&1)" ||
@@ -1720,27 +1755,37 @@ cmd_bin_publish() {
   tree="$staging/tree"
   out="$staging/asset"
   mkdir "$tree" "$out" || die "macos: could not make the staging dirs in $staging -- nothing uploaded"
+  # Inside macos.pack.root where one is declared, which is then the archive's
+  # one top-level entry; else at the archive's root.
+  content="$tree${root:+/$root}"
+  mkdir -p "$content" || die "macos: could not make $content -- nothing uploaded"
   while IFS= read -r label; do
     staged="$(bin_staged "$label")"
     name="$(bin_field "$label" path)"
     case "$name" in
-      *.app) ditto "$staged" "$tree/$name" ;;
-      *) mkdir -p "$tree/bin" && ditto "$staged" "$tree/bin/$name" ;;
+      *.app) ditto "$staged" "$content/$name" ;;
+      *) mkdir -p "$content/bin" && ditto "$staged" "$content/bin/$name" ;;
     esac || die "macos: could not place $name in the archive's tree -- nothing uploaded"
   done <<<"$(bin_labels)"
   while IFS= read -r f; do
     [ -n "$f" ] || continue
     src="$(macos_path_value macos.pack.files "$f")"
-    [ -f "$src" ] || die "macos: macos.pack.files names $f, and there is no such file -- nothing uploaded"
-    cp "$src" "$tree/${src##*/}" || die "macos: could not place $src in the archive's tree -- nothing uploaded"
+    if [ -d "$src" ]; then
+      bin_pack_dir "$f" "$content"
+      continue
+    fi
+    [ -f "$src" ] || die "macos: macos.pack.files names $f, and there is no such file or directory -- nothing uploaded"
+    cp "$src" "$content/${src##*/}" || die "macos: could not place $src in the archive's tree -- nothing uploaded"
   done <<<"$(cfg_macos_pack_files)"
   # HOMEBREW INSTALLS FROM INSIDE AN ARCHIVE WHOSE ONE TOP-LEVEL ENTRY IS A
   # DIRECTORY, so bin/ alone, or one .app alone, would put what is inside it at
   # the keg's root, where a formula's bin/<name> or <name>.app finds nothing.
+  # Inside a declared root that is the design: Homebrew enters the root, and a
+  # formula's install lays out what it holds.
   # find-walk: -maxdepth 1 -- the tree's top level alone; it never enters one
   only="$(cd "$tree" && find . -mindepth 1 -maxdepth 1)" || die "macos: could not list the archive's tree -- nothing uploaded"
-  if [ "$(grep -c . <<<"$only")" -eq 1 ] && [ -d "$tree/${only#./}" ]; then
-    die "macos: the archive would hold ${only#./}/ alone, and Homebrew installs from inside an archive's one top-level directory -- declare macos.pack.files, or ship another binary beside it; nothing uploaded"
+  if [ -z "$root" ] && [ "$(grep -c . <<<"$only")" -eq 1 ] && [ -d "$tree/${only#./}" ]; then
+    die "macos: the archive would hold ${only#./}/ alone, and Homebrew installs from inside an archive's one top-level directory -- declare macos.pack.root, or macos.pack.files, or ship another binary beside it; nothing uploaded"
   fi
   step "packing $archive"
   # dotglob, so a pack file whose name opens with a dot is packed too; the glob

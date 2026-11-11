@@ -712,7 +712,9 @@ macos:
   #     path: <Name>.app                      # a .app is packed at the archive's root, a binary under bin/
   #     identifier: com.example.demo-links
   # pack:
-  #   files:                                  # packed at the archive's root beside the binaries, each from the root
+  #   name: "{project}-{triple}.tar.gz"       # the archive's name, {project}, {version} and {triple} filled; undeclared: {project}-{version}-{triple}.tar.gz
+  #   root: "{project}-{triple}"              # its one top-level directory, filled as the name is, never bin; undeclared: none, its entries at its root
+  #   files:                                  # beside the binaries: a file at the archive's root, a directory's tracked files at their paths
   #     - examples/config.toml
 
 # The built-in formula: the project's Homebrew formula, rendered

@@ -2653,11 +2653,22 @@ cut_run() {
   # a cut elsewhere is refused above, with the stage, and a re-run past the tag
   # here. A name that cannot be made is refused before anything is stamped.
   if [ "$object" = local ] && cfg_macos_declared && [ -n "$(cfg_macos_binaries)" ]; then
-    local bins_word
+    local bins_word bins_why bins_root
     bins_word="$(platform_word)" || bins_word=""
     if [ "$bins_word" = macos ]; then
-      bins_archive="$(release_bin_archive "$(cfg_get project.name)" "$v")" ||
+      if ! bins_archive="$(release_bin_archive "$(cfg_get project.name)" "$v" "$(cfg_macos_pack_name)")"; then
         refusals+=("the binaries' archive cannot be named for the object step's macos bin-publish: project.name is not declared, or rustc -vV names no host triple")
+      elif bins_why="$(release_bin_name_problem "$bins_archive")"; then
+        refusals+=("macos.pack.name makes the binaries' archive's name $bins_archive, which $bins_why -- the object step's macos bin-publish would refuse it past the tag")
+      fi
+      bins_root="$(cfg_macos_pack_root)"
+      if [ -n "$bins_root" ]; then
+        if ! bins_root="$(release_bin_fill "$bins_root" "$(cfg_get project.name)" "$v")"; then
+          refusals+=("macos.pack.root cannot be filled: project.name is not declared, or rustc -vV names no host triple")
+        elif bins_why="$(release_bin_root_problem "$bins_root")"; then
+          refusals+=("macos.pack.root makes the binaries' archive's top-level directory $bins_root, which $bins_why -- the object step's macos bin-publish would refuse it past the tag")
+        fi
+      fi
     elif [ "$source" = tag ]; then
       refusals+=("macos.binaries is declared under object: local, so the object step packs the binaries' archive through macos bin-publish, whose name carries a macOS host's triple, and this host is ${bins_word:-one devbin has no platform word for} -- run the cut again on a macOS host")
     fi
