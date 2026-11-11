@@ -1,0 +1,15 @@
+{
+  "id": "01M75ZG63GWH2P1BVHPQQXEFFT",
+  "ts": "2026-11-11T18:56:36.466Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0336"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The macOS leg submits its app's and its binaries' notarisations together, not one after the other"
+  }
+}

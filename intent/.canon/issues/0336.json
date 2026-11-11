@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 336,
+  "slug": "the-macos-leg-submits-its-app-s-and-its-binaries",
+  "title": "The macOS leg submits its app's and its binaries' notarisations together, not one after the other",
+  "status": "open",
+  "severity": "medium",
+  "created": "2026-11-11",
+  "reporter": "Matthew Sinclair",
+  "body": "From Intent's ST0093 (hv's word, relayed by intent-vc, 2026-11-11), half B item 5, narrowed. Intent's 5m20s tail after the 3.3.0 tag comes from Intent not having adopted the macOS leg: its signing and notarising run in its own `cut publish`, after the tag. That adoption is Intent's package. This issue is the one piece of the core that the adoption would hit.\n\nWhat exists: `macos leg` (cmd_leg, lib/cmd/macos:1806-1821) runs in this order:\n1. app-sign, then app-notarize, where macos.app is declared.\n2. bin-sign, then bin-notarize, where macos.binaries is declared under release.object local (the default, lib/config.reference.yaml:649).\n\nEach notarize waits on Apple through `notary_submit`, which runs `xcrun notarytool submit ... --wait` (lib/cmd/macos:377). A project that declares both, as Intent would (its cask's app and its pair), waits out two notary round trips one after the other on the cut's critical path.\n\nAsk: in cmd_leg, sign both, then submit both, then wait on both.\n- Both submissions go in without `--wait`, each keeping its submission id.\n- `notarytool wait <id>` runs on each. Each result is read by the same verdict parse `notary_submit` uses today, in one place.\n- The steps after a submission (stapling the app, and Gatekeeper's check of the app and of each binary) run as they do now, once its verdict is Accepted.\n- A rejection of either still fails the leg before the tag.\n- `app-notarize` and `bin-notarize` run alone keep their current behaviour.\n\nProof: the next cut of a project that declares both, whose leg is the proof.\n\nSize S. It is confined to lib/cmd/macos's leg path and the submit and wait split of notary_submit. No dependency on 0333 or 0334.\n"
+}

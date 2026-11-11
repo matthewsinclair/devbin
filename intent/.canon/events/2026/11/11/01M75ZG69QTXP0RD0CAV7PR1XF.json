@@ -1,0 +1,15 @@
+{
+  "id": "01M75ZG69QTXP0RD0CAV7PR1XF",
+  "ts": "2026-11-11T18:56:36.665Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0337"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A cut refuses a leg that has never gone green, until `release gates --leg <host>` has run it"
+  }
+}

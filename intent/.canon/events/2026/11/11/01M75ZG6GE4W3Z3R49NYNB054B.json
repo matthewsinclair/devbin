@@ -1,0 +1,15 @@
+{
+  "id": "01M75ZG6GE4W3Z3R49NYNB054B",
+  "ts": "2026-11-11T18:56:36.880Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0338"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A release's build artefacts are built once at the release commit, and the gates and the after: commands pull them from the cache"
+  }
+}
