@@ -4,8 +4,8 @@ name: Validation Claude
 role: validation
 session_id: 86e8d721-4079-418e-9e48-218c8da86346
 heartbeat_at: 2026-11-11 20:07Z
-status: active
-focus: "Desk held by devbin-vc. Localfold for hv's close at 2026-11-11 20:03Z by date -u, vc not released. Tonight: Intent 3.3.0 shipped; 8 consumers re-vendored to devbin 0.1.22 and pushed; issues 0333-0339 filed; devbin-cc banks its 0333-0335 wip and the batch resumes tomorrow, then hv cuts. Desk idle, no grants tonight. Full state: ~/Devel/scratch/devbin-vc/state-20261111-1654.md."
+status: paused
+focus: "HOLD (hv, closed for the day): no work until hv's go; at boot re-arm the desk waiter, then devbin-cc resumes 0333-0339 from refs/bank/cc/b0123-wip"
 claims: [ST0011]
 ---
 
