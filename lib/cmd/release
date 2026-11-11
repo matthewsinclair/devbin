@@ -2185,7 +2185,7 @@ cut_run() {
   local formula_on formula_step=no
   # The binaries' archive (issue 0323): named at pre-flight where the object
   # step runs macos bin-publish, and empty where it does not.
-  local bins_archive=""
+  local bins_archive="" app_asset=""
   local -a refusals=() gl=() pl=()
   # The candidate's target, its ref and the target as a line names it, found
   # at pre-flight: the remote the legs step pushes it to, or in the publish
@@ -2673,6 +2673,23 @@ cut_run() {
       refusals+=("macos.binaries is declared under object: local, so the object step packs the binaries' archive through macos bin-publish, whose name carries a macOS host's triple, and this host is ${bins_word:-one devbin has no platform word for} -- run the cut again on a macOS host")
     fi
   fi
+  # THE APP'S ZIP (issue 0329): under object: local, where the macOS stage is
+  # declared with macos.app, the object step runs macos publish once the object
+  # is made, before the formula step, so a cask the formula step renders from
+  # the release finds the zip in its SHA256SUMS, and reads the release for the
+  # zip by publish's own name for it (cfg_macos_app_asset). Only on a macOS
+  # host, since publish runs there alone: a cut elsewhere is refused above,
+  # with the stage, and a re-run past the tag here.
+  if [ "$object" = local ] && cfg_macos_declared && [ -n "$(cfg_macos_get app)" ]; then
+    local app_word
+    app_word="$(platform_word)" || app_word=""
+    if [ "$app_word" = macos ]; then
+      app_asset="$(cfg_macos_app_asset)" ||
+        refusals+=("the app's zip cannot be named for the object step's macos publish: macos.asset or macos.app cannot be read")
+    elif [ "$source" = tag ]; then
+      refusals+=("macos.app is declared under object: local, so the object step zips and attaches the app through macos publish, which runs on macOS alone, and this host is ${app_word:-one devbin has no platform word for} -- run the cut again on a macOS host")
+    fi
+  fi
   for legs_a in "${LEGS_ABSENT[@]}"; do
     legs_said+="; legs.${legs_a%%$'\t'*} absent, not run: ${legs_a#*$'\t'}"
   done
@@ -2801,7 +2818,7 @@ cut_run() {
   # about whether anything is left.
   local -a left=() push_plan=()
   local object_work="" object_detail="" title repo="" declared_repo drem
-  local attach_work=no assets_detail="" bins_work=no bins_detail="" heading plan_words
+  local attach_work=no assets_detail="" bins_work=no bins_detail="" app_work=no app_detail="" heading plan_words
   declared_repo="$(cfg_release_get repo)" || cut_fail confirm "release.repo cannot be read"
   drem="$(declared_remote)" || cut_fail confirm "the first declared remote cannot be read"
   cut_read_remotes "$push_mode" confirm
@@ -3299,6 +3316,29 @@ cut_object_left() {
       esac
     fi
   fi
+  # THE APP'S ZIP (issue 0329), named at pre-flight where the object step runs
+  # macos publish, is work left on the same terms, read by the same read
+  # (release_bins_read): done where the release carries it with SHA256SUMS
+  # naming it, and refused where SHA256SUMS disagrees, since publish never zips
+  # over an asset the release carries.
+  if [ -n "${app_asset:-}" ]; then
+    if [ "$object_work" = create ]; then
+      app_work=yes
+      left+=("zip and attach the app $app_asset through macos publish, and SHA256SUMS")
+    else
+      answer="$(release_wait 0 "" UNREADABLE release_bins_read "$repo" "$tag" "$app_asset")" ||
+        cut_fail confirm "reading whether $tag carries $app_asset failed (exit $?)"
+      case "${answer%%$'\t'*}" in
+        already) app_detail="$app_asset attached, ${answer#*$'\t'}" ;;
+        absent)
+          app_work=yes
+          left+=("zip and attach the app $app_asset through macos publish, and SHA256SUMS: ${answer#*$'\t'}")
+          ;;
+        pending) cut_fail confirm "$(release_bins_pending "$tag" "$app_asset" "${answer#*$'\t'}")" ;;
+        *) cut_fail confirm "${answer#*$'\t'}" ;;
+      esac
+    fi
+  fi
 }
 
 # cut_confirm <who> <heading> [<after>] -- the confirm step's question, for a
@@ -3569,6 +3609,35 @@ cut_tail() {
         else
           row_detail+="; $bins_archive attached, ${answer#*$'\t'}"
         fi
+      fi
+      # THE APP'S ZIP (issue 0329), on the binaries' archive's terms: macos
+      # publish through the launcher, where the confirm step named the zip as
+      # work left, before the formula step, whose cask reads it from the
+      # release's SHA256SUMS, then read back by the same read. A FAILURE STOPS
+      # THE CUT HERE, the object made and standing, and the formula step unrun.
+      if [ "$app_work" != yes ]; then
+        row_detail+="${app_detail:+; $app_detail}"
+      elif [ "$dry_run" = 1 ]; then
+        row_state=would
+        row_detail+="; then zip and attach the app $app_asset through macos publish, and SHA256SUMS"
+        CUT_UNREACHED+=("the object step's publish of the app: a dry run zips and attaches nothing")
+      else
+        # NO ARM REACHES IT: the zip is work left, so the confirm step has confirmed
+        # it or stopped the run. Kept so the object step never zips on its own say-so.
+        [ "$confirmed" = yes ] || cut_fail object "the app's zip has work left and nobody confirmed attaching it"
+        local app_out="$SCRATCH/app-publish.out" app_rc=0 app_last
+        printf '\nrelease: publish: %s macos publish, the app %s\n' "${DEVBIN_INVOKE:-bin/devbin}" "$app_asset"
+        gate_exec "$launcher" macos publish >"$app_out" 2>&1 || app_rc=$?
+        cat "$app_out"
+        if grep -q '^published: ' "$app_out"; then CUT_OUTWARD+=", attached $app_asset to the release object for $tag"; fi
+        app_last="$(awk 'NF { l = $0 } END { print l }' "$app_out")"
+        [ "$app_rc" -eq 0 ] ||
+          cut_fail object "$row_detail; macos publish did not attach $app_asset (exit $app_rc): ${app_last:-it said nothing}"
+        answer="$(release_wait 0 "" UNREADABLE release_bins_read "$repo" "$tag" "$app_asset")" ||
+          cut_fail object "reading back whether $tag carries $app_asset failed (exit $?)"
+        [ "${answer%%$'\t'*}" = already ] ||
+          cut_fail object "macos publish finished, and $tag does not read back as carrying $app_asset: ${answer#*$'\t'}"
+        row_state="done" row_detail+="; attached $app_asset through macos publish, ${answer#*$'\t'}"
       fi
       cut_row object "$row_state" "$row_detail"
       ;;

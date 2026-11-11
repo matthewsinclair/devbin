@@ -987,6 +987,22 @@ cfg_macos_pack_name() { cfg_get macos.pack.name '{project}-{version}-{triple}.ta
 # the archive's entries are then at its root.
 cfg_macos_pack_root() { cfg_get macos.pack.root ""; }
 
+# cfg_macos_app_asset -- the name the app's zip is attached to the release
+# under: macos.asset, or the app's own name with .zip where it is not
+# declared, and nothing where no macos.app is (issue 0329). THE ONE DERIVATION:
+# macos publish zips the app under it, and a cut's confirm and object steps
+# read the release for it.
+cfg_macos_app_asset() {
+  local a app
+  a="$(cfg_macos_get asset)" || return 1
+  if [ -z "$a" ]; then
+    app="$(cfg_macos_get app)" || return 1
+    app="${app%/}"
+    [ -z "$app" ] || a="${app##*/}.zip"
+  fi
+  printf '%s\n' "$a"
+}
+
 # cfg_macos_declared -- 0 when the project declares the built-in macos
 # (commands.macos.enabled), whose stage is then a leg of every cut, signing and
 # notarising the app at the release commit (ST0011 WP-06). THE ONE TEST, which

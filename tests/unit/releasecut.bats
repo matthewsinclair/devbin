@@ -3243,6 +3243,92 @@ sums_name() {
     fail "the re-run called macos again: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
 }
 
+# cut_app_project -- as cut_bins_project, with an app, out/Demo.app, in place
+# of the binaries, under object: local, the default (issue 0329): the project
+# handler macos stands for the built-in, leg passing, and publish attaching a
+# zip under the name the built-in zips the app under, Demo.app.zip, recording
+# each call and how many commits the tap's main held when publish ran.
+cut_app_project() {
+  local cfg clone
+  publish_project "  formula: true"
+  cfg="$proj/bin/.devbin/config.yaml"
+  perl -0pi -e 's/\ncommands:\n  release:\n    enabled: true\n/\ncommands:\n  release:\n    enabled: true\n  macos:\n    enabled: true\n/' "$cfg"
+  grep -q '^  macos:$' "$cfg" || fail "the fixture's config does not enable macos: $(cat "$cfg")"
+  printf '%s\n' 'macos:' '  app: out/Demo.app' >>"$cfg"
+  printf 'out/\n' >>"$proj/.gitignore"
+  # shellcheck disable=SC2016 # expanded when the handler runs
+  create_test_command "$proj" macos "$(printf '%s\n' '#!/usr/bin/env bash' 'set -euo pipefail' \
+    "T='$DEVBIN_TEST_TMPDIR'" \
+    'cd "$(git rev-parse --show-toplevel)"' \
+    'printf "%s %s\n" "$1" "$(git rev-parse HEAD)" >>"$T/macos.calls"' \
+    'case "$1" in' \
+    '  leg) ;;' \
+    '  publish)' \
+    '    git --git-dir="$T/tap.git" rev-list --count main >>"$T/app.tap"' \
+    '    v="$(cat VERSION)"' \
+    '    d="$(mktemp -d "$T/app.XXXXXX")"' \
+    '    printf "the app of %s\n" "$v" >"$d/Demo.app.zip"' \
+    '    ./bin/devbin release attach "$v" --from "$d"' \
+    '    printf "\npublished: Demo.app.zip on release v%s\n" "$v"' \
+    '    ;;' \
+    '  *)' \
+    '    printf "the stub macos does not answer %s\n" "$1" >&2' \
+    '    exit 64' \
+    '    ;;' \
+    'esac')" >/dev/null
+  git -C "$proj" add -A
+  git -C "$proj" commit -qm "the app"
+  git -C "$proj" push -q origin main
+  brew_stub "$DEVBIN_TEST_TMPDIR/brew"
+  clone="$DEVBIN_TEST_TMPDIR/brew/Library/Taps/t/homebrew-demo"
+  git clone -q "$TAP" "$clone"
+}
+
+@test "0329-3: a cut under object: local with macos.app declared zips and attaches the app through macos publish in its object step, once the object is made and before the formula reaches the tap" {
+  local rel tap_before
+  legs_env
+  export UNAME_STUB_OS=Darwin
+  cut_app_project
+  tap_before="$(git --git-dir="$TAP" rev-list --count main)"
+  PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" run publish_cut "$proj"
+  assert_success
+  rel="$(release_sha "$proj")"
+  [[ "$(row_of confirm)" == *"zip and attach the app Demo.app.zip through macos publish, and SHA256SUMS"* ]] ||
+    fail "the confirm does not name the app's zip as work left: $(row_of confirm)"
+  assert_state object done
+  [[ "$(row_of object)" == *"made the release object"*"; attached Demo.app.zip through macos publish, SHA256SUMS names"* ]] ||
+    fail "the object row does not name the zip publish attached once the object was made: $(row_of object)"
+  grep -qx "publish $rel" "$DEVBIN_TEST_TMPDIR/macos.calls" ||
+    fail "publish did not run at the release commit: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/app.tap")" = "$tap_before" ] ||
+    fail "the formula had reached the tap when publish ran: the tap's main held $(cat "$DEVBIN_TEST_TMPDIR/app.tap") commit(s) then, and $tap_before before the cut"
+  assert_state formula done
+  sums_name Demo.app.zip || fail "SHA256SUMS does not name Demo.app.zip: $(cat "$DEVBIN_TEST_TMPDIR/gh.assets/v1.0.1/SHA256SUMS")"
+}
+
+@test "0329-3: a finished cut run again with macos.app declared asks nothing and runs no publish, its object step reading the zip attached with SHA256SUMS naming it" {
+  local calls
+  legs_env
+  export UNAME_STUB_OS=Darwin
+  cut_app_project
+  PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" run publish_cut "$proj"
+  assert_success
+  grep -q '^publish ' "$DEVBIN_TEST_TMPDIR/macos.calls" ||
+    fail "the first cut ran no publish: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  calls="$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  # No --yes and nobody at a terminal, so work left would stop the cut at its
+  # confirm step.
+  GIT_CONFIG_GLOBAL="$DEVBIN_TEST_TMPDIR/tap.gitconfig" GIT_SSH_COMMAND=false PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" \
+    run release_in "$proj" v1.0.1
+  assert_success
+  assert_state confirm "not re-run"
+  assert_state object already
+  [[ "$(row_of object)" == *"; Demo.app.zip attached, SHA256SUMS names"* ]] ||
+    fail "the object row does not read the zip as attached: $(row_of object)"
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/macos.calls")" = "$calls" ] ||
+    fail "the re-run called macos again: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+}
+
 @test "0323: a cut run again past its tag on a host that is not macOS, with macos.binaries declared under object: local, is refused at pre-flight, since the archive's name carries a macOS host's triple" {
   local calls
   legs_env

@@ -264,8 +264,8 @@ fi
 NOTARY_PROFILE="$(macos_key notary_profile)"
 MACOS_TEAM="$(macos_key team)"
 APP_NAME="${APP_SRC##*/}"
-APP_ASSET="$(macos_key asset)"
-[ -n "$APP_ASSET" ] || APP_ASSET="${APP_NAME:+$APP_NAME.zip}"
+# The zip's name, the one derivation a cut's object step reads too.
+APP_ASSET="$(cfg_macos_app_asset)" || die "macos: cannot read macos.asset or macos.app from the config"
 
 # THE STAGE, one per checkout: two worktrees of one project, one of them at the
 # tag, must not sign each other's copy. Under XDG state, keyed by the project's
