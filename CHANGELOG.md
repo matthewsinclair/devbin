@@ -6,6 +6,33 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.22] - Unreleased
+
+### Added
+
+- **`install.switch` and `install.publish`, a tool's own switch and publish (issue `0332`).** Each is the tool's own command, as written, under its `install:` block, and one with no words is refused. In that tool's checkout `bin/devbin use` refuses, bare or with a tree, naming the switch, and points no link, and `bin/devbin install`'s opt publish refuses, naming the publish, and writes nothing; `--managed-by brew`, the formula's publish into a keg, and `--into` are unchanged. The formula, the link set and doctor's rows still read `install.links`, and the remedies that would name `bin/devbin use` or `bin/devbin install`, doctor's and the cut's note back to brew among them, name the tool's own command instead.
+- **The binaries' archive under the project's declared name and root (issue `0329`).** `macos.pack.name` is the archive's name as a template of `{project}`, `{version}` and `{triple}`, by default `{project}-{version}-{triple}.tar.gz`, the name archives were packed under before. `macos.pack.root` is its one top-level directory, by default none; inside it the binaries, an app and the pack files sit as they did at the root, so an archive can be rooted at the install root, and one holding `bin/` alone is packed inside it. A name or root `bin-publish` cannot pack, a placeholder left unfilled, a name the asset rule refuses or not ending in `.tar.gz`, or a root named `bin`, is refused before the keychain is asked, and by the cut's pre-flight before anything is stamped.
+- **`macos.pack.files` takes a directory (issue `0329`)**: each file git tracks under it at the tag is packed at its path from the project root, its mode and links kept. One outside the project root, or holding no tracked file, is refused. A file is packed at the archive's root as before.
+- **A cut zips and attaches the app (issue `0329`).** Where `macos.app` is declared under `object: local`, the object step runs `macos publish` after `bin-publish` and before the formula step, so the cask the formula step renders reads the app's zip in `SHA256SUMS`. The confirm step names the zip as work left until the release carries it, a failure stops the cut there with the release object standing, a finished cut run again runs no publish, and a dry run names it as would.
+- **The macOS stage is handed the release's target (issue `0329`)**: `DEVBIN_RELEASE_VERSION` and `DEVBIN_RELEASE_TARGET_TAG`, as every other command of the project's own a cut runs is, so a build that stamps its kind from the release's tag reads the tag the release commit is about to carry. The stage stays a leg before the tag, so a refusal or a notary rejection still stops the cut with nothing public: a stage after the tag would meet a rejection with the tag public and the release's macOS assets missing.
+- **`ci-state --runs <sha>` (issue `0330`)** prints the ids of the workflow's runs at `<sha>` on the ref `DEVBIN_RELEASE_TAG` names, one a line, and exits 1 naming why when it cannot list them whole.
+
+### Changed
+
+#### a script or a config may get a different result
+
+- **Every binary of a tool prints the tool's version line under its own name (issue `0331`)**: `<name> <version> (<tree>, <sha12>[+dirty])`, its own name first, then the tool's version, tree and sha, so every binary of every tool reports its version the same way. The contract's T4 reader takes the binary's own name from Cargo, `CARGO_BIN_NAME`, beside the tool's, and stays word for word for every binary. A second binary that prints the tool's name, as 0.1.21's reader had it, now fails doctor's dev row: build it with the new reader. A tool's manifest still records one line, and its build is still handed one `DEVBIN_VERSION_LINE`.
+- **`formula render` refuses a template whose install runs a line before `@@INSTALL@@` (issue `0329`)**, naming the line and T8, and writes nothing, since no template lays its assets out by hand; a comment or a blank line there is taken. A project whose assets are not one archive rooted at the install root packs them that way, with `macos.pack.root`, rather than staging them in its template.
+
+### Fixed
+
+#### reaches every project
+
+- **Doctor passes a tool whose second binary prints its own name (issue `0331`).** Its dev row reads each link's copy against the dev line under that link's name, holding the parsed name to the link's, and its tree row reads each copy against the recorded line under the copy's own name, where both read every link's line as the tool's and failed the second binary. The publish, a bare `use` and the cut's note back to brew read each link's line the same way.
+- **A cut run again decides its candidate on its own push's CI runs (issue `0330`).** A cut that stopped after its candidate push deleted the candidate, and GitHub cancelled the run that push started; the next attempt pushed the candidate again and ranked that cancelled run as failed over its own, so it stopped whatever its own run did. With the built-in query, the cut now reads the runs at the release commit on the candidate's branch before its push, and every later read hands them to `ci-state` as `DEVBIN_RELEASE_PASSED_OVER`, which passes over them and names each after its detail: `passed over run <id> (<conclusion>), from before this push`. They are named by id, not by a time bound, so the cut's clock is never compared with GitHub's. The cut unsets an inherited `DEVBIN_RELEASE_PASSED_OVER` at its start, and a dry run and `release status` push nothing and rank every run as before.
+
+Full note: [RELEASES/0.1.22.md](RELEASES/0.1.22.md)
+
 ## [0.1.21] - 2026-11-10
 
 ### Added
