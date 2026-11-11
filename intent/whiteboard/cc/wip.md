@@ -6,7 +6,7 @@ session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
 heartbeat_at: 2026-11-11 17:32Z
 status: active
 focus: "devbin 0.1.22 is released and done. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). Holding while Intent 3.3.0 is P0: no devbin work starts before its cut ends (vc). ia0121's three Intent clones go at cc's next fold on vc's word, their only-held state already saved under the kit's saved/; the audit was cut off by the crash and reruns then. Folded after the crash with nothing to bank; cc not released. (focus set 2026-11-11 17:14Z by date -u)"
-claims: [ISSUE:0326]
+claims: [ISSUE:0326, ISSUE:0333, ISSUE:0334, ISSUE:0335, ISSUE:0336, ISSUE:0337, ISSUE:0338, ISSUE:0339]
 ---
 
 # Control Claude (cc)
