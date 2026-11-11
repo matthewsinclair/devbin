@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "86e8d721-4079-418e-9e48-218c8da86346",
-    "heartbeat_at": "2026-11-10T20:23:25.579Z",
+    "heartbeat_at": "2026-11-11T08:08:57.374Z",
     "status": "active",
-    "focus": "Desk held by devbin-vc on hv's word (decision 153); localfold at 2026-11-10 20:23Z by date -u, vc not released. devbin 0.1.21 RELEASED (cut exit 0 at 20:22:08Z; tag v0.1.21 at 8e8e1ac5 on local and upstream; GitHub release 20:21:50Z; tap homebrew-devbin 60c7e4be; legs local, kovacs, candidate 42883142682 green); main's CI 42894508145 read for Linux next; hv's brew upgrade devbin, then bin/devbin use brew, when convenient. Utilz 2.14.10 released and verified. Intent 3.3.0 on hv's go (decision 156): intent-vc drives ST0092 WP-02 to WP-10, 0667, the 0.1.21 sweep, the scrub, docs/reference and build all, asking vc for every slot; then hv in one visit runs the c1d7d163d rewrite and the kovacs preflight line (~/Devel/scratch/devbin-vc/hv-return-queue-20261110.md), then the cut and push. Watchout 39 due when devbin first runs an Intent built with 0670. Issue 0330 for the release after next. Papillon held to tomorrow.",
+    "focus": "Desk held by devbin-vc (decision 153); localfold for hv's compact at 2026-11-11 08:08Z by date -u, vc not released. Priorities: devbin and Intent P0/P1, Webber P3 (decision 158). devbin 0.1.22: units 0329 to 0332 landed (e72d6203..c5392751), closed (31ae53f1), note 12701464; pre-cut running from 07:40Z (kit ~/Devel/scratch/devbin-cc/pc0122); hv's go to cut as soon as it reads green (decision 157), then CI Linux, devbin-cc and intent-vc told, hv's brew upgrade. Intent 3.3.0: ST0092 5 of 11 on main; WP-05 and WP-04 on cargo; dc's sweep to 0.1.22 with install.links, install.switch/publish and the macOS one-archive repack after the tap; then hv's rewrite and kovacs line. Webber's /29 re-run held at P3. Full state: ~/Devel/scratch/devbin-vc/state-20261111-0808.md.",
     "claims": [
       "ST0011"
     ],
