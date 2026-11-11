@@ -18,7 +18,7 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 - WP16 (dc): closes when AC-5.4 is satisfied at the first consumer cut.
 - Issue 0326 stays open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154); the reader notice goes to each of those vcs when it comes up (vc's todo 201).
 - Webber after Intent's cut: the /29 Xcode UI run re-asked from a fresh tip, then webber-ic's todo 66, one at a time on the desk; Webber's Elixir runs on gyges.
-- For hv: gyges cannot build iOS (no simulator runtime, no Webber clone, codesign fails over ssh, its data volume 97% full); whether to install a runtime there is hv's call through gyges-sysadm.
+- gyges for Webber: cleaned to 77% full (more to come), Webber cloned, Xcode 27.2 and Elixir present; no iOS simulator runtime installed yet, which gyges-sysadm owns.
 - For hv: push Molt-matts 6bc343e (dvb emitted by the devbin on PATH); remove the unused opt install at ~/Devel/opt/devbin (0.1.19).
 - dvb follow-up, not started: the install's refusal inside a project could name dvb or bin/devbin; in devbin's own checkout dvb runs the dev tree by design.
 - A release.gates entry starting with `release` runs a cut inside a cut (devbin-cc's finding beside 0327, vc's todo 203): weigh it for the release after next.
