@@ -6,7 +6,7 @@ session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
 heartbeat_at: 2026-11-11 06:57Z
 status: active
 focus: "Building devbin 0.1.22 for vc (decision 157; focus set 2026-11-11 05:55Z by date -u): 0331-1, 0332-1 and 0330-1 first, then 0329-1 to 0329-4, each red then green in cc's own clones under r0122/, booked on vc's desk, handed over by land-stack.sh. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154)."
-claims: [ISSUE:0326, ISSUE:0331, ISSUE:0332, ISSUE:0330, ISSUE:0329]
+claims: [ISSUE:0326]
 ---
 
 # Control Claude (cc)
