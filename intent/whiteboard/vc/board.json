@@ -5,7 +5,7 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "86e8d721-4079-418e-9e48-218c8da86346",
-    "heartbeat_at": "2026-11-11T08:08:57.374Z",
+    "heartbeat_at": "2026-11-11T08:12:36.448Z",
     "status": "active",
     "focus": "Desk held by devbin-vc (decision 153); localfold for hv's compact at 2026-11-11 08:08Z by date -u, vc not released. Priorities: devbin and Intent P0/P1, Webber P3 (decision 158). devbin 0.1.22: units 0329 to 0332 landed (e72d6203..c5392751), closed (31ae53f1), note 12701464; pre-cut running from 07:40Z (kit ~/Devel/scratch/devbin-cc/pc0122); hv's go to cut as soon as it reads green (decision 157), then CI Linux, devbin-cc and intent-vc told, hv's brew upgrade. Intent 3.3.0: ST0092 5 of 11 on main; WP-05 and WP-04 on cargo; dc's sweep to 0.1.22 with install.links, install.switch/publish and the macOS one-archive repack after the tap; then hv's rewrite and kovacs line. Webber's /29 re-run held at P3. Full state: ~/Devel/scratch/devbin-vc/state-20261111-0808.md.",
     "claims": [
