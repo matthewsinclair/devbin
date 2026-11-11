@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "b9e34071-9e8f-449b-a0f6-750b4eda63fe",
-    "heartbeat_at": "2026-11-11T17:32:28.791Z",
+    "heartbeat_at": "2026-11-11T20:03:24.489Z",
     "status": "active",
-    "focus": "devbin 0.1.22 is released and done. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). Holding while Intent 3.3.0 is P0: no devbin work starts before its cut ends (vc). ia0121's three Intent clones go at cc's next fold on vc's word, their only-held state already saved under the kit's saved/; the audit was cut off by the crash and reruns then. Folded after the crash with nothing to bank; cc not released. (focus set 2026-11-11 17:14Z by date -u)",
+    "focus": "Building devbin's next release batch, 0333 to 0339 (hv via vc), claimed; paused overnight on vc's word. Stack banked at refs/bank/cc/b0123-wip (f19edced over 4e2bf488): 0333-1 done with its arms probed green; 0334-1 code in, its arm still to write (fixture gates record $TMPDIR into <wt>.tmp). Next: 0334's arm, then 0335 (core_verb for cache, doctor's shadow finding, DEVBIN_GATE_CACHE), each unit's arms booked on the desk, banked and told to vc. Clone ~/Devel/scratch/devbin-cc/b0123/tree. ia0121's clear still waits for a fold with room. (focus set 2026-11-11 20:03Z by date -u)",
     "claims": [
       "ISSUE:0326",
       "ISSUE:0333",
