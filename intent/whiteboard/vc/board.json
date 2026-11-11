@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "86e8d721-4079-418e-9e48-218c8da86346",
-    "heartbeat_at": "2026-11-11T08:12:36.448Z",
+    "heartbeat_at": "2026-11-11T12:15:31.304Z",
     "status": "active",
-    "focus": "Desk held by devbin-vc (decision 153); localfold for hv's compact at 2026-11-11 08:08Z by date -u, vc not released. Priorities: devbin and Intent P0/P1, Webber P3 (decision 158). devbin 0.1.22: units 0329 to 0332 landed (e72d6203..c5392751), closed (31ae53f1), note 12701464; pre-cut running from 07:40Z (kit ~/Devel/scratch/devbin-cc/pc0122); hv's go to cut as soon as it reads green (decision 157), then CI Linux, devbin-cc and intent-vc told, hv's brew upgrade. Intent 3.3.0: ST0092 5 of 11 on main; WP-05 and WP-04 on cargo; dc's sweep to 0.1.22 with install.links, install.switch/publish and the macOS one-archive repack after the tap; then hv's rewrite and kovacs line. Webber's /29 re-run held at P3. Full state: ~/Devel/scratch/devbin-vc/state-20261111-0808.md.",
+    "focus": "Desk held by devbin-vc (decision 153); localfold for hv's compact at 2026-11-11 12:15Z by date -u, vc not released, hv AFK after. devbin 0.1.22 RELEASED (11:39Z; tag v0.1.22 at 329c2f33, tap 1575266a, CI on main green 12:09Z, brew switched). Molt-matts 6bc343e (dvb from the devbin on PATH) committed unpushed on hv's go. Desk: cargo chain WP-04 (ii) judge -> dc's 0.1.22 sweep -> cc wp09r -> ic WP-06; Webber CGVEPS held at P3, Webber Elixir on gyges. Intent 3.3.0 after the sweep: rest of ST0092, then hv's rewrite, kovacs line, cut. Full state: ~/Devel/scratch/devbin-vc/state-20261111-1215.md.",
     "claims": [
       "ST0011"
     ],
@@ -4747,7 +4747,8 @@
       "kind": "decision",
       "seq": 157,
       "text": "hv's rulings, 2026-11-11 (read 05:37Z by date -u). In cc's window at about 05:35Z: \"Go with the first shape for 0331\", then \"However, they should all use the same approach for reporting their versions\": each binary prints its own name in its line, doctor reads each link's line under that link's name, and every binary of every tool takes its line from the core's one reader. In intent-vc's window at about 05:30Z: \"I do not want multiple bitty releases (for the umpteenth time!) ... we cut the release -- once -- when its all ready.\" In vc's window (\"Ok, do that.\", answering vc's plan): devbin 0.1.22 carries every open devbin issue that can close in devbin alone (0329, 0330, 0331), built by devbin-cc while Intent's ST0092 runs; Intent 3.3.0, cut once, sweeps 0.1.22, declares intent and intentd under install.links and moves both binaries to the core's reader. 0326 stays open for its consumer adoptions. 0.1.22's push and cut wait for hv's go once it reads green. Then by menu in intent-vc's window, relayed by intent-vc (read 05:40Z by its date -u), overruling devbin-vc's no-exception position: \"Links, Intent keeps verbs\" and \"devbin withholds its verbs\": 0.1.22 also gains a way for a declared tool to keep its own use and install, so Intent declares install.links in 3.3.0 and keeps intent use and intent install; Intent's own version formatter stays, 0331 reading each link under its own name. Intent issue 0678 rides 3.3.0. Confirmed by hv in vc's TUI over its earlier \"A\" (read 05:43Z by date -u): \"devbin withholds verbs\" stands. hv's go in vc's TUI (read 07:22Z by date -u): vc pushes and cuts devbin 0.1.22 (tag, push, release object, formula publish) as soon as its pre-cut reads green; a red pre-cut or cut comes back to hv.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-11T12:15:35.938Z",
       "recorded_at": "2026-11-11T05:37:18.841Z",
       "edited_at": "2026-11-11T07:22:10.780Z"
     },
