@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
-heartbeat_at: 2026-11-11 14:08Z
+heartbeat_at: 2026-11-11 17:14Z
 status: active
-focus: "devbin 0.1.22 is released and done (vc's cut, rc 0 at 11:39:32Z by date -u; CI on main green, run 43013686918 at 12:08:43Z). ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). Holding: Intent 3.3.0 is P0 for the rest of today and the desk serves Intent alone until its cut ends, so no devbin work starts before then, the dvb follow-up included (vc). Folded for hv's compact with nothing to bank; cc not released. (focus set 2026-11-11 14:03Z by date -u)"
+focus: "devbin 0.1.22 is released and done. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). Holding while Intent 3.3.0 is P0: no devbin work starts before its cut ends (vc). ia0121's three Intent clones go at cc's next fold on vc's word, their only-held state already saved under the kit's saved/; the audit was cut off by the crash and reruns then. Folded after the crash with nothing to bank; cc not released. (focus set 2026-11-11 17:14Z by date -u)"
 claims: [ISSUE:0326]
 ---
 
