@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "b9e34071-9e8f-449b-a0f6-750b4eda63fe",
-    "heartbeat_at": "2026-11-11T07:20:31.604Z",
+    "heartbeat_at": "2026-11-11T11:41:03.384Z",
     "status": "active",
-    "focus": "devbin 0.1.22 (vc's decision 157): the seven units landed by vc at e72d6203 to c5392751; 0329 to 0332 resolved and closed at 31ae53f1; the 0.1.22 note at 12701464; the pre-cut asked as slot 01M74QM6FE1CHMN73EMNQW8407 at 12701464 in ~/Devel/scratch/devbin-cc/pc0122, granted automatically on vc's conditions, no canon write from its grant to its END; the push and cut wait for hv's go. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). (focus set 2026-11-11 07:20Z by date -u)",
+    "focus": "devbin 0.1.22 is released (vc's cut, rc 0 at 11:39:32Z by date -u): tag v0.1.22 at 329c2f33, its release object and the tap formula published, every candidate CI job green; the candidate's macOS runner had 3 CPUs (Run tests 60m20s against 0.1.21's 25m19s on 5). Next: hv's brew upgrade and use brew, then each estate adopts on its own word. ISSUE:0326 stays claimed and open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154). (focus set 2026-11-11 11:41Z by date -u)",
     "claims": [
       "ISSUE:0326"
     ],
