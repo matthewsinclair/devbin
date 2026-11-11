@@ -937,3 +937,63 @@ fires_line() {
     assert_output_contains "is not a file's path as git names it"
   done
 }
+
+# ask_runs <sha> <ref> -- `ci-state --runs`, as the cut runs it, from PROJ, with
+# the stub gh first on PATH and <ref> in DEVBIN_RELEASE_TAG, its words on stderr
+# read with its output.
+ask_runs() {
+  local ref="${2:-}"
+  run bash -c 'cd "$1" && shift && exec "$@" </dev/null 2>&1' _ "$PROJ" \
+    env PATH="$DEVBIN_TEST_TMPDIR/stubs:$PATH" ${ref:+DEVBIN_RELEASE_TAG="$ref"} ./bin/devbin ci-state --runs "$1"
+}
+
+# AN EARLIER ATTEMPT'S RUNS ARE PASSED OVER (issue 0330): a cut that stopped
+# after its candidate push left a run cancelled on the candidate's branch at
+# the release commit, and its resume hands ci-state the ids of the runs there
+# before its own push, read by --runs.
+@test "0330-1: the runs DEVBIN_RELEASE_PASSED_OVER names are passed over on the ref, and named: this push's run decides, pending and then green" {
+  sha="$(git -C "$PROJ" rev-parse HEAD)"
+  run_on "$sha" candidate/v9.9.9 completed cancelled 105
+  run_on "$sha" candidate/v9.9.9 in_progress - 106
+  DEVBIN_RELEASE_PASSED_OVER=105 ask "$sha" candidate/v9.9.9
+  assert_success
+  [ "$output" = "$(printf 'pending\trun 106 (Test Summary: in_progress); passed over run 105 (cancelled), from before this push')" ] || fail "answered: $output"
+  rm "$DEVBIN_TEST_TMPDIR/runs"
+  run_on "$sha" candidate/v9.9.9 completed cancelled 105
+  run_on "$sha" candidate/v9.9.9 completed success 106
+  DEVBIN_RELEASE_PASSED_OVER=105 ask "$sha" candidate/v9.9.9
+  assert_success
+  [ "$output" = "$(printf 'green\trun 106; passed over run 105 (cancelled), from before this push')" ] || fail "answered: $output"
+}
+
+@test "0330-1: with only runs passed over on the ref, the verdict is none, naming them" {
+  sha="$(git -C "$PROJ" rev-parse HEAD)"
+  run_on "$sha" candidate/v9.9.9 completed cancelled 105
+  DEVBIN_RELEASE_PASSED_OVER=105 ask "$sha" candidate/v9.9.9
+  assert_success
+  [ "$output" = "$(printf 'none\tno tests.yml run for candidate/v9.9.9 on %s yet; passed over run 105 (cancelled), from before this push' "${sha:0:12}")" ] || fail "answered: $output"
+}
+
+@test "0330-1: a DEVBIN_RELEASE_PASSED_OVER holding anything but run ids is unknown, naming the word" {
+  sha="$(git -C "$PROJ" rev-parse HEAD)"
+  run_on "$sha" candidate/v9.9.9 completed success 106
+  DEVBIN_RELEASE_PASSED_OVER="105 x" ask "$sha" candidate/v9.9.9
+  assert_success
+  [ "$output" = "$(printf "unknown\tDEVBIN_RELEASE_PASSED_OVER holds 'x', which is no run id, so the runs this verdict passes over are not known")" ] || fail "answered: $output"
+}
+
+@test "0330-1: --runs lists the ids of the runs at the sha on the ref, one a line, and exits 1 naming why when it cannot list them" {
+  sha="$(git -C "$PROJ" rev-parse HEAD)"
+  run_on "$sha" main completed success 120
+  run_on "$sha" candidate/v9.9.9 completed cancelled 121
+  run_on "$sha" candidate/v9.9.9 in_progress - 122
+  ask_runs "$sha" candidate/v9.9.9
+  assert_success
+  [ "$output" = "$(printf '121\n122')" ] || fail "listed: $output"
+  GH_FAIL="HTTP 502: bad gateway" ask_runs "$sha" candidate/v9.9.9
+  assert_failure
+  assert_output_contains "--runs: gh run list --workflow tests.yml --commit $sha failed: HTTP 502: bad gateway"
+  ask_runs "$sha" ""
+  assert_failure
+  assert_output_contains "--runs lists the runs on the ref DEVBIN_RELEASE_TAG names, and none is set"
+}

@@ -1,4 +1,5 @@
     bin/devbin ci-state <sha>
+    bin/devbin ci-state --runs <sha>
     bin/devbin ci-state --fires <ref> <sha> [<path>...]
 
 Read CI's verdict on a commit: one line, `<verdict><TAB><detail>`, the verdict one of `green`, `failed`, `pending`, `none` or `unknown`, and the detail naming the run it read or the reason it could not. It reads the project's workflow runs on GitHub through `gh`, and changes nothing anywhere.
@@ -25,9 +26,15 @@ A commit this repository does not hold, such as a release's public snapshot, is 
                                   green when that leg alone is red
     release.ci.summary undeclared the run's own status and conclusion
 
-A summary job that is absent, skipped, cancelled or still going is not green: a finished run with none is `failed`, naming that. Among several runs on one commit the worst decides: `failed`, any conclusion but success, a cancelled one included, over one still going over `green`.
+A summary job that is absent, skipped, cancelled or still going is not green: a finished run with none is `failed`, naming that. Among several runs on one commit the worst decides: `failed`, any conclusion but success, a cancelled one included, over one still going over `green`. With `DEVBIN_RELEASE_TAG` set, the runs `DEVBIN_RELEASE_PASSED_OVER` names by id, a space between each, are passed over, and named after the detail as `passed over run <id> (<conclusion>), from before this push`; with only such runs the verdict is `none`. A cut hands it the runs its candidate's branch held before its own push, so a run an earlier attempt left there, cancelled when that attempt deleted the candidate, never decides the leg. A value that is not run ids is `unknown`.
 
 A `failed` verdict names the deciding run's failed jobs inside its parenthesis, as `run <id> (<conclusion>; failed jobs: <name>, <name>)`, each a job that finished in anything but success, skipped or neutral. It says `no job ran` when none ran, and `no job failed` when jobs ran and none failed, as when the run failed around them. A job list `gh` cannot give is said in the same place, and the verdict stays `failed`.
+
+## The runs before a push
+
+    bin/devbin ci-state --runs <sha>
+
+Prints the ids of `release.ci.workflow`'s runs at `<sha>` on the ref `DEVBIN_RELEASE_TAG` names, one a line, nothing for none, and exits 0. A cut asks it once, before its candidate push, and passes those runs over in every later read. It exits 1, saying why, with no ref named, a repository it cannot name, no `gh`, or runs it cannot read whole, since a list cut short would pass over too few.
 
 ## Whether a push starts the workflow
 

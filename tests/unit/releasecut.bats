@@ -2395,6 +2395,38 @@ $output"
   assert_released "$proj"
 }
 
+# THE RUN AN EARLIER ATTEMPT LEFT DECIDES NOTHING (issue 0330): with the built-in
+# query, the arms above hold its stub's answers; here ci-state reads the runs
+# gh lists, and the earlier attempt's cancelled run stays listed at the release
+# commit on the candidate's branch, as it does on GitHub.
+@test "0330-1: a cut run again after its candidate's run was cancelled passes that run over under the built-in query, naming it, and tags on this push's own green" {
+  local r run42 run43
+  proj="$(cut_project "  gates:
+    - probe
+  ci:
+    wait: 3s")"
+  fires_workflow "$proj" "main, 'candidate/**'"
+  run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at legs
+  # The first attempt's run, cancelled when that attempt deleted the candidate,
+  # is listed at the release commit on the candidate's branch; this attempt's
+  # push starts run 43, which the remote's hook lists, green.
+  r="$(git -C "$proj" rev-parse HEAD)"
+  run42="$(printf '{"databaseId":42,"headSha":"%s","headBranch":"candidate/v1.0.1","status":"completed","conclusion":"cancelled","createdAt":"2026-01-01T00:00:00Z","workflow":"tests.yml"}' "$r")"
+  run43="$(printf '{"databaseId":43,"headSha":"%s","headBranch":"candidate/v1.0.1","status":"completed","conclusion":"success","createdAt":"2026-01-01T00:05:00Z","workflow":"tests.yml"}' "$r")"
+  printf '[%s]\n' "$run42" >"$DEVBIN_TEST_TMPDIR/gh.runs.json"
+  printf '[%s,%s]\n' "$run42" "$run43" >"$DEVBIN_TEST_TMPDIR/runs.after-push.json"
+  printf '#!/bin/sh\ncp "%s/runs.after-push.json" "%s/gh.runs.json"\n' "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR" >"$DEVBIN_TEST_TMPDIR/remote.git/hooks/post-receive"
+  chmod +x "$DEVBIN_TEST_TMPDIR/remote.git/hooks/post-receive"
+  DEVBIN_RELEASE_POLL_SECONDS=1 run release_in "$proj" v1.0.1 --yes
+  assert_success
+  assert_state legs done
+  assert_output_contains "release: legs: candidate/v1.0.1 holds run(s) 42 at ${r:0:12} from before this push, which every read of this push passes over"
+  [[ "$(row_of legs)" == *"candidate: run 43; passed over run 42 (cancelled), from before this push"* ]] ||
+    fail "the legs row does not name this push's run and the run passed over: $(row_of legs)"
+  assert_released "$proj"
+}
+
 @test "a candidate's green stands while the local gates run on past ci.wait: a query that stops answering after it cannot time the cut out (ST0011 WP02b)" {
   proj="$(ci_project "$(ci_query_decl 1s)")"
   # The local gates outlast ci.wait.

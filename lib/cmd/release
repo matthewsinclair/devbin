@@ -1007,7 +1007,7 @@ _leg_candidate_verdict() {
   local left=0
   [ -z "$LEGS_DEADLINE" ] || left=$((LEGS_DEADLINE - SECONDS))
   [ "$left" -ge 0 ] || left=0
-  release_wait "$left" "" unknown release_ci_verdict "$LEG_CAND_SHA" "$LEG_REF" "${LEG_CQ[@]}"
+  DEVBIN_RELEASE_PASSED_OVER="$LEG_CAND_PASSED" release_wait "$left" "" unknown release_ci_verdict "$LEG_CAND_SHA" "$LEG_REF" "${LEG_CQ[@]}"
 }
 
 # The start runs in the cut's shell (legs_step), so the push it makes joins
@@ -1033,7 +1033,15 @@ _leg_candidate_verdict() {
 # the timeout. Such a ref, read red at the start, is deleted first, under a
 # lease on that commit, and read back as gone (_leg_candidate_clear), so the
 # push makes a run of its own. A ref that cannot be read is pushed to as it is.
-LEG_CAND_BEFORE="" LEGS_CAND_PUSHED=no
+#
+# AND THIS ATTEMPT'S RUNS ALONE DECIDE (issue 0330). An earlier attempt's run
+# stays listed at the release commit on the candidate's branch, cancelled when
+# that attempt deleted the candidate, and the worst of the runs there would be
+# it, whatever this push's run does. With the built-in query, the runs there
+# before this push are read first (_leg_candidate_earlier), and every later
+# read passes them over, naming them. A query of the project's own is handed
+# none, and LEG_CAND_BEFORE above is what it has.
+LEG_CAND_BEFORE="" LEG_CAND_PASSED="" LEGS_CAND_PUSHED=no
 _leg_candidate_start() {
   local v rc=0 held
   v="$(_leg_at_start candidate)"
@@ -1047,6 +1055,7 @@ _leg_candidate_start() {
       _leg_candidate_clear || return 0
     fi
   fi
+  _leg_candidate_earlier
   LEGS_CAND_PUSHED=trying
   cut_call_rc --reads "git ls-remote $LEG_CAND_SHOWN refs/heads/$LEG_REF reads it" "the candidate push to $LEG_CAND_SHOWN" \
     _leg_cand_git push -q -- "$LEG_CAND_SHA:refs/heads/$LEG_REF" >&2 || rc=$?
@@ -1076,6 +1085,56 @@ _leg_candidate_start() {
     return 0
   fi
   printf 'pending\t%s pushed to %s on %s; its run is read by that ref\n' "${LEG_CAND_SHA:0:12}" "$LEG_REF" "$LEG_CAND_SHOWN"
+}
+
+# _leg_candidate_earlier -- with the built-in query, the ids of the runs already
+# at the release commit on the candidate's branch, an earlier attempt's, read
+# in one bounded ask before this push (_leg_candidate_runs) into
+# LEG_CAND_PASSED, which _leg_candidate_verdict hands each later read as
+# DEVBIN_RELEASE_PASSED_OVER (issue 0330). Runs found are said on stderr. A list
+# that cannot be read is said too, and none is passed over, as before this
+# read; a query of the project's own is handed none. Runs in the cut's shell,
+# so LEG_CAND_PASSED holds for every read after it.
+_leg_candidate_earlier() {
+  local q answer
+  LEG_CAND_PASSED=""
+  if ! q="$(cfg_release_get ci.query)"; then
+    printf 'release: legs: release.ci.query cannot be read (above), so the runs on %s before this push are not read, and none is passed over\n' "$LEG_REF" >&2
+    return 0
+  fi
+  cfg_ci_query_is_builtin "$q" || return 0
+  answer="$(release_wait 0 "" unknown _leg_candidate_runs)"
+  case "${answer%%$'\t'*}" in
+    runs) LEG_CAND_PASSED="${answer#*$'\t'}" ;;
+    *)
+      printf 'release: legs: the runs at %s on %s before this push could not be read (%s), so none is passed over\n' \
+        "${LEG_CAND_SHA:0:12}" "$LEG_REF" "${answer#*$'\t'}" >&2
+      ;;
+  esac
+  [ -z "$LEG_CAND_PASSED" ] ||
+    printf 'release: legs: %s holds run(s) %s at %s from before this push, which every read of this push passes over\n' \
+      "$LEG_REF" "$LEG_CAND_PASSED" "${LEG_CAND_SHA:0:12}" >&2
+}
+
+# _leg_candidate_runs -- one ask of `ci-state --runs` for the release commit on
+# the candidate's branch, as release_wait reads an answer: `runs<TAB><the ids,
+# a space between each, none for none>`, or `unknown<TAB><why>` when it fails,
+# its first line of words kept in the wait's scratch until read.
+_leg_candidate_runs() {
+  local dir="${RELEASE_WAIT_DIR:-${TMPDIR:-/tmp}}" err out said rc=0
+  if ! err="$(mktemp "$dir/devbin-cand-runs.XXXXXX")"; then
+    printf 'unknown\tno file for the words of ci-state --runs could be made under %s\n' "$dir"
+    return 0
+  fi
+  out="$(DEVBIN_RELEASE_TAG="$LEG_REF" "$PROJECT_ROOT/bin/devbin" ci-state --runs "$LEG_CAND_SHA" 2>"$err" </dev/null)" || rc=$?
+  said=""
+  IFS= read -r said <"$err" || true
+  rm -f "$err"
+  if [ "$rc" -ne 0 ]; then
+    printf 'unknown\tci-state --runs exited %s: %s\n' "$rc" "${said:-it said nothing}"
+    return 0
+  fi
+  printf 'runs\t%s\n' "${out//$'\n'/ }"
 }
 
 # _leg_candidate_clear -- the candidate ref an earlier run left holding the
@@ -2141,8 +2200,10 @@ cut_run() {
 
   # THE TAG REACHES ci.query ALONE (issue 0149): one exported from outside,
   # to try a query by hand, would reach every gate and after: command, and a
-  # gate exercising the query would read a stale tag.
-  unset DEVBIN_RELEASE_TAG
+  # gate exercising the query would read a stale tag. So does the list of the
+  # runs it passes over (issue 0330), which this cut makes before its own
+  # candidate push and hands each later read of that leg.
+  unset DEVBIN_RELEASE_TAG DEVBIN_RELEASE_PASSED_OVER
   # THE TARGET REACHES THE PROJECT'S COMMANDS ALONE (issue 0327): each step that
   # runs one hands it the pair through release_target_run, per call, so a pair
   # inherited from outside, from a cut that started this one, say, would reach
