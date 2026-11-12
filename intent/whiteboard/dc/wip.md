@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 06:18Z
+heartbeat_at: 2026-11-12 07:41Z
 status: active
-focus: "Holding for vc's final tip (2026-11-12 06:18Z by date -u): the 0.1.23 pre-cut kit in ~/Devel/scratch/devbin-dc/pc0123 is approved by vc and not run. It derives its files at the tip, runs them whole under BSD at hw.ncpu/2 with serial-tagged files after, then check all and the dry run on main, sealing runs/SEAL. vc commits RELEASES/0.1.23.md with its views once 0337 and 0338 land and sends that sha; then point-precut.sh, the heavy ask in bats, vc's driver read, and nothing in canon from grant to END. 0337 stays cc's unless hv moves it. The ST0011/16 claim stays."
+focus: "LOCALFOLDED for hv's compact (2026-11-12 07:41Z by date -u), holding for hv's /compact and vc's go after it. 0339 is done: 0339-1 at 41d59cb4 and 0339-2 at ccc5bba5, closed, both bank refs cleared. devbin 0.1.23's final tip is 7951719a, and the pre-cut there (~/Devel/scratch/devbin-dc/pc0123, slot 01M779WNMETKEV3G3TWCDSP4AD) is GREEN: 33 suites with 1787 ok and 0 not ok, check all, and the dry run; the first run's records are in runs-7684a429. The cut is hv's, after the bounce; vc's bar on canon holds until vc says it has ended. The ST0011/16 claim stays."
 claims: [ST0011/16]
 ---
 
