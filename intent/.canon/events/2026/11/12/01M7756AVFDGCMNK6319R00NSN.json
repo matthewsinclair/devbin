@@ -1,0 +1,16 @@
+{
+  "id": "01M7756AVFDGCMNK6319R00NSN",
+  "ts": "2026-11-12T05:55:19.535Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 160,
+    "text": "hv's answers in vc's window through the TUI, received before the clock read 2026-11-12 05:14Z by date -u, each the recommendation, on decision 159's plan. (1) 'Go as planned': cc's PLAN-20261112, built with intent-vc and endorsed by vc, is the plan. devbin 0.1.23 is one cut carrying 0333 to 0339. Each unit runs its own arms once on the desk, then vc lands it; vc's pre-cut, then hv's cut. Then Intent sweeps 0.1.23, wires ST0093 WP-06 (c) to (e), gives its new and changed legs their first green through release gates --leg, and hv cuts Intent. (2) 'Yes, dc builds 0339': hv starts devbin-dc, and vc briefs it. cc unclaims ISSUE:0339 and builds 0333 to 0338, keeping 0335's list of the verbs the core calls itself beside its helper and out of lib/builtins, so the two share no file. (3) 'Whole fleet, Intent first': after hv's brew steps, vc's sweep takes Intent first, then every other estate, the 14 on 0.1.20 included, one commit per estate by path, nothing pushed. (4) 'Yes, before Intent's leg': moot. hv at once: 'That is already done. Why are you asking for this again? Check with kovacs-sysadm. It was done yesterday.' GNU parallel 20261022 has been on kovacs from Homebrew since 2026-11-11, installed by intent-vc on hv's word, and it resolves in a leg's non-interactive shell (kovacs-sysadm, 2026-11-12). vc had put it to hv without asking kovacs-sysadm first. intent-vc's corrections, taken into the plan under Intent's own pen after the go: an 'Intent, now, beside devbin's batch' block of Intent-only work (the records and AC-09.3's census by intent-vc; ST0091 done, 0683, 0684 and WP-06's serial tags banked by intent-dc; 0685 by intent-cc; 0675's close, ST0092/06 done and 0681 by intent-ic); Intent 0682 closes on 0334 and WP-06 (d), with the by-hand gate run on a small /tmp named in its Resolution; 0664 and 0675 shipped in 3.3.0 and close on records now, 0664 after hv's look. Decisions 151 and 152 archived as executed at Intent 3.3.0. Timing of (3), set by hv's ruling 3 in intent-vc's session by TUI (Intent's hv board decision 41 (3), answered by 05:40Z, read there by vc): the fleet's root files, behind 3.3.0's templates in 30 of 32 projects, are upgraded once, after Intent's next cut, in the same visit to each estate as vc's sweep of devbin 0.1.23. So Intent's tree takes 0.1.23 first, before its cut. Every other estate gets devbin 0.1.23 and the root files in one visit after Intent's cut, one commit per estate by path, nothing pushed. The agentic-engineering estate is visited by its own vc as part of P1 (agreed with agentic-engineering-vc, 2026-11-12), and the attendees' practice repositories are nobody's sweep."
+  }
+}
