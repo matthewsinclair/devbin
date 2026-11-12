@@ -401,3 +401,61 @@ lanes_default() {
   assert_output_contains "lanes: no test is tagged serial, so there is no serial lane"
   assert_output_contains "lanes: $all test(s) ran in parallel and $serial serially, all $all that bats counts in tests/unit, each once"
 }
+
+# lanes_times_block -- the run's time-per-file block from $output: its header
+# and the file lines under it.
+lanes_times_block() {
+  sed -n '/^lanes: the [0-9]* file(s) of the parallel lane by wall time, the slowest first:$/,/^lanes: the serial lane took /p' <<<"$output"
+}
+
+@test "the run names every file of the parallel lane with its wall time, the slowest first, then the serial lane's time and the load at its start and end, before its verdict (0345)" {
+  require_command parallel "no GNU parallel on this runner"
+  local root f n block secs last
+  root="$(lanes_fixture)"
+  run lanes_run "$root" DEVBIN_TEST_JOBS=2
+  assert_success
+  n=0
+  for f in "$root"/tests/unit/*.bats; do n=$((n + 1)); done
+  block="$(lanes_times_block)"
+  [ -n "$block" ] || fail "the run printed no time-per-file block: $output"
+  grep -qx "lanes: the $n file(s) of the parallel lane by wall time, the slowest first:" <<<"$block" ||
+    fail "the block's header does not count the suite's $n files: $block"
+  for f in "$root"/tests/unit/*.bats; do
+    [ "$(grep -c -E "^lanes: +[0-9]+\.[0-9]s  ${f##*/}\$" <<<"$block")" -eq 1 ] ||
+      fail "${f##*/} is not named once with its wall time: $block"
+  done
+  secs="$(sed -n -E 's/^lanes: +([0-9]+\.[0-9])s  .*/\1/p' <<<"$block")"
+  sort -rn -c <<<"$secs" 2>/dev/null || fail "the files are not the slowest first: $block"
+  grep -qE '^lanes: the serial lane took [0-9]+\.[0-9]s$' <<<"$output" || fail "the serial lane's time is not named: $output"
+  grep -qE '^lanes: load ([0-9]+[.,][0-9]+|unknown) at the start and ([0-9]+[.,][0-9]+|unknown) at the end, the one-minute average, on [0-9]+ CPUs$' <<<"$output" ||
+    fail "the load at the run's start and end is not named: $output"
+  last="$(printf '%s\n' "$output" | sed -n '$p')"
+  [[ "$last" == "lanes: "*" test(s) ran in parallel and "*", each once" ]] || fail "the verdict is not the run's last line: $last"
+}
+
+@test "a file that fails is named with its exit among the times (0345)" {
+  require_command parallel "no GNU parallel on this runner"
+  local root block
+  root="$(lanes_fixture parallel)"
+  run lanes_run "$root" DEVBIN_TEST_JOBS=2
+  assert_failure
+  block="$(lanes_times_block)"
+  grep -qE '^lanes: +[0-9]+\.[0-9]s  b\.bats \(exit [1-9][0-9]*\)$' <<<"$block" || fail "b.bats, whose test failed, is not named with its exit: $block"
+  grep -qE '^lanes: +[0-9]+\.[0-9]s  a\.bats$' <<<"$block" || fail "a.bats, all green, is not named plain: $block"
+}
+
+@test "a bats that a test in the lane starts never reaches the recorder, and sees the caller's own parallel setting (0345)" {
+  require_command parallel "no GNU parallel on this runner"
+  local root want
+  root="$(lanes_fixture)"
+  for want in parallel unset; do
+    printf '%s\n' "@test \"a sees the caller's setting\" { [ -z \"\${_LANES_RECORD:-}\" ]; [ -z \"\${_LANES_AS_PARALLEL:-}\" ]; [ \"\${BATS_PARALLEL_BINARY_NAME-unset}\" = $want ]; }" >"$root/tests/unit/a.bats"
+    if [ "$want" = unset ]; then
+      run lanes_run "$root" DEVBIN_TEST_JOBS=2
+    else
+      run lanes_run "$root" DEVBIN_TEST_JOBS=2 BATS_PARALLEL_BINARY_NAME="$want"
+    fi
+    assert_success
+    assert_output_contains "ok 1 a sees the caller's setting"
+  done
+}

@@ -31,6 +31,8 @@ The two lanes write one seal and give one verdict. The run fails when either
 lane fails, and when the lanes did not run every test `bats --count` counts,
 each exactly once; its last line says how many ran in each.
 
+Before that line the run names each file of the parallel lane with its wall time, the slowest first, a wait for a free job slot included, then the serial lane's time and the load average at the run's start and end. A file that failed is named with its exit.
+
 Without GNU parallel, or with `DEVBIN_TEST_JOBS=1`, the suite runs in one lane,
 one test at a time, and the first line says why. A run handed paths or bats
 flags is a targeted run: bats gets exactly what it was handed, in one lane, and
