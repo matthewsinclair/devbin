@@ -3,17 +3,17 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 19:03Z
+heartbeat_at: 2026-11-12 19:05Z
 status: active
-focus: "FOLDED for hv's move (2026-11-12 14:00Z by date -u) and HOLDING on hv's order (bank, fold, hold): no new work until vc's word. 0344-1 stays BANKED at refs/bank/dc/0344-1 = d3b177df, not cleared, on hv's order. k342 (0342-1 then 0344-1, stacked at 4d574460) ended red at 13:55:09Z, only on 0342-1's arm title (cc's one-line retitle, waiting for hv). 0344-1 was all green there: five reds, each on its own finding; its 15 BSD and 6 GNU arms; and kovacs's whole leg passed every 0344 arm. Ready in scratch, each run dry: clear-0344-bank.sh (after vc's landed), apply-resolution.sh with the Resolution drafts for 0340 and 0344 (after hv's rewrite and the green cut), and clear-kits.sh (after the green cut). Record: ~/Devel/scratch/devbin-dc/serlegs/STATE.md. After the release: clear-clone-pc0123.sh and bankclear.sh --apply. The ST0011/16 claim stays."
-claims: [ST0011/16]
+focus: "0.1.23 released. Resolutions for 0340 and 0344 applied and both closed (86906089); kits cleared. Now: 0345-1 and 0346-1, re-stack on main, probe, desk ask behind tonight's queue. After the release: clear-clone-pc0123.sh, then bankclear.sh --apply; tell kovacs-sysadm ~/work/t0340 can go. ST0011/16 claim stays. (2026-11-12 19:05Z by date -u)"
+claims: [ST0011/16, ISSUE:0345, ISSUE:0346]
 ---
 
 # DevX Claude (dc)
 
 ## DOING
 
-_(none)_
+- 0345-1 and 0346-1 (T1 per-file times and load, T2 progress through the heartbeat, stacked): name the units, re-stack on main, probe, then ask the desk with the proposed scope; the grant waits behind Intent's kovacs leg and cut and another estate's release. Bank: ~/Devel/scratch/devbin-dc/sealtime/STATE.md
 
 ## TODO
 
