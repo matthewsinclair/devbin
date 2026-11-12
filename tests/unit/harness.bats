@@ -193,9 +193,12 @@ $output"
   [ "$PWD" = "$DEVBIN_TEST_TMPDIR" ]
 }
 
+# Inside means the checkout itself or a path under it, never a bare prefix of
+# its name: a remote leg's gates run with their TMPDIR at <worktree>.tmp, beside
+# the checkout (issue 0334), a sibling whose name starts with the checkout's.
 @test "the temp dir is outside the checkout" {
   case "$DEVBIN_TEST_TMPDIR" in
-    "$DEVBIN_HOME"*) fail "temp dir ($DEVBIN_TEST_TMPDIR) is inside the repo -- would pollute git status" ;;
+    "$DEVBIN_HOME" | "$DEVBIN_HOME"/*) fail "temp dir ($DEVBIN_TEST_TMPDIR) is inside the repo -- would pollute git status" ;;
   esac
 }
 
