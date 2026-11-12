@@ -1,0 +1,15 @@
+{
+  "id": "01M78JA6K8YQCH021Q6GA3VY9E",
+  "ts": "2026-11-12T19:03:52.170Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0345"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A test run's log names no file's time and no load, so nobody can say which tests cost a run its time or what the machine was doing"
+  }
+}
