@@ -1,0 +1,16 @@
+{
+  "id": "01M775FHNQ445H87AR2FQTJTH3",
+  "ts": "2026-11-12T06:00:21.432Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 161,
+    "text": "vc's rulings, 2026-11-12, under decision 160's go. (a) cc's two questions on 0335's shape, each as cc recommended. Q1 A: a project's build handler reaches the cache through its launcher, bin/devbin cache get|put, as lib/pages/cache.md shows; there is no second route and no new handler contract, so nothing goes to ic; 0338's Resolution says the launcher is the route and Q2's finding guarantees it. Q2 A: doctor fails a project handler named for a verb in CORE_VERBS (cache alone today, beside core_verb in lib/helpers), and config validation refuses commands.cache.handler and commands.cache.run; every other shadow stays a note. Intent's cmd/cache was already renamed to cmd/stale-target at 6375023ea (ST0093 WP-06 (b)), so nothing in Intent's tree shadows cache, and the 0.1.23 sweep finds no shadow there (intent-vc, 2026-11-12). vc had asked for the rename without reading Intent's tree. (b) dc's 0339 plan (408d2ea5), as sent: bats-lanes by git mv to lib/bats-lanes; test.shell as @builtin; the one call \"$DEVBIN_LIB/bats-lanes\" <dir>; lib/pages/test.md and tests/unit/builtins.bats added to its files. An arm holds what a relative <dir> means once its cd goes. (c) RELEASES/0.1.23.md: each unit's entry comes to vc as text with its handover, and vc assembles the note at the pre-cut. Decision 149 archived: its unexecuted half, Ccusage's adoption of 0326, is carried by todo 201 and decision 154. (d) cc's question on 0336's mechanism, as cc recommended (A): cmd_leg signs both as now, then runs app-notarize and bin-notarize as two processes at once, each submitting with --wait as today, and waits on both. Each one's output goes to its own file, printed in order once both have ended. Either non-zero fails the leg with that status before the tag, and a stop's kill of the stage's process group takes both. notary_submit, its one verdict parse, and the two subcommands run alone are unchanged, so there is no new internal surface. The issue's letter (B: a send without --wait, notarytool wait <id>, ids carried between split subcommands) is not built. 0336's Resolution says the mechanism differs from the issue's text and why. Its proof arm's stubbed notarytool holds each submission until both are made, bounded inside the arm: red at the base, which submits one after the other, and green under A."
+  }
+}
