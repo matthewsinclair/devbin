@@ -4874,6 +4874,14 @@
       "text": "hv, 2026-11-12, answered by 10:54Z by date -u, in devbin-vc's window through the TUI, choosing vc's recommended option in vc's wording, \"Drop it in this batch\": 0340-1 also drops CI's DEVBIN_TEST_JOBS: all (tests.yml's three Run tests steps, set by ST0011 WP-04 as every CPU the runner has, and asserted by ci-workflow.bats:205), so CI runs the suite's own default, half the CPUs and never fewer than 24. dc reworks and re-banks 0340-1, and cc's k340 stacks the new bank. CI Ubuntu's shape (4 CPUs, 16 GB, 24 jobs) is rehearsed by k340's kovacs leg. macOS at 24 on CI's runner cannot be rehearsed before the cut, since pushing is public, so a red there costs a reset and a re-cut, never a false green. At c13c101a, CI's Ubuntu suite took about 30 min at 4 jobs, and CI bounded the cut at about 54 min.",
       "state": "live",
       "recorded_at": "2026-11-12T10:55:01.534Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 166,
+      "text": "hv, 2026-11-12, in devbin-vc's window by 11:48Z by date -u, after k340's kovacs leg went red (builtins.bats setup_file; lib/helpers:2743, find_walk's `wait \"$!\"` on a process substitution, \"wait: pid ... is not a child of this shell\", at 24 jobs and load 35 on kovacs's 4 CPUs): \"We need that kovacs fix fixed immediately.\" Then: \"And for future reference, we can't run rhad and kovacs at the same time, they need to be serialised (not parallelised, that was a typo).\" hv to cc directly, relayed by cc: \"Get that fixed and ready to go now.\" hv to dc directly, relayed by dc and received by 11:52:23Z: \"yes, serialise the cut's legs too\". To vc's recommendation to cut as designed and file the serialised legs for the next release, hv answered in vc's window by 11:53Z: \"I don't know. Kovacs went from 49/min to 200/min. It's 4 times faster when they're serialised. I see no good reason to wast another hour on a release cycle. Fix it now, please.\" Through the TUI, hv chose vc's recommended \"dc, now, in parallel\". So this batch gains two units. cc fixes the race, every `wait \"$!\"` on a process substitution in lib/, with issue 0139's find-status scan moving with it. dc serialises the cut's legs in lib/cmd/release: the candidate (CI) starts at once and runs throughout; the local gates come first; then each reached release.legs host, one at a time, each starting only when the one before reads green, with ci.wait counted from the leg's own start; a red starts no later leg; the macOS stage is unchanged. ST0011 AC-2.2 and AT-2.7 change with it. Every kit, probe or sweep runs rhadamanth's and kovacs's suites one after the other, never together. Both units prove in one stacked run (cc driving, kovacs whole first, then the local whole suite).",
+      "state": "live",
+      "recorded_at": "2026-11-12T11:54:52.638Z"
     }
   ],
   "sent": [
