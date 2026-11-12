@@ -1,0 +1,15 @@
+{
+  "id": "01M78J9CJ5KHY2F1CXSEKCWX7A",
+  "ts": "2026-11-12T19:03:25.509Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-11-12, the 0.1.23 cut. By 14:58Z, three TUI answers for the release in another estate: its slot runs the same evening; vc pushes hv when it is green; \"everyone upgraded\" means the estate's own only. Cut 1 (release commit 61dbd245): local and kovacs green, candidate CI 43248401461 red on macOS alone with all 3136 ok, on bats-core 1.14.0 bats-exec-file:195 losing a reaped child's status. The resume's CI 43260195601 parked on macOS past 71 min. hv by TUI at 17:53Z: \"Fix CI job count, re-cut\": vc cancelled the run, the cut stopped, main was reset to ca2fe5ee (one reset, nothing public). 0340-3 landed at c53e6df7: CI runs on its runner's own CPU count again; the floor of 24 stays for hosts. Re-cut: every leg green at 7ab21982 (local 975s, kovacs 18:18:40Z to 18:41:16Z, candidate CI 43275707623 3533s, macOS the last to finish), v0.1.23 tagged and pushed, formula published, end 19:02:19Z. hv on test speed: \"these test runs have blow out across the whole estate to the point where they are basically unusable\"; \"it's every single project that is _using_ devbin\". hv ordered a root-and-branch review of the release process (socrates; ~/Devel/scratch/devbin-vc/release-review/REVIEW.md) and its recommendations started: action 1 is dc's stack for the next release, action 2 goes to Molt's and Intent's vcs after Intent's cut, action 3 goes to hv for a ruling. vc misreported a rate from a live bats log at 15:10Z (24 a minute; the run finished in 19m41s): a run's speed is its finished time."
+  }
+}
