@@ -1,0 +1,15 @@
+{
+  "id": "01M78MY9AFSE6CG3B11B1FC3NV",
+  "ts": "2026-11-12T19:49:47.471Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "hv P0 (by 19:48Z by date -u, vc's window, hv AFK): \"getting everything done and dusted for devbin, intent, molt, etc so that we can build the next/latest version of devbm first thing tomorrow morning ... Work with intent-vc to get this done.\" devbin done (0.1.23 on the tap). Intent 3.3.1: vc cuts on intent-vc's \"ready to cut\" (Intent hv decision 49); a keychain or notary prompt stops the cut for hv. Then tell agentic-engineering-vc \"Intent 3.3.1, desk free\" for its devvm slot tomorrow. Plan: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md FOLD 5."
+  }
+}

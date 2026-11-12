@@ -1,0 +1,15 @@
+{
+  "id": "01M78MY9GHH0A17G3MH763Y8ZD",
+  "ts": "2026-11-12T19:49:47.665Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "SWEEP NOTICES for devbin 0.1.23 (fleet upgrade --apply from brew, 24 estates, committed by path at 19:4xZ by date -u, nothing pushed; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary): tell each estate's vc at its next session. Trees outside fleet.roots were not swept."
+  }
+}

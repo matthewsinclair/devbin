@@ -1,0 +1,15 @@
+{
+  "id": "01M78MY9PC1DZMM7R17D8435F6",
+  "ts": "2026-11-12T19:49:47.852Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "devbin 0.1.24's note, when opened: dc writes its entries for 0345 (Added) and 0346 (Changed), wording in dc's message and sealtime/STATE.md; 0345-1 03942c76 and 0346-1 58344954 are on main, unpushed."
+  }
+}

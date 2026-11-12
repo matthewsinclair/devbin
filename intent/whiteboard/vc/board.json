@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "d252d54e-7ad5-4f31-9c5f-02ab8aca3f33",
-    "heartbeat_at": "2026-11-12T19:03:36.355Z",
+    "heartbeat_at": "2026-11-12T19:49:48.045Z",
     "status": "active",
-    "focus": "devbin 0.1.23 RELEASED 2026-11-12 19:02:19Z at 7ab21982 (decision 171). Next: brew upgrade and use brew; sweep 0.1.23 into Intent (one commit by path, nothing pushed); Intent lands ST0093 (c)-(e), books its kovacs leg, vc cuts Intent; then desk free to the release in another estate (its public steps wait for hv). Plan: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md",
+    "focus": "FOLDED 19:5xZ for hv's compact. P0: Intent 3.3.1 cut on intent-vc's ready (vc cuts), then devvm in another estate tomorrow. devbin 0.1.23 out; fleet swept, unpushed. Plan: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md FOLD 5",
     "claims": [
       "ST0011"
     ],
@@ -4787,7 +4787,8 @@
       "kind": "todo",
       "seq": 205,
       "text": "When devbin's release carrying 0333-0339 is on the tap, tell intent-vc: Intent's dc re-vendors it and lands Intent's ST0093 (c)-(e). Tell agentic-engineering-vc at the same moment (its P1 devvm build waits on it, decision 159): the version, then 'brew upgrade devbin' and 'bin/devbin upgrade' in each repository, plus any step the as-built adds, such as 0339's serial tag for test shell. intent-vc sends it Intent's half.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-12T19:49:47.277Z",
       "recorded_at": "2026-11-11T20:00:07.971Z",
       "edited_at": "2026-11-12T05:33:57.672Z"
     },
@@ -4925,6 +4926,30 @@
       "text": "hv 2026-11-12, the 0.1.23 cut. By 14:58Z, three TUI answers for the release in another estate: its slot runs the same evening; vc pushes hv when it is green; \"everyone upgraded\" means the estate's own only. Cut 1 (release commit 61dbd245): local and kovacs green, candidate CI 43248401461 red on macOS alone with all 3136 ok, on bats-core 1.14.0 bats-exec-file:195 losing a reaped child's status. The resume's CI 43260195601 parked on macOS past 71 min. hv by TUI at 17:53Z: \"Fix CI job count, re-cut\": vc cancelled the run, the cut stopped, main was reset to ca2fe5ee (one reset, nothing public). 0340-3 landed at c53e6df7: CI runs on its runner's own CPU count again; the floor of 24 stays for hosts. Re-cut: every leg green at 7ab21982 (local 975s, kovacs 18:18:40Z to 18:41:16Z, candidate CI 43275707623 3533s, macOS the last to finish), v0.1.23 tagged and pushed, formula published, end 19:02:19Z. hv on test speed: \"these test runs have blow out across the whole estate to the point where they are basically unusable\"; \"it's every single project that is _using_ devbin\". hv ordered a root-and-branch review of the release process (socrates; ~/Devel/scratch/devbin-vc/release-review/REVIEW.md) and its recommendations started: action 1 is dc's stack for the next release, action 2 goes to Molt's and Intent's vcs after Intent's cut, action 3 goes to hv for a ruling. vc misreported a rate from a live bats log at 15:10Z (24 a minute; the run finished in 19m41s): a run's speed is its finished time.",
       "state": "live",
       "recorded_at": "2026-11-12T19:03:25.509Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 209,
+      "text": "hv P0 (by 19:48Z by date -u, vc's window, hv AFK): \"getting everything done and dusted for devbin, intent, molt, etc so that we can build the next/latest version of devbm first thing tomorrow morning ... Work with intent-vc to get this done.\" devbin done (0.1.23 on the tap). Intent 3.3.1: vc cuts on intent-vc's \"ready to cut\" (Intent hv decision 49); a keychain or notary prompt stops the cut for hv. Then tell agentic-engineering-vc \"Intent 3.3.1, desk free\" for its devvm slot tomorrow. Plan: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md FOLD 5.",
+      "state": "live",
+      "recorded_at": "2026-11-12T19:49:47.471Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 210,
+      "text": "SWEEP NOTICES for devbin 0.1.23 (fleet upgrade --apply from brew, 24 estates, committed by path at 19:4xZ by date -u, nothing pushed; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary): tell each estate's vc at its next session. Trees outside fleet.roots were not swept.",
+      "state": "live",
+      "recorded_at": "2026-11-12T19:49:47.665Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 211,
+      "text": "devbin 0.1.24's note, when opened: dc writes its entries for 0345 (Added) and 0346 (Changed), wording in dc's message and sealtime/STATE.md; 0345-1 03942c76 and 0346-1 58344954 are on main, unpushed.",
+      "state": "live",
+      "recorded_at": "2026-11-12T19:49:47.852Z"
     }
   ],
   "sent": [
