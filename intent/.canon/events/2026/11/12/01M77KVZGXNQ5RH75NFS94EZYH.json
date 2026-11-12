@@ -1,0 +1,15 @@
+{
+  "id": "01M77KVZGXNQ5RH75NFS94EZYH",
+  "ts": "2026-11-12T10:11:48.893Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's TUI answers in vc's window, received before the clock read 2026-11-12 10:06Z by date -u, on directive 14. cc found a client project's name in canon's unpushed history, from vc's own writing, in every commit since 2026-11-11 12:35Z. vc's deny-list lacked it, so every scan read 0; the list now holds it (4 terms). (1) 'Delete the 3 runs now': at 10:06Z vc deleted the three candidate CI runs on GitHub: 43178192021 (ed87fd32), 43182881141 (10a45fd2) and 43186832435 (c13c101a). No run on those commits is left. Today's three candidate pushes carried the commits to the public repo. The branches are deleted, but the commits stay reachable by sha until GitHub Support purges them, which is hv's to ask. (2) 'Yes, after the fixes land': the unpushed commits since v0.1.22 are rewritten to remove the name, right after the three fixes land and before the re-cut. vc dry-runs it on a full copy. hv runs the one command after intent backup and git bundle --all. The store is scrubbed, and vc verifies the real tree straight after. The current text was cleaned first, at 2af34894 (decisions 159 and 162, intent/wip.md)."
+  }
+}
