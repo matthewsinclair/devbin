@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "d252d54e-7ad5-4f31-9c5f-02ab8aca3f33",
-    "heartbeat_at": "2026-11-12T10:49:28.193Z",
+    "heartbeat_at": "2026-11-12T12:51:41.231Z",
     "status": "active",
-    "focus": "BOUNCE (hv fold 2026-11-12 10:4xZ): devbin 0.1.23 NOT cut; 3 cuts red before tag, nothing public on main. Batch: 0334-2 + 0341-1 (cc, k340 built, waits for dc) + 0340-1 (dc, bats --jobs floor from the sweeps, at least 16, hv). Then k340 run (reds, greens, whole suite with leg-shaped TMPDIR, kovacs leg) -> vc lands -> bank refs cleared -> hv runs rw/rewrite-0123.sh (directive 14 scrub, rehearsed green) -> vc verifies, books the cut, START kovacs-sysadm, ready to hv. Plan: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md",
+    "focus": "BOUNCE (hv's fold order by 2026-11-12 12:49Z by date -u): devbin 0.1.23 NOT cut; three cuts red before the tag, nothing public. On main (8f35cb72): 0334-2, 0341-1, 0340-1, 0340-2, proved by k340. Two units left, both banked: 0342-1 (cc, the wait race) and 0344-1 (dc, a cut's remote legs after its local gates, refs/bank/dc/0344-1 d3b177df). Next: cc's k342 stacked run (units, then kovacs whole alone, then rhadamanth whole alone, each timed with its load) -> vc lands, edits AC-2.2 and AT-2.7 -> bank refs cleared -> hv runs rw/rewrite-0123.sh -> vc verifies, books the cut, says ready to hv. Plan: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md",
     "claims": [
       "ST0011"
     ],
@@ -4864,7 +4864,8 @@
       "kind": "decision",
       "seq": 164,
       "text": "hv's words on issue 0340, the suite's speed, 2026-11-12, read by date -u. (1) Relayed by kovacs-sysadm and dc: sweep bats --jobs N upward on both hosts. kovacs-sysadm swept kovacs at 8 to 64 over harness and fullcycle: 2 took 157 s, 8 took 40 to 46 s, 16 took 37.5 s (the knee), 24 took 38.0 s, 32 took 42.4 s and 48 or 64 took 56.4 s, all green. dc's rhadamanth sweep (slot 01M77MK9N07VTP2MSZ81T5AA1Y) started at 10:27:14Z. (2) In vc's window, about 10:29Z, hv's wording: 'It has to be _at least_ 16 if not 24 on rhad, no?' (3) To dc directly, relayed by dc, hv's wording: 'They don't run at the same time, so we should max out rhad to whatever is possible.' So 0340-1's floor is rhadamanth's fastest N from its sweep, at least 16, never held down to leave the kovacs VM room. dc's fact, given to hv: a cut starts its legs together (lib/cmd/release:1766, ST0011 AC-2.2), so kovacs's leg overlaps the local gates while they run. Separating them would change the legs step, which is outside 0340-1 and hv's to call. Open for hv on the bounce: CI sets DEVBIN_TEST_JOBS: all (.github/workflows/tests.yml:127, :253, :457), so CI keeps N at its own CPU count, and the new floor reaches CI only if that line changes. CI is the cut's long pole. (4) 0340-1 is built in dc's clone at 9a1670bf with the floor at eight, and is rebuilt with the swept floor before it banks.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-12T12:51:00.991Z",
       "recorded_at": "2026-11-12T10:37:31.979Z"
     },
     {
@@ -4872,7 +4873,8 @@
       "kind": "decision",
       "seq": 165,
       "text": "hv, 2026-11-12, answered by 10:54Z by date -u, in devbin-vc's window through the TUI, choosing vc's recommended option in vc's wording, \"Drop it in this batch\": 0340-1 also drops CI's DEVBIN_TEST_JOBS: all (tests.yml's three Run tests steps, set by ST0011 WP-04 as every CPU the runner has, and asserted by ci-workflow.bats:205), so CI runs the suite's own default, half the CPUs and never fewer than 24. dc reworks and re-banks 0340-1, and cc's k340 stacks the new bank. CI Ubuntu's shape (4 CPUs, 16 GB, 24 jobs) is rehearsed by k340's kovacs leg. macOS at 24 on CI's runner cannot be rehearsed before the cut, since pushing is public, so a red there costs a reset and a re-cut, never a false green. At c13c101a, CI's Ubuntu suite took about 30 min at 4 jobs, and CI bounded the cut at about 54 min.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-12T12:51:01.207Z",
       "recorded_at": "2026-11-12T10:55:01.534Z"
     },
     {
@@ -4882,6 +4884,14 @@
       "text": "hv, 2026-11-12, in devbin-vc's window by 11:48Z by date -u, after k340's kovacs leg went red (builtins.bats setup_file; lib/helpers:2743, find_walk's `wait \"$!\"` on a process substitution, \"wait: pid ... is not a child of this shell\", at 24 jobs and load 35 on kovacs's 4 CPUs): \"We need that kovacs fix fixed immediately.\" Then: \"And for future reference, we can't run rhad and kovacs at the same time, they need to be serialised (not parallelised, that was a typo).\" hv to cc directly, relayed by cc: \"Get that fixed and ready to go now.\" hv to dc directly, relayed by dc and received by 11:52:23Z: \"yes, serialise the cut's legs too\". To vc's recommendation to cut as designed and file the serialised legs for the next release, hv answered in vc's window by 11:53Z: \"I don't know. Kovacs went from 49/min to 200/min. It's 4 times faster when they're serialised. I see no good reason to wast another hour on a release cycle. Fix it now, please.\" Through the TUI, hv chose vc's recommended \"dc, now, in parallel\". So this batch gains two units. cc fixes the race, every `wait \"$!\"` on a process substitution in lib/, with issue 0139's find-status scan moving with it. dc serialises the cut's legs in lib/cmd/release: the candidate (CI) starts at once and runs throughout; the local gates come first; then each reached release.legs host, one at a time, each starting only when the one before reads green, with ci.wait counted from the leg's own start; a red starts no later leg; the macOS stage is unchanged. ST0011 AC-2.2 and AT-2.7 change with it. Every kit, probe or sweep runs rhadamanth's and kovacs's suites one after the other, never together. Both units prove in one stacked run (cc driving, kovacs whole first, then the local whole suite).",
       "state": "live",
       "recorded_at": "2026-11-12T11:54:52.638Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 167,
+      "text": "hv, 2026-11-12, in devbin-vc's window. (1) By 11:58Z by date -u, on vc's figure that the cut's legs would take about 38 minutes one after the other against about 32 overlapped: \"I'm not sure that maths stacks up. You can't compare the contended time against the serialised time. You need to test the serialised time directly not estimate it. Uncontended, kovacs goes 4 times faster so instead of taking an hour for 3k tests, it'll take 15 mins.\" vc withdrew the figure, which it had built from k340's contended run. The next proof run, cc's k342, measures it: kovacs's whole leg alone, then rhadamanth's whole suite alone, each with its load timeline. (2) By 11:58Z: \"ok, let me know when it's ready to cut\". vc tells hv twice, with a push each time: when main is ready for hv's history rewrite, and when the cut is booked. (3) By 12:49Z: \"Ok, context is high here, across devbin-* so lets finish what is currently running as a live task, then bank the bankable, and then localfold+compact everyone here. Then we can continue on the bounce.\" Nothing was running on the desk. dc banked 0344-1 at refs/bank/dc/0344-1 (d3b177df), cc banks 0342-1 (3521080a) under a ref of its own, and each seat folds and holds for hv's compact.",
+      "state": "live",
+      "recorded_at": "2026-11-12T12:51:00.778Z"
     }
   ],
   "sent": [

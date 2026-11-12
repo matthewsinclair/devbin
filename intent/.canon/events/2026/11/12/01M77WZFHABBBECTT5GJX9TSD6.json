@@ -1,0 +1,15 @@
+{
+  "id": "01M77WZFHABBBECTT5GJX9TSD6",
+  "ts": "2026-11-12T12:51:00.778Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-11-12, in devbin-vc's window. (1) By 11:58Z by date -u, on vc's figure that the cut's legs would take about 38 minutes one after the other against about 32 overlapped: \"I'm not sure that maths stacks up. You can't compare the contended time against the serialised time. You need to test the serialised time directly not estimate it. Uncontended, kovacs goes 4 times faster so instead of taking an hour for 3k tests, it'll take 15 mins.\" vc withdrew the figure, which it had built from k340's contended run. The next proof run, cc's k342, measures it: kovacs's whole leg alone, then rhadamanth's whole suite alone, each with its load timeline. (2) By 11:58Z: \"ok, let me know when it's ready to cut\". vc tells hv twice, with a push each time: when main is ready for hv's history rewrite, and when the cut is booked. (3) By 12:49Z: \"Ok, context is high here, across devbin-* so lets finish what is currently running as a live task, then bank the bankable, and then localfold+compact everyone here. Then we can continue on the bounce.\" Nothing was running on the desk. dc banked 0344-1 at refs/bank/dc/0344-1 (d3b177df), cc banks 0342-1 (3521080a) under a ref of its own, and each seat folds and holds for hv's compact."
+  }
+}
