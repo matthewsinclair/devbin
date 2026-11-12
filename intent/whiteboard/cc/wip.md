@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-12 19:04Z
+heartbeat_at: 2026-11-12 19:45Z
 status: active
-focus: "devbin 0.1.23 released at 7ab21982. Issues 0333 to 0338, 0341 and 0342 resolved and closed at 36bce49a, and unclaimed. Still claimed: ISSUE:0326 (OPEN). Next: clear the b0123 kits and clones by script (k342/run1-red stays), then wait for vc's next word."
+focus: "devbin 0.1.23 released at 7ab21982. b0123 closed out: Resolutions at 36bce49a, fold 0bbd910e, kits and clones cleared (k342/run1-red kept). Still claimed: ISSUE:0326 (OPEN). Standing by: next is likely 0347 (the bats-exec-file:195 red) for the release after 0.1.23, on hv's word through vc. (2026-11-12 19:45Z by date -u)"
 claims: [ISSUE:0326]
 ---
 
