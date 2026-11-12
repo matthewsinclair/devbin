@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 11:07Z
+heartbeat_at: 2026-11-12 12:49Z
 status: active
-focus: "0340-2 BANKED (2026-11-12 11:06Z by date -u) on hv's yes to CI (decision 165): refs/bank/dc/0340-2 at 8b01007c, one commit on 0340-1 (7278f29a, its ref unchanged), on dc0e45b8. 0340-2 drops DEVBIN_TEST_JOBS: all from CI's suite jobs and WSLENV, reworks ci-workflow.bats's WP04 arm (no non-comment workflow line names DEVBIN_TEST_JOBS or DEVBIN_JOBS), says so in help/test.md, and fixes 0.1.23's note (0339's N never fewer than twenty-four) with its views. Its arm reads red at 7278f29a and green at the build under BSD and GNU. cc stacks both in k340. Next: read 0340-1's and 0340-2's legs when k340 ENDs; after the landing, both bank refs cleared before hv's rewrite; after the green cut, 0340's Resolution and close, then the kits cleared. After the release: clear-clone-pc0123.sh and the old bank refs' clearing, in vc's form. The record is ~/Devel/scratch/devbin-dc/lanesjobs/STATE.md. The ST0011/16 claim stays."
+focus: "LOCALFOLDED for hv's compact (2026-11-12 12:48Z by date -u), holding for hv's /compact and vc's go after it. 0344-1 (the cut's remote legs serialised, decision 166: the candidate first, the local gates with the macOS stage beside them, then each release.legs host one at a time once the leg before it reads green; ci.wait per leg from its own start) is BANKED at refs/bank/dc/0344-1 = d3b177df, one commit on 0e87c402, for cc's k342 stack on 0342-1. It is probed with the fixed probe on the committed trees: 5 reds on their own findings, 15/15 BSD and 6/6 GNU green. vc holds the AC-2.2 and AT-2.7 drafts. 0340-1 and 0340-2 have landed, and their bank refs are cleared. Record: ~/Devel/scratch/devbin-dc/serlegs/STATE.md (bounce steps) and lanesjobs/STATE.md. After the green cut: Resolutions for 0340 and 0344, and the kits cleared by script. After the release: clear-clone-pc0123.sh and bankclear.sh --apply. The ST0011/16 claim stays."
 claims: [ST0011/16]
 ---
 
