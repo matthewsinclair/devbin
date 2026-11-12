@@ -3,10 +3,10 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 05:22Z
+heartbeat_at: 2026-11-12 05:38Z
 status: active
-focus: "Holding read-only and reachable: the other estate's session hv named says nothing on its release path is devbin-dc's, its own nodes build it, and its image already pours devbin 0.1.20 from the tap; the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 14:20Z by date -u)."
-claims: [ST0011/16]
+focus: "Building issue 0339 for devbin 0.1.23 on vc's go (decision 160, go read 2026-11-12 05:38Z by date -u): the bats lanes runner moves to lib/bats-lanes, devbin's own test and the catalogue's test.shell (@builtin) call it with an absolute dir, and a project's own runner calls "$DEVBIN_LIB/bats-lanes" <dir>. In ~/Devel/scratch/devbin-dc/i0339/tree; its arms on the desk (red at the base, green at the fix, BSD), then refs/bank/dc/0339 and COMMIT_MSG-0339.txt to vc, who lands it. The ST0011/16 claim stays."
+claims: [ST0011/16, ISSUE:0339]
 ---
 
 # DevX Claude (dc)

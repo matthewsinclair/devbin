@@ -5,11 +5,12 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "30d4e5b0-c191-42b4-88ae-c6bd721b436e",
-    "heartbeat_at": "2026-11-12T05:22:35.207Z",
+    "heartbeat_at": "2026-11-12T05:38:43.156Z",
     "status": "active",
-    "focus": "Holding read-only and reachable: the other estate's session hv named says nothing on its release path is devbin-dc's, its own nodes build it, and its image already pours devbin 0.1.20 from the tap; the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 14:20Z by date -u).",
+    "focus": "Building issue 0339 for devbin 0.1.23 on vc's go (decision 160, go read 2026-11-12 05:38Z by date -u): the bats lanes runner moves to lib/bats-lanes, devbin's own test and the catalogue's test.shell (@builtin) call it with an absolute dir, and a project's own runner calls \"$DEVBIN_LIB/bats-lanes\" <dir>. In ~/Devel/scratch/devbin-dc/i0339/tree; its arms on the desk (red at the base, green at the fix, BSD), then refs/bank/dc/0339 and COMMIT_MSG-0339.txt to vc, who lands it. The ST0011/16 claim stays.",
     "claims": [
-      "ST0011/16"
+      "ST0011/16",
+      "ISSUE:0339"
     ],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -3467,6 +3468,11 @@
       "id": "01M6MZWYPX4NE78MFY28WMP5DT",
       "sender": "vc",
       "handled_at": "2026-11-05T09:32:31.255Z"
+    },
+    {
+      "id": "01M772W5SERGJ9E8N8QDM1V3PK",
+      "sender": "vc",
+      "handled_at": "2026-11-12T05:38:49.196Z"
     }
   ]
 }
