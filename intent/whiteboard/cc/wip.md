@@ -3,7 +3,7 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-12 14:01Z
+heartbeat_at: 2026-11-12 14:54Z
 status: active
 focus: "devbin 0.1.23, HELD on hv's order (bank, fold, hold; 2026-11-12 14:01Z by date -u). k342 ran red on one arm title: 0342-1's new contract.bats arm (line 926) holds a dollar sign, which harness.bats's title scan refuses; on kovacs alone 3135 of 3136 green in 26m50s, units exit 0, local not run, slot released. 0342-1 stays banked at refs/bank/cc/0342-1 = 3521080a, and dc's 0344-1 at refs/bank/dc/0344-1 = d3b177df. On vc's word after hv is back: retitle that arm (one line, accepted by vc), amend, re-bank, re-stack, re-ask with vc's scope (b0123/STATE.md). Resolutions for 0333 to 0338, 0341 and 0342 wait for the green cut."
 claims: [ISSUE:0326, ISSUE:0333, ISSUE:0334, ISSUE:0335, ISSUE:0336, ISSUE:0337, ISSUE:0338, ISSUE:0341, ISSUE:0342]
