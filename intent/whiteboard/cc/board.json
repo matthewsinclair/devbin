@@ -5,7 +5,7 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a",
-    "heartbeat_at": "2026-11-12T10:37:15.060Z",
+    "heartbeat_at": "2026-11-12T10:49:31.362Z",
     "status": "active",
     "focus": "devbin 0.1.23 re-cut fixes, folded 2026-11-12 10:37Z by date -u: 0334-2 and 0341-1 banked at refs/bank/cc/b0123-7 (9374c367 on dc0e45b8); kit ~/Devel/scratch/devbin-cc/b0123/k340 ready, vc read its driver; it waits only for dc's 0340-1 bank ref, then one heavy stacked run, cc driving, vc lands, and the bank ref is cleared before hv's rewrite. The Resolutions and closes for 0333 to 0338 and 0341 wait for the green cut (b0123/STATE.md).",
     "claims": [
