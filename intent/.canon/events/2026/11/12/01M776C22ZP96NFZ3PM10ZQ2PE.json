@@ -1,0 +1,15 @@
+{
+  "id": "01M776C22ZP96NFZ3PM10ZQ2PE",
+  "ts": "2026-11-12T06:15:55.743Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "For the release after next, to weigh only (intent-vc, 2026-11-12): the macOS stage has no rehearsal before a cut. A dry run starts no leg (lib/cmd/release:1680-1698), app-sign refuses any commit but the release's, and 0337's release gates --leg covers release.legs hosts alone, so a project's first macOS stage runs at its cut. Intent takes that risk for its next cut, and a failure stops before the tag and is re-cut. No issue now, since an open issue would ride 0.1.23 under directive 13."
+  }
+}
