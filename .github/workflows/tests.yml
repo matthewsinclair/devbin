@@ -119,11 +119,15 @@ jobs:
       # Through devbin, not bats directly: Devbin uses devbin, so a
       # defect in the dispatcher breaks Devbin's own build before it can reach a
       # live project. Running bats straight would route around the thing under
-      # test. THE SUITE'S OWN DEFAULT NUMBER OF TESTS AT ONCE (issue 0340), the
-      # same rule on every runner as on every host, set by the suite itself
-      # (bats-lanes): nothing in this workflow sets DEVBIN_TEST_JOBS or
-      # DEVBIN_JOBS, and no line writes a number for it.
+      # test. EVERY CPU THE RUNNER HAS (ST0011 WP-04): nothing shares a runner,
+      # so the parallel lane takes them all, counted by the suite's own probe
+      # (bats-lanes, cpu_probe) and never written here as a number. The
+      # suite's own floor of twenty-four at once (issue 0340) is for hosts: on
+      # these runners it ran no faster than one test per CPU, and the macOS
+      # runner, with three, went red in bats' own output forwarder under it.
       - name: Run tests
+        env:
+          DEVBIN_TEST_JOBS: all
         run: bin/devbin test all
 
       # EVERY `check` GATE EXCEPT `critic` AND `lint`, each for its own reason.
@@ -245,9 +249,11 @@ jobs:
           grep -q "bash >= 5" <<<"$out"
 
       # NAMED for what it does: bats runs under the PATH bash asserted >= 5
-      # above. The old-bash coverage is the refusal proof, not this step. The
-      # suite's own default number of tests at once, as on Ubuntu (issue 0340).
+      # above. The old-bash coverage is the refusal proof, not this step. Every
+      # CPU the runner has, as on Ubuntu (ST0011 WP-04).
       - name: Run tests
+        env:
+          DEVBIN_TEST_JOBS: all
         run: bin/devbin test all
 
       # THE UBUNTU JOB'S GATES, BY NAME, AND NOT `check all` (issue 0293).
@@ -357,10 +363,11 @@ jobs:
     # NOTHING CROSSES INTO WSL UNLESS WSLENV NAMES IT. /p translates the
     # workspace's Windows path into WSL's. CI is passed so `require_command`
     # fails rather than skips, as it does on the other legs. The Intent
-    # install's pins are named here for the one step that reads them.
+    # install's pins are named here for the one step that reads them, and
+    # DEVBIN_TEST_JOBS for the suite's step, which sets it (ST0011 WP-04).
     env:
       WSL_WANT: ${{ matrix.wsl }}
-      WSLENV: GITHUB_WORKSPACE/p:GITHUB_SHA:WSL_WANT:CI:INTENT_TAG:INTENT_ASSET:INTENT_SHA256
+      WSLENV: GITHUB_WORKSPACE/p:GITHUB_SHA:WSL_WANT:CI:INTENT_TAG:INTENT_ASSET:INTENT_SHA256:DEVBIN_TEST_JOBS
     steps:
       - uses: actions/checkout@v7
 
@@ -446,10 +453,11 @@ jobs:
           bats --version
           bash "$HOME/devbin/.github/install-shellcheck.sh"
 
-      # The suite's own default number of tests at once, as on Ubuntu and macOS
-      # (issue 0340).
+      # Every CPU the runner has, as on Ubuntu and macOS (ST0011 WP-04).
       - name: Run tests
         shell: wsl-bash {0}
+        env:
+          DEVBIN_TEST_JOBS: all
         run: |
           set -euo pipefail
           cd "$HOME/devbin"
