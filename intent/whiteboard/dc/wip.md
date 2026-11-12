@@ -3,10 +3,10 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 05:58Z
+heartbeat_at: 2026-11-12 06:00Z
 status: active
-focus: "0339-1 banked and handed to vc for landing (2026-11-12 05:58Z by date -u): refs/bank/dc/0339 at eba0944f on d0a84fbb, its run green in slot 01M7751MBB2ADYMQVDQ8GWFE12 (15 arms red at the base, 19 green at the tip, BSD), handover ~/Devel/scratch/devbin-dc/i0339/handover with COMMIT_MSG-0339-1.txt, and 0339's note entry sent as text. Next: vc lands it with land-stack.sh, then 0339's Resolution and close. The ST0011/16 claim stays."
-claims: [ST0011/16, ISSUE:0339]
+focus: "0339 done (2026-11-12 06:00Z by date -u): landed by vc at 41d59cb4 from the tested tip eba0944f, its Resolution written and the issue closed, ISSUE:0339 unclaimed, refs/bank/dc/0339 cleared. Holding, reachable, for vc's next word; the ST0011/16 claim stays."
+claims: [ST0011/16]
 ---
 
 # DevX Claude (dc)
