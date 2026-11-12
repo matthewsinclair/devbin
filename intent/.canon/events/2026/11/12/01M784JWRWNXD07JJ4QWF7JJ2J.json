@@ -1,0 +1,15 @@
+{
+  "id": "01M784JWRWNXD07JJ4QWF7JJ2J",
+  "ts": "2026-11-12T15:03:56.956Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in devbin-vc's window, received before the clock read 2026-11-12 15:03Z by date -u: \"I am about to be afk for a while. You have the pen. Push on and get these releases done TONIGHT.\" Then, through vc's TUI on vc's question (the rewrite and the cuts are hv's by standing rule; may vc run them once each is ready and green?), hv chose \"Yes, run all\": vc runs the 0.1.23 history rewrite (dry run on a copy first), devbin's cut, the brew sweep and Intent's cut, each only when green. No other publishing: agentic-engineering's public steps 11 to 15 still wait for hv's first-hand go in agentic-engineering-dc's window."
+  }
+}

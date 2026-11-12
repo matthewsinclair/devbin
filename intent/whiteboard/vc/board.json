@@ -4908,6 +4908,14 @@
       "text": "hv in devbin-vc's window, received before the clock read 2026-11-12 14:55Z by date -u: \"Ok, we're back. Please please PLEASE get this devbin and intent release cut, and then get agentic-engineering-vc to get ready to do the next [release in that estate].\" (bracket vc's, keeping a product name out of the record) Decision 168's hold lifts. devbin 0.1.23 goes first: cc retitles 0342-1's contract.bats arm (no dollar sign), amends, re-banks by CAS, re-stacks 0344-1 and re-asks; vc's scope is harness.bats and contract.bats whole at the new tip, then rhadamanth's whole suite alone (its measured time); then the landing, the AC-2.2, AT-2.7 and AT-2.5 edits, the bank clears, hv's rewrite and hv's cut. Intent's cut follows on decision 160's plan (Intent's tree takes 0.1.23 first). agentic-engineering-vc is told now to get ready for that release.",
       "state": "live",
       "recorded_at": "2026-11-12T14:55:44.438Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 170,
+      "text": "hv in devbin-vc's window, received before the clock read 2026-11-12 15:03Z by date -u: \"I am about to be afk for a while. You have the pen. Push on and get these releases done TONIGHT.\" Then, through vc's TUI on vc's question (the rewrite and the cuts are hv's by standing rule; may vc run them once each is ready and green?), hv chose \"Yes, run all\": vc runs the 0.1.23 history rewrite (dry run on a copy first), devbin's cut, the brew sweep and Intent's cut, each only when green. No other publishing: agentic-engineering's public steps 11 to 15 still wait for hv's first-hand go in agentic-engineering-dc's window.",
+      "state": "live",
+      "recorded_at": "2026-11-12T15:03:56.956Z"
     }
   ],
   "sent": [
