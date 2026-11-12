@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-12 12:49Z
+heartbeat_at: 2026-11-12 12:58Z
 status: active
-focus: "devbin 0.1.23, folded for hv's compact 2026-11-12 12:48Z by date -u: k340's four units landed (main 8f35cb72). 0342-1 (nul_read, the wait race) built at 3521080a in ~/Devel/scratch/devbin-cc/b0123/k342, banked as the kit's bank-0342-1.bundle (no canon ref, by vc's rule), design accepted by vc. dc's 0344-1 banked at refs/bank/dc/0344-1 (d3b177df), its entries saved in k342/dc-0344-1-entries.txt. On the bounce: stack it, ask heavy, run units, then kovacs alone, then local alone with the load sampler; vc lands. Resolutions for 0333 to 0338, 0341 and 0342 wait for the green cut (b0123/STATE.md)."
+focus: "devbin 0.1.23, on the bounce after hv's compact (2026-11-12 12:57Z by date -u). 0342-1 (nul_read, the wait race) is banked at refs/bank/cc/0342-1 = 3521080a, and dc's 0344-1 at refs/bank/dc/0344-1 = d3b177df. Now: dc's entries wired into k342 (vc's ruling: 0344-1's greens are its own arms by filter, not releasecut.bats whole), stack-dc.sh, the preflight, then ask heavy with the runs.conf diff and the pick lines. The run: units, then the kovacs leg alone, then the local whole suite alone, each timed with its load; vc lands. Resolutions for 0333 to 0338, 0341 and 0342 wait for the green cut (b0123/STATE.md)."
 claims: [ISSUE:0326, ISSUE:0333, ISSUE:0334, ISSUE:0335, ISSUE:0336, ISSUE:0337, ISSUE:0338, ISSUE:0341, ISSUE:0342]
 ---
 
