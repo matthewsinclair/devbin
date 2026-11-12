@@ -5,7 +5,7 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "d252d54e-7ad5-4f31-9c5f-02ab8aca3f33",
-    "heartbeat_at": "2026-11-12T10:37:44.392Z",
+    "heartbeat_at": "2026-11-12T10:49:28.193Z",
     "status": "active",
     "focus": "BOUNCE (hv fold 2026-11-12 10:4xZ): devbin 0.1.23 NOT cut; 3 cuts red before tag, nothing public on main. Batch: 0334-2 + 0341-1 (cc, k340 built, waits for dc) + 0340-1 (dc, bats --jobs floor from the sweeps, at least 16, hv). Then k340 run (reds, greens, whole suite with leg-shaped TMPDIR, kovacs leg) -> vc lands -> bank refs cleared -> hv runs rw/rewrite-0123.sh (directive 14 scrub, rehearsed green) -> vc verifies, books the cut, START kovacs-sysadm, ready to hv. Plan: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md",
     "claims": [
