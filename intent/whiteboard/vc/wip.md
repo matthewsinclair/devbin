@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-12 06:10Z
+heartbeat_at: 2026-11-12 06:12Z
 status: active
-focus: "GO (decision 160): devbin 0.1.23 carries 0333-0339; landed 0333-1 d8da3afb, 0334-1 f53d7fc2, 0339-1 41d59cb4, 0335-1 8da5b718, 0335-2 54acadbb; 0336-1 green at 590702dd, to land as tested with LAND_BASE_OFF_MAIN=1; 0337 (cc or dc, hv's call) and 0338 to build on main; then vc's pre-cut (dc's kit; note entries in ~/Devel/scratch/devbin-vc/0.1.23) and hv's cut; Intent takes 0.1.23 first, the rest of the fleet with the root files after Intent's cut. Desk: devbin and Intent first; AE P1 after both taps"
+focus: "GO (decision 160): devbin 0.1.23 carries 0333-0339; landed 0333-1 d8da3afb, 0334-1 f53d7fc2, 0339-1 41d59cb4, 0335-1 8da5b718, 0335-2 54acadbb, 0336-1 a1cb3d62; 0338 (cc) and 0337 (cc or dc, hv's call) to build on main; then vc's pre-cut (dc's kit; note entries in ~/Devel/scratch/devbin-vc/0.1.23) and hv's cut; Intent takes 0.1.23 first, the rest of the fleet with the root files after Intent's cut. Desk: devbin and Intent first; AE P1 after both taps"
 claims: [ST0011]
 ---
 
