@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-12 06:15Z
+heartbeat_at: 2026-11-12 07:42Z
 status: active
-focus: "devbin 0.1.23 on hv's go via vc (decision 160). Landed by vc, unpushed: 0333-1 d8da3afb, 0334-1 f53d7fc2, 0335-1 8da5b718, 0335-2 54acadbb, 0336-1 a1cb3d62. 0338-1 asked on the desk (01M776AHP4DHNNXW2C9DKKYYE1, tip b50e48c6 on main 6193a74d, in ~/Devel/scratch/devbin-cc/b0123/k338). 0337 waits on hv's call, cc or dc; its shape is with vc. 0339 is dc's. Each unit: its own arms red at the base and green at the tip on the desk, banked, handed over, landed by vc; note entries to vc."
+focus: "devbin 0.1.23's batch done, fold of 2026-11-12 07:41Z by date -u: every unit of mine on main, unpushed (0333-1 d8da3afb, 0334-1 f53d7fc2, 0335-1 8da5b718, 0335-2 54acadbb, 0336-1 a1cb3d62, 0338-1 afc00c77, 0337-1 ad69406f, 0337-2 7951719a); dc's pre-cut re-run green at 7951719a. Holding for hv's /compact, then hv's cut. After vc says the cut has ended: the Resolutions and closes for 0333 to 0338 (~/Devel/scratch/devbin-cc/b0123/apply-resolutions.sh; STATE.md there). Bank refs cleared."
 claims: [ISSUE:0326, ISSUE:0333, ISSUE:0334, ISSUE:0335, ISSUE:0336, ISSUE:0337, ISSUE:0338]
 ---
 
