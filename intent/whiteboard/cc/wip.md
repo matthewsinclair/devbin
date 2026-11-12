@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-12 07:42Z
+heartbeat_at: 2026-11-12 09:41Z
 status: active
-focus: "devbin 0.1.23's batch done, fold of 2026-11-12 07:41Z by date -u: every unit of mine on main, unpushed (0333-1 d8da3afb, 0334-1 f53d7fc2, 0335-1 8da5b718, 0335-2 54acadbb, 0336-1 a1cb3d62, 0338-1 afc00c77, 0337-1 ad69406f, 0337-2 7951719a); dc's pre-cut re-run green at 7951719a. Holding for hv's /compact, then hv's cut. After vc says the cut has ended: the Resolutions and closes for 0333 to 0338 (~/Devel/scratch/devbin-cc/b0123/apply-resolutions.sh; STATE.md there). Bank refs cleared."
-claims: [ISSUE:0326, ISSUE:0333, ISSUE:0334, ISSUE:0335, ISSUE:0336, ISSUE:0337, ISSUE:0338]
+focus: "devbin 0.1.23 re-cut fixes, on vc's go of 2026-11-12: 0334-2 (harness.bats:198's temp-dir prefix, bounded at the path) and 0341-1 (releasecut.bats's teardown waits for every run its fake hosts started), built in scratch at dc0e45b8 (~/Devel/scratch/devbin-cc/b0123/k340); one stacked run with dc's 0340, cc driving, before the re-cut. The Resolutions and closes for 0333 to 0338 wait for the green cut (b0123/STATE.md)."
+claims: [ISSUE:0326, ISSUE:0333, ISSUE:0334, ISSUE:0335, ISSUE:0336, ISSUE:0337, ISSUE:0338, ISSUE:0341]
 ---
 
 # Control Claude (cc)
