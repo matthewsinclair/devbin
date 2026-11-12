@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "30d4e5b0-c191-42b4-88ae-c6bd721b436e",
-    "heartbeat_at": "2026-11-12T07:41:37.021Z",
+    "heartbeat_at": "2026-11-12T09:37:16.504Z",
     "status": "active",
-    "focus": "LOCALFOLDED for hv's compact (2026-11-12 07:41Z by date -u), holding for hv's /compact and vc's go after it. 0339 is done: 0339-1 at 41d59cb4 and 0339-2 at ccc5bba5, closed, both bank refs cleared. devbin 0.1.23's final tip is 7951719a, and the pre-cut there (~/Devel/scratch/devbin-dc/pc0123, slot 01M779WNMETKEV3G3TWCDSP4AD) is GREEN: 33 suites with 1787 ok and 0 not ok, check all, and the dry run; the first run's records are in runs-7684a429. The cut is hv's, after the bounce; vc's bar on canon holds until vc says it has ended. The ST0011/16 claim stays.",
+    "focus": "P0 at hv's word through vc (2026-11-12): the suite's wall time. bats --jobs N runs every file's tests through one shared N-slot semaphore that polls with sleep 1 (bats 1.12.0 and 1.14.0 alike), so the kovacs leg sleeps more than it tests. The fix goes in lib/bats-lanes: built in scratch at dc0e45b8, timed on rhadamanth and kovacs before choosing, its arms red at the base and green at the fix, then one stacked run with cc's two fixes. After the release: clear-clone-pc0123.sh and the old bank refs' clearing, in vc's form. The ST0011/16 claim stays.",
     "claims": [
       "ST0011/16"
     ],
