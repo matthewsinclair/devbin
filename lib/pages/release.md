@@ -135,6 +135,12 @@ Every command of the project's own that a cut runs is handed the release's targe
 
 Neither is `DEVBIN_RELEASE_TAG`, which a cut hands `release.ci.query` alone: the ref the query reads its runs by, the candidate's branch, not the tag.
 
+## The gates' own directories
+
+The gates are handed `DEVBIN_GATE_CACHE`, a directory of their own that lasts from one run to the next and that nothing devbin runs clears, so a gate can keep a build there, eg a private worktree's `CARGO_TARGET_DIR`. What goes in it is the project's. On this machine it is `.gate-cache` in the project's directory under the artefact cache's root (`DEVBIN_CACHE_HOME`, else the XDG cache directory's `devbin`), a name no artefact can take, so `cache` never reads it, unless the environment names one. It is made when missing, and one that cannot be named or made refuses the gates before any runs, saying why.
+
+On each host `release.legs` names, the gates are handed `work/<project>-leg.cache` under the host's home, beside the bare repository, whatever the host's own startup sets. They run there with a `TMPDIR` of their own too, `<worktree>.tmp` beside the run's worktree on the host's disk, made afresh for each run and removed with it, so a host whose `/tmp` is a small tmpfs runs a large build. The leg's log names both. The host is sent the previous release's tag beside the release commit, so a gate that reads the last release finds it in a fresh repository.
+
 ## The other forms
 
     status <v>   the step table for that version, with each step's state and

@@ -609,6 +609,41 @@ release_one_repository() {
   esac
 }
 
+# gates_cache_dir -- the gates' own directory, handed them as DEVBIN_GATE_CACHE
+# (issue 0335): it lasts from one run to the next and nothing devbin runs clears
+# it, so a gate can keep a build there, eg a private worktree's
+# CARGO_TARGET_DIR; what goes in it is the project's. The one DEVBIN_GATE_CACHE
+# already names, as a remote leg's host names work/<project>-leg.cache for its
+# run (lib/release.legs), else this machine's: .gate-cache in the project's
+# directory under the artefact cache's root (cache_root_resolved), named as a
+# remote host's bare repository is (legs_project_name), a name no artefact can
+# take, so the cache's verbs never read it. Made when missing. Prints the path;
+# status 1, printing why instead, when it cannot be named or made, since a gate
+# handed none could point a build at the filesystem's root.
+gates_cache_dir() {
+  local line d err
+  if [ -n "${DEVBIN_GATE_CACHE:-}" ]; then
+    d="$DEVBIN_GATE_CACHE"
+  elif line="$(cache_root_resolved)"; then
+    d="${line%%$'\t'*}/$(legs_project_name)/.gate-cache"
+  else
+    printf '%s\n' "$line"
+    return 1
+  fi
+  case "$d" in
+    /*) ;;
+    *)
+      printf '%s is not an absolute path\n' "$d"
+      return 1
+      ;;
+  esac
+  if ! err="$(mkdir -p "$d" 2>&1)"; then
+    printf '%s could not be made: %s\n' "$d" "${err%%$'\n'*}"
+    return 1
+  fi
+  printf '%s\n' "$d"
+}
+
 # gates_sealed <sha> <version> <tag> -- the gates in `gl`, release.gates as
 # gates_list read it, in order, in place, under one sealed run of their own,
 # tmp/release/<stamp>.GATES.{out,errors}, standing on <sha>, the commit the
@@ -629,13 +664,20 @@ release_one_repository() {
 # leaves a pass that does not read back; it is kept as the one read that says
 # the record a cut will trust is the one just made. The cut's local leg decides
 # on this status, never on a read of the record while the run writes it.
+#
+# THE GATES ARE HANDED THEIR OWN DIRECTORY, DEVBIN_GATE_CACHE (gates_cache_dir,
+# issue 0335), or the run is refused before any gate starts, saying why.
 gates_sealed() {
-  local sha="$1" why seal verdict
+  local sha="$1" why seal verdict gcache
+  if ! gcache="$(gates_cache_dir)"; then
+    _release_gates_refuse "the gates' own directory cannot be handed them as DEVBIN_GATE_CACHE: $gcache"
+    return 1
+  fi
   # THE RECORD NAMES ITS SCOPE: the list goes in the invocation block's `from:`
   # line, and each gate is an argument of the one command the run ran. The
   # list is the declared one, never the verb's argv, so no flag of devbin's
   # reaches release_gates_run through it.
-  if ! release_target_run "$2" "$3" run_gate --label "release gates" --suffix GATES --grammar generic --purge \
+  if ! DEVBIN_GATE_CACHE="$gcache" release_target_run "$2" "$3" run_gate --label "release gates" --suffix GATES --grammar generic --purge \
     --out-dir "$(gate_out_dir release)" \
     --source "release.gates ($(printf '%s, ' "${gl[@]}" | sed 's/, $//')) -- release_gates_run in this process, not a command line" \
     -- release_gates_run "${gl[@]}"; then

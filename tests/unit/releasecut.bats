@@ -4347,3 +4347,24 @@ $output"
     fail "the seal names no cache line for app $key: $(grep -F 'cache' "$out" || echo '(none)')"
   assert_output_contains "release: cache: app $key"
 }
+
+@test "0335: release gates hands its gates DEVBIN_GATE_CACHE, .gate-cache in the project's directory under the cache root, made when missing and kept from run to run, and the one the environment names instead" {
+  local d mine
+  proj="$(cut_project)"
+  export DEVBIN_CACHE_HOME="$DEVBIN_TEST_TMPDIR/cache"
+  d="$DEVBIN_CACHE_HOME/demo/.gate-cache"
+  mine="$DEVBIN_TEST_TMPDIR/mine"
+  # The gate says what it was handed, and leaves a line in it where it is there.
+  gate_does 'printf "%s\n" "${DEVBIN_GATE_CACHE-<unset>}" >>"'"$DEVBIN_TEST_TMPDIR"'/gate.cache"; if [ -d "${DEVBIN_GATE_CACHE:-/nonexistent}" ]; then printf "run\n" >>"$DEVBIN_GATE_CACHE/runs"; fi'
+  run release_in "$proj" gates
+  assert_success
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/gate.cache")" = "$d" ] || fail "release gates handed its gate: $(cat "$DEVBIN_TEST_TMPDIR/gate.cache")"
+  run release_in "$proj" gates --rerun
+  assert_success
+  [ "$(sed -n 2p "$DEVBIN_TEST_TMPDIR/gate.cache")" = "$d" ] || fail "the second run handed its gate: $(cat "$DEVBIN_TEST_TMPDIR/gate.cache")"
+  [ "$(cat "$d/runs")" = $'run\nrun' ] || fail "the directory did not keep the first run's line for the second: $(cat "$d/runs" 2>&1)"
+  DEVBIN_GATE_CACHE="$mine" run release_in "$proj" gates --rerun
+  assert_success
+  [ "$(sed -n 3p "$DEVBIN_TEST_TMPDIR/gate.cache")" = "$mine" ] || fail "the run under DEVBIN_GATE_CACHE handed its gate: $(cat "$DEVBIN_TEST_TMPDIR/gate.cache")"
+  [ "$(cat "$mine/runs")" = run ] || fail "the directory the environment named was not made for the gate: $(cat "$mine/runs" 2>&1)"
+}

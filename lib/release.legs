@@ -29,8 +29,9 @@
 # THE HOST is a name this machine reaches by ssh alone, an alias from its ssh
 # config, a plain word (is_host_alias, lib/helpers). What lives on it is this
 # file's recipe, never config: the bare repo work/<project>-leg.git under its
-# home, and each run's worktree work/<project>-leg-<sha12> beside it, with its
-# log, its gates' TMPDIR and, once its gates have ended, their exit status. The
+# home, the gates' own cache work/<project>-leg.cache beside it, which no run
+# clears, and each run's worktree work/<project>-leg-<sha12>, with its log, its
+# gates' TMPDIR and, once its gates have ended, their exit status. The
 # runner installs and adjusts nothing there: the host carries what the
 # project's declared gates need, on the PATH its own startup sets, and a gate
 # that cannot run there is the leg's failed, named in its seal.
@@ -185,12 +186,19 @@ _release_leg_remote_init() {
 # What an earlier run at <sha> left there goes first, made writable, since a
 # build, or a bats run killed mid-file, can leave read-only directories in it.
 # It is cleared with the worktree.
+#
+# THE GATES' CACHE IS THE PROJECT'S, work/<project>-leg.cache beside the bare
+# repo (issue 0335), handed to the gates as DEVBIN_GATE_CACHE, whatever the
+# host's startup sets, so a gate can keep a build there from one run to the
+# next, eg a private worktree's CARGO_TARGET_DIR. Made when missing, before the
+# TMPDIR; no run clears it, and what goes in it is the project's.
 _release_leg_remote_start() {
-  local project="$1" sha="$2" repo wt log tmp t err why=""
+  local project="$1" sha="$2" repo wt log tmp gcache t err why=""
   repo="$HOME/work/$project-leg.git"
   wt="$HOME/work/$project-leg-${sha:0:12}"
   log="$wt.log"
   tmp="$wt.tmp"
+  gcache="$HOME/work/$project-leg.cache"
   if [ -e "$wt" ]; then
     printf 'started\ta run at %s was started there before, and its seal is the record\n' "${sha:0:12}"
     return 0
@@ -209,11 +217,14 @@ _release_leg_remote_start() {
     printf 'leg: %s at %s, started %s\n' "$project" "$sha" "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
     printf 'PATH: %s\n' "$PATH"
     printf 'TMPDIR: %s\n' "$tmp"
+    printf 'DEVBIN_GATE_CACHE: %s\n' "$gcache"
     for t in bash git intent bats shellcheck cargo; do
       printf '%s: %s\n' "$t" "$(command -v "$t" || printf 'not on PATH')"
     done
   } >>"$log"; then
     why="the log $log could not be written"
+  elif ! err="$(mkdir -p "$gcache" 2>&1)"; then
+    why="the gates' cache $gcache could not be made: ${err%%$'\n'*}"
   elif ! err="$({ [ ! -e "$tmp" ] || chmod -R u+w "$tmp"; } 2>&1 && rm -rf "$tmp" 2>&1 && mkdir -p "$tmp" 2>&1)"; then
     why="the TMPDIR $tmp could not be made afresh for the run: ${err%%$'\n'*}"
   fi
@@ -232,8 +243,9 @@ _release_leg_remote_start() {
   # (helpers.bats holds this line in its list of the runtime's mv lines).
   # shellcheck disable=SC2016 # expanded by the shell that runs the gates
   set -- bash -c 'bin/devbin release gates; printf "%s\n" "$?" >"$1.rc.part" && mv -f "$1.rc.part" "$1.rc"' release-leg "$wt"
-  # The run's own TMPDIR, exported in this shell, which ends once they start.
-  export TMPDIR="$tmp"
+  # The run's own TMPDIR and the project's gate cache, exported in this shell,
+  # which ends once the gates start.
+  export TMPDIR="$tmp" DEVBIN_GATE_CACHE="$gcache"
   if command -v setsid >/dev/null 2>&1; then
     setsid nohup "$@" >>"$log" 2>&1 </dev/null &
   else
@@ -267,11 +279,11 @@ _release_leg_remote_probe() {
 }
 
 # _release_leg_remote_clear <project> <sha> -- the ended run's worktree, log,
-# status, TMPDIR and ref removed, the bare repo kept; one line,
-# `cleared<TAB><path>` or `refused<TAB><why>`. --force, because the runner made
-# this worktree on a test machine, and what it holds beyond R's tree is the
-# gates' own output, copied back before this runs. The TMPDIR is made writable
-# first, since a build can leave read-only directories in it.
+# status, TMPDIR and ref removed, the bare repo and the gates' cache kept; one
+# line, `cleared<TAB><path>` or `refused<TAB><why>`. --force, because the
+# runner made this worktree on a test machine, and what it holds beyond R's
+# tree is the gates' own output, copied back before this runs. The TMPDIR is
+# made writable first, since a build can leave read-only directories in it.
 _release_leg_remote_clear() {
   local repo="$HOME/work/$1-leg.git" wt="$HOME/work/$1-leg-${2:0:12}" err
   if ! err="$(git -C "$repo" worktree remove --force "$wt" 2>&1 >/dev/null)"; then

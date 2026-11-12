@@ -52,8 +52,11 @@ LEG_WAIT_SECONDS=20
 # written leave it. gates-tmpdir in the tree makes them first write the TMPDIR
 # they were given to <worktree>.seen-tmpdir and, when it is <worktree>.tmp,
 # leave a read-only directory in it, as a bats run killed mid-file leaves its
-# fixture cache. The project does not ignore tmp/, so dirt a read leaves
-# there is seen. Prints the project's path.
+# fixture cache. gates-gatecache makes them write the DEVBIN_GATE_CACHE they
+# were given to <worktree>.seen-gatecache and, when it is the host's
+# work/demo-leg.cache, add the commit they stand on to its `runs`. The project
+# does not ignore tmp/, so dirt a read leaves there is seen. Prints the
+# project's path.
 leg_project() {
   local proj="$DEVBIN_TEST_TMPDIR/proj"
   mkdir -p "$proj/bin" || return 1
@@ -68,6 +71,12 @@ if [ -e gates-tmpdir ]; then
   printf '%s\n' "${TMPDIR-unset}" >"$PWD.seen-tmpdir" || exit 1
   if [ "${TMPDIR-}" = "$PWD.tmp" ]; then
     mkdir -p "$TMPDIR/cache/entries" && : >"$TMPDIR/cache/entries/one" && chmod -R a-w "$TMPDIR/cache" || exit 1
+  fi
+fi
+if [ -e gates-gatecache ]; then
+  printf '%s\n' "${DEVBIN_GATE_CACHE-unset}" >"$PWD.seen-gatecache" || exit 1
+  if [ "${DEVBIN_GATE_CACHE-}" = "$HOME/work/demo-leg.cache" ] && [ -d "$DEVBIN_GATE_CACHE" ]; then
+    git rev-parse HEAD >>"$DEVBIN_GATE_CACHE/runs" || exit 1
   fi
 fi
 sha="$(git rev-parse HEAD)" || exit 1
@@ -454,5 +463,39 @@ every_call_batch() {
   run release_leg_read "$proj" kov demo "$sha"
   [ "$(leg_word)" = green ] || fail "the run's read: $output"
   [ ! -e "$wt.tmp" ] || fail "the run was cleared from the host and its TMPDIR left there: $(ls -lR "$wt.tmp")"
+  every_call_batch
+}
+
+@test "0335: a remote leg's gates are handed DEVBIN_GATE_CACHE, work/<project>-leg.cache beside the bare repo, over one the host's startup set, named in the leg's log, and kept when the run is cleared, so the next run finds what the last left there" {
+  local proj first sha wt cache
+  proj="$(leg_project)"
+  : >"$proj/gates-gatecache"
+  leg_commit "$proj" "gates that say which DEVBIN_GATE_CACHE they were given"
+  first="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  cache="$HOSTS/kov/work/demo-leg.cache"
+  wt="$(leg_wt kov "$first")"
+  # A DEVBIN_GATE_CACHE the host's own startup sets, which the shell that
+  # starts the gates inherits.
+  DEVBIN_GATE_CACHE="$HOSTS/kov/elsewhere" run release_leg_start "$proj" kov demo "$first"
+  [ "$(leg_word)" = pending ] || fail "the first start: $output"
+  await_file "$wt/tmp/release/20260101-0000.GATES.errors"
+  [ "$(cat "$wt.seen-gatecache")" = "$cache" ] ||
+    fail "the gates were given DEVBIN_GATE_CACHE '$(cat "$wt.seen-gatecache")', not the project's $cache"
+  grep -qxF "DEVBIN_GATE_CACHE: $cache" "$wt.log" || fail "the leg's log does not name the gates' cache: $(cat "$wt.log")"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$first"
+  [ "$(leg_word)" = green ] || fail "the first run's read: $output"
+  [ "$(cat "$cache/runs")" = "$first" ] || fail "the clear removed what the gates kept, or they kept nothing: $(cat "$cache/runs" 2>&1)"
+  printf 'next\n' >"$proj/next"
+  leg_commit "$proj" "the next commit"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha"
+  [ "$(leg_word)" = pending ] || fail "the next start: $output"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the next run's read: $output"
+  [ "$(cat "$cache/runs")" = "$first"$'\n'"$sha" ] || fail "the next run did not find the first run's line: $(cat "$cache/runs" 2>&1)"
   every_call_batch
 }
