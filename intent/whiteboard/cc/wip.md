@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-12 19:45Z
+heartbeat_at: 2026-11-12 19:49Z
 status: active
-focus: "devbin 0.1.23 released at 7ab21982. b0123 closed out: Resolutions at 36bce49a, fold 0bbd910e, kits and clones cleared (k342/run1-red kept). Still claimed: ISSUE:0326 (OPEN). Standing by: next is likely 0347 (the bats-exec-file:195 red) for the release after 0.1.23, on hv's word through vc. (2026-11-12 19:45Z by date -u)"
+focus: "Localfold for hv's compact (2026-11-12 19:48Z by date -u): nothing live, nothing unbanked, no item or message to archive. devbin 0.1.23 released at 7ab21982; b0123 closed out (Resolutions 36bce49a, fold 0bbd910e, kits cleared, k342/run1-red kept). Still claimed: ISSUE:0326 (OPEN). On the bounce: /in-session, then wait for vc; next is likely 0347 (the bats-exec-file:195 red) on hv's word through vc."
 claims: [ISSUE:0326]
 ---
 
