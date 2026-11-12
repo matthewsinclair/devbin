@@ -1,0 +1,14 @@
+{
+  "id": "01M785W94KQZX8G6HY7KVQGCZ0",
+  "ts": "2026-11-12T15:26:33.109Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.edit",
+  "subject": {
+    "type": "ac",
+    "id": "ST0011/AC-2.2"
+  },
+  "payload": {
+    "text": "After the stamp and commit, the legs start at the release commit and are read by one wait loop: the candidate matrix, the local gates and the macOS stage where declared start together, and each declared remote leg starts only once the leg before it reads green, the local gates for the first and the remote leg before it in release.legs' order for each after, so a leg host that shares the cutting machine's CPUs never runs its suite beside another (hv, decision 166; issue 0344). ci.wait bounds each leg but the local gates from that leg's own start. The tag is made and pushed only when every leg is green; a red or a timeout leaves no tag and nothing public, and a remote leg held behind a red is never started."
+  }
+}
