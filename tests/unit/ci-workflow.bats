@@ -170,20 +170,6 @@ run_summary() {
   done
 }
 
-# step_lines <job id> <step name> -- that step's lines in that job, from its
-# `- name:` to the next step's, whatever key opens it, so what is read is the
-# step's own and never a neighbour's. The block is read whole first: an awk
-# that stops early on a pipe would take its writer down with SIGPIPE.
-step_lines() {
-  local block
-  block="$(job_block "$1")" || return 1
-  awk -v want="      - name: $2" '
-    $0 == want { on = 1; print; next }
-    on && /^      - / { exit }
-    on { print }
-  ' <<<"$block"
-}
-
 # suite_jobs -- every job whose steps run devbin's suite, `bin/devbin test all`
 # as a step's run line or a line of its script, read from the workflow and
 # never listed by hand.
@@ -202,28 +188,22 @@ suite_jobs() {
   return 0
 }
 
-@test "every job that runs the suite runs it on every CPU its runner has, DEVBIN_TEST_JOBS all, and no line writes a number for it (WP04)" {
-  local job jobs lines wslenv rc out
+@test "every job runs the suite at its own default: no line of the workflow but a comment names DEVBIN_TEST_JOBS or DEVBIN_JOBS (WP04) (0340)" {
+  local jobs rc out
   jobs="$(suite_jobs)" || fail "the jobs of $WORKFLOW could not be read"
   [ -n "$jobs" ] || fail "no job in $WORKFLOW runs bin/devbin test all -- the suite's jobs could not be read"
-  # WSL's crossing is held below, so the derived set must hold it.
+  # WSL sees only what WSLENV names, and WSLENV is read below with every other
+  # line, so the derived set must hold its job.
   grep -qx test-wsl <<<"$jobs" || fail "the jobs read as running the suite do not include test-wsl: $jobs"
-  for job in $jobs; do
-    lines="$(step_lines "$job" "Run tests")"
-    [ -n "$lines" ] || fail "the $job job has no Run tests step"
-    grep -qxF '          DEVBIN_TEST_JOBS: all' <<<"$lines" ||
-      fail "the $job job's Run tests step does not set DEVBIN_TEST_JOBS to all:
-$lines"
-  done
-  # WSL sees only what WSLENV names.
-  wslenv="$(job_block test-wsl | sed -n 's/^      WSLENV: //p')"
-  [ -n "$wslenv" ] || fail "the test-wsl job carries no WSLENV"
-  [[ ":$wslenv:" == *:DEVBIN_TEST_JOBS:* ]] || fail "WSLENV does not carry DEVBIN_TEST_JOBS into WSL: $wslenv"
-  # NO NUMBER, IN ANY QUOTING. grep's status is read: 1 is no line found, and
+  # DEVBIN_TEST_JOBS, ELSE DEVBIN_JOBS: either one, set on a step, a job or the
+  # whole workflow, or carried into WSL, would run the suite at a number in
+  # place of its own default. A comment may name them. awk's status is read:
   # an error is no pass.
   rc=0
-  out="$(grep -nE "DEVBIN_TEST_JOBS[[:space:]]*[:=][[:space:]]*[\"']?[0-9]" "$WORKFLOW")" || rc=$?
-  [ "$rc" -eq 1 ] || fail "grep found a number written for DEVBIN_TEST_JOBS, or could not read $WORKFLOW (status $rc): $out"
+  out="$(awk '/^[ \t]*#/ { next } /DEVBIN_(TEST_)?JOBS/ { print FNR ": " $0 }' "$WORKFLOW")" || rc=$?
+  [ "$rc" -eq 0 ] || fail "awk could not read $WORKFLOW (status $rc)"
+  [ -z "$out" ] || fail "the workflow sets how many tests run at once, in place of the suite's own default:
+$out"
 }
 
 @test "the Ubuntu job does not run check all, which would refuse on a runner with no intent" {
