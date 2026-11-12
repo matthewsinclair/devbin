@@ -1454,40 +1454,47 @@ legs_lines() {
 }
 
 # legs_cache_lines -- once every leg is green, the RELEASE seal's
-# `cache<TAB><artefact><TAB><key>` line for the artefact the macOS stage
-# caches, through note_line, and one line of the cut's output naming it
-# (ST0011 WP-06): the line cache gc reads to keep the key. The artefact is
-# cfg_macos_artefact's, the one answer app-sign and doctor read too, so it is
-# the one the stage's app-sign pulled or put, and its key at R is the cache's
-# own answer (cache key --commit), the one derivation of a key. A stage that
-# builds no app, or builds it uncached, says so, and a key that cannot be read
-# is said with why, so the seal names no key it does not hold.
+# `cache<TAB><artefact><TAB><key>` line for each artefact the build: block
+# declares, through note_line, and one line of the cut's output naming it
+# (ST0011 WP-06; every artefact, issue 0338): the lines cache gc reads to keep
+# every key a release names, the macOS stage's app's and every other build's
+# alike. Each key at R is the cache's own answer (cache key --commit), the one
+# derivation of a key, asked by its path (core_verb), and one that cannot be
+# read is said with why, so the seal names no key it does not hold. Where the
+# macOS stage runs, the app's artefact is cfg_macos_artefact's, the one answer
+# app-sign and doctor read too, so it is the one the stage pulled or put, and
+# its line says so; a stage that builds no app, or builds it uncached, says
+# that instead.
 legs_cache_lines() {
-  local art key s=0 err="$SCRATCH/cache.key.err"
-  [ "$LEGS_MACOS" = yes ] || return 0
-  art="$(cfg_macos_artefact)" || s=$?
-  case "$s" in
-    0) ;;
-    1)
-      printf "release: cache: the macOS stage builds its app uncached: no build.artefacts entry has macos.app's path\n"
-      return 0
-      ;;
-    *)
-      # Why there is none: macos.build is not declared, two entries name the
-      # app, the app carries its commit (macos.commit_stamp), or the entry's
-      # inputs hold no file the app's version is read from.
-      printf 'release: cache: %s\n' "$art"
-      return 0
-      ;;
-  esac
-  # The verb holds a key to its form before it prints one (lib/cmd/cache).
-  if key="$(core_verb cache key "$art" --commit "$LEG_SHA" 2>"$err")" && [ -n "$key" ]; then
-    note_line "cache"$'\t'"$art"$'\t'"$key"
-    printf 'release: cache: %s %s, the macOS stage'"'"'s app at %s\n' "$art" "$key" "${LEG_SHA:0:12}"
-  else
-    printf 'release: cache: the key of %s at %s could not be read, so the seal names none for it: %s\n' \
-      "$art" "${LEG_SHA:0:12}" "$(one_line "$(cat "$err" 2>/dev/null)")"
+  local art key s=0 err="$SCRATCH/cache.key.err" mac=""
+  if [ "$LEGS_MACOS" = yes ]; then
+    mac="$(cfg_macos_artefact)" || s=$?
+    case "$s" in
+      0) ;;
+      1) printf "release: cache: the macOS stage builds its app uncached: no build.artefacts entry has macos.app's path\n" ;;
+      *)
+        # Why there is none: macos.build is not declared, two entries name the
+        # app, the app carries its commit (macos.commit_stamp), or the entry's
+        # inputs hold no file the app's version is read from.
+        printf 'release: cache: %s\n' "$mac"
+        mac=""
+        ;;
+    esac
   fi
+  for art in $(cfg_list build.artefacts); do
+    # The verb holds a key to its form before it prints one (lib/cmd/cache).
+    if key="$(core_verb cache key "$art" --commit "$LEG_SHA" 2>"$err")" && [ -n "$key" ]; then
+      note_line "cache"$'\t'"$art"$'\t'"$key"
+      if [ "$art" = "$mac" ]; then
+        printf 'release: cache: %s %s, the macOS stage'"'"'s app at %s\n' "$art" "$key" "${LEG_SHA:0:12}"
+      else
+        printf 'release: cache: %s %s at %s\n' "$art" "$key" "${LEG_SHA:0:12}"
+      fi
+    else
+      printf 'release: cache: the key of %s at %s could not be read, so the seal names none for it: %s\n' \
+        "$art" "${LEG_SHA:0:12}" "$(one_line "$(cat "$err" 2>/dev/null)")"
+    fi
+  done
 }
 
 # legs_say <leg> <line> -- one line of the loop's, with the clock: the leg,

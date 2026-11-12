@@ -4368,3 +4368,31 @@ $output"
   [ "$(sed -n 3p "$DEVBIN_TEST_TMPDIR/gate.cache")" = "$mine" ] || fail "the run under DEVBIN_GATE_CACHE handed its gate: $(cat "$DEVBIN_TEST_TMPDIR/gate.cache")"
   [ "$(cat "$mine/runs")" = run ] || fail "the directory the environment named was not made for the gate: $(cat "$mine/runs" 2>&1)"
 }
+
+@test "0338: the RELEASE seal names the key at the release commit of every artefact the build: block declares, the macOS stage's or not, so cache gc keeps each" {
+  local rel out a key
+  local -a arts=(app cli)
+  stub_cargo
+  export DEVBIN_CACHE_HOME="$DEVBIN_TEST_TMPDIR/cache"
+  proj="$(cut_project)"
+  printf '%s\n' 'build:' '  inputs:' '    - src' '  artefacts:' >>"$proj/bin/.devbin/config.yaml"
+  for a in "${arts[@]}"; do
+    printf '%s\n' "    $a:" '      tool: cargo' "      path: out/$a" >>"$proj/bin/.devbin/config.yaml"
+  done
+  mkdir -p "$proj/src"
+  printf 'fn main() {}\n' >"$proj/src/main.rs"
+  printf 'out/\n' >>"$proj/.gitignore"
+  git -C "$proj" add -A
+  git -C "$proj" commit -qm "build artefacts, and no macOS stage"
+  git -C "$proj" push -q origin main
+  cut_to_tag_stop "$proj" v1.0.1
+  rel="$(git -C "$proj" rev-parse HEAD)"
+  [[ "$(git -C "$proj" log -1 --format=%s)" == "release: "* ]] || fail "HEAD is not the release commit: $(git -C "$proj" log --oneline -3)"
+  out="$(readlink -f "$proj/tmp/release/LATEST_RELEASE.out")" && [ -f "$out" ] || fail "the cut left no RELEASE seal under tmp/release/"
+  for a in "${arts[@]}"; do
+    key="$(devbin_run "$proj" cache key "$a" --commit "$rel")" || fail "the arm cannot key $a at $rel: $key"
+    grep -qxF "devbin| cache"$'\t'"$a"$'\t'"$key" "$out" ||
+      fail "the seal names no cache line for $a $key: $(grep -F 'cache' "$out" || echo '(none)')"
+    assert_output_contains "release: cache: $a $key at ${rel:0:12}"
+  done
+}
