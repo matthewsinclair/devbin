@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 10:41Z
+heartbeat_at: 2026-11-12 10:50Z
 status: active
-focus: "LOCALFOLDED for hv's compact (2026-11-12 10:40Z by date -u), holding for hv's /compact and vc's go after it. 0340-1, the lanes' default N (half the CPUs and never fewer than 24, the floor being _LANES_JOBS_FLOOR in lib/bats-lanes, on hv's word), is banked at 7278f29a for cc's k340 stack (0334-2, 0341-1, 0340-1). Its arm reads red at the base and green at the build. The record, with the timings and both sweeps, is ~/Devel/scratch/devbin-dc/lanesjobs/STATE.md. After the release: clear-clone-pc0123.sh and the old bank refs' clearing, in vc's form. The ST0011/16 claim stays."
+focus: "BOUNCED after hv's compact (2026-11-12 10:50Z by date -u), holding for vc's go. 0340-1, the lanes' default N (half the CPUs and never fewer than 24, the floor being _LANES_JOBS_FLOOR in lib/bats-lanes, on hv's word), is banked at 7278f29a for cc's k340 stack (0334-2, 0341-1, 0340-1), which has not run yet. The record is ~/Devel/scratch/devbin-dc/lanesjobs/STATE.md. After 0340-1 lands: 0340's Resolution and close, then the 0340 kit cleared by script. After the release: clear-clone-pc0123.sh and the old bank refs' clearing, in vc's form. The ST0011/16 claim stays."
 claims: [ST0011/16]
 ---
 
