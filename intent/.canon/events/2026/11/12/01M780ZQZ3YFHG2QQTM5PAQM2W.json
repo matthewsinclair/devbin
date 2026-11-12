@@ -1,0 +1,15 @@
+{
+  "id": "01M780ZQZ3YFHG2QQTM5PAQM2W",
+  "ts": "2026-11-12T14:01:03.715Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-11-12, during cc's k342 run. (1) In devbin-vc's window, received before the clock read 13:57Z by date -u: \"Ok, I need to move. DO NOT START NEW WORK.\" (2) To cc directly, relayed by cc, received before 13:58Z: \"Ok, DO NOT START A NEW ONE NOW. I need to move.\" (3) In devbin-vc's window, received before 14:00Z: \"Please tell all of your Claudes to bank, fold, and hold. I need to move.\" Executed: cc, dc and kovacs-sysadm were told. Nothing runs, the desk is empty, and every seat banks, folds and holds, staying active. k342 (desk request 01M77Y1KVVPYWC53PYMXNNG3RF, tip 4d574460: 0342-1 3521080a, then 0344-1) ended red at 13:55:09Z. Its units part was green, 13:10:56Z to 13:27:08Z: every red failed on its own finding, and every green passed under BSD and GNU. The kovacs leg ran alone from 13:28:09Z to 13:54:59Z by its seal (26m50s for 3136 tests: check all until about 13:34, then the tests at 24 jobs on 4 vCPUs), under hv's desktop load on rhadamanth, with the VM holding its 4 CPUs almost throughout. It read 3135 ok and one not ok: harness.bats's \"no test name contains a backtick or a command substitution\", tripped by 0342-1's new contract.bats arm, whose title carries a dollar sign. The race fix held. The local whole suite did not run, so rhadamanth's time alone is not yet measured. On hv's go: cc retitles the arm with no dollar sign (one line, no code), amends 0342-1, re-banks it and re-stacks 0344-1; vc then runs harness.bats and contract.bats at the new tip and rhadamanth's whole suite alone, lands both, and puts the rewrite to hv."
+  }
+}
