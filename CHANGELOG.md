@@ -6,7 +6,7 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.23] - Unreleased
+## [0.1.23] - 2026-11-12
 
 ### Added
 
