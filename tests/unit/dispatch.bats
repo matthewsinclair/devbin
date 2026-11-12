@@ -2274,7 +2274,7 @@ solo|all|all|1|'bin/devbin solo all' has no options to run: commands.solo.run in
 lineoff|all|all|1|'bin/devbin lineoff all' has no options to run: commands.lineoff.run in bin/.devbin/config.yaml owns lineoff here, and 'bin/devbin lineoff' runs it
 twin|all|handler|0|ran:twin args=all
 offh|all|handler|0|ran:offh args=all
-test|shell|catalogue|0|ran:bats args=tests
+test|shell|catalogue|0|lanes: one, serial, because DEVBIN_TEST_JOBS is 1
 test|zzz|devbin|1|unknown test option: zzz
 grp|one|option-run|0|line:own args=
 grp|zzz|options|1|usage: bin/devbin grp <one|two|all>
@@ -2297,7 +2297,11 @@ ROWS
     else
       bad="$bad [$cmd $word: option_leaf exited $?]"
     fi
-    PATH="$proj/fakebin:$PATH" run devbin_run "$proj" "$cmd" "$word"
+    # `test shell` is devbin's @builtin, which hands the project's tests to the
+    # lanes runner (0339). In one lane, which DEVBIN_TEST_JOBS=1 asks for and
+    # nothing else here reads, the runner says so on its first line and hands
+    # them to the fake bats; in two, the fake bats gives the lanes no count.
+    PATH="$proj/fakebin:$PATH" DEVBIN_TEST_JOBS=1 run devbin_run "$proj" "$cmd" "$word"
     [ "$status" = "$code" ] || bad="$bad [$cmd $word: exit $status, want $code]"
     case "$output" in
       *"$expect"*) ;;
