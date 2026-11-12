@@ -3,17 +3,17 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 19:05Z
+heartbeat_at: 2026-11-12 19:29Z
 status: active
-focus: "0.1.23 released. Resolutions for 0340 and 0344 applied and both closed (86906089); kits cleared. Now: 0345-1 and 0346-1, re-stack on main, probe, desk ask behind tonight's queue. After the release: clear-clone-pc0123.sh, then bankclear.sh --apply; tell kovacs-sysadm ~/work/t0340 can go. ST0011/16 claim stays. (2026-11-12 19:05Z by date -u)"
-claims: [ST0011/16, ISSUE:0345, ISSUE:0346]
+focus: "0345 and 0346 closed on their landings 03942c76 and 58344954 (not pushed). Standing by for vc. Owed: tell kovacs-sysadm ~/work/t0340 can go; after the release clear-clone-pc0123.sh, then bankclear.sh --apply. ST0011/16 claim stays. (2026-11-12 19:29Z by date -u)"
+claims: [ST0011/16]
 ---
 
 # DevX Claude (dc)
 
 ## DOING
 
-- 0345-1 and 0346-1 (T1 per-file times and load, T2 progress through the heartbeat, stacked): name the units, re-stack on main, probe, then ask the desk with the proposed scope; the grant waits behind Intent's kovacs leg and cut and another estate's release. Bank: ~/Devel/scratch/devbin-dc/sealtime/STATE.md
+_(none)_
 
 ## TODO
 
