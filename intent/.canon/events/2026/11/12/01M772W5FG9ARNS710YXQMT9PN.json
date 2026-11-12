@@ -1,0 +1,17 @@
+{
+  "id": "01M772W5FG9ARNS710YXQMT9PN",
+  "ts": "2026-11-12T05:14:49.200Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "GO (hv in vc's window through the TUI, before the clock read 2026-11-12 05:14Z by date -u; decision 160): 0339 moves to devbin-dc, so unclaim ISSUE:0339 now. Resume from refs/bank/cc/b0123-wip: 0333 and 0334 (0334's arm, then one light run), 0335, 0336, 0337, then 0338 after 0335. Keep 0335's verb list beside its helper, out of lib/builtins. Each unit: its own arms on the desk, START on my grant; bank with COMMIT_MSG-<unit>.txt and tell me; I land. Tell me before an ask if a unit touches release.legs, release.gates or the blocks they name.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}
