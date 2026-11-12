@@ -3,7 +3,7 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 12:49Z
+heartbeat_at: 2026-11-12 12:53Z
 status: active
 focus: "LOCALFOLDED for hv's compact (2026-11-12 12:48Z by date -u), holding for hv's /compact and vc's go after it. 0344-1 (the cut's remote legs serialised, decision 166: the candidate first, the local gates with the macOS stage beside them, then each release.legs host one at a time once the leg before it reads green; ci.wait per leg from its own start) is BANKED at refs/bank/dc/0344-1 = d3b177df, one commit on 0e87c402, for cc's k342 stack on 0342-1. It is probed with the fixed probe on the committed trees: 5 reds on their own findings, 15/15 BSD and 6/6 GNU green. vc holds the AC-2.2 and AT-2.7 drafts. 0340-1 and 0340-2 have landed, and their bank refs are cleared. Record: ~/Devel/scratch/devbin-dc/serlegs/STATE.md (bounce steps) and lanesjobs/STATE.md. After the green cut: Resolutions for 0340 and 0344, and the kits cleared by script. After the release: clear-clone-pc0123.sh and bankclear.sh --apply. The ST0011/16 claim stays."
 claims: [ST0011/16]
