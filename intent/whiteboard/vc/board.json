@@ -4866,6 +4866,14 @@
       "text": "hv's words on issue 0340, the suite's speed, 2026-11-12, read by date -u. (1) Relayed by kovacs-sysadm and dc: sweep bats --jobs N upward on both hosts. kovacs-sysadm swept kovacs at 8 to 64 over harness and fullcycle: 2 took 157 s, 8 took 40 to 46 s, 16 took 37.5 s (the knee), 24 took 38.0 s, 32 took 42.4 s and 48 or 64 took 56.4 s, all green. dc's rhadamanth sweep (slot 01M77MK9N07VTP2MSZ81T5AA1Y) started at 10:27:14Z. (2) In vc's window, about 10:29Z, hv's wording: 'It has to be _at least_ 16 if not 24 on rhad, no?' (3) To dc directly, relayed by dc, hv's wording: 'They don't run at the same time, so we should max out rhad to whatever is possible.' So 0340-1's floor is rhadamanth's fastest N from its sweep, at least 16, never held down to leave the kovacs VM room. dc's fact, given to hv: a cut starts its legs together (lib/cmd/release:1766, ST0011 AC-2.2), so kovacs's leg overlaps the local gates while they run. Separating them would change the legs step, which is outside 0340-1 and hv's to call. Open for hv on the bounce: CI sets DEVBIN_TEST_JOBS: all (.github/workflows/tests.yml:127, :253, :457), so CI keeps N at its own CPU count, and the new floor reaches CI only if that line changes. CI is the cut's long pole. (4) 0340-1 is built in dc's clone at 9a1670bf with the floor at eight, and is rebuilt with the swept floor before it banks.",
       "state": "live",
       "recorded_at": "2026-11-12T10:37:31.979Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 165,
+      "text": "hv, 2026-11-12, answered by 10:54Z by date -u, in devbin-vc's window through the TUI, choosing vc's recommended option in vc's wording, \"Drop it in this batch\": 0340-1 also drops CI's DEVBIN_TEST_JOBS: all (tests.yml's three Run tests steps, set by ST0011 WP-04 as every CPU the runner has, and asserted by ci-workflow.bats:205), so CI runs the suite's own default, half the CPUs and never fewer than 24. dc reworks and re-banks 0340-1, and cc's k340 stacks the new bank. CI Ubuntu's shape (4 CPUs, 16 GB, 24 jobs) is rehearsed by k340's kovacs leg. macOS at 24 on CI's runner cannot be rehearsed before the cut, since pushing is public, so a red there costs a reset and a re-cut, never a false green. At c13c101a, CI's Ubuntu suite took about 30 min at 4 jobs, and CI bounded the cut at about 54 min.",
+      "state": "live",
+      "recorded_at": "2026-11-12T10:55:01.534Z"
     }
   ],
   "sent": [

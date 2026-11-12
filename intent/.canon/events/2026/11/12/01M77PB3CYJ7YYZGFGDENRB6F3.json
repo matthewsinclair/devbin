@@ -1,0 +1,15 @@
+{
+  "id": "01M77PB3CYJ7YYZGFGDENRB6F3",
+  "ts": "2026-11-12T10:55:01.535Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv, 2026-11-12, answered by 10:54Z by date -u, in devbin-vc's window through the TUI, choosing vc's recommended option in vc's wording, \"Drop it in this batch\": 0340-1 also drops CI's DEVBIN_TEST_JOBS: all (tests.yml's three Run tests steps, set by ST0011 WP-04 as every CPU the runner has, and asserted by ci-workflow.bats:205), so CI runs the suite's own default, half the CPUs and never fewer than 24. dc reworks and re-banks 0340-1, and cc's k340 stacks the new bank. CI Ubuntu's shape (4 CPUs, 16 GB, 24 jobs) is rehearsed by k340's kovacs leg. macOS at 24 on CI's runner cannot be rehearsed before the cut, since pushing is public, so a red there costs a reset and a re-cut, never a false green. At c13c101a, CI's Ubuntu suite took about 30 min at 4 jobs, and CI bounded the cut at about 54 min."
+  }
+}
