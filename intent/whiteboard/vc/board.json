@@ -4768,10 +4768,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 204,
-      "text": "kovacs's hand-added TMPDIR line is already gone: Molt's re-render took it out of ~/.config/molt/env.sh at 2026-11-12 04:45Z (08:45 +04; the old copy is env.sh.molt-backup.20261112084534), per kovacs-sysadm. Nothing planned needs it. devbin's 0.1.23 leg carries 0334, and devbin's 0.1.22 leg ran green at 2026-11-11 08:54Z, before the line existed. Intent's next leg runs only after Intent takes in 0.1.23. hv rules on kovacs-sysadm's question, whether the line goes back by hand until then; vc's rec is to leave it out. At devbin's 0.1.23 cut, the kovacs leg log names the TMPDIR it ran under, which is 0334's proof.",
+      "text": "hv's word in kovacs-sysadm's window, relayed by kovacs-sysadm (received before the clock read 2026-11-12 05:25Z by date -u; hv's own wording not relayed), over vc's rec to leave the line out: kovacs's TMPDIR is fixed in Molt-matts ae88cb7 (pushed) and live on kovacs. config/zsh/zshenv exports TMPDIR=$HOME/tmp (ext4, 15G free) where /proc/mounts shows /tmp as tmpfs and TMPDIR is unset or /tmp, and leaves any other TMPDIR alone; env.sh is clean as rendered; the Macs are unchanged. LEFT for devbin's 0.1.23 cut: read the kovacs leg log's TMPDIR. It must be the leg's own <worktree>.tmp, not ~/tmp, because the zshenv default would hide a 0334 that set nothing.",
       "state": "live",
       "recorded_at": "2026-11-11T18:43:37.754Z",
-      "edited_at": "2026-11-12T05:23:36.690Z"
+      "edited_at": "2026-11-12T05:25:54.292Z"
     },
     {
       "node": "vc",
