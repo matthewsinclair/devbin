@@ -1,0 +1,16 @@
+{
+  "id": "01M773K52ZRX9AT06NHHXCD3V5",
+  "ts": "2026-11-12T05:27:22.463Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 204,
+    "text": "hv's word in kovacs-sysadm's window, relayed by kovacs-sysadm (received before the clock read 2026-11-12 05:25Z by date -u; hv's own wording not relayed), over vc's rec to leave the line out: kovacs's TMPDIR is fixed in Molt-matts ae88cb7 (pushed) and live on kovacs. config/zsh/zshenv exports TMPDIR=$HOME/tmp (ext4, 15G free) where /proc/mounts shows /tmp as tmpfs and TMPDIR is unset or /tmp, and leaves any other TMPDIR alone; env.sh is clean as rendered; the Macs are unchanged. ae88cb7 already made ~/tmp with mkdir -p when it was missing. A follow-up commit (pushed, its sha not relayed) exports TMPDIR only when ~/tmp exists and is writable, and otherwise leaves it alone, so a fresh Linux sleeve such as pihole cannot break mktemp (kovacs-sysadm, tested with throwaway homes). LEFT for devbin's 0.1.23 cut: read the kovacs leg log's TMPDIR. It must be the leg's own <worktree>.tmp, not ~/tmp, because the zshenv default would hide a 0334 that set nothing."
+  }
+}
