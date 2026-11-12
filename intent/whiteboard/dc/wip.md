@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 10:50Z
+heartbeat_at: 2026-11-12 11:07Z
 status: active
-focus: "BOUNCED after hv's compact (2026-11-12 10:50Z by date -u), holding for vc's go. 0340-1, the lanes' default N (half the CPUs and never fewer than 24, the floor being _LANES_JOBS_FLOOR in lib/bats-lanes, on hv's word), is banked at 7278f29a for cc's k340 stack (0334-2, 0341-1, 0340-1), which has not run yet. The record is ~/Devel/scratch/devbin-dc/lanesjobs/STATE.md. After 0340-1 lands: 0340's Resolution and close, then the 0340 kit cleared by script. After the release: clear-clone-pc0123.sh and the old bank refs' clearing, in vc's form. The ST0011/16 claim stays."
+focus: "0340-2 BANKED (2026-11-12 11:06Z by date -u) on hv's yes to CI (decision 165): refs/bank/dc/0340-2 at 8b01007c, one commit on 0340-1 (7278f29a, its ref unchanged), on dc0e45b8. 0340-2 drops DEVBIN_TEST_JOBS: all from CI's suite jobs and WSLENV, reworks ci-workflow.bats's WP04 arm (no non-comment workflow line names DEVBIN_TEST_JOBS or DEVBIN_JOBS), says so in help/test.md, and fixes 0.1.23's note (0339's N never fewer than twenty-four) with its views. Its arm reads red at 7278f29a and green at the build under BSD and GNU. cc stacks both in k340. Next: read 0340-1's and 0340-2's legs when k340 ENDs; after the landing, both bank refs cleared before hv's rewrite; after the green cut, 0340's Resolution and close, then the kits cleared. After the release: clear-clone-pc0123.sh and the old bank refs' clearing, in vc's form. The record is ~/Devel/scratch/devbin-dc/lanesjobs/STATE.md. The ST0011/16 claim stays."
 claims: [ST0011/16]
 ---
 
