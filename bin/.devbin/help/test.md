@@ -33,6 +33,8 @@ each exactly once; its last line says how many ran in each.
 
 Before that line the run names each file of the parallel lane with its wall time, the slowest first, a wait for a free job slot included, then the serial lane's time and the load average at the run's start and end. A file that failed is named with its exit.
 
+bats holds each file's results until every earlier file has printed, so the output can sit still while most of the suite has finished. Whenever it has been quiet for a while, the run says on stderr how many of the parallel lane's files and tests are done, with a terminal or without one. The run's log never holds that line.
+
 Without GNU parallel, or with `DEVBIN_TEST_JOBS=1`, the suite runs in one lane,
 one test at a time, and the first line says why. A run handed paths or bats
 flags is a targeted run: bats gets exactly what it was handed, in one lane, and

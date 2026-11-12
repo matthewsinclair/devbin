@@ -76,6 +76,28 @@
 #
 set -euo pipefail
 
+# lanes_progress <record> <test list> <progress file> -- the parallel lane's
+# progress as one line, written whole in place of the file's last: its files
+# done of the files bats's test list names, the tests in them of the list's,
+# and how many of its files are running. A file bats starts with no test of
+# this lane in the list is no file of it. Written to a file beside the
+# progress file and moved over it, so a reader never sees half a line.
+lanes_progress() {
+  LC_ALL=C awk -F '\t' '
+    NR == FNR { tests[$1]++; all++; next }
+    $1 == "start" { started[$3] = 1 }
+    $1 == "end" { ended[$3] = 1 }
+    END {
+      for (f in tests) files++
+      for (f in ended) if (f in tests) { done++; passed += tests[f] }
+      for (f in started) if ((f in tests) && !(f in ended)) running++
+      printf "the parallel lane: %d of %d files done (%d of %d tests), %d running\n", done, files, passed, all, running
+    }
+  ' "$2" "$1" >"$3.$$" 2>/dev/null && mv -f "$3.$$" "$3" 2>/dev/null
+  rm -f "$3.$$"
+  return 0
+}
+
 # THE RECORDER'S TWO ROLES, taken before anything is sourced, since one runs
 # once per file of the run. _LANES_AS_PARALLEL names the parallel program bats
 # was going to run; it and the caller's own BATS_PARALLEL_BINARY_NAME are put
@@ -113,15 +135,17 @@ if [ -n "${_LANES_AS_PARALLEL:-}" ]; then
 fi
 if [ "${1:-}" = --lanes-record-file ]; then
   shift
-  rec="${_LANES_RECORD:-}"
-  unset _LANES_RECORD
+  rec="${_LANES_RECORD:-}" prog="${_LANES_PROGRESS:-}"
+  unset _LANES_RECORD _LANES_PROGRESS
   [ $# -ge 2 ] || exec "$@"
   file="${*: -2:1}"
   list="${*: -1}"
   [ -z "$rec" ] || printf 'start\t%s\t%s\t%s\n' "${EPOCHREALTIME//[!0-9]/}" "$file" "$list" >>"$rec"
+  [ -z "$rec" ] || [ -z "$prog" ] || lanes_progress "$rec" "$list" "$prog"
   rc=0
   "$@" || rc=$?
   [ -z "$rec" ] || printf 'end\t%s\t%s\t%s\n' "${EPOCHREALTIME//[!0-9]/}" "$file" "$rc" >>"$rec"
+  [ -z "$rec" ] || [ -z "$prog" ] || lanes_progress "$rec" "$list" "$prog"
   exit "$rc"
 fi
 
@@ -263,6 +287,11 @@ lanes_times() {
 }
 
 dir="${1:?usage: bats-lanes <test directory>}"
+# THE GATE'S PROGRESS FILE, when run_gate gave one, is this run's to write and
+# never a run's that a test starts: it is read here and taken out of
+# everything this run starts, then handed to the recorder by a name of its own.
+progress="${DEVBIN_GATE_PROGRESS:-}"
+unset DEVBIN_GATE_PROGRESS
 # `all` IS EVERY CPU THE PROBE COUNTS, never cpu_count's guess of 4: a runner
 # whose CPUs cannot be counted is refused, naming the setting, rather than run
 # at a number nobody measured. It is read here once, and is the probe's count
@@ -336,6 +365,7 @@ self="$self_dir/$(basename "${BASH_SOURCE[0]}")"
 (
   [ -z "${BATS_PARALLEL_BINARY_NAME+x}" ] || export _LANES_CALLER_PARALLEL="$BATS_PARALLEL_BINARY_NAME"
   export _LANES_AS_PARALLEL="$parallel_program" _LANES_RECORD="$scratch/record" BATS_PARALLEL_BINARY_NAME="$self"
+  [ -z "$progress" ] || export _LANES_PROGRESS="$progress"
   lane "$scratch/one" bats --jobs "$jobs" --filter-tags '!serial' "$dir"
 ) || rc_one=$?
 
@@ -371,12 +401,15 @@ else
     exit 1
   fi
   printf '\nlanes: the serial lane, %s test(s), one at a time\n' "$serial"
+  [ -z "$progress" ] || printf 'the serial lane: %s test(s), one at a time\n' "$serial" >"$progress" 2>/dev/null || true
   two_start="${EPOCHREALTIME//[!0-9]/}"
   lane "$scratch/two" bats --jobs 1 --filter-tags serial "${files[@]}" || rc_two=$?
   two_took=$(((${EPOCHREALTIME//[!0-9]/} - two_start) / 100000))
 fi
 
-# THE TIMES, before the verdict, which stays the run's last line.
+# THE TIMES, before the verdict, which stays the run's last line. The lanes
+# have ended, so the progress they wrote says nothing more.
+[ -z "$progress" ] || : >"$progress" 2>/dev/null || true
 times="$(lanes_times "$scratch/record" "$dir")"
 if grep -qx shape "$scratch/record"; then
   printf '\nlanes: no time per file: this bats starts its files in a way the recorder does not know\n'

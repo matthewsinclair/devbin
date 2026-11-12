@@ -186,6 +186,40 @@ under_pty() {
   refute_output_contains "still running"
 }
 
+@test "with no terminal, a command that writes progress gets beats carrying its line, none of it enters the log, and the file goes with the run (0346)" {
+  local tmp="$BATS_TEST_TMPDIR/tmp" log
+  mkdir -p "$tmp"
+  # shellcheck disable=SC2016 # the gated shell expands it, not this one
+  # The line reaches the command through its environment, since the log
+  # records the command line itself.
+  PROGRESS_LINE="half way there" TMPDIR="$tmp" DEVBIN_HEARTBEAT_SECS=0.2 run run_gate --suffix demo --out-dir logs -- \
+    sh -c 'printf "%s\n" "$PROGRESS_LINE" >"$DEVBIN_GATE_PROGRESS"; sleep 1'
+  assert_success
+  assert_output_contains "still running"
+  assert_output_contains "elapsed; half way there"
+  log="$PROJECT_ROOT/logs/LATEST_DEMO.out"
+  [ -e "$log" ] || fail "no log written"
+  refute_file_contains "$log" "half way there"
+  refute_file_contains "$log" "still running"
+  [ -z "$(find "$tmp" -name 'devbin-progress.*')" ] || fail "the progress file outlived its run: $(find "$tmp" -name 'devbin-progress.*')"
+}
+
+@test "with no terminal, a lanes run's beats count the files and tests its parallel lane has finished, out of the suite's (0346)" {
+  require_command parallel "no GNU parallel on this runner"
+  local suite="$BATS_TEST_TMPDIR/suite" files tests
+  mkdir -p "$suite"
+  printf '%s\n' '@test "a slow" { sleep 1; }' >"$suite/a.bats"
+  printf '%s\n' '@test "b quick" { true; }' '@test "b quick too" { true; }' >"$suite/b.bats"
+  files=0
+  for f in "$suite"/*.bats; do files=$((files + 1)); done
+  tests="$(cat "$suite"/*.bats | grep -c '^@test ')"
+  DEVBIN_LIB="$DEVBIN_LIB_DIR" DEVBIN_HEARTBEAT_SECS=0.2 DEVBIN_TEST_JOBS=2 \
+    run run_gate --suffix lanes --grammar shell --out-dir logs -- "$DEVBIN_LIB_DIR/bats-lanes" "$suite"
+  assert_success
+  assert_output_matches "still running -- quiet for [^;]*; the parallel lane: [0-9]+ of $files files done \\([0-9]+ of $tests tests\\), [0-9]+ running"
+  refute_file_contains "$PROJECT_ROOT/logs/LATEST_LANES.out" "the parallel lane:"
+}
+
 @test "DEVBIN_HEARTBEAT_SECS=0 disables it under a terminal, however the zero is written, and so does any interval under 0.1s" {
   # A zero, or an interval under 0.1s, that reached the loop would beat at
   # once or many times a second, so a short gate is enough to see it.

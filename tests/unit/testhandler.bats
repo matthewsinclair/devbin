@@ -459,3 +459,15 @@ lanes_times_block() {
     assert_output_contains "ok 1 a sees the caller's setting"
   done
 }
+
+@test "a lanes run takes the gate's progress file out of what it starts, and leaves it empty once its lanes have ended (0346)" {
+  require_command parallel "no GNU parallel on this runner"
+  local root prog="$DEVBIN_TEST_TMPDIR/progress"
+  root="$(lanes_fixture)"
+  printf '%s\n' "@test \"a sees no progress file\" { [ -z \"\${DEVBIN_GATE_PROGRESS:-}\" ]; [ -z \"\${_LANES_PROGRESS:-}\" ]; }" >"$root/tests/unit/a.bats"
+  : >"$prog"
+  run lanes_run "$root" DEVBIN_TEST_JOBS=2 DEVBIN_GATE_PROGRESS="$prog"
+  assert_success
+  assert_output_contains "ok 1 a sees no progress file"
+  [ -e "$prog" ] && [ ! -s "$prog" ] || fail "the progress file is not there and empty once the lanes ended: $(cat "$prog" 2>&1)"
+}
