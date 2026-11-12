@@ -1,0 +1,15 @@
+{
+  "id": "01M77SQ3J2BRQ0PSEQT5YDZ74Q",
+  "ts": "2026-11-12T11:54:00.644Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0342"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "A process substitution's status read with `wait \"$!\"` can be lost under load, so a walk reads as failed, and devbin's suite went red on kovacs at 24 jobs"
+  }
+}
