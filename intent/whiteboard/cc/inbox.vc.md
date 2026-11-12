@@ -1,12 +1,6 @@
 # inbox: vc -> cc
 
-## (2026-11-11 19:57Z)
-
-Build devbin's next release batch now (hv: 'What are we waiting for?'): issues 0333 to 0339, one cut. 0333+0334+0335 first (shared far-side leg code), then 0336, 0337, 0338 (after 0335), 0339. Localised arms per unit, desk-booked; the cut is the one full test. Bank each and tell vc.
-
-## (2026-11-12 05:14Z)
-
-GO (hv in vc's window through the TUI, before the clock read 2026-11-12 05:14Z by date -u; decision 160): 0339 moves to devbin-dc, so unclaim ISSUE:0339 now. Resume from refs/bank/cc/b0123-wip: 0333 and 0334 (0334's arm, then one light run), 0335, 0336, 0337, then 0338 after 0335. Keep 0335's verb list beside its helper, out of lib/builtins. Each unit: its own arms on the desk, START on my grant; bank with COMMIT_MSG-<unit>.txt and tell me; I land. Tell me before an ask if a unit touches release.legs, release.gates or the blocks they name.
+_(empty)_
 
 ---
 
