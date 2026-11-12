@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 344,
+  "slug": "a-cut-runs-its-remote-legs-beside-its-local-gate",
+  "title": "A cut runs its remote legs beside its local gates, so a leg host on the cutting machine, kovacs on rhadamanth, shares its CPUs",
+  "status": "open",
+  "severity": "high",
+  "created": "2026-11-12",
+  "reporter": "Matthew Sinclair",
+  "body": "## What happens\n\nA cut's legs step starts every leg together at the release commit and reads them all in one wait loop: the candidate's push, the local gates, each reached `release.legs` host and the macOS stage (lib/cmd/release, legs_step; ST0011 AC-2.2). kovacs, devbin's one remote leg, is a VM on rhadamanth, the machine that cuts. So the leg's suite and the local gates' suite run on the same CPUs at once.\n\nIn the stacked run of 0.1.23's fixes on 2026-11-12, both at 24 jobs, kovacs ran about 49 tests a minute while rhadamanth's whole suite ran beside it, and about 200 a minute once that had ended. The load (35) also exposed issue 0342's race.\n\n## hv's rulings (vc's decision 166)\n\n- \"we can't run rhad and kovacs at the same time, they need to be serialised\", for every kit, probe and sweep.\n- \"yes, serialise the cut's legs too\", \"Fix it now, please\" and \"dc, now, in parallel\".\n\n## The fix\n\n- The candidate starts first, as now, and runs throughout, since CI runs on GitHub's machines.\n- The local gates start next, with the macOS stage beside them, as now: the stage is no suite.\n- Each reached `release.legs` host runs after them, one at a time in the config's order, and starts only once the leg before it reads green. A red stops the cut before the next host is sent the release commit, and the stop names every host it never started.\n- `ci.wait` bounds each remote leg from its own start, so a long local run spends none of a remote leg's wait.\n- The dry run names the order.\n\nThe time a serialised cut takes is measured on both hosts, one after the other, each with its load read through the run. It is not derived from a contended run.\n"
+}
