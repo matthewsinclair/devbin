@@ -373,3 +373,49 @@ every_call_batch() {
   assert_output_contains "cannot name a repository on a host"
   every_call_batch
 }
+
+@test "0333: release_leg_start sends the previous release's tag beside R, forced over the host's older copy of it, so a gate that reads the last release finds it in a fresh bare repo; a tag this repository does not hold is unknown, naming it, and nothing is sent" {
+  local proj first sha wt bare
+  proj="$(leg_project)"
+  git -C "$proj" -c user.name=t -c user.email=t@t tag -a -m "the last release" v0.1.0
+  first="$(git -C "$proj" rev-parse HEAD)"
+  printf 'next\n' >"$proj/next"
+  leg_commit "$proj" "after the last release"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  bare="$HOSTS/kov/work/demo-leg.git"
+  run release_leg_start "$proj" kov demo "$first" v0.1.0
+  [ "$(leg_word)" = pending ] || fail "a start sending the tag: $output"
+  release_gates "$(leg_wt kov "$first")"
+  [ "$(git -C "$bare" rev-parse refs/tags/v0.1.0)" = "$(git -C "$proj" rev-parse refs/tags/v0.1.0)" ] ||
+    fail "the host's bare repo does not hold the tag this machine has"
+  # The tag made again here: the host's copy is this machine's, so it is replaced.
+  git -C "$proj" -c user.name=t -c user.email=t@t tag -f -a -m "the last release, made again" v0.1.0 "$first" >/dev/null
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha" v0.1.0
+  [ "$(leg_word)" = pending ] || fail "a start over the host's older copy of the tag: $output"
+  release_gates "$wt"
+  [ "$(git -C "$bare" rev-parse refs/tags/v0.1.0)" = "$(git -C "$proj" rev-parse refs/tags/v0.1.0)" ] ||
+    fail "the host kept its older copy of the tag"
+  run release_leg_start "$proj" kov demo "$sha" v9.9.9
+  [ "$(leg_word)" = unknown ] || fail "a tag this repository does not hold: $output"
+  assert_output_contains "the previous release's tag 'v9.9.9' is no tag in $proj"
+  every_call_batch
+}
+
+@test "0333: release_previous_tag names the newest release's tag other than the target's own, by version and not by spelling, and nothing when no other tag names a release" {
+  local repo
+  repo="$DEVBIN_TEST_TMPDIR/tags"
+  git init -q -b main "$repo"
+  git -C "$repo" -c user.name=t -c user.email=t@t -c maintenance.auto=false -c gc.auto=0 commit -q --allow-empty -m one
+  git -C "$repo" tag v0.2.0
+  run bash -c 'set -euo pipefail; . "$1/helpers"; . "$1/release.notes"; . "$1/release.steps"; cd "$2"; printf "[%s]\n" "$(release_previous_tag "v{version}" v0.2.0)" "$(release_previous_tag "v{version}" "")"' _ "$DEVBIN_LIB_DIR" "$repo"
+  assert_success
+  [ "$output" = $'[]\n[v0.2.0]' ] || fail "with one release, the target's own and none: $output"
+  git -C "$repo" tag v0.10.0
+  git -C "$repo" tag v0.9.0
+  git -C "$repo" tag v0.11.0-rc1
+  run bash -c 'set -euo pipefail; . "$1/helpers"; . "$1/release.notes"; . "$1/release.steps"; cd "$2"; printf "[%s]\n" "$(release_previous_tag "v{version}" v0.11.0)" "$(release_previous_tag "v{version}" v0.10.0)"' _ "$DEVBIN_LIB_DIR" "$repo"
+  assert_success
+  [ "$output" = $'[v0.10.0]\n[v0.9.0]' ] || fail "the newest release other than the target's own: $output"
+}

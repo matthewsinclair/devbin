@@ -8,7 +8,8 @@
 #   release_leg_dir <root> <host>                    where a host's pairs come back to
 #   release_leg_reach <host>                         whether pre-flight reaches the host, and its platform word
 #   release_leg_project_problem <project>            why the project's name cannot name a host's repository
-#   release_leg_start <root> <host> <project> <sha>  R onto the host, and its gates started there
+#   release_leg_start <root> <host> <project> <sha> [<tag>]
+#                                                    R, and the previous release's tag, onto the host, and its gates started there
 #   release_leg_read <root> <host> <project> <sha>   the leg's word on R, read from its copied pair
 #
 # Reach, start and read each print ONE line, `<word><TAB><detail>`, and
@@ -367,13 +368,26 @@ _release_leg_finish() {
   fi
 }
 
-# release_leg_start <root> <host> <project> <sha> -- the bare repo on <host>
-# made when missing, R sent into it by git send-pack, and the project's gates
-# started there at R, detached. `pending` once they are started, with where
-# they log; `unknown`, naming it, when any of the three could not be done.
+# release_leg_start <root> <host> <project> <sha> [<tag>] -- the bare repo on
+# <host> made when missing, R sent into it by git send-pack, and the project's
+# gates started there at R, detached. <tag>, where given, is the previous
+# release's tag, the baseline the cut resolves (release_previous_tag), sent in
+# the same send-pack as refs/tags/<tag>, so a gate that reads the last release
+# finds it in a fresh bare repo with no step by hand; forced, since the host's
+# copy of a tag is only ever this machine's. `pending` once they are started,
+# with where they log; `unknown`, naming it, when any of the three could not
+# be done.
 release_leg_start() {
-  local root="$1" host="$2" project="$3" sha="$4" why scratch out rc
+  local root="$1" host="$2" project="$3" sha="$4" tag="${5:-}" why scratch out rc sent
+  local -a refspecs=("$sha:refs/devbin/legs/$sha")
   why="$(_release_leg_names_problem "$host" "$project" "$sha")"
+  if [ -z "$why" ] && [ -n "$tag" ]; then
+    if is_tag_name "$tag" && git -C "$root" rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+      refspecs+=("+refs/tags/$tag:refs/tags/$tag")
+    else
+      why="the previous release's tag '$tag' is no tag in $root, so it cannot be sent"
+    fi
+  fi
   if [ -n "$why" ]; then
     printf 'unknown\t%s\n' "$why"
     return 0
@@ -399,9 +413,11 @@ release_leg_start() {
   # the leg's own ssh options as its command: it appends BatchMode, shuts git's
   # prompts and askpass, and gives git no stdin.
   GIT_SSH_COMMAND="ssh $(printf '%q ' "${RELEASE_LEG_SSH_OPTS[@]}")" \
-    git_remote -C "$root" send-pack "$host:work/$project-leg.git" "$sha:refs/devbin/legs/$sha" >"$scratch/out" 2>"$scratch/err" || rc=$?
+    git_remote -C "$root" send-pack "$host:work/$project-leg.git" "${refspecs[@]}" >"$scratch/out" 2>"$scratch/err" || rc=$?
   if [ "$rc" -ne 0 ]; then
-    _release_leg_failed "$host" "$scratch/err" "git send-pack of ${sha:0:12}"
+    sent="${sha:0:12}"
+    [ -z "$tag" ] || sent="$sent and $tag"
+    _release_leg_failed "$host" "$scratch/err" "git send-pack of $sent"
     rm -rf "$scratch"
     return 0
   fi

@@ -756,11 +756,13 @@ gates_verb() {
 # since S is in no other; _leg_cand_git) and LEG_CAND_SHOWN (LEG_CAND_REMOTE as
 # a line names it: the remote's name, or the url as release_url_shown shows
 # it). LEG_VERSION and LEG_TAG are the release's target, which the local leg
-# hands its gates (gates_sealed, issue 0327). A remote leg runs through
+# hands its gates (gates_sealed, issue 0327). LEG_BASE_TAG is the previous
+# release's tag (release_previous_tag), empty when there is none, which each
+# remote leg is sent beside R (issue 0333). A remote leg runs through
 # lib/release.legs and the macOS stage through lib/release.macos, each passed
 # the context it reads, since neither library reads config. A start that finds
 # its leg green already starts nothing.
-LEG_ROOT="" LEG_PROJECT="" LEG_SHA="" LEG_VERSION="" LEG_TAG="" LEG_REF="" LEG_CAND_SHA="" LEG_CAND_REMOTE="" LEG_CAND_REPO="" LEG_CAND_SHOWN=""
+LEG_ROOT="" LEG_PROJECT="" LEG_SHA="" LEG_VERSION="" LEG_TAG="" LEG_BASE_TAG="" LEG_REF="" LEG_CAND_SHA="" LEG_CAND_REMOTE="" LEG_CAND_REPO="" LEG_CAND_SHOWN=""
 LEG_CQ=() LEGS=() LEGS_T0=0
 # Pre-flight's reading of release.legs (ST0011 WP-05): each host it reached,
 # a leg of the cut as legs.<host>, and each it could not, `<host><TAB><why>`,
@@ -826,7 +828,7 @@ _leg_remote_start() {
     printf '%s\n' "$v"
     return 0
   fi
-  release_leg_start "$LEG_ROOT" "${1#legs.}" "$LEG_PROJECT" "$LEG_SHA"
+  release_leg_start "$LEG_ROOT" "${1#legs.}" "$LEG_PROJECT" "$LEG_SHA" "$LEG_BASE_TAG"
 }
 
 leg_read() {
@@ -1619,6 +1621,12 @@ legs_step() {
   fi
   LEG_ROOT="$PROJECT_ROOT" LEG_SHA="$commit" LEG_VERSION="$v" LEG_TAG="$tag"
   LEG_PROJECT="$(legs_project_name)"
+  # The previous release's tag, read only for a cut with a remote leg, the one
+  # leg it is sent to.
+  if [ "${#LEGS_REMOTE[@]}" -gt 0 ]; then
+    LEG_BASE_TAG="$(release_previous_tag "$tpl" "$tag")" ||
+      cut_fail legs "the previous release's tag cannot be read, so no remote leg could be sent it (above)"
+  fi
   if [ -n "$cand_remote" ]; then
     run_words LEG_CQ release.ci.query "$(cfg_release_get ci.query)" || cut_fail legs "release.ci.query cannot be read as words"
   fi

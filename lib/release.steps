@@ -7,6 +7,7 @@
 #   release_commit <tag>                         `<sha><TAB>tag|HEAD`: the release commit
 #   release_versions <template>                  every version a matching tag names, newest first
 #   release_resolve <template> <target>          the resolve step: `<version><TAB><tag><TAB>new|resume`
+#   release_previous_tag <template> <tag>        the newest release's tag other than <tag>: a cut's baseline
 #   release_scratch <project-root>               a scratch directory OUTSIDE the project
 #   release_materialise <commit> <dir> <path>... a commit's whole tree, written into <dir>
 #   release_owned <root> <version>               the paths a release owns before derived: runs
@@ -193,6 +194,24 @@ release_versions() {
     return 1
   fi
   [ -z "$versions" ] || printf '%s\n' "$versions"
+}
+
+# release_previous_tag <template> <tag> -- the tag of the newest release other
+# than <tag>, by release_versions, the reading every bump makes: the baseline a
+# cut of <tag> is measured from, which a remote leg is sent beside R (issue
+# 0333). <tag> is the target's own, or empty for none. Nothing, at status 0,
+# when no other tag names a release; status 1 when the tags cannot be read.
+release_previous_tag() {
+  local tpl="$1" own="$2" versions v t
+  versions="$(release_versions "$tpl")" || return 1
+  while IFS= read -r v; do
+    [ -n "$v" ] || continue
+    t="$(release_tag_name "$tpl" "$v")"
+    if [ "$t" != "$own" ]; then
+      printf '%s\n' "$t"
+      return 0
+    fi
+  done <<<"$versions"
 }
 
 # release_resolve <template> <target> -- the resolve step: the version a cut of
