@@ -2074,7 +2074,7 @@ $output"
   ci_answers "$(printf 'none\tno run yet')"
   run release_in "$proj" v1.0.1 --yes
   assert_stopped_at legs
-  [[ "$(row_of legs)" == *"a timeout: not green within 0s (ci.wait) of the loop's start: candidate (none: no run yet)"* ]] ||
+  [[ "$(row_of legs)" == *"a timeout: not green within 0s (ci.wait) of its own start: candidate (none: no run yet)"* ]] ||
     fail "the legs row does not name the timeout and the last answer: $(row_of legs)"
   assert_nothing_public "$proj"
   assert_output_contains "release: legs: the candidate candidate/v1.0.1 was deleted from origin"
@@ -2638,8 +2638,11 @@ leg_rehearse() {
   rm -f "$DEVBIN_TEST_TMPDIR/gate.calls"
 }
 
-# legs_project -- after legs_env, cut_project with release.legs naming near and
-# far; the built-in macos enabled, answered by the project's own handler, which
+# legs_project [<host>...] -- after legs_env, cut_project with release.legs
+# naming the hosts given, in their order, near and far where none is given;
+# each one with a directory under HOSTS rehearsed at HEAD, as a cut's
+# pre-flight wants a leg (issue 0337), and one without, as far, which ssh
+# cannot reach, no leg of the cut; the built-in macos enabled, answered by the project's own handler, which
 # records each call with the commit it stood on in macos.calls and exits 0, or
 # 3, saying so, where macos.fail stands beside macos.calls; and
 # its app, out/Demo.app, built by macos.build and the build: block's artefact
@@ -2648,12 +2651,14 @@ leg_rehearse() {
 # and caches nothing: the arm holds the cut's answer, not a cache entry.
 # Committed and pushed.
 legs_project() {
-  local proj
+  local proj h legs=""
+  [ "$#" -gt 0 ] || set -- near far
+  for h in "$@"; do
+    legs+=$'\n'"    - $h"
+  done
   proj="$(cut_project "  gates:
     - probe
-  legs:
-    - near
-    - far")"
+  legs:${legs}")"
   perl -0pi -e 's/\ncommands:\n  release:\n    enabled: true\n/\ncommands:\n  release:\n    enabled: true\n  macos:\n    enabled: true\n/' \
     "$proj/bin/.devbin/config.yaml"
   printf '%s\n' 'macos:' '  app: out/Demo.app' '  build: ./mkapp' 'build:' '  inputs:' '    - src' '    - VERSION' '  artefacts:' '    app:' \
@@ -2666,9 +2671,9 @@ legs_project() {
   git -C "$proj" add -A
   git -C "$proj" commit -qm "remote legs and the macOS stage"
   git -C "$proj" push -q origin main
-  # near rehearsed at HEAD, as a cut's pre-flight wants a leg (issue 0337);
-  # far, which ssh cannot reach, is no leg of the cut.
-  leg_rehearse "$proj" near || return 1
+  for h in "$@"; do
+    [ ! -d "$HOSTS/$h" ] || leg_rehearse "$proj" "$h" || return 1
+  done
   printf '%s\n' "$proj"
 }
 
@@ -2676,8 +2681,32 @@ legs_project() {
 # with the clock, on a line of the last `run`: `<clock> <leg> <word>: <detail>`.
 leg_line() { grep -qE "^release: legs: [0-9]{2}:[0-9]{2}:[0-9]{2}Z $(sed 's/\./\\./g' <<<"$1") $2: " <<<"$output"; }
 
+# leg_said_at <leg> <word> -- the number of the first line of the last `run`'s
+# output on which the loop said <leg>'s answer was <word>, as leg_line reads
+# one; status 1, printing nothing, when it never did.
+leg_said_at() {
+  local n
+  n="$(grep -n -m 1 -E "^release: legs: [0-9]{2}:[0-9]{2}:[0-9]{2}Z $(sed 's/\./\\./g' <<<"$1") $2: " <<<"$output" | cut -d: -f1)"
+  [ -n "$n" ] || return 1
+  printf '%s\n' "$n"
+}
+
+# leg_said_before <leg> <word> <leg2> <word2> -- the loop said <leg>'s <word>
+# on an earlier line than <leg2>'s <word2>, and said both; else the arm fails,
+# naming which came first. The loop's lines are printed by the cut's one
+# shell, in the order it acted, so the order is the order it started them in.
+leg_said_before() {
+  local a b
+  a="$(leg_said_at "$1" "$2")" || fail "the loop never said $1 $2:
+$output"
+  b="$(leg_said_at "$3" "$4")" || fail "the loop never said $3 $4:
+$output"
+  [ "$a" -lt "$b" ] || fail "the loop said $3 $4 (line $b) before $1 $2 (line $a):
+$output"
+}
+
 # AT-2.7, AT-3.3, AT-3.6
-@test "each reached host release.legs names and the macOS stage start with the local gates at the release commit and are read by the one loop, each sealed and named in the RELEASE seal; a host ssh cannot reach is named at pre-flight, recorded as not run, never waited for; and the seal names the stage's artefact's key; and run again after a stop, every leg is green already and none starts (AC-2.2, AC-3.2, AC-3.3, ST0011 WP-05, WP-06)" {
+@test "each reached host release.legs names runs once the local gates read green, the macOS stage starts with them, and each is read by the one loop at the release commit, sealed and named in the RELEASE seal; a host ssh cannot reach is named at pre-flight, recorded as not run, never waited for; and the seal names the stage's artefact's key; and run again after a stop, every leg is green already and none starts (AC-2.2, AC-3.2, AC-3.3, ST0011 WP-05, WP-06)" {
   local rel out key leg sends calls pairs=()
   legs_env
   proj="$(legs_project)"
@@ -2750,6 +2779,79 @@ $output"
     fail "Devbin's own config does not declare kovacs as its one remote leg"
 }
 
+# AT-2.7
+@test "0344: a cut runs each reached host release.legs names after the local gates, one at a time in its order, each once the leg before it reads green and held until then, while the macOS stage starts with the local gates" {
+  local proj rel out leg
+  legs_env
+  mkdir -p "$HOSTS/next"
+  proj="$(legs_project near next)"
+  export UNAME_STUB_OS=Darwin
+  DEVBIN_RELEASE_POLL_SECONDS=1 PATH="$(tag_refused_path)" run release_in "$proj" v1.0.1 --yes
+  [ "$status" -eq 1 ] || fail "want exit 1 at the tag step, got $status:
+$output"
+  assert_state tag FAILED
+  [ "$(state_of legs)" = done ] || fail "the legs row is '$(state_of legs)', want done:
+$output"
+  # THE ORDER, AS THE LOOP SAID IT: each host started only after the leg
+  # before it read green, the local gates' run ended and reaped by then.
+  leg_said_before local green legs.near pending
+  leg_said_before legs.near green legs.next pending
+  # Each host held until then, said as held.
+  leg_said_before legs.near held local green
+  leg_said_before legs.next held legs.near green
+  # The macOS stage starts with the local gates, never held.
+  leg_said_before macos pending local green
+  if leg_line macos held; then fail "the macOS stage was held:
+$output"; fi
+  # Both hosts ran at the release commit and were sealed green.
+  rel="$(git -C "$proj" rev-parse HEAD)"
+  out="$(readlink -f "$proj/tmp/release/LATEST_RELEASE.out")" && [ -f "$out" ] || fail "the cut left no RELEASE seal under tmp/release/"
+  for leg in legs.near legs.next; do
+    grep -qE "^devbin\| leg: $(sed 's/\./\\./g' <<<"$leg") green $rel [0-9]+s " "$out" ||
+      fail "no green leg line for $leg at $rel: $(grep -F 'leg:' "$out" || echo '(none)')"
+  done
+}
+
+# AT-2.7
+@test "0344: a red local leg stops the cut before any reached host starts: nothing is sent to a host, and the cut names each host it never started, on its output and in its RELEASE seal" {
+  local proj rel out sends
+  legs_env
+  proj="$(legs_project)"
+  export UNAME_STUB_OS=Darwin
+  # The fixture's rehearsal sent R to near once; the cut must send it nothing.
+  sends="$(grep -c 'git-receive-pack' "$DEVBIN_TEST_TMPDIR/ssh.calls")" || sends=0
+  [ "$sends" -gt 0 ] || fail "the fixture's rehearsal never sent R to near: $(cat "$DEVBIN_TEST_TMPDIR/ssh.calls")"
+  # Every probe this cut runs fails, the local gates' among them.
+  printf 'exit 1\n' >"$DEVBIN_TEST_TMPDIR/gate.sh"
+  DEVBIN_RELEASE_POLL_SECONDS=1 run release_in "$proj" v1.0.1 --yes
+  [ "$status" -eq 1 ] || fail "want exit 1 at the legs step, got $status:
+$output"
+  assert_state legs FAILED
+  [ "$(grep -c 'git-receive-pack' "$DEVBIN_TEST_TMPDIR/ssh.calls")" = "$sends" ] ||
+    fail "R was sent to near though the local gates went red: $(grep -F 'git-receive-pack' "$DEVBIN_TEST_TMPDIR/ssh.calls")"
+  if leg_line legs.near pending; then fail "the loop started legs.near:
+$output"; fi
+  leg_said_before legs.near held local failed
+  assert_output_contains "release: legs: legs.near was not started, since local did not read green, so nothing was sent to near"
+  rel="$(git -C "$proj" rev-parse HEAD)"
+  out="$(readlink -f "$proj/tmp/release/LATEST_RELEASE.out")" && [ -f "$out" ] || fail "the cut left no RELEASE seal under tmp/release/"
+  grep -qxF "devbin| leg: legs.near none $rel 0s not started: local did not read green" "$out" ||
+    fail "no line recording legs.near as not started: $(grep -F 'leg:' "$out" || echo '(none)')"
+  [ -z "$(git -C "$proj" tag -l v1.0.1)" ] || fail "the stopped cut tagged v1.0.1"
+}
+
+@test "0344: a dry run's legs row names the order: the local gates and the macOS stage together, then each reached host once the leg before it reads green" {
+  local proj
+  legs_env
+  mkdir -p "$HOSTS/next"
+  proj="$(legs_project near next)"
+  export UNAME_STUB_OS=Darwin
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_success
+  [[ "$(row_of legs)" == *"start local macos together on the release commit the commit step makes, then legs.near once local reads green, then legs.next once legs.near reads green, then tag only when every one is green"* ]] ||
+    fail "the legs row does not name the order: $(row_of legs)"
+}
+
 @test "pre-flight refuses the macOS stage on a host whose platform word is not macos, naming the stage and the word, a remote host that answers and cannot be read, and a project name no host's repository can take, before anything is stamped (ST0011 WP-05, WP-06)" {
   local head
   legs_env
@@ -2818,18 +2920,24 @@ outside|0|
 root|1|the path, the project root itself, which git cannot ignore -- declare the directory the build writes its products under"
 }
 
-@test "a remote leg whose start fails stops the cut at once, naming the leg and why, never a wait to ci.wait for a leg no read could turn green (ST0011 WP-05)" {
+@test "a remote leg whose start fails stops the cut at once, naming the leg and why, never a wait to ci.wait for a leg no read could turn green, and the host held behind it is never started (ST0011 WP-05) (0344)" {
+  local sends
   legs_env
-  proj="$(legs_project)"
+  mkdir -p "$HOSTS/next"
+  proj="$(legs_project near next)"
   # near answers, so pre-flight reaches it, and refuses to start anything.
   : >"$HOSTS/near/.fail-start"
   export UNAME_STUB_OS=Darwin
+  sends="$(grep -c 'next git-receive-pack' "$DEVBIN_TEST_TMPDIR/ssh.calls")" || sends=0
   DEVBIN_RELEASE_POLL_SECONDS=1 run release_in "$proj" v1.0.1 --yes
   assert_stopped_at legs
   [[ "$(row_of legs)" == *"the legs.near leg did not start: "*"the host refused to start anything"* ]] ||
     fail "the cut did not stop at near's failed start, naming why: $(row_of legs)"
   refute_output_contains "(ci.wait)"
-  [ ! -e "$DEVBIN_TEST_TMPDIR/macos.calls" ] || fail "the stage started after near's start failed: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  # next, held behind near, is sent nothing, and the stop says so.
+  [ "$(grep -c 'next git-receive-pack' "$DEVBIN_TEST_TMPDIR/ssh.calls")" = "$sends" ] ||
+    fail "R was sent to next after near's start failed: $(grep -F 'git-receive-pack' "$DEVBIN_TEST_TMPDIR/ssh.calls")"
+  assert_output_contains "release: legs: legs.next was not started, since legs.near did not read green, so nothing was sent to next"
 }
 
 @test "a macOS stage whose run fails is red with its exit, the newest record's word and its last line, and the cut stops at the legs step with nothing tagged (ST0011 WP-06)" {
