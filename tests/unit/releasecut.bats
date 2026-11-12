@@ -2617,6 +2617,19 @@ legs_env() {
   export DEVBIN_CACHE_HOME="$DEVBIN_TEST_TMPDIR/cache"
 }
 
+# leg_rehearse <proj> <host> -- `release gates --leg <host>` in <proj>, green,
+# as a cut's pre-flight wants a leg rehearsed (issue 0337): its output to
+# leg-rehearse.out, a failure said on stderr, and the probe gate's record of
+# the run cleared, so an arm reads its own cut's gate calls alone. Prints
+# nothing on stdout, so it can run inside a fixture's command substitution.
+leg_rehearse() {
+  DEVBIN_RELEASE_POLL_SECONDS=1 release_in "$1" gates --leg "$2" >"$DEVBIN_TEST_TMPDIR/leg-rehearse.out" 2>&1 </dev/null || {
+    printf 'the rehearsal of %s failed:\n%s\n' "$2" "$(cat "$DEVBIN_TEST_TMPDIR/leg-rehearse.out")" >&2
+    return 1
+  }
+  rm -f "$DEVBIN_TEST_TMPDIR/gate.calls"
+}
+
 # legs_project -- after legs_env, cut_project with release.legs naming near and
 # far; the built-in macos enabled, answered by the project's own handler, which
 # records each call with the commit it stood on in macos.calls and exits 0, or
@@ -2645,6 +2658,9 @@ legs_project() {
   git -C "$proj" add -A
   git -C "$proj" commit -qm "remote legs and the macOS stage"
   git -C "$proj" push -q origin main
+  # near rehearsed at HEAD, as a cut's pre-flight wants a leg (issue 0337);
+  # far, which ssh cannot reach, is no leg of the cut.
+  leg_rehearse "$proj" near || return 1
   printf '%s\n' "$proj"
 }
 
@@ -4022,6 +4038,8 @@ STUB
   grep -q '^    - near$' "$proj/bin/.devbin/config.yaml" || fail "the fixture's leg was not renamed"
   git -C "$proj" commit -qam "a leg on macos"
   git -C "$proj" push -q origin main
+  # near, a leg new since v1.0.0, is rehearsed, as pre-flight wants (issue 0337).
+  leg_rehearse "$proj" near
   run release_in "$proj" v1.0.1 --dry-run
   assert_success
   assert_state pre-flight done
@@ -4261,6 +4279,7 @@ $(printf '%s\n' "${exp[@]}")"
     - probe
   legs:
     - near")"
+  leg_rehearse "$proj" near
   gate_does 'printf "home=%s version=%s tag=%s\n" "$HOME" "${DEVBIN_RELEASE_VERSION-<unset>}" "${DEVBIN_RELEASE_TARGET_TAG-<unset>}" >>"'"$DEVBIN_TEST_TMPDIR"'/gate.target"'
   DEVBIN_RELEASE_POLL_SECONDS=1 PATH="$(tag_refused_path)" run release_in "$proj" v1.0.1 --yes
   [ "$status" -eq 1 ] || fail "want exit 1 at the tag step, got $status:
@@ -4395,4 +4414,82 @@ $output"
       fail "the seal names no cache line for $a $key: $(grep -F 'cache' "$out" || echo '(none)')"
     assert_output_contains "release: cache: $a $key at ${rel:0:12}"
   done
+}
+
+@test "0337: release gates --leg <host> runs the remote leg at HEAD, sent the newest release's tag, and keeps its pair: green exits 0, run again it is already, --rerun runs it, a red run exits 1, and a host release.legs does not name is refused" {
+  local head pairs=()
+  legs_env
+  proj="$(cut_project "  gates:
+    - probe
+  legs:
+    - near")"
+  head="$(git -C "$proj" rev-parse HEAD)"
+  DEVBIN_RELEASE_POLL_SECONDS=1 run release_in "$proj" gates --leg near
+  assert_success
+  assert_output_contains "release: gates: legs.near is green at ${head:0:12}"
+  grep -qE '^release: legs: [0-9]{2}:[0-9]{2}:[0-9]{2}Z legs\.near pending: ' <<<"$output" ||
+    fail "the rehearsal did not say the run going, with the clock: $output"
+  pairs=("$proj"/tmp/release/legs/near/*.GATES.out)
+  [ -f "${pairs[0]}" ] || fail "the rehearsal kept no pair under tmp/release/legs/near/"
+  [ "$(git -C "$HOSTS/near/work/demo-leg.git" rev-parse -q --verify refs/tags/v1.0.0)" = "$(git -C "$proj" rev-parse refs/tags/v1.0.0)" ] ||
+    fail "the host was not sent the newest release's tag, v1.0.0"
+  [ "$(grep -c '^probe' "$DEVBIN_TEST_TMPDIR/gate.calls")" -gt 0 ] || fail "the gates never ran on near: $(cat "$DEVBIN_TEST_TMPDIR/gate.calls" 2>&1)"
+  : >"$DEVBIN_TEST_TMPDIR/gate.calls"
+  run release_in "$proj" gates --leg near
+  assert_success
+  assert_output_contains "release: gates: legs.near is green at ${head:0:12} already"
+  [ ! -s "$DEVBIN_TEST_TMPDIR/gate.calls" ] || fail "a leg green already at HEAD ran again: $(cat "$DEVBIN_TEST_TMPDIR/gate.calls")"
+  DEVBIN_RELEASE_POLL_SECONDS=1 run release_in "$proj" gates --leg near --rerun
+  assert_success
+  assert_output_contains "release: gates: legs.near is green at ${head:0:12}, its pair kept"
+  [ -s "$DEVBIN_TEST_TMPDIR/gate.calls" ] || fail "--rerun did not run the leg again"
+  gate_does 'exit 1'
+  DEVBIN_RELEASE_POLL_SECONDS=1 run release_in "$proj" gates --leg near --rerun
+  assert_failure
+  assert_output_contains "release: gates: legs.near at ${head:0:12} is not green: failed"
+  run release_in "$proj" gates --leg far
+  assert_failure
+  assert_output_contains "release gates --leg: far is no host release.legs names (near)"
+}
+
+@test "0337: pre-flight refuses a reached leg that has not gone green since the previous release with HEAD's leg config, naming the host and the rehearsal: a leg new since the tag, one whose last run is red, and one reconfigured since its green; a green rehearsal at HEAD passes" {
+  local head
+  legs_env
+  proj="$(cut_project "  gates:
+    - probe
+  legs:
+    - near")"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"release.legs: near: it has not gone green since v1.0.0 with the leg config HEAD declares (release.legs, release.gates and the commands they name) -- run: bin/devbin release gates --leg near"* ]] ||
+    fail "pre-flight does not refuse near, a leg new since v1.0.0: $(row_of pre-flight)"
+  leg_rehearse "$proj" near
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_success
+  assert_state pre-flight done
+  # Its last run red.
+  head="$(git -C "$proj" rev-parse HEAD)"
+  gate_does 'exit 1'
+  DEVBIN_RELEASE_POLL_SECONDS=1 run release_in "$proj" gates --leg near --rerun
+  assert_failure
+  gate_does ':'
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"release.legs: near: its last run since v1.0.0 with the leg config HEAD declares, at ${head:0:12}, is failed -- run: bin/devbin release gates --leg near"* ]] ||
+    fail "pre-flight does not refuse near, red at its last run: $(row_of pre-flight)"
+  leg_rehearse "$proj" near
+  # Reconfigured: a second gate, so the green before it no longer stands for
+  # the leg HEAD declares.
+  perl -0pi -e 's/(\n  gates:\n    - probe\n)/$1    - probe twice\n/' "$proj/bin/.devbin/config.yaml"
+  grep -qx '    - probe twice' "$proj/bin/.devbin/config.yaml" || fail "the fixture's second gate was not declared"
+  git -C "$proj" commit -qam "a second gate"
+  git -C "$proj" push -q origin main
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"release.legs: near: it has not gone green since v1.0.0 with the leg config HEAD declares"* ]] ||
+    fail "pre-flight does not refuse near, reconfigured since its green: $(row_of pre-flight)"
+  leg_rehearse "$proj" near
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_success
+  assert_state pre-flight done
 }

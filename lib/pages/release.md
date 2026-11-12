@@ -4,7 +4,7 @@
     bin/devbin release check
     bin/devbin release attach <vX.Y.Z> [--from <dir>]
     bin/devbin release snapshot <vX.Y.Z | --commit <rev>> <new-dir> [--no-parent]
-    bin/devbin release gates [--rerun]
+    bin/devbin release gates [--rerun] [--leg <host>]
 
 Cut a release: confirm once, then stamp, commit, run every leg (the gates, here and on each host release.legs names, the macOS stage where it is declared, and the candidate's CI) under one wait loop, tag and push once all are green, make the release object and run `after:`, all under that one yes. `release` is opt-in: a project enables it with `commands.release.enabled: true` and declares how it releases in the `release:` block of `bin/.devbin/config.yaml`, where every key has a default. Every `release:` key is annotated in devbin's reference config, and `bin/devbin devbin` names where that file and devbin's releasing guide are.
 
@@ -20,9 +20,12 @@ Cut a release: confirm once, then stamp, commit, run every leg (the gates, here 
                  naming the project's repository for the candidate and a
                  push of its branch that starts release.ci.workflow
                  (ci-state --fires); no gate in all that its platforms:
-                 hold back on every leg; under release.publish.url, no
-                 remote it pushes to naming the publish repository, the
-                 snapshot list in the tree, and the url's refs read
+                 hold back on every leg; each host release.legs names gone
+                 green since the previous release with HEAD's leg config
+                 (release gates --leg <host> rehearses one); under
+                 release.publish.url, no remote it pushes to naming the
+                 publish repository, the snapshot list in the tree, and the
+                 url's refs read
                  (Publishing a snapshot, below); then, while the tag is
                  absent, release.preflight's commands of the project's own,
                  every one run, in place, handed the release's target
@@ -46,8 +49,9 @@ Cut a release: confirm once, then stamp, commit, run every leg (the gates, here 
                  host release.legs names, at the release commit there, their
                  seal copied back, a host pre-flight cannot reach named and
                  not run; the macOS stage where macos is enabled, app-sign
-                 then app-notarize under a seal of its own; unless ci.query
-                 is -, the candidate: the release commit pushed to
+                 and bin-sign, then app-notarize and bin-notarize at once,
+                 under a seal of its own; unless ci.query is -, the
+                 candidate: the release commit pushed to
                  candidate/<tag> on the repository's remote, or under
                  release.publish.url the release commit's snapshot, made
                  first, pushed to candidate/<tag> at the public repository,
@@ -181,7 +185,7 @@ On each host `release.legs` names, the gates are handed `work/<project>-leg.cach
                  must be snapshots, or with no parent under --no-parent or when
                  there is no tip. --commit <rev> in place of <v> makes it of any
                  commit. Prints its tree and commit; a refusal writes nothing
-    gates [--rerun]
+    gates [--rerun] [--leg <host>]
                  run release.gates in order, in place, on the commit HEAD
                  is, under one sealed run of their own under tmp/release/,
                  as a cut's legs step runs them, each handed the version the
@@ -192,7 +196,14 @@ On each host `release.legs` names, the gates are handed `work/<project>-leg.cach
                  --rerun runs them all the same. Refuses a tree that is not
                  one commit, clean, or whose version cannot be read, before
                  anything runs, and fails a gate that writes to the tree or
-                 commits, or a pass whose record does not read back
+                 commits, or a pass whose record does not read back.
+                 --leg <host> runs instead the remote leg on a host
+                 release.legs names, at HEAD, as a cut runs it at the
+                 release commit: HEAD and the newest release's tag sent
+                 there, the gates started, waited for under ci.wait, and
+                 the pair kept under tmp/release/legs/<host>/, the record
+                 a cut's pre-flight reads; exit 0 only on green, and a
+                 green kept for HEAD runs nothing again, unless --rerun
 
 ## Exit codes
 

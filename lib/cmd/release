@@ -66,7 +66,7 @@ usage() {
       status) printf '%s %s %s <vX.Y.Z>\n' "$lead" "$me" "$v" ;;
       attach) printf '%s %s %s <vX.Y.Z> [--from <dir>]\n' "$lead" "$me" "$v" ;;
       snapshot) printf '%s %s %s <vX.Y.Z | --commit <rev>> <new-dir> [--no-parent]\n' "$lead" "$me" "$v" ;;
-      gates) printf '%s %s %s [--rerun]\n' "$lead" "$me" "$v" ;;
+      gates) printf '%s %s %s [--rerun] [--leg <host>]\n' "$lead" "$me" "$v" ;;
       *) printf '%s %s %s\n' "$lead" "$me" "$v" ;;
     esac
     lead="      "
@@ -165,6 +165,7 @@ snap_dir=""
 no_parent=0
 snap_words=()
 rerun=0
+leg_host=""
 
 # Every verb but the cut has a word, read from the one list (cfg_release_verbs).
 if [ "$1" != cut ] && grep -qxF -- "$1" <<<"$ALL_VERBS"; then
@@ -242,6 +243,13 @@ while [ $# -gt 0 ]; do
     --rerun)
       [ "$verb" = gates ] || refuse "--rerun applies to release gates, not to release $verb"
       rerun=1
+      ;;
+    --leg)
+      [ "$verb" = gates ] || refuse "--leg applies to release gates, not to release $verb"
+      [ -z "$leg_host" ] || refuse "--leg once only, got $leg_host and ${2:-nothing}"
+      [ $# -ge 2 ] && [ -n "$2" ] || refuse "--leg needs a host release.legs names"
+      leg_host="$2"
+      shift
       ;;
     -*)
       refuse "unknown argument: $1"
@@ -779,6 +787,144 @@ gates_verb() {
   ver="$(read_version)" || die "release gates: the version cannot be read (exit $?), and the gates are handed it as DEVBIN_RELEASE_VERSION"
   tpl="$(cfg_release_get tag)" || die "release gates: cannot read release.tag, which names the tag the gates are handed as DEVBIN_RELEASE_TARGET_TAG"
   gates_sealed "$stood" "$ver" "$(release_tag_name "$tpl" "$ver")"
+}
+
+# ---------------------------------------------------------------------------
+# THE LEGS' REHEARSAL (issue 0337). A remote leg first runs at the release
+# commit inside a cut, so a leg new to its host, or reconfigured, meets every
+# fault of that host after the stamp. `release gates --leg <host>` runs the
+# same leg at HEAD before any cut, through the one runner a cut's leg goes
+# through (release_leg_start and release_leg_read, lib/release.legs), its pair
+# kept where a cut's is (release_leg_dir); and a cut's pre-flight refuses a leg
+# that has not gone green since the previous release with the leg config HEAD
+# declares (legs_rehearsal_problem).
+
+# gates_leg_verb <host> -- `release gates --leg <host>`: the remote leg on
+# <host>, a host release.legs names, at HEAD, a clean commit, sent the newest
+# release's tag beside it, as a cut sends its previous one; waited for under
+# ci.wait, each change of its answer said with the clock, as the cut's loop
+# says it (legs_say). 0 only on green. A green pair kept for HEAD answers
+# already and runs nothing, unless --rerun. A host that cannot be reached, a
+# start the host refuses, a red, an unknown and a run not green by the
+# deadline are each 1, saying why; a run still going at the deadline goes on
+# there, and the next run at HEAD reads it.
+gates_leg_verb() {
+  local host="$1" stood list project why tpl base sha secs t0 line word prev="" dir
+  release_one_repository "release gates"
+  stood="$(git_head_identity "$PROJECT_ROOT")"
+  git_identity_clean "$stood" ||
+    die "release gates --leg: the tree is not one commit, clean ($stood), so a run on $host would be a record of no commit -- commit or stash first"
+  list="$(cfg_release_list legs)" || die "release gates --leg: cannot read release.legs"
+  grep -qxF -- "$host" <<<"$list" ||
+    die "release gates --leg: $host is no host release.legs names (${list//$'\n'/, }) -- the rehearsal runs a declared leg"
+  project="$(legs_project_name)"
+  why="$(release_leg_project_problem "$project")"
+  [ -z "$why" ] || die "release gates --leg: $why -- set project.name to one"
+  tpl="$(cfg_release_get tag)" || die "release gates --leg: cannot read release.tag"
+  base="$(release_previous_tag "$tpl" "")" ||
+    die "release gates --leg: the tags cannot be read, so the newest release's tag cannot be sent to $host"
+  secs="$(release_seconds "$(cfg_release_get ci.wait)")" ||
+    die "release gates --leg: release.ci.wait is not a duration (a whole number of s, m or h), so the run has no deadline to wait to"
+  sha="$(git -C "$PROJECT_ROOT" rev-parse HEAD)" || die "release gates --leg: HEAD cannot be read"
+  dir="$(release_leg_dir "$PROJECT_ROOT" "$host")"
+  if [ "$rerun" = 0 ]; then
+    line="$(seal_verdict "$dir" GATES "$sha" "")"
+    if [ "${line%%$'\t'*}" = green ]; then
+      printf 'release: gates: legs.%s is green at %s already, kept at %s, so it is not run again (--rerun runs it)\n' "$host" "${sha:0:12}" "${line#*$'\t'}"
+      return 0
+    fi
+  fi
+  line="$(release_leg_reach "$host")"
+  [ "${line%%$'\t'*}" = reached ] || die "release gates --leg: $host cannot be reached: ${line#*$'\t'}"
+  t0=$SECONDS
+  line="$(release_leg_start "$PROJECT_ROOT" "$host" "$project" "$sha" "$base")"
+  while :; do
+    if [ "$line" != "$prev" ]; then
+      legs_say "legs.$host" "$line"
+      prev="$line"
+    fi
+    word="${line%%$'\t'*}"
+    [ "$word" = pending ] || break
+    if [ $((SECONDS - t0)) -ge "$secs" ]; then
+      printf 'release: gates: legs.%s is not green within %s (ci.wait) at %s, and its run goes on there: %s\n' \
+        "$host" "$(cfg_release_get ci.wait)" "${sha:0:12}" "${line#*$'\t'}"
+      return 1
+    fi
+    sleep "$RELEASE_POLL_SECONDS"
+    line="$(release_leg_read "$PROJECT_ROOT" "$host" "$project" "$sha")"
+  done
+  if [ "$word" = green ]; then
+    printf 'release: gates: legs.%s is green at %s, its pair kept under %s\n' "$host" "${sha:0:12}" "$dir"
+    return 0
+  fi
+  printf 'release: gates: legs.%s at %s is not green: %s, %s\n' "$host" "${sha:0:12}" "$word" "${line#*$'\t'}"
+  return 1
+}
+
+# leg_config_lines <commit> -- the leg config <commit> declares, which a
+# rehearsal stands for: release.legs and release.gates as a cut reads them,
+# and every line of the commands block each gate names by its first word,
+# read from the commit's own config.yaml in a subshell, so this run's config
+# stays as it is. Prints them sorted; status 1 when the commit's config cannot
+# be read.
+leg_config_lines() {
+  local rel text
+  rel="${DEVBIN_DIR#"$PROJECT_ROOT"/}/config.yaml"
+  text="$(git -C "$PROJECT_ROOT" show "$1:$rel" 2>/dev/null)" || return 1
+  (
+    cfg_load_string <<<"$text" || exit 1
+    legs="$(cfg_release_list legs)" || exit 1
+    gates="$(cfg_release_list gates)" || exit 1
+    while IFS= read -r l; do
+      [ -z "$l" ] || printf 'legs\t%s\n' "$l"
+    done <<<"$legs"
+    while IFS= read -r g; do
+      [ -n "$g" ] || continue
+      printf 'gates\t%s\n' "$g"
+      awk -F'\t' -v p="commands.${g%% *}." 'index($1, p) == 1' <<<"$_DEVBIN_CFG"
+    done <<<"$gates"
+  ) | LC_ALL=C sort -u
+  [ "${PIPESTATUS[0]}" -eq 0 ]
+}
+
+# legs_rehearsal_problem <host> <tag> -- why the remote leg on <host> may not
+# run in this cut (issue 0337), one line, or nothing when it has gone green
+# since <tag>, the previous release's, with the leg config HEAD declares. Its
+# kept pairs (release_leg_dir) are read newest first, by the commit each
+# names, and the first whose commit is <tag>'s or descends from it, with
+# HEAD's leg config (leg_config_lines), decides: green passes, and any other
+# word refuses, its last run red among them. No such run refuses too, as for a
+# leg added or reconfigured since <tag>; with no <tag>, the first release,
+# every commit counts. Each refusal names the command that rehearses the leg.
+# A change on the host itself is not read: the cut meets it.
+legs_rehearsal_problem() {
+  local host="$1" tag="$2" dir base="" head_cfg stem commit cfg word since fix
+  local -A seen=()
+  since="${tag:-the first release}"
+  fix="run: ${DEVBIN_INVOKE:-bin/devbin} release gates --leg $host"
+  dir="$(release_leg_dir "$PROJECT_ROOT" "$host")"
+  if [ -n "$tag" ] && ! base="$(git -C "$PROJECT_ROOT" rev-parse -q --verify "$tag^{commit}")"; then
+    printf "the previous release's tag %s cannot be read as a commit, so whether the leg has gone green since cannot be said\n" "$tag"
+    return 0
+  fi
+  if ! head_cfg="$(leg_config_lines HEAD)"; then
+    printf 'the leg config at HEAD cannot be read, so whether the leg has gone green with it cannot be said\n'
+    return 0
+  fi
+  while IFS= read -r stem; do
+    [ -n "$stem" ] || continue
+    commit="$(awk '/^devbin\|   commit: [0-9a-f]+$/ { print $3; exit }' "$stem.out" 2>/dev/null)" || commit=""
+    [ -n "$commit" ] && [ -z "${seen[$commit]:-}" ] || continue
+    seen[$commit]=1
+    [ -z "$base" ] || git -C "$PROJECT_ROOT" merge-base --is-ancestor "$base" "$commit" 2>/dev/null || continue
+    cfg="$(leg_config_lines "$commit")" || continue
+    [ "$cfg" = "$head_cfg" ] || continue
+    word="$(seal_verdict "$dir" GATES "$commit" "")"
+    [ "${word%%$'\t'*}" != green ] || return 0
+    printf 'its last run since %s with the leg config HEAD declares, at %s, is %s -- %s\n' "$since" "${commit:0:12}" "${word%%$'\t'*}" "$fix"
+    return 0
+  done <<<"$(newest_run_stems "$dir" GATES)"
+  printf 'it has not gone green since %s with the leg config HEAD declares (release.legs, release.gates and the commands they name) -- %s\n' "$since" "$fix"
 }
 
 # ---------------------------------------------------------------------------
@@ -2644,8 +2790,11 @@ cut_run() {
   # The macOS stage, where declared, is a leg of the cut, and on a host whose
   # platform word is not macos it is refused, naming the stage and the host's
   # word, as a gate active on no leg is: a release that ships a signed app is
-  # never cut without it.
-  local legs_list legs_host legs_reach legs_word legs_said="" legs_a legs_why
+  # never cut without it. A HOST REACHED IS A LEG OF THE CUT ONLY ONCE IT HAS
+  # GONE GREEN since the previous release with the leg config HEAD declares
+  # (legs_rehearsal_problem, issue 0337): one new, reconfigured, or red at its
+  # last run is refused, naming the rehearsal that runs it.
+  local legs_list legs_host legs_reach legs_word legs_said="" legs_a legs_why legs_prev
   # Each reached host with its platform word, `<host><TAB><word>`, empty for
   # a host with none: the words the gate check below reads.
   local -a legs_reached=()
@@ -2657,6 +2806,10 @@ cut_run() {
       legs_why=""
       [ -z "$legs_list" ] || legs_why="$(release_leg_project_problem "$(legs_project_name)")"
       [ -z "$legs_why" ] || refusals+=("release.legs: $legs_why -- set project.name to one")
+      legs_prev=""
+      if [ -n "$legs_list" ] && ! legs_prev="$(release_previous_tag "$tpl" "$tag")"; then
+        refusals+=("release.legs: the tags cannot be read, so the previous release a leg must have gone green since cannot be named")
+      fi
       while IFS= read -r legs_host; do
         [ -n "$legs_host" ] || continue
         legs_reach="$(release_leg_reach "$legs_host")"
@@ -2664,6 +2817,8 @@ cut_run() {
           reached)
             LEGS_REMOTE+=("$legs_host")
             legs_reached+=("$legs_host"$'\t'"${legs_reach#*$'\t'}")
+            legs_why="$(legs_rehearsal_problem "$legs_host" "$legs_prev")"
+            [ -z "$legs_why" ] || refusals+=("release.legs: $legs_host: $legs_why")
             ;;
           absent) LEGS_ABSENT+=("$legs_host"$'\t'"${legs_reach#*$'\t'}") ;;
           *) refusals+=("release.legs: $legs_host cannot be read as a leg: ${legs_reach#*$'\t'}") ;;
@@ -5485,6 +5640,10 @@ case "$verb" in
     # Validated first, as every verb is: a malformed block would name another
     # list of gates.
     cfg_validate || die "release gates: $DEVBIN_DIR/config.yaml does not validate (above)"
-    gates_verb || exit 1
+    if [ -n "$leg_host" ]; then
+      gates_leg_verb "$leg_host" || exit 1
+    else
+      gates_verb || exit 1
+    fi
     ;;
 esac
