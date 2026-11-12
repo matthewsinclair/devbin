@@ -1,0 +1,16 @@
+{
+  "id": "01M7750TJP9ETF151NQ17GHKRG",
+  "ts": "2026-11-12T05:52:19.030Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 192,
+    "text": "Tell trellis-vc at its next session (no Trellis session is up today). Its AGENTS.md swift-template bug needs no filing: Intent 3.3.0's issue 0672 removed it, since the template renders no Package.swift, swift build or swift test and says build and test go through bin/devbin (intent-vc, 2026-11-12). But Trellis's hand fix in AGENTS.md (6f9200f) will be replaced when the fleet's root files are upgraded after Intent's next cut (Intent's hv decision 41). Whatever bespoke lines Trellis needs move out of AGENTS.md before then, which is trellis-vc's call."
+  }
+}

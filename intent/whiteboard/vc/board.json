@@ -4356,10 +4356,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 192,
-      "text": "The sweep reached Intent at 066bd45bb (2026-11-01 22:30Z by date -u), so at its next session intent-vc files Trellis's AGENTS.md swift-template bug in Intent's tracker. trellis-vc raised it on hv's word ('That's a bug. Raise it with devbin-vc and we'll sort it out over there'), received before the clock read 2026-11-01 14:00Z by date -u. With swift declared, intent agents sync renders Package.swift prerequisites and swift build and swift test for a project whose Swift is one Xcode project, built through bin/devbin build (ios, mac, archive) and tested with xcodebuild test in a desk slot. Two possible fixes: the swift template tells a Package.swift from an .xcodeproj, or a config key states a project's own build and test commands. Trellis carries a hand fix (6f9200f) that its next agents sync would revert. It is off ST0011's path: no work before devbin 0.1.19 ships (decision 123). sweep-plan.md carries it in intent-vc's message.",
+      "text": "Tell trellis-vc at its next session (no Trellis session is up today). Its AGENTS.md swift-template bug needs no filing: Intent 3.3.0's issue 0672 removed it, since the template renders no Package.swift, swift build or swift test and says build and test go through bin/devbin (intent-vc, 2026-11-12). But Trellis's hand fix in AGENTS.md (6f9200f) will be replaced when the fleet's root files are upgraded after Intent's next cut (Intent's hv decision 41). Whatever bespoke lines Trellis needs move out of AGENTS.md before then, which is trellis-vc's call.",
       "state": "live",
       "recorded_at": "2026-11-01T14:00:43.683Z",
-      "edited_at": "2026-11-01T22:44:41.821Z"
+      "edited_at": "2026-11-12T05:52:19.030Z"
     },
     {
       "node": "vc",
