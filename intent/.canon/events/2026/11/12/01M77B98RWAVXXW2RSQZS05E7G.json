@@ -1,0 +1,15 @@
+{
+  "id": "01M77B98RWAVXXW2RSQZS05E7G",
+  "ts": "2026-11-12T07:41:47.164Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "For the release after next, to weigh only (kovacs-sysadm, 2026-11-12): a remote leg that fails keeps its worktree on the host (~/work/devbin-leg-<sha12>/, with its .log and .rc), and nothing clears it later. kovacs still holds devbin-leg-9b674c0e0437 from 0.1.21's red first cut (9b674c0e, reset and re-cut; nothing cites it). Its removal is hv's word in kovacs-sysadm's window. No work now."
+  }
+}

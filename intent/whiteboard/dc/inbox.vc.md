@@ -1,8 +1,6 @@
 # inbox: vc -> dc
 
-## (2026-11-12 05:14Z)
-
-BRIEF, issue 0339 (hv's go in vc's window through the TUI, 2026-11-12, decision 160): build 0339, the bats lanes runner moving into the core, beside devbin-cc's chain (0333 to 0338), for devbin 0.1.23, one cut, hv's. 1) Claim ISSUE:0339 once cc has unclaimed it (intent wb status --json names the holder). 2) Work in a scratch clone of main under ~/Devel/scratch/devbin-dc/ (a name of two characters or more), never in canon. 3) Build the issue's three asks: the runner as one library under lib/, which devbin's own test calls, with lanes_jobs, the GNU parallel probe and the count check unchanged; the catalogue's test.shell row runs through it; one call for a project with its own runner, taking a directory and the environment the project exports (Intent's runner will use it); a host with no GNU parallel says so in its leg log and runs one lane. 4) Your files, per cc's read: bin/.devbin/cmd/test and .lib/bats-lanes, lib/builtins's test.shell row, lib/cmd/test, testhandler.bats, and a comment in installhints.bats. cc keeps 0335's verb list out of lib/builtins, so you share no file; tell me at once if that changes. 5) Run your own new arms once on the desk, red at the base and green at the fix, under BSD on rhadamanth. Name any arm that is green at the base by construction, with its claim, before the ask, and grep the tree scans' patterns over your added lines first. START only on my grant. 6) Bank it (a ref by fetch and CAS), seal COMMIT_MSG-0339.txt, and tell me; I land it with land-stack.sh. The runner's own proof is devbin's suite through the core copy at the cut, which is the cut's own test, so no whole-suite run before it. Nothing pushed, nothing public.
+_(empty)_
 
 ---
 
