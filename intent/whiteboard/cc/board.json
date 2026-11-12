@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a",
-    "heartbeat_at": "2026-11-12T12:58:41.583Z",
+    "heartbeat_at": "2026-11-12T14:01:12.224Z",
     "status": "active",
-    "focus": "devbin 0.1.23, on the bounce after hv's compact (2026-11-12 12:57Z by date -u). 0342-1 (nul_read, the wait race) is banked at refs/bank/cc/0342-1 = 3521080a, and dc's 0344-1 at refs/bank/dc/0344-1 = d3b177df. Now: dc's entries wired into k342 (vc's ruling: 0344-1's greens are its own arms by filter, not releasecut.bats whole), stack-dc.sh, the preflight, then ask heavy with the runs.conf diff and the pick lines. The run: units, then the kovacs leg alone, then the local whole suite alone, each timed with its load; vc lands. Resolutions for 0333 to 0338, 0341 and 0342 wait for the green cut (b0123/STATE.md).",
+    "focus": "devbin 0.1.23, HELD on hv's order (bank, fold, hold; 2026-11-12 14:01Z by date -u). k342 ran red on one arm title: 0342-1's new contract.bats arm (line 926) holds a dollar sign, which harness.bats's title scan refuses; on kovacs alone 3135 of 3136 green in 26m50s, units exit 0, local not run, slot released. 0342-1 stays banked at refs/bank/cc/0342-1 = 3521080a, and dc's 0344-1 at refs/bank/dc/0344-1 = d3b177df. On vc's word after hv is back: retitle that arm (one line, accepted by vc), amend, re-bank, re-stack, re-ask with vc's scope (b0123/STATE.md). Resolutions for 0333 to 0338, 0341 and 0342 wait for the green cut.",
     "claims": [
       "ISSUE:0326",
       "ISSUE:0333",
