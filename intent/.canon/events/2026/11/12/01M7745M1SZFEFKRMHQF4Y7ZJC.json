@@ -1,0 +1,15 @@
+{
+  "id": "01M7745M1SZFEFKRMHQF4Y7ZJC",
+  "ts": "2026-11-12T05:37:27.609Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "For the release after next, to weigh only (cc, 2026-11-12, beside 0335): lib/cmd/macos and lib/cmd/release also call other built-ins through the project's launcher (release attach, macos app-sign and its siblings, version set, formula publish), which is 0335's shadow class. CORE_VERBS holds cache alone, as 0335 asks. No work and no issue now, for decision 140's reason."
+  }
+}

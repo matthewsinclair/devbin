@@ -4654,7 +4654,8 @@
       "kind": "decision",
       "seq": 149,
       "text": "hv's rulings in ccusage-vc's window, relayed by ccusage-vc (given before the clock read 2026-11-06 09:08Z by its date -u): (1) devbin-cc builds issue 0326 now: cc writes the shared core in Devbin, devbin releases it, then Ccusage pulls it in, wires its config and formula and ships with everything, so Ccusage's next release waits for devbin's; (2) Ccusage's activate rename (ccusage#0007) lands now on its main, in its next release, one cut carrying every outstanding issue (\"Only test the changes, not the whole thing and let me know when you need to run a full test suite and I'll do it manually\"). vc gave cc the go after the clock read 09:09Z by date -u: claim ISSUE:0326, the design agreed with vc before building, a scratch clone, its runs booked here with new arms red at the base and green at the fix, landing by land-stack.sh, unpushed, for the next devbin release, whose cut is hv's; whether hv's test words hold for devbin's own release is put to hv. Decisions 131 and 120 archived as executed.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-12T05:37:27.213Z",
       "recorded_at": "2026-11-06T09:10:03.128Z"
     },
     {
@@ -4777,17 +4778,19 @@
       "node": "vc",
       "kind": "todo",
       "seq": 205,
-      "text": "When devbin's release carrying 0333-0339 is on the tap, tell intent-vc: Intent's dc re-vendors it and lands Intent's ST0093 (c)-(e).",
+      "text": "When devbin's release carrying 0333-0339 is on the tap, tell intent-vc: Intent's dc re-vendors it and lands Intent's ST0093 (c)-(e). Tell agentic-engineering-vc at the same moment (its P1 devvm build waits on it, decision 159): the version, then 'brew upgrade devbin' and 'bin/devbin upgrade' in each repository, plus any step the as-built adds, such as 0339's serial tag for test shell. intent-vc sends it Intent's half.",
       "state": "live",
-      "recorded_at": "2026-11-11T20:00:07.971Z"
+      "recorded_at": "2026-11-11T20:00:07.971Z",
+      "edited_at": "2026-11-12T05:33:57.672Z"
     },
     {
       "node": "vc",
       "kind": "decision",
       "seq": 159,
-      "text": "hv in vc's window, received before the clock read 2026-11-12 04:48Z by date -u, the same words sent to every devbin and Intent seat: 'Ok, devbin-vc retains The Desk. P0 is getting everything sorted for the latest devbin and intent releases. Please liases with intent-vc and let me know where we are up to. DO NOT START WORK UNTIL I HAVE REVIEWED THE PLAN.' Executed: this session took the desk's control back at 04:48Z, under the controller's own name, so no new words were needed; devbin-cc holds with nothing booked; the one plan for both projects is cc's text, built with intent-vc's answers (cc's be465b2e, ~/Devel/scratch/devbin-cc/b0123/PLAN-20261112.txt), put to hv by vc with notes and sent to intent-vc to show in Intent's windows; nothing starts until hv has reviewed it.",
+      "text": "hv in vc's window, received before the clock read 2026-11-12 04:48Z by date -u, the same words sent to every devbin and Intent seat: 'Ok, devbin-vc retains The Desk. P0 is getting everything sorted for the latest devbin and intent releases. Please liases with intent-vc and let me know where we are up to. DO NOT START WORK UNTIL I HAVE REVIEWED THE PLAN.' Executed: this session took the desk's control back at 04:48Z, under the controller's own name, so no new words were needed; devbin-cc holds with nothing booked; the one plan for both projects is cc's text, built with intent-vc's answers (cc's be465b2e, ~/Devel/scratch/devbin-cc/b0123/PLAN-20261112.txt), put to hv by vc with notes and sent to intent-vc to show in Intent's windows; nothing starts until hv has reviewed it. Desk order, relayed the same morning: P1 is the agentic-engineering devvm release, which bakes the latest devbin, Intent and Molt from the taps unpinned, so it builds only once both P0 releases are on their taps (hv first-hand in agentic-engineering-vc's session at 05:30Z, relayed by agentic-engineering-vc); its heavy runs then go ahead of all other work that is not P0. Another estate is docs-only today, and AE asks for nothing until then.",
       "state": "live",
-      "recorded_at": "2026-11-12T04:57:43.328Z"
+      "recorded_at": "2026-11-12T04:57:43.328Z",
+      "edited_at": "2026-11-12T05:33:57.277Z"
     },
     {
       "node": "vc",
@@ -4797,6 +4800,22 @@
       "state": "live",
       "recorded_at": "2026-11-12T05:15:10.502Z",
       "edited_at": "2026-11-12T05:23:11.401Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 161,
+      "text": "vc's rulings, 2026-11-12, under decision 160's go. (a) cc's two questions on 0335's shape, each as cc recommended. Q1 A: a project's build handler reaches the cache through its launcher, bin/devbin cache get|put, as lib/pages/cache.md shows; there is no second route and no new handler contract, so nothing goes to ic; 0338's Resolution says the launcher is the route and Q2's finding guarantees it. Q2 A: doctor fails a project handler named for a verb in CORE_VERBS (cache alone today, beside core_verb in lib/helpers), and config validation refuses commands.cache.handler and commands.cache.run; every other shadow stays a note. Intent lands its cmd/cache rename in its now block before the 0.1.23 sweep reaches it, so its devbin doctor never reads red (asked of intent-vc). (b) dc's 0339 plan (408d2ea5), as sent: bats-lanes by git mv to lib/bats-lanes; test.shell as @builtin; the one call \"$DEVBIN_LIB/bats-lanes\" <dir>; lib/pages/test.md and tests/unit/builtins.bats added to its files. An arm holds what a relative <dir> means once its cd goes. (c) RELEASES/0.1.23.md: each unit's entry comes to vc as text with its handover, and vc assembles the note at the pre-cut. Decision 149 archived: its unexecuted half, Ccusage's adoption of 0326, is carried by todo 201 and decision 154.",
+      "state": "live",
+      "recorded_at": "2026-11-12T05:37:27.405Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 206,
+      "text": "For the release after next, to weigh only (cc, 2026-11-12, beside 0335): lib/cmd/macos and lib/cmd/release also call other built-ins through the project's launcher (release attach, macos app-sign and its siblings, version set, formula publish), which is 0335's shadow class. CORE_VERBS holds cache alone, as 0335 asks. No work and no issue now, for decision 140's reason.",
+      "state": "live",
+      "recorded_at": "2026-11-12T05:37:27.609Z"
     }
   ],
   "sent": [
@@ -7777,6 +7796,11 @@
       "id": "01M771MK73QHAKCHEAZSQHDV1W",
       "sender": "cc",
       "handled_at": "2026-11-12T04:57:54.068Z"
+    },
+    {
+      "id": "01M774023TE4QVYA5JED8W9NV0",
+      "sender": "dc",
+      "handled_at": "2026-11-12T05:37:27.852Z"
     }
   ]
 }

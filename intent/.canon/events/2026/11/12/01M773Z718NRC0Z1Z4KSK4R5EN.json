@@ -1,0 +1,16 @@
+{
+  "id": "01M773Z718NRC0Z1Z4KSK4R5EN",
+  "ts": "2026-11-12T05:33:57.672Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 205,
+    "text": "When devbin's release carrying 0333-0339 is on the tap, tell intent-vc: Intent's dc re-vendors it and lands Intent's ST0093 (c)-(e). Tell agentic-engineering-vc at the same moment (its P1 devvm build waits on it, decision 159): the version, then 'brew upgrade devbin' and 'bin/devbin upgrade' in each repository, plus any step the as-built adds, such as 0339's serial tag for test shell. intent-vc sends it Intent's half."
+  }
+}

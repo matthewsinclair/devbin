@@ -1,0 +1,16 @@
+{
+  "id": "01M773Z6MXSWZ1G2R4VQFC6F2M",
+  "ts": "2026-11-12T05:33:57.277Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 159,
+    "text": "hv in vc's window, received before the clock read 2026-11-12 04:48Z by date -u, the same words sent to every devbin and Intent seat: 'Ok, devbin-vc retains The Desk. P0 is getting everything sorted for the latest devbin and intent releases. Please liases with intent-vc and let me know where we are up to. DO NOT START WORK UNTIL I HAVE REVIEWED THE PLAN.' Executed: this session took the desk's control back at 04:48Z, under the controller's own name, so no new words were needed; devbin-cc holds with nothing booked; the one plan for both projects is cc's text, built with intent-vc's answers (cc's be465b2e, ~/Devel/scratch/devbin-cc/b0123/PLAN-20261112.txt), put to hv by vc with notes and sent to intent-vc to show in Intent's windows; nothing starts until hv has reviewed it. Desk order, relayed the same morning: P1 is the agentic-engineering devvm release, which bakes the latest devbin, Intent and Molt from the taps unpinned, so it builds only once both P0 releases are on their taps (hv first-hand in agentic-engineering-vc's session at 05:30Z, relayed by agentic-engineering-vc); its heavy runs then go ahead of all other work that is not P0. Another estate is docs-only today, and AE asks for nothing until then."
+  }
+}

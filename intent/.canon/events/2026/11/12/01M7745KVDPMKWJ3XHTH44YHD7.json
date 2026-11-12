@@ -1,0 +1,15 @@
+{
+  "id": "01M7745KVDPMKWJ3XHTH44YHD7",
+  "ts": "2026-11-12T05:37:27.405Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc's rulings, 2026-11-12, under decision 160's go. (a) cc's two questions on 0335's shape, each as cc recommended. Q1 A: a project's build handler reaches the cache through its launcher, bin/devbin cache get|put, as lib/pages/cache.md shows; there is no second route and no new handler contract, so nothing goes to ic; 0338's Resolution says the launcher is the route and Q2's finding guarantees it. Q2 A: doctor fails a project handler named for a verb in CORE_VERBS (cache alone today, beside core_verb in lib/helpers), and config validation refuses commands.cache.handler and commands.cache.run; every other shadow stays a note. Intent lands its cmd/cache rename in its now block before the 0.1.23 sweep reaches it, so its devbin doctor never reads red (asked of intent-vc). (b) dc's 0339 plan (408d2ea5), as sent: bats-lanes by git mv to lib/bats-lanes; test.shell as @builtin; the one call \"$DEVBIN_LIB/bats-lanes\" <dir>; lib/pages/test.md and tests/unit/builtins.bats added to its files. An arm holds what a relative <dir> means once its cd goes. (c) RELEASES/0.1.23.md: each unit's entry comes to vc as text with its handover, and vc assembles the note at the pre-cut. Decision 149 archived: its unexecuted half, Ccusage's adoption of 0326, is carried by todo 201 and decision 154."
+  }
+}
