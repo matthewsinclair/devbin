@@ -3,7 +3,7 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 14:54Z
+heartbeat_at: 2026-11-12 19:03Z
 status: active
 focus: "FOLDED for hv's move (2026-11-12 14:00Z by date -u) and HOLDING on hv's order (bank, fold, hold): no new work until vc's word. 0344-1 stays BANKED at refs/bank/dc/0344-1 = d3b177df, not cleared, on hv's order. k342 (0342-1 then 0344-1, stacked at 4d574460) ended red at 13:55:09Z, only on 0342-1's arm title (cc's one-line retitle, waiting for hv). 0344-1 was all green there: five reds, each on its own finding; its 15 BSD and 6 GNU arms; and kovacs's whole leg passed every 0344 arm. Ready in scratch, each run dry: clear-0344-bank.sh (after vc's landed), apply-resolution.sh with the Resolution drafts for 0340 and 0344 (after hv's rewrite and the green cut), and clear-kits.sh (after the green cut). Record: ~/Devel/scratch/devbin-dc/serlegs/STATE.md. After the release: clear-clone-pc0123.sh and bankclear.sh --apply. The ST0011/16 claim stays."
 claims: [ST0011/16]
