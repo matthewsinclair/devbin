@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "30d4e5b0-c191-42b4-88ae-c6bd721b436e",
-    "heartbeat_at": "2026-11-12T12:53:22.438Z",
+    "heartbeat_at": "2026-11-12T14:01:06.637Z",
     "status": "active",
-    "focus": "LOCALFOLDED for hv's compact (2026-11-12 12:48Z by date -u), holding for hv's /compact and vc's go after it. 0344-1 (the cut's remote legs serialised, decision 166: the candidate first, the local gates with the macOS stage beside them, then each release.legs host one at a time once the leg before it reads green; ci.wait per leg from its own start) is BANKED at refs/bank/dc/0344-1 = d3b177df, one commit on 0e87c402, for cc's k342 stack on 0342-1. It is probed with the fixed probe on the committed trees: 5 reds on their own findings, 15/15 BSD and 6/6 GNU green. vc holds the AC-2.2 and AT-2.7 drafts. 0340-1 and 0340-2 have landed, and their bank refs are cleared. Record: ~/Devel/scratch/devbin-dc/serlegs/STATE.md (bounce steps) and lanesjobs/STATE.md. After the green cut: Resolutions for 0340 and 0344, and the kits cleared by script. After the release: clear-clone-pc0123.sh and bankclear.sh --apply. The ST0011/16 claim stays.",
+    "focus": "FOLDED for hv's move (2026-11-12 14:00Z by date -u) and HOLDING on hv's order (bank, fold, hold): no new work until vc's word. 0344-1 stays BANKED at refs/bank/dc/0344-1 = d3b177df, not cleared, on hv's order. k342 (0342-1 then 0344-1, stacked at 4d574460) ended red at 13:55:09Z, only on 0342-1's arm title (cc's one-line retitle, waiting for hv). 0344-1 was all green there: five reds, each on its own finding; its 15 BSD and 6 GNU arms; and kovacs's whole leg passed every 0344 arm. Ready in scratch, each run dry: clear-0344-bank.sh (after vc's landed), apply-resolution.sh with the Resolution drafts for 0340 and 0344 (after hv's rewrite and the green cut), and clear-kits.sh (after the green cut). Record: ~/Devel/scratch/devbin-dc/serlegs/STATE.md. After the release: clear-clone-pc0123.sh and bankclear.sh --apply. The ST0011/16 claim stays.",
     "claims": [
       "ST0011/16"
     ],
