@@ -4790,7 +4790,7 @@
       "text": "hv in vc's window, received before the clock read 2026-11-12 04:48Z by date -u, the same words sent to every devbin and Intent seat: 'Ok, devbin-vc retains The Desk. P0 is getting everything sorted for the latest devbin and intent releases. Please liases with intent-vc and let me know where we are up to. DO NOT START WORK UNTIL I HAVE REVIEWED THE PLAN.' Executed: this session took the desk's control back at 04:48Z, under the controller's own name, so no new words were needed; devbin-cc holds with nothing booked; the one plan for both projects is cc's text, built with intent-vc's answers (cc's be465b2e, ~/Devel/scratch/devbin-cc/b0123/PLAN-20261112.txt), put to hv by vc with notes and sent to intent-vc to show in Intent's windows; nothing starts until hv has reviewed it. Desk order, relayed the same morning: P1 is the agentic-engineering devvm release, which bakes the latest devbin, Intent and Molt from the taps unpinned, so it builds only once both P0 releases are on their taps (hv first-hand in agentic-engineering-vc's session at 05:30Z, relayed by agentic-engineering-vc); its heavy runs then go ahead of all other work that is not P0. Another estate is docs-only today, and AE asks for nothing until then.",
       "state": "live",
       "recorded_at": "2026-11-12T04:57:43.328Z",
-      "edited_at": "2026-11-12T05:33:57.277Z"
+      "edited_at": "2026-11-12T10:08:24.209Z"
     },
     {
       "node": "vc",
@@ -4841,7 +4841,8 @@
       "seq": 162,
       "text": "hv's rulings during devbin 0.1.23's third cut (release commit c13c101a, reset by hv to dc0e45b8 at 09:35Z), 2026-11-12, read by date -u. (1) In vc's window, received between 09:06Z and 09:07Z, hv's wording: 'Note: [another estate's] rust work needs to be behind devbin and intent work today. Just so you know.' The desk grants another estate's cargo runs only in a gap, when no devbin or Intent run is going on rhadamanth or kovacs and the load allows. That estate's vc and its asking session were told at 09:07Z. The asking session withdrew its queued ask, which the desk denied as withdrawn. (2) In kovacs-sysadm's window, relayed by kovacs-sysadm before 09:31Z, hv's wording: 'cancelled and fixed IMMEDIATELY'. kovacs-sysadm stopped the cut's kovacs leg at 09:28:29Z, after 1230 tests. Its one not ok was 1150, harness.bats:198, whose unbounded \"$DEVBIN_HOME\"* guard reads 0334's <worktree>.tmp TMPDIR as inside the checkout. (3) In vc's window, received between 09:26Z and 09:31Z, hv's wording: 'WHAT THE HELL ARE THESE DAMN SLEEPS!? WE NEED TO CANCEL THE RUN IMMEIDATELY. It takes 10mins on the Mac and at the rate its going on Kovacs -- with no resource contention -- its going to take >2 hours!?!?!', then 'The SLEEPS take more time (by a factor of 4 or 5) than the actual tests!' The suite's speed is fixed in this batch, superseding vc's call to leave it until after the release. The cause, as read: bats --jobs's within-file semaphore polls with sleep 1, and lib/bats-lanes sets N to half the CPUs, 2 on kovacs. The batch: cc takes the local leg's red, 2200's teardown race (releasecut.bats:2827), and 1150's guard as 0334's follow-up; dc takes the speed, measured on kovacs and rhadamanth before choosing. One stacked run proves all three, with TMPDIR shaped as a leg sets it. The re-cut waits for vc's 'ready'.",
       "state": "live",
-      "recorded_at": "2026-11-12T09:35:55.021Z"
+      "recorded_at": "2026-11-12T09:35:55.021Z",
+      "edited_at": "2026-11-12T10:08:23.713Z"
     }
   ],
   "sent": [
