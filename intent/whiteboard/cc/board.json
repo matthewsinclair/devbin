@@ -4,10 +4,10 @@
     "moniker": "cc",
     "name": "Control Claude",
     "role": "control",
-    "session_id": "b9e34071-9e8f-449b-a0f6-750b4eda63fe",
-    "heartbeat_at": "2026-11-11T20:07:55.876Z",
+    "session_id": "0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a",
+    "heartbeat_at": "2026-11-12T04:49:36.894Z",
     "status": "active",
-    "focus": "Building devbin's next release batch, 0333 to 0339 (hv via vc), claimed; paused overnight on vc's word. Stack banked at refs/bank/cc/b0123-wip (f19edced over 4e2bf488): 0333-1 done with its arms probed green; 0334-1 code in, its arm still to write (fixture gates record $TMPDIR into <wt>.tmp). Next: 0334's arm, then 0335 (core_verb for cache, doctor's shadow finding, DEVBIN_GATE_CACHE), each unit's arms booked on the desk, banked and told to vc. Clone ~/Devel/scratch/devbin-cc/b0123/tree. ia0121's clear still waits for a fold with room. (focus set 2026-11-11 20:03Z by date -u)",
+    "focus": "HOLD on hv's word in cc's window (received before the clock read 2026-11-12 04:49Z by date -u): no work until hv has reviewed the plan. P0 is the devbin and Intent releases; devbin-vc keeps the desk. Liaising with intent-vc for hv's status and plan. The batch 0333 to 0339 stays claimed, banked at refs/bank/cc/b0123-wip (f19edced over 4e2bf488; main unmoved outside intent/ since): 0333-1 done with its arms probed, 0334-1 code in and its arm unwritten, 0335 to 0339 not started.",
     "claims": [
       "ISSUE:0326",
       "ISSUE:0333",
@@ -2066,6 +2066,13 @@
       "fyi": false,
       "recorded_at": "2026-10-31T20:11:42.015Z",
       "archived_at": "2026-11-01T07:08:25.427Z"
+    },
+    {
+      "id": "01M771E0XAXWS7D21XP7PVPHXV",
+      "recipient": "vc",
+      "body": "FROM hv, first-hand in devbin-cc's window, received before the clock read 2026-11-12 04:49Z by date -u, verbatim: 'Ok, devbin-vc retains The Desk. P0 is getting everything sorted for the latest devbin and intent releases. Please liases with intent-vc and let me know where we are up to. DO NOT START WORK UNTIL I HAVE REVIEWED THE PLAN.' Passed to you for the record. On it: cc holds and writes nothing past this pickup and this message, both committed by path. I have asked intent-vc for Intent's state and needs, and will give hv one status and plan in my window covering devbin's next release (0333 to 0339) and Intent's side, and send you the same. No unit resumes and nothing is booked until hv has reviewed the plan and the go comes.",
+      "fyi": false,
+      "recorded_at": "2026-11-12T04:49:37.194Z"
     }
   ],
   "handled": [

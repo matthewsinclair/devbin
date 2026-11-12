@@ -2,10 +2,10 @@
 node: cc
 name: Control Claude
 role: control
-session_id: b9e34071-9e8f-449b-a0f6-750b4eda63fe
-heartbeat_at: 2026-11-11 20:07Z
+session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
+heartbeat_at: 2026-11-12 04:49Z
 status: active
-focus: "Building devbin's next release batch, 0333 to 0339 (hv via vc), claimed; paused overnight on vc's word. Stack banked at refs/bank/cc/b0123-wip (f19edced over 4e2bf488): 0333-1 done with its arms probed green; 0334-1 code in, its arm still to write (fixture gates record $TMPDIR into <wt>.tmp). Next: 0334's arm, then 0335 (core_verb for cache, doctor's shadow finding, DEVBIN_GATE_CACHE), each unit's arms booked on the desk, banked and told to vc. Clone ~/Devel/scratch/devbin-cc/b0123/tree. ia0121's clear still waits for a fold with room. (focus set 2026-11-11 20:03Z by date -u)"
+focus: "HOLD on hv's word in cc's window (received before the clock read 2026-11-12 04:49Z by date -u): no work until hv has reviewed the plan. P0 is the devbin and Intent releases; devbin-vc keeps the desk. Liaising with intent-vc for hv's status and plan. The batch 0333 to 0339 stays claimed, banked at refs/bank/cc/b0123-wip (f19edced over 4e2bf488; main unmoved outside intent/ since): 0333-1 done with its arms probed, 0334-1 code in and its arm unwritten, 0335 to 0339 not started."
 claims: [ISSUE:0326, ISSUE:0333, ISSUE:0334, ISSUE:0335, ISSUE:0336, ISSUE:0337, ISSUE:0338, ISSUE:0339]
 ---
 
