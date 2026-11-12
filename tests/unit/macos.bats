@@ -1972,3 +1972,54 @@ $BIN_APP|$ID_APP"
   [ ! -e "$DEVBIN_TEST_TMPDIR/project-cache.calls" ] ||
     fail "app-sign ran the project's own cache: $(cat "$DEVBIN_TEST_TMPDIR/project-cache.calls")"
 }
+
+# hold_submissions <n> <seconds> -- after apple_stubs: xcrun's notarytool
+# submit holds each submission, a line of notary.submitted, until <n> have
+# been made, at most <seconds>, then answers as the stub does; past the bound
+# it answers Invalid, so a leg that submits one only after the other's verdict
+# is refused at its first, on its own bound and not the arm's.
+hold_submissions() {
+  mv "$APPLE/xcrun" "$APPLE/xcrun.stub" || return 1
+  cat >"$APPLE/xcrun" <<SH || return 1
+#!/bin/sh
+if [ "\$1 \$2" = "notarytool submit" ]; then
+  echo submitted >>"$DEVBIN_TEST_TMPDIR/notary.submitted"
+  waited=0
+  until [ "\$(grep -c . "$DEVBIN_TEST_TMPDIR/notary.submitted")" -ge $1 ]; do
+    if [ "\$waited" -ge $(($2 * 10)) ]; then
+      echo "xcrun \$* (held past the bound)" >>"$DEVBIN_TEST_TMPDIR/apple.calls"
+      echo "  id: 0f0e0d0c-0b0a-0908-0706-050403020100"
+      echo "  status: Invalid"
+      exit 1
+    fi
+    sleep 0.1
+    waited=\$((waited + 1))
+  done
+fi
+exec "$APPLE/xcrun.stub" "\$@"
+SH
+  chmod +x "$APPLE/xcrun"
+}
+
+@test "0336: leg signs the app and the binaries, then submits both notarisations at once and waits on both, each one's output printed whole, the app's first" {
+  local -a kinds=(app binaries)
+  on_macos
+  apple_stubs
+  keychain_full
+  proj="$(app_project "  bin_dir: build/bin
+$BIN_ALONE_YAML")"
+  mkdir -p "$proj/build/bin"
+  cp /usr/bin/true "$proj/build/bin/$BIN_PLAIN"
+  hold_submissions "${#kinds[@]}" 10
+  run macos_in "$proj" leg
+  assert_success
+  [ "$(grep -c . "$DEVBIN_TEST_TMPDIR/notary.submitted")" -eq "${#kinds[@]}" ] ||
+    fail "the leg did not submit one notarisation for each of ${kinds[*]}: $(cat "$DEVBIN_TEST_TMPDIR/notary.submitted" 2>&1)"
+  assert_output_contains "notarised and stapled: "
+  assert_output_contains "notarised: every staged binary, each accepted by Gatekeeper"
+  awk '/^notarised and stapled: / { a = NR } /^notarised: every staged binary/ { b = NR } END { exit !(a && b > a) }' <<<"$output" ||
+    fail "the app's block was not printed whole before the binaries': $output"
+  # Both signed before either submission was made.
+  awk '/^codesign .*--sign / { s = NR } /^xcrun notarytool submit / && !f { f = NR } END { exit !(s && f > s) }' "$DEVBIN_TEST_TMPDIR/apple.calls" ||
+    fail "a submission went in before both were signed: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+}
