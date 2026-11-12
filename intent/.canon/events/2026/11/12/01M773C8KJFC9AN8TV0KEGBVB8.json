@@ -1,0 +1,16 @@
+{
+  "id": "01M773C8KJFC9AN8TV0KEGBVB8",
+  "ts": "2026-11-12T05:23:36.690Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 204,
+    "text": "kovacs's hand-added TMPDIR line is already gone: Molt's re-render took it out of ~/.config/molt/env.sh at 2026-11-12 04:45Z (08:45 +04; the old copy is env.sh.molt-backup.20261112084534), per kovacs-sysadm. Nothing planned needs it. devbin's 0.1.23 leg carries 0334, and devbin's 0.1.22 leg ran green at 2026-11-11 08:54Z, before the line existed. Intent's next leg runs only after Intent takes in 0.1.23. hv rules on kovacs-sysadm's question, whether the line goes back by hand until then; vc's rec is to leave it out. At devbin's 0.1.23 cut, the kovacs leg log names the TMPDIR it ran under, which is 0334's proof."
+  }
+}
