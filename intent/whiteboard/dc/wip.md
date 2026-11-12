@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 05:38Z
+heartbeat_at: 2026-11-12 05:58Z
 status: active
-focus: "Building issue 0339 for devbin 0.1.23 on vc's go (decision 160, go read 2026-11-12 05:38Z by date -u): the bats lanes runner moves to lib/bats-lanes, devbin's own test and the catalogue's test.shell (@builtin) call it with an absolute dir, and a project's own runner calls "$DEVBIN_LIB/bats-lanes" <dir>. In ~/Devel/scratch/devbin-dc/i0339/tree; its arms on the desk (red at the base, green at the fix, BSD), then refs/bank/dc/0339 and COMMIT_MSG-0339.txt to vc, who lands it. The ST0011/16 claim stays."
+focus: "0339-1 banked and handed to vc for landing (2026-11-12 05:58Z by date -u): refs/bank/dc/0339 at eba0944f on d0a84fbb, its run green in slot 01M7751MBB2ADYMQVDQ8GWFE12 (15 arms red at the base, 19 green at the tip, BSD), handover ~/Devel/scratch/devbin-dc/i0339/handover with COMMIT_MSG-0339-1.txt, and 0339's note entry sent as text. Next: vc lands it with land-stack.sh, then 0339's Resolution and close. The ST0011/16 claim stays."
 claims: [ST0011/16, ISSUE:0339]
 ---
 
