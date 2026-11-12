@@ -49,7 +49,10 @@ LEG_WAIT_SECONDS=20
 # gates-red. gates-die in the tree ends it before the pair is opened,
 # gates-crash with the pair still in flight, and gates-killed with its seal
 # emptied, reading green, and status 137, as gates killed while their seal was
-# written leave it. The project does not ignore tmp/, so dirt a read leaves
+# written leave it. gates-tmpdir in the tree makes them first write the TMPDIR
+# they were given to <worktree>.seen-tmpdir and, when it is <worktree>.tmp,
+# leave a read-only directory in it, as a bats run killed mid-file leaves its
+# fixture cache. The project does not ignore tmp/, so dirt a read leaves
 # there is seen. Prints the project's path.
 leg_project() {
   local proj="$DEVBIN_TEST_TMPDIR/proj"
@@ -61,6 +64,12 @@ leg_project() {
     cat <<'SH'
 [ "$1 $2" = "release gates" ] || { echo "this fake devbin answers release gates alone" >&2; exit 1; }
 if [ -e gates-die ]; then echo "bash 3.2.57 is below devbin's floor of 5"; exit 1; fi
+if [ -e gates-tmpdir ]; then
+  printf '%s\n' "${TMPDIR-unset}" >"$PWD.seen-tmpdir" || exit 1
+  if [ "${TMPDIR-}" = "$PWD.tmp" ]; then
+    mkdir -p "$TMPDIR/cache/entries" && : >"$TMPDIR/cache/entries/one" && chmod -R a-w "$TMPDIR/cache" || exit 1
+  fi
+fi
 sha="$(git rev-parse HEAD)" || exit 1
 mkdir -p tmp/release || exit 1
 stem=tmp/release/20260101-0000.GATES
@@ -418,4 +427,32 @@ every_call_batch() {
   run bash -c 'set -euo pipefail; . "$1/helpers"; . "$1/release.notes"; . "$1/release.steps"; cd "$2"; printf "[%s]\n" "$(release_previous_tag "v{version}" v0.11.0)" "$(release_previous_tag "v{version}" v0.10.0)"' _ "$DEVBIN_LIB_DIR" "$repo"
   assert_success
   [ "$output" = $'[v0.10.0]\n[v0.9.0]' ] || fail "the newest release other than the target's own: $output"
+}
+
+@test "0334: a remote leg's gates run with their own TMPDIR, <worktree>.tmp on the host's disk, over one the host's own startup set, made afresh over what an earlier run at R left there and named in the leg's log, and the run's clear removes it with a read-only directory the gates left in it" {
+  local proj sha wt
+  proj="$(leg_project)"
+  : >"$proj/gates-tmpdir"
+  leg_commit "$proj" "gates that say which TMPDIR they were given"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov/tmp"
+  wt="$(leg_wt kov "$sha")"
+  # What an earlier run at R left there, beside a worktree removed by hand.
+  mkdir -p "$wt.tmp/left"
+  : >"$wt.tmp/left/file"
+  # A TMPDIR the host's own startup sets, as a shell's startup file can, which
+  # the shell that starts the gates inherits.
+  TMPDIR="$HOSTS/kov/tmp" run release_leg_start "$proj" kov demo "$sha"
+  [ "$(leg_word)" = pending ] || fail "a leg started over an earlier run's TMPDIR: $output"
+  await_file "$wt/tmp/release/20260101-0000.GATES.errors"
+  [ "$(cat "$wt.seen-tmpdir")" = "$wt.tmp" ] ||
+    fail "the gates were given TMPDIR '$(cat "$wt.seen-tmpdir")', not the run's own $wt.tmp"
+  [ ! -e "$wt.tmp/left" ] || fail "what an earlier run at R left in the TMPDIR is still there"
+  [ -f "$wt.tmp/cache/entries/one" ] || fail "the gates could not write in their TMPDIR"
+  grep -qxF "TMPDIR: $wt.tmp" "$wt.log" || fail "the leg's log does not name the gates' TMPDIR: $(cat "$wt.log")"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the run's read: $output"
+  [ ! -e "$wt.tmp" ] || fail "the run was cleared from the host and its TMPDIR left there: $(ls -lR "$wt.tmp")"
+  every_call_batch
 }

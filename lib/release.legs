@@ -30,10 +30,10 @@
 # config, a plain word (is_host_alias, lib/helpers). What lives on it is this
 # file's recipe, never config: the bare repo work/<project>-leg.git under its
 # home, and each run's worktree work/<project>-leg-<sha12> beside it, with its
-# log and, once its gates have ended, their exit status. The runner installs
-# and adjusts nothing there: the host carries what the project's declared gates
-# need, on the PATH its own startup sets, and a gate that cannot run there is
-# the leg's failed, named in its seal.
+# log, its gates' TMPDIR and, once its gates have ended, their exit status. The
+# runner installs and adjusts nothing there: the host carries what the
+# project's declared gates need, on the PATH its own startup sets, and a gate
+# that cannot run there is the leg's failed, named in its seal.
 #
 # THE REMOTE HALF GOES OVER `ssh <host> 'bash -s'`, never wrapped in `bash -c`
 # or `bash -lc`: the host's own non-interactive startup sets the environment
@@ -177,11 +177,20 @@ _release_leg_remote_init() {
 # at <sha> left beside a worktree since removed is removed first, since it
 # would read as this run's end; and a worktree made here that the gates could
 # not be started in is removed again, since it would read as a run going.
+#
+# THE GATES' TMPDIR IS THE RUN'S OWN, <worktree>.tmp, on the host's disk beside
+# the worktree (issue 0334): a host's /tmp can be a small tmpfs, and a large
+# build filled one. The same for every project's leg. It is made afresh as the
+# last step before the gates start, so a start refused before it leaves none.
+# What an earlier run at <sha> left there goes first, made writable, since a
+# build, or a bats run killed mid-file, can leave read-only directories in it.
+# It is cleared with the worktree.
 _release_leg_remote_start() {
-  local project="$1" sha="$2" repo wt log t err why=""
+  local project="$1" sha="$2" repo wt log tmp t err why=""
   repo="$HOME/work/$project-leg.git"
   wt="$HOME/work/$project-leg-${sha:0:12}"
   log="$wt.log"
+  tmp="$wt.tmp"
   if [ -e "$wt" ]; then
     printf 'started\ta run at %s was started there before, and its seal is the record\n' "${sha:0:12}"
     return 0
@@ -199,11 +208,14 @@ _release_leg_remote_start() {
   elif ! {
     printf 'leg: %s at %s, started %s\n' "$project" "$sha" "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
     printf 'PATH: %s\n' "$PATH"
+    printf 'TMPDIR: %s\n' "$tmp"
     for t in bash git intent bats shellcheck cargo; do
       printf '%s: %s\n' "$t" "$(command -v "$t" || printf 'not on PATH')"
     done
   } >>"$log"; then
     why="the log $log could not be written"
+  elif ! err="$({ [ ! -e "$tmp" ] || chmod -R u+w "$tmp"; } 2>&1 && rm -rf "$tmp" 2>&1 && mkdir -p "$tmp" 2>&1)"; then
+    why="the TMPDIR $tmp could not be made afresh for the run: ${err%%$'\n'*}"
   fi
   if [ -n "$why" ]; then
     if err="$(git -C "$repo" worktree remove --force "$wt" 2>&1 >/dev/null)"; then
@@ -220,6 +232,8 @@ _release_leg_remote_start() {
   # (helpers.bats holds this line in its list of the runtime's mv lines).
   # shellcheck disable=SC2016 # expanded by the shell that runs the gates
   set -- bash -c 'bin/devbin release gates; printf "%s\n" "$?" >"$1.rc.part" && mv -f "$1.rc.part" "$1.rc"' release-leg "$wt"
+  # The run's own TMPDIR, exported in this shell, which ends once they start.
+  export TMPDIR="$tmp"
   if command -v setsid >/dev/null 2>&1; then
     setsid nohup "$@" >>"$log" 2>&1 </dev/null &
   else
@@ -253,14 +267,19 @@ _release_leg_remote_probe() {
 }
 
 # _release_leg_remote_clear <project> <sha> -- the ended run's worktree, log,
-# status and ref removed, the bare repo kept; one line, `cleared<TAB><path>` or
-# `refused<TAB><why>`. --force, because the runner made this worktree on a test
-# machine, and what it holds beyond R's tree is the gates' own output, copied
-# back before this runs.
+# status, TMPDIR and ref removed, the bare repo kept; one line,
+# `cleared<TAB><path>` or `refused<TAB><why>`. --force, because the runner made
+# this worktree on a test machine, and what it holds beyond R's tree is the
+# gates' own output, copied back before this runs. The TMPDIR is made writable
+# first, since a build can leave read-only directories in it.
 _release_leg_remote_clear() {
   local repo="$HOME/work/$1-leg.git" wt="$HOME/work/$1-leg-${2:0:12}" err
   if ! err="$(git -C "$repo" worktree remove --force "$wt" 2>&1 >/dev/null)"; then
     printf 'refused\tgit could not remove the worktree %s: %s\n' "$wt" "${err%%$'\n'*}"
+    return 0
+  fi
+  if ! err="$({ [ ! -e "$wt.tmp" ] || chmod -R u+w "$wt.tmp"; } 2>&1 && rm -rf "$wt.tmp" 2>&1)"; then
+    printf 'refused\tthe TMPDIR %s.tmp could not be removed: %s\n' "$wt" "${err%%$'\n'*}"
     return 0
   fi
   if ! err="$(rm -f "$wt.log" "$wt.rc" "$wt.rc.part" 2>&1)"; then
