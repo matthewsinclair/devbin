@@ -1,0 +1,15 @@
+{
+  "id": "01M7843VSN19FPJ121CH9HB6WZ",
+  "ts": "2026-11-12T14:55:44.438Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in devbin-vc's window, received before the clock read 2026-11-12 14:55Z by date -u: \"Ok, we're back. Please please PLEASE get this devbin and intent release cut, and then get agentic-engineering-vc to get ready to do the next [release in that estate].\" (bracket vc's, keeping a product name out of the record) Decision 168's hold lifts. devbin 0.1.23 goes first: cc retitles 0342-1's contract.bats arm (no dollar sign), amends, re-banks by CAS, re-stacks 0344-1 and re-asks; vc's scope is harness.bats and contract.bats whole at the new tip, then rhadamanth's whole suite alone (its measured time); then the landing, the AC-2.2, AT-2.7 and AT-2.5 edits, the bank clears, hv's rewrite and hv's cut. Intent's cut follows on decision 160's plan (Intent's tree takes 0.1.23 first). agentic-engineering-vc is told now to get ready for that release."
+  }
+}
