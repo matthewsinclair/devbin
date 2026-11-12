@@ -880,3 +880,42 @@ cp "\${keep[@]}" "\${files[@]}" "\$dest"
 SH
   chmod +x "$DEVBIN_TEST_TMPDIR/stubs/scp"
 }
+
+# fake_hosts_settle -- every run a fake host started has ended, so none of them
+# still writes under $HOSTS once the arm's teardown removes the temp dir that
+# holds it (issue 0341). A leg's start runs the gates detached, in a worktree
+# under its host's work/, as it would on a real host, and their wrapper writes
+# their status, <worktree>.rc, as its last act. A cut that stops at its legs
+# step leaves such a run to finish on its host, so the arm can end while the
+# run goes on. Each worktree there with no status beside it is read every
+# tenth of a second until the status comes, for as long as a cut gives that
+# leg: the release.ci.wait the run's own config gives, read as the cut reads it.
+# A run still going then is named on stderr, with its log's last line, and the
+# answer is 1. Nothing to wait for where the arm made no fake hosts.
+fake_hosts_settle() {
+  local wt secs deadline rc=0
+  [ -n "${HOSTS:-}" ] && [ -d "$HOSTS" ] || return 0
+  for wt in "$HOSTS"/*/work/*-leg-*/; do
+    wt="${wt%/}"
+    case "$wt" in *.tmp) continue ;; esac
+    [ -d "$wt" ] && [ ! -e "$wt.rc" ] || continue
+    # shellcheck disable=SC2016 # expanded by the bash that reads the config
+    if ! secs="$(bash -c '. "$1/helpers" && . "$1/config" && . "$1/release.notes" && . "$1/release.steps" &&
+      cfg_load "$2/bin/.devbin/config.yaml" && release_seconds "$(cfg_release_get ci.wait)"' _ "$DEVBIN_LIB_DIR" "$wt" 2>&1)"; then
+      [ -d "$wt" ] || continue
+      printf 'fake_hosts_settle: the deadline for the run at %s could not be read from its config: %s\n' "${wt#"$HOSTS"/}" "$secs" >&2
+      rc=1
+      continue
+    fi
+    deadline=$((SECONDS + secs))
+    while [ ! -e "$wt.rc" ] && [ -d "$wt" ] && [ "$SECONDS" -lt "$deadline" ]; do
+      sleep 0.1
+    done
+    if [ ! -e "$wt.rc" ] && [ -d "$wt" ]; then
+      printf 'fake_hosts_settle: the run at %s was still going %ss on (release.ci.wait), its log ending: %s\n' \
+        "${wt#"$HOSTS"/}" "$secs" "$(tail -n 1 "$wt.log" 2>/dev/null || printf 'no log')" >&2
+      rc=1
+    fi
+  done
+  return "$rc"
+}

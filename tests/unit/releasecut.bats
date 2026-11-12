@@ -14,7 +14,15 @@ load "../lib/test_helper"
 load "../lib/release_fixtures"
 
 setup() { devbin_setup; }
-teardown() { devbin_teardown; }
+# A cut stopped at its legs step leaves a fake host's run to finish there, in
+# the arm's temp dir, so the teardown waits for every such run to end before it
+# removes that dir (fake_hosts_settle), and removes it whatever the wait found.
+teardown() {
+  local rc=0
+  fake_hosts_settle || rc=$?
+  devbin_teardown
+  return "$rc"
+}
 
 # cut_project, the fixture every arm here starts from, is in
 # tests/lib/release_fixtures.bash, since releaseattach.bats cuts it too.
