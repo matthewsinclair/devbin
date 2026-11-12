@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a",
-    "heartbeat_at": "2026-11-12T10:49:31.362Z",
+    "heartbeat_at": "2026-11-12T12:49:31.109Z",
     "status": "active",
-    "focus": "devbin 0.1.23 re-cut fixes, folded 2026-11-12 10:37Z by date -u: 0334-2 and 0341-1 banked at refs/bank/cc/b0123-7 (9374c367 on dc0e45b8); kit ~/Devel/scratch/devbin-cc/b0123/k340 ready, vc read its driver; it waits only for dc's 0340-1 bank ref, then one heavy stacked run, cc driving, vc lands, and the bank ref is cleared before hv's rewrite. The Resolutions and closes for 0333 to 0338 and 0341 wait for the green cut (b0123/STATE.md).",
+    "focus": "devbin 0.1.23, folded for hv's compact 2026-11-12 12:48Z by date -u: k340's four units landed (main 8f35cb72). 0342-1 (nul_read, the wait race) built at 3521080a in ~/Devel/scratch/devbin-cc/b0123/k342, banked as the kit's bank-0342-1.bundle (no canon ref, by vc's rule), design accepted by vc. dc's 0344-1 banked at refs/bank/dc/0344-1 (d3b177df), its entries saved in k342/dc-0344-1-entries.txt. On the bounce: stack it, ask heavy, run units, then kovacs alone, then local alone with the load sampler; vc lands. Resolutions for 0333 to 0338, 0341 and 0342 wait for the green cut (b0123/STATE.md).",
     "claims": [
       "ISSUE:0326",
       "ISSUE:0333",
