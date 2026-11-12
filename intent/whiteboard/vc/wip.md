@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-12 05:15Z
+heartbeat_at: 2026-11-12 05:42Z
 status: active
-focus: "GO (decision 160): devbin 0.1.23 carries 0333-0339; cc builds 0333-0338 from refs/bank/cc/b0123-wip, dc 0339 once hv starts it; each unit's arms on the desk, vc lands; then vc's pre-cut and hv's cut; then the sweep, Intent first. Desk: devbin and Intent first"
+focus: "GO (decision 160): devbin 0.1.23 carries 0333-0339; 0333-1 landed at d8da3afb and 0334-1 at f53d7fc2; cc builds 0335-0338 on f53d7fc2, dc builds 0339; each unit's arms run on the desk, then vc lands; then vc's pre-cut (note entries in ~/Devel/scratch/devbin-vc/0.1.23) and hv's cut; then the sweep, Intent first. Desk: devbin and Intent first; AE P1 after both taps"
 claims: [ST0011]
 ---
 
