@@ -1439,7 +1439,7 @@ legs_cache_lines() {
       ;;
   esac
   # The verb holds a key to its form before it prints one (lib/cmd/cache).
-  if key="$("$PROJECT_ROOT/bin/devbin" cache key "$art" --commit "$LEG_SHA" 2>"$err")" && [ -n "$key" ]; then
+  if key="$(core_verb cache key "$art" --commit "$LEG_SHA" 2>"$err")" && [ -n "$key" ]; then
     note_line "cache"$'\t'"$art"$'\t'"$key"
     printf 'release: cache: %s %s, the macOS stage'"'"'s app at %s\n' "$art" "$key" "${LEG_SHA:0:12}"
   else

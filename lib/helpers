@@ -3672,6 +3672,38 @@ platform_arch() {
   printf '%s\n' "$m"
 }
 
+# CORE_VERBS -- the built-ins devbin's core calls itself, from inside another
+# of its verbs (issue 0335): cache, which the macOS stage pulls and puts its app
+# through, and whose key a cut's RELEASE seal names. Each such call goes through
+# core_verb, by the verb's own path, never through the project's launcher,
+# where a project handler of the same name answers first (resolve_handler,
+# lib/resolve). A project's own build handler calls the verb through its
+# launcher, so doctor fails a project command at one of these names
+# (check_core_verbs), and config validation refuses a `handler:` or `run:` for
+# one: such a command would answer that handler's get with nothing pulled.
+CORE_VERBS=(cache)
+
+# is_core_verb <word> -- true when <word> is one of CORE_VERBS. Pure.
+is_core_verb() {
+  local v
+  for v in "${CORE_VERBS[@]}"; do
+    [ "$v" != "$1" ] || return 0
+  done
+  return 1
+}
+
+# core_verb <verb> <arg>... -- the built-in <verb>, one of CORE_VERBS, run by
+# its own path, $DEVBIN_LIB/cmd/<verb>, with the arguments given and
+# DEVBIN_COMMAND naming it, as the launcher runs it where no project command
+# stands at the name; its output and status are the verb's. A verb not in
+# CORE_VERBS is a defect, so the list stays the whole set of such calls.
+core_verb() {
+  local verb="$1"
+  shift
+  is_core_verb "$verb" || die "devbin defect: core_verb was asked for '$verb', which is not one of the verbs the core calls itself (CORE_VERBS)"
+  DEVBIN_COMMAND="$verb" "${DEVBIN_LIB:?the launcher exports DEVBIN_LIB}/cmd/$verb" "$@"
+}
+
 # cache_root_resolved -- the artefact registry's root (ST0011 WP-16) and how it
 # was named: `<root><TAB>declared` from DEVBIN_CACHE_HOME, or the XDG cache
 # directory's devbin, `<root><TAB>default`, when that is unset or empty. When the

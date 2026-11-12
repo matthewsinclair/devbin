@@ -4317,3 +4317,33 @@ $(git -C "$proj" log -1 --format=%B)"
     fail "the release commit's message is:
 $(git -C "$proj" log -1 --format=%B)"
 }
+
+@test "0335: the RELEASE seal names the key devbin's own cache gives the stage's artefact, by its path, where the project has a cache command of its own, which the cut never runs" {
+  local rel out key
+  legs_env
+  proj="$(legs_project)"
+  export UNAME_STUB_OS=Darwin
+  # The project's own cache: a report of its own, answering 0 with a line of a
+  # key's form whatever it is asked, so a key read through the launcher would
+  # be its answer.
+  create_test_command "$proj" cache "$(printf '#!/usr/bin/env bash\nprintf "%%s\\n" "$*" >>"%s/project-cache.calls"\nprintf "%%064d\\n" 0\n' "$DEVBIN_TEST_TMPDIR")" >/dev/null
+  git -C "$proj" add -A
+  git -C "$proj" commit -qm "a cache command of the project's own"
+  git -C "$proj" push -q origin main
+  DEVBIN_RELEASE_POLL_SECONDS=1 PATH="$(tag_refused_path)" run release_in "$proj" v1.0.1 --yes
+  [ "$status" -eq 1 ] || fail "want exit 1 at the tag step, got $status:
+$output"
+  assert_state tag FAILED
+  rel="$(git -C "$proj" rev-parse HEAD)"
+  [[ "$(git -C "$proj" log -1 --format=%s)" == "release: "* ]] || fail "HEAD is not the release commit: $(git -C "$proj" log --oneline -3)"
+  out="$(readlink -f "$proj/tmp/release/LATEST_RELEASE.out")" && [ -f "$out" ] || fail "the cut left no RELEASE seal under tmp/release/"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/project-cache.calls" ] ||
+    fail "the cut ran the project's own cache: $(cat "$DEVBIN_TEST_TMPDIR/project-cache.calls")"
+  # The key devbin's own cache gives at the release commit, read with the
+  # project's command moved aside, so the launcher reaches devbin's.
+  mv "$proj/bin/.devbin/cmd/cache" "$DEVBIN_TEST_TMPDIR/project-cache"
+  key="$(devbin_run "$proj" cache key app --commit "$rel")" || fail "the arm cannot key app at $rel: $key"
+  grep -qxF "devbin| cache"$'\t'"app"$'\t'"$key" "$out" ||
+    fail "the seal names no cache line for app $key: $(grep -F 'cache' "$out" || echo '(none)')"
+  assert_output_contains "release: cache: app $key"
+}

@@ -5,7 +5,7 @@
     bin/devbin cache rm <key>
     bin/devbin cache gc [--keep <n>]
 
-Keep this machine's built artefacts under a key made from the inputs a build reads, so a build whose inputs did not change pulls what it built before instead of building again. A project's `build` handler calls `get` before it builds and `put` after.
+Keep this machine's built artefacts under a key made from the inputs a build reads, so a build whose inputs did not change pulls what it built before instead of building again. A project's `build` handler calls `get` before it builds and `put` after. The verb stays devbin's: a project command named `cache`, a handler file or `commands.cache.handler` or `run:`, would answer that handler in its place, so config validation refuses the two keys and `bin/devbin doctor` fails the file. The macOS stage's calls and a cut's reach devbin's own by its path, whatever stands there.
 
 ## The key
 

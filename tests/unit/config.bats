@@ -1066,3 +1066,21 @@ YAML
   assert_success
   assert_output ""
 }
+
+@test "0335: validation refuses a handler: or a run: for cache, a command devbin's core calls itself, naming each key, and takes a run: for a command it does not call" {
+  parse <<'YAML'
+project:
+  name: demo
+commands:
+  cache:
+    handler: mycache
+    run: echo mine
+  docs:
+    run: echo mine
+YAML
+  run cfg_validate
+  assert_failure
+  assert_output_contains "commands.cache.handler: devbin's core calls its own cache, which a build handler reaches through bin/devbin"
+  assert_output_contains "commands.cache.run: devbin's core calls its own cache, which a build handler reaches through bin/devbin"
+  refute_output_contains "commands.docs.run"
+}

@@ -1928,3 +1928,47 @@ $BIN_APP|$ID_APP"
   awk '/^signed: / { s = NR } /^notarised: / { n = NR } END { exit !(s && n > s) }' <<<"$output" ||
     fail "bin-notarize did not follow bin-sign: $output"
 }
+
+@test "0335: app-sign pulls and puts its app through devbin's own cache, by its path, where the project has a cache command of its own, which it never runs" {
+  local key
+  on_macos
+  apple_stubs
+  keychain_full
+  stub_cargo
+  export DEVBIN_CACHE_HOME="$DEVBIN_TEST_TMPDIR/cache"
+  proj="$(app_project "  build: ./mkapp")"
+  rm -rf "$proj/build/Products/Release/Demo.app"
+  printf '#!/usr/bin/env bash\nprintf "built\\n" >>"%s/built.calls"\n' "$DEVBIN_TEST_TMPDIR" >"$proj/mkapp"
+  declare -f make_app >>"$proj/mkapp"
+  printf 'make_app build/Products/Release\n' >>"$proj/mkapp"
+  chmod +x "$proj/mkapp"
+  printf '%s\n' 'build:' '  inputs:' '    - mkapp' '    - VERSION' '  artefacts:' '    app:' '      tool: cargo' \
+    '      path: build/Products/Release/Demo.app' >>"$proj/bin/.devbin/config.yaml"
+  git -C "$proj" add -A
+  git -C "$proj" commit -qm "the app, through the cache"
+  # The key devbin's cache gives, read before the project's own command stands
+  # at the name; the command reads no input, so the key at the tag is the same.
+  key="$(devbin_run "$proj" cache key app)" || fail "the arm cannot key app: $key"
+  # The project's own cache: a report of its own, answering 0 whatever it is
+  # asked, so a get through the launcher would read as pulled.
+  mkdir -p "$proj/bin/.devbin/cmd"
+  printf '#!/usr/bin/env bash\nprintf "%%s\\n" "$*" >>"%s/project-cache.calls"\n' "$DEVBIN_TEST_TMPDIR" >"$proj/bin/.devbin/cmd/cache"
+  chmod +x "$proj/bin/.devbin/cmd/cache"
+  git -C "$proj" add -A
+  git -C "$proj" commit -qm "a cache command of the project's own"
+  git -C "$proj" tag -f -a v1.0.0 -m "- first" >/dev/null
+  run macos_in "$proj" app-sign
+  assert_success
+  [ ! -e "$DEVBIN_TEST_TMPDIR/project-cache.calls" ] ||
+    fail "app-sign ran the project's own cache: $(cat "$DEVBIN_TEST_TMPDIR/project-cache.calls")"
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/built.calls")" = built ] || fail "the build did not run once with the cache empty: $output"
+  [ -d "$DEVBIN_CACHE_HOME/demo/app/$key" ] || fail "app-sign put nothing under $key in devbin's cache: $output"
+  rm -f "$DEVBIN_TEST_TMPDIR/built.calls"
+  rm -rf "$proj/build/Products/Release/Demo.app"
+  run macos_in "$proj" app-sign
+  assert_success
+  assert_output_contains "pulled app $key"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/built.calls" ] || fail "macos.build ran though devbin's cache held the app: $output"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/project-cache.calls" ] ||
+    fail "app-sign ran the project's own cache: $(cat "$DEVBIN_TEST_TMPDIR/project-cache.calls")"
+}

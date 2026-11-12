@@ -1256,3 +1256,19 @@ doctor_check() {
   refute_output_contains "install devbin with Homebrew"
   refute_output_contains "export HOMEBREW_PREFIX"
 }
+
+@test "0335: a project command named cache, a name devbin's core calls itself, fails doctor by name and is listed as no supported override; a project with none passes the row" {
+  proj="$(mkinstalled)"
+  run devbin_run "$proj" doctor
+  assert_success
+  assert_output_contains "core verbs: no project command stands at a name devbin's core calls itself (cache)"
+  mkdir -p "$proj/bin/.devbin/cmd"
+  printf '#!/usr/bin/env bash\nexit 0\n' >"$proj/bin/.devbin/cmd/cache"
+  chmod +x "$proj/bin/.devbin/cmd/cache"
+  run devbin_run "$proj" doctor
+  assert_failure
+  assert_output_contains "FAIL"
+  assert_output_contains "core verbs: the project's own command stands at a name devbin's core calls itself"
+  assert_output_contains "cache is the project's own, where devbin's is called"
+  refute_output_contains "cache shadows the built-in"
+}

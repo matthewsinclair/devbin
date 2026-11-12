@@ -1388,16 +1388,17 @@ cmd_store_creds() {
 # macos.build, then the app put under the commit's key. The cache's own lines
 # say what it did, and a refusal costs the build alone: a get it refuses
 # builds, and a put it refuses, or that fails, leaves the build standing. With
-# no such artefact the app builds uncached, as it did before.
+# no such artefact the app builds uncached, as it did before. The cache is
+# devbin's own, by its own path (core_verb), never a project command at its name.
 app_build_cached() {
   local -a words=()
-  local art s=0 rc=0 launcher="$ROOT/bin/devbin"
+  local art s=0 rc=0
   run_words words macos.build "$APP_BUILD" || die "macos: macos.build holds no command to run"
   art="$(cfg_macos_artefact)" || s=$?
   case "$s" in
     0)
       step "pulling $art from the artefact cache at ${APP_RELEASE_COMMIT:0:12}"
-      "$launcher" cache get "$art" --commit "$APP_RELEASE_COMMIT" || rc=$?
+      core_verb cache get "$art" --commit "$APP_RELEASE_COMMIT" || rc=$?
       if [ "$rc" -eq 0 ]; then
         printf '  pulled, so macos.build is not run\n'
         return 0
@@ -1410,7 +1411,7 @@ app_build_cached() {
   "${words[@]}" || die "macos: macos.build failed (exit $?) -- nothing signed"
   [ "$s" -eq 0 ] || return 0
   step "putting $art into the artefact cache at ${APP_RELEASE_COMMIT:0:12}"
-  "$launcher" cache put "$art" || warn "macos: cache put $art did not record the app (above); the build stands"
+  core_verb cache put "$art" || warn "macos: cache put $art did not record the app (above); the build stands"
 }
 
 # app-sign: refused unless HEAD is the release's commit in a clean tree, the
