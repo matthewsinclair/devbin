@@ -2,10 +2,10 @@
 node: vc
 name: Validation Claude
 role: validation
-session_id: 86e8d721-4079-418e-9e48-218c8da86346
-heartbeat_at: 2026-11-11 20:07Z
-status: paused
-focus: "HOLD (hv, closed for the day): no work until hv's go; at boot re-arm the desk waiter, then devbin-cc resumes 0333-0339 from refs/bank/cc/b0123-wip"
+session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
+heartbeat_at: 2026-11-12 04:57Z
+status: active
+focus: "HOLD for hv's review of the plan (decision 159, 2026-11-12): P0 is devbin 0.1.23 (0333-0339), then Intent's next release; vc keeps the desk; at the go, cc resumes from refs/bank/cc/b0123-wip"
 claims: [ST0011]
 ---
 
@@ -88,6 +88,7 @@ claims: [ST0011]
 - hv assigned the estate desk to devbin-vc ("Ok, I'm assigning The Desk to you.", in vc's window, read 2026-11-10 15:53Z by date -u). The three groups: the agentic-engineering estates; devbin, whose vc manages the desk; and Utilz. rhadamanth-sysadm, gyges-sysadm and kovacs-sysadm are available as needed. hv's order: Utilz and Intent ready for release first, then a devbin patch if needed, then the agentic-engineering group's remaining docs, with no coding there yet. vc liaises with each vc. Control is taken once agentic-engineering-vc releases it.
 - Desk rulings, 2026-11-10 afternoon, vc holding the desk on hv's word (decision 153), read by date -u; the executed parts (0327, 0328, Utilz 2.14.9) archived with 0.1.21's release. (3) 0326 stays open: its Resolution covers devbin's half, and it closes with pplr#0001, cldr#0001 and ccusage#0007. (4) hv through the TUI: Intent: a client's name is confidential in its public record; Utilz ST0029 (Retire Python) is not for this release. (5) One layer of proof at the desk: a new arm green at the base by construction is named before the run with its claim, never given a planted fault. (edited)
 - hv in vc's window (read 07:31Z by date -u): Webber falls in BEHIND devbin and Intent until both are landed across the estate. devbin and Intent are P0/P1, Webber P3: a Webber ask gets rhadamanth's lanes only when nothing that ships devbin or Intent is waiting or about to ask; Webber work that can run on gyges runs there; nothing of Webber's already in train is stopped.
+- hv in vc's window, received before the clock read 2026-11-12 04:48Z by date -u, the same words sent to every devbin and Intent seat: 'Ok, devbin-vc retains The Desk. P0 is getting everything sorted for the latest devbin and intent releases. Please liases with intent-vc and let me know where we are up to. DO NOT START WORK UNTIL I HAVE REVIEWED THE PLAN.' Executed: this session took the desk's control back at 04:48Z, under the controller's own name, so no new words were needed; devbin-cc holds with nothing booked; the one plan for both projects is cc's text, built with intent-vc's answers (cc's be465b2e, ~/Devel/scratch/devbin-cc/b0123/PLAN-20261112.txt), put to hv by vc with notes and sent to intent-vc to show in Intent's windows; nothing starts until hv has reviewed it.
 
 ---
 

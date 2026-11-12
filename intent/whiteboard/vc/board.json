@@ -4,10 +4,10 @@
     "moniker": "vc",
     "name": "Validation Claude",
     "role": "validation",
-    "session_id": "86e8d721-4079-418e-9e48-218c8da86346",
-    "heartbeat_at": "2026-11-11T20:07:49.153Z",
-    "status": "paused",
-    "focus": "HOLD (hv, closed for the day): no work until hv's go; at boot re-arm the desk waiter, then devbin-cc resumes 0333-0339 from refs/bank/cc/b0123-wip",
+    "session_id": "d252d54e-7ad5-4f31-9c5f-02ab8aca3f33",
+    "heartbeat_at": "2026-11-12T04:57:47.528Z",
+    "status": "active",
+    "focus": "HOLD for hv's review of the plan (decision 159, 2026-11-12): P0 is devbin 0.1.23 (0333-0339), then Intent's next release; vc keeps the desk; at the go, cc resumes from refs/bank/cc/b0123-wip",
     "claims": [
       "ST0011"
     ],
@@ -4776,6 +4776,14 @@
       "text": "When devbin's release carrying 0333-0339 is on the tap, tell intent-vc: Intent's dc re-vendors it and lands Intent's ST0093 (c)-(e).",
       "state": "live",
       "recorded_at": "2026-11-11T20:00:07.971Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 159,
+      "text": "hv in vc's window, received before the clock read 2026-11-12 04:48Z by date -u, the same words sent to every devbin and Intent seat: 'Ok, devbin-vc retains The Desk. P0 is getting everything sorted for the latest devbin and intent releases. Please liases with intent-vc and let me know where we are up to. DO NOT START WORK UNTIL I HAVE REVIEWED THE PLAN.' Executed: this session took the desk's control back at 04:48Z, under the controller's own name, so no new words were needed; devbin-cc holds with nothing booked; the one plan for both projects is cc's text, built with intent-vc's answers (cc's be465b2e, ~/Devel/scratch/devbin-cc/b0123/PLAN-20261112.txt), put to hv by vc with notes and sent to intent-vc to show in Intent's windows; nothing starts until hv has reviewed it.",
+      "state": "live",
+      "recorded_at": "2026-11-12T04:57:43.328Z"
     }
   ],
   "sent": [
@@ -7732,6 +7740,16 @@
       "id": "01M6BJS5GM912QVW45ZEG73530",
       "sender": "dc",
       "handled_at": "2026-11-01T12:56:26.818Z"
+    },
+    {
+      "id": "01M771E0XAXWS7D21XP7PVPHXV",
+      "sender": "cc",
+      "handled_at": "2026-11-12T04:57:54.068Z"
+    },
+    {
+      "id": "01M771MK73QHAKCHEAZSQHDV1W",
+      "sender": "cc",
+      "handled_at": "2026-11-12T04:57:54.068Z"
     }
   ]
 }
