@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "30d4e5b0-c191-42b4-88ae-c6bd721b436e",
-    "heartbeat_at": "2026-11-12T06:14:08.633Z",
+    "heartbeat_at": "2026-11-12T06:18:42.333Z",
     "status": "active",
-    "focus": "0339 done (landed 41d59cb4, closed 67752c2a). The 0.1.23 pre-cut kit is built in ~/Devel/scratch/devbin-dc/pc0123 and not run (2026-11-12 06:13Z by date -u): derive.sh derives the files at the tip, (a) tree scans, (b) updatenotice, (c) changed tests, (d) the changed code's callers, 51 of 70 suites at a1cb3d62; run-precut.sh runs each whole under BSD and seals runs/SEAL. Waiting on vc for the dry run and the legs' width, then the heavy run once the last unit lands; 0337 only on vc's word. The ST0011/16 claim stays.",
+    "focus": "Holding for vc's final tip (2026-11-12 06:18Z by date -u): the 0.1.23 pre-cut kit in ~/Devel/scratch/devbin-dc/pc0123 is approved by vc and not run. It derives its files at the tip, runs them whole under BSD at hw.ncpu/2 with serial-tagged files after, then check all and the dry run on main, sealing runs/SEAL. vc commits RELEASES/0.1.23.md with its views once 0337 and 0338 land and sends that sha; then point-precut.sh, the heavy ask in bats, vc's driver read, and nothing in canon from grant to END. 0337 stays cc's unless hv moves it. The ST0011/16 claim stays.",
     "claims": [
       "ST0011/16"
     ],
