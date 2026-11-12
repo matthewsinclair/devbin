@@ -45,11 +45,16 @@
 #
 # N IS PRINTED ON THE FIRST LINE and DEVBIN_TEST_JOBS sets it, else DEVBIN_JOBS,
 # a shared desk's one cap for every tool a run starts (issue 0303): a whole
-# number, or `all` for every CPU the machine has. The default, half the CPUs and never
-# below two, is for a machine someone shares: another project's run on it
-# keeps half. `all` is for a runner nobody shares, as CI's are, and it counts
-# with cpu_probe, refusing rather than guessing when nothing can count (ST0011
-# WP-04).
+# number, or `all` for one test per CPU the machine has. The default is half
+# the CPUs and never fewer than _LANES_JOBS_FLOOR (issue 0340), more tests at
+# once than most machines have CPUs: a lane's tests spend most of their time
+# waiting, for their own processes and for bats, which looks for a free slot
+# once a second. A four-CPU host ran the lane about four times as fast at
+# sixteen to twenty-four at once as at two, and a sixteen-CPU macOS host ran it
+# fastest at twenty-four; past that, more at once only added contention. Half
+# the CPUs counts only on a machine with more than twice the floor's. `all`
+# counts with cpu_probe, refusing rather than guessing when nothing can count
+# (ST0011 WP-04).
 #
 # BATS 1.12 AND 1.14 BOTH RUN THIS, and they differ where it matters: on a
 # selection of no tests, 1.12 prints `1..0` and exits 0 while 1.14 exits 1 and
@@ -68,10 +73,16 @@ set -euo pipefail
 # itself decides which tests run; matching less is caught by the count.
 _LANES_SERIAL_TAG='^[[:blank:]]*#[[:blank:]]*bats[[:blank:]]+(test|file)_tags=(.*,)?[[:blank:]]*serial[[:blank:]]*(,.*)?$'
 
+# The fewest tests the parallel lane runs at once by default, however few the
+# CPUs (issue 0340). It is written here and nowhere else, and the lanes' arms
+# read it from this line.
+_LANES_JOBS_FLOOR=24
+
 # lanes_jobs <cpus> <setting> -- how many tests the parallel lane runs at once:
 # <setting> when it is given, which must be a whole number of at least 1, else
-# half of <cpus> and never below two. Returns 1 for a setting it cannot use.
-# `all` never reaches it: the caller reads it once, as the probe's count.
+# half of <cpus> and never fewer than _LANES_JOBS_FLOOR. Returns 1 for a
+# setting it cannot use. `all` never reaches it: the caller reads it once, as
+# the probe's count.
 lanes_jobs() {
   local cpus="$1" set="$2" n
   if [ -n "$set" ]; then
@@ -80,7 +91,7 @@ lanes_jobs() {
     return 0
   fi
   n=$((cpus / 2))
-  [ "$n" -ge 2 ] || n=2
+  [ "$n" -ge "$_LANES_JOBS_FLOOR" ] || n="$_LANES_JOBS_FLOOR"
   printf '%s\n' "$n"
 }
 

@@ -291,8 +291,8 @@ $(cat "$DEVBIN_TEST_TMPDIR/bats.argv")"
   require_command parallel "no GNU parallel on this runner"
   local root
   root="$(lanes_fixture)"
-  # Six CPUs, so the default would be three: the cap's two and the suite's
-  # own four each differ from it.
+  # Six CPUs, so the default would be the runner's floor, above half of them:
+  # the cap's two and the suite's own four each differ from it.
   mkdir -p "$DEVBIN_TEST_TMPDIR/cpus"
   printf '#!/bin/sh\necho 6\n' >"$DEVBIN_TEST_TMPDIR/cpus/nproc"
   chmod +x "$DEVBIN_TEST_TMPDIR/cpus/nproc"
@@ -309,24 +309,44 @@ $(cat "$DEVBIN_TEST_TMPDIR/bats.argv")"
   assert_output_contains "DEVBIN_JOBS is 'x', and it must be a whole number of jobs, 1 or more"
 }
 
-@test "the jobs default to half the CPUs, and never fewer than two (0190)" {
+# lanes_floor -- the fewest tests the parallel lane runs at once by default,
+# read from the one line of lib/bats-lanes that sets it, so no arm writes the
+# number down itself. Prints nothing when the runner sets no floor.
+lanes_floor() {
+  sed -n 's/^_LANES_JOBS_FLOOR=\([1-9][0-9]*\)$/\1/p' "$DEVBIN_LIB/bats-lanes"
+}
+
+# lanes_default <cpus> <floor> -- the default N by the runner's stated rule:
+# half of <cpus>, and never fewer than <floor>.
+lanes_default() {
+  local n=$(($1 / 2))
+  [ "$n" -ge "$2" ] || n="$2"
+  printf '%s\n' "$n"
+}
+
+@test "the jobs default to half the CPUs, and never fewer than the runner's floor (0190, 0340)" {
   require_command parallel "no GNU parallel on this runner"
-  local root cpus want rec
+  local root floor cpus want rec guess
   root="$(lanes_fixture)"
+  floor="$(lanes_floor)"
+  [ -n "$floor" ] || fail "lib/bats-lanes sets no _LANES_JOBS_FLOOR, so the default N has no floor above two"
   mkdir -p "$DEVBIN_TEST_TMPDIR/cpus"
-  for cpus in 6:3 3:2; do
-    want="${cpus#*:}"
-    printf '#!/bin/sh\necho %s\n' "${cpus%%:*}" >"$DEVBIN_TEST_TMPDIR/cpus/nproc"
+  # A machine with as many CPUs as the floor, half of them under it, and one
+  # with four times as many, half of them over it. Each expectation is the
+  # rule applied to the count the stub gives.
+  for cpus in "$floor" "$((floor * 4))"; do
+    want="$(lanes_default "$cpus" "$floor")"
+    printf '#!/bin/sh\necho %s\n' "$cpus" >"$DEVBIN_TEST_TMPDIR/cpus/nproc"
     chmod +x "$DEVBIN_TEST_TMPDIR/cpus/nproc"
     rec="$(bats_recorder)"
     run lanes_run "$root" PATH="$rec:$DEVBIN_TEST_TMPDIR/cpus:$PATH"
     assert_success
     assert_output_contains "lanes: two. First $want tests at a time under GNU parallel"
-    assert_output_contains "(${cpus%%:*} CPUs here; DEVBIN_TEST_JOBS sets the number)"
+    assert_output_contains "($cpus CPUs here; DEVBIN_TEST_JOBS sets the number)"
     handed "--jobs $want --filter-tags !serial tests/unit"
   done
   # Neither nproc nor getconf answering: 4 is taken, and said to be, rather
-  # than printed as though it were counted.
+  # than printed as though it were counted, and the rule is applied to it.
   printf '#!/bin/sh\nexit 1\n' >"$DEVBIN_TEST_TMPDIR/cpus/nproc"
   printf '#!/bin/sh\nexit 1\n' >"$DEVBIN_TEST_TMPDIR/cpus/getconf"
   chmod +x "$DEVBIN_TEST_TMPDIR/cpus/nproc" "$DEVBIN_TEST_TMPDIR/cpus/getconf"
@@ -334,7 +354,9 @@ $(cat "$DEVBIN_TEST_TMPDIR/bats.argv")"
   run lanes_run "$root" PATH="$rec:$DEVBIN_TEST_TMPDIR/cpus:$PATH"
   assert_success
   assert_output_contains "could not count this machine's CPUs (neither nproc nor getconf answered with a number), so taking 4"
-  handed "--jobs 2 --filter-tags !serial tests/unit"
+  guess="$(sed -n 's/.*answered with a number), so taking \([1-9][0-9]*\).*/\1/p' <<<"$output")"
+  [ -n "$guess" ] || fail "the run did not say what it took for the CPUs it could not count: $output"
+  handed "--jobs $(lanes_default "$guess" "$floor") --filter-tags !serial tests/unit"
 }
 
 @test "DEVBIN_TEST_JOBS=all runs the parallel lane on every CPU the probe counts, one lane on one CPU, and is refused where nothing counts them (WP04)" {
