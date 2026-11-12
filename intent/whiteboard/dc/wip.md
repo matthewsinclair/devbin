@@ -2,8 +2,8 @@
 node: dc
 name: DevX Claude
 role: devx
-session_id: c3da8b59-160e-4ce1-b1f7-7c52fdcc0b52
-heartbeat_at: 2026-11-05 14:20Z
+session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
+heartbeat_at: 2026-11-12 05:22Z
 status: active
 focus: "Holding read-only and reachable: the other estate's session hv named says nothing on its release path is devbin-dc's, its own nodes build it, and its image already pours devbin 0.1.20 from the tap; the ST0011/16 claim stays while WP16 waits for the consumers' cuts (focus set 2026-11-05 14:20Z by date -u)."
 claims: [ST0011/16]
