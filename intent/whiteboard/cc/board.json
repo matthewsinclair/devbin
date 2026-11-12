@@ -5,19 +5,11 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a",
-    "heartbeat_at": "2026-11-12T19:03:07.300Z",
+    "heartbeat_at": "2026-11-12T19:04:20.253Z",
     "status": "active",
-    "focus": "devbin 0.1.23 released at 7ab21982 (vc's word, end 19:02:19Z). Now, in vc's order: this pickup committed by path, then apply-resolutions.sh dry and real for the eight Resolutions (0333 to 0338, 0341, 0342), committed by path, then the board fold. Shas to vc when done.",
+    "focus": "devbin 0.1.23 released at 7ab21982. Issues 0333 to 0338, 0341 and 0342 resolved and closed at 36bce49a, and unclaimed. Still claimed: ISSUE:0326 (OPEN). Next: clear the b0123 kits and clones by script (k342/run1-red stays), then wait for vc's next word.",
     "claims": [
-      "ISSUE:0326",
-      "ISSUE:0333",
-      "ISSUE:0334",
-      "ISSUE:0335",
-      "ISSUE:0336",
-      "ISSUE:0337",
-      "ISSUE:0338",
-      "ISSUE:0341",
-      "ISSUE:0342"
+      "ISSUE:0326"
     ],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
