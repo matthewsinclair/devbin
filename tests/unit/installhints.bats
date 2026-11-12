@@ -7,8 +7,9 @@
 # that names `brew install` also names, on the same line, a way to install the
 # tool on Linux that puts it on PATH. ONLY THE SPELLINGS DECLARED HERE are
 # accepted, so any other reads red until it is declared:
-#   - `apt-get install <tool>`, bats-lanes' spelling (`brew install parallel,
-#     or apt-get install parallel`), for a tool Ubuntu's archive carries;
+#   - `apt-get install <tool>`, lib/bats-lanes' spelling (`brew install
+#     parallel, or apt-get install parallel`), for a tool Ubuntu's archive
+#     carries;
 #   - `swift.org/install`, the Swift toolchain, on a swift-format hint alone:
 #     no Ubuntu package puts swift-format on PATH (24.04 carries none, and
 #     26.04's swiftlang installs it under /usr/libexec/swift/bin).

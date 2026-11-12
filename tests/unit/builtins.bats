@@ -273,6 +273,76 @@ YAML
   refute_file_contains "$seal" "log tail"
 }
 
+# THE SHELL OPTION RUNS IN TWO LANES through the core's lanes runner (0339):
+# the untagged tests N at a time, then the one tagged serial. The test lines
+# are printf ARGUMENTS, never lines of their own: bats reads a line of this
+# file that starts `@test` or `# bats` as its own, heredocs included. The
+# counts are read off the fixture's files, and the variables an outer run sets
+# for the lanes are cleared, as testhandler.bats's lanes_run clears them.
+@test "test shell runs a shell project's tests/ in two lanes through the core's runner, whichever directory it is run from (0339)" {
+  require_command parallel "no GNU parallel on this runner"
+  local proj all serial jobs=2
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+  languages:
+    - shell
+YAML
+  )"
+  mkdir -p "$proj/tests"
+  printf '%s\n' '@test "a one" { true; }' '@test "a two" { true; }' >"$proj/tests/a.bats"
+  printf '%s\n' '@test "b plain" { true; }' '# bats test_tags=serial' '@test "b serial" { true; }' >"$proj/tests/b.bats"
+  all="$(cat "$proj"/tests/*.bats | grep -c '^@test ')" || fail "the fixture's tests could not be counted"
+  serial="$(cat "$proj"/tests/*.bats | grep -c '^# bats test_tags=serial$')" || fail "the fixture holds no serial test"
+  # Run from inside tests/, where a relative tests/ names nothing: the runner is
+  # handed the project's tests/ whole, so where a run starts cannot change what
+  # it finds.
+  run env -u DEVBIN_JOBS -u BATS_PARALLEL_BINARY_NAME -u BATS_NUMBER_OF_PARALLEL_JOBS DEVBIN_TEST_JOBS="$jobs" \
+    bash -c 'cd "$1/tests" && "$1/bin/devbin" test shell </dev/null' _ "$proj"
+  assert_success
+  assert_output_contains "lanes: two. First $jobs tests at a time under GNU parallel"
+  assert_output_contains "lanes: the serial lane, $serial test(s), one at a time"
+  grep -qE "^lanes: $((all - serial)) test\\(s\\) ran in parallel and $serial serially, all $all that bats counts in /.*/tests, each once\$" <<<"$output" ||
+    fail "the lanes did not run every test of the project's tests/, each once: $output"
+  assert_file_empty "$proj/tmp/test/LATEST_SHELL.errors"
+}
+
+# A PROJECT'S OWN RUNNER CALLS THE CORE'S LANES RUNNER (0339), as one declared
+# as the shell option's run: line does: it drops PROJECT_ROOT, as a runner
+# that decides its suite's environment may, exports what its suite needs, and
+# hands the lanes runner its directory whole, from $PWD, the project root
+# devbin runs a run: line at. A test in each lane reads what it exported.
+@test "a project's own runner calls the core's lanes runner by DEVBIN_LIB, with PROJECT_ROOT unset, and both lanes see what it exports (0339)" {
+  require_command parallel "no GNU parallel on this runner"
+  local proj all serial jobs=2
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+  languages:
+    - shell
+commands:
+  test:
+    options:
+      shell:
+        run: tests/run.sh
+YAML
+  )"
+  mkdir -p "$proj/tests/unit"
+  printf '%s\n' '#!/usr/bin/env bash' 'set -euo pipefail' 'unset PROJECT_ROOT' 'export DEMO_SUITE_MARK=from-the-runner' \
+    'exec "$DEVBIN_LIB/bats-lanes" "$PWD/tests/unit"' >"$proj/tests/run.sh"
+  chmod +x "$proj/tests/run.sh"
+  printf '%s\n' '@test "a reads the mark" { [ "$DEMO_SUITE_MARK" = from-the-runner ]; }' >"$proj/tests/unit/a.bats"
+  printf '%s\n' '# bats test_tags=serial' '@test "b reads the mark" { [ "$DEMO_SUITE_MARK" = from-the-runner ]; }' >"$proj/tests/unit/b.bats"
+  all="$(cat "$proj"/tests/unit/*.bats | grep -c '^@test ')" || fail "the fixture's tests could not be counted"
+  serial="$(cat "$proj"/tests/unit/*.bats | grep -c '^# bats test_tags=serial$')" || fail "the fixture holds no serial test"
+  run env -u DEVBIN_JOBS -u BATS_PARALLEL_BINARY_NAME -u BATS_NUMBER_OF_PARALLEL_JOBS DEVBIN_TEST_JOBS="$jobs" \
+    bash -c 'cd "$1" && ./bin/devbin test shell </dev/null' _ "$proj"
+  assert_success
+  assert_output_contains "lanes: two. First $jobs tests at a time under GNU parallel"
+  grep -qE "^lanes: $((all - serial)) test\\(s\\) ran in parallel and $serial serially, all $all that bats counts in /.*/tests/unit, each once\$" <<<"$output" ||
+    fail "the runner's lanes did not run every test, each once: $output"
+}
+
 @test "config overrides a built-in option's command line" {
   # The tier-2 shape: devbin knows the option, the project says how to run
   # it here, and no script is written either way.

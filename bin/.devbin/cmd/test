@@ -128,15 +128,18 @@ case "${1:-}" in
       esac
     done
     # THE WHOLE SUITE RUNS IN TWO LANES (issue 0190): handed nothing for bats,
-    # which is what `test all` hands it, the run goes to .lib/bats-lanes. That
-    # runs the suite under bats --jobs where GNU parallel is installed, then
-    # the tests tagged serial one at a time, and says on its first line which
-    # it did and why. A run handed paths or bats flags is a targeted run, and
-    # bats gets exactly what it was handed, as before. The split args stay
-    # visible on the run_gate line, where dispatch.bats's raw-argv scan reads
-    # them; for the lanes there are none.
+    # which is what `test all` hands it, the run goes to the core's lanes
+    # runner, lib/bats-lanes, which DEVBIN_LIB names here and in every install
+    # (issue 0339). That runs the suite under bats --jobs where GNU parallel is
+    # installed, then the tests tagged serial one at a time, and says on its
+    # first line which it did and why. It reads a relative directory from
+    # wherever it is called, so it is handed the suite's absolute path. A run
+    # handed paths or bats flags is a targeted run, and bats gets exactly what
+    # it was handed, as before. The split args stay visible on the run_gate
+    # line, where dispatch.bats's raw-argv scan reads them; for the lanes there
+    # are none.
     if [ "${#DEVBIN_GATE_ARGS[@]}" -eq 0 ]; then
-      gate_cmd=(bin/.devbin/cmd/.lib/bats-lanes tests/unit)
+      gate_cmd=("$DEVBIN_LIB/bats-lanes" "$PROJECT_ROOT/tests/unit")
     else
       [ "$have_path" = 1 ] || DEVBIN_GATE_ARGS+=(tests/unit)
       gate_cmd=(bats)

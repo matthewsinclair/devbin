@@ -11,8 +11,8 @@
 # runs a suite.
 #
 # Handed nothing for bats, the handler runs the whole suite in two lanes
-# through bin/.devbin/cmd/.lib/bats-lanes (0190). The lane arms at the end run
-# that script for real, over a fixture suite of their own.
+# through the core's lanes runner, lib/bats-lanes (0190, 0339). The lane arms
+# at the end run that script for real, over a fixture suite of their own.
 
 load "../lib/test_helper"
 
@@ -42,16 +42,18 @@ SH
 # want <word>... -- the argv the gate must have been handed, as handler_argv prints it.
 want() { printf 'ARGV\n'; printf '%s\n' "$@"; }
 
-@test "test bats with nothing after it runs the whole suite, tests/unit, in lanes (0190)" {
+# The core's lanes runner, as DEVBIN_LIB names it, handed the suite's absolute
+# path: it reads a relative one from wherever it is called (0339).
+@test "test bats with nothing after it runs the whole suite, tests/unit, in lanes through the core's runner (0190, 0339)" {
   run handler_argv bats
   assert_success
-  [ "$output" = "$(want bin/.devbin/cmd/.lib/bats-lanes tests/unit)" ] || fail "got: $output"
+  [ "$output" = "$(want "$DEVBIN_TEST_TMPDIR/shim/bats-lanes" "$DEVBIN_TEST_TMPDIR/root/tests/unit")" ] || fail "got: $output"
 }
 
-@test "a wrapper flag alone still runs the whole suite in lanes (0190)" {
+@test "a wrapper flag alone still runs the whole suite in lanes through the core's runner (0190, 0339)" {
   run handler_argv bats --purge
   assert_success
-  [ "$output" = "$(want bin/.devbin/cmd/.lib/bats-lanes tests/unit)" ] || fail "got: $output"
+  [ "$output" = "$(want "$DEVBIN_TEST_TMPDIR/shim/bats-lanes" "$DEVBIN_TEST_TMPDIR/root/tests/unit")" ] || fail "got: $output"
 }
 
 @test "test bats with paths runs exactly those paths (0092)" {
@@ -105,8 +107,8 @@ want() { printf 'ARGV\n'; printf '%s\n' "$@"; }
 }
 
 # ============================================================================
-# THE LANES (issue 0190): bin/.devbin/cmd/.lib/bats-lanes, run for real over a
-# fixture suite, one of its tests tagged serial
+# THE LANES (issues 0190, 0339): lib/bats-lanes, the core's lanes runner, run
+# for real over a fixture suite, one of its tests tagged serial
 # ============================================================================
 
 # lanes_fixture [fail-where] -- a fixture root holding a suite of tests, and
@@ -143,13 +145,15 @@ lanes_tally() {
 # tests/unit, with the environment assignments given. The variables the
 # runner and bats read for the lanes are cleared first, so an outer run's own,
 # as in help's `DEVBIN_TEST_JOBS=4 bin/devbin test all` or a desk's
-# DEVBIN_JOBS, cannot reach an arm; an assignment given here still wins.
+# DEVBIN_JOBS, cannot reach an arm; an assignment given here still wins. The
+# runner reads its directory from where it is called, so <root> is where it
+# stands.
 lanes_run() {
   local root="$1"
   shift
   (cd "$root" && env -u DEVBIN_TEST_JOBS -u DEVBIN_JOBS -u BATS_PARALLEL_BINARY_NAME -u BATS_NUMBER_OF_PARALLEL_JOBS \
-    "$@" DEVBIN_LIB="$DEVBIN_LIB" PROJECT_ROOT="$root" \
-    bash "$DEVBIN_HOME/bin/.devbin/cmd/.lib/bats-lanes" tests/unit </dev/null)
+    "$@" DEVBIN_LIB="$DEVBIN_LIB" \
+    bash "$DEVBIN_LIB/bats-lanes" tests/unit </dev/null)
 }
 
 # bats_recorder -- put a bats first on PATH that appends each argv it is handed

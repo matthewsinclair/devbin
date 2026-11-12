@@ -1,24 +1,36 @@
 #!/usr/bin/env bash
 #
-# Devbin's own suite, run in two lanes (issue 0190).
+# lib/bats-lanes <test directory> -- a bats suite, run in two lanes (issue 0190).
 #
-# THIS IS NOT A COMMAND HANDLER, and the leading dot on `.lib/` is what says so,
-# as for shell-gate beside it. bin/.devbin/cmd/test runs it through run_gate
-# when `test bats` is handed nothing to pass on, which is what `test all` hands
-# it, so the run is sealed like any gate. This prints and exits.
+# EXECUTED, NEVER SOURCED: it prints, and exits with the run's one verdict.
+# `test shell` runs it over the project's tests/ when it is handed nothing for
+# bats, which is what `test all` hands it (lib/cmd/test), and through run_gate,
+# so the run is sealed like any gate. A project whose suite has a runner of its
+# own calls it in place of bats, the same way, from any command devbin runs,
+# since the dispatcher exports DEVBIN_LIB to every one (issue 0339):
 #
-# THE SUITE RAN ONE TEST AT A TIME on a machine with sixteen cores: 2282 tests
-# in 40.6 min here, and 39.5 min on CI's two-CPU runner. Every test runs in its
-# own temp directory and none writes into the checkout or depends on another,
-# so bats can run them side by side, through GNU parallel.
+#   "$DEVBIN_LIB/bats-lanes" <test directory>
+#
+# IT READS THE DIRECTORY WHERE IT IS CALLED, and never changes to the project
+# root: a runner may drop PROJECT_ROOT before it starts its suite. So a caller
+# hands it a directory it can read from where it stands, and devbin's own
+# callers hand it an absolute one. Every variable the caller exports reaches
+# bats in both lanes, which is how a runner gives its suite what it needs, such
+# as a BATS_LIB_PATH.
+#
+# A SUITE RUN ONE TEST AT A TIME leaves every core but one idle. Where each test
+# runs in its own temp directory, writes nothing into the checkout and depends
+# on no other, bats can run them side by side, through GNU parallel.
 #
 # THE PARALLEL LANE runs every test NOT tagged `serial`, N at a time:
 # `bats --jobs N --filter-tags '!serial'`. THE SERIAL LANE runs the tests that
 # ARE tagged serial afterwards, one at a time, with nothing else of this run
-# beside them: a test whose wall-clock margins contention can eat goes there,
-# and its tag line gives the reason. A test is tagged on the line before it:
+# beside them: a test that cannot share a host, or whose wall-clock margins
+# contention can eat, goes there, and its tag line gives the reason. A test is
+# tagged on the line before it, and every test of a file by a file tag:
 #
 #   # bats test_tags=serial
+#   # bats file_tags=serial
 #
 # ONE VERDICT. The exit is non-zero when either lane fails, and when the two
 # lanes did not run every test exactly once between them. The second is counted
@@ -35,14 +47,14 @@
 # a shared desk's one cap for every tool a run starts (issue 0303): a whole
 # number, or `all` for every CPU the machine has. The default, half the CPUs and never
 # below two, is for a machine someone shares: another project's run on it
-# keeps half. `all` is for a runner nobody shares, as CI's are (tests.yml sets
-# it on every job that runs the suite), and it counts with cpu_probe, refusing
-# rather than guessing when nothing can count (ST0011 WP-04).
+# keeps half. `all` is for a runner nobody shares, as CI's are, and it counts
+# with cpu_probe, refusing rather than guessing when nothing can count (ST0011
+# WP-04).
 #
 # BATS 1.12 AND 1.14 BOTH RUN THIS, and they differ where it matters: on a
 # selection of no tests, 1.12 prints `1..0` and exits 0 while 1.14 exits 1 and
 # offers --allow-empty-suite, which 1.12 does not know. So an empty serial lane
-# is never run at all. CI pins 1.12 and this Mac has 1.14.
+# is never run at all.
 #
 set -euo pipefail
 
@@ -50,8 +62,6 @@ set -euo pipefail
 . "${DEVBIN_LIB:?run me through bin/devbin}/helpers"
 # shellcheck source=lib/runlog
 . "${DEVBIN_LIB}/runlog"
-
-cd "$PROJECT_ROOT"
 
 # The line bats reads as a test's tags (bats-preprocess), naming `serial` as
 # one of them. Matching more than bats would tag costs nothing, since bats
