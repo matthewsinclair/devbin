@@ -891,7 +891,8 @@ leg_config_lines() {
 # run in this cut (issue 0337), one line, or nothing when it has gone green
 # since <tag>, the previous release's, with the leg config HEAD declares. Its
 # kept pairs (release_leg_dir) are read newest first, by the commit each
-# names, and the first whose commit is <tag>'s or descends from it, with
+# names, and the first whose commit is <tag>'s or descends from it
+# (commit_direction's same or forward), with
 # HEAD's leg config (leg_config_lines), decides: green passes, and any other
 # word refuses, its last run red among them. No such run refuses too, as for a
 # leg added or reconfigured since <tag>; with no <tag>, the first release,
@@ -916,7 +917,14 @@ legs_rehearsal_problem() {
     commit="$(awk '/^devbin\|   commit: [0-9a-f]+$/ { print $3; exit }' "$stem.out" 2>/dev/null)" || commit=""
     [ -n "$commit" ] && [ -z "${seen[$commit]:-}" ] || continue
     seen[$commit]=1
-    [ -z "$base" ] || git -C "$PROJECT_ROOT" merge-base --is-ancestor "$base" "$commit" 2>/dev/null || continue
+    # At the tag's commit or after it, by the one reader of which way a
+    # commit moved (commit_direction, lib/helpers).
+    if [ -n "$base" ]; then
+      case "$(commit_direction "$PROJECT_ROOT" "$base" "$commit")" in
+        same | forward) ;;
+        *) continue ;;
+      esac
+    fi
     cfg="$(leg_config_lines "$commit")" || continue
     [ "$cfg" = "$head_cfg" ] || continue
     word="$(seal_verdict "$dir" GATES "$commit" "")"
