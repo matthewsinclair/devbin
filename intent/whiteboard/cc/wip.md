@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-12 04:49Z
+heartbeat_at: 2026-11-12 05:14Z
 status: active
-focus: "HOLD on hv's word in cc's window (received before the clock read 2026-11-12 04:49Z by date -u): no work until hv has reviewed the plan. P0 is the devbin and Intent releases; devbin-vc keeps the desk. Liaising with intent-vc for hv's status and plan. The batch 0333 to 0339 stays claimed, banked at refs/bank/cc/b0123-wip (f19edced over 4e2bf488; main unmoved outside intent/ since): 0333-1 done with its arms probed, 0334-1 code in and its arm unwritten, 0335 to 0339 not started."
-claims: [ISSUE:0326, ISSUE:0333, ISSUE:0334, ISSUE:0335, ISSUE:0336, ISSUE:0337, ISSUE:0338, ISSUE:0339]
+focus: "Building devbin 0.1.23's units 0333 to 0338 on hv's go via vc (decision 160, read 2026-11-12 05:14Z by date -u); 0339 unclaimed for dc. From refs/bank/cc/b0123-wip (f19edced over 4e2bf488) in ~/Devel/scratch/devbin-cc/b0123/tree: 0333-1 done, 0334-1's arm next, then one light run for both; then 0335, 0336, 0337, and 0338 after 0335. Each unit's own arms on the desk (red at the base, green at the fix), banked with its sealed message, told to vc, landed by vc."
+claims: [ISSUE:0326, ISSUE:0333, ISSUE:0334, ISSUE:0335, ISSUE:0336, ISSUE:0337, ISSUE:0338]
 ---
 
 # Control Claude (cc)
