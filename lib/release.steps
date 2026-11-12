@@ -525,7 +525,7 @@ release_lock_own_aside() {
 #
 # READ WITH -z, so a path holding a space or a quote is the path and not git's
 # quoting of it: the owned-set test compares these with notes_paths' spelling.
-# The status is git's, through `wait` on the process substitution.
+# The status is git's, read with its records by nul_read (issue 0342).
 #
 # WITHOUT THE OPTIONAL LOCK, AND NOTHING ELSE (issue 0094): `release check` is
 # read-only, and a plain `git status` rewrites a stale index under that lock. Not
@@ -537,8 +537,10 @@ release_lock_own_aside() {
 # and release_commit's all name the one repository at the project root
 # (ST0011).
 release_dirt() {
-  local entry second=no
-  while IFS= read -r -d '' entry; do
+  local entry second=no rc=0
+  local -a entries=()
+  nul_read entries git --no-optional-locks status --porcelain=v1 -z --untracked-files=all || rc=$?
+  for entry in ${entries[@]+"${entries[@]}"}; do
     if [ "$second" = yes ]; then
       printf '%s\n' "$entry"
       second=no
@@ -546,8 +548,8 @@ release_dirt() {
     fi
     printf '%s\n' "${entry:3}"
     case "${entry:0:1}" in R | C) second=yes ;; esac
-  done < <(git --no-optional-locks status --porcelain=v1 -z --untracked-files=all)
-  wait "$!"
+  done
+  return "$rc"
 }
 
 # release_outside <paths> <owned> -- the lines of <paths> that are not lines of
@@ -2042,8 +2044,11 @@ release_group_start() {
     # and the wrapper alone is signalled: the local gates' stop says so
     # (legs_local_stop), and release_run_bounded's deadline kills the wrapper
     # alone, so a process <cmd> started may run on past it, unnamed.
-    printf '%s\n' "$!" >"$group" || :
-    wait "$!"
+    # The job's pid is named as it starts, so the wait reads that job whatever
+    # runs after it.
+    job=$!
+    printf '%s\n' "$job" >"$group" || :
+    wait "$job"
   ) 2>/dev/null &
 }
 

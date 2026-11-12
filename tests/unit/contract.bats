@@ -664,7 +664,10 @@ $output"
 # 0 breaches over a planted breach it could not list. So every find under lib/
 # and bin/ keeps its error on stderr and reads its status -- `if ! find`, or a
 # `||` that handles the failure -- or the line before it says where its status
-# goes and why: `# find-status: <why>`.
+# goes and why: `# find-status: <why>`. A find read whole by nul_read reads
+# its status the same way, `if ! nul_read <array> find ...` or a `||` after
+# it; a process substitution's status is never read by `wait "$!"`, which bash
+# can lose (issue 0342), and the arm after this one refuses it.
 
 # _unchecked_finds <dir> -- every find under <dir> that discards its errors or
 # reads no status, as `<file>:<line>: <the command>`. Continued lines are joined
@@ -720,7 +723,7 @@ _unchecked_finds() {
           pre = substr(buf, 1, RSTART)
           post = substr(buf, RSTART + 1)
           dropped = (post ~ /\|\|[ \t]*(:|true|return[ \t]+0|exit[ \t]+0|continue|break|echo|printf|[A-Za-z_][A-Za-z0-9_]*=(0|"")?|\{[ \t]*:[ \t]*;[ \t]*\})([ \t;)]|$)/)
-          checked = (pre ~ /(if|elif|while|until)[ \t]+![ \t]*([A-Za-z_][A-Za-z0-9_]*="?\$\([ \t]*)?$/) ||
+          checked = (pre ~ /(if|elif|while|until)[ \t]+![ \t]*(nul_read[ \t]+[A-Za-z_][A-Za-z0-9_]*[ \t]+)?([A-Za-z_][A-Za-z0-9_]*="?\$\([ \t]*)?$/) ||
             (post ~ /\|\|[ \t]*[^ \t]/ && !dropped)
           lost = (post ~ /2>>?[ \t]*\/dev\/null|2>&-|&>>?[ \t]*\/dev\/null|>[ \t]*\/dev\/null[ \t]+2>&1/) || !checked ||
             (pre ~ /<\([ \t]*$/) || (pre ~ /\[\[?[ \t][^]]*\$\([ \t]*$/) ||
@@ -832,7 +835,7 @@ $out"
   # `lib` as the path. And those of a second review: a find_list call with no
   # handler, and one with `|| true`; a `local` assignment; `&>/dev/null`;
   # `>/dev/null 2>&1`; and `|| exit 0`, `|| break`, `|| { :; }`, `|| rc=0` and
-  # `|| printf`.
+  # `|| printf`. And a find read by nul_read with no handler (0342).
   mkdir -p "$probe"
   printf 'x="$(find "$d" -type f 2>/dev/null)"\n' >"$probe/devnull"
   printf 'find "$d" \\\n  -type f -print 2>/dev/null | sort\n' >"$probe/continued"
@@ -865,6 +868,7 @@ $out"
   printf 'x="$(find "$d" -type f)" || { :; }\n' >"$probe/bracecolon"
   printf 'x="$(find "$d" -type f)" || rc=0\n' >"$probe/rc0"
   printf 'x="$(find "$d" -type f)" || printf none\n' >"$probe/printf"
+  printf 'nul_read got find "$d" -type f -print0\n' >"$probe/nulreadbare"
   out="$(_unchecked_finds "$probe")"
   local -a plants=("$probe"/*)
   [ "$(printf '%s\n' "$out" | grep -c .)" -eq "${#plants[@]}" ] || fail "the scan missed a planted unchecked find:
@@ -874,7 +878,8 @@ $out"
   # that says find; a find in a comment; and options before the path, `lib` as
   # the path, and a marked process substitution; a find_list call under `if !`,
   # and find_list's own definition; and a `local` declared on a line of its own
-  # before the assignment that reads the status. None is flagged.
+  # before the assignment that reads the status; and a find read by nul_read,
+  # under `if !` or with a `||` after it (0342). None is flagged.
   rm "$probe"/*
   printf 'x="$(find "$d" -type f)" || rc=1\n' >"$probe/checked"
   printf 'if ! find "$d" -type f -print0 >"$l"; then exit 1; fi\n' >"$probe/ifnot"
@@ -886,10 +891,12 @@ $out"
   printf '# find "$d" -type f 2>/dev/null, in a comment\n' >"$probe/comment"
   printf 'if ! find -H "$d" -type f -print0 >"$l"; then exit 1; fi\n' >"$probe/optfirstchecked"
   printf 'if ! find lib bin -type f >"$l"; then exit 1; fi\n' >"$probe/libchecked"
-  printf '    # find-status: read by the wait on its process substitution, below\n  done < <(find "$d" -type f)\n' >"$probe/procsubmarked"
+  printf '    # find-status: dropped -- a partial list only names fewer files\n  done < <(find "$d" -type f)\n' >"$probe/procsubmarked"
   printf 'if ! find_list files "$d" -type f -print0; then exit 1; fi\n' >"$probe/findlistchecked"
   printf 'find_list() {\n  :\n}\n' >"$probe/findlistdef"
   printf 'local x\nx="$(find "$d" -type f)" || die "x"\n' >"$probe/localthenassign"
+  printf 'if ! nul_read got find "$d" -type f -print0; then exit 1; fi\n' >"$probe/nulreadifnot"
+  printf 'nul_read got find_walk "$d" -type f -print0 || rc=1\n' >"$probe/nulreador"
   out="$(_unchecked_finds "$probe")"
   [ -z "$out" ] || fail "the scan flags a find that reads its status, one marked with its reason, prose, or a comment:
 $out"
@@ -898,6 +905,58 @@ $out"
   [ "$n" -gt 0 ] || fail "found no find or find_walk command under lib/ and bin/ -- the scan would read nothing"
   out="$(_unchecked_finds "$DEVBIN_LIB_DIR")$(_unchecked_finds "$DEVBIN_HOME/bin")"
   [ -z "$out" ] || fail "a find loses its errors or its status:
+$out"
+}
+
+# _waits_on_last_pid <dir>... -- every line under each <dir> that waits on $!,
+# however it is spelled, as `file:line: text`; comment lines are not read. A
+# job's pid is named where the job starts (`pid=$!`) and waited on by that
+# name, and a process substitution's records and status are read by nul_read:
+# `wait "$!"` on a process substitution asks bash for a status it may already
+# have dropped, as it had on a loaded leg host, where find_walk read a walk as
+# failed and an install failed with it (issue 0342).
+_waits_on_last_pid() {
+  local out rc=0
+  out="$(grep -RnE '(^|[^A-Za-z0-9_])wait([[:space:]]+-[A-Za-z]+)*[[:space:]]+"?\$(!|\{!\})' "$@")" || rc=$?
+  [ "$rc" -le 1 ] || fail "grep could not read $*"
+  [ -n "$out" ] || return 0
+  grep -vE '^[^:]+:[0-9]+:[[:space:]]*#' <<<"$out" || [ $? -eq 1 ] || fail "grep could not filter the waits it found"
+}
+
+@test "no wait under lib/, bin/ or tests/lib/ reads the last background job's pid: a job's pid is named, and a process substitution is read by nul_read (0342)" {
+  local probe="$DEVBIN_TEST_TMPDIR/waitprobe" out n
+  # POSITIVE CONTROL: each spelling of a wait on $! is found -- after a process
+  # substitution, as find_walk read find's status until bash dropped it under
+  # load; under `if !`; unquoted; braced; with an option; and after `&&`.
+  mkdir -p "$probe"
+  printf 'mapfile -d "" -t a < <(find "$d" -print0)\nwait "$!" || rc=$?\n' >"$probe/procsub"
+  printf 'if ! wait "$!"; then exit 1; fi\n' >"$probe/ifnot"
+  printf 'wait $!\n' >"$probe/bare"
+  printf 'wait "${!}"\n' >"$probe/braced"
+  printf 'wait -f "$!"\n' >"$probe/option"
+  printf 'cmd & sleep 1 && wait "$!"\n' >"$probe/afterand"
+  out="$(_waits_on_last_pid "$probe")"
+  local -a plants=("$probe"/*)
+  [ "$(printf '%s\n' "$out" | grep -c .)" -eq "${#plants[@]}" ] || fail "the scan missed a planted wait on \$!:
+$out"
+  # NEGATIVE CONTROL: a job's pid named and waited on by name; a list read by
+  # nul_read; a comment naming the old idiom; a function whose name ends in
+  # wait; and $! written where nothing waits on it. None is flagged.
+  rm "$probe"/*
+  printf 'cmd &\npid=$!\nwait "$pid"\n' >"$probe/named"
+  printf 'nul_read got find_walk "$d" -type f -print0 || rc=1\n' >"$probe/nulread"
+  printf '  # find_walk read its status with `wait "$!"`, which bash can drop\n' >"$probe/comment"
+  printf 'await "$!"\n' >"$probe/suffix"
+  printf 'printf "%%s\\n" "$!" >"$group"\n' >"$probe/written"
+  out="$(_waits_on_last_pid "$probe")"
+  [ -z "$out" ] || fail "the scan flags a named pid, nul_read, a comment, another function, or \$! written:
+$out"
+  # PRESENCE: the waits that exist, so a scan matching nothing is not a pass.
+  n="$(grep -RhE '(^|[^A-Za-z0-9_])wait[[:space:]]+"?\$' "$DEVBIN_LIB_DIR" "$DEVBIN_HOME/bin" | grep -vcE '^[[:space:]]*#')" || n=0
+  [ "$n" -gt 0 ] || fail "found no wait on a pid under lib/ and bin/ -- the scan would read nothing"
+  # THE TREE: no wait on $! in what devbin ships or what its fixtures run.
+  out="$(_waits_on_last_pid "$DEVBIN_LIB_DIR" "$DEVBIN_HOME/bin" "$DEVBIN_HOME/tests/lib")"
+  [ -z "$out" ] || fail "a wait reads \$!, and bash can drop a process substitution's status before it asks: name a job's pid where it starts, or read the list and its status with nul_read:
 $out"
 }
 

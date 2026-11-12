@@ -1658,7 +1658,9 @@ $got"
   # empty at status 0, so a gate reading it passed over nothing.
   local bad
   : >"$DEVBIN_TEST_TMPDIR/a"
-  for bad in 2bad 'a b' a-b '' _fl_out; do
+  # _nr_out is nul_read's own name, which find_list hands the caller's name to
+  # (0342), so a local there would shadow it.
+  for bad in 2bad 'a b' a-b '' _nr_out; do
     run find_list "$bad" "$DEVBIN_TEST_TMPDIR" -type f -print0
     [ "$status" -eq 2 ] || fail "find_list took '$bad' as an array to fill: status $status, $output"
   done
@@ -1679,6 +1681,80 @@ $got"
   run find_list ro "$DEVBIN_TEST_TMPDIR" -type f -print0
   [ "$status" -eq 2 ] || fail "find_list reported a readonly array as status $status: $output"
   assert_output_contains "could not fill 'ro'"
+}
+
+@test "nul_read reads a command's records whole and its own status with them, under errexit and job control alike (0342)" {
+  local st rc i out
+  local -a got=() want=("a b" "two"$'\n'"lines" "" "nul_read:0:0:5")
+  # The records whole, an empty one and one shaped like a status among them,
+  # and each status as the command returned it.
+  _nrt_print() { printf '%s\0' "${want[@]}"; return "$1"; }
+  for st in 0 1 3; do
+    got=(stale)
+    rc=0
+    nul_read got _nrt_print "$st" || rc=$?
+    [ "$rc" -eq "$st" ] || fail "status $st came back as $rc"
+    [ "${#got[@]}" -eq "${#want[@]}" ] || fail "expected ${#want[@]} records at status $st, got ${#got[@]}: ${got[*]}"
+    for i in "${!want[@]}"; do
+      [ "${got[i]}" = "${want[i]}" ] || fail "record $i at status $st: expected '${want[i]}', got '${got[i]}'"
+    done
+  done
+  # Nothing printed is an empty array, at the command's status.
+  got=(stale)
+  rc=0
+  nul_read got false || rc=$?
+  [ "$rc" -eq 1 ] && [ "${#got[@]}" -eq 0 ] || fail "false read as status $rc with ${#got[@]} record(s): ${got[*]}"
+  # An exit inside a function is its status, and what it printed first is kept.
+  _nrt_exit() { printf 'kept\0'; exit 4; }
+  got=()
+  rc=0
+  nul_read got _nrt_exit || rc=$?
+  [ "$rc" -eq 4 ] && [ "${got[*]}" = kept ] || fail "an exit 4 read as status $rc with records: ${got[*]}"
+  # Under the caller's errexit a failure inside the command still ends it there,
+  # and the caller goes on; under job control, where lastpipe reads nothing,
+  # the records and the status still come.
+  out="$(bash -c 'set -euo pipefail; . "$1"; DEVBIN_NAME=devbin; f() { printf "one\0"; false; printf "two\0"; }; rc=0; nul_read got f || rc=$?; printf "%s|%s" "$rc" "${got[*]}"' _ "$DEVBIN_LIB_DIR/helpers")" ||
+    fail "nul_read under errexit ended its caller: $out"
+  [ "$out" = "1|one" ] || fail "under errexit, expected status 1 and the record before the failure, got: $out"
+  out="$(bash -c 'set -m; . "$1"; DEVBIN_NAME=devbin; f() { printf "a\0b\0"; return 3; }; rc=0; nul_read got f || rc=$?; printf "%s|%s" "$rc" "${got[*]}"' _ "$DEVBIN_LIB_DIR/helpers")" ||
+    fail "nul_read under job control failed its caller: $out"
+  [ "$out" = "3|a b" ] || fail "under job control, expected status 3 and both records, got: $out"
+}
+
+@test "nul_read refuses, at status 2, a name it cannot fill, no command, and records whose status never came (0342)" {
+  local bad rc
+  for bad in 2bad 'a b' a-b '' _nr_out _nr_tag _nr_e _nr_n _nr_last _nr_rc; do
+    run nul_read "$bad" printf 'x\0'
+    [ "$status" -eq 2 ] || fail "nul_read took '$bad' as an array to fill: status $status, $output"
+  done
+  run nul_read got
+  [ "$status" -eq 2 ] || fail "nul_read ran with no command: status $status, $output"
+  assert_output_contains "no command"
+  # An array mapfile cannot fill is nul_read's 2, never the command's status.
+  local -A assoc=()
+  run nul_read assoc printf 'x\0'
+  [ "$status" -eq 2 ] || fail "nul_read reported an array it could not fill as status $status: $output"
+  assert_output_contains "could not fill 'assoc'"
+  local -a ro=()
+  readonly ro
+  run nul_read ro printf 'x\0'
+  [ "$status" -eq 2 ] || fail "nul_read reported a readonly array as status $status: $output"
+  assert_output_contains "could not fill 'ro'"
+  # THE STATUS NEVER CAME: the substitution is killed after the command printed
+  # and before it could write the status, so what came is not read as the whole.
+  # $BASHPID is read in the command's own shell, never inside the substitution
+  # that runs ps, whose own pid it would be there.
+  _nrt_orphan() {
+    local me="$BASHPID"
+    printf 'early\0'
+    kill -KILL "$(ps -o ppid= -p "$me" | tr -d ' ')"
+  }
+  local -a got=()
+  rc=0
+  nul_read got _nrt_orphan 2>"$DEVBIN_TEST_TMPDIR/orphan.err" || rc=$?
+  [ "$rc" -eq 2 ] || fail "records with no status read as status $rc: ${got[*]}; $(<"$DEVBIN_TEST_TMPDIR/orphan.err")"
+  grep -qF "ended before its status was written" "$DEVBIN_TEST_TMPDIR/orphan.err" ||
+    fail "no line said the status never came: $(<"$DEVBIN_TEST_TMPDIR/orphan.err")"
 }
 
 @test "cargo_target_dirs returns 1 when its sort fails, never an empty list at 0 (0139)" {
