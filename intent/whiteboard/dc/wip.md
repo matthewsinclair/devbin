@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-12 09:37Z
+heartbeat_at: 2026-11-12 10:41Z
 status: active
-focus: "P0 at hv's word through vc (2026-11-12): the suite's wall time. bats --jobs N runs every file's tests through one shared N-slot semaphore that polls with sleep 1 (bats 1.12.0 and 1.14.0 alike), so the kovacs leg sleeps more than it tests. The fix goes in lib/bats-lanes: built in scratch at dc0e45b8, timed on rhadamanth and kovacs before choosing, its arms red at the base and green at the fix, then one stacked run with cc's two fixes. After the release: clear-clone-pc0123.sh and the old bank refs' clearing, in vc's form. The ST0011/16 claim stays."
+focus: "LOCALFOLDED for hv's compact (2026-11-12 10:40Z by date -u), holding for hv's /compact and vc's go after it. 0340-1, the lanes' default N (half the CPUs and never fewer than 24, the floor being _LANES_JOBS_FLOOR in lib/bats-lanes, on hv's word), is banked at 7278f29a for cc's k340 stack (0334-2, 0341-1, 0340-1). Its arm reads red at the base and green at the build. The record, with the timings and both sweeps, is ~/Devel/scratch/devbin-dc/lanesjobs/STATE.md. After the release: clear-clone-pc0123.sh and the old bank refs' clearing, in vc's form. The ST0011/16 claim stays."
 claims: [ST0011/16]
 ---
 
