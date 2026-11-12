@@ -6,6 +6,34 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.23] - Unreleased
+
+### Added
+
+- **`release gates --leg <host>` rehearses a remote leg before any cut (issue `0337`).** It runs the leg on a host `release.legs` names at HEAD, as a cut runs it at the release commit, through the same runner: HEAD and the newest release's tag are sent to the host, the gates are started there and waited for under `ci.wait`, each change said with the clock, and the pair is kept under `tmp/release/legs/<host>/`. It exits 0 only on green. A green already kept for HEAD runs nothing again, unless `--rerun`.
+- **A project's own test runner runs its suite in the same two lanes (issue `0339`)**: `"$DEVBIN_LIB/bats-lanes" <dir>`, called from a command devbin runs, such as the shell option's `run:` line, which has `DEVBIN_LIB` in its environment. Every variable the runner exports reaches the suite in both lanes. The directory is read from where the runner stands, so hand it an absolute one; the runner does not need `PROJECT_ROOT`.
+- **The gates are handed `DEVBIN_GATE_CACHE`, a directory of their own that no run clears (issue `0335`)**, so a gate can keep a build there from one run to the next, eg a private worktree's `CARGO_TARGET_DIR`. On a host `release.legs` names it is `work/<project>-leg.cache`, beside the leg's bare repository, whatever the host's startup sets. On this machine it is `.gate-cache` in the project's directory under the artefact cache's root, unless the environment names one. A directory that cannot be named or made refuses the gates before any runs. The leg's log names it beside the run's TMPDIR.
+
+### Changed
+
+#### a script or a config may get a different result
+
+- **A cut's pre-flight refuses a remote leg that has not gone green since the previous release with the leg config HEAD declares (issue `0337`).** The config it compares is `release.legs`, `release.gates` and the commands blocks those gates name. A host new to `release.legs` is refused, and so is one reconfigured since its last green, or whose last run was red. A dry run refuses it too, naming the host and the command that rehearses it, so the leg's own faults are met before anything is stamped, not at the cut. A host that cannot be reached is still named and not run, as before. A project whose legs went green at its last release, with the same leg config, needs no rehearsal: devbin's own does not, its kovacs leg green at v0.1.22 and its config unchanged since.
+- **A remote leg's gates run with their own TMPDIR (issue `0334`)**: `<worktree>.tmp`, on the host's disk beside the run's worktree, made afresh as the last step before the gates start, named in the leg's log, and removed with the worktree when the run is cleared, read-only directories in it included. It replaces any TMPDIR the host's own startup sets, so a host whose `/tmp` is a small tmpfs runs a large build, and a host given a TMPDIR by hand for its leg no longer needs one.
+- **A project command named `cache` fails doctor, and config validation refuses `commands.cache.handler` and `commands.cache.run` (issue `0335`).** devbin's core calls its own `cache`, and a project's build handler calls it through `bin/devbin cache`, where a project command at the name would answer instead, so a get there would read as pulled with nothing pulled. A project with a command of its own at the name gives it another name. Every other command a project puts at a built-in's name is still a supported override, and a note.
+- **The macOS stage notarises the app and the binaries at once (issue `0336`).** `macos leg` signs the app and the binaries, then runs `app-notarize` and `bin-notarize` together and waits on both, so a project shipping both waits out Apple's two round trips together, not one after the other. Each one's output is printed whole once both have ended, the app's first, and one that is not Accepted still fails the stage before the tag. `app-notarize` and `bin-notarize` run alone are unchanged.
+- **`test shell` runs a project's `tests/` in two lanes, through the runner devbin's own suite runs in (issue `0339`).** Handed nothing, as `test all` hands it, the shell option runs every test not tagged `serial` N at a time under `bats --jobs N` where GNU parallel is installed, then the tests tagged `serial` one at a time, and its first line says which it did and why. Without GNU parallel it runs one lane, as before, and says so. N is half the CPUs and never fewer than two, and `DEVBIN_TEST_JOBS`, else `DEVBIN_JOBS`, sets it. **A test that cannot share a host with another, eg one that binds a fixed port or writes outside its own temp directory, needs bats's `serial` tag**: `# bats test_tags=serial` on the line before it, or `# bats file_tags=serial` for every test in its file. Handed paths or bats flags, `test shell` runs `bats tests` with them, as before, and a project that declares its own `run:` for the option is unchanged.
+
+### Fixed
+
+#### reaches every project
+
+- **A remote leg's host is sent the previous release's tag beside the release commit (issue `0333`)**, forced over any older copy the host holds, so a gate that reads the last release, its notes since the last tag or a comparison with it, finds the tag in a fresh leg repository, which held the release commit alone. A cut with no remote leg reads no tag for it.
+- **The macOS stage pulls and puts its app through devbin's own cache, and a cut's RELEASE seal names that cache's key, whatever command a project puts at `cache` (issue `0335`).** Both went through the project's launcher, so a command of the project's own at the name answered them: an exit 0 read as pulled, and the stage then went on to sign whatever stood at the app's path.
+- **A cut's RELEASE seal names the key at the release commit of every artefact the `build:` block declares (issue `0338`)**, not only the macOS stage's app, so `cache gc` keeps every one a release names. The cache's page shows a build handler pulling before it builds and putting after, through `bin/devbin cache`. It also says why a build made before a release's stamp is committed records nothing, and why one at the tag pulls.
+
+Full note: [RELEASES/0.1.23.md](RELEASES/0.1.23.md)
+
 ## [0.1.22] - 2026-11-11
 
 ### Added
