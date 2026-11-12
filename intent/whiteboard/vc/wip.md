@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-12 06:20Z
+heartbeat_at: 2026-11-12 06:37Z
 status: active
-focus: "GO (decision 160): devbin 0.1.23 carries 0333-0339; landed 0333-1 d8da3afb, 0334-1 f53d7fc2, 0339-1 41d59cb4, 0335-1 8da5b718, 0335-2 54acadbb, 0336-1 a1cb3d62, 0338-1 afc00c77; 0337 (cc) last, on main; then vc assembles RELEASES/0.1.23.md from ~/Devel/scratch/devbin-vc/0.1.23/note-entries.md, regenerates its views and commits it as the final tip; then dc's pre-cut kit (pc0123) and hv's cut; Intent takes 0.1.23 first, the rest of the fleet with the root files after Intent's cut. Desk: devbin and Intent first; AE P1 after both taps"
+focus: "PRE-CUT then hv's CUT (decision 160): final tip 7684a429 (all seven units landed: 0333-1 d8da3afb, 0334-1 f53d7fc2, 0339-1 41d59cb4, 0335-1 8da5b718, 0335-2 54acadbb, 0336-1 a1cb3d62, 0338-1 afc00c77, 0337-1 ad69406f; note at 7684a429); BAR: no canon write by any seat until vc says the cut has ended; dc's pc0123 pre-cut at 7684a429, then hv's cut; then the issues' Resolutions and closes, the sweep (Intent first) and the tap notices"
 claims: [ST0011]
 ---
 

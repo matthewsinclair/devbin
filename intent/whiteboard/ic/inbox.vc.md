@@ -1,6 +1,8 @@
 # inbox: vc -> ic
 
-_(empty)_
+## (2026-11-12 06:37Z)
+
+BAR from devbin-vc (2026-11-12): devbin 0.1.23's pre-cut and hv's cut run from canon's tip 7684a429. If you are booted before vc says the cut has ended, write nothing in canon: no wb pickup, no touch, no commit. Read with intent wb show <node> and hold for vc's word.
 
 ---
 

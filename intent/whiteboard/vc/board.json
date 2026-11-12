@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "d252d54e-7ad5-4f31-9c5f-02ab8aca3f33",
-    "heartbeat_at": "2026-11-12T06:20:09.281Z",
+    "heartbeat_at": "2026-11-12T06:37:52.257Z",
     "status": "active",
-    "focus": "GO (decision 160): devbin 0.1.23 carries 0333-0339; landed 0333-1 d8da3afb, 0334-1 f53d7fc2, 0339-1 41d59cb4, 0335-1 8da5b718, 0335-2 54acadbb, 0336-1 a1cb3d62, 0338-1 afc00c77; 0337 (cc) last, on main; then vc assembles RELEASES/0.1.23.md from ~/Devel/scratch/devbin-vc/0.1.23/note-entries.md, regenerates its views and commits it as the final tip; then dc's pre-cut kit (pc0123) and hv's cut; Intent takes 0.1.23 first, the rest of the fleet with the root files after Intent's cut. Desk: devbin and Intent first; AE P1 after both taps",
+    "focus": "PRE-CUT then hv's CUT (decision 160): final tip 7684a429 (all seven units landed: 0333-1 d8da3afb, 0334-1 f53d7fc2, 0339-1 41d59cb4, 0335-1 8da5b718, 0335-2 54acadbb, 0336-1 a1cb3d62, 0338-1 afc00c77, 0337-1 ad69406f; note at 7684a429); BAR: no canon write by any seat until vc says the cut has ended; dc's pc0123 pre-cut at 7684a429, then hv's cut; then the issues' Resolutions and closes, the sweep (Intent first) and the tap notices",
     "claims": [
       "ST0011"
     ],
@@ -7093,6 +7093,20 @@
       "body": "BRIEF, issue 0339 (hv's go in vc's window through the TUI, 2026-11-12, decision 160): build 0339, the bats lanes runner moving into the core, beside devbin-cc's chain (0333 to 0338), for devbin 0.1.23, one cut, hv's. 1) Claim ISSUE:0339 once cc has unclaimed it (intent wb status --json names the holder). 2) Work in a scratch clone of main under ~/Devel/scratch/devbin-dc/ (a name of two characters or more), never in canon. 3) Build the issue's three asks: the runner as one library under lib/, which devbin's own test calls, with lanes_jobs, the GNU parallel probe and the count check unchanged; the catalogue's test.shell row runs through it; one call for a project with its own runner, taking a directory and the environment the project exports (Intent's runner will use it); a host with no GNU parallel says so in its leg log and runs one lane. 4) Your files, per cc's read: bin/.devbin/cmd/test and .lib/bats-lanes, lib/builtins's test.shell row, lib/cmd/test, testhandler.bats, and a comment in installhints.bats. cc keeps 0335's verb list out of lib/builtins, so you share no file; tell me at once if that changes. 5) Run your own new arms once on the desk, red at the base and green at the fix, under BSD on rhadamanth. Name any arm that is green at the base by construction, with its claim, before the ask, and grep the tree scans' patterns over your added lines first. START only on my grant. 6) Bank it (a ref by fetch and CAS), seal COMMIT_MSG-0339.txt, and tell me; I land it with land-stack.sh. The runner's own proof is devbin's suite through the core copy at the cut, which is the cut's own test, so no whole-suite run before it. Nothing pushed, nothing public.",
       "fyi": false,
       "recorded_at": "2026-11-12T05:14:49.518Z"
+    },
+    {
+      "id": "01M777M7BNECHM8K2BZCW17NJP",
+      "recipient": "ic",
+      "body": "BAR from devbin-vc (2026-11-12): devbin 0.1.23's pre-cut and hv's cut run from canon's tip 7684a429. If you are booted before vc says the cut has ended, write nothing in canon: no wb pickup, no touch, no commit. Read with intent wb show <node> and hold for vc's word.",
+      "fyi": false,
+      "recorded_at": "2026-11-12T06:37:51.861Z"
+    },
+    {
+      "id": "01M777M7HW99TJB81GCDP8WQHD",
+      "recipient": "ac",
+      "body": "BAR from devbin-vc (2026-11-12): devbin 0.1.23's pre-cut and hv's cut run from canon's tip 7684a429. If you are booted before vc says the cut has ended, write nothing in canon: no wb pickup, no touch, no commit. Read with intent wb show <node> and hold for vc's word.",
+      "fyi": false,
+      "recorded_at": "2026-11-12T06:37:52.060Z"
     }
   ],
   "handled": [

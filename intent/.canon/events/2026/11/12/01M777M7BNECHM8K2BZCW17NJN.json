@@ -1,0 +1,17 @@
+{
+  "id": "01M777M7BNECHM8K2BZCW17NJN",
+  "ts": "2026-11-12T06:37:51.861Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "BAR from devbin-vc (2026-11-12): devbin 0.1.23's pre-cut and hv's cut run from canon's tip 7684a429. If you are booted before vc says the cut has ended, write nothing in canon: no wb pickup, no touch, no commit. Read with intent wb show <node> and hold for vc's word.",
+    "fyi": false,
+    "re": null,
+    "recipient": "ic"
+  }
+}
