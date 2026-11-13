@@ -1,0 +1,15 @@
+{
+  "id": "01M7B9TZ5Q86SC1479NC8JDQE1",
+  "ts": "2026-11-13T20:33:27.737Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0356"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A gate command given --help after its option runs the work: the dispatcher leaves the flag to the handler, which passes it to the tool's argv"
+  }
+}
