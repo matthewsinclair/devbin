@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-13 08:47Z
+heartbeat_at: 2026-11-13 08:59Z
 status: active
-focus: "Localfold for hv's compact. The older kits' clones are cleared (clear-kits-20261113.sh, about 10G) and 0.1.24's note is at 382eacd4 (0345 Added, 0346 Changed). Nothing live or unbanked. 0347 waits for hv's ruling. ST0011/16 claim stays. On the bounce: /in-session, then the outstanding review with vc. (2026-11-13 08:47Z by date -u)"
+focus: "Back from hv's compact (2026-11-13 08:59Z by date -u). Nothing live. 0347 waits for hv's ruling; ST0011/16 claim stays. Waiting on vc's review of what is outstanding."
 claims: [ST0011/16]
 ---
 
