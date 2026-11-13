@@ -727,6 +727,9 @@ $hits"
   # lib/release.legs's rename of a leg's exit status, inside the `bash -c` that
   # runs a project's gates detached on a test host (ST0011 WP-05), renames the
   # status it just wrote, beside the run, so a reader never takes a half of it.
+  # And lib/bats-lanes's lanes_progress, the last line of its awk, moves the
+  # progress line it just wrote beside the gate's progress file over that file,
+  # so the heartbeat that reads it never takes half a line (issue 0346).
   #
   # WHAT THIS ARM CANNOT SEE: an mv behind a variable, an alias or a function
   # of another name; an mv spelled so its text does not read mv, "m""v" or
@@ -741,10 +744,11 @@ $hits"
   # fixture would hang the suite the same way and this arm would not see it.
   local known
   # The lines are compared as TEXT, so their `$1` and `$tmp` stay unexpanded;
-  # release.legs's line holds single quotes, each closed, given as "'", and
-  # reopened.
+  # release.legs's and bats-lanes's lines hold single quotes, each closed, given
+  # as "'", and reopened.
   # shellcheck disable=SC2016
   known="$(printf '%s\t%s\n' \
+    lib/bats-lanes '  '"'"' "$2" "$1" >"$3.$$" 2>/dev/null && mv -f "$3.$$" "$3" 2>/dev/null' \
     lib/cmd/cache '  mv -f -- "$CACHE_TMP" "$entry" || refuse "the entry for $art $key could not be renamed into place under the cache root $root (above)"' \
     lib/helpers '  if ! mv -f "$1" "$file"; then' \
     lib/install '  mv -f "$tmp" "$dst" || {' \
