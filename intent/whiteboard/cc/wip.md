@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-13 11:21Z
+heartbeat_at: 2026-11-13 20:43Z
 status: active
-focus: "Holding (2026-11-13 11:21Z by date -u): 0348 (46270faf, 4f3c797b; follow-ups 0348-3 a41a693e for lint and 0348-4 3c804a37 for harness 0270, both named in its Resolution) and 0349 (363c4733) landed for 0.1.24 and closed; 0353 filed (d397308c), record only; i0348's clones cleared. ISSUE:0326 claim stands."
+focus: "Folded for the night, 2026-11-13 20:42Z by date -u: nothing live, nothing unbanked. Today: 0348 (with 0348-3, 0348-4) and 0349 landed in 0.1.24 and closed; 0353 to 0356 filed, record only (0355 and 0356 on vc's todo 214, release after next). Watchout 11 stays. ISSUE:0326 claim stands. On the bounce: /in-session, pickup, hold for vc."
 claims: [ISSUE:0326]
 ---
 
