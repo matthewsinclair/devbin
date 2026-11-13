@@ -1,0 +1,15 @@
+{
+  "id": "01M7B2CHTRDXDNPQ6T59R5ARAJ",
+  "ts": "2026-11-13T18:23:15.288Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-13 18:23Z by date -u: desk priorities are AE P1, Webber P2, and another estate's Rust parser work P3; devbin and Intent are released. Each estate's vc has the desk rules."
+  }
+}

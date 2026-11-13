@@ -5038,6 +5038,14 @@
       "text": "NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), and 0.1.24 once swept; 0326's reader notice to pplr-vc, cldr-vc, cldr-dc, ccusage-vc and pipeliner-sc (archived todo 201; ~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0 (archived todo 192); Prodinfra, infra --profile takes a path (archived todo 159); release review action 2 to molt-vc and intent-vc, now Intent is cut (archived decision 171).",
       "state": "live",
       "recorded_at": "2026-11-13T18:14:30.760Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 173,
+      "text": "hv in vc's window, read 2026-11-13 18:23Z by date -u: desk priorities are AE P1, Webber P2, and another estate's Rust parser work P3; devbin and Intent are released. Each estate's vc has the desk rules.",
+      "state": "live",
+      "recorded_at": "2026-11-13T18:23:15.288Z"
     }
   ],
   "sent": [

@@ -55,6 +55,7 @@ claims: [ST0011]
 - hv 2026-11-10: the estate desk is devbin-vc's ('I'm assigning The Desk to you'), re-taken on hv's word after each restart (latest 2026-11-13 15:01Z). (edited)
 - Desk rulings 2026-11-10: 0326 stays open until pplr#0001, cldr#0001 and ccusage#0007 close; one layer of proof at the desk (no planted faults). (edited)
 - hv in vc's window (read 07:31Z by date -u): Webber falls in BEHIND devbin and Intent until both are landed across the estate. devbin and Intent are P0/P1, Webber P3: a Webber ask gets rhadamanth's lanes only when nothing that ships devbin or Intent is waiting or about to ask; Webber work that can run on gyges runs there; nothing of Webber's already in train is stopped.
+- hv in vc's window, read 2026-11-13 18:23Z by date -u: desk priorities are AE P1, Webber P2, and another estate's Rust parser work P3; devbin and Intent are released. Each estate's vc has the desk rules.
 
 ---
 
