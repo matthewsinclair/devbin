@@ -1017,6 +1017,30 @@ $(<"$heads")"
     fail "T4 still carries the exception issue 0246 removed: $para"
 }
 
+# T4's reader is printed for every compiled tool to carry word for word (issue
+# 0350), so it builds clean under Clippy's warnings as errors in a crate of each
+# edition a tool may declare: a nested `if let` passes in 2021 and fails in 2024,
+# where Clippy asks for a let chain that no earlier edition can build. The crate
+# has no dependencies, so it builds offline, in the test's own directory, and
+# reads nothing from the registry.
+@test "T4's Rust reader, as the contract prints it, builds under clippy -D warnings in every edition (0350)" {
+  require_command cargo "no cargo on this runner -- T4's reader was NOT built" "CI's WSL runner installs no Rust"
+  require_command cargo-clippy "no Clippy on this runner -- T4's reader was NOT linted" "CI's WSL runner installs no Rust"
+  local doc="$DEVBIN_HOME/docs/dev-opt-brew.md" reader edition crate failed=""
+  reader="$(awk '/^## T4\./ { t4 = 1; next } /^## / { t4 = 0 } t4 && /^```rust$/ { on = 1; next } on && /^```$/ { exit } on' "$doc")"
+  [[ "$reader" == *"fn version_line() -> String {"* ]] || fail "T4 of docs/dev-opt-brew.md prints no Rust reader"
+  for edition in 2015 2018 2021 2024; do
+    crate="$DEVBIN_TEST_TMPDIR/reader-$edition"
+    mkdir -p "$crate/src"
+    printf '[package]\nname = "demo"\nversion = "0.1.0"\nedition = "%s"\n' "$edition" >"$crate/Cargo.toml"
+    printf '%s\n\nfn main() {\n    println!("{}", version_line());\n}\n' "$reader" >"$crate/src/main.rs"
+    run env CARGO_TARGET_DIR="$crate/target" cargo clippy --offline --quiet --manifest-path "$crate/Cargo.toml" -- -D warnings
+    [ "$status" -eq 0 ] || failed="$failed
+edition $edition: $output"
+  done
+  [ -z "$failed" ] || fail "T4's reader does not build clean under clippy -D warnings:$failed"
+}
+
 # The publish and the switch are devbin's own verbs (issue 0326): the contract
 # names bin/devbin install and bin/devbin use, run in the tool's checkout, and
 # no verb of a tool's own for them, nor a version verb, since a tool's binary

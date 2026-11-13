@@ -74,14 +74,16 @@ fn version_line() -> String {
         None => line.to_string(),
     };
     let tree = std::env::current_exe().and_then(|p| p.canonicalize());
-    if let Some(root) = tree.ok().as_deref().and_then(|p| p.parent()).and_then(|p| p.parent()) {
-        if let Ok(text) = std::fs::read_to_string(root.join(MANIFEST)) {
-            if text.lines().any(|l| l == format!("# tool: {TOOL}")) {
-                if let Some(line) = text.lines().find_map(|l| l.strip_prefix("# line: ")) {
-                    return named(line);
-                }
-            }
-        }
+    let recorded = tree
+        .ok()
+        .as_deref()
+        .and_then(|p| p.parent())
+        .and_then(|p| p.parent())
+        .and_then(|root| std::fs::read_to_string(root.join(MANIFEST)).ok())
+        .filter(|text| text.lines().any(|l| l == format!("# tool: {TOOL}")))
+        .and_then(|text| text.lines().find_map(|l| l.strip_prefix("# line: ")).map(named));
+    if let Some(line) = recorded {
+        return line;
     }
     match option_env!("DEVBIN_VERSION_LINE") {
         Some(line) if !line.is_empty() => named(line),
@@ -90,7 +92,7 @@ fn version_line() -> String {
 }
 ```
 
-A reader kept in a library the binaries share takes NAME from each binary instead, since Cargo names no bin target while it builds a library. A binary built by plain `cargo build` carries no stamp and prints `<name> <version> (unknown, unknown)`, which doctor fails: build it with `bin/devbin build`. Cargo rebuilds when `DEVBIN_VERSION_LINE` changes, since it tracks the variables `option_env!` reads, so a tool needs no build script for it.
+The reader reads the manifest as one chain of `Option` steps, not nested `if let` blocks, so it builds clean under `cargo clippy -- -D warnings` in every edition: in edition 2024 Clippy asks for nested ones to be collapsed into a let chain, which no earlier edition can build. A reader kept in a library the binaries share takes NAME from each binary instead, since Cargo names no bin target while it builds a library. A binary built by plain `cargo build` carries no stamp and prints `<name> <version> (unknown, unknown)`, which doctor fails: build it with `bin/devbin build`. Cargo rebuilds when `DEVBIN_VERSION_LINE` changes, since it tracks the variables `option_env!` reads, so a tool needs no build script for it.
 
 ## T5. The switch: `bin/devbin use [dev|opt|brew]`
 
