@@ -2,7 +2,8 @@
 wp_id: WP-13
 title: Conflab adopts the core's release: gates before any push, one confirm, one formula writer
 scope: L
-status: Not Started
+status: Cancelled
+status_reason: moved to conflab's own thread on hv's ruling 2026-11-13: conflab#ST0126
 ---
 
 # WP-13: Conflab adopts the core's release: gates before any push, one confirm, one formula writer

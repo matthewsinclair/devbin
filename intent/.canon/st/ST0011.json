@@ -96,7 +96,8 @@
       "seq": 10,
       "title": "Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/",
       "scope": "S",
-      "status": "not-started",
+      "status": "cancelled",
+      "status_reason": "moved to utilz's own thread on hv's ruling 2026-11-13: utilz#ST0031",
       "objective": "Utilz, after the sweep (design.md section 7; dialog section 6): `tools/ci-state`, `tools/post-cut` and `tools/formula` retire into the core; `bin/.devbin/config.yaml`'s `gates:` gains `test estate` as a recorded gate run in parallel (Q9), `macos:` stays, `after:` is `formula publish`; `.github/workflows/tests.yml` fires its macOS legs on `candidate/` and loses the tag trigger; the hand dispatch and the dry run's `check all` stop; `tools/test-estate` and the CI menuz-app test build stay; `docs/releasing.md`. Serves AC-4.3.\n\n\nRecord (vc, 2026-10-31): Utilz's utilz#ST0031 is the one place this work is written and claimed (ST0031/01 the sweep's Utilz side, /02 the CI tuning bank proven at the sweep's push, /03 menuz reading the stamp rather than the tag at menuz:632, which is ic's lane); this package points at it. From Utilz's inventory (utilz-dc, checked by utilz-vc at 48c0ea54): install.sh:621 install_ci_state is a second CI reader and retires onto bin/devbin ci-state; the tap-pull rule (post-cut:111-123, Utilz ST0030) moves to the built-in formula publish (WP08); the 2.14.8 seal left with no verdict is Devbin issue 0297.",
       "body": "",
       "preamble": ""
@@ -105,7 +106,8 @@
       "seq": 11,
       "title": "Gtools retires tools/ci-state and ci.wait; macOS job on candidate/; release.legs kovacs",
       "scope": "S",
-      "status": "not-started",
+      "status": "cancelled",
+      "status_reason": "moved to gtools's own thread on hv's ruling 2026-11-13: gtools#ST0020",
       "objective": "Gtools, after the sweep (design.md section 7; dialog section 6): `tools/ci-state` retires and `ci.wait` leaves the config; `.github/workflows/ci.yml`'s macOS job fires on `candidate/` and the tag trigger goes; `release.legs` names kovacs; the hand dispatch and the gyges run stop; `derived:` and the suite's isolated crate copy stay; the source formula stays (Q8); `docs/releasing.md`, `docs/maintaining.md`. Serves AC-4.3.\n\n\nRecord (vc, 2026-10-31): Gtools's gtools#ST0020 (one package, ST0020/01) is the one place this work is written and claimed; this package points at it. From Gtools's inventory (gtools-dc, checked by gtools-vc at f7930590): tools/ci-state is tested at gtools_release_test.exs:193-238, which carries Completed ST0012's AT08, so the landing commit also runs `intent ac withdraw ST0012 AC07` and `intent at edit ST0012 AT08 --kind non-test` with the reason naming ST0020 (a deleted test otherwise drifts silently, Intent 3.2.8's lint passing a green row whose cited file no longer carries its id); AT07 (AC06, the release-check test at :100-110) is edited at the sweep and kept; release.legs is absent today and names kovacs; the hand dispatch and the gyges run are procedure, retired with the package.",
       "body": "",
       "preamble": ""
@@ -114,7 +116,7 @@
       "seq": 12,
       "title": "Intent retires its release driver, preflight scripts and hook build path into the core",
       "scope": "M",
-      "status": "not-started",
+      "status": "done",
       "objective": "Intent, after the sweep (design.md section 7; dialog section 6): the release driver `bin/.devbin/cmd/build.d/release` retires into the core (`release.verbs` gains `cut`; `derived:` carries the schema bless, the lock refresh, `agents sync`, `claude upgrade --apply`, `sync --to-disk` and the pair build; a gate for the live daemon); `bin/.devbin/preflight-linux.sh` and `cmd/shared/preflight.lib` retire into `release.legs`; `cmd/prepush` loses its preflight cover and clone-and-build paths; `cmd/brew` retires into the built-in formula and `cmd/macos`'s publish half into the built-in; `macos prepare` stays as a shadow until the built-in stages more than one app; `.github/workflows/linux-release.yml` fires on `candidate/`, `tests.yml` and `rust.yml` lose their tag triggers; the five hand post-tag commands stop; `.github/workflows/README.md`, `intent/docs/releasing.md`. Serves AC-4.3.\n Note from WP06a (2026-10-31): the built-in `macos publish` refuses a stage with no commit record, so Intent's shadow `macos prepare` must write the same record (`<stage>/commit`, HEAD's full sha) or retire into the built-in.\n\n\nRecord (vc, 2026-10-31): Intent's intent#ST0091 is the one place this work is written and claimed (WP-01 the cut through the core with Intent's own release.gates for 0481's re-run, the contract and reference checks, the provenance check and the daemon gate; WP-02 the kovacs leg and prepush, frozen remotes staying; WP-03 the tap and macOS publish through the built-ins, prepare as the shadow writing <stage>/commit; WP-04 the workflows on candidate/ and the docs, its AC-04.3 hv's first cut through the core against the 3.2.8 baseline); this package points at it. Nothing in it starts before the sweep; the vendor commit is WP09's. Intent issue 0665 (from Gtools' finding): at lint exempts a Completed thread from the literal-id rule, so a test deleted inside a surviving file reads as conforming.",
       "body": "",
       "preamble": ""
@@ -123,7 +125,8 @@
       "seq": 13,
       "title": "Conflab adopts the core's release: gates before any push, one confirm, one formula writer",
       "scope": "L",
-      "status": "not-started",
+      "status": "cancelled",
+      "status_reason": "moved to conflab's own thread on hv's ruling 2026-11-13: conflab#ST0126",
       "objective": "Conflab, before its next release (Q10; design.md section 7; dialog section 6): `bin/.devbin/cmd/release` and `bin/release` retire into the core so gates run before any push, there is one confirm, no `tag -f` and no delete-and-recreate; `cmd/release`'s `update_formula` is deleted and `cmd/.lib/brew` is the one formula writer until the built-in's cask; `bin/.devbin/config.yaml` gains a `release:` block with the sidecars, `test swift` in `test all`, and `after:` for the pkg path and the distribution mirror; the `macos` handler and `bin/macos.d/` stay as a shadow; `.github/workflows/release.yml` is deleted; `docs/releasing.md`, `docs/notes/tn001-macos-release-local-path.md` (closing note). Serves AC-4.3.\n\n\nRecord (vc, 2026-10-31): Conflab's conflab#ST0126/WP-06 is the one place this work is written and claimed; this package points at it and carries the core-side constraints. Corrections from Conflab's inventory (conflab-dc, checked by conflab-vc at ed9efdc6): `test swift` is already in `test all` (config.yaml:148-153), so the clause is that the cut's gate list carries it; Conflab's release docs are `bin/.devbin/help/release.md` and tn001, not a docs/releasing.md; `.github/actionlint.yaml` goes with release.yml and ST0125/AC-02.1 is re-cut in the same change; the after: list opens with the Fly deploy and ends with `use brew` (Conflab vc decision 42, ST0126 D7) and carries the formula and cask publishes; WP-06 is re-cut against D57 to D68 (no ci.base; ST0126/AC-04.3 and AC-06.2 reworded). Core confirmations asked of cc: DEVBIN_RELEASE_CONFIRMED keeps its name and value (the tag) through WP02 (D58), and `release attach --from <dir>` survives WP07 for object: local.",
       "body": "",
       "preamble": ""
@@ -132,7 +135,8 @@
       "seq": 14,
       "title": "Laksa's deploy reads CI; the suite and the prod compile run once",
       "scope": "S",
-      "status": "not-started",
+      "status": "cancelled",
+      "status_reason": "moved to laksa's own thread on hv's ruling 2026-11-13: laksa#0058",
       "objective": "Laksa (design.md section 7; dialog section 6): `bin/.devbin/cmd/build`'s deploy requires a green `ci-state` on HEAD's sha and stops re-running credo and the suite on a sealed or CI green; the crate's tests run once per `test all` (`test/cli/crate_gate_test.exs`); the local `mix release` gate moves to a CI job (Q11); `.github/workflows/ci_cd.yml` gains a cargo cache or drops the crate build from the CI suite; `bin/.devbin/help/build.md`. Serves AC-4.3.\n Laksa declares `release.ci.workflow: ci_cd.yml` (and no summary, so the run's own conclusion is the verdict) with no other release key; WP02b makes a release block of only ci keys valid for exactly this case.\n\n\nRecord (vc, 2026-10-31): Laksa's laksa#ISSUE:0058 is the one place this work is written and claimed; this package points at it. The pre-sweep set S1 to S4 (laksa-vc, approved by vc the same day) needs no new core: a cargo cache for native/cli; a CI release job running `bin/devbin build release` under MIX_ENV prod at job level, the local gate staying until the deploy reads the job; crate_gate's two full runs narrowed to one; the help pages. The paths-ignore seam (board commits leave HEAD with no run) is closed by WP03's ci-state walk, which reads the push trigger's ignored paths from the workflow at the asked sha.",
       "body": "",
       "preamble": ""
@@ -252,7 +256,9 @@
       "text": "The first Utilz or Intent cut in the new shape signs and notarises at the release commit as a leg (D66), as that cut's RELEASE seal records; satisfied by evidence from that seal.",
       "kind": "non-test",
       "state": {
-        "is": "unsatisfied"
+        "is": "withdrawn",
+        "reason": "moved to utilz's own thread on hv's ruling 2026-11-13: utilz#ST0031 holds the first Utilz cut in the new shape",
+        "by": "hv"
       }
     },
     {
@@ -278,7 +284,9 @@
       "text": "Utilz, Gtools, Intent, Conflab and Laksa each retire the bespoke machinery design.md section 7 names, or carry it only as a config key, and their test workflows fire on candidate/ and not on tags.",
       "kind": "non-test",
       "state": {
-        "is": "unsatisfied"
+        "is": "withdrawn",
+        "reason": "moved to the consumers' own threads on hv's ruling 2026-11-13: utilz#ST0031, gtools#ST0020, conflab#ST0126 and laksa#0058, with Intent's met through its ST0093/WP-06",
+        "by": "hv"
       }
     },
     {
@@ -310,7 +318,9 @@
       "text": "The first consumer cut after adoption shows WP15's builds-per-release count below its baseline for every project with a build: block, by project (WP16).",
       "kind": "non-test",
       "state": {
-        "is": "unsatisfied"
+        "is": "withdrawn",
+        "reason": "moved to the consumers' own threads on hv's ruling 2026-11-13: each consumer's first cut after adoption is its own thread's (utilz#ST0031, gtools#ST0020, conflab#ST0126, laksa#0058)",
+        "by": "hv"
       }
     },
     {
@@ -510,7 +520,7 @@
     {
       "id": "AT-3.5",
       "kind": "test",
-      "file": "tests/unit/releasestatus.bats",
+      "file": "tests/unit/releasestatus.bats:170",
       "covers": [
         "AC-3.3"
       ],

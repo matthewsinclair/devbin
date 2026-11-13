@@ -2,7 +2,8 @@
 wp_id: WP-14
 title: Laksa's deploy reads CI; the suite and the prod compile run once
 scope: S
-status: Not Started
+status: Cancelled
+status_reason: moved to laksa's own thread on hv's ruling 2026-11-13: laksa#0058
 ---
 
 # WP-14: Laksa's deploy reads CI; the suite and the prod compile run once

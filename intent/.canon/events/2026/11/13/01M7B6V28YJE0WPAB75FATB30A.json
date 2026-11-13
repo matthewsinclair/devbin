@@ -1,0 +1,14 @@
+{
+  "id": "01M7B6V28YJE0WPAB75FATB30A",
+  "ts": "2026-11-13T19:41:05.184Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.withdraw",
+  "subject": {
+    "type": "ac",
+    "id": "ST0011/AC-3.4"
+  },
+  "payload": {
+    "reason": "moved to utilz's own thread on hv's ruling 2026-11-13: utilz#ST0031 holds the first Utilz cut in the new shape"
+  }
+}

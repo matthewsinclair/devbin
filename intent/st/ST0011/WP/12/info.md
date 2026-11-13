@@ -2,7 +2,7 @@
 wp_id: WP-12
 title: Intent retires its release driver, preflight scripts and hook build path into the core
 scope: M
-status: Not Started
+status: Done
 ---
 
 # WP-12: Intent retires its release driver, preflight scripts and hook build path into the core

@@ -1,0 +1,14 @@
+{
+  "id": "01M7B6V2FC4P08J6DTMBWAMJNY",
+  "ts": "2026-11-13T19:41:05.390Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.withdraw",
+  "subject": {
+    "type": "ac",
+    "id": "ST0011/AC-4.3"
+  },
+  "payload": {
+    "reason": "moved to the consumers' own threads on hv's ruling 2026-11-13: utilz#ST0031, gtools#ST0020, conflab#ST0126 and laksa#0058, with Intent's met through its ST0093/WP-06"
+  }
+}

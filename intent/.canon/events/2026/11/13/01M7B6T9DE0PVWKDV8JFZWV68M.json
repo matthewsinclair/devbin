@@ -1,0 +1,16 @@
+{
+  "id": "01M7B6T9DE0PVWKDV8JFZWV68M",
+  "ts": "2026-11-13T19:40:39.729Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.cancel",
+  "subject": {
+    "type": "wp",
+    "id": "ST0011/14"
+  },
+  "payload": {
+    "from": "not-started",
+    "reason": "moved to laksa's own thread on hv's ruling 2026-11-13: laksa#0058",
+    "to": "cancelled"
+  }
+}

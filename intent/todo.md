@@ -18,11 +18,11 @@ A DOING / TODO / DONE view, projected from steel-thread and work-package status:
   - [x] 07: Attach reads the candidate run: assets keyed on the release commit's sha
   - [x] 08: Formula under the yes; assets mode with the cask verified
   - [x] 09: A Devbin release through the new shape, then the vendor sweep into the five consumers
-  - [ ] 10: Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/
-  - [ ] 11: Gtools retires tools/ci-state and ci.wait; macOS job on candidate/; release.legs kovacs
-  - [ ] 12: Intent retires its release driver, preflight scripts and hook build path into the core
-  - [ ] 13: Conflab adopts the core's release: gates before any push, one confirm, one formula writer
-  - [ ] 14: Laksa's deploy reads CI; the suite and the prod compile run once
+  - [~] 10: Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/
+  - [~] 11: Gtools retires tools/ci-state and ci.wait; macOS job on candidate/; release.legs kovacs
+  - [x] 12: Intent retires its release driver, preflight scripts and hook build path into the core
+  - [~] 13: Conflab adopts the core's release: gates before any push, one confirm, one formula writer
+  - [~] 14: Laksa's deploy reads CI; the suite and the prod compile run once
   - [-] 15: Measure and re-read: RELEASE seal clock lines against the expected column; kovacs, lanes, the consumers' macOS legs
   - [-] 16: Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)
   - [x] 17: A gate declares the platforms it runs on: inactive elsewhere, never failed (D69)

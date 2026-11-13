@@ -2,7 +2,8 @@
 wp_id: WP-11
 title: Gtools retires tools/ci-state and ci.wait; macOS job on candidate/; release.legs kovacs
 scope: S
-status: Not Started
+status: Cancelled
+status_reason: moved to gtools's own thread on hv's ruling 2026-11-13: gtools#ST0020
 ---
 
 # WP-11: Gtools retires tools/ci-state and ci.wait; macOS job on candidate/; release.legs kovacs

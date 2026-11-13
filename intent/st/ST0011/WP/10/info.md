@@ -2,7 +2,8 @@
 wp_id: WP-10
 title: Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/
 scope: S
-status: Not Started
+status: Cancelled
+status_reason: moved to utilz's own thread on hv's ruling 2026-11-13: utilz#ST0031
 ---
 
 # WP-10: Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/

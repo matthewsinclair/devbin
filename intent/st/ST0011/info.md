@@ -43,11 +43,11 @@ Reach (hv, 2026-10-31): where a project does something bespoke, slow or redundan
 | WP-07 | Attach reads the candidate run: assets keyed on the release commit's sha                                                    | S    | Done        |
 | WP-08 | Formula under the yes; assets mode with the cask verified                                                                   | S    | Done        |
 | WP-09 | A Devbin release through the new shape, then the vendor sweep into the five consumers                                       | S    | Done        |
-| WP-10 | Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/                     | S    | Not Started |
-| WP-11 | Gtools retires tools/ci-state and ci.wait; macOS job on candidate/; release.legs kovacs                                     | S    | Not Started |
-| WP-12 | Intent retires its release driver, preflight scripts and hook build path into the core                                      | M    | Not Started |
-| WP-13 | Conflab adopts the core's release: gates before any push, one confirm, one formula writer                                   | L    | Not Started |
-| WP-14 | Laksa's deploy reads CI; the suite and the prod compile run once                                                            | S    | Not Started |
+| WP-10 | Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/                     | S    | Cancelled   |
+| WP-11 | Gtools retires tools/ci-state and ci.wait; macOS job on candidate/; release.legs kovacs                                     | S    | Cancelled   |
+| WP-12 | Intent retires its release driver, preflight scripts and hook build path into the core                                      | M    | Done        |
+| WP-13 | Conflab adopts the core's release: gates before any push, one confirm, one formula writer                                   | L    | Cancelled   |
+| WP-14 | Laksa's deploy reads CI; the suite and the prod compile run once                                                            | S    | Cancelled   |
 | WP-15 | Measure and re-read: RELEASE seal clock lines against the expected column; kovacs, lanes, the consumers' macOS legs         | S    | WIP         |
 | WP-16 | Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)          | S    | WIP         |
 | WP-17 | A gate declares the platforms it runs on: inactive elsewhere, never failed (D69)                                            | S    | Done        |
