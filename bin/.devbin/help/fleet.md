@@ -5,10 +5,10 @@ to bring them all forward. Devbin's own project command -- it lives in devbin's
 tree, not in the vendored runtime, so an install cannot enumerate anything.
 
   audit             print one row per install found: its kind (estate,
-                    worktree or dep) and path, its devbin version, the commit
-                    it was vendored from, the digest of its vendored runtime,
-                    when it was last vendored, and whether that runtime is
-                    committed in the estate
+                    worktree, dep or archive) and path, its devbin version,
+                    the commit it was vendored from, the digest of its
+                    vendored runtime, when it was last vendored, and whether
+                    that runtime is committed in the estate
   doc               regenerate intent/docs/devbin-users.md from the same scan
   upgrade [--apply] upgrade every estate from the machine install. WITHOUT
                     --apply it prints the plan and writes nothing
@@ -33,6 +33,8 @@ prints that list, because a count means nothing without the list that produced
 it. Worktrees and dependency checkouts that carry a runtime are listed apart
 from the estates by `audit` and `doc`, not counted as estates and not dropped.
 `upgrade` sweeps estates only: it names each worktree and dependency checkout in its not-swept table as `NOT AN ESTATE`, and counts them on its summary line.
+
+A directory named `_Archive`, at any depth, is an archive, and is never walked (issue 0351): nothing in it is read, swept or counted, whatever it holds. Each one under the roots is named once, as `ARCHIVE -- not walked`: a row of kind `archive` in `audit`, a section of its own in `doc`, and a row in `upgrade`'s not-swept table, counted on its summary line. The walk outside the roots prunes archives too, and says so with what else it does not look in.
 
 An install is a directory carrying bin/.devbin/manifest.sha256, or, without one, bin/devbin beside a bin/.devbin/lib directory or a link to one (issue 0154). One that has lost its manifest is still listed: its version, commit and last-vendored cells read `NO MANIFEST`, its runtime is digested, and git is asked whether the removal is committed. It is reported, not judged, so it does not fail the audit. One whose manifest records no files (issue 0159) keeps its header's version and commit, and its last-vendored cell reads `NO FILES`, reported the same way.
 

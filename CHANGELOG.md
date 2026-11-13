@@ -24,6 +24,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 - **T4's Rust reader of the version line, which every binary of a compiled tool carries word for word, builds clean under `cargo clippy -- -D warnings` in every edition (issue `0350`).** In an edition 2024 crate Clippy failed it three times on its nested `if let` blocks, so a tool that denies Clippy's warnings could not follow the contract as printed. It now reads the manifest as one chain of `Option` steps, with the same logic, and needs no let chain, which no edition before 2024 can build.
 
+#### devbin's own tree
+
+- **`fleet upgrade`, `fleet audit` and `fleet doc` never walk into a directory named `_Archive`, at any depth (issue `0351`).** Each walked every directory under the roots, so a sweep upgraded an estate kept in an archive, and only a `DEVBIN_FLEET_FROZEN` set by hand on every run kept one out. The census now prunes each archive by rule and reads nothing in it. Every report names each one once: the sweep's not-swept table as `ARCHIVE -- not walked` with a count on its summary line, audit as a row of kind `archive`, and the document in a section of its own. The walk outside the roots prunes archives too, and says so with what else it does not walk.
+
 Full note: [RELEASES/0.1.24.md](RELEASES/0.1.24.md)
 
 ## [0.1.23] - 2026-11-12

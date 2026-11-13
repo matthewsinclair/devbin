@@ -47,6 +47,16 @@ DOC_REL="intent/docs/devbin-users.md"
 # changed; name the SHAPE, which is a tree with one uneven branch.
 PRUNES='.git node_modules _build .history .backup .elixir_ls target .venv'
 
+# AN ARCHIVE IS NEVER WALKED (issue 0351). A directory named ARCHIVE_DIR, at any
+# depth under a root, holds what its owner has retired, and nothing in it is
+# swept, read or counted. It was walked like any other directory, so a sweep
+# upgraded an estate kept in one, and only a DEVBIN_FLEET_FROZEN set by hand on
+# every run kept it out. Unlike PRUNES it is not dropped in silence: the census
+# walk prints each one it prunes (INSTALL_ARCHIVE_MARK below), kind_of names it
+# an archive, and every report gives it one row, ARCHIVE -- not walked. The
+# walk outside the roots prunes it by name and says so in outside_unwalked.
+ARCHIVE_DIR=_Archive
+
 # THE CENSUS FRAME -- where to look, and it is DATA IN THIS TREE, NOT A DEFAULT
 # IN THIS CODE (issue 0116).
 #
@@ -202,6 +212,9 @@ seam_digest() {
 # manifest marks one alone, as it always did.
 INSTALL_LIB_MARK=(\( -type d -o -type l \) -path '*/bin/.devbin/lib' -print)
 INSTALL_MANIFEST_MARK=(-name manifest.sha256 -path '*/bin/.devbin/manifest.sha256' -print)
+# An archive is marked in the same prune group as a lib, so it is printed once
+# and never entered; install_roots keeps its path as it is.
+INSTALL_ARCHIVE_MARK=(-type d -name "$ARCHIVE_DIR" -print)
 
 # install_walk <start> <prune clause>... -- find_walk from <start>, printing each
 # path an install mark matches, and entering neither what <prune clause> names
@@ -218,11 +231,12 @@ install_walk() {
     return 2
   fi
   # find-status: install_walk's own, which both callers read under `if !`
-  find_walk "$start" \( \( "$@" \) -o \( "${INSTALL_LIB_MARK[@]}" \) \) -prune -o "${INSTALL_MANIFEST_MARK[@]}"
+  find_walk "$start" \( \( "$@" \) -o \( "${INSTALL_LIB_MARK[@]}" \) -o \( "${INSTALL_ARCHIVE_MARK[@]}" \) \) -prune -o "${INSTALL_MANIFEST_MARK[@]}"
 }
 
 # install_roots -- the paths install_walk printed, on stdin, as the install each
-# belongs to, once each, in the order first met. A root marked by its lib alone
+# belongs to, once each, in the order first met, and each archive the walk
+# pruned as its own path (ARCHIVE_DIR). A root marked by its lib alone
 # is kept only as the marks' comment above says. Its status is the pipeline's,
 # so a step that fails is a failed list, never a short one.
 install_roots() {
@@ -231,20 +245,22 @@ install_roots() {
   # marked is a manifest's root, launcher or not, whichever mark find met first.
   # find meets a directory's entries in the filesystem's own order, which is
   # not the same on every machine, so nothing here may depend on it.
-  awk '{
+  awk -v a="$ARCHIVE_DIR" '{
     p = $0
     if (sub(/\/bin\/\.devbin\/manifest\.sha256$/, "", p)) manifest[p] = 1
+    else if (p == a || substr(p, length(p) - length(a)) == "/" a) archive[p] = 1
     else if (!sub(/\/bin\/\.devbin\/lib$/, "", p)) next
     if (!(p in met)) { met[p] = 1; order[++n] = p }
   }
   END {
     for (i = 1; i <= n; i++) {
-      k = (order[i] in manifest) ? "m" : "l"
+      k = (order[i] in manifest) ? "m" : ((order[i] in archive) ? "a" : "l")
       print k "\t" order[i]
     }
   }' | while IFS= read -r p; do
     case "$p" in
       m$'\t'*) printf '%s\n' "${p#m$'\t'}" ;;
+      a$'\t'*) printf '%s\n' "${p#a$'\t'}" ;;
       l$'\t'*)
         p="${p#l$'\t'}"
         if is_devbin_installed "$p" && { [ -e "$p/bin/devbin" ] || [ -L "$p/bin/devbin" ]; }; then
@@ -318,8 +334,15 @@ EOF
 # Intent node was using for its issue 0516, kept under tmp/. A linked worktree's
 # `.git` is a FILE whose gitdir names <repository>/.git/worktrees/<name>; a
 # submodule's is a file too, naming .git/modules/, and stays an estate.
+#
+# AN ARCHIVE IS ASKED FIRST, BY ITS NAME ALONE (issue 0351): nothing in one is
+# read, so its kind cannot come from what it holds.
 kind_of() {
   local gitdir
+  if [ "${1##*/}" = "$ARCHIVE_DIR" ]; then
+    printf 'archive'
+    return 0
+  fi
   case "$1" in
     */deps/*)
       printf 'dep'
@@ -367,6 +390,10 @@ EOF
 # called an estate, and the census told the reader to add it to the roots.
 install_kind() {
   local m
+  if [ "$(kind_of "$1")" = archive ]; then
+    printf 'archive'
+    return 0
+  fi
   if is_install_tree "$1"; then
     printf 'install'
     return 0
@@ -419,7 +446,7 @@ outside_roots() {
     warn "there is no home directory at '$home' to walk -- installs outside the roots were not looked for"
     return 1
   fi
-  for p in $PRUNES .claude; do
+  for p in $PRUNES .claude "$ARCHIVE_DIR"; do
     [ "${#args[@]}" -eq 0 ] || args+=(-o)
     args+=(-name "$p")
   done
@@ -455,7 +482,7 @@ EOF
 outside_unwalked() {
   local h
   h="$(home_relative "${DEVBIN_FLEET_HOME:-$HOME}")"
-  printf '%s/Library, which holds Library/CloudStorage (Dropbox, Google Drive and the like), %s/.Trash, and anything reached only through a symlink' "$h" "$h"
+  printf '%s/Library, which holds Library/CloudStorage (Dropbox, Google Drive and the like), %s/.Trash, and anything reached only through a symlink, or held in a directory named %s' "$h" "$h" "$ARCHIVE_DIR"
 }
 
 # outside_summary <rows> -- one line counting outside_roots's rows by kind, or
@@ -529,12 +556,12 @@ _line_in() {
 }
 
 # not_an_estate <kind> -- whether a row of that kind is one the sweep names and
-# never touches: a worktree or a dependency checkout. The sweep's NOT AN ESTATE
-# row and frozen_matching_none both ask it, so a frozen name is matched against
-# the rows a freeze can reach.
+# never touches: a worktree, a dependency checkout or an archive. The sweep's
+# NOT AN ESTATE and ARCHIVE rows and frozen_matching_none ask it, so a frozen
+# name is matched against the rows a freeze can reach.
 not_an_estate() {
   case "$1" in
-    worktree | dep) return 0 ;;
+    worktree | dep | archive) return 0 ;;
   esac
   return 1
 }
@@ -720,6 +747,13 @@ scan() {
   installs="$(find_installs)" || rc=1
   while IFS= read -r root; do
     [ -n "$root" ] || continue
+    # AN ARCHIVE'S ROW READS NOTHING IN IT (issue 0351): every cell but its kind
+    # and path says it was not walked.
+    if [ "$(kind_of "$root")" = archive ]; then
+      rel="$(home_relative "$root")"
+      printf 'archive\t%s\tnot walked\tnot walked\tnot walked\tnot walked\tnot walked\n' "${rel#\~/}"
+      continue
+    fi
     m="$root/$DEVBIN_MANIFEST_REL"
     missing=""
     # AN UNREADABLE MANIFEST IS NOT AN UNRECORDED ONE. The readers answer empty
@@ -941,7 +975,7 @@ sweep_prefix_note() {
 cmd_upgrade() {
   local apply="" prefix root label want state src roots kind outside="" frozen frozen_list nomatch
   local n_level=0 n_work=0 n_repoint=0 n_frozen=0 n_unreachable=0 n_other=0 n_outside=0
-  local n_nomanifest=0 n_nofiles=0 n_unreadable=0 n_done=0 n_conv=0 n_failed=0 n_held=0 result held unvouched
+  local n_nomanifest=0 n_archive=0 n_nofiles=0 n_unreadable=0 n_done=0 n_conv=0 n_failed=0 n_held=0 result held unvouched
   local plan="" excluded="" heldrows=""
 
   while [ $# -gt 0 ]; do
@@ -1000,6 +1034,11 @@ cmd_upgrade() {
     [ -n "$root" ] || continue
     label="$(estate_label "$root")"
 
+    if [ "$kind" = archive ]; then
+      excluded="$excluded$(printf '%s\tARCHIVE -- not walked' "$label")\n"
+      n_archive=$((n_archive + 1))
+      continue
+    fi
     if not_an_estate "$kind"; then
       excluded="$excluded$(printf '%s\tNOT AN ESTATE -- a %s, not swept' "$label" \
         "$([ "$kind" = dep ] && printf 'dependency checkout' || printf worktree)")\n"
@@ -1153,8 +1192,8 @@ EOF
     printf '\n'
   fi
 
-  printf '%d to upgrade, %d of those repointed, %d already level, %d frozen, %d unreachable, %d not an estate, %d outside the roots, %d with no manifest, %d whose manifest records no files, %d whose manifest cannot be read\n' \
-    "$n_work" "$n_repoint" "$n_level" "$n_frozen" "$n_unreachable" "$n_other" "$n_outside" "$n_nomanifest" "$n_nofiles" "$n_unreadable"
+  printf '%d to upgrade, %d of those repointed, %d already level, %d frozen, %d unreachable, %d not an estate, %d outside the roots, %d with no manifest, %d whose manifest records no files, %d whose manifest cannot be read, %d archive(s) not walked\n' \
+    "$n_work" "$n_repoint" "$n_level" "$n_frozen" "$n_unreachable" "$n_other" "$n_outside" "$n_nomanifest" "$n_nofiles" "$n_unreadable" "$n_archive"
   printf 'not walked for installs outside the roots: %s\n' "$(outside_unwalked)"
   if [ -n "$apply" ]; then
     printf '%d upgraded (%d needed a second pass to converge provenance), %d HELD BACK, %d FAILED\n' \
@@ -1206,7 +1245,7 @@ md_table() {
 # warning about: nothing in these strings should expand.
 # shellcheck disable=SC2016
 render_doc() {
-  local now snap snap2 estates worktrees deps n_estate n_wt n_dep n_state root disp outside n_out
+  local now snap snap2 estates worktrees deps archives n_estate n_wt n_dep n_arch n_state root disp outside n_out
   now="$(date -u +'%Y-%m-%d %H:%MZ')"
 
   # TWO SCANS, AND THE DOCUMENT IS REFUSED IF THEY DISAGREE.
@@ -1240,6 +1279,8 @@ render_doc() {
   estates="$(printf '%s\n' "$snap" | awk -F'\t' '$1 == "estate"')"
   worktrees="$(printf '%s\n' "$snap" | awk -F'\t' '$1 == "worktree"')"
   deps="$(printf '%s\n' "$snap" | awk -F'\t' '$1 == "dep"')"
+  archives="$(printf '%s\n' "$snap" | awk -F'\t' '$1 == "archive"')"
+  n_arch="$(printf '%s\n' "$archives" | grep -c . || true)"
   n_estate="$(printf '%s\n' "$estates" | grep -c . || true)"
   n_wt="$(printf '%s\n' "$worktrees" | grep -c . || true)"
   n_dep="$(printf '%s\n' "$deps" | grep -c . || true)"
@@ -1324,6 +1365,17 @@ render_doc() {
     printf -- '- **dep** -- a dependency checkout (Mix `deps/`), which is a copy of some other project'"'"'s repository that happens to ship devbin. Not tracked by the consuming project and rebuilt by its package manager.\n\n'
     { printf 'Kind\tPath\tdevbin\tSeam digest\tSource commit\tSeam committed\tLast vendored (UTC)\n'
       printf '%s\n%s\n' "$worktrees" "$deps" | awk -F'\t' 'NF {printf "%s\t%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, $3, $5, $4, $7, $6}'
+    } | md_table
+    printf '\n'
+  fi
+
+  # AN ARCHIVE UNDER THE ROOTS IS NAMED, NEVER DROPPED (issue 0351), and only
+  # when there is one: its section says what was not walked, not what was.
+  if [ "$n_arch" -gt 0 ]; then
+    printf '## Archives, not walked -- %d\n\n' "$n_arch"
+    printf 'Each directory named `%s` under the roots holds what its owner has retired. The scan prunes it without reading anything in it, so no install in one is in any table above or in any sweep.\n\n' "$ARCHIVE_DIR"
+    { printf 'Path\tWhy\n'
+      printf '%s\n' "$archives" | awk -F'\t' 'NF {printf "%s\tARCHIVE -- not walked\n", $2}'
     } | md_table
     printf '\n'
   fi

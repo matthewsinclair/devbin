@@ -2950,3 +2950,95 @@ $plan"
   assert_output_matches '\| +NOT KNOWN -- the walk outside the roots could not read everything'
   assert_output_contains "installs outside the roots may be missing"
 }
+
+# AN ARCHIVE IS NEVER WALKED (issue 0351). A directory named _Archive, at any
+# depth under a root, is pruned by rule: nothing in it is read, swept or
+# counted, and every report names it once, as ARCHIVE -- not walked. Each arm
+# builds its archives under this test's own roots and home, with an estate in
+# each whose launcher leaves a mark if anything runs it.
+
+# mkarchived <path-under-roots> -- mkestate, with a launcher that records any run
+# of it beside the roots.
+mkarchived() {
+  mkestate "$1"
+  printf '#!/usr/bin/env bash\n: >"%s/ran-%s"\n' "$DEVBIN_TEST_TMPDIR" "${1//\//-}" >"$ROOTS/$1/bin/devbin"
+}
+
+# archive_listing -- every path under the roots' archives, with its size, sorted.
+archive_listing() {
+  find "$ROOTS/_Archive" "$ROOTS/group/_Archive" -print | LC_ALL=C sort | while IFS= read -r p; do
+    printf '%s %s\n' "$p" "$(wc -c <"$p" 2>/dev/null || printf dir)"
+  done
+}
+
+@test "audit gives each archive under the roots one row, archive and not walked, and no row for an install in one, at any depth (0351)" {
+  mkinstall alpha
+  mkinstall _Archive/old
+  mkinstall group/_Archive/older/deep
+  run_fleet audit
+  assert_success
+  local top nested
+  top="$(_row_of _Archive)"
+  [[ "$top" == "archive"$'\t'*"/roots/_Archive"$'\t'"not walked"* ]] || fail "no archive row for _Archive: $output"
+  nested="$(printf '%s\n' "$output" | awk -F'\t' '$2 ~ /\/group\/_Archive$/')"
+  [[ "$nested" == "archive"$'\t'*$'\t'"not walked"* ]] || fail "no archive row for group/_Archive: $output"
+  refute_output_contains "_Archive/old"
+  refute_output_contains "_Archive/older"
+  [ -n "$(_row_of alpha)" ] || fail "the estate beside the archives has no row: $output"
+}
+
+@test "the sweep names each archive as ARCHIVE -- not walked, and --apply runs nothing in one and leaves it as it was (0351)" {
+  prefix="$(mkinstall_prefix)"
+  mkproj_cfg "$prefix"
+  mkarchived _Archive/old
+  mkarchived group/_Archive/older
+  local before
+  before="$(archive_listing)"
+  : >"$DEVBIN_TEST_TMPDIR/before-apply"
+  run_sweep --apply
+  assert_success
+  assert_output_matches '\| _Archive +\| +ARCHIVE -- not walked'
+  assert_output_matches '\| group/_Archive +\| +ARCHIVE -- not walked'
+  assert_output_contains "2 archive(s) not walked"
+  refute_output_contains "_Archive/old"
+  refute_output_contains "_Archive/older"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/ran-_Archive-old" ] || fail "the sweep ran the launcher of an estate in _Archive"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/ran-group-_Archive-older" ] || fail "the sweep ran the launcher of an estate in group/_Archive"
+  [ "$(archive_listing)" = "$before" ] || fail "the archives' files changed:
+$(diff <(printf '%s\n' "$before") <(archive_listing))"
+  local newer
+  newer="$(find "$ROOTS/_Archive" "$ROOTS/group/_Archive" -newer "$DEVBIN_TEST_TMPDIR/before-apply" -print)"
+  [ -z "$newer" ] || fail "the sweep wrote in an archive: $newer"
+}
+
+@test "doc names each archive under the roots in its own section, and lists no install in one (0351)" {
+  mkinstall alpha
+  mkinstall _Archive/old
+  mkinstall group/_Archive/older
+  run_fleet doc
+  assert_success
+  local doc="$PROJ/intent/docs/devbin-users.md"
+  grep -qx '## Archives, not walked -- 2' "$doc" || fail "the document has no archives section of two: $(cat "$doc")"
+  grep -qE '^\| [^|]*/roots/_Archive +\| ARCHIVE -- not walked +\|$' "$doc" || fail "no row for _Archive: $(cat "$doc")"
+  grep -qE '^\| [^|]*/roots/group/_Archive +\| ARCHIVE -- not walked +\|$' "$doc" || fail "no row for group/_Archive: $(cat "$doc")"
+  ! grep -q '_Archive/old' "$doc" || fail "the document lists an install in an archive"
+}
+
+@test "doc has no archives section when no archive is under the roots (0351)" {
+  mkinstall alpha
+  run_fleet doc
+  assert_success
+  ! grep -q '## Archives' "$PROJ/intent/docs/devbin-users.md" || fail "an archives section with no archive in it"
+}
+
+@test "the walk outside the roots never enters an archive, and every report says so (0351)" {
+  mkinstall alpha
+  ROOTS="$DEVBIN_FLEET_HOME/_Archive" mkinstall gone
+  ROOTS="$DEVBIN_FLEET_HOME/work/_Archive" mkinstall older
+  run_fleet audit
+  assert_success
+  refute_output_contains "gone"
+  refute_output_contains "older"
+  assert_output_contains "outside it: none"
+  assert_output_contains "or held in a directory named _Archive"
+}
