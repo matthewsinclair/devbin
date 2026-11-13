@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-13 09:22Z
+heartbeat_at: 2026-11-13 10:05Z
 status: active
-focus: "0348 and 0349 for 0.1.24 (vc decision 172), 2026-11-13 09:21Z by date -u: units 0348-1 cdbd54ca, 0348-2 88e4e75b, 0349 47cc47df built in scratch i0348/tree on BASE b226e017, probed red at each parent and green at the tip; desk ask 01M7A3CR7PX6AW00S26X03KS3K (heavy: red legs, 4 arms, six files whole BSD, then 0349's one brew proof) waits for vc's GO. ISSUE:0326 claim stands."
-claims: [ISSUE:0326, ISSUE:0348, ISSUE:0349]
+focus: "Holding (2026-11-13 10:05Z by date -u): 0348 (46270faf, 4f3c797b) and 0349 (363c4733) landed for 0.1.24, resolved at 697aa42e, closed and unclaimed; i0348's clones cleared, records kept. Nothing else for cc on 0.1.24 unless the whole gate turns up something in its code. ISSUE:0326 claim stands."
+claims: [ISSUE:0326]
 ---
 
 # Control Claude (cc)
