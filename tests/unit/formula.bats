@@ -206,20 +206,28 @@ SH
 # Ruby, in a keg at <keg> (default $DEVBIN_TEST_TMPDIR/keg), from a staging
 # directory as Homebrew leaves one for <layout>: `root` (the default), an
 # archive packed rooted at the install root, bin/tool at mode 0644, as GitHub
-# serves an asset, beside share/notes.txt; `bin`, an archive holding only bin/,
-# which Homebrew enters, so the stage is bin's own files; `checkout`, a tag's
-# checkout, holding bin/devbin. NOT a brew install: the Formula DSL brew
-# supplies is stood in for by the smallest Ruby that runs the install,
-# Pathname#sha256, which brew adds, by Ruby's own Digest, and system by a line
-# appended to <keg>.calls.
+# serves an asset, beside share/notes.txt; `meta`, the same archive with a
+# LICENSE and a README.md at its root, files Homebrew moves as metafiles (issue
+# 0349); `bin`, an archive holding only bin/, which Homebrew enters, so the
+# stage is bin's own files; `checkout`, a tag's checkout, holding bin/devbin.
+# NOT a brew install: the Formula DSL brew supplies is stood in for by the
+# smallest Ruby that runs the install, Pathname#sha256, which brew adds, by
+# Ruby's own Digest, system by a line appended to <keg>.calls, and FileUtils,
+# which brew's Formula includes, by Ruby's own. Homebrew's move of the
+# metafiles, after the install, is not stood in for: the stage is left as the
+# install leaves it, for an arm to read.
 ruby_keg() {
   local layout="${2:-root}" keg="${3:-$DEVBIN_TEST_TMPDIR/keg}" stage="$DEVBIN_TEST_TMPDIR/stage-${2:-root}"
   case "$layout" in
-    root)
+    root | meta)
       mkdir -p "$stage/bin" "$stage/share"
       printf 'tool binary\n' >"$stage/bin/tool"
       chmod 0644 "$stage/bin/tool"
       printf 'notes\n' >"$stage/share/notes.txt"
+      if [ "$layout" = meta ]; then
+        printf 'license\n' >"$stage/LICENSE"
+        printf 'readme\n' >"$stage/README.md"
+      fi
       ;;
     bin)
       stage="$stage/bin"
@@ -257,6 +265,7 @@ ruby_keg() {
       end
     end
     class Formula
+      include FileUtils
       def self.method_missing(*_args, &_blk)
         nil
       end
@@ -928,7 +937,7 @@ $(cat "$keg/libexec/.tool-install")"
   run formula render v1.2.4 "${files[0]}" "${files[1]}" --sums "$SUMS"
   assert_success
   # The one install form (install_ruby, issue 0326), in each of its branches.
-  assert_file_contains "${files[0]}" '        libexec.install Dir["*"]'
+  assert_file_contains "${files[0]}" '        cp_r Dir["*"], libexec, preserve: true'
   formula_checkout
   run formula render v0.0.10 "${files[2]}"
   assert_success
@@ -1259,4 +1268,22 @@ YAML
   [ "$(cat "$keg.calls")" = "bin/devbin install --prefix $keg/libexec --managed-by brew" ] ||
     fail "a stage holding bin/devbin did not run the core's publish: $(cat "$keg.calls" 2>&1)"
   assert_file_not_exists "$keg/libexec/.tool-install"
+}
+
+@test "0349: the assets install body copies an archive packed at the install root into libexec, so its metafiles stay where the manifest names them, and the stage keeps them for Homebrew's own move to the keg's root" {
+  local out="$DEVBIN_TEST_TMPDIR/tool.rb" keg="$DEVBIN_TEST_TMPDIR/keg-meta" stage="$DEVBIN_TEST_TMPDIR/stage-meta" f
+  command -v ruby >/dev/null 2>&1 || skip "ruby is not on this runner: the generated install body is NOT run"
+  assets_checkout
+  run formula render v1.2.4 "$out" "$DEVBIN_TEST_TMPDIR/tool-app.rb" --sums "$SUMS"
+  assert_success
+  run ruby_keg "$out" meta "$keg"
+  assert_success
+  for f in LICENSE README.md; do
+    [ -f "$keg/libexec/$f" ] || fail "libexec holds no $f: $(find "$keg" -print)"
+    assert_file_contains "$keg/libexec/.tool-install" "  $f"
+    # Homebrew moves the stage's metafiles to the keg's root first, and moves
+    # libexec's only when that leaves the root holding none.
+    [ -f "$stage/$f" ] || fail "the stage kept no $f for Homebrew's move to the keg's root"
+  done
+  [ "$(mode_of "$keg/libexec/bin/tool")" = -rwxr-xr-x ] || fail "bin/tool is mode $(mode_of "$keg/libexec/bin/tool")"
 }
