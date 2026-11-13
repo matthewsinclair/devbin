@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-13 09:36Z
+heartbeat_at: 2026-11-13 11:43Z
 status: active
-focus: "Holding on vc's word (2026-11-13 09:36Z by date -u). 0.1.24's dc units landed (0350-1 b0f51e1c, 0351-1 68c31655, 0347-1 627f700a); 0347, 0350, 0351 closed at e083c959; k24 clones cleared. Next on 0.1.24: cc's landing, then vc's whole local gate. ST0011/16 claim stays."
+focus: "0.1.24's whole local gate GREEN at 3c804a37 (2026-11-13 11:43Z by date -u): 3157 tests, check all, test all and doctor, errors file empty. vc tells hv it's ready to cut. Holding; g24 kept until the cut is done. ST0011/16 claim stays."
 claims: [ST0011/16]
 ---
 
@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-_(none)_
+- Off-path, after 0.1.24's cut (vc, 2026-11-13 11:43Z by date -u): devbin's whole gate leaves 18 entries in TMPDIR. At 3c804a37 (g24/run): 15 .devbin-update--<project>-{demo,rustdemo} stamps from lib/helpers's update notice for test projects, 2 devbin-git.* from lib/release.steps, and node-compile-cache (node's own). The gate's verdict is clean; read whether any is a leak, then file or drop it. g24 is kept until the cut is done.
 
 ## Holds
 

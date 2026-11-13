@@ -1,0 +1,15 @@
+{
+  "id": "01M7ABH4WXDMY7Y125A7E2JY3V",
+  "ts": "2026-11-13T11:43:48.637Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Off-path, after 0.1.24's cut (vc, 2026-11-13 11:43Z by date -u): devbin's whole gate leaves 18 entries in TMPDIR. At 3c804a37 (g24/run): 15 .devbin-update--<project>-{demo,rustdemo} stamps from lib/helpers's update notice for test projects, 2 devbin-git.* from lib/release.steps, and node-compile-cache (node's own). The gate's verdict is clean; read whether any is a leak, then file or drop it. g24 is kept until the cut is done."
+  }
+}
