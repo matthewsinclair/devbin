@@ -6,6 +6,20 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.24] - Unreleased
+
+### Added
+
+- **A lanes run names each file of its parallel lane with its wall time before its verdict (issue `0345`)**, the slowest first, and a file that failed with its exit. It then names the serial lane's time and the one-minute load average at the run's start and end. A file's time runs from its start to its end, any wait for a free job slot included. The verdict stays the run's last line, and the run's results pass through untouched. This covers devbin's own suite, `test shell` and a project's own runner that calls `"$DEVBIN_LIB/bats-lanes"`. Every bats the runner supports, 1.12 and 1.14, is timed; under a bats that starts its files any other way, the run runs as before and says it has no times.
+
+### Changed
+
+#### a script or a config may get a different result
+
+- **A quiet gate's heartbeat carries the progress its command writes, with no terminal attached too (issue `0346`).** Every gated command, eg `test`, `lint` and `release gates`, hands its command `DEVBIN_GATE_PROGRESS`, a file, as it hands `DEVBIN_GATE_LOG`. On each quiet beat the heartbeat adds the file's first line after the elapsed time, in the command's own words. A lanes run writes it as each file starts and ends, eg "the parallel lane: 37 of 69 files done (1210 of 3127 tests), 24 running". With no terminal the heartbeat beats only once the command has written a line, so a gate whose command writes none prints nothing new on stderr, as before. The beat goes only to stderr and never into the gate's log, so the TAP that a seal and its counts read is unchanged.
+
+Full note: [RELEASES/0.1.24.md](RELEASES/0.1.24.md)
+
 ## [0.1.23] - 2026-11-12
 
 ### Added
