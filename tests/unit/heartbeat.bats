@@ -186,14 +186,27 @@ under_pty() {
   refute_output_contains "still running"
 }
 
-@test "with no terminal, a command that writes progress gets beats carrying its line, none of it enters the log, and the file goes with the run (0346)" {
-  local tmp="$BATS_TEST_TMPDIR/tmp" log
+# A gate's beat runs under no terminal too since 0346, as its progress file
+# is always made, and stopping it ended the beat's subshell but not the sleep
+# it was in, which held the gate's output. A caller that captured that output,
+# as a cut does each gate's, then waited out the interval after the gate had
+# ended (issue 0346).
+@test "with no terminal, a caller that captures a gate's output gets it when the gate ends, not when the beat's interval does (0346)" {
+  local interval=3 start took out
+  start="${EPOCHREALTIME//[!0-9]/}"
+  out="$(DEVBIN_HEARTBEAT_SECS="$interval" run_gate --suffix demo --out-dir logs -- sh -c 'sleep 0.2' 2>&1 </dev/null)"
+  took=$(((${EPOCHREALTIME//[!0-9]/} - start) / 1000000))
+  [ "$took" -lt "$interval" ] || fail "the caller got the gate's output after ${took}s, the beat's interval of ${interval}s, though the gate took a fraction of a second: $out"
+}
+
+@test "with no terminal, a command that writes progress gets beats carrying its line, none of it enters the log, and the file goes with the run, beside the run's own log and never in TMPDIR (0346)" {
+  local tmp="$BATS_TEST_TMPDIR/tmp" where="$BATS_TEST_TMPDIR/where" log
   mkdir -p "$tmp"
   # shellcheck disable=SC2016 # the gated shell expands it, not this one
   # The line reaches the command through its environment, since the log
   # records the command line itself.
-  PROGRESS_LINE="half way there" TMPDIR="$tmp" DEVBIN_HEARTBEAT_SECS=0.2 run run_gate --suffix demo --out-dir logs -- \
-    sh -c 'printf "%s\n" "$PROGRESS_LINE" >"$DEVBIN_GATE_PROGRESS"; sleep 1'
+  PROGRESS_LINE="half way there" WHERE="$where" TMPDIR="$tmp" DEVBIN_HEARTBEAT_SECS=0.2 run run_gate --suffix demo --out-dir logs -- \
+    sh -c 'printf "%s\n" "$DEVBIN_GATE_PROGRESS" >"$WHERE"; printf "%s\n" "$PROGRESS_LINE" >"$DEVBIN_GATE_PROGRESS"; sleep 1'
   assert_success
   assert_output_contains "still running"
   assert_output_contains "elapsed; half way there"
@@ -201,7 +214,10 @@ under_pty() {
   [ -e "$log" ] || fail "no log written"
   refute_file_contains "$log" "half way there"
   refute_file_contains "$log" "still running"
-  [ -z "$(find "$tmp" -name 'devbin-progress.*')" ] || fail "the progress file outlived its run: $(find "$tmp" -name 'devbin-progress.*')"
+  [ "$(basename "$(cat "$where")")" = "$(basename "$(readlink "$log")").progress" ] || fail "the progress file was not named for the run's log: $(cat "$where")"
+  [ "$(cd "$(dirname "$(cat "$where")")" && pwd -P)" = "$(cd "$PROJECT_ROOT/logs" && pwd -P)" ] || fail "the progress file was not beside the run's log: $(cat "$where")"
+  [ ! -e "$(cat "$where")" ] || fail "the progress file outlived its run: $(cat "$where")"
+  [ -z "$(ls -A "$tmp")" ] || fail "the run left something in TMPDIR: $(ls -A "$tmp")"
 }
 
 @test "with no terminal, a lanes run's beats count the files and tests its parallel lane has finished, out of the suite's (0346)" {

@@ -2194,7 +2194,14 @@ gate_heartbeat_start() {
       # not how big it is, and BSD's sleep refuses anything above 2147483647.
       # Unchecked, a refusal let the loop spin, its complaint and a beat on
       # every pass.
-      sleep "$interval" 2>/dev/null || exit 0
+      #
+      # THE SLEEP HOLDS NONE OF THE GATE'S OUTPUT (issue 0346). Stopping the
+      # beat ends this subshell, not the sleep it is in, which runs on to the
+      # end of its interval. Holding the gate's stdout and stderr, it kept a
+      # caller that captures the gate's output waiting out that interval after
+      # the gate had ended: a cut's bounded steps were held for 30s. So the
+      # sleep writes to neither.
+      sleep "$interval" >/dev/null 2>&1 || exit 0
       kill -0 "$parent" 2>/dev/null || exit 0
       hb_now="${EPOCHREALTIME//[!0-9]/}"
       hb_size=0
@@ -2367,8 +2374,14 @@ run_gate() {
   # THE COMMAND'S PROGRESS FILE (the heartbeat's header): made empty here,
   # read by the beat, removed once the beat has stopped. A run where it cannot
   # be made runs without one, as before.
-  local progress=""
-  progress="$(mktemp "${TMPDIR:-/tmp}/devbin-progress.XXXXXX" 2>/dev/null)" || progress=""
+  #
+  # IT LIVES BESIDE THE RUN'S OWN LOG, never at TMPDIR's top (issue 0346): a
+  # cut keeps everything it puts in TMPDIR under one root, and one file per
+  # gate beside that root broke it. The log is already this run's own name,
+  # so the file needs no name of its own, and the readers of a log's
+  # directory read only its .out and .errors.
+  local progress="$log.progress"
+  : 2>/dev/null >"$progress" || progress=""
   gate_heartbeat_start "$log" "$label" "$progress"
   # A GATED TOOL GETS NO INPUT (issue 0088, row 2, as amended twice). It
   # inherited the caller's stdin, so a tool run from a
