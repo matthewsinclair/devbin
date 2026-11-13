@@ -1,0 +1,14 @@
+{
+  "id": "01M7A2PR77NJ0A1QQEJ06RCD76",
+  "ts": "2026-11-13T09:09:35.079Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.claim",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "claim": "ISSUE:0349"
+  }
+}

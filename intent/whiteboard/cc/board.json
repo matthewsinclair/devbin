@@ -9,7 +9,9 @@
     "status": "active",
     "focus": "Localfold for hv's compact (2026-11-13 08:47Z by date -u): nothing live, nothing unbanked. Filed today, record only: 0348 (doctor FAILs a pre-contract keg, high), 0349 (Homebrew moves metafiles out of libexec, medium), 0350 (T4 reader fails clippy, low) at fdcad579, and 0351 (fleet never walks _Archive, medium) at 13c17b47. ccusage no longer needs 0348 before its 0.1.9 (hv's route C). 0347 waits for hv's word. ISSUE:0326 claim stands. On the bounce: /in-session, then review what's outstanding with vc.",
     "claims": [
-      "ISSUE:0326"
+      "ISSUE:0326",
+      "ISSUE:0348",
+      "ISSUE:0349"
     ],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
