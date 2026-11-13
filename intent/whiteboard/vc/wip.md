@@ -3,8 +3,8 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-13 13:59Z
-status: paused
+heartbeat_at: 2026-11-13 15:01Z
+status: active
 focus: "CLOSED 2026-11-13 13:59Z by date -u: devbin 0.1.24 released (Release workflow green; CI Ubuntu on main in progress at close). Post-release brew and fleet steps wait for hv; intent/wip.md TODO holds them."
 claims: [ST0011]
 ---
