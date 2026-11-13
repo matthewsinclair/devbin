@@ -5910,17 +5910,20 @@ tool_brew_answer_state() {
 # Where that is a link, the first hop's -x follows it to the launcher itself;
 # and a keg from before the manifest's line links a launcher elsewhere in
 # libexec, holding no <root>/bin/devbin, which read as one not executable.
+# The hops are held in _tbli_hops, a name of the function's own: shellcheck -x
+# reads a variable as one type across every file a command sources, and a
+# plain `hops` is a count elsewhere in the runtime.
 #
 # tool_brew_launcher_inert <file> <root> <link> is the same for any of a tool's
 # links, the keg's own being <root>/bin/<link>.
 brew_launcher_inert() { tool_brew_launcher_inert "$1" "$2" "$DEVBIN_SELF"; }
 tool_brew_launcher_inert() {
   local hop inert kb="${2%/libexec}/bin/$3"
-  local -a hops=("$1")
+  local -a _tbli_hops=("$1")
   if [ -f "$kb" ] && [ ! -L "$kb" ]; then
-    hops+=("$2/bin/$3")
+    _tbli_hops+=("$2/bin/$3")
   fi
-  for hop in "${hops[@]}"; do
+  for hop in "${_tbli_hops[@]}"; do
     [ -x "$hop" ] && continue
     real_path "$hop" inert
     printf '%s\n' "$inert"
