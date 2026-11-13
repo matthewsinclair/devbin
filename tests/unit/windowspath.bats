@@ -24,6 +24,30 @@ teardown() { devbin_teardown; }
 # when another log already holds the minute, then a counter when one holds both.
 unstamped() { sed -E 's/[0-9]{8}-[0-9]{4}(-[0-9]{2})?(-[0-9]+)?/STAMP/g' <<<"$1"; }
 
+# unclocked <text> -- <text> without the lines a lanes run reads off the clock
+# (issue 0345): each file's wall time, the serial lane's time and the load at
+# the run's start and end, in lib/bats-lanes's own formats. Two runs never
+# print those alike; every other line is kept as it is.
+unclocked() {
+  grep -v -E '^lanes: +([0-9]+\.[0-9]s|no end)  |^lanes: the serial lane took [0-9]+\.[0-9]s$|^lanes: load .* at the start and .* at the end, the one-minute average, on [0-9]+ CPUs$' <<<"$1" || [ "$?" -eq 1 ]
+}
+
+# A lanes run's load line read 2.18 in one `test all` and 1.32 in the next, and
+# the arm below failed on it on CI's Ubuntu runner (issue 0345). These two
+# outputs are that run's, with a file's time moved as well: the comparison must
+# take them as alike, and must still tell apart two that differ anywhere else.
+@test "the comparison takes out a lanes run's time and load lines, and nothing else (0345)" {
+  local one two other
+  one=$'lanes: the 1 file(s) of the parallel lane by wall time, the slowest first:\nlanes:       0.4s  smoke.bats\nlanes: load 2.18 at the start and 2.18 at the end, the one-minute average, on 4 CPUs\n\nlanes: 1 test(s) ran in parallel and 0 serially, all 1 that bats counts in tests, each once'
+  two=$'lanes: the 1 file(s) of the parallel lane by wall time, the slowest first:\nlanes:       1.1s  smoke.bats\nlanes: load 1.32 at the start and 1.32 at the end, the one-minute average, on 4 CPUs\n\nlanes: 1 test(s) ran in parallel and 0 serially, all 1 that bats counts in tests, each once'
+  other="${two/1 test(s) ran in parallel/2 test(s) ran in parallel}"
+  [ "$(unclocked "$one")" = "$(unclocked "$two")" ] ||
+    fail "two runs alike but for the clock compare apart:
+$(diff <(unclocked "$one") <(unclocked "$two"))"
+  [ "$(unclocked "$one")" != "$(unclocked "$other")" ] || fail "two runs whose verdicts differ compare alike"
+  [ "$(unclocked "$one" | grep -c '^lanes: ')" -lt "$(grep -c '^lanes: ' <<<"$one")" ] || fail "nothing was taken out"
+}
+
 # THE STARTER GIVEN WORK TO DO: one passing bats suite, so `test all` runs
 # bats over a real test rather than stopping at a missing directory, and a
 # check.lint that runs shellcheck over a script, as the ST0008 fixtures
@@ -50,8 +74,8 @@ unstamped() { sed -E 's/[0-9]{8}-[0-9]{4}(-[0-9]{2})?(-[0-9]+)?/STAMP/g' <<<"$1"
     b="$(PATH="$wp" devbin_run "$proj" $c 2>&1)" || rb=$?
     [ "$ra" = 0 ] || fail "'$c' failed without the Windows PATH ($ra), so there is nothing to compare:
 $a"
-    a="$(unstamped "$a")"
-    b="$(unstamped "$b")"
+    a="$(unclocked "$(unstamped "$a")")"
+    b="$(unclocked "$(unstamped "$b")")"
     [ "$ra" = "$rb" ] || fail "'$c' exited $ra without the Windows PATH and $rb with it"
     [ "$a" = "$b" ] || fail "'$c' printed differently with the Windows PATH:
 $(diff <(printf '%s\n' "$a") <(printf '%s\n' "$b"))"
