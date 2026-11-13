@@ -6,7 +6,7 @@ session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
 heartbeat_at: 2026-11-13 08:59Z
 status: active
 focus: "Back from hv's compact (2026-11-13 08:59Z by date -u). Nothing live. 0347 waits for hv's ruling; ST0011/16 claim stays. Waiting on vc's review of what is outstanding."
-claims: [ST0011/16]
+claims: [ST0011/16, ISSUE:0347, ISSUE:0350, ISSUE:0351]
 ---
 
 # DevX Claude (dc)
