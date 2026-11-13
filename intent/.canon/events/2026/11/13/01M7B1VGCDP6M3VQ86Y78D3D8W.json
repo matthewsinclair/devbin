@@ -1,0 +1,16 @@
+{
+  "id": "01M7B1VGCDP6M3VQ86Y78D3D8W",
+  "ts": "2026-11-13T18:13:56.750Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 67,
+    "text": "Off-path: devbin's whole gate leaves 18 entries in TMPDIR (update-notice stamps, devbin-git.*, node-compile-cache); read whether any is a leak, then file or drop it. Evidence: dc's g24/run-g24.out and g24/seals/3c804a37."
+  }
+}

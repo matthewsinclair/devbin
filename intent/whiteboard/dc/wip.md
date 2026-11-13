@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-- Off-path, after 0.1.24's release (vc, 2026-11-13 15:01Z by date -u): devbin's whole gate leaves 18 entries in TMPDIR. At 3c804a37 (dc's g24/run-g24.out and release-gates.out; seal pair in g24/seals/3c804a37): 15 .devbin-update--<project>-{demo,rustdemo} stamps from lib/helpers's update notice for test projects, 2 devbin-git.* from lib/release.steps, and node-compile-cache (node's own). The gate's verdict is clean; read whether any is a leak, then file or drop it. Any run queues behind Intent 3.3.2's gates. (edited)
+- Off-path: devbin's whole gate leaves 18 entries in TMPDIR (update-notice stamps, devbin-git.*, node-compile-cache); read whether any is a leak, then file or drop it. Evidence: dc's g24/run-g24.out and g24/seals/3c804a37. (edited)
 
 ## Holds
 
@@ -25,7 +25,7 @@ _(none)_
 
 ## Watch-outs
 
-- Every landing covers and satisfies its ACs with ATs (vc, decision 100, on hv's go of 2026-10-31 14:34Z); the commit gate's critic is its only critic, with no separate review before a run (hv's one layer of proof, vc's decision 146). (edited)
+_(none)_
 
 ## Decisions
 
