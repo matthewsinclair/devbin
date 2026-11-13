@@ -1660,7 +1660,8 @@ stub_install() {
 }
 
 # brew_keg [--formula <name> --link <name>] [--from <src> | --stub | --bare |
-#   --empty] [--flat] [--script] [--linked | --linked-to <path>] <version> --
+#   --empty] [--flat] [--missing <path>] [--script] [--linked | --linked-to <path>]
+#   <version> --
 # devbin's keg for <version> as Homebrew places one, at the test's
 # $HOMEBREW_PREFIX/Cellar/devbin/<version>, with opt linked to it, as brew links
 # the keg it has just installed, moving the link off any earlier one. With
@@ -1687,7 +1688,10 @@ stub_install() {
 # With --flat, a tool's --stub or --bare keg as a formula laid it before the
 # manifest's line (issue 0348): the link's file at libexec/<link>, never
 # libexec/bin/<link>, and the keg's own bin/<link> a link to it. A --stub
-# manifest names no line, so with --flat it is the old form whole.
+# manifest names no line, so with --flat it is the old form whole. With
+# --missing, a tool's --stub manifest also names <path>, a file the keg does
+# not hold, at a sha256 of zeros: a file Homebrew moved out of an older keg
+# (issue 0348). Repeatable.
 #
 # The keg's own bin/<link> is linked to libexec's, as the formula writes it on
 # Linux, or with --script is devbin's env script on macOS
@@ -1700,7 +1704,8 @@ stub_install() {
 # EVERY STEP RETURNS ITS FAILURE, as switch_to's do, rather than leaning on
 # bats' errexit, which a caller in a condition or a subshell turns off.
 brew_keg() {
-  local from="" what="" script=0 linked=0 to="" keg formula=devbin link=devbin flat=0 lx
+  local from="" what="" script=0 linked=0 to="" keg formula=devbin link=devbin flat=0 lx m
+  local -a missing=()
   while [ "$#" -gt 1 ]; do
     case "$1" in
       --formula)
@@ -1723,6 +1728,10 @@ brew_keg() {
         fi
         ;;
       --flat) flat=1 ;;
+      --missing)
+        missing+=("$2")
+        shift
+        ;;
       --script) script=1 ;;
       --linked) linked=1 ;;
       --linked-to)
@@ -1755,6 +1764,10 @@ brew_keg() {
     fail "brew_keg: --flat is a tool's --stub or --bare keg from before the manifest's line, never devbin's or a script's"
     return 1
   fi
+  if [ "${#missing[@]}" -gt 0 ] && { [ "$formula" = devbin ] || [ "$what" != stub ]; }; then
+    fail "brew_keg: --missing names a file in a tool's --stub manifest, never devbin's or another libexec's"
+    return 1
+  fi
   lx="bin/$link"
   [ "$flat" = 0 ] || lx="$link"
   keg="$HOMEBREW_PREFIX/Cellar/$formula/$1"
@@ -1777,6 +1790,9 @@ brew_keg() {
         printf '#!/bin/sh\necho %s\n' "$link" >"$keg/libexec/$lx" || return 1
         chmod 0755 "$keg/libexec/$lx" || return 1
         [ "$what" = bare ] || printf '# tool: %s\n# managed_by: brew\n' "$formula" >"$keg/libexec/.$formula-install" || return 1
+        for m in ${missing[@]+"${missing[@]}"}; do
+          printf '%064d  %s\n' 0 "$m" >>"$keg/libexec/.$formula-install" || return 1
+        done
       fi
       ;;
     empty)

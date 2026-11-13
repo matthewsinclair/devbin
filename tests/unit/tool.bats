@@ -969,9 +969,8 @@ install:
   local proj root="$HOMEBREW_PREFIX/opt/demo/libexec" opt="$DEVBIN_TEST_TMPDIR/opt-demo" optroot z
   z="$(printf '%064d' 0)"
   proj="$(stamp_project)" || fail "the fixture's project could not be made"
-  brew_keg --formula demo --link demo-cli --stub --flat --linked 0.1.8 || fail "the fixture's keg could not be made"
-  printf '%s  LICENSE\n' "$z" >>"$HOMEBREW_PREFIX/Cellar/demo/0.1.8/libexec/.demo-install" ||
-    fail "the fixture's manifest line could not be added"
+  brew_keg --formula demo --link demo-cli --stub --flat --missing LICENSE --linked 0.1.8 ||
+    fail "the fixture's keg could not be made"
   PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
   assert_output_contains "note  demo tree: Homebrew's keg at $root records no version line, the manifest form written before devbin's core"
   assert_output_contains "run: brew upgrade demo, once a release that writes the new form is out"
