@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a",
-    "heartbeat_at": "2026-11-13T10:58:27.086Z",
+    "heartbeat_at": "2026-11-13T11:21:35.539Z",
     "status": "active",
-    "focus": "Holding (2026-11-13 10:58Z by date -u): 0348 (46270faf, 4f3c797b, and 0348-3 a41a693e for the whole gate's lint) and 0349 (363c4733) landed for 0.1.24 and closed; 0348's Resolution names 0348-3 at b4b21d6f; i0348's clones cleared, records kept. ISSUE:0326 claim stands.",
+    "focus": "Holding (2026-11-13 11:21Z by date -u): 0348 (46270faf, 4f3c797b; follow-ups 0348-3 a41a693e for lint and 0348-4 3c804a37 for harness 0270, both named in its Resolution) and 0349 (363c4733) landed for 0.1.24 and closed; 0353 filed (d397308c), record only; i0348's clones cleared. ISSUE:0326 claim stands.",
     "claims": [
       "ISSUE:0326"
     ],
