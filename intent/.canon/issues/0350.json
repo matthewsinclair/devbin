@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 350,
+  "slug": "t4-s-rust-version-line-fails-clippy-d-warnings-c",
+  "title": "T4's Rust version_line fails clippy -D warnings (collapsible_if) in an edition 2024 crate",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-13",
+  "reporter": "Matthew Sinclair",
+  "body": "## What happened\n\nCcusage's adoption of 0326 (reported by ccusage-dc, relayed by vc, 2026-11-13) found that T4's Rust reader, `version_line` as docs/dev-opt-brew.md prints it, fails `cargo clippy -- -D warnings` in an edition 2024 crate: Clippy 0.1.99 reports collapsible_if three times, on its nested `if let` blocks. Ccusage carries it as one let chain with the same logic.\n\n## Why it matters\n\nT4 says every binary of every compiled tool reads its line with this one reader, word for word, so a tool that denies Clippy's warnings cannot follow the contract as printed.\n\n## Not yet known\n\nWhether a let chain reads under every edition a tool may use, since let chains need edition 2024.\n\n## Options, none chosen\n\n- Print the let-chain form in the contract, and say it needs edition 2024.\n- Print both forms, one per edition.\n"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M79W6EZE5GDJEX0M1SSEKPRS",
+  "ts": "2026-11-13T07:15:49.873Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0348"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "doctor FAILs a pre-contract brew keg on the switch and tree rows, where T3 says it is a note naming brew upgrade"
+  }
+}
