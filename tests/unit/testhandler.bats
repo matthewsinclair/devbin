@@ -471,3 +471,68 @@ lanes_times_block() {
   assert_output_contains "ok 1 a sees no progress file"
   [ -e "$prog" ] && [ ! -s "$prog" ] || fail "the progress file is not there and empty once the lanes ended: $(cat "$prog" 2>&1)"
 }
+
+# A STATUS BATS LOST IS NOT A FAILURE (issue 0347). Run N at a time within a
+# file, bats waits for each test in start order, and bash can discard the
+# status of one that ended early when a later fork reuses its process id: the
+# wait then fails, and a file whose tests all printed ok exits 1. The pid reuse
+# cannot be forced here, so a BASH_ENV puts a `wait` in front of bats's own
+# that fails as bash does, and only where bats forwards a test's results.
+
+# lost_wait_env <lost|silent> -- the path of a BASH_ENV whose `wait` fails in
+# bats's forwarder, after reaping the test: `lost` with bash's own words for a
+# status it no longer holds, `silent` with none.
+lost_wait_env() {
+  local f="$DEVBIN_TEST_TMPDIR/wait-$1.bash" say=":"
+  [ "$1" != lost ] || say="printf '%s: line %s: wait: pid %s is not a child of this shell\\n' \"\${BASH_SOURCE[1]}\" \"\$LINENO\" \"\$1\" >&2"
+  # shellcheck disable=SC2016 # bash written into the file, expanded where it runs
+  printf '%s\n' \
+    'wait() {' \
+    '  if [[ ${FUNCNAME[1]-} == bats_forward_output_of_parallel_test ]]; then' \
+    '    builtin wait "$@"' \
+    "    $say" \
+    '    return 127' \
+    '  fi' \
+    '  builtin wait "$@"' \
+    '}' >"$f"
+  printf '%s\n' "$f"
+}
+
+@test "a file whose tests all printed ok, failed only by a status bats lost, is counted green, and the run says so (0347)" {
+  require_command parallel "no GNU parallel on this runner"
+  local root block marked last
+  root="$(lanes_fixture)"
+  run lanes_run "$root" DEVBIN_TEST_JOBS=2 BASH_ENV="$(lost_wait_env lost)"
+  assert_success
+  block="$(lanes_times_block)"
+  grep -qE "^lanes: +[0-9]+\.[0-9]s  a\.bats \(exit [0-9]+, bats lost the status of a test that passed: counted green\)\$" <<<"$block" ||
+    fail "a.bats is not marked as counted green among the times: $output"
+  marked="$(grep -c 'counted green)$' <<<"$block")" || fail "no file is marked counted green: $output"
+  assert_output_contains "lanes: $marked file(s) exited non-zero only because bats lost the status of a test that passed"
+  last="$(printf '%s\n' "$output" | sed -n '$p')"
+  [[ "$last" == "lanes: "*" test(s) ran in parallel and "*", each once" ]] || fail "the verdict is not the run's last line: $last"
+}
+
+@test "a file with a test that failed stays red though bats lost a status in it too (0347)" {
+  require_command parallel "no GNU parallel on this runner"
+  local root block
+  root="$(lanes_fixture parallel)"
+  run lanes_run "$root" DEVBIN_TEST_JOBS=2 BASH_ENV="$(lost_wait_env lost)"
+  assert_failure
+  assert_output_contains "not ok"
+  block="$(lanes_times_block)"
+  grep -qE "^lanes: +[0-9]+\.[0-9]s  b\.bats \(exit [0-9]+\)\$" <<<"$block" ||
+    fail "b.bats, with a test that failed, is not named with its exit alone: $output"
+  assert_output_contains "the parallel lane exited"
+}
+
+@test "a forwarder that fails without bash's lost-status words keeps the file red, though every test printed ok (0347)" {
+  require_command parallel "no GNU parallel on this runner"
+  local root
+  root="$(lanes_fixture)"
+  run lanes_run "$root" DEVBIN_TEST_JOBS=2 BASH_ENV="$(lost_wait_env silent)"
+  assert_failure
+  refute_output_contains "counted green"
+  refute_output_contains "exited non-zero only because bats lost"
+  assert_output_contains "the parallel lane exited"
+}

@@ -22,6 +22,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 #### reaches every project
 
+- **A lanes run no longer fails a file whose tests all passed when bats loses one test's status (issue `0347`).** Run several at a time within a file, bats waits for each test in the order they started, and bash can discard the status of one that ended early once a later process is given its process id. The wait then fails with `wait: pid N is not a child of this shell`, and the file exits 1 though every test printed ok: a macOS candidate went red so, with 3136 tests ok, since a long suite wraps macOS's process ids within a run. A file that exits non-zero with those words, no `not ok` and an `ok` for each of its tests is now counted green. Its line among the times says so beside its exit, and a line before the verdict counts such files. Any other failure keeps its exit, and the run's results pass through as bats printed them.
 - **T4's Rust reader of the version line, which every binary of a compiled tool carries word for word, builds clean under `cargo clippy -- -D warnings` in every edition (issue `0350`).** In an edition 2024 crate Clippy failed it three times on its nested `if let` blocks, so a tool that denies Clippy's warnings could not follow the contract as printed. It now reads the manifest as one chain of `Option` steps, with the same logic, and needs no let chain, which no edition before 2024 can build.
 
 #### devbin's own tree
