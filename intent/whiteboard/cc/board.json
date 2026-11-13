@@ -426,7 +426,8 @@
       "kind": "watchout",
       "seq": 12,
       "text": "The agent shell is zsh, with ugrep and bfs: run arrays, splitting and pipeline status under bash.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-13T18:13:37.804Z",
       "recorded_at": "2026-09-22T21:16:08.173Z",
       "edited_at": "2026-10-29T19:30:59.106Z"
     },

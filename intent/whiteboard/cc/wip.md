@@ -26,7 +26,6 @@ _(none)_
 ## Watch-outs
 
 - No shell grammar in Intent's index here: search lib/ with git grep. (edited)
-- The agent shell is zsh, with ugrep and bfs: run arrays, splitting and pipeline status under bash. (edited)
 
 ## Decisions
 
