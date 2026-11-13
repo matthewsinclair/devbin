@@ -964,3 +964,29 @@ install:
   assert_success
   assert_output_contains "use: no link for demo-cli, so brew"
 }
+
+@test "0348-2: doctor's tree row on a tool's keg from before the manifest's line is the note naming brew upgrade, its body never read; an opt install's is a failure naming the republish" {
+  local proj root="$HOMEBREW_PREFIX/opt/demo/libexec" opt="$DEVBIN_TEST_TMPDIR/opt-demo" optroot z
+  z="$(printf '%064d' 0)"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  brew_keg --formula demo --link demo-cli --stub --flat --linked 0.1.8 || fail "the fixture's keg could not be made"
+  printf '%s  LICENSE\n' "$z" >>"$HOMEBREW_PREFIX/Cellar/demo/0.1.8/libexec/.demo-install" ||
+    fail "the fixture's manifest line could not be added"
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
+  assert_output_contains "note  demo tree: Homebrew's keg at $root records no version line, the manifest form written before devbin's core"
+  assert_output_contains "run: brew upgrade demo, once a release that writes the new form is out"
+  refute_output_contains "FAIL  demo tree"
+  refute_output_contains "missing: LICENSE"
+  run devbin_run "$proj" install
+  assert_success
+  run devbin_run "$proj" use opt
+  assert_success
+  optroot="$(cd -P "$opt" && pwd -P)"
+  grep -v '^# line: ' "$opt/.demo-install" >"$opt/.demo-install.old" && mv "$opt/.demo-install.old" "$opt/.demo-install" ||
+    fail "the fixture's opt manifest could not be aged"
+  printf '%s  LICENSE\n' "$z" >>"$opt/.demo-install" || fail "the fixture's manifest line could not be added"
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo tree: the opt install at $optroot records no version line, the manifest form written before devbin's core"
+  assert_output_contains "republish it from this checkout: bin/devbin install --force"
+  refute_output_contains "missing: LICENSE"
+}
