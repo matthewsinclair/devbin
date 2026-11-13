@@ -5044,8 +5044,17 @@
       "kind": "decision",
       "seq": 173,
       "text": "hv in vc's window, read 2026-11-13 18:23Z by date -u: desk priorities are AE P1, Webber P2, and another estate's Rust parser work P3; devbin and Intent are released. Each estate's vc has the desk rules.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-13T18:24:54.085Z",
       "recorded_at": "2026-11-13T18:23:15.288Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 174,
+      "text": "hv in vc's window, read 2026-11-13 18:24Z by date -u, replacing decision 173's order: on rhadamanth AE is P1, another estate's Rust parser work P2, Webber P3; on gyges Webber is P1.",
+      "state": "live",
+      "recorded_at": "2026-11-13T18:24:53.888Z"
     }
   ],
   "sent": [

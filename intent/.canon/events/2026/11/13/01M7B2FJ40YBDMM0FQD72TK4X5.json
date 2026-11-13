@@ -1,0 +1,15 @@
+{
+  "id": "01M7B2FJ40YBDMM0FQD72TK4X5",
+  "ts": "2026-11-13T18:24:53.888Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-13 18:24Z by date -u, replacing decision 173's order: on rhadamanth AE is P1, another estate's Rust parser work P2, Webber P3; on gyges Webber is P1."
+  }
+}
