@@ -3031,14 +3031,17 @@ $(diff <(printf '%s\n' "$before") <(archive_listing))"
   ! grep -q '## Archives' "$PROJ/intent/docs/devbin-users.md" || fail "an archives section with no archive in it"
 }
 
+# The installs in the archives are refuted by their paths from the archive
+# down, never by a bare name: the output names the test's own TMPDIR, and a
+# word such as "older" sits inside macOS's default /var/folders (issue 0351).
 @test "the walk outside the roots never enters an archive, and every report says so (0351)" {
   mkinstall alpha
   ROOTS="$DEVBIN_FLEET_HOME/_Archive" mkinstall gone
   ROOTS="$DEVBIN_FLEET_HOME/work/_Archive" mkinstall older
   run_fleet audit
   assert_success
-  refute_output_contains "gone"
-  refute_output_contains "older"
+  refute_output_contains "/_Archive/gone"
+  refute_output_contains "/work/_Archive/older"
   assert_output_contains "outside it: none"
   assert_output_contains "or held in a directory named _Archive"
 }
