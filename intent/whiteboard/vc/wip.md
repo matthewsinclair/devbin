@@ -56,6 +56,7 @@ claims: [ST0011]
 - Desk rulings 2026-11-10: 0326 stays open until pplr#0001, cldr#0001 and ccusage#0007 close; one layer of proof at the desk (no planted faults). (edited)
 - hv in vc's window (read 07:31Z by date -u): Webber falls in BEHIND devbin and Intent until both are landed across the estate. devbin and Intent are P0/P1, Webber P3: a Webber ask gets rhadamanth's lanes only when nothing that ships devbin or Intent is waiting or about to ask; Webber work that can run on gyges runs there; nothing of Webber's already in train is stopped.
 - hv in vc's window, read 2026-11-13 18:24Z by date -u, replacing decision 173's order: on rhadamanth AE is P1, another estate's Rust parser work P2, Webber P3; on gyges Webber is P1.
+- hv's TUI answers in vc's window, read 2026-11-13 19:39Z by date -u, each the recommendation: (1) Intent's ST0093/WP-06 closes now on the 3.3.2 cut's records; (2) ST0011's WP10 to WP14 move out: WP12 done through Intent's ST0093/WP-06, WP10, WP11, WP13 and WP14 cancelled to each estate's own thread, AC-3.4, AC-4.3 and AC-5.4 descoped with them; ST0011 closes after the AT-3.5 fix, WP15, WP16 and WP18 (dc does the record work); (3) Intent's six Not Started threads stay parked.
 
 ---
 
