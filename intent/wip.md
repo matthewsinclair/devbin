@@ -1,5 +1,5 @@
 ---
-verblock: "13 Nov 2026:v3.68: Matthew Sinclair - globalfold: 0.1.24 released; post-release steps wait for hv"
+verblock: "13 Nov 2026:v3.69: Matthew Sinclair - globalfold: Intent 3.3.2 out; estate holding"
 ---
 
 # Work In Progress
@@ -8,25 +8,16 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- Intent 3.3.0, to be cut today (hv, 2026-11-11): devbin-vc holds the desk (decision 153) and serves Intent alone until the cut ends; intent-vc drives the route (issue 0680, the devbin 0.1.22 sweep in intent#ST0091, ST0092's WP-09, WP-06 and WP-10, each run, judged and landed; docs/reference; build all at HEAD); then hv runs the history rewrite, the kovacs line and the cut. Live state: vc's scratch state file and the desk queue in `intent estate status`.
-- ST0011, devbin's release shape, in its consumer phase: 18 of 21 ACs, with AC-3.4, AC-4.3 and AC-5.4 met only at the consumers' cuts; WP15 and WP16 (dc) are WIP. Live state: vc's board.
+- ST0011, devbin's release shape: acceptance passes (18 of 18, 3 withdrawn to the consumers' own threads, decision 175); left WP15 (read seal clock lines) and WP16 (build cache, dc), then WP18 last. Live state: vc's board.
 
 ## TODO
 
-- devbin 0.1.24 post-release, on hv's word: `brew upgrade devbin` and `bin/devbin use brew` in canon, then the fleet sweep (`bin/devbin fleet upgrade --apply`, commit by path, no push). kovacs needed `brew update` first. Read CI Ubuntu on main at 0ac94d4d (run 43437051545, in progress at the fold).
-- After the 0.1.24 cut: cc files its use/rehash issue (drafted in its scratch); dc clears its g24 gate tree and files the gate's 18 TMPDIR leftovers as an off-path item; issue 0352 (CI release target not handed to candidate CI) is open.
-- WP10, WP11, WP13 and WP14: each remaining consumer's first cut in the new shape (utilz#ST0031, gtools#ST0020, conflab#ST0126/WP-06, laksa#ISSUE:0058); Intent's (WP12) rides 3.3.0. Gtools's kovacs leg needs its tools there first (vc's todo 186).
-- WP15: read each consumer's macOS leg at its cut against design.md's expected column, beside Devbin's measured line.
-- WP16 (dc): closes when AC-5.4 is satisfied at the first consumer cut.
-- Issue 0326 stays open until pplr#0001, cldr#0001 and ccusage#0007 close (decision 154); the reader notice goes to each of those vcs when it comes up (vc's todo 201).
-- Webber after Intent's cut: the /29 Xcode UI run re-asked from a fresh tip, then webber-ic's todo 66, one at a time on the desk; Webber's Elixir runs on gyges.
-- gyges for Webber: cleaned to 77% full (more to come), Webber cloned, Xcode 27.2 and Elixir present; no iOS simulator runtime installed yet, which gyges-sysadm owns.
-- For hv: push Molt-matts 6bc343e (dvb emitted by the devbin on PATH); remove the unused opt install at ~/Devel/opt/devbin (0.1.19).
-- dvb follow-up, not started: the install's refusal inside a project could name dvb or bin/devbin; in devbin's own checkout dvb runs the dev tree by design.
-- A release.gates entry starting with `release` runs a cut inside a cut (devbin-cc's finding beside 0327, vc's todo 203): weigh it for the release after next.
-- Bank refs left in canon by cc and dc after the 0.1.20 work (vc's todo 200): clear the landed ones.
-- LAST, after everything above (hv, 2026-10-31): WP18, `docs/assembly-and-the-build-cache.md`, "Devbin's Build Cache for Optimised Release Assembly", written from the as-built (vc's todo 183).
-- Prodinfra's next session hears hv's 2026-10-15 ruling: `infra --profile` takes a path, with no name form (vc's todo 159).
-- The no-vendor mode, deferred until devbin was public (decision 64): hv to schedule.
-- Another estate's work is held.
-- `--ivault`: do not start until hv says start.
+- For hv (vc's todo 213): devbin 0.1.24's `brew upgrade devbin` and `bin/devbin use brew` in canon, then the fleet sweep (`bin/devbin fleet upgrade --apply`, commit by path, no push); restart the old `intent mcp` and `intent expl` processes onto 3.3.2; the GitHub Support purge and the other items listed there.
+- Notices for each estate's vc at its next session (vc's todo 215): sweep notices, 0326's reader notice, Trellis, Prodinfra, the release review's action 2.
+- Release after next, weigh only (vc's todo 214): issues 0352, 0354, 0355 and 0356, and the core findings listed there.
+- Issue 0326 stays open until pplr#0001 and cldr#0001 close (decision 154); ccusage#0007 has closed.
+- Issue 0343 (release_git_remote's TMPDIR leftover) and 0353 are open.
+- Bank refs left in canon by cc and dc (vc's todo 200): clear the landed ones.
+- LAST (hv, 2026-10-31): WP18, `docs/assembly-and-the-build-cache.md`, "Devbin's Build Cache for Optimised Release Assembly", written from the as-built (vc's todo 183).
+- The no-vendor mode (decision 64) and `--ivault` (hold 2): hv to schedule; neither starts until hv says.
+- Desk priorities on rhadamanth (decision 174): AE P1, another estate's work P2, Webber P3; Webber is P1 on gyges.

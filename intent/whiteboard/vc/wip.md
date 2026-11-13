@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-13 15:01Z
-status: active
-focus: "CLOSED 2026-11-13 13:59Z by date -u: devbin 0.1.24 released (Release workflow green; CI Ubuntu on main in progress at close). Post-release brew and fleet steps wait for hv; intent/wip.md TODO holds them."
+heartbeat_at: 2026-11-13 20:43Z
+status: paused
+focus: "FOLDED 2026-11-13 20:44Z by date -u on hv's wrap ('bank, fold, and hold'): Intent 3.3.2 released and CI green; devbin 0.1.24 released; ST0011's acceptance passes, WP15, WP16 and WP18 left; every seat told to bank, fold and hold; desk released. Next: hv's list, todo 213."
 claims: [ST0011]
 ---
 
