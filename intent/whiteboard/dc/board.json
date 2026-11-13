@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "30d4e5b0-c191-42b4-88ae-c6bd721b436e",
-    "heartbeat_at": "2026-11-13T15:03:08.249Z",
+    "heartbeat_at": "2026-11-13T20:43:06.216Z",
     "status": "active",
-    "focus": "Localfold (2026-11-13 15:03Z by date -u): devbin 0.1.24 released, CI green on main. dc's 0.1.24 units all landed and closed (0350, 0351, 0347, 0346-2, 0346-3, 0345-2, 0351-2); g24 cleared, its seals kept. Todo 67, the gate's TMPDIR leftovers, is off-path. Holding for vc's word; Intent 3.3.2 has the desk. ST0011/16 claim stays.",
+    "focus": "Localfold for the night (2026-11-13 20:42Z by date -u): nothing live or unbanked. Today: devbin 0.1.24 released with dc's units landed and closed; ST0011's consumer packages moved out (1c87f441, ac PASS 18/18, 3 withdrawn). Next on vc's word: WP16 when the desk has room. Todo 67 off-path. ST0011/16 claim stays.",
     "claims": [
       "ST0011/16"
     ],
