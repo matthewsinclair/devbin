@@ -1,0 +1,15 @@
+{
+  "id": "01M7A9760NMXETGSP84SGKXT32",
+  "ts": "2026-11-13T11:03:25.052Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0353"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "new writes its bats stub into a linked worktree's vendored runtime, because test_dir's walk excludes only the project's own runtime"
+  }
+}
