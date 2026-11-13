@@ -12,7 +12,8 @@
 # the declaration's validation and its readers in lib/config; the 0326-3 arms
 # its build's line, the 0326-4 arms its publish, the 0326-5 arms its switch,
 # the 0326-6 arms its rows in doctor, and the 0326-9 arm doctor's note when its
-# switch was left off brew.
+# switch was left off brew. The 0348 arms hold a keg laid before the manifest's
+# line, as brew_keg --flat builds it: Homebrew's answer for it, and its rows.
 #
 # WHAT THIS DOES NOT CATCH, declared so a green is never read as covering it:
 #   - use's own word on a link a login shell does not run: the 0326-6 arm runs
@@ -929,4 +930,37 @@ install:
   assert_output_contains "FAIL  demo tree: the opt install at $root does not match its manifest"
   assert_output_contains "republish it from this checkout: demo install"
   refute_output_contains "bin/devbin install --force"
+}
+
+@test "0348-1: a tool's keg from before the manifest's line, its launcher linked at libexec/<link>, is Homebrew's answer, and named when it would not run, with no libexec/bin/<link> asked of it" {
+  local root="$HOMEBREW_PREFIX/opt/demo/libexec" keg="$HOMEBREW_PREFIX/Cellar/demo/0.1.8" got want
+  brew_keg --formula demo --link demo-cli --stub --flat --linked 0.1.8 || fail "the fixture's keg could not be made"
+  tool_is_install_launcher "$HOMEBREW_PREFIX/bin/demo-cli" "$root" demo demo-cli ||
+    fail "Homebrew's bin link into the keg's libexec/demo-cli is not the keg's launcher"
+  demo_tree "$DEVBIN_TEST_TMPDIR/other" || fail "the fixture's other tree could not be made"
+  if tool_is_install_launcher "$DEVBIN_TEST_TMPDIR/other/bin/demo-cli" "$root" demo demo-cli; then
+    fail "a demo-cli outside the keg reads as the keg's launcher"
+  fi
+  got="$(PATH="$HOMEBREW_PREFIX/bin:/usr/bin:/bin" tool_brew_answer_state demo demo-cli)"
+  [ "$got" = "brew $root" ] || fail "the linked keg on PATH reads: $got"
+  chmod 0644 "$keg/libexec/demo-cli"
+  real_path "$keg/libexec/demo-cli" want
+  got="$(PATH="$HOMEBREW_PREFIX/bin:/usr/bin:/bin" tool_brew_answer_state demo demo-cli)"
+  [ "$got" = "noexec $want" ] || fail "the keg whose launcher would not run reads: $got"
+}
+
+@test "0348-1: doctor and use brew read a tool's keg from before the manifest's line as brew, never naming Homebrew's own link to move aside" {
+  local proj
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  brew_keg --formula demo --link demo-cli --stub --flat --linked 0.1.8 || fail "the fixture's keg could not be made"
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" doctor
+  assert_output_contains "ok    demo switch: no link for demo-cli, so brew"
+  refute_output_contains "aside"
+  run devbin_run "$proj" build
+  assert_success
+  run devbin_run "$proj" use dev
+  assert_success
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" use brew
+  assert_success
+  assert_output_contains "use: no link for demo-cli, so brew"
 }
