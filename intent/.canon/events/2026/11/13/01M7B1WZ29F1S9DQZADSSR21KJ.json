@@ -1,0 +1,16 @@
+{
+  "id": "01M7B1WZ29F1S9DQZADSSR21KJ",
+  "ts": "2026-11-13T18:14:44.553Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 101,
+    "text": "AT rule (2026-10-31): a landing records green ATs for what it proved and red ATs naming the unit that turns each green, so a criterion reads satisfied only when whole; ids AT-<AC group>.<n>, the next free."
+  }
+}

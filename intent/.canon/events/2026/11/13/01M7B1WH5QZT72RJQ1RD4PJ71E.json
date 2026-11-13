@@ -1,0 +1,15 @@
+{
+  "id": "01M7B1WH5QZT72RJQ1RD4PJ71E",
+  "ts": "2026-11-13T18:14:30.327Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "HV'S LIST (lean of 2026-11-13 18:14Z by date -u), each for hv's word: (a) devbin 0.1.24 brew switch in canon and fleet sweep; (b) restart the 20 intent mcp and expl processes onto 3.3.2 (put to hv 18:1xZ); (c) GitHub Support purge of the shas from 2026-11-12's candidate pushes (archived decision 163); (d) release review action 3, a ruling (~/Devel/scratch/devbin-vc/release-review/REVIEW.md, archived decision 171); (e) the no-vendor mode (decision 64) and --ivault (hold 2) to schedule; (f) Ccusage's use-to-activate rename, timing unruled (archived decision 148); (g) todo 184's carried host items from 2026-11-01, to re-confirm (archived todo 184); (h) Molt-matts 6bc343e push and ~/Devel/opt/devbin removal (intent/wip.md)."
+  }
+}

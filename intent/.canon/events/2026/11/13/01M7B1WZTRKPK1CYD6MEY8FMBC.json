@@ -1,0 +1,16 @@
+{
+  "id": "01M7B1WZTRKPK1CYD6MEY8FMBC",
+  "ts": "2026-11-13T18:14:45.336Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "seq": 39,
+    "text": "AT-3.5 is claimed by ST0011 and closed ST0007 over one marker (tests/unit/releasestatus.bats:170); Intent's 0670 stops it counting. Re-mint ST0011's row before ST0011 closes."
+  }
+}

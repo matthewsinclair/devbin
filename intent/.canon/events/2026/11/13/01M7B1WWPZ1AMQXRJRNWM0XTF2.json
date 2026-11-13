@@ -1,0 +1,16 @@
+{
+  "id": "01M7B1WWPZ1AMQXRJRNWM0XTF2",
+  "ts": "2026-11-13T18:14:42.143Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 183,
+    "text": "WP18, LAST (hv 2026-10-31: 'right at the end when this is all landed'): docs/assembly-and-the-build-cache.md, 'Devbin's Build Cache for Optimised Release Assembly', written from the as-built."
+  }
+}

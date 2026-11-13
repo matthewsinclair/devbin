@@ -1,0 +1,16 @@
+{
+  "id": "01M7B1WY8MB5D8T7G1064M2PNY",
+  "ts": "2026-11-13T18:14:43.732Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 154,
+    "text": "Desk rulings 2026-11-10: 0326 stays open until pplr#0001, cldr#0001 and ccusage#0007 close; one layer of proof at the desk (no planted faults)."
+  }
+}

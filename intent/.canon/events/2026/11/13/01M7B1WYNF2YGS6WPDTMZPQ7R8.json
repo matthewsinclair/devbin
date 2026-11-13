@@ -1,0 +1,16 @@
+{
+  "id": "01M7B1WYNF2YGS6WPDTMZPQ7R8",
+  "ts": "2026-11-13T18:14:44.143Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 140,
+    "text": "hv 2026-11-05: nobody builds ccusage's ci-draft path; ccusage keeps its own finalize; dc's SPEC-cidraft.md stays if ever wanted."
+  }
+}

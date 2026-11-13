@@ -1,0 +1,16 @@
+{
+  "id": "01M7B1WWAEZ2VBPSH88BSG7K9Y",
+  "ts": "2026-11-13T18:14:41.742Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 87,
+    "text": "ST0011 consumer phase: 18 of 21 ACs; AC-3.4, AC-4.3 and AC-5.4 are met only at the consumers' cuts. Left: WP11 Gtools (kovacs leg: LANG for Elixir and the estate stub, archived todo 186), WP13 Conflab, WP14 Laksa, WP15 read at their cuts, WP16 dc, WP18 last (todo 183). Each WP declares its estate's build: block at adoption (archived decision 102). WP10 Utilz: 2.14.9 and 2.14.10 are tagged, so read utilz#ST0031 for its close."
+  }
+}

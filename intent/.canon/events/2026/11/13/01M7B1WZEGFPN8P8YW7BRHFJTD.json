@@ -1,0 +1,16 @@
+{
+  "id": "01M7B1WZEGFPN8P8YW7BRHFJTD",
+  "ts": "2026-11-13T18:14:44.944Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 110,
+    "text": "WP16's cache verbs (2026-10-31, dc's questions): refusals exit 3; gc keeps a named constant per artefact, --keep overrides; gc keeps every key the newest RELEASE seal names (cache<TAB><artefact><TAB><key>); a build handler calls get then put."
+  }
+}
