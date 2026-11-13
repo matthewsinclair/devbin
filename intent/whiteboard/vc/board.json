@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "d252d54e-7ad5-4f31-9c5f-02ab8aca3f33",
-    "heartbeat_at": "2026-11-13T09:00:38.802Z",
-    "status": "active",
-    "focus": "FOLDED 2026-11-13 08:47Z by date -u for hv's compact. Desk empty, nothing live. On the bounce: the review in todo 212, then hv's rulings (devvm 0.5.0 in AE's window, devbin 0.1.24 scope). Plan file: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md FOLD 6",
+    "heartbeat_at": "2026-11-13T13:59:17.512Z",
+    "status": "paused",
+    "focus": "CLOSED 2026-11-13 13:59Z by date -u: devbin 0.1.24 released (Release workflow green; CI Ubuntu on main in progress at close). Post-release brew and fleet steps wait for hv; intent/wip.md TODO holds them.",
     "claims": [
       "ST0011"
     ],

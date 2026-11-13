@@ -1,5 +1,5 @@
 ---
-verblock: "11 Nov 2026:v3.67: Matthew Sinclair - globalfold: 0.1.22 shipped; the desk serves Intent 3.3.0"
+verblock: "13 Nov 2026:v3.68: Matthew Sinclair - globalfold: 0.1.24 released; post-release steps wait for hv"
 ---
 
 # Work In Progress
@@ -13,6 +13,8 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## TODO
 
+- devbin 0.1.24 post-release, on hv's word: `brew upgrade devbin` and `bin/devbin use brew` in canon, then the fleet sweep (`bin/devbin fleet upgrade --apply`, commit by path, no push). kovacs needed `brew update` first. Read CI Ubuntu on main at 0ac94d4d (run 43437051545, in progress at the fold).
+- After the 0.1.24 cut: cc files its use/rehash issue (drafted in its scratch); dc clears its g24 gate tree and files the gate's 18 TMPDIR leftovers as an off-path item; issue 0352 (CI release target not handed to candidate CI) is open.
 - WP10, WP11, WP13 and WP14: each remaining consumer's first cut in the new shape (utilz#ST0031, gtools#ST0020, conflab#ST0126/WP-06, laksa#ISSUE:0058); Intent's (WP12) rides 3.3.0. Gtools's kovacs leg needs its tools there first (vc's todo 186).
 - WP15: read each consumer's macOS leg at its cut against design.md's expected column, beside Devbin's measured line.
 - WP16 (dc): closes when AC-5.4 is satisfied at the first consumer cut.
