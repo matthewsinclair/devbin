@@ -9,10 +9,7 @@
     "status": "active",
     "focus": "Back from hv's compact (2026-11-13 08:59Z by date -u). Nothing live. 0347 waits for hv's ruling; ST0011/16 claim stays. Waiting on vc's review of what is outstanding.",
     "claims": [
-      "ST0011/16",
-      "ISSUE:0347",
-      "ISSUE:0350",
-      "ISSUE:0351"
+      "ST0011/16"
     ],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
