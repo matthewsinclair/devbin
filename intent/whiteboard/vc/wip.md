@@ -3,7 +3,7 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-12 19:49Z
+heartbeat_at: 2026-11-13 05:38Z
 status: active
 focus: "FOLDED 19:5xZ for hv's compact. P0: Intent 3.3.1 cut on intent-vc's ready (vc cuts), then devvm in another estate tomorrow. devbin 0.1.23 out; fleet swept, unpushed. Plan: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md FOLD 5"
 claims: [ST0011]
