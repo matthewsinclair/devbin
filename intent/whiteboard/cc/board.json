@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a",
-    "heartbeat_at": "2026-11-13T08:59:15.888Z",
+    "heartbeat_at": "2026-11-13T09:22:05.783Z",
     "status": "active",
-    "focus": "Localfold for hv's compact (2026-11-13 08:47Z by date -u): nothing live, nothing unbanked. Filed today, record only: 0348 (doctor FAILs a pre-contract keg, high), 0349 (Homebrew moves metafiles out of libexec, medium), 0350 (T4 reader fails clippy, low) at fdcad579, and 0351 (fleet never walks _Archive, medium) at 13c17b47. ccusage no longer needs 0348 before its 0.1.9 (hv's route C). 0347 waits for hv's word. ISSUE:0326 claim stands. On the bounce: /in-session, then review what's outstanding with vc.",
+    "focus": "0348 and 0349 for 0.1.24 (vc decision 172), 2026-11-13 09:21Z by date -u: units 0348-1 cdbd54ca, 0348-2 88e4e75b, 0349 47cc47df built in scratch i0348/tree on BASE b226e017, probed red at each parent and green at the tip; desk ask 01M7A3CR7PX6AW00S26X03KS3K (heavy: red legs, 4 arms, six files whole BSD, then 0349's one brew proof) waits for vc's GO. ISSUE:0326 claim stands.",
     "claims": [
       "ISSUE:0326",
       "ISSUE:0348",
