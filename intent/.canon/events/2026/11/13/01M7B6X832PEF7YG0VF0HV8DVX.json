@@ -1,0 +1,16 @@
+{
+  "id": "01M7B6X832PEF7YG0VF0HV8DVX",
+  "ts": "2026-11-13T19:42:16.674Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 87,
+    "text": "ST0011: acceptance passes (18 of 18 satisfied, 3 withdrawn to the consumers' own threads on hv's ruling, decision 175). AT lint is clean. Left: WP15 (read seal clock lines), WP16 (build cache, dc), then WP18 last (todo 183); then st done."
+  }
+}

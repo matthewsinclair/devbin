@@ -13,7 +13,7 @@ claims: [ST0011]
 
 ## DOING
 
-- ST0011 consumer phase: 18 of 21 ACs; AC-3.4, AC-4.3 and AC-5.4 are met only at the consumers' cuts. Left: WP11 Gtools (kovacs leg: LANG for Elixir and the estate stub, archived todo 186), WP13 Conflab, WP14 Laksa, WP15 read at their cuts, WP16 dc, WP18 last (todo 183). Each WP declares its estate's build: block at adoption (archived decision 102). WP10 Utilz: 2.14.9 and 2.14.10 are tagged, so read utilz#ST0031 for its close. (edited)
+- ST0011: acceptance passes (18 of 18 satisfied, 3 withdrawn to the consumers' own threads on hv's ruling, decision 175). AT lint is clean. Left: WP15 (read seal clock lines), WP16 (build cache, dc), then WP18 last (todo 183); then st done. (edited)
 
 ## TODO
 
@@ -33,7 +33,6 @@ claims: [ST0011]
 - Watching a cut: fail on a "FAILED: " line, never the word "failed"; doctor's "N checks" line marks the gates done. (edited)
 - `DEVBIN_FLEET_FROZEN` matches an estate's plan label; check for no "matches none" line before any --apply. (edited)
 - Dev/opt/brew contract amendments go to molt-vc, utilz-vc, intent-vc and gtools-vc, agreed when all four answer. (edited)
-- AT-3.5 is claimed by ST0011 and closed ST0007 over one marker (tests/unit/releasestatus.bats:170); Intent's 0670 stops it counting. Re-mint ST0011's row before ST0011 closes. (edited)
 
 ## Decisions
 
