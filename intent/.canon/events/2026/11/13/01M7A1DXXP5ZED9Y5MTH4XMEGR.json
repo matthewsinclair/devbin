@@ -1,0 +1,15 @@
+{
+  "id": "01M7A1DXXP5ZED9Y5MTH4XMEGR",
+  "ts": "2026-11-13T08:47:17.430Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "BOUNCE REVIEW (fold of 2026-11-13 08:47Z by date -u, hv's order): review what is outstanding with hv. Done 2026-11-13: Intent 3.3.1 released (tag c64a42e29, cut 3 after two reds before the tag, both reset by hv), brew and app on 3.3.1; every devbin estate on 0.1.23 (25 under prj/cfg/writing, Pipeliner ba6d190, ~/Devel/writing a root at 8dce4a20, client trees by their own vc); Intent root files 3.3.1 in 22 estates plus devbin (795e9639), intent upgrade stamp 56e17ab0, v2 pointers fixed d1e29a72; prj/_Archive removed by hv. Open for hv: (1) devvm 0.5.0 stopped at amd64's tar on Ubuntu 26.04.1 (Rosetta or seccomp, unproven), hv taking it up in AE's window with a build-on-GitHub question; (2) devbin 0.1.24 scope: 0347, 0348 (ccusage no longer waits, route C), 0349, 0350, 0351 (skip _Archive), note at 382eacd4; (3) Intent's checkout@v4 Node 20 warning, passed to intent-vc; (4) ccusage ST0002 and ST0003 builders running on the desk, all green so far; (5) sweep notices (todo 210)."
+  }
+}

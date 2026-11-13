@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-13 05:38Z
+heartbeat_at: 2026-11-13 08:47Z
 status: active
-focus: "FOLDED 19:5xZ for hv's compact. P0: Intent 3.3.1 cut on intent-vc's ready (vc cuts), then devvm in another estate tomorrow. devbin 0.1.23 out; fleet swept, unpushed. Plan: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md FOLD 5"
+focus: "FOLDED 2026-11-13 08:47Z by date -u for hv's compact. Desk empty, nothing live. On the bounce: the review in todo 212, then hv's rulings (devvm 0.5.0 in AE's window, devbin 0.1.24 scope). Plan file: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md FOLD 6"
 claims: [ST0011]
 ---
 
@@ -33,9 +33,8 @@ claims: [ST0011]
 - For the release after next, to weigh only (cc, 2026-11-12, beside 0335): lib/cmd/macos and lib/cmd/release also call other built-ins through the project's launcher (release attach, macos app-sign and its siblings, version set, formula publish), which is 0335's shadow class. CORE_VERBS holds cache alone, as 0335 asks. No work and no issue now, for decision 140's reason.
 - For the release after next, to weigh only (intent-vc, 2026-11-12): the macOS stage has no rehearsal before a cut. A dry run starts no leg (lib/cmd/release:1680-1698), app-sign refuses any commit but the release's, and 0337's release gates --leg covers release.legs hosts alone, so a project's first macOS stage runs at its cut. Intent takes that risk for its next cut, and a failure stops before the tag and is re-cut. No issue now, since an open issue would ride 0.1.23 under directive 13.
 - For the release after next, to weigh only (kovacs-sysadm, 2026-11-12): a remote leg that fails keeps its worktree on the host (~/work/devbin-leg-<sha12>/, with its .log and .rc), and nothing clears it later. kovacs still holds devbin-leg-9b674c0e0437 from 0.1.21's red first cut (9b674c0e, reset and re-cut; nothing cites it). Its removal is hv's word in kovacs-sysadm's window. No work now.
-- hv P0 (by 19:48Z by date -u, vc's window, hv AFK): "getting everything done and dusted for devbin, intent, molt, etc so that we can build the next/latest version of devbm first thing tomorrow morning ... Work with intent-vc to get this done." devbin done (0.1.23 on the tap). Intent 3.3.1: vc cuts on intent-vc's "ready to cut" (Intent hv decision 49); a keychain or notary prompt stops the cut for hv. Then tell agentic-engineering-vc "Intent 3.3.1, desk free" for its devvm slot tomorrow. Plan: ~/Devel/scratch/devbin-vc/0.1.23/STATE.md FOLD 5.
 - SWEEP NOTICES for devbin 0.1.23 (fleet upgrade --apply from brew, 24 estates, committed by path at 19:4xZ by date -u, nothing pushed; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary): tell each estate's vc at its next session. Trees outside fleet.roots were not swept.
-- devbin 0.1.24's note, when opened: dc writes its entries for 0345 (Added) and 0346 (Changed), wording in dc's message and sealtime/STATE.md; 0345-1 03942c76 and 0346-1 58344954 are on main, unpushed.
+- BOUNCE REVIEW (fold of 2026-11-13 08:47Z by date -u, hv's order): review what is outstanding with hv. Done 2026-11-13: Intent 3.3.1 released (tag c64a42e29, cut 3 after two reds before the tag, both reset by hv), brew and app on 3.3.1; every devbin estate on 0.1.23 (25 under prj/cfg/writing, Pipeliner ba6d190, ~/Devel/writing a root at 8dce4a20, client trees by their own vc); Intent root files 3.3.1 in 22 estates plus devbin (795e9639), intent upgrade stamp 56e17ab0, v2 pointers fixed d1e29a72; prj/_Archive removed by hv. Open for hv: (1) devvm 0.5.0 stopped at amd64's tar on Ubuntu 26.04.1 (Rosetta or seccomp, unproven), hv taking it up in AE's window with a build-on-GitHub question; (2) devbin 0.1.24 scope: 0347, 0348 (ccusage no longer waits, route C), 0349, 0350, 0351 (skip _Archive), note at 382eacd4; (3) Intent's checkout@v4 Node 20 warning, passed to intent-vc; (4) ccusage ST0002 and ST0003 builders running on the desk, all green so far; (5) sweep notices (todo 210).
 
 ## Holds
 
