@@ -1,0 +1,16 @@
+{
+  "id": "01M7CKWTYFYGEWKVKECM7Y2WNG",
+  "ts": "2026-11-14T08:48:29.135Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 213,
+    "text": "HV'S LIST (as of 2026-11-14 08:48Z by date -u), each for hv's word: (c) GitHub Support purge of the shas from 2026-11-12's candidate pushes (archived decision 163); (e) the no-vendor mode (decision 64) and --ivault (hold 2) to schedule; (f) Ccusage's use-to-activate rename, timing unruled (archived decision 148); (g) todo 184's carried host items from 2026-11-01, to re-confirm (archived todo 184); (i) push the 0.1.24 sweep commits to each estate's local remote (~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary). Done since: (a) 0.1.24 brew and sweep, (b) and (d) ruled in decision 177, (h) Molt-matts 6bc343e is on local and upstream and ~/Devel/opt/devbin is gone."
+  }
+}

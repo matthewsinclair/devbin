@@ -5020,9 +5020,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 213,
-      "text": "HV'S LIST (lean of 2026-11-13 18:14Z by date -u), each for hv's word: (a) devbin 0.1.24 brew switch in canon and fleet sweep; (b) restart the 20 intent mcp and expl processes onto 3.3.2 (put to hv 18:1xZ); (c) GitHub Support purge of the shas from 2026-11-12's candidate pushes (archived decision 163); (d) release review action 3, a ruling (~/Devel/scratch/devbin-vc/release-review/REVIEW.md, archived decision 171); (e) the no-vendor mode (decision 64) and --ivault (hold 2) to schedule; (f) Ccusage's use-to-activate rename, timing unruled (archived decision 148); (g) todo 184's carried host items from 2026-11-01, to re-confirm (archived todo 184); (h) Molt-matts 6bc343e push and ~/Devel/opt/devbin removal (intent/wip.md).",
+      "text": "HV'S LIST (as of 2026-11-14 08:48Z by date -u), each for hv's word: (c) GitHub Support purge of the shas from 2026-11-12's candidate pushes (archived decision 163); (e) the no-vendor mode (decision 64) and --ivault (hold 2) to schedule; (f) Ccusage's use-to-activate rename, timing unruled (archived decision 148); (g) todo 184's carried host items from 2026-11-01, to re-confirm (archived todo 184); (i) push the 0.1.24 sweep commits to each estate's local remote (~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary). Done since: (a) 0.1.24 brew and sweep, (b) and (d) ruled in decision 177, (h) Molt-matts 6bc343e is on local and upstream and ~/Devel/opt/devbin is gone.",
       "state": "live",
-      "recorded_at": "2026-11-13T18:14:30.327Z"
+      "recorded_at": "2026-11-13T18:14:30.327Z",
+      "edited_at": "2026-11-14T08:48:29.135Z"
     },
     {
       "node": "vc",
@@ -5037,9 +5038,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 215,
-      "text": "NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), and 0.1.24 once swept; 0326's reader notice to pplr-vc, cldr-vc, cldr-dc, ccusage-vc and pipeliner-sc (archived todo 201; ~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0 (archived todo 192); Prodinfra, infra --profile takes a path (archived todo 159); release review action 2 to molt-vc and intent-vc, now Intent is cut (archived decision 171).",
+      "text": "NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), and 0.1.24 (swept 2026-11-14 08:47Z, shas in ~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary); 0326's reader notice to pplr-vc, cldr-vc, cldr-dc, ccusage-vc and pipeliner-sc (archived todo 201; ~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0 (archived todo 192); Prodinfra, infra --profile takes a path (archived todo 159); release review action 2 to molt-vc and intent-vc, now Intent is cut (archived decision 171).",
       "state": "live",
-      "recorded_at": "2026-11-13T18:14:30.760Z"
+      "recorded_at": "2026-11-13T18:14:30.760Z",
+      "edited_at": "2026-11-14T08:48:35.228Z"
     },
     {
       "node": "vc",
@@ -5082,6 +5084,14 @@
       "state": "live",
       "recorded_at": "2026-11-14T08:40:11.764Z",
       "edited_at": "2026-11-14T08:41:58.470Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 216,
+      "text": "NEXT DEVBIN RELEASE (decision 177): release review action 3 goes in: shard CI by file, macOS first; the cut the only whole suite; the tagged tree scans at every landing (~/Devel/scratch/devbin-vc/release-review/REVIEW.md, section on actions, item 3). Needs an issue and a scope with cc and dc before any build.",
+      "state": "live",
+      "recorded_at": "2026-11-14T08:48:29.420Z"
     }
   ],
   "sent": [

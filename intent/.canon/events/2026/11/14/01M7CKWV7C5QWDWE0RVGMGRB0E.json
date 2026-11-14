@@ -1,0 +1,15 @@
+{
+  "id": "01M7CKWV7C5QWDWE0RVGMGRB0E",
+  "ts": "2026-11-14T08:48:29.420Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "NEXT DEVBIN RELEASE (decision 177): release review action 3 goes in: shard CI by file, macOS first; the cut the only whole suite; the tagged tree scans at every landing (~/Devel/scratch/devbin-vc/release-review/REVIEW.md, section on actions, item 3). Needs an issue and a scope with cc and dc before any build."
+  }
+}

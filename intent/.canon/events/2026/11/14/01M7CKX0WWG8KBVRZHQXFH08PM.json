@@ -1,0 +1,16 @@
+{
+  "id": "01M7CKX0WWG8KBVRZHQXFH08PM",
+  "ts": "2026-11-14T08:48:35.228Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 215,
+    "text": "NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), and 0.1.24 (swept 2026-11-14 08:47Z, shas in ~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary); 0326's reader notice to pplr-vc, cldr-vc, cldr-dc, ccusage-vc and pipeliner-sc (archived todo 201; ~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0 (archived todo 192); Prodinfra, infra --profile takes a path (archived todo 159); release review action 2 to molt-vc and intent-vc, now Intent is cut (archived decision 171)."
+  }
+}
