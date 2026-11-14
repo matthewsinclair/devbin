@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-14 13:39Z
+heartbeat_at: 2026-11-14 13:40Z
 status: active
-focus: "pc0125 GREEN for the 0.1.25 cut, 2026-11-14 13:04Z by date -u: scans, 24 files under default and leg TMPDIR, check all at b28527fd (SEAL b4d92789); dry run at 5a97158c after vc's green kovacs leg (SEAL 7c3cb9a6). END sent; holding for vc"
+focus: "v0.1.25 out at 88fe057a (vc, 13:38Z); pc0125 green for it and its tree cleared by script 2026-11-14 13:39Z by date -u, records kept in pc0125/runs and runs-b28527fd; nothing live, no claims; holding for vc"
 claims: []
 ---
 
@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-- Clear pc0125's tree by script once vc says the 0.1.25 cut has ended; keep runs-b28527fd/, runs/ and both SEALs
+_(none)_
 
 ## Holds
 
