@@ -336,17 +336,18 @@ An install is a project-shaped tree with the **project half missing** -- no `con
 
 ## Documentation
 
-| Document                                                 | What is in it                                              |
-| -------------------------------------------------------- | ---------------------------------------------------------- |
-| [docs/configuration.md](docs/configuration.md)           | every `config.yaml` key, its type and its default          |
-| [docs/authoring-commands.md](docs/authoring-commands.md) | adding a command end to end, and where its help comes from |
-| [docs/migration.md](docs/migration.md)                   | taking an existing `bin/devbin` launcher onto devbin       |
-| [docs/releasing.md](docs/releasing.md)                   | cutting a release, and the tripwires that have caught one  |
-| [docs/dev-opt-brew.md](docs/dev-opt-brew.md)             | the dev, opt and brew contract every Homebrew tool follows |
-| [CHANGELOG.md](CHANGELOG.md)                             | what changed in each release (generated)                   |
-| [RELEASES.md](RELEASES.md)                               | the release index (generated)                              |
-| `bin/.devbin/lib/config.reference.yaml`                  | the annotated worked example, vendored into your project   |
-| `bin/.devbin/lib/infra.reference.yaml`                   | the annotated `infra` profile, vendored into your project  |
+| Document                                                                     | What is in it                                                                    |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| [docs/configuration.md](docs/configuration.md)                               | every `config.yaml` key, its type and its default                                |
+| [docs/authoring-commands.md](docs/authoring-commands.md)                     | adding a command end to end, and where its help comes from                       |
+| [docs/migration.md](docs/migration.md)                                       | taking an existing `bin/devbin` launcher onto devbin                             |
+| [docs/releasing.md](docs/releasing.md)                                       | cutting a release, and the tripwires that have caught one                        |
+| [docs/assembly-and-the-build-cache.md](docs/assembly-and-the-build-cache.md) | the build cache: its key, registry and verbs, how a cut uses it, and adopting it |
+| [docs/dev-opt-brew.md](docs/dev-opt-brew.md)                                 | the dev, opt and brew contract every Homebrew tool follows                       |
+| [CHANGELOG.md](CHANGELOG.md)                                                 | what changed in each release (generated)                                         |
+| [RELEASES.md](RELEASES.md)                                                   | the release index (generated)                                                    |
+| `bin/.devbin/lib/config.reference.yaml`                                      | the annotated worked example, vendored into your project                         |
+| `bin/.devbin/lib/infra.reference.yaml`                                       | the annotated `infra` profile, vendored into your project                        |
 
 ## Licence
 
