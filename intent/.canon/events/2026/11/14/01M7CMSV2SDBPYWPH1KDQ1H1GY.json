@@ -1,0 +1,16 @@
+{
+  "id": "01M7CMSV2SDBPYWPH1KDQ1H1GY",
+  "ts": "2026-11-14T09:04:19.545Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 213,
+    "text": "HV'S LIST (as of 2026-11-14 09:04Z by date -u): (c) hv files the GitHub Support purge from vc's draft, ~/Devel/scratch/devbin-vc/0.1.24/github-support-purge.txt; (e) no-vendor (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) kovacs's GNOME re-login (kovacs-sysadm offline) and the router's DHCP reservation, hv's to check; (j) the bank-ref clear on todo 200. Done since: intentd enrolled at login (com.matthewsinclair.intentd, pid 71443 carrying CLAUDE_CONFIG_DIR, every session listed by estate status at 09:04Z), (a), (b), (d), (f), (h), (i), the Intranet repo and the snapshot (decisions 177 to 179)."
+  }
+}

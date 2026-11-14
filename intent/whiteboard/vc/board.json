@@ -5020,10 +5020,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 213,
-      "text": "HV'S LIST (as of 2026-11-14 09:03Z by date -u): (c) hv files the GitHub Support purge from vc's draft, ~/Devel/scratch/devbin-vc/0.1.24/github-support-purge.txt; (e) no-vendor (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) intentd at-login enrolment: hv's word in rhadamanth-sysadm's window, at a quiet desk vc names (decision 179); kovacs's GNOME re-login (kovacs-sysadm offline) and the router's DHCP reservation, hv's to check; (j) the bank-ref clear on todo 200. Done since: (a), (b), (d), (f), (h), (i), the Intranet repo and the snapshot (decisions 177 to 179).",
+      "text": "HV'S LIST (as of 2026-11-14 09:04Z by date -u): (c) hv files the GitHub Support purge from vc's draft, ~/Devel/scratch/devbin-vc/0.1.24/github-support-purge.txt; (e) no-vendor (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) kovacs's GNOME re-login (kovacs-sysadm offline) and the router's DHCP reservation, hv's to check; (j) the bank-ref clear on todo 200. Done since: intentd enrolled at login (com.matthewsinclair.intentd, pid 71443 carrying CLAUDE_CONFIG_DIR, every session listed by estate status at 09:04Z), (a), (b), (d), (f), (h), (i), the Intranet repo and the snapshot (decisions 177 to 179).",
       "state": "live",
       "recorded_at": "2026-11-13T18:14:30.327Z",
-      "edited_at": "2026-11-14T09:03:35.729Z"
+      "edited_at": "2026-11-14T09:04:19.545Z"
     },
     {
       "node": "vc",
