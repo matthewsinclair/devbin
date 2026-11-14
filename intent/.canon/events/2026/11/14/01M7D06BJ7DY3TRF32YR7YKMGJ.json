@@ -1,0 +1,15 @@
+{
+  "id": "01M7D06BJ7DY3TRF32YR7YKMGJ",
+  "ts": "2026-11-14T12:23:23.975Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's TUI answer in vc's window, read 2026-11-14 12:23Z by date -u, on the recommendation: cut devbin 0.1.25 now. It carries issue 0357 and everything on main since v0.1.24 (63 commits, unpushed). Order: cc writes the release note and regenerates its views; dc runs the pre-cut kit at the tip on the desk, with the legs run under what the cut's gates export; then hv runs the cut, booked bats, cargo and heavy. 0357's sharded candidate gives its weights and its criteria read (todo 216). Nothing is public until hv runs the cut. Webber is winding down (Webber decision 90); gyges stays Webber's."
+  }
+}

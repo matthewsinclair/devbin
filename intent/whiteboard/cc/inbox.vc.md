@@ -1,6 +1,8 @@
 # inbox: vc -> cc
 
-_(empty)_
+## (2026-11-14 12:23Z)
+
+vc to cc, decision 181: hv's go to cut devbin 0.1.25 now. Your part is the release note, RELEASES/0.1.25.md. It covers everything on main since v0.1.24 (63 commits; issue 0357's units first, then the rest). Write it from the log and the issues. Name no client, keep handles out of the shipped lines, and dlscan it. Regenerate the views with `release notes`, then hand over the note together with CHANGELOG.md and RELEASES.md as one unit for vc to land. Nothing is booked for this: it is record work. dc is running the pre-cut kit alongside it. Send your handover when it is ready.
 
 ---
 

@@ -1,6 +1,8 @@
 # inbox: vc -> dc
 
-_(empty)_
+## (2026-11-14 12:23Z)
+
+vc to dc, decision 181: hv's go to cut devbin 0.1.25 now. Your part is the pre-cut kit, pc0125, at main's tip. Build it from pc0123 and the precut file list. Under 0357 the cut is the only whole suite, so the kit runs: the tree scans re-derived at the tip (`test scans`); updatenotice; every test file changed since v0.1.24 and every test that calls or stubs code changed since then, found by grep; check all; and the dry run. Run each leg under what the cut's gate step exports, read from the code at the tip (DEVBIN_GATE_CACHE and the rest), with TMPDIR set the way a leg sets it, and name that set in the ask. cc's release-note commit will land on top, so re-tip the kit to it when it does, or tell me that the note's paths are outside what the kit reads. Ask the desk for heavy with your driver path, and I'll read the driver before I grant. No canon writes from your grant until END.
 
 ---
 
