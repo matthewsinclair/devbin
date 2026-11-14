@@ -5073,6 +5073,14 @@
       "text": "hv in vc's window, read 2026-11-14 04:32Z by date -u, after the night's hold: 'You still have the pen. But's it's just webber-* working here now, so you can use rhad and gyges for anything that webber-vc wants. You coordinate.' Desk re-taken; Webber is the only estate on rhadamanth and gyges, gyges one run at a time on webber-vc's GO; replaces decision 174 while it holds.",
       "state": "live",
       "recorded_at": "2026-11-14T04:32:02.209Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 177,
+      "text": "hv's TUI answers in vc's window, read 2026-11-14 08:40Z by date -u: (1) the 0.1.24 fleet sweep runs over every estate, Webber included, in a quiet window webber-vc gives; (2) release review action 3 (shard CI by file, macOS first; the cut the only whole suite; tagged tree scans at every landing) goes into the NEXT devbin release; (3) dc starts ST0011 WP16 on rhadamanth behind Webber's P1, its runs granted only when Webber has nothing waiting; (4) the old 3.3.1 intent mcp and expl processes move to 3.3.2 at each seat's next restart, nobody kills them.",
+      "state": "live",
+      "recorded_at": "2026-11-14T08:40:11.764Z"
     }
   ],
   "sent": [
