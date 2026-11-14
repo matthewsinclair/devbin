@@ -60,6 +60,14 @@ release:
 - **The WSL leg blocks nothing.** It runs on a candidate and on demand, as macOS does, and runs the suite and the smoke list (`.github/wsl-smoke.sh`, on its fixture projects) inside WSL, from a clone in WSL's own filesystem. Test Summary does not wait for it, so a red WSL run does not make the candidate's verdict red: read its job on its own. Its name says which WSL version ran, and the job fails if the kernel disagrees. It installs Intent's Linux package from Intent's public release, at a pinned tag and sha256, so `check all` on the fixture that carries `intent/` runs the critic gate.
 - **`release.yml` is untouched by any of this.** It is the one workflow a tag starts: it runs on the tag, on Ubuntu, and makes the release object.
 
+## One whole suite per release
+
+**The cut is the only run of the whole suite** (issue 0357). It runs everything once on each leg, at the release commit and in the environment its gates give: the local gates on this Mac, the gates on kovacs, and the candidate's matrix on CI. Nothing before it runs the whole suite as a proof, on this Mac or on kovacs.
+
+- **A fix proves itself with its own arms and the tree scans.** It runs the arms it adds or changes, red at its base and green at its tip, and the arms in other files that read what it changes, each filtered to those arms, under the Mac's tools and then the GNU ones. Then it runs `bin/devbin test scans` once at its tip: the tree scans, the tests tagged `treescan`, whose verdict is over this tree's own files, so a change anywhere can turn one red. That is the class of red a fix's own arms cannot see, and it runs before the fix lands, not at the cut.
+- **Why not the whole suite before the cut.** A whole-suite run before the cut runs what the cut's legs run again, outside their environment. The reds that reached a cut came from three places: a proof run in an environment the gates do not give, a scan not run before landing, and the infrastructure. The passes before the cut caught none of them.
+- **A red cut before its tag is reset and cut again** once the fix has landed, as before: nothing is tagged and nothing is public until every leg is green, so the reset loses nothing a user can see.
+
 ## Tripwires
 
 **`VERSION` and the declared constraint live in different files, and only one of them looks like the version.** `bin/.devbin/config.yaml` carries a `devbin_version:` caret constraint -- devbin declaring, as any consumer does, which runtime satisfies it. (Deliberately not quoted here: a document naming the current version is the staleness this section is about.) Stamp `VERSION` past that caret without touching the constraint and devbin fails its own `doctor`. That is why `doctor` is one of devbin's release gates: it runs on the release commit, after the stamp, so a forgotten constraint stops the release before anything is tagged. `documentation.bats` holds the same check.
