@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-14 09:39Z
+heartbeat_at: 2026-11-14 12:17Z
 status: active
-focus: "Holding for vc (2026-11-14 09:39Z by date -u): ST0011 closed (WP16 b64b3630, WP18 4ada9cb4 and a62c5f56); 0358 filed record only; 0357-1 landed at 9971c5e1, test scans caught main's 0172 red from 608a0ef4, fixed as 0357-5 in cc's lane; todo 67 dropped."
+focus: "Localfold for hv's compact (2026-11-14 12:17Z by date -u): nothing live or unbanked, no claims. Today: ST0011 closed (WP16 b64b3630; WP18's guide 4ada9cb4, done a62c5f56); 0358 filed record only; 0357-1 landed at 9971c5e1 and its test scans caught main's 0172 red (fixed as 0357-5); todo 67 dropped; 0343 closed by design at d69e0989. On the bounce: /in-session, pickup, hold for vc."
 claims: []
 ---
 
