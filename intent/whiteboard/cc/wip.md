@@ -6,7 +6,7 @@ session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
 heartbeat_at: 2026-11-14 13:39Z
 status: active
 focus: "Todo 216: 0357's criteria read off candidate run 43598105760 (0.1.25), shard weights refreshed from every shard's log, then the ci.wait drop banked as a unit for vc. Waiting on the run's WSL job to complete before reading logs."
-claims: [ISSUE:0326, ISSUE:0357]
+claims: [ISSUE:0326]
 ---
 
 # Control Claude (cc)

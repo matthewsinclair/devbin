@@ -9,8 +9,7 @@
     "status": "active",
     "focus": "Todo 216: 0357's criteria read off candidate run 43598105760 (0.1.25), shard weights refreshed from every shard's log, then the ci.wait drop banked as a unit for vc. Waiting on the run's WSL job to complete before reading logs.",
     "claims": [
-      "ISSUE:0326",
-      "ISSUE:0357"
+      "ISSUE:0326"
     ],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
