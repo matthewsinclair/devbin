@@ -1,0 +1,16 @@
+{
+  "id": "01M7CQ16DY6CTGZN8F24PHMWZ1",
+  "ts": "2026-11-14T09:43:17.694Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 216,
+    "text": "NEXT DEVBIN RELEASE (decision 177): release review action 3 is issue 0357. Landed: 0357-2 lanes shards (608a0ef4), 0357-1 treescan tags and test scans (9971c5e1, 62 arms), 0357-5 the weights header's tracker citation that test scans caught on main (f0efa06e). Building: 0357-3 (cc), CI's shard matrix, 4 macOS and 2 Ubuntu; lint into both gate lists with 0155's clean-tree half dropped; --weights merging several logs per system; ci.wait stays 90m until a sharded candidate is sealed. Then 0357-4, the O8 rule. For hv: the main-push Ubuntu rerun on or off (cc: off); 3 or 4 macOS shards (cc: 4); 0343 close as by design (dc's Resolution candidate, 07eee2d2; vc: close)."
+  }
+}
