@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "d252d54e-7ad5-4f31-9c5f-02ab8aca3f33",
-    "heartbeat_at": "2026-11-14T04:31:37.811Z",
+    "heartbeat_at": "2026-11-14T08:24:26.841Z",
     "status": "active",
-    "focus": "FOLDED 2026-11-13 20:44Z by date -u on hv's wrap ('bank, fold, and hold'): Intent 3.3.2 released and CI green; devbin 0.1.24 released; ST0011's acceptance passes, WP15, WP16 and WP18 left; every seat told to bank, fold and hold; desk released. Next: hv's list, todo 213.",
+    "focus": "LOCALFOLDED 2026-11-14 08:24Z by date -u for hv's compact: desk held by devbin-vc (decision 176, Webber alone on rhadamanth and gyges); Webber's bundling rerun cc7808b9 running on gyges, rhadamanth's desk empty. On the bounce: /in-session, pickup, re-arm the desk waiter, then the plan (todo 213).",
     "claims": [
       "ST0011"
     ],
