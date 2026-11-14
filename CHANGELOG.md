@@ -6,6 +6,26 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.25] - Unreleased
+
+### Added
+
+- **A lanes run can be one shard of its suite (issue `0357`).** `DEVBIN_TEST_SHARD=<i>/<n>` runs the i-th of n shards of the directory's files: both lanes, the exactly-once count and the verdict cover that shard's files alone, and the verdict names the shard. Before it runs, the run prints the shard's share of the suite, what it weighed the files by, and the files it runs. The files are dealt out heaviest first, each to the lightest shard, by their times for this system (`uname -s`) in `<dir>/.lanes-weights`. A file with no time there is weighted by its count of tests, at the timed files' seconds per test, so no file is left out. The same files make the same shards on every machine of one system, and every file is in exactly one shard. The setting is read once and taken out of everything the run starts, so a test that runs the runner over a fixture suite runs that suite whole. This covers devbin's own suite, `test shell` and a project's own runner that calls `"$DEVBIN_LIB/bats-lanes"`.
+- **`"$DEVBIN_LIB/bats-lanes" --weights <dir> <system>=<log>...` writes the weights file from runs' logs**, as a CI job's log or a seal prints the times: that system's lines are replaced, other systems' are kept, and a file no longer in `<dir>` is dropped. Several logs for one system are merged, one per shard, and a file timed in two of them is refused. A log without exactly one whole times block is refused too, and the file is left as it was. devbin's own `bin/devbin test --weights <system>=<log>...` runs it over `tests/unit`, and runs no test. `--plan <dir> <n>` prints every file's shard and weight, and whether that weight was timed or counted.
+- **`bin/devbin test scans` runs the tree scans alone (issue `0357`):** every test under `tests/unit` tagged `treescan`, that is each test whose verdict is over a set of the tree's own files found by walking it, so a change anywhere can turn one red. It seals like any targeted run, so `test --failed` reruns what failed. `test all` does not run it, and the tag changes nothing there: every tagged test still runs once, in place in its own file.
+- **docs/assembly-and-the-build-cache.md**, the design note and how-to for the artefact cache: why it exists, its key, the `build:` block and the registry, the verbs and their exit codes, how a cut uses it, and why a miss is never a failure. The README's documentation table lists it.
+
+### Changed
+
+#### devbin's own tree
+
+- **CI runs devbin's suite in shards, four on macOS and two on Ubuntu (issue `0357`).** Each matrix leg runs one shard of the files by the weights in `tests/unit/.lanes-weights`, cut from 0.1.24's candidate run, and its job's name ends with its shard, eg "shard 2 of 4". From 0.1.24's times, the longest macOS shard should take about 23 minutes, against 71 for the whole suite, bounded by its slowest file; the first sharded candidate measures it. A test holds the shards to every file exactly once, and Test Summary reads each matrix job's one result as before. The gates, and on macOS the proof that the floor refuses the system bash 3.2, run on the first shard alone.
+- **CI's gate lists run lint on the first shard**, and the suite no longer runs it: the contract test that ran the lint gate over the whole tree now plants its breach in a fixture repository, so it proves that the gate turns red without running lint over the tree a second time.
+- **The release commit's push to main runs no Ubuntu suite (issue `0357`).** Its candidate is the same commit, which ran the whole matrix green before the cut pushed main. Test Summary does not ask for it there, and Shell Script Analysis still runs.
+- **docs/releasing.md says the cut is the only run of the whole suite.** A fix runs the tests it adds or changes, red at its base and green at its tip, and the tests in other files that read what it changes, under the Mac's tools and the GNU ones, then `bin/devbin test scans` once before it lands. A whole-suite run before the cut repeats the cut's legs outside their environment and is not a proof. A red cut before its tag is still reset and cut again.
+
+Full note: [RELEASES/0.1.25.md](RELEASES/0.1.25.md)
+
 ## [0.1.24] - 2026-11-13
 
 ### Added
