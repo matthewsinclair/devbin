@@ -5136,6 +5136,14 @@
       "text": "hv's TUI answers in vc's window, read 2026-11-14 17:39Z by date -u (answered about 13:5xZ, the record late), each the recommendation: (1) devbin's next cut is PRE-APPROVED: vc runs bin/devbin release --patch itself once a pre-cut kit, its dry run and every leg are green; a red before the tag stops and waits for hv; nothing after a tag is retried by vc; directive 13's batching holds, so it is not cut for one fix alone. (2) Intent's next release: intent-vc lands 0694 and 0695 and runs its pre-cut, vc books it, and the cut runs to the upstream push, which waits for hv with kovacs-sysadm (the kovacs preflight rule). (3) intent-vc's asks: (a) `intent use brew` in Intent's canon goes ahead under decision 80; (b) the five unrecorded or orphaned subagents on gyges and kovacs (diogenes, socrates, elixir, intent, worker-bee) stay for hv. Also on 2026-11-14: devbin v0.1.25 released at 88fe057a (13:38:35Z); its fleet sweep committed in 25 estates, pushed to local in 23 (Cards has no local remote; Webber's 329091ab unpushed under its decision 84); 0357-7 (ci.wait 45m, weights rewritten) landed at 221886ed.",
       "state": "live",
       "recorded_at": "2026-11-14T17:37:44.794Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 217,
+      "text": "RELEASE AFTER NEXT, weigh only (found 2026-11-14 at Intent's 3.3.3 cut): a red remote leg's gate run directory sits under the leg's TMPDIR (<worktree>.tmp), which is removed with the worktree, so the failing test's output is lost and only 'cargo test --workspace failed; the run is in <gone path>' reaches the kept log. A failed leg should copy its failing gate's output into the kept log or keep the run dir. Related: archived todo 208.",
+      "state": "live",
+      "recorded_at": "2026-11-14T19:00:48.723Z"
     }
   ],
   "sent": [
