@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-14 12:23Z
+heartbeat_at: 2026-11-14 13:39Z
 status: active
-focus: "Localfold 2026-11-14 12:17Z by date -u, for hv's compact: issue 0357's cc units all landed: 0357-2 608a0ef4, 0357-5 f0efa06e, 0357-3 26ae0a92, 0357-4 9551d21b, 0357-6 1fbf5f10 (dc's 0357-1 9971c5e1); hv's two calls answered (4 macOS shards; no Ubuntu rerun on the release commit's main push) and recorded. 0357 stays open for the first sharded candidate: weights refresh, the criteria read, then ci.wait. Clones cleared, records in scratch i0357. Claims ISSUE:0326 and ISSUE:0357 stand. On the bounce: /in-session, pickup, hold for vc."
+focus: "Todo 216: 0357's criteria read off candidate run 43598105760 (0.1.25), shard weights refreshed from every shard's log, then the ci.wait drop banked as a unit for vc. Waiting on the run's WSL job to complete before reading logs."
 claims: [ISSUE:0326, ISSUE:0357]
 ---
 
