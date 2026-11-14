@@ -82,11 +82,13 @@ release:
   ci:
     summary: Test Summary
     # A candidate runs the whole matrix, macOS and WSL beside Ubuntu, the
-    # suite in shards on Ubuntu and macOS (issue 0357). The whole suite on
-    # macOS took about 70 minutes before the shards, and a macOS runner can
-    # wait in a queue before it starts, so 90m stays until a sharded
-    # candidate's seconds are on a RELEASE seal to set it by.
-    wait: 90m
+    # suite in shards on Ubuntu and macOS (issue 0357). The first sharded
+    # candidate went green in 1312s and kovacs in 1037s from its own start,
+    # where the whole suite on macOS had taken about 70 minutes. 45m is about
+    # twice the slower of the two, which leaves room for a macOS runner's
+    # queue; a cut stopped at ci.wait tags nothing, and running it again reads
+    # CI again.
+    wait: 45m
   object: ci
   repo: matthewsinclair/devbin
   # THE RELEASE COMMIT ENDS WITH THE HOUSE LINE (issue 0328): the cut commits
