@@ -1,0 +1,16 @@
+{
+  "id": "01M7CR2JSY3101HMW077YPMF75",
+  "ts": "2026-11-14T10:01:31.710Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 216,
+    "text": "NEXT DEVBIN RELEASE (decision 177): release review action 3 is issue 0357. Landed: 0357-2 lanes shards (608a0ef4); 0357-1 treescan tags and test scans (9971c5e1); 0357-5 the weights header's tracker citation that test scans caught on main (f0efa06e); 0357-3 CI's shard matrix, 4 macOS and 2 Ubuntu, lint into both gate lists on shard 1, 0155's clean-tree half gone (61 tagged arms), --weights merging several logs per system (26ae0a92). ci.wait stays 90m until a sharded candidate's seconds are sealed. Building: 0357-4's docs half (cc, the cut as the only whole suite in docs/releasing.md); its main-push Ubuntu rerun half waits for hv. At the next candidate: refresh the weights from every shard's log. For hv: the main-push rerun on or off (cc: off); 3 or 4 macOS shards (cc: 4); 0343 close as by design (dc, 07eee2d2; vc: close)."
+  }
+}
