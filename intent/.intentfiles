@@ -7,7 +7,6 @@
 # `intent organize --apply` reconciles the tree with this list.
 #
 ISSUE:0326
-ISSUE:0343
 ISSUE:0352
 ISSUE:0353
 ISSUE:0354
