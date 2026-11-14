@@ -1,0 +1,16 @@
+{
+  "id": "01M7CM0QVBFPNFFYM41P8V8N3K",
+  "ts": "2026-11-14T08:50:37.035Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 213,
+    "text": "HV'S LIST (as of 2026-11-14 08:50Z by date -u): (c) hv files the GitHub Support purge from vc's draft, ~/Devel/scratch/devbin-vc/0.1.24/github-support-purge.txt (decision 178); (e) the no-vendor mode (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) todo 184's carried host items: vc is re-confirming with rhadamanth-sysadm and gyges-sysadm (kovacs-sysadm offline), then hv gets only the ones still standing; the router reservation is hv's router. Done since: (a), (b), (d), (f), (h), (i) (decisions 177 and 178)."
+  }
+}

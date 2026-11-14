@@ -1,0 +1,15 @@
+{
+  "id": "01M7CM0PXJGM7AGG4E7SP6V61N",
+  "ts": "2026-11-14T08:50:36.082Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's TUI answers in vc's window, read 2026-11-14 08:49Z by date -u: (1) the 0.1.24 sweep commits go to each estate's local remote, fast-forward only, no upstream push (done 08:50Z: 23 pushed, Cards has no local remote; Intent's local push is on this word, not intent-vc's under decision 76); (2) vc drafts the GitHub Support purge for decision 163's three shas and hv files it (~/Devel/scratch/devbin-vc/0.1.24/github-support-purge.txt); (3) Ccusage's use-to-activate rename is ruled work at Ccusage's next session, through todo 215's notice to ccusage-vc; (4) todo 184's host items are re-confirmed with each host's sysadm first, and only the ones still standing go to hv; no-vendor and --ivault stay parked."
+  }
+}
