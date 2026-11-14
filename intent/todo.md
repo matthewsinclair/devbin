@@ -23,7 +23,7 @@ A DOING / TODO / DONE view, projected from steel-thread and work-package status:
   - [x] 12: Intent retires its release driver, preflight scripts and hook build path into the core
   - [~] 13: Conflab adopts the core's release: gates before any push, one confirm, one formula writer
   - [~] 14: Laksa's deploy reads CI; the suite and the prod compile run once
-  - [-] 15: Measure and re-read: RELEASE seal clock lines against the expected column; kovacs, lanes, the consumers' macOS legs
+  - [x] 15: Measure and re-read: RELEASE seal clock lines against the expected column; kovacs, lanes, the consumers' macOS legs
   - [x] 16: Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)
   - [x] 17: A gate declares the platforms it runs on: inactive elsewhere, never failed (D69)
   - [ ] 18: docs/assembly-and-the-build-cache.md: Devbin's Build Cache for Optimised Release Assembly, design and tech note plus how-to
