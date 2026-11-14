@@ -511,6 +511,7 @@ mkinstall() {
   assert_output_contains "differs 222222222222 1111111111111111111111111111111111111111"
 }
 
+# bats test_tags=treescan
 @test "0079: one sha check and one direction reader, across lib/, bin/devbin and bin/.devbin/cmd" {
   # Every root a copy could hide in, as 0066's vocabulary test searches. A
   # definition in either spelling, the charset test (a whole sha's regex too,

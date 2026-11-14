@@ -68,6 +68,7 @@ recording() {
   [ "$HOMEBREW_PREFIX" = "$DEVBIN_TEST_TMPDIR/.homebrew" ] || fail "HOMEBREW_PREFIX leaked in: $HOMEBREW_PREFIX"
 }
 
+# bats test_tags=treescan
 @test "every scrubbed environment in the suite keeps the test's machine pointer (0153)" {
   # `env -i` drops XDG_DATA_HOME, so an arm that hands HOME through it and runs
   # devbin there reads, and could write, the runner's own pointer. Every such

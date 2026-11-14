@@ -766,6 +766,7 @@ YAML
   assert_success
 }
 
+# bats test_tags=treescan
 @test "0080: every config key the runtime reads as a boolean is a boolean key to the validator" {
   # The readers and the validator hold one key set between them only if a new
   # reader cannot land without the validator knowing its key. Each reader is

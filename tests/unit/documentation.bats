@@ -359,6 +359,7 @@ contract_exit_codes() {
   grep -qx "object_wait" <<<"$keys" # a row of _DEVBIN_RELEASE_SCHEMA
 }
 
+# bats test_tags=treescan
 @test "the exit-code extractors read code and prose, and neither returns an empty set" {
   local src con codes
   # The table's read is total (contract_table): a row it cannot read fails
@@ -790,6 +791,7 @@ $want"
 # cannot tell a warning from an instruction.
 # ============================================================================
 
+# bats test_tags=treescan
 @test "the docs install devbin by the formula's full name, never the short name Homebrew refuses from a tap it does not trust (0203)" {
   local USER_DOCS
   user_docs
@@ -942,6 +944,7 @@ dvb_seeds() {
 #     paths arm reads in the vendored set and nothing reads in the README.
 # ============================================================================
 
+# bats test_tags=treescan
 @test "no doc a user reads seeds a project from one machine's Devel tree (0210)" {
   local USER_DOCS
   user_docs
@@ -954,6 +957,7 @@ dvb_seeds() {
 ${found//"$DEVBIN_HOME/"/}"
 }
 
+# bats test_tags=treescan
 @test "the README installs from brew first, and documents dev and opt once, for the maintainer of a dev checkout (0210)" {
   local USER_DOCS
   user_docs
@@ -992,6 +996,7 @@ $(<"$heads")"
 # to it. Every doc under docs/ is held to a row, so a doc added later is too;
 # the contract is named because the arm exists for it, and a docs/ the glob
 # read nothing from cannot pass.
+# bats test_tags=treescan
 @test "the README's documentation table links every doc under docs/, the dev, opt and brew contract among them" {
   local table doc name missing=""
   [ -f "$DEVBIN_HOME/docs/dev-opt-brew.md" ] || fail "docs/dev-opt-brew.md, the dev, opt and brew contract, is not there"
@@ -1073,6 +1078,7 @@ $rows"
 # THE EXIT-CODE CONTRACT
 # ============================================================================
 
+# bats test_tags=treescan
 @test "every exit code the source can return is named in the contract (0241)" {
   local missing=""
   local code named
@@ -1089,6 +1095,7 @@ $rows"
 $(contract_table)"
 }
 
+# bats test_tags=treescan
 @test "the contract names no exit code the source cannot return (0241)" {
   local stale=""
   local code returned
@@ -1172,6 +1179,7 @@ version_literal_sites() {
     | sed "s|^$DEVBIN_HOME/||" | LC_ALL=C sort -u
 }
 
+# bats test_tags=treescan
 @test "the version extractor reads a real version and finds a real site" {
   local v count
   v="$(devbin_own_version)"
@@ -1203,6 +1211,7 @@ version_literal_sites() {
   grep -qx "bin/.devbin/config.yaml" <<<"$sites" || fail "the extractor did not find '$floor' in bin/.devbin/config.yaml, which declares it"
 }
 
+# bats test_tags=treescan
 @test "devbin's own version is a literal in no file but bin/.devbin/config.yaml, which declares a constraint" {
   local unexpected="" f
   while IFS= read -r f; do
@@ -1245,6 +1254,7 @@ version_literal_sites() {
 # CROSS-LINKS
 # ============================================================================
 
+# bats test_tags=treescan
 @test "every relative link in the docs resolves to a file that exists" {
   local doc dir target broken=""
 
@@ -1274,6 +1284,7 @@ EOF
 # AUTHORED HELP FOR DEVBIN'S OWN LIFECYCLE COMMANDS
 # ============================================================================
 
+# bats test_tags=treescan
 @test "EVERY command devbin offers in its own tree has authored help, not the generated fallback (0112)" {
   # THE LIST IS DERIVED, NOT KEPT. This arm named five commands by hand --
   # install upgrade vendor doctor new -- and passed for weeks while seven other

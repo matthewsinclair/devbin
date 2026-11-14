@@ -99,6 +99,7 @@ CHECKOUT_FIX="or run bin/devbin use dev or opt in your devbin checkout"
   refute_output_contains "dev or opt"
 }
 
+# bats test_tags=treescan
 @test "every remedy for no Homebrew devbin is brew_unplaced_fix's, and no shell site spells its own (0250)" {
   local hits rest
   local -a dirs=("$DEVBIN_HOME/lib")

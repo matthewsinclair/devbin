@@ -142,6 +142,9 @@ commands:
     options:
       bats:
         summary: BATS unit suite
+      scans:
+        summary: The tree-scan arms alone, every test tagged treescan
+        in_all: false
 
   # The gates that tests/gate runs today. Once this resolves, tests/gate is
   # deleted -- it is a second implementation of the same concern, a Highlander

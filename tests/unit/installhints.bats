@@ -69,6 +69,7 @@ _hint_hits() {
 }
 
 # AT-2.2
+# bats test_tags=treescan
 @test "every install hint in the vendored set that names Homebrew also names a Linux route that puts the tool on PATH" {
   local pos="$DEVBIN_TEST_TMPDIR/hints.pos" page="$DEVBIN_TEST_TMPDIR/hints.pos.md"
   local neg="$DEVBIN_TEST_TMPDIR/hints.neg" out="$DEVBIN_TEST_TMPDIR/hints.out"

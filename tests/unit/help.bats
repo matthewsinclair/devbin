@@ -327,6 +327,7 @@ printf "ran\n"'
   refute_output_contains "Not this"
 }
 
+# bats test_tags=treescan
 @test "no lib/cmd handler carries a summary its catalogue row already owns" {
   # Structural, and it holds down one source per fact rather than a rendering
   # detail. Every
@@ -1553,6 +1554,7 @@ _page_breaches() {
     [ $? -eq 1 ]
 }
 
+# bats test_tags=treescan
 @test "a shipped page names no docs/, intent/, tests/, lib/ or .lib/ path, no shell-gate and no unqualified issue number (0113)" {
   local f n=0 all hits="" probe line
   # POSITIVE CONTROL: each forbidden shape, planted, is found -- so a clean

@@ -289,6 +289,7 @@ EOF
 # ONE HOME
 # ============================================================================
 
+# bats test_tags=treescan
 @test "git_readonly is defined once, in lib/helpers" {
   local defs
   defs="$(grep -rlE '^git_readonly\(\)' "$DEVBIN_LIB_DIR")"

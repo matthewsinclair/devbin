@@ -372,6 +372,7 @@ YAML
   fail "should have skipped before reaching here"
 }
 
+# bats test_tags=treescan
 @test "no test name contains a backtick or a command substitution" {
   # bats EVALS every test description to resolve variable references in it
   # (bats_test_function, test_functions.bash), which makes a name containing
@@ -393,6 +394,7 @@ YAML
   fi
 }
 
+# bats test_tags=treescan
 @test "no output assertion is passed a bare end-of-options marker" {
   # The output helpers read $1 DIRECTLY -- they take a substring or a regex, not
   # option-style arguments -- so a defensive `--` before a pattern beginning with

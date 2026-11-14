@@ -1,13 +1,15 @@
 devbin test bats [paths...] [bats flags...]
+devbin test scans
 devbin test --failed
 devbin test all
 
-Run the Devbin suite. One option, because Devbin has one kind of test: BATS unit
-files under `tests/unit/`, one file per concern.
+Run the Devbin suite: BATS unit files under `tests/unit/`, one file per concern.
+`bats` runs it, whole or targeted; `scans` runs its tree scans alone.
 
   bin/devbin test bats            the whole suite
   bin/devbin test bats tests/unit/help.bats
   bin/devbin test all             the same thing, via the synthesised `all`
+  bin/devbin test scans           only the tree scans, the tests tagged `treescan`
   bin/devbin test --failed        only the tests the last run failed
 
 ## The whole suite runs in two lanes
@@ -46,6 +48,10 @@ margins. Tag it on the line before it, and say why:
     # Waits out a 0.25 s heartbeat, which a loaded machine can delay.
     # bats test_tags=serial
     @test "a fractional interval beats ..." {
+
+## The tree scans alone
+
+`test scans` runs every test tagged `treescan`: the tests whose verdict is over a set of this tree's own files found by walking it, so a change anywhere can turn one red. A fix runs its own tests and then `test scans` before it lands; the cut runs everything. `test all` does not run it, since it runs every tagged test in place. `bin/devbin help test scans` says what counts as a scan and how to tag one.
 
 ## Rerunning what failed
 

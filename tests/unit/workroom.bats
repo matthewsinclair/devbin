@@ -189,6 +189,7 @@ _workroom_arm() {
   [ ! -s "$out" ] || fail "a shipped file $remedy:\n$(sed "s|^$DEVBIN_HOME/||" "$out")"
 }
 
+# bats test_tags=treescan
 @test "tests/shipped.paths lists the shipped tree, and every entry it includes names a tracked file (0216)" {
   local list="$DEVBIN_HOME/tests/shipped.paths" spec files
   [ -f "$list" ] || fail "tests/shipped.paths is not there -- the scan would read nothing"
@@ -283,6 +284,7 @@ include|:::q|'
   [ "$checked" -eq "$(grep -c "|" <<<"$text")" ] || fail "checked $checked of the fixture list's specs"
 }
 
+# bats test_tags=treescan
 @test "no shipped line names a collaborator by handle, in any case, or as a fixture's committer (0216)" {
   local pos neg
   pos="$(_workroom_plant handles.pos '# (hv, 2026-09-16)' "# as dc's review found" '# measured by vc' \
@@ -293,6 +295,7 @@ include|:::q|'
   _workroom_arm handles "names a collaborator by handle -- keep the lesson and drop who" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "no shipped line credits an automated review: a critic by name, or a critic's pass (0216)" {
   local pos neg
   pos="$(_workroom_plant credits.pos '# (critic-shell on 0139 v2e)' "# the critic's fourth pass" \
@@ -302,6 +305,7 @@ include|:::q|'
   _workroom_arm credits "credits an automated review -- keep the reason and drop which pass found it" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "no shipped line says how a thing was ruled: ruled, a ruling, rulings (0216)" {
   local pos neg
   pos="$(_workroom_plant rulings.pos '# hv ruled on 2026-09-17' '# THE RULING' '# two rulings' \
@@ -311,6 +315,7 @@ include|:::q|'
   _workroom_arm rulings "says how a thing was ruled -- state the rule, not who settled it" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "no shipped line points into intent/: a thread, the registry, a design decision (0216)" {
   local pos neg
   pos="$(_workroom_plant pointers.pos '# see intent/st/ST0005/design.md' '# intent/llm/MODULES.md' \
@@ -323,6 +328,7 @@ include|:::q|'
     "$pos" "$neg" ':!.gitignore'
 }
 
+# bats test_tags=treescan
 @test "no shipped line cites a directive or a contract amendment by number, which a reader of the shipped files cannot look up (0292)" {
   local pos neg
   pos="$(_workroom_plant citations.pos '# (directive 15; issue 0250)' '# DIRECTIVE 3 says' '# directives 14 and 15' \
@@ -336,6 +342,7 @@ include|:::q|'
     "$pos" "$neg" ':!CHANGELOG.md' ':!RELEASES.md' ':!RELEASES/'
 }
 
+# bats test_tags=treescan
 @test "no shipped line names a project on the workroom's list of unshipped names, in any case, inside a session's name or an identifier too, and the list does not ship (0242)" {
   local list rc=0 files out="$DEVBIN_TEST_TMPDIR/names.out"
   local -a sf

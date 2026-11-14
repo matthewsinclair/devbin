@@ -269,6 +269,7 @@ _neutral_arm() {
   [ ! -s "$out" ] || fail "the vendored runtime $remedy:\n$(sed "s|^$DEVBIN_HOME/||" "$out")"
 }
 
+# bats test_tags=treescan
 @test "every file vendored_paths lists is there to scan, and they are not an empty set (0152)" {
   # vendored_paths is the scan's population; that the list is the WHOLE seam
   # is install.bats's to hold, against an independent find of lib/, and is not
@@ -282,6 +283,7 @@ _neutral_arm() {
   done <<<"$files"
 }
 
+# bats test_tags=treescan
 @test "no vendored file cites a commit, another repository's issue, or a CI run (0152)" {
   local pos neg bin out="$DEVBIN_TEST_TMPDIR/refs.bin.out"
   pos="$(_neutral_plant refs.pos '# project#0032' '# ported from it, 25c431a00' '# installed from 49e8bb2' \
@@ -300,6 +302,7 @@ _neutral_arm() {
   _neutral_arm refs "cites a commit, another repository's issue or a CI run -- devbin's own issue numbers and decision numbers stay, and the rest belongs in git" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "no vendored file carries a path on one machine (0152)" {
   local pos neg
   pos="$(_neutral_plant paths.pos '# collected in ~/Devel/prj/x/dmarc' '# /Users/someone/x' \
@@ -311,6 +314,7 @@ _neutral_arm() {
   _neutral_arm paths "carries a path on one machine -- say what the path is, not where it was" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "no vendored file carries a URI with a password in it, an env indirection included (0187)" {
   local pos neg
   pos="$(_neutral_plant credentials.pos "  warn \"use (postgresql://user:\\\$\$v@host) instead\"" \
@@ -328,6 +332,7 @@ _neutral_arm() {
   _neutral_arm credentials "carries a URI with a password in it, which a secret scanner reads as a credential whatever stands for the password -- describe the URI's form in words instead" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "no vendored file attributes a decision, a review or a finding to anyone (0152)" {
   local pos neg
   pos="$(_neutral_plant attribution.pos '# (xy, 2026-09-16)' '# (proj/xy, 2026-09-01)' \
@@ -339,6 +344,7 @@ _neutral_arm() {
   _neutral_arm attribution "attributes a decision, a review or a finding to someone -- keep the lesson and drop who said it" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "the owner's licence is vendored and at the repository root, byte for byte, and names the owner only on its copyright line (0152)" {
   local rels pos neg
   rels="$(vendored_paths "$DEVBIN_HOME")" || fail "the vendored set could not be listed"
@@ -362,6 +368,7 @@ _neutral_arm() {
   _neutral_arm owner "names its owner off the copyright line" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "no vendored file describes the operator's own fleet or counts its estates (0172)" {
   local pos neg
   pos="$(_neutral_plant estate.pos '# measured across the fleet' '# the Fleet sweep' \
@@ -379,6 +386,7 @@ _neutral_arm() {
   _neutral_arm estate "describes the operator's own estate -- keep the reasoning and drop who, where and how many" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "nothing a user reads cites devbin's tracker: printed lines, pages, the reference yamls, the templates (0172)" {
   local pos neg md yaml tmpl bin stub rc out="$DEVBIN_TEST_TMPDIR/tracker.md.out" rels n_whole n_code
   pos="$(_neutral_plant tracker.pos "  printf 'floor (issue 0022)\n'" '  die "reserved (D''8)"' \
@@ -438,6 +446,7 @@ _neutral_arm() {
   _neutral_arm tracker "cites devbin's tracker in text a user reads -- say what the rule is, not which issue, thread or decision made it" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "no vendored line, comment or code, says how devbin was decided (0202)" {
   local pos neg
   pos="$(_neutral_plant decisions.pos '# launchd and cron were ru''led out' '# THE EXIT STATUS IS A RU''LING' \
@@ -448,6 +457,7 @@ _neutral_arm() {
   _neutral_arm decisions "says how devbin was decided -- say what the code does, not who or what settled it" "$pos" "$neg"
 }
 
+# bats test_tags=treescan
 @test "a reference yaml's worked example names only reserved example domains, never a real one (0202)" {
   local pos neg out="$DEVBIN_TEST_TMPDIR/examples.code.out" code rels rc
   pos="$(_neutral_plant examples.pos.yaml '    spf_include: _spf.vendor.com' \

@@ -657,6 +657,7 @@ scan_tree() {
     grep -vE '^[^:]+:[0-9]+:[[:space:]]*#'
 }
 
+# bats test_tags=treescan
 @test "nothing outside lib/helpers reaches for a raw sha256 binary" {
   # NON-VACUITY FIRST: the scan must see the tree at all. `sha256_files` lives
   # in lib/helpers and always matches, so zero hits means the scan is broken,
@@ -673,6 +674,7 @@ scan_tree() {
 $hits"
 }
 
+# bats test_tags=treescan
 @test "nothing reaches for the BSD-only date epoch form outside utc_from_epoch" {
   local seen
   seen="$(scan_tree 'date[[:space:]]+(-u[[:space:]]+)?-r[[:space:]]' | grep -c . || true)"
@@ -686,6 +688,7 @@ $hits"
 $hits"
 }
 
+# bats test_tags=treescan
 @test "the runtime's mv lines are exactly the known mv -f lines, so no replace can stop on a terminal prompt or quietly not replace" {
   # `bin/devbin test all` from a terminal printed its last `ok` line and then
   # nothing for 8h13m. The read-only replace_file arm below had reached
@@ -926,6 +929,7 @@ EOF
 EOF
 }
 
+# bats test_tags=treescan
 @test "0066: no file outside lib/helpers spells the word lists or the - sentinel test" {
   # Known limit, declared: a single-word comparison (`= true`, `!= no`) is not
   # searched for, because internal variables legitimately compare to `yes`.
@@ -1360,6 +1364,7 @@ $output"
   [ "$got" = '<>' ] || fail "the caller's nullglob was not put back: $got"
 }
 
+# bats test_tags=treescan
 @test "devbin assigns neither GLOBIGNORE nor GLOBSORT, which is what keeps an inherited one inert (0082)" {
   # Measured on bash 5.3: both arrive from the environment WITHOUT
   # effect, because bash runs their hooks on assignment rather than on import --

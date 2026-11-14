@@ -623,6 +623,7 @@ _code2_sites() {
   ' "${files[@]}" || { fail "awk could not read the files under $1"; return 1; }
 }
 
+# bats test_tags=treescan
 @test "no handler under lib/cmd exits or returns a literal 2 unless it says it is the dispatcher's meaning: that code is the dispatcher's (0119, 0126, ST0008 WP-08)" {
   # POSITIVE CONTROL first: a planted 2 is found, and a 2 in a comment is not,
   # so a clean result below is the scan finding nothing rather than unable to.
@@ -788,6 +789,7 @@ _unwalked_finds() {
   done <<<"$files"
 }
 
+# bats test_tags=treescan
 @test "every find under lib/ and bin/ that can descend is find_walk, or says why not (0145)" {
   local probe="$DEVBIN_TEST_TMPDIR/walkprobe" out
   # POSITIVE CONTROL: a plain find that descends is flagged, marked or not with
@@ -822,6 +824,7 @@ $out"
   [ "$n" -gt 0 ] || fail "found no find_walk call under lib/ and bin/ -- the scan would read nothing"
 }
 
+# bats test_tags=treescan
 @test "every find under lib/ and bin/ reads its status or says why not (0139)" {
   local probe="$DEVBIN_TEST_TMPDIR/findprobe" out n
   # POSITIVE CONTROL: each shape that loses find's errors or its status is found
@@ -923,6 +926,7 @@ _waits_on_last_pid() {
   grep -vE '^[^:]+:[0-9]+:[[:space:]]*#' <<<"$out" || [ $? -eq 1 ] || fail "grep could not filter the waits it found"
 }
 
+# bats test_tags=treescan
 @test "no wait under lib/, bin/ or tests/lib/ reads the last background job's pid: a job's pid is named, and a process substitution is read by nul_read (0342)" {
   local probe="$DEVBIN_TEST_TMPDIR/waitprobe" out n
   # POSITIVE CONTROL: each spelling of a wait on $! is found -- after a process
@@ -1048,6 +1052,7 @@ _setup_without_teardown() {
   done
 }
 
+# bats test_tags=treescan
 @test "every suite that calls devbin_setup also calls devbin_teardown, so no arm leaks its temp dir (0142)" {
   # POSITIVE CONTROL first: a planted suite with setup and no teardown is
   # named; so are suites naming devbin_teardown only in a comment (outside
@@ -1240,6 +1245,7 @@ _early_reader_pipes() {
 }
 
 # AT-7.1
+# bats test_tags=treescan
 @test "no reader in a pipe can stop before its writer has finished, unless the comment above it says why (ST0008 AC-7.1, 0031)" {
   # EACH TREE IS READ, AND HAS ITS FLOOR, ON ITS OWN. One floor over all four
   # was cleared by tests/ alone, so a lib/ the scan could not read passed it.
@@ -1292,6 +1298,7 @@ $found"
   [ -z "$hits" ] || fail "doctor throws a status away:\n$hits"
 }
 
+# bats test_tags=treescan
 @test "the gated-tool stdin rule has one definition: gate_exec, in lib/helpers (0158)" {
   # run_gate wrote `DEVBIN_GATE_TTY=... "$@" </dev/null` inline and the release
   # cut copied the redirect twice, so a project's handler had no name to call
@@ -1327,6 +1334,7 @@ $found"
     fail "stdin_tty_flag is not defined exactly once, in lib/helpers: $hits"
 }
 
+# bats test_tags=treescan
 @test "the lint gate check lint runs is clean over the tree, and a planted breach turns it red (0155)" {
   # Lint ran only at the cut and on CI, after landing, so two breaches reached a
   # release commit. This runs the gate `check lint` runs, from the suite.
@@ -1370,6 +1378,7 @@ $found"
   echo "# lint: $n file(s), 0 breaches" >&3
 }
 
+# bats test_tags=treescan
 @test "a directory is turned into a path only by physical_dir and logical_dir in lib/, the scan 0162 kept for cd -P widened to every cd (0267)" {
   # A copy of the step, `$(cd <dir> && pwd)`, physical or logical, read a
   # relative path through CDPATH and a lone `-` as $OLDPWD, printing either
@@ -1416,6 +1425,7 @@ $found"
   [ -z "$outside" ] || fail "a directory is turned into a path outside physical_dir and logical_dir:\n$outside"
 }
 
+# bats test_tags=treescan
 @test "a tree's kind is read as an install in one place, is_install_tree, and by no other reader (0262)" {
   # Each reader compared manifest_field's kind with `install` inline, and the
   # dispatcher's own guard spelled the read's failure its own way. bin/ is
@@ -1431,6 +1441,7 @@ $found"
   [ "$hits" = "$body" ] || fail "the manifest's kind is read outside is_install_tree's body ($body):\n$hits"
 }
 
+# bats test_tags=treescan
 @test "a manifest's devbin_version is read in one place, manifest_version through manifest_field, and by no other reader (0283)" {
   # runtime_version read the field with an awk of its own, which read past
   # the header and kept the spacing manifest_field trims. bin/ is scanned with
@@ -1449,6 +1460,7 @@ $found"
   [ -z "$hits" ] || fail "the manifest's devbin_version is read by a tool of its own, not manifest_field:\n$hits"
 }
 
+# bats test_tags=treescan
 @test "a colon list is split by colon_split alone: no line in bin, lib or tests sets IFS to a colon but in the one join shape (0248)" {
   # Each site that split PATH or GIT_CEILING_DIRECTORIES wrote out its own
   # `read -r -a`, which read one line and dropped a trailing empty field. The

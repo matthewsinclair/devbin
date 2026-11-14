@@ -3124,6 +3124,7 @@ catalogue_gate() {
   assert_output_contains "pair: purged"
 }
 
+# bats test_tags=treescan
 @test "no gate forwards a raw argv: every run_gate call passes the split flags and the split args (0087)" {
   # THE CLASS. Over every run_gate call (gate_spans, the one reader the 0085
   # arm uses too), which hands over a call's flags and its argv as separate

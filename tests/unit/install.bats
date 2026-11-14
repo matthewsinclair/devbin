@@ -341,6 +341,7 @@ _unchecked_set_reads() {
   done <<<"$files"
 }
 
+# bats test_tags=treescan
 @test "every read of the vendored set in lib/ takes its status, never a heredoc's silence (0127)" {
   local n out probe="$DEVBIN_TEST_TMPDIR/scan"
   # POSITIVE CONTROL: every shape that loses the status, planted, is found --
@@ -1057,6 +1058,7 @@ _home_shaped() {
   grep -nIE '/Users/[a-zA-Z0-9._-]+|/home/[a-zA-Z0-9._-]+' "$1"
 }
 
+# bats test_tags=treescan
 @test "no file devbin vendors carries a home-shaped path, and the probe still hits (0109)" {
   local rel src out rc hits="" scanned=0 control
   while IFS= read -r rel; do

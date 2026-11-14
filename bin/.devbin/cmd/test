@@ -21,8 +21,8 @@ set -euo pipefail
 cd "$PROJECT_ROOT"
 
 usage() {
-  printf 'usage: %s test bats [paths...] [bats flags...] | %s test --failed | %s test --weights <system>=<log>... | %s test all\n' \
-    "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}"
+  printf 'usage: %s test bats [paths...] [bats flags...] | %s test scans | %s test --failed | %s test --weights <system>=<log>... | %s test all\n' \
+    "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}"
 }
 
 # failed_in <errors file> -- each test a bats seal names as failed, one
@@ -163,6 +163,26 @@ case "${1:-}" in
       --out-dir tmp/test \
       --source "devbin's own test handler -- a literal command line in bin/.devbin/cmd/test, not config" \
       -- "${gate_cmd[@]}" ${DEVBIN_GATE_ARGS[@]+"${DEVBIN_GATE_ARGS[@]}"}
+    ;;
+  scans)
+    # THE TREE SCANS ALONE: every arm tagged `treescan`, the arms whose verdict
+    # is over a set of this tree's own files found by walking it, so a change
+    # anywhere can turn one red. They run at every landing, before the cut that
+    # runs everything. Plain bats over tests/unit, filtered by the tag, and
+    # sealed under tmp/test/ like any targeted run, so --failed reruns what
+    # failed. Not in `all`: `test all` already runs every tagged arm in place,
+    # inside its own file (bin/.devbin/config.yaml, in_all: false). A suite
+    # with no tagged arm is no clean scan: bats finds no test and fails.
+    shift
+    gate_split_args "$@"
+    [ "${#DEVBIN_GATE_ARGS[@]}" -eq 0 ] ||
+      die "test scans takes no paths or bats flags: it runs every arm tagged treescan under tests/unit (got: ${DEVBIN_GATE_ARGS[*]})"
+    require_tool bats "install with: brew install bats-core, or apt-get install bats"
+    run_gate --label "tests (bats, tree scans)" --suffix bats --grammar shell \
+      ${DEVBIN_GATE_FLAGS[@]+"${DEVBIN_GATE_FLAGS[@]}"} \
+      --out-dir tmp/test \
+      --source "devbin's own test handler -- a literal command line in bin/.devbin/cmd/test, not config" \
+      -- bats --filter-tags treescan tests/unit
     ;;
   -h | --help)
     usage

@@ -41,6 +41,7 @@ wrapped_paragraph_lines() {
   ' "$1"
 }
 
+# bats test_tags=treescan
 @test "every vendored markdown file is prettier-stable: no hard-wrapped paragraphs" {
   local found=0 f out
   while IFS= read -r f; do
@@ -76,6 +77,7 @@ _prettier_diff() {
   diff "$1" <(printf '%s\n' "$formatted") || [ $? -eq 1 ]
 }
 
+# bats test_tags=treescan
 @test "every vendored markdown file is prettier-stable under the default config (0113)" {
   # NOT ON CI, BY RULE: CI does not install prettier. There this arm skips and
   # says so, and on a machine without prettier it skips as any arm needing an

@@ -55,6 +55,7 @@ not_lf() {
 }
 
 # AT-1.1
+# bats test_tags=treescan
 @test "devbin's root .gitattributes holds every tracked file to LF, and text=auto leaves binaries alone (AC-1.1)" {
   local out bad tracked
   assert_file_contains "$DEVBIN_HOME/.gitattributes" '* text=auto eol=lf'
@@ -71,6 +72,7 @@ $bad"
 }
 
 # AT-1.1
+# bats test_tags=treescan
 @test "no tracked text file in devbin's tree carries a CR byte (AC-1.1)" {
   local hits
   hits="$(cd "$DEVBIN_HOME" && LC_ALL=C git grep -I -l -e $'\r')" || [ $? -eq 1 ] || fail "git grep could not read the tree"
