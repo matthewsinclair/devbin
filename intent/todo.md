@@ -26,7 +26,7 @@ A DOING / TODO / DONE view, projected from steel-thread and work-package status:
   - [x] 15: Measure and re-read: RELEASE seal clock lines against the expected column; kovacs, lanes, the consumers' macOS legs
   - [x] 16: Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)
   - [x] 17: A gate declares the platforms it runs on: inactive elsewhere, never failed (D69)
-  - [ ] 18: docs/assembly-and-the-build-cache.md: Devbin's Build Cache for Optimised Release Assembly, design and tech note plus how-to
+  - [x] 18: docs/assembly-and-the-build-cache.md: Devbin's Build Cache for Optimised Release Assembly, design and tech note plus how-to
 
 ## TODO
 

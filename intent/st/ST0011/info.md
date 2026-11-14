@@ -32,26 +32,26 @@ Reach (hv, 2026-10-31): where a project does something bespoke, slow or redundan
 
 ## Work Packages
 
-| WP    | Title                                                                                                                       | Size | Status      |
-| ----- | --------------------------------------------------------------------------------------------------------------------------- | ---- | ----------- |
-| WP-01 | Seal records its commit; gates remember a sealed green for (commit, platform)                                               | S    | Done        |
-| WP-02 | The cut reorders and absorbs publish: confirm first, stamp, commit, candidate in every shape, one wait loop, tag on green   | S    | Done        |
-| WP-03 | The core ships ci-state; release check refuses a test workflow whose matrix does not fire on candidate/                     | S    | Done        |
-| WP-04 | Devbin's own workflow: tag trigger and Candidate verdict job removed, lanes from the runner's CPUs, WSL on the candidate    | S    | Done        |
-| WP-05 | Remote legs: the release.legs key and runner; kovacs declared in Devbin's config                                            | S    | Done        |
-| WP-06 | The macOS stage at the release commit, as a leg                                                                             | S    | Done        |
-| WP-07 | Attach reads the candidate run: assets keyed on the release commit's sha                                                    | S    | Done        |
-| WP-08 | Formula under the yes; assets mode with the cask verified                                                                   | S    | Done        |
-| WP-09 | A Devbin release through the new shape, then the vendor sweep into the five consumers                                       | S    | Done        |
-| WP-10 | Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/                     | S    | Cancelled   |
-| WP-11 | Gtools retires tools/ci-state and ci.wait; macOS job on candidate/; release.legs kovacs                                     | S    | Cancelled   |
-| WP-12 | Intent retires its release driver, preflight scripts and hook build path into the core                                      | M    | Done        |
-| WP-13 | Conflab adopts the core's release: gates before any push, one confirm, one formula writer                                   | L    | Cancelled   |
-| WP-14 | Laksa's deploy reads CI; the suite and the prod compile run once                                                            | S    | Cancelled   |
-| WP-15 | Measure and re-read: RELEASE seal clock lines against the expected column; kovacs, lanes, the consumers' macOS legs         | S    | Done        |
-| WP-16 | Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)          | S    | Done        |
-| WP-17 | A gate declares the platforms it runs on: inactive elsewhere, never failed (D69)                                            | S    | Done        |
-| WP-18 | docs/assembly-and-the-build-cache.md: Devbin's Build Cache for Optimised Release Assembly, design and tech note plus how-to | S    | Not Started |
+| WP    | Title                                                                                                                       | Size | Status    |
+| ----- | --------------------------------------------------------------------------------------------------------------------------- | ---- | --------- |
+| WP-01 | Seal records its commit; gates remember a sealed green for (commit, platform)                                               | S    | Done      |
+| WP-02 | The cut reorders and absorbs publish: confirm first, stamp, commit, candidate in every shape, one wait loop, tag on green   | S    | Done      |
+| WP-03 | The core ships ci-state; release check refuses a test workflow whose matrix does not fire on candidate/                     | S    | Done      |
+| WP-04 | Devbin's own workflow: tag trigger and Candidate verdict job removed, lanes from the runner's CPUs, WSL on the candidate    | S    | Done      |
+| WP-05 | Remote legs: the release.legs key and runner; kovacs declared in Devbin's config                                            | S    | Done      |
+| WP-06 | The macOS stage at the release commit, as a leg                                                                             | S    | Done      |
+| WP-07 | Attach reads the candidate run: assets keyed on the release commit's sha                                                    | S    | Done      |
+| WP-08 | Formula under the yes; assets mode with the cask verified                                                                   | S    | Done      |
+| WP-09 | A Devbin release through the new shape, then the vendor sweep into the five consumers                                       | S    | Done      |
+| WP-10 | Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/                     | S    | Cancelled |
+| WP-11 | Gtools retires tools/ci-state and ci.wait; macOS job on candidate/; release.legs kovacs                                     | S    | Cancelled |
+| WP-12 | Intent retires its release driver, preflight scripts and hook build path into the core                                      | M    | Done      |
+| WP-13 | Conflab adopts the core's release: gates before any push, one confirm, one formula writer                                   | L    | Cancelled |
+| WP-14 | Laksa's deploy reads CI; the suite and the prod compile run once                                                            | S    | Cancelled |
+| WP-15 | Measure and re-read: RELEASE seal clock lines against the expected column; kovacs, lanes, the consumers' macOS legs         | S    | Done      |
+| WP-16 | Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)          | S    | Done      |
+| WP-17 | A gate declares the platforms it runs on: inactive elsewhere, never failed (D69)                                            | S    | Done      |
+| WP-18 | docs/assembly-and-the-build-cache.md: Devbin's Build Cache for Optimised Release Assembly, design and tech note plus how-to | S    | Done      |
 
 ## Acceptance
 

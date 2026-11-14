@@ -2,7 +2,7 @@
 wp_id: WP-18
 title: docs/assembly-and-the-build-cache.md: Devbin's Build Cache for Optimised Release Assembly, design and tech note plus how-to
 scope: S
-status: Not Started
+status: Done
 ---
 
 # WP-18: docs/assembly-and-the-build-cache.md: Devbin's Build Cache for Optimised Release Assembly, design and tech note plus how-to
