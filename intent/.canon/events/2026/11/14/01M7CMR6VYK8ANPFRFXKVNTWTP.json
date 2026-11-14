@@ -1,0 +1,15 @@
+{
+  "id": "01M7CMR6VYK8ANPFRFXKVNTWTP",
+  "ts": "2026-11-14T09:03:26.078Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's TUI answers in vc's window, read 2026-11-14 09:03Z by date -u: (1) intentd's at-login enrolment on rhadamanth goes ahead now, by rhadamanth-sysadm on hv's word in its own window (stop then enrol, per 0666); vc held the desk for it, then released the hold when hv went AFK at 09:00Z with the word not yet given; (2) the Intranet repo on gyges re-vendors devbin 0.1.24 and pushes to local: done by gyges-sysadm on hv's yes in its window, commit f5b0228b (87 seam paths, 0.1.8 to 0.1.24 from brew, the uncommitted 0.1.11 copy archived first), local fast-forwarded 6756f7c..f5b0228 (55 commits). gyges's 2026-11-01 Time Machine snapshot has aged out."
+  }
+}

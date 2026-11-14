@@ -1,0 +1,16 @@
+{
+  "id": "01M7CMR7JV6C5CTZVAS91YAME8",
+  "ts": "2026-11-14T09:03:26.811Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 200,
+    "text": "Bank refs in canon: checked 2026-11-14 by changed lines (~/Devel/scratch/devbin-vc/bankrefs/check.out): 20 hold landed work (issues closed, or ST0011's WP02, WP07 and WP08 done; the five ST0011 refs predate the 2026-11-02 repo switch, so they share no merge-base with main); cc's 3 refs for 0326 are kept while 0326 is open. On hv's word, run ~/Devel/scratch/devbin-vc/bankrefs/clear.sh (update-ref -d with each recorded old value)."
+  }
+}

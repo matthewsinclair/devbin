@@ -4631,10 +4631,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 200,
-      "text": "Bank refs in canon (cc's 5, dc's 28, listed by git for-each-ref refs/bank/): check each ref's work is on main by its changed lines, put the list to hv, then clear the landed ones by script (update-ref -d with the old value).",
+      "text": "Bank refs in canon: checked 2026-11-14 by changed lines (~/Devel/scratch/devbin-vc/bankrefs/check.out): 20 hold landed work (issues closed, or ST0011's WP02, WP07 and WP08 done; the five ST0011 refs predate the 2026-11-02 repo switch, so they share no merge-base with main); cc's 3 refs for 0326 are kept while 0326 is open. On hv's word, run ~/Devel/scratch/devbin-vc/bankrefs/clear.sh (update-ref -d with each recorded old value).",
       "state": "live",
       "recorded_at": "2026-11-05T11:22:53.646Z",
-      "edited_at": "2026-11-13T18:14:42.546Z"
+      "edited_at": "2026-11-14T09:03:26.811Z"
     },
     {
       "node": "vc",
@@ -5020,10 +5020,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 213,
-      "text": "HV'S LIST (as of 2026-11-14 08:50Z by date -u): (c) hv files the GitHub Support purge from vc's draft, ~/Devel/scratch/devbin-vc/0.1.24/github-support-purge.txt (decision 178); (e) the no-vendor mode (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) todo 184's carried host items: vc is re-confirming with rhadamanth-sysadm and gyges-sysadm (kovacs-sysadm offline), then hv gets only the ones still standing; the router reservation is hv's router. Done since: (a), (b), (d), (f), (h), (i) (decisions 177 and 178).",
+      "text": "HV'S LIST (as of 2026-11-14 09:03Z by date -u): (c) hv files the GitHub Support purge from vc's draft, ~/Devel/scratch/devbin-vc/0.1.24/github-support-purge.txt; (e) no-vendor (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) intentd at-login enrolment: hv's word in rhadamanth-sysadm's window, at a quiet desk vc names (decision 179); kovacs's GNOME re-login (kovacs-sysadm offline) and the router's DHCP reservation, hv's to check; (j) the bank-ref clear on todo 200. Done since: (a), (b), (d), (f), (h), (i), the Intranet repo and the snapshot (decisions 177 to 179).",
       "state": "live",
       "recorded_at": "2026-11-13T18:14:30.327Z",
-      "edited_at": "2026-11-14T08:50:37.035Z"
+      "edited_at": "2026-11-14T09:03:35.729Z"
     },
     {
       "node": "vc",
@@ -5100,6 +5100,15 @@
       "text": "hv's TUI answers in vc's window, read 2026-11-14 08:49Z by date -u: (1) the 0.1.24 sweep commits go to each estate's local remote, fast-forward only, no upstream push (done 08:50Z: 23 pushed, Cards has no local remote; Intent's local push is on this word, not intent-vc's under decision 76); (2) vc drafts the GitHub Support purge for decision 163's three shas and hv files it (~/Devel/scratch/devbin-vc/0.1.24/github-support-purge.txt); (3) Ccusage's use-to-activate rename is ruled work at Ccusage's next session, through todo 215's notice to ccusage-vc; (4) todo 184's host items are re-confirmed with each host's sysadm first, and only the ones still standing go to hv; no-vendor and --ivault stay parked.",
       "state": "live",
       "recorded_at": "2026-11-14T08:50:36.082Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 179,
+      "text": "hv's TUI answers in vc's window, read 2026-11-14 09:03Z by date -u: (1) intentd's at-login enrolment on rhadamanth goes ahead now, by rhadamanth-sysadm on hv's word in its own window (stop then enrol, per 0666); vc held the desk for it, then released the hold when hv went AFK at 09:00Z with the word not yet given; (2) the Intranet repo on gyges re-vendors devbin 0.1.24 and pushes to local: done by gyges-sysadm on hv's yes in its window, commit f5b0228b (87 seam paths, 0.1.8 to 0.1.24 from brew, the uncommitted 0.1.11 copy archived first), local fast-forwarded 6756f7c..f5b0228 (55 commits). gyges's 2026-11-01 Time Machine snapshot has aged out.",
+      "state": "live",
+      "recorded_at": "2026-11-14T09:03:26.078Z",
+      "edited_at": "2026-11-14T09:03:35.345Z"
     }
   ],
   "sent": [
