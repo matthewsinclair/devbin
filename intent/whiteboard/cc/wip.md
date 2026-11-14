@@ -3,7 +3,7 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-13 20:43Z
+heartbeat_at: 2026-11-14 08:26Z
 status: active
 focus: "Folded for the night, 2026-11-13 20:42Z by date -u: nothing live, nothing unbanked. Today: 0348 (with 0348-3, 0348-4) and 0349 landed in 0.1.24 and closed; 0353 to 0356 filed, record only (0355 and 0356 on vc's todo 214, release after next). Watchout 11 stays. ISSUE:0326 claim stands. On the bounce: /in-session, pickup, hold for vc."
 claims: [ISSUE:0326]
