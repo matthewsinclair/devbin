@@ -62,8 +62,20 @@ concurrency:
 
 jobs:
   test-linux:
-    name: Test on Ubuntu
+    name: Test on Ubuntu, shard ${{ matrix.shard }} of ${{ strategy.job-total }}
     runs-on: ubuntu-latest
+    # THE SUITE IN SHARDS (issue 0357): each leg of this matrix runs one shard
+    # of tests/unit's files, dealt out by their measured times in
+    # tests/unit/.lanes-weights, so the legs run the suite between them, each
+    # file once, and the job's wall is its slowest shard's. The number of
+    # shards is the list's length, read back as strategy.job-total, so it is
+    # written once. FAIL-FAST OFF: a red shard leaves its siblings to finish,
+    # so every shard's verdict and times reach the log. Test Summary reads the
+    # job's one result, which is red unless every shard is green.
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
     steps:
       - uses: actions/checkout@v7
 
@@ -125,36 +137,39 @@ jobs:
       # suite's own floor of twenty-four at once (issue 0340) is for hosts: on
       # these runners it ran no faster than one test per CPU, and the macOS
       # runner, with three, went red in bats' own output forwarder under it.
+      # DEVBIN_TEST_SHARD names this leg's shard of the matrix's.
       - name: Run tests
         env:
           DEVBIN_TEST_JOBS: all
+          DEVBIN_TEST_SHARD: ${{ matrix.shard }}/${{ strategy.job-total }}
         run: bin/devbin test all
 
-      # EVERY `check` GATE EXCEPT `critic` AND `lint`, each for its own reason.
-      # critic runs Intent, and this runner installs no Intent (the note above),
-      # so it refuses here (issue 0293); the commit gate runs the critic on
-      # every commit before it is pushed. lint has
-      # already run in this job: `test all` above runs the suite's full-tree
-      # lint test (contract.bats, issue 0155), which runs the gate `check lint`
-      # runs, turns this job red on a breach, and fails rather than skips here
-      # when shellcheck is missing. Running it again below linted the tree twice
-      # in a row, about two minutes each time (issue 0191).
+      # EVERY `check` GATE BUT `critic`, ON THE FIRST SHARD ALONE. critic runs
+      # Intent, and this runner installs no Intent (the note above), so it
+      # refuses here (issue 0293); the commit gate runs the critic on every
+      # commit before it is pushed. lint is here: the suite no longer lints the
+      # whole tree (contract.bats keeps only the planted breach that proves the
+      # gate bites, issue 0357), so this list is where this job lints, and it
+      # fails rather than skips when shellcheck is missing, as `check lint`
+      # does. The gates read the tree, not a shard of the suite, so one leg runs
+      # them.
       #
       # The gates are LISTED because `check all` would run critic and refuse. A
       # list is how a gate added later goes missing from a runner without
       # anyone noticing, so the marker line below, and the macOS job's, are
       # read by tests/unit/ci-workflow.bats, which holds each equal to check's
-      # active options minus critic and lint. Keep the list on the line after
-      # the marker.
+      # active options minus critic. Keep the list on the line after the
+      # marker.
       #
       # It does not stop at the first failure, for the same reason `all` does
       # not: one pass that surfaces every breach.
-      - name: Run gates (all but critic and lint -- critic needs Intent, which this runner lacks, lint ran in the tests above)
+      - name: Run gates (all but critic -- critic needs Intent, which this runner lacks)
+        if: ${{ matrix.shard == 1 }}
         run: |
           set -euo pipefail
           failed=""
           # ci-linux-gates:
-          for opt in syntax format toolchain; do
+          for opt in syntax format toolchain lint; do
             bin/devbin check "$opt" || failed="$failed $opt"
           done
           if [ -n "$failed" ]; then
@@ -163,7 +178,7 @@ jobs:
           fi
 
   test-macos:
-    name: Test on macOS (bash >= 5 floor)
+    name: Test on macOS (bash >= 5 floor), shard ${{ matrix.shard }} of ${{ strategy.job-total }}
     # ON A RELEASE'S CANDIDATES AND ON DEMAND, NEVER ON A PUSH TO main (issues
     # 0108 and 0240). A macOS minute costs ten times a Linux one, so this job
     # does not run on every push.
@@ -194,6 +209,14 @@ jobs:
     # before a cut when the macOS side has been quiet.
     if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
     runs-on: macos-latest
+    # IN SHARDS, AS ON UBUNTU (issue 0357), and more of them: this runner has
+    # three CPUs and the suite is bound by them, so no job count shortens it
+    # and only more runners do. The legs' result is the job's, and its wall
+    # the slowest shard's.
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
     steps:
       - uses: actions/checkout@v7
 
@@ -219,6 +242,9 @@ jobs:
       # The suite itself runs under the brew bash installed above. The step
       # below fails loudly if PATH did not pick it up, because a suite quietly
       # running under 3.2 would refuse everything and report it as noise.
+      #
+      # Every shard asserts the floor its own suite runs under; the refusal
+      # proof below reads no shard, so the first runs it.
       - name: Report the system and PATH bash, and assert the floor
         run: |
           set -euo pipefail
@@ -232,6 +258,7 @@ jobs:
           fi
 
       - name: Prove the floor refuses the system bash 3.2
+        if: ${{ matrix.shard == 1 }}
         run: |
           set -euo pipefail
           out=""
@@ -250,24 +277,26 @@ jobs:
 
       # NAMED for what it does: bats runs under the PATH bash asserted >= 5
       # above. The old-bash coverage is the refusal proof, not this step. Every
-      # CPU the runner has, as on Ubuntu (ST0011 WP-04).
+      # CPU the runner has, as on Ubuntu (ST0011 WP-04), over this leg's shard.
       - name: Run tests
         env:
           DEVBIN_TEST_JOBS: all
+          DEVBIN_TEST_SHARD: ${{ matrix.shard }}/${{ strategy.job-total }}
         run: bin/devbin test all
 
-      # THE UBUNTU JOB'S GATES, BY NAME, AND NOT `check all` (issue 0293).
-      # critic runs Intent, and this runner installs no Intent, so `check all`
-      # refused here at critic after a green suite.
-      # lint ran in the tests above, as on Ubuntu. The marker line is read by
+      # THE UBUNTU JOB'S GATES, BY NAME, AND NOT `check all` (issue 0293), on
+      # the first shard alone. critic runs Intent, and this runner installs no
+      # Intent, so `check all` refused here at critic after a green suite. lint
+      # is in the list, as on Ubuntu. The marker line is read by
       # tests/unit/ci-workflow.bats, which holds it equal to the Ubuntu list's
-      # population: check's active options minus critic and lint.
-      - name: Run gates (all but critic and lint -- critic needs Intent, which this runner lacks, lint ran in the tests above)
+      # population: check's active options minus critic.
+      - name: Run gates (all but critic -- critic needs Intent, which this runner lacks)
+        if: ${{ matrix.shard == 1 }}
         run: |
           set -euo pipefail
           failed=""
           # ci-macos-gates:
-          for opt in syntax format toolchain; do
+          for opt in syntax format toolchain lint; do
             bin/devbin check "$opt" || failed="$failed $opt"
           done
           if [ -n "$failed" ]; then

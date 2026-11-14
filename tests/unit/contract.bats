@@ -1334,34 +1334,38 @@ $found"
     fail "stdin_tty_flag is not defined exactly once, in lib/helpers: $hits"
 }
 
-# bats test_tags=treescan
-@test "the lint gate check lint runs is clean over the tree, and a planted breach turns it red (0155)" {
+@test "the lint gate check lint runs turns a planted breach red, over every file of a tree it calls shell and no other (0155, 0357)" {
   # Lint ran only at the cut and on CI, after landing, so two breaches reached a
-  # release commit. This runs the gate `check lint` runs, from the suite.
-  # It is also the only lint the Ubuntu job runs (0191), so under CI a
-  # missing shellcheck FAILS here, as `check lint` would, rather than skipping.
+  # release commit. This runs the gate `check lint` runs, from the suite, over a
+  # tree made here. It lints no file of this tree: `check all` and CI's gate
+  # lists run `check lint` over the whole tree, so the suite doing it too linted
+  # the tree twice in the same gates (0357). Under CI a missing shellcheck
+  # FAILS here, as `check lint` would, rather than skipping.
   require_command shellcheck "shellcheck is not installed -- the lint gate was NOT run"
   local gate="$DEVBIN_HOME/bin/.devbin/cmd/.lib/shell-gate" probe="$DEVBIN_TEST_TMPDIR/lintprobe" n
-  # POSITIVE CONTROL: a tree holding one clean file and one with an unused
-  # variable (SC2034) is red, and names the breach.
+  # A tree holding one file of each kind the gates' rule reads or passes over:
+  # a clean script, one with an unused variable (SC2034), a sourced *.bash with
+  # no shebang, a /bin/sh script, a .bats file and a text file.
   mkdir -p "$probe/lib" "$probe/bin" "$probe/tests"
   printf '#!/usr/bin/env bash\nprintf ok\n' >"$probe/lib/clean"
   printf '#!/usr/bin/env bash\nunused=1\n' >"$probe/lib/planted"
+  printf 'helper_ok() { printf ok; }\nhelper_ok\n' >"$probe/tests/helper.bash"
+  printf '#!/bin/sh\necho ok\n' >"$probe/bin/tool"
+  printf '%s\n' '@test "a" { true; }' >"$probe/tests/a.bats"
+  printf 'notes\n' >"$probe/lib/README"
+  git -C "$probe" -c init.defaultBranch=main init -q
+  git -C "$probe" add -A
   run env PROJECT_ROOT="$probe" DEVBIN_LIB="$DEVBIN_LIB_DIR" bash "$gate" lint
   assert_failure
   assert_output_contains "SC2034"
-  assert_output_contains "lint: $(_lint_files) file(s), 1 breach(es)"
-  # And the tree itself is clean, over its whole corpus.
-  run env PROJECT_ROOT="$DEVBIN_HOME" DEVBIN_LIB="$DEVBIN_LIB_DIR" bash "$gate" lint
-  assert_success
-  [[ "$output" =~ lint:\ ([0-9]+)\ file\(s\),\ 0\ breach\(es\) ]] || fail "no clean verdict: $output"
+  [[ "$output" =~ lint:\ ([0-9]+)\ file\(s\),\ 1\ breach\(es\) ]] || fail "no verdict of one breach: $output"
   n="${BASH_REMATCH[1]}"
   # THE CORPUS BY A SECOND ROUTE: every tracked file under bin/, lib/ and tests/
   # that the gates' rule calls shell -- *.bash, or a shell shebang, and never
-  # *.bats -- listed by git rather than walked, so a corpus read short is named.
+  # *.bats -- listed by git rather than walked, so a corpus read short or wide
+  # is named.
   local f control=0
   while IFS= read -r f; do
-    [ -f "$DEVBIN_HOME/$f" ] && [ ! -L "$DEVBIN_HOME/$f" ] || continue
     case "$f" in
       *.bats) continue ;;
       *.bash)
@@ -1369,13 +1373,12 @@ $found"
         continue
         ;;
     esac
-    if grep -qE '^#!.*(bash|sh)([^A-Za-z0-9_]|$)' <<<"$(head -n1 "$DEVBIN_HOME/$f")"; then
+    if grep -qE '^#!.*(bash|sh)([^A-Za-z0-9_]|$)' <<<"$(head -n1 "$probe/$f")"; then
       control=$((control + 1))
     fi
-  done <<<"$(git -C "$DEVBIN_HOME" ls-files bin lib tests)"
+  done <<<"$(git -C "$probe" ls-files bin lib tests)"
   [ "$control" -gt 0 ] && [ "$n" -eq "$control" ] ||
     fail "the gate linted $n file(s), where git tracks $control shell file(s) under bin/, lib/ and tests/"
-  echo "# lint: $n file(s), 0 breaches" >&3
 }
 
 # bats test_tags=treescan

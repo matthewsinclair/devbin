@@ -81,9 +81,11 @@ release:
   # tests.yml.
   ci:
     summary: Test Summary
-    # A candidate runs the whole matrix, macOS and WSL beside Ubuntu, which
-    # alone takes about 47 minutes, and a macOS runner can wait in a queue
-    # before it starts, so the default 60m leaves too little room.
+    # A candidate runs the whole matrix, macOS and WSL beside Ubuntu, the
+    # suite in shards on Ubuntu and macOS (issue 0357). The whole suite on
+    # macOS took about 70 minutes before the shards, and a macOS runner can
+    # wait in a queue before it starts, so 90m stays until a sharded
+    # candidate's seconds are on a RELEASE seal to set it by.
     wait: 90m
   object: ci
   repo: matthewsinclair/devbin

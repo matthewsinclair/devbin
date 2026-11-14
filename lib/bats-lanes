@@ -500,12 +500,13 @@ lanes_weights_from_log() {
 
 # lanes_write_weights <dir> <system>=<log>... -- the weights file in <dir>,
 # rewritten from each log's times block for its system: that system's rows
-# are replaced by the log's, every other system's are kept, and a row whose
-# file is no longer in <dir> is dropped. Nothing is written unless every log
-# reads, and then by replace_file, so a reader never sees half of the file.
-# Prints what it wrote.
+# are replaced by its logs', which are one run's shards, so a system may be
+# given several logs and each file is timed in one of them; every other
+# system's are kept, and a row whose file is no longer in <dir> is dropped.
+# Nothing is written unless every log reads, and then by replace_file, so a
+# reader never sees half of the file. Prints what it wrote.
 lanes_write_weights() {
-  local dir="$1" pair sys log work
+  local dir="$1" pair sys log work dup
   local -a systems=()
   shift
   [ "$#" -gt 0 ] || die "usage: bats-lanes --weights <test directory> <system>=<log>..."
@@ -520,13 +521,20 @@ lanes_write_weights() {
     [ "$sys" != "$pair" ] && [[ "$sys" =~ ^[A-Za-z0-9_-]+$ ]] && [ -n "$log" ] ||
       die "lanes: --weights: '$pair' is not <system>=<log>, the system being uname -s where the log's run was, eg Darwin=macos.log"
     case " ${systems[*]-} " in
-      *" $sys "*) die "lanes: --weights: $sys is given two logs, and one system takes one" ;;
+      *" $sys "*) ;;
+      *) systems+=("$sys") ;;
     esac
-    systems+=("$sys")
     [ -r "$log" ] || die "lanes: --weights: cannot read $log"
     lanes_weights_from_log "$log" | LC_ALL=C awk -F '\t' -v s="$sys" '{ print s "\t" $0 }' >>"$work/rows" ||
       die "lanes: --weights: $log gives no times for $sys (above)"
   done
+  # A SYSTEM'S LOGS ARE ONE RUN'S SHARDS, so each file has one time among them:
+  # a file timed in two of them is two runs' times, or one shard's log given
+  # twice, and neither is the file's one weight.
+  dup="$(LC_ALL=C awk -F '\t' '{ k = $1 "\t" $3; if (k in seen) { print $1 " " $3; exit } seen[k] = 1 }' "$work/rows")" ||
+    die "lanes: --weights: cannot read the logs' times back"
+  [ -z "$dup" ] ||
+    die "lanes: --weights: ${dup#* } has a time in two of the logs for ${dup%% *}: the logs of one system are one run's shards, each naming a file once"
   if [ -e "$dir/$_LANES_WEIGHTS" ]; then
     LC_ALL=C awk -F '\t' -v keep=" ${systems[*]} " '
       /^#/ || /^[[:blank:]]*$/ { next }

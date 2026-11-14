@@ -691,9 +691,22 @@ weights_log() {
   weights_log "$log" 1 "a.bats:3.0"
   wrun Mine="$log" Mine="$log"
   assert_failure
-  assert_output_contains "Mine is given two logs"
+  assert_output_contains "a.bats has a time in two of the logs for Mine"
   [ "$(cat "$w")" = "$before" ] || fail "a refused --weights changed the weights file: $(cat "$w")"
   [ "$(cd "$root/tests/unit" && printf '%s\n' .lanes-weights* | grep -c .)" -eq 1 ] || fail "a refused --weights left a file beside the weights file"
+}
+
+@test "0357-3: bats-lanes --weights writes a system's times from its several logs, one run's shards, each file timed in one of them" {
+  local root w out
+  root="$(shards_fixture)"
+  w="$root/tests/unit/.lanes-weights"
+  weights_log "$DEVBIN_TEST_TMPDIR/one.log" 2 "a.bats:3.0" "b.bats:2.0"
+  weights_log "$DEVBIN_TEST_TMPDIR/two.log" 1 "c.bats:0.4"
+  run bash -c 'cd "$1" && DEVBIN_LIB="$2" bash "$2/bats-lanes" --weights tests/unit Mine="$3" Mine="$4" </dev/null' _ "$root" "$DEVBIN_LIB" "$DEVBIN_TEST_TMPDIR/one.log" "$DEVBIN_TEST_TMPDIR/two.log"
+  assert_success
+  out="$(grep -v '^#' "$w")"
+  [ "$out" = "$(printf '%s\n' "Mine	3.0	a.bats" "Mine	2.0	b.bats" "Mine	0.4	c.bats")" ] ||
+    fail "the weights file is not both logs' times for Mine: $out"
 }
 
 @test "0357-2: a sharded run refuses a weights file with a line that is not a system, seconds and a file, naming the line" {

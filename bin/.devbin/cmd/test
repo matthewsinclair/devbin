@@ -94,9 +94,10 @@ case "${1:-}" in
     ;;
   --weights)
     # THE SHARDS' WEIGHTS AGAIN (issue 0357): tests/unit/.lanes-weights, which a
-    # sharded run deals the suite's files out by, rewritten from runs' logs, one
-    # per system, eg Darwin=macos.log Linux=ubuntu.log: a CI job's log as `gh run
-    # view --log` prints it, or a seal's .out. The lanes runner owns the file's
+    # sharded run deals the suite's files out by, rewritten from one run's logs,
+    # each named with its system, eg Darwin=macos-1.log Darwin=macos-2.log
+    # Linux=ubuntu-1.log: each shard's CI job log as `gh run view --log`
+    # prints it, or a seal's .out. The lanes runner owns the file's
     # shape, so it reads the logs and writes the file. Seals nothing: it runs no
     # test.
     shift

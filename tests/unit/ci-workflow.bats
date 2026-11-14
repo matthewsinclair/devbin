@@ -4,8 +4,8 @@
 #
 # Issues 0077 and 0293. `check critic` runs Intent, and CI's Ubuntu and macOS
 # runners install no Intent, so neither the Ubuntu job nor
-# the macOS job runs `check all`: each runs every other gate BY NAME, but for
-# lint, which its `test all` runs (0191). A list of names is how a gate added
+# the macOS job runs `check all`: each runs every other gate BY NAME, lint
+# among them (0357). A list of names is how a gate added
 # later goes missing from one runner with every run still green: nothing fails,
 # the population just shrinks. These arms make that shrink a red suite on both
 # runners instead.
@@ -121,20 +121,20 @@ run_summary() {
   LINUX="$1" MACOS="$2" SHELLCHECK="$3" MACOS_REQUIRED="$4" bash "$tmp"
 }
 
-@test "the Ubuntu and macOS gate lists are each exactly check's active options minus critic and lint (0293)" {
-  # Each is left out for its own reason. critic: it runs Intent, and CI's
-  # runners install no Intent (0293). lint: each
-  # job's `test all` runs the suite's full-tree lint test, which runs the gate
-  # `check lint` runs (0155), so the list running it too linted the tree twice
-  # in a row (0191). Every other option is in each list.
+@test "the Ubuntu and macOS gate lists are each exactly check's active options minus critic, lint among them (0293, 0357)" {
+  # critic is left out: it runs Intent, and CI's runners install no Intent
+  # (0293). lint is in: the suite no longer lints the whole tree (contract.bats
+  # keeps only the planted breach, 0357), so the list is where each job lints.
+  # Every other option is in each list.
   local want got job
-  want="$(check_options_here | grep -vx -e critic -e lint | sort)"
+  want="$(check_options_here | grep -vx -e critic | sort)"
   # A non-empty control: an empty resolver answer would make two empty lists
   # agree, and this arm would hold a list of nothing equal to nothing.
   [ -n "$want" ] || fail "command_options check answered nothing -- the resolver, not the workflow, is broken"
+  grep -qx lint <<<"$want" || fail "lint is not one of check's options here, so this arm cannot hold the lists to lint"
   for job in linux macos; do
     got="$(job_gates "$job" | sort)" || fail "no 'for opt in ...; do' line after the ci-$job-gates marker in $WORKFLOW"
-    [ "$want" = "$got" ] || fail "the $job job runs [$(tr '\n' ' ' <<<"$got")] but check offers [$(tr '\n' ' ' <<<"$want")] besides critic and lint"
+    [ "$want" = "$got" ] || fail "the $job job runs [$(tr '\n' ' ' <<<"$got")] but check offers [$(tr '\n' ' ' <<<"$want")] besides critic"
   done
 }
 
@@ -156,9 +156,7 @@ run_summary() {
   ! grep -q 'bin/devbin check all' <<<"$mac" || fail "the macOS job runs check all, and critic refuses there"
 }
 
-@test "the Ubuntu and macOS jobs run test all, which is where lint runs on each (0191) (0293)" {
-  # The gate lists above leave lint out because this step's suite runs it.
-  # Without the step, nothing in the job would lint.
+@test "the Ubuntu and macOS jobs run test all as a step of its own, on every shard (0191, 0293, 0357)" {
   local block job
   for job in test-linux test-macos; do
     block="$(job_block "$job")"
@@ -166,7 +164,79 @@ run_summary() {
     # The whole line, so a step commented out, or given `|| true` or a filter,
     # does not count.
     grep -qxE '[[:space:]]+run: bin/devbin test all' <<<"$block" ||
-      fail "the $job job no longer runs test all as a step of its own, so nothing in it lints"
+      fail "the $job job no longer runs test all as a step of its own"
+    ! grep -qE '^        if: ' <<<"$(step_lines "$job" "Run tests")" ||
+      fail "the $job job's Run tests step runs on some shards only, so a shard would run none of the suite"
+  done
+}
+
+# job_shards <job id> -- the job's matrix of shards, one per line, from its
+# `shard: [..]` line; returns 1 when the job has none.
+job_shards() {
+  local line
+  line="$(job_block "$1" | sed -n 's/^        shard: \[\(.*\)\]$/\1/p')"
+  [ -n "$line" ] || return 1
+  tr ',' '\n' <<<"$line" | tr -d ' '
+}
+
+# step_holding <job id> <text> -- the lines of the job's step whose lines hold
+# <text>, from its `- name:` to the next step's.
+step_holding() {
+  local block
+  block="$(job_block "$1")" || return 1
+  awk -v want="$2" '
+    /^      - / { if (hit) exit; buf = ""; on = 1 }
+    on { buf = buf $0 "\n"; if (index($0, want)) hit = 1 }
+    END { if (hit) printf "%s", buf }
+  ' <<<"$block"
+}
+
+@test "0357-3: the Ubuntu and macOS jobs are each a matrix of shards 1 to k, fail-fast off, each leg naming its shard of strategy.job-total, and WSL is one job" {
+  local job shards k want lines name
+  for job in test-linux test-macos; do
+    shards="$(job_shards "$job")" || fail "the $job job has no matrix of shards"
+    k="$(grep -c . <<<"$shards")"
+    want="$(seq 1 "$k")"
+    [ "$shards" = "$want" ] || fail "the $job job's shards are [$(tr '\n' ' ' <<<"$shards")], not 1 to $k"
+    [ "$k" -gt 1 ] || fail "the $job job has one shard, so it runs the suite whole"
+    grep -qxF '      fail-fast: false' <<<"$(job_block "$job")" || fail "the $job job's matrix does not set fail-fast false"
+    lines="$(step_lines "$job" "Run tests")"
+    grep -qxF '          DEVBIN_TEST_SHARD: ${{ matrix.shard }}/${{ strategy.job-total }}' <<<"$lines" ||
+      fail "the $job job's Run tests step does not name its shard of strategy.job-total:
+$lines"
+    name="$(job_block "$job" | sed -n 's/^    name: //p')"
+    [[ "$name" == *', shard ${{ matrix.shard }} of ${{ strategy.job-total }}' ]] || fail "the $job job's name does not say its shard: $name"
+  done
+  ! job_shards test-wsl >/dev/null || fail "the WSL job is sharded"
+  ! grep -q DEVBIN_TEST_SHARD <<<"$(job_block test-wsl)" || fail "the WSL job names a shard"
+}
+
+@test "0357-3: the gates, and macOS's proof that the floor refuses bash 3.2, run on the first shard alone" {
+  local job lines
+  for job in linux macos; do
+    lines="$(step_holding "test-$job" "# ci-$job-gates:")"
+    [ -n "$lines" ] || fail "no step of test-$job holds the ci-$job-gates marker"
+    grep -qxF '        if: ${{ matrix.shard == 1 }}' <<<"$lines" || fail "the test-$job gates run on every shard:
+$lines"
+  done
+  lines="$(step_lines test-macos "Prove the floor refuses the system bash 3.2")"
+  [ -n "$lines" ] || fail "the macOS job has no step proving the floor"
+  grep -qxF '        if: ${{ matrix.shard == 1 }}' <<<"$lines" || fail "the floor's proof runs on every shard:
+$lines"
+}
+
+@test "0357-3: for each job's number of shards, the shards deal every file of tests/unit into exactly one of them, and leave none empty" {
+  local job k plan i want got
+  want="$(cd "$DEVBIN_ORIGINAL_PWD/tests/unit" && printf '%s\n' *.bats | LC_ALL=C sort)"
+  for job in test-linux test-macos; do
+    k="$(job_shards "$job" | grep -c .)" || fail "the $job job has no matrix of shards"
+    plan="$(cd "$DEVBIN_ORIGINAL_PWD" && env -u DEVBIN_TEST_SHARD DEVBIN_LIB="$DEVBIN_LIB_DIR" bash "$DEVBIN_LIB_DIR/bats-lanes" --plan tests/unit "$k" </dev/null)" ||
+      fail "bats-lanes --plan could not deal tests/unit into $k shards"
+    got="$(cut -f3 <<<"$plan" | LC_ALL=C sort)"
+    [ "$got" = "$want" ] || fail "the $job job's $k shards do not hold every file of tests/unit once"
+    for ((i = 1; i <= k; i++)); do
+      grep -qx "$i" <<<"$(cut -f1 <<<"$plan")" || fail "shard $i of the $job job's $k holds no file"
+    done
   done
 }
 
