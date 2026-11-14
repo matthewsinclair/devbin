@@ -63,6 +63,14 @@ concurrency:
 jobs:
   test-linux:
     name: Test on Ubuntu, shard ${{ matrix.shard }} of ${{ strategy.job-total }}
+    # NOT ON THE PUSH TO main OF A RELEASE COMMIT (issue 0357). A cut pushes
+    # main only once its candidate, the release commit itself, has run this
+    # whole matrix green, so the same commit run again on Ubuntu proves nothing
+    # new and gates nothing. The release commit is the one whose subject
+    # lib/cmd/release writes, `release: <tag>`. Test Summary repeats this
+    # expression as LINUX_REQUIRED, and tests/unit/ci-workflow.bats holds the
+    # two equal and pins what they say. Shell Script Analysis still runs.
+    if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/main' && startsWith(github.event.head_commit.message, 'release:')) }}
     runs-on: ubuntu-latest
     # THE SUITE IN SHARDS (issue 0357): each leg of this matrix runs one shard
     # of tests/unit's files, dealt out by their measured times in
@@ -575,6 +583,7 @@ jobs:
       LINUX: ${{ needs.test-linux.result }}
       MACOS: ${{ needs.test-macos.result }}
       SHELLCHECK: ${{ needs.shellcheck.result }}
+      LINUX_REQUIRED: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/main' && startsWith(github.event.head_commit.message, 'release:')) }}
       MACOS_REQUIRED: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/candidate/') }}
     steps:
       - name: Summary
@@ -607,6 +616,7 @@ jobs:
           echo "test-linux     = '$LINUX'"
           echo "test-macos     = '$MACOS'"
           echo "shellcheck     = '$SHELLCHECK'"
+          echo "linux required = '$LINUX_REQUIRED'"
           echo "macos required = '$MACOS_REQUIRED'"
           failed=""
           notrun=""
@@ -622,33 +632,37 @@ jobs:
               *) failed="$failed $1" ;;
             esac
           }
-          [ "$LINUX" = success ] || refuse test-linux "$LINUX"
-          [ "$SHELLCHECK" = success ] || refuse shellcheck "$SHELLCHECK"
-          # A SKIPPED macOS LEG IS A PASS ONLY WHERE IT WAS NOT ASKED FOR. On a
-          # candidate or a dispatch it is a missing verdict wearing a pass, on
-          # the one run that carries the bash 3.2 refusal proof. An EMPTY
-          # result -- a job that never started -- is never acceptable, on any
-          # event.
+          # need <leg> <result> <required> -- A SKIPPED LEG IS A PASS ONLY WHERE
+          # IT WAS NOT ASKED FOR: macOS on a push to main, and Ubuntu on the
+          # push to main of a release commit, which its candidate's run has
+          # already proved (issue 0357). Asked for, a skip is a missing verdict
+          # wearing a pass. An EMPTY result -- a job that never started -- is
+          # never acceptable, on any event.
           # AN UNRECOGNISED REQUIREMENT REFUSES rather than falling through to
           # the permissive branch. Written as `if [ "$MACOS_REQUIRED" = true ]`
           # it sent every other value -- a renamed env key, an expression that
           # failed to evaluate -- to the arm that ACCEPTS a skip, which is the
           # one direction this job must never fail in.
-          case "$MACOS_REQUIRED" in
-            true)
-              [ "$MACOS" = success ] || refuse test-macos "$MACOS"
-              ;;
-            false)
-              case "$MACOS" in
-                success | skipped) ;;
-                *) refuse test-macos "$MACOS" ;;
-              esac
-              ;;
-            *)
-              echo "macos required is '$MACOS_REQUIRED', which is neither true nor false -- refusing to decide"
-              exit 1
-              ;;
-          esac
+          need() {
+            case "$3" in
+              true)
+                [ "$2" = success ] || refuse "$1" "$2"
+                ;;
+              false)
+                case "$2" in
+                  success | skipped) ;;
+                  *) refuse "$1" "$2" ;;
+                esac
+                ;;
+              *)
+                echo "$1 required is '$3', which is neither true nor false -- refusing to decide"
+                exit 1
+                ;;
+            esac
+          }
+          need test-linux "$LINUX" "$LINUX_REQUIRED"
+          need shellcheck "$SHELLCHECK" true
+          need test-macos "$MACOS" "$MACOS_REQUIRED"
           if [ -n "$notrun" ]; then
             printf 'NOT RUN:%s -- GitHub acquired no runner, so no step ran and no test failed; re-run the failed jobs once a runner is free\n' "$notrun"
           fi

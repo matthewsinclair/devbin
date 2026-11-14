@@ -90,6 +90,10 @@ job_gate() { job_block "$1" | sed -n 's/^    if: //p'; }
 # same expression as the job's own condition.
 summary_required_expr() { job_block test-summary | sed -n 's/^      MACOS_REQUIRED: //p'; }
 
+# summary_linux_expr -- test-summary's LINUX_REQUIRED, which must be the same
+# expression as the Ubuntu job's own condition (0357).
+summary_linux_expr() { job_block test-summary | sed -n 's/^      LINUX_REQUIRED: //p'; }
+
 # summary_script -- the Test Summary step's shell, dedented to column 0.
 #
 # The script is the last thing in the file, so this takes everything after its
@@ -106,8 +110,10 @@ summary_script() {
   ' <<<"$block"
 }
 
-# run_summary <linux> <macos> <shellcheck> <required> -- the REAL summary
-# script, executed on one combination of job results.
+# run_summary <linux> <macos> <shellcheck> <macos required> [<linux required>]
+# -- the REAL summary script, executed on one combination of job results.
+# Ubuntu is required unless a fifth word says otherwise, as on every push but
+# a release commit's to main (0357).
 #
 # This is why 0108 moved the decision out of ${{ }} and into env: an inline
 # expression can only ever be text-matched, and the case that matters -- a
@@ -118,7 +124,7 @@ run_summary() {
   [ -n "$script" ] || fail "the summary script extractor returned nothing"
   tmp="$DEVBIN_TEST_TMPDIR/summary.sh"
   printf '%s\n' "$script" >"$tmp"
-  LINUX="$1" MACOS="$2" SHELLCHECK="$3" MACOS_REQUIRED="$4" bash "$tmp"
+  LINUX="$1" MACOS="$2" SHELLCHECK="$3" MACOS_REQUIRED="$4" LINUX_REQUIRED="${5-true}" bash "$tmp"
 }
 
 @test "the Ubuntu and macOS gate lists are each exactly check's active options minus critic, lint among them (0293, 0357)" {
@@ -391,26 +397,62 @@ $(grep -E '^    tags' <<<"$on_block")"
   _expect_summary fail " test-macos" success skipped success true
 }
 
-@test "the Ubuntu and ShellCheck jobs are ungated, so every push still runs them (0108)" {
+@test "the ShellCheck job is ungated, and the Ubuntu job runs on every push but a release commit's to main, which its candidate proved (0108, 0357)" {
   # THE OTHER HALF OF THE RULE -- "Ubuntu stays on push" -- and the likeliest
   # copy error once this file is the shape other projects start from: pasting
   # the macOS condition onto a Linux job. A push would then run nothing at all,
   # and Test Summary would pass on two skips it was never asked about. The next
-  # reader of this file is every project that copies it.
-  local job gate
-  # THE EXTRACTOR IS EXERCISED BEFORE ITS SILENCE IS READ. Everything below
+  # reader of this file is every project that copies it. The one push the
+  # Ubuntu job sits out is the release commit's to main: a cut pushes main
+  # only once that same commit has run the whole matrix green as its candidate.
+  local gate want
+  # THE EXTRACTOR IS EXERCISED BEFORE ITS SILENCE IS READ. ShellCheck's arm
   # asserts an ABSENCE, so a job_gate that had stopped matching -- a mistyped
-  # pattern, a change of indentation in the workflow -- would answer empty for
-  # every job and pass this arm on a gated one. The macOS job is the positive
-  # control: it is gated, and the same extractor must say so here
-  # (IN-AG-RED-CONTROL-001: an absence asserted with no proof the probe can hit).
+  # pattern, a change of indentation in the workflow -- would answer empty and
+  # pass it on a gated job. The macOS job is the positive control: it is gated,
+  # and the same extractor must say so here (IN-AG-RED-CONTROL-001: an absence
+  # asserted with no proof the probe can hit).
   [ -n "$(job_gate test-macos)" ] \
     || fail "job_gate found no condition on test-macos, so its silence on the jobs below means nothing"
-  for job in test-linux shellcheck; do
-    [ -n "$(job_block "$job")" ] || fail "no $job job in $WORKFLOW"
-    gate="$(job_gate "$job")"
-    [ -z "$gate" ] || fail "$job is gated on [$gate], so a push to main would not run it"
-  done
+  [ -n "$(job_block shellcheck)" ] || fail "no shellcheck job in $WORKFLOW"
+  gate="$(job_gate shellcheck)"
+  [ -z "$gate" ] || fail "shellcheck is gated on [$gate], so a push to main would not run it"
+  # The Ubuntu job's gate, whole, so it can widen to nothing else: a push, to
+  # main, whose head commit is a release commit.
+  want="\${{ !(github.event_name == 'push' && github.ref == 'refs/heads/main' && startsWith(github.event.head_commit.message, 'release:')) }}"
+  gate="$(job_gate test-linux)"
+  [ "$gate" = "$want" ] || fail "the Ubuntu job is gated on [$gate], not on the release commit's push to main alone"
+}
+
+@test "0357-6: Test Summary requires Ubuntu on exactly the expression the job runs it on, and that expression's release commit is the one the cut makes" {
+  local cond req
+  cond="$(job_gate test-linux)"
+  req="$(summary_linux_expr)"
+  [ -n "$cond" ] || fail "the Ubuntu job has no if:"
+  [ -n "$req" ] || fail "test-summary declares no LINUX_REQUIRED"
+  [ "$cond" = "$req" ] || fail "the job runs Ubuntu on [$cond] and the summary requires it on [$req]"
+  # THE SUBJECT IS THE CUT'S: lib/cmd/release commits the release commit as
+  # `release: <tag>`, so a message that starts `release:` is that commit.
+  grep -qF -- '-m "release: $tag"' "$DEVBIN_LIB_DIR/cmd/release" ||
+    fail "lib/cmd/release no longer commits the release commit as 'release: <tag>', which the Ubuntu job's gate reads"
+}
+
+@test "0357-6: the summary passes a skipped Ubuntu leg only where it was not asked for, and refuses a Ubuntu requirement that is neither true nor false" {
+  # The release commit's push to main: Ubuntu was not asked for, and its skip
+  # is the design.
+  _expect_summary pass "" skipped skipped success false false
+  _expect_summary pass "" success skipped success false false
+  # Asked for, as on every other push, a skip is a missing verdict.
+  _expect_summary fail " test-linux" skipped skipped success false true
+  # Not asked for, a red or a leg that never started is still refused.
+  _expect_summary fail " test-linux" failure skipped success false false
+  _expect_summary fail " test-linux" "" skipped success false false
+  run run_summary skipped skipped success false ""
+  assert_failure
+  assert_output_contains "test-linux required is '', which is neither true nor false"
+  run run_summary skipped skipped success false maybe
+  assert_failure
+  assert_output_contains "test-linux required is 'maybe', which is neither true nor false"
 }
 
 @test "Test Summary reports a failed leg and stays quiet on a superseded run (0108)" {
@@ -441,7 +483,7 @@ $(grep -E '^    tags' <<<"$on_block")"
   [ -n "$env_block" ] || fail "test-summary declares no env block"
   script="$(summary_script)"
   [ -n "$script" ] || fail "the summary script extractor returned nothing"
-  for name in LINUX MACOS SHELLCHECK MACOS_REQUIRED; do
+  for name in LINUX MACOS SHELLCHECK LINUX_REQUIRED MACOS_REQUIRED; do
     grep -q "^      $name: " <<<"$env_block" || fail "test-summary's env does not declare $name"
     # THE NAME MUST END WHERE THE NAME ENDS. `grep "\$MACOS"` is satisfied by
     # $MACOS_REQUIRED, so this loop reported all four names as read even with
