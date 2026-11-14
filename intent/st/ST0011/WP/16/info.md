@@ -2,7 +2,7 @@
 wp_id: WP-16
 title: Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)
 scope: S
-status: WIP
+status: Done
 ---
 
 # WP-16: Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)

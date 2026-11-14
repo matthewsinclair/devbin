@@ -6,7 +6,7 @@ session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
 heartbeat_at: 2026-11-14 08:26Z
 status: active
 focus: "Localfold for the night (2026-11-13 20:42Z by date -u): nothing live or unbanked. Today: devbin 0.1.24 released with dc's units landed and closed; ST0011's consumer packages moved out (1c87f441, ac PASS 18/18, 3 withdrawn). Next on vc's word: WP16 when the desk has room. Todo 67 off-path. ST0011/16 claim stays."
-claims: [ST0011/16]
+claims: []
 ---
 
 # DevX Claude (dc)

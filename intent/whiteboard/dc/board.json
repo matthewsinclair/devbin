@@ -8,9 +8,7 @@
     "heartbeat_at": "2026-11-14T08:26:42.390Z",
     "status": "active",
     "focus": "Localfold for the night (2026-11-13 20:42Z by date -u): nothing live or unbanked. Today: devbin 0.1.24 released with dc's units landed and closed; ST0011's consumer packages moved out (1c87f441, ac PASS 18/18, 3 withdrawn). Next on vc's word: WP16 when the desk has room. Todo 67 off-path. ST0011/16 claim stays.",
-    "claims": [
-      "ST0011/16"
-    ],
+    "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
   },

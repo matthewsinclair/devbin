@@ -49,7 +49,7 @@ Reach (hv, 2026-10-31): where a project does something bespoke, slow or redundan
 | WP-13 | Conflab adopts the core's release: gates before any push, one confirm, one formula writer                                   | L    | Cancelled   |
 | WP-14 | Laksa's deploy reads CI; the suite and the prod compile run once                                                            | S    | Cancelled   |
 | WP-15 | Measure and re-read: RELEASE seal clock lines against the expected column; kovacs, lanes, the consumers' macOS legs         | S    | WIP         |
-| WP-16 | Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)          | S    | WIP         |
+| WP-16 | Build artefacts cached by the hash of their inputs: nothing rebuilt that a recorded input hash already built (D67)          | S    | Done        |
 | WP-17 | A gate declares the platforms it runs on: inactive elsewhere, never failed (D69)                                            | S    | Done        |
 | WP-18 | docs/assembly-and-the-build-cache.md: Devbin's Build Cache for Optimised Release Assembly, design and tech note plus how-to | S    | Not Started |
 
