@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-14 08:26Z
+heartbeat_at: 2026-11-14 09:39Z
 status: active
-focus: "Localfold for the night (2026-11-13 20:42Z by date -u): nothing live or unbanked. Today: devbin 0.1.24 released with dc's units landed and closed; ST0011's consumer packages moved out (1c87f441, ac PASS 18/18, 3 withdrawn). Next on vc's word: WP16 when the desk has room. Todo 67 off-path. ST0011/16 claim stays."
+focus: "Holding for vc (2026-11-14 09:39Z by date -u): ST0011 closed (WP16 b64b3630, WP18 4ada9cb4 and a62c5f56); 0358 filed record only; 0357-1 landed at 9971c5e1, test scans caught main's 0172 red from 608a0ef4, fixed as 0357-5 in cc's lane; todo 67 dropped."
 claims: []
 ---
 
@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-- Off-path: devbin's whole gate leaves 18 entries in TMPDIR (update-notice stamps, devbin-git.*, node-compile-cache); read whether any is a leak, then file or drop it. Evidence: dc's g24/run-g24.out and g24/seals/3c804a37. (edited)
+_(none)_
 
 ## Holds
 
