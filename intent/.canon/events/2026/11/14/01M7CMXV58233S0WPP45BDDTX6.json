@@ -1,0 +1,15 @@
+{
+  "id": "01M7CMXV58233S0WPP45BDDTX6",
+  "ts": "2026-11-14T09:06:30.698Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0357"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "CI's suite sharded by file, macOS first; the cut the only whole-suite run; tagged tree scans at every landing"
+  }
+}
