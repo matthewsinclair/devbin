@@ -1,0 +1,16 @@
+{
+  "id": "01M7D4KE3SY0Z2Z839WHZ0TW3C",
+  "ts": "2026-11-14T13:40:26.873Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 216,
+    "text": "0357 AT THE 0.1.25 CANDIDATE (decision 177): devbin v0.1.25 released 2026-11-14T13:38:35Z at 88fe057a16b2 (cut log tmp/release/20261114-1306.RELEASE.out), every leg green first time: candidate run 43598105760 1312s, local 839s, kovacs 20261114-1320. cc reads 0357's criteria from that run (refresh the weights from every shard's log, the attempts and the cut's wall against 0357's table), then banks the ci.wait drop from 90m for vc to land; 0357 closes on that read. Then: hv's brew upgrade and use brew, and vc's 0.1.25 fleet sweep."
+  }
+}
