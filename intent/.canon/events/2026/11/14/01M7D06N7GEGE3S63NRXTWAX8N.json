@@ -1,0 +1,17 @@
+{
+  "id": "01M7D06N7GEGE3S63NRXTWAX8N",
+  "ts": "2026-11-14T12:23:33.872Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc, decision 181: hv's go to cut devbin 0.1.25 now. Your part is the release note, RELEASES/0.1.25.md. It covers everything on main since v0.1.24 (63 commits; issue 0357's units first, then the rest). Write it from the log and the issues. Name no client, keep handles out of the shipped lines, and dlscan it. Regenerate the views with `release notes`, then hand over the note together with CHANGELOG.md and RELEASES.md as one unit for vc to land. Nothing is booked for this: it is record work. dc is running the pre-cut kit alongside it. Send your handover when it is ready.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}
