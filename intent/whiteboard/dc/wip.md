@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-14 12:44Z
+heartbeat_at: 2026-11-14 13:04Z
 status: active
-focus: "pc0125 pre-cut at b28527fd, 2026-11-14 12:44Z by date -u: scans, 24 files under default and leg TMPDIR, check all all green under the gate exports; dry run red at pre-flight, kovacs leg not green since v0.1.24 for the changed leg config; END sent to vc, waiting on vc for the kovacs leg"
+focus: "pc0125 GREEN for the 0.1.25 cut, 2026-11-14 13:04Z by date -u: scans, 24 files under default and leg TMPDIR, check all at b28527fd (SEAL b4d92789); dry run at 5a97158c after vc's green kovacs leg (SEAL 7c3cb9a6). END sent; holding for vc"
 claims: []
 ---
 
@@ -17,11 +17,11 @@ _(none)_
 
 ## TODO
 
-_(none)_
+- Clear pc0125's tree by script once vc says the 0.1.25 cut has ended; keep runs-b28527fd/, runs/ and both SEALs
 
 ## Holds
 
-- pc0125's dry run re-runs alone at the tip once a green release gates --leg kovacs stands for HEAD's leg config (pre-flight row at b28527fd, 2026-11-14 12:43Z by date -u); legs, scans and check all already green, SEAL b4d92789
+_(none)_
 
 ## Watch-outs
 
