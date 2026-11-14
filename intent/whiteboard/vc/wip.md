@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-14 08:26Z
+heartbeat_at: 2026-11-14 12:18Z
 status: active
-focus: "LOCALFOLDED 2026-11-14 08:24Z by date -u for hv's compact: desk held by devbin-vc (decision 176, Webber alone on rhadamanth and gyges); Webber's bundling rerun cc7808b9 running on gyges, rhadamanth's desk empty. On the bounce: /in-session, pickup, re-arm the desk waiter, then the plan (todo 213)."
+focus: "LOCALFOLDED 2026-11-14 12:18Z by date -u for hv's compact: 0357 all landed (last 0357-6 at 1fbf5f10), open for the next candidate; ST0011 closed; desk held by devbin-vc, Webber's ac run on gyges. On the bounce: /in-session, pickup, re-arm the desk waiter, then the plan (todos 213 to 216)."
 claims: []
 ---
 
@@ -20,7 +20,7 @@ _(none)_
 - HV'S LIST (as of 2026-11-14 12:08Z by date -u): (e) the no-vendor mode (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) kovacs's GNOME re-login (kovacs-sysadm offline) and the router's DHCP reservation, hv's to check. Everything else on the list is done or ruled (decisions 177 to 180). (edited)
 - RELEASE AFTER NEXT, weigh only: a release.gates entry starting with release recurses (archived todo 203); macos and release call built-ins through the launcher (206); no macOS-stage rehearsal before a cut (207); a failed remote leg keeps its worktree on the host (208); dc's todo 67 TMPDIR leftovers; issues 0352, 0354, 0355 (gates blame a peer's tree write on a gate, from molt#0100) and 0356 (--help after a gate option runs the work). (edited)
 - NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), and 0.1.24 (swept 2026-11-14 08:47Z, shas in ~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary); 0326's reader notice to pplr-vc, cldr-vc, cldr-dc, ccusage-vc and pipeliner-sc (archived todo 201; ~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0 (archived todo 192); Prodinfra, infra --profile takes a path (archived todo 159); release review action 2 to molt-vc and intent-vc, now Intent is cut (archived decision 171).; Ccusage's use-to-activate rename to ccusage-vc as ruled work (decision 178) (edited)
-- NEXT DEVBIN RELEASE (decision 177): release review action 3 is issue 0357, OPEN until the first sharded candidate reads its measured criteria. Landed: 0357-2 (608a0ef4), 0357-1 (9971c5e1), 0357-5 (f0efa06e), 0357-3 (26ae0a92), 0357-4 docs (9551d21b). At the next candidate: refresh the weights from every shard's log, read the candidate leg's seconds, the green cut's wall and the attempts against 0357's table, then lower ci.wait from 90m. For hv: the main-push Ubuntu rerun on or off (cc: off); 3 or 4 macOS shards (cc: 4, built); 0343 close as by design (dc, 07eee2d2; vc: close). (edited)
+- NEXT DEVBIN RELEASE (decision 177): release review action 3 is issue 0357, every unit on main and unpushed: 0357-2 (608a0ef4), 0357-1 (9971c5e1), 0357-5 (f0efa06e), 0357-3 (26ae0a92), 0357-4 (9551d21b), 0357-6 the release commit's main push runs no Ubuntu suite (1fbf5f10). 4 macOS shards stay (decision 180). OPEN until the next candidate: refresh the weights from every shard's log, read the candidate leg's seconds, the green cut's wall and the attempts against 0357's table, then lower ci.wait from 90m. (edited)
 
 ## Holds
 

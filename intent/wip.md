@@ -1,5 +1,5 @@
 ---
-verblock: "14 Nov 2026:v3.70: Matthew Sinclair - ST0011 closed; 0357 landed; estate holding"
+verblock: "14 Nov 2026:v3.71: Matthew Sinclair - localfold: 0357 all landed; estate holding"
 ---
 
 # Work In Progress
@@ -12,8 +12,7 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## TODO
 
-- For hv (vc's todo 213): the GitHub Support purge from vc's draft; the no-vendor mode (decision 64) and `--ivault` (hold 2) to schedule; kovacs's GNOME re-login and the router's DHCP reservation; the bank-ref clear (vc's todo 200).
-- For hv (vc's todo 216): 0357's main-push Ubuntu rerun on or off, 3 or 4 macOS shards, and 0343 closed as by design.
+- For hv (vc's todo 213): the no-vendor mode (decision 64) and `--ivault` (hold 2) to schedule; kovacs's GNOME re-login and the router's DHCP reservation.
 - The next devbin release carries 0357 and everything open (directive 13); at its candidate, refresh the shard weights, read 0357's criteria, then lower `ci.wait`.
 - Notices for each estate's vc at its next session (vc's todo 215): sweep notices to 0.1.24, 0326's reader notice, Trellis, Prodinfra, the release review's action 2, Ccusage's use-to-activate rename.
 - Release after next, weigh only (vc's todo 214): issues 0352, 0354, 0355, 0356 and 0358, and the core findings listed there.
