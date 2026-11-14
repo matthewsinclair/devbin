@@ -5089,10 +5089,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 216,
-      "text": "NEXT DEVBIN RELEASE (decision 177): release review action 3 is issue 0357. Landed: 0357-2 lanes shards (608a0ef4); 0357-1 treescan tags and test scans (9971c5e1); 0357-5 the weights header's tracker citation that test scans caught on main (f0efa06e); 0357-3 CI's shard matrix, 4 macOS and 2 Ubuntu, lint into both gate lists on shard 1, 0155's clean-tree half gone (61 tagged arms), --weights merging several logs per system (26ae0a92). ci.wait stays 90m until a sharded candidate's seconds are sealed. Building: 0357-4's docs half (cc, the cut as the only whole suite in docs/releasing.md); its main-push Ubuntu rerun half waits for hv. At the next candidate: refresh the weights from every shard's log. For hv: the main-push rerun on or off (cc: off); 3 or 4 macOS shards (cc: 4); 0343 close as by design (dc, 07eee2d2; vc: close).",
+      "text": "NEXT DEVBIN RELEASE (decision 177): release review action 3 is issue 0357, OPEN until the first sharded candidate reads its measured criteria. Landed: 0357-2 (608a0ef4), 0357-1 (9971c5e1), 0357-5 (f0efa06e), 0357-3 (26ae0a92), 0357-4 docs (9551d21b). At the next candidate: refresh the weights from every shard's log, read the candidate leg's seconds, the green cut's wall and the attempts against 0357's table, then lower ci.wait from 90m. For hv: the main-push Ubuntu rerun on or off (cc: off); 3 or 4 macOS shards (cc: 4, built); 0343 close as by design (dc, 07eee2d2; vc: close).",
       "state": "live",
       "recorded_at": "2026-11-14T08:48:29.420Z",
-      "edited_at": "2026-11-14T10:01:46.137Z"
+      "edited_at": "2026-11-14T10:06:15.906Z"
     },
     {
       "node": "vc",

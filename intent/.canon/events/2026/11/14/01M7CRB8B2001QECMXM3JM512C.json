@@ -1,0 +1,16 @@
+{
+  "id": "01M7CRB8B2001QECMXM3JM512C",
+  "ts": "2026-11-14T10:06:15.906Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 216,
+    "text": "NEXT DEVBIN RELEASE (decision 177): release review action 3 is issue 0357, OPEN until the first sharded candidate reads its measured criteria. Landed: 0357-2 (608a0ef4), 0357-1 (9971c5e1), 0357-5 (f0efa06e), 0357-3 (26ae0a92), 0357-4 docs (9551d21b). At the next candidate: refresh the weights from every shard's log, read the candidate leg's seconds, the green cut's wall and the attempts against 0357's table, then lower ci.wait from 90m. For hv: the main-push Ubuntu rerun on or off (cc: off); 3 or 4 macOS shards (cc: 4, built); 0343 close as by design (dc, 07eee2d2; vc: close)."
+  }
+}
