@@ -1,0 +1,15 @@
+{
+  "id": "01M7C578N1PW6AP7EMJCFKN95N",
+  "ts": "2026-11-14T04:32:02.209Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-14 04:32Z by date -u, after the night's hold: 'You still have the pen. But's it's just webber-* working here now, so you can use rhad and gyges for anything that webber-vc wants. You coordinate.' Desk re-taken; Webber is the only estate on rhadamanth and gyges, gyges one run at a time on webber-vc's GO; replaces decision 174 while it holds."
+  }
+}
