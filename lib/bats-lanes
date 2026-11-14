@@ -534,7 +534,7 @@ lanes_write_weights() {
     ' "$dir/$_LANES_WEIGHTS" >>"$work/rows" || die "lanes: --weights: cannot read $dir/$_LANES_WEIGHTS"
   fi
   {
-    printf '# bats-lanes weights (issue 0357): <system> <seconds> <file>, one line per file and system.\n'
+    printf '# bats-lanes weights: <system> <seconds> <file>, one line per file and system.\n'
     printf '# Written by bats-lanes --weights from runs'"'"' times blocks; never edit it by hand.\n'
     while IFS=$'\t' read -r sys secs name; do
       if [ -f "$dir/$name" ]; then printf '%s\t%s\t%s\n' "$sys" "$secs" "$name"; fi

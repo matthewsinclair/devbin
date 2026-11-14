@@ -1,4 +1,4 @@
-# bats-lanes weights (issue 0357): <system> <seconds> <file>, one line per file and system.
+# bats-lanes weights: <system> <seconds> <file>, one line per file and system.
 # Written by bats-lanes --weights from runs' times blocks; never edit it by hand.
 Darwin	26.4	autotests.bats
 Darwin	118.4	buildfmt.bats
