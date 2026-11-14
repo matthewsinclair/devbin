@@ -21,8 +21,8 @@ set -euo pipefail
 cd "$PROJECT_ROOT"
 
 usage() {
-  printf 'usage: %s test bats [paths...] [bats flags...] | %s test --failed | %s test all\n' \
-    "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}"
+  printf 'usage: %s test bats [paths...] [bats flags...] | %s test --failed | %s test --weights <system>=<log>... | %s test all\n' \
+    "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}" "${DEVBIN_INVOKE:-bin/devbin}"
 }
 
 # failed_in <errors file> -- each test a bats seal names as failed, one
@@ -91,6 +91,16 @@ case "${1:-}" in
     [ "$#" -eq 0 ] || die "test --failed takes nothing more: it reruns what the last bats run failed"
     require_tool bats "install with: brew install bats-core, or apt-get install bats"
     run_failed
+    ;;
+  --weights)
+    # THE SHARDS' WEIGHTS AGAIN (issue 0357): tests/unit/.lanes-weights, which a
+    # sharded run deals the suite's files out by, rewritten from runs' logs, one
+    # per system, eg Darwin=macos.log Linux=ubuntu.log: a CI job's log as `gh run
+    # view --log` prints it, or a seal's .out. The lanes runner owns the file's
+    # shape, so it reads the logs and writes the file. Seals nothing: it runs no
+    # test.
+    shift
+    "$DEVBIN_LIB/bats-lanes" --weights "$PROJECT_ROOT/tests/unit" "$@"
     ;;
   bats)
     shift

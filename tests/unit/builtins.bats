@@ -307,6 +307,40 @@ YAML
   assert_file_empty "$proj/tmp/test/LATEST_SHELL.errors"
 }
 
+# A SHELL PROJECT'S SUITE RUNS IN SHARDS TOO (issue 0357): DEVBIN_TEST_SHARD
+# reaches the core's lanes runner through `test shell`, which runs the i-th
+# shard of tests/ alone, by tests/.lanes-weights where the project keeps one
+# and by test count where it does not, as here. The shards between them run
+# every file of tests/ once.
+@test "0357-2: test shell under DEVBIN_TEST_SHARD runs one shard of a shell project's tests/, and its shards run every file once between them" {
+  require_command parallel "no GNU parallel on this runner"
+  local proj shards=2 i got all="" want
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+  languages:
+    - shell
+YAML
+  )"
+  mkdir -p "$proj/tests"
+  printf '%s\n' '@test "a one" { true; }' '@test "a two" { true; }' >"$proj/tests/a.bats"
+  printf '%s\n' '@test "b plain" { true; }' '# bats test_tags=serial' '@test "b serial" { true; }' >"$proj/tests/b.bats"
+  printf '%s\n' '@test "c one" { true; }' >"$proj/tests/c.bats"
+  for ((i = 1; i <= shards; i++)); do
+    run env -u DEVBIN_JOBS -u BATS_PARALLEL_BINARY_NAME -u BATS_NUMBER_OF_PARALLEL_JOBS DEVBIN_TEST_JOBS=2 DEVBIN_TEST_SHARD="$i/$shards" \
+      bash -c 'cd "$1" && ./bin/devbin test shell </dev/null' _ "$proj"
+    assert_success
+    got="$(sed -n "s/^lanes: shard $i of $shards runs: //p" <<<"$output")"
+    [ -n "$got" ] || fail "shard $i of $shards does not name the files it runs: $output"
+    grep -qE "^lanes: [0-9]+ test\\(s\\) ran in parallel and [0-9]+ serially, all [0-9]+ that bats counts in shard $i of $shards of /.*/tests, each once\$" <<<"$output" ||
+      fail "shard $i of $shards did not run its own files, each test once: $output"
+    all+="$got "
+  done
+  want="$(cd "$proj/tests" && printf '%s\n' *.bats | LC_ALL=C sort)"
+  [ "$(tr ' ' '\n' <<<"$all" | grep . | LC_ALL=C sort)" = "$want" ] ||
+    fail "the shards did not run every file of tests/ once between them: they ran '$all'"
+}
+
 # A PROJECT'S OWN RUNNER CALLS THE CORE'S LANES RUNNER (0339), as one declared
 # as the shell option's run: line does: it drops PROJECT_ROOT, as a runner
 # that decides its suite's environment may, exports what its suite needs, and

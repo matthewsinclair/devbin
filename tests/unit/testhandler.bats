@@ -151,7 +151,7 @@ lanes_tally() {
 lanes_run() {
   local root="$1"
   shift
-  (cd "$root" && env -u DEVBIN_TEST_JOBS -u DEVBIN_JOBS -u BATS_PARALLEL_BINARY_NAME -u BATS_NUMBER_OF_PARALLEL_JOBS \
+  (cd "$root" && env -u DEVBIN_TEST_JOBS -u DEVBIN_JOBS -u DEVBIN_TEST_SHARD -u BATS_PARALLEL_BINARY_NAME -u BATS_NUMBER_OF_PARALLEL_JOBS \
     "$@" DEVBIN_LIB="$DEVBIN_LIB" \
     bash "$DEVBIN_LIB/bats-lanes" tests/unit </dev/null)
 }
@@ -535,4 +535,185 @@ lost_wait_env() {
   refute_output_contains "counted green"
   refute_output_contains "exited non-zero only because bats lost"
   assert_output_contains "the parallel lane exited"
+}
+
+# THE SHARDS (issue 0357). shards_fixture is lanes_fixture with a third file,
+# so two shards hold different numbers of files and only one of them holds the
+# serial test. lanes_plan prints what `bats-lanes --plan` deals <root>'s
+# tests/unit into <shards>, a run of no test. tests_in <root> <file>... counts
+# the files' tests by their @test lines, as the fixture writes them.
+shards_fixture() {
+  local root
+  root="$(lanes_fixture)" || return 1
+  printf '%s\n' '@test "c one" { true; }' >"$root/tests/unit/c.bats"
+  printf '%s\n' "$root"
+}
+
+lanes_plan() {
+  (cd "$1" && env -u DEVBIN_TEST_SHARD DEVBIN_LIB="$DEVBIN_LIB" bash "$DEVBIN_LIB/bats-lanes" --plan tests/unit "$2" </dev/null)
+}
+
+tests_in() {
+  local root="$1" f n=0 c
+  shift
+  for f in "$@"; do
+    c="$(grep -c '^@test ' "$root/tests/unit/$f")" || c=0
+    n=$((n + c))
+  done
+  printf '%s\n' "$n"
+}
+
+@test "0357-2: DEVBIN_TEST_SHARD=i/n runs only the i-th shard's files, in both lanes, and the shards between them run every file of the suite once" {
+  require_command parallel "no GNU parallel on this runner"
+  local root shards=2 i got mine all="" want
+  root="$(shards_fixture)"
+  for ((i = 1; i <= shards; i++)); do
+    run lanes_run "$root" DEVBIN_TEST_JOBS=2 DEVBIN_TEST_SHARD="$i/$shards"
+    assert_success
+    got="$(sed -n "s/^lanes: shard $i of $shards runs: //p" <<<"$output")"
+    [ -n "$got" ] || fail "shard $i of $shards does not name the files it runs: $output"
+    # shellcheck disable=SC2086 # the names are words, by the line's own shape
+    mine="$(tests_in "$root" $got)"
+    grep -qE "^lanes: [0-9]+ test\\(s\\) ran in parallel and [0-9]+ serially, all $mine that bats counts in shard $i of $shards of tests/unit, each once\$" <<<"$output" ||
+      fail "shard $i of $shards did not run its own files' $mine test(s), each once: $output"
+    all+="$got "
+  done
+  want="$(cd "$root/tests/unit" && printf '%s\n' *.bats | LC_ALL=C sort)"
+  [ "$(tr ' ' '\n' <<<"$all" | grep . | LC_ALL=C sort)" = "$want" ] ||
+    fail "the shards did not run every file once between them: they ran '$all' of $(tr '\n' ' ' <<<"$want")"
+}
+
+@test "0357-2: the shards follow the weights file's times for this system, the heaviest first, and a file it has no time for is weighted by its tests at the timed files' seconds per test" {
+  local root sys heavy=90.0 light=10.0 rate plan
+  root="$(shards_fixture)"
+  sys="$(uname -s)"
+  # b.bats the heaviest by its time here; a.bats light; c.bats with no time. A
+  # row for another system is never read, or b.bats would weigh its 1.0.
+  printf '%s\n' '# a comment line' "$sys	$heavy	b.bats" "$sys	$light	a.bats" "Elsewhere	1.0	b.bats" >"$root/tests/unit/.lanes-weights"
+  rate="$(awk -v s="$heavy" -v t="$light" -v n="$(tests_in "$root" a.bats b.bats)" -v c="$(tests_in "$root" c.bats)" \
+    'BEGIN { printf "%.1f", (s + t) / n * c }')"
+  run lanes_plan "$root" 2
+  assert_success
+  plan="$output"
+  grep -qxF "1	$heavy	b.bats	timed" <<<"$plan" || fail "b.bats, the heaviest, is not alone first in shard 1: $plan"
+  grep -qxF "2	$rate	c.bats	counted" <<<"$plan" || fail "c.bats is not weighted by its tests at the timed files' rate, $rate: $plan"
+  grep -qxF "2	$light	a.bats	timed" <<<"$plan" || fail "a.bats is not dealt to the lighter shard: $plan"
+  [ "$(grep -c . <<<"$plan")" -eq "$(cd "$root/tests/unit" && printf '%s\n' *.bats | grep -c .)" ] ||
+    fail "the plan does not name every file once: $plan"
+  # With no weights file every file is weighed by its tests alone.
+  rm "$root/tests/unit/.lanes-weights"
+  run lanes_plan "$root" 2
+  assert_success
+  refute_output_contains "timed"
+  grep -qxF "1	$(tests_in "$root" a.bats).0	a.bats	counted" <<<"$output" || fail "a.bats is not weighed by its tests: $output"
+}
+
+@test "0357-2: a DEVBIN_TEST_SHARD that is not i/n with 1 <= i <= n is refused, naming it, and so is a shard with no file to run" {
+  local root s k
+  root="$(shards_fixture)"
+  for s in 0/2 3/2 2 x/2 1/0 "1/2 "; do
+    run lanes_run "$root" DEVBIN_TEST_SHARD="$s"
+    assert_failure
+    assert_output_contains "DEVBIN_TEST_SHARD is '$s', and it must be <i>/<n>, the i-th of n shards, 1 <= i <= n"
+  done
+  k="$(cd "$root/tests/unit" && printf '%s\n' *.bats | grep -c .)"
+  s="$((k + 1))/$((k + 1))"
+  run lanes_run "$root" DEVBIN_TEST_SHARD="$s"
+  assert_failure
+  assert_output_contains "DEVBIN_TEST_SHARD is $s, and shard $((k + 1)) holds no file: tests/unit has $k file(s), fewer than $((k + 1)) shards"
+}
+
+@test "0357-2: a test inside a sharded run sees no DEVBIN_TEST_SHARD, so a lanes run it starts runs its own suite whole" {
+  require_command parallel "no GNU parallel on this runner"
+  local root
+  root="$(lanes_fixture)"
+  printf '%s\n' '@test "c sees no shard" { [ -z "${DEVBIN_TEST_SHARD+x}" ]; }' >"$root/tests/unit/c.bats"
+  run lanes_run "$root" DEVBIN_TEST_JOBS=2 DEVBIN_TEST_SHARD=1/1
+  assert_success
+  grep -qE '^ok [0-9]+ c sees no shard$' <<<"$output" || fail "the test that looks for DEVBIN_TEST_SHARD did not pass: $output"
+}
+
+# weights_log <file> <header count> <name:seconds>... -- a times block as a CI
+# job's log prints it, each line after a job, a step and a stamp ending in Z,
+# with a line of the run before and after it.
+weights_log() {
+  local log="$1" n="$2" pair pre=$'job\tstep\t2000-01-01T00:00:00.0000000Z '
+  shift 2
+  {
+    printf '%slanes: two. First 2 tests at a time\n' "$pre"
+    printf '%slanes: the %s file(s) of the parallel lane by wall time, the slowest first:\n' "$pre" "$n"
+    for pair in "$@"; do
+      printf '%slanes:   %8s  %s\n' "$pre" "${pair#*:}s" "${pair%%:*}"
+    done
+    printf '%slanes: the serial lane took 1.0s\n' "$pre"
+  } >"$log"
+}
+
+@test "0357-2: bats-lanes --weights rewrites the weights file from a run's times block for its system, keeps other systems' lines, and drops a file no longer in the suite" {
+  local root w out
+  root="$(shards_fixture)"
+  w="$root/tests/unit/.lanes-weights"
+  printf '%s\n' "Kept	5.0	a.bats" "Kept	6.0	gone.bats" "Mine	1.0	a.bats" >"$w"
+  weights_log "$DEVBIN_TEST_TMPDIR/mine.log" 3 "b.bats (exit 1):12.5" "a.bats:3.0" "c.bats:0.4"
+  run bash -c 'cd "$1" && DEVBIN_LIB="$2" bash "$2/bats-lanes" --weights tests/unit Mine="$3" </dev/null' _ "$root" "$DEVBIN_LIB" "$DEVBIN_TEST_TMPDIR/mine.log"
+  assert_success
+  assert_output_contains "lanes: wrote tests/unit/.lanes-weights:"
+  out="$(grep -v '^#' "$w")"
+  [ "$out" = "$(printf '%s\n' "Kept	5.0	a.bats" "Mine	3.0	a.bats" "Mine	12.5	b.bats" "Mine	0.4	c.bats")" ] ||
+    fail "the weights file is not the kept line and the log's times, without gone.bats: $out"
+  [ "$(cd "$root/tests/unit" && printf '%s\n' .lanes-weights* | grep -c .)" -eq 1 ] || fail "--weights left a file beside the weights file"
+}
+
+@test "0357-2: bats-lanes --weights refuses a log without exactly one whole times block, and a pair that is not one system and one log, and leaves the weights file as it was" {
+  local root w before log
+  root="$(shards_fixture)"
+  w="$root/tests/unit/.lanes-weights"
+  printf '%s\n' "Kept	5.0	a.bats" >"$w"
+  before="$(cat "$w")"
+  log="$DEVBIN_TEST_TMPDIR/bad.log"
+  wrun() { run bash -c 'cd "$1" && DEVBIN_LIB="$2" bash "$2/bats-lanes" --weights tests/unit "${@:3}" </dev/null' _ "$root" "$DEVBIN_LIB" "$@"; }
+  printf 'lanes: two. First 2 tests at a time\n' >"$log"
+  wrun Mine="$log"
+  assert_failure
+  assert_output_contains "it holds 0 times block(s), not one"
+  weights_log "$log" 1 "a.bats:3.0"
+  cat "$log" "$log" >"$log.twice"
+  wrun Mine="$log.twice"
+  assert_failure
+  assert_output_contains "it holds 2 times block(s), not one"
+  weights_log "$log" 3 "a.bats:3.0" "b.bats:2.0"
+  wrun Mine="$log"
+  assert_failure
+  assert_output_contains "its times block names 2 file(s) under a header that counts 3"
+  wrun "$log"
+  assert_failure
+  assert_output_contains "is not <system>=<log>"
+  weights_log "$log" 1 "a.bats:3.0"
+  wrun Mine="$log" Mine="$log"
+  assert_failure
+  assert_output_contains "Mine is given two logs"
+  [ "$(cat "$w")" = "$before" ] || fail "a refused --weights changed the weights file: $(cat "$w")"
+  [ "$(cd "$root/tests/unit" && printf '%s\n' .lanes-weights* | grep -c .)" -eq 1 ] || fail "a refused --weights left a file beside the weights file"
+}
+
+@test "0357-2: a sharded run refuses a weights file with a line that is not a system, seconds and a file, naming the line" {
+  local root
+  root="$(shards_fixture)"
+  printf '%s\n' '# a comment' "$(uname -s)	lots	a.bats" >"$root/tests/unit/.lanes-weights"
+  run lanes_run "$root" DEVBIN_TEST_SHARD=1/2
+  assert_failure
+  assert_output_contains "line 2: $(uname -s)	lots	a.bats"
+  assert_output_contains "holds a line that is not <system> <seconds> <file>"
+}
+
+@test "0357-2: test --weights hands the lanes runner the suite's tests/unit and the logs as given, and runs no gate" {
+  local shim="$DEVBIN_TEST_TMPDIR/shim" root="$DEVBIN_TEST_TMPDIR/root"
+  run handler_argv --help
+  assert_success
+  printf '#!/usr/bin/env bash\nprintf "%%s\\n" "$@"\n' >"$shim/bats-lanes"
+  chmod +x "$shim/bats-lanes"
+  run bash -c 'cd "$1" && DEVBIN_LIB="$2" PROJECT_ROOT="$1" bash "$3/bin/.devbin/cmd/test" --weights Darwin=a.log Linux=b.log </dev/null' _ "$root" "$shim" "$DEVBIN_HOME"
+  assert_success
+  [ "$output" = "$(printf '%s\n' --weights "$root/tests/unit" Darwin=a.log Linux=b.log)" ] || fail "the runner was not handed tests/unit and the logs: $output"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/gate.flags" ] || fail "test --weights ran a gate"
 }
