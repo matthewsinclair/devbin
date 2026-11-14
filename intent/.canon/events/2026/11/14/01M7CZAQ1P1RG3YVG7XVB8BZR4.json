@@ -1,0 +1,16 @@
+{
+  "id": "01M7CZAQ1P1RG3YVG7XVB8BZR4",
+  "ts": "2026-11-14T12:08:18.230Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 213,
+    "text": "HV'S LIST (as of 2026-11-14 12:08Z by date -u): (e) the no-vendor mode (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) kovacs's GNOME re-login (kovacs-sysadm offline) and the router's DHCP reservation, hv's to check. Everything else on the list is done or ruled (decisions 177 to 180)."
+  }
+}

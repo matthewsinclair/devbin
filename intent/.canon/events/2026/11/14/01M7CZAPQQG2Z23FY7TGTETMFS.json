@@ -1,0 +1,15 @@
+{
+  "id": "01M7CZAPQQG2Z23FY7TGTETMFS",
+  "ts": "2026-11-14T12:08:17.911Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's TUI answers in vc's window on return, read 2026-11-14 12:08Z by date -u: (1) the release commit's main-push Ubuntu rerun goes off (cc builds it as 0357-6); (2) CI's macOS suite stays at 4 shards; (3) issue 0343 closes as by design (dc closed it at d69e0989); (4) the 21 landed bank refs are cleared (vc's clear.sh at 12:0xZ, each by update-ref -d against its recorded value; cc's three 0326 refs kept); (5) the GitHub Support purge of decision 163's three shas is dropped: no request is filed. hv is back and holds the pen; Webber's decision 88 is spent."
+  }
+}
