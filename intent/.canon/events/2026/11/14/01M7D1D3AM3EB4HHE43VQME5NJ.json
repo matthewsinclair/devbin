@@ -1,0 +1,15 @@
+{
+  "id": "01M7D1D3AM3EB4HHE43VQME5NJ",
+  "ts": "2026-11-14T12:44:33.492Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "pc0125's dry run re-runs alone at the tip once a green release gates --leg kovacs stands for HEAD's leg config (pre-flight row at b28527fd, 2026-11-14 12:43Z by date -u); legs, scans and check all already green, SEAL b4d92789"
+  }
+}

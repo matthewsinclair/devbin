@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-14 12:21Z
+heartbeat_at: 2026-11-14 12:44Z
 status: active
-focus: "Localfold for hv's compact (2026-11-14 12:17Z by date -u): nothing live or unbanked, no claims. Today: ST0011 closed (WP16 b64b3630; WP18's guide 4ada9cb4, done a62c5f56); 0358 filed record only; 0357-1 landed at 9971c5e1 and its test scans caught main's 0172 red (fixed as 0357-5); todo 67 dropped; 0343 closed by design at d69e0989. On the bounce: /in-session, pickup, hold for vc."
+focus: "pc0125 pre-cut at b28527fd, 2026-11-14 12:44Z by date -u: scans, 24 files under default and leg TMPDIR, check all all green under the gate exports; dry run red at pre-flight, kovacs leg not green since v0.1.24 for the changed leg config; END sent to vc, waiting on vc for the kovacs leg"
 claims: []
 ---
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-_(none)_
+- pc0125's dry run re-runs alone at the tip once a green release gates --leg kovacs stands for HEAD's leg config (pre-flight row at b28527fd, 2026-11-14 12:43Z by date -u); legs, scans and check all already green, SEAL b4d92789
 
 ## Watch-outs
 
