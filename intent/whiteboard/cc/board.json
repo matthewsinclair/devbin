@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a",
-    "heartbeat_at": "2026-11-14T10:06:55.269Z",
+    "heartbeat_at": "2026-11-14T12:18:07.530Z",
     "status": "active",
-    "focus": "Localfold 2026-11-14 10:06Z by date -u: issue 0357 (release review action 3) is built. cc's units landed: 0357-2 at 608a0ef4, 0357-5 at f0efa06e, 0357-3 at 26ae0a92, 0357-4 at 9551d21b; dc's 0357-1 at 9971c5e1. 0357 stays open for the first sharded candidate (weights refresh, the criteria read, then ci.wait) and hv's two calls (3 or 4 macOS shards, the main-push Ubuntu rerun); the Record says so (1abf50ff). Clones cleared, records kept in scratch i0357. Claims ISSUE:0326 and ISSUE:0357 stand. Nothing queued for cc until hv is back: holding.",
+    "focus": "Localfold 2026-11-14 12:17Z by date -u, for hv's compact: issue 0357's cc units are all built. Landed: 0357-2 608a0ef4, 0357-5 f0efa06e, 0357-3 26ae0a92, 0357-4 9551d21b (dc's 0357-1 9971c5e1). 0357-6, the release commit's main push running no Ubuntu suite (hv's ruling, with 4 macOS shards kept), is green and handed over to vc (handover6, tip 507624aa on d69e0989), its clones cleared. 0357 stays open for the first sharded candidate: weights refresh, the criteria read, then ci.wait. Claims ISSUE:0326 and ISSUE:0357 stand. On the bounce: /in-session, pickup, hold for vc.",
     "claims": [
       "ISSUE:0326",
       "ISSUE:0357"
