@@ -1,9 +1,9 @@
 ---
 st_id: ST0011
 title: Build, test, assemble, release cycle performance and optimisation remediation
-status: WIP
+status: Completed
 created: 2026-10-31
-completed:
+completed: 2026-11-14
 ---
 
 # ST0011: Build, test, assemble, release cycle performance and optimisation remediation

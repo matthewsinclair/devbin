@@ -4,8 +4,8 @@ An index of every steel thread in the project. A steel thread is a self-containe
 
 | ID     | Title                                                                                                                                       | Status    | Created    | Completed            |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---------- | -------------------- |
-| ST0011 | Build, test, assemble, release cycle performance and optimisation remediation                                                               | WIP       | 2026-10-31 |                      |
 | ST0006 | devbin infra: apply, the Fly runtime leg, dmarc check, and the known-sender library                                                         | Triage    | 2026-09-08 |                      |
+| ST0011 | Build, test, assemble, release cycle performance and optimisation remediation                                                               | Completed | 2026-10-31 | 2026-11-14           |
 | ST0010 | devbin public: a new public repository from one audited commit of the product, under an open-source licence                                 | Completed | 2026-10-17 | 2026-10-30           |
 | ST0009 | devbin from Homebrew on macOS and Linux, with no source checkout: the formula, the tap, and projects vendoring from the brew install        | Completed | 2026-10-16 | 2026-10-17           |
 | ST0008 | devbin on Windows through WSL 2: the prerequisite stated, LF held by the repository, shell-init for bash, proven inside WSL; no native port | Completed | 2026-10-12 | 2026-10-24           |

@@ -6,18 +6,17 @@ session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
 heartbeat_at: 2026-11-14 08:26Z
 status: active
 focus: "LOCALFOLDED 2026-11-14 08:24Z by date -u for hv's compact: desk held by devbin-vc (decision 176, Webber alone on rhadamanth and gyges); Webber's bundling rerun cc7808b9 running on gyges, rhadamanth's desk empty. On the bounce: /in-session, pickup, re-arm the desk waiter, then the plan (todo 213)."
-claims: [ST0011]
+claims: []
 ---
 
 # Validation Claude (vc)
 
 ## DOING
 
-- ST0011: acceptance passes (18 of 18 satisfied, 3 withdrawn to the consumers' own threads on hv's ruling, decision 175). AT lint is clean. Left: WP15 (read seal clock lines), WP16 (build cache, dc), then WP18 last (todo 183); then st done. (edited)
+_(none)_
 
 ## TODO
 
-- WP18, LAST (hv 2026-10-31: 'right at the end when this is all landed'): docs/assembly-and-the-build-cache.md, 'Devbin's Build Cache for Optimised Release Assembly', written from the as-built. (edited)
 - Bank refs in canon: checked 2026-11-14 by changed lines (~/Devel/scratch/devbin-vc/bankrefs/check.out): 20 hold landed work (issues closed, or ST0011's WP02, WP07 and WP08 done; the five ST0011 refs predate the 2026-11-02 repo switch, so they share no merge-base with main); cc's 3 refs for 0326 are kept while 0326 is open. On hv's word, run ~/Devel/scratch/devbin-vc/bankrefs/clear.sh (update-ref -d with each recorded old value). (edited)
 - HV'S LIST (as of 2026-11-14 09:04Z by date -u): (c) hv files the GitHub Support purge from vc's draft, ~/Devel/scratch/devbin-vc/0.1.24/github-support-purge.txt; (e) no-vendor (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) kovacs's GNOME re-login (kovacs-sysadm offline) and the router's DHCP reservation, hv's to check; (j) the bank-ref clear on todo 200. Done since: intentd enrolled at login (com.matthewsinclair.intentd, pid 71443 carrying CLAUDE_CONFIG_DIR, every session listed by estate status at 09:04Z), (a), (b), (d), (f), (h), (i), the Intranet repo and the snapshot (decisions 177 to 179). (edited)
 - RELEASE AFTER NEXT, weigh only: a release.gates entry starting with release recurses (archived todo 203); macos and release call built-ins through the launcher (206); no macOS-stage rehearsal before a cut (207); a failed remote leg keeps its worktree on the host (208); dc's todo 67 TMPDIR leftovers; issues 0352, 0354, 0355 (gates blame a peer's tree write on a gate, from molt#0100) and 0356 (--help after a gate option runs the work). (edited)

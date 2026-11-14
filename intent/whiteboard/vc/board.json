@@ -8,9 +8,7 @@
     "heartbeat_at": "2026-11-14T08:26:53.239Z",
     "status": "active",
     "focus": "LOCALFOLDED 2026-11-14 08:24Z by date -u for hv's compact: desk held by devbin-vc (decision 176, Webber alone on rhadamanth and gyges); Webber's bundling rerun cc7808b9 running on gyges, rhadamanth's desk empty. On the bounce: /in-session, pickup, re-arm the desk waiter, then the plan (todo 213).",
-    "claims": [
-      "ST0011"
-    ],
+    "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
     "migrated_at": "2026-09-16T07:01:28.682Z"
@@ -3978,7 +3976,8 @@
       "kind": "todo",
       "seq": 183,
       "text": "WP18, LAST (hv 2026-10-31: 'right at the end when this is all landed'): docs/assembly-and-the-build-cache.md, 'Devbin's Build Cache for Optimised Release Assembly', written from the as-built.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-14T09:13:09.692Z",
       "recorded_at": "2026-10-31T13:11:28.113Z",
       "edited_at": "2026-11-13T18:14:42.143Z"
     },
@@ -4183,7 +4182,8 @@
       "kind": "doing",
       "seq": 87,
       "text": "ST0011: acceptance passes (18 of 18 satisfied, 3 withdrawn to the consumers' own threads on hv's ruling, decision 175). AT lint is clean. Left: WP15 (read seal clock lines), WP16 (build cache, dc), then WP18 last (todo 183); then st done.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-14T09:13:09.496Z",
       "recorded_at": "2026-10-31T18:40:54.145Z",
       "edited_at": "2026-11-13T19:42:16.674Z"
     },
