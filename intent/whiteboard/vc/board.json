@@ -5089,10 +5089,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 216,
-      "text": "NEXT DEVBIN RELEASE (decision 177): release review action 3 is issue 0357 (cc, 57382d51). Units: 0357-2 lanes (cc, GO 2026-11-14) and 0357-1 tree-scan tags (dc, after WP18) side by side; then 0357-3 the workflow's shards (lowers ci.wait from 90m) and 0357-4 the O8 rule, in that order (shared tests.yml, config.yaml, docs/releasing.md). First weights from run 43426783134, refreshed at the next candidate. For hv: the main-push Ubuntu rerun on or off; 3 or 4 macOS shards.",
+      "text": "NEXT DEVBIN RELEASE (decision 177): release review action 3 is issue 0357 (cc, 57382d51). Units: 0357-2 lanes (cc, GO 2026-11-14) and 0357-1 tree-scan tags (dc, after WP18) side by side; then 0357-3 the workflow's shards (lowers ci.wait from 90m) and 0357-4 the O8 rule, in that order (shared tests.yml, config.yaml, docs/releasing.md). First weights from run 43426783134, refreshed at the next candidate. For hv: the main-push Ubuntu rerun on or off; 3 or 4 macOS shards. 0357-1 (dc): 62 tree-scan arms in 17 files tagged treescan, read by vc; no untagged-scan guard (vc). 0357-3 owns the 0155 arm's clean-tree half: it drops it AND adds lint to both gate lists in tests.yml in one change, with ci-workflow.bats:124 and :159 (on CI that half is the only gate lint; dc's finding).",
       "state": "live",
       "recorded_at": "2026-11-14T08:48:29.420Z",
-      "edited_at": "2026-11-14T09:07:31.846Z"
+      "edited_at": "2026-11-14T09:19:41.385Z"
     },
     {
       "node": "vc",
