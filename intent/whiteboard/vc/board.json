@@ -5144,6 +5144,14 @@
       "text": "RELEASE AFTER NEXT, weigh only (found 2026-11-14 at Intent's 3.3.3 cut): a red remote leg's gate run directory sits under the leg's TMPDIR (<worktree>.tmp), which is removed with the worktree, so the failing test's output is lost and only 'cargo test --workspace failed; the run is in <gone path>' reaches the kept log. A failed leg should copy its failing gate's output into the kept log or keep the run dir. Related: archived todo 208.",
       "state": "live",
       "recorded_at": "2026-11-14T19:00:48.723Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 218,
+      "text": "RELEASE AFTER NEXT, weigh only (found 2026-11-14 at Intent's 3.3.3 cut): a remote leg's DEVBIN_GATE_CACHE (eg kovacs ~/work/intent-leg.cache, its rust-target 5.7G to 15G in a day) grows without bound, since no run clears it; kovacs's / filled (211M free of 62G) and the cut's cargo test failed. The gate cache wants a bound or a gc like WP16's artefact cache. Related: todo 217.",
+      "state": "live",
+      "recorded_at": "2026-11-14T19:02:33.694Z"
     }
   ],
   "sent": [

@@ -1,0 +1,15 @@
+{
+  "id": "01M7DQ17YXRM7GZGZKJSC3XFSH",
+  "ts": "2026-11-14T19:02:33.694Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "RELEASE AFTER NEXT, weigh only (found 2026-11-14 at Intent's 3.3.3 cut): a remote leg's DEVBIN_GATE_CACHE (eg kovacs ~/work/intent-leg.cache, its rust-target 5.7G to 15G in a day) grows without bound, since no run clears it; kovacs's / filled (211M free of 62G) and the cut's cargo test failed. The gate cache wants a bound or a gc like WP16's artefact cache. Related: todo 217."
+  }
+}
