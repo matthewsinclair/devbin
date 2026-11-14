@@ -9,7 +9,8 @@
     "status": "active",
     "focus": "Folded for the night, 2026-11-13 20:42Z by date -u: nothing live, nothing unbanked. Today: 0348 (with 0348-3, 0348-4) and 0349 landed in 0.1.24 and closed; 0353 to 0356 filed, record only (0355 and 0356 on vc's todo 214, release after next). Watchout 11 stays. ISSUE:0326 claim stands. On the bounce: /in-session, pickup, hold for vc.",
     "claims": [
-      "ISSUE:0326"
+      "ISSUE:0326",
+      "ISSUE:0357"
     ],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
