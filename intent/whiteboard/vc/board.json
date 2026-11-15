@@ -5217,6 +5217,14 @@
       "state": "live",
       "recorded_at": "2026-11-15T13:26:37.985Z",
       "edited_at": "2026-11-15T13:26:42.984Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 190,
+      "text": "Supersedes decision 189's gyges-only line (hv in vc's window, 2026-11-15 13:28Z by date -u, confirming webber-vc's decision 117 \"Just do it and we'll wear the load\"): Webber's iOS simulator runs may go on rhadamanth, one at a time and booked; vc does not stop one for the runtime's boot spike. Webber's other runs stay rhadamanth first with gyges for overflow. Another estate's Rust runs are held on hv's word through its vc until it says go.",
+      "state": "live",
+      "recorded_at": "2026-11-15T13:28:49.215Z"
     }
   ],
   "sent": [

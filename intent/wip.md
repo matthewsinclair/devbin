@@ -1,5 +1,5 @@
 ---
-verblock: "15 Nov 2026:v3.78: Matthew Sinclair - decision 189: Webber simulator runs on gyges only"
+verblock: "15 Nov 2026:v3.79: Matthew Sinclair - decision 190: Webber sims on rhadamanth, load accepted"
 ---
 
 # Work In Progress
@@ -19,4 +19,4 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 - Release after next, weigh only (vc's todo 214): issues 0352, 0354, 0355, 0356, 0358, 0359 and 0360 (todo 219), and the core findings listed there.
 - Issue 0326 stays open until pplr#0001 and cldr#0001 close (decision 154).
 - Issue 0353 is open.
-- Desk priorities (decisions 188 and 189, superseding 185): Webber P1, another estate P2; Webber simulator runs on gyges only, one at a time; other Webber runs rhadamanth first, gyges overflow.
+- Desk priorities (decisions 188 and 190, superseding 185 and 189): Webber P1, another estate P2; Webber simulator runs may use rhadamanth, one at a time, load accepted; other Webber runs rhadamanth first, gyges overflow.
