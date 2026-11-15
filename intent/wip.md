@@ -8,7 +8,7 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- Nothing in build for devbin; the desk is empty. Webber iOS simulator runs are gyges only; webber-dc re-asks its catalogue shots on gyges after ic's fix. devvm 0.5.0 (decision 186): arm64 and amd64 both built and passed at 683b9a0; hv's laptop proof on 16 Nov, then the upload, in agentic-engineering-dc's window.
+- Nothing in build for devbin. Webber iOS simulator runs are gyges only; webber-dc re-asks its catalogue shots on gyges after ic's fix. devvm 0.5.0 released 2026-11-15 (AE e68af78, 683b9a0) on hv's go; AE confirms the readback hashes; hv announces to attendees; fixes go in 0.5.1.
 
 ## TODO
 
