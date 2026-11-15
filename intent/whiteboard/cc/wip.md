@@ -3,7 +3,7 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0ddc6cd2-22ab-4eba-abc5-5b1b7a72f94a
-heartbeat_at: 2026-11-15 11:20Z
+heartbeat_at: 2026-11-15 11:24Z
 status: active
 focus: "Localfold 2026-11-15 11:20Z by date -u, for hv's compact: filed issues 0359 and 0360 at 2e1ab9a8 from Laksa's critic review of run_gate (record only, for todo 214's weigh); probes kept in scratch laksa-critic-probes. Nothing live or unbanked. Claim ISSUE:0326 stands. On the bounce: /in-session, pickup, hold for vc."
 claims: [ISSUE:0326]
