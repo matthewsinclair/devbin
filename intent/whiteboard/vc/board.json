@@ -5039,10 +5039,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 215,
-      "text": "NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), 0.1.24 (shas in ~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary) and 0.1.25 (swept 2026-11-14, 25 committed, 23 pushed to local; shas in ~/Devel/scratch/devbin-vc/0.1.25/sweep/sweep-commit.summary; Webber's 329091ab waits for webber-vc's batch push; 0.1.25 renders the formula's install as cp_r, which broke Intent's brew_formula.bats, so tell each estate with a formula test); 0326's reader notice to pplr-vc, cldr-vc, cldr-dc, ccusage-vc and pipeliner-sc (~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0; Prodinfra, infra --profile takes a path; release review action 2 to molt-vc and intent-vc; Ccusage's use-to-activate rename to ccusage-vc as ruled work (decision 178).",
+      "text": "NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), 0.1.24 (shas in ~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary) and 0.1.25 (swept 2026-11-14, 25 committed, 23 pushed to local; shas in ~/Devel/scratch/devbin-vc/0.1.25/sweep/sweep-commit.summary; Webber's 329091ab waits for webber-vc's batch push; 0.1.25 renders the formula's install as cp_r, which broke Intent's brew_formula.bats, so tell each estate with a formula test); 0326's reader notice to pplr-vc, cldr-vc, cldr-dc, ccusage-vc and pipeliner-sc (~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0; Prodinfra, infra --profile takes a path; release review action 2 to molt-vc and intent-vc; Ccusage's use-to-activate rename to ccusage-vc as ruled work (decision 178). SENT 2026-11-15 11:27Z by date -u: sweep notices to intent-vc, laksa-vc and webber-vc, and action 2 to intent-vc (texts in ~/Devel/scratch/devbin-vc/0.1.25/notices). The rest wait for those estates' vcs.",
       "state": "live",
       "recorded_at": "2026-11-13T18:14:30.760Z",
-      "edited_at": "2026-11-15T05:52:24.814Z"
+      "edited_at": "2026-11-15T11:27:17.652Z"
     },
     {
       "node": "vc",
