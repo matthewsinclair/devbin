@@ -5176,6 +5176,14 @@
       "text": "hv 2026-11-15 06:17Z by date -u, in vc's window, hv's words: \"I am about to be AFK for a while. You have the pen. P0/P1 is devbin, intent, and devvm releases. webber is using gyges. laksa is small/simple and can use either as necessary. webber+laksa are equally P3 here, but can shre gyges as they need.\" Desk reading (vc): rhadamanth and kovacs serve devbin, Intent and devvm releases first, and a P0/P1 ask is granted ahead of any P3 one. Webber runs on gyges. Laksa may use rhadamanth when no P0/P1 run needs it, and otherwise gyges, which it shares with Webber. Supersedes decision 176's host split. No devvm repo is in prj yet, so its first ask is read against this.",
       "state": "live",
       "recorded_at": "2026-11-15T06:17:11.931Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 186,
+      "text": "hv 2026-11-15 by date -u 06:27Z, in vc's window through the TUI, answering vc's question: devvm 0.5.0 is re-baked first, on Intent 3.3.3 and devbin 0.1.25, before hv's laptop proof, so the proof runs once on the final images. The arm64 image build books rhadamanth heavy as P1 under decision 185, ahead of Laksa's full run.",
+      "state": "live",
+      "recorded_at": "2026-11-15T06:27:09.151Z"
     }
   ],
   "sent": [

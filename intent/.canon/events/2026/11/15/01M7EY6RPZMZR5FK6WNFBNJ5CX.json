@@ -1,0 +1,15 @@
+{
+  "id": "01M7EY6RPZMZR5FK6WNFBNJ5CX",
+  "ts": "2026-11-15T06:27:09.151Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-11-15 by date -u 06:27Z, in vc's window through the TUI, answering vc's question: devvm 0.5.0 is re-baked first, on Intent 3.3.3 and devbin 0.1.25, before hv's laptop proof, so the proof runs once on the final images. The arm64 image build books rhadamanth heavy as P1 under decision 185, ahead of Laksa's full run."
+  }
+}
