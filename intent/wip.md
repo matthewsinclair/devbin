@@ -20,4 +20,4 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 - Release after next, weigh only (vc's todo 214): issues 0352, 0354, 0355, 0356 and 0358, and the core findings listed there.
 - Issue 0326 stays open until pplr#0001 and cldr#0001 close (decision 154).
 - Issue 0353 is open.
-- Desk priorities (decision 176): Webber on rhadamanth and gyges, gyges one run at a time on webber-vc's GO; devbin and Intent book rhadamanth as usual.
+- Desk priorities (decision 185, superseding 176): devbin, Intent and devvm releases are P0/P1 on rhadamanth and kovacs; Webber on gyges; Laksa on rhadamanth when no P0/P1 run needs it, else gyges; Webber and Laksa are P3.

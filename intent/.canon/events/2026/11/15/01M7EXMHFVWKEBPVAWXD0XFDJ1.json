@@ -1,0 +1,15 @@
+{
+  "id": "01M7EXMHFVWKEBPVAWXD0XFDJ1",
+  "ts": "2026-11-15T06:17:11.931Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-11-15 06:17Z by date -u, in vc's window, hv's words: \"I am about to be AFK for a while. You have the pen. P0/P1 is devbin, intent, and devvm releases. webber is using gyges. laksa is small/simple and can use either as necessary. webber+laksa are equally P3 here, but can shre gyges as they need.\" Desk reading (vc): rhadamanth and kovacs serve devbin, Intent and devvm releases first, and a P0/P1 ask is granted ahead of any P3 one. Webber runs on gyges. Laksa may use rhadamanth when no P0/P1 run needs it, and otherwise gyges, which it shares with Webber. Supersedes decision 176's host split. No devvm repo is in prj yet, so its first ask is read against this."
+  }
+}
