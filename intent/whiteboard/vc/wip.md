@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-15 05:52Z
+heartbeat_at: 2026-11-15 06:13Z
 status: active
-focus: "LOCALFOLDED 2026-11-15 05:52Z by date -u for hv's compact: devbin idle (0.1.25 out, 0357 closed, 0.1.26 pre-approved, decision 182); Intent 3.3.3 re-cut booked for hv, slot 01M7EVZ6GJF7Q9R5CVV05F6WSP granted and started, hv runs bin/devbin release v3.3.3 in Intent canon (decision 184); Laksa's five seats will ask the desk for its deps update (laksa-vc). On the bounce: /in-session, pickup, re-arm the desk waiter, check slots pending at once, watch Intent's tmp/release for the re-cut's log, then the plan."
+focus: "LOCALFOLDED 2026-11-15 06:13Z by date -u for hv's compact: devbin idle; Intent v3.3.3 out at 83dce9b27 (06:13:09Z), its slot released, intent-vc told TAG OUT; desk: laksa-cc compile on heavy (01M7EX7E1ZCN1SA3YJX9B3NKHJ), laksa-dc full run (01M7EW858C02E7XQFYBGKTQTR3) held for laksa-vc's word and READY. On the bounce: /in-session, pickup, re-arm the desk waiter, check slots pending at once, then the plan (todos 213, 214, 215, 217, 218; 0.1.26 when batched)."
 claims: []
 ---
 
