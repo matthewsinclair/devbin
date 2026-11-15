@@ -5,7 +5,7 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "d252d54e-7ad5-4f31-9c5f-02ab8aca3f33",
-    "heartbeat_at": "2026-11-15T11:32:14.291Z",
+    "heartbeat_at": "2026-11-15T13:18:07.961Z",
     "status": "active",
     "focus": "LOCALFOLDED 2026-11-15 11:32Z by date -u: every seat in devbin, Intent, Laksa, Webber and AE folded; desk empty. devvm 0.5.0 both images green at 683b9a0, hv's laptop proof 16 Nov. Todo 215 notices sent to the live vcs. On the bounce: /in-session, pickup, check the desk waiter and slots pending, then hv's items and 0.1.26 when batched.",
     "claims": [],
@@ -5200,6 +5200,14 @@
       "text": "hv in vc's window, read 2026-11-15 12:01Z by date -u, quoting its word to agentic-engineering-vc: 'I'm AFK for a while. devbin-vc still has the pen. Focus on getting 0.5.0 released, please.' devvm 0.5.0 is the focus; vc drives AE toward the release; anything public or upstream still waits for hv's go.",
       "state": "live",
       "recorded_at": "2026-11-15T12:01:30.680Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 188,
+      "text": "Desk priorities (hv, 2026-11-15 13:20Z by date -u, supersedes 185): devbin, Intent and devvm are finished. Webber is P1 and another estate is P2 (its vc finds what is next and starts nothing yet). Webber runs, iOS simulator runs included, book rhadamanth first and overflow to gyges; vc re-reads the load at each simulator START. vc keeps the Desk.",
+      "state": "live",
+      "recorded_at": "2026-11-15T13:20:56.745Z"
     }
   ],
   "sent": [

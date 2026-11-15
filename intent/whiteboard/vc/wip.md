@@ -3,7 +3,7 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-15 11:32Z
+heartbeat_at: 2026-11-15 13:18Z
 status: active
 focus: "LOCALFOLDED 2026-11-15 11:32Z by date -u: every seat in devbin, Intent, Laksa, Webber and AE folded; desk empty. devvm 0.5.0 both images green at 683b9a0, hv's laptop proof 16 Nov. Todo 215 notices sent to the live vcs. On the bounce: /in-session, pickup, check the desk waiter and slots pending, then hv's items and 0.1.26 when batched."
 claims: []
@@ -69,6 +69,7 @@ _(none)_
 - hv 2026-11-15 06:17Z by date -u, in vc's window, hv's words: "I am about to be AFK for a while. You have the pen. P0/P1 is devbin, intent, and devvm releases. webber is using gyges. laksa is small/simple and can use either as necessary. webber+laksa are equally P3 here, but can shre gyges as they need." Desk reading (vc): rhadamanth and kovacs serve devbin, Intent and devvm releases first, and a P0/P1 ask is granted ahead of any P3 one. Webber runs on gyges. Laksa may use rhadamanth when no P0/P1 run needs it, and otherwise gyges, which it shares with Webber. Supersedes decision 176's host split. No devvm repo is in prj yet, so its first ask is read against this.
 - hv 2026-11-15 by date -u 06:27Z, in vc's window through the TUI, answering vc's question: devvm 0.5.0 is re-baked first, on Intent 3.3.3 and devbin 0.1.25, before hv's laptop proof, so the proof runs once on the final images. The arm64 image build books rhadamanth heavy as P1 under decision 185, ahead of Laksa's full run.
 - hv in vc's window, read 2026-11-15 12:01Z by date -u, quoting its word to agentic-engineering-vc: 'I'm AFK for a while. devbin-vc still has the pen. Focus on getting 0.5.0 released, please.' devvm 0.5.0 is the focus; vc drives AE toward the release; anything public or upstream still waits for hv's go.
+- Desk priorities (hv, 2026-11-15 13:20Z by date -u, supersedes 185): devbin, Intent and devvm are finished. Webber is P1 and another estate is P2 (its vc finds what is next and starts nothing yet). Webber runs, iOS simulator runs included, book rhadamanth first and overflow to gyges; vc re-reads the load at each simulator START. vc keeps the Desk.
 
 ---
 

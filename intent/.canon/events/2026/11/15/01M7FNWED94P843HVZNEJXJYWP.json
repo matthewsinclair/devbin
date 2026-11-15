@@ -1,0 +1,15 @@
+{
+  "id": "01M7FNWED94P843HVZNEJXJYWP",
+  "ts": "2026-11-15T13:20:56.745Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Desk priorities (hv, 2026-11-15 13:20Z by date -u, supersedes 185): devbin, Intent and devvm are finished. Webber is P1 and another estate is P2 (its vc finds what is next and starts nothing yet). Webber runs, iOS simulator runs included, book rhadamanth first and overflow to gyges; vc re-reads the load at each simulator START. vc keeps the Desk."
+  }
+}

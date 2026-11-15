@@ -1,5 +1,5 @@
 ---
-verblock: "15 Nov 2026:v3.76: Matthew Sinclair - localfold: all seats folded; desk empty; devvm built"
+verblock: "15 Nov 2026:v3.77: Matthew Sinclair - decision 188: Webber P1, rhadamanth first; devvm closed"
 ---
 
 # Work In Progress
@@ -8,7 +8,7 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- Nothing in build for devbin. Webber iOS simulator runs are gyges only; webber-dc re-asks its catalogue shots on gyges after ic's fix. devvm 0.5.0 released 2026-11-15 (AE e68af78, 683b9a0) on hv's go; readback checked; hv announced it to attendees; fixes go in 0.5.1.
+- Nothing in build for devbin. devvm 0.5.0 released 2026-11-15 (AE e68af78, 683b9a0) on hv's go; readback checked; hv announced it to attendees; fixes go in 0.5.1.
 
 ## TODO
 
@@ -19,4 +19,4 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 - Release after next, weigh only (vc's todo 214): issues 0352, 0354, 0355, 0356, 0358, 0359 and 0360 (todo 219), and the core findings listed there.
 - Issue 0326 stays open until pplr#0001 and cldr#0001 close (decision 154).
 - Issue 0353 is open.
-- Desk priorities (decision 185, superseding 176): devbin, Intent and devvm releases are P0/P1 on rhadamanth and kovacs; Webber on gyges; Laksa on rhadamanth when no P0/P1 run needs it, else gyges; Webber and Laksa are P3.
+- Desk priorities (decision 188, superseding 185): Webber P1, another estate P2; Webber runs, simulator runs included, book rhadamanth first and overflow to gyges.
