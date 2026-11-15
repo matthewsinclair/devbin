@@ -1,0 +1,15 @@
+{
+  "id": "01M7FP6VN0VNSPYQFZS0NG7ZB5",
+  "ts": "2026-11-15T13:26:37.985Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Narrows decision 188 (2026-11-15 13:26Z by date -u): after the 13:22Z simulator boot storm on rhadamanth (load 6 to 137, run stopped by vc), Webber's iOS simulator runs go on gyges only, one at a time; Webber's other runs book rhadamanth first with gyges for overflow. Recorded by webber-vc on its decision 115 after hv read rhadamanth's Spotlight exclusions (both present, so not the cause); vc holds this as the stricter rule and applies it."
+  }
+}

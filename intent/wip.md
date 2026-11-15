@@ -1,5 +1,5 @@
 ---
-verblock: "15 Nov 2026:v3.77: Matthew Sinclair - decision 188: Webber P1, rhadamanth first; devvm closed"
+verblock: "15 Nov 2026:v3.78: Matthew Sinclair - decision 189: Webber simulator runs on gyges only"
 ---
 
 # Work In Progress
@@ -19,4 +19,4 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 - Release after next, weigh only (vc's todo 214): issues 0352, 0354, 0355, 0356, 0358, 0359 and 0360 (todo 219), and the core findings listed there.
 - Issue 0326 stays open until pplr#0001 and cldr#0001 close (decision 154).
 - Issue 0353 is open.
-- Desk priorities (decision 188, superseding 185): Webber P1, another estate P2; Webber runs, simulator runs included, book rhadamanth first and overflow to gyges.
+- Desk priorities (decisions 188 and 189, superseding 185): Webber P1, another estate P2; Webber simulator runs on gyges only, one at a time; other Webber runs rhadamanth first, gyges overflow.

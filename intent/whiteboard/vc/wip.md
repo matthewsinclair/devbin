@@ -70,6 +70,7 @@ _(none)_
 - hv 2026-11-15 by date -u 06:27Z, in vc's window through the TUI, answering vc's question: devvm 0.5.0 is re-baked first, on Intent 3.3.3 and devbin 0.1.25, before hv's laptop proof, so the proof runs once on the final images. The arm64 image build books rhadamanth heavy as P1 under decision 185, ahead of Laksa's full run.
 - hv in vc's window, read 2026-11-15 12:01Z by date -u, quoting its word to agentic-engineering-vc: 'I'm AFK for a while. devbin-vc still has the pen. Focus on getting 0.5.0 released, please.' devvm 0.5.0 is the focus; vc drives AE toward the release; anything public or upstream still waits for hv's go.
 - Desk priorities (hv, 2026-11-15 13:20Z by date -u, supersedes 185): devbin, Intent and devvm are finished. Webber is P1 and another estate is P2 (its vc finds what is next and starts nothing yet). Webber runs, iOS simulator runs included, book rhadamanth first and overflow to gyges; vc re-reads the load at each simulator START. vc keeps the Desk.
+- Narrows decision 188 (2026-11-15 13:26Z by date -u): after the 13:22Z simulator boot storm on rhadamanth (load 6 to 137, run stopped by vc), Webber's iOS simulator runs go on gyges only, one at a time; Webber's other runs book rhadamanth first with gyges for overflow. Recorded by webber-vc on its decision 115 after hv read rhadamanth's Spotlight exclusions (both present, so not the cause); vc holds this as the stricter rule and applies it. (edited)
 
 ---
 
