@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-15 11:24Z
+heartbeat_at: 2026-11-15 11:32Z
 status: active
-focus: "LOCALFOLDED 2026-11-15 11:20Z by date -u for hv's compact: devbin idle. Desk: webber-ic's sealed U5 on gyges (01M7FCYPNV18214GBHC5P8T0E9) finishing; webber-dc's catalogue-shots (01M7FDWTKR4JB0H491WJMJ6SN8) held for gyges on the bounce; Webber iOS simulator runs gyges only. devvm 0.5.0: arm64 green at 683b9a0, amd64 run 43700854561 on GitHub, then hv's fetch, laptop proof and upload. All estates told to finish, bank and localfold. On the bounce: /in-session, pickup, re-arm the desk waiter (prints ENDs from slots/history), check slots pending at once, then the plan (todos 213, 214, 215, 217, 218, 219; 0.1.26 when batched)."
+focus: "LOCALFOLDED 2026-11-15 11:32Z by date -u: every seat in devbin, Intent, Laksa, Webber and AE folded; desk empty. devvm 0.5.0 both images green at 683b9a0, hv's laptop proof 16 Nov. Todo 215 notices sent to the live vcs. On the bounce: /in-session, pickup, check the desk waiter and slots pending, then hv's items and 0.1.26 when batched."
 claims: []
 ---
 
