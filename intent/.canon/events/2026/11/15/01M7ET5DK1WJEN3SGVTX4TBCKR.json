@@ -1,0 +1,15 @@
+{
+  "id": "01M7ET5DK1WJEN3SGVTX4TBCKR",
+  "ts": "2026-11-15T05:16:30.689Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-15 05:1xZ by date -u ('Yes, that was me'): hv freed kovacs's disk at about 05:06Z: ~/work/intent-preflight/target removed, ~/work/intent-leg.cache emptied, devbin's two green leg worktrees gone; / now 28G free of 62G. The 3.3.3 cut's red kovacs leg (2026-11-14 18:56Z, cargo test --workspace) is read as the full disk (211M free) until intent-dc's diagnostic says otherwise; the re-cut builds kovacs cold. The release commit 484ea426e stays on Intent's local main for hv's reset and re-cut on vc's ready."
+  }
+}

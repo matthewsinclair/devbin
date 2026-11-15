@@ -5152,6 +5152,14 @@
       "text": "RELEASE AFTER NEXT, weigh only (found 2026-11-14 at Intent's 3.3.3 cut): a remote leg's DEVBIN_GATE_CACHE (eg kovacs ~/work/intent-leg.cache, its rust-target 5.7G to 15G in a day) grows without bound, since no run clears it; kovacs's / filled (211M free of 62G) and the cut's cargo test failed. The gate cache wants a bound or a gc like WP16's artefact cache. Related: todo 217.",
       "state": "live",
       "recorded_at": "2026-11-14T19:02:33.694Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 183,
+      "text": "hv in vc's window, read 2026-11-15 05:1xZ by date -u ('Yes, that was me'): hv freed kovacs's disk at about 05:06Z: ~/work/intent-preflight/target removed, ~/work/intent-leg.cache emptied, devbin's two green leg worktrees gone; / now 28G free of 62G. The 3.3.3 cut's red kovacs leg (2026-11-14 18:56Z, cargo test --workspace) is read as the full disk (211M free) until intent-dc's diagnostic says otherwise; the re-cut builds kovacs cold. The release commit 484ea426e stays on Intent's local main for hv's reset and re-cut on vc's ready.",
+      "state": "live",
+      "recorded_at": "2026-11-15T05:16:30.689Z"
     }
   ],
   "sent": [
