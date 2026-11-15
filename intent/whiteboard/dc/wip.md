@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 30d4e5b0-c191-42b4-88ae-c6bd721b436e
-heartbeat_at: 2026-11-15 06:07Z
+heartbeat_at: 2026-11-15 11:25Z
 status: active
-focus: "Localfold for hv's compact, 2026-11-15 05:52Z by date -u: nothing live or unbanked, no claims. Since the last fold: pc0125 pre-cut green for devbin v0.1.25 (out at 88fe057a), its tree cleared, records in pc0125/runs and runs-b28527fd. On the bounce: /in-session, pickup, hold for vc."
+focus: "Localfold for hv's compact, 2026-11-15 11:25Z by date -u: nothing live or unbanked, no claims; nothing run since the 05:52Z fold. On the bounce: /in-session, pickup, hold for vc."
 claims: []
 ---
 
