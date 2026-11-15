@@ -1,0 +1,15 @@
+{
+  "id": "01M7FHB01RSABRVMFM7DM3E3GV",
+  "ts": "2026-11-15T12:01:30.680Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-15 12:01Z by date -u, quoting its word to agentic-engineering-vc: 'I'm AFK for a while. devbin-vc still has the pen. Focus on getting 0.5.0 released, please.' devvm 0.5.0 is the focus; vc drives AE toward the release; anything public or upstream still waits for hv's go."
+  }
+}
