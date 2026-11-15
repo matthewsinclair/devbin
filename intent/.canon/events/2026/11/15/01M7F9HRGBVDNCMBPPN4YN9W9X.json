@@ -1,0 +1,15 @@
+{
+  "id": "01M7F9HRGBVDNCMBPPN4YN9W9X",
+  "ts": "2026-11-15T09:45:23.725Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0360"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "SIGTERM to a run whose stdout and stderr share one pipe leaves it unsealed at 141; under errexit outside all, a dead stdout ends run_gate at 1"
+  }
+}

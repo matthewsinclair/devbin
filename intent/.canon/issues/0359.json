@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 359,
+  "slug": "run-gate-s-signal-handling-has-no-function-a-han",
+  "title": "run_gate's signal handling has no function a handler can call: traps, progress name, signal exit and ENDED line are inline",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-15",
+  "reporter": "Matthew Sinclair",
+  "body": "Filed for the weigh of the release after next (vc's todo 214). Record only, with no work now. Laksa's critic review of its runners found it, reading lib/runlog as 0.1.25 ships it; lib/runlog is unchanged at main since v0.1.25.\n\n`run_gate` does four things inline, and no function a handler can call does them. A project's handler that runs a gated tool without the wrapper must copy all four:\n\n- the INT, TERM and HUP traps that note a signal and let the gated command end first (lib/runlog:2371-2373);\n- the progress file's name, `$log.progress` (:2383);\n- the exit for a run a signal ended, 128 plus the signal's number (:2430);\n- the \"ENDED BY SIG...\" line that says why the log stops where it does (:2431).\n\nA parity guard that derives names from `run_gate`'s body sees only the functions it calls, so it cannot see one of those copies drift. The fix to weigh: lift the four into functions `run_gate` calls (an arm, a progress-file name, a close that gives the exit and the line), so a handler calls the same ones and the guard can name them. The critic's staged arm and close shape, with its traps_restore, is in the probes below as p3.sh and traps_restore.fn.\n\nProbes: ~/Devel/scratch/devbin-cc/laksa-critic-probes (copied from the critic's session scratchpad, which dies at reboot).\n"
+}
