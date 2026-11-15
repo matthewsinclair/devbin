@@ -1,0 +1,15 @@
+{
+  "id": "01M7F9JQ4YEWDH7331B6Y6ZAZK",
+  "ts": "2026-11-15T09:45:55.102Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "RELEASE AFTER NEXT, weigh only (filed 2026-11-15 by cc at 2e1ab9a8, from laksa-dc's critic review of Laksa's runners): issues 0359 (low: run_gate's traps, progress name, signal exit and ENDED line have no callable function) and 0360 (medium: SIGTERM through a dead '2>&1 | tee' pipe leaves a run unsealed at 141; errexit outside all ends run_gate at 1 with no verdict). Probes in ~/Devel/scratch/devbin-cc/laksa-critic-probes."
+  }
+}

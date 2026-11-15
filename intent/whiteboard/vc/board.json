@@ -5184,6 +5184,14 @@
       "text": "hv 2026-11-15 by date -u 06:27Z, in vc's window through the TUI, answering vc's question: devvm 0.5.0 is re-baked first, on Intent 3.3.3 and devbin 0.1.25, before hv's laptop proof, so the proof runs once on the final images. The arm64 image build books rhadamanth heavy as P1 under decision 185, ahead of Laksa's full run.",
       "state": "live",
       "recorded_at": "2026-11-15T06:27:09.151Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 219,
+      "text": "RELEASE AFTER NEXT, weigh only (filed 2026-11-15 by cc at 2e1ab9a8, from laksa-dc's critic review of Laksa's runners): issues 0359 (low: run_gate's traps, progress name, signal exit and ENDED line have no callable function) and 0360 (medium: SIGTERM through a dead '2>&1 | tee' pipe leaves a run unsealed at 141; errexit outside all ends run_gate at 1 with no verdict). Probes in ~/Devel/scratch/devbin-cc/laksa-critic-probes.",
+      "state": "live",
+      "recorded_at": "2026-11-15T09:45:55.102Z"
     }
   ],
   "sent": [
