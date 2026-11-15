@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-15 13:18Z
+heartbeat_at: 2026-11-15 15:41Z
 status: active
-focus: "LOCALFOLDED 2026-11-15 11:32Z by date -u: every seat in devbin, Intent, Laksa, Webber and AE folded; desk empty. devvm 0.5.0 both images green at 683b9a0, hv's laptop proof 16 Nov. Todo 215 notices sent to the live vcs. On the bounce: /in-session, pickup, check the desk waiter and slots pending, then hv's items and 0.1.26 when batched."
+focus: "Localfold 2026-11-15 15:41Z by date -u, for hv's compact. vc holds the Desk. Live: webber-cc's ST0005/30 landing run on rhadamanth (01M7FXSS5SV8E32SVBWEQ3X4T4, heavy+bats); webber-ic's main sealed-gates rerun on gyges (01M7FWZBZZFPNG2A9F2B2QE2YA, heavy, unattended, END read on the bounce). Webber files no new asks until after the compact. Heavy lane: capacity 2, no load gate (cleared 14:33Z; vc reads each host's load before every grant, GO only after grant writes). Desk waiter bne232iiw; re-arm on the bounce. Waiting on hv: Laksa main push (through 3ad133c6b and later), QFM title escape and intent /privacy pushes, site scripts, todo 213."
 claims: []
 ---
 

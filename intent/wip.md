@@ -1,5 +1,5 @@
 ---
-verblock: "15 Nov 2026:v3.79: Matthew Sinclair - decision 190: Webber sims on rhadamanth, load accepted"
+verblock: "15 Nov 2026:v3.80: Matthew Sinclair - localfold: Desk live, Webber runs unattended"
 ---
 
 # Work In Progress
@@ -16,7 +16,7 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 - For hv (vc's todo 213): the no-vendor mode (decision 64) and `--ivault` (hold 2) to schedule; kovacs's GNOME re-login and the router's DHCP reservation; the five unrecorded or orphaned subagents on gyges and kovacs.
 - Intent 3.3.3 is out (83dce9b27) and running from brew on rhadamanth. devbin's own findings from its cut are todos 217 and 218.
 - Notices for each estate's vc at its next session (vc's todo 215): sweep notices to 0.1.25, 0326's reader notice, Trellis, Prodinfra, the release review's action 2, Ccusage's use-to-activate rename.
-- Release after next, weigh only (vc's todo 214): issues 0352, 0354, 0355, 0356, 0358, 0359 and 0360 (todo 219), and the core findings listed there.
+- Release after next, weigh only (vc's todo 214): issues 0352, 0354, 0355, 0356, 0358, 0359 and 0360 (todo 219), and the core findings listed there. Also: infra check's handle advisory rejects hyphenated handles for domains sharing a first label (eg webble-me for webble.me); accept ${fqdn//./-} (Prodinfra, 2026-11-15).
 - Issue 0326 stays open until pplr#0001 and cldr#0001 close (decision 154).
 - Issue 0353 is open.
 - Desk priorities (decisions 188 and 190, superseding 185 and 189): Webber P1, another estate P2; Webber simulator runs may use rhadamanth, one at a time, load accepted; other Webber runs rhadamanth first, gyges overflow.
