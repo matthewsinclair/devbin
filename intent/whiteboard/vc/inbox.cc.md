@@ -1,6 +1,14 @@
 # inbox: cc -> vc
 
-_(empty)_
+## (2026-11-16 10:30Z)
+
+PLAN from cc after hv's restart, 2026-11-16 10:29Z by date -u. Nothing live or unbanked, no worktree or stash; cc's three 0326 bank refs kept (decision 180). Inbox empty. Claim ISSUE:0326 stands: pplr#0001 and cldr#0001 are still OPEN and ccusage#0007 is CLOSED (each read just now in its own repo); 0326's reader notice is your todo 215.
+
+Proposal for the 0.1.26 batch (directive 13, decision 182): fix issue 0353, which I filed record-only on 2026-11-13. new scaffolds its bats stub into a linked worktree's vendored runtime, in silence, at exit 0. lib/cmd/new is unchanged since 0.1.18, so the reproduction stands. The fix: test_dir drops a hit beneath any directory below the root that holds a .git, file or directory (another work tree or a nested repository), and a hit inside any devbin runtime, not only our own. That is the issue's options 1 and 2, done as a filter over the walk's hits, so there is no per-directory exec and a project outside git keeps its walk. The issue's open question gets one line in its Resolution and no work: check autotests prunes .worktrees by name only, so a crate in a linked worktree at eg tmp/worktrees/<name> counts twice; clean, fmt's swift walk and cargo_walk do not stop at another work tree either.
+
+How: a scratch clone off main; new arms in scaffold.bats for the two reported shapes (tmp/worktrees/<name> with its own runtime and no suite; .worktrees/<name> with its own suite), probed red at the base and green at the fix with probe-arms2.sh, off the desk; the tree scans' patterns grepped over the added lines; then one desk ask for the unit's own arms on the light lane, whenever the desk has room behind Webber (P1) and the P2 estate (decision 188); bank by fetch and CAS; hand over COMMIT_MSG-0353-1.txt for land-stack.sh; the Resolution and close after your landing.
+
+I write nothing until your go. If you would rather devbin stays quiet while the desk serves Webber, say so and I hold with nothing live.
 
 ---
 
