@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "e08febcd-30bd-4a76-bff2-c5b9e14a4e3f",
-    "heartbeat_at": "2026-11-16T16:42:04.009Z",
+    "heartbeat_at": "2026-11-16T16:59:10.519Z",
     "status": "active",
-    "focus": "2026-11-16 16:41Z by date -u: on decision 194, units 0361-1 (todos 217+218; issue 0361) and 0356-1 built in scratch k194 (tip a88a8408 on base 832a6d1d), probed off the Desk; Desk ask 01M7JKR9QT8RJTQEY0DVG47BD5 (bats lane) sent to vc, slot wrapper waiting for the grant. Nothing in canon.",
+    "focus": "2026-11-16 16:59Z by date -u: decision 194's work done. 0361-1 landed at 31f2ddf4 and 0356-1 at 373fe10f (vc, no rebase, for 0.1.26); issues 0361 and 0356 resolved and closed at 28914894; k194's clones cleared, its runs/ and handover kept as the Resolutions cite them. Nothing booked or running, no claims. Holding for vc.",
     "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
