@@ -307,7 +307,7 @@ YAML
   # them holds that to the table's own rows (ST0008 WP-08: repo was in none).
   local block shape key all="" declared
   local -a blocks=(
-    '  tag: "v{version}"\n  remotes:\n    - origin\n  branch: main\n  notes:\n    kind: changelog\n  derived:\n    - cargo update --workspace\n  preflight:\n    - doctor\n  trailer:\n    - "(C) A B <a@b>"\n  gates:\n    - check all\n    - test all\n  legs:\n    - "-"\n  ci:\n    query: bin/devbin ci-state\n    workflow: tests.yml\n    summary: Test Summary\n    wait: 20m\n  object: local\n  title: "{tag}"\n  repo: owner/name\n  formula: false\n  after:\n    - bin/announce\n  verbs:\n    - cut\n    - status\n    - notes\n    - check\n    - attach\n  assets:\n    workflow: linux-release.yml\n    wait: 30m'
+    '  tag: "v{version}"\n  remotes:\n    - origin\n  branch: main\n  notes:\n    kind: changelog\n  derived:\n    - cargo update --workspace\n  preflight:\n    - doctor\n  trailer:\n    - "(C) A B <a@b>"\n  gates:\n    - check all\n    - test all\n  legs:\n    - "-"\n  gate_cache:\n    max: 12G\n  ci:\n    query: bin/devbin ci-state\n    workflow: tests.yml\n    summary: Test Summary\n    wait: 20m\n  object: local\n  title: "{tag}"\n  repo: owner/name\n  formula: false\n  after:\n    - bin/announce\n  verbs:\n    - cut\n    - status\n    - notes\n    - check\n    - attach\n  assets:\n    workflow: linux-release.yml\n    wait: 30m'
     '  notes:\n    kind: command\n    run: bin/release-notes'
     '  object: ci\n  object_wait: 20m'
     '  ci:\n    query: bin/devbin ci-state\n  snapshot:\n    list: tests/shipped.paths\n    author: "A B <a@b>"\n    message: "{name} {version}"\n  publish:\n    url: https://example.com/o/n.git\n    branch: main\n    candidate: candidate/{tag}'
@@ -329,6 +329,46 @@ YAML
     [ -n "$shape" ] || continue
     grep -qxF -- "$key" <<<"$all" || fail "no block declares release.$key, a row of the table"
   done <<<"$_DEVBIN_RELEASE_SCHEMA"
+}
+
+@test "0361: release.gate_cache.max reads 12G undeclared, takes a whole number of M or G above 0, refuses any other value naming the key and the value, and is refused as unread where neither the cut nor gates is offered" {
+  local block want v
+  cfg_load_string <<'YAML'
+project:
+  name: demo
+commands:
+  release:
+    enabled: true
+YAML
+  cfg_validate
+  v="$(cfg_release_get gate_cache.max)"
+  [ "$v" = 12G ] || fail "undeclared, release.gate_cache.max reads '$v'"
+  while IFS='|' read -r block want; do
+    [ -n "$block" ] || continue
+    cfg_load_string <<YAML
+project:
+  name: demo
+release:
+$(printf '%b' "$block")
+YAML
+    run cfg_validate </dev/null
+    if [ -z "$want" ]; then
+      [ "$status" -eq 0 ] || fail "refused: $block -- $output"
+    else
+      [ "$status" -ne 0 ] || fail "accepted: $block"
+      assert_output_contains "$want"
+    fi
+  done <<'ROWS'
+  gate_cache:\n    max: 512M|
+  gate_cache:\n    max: 40G|
+  gate_cache:\n    max: 12|release.gate_cache.max: "12" must be a whole number of M or G above 0
+  gate_cache:\n    max: 12GB|release.gate_cache.max: "12GB" must be a whole number of M or G above 0
+  gate_cache:\n    max: 0G|release.gate_cache.max: "0G" must be a whole number of M or G above 0
+  gate_cache:\n    max: 012G|release.gate_cache.max: "012G" must be a whole number of M or G above 0
+  gate_cache:\n    max: 12g|release.gate_cache.max: "12g" must be a whole number of M or G above 0
+  verbs:\n    - check\n    - attach\n  gate_cache:\n    max: 4G|release.gate_cache.max is read only by cut and gates
+  verbs:\n    - gates\n  gate_cache:\n    max: 4G|
+ROWS
 }
 
 # AT-1.1

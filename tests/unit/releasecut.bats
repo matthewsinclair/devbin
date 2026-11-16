@@ -4504,6 +4504,46 @@ $output"
   [ "$(cat "$mine/runs")" = run ] || fail "the directory the environment named was not made for the gate: $(cat "$mine/runs" 2>&1)"
 }
 
+@test "0361: release gates holds this machine's .gate-cache to release.gate_cache.max: one over it is emptied, read-only directories and all, before its gates are handed it, saying so, one within it kept and said nothing of, and one the environment names is never touched" {
+  local d mine
+  proj="$(cut_project "  gates:
+    - probe
+  gate_cache:
+    max: 1M")"
+  export DEVBIN_CACHE_HOME="$DEVBIN_TEST_TMPDIR/cache"
+  d="$DEVBIN_CACHE_HOME/demo/.gate-cache"
+  mine="$DEVBIN_TEST_TMPDIR/mine"
+  # A cache an earlier build filled past the bound, a read-only directory in it.
+  mkdir -p "$d/target/deps" "$mine/target"
+  head -c 2097152 /dev/zero >"$d/target/deps/big"
+  head -c 2097152 /dev/zero >"$mine/target/big"
+  chmod -R a-w "$d/target"
+  gate_does 'if [ -d "${DEVBIN_GATE_CACHE:-/nonexistent}" ]; then printf "run\n" >>"$DEVBIN_GATE_CACHE/runs"; ls -A "$DEVBIN_GATE_CACHE" >>"'"$DEVBIN_TEST_TMPDIR"'/gate.saw"; fi'
+  run release_in "$proj" gates
+  assert_success
+  assert_output_matches "release: gates: $d held [0-9]+ KiB, over its bound of 1024 KiB, so it is emptied and this run builds cold"$'(\n|$)'
+  [ "$(cat "$DEVBIN_TEST_TMPDIR/gate.saw")" = runs ] || fail "the gate was handed a cache not emptied first: $(cat "$DEVBIN_TEST_TMPDIR/gate.saw")"
+  run release_in "$proj" gates --rerun
+  assert_success
+  refute_output_contains "emptied"
+  [ "$(cat "$d/runs")" = $'run\nrun' ] || fail "the cache within its bound was not kept for the second run: $(cat "$d/runs" 2>&1)"
+  DEVBIN_GATE_CACHE="$mine" run release_in "$proj" gates --rerun
+  assert_success
+  [ -f "$mine/target/big" ] || fail "the cache the environment named was emptied"
+  refute_output_contains "emptied"
+}
+
+@test "0361: release gates refuses a release.gate_cache.max that is no size at validation, naming the key and the value, and runs no gate" {
+  proj="$(cut_project "  gates:
+    - probe
+  gate_cache:
+    max: 12GB")"
+  run release_in "$proj" gates
+  assert_failure
+  assert_output_contains 'release.gate_cache.max: "12GB" must be a whole number of M or G above 0'
+  [ ! -e "$DEVBIN_TEST_TMPDIR/gate.calls" ] || fail "a gate ran under a cache size that is no size: $(cat "$DEVBIN_TEST_TMPDIR/gate.calls")"
+}
+
 @test "0338: the RELEASE seal names the key at the release commit of every artefact the build: block declares, the macOS stage's or not, so cache gc keeps each" {
   local rel out a key
   local -a arts=(app cli)

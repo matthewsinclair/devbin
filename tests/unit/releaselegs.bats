@@ -54,9 +54,11 @@ LEG_WAIT_SECONDS=20
 # leave a read-only directory in it, as a bats run killed mid-file leaves its
 # fixture cache. gates-gatecache makes them write the DEVBIN_GATE_CACHE they
 # were given to <worktree>.seen-gatecache and, when it is the host's
-# work/demo-leg.cache, add the commit they stand on to its `runs`. The project
-# does not ignore tmp/, so dirt a read leaves there is seen. Prints the
-# project's path.
+# work/demo-leg.cache, add the commit they stand on to its `runs`.
+# gates-tmplog makes them leave a step's log at the top of their TMPDIR, as a
+# gate that keeps a step's output there does, and a file below a directory
+# there, as a private build's target holds. The project does not ignore tmp/,
+# so dirt a read leaves there is seen. Prints the project's path.
 leg_project() {
   local proj="$DEVBIN_TEST_TMPDIR/proj"
   mkdir -p "$proj/bin" || return 1
@@ -72,6 +74,10 @@ if [ -e gates-tmpdir ]; then
   if [ "${TMPDIR-}" = "$PWD.tmp" ]; then
     mkdir -p "$TMPDIR/cache/entries" && : >"$TMPDIR/cache/entries/one" && chmod -R a-w "$TMPDIR/cache" || exit 1
   fi
+fi
+if [ -e gates-tmplog ]; then
+  printf 'the failing step said this\n' >"$TMPDIR/gate-step.log" || exit 1
+  mkdir -p "$TMPDIR/target" && printf 'a build product\n' >"$TMPDIR/target/product" || exit 1
 fi
 if [ -e gates-gatecache ]; then
   printf '%s\n' "${DEVBIN_GATE_CACHE-unset}" >"$PWD.seen-gatecache" || exit 1
@@ -497,5 +503,120 @@ every_call_batch() {
   run release_leg_read "$proj" kov demo "$sha"
   [ "$(leg_word)" = green ] || fail "the next run's read: $output"
   [ "$(cat "$cache/runs")" = "$first"$'\n'"$sha" ] || fail "the next run did not find the first run's line: $(cat "$cache/runs" 2>&1)"
+  every_call_batch
+}
+
+# leg_kept_log <sha> -- the log of the run at <sha> on kov, as this machine
+# keeps it once the run is read and cleared.
+leg_kept_log() { printf '%s/%s.log\n' "$(release_leg_dir "$proj" kov)" "${1:0:12}"; }
+
+@test "0361: a remote leg whose gates end red appends each file at the top of their TMPDIR to its log before the run is cleared, naming it, and not what lies in a directory there, then the log's last line again; a green run appends nothing" {
+  local proj sha wt log before
+  proj="$(leg_project)"
+  : >"$proj/gates-tmplog"
+  : >"$proj/gates-red"
+  leg_commit "$proj" "red gates that keep a step's log in their TMPDIR"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha"
+  [ "$(leg_word)" = pending ] || fail "the red run's start: $output"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = failed ] || fail "the red run's read: $output"
+  [ ! -e "$wt.tmp" ] || fail "the red run was cleared and its TMPDIR left on the host"
+  log="$(leg_kept_log "$sha")"
+  [ -f "$log" ] || fail "this machine kept no log for the red run at $log"
+  grep -qxF -- "--- the gates exited 1: $wt.tmp/gate-step.log, kept from their TMPDIR, which is removed with the run ---" "$log" ||
+    fail "the kept log names no file kept from the TMPDIR: $(cat "$log")"
+  grep -qxF "the failing step said this" "$log" || fail "the kept log does not hold the step's log: $(cat "$log")"
+  ! grep -qF "a build product" "$log" || fail "a file below a directory in the TMPDIR was appended: $(cat "$log")"
+  # The kept files open on an empty line, so the line before them is two up.
+  before="$(awk '/^--- the gates exited /{print p2; exit} {p2 = p1; p1 = $0}' "$log")"
+  [ -n "$before" ] && [ "$(tail -n 1 "$log")" = "$before" ] ||
+    fail "the log's last line before the kept files, '$before', is not its last line again: $(cat "$log")"
+  rm "$proj/gates-red"
+  leg_commit "$proj" "green gates that keep a step's log in their TMPDIR"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha"
+  [ "$(leg_word)" = pending ] || fail "the green run's start: $output"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the green run's read: $output"
+  log="$(leg_kept_log "$sha")"
+  [ -f "$log" ] || fail "this machine kept no log for the green run at $log"
+  ! grep -qF -- "kept from their TMPDIR" "$log" || fail "a green run appended its TMPDIR to its log: $(cat "$log")"
+  ! grep -qF "the failing step said this" "$log" || fail "a green run appended its TMPDIR to its log: $(cat "$log")"
+  every_call_batch
+}
+
+@test "0361: a remote leg's start holds the host's gate cache to the bound it is handed: one over it is emptied, read-only directories and all, before the gates start, one within it kept, each named in the leg's log, and a bound that is no whole number of KiB is unknown with nothing sent" {
+  local proj sha wt cache
+  proj="$(leg_project)"
+  : >"$proj/gates-gatecache"
+  leg_commit "$proj" "gates that keep a line in their cache"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  cache="$HOSTS/kov/work/demo-leg.cache"
+  wt="$(leg_wt kov "$sha")"
+  # A cache an earlier build filled past the bound, a read-only directory in it.
+  mkdir -p "$cache/target/deps"
+  head -c 262144 /dev/zero >"$cache/target/deps/big"
+  chmod -R a-w "$cache/target"
+  run release_leg_start "$proj" kov demo "$sha" "" 64
+  [ "$(leg_word)" = pending ] || fail "a start over a cache past its bound: $output"
+  await_file "$wt/tmp/release/20260101-0000.GATES.errors"
+  [ ! -e "$cache/target" ] || fail "the cache over its bound was not emptied: $(ls -lR "$cache")"
+  grep -qE "^DEVBIN_GATE_CACHE emptied: $cache held [0-9]+ KiB, over its bound of 64 KiB, so it is emptied and this run builds cold\$" "$wt.log" ||
+    fail "the leg's log does not say the cache was emptied: $(cat "$wt.log")"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the run after the cache was emptied: $output"
+  [ "$(cat "$cache/runs")" = "$sha" ] || fail "the gates did not find their cache made afresh: $(cat "$cache/runs" 2>&1)"
+  printf 'next\n' >"$proj/next"
+  leg_commit "$proj" "the next commit"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha" "" 1048576
+  [ "$(leg_word)" = pending ] || fail "a start over a cache within its bound: $output"
+  grep -qE "^DEVBIN_GATE_CACHE kept: $cache holds [0-9]+ KiB, within its bound of 1048576 KiB\$" "$wt.log" ||
+    fail "the leg's log does not say the cache was kept: $(cat "$wt.log")"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the run over a cache within its bound: $output"
+  [ "$(sed -n 1p "$cache/runs")" = "$(git -C "$proj" rev-parse HEAD~1)" ] || fail "the cache within its bound was not kept: $(cat "$cache/runs" 2>&1)"
+  printf 'more\n' >"$proj/more"
+  leg_commit "$proj" "a commit no run is started at"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run release_leg_start "$proj" kov demo "$sha" "" 12G
+  [ "$(leg_word)" = unknown ] || fail "a bound that is no whole number of KiB: $output"
+  assert_output_contains "the gate cache's bound '12G' is not a whole number of KiB"
+  [ ! -e "$(leg_wt kov "$sha")" ] || fail "a start with a bound that is no number made a run"
+  every_call_batch
+}
+
+@test "0361: a remote leg's start leaves the host's gate cache as it stands while another run of the project is going there, whose gates may be reading it, and names that run in the leg's log" {
+  local proj sha wt cache going
+  proj="$(leg_project)"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov/work"
+  cache="$HOSTS/kov/work/demo-leg.cache"
+  wt="$(leg_wt kov "$sha")"
+  mkdir -p "$cache/target"
+  head -c 262144 /dev/zero >"$cache/target/big"
+  # Another run's worktree with no exit status beside it, its gates going; an
+  # ended run's, with its status, and a TMPDIR, neither of which is one going.
+  going="$HOSTS/kov/work/demo-leg-0123456789ab"
+  mkdir -p "$going" "$HOSTS/kov/work/demo-leg-ba9876543210" "$HOSTS/kov/work/demo-leg-ba9876543210.tmp"
+  printf '0\n' >"$HOSTS/kov/work/demo-leg-ba9876543210.rc"
+  run release_leg_start "$proj" kov demo "$sha" "" 64
+  [ "$(leg_word)" = pending ] || fail "a start beside a run going: $output"
+  [ -f "$cache/target/big" ] || fail "the cache was emptied while another run of the project was going"
+  grep -qxF "DEVBIN_GATE_CACHE kept: a run of demo is going in $going, which may be reading $cache, so it is left as it stands" "$wt.log" ||
+    fail "the leg's log does not name the run going: $(cat "$wt.log")"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the run beside a run going: $output"
   every_call_batch
 }

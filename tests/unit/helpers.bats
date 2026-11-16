@@ -758,7 +758,7 @@ $hits"
     lib/install '  mv -f -- "$root/$rel" "$root/$to" 2>/dev/null || :' \
     lib/install '    if mv -f -- "$root/$rel" "$tmp"; then' \
     lib/install '      mv -f -- "$tmp" "$root/$to" || mv -f -- "$tmp" "$root/$rel" || warn "could not put $rel back: it is at $tmp"' \
-    lib/release.legs '  set -- bash -c '"'"'bin/devbin release gates; printf "%s\n" "$?" >"$1.rc.part" && mv -f "$1.rc.part" "$1.rc"'"'"' release-leg "$wt"')"
+    lib/release.legs 'printf "%s\n" "$s" >"$1.rc.part" && mv -f "$1.rc.part" "$1.rc"'"'"'')"
 
   local found
   found="$(scan_tree '(^|[^_[:alnum:]])mv([[:space:]]|$)' |
