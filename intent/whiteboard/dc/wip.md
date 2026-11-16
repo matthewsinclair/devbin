@@ -3,7 +3,7 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: e08febcd-30bd-4a76-bff2-c5b9e14a4e3f
-heartbeat_at: 2026-11-16 16:13Z
+heartbeat_at: 2026-11-16 16:15Z
 status: active
 focus: "Localfold for hv's compact, 2026-11-16 16:13Z by date -u: nothing unbanked, no claims, nothing booked or running. Scopes of todos 217, 218 and issue 0356 and the cache sizes are with vc for hv's three decisions; notes in ~/Devel/scratch/devbin-dc/scopes-20261116. On the bounce: /in-session, pickup, hold for vc."
 claims: []
