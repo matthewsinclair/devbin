@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: f6846862-90a4-4e18-bdcd-a4b341f0cc41
-heartbeat_at: 2026-11-16 10:33Z
+heartbeat_at: 2026-11-16 13:08Z
 status: active
-focus: "2026-11-16 10:32Z by date -u: Desk re-taken on hv's word (rhadamanth, gyges, kovacs; one other estate's team is the only dev work, the rest inference and docs), waiter armed, lanes empty. cc and dc booted and hold for hv's further instructions; cc's 0353 proposal and dc's offers (todos 217 and 218, issue 0356) are with hv."
+focus: "2026-11-16 13:08Z by date -u: localfold on hv's "bank, fold, and hold" (decision 193); cc (2837eaec) and dc (a613e36e) folded and holding. The Desk is held, no grant until hv's next word; laksa-dc's commit slot finishes to END. Open for hv: todo 221 (dc's three decisions). rhadamanth may go offline."
 claims: []
 ---
 
@@ -23,6 +23,7 @@ _(none)_
 - RELEASE AFTER NEXT, weigh only (found 2026-11-14 at Intent's 3.3.3 cut): a red remote leg's gate run directory sits under the leg's TMPDIR (<worktree>.tmp), which is removed with the worktree, so the failing test's output is lost and only 'cargo test --workspace failed; the run is in <gone path>' reaches the kept log. A failed leg should copy its failing gate's output into the kept log or keep the run dir. Related: archived todo 208.
 - RELEASE AFTER NEXT, weigh only (found 2026-11-14 at Intent's 3.3.3 cut): a remote leg's DEVBIN_GATE_CACHE (eg kovacs ~/work/intent-leg.cache, its rust-target 5.7G to 15G in a day) grows without bound, since no run clears it; kovacs's / filled (211M free of 62G) and the cut's cargo test failed. The gate cache wants a bound or a gc like WP16's artefact cache. Related: todo 217.
 - RELEASE AFTER NEXT, weigh only (filed 2026-11-15 by cc at 2e1ab9a8, from laksa-dc's critic review of Laksa's runners): issues 0359 (low: run_gate's traps, progress name, signal exit and ENDED line have no callable function) and 0360 (medium: SIGTERM through a dead '2>&1 | tee' pipe leaves a run unsealed at 141; errexit outside all ends run_gate at 1 with no verdict). Probes in ~/Devel/scratch/devbin-cc/laksa-critic-probes.
+- FOR HV (2026-11-16): dc's scopes of todos 217 and 218 and issue 0356 (vc's inbox from dc, committed at ac7501c1 and 422c1bf0) wait on three decisions. (1) Build: (a) dc builds 217+218 (one unit) and 0356 now for 0.1.26 while cc holds, one bats slot on rhadamanth (rec); (b) 217+218 only; (c) hold all three. (2) 0356: a project's own handler keeps reading its own --help: (a) yes, devbin answers only for its own routes (rec); (b) no. (3) 218's cache bound: (a) a 12 GiB constant with a release config override (rec, from dc's measured sizes: Intent 15.2 GiB here, 8.1 GiB on kovacs); (b) a constant only. vc accepted 217's top-level-only limit.
 
 ## Holds
 
@@ -74,6 +75,7 @@ _(none)_
 - Supersedes decision 189's gyges-only line (hv in vc's window, 2026-11-15 13:28Z by date -u, confirming webber-vc's decision 117 "Just do it and we'll wear the load"): Webber's iOS simulator runs may go on rhadamanth, one at a time and booked; vc does not stop one for the runtime's boot spike. Webber's other runs stay rhadamanth first with gyges for overflow. Another estate's Rust runs are held on hv's word through its vc until it says go.
 - hv in vc's window, 2026-11-16, hv's words, read 10:41Z by date -u: "devbin-vc: You have The Desk". Before it, read between 10:27Z and 10:30Z by date -u, vc's wording (hv's own words name another estate's team and stay out of devbin under directive 14): (1) vc is the VC for devbin's cc and dc, who boot and then hold for further instructions; (2) vc has the Desk for heavy runs and the rest on rhadamanth, gyges and kovacs; one other estate's Claude Team is the only one doing dev work, and every other session is inference and docs. Control re-taken under devbin-vc from the restart's ORPHANED row (same-name take). The one queued ask, 01M7G99QFK62QNHJK37K33FYWW (light lane, a records commit), was denied as stale: its asker, an earlier laksa-cc session, last wrote 2026-11-15 19:06Z. (edited)
 - hv in vc's window, read 2026-11-16 12:40Z by date -u, hv's words: "dc go ahead with the reading; cc holds". Answers todo 220: dc scopes todos 217 and 218 and issue 0356 by reading alone and reports to vc, nothing booked or run; cc's issue 0353 fix stays unstarted while cc holds.
+- hv in vc's window, read 2026-11-16 13:06Z by date -u, hv's words: "Ok, I need to move. Please tell your Claudes here to bank, fold, and hold." The same words reached dc first-hand, and rhadamanth-sysadm relayed them to every Claude on rhadamanth, adding that rhadamanth may go offline. Done: cc and dc told live and by announce at 13:06Z; the Desk held at 13:07Z (hold 01M7J7GSRZDH99MW7Q2T7712KH: no grant until hv's next word; runs already granted finish to END); vc localfolds and holds. dc's three decisions stay open as todo 221.
 
 ---
 

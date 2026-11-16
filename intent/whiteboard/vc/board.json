@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "f6846862-90a4-4e18-bdcd-a4b341f0cc41",
-    "heartbeat_at": "2026-11-16T10:33:07.429Z",
+    "heartbeat_at": "2026-11-16T13:08:38.419Z",
     "status": "active",
-    "focus": "2026-11-16 10:32Z by date -u: Desk re-taken on hv's word (rhadamanth, gyges, kovacs; one other estate's team is the only dev work, the rest inference and docs), waiter armed, lanes empty. cc and dc booted and hold for hv's further instructions; cc's 0353 proposal and dc's offers (todos 217 and 218, issue 0356) are with hv.",
+    "focus": "2026-11-16 13:08Z by date -u: localfold on hv's \"bank, fold, and hold\" (decision 193); cc (2837eaec) and dc (a613e36e) folded and holding. The Desk is held, no grant until hv's next word; laksa-dc's commit slot finishes to END. Open for hv: todo 221 (dc's three decisions). rhadamanth may go offline.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5251,6 +5251,22 @@
       "text": "hv in vc's window, read 2026-11-16 12:40Z by date -u, hv's words: \"dc go ahead with the reading; cc holds\". Answers todo 220: dc scopes todos 217 and 218 and issue 0356 by reading alone and reports to vc, nothing booked or run; cc's issue 0353 fix stays unstarted while cc holds.",
       "state": "live",
       "recorded_at": "2026-11-16T12:41:15.329Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 221,
+      "text": "FOR HV (2026-11-16): dc's scopes of todos 217 and 218 and issue 0356 (vc's inbox from dc, committed at ac7501c1 and 422c1bf0) wait on three decisions. (1) Build: (a) dc builds 217+218 (one unit) and 0356 now for 0.1.26 while cc holds, one bats slot on rhadamanth (rec); (b) 217+218 only; (c) hold all three. (2) 0356: a project's own handler keeps reading its own --help: (a) yes, devbin answers only for its own routes (rec); (b) no. (3) 218's cache bound: (a) a 12 GiB constant with a release config override (rec, from dc's measured sizes: Intent 15.2 GiB here, 8.1 GiB on kovacs); (b) a constant only. vc accepted 217's top-level-only limit.",
+      "state": "live",
+      "recorded_at": "2026-11-16T13:07:15.020Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 193,
+      "text": "hv in vc's window, read 2026-11-16 13:06Z by date -u, hv's words: \"Ok, I need to move. Please tell your Claudes here to bank, fold, and hold.\" The same words reached dc first-hand, and rhadamanth-sysadm relayed them to every Claude on rhadamanth, adding that rhadamanth may go offline. Done: cc and dc told live and by announce at 13:06Z; the Desk held at 13:07Z (hold 01M7J7GSRZDH99MW7Q2T7712KH: no grant until hv's next word; runs already granted finish to END); vc localfolds and holds. dc's three decisions stay open as todo 221.",
+      "state": "live",
+      "recorded_at": "2026-11-16T13:08:15.648Z"
     }
   ],
   "sent": [
@@ -7542,28 +7558,32 @@
       "recipient": "cc",
       "body": "vc to cc, decision 181: hv's go to cut devbin 0.1.25 now. Your part is the release note, RELEASES/0.1.25.md. It covers everything on main since v0.1.24 (63 commits; issue 0357's units first, then the rest). Write it from the log and the issues. Name no client, keep handles out of the shipped lines, and dlscan it. Regenerate the views with `release notes`, then hand over the note together with CHANGELOG.md and RELEASES.md as one unit for vc to land. Nothing is booked for this: it is record work. dc is running the pre-cut kit alongside it. Send your handover when it is ready.",
       "fyi": false,
-      "recorded_at": "2026-11-14T12:23:33.872Z"
+      "recorded_at": "2026-11-14T12:23:33.872Z",
+      "archived_at": "2026-11-16T13:08:19.335Z"
     },
     {
       "id": "01M7D06NDPWXXQ326NEDX0JHF2",
       "recipient": "dc",
       "body": "vc to dc, decision 181: hv's go to cut devbin 0.1.25 now. Your part is the pre-cut kit, pc0125, at main's tip. Build it from pc0123 and the precut file list. Under 0357 the cut is the only whole suite, so the kit runs: the tree scans re-derived at the tip (`test scans`); updatenotice; every test file changed since v0.1.24 and every test that calls or stubs code changed since then, found by grep; check all; and the dry run. Run each leg under what the cut's gate step exports, read from the code at the tip (DEVBIN_GATE_CACHE and the rest), with TMPDIR set the way a leg sets it, and name that set in the ask. cc's release-note commit will land on top, so re-tip the kit to it when it does, or tell me that the note's paths are outside what the kit reads. Ask the desk for heavy with your driver path, and I'll read the driver before I grant. No canon writes from your grant until END.",
       "fyi": false,
-      "recorded_at": "2026-11-14T12:23:34.070Z"
+      "recorded_at": "2026-11-14T12:23:34.070Z",
+      "archived_at": "2026-11-16T13:08:19.335Z"
     },
     {
       "id": "01M7HYNVNCET7VG7NWM55TKVQV",
       "recipient": "dc",
       "body": "HOLD, hv's word in vc's window (read between 10:27Z and 10:30Z by date -u, vc's wording): every devbin seat boots, then holds for further instructions. Start, book and run nothing; a pickup committed by path is fine. cc's 0353 proposal and dc's offers (todos 217 and 218, issue 0356) are with hv, and the go comes back through vc. The Desk is live again under devbin-vc for rhadamanth, gyges and kovacs.",
       "fyi": true,
-      "recorded_at": "2026-11-16T10:33:06.988Z"
+      "recorded_at": "2026-11-16T10:33:06.988Z",
+      "archived_at": "2026-11-16T13:08:19.335Z"
     },
     {
       "id": "01M7HYNVNCET7VG7NWM55TKVQW",
       "recipient": "cc",
       "body": "HOLD, hv's word in vc's window (read between 10:27Z and 10:30Z by date -u, vc's wording): every devbin seat boots, then holds for further instructions. Start, book and run nothing; a pickup committed by path is fine. cc's 0353 proposal and dc's offers (todos 217 and 218, issue 0356) are with hv, and the go comes back through vc. The Desk is live again under devbin-vc for rhadamanth, gyges and kovacs.",
       "fyi": true,
-      "recorded_at": "2026-11-16T10:33:06.988Z"
+      "recorded_at": "2026-11-16T10:33:06.988Z",
+      "archived_at": "2026-11-16T13:08:19.335Z"
     },
     {
       "id": "01M7HYNVNCET7VG7NWM55TKVQX",
@@ -7584,7 +7604,36 @@
       "recipient": "dc",
       "body": "GO, on hv's word in vc's window (read 12:40Z by date -u): \"dc go ahead with the reading; cc holds\". Scope todo 217, todo 218 and issue 0356 by reading alone. For each: the defect in one line, where it lives (path:line on main), the fix's shape, the arms that would prove it red at base and green at the fix, the files a unit would touch, and what a build would book. Nothing booked or run, no code outside your scratch, no edits beyond your own board. One ask to vc covering all three.",
       "fyi": false,
-      "recorded_at": "2026-11-16T12:41:15.603Z"
+      "recorded_at": "2026-11-16T12:41:15.603Z",
+      "archived_at": "2026-11-16T13:08:19.335Z"
+    },
+    {
+      "id": "01M7J7G2K98PF0HVFGB2NPJ5D5",
+      "recipient": "dc",
+      "body": "FOLD ORDER from hv (in vc's window, read 13:06Z by date -u): \"bank, fold, and hold\". Bank anything uncommitted as WIP (a bank ref by fetch and CAS, or a stash named in your record); book nothing new; clear scratch no longer cited, by script; localfold (board and records folded, handled messages cleared, handled sends archived), commit by path, push nothing, do NOT wb release; send devbin-vc one fold line; then hold for hv's next word through vc. Nothing public.",
+      "fyi": true,
+      "recorded_at": "2026-11-16T13:07:14.665Z"
+    },
+    {
+      "id": "01M7J7G2K98PF0HVFGB2NPJ5D6",
+      "recipient": "cc",
+      "body": "FOLD ORDER from hv (in vc's window, read 13:06Z by date -u): \"bank, fold, and hold\". Bank anything uncommitted as WIP (a bank ref by fetch and CAS, or a stash named in your record); book nothing new; clear scratch no longer cited, by script; localfold (board and records folded, handled messages cleared, handled sends archived), commit by path, push nothing, do NOT wb release; send devbin-vc one fold line; then hold for hv's next word through vc. Nothing public.",
+      "fyi": true,
+      "recorded_at": "2026-11-16T13:07:14.665Z"
+    },
+    {
+      "id": "01M7J7G2K98PF0HVFGB2NPJ5D7",
+      "recipient": "ic",
+      "body": "FOLD ORDER from hv (in vc's window, read 13:06Z by date -u): \"bank, fold, and hold\". Bank anything uncommitted as WIP (a bank ref by fetch and CAS, or a stash named in your record); book nothing new; clear scratch no longer cited, by script; localfold (board and records folded, handled messages cleared, handled sends archived), commit by path, push nothing, do NOT wb release; send devbin-vc one fold line; then hold for hv's next word through vc. Nothing public.",
+      "fyi": true,
+      "recorded_at": "2026-11-16T13:07:14.665Z"
+    },
+    {
+      "id": "01M7J7G2K98PF0HVFGB2NPJ5D8",
+      "recipient": "ac",
+      "body": "FOLD ORDER from hv (in vc's window, read 13:06Z by date -u): \"bank, fold, and hold\". Bank anything uncommitted as WIP (a bank ref by fetch and CAS, or a stash named in your record); book nothing new; clear scratch no longer cited, by script; localfold (board and records folded, handled messages cleared, handled sends archived), commit by path, push nothing, do NOT wb release; send devbin-vc one fold line; then hold for hv's next word through vc. Nothing public.",
+      "fyi": true,
+      "recorded_at": "2026-11-16T13:07:14.665Z"
     }
   ],
   "handled": [
@@ -8312,6 +8361,16 @@
       "id": "01M7HYHWFEFMH4ECSJ2EGA6SEB",
       "sender": "cc",
       "handled_at": "2026-11-16T10:33:34.113Z"
+    },
+    {
+      "id": "01M7J6M0HBQZ0RWW1PN9Z0NH64",
+      "sender": "dc",
+      "handled_at": "2026-11-16T13:08:18.992Z"
+    },
+    {
+      "id": "01M7J6V9TNPB61TYABYZTJH2YD",
+      "sender": "dc",
+      "handled_at": "2026-11-16T13:08:18.992Z"
     }
   ]
 }

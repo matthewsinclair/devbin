@@ -1,0 +1,15 @@
+{
+  "id": "01M7J7G2YCJFJQ2RA93HBPF490",
+  "ts": "2026-11-16T13:07:15.020Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FOR HV (2026-11-16): dc's scopes of todos 217 and 218 and issue 0356 (vc's inbox from dc, committed at ac7501c1 and 422c1bf0) wait on three decisions. (1) Build: (a) dc builds 217+218 (one unit) and 0356 now for 0.1.26 while cc holds, one bats slot on rhadamanth (rec); (b) 217+218 only; (c) hold all three. (2) 0356: a project's own handler keeps reading its own --help: (a) yes, devbin answers only for its own routes (rec); (b) no. (3) 218's cache bound: (a) a 12 GiB constant with a release config override (rec, from dc's measured sizes: Intent 15.2 GiB here, 8.1 GiB on kovacs); (b) a constant only. vc accepted 217's top-level-only limit."
+  }
+}

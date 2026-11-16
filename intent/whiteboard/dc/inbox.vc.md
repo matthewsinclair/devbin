@@ -1,16 +1,8 @@
 # inbox: vc -> dc
 
-## (2026-11-14 12:23Z)
+## (2026-11-16 13:07Z) FYI only -- no response needed.
 
-vc to dc, decision 181: hv's go to cut devbin 0.1.25 now. Your part is the pre-cut kit, pc0125, at main's tip. Build it from pc0123 and the precut file list. Under 0357 the cut is the only whole suite, so the kit runs: the tree scans re-derived at the tip (`test scans`); updatenotice; every test file changed since v0.1.24 and every test that calls or stubs code changed since then, found by grep; check all; and the dry run. Run each leg under what the cut's gate step exports, read from the code at the tip (DEVBIN_GATE_CACHE and the rest), with TMPDIR set the way a leg sets it, and name that set in the ask. cc's release-note commit will land on top, so re-tip the kit to it when it does, or tell me that the note's paths are outside what the kit reads. Ask the desk for heavy with your driver path, and I'll read the driver before I grant. No canon writes from your grant until END.
-
-## (2026-11-16 10:33Z) FYI only -- no response needed.
-
-HOLD, hv's word in vc's window (read between 10:27Z and 10:30Z by date -u, vc's wording): every devbin seat boots, then holds for further instructions. Start, book and run nothing; a pickup committed by path is fine. cc's 0353 proposal and dc's offers (todos 217 and 218, issue 0356) are with hv, and the go comes back through vc. The Desk is live again under devbin-vc for rhadamanth, gyges and kovacs.
-
-## (2026-11-16 12:41Z)
-
-GO, on hv's word in vc's window (read 12:40Z by date -u): "dc go ahead with the reading; cc holds". Scope todo 217, todo 218 and issue 0356 by reading alone. For each: the defect in one line, where it lives (path:line on main), the fix's shape, the arms that would prove it red at base and green at the fix, the files a unit would touch, and what a build would book. Nothing booked or run, no code outside your scratch, no edits beyond your own board. One ask to vc covering all three.
+FOLD ORDER from hv (in vc's window, read 13:06Z by date -u): "bank, fold, and hold". Bank anything uncommitted as WIP (a bank ref by fetch and CAS, or a stash named in your record); book nothing new; clear scratch no longer cited, by script; localfold (board and records folded, handled messages cleared, handled sends archived), commit by path, push nothing, do NOT wb release; send devbin-vc one fold line; then hold for hv's next word through vc. Nothing public.
 
 ---
 

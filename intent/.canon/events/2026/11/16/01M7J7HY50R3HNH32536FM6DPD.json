@@ -1,0 +1,15 @@
+{
+  "id": "01M7J7HY50R3HNH32536FM6DPD",
+  "ts": "2026-11-16T13:08:15.648Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-16 13:06Z by date -u, hv's words: \"Ok, I need to move. Please tell your Claudes here to bank, fold, and hold.\" The same words reached dc first-hand, and rhadamanth-sysadm relayed them to every Claude on rhadamanth, adding that rhadamanth may go offline. Done: cc and dc told live and by announce at 13:06Z; the Desk held at 13:07Z (hold 01M7J7GSRZDH99MW7Q2T7712KH: no grant until hv's next word; runs already granted finish to END); vc localfolds and holds. dc's three decisions stay open as todo 221."
+  }
+}
