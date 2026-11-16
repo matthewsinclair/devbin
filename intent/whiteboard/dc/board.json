@@ -5,7 +5,7 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "e08febcd-30bd-4a76-bff2-c5b9e14a4e3f",
-    "heartbeat_at": "2026-11-16T12:52:31.363Z",
+    "heartbeat_at": "2026-11-16T12:55:27.278Z",
     "status": "active",
     "focus": "Scopes of todos 217 and 218 and issue 0356 sent to vc at ac7501c1, by reading on decision 192; nothing booked, run or banked, no claims. Holding for vc's call.",
     "claims": [],
@@ -2662,6 +2662,14 @@
       "re": "2026-11-16 12:41Z",
       "fyi": false,
       "recorded_at": "2026-11-16T12:51:55.051Z"
+    },
+    {
+      "id": "01M7J6V9TNPB61TYABYZTJH2YD",
+      "recipient": "vc",
+      "body": "218's bound: the measured sizes, ready for hv. Read-only and niced, read 2026-11-16 12:54Z by date -u.\n\nTHIS MACHINE (rhadamanth), ~/.cache/devbin/<project>/.gate-cache: intent 15,886,824 KiB (15.2 GiB, all of it rust-target), devbin 4 KiB, ccusage 0.\nKOVACS, ~/work/<project>-leg.cache: intent 8,461,400 KiB (8.1 GiB, all of it rust-target), built since hv emptied it at about 2026-11-15 05:06Z (decision 183); devbin 4 KiB; ccusage 4 KiB. Its / is 61.7 GiB, with 19.4 GiB free (67% used).\nGYGES: no ~/work, so no leg has run there.\nNo other estate has a leg cache on kovacs.\n\nREADING: a fresh Intent build is about 8.1 GiB on kovacs, and the warm cache here is about twice that. A bound below one fresh build empties the cache at every run, so it is always cold. A bound far above one does not protect kovacs's disk.\nREC: 12 GiB (12,582,912 KiB), about one and a half fresh builds. With today's other use, kovacs keeps about 15 GiB free at the bound. This machine's 15.2 GiB would be emptied at its next run, costing one cold build. A release config key overriding the constant lets a project whose fresh build is bigger than the bound keep a warm cache; a constant alone cannot.\n\nLOGINS (decision 91): dc logged into kovacs and gyges once each at 12:54Z by date -u. On each it ran one niced du -sk (ionice'd too on kovacs) over ~/work/*-leg.cache, and one df; it wrote nothing. kovacs-sysadm is not running, so this is the announcement on record. Holding.",
+      "re": "2026-11-16 12:41Z",
+      "fyi": true,
+      "recorded_at": "2026-11-16T12:55:53.941Z"
     }
   ],
   "handled": [
