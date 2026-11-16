@@ -1,0 +1,16 @@
+{
+  "id": "01M7HZ5G6784A3E7749QGEMPBA",
+  "ts": "2026-11-16T10:41:39.527Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "seq": 191,
+    "text": "hv in vc's window, 2026-11-16, hv's words, read 10:41Z by date -u: \"devbin-vc: You have The Desk\". Before it, read between 10:27Z and 10:30Z by date -u, vc's wording (hv's own words name another estate's team and stay out of devbin under directive 14): (1) vc is the VC for devbin's cc and dc, who boot and then hold for further instructions; (2) vc has the Desk for heavy runs and the rest on rhadamanth, gyges and kovacs; one other estate's Claude Team is the only one doing dev work, and every other session is inference and docs. Control re-taken under devbin-vc from the restart's ORPHANED row (same-name take). The one queued ask, 01M7G99QFK62QNHJK37K33FYWW (light lane, a records commit), was denied as stale: its asker, an earlier laksa-cc session, last wrote 2026-11-15 19:06Z."
+  }
+}
