@@ -2,10 +2,10 @@
 node: vc
 name: Validation Claude
 role: validation
-session_id: d252d54e-7ad5-4f31-9c5f-02ab8aca3f33
-heartbeat_at: 2026-11-15 15:41Z
+session_id: f6846862-90a4-4e18-bdcd-a4b341f0cc41
+heartbeat_at: 2026-11-16 10:33Z
 status: active
-focus: "Localfold 2026-11-15 15:41Z by date -u, for hv's compact. vc holds the Desk. Live: webber-cc's ST0005/30 landing run on rhadamanth (01M7FXSS5SV8E32SVBWEQ3X4T4, heavy+bats); webber-ic's main sealed-gates rerun on gyges (01M7FWZBZZFPNG2A9F2B2QE2YA, heavy, unattended, END read on the bounce). Webber files no new asks until after the compact. Heavy lane: capacity 2, no load gate (cleared 14:33Z; vc reads each host's load before every grant, GO only after grant writes). Desk waiter bne232iiw; re-arm on the bounce. Waiting on hv: Laksa main push (through 3ad133c6b and later), QFM title escape and intent /privacy pushes, site scripts, todo 213."
+focus: "2026-11-16 10:32Z by date -u: Desk re-taken on hv's word (rhadamanth, gyges, kovacs; one other estate's team is the only dev work, the rest inference and docs), waiter armed, lanes empty. cc and dc booted and hold for hv's further instructions; cc's 0353 proposal and dc's offers (todos 217 and 218, issue 0356) are with hv."
 claims: []
 ---
 
@@ -23,6 +23,7 @@ _(none)_
 - RELEASE AFTER NEXT, weigh only (found 2026-11-14 at Intent's 3.3.3 cut): a red remote leg's gate run directory sits under the leg's TMPDIR (<worktree>.tmp), which is removed with the worktree, so the failing test's output is lost and only 'cargo test --workspace failed; the run is in <gone path>' reaches the kept log. A failed leg should copy its failing gate's output into the kept log or keep the run dir. Related: archived todo 208.
 - RELEASE AFTER NEXT, weigh only (found 2026-11-14 at Intent's 3.3.3 cut): a remote leg's DEVBIN_GATE_CACHE (eg kovacs ~/work/intent-leg.cache, its rust-target 5.7G to 15G in a day) grows without bound, since no run clears it; kovacs's / filled (211M free of 62G) and the cut's cargo test failed. The gate cache wants a bound or a gc like WP16's artefact cache. Related: todo 217.
 - RELEASE AFTER NEXT, weigh only (filed 2026-11-15 by cc at 2e1ab9a8, from laksa-dc's critic review of Laksa's runners): issues 0359 (low: run_gate's traps, progress name, signal exit and ENDED line have no callable function) and 0360 (medium: SIGTERM through a dead '2>&1 | tee' pipe leaves a run unsealed at 141; errexit outside all ends run_gate at 1 with no verdict). Probes in ~/Devel/scratch/devbin-cc/laksa-critic-probes.
+- FOR HV (2026-11-16, both seats hold until hv's go or hold comes through vc): (a) cc proposes fixing issue 0353 for the 0.1.26 batch: test_dir drops hits beneath another work tree or nested repository and inside any devbin runtime; built in a scratch clone, arms probed red and green off the desk, one light-lane ask, banked, handed over as COMMIT_MSG-0353-1.txt. (b) dc offers to scope todos 217 and 218 and issue 0356 by reading alone, nothing booked.
 
 ## Holds
 
@@ -72,6 +73,7 @@ _(none)_
 - Desk priorities (hv, 2026-11-15 13:20Z by date -u, supersedes 185): devbin, Intent and devvm are finished. Webber is P1 and another estate is P2 (its vc finds what is next and starts nothing yet). Webber runs, iOS simulator runs included, book rhadamanth first and overflow to gyges; vc re-reads the load at each simulator START. vc keeps the Desk.
 - Narrows decision 188 (2026-11-15 13:26Z by date -u): after the 13:22Z simulator boot storm on rhadamanth (load 6 to 137, run stopped by vc), Webber's iOS simulator runs go on gyges only, one at a time; Webber's other runs book rhadamanth first with gyges for overflow. Recorded by webber-vc on its decision 115 after hv read rhadamanth's Spotlight exclusions (both present, so not the cause); vc holds this as the stricter rule and applies it. (edited)
 - Supersedes decision 189's gyges-only line (hv in vc's window, 2026-11-15 13:28Z by date -u, confirming webber-vc's decision 117 "Just do it and we'll wear the load"): Webber's iOS simulator runs may go on rhadamanth, one at a time and booked; vc does not stop one for the runtime's boot spike. Webber's other runs stay rhadamanth first with gyges for overflow. Another estate's Rust runs are held on hv's word through its vc until it says go.
+- hv in vc's window, 2026-11-16, read between 10:27Z and 10:30Z by date -u, vc's wording (hv's own words name another estate's team and stay out of devbin under directive 14): (1) vc is the VC for devbin's cc and dc, who boot and then hold for further instructions; (2) vc has the Desk for heavy runs and the rest on rhadamanth, gyges and kovacs; one other estate's Claude Team is the only one doing dev work, and every other session is inference and docs. Control re-taken under devbin-vc from the restart's ORPHANED row (same-name take). The one queued ask, 01M7G99QFK62QNHJK37K33FYWW (light lane, a records commit), was denied as stale: its asker, an earlier laksa-cc session, last wrote 2026-11-15 19:06Z.
 
 ---
 

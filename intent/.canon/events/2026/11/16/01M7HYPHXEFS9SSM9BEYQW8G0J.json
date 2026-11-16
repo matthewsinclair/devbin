@@ -1,0 +1,15 @@
+{
+  "id": "01M7HYPHXEFS9SSM9BEYQW8G0J",
+  "ts": "2026-11-16T10:33:29.774Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FOR HV (2026-11-16, both seats hold until hv's go or hold comes through vc): (a) cc proposes fixing issue 0353 for the 0.1.26 batch: test_dir drops hits beneath another work tree or nested repository and inside any devbin runtime; built in a scratch clone, arms probed red and green off the desk, one light-lane ask, banked, handed over as COMMIT_MSG-0353-1.txt. (b) dc offers to scope todos 217 and 218 and issue 0356 by reading alone, nothing booked."
+  }
+}

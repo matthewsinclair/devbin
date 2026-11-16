@@ -1,0 +1,20 @@
+{
+  "id": "01M7HYNVNCET7VG7NWM55TKVQT",
+  "ts": "2026-11-16T10:33:06.988Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.announce",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "HOLD, hv's word in vc's window (read between 10:27Z and 10:30Z by date -u, vc's wording): every devbin seat boots, then holds for further instructions. Start, book and run nothing; a pickup committed by path is fine. cc's 0353 proposal and dc's offers (todos 217 and 218, issue 0356) are with hv, and the go comes back through vc. The Desk is live again under devbin-vc for rhadamanth, gyges and kovacs.",
+    "recipients": [
+      "dc",
+      "cc",
+      "ic",
+      "ac"
+    ]
+  }
+}
