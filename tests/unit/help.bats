@@ -668,6 +668,82 @@ YAML
     fail "the refusal names a page help does not print: $stderr"
 }
 
+# _assert_gate_flags_print_usage <proj> <cmd> <words>... -- in <proj>, each of
+# <words> after `<cmd>` prints on stdout exactly what `<cmd> -h` prints, with
+# nothing on stderr, at exit 0, and leaves no $DEVBIN_TEST_TMPDIR/ran, which
+# every run an arm stubs writes (issue 0356). Each <words> is split on spaces.
+_assert_gate_flags_print_usage() {
+  local proj="$1" cmd="$2" words want
+  local -a argv
+  shift 2
+  run --separate-stderr devbin_run "$proj" "$cmd" -h
+  assert_success
+  [[ "$output" == "usage: "* ]] || fail "$cmd -h printed no usage line: $output"
+  want="$output"
+  for words in "$@"; do
+    read -r -a argv <<<"$words"
+    run --separate-stderr devbin_run "$proj" "$cmd" "${argv[@]}"
+    [ "$status" -eq 0 ] || fail "$cmd $words exited $status: $stderr"
+    [ "$output" = "$want" ] || fail "$cmd $words printed what $cmd -h does not: $output"
+    [ -z "$stderr" ] || fail "$cmd $words wrote to stderr: $stderr"
+    [ ! -e "$DEVBIN_TEST_TMPDIR/ran" ] || fail "$cmd $words ran: $(cat "$DEVBIN_TEST_TMPDIR/ran")"
+  done
+}
+
+@test "0356: a gate command's -h or --help after a declared option prints its usage line, as <cmd> -h does, and runs nothing: not the option's run:, not all" {
+  # A run: line is split into words, never handed to a shell, so the marker is
+  # a script's own write.
+  printf '#!/usr/bin/env bash\nprintf "probe %%s\\n" "$*" >>"%s/ran"\n' "$DEVBIN_TEST_TMPDIR" >"$DEVBIN_TEST_TMPDIR/probe"
+  chmod +x "$DEVBIN_TEST_TMPDIR/probe"
+  proj="$(mkproj demo <<YAML
+project:
+  name: demo
+commands:
+  check:
+    options:
+      probe:
+        summary: A declared check
+        run: $DEVBIN_TEST_TMPDIR/probe
+YAML
+  )"
+  _assert_gate_flags_print_usage "$proj" check "probe --help" "probe -h" "probe x --help" "probe --purge -h" "all --help" "all -h"
+}
+
+@test "0356: a gate command's -h or --help after a shipped option prints its usage line, as <cmd> -h does, and never reaches the option's tool" {
+  local stubs="$DEVBIN_TEST_TMPDIR/stubs"
+  mkdir -p "$stubs"
+  printf '#!/usr/bin/env bash\nprintf "cargo %%s\\n" "$*" >>"%s/ran"\n' "$DEVBIN_TEST_TMPDIR" >"$stubs/cargo"
+  chmod +x "$stubs/cargo"
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+  languages:
+    - rust
+YAML
+  )"
+  export PATH="$stubs:$PATH"
+  _assert_gate_flags_print_usage "$proj" test "rust --help" "rust -h" "rust a_filter --help" "rust -- --help"
+}
+
+@test "0356: a gate command's -h or --help reaches the project's own handler, and its command-level run: line, which read their own flag" {
+  local args="$DEVBIN_TEST_TMPDIR/args"
+  proj="$(mkproj demo <<YAML
+project:
+  name: demo
+commands:
+  fmt:
+    run: echo fmt-run
+YAML
+  )"
+  create_test_command "$proj" test "$(printf '#!/usr/bin/env bash\nprintf "%%s\\n" "test-handler $*" >>"%s"\n' "$args")" >/dev/null
+  run devbin_run "$proj" test x --help
+  assert_success
+  grep -qxF "test-handler x --help" "$args" || fail "the project's handler was not handed --help: $(cat "$args" 2>&1)"
+  run devbin_run "$proj" fmt x -h
+  assert_success
+  assert_output_contains "fmt-run x -h"
+}
+
 @test "an unknown help flag is refused rather than treated as a topic" {
   proj="$(mkproj demo <<'YAML'
 project:
