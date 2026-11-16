@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: e08febcd-30bd-4a76-bff2-c5b9e14a4e3f
-heartbeat_at: 2026-11-16 10:29Z
+heartbeat_at: 2026-11-16 10:31Z
 status: active
-focus: "Localfold for hv's compact, 2026-11-15 11:25Z by date -u: nothing live or unbanked, no claims; nothing run since the 05:52Z fold. On the bounce: /in-session, pickup, hold for vc."
+focus: "Booted after hv's compact, 2026-11-16 10:31Z by date -u: nothing live or unbanked, no claims, nothing booked or running; plan sent to vc at b6319e18. Holding for vc's go: start, book and run nothing."
 claims: []
 ---
 
