@@ -1,0 +1,15 @@
+{
+  "id": "01M7J60FT1QVAXJREKCH60W12F",
+  "ts": "2026-11-16T12:41:15.329Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-16 12:40Z by date -u, hv's words: \"dc go ahead with the reading; cc holds\". Answers todo 220: dc scopes todos 217 and 218 and issue 0356 by reading alone and reports to vc, nothing booked or run; cc's issue 0353 fix stays unstarted while cc holds."
+  }
+}

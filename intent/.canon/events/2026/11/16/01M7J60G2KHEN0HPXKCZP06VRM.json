@@ -1,0 +1,17 @@
+{
+  "id": "01M7J60G2KHEN0HPXKCZP06VRM",
+  "ts": "2026-11-16T12:41:15.603Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "GO, on hv's word in vc's window (read 12:40Z by date -u): \"dc go ahead with the reading; cc holds\". Scope todo 217, todo 218 and issue 0356 by reading alone. For each: the defect in one line, where it lives (path:line on main), the fix's shape, the arms that would prove it red at base and green at the fix, the files a unit would touch, and what a build would book. Nothing booked or run, no code outside your scratch, no edits beyond your own board. One ask to vc covering all three.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

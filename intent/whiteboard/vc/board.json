@@ -5240,8 +5240,17 @@
       "kind": "todo",
       "seq": 220,
       "text": "FOR HV (2026-11-16, both seats hold until hv's go or hold comes through vc): (a) cc proposes fixing issue 0353 for the 0.1.26 batch: test_dir drops hits beneath another work tree or nested repository and inside any devbin runtime; built in a scratch clone, arms probed red and green off the desk, one light-lane ask, banked, handed over as COMMIT_MSG-0353-1.txt. (b) dc offers to scope todos 217 and 218 and issue 0356 by reading alone, nothing booked.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-16T12:41:15.815Z",
       "recorded_at": "2026-11-16T10:33:29.774Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 192,
+      "text": "hv in vc's window, read 2026-11-16 12:40Z by date -u, hv's words: \"dc go ahead with the reading; cc holds\". Answers todo 220: dc scopes todos 217 and 218 and issue 0356 by reading alone and reports to vc, nothing booked or run; cc's issue 0353 fix stays unstarted while cc holds.",
+      "state": "live",
+      "recorded_at": "2026-11-16T12:41:15.329Z"
     }
   ],
   "sent": [
@@ -7569,6 +7578,13 @@
       "body": "HOLD, hv's word in vc's window (read between 10:27Z and 10:30Z by date -u, vc's wording): every devbin seat boots, then holds for further instructions. Start, book and run nothing; a pickup committed by path is fine. cc's 0353 proposal and dc's offers (todos 217 and 218, issue 0356) are with hv, and the go comes back through vc. The Desk is live again under devbin-vc for rhadamanth, gyges and kovacs.",
       "fyi": true,
       "recorded_at": "2026-11-16T10:33:06.988Z"
+    },
+    {
+      "id": "01M7J60G2KHEN0HPXKCZP06VRN",
+      "recipient": "dc",
+      "body": "GO, on hv's word in vc's window (read 12:40Z by date -u): \"dc go ahead with the reading; cc holds\". Scope todo 217, todo 218 and issue 0356 by reading alone. For each: the defect in one line, where it lives (path:line on main), the fix's shape, the arms that would prove it red at base and green at the fix, the files a unit would touch, and what a build would book. Nothing booked or run, no code outside your scratch, no edits beyond your own board. One ask to vc covering all three.",
+      "fyi": false,
+      "recorded_at": "2026-11-16T12:41:15.603Z"
     }
   ],
   "handled": [
