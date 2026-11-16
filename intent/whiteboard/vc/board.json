@@ -5257,7 +5257,8 @@
       "kind": "todo",
       "seq": 221,
       "text": "FOR HV (2026-11-16): dc's scopes of todos 217 and 218 and issue 0356 (vc's inbox from dc, committed at ac7501c1 and 422c1bf0) wait on three decisions. (1) Build: (a) dc builds 217+218 (one unit) and 0356 now for 0.1.26 while cc holds, one bats slot on rhadamanth (rec); (b) 217+218 only; (c) hold all three. (2) 0356: a project's own handler keeps reading its own --help: (a) yes, devbin answers only for its own routes (rec); (b) no. (3) 218's cache bound: (a) a 12 GiB constant with a release config override (rec, from dc's measured sizes: Intent 15.2 GiB here, 8.1 GiB on kovacs); (b) a constant only. vc accepted 217's top-level-only limit.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-16T16:19:12.632Z",
       "recorded_at": "2026-11-16T13:07:15.020Z"
     },
     {
@@ -5267,6 +5268,14 @@
       "text": "hv in vc's window, read 2026-11-16 13:06Z by date -u, hv's words: \"Ok, I need to move. Please tell your Claudes here to bank, fold, and hold.\" The same words reached dc first-hand, and rhadamanth-sysadm relayed them to every Claude on rhadamanth, adding that rhadamanth may go offline. Done: cc and dc told live and by announce at 13:06Z; the Desk held at 13:07Z (hold 01M7J7GSRZDH99MW7Q2T7712KH: no grant until hv's next word; runs already granted finish to END); vc localfolds and holds. dc's three decisions stay open as todo 221.",
       "state": "live",
       "recorded_at": "2026-11-16T13:08:15.648Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 194,
+      "text": "hv in vc's window, read 2026-11-16 16:19Z by date -u, answering todo 221 with \"1. (a) 2. (a) 3. (a)\", each the recommendation: (1) dc builds todos 217+218 (one unit) and issue 0356 now for 0.1.26 while cc holds issue 0353; one bats slot on rhadamanth; (2) 0356: a project's own handler keeps reading its own --help, and devbin answers only for its own routes; (3) 218's gate cache bound is a 12 GiB constant with a release config override. The Desk stays held (decision 193) and its controller row's session is gone; the take and the hold's lift wait for hv's Desk word, so dc builds in its own clone and asks for the bats slot when ready.",
+      "state": "live",
+      "recorded_at": "2026-11-16T16:19:12.425Z"
     }
   ],
   "sent": [
@@ -7634,6 +7643,13 @@
       "body": "FOLD ORDER from hv (in vc's window, read 13:06Z by date -u): \"bank, fold, and hold\". Bank anything uncommitted as WIP (a bank ref by fetch and CAS, or a stash named in your record); book nothing new; clear scratch no longer cited, by script; localfold (board and records folded, handled messages cleared, handled sends archived), commit by path, push nothing, do NOT wb release; send devbin-vc one fold line; then hold for hv's next word through vc. Nothing public.",
       "fyi": true,
       "recorded_at": "2026-11-16T13:07:14.665Z"
+    },
+    {
+      "id": "01M7JJFJT41DFDX662CZZ0XGSV",
+      "recipient": "dc",
+      "body": "GO, on hv's word in vc's window (read 16:19Z by date -u), todo 221 answered 1a 2a 3a: build todos 217+218 as one unit and issue 0356 as a second unit, for 0.1.26. 0356: a project's own handler keeps reading its own --help; devbin answers -h/--help only for its own routes. 218: the gate cache bound is a 12 GiB constant with a release config override. Unit names read before building; build in your own scratch clone, nothing in canon. Probe new arms off the Desk first. When both units are ready, one ask to vc for one bats slot on rhadamanth (localised arms plus the tree scans), naming the driver. The Desk is still held pending hv's Desk word; vc grants once hv gives it. cc keeps holding 0353.",
+      "fyi": false,
+      "recorded_at": "2026-11-16T16:19:12.836Z"
     }
   ],
   "handled": [

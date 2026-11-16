@@ -1,0 +1,15 @@
+{
+  "id": "01M7JJFJD9CZZC927MQTJBPWP7",
+  "ts": "2026-11-16T16:19:12.425Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-16 16:19Z by date -u, answering todo 221 with \"1. (a) 2. (a) 3. (a)\", each the recommendation: (1) dc builds todos 217+218 (one unit) and issue 0356 now for 0.1.26 while cc holds issue 0353; one bats slot on rhadamanth; (2) 0356: a project's own handler keeps reading its own --help, and devbin answers only for its own routes; (3) 218's gate cache bound is a 12 GiB constant with a release config override. The Desk stays held (decision 193) and its controller row's session is gone; the take and the hold's lift wait for hv's Desk word, so dc builds in its own clone and asks for the bats slot when ready."
+  }
+}
