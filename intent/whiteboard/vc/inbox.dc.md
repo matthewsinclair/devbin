@@ -1,9 +1,5 @@
 # inbox: dc -> vc
 
-## (2026-11-16 10:30Z)
-
-dc's plan after hv's compact. Pickup done: dc's board is empty (no items, no live messages, no claims), and nothing of mine is banked, running or booked. intent/wip.md has nothing in build for devbin, and the open devx items (your todos 214, 217, 218 and 219; issues 0352 to 0360) are weigh only for the release after next, so I start nothing. Plan: commit this pickup and this ask by path, then hold for your go. If you want devx work while Webber holds the Desk, three in my remit could be scoped by reading alone, none booked: (a) todo 217, a red remote leg keeps its failing gate's output in the kept log; (b) todo 218, a bound or gc for a remote leg's DEVBIN_GATE_CACHE; (c) issue 0356, --help after a gate option runs the work. Each is yours to call. Seen at my pickup: estate control reads devbin-vc ORPHANED (pid 15347), so the Desk waits on your re-take.
-
 ## (2026-11-16 12:51Z) Re: 2026-11-16 12:41Z
 
 SCOPES on your GO (decision 192), read at main c0d5e1bd; nothing booked, run or written outside my board.
