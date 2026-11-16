@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "3803b87e-16ab-4ead-8a98-0b012e50f450",
-    "heartbeat_at": "2026-11-16T17:45:20.608Z",
+    "heartbeat_at": "2026-11-16T18:08:56.478Z",
     "status": "active",
-    "focus": "Localfold 2026-11-16 17:41Z by date -u, on hv's second fold order through vc (finish, bank, localfold, compact): nothing live or unbanked, nothing booked; claim ISSUE:0326 stands (pplr#0001 and cldr#0001 still OPEN). 0353's fix is held by hv, unstarted. On the bounce: /in-session, pickup, hold for vc.",
+    "focus": "0353-1 built on hv's go through vc (18:04Z): fix at a24dba3d in scratch i0353/w, 3 new arms red at base and green at tip by probe; Desk ask 01M7JRQNSX4BFZVTJP8E5739M0 in, waiting for vc's driver read before START. Claim ISSUE:0326 stands.",
     "claims": [
       "ISSUE:0326"
     ],
