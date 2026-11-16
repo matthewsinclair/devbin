@@ -182,6 +182,55 @@ $(grep -n "$proj" "$proj/$f")"
   assert_output ""
 }
 
+# A LINKED WORKTREE INSIDE THE ROOT IS ANOTHER WORK TREE (issue 0353). One at
+# tmp/worktrees/<name>, checked out before an upgrade, holds a runtime of its
+# own, and its tmpl/test.bats was the first hit: with no suite in the project,
+# the stub went into that runtime, in silence, at exit 0. The worktree is marked
+# by its `.git` file, as `git worktree add` leaves it.
+@test "0353: a linked worktree's runtime is never read as the project's suite" {
+  proj="$(mkinstalled)"
+  wt="$proj/tmp/worktrees/wt"
+  mkdir -p "$wt/bin"
+  cp -R "$proj/bin/.devbin" "$wt/bin/.devbin"
+  printf 'gitdir: %s/.git/worktrees/wt\n' "$proj" >"$wt/.git"
+  run devbin_run "$proj" new greet --summary "Say hello"
+  assert_success
+  assert_output_contains "no bats suite"
+  run bash -c "find '$proj' -name greet.bats"
+  assert_output ""
+}
+
+# AND ITS OWN SUITE IS NOT THE PROJECT'S (issue 0353). With the worktree at
+# .worktrees/<name> holding a suite, the bytewise sort put the worktree's
+# tests/unit/a.bats ahead of the project's tests/unit/a.bats.
+@test "0353: a linked worktree's own suite is never read as the project's" {
+  proj="$(mkinstalled)"
+  wt="$proj/.worktrees/wt"
+  mkdir -p "$proj/tests/unit" "$wt/tests/unit"
+  printf '#!/usr/bin/env bats\n' >"$proj/tests/unit/a.bats"
+  printf '#!/usr/bin/env bats\n' >"$wt/tests/unit/a.bats"
+  printf 'gitdir: %s/.git/worktrees/wt\n' "$proj" >"$wt/.git"
+  run devbin_run "$proj" new greet --summary "Say hello"
+  assert_success
+  assert_file_exists "$proj/tests/unit/greet.bats"
+  run bash -c "find '$wt' -name greet.bats"
+  assert_output ""
+}
+
+# ANY VENDORED RUNTIME IS A TEMPLATE, git or none (issue 0353): a copy of a
+# project kept under the root with no `.git` still holds a runtime whose
+# tmpl/test.bats is no suite.
+@test "0353: another vendored runtime with no .git is never read as the project's suite" {
+  proj="$(mkinstalled)"
+  mkdir -p "$proj/keep/copy/bin"
+  cp -R "$proj/bin/.devbin" "$proj/keep/copy/bin/.devbin"
+  run devbin_run "$proj" new greet --summary "Say hello"
+  assert_success
+  assert_output_contains "no bats suite"
+  run bash -c "find '$proj' -name greet.bats"
+  assert_output ""
+}
+
 @test "a scaffolded command does not disturb the commands already there" {
   proj="$(mkinstalled)"
   run devbin_run "$proj" help
