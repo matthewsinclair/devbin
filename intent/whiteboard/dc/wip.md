@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: e08febcd-30bd-4a76-bff2-c5b9e14a4e3f
-heartbeat_at: 2026-11-16 16:59Z
+heartbeat_at: 2026-11-16 17:41Z
 status: active
-focus: "2026-11-16 16:59Z by date -u: decision 194's work done. 0361-1 landed at 31f2ddf4 and 0356-1 at 373fe10f (vc, no rebase, for 0.1.26); issues 0361 and 0356 resolved and closed at 28914894; k194's clones cleared, its runs/ and handover kept as the Resolutions cite them. Nothing booked or running, no claims. Holding for vc."
+focus: "Localfold for hv's compact, 2026-11-16 17:41Z by date -u: nothing unbanked, no claims, nothing booked or running. Decision 194's work is done: 0361-1 (31f2ddf4) and 0356-1 (373fe10f) landed for 0.1.26, issues 0361 and 0356 closed (28914894); k194's runs/ and handover kept as the Resolutions cite them. On the bounce: /in-session, pickup, hold for vc."
 claims: []
 ---
 
