@@ -3,7 +3,7 @@ node: cc
 name: Control Claude
 role: control
 session_id: 3803b87e-16ab-4ead-8a98-0b012e50f450
-heartbeat_at: 2026-11-16 13:07Z
+heartbeat_at: 2026-11-16 16:15Z
 status: active
 focus: "Localfold 2026-11-16 13:07Z by date -u, on hv's bank, fold and hold (hv in cc's, dc's and vc's windows): nothing live or unbanked, nothing booked; claim ISSUE:0326 stands (pplr#0001 and cldr#0001 still OPEN). 0353's fix was proposed to vc and is held by hv, unstarted. On the bounce: /in-session, pickup, hold for vc."
 claims: [ISSUE:0326]
