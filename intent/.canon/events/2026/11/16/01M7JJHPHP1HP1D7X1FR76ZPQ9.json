@@ -1,0 +1,15 @@
+{
+  "id": "01M7JJHPHP1HP1D7X1FR76ZPQ9",
+  "ts": "2026-11-16T16:20:22.200Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0361"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A red remote leg's log omits its TMPDIR's files, and the gate cache has no bound"
+  }
+}

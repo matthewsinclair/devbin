@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 361,
+  "slug": "a-red-remote-leg-s-log-omits-its-tmpdir-s-files",
+  "title": "A red remote leg's log omits its TMPDIR's files, and the gate cache has no bound",
+  "status": "open",
+  "severity": "medium",
+  "created": "2026-11-16",
+  "reporter": "Matthew Sinclair",
+  "body": "Two release-gate defects, built as one unit (decision 194).\n\n1. A red remote leg's log says nothing about what the leg left in its TMPDIR. The leg's log should carry the TMPDIR's top-level files when the leg goes red (lib/release.legs:245). Only the top level is listed; the limit is accepted.\n\n2. The gate cache grows without bound. It measured 15.2 GiB on rhadamanth and 8.1 GiB on kovacs (2026-11-16). Each run should bound the cache when it starts: a 12 GiB constant that a release config can override.\n\nScoped by dc (vc's inbox, committed at ac7501c1 and 422c1bf0); hv chose the bound and the override on 2026-11-16 (decision 194).\n"
+}
