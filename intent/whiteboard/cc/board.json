@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "3803b87e-16ab-4ead-8a98-0b012e50f450",
-    "heartbeat_at": "2026-11-16T18:08:56.478Z",
+    "heartbeat_at": "2026-11-16T18:13:08.636Z",
     "status": "active",
-    "focus": "0353-1 built on hv's go through vc (18:04Z): fix at a24dba3d in scratch i0353/w, 3 new arms red at base and green at tip by probe; Desk ask 01M7JRQNSX4BFZVTJP8E5739M0 in, waiting for vc's driver read before START. Claim ISSUE:0326 stands.",
+    "focus": "0353-1 green and handed over (18:12Z run: red 3/3 at base, BSD+GNU green, scans 61 ok): handover in i0353/handover, banked refs/bank/cc/0353-1 at a24dba3d; waiting for vc's landing, then Resolution and close. Claim ISSUE:0326 stands.",
     "claims": [
       "ISSUE:0326"
     ],
