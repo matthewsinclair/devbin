@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "3803b87e-16ab-4ead-8a98-0b012e50f450",
-    "heartbeat_at": "2026-11-16T18:13:08.636Z",
+    "heartbeat_at": "2026-11-16T18:13:49.337Z",
     "status": "active",
-    "focus": "0353-1 green and handed over (18:12Z run: red 3/3 at base, BSD+GNU green, scans 61 ok): handover in i0353/handover, banked refs/bank/cc/0353-1 at a24dba3d; waiting for vc's landing, then Resolution and close. Claim ISSUE:0326 stands.",
+    "focus": "0353 resolved and closed (unit 0353-1 landed at a6d261e1 for 0.1.26); holding for vc's word. Claim ISSUE:0326 stands (pplr#0001 and cldr#0001 still OPEN).",
     "claims": [
       "ISSUE:0326"
     ],
