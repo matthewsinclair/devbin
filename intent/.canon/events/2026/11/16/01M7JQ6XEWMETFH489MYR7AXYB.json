@@ -1,0 +1,15 @@
+{
+  "id": "01M7JQ6XEWMETFH489MYR7AXYB",
+  "ts": "2026-11-16T17:41:51.708Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-16 16:23Z by date -u, hv's words with one name withheld under directive 14: \"You've got the pen. Four worksrtreams: agentic-enginering-vc, [another estate's team]-vc, laksa-vc, webber-vc. Let's get laksa done first. And then [another estate's team] if there's space. webber and ae can wait for now.\" Done: the Desk re-taken and the hold of decision 193 lifted; Laksa's 0064/0065 run and its two CI fixes granted, Laksa's CI green on 521f3c833 and its records at b2d888c6a, hv deploying, Laksa's shared tree frozen by laksa-vc until it says the deploy is done; the other estate's team's runs granted between Laksa's; Ccusage's 0009 run granted on an idle Desk. agentic-engineering's devvm build-and-stage1 ask 01M7JPYP1KC0G3R0WRVSB2NCQB waits for hv's word. 0361-1 (31f2ddf4) and 0356-1 (373fe10f) landed for 0.1.26; issues 0361 and 0356 closed at 28914894."
+  }
+}

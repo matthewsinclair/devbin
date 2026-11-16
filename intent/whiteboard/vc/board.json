@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "f6846862-90a4-4e18-bdcd-a4b341f0cc41",
-    "heartbeat_at": "2026-11-16T16:15:23.052Z",
+    "heartbeat_at": "2026-11-16T17:41:59.019Z",
     "status": "active",
-    "focus": "2026-11-16 16:13Z by date -u: localfold for hv's compact. cc (2837eaec) and dc (a71f5d44) folded, holding for vc on the bounce. The Desk is held (hold 01M7JJ4W8ADEECCE37CMQ49WHK) on hv's bank-fold-hold; fold-records commits only, vc lifts the hold for each; laksa-vc's pre-compact records commit granted 16:13Z. Open for hv: todo 221 (dc's three decisions). On the bounce: /in-session, pickup, re-take the Desk on hv's word if ORPHANED, re-arm the waiter.",
+    "focus": "2026-11-16 17:41Z by date -u: localfold for hv's compact. Desk held (hold 01M7JQ66TDPY17CR2HG7TYAAE4) until vc's bounce; nothing running. Queued: AE's 01M7JPYP1KC0G3R0WRVSB2NCQB (devvm build+stage1, 30-50 min), waits for hv's word (decision 195). Laksa: tree frozen until laksa-vc says hv's deploy is done. 2026-11-17 first thing: Ccusage 0008 login repair restarts every session; no grant until ccusage-vc says clear (decision 196). On the bounce: /in-session, pickup, unhold the Desk, re-arm the waiter, put AE's ask and cc's 0353 (for 0.1.26) to hv.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5074,7 +5074,8 @@
       "kind": "decision",
       "seq": 176,
       "text": "hv in vc's window, read 2026-11-14 04:32Z by date -u, after the night's hold: 'You still have the pen. But's it's just webber-* working here now, so you can use rhad and gyges for anything that webber-vc wants. You coordinate.' Desk re-taken; Webber is the only estate on rhadamanth and gyges, gyges one run at a time on webber-vc's GO; replaces decision 174 while it holds.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-16T17:41:57.760Z",
       "recorded_at": "2026-11-14T04:32:02.209Z"
     },
     {
@@ -5176,7 +5177,8 @@
       "kind": "decision",
       "seq": 185,
       "text": "hv 2026-11-15 06:17Z by date -u, in vc's window, hv's words: \"I am about to be AFK for a while. You have the pen. P0/P1 is devbin, intent, and devvm releases. webber is using gyges. laksa is small/simple and can use either as necessary. webber+laksa are equally P3 here, but can shre gyges as they need.\" Desk reading (vc): rhadamanth and kovacs serve devbin, Intent and devvm releases first, and a P0/P1 ask is granted ahead of any P3 one. Webber runs on gyges. Laksa may use rhadamanth when no P0/P1 run needs it, and otherwise gyges, which it shares with Webber. Supersedes decision 176's host split. No devvm repo is in prj yet, so its first ask is read against this.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-16T17:41:57.973Z",
       "recorded_at": "2026-11-15T06:17:11.931Z"
     },
     {
@@ -5251,7 +5253,8 @@
       "kind": "decision",
       "seq": 192,
       "text": "hv in vc's window, read 2026-11-16 12:40Z by date -u, hv's words: \"dc go ahead with the reading; cc holds\". Answers todo 220: dc scopes todos 217 and 218 and issue 0356 by reading alone and reports to vc, nothing booked or run; cc's issue 0353 fix stays unstarted while cc holds.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-16T17:41:58.191Z",
       "recorded_at": "2026-11-16T12:41:15.329Z"
     },
     {
@@ -5268,7 +5271,8 @@
       "kind": "decision",
       "seq": 193,
       "text": "hv in vc's window, read 2026-11-16 13:06Z by date -u, hv's words: \"Ok, I need to move. Please tell your Claudes here to bank, fold, and hold.\" The same words reached dc first-hand, and rhadamanth-sysadm relayed them to every Claude on rhadamanth, adding that rhadamanth may go offline. Done: cc and dc told live and by announce at 13:06Z; the Desk held at 13:07Z (hold 01M7J7GSRZDH99MW7Q2T7712KH: no grant until hv's next word; runs already granted finish to END); vc localfolds and holds. dc's three decisions stay open as todo 221.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-16T17:41:58.403Z",
       "recorded_at": "2026-11-16T13:08:15.648Z"
     },
     {
@@ -5278,6 +5282,22 @@
       "text": "hv in vc's window, read 2026-11-16 16:19Z by date -u, answering todo 221 with \"1. (a) 2. (a) 3. (a)\", each the recommendation: (1) dc builds todos 217+218 (one unit) and issue 0356 now for 0.1.26 while cc holds issue 0353; one bats slot on rhadamanth; (2) 0356: a project's own handler keeps reading its own --help, and devbin answers only for its own routes; (3) 218's gate cache bound is a 12 GiB constant with a release config override. The Desk stays held (decision 193) and its controller row's session is gone; the take and the hold's lift wait for hv's Desk word, so dc builds in its own clone and asks for the bats slot when ready.",
       "state": "live",
       "recorded_at": "2026-11-16T16:19:12.425Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 195,
+      "text": "hv in vc's window, read 2026-11-16 16:23Z by date -u, hv's words with one name withheld under directive 14: \"You've got the pen. Four worksrtreams: agentic-enginering-vc, [another estate's team]-vc, laksa-vc, webber-vc. Let's get laksa done first. And then [another estate's team] if there's space. webber and ae can wait for now.\" Done: the Desk re-taken and the hold of decision 193 lifted; Laksa's 0064/0065 run and its two CI fixes granted, Laksa's CI green on 521f3c833 and its records at b2d888c6a, hv deploying, Laksa's shared tree frozen by laksa-vc until it says the deploy is done; the other estate's team's runs granted between Laksa's; Ccusage's 0009 run granted on an idle Desk. agentic-engineering's devvm build-and-stage1 ask 01M7JPYP1KC0G3R0WRVSB2NCQB waits for hv's word. 0361-1 (31f2ddf4) and 0356-1 (373fe10f) landed for 0.1.26; issues 0361 and 0356 closed at 28914894.",
+      "state": "live",
+      "recorded_at": "2026-11-16T17:41:51.708Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 196,
+      "text": "Relayed by ccusage-vc, hv's words in its window at about 17:25Z 2026-11-16: \"Ok, let's get ready to run this first thing tomorrow. There's too much on right now. Let devbin-vc know that we need to do this first thing.\" The repair of rhadamanth's Claude logins (Ccusage ISSUE:0008) restarts every Claude session on rhadamanth first thing 2026-11-17, before anything else. vc acknowledged: the Desk grants nothing running into that window and nothing on 2026-11-17 until ccusage-vc says the estate is clear; devbin's seats banked before hv's morning; nothing of devbin's must run first.",
+      "state": "live",
+      "recorded_at": "2026-11-16T17:41:58.609Z"
     }
   ],
   "sent": [
@@ -7623,14 +7643,16 @@
       "recipient": "dc",
       "body": "FOLD ORDER from hv (in vc's window, read 13:06Z by date -u): \"bank, fold, and hold\". Bank anything uncommitted as WIP (a bank ref by fetch and CAS, or a stash named in your record); book nothing new; clear scratch no longer cited, by script; localfold (board and records folded, handled messages cleared, handled sends archived), commit by path, push nothing, do NOT wb release; send devbin-vc one fold line; then hold for hv's next word through vc. Nothing public.",
       "fyi": true,
-      "recorded_at": "2026-11-16T13:07:14.665Z"
+      "recorded_at": "2026-11-16T13:07:14.665Z",
+      "archived_at": "2026-11-16T17:41:58.808Z"
     },
     {
       "id": "01M7J7G2K98PF0HVFGB2NPJ5D6",
       "recipient": "cc",
       "body": "FOLD ORDER from hv (in vc's window, read 13:06Z by date -u): \"bank, fold, and hold\". Bank anything uncommitted as WIP (a bank ref by fetch and CAS, or a stash named in your record); book nothing new; clear scratch no longer cited, by script; localfold (board and records folded, handled messages cleared, handled sends archived), commit by path, push nothing, do NOT wb release; send devbin-vc one fold line; then hold for hv's next word through vc. Nothing public.",
       "fyi": true,
-      "recorded_at": "2026-11-16T13:07:14.665Z"
+      "recorded_at": "2026-11-16T13:07:14.665Z",
+      "archived_at": "2026-11-16T17:41:58.808Z"
     },
     {
       "id": "01M7J7G2K98PF0HVFGB2NPJ5D7",
@@ -7651,7 +7673,8 @@
       "recipient": "dc",
       "body": "GO, on hv's word in vc's window (read 16:19Z by date -u), todo 221 answered 1a 2a 3a: build todos 217+218 as one unit and issue 0356 as a second unit, for 0.1.26. 0356: a project's own handler keeps reading its own --help; devbin answers -h/--help only for its own routes. 218: the gate cache bound is a 12 GiB constant with a release config override. Unit names read before building; build in your own scratch clone, nothing in canon. Probe new arms off the Desk first. When both units are ready, one ask to vc for one bats slot on rhadamanth (localised arms plus the tree scans), naming the driver. The Desk is still held pending hv's Desk word; vc grants once hv gives it. cc keeps holding 0353.",
       "fyi": false,
-      "recorded_at": "2026-11-16T16:19:12.836Z"
+      "recorded_at": "2026-11-16T16:19:12.836Z",
+      "archived_at": "2026-11-16T17:41:58.808Z"
     }
   ],
   "handled": [

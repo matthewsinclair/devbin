@@ -1,0 +1,15 @@
+{
+  "id": "01M7JQ746H8EG17V12PNEVR0GH",
+  "ts": "2026-11-16T17:41:58.609Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Relayed by ccusage-vc, hv's words in its window at about 17:25Z 2026-11-16: \"Ok, let's get ready to run this first thing tomorrow. There's too much on right now. Let devbin-vc know that we need to do this first thing.\" The repair of rhadamanth's Claude logins (Ccusage ISSUE:0008) restarts every Claude session on rhadamanth first thing 2026-11-17, before anything else. vc acknowledged: the Desk grants nothing running into that window and nothing on 2026-11-17 until ccusage-vc says the estate is clear; devbin's seats banked before hv's morning; nothing of devbin's must run first."
+  }
+}

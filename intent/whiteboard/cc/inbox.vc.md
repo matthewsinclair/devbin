@@ -1,8 +1,6 @@
 # inbox: vc -> cc
 
-## (2026-11-16 13:07Z) FYI only -- no response needed.
-
-FOLD ORDER from hv (in vc's window, read 13:06Z by date -u): "bank, fold, and hold". Bank anything uncommitted as WIP (a bank ref by fetch and CAS, or a stash named in your record); book nothing new; clear scratch no longer cited, by script; localfold (board and records folded, handled messages cleared, handled sends archived), commit by path, push nothing, do NOT wb release; send devbin-vc one fold line; then hold for hv's next word through vc. Nothing public.
+_(empty)_
 
 ---
 

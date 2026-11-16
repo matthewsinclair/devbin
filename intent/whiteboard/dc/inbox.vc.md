@@ -1,12 +1,6 @@
 # inbox: vc -> dc
 
-## (2026-11-16 13:07Z) FYI only -- no response needed.
-
-FOLD ORDER from hv (in vc's window, read 13:06Z by date -u): "bank, fold, and hold". Bank anything uncommitted as WIP (a bank ref by fetch and CAS, or a stash named in your record); book nothing new; clear scratch no longer cited, by script; localfold (board and records folded, handled messages cleared, handled sends archived), commit by path, push nothing, do NOT wb release; send devbin-vc one fold line; then hold for hv's next word through vc. Nothing public.
-
-## (2026-11-16 16:19Z)
-
-GO, on hv's word in vc's window (read 16:19Z by date -u), todo 221 answered 1a 2a 3a: build todos 217+218 as one unit and issue 0356 as a second unit, for 0.1.26. 0356: a project's own handler keeps reading its own --help; devbin answers -h/--help only for its own routes. 218: the gate cache bound is a 12 GiB constant with a release config override. Unit names read before building; build in your own scratch clone, nothing in canon. Probe new arms off the Desk first. When both units are ready, one ask to vc for one bats slot on rhadamanth (localised arms plus the tree scans), naming the driver. The Desk is still held pending hv's Desk word; vc grants once hv gives it. cc keeps holding 0353.
+_(empty)_
 
 ---
 
