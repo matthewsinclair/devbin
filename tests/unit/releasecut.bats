@@ -4328,6 +4328,26 @@ $(printf '%s\n' "${exp[@]}")"
   [ ! -e "$DEVBIN_TEST_TMPDIR/pf.calls" ] || fail "a pre-flight command ran: $(cat "$DEVBIN_TEST_TMPDIR/pf.calls")"
 }
 
+@test "0364-1: a release.gates entry that runs release is refused as config, naming why, and a cut runs nothing" {
+  proj="$(cut_project "  gates:
+    - probe
+    - release gates")"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_failure
+  assert_output_contains 'release.gates.1: "release gates" runs release, which would run the gates again from inside themselves, and a cut would start another cut, without end: name the check itself'
+  [ ! -e "$DEVBIN_TEST_TMPDIR/gate.calls" ] || fail "a gate ran: $(cat "$DEVBIN_TEST_TMPDIR/gate.calls")"
+}
+
+@test "0364-1: release gates refuses a gate that runs release at validation, naming the key and the value, and runs no gate" {
+  proj="$(cut_project "  gates:
+    - probe
+    - release target")"
+  run release_in "$proj" gates
+  assert_failure
+  assert_output_contains 'release.gates.1: "release target" runs release, which would run the gates again from inside themselves'
+  [ ! -e "$DEVBIN_TEST_TMPDIR/gate.calls" ] || fail "a gate ran beside a gate that runs release: $(cat "$DEVBIN_TEST_TMPDIR/gate.calls")"
+}
+
 @test "0327: each derived: command is handed the release's target" {
   printf '%s >>"%s/derived.target"\n' "$TARGET_LINE" "$DEVBIN_TEST_TMPDIR" >"$DEVBIN_TEST_TMPDIR/derived.sh"
   proj="$(cut_project "  derived:

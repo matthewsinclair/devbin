@@ -1360,6 +1360,18 @@ cfg_ident() {
   _ci_name="$_ci_n" _ci_email="$_ci_e"
 }
 
+# _cfg_line_runs_release <line> -- true when the first word of <line>, split
+# as run_words splits it, is release. THE ONE READING of a line a cut runs
+# through the project's launcher, release.preflight's and release.gates' (issues
+# 0327, 0364): there the first word is a verb of devbin's, so release names the
+# release verbs, and a cut's own lists would start a cut, or the gates, inside
+# themselves. derived: and after: lines are commands, run as they are written,
+# so their first word names a program, and they are never asked. Pure.
+_cfg_line_runs_release() {
+  local _clr_rest="${1#"${1%%[!$' \t\n']*}"}"
+  [ "${_clr_rest%%[$' \t\n']*}" = release ]
+}
+
 # _cfg_release_value_problem <path> <value> -- print why a release value
 # cannot be read, and succeed; fail when the value is fine. A value it cannot
 # check is accepted, failing, with a line of its own on stderr saying so:
@@ -1434,15 +1446,28 @@ _cfg_release_value_problem() {
       # is release would start a cut there, which would run it again, without
       # end. `-` declares none, as leaving the key out does.
       is_no_default "$v" && return 1
-      local pf_first=""
-      IFS=$' \t\n' read -r pf_first _ <<<"$v"
-      [ -n "$pf_first" ] && [ "$pf_first" != release ] && return 1
-      if [ -z "$pf_first" ]; then
+      if ! has_words "$v"; then
         printf 'is empty -- leave the key out to run no pre-flight command'
-      else
+      elif _cfg_line_runs_release "$v"; then
         printf 'runs release, which would start a cut inside the cut'"'"'s own pre-flight, again without end -- name the check itself'
+      else
+        return 1
       fi
       ;;
+    gates.*)
+      # A GATE NEVER RUNS release (issue 0364), as a pre-flight command never
+      # does: a cut runs each gate through the launcher, in place and under
+      # `release gates` on each leg's host, and `release gates` runs them by
+      # hand, so a gate whose first word is release would run the gates again
+      # from inside themselves, or start a cut inside the cut. Every other
+      # value goes on to the checks below (;;&), so an empty gate is refused
+      # as every empty release value is, and a blank one by cfg_validate's
+      # command-line check, as before.
+      if _cfg_line_runs_release "$v"; then
+        printf 'runs release, which would run the gates again from inside themselves, and a cut would start another cut, without end: name the check itself'
+        return 0
+      fi
+      ;;&
     unread.*)
       # A PATH NO GATE READS (issue 0355), below the project root and written
       # once, as git names it, in relative_path_problem's terms: so `.`, which
