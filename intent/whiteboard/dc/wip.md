@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 08:51Z
+heartbeat_at: 2026-11-17 09:47Z
 status: active
-focus: "2026-11-17 08:50Z by date -u: 0.1.26's pre-cut closed green; the one-arm re-run of helpers 0311 read green alone at f18a7a7c with HUP at the default (light slot 01M7MB5A5CMYBPF5CDKBMR4VSC, END to vc). Holding for vc's word; hold 43 clears pc0126's clone once v0.1.26 is tagged."
+focus: "2026-11-17 09:46Z by date -u: v0.1.26 is out at f0434fbd (vc's word, the bar lifted). Hold 43 done: clear-clone-pc0126.sh removed pc0126's tree and tree.tmp, and the kit's records stay in scratch. Holding for vc's word; the post-tag steps are vc's."
 claims: []
 ---
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- pc0126's clone (~/Devel/scratch/devbin-dc/pc0126/tree and tree.tmp) holds until vc says v0.1.26 is tagged. Then a clear-clone script on pc0125's pattern removes them, refusing unless the tag carries the tested tip f18a7a7c, and keeps runs/, run-precut.out and the scripts.
+_(none)_
 
 ## Watch-outs
 
