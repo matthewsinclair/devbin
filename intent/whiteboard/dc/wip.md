@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 08:15Z
+heartbeat_at: 2026-11-17 08:16Z
 status: active
-focus: "0.1.26's pre-cut ended 08:14:39Z: green but for helpers 0311 under my nohup launch (not code, not load); END sent, slot released. Holding for vc; pc0126's clone goes once v0.1.26 is tagged."
+focus: "Folded on hv's 08:16Z order through vc; holding for hv's /compact and vc's word. 0.1.26's pre-cut ENDed (green but for helpers 0311 under my nohup launch). Bounce's first step: the one-arm re-run (hold 44); pc0126 kept in scratch as the cited record."
 claims: []
 ---
 
@@ -22,6 +22,7 @@ _(none)_
 ## Holds
 
 - pc0126's clone (~/Devel/scratch/devbin-dc/pc0126/tree and tree.tmp) holds until vc says v0.1.26 is tagged. Then a clear-clone script on pc0125's pattern removes them, refusing unless the tag carries the tested tip f18a7a7c, and keeps runs/, run-precut.out and the scripts.
+- The one-arm re-run that closes 0.1.26's helpers leg before the cut (vc's ask, made the bounce's first step by hv's 08:16Z fold order) holds until vc's word after hv's /compact. It runs helpers.bats's traps_restore arm (line 2558, 0311) alone, in pc0126's tree at f18a7a7c, by bin/devbin test bats --filter. It runs in the foreground with no nohup, under the bsd phase's gate environment, with the launching shell's trap -p HUP printed first. It books a light Desk slot naming exactly that, and END carries the arm's TAP line. Green: vc books the cut. Red with HUP at the default: a code red, and the cut stops.
 
 ## Watch-outs
 
