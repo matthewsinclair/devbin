@@ -5377,7 +5377,8 @@
       "kind": "decision",
       "seq": 204,
       "text": "devbin 0.1.26's fleet sweep from brew, the step decision 203 left, run by vc 2026-11-17 10:12Z to 10:21Z by date -u on Desk slot 01M7MFWFVB5JPNN9554MSH6CWZ (light, granted at load 4.98): bin/devbin fleet upgrade --apply from Homebrew's install (f0434fbd68c0) upgraded 24 estates, 0 held back and 0 failed, each committed by path through its own hook, 12 paths each, the sweep pathspec alone (directive 10; shas in ~/Devel/scratch/devbin-vc/0.1.26/sweep/sweep-commit.summary). 20 are pushed to their local remotes, fast-forward. Ccusage, Intent and Prodinfra each hold commits of their own beyond their local remotes, so those pushes are their vcs' (Intent's on intent-vc's word, decision 76); Cards has no local remote. Webber is frozen out of this sweep (the plan read 1 frozen and no 'matches none'): its Creator fly-deploy clone pulls Webber's canon, so a sweep now would change the deploy's devbin before hv's sitting, and Webber is swept after the deploy. The audit after reads 0.1.26 in all 24. Notices sent by 10:23Z: ccusage-vc and intent-vc (todo 215).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T12:03:24.254Z",
       "recorded_at": "2026-11-17T10:26:37.955Z"
     },
     {
@@ -5404,7 +5405,8 @@
       "kind": "decision",
       "seq": 206,
       "text": "0352's shape, vc's word to cc 2026-11-17 by 10:37Z by date -u on cc's pick; ic has never run, so it stands on cc's design and vc's word. bin/devbin release target [--ref <ref>] is read only (config and tree; no tags, no network, no lock, no write) and prints DEVBIN_RELEASE_VERSION and DEVBIN_RELEASE_TARGET_TAG, the pair a cut hands its project's own commands (lib/release.steps:662, release.md:140), from the one function gates_verb uses. With --ref it prints only on this release's candidate branch or its tag, prints nothing and exits 0 on any other ref, and exits 1, naming both tags, on a candidate of another tag. target joins release.verbs' defaults, so Intent adds it when it adopts; adoption is a notice per estate once 0352 lands. 0354 takes cc's options 1 and 3 (a line in use's report and T5's text; no doctor change). Filed for 0.1.27: 0362 and 0363 by cc (c3377c71; 0362 rides 0358's unit, 0363 is cc's after 0358), 0364 to 0369 by dc (c478a902, todo 214's findings). cc's order: 0354, 0352, 0358 with 0362, then 0363. dc's: 0355, 0360, 0359.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T12:03:24.513Z",
       "recorded_at": "2026-11-17T10:37:25.101Z"
     },
     {
@@ -5436,7 +5438,8 @@
       "kind": "decision",
       "seq": 209,
       "text": "0370 (medium, filed by cc at 1177eed8 from intent-vc's report: on 0.1.26, bin/devbin gate rust --help in Intent's tree ran Intent's whole Rust gate, unbooked, for two minutes, since 0356 answers the flag only for devbin's six gate commands and a declared option's run: line of a project's own command still gets it) is cc's to build after 0352, so cc's order is 0354, 0352, 0370, 0358 with 0362, then 0363; its pick and shape come to vc before the build (vc's leaning: every command whose declared option's run: line is what runs; a command-level run: line keeps its own flag, as decision 194 left it). Intent closes its side as intent#0699. Landing order: 0354-1 changes lib/helpers and so does 0355-1 (git_head_identity), so 0354-1 lands first and dc bases 0355-1's run on main after it (decision 83).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T12:03:25.006Z",
       "recorded_at": "2026-11-17T10:49:51.995Z"
     },
     {
@@ -5452,7 +5455,8 @@
       "kind": "decision",
       "seq": 211,
       "text": "hv in webber-vc's session at about 10:56Z, relayed by webber-vc to devbin-vc and read by 2026-11-17 11:00Z by date -u, hv's words: \"The mix.lock and devbin changes are mine, land them after my run.\" hv's test all ended at about 10:57Z. Both land after Creator's fly deploy has ended, which is after hv's run, so the deploy's clone keeps the main it was planned on: devbin-vc commits the 12 devbin paths as Webber's 0.1.26 sweep commit (hold 36), and webber-vc lands mix.lock on hv's green test mix and its own check codegen and check audit (Desk 01M7MJKEACA74SKQ81N1ZPZSZE, granted light at load 13.92, 11:00:17Z).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T12:03:25.531Z",
       "recorded_at": "2026-11-17T11:00:32.487Z"
     },
     {
@@ -5460,7 +5464,8 @@
       "kind": "decision",
       "seq": 212,
       "text": "cc's 0352-1 (release target, tip 00b67963) shares lib/helpers with 0354-1 and 0355-1 and reworks gates_verb, so under hv's speed ruling that ready units run as one stack it rebases onto 0354-1 and the two run as one stack, one driver, each unit's red arms at its own base, then the union of legs once and test scans once; cc re-asks the Desk with --place-of 01M7MHWYTNTHK4GCSQ8Z4NTSJM, and dc bases 0355-1 on the stack's landing. In 0352-1, as defects in what it touches or introduces: the schema's tag row gains gates as a reader beside target (a project offering only gates that declares tag was refused as unread config), and release_tag_version is not left a third copy of the tag read: release_versions and formula's tag_version call it where they mean the same, or cc files the one that differs for 0.1.27. 0370's shape, vc's word on cc's pick: help_answered (lib/resolve) widens 0356's rule to a declared option's run: line of any command; a gate command keeps gate_usage_line, any other answers help <command> at exit 0; command-level run: lines, handlers and devbin's non-gate built-ins keep their own flag (decision 194); the page names the cost. 0370 joins the stack if banked before its grant.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T12:03:25.881Z",
       "recorded_at": "2026-11-17T11:05:24.043Z"
     },
     {
@@ -5468,7 +5473,8 @@
       "kind": "decision",
       "seq": 213,
       "text": "Webber's 0.1.26 sweep commit is 26ba9c59 (2026-11-17 11:16Z by date -u), in the window webber-vc gave, its option (a): the 12 devbin paths alone, by path through Webber's hook (guards, critic and doctor clean), unpushed (Webber's decision 84), on webber-vc's ad562545, which lands hv's mix.lock bump. The files were written by hv's devbin upgrade in Webber's checkout at 10:52:32Z and hv's test all ran green with them in place (decision 211); the commit's message says so, not the sweep script's words. It lands before Creator's fly deploy, which now waits for Webber cc's seed unit and hv's return, so the deploy's fresh ask names a tip holding 0.1.26. The sha and 0.1.26's notice went to webber-vc; hold 36 is archived. Desk: another estate's dc withdrew its cold build at its fold (11:15Z); devbin-cc's stack 0354-1 then 0352-1 was granted bats at load 7.92 (11:16:20Z) beside that estate's single-core check, whose owner said its timings no longer need the host quiet.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T12:03:26.195Z",
       "recorded_at": "2026-11-17T11:17:16.600Z"
     },
     {
@@ -5486,6 +5492,14 @@
       "text": "0.1.27's NOTICES, sent once 0.1.27 is cut and swept: Intent's adoption of release target (0352, decision 206: add target to Intent's release.verbs, and swap linux-release.yml's interim parse at line 87 for one line, bin/devbin release target --ref \"$GITHUB_REF\" >> \"$GITHUB_ENV\"), to intent-vc; and once 0355-1 lands, release.unread's opt-in (decision 207: list intent/whiteboard/ and intent/.canon/events/ so a peer's pickup no longer fails a cut) to every estate with a whiteboard.",
       "state": "live",
       "recorded_at": "2026-11-17T11:51:49.432Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 215,
+      "text": "cc's second 0.1.27 stack landed on main by land-stack.sh with LAND_BASE_OFF_MAIN=1 (its base 0647d816 is carried on main as ad3c9a12 with the same tree, and its files were unmoved there), 2026-11-17 12:02Z by date -u: 0370-1 at 361cbf31 (--help after a declared option's run: line of any command), 0358-1 at e9ae374a (the guide line, configuration.md's step 6, and 0362's line on new's page) and 0363-1 at 7dee5e4c (infra's dashed handles), the tree outside intent/ equal to the tested tip 9f4d40d8. Its one run (01M7MN581DQ20NSCPEW4Q7FEE7, bats, 11:49Z to 12:00Z): every red arm failed at its base for its reason, every leg green under BSD and GNU, test scans 61 of 61. That lands all of cc's 0.1.27 list; cc takes 0371 next. It shares docs/configuration.md with dc's 0355-1, whose formal run (01M7MNTYT5PX28MS5AQ233PM3T) was granted bats at 12:01:22Z, ahead of Intent's kovacs rehearsal, which could not start beside another estate's run and ranks below devbin (decision 158). When it is green, 0355-1 rebases onto main with a short run of its legs that read docs/configuration.md, the long run's records standing for the rest. Webber's seeded-accounts gates take gyges as overflow (decision 190) when webber-cc's critic pass clears.",
+      "state": "live",
+      "recorded_at": "2026-11-17T12:03:26.541Z"
     }
   ],
   "sent": [

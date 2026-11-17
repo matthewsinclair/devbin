@@ -1,0 +1,15 @@
+{
+  "id": "01M7MP7Z6DJGBH63BSDB3RHAW5",
+  "ts": "2026-11-17T12:03:26.541Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "cc's second 0.1.27 stack landed on main by land-stack.sh with LAND_BASE_OFF_MAIN=1 (its base 0647d816 is carried on main as ad3c9a12 with the same tree, and its files were unmoved there), 2026-11-17 12:02Z by date -u: 0370-1 at 361cbf31 (--help after a declared option's run: line of any command), 0358-1 at e9ae374a (the guide line, configuration.md's step 6, and 0362's line on new's page) and 0363-1 at 7dee5e4c (infra's dashed handles), the tree outside intent/ equal to the tested tip 9f4d40d8. Its one run (01M7MN581DQ20NSCPEW4Q7FEE7, bats, 11:49Z to 12:00Z): every red arm failed at its base for its reason, every leg green under BSD and GNU, test scans 61 of 61. That lands all of cc's 0.1.27 list; cc takes 0371 next. It shares docs/configuration.md with dc's 0355-1, whose formal run (01M7MNTYT5PX28MS5AQ233PM3T) was granted bats at 12:01:22Z, ahead of Intent's kovacs rehearsal, which could not start beside another estate's run and ranks below devbin (decision 158). When it is green, 0355-1 rebases onto main with a short run of its legs that read docs/configuration.md, the long run's records standing for the rest. Webber's seeded-accounts gates take gyges as overflow (decision 190) when webber-cc's critic pass clears."
+  }
+}
