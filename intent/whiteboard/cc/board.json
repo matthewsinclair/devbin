@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "19c73785-15df-40b2-b812-765f3bba42d9",
-    "heartbeat_at": "2026-11-17T13:23:52.714Z",
+    "heartbeat_at": "2026-11-17T13:29:55.881Z",
     "status": "active",
-    "focus": "2026-11-17 13:23Z by date -u: localfold for hv's compact (a context emergency, through vc). cc's 0.1.27 issues are all landed and closed. hv gave cc 0364 and 0365, which start on the bounce with their pick and shape to vc before any build; until vc's word, hold. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing live, unbanked, booked or running.",
+    "focus": "2026-11-17 13:29Z by date -u: back from hv's compact; holding for vc's word. 0364 and 0365 are cc's on hv's word; on the bounce their pick and shape go to vc before any build. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing live, unbanked, booked or running.",
     "claims": [
       "ISSUE:0326",
       "ISSUE:0364",
