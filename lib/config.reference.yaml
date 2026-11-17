@@ -639,6 +639,8 @@ release:
   gates:                     # devbin verbs, run in order on the release commit under one seal, tmp/release/<stamp>.GATES.*; each must exit 0, and a green that stands for the release commit on this platform is not run again
     - check all
     - test all
+  # unread:                  # paths no gate and no pre-flight command reads, eg a board other sessions write in a checkout they share: a change there while a cut runs is named in its record and never refused, and the release commit never holds one; from the project root, as git names them, and none holding a path the release owns
+  #   - shared/board
   # legs:                    # ssh host aliases, each running the gates above at the release commit as a leg of the cut, its seal copied back and read by the same reader; a host pre-flight cannot reach is named, recorded as not run, and never waited for
   #   - buildbox
   gate_cache:

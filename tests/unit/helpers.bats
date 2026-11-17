@@ -2571,6 +2571,31 @@ EOF2
   assert_output_contains "TERM[trap -- 'echo caught' SIGTERM] HUP[] USR1[]"
 }
 
+@test "0355: git_head_identity leaves RELEASE_UNREAD's paths out of +dirty, a whole segment at a time and letter for letter, reads any dirt as +dirty with the list empty, and lib/helpers clears an inherited RELEASE_UNREAD as it loads" {
+  local repo sha
+  repo="$DEVBIN_TEST_TMPDIR/ident"
+  git init -q -b main "$repo"
+  mkdir -p "$repo/board" "$repo/boardx" "$repo/b*"
+  printf 'a\n' >"$repo/board/b.json"
+  printf 'b\n' >"$repo/boardx/f"
+  printf 'c\n' >"$repo/b*/g"
+  git -C "$repo" add -A
+  git -C "$repo" -c user.name=t -c user.email=t@example.com -c maintenance.auto=false -c gc.auto=0 commit -qm init
+  sha="$(git -C "$repo" rev-parse HEAD)"
+  # A pickup's shape: a tracked board file changed, and a new one beside it.
+  printf 'more\n' >>"$repo/board/b.json"
+  : >"$repo/board/new.json"
+  ident_with() { bash -c '. "$1/helpers"; RELEASE_UNREAD="$3"; git_head_identity "$2"' _ "$DEVBIN_LIB_DIR" "$repo" "$1"; }
+  [ "$(ident_with board)" = "$sha" ] || fail "a tree dirty only under board read [$(ident_with board)]"
+  [ "$(ident_with '')" = "$sha +dirty" ] || fail "with the list empty, the same tree read [$(ident_with '')]"
+  [ "$(ident_with 'b*')" = "$sha +dirty" ] || fail "b* was read as a glob over board: [$(ident_with 'b*')]"
+  printf 'more\n' >>"$repo/boardx/f"
+  [ "$(ident_with board)" = "$sha +dirty" ] || fail "boardx, beside board, was left out with it: [$(ident_with board)]"
+  run env RELEASE_UNREAD=board bash -c '. "$1/helpers"; printf "[%s]\n" "${RELEASE_UNREAD-unset}"' _ "$DEVBIN_LIB_DIR"
+  assert_success
+  [ "$output" = "[unset]" ] || fail "an inherited RELEASE_UNREAD survived lib/helpers loading: $output"
+}
+
 @test "is_branch_name and is_tag_name pass back git's own word on a ref name, and platform_word_of maps an OS name to its platform word, the one map platform_word reads through (ST0011 WP-02c)" {
   local w
   # `! cmd` never trips errexit, so each refusal is asserted rather than negated.

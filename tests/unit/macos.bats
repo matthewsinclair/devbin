@@ -174,7 +174,10 @@ SH
   # has it. notarytool's submit and history answer only under a profile the
   # stub keychain holds (kc/notary.<profile>), as the real one refuses any
   # other with no submission id; submit keeps the archive it was sent
-  # (notary.zip) and answers with a submission id and Accepted, or what
+  # (notary.zip: copied under a name of its own and renamed over it, so two
+  # submissions at once never race for one name, which GNU cp creates
+  # exclusively and BSD cp overwrites) and answers with a submission id and
+  # Accepted, or what
   # notary.status holds. Accepted marks what was sent notarised
   # (notary.accepted), which spctl -t open reads.
   cat >"$APPLE/xcrun" <<SH
@@ -201,7 +204,7 @@ case "\$1 \$2" in
   "notarytool submit")
     held || exit 1
     verdict="\$(cat "$T/notary.status" 2>/dev/null || echo Accepted)"
-    cp "\$3" "$T/notary.zip" || exit 1
+    cp "\$3" "$T/notary.zip.\$\$" && mv -f "$T/notary.zip.\$\$" "$T/notary.zip" || exit 1
     [ "\$verdict" != Accepted ] || : >"$T/notary.accepted"
     echo "  id: 0f0e0d0c-0b0a-0908-0706-050403020100"
     echo "  status: \$verdict" ;;
@@ -2022,4 +2025,49 @@ $BIN_ALONE_YAML")"
   # Both signed before either submission was made.
   awk '/^codesign .*--sign / { s = NR } /^xcrun notarytool submit / && !f { f = NR } END { exit !(s && f > s) }' "$DEVBIN_TEST_TMPDIR/apple.calls" ||
     fail "a submission went in before both were signed: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+}
+
+# ============================================================================
+# PATHS NO GATE READS (issue 0355)
+# ============================================================================
+# app-sign and bin-sign ask for a clean tree, read by read_head_state through
+# git_head_identity, which leaves release.unread's paths out: a board a peer
+# writes in a shared checkout does not stop the stage, and the step names it.
+# With the list empty the same dirt still refuses, as the arms above hold.
+
+@test "0355: app-sign passes a tree dirty only under release.unread, naming the paths, and signs" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local dist
+  proj="$(app_project "release:
+  unread:
+    - board")"
+  mkdir -p "$proj/board"
+  : >"$proj/board/new.json"
+  run macos_in "$proj" app-sign
+  assert_success
+  assert_output_contains "dirty only under release.unread, which nothing a release builds reads, so app-sign goes on: board/new.json"
+  dist="$(stage_of)"
+  [ -n "$dist" ] || fail "no staged Demo.app under $XDG_STATE_HOME: $output"
+  [ "$(calls "^codesign .*--sign .* $dist\$")" -eq 1 ] || fail "the stage was not signed: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+}
+
+@test "0355: bin-sign passes a tree dirty only under release.unread, naming the paths, and signs" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local stage
+  proj="$(bin_project "$BIN_YAML
+release:
+  unread:
+    - board")"
+  mkdir -p "$proj/board"
+  : >"$proj/board/new.json"
+  run macos_in "$proj" bin-sign
+  assert_success
+  assert_output_contains "dirty only under release.unread, which nothing a release builds reads, so bin-sign goes on: board/new.json"
+  stage="$(bin_stage_of)"
+  [ -n "$stage" ] || fail "no binaries' stage under $XDG_STATE_HOME: $output"
+  [ "$(calls "^codesign .*--sign .* $stage/$BIN_PLAIN\$")" -eq 1 ] || fail "the plain binary was not signed: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
 }

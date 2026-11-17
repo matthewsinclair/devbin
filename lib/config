@@ -625,6 +625,7 @@ list   derived         cut
 list   preflight       cut
 list   trailer         cut
 list   gates           cut,status,gates               check all|test all
+list   unread          cut,status,gates
 list   legs            cut,status
 scalar ci.query        cut,status,check               $_DEVBIN_CI_BUILTIN_QUERY
 scalar ci.workflow     cut,check                      tests.yml
@@ -742,6 +743,26 @@ cfg_release_list() {
   def="$(_cfg_release_default "$key")"
   [ -z "$def" ] || printf '%s\n' "${def//|/$'\n'}"
   return 0
+}
+
+# release_unread_load -- release.unread's paths into RELEASE_UNREAD, one a
+# line (issue 0355): THE ONE READER of the list, which each process that
+# reads the tree for a release calls once, at its entry: a cut, release
+# status, release gates and its --leg, and the macos verbs. Every read of the
+# tree there asks git through unread_pathspec (lib/helpers), so the listed
+# paths, which no gate and no pre-flight command reads, are left out of each
+# check that the tree is clean or unchanged, and out of the release commit,
+# and each reader that passed such dirt names it. Declared without the export
+# attribute, so a gate or a build the release starts reads its tree whole.
+# Returns 1 when the list cannot be read.
+release_unread_load() {
+  local list
+  list="$(cfg_release_list unread)" || return 1
+  # Read by unread_pathspec (lib/helpers) and the release core's tree reads,
+  # which shellcheck does not see from here; exporting it to satisfy the
+  # linter would hand it to every gate, which it must never reach.
+  # shellcheck disable=SC2034
+  declare -g +x RELEASE_UNREAD="$list"
 }
 
 # cfg_release_first_remote -- the first declared `remotes` entry, or nothing
@@ -1413,6 +1434,14 @@ _cfg_release_value_problem() {
       else
         printf 'runs release, which would start a cut inside the cut'"'"'s own pre-flight, again without end -- name the check itself'
       fi
+      ;;
+    unread.*)
+      # A PATH NO GATE READS (issue 0355), below the project root and written
+      # once, as git names it, in relative_path_problem's terms: so `.`, which
+      # would leave the whole tree unread, is refused with the rest. `-`
+      # declares none, as leaving the key out does.
+      is_no_default "$v" && return 1
+      relative_path_problem "$v" "the project root" || return 1
       ;;
     legs.*)
       # A REMOTE LEG IS A HOST ALIAS (ST0011 WP-05): ssh is handed the name as a

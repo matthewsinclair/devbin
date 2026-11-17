@@ -307,7 +307,7 @@ YAML
   # them holds that to the table's own rows (ST0008 WP-08: repo was in none).
   local block shape key all="" declared
   local -a blocks=(
-    '  tag: "v{version}"\n  remotes:\n    - origin\n  branch: main\n  notes:\n    kind: changelog\n  derived:\n    - cargo update --workspace\n  preflight:\n    - doctor\n  trailer:\n    - "(C) A B <a@b>"\n  gates:\n    - check all\n    - test all\n  legs:\n    - "-"\n  gate_cache:\n    max: 12G\n  ci:\n    query: bin/devbin ci-state\n    workflow: tests.yml\n    summary: Test Summary\n    wait: 20m\n  object: local\n  title: "{tag}"\n  repo: owner/name\n  formula: false\n  after:\n    - bin/announce\n  verbs:\n    - cut\n    - status\n    - notes\n    - check\n    - attach\n  assets:\n    workflow: linux-release.yml\n    wait: 30m'
+    '  tag: "v{version}"\n  remotes:\n    - origin\n  branch: main\n  notes:\n    kind: changelog\n  derived:\n    - cargo update --workspace\n  preflight:\n    - doctor\n  trailer:\n    - "(C) A B <a@b>"\n  gates:\n    - check all\n    - test all\n  unread:\n    - board\n  legs:\n    - "-"\n  gate_cache:\n    max: 12G\n  ci:\n    query: bin/devbin ci-state\n    workflow: tests.yml\n    summary: Test Summary\n    wait: 20m\n  object: local\n  title: "{tag}"\n  repo: owner/name\n  formula: false\n  after:\n    - bin/announce\n  verbs:\n    - cut\n    - status\n    - notes\n    - check\n    - attach\n  assets:\n    workflow: linux-release.yml\n    wait: 30m'
     '  notes:\n    kind: command\n    run: bin/release-notes'
     '  object: ci\n  object_wait: 20m'
     '  ci:\n    query: bin/devbin ci-state\n  snapshot:\n    list: tests/shipped.paths\n    author: "A B <a@b>"\n    message: "{name} {version}"\n  publish:\n    url: https://example.com/o/n.git\n    branch: main\n    candidate: candidate/{tag}'
@@ -369,6 +369,60 @@ YAML
   verbs:\n    - check\n    - attach\n  gate_cache:\n    max: 4G|release.gate_cache.max is read only by cut and gates
   verbs:\n    - gates\n  gate_cache:\n    max: 4G|
 ROWS
+}
+
+@test "0355: release.unread reads none undeclared, takes paths below the project root as git names them and - for none, refuses any other naming the key and the reason, is refused as unread where no reader of it is offered, and its one reader never exports it" {
+  local block want v
+  cfg_load_string <<'YAML'
+project:
+  name: demo
+commands:
+  release:
+    enabled: true
+YAML
+  cfg_validate
+  v="$(cfg_release_list unread)"
+  [ -z "$v" ] || fail "undeclared, release.unread reads '$v'"
+  while IFS='|' read -r block want; do
+    [ -n "$block" ] || continue
+    cfg_load_string <<YAML
+project:
+  name: demo
+release:
+$(printf '%b' "$block")
+YAML
+    run cfg_validate </dev/null
+    if [ -z "$want" ]; then
+      [ "$status" -eq 0 ] || fail "refused: $block -- $output"
+    else
+      [ "$status" -ne 0 ] || fail "accepted: $block"
+      assert_output_contains "$want"
+    fi
+  done <<'ROWS'
+  unread:\n    - intent/whiteboard\n    - intent/.canon/events|
+  unread:\n    - "-"|
+  unread:\n    - .|release.unread.0: "." has an empty, . or .. segment
+  unread:\n    - board/|release.unread.0: "board/" has an empty, . or .. segment
+  unread:\n    - a/../b|release.unread.0: "a/../b" has an empty, . or .. segment
+  unread:\n    - /abs/board|release.unread.0: "/abs/board" is absolute
+  unread:\n    - .git/hooks|release.unread.0: ".git/hooks" names the repository's own .git
+  verbs:\n    - check\n    - attach\n  unread:\n    - board|release.unread is read only by cut, status and gates
+  verbs:\n    - gates\n  unread:\n    - board|
+ROWS
+  # THE ONE READER sets the list for this process alone: one per line, and
+  # never in the environment of a process it starts.
+  cfg_load_string <<'YAML'
+project:
+  name: demo
+release:
+  unread:
+    - board
+    - x/y
+YAML
+  release_unread_load
+  [ "$RELEASE_UNREAD" = $'board\nx/y' ] || fail "release_unread_load set [$RELEASE_UNREAD]"
+  v="$(bash -c 'printf "%s" "${RELEASE_UNREAD-unset}"')"
+  [ "$v" = unset ] || fail "a process release_unread_load's caller starts reads RELEASE_UNREAD as [$v]"
 }
 
 # AT-1.1

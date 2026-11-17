@@ -374,7 +374,7 @@ date_refused_path() {
   gate_does 'echo more >>README.md'
   run release_in "$proj" v1.0.1 --yes
   assert_stopped_at legs
-  assert_output_contains "a gate changed the tree: README.md"
+  assert_output_contains "the tree changed while the gates ran: README.md -- by a gate, or by another session in this checkout"
 }
 
 # AT-4.2
@@ -383,7 +383,7 @@ date_refused_path() {
   gate_does ': >made-by-gate.txt'
   run release_in "$proj" v1.0.1 --yes
   assert_stopped_at legs
-  assert_output_contains "a gate changed the tree: made-by-gate.txt"
+  assert_output_contains "the tree changed while the gates ran: made-by-gate.txt -- by a gate, or by another session in this checkout"
 }
 
 # ============================================================================
@@ -1168,7 +1168,7 @@ derived_project() {
   gate_does 'echo 9.9.9 >VERSION'
   run bash -c 'set -euo pipefail; . "$1/helpers"; . "$1/release.notes"; . "$1/release.steps"; cd "$2"; PROJECT_ROOT="$2"; release_gates_run probe' _ "$DEVBIN_LIB_DIR" "$proj"
   assert_failure
-  assert_output_contains "a gate changed the tree: VERSION"
+  assert_output_contains "the tree changed while the gates ran: VERSION -- by a gate, or by another session in this checkout"
 }
 
 @test "--patch bumps the NEWEST matching tag, not the first one listed" {
@@ -1711,7 +1711,7 @@ $want"
   run release_in "$proj" v1.0.1 --yes
   assert_success
   refute_output_contains "is not ignored"
-  refute_output_contains "changed the tree"
+  refute_output_contains "the tree changed while the gates ran"
   assert_released "$proj"
 }
 
@@ -1794,7 +1794,8 @@ $want"
   gate_does 'git commit -q --allow-empty -m sneaky'
   run release_in "$proj" v1.0.1 --yes
   assert_stopped_at legs
-  assert_output_contains "a gate moved HEAD from"
+  assert_output_contains "HEAD moved from "
+  assert_output_contains " while the gates ran -- by a gate, or by another session in this checkout"
   if git -C "$proj" rev-parse -q --verify refs/tags/v1.0.1 >/dev/null; then fail "a tag was made"; fi
 }
 
@@ -4300,10 +4301,10 @@ $(printf '%s\n' "${exp[@]}")"
   pf_does 'case "$1" in writes) : >made-by-preflight.txt ;; commits) git commit -q --allow-empty -m "made at pre-flight" ;; esac'
   run release_in "$proj" v1.0.1 --dry-run
   assert_stopped_at pre-flight
-  [[ "$(row_of pre-flight)" == *"the pre-flight command 'pfprobe writes' changed the tree: made-by-preflight.txt"* ]] ||
-    fail "the pre-flight row does not name the command that wrote and the path: $(row_of pre-flight)"
-  [[ "$(row_of pre-flight)" == *"the pre-flight command 'pfprobe commits' moved HEAD from "* ]] ||
-    fail "the pre-flight row does not name the command that committed: $(row_of pre-flight)"
+  [[ "$(row_of pre-flight)" == *"the tree changed while the pre-flight command 'pfprobe writes' ran: made-by-preflight.txt -- by the command, or by another session in this checkout"* ]] ||
+    fail "the pre-flight row does not name the command that ran and the path: $(row_of pre-flight)"
+  [[ "$(row_of pre-flight)" == *" while the pre-flight command 'pfprobe commits' ran -- by the command, or by another session in this checkout"* ]] ||
+    fail "the pre-flight row does not name the command that ran when HEAD moved: $(row_of pre-flight)"
 }
 
 @test "0327: a cut run again past its tag runs no release.preflight command, and its pre-flight row says so" {
@@ -4648,4 +4649,192 @@ $output"
   run release_in "$proj" v1.0.1 --dry-run
   assert_success
   assert_state pre-flight done
+}
+
+# ============================================================================
+# PATHS NO GATE READS, AND A TREE OR HEAD THAT MOVED (issue 0355)
+# ============================================================================
+# release.unread names paths no gate and no pre-flight command reads, a peer
+# node's board above all: every check that the tree is clean or unchanged
+# leaves them out and names them, and the release commit never holds one. A
+# change or a commit while the gates or a pre-flight command run is named for
+# what it is, never blamed on a gate, and the gates refuse to start at a HEAD
+# that is not the commit they were started for.
+
+# board_project [<unread-lines>|-] [pf] -- cut_project with the probe gate, a
+# tracked board/b.json committed and pushed, and release.unread declaring
+# <unread-lines>, `board` alone by default, or no release.unread at all given
+# `-`. With `pf`, release.preflight runs `pfprobe` too (with_preflight_probe).
+# Each step returns its failure, as cut_project's do.
+board_project() {
+  local proj body="  gates:
+    - probe"
+  [ "${2:-}" != pf ] || body="  preflight:
+    - pfprobe
+$body"
+  [ "${1:-}" = - ] || body+="
+  unread:
+${1:-    - board}"
+  proj="$(cut_project "$body")" || return 1
+  [ "${2:-}" != pf ] || with_preflight_probe "$proj" || return 1
+  mkdir -p "$proj/board" || return 1
+  printf '{}\n' >"$proj/board/b.json" || return 1
+  git -C "$proj" add board || return 1
+  git -C "$proj" -c maintenance.auto=false -c gc.auto=0 commit -qm "a board" || return 1
+  git -C "$proj" push -q origin main || return 1
+  printf '%s\n' "$proj"
+}
+
+# land_on_candidate_push <proj> -- <proj> gains a pre-push hook that makes one
+# empty commit on its branch as the candidate is pushed, once: a peer's commit
+# that lands after the release commit and before the local gates start, as
+# one did in another estate's first cut of a release (issue 0355).
+land_on_candidate_push() {
+  # shellcheck disable=SC2016 # the hook's own expansions, made when it runs
+  printf '#!/bin/sh\nwhile read -r _l _ls rref _rs; do\n  case "$rref" in refs/heads/candidate/*) ;; *) continue ;; esac\n  [ -e "%s/landed" ] && exit 0\n  : >"%s/landed"\n  env -u GIT_DIR -u GIT_INDEX_FILE -u GIT_WORK_TREE git -C "%s" -c user.name=peer -c user.email=peer@example.com -c maintenance.auto=false -c gc.auto=0 commit -q --allow-empty -m "a doc lands" </dev/null || exit 1\ndone\nexit 0\n' \
+    "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR" "$1" >"$1/.git/hooks/pre-push"
+  chmod +x "$1/.git/hooks/pre-push"
+}
+
+# release_commit_paths <proj> <under> -- the paths the release commit,
+# v1.0.1's, holds under <under>, one a line: the commit the tag names, never
+# the annotated tag's own header, which `git show` prints first.
+release_commit_paths() { git -C "$1" diff-tree --no-commit-id --name-only -r 'v1.0.1^{commit}' -- "$2"; }
+
+@test "0355: a commit that lands after the release commit, before the local gates read HEAD, stops them before any gate runs, naming both commits" {
+  local head rel
+  proj="$(ci_project "$(ci_query_decl 0s)")"
+  ci_answers "$(printf 'none\tno run yet')" "$(printf 'green\trun 7')"
+  land_on_candidate_push "$proj"
+  run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at legs
+  [ -e "$DEVBIN_TEST_TMPDIR/landed" ] || fail "the fixture's commit never landed: $output"
+  head="$(git -C "$proj" rev-parse HEAD)"
+  rel="$(git -C "$proj" rev-parse HEAD~1)"
+  [ "$(git -C "$proj" log -1 --format=%s "$rel")" = "release: v1.0.1" ] || fail "the landed commit is not on the release commit: $(git -C "$proj" log -2 --format=%s)"
+  assert_output_contains "HEAD is ${head:0:12}, not ${rel:0:12}, the commit these gates were started for: HEAD moved in this checkout before they ran, so no gate was run"
+  if gate_ran; then fail "a gate ran at a HEAD that is not the release commit"; fi
+}
+
+@test "0355: a pickup's write under release.unread while the gates run, a tracked board file changed and a new one beside it, passes the gates, their seal reads back green, and their record names the list and both paths" {
+  proj="$(board_project)"
+  gate_does 'printf "more\n" >>board/b.json; mkdir -p board/events; : >board/events/e1.json'
+  run release_in "$proj" v1.0.1 --yes
+  assert_success
+  assert_state legs done
+  assert_output_contains "release.unread names paths no gate reads, so a change there while the gates run is named and not refused: board"
+  assert_output_contains "changed while the gates ran, under release.unread, so named and not refused: board/b.json, board/events/e1.json"
+  assert_output_contains "and the tree changed only under release.unread, which no gate reads"
+  assert_released "$proj"
+  [ -z "$(release_commit_paths "$proj" board)" ] || fail "the release commit holds a path under release.unread: $(release_commit_paths "$proj" board)"
+}
+
+@test "0355: with release.unread declared, a write outside it while the gates run still fails the gates step, naming that path alone and both causes, and the write under it as named" {
+  proj="$(board_project)"
+  gate_does 'printf "more\n" >>README.md; printf "more\n" >>board/b.json'
+  run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at legs
+  assert_output_contains "the tree changed while the gates ran: README.md -- by a gate, or by another session in this checkout"
+  assert_output_contains "changed while the gates ran, under release.unread, so named and not refused: board/b.json"
+}
+
+@test "0355: with release.unread undeclared, the same pickup's write while the gates run, a tracked board file changed and a new one beside it, fails the gates step, naming both" {
+  # The control for the arm that lists board: the same write, and no list.
+  proj="$(board_project -)"
+  gate_does 'printf "more\n" >>board/b.json; mkdir -p board/events; : >board/events/e1.json'
+  run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at legs
+  assert_output_contains "the tree changed while the gates ran: board/b.json, board/events/e1.json -- by a gate, or by another session in this checkout"
+  refute_output_contains "release.unread names paths"
+}
+
+@test "0355: a pre-flight command's write under release.unread, a tracked board file changed and a new one beside it, is named and not refused, and pre-flight passes" {
+  proj="$(board_project "" pf)"
+  pf_does 'printf "more\n" >>board/b.json; : >board/new.json'
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_success
+  assert_state pre-flight done
+  assert_output_contains "release.unread names paths no pre-flight command reads, so a change there while they run is named and not refused: board"
+  assert_output_contains "changed while the pre-flight command 'pfprobe' ran, under release.unread, so named and not refused: board/b.json, board/new.json"
+}
+
+@test "0355: with release.unread declared, a pre-flight command's write outside it is refused, naming that path alone and both causes" {
+  proj="$(board_project "" pf)"
+  pf_does ': >made-by-preflight.txt; printf "more\n" >>board/b.json'
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"the tree changed while the pre-flight command 'pfprobe' ran: made-by-preflight.txt -- by the command, or by another session in this checkout"* ]] ||
+    fail "the pre-flight row does not refuse the write outside release.unread alone: $(row_of pre-flight)"
+}
+
+@test "0355: with release.unread undeclared, the same pre-flight command's write, a tracked board file changed and a new one beside it, is refused, naming both" {
+  # The control for the arm that lists board: the same write, and no list.
+  proj="$(board_project - pf)"
+  pf_does 'printf "more\n" >>board/b.json; : >board/new.json'
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"the tree changed while the pre-flight command 'pfprobe' ran: board/b.json, board/new.json -- by the command, or by another session in this checkout"* ]] ||
+    fail "the pre-flight row does not refuse the board write: $(row_of pre-flight)"
+}
+
+@test "0355: a pickup's write before the cut under release.unread, a tracked board file changed and a new one beside it, passes the tree rule at pre-flight and the stamp step, each row naming both, and the release commit leaves both out" {
+  proj="$(board_project)"
+  printf 'more\n' >>"$proj/board/b.json"
+  : >"$proj/board/new.json"
+  run release_in "$proj" v1.0.1 --yes
+  assert_success
+  [[ "$(row_of pre-flight)" == *"dirty only under release.unread, which the release commit leaves out: board/b.json, board/new.json"* ]] ||
+    fail "the pre-flight row does not name the board's dirt: $(row_of pre-flight)"
+  [[ "$(row_of stamp)" == *"dirty only under release.unread, which the release commit leaves out: board/b.json, board/new.json"* ]] ||
+    fail "the stamp row does not name the board's dirt: $(row_of stamp)"
+  [[ "$(row_of commit)" == *"left out, under release.unread: board/b.json, board/new.json"* ]] ||
+    fail "the commit row does not name what it left out: $(row_of commit)"
+  assert_output_contains "dirty there as they start: board/b.json, board/new.json"
+  assert_released "$proj"
+  [ -z "$(release_commit_paths "$proj" board)" ] || fail "the release commit holds a path under release.unread: $(release_commit_paths "$proj" board)"
+  [ "$(git -C "$proj" status --porcelain -- board | LC_ALL=C sort)" = "$(printf ' M board/b.json\n?? board/new.json')" ] ||
+    fail "the board's changes are not left as they were: $(git -C "$proj" status --porcelain -- board)"
+}
+
+@test "0355: with release.unread undeclared, the same pickup's write before the cut, a tracked board file changed and a new one beside it, is refused at pre-flight, naming both" {
+  # The control for the arm above: the same write, and no list.
+  proj="$(board_project -)"
+  printf 'more\n' >>"$proj/board/b.json"
+  : >"$proj/board/new.json"
+  run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"dirty outside what this release owns: board/b.json, board/new.json -- commit or stash it first"* ]] ||
+    fail "pre-flight does not refuse the board's dirt: $(row_of pre-flight)"
+}
+
+@test "0355: the release commit never holds a path under release.unread, even one staged in the shared index, and the stage is left as it was" {
+  proj="$(board_project)"
+  printf 'more\n' >>"$proj/board/b.json"
+  git -C "$proj" add board/b.json
+  run release_in "$proj" v1.0.1 --yes
+  assert_success
+  assert_released "$proj"
+  [ -z "$(release_commit_paths "$proj" board)" ] || fail "the release commit holds a staged path under release.unread: $(release_commit_paths "$proj" board)"
+  [ "$(git -C "$proj" diff --cached --name-only)" = board/b.json ] ||
+    fail "the staged board change is not left staged: [$(git -C "$proj" diff --cached --name-only)]"
+}
+
+@test "0355: with release.unread undeclared, the same board change staged in the shared index is refused at pre-flight, naming it" {
+  # The control for the arm above: the same staged change, and no list.
+  proj="$(board_project -)"
+  printf 'more\n' >>"$proj/board/b.json"
+  git -C "$proj" add board/b.json
+  run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"dirty outside what this release owns: board/b.json -- commit or stash it first"* ]] ||
+    fail "pre-flight does not refuse the staged board change: $(row_of pre-flight)"
+}
+
+@test "0355: pre-flight refuses a release.unread that holds a path the release owns, naming it, since the release commit must carry it" {
+  proj="$(board_project "    - board
+    - CHANGELOG.md")"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"release.unread names paths this release owns: CHANGELOG.md -- the release commit must carry them"* ]] ||
+    fail "pre-flight does not refuse the owned path under release.unread: $(row_of pre-flight)"
 }

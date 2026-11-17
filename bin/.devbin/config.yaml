@@ -62,6 +62,14 @@ release:
     - check all
     - test all
     - doctor
+  # PATHS NO GATE READS (issue 0355): the whiteboard's boards and the store's
+  # event log, which every session sharing this checkout writes at any time,
+  # a pickup among them. A change there while a cut runs is named in its
+  # record and never refused, and the release commit never holds one, so only
+  # a commit, which still moves HEAD, holds a cut up.
+  unread:
+    - intent/whiteboard
+    - intent/.canon/events
   # A REMOTE LEG (ST0011 WP-05): kovacs runs the gates above at the release
   # commit beside the local ones, and its seal is copied back and read by the
   # same reader. A cut that cannot reach it names it absent, records it as not
