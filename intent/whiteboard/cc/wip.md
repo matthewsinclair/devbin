@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 18:12Z
+heartbeat_at: 2026-11-17 19:42Z
 status: active
-focus: "2026-11-17 18:12Z by date -u: booted after hv's compact; 0369-1/0368-1 stack banked, ask 01M7N79M7DJB05YRTAWJ2KGAQS held for vc's grant and GO after Webber's run"
+focus: "2026-11-17 19:42Z by date -u: localfold for hv's compact. 0369-1 and 0368-1 landed (885c56f0, a21916fc), 0368 and 0369 closed. Nothing running; claim 0326 held until pplr#0001 and cldr#0001 close. On the bounce: pickup, then vc's next brief; nothing in canon while 0.1.27's cut is booked."
 claims: [ISSUE:0326]
 ---
 
