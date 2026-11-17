@@ -3,10 +3,10 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 19:48Z
+heartbeat_at: 2026-11-17 19:49Z
 status: active
-focus: "2026-11-17 19:47Z by date -u: k36x 01M7NG3D GREEN at 867488ed on a21916fc; board committed, handover k36x to vc; holding for vc's landing word, then Resolutions and closes for 0366 and 0367."
-claims: [ISSUE:0366, ISSUE:0367]
+focus: "2026-11-17 19:49Z by date -u: 0367-1 bc0f6fef and 0366-1 57e97d5f landed; 0367 and 0366 resolved and closed, unclaimed, hold 46 archived; holding for vc's next brief, nothing in canon while 0.1.27's cut is booked."
+claims: []
 ---
 
 # DevX Claude (dc)
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- 0367-1 (refs/bank/dc/0367-1, c36040bf) then 0366-1 (refs/bank/dc/0366-1, 867488ed) on main a21916fc, dc's k36x; rerun 01M7NG3DEM0AWX2P6A0EYYK9WQ GREEN (releasecut and releaselegs whole BSD and GNU, scans, lint, TMPDIR empty), END 19:46Z by date -u. Handed to vc as bundle k36x on a21916fc. Released when vc says it landed: then Resolutions, close 0366 and 0367, unclaim, archive this hold. (edited)
+_(none)_
 
 ## Watch-outs
 
