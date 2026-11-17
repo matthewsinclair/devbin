@@ -5058,7 +5058,8 @@
       "kind": "decision",
       "seq": 174,
       "text": "hv in vc's window, read 2026-11-13 18:24Z by date -u, replacing decision 173's order: on rhadamanth AE is P1, another estate's Rust parser work P2, Webber P3; on gyges Webber is P1.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:07.459Z",
       "recorded_at": "2026-11-13T18:24:53.888Z"
     },
     {
@@ -5127,7 +5128,8 @@
       "kind": "decision",
       "seq": 181,
       "text": "hv's TUI answer in vc's window, read 2026-11-14 12:23Z by date -u, on the recommendation: cut devbin 0.1.25 now. It carries issue 0357 and everything on main since v0.1.24 (63 commits, unpushed). Order: cc writes the release note and regenerates its views; dc runs the pre-cut kit at the tip on the desk, with the legs run under what the cut's gates export; then hv runs the cut, booked bats, cargo and heavy. 0357's sharded candidate gives its weights and its criteria read (todo 216). Nothing is public until hv runs the cut. Webber is winding down (Webber decision 90); gyges stays Webber's.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:07.688Z",
       "recorded_at": "2026-11-14T12:23:23.975Z"
     },
     {
@@ -5161,7 +5163,8 @@
       "kind": "decision",
       "seq": 183,
       "text": "hv in vc's window, read 2026-11-15 05:1xZ by date -u ('Yes, that was me'): hv freed kovacs's disk at about 05:06Z: ~/work/intent-preflight/target removed, ~/work/intent-leg.cache emptied, devbin's two green leg worktrees gone; / now 28G free of 62G. The 3.3.3 cut's red kovacs leg (2026-11-14 18:56Z, cargo test --workspace) is read as the full disk (211M free) until intent-dc's diagnostic says otherwise; the re-cut builds kovacs cold. The release commit 484ea426e stays on Intent's local main for hv's reset and re-cut on vc's ready.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:07.894Z",
       "recorded_at": "2026-11-15T05:16:30.689Z"
     },
     {
@@ -5169,7 +5172,8 @@
       "kind": "decision",
       "seq": 184,
       "text": "hv's TUI answer in vc's window, read 2026-11-15 05:3xZ by date -u, the recommendation: Intent 3.3.3's cut RESUMES at its release commit 484ea426e, no reset; hv runs `intent daemon stop && bin/devbin release v3.3.3` then `intent daemon start` in Intent's canon. intent-dc's diagnostic (three runs on kovacs, 05:17Z to 05:26Z) found no code fault: run 1's red was its out-of-tree target (0682), run 2's its ssh stdin, run 3's one red a timing flake in intent-cli's sync_to_disk test (green in run 2); the cut's red reads as kovacs's full disk (decision 183). intent-dc clears its own ~/work/dc-diag-484ea426e* on kovacs after the tag. intent-vc files the flake and the unbounded leg target after the tag.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:08.102Z",
       "recorded_at": "2026-11-15T05:29:07.121Z"
     },
     {
@@ -5186,7 +5190,8 @@
       "kind": "decision",
       "seq": 186,
       "text": "hv 2026-11-15 by date -u 06:27Z, in vc's window through the TUI, answering vc's question: devvm 0.5.0 is re-baked first, on Intent 3.3.3 and devbin 0.1.25, before hv's laptop proof, so the proof runs once on the final images. The arm64 image build books rhadamanth heavy as P1 under decision 185, ahead of Laksa's full run.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:08.314Z",
       "recorded_at": "2026-11-15T06:27:09.151Z"
     },
     {
@@ -5202,7 +5207,8 @@
       "kind": "decision",
       "seq": 187,
       "text": "hv in vc's window, read 2026-11-15 12:01Z by date -u, quoting its word to agentic-engineering-vc: 'I'm AFK for a while. devbin-vc still has the pen. Focus on getting 0.5.0 released, please.' devvm 0.5.0 is the focus; vc drives AE toward the release; anything public or upstream still waits for hv's go.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:08.497Z",
       "recorded_at": "2026-11-15T12:01:30.680Z"
     },
     {
@@ -5210,7 +5216,8 @@
       "kind": "decision",
       "seq": 188,
       "text": "Desk priorities (hv, 2026-11-15 13:20Z by date -u, supersedes 185): devbin, Intent and devvm are finished. Webber is P1 and another estate is P2 (its vc finds what is next and starts nothing yet). Webber runs, iOS simulator runs included, book rhadamanth first and overflow to gyges; vc re-reads the load at each simulator START. vc keeps the Desk.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:08.701Z",
       "recorded_at": "2026-11-15T13:20:56.745Z"
     },
     {
@@ -5218,7 +5225,8 @@
       "kind": "decision",
       "seq": 189,
       "text": "Narrows decision 188 (2026-11-15 13:26Z by date -u): after the 13:22Z simulator boot storm on rhadamanth (load 6 to 137, run stopped by vc), Webber's iOS simulator runs go on gyges only, one at a time; Webber's other runs book rhadamanth first with gyges for overflow. Recorded by webber-vc on its decision 115 after hv read rhadamanth's Spotlight exclusions (both present, so not the cause); vc holds this as the stricter rule and applies it.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:08.896Z",
       "recorded_at": "2026-11-15T13:26:37.985Z",
       "edited_at": "2026-11-15T13:26:42.984Z"
     },
@@ -5235,7 +5243,8 @@
       "kind": "decision",
       "seq": 191,
       "text": "hv in vc's window, 2026-11-16, hv's words, read 10:41Z by date -u: \"devbin-vc: You have The Desk\". Before it, read between 10:27Z and 10:30Z by date -u, vc's wording (hv's own words name another estate's team and stay out of devbin under directive 14): (1) vc is the VC for devbin's cc and dc, who boot and then hold for further instructions; (2) vc has the Desk for heavy runs and the rest on rhadamanth, gyges and kovacs; one other estate's Claude Team is the only one doing dev work, and every other session is inference and docs. Control re-taken under devbin-vc from the restart's ORPHANED row (same-name take). The one queued ask, 01M7G99QFK62QNHJK37K33FYWW (light lane, a records commit), was denied as stale: its asker, an earlier laksa-cc session, last wrote 2026-11-15 19:06Z.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:09.087Z",
       "recorded_at": "2026-11-16T10:33:07.209Z",
       "edited_at": "2026-11-16T10:41:39.527Z"
     },
@@ -5280,7 +5289,8 @@
       "kind": "decision",
       "seq": 194,
       "text": "hv in vc's window, read 2026-11-16 16:19Z by date -u, answering todo 221 with \"1. (a) 2. (a) 3. (a)\", each the recommendation: (1) dc builds todos 217+218 (one unit) and issue 0356 now for 0.1.26 while cc holds issue 0353; one bats slot on rhadamanth; (2) 0356: a project's own handler keeps reading its own --help, and devbin answers only for its own routes; (3) 218's gate cache bound is a 12 GiB constant with a release config override. The Desk stays held (decision 193) and its controller row's session is gone; the take and the hold's lift wait for hv's Desk word, so dc builds in its own clone and asks for the bats slot when ready.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:09.288Z",
       "recorded_at": "2026-11-16T16:19:12.425Z"
     },
     {
@@ -5296,7 +5306,8 @@
       "kind": "decision",
       "seq": 196,
       "text": "Relayed by ccusage-vc, hv's words in its window at about 17:25Z 2026-11-16: \"Ok, let's get ready to run this first thing tomorrow. There's too much on right now. Let devbin-vc know that we need to do this first thing.\" The repair of rhadamanth's Claude logins (Ccusage ISSUE:0008) restarts every Claude session on rhadamanth first thing 2026-11-17, before anything else. vc acknowledged: the Desk grants nothing running into that window and nothing on 2026-11-17 until ccusage-vc says the estate is clear; devbin's seats banked before hv's morning; nothing of devbin's must run first.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:09.487Z",
       "recorded_at": "2026-11-16T17:41:58.609Z"
     },
     {
@@ -5304,7 +5315,8 @@
       "kind": "decision",
       "seq": 197,
       "text": "hv's TUI answers in vc's window, read 2026-11-16 18:04Z by date -u, each the recommendation: (1) agentic-engineering's devvm build-and-stage1 ask 01M7JPYP1KC0G3R0WRVSB2NCQB is granted once Laksa's heavy run 01M7JR263VCW1HQCWB1DTT2C9W ends, so it finishes before 2026-11-17's login repair (granted 18:04Z when it ended); (2) Webber's ST0006/23 prep run 01M7JR4C1898ZPPNPX39JN5WSZ (light, no simulator) granted now (done 18:04Z); webber-vc relayed the same from hv as its decision 135 (Webber's light runs take free light lanes now; ic's heavy sealed run follows Laksa's heavy run, ahead of the other team); (3) cc builds issue 0353 now for 0.1.26 (cc told 18:04Z). Laksa's deploy is done (v46, 521f3c833) and laksa-vc lifted its tree freeze; Ccusage's 0008 fix run ended green.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:09.690Z",
       "recorded_at": "2026-11-16T18:05:03.526Z"
     },
     {
@@ -5312,7 +5324,8 @@
       "kind": "decision",
       "seq": 198,
       "text": "hv in vc's window, read 2026-11-17 03:54Z by date -u, hv's words: \"Can you tell all tell all claudes here across the whole estate to bank, fold, and hold. I need to move. The wait for instructions.\" Done: Desk held at 03:54Z (hold 01M7KT90EE42BZ2FN273ZWNTMJ: no grant until hv's next word); every live interactive session on rhadamanth told by message (devbin cc and dc, and the Laksa, Webber, agentic-engineering, Ccusage and Prodinfra seats), rhadamanth-sysadm asked to relay to any vc cannot reach. Since decision 197: 0353-1 landed at a6d261e1 (cc closed 0353 at 035ab6ce), so 0.1.26 carries 0357-7, 0361-1, 0356-1 and 0353-1; Laksa's second deploy done (v47, 239f40464); Webber ST0006/23's gates green at 62e42c9b, its three iOS 26.5 floor reds shown to be main's; webber-dc's Fly deploy ask 01M7K0MGZSMKW23YB3SMCKF4RF held for hv's sitting and go. For hv: Spotlight (corespotlightd, spotlightknowledged) drove rhadamanth's load past 30 twice; whether rhadamanth-sysadm looks at it is hv's call.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T06:14:09.890Z",
       "recorded_at": "2026-11-17T03:55:27.372Z"
     },
     {
@@ -5322,6 +5335,14 @@
       "text": "hv's TUI answers in vc's window, read 2026-11-17 06:10Z by date -u, each the recommendation: (1) devbin-vc re-takes the Desk and lifts hv's 03:54Z hold (decision 198), Ccusage first: Ccusage's asks are granted ahead of everything else, and devbin's 0.1.26 pre-cut kit and cut follow once Ccusage's 0.1.10 cut has its tag; kovacs runs one suite at a time either way. (2) Spotlight's load is left alone: nobody looks into it, and the Desk reads the load at each grant. Before them, hv's words read 06:00Z by date -u, in cc's window \"Ok, please finish booting and then hold for instructions from VC.\" and in dc's \"Ok, please hold for instructions from VC.\"; and hv's word to ccusage-vc as ccusage-vc relays it, read 05:58Z: \"I want this fixed and shipped now first thing.\" ccusage-vc reports Ccusage's login repair (ISSUE:0008) done and checked, which meets decision 196's condition. Done before 06:12Z by date -u: control re-taken (same-name take, from the restart's ORPHANED row), hold 01M7KT90EE42BZ2FN273ZWNTMJ released, ccusage-ic's swift-test 01M7M1V8XTR6AR9W6DBKPFDWVF granted heavy at load 4.95 and started; ccusage-cc's cargo-test 01M7M1TTN0ZZ8XEYCZEQGC1DAF waits on its own hold (cc's banked word); Webber's fly-deploy 01M7K0MGZSMKW23YB3SMCKF4RF stays held for hv's sitting. devbin: cc's 0.1.26 note landed at 9655ccf5 and is kept as written, the six open issues under Known limitations as docs/releasing.md asks; 0326 stays open (pplr#0001 and cldr#0001 open, ccusage#0007 closed); refs/bank/cc/0353-1 cleared (its changed lines match a6d261e1's); dc's kit built in scratch (pc0126), not run.",
       "state": "live",
       "recorded_at": "2026-11-17T06:12:18.152Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 200,
+      "text": "hv in vc's window, read 2026-11-17 06:14Z by date -u, hv's words: \"Can you let all Claudes know that the hold is lifted. We're back to normal ops, with you in control of the The Desk, as per ysterday.\" Done 06:14Z: every live session on rhadamanth told by message (Ccusage's four seats, agentic-engineering's three, another estate's five, one estate-level session, and devbin's cc and dc, whose instructions from vc stand). Before it, hv's word relayed by another estate's vc, received there by 06:11Z by date -u through its TUI (\"Yes, tell the Desk\"): that estate may run today, in the order the Desk sets across projects. The order stands on decision 199: Ccusage first, devbin's 0.1.26 kit and cut after Ccusage's 0.1.10 tag, other asks in free lanes, so that estate's cargo asks queue behind ccusage-cc's cargo run. ccusage-ic's swift-test 01M7M1V8XTR6AR9W6DBKPFDWVF ran and ended.",
+      "state": "live",
+      "recorded_at": "2026-11-17T06:15:17.240Z"
     }
   ],
   "sent": [

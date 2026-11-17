@@ -1,0 +1,15 @@
+{
+  "id": "01M7M2AFFR8Q8856BRQHQYD88Q",
+  "ts": "2026-11-17T06:15:17.240Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-17 06:14Z by date -u, hv's words: \"Can you let all Claudes know that the hold is lifted. We're back to normal ops, with you in control of the The Desk, as per ysterday.\" Done 06:14Z: every live session on rhadamanth told by message (Ccusage's four seats, agentic-engineering's three, another estate's five, one estate-level session, and devbin's cc and dc, whose instructions from vc stand). Before it, hv's word relayed by another estate's vc, received there by 06:11Z by date -u through its TUI (\"Yes, tell the Desk\"): that estate may run today, in the order the Desk sets across projects. The order stands on decision 199: Ccusage first, devbin's 0.1.26 kit and cut after Ccusage's 0.1.10 tag, other asks in free lanes, so that estate's cargo asks queue behind ccusage-cc's cargo run. ccusage-ic's swift-test 01M7M1V8XTR6AR9W6DBKPFDWVF ran and ended."
+  }
+}
