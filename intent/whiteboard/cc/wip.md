@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 13:07Z
+heartbeat_at: 2026-11-17 13:23Z
 status: active
-focus: "2026-11-17 13:07Z by date -u: cc's 0.1.27 issues are all landed and closed (0354, 0352, 0370, 0358, 0362, 0363, 0371). Nothing assigned; room offered to vc for 0364 to 0369, whose split is hv's to draw (decision 16). Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
-claims: [ISSUE:0326]
+focus: "2026-11-17 13:23Z by date -u: localfold for hv's compact (a context emergency, through vc). cc's 0.1.27 issues are all landed and closed. hv gave cc 0364 and 0365, which start on the bounce with their pick and shape to vc before any build; until vc's word, hold. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing live, unbanked, booked or running."
+claims: [ISSUE:0326, ISSUE:0364, ISSUE:0365]
 ---
 
 # Control Claude (cc)
@@ -17,7 +17,8 @@ _(none)_
 
 ## TODO
 
-_(none)_
+- 0364 (medium), cc's on hv's word (13:22Z, through vc): a release.gates entry whose first word is release runs a release verb inside the cut's own gates, the hole 0327 closed for release.preflight. On the bounce, its pick and shape go to vc before any build.
+- 0365 (low), cc's on hv's word (13:22Z, through vc): the cut and the macOS stage call devbin's built-ins through the project's launcher, so a project command at one of those names stands in for the core's verb (0335's shadow class). On the bounce, its pick and shape go to vc before any build.
 
 ## Holds
 

@@ -1,0 +1,15 @@
+{
+  "id": "01M7MTV7S484SV1DK99DQ9XG3N",
+  "ts": "2026-11-17T13:23:52.228Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0364 (medium), cc's on hv's word (13:22Z, through vc): a release.gates entry whose first word is release runs a release verb inside the cut's own gates, the hole 0327 closed for release.preflight. On the bounce, its pick and shape go to vc before any build."
+  }
+}

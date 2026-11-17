@@ -1,0 +1,15 @@
+{
+  "id": "01M7MTV803BH80575BD5KYNNHE",
+  "ts": "2026-11-17T13:23:52.451Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0365 (low), cc's on hv's word (13:22Z, through vc): the cut and the macOS stage call devbin's built-ins through the project's launcher, so a project command at one of those names stands in for the core's verb (0335's shadow class). On the bounce, its pick and shape go to vc before any build."
+  }
+}
