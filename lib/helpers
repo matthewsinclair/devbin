@@ -3728,10 +3728,11 @@ release_tag_name() {
 # release_tag_version <template> <name> -- the X.Y.Z <name> names, where <name>
 # is a tag <template> makes: release_tag_name of that version gives <name>
 # back. rc 1, printing nothing, for any other name, so one that only looks
-# like a release, eg v1.2.3-rc1 under v{version}, names none. Pure. formula's
-# tag_version and release target read a tag through it; release_versions
-# reads its own way, which differs where the template holds {version} twice
-# (issue 0371).
+# like a release, eg v1.2.3-rc1 under v{version}, names none. Pure. THE ONE
+# READING OF A TAG BACK TO ITS VERSION (issue 0371): release_versions, which
+# every bump reads, formula's tag_version and release target all read through
+# it, and release.tag's value rule takes {version} once, so no template holds
+# a second for a reading to disagree over.
 release_tag_version() {
   local pre="${1%%"{version}"*}" post="${1#*"{version}"}" v
   [[ "$2" == "$pre"*"$post" ]] || return 1

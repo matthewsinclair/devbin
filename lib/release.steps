@@ -169,10 +169,10 @@ release_row() {
 # one per line, newest first. A tag matches when it is the template with an
 # X.Y.Z where `{version}` stands; `v1.2`, `v1.2.3-rc1` and another project's
 # `x-1.2.3` do not, so they can neither be the newest release nor be bumped.
+# Each tag is read back by release_tag_version, the one reading of a tag to
+# its version (issue 0371), which a tag no fill of <template> makes fails.
 release_versions() {
-  local tpl="$1" pre post tags t v versions
-  pre="${tpl%%\{version\}*}"
-  post="${tpl#*\{version\}}"
+  local tpl="$1" tags t versions
   if ! tags="$(git tag --list 2>&1)"; then
     warn "release: cannot list this repository's tags: ${tags//$'\n'/ }"
     return 1
@@ -186,10 +186,7 @@ release_versions() {
   if ! versions="$(
     while IFS= read -r t; do
       [ -n "$t" ] || continue
-      [[ "$t" == "$pre"*"$post" ]] || continue
-      v="${t#"$pre"}"
-      v="${v%"$post"}"
-      if is_semver "$v"; then printf '%s\n' "$v"; fi
+      if release_tag_version "$tpl" "$t"; then :; fi
     done <<<"$tags" | LC_ALL=C sort -t. -k1,1nr -k2,2nr -k3,3nr
   )"; then
     warn "release: cannot sort the versions named by the tags matching $tpl"

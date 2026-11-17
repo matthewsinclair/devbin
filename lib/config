@@ -1372,6 +1372,14 @@ _cfg_release_value_problem() {
         printf 'must contain {version}, or every release would carry the same tag'
         return 0
       fi
+      # {version} ONCE (issue 0371): every reading of a tag back to its version
+      # (release_tag_version) matches the text around the one {version}, so a
+      # tag made from a template holding two is read back by none, and no bump
+      # could find the release it names.
+      if [[ "$v" == *"{version}"*"{version}"* ]]; then
+        printf 'must contain {version} once: a tag made from a template holding it twice is read back to no version, so no bump could find the release it names'
+        return 0
+      fi
       # THE FILLED TAG IS A NAME GIT TAKES (ST0011 WP-02c): filled with a
       # stand-in version, digits and dots as a tree declares one, which no ref
       # rule refuses, so a refusal is the template's own text. A tag git cannot

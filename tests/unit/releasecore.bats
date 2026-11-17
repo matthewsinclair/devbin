@@ -1592,3 +1592,43 @@ YAML
   grep -qF -- '**A CI workflow the candidate'"'"'s push starts is handed neither, and asks** (issue 0352)' "$DEVBIN_HOME/docs/configuration.md" ||
     fail "configuration.md does not say a workflow asks"
 }
+
+# ============================================================================
+# ONE READING OF A TAG BACK TO ITS VERSION (issue 0371)
+# ============================================================================
+#
+# release_versions read a tag by the text around the template's first
+# {version}, never filling the template back, so under a template holding two
+# it read as a release a tag no cut could make. It reads through
+# release_tag_version now, and release.tag takes {version} once.
+
+@test "0371-1: release.tag holding {version} twice is refused at validation, naming the key and why" {
+  cfg_load_string <<'YAML'
+project:
+  name: demo
+release:
+  tag: "v{version}-{version}"
+YAML
+  run cfg_validate </dev/null
+  [ "$status" -ne 0 ] || fail "accepted a release.tag holding {version} twice: $output"
+  assert_output_contains 'release.tag: "v{version}-{version}" must contain {version} once'
+}
+
+@test "0371-1: release_versions reads each tag back through release_tag_version, so a tag no fill of the template makes names no release" {
+  local repo="$DEVBIN_TEST_TMPDIR/tags"
+  git init -q -b main "$repo" || fail "the fixture's repository could not be made"
+  git -C "$repo" -c user.name=t -c user.email=t@t -c maintenance.auto=false commit -q --allow-empty -m init ||
+    fail "the fixture's commit could not be made"
+  git -C "$repo" tag 'v1.2.3-{version}' && git -C "$repo" tag v1.0.0-1.0.0 || fail "the fixture's tags could not be made"
+  # Under a template holding {version} twice, the brace tag is no fill of it,
+  # and the fill a cut makes is not read either: no release.
+  run bash -c 'set -euo pipefail; . "$1/helpers"; . "$1/release.notes"; . "$1/release.steps"; cd "$2"; release_versions "v{version}-{version}"' _ "$DEVBIN_LIB_DIR" "$repo"
+  assert_success
+  assert_output ""
+  # THE CONTROL: under the template holding {version} once, the same reading
+  # finds the release a tag names, and only that one.
+  git -C "$repo" tag v1.4.0 || fail "the fixture's release tag could not be made"
+  run bash -c 'set -euo pipefail; . "$1/helpers"; . "$1/release.notes"; . "$1/release.steps"; cd "$2"; release_versions "v{version}"' _ "$DEVBIN_LIB_DIR" "$repo"
+  assert_success
+  assert_output "1.4.0"
+}
