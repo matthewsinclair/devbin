@@ -1,0 +1,15 @@
+{
+  "id": "01M7MJ26G3A9KRESZCY82HPXDY",
+  "ts": "2026-11-17T10:50:23.107Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0370 (medium), after 0352, vc's word: a declared option's run: line of a project's own command is handed --help and runs. Pick and shape go to vc before any build; vc leans to widening 0356's rule to every command whose declared option's run: line is what runs, a command-level run: line keeping its own flag."
+  }
+}

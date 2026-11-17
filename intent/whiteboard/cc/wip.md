@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 10:37Z
+heartbeat_at: 2026-11-17 10:50Z
 status: active
-focus: "2026-11-17 10:37Z by date -u: devbin 0.1.27's units on vc's GO (decision 205): 0354 now, then 0352 (option 1 as shaped), then 0358 with 0362, then 0363. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing banked, booked or running."
-claims: [ISSUE:0326, ISSUE:0352, ISSUE:0354, ISSUE:0358, ISSUE:0362, ISSUE:0363]
+focus: "2026-11-17 10:50Z by date -u: 0354-1 is asked on the Desk (01M7MHWYTNTHK4GCSQ8Z4NTSJM, the bats lane), granted at another estate's timed build's END, then vc's GO; building 0352-1 meanwhile. Then 0370 (pick and shape to vc first), 0358 with 0362, and 0363. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
+claims: [ISSUE:0326, ISSUE:0352, ISSUE:0354, ISSUE:0358, ISSUE:0362, ISSUE:0363, ISSUE:0370]
 ---
 
 # Control Claude (cc)
@@ -18,8 +18,9 @@ claims: [ISSUE:0326, ISSUE:0352, ISSUE:0354, ISSUE:0358, ISSUE:0362, ISSUE:0363]
 ## TODO
 
 - 0352 (medium), next, on vc's GO for option 1 as shaped: bin/devbin release target [--ref <ref>], one function deriving the pair for gates_verb and target. It writes nothing, takes no lock and needs no history; the tag arm runs in a detached checkout; the exit-1 refusal names both tags, the candidate's and the tree's. (edited)
-- 0358 with 0362 (both low), after 0352, one unit: the overview's guide line, configuration.md's release step 6, and new's page on other work trees and runtime copies. (edited)
+- 0358 with 0362 (both low), after 0370, one unit: the overview's guide line, configuration.md's release step 6, and new's page on other work trees and runtime copies. (edited)
 - 0363 (low, infra's handle advisory), after 0358, vc's word: the check accepts the dashed whole name init writes, one function giving that form to init and the check.
+- 0370 (medium), after 0352, vc's word: a declared option's run: line of a project's own command is handed --help and runs. Pick and shape go to vc before any build; vc leans to widening 0356's rule to every command whose declared option's run: line is what runs, a command-level run: line keeping its own flag.
 
 ## Holds
 

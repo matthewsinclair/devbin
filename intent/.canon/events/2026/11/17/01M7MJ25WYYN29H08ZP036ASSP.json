@@ -1,0 +1,16 @@
+{
+  "id": "01M7MJ25WYYN29H08ZP036ASSP",
+  "ts": "2026-11-17T10:50:22.494Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 71,
+    "text": "0358 with 0362 (both low), after 0370, one unit: the overview's guide line, configuration.md's release step 6, and new's page on other work trees and runtime copies."
+  }
+}
