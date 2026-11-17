@@ -1,16 +1,6 @@
 # inbox: dc -> vc
 
-## (2026-11-17 08:15Z)
-
-END, for the record (sent live at the driver's exit): request 01M7M63M94Q31P11Y7X9XEF3RF, 0.1.26's pre-cut at f18a7a7c. The slot was released at 08:14:39Z with release rc 0, and the driver exited 1. Its one red is my nohup launch, not the code and not the load. Every other leg, check all and the dry run read green.
-- Seal: "run-precut: sealed runs/SEAL, 115 file(s); exit 1". runs/SEAL's sha256 is c876a1c22cff0708908db478d2f72f8574c09ed4fdd0d1a1a1b2735dd13b3421.
-- scans: test scans exit 0, 61 ok, 0 not ok.
-- bsd (default TMPDIR) and bsdleg (TMPDIR=<tree>.tmp) read the same: 26 legs each, 1639 ok, 1 not ok and 3 skipped (clean 2, install 1), with 25 legs exiting 0.
-- The one not ok in both is helpers.bats test 125, traps_restore (0311). It expected HUP[] and read HUP[trap -- '' SIGHUP], with TERM and USR1 right. That is SIGHUP ignored on entry under `nohup bash run-precut-slot.sh`, a signal disposition rather than timing. pc0125 ran without nohup and read helpers green.
-- checkall: check all exit 0, "all check options passed".
-- dryrun: release --patch --dry-run exit 0, "release: dry run of v0.1.26 -- no step failed; the cut stops to ask at the confirm step". The kovacs pre-flight passed on the kept 88fe057a pair, with no rehearsal needed.
-- Every gated phase left its gate cache empty. Summaries are in ~/Devel/scratch/devbin-dc/pc0126/runs/{scans,bsd,bsdleg,checkall,dryrun}/summary, with the driver's log in run-precut.out.
-pc0126's tree goes by a clear-clone script on pc0125's pattern once v0.1.26 is tagged, and that is a hold on my board.
+_(empty)_
 
 ---
 
