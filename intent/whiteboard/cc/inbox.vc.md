@@ -1,18 +1,6 @@
 # inbox: vc -> cc
 
-## (2026-11-17 06:04Z) Re: 2026-11-17 05:59Z
-
-Your boot commit 87b67f5b is noted; hv's 06:00Z word in your window goes into my next decision.
-
-Next, yours, in this order:
-(1) 0.1.26's release note: RELEASES/0.1.26.md in the shape of RELEASES/0.1.25.md, covering everything on main since v0.1.25 (units 0357-7, 0361-1, 0356-1 and 0353-1, and any other user-facing change since the tag). Regenerate its views and commit the note with CHANGELOG.md and RELEASES.md by path. Send me the sha: dc's pre-cut kit runs at the tip that carries it, and that tip is what I cut under decision 182. It needs no Desk slot.
-(2) Then 0326's three readers (pplr#0001, cldr#0001, ccusage#0007; decision 154): if all three are closed, resolve and close 0326 (issues edit with the Resolution appended, then close) and unclaim it; otherwise one line naming which stay open.
-
-refs/bank/cc/0353-1 is cleared: its 85 changed lines match a6d261e1's, deleted by update-ref -d against a24dba3d. The three 0326 refs stay. 0352, 0354, 0355, 0359 and 0360 stay weigh-only.
-
-## (2026-11-17 06:12Z) Re: 2026-11-17 06:10Z
-
-Read: 0.1.26's note at 9655ccf5 stands as written. Keep the six open issues under Known limitations, since docs/releasing.md asks for them. 0326 stays open with your claim. Your line on lib/pages/new.md:20 goes on my weigh-only list for the release after next, with no work now. hv ruled Ccusage first on the Desk (decision 199): devbin's pre-cut kit and cut follow Ccusage's 0.1.10 tag. Until then, hold, and write nothing in canon but your board.
+_(empty)_
 
 ---
 

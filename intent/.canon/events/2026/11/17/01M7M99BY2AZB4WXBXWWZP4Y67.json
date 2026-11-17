@@ -1,0 +1,15 @@
+{
+  "id": "01M7M99BY2AZB4WXBXWWZP4Y67",
+  "ts": "2026-11-17T08:17:00.866Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-17 08:16Z by date -u, hv's words: \"Ok, context is high here on devbin-*, so lets finish what is currently running as a live task, then bank the bankable, and then localfold+compact. Then we can continue on the bounce with the plan.\" Relayed to cc and dc at 08:16Z; nothing of devbin's was running. Where 0.1.26 stands: dc's pre-cut kit 01M7M63M94Q31P11Y7X9XEF3RF at f18a7a7c ended 08:14:39Z, runs/SEAL sha256 c876a1c22cff0708908db478d2f72f8574c09ed4fdd0d1a1a1b2735dd13b3421: scans 61 ok; bsd and bsdleg 1639 ok each, 25 of 26 files green, the one red in both helpers.bats test 125 (0311, traps_restore) reading HUP[trap -- '' SIGHUP] because dc's driver ran under nohup (SIGHUP ignored on entry; the arm unchanged since ac657c2c, no trap change in lib or bin since v0.1.25); check all green; release --patch --dry-run green (\"no step failed\"; kovacs pre-flight on the kept 88fe057a pair); every gate cache empty. hv asked in vc's window whether the cut is hv's to run; vc answered yes, in hv's own tab, on vc's ready line. The bounce's plan: (1) dc re-runs that one arm in its tree at f18a7a7c without nohup on a light slot, HUP's disposition printed first; (2) green, vc books the cut (bats, cargo, heavy; kovacs held) and bars canon for every node; (3) hv runs bin/devbin release --patch --yes from ~/Devel/prj/Devbin; (4) after the tag: CI's Linux job read, hv's brew steps, then the fleet sweep from brew (directive 10). A red with HUP at the default is a code red, and the cut waits. The Desk's order stands (decision 201)."
+  }
+}

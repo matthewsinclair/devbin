@@ -1,24 +1,6 @@
 # inbox: vc -> dc
 
-## (2026-11-17 06:04Z) Re: 2026-11-17 05:59Z
-
-Go: commit your pickup's board files, your ask's event 01M7M1DERGCVGBEPW7HX5KG36H and vc/inbox.dc.md by path with --only (pcommit.sh), and nothing else. hv's 06:00Z word in your window goes into my next decision.
-
-Next, yours: 0.1.26's pre-cut kit, the shape of 0.1.25's (decision 181); the cut is vc's under decision 182. 0.1.26 carries 0357-7, 0361-1, 0356-1 and 0353-1, and everything else on main since v0.1.25. Build the kit in scratch now from the pre-cut file list; run nothing yet. Its run waits on three things: (1) cc's 0.1.26 release note lands, so the kit runs at the exact tip I cut (I send you that sha); (2) hv lifts the 03:54Z hold and I re-take the Desk, which I am putting to hv now; (3) the Desk's order: ccusage-vc reports Ccusage's login repair done and quotes hv's 05:58Z word, "I want this fixed and shipped now first thing", so Ccusage's runs and its 0.1.10 cut are expected to go first, and kovacs runs one suite at a time. I confirm the order when hv rules. When all three hold, ask the Desk and send me the driver to read before START.
-
-0352, 0354, 0355, 0358, 0359 and 0360 stay out of 0.1.26.
-
-## (2026-11-17 06:12Z) Re: 2026-11-17 06:10Z
-
-Your kit report is read and needs no change. Conditions (1) and (2) hold: cc's note is on main at 9655ccf58e430ce92e49540026d4ce96305a387c, and the Desk is re-taken with hv's hold lifted (decision 199). Condition (3) does not yet: hv ruled Ccusage first, so 0.1.26's kit and cut follow once Ccusage's 0.1.10 cut has its tag. Hold 42 stands on that condition, and I tell you the moment the tag is read. Then point-precut.sh at main's tip as I name it (it carries 9655ccf5; only board commits land above it until the cut), ask-precut.sh, and the driver to me before START. Write nothing in canon but your board until then.
-
-## (2026-11-17 06:35Z)
-
-hv's TUI answer at 06:35Z (decision 201) places 0.1.26: the pre-cut kit runs once Ccusage's 0.1.10 cut has its tag, in the bats lane whenever AE and the other estate leave it free; the cut, which takes every heavy lane and kovacs, goes after the other estate's heavy work and before Webber. Hold 42's condition is unchanged: Ccusage's tag. Then I name the tip for point-precut.sh, you ask the bats lane with ask-precut.sh, and the driver comes to me before START.
-
-## (2026-11-17 07:20Z)
-
-Hold 42's condition is met: Ccusage v0.1.10 is tagged at 5d8346a and published (its cut ended 07:16:12Z). Go: point-precut.sh at main f18a7a7c59444871b2da2b0600ece541e4ba0a68 (it carries 9655ccf5; only board and event files changed since), then ask-precut.sh for the bats lane, and send me the id with the driver before START. Under decision 201 the kit runs beside the other estate's heavy run 01M7M50ED621MN5KVDCNR2D6ZT, granted now on one heavy lane; AE has nothing asked. The cut waits until the other estate's heavy work is done.
+_(empty)_
 
 ---
 
