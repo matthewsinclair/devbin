@@ -1,0 +1,15 @@
+{
+  "id": "01M7MJXPABENR77RA76EQPY3SF",
+  "ts": "2026-11-17T11:05:24.043Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "cc's 0352-1 (release target, tip 00b67963) shares lib/helpers with 0354-1 and 0355-1 and reworks gates_verb, so under hv's speed ruling that ready units run as one stack it rebases onto 0354-1 and the two run as one stack, one driver, each unit's red arms at its own base, then the union of legs once and test scans once; cc re-asks the Desk with --place-of 01M7MHWYTNTHK4GCSQ8Z4NTSJM, and dc bases 0355-1 on the stack's landing. In 0352-1, as defects in what it touches or introduces: the schema's tag row gains gates as a reader beside target (a project offering only gates that declares tag was refused as unread config), and release_tag_version is not left a third copy of the tag read: release_versions and formula's tag_version call it where they mean the same, or cc files the one that differs for 0.1.27. 0370's shape, vc's word on cc's pick: help_answered (lib/resolve) widens 0356's rule to a declared option's run: line of any command; a gate command keeps gate_usage_line, any other answers help <command> at exit 0; command-level run: lines, handlers and devbin's non-gate built-ins keep their own flag (decision 194); the page names the cost. 0370 joins the stack if banked before its grant."
+  }
+}
