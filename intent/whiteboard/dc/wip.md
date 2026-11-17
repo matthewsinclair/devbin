@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 17:26Z
+heartbeat_at: 2026-11-17 19:42Z
 status: active
-focus: "2026-11-17 17:25Z by date -u: folded on hv's word via vc. 0360 and 0359 closed (landed 44251731, 09b678ee). 0367-1 then 0366-1 banked (refs/bank/dc/0367-1, refs/bank/dc/0366-1), ask 01M7N7KFRAXVVHBVCCHK35BKSZ queued after cc's stack; on the bounce, vc's GO, then the run and the handover."
+focus: "2026-11-17 19:42Z by date -u: k36x 01M7NG3D running at 867488ed on a21916fc; at END: board commit by path, handover on a21916fc, then vc lands. k367 red on a bare issue number in lib/pages/macos.md (fixed), k36w green."
 claims: [ISSUE:0366, ISSUE:0367]
 ---
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- 0367-1 (refs/bank/dc/0367-1, 418f9a58) then 0366-1 (refs/bank/dc/0366-1, 78c73f8d), dc's k367, banked 2026-11-17 17:25Z by date -u on hv's fold; ask 01M7N7KFRAXVVHBVCCHK35BKSZ stays queued after cc's stack. Released by vc's grant and GO on the bounce: run, END, hand over. (edited)
+- 0367-1 (refs/bank/dc/0367-1, c36040bf) then 0366-1 (refs/bank/dc/0366-1, 867488ed), rebased onto main a21916fc after cc's landing, dc's k36x; rerun 01M7NG3DEM0AWX2P6A0EYYK9WQ (releasecut and releaselegs whole, scans, lint) running since 2026-11-17 19:36Z by date -u. Released by its END: board commit by path, handover on a21916fc, then vc lands. (edited)
 
 ## Watch-outs
 

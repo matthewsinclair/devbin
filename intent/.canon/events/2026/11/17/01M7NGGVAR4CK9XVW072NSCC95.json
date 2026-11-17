@@ -1,0 +1,16 @@
+{
+  "id": "01M7NGGVAR4CK9XVW072NSCC95",
+  "ts": "2026-11-17T19:42:40.472Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 46,
+    "text": "0367-1 (refs/bank/dc/0367-1, c36040bf) then 0366-1 (refs/bank/dc/0366-1, 867488ed), rebased onto main a21916fc after cc's landing, dc's k36x; rerun 01M7NG3DEM0AWX2P6A0EYYK9WQ (releasecut and releaselegs whole, scans, lint) running since 2026-11-17 19:36Z by date -u. Released by its END: board commit by path, handover on a21916fc, then vc lands."
+  }
+}
