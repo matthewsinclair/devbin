@@ -3,7 +3,7 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 09:47Z
+heartbeat_at: 2026-11-17 09:57Z
 status: active
 focus: "2026-11-17 09:46Z by date -u: v0.1.26 is out at f0434fbd (vc's word, the bar lifted). Hold 43 done: clear-clone-pc0126.sh removed pc0126's tree and tree.tmp, and the kit's records stay in scratch. Holding for vc's word; the post-tag steps are vc's."
 claims: []
