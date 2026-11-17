@@ -1,0 +1,16 @@
+{
+  "id": "01M7MJETZNGCT00BKXBJ5ADR8T",
+  "ts": "2026-11-17T10:57:17.302Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 36,
+    "text": "Webber's 0.1.26 sweep commit, held until the Creator fly deploy 01M7K0MGZSMKW23YB3SMCKF4RF has ended: its clone ~/Devel/scratch/webber-deploy pulls Webber's committed main, so nothing of 0.1.26 is committed in Webber before then. The files are already in Webber's checkout, uncommitted: a devbin upgrade run there at 10:52:32Z by date -u, by every sign hv's own from hv's terminal, wrote the sweep's 12 paths from Homebrew's install (manifest: source install, f0434fbd68c0); webber-vc was told 2026-11-17 by 10:57Z by date -u. Then: read bin/devbin fleet audit for Webber at 0.1.26; bash ~/Devel/scratch/devbin-vc/0.1.26/sweep/sweep-commit.sh Webber (the 12 paths alone, by path, through Webber's hook); no push (Webber's decision 84); tell webber-vc the sha; 0.1.26's notice to webber-vc. Webber's mix.lock change (10:47:41Z, a mix deps.update --all from the same terminal) is Webber's, not the sweep's."
+  }
+}
