@@ -1,0 +1,15 @@
+{
+  "id": "01M7MHB1G707CS8Y41F3MW8QNV",
+  "ts": "2026-11-17T10:37:44.328Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0363 (low, infra's handle advisory), after 0358, vc's word: the check accepts the dashed whole name init writes, one function giving that form to init and the check."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M7MHB06YT6AE7Q295D8ZVC9Z",
+  "ts": "2026-11-17T10:37:43.006Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 46,
+    "text": "0354 (low), now, on vc's GO: options 1 and 3, no doctor change. use's report gains one line where a switch made a link where there was none, or removed one (a shell's remembered path changes only then; repointing a link it keeps changes nothing), and T5 and use's page name the case. devbin's own use and a project's tool's alike."
+  }
+}

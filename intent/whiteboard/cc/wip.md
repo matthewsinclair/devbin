@@ -3,26 +3,27 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 10:31Z
+heartbeat_at: 2026-11-17 10:37Z
 status: active
-focus: "2026-11-17 10:31Z by date -u: devbin 0.1.27's units for cc (vc's decision 205). Filed 0362 and 0363. On 0352's pick and shape for vc before any build, then 0354, then 0358 with 0362. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing banked, booked or running."
-claims: [ISSUE:0326, ISSUE:0352, ISSUE:0354, ISSUE:0358, ISSUE:0362]
+focus: "2026-11-17 10:37Z by date -u: devbin 0.1.27's units on vc's GO (decision 205): 0354 now, then 0352 (option 1 as shaped), then 0358 with 0362, then 0363. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing banked, booked or running."
+claims: [ISSUE:0326, ISSUE:0352, ISSUE:0354, ISSUE:0358, ISSUE:0362, ISSUE:0363]
 ---
 
 # Control Claude (cc)
 
 ## DOING
 
-- 0352 (medium, 0.1.27, vc's decision 205): the core's word on how a workflow the candidate push starts derives the release's version and tag. Its pick and shape go to vc before any build, since every Rust consumer's CI reads it.
+- 0354 (low), now, on vc's GO: options 1 and 3, no doctor change. use's report gains one line where a switch made a link where there was none, or removed one (a shell's remembered path changes only then; repointing a link it keeps changes nothing), and T5 and use's page name the case. devbin's own use and a project's tool's alike. (edited)
 
 ## TODO
 
-- 0354 (low): use's line about the caller's shell hash; the options are in ~/Devel/scratch/devbin-cc/i0352/use-rehash.md.
-- 0358 with 0362 (both low), one unit: the overview's guide line, configuration.md's release step 6, and new's page on other work trees and runtime copies.
+- 0352 (medium), next, on vc's GO for option 1 as shaped: bin/devbin release target [--ref <ref>], one function deriving the pair for gates_verb and target. It writes nothing, takes no lock and needs no history; the tag arm runs in a detached checkout; the exit-1 refusal names both tags, the candidate's and the tree's. (edited)
+- 0358 with 0362 (both low), after 0352, one unit: the overview's guide line, configuration.md's release step 6, and new's page on other work trees and runtime copies. (edited)
+- 0363 (low, infra's handle advisory), after 0358, vc's word: the check accepts the dashed whole name init writes, one function giving that form to init and the check.
 
 ## Holds
 
-- 0363 (low, infra's handle advisory, filed for 0.1.27): its build waits until vc names its builder.
+_(none)_
 
 ## Watch-outs
 
