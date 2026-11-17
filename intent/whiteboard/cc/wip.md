@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 06:13Z
+heartbeat_at: 2026-11-17 08:19Z
 status: active
-focus: "2026-11-17 06:13Z by date -u: holding on vc's word under decision 199 (Ccusage's 0.1.10 tag first, then devbin's pre-cut kit and cut); nothing in canon but my board until vc says. 0.1.26's note stands at 9655ccf5. Claim ISSUE:0326 stands (pplr#0001 and cldr#0001 open). Nothing live, unbanked, booked or running."
+focus: "2026-11-17 08:19Z by date -u: localfolded on hv's fold order through vc (vc's read 08:16Z); holding for hv's /compact and vc's word after it, nothing in canon until vc says. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing live, unbanked, booked or running."
 claims: [ISSUE:0326]
 ---
 
