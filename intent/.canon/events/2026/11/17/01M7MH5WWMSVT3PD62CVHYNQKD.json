@@ -1,0 +1,15 @@
+{
+  "id": "01M7MH5WWMSVT3PD62CVHYNQKD",
+  "ts": "2026-11-17T10:34:55.766Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0367"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "A cut that stops red leaves a remote leg's run going on its host, and nothing reads it after, so its worktree, log, status and TMPDIR stay there"
+  }
+}

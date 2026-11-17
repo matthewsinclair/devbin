@@ -1,0 +1,15 @@
+{
+  "id": "01M7MH5WF8ABN1874GAJDA1WHZ",
+  "ts": "2026-11-17T10:34:55.338Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0365"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "The cut and the macOS stage call devbin's own built-ins through the project's launcher, so a project command at one of those names stands in for the core's verb (0335's shadow class beyond cache)"
+  }
+}

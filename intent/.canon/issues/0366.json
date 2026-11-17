@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 366,
+  "slug": "the-macos-stage-has-no-rehearsal-before-a-cut-so",
+  "title": "The macOS stage has no rehearsal before a cut, so a project's first macOS stage runs at its cut",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-17",
+  "reporter": "Matthew Sinclair",
+  "body": "Filed for devbin 0.1.27's batch (vc's decision 205, which carries vc's todo 214), from vc's archived todo 207: intent-vc's reading of 2026-11-12.\n\n## What happens\n\nIssue 0337 gave a remote leg a rehearsal, `release gates --leg <host>`, and a pre-flight rule that refuses a cut while a leg has not gone green since the previous release with the leg config HEAD declares. Its resolution names the limit it left: \"The macOS stage is not a release.legs host and has no rehearsal: its app-sign refuses any commit but the release's, so its first run is at the cut, which 0336 shortens.\" So a project's first macOS stage runs at its cut, as does its first after a change to `commands.macos`, and a fault there stops the cut before the tag, to be reset and re-cut. Intent took that risk for its next cut after todo 207.\n\n## The code\n\n- A dry run starts no leg: \"A dry run starts nothing and says what would run\" (lib/cmd/release:1908-1909, legs_step).\n- `macos app-sign` refuses unless HEAD is the release's commit in a clean tree: require_release_head (lib/cmd/macos:1035-1066), with the release's commit read by read_release_commit (:876-899).\n- `release gates --leg` refuses a host release.legs does not name, and the macOS stage is no such host.\n\n## Not yet known\n\n- Which of the stage's faults a rehearsal could find before a cut: a missing signing identity, notarisation credentials, a build that does not run under the stage. Signing the release's own commit before it exists is not open to one.\n\n## Options, none chosen\n\n- A rehearsal of the stage at HEAD that runs the build and the signing steps on a throwaway copy, with nothing notarised or published, kept as a pair beside the legs' pairs, under a pre-flight rule like 0337's.\n- A pre-flight check of the stage's inputs alone, such as the identity in the keychain, the notary profile and the build command, which needs no signing.\n- Keep it as 0337 left it, a stated limit, and say so on the release page.\n"
+}

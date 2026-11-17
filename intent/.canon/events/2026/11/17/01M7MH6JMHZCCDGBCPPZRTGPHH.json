@@ -1,0 +1,15 @@
+{
+  "id": "01M7MH6JMHZCCDGBCPPZRTGPHH",
+  "ts": "2026-11-17T10:35:18.034Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0360 (medium), then 0359 (low), after 0355: both are run_gate's (lib/runlog), so they run one after another or as one stack (decision 83)."
+  }
+}

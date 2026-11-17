@@ -5,10 +5,14 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "4da27407-803e-4926-9362-be942283eae4",
-    "heartbeat_at": "2026-11-17T09:57:01.499Z",
+    "heartbeat_at": "2026-11-17T10:35:18.234Z",
     "status": "active",
-    "focus": "2026-11-17 09:46Z by date -u: v0.1.26 is out at f0434fbd (vc's word, the bar lifted). Hold 43 done: clear-clone-pc0126.sh removed pc0126's tree and tree.tmp, and the kit's records stay in scratch. Holding for vc's word; the post-tag steps are vc's.",
-    "claims": [],
+    "focus": "2026-11-17 10:35Z by date -u: decision 205's work. Filed todo 214's six findings as 0364 to 0369; 0355 is next, then 0360 and 0359.",
+    "claims": [
+      "ISSUE:0355",
+      "ISSUE:0360",
+      "ISSUE:0359"
+    ],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
   },
@@ -1881,6 +1885,22 @@
       "state": "archived",
       "archived_at": "2026-11-17T08:51:28.929Z",
       "recorded_at": "2026-11-17T08:50:14.935Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 81,
+      "text": "0355 (medium, decision 205): release gates and pre-flight refuse a tree change no gate made, and blame a gate. A scratch tree off main, its own arms red at the base and green at the fix on a Desk slot, then a bank and a handover to vc.",
+      "state": "live",
+      "recorded_at": "2026-11-17T10:35:17.833Z"
+    },
+    {
+      "node": "dc",
+      "kind": "todo",
+      "seq": 69,
+      "text": "0360 (medium), then 0359 (low), after 0355: both are run_gate's (lib/runlog), so they run one after another or as one stack (decision 83).",
+      "state": "live",
+      "recorded_at": "2026-11-17T10:35:18.033Z"
     }
   ],
   "sent": [

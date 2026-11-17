@@ -1,0 +1,15 @@
+{
+  "id": "01M7MH6JE95CY2W00MA11BQBCH",
+  "ts": "2026-11-17T10:35:17.833Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0355 (medium, decision 205): release gates and pre-flight refuse a tree change no gate made, and blame a gate. A scratch tree off main, its own arms red at the base and green at the fix on a Desk slot, then a bank and a handover to vc."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M7MH5W83KHRVVJCX15JEXRC2",
+  "ts": "2026-11-17T10:34:55.109Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0364"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "release.gates takes an entry whose first word is release, which runs a release verb inside the cut's own gates, the hole 0327 closed for release.preflight"
+  }
+}

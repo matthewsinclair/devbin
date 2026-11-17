@@ -1,0 +1,15 @@
+{
+  "id": "01M7MH5X398CJM4XE0JFEPY022",
+  "ts": "2026-11-17T10:34:55.979Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0368"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "A whole gate run leaves entries in its TMPDIR: update-notice stamps, release_git_remote's files from calls killed at their bound, and Node's compile cache"
+  }
+}
