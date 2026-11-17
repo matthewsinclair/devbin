@@ -744,6 +744,64 @@ YAML
   assert_output_contains "fmt-run x -h"
 }
 
+# A declared option's run: line of a project's own command is answered as help
+# <command> (0370): a project's `gate rust --help` ran its whole gate, since the
+# line was handed every word after the option.
+@test "0370-1: a project command's -h or --help after a declared option prints help <command>, as help does, and runs nothing" {
+  printf '#!/usr/bin/env bash\nprintf "probe %%s\\n" "$*" >>"%s/ran"\n' "$DEVBIN_TEST_TMPDIR" >"$DEVBIN_TEST_TMPDIR/probe"
+  chmod +x "$DEVBIN_TEST_TMPDIR/probe"
+  proj="$(mkproj demo <<YAML
+project:
+  name: demo
+commands:
+  gate:
+    summary: The project's own gates
+    options:
+      rust:
+        summary: The Rust gate
+        run: $DEVBIN_TEST_TMPDIR/probe rust
+YAML
+  )"
+  local want words
+  local -a argv
+  run --separate-stderr devbin_run "$proj" help gate
+  assert_success
+  want="$output"
+  [ -n "$want" ] || fail "help gate printed nothing"
+  for words in "rust --help" "rust -h" "rust x --help" "rust x -h"; do
+    read -r -a argv <<<"$words"
+    run --separate-stderr devbin_run "$proj" gate "${argv[@]}"
+    [ "$status" -eq 0 ] || fail "gate $words exited $status: $stderr"
+    [ "$output" = "$want" ] || fail "gate $words printed what help gate does not: $output"
+    [ -z "$stderr" ] || fail "gate $words wrote to stderr: $stderr"
+    [ ! -e "$DEVBIN_TEST_TMPDIR/ran" ] || fail "gate $words ran: $(cat "$DEVBIN_TEST_TMPDIR/ran")"
+  done
+  # THE CONTROL: with no flag, the declared option's run: line runs.
+  run devbin_run "$proj" gate rust x
+  assert_success
+  grep -qxF "probe rust x" "$DEVBIN_TEST_TMPDIR/ran" || fail "gate rust x did not run its line: $(cat "$DEVBIN_TEST_TMPDIR/ran" 2>&1)"
+}
+
+@test "0370: a project command's command-level run: line, and a project command's handler, still read their own -h or --help" {
+  local args="$DEVBIN_TEST_TMPDIR/args"
+  proj="$(mkproj demo <<YAML
+project:
+  name: demo
+commands:
+  tool:
+    summary: A command-level run line
+    run: echo tool-run
+YAML
+  )"
+  create_test_command "$proj" mine "$(printf '#!/usr/bin/env bash\nprintf "%%s\\n" "mine-handler $*" >>"%s"\n' "$args")" >/dev/null
+  run devbin_run "$proj" tool x -h
+  assert_success
+  assert_output_contains "tool-run x -h"
+  run devbin_run "$proj" mine x --help
+  assert_success
+  grep -qxF "mine-handler x --help" "$args" || fail "the project's handler was not handed --help: $(cat "$args" 2>&1)"
+}
+
 @test "an unknown help flag is refused rather than treated as a topic" {
   proj="$(mkproj demo <<'YAML'
 project:

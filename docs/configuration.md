@@ -583,6 +583,8 @@ worktrees:
 
 **A `run:` with no words in it is refused, naming the key.** `run: "   "` and `run: ""` both hold no command, and before this they ran whatever was typed after the command as the command, at exit 0. `doctor` reports them, and the command refuses to run them. `doctor` holds these keys to this: `commands.<cmd>.run`, `commands.<cmd>.options.<opt>.run`, `commands.fullcycle.restore` and `release.notes.run`. The release block's other command lines -- each `derived:`, `gates:` and `after:` item, and `ci.query` -- are split and globbed the same way, and one with no words is refused by the cut at the step that runs it; `doctor` refuses them only when empty.
 
+**`-h` and `--help` never reach a declared option's `run:`** (issues 0356 and 0370). Anywhere on the command line of an option whose `run:` is the config's, the dispatcher answers them itself, before anything runs, at exit 0: a gate command (`check`, `clean`, `db`, `docs`, `fmt` and `test`) with its usage line, and any other command with what `help <command>` prints, since the option's summary is devbin's and a `run:` line cannot print one. A command-level `run:` and the project's own handler are still handed the flag, which they read themselves. The cost: a declared option's tool that takes `-h` or `--help` as a word of its own, eg a database client's `-h <host>`, no longer gets it from the command line. Write it into the `run:` line, or give the tool its long form.
+
 ## Checking your config
 
 ```
