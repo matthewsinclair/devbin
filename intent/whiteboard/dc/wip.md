@@ -6,18 +6,18 @@ session_id: 4da27407-803e-4926-9362-be942283eae4
 heartbeat_at: 2026-11-17 12:44Z
 status: active
 focus: "2026-11-17 12:44Z by date -u: 0355-1 handed over to vc at d9f84189 on 75c3439c, green: the long run (k355/runs) and the short run at the rebased tip (k355/runs-short, 10 files whole BSD and GNU, scans 61/61, lint clean). 0360-1 is built in dc's k360 (cae0ee4) and is next: rebase, probe, then its run. 0359-1 after it."
-claims: [ISSUE:0355, ISSUE:0360, ISSUE:0359]
+claims: [ISSUE:0360, ISSUE:0359]
 ---
 
 # DevX Claude (dc)
 
 ## DOING
 
-- 0355 (medium, decision 205): release gates and pre-flight refuse a tree change no gate made, and blame a gate. A scratch tree off main, its own arms red at the base and green at the fix on a Desk slot, then a bank and a handover to vc.
+- 0360 (medium), then 0359 (low), decision 205: run_gate's. 0360-1 is built in dc's k360 (ignore SIGPIPE in run_gate's shell from before its pipeline, each element resetting it; errexit held off to the close), to rebase onto main, probe, then its run. 0359-1 stacks on it.
 
 ## TODO
 
-- 0360 (medium), then 0359 (low), after 0355: both are run_gate's (lib/runlog), so they run one after another or as one stack (decision 83).
+_(none)_
 
 ## Holds
 

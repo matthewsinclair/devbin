@@ -1,0 +1,15 @@
+{
+  "id": "01M7MRTCZYSWG8H0WQQYTC12YY",
+  "ts": "2026-11-17T12:48:27.646Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0360 (medium), then 0359 (low), decision 205: run_gate's. 0360-1 is built in dc's k360 (ignore SIGPIPE in run_gate's shell from before its pipeline, each element resetting it; errexit held off to the close), to rebase onto main, probe, then its run. 0359-1 stacks on it."
+  }
+}
