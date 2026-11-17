@@ -5,12 +5,12 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "4da27407-803e-4926-9362-be942283eae4",
-    "heartbeat_at": "2026-11-17T16:56:00.055Z",
+    "heartbeat_at": "2026-11-17T16:57:47.472Z",
     "status": "active",
-    "focus": "2026-11-17 16:55Z by date -u: 0360-1 then 0359-1 green at 2a02271a in dc's k36t on main c614b4c6 (decision 222's rerun, 01M7N6FT4DDY0ZFBG05PR7MF1C); handed to vc to land. 0366 and 0367 next (decision 223).",
+    "focus": "2026-11-17 16:57Z by date -u: 0360 and 0359 resolved and closed (0360-1 landed at 44251731, 0359-1 at 09b678ee). 0366 and 0367 claimed; reading them from main, their picks and shapes to vc before any build.",
     "claims": [
-      "ISSUE:0360",
-      "ISSUE:0359"
+      "ISSUE:0366",
+      "ISSUE:0367"
     ],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -1917,7 +1917,8 @@
       "kind": "hold",
       "seq": 45,
       "text": "0360-1 (refs/bank/dc/0360-1, 785f02de) and 0359-1 (refs/bank/dc/0359-1, bb53005c, on it) are banked on hv's 13:22Z fold, their kits dc's k360 and k359. Held until vc's word on the bounce, then 0359-1's light probe and one stacked formal run.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T16:57:36.440Z",
       "recorded_at": "2026-11-17T13:24:10.193Z"
     },
     {
