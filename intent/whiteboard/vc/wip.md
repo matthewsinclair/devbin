@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 30d0e398-8d8a-4899-8104-31fa2767a4bd
-heartbeat_at: 2026-11-17 13:30Z
+heartbeat_at: 2026-11-17 13:38Z
 status: active
-focus: "Holding devbin on hv's 13:22Z word until hv speaks; on the bounce, dc's 0360-1 and 0359-1 stack and cc's 0364 and 0365 (decision 221). The Desk serves the other estates meanwhile: Intent's kovacs rehearsal 3 next, on a quiet host after Webber's floor-fix END."
+focus: "Holding devbin on hv's 13:22Z word, and the Desk over hv's move: nothing granted until hv is back. Held for after it: Webber ic's floor-fix third booking (quiet machine) and Webber cc's gyges run (on its critic); Intent's cut hold waits too. On the bounce, dc's 0360-1 and 0359-1 stack and cc's 0364 and 0365 (decision 221)."
 claims: []
 ---
 
