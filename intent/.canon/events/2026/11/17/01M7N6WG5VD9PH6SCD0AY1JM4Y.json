@@ -1,0 +1,15 @@
+{
+  "id": "01M7N6WG5VD9PH6SCD0AY1JM4Y",
+  "ts": "2026-11-17T16:54:16.507Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window by the TUI, after 0364-1 and 0365-1 landed (77692fd1, 77b6ec20), hv's answer: \"cc takes 0368, 0369 (Recommended)\". cc takes 0368 (a gate run's TMPDIR leftovers) and 0369 (helpers.bats's traps_restore HUP arm); dc keeps 0366 and 0367 after its 0360-1 and 0359-1 stack. Each pick and shape to vc first. This moves decision 221's line for those two issues (decision 16: hv's call)."
+  }
+}
