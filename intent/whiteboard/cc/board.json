@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "19c73785-15df-40b2-b812-765f3bba42d9",
-    "heartbeat_at": "2026-11-17T11:11:34.726Z",
+    "heartbeat_at": "2026-11-17T11:26:56.394Z",
     "status": "active",
-    "focus": "2026-11-17 11:11Z by date -u: the stack 0354-1 then 0352-1 is asked on the Desk (01M7MK7XB7TV226TJM041ZQCQF), granted at another estate's timed build's END, then vc's GO; building 0370-1 meanwhile. Then 0358 with 0362 (in scratch i0358), then 0363. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close.",
+    "focus": "2026-11-17 11:26Z by date -u: devbin 0.1.27's units for cc are all built, in two runs: the first stack (0354-1, 0352-1) runs on the Desk, and the second (0370-1, 0358-1 with 0362, 0363-1) is asked after it. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close.",
     "claims": [
       "ISSUE:0326",
       "ISSUE:0352",
@@ -1677,10 +1677,10 @@
       "node": "cc",
       "kind": "doing",
       "seq": 46,
-      "text": "The stack 0354-1 then 0352-1 (vc's decision 212; scratch ~/Devel/scratch/devbin-cc/st0354), asked on the Desk as 01M7MK7XB7TV226TJM041ZQCQF: started on vc's grant and GO, then banked and handed over on its green. 0352-1 carries the tag row's gates reader and formula's tag_version through release_tag_version, on vc's word; release_versions' differing reading is filed as 0371.",
+      "text": "The first stack, 0354-1 then 0352-1 (scratch st0354, decision 212), runs in its Desk slot 01M7MK7XB7TV226TJM041ZQCQF since 11:16Z: END to vc the moment the driver exits, then its handover, COMMIT_MSG-0354-1.txt and COMMIT_MSG-0352-1.txt with one bundle.",
       "state": "live",
       "recorded_at": "2026-11-17T10:31:50.163Z",
-      "edited_at": "2026-11-17T11:11:33.724Z"
+      "edited_at": "2026-11-17T11:26:55.203Z"
     },
     {
       "node": "cc",
@@ -1697,7 +1697,8 @@
       "kind": "todo",
       "seq": 71,
       "text": "0358 with 0362 (both low), after 0370, one unit: the overview's guide line, configuration.md's release step 6, and new's page on other work trees and runtime copies.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T11:26:55.962Z",
       "recorded_at": "2026-11-17T10:31:50.582Z",
       "edited_at": "2026-11-17T10:50:22.494Z"
     },
@@ -1715,17 +1716,18 @@
       "kind": "todo",
       "seq": 72,
       "text": "0363 (low, infra's handle advisory), after 0358, vc's word: the check accepts the dashed whole name init writes, one function giving that form to init and the check.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T11:26:56.183Z",
       "recorded_at": "2026-11-17T10:37:44.328Z"
     },
     {
       "node": "cc",
       "kind": "todo",
       "seq": 73,
-      "text": "0370 (medium), building on vc's GO for the pick as shaped: help_answered widened to a declared option's run: line of any command; a gate command keeps gate_usage_line; any other answers help <command> at exit 0; command-level run: lines, handlers and non-gate built-ins keep their own flag. Joins the stack only if banked before its grant.",
+      "text": "The second stack, 0370-1, 0358-1 (with 0362) then 0363-1 on the first stack's tip (scratch st0370), asked as 01M7MM3DTQM36NQ0659E1WAQ46: vc grants it at the first stack's END if that is green, then the GO; then its handover.",
       "state": "live",
       "recorded_at": "2026-11-17T10:50:23.107Z",
-      "edited_at": "2026-11-17T11:11:34.426Z"
+      "edited_at": "2026-11-17T11:26:55.673Z"
     }
   ],
   "sent": [

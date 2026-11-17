@@ -1,0 +1,16 @@
+{
+  "id": "01M7MM53NS7ZW8NQD1C67A85FM",
+  "ts": "2026-11-17T11:26:55.673Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 73,
+    "text": "The second stack, 0370-1, 0358-1 (with 0362) then 0363-1 on the first stack's tip (scratch st0370), asked as 01M7MM3DTQM36NQ0659E1WAQ46: vc grants it at the first stack's END if that is green, then the GO; then its handover."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M7MM537351Y96EQBZEKN45EJ",
+  "ts": "2026-11-17T11:26:55.203Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 46,
+    "text": "The first stack, 0354-1 then 0352-1 (scratch st0354, decision 212), runs in its Desk slot 01M7MK7XB7TV226TJM041ZQCQF since 11:16Z: END to vc the moment the driver exits, then its handover, COMMIT_MSG-0354-1.txt and COMMIT_MSG-0352-1.txt with one bundle."
+  }
+}
