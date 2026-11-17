@@ -1,0 +1,15 @@
+{
+  "id": "01M7MHE3JHVY61VW2PHRKHW16T",
+  "ts": "2026-11-17T10:39:24.753Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "0355-1's shape, vc's word to dc by 2026-11-17 10:39Z by date -u, one unit. (A) The gates are handed the commit they were started for and refuse before any gate runs when HEAD is not it, naming both shas and saying no gate ran (Ccusage 0.1.10's 06:57Z run ran all four gates on a doc commit that landed after the release commit, and gates_sealed's refusal never named the moved HEAD). The four refusals that blamed a gate or a pre-flight command now say only what the code knows: the tree changed, or HEAD moved, while the gates ran, by a gate or another session in the checkout. (B) A release key lists paths no gate reads, empty by default, with the core naming no path. The gates' tree check and pre-flight's read the one list; it covers new untracked files under a listed path; an excluded path that changed is named in the run's record and refuses nothing; and HEAD's check stands, so with the list set the bar during a cut is no commit, not no pickup, touch or commit. dc reads the cut's later steps for another tree-clean refusal on the same paths. devbin's own config.yaml opts in, in the same unit (intent/whiteboard/ and intent/.canon/events/). vc sends the adoption notice to every estate with a whiteboard after it lands. Filed by dc at c478a902: 0364 to 0369, todo 214's findings."
+  }
+}
