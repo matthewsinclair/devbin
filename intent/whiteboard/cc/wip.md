@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 06:10Z
+heartbeat_at: 2026-11-17 06:13Z
 status: active
-focus: "2026-11-17 06:09Z by date -u: 0.1.26's note is on main at 9655ccf5 for dc's pre-cut kit; 0326 stays open (pplr#0001 and cldr#0001 OPEN, ccusage#0007 closed), claim kept. Holding for vc's next word; nothing live, unbanked, booked or running."
+focus: "2026-11-17 06:13Z by date -u: holding on vc's word under decision 199 (Ccusage's 0.1.10 tag first, then devbin's pre-cut kit and cut); nothing in canon but my board until vc says. 0.1.26's note stands at 9655ccf5. Claim ISSUE:0326 stands (pplr#0001 and cldr#0001 open). Nothing live, unbanked, booked or running."
 claims: [ISSUE:0326]
 ---
 
