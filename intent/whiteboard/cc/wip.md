@@ -6,7 +6,7 @@ session_id: 19c73785-15df-40b2-b812-765f3bba42d9
 heartbeat_at: 2026-11-17 18:12Z
 status: active
 focus: "2026-11-17 18:12Z by date -u: booted after hv's compact; 0369-1/0368-1 stack banked, ask 01M7N79M7DJB05YRTAWJ2KGAQS held for vc's grant and GO after Webber's run"
-claims: [ISSUE:0326, ISSUE:0368, ISSUE:0369]
+claims: [ISSUE:0326]
 ---
 
 # Control Claude (cc)
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- 0369-1 then 0368-1, one stack, banked at refs/bank/cc/0369-1 (8e613644) and refs/bank/cc/0368-1 (9a07c35a, amended tests-only after 01M7N79M's test all red on releasecut's hung-query arm) on base 09b678ee. Short rerun ask 01M7NDXNYYTHZ22ANR1HNY3EEM, driver read by vc. Held until vc grants it on bats at dc's stack's END and gives the GO: then intent estate slots start with named tip=9a07c35a... (i0368/named.txt) and bash run-short-slot.sh, END at its exit. (edited)
+_(none)_
 
 ## Watch-outs
 
