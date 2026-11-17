@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "30d0e398-8d8a-4899-8104-31fa2767a4bd",
-    "heartbeat_at": "2026-11-17T13:38:39.143Z",
+    "heartbeat_at": "2026-11-17T17:25:42.133Z",
     "status": "active",
-    "focus": "Holding devbin on hv's 13:22Z word, and the Desk over hv's move: nothing granted until hv is back. Held for after it: Webber ic's floor-fix third booking (quiet machine) and Webber cc's gyges run (on its critic); Intent's cut hold waits too. On the bounce, dc's 0360-1 and 0359-1 stack and cc's 0364 and 0365 (decision 221).",
+    "focus": "Folding on hv's 17:25Z word; on the bounce: grant cc's 0369-1/0368-1 stack (ask 01M7N79M7DJB05YRTAWJ2KGAQS) then dc's 0367-1/0366-1 stack (ask 01M7N7KFRAXVVHBVCCHK35BKSZ) on the bats lane after Webber's quiet-machine run 01M7N2PGHM1JKMZPXSBDWCH6Z7 ENDs; land each on its builder's evidence; then 0.1.27's cut on hv's go.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5553,7 +5553,8 @@
       "kind": "decision",
       "seq": 221,
       "text": "hv in vc's window, read 2026-11-17 13:22Z by date -u, hv's words: \"Ok, context is high here on devbin-*, so while we wait, lets finish what is currently running as a live task, then bank the bankable, and then localfold+compact. Then we can hold for now once that is all done.\" then \"This is a context emergency. Localfold+compact now.\" Before them, hv's TUI answer, the recommendation: cc takes 0364 and 0365 (pick and shape to vc first); dc keeps 0360, 0359 and 0366 to 0369 (decision 16's line). Done: cc and dc told to bank, localfold, compact and hold; dc's 0360-1 run ask denied for the fold, 0360-1 (785f02de) and 0359-1 (bb53005c) to run as one stack on the bounce. On main for 0.1.27: 0354-1, 0352-1, 0370-1, 0358-1, 0363-1, 0355-1 (9006e0a8) and 0371-1 (8234f074). Creator's Fly deploy is live as webber-app release v1 at main 78757ca3 after a one-line Dockerfile fix. The Desk's state at the fold is in ~/Devel/scratch/devbin-vc/0.1.27/STATE.md.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T17:25:40.943Z",
       "recorded_at": "2026-11-17T13:24:10.724Z"
     },
     {
@@ -5561,7 +5562,8 @@
       "kind": "decision",
       "seq": 222,
       "text": "hv in vc's window, after the move (read 15:40:03Z by date -u), hv's words: \"Ok, you've still got The Desk. Fire everyone up again please.\" devbin's hold on hv's 13:22Z word lifts: dc runs 0359-1's light probe, then one stack ask for 0360-1 and 0359-1; cc builds 0364-1 then 0365-1 as one stack (shape agreed). vc keeps the Desk; every estate is told it is open (order on contention: decision 210).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T17:25:41.619Z",
       "recorded_at": "2026-11-17T15:40:12.480Z"
     },
     {
