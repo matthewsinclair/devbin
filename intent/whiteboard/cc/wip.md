@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 06:00Z
+heartbeat_at: 2026-11-17 06:10Z
 status: active
-focus: "Booted 2026-11-17 06:00Z by date -u; holding for vc's instructions on hv's word in cc's window ('finish booting and then hold for instructions from VC'). Nothing live, unbanked, booked or running. Claim ISSUE:0326 stands (pplr#0001 and cldr#0001 open at the 03:55Z fold). refs/bank/cc/0353-1 kept until vc says."
+focus: "2026-11-17 06:09Z by date -u: 0.1.26's note is on main at 9655ccf5 for dc's pre-cut kit; 0326 stays open (pplr#0001 and cldr#0001 OPEN, ccusage#0007 closed), claim kept. Holding for vc's next word; nothing live, unbanked, booked or running."
 claims: [ISSUE:0326]
 ---
 
