@@ -1,0 +1,15 @@
+{
+  "id": "01M7MVZBH9B8Z52XC2J68ACBRW",
+  "ts": "2026-11-17T13:43:35.721Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0364-1 then 0365-1, one stack and one ask, with picks and shapes agreed by vc (2026-11-17): held until vc's word, which comes once hv has spoken (hv is closing up for a move; devbin holds on hv's 13:22Z word). 0364: a gate whose first word is release is refused as config, through one predicate shared with pre-flight's 0327 case. 0365: docs only, naming the built-ins a cut reaches through bin/devbin. The plan, with vc's three notes and the run's files, is in cc's scratch at i0364/PLAN.md."
+  }
+}

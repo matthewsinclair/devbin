@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 13:29Z
+heartbeat_at: 2026-11-17 13:43Z
 status: active
-focus: "2026-11-17 13:29Z by date -u: back from hv's compact; holding for vc's word. 0364 and 0365 are cc's on hv's word; on the bounce their pick and shape go to vc before any build. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing live, unbanked, booked or running."
+focus: "2026-11-17 13:43Z by date -u: holding for vc's word, which comes once hv has spoken (hv is closing up for a move). 0364 and 0365's picks and shapes are agreed with vc as one stack, 0364-1 then 0365-1 (hold 40). Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing live, unbanked, booked or running."
 claims: [ISSUE:0326, ISSUE:0364, ISSUE:0365]
 ---
 
@@ -17,12 +17,11 @@ _(none)_
 
 ## TODO
 
-- 0364 (medium), cc's on hv's word (13:22Z, through vc): a release.gates entry whose first word is release runs a release verb inside the cut's own gates, the hole 0327 closed for release.preflight. On the bounce, its pick and shape go to vc before any build.
-- 0365 (low), cc's on hv's word (13:22Z, through vc): the cut and the macOS stage call devbin's built-ins through the project's launcher, so a project command at one of those names stands in for the core's verb (0335's shadow class). On the bounce, its pick and shape go to vc before any build.
+_(none)_
 
 ## Holds
 
-_(none)_
+- 0364-1 then 0365-1, one stack and one ask, with picks and shapes agreed by vc (2026-11-17): held until vc's word, which comes once hv has spoken (hv is closing up for a move; devbin holds on hv's 13:22Z word). 0364: a gate whose first word is release is refused as config, through one predicate shared with pre-flight's 0327 case. 0365: docs only, naming the built-ins a cut reaches through bin/devbin. The plan, with vc's three notes and the run's files, is in cc's scratch at i0364/PLAN.md.
 
 ## Watch-outs
 
