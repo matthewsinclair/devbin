@@ -1,0 +1,15 @@
+{
+  "id": "01M7KTAE8C5GP205QS1JN3NWYG",
+  "ts": "2026-11-17T03:55:27.372Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-17 03:54Z by date -u, hv's words: \"Can you tell all tell all claudes here across the whole estate to bank, fold, and hold. I need to move. The wait for instructions.\" Done: Desk held at 03:54Z (hold 01M7KT90EE42BZ2FN273ZWNTMJ: no grant until hv's next word); every live interactive session on rhadamanth told by message (devbin cc and dc, and the Laksa, Webber, agentic-engineering, Ccusage and Prodinfra seats), rhadamanth-sysadm asked to relay to any vc cannot reach. Since decision 197: 0353-1 landed at a6d261e1 (cc closed 0353 at 035ab6ce), so 0.1.26 carries 0357-7, 0361-1, 0356-1 and 0353-1; Laksa's second deploy done (v47, 239f40464); Webber ST0006/23's gates green at 62e42c9b, its three iOS 26.5 floor reds shown to be main's; webber-dc's Fly deploy ask 01M7K0MGZSMKW23YB3SMCKF4RF held for hv's sitting and go. For hv: Spotlight (corespotlightd, spotlightknowledged) drove rhadamanth's load past 30 twice; whether rhadamanth-sysadm looks at it is hv's call."
+  }
+}
