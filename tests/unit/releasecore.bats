@@ -1632,3 +1632,21 @@ YAML
   assert_success
   assert_output "1.4.0"
 }
+
+@test "0368-1: a remote call killed at its bound leaves nothing in its caller's TMPDIR, release_git_remote's file for git's words included" {
+  local repo="$DEVBIN_TEST_TMPDIR/h368" tmp="$DEVBIN_TEST_TMPDIR/caller-tmp" left
+  mkdir -p "$tmp"
+  git init -q --bare -b main "$repo.git"
+  git init -q -b main "$repo"
+  git -C "$repo" -c user.name=t -c user.email=t@t commit -q --allow-empty -m r
+  git -C "$repo" remote add origin "$repo.git"
+  # The hook outlasts the bound, so the deadline kills the call while git's
+  # words are still being taken into release_git_remote's file.
+  printf '#!/bin/sh\necho "hook: waiting" >&2\nsleep 20\n' >"$repo/.git/hooks/pre-push"
+  chmod +x "$repo/.git/hooks/pre-push"
+  run env TMPDIR="$tmp" bash -c 'set -euo pipefail; . "$1/helpers"; . "$1/release.notes"; . "$1/release.steps"; cd "$2"; rc=0; release_run_bounded 1 "$3/out" "$3/err" release_git_remote push -q origin HEAD:refs/heads/main || rc=$?; printf "rc %s\n" "$rc"' _ "$DEVBIN_LIB_DIR" "$repo" "$DEVBIN_TEST_TMPDIR" 3>&-
+  assert_success
+  assert_output_contains "rc 124"
+  left="$(ls -A "$tmp")"
+  [ -z "$left" ] || fail "the killed call left in its caller's TMPDIR: ${left//$'\n'/, }"
+}

@@ -3573,9 +3573,10 @@ SH
 }
 
 # release_scratch_count <dir> -- how many of the release code's scratch
-# directories (devbin-release.*, devbin-wait.*, devbin-ci.*) stand in <dir> now.
+# directories (devbin-release.*, devbin-wait.*, devbin-ci.*, and a bounded
+# call's own devbin-call.*) stand in <dir> now.
 release_scratch_count() {
-  find "$1" -maxdepth 1 \( -name 'devbin-release.*' -o -name 'devbin-wait.*' -o -name 'devbin-ci.*' \) | wc -l | tr -d ' '
+  find "$1" -maxdepth 1 \( -name 'devbin-release.*' -o -name 'devbin-wait.*' -o -name 'devbin-ci.*' -o -name 'devbin-call.*' \) | wc -l | tr -d ' '
 }
 
 @test "a hung query's whole process group is killed: its own sleep is gone, and no scratch is left (ST0011 WP02b)" {
@@ -3586,10 +3587,12 @@ release_scratch_count() {
   # query lists that directory while it hangs, and that is the control: the
   # scratch really lands where this arm counts, so a clean count after it is the
   # release code tidying up, not the arm watching a directory nothing writes to.
+  # The query names that directory by its path, not as its own TMPDIR: a bounded
+  # call runs with a TMPDIR of its own inside it (0368).
   local scratch="$DEVBIN_TEST_TMPDIR/release-tmp"
   mkdir -p "$scratch"
-  printf 'ls "$TMPDIR" >"%s/during.ls"\nsleep 60 &\necho $! >"%s/sleep.pid"\nwait\n' \
-    "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR" >"$DEVBIN_TEST_TMPDIR/ciq.sh"
+  printf 'ls "%s" >"%s/during.ls"\nsleep 60 &\necho $! >"%s/sleep.pid"\nwait\n' \
+    "$scratch" "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR" >"$DEVBIN_TEST_TMPDIR/ciq.sh"
   local before after start=$SECONDS
   # EVERY SCRATCH NAME THE RELEASE CODE MAKES, not only the query's own: since
   # RELEASE_WAIT_DIR the verdict's scratch is the wait's (devbin-wait.*), so an
@@ -3599,7 +3602,7 @@ release_scratch_count() {
   assert_stopped_at legs
   [ $((SECONDS - start)) -lt 30 ] || fail "the hung query held the run for $((SECONDS - start))s"
   ! kill -0 "$(cat "$DEVBIN_TEST_TMPDIR/sleep.pid")" 2>/dev/null || fail "the query's own sleep outlived the bound"
-  grep -q -E '^devbin-(wait|ci)\.' "$DEVBIN_TEST_TMPDIR/during.ls" ||
+  grep -q -E '^devbin-(wait|ci|call)\.' "$DEVBIN_TEST_TMPDIR/during.ls" ||
     fail "the hung query saw no release scratch in its TMPDIR, so the count below watches a directory the release code does not write to: $(cat "$DEVBIN_TEST_TMPDIR/during.ls" 2>&1)"
   after="$(release_scratch_count "$scratch")"
   [ "$after" -le "$before" ] || fail "a scratch directory was left: $before before, $after after"

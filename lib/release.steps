@@ -982,8 +982,8 @@ release_tag_reuse_note() {
 # A FILE, NEVER A PIPE. $(...) waits for every holder of its pipe, not for git:
 # a hook's background job holds git's stderr past git's exit, and held a push
 # that had landed until its bound fired. A call killed at its bound
-# (release_run_bounded) prints none of what it said and leaves its file under
-# TMPDIR.
+# (release_run_bounded) prints none of what it said, and its file goes with the
+# TMPDIR that call was given, which release_run_bounded removes (issue 0368).
 release_git_remote() {
   local err said rc=0
   local -a urls=()
@@ -2358,11 +2358,23 @@ release_stopped_status() {
 # The core's own calls never ask -- release_git_remote turns git's prompt off
 # and runs ssh in batch mode, and gh runs with GH_PROMPT_DISABLED -- so only a
 # person's own GIT_SSH program or git hook can reach this.
+#
+# THE CALL HAS A TMPDIR OF ITS OWN (issue 0368), made under the caller's and
+# removed once the call has ended, the deadline's kill included, so what a
+# call killed at its bound left there goes with it: release_git_remote's file
+# for git's words, and any of a hook's or a query's. No caller reads a file
+# under TMPDIR once the call returns: each reads the <out> and <err> it named,
+# and a reader's scratch is its wait's (RELEASE_WAIT_DIR). Where no directory
+# can be made, the call is not made, saying why, as release_git_remote's is.
 release_run_bounded() {
-  local seconds="$1" out="$2" err="$3" fired="$3.deadline" group="$3.group" pid watchdog rc=0
+  local seconds="$1" out="$2" err="$3" fired="$3.deadline" group="$3.group" pid watchdog rc=0 call_tmp
   shift 3
+  if ! call_tmp="$(mktemp -d "${TMPDIR:-/tmp}/devbin-call.XXXXXX")"; then
+    warn "release: cannot make a directory under ${TMPDIR:-/tmp} for the call to run in, so it was not made"
+    return 1
+  fi
   rm -f "$fired"
-  release_group_start "$out" "$err" "$group" "$@"
+  TMPDIR="$call_tmp" release_group_start "$out" "$err" "$group" "$@"
   pid=$!
   (
     sleeper=""
@@ -2385,6 +2397,10 @@ release_run_bounded() {
   kill -TERM "$watchdog" 2>/dev/null || true
   wait "$watchdog" 2>/dev/null || true
   rm -f "$group"
+  # Tolerated: a call may leave a directory it cannot be read or entered in;
+  # the rm that follows is the one that must hold, and says so when it fails.
+  chmod -R u+rwX "$call_tmp" 2>/dev/null || true
+  rm -rf "$call_tmp" || warn "release: the call's directory $call_tmp could not be removed (above)"
   if [ -f "$fired" ]; then
     rm -f "$fired"
     return 124

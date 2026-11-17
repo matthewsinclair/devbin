@@ -331,6 +331,18 @@ devbin_setup() {
   DEVBIN_ORIGINAL_PWD="$(pwd)"
   export DEVBIN_ORIGINAL_PWD
 
+  # EACH TEST HAS A TMPDIR OF ITS OWN (issue 0368), made beside its
+  # DEVBIN_TEST_TMPDIR and removed with it by devbin_teardown, so nothing a
+  # test runs leaves an entry in the TMPDIR the suite was started with: an
+  # update notice's stamp from a command run on a pty, a file a call killed at
+  # its bound left, a tool's own cache. Beside it, not inside it: a test that
+  # makes DEVBIN_TEST_TMPDIR a repository would read a TMPDIR inside it as a
+  # path git does not ignore. A test that sets TMPDIR itself still does.
+  DEVBIN_ARM_TMPDIR="$(mktemp -d "${TMPDIR:-/tmp}/devbin-tmp.XXXXXX")" ||
+    fail "cannot make a TMPDIR for the test under ${TMPDIR:-/tmp}"
+  DEVBIN_ARM_TMPDIR="$(cd -P "$DEVBIN_ARM_TMPDIR" >/dev/null 2>&1 && pwd -P)"
+  export DEVBIN_ARM_TMPDIR TMPDIR="$DEVBIN_ARM_TMPDIR"
+
   devbin_isolate_run || return 1
 
   cd "$DEVBIN_TEST_TMPDIR" || return 1
@@ -479,6 +491,21 @@ devbin_teardown() {
     */devbin-test.*) rm -rf "$DEVBIN_TEST_TMPDIR" ;;
     *)
       echo "test_helper: refusing to remove unexpected DEVBIN_TEST_TMPDIR=$DEVBIN_TEST_TMPDIR" >&2
+      ;;
+  esac
+  # The test's own TMPDIR (devbin_setup), guarded the same way. Made writable
+  # first, as a test's tree may hold a directory it could not otherwise empty.
+  case "${DEVBIN_ARM_TMPDIR:-}" in
+    "") : ;;
+    */devbin-tmp.*/*)
+      echo "test_helper: refusing to remove unexpected DEVBIN_ARM_TMPDIR=$DEVBIN_ARM_TMPDIR" >&2
+      ;;
+    */devbin-tmp.*)
+      chmod -R u+rwX "$DEVBIN_ARM_TMPDIR" 2>/dev/null || true
+      rm -rf "$DEVBIN_ARM_TMPDIR"
+      ;;
+    *)
+      echo "test_helper: refusing to remove unexpected DEVBIN_ARM_TMPDIR=$DEVBIN_ARM_TMPDIR" >&2
       ;;
   esac
 }
