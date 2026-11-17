@@ -1,0 +1,15 @@
+{
+  "id": "01M7M631R6VH51EF7F216M4RH3",
+  "ts": "2026-11-17T07:21:08.102Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126) at f18a7a7c, on vc's word that Ccusage v0.1.10 is tagged (decision 201): tree pointed; ask-precut.sh asks the bats lane; the id and the driver go to vc before START; the waiter starts the slot at vc's grant and releases it at the driver's exit; nothing in canon from the grant to END."
+  }
+}

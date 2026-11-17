@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "4da27407-803e-4926-9362-be942283eae4",
-    "heartbeat_at": "2026-11-17T06:15:19.166Z",
+    "heartbeat_at": "2026-11-17T07:21:13.136Z",
     "status": "active",
-    "focus": "0.1.26's pre-cut kit built in scratch (pc0126), not run. Hold 42: the run waits for Ccusage's 0.1.10 tag (decision 199), then vc names main's tip for point-precut.sh. Nothing booked or running.",
+    "focus": "0.1.26's pre-cut (pc0126) at f18a7a7c: asking the bats lane; the driver goes to vc before START; nothing in canon from the grant to END (doing 79).",
     "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -1841,9 +1841,18 @@
       "kind": "hold",
       "seq": 42,
       "text": "0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126, built and not run) holds until vc says Ccusage's 0.1.10 cut has its tag (decision 199: Ccusage first). Already met: cc's note is on main at 9655ccf5, and the Desk is re-taken with hv's hold lifted. Then point-precut.sh at main's tip as vc names it, ask-precut.sh, and the id with the driver to vc before START.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T07:21:07.897Z",
       "recorded_at": "2026-11-17T06:10:03.370Z",
       "edited_at": "2026-11-17T06:13:51.936Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 79,
+      "text": "0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126) at f18a7a7c, on vc's word that Ccusage v0.1.10 is tagged (decision 201): tree pointed; ask-precut.sh asks the bats lane; the id and the driver go to vc before START; the waiter starts the slot at vc's grant and releases it at the driver's exit; nothing in canon from the grant to END.",
+      "state": "live",
+      "recorded_at": "2026-11-17T07:21:08.102Z"
     }
   ],
   "sent": [
@@ -3597,6 +3606,11 @@
       "id": "01M7M3FTRPMAVTBVQQJQ0QW8AZ",
       "sender": "vc",
       "handled_at": "2026-11-17T06:36:03.361Z"
+    },
+    {
+      "id": "01M7M617BEDGE4K4NNK600V508",
+      "sender": "vc",
+      "handled_at": "2026-11-17T07:21:12.933Z"
     }
   ]
 }

@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 06:15Z
+heartbeat_at: 2026-11-17 07:21Z
 status: active
-focus: "0.1.26's pre-cut kit built in scratch (pc0126), not run. Hold 42: the run waits for Ccusage's 0.1.10 tag (decision 199), then vc names main's tip for point-precut.sh. Nothing booked or running."
+focus: "0.1.26's pre-cut (pc0126) at f18a7a7c: asking the bats lane; the driver goes to vc before START; nothing in canon from the grant to END (doing 79)."
 claims: []
 ---
 
@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-_(none)_
+- 0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126) at f18a7a7c, on vc's word that Ccusage v0.1.10 is tagged (decision 201): tree pointed; ask-precut.sh asks the bats lane; the id and the driver go to vc before START; the waiter starts the slot at vc's grant and releases it at the driver's exit; nothing in canon from the grant to END.
 
 ## TODO
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- 0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126, built and not run) holds until vc says Ccusage's 0.1.10 cut has its tag (decision 199: Ccusage first). Already met: cc's note is on main at 9655ccf5, and the Desk is re-taken with hv's hold lifted. Then point-precut.sh at main's tip as vc names it, ask-precut.sh, and the id with the driver to vc before START. (edited)
+_(none)_
 
 ## Watch-outs
 
