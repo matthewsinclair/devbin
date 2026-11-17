@@ -2557,18 +2557,21 @@ EOF2
 
 @test "traps_restore puts back the handlers trap -p saved and resets every other signal named, so a caller that saved one alone gets the others back at the default (0311)" {
   # In a shell of its own, so the traps set and read are that shell's. TERM,
-  # HUP and USR1, never INT: bash starts a background job with INT ignored, and
-  # a signal ignored on entry cannot be trapped, so an INT handler set here
-  # would never take under a launcher that backgrounds the suite.
+  # USR1 and USR2, never INT or HUP: a signal ignored on entry to bash cannot be
+  # trapped or reset there, and launchers ignore both. bash starts a background
+  # job, as bats --jobs runs an arm, with INT ignored, and nohup starts its
+  # command and every descendant with HUP ignored, so `trap - HUP` never took
+  # under a suite started with nohup. No launcher ignores USR2, and
+  # traps_restore treats every signal alike.
   run bash -c "set -euo pipefail
     . '$DEVBIN_LIB_DIR/helpers'
     trap 'echo caught' TERM
-    saved=\"\$(trap -p TERM HUP USR1)\"
-    trap '' TERM HUP USR1
-    traps_restore \"\$saved\" TERM HUP USR1
-    printf 'TERM[%s] HUP[%s] USR1[%s]\\n' \"\$(trap -p TERM)\" \"\$(trap -p HUP)\" \"\$(trap -p USR1)\""
+    saved=\"\$(trap -p TERM USR1 USR2)\"
+    trap '' TERM USR1 USR2
+    traps_restore \"\$saved\" TERM USR1 USR2
+    printf 'TERM[%s] USR1[%s] USR2[%s]\\n' \"\$(trap -p TERM)\" \"\$(trap -p USR1)\" \"\$(trap -p USR2)\""
   assert_success
-  assert_output_contains "TERM[trap -- 'echo caught' SIGTERM] HUP[] USR1[]"
+  assert_output_contains "TERM[trap -- 'echo caught' SIGTERM] USR1[] USR2[]"
 }
 
 @test "0355: git_head_identity leaves RELEASE_UNREAD's paths out of +dirty, a whole segment at a time and letter for letter, reads any dirt as +dirty with the list empty, and lib/helpers clears an inherited RELEASE_UNREAD as it loads" {
