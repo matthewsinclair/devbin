@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "4da27407-803e-4926-9362-be942283eae4",
-    "heartbeat_at": "2026-11-17T13:31:04.775Z",
+    "heartbeat_at": "2026-11-17T16:56:00.055Z",
     "status": "active",
-    "focus": "2026-11-17 13:31Z by date -u: back from hv's compact; holding for vc's word (hold 45). 0360-1 and 0359-1 are banked (refs/bank/dc/0360-1, refs/bank/dc/0359-1); on the bounce, 0359-1's light probe, then one stacked formal run. Nothing live, asked, booked or running.",
+    "focus": "2026-11-17 16:55Z by date -u: 0360-1 then 0359-1 green at 2a02271a in dc's k36t on main c614b4c6 (decision 222's rerun, 01M7N6FT4DDY0ZFBG05PR7MF1C); handed to vc to land. 0366 and 0367 next (decision 223).",
     "claims": [
       "ISSUE:0360",
       "ISSUE:0359"
@@ -1924,9 +1924,10 @@
       "node": "dc",
       "kind": "todo",
       "seq": 70,
-      "text": "0366 to 0369 (low), filed from vc's todo 214, are dc's for 0.1.27; 0364 and 0365 went to cc on hv's word (13:22Z).",
+      "text": "0366 and 0367 (low), filed from vc's todo 214, are dc's for 0.1.27, after the 0360-1 and 0359-1 stack; 0364 and 0365 went to cc on hv's word (13:22Z), 0368 and 0369 on hv's word (decision 223).",
       "state": "live",
-      "recorded_at": "2026-11-17T13:24:10.553Z"
+      "recorded_at": "2026-11-17T13:24:10.553Z",
+      "edited_at": "2026-11-17T16:54:31.715Z"
     }
   ],
   "sent": [

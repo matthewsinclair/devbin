@@ -1,0 +1,16 @@
+{
+  "id": "01M7N6WZ130EZG175ABTJM3RFK",
+  "ts": "2026-11-17T16:54:31.715Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 70,
+    "text": "0366 and 0367 (low), filed from vc's todo 214, are dc's for 0.1.27, after the 0360-1 and 0359-1 stack; 0364 and 0365 went to cc on hv's word (13:22Z), 0368 and 0369 on hv's word (decision 223)."
+  }
+}
