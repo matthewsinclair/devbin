@@ -5422,7 +5422,8 @@
       "kind": "decision",
       "seq": 207,
       "text": "0355-1's shape, vc's word to dc by 2026-11-17 10:39Z by date -u, one unit. (A) The gates are handed the commit they were started for and refuse before any gate runs when HEAD is not it, naming both shas and saying no gate ran (Ccusage 0.1.10's 06:57Z run ran all four gates on a doc commit that landed after the release commit, and gates_sealed's refusal never named the moved HEAD). The four refusals that blamed a gate or a pre-flight command now say only what the code knows: the tree changed, or HEAD moved, while the gates ran, by a gate or another session in the checkout. (B) A release key lists paths no gate reads, empty by default, with the core naming no path. The gates' tree check and pre-flight's read the one list; it covers new untracked files under a listed path; an excluded path that changed is named in the run's record and refuses nothing; and HEAD's check stands, so with the list set the bar during a cut is no commit, not no pickup, touch or commit. dc reads the cut's later steps for another tree-clean refusal on the same paths. devbin's own config.yaml opts in, in the same unit (intent/whiteboard/ and intent/.canon/events/). vc sends the adoption notice to every estate with a whiteboard after it lands. Filed by dc at c478a902: 0364 to 0369, todo 214's findings.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T13:24:08.694Z",
       "recorded_at": "2026-11-17T10:39:24.753Z"
     },
     {
@@ -5430,7 +5431,8 @@
       "kind": "decision",
       "seq": 208,
       "text": "0355-1 takes all six places dc found under decision 207's condition (4), vc's word to dc: the GATES seal (git_head_identity's +dirty, read back by gates_sealed), pre-flight's tree rule and the stamp step, the commit step and release_read_clean, release gates and its --leg, and the macOS stage's app-sign and bin-sign; the tag, the pushes, the formula, the object and after check no tree. One reader of release.unread at each process entry that needs it (the cut, release gates, the macos verbs) sets one shell variable, never exported; the GATES seal is run_gate's around release_gates_run in the cut's own shell, so it sees it. git_head_identity leaves listed paths out of +dirty through git's pathspec excludes, and the commit step never commits a listed path, which closes today's hazard of a peer's write reaching the release commit. Every run whose list is non-empty names it and every listed path it found dirty or changed; with the list empty every read is today's. The smaller choice was refused: it keeps a pickup bar from the booking to the gates' start, the bar molt#0100 paid for. devbin's own bar loosens to no commit during a cut once 0.1.27 is out and swept.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T13:24:08.916Z",
       "recorded_at": "2026-11-17T10:44:24.921Z"
     },
     {
@@ -5482,7 +5484,8 @@
       "kind": "decision",
       "seq": 214,
       "text": "cc's first 0.1.27 stack landed on main by land-stack.sh, 2026-11-17 11:50Z to 11:51Z by date -u: 0354-1 at 5b084053 (use's rehash line) and 0352-1 at ad3c9a12 (release target), each by its own paths and sealed message through the gate, the tree outside intent/ equal to the tested tip 0647d816. Two runs proved it: run 1 (01M7MK7XB7TV226TJM041ZQCQF, bats, 11:17Z to 11:41Z, at 78f8cf00), every red arm failed at its base and every leg green under BSD and GNU but releasecore's 0240 defaults arm, which pinned release.verbs' default without target, a moved arm 0352-1 owed; and run 2 (01M7MN3A73WF65M7ZPNMQJGCJV, 11:44Z to 11:49Z, at the amended 0647d816, only releasecore.bats changed), releasecore 55 of 55 under BSD and GNU and test scans 61 of 61, run 1's other records standing for the unchanged code. cc filed 0371 (release_versions reads a doubled-{version} tag differently, low). dc bases 0355-1 on ad3c9a12; cc's second stack (0370-1, 0358-1, 0363-1) runs on 0647d816 and lands with LAND_BASE_OFF_MAIN=1.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T13:24:09.161Z",
       "recorded_at": "2026-11-17T11:51:49.123Z"
     },
     {
@@ -5498,7 +5501,8 @@
       "kind": "decision",
       "seq": 215,
       "text": "cc's second 0.1.27 stack landed on main by land-stack.sh with LAND_BASE_OFF_MAIN=1 (its base 0647d816 is carried on main as ad3c9a12 with the same tree, and its files were unmoved there), 2026-11-17 12:02Z by date -u: 0370-1 at 361cbf31 (--help after a declared option's run: line of any command), 0358-1 at e9ae374a (the guide line, configuration.md's step 6, and 0362's line on new's page) and 0363-1 at 7dee5e4c (infra's dashed handles), the tree outside intent/ equal to the tested tip 9f4d40d8. Its one run (01M7MN581DQ20NSCPEW4Q7FEE7, bats, 11:49Z to 12:00Z): every red arm failed at its base for its reason, every leg green under BSD and GNU, test scans 61 of 61. That lands all of cc's 0.1.27 list; cc takes 0371 next. It shares docs/configuration.md with dc's 0355-1, whose formal run (01M7MNTYT5PX28MS5AQ233PM3T) was granted bats at 12:01:22Z, ahead of Intent's kovacs rehearsal, which could not start beside another estate's run and ranks below devbin (decision 158). When it is green, 0355-1 rebases onto main with a short run of its legs that read docs/configuration.md, the long run's records standing for the rest. Webber's seeded-accounts gates take gyges as overflow (decision 190) when webber-cc's critic pass clears.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T13:24:09.396Z",
       "recorded_at": "2026-11-17T12:03:26.541Z"
     },
     {
@@ -5506,7 +5510,8 @@
       "kind": "decision",
       "seq": 216,
       "text": "dc's 0355-1 formal run (01M7MNTYT5PX28MS5AQ233PM3T, bats, 12:01Z to 12:23Z by date -u, at 1ffa9d74 on ad3c9a12) ended red on two counts: the red phase as wanted (cut 15 red with its 3 named green at the base, core 2, helpers 1, macos 2), 25 of 26 green legs whole under BSD and GNU, test scans 61 of 61 against the tree's 61 treescan tags, but green-macos-gnu read 65 of 66 where BSD read 66 of 66, and check lint found 1 breach. dc reads and fixes both; its next run, at a tip rebased over cc's second stack, covers the fixes, the macos file whole under BSD and GNU, lint, the seven docs/configuration.md readers (four of them missed by the long run, dc's own finding) and test scans, the long run's records standing for the rest. cc's 0371-1 shares four files with 0355-1 and waits for its landing. Desk: Intent's kovacs rehearsal (01M7MN381JZPKM1F7BJST43J70) was granted heavy at 12:24:03Z on a quiet rhadamanth, nothing else granted there until its END (Intent's hv decision 45); Webber's seeded-accounts gates run on gyges (decision 190). Queued after it on rhadamanth: another estate's cold run, Intent's 3.4.0 build and that estate's ST0004/16 bank, on cargo in the order asked, and dc's 0355-1 rerun on bats.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T13:24:09.621Z",
       "recorded_at": "2026-11-17T12:24:27.858Z"
     },
     {
@@ -5514,7 +5519,8 @@
       "kind": "decision",
       "seq": 217,
       "text": "dc's 0355-1 landed on main at 9006e0a8 by land-stack.sh, 2026-11-17 12:47Z by date -u, the tree outside intent/ equal to the tested tip d9f84189. The first try at 12:44Z was refused safely at HEAD's lock when dc's board commit 9b8b9770 crossed it; vc restored the unit's 13 paths to HEAD, nothing staged, and re-ran it whole. Two runs proved it: the long run at 1ffa9d74 (the red phase as wanted, 25 of 26 green legs, scans 61 of 61) and the short run at d9f84189 rebased past cc's second stack, 10 files whole under BSD and GNU (macos, the seven docs/configuration.md readers, and use and tool for the rename's callers), scans 61 of 61 and check lint 0 breaches. It carries release.unread (the gates, the seal, pre-flight, the stamp and commit steps, release gates and --leg, and the macOS signing read the list, proved in four listed-and-control pairs), the gates' refusal of a HEAD that moved before they ran, and two fixes beside it: 0336's leg arm's pre-existing GNU cp race in macos.bats's fixture, and main's check lint red since 5b084053 (0354-1's use_rehash_note arrays clashing through the source with lib/cmd/release's strings), fixed by the _urn_ prefix. The limit for 0.1.27's note: a project's own macos.build that stamps +dirty from its own git read is outside the core's reach. cc's 0371-1 now rebases onto 9006e0a8; dc takes 0360-1 then 0359.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T13:24:10.015Z",
       "recorded_at": "2026-11-17T12:47:30.309Z"
     },
     {
@@ -5538,8 +5544,17 @@
       "kind": "decision",
       "seq": 220,
       "text": "cc's 0371-1 landed on main at 8234f074 by land-stack.sh, 2026-11-17 13:06Z by date -u, the tree outside intent/ equal to the tested tip 0d26574b: release.tag's rule takes {version} once (of 26 estate configs only Utilz declares release.tag, as \"{version}\", so it refuses nothing in use), and release_versions reads each tag through release_tag_version, the one reading. Its run (01M7MRTVQT5W15K8GM4KSXCN6N, bats, 12:57Z to 13:06Z, at 0d26574b rebased onto 0355-1's landing): both red arms failed at 9006e0a8, releasecore 58, formula 51, releasecut 17 and releaselegs 2 green under BSD and GNU, test scans 61 of 61, check lint 0 breaches. With it every devbin 0.1.27 issue cc held is on main (0354, 0352, 0370, 0358, 0362, 0363, 0371); dc holds 0360 then 0359, then 0364 to 0369, and whether cc takes any of those is hv's line (decision 16).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T13:24:10.380Z",
       "recorded_at": "2026-11-17T13:07:13.428Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 221,
+      "text": "hv in vc's window, read 2026-11-17 13:22Z by date -u, hv's words: \"Ok, context is high here on devbin-*, so while we wait, lets finish what is currently running as a live task, then bank the bankable, and then localfold+compact. Then we can hold for now once that is all done.\" then \"This is a context emergency. Localfold+compact now.\" Before them, hv's TUI answer, the recommendation: cc takes 0364 and 0365 (pick and shape to vc first); dc keeps 0360, 0359 and 0366 to 0369 (decision 16's line). Done: cc and dc told to bank, localfold, compact and hold; dc's 0360-1 run ask denied for the fold, 0360-1 (785f02de) and 0359-1 (bb53005c) to run as one stack on the bounce. On main for 0.1.27: 0354-1, 0352-1, 0370-1, 0358-1, 0363-1, 0355-1 (9006e0a8) and 0371-1 (8234f074). Creator's Fly deploy is live as webber-app release v1 at main 78757ca3 after a one-line Dockerfile fix. The Desk's state at the fold is in ~/Devel/scratch/devbin-vc/0.1.27/STATE.md.",
+      "state": "live",
+      "recorded_at": "2026-11-17T13:24:10.724Z"
     }
   ],
   "sent": [

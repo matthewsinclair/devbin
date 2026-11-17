@@ -1,0 +1,15 @@
+{
+  "id": "01M7MTVSV4SC14FYEQZF90BP8C",
+  "ts": "2026-11-17T13:24:10.724Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-17 13:22Z by date -u, hv's words: \"Ok, context is high here on devbin-*, so while we wait, lets finish what is currently running as a live task, then bank the bankable, and then localfold+compact. Then we can hold for now once that is all done.\" then \"This is a context emergency. Localfold+compact now.\" Before them, hv's TUI answer, the recommendation: cc takes 0364 and 0365 (pick and shape to vc first); dc keeps 0360, 0359 and 0366 to 0369 (decision 16's line). Done: cc and dc told to bank, localfold, compact and hold; dc's 0360-1 run ask denied for the fold, 0360-1 (785f02de) and 0359-1 (bb53005c) to run as one stack on the bounce. On main for 0.1.27: 0354-1, 0352-1, 0370-1, 0358-1, 0363-1, 0355-1 (9006e0a8) and 0371-1 (8234f074). Creator's Fly deploy is live as webber-app release v1 at main 78757ca3 after a one-line Dockerfile fix. The Desk's state at the fold is in ~/Devel/scratch/devbin-vc/0.1.27/STATE.md."
+  }
+}
