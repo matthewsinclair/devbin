@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "19c73785-15df-40b2-b812-765f3bba42d9",
-    "heartbeat_at": "2026-11-17T17:25:53.746Z",
+    "heartbeat_at": "2026-11-17T18:12:54.731Z",
     "status": "active",
-    "focus": "2026-11-17 17:25Z by date -u: localfold for hv's compact. 0364 and 0365 are landed and closed. 0369-1 and 0368-1 are built, banked at refs/bank/cc/ and asked (01M7N79M7DJB05YRTAWJ2KGAQS, driver read by vc): on the bounce, start on vc's GO after its grant (hold 41). Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing running.",
+    "focus": "2026-11-17 18:12Z by date -u: booted after hv's compact; 0369-1/0368-1 stack banked, ask 01M7N79M7DJB05YRTAWJ2KGAQS held for vc's grant and GO after Webber's run",
     "claims": [
       "ISSUE:0326",
       "ISSUE:0368",
