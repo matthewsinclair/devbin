@@ -1,0 +1,15 @@
+{
+  "id": "01M7MHAEQDYZGH6BMCMBG71B1B",
+  "ts": "2026-11-17T10:37:25.101Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "0352's shape, vc's word to cc 2026-11-17 by 10:37Z by date -u on cc's pick; ic has never run, so it stands on cc's design and vc's word. bin/devbin release target [--ref <ref>] is read only (config and tree; no tags, no network, no lock, no write) and prints DEVBIN_RELEASE_VERSION and DEVBIN_RELEASE_TARGET_TAG, the pair a cut hands its project's own commands (lib/release.steps:662, release.md:140), from the one function gates_verb uses. With --ref it prints only on this release's candidate branch or its tag, prints nothing and exits 0 on any other ref, and exits 1, naming both tags, on a candidate of another tag. target joins release.verbs' defaults, so Intent adds it when it adopts; adoption is a notice per estate once 0352 lands. 0354 takes cc's options 1 and 3 (a line in use's report and T5's text; no doctor change). Filed for 0.1.27: 0362 and 0363 by cc (c3377c71; 0362 rides 0358's unit, 0363 is cc's after 0358), 0364 to 0369 by dc (c478a902, todo 214's findings). cc's order: 0354, 0352, 0358 with 0362, then 0363. dc's: 0355, 0360, 0359."
+  }
+}
