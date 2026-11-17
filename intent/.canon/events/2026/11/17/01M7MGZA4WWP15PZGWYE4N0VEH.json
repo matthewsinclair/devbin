@@ -1,0 +1,15 @@
+{
+  "id": "01M7MGZA4WWP15PZGWYE4N0VEH",
+  "ts": "2026-11-17T10:31:19.965Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0363"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "infra's handle advisory flags the dashed handles infra init writes for two domains that share a first label"
+  }
+}

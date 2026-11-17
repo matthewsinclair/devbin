@@ -1,0 +1,15 @@
+{
+  "id": "01M7MH07MKAC94AXY66Q3606PD",
+  "ts": "2026-11-17T10:31:50.163Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0352 (medium, 0.1.27, vc's decision 205): the core's word on how a workflow the candidate push starts derives the release's version and tag. Its pick and shape go to vc before any build, since every Rust consumer's CI reads it."
+  }
+}

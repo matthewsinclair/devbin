@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 363,
+  "slug": "infra-s-handle-advisory-flags-the-dashed-handles",
+  "title": "infra's handle advisory flags the dashed handles infra init writes for two domains that share a first label",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-17",
+  "reporter": "Matthew Sinclair",
+  "body": "## What happened\n\nProdinfra reported this on 2026-11-15 (relayed by devbin-vc). Where two domains in a profile share a first label, eg `example.me` and `example.com`, `infra init` keys each by its whole name with the dots dashed, `example-me` and `example-com`: `infra_init_handles` in lib/infra.init gives both the dashed whole name rather than giving the second a suffix, so no handle records the order the domains were named in. Every `infra` verb that loads the profile, `check` among them, then validates it and prints, under \"infra: handles worth a second look (not an error):\", the line \"handle `example-me` does not look derived from `example.me`\", and the same for `example-com`. `infra_handle_matches_name` in lib/infra accepts a handle that is the first label, or one the FQDN contains, and a dashed whole name is neither. Reproduced at main on 2026-11-17 from the two functions alone: both dashed handles are flagged, and a lone domain's first-label handle is accepted.\n\n## Why it matters\n\nThe advisory exists to catch a handle that was not derived from its domain, and it flags the derivation devbin's own `init` chose. A profile `init` wrote, unedited, draws it on every run, so the operator learns to read past the one block meant to catch a real mismatch. It is a warning and never refuses, which is why it is low.\n\n## The fix\n\nThe check accepts the dashed whole name as a derivation, `${fqdn//./-}` in the report's words: the FQDN lowercased with each character outside `[a-z0-9_-]` dashed, as `infra_init_handles` writes it. One function gives that form to both `init` and the check, so the two cannot drift apart again. Filed for 0.1.27 on vc's decision 205.\n"
+}

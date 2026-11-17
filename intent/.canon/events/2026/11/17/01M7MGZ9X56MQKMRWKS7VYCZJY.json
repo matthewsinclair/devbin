@@ -1,0 +1,15 @@
+{
+  "id": "01M7MGZ9X56MQKMRWKS7VYCZJY",
+  "ts": "2026-11-17T10:31:19.719Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0362"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "new's page does not say that the stub search skips other work trees and every copy of devbin's runtime, as 0353's fix made it"
+  }
+}

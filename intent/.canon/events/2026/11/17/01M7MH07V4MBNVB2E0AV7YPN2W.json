@@ -1,0 +1,15 @@
+{
+  "id": "01M7MH07V4MBNVB2E0AV7YPN2W",
+  "ts": "2026-11-17T10:31:50.372Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0354 (low): use's line about the caller's shell hash; the options are in ~/Devel/scratch/devbin-cc/i0352/use-rehash.md."
+  }
+}
