@@ -1353,7 +1353,7 @@ EOF
 
 @test "0365-1: configuration.md names each built-in a cut reaches through bin/devbin, and the macOS page says a project's own macos replaces devbin's there too" {
   local para v
-  local -a verbs=('version set' 'ci-state --runs' 'ci-state --fires' 'macos leg' 'macos bin-publish' 'macos publish'
+  local -a verbs=('macos doctor' 'version set' 'ci-state --runs' 'ci-state --fires' 'macos leg' 'macos bin-publish' 'macos publish'
     'macos app-sign' 'macos bin-sign' 'macos app-notarize' 'macos bin-notarize' 'release attach' 'formula publish --pull')
   para="$(grep -F -- "**A cut reaches these built-ins of devbin's through the project's launcher, \`bin/devbin\`, so a project command at one of their names replaces it in the cut too** (issue 0365)" "$DEVBIN_HOME/docs/configuration.md")" ||
     fail "configuration.md has no paragraph naming the built-ins a cut reaches through bin/devbin"

@@ -3095,6 +3095,23 @@ cut_run() {
       legs_word="$(platform_word)" || legs_word=""
       [ "$legs_word" = macos ] ||
         refusals+=("the macOS stage is declared (commands.macos.enabled), and this host is ${legs_word:-one devbin has no platform word for} -- cut the release on a macOS host, where the stage signs and notarises what the macos: block declares at the release commit")
+      # THE STAGE'S INPUTS ARE READ BY macos doctor (issue 0366): the
+      # declaration, the tools, the Developer ID identity with a test-sign and
+      # the notary profile, asked through the launcher the stage's own macos
+      # leg runs through, so an expired identity or a dead notary profile
+      # refuses the cut here, before anything is stamped, and not at the stage
+      # after the release commit. Like the stage, it asks Apple: the
+      # test-sign's timestamp and a notarytool query. The build itself, and the
+      # signing of the release's own commit, are not rehearsed: their first run
+      # is the cut's.
+      if [ "$legs_word" = macos ]; then
+        local doc_out doc_rc=0 doc_said
+        doc_out="$(gate_exec "$launcher" macos doctor 2>&1)" || doc_rc=$?
+        if [ "$doc_rc" -ne 0 ]; then
+          doc_said="$({ grep -E 'MISSING|NOT USABLE|FAILED|REFUSED' <<<"$doc_out" || true; } | sed -E 's/^ +//; s/  +/ /g' | paste -sd ';' - | sed 's/;/; /g')"
+          refusals+=("the macOS stage's inputs are not ready: macos doctor exited $doc_rc${doc_said:+, naming $doc_said} -- ${DEVBIN_INVOKE:-bin/devbin} macos doctor says each")
+        fi
+      fi
       # THE STAGE'S PATHS MUST BE IGNORED BY GIT (issue 0313): macos.app, the
       # bundle the build leaves, which is the path of the build: artefact the
       # stage caches (cfg_macos_artefacts), and macos.build_root where it is

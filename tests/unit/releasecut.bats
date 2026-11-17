@@ -2639,6 +2639,17 @@ leg_rehearse() {
   rm -f "$DEVBIN_TEST_TMPDIR/gate.calls"
 }
 
+# macos_stub_doctor -- the line each stub macos handler here opens with, so a
+# cut's pre-flight, which asks the stage's inputs of `macos doctor` (issue
+# 0366), reads them ready: exit 0, unless macos.doctor-fail stands beside
+# macos.calls, when it prints that file, as the built-in prints its MISSING
+# and NOT USABLE lines, and exits 1. Logged nowhere, so macos.calls stays the
+# stage's own calls.
+macos_stub_doctor() {
+  printf '[ "$1" != doctor ] || { [ ! -e %q ] || { cat %q; exit 1; }; exit 0; }\n' \
+    "$DEVBIN_TEST_TMPDIR/macos.doctor-fail" "$DEVBIN_TEST_TMPDIR/macos.doctor-fail"
+}
+
 # legs_project [<host>...] -- after legs_env, cut_project with release.legs
 # naming the hosts given, in their order, near and far where none is given;
 # each one with a directory under HOSTS rehearsed at HEAD, as a cut's
@@ -2668,7 +2679,7 @@ legs_project() {
   mkdir -p "$proj/src"
   printf 'fn main() {}\n' >"$proj/src/main.rs"
   printf 'out/\n' >>"$proj/.gitignore"
-  create_test_command "$proj" macos "$(printf '#!/usr/bin/env bash\nprintf "%%s %%s\\n" "$1" "$(git rev-parse HEAD)" >>"%s/macos.calls"\n[ ! -e "%s/macos.fail" ] || { printf "the stub fails %%s\\n" "$1"; exit 3; }\n' "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR")" >/dev/null
+  create_test_command "$proj" macos "$(printf '#!/usr/bin/env bash\n%s\nprintf "%%s %%s\\n" "$1" "$(git rev-parse HEAD)" >>"%s/macos.calls"\n[ ! -e "%s/macos.fail" ] || { printf "the stub fails %%s\\n" "$1"; exit 3; }\n' "$(macos_stub_doctor)" "$DEVBIN_TEST_TMPDIR" "$DEVBIN_TEST_TMPDIR")" >/dev/null
   git -C "$proj" add -A
   git -C "$proj" commit -qm "remote legs and the macOS stage"
   git -C "$proj" push -q origin main
@@ -2900,6 +2911,33 @@ $output"; fi
   [ ! -e "$DEVBIN_TEST_TMPDIR/macos.calls" ] || fail "the stage ran: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
 }
 
+# THE STAGE'S INPUTS AT PRE-FLIGHT (issue 0366): a cut on macOS asks the
+# stage's inputs of macos doctor, through the launcher the stage's macos leg
+# runs through, so an expired identity or a dead notary profile refuses the cut
+# before anything is stamped, never at the stage after the release commit.
+@test "0366: pre-flight refuses a declared macOS stage whose inputs macos doctor reads as not ready, naming its lines, before anything is stamped, and a host that is not macOS is never asked" {
+  local head
+  legs_env
+  proj="$(legs_project)"
+  printf '%s\n' '  Developer ID          MISSING (no "Developer ID Application" identity in the login keychain)' \
+    '  demo-notary           NOT USABLE (notarytool could not query Apple under it)' >"$DEVBIN_TEST_TMPDIR/macos.doctor-fail"
+  head="$(git -C "$proj" rev-parse HEAD)"
+  export UNAME_STUB_OS=Darwin
+  DEVBIN_RELEASE_POLL_SECONDS=1 run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"the macOS stage's inputs are not ready: macos doctor exited 1, naming Developer ID MISSING (no \"Developer ID Application\" identity in the login keychain); demo-notary NOT USABLE (notarytool could not query Apple under it)"* ]] ||
+    fail "pre-flight does not refuse the stage's inputs, naming doctor's lines: $(row_of pre-flight)"
+  [ "$(git -C "$proj" rev-parse HEAD)" = "$head" ] || fail "the refused cut committed: $(git -C "$proj" log --oneline -3)"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/macos.calls" ] || fail "the stage ran: $(cat "$DEVBIN_TEST_TMPDIR/macos.calls")"
+  # On a host that is not macOS the stage is refused for its platform, and
+  # doctor, which runs on macOS alone, is not asked.
+  export UNAME_STUB_OS=Linux
+  DEVBIN_RELEASE_POLL_SECONDS=1 run release_in "$proj" v1.0.1 --yes
+  assert_stopped_at pre-flight
+  [[ "$(row_of pre-flight)" == *"this host is linux"* ]] || fail "pre-flight does not refuse the stage on linux: $(row_of pre-flight)"
+  [[ "$(row_of pre-flight)" != *"macos doctor"* ]] || fail "pre-flight asked doctor on a host that is not macOS: $(row_of pre-flight)"
+}
+
 @test "0313: release_macos_unignored passes a path in the tree that git ignores, through its directory or a directory-only pattern before the bundle exists, and one outside the tree, and refuses one git does not ignore and the project root itself" {
   local d
   d="$(mktemp -d "$DEVBIN_TEST_TMPDIR/unignored.XXXXXX")"
@@ -2962,7 +3000,7 @@ root|1|the path, the project root itself, which git cannot ignore -- declare the
   local rel
   legs_env
   proj="$(legs_project)"
-  create_test_command "$proj" macos "$(printf '#!/usr/bin/env bash\nprintf "%%s %%s version=%%s tag=%%s\\n" "$1" "$(git rev-parse HEAD)" "${DEVBIN_RELEASE_VERSION-<unset>}" "${DEVBIN_RELEASE_TARGET_TAG-<unset>}" >>"%s/macos.calls"\n' "$DEVBIN_TEST_TMPDIR")" >/dev/null
+  create_test_command "$proj" macos "$(printf '#!/usr/bin/env bash\n%s\nprintf "%%s %%s version=%%s tag=%%s\\n" "$1" "$(git rev-parse HEAD)" "${DEVBIN_RELEASE_VERSION-<unset>}" "${DEVBIN_RELEASE_TARGET_TAG-<unset>}" >>"%s/macos.calls"\n' "$(macos_stub_doctor)" "$DEVBIN_TEST_TMPDIR")" >/dev/null
   git -C "$proj" add -A && git -C "$proj" commit -qm "the stage records the release's target" && git -C "$proj" push -q origin main ||
     fail "the fixture's stage could not be committed"
   export UNAME_STUB_OS=Darwin
@@ -3294,6 +3332,7 @@ cut_bins_project() {
   chmod +x "$DEVBIN_TEST_TMPDIR/stubs/rustc"
   # shellcheck disable=SC2016 # expanded when the handler runs
   create_test_command "$proj" macos "$(printf '%s\n' '#!/usr/bin/env bash' 'set -euo pipefail' \
+    "$(macos_stub_doctor)" \
     "T='$DEVBIN_TEST_TMPDIR'" \
     'cd "$(git rev-parse --show-toplevel)"' \
     'printf "%s %s\n" "$1" "$(git rev-parse HEAD)" >>"$T/macos.calls"' \
@@ -3391,6 +3430,7 @@ cut_app_project() {
   printf 'out/\n' >>"$proj/.gitignore"
   # shellcheck disable=SC2016 # expanded when the handler runs
   create_test_command "$proj" macos "$(printf '%s\n' '#!/usr/bin/env bash' 'set -euo pipefail' \
+    "$(macos_stub_doctor)" \
     "T='$DEVBIN_TEST_TMPDIR'" \
     'cd "$(git rev-parse --show-toplevel)"' \
     'printf "%s %s\n" "$1" "$(git rev-parse HEAD)" >>"$T/macos.calls"' \
