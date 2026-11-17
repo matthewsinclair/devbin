@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 08:45Z
+heartbeat_at: 2026-11-17 08:50Z
 status: active
-focus: "2026-11-17 08:44Z by date -u: booted after hv's /compact; holding for vc's word. On it, the bounce's first step: the one-arm re-run of helpers 0311 (hold 44) on a light Desk slot, END with the arm's TAP line. pc0126 kept in scratch as the cited record."
+focus: "On vc's go: the one-arm re-run of helpers 0311 (DOING), light ask 01M7MB5A5CMYBPF5CDKBMR4VSC with vc; START on vc's GO, END with the arm's TAP line. pc0126 kept in scratch as the cited record."
 claims: []
 ---
 
@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-_(none)_
+- The one-arm re-run that closes 0.1.26's pre-cut helpers leg (hold 44's, released by vc's go after hv's /compact): helpers.bats's traps_restore arm (0311) alone in pc0126's tree at f18a7a7c, by pc0126/arm0311.sh, in the foreground with no nohup under the bsd gate environment. Light ask 01M7MB5A5CMYBPF5CDKBMR4VSC is with vc with the driver; START on vc's GO, END to vc with the arm's TAP line. Green: vc books the cut. Red with HUP at the default: a code red, and the cut waits.
 
 ## TODO
 
@@ -22,7 +22,6 @@ _(none)_
 ## Holds
 
 - pc0126's clone (~/Devel/scratch/devbin-dc/pc0126/tree and tree.tmp) holds until vc says v0.1.26 is tagged. Then a clear-clone script on pc0125's pattern removes them, refusing unless the tag carries the tested tip f18a7a7c, and keeps runs/, run-precut.out and the scripts.
-- The one-arm re-run that closes 0.1.26's helpers leg before the cut (vc's ask, made the bounce's first step by hv's 08:16Z fold order) holds until vc's word after hv's /compact. It runs helpers.bats's traps_restore arm (line 2558, 0311) alone, in pc0126's tree at f18a7a7c, by bin/devbin test bats --filter. It runs in the foreground with no nohup, under the bsd phase's gate environment, with the launching shell's trap -p HUP printed first. It books a light Desk slot naming exactly that, and END carries the arm's TAP line. Green: vc books the cut. Red with HUP at the default: a code red, and the cut stops.
 
 ## Watch-outs
 
