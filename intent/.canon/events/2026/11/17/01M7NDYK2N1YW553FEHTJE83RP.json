@@ -1,0 +1,16 @@
+{
+  "id": "01M7NDYK2N1YW553FEHTJE83RP",
+  "ts": "2026-11-17T18:57:45.045Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 41,
+    "text": "0369-1 then 0368-1, one stack, banked at refs/bank/cc/0369-1 (8e613644) and refs/bank/cc/0368-1 (9a07c35a, amended tests-only after 01M7N79M's test all red on releasecut's hung-query arm) on base 09b678ee. Short rerun ask 01M7NDXNYYTHZ22ANR1HNY3EEM, driver read by vc. Held until vc grants it on bats at dc's stack's END and gives the GO: then intent estate slots start with named tip=9a07c35a... (i0368/named.txt) and bash run-short-slot.sh, END at its exit."
+  }
+}
