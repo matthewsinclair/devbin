@@ -1,0 +1,16 @@
+{
+  "id": "01M7NGTPE91YES20VESFBF5SM8",
+  "ts": "2026-11-17T19:48:03.145Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 46,
+    "text": "0367-1 (refs/bank/dc/0367-1, c36040bf) then 0366-1 (refs/bank/dc/0366-1, 867488ed) on main a21916fc, dc's k36x; rerun 01M7NG3DEM0AWX2P6A0EYYK9WQ GREEN (releasecut and releaselegs whole BSD and GNU, scans, lint, TMPDIR empty), END 19:46Z by date -u. Handed to vc as bundle k36x on a21916fc. Released when vc says it landed: then Resolutions, close 0366 and 0367, unclaim, archive this hold."
+  }
+}
