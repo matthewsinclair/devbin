@@ -5445,6 +5445,14 @@
       "text": "hv in vc's window, read by 2026-11-17 10:55Z by date -u, hv's words with one name withheld under directive 14: \"Heads up: I've started webber-*. It's in the mix and it's hold is released, but devbin, ae, and [another estate's project] all trump it for priority work here on rhad.\", then \"Heads up: I've started webber-*. It's in the mix and it's hold is released, but devbin, ae, intent, and [another estate's project] all trump it for priority work here on rhad. Note: I forgot intent in the previous message.\", and \"Note: I am running the full test suite for webber here manually ...\" The Desk's order on contention: devbin, AE, Intent and that estate, each ahead of Webber; this replaces decision 201's order for the rest of the day. hv's TUI answer, the recommendation, on Creator's Fly deploy (01M7K0MGZSMKW23YB3SMCKF4RF, hv present): at the other estate's timed build's END, devbin-cc's 0354-1 run first and the deploy beside it. That estate's dc asked a cold cargo build after the answer, and it outranks Webber, so it goes before the deploy; every heavy-class grant past two waits for the 1-minute load under about 14 to 16, and hv's manual Webber suite (xcodebuild) counts as one.",
       "state": "live",
       "recorded_at": "2026-11-17T10:55:26.094Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 211,
+      "text": "hv in webber-vc's session at about 10:56Z, relayed by webber-vc to devbin-vc and read by 2026-11-17 11:00Z by date -u, hv's words: \"The mix.lock and devbin changes are mine, land them after my run.\" hv's test all ended at about 10:57Z. Both land after Creator's fly deploy has ended, which is after hv's run, so the deploy's clone keeps the main it was planned on: devbin-vc commits the 12 devbin paths as Webber's 0.1.26 sweep commit (hold 36), and webber-vc lands mix.lock on hv's green test mix and its own check codegen and check audit (Desk 01M7MJKEACA74SKQ81N1ZPZSZE, granted light at load 13.92, 11:00:17Z).",
+      "state": "live",
+      "recorded_at": "2026-11-17T11:00:32.487Z"
     }
   ],
   "sent": [

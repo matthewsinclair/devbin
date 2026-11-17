@@ -1,0 +1,15 @@
+{
+  "id": "01M7MJMSK7S7PCC4W76A67BVE9",
+  "ts": "2026-11-17T11:00:32.487Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in webber-vc's session at about 10:56Z, relayed by webber-vc to devbin-vc and read by 2026-11-17 11:00Z by date -u, hv's words: \"The mix.lock and devbin changes are mine, land them after my run.\" hv's test all ended at about 10:57Z. Both land after Creator's fly deploy has ended, which is after hv's run, so the deploy's clone keeps the main it was planned on: devbin-vc commits the 12 devbin paths as Webber's 0.1.26 sweep commit (hold 36), and webber-vc lands mix.lock on hv's green test mix and its own check codegen and check audit (Desk 01M7MJKEACA74SKQ81N1ZPZSZE, granted light at load 13.92, 11:00:17Z)."
+  }
+}
