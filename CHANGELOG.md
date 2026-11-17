@@ -6,6 +6,29 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.26] - Unreleased
+
+### Changed
+
+#### a script or a config may get a different result
+
+- **The release gates' build cache is held to a size, 12G unless the project declares another (issue `0361`).** `DEVBIN_GATE_CACHE`, the directory the gates keep from one run to the next, on this machine and on each host `release.legs` names, grew without end, since nothing devbin runs cleared it. Before the gates start, a cache holding more than `release.gate_cache.max` is now emptied, so that run builds cold, and one within it is kept. The size is a whole number of M or G above 0. The cut and `release gates` read it and hand it to each leg's host. A leg's log says what its start did with the cache: kept, naming its size; emptied, naming the size it held; or left as it stands while another run of the project is going on the host, since that run's gates may be reading it. On this machine the run says so when it empties one. A project whose one build is larger than 12G declares a larger size, or every run builds cold.
+
+#### devbin's own tree
+
+- **devbin's own cut waits 45 minutes for its candidate's CI and its remote leg, not 90 (issue `0357`).** `release.ci.wait` bounds each leg other than the local gates, from that leg's own start. In 0.1.25's cut, the first in shards, the candidate read green in 1312 seconds and the remote leg in 1037, where a candidate before the shards took 3533 to 4314. 45m is about twice the slower, which leaves room for a macOS runner's queue. A cut stopped at the wait tags nothing, and running it again reads CI again.
+- **`tests/unit/.lanes-weights` is written again from the logs of all six of 0.1.25's candidate shards**, Darwin's times from the four macOS shards and Linux's from the two Ubuntu ones. The first weights came from 0.1.24's run of the whole suite, where each file ran beside all the others on 3 CPUs, and they dealt the shards unevenly: 0.1.25's four macOS shards took 456 to 1128 seconds for their tests. With the new weights, Darwin's four shards are dealt 2023 to 2028 weighted seconds each.
+
+### Fixed
+
+#### reaches every project
+
+- **`bin/devbin new` never writes its test stub into another work tree or another copy of devbin's runtime (issue `0353`).** The stub goes beside the first `.bats` file under the project root, in sorted path order, and a linked worktree inside the root, eg at `tmp/worktrees/<name>` or `.worktrees/<name>`, sorts ahead of `tests/`. A worktree checked out before the project's last upgrade holds a runtime of its own, and `new` took that runtime's template for the project's suite: it wrote the stub there, in silence and at exit 0, even in a project with no suite, where its page says the stub is skipped. A `.bats` file inside any vendored runtime (`bin/.devbin/lib/`) is now a template, whoever's runtime it is, and one beneath a directory below the root that holds a `.git`, file or directory, belongs to another work tree or a nested repository. Neither is the project's suite. The search itself is unchanged; only its hits are filtered.
+- **A gate command's `-h` or `--help`, anywhere on its line, prints its usage line and runs nothing, wherever what would run is devbin's own (issue `0356`).** The flag was answered only in the option's place, and every word after the option was handed to the tool, so the tool ran, and a tool such as mix does its work before it reads the flag. For the six gate commands, `check`, `clean`, `db`, `docs`, `fmt` and `test`, devbin now answers the flag before anything runs, at exit 0, with the usage line `<cmd> -h` prints, for a shipped option, a declared option's `run:`, `all`, an option switched off and the command as devbin ships it. So `check all --help`, which ran every check, prints the usage line too. A project's own handler, mapped or a sub-handler, and a command-level `run:` line still read their own flag. A declared option whose `run:` wants `-h` from the command line no longer gets it; no shipped option takes one.
+- **A remote leg whose gates end red keeps the files at the top of its `TMPDIR` in its log (issue `0361`).** A leg's run, its `TMPDIR` with it, is cleared from the host once its log is copied back, so a gate that keeps a failing step's output in a file there, and names that file when it refuses, left a log naming a file that was gone. Each regular file there is now appended to the leg's log, under a line naming it, before the run is cleared. A directory there is not read, and a green run appends nothing.
+
+Full note: [RELEASES/0.1.26.md](RELEASES/0.1.26.md)
+
 ## [0.1.25] - 2026-11-14
 
 ### Added
