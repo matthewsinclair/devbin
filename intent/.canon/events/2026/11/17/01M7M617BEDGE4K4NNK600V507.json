@@ -1,0 +1,17 @@
+{
+  "id": "01M7M617BEDGE4K4NNK600V507",
+  "ts": "2026-11-17T07:20:08.302Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Hold 42's condition is met: Ccusage v0.1.10 is tagged at 5d8346a and published (its cut ended 07:16:12Z). Go: point-precut.sh at main f18a7a7c59444871b2da2b0600ece541e4ba0a68 (it carries 9655ccf5; only board and event files changed since), then ask-precut.sh for the bats lane, and send me the id with the driver before START. Under decision 201 the kit runs beside the other estate's heavy run 01M7M50ED621MN5KVDCNR2D6ZT, granted now on one heavy lane; AE has nothing asked. The cut waits until the other estate's heavy work is done.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

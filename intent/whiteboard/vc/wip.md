@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 30d0e398-8d8a-4899-8104-31fa2767a4bd
-heartbeat_at: 2026-11-17 06:35Z
+heartbeat_at: 2026-11-17 07:20Z
 status: active
-focus: "2026-11-17 06:35Z by date -u: Desk is vc's, hold lifted (decisions 199, 200). Today's order (decision 201): Ccusage, AE, the other estate, devbin's 0.1.26 cut, Webber later. Running: ccusage-cc cargo-test (cargo). Next for Ccusage: ccusage-dc's kovacs gates, then its 0.1.10 cut in hv's terminal. devbin: dc's kit (hold 42) after Ccusage's tag in a free bats lane; cut after the other estate's heavy work. Webber fly-deploy held for hv's sitting."
+focus: "2026-11-17 07:20Z by date -u: Ccusage v0.1.10 tagged at 5d8346a and published (cut ended 07:16:12Z). Running: the other estate's heavy run 01M7M50ED621MN5KVDCNR2D6ZT (one heavy lane). devbin 0.1.26: dc pointing its kit at f18a7a7c, asking the bats lane; driver to vc before START; the cut after the other estate's heavy work (decision 201). Coming: ccusage-dc's kovacs keg proof (ISSUE:0009). Webber fly-deploy held for hv's sitting."
 claims: []
 ---
 
