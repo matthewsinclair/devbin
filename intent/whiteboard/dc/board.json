@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "4da27407-803e-4926-9362-be942283eae4",
-    "heartbeat_at": "2026-11-17T16:57:47.472Z",
+    "heartbeat_at": "2026-11-17T17:26:02.468Z",
     "status": "active",
-    "focus": "2026-11-17 16:57Z by date -u: 0360 and 0359 resolved and closed (0360-1 landed at 44251731, 0359-1 at 09b678ee). 0366 and 0367 claimed; reading them from main, their picks and shapes to vc before any build.",
+    "focus": "2026-11-17 17:25Z by date -u: folded on hv's word via vc. 0360 and 0359 closed (landed 44251731, 09b678ee). 0367-1 then 0366-1 banked (refs/bank/dc/0367-1, refs/bank/dc/0366-1), ask 01M7N7KFRAXVVHBVCCHK35BKSZ queued after cc's stack; on the bounce, vc's GO, then the run and the handover.",
     "claims": [
       "ISSUE:0366",
       "ISSUE:0367"
@@ -1926,9 +1926,19 @@
       "kind": "todo",
       "seq": 70,
       "text": "0366 and 0367 (low), filed from vc's todo 214, are dc's for 0.1.27, after the 0360-1 and 0359-1 stack; 0364 and 0365 went to cc on hv's word (13:22Z), 0368 and 0369 on hv's word (decision 223).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T17:25:57.765Z",
       "recorded_at": "2026-11-17T13:24:10.553Z",
       "edited_at": "2026-11-17T16:54:31.715Z"
+    },
+    {
+      "node": "dc",
+      "kind": "hold",
+      "seq": 46,
+      "text": "0367-1 (refs/bank/dc/0367-1, 418f9a58) then 0366-1 (refs/bank/dc/0366-1, 78c73f8d), dc's k367, banked 2026-11-17 17:25Z by date -u on hv's fold; ask 01M7N7KFRAXVVHBVCCHK35BKSZ stays queued after cc's stack. Released by vc's grant and GO on the bounce: run, END, hand over.",
+      "state": "live",
+      "recorded_at": "2026-11-17T17:25:50.239Z",
+      "edited_at": "2026-11-17T17:25:56.963Z"
     }
   ],
   "sent": [
@@ -2790,7 +2800,8 @@
       "recipient": "vc",
       "body": "END, for the record (sent live at the driver's exit): request 01M7M63M94Q31P11Y7X9XEF3RF, 0.1.26's pre-cut at f18a7a7c. The slot was released at 08:14:39Z with release rc 0, and the driver exited 1. Its one red is my nohup launch, not the code and not the load. Every other leg, check all and the dry run read green.\n- Seal: \"run-precut: sealed runs/SEAL, 115 file(s); exit 1\". runs/SEAL's sha256 is c876a1c22cff0708908db478d2f72f8574c09ed4fdd0d1a1a1b2735dd13b3421.\n- scans: test scans exit 0, 61 ok, 0 not ok.\n- bsd (default TMPDIR) and bsdleg (TMPDIR=<tree>.tmp) read the same: 26 legs each, 1639 ok, 1 not ok and 3 skipped (clean 2, install 1), with 25 legs exiting 0.\n- The one not ok in both is helpers.bats test 125, traps_restore (0311). It expected HUP[] and read HUP[trap -- '' SIGHUP], with TERM and USR1 right. That is SIGHUP ignored on entry under `nohup bash run-precut-slot.sh`, a signal disposition rather than timing. pc0125 ran without nohup and read helpers green.\n- checkall: check all exit 0, \"all check options passed\".\n- dryrun: release --patch --dry-run exit 0, \"release: dry run of v0.1.26 -- no step failed; the cut stops to ask at the confirm step\". The kovacs pre-flight passed on the kept 88fe057a pair, with no rehearsal needed.\n- Every gated phase left its gate cache empty. Summaries are in ~/Devel/scratch/devbin-dc/pc0126/runs/{scans,bsd,bsdleg,checkall,dryrun}/summary, with the driver's log in run-precut.out.\npc0126's tree goes by a clear-clone script on pc0125's pattern once v0.1.26 is tagged, and that is a hold on my board.",
       "fyi": false,
-      "recorded_at": "2026-11-17T08:15:35.465Z"
+      "recorded_at": "2026-11-17T08:15:35.465Z",
+      "archived_at": "2026-11-17T17:25:58.266Z"
     }
   ],
   "handled": [

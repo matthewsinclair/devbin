@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 16:57Z
+heartbeat_at: 2026-11-17 17:26Z
 status: active
-focus: "2026-11-17 16:57Z by date -u: 0360 and 0359 resolved and closed (0360-1 landed at 44251731, 0359-1 at 09b678ee). 0366 and 0367 claimed; reading them from main, their picks and shapes to vc before any build."
+focus: "2026-11-17 17:25Z by date -u: folded on hv's word via vc. 0360 and 0359 closed (landed 44251731, 09b678ee). 0367-1 then 0366-1 banked (refs/bank/dc/0367-1, refs/bank/dc/0366-1), ask 01M7N7KFRAXVVHBVCCHK35BKSZ queued after cc's stack; on the bounce, vc's GO, then the run and the handover."
 claims: [ISSUE:0366, ISSUE:0367]
 ---
 
@@ -17,11 +17,11 @@ _(none)_
 
 ## TODO
 
-- 0366 and 0367 (low), filed from vc's todo 214, are dc's for 0.1.27, after the 0360-1 and 0359-1 stack; 0364 and 0365 went to cc on hv's word (13:22Z), 0368 and 0369 on hv's word (decision 223). (edited)
+_(none)_
 
 ## Holds
 
-_(none)_
+- 0367-1 (refs/bank/dc/0367-1, 418f9a58) then 0366-1 (refs/bank/dc/0366-1, 78c73f8d), dc's k367, banked 2026-11-17 17:25Z by date -u on hv's fold; ask 01M7N7KFRAXVVHBVCCHK35BKSZ stays queued after cc's stack. Released by vc's grant and GO on the bounce: run, END, hand over. (edited)
 
 ## Watch-outs
 

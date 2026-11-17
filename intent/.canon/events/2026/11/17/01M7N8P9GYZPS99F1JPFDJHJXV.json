@@ -1,0 +1,15 @@
+{
+  "id": "01M7N8P9GYZPS99F1JPFDJHJXV",
+  "ts": "2026-11-17T17:25:50.239Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0367-1 (refs/bank/dc/0367-1, 418f9a58) then 0366-1 (refs/bank/dc/0366-1, 78c73f8d), dc's k367, banked 2026-11-17 17:25Z by date -u on hv's fold; ask 01M7N7KFRAXVVHBVCCHK35BKSZ stays queued after cc's stack. Released by vc's grant and GO on the bounce: run, END, hand over."
+  }
+}
