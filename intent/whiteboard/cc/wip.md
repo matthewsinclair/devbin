@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 09:47Z
+heartbeat_at: 2026-11-17 09:57Z
 status: active
-focus: "2026-11-17 09:46Z by date -u: devbin v0.1.26 is released at f0434fbd and vc has lifted the bar; holding until vc names my next work, the post-tag steps (hv's brew steps, then the fleet sweep) being vc's. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing live, unbanked, booked or running."
+focus: "2026-11-17 09:57Z by date -u: back from hv's /compact on vc's word that the bar is lifted; holding until vc names my next work, the fleet sweep from brew being vc's. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing live, unbanked, booked or running."
 claims: [ISSUE:0326]
 ---
 
