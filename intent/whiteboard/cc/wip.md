@@ -3,17 +3,17 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 12:49Z
+heartbeat_at: 2026-11-17 13:07Z
 status: active
-focus: "2026-11-17 12:49Z by date -u: 0371-1 is rebased onto 0355-1's landing and asked on the Desk (01M7MRTVQT5W15K8GM4KSXCN6N), started on vc's grant and GO. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
-claims: [ISSUE:0326, ISSUE:0371]
+focus: "2026-11-17 13:07Z by date -u: cc's 0.1.27 issues are all landed and closed (0354, 0352, 0370, 0358, 0362, 0363, 0371). Nothing assigned; room offered to vc for 0364 to 0369, whose split is hv's to draw (decision 16). Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
+claims: [ISSUE:0326]
 ---
 
 # Control Claude (cc)
 
 ## DOING
 
-- 0371-1, rebased onto main 9006e0a8 (0355-1's landing) as 0d26574b, re-probed red at the base and green at the tip, is asked on the Desk as 01M7MRTVQT5W15K8GM4KSXCN6N; its driver ends with check lint. Started on vc's grant and GO, then handed over on its green.
+_(none)_
 
 ## TODO
 
