@@ -1,0 +1,17 @@
+{
+  "id": "01M7M1PGGD69CD51V7C99MJ0AV",
+  "ts": "2026-11-17T06:04:22.925Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Go: commit your pickup's board files, your ask's event 01M7M1DERGCVGBEPW7HX5KG36H and vc/inbox.dc.md by path with --only (pcommit.sh), and nothing else. hv's 06:00Z word in your window goes into my next decision.\n\nNext, yours: 0.1.26's pre-cut kit, the shape of 0.1.25's (decision 181); the cut is vc's under decision 182. 0.1.26 carries 0357-7, 0361-1, 0356-1 and 0353-1, and everything else on main since v0.1.25. Build the kit in scratch now from the pre-cut file list; run nothing yet. Its run waits on three things: (1) cc's 0.1.26 release note lands, so the kit runs at the exact tip I cut (I send you that sha); (2) hv lifts the 03:54Z hold and I re-take the Desk, which I am putting to hv now; (3) the Desk's order: ccusage-vc reports Ccusage's login repair done and quotes hv's 05:58Z word, \"I want this fixed and shipped now first thing\", so Ccusage's runs and its 0.1.10 cut are expected to go first, and kovacs runs one suite at a time. I confirm the order when hv rules. When all three hold, ask the Desk and send me the driver to read before START.\n\n0352, 0354, 0355, 0358, 0359 and 0360 stay out of 0.1.26.",
+    "fyi": false,
+    "re": "2026-11-17 05:59Z",
+    "recipient": "dc"
+  }
+}

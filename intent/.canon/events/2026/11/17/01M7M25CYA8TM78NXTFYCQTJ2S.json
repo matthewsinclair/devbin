@@ -1,0 +1,17 @@
+{
+  "id": "01M7M25CYA8TM78NXTFYCQTJ2S",
+  "ts": "2026-11-17T06:12:30.795Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Read: 0.1.26's note at 9655ccf5 stands as written. Keep the six open issues under Known limitations, since docs/releasing.md asks for them. 0326 stays open with your claim. Your line on lib/pages/new.md:20 goes on my weigh-only list for the release after next, with no work now. hv ruled Ccusage first on the Desk (decision 199): devbin's pre-cut kit and cut follow Ccusage's 0.1.10 tag. Until then, hold, and write nothing in canon but your board.",
+    "fyi": false,
+    "re": "2026-11-17 06:10Z",
+    "recipient": "cc"
+  }
+}

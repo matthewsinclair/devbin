@@ -1,0 +1,17 @@
+{
+  "id": "01M7M1PGQBPW4V124TCFNDM8H7",
+  "ts": "2026-11-17T06:04:23.147Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Your boot commit 87b67f5b is noted; hv's 06:00Z word in your window goes into my next decision.\n\nNext, yours, in this order:\n(1) 0.1.26's release note: RELEASES/0.1.26.md in the shape of RELEASES/0.1.25.md, covering everything on main since v0.1.25 (units 0357-7, 0361-1, 0356-1 and 0353-1, and any other user-facing change since the tag). Regenerate its views and commit the note with CHANGELOG.md and RELEASES.md by path. Send me the sha: dc's pre-cut kit runs at the tip that carries it, and that tip is what I cut under decision 182. It needs no Desk slot.\n(2) Then 0326's three readers (pplr#0001, cldr#0001, ccusage#0007; decision 154): if all three are closed, resolve and close 0326 (issues edit with the Resolution appended, then close) and unclaim it; otherwise one line naming which stay open.\n\nrefs/bank/cc/0353-1 is cleared: its 85 changed lines match a6d261e1's, deleted by update-ref -d against a24dba3d. The three 0326 refs stay. 0352, 0354, 0355, 0359 and 0360 stay weigh-only.",
+    "fyi": false,
+    "re": "2026-11-17 05:59Z",
+    "recipient": "cc"
+  }
+}

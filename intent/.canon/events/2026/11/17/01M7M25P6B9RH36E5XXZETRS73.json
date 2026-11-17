@@ -1,0 +1,16 @@
+{
+  "id": "01M7M25P6B9RH36E5XXZETRS73",
+  "ts": "2026-11-17T06:12:40.267Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 214,
+    "text": "RELEASE AFTER NEXT, weigh only: a release.gates entry starting with release recurses (archived todo 203); macos and release call built-ins through the launcher (206); no macOS-stage rehearsal before a cut (207); a failed remote leg keeps its worktree on the host (208); dc's todo 67 TMPDIR leftovers; issues 0352, 0354, 0355 (gates blame a peer's tree write on a gate, from molt#0100) and 0358 (two docs lag the code); cc's line of 2026-11-17: lib/pages/new.md:20 does not say new never writes into another work tree (0353)."
+  }
+}

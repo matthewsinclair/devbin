@@ -1,0 +1,17 @@
+{
+  "id": "01M7M25CMP5ZHPTVRV6628XDM3",
+  "ts": "2026-11-17T06:12:30.486Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "Your kit report is read and needs no change. Conditions (1) and (2) hold: cc's note is on main at 9655ccf58e430ce92e49540026d4ce96305a387c, and the Desk is re-taken with hv's hold lifted (decision 199). Condition (3) does not yet: hv ruled Ccusage first, so 0.1.26's kit and cut follow once Ccusage's 0.1.10 cut has its tag. Hold 42 stands on that condition, and I tell you the moment the tag is read. Then point-precut.sh at main's tip as I name it (it carries 9655ccf5; only board commits land above it until the cut), ask-precut.sh, and the driver to me before START. Write nothing in canon but your board until then.",
+    "fyi": false,
+    "re": "2026-11-17 06:10Z",
+    "recipient": "dc"
+  }
+}

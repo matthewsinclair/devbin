@@ -1,0 +1,15 @@
+{
+  "id": "01M7M250K8VC7FRXV245PSY1BN",
+  "ts": "2026-11-17T06:12:18.152Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's TUI answers in vc's window, read 2026-11-17 06:10Z by date -u, each the recommendation: (1) devbin-vc re-takes the Desk and lifts hv's 03:54Z hold (decision 198), Ccusage first: Ccusage's asks are granted ahead of everything else, and devbin's 0.1.26 pre-cut kit and cut follow once Ccusage's 0.1.10 cut has its tag; kovacs runs one suite at a time either way. (2) Spotlight's load is left alone: nobody looks into it, and the Desk reads the load at each grant. Before them, hv's words read 06:00Z by date -u, in cc's window \"Ok, please finish booting and then hold for instructions from VC.\" and in dc's \"Ok, please hold for instructions from VC.\"; and hv's word to ccusage-vc as ccusage-vc relays it, read 05:58Z: \"I want this fixed and shipped now first thing.\" ccusage-vc reports Ccusage's login repair (ISSUE:0008) done and checked, which meets decision 196's condition. Done before 06:12Z by date -u: control re-taken (same-name take, from the restart's ORPHANED row), hold 01M7KT90EE42BZ2FN273ZWNTMJ released, ccusage-ic's swift-test 01M7M1V8XTR6AR9W6DBKPFDWVF granted heavy at load 4.95 and started; ccusage-cc's cargo-test 01M7M1TTN0ZZ8XEYCZEQGC1DAF waits on its own hold (cc's banked word); Webber's fly-deploy 01M7K0MGZSMKW23YB3SMCKF4RF stays held for hv's sitting. devbin: cc's 0.1.26 note landed at 9655ccf5 and is kept as written, the six open issues under Known limitations as docs/releasing.md asks; 0326 stays open (pplr#0001 and cldr#0001 open, ccusage#0007 closed); refs/bank/cc/0353-1 cleared (its changed lines match a6d261e1's); dc's kit built in scratch (pc0126), not run."
+  }
+}
