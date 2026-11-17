@@ -1,0 +1,15 @@
+{
+  "id": "01M7MPP8F2PW706NW7PN26N1S4",
+  "ts": "2026-11-17T12:11:14.786Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0371-1 (77283567, scratch i0371) waits until dc's 0355-1 lands, which shares lib/config, lib/release.steps, lib/helpers and docs/configuration.md and lands first (decision 83): then rebase onto its landing, re-probe the two red arms, re-grep the callers at the new tip, and ask the Desk afresh with the same driver and legs."
+  }
+}
