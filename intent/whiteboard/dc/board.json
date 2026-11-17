@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "4da27407-803e-4926-9362-be942283eae4",
-    "heartbeat_at": "2026-11-17T08:50:15.141Z",
+    "heartbeat_at": "2026-11-17T08:51:29.136Z",
     "status": "active",
-    "focus": "On vc's go: the one-arm re-run of helpers 0311 (DOING), light ask 01M7MB5A5CMYBPF5CDKBMR4VSC with vc; START on vc's GO, END with the arm's TAP line. pc0126 kept in scratch as the cited record.",
+    "focus": "2026-11-17 08:50Z by date -u: 0.1.26's pre-cut closed green; the one-arm re-run of helpers 0311 read green alone at f18a7a7c with HUP at the default (light slot 01M7MB5A5CMYBPF5CDKBMR4VSC, END to vc). Holding for vc's word; hold 43 clears pc0126's clone once v0.1.26 is tagged.",
     "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -1877,7 +1877,8 @@
       "kind": "doing",
       "seq": 80,
       "text": "The one-arm re-run that closes 0.1.26's pre-cut helpers leg (hold 44's, released by vc's go after hv's /compact): helpers.bats's traps_restore arm (0311) alone in pc0126's tree at f18a7a7c, by pc0126/arm0311.sh, in the foreground with no nohup under the bsd gate environment. Light ask 01M7MB5A5CMYBPF5CDKBMR4VSC is with vc with the driver; START on vc's GO, END to vc with the arm's TAP line. Green: vc books the cut. Red with HUP at the default: a code red, and the cut waits.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T08:51:28.929Z",
       "recorded_at": "2026-11-17T08:50:14.935Z"
     }
   ],
