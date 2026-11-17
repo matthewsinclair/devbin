@@ -1,0 +1,15 @@
+{
+  "id": "01M7MP89BMH6017V3BZHBX9XFK",
+  "ts": "2026-11-17T12:03:36.948Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0371 (low), on vc's word: release_versions reads a tag its template cannot make where release.tag holds {version} twice. Pick and shape go to vc before any build."
+  }
+}

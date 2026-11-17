@@ -3,21 +3,21 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 11:50Z
+heartbeat_at: 2026-11-17 12:03Z
 status: active
-focus: "2026-11-17 11:50Z by date -u: the first stack (0354-1, 0352-1) is proven and handed over, for vc to land; the second (0370-1, 0358-1 with 0362, 0363-1) runs on the Desk. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
-claims: [ISSUE:0326, ISSUE:0358, ISSUE:0362, ISSUE:0363, ISSUE:0370]
+focus: "2026-11-17 12:03Z by date -u: cc's whole 0.1.27 list is landed (0354-1, 0352-1, 0370-1, 0358-1 with 0362, 0363-1) and its six issues closed. Next, on vc's word: 0371, its pick and shape to vc before any build. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
+claims: [ISSUE:0326, ISSUE:0371]
 ---
 
 # Control Claude (cc)
 
 ## DOING
 
-_(none)_
+- 0371 (low), on vc's word: release_versions reads a tag its template cannot make where release.tag holds {version} twice. Pick and shape go to vc before any build.
 
 ## TODO
 
-- The second stack, 0370-1, 0358-1 with 0362, then 0363-1, rebased onto the amended first stack (st0370, tip 9f4d40d8), runs in its Desk slot 01M7MN581DQ20NSCPEW4Q7FEE7 since 11:49Z: END to vc the moment it exits, then its handover. (edited)
+_(none)_
 
 ## Holds
 
