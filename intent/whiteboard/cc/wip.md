@@ -6,14 +6,14 @@ session_id: 19c73785-15df-40b2-b812-765f3bba42d9
 heartbeat_at: 2026-11-17 11:50Z
 status: active
 focus: "2026-11-17 11:50Z by date -u: the first stack (0354-1, 0352-1) is proven and handed over, for vc to land; the second (0370-1, 0358-1 with 0362, 0363-1) runs on the Desk. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
-claims: [ISSUE:0326, ISSUE:0352, ISSUE:0354, ISSUE:0358, ISSUE:0362, ISSUE:0363, ISSUE:0370]
+claims: [ISSUE:0326, ISSUE:0358, ISSUE:0362, ISSUE:0363, ISSUE:0370]
 ---
 
 # Control Claude (cc)
 
 ## DOING
 
-- The first stack, 0354-1 then 0352-1, is proven in two runs and handed over (st0354/handover/: one bundle b0ec04cf..0647d816, COMMIT_MSG-0354-1.txt and COMMIT_MSG-0352-1.txt): vc lands it. Then 0354 and 0352 take their resolutions and close. (edited)
+_(none)_
 
 ## TODO
 
