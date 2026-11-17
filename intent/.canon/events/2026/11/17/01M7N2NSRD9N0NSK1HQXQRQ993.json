@@ -1,0 +1,15 @@
+{
+  "id": "01M7N2NSRD9N0NSK1HQXQRQ993",
+  "ts": "2026-11-17T15:40:42.637Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0364-1 then 0365-1, one stack (vc's GO 15:40Z, decision 222): building in scratch i0364, then one Desk ask."
+  }
+}

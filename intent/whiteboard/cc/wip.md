@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 13:43Z
+heartbeat_at: 2026-11-17 15:40Z
 status: active
-focus: "2026-11-17 13:43Z by date -u: holding for vc's word, which comes once hv has spoken (hv is closing up for a move). 0364 and 0365's picks and shapes are agreed with vc as one stack, 0364-1 then 0365-1 (hold 40). Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing live, unbanked, booked or running."
+focus: "2026-11-17 15:40Z by date -u: vc's GO (hv's word after the move, decision 222) lifts hold 40: building 0364-1, then 0365-1 on top, as one stack in scratch; one Desk ask once probed. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
 claims: [ISSUE:0326, ISSUE:0364, ISSUE:0365]
 ---
 
@@ -13,7 +13,7 @@ claims: [ISSUE:0326, ISSUE:0364, ISSUE:0365]
 
 ## DOING
 
-_(none)_
+- 0364-1 then 0365-1, one stack (vc's GO 15:40Z, decision 222): building in scratch i0364, then one Desk ask.
 
 ## TODO
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- 0364-1 then 0365-1, one stack and one ask, with picks and shapes agreed by vc (2026-11-17): held until vc's word, which comes once hv has spoken (hv is closing up for a move; devbin holds on hv's 13:22Z word). 0364: a gate whose first word is release is refused as config, through one predicate shared with pre-flight's 0327 case. 0365: docs only, naming the built-ins a cut reaches through bin/devbin. The plan, with vc's three notes and the run's files, is in cc's scratch at i0364/PLAN.md.
+_(none)_
 
 ## Watch-outs
 
