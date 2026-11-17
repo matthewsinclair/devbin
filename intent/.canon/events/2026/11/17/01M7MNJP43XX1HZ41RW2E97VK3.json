@@ -1,0 +1,15 @@
+{
+  "id": "01M7MNJP43XX1HZ41RW2E97VK3",
+  "ts": "2026-11-17T11:51:49.123Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "cc's first 0.1.27 stack landed on main by land-stack.sh, 2026-11-17 11:50Z to 11:51Z by date -u: 0354-1 at 5b084053 (use's rehash line) and 0352-1 at ad3c9a12 (release target), each by its own paths and sealed message through the gate, the tree outside intent/ equal to the tested tip 0647d816. Two runs proved it: run 1 (01M7MK7XB7TV226TJM041ZQCQF, bats, 11:17Z to 11:41Z, at 78f8cf00), every red arm failed at its base and every leg green under BSD and GNU but releasecore's 0240 defaults arm, which pinned release.verbs' default without target, a moved arm 0352-1 owed; and run 2 (01M7MN3A73WF65M7ZPNMQJGCJV, 11:44Z to 11:49Z, at the amended 0647d816, only releasecore.bats changed), releasecore 55 of 55 under BSD and GNU and test scans 61 of 61, run 1's other records standing for the unchanged code. cc filed 0371 (release_versions reads a doubled-{version} tag differently, low). dc bases 0355-1 on ad3c9a12; cc's second stack (0370-1, 0358-1, 0363-1) runs on 0647d816 and lands with LAND_BASE_OFF_MAIN=1."
+  }
+}

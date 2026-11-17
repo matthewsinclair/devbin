@@ -5470,6 +5470,22 @@
       "text": "Webber's 0.1.26 sweep commit is 26ba9c59 (2026-11-17 11:16Z by date -u), in the window webber-vc gave, its option (a): the 12 devbin paths alone, by path through Webber's hook (guards, critic and doctor clean), unpushed (Webber's decision 84), on webber-vc's ad562545, which lands hv's mix.lock bump. The files were written by hv's devbin upgrade in Webber's checkout at 10:52:32Z and hv's test all ran green with them in place (decision 211); the commit's message says so, not the sweep script's words. It lands before Creator's fly deploy, which now waits for Webber cc's seed unit and hv's return, so the deploy's fresh ask names a tip holding 0.1.26. The sha and 0.1.26's notice went to webber-vc; hold 36 is archived. Desk: another estate's dc withdrew its cold build at its fold (11:15Z); devbin-cc's stack 0354-1 then 0352-1 was granted bats at load 7.92 (11:16:20Z) beside that estate's single-core check, whose owner said its timings no longer need the host quiet.",
       "state": "live",
       "recorded_at": "2026-11-17T11:17:16.600Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 214,
+      "text": "cc's first 0.1.27 stack landed on main by land-stack.sh, 2026-11-17 11:50Z to 11:51Z by date -u: 0354-1 at 5b084053 (use's rehash line) and 0352-1 at ad3c9a12 (release target), each by its own paths and sealed message through the gate, the tree outside intent/ equal to the tested tip 0647d816. Two runs proved it: run 1 (01M7MK7XB7TV226TJM041ZQCQF, bats, 11:17Z to 11:41Z, at 78f8cf00), every red arm failed at its base and every leg green under BSD and GNU but releasecore's 0240 defaults arm, which pinned release.verbs' default without target, a moved arm 0352-1 owed; and run 2 (01M7MN3A73WF65M7ZPNMQJGCJV, 11:44Z to 11:49Z, at the amended 0647d816, only releasecore.bats changed), releasecore 55 of 55 under BSD and GNU and test scans 61 of 61, run 1's other records standing for the unchanged code. cc filed 0371 (release_versions reads a doubled-{version} tag differently, low). dc bases 0355-1 on ad3c9a12; cc's second stack (0370-1, 0358-1, 0363-1) runs on 0647d816 and lands with LAND_BASE_OFF_MAIN=1.",
+      "state": "live",
+      "recorded_at": "2026-11-17T11:51:49.123Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 222,
+      "text": "0.1.27's NOTICES, sent once 0.1.27 is cut and swept: Intent's adoption of release target (0352, decision 206: add target to Intent's release.verbs, and swap linux-release.yml's interim parse at line 87 for one line, bin/devbin release target --ref \"$GITHUB_REF\" >> \"$GITHUB_ENV\"), to intent-vc; and once 0355-1 lands, release.unread's opt-in (decision 207: list intent/whiteboard/ and intent/.canon/events/ so a peer's pickup no longer fails a cut) to every estate with a whiteboard.",
+      "state": "live",
+      "recorded_at": "2026-11-17T11:51:49.432Z"
     }
   ],
   "sent": [

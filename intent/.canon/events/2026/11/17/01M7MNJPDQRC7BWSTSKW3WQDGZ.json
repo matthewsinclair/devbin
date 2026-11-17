@@ -1,0 +1,15 @@
+{
+  "id": "01M7MNJPDQRC7BWSTSKW3WQDGZ",
+  "ts": "2026-11-17T11:51:49.432Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0.1.27's NOTICES, sent once 0.1.27 is cut and swept: Intent's adoption of release target (0352, decision 206: add target to Intent's release.verbs, and swap linux-release.yml's interim parse at line 87 for one line, bin/devbin release target --ref \"$GITHUB_REF\" >> \"$GITHUB_ENV\"), to intent-vc; and once 0355-1 lands, release.unread's opt-in (decision 207: list intent/whiteboard/ and intent/.canon/events/ so a peer's pickup no longer fails a cut) to every estate with a whiteboard."
+  }
+}

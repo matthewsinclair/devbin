@@ -1,5 +1,5 @@
 ---
-verblock: "17 Nov 2026:v3.89: Matthew Sinclair - Webber swept to 0.1.26 (decision 213); deploy asks later"
+verblock: "17 Nov 2026:v3.90: Matthew Sinclair - 0354-1 and 0352-1 landed (decision 214)"
 ---
 
 # Work In Progress
@@ -8,7 +8,7 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- devbin 0.1.27 (decision 205): cc takes 0352, then 0354 and 0358, and files 0353's doc follow-up and Prodinfra's infra check handle advisory; dc takes 0355, then 0360 and 0359 (one after another, as they share run_gate), and files the release-machinery findings decision 205 lists. vc lands each unit on its builder's evidence; the cut waits for hv's go.
+- devbin 0.1.27 (decisions 205 to 214): cc's second stack (0370-1, 0358-1 with 0362, 0363-1) runs and lands with LAND_BASE_OFF_MAIN=1; dc's 0355-1 rebases onto main for its formal run, then 0360 and 0359 (they share run_gate), then 0364 to 0369; 0371 is filed. vc lands each unit on its builder's evidence; the cut waits for hv's go.
 - The Desk (decisions 199 and 200): vc holds it for rhadamanth, gyges and kovacs. Today's order on contention (decision 210): devbin, AE, Intent and the other estate, each ahead of Webber; a heavy-class grant past two waits for the 1-minute load under about 16.
 - Creator's Fly deploy: hv seeds three test accounts first, so webber-dc asks afresh once Webber cc's seed unit is on main and hv is present again (the old ask denied 11:14Z); Webber ranks below devbin, AE, Intent and the other estate (decision 210).
 
