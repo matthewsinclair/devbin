@@ -3,7 +3,7 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 30d0e398-8d8a-4899-8104-31fa2767a4bd
-heartbeat_at: 2026-11-17 17:25Z
+heartbeat_at: 2026-11-17 18:12Z
 status: active
 focus: "Folding on hv's 17:25Z word; on the bounce: grant cc's 0369-1/0368-1 stack (ask 01M7N79M7DJB05YRTAWJ2KGAQS) then dc's 0367-1/0366-1 stack (ask 01M7N7KFRAXVVHBVCCHK35BKSZ) on the bats lane after Webber's quiet-machine run 01M7N2PGHM1JKMZPXSBDWCH6Z7 ENDs; land each on its builder's evidence; then 0.1.27's cut on hv's go."
 claims: []
@@ -69,6 +69,7 @@ _(none)_
 - hv in webber-dc's session after 12:53Z by webber-dc's clock, relayed by webber-dc and read by 2026-11-17 12:55Z by date -u: hv's go for Creator's first Fly deploy is on record ("Go"), and hv's word on its placement, verbatim: "All of the deploy work happens on the other side of the network so a deploy can happen in parallel with whatever is next (once the tests are run)." So the Desk slot for 01M7MQP3J22NDY4FP2WRFP9KFY covers only the local gates (check codegen, then deploy-service --dry-run: test mix, credo and sbom on a clean tree), at main 82a5d9da, the code tree of 588f60a7; fly deploy then runs on Fly's remote builder with no slot. On hv's earlier TUI answer (decision 210), the gates go beside devbin's bats run when Intent's kovacs rehearsal 2 ends, and another estate's step 3 follows as the load allows. Webber's seeded-accounts unit ran green on gyges (test mix 564, credo, check all) before it landed; Webber's floor-fix unit's first booking read test floor green at 26.5, and its second books the remaining gates behind devbin and another estate.
 - Desk, 2026-11-17 13:04Z by date -u: Webber's floor-fix second booking (01M7MS5ER88S2VKGXP075D3349, the simulator gates at c6a086a0) was granted heavy ahead of Intent's kovacs rehearsal 3. Decision 158 holds a Webber run while Intent is about to ask, but intent-dc put rehearsal 3 15 to 25 minutes off (its fix to be read and landed first) and offered to follow Webber's END, and holding Webber would have left rhadamanth underused for that time. Rehearsal 3 is granted at that END with the host quiet. Before it: Creator's deploy gates ran green locally (12:57Z to 13:00Z, test mix 564, credo, sbom), and fly deploy then went red at the image build on Fly's builder (the Dockerfile copies no config/dotenv.exs), nothing deployed, its one-line fix and redeploy remote with no slot; another estate's ST0004/16 step 3 ran green over the whole 10,592-holding set; Intent's rehearsal 2 went red on three daemon-status arms that sandbox HOME while the Linux socket follows XDG_RUNTIME_DIR, Intent's to fix.
 - hv in vc's window by the TUI, after 0364-1 and 0365-1 landed (77692fd1, 77b6ec20), hv's answer: "cc takes 0368, 0369 (Recommended)". cc takes 0368 (a gate run's TMPDIR leftovers) and 0369 (helpers.bats's traps_restore HUP arm); dc keeps 0366 and 0367 after its 0360-1 and 0359-1 stack. Each pick and shape to vc first. This moves decision 221's line for those two issues (decision 16: hv's call).
+- hv's go for devbin 0.1.27's cut once both stacks land (cc's 0369-1/0368-1 and dc's 0367-1/0366-1), in hv's words in vc's session: "Ok, cut 0.1.27 once both stacks land." The cut books bats, cargo and heavy on the Desk. 0326 stays held and does not block it.
 
 ---
 

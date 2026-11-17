@@ -1,0 +1,15 @@
+{
+  "id": "01M7NEPE0BMCW0T21Y5H2J5PKH",
+  "ts": "2026-11-17T19:10:46.283Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's go for devbin 0.1.27's cut once both stacks land (cc's 0369-1/0368-1 and dc's 0367-1/0366-1), in hv's words in vc's session: \"Ok, cut 0.1.27 once both stacks land.\" The cut books bats, cargo and heavy on the Desk. 0326 stays held and does not block it."
+  }
+}

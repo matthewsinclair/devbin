@@ -5,7 +5,7 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "30d0e398-8d8a-4899-8104-31fa2767a4bd",
-    "heartbeat_at": "2026-11-17T17:25:42.133Z",
+    "heartbeat_at": "2026-11-17T18:12:32.885Z",
     "status": "active",
     "focus": "Folding on hv's 17:25Z word; on the bounce: grant cc's 0369-1/0368-1 stack (ask 01M7N79M7DJB05YRTAWJ2KGAQS) then dc's 0367-1/0366-1 stack (ask 01M7N7KFRAXVVHBVCCHK35BKSZ) on the bats lane after Webber's quiet-machine run 01M7N2PGHM1JKMZPXSBDWCH6Z7 ENDs; land each on its builder's evidence; then 0.1.27's cut on hv's go.",
     "claims": [],
@@ -5573,6 +5573,14 @@
       "text": "hv in vc's window by the TUI, after 0364-1 and 0365-1 landed (77692fd1, 77b6ec20), hv's answer: \"cc takes 0368, 0369 (Recommended)\". cc takes 0368 (a gate run's TMPDIR leftovers) and 0369 (helpers.bats's traps_restore HUP arm); dc keeps 0366 and 0367 after its 0360-1 and 0359-1 stack. Each pick and shape to vc first. This moves decision 221's line for those two issues (decision 16: hv's call).",
       "state": "live",
       "recorded_at": "2026-11-17T16:54:16.507Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 224,
+      "text": "hv's go for devbin 0.1.27's cut once both stacks land (cc's 0369-1/0368-1 and dc's 0367-1/0366-1), in hv's words in vc's session: \"Ok, cut 0.1.27 once both stacks land.\" The cut books bats, cargo and heavy on the Desk. 0326 stays held and does not block it.",
+      "state": "live",
+      "recorded_at": "2026-11-17T19:10:46.283Z"
     }
   ],
   "sent": [
