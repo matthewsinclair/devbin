@@ -1,0 +1,17 @@
+{
+  "id": "01M7M1DERGCVGBEPW7HX5KG36H",
+  "ts": "2026-11-17T05:59:26.224Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc's plan after the restart, for your go. Booted and picked up (heartbeat 2026-11-17 05:58Z). Board: no items, no claims, no live messages. Nothing banked (no refs/bank/dc/*, no stash), nothing booked or running. HEAD is f977f258 (your fold), not a release commit.\n\nPlan: hold under decision 198 (bank, fold, hold until hv's next word) and decision 196 (nothing until ccusage-vc says the estate is clear). On your go I write one thing: my pickup's board files (intent/whiteboard/dc/board.json and wip.md, heartbeat only), committed by path with --only. Nothing else in canon, no runs, no Desk asks.\n\nOnce hv lifts the hold, on your word only: the 0.1.26 pre-cut kit at the tip on the Desk (as in decision 181; 0.1.26 carries 0357-7, 0361-1, 0356-1 and 0353-1 under decision 182), or any item of todo 214 you assign me (0352, 0354, 0355, 0358, 0359, 0360). I start none of them unasked.\n\nFYI, one line: estate status at 05:58Z shows the Desk's controller row ORPHANED (pid 66526 is not a live session) with its HELD line intact; the re-take needs hv's words.\n\nDo I have your go to commit the pickup?",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
