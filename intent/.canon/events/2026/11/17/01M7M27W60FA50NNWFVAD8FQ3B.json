@@ -1,0 +1,16 @@
+{
+  "id": "01M7M27W60FA50NNWFVAD8FQ3B",
+  "ts": "2026-11-17T06:13:51.936Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 42,
+    "text": "0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126, built and not run) holds until vc says Ccusage's 0.1.10 cut has its tag (decision 199: Ccusage first). Already met: cc's note is on main at 9655ccf5, and the Desk is re-taken with hv's hold lifted. Then point-precut.sh at main's tip as vc names it, ask-precut.sh, and the id with the driver to vc before START."
+  }
+}

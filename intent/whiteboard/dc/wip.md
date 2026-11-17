@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- 0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126, built and not run) holds until vc says all three hold: cc's 0.1.26 release note has landed (vc sends its sha); hv has lifted the 03:54Z hold and vc has re-taken the Desk; and the Desk's order puts it next (Ccusage's runs and its 0.1.10 cut first, kovacs idle). Then point-precut.sh <sha>, ask-precut.sh <sha>, and the id with the driver to vc before START.
+- 0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126, built and not run) holds until vc says Ccusage's 0.1.10 cut has its tag (decision 199: Ccusage first). Already met: cc's note is on main at 9655ccf5, and the Desk is re-taken with hv's hold lifted. Then point-precut.sh at main's tip as vc names it, ask-precut.sh, and the id with the driver to vc before START. (edited)
 
 ## Watch-outs
 
