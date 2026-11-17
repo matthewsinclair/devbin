@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 07:21Z
+heartbeat_at: 2026-11-17 08:15Z
 status: active
-focus: "0.1.26's pre-cut (pc0126) at f18a7a7c: asking the bats lane; the driver goes to vc before START; nothing in canon from the grant to END (doing 79)."
+focus: "0.1.26's pre-cut ended 08:14:39Z: green but for helpers 0311 under my nohup launch (not code, not load); END sent, slot released. Holding for vc; pc0126's clone goes once v0.1.26 is tagged."
 claims: []
 ---
 
@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-- 0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126) at f18a7a7c, on vc's word that Ccusage v0.1.10 is tagged (decision 201): tree pointed; ask-precut.sh asks the bats lane; the id and the driver go to vc before START; the waiter starts the slot at vc's grant and releases it at the driver's exit; nothing in canon from the grant to END.
+_(none)_
 
 ## TODO
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-_(none)_
+- pc0126's clone (~/Devel/scratch/devbin-dc/pc0126/tree and tree.tmp) holds until vc says v0.1.26 is tagged. Then a clear-clone script on pc0125's pattern removes them, refusing unless the tag carries the tested tip f18a7a7c, and keeps runs/, run-precut.out and the scripts.
 
 ## Watch-outs
 

@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "4da27407-803e-4926-9362-be942283eae4",
-    "heartbeat_at": "2026-11-17T07:21:13.136Z",
+    "heartbeat_at": "2026-11-17T08:15:36.097Z",
     "status": "active",
-    "focus": "0.1.26's pre-cut (pc0126) at f18a7a7c: asking the bats lane; the driver goes to vc before START; nothing in canon from the grant to END (doing 79).",
+    "focus": "0.1.26's pre-cut ended 08:14:39Z: green but for helpers 0311 under my nohup launch (not code, not load); END sent, slot released. Holding for vc; pc0126's clone goes once v0.1.26 is tagged.",
     "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -1851,8 +1851,17 @@
       "kind": "doing",
       "seq": 79,
       "text": "0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126) at f18a7a7c, on vc's word that Ccusage v0.1.10 is tagged (decision 201): tree pointed; ask-precut.sh asks the bats lane; the id and the driver go to vc before START; the waiter starts the slot at vc's grant and releases it at the driver's exit; nothing in canon from the grant to END.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-17T08:15:35.689Z",
       "recorded_at": "2026-11-17T07:21:08.102Z"
+    },
+    {
+      "node": "dc",
+      "kind": "hold",
+      "seq": 43,
+      "text": "pc0126's clone (~/Devel/scratch/devbin-dc/pc0126/tree and tree.tmp) holds until vc says v0.1.26 is tagged. Then a clear-clone script on pc0125's pattern removes them, refusing unless the tag carries the tested tip f18a7a7c, and keeps runs/, run-precut.out and the scripts.",
+      "state": "live",
+      "recorded_at": "2026-11-17T08:15:35.895Z"
     }
   ],
   "sent": [
@@ -2704,6 +2713,13 @@
       "re": "2026-11-17 06:04Z",
       "fyi": false,
       "recorded_at": "2026-11-17T06:10:06.693Z"
+    },
+    {
+      "id": "01M7M96RH9AFXX2J8RMJYNTET5",
+      "recipient": "vc",
+      "body": "END, for the record (sent live at the driver's exit): request 01M7M63M94Q31P11Y7X9XEF3RF, 0.1.26's pre-cut at f18a7a7c. The slot was released at 08:14:39Z with release rc 0, and the driver exited 1. Its one red is my nohup launch, not the code and not the load. Every other leg, check all and the dry run read green.\n- Seal: \"run-precut: sealed runs/SEAL, 115 file(s); exit 1\". runs/SEAL's sha256 is c876a1c22cff0708908db478d2f72f8574c09ed4fdd0d1a1a1b2735dd13b3421.\n- scans: test scans exit 0, 61 ok, 0 not ok.\n- bsd (default TMPDIR) and bsdleg (TMPDIR=<tree>.tmp) read the same: 26 legs each, 1639 ok, 1 not ok and 3 skipped (clean 2, install 1), with 25 legs exiting 0.\n- The one not ok in both is helpers.bats test 125, traps_restore (0311). It expected HUP[] and read HUP[trap -- '' SIGHUP], with TERM and USR1 right. That is SIGHUP ignored on entry under `nohup bash run-precut-slot.sh`, a signal disposition rather than timing. pc0125 ran without nohup and read helpers green.\n- checkall: check all exit 0, \"all check options passed\".\n- dryrun: release --patch --dry-run exit 0, \"release: dry run of v0.1.26 -- no step failed; the cut stops to ask at the confirm step\". The kovacs pre-flight passed on the kept 88fe057a pair, with no rehearsal needed.\n- Every gated phase left its gate cache empty. Summaries are in ~/Devel/scratch/devbin-dc/pc0126/runs/{scans,bsd,bsdleg,checkall,dryrun}/summary, with the driver's log in run-precut.out.\npc0126's tree goes by a clear-clone script on pc0125's pattern once v0.1.26 is tagged, and that is a hold on my board.",
+      "fyi": false,
+      "recorded_at": "2026-11-17T08:15:35.465Z"
     }
   ],
   "handled": [
