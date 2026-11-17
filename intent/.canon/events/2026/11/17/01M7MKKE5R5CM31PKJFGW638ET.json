@@ -1,0 +1,15 @@
+{
+  "id": "01M7MKKE5R5CM31PKJFGW638ET",
+  "ts": "2026-11-17T11:17:16.600Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Webber's 0.1.26 sweep commit is 26ba9c59 (2026-11-17 11:16Z by date -u), in the window webber-vc gave, its option (a): the 12 devbin paths alone, by path through Webber's hook (guards, critic and doctor clean), unpushed (Webber's decision 84), on webber-vc's ad562545, which lands hv's mix.lock bump. The files were written by hv's devbin upgrade in Webber's checkout at 10:52:32Z and hv's test all ran green with them in place (decision 211); the commit's message says so, not the sweep script's words. It lands before Creator's fly deploy, which now waits for Webber cc's seed unit and hv's return, so the deploy's fresh ask names a tip holding 0.1.26. The sha and 0.1.26's notice went to webber-vc; hold 36 is archived. Desk: another estate's dc withdrew its cold build at its fold (11:15Z); devbin-cc's stack 0354-1 then 0352-1 was granted bats at load 7.92 (11:16:20Z) beside that estate's single-core check, whose owner said its timings no longer need the host quiet."
+  }
+}
