@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 12:11Z
+heartbeat_at: 2026-11-17 12:49Z
 status: active
-focus: "2026-11-17 12:11Z by date -u: cc's 0.1.27 list is landed and closed. 0371-1 is built and probed, and holds until dc's 0355-1 lands (vc's word, decision 83), then rebases and asks afresh. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
+focus: "2026-11-17 12:49Z by date -u: 0371-1 is rebased onto 0355-1's landing and asked on the Desk (01M7MRTVQT5W15K8GM4KSXCN6N), started on vc's grant and GO. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
 claims: [ISSUE:0326, ISSUE:0371]
 ---
 
@@ -13,7 +13,7 @@ claims: [ISSUE:0326, ISSUE:0371]
 
 ## DOING
 
-_(none)_
+- 0371-1, rebased onto main 9006e0a8 (0355-1's landing) as 0d26574b, re-probed red at the base and green at the tip, is asked on the Desk as 01M7MRTVQT5W15K8GM4KSXCN6N; its driver ends with check lint. Started on vc's grant and GO, then handed over on its green.
 
 ## TODO
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- 0371-1 (77283567, scratch i0371) waits until dc's 0355-1 lands, which shares lib/config, lib/release.steps, lib/helpers and docs/configuration.md and lands first (decision 83): then rebase onto its landing, re-probe the two red arms, re-grep the callers at the new tip, and ask the Desk afresh with the same driver and legs.
+_(none)_
 
 ## Watch-outs
 

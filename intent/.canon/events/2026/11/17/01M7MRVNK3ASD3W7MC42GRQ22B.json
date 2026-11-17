@@ -1,0 +1,15 @@
+{
+  "id": "01M7MRVNK3ASD3W7MC42GRQ22B",
+  "ts": "2026-11-17T12:49:09.219Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "0371-1, rebased onto main 9006e0a8 (0355-1's landing) as 0d26574b, re-probed red at the base and green at the tip, is asked on the Desk as 01M7MRTVQT5W15K8GM4KSXCN6N; its driver ends with check lint. Started on vc's grant and GO, then handed over on its green."
+  }
+}
