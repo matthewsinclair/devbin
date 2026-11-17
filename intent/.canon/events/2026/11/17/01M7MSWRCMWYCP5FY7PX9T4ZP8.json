@@ -1,0 +1,15 @@
+{
+  "id": "01M7MSWRCMWYCP5FY7PX9T4ZP8",
+  "ts": "2026-11-17T13:07:13.428Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "cc's 0371-1 landed on main at 8234f074 by land-stack.sh, 2026-11-17 13:06Z by date -u, the tree outside intent/ equal to the tested tip 0d26574b: release.tag's rule takes {version} once (of 26 estate configs only Utilz declares release.tag, as \"{version}\", so it refuses nothing in use), and release_versions reads each tag through release_tag_version, the one reading. Its run (01M7MRTVQT5W15K8GM4KSXCN6N, bats, 12:57Z to 13:06Z, at 0d26574b rebased onto 0355-1's landing): both red arms failed at 9006e0a8, releasecore 58, formula 51, releasecut 17 and releaselegs 2 green under BSD and GNU, test scans 61 of 61, check lint 0 breaches. With it every devbin 0.1.27 issue cc held is on main (0354, 0352, 0370, 0358, 0362, 0363, 0371); dc holds 0360 then 0359, then 0364 to 0369, and whether cc takes any of those is hv's line (decision 16)."
+  }
+}

@@ -1,5 +1,5 @@
 ---
-verblock: "17 Nov 2026:v3.92: Matthew Sinclair - 0355-1 landed at 9006e0a8 (decision 217)"
+verblock: "17 Nov 2026:v3.93: Matthew Sinclair - 0371-1 landed at 8234f074 (decision 220)"
 ---
 
 # Work In Progress
@@ -8,7 +8,7 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- devbin 0.1.27 (decisions 205 to 217): cc's 0371-1 rebases onto 0355-1's landing (9006e0a8) and runs; dc takes 0360 then 0359 (they share run_gate), then 0364 to 0369. vc lands each unit on its builder's evidence; the cut waits for hv's go.
+- devbin 0.1.27 (decisions 205 to 220): every issue cc held is on main; dc takes 0360 then 0359 (they share run_gate), then 0364 to 0369. vc lands each unit on its builder's evidence; the cut waits for hv's go.
 - The Desk (decisions 199 and 200): vc holds it for rhadamanth, gyges and kovacs. Today's order on contention (decision 210): devbin, AE, Intent and the other estate, each ahead of Webber; a heavy-class grant past two waits for the 1-minute load under about 16.
 - Creator's Fly deploy: hv seeds three test accounts first, so webber-dc asks afresh once Webber cc's seed unit is on main and hv is present again (the old ask denied 11:14Z); Webber ranks below devbin, AE, Intent and the other estate (decision 210).
 
