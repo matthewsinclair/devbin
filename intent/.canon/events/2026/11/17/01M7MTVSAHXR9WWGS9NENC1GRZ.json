@@ -1,0 +1,15 @@
+{
+  "id": "01M7MTVSAHXR9WWGS9NENC1GRZ",
+  "ts": "2026-11-17T13:24:10.193Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0360-1 (refs/bank/dc/0360-1, 785f02de) and 0359-1 (refs/bank/dc/0359-1, bb53005c, on it) are banked on hv's 13:22Z fold, their kits dc's k360 and k359. Held until vc's word on the bounce, then 0359-1's light probe and one stacked formal run."
+  }
+}

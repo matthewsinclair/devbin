@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 12:44Z
+heartbeat_at: 2026-11-17 13:24Z
 status: active
-focus: "2026-11-17 12:44Z by date -u: 0355-1 handed over to vc at d9f84189 on 75c3439c, green: the long run (k355/runs) and the short run at the rebased tip (k355/runs-short, 10 files whole BSD and GNU, scans 61/61, lint clean). 0360-1 is built in dc's k360 (cae0ee4) and is next: rebase, probe, then its run. 0359-1 after it."
+focus: "2026-11-17 13:23Z by date -u: folded on hv's 13:22Z context-emergency word. 0355 is closed (0355-1 landed at 9006e0a8). 0360-1 and 0359-1 are banked (refs/bank/dc/0360-1, refs/bank/dc/0359-1), to run as one stack on the bounce after 0359-1's light probe. Holding for vc's word."
 claims: [ISSUE:0360, ISSUE:0359]
 ---
 
@@ -13,15 +13,15 @@ claims: [ISSUE:0360, ISSUE:0359]
 
 ## DOING
 
-- 0360 (medium), then 0359 (low), decision 205: run_gate's. 0360-1 is built in dc's k360 (ignore SIGPIPE in run_gate's shell from before its pipeline, each element resetting it; errexit held off to the close), to rebase onto main, probe, then its run. 0359-1 stacks on it.
+_(none)_
 
 ## TODO
 
-_(none)_
+- 0366 to 0369 (low), filed from vc's todo 214, are dc's for 0.1.27; 0364 and 0365 went to cc on hv's word (13:22Z).
 
 ## Holds
 
-_(none)_
+- 0360-1 (refs/bank/dc/0360-1, 785f02de) and 0359-1 (refs/bank/dc/0359-1, bb53005c, on it) are banked on hv's 13:22Z fold, their kits dc's k360 and k359. Held until vc's word on the bounce, then 0359-1's light probe and one stacked formal run.
 
 ## Watch-outs
 

@@ -1,0 +1,15 @@
+{
+  "id": "01M7MTVSNS7RFFEX81QP7P4DGG",
+  "ts": "2026-11-17T13:24:10.553Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "0366 to 0369 (low), filed from vc's todo 214, are dc's for 0.1.27; 0364 and 0365 went to cc on hv's word (13:22Z)."
+  }
+}
