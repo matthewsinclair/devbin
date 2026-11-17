@@ -2453,3 +2453,90 @@ YAML
   assert_success
   assert_output_contains "inner-flag=0"
 }
+
+# ============================================================================
+# A SIGNAL'S RUN STILL CLOSES WHEN ITS OUTPUT HAS NO READER (issue 0360)
+# ============================================================================
+# run_gate notes INT, TERM and HUP while its command runs, then seals red. A
+# signal to the whole group can end the reader of the pipe the run's output
+# goes to too: with both streams in one pipe, bash's notice of the ended job
+# went to that dead stderr while it waited for the pipeline, and the shell
+# died of SIGPIPE, 141, unsealed; and under a caller's errexit, outside all,
+# the first failed write to a dead stdout ended run_gate at 1 before its
+# ledger row, the caller's handlers and the signal's re-send. Each arm runs
+# run_gate in a shell of its own, in a process group of its own, the group
+# and the reader each sent TERM once the gated command has started.
+
+# group_term_run <dir> <how> -- run_gate in <dir>/run.sh's shell, in a group
+# of its own, its stdout into a fifo whose reader is its own job; its stderr
+# into the same fifo for `both`, or into <dir>/stderr for `out`. The caller's
+# errexit is on, and its own TERM handler notes in <dir>/rec that it ran, by
+# a path set at the script's top: the handler runs inside run_gate, where $1
+# is run_gate's own first argument. Once the gated command's line is in the
+# run's log, the group and the reader are each sent TERM. Prints the run's
+# exit status.
+group_term_run() {
+  local d="$1" how="$2"
+  mkdir -p "$d"
+  mkfifo "$d/fifo"
+  # shellcheck disable=SC2016 # the run's own expansions, made when it runs
+  printf '%s\n' \
+    'set -euo pipefail' \
+    'cd "$1"' \
+    'rec="$1/rec"' \
+    'export DEVBIN_LIB="$2" PROJECT_ROOT="$1" DEVBIN_SEAL_LEDGER="$1/ledger"' \
+    '. "$2/helpers"; . "$2/runlog"' \
+    'trap '"'"'echo "the caller'"'"'"'"'"'"'"'"'s TERM handler ran" >>"$rec"'"'"' TERM' \
+    'run_gate --label probe --suffix PROBE --out-dir logs -- bash -c '"'"'printf "started\n"; sleep 10'"'"'' \
+    'echo "the caller went on" >>"$rec"' >"$d/run.sh"
+  # shellcheck disable=SC2016 # the driver's own expansions, made when it runs
+  bash -c '
+    set -m
+    d="$1" lib="$2" how="$3"
+    cat "$d/fifo" >/dev/null &
+    reader=$!
+    if [ "$how" = both ]; then
+      bash "$d/run.sh" "$d" "$lib" >"$d/fifo" 2>&1 &
+    else
+      bash "$d/run.sh" "$d" "$lib" >"$d/fifo" 2>"$d/stderr" &
+    fi
+    run=$!
+    for _ in $(seq 1 200); do
+      grep -qs started "$d"/logs/*.PROBE.out && break
+      sleep 0.05
+    done
+    kill -TERM -- "-$run" 2>/dev/null
+    kill -TERM "$reader" 2>/dev/null
+    st=0
+    wait "$run" || st=$?
+    wait "$reader" 2>/dev/null
+    printf "%s\n" "$st"' _ "$d" "$DEVBIN_LIB_DIR" "$how"
+}
+
+@test "0360: a TERM to the whole group of a run whose stdout and stderr share one pipe, the pipe's reader among them, still seals it red at 143, writes its ledger row and leaves no progress file" {
+  local d="$DEVBIN_TEST_TMPDIR/both" st
+  st="$(group_term_run "$d" both)"
+  [ "$st" = 143 ] || fail "the run ended $st, not 143: $(cat "$d/rec" 2>&1)"
+  grep -q $'^143\tprobe\t' "$d/ledger" || fail "no ledger row for the run: [$(cat "$d/ledger" 2>&1)]"
+  grep -qs 'ENDED BY SIGTERM' "$d"/logs/*.PROBE.errors || fail "the seal does not name the signal: $(cat "$d"/logs/*.PROBE.errors 2>&1)"
+  if compgen -G "$d/logs/*.progress" >/dev/null; then fail "the progress file was left: $(ls "$d/logs")"; fi
+}
+
+@test "0360: under a caller's errexit, outside all, a run a TERM ended whose stdout has no reader still writes its ledger row, puts back the caller's handler and sends the signal on to it" {
+  local d="$DEVBIN_TEST_TMPDIR/out" st
+  st="$(group_term_run "$d" out)"
+  [ "$st" = 143 ] || fail "the run ended $st, not 143: $(cat "$d/rec" 2>&1) / $(cat "$d/stderr" 2>&1)"
+  grep -q $'^143\tprobe\t' "$d/ledger" || fail "no ledger row for the run: [$(cat "$d/ledger" 2>&1)]"
+  grep -qx "the caller's TERM handler ran" "$d/rec" || fail "the caller's handler was not put back and sent the signal: $(cat "$d/rec" 2>&1)"
+}
+
+@test "0360: a tool the gated command runs still ends of SIGPIPE when what it writes to has gone, as it did before run_gate ignored SIGPIPE for itself" {
+  # The control: run_gate's own shell ignores SIGPIPE while it runs, and each
+  # element of its pipeline puts it back, so nothing it starts inherits it.
+  # pipe-sound: head stopping before yes has finished is the point: the
+  # control reads yes ended by the SIGPIPE it meets.
+  run run_gate --suffix demo --out-dir logs -- bash -c 'yes | head -n 1 >/dev/null; printf "yes ended %s\n" "${PIPESTATUS[0]}"; printf "PIPE here [%s]\n" "$(trap -p PIPE)"'
+  assert_success
+  assert_output_contains "yes ended 141"
+  assert_output_contains "PIPE here []"
+}
