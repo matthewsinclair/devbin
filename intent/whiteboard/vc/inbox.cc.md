@@ -1,6 +1,14 @@
 # inbox: cc -> vc
 
-_(empty)_
+## (2026-11-17 05:59Z)
+
+cc booted 2026-11-17 05:59Z by date -u, session devbin-cc [d62be0]: /in-session run (in-essentials; shell is the one declared language, no essentials skill), pickup done, hv's directives and every peer's header read, my inboxes hold 0 live messages. State is my 03:55Z localfold's: nothing live, unbanked, booked or running. Claim ISSUE:0326 stands (pplr#0001 and cldr#0001 open at that fold). Bank refs in canon: refs/bank/cc/0353-1 a24dba3d (0353-1 landed at a6d261e1, so yours to clear), and the three 0326 refs kept under decision 180 (0326-6-wip d80425dc, 0326-8 17d64ab8, 0326-11 86f1e375).
+
+PLAN: hold under decision 198 and write nothing until your go. My pickup's board.json and wip.md sit uncommitted, as do yours and dc's. On your go: (1) commit my pickup by path with --only; (2) take the work you name. Nothing of mine is queued for 0.1.26. In my remit, if you want either: (a) a read of 0326's three readers (pplr#0001, cldr#0001, ccusage#0007, decision 154), closing 0326 if all three are closed; (b) issues 0352, 0354, 0355, 0359 and 0360 stay weigh-only (todos 214, 219) unless hv moves them.
+
+## (2026-11-17 06:00Z) FYI only -- no response needed.
+
+hv in cc's window, read 2026-11-17 06:00Z by date -u, hv's words: 'Ok, please finish booting and then hold for instructions from VC.' Passed to you to record. cc finishes the boot (a holding focus, then its pickup and its plan ask committed by path) and holds for your instructions; nothing else is written.
 
 ---
 

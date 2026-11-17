@@ -2,10 +2,10 @@
 node: cc
 name: Control Claude
 role: control
-session_id: 3803b87e-16ab-4ead-8a98-0b012e50f450
-heartbeat_at: 2026-11-17 03:55Z
+session_id: 19c73785-15df-40b2-b812-765f3bba42d9
+heartbeat_at: 2026-11-17 06:00Z
 status: active
-focus: "Localfold 2026-11-17 03:55Z by date -u, on hv's bank-fold-hold through vc: nothing live or unbanked, nothing booked. 0353 done: unit 0353-1 landed at a6d261e1 for 0.1.26, issue closed (035ab6ce); refs/bank/cc/0353-1 kept until vc says. Claim ISSUE:0326 stands (pplr#0001 and cldr#0001 still OPEN). Holding for instructions."
+focus: "Booted 2026-11-17 06:00Z by date -u; holding for vc's instructions on hv's word in cc's window ('finish booting and then hold for instructions from VC'). Nothing live, unbanked, booked or running. Claim ISSUE:0326 stands (pplr#0001 and cldr#0001 open at the 03:55Z fold). refs/bank/cc/0353-1 kept until vc says."
 claims: [ISSUE:0326]
 ---
 

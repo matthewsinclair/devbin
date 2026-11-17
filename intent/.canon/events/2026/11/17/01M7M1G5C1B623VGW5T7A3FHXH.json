@@ -1,0 +1,17 @@
+{
+  "id": "01M7M1G5C1B623VGW5T7A3FHXH",
+  "ts": "2026-11-17T06:00:54.913Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "hv in cc's window, read 2026-11-17 06:00Z by date -u, hv's words: 'Ok, please finish booting and then hold for instructions from VC.' Passed to you to record. cc finishes the boot (a holding focus, then its pickup and its plan ask committed by path) and holds for your instructions; nothing else is written.",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}

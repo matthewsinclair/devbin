@@ -1,0 +1,17 @@
+{
+  "id": "01M7M1EDC6CAGZ8VJJ195RG8B1",
+  "ts": "2026-11-17T05:59:57.574Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc booted 2026-11-17 05:59Z by date -u, session devbin-cc [d62be0]: /in-session run (in-essentials; shell is the one declared language, no essentials skill), pickup done, hv's directives and every peer's header read, my inboxes hold 0 live messages. State is my 03:55Z localfold's: nothing live, unbanked, booked or running. Claim ISSUE:0326 stands (pplr#0001 and cldr#0001 open at that fold). Bank refs in canon: refs/bank/cc/0353-1 a24dba3d (0353-1 landed at a6d261e1, so yours to clear), and the three 0326 refs kept under decision 180 (0326-6-wip d80425dc, 0326-8 17d64ab8, 0326-11 86f1e375).\n\nPLAN: hold under decision 198 and write nothing until your go. My pickup's board.json and wip.md sit uncommitted, as do yours and dc's. On your go: (1) commit my pickup by path with --only; (2) take the work you name. Nothing of mine is queued for 0.1.26. In my remit, if you want either: (a) a read of 0326's three readers (pplr#0001, cldr#0001, ccusage#0007, decision 154), closing 0326 if all three are closed; (b) issues 0352, 0354, 0355, 0359 and 0360 stay weigh-only (todos 214, 219) unless hv moves them.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
