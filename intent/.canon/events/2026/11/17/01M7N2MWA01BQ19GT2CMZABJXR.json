@@ -1,0 +1,15 @@
+{
+  "id": "01M7N2MWA01BQ19GT2CMZABJXR",
+  "ts": "2026-11-17T15:40:12.480Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, after the move (read 15:40:03Z by date -u), hv's words: \"Ok, you've still got The Desk. Fire everyone up again please.\" devbin's hold on hv's 13:22Z word lifts: dc runs 0359-1's light probe, then one stack ask for 0360-1 and 0359-1; cc builds 0364-1 then 0365-1 as one stack (shape agreed). vc keeps the Desk; every estate is told it is open (order on contention: decision 210)."
+  }
+}
