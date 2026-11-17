@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 30d0e398-8d8a-4899-8104-31fa2767a4bd
-heartbeat_at: 2026-11-17 19:43Z
+heartbeat_at: 2026-11-17 19:49Z
 status: active
-focus: "Bounce: land dc's 0367-1/0366-1 at k36x's green END (01M7NG3D), then cut 0.1.27 on decision 224 and ping hv; then grant webber-dc's archive 01M7NG5Q and the other estate's 01M7NGGB. State: ~/Devel/scratch/devbin-vc/0.1.27/STATE.md"
+focus: "Bounce: dc's 0367-1/0366-1 landed (bc0f6fef, 57e97d5f); cut 0.1.27 on decision 224 after dc's closes and the other estate's 01M7NGSZ END, then ping hv; webber-dc's archive 01M7NG5Q after the cut"
 claims: []
 ---
 
