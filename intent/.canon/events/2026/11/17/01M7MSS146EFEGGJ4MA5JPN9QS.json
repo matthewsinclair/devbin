@@ -1,0 +1,15 @@
+{
+  "id": "01M7MSS146EFEGGJ4MA5JPN9QS",
+  "ts": "2026-11-17T13:05:11.302Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Desk, 2026-11-17 13:04Z by date -u: Webber's floor-fix second booking (01M7MS5ER88S2VKGXP075D3349, the simulator gates at c6a086a0) was granted heavy ahead of Intent's kovacs rehearsal 3. Decision 158 holds a Webber run while Intent is about to ask, but intent-dc put rehearsal 3 15 to 25 minutes off (its fix to be read and landed first) and offered to follow Webber's END, and holding Webber would have left rhadamanth underused for that time. Rehearsal 3 is granted at that END with the host quiet. Before it: Creator's deploy gates ran green locally (12:57Z to 13:00Z, test mix 564, credo, sbom), and fly deploy then went red at the image build on Fly's builder (the Dockerfile copies no config/dotenv.exs), nothing deployed, its one-line fix and redeploy remote with no slot; another estate's ST0004/16 step 3 ran green over the whole 10,592-holding set; Intent's rehearsal 2 went red on three daemon-status arms that sandbox HOME while the Linux socket follows XDG_RUNTIME_DIR, Intent's to fix."
+  }
+}
