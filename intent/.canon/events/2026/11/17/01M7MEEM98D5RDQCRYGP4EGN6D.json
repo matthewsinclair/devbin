@@ -1,0 +1,15 @@
+{
+  "id": "01M7MEEM98D5RDQCRYGP4EGN6D",
+  "ts": "2026-11-17T09:47:16.136Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-17 09:12Z by date -u, hv's words: \"Ok, context is high here on devbin-*, so lets finish what is currently running as a live task, then bank the bankable, and then localfold+compact. Then we can continue on the bounce with the plan. I have started the patch release and it's running now ...\" and, with the cut's first lines pasted, \"We should localfold+compact while that runs.\" Done: cc and dc folded with no canon write while the cut ran (boards at 7822178e and a5529f7b); vc's board half waited for the cut's end. devbin v0.1.26 RELEASED by hv's bin/devbin release --patch --yes (started 09:10:56Z): release commit f0434fbd68c0, every leg green there: local gates 09:27:46Z (check all; test all, 3189 ok; doctor, 16 checks), the kovacs leg 09:44:48Z, the candidate's CI run 44053273078 (Ubuntu shards 1 and 2 and macOS shards 1 to 4 green; WSL blocks nothing); tag v0.1.26 on local and upstream; Release workflow run 44058420915 green; the formula published by the cut's after step; Desk slot 01M7MBACKDNSXXHZRK9WYBSXFZ ended; the main-push run skips its test jobs by design (0357-6). The load reached 391 during the local leg from a macOS indexing storm (mediaanalysisd, FileDerivatives importers, Photos, Safari), left alone under decision 199 (2); no leg went red. Left for the bounce: hv's brew steps (brew upgrade devbin; bin/devbin use brew in canon; devbin --version reads devbin 0.1.26 (brew, f0434fbd68c0)), then vc's fleet sweep from brew with its pathspec committed in every tree (directive 10), then todo 215's notices. This carries decision 202's last step, so 202 is archived."
+  }
+}
