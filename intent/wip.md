@@ -1,5 +1,5 @@
 ---
-verblock: "17 Nov 2026:v3.85: Matthew Sinclair - devbin 0.1.26 released; localfold for hv's compact"
+verblock: "17 Nov 2026:v3.86: Matthew Sinclair - hv's brew steps for 0.1.26 done; the fleet sweep next"
 ---
 
 # Work In Progress
@@ -8,7 +8,7 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- devbin 0.1.26's after-tag steps (decision 203): hv's brew steps (`brew upgrade devbin`, then `bin/devbin use brew` in ~/Devel/prj/Devbin, then `devbin --version` reads `devbin 0.1.26 (brew, f0434fbd68c0)`); then vc sweeps the fleet from brew and commits the sweep pathspec in every tree (directive 10); then the sweep notices (todo 215).
+- devbin 0.1.26's fleet sweep (decision 203): hv's brew steps are done (`devbin --version` reads `devbin 0.1.26 (brew, f0434fbd68c0)`), so vc sweeps the fleet from brew and commits the sweep pathspec in every tree (directive 10), then sends the sweep notices (todo 215).
 
 ## TODO
 
