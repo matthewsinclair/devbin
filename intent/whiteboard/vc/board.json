@@ -5428,6 +5428,22 @@
       "text": "0355-1 takes all six places dc found under decision 207's condition (4), vc's word to dc: the GATES seal (git_head_identity's +dirty, read back by gates_sealed), pre-flight's tree rule and the stamp step, the commit step and release_read_clean, release gates and its --leg, and the macOS stage's app-sign and bin-sign; the tag, the pushes, the formula, the object and after check no tree. One reader of release.unread at each process entry that needs it (the cut, release gates, the macos verbs) sets one shell variable, never exported; the GATES seal is run_gate's around release_gates_run in the cut's own shell, so it sees it. git_head_identity leaves listed paths out of +dirty through git's pathspec excludes, and the commit step never commits a listed path, which closes today's hazard of a peer's write reaching the release commit. Every run whose list is non-empty names it and every listed path it found dirty or changed; with the list empty every read is today's. The smaller choice was refused: it keeps a pickup bar from the booking to the gates' start, the bar molt#0100 paid for. devbin's own bar loosens to no commit during a cut once 0.1.27 is out and swept.",
       "state": "live",
       "recorded_at": "2026-11-17T10:44:24.921Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 209,
+      "text": "0370 (medium, filed by cc at 1177eed8 from intent-vc's report: on 0.1.26, bin/devbin gate rust --help in Intent's tree ran Intent's whole Rust gate, unbooked, for two minutes, since 0356 answers the flag only for devbin's six gate commands and a declared option's run: line of a project's own command still gets it) is cc's to build after 0352, so cc's order is 0354, 0352, 0370, 0358 with 0362, then 0363; its pick and shape come to vc before the build (vc's leaning: every command whose declared option's run: line is what runs; a command-level run: line keeps its own flag, as decision 194 left it). Intent closes its side as intent#0699. Landing order: 0354-1 changes lib/helpers and so does 0355-1 (git_head_identity), so 0354-1 lands first and dc bases 0355-1's run on main after it (decision 83).",
+      "state": "live",
+      "recorded_at": "2026-11-17T10:49:51.995Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 210,
+      "text": "hv in vc's window, read by 2026-11-17 10:55Z by date -u, hv's words with one name withheld under directive 14: \"Heads up: I've started webber-*. It's in the mix and it's hold is released, but devbin, ae, and [another estate's project] all trump it for priority work here on rhad.\", then \"Heads up: I've started webber-*. It's in the mix and it's hold is released, but devbin, ae, intent, and [another estate's project] all trump it for priority work here on rhad. Note: I forgot intent in the previous message.\", and \"Note: I am running the full test suite for webber here manually ...\" The Desk's order on contention: devbin, AE, Intent and that estate, each ahead of Webber; this replaces decision 201's order for the rest of the day. hv's TUI answer, the recommendation, on Creator's Fly deploy (01M7K0MGZSMKW23YB3SMCKF4RF, hv present): at the other estate's timed build's END, devbin-cc's 0354-1 run first and the deploy beside it. That estate's dc asked a cold cargo build after the answer, and it outranks Webber, so it goes before the deploy; every heavy-class grant past two waits for the 1-minute load under about 14 to 16, and hv's manual Webber suite (xcodebuild) counts as one.",
+      "state": "live",
+      "recorded_at": "2026-11-17T10:55:26.094Z"
     }
   ],
   "sent": [

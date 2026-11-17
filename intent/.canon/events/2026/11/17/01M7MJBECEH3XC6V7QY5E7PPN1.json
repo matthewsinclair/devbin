@@ -1,0 +1,15 @@
+{
+  "id": "01M7MJBECEH3XC6V7QY5E7PPN1",
+  "ts": "2026-11-17T10:55:26.094Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-17 10:55Z by date -u, hv's words with one name withheld under directive 14: \"Heads up: I've started webber-*. It's in the mix and it's hold is released, but devbin, ae, and [another estate's project] all trump it for priority work here on rhad.\", then \"Heads up: I've started webber-*. It's in the mix and it's hold is released, but devbin, ae, intent, and [another estate's project] all trump it for priority work here on rhad. Note: I forgot intent in the previous message.\", and \"Note: I am running the full test suite for webber here manually ...\" The Desk's order on contention: devbin, AE, Intent and that estate, each ahead of Webber; this replaces decision 201's order for the rest of the day. hv's TUI answer, the recommendation, on Creator's Fly deploy (01M7K0MGZSMKW23YB3SMCKF4RF, hv present): at the other estate's timed build's END, devbin-cc's 0354-1 run first and the deploy beside it. That estate's dc asked a cold cargo build after the answer, and it outranks Webber, so it goes before the deploy; every heavy-class grant past two waits for the 1-minute load under about 14 to 16, and hv's manual Webber suite (xcodebuild) counts as one."
+  }
+}

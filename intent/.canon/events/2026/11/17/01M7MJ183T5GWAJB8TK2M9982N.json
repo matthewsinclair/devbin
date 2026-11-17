@@ -1,0 +1,15 @@
+{
+  "id": "01M7MJ183T5GWAJB8TK2M9982N",
+  "ts": "2026-11-17T10:49:51.995Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "0370 (medium, filed by cc at 1177eed8 from intent-vc's report: on 0.1.26, bin/devbin gate rust --help in Intent's tree ran Intent's whole Rust gate, unbooked, for two minutes, since 0356 answers the flag only for devbin's six gate commands and a declared option's run: line of a project's own command still gets it) is cc's to build after 0352, so cc's order is 0354, 0352, 0370, 0358 with 0362, then 0363; its pick and shape come to vc before the build (vc's leaning: every command whose declared option's run: line is what runs; a command-level run: line keeps its own flag, as decision 194 left it). Intent closes its side as intent#0699. Landing order: 0354-1 changes lib/helpers and so does 0355-1 (git_head_identity), so 0354-1 lands first and dc bases 0355-1's run on main after it (decision 83)."
+  }
+}
