@@ -2263,6 +2263,42 @@ run_gate_report() {
   record_seal "$5" "$8" "$7"
 }
 
+# THE SIGNAL HANDLING OF A GATED RUN, as functions (issue 0359): run_gate
+# calls these, and a project's handler that runs a gated tool without
+# run_gate calls the same ones, so a guard can name them and no copy drifts.
+#
+# gate_signals_arm <caught> <saved> -- the arm (issue 0297): the caller's INT,
+# TERM, HUP and PIPE handlers, as `trap -p` prints them, into the variable
+# <saved> names, for traps_restore to put back; then INT, TERM and HUP each
+# noted by its name into the variable <caught> names, and nothing more, so the
+# gated command ends first and the run is sealed red after it. Both are the
+# caller's own variables, set by name: a note runs in the function running
+# when the signal comes, and names the caller's variable there. The caller
+# ignores SIGPIPE for itself just before its pipeline, as run_gate does, each
+# element putting it back for itself (issue 0360).
+gate_signals_arm() {
+  local _gsa_s
+  printf -v "$2" '%s' "$(trap -p INT TERM HUP PIPE)"
+  for _gsa_s in INT TERM HUP; do
+    # shellcheck disable=SC2064 # the note names the caller's variable, now
+    trap "$1=$_gsa_s" "$_gsa_s"
+  done
+}
+
+# gate_progress_file <log> -- the progress file of the run whose log is <log>,
+# the heartbeat's header: beside the log, never at TMPDIR's top (issue 0346).
+# Pure.
+gate_progress_file() { printf '%s.progress\n' "$1"; }
+
+# gate_signal_close <signal> <name> -- the close of the run <name> that the
+# signal <signal> (INT, TERM or HUP) ended: its exit, 128 and the signal's
+# number, a TAB, and the ENDED line that says why its log stops where it
+# does. Pure.
+gate_signal_close() {
+  local rc=$((128 + $(kill -l "$1")))
+  printf '%s\t%s\n' "$rc" "ENDED BY SIG$1 ($2): a signal stopped the run before its command finished, so its verdict is red (exit $rc)"
+}
+
 run_gate() {
   local label="" suffix="" grammar=generic out_dir="tmp/gate" source=""
   local keep_log=1 purge=0 purge_only=0 want_color=auto allow_empty=0
@@ -2379,11 +2415,8 @@ run_gate() {
   # Ctrl-C, where a gate that returned 130 would have let it run the next one.
   # THE COST: a signal sent to this process alone is acted on only once the
   # gated command ends.
-  local caught="" traps_were said=""
-  traps_were="$(trap -p INT TERM HUP PIPE)"
-  trap 'caught=INT' INT
-  trap 'caught=TERM' TERM
-  trap 'caught=HUP' HUP
+  local caught="" traps_were="" said="" closed
+  gate_signals_arm caught traps_were
   # THE COMMAND'S PROGRESS FILE (the heartbeat's header): made empty here,
   # read by the beat, removed once the beat has stopped. A run where it cannot
   # be made runs without one, as before.
@@ -2393,7 +2426,8 @@ run_gate() {
   # gate beside that root broke it. The log is already this run's own name,
   # so the file needs no name of its own, and the readers of a log's
   # directory read only its .out and .errors.
-  local progress="$log.progress"
+  local progress
+  progress="$(gate_progress_file "$log")"
   : 2>/dev/null >"$progress" || progress=""
   gate_heartbeat_start "$log" "$label" "$progress"
   # A GATED TOOL GETS NO INPUT (issue 0088, row 2, as amended twice). It
@@ -2454,8 +2488,9 @@ run_gate() {
   # handlers not put back and the signal not sent on. The caller's errexit
   # comes back as the run returns.
   if [ -n "$caught" ]; then
-    rc=$((128 + $(kill -l "$caught")))
-    said="ENDED BY SIG$caught (${label:-$suffix}): a signal stopped the run before its command finished, so its verdict is red (exit $rc)"
+    closed="$(gate_signal_close "$caught" "${label:-$suffix}")"
+    rc="${closed%%$'\t'*}"
+    said="${closed#*$'\t'}"
   else
     warn_if_tee_failed "${rcs[1]:-0}" "$log"
   fi

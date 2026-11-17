@@ -2540,3 +2540,62 @@ group_term_run() {
   assert_output_contains "yes ended 141"
   assert_output_contains "PIPE here []"
 }
+
+# ============================================================================
+# THE SIGNAL HANDLING AS FUNCTIONS (issue 0359)
+# ============================================================================
+# The arm, the progress file's name and the close are functions run_gate
+# calls, so a project's handler that runs a gated tool without run_gate calls
+# the same ones, and a guard can name them.
+
+@test "0359: gate_signals_arm saves the caller's INT, TERM, HUP and PIPE handlers into the variable it names, notes each of INT, TERM and HUP by name into the other, and traps_restore puts the caller's back" {
+  run bash -c "set -uo pipefail
+    . '$DEVBIN_LIB_DIR/helpers'; . '$DEVBIN_LIB_DIR/runlog'
+    trap 'echo caller' TERM
+    f() {
+      local seen='' kept=''
+      gate_signals_arm seen kept
+      kill -s TERM \$BASHPID
+      printf 'after TERM [%s]\n' \"\$seen\"
+      kill -s HUP \$BASHPID
+      printf 'after HUP [%s]\n' \"\$seen\"
+      printf 'kept TERM [%s]\n' \"\$(grep -F SIGTERM <<<\"\$kept\")\"
+      traps_restore \"\$kept\" INT TERM HUP PIPE
+      printf 'TERM back [%s]\n' \"\$(trap -p TERM)\"
+    }
+    f"
+  assert_success
+  assert_output_contains "after TERM [TERM]"
+  assert_output_contains "after HUP [HUP]"
+  assert_output_contains "kept TERM [trap -- 'echo caller' SIGTERM]"
+  assert_output_contains "TERM back [trap -- 'echo caller' SIGTERM]"
+}
+
+@test "0359: gate_progress_file names a run's progress file beside its log" {
+  local got
+  got="$(gate_progress_file "$DEVBIN_TEST_TMPDIR/logs/20261117-1300.PROBE.out")"
+  [ "$got" = "$DEVBIN_TEST_TMPDIR/logs/20261117-1300.PROBE.out.progress" ] || fail "named [$got]"
+}
+
+@test "0359: gate_signal_close gives a signal-ended run's exit, 128 and the signal's number, and its ENDED line naming the signal, the run and that exit" {
+  local s got want
+  for s in INT TERM HUP; do
+    want=$((128 + $(kill -l "$s")))
+    got="$(gate_signal_close "$s" probe)"
+    [ "${got%%$'\t'*}" = "$want" ] || fail "$s gave the exit [${got%%$'\t'*}], not $want"
+    [ "${got#*$'\t'}" = "ENDED BY SIG$s (probe): a signal stopped the run before its command finished, so its verdict is red (exit $want)" ] ||
+      fail "$s gave the line [${got#*$'\t'}]"
+  done
+}
+
+@test "0359: run_gate calls the arm, the progress file's name and the close, and holds no copy of them inline" {
+  local body f
+  body="$(awk '/^run_gate\(\) \{$/,/^}$/' "$DEVBIN_LIB_DIR/runlog")"
+  [ -n "$body" ] || fail "run_gate's body was not found in lib/runlog"
+  for f in gate_signals_arm gate_progress_file gate_signal_close; do
+    grep -q -- "$f" <<<"$body" || fail "run_gate does not call $f"
+  done
+  if grep -qE "trap '[a-z_]+=(INT|TERM|HUP)'" <<<"$body"; then fail "run_gate notes a signal inline"; fi
+  if grep -qF '.progress"' <<<"$body"; then fail "run_gate names the progress file inline"; fi
+  if grep -qF 'ENDED BY SIG' <<<"$body"; then fail "run_gate writes the ENDED line inline"; fi
+}
