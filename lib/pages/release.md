@@ -5,6 +5,7 @@
     bin/devbin release attach <vX.Y.Z> [--from <dir>]
     bin/devbin release snapshot <vX.Y.Z | --commit <rev>> <new-dir> [--no-parent]
     bin/devbin release gates [--rerun] [--leg <host>]
+    bin/devbin release target [--ref <ref>]
 
 Cut a release: confirm once, then stamp, commit, run every leg (the gates, here and on each host release.legs names, the macOS stage where it is declared, and the candidate's CI) under one wait loop, tag and push once all are green, make the release object and run `after:`, all under that one yes. `release` is opt-in: a project enables it with `commands.release.enabled: true` and declares how it releases in the `release:` block of `bin/.devbin/config.yaml`, where every key has a default. Every `release:` key is annotated in devbin's reference config, and `bin/devbin devbin` names where that file and devbin's releasing guide are.
 
@@ -140,6 +141,10 @@ Under `release.publish.url`, a dry run whose release commit exists already makes
 Every command of the project's own that a cut runs is handed the release's target in two variables: `DEVBIN_RELEASE_VERSION`, the version being released, and `DEVBIN_RELEASE_TARGET_TAG`, the tag it is released under. They reach each `release.preflight` command, a dry run's included, each `derived:` command, the gates, the macOS stage, `macos leg` and the build it runs, before the tag, the formula step and each `after:` command, and nothing else a cut runs. The gates are handed the pair wherever they run: in place, on each host `release.legs` names, and under `release gates`, which reads both from the tree it stands on, the version the tree declares and the tag `release.tag` makes of it, and refuses to run where the version cannot be read. On the release commit, which carries the stamp, that is the cut's own pair, so a sealed green stands for gates that saw what the cut's would.
 
 Neither is `DEVBIN_RELEASE_TAG`, which a cut hands `release.ci.query` alone: the ref the query reads its runs by, the candidate's branch, not the tag.
+
+A CI workflow the candidate's push starts is none of the cut's own commands, so it is handed neither variable. It asks with `release target`, which prints the pair as the tree declares it, the derivation `release gates` makes, as `DEVBIN_RELEASE_VERSION=<version>` and `DEVBIN_RELEASE_TARGET_TAG=<tag>`, the lines a CI environment file takes. On the release commit the candidate carries, that is the cut's own pair. `--ref <ref>`, the ref the run was started by, prints them only for this release's candidate, `release.publish.candidate` filled with the tree's tag, or for that tag. Any other ref prints nothing and exits 0, saying so on stderr, so a push of main builds as it would without the step. A candidate branch of another release's tag is refused, exit 1, naming both tags. `release target` writes nothing, and reads the tree and the config alone, no tag and no history, so it answers in a shallow checkout detached at a tag. In a GitHub workflow the step is one line:
+
+    bin/devbin release target --ref "$GITHUB_REF" >>"$GITHUB_ENV"
 
 ## The gates' own directories
 

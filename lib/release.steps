@@ -662,6 +662,33 @@ release_target_run() {
   DEVBIN_RELEASE_VERSION="$_rt_version" DEVBIN_RELEASE_TARGET_TAG="$_rt_tag" "$@"
 }
 
+# release_tree_target -- `<version><TAB><tag>`, the release's target as the
+# tree declares it (issue 0327): the version read_version reads and the tag
+# release.tag makes of it, which on the release commit, carrying the stamp,
+# are the cut's own pair. THE ONE DERIVATION OF THE PAIR FROM A TREE: `release
+# gates` hands it to its gates, and `release target` prints it for a workflow
+# the candidate's push starts, which a cut hands nothing (issue 0352). It reads
+# the tree and the config alone, no history and no remote, and writes nothing.
+# rc 1, with why on stdout, where the version or release.tag cannot be read:
+# the version in version_unread's words.
+release_tree_target() {
+  local unread ver tpl rc
+  if unread="$(version_unread why)"; then
+    printf 'the version cannot be read: %s -- %s\n' "$unread" "$(version_unread fix)"
+    return 1
+  fi
+  ver="$(read_version)" || {
+    rc=$?
+    printf 'the version cannot be read (exit %s)\n' "$rc"
+    return 1
+  }
+  tpl="$(cfg_release_get tag)" || {
+    printf 'release.tag cannot be read\n'
+    return 1
+  }
+  printf '%s\t%s\n' "$ver" "$(release_tag_name "$tpl" "$ver")"
+}
+
 # release_preflight_run <why-file> <command>... -- the commands given, each a
 # release.preflight line, in order, in place, through the project's own
 # launcher, with no stdin, since pre-flight asks nobody (issue 0327). EVERY ONE

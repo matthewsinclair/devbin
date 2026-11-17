@@ -419,7 +419,8 @@ notes
 check
 attach
 snapshot
-gates" ]
+gates
+target" ]
   v="$(cfg_release_get publish.candidate)"
   [ "$v" = "candidate/{tag}" ]
   v="$(cfg_release_get assets.workflow)"
@@ -1001,7 +1002,7 @@ YAML
     assert_output_contains "$want"
     refute_output_contains "is not available here"
   done <<'EOF2'
-    - check\n    - atach|release.verbs.1: "atach" must be one of cut, status, notes, check, attach, snapshot, gates
+    - check\n    - atach|release.verbs.1: "atach" must be one of cut, status, notes, check, attach, snapshot, gates, target
     - "-"|release.verbs: "-" would offer no verb
 EOF2
 }
@@ -1073,7 +1074,7 @@ YAML
     [ "$status" -ne 0 ] || fail "accepted: $block"
     assert_output_contains "$want"
   done <<'EOF2'
-  verbs:\n    - cut\n    - ship|release.verbs.1: "ship" must be one of cut, status, notes, check, attach, snapshot, gates
+  verbs:\n    - cut\n    - ship|release.verbs.1: "ship" must be one of cut, status, notes, check, attach, snapshot, gates, target
   verbs:\n    - "-"|release.verbs: "-" would offer no verb -- a release with none is commands.release.enabled: false
   verbs:\n    - "-"\n    - check|release.verbs: "-" declares the list empty, so it must be the only item
 EOF2
@@ -1387,4 +1388,153 @@ YAML
 $output"
   [ "$(grep -c . <<<"$cols")" -eq 1 ] || fail "the rows' source words stand at more than one column ($(tr '\n' ' ' <<<"$cols")):
 $output"
+}
+
+# ============================================================================
+# release target -- THE RELEASE'S TARGET FOR A WORKFLOW (issue 0352)
+# ============================================================================
+#
+# A CI workflow the candidate's push starts is handed nothing by the cut, and
+# asks: `release target` prints the pair the tree declares, as NAME=value lines
+# a CI environment file takes, and with --ref only for this release's
+# candidate or its tag. cut_project's tree declares its VERSION, released as
+# v<VERSION> under the default release.tag, and its tag is pushed to the bare
+# remote, so a shallow clone can stand at it.
+
+# target_lines <version> <tag> -- what release target prints, as run reads it.
+target_lines() {
+  printf 'DEVBIN_RELEASE_VERSION=%s\nDEVBIN_RELEASE_TARGET_TAG=%s' "$1" "$2"
+}
+
+@test "0352-1: release target prints the pair the tree declares as two NAME=value lines on stdout alone, and writes nothing" {
+  local proj v before
+  proj="$(cut_project)" || fail "the fixture's project could not be made"
+  v="$(cat "$proj/VERSION")"
+  before="$(fingerprint "$proj")"
+  run --separate-stderr release_in "$proj" target
+  assert_success
+  assert_output "$(target_lines "$v" "v$v")"
+  [ -z "$stderr" ] || fail "release target said on stderr: $stderr"
+  [ "$(fingerprint "$proj")" = "$before" ] || fail "release target wrote, or called gh"
+}
+
+@test "0352-1: release target --ref prints the pair for this release's candidate, named by refs/heads/ or bare, and for its tag" {
+  local proj v r
+  proj="$(cut_project)" || fail "the fixture's project could not be made"
+  v="$(cat "$proj/VERSION")"
+  for r in "refs/heads/candidate/v$v" "candidate/v$v" "refs/tags/v$v"; do
+    run --separate-stderr release_in "$proj" target --ref "$r"
+    [ "$status" -eq 0 ] || fail "--ref $r exited $status: $stderr"
+    [ "$output" = "$(target_lines "$v" "v$v")" ] || fail "--ref $r printed: $output"
+  done
+}
+
+@test "0352-1: release target --ref on any other ref prints nothing, says so on stderr naming the candidate and the tag, and exits 0" {
+  local proj v r
+  proj="$(cut_project)" || fail "the fixture's project could not be made"
+  v="$(cat "$proj/VERSION")"
+  for r in refs/heads/main main "refs/tags/v$v-rc1" refs/tags/v0.9.0 refs/heads/candidate/next refs/pull/7/merge; do
+    run --separate-stderr release_in "$proj" target --ref "$r"
+    [ "$status" -eq 0 ] || fail "--ref $r exited $status: $stderr"
+    [ -z "$output" ] || fail "--ref $r printed: $output"
+    [[ "$stderr" == *"release target: $r is neither this release's candidate, candidate/v$v, nor its tag, v$v, so no target is printed"* ]] ||
+      fail "--ref $r said: $stderr"
+  done
+}
+
+@test "0352-1: release target --ref on the candidate of another release's tag refuses, exit 1, naming both tags" {
+  local proj v
+  proj="$(cut_project)" || fail "the fixture's project could not be made"
+  v="$(cat "$proj/VERSION")"
+  run --separate-stderr release_in "$proj" target --ref refs/heads/candidate/v0.9.0
+  [ "$status" -eq 1 ] || fail "a candidate of another tag exited $status: $stderr"
+  [ -z "$output" ] || fail "the refusal printed: $output"
+  [[ "$stderr" == *"release target: refs/heads/candidate/v0.9.0 is the candidate of v0.9.0, and this tree declares v$v, so a build of it would stamp a release it is not"* ]] ||
+    fail "the refusal said: $stderr"
+}
+
+@test "0352-1: release target --ref on its tag answers in a shallow clone detached at the tag, and writes nothing there" {
+  local proj v shallow before
+  proj="$(cut_project)" || fail "the fixture's project could not be made"
+  v="$(cat "$proj/VERSION")"
+  shallow="$DEVBIN_TEST_TMPDIR/shallow"
+  git clone -q --depth 1 --branch "v$v" "file://$DEVBIN_TEST_TMPDIR/remote.git" "$shallow" 2>/dev/null ||
+    fail "the fixture's shallow clone at v$v could not be made"
+  [ "$(git -C "$shallow" rev-parse --is-shallow-repository)" = true ] || fail "the fixture's clone is not shallow"
+  if git -C "$shallow" symbolic-ref -q HEAD >/dev/null; then fail "the fixture's clone is on a branch, not detached at the tag"; fi
+  before="$(fingerprint "$shallow")"
+  run --separate-stderr release_in "$shallow" target --ref "refs/tags/v$v"
+  [ "$status" -eq 0 ] || fail "the shallow clone's release target exited $status: $stderr"
+  [ "$output" = "$(target_lines "$v" "v$v")" ] || fail "the shallow clone's release target printed: $output"
+  [ "$(fingerprint "$shallow")" = "$before" ] || fail "release target wrote in the shallow clone"
+}
+
+@test "0352-1: release target --ref reads the candidate a project declares in release.publish.candidate, and not the default's" {
+  local proj v
+  proj="$(cut_project $'  gates:\n    - probe\n  ci:\n    workflow: tests.yml\n  publish:\n    candidate: rc/{tag}/build')" ||
+    fail "the fixture's project could not be made"
+  v="$(cat "$proj/VERSION")"
+  run --separate-stderr release_in "$proj" target --ref "refs/heads/rc/v$v/build"
+  [ "$status" -eq 0 ] || fail "the declared candidate exited $status: $stderr"
+  [ "$output" = "$(target_lines "$v" "v$v")" ] || fail "the declared candidate printed: $output"
+  run --separate-stderr release_in "$proj" target --ref "refs/heads/candidate/v$v"
+  [ "$status" -eq 0 ] || fail "the default's candidate exited $status: $stderr"
+  [ -z "$output" ] || fail "the default's candidate printed: $output"
+  run --separate-stderr release_in "$proj" target --ref refs/heads/rc/v0.9.0/build
+  [ "$status" -eq 1 ] || fail "a declared candidate of another tag exited $status: $stderr"
+  [[ "$stderr" == *"is the candidate of v0.9.0, and this tree declares v$v"* ]] || fail "the refusal said: $stderr"
+}
+
+@test "0352-1: release target refuses a tree whose version cannot be read, in version_unread's words, printing nothing" {
+  local proj
+  proj="$(cut_project)" || fail "the fixture's project could not be made"
+  git -C "$proj" rm -q VERSION && git -C "$proj" commit -qm "no version" || fail "the fixture's VERSION was not removed"
+  run --separate-stderr release_in "$proj" target
+  [ "$status" -eq 1 ] || fail "a tree with no version exited $status: $stderr"
+  [ -z "$output" ] || fail "the refusal printed: $output"
+  [[ "$stderr" == *"release target: the version cannot be read: VERSION, the file project.version_from names, does not exist"* ]] ||
+    fail "the refusal said: $stderr"
+}
+
+@test "0352-1: target is offered by default and refused at exit 2 where release.verbs leaves it out, and --ref is target's alone" {
+  local proj
+  proj="$(enabled_project)"
+  run devbin_run "$proj" release --help
+  assert_success
+  assert_output_contains "release target [--ref <ref>]"
+  run devbin_run "$proj" release gates --ref refs/heads/main
+  assert_failure
+  assert_output_contains "--ref applies to release target, not to release gates"
+  proj="$(verbs_project check attach)"
+  git_project "$proj"
+  run release_in "$proj" target
+  [ "$status" -eq 2 ] || fail "release target exited $status, want 2: $output"
+  assert_output_contains "demo: release: target is not available here: release.verbs offers check, attach"
+}
+
+@test "0352-1: a release.tag declared where release.verbs offers gates alone validates, since release gates reads it" {
+  # gates_verb hands its gates the tag release.tag makes, so a project that
+  # offers only gates reads the key it declares, and is not refused for it as
+  # unread config.
+  cfg_load_string <<'YAML'
+project:
+  name: demo
+release:
+  tag: "r{version}"
+  verbs:
+    - gates
+YAML
+  run cfg_validate </dev/null
+  assert_success
+}
+
+@test "0352-1: release's page and configuration.md say a workflow the candidate's push starts asks with release target --ref" {
+  grep -qxF -- '    bin/devbin release target [--ref <ref>]' "$DEVBIN_HOME/lib/pages/release.md" ||
+    fail "release's page does not list release target"
+  grep -qF -- 'A CI workflow the candidate'"'"'s push starts is none of the cut'"'"'s own commands, so it is handed neither variable. It asks with `release target`' "$DEVBIN_HOME/lib/pages/release.md" ||
+    fail "release's page does not say a workflow asks with release target"
+  grep -qxF -- '    bin/devbin release target --ref "$GITHUB_REF" >>"$GITHUB_ENV"' "$DEVBIN_HOME/lib/pages/release.md" ||
+    fail "release's page does not give the workflow's step"
+  grep -qF -- '**A CI workflow the candidate'"'"'s push starts is handed neither, and asks** (issue 0352)' "$DEVBIN_HOME/docs/configuration.md" ||
+    fail "configuration.md does not say a workflow asks"
 }

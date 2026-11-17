@@ -584,7 +584,7 @@ _cfg_path_known() {
 #
 # THE READERS COLUMN (ST0008 WP-08) names, comma-separated, each verb that
 # reads the key, from `verbs`' own default: a cut (`cut`), `status`, `notes`,
-# `check`, `attach`, `snapshot` and `gates`. A declared key that no verb
+# `check`, `attach`, `snapshot`, `gates` and `target`. A declared key that no verb
 # `release.verbs` offers reads is refused as unread config, issue 0080's class.
 # `<verb>!<key>` reads it only while `release.<key>` is not declared: `attach`
 # reads `remotes` only as `repo`'s fallback (release_repo), so with `repo`
@@ -616,7 +616,7 @@ _cfg_path_known() {
 # built-in.
 _DEVBIN_CI_BUILTIN_QUERY="bin/devbin ci-state"
 _DEVBIN_RELEASE_SCHEMA="
-scalar tag             cut,status,attach,snapshot v{version}
+scalar tag             cut,status,attach,snapshot,gates,target v{version}
 list   remotes         cut,status,attach!repo
 scalar branch          cut,status,snapshot!publish.branch main
 scalar notes.kind      cut,status,notes,check changelog
@@ -637,7 +637,7 @@ scalar repo            cut,status,attach
 scalar object_wait     cut                            20m
 scalar formula         cut,status                     false
 list   after           cut,status
-list   verbs           cut,status,notes,check,attach,snapshot,gates cut|status|notes|check|attach|snapshot|gates
+list   verbs           cut,status,notes,check,attach,snapshot,gates,target cut|status|notes|check|attach|snapshot|gates|target
 scalar assets.workflow cut,status,attach
 scalar assets.wait     cut,attach                     30m
 scalar snapshot.list   cut,snapshot
@@ -645,7 +645,7 @@ scalar snapshot.author cut,snapshot
 scalar snapshot.message cut,snapshot                  {name} {version}
 scalar publish.url     cut,status,snapshot,attach
 scalar publish.branch  cut,status,snapshot
-scalar publish.candidate cut,status                   candidate/{tag}
+scalar publish.candidate cut,status,target            candidate/{tag}
 "
 
 # _cfg_release_row <key> -- `<shape><TAB><default>` for a release key, or

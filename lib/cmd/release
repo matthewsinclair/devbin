@@ -67,6 +67,7 @@ usage() {
       attach) printf '%s %s %s <vX.Y.Z> [--from <dir>]\n' "$lead" "$me" "$v" ;;
       snapshot) printf '%s %s %s <vX.Y.Z | --commit <rev>> <new-dir> [--no-parent]\n' "$lead" "$me" "$v" ;;
       gates) printf '%s %s %s [--rerun] [--leg <host>]\n' "$lead" "$me" "$v" ;;
+      target) printf '%s %s %s [--ref <ref>]\n' "$lead" "$me" "$v" ;;
       *) printf '%s %s %s\n' "$lead" "$me" "$v" ;;
     esac
     lead="      "
@@ -102,6 +103,12 @@ usage() {
     printf '  commit the tree stands on and this platform before it runs them again.\n'
     printf '  It reads that record first, as a cut does, and runs nothing where a\n'
     printf '  sealed green stands; --rerun runs them all the same.\n'
+  fi
+  if offered target; then
+    printf '  target: the release'"'"'s target as the tree declares it, the pair a cut\n'
+    printf '  hands its own commands, as DEVBIN_RELEASE_VERSION=<version> and\n'
+    printf '  DEVBIN_RELEASE_TARGET_TAG=<tag>, for a workflow the candidate'"'"'s push starts.\n'
+    printf '  --ref <ref> prints them only for this release'"'"'s candidate or its tag.\n'
   fi
   if cfg_release_declared verbs; then
     printf '  This project'"'"'s release.verbs offers %s.\n' "${OFFERED//$'\n'/, }"
@@ -166,6 +173,7 @@ no_parent=0
 snap_words=()
 rerun=0
 leg_host=""
+ref=""
 
 # Every verb but the cut has a word, read from the one list (cfg_release_verbs).
 if [ "$1" != cut ] && grep -qxF -- "$1" <<<"$ALL_VERBS"; then
@@ -249,6 +257,13 @@ while [ $# -gt 0 ]; do
       [ -z "$leg_host" ] || refuse "--leg once only, got $leg_host and ${2:-nothing}"
       [ $# -ge 2 ] && [ -n "$2" ] || refuse "--leg needs a host release.legs names"
       leg_host="$2"
+      shift
+      ;;
+    --ref)
+      [ "$verb" = target ] || refuse "--ref applies to release target, not to release $verb"
+      [ -z "$ref" ] || refuse "--ref once only, got $ref and ${2:-nothing}"
+      [ $# -ge 2 ] && [ -n "$2" ] || refuse "--ref needs the ref the run was started by, eg \"\$GITHUB_REF\""
+      ref="$2"
       shift
       ;;
     -*)
@@ -792,12 +807,13 @@ gates_decision_words() {
 #
 # THE RELEASE'S TARGET IS THE TREE'S (issue 0327): the version the tree
 # declares and the tag release.tag makes of it, which on the release commit,
-# carrying the stamp, are the cut's own pair. So a remote leg's host and a run
-# by hand hand the gates what the cut's local leg does, and a sealed green
+# carrying the stamp, are the cut's own pair (release_tree_target, the one
+# derivation, which `release target` prints too). So a remote leg's host and a
+# run by hand hand the gates what the cut's local leg does, and a sealed green
 # stands for one run of them whoever made it. A version that cannot be read is
 # refused before any gate runs, in version_unread's words, never run without.
 gates_verb() {
-  local stood list answer unread ver tpl
+  local stood list answer pair
   unset RELEASE_GATES_WHY
   release_one_repository "release gates"
   stood="$(git_head_identity "$PROJECT_ROOT")"
@@ -816,12 +832,71 @@ gates_verb() {
   # The purge after the seal reads RUNLOG_KEEP_RUNS: refused before anything
   # runs, never found after a green.
   runlog_assert_keep_runs
-  if unread="$(version_unread why)"; then
-    die "release gates: the version cannot be read: $unread -- $(version_unread fix); the gates are handed it as DEVBIN_RELEASE_VERSION, so none runs without it"
+  pair="$(release_tree_target)" ||
+    die "release gates: $pair; the gates are handed the release's target as DEVBIN_RELEASE_VERSION and DEVBIN_RELEASE_TARGET_TAG, so none runs without it"
+  gates_sealed "$stood" "${pair%%$'\t'*}" "${pair#*$'\t'}"
+}
+
+# ---------------------------------------------------------------------------
+# THE RELEASE'S TARGET FOR A WORKFLOW (issue 0352). A cut hands the pair to the
+# commands it runs itself (release_target_run), and a CI workflow its
+# candidate's push starts is none of them, so a build there that stamps its
+# kind from the release's tag stamped itself dev. `release target` prints the
+# pair as the tree declares it, by release_tree_target, the derivation `release
+# gates` makes, in the NAME=value lines a CI environment file takes, so the
+# workflow's step is one line:
+#
+#   bin/devbin release target --ref "$GITHUB_REF" >>"$GITHUB_ENV"
+#
+# WITH --ref, ONLY A RELEASE'S OWN REF IS HANDED THE PAIR. <ref> is the ref the
+# run was started by, refs/heads/<branch> or refs/tags/<tag>, a bare name read
+# as a branch's. The pair is printed for this release's candidate,
+# release.publish.candidate filled with the tree's tag (release_candidate_ref),
+# and for that tag. Any other ref prints nothing and exits 0, saying so on
+# stderr, so a push of main builds as dev with no step of its own. A branch
+# release.publish.candidate makes from another release's tag is refused, exit
+# 1, naming both tags: that candidate does not carry the release it names, and
+# a build of it would stamp a release it is not.
+#
+# It writes nothing and takes no lock, and it reads the tree and the config
+# alone, no tag, no history and no remote, so it answers in a shallow checkout
+# detached at a tag, as CI checks one out.
+target_verb() {
+  local pair ver tag ctpl want name pre post mid ttpl
+  pair="$(release_tree_target)" || die "release target: $pair"
+  ver="${pair%%$'\t'*}"
+  tag="${pair#*$'\t'}"
+  if [ -n "$ref" ]; then
+    ctpl="$(cfg_release_get publish.candidate)" || die "release target: release.publish.candidate cannot be read"
+    want="$(release_candidate_ref "$ctpl" "$tag")"
+    case "$ref" in
+      refs/tags/*) name="tags ${ref#refs/tags/}" ;;
+      refs/heads/*) name="heads ${ref#refs/heads/}" ;;
+      refs/*) name="other $ref" ;;
+      *) name="heads $ref" ;;
+    esac
+    case "$name" in
+      "tags $tag" | "heads $want") ;;
+      *)
+        if [ "${name%% *}" = heads ]; then
+          name="${name#heads }"
+          pre="${ctpl%%"{tag}"*}"
+          post="${ctpl#*"{tag}"}"
+          if [[ "$name" == "$pre"*"$post" ]]; then
+            mid="${name#"$pre"}"
+            mid="${mid%"$post"}"
+            ttpl="$(cfg_release_get tag)" || die "release target: release.tag cannot be read"
+            if release_tag_version "$ttpl" "$mid" >/dev/null; then
+              die "release target: $ref is the candidate of $mid, and this tree declares $tag, so a build of it would stamp a release it is not"
+            fi
+          fi
+        fi
+        warn "release target: $ref is neither this release's candidate, $want, nor its tag, $tag, so no target is printed"
+        return 0
+        ;;
+    esac
   fi
-  ver="$(read_version)" || die "release gates: the version cannot be read (exit $?), and the gates are handed it as DEVBIN_RELEASE_VERSION"
-  tpl="$(cfg_release_get tag)" || die "release gates: cannot read release.tag, which names the tag the gates are handed as DEVBIN_RELEASE_TARGET_TAG"
-  gates_sealed "$stood" "$ver" "$(release_tag_name "$tpl" "$ver")"
+  printf 'DEVBIN_RELEASE_VERSION=%s\nDEVBIN_RELEASE_TARGET_TAG=%s\n' "$ver" "$tag"
 }
 
 # ---------------------------------------------------------------------------
@@ -5796,5 +5871,11 @@ case "$verb" in
     else
       gates_verb || exit 1
     fi
+    ;;
+  target)
+    # Validated first, as every verb is: a malformed block would name another
+    # tag or candidate.
+    cfg_validate || die "release target: $DEVBIN_DIR/config.yaml does not validate (above)"
+    target_verb
     ;;
 esac

@@ -663,6 +663,7 @@ release:
     - attach
     - snapshot               # release snapshot <vX.Y.Z | --commit <rev>> <new-dir>
     - gates                  # release gates: release.gates in place under one seal, the record a cut's legs step reads
+    - target                 # release target [--ref <ref>]: the release's target as the tree declares it, for a workflow the candidate's push starts
   # assets:                  # object: local only -- what release attach, and a cut's object step, attach to the release object
   #   workflow: assets.yml   # the workflow in .github/workflows whose earliest successful run at the release commit, on the candidate's branch or at the tag, built them; declaring it turns the attach on
   #   wait: 30m              # how long the attach waits for that run to be listed and to finish
@@ -673,7 +674,7 @@ release:
   # publish:                 # where snapshots are published
   #   url: https://example.com/owner/name.git     # the public repository; declaring it makes a cut publish its release as a snapshot there, made on the tip of its publish branch, once every leg is green; no remote a cut pushes to may name it
   #   branch: main           # the public branch each release's snapshot follows; default: release.branch
-  #   candidate: candidate/{tag}                  # the branch a cut pushes its candidate to, and reads CI on, before anything is tagged: the release commit, or under publish.url its snapshot, there; read unless ci.query is -; must hold {tag}
+  #   candidate: candidate/{tag}                  # the branch a cut pushes its candidate to, and reads CI on, before anything is tagged: the release commit, or under publish.url its snapshot, there; read unless ci.query is -; release target --ref prints the target for it; must hold {tag}
 
 # The built-in macos: a macOS app's release, on macOS only --
 # sign a staged copy with the Developer ID, notarise, staple, verify, and
