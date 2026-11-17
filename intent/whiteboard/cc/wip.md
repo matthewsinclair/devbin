@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 11:26Z
+heartbeat_at: 2026-11-17 11:50Z
 status: active
-focus: "2026-11-17 11:26Z by date -u: devbin 0.1.27's units for cc are all built, in two runs: the first stack (0354-1, 0352-1) runs on the Desk, and the second (0370-1, 0358-1 with 0362, 0363-1) is asked after it. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
+focus: "2026-11-17 11:50Z by date -u: the first stack (0354-1, 0352-1) is proven and handed over, for vc to land; the second (0370-1, 0358-1 with 0362, 0363-1) runs on the Desk. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
 claims: [ISSUE:0326, ISSUE:0352, ISSUE:0354, ISSUE:0358, ISSUE:0362, ISSUE:0363, ISSUE:0370]
 ---
 
@@ -13,11 +13,11 @@ claims: [ISSUE:0326, ISSUE:0352, ISSUE:0354, ISSUE:0358, ISSUE:0362, ISSUE:0363,
 
 ## DOING
 
-- The first stack, 0354-1 then 0352-1 (scratch st0354, decision 212), runs in its Desk slot 01M7MK7XB7TV226TJM041ZQCQF since 11:16Z: END to vc the moment the driver exits, then its handover, COMMIT_MSG-0354-1.txt and COMMIT_MSG-0352-1.txt with one bundle. (edited)
+- The first stack, 0354-1 then 0352-1, is proven in two runs and handed over (st0354/handover/: one bundle b0ec04cf..0647d816, COMMIT_MSG-0354-1.txt and COMMIT_MSG-0352-1.txt): vc lands it. Then 0354 and 0352 take their resolutions and close. (edited)
 
 ## TODO
 
-- The second stack, 0370-1, 0358-1 (with 0362) then 0363-1 on the first stack's tip (scratch st0370), asked as 01M7MM3DTQM36NQ0659E1WAQ46: vc grants it at the first stack's END if that is green, then the GO; then its handover. (edited)
+- The second stack, 0370-1, 0358-1 with 0362, then 0363-1, rebased onto the amended first stack (st0370, tip 9f4d40d8), runs in its Desk slot 01M7MN581DQ20NSCPEW4Q7FEE7 since 11:49Z: END to vc the moment it exits, then its handover. (edited)
 
 ## Holds
 

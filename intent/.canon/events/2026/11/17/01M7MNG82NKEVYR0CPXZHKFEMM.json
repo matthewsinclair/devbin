@@ -1,0 +1,16 @@
+{
+  "id": "01M7MNG82NKEVYR0CPXZHKFEMM",
+  "ts": "2026-11-17T11:50:29.205Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 73,
+    "text": "The second stack, 0370-1, 0358-1 with 0362, then 0363-1, rebased onto the amended first stack (st0370, tip 9f4d40d8), runs in its Desk slot 01M7MN581DQ20NSCPEW4Q7FEE7 since 11:49Z: END to vc the moment it exits, then its handover."
+  }
+}

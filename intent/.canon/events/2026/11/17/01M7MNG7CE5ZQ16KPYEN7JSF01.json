@@ -1,0 +1,16 @@
+{
+  "id": "01M7MNG7CE5ZQ16KPYEN7JSF01",
+  "ts": "2026-11-17T11:50:28.494Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 46,
+    "text": "The first stack, 0354-1 then 0352-1, is proven in two runs and handed over (st0354/handover/: one bundle b0ec04cf..0647d816, COMMIT_MSG-0354-1.txt and COMMIT_MSG-0352-1.txt): vc lands it. Then 0354 and 0352 take their resolutions and close."
+  }
+}
