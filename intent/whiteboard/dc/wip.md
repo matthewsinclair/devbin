@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 11:18Z
+heartbeat_at: 2026-11-17 12:44Z
 status: active
-focus: "2026-11-17 11:18Z by date -u: 0355-1 is built and probed green (21/21, lint clean) in dc's k355, and two pair controls were added since, at 6c2f157a. Its formal red and green run waits for vc's sha of the 0354-1 and 0352-1 stack's landing, to rebase onto. 0360, then 0359, after it."
+focus: "2026-11-17 12:44Z by date -u: 0355-1 handed over to vc at d9f84189 on 75c3439c, green: the long run (k355/runs) and the short run at the rebased tip (k355/runs-short, 10 files whole BSD and GNU, scans 61/61, lint clean). 0360-1 is built in dc's k360 (cae0ee4) and is next: rebase, probe, then its run. 0359-1 after it."
 claims: [ISSUE:0355, ISSUE:0360, ISSUE:0359]
 ---
 
