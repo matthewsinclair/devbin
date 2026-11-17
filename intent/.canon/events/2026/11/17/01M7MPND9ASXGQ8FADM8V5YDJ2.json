@@ -1,0 +1,16 @@
+{
+  "id": "01M7MPND9ASXGQ8FADM8V5YDJ2",
+  "ts": "2026-11-17T12:10:46.954Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 47,
+    "text": "0371 (low), on vc's GO for both options: 0371-1 (77283567 on main cb92052c, scratch i0371), release.tag takes {version} once and release_versions reads each tag through release_tag_version, is probed and asked on the Desk as 01M7MPMF7MT7PYHQZG5SCGK6XA: started on vc's grant and GO, then banked and handed over on its green."
+  }
+}

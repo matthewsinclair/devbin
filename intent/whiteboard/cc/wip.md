@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 12:03Z
+heartbeat_at: 2026-11-17 12:10Z
 status: active
-focus: "2026-11-17 12:03Z by date -u: cc's whole 0.1.27 list is landed (0354-1, 0352-1, 0370-1, 0358-1 with 0362, 0363-1) and its six issues closed. Next, on vc's word: 0371, its pick and shape to vc before any build. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
+focus: "2026-11-17 12:10Z by date -u: cc's 0.1.27 list is landed and closed; 0371-1 is built, probed and asked on the Desk (01M7MPMF7MT7PYHQZG5SCGK6XA), started on vc's grant and GO. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
 claims: [ISSUE:0326, ISSUE:0371]
 ---
 
@@ -13,7 +13,7 @@ claims: [ISSUE:0326, ISSUE:0371]
 
 ## DOING
 
-- 0371 (low), on vc's word: release_versions reads a tag its template cannot make where release.tag holds {version} twice. Pick and shape go to vc before any build.
+- 0371 (low), on vc's GO for both options: 0371-1 (77283567 on main cb92052c, scratch i0371), release.tag takes {version} once and release_versions reads each tag through release_tag_version, is probed and asked on the Desk as 01M7MPMF7MT7PYHQZG5SCGK6XA: started on vc's grant and GO, then banked and handed over on its green. (edited)
 
 ## TODO
 
