@@ -989,3 +989,35 @@ install:
   assert_output_contains "republish it from this checkout: bin/devbin install --force"
   refute_output_contains "missing: LICENSE"
 }
+
+# A tool's switch ends as devbin's does where it makes or removes a link
+# (0354), naming the link, and says nothing where it repoints one.
+@test "0354-1: the tool's use dev that makes its link ends with the rehash line naming it, and use opt over that link says nothing of it" {
+  local proj
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" build
+  assert_success
+  run devbin_run "$proj" use dev
+  assert_success
+  assert_output_line "use: an open shell that already ran demo-cli still runs the copy it found before, until rehash (zsh) or hash -r (bash) is run there"
+  run devbin_run "$proj" install
+  assert_success
+  run devbin_run "$proj" use opt
+  assert_success
+  refute_output_contains "rehash"
+  refute_output_contains "hash -r"
+}
+
+@test "0354-1: the tool's use brew that removes its link ends with the hash -r line naming it" {
+  local proj
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" build
+  assert_success
+  devbin_run "$proj" use dev >/dev/null || fail "the fixture's use dev failed"
+  demo_keg 1.0.0 || fail "the fixture's keg could not be made"
+  demo_bin_link 1.0.0 || fail "the fixture's bin link could not be made"
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" use brew
+  assert_success
+  assert_output_line "use: an open bash that already ran demo-cli still looks for it at the removed link, until hash -r is run there; zsh looks again by itself"
+  refute_output_contains "rehash (zsh)"
+}

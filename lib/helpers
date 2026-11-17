@@ -5643,6 +5643,68 @@ tool_link_path() {
   printf '%s\n' "$home/.local/bin/$1"
 }
 
+# use_links_found <name>... -- for each <name>, `<name><TAB>1` where a PATH
+# search through ~/.local/bin finds a command at its link, the link there and
+# leading to an executable file, else `<name><TAB>0`: one line each, in the
+# order given. rc 1 where there is no home directory to look in.
+use_links_found() {
+  local name p
+  for name in "$@"; do
+    p="$(tool_link_path "$name")" || return 1
+    if [ -f "$p" ] && [ -x "$p" ]; then
+      printf '%s\t1\n' "$name"
+    else
+      printf '%s\t0\n' "$name"
+    fi
+  done
+}
+
+# use_rehash_note <before> <after> -- the lines a switch ends with where it
+# changed whether a PATH search finds a name at its link (issue 0354).
+# <before> and <after> are use_links_found's answers for the same names in the
+# same order, read before and after the switch. Pure.
+#
+# A SHELL REMEMBERS WHERE IT FOUND A COMMAND. zsh and bash keep the path a
+# command was first run from until `rehash` (zsh) or `hash -r` (bash), and no
+# child process can clear its parent's table, so the switch can only say so.
+# It matters only where the place a search finds moves. A link made where none
+# was leaves an open shell that already ran the name on the copy it found
+# before, and a link removed leaves bash looking at the path that is gone,
+# where zsh searches again by itself. Repointing a link that stays moves no
+# path, so nothing is said for it, and a shell that never ran the name is not
+# affected.
+use_rehash_note() {
+  local -a before after made=() gone=()
+  local i
+  mapfile -t before <<<"$1"
+  mapfile -t after <<<"$2"
+  for i in "${!before[@]}"; do
+    case "${before[$i]##*$'\t'}${after[$i]:+${after[$i]##*$'\t'}}" in
+      01) made+=("${before[$i]%%$'\t'*}") ;;
+      10) gone+=("${before[$i]%%$'\t'*}") ;;
+    esac
+  done
+  if [ "${#made[@]}" -gt 0 ]; then
+    printf 'use: an open shell that already ran %s still runs the copy it found before, until rehash (zsh) or hash -r (bash) is run there\n' "$(_use_or_list "${made[@]}")"
+  fi
+  if [ "${#gone[@]}" -gt 0 ]; then
+    printf 'use: an open bash that already ran %s still looks for it at the removed link, until hash -r is run there; zsh looks again by itself\n' "$(_use_or_list "${gone[@]}")"
+  fi
+  return 0
+}
+
+# _use_or_list <name>... -- the names as prose: `a`, `a or b`, `a, b or c`.
+_use_or_list() {
+  local out="$1"
+  shift
+  while [ $# -gt 1 ]; do
+    out+=", $1"
+    shift
+  done
+  [ $# -eq 0 ] || out+=" or $1"
+  printf '%s' "$out"
+}
+
 # machine_install_chooser -- which place chose this machine's devbin install, one
 # word: `prefix` while DEVBIN_INSTALL_PREFIX is set, `link` while the link
 # devbin_link_path names is there, a link that cannot be followed included, and

@@ -13,7 +13,10 @@
 #   - a process started without the login PATH running Homebrew's devbin while
 #     the link names another tree, which the contract puts outside the switch;
 #   - T10's proof on real machines and in other projects' checkouts, which is
-#     run by hand and recorded in the issue.
+#     run by hand and recorded in the issue;
+#   - what an open shell does with the path it kept (0354): the arms read the
+#     line a switch prints, and the shells' behaviour behind it, zsh's and
+#     bash's, was measured by hand and is recorded in the issue.
 
 load "../lib/test_helper"
 
@@ -886,4 +889,61 @@ versioned() {
     fail "a provenance word reads: $(tree_line_head "tool 1.2.3 (dev, 0123456789ab+dirty) release")"
   [ "$(tree_line_head "devbin 0.1.15 (dev, unknown)")" = "devbin 0.1.15 (dev, unknown)" ] ||
     fail "the new shape reads: $(tree_line_head "devbin 0.1.15 (dev, unknown)")"
+}
+
+# An open shell keeps the path it first ran a command from (0354): a switch
+# that makes the link where none was, or removes it, ends with the line for
+# that case, and one that repoints the link, or changes nothing, says neither.
+REHASH_MADE="use: an open shell that already ran devbin still runs the copy it found before, until rehash (zsh) or hash -r (bash) is run there"
+REHASH_GONE="use: an open bash that already ran devbin still looks for it at the removed link, until hash -r is run there; zsh looks again by itself"
+
+@test "0354-1: use dev where there was no link ends with the rehash line, and use dev over the link it made says nothing of it" {
+  src="$(mkdevsrc)"
+  run devbin_run "$src" use dev
+  assert_success
+  assert_output_line "$REHASH_MADE"
+  run devbin_run "$src" use dev
+  assert_success
+  refute_output_contains "rehash"
+  refute_output_contains "hash -r"
+}
+
+@test "0354-1: use opt over a dev link says nothing of rehash, use brew that removes the link ends with the hash -r line, and use brew with no link says neither" {
+  src="$(mkdevsrc)"
+  published "$src"
+  brew_keg --from "$src" --linked 0.1.0
+  devbin_run "$src" use dev >/dev/null || fail "the fixture's use dev failed"
+  run devbin_run "$src" use opt
+  assert_success
+  refute_output_contains "hash -r"
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$KEG" use brew
+  assert_success
+  assert_output_line "$REHASH_GONE"
+  refute_output_contains "$REHASH_MADE"
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$KEG" use brew
+  assert_success
+  refute_output_contains "hash -r"
+}
+
+@test "0354-1: use_rehash_note names each link a switch made or removed, as one list, and nothing for one it repointed or left" {
+  run use_rehash_note $'a\t0\nb\t0\nc\t1' $'a\t1\nb\t1\nc\t1'
+  assert_success
+  assert_output "${REHASH_MADE/ran devbin /ran a or b }"
+  run use_rehash_note $'a\t1\nb\t1\nc\t1' $'a\t0\nb\t0\nc\t0'
+  assert_success
+  assert_output "${REHASH_GONE/ran devbin /ran a, b or c }"
+  run use_rehash_note $'a\t1\nb\t0' $'a\t1\nb\t0'
+  assert_success
+  assert_output ""
+}
+
+@test "0354-1: T5 and use's page say an open shell keeps the path it first ran a command from until rehash or hash -r, and when use says so" {
+  grep -qF -- '- **A shell that already ran the tool.** zsh and bash keep the path they first ran a command from until `rehash` (zsh) or `hash -r` (bash)' "$DEVBIN_HOME/docs/dev-opt-brew.md" ||
+    fail "T5 does not name a shell that already ran the tool"
+  grep -qF -- 'Repointing a link that stays, from dev to opt or back, moves no path and says nothing' "$DEVBIN_HOME/docs/dev-opt-brew.md" ||
+    fail "T5 does not say a repointed link moves no path"
+  grep -qxF -- '## A shell that already ran devbin' "$DEVBIN_HOME/lib/pages/use.md" ||
+    fail "use's page has no section on a shell that already ran devbin"
+  grep -qF -- 'an open bash that already ran devbin still looks for it at the link that is gone' "$DEVBIN_HOME/lib/pages/use.md" ||
+    fail "use's page does not say what use brew leaves bash doing"
 }
