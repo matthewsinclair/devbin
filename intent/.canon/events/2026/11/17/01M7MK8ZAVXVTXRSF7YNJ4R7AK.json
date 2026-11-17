@@ -1,0 +1,16 @@
+{
+  "id": "01M7MK8ZAVXVTXRSF7YNJ4R7AK",
+  "ts": "2026-11-17T11:11:33.724Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 46,
+    "text": "The stack 0354-1 then 0352-1 (vc's decision 212; scratch ~/Devel/scratch/devbin-cc/st0354), asked on the Desk as 01M7MK7XB7TV226TJM041ZQCQF: started on vc's grant and GO, then banked and handed over on its green. 0352-1 carries the tag row's gates reader and formula's tag_version through release_tag_version, on vc's word; release_versions' differing reading is filed as 0371."
+  }
+}

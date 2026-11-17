@@ -1,0 +1,16 @@
+{
+  "id": "01M7MK900TG9FME5ZZS9YDR4ME",
+  "ts": "2026-11-17T11:11:34.426Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 73,
+    "text": "0370 (medium), building on vc's GO for the pick as shaped: help_answered widened to a declared option's run: line of any command; a gate command keeps gate_usage_line; any other answers help <command> at exit 0; command-level run: lines, handlers and non-gate built-ins keep their own flag. Joins the stack only if banked before its grant."
+  }
+}

@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-17 10:50Z
+heartbeat_at: 2026-11-17 11:11Z
 status: active
-focus: "2026-11-17 10:50Z by date -u: 0354-1 is asked on the Desk (01M7MHWYTNTHK4GCSQ8Z4NTSJM, the bats lane), granted at another estate's timed build's END, then vc's GO; building 0352-1 meanwhile. Then 0370 (pick and shape to vc first), 0358 with 0362, and 0363. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
+focus: "2026-11-17 11:11Z by date -u: the stack 0354-1 then 0352-1 is asked on the Desk (01M7MK7XB7TV226TJM041ZQCQF), granted at another estate's timed build's END, then vc's GO; building 0370-1 meanwhile. Then 0358 with 0362 (in scratch i0358), then 0363. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
 claims: [ISSUE:0326, ISSUE:0352, ISSUE:0354, ISSUE:0358, ISSUE:0362, ISSUE:0363, ISSUE:0370]
 ---
 
@@ -13,14 +13,13 @@ claims: [ISSUE:0326, ISSUE:0352, ISSUE:0354, ISSUE:0358, ISSUE:0362, ISSUE:0363,
 
 ## DOING
 
-- 0354 (low), now, on vc's GO: options 1 and 3, no doctor change. use's report gains one line where a switch made a link where there was none, or removed one (a shell's remembered path changes only then; repointing a link it keeps changes nothing), and T5 and use's page name the case. devbin's own use and a project's tool's alike. (edited)
+- The stack 0354-1 then 0352-1 (vc's decision 212; scratch ~/Devel/scratch/devbin-cc/st0354), asked on the Desk as 01M7MK7XB7TV226TJM041ZQCQF: started on vc's grant and GO, then banked and handed over on its green. 0352-1 carries the tag row's gates reader and formula's tag_version through release_tag_version, on vc's word; release_versions' differing reading is filed as 0371. (edited)
 
 ## TODO
 
-- 0352 (medium), next, on vc's GO for option 1 as shaped: bin/devbin release target [--ref <ref>], one function deriving the pair for gates_verb and target. It writes nothing, takes no lock and needs no history; the tag arm runs in a detached checkout; the exit-1 refusal names both tags, the candidate's and the tree's. (edited)
 - 0358 with 0362 (both low), after 0370, one unit: the overview's guide line, configuration.md's release step 6, and new's page on other work trees and runtime copies. (edited)
 - 0363 (low, infra's handle advisory), after 0358, vc's word: the check accepts the dashed whole name init writes, one function giving that form to init and the check.
-- 0370 (medium), after 0352, vc's word: a declared option's run: line of a project's own command is handed --help and runs. Pick and shape go to vc before any build; vc leans to widening 0356's rule to every command whose declared option's run: line is what runs, a command-level run: line keeping its own flag.
+- 0370 (medium), building on vc's GO for the pick as shaped: help_answered widened to a declared option's run: line of any command; a gate command keeps gate_usage_line; any other answers help <command> at exit 0; command-level run: lines, handlers and non-gate built-ins keep their own flag. Joins the stack only if banked before its grant. (edited)
 
 ## Holds
 
