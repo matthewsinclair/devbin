@@ -1,0 +1,15 @@
+{
+  "id": "01M7MRRN05WH4YTD2VCWANQPB2",
+  "ts": "2026-11-17T12:47:30.309Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "dc's 0355-1 landed on main at 9006e0a8 by land-stack.sh, 2026-11-17 12:47Z by date -u, the tree outside intent/ equal to the tested tip d9f84189. The first try at 12:44Z was refused safely at HEAD's lock when dc's board commit 9b8b9770 crossed it; vc restored the unit's 13 paths to HEAD, nothing staged, and re-ran it whole. Two runs proved it: the long run at 1ffa9d74 (the red phase as wanted, 25 of 26 green legs, scans 61 of 61) and the short run at d9f84189 rebased past cc's second stack, 10 files whole under BSD and GNU (macos, the seven docs/configuration.md readers, and use and tool for the rename's callers), scans 61 of 61 and check lint 0 breaches. It carries release.unread (the gates, the seal, pre-flight, the stamp and commit steps, release gates and --leg, and the macOS signing read the list, proved in four listed-and-control pairs), the gates' refusal of a HEAD that moved before they ran, and two fixes beside it: 0336's leg arm's pre-existing GNU cp race in macos.bats's fixture, and main's check lint red since 5b084053 (0354-1's use_rehash_note arrays clashing through the source with lib/cmd/release's strings), fixed by the _urn_ prefix. The limit for 0.1.27's note: a project's own macos.build that stamps +dirty from its own git read is outside the core's reach. cc's 0371-1 now rebases onto 9006e0a8; dc takes 0360-1 then 0359."
+  }
+}
