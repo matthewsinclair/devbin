@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 13:24Z
+heartbeat_at: 2026-11-17 13:31Z
 status: active
-focus: "2026-11-17 13:23Z by date -u: folded on hv's 13:22Z context-emergency word. 0355 is closed (0355-1 landed at 9006e0a8). 0360-1 and 0359-1 are banked (refs/bank/dc/0360-1, refs/bank/dc/0359-1), to run as one stack on the bounce after 0359-1's light probe. Holding for vc's word."
+focus: "2026-11-17 13:31Z by date -u: back from hv's compact; holding for vc's word (hold 45). 0360-1 and 0359-1 are banked (refs/bank/dc/0360-1, refs/bank/dc/0359-1); on the bounce, 0359-1's light probe, then one stacked formal run. Nothing live, asked, booked or running."
 claims: [ISSUE:0360, ISSUE:0359]
 ---
 
