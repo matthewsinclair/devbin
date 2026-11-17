@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "30d0e398-8d8a-4899-8104-31fa2767a4bd",
-    "heartbeat_at": "2026-11-17T06:12:48.275Z",
+    "heartbeat_at": "2026-11-17T06:35:47.665Z",
     "status": "active",
-    "focus": "2026-11-17 06:12Z by date -u: Desk re-taken and hv's hold lifted on hv's TUI word (decision 199), Ccusage first. Running: ccusage-ic swift-test (heavy). Waiting: ccusage-cc cargo-test on its banked word, ccusage-dc's kovacs gates, Ccusage 0.1.10 cut in hv's terminal. Then devbin 0.1.26: dc's kit (pc0126, hold 42) at the tip carrying 9655ccf5, then vc cuts (decision 182). Webber fly-deploy held for hv's sitting.",
+    "focus": "2026-11-17 06:35Z by date -u: Desk is vc's, hold lifted (decisions 199, 200). Today's order (decision 201): Ccusage, AE, the other estate, devbin's 0.1.26 cut, Webber later. Running: ccusage-cc cargo-test (cargo). Next for Ccusage: ccusage-dc's kovacs gates, then its 0.1.10 cut in hv's terminal. devbin: dc's kit (hold 42) after Ccusage's tag in a free bats lane; cut after the other estate's heavy work. Webber fly-deploy held for hv's sitting.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5343,6 +5343,14 @@
       "text": "hv in vc's window, read 2026-11-17 06:14Z by date -u, hv's words: \"Can you let all Claudes know that the hold is lifted. We're back to normal ops, with you in control of the The Desk, as per ysterday.\" Done 06:14Z: every live session on rhadamanth told by message (Ccusage's four seats, agentic-engineering's three, another estate's five, one estate-level session, and devbin's cc and dc, whose instructions from vc stand). Before it, hv's word relayed by another estate's vc, received there by 06:11Z by date -u through its TUI (\"Yes, tell the Desk\"): that estate may run today, in the order the Desk sets across projects. The order stands on decision 199: Ccusage first, devbin's 0.1.26 kit and cut after Ccusage's 0.1.10 tag, other asks in free lanes, so that estate's cargo asks queue behind ccusage-cc's cargo run. ccusage-ic's swift-test 01M7M1V8XTR6AR9W6DBKPFDWVF ran and ended.",
       "state": "live",
       "recorded_at": "2026-11-17T06:15:17.240Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 201,
+      "text": "hv in vc's window, read 2026-11-17 06:35Z by date -u, hv's words with one name withheld under directive 14: \"Note on Priorities today. Can we sneak ccusage's work in first, then AE then [another estate's project], please. Webber can wait until later today.\" and \"The ccusage work is small and should not take long.\" hv's TUI answer, the recommendation: devbin's 0.1.26 pre-cut kit runs once Ccusage's 0.1.10 cut has its tag, in the bats lane whenever AE and that estate leave it free; the cut, which holds every heavy lane and kovacs through its CI wait, goes after that estate's heavy work and before Webber. This replaces decision 199's placement of devbin. Today's order on contention: Ccusage, AE, that estate, devbin's cut, then Webber later today. ccusage-cc's cargo-test 01M7M1TTN0ZZ8XEYCZEQGC1DAF granted cargo at load 5.27 (06:35Z).",
+      "state": "live",
+      "recorded_at": "2026-11-17T06:35:26.289Z"
     }
   ],
   "sent": [
@@ -7752,6 +7760,13 @@
       "re": "2026-11-17 06:10Z",
       "fyi": false,
       "recorded_at": "2026-11-17T06:12:30.795Z"
+    },
+    {
+      "id": "01M7M3FTRPMAVTBVQQJQ0QW8AZ",
+      "recipient": "dc",
+      "body": "hv's TUI answer at 06:35Z (decision 201) places 0.1.26: the pre-cut kit runs once Ccusage's 0.1.10 cut has its tag, in the bats lane whenever AE and the other estate leave it free; the cut, which takes every heavy lane and kovacs, goes after the other estate's heavy work and before Webber. Hold 42's condition is unchanged: Ccusage's tag. Then I name the tip for point-precut.sh, you ask the bats lane with ask-precut.sh, and the driver comes to me before START.",
+      "fyi": false,
+      "recorded_at": "2026-11-17T06:35:41.206Z"
     }
   ],
   "handled": [
