@@ -1350,3 +1350,18 @@ EOF
   grep -qF -- "The search passes over every copy of devbin's runtime, \`bin/.devbin/lib/\`, the project's own and any other, and everything beneath a directory below the root that holds a \`.git\`, file or directory, so a linked worktree or a nested repository is never read as this project's suite, and \`new\` never writes into one." "$DEVBIN_HOME/lib/pages/new.md" ||
     fail "new's page does not say the search passes over other work trees and runtime copies"
 }
+
+@test "0365-1: configuration.md names each built-in a cut reaches through bin/devbin, and the macOS page says a project's own macos replaces devbin's there too" {
+  local para v
+  local -a verbs=('version set' 'ci-state --runs' 'ci-state --fires' 'macos leg' 'macos bin-publish' 'macos publish'
+    'macos app-sign' 'macos bin-sign' 'macos app-notarize' 'macos bin-notarize' 'release attach' 'formula publish --pull')
+  para="$(grep -F -- "**A cut reaches these built-ins of devbin's through the project's launcher, \`bin/devbin\`, so a project command at one of their names replaces it in the cut too** (issue 0365)" "$DEVBIN_HOME/docs/configuration.md")" ||
+    fail "configuration.md has no paragraph naming the built-ins a cut reaches through bin/devbin"
+  for v in "${verbs[@]}"; do
+    [[ "$para" == *"\`$v\`"* ]] || fail "configuration.md's paragraph does not name \`$v\`"
+  done
+  [[ "$para" == *'`cache` alone is called by its own path (issue 0335)'* ]] ||
+    fail "configuration.md's paragraph does not say cache alone is called by its own path"
+  grep -qF -- "so there a project's own \`macos\`, or its own \`release\`, replaces devbin's as well." "$DEVBIN_HOME/lib/pages/macos.md" ||
+    fail "the macOS page does not say a project's own macos or release replaces devbin's in a cut"
+}

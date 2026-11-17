@@ -2,7 +2,7 @@
 
 Release a macOS app: sign a staged copy of the project's `.app` with the Developer ID and the hardened runtime, notarise and staple it, check it as a download meets it, and attach it zipped to the release at its tag. Release a project's command-line binaries the same way, a `.app` beside them included: sign each, notarise them, and attach them packed as one archive. devbin implements it, on macOS only, for what the `macos:` block of `bin/.devbin/config.yaml` declares.
 
-It is opt-in: absent until a project asks for it with `commands.macos.enabled: true`. `enabled: false` switches it off again. A project's own `bin/.devbin/cmd/macos` handler, or a `commands.macos.run:` line, still wins over devbin's, as for any built-in, and then `bin/devbin help macos` prints the project's own page.
+It is opt-in: absent until a project asks for it with `commands.macos.enabled: true`. `enabled: false` switches it off again. A project's own `bin/.devbin/cmd/macos` handler, or a `commands.macos.run:` line, still wins over devbin's, as for any built-in, and then `bin/devbin help macos` prints the project's own page. A cut reaches `macos` through `bin/devbin` too, and so does `macos leg` for its own sign and notarise verbs, and `macos publish` and `macos bin-publish` for `release attach`, so there a project's own `macos`, or its own `release`, replaces devbin's as well.
 
 ## The declaration
 
