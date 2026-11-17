@@ -1,0 +1,15 @@
+{
+  "id": "01M7MGPQ5F0XZ3D8J8JBKWD3D1",
+  "ts": "2026-11-17T10:26:38.383Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "devbin's next release, 0.1.27, carries everything open (directive 13), so vc sequences it with no scope question to hv. cc takes 0352 (medium: the core's word on how a workflow the candidate push starts derives the release's version and tag), then 0354 and 0358 (low), and files 0353's doc follow-up (lib/pages/new.md:20 does not say new never writes into another work tree) and Prodinfra's infra check handle advisory (hyphenated handles for domains sharing a first label, eg webble-me for webble.me; accept ${fqdn//./-}). dc takes 0355 (medium: seen again in Ccusage 0.1.10's first run today), then 0360 (medium) and 0359 (low), which share run_gate and so run one after another (decision 83), and files todo 214's release-machinery findings: a release.gates entry starting with release recurses (archived todo 203); macos and release call built-ins through the launcher (206); no macOS-stage rehearsal before a cut (207); a failed remote leg keeps its worktree on the host (208); dc's todo 67 TMPDIR leftovers; the 0311 traps_restore arm (helpers.bats:2558) reads HUP wrong under a nohup launcher. Each unit: a scratch tree off main, its own arms red at the base and green at the fix, booked on the Desk, a bank and a handover; vc lands it. 0.1.27's cut waits for hv's go: decision 182's pre-approval was spent on the cut that became 0.1.26. Todos 214 and 219 are carried here and archived."
+  }
+}

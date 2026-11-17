@@ -1,0 +1,15 @@
+{
+  "id": "01M7MGPPR3691MAJ5QD3N1VAB9",
+  "ts": "2026-11-17T10:26:37.955Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "devbin 0.1.26's fleet sweep from brew, the step decision 203 left, run by vc 2026-11-17 10:12Z to 10:21Z by date -u on Desk slot 01M7MFWFVB5JPNN9554MSH6CWZ (light, granted at load 4.98): bin/devbin fleet upgrade --apply from Homebrew's install (f0434fbd68c0) upgraded 24 estates, 0 held back and 0 failed, each committed by path through its own hook, 12 paths each, the sweep pathspec alone (directive 10; shas in ~/Devel/scratch/devbin-vc/0.1.26/sweep/sweep-commit.summary). 20 are pushed to their local remotes, fast-forward. Ccusage, Intent and Prodinfra each hold commits of their own beyond their local remotes, so those pushes are their vcs' (Intent's on intent-vc's word, decision 76); Cards has no local remote. Webber is frozen out of this sweep (the plan read 1 frozen and no 'matches none'): its Creator fly-deploy clone pulls Webber's canon, so a sweep now would change the deploy's devbin before hv's sitting, and Webber is swept after the deploy. The audit after reads 0.1.26 in all 24. Notices sent by 10:23Z: ccusage-vc and intent-vc (todo 215)."
+  }
+}

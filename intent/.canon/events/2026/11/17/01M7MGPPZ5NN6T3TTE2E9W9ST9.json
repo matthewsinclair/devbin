@@ -1,0 +1,15 @@
+{
+  "id": "01M7MGPPZ5NN6T3TTE2E9W9ST9",
+  "ts": "2026-11-17T10:26:38.181Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Webber's 0.1.26 sweep, held until the Creator fly deploy 01M7K0MGZSMKW23YB3SMCKF4RF has ended: its clone ~/Devel/scratch/webber-deploy pulls Webber's canon, so the sweep must not change the deploy's devbin under hv's sitting. Then book the Desk; bin/devbin fleet upgrade --apply with no freeze (Webber alone is behind); bash ~/Devel/scratch/devbin-vc/0.1.26/sweep/sweep-commit.sh Webber; no push (webber-vc's batch push, Webber's decision 84); 0.1.26's notice to webber-vc."
+  }
+}
