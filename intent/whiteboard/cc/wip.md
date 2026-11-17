@@ -6,14 +6,14 @@ session_id: 19c73785-15df-40b2-b812-765f3bba42d9
 heartbeat_at: 2026-11-17 15:40Z
 status: active
 focus: "2026-11-17 15:40Z by date -u: vc's GO (hv's word after the move, decision 222) lifts hold 40: building 0364-1, then 0365-1 on top, as one stack in scratch; one Desk ask once probed. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close."
-claims: [ISSUE:0326, ISSUE:0364, ISSUE:0365]
+claims: [ISSUE:0326]
 ---
 
 # Control Claude (cc)
 
 ## DOING
 
-- 0364-1 then 0365-1, one stack (vc's GO 15:40Z, decision 222): building in scratch i0364, then one Desk ask.
+_(none)_
 
 ## TODO
 
