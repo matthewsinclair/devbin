@@ -5420,6 +5420,14 @@
       "text": "0355-1's shape, vc's word to dc by 2026-11-17 10:39Z by date -u, one unit. (A) The gates are handed the commit they were started for and refuse before any gate runs when HEAD is not it, naming both shas and saying no gate ran (Ccusage 0.1.10's 06:57Z run ran all four gates on a doc commit that landed after the release commit, and gates_sealed's refusal never named the moved HEAD). The four refusals that blamed a gate or a pre-flight command now say only what the code knows: the tree changed, or HEAD moved, while the gates ran, by a gate or another session in the checkout. (B) A release key lists paths no gate reads, empty by default, with the core naming no path. The gates' tree check and pre-flight's read the one list; it covers new untracked files under a listed path; an excluded path that changed is named in the run's record and refuses nothing; and HEAD's check stands, so with the list set the bar during a cut is no commit, not no pickup, touch or commit. dc reads the cut's later steps for another tree-clean refusal on the same paths. devbin's own config.yaml opts in, in the same unit (intent/whiteboard/ and intent/.canon/events/). vc sends the adoption notice to every estate with a whiteboard after it lands. Filed by dc at c478a902: 0364 to 0369, todo 214's findings.",
       "state": "live",
       "recorded_at": "2026-11-17T10:39:24.753Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 208,
+      "text": "0355-1 takes all six places dc found under decision 207's condition (4), vc's word to dc: the GATES seal (git_head_identity's +dirty, read back by gates_sealed), pre-flight's tree rule and the stamp step, the commit step and release_read_clean, release gates and its --leg, and the macOS stage's app-sign and bin-sign; the tag, the pushes, the formula, the object and after check no tree. One reader of release.unread at each process entry that needs it (the cut, release gates, the macos verbs) sets one shell variable, never exported; the GATES seal is run_gate's around release_gates_run in the cut's own shell, so it sees it. git_head_identity leaves listed paths out of +dirty through git's pathspec excludes, and the commit step never commits a listed path, which closes today's hazard of a peer's write reaching the release commit. Every run whose list is non-empty names it and every listed path it found dirty or changed; with the list empty every read is today's. The smaller choice was refused: it keeps a pickup bar from the booking to the gates' start, the bar molt#0100 paid for. devbin's own bar loosens to no commit during a cut once 0.1.27 is out and swept.",
+      "state": "live",
+      "recorded_at": "2026-11-17T10:44:24.921Z"
     }
   ],
   "sent": [

@@ -1,0 +1,15 @@
+{
+  "id": "01M7MHQ8PSX3W8QPQYT40TPVQ3",
+  "ts": "2026-11-17T10:44:24.921Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "0355-1 takes all six places dc found under decision 207's condition (4), vc's word to dc: the GATES seal (git_head_identity's +dirty, read back by gates_sealed), pre-flight's tree rule and the stamp step, the commit step and release_read_clean, release gates and its --leg, and the macOS stage's app-sign and bin-sign; the tag, the pushes, the formula, the object and after check no tree. One reader of release.unread at each process entry that needs it (the cut, release gates, the macos verbs) sets one shell variable, never exported; the GATES seal is run_gate's around release_gates_run in the cut's own shell, so it sees it. git_head_identity leaves listed paths out of +dirty through git's pathspec excludes, and the commit step never commits a listed path, which closes today's hazard of a peer's write reaching the release commit. Every run whose list is non-empty names it and every listed path it found dirty or changed; with the list empty every read is today's. The smaller choice was refused: it keeps a pickup bar from the booking to the gates' start, the bar molt#0100 paid for. devbin's own bar loosens to no commit during a cut once 0.1.27 is out and swept."
+  }
+}
