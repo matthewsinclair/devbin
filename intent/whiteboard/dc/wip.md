@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 05:58Z
+heartbeat_at: 2026-11-17 06:10Z
 status: active
-focus: "Localfold on hv's word through vc (bank, fold, hold), 2026-11-17 03:55Z by date -u: nothing unbanked, no claims, nothing booked or running. Desk held by vc (01M7KT90EE42BZ2FN273ZWNTMJ). Holding for hv's next word through vc."
+focus: "0.1.26's pre-cut kit built in scratch (pc0126), not run; the run holds for vc's word (hold 42): cc's note landed, hv's lift with the Desk re-taken, and the Desk's order. Nothing booked or running."
 claims: []
 ---
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-_(none)_
+- 0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126, built and not run) holds until vc says all three hold: cc's 0.1.26 release note has landed (vc sends its sha); hv has lifted the 03:54Z hold and vc has re-taken the Desk; and the Desk's order puts it next (Ccusage's runs and its 0.1.10 cut first, kovacs idle). Then point-precut.sh <sha>, ask-precut.sh <sha>, and the id with the driver to vc before START.
 
 ## Watch-outs
 

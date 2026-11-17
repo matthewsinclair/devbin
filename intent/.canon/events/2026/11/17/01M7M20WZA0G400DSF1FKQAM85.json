@@ -1,0 +1,15 @@
+{
+  "id": "01M7M20WZA0G400DSF1FKQAM85",
+  "ts": "2026-11-17T06:10:03.370Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0.1.26's pre-cut run (kit ~/Devel/scratch/devbin-dc/pc0126, built and not run) holds until vc says all three hold: cc's 0.1.26 release note has landed (vc sends its sha); hv has lifted the 03:54Z hold and vc has re-taken the Desk; and the Desk's order puts it next (Ccusage's runs and its 0.1.10 cut first, kovacs idle). Then point-precut.sh <sha>, ask-precut.sh <sha>, and the id with the driver to vc before START."
+  }
+}
