@@ -331,6 +331,19 @@ target_block() { awk '/^unreviewed:/ {exit} {print}' "$GEN"; }
   assert_output_contains "twin.test"
 }
 
+@test "0363-1: two domains sharing a first label get their dashed whole names as handles, and show raises no handle advisory over a profile init wrote" {
+  mail_domain twin.example 300 none
+  mail_domain twin.test 300 none
+  init twin.example twin.test
+  assert_success
+  grep -q '^  twin-example:' "$GEN" || fail "init did not key twin.example as twin-example: $(cat "$GEN")"
+  grep -q '^  twin-test:' "$GEN" || fail "init did not key twin.test as twin-test: $(cat "$GEN")"
+  DIG_FIXTURE="$FIX" PATH="$BIN:$PATH" run "$INFRA" show --profile "$GEN"
+  assert_success
+  refute_output_contains "handles worth a second look"
+  refute_output_contains "does not look derived"
+}
+
 @test "a record that cannot be read abstains from that facet and rc is 1 (0126)" {
   mail_domain a.example 300 none
   zone '!ERROR a.example MX'

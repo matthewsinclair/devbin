@@ -692,6 +692,18 @@ Y
     fail "the line above the warning does not name beta's file: $output"
 }
 
+@test "0363-1: a profile whose handles are the dashed whole names init writes, for two domains sharing a first label, draws no handle advisory" {
+  # infra_init_handles keys two domains that share a first label by their whole
+  # names dashed, and the check flagged those very handles as not derived from
+  # their names (issue 0363). The POSITIVE CONTROL above still warns for a
+  # handle that is not one of them.
+  mkprofile twins twin-example=twin.example twin-test=twin.test
+  runprofiles "$PROFILE_DIR/estate"
+  assert_success
+  refute_output_contains "handles worth a second look"
+  refute_output_contains "does not look derived"
+}
+
 # --- asking for help vs forgetting the argument ------------------------------
 #
 # Found verifying `infra profiles` against a real multi-profile estate. Both
