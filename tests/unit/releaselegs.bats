@@ -620,3 +620,77 @@ leg_kept_log() { printf '%s/%s.log\n' "$(release_leg_dir "$proj" kov)" "${1:0:12
   [ "$(leg_word)" = green ] || fail "the run beside a run going: $output"
   every_call_batch
 }
+
+# ============================================================================
+# A START CLEARS THE PROJECT'S ENDED RUNS (issue 0367)
+# ============================================================================
+# A cut that stops red leaves each remote leg's run to finish on its host, and
+# a re-cut is at another commit, so no read of that run comes back for it.
+# Each start on a host now finishes such runs first, as a read does: the log
+# copied back, then the run cleared.
+
+@test "0367: a leg's start clears each ended run of the project at another commit from the host, its log copied back first, and leaves a run still going and the start's own" {
+  local proj first going sha wtf wtg wt dir
+  proj="$(leg_project)"
+  first="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  wtf="$(leg_wt kov "$first")"
+  run release_leg_start "$proj" kov demo "$first"
+  [ "$(leg_word)" = pending ] || fail "the first start: $output"
+  release_gates "$wtf"
+  # The cut stopped there: nothing read the run at the first commit.
+  : >"$proj/second"
+  leg_commit "$proj" "a second commit"
+  going="$(git -C "$proj" rev-parse HEAD)"
+  wtg="$(leg_wt kov "$going")"
+  run release_leg_start "$proj" kov demo "$going"
+  [ "$(leg_word)" = pending ] || fail "the second start: $output"
+  : >"$proj/third"
+  leg_commit "$proj" "a third commit"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha"
+  assert_success
+  [ "$(leg_word)" = pending ] || fail "the start beside an ended run and a run going: $output"
+  dir="$(release_leg_dir "$proj" kov)"
+  [ -f "$dir/${first:0:12}.log" ] || fail "the ended run's log was not copied back to $dir"
+  [ ! -e "$wtf" ] && [ ! -e "$wtf.log" ] && [ ! -e "$wtf.rc" ] || fail "the ended run at ${first:0:12} was left on the host"
+  if git -C "$HOSTS/kov/work/demo-leg.git" rev-parse -q --verify "refs/devbin/legs/$first" >/dev/null; then
+    fail "refs/devbin/legs/$first was left on the host"
+  fi
+  [ -d "$wtg" ] && [ -e "$wtg.log" ] || fail "the run still going at ${going:0:12} was cleared"
+  [ ! -e "$dir/${going:0:12}.log" ] || fail "the run still going had its log copied back"
+  # Ended, the start's own run is left to its read, even by a start again at it.
+  release_gates "$wt"
+  run release_leg_start "$proj" kov demo "$sha"
+  [ "$(leg_word)" = pending ] || fail "a start again at its own commit: $output"
+  [ -d "$wt" ] && [ -e "$wt.rc" ] || fail "a start cleared the run at its own commit"
+  release_gates "$wtg"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the start's own run, read: $output"
+  every_call_batch
+}
+
+@test "0367: an ended run whose log cannot be copied back stays on the host, warned of, and the start goes on" {
+  local proj first sha wtf
+  proj="$(leg_project)"
+  first="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  wtf="$(leg_wt kov "$first")"
+  run release_leg_start "$proj" kov demo "$first"
+  [ "$(leg_word)" = pending ] || fail "the first start: $output"
+  release_gates "$wtf"
+  : >"$proj/second"
+  leg_commit "$proj" "a second commit"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  : >"$HOSTS/kov/.fail-scp"
+  run release_leg_start "$proj" kov demo "$sha"
+  assert_success
+  assert_output_contains "the leg's log on kov could not be copied back"
+  assert_output_contains "so the run is left there for the next read"
+  assert_output_matches $'(^|\n)pending\t'
+  [ -d "$wtf" ] && [ -e "$wtf.rc" ] || fail "an ended run whose log could not be copied was cleared"
+  rm -f "$HOSTS/kov/.fail-scp"
+  release_gates "$(leg_wt kov "$sha")"
+  every_call_batch
+}
