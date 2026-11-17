@@ -1335,3 +1335,18 @@ EOF
   refute_output_contains "Resolves from:"
   refute_output_contains "In this project:"
 }
+
+@test "0358-1: configuration.md's release step 6 says each artefact the build: block declares gets its cache line, not the macOS stage's alone" {
+  # legs_cache_lines writes one line for every artefact the build: block
+  # declares (issue 0338); the step said the macOS stage's artefact alone.
+  grep -qF -- "Once every leg is green, each artefact the \`build:\` block declares, the macOS stage's app among them where it is one, gets one \`cache<TAB><artefact><TAB><key>\` line" "$DEVBIN_HOME/docs/configuration.md" ||
+    fail "step 6 does not say each artefact gets its cache line"
+  if grep -qF -- "the macOS stage's artefact, where it has one, gets one" "$DEVBIN_HOME/docs/configuration.md"; then
+    fail "step 6 still says the macOS stage's artefact alone gets its line"
+  fi
+}
+
+@test "0358-1: new's page says the stub search passes over every copy of devbin's runtime and every work tree below the root, and writes into none (0362)" {
+  grep -qF -- "The search passes over every copy of devbin's runtime, \`bin/.devbin/lib/\`, the project's own and any other, and everything beneath a directory below the root that holds a \`.git\`, file or directory, so a linked worktree or a nested repository is never read as this project's suite, and \`new\` never writes into one." "$DEVBIN_HOME/lib/pages/new.md" ||
+    fail "new's page does not say the search passes over other work trees and runtime copies"
+}

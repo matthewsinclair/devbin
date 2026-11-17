@@ -3437,6 +3437,23 @@ YAML
   assert_guides_at "$(cd -P "$DEVBIN_HOME" && pwd -P)/docs"
 }
 
+@test "0358-1: devbin devbin's guide line lists every guide docs/ holds, by its name" {
+  # assert_guides_at checks that each guide listed is there; this checks the
+  # other way, that each one there is listed, since a list written out by hand
+  # named four of six.
+  run bash -c "cd '$DEVBIN_HOME' && bin/devbin devbin"
+  assert_success
+  local listed have="" f
+  listed="$(sed -n 's/^The long-form guides (\(.*\))$/\1/p' <<<"$output")"
+  [ -n "$listed" ] || fail "no guides were read out of: $output"
+  for f in "$DEVBIN_HOME"/docs/*.md; do
+    f="${f##*/}"
+    have+="${f%.md}"$'\n'
+  done
+  [ "$(tr ',' '\n' <<<"$listed" | sed 's/^ *//' | LC_ALL=C sort)" = "$(printf '%s' "$have" | LC_ALL=C sort)" ] ||
+    fail "the guide line lists ($listed), and docs/ holds: $(printf '%s' "$have" | tr '\n' ' ')"
+}
+
 @test "devbin: a project whose source this machine cannot place says why its guides are not placed, and once the switch names the checkout, names the checkout's docs/ (0254)" {
   # The guides of a project are those of the install its upgrades read, so
   # where that is not placed, neither are they, and the line says why with the
