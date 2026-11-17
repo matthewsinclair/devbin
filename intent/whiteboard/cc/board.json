@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "19c73785-15df-40b2-b812-765f3bba42d9",
-    "heartbeat_at": "2026-11-17T15:40:36.759Z",
+    "heartbeat_at": "2026-11-17T17:25:53.746Z",
     "status": "active",
-    "focus": "2026-11-17 15:40Z by date -u: vc's GO (hv's word after the move, decision 222) lifts hold 40: building 0364-1, then 0365-1 on top, as one stack in scratch; one Desk ask once probed. Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close.",
+    "focus": "2026-11-17 17:25Z by date -u: localfold for hv's compact. 0364 and 0365 are landed and closed. 0369-1 and 0368-1 are built, banked at refs/bank/cc/ and asked (01M7N79M7DJB05YRTAWJ2KGAQS, driver read by vc): on the bounce, start on vc's GO after its grant (hold 41). Claim ISSUE:0326 stands until pplr#0001 and cldr#0001 close. Nothing running.",
     "claims": [
       "ISSUE:0326",
       "ISSUE:0368",
@@ -1790,6 +1790,14 @@
       "state": "archived",
       "archived_at": "2026-11-17T16:52:57.924Z",
       "recorded_at": "2026-11-17T15:40:42.637Z"
+    },
+    {
+      "node": "cc",
+      "kind": "hold",
+      "seq": 41,
+      "text": "0369-1 then 0368-1, one stack, banked at refs/bank/cc/0369-1 (8e613644) and refs/bank/cc/0368-1 (2b8bac45) on base 09b678ee; Desk ask 01M7N79M7DJB05YRTAWJ2KGAQS stays asked, driver read by vc. Held until vc grants it on the bounce, after Webber's quiet-machine run ends, and gives the GO: then intent estate slots start with named tip=2b8bac45... (i0368/named.txt) and bash run-stack-slot.sh, END at its exit. The scratch clones work and red in cc's scratch i0368 are what the driver reads.",
+      "state": "live",
+      "recorded_at": "2026-11-17T17:25:47.145Z"
     }
   ],
   "sent": [

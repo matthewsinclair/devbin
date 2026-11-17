@@ -1,0 +1,15 @@
+{
+  "id": "01M7N8P6G9B132WHFGTBEW3C2P",
+  "ts": "2026-11-17T17:25:47.145Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "0369-1 then 0368-1, one stack, banked at refs/bank/cc/0369-1 (8e613644) and refs/bank/cc/0368-1 (2b8bac45) on base 09b678ee; Desk ask 01M7N79M7DJB05YRTAWJ2KGAQS stays asked, driver read by vc. Held until vc grants it on the bounce, after Webber's quiet-machine run ends, and gives the GO: then intent estate slots start with named tip=2b8bac45... (i0368/named.txt) and bash run-stack-slot.sh, END at its exit. The scratch clones work and red in cc's scratch i0368 are what the driver reads."
+  }
+}
