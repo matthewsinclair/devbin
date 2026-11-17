@@ -1,5 +1,5 @@
 ---
-verblock: "17 Nov 2026:v3.95: Matthew Sinclair - fold on hv's word; two stacks queued for the bounce"
+verblock: "17 Nov 2026:v3.96: Matthew Sinclair - fold on hv's word; dc's stack on its last rerun"
 ---
 
 # Work In Progress
@@ -8,7 +8,7 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- devbin 0.1.27 (decisions 205 to 223): cc's 0369-1/0368-1 stack (ask 01M7N79M7DJB05YRTAWJ2KGAQS) and dc's 0367-1/0366-1 stack (ask 01M7N7KFRAXVVHBVCCHK35BKSZ) are built, banked and queued on the bats lane in that order; vc grants each on the bounce and lands it on its builder's evidence. The cut waits for hv's go.
+- devbin 0.1.27 (decisions 205 to 224): cc's 0369-1 and 0368-1 are landed (885c56f0, a21916fc; 0368 and 0369 closed). dc's 0367-1 c36040bf and 0366-1 867488ed, rebased onto a21916fc and banked, are on their last short rerun (ask 01M7NG3DEM0AWX2P6A0EYYK9WQ, kit k36x); at its green END dc hands over on a21916fc and vc lands. Then the cut, on hv's go (decision 224): book bats, cargo and heavy.
 - The Desk (decisions 199 and 200): vc holds it for rhadamanth, gyges and kovacs. Order on contention (decision 210): devbin, AE, Intent and the other estate, each ahead of Webber; a heavy-class grant past two waits for the 1-minute load under about 16.
 
 ## TODO

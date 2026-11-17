@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 30d0e398-8d8a-4899-8104-31fa2767a4bd
-heartbeat_at: 2026-11-17 18:12Z
+heartbeat_at: 2026-11-17 19:43Z
 status: active
-focus: "Folding on hv's 17:25Z word; on the bounce: grant cc's 0369-1/0368-1 stack (ask 01M7N79M7DJB05YRTAWJ2KGAQS) then dc's 0367-1/0366-1 stack (ask 01M7N7KFRAXVVHBVCCHK35BKSZ) on the bats lane after Webber's quiet-machine run 01M7N2PGHM1JKMZPXSBDWCH6Z7 ENDs; land each on its builder's evidence; then 0.1.27's cut on hv's go."
+focus: "Bounce: land dc's 0367-1/0366-1 at k36x's green END (01M7NG3D), then cut 0.1.27 on decision 224 and ping hv; then grant webber-dc's archive 01M7NG5Q and the other estate's 01M7NGGB. State: ~/Devel/scratch/devbin-vc/0.1.27/STATE.md"
 claims: []
 ---
 
