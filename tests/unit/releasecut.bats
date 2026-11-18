@@ -68,6 +68,19 @@ date_refused_path() {
   printf '%s:%s\n' "$shim" "$PATH"
 }
 
+# date_day_path <YYYY-MM-DD> -- PATH with a date in front whose `+%F`, the
+# cut's one read of the clock for the release's date, prints <YYYY-MM-DD>, and
+# which runs the real date for everything else: a cut run on that local day.
+date_day_path() {
+  local shim="$DEVBIN_TEST_TMPDIR/day-$1" real
+  real="$(command -v date)"
+  mkdir -p "$shim"
+  # shellcheck disable=SC2016 # the shim's own $1, expanded when it runs
+  printf '#!/bin/sh\nif [ "$1" = +%%F ]; then echo %s; exit 0; fi\nexec "%s" "$@"\n' "$1" "$real" >"$shim/date"
+  chmod +x "$shim/date"
+  printf '%s:%s\n' "$shim" "$PATH"
+}
+
 # ============================================================================
 # THE WHOLE RUN, AND A RE-RUN
 # ============================================================================
@@ -1112,6 +1125,20 @@ URLS
   run release_in "$proj" v1.0.1
   assert_stopped_at pre-flight
   assert_output_contains "released on 2020-01-01, not today"
+}
+
+@test "a cut resumed on a later day onto its own release commit takes the day it was dated on, and re-dates nothing (0372)" {
+  proj="$(cut_project)"
+  PATH="$(date_day_path 2030-01-01)" cut_to_tag_stop "$proj" v1.0.1
+  [ "$(git -C "$proj" log -1 --format=%s)" = "release: v1.0.1" ] || fail "the first run made no release commit"
+  PATH="$(date_day_path 2030-01-02)" cut_to_tag_stop "$proj" v1.0.1
+  assert_state pre-flight done
+  assert_state stamp already
+  [ "$(release_commits "$proj")" -eq 1 ] || fail "the resume made a second release commit"
+  local note
+  note="$(git -C "$proj" show HEAD:CHANGELOG.md)" && grep -qF "## [1.0.1] - 2030-01-01" <<<"$note" ||
+    fail "the release commit's note is not dated the day the first run dated it"
+  [ -z "$(git -C "$proj" status --porcelain --untracked-files=all)" ] || fail "the tree is not clean"
 }
 
 # derived_project <body> -- cut_project with a committed ./gen.sh as its one
