@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-18 07:13Z
+heartbeat_at: 2026-11-18 14:36Z
 status: active
-focus: "2026-11-18 07:13Z by date -u: 0.1.27 tagged at 9cd0fbbd; filing the cut-across-midnight finding, one line, no work; claim 0326 held"
+focus: "2026-11-18 14:36Z by date -u: localfold for hv's estate-wide compact after the move; holding until hv schedules devbin work; claim 0326 held"
 claims: [ISSUE:0326]
 ---
 
