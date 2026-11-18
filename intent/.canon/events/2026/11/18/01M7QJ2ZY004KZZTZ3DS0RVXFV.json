@@ -1,0 +1,15 @@
+{
+  "id": "01M7QJ2ZY004KZZTZ3DS0RVXFV",
+  "ts": "2026-11-18T14:48:32.449Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, after the estate-wide fold and compact, read 2026-11-18 14:46Z by date -u: \"Ok, everyone has folded and compacted. Please let everyone know that they can continue with their respective plans.\" Done by 14:47Z: devbin-cc, devbin-dc, agentic-engineering-vc, webber-vc and the other estate's vc told; each vc relayed to its seats. Then, read by 14:47Z: \"I will be AFK for a while. Crack on as far as you can without me.\" On that word: Webber's 0.1.27 notice (todo 222: sweep commit 4abe1f34 is Webber's to push; release.unread's opt-in) sent to webber-vc; devbin-cc briefed on 0372 as unit 0372-1, built and banked through the Desk, no cut and nothing public (directive 13 batching holds). Reported to hv on return."
+  }
+}

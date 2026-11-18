@@ -5,7 +5,7 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "30d0e398-8d8a-4899-8104-31fa2767a4bd",
-    "heartbeat_at": "2026-11-18T11:55:42.785Z",
+    "heartbeat_at": "2026-11-18T14:46:50.189Z",
     "status": "active",
     "focus": "0.1.27 released, swept to 25 estates; notices wait for each estate's vc. Desk held for the other estate (webber offline). 0326 and 0372 parked for hv.",
     "claims": [],
@@ -5594,6 +5594,15 @@
       "text": "hv in vc's window, read 2026-11-18 12:09Z by date -u, hv's words: \"I've started up webber-* to continue with the release work.\" Webber is back on the Desk under decisions 190 and 210: its simulator runs on rhadamanth one at a time and booked, its asks granted in free lanes, and devbin, AE and the other estate keep their place ahead of it.",
       "state": "live",
       "recorded_at": "2026-11-18T12:09:25.895Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 226,
+      "text": "hv in vc's window, after the estate-wide fold and compact, read 2026-11-18 14:46Z by date -u: \"Ok, everyone has folded and compacted. Please let everyone know that they can continue with their respective plans.\" Done by 14:47Z: devbin-cc, devbin-dc, agentic-engineering-vc, webber-vc and the other estate's vc told; each vc relayed to its seats. Then, read by 14:47Z: \"I will be AFK for a while. Crack on as far as you can without me.\" On that word: Webber's 0.1.27 notice (todo 222: sweep commit 4abe1f34 is Webber's to push; release.unread's opt-in) sent to webber-vc; devbin-cc briefed on 0372 as unit 0372-1, built and banked through the Desk, no cut and nothing public (directive 13 batching holds). Reported to hv on return.",
+      "state": "live",
+      "recorded_at": "2026-11-18T14:48:32.449Z",
+      "edited_at": "2026-11-18T14:48:37.164Z"
     }
   ],
   "sent": [
