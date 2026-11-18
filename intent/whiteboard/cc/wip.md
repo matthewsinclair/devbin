@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-18 14:36Z
+heartbeat_at: 2026-11-18 15:02Z
 status: active
-focus: "2026-11-18 14:36Z by date -u: localfold for hv's estate-wide compact after the move; holding until hv schedules devbin work; claim 0326 held"
-claims: [ISSUE:0326]
+focus: "2026-11-18 15:02Z by date -u: 0372-1 banked at refs/bank/cc/0372-1 (2dfcef31 on 1ee601a5), run green, handed to vc; no cut; claims 0326 and 0372 held"
+claims: [ISSUE:0326, ISSUE:0372]
 ---
 
 # Control Claude (cc)
