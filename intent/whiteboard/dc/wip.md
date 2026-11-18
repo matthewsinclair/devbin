@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 4da27407-803e-4926-9362-be942283eae4
-heartbeat_at: 2026-11-17 19:49Z
+heartbeat_at: 2026-11-18 14:36Z
 status: active
-focus: "2026-11-17 19:49Z by date -u: 0367-1 bc0f6fef and 0366-1 57e97d5f landed; 0367 and 0366 resolved and closed, unclaimed, hold 46 archived; holding for vc's next brief, nothing in canon while 0.1.27's cut is booked."
+focus: "2026-11-18 14:36Z by date -u: localfold on hv's word via vc after the restart; 0.1.27 tagged at 9cd0fbbd with 0367-1 and 0366-1 in it; no claims, holds or runs; waiting for vc's next brief."
 claims: []
 ---
 
