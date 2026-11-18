@@ -5586,6 +5586,14 @@
       "state": "archived",
       "archived_at": "2026-11-18T11:55:42.154Z",
       "recorded_at": "2026-11-17T19:10:46.283Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 225,
+      "text": "hv in vc's window, read 2026-11-18 12:09Z by date -u, hv's words: \"I've started up webber-* to continue with the release work.\" Webber is back on the Desk under decisions 190 and 210: its simulator runs on rhadamanth one at a time and booked, its asks granted in free lanes, and devbin, AE and the other estate keep their place ahead of it.",
+      "state": "live",
+      "recorded_at": "2026-11-18T12:09:25.895Z"
     }
   ],
   "sent": [
