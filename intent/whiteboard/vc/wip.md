@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 30d0e398-8d8a-4899-8104-31fa2767a4bd
-heartbeat_at: 2026-11-17 19:49Z
+heartbeat_at: 2026-11-18 07:38Z
 status: active
-focus: "Bounce: dc's 0367-1/0366-1 landed (bc0f6fef, 57e97d5f); cut 0.1.27 on decision 224 after dc's closes and the other estate's 01M7NGSZ END, then ping hv; webber-dc's archive 01M7NG5Q after the cut"
+focus: "0.1.27 released, swept to 25 estates; notices wait for each estate's vc. Desk held for the other estate (webber offline). 0326 and 0372 parked for hv."
 claims: []
 ---
 
@@ -19,7 +19,7 @@ _(none)_
 
 - HV'S LIST (as of 2026-11-14 12:08Z by date -u): (e) the no-vendor mode (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) kovacs's GNOME re-login (kovacs-sysadm offline) and the router's DHCP reservation, hv's to check. Everything else on the list is done or ruled (decisions 177 to 180). (edited)
 - NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), 0.1.24 (~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary), 0.1.25 (~/Devel/scratch/devbin-vc/0.1.25/sweep/sweep-commit.summary; 0.1.25 renders a formula's install as cp_r, which broke Intent's brew_formula.bats, so tell each estate with a formula test) and 0.1.26 (decision 204; ~/Devel/scratch/devbin-vc/0.1.26/sweep/sweep-commit.summary; tell each estate with a cargo build about the gate cache's 12G bound, issue 0361; Prodinfra's push is its own, its eight commits sit under the sweep commit); 0326's reader notice to pplr-vc, cldr-vc, cldr-dc and pipeliner-sc (~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0; Prodinfra, infra --profile takes a path; release review action 2 to molt-vc. SENT 2026-11-15 11:27Z by date -u: sweep notices to intent-vc, laksa-vc and webber-vc, and action 2 to intent-vc (texts in ~/Devel/scratch/devbin-vc/0.1.25/notices). SENT 2026-11-17 by 10:23Z by date -u: ccusage-vc (its sweeps, 0326's reader notice, decision 178(3)'s rename beside its 2026-11-06 revert) and intent-vc (0.1.26's sweep and its push under decision 76); texts in ~/Devel/scratch/devbin-vc/0.1.26/notices. Laksa still needs 0.1.26's; Webber's went with its sweep commit (decision 213). The rest wait for those estates' vcs. (edited)
-- 0.1.27's NOTICES, sent once 0.1.27 is cut and swept: Intent's adoption of release target (0352, decision 206: add target to Intent's release.verbs, and swap linux-release.yml's interim parse at line 87 for one line, bin/devbin release target --ref "$GITHUB_REF" >> "$GITHUB_ENV"), to intent-vc; and once 0355-1 lands, release.unread's opt-in (decision 207: list intent/whiteboard/ and intent/.canon/events/ so a peer's pickup no longer fails a cut) to every estate with a whiteboard.
+- 0.1.27's NOTICES. 0.1.27 RELEASED 2026-11-18 (tag v0.1.27 at 9cd0fbbd; every leg green; CI Linux green, candidate run 44252951629). hv's brew steps done (devbin 0.1.27 (brew, 9cd0fbbd03ba)). SWEPT 2026-11-18 07:30Z by date -u: 25 estates 0.1.26 to 0.1.27, committed by path (~/Devel/scratch/devbin-vc/0.1.27/sweep/sweep-commit.summary); pushed to local where the sweep was the one commit ahead; Gtools-geodica, Intent, Prodinfra and Webber hold their own unpushed commits under the sweep, so each estate's vc pushes. TO SEND at each estate's next vc session: the 0.1.27 sweep notice; to intent-vc, Intent's adoption of release target (0352, decision 206: add target to Intent's release.verbs, and swap linux-release.yml's interim parse at line 87 for one line, bin/devbin release target --ref "$GITHUB_REF" >> "$GITHUB_ENV"); to every estate with a whiteboard, release.unread's opt-in (decision 207: list intent/whiteboard/ and intent/.canon/events/ so a peer's pickup no longer fails a cut). (edited)
 
 ## Holds
 
