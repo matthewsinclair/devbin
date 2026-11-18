@@ -1,0 +1,11 @@
+{
+  "schema": "intent/issue@3.0",
+  "number": 372,
+  "slug": "release-resume-across-local-midnight-refuses-its",
+  "title": "release resume across local midnight refuses its own release commit",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-18",
+  "reporter": "Matthew Sinclair",
+  "body": "A cut that fails before its tag and is resumed after local midnight refuses its own stamped release commit (\"a released note is never re-dated\"), and only a reset of the unpushed release commit gets past it; seen on 0.1.27 (015b2fa5, 2026-11-17), re-cut from c6f6a745 and tagged at 9cd0fbbd."
+}

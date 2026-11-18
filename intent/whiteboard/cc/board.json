@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "19c73785-15df-40b2-b812-765f3bba42d9",
-    "heartbeat_at": "2026-11-17T19:47:39.986Z",
+    "heartbeat_at": "2026-11-18T07:13:55.851Z",
     "status": "active",
-    "focus": "2026-11-17 19:47Z by date -u: after hv's compact; booted, waiting for vc's next brief; nothing in canon while 0.1.27's cut is booked; claim 0326 held",
+    "focus": "2026-11-18 07:13Z by date -u: 0.1.27 tagged at 9cd0fbbd; filing the cut-across-midnight finding, one line, no work; claim 0326 held",
     "claims": [
       "ISSUE:0326"
     ],
