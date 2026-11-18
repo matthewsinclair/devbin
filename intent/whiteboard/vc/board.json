@@ -5,7 +5,7 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "30d0e398-8d8a-4899-8104-31fa2767a4bd",
-    "heartbeat_at": "2026-11-18T07:38:34.964Z",
+    "heartbeat_at": "2026-11-18T11:55:42.785Z",
     "status": "active",
     "focus": "0.1.27 released, swept to 25 estates; notices wait for each estate's vc. Desk held for the other estate (webber offline). 0326 and 0372 parked for hv.",
     "claims": [],
@@ -5396,7 +5396,8 @@
       "kind": "decision",
       "seq": 205,
       "text": "devbin's next release, 0.1.27, carries everything open (directive 13), so vc sequences it with no scope question to hv. cc takes 0352 (medium: the core's word on how a workflow the candidate push starts derives the release's version and tag), then 0354 and 0358 (low), and files 0353's doc follow-up (lib/pages/new.md:20 does not say new never writes into another work tree) and Prodinfra's infra check handle advisory (hyphenated handles for domains sharing a first label, eg webble-me for webble.me; accept ${fqdn//./-}). dc takes 0355 (medium: seen again in Ccusage 0.1.10's first run today), then 0360 (medium) and 0359 (low), which share run_gate and so run one after another (decision 83), and files todo 214's release-machinery findings: a release.gates entry starting with release recurses (archived todo 203); macos and release call built-ins through the launcher (206); no macOS-stage rehearsal before a cut (207); a failed remote leg keeps its worktree on the host (208); dc's todo 67 TMPDIR leftovers; the 0311 traps_restore arm (helpers.bats:2558) reads HUP wrong under a nohup launcher. Each unit: a scratch tree off main, its own arms red at the base and green at the fix, booked on the Desk, a bank and a handover; vc lands it. 0.1.27's cut waits for hv's go: decision 182's pre-approval was spent on the cut that became 0.1.26. Todos 214 and 219 are carried here and archived.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-18T11:55:41.744Z",
       "recorded_at": "2026-11-17T10:26:38.383Z",
       "edited_at": "2026-11-17T10:26:45.646Z"
     },
@@ -5537,7 +5538,8 @@
       "kind": "decision",
       "seq": 219,
       "text": "Desk, 2026-11-17 13:04Z by date -u: Webber's floor-fix second booking (01M7MS5ER88S2VKGXP075D3349, the simulator gates at c6a086a0) was granted heavy ahead of Intent's kovacs rehearsal 3. Decision 158 holds a Webber run while Intent is about to ask, but intent-dc put rehearsal 3 15 to 25 minutes off (its fix to be read and landed first) and offered to follow Webber's END, and holding Webber would have left rhadamanth underused for that time. Rehearsal 3 is granted at that END with the host quiet. Before it: Creator's deploy gates ran green locally (12:57Z to 13:00Z, test mix 564, credo, sbom), and fly deploy then went red at the image build on Fly's builder (the Dockerfile copies no config/dotenv.exs), nothing deployed, its one-line fix and redeploy remote with no slot; another estate's ST0004/16 step 3 ran green over the whole 10,592-holding set; Intent's rehearsal 2 went red on three daemon-status arms that sandbox HOME while the Linux socket follows XDG_RUNTIME_DIR, Intent's to fix.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-18T11:55:42.365Z",
       "recorded_at": "2026-11-17T13:05:11.302Z"
     },
     {
@@ -5572,7 +5574,8 @@
       "kind": "decision",
       "seq": 223,
       "text": "hv in vc's window by the TUI, after 0364-1 and 0365-1 landed (77692fd1, 77b6ec20), hv's answer: \"cc takes 0368, 0369 (Recommended)\". cc takes 0368 (a gate run's TMPDIR leftovers) and 0369 (helpers.bats's traps_restore HUP arm); dc keeps 0366 and 0367 after its 0360-1 and 0359-1 stack. Each pick and shape to vc first. This moves decision 221's line for those two issues (decision 16: hv's call).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-18T11:55:41.947Z",
       "recorded_at": "2026-11-17T16:54:16.507Z"
     },
     {
@@ -5580,7 +5583,8 @@
       "kind": "decision",
       "seq": 224,
       "text": "hv's go for devbin 0.1.27's cut once both stacks land (cc's 0369-1/0368-1 and dc's 0367-1/0366-1), in hv's words in vc's session: \"Ok, cut 0.1.27 once both stacks land.\" The cut books bats, cargo and heavy on the Desk. 0326 stays held and does not block it.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-18T11:55:42.154Z",
       "recorded_at": "2026-11-17T19:10:46.283Z"
     }
   ],
@@ -7460,7 +7464,8 @@
       "recipient": "hv",
       "body": "FOLD ORDER from hv (in vc's window; the clock read above; relayed by vc): context is high, so every session in this work folds now and holds for hv's /compact. (1) Bank what you have: uncommitted work as WIP (a bank ref by fetch and CAS, or a stash named in your record). (2) A run already granted runs to its END, END sent as usual; book nothing new. (3) Clear out what can be cleared (scratch clones and dirs no longer cited), by script, never an inline rm -rf. (4) Localfold: your records and board folded, handled messages cleared, handled sends archived (wb archive message --handled); commit by path, nothing pushed; do NOT release, since a compact is not a session end. (5) Send devbin-vc ONE fold line: what is banked where, what still runs, where you stand; then hold for hv's /compact and the go after it. Nothing public anywhere.",
       "fyi": true,
-      "recorded_at": "2026-11-01T07:53:33.388Z"
+      "recorded_at": "2026-11-01T07:53:33.388Z",
+      "archived_at": "2026-11-18T11:55:42.587Z"
     },
     {
       "id": "01M6BPEC3H2R6PKPGDRGB69E9C",
