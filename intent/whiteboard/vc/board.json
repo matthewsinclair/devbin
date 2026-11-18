@@ -5603,6 +5603,14 @@
       "state": "live",
       "recorded_at": "2026-11-18T14:48:32.449Z",
       "edited_at": "2026-11-18T14:48:37.164Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 223,
+      "text": "NEXT CUT's batch (directive 13; decision 182 pre-approves the cut once a pre-cut kit, its dry run and every leg are green): 0372-1 landed at 73d60f09 (2026-11-18 15:03Z by date -u, cc's run green, bank ref cleared). Nothing else is on main for it yet.",
+      "state": "live",
+      "recorded_at": "2026-11-18T15:03:38.438Z"
     }
   ],
   "sent": [

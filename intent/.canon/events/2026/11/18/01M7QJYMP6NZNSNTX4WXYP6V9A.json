@@ -1,0 +1,15 @@
+{
+  "id": "01M7QJYMP6NZNSNTX4WXYP6V9A",
+  "ts": "2026-11-18T15:03:38.438Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "NEXT CUT's batch (directive 13; decision 182 pre-approves the cut once a pre-cut kit, its dry run and every leg are green): 0372-1 landed at 73d60f09 (2026-11-18 15:03Z by date -u, cc's run green, bank ref cleared). Nothing else is on main for it yet."
+  }
+}
