@@ -1,0 +1,15 @@
+{
+  "id": "01M7SK637Z14FS367C5W395BZ2",
+  "ts": "2026-11-19T09:46:11.583Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "agentic-engineering-vc relayed hv's go, given first-hand in its window between its 09:38Z clock read and 2026-11-19 09:45Z by its clock, received by vc by 09:46Z by date -u: hv's answer to its question, the option's label \"Go now (Recommended)\", for AE's ST0010/02, the client edition's one rebuild for T02's and P02's Intent 3.4.0 text, in English and French, by AE dc's plan v0.1 (AE's vc read it with 0 findings). Under decisions 230 and 241 the Desk judges AE dc's heavy-lane ask when it comes against Intent's runs then waiting or announced; the push and the canvas publish wait for hv's later words. AE's vc also reports, sent to intent-vc at 09:36Z before the P0 order: AE's devvm does not pin Intent (devvm update brew-upgrades it to the tap's latest), so Intent's next publish reaches the cohort's devvms at their next update; its other four questions for intent-vc wait until the fix is done."
+  }
+}
