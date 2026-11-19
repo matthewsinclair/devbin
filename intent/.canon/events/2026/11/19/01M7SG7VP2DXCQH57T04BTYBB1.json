@@ -1,0 +1,15 @@
+{
+  "id": "01M7SG7VP2DXCQH57T04BTYBB1",
+  "ts": "2026-11-19T08:54:43.651Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Another estate's design project relayed hv's go for its next release's work, received by vc by 2026-11-19 08:54Z by date -u: after this morning's localfold and compact, hv said in its gc's window, in hv's words, \"Then we continue on the bounce\", which its gc reads as the go on the rest of its ST0001/04 (hv's first go set issue 0001 ahead of it, decision 235). Under decision 230 the Desk grants it two runs on rhadamanth: run E, light, one headless Chrome, a minute or two (granted 08:54Z); run F, heavy, a build then the whole check, about 3 minutes, once E is clean. Its gc reports three short single-Chrome drives it ran this morning without a booking; every Chrome run now goes through the Desk."
+  }
+}
