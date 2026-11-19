@@ -2,10 +2,10 @@
 node: vc
 name: Validation Claude
 role: validation
-session_id: 30d0e398-8d8a-4899-8104-31fa2767a4bd
-heartbeat_at: 2026-11-18 20:08Z
+session_id: 1af87e83-b21b-4501-b0bf-29983ac62e1a
+heartbeat_at: 2026-11-19 05:00Z
 status: active
-focus: "Desk: empty at 20:08Z by date -u; the other estate folded for compact with Fb and G landed; Webber's ST0013 compiles granted. Next cut's batch holds 0372-1 (todo 223). Notices wait for each estate's vc (todo 222)."
+focus: "Desk re-taken 04:58Z on hv's word (decision 227). Every live estate holds while vc gathers today's plans for hv's review; nothing granted until hv approves. Next cut's batch holds 0372-1 (todo 223)."
 claims: []
 ---
 
@@ -69,6 +69,7 @@ _(none)_
 - hv in webber-dc's session after 12:53Z by webber-dc's clock, relayed by webber-dc and read by 2026-11-17 12:55Z by date -u: hv's go for Creator's first Fly deploy is on record ("Go"), and hv's word on its placement, verbatim: "All of the deploy work happens on the other side of the network so a deploy can happen in parallel with whatever is next (once the tests are run)." So the Desk slot for 01M7MQP3J22NDY4FP2WRFP9KFY covers only the local gates (check codegen, then deploy-service --dry-run: test mix, credo and sbom on a clean tree), at main 82a5d9da, the code tree of 588f60a7; fly deploy then runs on Fly's remote builder with no slot. On hv's earlier TUI answer (decision 210), the gates go beside devbin's bats run when Intent's kovacs rehearsal 2 ends, and another estate's step 3 follows as the load allows. Webber's seeded-accounts unit ran green on gyges (test mix 564, credo, check all) before it landed; Webber's floor-fix unit's first booking read test floor green at 26.5, and its second books the remaining gates behind devbin and another estate.
 - hv in vc's window, read 2026-11-18 12:09Z by date -u, hv's words: "I've started up webber-* to continue with the release work." Webber is back on the Desk under decisions 190 and 210: its simulator runs on rhadamanth one at a time and booked, its asks granted in free lanes, and devbin, AE and the other estate keep their place ahead of it.
 - hv in vc's window, after the estate-wide fold and compact, read 2026-11-18 14:46Z by date -u: "Ok, everyone has folded and compacted. Please let everyone know that they can continue with their respective plans." Done by 14:47Z: devbin-cc, devbin-dc, agentic-engineering-vc, webber-vc and the other estate's vc told; each vc relayed to its seats. Then, read by 14:47Z: "I will be AFK for a while. Crack on as far as you can without me." On that word: Webber's 0.1.27 notice (todo 222: sweep commit 4abe1f34 is Webber's to push; release.unread's opt-in) sent to webber-vc; devbin-cc briefed on 0372 as unit 0372-1, built and banked through the Desk, no cut and nothing public (directive 13 batching holds). Reported to hv on return. (edited)
+- hv in vc's window, read by 2026-11-19 04:58Z by date -u, hv's words: "Ok, devbin-vc has The Desk. Please corral all Claudes across all projects and get them ready for today's work. Do start anything just yet, I want to review the plans first." (read as don't start: the plans come first). Done by 04:59Z: control re-taken (same-name take from the restart's ORPHANED row), desk waiter armed, and every live session told to hold by message (devbin's cc and dc, agentic-engineering's three, another estate's five, both estate-level sessions); each estate's vc gathers its seats' plans for devbin-vc, which puts them to hv together. No Desk ask is granted until hv approves the plans. Offline and not reached: Webber, Intent, Ccusage, Laksa, Molt, Utilz and kovacs-sysadm.
 
 ---
 

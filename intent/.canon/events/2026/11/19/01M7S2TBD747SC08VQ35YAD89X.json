@@ -1,0 +1,15 @@
+{
+  "id": "01M7S2TBD747SC08VQ35YAD89X",
+  "ts": "2026-11-19T05:00:09.511Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-19 04:58Z by date -u, hv's words: \"Ok, devbin-vc has The Desk. Please corral all Claudes across all projects and get them ready for today's work. Do start anything just yet, I want to review the plans first.\" (read as don't start: the plans come first). Done by 04:59Z: control re-taken (same-name take from the restart's ORPHANED row), desk waiter armed, and every live session told to hold by message (devbin's cc and dc, agentic-engineering's three, another estate's five, both estate-level sessions); each estate's vc gathers its seats' plans for devbin-vc, which puts them to hv together. No Desk ask is granted until hv approves the plans. Offline and not reached: Webber, Intent, Ccusage, Laksa, Molt, Utilz and kovacs-sysadm."
+  }
+}

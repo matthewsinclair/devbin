@@ -4,10 +4,10 @@
     "moniker": "vc",
     "name": "Validation Claude",
     "role": "validation",
-    "session_id": "30d0e398-8d8a-4899-8104-31fa2767a4bd",
-    "heartbeat_at": "2026-11-18T20:08:44.424Z",
+    "session_id": "1af87e83-b21b-4501-b0bf-29983ac62e1a",
+    "heartbeat_at": "2026-11-19T05:00:13.773Z",
     "status": "active",
-    "focus": "Desk: empty at 20:08Z by date -u; the other estate folded for compact with Fb and G landed; Webber's ST0013 compiles granted. Next cut's batch holds 0372-1 (todo 223). Notices wait for each estate's vc (todo 222).",
+    "focus": "Desk re-taken 04:58Z on hv's word (decision 227). Every live estate holds while vc gathers today's plans for hv's review; nothing granted until hv approves. Next cut's batch holds 0372-1 (todo 223).",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5611,6 +5611,14 @@
       "text": "NEXT CUT's batch (directive 13; decision 182 pre-approves the cut once a pre-cut kit, its dry run and every leg are green): 0372-1 landed at 73d60f09 (2026-11-18 15:03Z by date -u, cc's run green, bank ref cleared). Nothing else is on main for it yet.",
       "state": "live",
       "recorded_at": "2026-11-18T15:03:38.438Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 227,
+      "text": "hv in vc's window, read by 2026-11-19 04:58Z by date -u, hv's words: \"Ok, devbin-vc has The Desk. Please corral all Claudes across all projects and get them ready for today's work. Do start anything just yet, I want to review the plans first.\" (read as don't start: the plans come first). Done by 04:59Z: control re-taken (same-name take from the restart's ORPHANED row), desk waiter armed, and every live session told to hold by message (devbin's cc and dc, agentic-engineering's three, another estate's five, both estate-level sessions); each estate's vc gathers its seats' plans for devbin-vc, which puts them to hv together. No Desk ask is granted until hv approves the plans. Offline and not reached: Webber, Intent, Ccusage, Laksa, Molt, Utilz and kovacs-sysadm.",
+      "state": "live",
+      "recorded_at": "2026-11-19T05:00:09.511Z"
     }
   ],
   "sent": [
