@@ -4801,7 +4801,8 @@
       "kind": "decision",
       "seq": 158,
       "text": "hv in vc's window (read 07:31Z by date -u): Webber falls in BEHIND devbin and Intent until both are landed across the estate. devbin and Intent are P0/P1, Webber P3: a Webber ask gets rhadamanth's lanes only when nothing that ships devbin or Intent is waiting or about to ask; Webber work that can run on gyges runs there; nothing of Webber's already in train is stopped.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T10:57:47.477Z",
       "recorded_at": "2026-11-11T07:31:17.763Z"
     },
     {
@@ -5453,7 +5454,8 @@
       "kind": "decision",
       "seq": 210,
       "text": "hv in vc's window, read by 2026-11-17 10:55Z by date -u, hv's words with one name withheld under directive 14: \"Heads up: I've started webber-*. It's in the mix and it's hold is released, but devbin, ae, and [another estate's project] all trump it for priority work here on rhad.\", then \"Heads up: I've started webber-*. It's in the mix and it's hold is released, but devbin, ae, intent, and [another estate's project] all trump it for priority work here on rhad. Note: I forgot intent in the previous message.\", and \"Note: I am running the full test suite for webber here manually ...\" The Desk's order on contention: devbin, AE, Intent and that estate, each ahead of Webber; this replaces decision 201's order for the rest of the day. hv's TUI answer, the recommendation, on Creator's Fly deploy (01M7K0MGZSMKW23YB3SMCKF4RF, hv present): at the other estate's timed build's END, devbin-cc's 0354-1 run first and the deploy beside it. That estate's dc asked a cold cargo build after the answer, and it outranks Webber, so it goes before the deploy; every heavy-class grant past two waits for the 1-minute load under about 14 to 16, and hv's manual Webber suite (xcodebuild) counts as one.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T10:57:47.708Z",
       "recorded_at": "2026-11-17T10:55:26.094Z"
     },
     {
@@ -5533,7 +5535,8 @@
       "kind": "decision",
       "seq": 218,
       "text": "hv in webber-dc's session after 12:53Z by webber-dc's clock, relayed by webber-dc and read by 2026-11-17 12:55Z by date -u: hv's go for Creator's first Fly deploy is on record (\"Go\"), and hv's word on its placement, verbatim: \"All of the deploy work happens on the other side of the network so a deploy can happen in parallel with whatever is next (once the tests are run).\" So the Desk slot for 01M7MQP3J22NDY4FP2WRFP9KFY covers only the local gates (check codegen, then deploy-service --dry-run: test mix, credo and sbom on a clean tree), at main 82a5d9da, the code tree of 588f60a7; fly deploy then runs on Fly's remote builder with no slot. On hv's earlier TUI answer (decision 210), the gates go beside devbin's bats run when Intent's kovacs rehearsal 2 ends, and another estate's step 3 follows as the load allows. Webber's seeded-accounts unit ran green on gyges (test mix 564, credo, check all) before it landed; Webber's floor-fix unit's first booking read test floor green at 26.5, and its second books the remaining gates behind devbin and another estate.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T10:57:47.923Z",
       "recorded_at": "2026-11-17T12:56:59.182Z"
     },
     {
@@ -5742,7 +5745,8 @@
       "kind": "decision",
       "seq": 240,
       "text": "Another estate's design project relayed hv's go through its gc seat, received by vc by 2026-11-19 09:19Z by date -u, hv's words in gc's window just before 09:19Z, on a pattern library and a data visualisation standard joining its next release: \"What are these? Can they be done now? If so, do it.\" Under decision 230 the Desk grants it four runs on rhadamanth as each source freezes: G, light, one headless Chrome, a minute or two; H, heavy, a build then the whole check, about 3 minutes; then I and J, the same pair for the data visualisation standard. No tag and no push: releasing it stays hv's call.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T10:57:48.134Z",
       "recorded_at": "2026-11-19T09:19:57.979Z"
     },
     {
@@ -5784,6 +5788,14 @@
       "text": "Another estate's design project relayed hv's go through its gc seat (decision 230: a solo seat relays its own go), received by vc by 2026-11-19 10:55Z by date -u. hv's words in gc's session at 10:38Z by that session's record, verbatim: \"Let's localfold+comapct and then continue on the bounce.\" The gc reads them as the go for its wip.md's first TODO, its ST0001/06 (the exemplar's information architecture, key flows and transactional emails: documents and specimens only, no change to the system as shipped, no release in the plan). vc flagged that reading to hv, since the words name no thread. Under decisions 241 and 243 the Desk grants its runs as each is asked, behind Intent's: (1) light, a few one-Chrome CDP drives on scratch pages, a minute or so each; (2) heavy, one devbin-build-check per commit, two or three commits, a few minutes each, one heavy-class slot beside Intent's one. A release stays hv's word.",
       "state": "live",
       "recorded_at": "2026-11-19T10:55:58.379Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 246,
+      "text": "hv's answer to vc's question 1 (the other estate's hour-long route-bank run against Intent's cargo runs, decision 243), given live in that estate's vc's window, received there by 2026-11-19 10:55Z by date -u and relayed to vc by 10:57Z by date -u (that estate's decision 131): \"Run alongside now\", against that vc's recommendation to wait; its option told hv two cargo builds would then share the machine with Intent's P0 fix and slow it. Done by 10:57Z by date -u: 01M7SJQYSZ0ZR7QC19P8K7V8M3 granted into the heavy lane, not cargo (the cargo lane holds one run, intent-cc's ST0095/04 compile runs), at a 1-minute load of 14.88, beside intent-cc's; intent-vc told. While it runs, Intent holds one heavy-class slot and it the other, so another P1 heavy ask is the third and waits for the load under about 14 to 16; an intent-* ask still goes first. Its END names the tree it starts on (its tree moved twice while parked). Question 1 is closed; question 2, intent-vc's minting rule, stands.",
+      "state": "live",
+      "recorded_at": "2026-11-19T10:58:00.148Z"
     }
   ],
   "sent": [

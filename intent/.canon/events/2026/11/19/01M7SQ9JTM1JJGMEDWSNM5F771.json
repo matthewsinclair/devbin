@@ -1,0 +1,15 @@
+{
+  "id": "01M7SQ9JTM1JJGMEDWSNM5F771",
+  "ts": "2026-11-19T10:58:00.148Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's answer to vc's question 1 (the other estate's hour-long route-bank run against Intent's cargo runs, decision 243), given live in that estate's vc's window, received there by 2026-11-19 10:55Z by date -u and relayed to vc by 10:57Z by date -u (that estate's decision 131): \"Run alongside now\", against that vc's recommendation to wait; its option told hv two cargo builds would then share the machine with Intent's P0 fix and slow it. Done by 10:57Z by date -u: 01M7SJQYSZ0ZR7QC19P8K7V8M3 granted into the heavy lane, not cargo (the cargo lane holds one run, intent-cc's ST0095/04 compile runs), at a 1-minute load of 14.88, beside intent-cc's; intent-vc told. While it runs, Intent holds one heavy-class slot and it the other, so another P1 heavy ask is the third and waits for the load under about 14 to 16; an intent-* ask still goes first. Its END names the tree it starts on (its tree moved twice while parked). Question 1 is closed; question 2, intent-vc's minting rule, stands."
+  }
+}
