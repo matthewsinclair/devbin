@@ -5688,6 +5688,14 @@
       "text": "webber-vc relayed two more of hv's orders from its TUI (its decisions 256 and 258), received by vc and recorded at 2026-11-19 06:15Z by date -u (this record is late; its first try was refused at the bound of 40 live decisions): (1) \"Export now; suites first (Recommended)\": webber-ic runs test ui, test ui-ipad and test ui-floor at main's tip while App Store Connect processes build 4378, and Webber's Submit waits for their green. (2) \"Build now, beside it\": the Creator follow-up unit gets one light test mix with its codegen check once its critic chain ends, after the release's slots. The Desk preferred ui and ui-ipad on gyges if ic's gyges kit was current, with all three on rhadamanth one at a time as the fallback (decision 190); ic asked for all three as one simulator run on rhadamanth (01M7S73FMV4J9EMRNM07QJVW5G, at Webber's main bbbd4f62), granted heavy at 06:15Z at load 8.90 with nothing else running.",
       "state": "live",
       "recorded_at": "2026-11-19T06:15:36.124Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 235,
+      "text": "Another estate's design project relayed hv's go through its mediator, its gc seat (a solo team with no vc, which reaches hv directly), received by vc at 2026-11-19 06:25Z by date -u: hv's go, given in gc's own window at about 06:09Z by gc's clock (that project's hv decisions 1 to 3): take its issue 0001 now and release it alone once every gate is green. Under decision 230 the Desk grants its asks: run A, light, one headless Chrome, under a minute, as it comes; run B, heavy, a build then the whole check with up to four headless Chromes, a few minutes, at the next gap between Webber's simulator suites, because its Chromes hang under heavy load; one more light gate re-run only if a gate fails. Its baseline ask 01M7S7G3RN6X2752JVDFZSNZXQ is withdrawn. Its three items for hv go to hv: a push of main and the release tag to its three remotes, one of them its client's; a tooltip accessibility issue for its next release; a one-line Escape fix riding this release.",
+      "state": "live",
+      "recorded_at": "2026-11-19T06:26:00.498Z"
     }
   ],
   "sent": [
