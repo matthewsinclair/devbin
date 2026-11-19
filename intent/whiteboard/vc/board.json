@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "1af87e83-b21b-4501-b0bf-29983ac62e1a",
-    "heartbeat_at": "2026-11-19T05:24:33.404Z",
+    "heartbeat_at": "2026-11-19T05:35:22.920Z",
     "status": "active",
-    "focus": "Desk: grants wait for each vc's relay of hv's go from its own window (decision 230), in decision 210's order. devbin's lean-out is closed (decision 229). Waiting on hv's check-ins with webber-vc (15 items), the other estate's vc (13 plus 3) and AE's vc (9); sinclair-estate silent; the kovacs and gyges sysadm handoffs wait for hv's paste.",
+    "focus": "Desk open: hv's go relayed for the other estate (decision 231), AE (232) and Webber (233); asks granted as they come in decision 210's order, the load read before each. devbin runs nothing today. Waiting: the asks; sinclair-estate silent; the kovacs and gyges sysadm handoffs wait for hv's paste; Intent desk defects for intent-vc (todo 224).",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5300,7 +5300,8 @@
       "kind": "decision",
       "seq": 195,
       "text": "hv in vc's window, read 2026-11-16 16:23Z by date -u, hv's words with one name withheld under directive 14: \"You've got the pen. Four worksrtreams: agentic-enginering-vc, [another estate's team]-vc, laksa-vc, webber-vc. Let's get laksa done first. And then [another estate's team] if there's space. webber and ae can wait for now.\" Done: the Desk re-taken and the hold of decision 193 lifted; Laksa's 0064/0065 run and its two CI fixes granted, Laksa's CI green on 521f3c833 and its records at b2d888c6a, hv deploying, Laksa's shared tree frozen by laksa-vc until it says the deploy is done; the other estate's team's runs granted between Laksa's; Ccusage's 0009 run granted on an idle Desk. agentic-engineering's devvm build-and-stage1 ask 01M7JPYP1KC0G3R0WRVSB2NCQB waits for hv's word. 0361-1 (31f2ddf4) and 0356-1 (373fe10f) landed for 0.1.26; issues 0361 and 0356 closed at 28914894.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T06:15:16.991Z",
       "recorded_at": "2026-11-16T17:41:51.708Z"
     },
     {
@@ -5343,7 +5344,8 @@
       "kind": "decision",
       "seq": 200,
       "text": "hv in vc's window, read 2026-11-17 06:14Z by date -u, hv's words: \"Can you let all Claudes know that the hold is lifted. We're back to normal ops, with you in control of the The Desk, as per ysterday.\" Done 06:14Z: every live session on rhadamanth told by message (Ccusage's four seats, agentic-engineering's three, another estate's five, one estate-level session, and devbin's cc and dc, whose instructions from vc stand). Before it, hv's word relayed by another estate's vc, received there by 06:11Z by date -u through its TUI (\"Yes, tell the Desk\"): that estate may run today, in the order the Desk sets across projects. The order stands on decision 199: Ccusage first, devbin's 0.1.26 kit and cut after Ccusage's 0.1.10 tag, other asks in free lanes, so that estate's cargo asks queue behind ccusage-cc's cargo run. ccusage-ic's swift-test 01M7M1V8XTR6AR9W6DBKPFDWVF ran and ended.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T06:15:17.224Z",
       "recorded_at": "2026-11-17T06:15:17.240Z"
     },
     {
@@ -5351,7 +5353,8 @@
       "kind": "decision",
       "seq": 201,
       "text": "hv in vc's window, read 2026-11-17 06:35Z by date -u, hv's words with one name withheld under directive 14: \"Note on Priorities today. Can we sneak ccusage's work in first, then AE then [another estate's project], please. Webber can wait until later today.\" and \"The ccusage work is small and should not take long.\" hv's TUI answer, the recommendation: devbin's 0.1.26 pre-cut kit runs once Ccusage's 0.1.10 cut has its tag, in the bats lane whenever AE and that estate leave it free; the cut, which holds every heavy lane and kovacs through its CI wait, goes after that estate's heavy work and before Webber. This replaces decision 199's placement of devbin. Today's order on contention: Ccusage, AE, that estate, devbin's cut, then Webber later today. ccusage-cc's cargo-test 01M7M1TTN0ZZ8XEYCZEQGC1DAF granted cargo at load 5.27 (06:35Z).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T06:15:17.440Z",
       "recorded_at": "2026-11-17T06:35:26.289Z"
     },
     {
@@ -5592,7 +5595,8 @@
       "kind": "decision",
       "seq": 225,
       "text": "hv in vc's window, read 2026-11-18 12:09Z by date -u, hv's words: \"I've started up webber-* to continue with the release work.\" Webber is back on the Desk under decisions 190 and 210: its simulator runs on rhadamanth one at a time and booked, its asks granted in free lanes, and devbin, AE and the other estate keep their place ahead of it.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T06:15:17.650Z",
       "recorded_at": "2026-11-18T12:09:25.895Z"
     },
     {
@@ -5600,7 +5604,8 @@
       "kind": "decision",
       "seq": 226,
       "text": "hv in vc's window, after the estate-wide fold and compact, read 2026-11-18 14:46Z by date -u: \"Ok, everyone has folded and compacted. Please let everyone know that they can continue with their respective plans.\" Done by 14:47Z: devbin-cc, devbin-dc, agentic-engineering-vc, webber-vc and the other estate's vc told; each vc relayed to its seats. Then, read by 14:47Z: \"I will be AFK for a while. Crack on as far as you can without me.\" On that word: Webber's 0.1.27 notice (todo 222: sweep commit 4abe1f34 is Webber's to push; release.unread's opt-in) sent to webber-vc; devbin-cc briefed on 0372 as unit 0372-1, built and banked through the Desk, no cut and nothing public (directive 13 batching holds). Reported to hv on return.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T06:15:17.859Z",
       "recorded_at": "2026-11-18T14:48:32.449Z",
       "edited_at": "2026-11-18T14:48:37.164Z"
     },
@@ -5675,6 +5680,14 @@
       "text": "webber-vc relayed hv's go, hv's TUI answers in webber-vc's window just before 2026-11-19 05:33Z by date -u, verbatim: Q1 (ic's check all rerun) \"I just ran all tests for webber (via \"dvb test all\") and it 100% green here locally on rhad. See: tmp/test/LATEST_*.out for results.\" (webber-vc read run 62b7885f from 05:25Z, every .errors empty); Q2 (the uncommitted mix.lock bumps) \"I just bumped it now (and re-ran all the tests). It should be checked in and commited.\" (webber-vc committed it at 58883555); Q3 \"Readings + review checks (Recommended)\"; Q4 \"Upload as is (Recommended)\". Under decision 230 the Desk grants Webber's two asks as they come, behind devbin, AE, Intent and the other estate on contention (decision 210): (1) webber-dc's 1.0 release archive at 61ce5e74, a build, heavy lane, rhadamanth; (2) webber-ic's check all at 58883555, 11 targeted arms (no simulator, no bats), light lane, rhadamanth. Nothing else of Webber's runs today until hv orders it.",
       "state": "live",
       "recorded_at": "2026-11-19T05:35:09.111Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 234,
+      "text": "webber-vc relayed two more of hv's orders from its TUI (its decisions 256 and 258), received by vc and recorded at 2026-11-19 06:15Z by date -u (this record is late; its first try was refused at the bound of 40 live decisions): (1) \"Export now; suites first (Recommended)\": webber-ic runs test ui, test ui-ipad and test ui-floor at main's tip while App Store Connect processes build 4378, and Webber's Submit waits for their green. (2) \"Build now, beside it\": the Creator follow-up unit gets one light test mix with its codegen check once its critic chain ends, after the release's slots. The Desk preferred ui and ui-ipad on gyges if ic's gyges kit was current, with all three on rhadamanth one at a time as the fallback (decision 190); ic asked for all three as one simulator run on rhadamanth (01M7S73FMV4J9EMRNM07QJVW5G, at Webber's main bbbd4f62), granted heavy at 06:15Z at load 8.90 with nothing else running.",
+      "state": "live",
+      "recorded_at": "2026-11-19T06:15:36.124Z"
     }
   ],
   "sent": [

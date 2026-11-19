@@ -1,0 +1,15 @@
+{
+  "id": "01M7S74FXW4ZFQ62HEEYF4D4NH",
+  "ts": "2026-11-19T06:15:36.124Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "webber-vc relayed two more of hv's orders from its TUI (its decisions 256 and 258), received by vc and recorded at 2026-11-19 06:15Z by date -u (this record is late; its first try was refused at the bound of 40 live decisions): (1) \"Export now; suites first (Recommended)\": webber-ic runs test ui, test ui-ipad and test ui-floor at main's tip while App Store Connect processes build 4378, and Webber's Submit waits for their green. (2) \"Build now, beside it\": the Creator follow-up unit gets one light test mix with its codegen check once its critic chain ends, after the release's slots. The Desk preferred ui and ui-ipad on gyges if ic's gyges kit was current, with all three on rhadamanth one at a time as the fallback (decision 190); ic asked for all three as one simulator run on rhadamanth (01M7S73FMV4J9EMRNM07QJVW5G, at Webber's main bbbd4f62), granted heavy at 06:15Z at load 8.90 with nothing else running."
+  }
+}
