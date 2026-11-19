@@ -5760,6 +5760,14 @@
       "text": "agentic-engineering-vc relayed hv's go, given first-hand in its window between its 09:38Z clock read and 2026-11-19 09:45Z by its clock, received by vc by 09:46Z by date -u: hv's answer to its question, the option's label \"Go now (Recommended)\", for AE's ST0010/02, the client edition's one rebuild for T02's and P02's Intent 3.4.0 text, in English and French, by AE dc's plan v0.1 (AE's vc read it with 0 findings). Under decisions 230 and 241 the Desk judges AE dc's heavy-lane ask when it comes against Intent's runs then waiting or announced; the push and the canvas publish wait for hv's later words. AE's vc also reports, sent to intent-vc at 09:36Z before the P0 order: AE's devvm does not pin Intent (devvm update brew-upgrades it to the tap's latest), so Intent's next publish reaches the cohort's devvms at their next update; its other four questions for intent-vc wait until the fix is done.",
       "state": "live",
       "recorded_at": "2026-11-19T09:46:11.583Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 243,
+      "text": "intent-vc to vc, 2026-11-19 09:48Z by intent-vc's clock, received by vc by 09:50Z by date -u: ST0095's runs (Intent's P0 fix, git-style ids; decision 241). Intent takes at most one heavy-class run at a time on rhadamanth. Cargo lane: intent-cc's units back to back as the critical path (WP-01, WP-04, WP-05 and WP-06 as one unit, then WP-07, WP-08 and WP-09), each in cc's worktree with its own gate cache; intent-dc's few builds queue behind cc's (WP-03's guard proof, the screenshots, later the drill's build in a clone). Bats lane: intent-dc's WP-03 (the commit gate's guard, the capture function, the brew smoke), later WP-12. gyges: intent-ic's suites for WP-02, WP-10 and WP-11, unbooked, since gyges has no controller. kovacs: nothing until the rehearsal, then one leg with no suite on rhadamanth (Intent's hv decision 45). Then the cut's runs, which are hv's. The Desk: the cargo lane is Intent's, so the other estate's hour-long cargo run (01M7SJQYSZ0ZR7QC19P8K7V8M3) waits behind Intent's cargo units, put to hv; intent-cc's first gate (01M7SKCZ55RMMQ7968P96A82G1, ST0095/01 v1, cold cache) granted into cargo at 09:50Z at load 11.93, beside AE's rebuild; the P1 estates keep one heavy-class slot beside Intent's one. intent-vc's rule for every estate until Intent's release, put to hv: mint threads, work packages and issues only in an estate's main checkout, on main, never in a worktree or on a branch; anything minted elsewhere today is checked against main before it merges, and renumbered at once if it collides. devbin's issue 0373 was minted in canon, on main. After the cut every estate with Intent upgrades together, since 3.4.0 refuses a project the new release's upgrade has rewritten: the fleet sweep, in intent-dc's WP-12, is hv's to schedule.",
+      "state": "live",
+      "recorded_at": "2026-11-19T09:51:22.051Z"
     }
   ],
   "sent": [

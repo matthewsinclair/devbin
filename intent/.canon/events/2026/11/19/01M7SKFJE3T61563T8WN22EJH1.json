@@ -1,0 +1,15 @@
+{
+  "id": "01M7SKFJE3T61563T8WN22EJH1",
+  "ts": "2026-11-19T09:51:22.051Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "intent-vc to vc, 2026-11-19 09:48Z by intent-vc's clock, received by vc by 09:50Z by date -u: ST0095's runs (Intent's P0 fix, git-style ids; decision 241). Intent takes at most one heavy-class run at a time on rhadamanth. Cargo lane: intent-cc's units back to back as the critical path (WP-01, WP-04, WP-05 and WP-06 as one unit, then WP-07, WP-08 and WP-09), each in cc's worktree with its own gate cache; intent-dc's few builds queue behind cc's (WP-03's guard proof, the screenshots, later the drill's build in a clone). Bats lane: intent-dc's WP-03 (the commit gate's guard, the capture function, the brew smoke), later WP-12. gyges: intent-ic's suites for WP-02, WP-10 and WP-11, unbooked, since gyges has no controller. kovacs: nothing until the rehearsal, then one leg with no suite on rhadamanth (Intent's hv decision 45). Then the cut's runs, which are hv's. The Desk: the cargo lane is Intent's, so the other estate's hour-long cargo run (01M7SJQYSZ0ZR7QC19P8K7V8M3) waits behind Intent's cargo units, put to hv; intent-cc's first gate (01M7SKCZ55RMMQ7968P96A82G1, ST0095/01 v1, cold cache) granted into cargo at 09:50Z at load 11.93, beside AE's rebuild; the P1 estates keep one heavy-class slot beside Intent's one. intent-vc's rule for every estate until Intent's release, put to hv: mint threads, work packages and issues only in an estate's main checkout, on main, never in a worktree or on a branch; anything minted elsewhere today is checked against main before it merges, and renumbered at once if it collides. devbin's issue 0373 was minted in canon, on main. After the cut every estate with Intent upgrades together, since 3.4.0 refuses a project the new release's upgrade has rewritten: the fleet sweep, in intent-dc's WP-12, is hv's to schedule."
+  }
+}
