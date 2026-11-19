@@ -1,0 +1,15 @@
+{
+  "id": "01M7S9CNC9AN98T9HRQE2NMFEN",
+  "ts": "2026-11-19T06:55:01.001Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "agentic-engineering-vc relayed hv's go for AE's devvm 0.5.2, hv's words first-hand in its window (AE's hv decision 109, recorded there 2026-11-19 06:54Z by date -u, received by vc by 06:54Z): \"Go on v0.2 (Recommended)\" for AE's dc's contents list v0.2, and \"Later (Recommended)\" for the packs' move, so 0.5.2 stays update-only with no reinstall. Under decision 230 the Desk grants AE's dc, each when due and after AE's vc has passed the source diff: the arm64 build, the stage 1 test and an update rehearsal on rhadamanth, each naming its lane; the amd64 build and the hosted Windows job run at GitHub with no slot. Every outward step stays hv's word first-hand in AE's dc's window. AE's ST0009 canvas publish (Version 47) went this morning on hv's word in that window."
+  }
+}
