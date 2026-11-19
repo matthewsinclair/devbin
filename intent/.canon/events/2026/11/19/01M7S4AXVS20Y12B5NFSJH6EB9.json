@@ -1,0 +1,15 @@
+{
+  "id": "01M7S4AXVS20Y12B5NFSJH6EB9",
+  "ts": "2026-11-19T05:26:41.273Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "agentic-engineering-vc relayed hv's go, given first-hand in its window after its 05:14Z clock read (AE's hv decision 106, recorded there 2026-11-19 05:25Z by date -u). Under decision 230 the Desk grants AE's asks as they come: (1) the client edition's rebuild for AE's ST0009/02: one local rebuild by AE's dc on rhadamanth, its lane named in the ask; its two outward steps, the learning repository's push and the canvas publish, wait for hv's two words later. (2) The devvm release after 0.5.1 is opened, but only for its contents list: no build is granted until hv's go on that list, relayed by agentic-engineering-vc. (3) AE's push of its main goes now; it takes no lane."
+  }
+}

@@ -5643,6 +5643,30 @@
       "text": "hv's TUI answers in vc's window, read by 2026-11-19 05:24Z by date -u, each the recommendation: (1) DESK START: an estate's runs are granted once its vc relays to devbin-vc hv's go, given in that vc's own window; no word back in vc's window is needed. The order is decision 210's: the other estate's three runs and Webber's release-archive build side by side, and a third heavy-class run held until the load allows. Until its vc's relay, an estate's asks are held. (2) keats is off or away on purpose: the item closes, and its DHCP reservation (192.168.86.168) and Pi-hole name stay for when it comes back.",
       "state": "live",
       "recorded_at": "2026-11-19T05:24:12.859Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 231,
+      "text": "Another estate's vc relayed hv's go, given in its own window and received there by 2026-11-19 05:24Z by date -u (that estate's decision 118): its plan of 19 Nov goes as written. Under decision 230 the Desk grants its asks as they come: one light slot, then one heavy cargo slot (the day's long run), then a short cargo slot, all on rhadamanth. Its first ask is some way off. hv also ruled there on two of its own items, a split of today's change and a fast-forward push to its local remote at the day's end.",
+      "state": "live",
+      "recorded_at": "2026-11-19T05:25:38.452Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 232,
+      "text": "agentic-engineering-vc relayed hv's go, given first-hand in its window after its 05:14Z clock read (AE's hv decision 106, recorded there 2026-11-19 05:25Z by date -u). Under decision 230 the Desk grants AE's asks as they come: (1) the client edition's rebuild for AE's ST0009/02: one local rebuild by AE's dc on rhadamanth, its lane named in the ask; its two outward steps, the learning repository's push and the canvas publish, wait for hv's two words later. (2) The devvm release after 0.5.1 is opened, but only for its contents list: no build is granted until hv's go on that list, relayed by agentic-engineering-vc. (3) AE's push of its main goes now; it takes no lane.",
+      "state": "live",
+      "recorded_at": "2026-11-19T05:26:41.273Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 224,
+      "text": "NOTICE for intent-vc at its next session (no Intent seat is running today): four defects in Intent's estate desk, sent by agentic-engineering-vc on hv's word in its window (AE's hv decision 106 (5)) and checked by vc on Intent 3.4.0 (461e39ba1) by help, source and the Desk's own state: a controller cannot pin a grant (grant's TEXT argument undocumented); control release ignores standing holds and grants (slots.rs:1175); a same-name take drops hv's words (slots.rs:1162; controller.json reads hv null today); a launch brief can end on an empty restart section (AE's seats, today). Fixed by 3.4.0, not passed: the asker's withdraw. Text: ~/Devel/scratch/devbin-vc/20261119/intent-desk-defects.md. Which become Intent issues is Intent's call.",
+      "state": "live",
+      "recorded_at": "2026-11-19T05:27:57.917Z"
     }
   ],
   "sent": [

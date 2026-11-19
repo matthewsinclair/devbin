@@ -1,0 +1,15 @@
+{
+  "id": "01M7S4D8PXVG9TDBCWW55X0W28",
+  "ts": "2026-11-19T05:27:57.918Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "NOTICE for intent-vc at its next session (no Intent seat is running today): four defects in Intent's estate desk, sent by agentic-engineering-vc on hv's word in its window (AE's hv decision 106 (5)) and checked by vc on Intent 3.4.0 (461e39ba1) by help, source and the Desk's own state: a controller cannot pin a grant (grant's TEXT argument undocumented); control release ignores standing holds and grants (slots.rs:1175); a same-name take drops hv's words (slots.rs:1162; controller.json reads hv null today); a launch brief can end on an empty restart section (AE's seats, today). Fixed by 3.4.0, not passed: the asker's withdraw. Text: ~/Devel/scratch/devbin-vc/20261119/intent-desk-defects.md. Which become Intent issues is Intent's call."
+  }
+}

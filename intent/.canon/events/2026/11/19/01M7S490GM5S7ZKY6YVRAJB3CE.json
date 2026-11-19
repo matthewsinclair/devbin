@@ -1,0 +1,15 @@
+{
+  "id": "01M7S490GM5S7ZKY6YVRAJB3CE",
+  "ts": "2026-11-19T05:25:38.452Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Another estate's vc relayed hv's go, given in its own window and received there by 2026-11-19 05:24Z by date -u (that estate's decision 118): its plan of 19 Nov goes as written. Under decision 230 the Desk grants its asks as they come: one light slot, then one heavy cargo slot (the day's long run), then a short cargo slot, all on rhadamanth. Its first ask is some way off. hv also ruled there on two of its own items, a split of today's change and a fast-forward push to its local remote at the day's end."
+  }
+}
