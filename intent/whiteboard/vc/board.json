@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "1af87e83-b21b-4501-b0bf-29983ac62e1a",
-    "heartbeat_at": "2026-11-19T09:42:37.039Z",
+    "heartbeat_at": "2026-11-19T12:26:50.186Z",
     "status": "active",
-    "focus": "2026-11-19 09:42Z by date -u: Intent is P0 for its numbering fix (decision 241); the Desk grants intent-* first and holds the other estate's hour-long cargo run until intent-vc says what the fix needs; devbin's cc and dc hold; no run open. Still to come: the design project's Runs I and J. Todos 213, 215, 222, 223, 224 stand; globalfold at day's end.",
+    "focus": "2026-11-19 12:26Z by date -u: localfolded for hv's close at 17:00 local, 13:00Z; not released. The Desk: nothing open or queued at the 12:30Z cutoff; vc keeps it (decision 153). Every Claude on rhadamanth folded for hv's compact but sinclair-estate, which never answered; devbin's cc and dc folded with nothing open; intent/wip.md globalfolded. For hv: question 2 (decision 243, intent-vc's minting rule) and Intent 3.5's fleet upgrade, its tap held (244). On the bounce: Intent's P0 (241, 243: dc's 0711 gate, ic's WP-10a log); AE's ST0012/02 runs on hv's go; the other estate's stamp build. Todos 213, 215, 222, 223, 224 stand.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5684,7 +5684,8 @@
       "kind": "decision",
       "seq": 233,
       "text": "webber-vc relayed hv's go, hv's TUI answers in webber-vc's window just before 2026-11-19 05:33Z by date -u, verbatim: Q1 (ic's check all rerun) \"I just ran all tests for webber (via \"dvb test all\") and it 100% green here locally on rhad. See: tmp/test/LATEST_*.out for results.\" (webber-vc read run 62b7885f from 05:25Z, every .errors empty); Q2 (the uncommitted mix.lock bumps) \"I just bumped it now (and re-ran all the tests). It should be checked in and commited.\" (webber-vc committed it at 58883555); Q3 \"Readings + review checks (Recommended)\"; Q4 \"Upload as is (Recommended)\". Under decision 230 the Desk grants Webber's two asks as they come, behind devbin, AE, Intent and the other estate on contention (decision 210): (1) webber-dc's 1.0 release archive at 61ce5e74, a build, heavy lane, rhadamanth; (2) webber-ic's check all at 58883555, 11 targeted arms (no simulator, no bats), light lane, rhadamanth. Nothing else of Webber's runs today until hv orders it.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T12:26:37.560Z",
       "recorded_at": "2026-11-19T05:35:09.111Z"
     },
     {
@@ -5762,7 +5763,8 @@
       "kind": "decision",
       "seq": 242,
       "text": "agentic-engineering-vc relayed hv's go, given first-hand in its window between its 09:38Z clock read and 2026-11-19 09:45Z by its clock, received by vc by 09:46Z by date -u: hv's answer to its question, the option's label \"Go now (Recommended)\", for AE's ST0010/02, the client edition's one rebuild for T02's and P02's Intent 3.4.0 text, in English and French, by AE dc's plan v0.1 (AE's vc read it with 0 findings). Under decisions 230 and 241 the Desk judges AE dc's heavy-lane ask when it comes against Intent's runs then waiting or announced; the push and the canvas publish wait for hv's later words. AE's vc also reports, sent to intent-vc at 09:36Z before the P0 order: AE's devvm does not pin Intent (devvm update brew-upgrades it to the tap's latest), so Intent's next publish reaches the cohort's devvms at their next update; its other four questions for intent-vc wait until the fix is done.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T12:26:37.776Z",
       "recorded_at": "2026-11-19T09:46:11.583Z"
     },
     {
@@ -5786,7 +5788,8 @@
       "kind": "decision",
       "seq": 245,
       "text": "Another estate's design project relayed hv's go through its gc seat (decision 230: a solo seat relays its own go), received by vc by 2026-11-19 10:55Z by date -u. hv's words in gc's session at 10:38Z by that session's record, verbatim: \"Let's localfold+comapct and then continue on the bounce.\" The gc reads them as the go for its wip.md's first TODO, its ST0001/06 (the exemplar's information architecture, key flows and transactional emails: documents and specimens only, no change to the system as shipped, no release in the plan). vc flagged that reading to hv, since the words name no thread. Under decisions 241 and 243 the Desk grants its runs as each is asked, behind Intent's: (1) light, a few one-Chrome CDP drives on scratch pages, a minute or so each; (2) heavy, one devbin-build-check per commit, two or three commits, a few minutes each, one heavy-class slot beside Intent's one. A release stays hv's word.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T12:26:37.977Z",
       "recorded_at": "2026-11-19T10:55:58.379Z"
     },
     {
@@ -5794,7 +5797,8 @@
       "kind": "decision",
       "seq": 246,
       "text": "hv's answer to vc's question 1 (the other estate's hour-long route-bank run against Intent's cargo runs, decision 243), given live in that estate's vc's window, received there by 2026-11-19 10:55Z by date -u and relayed to vc by 10:57Z by date -u (that estate's decision 131): \"Run alongside now\", against that vc's recommendation to wait; its option told hv two cargo builds would then share the machine with Intent's P0 fix and slow it. Done by 10:57Z by date -u: 01M7SJQYSZ0ZR7QC19P8K7V8M3 granted into the heavy lane, not cargo (the cargo lane holds one run, intent-cc's ST0095/04 compile runs), at a 1-minute load of 14.88, beside intent-cc's; intent-vc told. While it runs, Intent holds one heavy-class slot and it the other, so another P1 heavy ask is the third and waits for the load under about 14 to 16; an intent-* ask still goes first. Its END names the tree it starts on (its tree moved twice while parked). Question 1 is closed; question 2, intent-vc's minting rule, stands.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T12:26:38.177Z",
       "recorded_at": "2026-11-19T10:58:00.148Z"
     },
     {
@@ -5802,7 +5806,8 @@
       "kind": "decision",
       "seq": 247,
       "text": "agentic-engineering-vc relayed hv's go for two AE runs, given first-hand in its question dialog between its 11:34Z clock read and 2026-11-19 11:36Z, received by vc by 11:36Z by date -u, the option's label \"Prove it now (Recommended)\", on its question whether to prove the devvm Windows job's fixes now or only in the Intent 3.5 release's run: (1) the parse of devvm 0.5.2's hosted job script (.github/windows.ps1) with PowerShell 7 in a container on the Mac, about 2 minutes, at the commit the GitHub send goes from; (2) one arm64 build of devvm 0.5.2 at that commit on the Mac, the build only (no stage 1 test, no rehearsal), about 20 minutes, heavy, behind Intent's P0, into a new out dir. Under decision 232 (2) no devvm build was granted until this go. For the record: vc granted (1)'s parse ask (01M7SS8ZASM9GTXWJ7QJYG18BT) at 11:33Z, before this go, reading 232 (2) as holding builds only; it ran green from 11:34:20Z to 11:34:45Z with 0 parse errors. If dc's settling of the job's time limits changes windows.ps1, the parse runs again under this go. The Desk grants (2) when asked, behind Intent's asks and as the one P1 heavy-class run beside Intent's. The GitHub send is hv's word in AE dc's window.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T12:26:38.388Z",
       "recorded_at": "2026-11-19T11:36:52.992Z"
     },
     {
@@ -5810,7 +5815,8 @@
       "kind": "decision",
       "seq": 248,
       "text": "Another estate's design project relayed hv's go through its gc seat, received by vc by 2026-11-19 11:42Z by date -u: hv's answer in the question dialog in gc's session at about 11:40Z by gc's account, the option's label \"Release 0.0.8 (Recommended)\", the option reading, with one remote's name withheld under directive 14: VERSION 0.0.8, a Desk build-check, tag 0.0.8, push main and the tag to local, upstream and a third remote. In the same answer hv closed its ST0001. The Desk grants Run D (01M7SSTTB2V1BF4AYYRA9P31BD), heavy, one devbin-build-check at tip 37a00ee with VERSION 0.0.8, a few minutes; tagging and pushing take no slot. Run D and the other estate's route-bank rerun (01M7SSREKMX3MG2MNYEDN23XGD, 20 to 30 minutes, asked first) both wait for AE's devvm build's END, since the P1 estates share one heavy-class slot beside Intent's one; the Desk takes them shortest-first under decision 241, Run D and then the rerun, and the rerun's cc is told.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T12:26:38.579Z",
       "recorded_at": "2026-11-19T11:42:54.464Z"
     }
   ],
