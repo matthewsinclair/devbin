@@ -1,0 +1,15 @@
+{
+  "id": "01M7SMDCFD94K4KS9RAJMCQGVG",
+  "ts": "2026-11-19T10:07:38.989Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in agentic-engineering-vc's window, in its question dialog, relayed by AE's vc at 2026-11-19 10:07Z by its clock and received by vc by 10:07Z by date -u, the option's label \"Hold the tap for AE (Recommended)\": Intent's brew tap holds 3.5 until hv's word, given once AE's devvm 0.5.3 and its course change are ready. AE's vc sent it straight to intent-vc at 10:07Z, since it bears on Intent's release (decision 243: after the cut, every estate with Intent upgrades together, intent-dc's WP-12, hv's to schedule). A need for later, through vc: when a 3.5 build exists, how AE installs it without the tap; directive 15 (dev, opt, brew) is the standing ruling to read before it goes to hv. AE ST0010/02's runs ended green at the Desk; AE's dc landed one local commit, and its push waits for hv's word."
+  }
+}
