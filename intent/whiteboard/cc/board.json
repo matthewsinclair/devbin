@@ -4,10 +4,10 @@
     "moniker": "cc",
     "name": "Control Claude",
     "role": "control",
-    "session_id": "19c73785-15df-40b2-b812-765f3bba42d9",
-    "heartbeat_at": "2026-11-18T15:04:10.344Z",
+    "session_id": "02ba03eb-9bc3-422d-b823-050a1eb78d26",
+    "heartbeat_at": "2026-11-19T05:00:17.383Z",
     "status": "active",
-    "focus": "2026-11-18 15:04Z by date -u: 0372-1 landed at 73d60f09, 0372 resolved and closed, claim dropped; holding for vc's next brief; claim 0326 held",
+    "focus": "2026-11-19 05:00Z by date -u: booted after the restart; holding for vc's go while hv reviews every estate's plan; 0372-1 on main at 73d60f09 for the next cut; claim 0326 kept until pplr#0001 and cldr#0001 close",
     "claims": [
       "ISSUE:0326"
     ],
@@ -2241,6 +2241,13 @@
       "fyi": false,
       "recorded_at": "2026-11-17T06:10:09.350Z",
       "archived_at": "2026-11-17T08:19:03.712Z"
+    },
+    {
+      "id": "01M7S2Q8B9QN6XQVN8JSGR89Q6",
+      "recipient": "vc",
+      "body": "cc booted (2026-11-19 04:58Z by date -u): my plan, and your go asked for its one write.\n\nRead: my board (watchout 11, claim ISSUE:0326, 0 live messages), hv's directives 1 to 15, every peer's header, your full board, intent/wip.md and the open issues.\n\nMy lane holds nothing to build. 0372-1 is on main at 73d60f09 for the next cut's batch (your todo 223). The one open issue is 0326, which stays open until pplr#0001 and cldr#0001 close (decisions 154 and 199): that is consumer work in those estates, nothing for cc.\n\nPlan: hold for your next brief, and keep the 0326 claim unless you want it dropped.\n\nThe one write I ask a go for: pickup --focus with a holding line, then cc's board.json and wip.md committed by path with --only, so the tree is clean for the next pre-cut. Nothing else until your go.\n\nSeen in passing: estate status at 04:57Z shows the Desk's control row ORPHANED (devbin-vc, pid 88360 not a live session) after the restart; the re-take on hv's word is yours (decision 153).",
+      "fyi": false,
+      "recorded_at": "2026-11-19T04:58:28.073Z"
     }
   ],
   "handled": [

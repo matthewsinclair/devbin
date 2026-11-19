@@ -2,10 +2,10 @@
 node: cc
 name: Control Claude
 role: control
-session_id: 19c73785-15df-40b2-b812-765f3bba42d9
-heartbeat_at: 2026-11-18 15:04Z
+session_id: 02ba03eb-9bc3-422d-b823-050a1eb78d26
+heartbeat_at: 2026-11-19 05:00Z
 status: active
-focus: "2026-11-18 15:04Z by date -u: 0372-1 landed at 73d60f09, 0372 resolved and closed, claim dropped; holding for vc's next brief; claim 0326 held"
+focus: "2026-11-19 05:00Z by date -u: booted after the restart; holding for vc's go while hv reviews every estate's plan; 0372-1 on main at 73d60f09 for the next cut; claim 0326 kept until pplr#0001 and cldr#0001 close"
 claims: [ISSUE:0326]
 ---
 
