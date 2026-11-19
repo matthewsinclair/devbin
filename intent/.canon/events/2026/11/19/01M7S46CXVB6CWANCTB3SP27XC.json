@@ -1,0 +1,15 @@
+{
+  "id": "01M7S46CXVB6CWANCTB3SP27XC",
+  "ts": "2026-11-19T05:24:12.859Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's TUI answers in vc's window, read by 2026-11-19 05:24Z by date -u, each the recommendation: (1) DESK START: an estate's runs are granted once its vc relays to devbin-vc hv's go, given in that vc's own window; no word back in vc's window is needed. The order is decision 210's: the other estate's three runs and Webber's release-archive build side by side, and a third heavy-class run held until the load allows. Until its vc's relay, an estate's asks are held. (2) keats is off or away on purpose: the item closes, and its DHCP reservation (192.168.86.168) and Pi-hole name stay for when it comes back."
+  }
+}

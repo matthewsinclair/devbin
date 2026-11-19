@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "1af87e83-b21b-4501-b0bf-29983ac62e1a",
-    "heartbeat_at": "2026-11-19T05:00:13.773Z",
+    "heartbeat_at": "2026-11-19T05:24:33.404Z",
     "status": "active",
-    "focus": "Desk re-taken 04:58Z on hv's word (decision 227). Every live estate holds while vc gathers today's plans for hv's review; nothing granted until hv approves. Next cut's batch holds 0372-1 (todo 223).",
+    "focus": "Desk: grants wait for each vc's relay of hv's go from its own window (decision 230), in decision 210's order. devbin's lean-out is closed (decision 229). Waiting on hv's check-ins with webber-vc (15 items), the other estate's vc (13 plus 3) and AE's vc (9); sinclair-estate silent; the kovacs and gyges sysadm handoffs wait for hv's paste.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5021,10 +5021,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 213,
-      "text": "HV'S LIST (as of 2026-11-19 05:19Z by date -u, decision 229): (e) the no-vendor mode (decision 64) and --ivault (hold 2) stay parked until hv schedules them; (g) with the sysadms: kovacs's GNOME re-login check and its share of the five subagents (kovacs-sysadm, message queued), gyges's share (gyges-sysadm, not reachable from vc; both texts in ~/Devel/scratch/devbin-vc/20261119/sysadm-handoffs.md); hv's own: where keats is now (192.168.86.168 is its deliberate reservation, nothing answering since about 1 Nov, per rhadamanth-sysadm). Everything else on the list is done or ruled.",
+      "text": "HV'S LIST (as of 2026-11-19 05:24Z by date -u, decisions 229 and 230): (e) the no-vendor mode (decision 64) and --ivault (hold 2) stay parked until hv schedules them. With the sysadms, not hv's: kovacs's GNOME re-login check and its share of the five subagents (kovacs-sysadm, message queued), and gyges's share (gyges-sysadm, not reachable from vc); both texts are in ~/Devel/scratch/devbin-vc/20261119/sysadm-handoffs.md for hv to paste. keats is closed (decision 230). Everything else on the list is done or ruled.",
       "state": "live",
       "recorded_at": "2026-11-13T18:14:30.327Z",
-      "edited_at": "2026-11-19T05:19:44.000Z"
+      "edited_at": "2026-11-19T05:24:33.131Z"
     },
     {
       "node": "vc",
@@ -5635,6 +5635,14 @@
       "text": "hv's TUI answers in vc's window to devbin's ten lean-out items (decision 228), read by 2026-11-19 05:18Z by date -u, 1 to 8 each the recommendation: (1) hv todo 27 (owner-run deploy-build proofs) archived; (2) hv todo 36 (Prolix's ST0028) archived here and carried to prolix-vc as a notice (todo 215); (3) hv todo 37 (log: lines) filed as issue 0373 and archived; (4) hv todo 38 (Baize's db reset) archived here and carried to Baize's vc as a notice (todo 215); (5) hv todo 40: devbin declares no formatters, closed on dc's corrected record (Markdown is ungated on purpose under ST0001's AC-15.6, and check format does not cover it either); (6) hv todo 41 archived, ST0006 stays in triage until hv sets it; (7) hv todo 42 (0.1.6 residue) archived as overtaken; (8) the no-vendor mode and --ivault stay parked. (9) hv's words: \"All of the {rhadamanth,kovacs,gyges}-sysadm Claudes are running now.\" So the host checks went to the sysadms first: rhadamanth-sysadm read 192.168.86.168 as keats's deliberate reservation with nothing answering since about 1 Nov, so where keats is now is hv's; kovacs's GNOME re-login (systemd user PATH and molt doctor's env) went to kovacs-sysadm. (10) hv's words: \"{rhadmanath,gyges,kovacs}-sysadm Claudes are running now. Please hand this off to them to fix.\" The five unrecorded or orphaned subagents went to kovacs-sysadm and gyges-sysadm to fix. kovacs-sysadm's message is queued (its Remote Control is offline) and gyges-sysadm is not reachable from vc, so both texts are in ~/Devel/scratch/devbin-vc/20261119/sysadm-handoffs.md for hv to paste.",
       "state": "live",
       "recorded_at": "2026-11-19T05:19:30.433Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 230,
+      "text": "hv's TUI answers in vc's window, read by 2026-11-19 05:24Z by date -u, each the recommendation: (1) DESK START: an estate's runs are granted once its vc relays to devbin-vc hv's go, given in that vc's own window; no word back in vc's window is needed. The order is decision 210's: the other estate's three runs and Webber's release-archive build side by side, and a third heavy-class run held until the load allows. Until its vc's relay, an estate's asks are held. (2) keats is off or away on purpose: the item closes, and its DHCP reservation (192.168.86.168) and Pi-hole name stay for when it comes back.",
+      "state": "live",
+      "recorded_at": "2026-11-19T05:24:12.859Z"
     }
   ],
   "sent": [
