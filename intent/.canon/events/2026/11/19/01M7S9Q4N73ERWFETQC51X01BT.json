@@ -1,0 +1,15 @@
+{
+  "id": "01M7S9Q4N73ERWFETQC51X01BT",
+  "ts": "2026-11-19T07:00:44.327Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Another estate's design project's mediator (its gc seat) relayed hv's live word in its own window at about 06:58Z by gc's clock, received by vc by 2026-11-19 07:00Z by date -u, hv's words: \"Push. And just fix it now. Why wait?\" So its release from decision 235 is pushed to its remotes (no slot), its one-line Escape fix stays as shipped, and its tooltip accessibility fix is made now as its issue 0002, for its next release. Under decision 230 the Desk grants it two more runs on rhadamanth: run C, light, one headless Chrome, under a minute, as it comes; run D, heavy, a build then the whole check, a few minutes, in a gap between Webber's simulator suites if it asks before ui's END, otherwise after ui-ipad's END, because its Chromes hang under heavy load."
+  }
+}
