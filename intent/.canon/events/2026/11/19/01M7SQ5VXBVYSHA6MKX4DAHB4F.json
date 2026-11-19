@@ -1,0 +1,15 @@
+{
+  "id": "01M7SQ5VXBVYSHA6MKX4DAHB4F",
+  "ts": "2026-11-19T10:55:58.379Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Another estate's design project relayed hv's go through its gc seat (decision 230: a solo seat relays its own go), received by vc by 2026-11-19 10:55Z by date -u. hv's words in gc's session at 10:38Z by that session's record, verbatim: \"Let's localfold+comapct and then continue on the bounce.\" The gc reads them as the go for its wip.md's first TODO, its ST0001/06 (the exemplar's information architecture, key flows and transactional emails: documents and specimens only, no change to the system as shipped, no release in the plan). vc flagged that reading to hv, since the words name no thread. Under decisions 241 and 243 the Desk grants its runs as each is asked, behind Intent's: (1) light, a few one-Chrome CDP drives on scratch pages, a minute or so each; (2) heavy, one devbin-build-check per commit, two or three commits, a few minutes each, one heavy-class slot beside Intent's one. A release stays hv's word."
+  }
+}
