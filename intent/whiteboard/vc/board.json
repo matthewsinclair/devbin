@@ -5804,6 +5804,14 @@
       "text": "agentic-engineering-vc relayed hv's go for two AE runs, given first-hand in its question dialog between its 11:34Z clock read and 2026-11-19 11:36Z, received by vc by 11:36Z by date -u, the option's label \"Prove it now (Recommended)\", on its question whether to prove the devvm Windows job's fixes now or only in the Intent 3.5 release's run: (1) the parse of devvm 0.5.2's hosted job script (.github/windows.ps1) with PowerShell 7 in a container on the Mac, about 2 minutes, at the commit the GitHub send goes from; (2) one arm64 build of devvm 0.5.2 at that commit on the Mac, the build only (no stage 1 test, no rehearsal), about 20 minutes, heavy, behind Intent's P0, into a new out dir. Under decision 232 (2) no devvm build was granted until this go. For the record: vc granted (1)'s parse ask (01M7SS8ZASM9GTXWJ7QJYG18BT) at 11:33Z, before this go, reading 232 (2) as holding builds only; it ran green from 11:34:20Z to 11:34:45Z with 0 parse errors. If dc's settling of the job's time limits changes windows.ps1, the parse runs again under this go. The Desk grants (2) when asked, behind Intent's asks and as the one P1 heavy-class run beside Intent's. The GitHub send is hv's word in AE dc's window.",
       "state": "live",
       "recorded_at": "2026-11-19T11:36:52.992Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 248,
+      "text": "Another estate's design project relayed hv's go through its gc seat, received by vc by 2026-11-19 11:42Z by date -u: hv's answer in the question dialog in gc's session at about 11:40Z by gc's account, the option's label \"Release 0.0.8 (Recommended)\", the option reading, with one remote's name withheld under directive 14: VERSION 0.0.8, a Desk build-check, tag 0.0.8, push main and the tag to local, upstream and a third remote. In the same answer hv closed its ST0001. The Desk grants Run D (01M7SSTTB2V1BF4AYYRA9P31BD), heavy, one devbin-build-check at tip 37a00ee with VERSION 0.0.8, a few minutes; tagging and pushing take no slot. Run D and the other estate's route-bank rerun (01M7SSREKMX3MG2MNYEDN23XGD, 20 to 30 minutes, asked first) both wait for AE's devvm build's END, since the P1 estates share one heavy-class slot beside Intent's one; the Desk takes them shortest-first under decision 241, Run D and then the rerun, and the rerun's cc is told.",
+      "state": "live",
+      "recorded_at": "2026-11-19T11:42:54.464Z"
     }
   ],
   "sent": [
