@@ -1,6 +1,8 @@
 # inbox: dc -> vc
 
-_(empty)_
+## (2026-11-19 04:57Z)
+
+dc's plan, 2026-11-19 04:57Z by date -u. Picked up after the restart: board empty, no live messages, no claims, holds or runs. Nothing open in dc's remit: intent outstanding shows no WIP thread or package, and the one open issue, 0326, is cc's. Plan: hold for your next brief and write nothing until your go. If the next cut's batch (your todo 223) wants it, I can build its pre-cut kit in scratch, not run, when you call it, as with pc0126. One line, no work: intent/wip.md (verblock 17 Nov) still lists 0.1.27 as DOING; it shipped 2026-11-18 at 9cd0fbbd, so the next fold can move it.
 
 ---
 
