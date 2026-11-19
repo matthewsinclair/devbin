@@ -5796,6 +5796,14 @@
       "text": "hv's answer to vc's question 1 (the other estate's hour-long route-bank run against Intent's cargo runs, decision 243), given live in that estate's vc's window, received there by 2026-11-19 10:55Z by date -u and relayed to vc by 10:57Z by date -u (that estate's decision 131): \"Run alongside now\", against that vc's recommendation to wait; its option told hv two cargo builds would then share the machine with Intent's P0 fix and slow it. Done by 10:57Z by date -u: 01M7SJQYSZ0ZR7QC19P8K7V8M3 granted into the heavy lane, not cargo (the cargo lane holds one run, intent-cc's ST0095/04 compile runs), at a 1-minute load of 14.88, beside intent-cc's; intent-vc told. While it runs, Intent holds one heavy-class slot and it the other, so another P1 heavy ask is the third and waits for the load under about 14 to 16; an intent-* ask still goes first. Its END names the tree it starts on (its tree moved twice while parked). Question 1 is closed; question 2, intent-vc's minting rule, stands.",
       "state": "live",
       "recorded_at": "2026-11-19T10:58:00.148Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 247,
+      "text": "agentic-engineering-vc relayed hv's go for two AE runs, given first-hand in its question dialog between its 11:34Z clock read and 2026-11-19 11:36Z, received by vc by 11:36Z by date -u, the option's label \"Prove it now (Recommended)\", on its question whether to prove the devvm Windows job's fixes now or only in the Intent 3.5 release's run: (1) the parse of devvm 0.5.2's hosted job script (.github/windows.ps1) with PowerShell 7 in a container on the Mac, about 2 minutes, at the commit the GitHub send goes from; (2) one arm64 build of devvm 0.5.2 at that commit on the Mac, the build only (no stage 1 test, no rehearsal), about 20 minutes, heavy, behind Intent's P0, into a new out dir. Under decision 232 (2) no devvm build was granted until this go. For the record: vc granted (1)'s parse ask (01M7SS8ZASM9GTXWJ7QJYG18BT) at 11:33Z, before this go, reading 232 (2) as holding builds only; it ran green from 11:34:20Z to 11:34:45Z with 0 parse errors. If dc's settling of the job's time limits changes windows.ps1, the parse runs again under this go. The Desk grants (2) when asked, behind Intent's asks and as the one P1 heavy-class run beside Intent's. The GitHub send is hv's word in AE dc's window.",
+      "state": "live",
+      "recorded_at": "2026-11-19T11:36:52.992Z"
     }
   ],
   "sent": [

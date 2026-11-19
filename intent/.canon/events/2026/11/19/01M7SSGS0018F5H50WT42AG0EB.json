@@ -1,0 +1,15 @@
+{
+  "id": "01M7SSGS0018F5H50WT42AG0EB",
+  "ts": "2026-11-19T11:36:52.992Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "agentic-engineering-vc relayed hv's go for two AE runs, given first-hand in its question dialog between its 11:34Z clock read and 2026-11-19 11:36Z, received by vc by 11:36Z by date -u, the option's label \"Prove it now (Recommended)\", on its question whether to prove the devvm Windows job's fixes now or only in the Intent 3.5 release's run: (1) the parse of devvm 0.5.2's hosted job script (.github/windows.ps1) with PowerShell 7 in a container on the Mac, about 2 minutes, at the commit the GitHub send goes from; (2) one arm64 build of devvm 0.5.2 at that commit on the Mac, the build only (no stage 1 test, no rehearsal), about 20 minutes, heavy, behind Intent's P0, into a new out dir. Under decision 232 (2) no devvm build was granted until this go. For the record: vc granted (1)'s parse ask (01M7SS8ZASM9GTXWJ7QJYG18BT) at 11:33Z, before this go, reading 232 (2) as holding builds only; it ran green from 11:34:20Z to 11:34:45Z with 0 parse errors. If dc's settling of the job's time limits changes windows.ps1, the parse runs again under this go. The Desk grants (2) when asked, behind Intent's asks and as the one P1 heavy-class run beside Intent's. The GitHub send is hv's word in AE dc's window."
+  }
+}
