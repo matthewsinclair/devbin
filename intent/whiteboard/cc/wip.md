@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 02ba03eb-9bc3-422d-b823-050a1eb78d26
-heartbeat_at: 2026-11-19 09:18Z
+heartbeat_at: 2026-11-19 12:09Z
 status: active
-focus: "2026-11-19 09:18Z by date -u: localfold for hv's compact; nothing banked, since nothing is uncommitted; holding for vc's next brief; 0372-1 on main at 73d60f09 for the next cut; claim 0326 kept until pplr#0001 and cldr#0001 close"
+focus: "2026-11-19 12:09Z by date -u: localfold before hv's compact; holding with nothing open, Intent at P0 and devbin at P1 with no run today; 0372-1 on main at 73d60f09 for the next cut; claim 0326 kept until pplr#0001 and cldr#0001 close"
 claims: [ISSUE:0326]
 ---
 
