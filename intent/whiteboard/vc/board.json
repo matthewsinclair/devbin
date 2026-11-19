@@ -5622,7 +5622,8 @@
       "kind": "decision",
       "seq": 227,
       "text": "hv in vc's window, read by 2026-11-19 04:58Z by date -u, hv's words: \"Ok, devbin-vc has The Desk. Please corral all Claudes across all projects and get them ready for today's work. Do start anything just yet, I want to review the plans first.\" (read as don't start: the plans come first). Done by 04:59Z: control re-taken (same-name take from the restart's ORPHANED row), desk waiter armed, and every live session told to hold by message (devbin's cc and dc, agentic-engineering's three, another estate's five, both estate-level sessions); each estate's vc gathers its seats' plans for devbin-vc, which puts them to hv together. No Desk ask is granted until hv approves the plans. Offline and not reached: Webber, Intent, Ccusage, Laksa, Molt, Utilz and kovacs-sysadm.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T08:43:04.849Z",
       "recorded_at": "2026-11-19T05:00:09.511Z"
     },
     {
@@ -5630,7 +5631,8 @@
       "kind": "decision",
       "seq": 228,
       "text": "hv in vc's window, read by 2026-11-19 05:03Z by date -u, hv's words: \"Can  you call relay to all Claudes (note webber-* is up now, too) to lean out any HV inbox/whiteboard items, and either clear them out, resolve them, or sync them with their local VC for synthesis and review with me. I will check in with each VC to close them out as necessary.\" Relayed by 05:05Z to all 17 live peers: each vc (agentic-engineering, Webber, another estate) leans out its estate's hv items and holds one synthesised list for hv's check-in in its own window, sending devbin-vc a one-line ready; each seat clears, resolves or gives its items to its vc; the two estate-level sessions report to devbin-vc. Webber, up since about 05:00Z, also got decision 227's hold and the ask for its plan. Board work only: decision 227's run hold stands. devbin's own list is vc's: hv's board todos 27, 36, 37, 38, 40, 41 and 42, and vc's hold 2 and todo 213; dc reads todo 40 as board work.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-19T08:43:05.155Z",
       "recorded_at": "2026-11-19T05:06:20.544Z"
     },
     {
@@ -5712,6 +5714,14 @@
       "text": "Another estate's design project's mediator (its gc seat) relayed hv's live word in its own window at about 06:58Z by gc's clock, received by vc by 2026-11-19 07:00Z by date -u, hv's words: \"Push. And just fix it now. Why wait?\" So its release from decision 235 is pushed to its remotes (no slot), its one-line Escape fix stays as shipped, and its tooltip accessibility fix is made now as its issue 0002, for its next release. Under decision 230 the Desk grants it two more runs on rhadamanth: run C, light, one headless Chrome, under a minute, as it comes; run D, heavy, a build then the whole check, a few minutes, in a gap between Webber's simulator suites if it asks before ui's END, otherwise after ui-ipad's END, because its Chromes hang under heavy load.",
       "state": "live",
       "recorded_at": "2026-11-19T07:00:44.327Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 238,
+      "text": "Another estate's vc, received by vc by 2026-11-19 08:42Z by date -u: the Desk takes that estate's asks as within hv's go for its plan (decision 231) unless its vc says otherwise; one held ask (its ic's light editor pass) was confirmed and granted at 08:42Z. Still to come from it today: light slots for its cc's reading and measuring, with no build, and one heavy cargo run once two more banks are built. Its day so far: its bank H and the answers bank landed after four cargo runs (the last green, nothing red) and a clean-packages build.",
+      "state": "live",
+      "recorded_at": "2026-11-19T08:43:09.088Z"
     }
   ],
   "sent": [

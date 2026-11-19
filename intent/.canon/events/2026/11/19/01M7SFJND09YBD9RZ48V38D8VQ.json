@@ -1,0 +1,15 @@
+{
+  "id": "01M7SFJND09YBD9RZ48V38D8VQ",
+  "ts": "2026-11-19T08:43:09.088Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Another estate's vc, received by vc by 2026-11-19 08:42Z by date -u: the Desk takes that estate's asks as within hv's go for its plan (decision 231) unless its vc says otherwise; one held ask (its ic's light editor pass) was confirmed and granted at 08:42Z. Still to come from it today: light slots for its cc's reading and measuring, with no build, and one heavy cargo run once two more banks are built. Its day so far: its bank H and the answers bank landed after four cargo runs (the last green, nothing red) and a clean-packages build."
+  }
+}
