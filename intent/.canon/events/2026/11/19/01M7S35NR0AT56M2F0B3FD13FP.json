@@ -1,0 +1,15 @@
+{
+  "id": "01M7S35NR0AT56M2F0B3FD13FP",
+  "ts": "2026-11-19T05:06:20.544Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-19 05:03Z by date -u, hv's words: \"Can  you call relay to all Claudes (note webber-* is up now, too) to lean out any HV inbox/whiteboard items, and either clear them out, resolve them, or sync them with their local VC for synthesis and review with me. I will check in with each VC to close them out as necessary.\" Relayed by 05:05Z to all 17 live peers: each vc (agentic-engineering, Webber, another estate) leans out its estate's hv items and holds one synthesised list for hv's check-in in its own window, sending devbin-vc a one-line ready; each seat clears, resolves or gives its items to its vc; the two estate-level sessions report to devbin-vc. Webber, up since about 05:00Z, also got decision 227's hold and the ask for its plan. Board work only: decision 227's run hold stands. devbin's own list is vc's: hv's board todos 27, 36, 37, 38, 40, 41 and 42, and vc's hold 2 and todo 213; dc reads todo 40 as board work."
+  }
+}
