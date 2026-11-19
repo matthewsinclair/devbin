@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "1af87e83-b21b-4501-b0bf-29983ac62e1a",
-    "heartbeat_at": "2026-11-19T09:18:04.091Z",
+    "heartbeat_at": "2026-11-19T09:42:37.039Z",
     "status": "active",
-    "focus": "2026-11-19 09:18Z by date -u: localfold for hv's compact of devbin-*. Desk held by devbin-vc: grants follow each estate's relayed go (decisions 230 to 233, 238); every run granted today has ended; still to come, the other estate's light reading slots and one heavy cargo run once its two banks are built. devbin runs nothing; cc and dc fold too. On the bounce: re-arm the desk waiter; globalfold intent/wip.md (0.1.27 still listed as DOING); todos 213, 215, 222, 223, 224 stand.",
+    "focus": "2026-11-19 09:42Z by date -u: Intent is P0 for its numbering fix (decision 241); the Desk grants intent-* first and holds the other estate's hour-long cargo run until intent-vc says what the fix needs; devbin's cc and dc hold; no run open. Still to come: the design project's Runs I and J. Todos 213, 215, 222, 223, 224 stand; globalfold at day's end.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5671,9 +5671,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 224,
-      "text": "NOTICE for intent-vc at its next session (no Intent seat is running today): four defects in Intent's estate desk, sent by agentic-engineering-vc on hv's word in its window (AE's hv decision 106 (5)) and checked by vc on Intent 3.4.0 (461e39ba1) by help, source and the Desk's own state: a controller cannot pin a grant (grant's TEXT argument undocumented); control release ignores standing holds and grants (slots.rs:1175); a same-name take drops hv's words (slots.rs:1162; controller.json reads hv null today); a launch brief can end on an empty restart section (AE's seats, today). Fixed by 3.4.0, not passed: the asker's withdraw. Text: ~/Devel/scratch/devbin-vc/20261119/intent-desk-defects.md. Which become Intent issues is Intent's call.",
+      "text": "NOTICE for intent-vc once Intent's P0 numbering fix is done (decision 241): four defects in Intent's estate desk, sent by agentic-engineering-vc on hv's word in its window (AE's hv decision 106 (5)) and checked by vc on Intent 3.4.0 (461e39ba1) by help, source and the Desk's own state: a controller cannot pin a grant (grant's TEXT argument undocumented); control release ignores standing holds and grants (slots.rs:1175); a same-name take drops hv's words (slots.rs:1162; controller.json reads hv null today); a launch brief can end on an empty restart section (AE's seats, today). Fixed by 3.4.0, not passed: the asker's withdraw. Text: ~/Devel/scratch/devbin-vc/20261119/intent-desk-defects.md. Which become Intent issues is Intent's call.",
       "state": "live",
-      "recorded_at": "2026-11-19T05:27:57.917Z"
+      "recorded_at": "2026-11-19T05:27:57.917Z",
+      "edited_at": "2026-11-19T09:42:36.752Z"
     },
     {
       "node": "vc",
@@ -5743,6 +5744,14 @@
       "text": "Another estate's design project relayed hv's go through its gc seat, received by vc by 2026-11-19 09:19Z by date -u, hv's words in gc's window just before 09:19Z, on a pattern library and a data visualisation standard joining its next release: \"What are these? Can they be done now? If so, do it.\" Under decision 230 the Desk grants it four runs on rhadamanth as each source freezes: G, light, one headless Chrome, a minute or two; H, heavy, a build then the whole check, about 3 minutes; then I and J, the same pair for the data visualisation standard. No tag and no push: releasing it stays hv's call.",
       "state": "live",
       "recorded_at": "2026-11-19T09:19:57.979Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 241,
+      "text": "hv in vc's window, received by 2026-11-19 09:40Z by date -u, hv's words with one name withheld under directive 14: \"Heads up: a slight change of priorities. intent-vc is moving to P0 to fix an issue with ST, WP, and Issue numbering. Everything else needs to fall in behind intent-vc and intent-* while we get this fix sorted out. The existing priorities remain as they were (devbin, ae, [another estate's project] are P1, and webber is P2).\" The Desk's order on contention until intent-vc reports the fix done, replacing decisions 158's and 210's: Intent first on every lane, and hv's word here is the go for its runs on the fix, so no relay is needed (decision 230); then devbin, AE and that estate, first-asked or shortest-first between them, with its design project (decision 240) ranked beside it unless hv says otherwise; Webber last. Another ask takes a lane only when no intent-* ask is waiting on it or about to come; a run already granted is not stopped; a heavy-class grant past two still waits for the 1-minute load under about 14 to 16. Told by message just after the 09:40Z read: intent-vc (asked for the fix's runs and what it needs of the other estates), agentic-engineering-vc, that estate's vc and its design project's gc, webber-vc, the two estate-level sessions, and devbin's cc and dc (hold). Held by 09:42Z by date -u: that estate's route-bank run (01M7SJQYSZ0ZR7QC19P8K7V8M3, cargo lane, up to an hour; load 11.74 with nothing running), until intent-vc says whether the fix needs the cargo lane or more than one heavy-class run at a time; its vc said a wait is fine. devbin's notices for intent-vc (todos 222 and 224) wait until the fix is done.",
+      "state": "live",
+      "recorded_at": "2026-11-19T09:42:18.570Z"
     }
   ],
   "sent": [

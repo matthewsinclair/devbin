@@ -1,0 +1,15 @@
+{
+  "id": "01M7SJYZPAZ6C27EPJ8BMM1QBS",
+  "ts": "2026-11-19T09:42:18.570Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, received by 2026-11-19 09:40Z by date -u, hv's words with one name withheld under directive 14: \"Heads up: a slight change of priorities. intent-vc is moving to P0 to fix an issue with ST, WP, and Issue numbering. Everything else needs to fall in behind intent-vc and intent-* while we get this fix sorted out. The existing priorities remain as they were (devbin, ae, [another estate's project] are P1, and webber is P2).\" The Desk's order on contention until intent-vc reports the fix done, replacing decisions 158's and 210's: Intent first on every lane, and hv's word here is the go for its runs on the fix, so no relay is needed (decision 230); then devbin, AE and that estate, first-asked or shortest-first between them, with its design project (decision 240) ranked beside it unless hv says otherwise; Webber last. Another ask takes a lane only when no intent-* ask is waiting on it or about to come; a run already granted is not stopped; a heavy-class grant past two still waits for the 1-minute load under about 14 to 16. Told by message just after the 09:40Z read: intent-vc (asked for the fix's runs and what it needs of the other estates), agentic-engineering-vc, that estate's vc and its design project's gc, webber-vc, the two estate-level sessions, and devbin's cc and dc (hold). Held by 09:42Z by date -u: that estate's route-bank run (01M7SJQYSZ0ZR7QC19P8K7V8M3, cargo lane, up to an hour; load 11.74 with nothing running), until intent-vc says whether the fix needs the cargo lane or more than one heavy-class run at a time; its vc said a wait is fine. devbin's notices for intent-vc (todos 222 and 224) wait until the fix is done."
+  }
+}
