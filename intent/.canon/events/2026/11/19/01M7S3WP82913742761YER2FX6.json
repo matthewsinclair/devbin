@@ -1,0 +1,15 @@
+{
+  "id": "01M7S3WP82913742761YER2FX6",
+  "ts": "2026-11-19T05:18:54.724Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "0373"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "Six estates' config.yaml carry log: lines that restate devbin's default"
+  }
+}

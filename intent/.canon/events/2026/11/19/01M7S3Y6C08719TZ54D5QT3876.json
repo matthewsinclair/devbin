@@ -1,0 +1,16 @@
+{
+  "id": "01M7S3Y6C08719TZ54D5QT3876",
+  "ts": "2026-11-19T05:19:44.000Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 213,
+    "text": "HV'S LIST (as of 2026-11-19 05:19Z by date -u, decision 229): (e) the no-vendor mode (decision 64) and --ivault (hold 2) stay parked until hv schedules them; (g) with the sysadms: kovacs's GNOME re-login check and its share of the five subagents (kovacs-sysadm, message queued), gyges's share (gyges-sysadm, not reachable from vc; both texts in ~/Devel/scratch/devbin-vc/20261119/sysadm-handoffs.md); hv's own: where keats is now (192.168.86.168 is its deliberate reservation, nothing answering since about 1 Nov, per rhadamanth-sysadm). Everything else on the list is done or ruled."
+  }
+}

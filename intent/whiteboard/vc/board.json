@@ -5021,10 +5021,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 213,
-      "text": "HV'S LIST (as of 2026-11-14 12:08Z by date -u): (e) the no-vendor mode (decision 64) and --ivault (hold 2) parked until hv schedules them; (g) kovacs's GNOME re-login (kovacs-sysadm offline) and the router's DHCP reservation, hv's to check. Everything else on the list is done or ruled (decisions 177 to 180).",
+      "text": "HV'S LIST (as of 2026-11-19 05:19Z by date -u, decision 229): (e) the no-vendor mode (decision 64) and --ivault (hold 2) stay parked until hv schedules them; (g) with the sysadms: kovacs's GNOME re-login check and its share of the five subagents (kovacs-sysadm, message queued), gyges's share (gyges-sysadm, not reachable from vc; both texts in ~/Devel/scratch/devbin-vc/20261119/sysadm-handoffs.md); hv's own: where keats is now (192.168.86.168 is its deliberate reservation, nothing answering since about 1 Nov, per rhadamanth-sysadm). Everything else on the list is done or ruled.",
       "state": "live",
       "recorded_at": "2026-11-13T18:14:30.327Z",
-      "edited_at": "2026-11-14T12:08:18.230Z"
+      "edited_at": "2026-11-19T05:19:44.000Z"
     },
     {
       "node": "vc",
@@ -5040,10 +5040,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 215,
-      "text": "NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), 0.1.24 (~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary), 0.1.25 (~/Devel/scratch/devbin-vc/0.1.25/sweep/sweep-commit.summary; 0.1.25 renders a formula's install as cp_r, which broke Intent's brew_formula.bats, so tell each estate with a formula test) and 0.1.26 (decision 204; ~/Devel/scratch/devbin-vc/0.1.26/sweep/sweep-commit.summary; tell each estate with a cargo build about the gate cache's 12G bound, issue 0361; Prodinfra's push is its own, its eight commits sit under the sweep commit); 0326's reader notice to pplr-vc, cldr-vc, cldr-dc and pipeliner-sc (~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0; Prodinfra, infra --profile takes a path; release review action 2 to molt-vc. SENT 2026-11-15 11:27Z by date -u: sweep notices to intent-vc, laksa-vc and webber-vc, and action 2 to intent-vc (texts in ~/Devel/scratch/devbin-vc/0.1.25/notices). SENT 2026-11-17 by 10:23Z by date -u: ccusage-vc (its sweeps, 0326's reader notice, decision 178(3)'s rename beside its 2026-11-06 revert) and intent-vc (0.1.26's sweep and its push under decision 76); texts in ~/Devel/scratch/devbin-vc/0.1.26/notices. Laksa still needs 0.1.26's; Webber's went with its sweep commit (decision 213). The rest wait for those estates' vcs.",
+      "text": "NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), 0.1.24 (~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary), 0.1.25 (~/Devel/scratch/devbin-vc/0.1.25/sweep/sweep-commit.summary; 0.1.25 renders a formula's install as cp_r, which broke Intent's brew_formula.bats, so tell each estate with a formula test) and 0.1.26 (decision 204; ~/Devel/scratch/devbin-vc/0.1.26/sweep/sweep-commit.summary; tell each estate with a cargo build about the gate cache's 12G bound, issue 0361; Prodinfra's push is its own, its eight commits sit under the sweep commit); 0326's reader notice to pplr-vc, cldr-vc, cldr-dc and pipeliner-sc (~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0; Prodinfra, infra --profile takes a path; release review action 2 to molt-vc. On hv's word (decision 229): prolix-vc, hv's former todo 36 (Prolix's ST0028: its dependency half, AC-2.1 to 2.4, unstarted while its lockfile moved outside it; the cf06d8e Dockerfile change unbuilt); Baize's vc, hv's former todo 38 (its authored db reset drops with no confirmation or prod refusal while its seed arm is prod-gated; fix before its first deploy). SENT 2026-11-15 11:27Z by date -u: sweep notices to intent-vc, laksa-vc and webber-vc, and action 2 to intent-vc (texts in ~/Devel/scratch/devbin-vc/0.1.25/notices). SENT 2026-11-17 by 10:23Z by date -u: ccusage-vc (its sweeps, 0326's reader notice, decision 178(3)'s rename beside its 2026-11-06 revert) and intent-vc (0.1.26's sweep and its push under decision 76); texts in ~/Devel/scratch/devbin-vc/0.1.26/notices. Laksa still needs 0.1.26's; Webber's went with its sweep commit (decision 213). The rest wait for those estates' vcs.",
       "state": "live",
       "recorded_at": "2026-11-13T18:14:30.760Z",
-      "edited_at": "2026-11-17T11:17:16.311Z"
+      "edited_at": "2026-11-19T05:19:43.593Z"
     },
     {
       "node": "vc",
@@ -5627,6 +5627,14 @@
       "text": "hv in vc's window, read by 2026-11-19 05:03Z by date -u, hv's words: \"Can  you call relay to all Claudes (note webber-* is up now, too) to lean out any HV inbox/whiteboard items, and either clear them out, resolve them, or sync them with their local VC for synthesis and review with me. I will check in with each VC to close them out as necessary.\" Relayed by 05:05Z to all 17 live peers: each vc (agentic-engineering, Webber, another estate) leans out its estate's hv items and holds one synthesised list for hv's check-in in its own window, sending devbin-vc a one-line ready; each seat clears, resolves or gives its items to its vc; the two estate-level sessions report to devbin-vc. Webber, up since about 05:00Z, also got decision 227's hold and the ask for its plan. Board work only: decision 227's run hold stands. devbin's own list is vc's: hv's board todos 27, 36, 37, 38, 40, 41 and 42, and vc's hold 2 and todo 213; dc reads todo 40 as board work.",
       "state": "live",
       "recorded_at": "2026-11-19T05:06:20.544Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 229,
+      "text": "hv's TUI answers in vc's window to devbin's ten lean-out items (decision 228), read by 2026-11-19 05:18Z by date -u, 1 to 8 each the recommendation: (1) hv todo 27 (owner-run deploy-build proofs) archived; (2) hv todo 36 (Prolix's ST0028) archived here and carried to prolix-vc as a notice (todo 215); (3) hv todo 37 (log: lines) filed as issue 0373 and archived; (4) hv todo 38 (Baize's db reset) archived here and carried to Baize's vc as a notice (todo 215); (5) hv todo 40: devbin declares no formatters, closed on dc's corrected record (Markdown is ungated on purpose under ST0001's AC-15.6, and check format does not cover it either); (6) hv todo 41 archived, ST0006 stays in triage until hv sets it; (7) hv todo 42 (0.1.6 residue) archived as overtaken; (8) the no-vendor mode and --ivault stay parked. (9) hv's words: \"All of the {rhadamanth,kovacs,gyges}-sysadm Claudes are running now.\" So the host checks went to the sysadms first: rhadamanth-sysadm read 192.168.86.168 as keats's deliberate reservation with nothing answering since about 1 Nov, so where keats is now is hv's; kovacs's GNOME re-login (systemd user PATH and molt doctor's env) went to kovacs-sysadm. (10) hv's words: \"{rhadmanath,gyges,kovacs}-sysadm Claudes are running now. Please hand this off to them to fix.\" The five unrecorded or orphaned subagents went to kovacs-sysadm and gyges-sysadm to fix. kovacs-sysadm's message is queued (its Remote Control is offline) and gyges-sysadm is not reachable from vc, so both texts are in ~/Devel/scratch/devbin-vc/20261119/sysadm-handoffs.md for hv to paste.",
+      "state": "live",
+      "recorded_at": "2026-11-19T05:19:30.433Z"
     }
   ],
   "sent": [

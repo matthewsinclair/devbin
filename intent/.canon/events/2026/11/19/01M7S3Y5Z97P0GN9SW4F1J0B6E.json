@@ -1,0 +1,16 @@
+{
+  "id": "01M7S3Y5Z97P0GN9SW4F1J0B6E",
+  "ts": "2026-11-19T05:19:43.593Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 215,
+    "text": "NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), 0.1.24 (~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary), 0.1.25 (~/Devel/scratch/devbin-vc/0.1.25/sweep/sweep-commit.summary; 0.1.25 renders a formula's install as cp_r, which broke Intent's brew_formula.bats, so tell each estate with a formula test) and 0.1.26 (decision 204; ~/Devel/scratch/devbin-vc/0.1.26/sweep/sweep-commit.summary; tell each estate with a cargo build about the gate cache's 12G bound, issue 0361; Prodinfra's push is its own, its eight commits sit under the sweep commit); 0326's reader notice to pplr-vc, cldr-vc, cldr-dc and pipeliner-sc (~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0; Prodinfra, infra --profile takes a path; release review action 2 to molt-vc. On hv's word (decision 229): prolix-vc, hv's former todo 36 (Prolix's ST0028: its dependency half, AC-2.1 to 2.4, unstarted while its lockfile moved outside it; the cf06d8e Dockerfile change unbuilt); Baize's vc, hv's former todo 38 (its authored db reset drops with no confirmation or prod refusal while its seed arm is prod-gated; fix before its first deploy). SENT 2026-11-15 11:27Z by date -u: sweep notices to intent-vc, laksa-vc and webber-vc, and action 2 to intent-vc (texts in ~/Devel/scratch/devbin-vc/0.1.25/notices). SENT 2026-11-17 by 10:23Z by date -u: ccusage-vc (its sweeps, 0326's reader notice, decision 178(3)'s rename beside its 2026-11-06 revert) and intent-vc (0.1.26's sweep and its push under decision 76); texts in ~/Devel/scratch/devbin-vc/0.1.26/notices. Laksa still needs 0.1.26's; Webber's went with its sweep commit (decision 213). The rest wait for those estates' vcs."
+  }
+}

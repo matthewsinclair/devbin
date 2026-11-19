@@ -17,13 +17,7 @@ _(none)_
 
 ## TODO
 
-- Deploy-build proofs, owner-run: Conflab, Laksa, Lamplight (carried from 2026-09-02, not re-verified). (edited)
-- Prolix: ST0028's dependency half (AC-2.1 to 2.4) is unstarted while its lockfile moved outside it, and the cf06d8e Dockerfile change is unbuilt; prolix's node to settle. (edited)
-- Six estates carry log: lines restating the builtin default; check no test or tool reads config.yaml as text before removing any. (edited)
-- Baize's authored db reset drops with no confirmation or prod refusal, while its seed arm is prod-gated; baize's node to fix before its first deploy. (edited)
-- hv to decide: whether devbin declares formatters, since no commit-time guard checks staged markdown here (check format covers it at run time). (edited)
-- ST0006 is in triage with no objective or design; WP-01 (infra apply through flyctl) is its one live write. Starting it is hv's (directive 1), its first live drive too (directive 3). (edited)
-- 0.1.6 residue for hv: Anvil and arca_notionex await hv's word; laksa/dc asks whether pristine reaches the Ubuntu 26 notice and Elixir dependency warnings; Utilz's bash 3.2 gap is utilz-vc's. (edited)
+_(none)_
 
 ## Holds
 

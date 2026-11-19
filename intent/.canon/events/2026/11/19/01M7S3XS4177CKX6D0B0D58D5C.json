@@ -1,0 +1,15 @@
+{
+  "id": "01M7S3XS4177CKX6D0B0D58D5C",
+  "ts": "2026-11-19T05:19:30.433Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's TUI answers in vc's window to devbin's ten lean-out items (decision 228), read by 2026-11-19 05:18Z by date -u, 1 to 8 each the recommendation: (1) hv todo 27 (owner-run deploy-build proofs) archived; (2) hv todo 36 (Prolix's ST0028) archived here and carried to prolix-vc as a notice (todo 215); (3) hv todo 37 (log: lines) filed as issue 0373 and archived; (4) hv todo 38 (Baize's db reset) archived here and carried to Baize's vc as a notice (todo 215); (5) hv todo 40: devbin declares no formatters, closed on dc's corrected record (Markdown is ungated on purpose under ST0001's AC-15.6, and check format does not cover it either); (6) hv todo 41 archived, ST0006 stays in triage until hv sets it; (7) hv todo 42 (0.1.6 residue) archived as overtaken; (8) the no-vendor mode and --ivault stay parked. (9) hv's words: \"All of the {rhadamanth,kovacs,gyges}-sysadm Claudes are running now.\" So the host checks went to the sysadms first: rhadamanth-sysadm read 192.168.86.168 as keats's deliberate reservation with nothing answering since about 1 Nov, so where keats is now is hv's; kovacs's GNOME re-login (systemd user PATH and molt doctor's env) went to kovacs-sysadm. (10) hv's words: \"{rhadmanath,gyges,kovacs}-sysadm Claudes are running now. Please hand this off to them to fix.\" The five unrecorded or orphaned subagents went to kovacs-sysadm and gyges-sysadm to fix. kovacs-sysadm's message is queued (its Remote Control is offline) and gyges-sysadm is not reachable from vc, so both texts are in ~/Devel/scratch/devbin-vc/20261119/sysadm-handoffs.md for hv to paste."
+  }
+}
