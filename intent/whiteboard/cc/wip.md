@@ -2,10 +2,10 @@
 node: cc
 name: Control Claude
 role: control
-session_id: 02ba03eb-9bc3-422d-b823-050a1eb78d26
-heartbeat_at: 2026-11-19 12:09Z
+session_id: 873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5
+heartbeat_at: 2026-11-20 06:38Z
 status: active
-focus: "2026-11-19 12:09Z by date -u: localfold before hv's compact; holding with nothing open, Intent at P0 and devbin at P1 with no run today; 0372-1 on main at 73d60f09 for the next cut; claim 0326 kept until pplr#0001 and cldr#0001 close"
+focus: "2026-11-20 06:38Z by date -u: booted and holding for vc's next brief; hv's order today is P0 Intent, P1 another estate and AE, P2 Webber, devbin not on it; no runs or Desk asks; claim 0326 kept until pplr#0001 and cldr#0001 close"
 claims: [ISSUE:0326]
 ---
 
