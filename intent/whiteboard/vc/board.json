@@ -5953,9 +5953,10 @@
       "node": "vc",
       "kind": "decision",
       "seq": 262,
-      "text": "262 hv in vc's window, received by 2026-11-20 18:35Z by date -u, hv's words: \"It's time to localfold+compact here, then hold on the bounce other than intent-* for the release.\" vc localfolds for hv's compact of vc's window. From the bounce, the Desk grants only the intent-* seats' asks (intent-vc, intent-cc, intent-dc, intent-ic), for Intent's release. Every other seat's ask is held, not refused: devbin-cc and devbin-dc (lent to Intent under 256 and 261, held by the wording as written, and put to hv), Webber, AE and the other estate. A run already started finishes: Webber's ui-floor 01M7WVX7 (heavy, since 18:10Z) and devbin-cc's 0738 01M7X381 (cargo, since 18:31Z). Held at the hold: devbin-dc's WP-04 run 4 01M7X3PX. Decision 251 stands for intent-*: an Intent ask never waits.",
+      "text": "262 hv in vc's window, received by 2026-11-20 18:35Z by date -u, hv's words: \"It's time to localfold+compact here, then hold on the bounce other than intent-* for the release.\" vc localfolds for hv's compact of vc's window. From the bounce, the Desk grants only Intent's release work: the intent-* seats' asks (intent-vc, intent-cc, intent-dc, intent-ic) and, by hv's ruling on the lent seats (relayed by intent-vc, given at 18:35Z in intent-vc's window, in hv's words: \"Keep both\", then \"Ok, push on. Get this done. Intent is P0.\"), devbin-cc's and devbin-dc's asks for Intent (256, 261). Decision 251 stands: an Intent ask never waits. Held, not refused: Webber, AE and the other estate. A run already started finishes: Webber's ui-floor 01M7WVX7 (heavy, since 18:10Z). Next in cargo: devbin-cc's 0738 01M7X381 (since 18:31Z), then devbin-dc's WP-04 run 4 01M7X3PX.",
       "state": "live",
-      "recorded_at": "2026-11-20T18:35:15.945Z"
+      "recorded_at": "2026-11-20T18:35:15.945Z",
+      "edited_at": "2026-11-20T18:36:14.176Z"
     }
   ],
   "sent": [
