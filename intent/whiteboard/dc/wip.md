@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-20 16:36Z
+heartbeat_at: 2026-11-20 17:17Z
 status: active
-focus: "2026-11-20 16:36Z by date -u: ST0096 WP-03 landed on Intent's main at 1c45f817c; tmp/wt-st0096-wp03 retired (attic refs/attic/devbin-dc/wt-st0096-wp03 = 9e0bba25f). NOW: Intent issue 0733 on intent-dc's brief, one shared canon reader for stale_at and absent_at; measure the reading disagreements and send intent-dc the proposed answers before coding. Worktree tmp/wt-0733 from main 1c45f817c."
+focus: "2026-11-20 17:17Z by date -u: idle, lent to Intent (decision 255). Landed today on Intent's main: ST0096 WP-03 at 1c45f817c and issue 0733 v2 at 29d5ffe94 (closed at 4b47fe6c8); their worktrees retired (attics refs/attic/devbin-dc/wt-st0096-wp03 = 9e0bba25f, wt-0733 = 00dd603f0). No unit in hand; the next is whatever intent-dc briefs."
 claims: []
 ---
 
@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-- Intent issue 0733 on intent-dc's brief (16:36Z): one shared canon reader for stale_at_check.sh and absent_at_check.sh, in lib_citation.sh or a sibling; measure the disagreements first and send intent-dc the proposed answers before coding; worktree tmp/wt-0733 from main 1c45f817c
+_(none)_
 
 ## TODO
 
