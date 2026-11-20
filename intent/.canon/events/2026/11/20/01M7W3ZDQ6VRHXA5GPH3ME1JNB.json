@@ -1,0 +1,16 @@
+{
+  "id": "01M7W3ZDQ6VRHXA5GPH3ME1JNB",
+  "ts": "2026-11-20T09:18:07.591Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 226,
+    "text": "FOR hv, asked in vc's window by 07:13Z by date -u on 2026-11-20, restated at 07:42Z and after hv's compacts (by 08:12Z): under decision 251 (another estate's heavy-class run starts only while no Intent heavy-class run is running, waiting or announced within its length), may a P1 heavy run go beside Intent's? (a) beside, one P1 run at a time when the load allows (vc's recommendation: Intent's critical path is cc's coding between short runs); (b) strict, P1 waits for clear windows; (c) only P1 runs of about 5 minutes or less go beside. Since 09:12Z intent-vc's decision 257 has intent-cc's full suite and final gate run alone whatever hv rules, so (a) would only let a P1 run start where none of those falls within it. Waiting: the other estate's 25-minute bank 64 full run 01M7W3X295HZ5K79CDBG76HE7M, held since about 09:17Z by date -u; while intent-cc's suites come every 10 to 15 minutes, its window likely opens only when intent-cc's ST0095 WP-05+06 chain lands. Its vc declined gyges (the run reads data that lives only on rhadamanth, and moving it is hv's to rule), waits for the first clear window, and says it needs no answer to this today. Webber's two-hour sealed run after hv's Submit. Earlier today: the other estate's bank 62 run and two short runs went in clear windows found by asking Intent's seats at each Intent END."
+  }
+}
