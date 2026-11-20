@@ -1,0 +1,15 @@
+{
+  "id": "01M7VWNDS04ZH0H4JNEEVHGBXV",
+  "ts": "2026-11-20T07:10:19.936Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "webber-vc's plan, received by 2026-11-20 07:10Z by date -u: hv confirmed the day's order in its window (Webber's decision 260), decision 251's rule stands for every Webber ask, and decision 252's minting rule went to Webber's seats after hv said yes to it there. Nothing is asked of the Desk before hv's Submit: today's release work is hv's phone on TestFlight build 4378, ac's store frames (no build), the vc's uploads, the push with hv present, then hv's Submit. After Submit, in hv's order (Webber's decision 256), each on its vc's relayed go and none asked yet: dc's Creator deploy (a Fly deploy with hv present, no local slot); the catalogue refresh (one xcodebuild, heavy, rhadamanth); the first app build after 1.0 (one sealed run, heavy, rhadamanth, simulators one at a time under decision 190, about two hours); later, door 1. Nothing needs hv from the Desk. Under decision 251 those heavy runs go only in windows with no Intent heavy-class run running, waiting or announced, after any P1 asks then waiting; a two-hour window is unlikely while Intent's fix runs, so the sealed run's placement goes to hv when it is asked if no window exists."
+  }
+}
