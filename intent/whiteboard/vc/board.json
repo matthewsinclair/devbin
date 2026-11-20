@@ -5922,6 +5922,14 @@
       "text": "hv in vc's window, received by 2026-11-20 09:36Z by date -u, hv's words: \"Ok, I need to move. Please quiesce all Claudes now. I'll pick up on the other side.\" The Desk was held at 09:36Z (control hold 01M7W521JMR5YN7DPHSSVNKJMH): no grant until hv says continue. Nothing was running at the hold. Held in the queue, not refused: the other estate's bank 64 run 01M7W3X295HZ5K79CDBG76HE7M. Told by message by 09:37Z: intent-vc (with intent-cc and intent-dc directly), the other estate's vc, agentic-engineering-vc, webber-vc, devbin-cc, devbin-dc, the estate-level session and rhadamanth-sysadm. Each seat stops at its next safe point: no runs or asks, nothing mid-run, work in progress committed or banked by path, focus brought up to date (a localfold if quick, no release), then idle until hv or its vc says go. Each estate's vc sends vc one line when its estate is quiet. On the other side: Webber's sealed run and archive placement goes to hv (decision 254, todo 226), and devbin-dc's WP-12 guard brief (blob 99bbfa108) waits for the 0725-0728 land.",
       "state": "live",
       "recorded_at": "2026-11-20T09:37:33.536Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 259,
+      "text": "hv in devbin-dc's window after the move, passed to vc by devbin-dc and received by 2026-11-20 14:15Z by date -u, hv's words: \"Ok, we're back after the move. Please corral everyone to continue.\" Every session restarted with the move. The Desk hold of decision 258 (01M7W521JMR5YN7DPHSSVNKJMH) was released at 14:15Z; told by message: intent-vc, the other estate's vc, agentic-engineering-vc, webber-vc, devbin-cc, devbin-dc and the estate-level session. Still queued: the other estate's bank 64 run 01M7W3X295HZ5K79CDBG76HE7M, for a window clear of Intent's suites and gates (decisions 251 and 257). A new session, sparks-gc, is on no list: its asks are held and its rank goes to hv (decision 249).",
+      "state": "live",
+      "recorded_at": "2026-11-20T14:16:05.005Z"
     }
   ],
   "sent": [
