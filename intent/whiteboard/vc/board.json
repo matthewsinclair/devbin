@@ -5113,7 +5113,8 @@
       "kind": "decision",
       "seq": 179,
       "text": "hv's TUI answers in vc's window, read 2026-11-14 09:03Z by date -u: (1) intentd's at-login enrolment on rhadamanth goes ahead now, by rhadamanth-sysadm on hv's word in its own window (stop then enrol, per 0666); vc held the desk for it, then released the hold when hv went AFK at 09:00Z with the word not yet given; (2) the Intranet repo on gyges re-vendors devbin 0.1.24 and pushes to local: done by gyges-sysadm on hv's yes in its window, commit f5b0228b (87 seam paths, 0.1.8 to 0.1.24 from brew, the uncommitted 0.1.11 copy archived first), local fast-forwarded 6756f7c..f5b0228 (55 commits). gyges's 2026-11-01 Time Machine snapshot has aged out.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-20T18:55:46.443Z",
       "recorded_at": "2026-11-14T09:03:26.078Z",
       "edited_at": "2026-11-14T09:03:35.345Z"
     },
@@ -5957,6 +5958,14 @@
       "state": "live",
       "recorded_at": "2026-11-20T18:35:15.945Z",
       "edited_at": "2026-11-20T18:36:14.176Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 263,
+      "text": "263 devbin-dc's loan reaches Intent issue 0737, by 2026-11-20 18:55Z by date -u, on intent-dc's brief with intent-vc's GO under hv's \"Intent is P0\". 0737 is a test-only Rust refactor (four intent-cli tests' clone helpers folded onto common's Forge, no product code). Decision 261's term was vc's own, so vc extends it to 0737 on 261's terms: a fresh worktree from Intent main's tip read at creation (82544891f at 18:55Z), its own target, every build through bin/devbin, the commit with the worktree's own debug pair inside one booked cargo slot, one gate rust with stdin from /dev/null, mints nothing (252), banks under refs/bank/devbin-dc/0737/, proof to intent-dc and intent-vc, intent-vc lands. An Intent ask under 262, so it never waits (251).",
+      "state": "live",
+      "recorded_at": "2026-11-20T18:55:46.638Z"
     }
   ],
   "sent": [

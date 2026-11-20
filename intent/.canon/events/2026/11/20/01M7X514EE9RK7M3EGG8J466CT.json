@@ -1,0 +1,15 @@
+{
+  "id": "01M7X514EE9RK7M3EGG8J466CT",
+  "ts": "2026-11-20T18:55:46.638Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "263 devbin-dc's loan reaches Intent issue 0737, by 2026-11-20 18:55Z by date -u, on intent-dc's brief with intent-vc's GO under hv's \"Intent is P0\". 0737 is a test-only Rust refactor (four intent-cli tests' clone helpers folded onto common's Forge, no product code). Decision 261's term was vc's own, so vc extends it to 0737 on 261's terms: a fresh worktree from Intent main's tip read at creation (82544891f at 18:55Z), its own target, every build through bin/devbin, the commit with the worktree's own debug pair inside one booked cargo slot, one gate rust with stdin from /dev/null, mints nothing (252), banks under refs/bank/devbin-dc/0737/, proof to intent-dc and intent-vc, intent-vc lands. An Intent ask under 262, so it never waits (251)."
+  }
+}
