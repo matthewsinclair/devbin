@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5
-heartbeat_at: 2026-11-20 09:38Z
+heartbeat_at: 2026-11-20 15:08Z
 status: active
-focus: "2026-11-20 09:37Z by date -u: quiesced for hv's move on vc's word, idle until vc's go; nothing built and nothing asked at the Desk. Lent to Intent for its P0 (decision 251): ST0095 WP-07, prefix resolution (M, Rust); the resolver's signature is agreed with intent-ic and intent-cc. The base waits only on intent-cc's WP-06 now, since intent-ic's WP-10 Part 1 landed at Intent's c437d1d83; intent-vc names it. Nothing in devbin's canon for Intent's work; claim 0326 kept (decision 154)."
+focus: "2026-11-20 15:08Z by date -u: localfold for hv's compact cycle, not released. Lent to Intent for its P0 (decision 251): ST0095 WP-07, prefix resolution (M, Rust); the resolver's signature is agreed with intent-ic and intent-cc; nothing built and nothing asked at the Desk. The base waits only on intent-cc's WP-06 (intent-ic's WP-10 Part 1 landed at Intent's c437d1d83); intent-vc names it through vc. Claim 0326 kept (decision 154)."
 claims: [ISSUE:0326]
 ---
 
