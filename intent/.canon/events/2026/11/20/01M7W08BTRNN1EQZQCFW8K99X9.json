@@ -1,0 +1,16 @@
+{
+  "id": "01M7W08BTRNN1EQZQCFW8K99X9",
+  "ts": "2026-11-20T08:13:06.264Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 226,
+    "text": "FOR hv, asked in vc's window by 07:13Z by date -u on 2026-11-20, restated at 07:42Z and again after hv's compacts (by 08:12Z): under decision 251 (another estate's heavy-class run starts only while no Intent heavy-class run is running, waiting or announced within its length), may a P1 heavy run go beside Intent's? (a) beside, one P1 run at a time when the load allows (vc's recommendation: Intent's critical path is cc's coding between short runs); (b) strict, P1 waits for clear windows; (c) only P1 runs of about 5 minutes or less go beside. Waiting on it: Webber's two-hour sealed run after hv's Submit. The other estate's 30-minute bank run 01M7VYF6G21YY200SK4V6XKQHB went in a clear window instead: granted into cargo at 08:12Z by date -u (load 6.10), once intent-cc, intent-dc and devbin-dc (lent) had each said their next heavy ask was 30+ minutes away and that estate's dc had cleared its rescan. Meanwhile the Desk finds windows by asking Intent's seats for their next-ask timing at each Intent END."
+  }
+}

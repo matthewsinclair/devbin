@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "31d7bc64-995d-46af-b1a9-914a003e7f32",
-    "heartbeat_at": "2026-11-20T07:50:28.487Z",
+    "heartbeat_at": "2026-11-20T08:13:14.852Z",
     "status": "active",
-    "focus": "2026-11-20 07:50Z by date -u: localfolded for hv's estate-wide compact cycle; not released. The Desk is vc's (decision 249); cutoff holds until hv's compacts are done. Order: Intent's fix at utmost priority (decision 251), then the other estate and AE, Webber last. Held: the other estate's 30-minute bank run 01M7VYF6G21YY200SK4V6XKQHB, on hv's run-beside question (todo 226). Running at the fold: intent-cc's last test run 01M7VYW26A67YCYAQ8E5VE3R93. devbin-dc lent to Intent: 0720 green and banked, waiting for intent-vc to land it; Intent's ST0096 WP-03 brief comes through vc after WP-02 lands. devbin-cc holds. On the bounce: re-arm the desk waiter past the held bank run, read hv's answer to todo 226, then grant by decisions 249 to 251.",
+    "focus": "2026-11-20 08:13Z by date -u: back from hv's compact cycle; the Desk is open again, no desk hold (decision 249). AE's three are folded and ready for hv's compact (their ready line 08:11Z), the cycle's last. Order: Intent's ids fix first (decision 251), then the other estate and AE, Webber last. Running: the other estate's 30-minute bank run 01M7VYF6G21YY200SK4V6XKQHB, granted into cargo at 08:12Z in a clear window (todo 226); an Intent heavy ask goes beside it at once. devbin-dc has Intent's 0723+0724 unit on intent-dc's brief, passed verbatim (0720's footing, decision 255); its bats run is granted at once. devbin-cc holds; intent-vc may ask for it later on one of intent-cc's queued packages. Waiters: desk waiter, and an end-waiter on the bank run.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5894,9 +5894,10 @@
       "node": "vc",
       "kind": "todo",
       "seq": 226,
-      "text": "FOR hv, asked in vc's window by 07:13Z by date -u on 2026-11-20 and restated at 07:42Z: under decision 251 (another estate's heavy-class run starts only while no Intent heavy-class run is running, waiting or announced within its length), may a P1 heavy run go beside Intent's? (a) beside, one P1 run at a time when the load allows (vc's recommendation: Intent's critical path is cc's coding between short runs); (b) strict, P1 waits for clear windows; (c) only P1 runs of about 5 minutes or less go beside. Waiting on it: the other estate's 30-minute bank run 01M7VYF6G21YY200SK4V6XKQHB, held since 07:42Z; Webber's two-hour sealed run after hv's Submit. Meanwhile the Desk finds windows by asking Intent's seats for their next-ask timing at each Intent END.",
+      "text": "FOR hv, asked in vc's window by 07:13Z by date -u on 2026-11-20, restated at 07:42Z and again after hv's compacts (by 08:12Z): under decision 251 (another estate's heavy-class run starts only while no Intent heavy-class run is running, waiting or announced within its length), may a P1 heavy run go beside Intent's? (a) beside, one P1 run at a time when the load allows (vc's recommendation: Intent's critical path is cc's coding between short runs); (b) strict, P1 waits for clear windows; (c) only P1 runs of about 5 minutes or less go beside. Waiting on it: Webber's two-hour sealed run after hv's Submit. The other estate's 30-minute bank run 01M7VYF6G21YY200SK4V6XKQHB went in a clear window instead: granted into cargo at 08:12Z by date -u (load 6.10), once intent-cc, intent-dc and devbin-dc (lent) had each said their next heavy ask was 30+ minutes away and that estate's dc had cleared its rescan. Meanwhile the Desk finds windows by asking Intent's seats for their next-ask timing at each Intent END.",
       "state": "live",
-      "recorded_at": "2026-11-20T07:49:50.113Z"
+      "recorded_at": "2026-11-20T07:49:50.113Z",
+      "edited_at": "2026-11-20T08:13:06.264Z"
     }
   ],
   "sent": [
