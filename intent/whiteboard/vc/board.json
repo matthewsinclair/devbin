@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "31d7bc64-995d-46af-b1a9-914a003e7f32",
-    "heartbeat_at": "2026-11-20T06:32:40.294Z",
+    "heartbeat_at": "2026-11-20T07:50:28.487Z",
     "status": "active",
-    "focus": "2026-11-19 12:26Z by date -u: localfolded for hv's close at 17:00 local, 13:00Z; not released. The Desk: nothing open or queued at the 12:30Z cutoff; vc keeps it (decision 153). Every Claude on rhadamanth folded for hv's compact but sinclair-estate, which never answered; devbin's cc and dc folded with nothing open; intent/wip.md globalfolded. For hv: question 2 (decision 243, intent-vc's minting rule) and Intent 3.5's fleet upgrade, its tap held (244). On the bounce: Intent's P0 (241, 243: dc's 0711 gate, ic's WP-10a log); AE's ST0012/02 runs on hv's go; the other estate's stamp build. Todos 213, 215, 222, 223, 224 stand.",
+    "focus": "2026-11-20 07:50Z by date -u: localfolded for hv's estate-wide compact cycle; not released. The Desk is vc's (decision 249); cutoff holds until hv's compacts are done. Order: Intent's fix at utmost priority (decision 251), then the other estate and AE, Webber last. Held: the other estate's 30-minute bank run 01M7VYF6G21YY200SK4V6XKQHB, on hv's run-beside question (todo 226). Running at the fold: intent-cc's last test run 01M7VYW26A67YCYAQ8E5VE3R93. devbin-dc lent to Intent: 0720 green and banked, waiting for intent-vc to land it; Intent's ST0096 WP-03 brief comes through vc after WP-02 lands. devbin-cc holds. On the bounce: re-arm the desk waiter past the held bank run, read hv's answer to todo 226, then grant by decisions 249 to 251.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5659,7 +5659,8 @@
       "kind": "decision",
       "seq": 231,
       "text": "Another estate's vc relayed hv's go, given in its own window and received there by 2026-11-19 05:24Z by date -u (that estate's decision 118): its plan of 19 Nov goes as written. Under decision 230 the Desk grants its asks as they come: one light slot, then one heavy cargo slot (the day's long run), then a short cargo slot, all on rhadamanth. Its first ask is some way off. hv also ruled there on two of its own items, a split of today's change and a fast-forward push to its local remote at the day's end.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-20T07:49:50.368Z",
       "recorded_at": "2026-11-19T05:25:38.452Z"
     },
     {
@@ -5667,7 +5668,8 @@
       "kind": "decision",
       "seq": 232,
       "text": "agentic-engineering-vc relayed hv's go, given first-hand in its window after its 05:14Z clock read (AE's hv decision 106, recorded there 2026-11-19 05:25Z by date -u). Under decision 230 the Desk grants AE's asks as they come: (1) the client edition's rebuild for AE's ST0009/02: one local rebuild by AE's dc on rhadamanth, its lane named in the ask; its two outward steps, the learning repository's push and the canvas publish, wait for hv's two words later. (2) The devvm release after 0.5.1 is opened, but only for its contents list: no build is granted until hv's go on that list, relayed by agentic-engineering-vc. (3) AE's push of its main goes now; it takes no lane.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-20T07:49:50.600Z",
       "recorded_at": "2026-11-19T05:26:41.273Z"
     },
     {
@@ -5729,7 +5731,8 @@
       "kind": "decision",
       "seq": 238,
       "text": "Another estate's vc, received by vc by 2026-11-19 08:42Z by date -u: the Desk takes that estate's asks as within hv's go for its plan (decision 231) unless its vc says otherwise; one held ask (its ic's light editor pass) was confirmed and granted at 08:42Z. Still to come from it today: light slots for its cc's reading and measuring, with no build, and one heavy cargo run once two more banks are built. Its day so far: its bank H and the answers bank landed after four cargo runs (the last green, nothing red) and a clean-packages build.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-20T07:49:50.818Z",
       "recorded_at": "2026-11-19T08:43:09.088Z"
     },
     {
@@ -5755,7 +5758,8 @@
       "kind": "decision",
       "seq": 241,
       "text": "hv in vc's window, received by 2026-11-19 09:40Z by date -u, hv's words with one name withheld under directive 14: \"Heads up: a slight change of priorities. intent-vc is moving to P0 to fix an issue with ST, WP, and Issue numbering. Everything else needs to fall in behind intent-vc and intent-* while we get this fix sorted out. The existing priorities remain as they were (devbin, ae, [another estate's project] are P1, and webber is P2).\" The Desk's order on contention until intent-vc reports the fix done, replacing decisions 158's and 210's: Intent first on every lane, and hv's word here is the go for its runs on the fix, so no relay is needed (decision 230); then devbin, AE and that estate, first-asked or shortest-first between them, with its design project (decision 240) ranked beside it unless hv says otherwise; Webber last. Another ask takes a lane only when no intent-* ask is waiting on it or about to come; a run already granted is not stopped; a heavy-class grant past two still waits for the 1-minute load under about 14 to 16. Told by message just after the 09:40Z read: intent-vc (asked for the fix's runs and what it needs of the other estates), agentic-engineering-vc, that estate's vc and its design project's gc, webber-vc, the two estate-level sessions, and devbin's cc and dc (hold). Held by 09:42Z by date -u: that estate's route-bank run (01M7SJQYSZ0ZR7QC19P8K7V8M3, cargo lane, up to an hour; load 11.74 with nothing running), until intent-vc says whether the fix needs the cargo lane or more than one heavy-class run at a time; its vc said a wait is fine. devbin's notices for intent-vc (todos 222 and 224) wait until the fix is done.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-20T07:49:51.086Z",
       "recorded_at": "2026-11-19T09:42:18.570Z"
     },
     {
@@ -5772,7 +5776,8 @@
       "kind": "decision",
       "seq": 243,
       "text": "intent-vc to vc, 2026-11-19 09:48Z by intent-vc's clock, received by vc by 09:50Z by date -u: ST0095's runs (Intent's P0 fix, git-style ids; decision 241). Intent takes at most one heavy-class run at a time on rhadamanth. Cargo lane: intent-cc's units back to back as the critical path (WP-01, WP-04, WP-05 and WP-06 as one unit, then WP-07, WP-08 and WP-09), each in cc's worktree with its own gate cache; intent-dc's few builds queue behind cc's (WP-03's guard proof, the screenshots, later the drill's build in a clone). Bats lane: intent-dc's WP-03 (the commit gate's guard, the capture function, the brew smoke), later WP-12. gyges: intent-ic's suites for WP-02, WP-10 and WP-11, unbooked, since gyges has no controller. kovacs: nothing until the rehearsal, then one leg with no suite on rhadamanth (Intent's hv decision 45). Then the cut's runs, which are hv's. The Desk: the cargo lane is Intent's, so the other estate's hour-long cargo run (01M7SJQYSZ0ZR7QC19P8K7V8M3) waits behind Intent's cargo units, put to hv; intent-cc's first gate (01M7SKCZ55RMMQ7968P96A82G1, ST0095/01 v1, cold cache) granted into cargo at 09:50Z at load 11.93, beside AE's rebuild; the P1 estates keep one heavy-class slot beside Intent's one. intent-vc's rule for every estate until Intent's release, put to hv: mint threads, work packages and issues only in an estate's main checkout, on main, never in a worktree or on a branch; anything minted elsewhere today is checked against main before it merges, and renumbered at once if it collides. devbin's issue 0373 was minted in canon, on main. After the cut every estate with Intent upgrades together, since 3.4.0 refuses a project the new release's upgrade has rewritten: the fleet sweep, in intent-dc's WP-12, is hv's to schedule.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-20T07:49:51.356Z",
       "recorded_at": "2026-11-19T09:51:22.051Z"
     },
     {
@@ -5884,6 +5889,14 @@
       "text": "devbin-dc's next work, by 2026-11-20 07:13Z by date -u: intent-vc took up vc's spare-hands offer (decision 251) for one item, Intent's issue 0720 (XS, shell: one primitive both of Intent's commit-time gates source for a guard's three-way exit status, in place of cut/gate's own copy of precommit's tool_verdict), on a brief from Intent's dc, who reads the proof; intent-vc lands it. vc passed the brief verbatim. vc checked first that Intent's bin/.devbin/cmd/ and cut/ are not in devbin's manifest (Intent's manifest.sha256 lists neither), so they are Intent's own files, not devbin's vendored seam, and no sweep overwrites the change. devbin-dc builds in its own worktree of Intent under tmp/, mints nothing (decision 252), stays off Intent's main checkout and store, builds none of Intent's Rust, books its test runs at the Desk as Intent's P0 work, banks under refs/bank/devbin-dc/0720/ and sends the proof to intent-vc and intent-dc. devbin-cc holds. Also by 07:13Z: intent-dc's 0711 gate slipped to about 07:20Z, so AE's 2-minute re-parse (01M7VVMJF9NH3MVGC6GS5AV4V8) was granted into heavy at 07:12Z in the clear window; AE's ST0012/02 rebuild stays held, its placement put to hv.",
       "state": "live",
       "recorded_at": "2026-11-20T07:13:56.282Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 226,
+      "text": "FOR hv, asked in vc's window by 07:13Z by date -u on 2026-11-20 and restated at 07:42Z: under decision 251 (another estate's heavy-class run starts only while no Intent heavy-class run is running, waiting or announced within its length), may a P1 heavy run go beside Intent's? (a) beside, one P1 run at a time when the load allows (vc's recommendation: Intent's critical path is cc's coding between short runs); (b) strict, P1 waits for clear windows; (c) only P1 runs of about 5 minutes or less go beside. Waiting on it: the other estate's 30-minute bank run 01M7VYF6G21YY200SK4V6XKQHB, held since 07:42Z; Webber's two-hour sealed run after hv's Submit. Meanwhile the Desk finds windows by asking Intent's seats for their next-ask timing at each Intent END.",
+      "state": "live",
+      "recorded_at": "2026-11-20T07:49:50.113Z"
     }
   ],
   "sent": [
