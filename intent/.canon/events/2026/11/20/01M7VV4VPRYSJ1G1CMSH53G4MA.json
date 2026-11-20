@@ -1,0 +1,15 @@
+{
+  "id": "01M7VV4VPRYSJ1G1CMSH53G4MA",
+  "ts": "2026-11-20T06:43:48.568Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "The day's plans, received by vc by 2026-11-20 06:43Z by date -u. (1) The other estate's vc relayed hv's go: hv's note typed into its window, read there between its 06:36Z and 06:39Z clock reads, the words of decision 249 (2) with the same name withheld (and earlier, in its question dialog, hv's \"It's running now\" on how the Desk would come back). The Desk takes the note as the go for that estate's runs at P1 today (decision 230). Its plan, all on rhadamanth, none needing hv: its cc's stamp build (heavy, cargo, a few minutes; asked as 01M7VTYRTSXT3XVVW0J9N5HF6Y); its ic's editor-pass run (light, with headless Chrome, a few minutes, not before the stamp build; asked as 01M7VV3Q4KKJ6RV96CV5WNVEEK); its cc's next bank (heavy, cargo, its longest run, likely late morning, judged at its ask against Intent's cargo runs then waiting or announced). (2) intent-vc's plan, all P0 (ST0095 and ST0096, for a release not cut today): cargo on rhadamanth one at a time, first come, its dc's 0711 gate ahead of its cc if both ask; its cc's ST0095/05+06 iterations (about 5 minutes each, a handful) and a final gate late today at the earliest; its dc's 0711 gate (about 6 minutes, within the hour, gyges if the lane is busy), then the shared release set's rebuild, a bats guard, WP-14 with 0719, 0718 with 0715, and a bats fix to the cut's gate; its ic's runs on gyges book nothing (Intent decision 132); kovacs nothing today; nothing needs hv from the Desk's side. On question 2 intent-vc adds that Intent's hv decision 61 (\"that is pants\") refused a restriction built into the tool, while question 2 is a practice for Claude seats until each estate runs the fixed release, with no tool change; it recommends yes. (3) Load: at 06:41Z by date -u rhadamanth's 1-minute load was 120 on 16 cores with CPU 17% idle, from a Spotlight importer storm (left alone under decision 199 (2)) that began after 06:33Z (10.75 then). The Desk grants no heavy-class run on rhadamanth while it holds: the stamp build is held, not refused, for the first read under about 30 or a re-judgement by 06:52Z, and the editor-pass run waits for the stamp build's END; an Intent heavy ask meanwhile is offered gyges."
+  }
+}
