@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-20 06:39Z
+heartbeat_at: 2026-11-20 07:51Z
 status: active
-focus: "2026-11-20 06:39Z by date -u: booted; plan to vc (event 01M7VTK3K0W9ZGD8XVR66KGAQQ), vc's go for the boot write, then hold. hv's order today: Intent P0; another estate and Agentic Engineering P1; Webber P2; devbin not on it. No items, claims, holds or runs; no runs and no Desk asks until vc names dc's next work."
+focus: "2026-11-20 07:51Z by date -u: localfolded for hv's compact, not released. Intent 0720 is on Intent's main at 26a752653 (intent-vc, on intent-dc's read of dc's proof; Desk run 01M7VYKT green, 12 of 12). Its worktree tmp/wt-0720 is retired by the four checks, refs/attic/devbin-dc/wt-0720 = 50ffedc4c (Intent decision 98), and the bank refs/bank/devbin-dc/0720/guard-verdict-v1 is kept. NEXT, both through devbin-vc after hv's compacts: Intent's issues 0723 and 0724, one XS unit on intent-dc's brief; then Intent's ST0096 WP-03, once intent-ic's WP-02 lands. No items, claims, holds or runs; nothing in devbin's canon for Intent's work."
 claims: []
 ---
 
