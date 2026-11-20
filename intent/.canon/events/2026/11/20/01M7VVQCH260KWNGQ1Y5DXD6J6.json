@@ -1,0 +1,16 @@
+{
+  "id": "01M7VVQCH260KWNGQ1Y5DXD6J6",
+  "ts": "2026-11-20T06:53:55.618Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 225,
+    "text": "MINTING RULE NOTICE (decision 252), spent when Intent 3.5.x is released: each estate's Claude seats mint threads, work packages and issues only in the estate's main checkout, on main, never in a worktree or on a branch; anything minted elsewhere is checked against main before it merges and renumbered at once if it collides. SENT 2026-11-20 by 06:48Z by date -u: intent-vc (for Intent's seats), the other estate's vc, the estate-level session, devbin's cc and dc; by 06:53Z: agentic-engineering-vc and webber-vc, with the day's order (their sessions started after the 06:3xZ corral). TO SEND at each other estate's next vc session."
+  }
+}

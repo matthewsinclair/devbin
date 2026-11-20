@@ -1,0 +1,15 @@
+{
+  "id": "01M7VWCM64QMEQ5Q7152BMZ34B",
+  "ts": "2026-11-20T07:05:31.589Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "AE's and Webber's sessions started just after the morning's corral; both vcs had the day's order, decision 251's rule and decision 252's minting rule by 06:53Z by date -u, with a plan request. agentic-engineering-vc's plan, received by 07:05Z by date -u: hv's go for AE's ST0012/02 runs, given first-hand in its window between its 06:42Z and 07:01Z clock reads (AE's decision 130), the option's label \"Go now (Recommended)\", on its question for the client edition's one rebuild for Intent 3.5's id note (T02, P02 and the ready-reckoners, in English and French), heavy lane, about 15 minutes, behind Intent's P0; its push and two canvas publishes come back to hv as separate words. Taken under decision 230. Its dc's runs, all on rhadamanth: the re-parse 01M7VVMJF9NH3MVGC6GS5AV4V8 (heavy, about 2 minutes, under decision 247's go, which AE's vc reads as covering any re-parse and the Desk takes so); then ST0012/02 (heavy, about 15 minutes: render-pin, the plan run, the full run and the keep check); not yet asked, and only on hv's word, one arm64 build (heavy, about 20 minutes). Its ac and vc take no lane, and its questions for hv go in its own window. AE records the minting rule as its decision 131. Under decision 251 the Desk grants AE's heavy runs in windows with no Intent heavy-class run running, waiting or announced within their length; if that starves them for long, the trade-off goes to hv."
+  }
+}
