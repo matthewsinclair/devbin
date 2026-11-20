@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-20 07:51Z
+heartbeat_at: 2026-11-20 09:38Z
 status: active
-focus: "2026-11-20 07:51Z by date -u: localfolded for hv's compact, not released. Intent 0720 is on Intent's main at 26a752653 (intent-vc, on intent-dc's read of dc's proof; Desk run 01M7VYKT green, 12 of 12). Its worktree tmp/wt-0720 is retired by the four checks, refs/attic/devbin-dc/wt-0720 = 50ffedc4c (Intent decision 98), and the bank refs/bank/devbin-dc/0720/guard-verdict-v1 is kept. NEXT, both through devbin-vc after hv's compacts: Intent's issues 0723 and 0724, one XS unit on intent-dc's brief; then Intent's ST0096 WP-03, once intent-ic's WP-02 lands. No items, claims, holds or runs; nothing in devbin's canon for Intent's work."
+focus: "2026-11-20 09:37Z by date -u: quiesced for hv's move, not released; idle until devbin-vc's go. Intent's issues 0725 to 0728 (one S unit on intent-dc's brief, lent under decision 255) stand mid-unit in Intent's worktree tmp/wt-0725-0728 at base bc2310e95: all four fixes and the new release_gate.bats cases are made and uncommitted, and residue_class_check.sh is gating on intent-vc's ruling. critic-shell on the diff was stopped at the quiesce and runs again after the go; then the ST0056 attaches last (pipefail_sigpipe, residue_class, reference_current), the bank commit through Intent's full gate, and one Desk run of release_gate.bats. Next after it: WP-12's guard half, held with devbin-vc. No items, claims, holds or runs; nothing in devbin's canon for Intent's work."
 claims: []
 ---
 
