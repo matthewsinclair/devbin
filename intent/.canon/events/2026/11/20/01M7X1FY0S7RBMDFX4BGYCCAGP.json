@@ -1,0 +1,15 @@
+{
+  "id": "01M7X1FY0S7RBMDFX4BGYCCAGP",
+  "ts": "2026-11-20T17:53:57.273Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "261 devbin-dc's loan reaches Intent's Rust, by 2026-11-20 17:53Z by date -u, on hv's word in vc's window at about 17:50Z: \"Intent is P0. Push on.\" Decision 255's line that devbin-dc builds none of Intent's Rust was vc's own term for the shell unit 0720, not hv's, and vc lifts it for ST0096 WP-04's AC-04.1 half on intent-dc's brief, as devbin-cc builds Intent's Rust under decision 256. Terms: a fresh worktree of Intent under tmp/ from main after intent-dc's 0722 + WP-08/09 stack lands; its own build target in that worktree, never main's target or its release pair, nothing linked into or out of it; every build and test through bin/devbin, each run booked at the Desk in cargo as Intent's P0 work, the gate as one bin/devbin gate rust with stdin from /dev/null; off Intent's main checkout and store; mints nothing (252); banks under refs/bank/devbin-dc/, proof to intent-dc and intent-vc, intent-vc lands."
+  }
+}
