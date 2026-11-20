@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5
-heartbeat_at: 2026-11-20 15:08Z
+heartbeat_at: 2026-11-20 16:27Z
 status: active
-focus: "2026-11-20 15:08Z by date -u: localfold for hv's compact cycle, not released. Lent to Intent for its P0 (decision 251): ST0095 WP-07, prefix resolution (M, Rust); the resolver's signature is agreed with intent-ic and intent-cc; nothing built and nothing asked at the Desk. The base waits only on intent-cc's WP-06 (intent-ic's WP-10 Part 1 landed at Intent's c437d1d83); intent-vc names it through vc. Claim 0326 kept (decision 154)."
+focus: "2026-11-20 16:26Z by date -u: localfold for hv's compact, not released. Lent to Intent for its P0 (decision 251): ST0095 WP-07, prefix resolution. v4 is banked in Intent as refs/bank/devbin-cc/st0095/wp07-v4-on-d663e3ea6 (5cda68866), with intent-vc's F1, F2 and R1; gate rust green 16:20Z to 16:26Z, and the proof is with intent-vc and intent-cc. NEXT: critic-rust on the v2-to-v4 interdiff and its findings to intent-vc; land and worktree removal are intent-vc's call. Nothing in devbin's canon for Intent's work; claim 0326 kept (decision 154)."
 claims: [ISSUE:0326]
 ---
 
