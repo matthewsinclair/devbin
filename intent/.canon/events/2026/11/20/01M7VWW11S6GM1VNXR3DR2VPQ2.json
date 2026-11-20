@@ -1,0 +1,15 @@
+{
+  "id": "01M7VWW11S6GM1VNXR3DR2VPQ2",
+  "ts": "2026-11-20T07:13:56.283Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "devbin-dc's next work, by 2026-11-20 07:13Z by date -u: intent-vc took up vc's spare-hands offer (decision 251) for one item, Intent's issue 0720 (XS, shell: one primitive both of Intent's commit-time gates source for a guard's three-way exit status, in place of cut/gate's own copy of precommit's tool_verdict), on a brief from Intent's dc, who reads the proof; intent-vc lands it. vc passed the brief verbatim. vc checked first that Intent's bin/.devbin/cmd/ and cut/ are not in devbin's manifest (Intent's manifest.sha256 lists neither), so they are Intent's own files, not devbin's vendored seam, and no sweep overwrites the change. devbin-dc builds in its own worktree of Intent under tmp/, mints nothing (decision 252), stays off Intent's main checkout and store, builds none of Intent's Rust, books its test runs at the Desk as Intent's P0 work, banks under refs/bank/devbin-dc/0720/ and sends the proof to intent-vc and intent-dc. devbin-cc holds. Also by 07:13Z: intent-dc's 0711 gate slipped to about 07:20Z, so AE's 2-minute re-parse (01M7VVMJF9NH3MVGC6GS5AV4V8) was granted into heavy at 07:12Z in the clear window; AE's ST0012/02 rebuild stays held, its placement put to hv."
+  }
+}
