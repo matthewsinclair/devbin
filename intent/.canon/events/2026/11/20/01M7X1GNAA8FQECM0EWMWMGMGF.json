@@ -1,0 +1,15 @@
+{
+  "id": "01M7X1GNAA8FQECM0EWMWMGMGF",
+  "ts": "2026-11-20T17:54:21.130Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Intent ST0096 WP-04 AC-04.1 (Rust test: five merge requests merged in turn by a bare repo's merge-tree, doctor clean after each pull), briefed by intent-dc 17:56Z. Ruled: one Forge helper in intent-cli tests/common/mod.rs (option b; the three per-file clone helpers left as the fold's population); Rust lifted by devbin-vc decision 261 (own worktree from main, own build target, nothing linked, bin/devbin in cargo, commit with the worktree's own pair inside the booked run, then bin/devbin gate rust). Released when intent-dc says its 0722 + ST0095 WP-08+09 stack has landed"
+  }
+}

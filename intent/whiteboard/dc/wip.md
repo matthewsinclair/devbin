@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-20 17:17Z
+heartbeat_at: 2026-11-20 18:53Z
 status: active
-focus: "2026-11-20 17:17Z by date -u: idle, lent to Intent (decision 255). Landed today on Intent's main: ST0096 WP-03 at 1c45f817c and issue 0733 v2 at 29d5ffe94 (closed at 4b47fe6c8); their worktrees retired (attics refs/attic/devbin-dc/wt-st0096-wp03 = 9e0bba25f, wt-0733 = 00dd603f0). No unit in hand; the next is whatever intent-dc briefs."
+focus: "2026-11-20 18:53Z by date -u: idle, lent to Intent. ST0096 WP-04 AC-04.1 landed at 26c4b0ca0 from my bank d779837ef; tmp/wt-st0096-wp04 retired (attic refs/attic/devbin-dc/wt-st0096-wp04, links removed, checks clean, plain worktree remove). The AT row and AC-04.2 are intent-dc's. Next unit on intent-dc's brief."
 claims: []
 ---
 

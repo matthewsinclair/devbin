@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "390b89e0-6c47-4d22-84b6-538fcbc202be",
-    "heartbeat_at": "2026-11-20T17:17:35.111Z",
+    "heartbeat_at": "2026-11-20T18:53:30.380Z",
     "status": "active",
-    "focus": "2026-11-20 17:17Z by date -u: idle, lent to Intent (decision 255). Landed today on Intent's main: ST0096 WP-03 at 1c45f817c and issue 0733 v2 at 29d5ffe94 (closed at 4b47fe6c8); their worktrees retired (attics refs/attic/devbin-dc/wt-st0096-wp03 = 9e0bba25f, wt-0733 = 00dd603f0). No unit in hand; the next is whatever intent-dc briefs.",
+    "focus": "2026-11-20 18:53Z by date -u: idle, lent to Intent. ST0096 WP-04 AC-04.1 landed at 26c4b0ca0 from my bank d779837ef; tmp/wt-st0096-wp04 retired (attic refs/attic/devbin-dc/wt-st0096-wp04, links removed, checks clean, plain worktree remove). The AT row and AC-04.2 are intent-dc's. Next unit on intent-dc's brief.",
     "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -1955,6 +1955,25 @@
       "state": "archived",
       "archived_at": "2026-11-20T17:17:34.846Z",
       "recorded_at": "2026-11-20T16:36:36.309Z"
+    },
+    {
+      "node": "dc",
+      "kind": "hold",
+      "seq": 48,
+      "text": "Intent ST0096 WP-04 AC-04.1 (Rust test: five merge requests merged in turn by a bare repo's merge-tree, doctor clean after each pull), briefed by intent-dc 17:56Z. Ruled: one Forge helper in intent-cli tests/common/mod.rs (option b; the three per-file clone helpers left as the fold's population); Rust lifted by devbin-vc decision 261 (own worktree from main, own build target, nothing linked, bin/devbin in cargo, commit with the worktree's own pair inside the booked run, then bin/devbin gate rust). Released when intent-dc says its 0722 + ST0095 WP-08+09 stack has landed",
+      "state": "archived",
+      "archived_at": "2026-11-20T17:57:51.411Z",
+      "recorded_at": "2026-11-20T17:54:21.130Z",
+      "edited_at": "2026-11-20T17:54:57.362Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 84,
+      "text": "Intent ST0096 WP-04 AC-04.1 on intent-dc's GO (stack at cbae96463): Forge in intent-cli tests/common/mod.rs and the five-merge-request test; worktree tmp/wt-st0096-wp04, own target (decision 261)",
+      "state": "archived",
+      "archived_at": "2026-11-20T18:53:30.168Z",
+      "recorded_at": "2026-11-20T17:57:51.635Z"
     }
   ],
   "sent": [

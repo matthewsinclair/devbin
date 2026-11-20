@@ -1,0 +1,15 @@
+{
+  "id": "01M7X1Q2WK4FJG5MQZ0EB8ENN2",
+  "ts": "2026-11-20T17:57:51.635Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "Intent ST0096 WP-04 AC-04.1 on intent-dc's GO (stack at cbae96463): Forge in intent-cli tests/common/mod.rs and the five-merge-request test; worktree tmp/wt-st0096-wp04, own target (decision 261)"
+  }
+}
