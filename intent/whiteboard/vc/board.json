@@ -5906,6 +5906,14 @@
       "text": "devbin-cc lent to Intent, by 2026-11-20 08:33Z by date -u: intent-vc took up hv's offer of devbin's idle seats (decision 251) for Intent's ST0095 WP-07 (prefix resolution, M, Rust, intentsvcs' id module), on Intent's critical path, on intent-cc's brief, which comes through intent-vc and vc once intent-cc's bank is in. Until then devbin-cc reads only (ST0095's design, the package, the id module) and builds nothing. It builds in its own worktree of Intent under tmp/, based on Intent's main once WP-06 lands, never on intent-cc's bank; its builds and one suite are booked at the Desk as Intent's P0 work, in rhadamanth's cargo lane after intent-cc's, first come; intent-cc reads its proof beside its critic-rust review and intent-vc lands it. Constraints as for decision 255: mint nothing in Intent, commit nothing to Intent's main, no dev build against the main checkout's store, proof to intent-vc and intent-cc. devbin-cc keeps its 0326 claim.",
       "state": "live",
       "recorded_at": "2026-11-20T08:33:38.583Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 257,
+      "text": "Placement of Intent's own runs, intent-vc's word received by 2026-11-20 09:12Z by date -u, refining its plan (decision 250 (2)) after vc granted intent-cc's clippy into heavy beside intent-dc's WP-14 compile loop: intent-cc's short runs (clippy, check, a targeted test) go beside intent-dc's compile loop while the load allows, since cc's chain is Intent's critical path; intent-cc's full suite and its final gate run alone, so intent-dc's loop pauses at its next edit for them and no other estate's run starts beside them, because the load-sensitive daemon tests flake under load (Intent's watchout 11) and a red there re-runs the critical path. So another estate's long run also waits for a window clear of intent-cc's suite and final gate (decision 251 (2)).",
+      "state": "live",
+      "recorded_at": "2026-11-20T09:13:04.357Z"
     }
   ],
   "sent": [

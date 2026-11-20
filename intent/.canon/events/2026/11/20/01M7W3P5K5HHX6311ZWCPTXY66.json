@@ -1,0 +1,15 @@
+{
+  "id": "01M7W3P5K5HHX6311ZWCPTXY66",
+  "ts": "2026-11-20T09:13:04.357Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Placement of Intent's own runs, intent-vc's word received by 2026-11-20 09:12Z by date -u, refining its plan (decision 250 (2)) after vc granted intent-cc's clippy into heavy beside intent-dc's WP-14 compile loop: intent-cc's short runs (clippy, check, a targeted test) go beside intent-dc's compile loop while the load allows, since cc's chain is Intent's critical path; intent-cc's full suite and its final gate run alone, so intent-dc's loop pauses at its next edit for them and no other estate's run starts beside them, because the load-sensitive daemon tests flake under load (Intent's watchout 11) and a red there re-runs the critical path. So another estate's long run also waits for a window clear of intent-cc's suite and final gate (decision 251 (2))."
+  }
+}
