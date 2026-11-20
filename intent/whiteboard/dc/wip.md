@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-20 15:09Z
+heartbeat_at: 2026-11-20 16:22Z
 status: active
-focus: "2026-11-20 15:09Z by date -u: localfolded for hv's compact cycle, not released. Intent's ST0095 WP-12 guard half (intent-dc's brief, lent under decision 255) stands staged, uncommitted, in Intent's worktree tmp/wt-wp12-guard at main fb3a501d1: the census (28 rows, 39 sites), id_pattern_check.sh v1, its bats file, the precommit, roster and MODULES rows, and 0731's two cosmetic fixes. critic-shell found 1 critical in v1 (a diff-based ratchet can be walked around), so the guard is being redesigned to judge the whole index; the plan is in ~/Devel/scratch/devbin-dc/wp12/NOTES-resume.md. Then critic again, the ST0056 attaches last, the bank, one Desk bats run, and the proof to intent-vc and intent-dc. Earlier today 0723-0724, 0725-0728 and 0731 landed on Intent's main and their worktrees are retired. No items, claims, holds or runs; nothing in devbin's canon for Intent's work."
+focus: "2026-11-20 16:22Z by date -u: Intent's ST0096 WP-03 shell half banked at refs/bank/devbin-dc/st0096/wp03-v1 = 9e0bba25f (base 0655ec5b4), through the full gate; worktree tmp/wt-st0096-wp03. Desk ask 01M7WW8BV7ZP6RVTSJYJT9GWRB (bats, Intent ST0096 WP-03) waits on vc's driver read and GO; driver ~/Devel/scratch/devbin-dc/st0096/run-st0096-wp03.sh (bats file, three-clone gate drive, views fixture). After the run: END to vc at once, then the proof to intent-vc and intent-dc; commit message COMMIT_MSG-st0096-wp03.txt there. No aggregate_views reader (intent-dc's ruling). Landed today: 0723-0724, 0725-0728, 0731, ST0095 WP-12 guard half (1d3604937)."
 claims: []
 ---
 
