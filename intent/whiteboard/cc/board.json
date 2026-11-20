@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5",
-    "heartbeat_at": "2026-11-20T16:27:06.957Z",
+    "heartbeat_at": "2026-11-20T18:44:21.651Z",
     "status": "active",
-    "focus": "2026-11-20 16:26Z by date -u: localfold for hv's compact, not released. Lent to Intent for its P0 (decision 251): ST0095 WP-07, prefix resolution. v4 is banked in Intent as refs/bank/devbin-cc/st0095/wp07-v4-on-d663e3ea6 (5cda68866), with intent-vc's F1, F2 and R1; gate rust green 16:20Z to 16:26Z, and the proof is with intent-vc and intent-cc. NEXT: critic-rust on the v2-to-v4 interdiff and its findings to intent-vc; land and worktree removal are intent-vc's call. Nothing in devbin's canon for Intent's work; claim 0326 kept (decision 154).",
+    "focus": "2026-11-20 18:44Z by date -u: LOCALFOLDED, not released. Lent to Intent's release (hv decision 262 as amended: keep both lent seats; Intent decision 76). Intent issue 0738 green on Desk 01M7X381 (END sent 18:43Z), banked refs/bank/devbin-cc/0738/v1-on-809a3471e = aefa6fff3, patch-id 5b27583a, proof to intent-vc and intent-cc; tmp/wt-0738 retires after it lands. Now ST0096 WP-05 slice B in tmp/wt-wp05b (unbuilt): 27 RenderContext literals carry canon_format; upgrade dehydrates undeclared record views; records before each own file; CasePair dropped for 0711's guard (intent-cc (a)); tests in the_upgrade_writes_the_releases_layout.rs. Next: move 0711's guard ahead of encoding, critic-rust, rebase on A1's new bank, Desk ask. Resume note ~/Devel/scratch/devbin-cc/st0096-wp05/RESUME-sliceB.md. Claim 0326 kept.",
     "claims": [
       "ISSUE:0326"
     ],
