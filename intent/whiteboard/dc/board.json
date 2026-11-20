@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "390b89e0-6c47-4d22-84b6-538fcbc202be",
-    "heartbeat_at": "2026-11-20T16:22:51.346Z",
+    "heartbeat_at": "2026-11-20T16:29:05.666Z",
     "status": "active",
-    "focus": "2026-11-20 16:22Z by date -u: Intent's ST0096 WP-03 shell half banked at refs/bank/devbin-dc/st0096/wp03-v1 = 9e0bba25f (base 0655ec5b4), through the full gate; worktree tmp/wt-st0096-wp03. Desk ask 01M7WW8BV7ZP6RVTSJYJT9GWRB (bats, Intent ST0096 WP-03) waits on vc's driver read and GO; driver ~/Devel/scratch/devbin-dc/st0096/run-st0096-wp03.sh (bats file, three-clone gate drive, views fixture). After the run: END to vc at once, then the proof to intent-vc and intent-dc; commit message COMMIT_MSG-st0096-wp03.txt there. No aggregate_views reader (intent-dc's ruling). Landed today: 0723-0724, 0725-0728, 0731, ST0095 WP-12 guard half (1d3604937).",
+    "focus": "2026-11-20 16:28Z by date -u: Intent's ST0096 WP-03 shell half banked at refs/bank/devbin-dc/st0096/wp03-v1 = 9e0bba25f (base 0655ec5b4); worktree tmp/wt-st0096-wp03. Desk run 01M7WW8B RED, only the bare fresh clone, refused by the frozen pair's doctor (e50978ce0 predates WP-02; WP-02 views.rs:2648 AC-02.3 never counts it); bats 9/9, tracked and untracked clones and fixture green. intent-dc ruled (b): one short run of the fresh clone after intent sync --to-disk, asked as 01M7WWM23QYN6QA399Z5Y3Y376, waiting on vc's driver read and GO; driver ~/Devel/scratch/devbin-dc/st0096/run-st0096-wp03-v2.sh. Then END, and the proof to intent-dc and intent-vc naming the bare fresh shape as frozen-pair-bound. No new bank needed: the drive is scratch.",
     "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
