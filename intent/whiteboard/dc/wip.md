@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-20 09:38Z
+heartbeat_at: 2026-11-20 15:09Z
 status: active
-focus: "2026-11-20 09:37Z by date -u: quiesced for hv's move, not released; idle until devbin-vc's go. Intent's issues 0725 to 0728 (one S unit on intent-dc's brief, lent under decision 255) stand mid-unit in Intent's worktree tmp/wt-0725-0728 at base bc2310e95: all four fixes and the new release_gate.bats cases are made and uncommitted, and residue_class_check.sh is gating on intent-vc's ruling. critic-shell on the diff was stopped at the quiesce and runs again after the go; then the ST0056 attaches last (pipefail_sigpipe, residue_class, reference_current), the bank commit through Intent's full gate, and one Desk run of release_gate.bats. Next after it: WP-12's guard half, held with devbin-vc. No items, claims, holds or runs; nothing in devbin's canon for Intent's work."
+focus: "2026-11-20 15:09Z by date -u: localfolded for hv's compact cycle, not released. Intent's ST0095 WP-12 guard half (intent-dc's brief, lent under decision 255) stands staged, uncommitted, in Intent's worktree tmp/wt-wp12-guard at main fb3a501d1: the census (28 rows, 39 sites), id_pattern_check.sh v1, its bats file, the precommit, roster and MODULES rows, and 0731's two cosmetic fixes. critic-shell found 1 critical in v1 (a diff-based ratchet can be walked around), so the guard is being redesigned to judge the whole index; the plan is in ~/Devel/scratch/devbin-dc/wp12/NOTES-resume.md. Then critic again, the ST0056 attaches last, the bank, one Desk bats run, and the proof to intent-vc and intent-dc. Earlier today 0723-0724, 0725-0728 and 0731 landed on Intent's main and their worktrees are retired. No items, claims, holds or runs; nothing in devbin's canon for Intent's work."
 claims: []
 ---
 
