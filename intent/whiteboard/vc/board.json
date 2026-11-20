@@ -5898,6 +5898,14 @@
       "state": "live",
       "recorded_at": "2026-11-20T07:49:50.113Z",
       "edited_at": "2026-11-20T08:13:06.264Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 256,
+      "text": "devbin-cc lent to Intent, by 2026-11-20 08:33Z by date -u: intent-vc took up hv's offer of devbin's idle seats (decision 251) for Intent's ST0095 WP-07 (prefix resolution, M, Rust, intentsvcs' id module), on Intent's critical path, on intent-cc's brief, which comes through intent-vc and vc once intent-cc's bank is in. Until then devbin-cc reads only (ST0095's design, the package, the id module) and builds nothing. It builds in its own worktree of Intent under tmp/, based on Intent's main once WP-06 lands, never on intent-cc's bank; its builds and one suite are booked at the Desk as Intent's P0 work, in rhadamanth's cargo lane after intent-cc's, first come; intent-cc reads its proof beside its critic-rust review and intent-vc lands it. Constraints as for decision 255: mint nothing in Intent, commit nothing to Intent's main, no dev build against the main checkout's store, proof to intent-vc and intent-cc. devbin-cc keeps its 0326 claim.",
+      "state": "live",
+      "recorded_at": "2026-11-20T08:33:38.583Z"
     }
   ],
   "sent": [
