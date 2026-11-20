@@ -1,0 +1,15 @@
+{
+  "id": "01M7X3VJK9FK77WEFXKG2B30MS",
+  "ts": "2026-11-20T18:35:15.945Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "262 hv in vc's window, received by 2026-11-20 18:35Z by date -u, hv's words: \"It's time to localfold+compact here, then hold on the bounce other than intent-* for the release.\" vc localfolds for hv's compact of vc's window. From the bounce, the Desk grants only the intent-* seats' asks (intent-vc, intent-cc, intent-dc, intent-ic), for Intent's release. Every other seat's ask is held, not refused: devbin-cc and devbin-dc (lent to Intent under 256 and 261, held by the wording as written, and put to hv), Webber, AE and the other estate. A run already started finishes: Webber's ui-floor 01M7WVX7 (heavy, since 18:10Z) and devbin-cc's 0738 01M7X381 (cargo, since 18:31Z). Held at the hold: devbin-dc's WP-04 run 4 01M7X3PX. Decision 251 stands for intent-*: an Intent ask never waits."
+  }
+}
