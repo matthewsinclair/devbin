@@ -1,0 +1,15 @@
+{
+  "id": "01M7VTW8C0F1R5BYPPBBQB78XN",
+  "ts": "2026-11-20T06:39:06.624Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, two messages, both received by 2026-11-20 06:38Z by date -u, hv's words with one name withheld under directive 14: (1) \"You are still The Desk. Please corral running Claudes accordingly. P0 is Intent, P1 is [another estate's project]. P2 is Webber.\" (2) \"Note: devbin-cx is still The Desk. It will corral all running project Claudes accordingly. P0 is Intent, P1 is [another estate's project] + Agentic Engineering. P2 is Webber.\" (devbin-cx read as devbin-vc.) Control re-taken at 06:36Z by date -u, the same-name take from the restart's ORPHANED row (pid 39093). The Desk's order on contention, replacing decision 241's: Intent first on every lane, hv's P0 word here its go as in 241, so no relay is needed; then the other estate (decisions 231, 238, 246) and AE at P1, first-asked or shortest-first between them, each granted on its vc's relay of hv's go (decision 230); Webber last. Decision 243's shape stands until intent-vc's plan for today says otherwise: the cargo lane is Intent's, Intent runs one heavy-class run at a time on rhadamanth, the P1 estates share one heavy-class slot beside it, and a third heavy-class grant waits for the 1-minute load under about 14 to 16. devbin has nothing to run. An ask from an estate not on the list is held and its rank put to hv. Told by message by 06:38Z: intent-vc and the other estate's vc (each for one plan message, passing the order to its seats; intent-vc also that its question 2 of decision 243 goes to hv now), the estate-level session, rhadamanth-sysadm, and devbin's cc and dc (go for their boot writes, then hold). No AE or Webber session was live. Desk waiter armed."
+  }
+}

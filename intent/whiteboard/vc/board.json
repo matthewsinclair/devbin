@@ -4,8 +4,8 @@
     "moniker": "vc",
     "name": "Validation Claude",
     "role": "validation",
-    "session_id": "1af87e83-b21b-4501-b0bf-29983ac62e1a",
-    "heartbeat_at": "2026-11-19T12:26:50.186Z",
+    "session_id": "31d7bc64-995d-46af-b1a9-914a003e7f32",
+    "heartbeat_at": "2026-11-20T06:32:40.294Z",
     "status": "active",
     "focus": "2026-11-19 12:26Z by date -u: localfolded for hv's close at 17:00 local, 13:00Z; not released. The Desk: nothing open or queued at the 12:30Z cutoff; vc keeps it (decision 153). Every Claude on rhadamanth folded for hv's compact but sinclair-estate, which never answered; devbin's cc and dc folded with nothing open; intent/wip.md globalfolded. For hv: question 2 (decision 243, intent-vc's minting rule) and Intent 3.5's fleet upgrade, its tap held (244). On the bounce: Intent's P0 (241, 243: dc's 0711 gate, ic's WP-10a log); AE's ST0012/02 runs on hv's go; the other estate's stamp build. Todos 213, 215, 222, 223, 224 stand.",
     "claims": [],
@@ -5818,6 +5818,14 @@
       "state": "archived",
       "archived_at": "2026-11-19T12:26:38.579Z",
       "recorded_at": "2026-11-19T11:42:54.464Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 249,
+      "text": "hv in vc's window, two messages, both received by 2026-11-20 06:38Z by date -u, hv's words with one name withheld under directive 14: (1) \"You are still The Desk. Please corral running Claudes accordingly. P0 is Intent, P1 is [another estate's project]. P2 is Webber.\" (2) \"Note: devbin-cx is still The Desk. It will corral all running project Claudes accordingly. P0 is Intent, P1 is [another estate's project] + Agentic Engineering. P2 is Webber.\" (devbin-cx read as devbin-vc.) Control re-taken at 06:36Z by date -u, the same-name take from the restart's ORPHANED row (pid 39093). The Desk's order on contention, replacing decision 241's: Intent first on every lane, hv's P0 word here its go as in 241, so no relay is needed; then the other estate (decisions 231, 238, 246) and AE at P1, first-asked or shortest-first between them, each granted on its vc's relay of hv's go (decision 230); Webber last. Decision 243's shape stands until intent-vc's plan for today says otherwise: the cargo lane is Intent's, Intent runs one heavy-class run at a time on rhadamanth, the P1 estates share one heavy-class slot beside it, and a third heavy-class grant waits for the 1-minute load under about 14 to 16. devbin has nothing to run. An ask from an estate not on the list is held and its rank put to hv. Told by message by 06:38Z: intent-vc and the other estate's vc (each for one plan message, passing the order to its seats; intent-vc also that its question 2 of decision 243 goes to hv now), the estate-level session, rhadamanth-sysadm, and devbin's cc and dc (go for their boot writes, then hold). No AE or Webber session was live. Desk waiter armed.",
+      "state": "live",
+      "recorded_at": "2026-11-20T06:39:06.624Z"
     }
   ],
   "sent": [
@@ -9030,6 +9038,16 @@
       "id": "01M7S3F1PNNECKD2CNFPET4GDF",
       "sender": "dc",
       "handled_at": "2026-11-19T09:17:53.738Z"
+    },
+    {
+      "id": "01M7VTK3K0W9ZGD8XVR66KGAQR",
+      "sender": "dc",
+      "handled_at": "2026-11-20T06:39:17.209Z"
+    },
+    {
+      "id": "01M7VTMVDEJ2VV2TX8KQ0BABKN",
+      "sender": "cc",
+      "handled_at": "2026-11-20T06:39:16.741Z"
     }
   ]
 }
