@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-20 16:29Z
+heartbeat_at: 2026-11-20 16:36Z
 status: active
-focus: "2026-11-20 16:28Z by date -u: Intent's ST0096 WP-03 shell half banked at refs/bank/devbin-dc/st0096/wp03-v1 = 9e0bba25f (base 0655ec5b4); worktree tmp/wt-st0096-wp03. Desk run 01M7WW8B RED, only the bare fresh clone, refused by the frozen pair's doctor (e50978ce0 predates WP-02; WP-02 views.rs:2648 AC-02.3 never counts it); bats 9/9, tracked and untracked clones and fixture green. intent-dc ruled (b): one short run of the fresh clone after intent sync --to-disk, asked as 01M7WWM23QYN6QA399Z5Y3Y376, waiting on vc's driver read and GO; driver ~/Devel/scratch/devbin-dc/st0096/run-st0096-wp03-v2.sh. Then END, and the proof to intent-dc and intent-vc naming the bare fresh shape as frozen-pair-bound. No new bank needed: the drive is scratch."
+focus: "2026-11-20 16:36Z by date -u: ST0096 WP-03 landed on Intent's main at 1c45f817c; tmp/wt-st0096-wp03 retired (attic refs/attic/devbin-dc/wt-st0096-wp03 = 9e0bba25f). NOW: Intent issue 0733 on intent-dc's brief, one shared canon reader for stale_at and absent_at; measure the reading disagreements and send intent-dc the proposed answers before coding. Worktree tmp/wt-0733 from main 1c45f817c."
 claims: []
 ---
 
@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-_(none)_
+- Intent issue 0733 on intent-dc's brief (16:36Z): one shared canon reader for stale_at_check.sh and absent_at_check.sh, in lib_citation.sh or a sibling; measure the disagreements first and send intent-dc the proposed answers before coding; worktree tmp/wt-0733 from main 1c45f817c
 
 ## TODO
 

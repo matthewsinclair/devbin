@@ -1,0 +1,15 @@
+{
+  "id": "01M7WX29KTA5BQRYB0H2X0F427",
+  "ts": "2026-11-20T16:36:36.090Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.archive",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "seq": 47
+  }
+}

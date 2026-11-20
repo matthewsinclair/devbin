@@ -1,0 +1,15 @@
+{
+  "id": "01M7WX06SM8FHRJ5GP71QD7WXQ",
+  "ts": "2026-11-20T16:35:27.669Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Intent issue 0733 (stale_at and absent_at share one canon reading; the follow-up from ST0096 WP-03's critic), a unit for dc that intent-dc owns, riding this release: released when intent-dc's brief arrives, which comes after intent-vc lands 9e0bba25f"
+  }
+}
