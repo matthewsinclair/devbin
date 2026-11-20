@@ -5930,6 +5930,14 @@
       "text": "hv in devbin-dc's window after the move, passed to vc by devbin-dc and received by 2026-11-20 14:15Z by date -u, hv's words: \"Ok, we're back after the move. Please corral everyone to continue.\" Every session restarted with the move. The Desk hold of decision 258 (01M7W521JMR5YN7DPHSSVNKJMH) was released at 14:15Z; told by message: intent-vc, the other estate's vc, agentic-engineering-vc, webber-vc, devbin-cc, devbin-dc and the estate-level session. Still queued: the other estate's bank 64 run 01M7W3X295HZ5K79CDBG76HE7M, for a window clear of Intent's suites and gates (decisions 251 and 257). A new session, sparks-gc, is on no list: its asks are held and its rank goes to hv (decision 249).",
       "state": "live",
       "recorded_at": "2026-11-20T14:16:05.005Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 260,
+      "text": "hv in vc's window, received by 2026-11-20 15:06Z by date -u, hv's words: \"(a), go with Webber's split\", answering vc's placement question for Webber's fourth 1.0 build (decision 254, todo 226), the placement as webber-vc ruled it: gyges (webber-ic, after the bundle, booked --tag gyges on webber-vc's GO) runs build ios, test swift, test ui and test ui-ipad, a green test swift there licensing the landing and a StoreKit-only red rerun on rhadamanth; rhadamanth one heavy slot of 25 to 30 minutes for ui-floor and check all (plus that rerun), and webber-dc's archive (about 10 minutes) after the landing, both placed in windows clear of Intent's suites and gates after the P1 runs waiting (decisions 251 and 257). Told webber-vc by message.",
+      "state": "live",
+      "recorded_at": "2026-11-20T15:06:57.159Z"
     }
   ],
   "sent": [

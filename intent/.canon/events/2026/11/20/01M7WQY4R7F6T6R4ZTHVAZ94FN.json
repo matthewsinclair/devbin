@@ -1,0 +1,15 @@
+{
+  "id": "01M7WQY4R7F6T6R4ZTHVAZ94FN",
+  "ts": "2026-11-20T15:06:57.159Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, received by 2026-11-20 15:06Z by date -u, hv's words: \"(a), go with Webber's split\", answering vc's placement question for Webber's fourth 1.0 build (decision 254, todo 226), the placement as webber-vc ruled it: gyges (webber-ic, after the bundle, booked --tag gyges on webber-vc's GO) runs build ios, test swift, test ui and test ui-ipad, a green test swift there licensing the landing and a StoreKit-only red rerun on rhadamanth; rhadamanth one heavy slot of 25 to 30 minutes for ui-floor and check all (plus that rerun), and webber-dc's archive (about 10 minutes) after the landing, both placed in windows clear of Intent's suites and gates after the P1 runs waiting (decisions 251 and 257). Told webber-vc by message."
+  }
+}
