@@ -1,0 +1,15 @@
+{
+  "id": "01M7Z58CAXDDWGH2PWD3EGGDBH",
+  "ts": "2026-11-21T13:38:12.957Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-21 13:38Z by date -u: \"I'm afk for a while. Please push on to completion.\" vc carries Intent 3.5.0 to the cut and intent-vc's push under decisions 264, 265 and hv decision 80: dc's guard fix (records/ layout in lib_at_canon.sh, declared_kind_check.sh, canon_commit_check.sh) with test shell and critic at its commit, the landing, step 3 again, intentd stopped after every vc is told, the real dry run, the cut and the push. The tap does not move: it moves only on hv's word, and this is not one. A ruling only hv can make that would stall is put to hv on return; nothing else public."
+  }
+}
