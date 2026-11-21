@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-21 09:17Z
+heartbeat_at: 2026-11-21 12:50Z
 status: active
-focus: "2026-11-21 09:17Z by date -u: lent to Intent 3.5.x (decision 255). Every unit of mine has landed: WP-11 AC-11.1 at 33d631cbc. tmp/wt-wp11 is retired (attic refs/bank/devbin-dc/st0095/wp11/wt-tip) and scratch wp11 is cleared, its records banked as blobs. No Intent worktree of mine remains. On call."
+focus: "2026-11-21 12:50Z by date -u: localfolded for hv's compact, not released. No Intent unit or worktree is mine (WP-11 landed at 33d631cbc). hv's list on devbin's side is done: dc's scratch cleared from 1.3G to 274M, docs checked against code with no drift, board and inbox empty. The store-backup prune (intent/.backup/db) waits for Devbin's 3.5.0 upgrade to go green (devbin-vc). On call."
 claims: []
 ---
 
