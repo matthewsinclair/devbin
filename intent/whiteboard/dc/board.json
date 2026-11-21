@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "390b89e0-6c47-4d22-84b6-538fcbc202be",
-    "heartbeat_at": "2026-11-21T05:58:33.154Z",
+    "heartbeat_at": "2026-11-21T09:14:33.463Z",
     "status": "active",
-    "focus": "2026-11-20 20:54Z by date -u: Intent ST0095 WP-13 green and banked (refs/bank/devbin-dc/st0095/wp13/v1 = dd82a641b), proof sent; 0737 banked v2 too; both await intent-vc's land, then worktree retirement.",
+    "focus": "2026-11-21 09:14Z by date -u: lent to Intent 3.5.x (decision 255). ST0095 WP-11 AC-11.1 is rebased onto d88b1dccd and green on Desk 01M7YJQ7, banked at refs/bank/devbin-dc/st0095/wp11/v2 = 75b45bd46. It waits for intent-vc to land it and intent-dc to re-cite (3 id.rs rows, plus AT-11.1 at render.rs:18718). Once it lands I retire tmp/wt-wp11 and scratch wp11. Localfolded, on call.",
     "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -2045,7 +2045,8 @@
       "kind": "doing",
       "seq": 90,
       "text": "Intent issue 0740's size-S follow-up (decision 267 widened): banked refs/bank/devbin-dc/0740s/v1 = 9217c6d91 on 2f5c314e3 (Desk 01M7YGGT green: hook clean, gate rust 0, test shell 900/0); proof to intent-dc and intent-vc; the land is intent-vc's; then retire tmp/wt-0740s with an attic ref (plain rm on its release links)",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T07:45:34.000Z",
       "recorded_at": "2026-11-21T07:44:14.746Z"
     }
   ],
