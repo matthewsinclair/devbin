@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "31d7bc64-995d-46af-b1a9-914a003e7f32",
-    "heartbeat_at": "2026-11-21T09:08:22.551Z",
+    "heartbeat_at": "2026-11-21T12:50:55.434Z",
     "status": "active",
-    "focus": "2026-11-21 09:08Z by date -u: LOCALFOLDED for hv's compact (decision 269); not released. Desk CLOSED to new grants until after the compacts; on the bounce reopen it under 265 (Intent first, other estates in idle windows only). Next: devbin-dc's WP-11 rebase END (01M7YJQ7), the fold acks from each vc, then intent-vc calls the rehearsal (kovacs first, alone), then the cut to one hv click. devbin-cc's scratch audit, method approved, books after the compacts.",
+    "focus": "2026-11-21 12:50Z by date -u: LOCALFOLDED for hv's second compact (decision 270); not released. Desk CLOSED to new grants until after the compacts; on the bounce reopen it under 265 (Intent first). Next: Intent's last stack, dc's ELIDE fix then cc's 0746 as the final T's gate (cargo plus bats, commit first), step 3 re-run, the leg-config compare, then the real dry run with intentd stopped (announce to every vc first), hv confirms the hold, the cut and intent-vc's push.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5962,7 +5962,8 @@
       "kind": "decision",
       "seq": 262,
       "text": "262 hv in vc's window, received by 2026-11-20 18:35Z by date -u, hv's words: \"It's time to localfold+compact here, then hold on the bounce other than intent-* for the release.\" vc localfolds for hv's compact of vc's window. From the bounce, the Desk grants only Intent's release work: the intent-* seats' asks (intent-vc, intent-cc, intent-dc, intent-ic) and, by hv's ruling on the lent seats (relayed by intent-vc, given at 18:35Z in intent-vc's window, in hv's words: \"Keep both\", then \"Ok, push on. Get this done. Intent is P0.\"), devbin-cc's and devbin-dc's asks for Intent (256, 261). Decision 251 stands: an Intent ask never waits. Held, not refused: Webber, AE and the other estate. A run already started finishes: Webber's ui-floor 01M7WVX7 (heavy, since 18:10Z). Next in cargo: devbin-cc's 0738 01M7X381 (since 18:31Z), then devbin-dc's WP-04 run 4 01M7X3PX.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T12:50:42.316Z",
       "recorded_at": "2026-11-20T18:35:15.945Z",
       "edited_at": "2026-11-20T18:36:14.176Z"
     },
@@ -6004,7 +6005,8 @@
       "kind": "decision",
       "seq": 267,
       "text": "devbin-dc's loan reaches Intent issue 0740 and its size-S follow-up, by 2026-11-21 06:55Z by date -u, widened at 07:18Z: intent-vc gave devbin-dc 0740 (Rust in intentsvcs: views.rs skew_against arms and the finding.rs/facade.rs remedy constant onto 0738's Finding::with_remedy, Rust tests, two doc pages re-driven in scratch) on ic's plan, with ic paused by hv; and, from intent-dc's read of 0740, its follow-up (the two prose lines that still say each finding names its fix, lib/templates/hooks/pre-commit.sh:778 and intent/docs/pre-commit-hook.md:184, and the three findings that still put a verb in their detail, ingest.rs's two cover findings and skew_against's unmigrated-board advisory, all on 0738's mechanism). Decision 263 (vc's own term) widens to both on decision 261's terms: a fresh worktree with its own target, every build and test through bin/devbin booked as Intent P0 (cargo, plus bats for test shell), the commit inside a booked slot, vc reads the driver before GO, START and END to vc. Under hv's 'Intent is P0' (decision 264) and intent-vc's 3.5.x path.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T12:50:42.569Z",
       "recorded_at": "2026-11-21T06:55:08.415Z",
       "edited_at": "2026-11-21T07:18:12.941Z"
     },
@@ -6013,7 +6015,8 @@
       "kind": "decision",
       "seq": 268,
       "text": "devbin-dc's loan reaches Intent ST0095 WP-11 AC-11.1, by 2026-11-21 07:45Z by date -u: intent-vc gave devbin-dc the TUI criterion (Rust in intent-cli/src/tui: list, open and move between hashed records; an all-digit shown id keeps its leading zero; with ic's semicolon nit from AC-11.2 in the served page's remedy) since hv has paused ic. Decision 263 (vc's own term) widens to it on decision 261's terms: a plan to intent-dc and intent-vc before any change, a fresh worktree with its own target, every build and test through bin/devbin booked as Intent P0, critic-rust, the commit inside a booked slot, vc reads the driver before GO, START and END to vc. vc told hv in vc's window by 07:45Z that this hand-off was coming, and that an unpaused ic would avoid it; hv has not answered (AFK).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T12:50:42.810Z",
       "recorded_at": "2026-11-21T07:45:52.949Z"
     },
     {
@@ -6021,8 +6024,17 @@
       "kind": "decision",
       "seq": 269,
       "text": "hv in vc's window, read by 2026-11-21 09:07Z by date -u: context is high in every estate, so an estate-wide localfold+compact cycle runs now; hv runs /compact in each Claude once it is folded and quiesced. vc sent the fold call by 09:08Z to intent-vc (for cc, dc, ic), webber-vc (five seats), agentic-engineering-vc (ac, dc), the other estate's vc (four seats), devbin-cc (scratch audit deferred until after the compacts) and devbin-dc (WP-11 rebase 01M7YJQ7 finishes in cargo, then folds). The Desk is closed to new grants until after the compacts. State at the fold: Intent's tip is nearly complete: landed are the WP-05 stack, 0712+0744, 0740 and its follow-up, the docs unit, the team page and its UPGRADE 8 subsection, W15, AT-06 and the upgrade guard (0149194eb). Left: WP-11 AC-11.1's rebase (running), then intent-vc calls the rehearsal, kovacs first and alone through kovacs-sysadm, which hv says is already running on kovacs (rhadamanth-sysadm read kovacs up at 08:13:55Z), then cargo and bats here. Then the cut, to one hv click at the upstream push (decision 265 (2)).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T12:50:43.035Z",
       "recorded_at": "2026-11-21T09:08:22.312Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 270,
+      "text": "hv in vc's window, read by 2026-11-21 12:50Z by date -u: a second estate-wide localfold+compact cycle; the fold call went to intent-vc, webber-vc, agentic-engineering-vc, the other estate's vc, devbin-cc and devbin-dc; the Desk takes no new grants until after the compacts, and no slot is held. Since decision 269: hv's decision 80 (intent-vc pushes Intent itself) and 82 (0746 and AC-03.3 ride 3.5.0) and 83 (the env-var guard keeps a FEATURE_ONLY list, relayed by vc at 12:21Z) are on Intent's hv board. Intent main is a2c4fa1e2: WP-11 AC-11.1, id --read-only and its clippy fix, AC-12.1 routing, 0745, the release-debt docs, ro_copy, the 3.5.0 release text and AC-03.3's code. Rehearsal: step 1 kovacs GREEN at 10141745e, step 2 build GREEN, step 5 dry run done as far as a sandbox goes (after row: cut publish --hold-tap). Left: dc's ELIDE fix, then cc's 0746 whose one run is the final T's gate (gate all, test shell, shots twice), step 3's re-run, the leg-config compare, then the real dry run with intentd stopped (vc announces), hv confirms the hold (decision 77), the cut and intent-vc's push (decision 80), intentd restarted from a Claude shell. Rule since 12:00Z: commit first, then gate. The preflight memory was stale and is corrected (retired at 1a2d0b72a). Webber waits on hv's phone check of ced4bc2f.",
+      "state": "live",
+      "recorded_at": "2026-11-21T12:50:50.593Z"
     }
   ],
   "sent": [

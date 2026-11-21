@@ -1,0 +1,15 @@
+{
+  "id": "01M7Z2HMK1CWW21CCHJQQ4M8CT",
+  "ts": "2026-11-21T12:50:50.593Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-21 12:50Z by date -u: a second estate-wide localfold+compact cycle; the fold call went to intent-vc, webber-vc, agentic-engineering-vc, the other estate's vc, devbin-cc and devbin-dc; the Desk takes no new grants until after the compacts, and no slot is held. Since decision 269: hv's decision 80 (intent-vc pushes Intent itself) and 82 (0746 and AC-03.3 ride 3.5.0) and 83 (the env-var guard keeps a FEATURE_ONLY list, relayed by vc at 12:21Z) are on Intent's hv board. Intent main is a2c4fa1e2: WP-11 AC-11.1, id --read-only and its clippy fix, AC-12.1 routing, 0745, the release-debt docs, ro_copy, the 3.5.0 release text and AC-03.3's code. Rehearsal: step 1 kovacs GREEN at 10141745e, step 2 build GREEN, step 5 dry run done as far as a sandbox goes (after row: cut publish --hold-tap). Left: dc's ELIDE fix, then cc's 0746 whose one run is the final T's gate (gate all, test shell, shots twice), step 3's re-run, the leg-config compare, then the real dry run with intentd stopped (vc announces), hv confirms the hold (decision 77), the cut and intent-vc's push (decision 80), intentd restarted from a Claude shell. Rule since 12:00Z: commit first, then gate. The preflight memory was stale and is corrected (retired at 1a2d0b72a). Webber waits on hv's phone check of ced4bc2f."
+  }
+}
