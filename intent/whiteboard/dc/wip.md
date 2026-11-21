@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-21 12:52Z
+heartbeat_at: 2026-11-21 16:27Z
 status: active
-focus: "2026-11-21 12:50Z by date -u: localfolded for hv's compact, not released. No Intent unit or worktree is mine (WP-11 landed at 33d631cbc). hv's list on devbin's side is done: dc's scratch cleared from 1.3G to 274M, docs checked against code with no drift, board and inbox empty. The store-backup prune (intent/.backup/db) waits for Devbin's 3.5.0 upgrade to go green (devbin-vc). On call."
+focus: "2026-11-21 16:27Z by date -u: localfolded for hv's compact, not released. Devbin is on Intent 3.5.0 (9502c9cf, 9e2d690f). Next: the intent/.backup/db prune, approved by devbin-vc (8 old backups plus dc's 2026-09-16 pre-noderow store copy; the newest three schema-35 backups stay) but refused by auto mode, so it runs only on hv's yes in dc's window: bash ~/Devel/scratch/devbin-dc/prune-backup-db.sh, then the final ls to devbin-vc. No Intent unit or worktree is dc's. On call."
 claims: []
 ---
 
