@@ -1,0 +1,11 @@
+{
+  "id": "AT-12.10",
+  "kind": "test",
+  "covers": [
+    "AC-12.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/documentation.bats::\"every relative link in the docs resolves to a file that exists\""
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "AT-8.3",
+  "kind": "test",
+  "file": "tests/unit/releasecore.bats",
+  "covers": [
+    "AC-8.3"
+  ],
+  "status": "green",
+  "note": "minted by vc with WP-08 on 2026-10-23, before any arm exists; the builder re-cites the file with intent at edit if the arms land elsewhere. Red on the base's code (0683a6a8, WP-08's test files copied in) under BSD and GNU, in cc's series of 2026-10-23 14:58Z to 15:05Z (runs/arm.red.core-new.*): the arms at releasecore.bats:880, :902, :928 and :954, for want of the widened reader and the pass line. Green at 2dec40a1 under BSD and GNU (cc's runs/arm.green2.release.*); the fix round to 5059a26e changed no line of releasecore.bats, and the full suite of the landing tree passed at 23f5f70e (seal 20261023-2029). Landed at 6bda9690."
+}

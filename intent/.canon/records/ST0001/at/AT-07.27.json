@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.27",
+  "kind": "test",
+  "covers": [
+    "AC-07.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"declared shared options render with their values and summary\""
+  }
+}

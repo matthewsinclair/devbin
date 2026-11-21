@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.40",
+  "kind": "test",
+  "covers": [
+    "AC-06.14"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"concurrent runs of one gate do not share or truncate a log\""
+  }
+}

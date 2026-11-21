@@ -1,0 +1,10 @@
+{
+  "id": "AT-1.4",
+  "kind": "test",
+  "file": "tests/unit/doctor.bats",
+  "covers": [
+    "AC-1.2"
+  ],
+  "status": "green",
+  "note": "doctor's declared-and-inert note, and its silence when enabled; marked # AT-1.4"
+}

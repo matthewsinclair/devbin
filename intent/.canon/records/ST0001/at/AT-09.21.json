@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.21",
+  "kind": "test",
+  "covers": [
+    "AC-09.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"upgrade with nothing to do says so rather than printing an empty report\""
+  }
+}

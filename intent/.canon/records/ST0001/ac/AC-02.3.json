@@ -1,0 +1,8 @@
+{
+  "id": "AC-02.3",
+  "text": "Every assertion discriminates: it passes on the true case and fails on the false one, independent of the caller's shell options",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

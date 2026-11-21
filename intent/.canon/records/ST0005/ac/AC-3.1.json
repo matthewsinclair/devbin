@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.1",
+  "text": "fleet upgrade is dry-run by DEFAULT and prints the plan; applying takes an explicit flag, because a whole-of-estate write is fleet-blast-radius.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

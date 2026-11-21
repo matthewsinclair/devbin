@@ -1,0 +1,9 @@
+{
+  "id": "AC-4.2",
+  "text": "On rhad and on kovacs, devbin install --into a fixture, then bin/devbin upgrade and bin/devbin doctor in it, each name the brew install and say why.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "rhad (vc, 2026-10-17) and kovacs (K012, rc 0): a fixture vendored with devbin install --into from the brew install; bare bin/devbin upgrade 'Already up to date' from HOMEBREW_PREFIX/opt/devbin/libexec; doctor 13 checks 0 failed, naming the install 'by HOMEBREW_PREFIX's opt/devbin, since no DEVBIN_INSTALL_PREFIX or machine pointer names one'; recorded in commit d2f48f46"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-03.5",
+  "text": "Equivalence proven through the new entry point before deletion, naming for each row the claim that could FAIL",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`cli` byte-identical on `--help`, `--version` and `about`; `test mix` 785 passed both ways with seal `20260810-1642.MIX.errors` 0 bytes; `iex` and `repl` measured by poisoned-binary probe rather than asserted. Two deliberate deltas recorded: `iex` loses the `Arca.Cli` startup task (old `iex -S mix Arca.Cli`, new `iex -S mix` -- proven by argc), and `repl` gains persistent history. **A measurement artefact was caught and corrected mid-probe**: the first old-side repl reading showed no completions because this WP had already moved the file the old script looks for; a fair before-reading was taken with it restored"
+  }
+}

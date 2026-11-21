@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.6",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R3: root_var may not take a name devbin's own environment uses\""
+  }
+}

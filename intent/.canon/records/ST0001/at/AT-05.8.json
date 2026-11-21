@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.8",
+  "kind": "test",
+  "covers": [
+    "AC-05.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"require_tool passes for a real tool and dies for an absent one\""
+  }
+}

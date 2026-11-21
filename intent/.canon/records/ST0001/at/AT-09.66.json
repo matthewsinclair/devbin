@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.66",
+  "kind": "test",
+  "covers": [
+    "AC-09.14"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/scaffold.bats::\"with no bats suite the stub is skipped and said to be skipped\""
+  }
+}

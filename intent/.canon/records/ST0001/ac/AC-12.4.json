@@ -1,0 +1,8 @@
+{
+  "id": "AC-12.4",
+  "text": "The annotated reference config parses and validates against devbin's own schema. This upgrades AC-01.4 and AC-03.7 from asserted evidence to a test: both claimed the reference documents the schema, and nothing had ever checked it",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-03.6",
+  "text": "The reader runs on bash 3.2",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

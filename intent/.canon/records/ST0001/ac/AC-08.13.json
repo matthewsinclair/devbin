@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.13",
+  "text": "Gate logs resolve against the project root, so the verdict line names the file that was actually written, and a declared `run:` executes at the project root from any calling directory",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

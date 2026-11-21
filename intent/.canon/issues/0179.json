@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 179,
+  "schema": "intent/issue@4.0",
+  "id": "0179",
   "slug": "a-gate-s-log-directory-under-tmp-is-given-an-ign",
   "title": "a gate's log directory under tmp/ is given an ignore file in a repository git refuses to read, a directory the project tracks included, because the refusal is read as no repository",
   "status": "closed",

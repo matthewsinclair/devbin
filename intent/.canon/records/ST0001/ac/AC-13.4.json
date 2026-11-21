@@ -1,0 +1,9 @@
+{
+  "id": "AC-13.4",
+  "text": "The full lifecycle -- install, doctor, new, gates, tampered-upgrade refusal, force-heal, uninstall -- was exercised under `/bin/bash` 3.2, including handler processes (PATH stripped so `env bash` resolves 3.2)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`review.md` probes P9 and the e2e transcript"
+  }
+}

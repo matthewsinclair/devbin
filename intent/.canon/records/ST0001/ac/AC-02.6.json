@@ -1,0 +1,9 @@
+{
+  "id": "AC-02.6",
+  "text": "`intent/llm/ARCHITECTURE-shell.md` describes what devbin actually became -- the runtime's dependency layering, the one resolution order, the two activation axes, the declarative boundary, the sealed-gate contract, the bash 3.2 constraints that bite, and the defect class this codebase generates -- rather than the generic shell template it started as",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "that file"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.18",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R9: replacing swaps the file rather than truncating it in place\""
+  }
+}

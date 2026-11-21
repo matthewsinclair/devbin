@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.9",
+  "kind": "test",
+  "covers": [
+    "AC-06.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"note_promotion appends to the log as well as printing\""
+  }
+}

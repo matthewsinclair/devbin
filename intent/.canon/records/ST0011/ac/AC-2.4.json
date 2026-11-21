@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.4",
+  "text": "release publish, --expect, the ci step and the ci.tag and ci.base keys are retired; the dry run runs no gate; ci.wait defaults to 60m; the RELEASE seal carries start and end clock lines.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

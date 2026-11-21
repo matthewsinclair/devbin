@@ -1,0 +1,11 @@
+{
+  "id": "AT-16.4",
+  "kind": "test",
+  "covers": [
+    "AC-16.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/data.bats::\"db runs normally in the default environment\""
+  }
+}

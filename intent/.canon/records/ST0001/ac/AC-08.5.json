@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.5",
+  "text": "Every catalogue option names a grammar devbin actually ships, and every `@builtin` option has a function implementing it",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

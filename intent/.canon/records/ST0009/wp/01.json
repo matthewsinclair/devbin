@@ -1,0 +1,9 @@
+{
+  "id": "01",
+  "title": "The formula published to the tap, and each cut publishing it",
+  "scope": "S",
+  "status": "done",
+  "objective": "bin/devbin formula publish renders packaging/homebrew/devbin.rb at the newest release tag and commits it to the tap matthewsinclair/homebrew-devbin as Formula/devbin.rb; it runs at hv's terminal, since a push from an agent session is refused. Once the tap holds a formula, devbin's release config declares an after: step running formula publish, so each later cut publishes it, and docs/releasing.md stops saying there is no tap.",
+  "body": "",
+  "preamble": ""
+}

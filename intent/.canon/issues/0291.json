@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 291,
+  "schema": "intent/issue@4.0",
+  "id": "0291",
   "slug": "st0010-audit-fixes-install-text-that-turns-false",
   "title": "ST0010 audit fixes: install text that turns false at publication, a broken note heading, the owner's domains in fixtures, billing in live files, a real IPv6 address",
   "status": "closed",

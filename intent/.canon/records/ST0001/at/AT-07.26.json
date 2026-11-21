@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.26",
+  "kind": "test",
+  "covers": [
+    "AC-07.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"the preamble renders above the listing\""
+  }
+}

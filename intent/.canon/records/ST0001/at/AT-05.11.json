@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.11",
+  "kind": "test",
+  "covers": [
+    "AC-05.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"strip_ansi leaves plain text untouched\""
+  }
+}

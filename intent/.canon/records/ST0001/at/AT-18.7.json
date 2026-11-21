@@ -1,0 +1,11 @@
+{
+  "id": "AT-18.7",
+  "kind": "test",
+  "covers": [
+    "AC-18.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/optin.bats::\"a project handler activates an opt-in command without an enabled flag\""
+  }
+}

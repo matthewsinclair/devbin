@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 309,
+  "schema": "intent/issue@4.0",
+  "id": "0309",
   "slug": "the-candidate-ref-s-lease-delete-and-read-back-a",
   "title": "The candidate ref's lease delete and read-back are written twice, in _legs_cand_delete and _leg_candidate_clear",
   "status": "closed",

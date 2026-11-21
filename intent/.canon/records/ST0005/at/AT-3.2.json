@@ -1,0 +1,9 @@
+{
+  "id": "AT-3.2",
+  "kind": "test",
+  "file": "tests/unit/fleet.bats",
+  "covers": [
+    "AC-3.2"
+  ],
+  "status": "green"
+}

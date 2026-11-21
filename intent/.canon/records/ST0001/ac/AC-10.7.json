@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.7",
+  "text": "`bin/conflab_helpers` and `bin/conflab_help` are deleted with their content accounted for line by line: folded into devbin, relocated project-local, or explicitly dropped with a reason. An unaccounted line is a finding, not a rounding error. No size is quoted here on purpose -- Conflab is live, so any figure written today is stale by the time this runs",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "the function-by-function mapping in `WP/10/inventory.md` (helpers), the 18 authored topics + the generated listing (help, per `help-migration.md`: the ~400-line `print_global` deleted by design, three fragments migrated to config), both files deleted in `5f8d20b0`"
+  }
+}

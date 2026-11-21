@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 282,
+  "schema": "intent/issue@4.0",
+  "id": "0282",
   "slug": "an-install-tree-whose-manifest-cannot-be-read-is",
   "title": "an install tree whose manifest cannot be read is told to run `devbin install`, advice that would make it a project",
   "status": "closed",

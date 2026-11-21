@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.9",
+  "text": "The corpus's four hand-written option setters collapse into one config-driven function: a valued option is validated against its declared set and exported, a value outside the set is refused naming what was expected, an option declaring no values accepts anything, and a flag exports `true` or the value config names",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

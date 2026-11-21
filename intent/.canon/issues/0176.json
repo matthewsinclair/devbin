@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 176,
+  "schema": "intent/issue@4.0",
+  "id": "0176",
   "slug": "check-targetdir-reads-cargo-config-toml-where-ca",
   "title": "check targetdir reads .cargo/config.toml where cargo reads .cargo/config",
   "status": "closed",

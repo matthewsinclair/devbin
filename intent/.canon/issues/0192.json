@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 192,
+  "schema": "intent/issue@4.0",
+  "id": "0192",
   "slug": "every-test-pays-for-a-real-install-even-where-th",
   "title": "every test pays for a real install even where the install is not what it tests: install once per file and copy it, amending D24",
   "status": "closed",

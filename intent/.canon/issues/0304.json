@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 304,
+  "schema": "intent/issue@4.0",
+  "id": "0304",
   "slug": "a-real-cut-runs-its-steps-with-errexit-off-and-a",
   "title": "A real cut runs its steps with errexit off and a dry run with it on, so an unchecked failing step stops a dry run and is passed over by the cut that publishes",
   "status": "closed",

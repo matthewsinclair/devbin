@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.9",
+  "kind": "test",
+  "covers": [
+    "AC-09.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"a second install refuses and names the flag that overrides it\""
+  }
+}

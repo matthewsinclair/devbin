@@ -1,0 +1,8 @@
+{
+  "id": "AC-7.2",
+  "text": "While the leg is unbuilt, check DECLARES the Fly runtime as a blind spot in its own output rather than omitting it. An unbuilt leg that says nothing is indistinguishable from a leg that found nothing.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

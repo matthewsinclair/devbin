@@ -1,0 +1,9 @@
+{
+  "id": "AC-04.11",
+  "text": "Devbin runs its own gates through its own dispatcher, and `tests/gate` is deleted rather than kept alongside",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`bin/devbin check all`, `bin/devbin test all`, `intent/llm/MODULES.md` watch-item resolved"
+  }
+}

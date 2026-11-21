@@ -1,0 +1,11 @@
+{
+  "id": "AT-03.24",
+  "kind": "test",
+  "covers": [
+    "AC-03.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/config.bats::\"the reader never invokes yq\""
+  }
+}

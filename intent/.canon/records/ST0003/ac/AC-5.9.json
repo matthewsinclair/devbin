@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.9",
+  "text": "No two columns in a report row ever run together. A field wider than its column is misaligned but never joined to its neighbour: seen on real output, an IPv6 source address of 22 characters in an 18-wide column rendered as 2a00:1450:4864:20::4311 msg, where ::4311 reads as a perfectly plausible address. A report that can silently fuse two fields into one wrong-looking value is worse than one that misaligns.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

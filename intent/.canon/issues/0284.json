@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 284,
+  "schema": "intent/issue@4.0",
+  "id": "0284",
   "slug": "is-install-launcher-resolves-the-hit-in-the-case",
   "title": "is_install_launcher resolves the hit in the case it was typed, so use brew can tell a user to move Homebrew's own link",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.11",
+  "text": "doctor exits non-zero when any check fails, and CANNOT report a clean bill having run nothing: the number of checks run is in its output, and a run that checks nothing is itself a failure (the AC-04.13 lesson, applied to a gate that predates it)",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

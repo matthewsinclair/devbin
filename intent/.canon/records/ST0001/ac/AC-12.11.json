@@ -1,0 +1,9 @@
+{
+  "id": "AC-12.11",
+  "text": "Two of this WP's own deliverables were written before the WP that settled them, and are corrected rather than delivered as specified: the `ARCHITECTURE-shell.md` reconciliation was already done by WP-02 (AC-02.6), and the brief's \"`yq`-optional constraints\" describes a design D7's revision removed entirely. The third sighting of this pattern",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "this AC, `design.md` D7, `intent/llm/ARCHITECTURE-shell.md`"
+  }
+}

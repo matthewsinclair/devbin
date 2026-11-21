@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 37,
+  "schema": "intent/issue@4.0",
+  "id": "0037",
   "slug": "the-exit-code-contract-is-stated-in-three-docume",
   "title": "The exit-code contract is stated in three documents and none of them carries the 4 that shipped",
   "status": "closed",

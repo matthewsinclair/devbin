@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 206,
+  "schema": "intent/issue@4.0",
+  "id": "0206",
   "slug": "the-suite-s-anti-vacuity-floors-hardcode-counts",
   "title": "the suite's anti-vacuity floors hardcode counts: tests compare what they read against numbers written into them, and some state today's totals in their failure text",
   "status": "closed",

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 321,
+  "schema": "intent/issue@4.0",
+  "id": "0321",
   "slug": "comments-still-say-the-public-tree-carries-no-in",
   "title": "Comments still say the public tree carries no intent/, which the switch made untrue",
   "status": "closed",

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 52,
+  "schema": "intent/issue@4.0",
+  "id": "0052",
   "slug": "ci-has-been-red-on-main-since-2026-08-27-and-the",
   "title": "CI has been red on main since 2026-08-27 and the tagged release commit never ran it at all",
   "status": "closed",

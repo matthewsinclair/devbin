@@ -1,0 +1,8 @@
+{
+  "id": "AC-8.3",
+  "text": "release check names, by file and line, every workflow in .github/workflows that carries a release-writing step (gh release create, upload, edit or delete; gh api against the releases endpoints; a release action), whatever its trigger. On a pass it prints how many workflow files it read and that none writes a release object. The warning status of D42 is unchanged.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.7",
+  "kind": "test",
+  "covers": [
+    "AC-14.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"builtin_has_default_run distinguishes a shipped command line from a tier-4 dash\""
+  }
+}

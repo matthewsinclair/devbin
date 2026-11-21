@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.72",
+  "kind": "test",
+  "covers": [
+    "AC-09.15"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/scaffold.bats::\"an existing authored help topic is kept, not overwritten\""
+  }
+}

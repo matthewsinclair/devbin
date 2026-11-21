@@ -1,0 +1,9 @@
+{
+  "id": "AC-05.16",
+  "text": "Every corpus divergence carries a ruling with its reason",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`design.md` D13"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.8",
+  "text": "Equivalence evidence: every command and subcommand that worked before works after, captured as a before/after transcript taken while BOTH launchers are present",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`WP/10/equivalence.md`, collected 2026-08-09 with both launchers canonical: byte-identical `use` and `which all`, the full usage-path probe table, the adapted-text cases named"
+  }
+}

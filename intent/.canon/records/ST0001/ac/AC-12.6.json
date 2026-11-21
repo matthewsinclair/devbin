@@ -1,0 +1,9 @@
+{
+  "id": "AC-12.6",
+  "text": "The worked example is EXECUTED rather than asserted: every command line and every output block in the guide's walkthrough was run against a real install, and the two places the prose disagreed with the tool were corrected to what the tool actually printed",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`impl.md` \"The walkthrough was run, not written\""
+  }
+}

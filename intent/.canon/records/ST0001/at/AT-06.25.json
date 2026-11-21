@@ -1,0 +1,12 @@
+{
+  "id": "AT-06.25",
+  "kind": "test",
+  "covers": [
+    "AC-06.9",
+    "AC-06.10"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"the xcodebuild grammar captures a swift-testing issue block\""
+  }
+}

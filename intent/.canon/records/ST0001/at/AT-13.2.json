@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.2",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R1: the stub also passes from a nested test directory\""
+  }
+}

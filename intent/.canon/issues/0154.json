@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 154,
+  "schema": "intent/issue@4.0",
+  "id": "0154",
   "slug": "fleet-cannot-see-an-install-that-has-lost-its-ma",
   "title": "fleet cannot see an install that has lost its manifest, so the census drops it at exit 0",
   "status": "closed",

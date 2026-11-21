@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 268,
+  "schema": "intent/issue@4.0",
+  "id": "0268",
   "slug": "install-into-is-read-as-no-into-a-machine-instal",
   "title": "install --into \"\" is read as no --into: a machine install vendors into the current directory, and a dev checkout's launcher selects PUBLISH (from 0258's review)",
   "status": "closed",

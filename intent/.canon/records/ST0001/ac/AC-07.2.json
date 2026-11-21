@@ -1,0 +1,8 @@
+{
+  "id": "AC-07.2",
+  "text": "Commands are GROUPED, in the order `help.groups` declares. A group config does not name is appended in first-seen order, and a command with no group lands in a single trailing catch-all rather than vanishing from the listing",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

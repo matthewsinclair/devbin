@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.14",
+  "text": "The irreversible step happens ONCE, LAST, with the evidence already in hand: taking `bin/conflab` and `bin/cf` and deleting the two files is a delete-only commit, so undo is a single revert",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Conflab `5f8d20b0` on hv's explicit go over `WP/10/equivalence.md`: two symlink changes and 24 deletions, nothing else; verified live through the switched entry points incl every shim, doctor 9 checks 0 failed"
+  }
+}

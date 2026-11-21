@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.2",
+  "text": "`bin/.devbin/config.yaml` reproduces Laksa's declared surface with every entry DERIVED from `WP/11/laksa-inventory.md`: the 15 commands of `LAKSA_COMMANDS`, `--env` + `--repl` with their exports, `version_from: mix.exs` with no sidecars, the four declared/overridden gate rows (codegen, compile, toolchain, fmt md) each restating its seal keys, `docs.treeindex_dirs`, and the two opt-ins (precommit, content)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Laksa `7b8d50ee`, each entry citing the inventory; catalogue-matching rows absent by design; doctor validates 8/0"
+  }
+}

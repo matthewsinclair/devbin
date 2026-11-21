@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 303,
+  "schema": "intent/issue@4.0",
+  "id": "0303",
   "slug": "the-desk-s-core-cap-reaches-bats-alone-devbin-te",
   "title": "The desk's core cap reaches bats alone: DEVBIN_TEST_JOBS bounds the suite and nothing reaches a project's build commands",
   "status": "closed",

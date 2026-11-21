@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 183,
+  "schema": "intent/issue@4.0",
+  "id": "0183",
   "slug": "targetdir-bats-980-says-the-0163-workspace-case",
   "title": "targetdir.bats:980 says the 0163 workspace case stays failed, where 0.1.8 passed it",
   "status": "closed",

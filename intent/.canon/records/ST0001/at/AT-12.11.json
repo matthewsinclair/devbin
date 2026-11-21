@@ -1,0 +1,10 @@
+{
+  "id": "AT-12.11",
+  "kind": "test",
+  "file": "tests/unit/documentation.bats",
+  "covers": [
+    "AC-12.8"
+  ],
+  "status": "green",
+  "note": "Cites the arm 'EVERY command devbin offers in its own tree has authored help, not the generated fallback (0112)'. 0112 renamed it from 'the lifecycle commands have authored help, not the generated fallback', the title this row named until it was re-cited on 2026-09-23, with 0113's landing at 719e8a1."
+}

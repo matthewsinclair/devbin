@@ -1,0 +1,8 @@
+{
+  "id": "AC-07.8",
+  "text": "The preamble and the shared-options block render from config, so the corpus's launcher-vs-product disambiguation and its `--env`/`--bin` block survive with no heredoc",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

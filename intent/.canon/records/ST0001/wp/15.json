@@ -1,0 +1,9 @@
+{
+  "id": "15",
+  "title": "Built-ins: Build and format",
+  "scope": "S",
+  "status": "done",
+  "objective": "Ship `fmt`, and prove `build` needs nothing shipped but the rig. These two are the clearest demonstration of the declarative boundary: one has defaults worth shipping and the other deliberately has none.",
+  "body": "## Deliverables\n\n- `lib/cmd/fmt` implementing the catalogued options (`fmt.elixir`, `fmt.rust` exist in `lib/builtins`; `md` and `swift` per the corpus), plus the synthesised `fmt all`.\n- **`build` routing with no default option set** (D18 tier 4). The command name resolves, declared targets run, `all` is synthesised in declared order, each seals. AC-08.4 already holds the negative half of this; this WP holds the positive half -- that a project's declared targets actually work end to end.\n- **The `fmt` / `check format` pairing preserved.** `fmt` mutates, `check format` gates the same concern read-only. The corpus keeps them consistent by hand; devbin must keep the names and the underlying command in agreement by construction.\n- BATS coverage, including a project whose `build` targets are entirely its own.\n\n## Dependencies\n\n- WP-08 (catalogue), WP-06 (gate runner, since `fmt` and `build` targets seal).\n- Blocks WP-10.",
+  "preamble": "Split out of WP-08 (built-in command library) along the family cut WP-08's own notes named."
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.28",
+  "kind": "test",
+  "covers": [
+    "AC-04.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"a config-declared run: activates a command whose built-in options are all scoped out\""
+  }
+}

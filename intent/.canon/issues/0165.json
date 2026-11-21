@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 165,
+  "schema": "intent/issue@4.0",
+  "id": "0165",
   "slug": "fullcycle-bats-claims-the-cycle-runs-no-cargo-re",
   "title": "fullcycle.bats claims the cycle runs no cargo, reads one file, and misses an env-prefixed command",
   "status": "closed",

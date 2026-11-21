@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.31",
+  "kind": "test",
+  "covers": [
+    "AC-06.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"grammar aliases resolve to the same source\""
+  }
+}

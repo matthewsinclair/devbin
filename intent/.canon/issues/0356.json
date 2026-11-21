@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 356,
+  "schema": "intent/issue@4.0",
+  "id": "0356",
   "slug": "a-gate-command-given-help-after-its-option-runs",
   "title": "A gate command given --help after its option runs the work: the dispatcher leaves the flag to the handler, which passes it to the tool's argv",
   "status": "closed",

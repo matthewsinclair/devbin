@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.13",
+  "text": "Shared options are parsed once by the dispatcher and reach the handler as environment; an undeclared option passes through to the handler; a bad value is refused before the handler runs",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

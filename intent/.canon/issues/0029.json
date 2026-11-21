@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 29,
+  "schema": "intent/issue@4.0",
+  "id": "0029",
   "slug": "claude-md-s-version-fix-lives-in-the-generated",
   "title": "CLAUDE.md's version fix lives in the generated region and will be reverted",
   "status": "closed",

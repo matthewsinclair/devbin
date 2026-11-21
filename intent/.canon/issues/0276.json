@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 276,
+  "schema": "intent/issue@4.0",
+  "id": "0276",
   "slug": "upgrade-from-an-older-install-says-it-cannot-tel",
   "title": "upgrade from an older install says it cannot tell the direction, when both manifests' versions tell it: where the commits answer unknown, the versions decide (not in 0.1.16)",
   "status": "closed",

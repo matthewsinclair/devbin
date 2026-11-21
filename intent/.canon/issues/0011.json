@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 11,
+  "schema": "intent/issue@4.0",
+  "id": "0011",
   "slug": "overriding-a-catalogue-gates-run-line-silently-unsealed-it",
   "title": "overriding a catalogue gate's run line silently unsealed it",
   "status": "closed",

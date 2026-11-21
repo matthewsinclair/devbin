@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.14",
+  "kind": "test",
+  "covers": [
+    "AC-07.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"no lib/cmd handler carries a summary its catalogue row already owns\""
+  }
+}

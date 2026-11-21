@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 253,
+  "schema": "intent/issue@4.0",
+  "id": "0253",
   "slug": "without-homebrew-s-bin-on-path-cron-a-gui-starte",
   "title": "Without Homebrew's bin on PATH (cron, a GUI-started hook) every brewed devbin invocation is refused for bash 3.2, with brew install bash as the remedy though the formula's bash is installed",
   "status": "closed",

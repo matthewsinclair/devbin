@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.14",
+  "text": "`new <cmd>` scaffolds a RUNNABLE command in one step -- an executable handler carrying its `# devbin:` header, a help stub and a test stub -- and the scaffolded command resolves and appears in help with no config edit. AC-07.4's promise, made operational",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

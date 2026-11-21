@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 34,
+  "schema": "intent/issue@4.0",
+  "id": "0034",
   "slug": "a-seal-records-the-result-and-not-the-scope-so-reach-cannot-be-derived",
   "title": "A seal records the result and not the scope, so its reach cannot be derived later",
   "status": "closed",

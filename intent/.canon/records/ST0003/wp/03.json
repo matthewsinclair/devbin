@@ -1,0 +1,9 @@
+{
+  "id": "03",
+  "title": "infra init: propose by standard then majority, deviations into unreviewed",
+  "scope": "S",
+  "status": "done",
+  "objective": "Adopt an existing estate without making its drift the target. `devbin infra init <domain>...` measures each domain's authoritative records and prints a profile to stdout in which a value reaches the target only when the RFC layer or the estate's own strict majority (above N=2, with every named domain in the denominator) determines it. Every other live value, and every read that could not be made, goes to `unreviewed:`, which `check` refuses to run past. Per hv's ruling of 2026-09-08 no vendor table ships: the only RFC-derived proposal is `p=none` on a mail-carrying domain with no DMARC record and no majority. The decisions the rulings left open are recorded in design.md, section `init AS BUILT`.",
+  "body": "",
+  "preamble": ""
+}

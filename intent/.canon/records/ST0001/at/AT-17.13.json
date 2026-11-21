@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.13",
+  "kind": "test",
+  "covers": [
+    "AC-17.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"a missing sidecar is named rather than silently skipped\""
+  }
+}

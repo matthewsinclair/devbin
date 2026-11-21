@@ -1,0 +1,12 @@
+{
+  "id": "AT-09.19",
+  "kind": "test",
+  "covers": [
+    "AC-09.6",
+    "AC-09.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"an edited vendored file is detected\""
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.14",
+  "text": "D11 language scoping reaches COMMANDS, not only options: a built-in command whose catalogue row names a language is inactive where that language is not declared, and does not run the tool off the developer's PATH",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

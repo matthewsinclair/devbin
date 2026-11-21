@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.10",
+  "text": "`doctor` reports per check: dispatcher present and executable, config parses and validates against the schema, `devbin_version` satisfied, manifest intact, every declared command resolves, no orphaned handler, symlinks intact, bash version noted",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

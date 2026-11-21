@@ -30,3 +30,9 @@ intent/.cache/
 
 # D53: the event log lives in the store; its file form is produced by `intent export`.
 intent/.backup/
+
+# An Intent view of many records: every clone renders its own from the store, so none is committed.
+intent/st/steel_threads.md
+
+# An Intent view of many records: every clone renders its own from the store, so none is committed.
+intent/st/*/acceptance.md

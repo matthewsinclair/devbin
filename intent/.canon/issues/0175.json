@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 175,
+  "schema": "intent/issue@4.0",
+  "id": "0175",
   "slug": "fleet-s-census-walk-names-a-bin-devbin-lib-it-ca",
   "title": "fleet's census walk names a bin/.devbin/lib it cannot search as a hole where installs may be missing, though nothing beneath a lib is an install",
   "status": "closed",

@@ -1,0 +1,9 @@
+{
+  "id": "AC-02.5",
+  "text": "CI covers Ubuntu, macOS (the bash 3.2 target) and a blocking shellcheck that does not exclude test helpers",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`.github/workflows/tests.yml`"
+  }
+}

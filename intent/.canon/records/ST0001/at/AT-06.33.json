@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.33",
+  "kind": "test",
+  "covers": [
+    "AC-06.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"run_gate keeps no companion with --no-out\""
+  }
+}

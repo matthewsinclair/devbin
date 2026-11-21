@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 9,
+  "schema": "intent/issue@4.0",
+  "id": "0009",
   "slug": "iex-is-offered-on-the-language-axis-but-read-by-one-builtin",
   "title": "--iex is offered on the language axis but read by exactly one built-in",
   "status": "closed",

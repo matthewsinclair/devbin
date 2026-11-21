@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 191,
+  "schema": "intent/issue@4.0",
+  "id": "0191",
   "slug": "the-suite-and-ci-wait-on-things-they-need-not-ci",
   "title": "the suite and CI wait on things they need not: CI lints the tree twice, the hung-query test waits out a 15 s floor, and the heartbeat takes whole seconds only",
   "status": "closed",

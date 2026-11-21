@@ -1,0 +1,9 @@
+{
+  "id": "AC-1.4",
+  "text": "SAFETY (draft S4). The public repository is created empty, and after the first push every ref it holds points at the audited snapshot commit. Evidence: git ls-remote, read back.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "anonymous git ls-remote of https://github.com/matthewsinclair/devbin.git (no credential helper), 2026-10-29 after hv deleted candidate/v0.1.17 and set the default branch to main: HEAD, refs/heads/main and refs/tags/v0.1.18, all a9b8cd7c11a9e1e0a25ae56b45b9504eee51971e, the audited snapshot"
+  }
+}

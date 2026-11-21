@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.10",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R5: doctor reports a file devbin does not own under lib\""
+  }
+}

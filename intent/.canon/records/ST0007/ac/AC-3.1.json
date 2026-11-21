@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.1",
+  "text": "release status <version> reads every step's postcondition and prints the table a cut's summary prints, writing nothing to the tree, the refs, any remote or any release object.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

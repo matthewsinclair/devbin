@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.2",
+  "kind": "test",
+  "covers": [
+    "AC-14.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"a command with neither run: nor handler nor catalogue default is not-yet, not a lie\""
+  }
+}

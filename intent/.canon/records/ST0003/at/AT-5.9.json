@@ -1,0 +1,10 @@
+{
+  "id": "AT-5.9",
+  "kind": "test",
+  "file": "tests/unit/infra-dmarc-report.bats",
+  "covers": [
+    "AC-5.9"
+  ],
+  "status": "green",
+  "note": "Found on real output in a live estate, not on a fixture. Red-driven by restoring the old pad, which returned a value unchanged once it reached the column width."
+}

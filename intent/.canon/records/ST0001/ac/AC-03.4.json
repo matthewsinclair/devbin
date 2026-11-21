@@ -1,0 +1,8 @@
+{
+  "id": "AC-03.4",
+  "text": "Schema validation requires `project.name`, rejects unknown keys, and rejects keys nested deeper or shallower than the schema allows",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

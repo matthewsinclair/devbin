@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.1",
+  "text": "The earlier standalone devbin mail spec is absorbed as devbin infra mail, so DMARC handling has one home rather than two.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

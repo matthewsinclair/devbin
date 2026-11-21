@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.4",
+  "kind": "test",
+  "covers": [
+    "AC-04.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"a project handler shadows a built-in of the same name\""
+  }
+}

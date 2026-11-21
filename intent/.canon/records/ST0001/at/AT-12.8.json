@@ -1,0 +1,11 @@
+{
+  "id": "AT-12.8",
+  "kind": "test",
+  "covers": [
+    "AC-12.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/documentation.bats::\"the README command surface names no command devbin does not ship\""
+  }
+}

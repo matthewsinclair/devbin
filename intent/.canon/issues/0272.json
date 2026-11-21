@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 272,
+  "schema": "intent/issue@4.0",
+  "id": "0272",
   "slug": "infra-s-machine-wide-profile-is-read-from-home-c",
   "title": "infra's machine-wide profile is read from $HOME/.config/devbin/infra.yaml whatever XDG_CONFIG_HOME says (from 0243's review)",
   "status": "closed",

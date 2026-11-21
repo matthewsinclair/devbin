@@ -1,0 +1,11 @@
+{
+  "id": "AT-02.5",
+  "kind": "test",
+  "covers": [
+    "AC-02.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/harness.bats::\"create_test_command writes an executable handler reporting name and args\""
+  }
+}

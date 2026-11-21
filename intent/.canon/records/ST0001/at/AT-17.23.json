@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.23",
+  "kind": "test",
+  "covers": [
+    "AC-17.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/docs.bats::\"docs treeindex names a directory it could not find rather than passing\""
+  }
+}

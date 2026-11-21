@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.8",
+  "kind": "test",
+  "covers": [
+    "AC-09.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"install refuses to vendor devbin into its own source tree\""
+  }
+}

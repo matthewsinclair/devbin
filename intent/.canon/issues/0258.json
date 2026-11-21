@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 258,
+  "schema": "intent/issue@4.0",
+  "id": "0258",
   "slug": "readme-s-first-command-devbin-install-into-some",
   "title": "README's first command, devbin install --into ~/some/new/project, fails unless the directory exists",
   "status": "closed",

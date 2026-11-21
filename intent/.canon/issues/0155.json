@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 155,
+  "schema": "intent/issue@4.0",
+  "id": "0155",
   "slug": "shellcheck-reaches-a-change-only-at-the-release",
   "title": "shellcheck reaches a change only at the release cut: no test runs the lint gate",
   "status": "closed",

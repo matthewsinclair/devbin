@@ -1,0 +1,9 @@
+{
+  "id": "AC-08.7",
+  "text": "Equivalence proven through the new entry point before deletion, naming for each row the claim that could FAIL; `scripts/` deleted last, on hv's go, with its callers followed",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`WP/08/equivalence.md`, twelve rows, each naming the claim that could fail and RUN rather than reasoned"
+  }
+}

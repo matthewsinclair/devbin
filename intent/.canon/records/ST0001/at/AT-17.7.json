@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.7",
+  "kind": "test",
+  "covers": [
+    "AC-17.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"version bump refuses an unknown part\""
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.14",
+  "kind": "test",
+  "covers": [
+    "AC-08.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"config overrides a built-in option's command line\""
+  }
+}

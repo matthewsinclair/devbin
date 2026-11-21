@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.8",
+  "text": "One domain, one profile ACROSS a directory of them -- and a directory holding NO profiles is an ERROR. Nothing found is a wrong path, not a clean estate, and reporting it as no collisions would be a green over an empty set.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

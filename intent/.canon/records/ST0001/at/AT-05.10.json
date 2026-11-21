@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.10",
+  "kind": "test",
+  "covers": [
+    "AC-05.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"strip_ansi removes escape sequences and keeps the text\""
+  }
+}

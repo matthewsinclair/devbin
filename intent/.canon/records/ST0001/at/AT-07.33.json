@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.33",
+  "kind": "test",
+  "covers": [
+    "AC-07.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"--why says so plainly when everything ships\""
+  }
+}

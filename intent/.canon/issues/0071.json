@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 71,
+  "schema": "intent/issue@4.0",
+  "id": "0071",
   "slug": "fullcycle-names-a-dev-profile-build-as-the-cause",
   "title": "fullcycle names a dev-profile build as the cause and gives a second remedy when the build itself failed",
   "status": "closed",

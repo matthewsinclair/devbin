@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.9",
+  "text": "Every named grammar extracts its tool's failure blocks and drops the structural and green lines: `mix`, `credo`, `cargo`, `xcodebuild`, `lua`, `shell`, `generic`",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

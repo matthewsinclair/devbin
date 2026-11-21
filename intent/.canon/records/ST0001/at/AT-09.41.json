@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.41",
+  "kind": "test",
+  "covers": [
+    "AC-09.18"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"the harness installs fixtures by running devbin install\""
+  }
+}

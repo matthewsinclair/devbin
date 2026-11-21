@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.3",
+  "text": "A catalogue row is a gate or it is not: grammar and log suffix are both real or both absent, never one of each",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.3",
+  "text": "--help or -h anywhere in any release invocation prints usage and writes nothing, held by a test that fails if any file, ref or remote changes; a bare release prints usage and exits 1.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

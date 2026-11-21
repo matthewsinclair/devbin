@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 335,
+  "schema": "intent/issue@4.0",
+  "id": "0335",
   "slug": "the-core-reaches-its-own-cache-verb-through-the",
   "title": "The core reaches its own `cache` verb through the project's launcher, which a project handler named cache shadows, and leg hosts keep no warm build directory",
   "status": "closed",

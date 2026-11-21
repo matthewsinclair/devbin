@@ -1,0 +1,11 @@
+{
+  "id": "AT-18.2",
+  "kind": "test",
+  "covers": [
+    "AC-18.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/optin.bats::\"asking for an unenabled opt-in command says it is shipped but not enabled\""
+  }
+}

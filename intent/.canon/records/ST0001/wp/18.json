@@ -1,0 +1,9 @@
+{
+  "id": "18",
+  "title": "Built-ins: Shared, off by default",
+  "scope": "S",
+  "status": "done",
+  "objective": "Ship the five commands that some projects want and most do not -- `which`, `macos`, `precommit`, `publish`, `content` -- disabled unless the config asks for them.",
+  "body": "## Deliverables\n\n- Each of the five implemented, and **off unless enabled**.\n- **The opt-in activation axis itself.** D11 makes a built-in active exactly when its language is declared, which is the wrong test here: these five are language-agnostic and still should not appear uninvited. `macos` on a Linux project and `publish` on a private one are both noise at best. Today `_DEVBIN_BUILTIN_COMMANDS` lists all five, so they resolve in every project -- the gap is real and currently latent only because they exit 3.\n- BATS coverage that an unenabled command is genuinely absent from the surface rather than present-and-failing.\n\n## Dependencies\n\n- WP-08 (catalogue and its activation rules).\n- Blocks WP-10.\n\n## Notes\n\nThe interesting content here is not the five commands, which are thin. It is the second activation axis: devbin now has language scoping (D11) and will need enablement scoping, and the two must compose without a project having to reason about their interaction.",
+  "preamble": "Split out of WP-08 (built-in command library) along the family cut WP-08's own notes named. Last of the five."
+}

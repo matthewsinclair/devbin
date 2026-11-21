@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.12",
+  "kind": "test",
+  "covers": [
+    "AC-15.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"each check arm is the fmt arm it verifies, plus that tool's check flag\""
+  }
+}

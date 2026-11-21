@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.9",
+  "kind": "test",
+  "covers": [
+    "AC-17.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"version set fans out to every declared sidecar, by file kind\""
+  }
+}

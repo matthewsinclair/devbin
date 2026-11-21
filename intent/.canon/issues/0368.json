@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 368,
+  "schema": "intent/issue@4.0",
+  "id": "0368",
   "slug": "a-whole-gate-run-leaves-entries-in-its-tmpdir-up",
   "title": "A whole gate run leaves entries in its TMPDIR: update-notice stamps, release_git_remote's files from calls killed at their bound, and Node's compile cache",
   "status": "closed",

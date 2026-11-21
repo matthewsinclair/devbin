@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.23",
+  "kind": "test",
+  "covers": [
+    "AC-08.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"a declared option with log: seals through the same runner as a built-in\""
+  }
+}

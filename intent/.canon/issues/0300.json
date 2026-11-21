@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 300,
+  "schema": "intent/issue@4.0",
+  "id": "0300",
   "slug": "releasestatus-bats-s-cut-fixture-leans-on-git-s",
   "title": "releasestatus.bats's cut fixture leans on git's auto-detected identity, which a host without a domain refuses",
   "status": "closed",

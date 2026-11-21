@@ -1,0 +1,10 @@
+{
+  "id": "04",
+  "title": "infra apply: Fly end-to-end, DNS and Workspace emit an ordered record list",
+  "scope": "S",
+  "status": "cancelled",
+  "status_reason": "Moved whole to ST0006/WP-01 on 2026-09-08 with AC-4.1 to AC-4.3; nothing was built here. Cancelled on 2026-09-16 because the descope moved the criteria and left this record open.",
+  "objective": "",
+  "body": "",
+  "preamble": ""
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.4",
+  "text": "The vendored/authored seam is ONE rule, stated once and asserted: everything under `bin/.devbin/lib/` is devbin's and is replaced wholesale; everything else under `bin/.devbin/` is the project's and is never touched",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

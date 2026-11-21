@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.1",
+  "text": "`lib/helpers` loads and works with no other devbin library sourced, and reads no config -- a handler is a separate process that sources it alone",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 314,
+  "schema": "intent/issue@4.0",
+  "id": "0314",
   "slug": "under-release-publish-url-the-assets-workflow-ch",
   "title": "Under release.publish.url the assets workflow check reads the release commit, not the snapshot the run is on",
   "status": "closed",

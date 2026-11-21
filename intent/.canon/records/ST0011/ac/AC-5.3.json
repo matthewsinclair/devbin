@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.3",
+  "text": "A registry entry whose SHA256SUMS or manifest key does not verify is refused, removed with a line, and the build runs (WP16).",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

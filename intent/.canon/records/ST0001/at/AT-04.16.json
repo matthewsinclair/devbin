@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.16",
+  "kind": "test",
+  "covers": [
+    "AC-04.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"an explicitly declared option is active whatever the languages say\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 246,
+  "schema": "intent/issue@4.0",
+  "id": "0246",
   "slug": "contract-amendment-a5-doctor-prints-the-version",
   "title": "Contract amendment A5: doctor prints the version line unchanged, and devbin's doctor prints it under a label and with the install link's path beside it",
   "status": "closed",

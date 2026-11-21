@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.5",
+  "text": "The symlinks D6 promises -- `bin/<project-name>` and `bin/<alias>` -> `devbin` -- are created, and a real file already sitting at either name is REFUSED rather than replaced",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

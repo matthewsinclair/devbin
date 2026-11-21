@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 194,
+  "schema": "intent/issue@4.0",
+  "id": "0194",
   "slug": "a-cut-s-step-8-reads-each-remote-back-once-withi",
   "title": "a cut's step 8 reads each remote back once, within 15 s, and reports a read that did not answer as the remote not holding the release -- the 0.1.10 cut stopped with both remotes holding it, and a resume finished it",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.2",
+  "kind": "test",
+  "covers": [
+    "AC-08.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"the catalogue answers every field for a tier-2 option\""
+  }
+}

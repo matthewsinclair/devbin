@@ -1,0 +1,9 @@
+{
+  "id": "01",
+  "title": "Line endings: devbin's .gitattributes, the vendored copy's LF rule, and doctor naming CR bytes",
+  "scope": "M",
+  "status": "done",
+  "objective": "Hold LF line endings in the repository rather than in each clone's git settings (D46). devbin's own tree gets a root `.gitattributes` carrying `* text=auto eol=lf`, which covers the 40 extensionless scripts a `*.sh` rule would miss and changes no content today. Every project devbin vendors into gets an LF rule covering `bin/devbin` and everything under `bin/.devbin/`, in the shape the design review settles, and `doctor` checks it with `git check-attr eol`. A vendored file that already carries CR bytes is named by `doctor`, with the cause. Criteria AC-1.1 to AC-1.3.",
+  "body": "",
+  "preamble": ""
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.24",
+  "kind": "test",
+  "covers": [
+    "AC-05.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"a valued shared option is validated and exported\""
+  }
+}

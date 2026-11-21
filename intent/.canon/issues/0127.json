@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 127,
+  "schema": "intent/issue@4.0",
+  "id": "0127",
   "slug": "vendored-paths-vendored-dir-files-and-doctor-s-u",
   "title": "vendored_paths, vendored_dir_files and doctor's unowned check swallow find's errors, so a directory find cannot read vendors a project short, or ends upgrade in silence",
   "status": "closed",

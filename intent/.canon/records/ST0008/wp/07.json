@@ -1,0 +1,9 @@
+{
+  "id": "07",
+  "title": "No pipeline broken by design: 0031's class fixed everywhere, and a scan that keeps it out",
+  "scope": "M",
+  "status": "done",
+  "objective": "hv, 2026-10-12, on the v0.1.10 tag's red Ubuntu run: \"We should not have any code like that where we know in advance it's broken by design. Please fix.\" A pipeline whose reader can stop reading before its writer has finished is unsound under pipefail, which is issue 0031's class: the writer takes SIGPIPE, the pipeline returns 141, and a match can read as no match. 0031 fixed four sites. `tests/unit/ci-workflow.bats:266` was a fifth, and it failed the tag run. The same shape stands in the runtime, which runs under pipefail in every handler: `lib/infra:400` and `lib/cmd/upgrade:441` are two examples. Every such site in `bin/`, `lib/`, `tests/` and `.github/` gets a ruling. It is either fixed in one spelling, captured rather than piped, or kept and listed as sound by construction. A tree scan refuses the shape outside that list. hv wrapped it into this thread's work rather than an issue of its own. Criterion AC-7.1.",
+  "body": "",
+  "preamble": ""
+}

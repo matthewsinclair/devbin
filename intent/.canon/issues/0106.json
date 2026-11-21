@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 106,
+  "schema": "intent/issue@4.0",
+  "id": "0106",
   "slug": "release-step-1-fails-with-an-empty-detail-when-t",
   "title": "release step 1 fails with an empty detail when the tag listed last matches the template and names no version",
   "status": "closed",

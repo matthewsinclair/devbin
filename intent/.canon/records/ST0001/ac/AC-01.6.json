@@ -1,0 +1,9 @@
+{
+  "id": "AC-01.6",
+  "text": "The per-tool extraction grammars are catalogued as the named library WP-06 ships",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`design.md` D16 grammar inventory"
+  }
+}

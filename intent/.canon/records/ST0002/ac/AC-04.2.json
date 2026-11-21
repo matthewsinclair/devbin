@@ -1,0 +1,9 @@
+{
+  "id": "AC-04.2",
+  "text": "Baseline-then-update seals per protocol, green after",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "baseline `20260810-1006.{COMPILE,FORMAT,DEPS,TOOLCHAIN,CRITIC}` + `20260810-1007.{MIX,CREDO}` sealed BEFORE `deps.update`; after `20260810-1007.{COMPILE,FORMAT,DEPS,TOOLCHAIN,CRITIC}` + `20260810-1007-46.MIX` + `20260810-1007-47.CREDO`; every `.errors` 0 bytes, lockfile in its own commit `593218f`. Baseline was already green, so the protocol's SHAPE is proven and its strength is not"
+  }
+}

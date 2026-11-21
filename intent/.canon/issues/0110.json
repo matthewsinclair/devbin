@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 110,
+  "schema": "intent/issue@4.0",
+  "id": "0110",
   "slug": "every-job-carries-a-node-20-deprecation-warning",
   "title": "every job carries a Node 20 deprecation warning, and a push that moves only a board spends a full CI run",
   "status": "closed",

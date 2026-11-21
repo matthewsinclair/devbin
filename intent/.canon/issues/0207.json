@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 207,
+  "schema": "intent/issue@4.0",
+  "id": "0207",
   "slug": "release-check-s-declaration-table-has-columns-of",
   "title": "release check's declaration table has columns of a written width, and WP-08's assets.workflow key and release.verbs default overflow them, so their rows print the source out of line",
   "status": "closed",

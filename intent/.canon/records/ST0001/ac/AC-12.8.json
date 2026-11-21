@@ -1,0 +1,8 @@
+{
+  "id": "AC-12.8",
+  "text": "Devbin's own lifecycle commands carry AUTHORED help rather than the generated fallback, and the authored file replaces the generated answer rather than appending to it. Devbin uses devbin (D12), so its own help is the worked example the documentation points at",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

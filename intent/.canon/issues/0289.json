@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 289,
+  "schema": "intent/issue@4.0",
+  "id": "0289",
   "slug": "version-check-words-an-empty-sidecar-as-empty-ex",
   "title": "version check words an empty sidecar as `empty (expected <version>)` in report_drift's own column, a second wording of the empty state beside 0265's one table",
   "status": "closed",

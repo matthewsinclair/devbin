@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.4",
+  "text": "A source that is not a git repository is REFUSED rather than treated as clean: 'no changes' and 'cannot tell' must not render as the same answer.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

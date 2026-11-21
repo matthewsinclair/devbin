@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.13",
+  "kind": "test",
+  "covers": [
+    "AC-06.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"the verdict line names this run's own seal, never the LATEST pointer\""
+  }
+}

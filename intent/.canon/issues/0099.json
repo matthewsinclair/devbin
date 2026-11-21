@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 99,
+  "schema": "intent/issue@4.0",
+  "id": "0099",
   "slug": "the-install-tree-refusal-exits-3-the-code-reserv",
   "title": "the install-tree refusal exits 3, the code reserved for resolves-but-not-implemented",
   "status": "closed",

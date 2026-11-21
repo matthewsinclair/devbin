@@ -1,0 +1,12 @@
+{
+  "id": "AT-17.16",
+  "kind": "test",
+  "covers": [
+    "AC-17.6",
+    "AC-17.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"check passes and says so when every sidecar agrees\""
+  }
+}

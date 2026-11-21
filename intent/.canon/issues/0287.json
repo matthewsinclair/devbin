@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 287,
+  "schema": "intent/issue@4.0",
+  "id": "0287",
   "slug": "doctor-s-switch-row-names-a-homebrew-keg-by-its",
   "title": "doctor's switch row names a Homebrew keg by its Cellar path, which the next brew upgrade removes, where every other reader names the opt link",
   "status": "closed",

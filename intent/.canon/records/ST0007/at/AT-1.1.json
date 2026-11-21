@@ -1,0 +1,10 @@
+{
+  "id": "AT-1.1",
+  "kind": "test",
+  "file": "tests/unit/releasecore.bats",
+  "covers": [
+    "AC-1.1"
+  ],
+  "status": "green",
+  "note": "the schema, its defaults, its refusals and release check's declaration half; marked # AT-1.1"
+}

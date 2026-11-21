@@ -1,0 +1,9 @@
+{
+  "id": "AC-03.4",
+  "text": "Every retired `scripts/` entry has a recorded disposition, and nothing dead is carried into the port",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "all nine dispositioned in the record. `REPL_MODE` is NOT carried and that is not a judgement call"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 136,
+  "schema": "intent/issue@4.0",
+  "id": "0136",
   "slug": "refusals-and-notes-with-the-wrong-reason-or-reme",
   "title": "Refusals and notes with the wrong reason or remedy: options all switched off read as not enabled, a filled name-only command 'shadows the built-in', a non-executable handler is told to add itself, a declared --iex loses its summary",
   "status": "closed",

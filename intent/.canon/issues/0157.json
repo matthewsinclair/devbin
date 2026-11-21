@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 157,
+  "schema": "intent/issue@4.0",
+  "id": "0157",
   "slug": "gates-write-tmp-command-and-nothing-ignores-it-s",
   "title": "Gates write tmp/<command>/ and nothing ignores it, so a consumer's tree reads dirty after its first check",
   "status": "closed",

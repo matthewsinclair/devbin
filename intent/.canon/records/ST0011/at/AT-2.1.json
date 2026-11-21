@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.1",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-2.1"
+  ],
+  "status": "green",
+  "note": "releasecut.bats's arms tagged (ST0011 WP02): the one yes comes before anything runs, naming the tag, the release commit, each remote's push, the object, its assets and the after: commands; --yes answers it, and the after: commands run under DEVBIN_RELEASE_CONFIRMED; red at the red clone d29a7afd, the base with the unit's test files and none of its code, in run 01M699H5CM6E089PMEG9TAGQ2S (record ~/Devel/scratch/devbin-cc/st11-wp02a/run/runs/arms); green at b33dc88e under BSD and GNU in the same run, the code byte-identical at 41172620 (its light re-run 01M69CSS0GX4JDGWCBX30YGW91 green), landed as bd13167f"
+}

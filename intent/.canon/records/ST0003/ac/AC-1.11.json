@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.11",
+  "text": "The annotated profile reference is VENDORED into every consuming estate and PARSED by the suite on every run, so the first thing a reader copies is known to load.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

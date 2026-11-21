@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.7",
+  "text": "Provenance is transitive: the commit recorded by a consumer vendored from an install equals the dev tree HEAD the install was cut from. Without this the install RECORDS LESS provenance than no install at all.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

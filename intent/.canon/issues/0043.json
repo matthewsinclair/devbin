@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 43,
+  "schema": "intent/issue@4.0",
+  "id": "0043",
   "slug": "fleet-renders-a-dirty-source-commit-as-a-clean-o",
   "title": "fleet renders a dirty source_commit as a clean one, so unprovenanced bytes read as provenanced",
   "status": "closed",

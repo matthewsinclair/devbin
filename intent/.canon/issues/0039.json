@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 39,
+  "schema": "intent/issue@4.0",
+  "id": "0039",
   "slug": "the-wrong-tree-guard-diagnoses-an-unknown-comman",
   "title": "The wrong-tree guard diagnoses an unknown command by where the caller stands",
   "status": "closed",

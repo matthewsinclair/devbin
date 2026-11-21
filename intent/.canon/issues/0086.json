@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 86,
+  "schema": "intent/issue@4.0",
+  "id": "0086",
   "slug": "devbin-test-all-run-from-a-terminal-hangs-foreve",
   "title": "devbin test all run from a terminal hangs forever at the read-only replace_file arm, because rename_staged's mv prompts when stdin is a tty",
   "status": "closed",

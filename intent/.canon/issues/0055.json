@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 55,
+  "schema": "intent/issue@4.0",
+  "id": "0055",
   "slug": "run-logs-were-stamped-from-the-local-clock-with",
   "title": "Run logs were stamped from the local clock with no zone, while fleet audit renders UTC with a Z",
   "status": "closed",

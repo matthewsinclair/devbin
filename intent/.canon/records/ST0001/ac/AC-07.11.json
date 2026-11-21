@@ -1,0 +1,9 @@
+{
+  "id": "AC-07.11",
+  "text": "Every authored topic across the four corpus launchers is inventoried with an explicit disposition; nothing authored is dropped silently",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`intent/st/ST0001/help-migration.md`, 70 topics and 1,769 lines counted, five dispositions ruled, one embedded ruling extracted and fixed in the framework"
+  }
+}

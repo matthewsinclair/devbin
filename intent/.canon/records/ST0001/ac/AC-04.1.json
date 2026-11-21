@@ -1,0 +1,8 @@
+{
+  "id": "AC-04.1",
+  "text": "The dispatcher resolves its project root symlink-safely and works from any working directory, through a symlink, and under a project-named or short alias",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

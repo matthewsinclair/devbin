@@ -1,0 +1,9 @@
+{
+  "id": "AC-02.3",
+  "text": "No public-API-affecting dep resolution taken without hv's ack (published library)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "two dep changes, neither API-affecting. `014052f` unlocks ten unused lockfile entries (a library's consumers resolve their own deps and never read this file); `e5d7377` adds credo `only: [:dev, :test], runtime: false` on hv's explicit driveby ask. No candidate arose that would have moved the public surface"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 164,
+  "schema": "intent/issue@4.0",
+  "id": "0164",
   "slug": "the-machine-s-cargo-config-is-judged-three-ways",
   "title": "The machine's cargo config is judged three ways: fullcycle names no file, and check passes or fails it by visibility",
   "status": "closed",

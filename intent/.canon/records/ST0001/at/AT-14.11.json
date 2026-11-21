@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.11",
+  "kind": "test",
+  "covers": [
+    "AC-14.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"a command with no log: runs bare, so a launcher is never teed\""
+  }
+}

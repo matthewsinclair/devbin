@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 332,
+  "schema": "intent/issue@4.0",
+  "id": "0332",
   "slug": "a-declared-tool-that-keeps-its-own-switch-and-pu",
   "title": "A declared tool that keeps its own switch and publish has devbin's use and install offered beside them",
   "status": "closed",

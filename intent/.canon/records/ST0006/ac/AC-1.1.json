@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.1",
+  "text": "Fly is driven end to end via flyctl, while DNS and Workspace emit an ordered, copy-pasteable record list rather than pretending to apply.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.26",
+  "kind": "test",
+  "covers": [
+    "AC-14.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"every @builtin row in the catalogue has something implementing it\""
+  }
+}

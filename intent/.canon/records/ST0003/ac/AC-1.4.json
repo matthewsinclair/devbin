@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.4",
+  "text": "Deviations live in a structural unreviewed: block and never as annotated comments. Accepting one is DELETING A KEY, which is an act, rather than ignoring a comment, which is an omission. Comments are the least durable content in a config file.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

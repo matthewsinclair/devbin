@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.27",
+  "kind": "test",
+  "covers": [
+    "AC-06.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"the lua grammar captures FAIL and ERROR blocks\""
+  }
+}

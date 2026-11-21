@@ -1,0 +1,9 @@
+{
+  "id": "18",
+  "title": "docs/assembly-and-the-build-cache.md: Devbin's Build Cache for Optimised Release Assembly, design and tech note plus how-to",
+  "scope": "S",
+  "status": "done",
+  "objective": "`docs/assembly-and-the-build-cache.md`: \"Devbin's Build Cache for Optimised Release Assembly\", a detailed design and tech note plus how-to. hv, 2026-10-31 (in vc's session, during the fix phase): \"I want to add in a task to do (not now, but right at the end when this is all landed) ... Let's not forget about that.\" Written LAST, after WP01 to WP17 and the consumer packages WP10 to WP14 have landed and WP15 has measured, from the as-built and never from the plan.\n\nContents: why (D67, the repeats table in design.md s13: what was built or tested twice before, with WP15's measurements); the key (sha256 over the declared `build.inputs` at the commit plus toolchain and platform lines) and what it is durable against; the registry (D68: `DEVBIN_CACHE_HOME`, the XDG default, one directory per project and per artefact, `manifest.yaml` and `SHA256SUMS` as provenance); the verbs (`bin/devbin cache key/get/put/list/rm/gc`) and the `build:` block; how a cut assembles a release from cached artefacts, what it rebuilds and what it never pulls (a doubtful entry); the miss-never-failure rule (AC-5.5: unset, empty, absent or unusable root) and what doctor reports; integrity; what it removed from each consumer. How-to: a maintainer declaring inputs, reading a hit, clearing an entry, running gc, moving the root; a new consumer adopting it. critic-prose once; no manual wrapping; indexed wherever docs/ are listed (README's docs table if there is one).",
+  "body": "",
+  "preamble": ""
+}

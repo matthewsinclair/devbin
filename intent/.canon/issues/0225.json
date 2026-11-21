@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 225,
+  "schema": "intent/issue@4.0",
+  "id": "0225",
   "slug": "a-project-whose-cargo-workspace-sits-below-its-r",
   "title": "a project whose Cargo workspace sits below its root gets no Cargo.toml where fmt rust, check format, check clippy and test rust run: a project setting names the cargo root",
   "status": "closed",

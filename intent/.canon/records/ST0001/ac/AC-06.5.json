@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.5",
+  "text": "A promotion is appended to the log as well as printed, so a derived red verdict survives in the artifact and reaches the seal; a promotion that cannot be recorded warns",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 216,
+  "schema": "intent/issue@4.0",
+  "id": "0216",
   "slug": "scrub-workroom-text-from-devbin-s-shipped-files",
   "title": "scrub workroom text from devbin's shipped files and guard it out; fleet stays out of the public snapshot",
   "status": "closed",

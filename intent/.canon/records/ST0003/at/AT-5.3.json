@@ -1,0 +1,9 @@
+{
+  "id": "AT-5.3",
+  "kind": "test",
+  "file": "tests/unit/infra-dmarc-report.bats",
+  "covers": [
+    "AC-5.3"
+  ],
+  "status": "green"
+}

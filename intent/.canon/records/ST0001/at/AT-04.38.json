@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.38",
+  "kind": "test",
+  "covers": [
+    "AC-04.14"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/contract.bats::\"0"
+  }
+}

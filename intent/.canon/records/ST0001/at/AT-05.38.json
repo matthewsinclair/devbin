@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.38",
+  "kind": "test",
+  "covers": [
+    "AC-05.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"an undeclared option passes straight through to the handler\""
+  }
+}

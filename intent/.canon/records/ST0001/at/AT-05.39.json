@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.39",
+  "kind": "test",
+  "covers": [
+    "AC-05.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"a bad shared-option value is refused before the handler runs\""
+  }
+}

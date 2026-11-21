@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.6",
+  "text": "`manifest.sha256` records a checksum for every vendored file, plus the framework version and the source it came from, and is rewritten by upgrade",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

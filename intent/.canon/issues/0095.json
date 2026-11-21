@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 95,
+  "schema": "intent/issue@4.0",
+  "id": "0095",
   "slug": "the-overhead-line-counts-every-finished-in-line",
   "title": "the overhead line counts every finished-in line as a suite, 0.00s included, so 'across N suite(s)' overstates what ran",
   "status": "closed",

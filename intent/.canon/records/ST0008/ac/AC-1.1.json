@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.1",
+  "text": "devbin's own tree carries a root .gitattributes with the rule * text=auto eol=lf, and a test fails if that rule is removed or narrowed, or if any tracked text file carries a CR byte.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

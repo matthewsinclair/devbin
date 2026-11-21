@@ -1,0 +1,9 @@
+{
+  "id": "04",
+  "title": "MicroGPTEx: fresh install, docs wired",
+  "scope": "S",
+  "status": "done",
+  "objective": "Fresh-install devbin into MicroGPTEx (`~/Devel/prj/MicroGPTEx`, elixir) -- FIRST of the thread by hv's re-order (simplest), so this WP also proves the deps-drift protocol the rest reuse -- and wire the `docs` command to the project's real doc build. The project's own history already ruled its lua doc-build helper OUT of the language list (commit 2026-06-25) -- languages stay `[elixir]`, and the doc build is read at WP start, not assumed to be ex_doc.",
+  "body": "## Deliverables\n\n- Fence, one install commit, doctor green, `help --why` accounted\n- Baseline -> `mix deps.update --all` -> green per protocol\n- `docs` wired to the real doc build and demonstrated once\n- `config.yaml` + authored help in their own commits\n\n## Dependencies\n\n- None -- first of the thread (hv's re-order, 2026-08-10); this WP proves the deps-drift protocol and folds any deviation back into design.md",
+  "preamble": ""
+}

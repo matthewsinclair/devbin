@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 75,
+  "schema": "intent/issue@4.0",
+  "id": "0075",
   "slug": "devbin-s-critic-gate-passes-every-path-after-one",
   "title": "devbin's critic gate passes every path after one --files, which Intent 3.0.3 refuses, and reports it as an unreadable runner",
   "status": "closed",

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 311,
+  "schema": "intent/issue@4.0",
+  "id": "0311",
   "slug": "macos-s-drop-check-copy-restores-only-the-traps",
   "title": "macos's drop_check_copy restores only the traps trap -p printed, so a caller that saved INT alone would leave TERM and HUP ignored",
   "status": "closed",

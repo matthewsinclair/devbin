@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.30",
+  "kind": "test",
+  "covers": [
+    "AC-14.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"repl still starts when rlwrap is absent, and says what was lost\""
+  }
+}

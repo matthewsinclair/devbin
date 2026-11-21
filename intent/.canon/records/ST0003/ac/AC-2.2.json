@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.2",
+  "text": "Every record read is AUTHORITATIVE, addressed to the zone's own nameserver. There is deliberately no fallback to the system resolver, because a recursive answer returns the REMAINING TTL rather than the configured one -- a cached TTL that reads as a configured one is the false green this command exists to refuse.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

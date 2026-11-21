@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.4",
+  "text": "A tag the core makes is annotated, at the release commit, and its message is the notes body byte for byte, ### lines included; a tag the core reuses whose message differs, or which is lightweight, is reported on step 7's line and left as it is.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

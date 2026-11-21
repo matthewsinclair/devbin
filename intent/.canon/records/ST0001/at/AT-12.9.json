@@ -1,0 +1,11 @@
+{
+  "id": "AT-12.9",
+  "kind": "test",
+  "covers": [
+    "AC-12.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/documentation.bats::\"the README surface extractor finds a plausible number of commands\""
+  }
+}

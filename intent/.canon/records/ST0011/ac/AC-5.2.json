@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.2",
+  "text": "A second build on the same key builds nothing: the record says 'pulled <artefact> <key>' and the artefact's bytes are the first build's; a dirty tree builds and cache put records nothing (WP16).",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-6.3",
+  "text": "The cut's plan refuses at pre-flight a gate in all that is active on none of the legs the cut will run, local and remote, naming the gate and its platforms, before any gate runs; a gate active on at least one leg passes the check (lands with WP02b).",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

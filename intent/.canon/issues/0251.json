@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 251,
+  "schema": "intent/issue@4.0",
+  "id": "0251",
   "slug": "outside-a-project-the-brewed-devbin-refuses-help",
   "title": "Outside a project the brewed devbin refuses help and -h with exit 5, and its refusal names the keg's long path and an upgrade --from a project does not need",
   "status": "closed",

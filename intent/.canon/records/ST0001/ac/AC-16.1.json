@@ -1,0 +1,8 @@
+{
+  "id": "AC-16.1",
+  "text": "`db` runs its catalogued core -- setup, migrate, reset, seed -- through the shared gate body, and any of them is overridden in one line of config",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

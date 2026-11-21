@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 320,
+  "schema": "intent/issue@4.0",
+  "id": "0320",
   "slug": "devbin-s-own-release-config-still-declares-the-s",
   "title": "devbin's own release config still declares the snapshot shape, which the public workroom retired",
   "status": "closed",

@@ -1,0 +1,9 @@
+{
+  "id": "02",
+  "title": "Notes providers: releases (devbin's generator moved into lib/), changelog, command",
+  "scope": "S",
+  "status": "done",
+  "objective": "Move devbin's release-notes generator into the core as the `releases` notes kind, and build the `changelog` and `command` kinds beside it (D39). One library, `lib/release.notes`, answers every question the release sequence asks about a version's note, against a root, and reads no config; the `releases` kind's changelog header is built from `project.name` and states no project's semver rule (decision 33). `release notes` and `release check` run through it. devbin enables `release` and declares `notes.kind: releases`, and `object: ci` because its release workflow makes the release object, leaving the rest of D43 to WP-07, and `bin/.devbin/cmd/release` is deleted.",
+  "body": "",
+  "preamble": ""
+}

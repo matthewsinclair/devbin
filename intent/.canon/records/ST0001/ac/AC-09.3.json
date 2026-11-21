@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.3",
+  "text": "Install NEVER writes over project content. A starter `config.yaml` appears only when there is none, and `--force` does not change that: it re-vendors the runtime and nothing else",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

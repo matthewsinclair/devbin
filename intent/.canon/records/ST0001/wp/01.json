@@ -1,0 +1,9 @@
+{
+  "id": "01",
+  "title": "Corpus analysis and framework specification",
+  "scope": "M",
+  "status": "done",
+  "objective": "Finish the corpus inventory to the depth the built-in library needs, and ratify the framework spec. The survey in `design.md` establishes the shape (32 commands, 20 shared helper functions, two-level dispatch, the sealed-gate subsystem); this WP reads the remaining behaviour so WP-08 can be specified rather than guessed.",
+  "body": "## Deliverables\n\n- Per-command behavioural inventory for the 11 universal + 5 shared commands: what each does in each project, what varies, and what the variance is driven by. Recorded as a table in `design.md`.\n- Complete sub-surface map for `check`, `test`, `db`, `docs`, `version`, `build` -- every subcommand in every project.\n- Extraction-grammar inventory: the per-tool output grammars in `<prj>_test_{mix,credo,rust,swift,lua,shell}`, catalogued as the named library WP-06 will ship.\n- The frozen `config.yaml` schema (keys, types, defaults, required-vs-optional), written as a commented reference config.\n- Ratified answers to the open decisions: config format (D7), install layout, handler discovery paths, whether `bin/<prj>` becomes a symlink (D6).\n- The declarative/imperative boundary written as a reviewable rule, with three worked examples from the corpus (one clearly declarative, one clearly imperative, one borderline).\n\n## Dependencies\n\n- None. This is the entry point.\n- Blocks WP-03 (schema), WP-06 (grammars) and WP-08 (built-in behaviour).",
+  "preamble": ""
+}

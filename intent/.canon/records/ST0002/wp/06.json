@@ -1,0 +1,9 @@
+{
+  "id": "06",
+  "title": "PARKED -- Utilz: install beside the product dispatcher",
+  "scope": "S",
+  "status": "not-started",
+  "objective": "**PARKED by hv, 2026-08-10: the beside-the-product shape needs more thought before devbin enters Utilz. Nothing below executes until hv reopens it; it stands as the survey record.**\n\nInstall devbin into Utilz (`~/Devel/prj/Utilz`, shell) BESIDE its product: `bin/` holds fourteen shipped tools and their `utilz` dispatcher, which devbin does not replace, rename, or touch. Devbin enters as dev tooling only. First question of the WP: prove what `devbin install` does when `bin/utilz` already exists and is not a devbin symlink -- refuse-or-skip is right, a clobber is a base defect to file before proceeding.",
+  "body": "## Deliverables\n\n- The collision probe, run in a scratch copy first, its behaviour recorded (and an issue filed if the base clobbers)\n- Fence, one install commit, doctor green; product `bin/` byte-untouched, proven by scoped git diff\n- Entry naming ruled by hv (no `bin/utilz` symlink; alias `uz` suggested, or none)\n- Dev gates (shell) configured and green through `bin/devbin`; locate the real test surface first (none found at depth 2 in survey -- the Devbin CI comment says Utilz keeps per-tool `*/test/*` dirs)\n\n## Dependencies\n\n- WP-05 (shell shape proven); hv's naming ruling",
+  "preamble": ""
+}

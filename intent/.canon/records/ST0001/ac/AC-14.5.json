@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.5",
+  "text": "The D19 rule holds one level up: a command declaring `log:` seals through `run_gate`; one that does not runs bare",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-1.1",
+  "text": "SAFETY (draft S1). Before the public repository exists, no devbin clone on rhadamanth, gyges or kovacs has a remote url or pushurl that resolves to matthewsinclair/devbin, and canon's upstream is removed. Evidence: each sleeve's scan of every git repository under its home at every depth, read back after the change.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "2026-10-29: rhadamanth, canon's upstream removed and an every-depth scan of $HOME reads 0 hits (brew's devbin--git fetch cache listed); kovacs, kovacs-sysadm's scan of 278 repos reads 0 hits beyond its brew cache; gyges excluded by hv ('a brew install machine, no one pushes from it')"
+  }
+}

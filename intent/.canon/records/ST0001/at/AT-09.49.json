@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.49",
+  "kind": "test",
+  "covers": [
+    "AC-09.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/doctor.bats::\"doctor catches a sub-handler directory with no parent beside it\""
+  }
+}

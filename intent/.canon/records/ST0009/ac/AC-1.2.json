@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.2",
+  "text": "bin/.devbin/config.yaml declares a release after: step running bin/devbin formula publish; an arm holds that the declared step runs after the push and that its failure is reported, not swallowed; docs/releasing.md no longer says there is no tap.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.1",
+  "text": "The built-in catalogue is ONE table: `lib/resolve` keeps no copy of the command or option lists it held as placeholders",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

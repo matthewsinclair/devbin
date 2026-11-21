@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.3",
+  "text": "COULD NOT MEASURE is a third verdict, never folded into clean and never into drift, and it OUTRANKS drift in the exit code. A resolver that could not be reached and an estate that is correct must not produce the same result.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

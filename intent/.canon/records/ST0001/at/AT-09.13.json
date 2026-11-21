@@ -1,0 +1,12 @@
+{
+  "id": "AT-09.13",
+  "kind": "test",
+  "covers": [
+    "AC-09.2",
+    "AC-09.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"re-installing keeps the identity the project already declared\""
+  }
+}

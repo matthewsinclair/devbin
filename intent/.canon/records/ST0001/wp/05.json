@@ -1,0 +1,9 @@
+{
+  "id": "05",
+  "title": "Runtime library: the universal helpers fold",
+  "scope": "M",
+  "status": "done",
+  "objective": "Fold the twenty helper functions that appear in all four projects into one vendored library, resolving the drift the corpus has already accumulated. This is the Highlander WP: 2279 lines across four files become one.",
+  "body": "## Deliverables\n\n- `lib/helpers` -- the universal twenty: `_set_env` `assert_semver` `die` `init_run_colors` `is_command` `note_promotion` `ok` `open_run_log` `parse_common_opts` `purge_only_run_logs` `purge_run_logs` `read_version` `refuse_purge_without_log` `require_tool` `rlwrap_exec` `step` `strip_ansi` `warn` `warn_if_tee_failed` `write_errors_file`. Sourced, never executed; defines functions and sets no shell options.\n- Drift adjudication, one ruling each, recorded in `design.md` with the reason:\n  - `print_run_verdict` (Conflab, Baize) vs `print_failed_log_line` (Lamplight, Laksa) -- one name, one implementation.\n  - `not_yet` (Conflab, Baize) vs `not_implemented` (Laksa) -- likewise.\n  - `check_*` (three projects) vs `run_*` (Laksa) function prefix.\n  - `abs_path`, `in_keepset`, `latest_pointer_keepset` -- present in two of four; promote or drop.\n- Project-name parameterisation: the corpus hard-codes the project name in the `die` / `warn` prefixes and in `<PRJ>_ROOT`. Replace with config-derived values without adding a config lookup to every call site.\n- Load guard (`_DEVBIN_HELPERS_LOADED`) so double-sourcing is free, matching the corpus idiom.\n- BATS coverage per function, including the bash 3.2 array idiom under `set -u`.\n\n## Dependencies\n\n- WP-02 (harness), WP-03 (config reader, for the name parameterisation).\n- Pairs with WP-06 -- the run-log functions listed above are its surface; keep the split at the file boundary, not mid-subsystem.",
+  "preamble": ""
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-18.4",
+  "text": "The two axes compose without a project reasoning about them: language scoping still governs language-scoped built-ins, enablement governs opt-in ones, and a project handler activates either by its presence alone (D2)",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 337,
+  "schema": "intent/issue@4.0",
+  "id": "0337",
   "slug": "a-cut-refuses-a-leg-that-has-never-gone-green-un",
   "title": "A cut refuses a leg that has never gone green, until `release gates --leg <host>` has run it",
   "status": "closed",

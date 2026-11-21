@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 255,
+  "schema": "intent/issue@4.0",
+  "id": "0255",
   "slug": "help-cmd-refuses-the-page-of-a-command-the-proje",
   "title": "help <cmd> refuses the page of a command the project does not offer, though every page is vendored",
   "status": "closed",

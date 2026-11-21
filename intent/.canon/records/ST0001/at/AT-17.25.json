@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.25",
+  "kind": "test",
+  "covers": [
+    "AC-17.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/docs.bats::\"docs all runs both shipped options\""
+  }
+}

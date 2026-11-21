@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 315,
+  "schema": "intent/issue@4.0",
+  "id": "0315",
   "slug": "under-derived-pass-the-stamp-s-known-files-to-fi",
   "title": "Under derived:, pass the stamp's known files to --fires as a lower bound for a positive paths: filter",
   "status": "closed",

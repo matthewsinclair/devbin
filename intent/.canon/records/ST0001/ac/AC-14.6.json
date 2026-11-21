@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.6",
+  "text": "A launcher REPLACES the dispatcher process rather than running beneath it, so the terminal talks to the launched program directly",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

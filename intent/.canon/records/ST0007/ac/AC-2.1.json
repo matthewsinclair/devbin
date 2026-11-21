@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.1",
+  "text": "Each notes provider -- releases, changelog, command -- answers check, date, body, views and paths for a version; releases reproduces today's generated CHANGELOG.md and RELEASES.md byte for byte apart from the caret-on-0.x clause that hv ruled out of CHANGELOG.md's generated header (decision 33); and devbin's bin/.devbin/cmd/release is deleted.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

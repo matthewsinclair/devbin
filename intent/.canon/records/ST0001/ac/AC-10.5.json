@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.5",
+  "text": "(correction to the brief, twice) The brief's \"six Conflab-specific commands\" undercounts the handlers and miscounts their kind. First correction, at contract-writing: `cli`, `server` and `iex` need handlers too (binary resolution is project-local; `config/.env` sourcing is ruled out of the framework and out of `run:`). Second correction, at the build: `which` and `precommit` were ruled here to be opt-in catalogue rows with config recipes -- but the all-dispatch fix (`e0ed389`) proved `which` MUST be a full handler, because its own argument surface contains the literal `all` and only a total shadow receives `all` verbatim; `precommit` follows as a handler for uniformity of the ported pair, and `build` (hv's doctor note: offered with nothing to run), `docs` (the surface outgrows the catalogue pair) and `db` (the ash shadow) complete the set. FOURTEEN handlers in the final shape, each with its reason recorded rather than absorbed quietly",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Conflab 5f8d20b0: bin/.devbin/cmd/ holds .lib + FOURTEEN handlers at the flip (app build cli daemon db deploy docs iex macos precommit release server use which), ten of them from 73e4fed5; count is AS AT THAT COMMIT -- deploy and docs (1660396d, back to the builtin) removed later by decision, leaving twelve today"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-02.4",
+  "text": "The gate runs syntax, lint, rules and tests in one pass, reporting all breaches rather than stopping at the first",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`tests/gate all`"
+  }
+}

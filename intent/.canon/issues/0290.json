@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 290,
+  "schema": "intent/issue@4.0",
+  "id": "0290",
   "slug": "worktrees-reads-a-bank-blob-that-carries-more-th",
   "title": "worktrees reads a bank blob that carries more than one patch as one patch, so a staged diff matching its second patch is not matched, and the report does not say (from 0245)",
   "status": "closed",

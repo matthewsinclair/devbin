@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 16,
+  "schema": "intent/issue@4.0",
+  "id": "0016",
   "slug": "a-dropped-exit-status-is-a-confident-green",
   "title": "a dropped exit status is a confident green -- four instances, carried back from a consuming project",
   "status": "closed",

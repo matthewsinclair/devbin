@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 363,
+  "schema": "intent/issue@4.0",
+  "id": "0363",
   "slug": "infra-s-handle-advisory-flags-the-dashed-handles",
   "title": "infra's handle advisory flags the dashed handles infra init writes for two domains that share a first label",
   "status": "closed",

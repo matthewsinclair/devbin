@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.18",
+  "kind": "test",
+  "covers": [
+    "AC-05.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"read_version says unknown rather than failing when there is no version\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 262,
+  "schema": "intent/issue@4.0",
+  "id": "0262",
   "slug": "whether-a-tree-is-a-machine-install-is-read-inli",
   "title": "Whether a tree is a machine install is read inline at each reader, manifest_field kind compared with install, one spelled differently; one predicate answers it",
   "status": "closed",

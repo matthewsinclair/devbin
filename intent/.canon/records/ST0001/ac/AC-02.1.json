@@ -1,0 +1,8 @@
+{
+  "id": "AC-02.1",
+  "text": "Each test runs in its own temp directory, outside the checkout, and teardown refuses to remove anything that is not one",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

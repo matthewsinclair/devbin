@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.6",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-2.3"
+  ],
+  "status": "green",
+  "note": "WP02b-1's arms over the candidate on its ref, deleted once the tag is pushed and at any stop, landed at ac18a7de: red at c0c85eaa, the base with the arms alone, and green at f3462610 on that unit's run (the whole suite 2941 ok, and releasecut under BSD and GNU). The publish shape's candidate is WP02b-2's, under AT-2.8"
+}

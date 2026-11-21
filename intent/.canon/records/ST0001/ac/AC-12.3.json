@@ -1,0 +1,8 @@
+{
+  "id": "AC-12.3",
+  "text": "Every key the config schema accepts is documented with its type and its default, and the reference page cannot drift from the schema in either direction -- an undocumented key and a documented non-key both fail",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

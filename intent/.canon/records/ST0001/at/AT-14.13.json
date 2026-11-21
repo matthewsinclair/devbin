@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.13",
+  "kind": "test",
+  "covers": [
+    "AC-14.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"iex runs from the catalogue alone, with nothing declared in config\""
+  }
+}

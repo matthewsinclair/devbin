@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.5",
+  "text": "The disposition-is-not-authentication callout fires EVEN WHEN every row is clean, because a reader who sees ten green rows stops reading.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

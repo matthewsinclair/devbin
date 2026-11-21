@@ -1,0 +1,11 @@
+{
+  "id": "AT-12.5",
+  "kind": "test",
+  "covers": [
+    "AC-12.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/documentation.bats::\"every schema key appears in the configuration reference\""
+  }
+}

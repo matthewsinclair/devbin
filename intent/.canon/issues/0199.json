@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 199,
+  "schema": "intent/issue@4.0",
+  "id": "0199",
   "slug": "fullcycle-bats-1020-bounds-the-gate-s-wall-at-9s",
   "title": "fullcycle.bats:1020 bounds the gate's wall at 9s absolute, so the 0096 arm fails whenever the machine's load makes the phases slow, the wait left out or not",
   "status": "closed",

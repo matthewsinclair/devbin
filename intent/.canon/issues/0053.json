@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 53,
+  "schema": "intent/issue@4.0",
+  "id": "0053",
   "slug": "the-upgrade-notice-warns-about-a-revert-it-has-n",
   "title": "The upgrade notice warns about a REVERT it has not measured, because it compares commits and reports bytes",
   "status": "closed",

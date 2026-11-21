@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 68,
+  "schema": "intent/issue@4.0",
+  "id": "0068",
   "slug": "fullcycle-tells-the-operator-the-build-trees-wer",
   "title": "fullcycle tells the operator the build trees were not rebuilt after build all has already promoted the pair",
   "status": "closed",

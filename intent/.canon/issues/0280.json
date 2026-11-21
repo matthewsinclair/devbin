@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 280,
+  "schema": "intent/issue@4.0",
+  "id": "0280",
   "slug": "a-package-json-whose-version-pair-does-not-open",
   "title": "a package.json whose \"version\" pair does not open its line is read as another field's value",
   "status": "closed",

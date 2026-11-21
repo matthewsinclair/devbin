@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 307,
+  "schema": "intent/issue@4.0",
+  "id": "0307",
   "slug": "a-cut-s-exit-notes-reach-no-log-when-the-signal",
   "title": "A cut's exit notes reach no log when the signal that ends it takes the tee and no person is at a terminal",
   "status": "closed",

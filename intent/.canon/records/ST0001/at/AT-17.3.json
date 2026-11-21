@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.3",
+  "kind": "test",
+  "covers": [
+    "AC-17.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"version reads and writes the file project.version_from names\""
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "04",
+  "title": "Steps 1 to 5 with --dry-run: resolve, pre-flight, stamp, commit, gates on the release commit",
+  "scope": "S",
+  "status": "done",
+  "objective": "Build the first five steps of a cut -- resolve the version, pre-flight, stamp, make the release commit, and run the gates on it -- with --dry-run, so a cut stops safely before anything outward happens.",
+  "body": "",
+  "preamble": ""
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 132,
+  "schema": "intent/issue@4.0",
+  "id": "0132",
   "slug": "db-db-all-runs-reset-and-drops-the-database-a-mi",
   "title": "db: `db all` runs reset and drops the database, a mistyped option's refusal suggests `db all`, and an overridden option runs under MIX_ENV=prod",
   "status": "closed",

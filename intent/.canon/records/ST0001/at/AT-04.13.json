@@ -1,0 +1,12 @@
+{
+  "id": "AT-04.13",
+  "kind": "test",
+  "covers": [
+    "AC-04.8",
+    "AC-04.10"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"a built-in option is inactive when its language is not declared\""
+  }
+}

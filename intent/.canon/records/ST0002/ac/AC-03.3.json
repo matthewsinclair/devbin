@@ -1,0 +1,9 @@
+{
+  "id": "AC-03.3",
+  "text": "Baseline-then-update seals per protocol, green after; public-API rule as AC-02.3",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "baseline sealed BEFORE any resolution and provably so"
+  }
+}

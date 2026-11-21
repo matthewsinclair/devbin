@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 58,
+  "schema": "intent/issue@4.0",
+  "id": "0058",
   "slug": "clean-s-confirm-gates-on-a-tty-device-node-rathe",
   "title": "clean's confirm gates on a tty device node rather than an interactive stdin, so the suite blocks on the operator's terminal",
   "status": "closed",

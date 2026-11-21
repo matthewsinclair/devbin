@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.4",
+  "text": "The sealed test runners keep Laksa's authored surface -- the glyph feed, the wrapper flags including --no-out/--out-dir/--verbose/--no-trace/--report, bare `test` exiting 2, `test integration` as the same runner with the include prepended -- while sourcing devbin's lib/runlog primitives instead of carrying copies, and sealing into devbin's uppercase suffix family",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "cmd/test + cmd/test.d/{mix,credo} in `5cbfd1cd`; bare-test rc 2 and the full wrapper surface probed in the equivalence pack; identical Result lines both sides; LATEST_* names unchanged so CI's addresses held"
+  }
+}

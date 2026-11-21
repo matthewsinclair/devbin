@@ -1,0 +1,9 @@
+{
+  "id": "07",
+  "title": "devbin adopts the core and cuts its next release with it",
+  "scope": "S",
+  "status": "done",
+  "objective": "devbin releases itself with the release core: its release: block declares the releases notes kind, object: ci, its repository and doctor as a gate, docs/releasing.md is the human steps and bin/devbin release, and devbin 0.1.2 was cut that way on 2026-09-19.",
+  "body": "",
+  "preamble": ""
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 306,
+  "schema": "intent/issue@4.0",
+  "id": "0306",
   "slug": "write-errors-file-truncates-a-red-run-s-seal-bef",
   "title": "write_errors_file truncates a red run's seal before it rewrites it, so every seal reader reads green in that window",
   "status": "closed",

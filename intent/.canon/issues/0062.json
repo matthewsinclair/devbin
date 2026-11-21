@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 62,
+  "schema": "intent/issue@4.0",
+  "id": "0062",
   "slug": "devbin-reads-languages-from-two-different-files",
   "title": "devbin reads languages from two different files and names whichever one it read, so a gate refuses a project for not declaring a language that project declares",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.32",
+  "kind": "test",
+  "covers": [
+    "AC-09.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"upgrade refuses in a devbin checkout, which has nothing vendored to upgrade\""
+  }
+}

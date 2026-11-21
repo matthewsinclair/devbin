@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 134,
+  "schema": "intent/issue@4.0",
+  "id": "0134",
   "slug": "fullcycle-dry-run-runs-the-project-s-build-a-lon",
   "title": "fullcycle: --dry-run runs the project's build, a lone commands.build.run passes the rebuild check and the cycle deletes the trees before `build all` refuses, and four smaller points",
   "status": "closed",

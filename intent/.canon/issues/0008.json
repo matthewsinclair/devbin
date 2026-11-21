@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 8,
+  "schema": "intent/issue@4.0",
+  "id": "0008",
   "slug": "a-vendored-markdown-file-was-not-prettier-stable-and-a-project-hook-rewrote-it",
   "title": "a vendored markdown file was not prettier-stable, and a project hook rewrote it",
   "status": "closed",

@@ -1,0 +1,10 @@
+{
+  "id": "AT-8.2",
+  "kind": "test",
+  "file": "tests/unit/releaseattach.bats",
+  "covers": [
+    "AC-8.2"
+  ],
+  "status": "green",
+  "note": "minted by vc with WP-08 on 2026-10-23, before any arm exists; the builder re-cites the file with intent at edit if the arms land elsewhere. Red on the base's code (0683a6a8, WP-08's test files copied in) under BSD and GNU, in cc's series of 2026-10-23 14:58Z to 15:05Z (runs/arm.red.attach.*): every arm of the file as it then stood, each at its first assertion on the attach, since the base has no attach verb and refuses the assets keys. The fix round's arms were red on 2dec40a1, the reviewed candidate, run singly: the finished release's re-run (releaseattach.bats:171) at its assets already row, the finished release with expired artifacts (:189) at assert_success, the SHA256SUMS replacement (:252) at its assets pending row, and the expired-artifact message (:440) on the old message. Green at 5059a26e under BSD and GNU in cc's series of 2026-10-23 20:01Z to 20:16Z (runs/arm.green3.attach.*, every arm ok, none skipped), and in the full suite of the landing tree at 23f5f70e (seal 20261023-2029). Landed at 6bda9690."
+}

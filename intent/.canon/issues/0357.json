@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 357,
+  "schema": "intent/issue@4.0",
+  "id": "0357",
   "slug": "ci-s-suite-sharded-by-file-macos-first-the-cut-t",
   "title": "CI's suite sharded by file, macOS first; the cut the only whole-suite run; tagged tree scans at every landing",
   "status": "closed",

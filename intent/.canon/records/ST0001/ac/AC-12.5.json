@@ -1,0 +1,9 @@
+{
+  "id": "AC-12.5",
+  "text": "The command-author guide carries the protocol end to end -- auto-discovery, the `# devbin:` header, D23's precedence, the handler's environment, exit codes, sub-commands, sub-options and the synthesised `all`, sealed gates, and where help comes from -- with the contrived-`ls` walkthrough as its worked example",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`docs/authoring-commands.md`"
+  }
+}

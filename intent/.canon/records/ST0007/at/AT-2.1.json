@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.1",
+  "kind": "test",
+  "file": "tests/unit/release.bats",
+  "covers": [
+    "AC-2.1"
+  ],
+  "status": "green",
+  "note": "the releases kind: every verb against a root, release notes and release check through it, dating, the body byte for byte as release.yml publishes it, both views rendered before either is replaced, the changelog header built from project.name, this repository's views byte for byte from RELEASES/, and devbin's release resolving to the core; marked # AT-2.1"
+}

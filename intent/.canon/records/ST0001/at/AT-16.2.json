@@ -1,0 +1,11 @@
+{
+  "id": "AT-16.2",
+  "kind": "test",
+  "covers": [
+    "AC-16.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/data.bats::\"a project overrides a catalogued db option in one line\""
+  }
+}

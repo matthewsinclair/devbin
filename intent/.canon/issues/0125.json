@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 125,
+  "schema": "intent/issue@4.0",
+  "id": "0125",
   "slug": "shell-init-never-reads-install-prefix-so-the-mac",
   "title": "shell-init never reads install.prefix, so the machine-install fallback the reference promises is never written into dvb",
   "status": "closed",

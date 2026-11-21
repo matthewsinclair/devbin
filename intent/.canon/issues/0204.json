@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 204,
+  "schema": "intent/issue@4.0",
+  "id": "0204",
   "slug": "runtime-digest-depends-on-the-reader-s-locale-on",
   "title": "runtime digest depends on the reader's locale: one runtime reads 9f2c08f61dd5 under C and 74ca0ada3c39 under en_* UTF-8",
   "status": "closed",

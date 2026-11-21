@@ -1,0 +1,9 @@
+{
+  "id": "AC-6.1",
+  "text": "A GitHub Actions job runs bin/devbin test all inside WSL on a Windows runner, from a clone in WSL's own filesystem, on release tags and on demand; its name states the WSL version it ran; and it blocks no release until hv rules that it does.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "dispatch 39055655481 on ea43e4b9 (workflow_dispatch, on demand; the job's if: equals the macOS job's tags-and-dispatch gate, held by ci-workflow.bats): WSL job 117462973144 'Test in WSL 2 (Ubuntu 26.04)' on windows-2025, its kernel asserted to agree (6.18.40.1-microsoft-standard-WSL2), ran bin/devbin test all from a clone in WSL's filesystem (~/devbin), 2392 ok, 0 not ok; Test Summary passed at 18:31Z while the WSL job still ran, so it blocks no release"
+  }
+}

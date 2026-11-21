@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.35",
+  "kind": "test",
+  "covers": [
+    "AC-05.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"the unguarded expansion is what actually breaks on the bash 3.2 target\""
+  }
+}

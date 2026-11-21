@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.16",
+  "kind": "test",
+  "covers": [
+    "AC-07.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a usage hint rides in the left column when declared\""
+  }
+}

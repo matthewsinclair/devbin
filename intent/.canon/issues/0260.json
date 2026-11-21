@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 260,
+  "schema": "intent/issue@4.0",
+  "id": "0260",
   "slug": "version-set-exits-0-having-written-nothing-into",
   "title": "version set exits 0 having written nothing into a structured version file with no version line, and writes the sidecars before failing on a version file it cannot write",
   "status": "closed",

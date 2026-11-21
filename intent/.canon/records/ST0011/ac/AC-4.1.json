@@ -1,0 +1,9 @@
+{
+  "id": "AC-4.1",
+  "text": "Devbin's test workflow runs each leg once per sha on the candidate: no tag trigger, no Candidate verdict job, lanes from the runner's own CPU count, WSL on the candidate. The push step's fast-forward of public main to the snapshot runs Ubuntu again on that sha, main's own check of the published branch, which the cut does not wait for (amended on hv's TUI answer in vc's window, 2026-11-01 18:43Z by date -u).",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "devbin 0.1.19's cut at 2026-11-01 21:53:56Z by date -u: candidate run 41348944891 ran each job once on the snapshot 0b5e4fa0f540 (Ubuntu, macOS, WSL 2, Shell Script Analysis, Test Summary; no tag trigger and no Candidate verdict job; lanes from the runner's own CPU count, 4 there; WSL 2 on the candidate, red on one arm filed as 0318, which blocks nothing by design); the push's fast-forward of public main to 0b5e4fa0f540 ran Ubuntu again, run 41354285878, job 124990910238, green at 22:24:49Z (all 2824 ok, the same 107 skips), which the cut did not wait for; the v0.1.19 tag ran Release alone (41354289112), no test run"
+  }
+}

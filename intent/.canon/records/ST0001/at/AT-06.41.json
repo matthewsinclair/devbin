@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.41",
+  "kind": "test",
+  "covers": [
+    "AC-06.15"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"record_seal is a no-op with no ledger set, and records only failures\""
+  }
+}

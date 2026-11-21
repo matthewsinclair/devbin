@@ -1,0 +1,8 @@
+{
+  "id": "AC-07.3",
+  "text": "Summary, group and usage hint have ONE source each, read config first, then the resolving handler's own header, then the catalogue. What devbin ships is declared once in the catalogue; what a project ships is declared once in its handler; neither carries the other's copy (D23)",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

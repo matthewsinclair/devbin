@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 7,
+  "schema": "intent/issue@4.0",
+  "id": "0007",
   "slug": "the-gate-usage-lines-list-the-catalogue-not-the-active-set",
   "title": "the gate usage lines list the catalogue, not the active set",
   "status": "closed",

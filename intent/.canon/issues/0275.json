@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 275,
+  "schema": "intent/issue@4.0",
+  "id": "0275",
   "slug": "use-dev-and-use-opt-exit-1-on-a-shadowed-link-ha",
   "title": "use dev and use opt exit 1 on a shadowed link having pointed it, which the help page does not say: the page and the message say so (not in 0.1.16)",
   "status": "closed",

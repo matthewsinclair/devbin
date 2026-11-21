@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.11",
+  "text": "One rig (D19): a config-declared option that declares `log:` seals through the same runner a built-in uses, with `log: true` naming the pair after the option, and `all` points at its seal exactly as it does a built-in's",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

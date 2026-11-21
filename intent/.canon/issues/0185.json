@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 185,
+  "schema": "intent/issue@4.0",
+  "id": "0185",
   "slug": "a-repository-git-refuses-to-read-is-taken-for-no",
   "title": "a repository git refuses to read is taken for no repository by five readers, and vendoring from such a checkout writes \"not a git checkout\" into the consumer's manifest beside \"source: checkout\"",
   "status": "closed",

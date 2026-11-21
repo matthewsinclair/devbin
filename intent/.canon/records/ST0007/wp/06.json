@@ -1,0 +1,9 @@
+{
+  "id": "06",
+  "title": "object ci with object_wait, and step 11's CI verdict after the release",
+  "scope": "S",
+  "status": "done",
+  "objective": "Under object: ci the core makes no release object and waits up to object_wait for the project's workflow to make one; under a declared ci.query it asks the verdict on the tagged commit after the release, and anything but green exits 1 with the fail-forward remedy, leaving the tag and the release as they stand. Every call to another machine from the first push on is bounded, and a bound kills the whole call.",
+  "body": "",
+  "preamble": ""
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.3",
+  "kind": "test",
+  "covers": [
+    "AC-07.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"the listing names the project, not the file it was invoked as\""
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.10",
+  "text": "The switch is ONE delete-only commit on hv's explicit go over the equivalence pack -- `bin/laksa` + `bin/lk` to devbin, the `laksa_*` family deleted, nothing else -- and the old lowercase-suffix seal orphans are hand-cleaned after it, scoped to the old family only",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Laksa `72276f4b` (hv: \"LGTM. Go.\"), 22 files, 2 insertions, 2,831 deletions; verified live through both entry points BEFORE committing; the orphan clean used case-sensitive `find -name` because APFS globbing would have matched the `.MIX` family too, and the surviving tree plus both LATEST pointers were verified after"
+  }
+}

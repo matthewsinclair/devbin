@@ -1,0 +1,10 @@
+{
+  "id": "AT-5.6",
+  "kind": "test",
+  "file": "tests/unit/infra.bats",
+  "covers": [
+    "AC-5.6"
+  ],
+  "status": "green",
+  "note": "Three arms. The discriminating one is the zip NAMED .xml: under an extension-based mutation it is the only arm that goes red, which is what makes 'by bytes, not by name' a measured claim. Recorded with it: libxml2 inflates gzip transparently, so the .xml.gz arm was green before this code existed and is not evidence about it."
+}

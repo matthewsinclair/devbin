@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 370,
+  "schema": "intent/issue@4.0",
+  "id": "0370",
   "slug": "a-project-s-own-command-given-h-or-help-after-a",
   "title": "A project's own command given -h or --help after a declared option runs its run: line, because 0356 answers the flag for devbin's six gate commands only",
   "status": "closed",

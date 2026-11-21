@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.1",
+  "text": "A command-level `run:` declared in config actually runs. It is documented in `config.reference.yaml` and makes the command active, and before this WP it exited 3 \"not built yet\" -- the framework reporting its own incompleteness for a correctly declared command",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.1",
+  "text": "bin/devbin shell-init bash emits a dvb function that, evaluated in bash, finds and runs the nearest bin/devbin exactly as the zsh body does in zsh, held by the same arms run under both shells; and both bodies are rendered from one source.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

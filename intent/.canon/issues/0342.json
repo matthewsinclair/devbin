@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 342,
+  "schema": "intent/issue@4.0",
+  "id": "0342",
   "slug": "a-process-substitution-s-status-read-with-wait-c",
   "title": "A process substitution's status read with `wait \"$!\"` can be lost under load, so a walk reads as failed, and devbin's suite went red on kovacs at 24 jobs",
   "status": "closed",

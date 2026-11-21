@@ -1,0 +1,9 @@
+{
+  "id": "04",
+  "title": "The runtime against WSL's edges: the Windows PATH, and a checkout on a Windows drive",
+  "scope": "M",
+  "status": "done",
+  "objective": "devbin works with the Windows PATH appended: every PATH split and every use keeps an entry with spaces whole, and no Windows executable stands in for a Linux tool, proven on Linux by arms that build such a PATH (D48). `doctor` reports a project rooted on a Windows drive, with the cause and the remedy, without failing on it (D49). Criteria AC-4.1 and AC-4.2.",
+  "body": "",
+  "preamble": ""
+}

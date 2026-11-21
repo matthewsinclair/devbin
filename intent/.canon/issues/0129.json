@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 129,
+  "schema": "intent/issue@4.0",
+  "id": "0129",
   "slug": "install-force-into-a-project-never-removes-a-fil",
   "title": "install --force into a project never removes a file devbin stopped shipping, and once the manifest drops it no upgrade will: a retired lib/cmd/<name> goes on dispatching",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-8.2",
+  "text": "release attach vX.Y.Z, and step 9 of a cut under object: local through the same function, attaches the assets built by the earliest successful run of assets.workflow at the tag (--branch the tag, at the tag's commit). It waits for that run within assets.wait and never dispatches one. It uploads every file of every artifact without --clobber, and refuses an asset already present with other bytes. It writes one SHA256SUMS over every asset on the object, replacing it only when its content differs, and reads back each upload's GitHub digest. Each stage reads its postcondition first, so a re-run continues. The assets.* keys are refused outside object: local.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

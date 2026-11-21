@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.10",
+  "text": "`server` runs the project's server, and its `--iex` variant when that flag is given",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

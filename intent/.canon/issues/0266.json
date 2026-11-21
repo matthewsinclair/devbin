@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 266,
+  "schema": "intent/issue@4.0",
+  "id": "0266",
   "slug": "paths-devbin-prints-for-a-homebrew-keg-name-libe",
   "title": "Paths devbin prints for a Homebrew keg name libexec's launcher, which a PATH without Homebrew's bin refuses at the bash floor (from 0253's review)",
   "status": "closed",

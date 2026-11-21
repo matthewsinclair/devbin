@@ -1,0 +1,9 @@
+{
+  "id": "AT-2.4",
+  "kind": "test",
+  "file": "tests/unit/updatenotice.bats",
+  "covers": [
+    "AC-2.4"
+  ],
+  "status": "green"
+}

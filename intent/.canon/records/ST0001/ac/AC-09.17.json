@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.17",
+  "text": "Two deliverables are deliberately NOT built, and their absence is asserted rather than assumed: `list` (superseded by `help --why`, WP-07) and `new`'s `cmd/<name>.yaml` metadata sidecar (superseded by the handler header, D23). Both were written before the WP that settled them; neither is a gap",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

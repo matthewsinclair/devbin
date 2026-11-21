@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.17",
+  "kind": "test",
+  "covers": [
+    "AC-15.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"a missing formatter FAILS the gate, where fmt only skips\""
+  }
+}

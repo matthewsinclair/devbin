@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.18",
+  "text": "Equivalence evidence in `WP/11/baize-equivalence.md` with an examines table comparing what each gate EXAMINED -- mix runs SUITE-SCOPED both sides because the project's standing rule forbids the bare full suite -- and every deliberate difference on the record with its reason: D21's `fmt --check` retirement, `check all` order, options anywhere in argv, the seal family, and the surfaced dirt (`db reset` riding the deprecated root alias) carried verbatim with hv told",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`WP/11/baize-equivalence.md` (Devbin `6e65f2e`): eleven byte-identical pairs, identical measured sets on every gate, the dirt section"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 23,
+  "schema": "intent/issue@4.0",
+  "id": "0023",
   "slug": "a-sweep-s-completeness-is-a-claim-about-its",
   "title": "a sweep's completeness is a claim about its enumeration, and both 2026-08-24 sweeps enumerated from a roster",
   "status": "closed",

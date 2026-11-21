@@ -1,0 +1,9 @@
+{
+  "id": "02",
+  "title": "The prerequisite stated in the README, and install hints naming apt",
+  "scope": "S",
+  "status": "done",
+  "objective": "The README's Install section says how to run devbin on Windows before it says anything else about Windows, starting with where to clone (D45): WSL 2 with an Ubuntu LTS, the clone and the work inside WSL's own filesystem, WSL's own git, the packages, `appendWindowsPath = false` as advice, and, once measured, the WSL 2 networking settings for working behind a VPN. It also says that `check all` refuses at the critic gate under WSL in a project that carries `intent/` until Intent ships Linux binaries (D53), and that there is no native port. The vendored runtime's install hints name apt beside Homebrew, in the spelling `bats-lanes` already uses (D54). Criteria AC-2.1 and AC-2.2.",
+  "body": "",
+  "preamble": ""
+}

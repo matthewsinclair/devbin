@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 77,
+  "schema": "intent/issue@4.0",
+  "id": "0077",
   "slug": "ci-cannot-run-check-critic-on-either-runner-the",
   "title": "CI cannot run check critic on either runner: the Install Intent step clones a repository whose bin/ no longer carries intent, and Intent ships no Linux binary",
   "status": "closed",

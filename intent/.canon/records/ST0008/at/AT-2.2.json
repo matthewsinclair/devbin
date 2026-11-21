@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.2",
+  "kind": "test",
+  "file": "tests/unit/installhints.bats",
+  "covers": [
+    "AC-2.2"
+  ],
+  "status": "green",
+  "note": "Red first on main's lib/ (exactly the seven hints); landed at 3ddd6cad; red first on 4caf885a's lib/ under 2e52c85a's arm; green at 3ddd6cad: landing suite 2352 of 2352, seal 20261016-1322, at the stack tip 1dadcaa3"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.8",
+  "text": "A built-in gate command refuses an unknown option by name and prints its usage when given none",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

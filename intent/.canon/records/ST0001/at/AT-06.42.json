@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.42",
+  "kind": "test",
+  "covers": [
+    "AC-06.15"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"all points at the seal of every gate that failed\""
+  }
+}

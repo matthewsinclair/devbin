@@ -1,0 +1,8 @@
+{
+  "id": "AC-6.2",
+  "text": "Under a declared ci.query, a red verdict on the tagged commit exits non-zero, names the run and states the fail-forward remedy, and leaves the tag and the release untouched.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

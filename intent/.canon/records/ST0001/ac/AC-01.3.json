@@ -1,0 +1,9 @@
+{
+  "id": "AC-01.3",
+  "text": "The declarative/imperative boundary is written as a reviewable rule with worked examples from the corpus",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`design.md` D1"
+  }
+}

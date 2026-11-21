@@ -1,0 +1,8 @@
+{
+  "id": "AC-07.7",
+  "text": "`help <unknown>` exits non-zero and says how to see what exists; an INACTIVE command is distinguished from an unknown one and says why it is not offered (D11)",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

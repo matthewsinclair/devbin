@@ -1,0 +1,8 @@
+{
+  "id": "AC-15.4",
+  "text": "D21: `fmt --check` does not exist. The formatting gate is `check format`, it seals, and it does NOT skip when its tool is missing -- the asymmetry with AC-15.2 is what \"a gate claims a verdict\" means",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

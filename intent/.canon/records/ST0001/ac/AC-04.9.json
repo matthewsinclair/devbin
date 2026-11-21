@@ -1,0 +1,8 @@
+{
+  "id": "AC-04.9",
+  "text": "A command whose options are all inactive is itself inactive and absent from help",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

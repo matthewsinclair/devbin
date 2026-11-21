@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 25,
+  "schema": "intent/issue@4.0",
+  "id": "0025",
   "slug": "a-gate-sealed-the-tool-s-complaint-about-its",
   "title": "A gate sealed the tool's complaint about its arguments and never what produced them",
   "status": "closed",

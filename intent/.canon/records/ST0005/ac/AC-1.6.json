@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.6",
+  "text": "The mode is announced before anything is written, in BOTH modes -- a mode line on one branch only is indistinguishable from one that failed to print.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

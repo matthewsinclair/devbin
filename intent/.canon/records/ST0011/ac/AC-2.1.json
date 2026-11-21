@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.1",
+  "text": "The cut asks its one yes before any gate or leg runs, naming the tag, the release commit, every remote, the object, the assets and the tap; --yes answers it and the after: commands run under it.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

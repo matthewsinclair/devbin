@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 323,
+  "schema": "intent/issue@4.0",
+  "id": "0323",
   "slug": "the-core-carries-a-rust-cli-s-ship-lock-sync-as",
   "title": "The core carries a Rust CLI's ship: lock-sync as a derived step, and macOS sign, notarise, pack and attach as the after step, retiring three projects' copies",
   "status": "closed",

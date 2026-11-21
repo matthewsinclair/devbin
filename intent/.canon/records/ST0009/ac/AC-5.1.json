@@ -1,0 +1,10 @@
+{
+  "id": "AC-5.1",
+  "text": "On rhad and on kovacs, brew upgrade devbin moves to a later tag, bin/devbin upgrade in the fixture vendors it through the opt path, and doctor passes naming the new version.",
+  "kind": "non-test",
+  "state": {
+    "is": "withdrawn",
+    "reason": "Carried to issue 0201 on hv's ruling of 2026-10-17: it can only be met once the next batch release (directive 13) is in the tap, and the thread closes on the rest without waiting for a release.",
+    "by": "hv"
+  }
+}

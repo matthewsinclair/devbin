@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 42,
+  "schema": "intent/issue@4.0",
+  "id": "0042",
   "slug": "clean-can-preview-or-delete-but-cannot-preview-w",
   "title": "clean can preview or delete, but cannot preview without a terminal",
   "status": "closed",

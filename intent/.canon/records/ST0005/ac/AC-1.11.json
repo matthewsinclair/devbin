@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.11",
+  "text": "Every remediation devbin prints must name a command that resolves FROM WHERE THE READER IS STANDING, not only from the project root. The operator drives devbin through 'dvb', a shell function that walks up from PWD and runs bin/devbin without changing directory, so a subdirectory is the ordinary case rather than the edge.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

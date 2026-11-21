@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 131,
+  "schema": "intent/issue@4.0",
+  "id": "0131",
   "slug": "clean-cargo-s-cachedir-tag-test-takes-other-tool",
   "title": "clean: cargo's CACHEDIR.TAG test takes other tools' caches, the elixir and swift arms run cargo's search and print its note, --dry-run writes a marker, and the shared-tree warning fires on ordinary layouts",
   "status": "closed",

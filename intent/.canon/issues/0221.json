@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 221,
+  "schema": "intent/issue@4.0",
+  "id": "0221",
   "slug": "comments-and-test-titles-outside-the-release-cor",
   "title": "comments and test titles outside the release core name things by their position (field five, the first two, invariant 2, four lines up), which goes stale as the list grows",
   "status": "closed",

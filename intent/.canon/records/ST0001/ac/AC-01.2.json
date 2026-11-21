@@ -1,0 +1,9 @@
+{
+  "id": "AC-01.2",
+  "text": "The helper-function intersection is measured, and every divergence needing a ruling is named",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`design.md` \"The helpers libraries are ~50-80% the same code\" plus D13, which names two divergences (`read_version`, `write_errors_file`) that the WP-01 inventory missed and the WP-05 fold surfaced"
+  }
+}

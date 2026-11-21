@@ -1,0 +1,8 @@
+{
+  "id": "AC-17.4",
+  "text": "Derived files are written FIRST and the version file LAST, so a partial failure leaves the version un-advanced and a rerun recomputes the same target rather than double-bumping. A missing sidecar is named, never silently skipped",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

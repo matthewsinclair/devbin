@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 72,
+  "schema": "intent/issue@4.0",
+  "id": "0072",
   "slug": "a-clean-that-fails-partway-leaves-fullcycle-repo",
   "title": "a clean that fails partway leaves fullcycle reporting nothing about the links it darkened",
   "status": "closed",

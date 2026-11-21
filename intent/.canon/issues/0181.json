@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 181,
+  "schema": "intent/issue@4.0",
+  "id": "0181",
   "slug": "a-passing-release-dry-run-ends-on-what-it-could",
   "title": "a passing release dry run ends on what it could not predict, with no verdict line, and its rows 6 and 7 name HEAD as the commit the cut would tag",
   "status": "closed",

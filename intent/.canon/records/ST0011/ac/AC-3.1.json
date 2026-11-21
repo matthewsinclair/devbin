@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.1",
+  "text": "The core ships the GitHub run reader as a built-in, honouring the candidate ref and DEVBIN_RELEASE_TAG; release check and the pre-flight refuse a test workflow whose matrix does not fire on candidate/ refs.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 288,
+  "schema": "intent/issue@4.0",
+  "id": "0288",
   "slug": "three-test-helpers-each-write-a-stub-machine-ins",
   "title": "three test helpers each write a stub machine install by hand (fake_install, mkinstall_prefix, brew_keg --stub), differing only in their manifest lines",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-03.2",
+  "text": "Every construct outside the subset is refused with an error naming the file and the line: tabs, odd indent, jumped indent, duplicate keys, anchors/aliases, block scalars, flow collections, sequences of maps, malformed lines, illegal key characters",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

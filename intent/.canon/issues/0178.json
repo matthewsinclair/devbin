@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 178,
+  "schema": "intent/issue@4.0",
+  "id": "0178",
   "slug": "the-upgrade-page-says-a-manifest-s-next-upgrade",
   "title": "the upgrade page says a manifest's next upgrade writes the kind, where an upgrade run by a runtime older than 0.1.9 records the path again, and that every refusal of a source DEVBIN_INSTALL_PREFIX places names the variable, where only the refusal of a tree that is no devbin does",
   "status": "closed",

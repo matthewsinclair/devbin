@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 41,
+  "schema": "intent/issue@4.0",
+  "id": "0041",
   "slug": "mkproj-is-defined-in-13-test-files-and-not-in-th",
   "title": "mkproj is defined in 13 test files and not in the module registered to own it",
   "status": "closed",

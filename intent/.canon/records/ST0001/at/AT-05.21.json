@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.21",
+  "kind": "test",
+  "covers": [
+    "AC-05.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"rlwrap_exec runs the command under rlwrap when it is available\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 46,
+  "schema": "intent/issue@4.0",
+  "id": "0046",
   "slug": "the-measured-referent-is-written-after-the-log-i",
   "title": "The measured: referent is written after the log is sealed, so it lands in the parent's log and never its own",
   "status": "closed",

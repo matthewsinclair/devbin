@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 189,
+  "schema": "intent/issue@4.0",
+  "id": "0189",
   "slug": "the-release-core-prints-git-s-own-error-text-abo",
   "title": "the release core prints git's own error text about a remote, which carries part of a credential when the remote URL's password holds a raw @ or /",
   "status": "closed",

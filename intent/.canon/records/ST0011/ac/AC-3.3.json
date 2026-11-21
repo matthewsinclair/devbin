@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.3",
+  "text": "The macOS stage signs and notarises at the release commit as a leg; attach reads the assets run by the release commit's sha; the formula publishes under the cut's yes.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

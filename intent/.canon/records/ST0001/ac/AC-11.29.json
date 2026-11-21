@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.29",
+  "text": "The switch is ONE commit on hv's explicit per-project go: `bin/lamplight` to a symlink, `bin/ll` riding as the symlink it already is, the 31-file family + `lamplight_helpers.d/` deleted, `lamplight_macos.d/` moved not deleted, nothing else; the lowercase seal orphans AND the `.test.` legacy strays hand-cleaned case-sensitively, survivors verified",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "ONE commit (Lamplight `69cc6e203`) on hv's go over `WP/11/lamplight-equivalence.md`: the symlink, `ll` riding, 41 paths deleted"
+  }
+}

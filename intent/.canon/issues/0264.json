@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 264,
+  "schema": "intent/issue@4.0",
+  "id": "0264",
   "slug": "version-set-takes-writes-nothing-proves-as-done",
   "title": "version set takes writes nothing proves as done: an unreadable bare sidecar is overwritten, a write-only version file prints unknown at exit 0, and PlistBuddy's exit 0 is read as a write",
   "status": "closed",

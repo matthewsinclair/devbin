@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.1",
+  "text": "A malformed profile is REFUSED before the estate is contacted, and the refusal states that nothing was checked. Failing it at check time would conflate your profile is wrong with your estate is wrong -- different problems, different fixes, different exit codes.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

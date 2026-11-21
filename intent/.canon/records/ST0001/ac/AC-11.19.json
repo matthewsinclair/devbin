@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.19",
+  "text": "Baize's 15 authored help topics migrate verbatim per help-migration.md rules 1/4/5 -- rulings extracted BEFORE the prose moves (the agent ban, the seal doctrine, the report/gate split, the umbrella gotcha, the no-markdown ruling, the stub policy) -- and every topic is `npx prettier --check` clean under Baize's own config from its first commit (the hook runs no prettier; the config governs manual runs)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Baize `163be28`; prettier --check clean on all 15 before the commit"
+  }
+}

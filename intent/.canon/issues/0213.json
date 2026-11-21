@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 213,
+  "schema": "intent/issue@4.0",
+  "id": "0213",
   "slug": "devbin-conforms-to-the-shared-dev-opt-brew-contr",
   "title": "devbin conforms to the shared dev/opt/brew contract (docs/dev-opt-brew.md, vc decision 57): devbin use [dev|opt|brew], the machine pointer retired so the ~/.local/bin/devbin link read by path is the one record, the tree word in --version, install --force as the one re-publish route, T3's manifest keys",
   "status": "closed",

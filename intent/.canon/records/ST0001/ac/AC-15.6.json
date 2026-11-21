@@ -1,0 +1,8 @@
+{
+  "id": "AC-15.6",
+  "text": "The pairing holds by construction for EVERY arm, not one: each command line `check format` verifies is DERIVED from the `fmt` arm it verifies, and every `fmt` arm carrying a language has a check arm. A change to either without the other is caught. Broadened 2026-08-08 (issue 0003) -- the original wording named `fmt elixir` alone, which is exactly the gap it was meant to police: `fmt` had four arms and the gate verified one. `md` is deliberately excluded, and the exclusion is asserted rather than assumed, because a gate over Markdown would assert a verdict this project does not hold -- prettier re-pads tables and this repository hand-aligns them",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.36",
+  "kind": "test",
+  "covers": [
+    "AC-04.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/contract.bats::\"a bare command with options is not reported as unbuilt\""
+  }
+}

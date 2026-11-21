@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 299,
+  "schema": "intent/issue@4.0",
+  "id": "0299",
   "slug": "macos-s-commit-stamp-check-refuses-a-sha256-repo",
   "title": "macos's commit-stamp check refuses a sha256 repository's 64-character stamp",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.24",
+  "kind": "test",
+  "covers": [
+    "AC-06.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"the cargo grammar captures the failures roster and rustc diagnostics\""
+  }
+}

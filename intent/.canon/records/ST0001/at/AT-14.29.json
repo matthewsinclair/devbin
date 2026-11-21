@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.29",
+  "kind": "test",
+  "covers": [
+    "AC-14.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"repl wraps the cli repl task in rlwrap when rlwrap is present\""
+  }
+}

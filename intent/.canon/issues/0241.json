@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 241,
+  "schema": "intent/issue@4.0",
+  "id": "0241",
   "slug": "the-public-snapshot-ships-usage-rules-md-intent",
   "title": "The public snapshot ships usage-rules.md, .intent_critic.yml and .prettierignore, which hv ruled stay in the workroom, and the exit-code contract lives in usage-rules.md (ST0010 Q1)",
   "status": "closed",

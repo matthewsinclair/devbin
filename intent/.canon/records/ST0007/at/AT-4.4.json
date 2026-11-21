@@ -1,0 +1,10 @@
+{
+  "id": "AT-4.4",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-4.4"
+  ],
+  "status": "green",
+  "note": "remote fast-forward: diverged refused before any gate, naming it; moved past HEAD refused while the commit is to be made; moved past an existing release commit passes, push already; marked # AT-4.4 in tests/unit/releasecut.bats. red first: each arm driven red when built and held by mutation (WP-04: 27 mutants; WP-05 re-drive at ce5989e: 12 of 13 killed, j --force declared invisible; WP-06: 14 of 14, the F-fix 6 of 6, dc's 5 of 6 with m1's weak arm a follow-up). Green: the full suite at df56014, the v0.1.2 release gate, 1556/1556, 2026-09-19."
+}

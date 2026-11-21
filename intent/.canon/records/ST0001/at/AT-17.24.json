@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.24",
+  "kind": "test",
+  "covers": [
+    "AC-17.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/docs.bats::\"docs treeindex says what to declare when nothing is configured\""
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "AT-5.4",
+  "kind": "test",
+  "file": "tests/unit/cache.bats",
+  "covers": [
+    "AC-5.5"
+  ],
+  "status": "green",
+  "note": "cache.bats's root arms (3), for AC-5.5: with DEVBIN_CACHE_HOME unset or empty the root is the XDG cache directory's devbin, doctor naming it as the default, get missing (exit 1) before put makes the root and the entry; a root that is relative, a file, or a link to nothing (itself or above it), read before the toolchain is asked anything, and a root this user cannot write or cannot make, are each refused by get and by put with exit 7 in one line naming the root and why, doctor notes it, and the project's build still exits 0 -- red, among cache.bats's 29 arms all red at the red clone 2ce10c70 (main's code at aa566d51 with the unit's test files from 90ee95b3, red-aa566d51-90ee95b3) in the arms phase of WP16's re-run (slot 01M6B9QGX6WPYENRTQ4XHRFDS7, 10:27:18Z to 11:07:56Z by date -u), record ~/Devel/scratch/devbin-dc/wp16/runs/arms/summary and red-cache.tap. Green at 90ee95b3 in the same run: under GNU in its arms phase and its light phase (cache.bats whole, 29 of 29 ok each), and under BSD in the whole suite (2932 ok, 1 not ok, 5 skipped; its one red dispatch.bats 542, main's, vc decision 124), none of these arms skipped; records ~/Devel/scratch/devbin-dc/wp16/runs/arms, light and whole/bsd-all.log. The '# AT-5.4' line is over each of its arms."
+}

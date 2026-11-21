@@ -1,0 +1,8 @@
+{
+  "id": "AC-04.10",
+  "text": "Deactivation is visible: asking for an inactive built-in explains why (language not declared, or disabled) rather than reporting an unknown option",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

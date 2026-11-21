@@ -1,0 +1,12 @@
+{
+  "id": "AT-04.17",
+  "kind": "test",
+  "covers": [
+    "AC-04.8",
+    "AC-04.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"command-level enabled false deactivates the whole command\""
+  }
+}

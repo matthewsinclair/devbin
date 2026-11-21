@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.27",
+  "kind": "test",
+  "covers": [
+    "AC-09.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"upgrade removes a vendored file devbin no longer ships\""
+  }
+}

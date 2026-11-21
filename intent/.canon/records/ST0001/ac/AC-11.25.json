@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.25",
+  "text": "The promotions ruling is SURFACED, not slipped: the old mix runner's authored zero-test tolerance is overridden to the fleet shape (both zero shapes promote; `--allow-empty` the per-invocation escape expressing exactly the case the old ruling protected), credo and lua keep their strict no-escape promotions verbatim, and the override is stated in the inventory, the pack and the test topic for hv to reverse if wanted",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "the inventory's \"promotions ruling\" section, the pack's deliberate-difference #1, and help/test.md's ZERO-WORK RUNS paragraph all state it; credo/lua ports diffed against the old runners keep the no-escape shape"
+  }
+}

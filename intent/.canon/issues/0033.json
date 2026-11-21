@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 33,
+  "schema": "intent/issue@4.0",
+  "id": "0033",
   "slug": "source-commit-of-decides-dirty-tree-wide-so-a",
   "title": "source_commit_of decides dirty tree-wide, so a whiteboard edit stamps every estate THESE BYTES MATCH NO COMMIT",
   "status": "closed",

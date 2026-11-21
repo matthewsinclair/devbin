@@ -1,0 +1,9 @@
+{
+  "id": "05",
+  "title": "The suite under uutils coreutils",
+  "scope": "S",
+  "status": "done",
+  "objective": "Run the full suite under uutils coreutils, which Ubuntu 26.04 probably ships and which both a new WSL install and CI's `ubuntu-latest` will reach. Fix what touches the commands in scope, and file the rest as issues (D52). Whether this stays in the thread is question 6 of the design. Criterion AC-5.1.",
+  "body": "",
+  "preamble": ""
+}

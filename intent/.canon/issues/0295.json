@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 295,
+  "schema": "intent/issue@4.0",
+  "id": "0295",
   "slug": "a-cut-with-no-publish-url-stamps-the-version-aft",
   "title": "A cut with no publish.url stamps the version after the candidate's tests, so it tags a commit nothing has tested and re-runs the suite on it",
   "status": "closed",

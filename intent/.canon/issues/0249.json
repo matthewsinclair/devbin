@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 249,
+  "schema": "intent/issue@4.0",
+  "id": "0249",
   "slug": "use-brew-removes-the-link-when-homebrew-s-devbin",
   "title": "use brew removes the link when Homebrew's devbin is on PATH but will not run, and brew_answer_state infers offpath rather than checking it",
   "status": "closed",

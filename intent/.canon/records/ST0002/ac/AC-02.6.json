@@ -1,0 +1,9 @@
+{
+  "id": "AC-02.6",
+  "text": "`scripts/` deleted last, on hv's go, with its callers followed",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`2522cfb`, after equivalence; README's Development block, `lib/config/cli.ex`'s moduledoc and `entry_points_test`'s comment all moved to `bin/ac`; gates green after the deletion. Historical references under `intent/` deliberately left"
+  }
+}

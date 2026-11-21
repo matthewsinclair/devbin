@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 202,
+  "schema": "intent/issue@4.0",
+  "id": "0202",
   "slug": "shipped-code-names-no-project-three-findings-fro",
   "title": "Shipped code names no project: three findings from another estate's 0.1.11 reading, and the rest before devbin goes public",
   "status": "closed",

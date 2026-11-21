@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.1",
+  "kind": "test",
+  "covers": [
+    "AC-17.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"bare version prints the project name and version\""
+  }
+}

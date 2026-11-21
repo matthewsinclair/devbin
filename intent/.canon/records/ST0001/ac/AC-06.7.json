@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.7",
+  "text": "Purge deletes prior runs and keeps this run's pair, and NEVER deletes a file a `LATEST_*` pointer still resolves to -- including both members of the pair, since a dangling `.errors` reads green",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.3",
+  "text": "No prompt ever appears inside a gate. A gate stopping to ask about upgrades is 0058 wearing a friendlier face.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

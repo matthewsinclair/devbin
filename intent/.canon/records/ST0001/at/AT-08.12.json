@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.12",
+  "kind": "test",
+  "covers": [
+    "AC-08.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"a built-in gate runs its catalogue command line and seals\""
+  }
+}

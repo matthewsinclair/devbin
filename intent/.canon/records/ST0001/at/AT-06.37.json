@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.37",
+  "kind": "test",
+  "covers": [
+    "AC-06.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"run_gate runs a shell function as readily as an external command\""
+  }
+}

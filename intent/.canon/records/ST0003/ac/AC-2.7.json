@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.7",
+  "text": "SPF authorising a sender with NO DKIM record is a HALF PAIR and is stated in full. It makes that domain's own legitimate mail bit-for-bit indistinguishable from a forgery of it, and it is silent today only because no mail currently flows through that path.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

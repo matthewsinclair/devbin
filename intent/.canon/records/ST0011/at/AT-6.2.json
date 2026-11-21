@@ -1,0 +1,10 @@
+{
+  "id": "AT-6.2",
+  "kind": "test",
+  "file": "tests/unit/config.bats",
+  "covers": [
+    "AC-6.2"
+  ],
+  "status": "green",
+  "note": "config.bats's platforms arm: validation accepts a platforms: list of the platform words, read from lib/helpers; refuses a value outside them, naming the key and the value; and reads a single word not written as a list as an unknown key -- red at the red clone cdc91056 (main's code at f3462610 with WP17's four test files from d0a403f5, red-wp17-f3462610-d0a403f5) in the arms phase of the 0306+WP17 stack's run (slot 01M6BKT367YF4D73C91YWQTSA2, 2026-11-01 13:19:30Z to 13:42:26Z by date -u, rc 0): config.bats's one WP-17 arm, this one, not ok (platforms: read as an unknown key), the leg bounded at 60s and not cut off; records ~/Devel/scratch/devbin-dc/stack/runs/arms/summary and red-WP17-config.tap. Green at d0a403f5, landed as b166bfac with the same tree outside intent/, in the same run: under GNU in its arms phase (config.bats's one WP-17 arm, 1 of 1 ok) and its light phase (config.bats whole, 65 of 65 ok), and under BSD in the whole suite through bin/devbin test all (2948 ok, 0 not ok, 5 skipped; its seal 20261101-1323.bats.errors empty), this arm ok in each and skipped in none; records ~/Devel/scratch/devbin-dc/stack/runs/arms, light and seals/20261101-1323.bats.out. The '# AT-6.2' line is over its arm."
+}

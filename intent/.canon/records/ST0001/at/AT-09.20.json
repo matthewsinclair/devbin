@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.20",
+  "kind": "test",
+  "covers": [
+    "AC-09.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"a deleted vendored file is detected as missing, not as unchanged\""
+  }
+}

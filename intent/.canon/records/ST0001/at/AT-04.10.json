@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.10",
+  "kind": "test",
+  "covers": [
+    "AC-04.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"all does not stop at the first breach and names every failure\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 177,
+  "schema": "intent/issue@4.0",
+  "id": "0177",
   "slug": "fullcycle-s-incomplete-summary-names-two-of-the",
   "title": "fullcycle's INCOMPLETE summary names two of the three causes it fails a tree for: a tree it can search but not list goes unnamed",
   "status": "closed",

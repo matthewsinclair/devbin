@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.20",
+  "text": "The entry-point map survives the switch: `bin/bz` (today a byte-identical COPY of the dispatcher) becomes a second symlink; `bin/cli` and `bin/repl` -- which exec the doomed `baize_cli`/`baize_repl` DIRECTLY today -- are retargeted through the dispatcher in the switch commit and probed working through the switched entry points before it lands; `bin/completions/` untouched",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "executed with the pack's correction (`bz` was ALREADY a symlink to `baize`; the \"copy\" diagnosis was cmp reading through the link), so `bz` rode unchanged and chains bz->baize->devbin; `cli`/`repl` retargeted to route through `bin/baize`; probed through the switched entry points before landing (help, bz version, both shims' -h, the unknown refusal, test shell green, a sealed credo run green over the pack's same measured set); `completions/` untouched (Baize `add723d`)"
+  }
+}

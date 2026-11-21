@@ -1,0 +1,9 @@
+{
+  "id": "AC-02.5",
+  "text": "Equivalence proven through the new entry point before deletion, with every deliberate difference recorded",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`cli --help` and `cli --version` byte-identical to `scripts/cli`'s, suite green either side, and one deliberate non-equivalence at `test mix` (gains CI's `--warnings-as-errors`). **This AC was satisfied only in part when first written, and the gap is the finding**: `scripts/cli` and `scripts/test` were run both ways, `scripts/iex` never was, and its row asserted an untested claim while proving a true irrelevance beside it. Closed at WP close by testing the flag with a poisoned `iex` first on PATH (never fired for `cli --iex`; fired for `bin/ac iex`) and recording the real delta"
+  }
+}

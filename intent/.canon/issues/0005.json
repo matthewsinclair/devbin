@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 5,
+  "schema": "intent/issue@4.0",
+  "id": "0005",
   "slug": "a-directory-where-a-handler-is-expected-resolves",
   "title": "a directory where a handler is expected resolves as one, and devbin execs it",
   "status": "closed",

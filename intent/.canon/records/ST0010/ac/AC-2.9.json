@@ -1,0 +1,10 @@
+{
+  "id": "AC-2.9",
+  "text": "Before hv's approval, the formula, pointed at the snapshot's release tarball through a local tap, installs with no credentials and answers devbin <version> (brew, <sha12>) naming the snapshot's commit.",
+  "kind": "non-test",
+  "state": {
+    "is": "withdrawn",
+    "reason": "hv 2026-10-29: skipped; the anonymous brew install after publication (AC-3.2) is the install test",
+    "by": "hv"
+  }
+}

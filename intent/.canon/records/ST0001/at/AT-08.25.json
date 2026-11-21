@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.25",
+  "kind": "test",
+  "covers": [
+    "AC-08.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"all points at a declared gate's seal, exactly as it does a built-in's\""
+  }
+}

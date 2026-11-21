@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.9",
+  "kind": "test",
+  "file": "tests/unit/formula.bats",
+  "covers": [
+    "AC-3.3"
+  ],
+  "status": "green",
+  "note": "WP08's clause of AC-3.3, dc's from vc decision 117 (hv's Ok, 2026-10-31 21:05Z): the formula publishes under the cut's yes; red until WP08 lands, when its file is re-cited with at edit and the row marked green; the '# AT-3.9' line goes over the arm at that landing. Green at the landing on the green legs (vc's ruling, 2026-11-01 16:55Z): its arm is a guard green at the base by construction, since the formula's publish under the cut's yes landed with WP02a and issue 0227 (formula.bats's 0227 arms, releasecut.bats's --yes arm), the assets-mode cask render with it, and WP08 verifies the assets mode under the yes. At the red clone 34b1dadc (WP07's bank ba5a8270 with WP08's formula.bats and none of its code), in the arms phase of WP08's run (slot 01M6C255TV1C6MNNW9ZEH4YCBF, 2026-11-01 17:43:43Z to 17:44:58Z by date -u), the arm read ok and was held out by GREEN_AT_BASE, the leg red on the unit's two 0296 arms (plan 3 met, 2 not ok, bounded at 60s and not cut off). Green at 8a6ee377 in the same run: the three ST0011 WP08 arms under BSD and under GNU in the arms phase, 3 of 3 each; in the light phase (17:44:58Z to 18:14:30Z, rc 0), formula.bats whole under GNU, 43 of 43 ok, and the whole suite under BSD through bin/devbin test all, 2969 ok and 0 not ok, its seal 20261101-1744.bats.errors empty; the '# AT-3.9' arm ok in each and skipped in none; landed as 67a8ae562e40c1d458c1333a86cee7616ef3b547, its tree outside intent/ the tested tip's; records ~/Devel/scratch/devbin-cc/st11-wp02b/kit8/run/runs/arms, runs/light and build/tmp/test/20261101-1744.bats.out. The '# AT-3.9' line is over formula.bats's arm 'assets publish takes the cut's yes when DEVBIN_RELEASE_CONFIRMED names the tag: the formula and the cask go to the tap in one commit, with no question, and it says so'."
+}

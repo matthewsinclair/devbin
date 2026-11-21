@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.18",
+  "kind": "test",
+  "covers": [
+    "AC-07.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a sub-topic resolves by the same rule, at depth\""
+  }
+}

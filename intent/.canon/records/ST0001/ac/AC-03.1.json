@@ -1,0 +1,8 @@
+{
+  "id": "AC-03.1",
+  "text": "The reader parses the documented subset: nested maps, scalar sequences, quoted scalars, inline and whole-line comments, blank lines, `---`, and dedent back to a parent path",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

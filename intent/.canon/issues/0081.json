@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 81,
+  "schema": "intent/issue@4.0",
+  "id": "0081",
   "slug": "assert-identifier-s-list-of-devbin-s-own-variabl",
   "title": "assert_identifier's list of devbin's own variables is stale, so project.root_var can overwrite the run id, stamp, task and referent",
   "status": "closed",

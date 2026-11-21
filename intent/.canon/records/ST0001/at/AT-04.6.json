@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.6",
+  "kind": "test",
+  "covers": [
+    "AC-04.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"an unknown command exits 2 and says so\""
+  }
+}

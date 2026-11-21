@@ -1,0 +1,8 @@
+{
+  "id": "AC-04.14",
+  "text": "The exit-code contract holds across the surface: 0 ok, 1 die, 2 unknown command, 3 not built yet",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

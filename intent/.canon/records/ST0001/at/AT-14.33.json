@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.33",
+  "kind": "test",
+  "covers": [
+    "AC-14.16"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"an unoffered framework option is treated like any other unowned flag\""
+  }
+}

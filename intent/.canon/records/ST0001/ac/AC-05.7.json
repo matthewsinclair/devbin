@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.7",
+  "text": "`assert_semver` accepts `X.Y.Z` and refuses anything else, quoting what it got",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

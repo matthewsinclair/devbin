@@ -1,0 +1,9 @@
+{
+  "id": "AC-13.5",
+  "text": "Every finding was reproduced or self-refuted by running it before being posted, classified, and triaged into fix-before-WP-10 / fix-during-rollout / accept-with-reason. Two candidate findings were downgraded by their own refutation (the validator closes both parser duplicate-key corners)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`review.md` \"Findings\", receipts R8"
+  }
+}

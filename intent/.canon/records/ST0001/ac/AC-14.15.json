@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.15",
+  "text": "An inactive command says WHY, as an inactive option already did: disabled-in-config and wrong-language are distinguishable from an unknown command",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

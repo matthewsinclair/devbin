@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.4",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R3: a project name whose DERIVED root variable is illegal is refused\""
+  }
+}

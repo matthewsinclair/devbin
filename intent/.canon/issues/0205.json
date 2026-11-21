@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 205,
+  "schema": "intent/issue@4.0",
+  "id": "0205",
   "slug": "vendored-scan-s-grep-follows-the-reader-s-locale",
   "title": "vendored_scan's grep follows the reader's locale: under a UTF-8 locale BSD grep drops a matching line holding an invalid byte, so neutral.bats can pass one",
   "status": "closed",

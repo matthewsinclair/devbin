@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.7",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R3: a project legitimately named devbin still gets DEVBIN_ROOT\""
+  }
+}

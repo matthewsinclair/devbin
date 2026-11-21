@@ -1,0 +1,11 @@
+{
+  "id": "AT-03.22",
+  "kind": "test",
+  "covers": [
+    "AC-03.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/config.bats::\"validation rejects a key nested deeper than the schema allows\""
+  }
+}

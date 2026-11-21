@@ -1,0 +1,10 @@
+{
+  "id": "AC-6.4",
+  "text": "The adopting estate confirms the smoke list on one of its own repositories, cloned inside WSL's filesystem; recorded as the message received, never by the repository's name.",
+  "kind": "non-test",
+  "state": {
+    "is": "withdrawn",
+    "reason": "hv, 2026-10-24: there is no Windows machine or licence here, and devbin on Windows is tested on client machines, taking it from there; the smoke list itself runs green in CI's WSL 2 job on every release tag (AC-6.5), so no estate's confirmation is awaited",
+    "by": "hv"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.4",
+  "kind": "test",
+  "covers": [
+    "AC-07.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"an empty surface says so rather than printing an empty page\""
+  }
+}

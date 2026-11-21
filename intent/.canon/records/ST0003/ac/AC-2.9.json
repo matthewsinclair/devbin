@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.9",
+  "text": "A sender the profile never DEFINES is reported as unmeasurable and named, never passed over. An absence in the target is not evidence about the estate.",
+  "kind": "test",
+  "state": {
+    "is": "withdrawn",
+    "reason": "SUPERSEDED by AC-6.3 on 2026-09-08, and withdrawn rather than reworded because the two would otherwise state one rule twice. This criterion said an undefined sender is reported as UNMEASURABLE at check time. That is now false and was always the wrong channel: COULD NOT MEASURE is headed 'gaps in the INSTRUMENT, not verdicts', and nothing about the instrument was missing -- the profile named a sender it never described, which is an incomplete TARGET and the operator's to fix. It is now refused at parse time before any network call. The check-time branch was removed with it: once validation refuses first, that branch could not be reached by any caller, and a check with no reachable red state carries zero bits while still reading like coverage."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-17.5",
+  "text": "`sync` is UNCONDITIONAL: it heals a lagging sidecar even when the version file already holds the target, which is the exact case a \"only if it differs\" gate skips and the one that shipped a wrong CFBundleShortVersionString",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

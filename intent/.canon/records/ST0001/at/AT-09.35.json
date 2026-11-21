@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.35",
+  "kind": "test",
+  "covers": [
+    "AC-09.16"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"re-installing after an uninstall restores the project intact\""
+  }
+}

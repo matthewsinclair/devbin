@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.8",
+  "text": "Upgrade reports a disposition for every file -- added, updated, unchanged, skipped -- and a run that changed nothing says so rather than printing an empty report",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

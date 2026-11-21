@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.18",
+  "kind": "test",
+  "covers": [
+    "AC-17.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"check points at the command that heals what it found\""
+  }
+}

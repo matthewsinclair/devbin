@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.9",
+  "kind": "test",
+  "covers": [
+    "AC-14.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"a project handler beats a command-level run:\""
+  }
+}

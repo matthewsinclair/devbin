@@ -1,0 +1,12 @@
+{
+  "id": "AT-07.11",
+  "kind": "test",
+  "covers": [
+    "AC-07.3",
+    "AC-07.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a handler header describes a command config never mentions\""
+  }
+}

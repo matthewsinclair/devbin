@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.42",
+  "kind": "test",
+  "covers": [
+    "AC-09.10"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/doctor.bats::\"doctor passes a fresh install and reports every check by name\""
+  }
+}

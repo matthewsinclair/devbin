@@ -1,0 +1,10 @@
+{
+  "id": "AT-6.5",
+  "kind": "test",
+  "file": ".github/wsl-smoke.sh",
+  "covers": [
+    "AC-6.5"
+  ],
+  "status": "green",
+  "note": "Red on the WSL job's first run, dispatch 39039832569 on ac472c32: the job ran as root, Run tests failed (23 not ok) and the smoke list was skipped, so the list never held inside WSL (dc's earlier drives of the script were off WSL, on this Mac under BSD and GNU). With no intent on PATH there, the intented fixture's check all is asserted to refuse at the critic gate naming intent (D53). Green on dispatch 39055655481 on ea43e4b9, after the root fix landed at e8044092: WSL job 117462973144, Test in WSL 2 (Ubuntu 26.04), kernel 6.18.40.1-microsoft-standard-WSL2, every step as uid=1000(dev), the clone in WSL's filesystem at ~/devbin; test all 2392 ok, 0 not ok (106 skips: cargo, expect and prettier absent, case-sensitive disk). Install Intent: v3.2.4's intent-x86_64-unknown-linux-musl.tar.gz fetched anonymously from Intent's public release, sha256 1feeed1a... equal to the pin, intent 3.2.4 (f89b8285) on PATH and bootstrapped; then all nine steps PASS on the intented fixture made by intent init --lang shell with one shell file staged, its check all exiting 0 with the critic gate active (the gate needs only intent/, lib/builtins _DEVBIN_BUILTIN_NEEDS). Against the release asset, since 3.2.4 was released before the job existed (decision 51)."
+}

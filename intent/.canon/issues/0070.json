@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 70,
+  "schema": "intent/issue@4.0",
+  "id": "0070",
   "slug": "fullcycle-skips-a-declared-restore-without-sayin",
   "title": "fullcycle skips a declared restore without saying so when the test phase fails after a passing build",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.2",
+  "text": "What the sweep distributes is the INSTALL's bytes, never the dev tree's. Insulation comes from what is distributed, not from where the operator stands.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

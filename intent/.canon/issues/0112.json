@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 112,
+  "schema": "intent/issue@4.0",
+  "id": "0112",
   "slug": "seven-verbs-have-no-authored-help-and-release-33",
   "title": "seven verbs have no authored help, and release -- 3305 lines and 27 functions -- is one of them",
   "status": "closed",

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 302,
+  "schema": "intent/issue@4.0",
+  "id": "0302",
   "slug": "the-test-harness-lets-git-guess-an-identity-so-a",
   "title": "The test harness lets git guess an identity, so an arm leaning on a guess is green wherever the host's name gives one and red only on a host without a domain",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-02.2",
+  "text": "The harness creates fixture projects and stub handlers that later WPs can dispatch into",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

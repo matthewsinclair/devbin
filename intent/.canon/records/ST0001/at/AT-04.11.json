@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.11",
+  "kind": "test",
+  "covers": [
+    "AC-04.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"all reports in_all false options as skipped rather than dropping them\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 247,
+  "schema": "intent/issue@4.0",
+  "id": "0247",
   "slug": "use-brew-s-lookup-can-still-reach-the-link-it-is",
   "title": "use brew's lookup can still reach the link it is about to remove, and the shadow check misreads the link's directory named in another case",
   "status": "closed",

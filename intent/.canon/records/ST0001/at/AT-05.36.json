@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.36",
+  "kind": "test",
+  "covers": [
+    "AC-05.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"the guarded expansion survives on the system bash whatever its version\""
+  }
+}

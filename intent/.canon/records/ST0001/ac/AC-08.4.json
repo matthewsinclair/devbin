@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.4",
+  "text": "`build` ships NO option set (D18 tier 4), and `check parity` is absent -- both are name-only universality, and shipping either would impose one project's shape on the rest",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

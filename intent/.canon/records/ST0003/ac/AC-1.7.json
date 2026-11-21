@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.7",
+  "text": "One domain, one profile WITHIN a file. Two handles on one FQDN carry contradictory expectations that check evaluates against the same live records, so one goes green and one goes red on the same domain and ordering decides which the operator reads.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

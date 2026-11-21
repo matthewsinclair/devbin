@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 66,
+  "schema": "intent/issue@4.0",
+  "id": "0066",
   "slug": "devbin-reads-its-true-and-false-words-and-its-se",
   "title": "devbin reads its true and false words, and its - sentinel, at thirteen separate sites, and nothing holds them in step",
   "status": "closed",

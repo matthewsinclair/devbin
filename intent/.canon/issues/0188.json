@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 188,
+  "schema": "intent/issue@4.0",
+  "id": "0188",
   "slug": "a-remote-url-carrying-a-token-reaches-the-termin",
   "title": "a remote URL carrying a token reaches the terminal and the release log whole when release_repo cannot read OWNER/NAME from it: its refusal prints the configured URL, credentials and all",
   "status": "closed",

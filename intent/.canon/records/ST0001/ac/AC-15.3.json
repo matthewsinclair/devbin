@@ -1,0 +1,8 @@
+{
+  "id": "AC-15.3",
+  "text": "`fmt md` formats root Markdown only unless given explicit paths, and says why: prettier strips the column alignment out of Markdown tables, and `intent/` and `docs/` are where the tables are",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

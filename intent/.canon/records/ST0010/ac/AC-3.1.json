@@ -1,0 +1,9 @@
+{
+  "id": "AC-3.1",
+  "text": "hv approves publication, naming the snapshot's commit sha, its tree sha, the shipped list, the scan results and both readers' reports.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "hv approved publication, 2026-10-29: snapshot 2cde3ee69d7de3194bcce6ff5dd8f806f595f1ee, tree afa938fce846e926e5ef54058ea70705b27d323c, tests/shipped.paths, scans clean (scan-v0117), reports review0116 (vc, dc) and review-v0117 (vc, dc)"
+  }
+}

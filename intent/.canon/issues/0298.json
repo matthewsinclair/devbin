@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 298,
+  "schema": "intent/issue@4.0",
+  "id": "0298",
   "slug": "git-head-sha-reads-a-form-it-does-not-know-as-sh",
   "title": "git_head_sha reads a form it does not know as short, silently",
   "status": "closed",

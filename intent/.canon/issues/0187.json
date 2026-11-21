@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 187,
+  "schema": "intent/issue@4.0",
+  "id": "0187",
   "slug": "a-vendored-warning-s-example-uri-postgresql-user",
   "title": "a vendored warning's example URI, postgresql://user:\\$$v@host, reads as a credential to a secret scanner, so every estate that scans its tree has to baseline a line of devbin's",
   "status": "closed",

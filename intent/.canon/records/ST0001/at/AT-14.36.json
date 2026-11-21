@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.36",
+  "kind": "test",
+  "covers": [
+    "AC-14.17"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/harness.bats::\"no output assertion is passed a bare end-of-options marker\""
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.12",
+  "text": "`run_gate` runs a command or a shell function, propagates its exit code, honours both option spellings, requires a suffix and a command, and rejects an unknown option rather than treating it as the command",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

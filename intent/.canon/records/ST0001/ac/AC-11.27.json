@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.27",
+  "text": "Equivalence evidence in `WP/11/lamplight-equivalence.md`: suite-scoped mix, whole-umbrella credo, framework-half lua, native/cli rust, the seal preflight green on the ported fence, the six check gates with `check deps` red on BOTH sides (the authored permanent red, carried as a matching red), version byte-probes plus `version check` against four real sidecars, and every deliberate difference owned -- no `test all` appearing, the bare-gate rc shifts, the check-all order, the cli option-scoping exposure probed against the Rust CLI's real flag surface",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`WP/11/lamplight-equivalence.md`: identical sets on all four sealed gates (2802/29667 credo, 49/49 lua, the same 20 rust targets, 43/43 scoped mix), the deps matching red naming the same two deps both sides, twelve byte-identical probes, zero colliding clap flags (amended 2026-08-09 post-switch: the \"no `test all` appearing\" difference was hv-REVERSED the same day -- the aggregate now exists in hv's shape, rust lua credo mix with the ten-minute leg last, Lamplight `402614f3b`; the pack carries the addendum)"
+  }
+}

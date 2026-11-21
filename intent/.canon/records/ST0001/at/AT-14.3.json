@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.3",
+  "kind": "test",
+  "covers": [
+    "AC-14.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"the catalogue answers a dotless COMMAND row\""
+  }
+}

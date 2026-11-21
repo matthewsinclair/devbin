@@ -1,0 +1,9 @@
+{
+  "id": "AT-1.9",
+  "kind": "test",
+  "file": "tests/unit/localinstall.bats",
+  "covers": [
+    "AC-1.9"
+  ],
+  "status": "green"
+}

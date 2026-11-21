@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 27,
+  "schema": "intent/issue@4.0",
+  "id": "0027",
   "slug": "a-seal-is-non-empty-for-the-whole-run-by-design",
   "title": "A seal is non-empty for the whole run by design, and the contract never said so",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.4",
+  "kind": "test",
+  "covers": [
+    "AC-15.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"fmt runs a catalogued option through the shared gate body\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 201,
+  "schema": "intent/issue@4.0",
+  "id": "0201",
   "slug": "brew-upgrade-devbin-proven-at-the-next-release-o",
   "title": "brew upgrade devbin proven at the next release on rhad and kovacs (ST0009's WP-05, carried)",
   "status": "closed",

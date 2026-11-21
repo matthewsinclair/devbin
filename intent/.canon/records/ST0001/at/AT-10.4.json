@@ -1,0 +1,11 @@
+{
+  "id": "AT-10.4",
+  "kind": "test",
+  "covers": [
+    "AC-10.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"check names a sidecar it cannot read rather than inventing a version from it\""
+  }
+}

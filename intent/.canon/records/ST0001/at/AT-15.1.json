@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.1",
+  "kind": "test",
+  "covers": [
+    "AC-15.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"build works end to end from targets the project declares alone\""
+  }
+}

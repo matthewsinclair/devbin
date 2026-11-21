@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.7",
+  "text": "`upgrade` re-syncs from the recorded source (or `--from`) and REFUSES to overwrite a vendored file whose checksum no longer matches the manifest. An edit in place is reported, named, and left on disk",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

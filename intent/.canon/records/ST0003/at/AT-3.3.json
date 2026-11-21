@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.3",
+  "kind": "test",
+  "file": "tests/unit/infra-init.bats",
+  "covers": [
+    "AC-3.3"
+  ],
+  "status": "green",
+  "note": "Arms green: facet-kind reader; unknown provenance kind is rc 2. Red-driven 2026-09-16: M1 red on the kind-reader arm; M5 (unknown kind rc 1) red on the unknown-kind arm."
+}

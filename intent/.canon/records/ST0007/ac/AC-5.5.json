@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.5",
+  "text": "Under object: local the core makes exactly one release object, titled from title:, and a resume edits it rather than making a second, only when its title or notes differ from this release's and only in a confirmed run: an unconfirmed run names the difference and changes nothing; release status reads the same, row 9 already only when the object carries this release's title and notes; under object: none it makes none.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

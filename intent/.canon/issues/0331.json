@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 331,
+  "schema": "intent/issue@4.0",
+  "id": "0331",
   "slug": "a-tool-with-a-second-binary-that-prints-its-own",
   "title": "A tool with a second binary that prints its own name fails doctor's dev and brew rows, so it cannot declare its link set",
   "status": "closed",

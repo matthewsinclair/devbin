@@ -1,0 +1,8 @@
+{
+  "id": "AC-4.5",
+  "text": "A tag for the target whose commit does not carry the release (VERSION is not the target, or the note is not dated for it) is refused and never moved or deleted.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

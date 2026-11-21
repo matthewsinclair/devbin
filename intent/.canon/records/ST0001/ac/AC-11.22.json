@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.22",
+  "text": "Devbin installs ALONGSIDE Lamplight's launcher with nothing at risk: no `bin/lamplight*` / `bin/ll` path touched, both launchers answer on one tree until the switch",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Lamplight `9cfe917c7`; the installer refused the real `bin/lamplight`; every equivalence run drove both"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-03.6",
+  "text": "`scripts/` deleted last, on hv's go, with its callers followed",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "hv's go given 2026-08-10; deleted in arca_cli `b470476`, last of the five commits and in one commit with its caller so rollback is a single revert. The caller survey was RE-RUN at deletion rather than reused from WP start, because the tree had moved (`bin/completions/` was added since): the one live reference outside `scripts/` itself is the TPD's 5.3.3. `.claude/scripts/` and `test/fixtures/scripts/` match the same grep and are unrelated directories; the four references under `intent/st/COMPLETED/` are deliberately left, as at arca_config. 5.3.3 was rewritten rather than search-replaced, because the mapping is not one-to-one"
+  }
+}

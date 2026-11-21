@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.17",
+  "kind": "test",
+  "covers": [
+    "AC-08.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"a built-in gate command with no option prints its usage\""
+  }
+}

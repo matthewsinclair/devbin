@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.18",
+  "kind": "test",
+  "covers": [
+    "AC-08.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"built-in commands are discoverable in help with an empty config\""
+  }
+}

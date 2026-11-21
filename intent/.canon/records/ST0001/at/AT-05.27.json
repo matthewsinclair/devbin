@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.27",
+  "kind": "test",
+  "covers": [
+    "AC-05.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"a flag exports true, or the value the config names\""
+  }
+}

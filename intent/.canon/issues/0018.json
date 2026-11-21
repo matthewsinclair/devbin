@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 18,
+  "schema": "intent/issue@4.0",
+  "id": "0018",
   "slug": "check-critic-is-two-paths-under-one-name-a-corpus",
   "title": "check critic is two paths under one name -- a corpus sweep here, a staged zero at Baize, same vendored bytes",
   "status": "closed",

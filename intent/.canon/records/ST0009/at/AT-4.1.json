@@ -1,0 +1,10 @@
+{
+  "id": "AT-4.1",
+  "kind": "test",
+  "file": "tests/unit/machinepointer.bats",
+  "covers": [
+    "AC-4.1"
+  ],
+  "status": "green",
+  "note": "An existing arm covers it: the 0195 arm at machinepointer.bats, which already vendored from a Homebrew-shaped prefix and passed on main; the four assertions added describe behaviour that already held, so they have no red on main and no mutant was run (hv's rule). Met at 1c34549c: the 0195 arm vendors a project from an install published --managed-by brew into Cellar/devbin/<v>/libexec with opt linked; the manifest records source install with no place and no Cellar, no machine pointer is present, and a bare upgrade and doctor resolve it to HOMEBREW_PREFIX's opt/devbin/libexec, never Cellar/devbin, before and after a brew upgrade; landing suite 20261017-1323 (vc's landing suite at 39962e40, main c9b39086 plus cc's eaa08c11: 2386 ok, 0 not ok, 5 skips, .errors empty, 13:23:37Z to 13:33:04Z; seal kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/ls9-20261017-1323/)."
+}

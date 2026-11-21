@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 107,
+  "schema": "intent/issue@4.0",
+  "id": "0107",
   "slug": "version-and-infra-usage-name-the-project-not-bin",
   "title": "version and infra usage name the project, not bin/devbin (K8)",
   "status": "closed",

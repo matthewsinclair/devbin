@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.12",
+  "text": "The elixir, rust and swift gate families run end to end against their REAL toolchains, discharging the residual risk AC-08.14 records and the WP-13 review could not retire",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "three full real-toolchain runs on 2026-08-09 (new-side `test all --purge`, old-side `test all`, post-switch `test all` through the switched entry point), identical counts throughout, every seal empty"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-17.8",
+  "text": "`docs` ships `agents` and `treeindex` and only those. `treeindex` REFUSES the project root and an absolute path, names a directory it cannot find rather than passing, and does not abandon the rest when one entry is bad",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

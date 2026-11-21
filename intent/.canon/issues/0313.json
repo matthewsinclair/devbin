@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 313,
+  "schema": "intent/issue@4.0",
+  "id": "0313",
   "slug": "pre-flight-refuses-a-macos-stage-whose-build-pro",
   "title": "Pre-flight refuses a macOS stage whose build products or artefact path git does not ignore",
   "status": "closed",

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 163,
+  "schema": "intent/issue@4.0",
+  "id": "0163",
   "slug": "check-targetdir-clears-a-cargo-config-that-forks",
   "title": "check targetdir clears a cargo config that forks a crate the walk could not see",
   "status": "closed",

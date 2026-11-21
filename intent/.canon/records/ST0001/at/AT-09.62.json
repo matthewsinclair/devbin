@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.62",
+  "kind": "test",
+  "covers": [
+    "AC-09.14"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/scaffold.bats::\"the scaffolded handler answers --help successfully\""
+  }
+}

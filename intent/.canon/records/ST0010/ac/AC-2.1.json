@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.1",
+  "text": "The snapshot is one parentless commit whose tree is the workroom's tracked files over tests/shipped.paths at a named commit, built by devbin's snapshot builder (issue 0239) in a new directory. Evidence: the builder's output and a file-by-file comparison against that commit's files over the list.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "release snapshot v0.1.17 --no-parent: commit 2cde3ee6, tree afa938fc, 214 files, equal to v0.1.17's (420547e3) tracked files over tests/shipped.paths by snap-compare.sh"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.26",
+  "kind": "test",
+  "covers": [
+    "AC-06.10"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"the xcodebuild grammar truncates a runaway issue block and SAYS so\""
+  }
+}

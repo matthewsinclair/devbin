@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 10,
+  "schema": "intent/issue@4.0",
+  "id": "0010",
   "slug": "check-format-swift-invoked-swift-format-with-a-flag-it-has-never-had",
   "title": "check format's swift arm invoked swift-format with a flag it has never had",
   "status": "closed",

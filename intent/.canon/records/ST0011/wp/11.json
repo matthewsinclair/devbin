@@ -1,0 +1,10 @@
+{
+  "id": "11",
+  "title": "Gtools retires tools/ci-state and ci.wait; macOS job on candidate/; release.legs kovacs",
+  "scope": "S",
+  "status": "cancelled",
+  "status_reason": "moved to gtools's own thread on hv's ruling 2026-11-13: gtools#ST0020",
+  "objective": "Gtools, after the sweep (design.md section 7; dialog section 6): `tools/ci-state` retires and `ci.wait` leaves the config; `.github/workflows/ci.yml`'s macOS job fires on `candidate/` and the tag trigger goes; `release.legs` names kovacs; the hand dispatch and the gyges run stop; `derived:` and the suite's isolated crate copy stay; the source formula stays (Q8); `docs/releasing.md`, `docs/maintaining.md`. Serves AC-4.3.\n\n\nRecord (vc, 2026-10-31): Gtools's gtools#ST0020 (one package, ST0020/01) is the one place this work is written and claimed; this package points at it. From Gtools's inventory (gtools-dc, checked by gtools-vc at f7930590): tools/ci-state is tested at gtools_release_test.exs:193-238, which carries Completed ST0012's AT08, so the landing commit also runs `intent ac withdraw ST0012 AC07` and `intent at edit ST0012 AT08 --kind non-test` with the reason naming ST0020 (a deleted test otherwise drifts silently, Intent 3.2.8's lint passing a green row whose cited file no longer carries its id); AT07 (AC06, the release-check test at :100-110) is edited at the sweep and kept; release.legs is absent today and names kovacs; the hand dispatch and the gyges run are procedure, retired with the package.",
+  "body": "",
+  "preamble": ""
+}

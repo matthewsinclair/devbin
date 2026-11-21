@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 281,
+  "schema": "intent/issue@4.0",
+  "id": "0281",
   "slug": "a-cargo-toml-with-a-multi-line-array-whose-eleme",
   "title": "a Cargo.toml with a multi-line array whose element lines open with `[` is refused as holding no version",
   "status": "closed",

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 297,
+  "schema": "intent/issue@4.0",
+  "id": "0297",
   "slug": "a-cut-whose-after-commands-run-to-the-end-leaves",
   "title": "A cut whose after: commands run to the end leaves its RELEASE seal with no verdict",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.2",
+  "text": "Double-sourcing any library is free (load guard), and the diagnostic prefix falls back to `devbin` before config is loaded",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

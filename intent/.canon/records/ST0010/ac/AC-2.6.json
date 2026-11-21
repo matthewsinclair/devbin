@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.6",
+  "text": "gitleaks reports no leak over the snapshot's tree or its commit, with no known-positive sample planted (decision 68).",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "gitleaks dir and git over snapshot 2cde3ee6: no leaks found (scan-v0117)"
+  }
+}

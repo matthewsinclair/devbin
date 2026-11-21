@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.12",
+  "kind": "test",
+  "covers": [
+    "AC-17.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"a failing sidecar leaves the version file un-advanced, so a rerun is clean\""
+  }
+}

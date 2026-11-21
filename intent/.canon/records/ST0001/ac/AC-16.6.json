@@ -1,0 +1,9 @@
+{
+  "id": "AC-16.6",
+  "text": "What `db` does NOT ship is recorded with its reason: `codegen` (an Ash task, not an Elixir one, so cataloguing it would offer it to Elixir projects that have no Ash) and `proxy` (Laksa's and Lamplight's are the same algorithm, but it encodes a hosting provider)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`lib/cmd/db` header"
+  }
+}

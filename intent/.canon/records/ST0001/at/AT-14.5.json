@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.5",
+  "kind": "test",
+  "covers": [
+    "AC-14.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"lib/resolve keeps no copy of the built-in tables\""
+  }
+}

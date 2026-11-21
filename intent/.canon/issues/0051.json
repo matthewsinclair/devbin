@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 51,
+  "schema": "intent/issue@4.0",
+  "id": "0051",
   "slug": "fullcycle-gates-one-predicate-twice-and-the-copi",
   "title": "fullcycle gates one predicate twice and the copies disagree about the safe direction",
   "status": "closed",

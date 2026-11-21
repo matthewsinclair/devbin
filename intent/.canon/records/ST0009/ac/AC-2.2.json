@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.2",
+  "text": "brew audit --strict matthewsinclair/devbin/devbin is read, and each finding is fixed in the template or recorded as accepted with its reason.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "brew audit --strict matthewsinclair/devbin/devbin on rhad by cc, 2026-10-17 13:13:31Z, HOMEBREW_NO_AUTO_UPDATE=1, against the tap's Formula/devbin.rb at 3f2fecf (v0.1.11, revision 0fc22669): rc 0, no findings, so nothing to fix or accept; --verbose likewise silent"
+  }
+}

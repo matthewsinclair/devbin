@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 54,
+  "schema": "intent/issue@4.0",
+  "id": "0054",
   "slug": "fullcycle-dry-run-prints-a-weaker-command-than-i",
   "title": "fullcycle --dry-run prints a weaker command than it runs, because the clean flags are decided in two places",
   "status": "closed",

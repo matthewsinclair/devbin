@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.3",
+  "kind": "test",
+  "covers": [
+    "AC-04.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"a project handler is auto-discovered with no config entry\""
+  }
+}

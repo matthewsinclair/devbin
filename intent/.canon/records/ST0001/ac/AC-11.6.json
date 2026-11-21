@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.6",
+  "text": "The toolchain sweep lands per the standing directive: Dockerfile ARGs to elixir 1.20.3 / OTP 29.0.5 on a registry-verified hexpm tag, CI's absent-file fallbacks bumped to the pins, and `check toolchain`'s image arm -- red today on BOTH launchers -- goes green on both once the ARGs move, a matching-red-then-matching-green pair in the equivalence pack",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Laksa `84a264d9`; both image tags verified on Docker Hub before pinning; the pair recorded with identical facts in `WP/11/laksa-equivalence.md`"
+  }
+}

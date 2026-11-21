@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 90,
+  "schema": "intent/issue@4.0",
+  "id": "0090",
   "slug": "run-tty-answer-reports-expect-s-exit-status-not",
   "title": "run_tty_answer reports expect's exit status, not the command's, when no prompt appears",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.20",
+  "kind": "test",
+  "covers": [
+    "AC-04.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"all runs only the options the declared languages activate\""
+  }
+}

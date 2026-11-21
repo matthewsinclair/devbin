@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.14",
+  "kind": "test",
+  "covers": [
+    "AC-06.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"purge deletes prior runs and keeps this run's pair\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 111,
+  "schema": "intent/issue@4.0",
+  "id": "0111",
   "slug": "not-yet-cites-a-closed-work-package-and-the-wron",
   "title": "not_yet cites a closed work package, and the wrong one, in the two seam sites that speak when a command is unavailable",
   "status": "closed",

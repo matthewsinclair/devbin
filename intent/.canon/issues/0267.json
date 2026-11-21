@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 267,
+  "schema": "intent/issue@4.0",
+  "id": "0267",
   "slug": "install-into-and-from-in-upgrade-and-vendor-reso",
   "title": "install --into, and --from in upgrade and vendor, resolve a relative path with a logical cd: under an exported CDPATH, or with -, install writes the project under a path holding a newline, at exit 0 (from 0258's review)",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.22",
+  "kind": "test",
+  "covers": [
+    "AC-05.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"rlwrap_exec passes a completions file when one exists\""
+  }
+}

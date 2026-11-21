@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 259,
+  "schema": "intent/issue@4.0",
+  "id": "0259",
   "slug": "with-no-version-file-version-show-prints-unknown",
   "title": "With no version file, version show prints unknown at exit 0, version check passes, bump and sync name no remedy, and version set cannot start one",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.9",
+  "text": "Built-in commands are discoverable: `help` lists them with an otherwise-empty config, scoped to the declared languages, with summaries from the catalogue",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

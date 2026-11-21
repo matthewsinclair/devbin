@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.2",
+  "kind": "test",
+  "covers": [
+    "AC-15.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"build all runs the declared targets in declared order\""
+  }
+}

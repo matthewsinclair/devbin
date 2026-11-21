@@ -1,0 +1,8 @@
+{
+  "id": "AC-15.1",
+  "text": "`fmt` runs its catalogued options through the shared gate body, and `fmt all` is synthesised from the ACTIVE set so a project's declared languages decide what it formats",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

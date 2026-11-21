@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 254,
+  "schema": "intent/issue@4.0",
+  "id": "0254",
   "slug": "a-brew-install-carries-none-of-the-docs-its-read",
   "title": "A brew install carries none of the docs its README and runtime messages point at",
   "status": "closed",

@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.13",
+  "text": "The existing bare shims (`bin/server`, `bin/deploy`, `bin/repl`, ...) are verified unchanged and still working",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "all seven untouched since `565cddad` through every migration commit, and probed working through the switched dispatcher after `5f8d20b0` (they exec `bin/conflab <cmd>`, so the flip carried them)"
+  }
+}

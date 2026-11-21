@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.10",
+  "kind": "test",
+  "covers": [
+    "AC-15.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"fmt --check does not exist: the gate is check format (D21)\""
+  }
+}

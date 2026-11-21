@@ -1,0 +1,9 @@
+{
+  "id": "05",
+  "title": "Steps 6 to 9 for object local and none: confirm, annotated tag, per-remote push, release object",
+  "scope": "S",
+  "status": "done",
+  "objective": "Build steps 6 to 9 of a cut for object local and none -- one confirmation naming everything other machines will see, an annotated tag at the release commit carrying the note's body, a push of only what each remote lacks, and the release object made or brought to this release's title and notes -- each reading its postcondition first, so a cut that stops anywhere resumes, and a tag is never moved.",
+  "body": "",
+  "preamble": ""
+}

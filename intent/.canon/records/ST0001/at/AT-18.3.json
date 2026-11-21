@@ -1,0 +1,11 @@
+{
+  "id": "AT-18.3",
+  "kind": "test",
+  "covers": [
+    "AC-18.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/optin.bats::\"enabled: true switches an opt-in command on\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 143,
+  "schema": "intent/issue@4.0",
+  "id": "0143",
   "slug": "the-infra-profile-has-no-field-for-a-sender-s-se",
   "title": "the infra profile has no field for a sender's second DKIM key, a zone's wildcard A or TXT, or DMARC sp=, and a key it has no field for parses and is never read -- MailerSend's ms1 and ms2 can only be under-declared",
   "status": "closed",

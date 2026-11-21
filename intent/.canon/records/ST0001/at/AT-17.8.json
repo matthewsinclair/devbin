@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.8",
+  "kind": "test",
+  "covers": [
+    "AC-17.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"an unknown sub-command is refused with the usage line\""
+  }
+}

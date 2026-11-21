@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 83,
+  "schema": "intent/issue@4.0",
+  "id": "0083",
   "slug": "fullcycle-s-test-phase-is-hardcoded-to-test-rust",
   "title": "fullcycle's test phase is hardcoded to test rust, so a project's other declared test options -- Intent's toolchain arms -- never run in a full cycle",
   "status": "closed",

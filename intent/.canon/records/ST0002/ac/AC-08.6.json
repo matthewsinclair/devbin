@@ -1,0 +1,9 @@
+{
+  "id": "AC-08.6",
+  "text": "`REPL_MODE` is carried, not dropped, and the arca_cli precedent is explicitly NOT reused",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "PROBED in both directions rather than reasoned, as the AC demanded. For `iex -S mix`: unset reads `REPL_MODE` as nil and emits 11 console log lines; set reads \"true\" and emits none. Nothing on that path runs a mix task, so the prefix is load-bearing and is carried as `run: env REPL_MODE=true iex -S mix` (`env`, because a `run:` line is word-split and never eval'd, so a bare assignment would be read as a command NAME). For `cli` the probe returned the opposite and found something: `mix prolix.cli about` is byte-identical at 84 bytes with the prefix and without, because `Mix.Tasks.Prolix.Cli` sets the variable in its own module body; and `REPL_MODE=false` yields 971 bytes through the builtin but 84 through the old script"
+  }
+}

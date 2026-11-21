@@ -1,0 +1,9 @@
+{
+  "id": "AC-03.2",
+  "text": "Runs strictly after WP-02; the arca_config github dep resolves to post-WP-02 upstream",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "hv published the ten WP-02 commits and ran `mix deps.update --all` on 2026-08-10. arca_config `upstream/main` is now `f3d91c8`, and arca_cli's lock pins `f3d91c848ce6cc2a707d622d1291769d6a980d02`"
+  }
+}

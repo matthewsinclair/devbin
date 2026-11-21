@@ -1,0 +1,9 @@
+{
+  "id": "AC-01.1",
+  "text": "The command superset across the four projects is enumerated with per-project presence, and the built-in / shared / project-specific tiers follow from it",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`design.md` \"The command surface\" table"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.56",
+  "kind": "test",
+  "covers": [
+    "AC-09.10"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/doctor.bats::\"a missing launcher is a note, because a migration expects one\""
+  }
+}

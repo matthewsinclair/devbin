@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 218,
+  "schema": "intent/issue@4.0",
+  "id": "0218",
   "slug": "three-library-forms-a-project-s-own-commands-nee",
   "title": "three library forms a project's own commands need (git_readonly's clearing in the current shell, the URL-owner parse, one userinfo scrubber for any text), so Laksa drops its copies",
   "status": "closed",

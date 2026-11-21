@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 28,
+  "schema": "intent/issue@4.0",
+  "id": "0028",
   "slug": "four-estates-duplicate-the-discipline-of",
   "title": "Four estates duplicate the discipline of generating a doc safely, not the provider code",
   "status": "closed",

@@ -1,0 +1,9 @@
+{
+  "id": "AC-1.2",
+  "text": "SAFETY (draft S2). devbin's release config names local as its only release remote, so no cut pushes the workroom anywhere else (issue 0240). Evidence: a dry-run cut's push plan naming local alone.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "release.remotes is [local] (bin/.devbin/config.yaml); the v0.1.17 cut (tmp/release/20261029-1344.RELEASE.out) read '1 remote(s) can take the push' and pushed to local alone"
+  }
+}

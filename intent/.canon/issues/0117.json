@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 117,
+  "schema": "intent/issue@4.0",
+  "id": "0117",
   "slug": "help-why-still-disagrees-with-the-refusal-when-d",
   "title": "help --why still disagrees with the refusal when devbin's handler is missing, and 0111's arms hold less than they appear to",
   "status": "closed",

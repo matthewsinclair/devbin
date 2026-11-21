@@ -1,0 +1,9 @@
+{
+  "id": "AC-13.2",
+  "text": "Every runtime file was read end to end, with the four expensive-to-change surfaces (config schema, resolution order, sealed-gate contract, install layout) deepest, and the coverage statement names what was NOT read and why that is acceptable",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`review.md` \"Coverage\""
+  }
+}

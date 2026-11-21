@@ -1,0 +1,9 @@
+{
+  "id": "08",
+  "title": "Formula under the yes; assets mode with the cask verified",
+  "scope": "S",
+  "status": "done",
+  "objective": "The formula under the yes. `lib/cmd/formula`: `publish` is confirmed by the cut's yes (the confirmed variable `--yes` sets), so a `--yes` cut publishes the tap and no `after:` step fails for want of a person; the assets-mode cask render is verified, or added where the built-in lacks it. `lib/cmd/release`: the `after:` commands run under the yes. `docs/releasing.md`. Serves AC-2.1 and AC-3.3; lands D58.\n Carries issue 0296 (filed 2026-10-31): `lib/cmd/formula:548` and `:665` pass no remote to `release_repo`, so with `remotes:` declared and no `repo:` the formula reads origin's repository where the cut and `ci-state` read the first declared remote's; the fix is `cfg_release_first_remote` at both call sites.",
+  "body": "",
+  "preamble": ""
+}

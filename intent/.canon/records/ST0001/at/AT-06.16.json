@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.16",
+  "kind": "test",
+  "covers": [
+    "AC-06.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"the keepset covers BOTH members of a pointed-at pair\""
+  }
+}

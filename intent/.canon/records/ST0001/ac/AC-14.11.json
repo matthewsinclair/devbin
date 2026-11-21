@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.11",
+  "text": "D20: a framework-owned option exports `DEVBIN_OPT_<NAME>` whether or not config declares it, and when a project declares its own `export:` the one parsed value reaches both names",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

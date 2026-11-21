@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.4",
+  "text": "Command-level resolution mirrors `run_option`'s order: project handler, then config's own `run:`, then the catalogue default, then declared-but-unrunnable",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

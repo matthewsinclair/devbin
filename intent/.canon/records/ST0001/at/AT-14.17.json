@@ -1,0 +1,12 @@
+{
+  "id": "AT-14.17",
+  "kind": "test",
+  "covers": [
+    "AC-14.14",
+    "AC-14.15"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"a surface is not offered to a project whose language does not declare it\""
+  }
+}

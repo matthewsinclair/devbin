@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.29",
+  "kind": "test",
+  "covers": [
+    "AC-05.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"parse_common_opts accepts both --opt value and --opt=value\""
+  }
+}

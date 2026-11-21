@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.7",
+  "kind": "test",
+  "covers": [
+    "AC-05.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"not_yet names the gate and exits 3, never a quiet success\""
+  }
+}

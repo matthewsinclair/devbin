@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.1",
+  "text": "Publishing writes the runtime (bin/devbin + bin/.devbin/lib) and OMITS the project half -- no config.yaml, no cmd/, no help/. The absence is the mechanism, not tidiness.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

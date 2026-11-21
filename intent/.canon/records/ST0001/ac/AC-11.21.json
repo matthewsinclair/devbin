@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.21",
+  "text": "The switch is ONE commit on hv's explicit per-project go over the equivalence pack -- symlinks + shim retargets + the `baize_*` family deleted, nothing else -- and the old lowercase-suffix seal orphans are hand-cleaned after it via case-sensitive `find -name`, scoped to the old family only, survivors verified",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "ONE commit (Baize `add723d`) on hv's go over `WP/11/baize-equivalence.md`, carrying the switch-day map's exact set: the symlink, 21 deletions, both shim retargets, plus the one file this AC's \"nothing else\" did not foresee"
+  }
+}

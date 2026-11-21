@@ -1,0 +1,9 @@
+{
+  "id": "AC-08.4",
+  "text": "**AMENDED AT CLOSE, and the amendment is the point.** As written this AC required `check toolchain` green INCLUDING the image arm; that half is deploy-affecting and therefore hv's, so the AC is narrowed to what this WP owns -- the `.tool-versions` question settled, the gate armed, and any residue named and assigned rather than left ambient. Narrowing an AC at close is how a contract stops being one, so the original wording stands above and the shortfall is stated, not absorbed",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`.tool-versions` ADDED at the fleet pins (`erlang 29.0.5` / `elixir 1.20.3-otp-29`) per hv's standing fleet ruling, at `e4bc604`, which answers the AC's own \"add or record absence\" with ADD. Its absence had been HIDING a three-way disagreement rather than causing one: `ci.yml` falls through to hardcoded defaults when the file is missing, so CI tested on 1.19.3/27.3, the app deploys on 28.2 and development runs 29"
+  }
+}

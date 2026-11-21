@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.2",
+  "text": "tests/shipped.paths is as hv ruled ST0010's Q1 (decision 78, issue 0241), and the snapshot carries nothing outside it: no intent/, .claude/, .mcp.json, AGENTS.md or CLAUDE.md, and none of fleet's command, roots file, help page or tests.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "snapshot 2cde3ee6 carries tests/shipped.paths' paths alone: no intent/, .claude/, .mcp.json, AGENTS.md, CLAUDE.md or fleet files (vc's scan, 2026-10-29)"
+  }
+}

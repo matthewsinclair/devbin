@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 17,
+  "schema": "intent/issue@4.0",
+  "id": "0017",
   "slug": "the-manifest-promises-a-detector-consumers-cannot",
   "title": "the manifest promises a detector consumers cannot run, and upgrade has no preview -- one builtin closes both",
   "status": "closed",

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 327,
+  "schema": "intent/issue@4.0",
+  "id": "0327",
   "slug": "a-project-declares-its-own-refusals-at-pre-fligh",
   "title": "A project declares its own refusals at pre-flight, so a read-only check that refuses leaves no release commit behind",
   "status": "closed",

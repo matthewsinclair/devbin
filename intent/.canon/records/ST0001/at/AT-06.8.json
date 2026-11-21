@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.8",
+  "kind": "test",
+  "covers": [
+    "AC-06.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"a seal whose directory has vanished warns rather than failing silently\""
+  }
+}

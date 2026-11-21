@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.22",
+  "kind": "test",
+  "covers": [
+    "AC-04.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/config.bats::\"Devbin declares no Elixir language, so no Elixir gate is configured\""
+  }
+}

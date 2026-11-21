@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 2,
+  "schema": "intent/issue@4.0",
+  "id": "0002",
   "slug": "version-set-destroys-an-unrecognised-sidecar-and",
   "title": "version set destroys an unrecognised sidecar and the gate then certifies it clean",
   "status": "closed",

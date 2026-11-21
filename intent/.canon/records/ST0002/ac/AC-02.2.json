@@ -1,0 +1,9 @@
+{
+  "id": "AC-02.2",
+  "text": "Baseline-then-update seals per the protocol, green after",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "baseline `20260810-1040.*` sealed BEFORE any resolution, red on three arms (DEPS 262 bytes, TOOLCHAIN 156, CREDO 112) and each red a real finding; after `20260810-1201.*` all 0 bytes. `mix deps.update --all` moved nothing"
+  }
+}

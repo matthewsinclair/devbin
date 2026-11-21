@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 286,
+  "schema": "intent/issue@4.0",
+  "id": "0286",
   "slug": "fullcycle-bats-asserts-hand-written-counts-of-wa",
   "title": "fullcycle.bats asserts hand-written counts of watched PATH symlinks, and lib/cmd/fullcycle bounds its link walks with its own 40 beside 0247's _DEVBIN_LINK_HOPS",
   "status": "closed",

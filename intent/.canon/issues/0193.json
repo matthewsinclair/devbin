@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 193,
+  "schema": "intent/issue@4.0",
+  "id": "0193",
   "slug": "infra-check-and-init-take-any-noerror-reply-as-t",
   "title": "infra check and init take any NOERROR reply as the authoritative server's answer and never read its AA flag -- a tunnel that answers port 53 itself read as 37 ttl drifts, and a cache that matches the profile reads as held",
   "status": "closed",

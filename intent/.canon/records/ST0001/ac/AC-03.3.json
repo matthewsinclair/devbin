@@ -1,0 +1,8 @@
+{
+  "id": "AC-03.3",
+  "text": "Accessors behave: `cfg_get` returns a default for an absent path and never prefix-matches; `cfg_has` distinguishes set from absent; `cfg_list` returns immediate children in document order, de-duplicated",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

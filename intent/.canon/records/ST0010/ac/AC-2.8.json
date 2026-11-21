@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.8",
+  "text": "The full suite passes on the snapshot commit at the desk under BSD, every skip named, and CI is green on it on the public repository's candidate branch (Q3, issue 0240), its Ubuntu leg covering GNU.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "CI run 40919937412 on candidate/v0.1.18 at snapshot a9b8cd7c, all jobs green: the macOS job ran test all under BSD, Ubuntu covered GNU, WSL 2 too. The desk run on the snapshot was dropped by hv 2026-10-29 ('I want everything merged to head on main and then I run the tests manually'); hv's full suites ran on main."
+  }
+}

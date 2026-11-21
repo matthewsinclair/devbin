@@ -1,0 +1,10 @@
+{
+  "id": "AC-5.4",
+  "text": "The first consumer cut after adoption shows WP15's builds-per-release count below its baseline for every project with a build: block, by project (WP16).",
+  "kind": "non-test",
+  "state": {
+    "is": "withdrawn",
+    "reason": "moved to the consumers' own threads on hv's ruling 2026-11-13: each consumer's first cut after adoption is its own thread's (utilz#ST0031, gtools#ST0020, conflab#ST0126, laksa#0058)",
+    "by": "hv"
+  }
+}

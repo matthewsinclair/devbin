@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.3",
+  "text": "The project handlers land under `bin/.devbin/cmd/` with each one's reason recorded in the inventory rather than absorbed quietly: the test family (authored terminal surface), the four thin surface handlers (project env the catalogue rows cannot carry), the db shadow (mixed ash/ecto + fly + per-sub prod guards), build, and the ports (content, products, log, precommit)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Laksa `5cbfd1cd` (+ `e213445d`), 18 files, each reason in the inventory's dispositions table; shellcheck clean at warning severity"
+  }
+}

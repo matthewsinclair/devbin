@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.2",
+  "text": "The catalogue answers language, grammar, log suffix, command line and summary for every option it carries, and returns non-zero for one it does not",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 167,
+  "schema": "intent/issue@4.0",
+  "id": "0167",
   "slug": "check-targetdir-endorses-a-nested-crate-s-shared",
   "title": "check targetdir endorses a nested crate's shared tree that clean never removes, so fullcycle fails what check passed",
   "status": "closed",

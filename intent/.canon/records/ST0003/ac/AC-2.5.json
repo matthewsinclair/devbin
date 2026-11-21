@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.5",
+  "text": "A missing resolver is ONE error naming one missing tool, never twenty unreachable domains. The fault is a single absent dependency, and twenty copies of it bury the one line that can be acted on.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

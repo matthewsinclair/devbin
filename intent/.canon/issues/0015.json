@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 15,
+  "schema": "intent/issue@4.0",
+  "id": "0015",
   "slug": "a-completed-run-sealed-as-in-flight-once-and-was-not-reproduced",
   "title": "a completed run sealed as \"in flight\" once, and was not reproduced",
   "status": "closed",

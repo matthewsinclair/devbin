@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 113,
+  "schema": "intent/issue@4.0",
+  "id": "0113",
   "slug": "authored-help-reaches-no-estate-help-file-reads",
   "title": "authored help reaches no estate -- help_file reads only the project's own help/, which devbin never ships",
   "status": "closed",

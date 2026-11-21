@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 248,
+  "schema": "intent/issue@4.0",
+  "id": "0248",
   "slug": "one-colon-list-splitter-each-site-that-splits-pa",
   "title": "One colon-list splitter: each site that splits PATH or GIT_CEILING_DIRECTORIES writes out IFS=: read -r -a, which stops at a newline and drops a trailing empty entry",
   "status": "closed",

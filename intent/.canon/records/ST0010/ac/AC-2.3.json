@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.3",
+  "text": "The client deny list, held outside devbin, matches nothing in the snapshot's tree or its commit message. Evidence: the scan's count, run with no term printed.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "deny list over snapshot 2cde3ee6: 6 terms, 0 text files, 0 commit-message lines, 0 files as raw bytes (snap-scan.sh, scan-v0117)"
+  }
+}

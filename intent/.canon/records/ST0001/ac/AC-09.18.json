@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.18",
+  "text": "The suite installs fixtures through the REAL installer, so every test in it exercises the install path (D24). No second implementation of install lives in the test harness",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

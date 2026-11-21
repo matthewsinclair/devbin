@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 230,
+  "schema": "intent/issue@4.0",
+  "id": "0230",
   "slug": "the-version-line-drops-at-root-contract-a3-hv-s",
   "title": "the version line drops ' at <root>' (contract A3, hv's ruling): devbin <version> (<tree>, <sha12>[+dirty]), readers read to the closing parenthesis",
   "status": "closed",

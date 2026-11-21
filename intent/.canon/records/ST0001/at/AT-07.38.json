@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.38",
+  "kind": "test",
+  "covers": [
+    "AC-07.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"the dispatcher renders nothing itself\""
+  }
+}

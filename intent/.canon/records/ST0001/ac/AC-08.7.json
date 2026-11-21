@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.7",
+  "text": "Config's `run:` overrides a built-in option's command line, and a config-declared option is not swallowed by the built-in that owns its command",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

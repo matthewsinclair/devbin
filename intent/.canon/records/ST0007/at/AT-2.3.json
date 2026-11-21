@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.3",
+  "kind": "test",
+  "file": "tests/unit/release.bats",
+  "covers": [
+    "AC-2.1"
+  ],
+  "status": "green",
+  "note": "the command kind: notes.run runs at the root with each verb, split into words and never eval'd, a body keeps its trailing newlines, and an answer in any other shape is refused; marked # AT-2.3"
+}

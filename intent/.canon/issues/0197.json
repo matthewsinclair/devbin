@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 197,
+  "schema": "intent/issue@4.0",
+  "id": "0197",
   "slug": "after-the-brew-rollout-devbin-s-own-install-pref",
   "title": "after the brew rollout, devbin's own install.prefix and fleet fight the brew install -- a publish to install.prefix repoints every project back to a checkout install, and fleet refuses a sweep unless the machine names install.prefix",
   "status": "closed",

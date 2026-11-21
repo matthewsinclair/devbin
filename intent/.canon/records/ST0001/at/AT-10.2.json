@@ -1,0 +1,11 @@
+{
+  "id": "AT-10.2",
+  "kind": "test",
+  "covers": [
+    "AC-10.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"refusing a sidecar leaves the version file un-advanced, so a rerun is clean\""
+  }
+}

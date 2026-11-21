@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 57,
+  "schema": "intent/issue@4.0",
+  "id": "0057",
   "slug": "fullcycle-s-path-scan-forks-readlink-once-per-sy",
   "title": "fullcycle's PATH scan forks readlink once per symlink, so its cost is the operator's PATH and not the project",
   "status": "closed",

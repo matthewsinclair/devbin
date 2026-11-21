@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 210,
+  "schema": "intent/issue@4.0",
+  "id": "0210",
   "slug": "readme-presents-devel-opt-devbin-as-the-machine",
   "title": "README presents ~/Devel/opt/devbin as the machine install a user seeds projects from; a user installs from brew, and dev and opt are the maintainer's (hv's dev, opt, brew directive)",
   "status": "closed",

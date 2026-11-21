@@ -1,0 +1,9 @@
+{
+  "id": "07",
+  "title": "PARKED -- Pplr: migrate the twenty-script fleet",
+  "scope": "S",
+  "status": "not-started",
+  "objective": "**PARKED by hv, 2026-08-10: Pplr is to be redone as a Rust project at some point; migrating the current shell fleet is not right for it. Nothing below executes; it stands as the survey record for the rewrite's benefit.**\n\nMigrate Pplr (`~/Devel/prj/Pplr`, shell) -- the biggest and oldest migration of the thread (last release 2025-07): `bin/pplr` (70 lines) plus twenty `pplr_*` satellite scripts, each a candidate `bin/.devbin/cmd/<name>` handler. Its pre-commit hook runs raw `prettier --write` on staged Markdown, so the fence is the FIRST commit of the WP, before anything else.",
+  "body": "## Deliverables\n\n- Fence commit first\n- Inventory of all twenty-one scripts: disposition each, authored rulings extracted, and an explicit ruling per name that collides with a devbin builtin (`pplr_doctor`, `pplr_help`, `pplr_version`, `pplr_new`, ...)\n- Install alongside; equivalence pack; `tests/*.bats` green through `bin/devbin`\n- Switch on hv's explicit go; deletes last, satellite-by-satellite listed in the commit\n- `Icon` cruft in bin/ handled only with case-sensitive `find -name`, never globs; untracked `templates/icons/` dirt parked and surfaced\n\n## Dependencies\n\n- WP-05 and WP-06 (shell shape twice-proven before the big one)",
+  "preamble": ""
+}

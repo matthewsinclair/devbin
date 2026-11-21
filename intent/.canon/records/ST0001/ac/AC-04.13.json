@@ -1,0 +1,8 @@
+{
+  "id": "AC-04.13",
+  "text": "`all` is RESERVED wherever the command has declared options -- config-declared options compose with a project handler, so the sweep survives the shadow, and a sub-handler named `all` cannot thin it out; the one shape that receives `all` verbatim is a full project handler declaring NO options, whose argument list is wholly its own (refined during WP-10, whose corpus surface -- `which all`, `docs all` -- was unreachable under the unconditional reservation) -- and a bare `<command>` that HAS options prints that command's help rather than running everything -- and exits NON-ZERO, because naming no option is a usage error and a command that exits 0 having run nothing is a false green every `&&` chain misreads. Asking with `-h`/`--help` exits 0, since that request succeeded. A command with no options and a command line of its own -- a surface such as `server` -- runs it instead, since printing help would make the command unusable (clarified during WP-14, which found the original wording contradicted every launcher; the exit code corrected during WP-07, whose corpus audit found the ruling already written down in Laksa's authored help)",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

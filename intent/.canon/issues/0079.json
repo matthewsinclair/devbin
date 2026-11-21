@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 79,
+  "schema": "intent/issue@4.0",
+  "id": "0079",
   "slug": "the-update-notice-the-upgrade-offer-and-doctor-r",
   "title": "The update notice, the upgrade offer and doctor read any difference as behind, so devbin can offer the upgrade that reverts a project",
   "status": "closed",

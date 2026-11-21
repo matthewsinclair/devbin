@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.2",
+  "text": "Devbin installs ALONGSIDE the existing launcher with nothing at risk: `bin/devbin` and `bin/.devbin/` touch no `bin/conflab_*` path, both launchers answer correctly at the same time, and this state is committable and revertible on its own",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Conflab `4805d490`; the installer refused the real `bin/conflab`; doctor and both launchers verified live; steps 1-4 stayed revertible-by-doing-nothing until `5f8d20b0`"
+  }
+}

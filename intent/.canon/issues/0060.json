@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 60,
+  "schema": "intent/issue@4.0",
+  "id": "0060",
   "slug": "a-die-at-command-substitution-depth-2-is-swallow",
   "title": "A die at command-substitution depth 2 is swallowed, because inherit_errexit is set nowhere",
   "status": "closed",

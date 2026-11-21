@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 135,
+  "schema": "intent/issue@4.0",
+  "id": "0135",
   "slug": "dormancy-a-suite-wholly-behind-features-reads-in",
   "title": "dormancy: a suite wholly behind features reads INCONCLUSIVE, --all-features lands after a --, and the declared line it prints can name a command that never runs",
   "status": "closed",

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 14,
+  "schema": "intent/issue@4.0",
+  "id": "0014",
   "slug": "devbin-owns-the-version-number-axis-and-nothing",
   "title": "devbin owns the version-number axis and nothing owns the build's git identity",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-4.1",
+  "text": "The runtime leg checks certificates, A and AAAA agreement, release_command path validity, and staged-secret detection.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

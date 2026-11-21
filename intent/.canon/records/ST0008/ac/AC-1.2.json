@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.2",
+  "text": "In a project that install has vendored into, and again after upgrade, git check-attr eol reports lf for bin/devbin and for every file under bin/.devbin/; and doctor names any vendored path that is not covered.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

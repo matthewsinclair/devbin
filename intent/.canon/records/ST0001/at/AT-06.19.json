@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.19",
+  "kind": "test",
+  "covers": [
+    "AC-06.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"purge with no kept log is refused rather than guessed at\""
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-12.10",
+  "text": "The migration guide carries D10's quiesce-and-inline sequence with the collision point (the project-named symlink, taken last) called out, and the parts that can only be written from the reference migration are MARKED as trailing WP-10 rather than invented",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`docs/migration.md`, whose pending sections name WP-10 explicitly"
+  }
+}

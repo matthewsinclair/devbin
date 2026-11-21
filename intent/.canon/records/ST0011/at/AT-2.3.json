@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.3",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-2.4"
+  ],
+  "status": "green",
+  "note": "releasecut.bats's arms tagged (ST0011 WP02): the dry run runs no gate (its gates row reads the record, already or would, and its header says no gate runs), and the RELEASE seal carries start: and end: clock lines with the leg line; red at the red clone d29a7afd, the base with the unit's test files and none of its code, in run 01M699H5CM6E089PMEG9TAGQ2S (record ~/Devel/scratch/devbin-cc/st11-wp02a/run/runs/arms); green at b33dc88e under BSD and GNU in the same run, the code byte-identical at 41172620 (its light re-run 01M69CSS0GX4JDGWCBX30YGW91 green), landed as bd13167f"
+}

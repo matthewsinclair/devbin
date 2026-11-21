@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 279,
+  "schema": "intent/issue@4.0",
+  "id": "0279",
   "slug": "an-immutable-uchg-cargo-toml-sidecar-passes-vers",
   "title": "an immutable (uchg) Cargo.toml sidecar passes version set's preflight, and the write pass half-writes the set",
   "status": "closed",

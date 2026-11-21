@@ -1,0 +1,9 @@
+{
+  "id": "AC-3.2",
+  "text": "After publication, the repository and the tap are public, and an anonymous brew install matthewsinclair/devbin/devbin on a clean account answers devbin <version> (brew, <sha12>) naming the published commit.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "accepted by hv 2026-10-30 in vc's session: anonymous https ls-remote (no credential helper, no global git config) reads the PUBLIC source at a9b8cd7c (HEAD, main, v0.1.18) and the PUBLIC tap at acebdc9; rhadamanth's brew answers devbin 0.1.18 (brew, a9b8cd7c11a9), its install receipt naming tap_git_head acebdc9 and scm_revision a9b8cd7c. Gap accepted by name: rhadamanth's tap is cloned over ssh and is not a clean account"
+  }
+}

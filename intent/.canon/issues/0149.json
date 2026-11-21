@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 149,
+  "schema": "intent/issue@4.0",
+  "id": "0149",
   "slug": "release-step-11-asks-ci-query-about-the-commit-a",
   "title": "release step 11 asks ci.query about the commit alone, so a branch push's green on the release commit ends the release before the tag's run exists -- Gtools v0.4.0 never waited on its macOS leg",
   "status": "closed",

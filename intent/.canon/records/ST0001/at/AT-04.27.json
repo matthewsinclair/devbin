@@ -1,0 +1,12 @@
+{
+  "id": "AT-04.27",
+  "kind": "test",
+  "covers": [
+    "AC-04.13",
+    "AC-04.14"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/contract.bats::\"asking for usage explicitly SUCCEEDS, unlike naming no option at all\""
+  }
+}

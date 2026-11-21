@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 231,
+  "schema": "intent/issue@4.0",
+  "id": "0231",
   "slug": "a-test-log-with-a-byte-that-is-not-valid-utf-8-m",
   "title": "a test log with a byte that is not valid UTF-8 makes the counter's awk exit 2 under a UTF-8 locale, so an empty run passes green (0006's refusal skipped)",
   "status": "closed",

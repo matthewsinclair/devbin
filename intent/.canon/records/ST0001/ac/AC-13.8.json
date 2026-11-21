@@ -1,0 +1,9 @@
+{
+  "id": "AC-13.8",
+  "text": "R2 is verified by running it rather than by a unit test, because the thing under test is a CI workflow: Intent was shallow-cloned to a temp directory and `bin/devbin check critic` run with only that clone on PATH",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`WP/13/review.md` R2"
+  }
+}

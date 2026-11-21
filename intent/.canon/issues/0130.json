@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 130,
+  "schema": "intent/issue@4.0",
+  "id": "0130",
   "slug": "release-exits-2-when-nobody-is-there-to-confirm",
   "title": "release exits 2 when nobody is there to confirm -- the dispatcher's code for an unknown or inactive command, and vc's 0126 arm could not see it",
   "status": "closed",

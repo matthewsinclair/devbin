@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.15",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-3.1"
+  ],
+  "status": "green",
+  "note": "Red until cc's WP02c, whose two call lines turn it green: release check and the cut's pre-flight ask ci-state --fires about the candidate ref with the release commit's files, when release.ci.query is the built-in (cfg_ci_query_is_builtin), and refuse on anything but fires, printing the reason. The reader itself is AT-3.10 to AT-3.14's. The file is where the cut's arms live; the row is re-cited at that landing if its arms land elsewhere. WP02c moved to dc on hv's word, and its arm is releasecut.bats's, so no re-cite. Red at the red clone be11b283 (WP08's bank 8a6ee377, main 67a8ae56's tree outside intent/, with WP02c's nine test files and none of its code, red-02c-8a6ee377-1b561da2) in the arms phase of WP02c's run (slot 01M6C76DJ3MVP4K2TZD91H1CJD, 2026-11-01 18:53:42Z to 18:58:38Z by date -u, rc 0): releasecut.bats's three WP-02c arms 0 ok and 3 not ok, this arm among them, the leg bounded at 60s and not cut off. At the base its fixture's config, declaring ci.wait and no ci.query, does not validate (release.ci.wait is read only when release.ci.query is declared), since the built-in default is WP02c's, so the arm's first case, a workflow that fires, exits 1 where it should pass. Green at 1b561da2 in the same run: under GNU in its arms phase (releasecut.bats's three WP-02c arms, 3 of 3 ok) and its light phase from 18:58:38Z to 19:29:39Z, rc 0 (releasecut.bats whole, 170 of 170 ok), and under BSD in the whole suite through bin/devbin test all (2980 ok, 0 not ok, 5 skipped; its seal 20261101-1858.bats.errors empty), this arm ok in each and skipped in none; landed as 16e83e18cf2ead8171a4b699962819561a59520c, its tree outside intent/ the tested tip's; records ~/Devel/scratch/devbin-dc/wp02c/runs/arms (red-02c-releasecut.tap among them), ~/Devel/scratch/devbin-dc/wp02c/runs/light and ~/Devel/scratch/devbin-dc/wp02c/seals/20261101-1858.bats.out. The '# AT-3.15' line is over its arm."
+}

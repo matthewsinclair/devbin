@@ -1,0 +1,9 @@
+{
+  "id": "AC-12.12",
+  "text": "The stock `intent/llm/ARCHITECTURE.md` no longer sits beside the real `ARCHITECTURE-shell.md` as an unfilled template a reader can open by mistake; it is reconciled to a pointer, kept rather than deleted because the Intent tooling generates it",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`intent/llm/ARCHITECTURE.md`"
+  }
+}

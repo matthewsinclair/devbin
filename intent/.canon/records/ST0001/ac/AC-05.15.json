@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.15",
+  "text": "`is_command` answers from what actually resolves, so it cannot disagree with the dispatch surface",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

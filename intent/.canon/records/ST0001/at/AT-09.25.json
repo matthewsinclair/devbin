@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.25",
+  "kind": "test",
+  "covers": [
+    "AC-09.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"an edit stays flagged after the refusing upgrade rewrites the manifest\""
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-13.6",
+  "text": "What was deliberately NOT built is stated in one place so absence reads as decision",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`review.md` \"What is deliberately not built\""
+  }
+}

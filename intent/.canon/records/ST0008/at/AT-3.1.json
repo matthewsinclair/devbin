@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.1",
+  "kind": "test",
+  "file": "tests/unit/shellinit.bats",
+  "covers": [
+    "AC-3.1"
+  ],
+  "status": "green",
+  "note": "Landed at 8fe7eaa7; red first at bbb94fba, the arms under bash before the bash body existed; met at 8fe7eaa7: every behavioural arm runs the emitted dvb under zsh -f and bash --norc --noprofile with nounset on, and the one-source arm goes red on any difference between the two bodies but the shell line; landing suite 2352 of 2352, seal 20261016-1322, at the stack tip 1dadcaa3"
+}

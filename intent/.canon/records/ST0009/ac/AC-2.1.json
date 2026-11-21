@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.1",
+  "text": "On rhad, brew install devbin from the tap succeeds, fetching from GitHub over ssh; brew test devbin passes; devbin --version from HOMEBREW_PREFIX/bin names the release's version and commit.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "rhad 2026-10-17, by vc: brew tap matthewsinclair/devbin over ssh, brew install (Cellar/devbin/0.1.11), brew test devbin ok, /opt/homebrew/bin/devbin --version 'devbin 0.1.11 (0fc22669...)'; recorded in commit d2f48f46"
+  }
+}

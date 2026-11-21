@@ -1,0 +1,8 @@
+{
+  "id": "AC-15.2",
+  "text": "A missing formatter SKIPS loudly and does not fail the run -- `fmt` claims no verdict, so skipping is not a false green; the message is mandatory, because silence is indistinguishable from having formatted the files",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

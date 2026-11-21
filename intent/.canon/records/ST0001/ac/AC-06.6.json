@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.6",
+  "text": "`LATEST_*` symlinks are created with relative targets and are a convenience only: every run prints its own absolute seal path, never the pointer",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

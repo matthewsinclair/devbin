@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.53",
+  "kind": "test",
+  "covers": [
+    "AC-09.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/doctor.bats::\"an undeclared constraint is a note, not a pass and not a failure\""
+  }
+}

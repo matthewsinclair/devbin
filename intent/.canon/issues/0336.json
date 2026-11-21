@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 336,
+  "schema": "intent/issue@4.0",
+  "id": "0336",
   "slug": "the-macos-leg-submits-its-app-s-and-its-binaries",
   "title": "The macOS leg submits its app's and its binaries' notarisations together, not one after the other",
   "status": "closed",

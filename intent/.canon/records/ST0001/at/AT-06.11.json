@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.11",
+  "kind": "test",
+  "covers": [
+    "AC-06.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"a promotion that cannot be recorded warns\""
+  }
+}

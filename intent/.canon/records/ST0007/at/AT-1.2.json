@@ -1,0 +1,10 @@
+{
+  "id": "AT-1.2",
+  "kind": "test",
+  "file": "tests/unit/releasecore.bats",
+  "covers": [
+    "AC-1.2"
+  ],
+  "status": "green",
+  "note": "not offered and not run until enabled; a block does not enable; marked # AT-1.2"
+}

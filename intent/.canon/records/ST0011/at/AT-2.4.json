@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.4",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-2.4"
+  ],
+  "status": "green",
+  "note": "AC-2.4's clauses WP02a does not hold: release publish, --expect, the ci step and the ci.tag and ci.base keys retired (WP02b, the loop), and ci.wait's default 60m (WP02c, the ci keys); green once both have landed, its file re-cited with at edit then. WP02b-1 (the loop) landed at ac18a7de89f4a17790b39ab237849426d2f1ac19, run 01M6BFAW5TJB86G7GEVSCKDP4A: the ci step, ci.tag and ci.base are retired. release publish and --expect retire with WP02b-2, and ci.wait's default 60m is WP02c's, so the row stays red. Green at WP02c's landing, with no re-cite (vc's ruling, 2026-11-01 18:52Z): the row's file stays releasecut.bats, whose two '# AT-2.4' arms hold the retirements WP02b landed ('a re-run of a released version, HEAD moved on, asks ci.query nothing: the tag exists, so the legs are not re-run', and the object: ci arm marked '# AT-4.1, AT-6.1, AT-2.4'), and ci.wait's default 60m is held by releasecore.bats's defaults arm, '# AT-1.1' over it ('with no release: block, every key reads its default (0240)'), whose ci.wait line WP02c moves from 20m at the base 8a6ee377 to 60m with the default. In WP02c's run (slot 01M6C76DJ3MVP4K2TZD91H1CJD) at 1b561da2, in its light phase from 18:58:38Z to 19:29:39Z, rc 0, the three arms are ok under GNU (releasecut.bats whole, 170 of 170 ok; releasecore.bats whole, 42 of 42 ok) and under BSD in the whole suite through bin/devbin test all (2980 ok, 0 not ok, 5 skipped; its seal 20261101-1858.bats.errors empty), skipped in none; landed as 16e83e18cf2ead8171a4b699962819561a59520c, its tree outside intent/ the tested tip's; records ~/Devel/scratch/devbin-dc/wp02c/runs/light and ~/Devel/scratch/devbin-dc/wp02c/seals/20261101-1858.bats.out."
+}

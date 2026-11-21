@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.24",
+  "kind": "test",
+  "covers": [
+    "AC-07.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"an unknown help flag is refused rather than treated as a topic\""
+  }
+}

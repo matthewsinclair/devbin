@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 277,
+  "schema": "intent/issue@4.0",
+  "id": "0277",
   "slug": "an-opt-or-brew-tree-whose-manifest-records-a-dir",
   "title": "An opt or brew tree whose manifest records a dirty source would print the bare commit on its version line, not T4's <sha12>+dirty: devbin_tree_line keeps the recorded mark (latent; not in 0.1.16)",
   "status": "closed",

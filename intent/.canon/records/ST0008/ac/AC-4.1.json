@@ -1,0 +1,8 @@
+{
+  "id": "AC-4.1",
+  "text": "With PATH carrying entries with spaces and parentheses and a directory of Windows executables that includes a git.exe, every command in scope behaves as it does without them, and no .exe is run in place of a Linux tool.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

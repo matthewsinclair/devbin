@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 150,
+  "schema": "intent/issue@4.0",
+  "id": "0150",
   "slug": "devbin-reads-cargo-s-build-tree-only-from-cargo",
   "title": "devbin reads cargo's build tree only from CARGO_TARGET_DIR, so a tree moved by CARGO_BUILD_TARGET_DIR or build.target-dir is removed by fullcycle's clean and the check reads no tree, INCONCLUSIVE at rc 0",
   "status": "closed",

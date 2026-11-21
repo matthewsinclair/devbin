@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.37",
+  "kind": "test",
+  "covers": [
+    "AC-04.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/contract.bats::\"a bare SURFACE runs, because it has a command line and no options\""
+  }
+}

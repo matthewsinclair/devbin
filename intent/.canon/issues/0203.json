@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 203,
+  "schema": "intent/issue@4.0",
+  "id": "0203",
   "slug": "readme-s-homebrew-section-says-the-tap-does-not",
   "title": "README's Homebrew section says the tap does not exist, and its short-name install is refused by Homebrew 7.0.10",
   "status": "closed",

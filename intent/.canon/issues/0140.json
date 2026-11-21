@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 140,
+  "schema": "intent/issue@4.0",
+  "id": "0140",
   "slug": "upgrade-on-a-case-insensitive-disk-removes-a-fil",
   "title": "upgrade, on a case-insensitive disk, removes a file devbin renamed only in case after updating it, and overwrites an edit to it unrefused",
   "status": "closed",

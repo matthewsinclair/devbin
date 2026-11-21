@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 330,
+  "schema": "intent/issue@4.0",
+  "id": "0330",
   "slug": "a-resumed-cut-reads-the-cancelled-ci-run-its-ear",
   "title": "A resumed cut reads the cancelled CI run its earlier attempt left on the candidate, and stops red on it",
   "status": "closed",

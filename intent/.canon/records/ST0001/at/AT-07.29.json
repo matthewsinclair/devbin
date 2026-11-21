@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.29",
+  "kind": "test",
+  "covers": [
+    "AC-07.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"the alias line appears only when config declares an alias\""
+  }
+}

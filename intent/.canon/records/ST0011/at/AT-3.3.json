@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.3",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-3.2"
+  ],
+  "status": "green",
+  "note": "Red until dc's hook-in unit after cc's WP02b (dc's hold 36), which turns it green: the cut runs each declared remote leg through release.legs at R's sha and reads it in its one wait loop, and Devbin's config declares legs: [kovacs]. The runner itself is AT-3.1's and AT-3.2's. The file is where the cut's arms live; the row is re-cited at that landing if its arms land elsewhere. -- red at its red clone in the hook-in stack's run (desk request 01M6C0GKNE2H3SM6TPRM9MCWB6, 2026-11-01 16:56:09Z to 17:42:09Z by its log's clock): the arm, '# AT-2.7, AT-3.3, AT-3.6' over it in tests/unit/releasecut.bats, read not ok, with all 4 of releasecut.bats's WP-0[56] arms not ok, plan met, bounded at 60s, at red-05-62e1c34b-6b99ed46 (3c9e5669: main's code at 62e1c34b with ST0011/05's test files from 6b99ed46); record ~/Devel/scratch/devbin-dc/hookin/runs/arms/red-05-releasecut.tap and summary. Green at ba5a8270, landed as ST0011/05 ee5791e5, ST0011/04 a4238ca6 and ST0011/07 8a776229 (the tree outside intent/ the tested tip's), in the same run: under GNU in its arms phase (gnu-05-releasecut, 4 of 4 ok) and its light phase (releasecut.bats whole, 165 of 165 ok), and under BSD in the whole suite by bin/devbin test all (2966 ok, 0 not ok, 5 skipped, its seal 20261101-1705 empty), this arm ok and unskipped in each; records ~/Devel/scratch/devbin-dc/hookin/runs/arms, runs/light and runs/light/bsd-all.log."
+}

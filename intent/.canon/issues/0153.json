@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 153,
+  "schema": "intent/issue@4.0",
+  "id": "0153",
   "slug": "the-tracked-manifest-records-where-devbin-was-ve",
   "title": "The tracked manifest records where devbin was vendored from, a machine path, in every consumer",
   "status": "closed",

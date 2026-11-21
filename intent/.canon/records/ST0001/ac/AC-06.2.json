@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.2",
+  "text": "Red is never empty even when nothing parses: a red run with no matching failure blocks, or whose log has vanished, still seals a header plus whatever tail could be recovered",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

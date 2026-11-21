@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 67,
+  "schema": "intent/issue@4.0",
+  "id": "0067",
   "slug": "devbin-s-own-release-command-acts-on-help-after",
   "title": "devbin's own release command acts on --help after its verb: release notes --help rewrites both views, release check --help runs the check",
   "status": "closed",

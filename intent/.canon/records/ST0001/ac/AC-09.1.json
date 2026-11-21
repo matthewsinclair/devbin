@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.1",
+  "text": "`install` vendors the RUNNING runtime -- the dispatcher plus every file under `lib/` -- into the target's `bin/devbin` and `bin/.devbin/lib/`, so an already-installed devbin seeds another project by exactly the path a source checkout does",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

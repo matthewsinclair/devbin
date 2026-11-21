@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 367,
+  "schema": "intent/issue@4.0",
+  "id": "0367",
   "slug": "a-cut-that-stops-red-leaves-a-remote-leg-s-run-g",
   "title": "A cut that stops red leaves a remote leg's run going on its host, and nothing reads it after, so its worktree, log, status and TMPDIR stay there",
   "status": "closed",

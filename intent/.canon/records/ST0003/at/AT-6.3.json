@@ -1,0 +1,10 @@
+{
+  "id": "AT-6.3",
+  "kind": "test",
+  "file": "tests/unit/infra-profile.bats",
+  "covers": [
+    "AC-6.3"
+  ],
+  "status": "green",
+  "note": "Five arms, three mutations, each red on exactly one arm with both positive controls green throughout -- so the invariant discriminates rather than refusing everything. Found on a real estate: two live domains named mailersend in profiles that never defined it."
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.6",
+  "kind": "test",
+  "covers": [
+    "AC-06.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"the run log keeps its escapes and the seal is stripped\""
+  }
+}

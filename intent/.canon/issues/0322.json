@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 322,
+  "schema": "intent/issue@4.0",
+  "id": "0322",
   "slug": "assets-mode-renders-the-manifest-header-as-one-r",
   "title": "Assets mode renders the manifest header as one Ruby line, longer than brew style's Layout/LineLength allows",
   "status": "closed",

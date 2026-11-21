@@ -1,0 +1,9 @@
+{
+  "id": "AC-12.7",
+  "text": "Extended per-project help is documented as a first-class citizen: authored detail at `help/<cmd>.md`, sub-topics descending by D3, the declared group in the global listing, and the config-declared preamble. The machinery is WP-07's; this is the prose it serves",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`docs/authoring-commands.md` \"Where help text comes from\", `docs/configuration.md` \"help\""
+  }
+}

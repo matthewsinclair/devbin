@@ -1,0 +1,8 @@
+{
+  "id": "AC-04.3",
+  "text": "Resolution follows D2's order: project handler, then config mapping, then built-in, then exit 2; a project handler shadows a built-in of the same name",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

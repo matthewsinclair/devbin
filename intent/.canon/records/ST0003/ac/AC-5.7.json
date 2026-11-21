@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.7",
+  "text": "A container that is ambiguous or empty is REFUSED, naming what it held. A zip carrying anything but exactly one member is an anomaly rather than a shape to guess at, and silently taking the first would be a verdict over a population the operator never saw.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

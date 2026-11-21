@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.1",
+  "kind": "test",
+  "covers": [
+    "AC-05.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"lib/helpers loads with no other library sourced\""
+  }
+}

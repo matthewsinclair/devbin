@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.14",
+  "kind": "test",
+  "covers": [
+    "AC-14.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"iex passes its arguments through to the shell\""
+  }
+}

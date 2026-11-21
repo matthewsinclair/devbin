@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 353,
+  "schema": "intent/issue@4.0",
+  "id": "0353",
   "slug": "new-writes-its-bats-stub-into-a-linked-worktree",
   "title": "new writes its bats stub into a linked worktree's vendored runtime, because test_dir's walk excludes only the project's own runtime",
   "status": "closed",

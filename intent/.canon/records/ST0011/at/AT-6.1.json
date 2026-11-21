@@ -1,0 +1,10 @@
+{
+  "id": "AT-6.1",
+  "kind": "test",
+  "file": "tests/unit/dispatch.bats",
+  "covers": [
+    "AC-6.1"
+  ],
+  "status": "green",
+  "note": "dispatch.bats's platforms arm: on a host whose uname -s says Linux (stub_uname), gate all runs the option whose platforms: names linux and the one declaring none, and counts the one naming macos inactive on the count line; help --why names it with its reason, it runs on macos, and this host is linux; and run by name it is refused at 2 with that reason, through the inactive route -- red at the red clone cdc91056 (main's code at f3462610 with WP17's four test files from d0a403f5, red-wp17-f3462610-d0a403f5) in the arms phase of the 0306+WP17 stack's run (slot 01M6BKT367YF4D73C91YWQTSA2, 2026-11-01 13:19:30Z to 13:42:26Z by date -u, rc 0): dispatch.bats's four WP-17 arms 0 ok and 4 not ok, this arm among them (the option naming macos ran on a host whose uname says Linux), the leg bounded at 60s and not cut off; records ~/Devel/scratch/devbin-dc/stack/runs/arms/summary and red-WP17-dispatch.tap. Green at d0a403f5, landed as b166bfac with the same tree outside intent/, in the same run: under GNU in its arms phase (dispatch.bats's four WP-17 arms, 4 of 4 ok) and its light phase (dispatch.bats whole, 128 of 128 ok), and under BSD in the whole suite through bin/devbin test all (2948 ok, 0 not ok, 5 skipped; its seal 20261101-1323.bats.errors empty), this arm ok in each and skipped in none; records ~/Devel/scratch/devbin-dc/stack/runs/arms, light and seals/20261101-1323.bats.out. The '# AT-6.1' line is over its arm."
+}

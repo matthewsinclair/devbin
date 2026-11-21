@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.3",
+  "text": "Provenance rows carry a KIND -- rfc, vendor-stated, or estate-inferred -- and init READS it. An estate-inferred row is majority-class rather than standard-class: it proposes as target only where majority would be admissible anyway, never for a different estate than it was drawn from, and at N=1 it goes to unreviewed.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

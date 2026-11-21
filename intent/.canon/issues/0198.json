@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 198,
+  "schema": "intent/issue@4.0",
+  "id": "0198",
   "slug": "targetdir-bats-720-says-it-needs-no-cargo-and-fa",
   "title": "targetdir.bats:720 says it needs no cargo, and fails on a machine with cargo off PATH",
   "status": "closed",

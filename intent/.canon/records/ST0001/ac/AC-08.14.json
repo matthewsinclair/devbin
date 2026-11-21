@@ -1,0 +1,9 @@
+{
+  "id": "AC-08.14",
+  "text": "The gate families run end to end against a real toolchain for every language Devbin itself declares: `check all` and `test all` execute the shipped shell gates through the dispatcher on both CI platforms, not via bats directly. The elixir, rust and swift gates have no toolchain in this repo and are exercised at WP-10 / WP-11",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`.github/workflows/tests.yml` (`bin/devbin test all`, `bin/devbin check all` on ubuntu and macos), `bin/.devbin/config.yaml` declaring `shell` alone"
+  }
+}

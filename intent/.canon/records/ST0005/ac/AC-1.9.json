@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.9",
+  "text": "The install location is configuration (install.prefix), with --prefix overriding for one run and leaving the configured location untouched. --prefix in VENDOR mode is a usage error, never silently discarded.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

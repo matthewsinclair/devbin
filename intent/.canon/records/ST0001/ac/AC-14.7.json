@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.7",
+  "text": "`iex` runs with nothing declared in config, from the catalogue alone",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

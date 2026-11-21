@@ -1,0 +1,8 @@
+{
+  "id": "AC-07.5",
+  "text": "`help <cmd>` prints authored long-form from `bin/.devbin/help/<cmd>.md` when it exists, and sub-topics resolve by the same rule at every depth (D3)",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

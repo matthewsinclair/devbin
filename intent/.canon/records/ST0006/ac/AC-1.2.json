@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.2",
+  "text": "apply exits NON-ZERO when it hands work back. A partial apply reporting success reads as done, and the operator stops.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

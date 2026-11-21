@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 371,
+  "schema": "intent/issue@4.0",
+  "id": "0371",
   "slug": "release-versions-reads-as-a-release-a-tag-its-te",
   "title": "release_versions reads as a release a tag its template cannot make, where release.tag holds {version} twice",
   "status": "closed",

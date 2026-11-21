@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.7",
+  "kind": "test",
+  "covers": [
+    "AC-15.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"fmt md formats root Markdown only, and says why\""
+  }
+}

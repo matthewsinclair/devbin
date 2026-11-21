@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 63,
+  "schema": "intent/issue@4.0",
+  "id": "0063",
   "slug": "check-all-reports-all-options-passed-while-never",
   "title": "check all reports all options passed while never naming the options that did not activate, so a narrowed run is indistinguishable from a full one",
   "status": "closed",

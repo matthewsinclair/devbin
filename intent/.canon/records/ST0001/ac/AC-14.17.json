@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.17",
+  "text": "An output assertion cannot be silently disarmed by a bare `--`: the helpers read their pattern as the first argument, so the end-of-options marker becomes the pattern and the assertion tests nothing. Refused structurally, because a disarmed assertion still passes",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 212,
+  "schema": "intent/issue@4.0",
+  "id": "0212",
   "slug": "changelog-md-has-no-entries-for-0-1-7-to-0-1-13",
   "title": "CHANGELOG.md has no entries for 0.1.7 to 0.1.13: the generator matches note headings exactly, and every note since 0.1.7 suffixes its headings (eg '## Fixed -- reaches every estate')",
   "status": "closed",

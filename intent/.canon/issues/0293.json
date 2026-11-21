@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 293,
+  "schema": "intent/issue@4.0",
+  "id": "0293",
   "slug": "ci-s-macos-job-runs-check-all-and-check-critic-r",
   "title": "CI's macOS job runs check all, and check critic refuses on the public snapshot, which has no intent/",
   "status": "closed",

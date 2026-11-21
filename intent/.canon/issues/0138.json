@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 138,
+  "schema": "intent/issue@4.0",
+  "id": "0138",
   "slug": "builtins-bats-s-builtin-implemented-arm-has-chec",
   "title": "builtins.bats's @builtin-implemented arm has checked nothing since 2026-08-06: it reads the catalogue one column short, so no row ever matches",
   "status": "closed",

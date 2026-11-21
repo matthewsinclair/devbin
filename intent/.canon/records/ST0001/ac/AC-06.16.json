@@ -1,0 +1,9 @@
+{
+  "id": "AC-06.16",
+  "text": "Devbin's own gates run through `run_gate`, so a defect in the sealed-gate subsystem breaks Devbin's own build first",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`bin/.devbin/cmd/check`, `bin/.devbin/cmd/test`"
+  }
+}

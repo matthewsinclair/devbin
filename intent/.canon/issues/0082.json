@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 82,
+  "schema": "intent/issue@4.0",
+  "id": "0082",
   "slug": "every-run-word-is-also-a-glob-matched-against-th",
   "title": "Every run: word is also a glob matched against the project root, and a run: of only spaces runs the invocation's own arguments as the command",
   "status": "closed",

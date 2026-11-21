@@ -1,0 +1,9 @@
+{
+  "id": "AC-3.5",
+  "text": "devbin ships NO assertion that can go stale. init proposes only from the RFC-derived rules and the structural pair invariant -- neither of which rots on a vendor's schedule -- and every vendor-derived field goes to unreviewed:, populated from the live estate. Reworded from 'check must report the standard's age on every run' by hv's ruling of 2026-09-08: that wording presumed a shipped vendor table, and the recovered one proposed NOTHING at N=1 (two rows estate-inferred and self-barred, one an absence, one a prohibition), so there is no age to report. The requirement is met by construction rather than by machinery -- nothing shipped can go stale, so no staleness can hide.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "tests/unit/infra-init.bats AT-3.5 arm (every domain agreeing still yields no mail: or senders: in the target, both in unreviewed with live values); lib/infra.init infra_init_facet_kind table (only dmarc_presence is rfc, nothing vendor-stated ships); intent/st/ST0003/design.md section init AS BUILT"
+  }
+}

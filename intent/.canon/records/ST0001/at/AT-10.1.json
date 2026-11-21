@@ -1,0 +1,11 @@
+{
+  "id": "AT-10.1",
+  "kind": "test",
+  "covers": [
+    "AC-10.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"a structured sidecar devbin has no recipe for is refused, not overwritten\""
+  }
+}

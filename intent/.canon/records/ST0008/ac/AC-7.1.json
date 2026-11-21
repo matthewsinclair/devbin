@@ -1,0 +1,8 @@
+{
+  "id": "AC-7.1",
+  "text": "No pipeline in bin/, lib/, tests/ or .github/ that runs under pipefail lets its reader stop reading before its writer has finished, unless a ruled list names it as sound by construction; held by a tree scan that is red on main at 4320bbdc and green after the fix.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

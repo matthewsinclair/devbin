@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.12",
+  "kind": "test",
+  "covers": [
+    "AC-04.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"an in_all false option still runs when asked for by name\""
+  }
+}

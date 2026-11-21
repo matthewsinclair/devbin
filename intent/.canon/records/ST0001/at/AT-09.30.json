@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.30",
+  "kind": "test",
+  "covers": [
+    "AC-09.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"upgrade from a source that is not devbin writes nothing\""
+  }
+}

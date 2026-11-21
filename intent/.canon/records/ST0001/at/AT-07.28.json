@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.28",
+  "kind": "test",
+  "covers": [
+    "AC-07.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a framework option is listed even when config never declares it\""
+  }
+}

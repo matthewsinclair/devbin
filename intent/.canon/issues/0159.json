@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 159,
+  "schema": "intent/issue@4.0",
+  "id": "0159",
   "slug": "doctor-passes-a-manifest-that-records-no-files-a",
   "title": "doctor passes a manifest that records no files as 0 vendored files intact, and upgrade then overwrites an edit",
   "status": "closed",

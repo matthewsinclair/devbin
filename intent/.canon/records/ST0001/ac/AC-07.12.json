@@ -1,0 +1,9 @@
+{
+  "id": "AC-07.12",
+  "text": "Help is ONE subsystem in one file; the dispatcher parses and calls and holds no rendering (IN-AG-THIN-COORD-001)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`lib/help`, with AT-07.38 asserting `bin/devbin` names no renderer"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-01.4",
+  "text": "The `config.yaml` schema is frozen and published as a commented reference",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`lib/config.reference.yaml`"
+  }
+}

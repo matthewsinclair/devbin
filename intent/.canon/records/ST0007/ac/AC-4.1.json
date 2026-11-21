@@ -1,0 +1,8 @@
+{
+  "id": "AC-4.1",
+  "text": "Every step's failure is a non-zero exit naming the step, held by a test per step with that step's command stubbed to fail.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

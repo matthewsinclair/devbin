@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 220,
+  "schema": "intent/issue@4.0",
+  "id": "0220",
   "slug": "comments-and-test-titles-across-tests-bin-and-li",
   "title": "comments and test titles across tests/, bin/ and lib/ write counts down: a set the tree grows, or a list's length beside the list, many of them already wrong",
   "status": "closed",

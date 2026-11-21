@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.11",
+  "kind": "test",
+  "covers": [
+    "AC-09.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"install never overwrites the project's config, with or without --force\""
+  }
+}

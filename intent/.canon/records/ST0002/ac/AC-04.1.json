@@ -1,0 +1,9 @@
+{
+  "id": "AC-04.1",
+  "text": "Fence before install; one install commit; doctor green; `help --why` accounted",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "fence `b7cefc3` precedes install `94ead67`, proven red-then-green-then-selective before it was relied on; `bin/.devbin/lib/tmpl/help.md` byte-identical (`123bf230...`) across the install commit and manifest intact after it; doctor 9 checks / 0 failed; `help --why` read line by line, every \"not offered\" line explicable"
+  }
+}

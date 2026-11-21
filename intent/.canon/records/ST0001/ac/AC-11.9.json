@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.9",
+  "text": "The eight forwarding shims ride the switch unchanged and are probed working through the switched entry point; `bin/mix`, `bin/echo` and `bin/completions/` are untouched",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "no migration commit touched any of them (`72276f4b` names only the symlinks and the `laksa_*` family); `bin/test -h` probed rc 0 through the switched dispatcher before the commit"
+  }
+}

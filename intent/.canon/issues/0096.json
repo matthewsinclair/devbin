@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 96,
+  "schema": "intent/issue@4.0",
+  "id": "0096",
   "slug": "fullcycle-s-overhead-line-charges-the-confirm-pr",
   "title": "fullcycle's overhead line charges the confirm prompt's wait on a person to the gate's wall",
   "status": "closed",

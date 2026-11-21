@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.11",
+  "text": "A policy that enforces nothing is named as such even when the record is CLEAN, and an explicit opt-out is a NAMED opt-out rather than a silent pass. A summary that goes quiet exactly when it looks good is the thing being built against.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

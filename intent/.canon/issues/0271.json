@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 271,
+  "schema": "intent/issue@4.0",
+  "id": "0271",
   "slug": "a-built-in-the-project-does-not-offer-refuses-it",
   "title": "A built-in the project does not offer refuses its own --help and -h at exit 2, and the refusal does not point at help <cmd>, which prints its page once 0255 lands (from 0255's review)",
   "status": "closed",

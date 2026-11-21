@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 151,
+  "schema": "intent/issue@4.0",
+  "id": "0151",
   "slug": "two-arms-pass-under-bsd-tools-and-fail-on-every",
   "title": "two arms pass under BSD tools and fail on every Ubuntu run -- a GNU stat -f read as an mtime, and a parent-process refutation the CI checkout path satisfies -- so v0.1.8's tag reads red on test-only defects",
   "status": "closed",

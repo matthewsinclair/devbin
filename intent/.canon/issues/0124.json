@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 124,
+  "schema": "intent/issue@4.0",
+  "id": "0124",
   "slug": "the-wrong-tree-guard-exempts-version-whatever-fo",
   "title": "the wrong-tree guard exempts version whatever follows it, so version bump from outside a project rewrites that project's version",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-16.3",
+  "kind": "test",
+  "covers": [
+    "AC-16.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/data.bats::\"db refuses MIX_ENV=prod and says what it is protecting\""
+  }
+}

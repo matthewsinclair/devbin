@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 316,
+  "schema": "intent/issue@4.0",
+  "id": "0316",
   "slug": "gate-spans-reads-any-name-ending-in-run-gate-as",
   "title": "gate_spans reads any name ending in run_gate as a gate call: no word boundary on its match",
   "status": "closed",

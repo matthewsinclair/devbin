@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 64,
+  "schema": "intent/issue@4.0",
+  "id": "0064",
   "slug": "devbin-ships-no-release-core-so-each-project-tha",
   "title": "devbin ships no release core, so each project that releases writes its own orchestrator for one sequence: three so far, 2,408 lines between them, with Utilz next",
   "status": "closed",

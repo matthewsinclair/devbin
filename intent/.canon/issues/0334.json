@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 334,
+  "schema": "intent/issue@4.0",
+  "id": "0334",
   "slug": "a-release-leg-sets-its-own-tmpdir-on-the-leg-hos",
   "title": "A release leg sets its own TMPDIR on the leg host",
   "status": "closed",

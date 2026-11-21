@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.18",
+  "kind": "test",
+  "covers": [
+    "AC-06.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"purge-only keeps the newest kept run by mtime, not by name\""
+  }
+}

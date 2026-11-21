@@ -1,0 +1,11 @@
+{
+  "id": "AT-12.3",
+  "kind": "test",
+  "covers": [
+    "AC-12.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/documentation.bats::\"the annotated reference config parses and validates\""
+  }
+}

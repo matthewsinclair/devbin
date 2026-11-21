@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.2",
+  "kind": "test",
+  "file": "tests/unit/releasestatus.bats",
+  "covers": [
+    "AC-3.1"
+  ],
+  "status": "green",
+  "note": "the states no postcondition produces: steps 5 and 6 never already, step 5 not re-run exactly once the tag exists, step 6 not re-run only when every remote holds the commit and the tag and the object exists or is not the core to make, and skipped for object: none, an undeclared after: and an undeclared ci.query; marked # AT-3.2"
+}

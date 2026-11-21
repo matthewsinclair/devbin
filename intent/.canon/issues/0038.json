@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 38,
+  "schema": "intent/issue@4.0",
+  "id": "0038",
   "slug": "a-green-suite-raises-a-bw01-advisory-which-train",
   "title": "A green suite raises a BW01 advisory, which trains the reader to skip advisories",
   "status": "closed",

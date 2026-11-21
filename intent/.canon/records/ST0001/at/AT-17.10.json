@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.10",
+  "kind": "test",
+  "covers": [
+    "AC-17.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"a sidecar rewrite touches only the version, not its neighbours\""
+  }
+}

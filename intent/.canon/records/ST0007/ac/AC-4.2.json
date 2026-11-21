@@ -1,0 +1,8 @@
+{
+  "id": "AC-4.2",
+  "text": "The gates run on the release commit, and the core checks that they did: a gate reading a file only the stamp writes passes and fails if the gates move before step 3; an untracked non-ignored file outside the owned set is refused at pre-flight; a gate that writes or creates a path fails step 5 naming it.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

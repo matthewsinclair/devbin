@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 166,
+  "schema": "intent/issue@4.0",
+  "id": "0166",
   "slug": "cargo-tree-outside-why-reads-as-outside-the-proj",
   "title": "cargo_tree_outside_why reads / as outside the project, not as the filesystem root",
   "status": "closed",

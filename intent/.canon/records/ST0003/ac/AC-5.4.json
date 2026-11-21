@@ -1,0 +1,11 @@
+{
+  "id": "AC-5.4",
+  "text": "check owns the ASSERTION and goes RED on a domain that published rua and is silently missing from the reports. That comparison needs a profile, which is why it cannot live in report -- a boundary drawn by what a component CAN know outlasts one drawn by what it should do.",
+  "kind": "test",
+  "state": {
+    "is": "descoped",
+    "to": "ST0006",
+    "by": "hv",
+    "reason": "scope correction, 2026-09-08. These criteria came from design.md's work-package TABLE, which is a plan of work rather than a completeness boundary, and vc minted them into ST0003's contract the same morning it gave the thread a contract at all. ST0003's ratified Done clause in info.md names four things -- the schema and parse-time validation, infra check, infra init, and absorbing the standalone mail spec -- and none of these is among them. Moved rather than withdrawn: this work is wanted, it is simply not what ST0003 undertook. hv ruled it 2026-09-08."
+  }
+}

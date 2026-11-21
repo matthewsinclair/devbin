@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.23",
+  "text": "`bin/.devbin/config.yaml` reproduces the declared surface, every entry derived from the inventory: the 22 commands, `--fidelity`/`--env` (four values)/`--repl` with their exports, `version_from` VERSION + the FOUR `version_sidecars` (three Cargo.toml + the iOS plist -- the recipes' built-for case), `languages: [elixir, rust, lua, shell]`-or-narrower with the reason recorded for whatever is excluded, `fmt` reduced to the project's own `ldn` arm with the three catalogue arms disabled by reason, `check` carrying the domain rows + the two CI-parity overrides + `deps`/domain rows `in_all: false` per the authored exclusions, and the opt-ins (macos, publish, content)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Lamplight `f0f9e200b` (languages [elixir, rust, lua] with the narrowing reasons in the config's own comment); doctor 8/0, 27 commands resolve"
+  }
+}

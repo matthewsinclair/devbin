@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.2",
+  "text": "The cut's gates step marks a gate already when a sealed green for the release commit on this platform exists, and runs it otherwise; the never-already rule is gone.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 123,
+  "schema": "intent/issue@4.0",
+  "id": "0123",
   "slug": "publishing-the-machine-install-never-deletes-a-f",
   "title": "publishing the machine install never deletes a file devbin stopped shipping, so every estate keeps receiving it as devbin-owned",
   "status": "closed",

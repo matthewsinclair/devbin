@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.5",
+  "kind": "test",
+  "covers": [
+    "AC-15.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"fmt all is synthesised from the ACTIVE option set\""
+  }
+}

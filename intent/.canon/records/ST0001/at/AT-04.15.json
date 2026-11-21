@@ -1,0 +1,12 @@
+{
+  "id": "AT-04.15",
+  "kind": "test",
+  "covers": [
+    "AC-04.8",
+    "AC-04.10"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"option-level enabled false drops one gate and keeps the command\""
+  }
+}

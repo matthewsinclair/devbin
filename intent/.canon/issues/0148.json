@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 148,
+  "schema": "intent/issue@4.0",
+  "id": "0148",
   "slug": "fullcycle-s-artefact-check-reads-a-relative-carg",
   "title": "fullcycle's artefact check reads a relative CARGO_TARGET_DIR from the project root, where cargo reads it from its own working directory, so a build run from a crate's directory loses its release artefacts under an INCONCLUSIVE at rc 0",
   "status": "closed",

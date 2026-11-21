@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.5",
+  "text": "With DEVBIN_CACHE_HOME unset or empty the cache root is the XDG default; with no registry there, cache get is a miss (exit 1), the build runs and cache put makes the root and the entry; with an unusable root (a relative value, a file, an unwritable directory) get and put each say so once with exit 7, and the build's own exit is unchanged (WP16, D68; exit 7 by vc's decision 113).",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

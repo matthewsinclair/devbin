@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.41",
+  "kind": "test",
+  "covers": [
+    "AC-05.14"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"the whole stack runs under the system bash, the bash 3.2 target\""
+  }
+}

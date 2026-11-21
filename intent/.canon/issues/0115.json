@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 115,
+  "schema": "intent/issue@4.0",
+  "id": "0115",
   "slug": "13-of-devbin-s-28-built-ins-have-no-authored-pag",
   "title": "13 of devbin's 28 built-ins have no authored page anywhere -- 0112 closed on a population devbin's own language declaration narrowed",
   "status": "closed",

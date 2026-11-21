@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.11",
+  "text": "The sealed gates are compared on their seal FILES, not their terminal output, and the comparison reads the `verdict:` line each run prints rather than dereferencing `LATEST_<GATE>.errors`",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "every comparison in `WP/10/equivalence.md` cites the seal path from its run's `verdict:` line; the seal-vs-exit discipline caught this session's own tail-piped false green mid-collection"
+  }
+}

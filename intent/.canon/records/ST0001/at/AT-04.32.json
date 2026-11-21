@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.32",
+  "kind": "test",
+  "covers": [
+    "AC-04.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/data.bats::\"a third level resolves by the same rule as the second\""
+  }
+}

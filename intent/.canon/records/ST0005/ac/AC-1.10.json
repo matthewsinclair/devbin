@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.10",
+  "text": "The provenance report names the header that ACTUALLY moved. Re-pointing a consumer from the dev tree at the install moves the source path and not the commit -- a pair that could not move independently before an install tree existed -- and the report must not print two equal shas as evidence of a change.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

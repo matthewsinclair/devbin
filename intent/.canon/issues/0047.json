@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 47,
+  "schema": "intent/issue@4.0",
+  "id": "0047",
   "slug": "fullcycle-without-force-cannot-complete-on-the-e",
   "title": "fullcycle without --force cannot complete on the estate class it exists to serve",
   "status": "closed",

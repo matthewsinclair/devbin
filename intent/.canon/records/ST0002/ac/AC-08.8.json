@@ -1,0 +1,9 @@
+{
+  "id": "AC-08.8",
+  "text": "**The `scripts/flysql` credential is neither copied nor quietly deleted.** `scripts/flysql:15` carries a plaintext password for the `geodica-db` cluster reaching `conflab_prod`, `laksa_prod` and `prolix_prod`, and it is in git history (`f21484b`, `5f78f3b`), so deleting the file removes nothing. **hv's ruling, 2026-08-10: proceed as if rotated** -- the affected repositories are all private, several unrelated private projects share the same managed PG instance, and hv will rotate them together afterwards, deliberately. What survives is the narrower rule: the credential is **moved, never copied**",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`git show --stat` on the port commit reports `rename {scripts => bin/.devbin/cmd}/flysql (63%)`. **A rename, machine-certified, not add-plus-delete**; `git log --follow` is continuous and the `DB_PASS` line was never retyped, so rotation day stays a one-file edit. The 63% is the header added above it. Its header now also records that the credential is live, why the file is here rather than deleted, and that the file needs bash 4 for `declare -A`"
+  }
+}

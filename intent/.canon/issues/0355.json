@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 355,
+  "schema": "intent/issue@4.0",
+  "id": "0355",
   "slug": "release-gates-and-pre-flight-refuse-any-tree-cha",
   "title": "release gates and pre-flight refuse any tree change during the run, board and event files included, and blame it on a gate",
   "status": "closed",

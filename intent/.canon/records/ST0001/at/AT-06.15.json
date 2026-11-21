@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.15",
+  "kind": "test",
+  "covers": [
+    "AC-06.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"purge never deletes a file a LATEST pointer still resolves to\""
+  }
+}

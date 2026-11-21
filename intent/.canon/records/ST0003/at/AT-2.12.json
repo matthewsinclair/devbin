@@ -1,0 +1,9 @@
+{
+  "id": "AT-2.12",
+  "kind": "test",
+  "file": "tests/unit/infra-check.bats",
+  "covers": [
+    "AC-2.12"
+  ],
+  "status": "green"
+}

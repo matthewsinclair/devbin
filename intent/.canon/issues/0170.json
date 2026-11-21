@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 170,
+  "schema": "intent/issue@4.0",
+  "id": "0170",
   "slug": "clean-bats-marker-pin-is-satisfied-by-comments-a",
   "title": "clean.bats' marker pin is satisfied by comments, and clean's own walk markers are unpinned",
   "status": "closed",

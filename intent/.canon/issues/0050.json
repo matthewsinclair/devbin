@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 50,
+  "schema": "intent/issue@4.0",
+  "id": "0050",
   "slug": "fullcycle-has-no-restore-half-so-it-is-permanent",
   "title": "fullcycle has no restore half, so it is permanently red on dev-profile estates",
   "status": "closed",

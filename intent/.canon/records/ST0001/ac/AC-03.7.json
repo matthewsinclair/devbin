@@ -1,0 +1,9 @@
+{
+  "id": "AC-03.7",
+  "text": "Every schema key is documented with its default in a commented reference config",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`lib/config.reference.yaml`"
+  }
+}

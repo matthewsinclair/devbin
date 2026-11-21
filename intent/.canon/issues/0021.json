@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 21,
+  "schema": "intent/issue@4.0",
+  "id": "0021",
   "slug": "upgrade-loop-refinements-converged-skip-healing",
   "title": "\"upgrade-loop refinements: converged-skip healing, rc 0 with skips, no direction guard\"",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.9",
+  "kind": "test",
+  "covers": [
+    "AC-15.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"the formatting gate verifies EVERY arm the formatter applies\""
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.16",
+  "kind": "test",
+  "covers": [
+    "AC-08.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"an unknown option of a built-in command is refused by name\""
+  }
+}

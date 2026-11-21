@@ -1,0 +1,11 @@
+{
+  "id": "AT-12.6",
+  "kind": "test",
+  "covers": [
+    "AC-12.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/documentation.bats::\"the configuration reference names no key the schema rejects\""
+  }
+}

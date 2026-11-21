@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 263,
+  "schema": "intent/issue@4.0",
+  "id": "0263",
   "slug": "version-set-rewrites-every-version-line-in-a-car",
   "title": "version set rewrites every version line in a Cargo.toml, a dependency table's included, at exit 0, where read_version reads only the first (package.json's nested keys and mix.exs alike)",
   "status": "closed",

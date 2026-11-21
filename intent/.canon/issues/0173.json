@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 173,
+  "schema": "intent/issue@4.0",
+  "id": "0173",
   "slug": "no-test-holds-a-commented-key-in-config-referenc",
   "title": "No test holds a commented key in config.reference.yaml to the schema, so a key documented only as a comment can name nothing devbin reads",
   "status": "closed",

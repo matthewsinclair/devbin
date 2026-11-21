@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.3",
+  "text": "devbin ships NO estate. With no profile present, every verb needing one fails loudly, so a builtin carrying no profile is INERT rather than wrong -- it costs an estate that never uses it bytes and not behaviour.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

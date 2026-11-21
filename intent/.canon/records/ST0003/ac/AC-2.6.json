@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.6",
+  "text": "The header count and the rendered listing AGREE. A detail spanning several lines must not make the counted population disagree with the rows a reader can see.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

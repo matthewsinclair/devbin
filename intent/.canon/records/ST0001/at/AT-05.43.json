@@ -1,0 +1,12 @@
+{
+  "id": "AT-05.43",
+  "kind": "test",
+  "covers": [
+    "AC-04.5",
+    "AC-04.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"an unbuilt built-in option reports not-yet and does not abandon the rest of all\""
+  }
+}

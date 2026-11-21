@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 343,
+  "schema": "intent/issue@4.0",
+  "id": "0343",
   "slug": "release-git-remote-leaves-its-devbin-git-xxxxxx",
   "title": "release_git_remote leaves its devbin-git.XXXXXX file under TMPDIR when a bound kills the call",
   "status": "closed",

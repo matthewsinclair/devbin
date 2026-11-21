@@ -1,0 +1,10 @@
+{
+  "id": "AT-5.1",
+  "kind": "test",
+  "file": "tests/unit/cache.bats",
+  "covers": [
+    "AC-5.1"
+  ],
+  "status": "green",
+  "note": "cache.bats's key arms (8): the key is the sha256 of its sorted lines, each input path's object at the commit, the toolchain's version, the platform's word and the CPU architecture, and put records those lines and the tree's cleanliness in the entry's manifest; it stands across a commit that changes only what the inputs do not hold, changes when an input's object does, and --commit reads an earlier commit's; another toolchain version is another key (cargo asked where the workspace is, project.cargo_root; each tool's own version line read), as is another CPU architecture, and a toolchain that cannot say its version, a host whose architecture is not one word, or a sha256 that cannot be taken leaves no key, the registry's entries kept; an input path with uncommitted or untracked changes has no key, key and put refusing with exit 7 and a line naming it, nothing recorded -- red, among cache.bats's 29 arms all red at the red clone 2ce10c70 (main's code at aa566d51 with the unit's test files from 90ee95b3, red-aa566d51-90ee95b3) in the arms phase of WP16's re-run (slot 01M6B9QGX6WPYENRTQ4XHRFDS7, 10:27:18Z to 11:07:56Z by date -u), record ~/Devel/scratch/devbin-dc/wp16/runs/arms/summary and red-cache.tap. Green at 90ee95b3 in the same run: under GNU in its arms phase and its light phase (cache.bats whole, 29 of 29 ok each), and under BSD in the whole suite (2932 ok, 1 not ok, 5 skipped; its one red dispatch.bats 542, main's, vc decision 124), none of these arms skipped; records ~/Devel/scratch/devbin-dc/wp16/runs/arms, light and whole/bsd-all.log. The '# AT-5.1' line is over each of its arms."
+}

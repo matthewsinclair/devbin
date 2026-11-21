@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 116,
+  "schema": "intent/issue@4.0",
+  "id": "0116",
   "slug": "fleet-s-census-frame-misses-devel-cfg-gtools-geo",
   "title": "fleet's census frame misses ~/Devel/cfg -- Gtools-geodica has run devbin 0.1.1 unseen by every sweep since 0.1.2",
   "status": "closed",

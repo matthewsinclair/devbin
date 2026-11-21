@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.71",
+  "kind": "test",
+  "covers": [
+    "AC-09.15"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/scaffold.bats::\"bare new prints usage and exits 1, not 0\""
+  }
+}

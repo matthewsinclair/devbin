@@ -1,0 +1,8 @@
+{
+  "id": "AC-17.2",
+  "text": "`set` and `bump` share one semver implementation: `set` refuses a non-semver without writing, `bump` advances the named part and zeroes those to its right, and an unknown part is refused",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 364,
+  "schema": "intent/issue@4.0",
+  "id": "0364",
   "slug": "release-gates-takes-an-entry-whose-first-word-is",
   "title": "release.gates takes an entry whose first word is release, which runs a release verb inside the cut's own gates, the hole 0327 closed for release.preflight",
   "status": "closed",

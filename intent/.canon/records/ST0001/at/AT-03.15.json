@@ -1,0 +1,11 @@
+{
+  "id": "AT-03.15",
+  "kind": "test",
+  "covers": [
+    "AC-03.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/config.bats::\"errors name the line number\""
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-10.5",
+  "kind": "test",
+  "covers": [
+    "AC-10.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"check calls an unreadable sidecar unreadable rather than drifted\""
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "04",
+  "title": "Projects vendor from the brew install, and find it again",
+  "scope": "S",
+  "status": "done",
+  "objective": "On each machine a fixture project vendored with devbin install --into from the brew install finds it again: a bare bin/devbin upgrade and bin/devbin doctor read it through HOMEBREW_PREFIX's opt/devbin/libexec with no machine pointer and no DEVBIN_INSTALL_PREFIX, and an arm holds this on a fixture prefix laid out as Homebrew lays one out, so it runs without brew.",
+  "body": "",
+  "preamble": ""
+}

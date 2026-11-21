@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.34",
+  "kind": "test",
+  "covers": [
+    "AC-14.16"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a project may still declare a framework option its languages do not offer\""
+  }
+}

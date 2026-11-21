@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 61,
+  "schema": "intent/issue@4.0",
+  "id": "0061",
   "slug": "version-check-reports-a-pass-over-an-empty-sidec",
   "title": "version check reports a pass over an empty sidecar list, in a string identical to a real pass",
   "status": "closed",

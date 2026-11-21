@@ -1,0 +1,9 @@
+{
+  "id": "05",
+  "title": "infra mail dmarc: parse, report, fetch, check",
+  "scope": "S",
+  "status": "done",
+  "objective": "Absorb the standalone `devbin mail` spec as `devbin infra mail dmarc`: parse, report and fetch, covered by AC-5.1 to AC-5.3 and AC-5.5 to AC-5.9, all satisfied. The fourth leg in this package's title, `check` -- the assertion that goes red on a domain silently missing from the reports, AC-5.4 -- moved to ST0006/WP-02 on 2026-09-08 and was not built here.",
+  "body": "",
+  "preamble": ""
+}

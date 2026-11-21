@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.27",
+  "kind": "test",
+  "covers": [
+    "AC-08.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"a declared option runs at the project root, not the caller's directory\""
+  }
+}

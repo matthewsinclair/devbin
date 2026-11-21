@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 104,
+  "schema": "intent/issue@4.0",
+  "id": "0104",
   "slug": "a-whitespace-only-release-ci-query-derived-after",
   "title": "a whitespace-only release ci.query, derived, after or gates item passes validation",
   "status": "closed",

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 348,
+  "schema": "intent/issue@4.0",
+  "id": "0348",
   "slug": "doctor-fails-a-pre-contract-brew-keg-on-the-swit",
   "title": "doctor FAILs a pre-contract brew keg on the switch and tree rows, where T3 says it is a note naming brew upgrade",
   "status": "closed",

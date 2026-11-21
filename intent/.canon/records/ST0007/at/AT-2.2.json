@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.2",
+  "kind": "test",
+  "file": "tests/unit/release.bats",
+  "covers": [
+    "AC-2.1"
+  ],
+  "status": "green",
+  "note": "the changelog kind: state read from the target heading's marker, dating rewrites that heading and no other line, the section body, no views, and release notes and release check saying so; marked # AT-2.2"
+}

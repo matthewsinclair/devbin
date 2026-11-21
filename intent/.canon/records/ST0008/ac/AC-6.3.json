@@ -1,0 +1,9 @@
+{
+  "id": "AC-6.3",
+  "text": "The WSL job's first run is read job by job, and every failure is fixed in this thread or filed as an issue.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "first run read job by job: dispatch 39039832569 on ac472c32, every job green but WSL, red at Run tests (23 not ok) with ONE finding, the steps ran as root (uid=0); fixed in this thread at e8044092 (dc's root fix: wsl-shell-user dev on the one setup-wsl call, sudoers by wsl-bash -u root, the version step exits on uid 0; ci-workflow.bats ok 125 red on main first; landing suite 20261017-1743); proven by dispatch 39055655481 on ea43e4b9, WSL job green as uid=1000(dev); nothing to file"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 227,
+  "schema": "intent/issue@4.0",
+  "id": "0227",
   "slug": "each-homebrew-released-tool-carries-its-own-form",
   "title": "each Homebrew-released tool carries its own formula renderer (source-build or release-asset): devbin ships formula render and publish as a shared built-in, and its own command retires into it",
   "status": "closed",

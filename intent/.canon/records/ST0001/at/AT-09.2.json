@@ -1,0 +1,12 @@
+{
+  "id": "AT-09.2",
+  "kind": "test",
+  "covers": [
+    "AC-09.1",
+    "AC-09.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"the vendored set is exactly what vendored_paths enumerates\""
+  }
+}

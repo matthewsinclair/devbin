@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.32",
+  "kind": "test",
+  "covers": [
+    "AC-05.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"a flag consumes no following word\""
+  }
+}

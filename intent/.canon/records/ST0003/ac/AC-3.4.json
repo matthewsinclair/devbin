@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.4",
+  "text": "Wherever neither source determines a value, init declares NOTHING and emits the field into unreviewed. An honestly empty assertion beats a silently seeded one.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

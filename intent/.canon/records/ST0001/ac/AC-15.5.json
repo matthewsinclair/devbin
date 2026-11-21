@@ -1,0 +1,8 @@
+{
+  "id": "AC-15.5",
+  "text": "`build` ships no default option set and is still fully functional from declared targets alone: they run, seal, appear in help, and `all` runs them in declared order (D18 tier 4's positive half)",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.10",
+  "text": "A manual item is NAMED on every run -- including a green one, and including one where the domain could not be reached -- and is never counted as checked.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

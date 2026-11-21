@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.34",
+  "kind": "test",
+  "covers": [
+    "AC-07.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"--why does not change the listing it annotates\""
+  }
+}

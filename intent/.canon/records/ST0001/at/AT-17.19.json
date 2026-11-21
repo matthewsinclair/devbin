@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.19",
+  "kind": "test",
+  "covers": [
+    "AC-17.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/docs.bats::\"docs agents regenerates AGENTS.md and warns that hand edits are lost\""
+  }
+}

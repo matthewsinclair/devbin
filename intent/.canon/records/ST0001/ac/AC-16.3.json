@@ -1,0 +1,8 @@
+{
+  "id": "AC-16.3",
+  "text": "Sub-dispatch is recursive by one rule (D3, discharging AC-04.12): `<handler>.d/<sub>` resolves at the second level and `<handler>.d/<sub>.d/<leaf>` at the third, by the same test at each",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

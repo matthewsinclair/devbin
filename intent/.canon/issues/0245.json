@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 245,
+  "schema": "intent/issue@4.0",
+  "id": "0245",
   "slug": "no-command-reports-which-linked-worktrees-are-la",
   "title": "No command reports which linked worktrees are landed, so they pile up: a read-only report (landed, held or unknown, with evidence) and a remove-landed form (decision 72)",
   "status": "closed",

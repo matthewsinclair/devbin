@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.12",
+  "text": "Positive controls exist, so the instrument can be shown to PASS as well as to fail. A checker that only ever goes red is a wall rather than a gate, and six refusals alone cannot tell the two apart.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

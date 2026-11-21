@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.19",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R9: the executable bit still crosses on both the new and replace paths\""
+  }
+}

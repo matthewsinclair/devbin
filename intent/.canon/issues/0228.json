@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 228,
+  "schema": "intent/issue@4.0",
+  "id": "0228",
   "slug": "the-dev-opt-brew-contract-does-not-say-the-switc",
   "title": "the dev/opt/brew contract does not say the switch rests at brew, and a release ends without returning the maintainer to the brew install it made",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-10.3",
+  "kind": "test",
+  "covers": [
+    "AC-10.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"the heal that check advertises cannot destroy the file check named\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 239,
+  "schema": "intent/issue@4.0",
+  "id": "0239",
   "slug": "no-builder-makes-devbin-s-public-snapshot-from-t",
   "title": "No builder makes devbin's public snapshot from tests/shipped.paths: one commit per release on the public branch, the first parentless (ST0010)",
   "status": "closed",

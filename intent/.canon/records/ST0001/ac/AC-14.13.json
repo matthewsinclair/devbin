@@ -1,0 +1,9 @@
+{
+  "id": "AC-14.13",
+  "text": "D18's tier table is corrected for the surfaces: they are not uniformly tier 3 -- `iex` is a catalogue row, `cli` and `repl` carry real logic, `server` carries a conditional",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`design.md` D18, \"The surfaces are not uniformly tier 3\""
+  }
+}

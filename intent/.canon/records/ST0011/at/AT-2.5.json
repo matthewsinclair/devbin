@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.5",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-2.2"
+  ],
+  "status": "green",
+  "note": "WP02b-1's arms over every leg at once under one wait loop, the tag only after every leg is green, landed at ac18a7de; green on that unit's run at f3462610 (the whole suite 2941 ok, and releasecut under BSD and GNU). Since 0344-1 (hv, decision 166; issue 0344), only the candidate matrix, the local gates and the macOS stage where declared start together, and each declared remote leg waits for the leg before it to read green (AT-2.7). These arms are the candidate's, which still starts with the local gates, so they hold as written."
+}

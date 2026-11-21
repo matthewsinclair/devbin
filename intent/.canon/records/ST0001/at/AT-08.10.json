@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.10",
+  "kind": "test",
+  "covers": [
+    "AC-08.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"every catalogue option names a grammar devbin actually ships\""
+  }
+}

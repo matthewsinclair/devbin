@@ -1,0 +1,9 @@
+{
+  "id": "AC-17.9",
+  "text": "What `docs` does NOT ship is recorded with its reason: `completions` (two of four), `index` and `publish` (one each) encode where a project keeps its output",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`lib/cmd/docs` header"
+  }
+}

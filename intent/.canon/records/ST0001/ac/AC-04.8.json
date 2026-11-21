@@ -1,0 +1,8 @@
+{
+  "id": "AC-04.8",
+  "text": "D11 activation holds: a built-in option is active when its language is declared, `enabled: false` deactivates at command or option level, and an explicitly declared option is active whatever the languages say",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

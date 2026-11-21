@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 350,
+  "schema": "intent/issue@4.0",
+  "id": "0350",
   "slug": "t4-s-rust-version-line-fails-clippy-d-warnings-c",
   "title": "T4's Rust version_line fails clippy -D warnings (collapsible_if) in an edition 2024 crate",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.8",
+  "kind": "test",
+  "covers": [
+    "AC-04.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"an unbuilt built-in exits 3, never a quiet success\""
+  }
+}

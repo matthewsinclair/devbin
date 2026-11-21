@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.6",
+  "text": "A built-in gate runs its catalogue command line through the sealed-gate runner with nothing declared in config, and seals green or red correctly with its declared grammar",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

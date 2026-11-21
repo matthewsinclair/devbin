@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.7",
+  "text": "vc and dc each read every shipped file in full, independently, neither seeing the other's report until both are filed, each report's files-read ledger covering the snapshot's every file; every finding is fixed in main, or accepted by hv by name.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "vc and dc each read all 213 files of snapshot c769fb73 (review0116, devbin-dc review0116) and reread the changes to 2cde3ee6 (review-v0117 both); findings fixed by 0291 or accepted by hv (H1, H3, H5, H6, H8, H9) or fixed forward by 0292 (vc decision 86)"
+  }
+}

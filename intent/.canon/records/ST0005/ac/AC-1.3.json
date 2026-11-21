@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.3",
+  "text": "A dirty source tree refuses to publish AND to publish-upgrade, names the offending paths, and writes nothing. A gate on one verb only is a gate on neither.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

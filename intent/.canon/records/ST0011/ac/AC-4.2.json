@@ -1,0 +1,9 @@
+{
+  "id": "AC-4.2",
+  "text": "A Devbin release has gone through the new shape, and its RELEASE seal's clock lines are on this thread beside design.md's expected column, with the kovacs leg read against the candidate's Ubuntu leg.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "devbin 0.1.19, the first release in the new shape, released 2026-11-01 21:53:56Z by date -u: its RELEASE seal's clock lines (tmp/release/20261101-2050.RELEASE.out, run 9938a615) are in design.md section 1 beside the expected column at 434da8ef, about 63 minutes from the yes to the tap against about 57 expected, with the kovacs leg (55.3 minutes on 2 CPUs) read against the candidate's Ubuntu leg (23.1 minutes under 4 lanes)"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.5",
+  "kind": "test",
+  "file": "tests/unit/infra-check.bats",
+  "covers": [
+    "AC-2.5"
+  ],
+  "status": "green",
+  "note": "UNCOVERED, found while writing this contract. lib/cmd/infra:154 refuses when dig is absent, naming one missing tool rather than twenty unreachable domains, and no test asserts it. Without the arm, the single-line refusal and twenty could-not-measure rows are indistinguishable to the suite."
+}

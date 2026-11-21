@@ -1,0 +1,10 @@
+{
+  "id": "AT-5.7",
+  "kind": "test",
+  "file": "tests/unit/infra.bats",
+  "covers": [
+    "AC-5.7"
+  ],
+  "status": "green",
+  "note": "Two members, zero members, and a zero-byte unpack. The zero-member arm found a real defect in the implementation: unzip -Z1 prints 'Empty zipfile.' to STDOUT and exits 1, so counting lines named an error string as a member."
+}

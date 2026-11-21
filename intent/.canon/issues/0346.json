@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 346,
+  "schema": "intent/issue@4.0",
+  "id": "0346",
   "slug": "a-test-run-s-log-can-sit-unchanged-for-half-an-h",
   "title": "A test run's log can sit unchanged for half an hour while most of the suite has finished, so a person watching it reads a working run as wedged",
   "status": "closed",

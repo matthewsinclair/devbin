@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.4",
+  "kind": "test",
+  "covers": [
+    "AC-05.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"the name prefix defaults to devbin before config is loaded\""
+  }
+}

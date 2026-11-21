@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 24,
+  "schema": "intent/issue@4.0",
+  "id": "0024",
   "slug": "devbin-s-new-vendor-builtin-collides-with-a",
   "title": "devbin's new vendor builtin collides with a project handler of the same name at two installs",
   "status": "closed",

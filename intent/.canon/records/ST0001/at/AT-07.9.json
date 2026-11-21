@@ -1,0 +1,12 @@
+{
+  "id": "AT-07.9",
+  "kind": "test",
+  "covers": [
+    "AC-07.2",
+    "AC-07.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a group entry may carry an annotation, and the command still matches\""
+  }
+}

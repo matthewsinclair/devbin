@@ -1,0 +1,8 @@
+{
+  "id": "AC-03.5",
+  "text": "The reader has no `yq` dependency: it never invokes yq, and it parses with yq absent from PATH",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

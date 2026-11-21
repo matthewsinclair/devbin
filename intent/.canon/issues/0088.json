@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 88,
+  "schema": "intent/issue@4.0",
+  "id": "0088",
   "slug": "terminal-blocking-census-every-gate-hands-its-to",
   "title": "Terminal-blocking census: every gate hands its tool the person's terminal, and a release step can ask for a password -- two paths a no-tty run never takes",
   "status": "closed",

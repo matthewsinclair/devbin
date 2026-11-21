@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 361,
+  "schema": "intent/issue@4.0",
+  "id": "0361",
   "slug": "a-red-remote-leg-s-log-omits-its-tmpdir-s-files",
   "title": "A red remote leg's log omits its TMPDIR's files, and the gate cache has no bound",
   "status": "closed",

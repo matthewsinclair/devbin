@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.3",
+  "text": "The legs are ASYMMETRIC and the output must not pretend otherwise. Hover has no public API and no credentials exist in any tree, so a uniform plan-apply-verify would overpromise on the leg that carries the estate.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

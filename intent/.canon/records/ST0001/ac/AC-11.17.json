@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.17",
+  "text": "The toolchain sweep lands per the standing directive as a VERIFIED no-op: `.tool-versions` already at the fleet pins with its authored ruling block preserved byte-for-byte, CI derives both versions from that one home with no fallback copies (hard-fails on absence), and NO deploy image exists -- the negative data point recorded against AC-11.11's design call",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "the inventory's sweep section (CI lines 63-88 verified single-home, hard-fail); `.tool-versions` untouched by any migration commit; `check toolchain` green on both launchers in the pack"
+  }
+}

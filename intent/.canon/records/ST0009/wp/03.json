@@ -1,0 +1,9 @@
+{
+  "id": "03",
+  "title": "Installed from the tap on kovacs (Ubuntu 26.04.1, aarch64)",
+  "scope": "S",
+  "status": "done",
+  "objective": "The same as WP-02 on kovacs, Ubuntu 26.04.1 aarch64 under Homebrew on Linux, with uutils as coreutils and mawk as awk; the formula's on_macos bash dependency does not apply, so Ubuntu's bash meets the bash >= 5 floor. Run as a kovacs order with brew taken from its full path; brew on hv's login PATH there is hv's choice and not this package's.",
+  "body": "",
+  "preamble": ""
+}

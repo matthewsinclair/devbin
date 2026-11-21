@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.4",
+  "text": "An estate the sweep cannot reach is reported, never silently skipped -- a sweep that drops unreachable entries is a population filter wearing no clothes.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

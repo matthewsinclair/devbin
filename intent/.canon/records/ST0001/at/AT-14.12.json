@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.12",
+  "kind": "test",
+  "covers": [
+    "AC-14.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"a launcher replaces the dispatcher process rather than running beneath it\""
+  }
+}

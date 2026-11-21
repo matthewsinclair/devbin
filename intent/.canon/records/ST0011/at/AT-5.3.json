@@ -1,0 +1,10 @@
+{
+  "id": "AT-5.3",
+  "kind": "test",
+  "file": "tests/unit/cache.bats",
+  "covers": [
+    "AC-5.3"
+  ],
+  "status": "green",
+  "note": "cache.bats's verify arms (2): an entry whose artefact does not match its SHA256SUMS is removed with a line, get answers absent, and the build runs and records it again; an entry whose manifest names another key is removed with a line and answered absent, though its SHA256SUMS checks -- red, among cache.bats's 29 arms all red at the red clone 2ce10c70 (main's code at aa566d51 with the unit's test files from 90ee95b3, red-aa566d51-90ee95b3) in the arms phase of WP16's re-run (slot 01M6B9QGX6WPYENRTQ4XHRFDS7, 10:27:18Z to 11:07:56Z by date -u), record ~/Devel/scratch/devbin-dc/wp16/runs/arms/summary and red-cache.tap. Green at 90ee95b3 in the same run: under GNU in its arms phase and its light phase (cache.bats whole, 29 of 29 ok each), and under BSD in the whole suite (2932 ok, 1 not ok, 5 skipped; its one red dispatch.bats 542, main's, vc decision 124), none of these arms skipped; records ~/Devel/scratch/devbin-dc/wp16/runs/arms, light and whole/bsd-all.log. The '# AT-5.3' line is over each of its arms."
+}

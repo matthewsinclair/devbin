@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 195,
+  "schema": "intent/issue@4.0",
+  "id": "0195",
   "slug": "devbin-has-no-homebrew-formula-and-installs-only",
   "title": "devbin has no Homebrew formula and installs only from a local checkout -- brew install it on macOS and Linux, from its release tag, as the machine install projects vendor from",
   "status": "closed",

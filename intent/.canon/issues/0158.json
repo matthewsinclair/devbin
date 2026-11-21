@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 158,
+  "schema": "intent/issue@4.0",
+  "id": "0158",
   "slug": "a-project-s-own-handler-cannot-run-a-gate-tool-t",
   "title": "A project's own handler cannot run a gate tool the way run_gate does: the stdin rule has no name to call",
   "status": "closed",

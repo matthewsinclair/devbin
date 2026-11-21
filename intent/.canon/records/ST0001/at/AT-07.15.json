@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.15",
+  "kind": "test",
+  "covers": [
+    "AC-07.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a dropped-in handler gets a group, options and a synthesised all\""
+  }
+}

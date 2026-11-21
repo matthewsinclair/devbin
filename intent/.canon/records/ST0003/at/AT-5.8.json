@@ -1,0 +1,10 @@
+{
+  "id": "AT-5.8",
+  "kind": "test",
+  "file": "tests/unit/infra.bats",
+  "covers": [
+    "AC-5.8"
+  ],
+  "status": "green",
+  "note": "Five arms. The discriminating one separates a BROKEN report from a file that is not a report: under a one-bucket mutation it is the only arm that goes red. Building it found that die inside parse_one aborted the whole walk at the first broken file, so later reports were never read and the accounting never printed."
+}

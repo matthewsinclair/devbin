@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.7",
+  "kind": "test",
+  "covers": [
+    "AC-08.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"a tier-1 option reports @builtin rather than a command line\""
+  }
+}

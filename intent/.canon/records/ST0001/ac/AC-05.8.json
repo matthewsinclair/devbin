@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.8",
+  "text": "`rlwrap_exec` runs the command under rlwrap with history and any completions file, and degrades to a plain exec with a warning when rlwrap is absent",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

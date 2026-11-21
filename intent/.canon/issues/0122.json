@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 122,
+  "schema": "intent/issue@4.0",
+  "id": "0122",
   "slug": "an-unsealed-option-hands-devbin-s-own-wrapper-fl",
   "title": "an unsealed option hands devbin's own wrapper flags to its tool -- 0087's class at the site its fix missed",
   "status": "closed",

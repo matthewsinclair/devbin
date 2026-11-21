@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 80,
+  "schema": "intent/issue@4.0",
+  "id": "0080",
   "slug": "lib-config-validates-keys-but-not-values-so-a-bo",
   "title": "lib/config validates keys but not values, so a boolean key holding any word but true/yes/1 or false/no/0 is silently misread",
   "status": "closed",

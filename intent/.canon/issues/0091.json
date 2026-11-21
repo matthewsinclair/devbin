@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 91,
+  "schema": "intent/issue@4.0",
+  "id": "0091",
   "slug": "run-tty-answer-waits-forever-when-the-prompt-is",
   "title": "run_tty_answer waits forever when the prompt is slower than its 30s timeout, so a loaded machine hangs the full suite silently",
   "status": "closed",

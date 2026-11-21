@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 238,
+  "schema": "intent/issue@4.0",
+  "id": "0238",
   "slug": "test-summary-reads-a-macos-job-github-never-ran",
   "title": "Test Summary reads a macOS job GitHub never ran (abandoned, no runner) as FAILED, like a failing test",
   "status": "closed",

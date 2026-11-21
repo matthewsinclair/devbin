@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.7",
+  "text": "Equivalence evidence in `WP/11/laksa-equivalence.md` with an examines table comparing what each gate EXAMINED, matching reds carried as evidence, and every deliberate difference on the record with its reason: `fmt --check` -> `check format` (D21), `check all` ordering, shared options consumed anywhere in `cli`'s argv, `test all` widened to accept the gate wrapper flags (hv's fleet ruling), and the two zero-count promotions the old mix runner did not make -- the predicted unknown-command 2 -> 1 difference was probed and does NOT exist (both exit 2), corrected here rather than carried",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`WP/11/laksa-equivalence.md` (Devbin `eb81f5d`): the examines table, four byte-identical outputs, every difference owned"
+  }
+}

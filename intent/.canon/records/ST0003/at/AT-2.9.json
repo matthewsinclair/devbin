@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.9",
+  "kind": "test",
+  "file": "tests/unit/infra-check.bats",
+  "covers": [
+    "AC-2.9"
+  ],
+  "status": "green",
+  "note": "ITS CRITERION IS WITHDRAWN; this row is kept pointing at the arm that survived it. The arm was REPOINTED rather than deleted on 2026-09-08: same scenario -- a profile naming a sender it never defines -- but the verdict moved from a check-time COULD NOT MEASURE at exit 2 to a parse-time refusal, which is AC-6.3. The row is green because the arm is real and passes; what it once asserted is on AC-2.9's withdrawal reason, not here. The model has no retired state for a test row, so this is the least-wrong true one rather than a claim."
+}

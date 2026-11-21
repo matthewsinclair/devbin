@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.9",
+  "text": "Upgrade with a missing, unreadable or non-devbin source fails naming the path it tried and the flag that overrides it, and writes NOTHING -- a half-replaced runtime is worse than a stale one",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

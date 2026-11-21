@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 318,
+  "schema": "intent/issue@4.0",
+  "id": "0318",
   "slug": "localinstall-s-0059-forward-arm-went-red-on-wsl",
   "title": "localinstall's 0059 FORWARD arm went red on WSL 2: the publish's stamp read a clean fixture source as dirty after its gate had read it committed, cause unknown",
   "status": "closed",

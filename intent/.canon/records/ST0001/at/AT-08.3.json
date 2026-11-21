@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.3",
+  "kind": "test",
+  "covers": [
+    "AC-08.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"an option the catalogue does not have returns non-zero from every accessor\""
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.18",
+  "kind": "test",
+  "covers": [
+    "AC-04.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"a deactivated command does not appear in help\""
+  }
+}

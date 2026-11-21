@@ -1,0 +1,8 @@
+{
+  "id": "AC-07.10",
+  "text": "Drift is refused in BOTH directions, by a test rather than by review: every command the listing names resolves, and every command that resolves is named",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

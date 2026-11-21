@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.8",
+  "kind": "test",
+  "covers": [
+    "AC-07.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a command with no group anywhere lands in Other rather than vanishing\""
+  }
+}

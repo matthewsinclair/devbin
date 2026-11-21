@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.35",
+  "kind": "test",
+  "covers": [
+    "AC-04.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/contract.bats::\"a bare command that HAS options prints them rather than running everything\""
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.2",
+  "text": "release.legs runs each declared remote leg at the release commit's sha on its host and reads its seal back through the same reader; Devbin declares kovacs.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

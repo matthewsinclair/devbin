@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.24",
+  "kind": "test",
+  "covers": [
+    "AC-14.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"a framework option is not passed through to the handler as an argument\""
+  }
+}

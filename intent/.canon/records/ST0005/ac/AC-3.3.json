@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.3",
+  "text": "The sweep rewrites each estate's recorded source and reports that count SEPARATELY from the upgrade count: two things happened and one number cannot say so.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

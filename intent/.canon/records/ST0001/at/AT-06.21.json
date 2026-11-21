@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.21",
+  "kind": "test",
+  "covers": [
+    "AC-06.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"grammar_names lists every grammar devbin ships\""
+  }
+}

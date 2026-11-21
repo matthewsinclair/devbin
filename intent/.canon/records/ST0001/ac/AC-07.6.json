@@ -1,0 +1,8 @@
+{
+  "id": "AC-07.6",
+  "text": "With no authored file `help <cmd>` still ANSWERS -- summary, usage, active options, where it resolves from -- rather than printing an empty page or an error",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

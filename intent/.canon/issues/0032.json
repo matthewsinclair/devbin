@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 32,
+  "schema": "intent/issue@4.0",
+  "id": "0032",
   "slug": "devbin-ships-docs-treeindex-a-command-intent-v3",
   "title": "devbin ships docs treeindex, a command Intent v3 retired",
   "status": "closed",

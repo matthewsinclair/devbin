@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 182,
+  "schema": "intent/issue@4.0",
+  "id": "0182",
   "slug": "fleet-s-frozen-list-matches-an-estate-s-basename",
   "title": "fleet's frozen list matches an estate's basename while the plan names it by path, so the name a row prints freezes nothing, and a name that matches no estate goes unreported",
   "status": "closed",

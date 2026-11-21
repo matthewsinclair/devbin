@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.10",
+  "text": "Both readers have read the tap's history and its formula at every commit before the tap goes public (Q4).",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "vc (review/tap-read-vc.md, 2026-10-27) and dc (devbin-dc st0010/tap-read/REPORT.md, 2026-10-29) read all six tap commits; the 0.1.17 formula is published before the tap goes public"
+  }
+}

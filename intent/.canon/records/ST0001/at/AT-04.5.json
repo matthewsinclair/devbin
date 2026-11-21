@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.5",
+  "kind": "test",
+  "covers": [
+    "AC-04.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"config maps a differently-named file to a command\""
+  }
+}

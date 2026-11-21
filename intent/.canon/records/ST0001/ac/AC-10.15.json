@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.15",
+  "text": "Conflab's share of the 70-topic help extraction is performed per `help-migration.md`, and drift found in the source prose is corrected in passing rather than carried across -- the known instance is `conflab_check`'s header synopsis naming seven gates where the dispatch has eight (the runtime error string and `check_all` both name all eight, so this is stale prose, not a live defect)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "18 topics under `bin/.devbin/help/` (Conflab `47112d9c` + `5244683d`), rulings extracted before the prose moved, and the check topic now lists all eight gates including contract"
+  }
+}

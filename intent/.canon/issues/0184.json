@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 184,
+  "schema": "intent/issue@4.0",
+  "id": "0184",
   "slug": "the-lint-gate-sizes-its-parallel-run-by-cpus-and",
   "title": "the lint gate sizes its parallel run by CPUs and never by memory, so a host with many CPUs and too little memory has checks killed, each read as a breach",
   "status": "closed",

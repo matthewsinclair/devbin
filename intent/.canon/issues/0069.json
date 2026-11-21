@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 69,
+  "schema": "intent/issue@4.0",
+  "id": "0069",
   "slug": "devbin-writes-the-operator-s-home-directory-into",
   "title": "devbin writes the operator's home directory into every estate's tracked manifest, and five of those estates are public",
   "status": "closed",

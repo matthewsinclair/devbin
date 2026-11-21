@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 232,
+  "schema": "intent/issue@4.0",
+  "id": "0232",
   "slug": "formula-bats-s-prompt-arms-lose-require-expect-s",
   "title": "formula.bats's prompt arms lose require_expect's skip inside run, so CI's Ubuntu job, which has no expect, fails them (0227)",
   "status": "closed",

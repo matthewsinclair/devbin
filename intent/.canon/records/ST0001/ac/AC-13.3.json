@@ -1,0 +1,9 @@
+{
+  "id": "AC-13.3",
+  "text": "D1 through D10 are each checked against the as-built with file:line evidence, not against the narrative",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`review.md` decision table"
+  }
+}

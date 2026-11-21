@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 215,
+  "schema": "intent/issue@4.0",
+  "id": "0215",
   "slug": "install-force-over-an-install-whose-manifest-can",
   "title": "install --force over an install whose manifest cannot be read prints bash's own redirect error from manifest_entries (lib/install, _two_space_to_tab <\"$path\") ahead of devbin's named refusal",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.6",
+  "kind": "test",
+  "covers": [
+    "AC-08.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"a command line keeps its flags intact, including a bare --\""
+  }
+}

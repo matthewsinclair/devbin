@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.30",
+  "kind": "test",
+  "covers": [
+    "AC-06.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"an unknown grammar falls back to generic and says so\""
+  }
+}

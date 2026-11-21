@@ -1,0 +1,8 @@
+{
+  "id": "AC-6.1",
+  "text": "An option declaring platforms: that omits this host's platform word is inactive on <cmd> all: counted on the count line, named by help --why with its reason (the platforms it runs on and this host's), and refused with the same reason when run by name; with this host's word listed, or with no platforms: key, it runs as before.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

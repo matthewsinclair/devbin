@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 319,
+  "schema": "intent/issue@4.0",
+  "id": "0319",
   "slug": "switching-this-machine-from-opt-to-brew-for-one",
   "title": "Switching this machine from opt to brew for one release warned every estate: the two installs name the release by two commits devbin cannot place, and the update notice speaks even when no vendored file would change",
   "status": "closed",

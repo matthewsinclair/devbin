@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.21",
+  "kind": "test",
+  "covers": [
+    "AC-07.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"help <unknown> fails and says how to see what exists\""
+  }
+}

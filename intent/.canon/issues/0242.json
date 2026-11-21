@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 242,
+  "schema": "intent/issue@4.0",
+  "id": "0242",
   "slug": "shipped-files-name-hv-s-non-public-projects-make",
   "title": "Shipped files name hv's non-public projects: make them neutral, with a guard whose list does not ship (ST0010 Q5)",
   "status": "closed",

@@ -1,0 +1,9 @@
+{
+  "id": "AC-08.5",
+  "text": "Every retired `scripts/` entry has a recorded disposition, and nothing dead is carried into the port",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "all twelve dispositioned in `WP/08/prolix-inventory.md` and proven row by row in `WP/08/equivalence.md`. Three dead things found and none ported: `scripts/echo` runs `scripts/echo_task.exs`, proven absent from the repository; the `LAKSA_CONFIG_*` prefix on three scripts is read by nothing; and with that prefix gone `scripts/mix` wraps bare `mix`. `mcduct` deleted per hv's standing disposition. **The inventory's REASON for the dead prefix was wrong and is corrected**: it claimed nothing under `lib/`, `config/` or `test/` mentions `LAKSA_CONFIG`, but `config/.env` does, on two lines, in a TRACKED file loaded by `runtime.exs` in dev and test. The true reason is a layer down"
+  }
+}

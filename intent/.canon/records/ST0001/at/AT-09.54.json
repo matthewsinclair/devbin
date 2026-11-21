@@ -1,0 +1,12 @@
+{
+  "id": "AT-09.54",
+  "kind": "test",
+  "covers": [
+    "AC-09.10",
+    "AC-09.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/doctor.bats::\"doctor fails on a config key the schema does not know\""
+  }
+}

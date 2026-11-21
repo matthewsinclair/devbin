@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.4",
+  "kind": "test",
+  "covers": [
+    "AC-08.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"builtin_options_for lists a command's options in catalogue order\""
+  }
+}

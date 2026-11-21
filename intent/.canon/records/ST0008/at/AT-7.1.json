@@ -1,0 +1,10 @@
+{
+  "id": "AT-7.1",
+  "kind": "test",
+  "file": "tests/unit/contract.bats",
+  "covers": [
+    "AC-7.1"
+  ],
+  "status": "green",
+  "note": "contract.bats: 'no reader in a pipe can stop before its writer has finished, unless the comment above it says why (ST0008 AC-7.1, 0031)'. Red on main's code (4320bbdc, at 288071e2) under BSD and GNU, with 111 sites (cc's seals runs/arm07.red.*, scan v2). Green with the fix under both, and landed at 99dd3106 by vc after vc's full suite of the landing tree passed 2296 of 2296 (seal 20261012-0833)."
+}

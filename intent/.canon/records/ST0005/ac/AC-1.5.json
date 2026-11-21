@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.5",
+  "text": "install refuses an existing install naming upgrade; upgrade refuses a missing install naming install. Neither refusal is a dead end.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

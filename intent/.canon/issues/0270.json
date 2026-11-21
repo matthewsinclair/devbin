@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 270,
+  "schema": "intent/issue@4.0",
+  "id": "0270",
   "slug": "tests-build-a-homebrew-keg-three-ways-brew-machi",
   "title": "Tests build a Homebrew keg three ways, brew_machine, use.bats' brewed and linked, and fleet.bats' mkbrew_keg; one shared builder (from 0258's review)",
   "status": "closed",

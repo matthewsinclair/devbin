@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.11",
+  "text": "`parse_common_opts` accepts both `--opt value` and `--opt=value`, leaves everything unrecognised in `DEVBIN_ARGS` with argument boundaries intact, consumes no following word for a flag, and refuses a valued option with nothing after it",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

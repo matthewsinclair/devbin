@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 261,
+  "schema": "intent/issue@4.0",
+  "id": "0261",
   "slug": "tests-shipped-paths-has-two-readers-the-snapshot",
   "title": "tests/shipped.paths has two readers, the snapshot builder and the workroom scan, and they disagree on what an exclude line is",
   "status": "closed",

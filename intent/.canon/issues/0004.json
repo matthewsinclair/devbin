@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 4,
+  "schema": "intent/issue@4.0",
+  "id": "0004",
   "slug": "the-documented-session-gate-does-not-exist-and-in",
   "title": "the documented session gate does not exist, and in-session releases a lock nobody holds",
   "status": "closed",

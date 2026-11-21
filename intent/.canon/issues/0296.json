@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 296,
+  "schema": "intent/issue@4.0",
+  "id": "0296",
   "slug": "formula-names-the-assets-repository-without-the",
   "title": "formula names the assets' repository without the first declared remote, so a project with remotes: and no repo: reads origin where the cut and ci-state read the first declared remote",
   "status": "closed",

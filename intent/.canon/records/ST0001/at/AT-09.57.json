@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.57",
+  "kind": "test",
+  "covers": [
+    "AC-09.10"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/doctor.bats::\"doctor names a command that is offered with nothing behind it\""
+  }
+}

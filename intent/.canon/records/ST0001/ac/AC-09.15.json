@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.15",
+  "text": "`new` refuses to overwrite an existing handler and refuses a name that is not a legal command name, naming which rule was broken",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

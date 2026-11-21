@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.9",
+  "text": "`repl` runs through `rlwrap_exec`, and still works when `rlwrap` is absent",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

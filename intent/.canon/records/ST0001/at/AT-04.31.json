@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.31",
+  "kind": "test",
+  "covers": [
+    "AC-04.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/data.bats::\"a second level resolves against the handler's .d directory\""
+  }
+}

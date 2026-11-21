@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 56,
+  "schema": "intent/issue@4.0",
+  "id": "0056",
   "slug": "the-census-reads-disk-and-never-asks-git-so-a-re",
   "title": "The census reads disk and never asks git, so a re-vendor that was never committed reads as level",
   "status": "closed",

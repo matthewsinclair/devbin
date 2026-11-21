@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.12",
+  "text": "doctor catches the two failures that are otherwise silent -- a handler in `cmd/` that no command reaches, and a vendored file edited in place since install",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

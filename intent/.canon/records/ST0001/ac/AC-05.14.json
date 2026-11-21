@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.14",
+  "text": "The whole stack -- config load, activation, `all` synthesis, shared options -- runs under `/bin/bash`, the bash 3.2 target",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

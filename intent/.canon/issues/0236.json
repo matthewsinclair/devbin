@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 236,
+  "schema": "intent/issue@4.0",
+  "id": "0236",
   "slug": "0235-s-use-brew-remedy-writes-brew-install-devbi",
   "title": "0235's use brew remedy writes brew install devbin with no Linux route, so installhints.bats is red on CI and the 0.1.15 cut is blocked",
   "status": "closed",

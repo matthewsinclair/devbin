@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.6",
+  "kind": "test",
+  "covers": [
+    "AC-07.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a declared group with nothing in it gets no heading\""
+  }
+}

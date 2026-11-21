@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 94,
+  "schema": "intent/issue@4.0",
+  "id": "0094",
   "slug": "doctor-and-version-write-the-index-they-only-rea",
   "title": "doctor and --version write the index they only read: plain git status in git_head_identity, fullcycle and release_dirt takes the optional lock",
   "status": "closed",

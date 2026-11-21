@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.14",
+  "kind": "test",
+  "covers": [
+    "AC-04.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"a built-in option is active when its language is declared\""
+  }
+}

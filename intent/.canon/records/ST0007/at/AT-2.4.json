@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.4",
+  "kind": "test",
+  "file": "tests/unit/release.bats",
+  "covers": [
+    "AC-2.1"
+  ],
+  "status": "green",
+  "note": "the contract every kind shares: selection and argument refusals, a refusal that holds when the caller tests the result, every verb answering from its root alone whatever the cwd and environment say, a command provider run with devbin's own path exports re-pointed at that root, an absent note refused in one wording, a date that did not take refused, and a malformed block or an unreadable version refused before a note is read or written; marked # AT-2.4"
+}

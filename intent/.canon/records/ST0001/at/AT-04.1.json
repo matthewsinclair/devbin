@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.1",
+  "kind": "test",
+  "covers": [
+    "AC-04.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"dispatches through a symlink and from any working directory\""
+  }
+}

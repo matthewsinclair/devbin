@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.15",
+  "kind": "test",
+  "covers": [
+    "AC-15.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"check format offers nothing it was not asked for\""
+  }
+}

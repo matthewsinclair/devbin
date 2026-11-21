@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.20",
+  "kind": "test",
+  "covers": [
+    "AC-06.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"run_gate refuses --purge with --no-out\""
+  }
+}

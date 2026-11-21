@@ -1,0 +1,10 @@
+{
+  "id": "AT-6.2",
+  "kind": "test",
+  "file": ".github/wsl-smoke.sh",
+  "covers": [
+    "AC-6.2"
+  ],
+  "status": "green",
+  "note": "Red on the WSL job's first run, dispatch 39039832569 on ac472c32: the job ran as root, Run tests failed (23 not ok) and the smoke list was skipped, so the list never held inside WSL (dc's earlier drives of the script were off WSL, on this Mac under BSD and GNU). Green on dispatch 39055655481 on ea43e4b9, after the root fix landed at e8044092: WSL job 117462973144, Test in WSL 2 (Ubuntu 26.04), kernel 6.18.40.1-microsoft-standard-WSL2, every step as uid=1000(dev), the clone in WSL's filesystem at ~/devbin; test all 2392 ok, 0 not ok (106 skips: cargo, expect and prettier absent, case-sensitive disk). Run the smoke list: all nine steps PASS on the plain fixture without intent/ (shell-init bash and dvb, check all, test all, server started and stopped, package, contract, version check, clean, help)."
+}

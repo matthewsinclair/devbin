@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.28",
+  "kind": "test",
+  "covers": [
+    "AC-06.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"the shell grammar captures bats failures and shellcheck findings\""
+  }
+}

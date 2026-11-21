@@ -1,0 +1,8 @@
+{
+  "id": "AC-07.4",
+  "text": "A handler dropped into `cmd/` is FIRST-CLASS in help with no config edit: its own group, its summary, its option list and its synthesised `all`, exactly as a built-in gets",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

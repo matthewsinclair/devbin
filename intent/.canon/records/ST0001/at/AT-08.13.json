@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.13",
+  "kind": "test",
+  "covers": [
+    "AC-08.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"a failing built-in gate seals red with the right grammar\""
+  }
+}

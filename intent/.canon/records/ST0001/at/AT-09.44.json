@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.44",
+  "kind": "test",
+  "covers": [
+    "AC-09.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/doctor.bats::\"the number of checks reported is the number of results printed\""
+  }
+}

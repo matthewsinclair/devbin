@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 93,
+  "schema": "intent/issue@4.0",
+  "id": "0093",
   "slug": "a-project-cannot-add-checks-to-doctor-a-project",
   "title": "a project cannot add checks to doctor: a project handler replaces devbin's doctor outright, so its own checks stop running",
   "status": "closed",

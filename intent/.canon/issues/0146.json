@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 146,
+  "schema": "intent/issue@4.0",
+  "id": "0146",
   "slug": "an-installed-project-with-no-manifest-is-read-as",
   "title": "An installed project with no manifest is read as nothing to check: upgrade --from overwrites its edits at exit 0 and doctor passes",
   "status": "closed",

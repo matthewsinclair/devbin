@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.6",
+  "kind": "test",
+  "covers": [
+    "AC-05.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"warn prefixes and continues\""
+  }
+}

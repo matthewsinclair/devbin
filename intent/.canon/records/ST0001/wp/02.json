@@ -1,0 +1,9 @@
+{
+  "id": "02",
+  "title": "Project skeleton and BATS harness",
+  "scope": "S",
+  "status": "done",
+  "objective": "Stand up the Devbin repository itself: the directory layout the framework is developed in, the BATS test harness every later WP writes tests into, and the local gates that keep it honest. Nothing here ships to a target project except by way of later WPs.",
+  "body": "## Deliverables\n\n- Repository layout: `bin/` (the dispatcher under development), `lib/` (the runtime that gets vendored), `lib/cmd/` (built-ins), `tests/`.\n- BATS harness per `intent/llm/ARCHITECTURE-shell.md`: `tests/unit/*.bats`, `tests/lib/test_helper.bash`, each test in its own temp dir, never touching `$HOME` or real project state. The assertion vocabulary matches Utilz's helper deliberately, so the two suites read as one family; deviations are noted inline with their reason.\n- A fixture project generator: creates a throwaway project tree with a `bin/`, a `config.yaml` and stub handlers, so dispatcher and resolution tests have something to dispatch into.\n- Gate script running `bash -n`, `shellcheck` and `intent critic shell` over the tree, plus the BATS suite; wired so it can back a pre-commit hook.\n- `.github/workflows/tests.yml` modelled on Utilz's: Ubuntu, macOS (the only runner that can catch a bash 4+ construct against the 3.2 target), a no-`yq` job proving the pure-bash config fallback of D7, and a **blocking** shellcheck job that does not exclude test helpers.\n- First entries in `intent/llm/MODULES.md` -- the registry rows for the dispatcher and the runtime library, registered before the files exist.\n- Baseline commit of the Intent scaffold, a `.gitignore`, and a `.gitkeep` wherever an empty tracked directory is needed.\n\n## Dependencies\n\n- None; runs in parallel with WP-01.\n- Blocks every WP from WP-03 onward -- they all write BATS tests into this harness.",
+  "preamble": ""
+}

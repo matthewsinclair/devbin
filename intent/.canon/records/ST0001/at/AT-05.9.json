@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.9",
+  "kind": "test",
+  "covers": [
+    "AC-05.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"init_colors sets nothing when off or when NO_COLOR is set\""
+  }
+}

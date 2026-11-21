@@ -1,0 +1,9 @@
+{
+  "id": "AC-3.1",
+  "text": "On kovacs, brew install devbin from the tap succeeds over ssh with kovacs's GitHub key; brew test devbin passes; devbin --version from HOMEBREW_PREFIX/bin names the release's version and commit; Ubuntu's bash meets the bash >= 5 floor.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "kovacs order K012 (k012.sh sha256 6d91a9e2), 2026-10-17 12:39:16Z to 12:39:35Z, rc 0, every step rc 0: tap over ssh, brew install (Cellar/devbin/0.1.11), brew test ok, /home/linuxbrew/.linuxbrew/bin/devbin --version 'devbin 0.1.11 (0fc22669...)', bash 5.3.9 at /usr/bin/bash; recorded in commit d2f48f46"
+  }
+}

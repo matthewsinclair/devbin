@@ -1,0 +1,8 @@
+{
+  "id": "AC-10.1",
+  "text": "Issue 0002 is fixed before any `version` command runs against Conflab: a sidecar whose kind devbin has no recipe for is REFUSED by name rather than overwritten, `read_version` reports the same absence rather than false drift, and a `Cargo.lock` recipe rewrites the named package entries only. The proving test asserts BOTH that the destination file is byte-identical AND that the command exited non-zero -- a content-only assertion passes against a `die` that never ran",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

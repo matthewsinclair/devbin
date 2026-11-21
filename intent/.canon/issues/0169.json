@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 169,
+  "schema": "intent/issue@4.0",
+  "id": "0169",
   "slug": "cargo-build-dirs-requires-a-third-array-fullcycl",
   "title": "cargo_build_dirs requires a third array fullcycle never reads, held off by a lint disable",
   "status": "closed",

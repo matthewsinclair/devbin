@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.16",
+  "text": "D11 language scoping reaches FRAMEWORK-OWNED OPTIONS too (issue 0001): a framework option is offered exactly where the commands that consume it are, so help cannot advertise `--iex` in a project that lists every surface as unavailable. Parsing and the listing scope through ONE predicate, so an option can be neither accepted-but-unadvertised nor advertised-but-unaccepted; a project wanting the flag regardless declares it in `options:` and config wins on shape",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

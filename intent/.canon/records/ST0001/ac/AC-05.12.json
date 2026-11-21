@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.12",
+  "text": "The bash 3.2 empty-array trap is handled and proven: the guarded expansion yields zero words under `set -u` on the system bash, and the unguarded form is demonstrated to fail there",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

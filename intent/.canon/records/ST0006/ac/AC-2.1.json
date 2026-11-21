@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.1",
+  "text": "check owns the ASSERTION and goes RED on a domain that published rua and is silently missing from the reports. That comparison needs a profile, which is why it cannot live in report -- a boundary drawn by what a component CAN know outlasts one drawn by what it should do.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

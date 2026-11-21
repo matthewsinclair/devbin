@@ -1,0 +1,9 @@
+{
+  "id": "AC-08.3",
+  "text": "The swift rows meet reality: `test swift` / `fmt swift` run against `native/ios` via config overrides, with every builtin-row shortfall filed as a base finding rather than patched locally",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "all three arms RUN against a shipped App Store application, 80 Swift sources. `test swift` executes 98 tests through the ProlixTests scheme and seals SWIFT; 44 pass, and the 54 failures are this project's own integration preconditions, proven by starting `bin/prolix server` and watching the failure mode move from \"Could not connect to the server\" to \"loginFailed\". `check format` seals RED at 632 findings across 78 files, recorded and sized separately per the arca_cli precedent rather than fixed inside a migration. `fmt swift` runs and seals green, proven REVERSIBLY"
+  }
+}

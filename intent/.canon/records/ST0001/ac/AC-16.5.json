@@ -1,0 +1,8 @@
+{
+  "id": "AC-16.5",
+  "text": "The descent applies to devbin's own handlers as well as a project's -- one resolution rule, whoever supplied the handler",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

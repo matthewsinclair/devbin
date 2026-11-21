@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.35",
+  "kind": "test",
+  "covers": [
+    "AC-06.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"run_gate rejects an unknown option rather than treating it as the command\""
+  }
+}

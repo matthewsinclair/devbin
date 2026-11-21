@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.12",
+  "text": "An option that declares no `log:` runs bare, so a long-running interactive command is not teed",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

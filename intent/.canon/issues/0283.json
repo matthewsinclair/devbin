@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 283,
+  "schema": "intent/issue@4.0",
+  "id": "0283",
   "slug": "runtime-version-reads-the-manifest-s-devbin-vers",
   "title": "runtime_version reads the manifest's devbin_version with its own awk, not manifest_field",
   "status": "closed",

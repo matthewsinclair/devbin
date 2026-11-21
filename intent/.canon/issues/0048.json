@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 48,
+  "schema": "intent/issue@4.0",
+  "id": "0048",
   "slug": "the-artefact-check-is-vacuous-on-any-estate-with",
   "title": "The artefact check is vacuous on any estate with no PATH symlinks into the tree",
   "status": "closed",

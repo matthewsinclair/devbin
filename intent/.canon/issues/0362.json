@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 362,
+  "schema": "intent/issue@4.0",
+  "id": "0362",
   "slug": "new-s-page-does-not-say-that-the-stub-search-ski",
   "title": "new's page does not say that the stub search skips other work trees and every copy of devbin's runtime, as 0353's fix made it",
   "status": "closed",

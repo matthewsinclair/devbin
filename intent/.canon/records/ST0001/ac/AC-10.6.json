@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.6",
+  "text": "Conflab-specific helpers -- the native-tree layout, binary resolution, the provenance family and `sync_cargo_lock` -- are relocated to a project-local library devbin sources, and the universal half named in the inventory is deleted rather than carried across",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`cmd/.lib/conflab` (Conflab `eb9ca92c` + `73e4fed5`); the universal half died with `conflab_helpers` in `5f8d20b0`"
+  }
+}

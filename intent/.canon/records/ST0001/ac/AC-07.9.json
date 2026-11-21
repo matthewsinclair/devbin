@@ -1,0 +1,8 @@
+{
+  "id": "AC-07.9",
+  "text": "`help --why` prints the listing plus, for each command, where it resolved from; and for every command and option devbin ships that is NOT offered here, the reason it is not. D2's order and D11's scoping become visible instead of presenting as absence",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

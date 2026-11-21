@@ -1,0 +1,8 @@
+{
+  "id": "AC-4.1",
+  "text": "An arm holds that a project vendored from an install marked --managed-by brew records the source kind install and no path, and that a bare upgrade and doctor resolve it to HOMEBREW_PREFIX's opt/devbin/libexec, never the versioned keg, with no machine pointer present, on a fixture prefix laid out as Homebrew lays one out.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

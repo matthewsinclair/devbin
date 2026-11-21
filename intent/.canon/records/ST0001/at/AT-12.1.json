@@ -1,0 +1,11 @@
+{
+  "id": "AT-12.1",
+  "kind": "test",
+  "covers": [
+    "AC-12.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/documentation.bats::\"the schema key extractor reads the whole schema, not a fragment\""
+  }
+}

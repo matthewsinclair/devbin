@@ -1,0 +1,9 @@
+{
+  "id": "02",
+  "title": "infra check: DNS and mail legs, authoritative reads, errors separated from drift",
+  "scope": "S",
+  "status": "done",
+  "objective": "",
+  "body": "",
+  "preamble": ""
+}

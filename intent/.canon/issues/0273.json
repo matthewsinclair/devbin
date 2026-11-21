@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 273,
+  "schema": "intent/issue@4.0",
+  "id": "0273",
   "slug": "with-no-link-left-a-bare-use-and-doctor-s-switch",
   "title": "With no link left, a bare use and doctor's switch row report brew without asking whether the first devbin on PATH is Homebrew's, which the contract's T5 requires (from 0253's review)",
   "status": "closed",

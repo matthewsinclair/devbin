@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.10",
+  "text": "The xcodebuild grammar captures a swift-testing issue block and marks it when truncating, rather than silently dropping detail",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

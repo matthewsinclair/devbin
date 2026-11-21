@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 137,
+  "schema": "intent/issue@4.0",
+  "id": "0137",
   "slug": "clean-a-sibling-such-as-target-bak-or-target-old",
   "title": "clean: a sibling such as target.bak or target-old splits a build tree -- its nested directories are listed as skipped trees of their own, marked, and then removed with the parent",
   "status": "closed",

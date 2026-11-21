@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 256,
+  "schema": "intent/issue@4.0",
+  "id": "0256",
   "slug": "readme-s-always-offered-table-lists-test-and-cle",
   "title": "README's Always offered table lists test and clean, which a fresh install does not offer",
   "status": "closed",

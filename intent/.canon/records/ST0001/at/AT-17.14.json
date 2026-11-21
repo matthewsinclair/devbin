@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.14",
+  "kind": "test",
+  "covers": [
+    "AC-17.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"sync heals a lagging sidecar even when the version file is already right\""
+  }
+}

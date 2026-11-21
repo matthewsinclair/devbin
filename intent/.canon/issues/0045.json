@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 45,
+  "schema": "intent/issue@4.0",
+  "id": "0045",
   "slug": "a-gate-stamps-per-option-so-one-stamp-can-hold-t",
   "title": "A gate stamps per option, so one stamp can hold two runs and one run two stamps",
   "status": "closed",

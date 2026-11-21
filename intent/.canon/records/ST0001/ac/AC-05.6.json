@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.6",
+  "text": "`read_version` resolves the corpus drift: it reads a bare `VERSION` file, extracts the version from `mix.exs`, `Cargo.toml` and `package.json`, honours the configured source, and answers `unknown` rather than failing when there is none",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

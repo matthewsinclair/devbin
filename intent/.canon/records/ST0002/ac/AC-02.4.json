@@ -1,0 +1,9 @@
+{
+  "id": "AC-02.4",
+  "text": "Every retired `scripts/` command has a recorded disposition, and nothing dead is carried into the port",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`WP/02/arca_config-inventory.md`; three scripts collapse to one config line plus the builtin `iex` command; the `.env` preamble (redundant with `config/dotenv.exs`) and `ARCA_CONFIG_PATH=.arca` (shadowed by tier 1, live only on a fresh clone, already ruled against in `ci.yml`) are both dropped with the reasons recorded. **The `scripts/iex` disposition was recorded WRONG and corrected at WP close**: it read `bin/ac cli --iex`, which is inert here, and is now the builtin `bin/ac iex`"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.15",
+  "kind": "test",
+  "covers": [
+    "AC-08.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"a config-declared option is not swallowed by the built-in that owns its command\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 222,
+  "schema": "intent/issue@4.0",
+  "id": "0222",
   "slug": "ci-s-ubuntu-job-is-red-on-v0-1-14-0213-gives-eve",
   "title": "CI's Ubuntu job is red on v0.1.14: 0213 gives every arm its own HOME, so rustup's cargo proxy on the runner finds no toolchain (RUSTUP_HOME is not pinned)",
   "status": "closed",

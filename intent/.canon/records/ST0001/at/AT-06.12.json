@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.12",
+  "kind": "test",
+  "covers": [
+    "AC-06.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"LATEST pointers are created and resolve to this run's pair\""
+  }
+}

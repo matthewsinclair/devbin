@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.14",
+  "text": "Concurrent runs of one gate in one tree do not share or truncate a log: log creation is atomic, so each run gets its own pair and its own correct seal",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

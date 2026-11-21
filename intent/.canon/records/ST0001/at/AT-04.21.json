@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.21",
+  "kind": "test",
+  "covers": [
+    "AC-04.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"Devbin's own help offers no Elixir gate\""
+  }
+}

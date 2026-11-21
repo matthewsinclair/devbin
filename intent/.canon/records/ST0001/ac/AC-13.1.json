@@ -1,0 +1,9 @@
+{
+  "id": "AC-13.1",
+  "text": "hv triggered the review and it ran with Fable, after WP-01..09 and WP-12 closed and before any live project was touched",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`WP/13/review.md` header; the trigger is in the session, dated 2026-08-07"
+  }
+}

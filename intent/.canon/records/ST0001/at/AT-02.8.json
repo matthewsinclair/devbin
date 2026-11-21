@@ -1,0 +1,11 @@
+{
+  "id": "AT-02.8",
+  "kind": "test",
+  "covers": [
+    "AC-02.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/harness.bats::\"assert_symlink_exists checks the target when given one\""
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "17",
+  "title": "Built-ins: Docs and version",
+  "scope": "M",
+  "status": "done",
+  "objective": "Ship `version` -- the one command D18 tiers as real shared logic across all four projects -- and `docs`. This is the family with the most genuine code in it and the one carrying the most risk, because the sidecar-sync concern has already produced a shipped defect in Conflab.",
+  "body": "## Deliverables\n\n- `lib/cmd/version` with `show`, `set` and `bump` on one semver implementation, reading the file named by `project.version_from`. WP-05 already ships `read_version` and `assert_semver`; this is the command surface over them.\n- **Sidecar sync, ported carefully.** In Conflab the version is the single source of truth for six files, and keeping them in step has failed once already in production. The sidecar list is per-project config; the synchronisation and its verification are shared code. Port the mechanism with the defect it caused recorded alongside it, so the next reader knows which case the code is defending against.\n- `lib/cmd/docs` for `agents`, `treeindex`, `completions`, `index`, `publish`. D18 found the names agree 3/4 but each is a shell function rather than a command line, so these are implementations rather than catalogue rows.\n- BATS coverage, with the sidecar case exercised against a project that has several.\n\n## Dependencies\n\n- WP-05 (`read_version`, `assert_semver`), WP-08 (catalogue).\n- Blocks WP-10.\n\n## Notes\n\nHighest-risk family of the five. `version set` and `version bump` mutate files that other tooling reads, and a partial sync leaves a project internally inconsistent in a way no gate currently catches. Treat the sidecar write as all-or-nothing and prove it.",
+  "preamble": "Split out of WP-08 (built-in command library) along the family cut WP-08's own notes named."
+}

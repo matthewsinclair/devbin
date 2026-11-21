@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 49,
+  "schema": "intent/issue@4.0",
+  "id": "0049",
   "slug": "the-overhead-meter-divides-a-gate-s-wall-by-a-te",
   "title": "The overhead meter divides a GATE's wall by a test-only denominator",
   "status": "closed",

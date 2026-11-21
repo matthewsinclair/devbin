@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 186,
+  "schema": "intent/issue@4.0",
+  "id": "0186",
   "slug": "a-repository-whose-index-git-cannot-read-version",
   "title": "a repository whose index git cannot read: --version prints a bare commit over a dirty tree, fullcycle --dry-run dies with git's 128, check critic says nothing is staged, and the release pre-flight says its log directory is not ignored",
   "status": "closed",

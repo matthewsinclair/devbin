@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 294,
+  "schema": "intent/issue@4.0",
+  "id": "0294",
   "slug": "release-publish-runs-the-tests-workflow-s-whole",
   "title": "release publish runs the tests workflow's whole matrix twice on one commit: the tag push repeats the candidate's green run",
   "status": "closed",

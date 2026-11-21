@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.15",
+  "text": "The sealed runners keep Baize's authored surface on lib/runlog primitives: the glyph feed, the umbrella per-suite report table, the full wrapper-flag set, bare `test` printing the topic at rc 0, `test suite <name>` resolving the named map with its moved-suite guard, and `test all`'s two authored rulings -- mix OPT-IN behind `--full` and rc-3 stubs reported SKIPPED, never passed -- plus the fleet widening (--purge/--purge-only/--allow-empty fan to the runners); seals move to the uppercase family with LATEST_* names unchanged",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "the equivalence pack's usage table (bare test rc 0, suite guard, all buckets identical incl the SKIPPED stub); `Result: 29 passed` verbatim both sides"
+  }
+}

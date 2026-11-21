@@ -1,0 +1,8 @@
+{
+  "id": "AC-18.3",
+  "text": "`enabled: true` switches one on and it appears in help with the catalogue's summary; `enabled: false` still wins over everything",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 74,
+  "schema": "intent/issue@4.0",
+  "id": "0074",
   "slug": "fleet-upgrade-counts-an-estate-whose-upgrade-hel",
   "title": "fleet upgrade counts an estate whose upgrade held back edited files as upgraded, and prints nothing about them",
   "status": "closed",

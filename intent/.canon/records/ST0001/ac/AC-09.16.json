@@ -1,0 +1,9 @@
+{
+  "id": "AC-09.16",
+  "text": "Uninstall is documented and proven: removing `bin/devbin`, `bin/.devbin/lib/`, the manifest and the symlinks leaves no devbin residue, with the project's own `config.yaml`, `cmd/` and `help/` intact",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`impl.md` \"Uninstall\", with AT-09.34 and AT-09.35 walking the documented procedure verbatim"
+  }
+}

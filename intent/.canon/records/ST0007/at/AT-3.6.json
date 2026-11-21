@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.6",
+  "kind": "test",
+  "file": "tests/unit/releasestatus.bats",
+  "covers": [
+    "AC-3.1"
+  ],
+  "status": "green",
+  "note": "a fact the run cannot reach is reported as unreadable and never as false: a remote branch head this checkout does not hold (merge-base --is-ancestor exiting 128, not 1), a remote carrying a lightweight tag where this release tag is annotated, and an unreadable note; no fetch and no network write; marked # AT-3.6"
+}

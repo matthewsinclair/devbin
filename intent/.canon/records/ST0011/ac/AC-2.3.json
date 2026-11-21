@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.3",
+  "text": "In every shape the commit the matrix tests is pushed to candidate/<tag> before its run is read, and the candidate ref is deleted once the tag is pushed or the cut stops red; the same version may be cut again while no tag exists.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

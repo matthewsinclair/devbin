@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 78,
+  "schema": "intent/issue@4.0",
+  "id": "0078",
   "slug": "a-project-s-own-git-hook-wiring-is-lost-on-every",
   "title": "A project's own git hook wiring is lost on every fresh clone, silently, and no layer of the stack owns it",
   "status": "closed",

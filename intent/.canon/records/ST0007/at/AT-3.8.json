@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.8",
+  "kind": "test",
+  "file": "tests/unit/releasestatus.bats",
+  "covers": [
+    "AC-3.2"
+  ],
+  "status": "green",
+  "note": "an export-ignored note, an export-ignored parent directory of the version file in each spelling, an export-ignored OLDER note, and an export-subst note are each read from the commit's own bytes, never as absent, unstamped or STALE; a tree that cannot be written (a required filter failing) is UNREADABLE, and its tag's message could not be compared; filters and submodules are declared limits in lib/release.steps; marked # AT-3.8"
+}

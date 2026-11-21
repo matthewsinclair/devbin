@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.26",
+  "text": "The toolchain sweep lands per the standing directive: Dockerfile ARGs (1.20.1/29.0.2, twice-lagged with no gate saying so) to the pins on a registry-verified tag, CI's stale elixir/erlang fallbacks to the pins, and the ported toolchain gate GAINS the Dockerfile arm -- red on the new side until the bump while the old side is green-but-blind, both green after; recorded as the strengthening pair it is, and as AC-11.11's third image-bearing data point",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Lamplight `cb5d3948a`; both tags Docker-Hub-verified before pinning; the pre-bump red sealed at `20260809-1936.TOOLCHAIN.errors` while the old gate ran rc 0 blind; both gates green post-bump"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.1",
+  "text": "The README states the Windows prerequisite before anything else it says about Windows: WSL 2 with a named Ubuntu LTS; the clone and the work inside WSL's own filesystem, never under /mnt; WSL's own git; the packages to install, shellcheck among them; appendWindowsPath = false as advice; behind a VPN, the WSL 2 networking settings WSL documents for inheriting the VPN's DNS and routes, said to be unmeasured here (hv, 2026-10-24: the measured-VPN clause is dropped; real Windows is tested on client machines); that check all refuses at the critic gate in a project that carries intent/ until Intent's Linux binary is installed, with a pointer to Intent's own install page rather than a copy of it; and that there is no native Windows port.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "README.md, section 'On Windows: WSL 2, and nothing native' (items 1 to 6 and the check all paragraph) and the Known limitations line, at main eebd24a9; read by vc 2026-10-24"
+  }
+}

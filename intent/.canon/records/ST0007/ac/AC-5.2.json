@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.2",
+  "text": "A finished release re-run after HEAD and every remote have advanced, with work in progress in the tree, reports every step without refusing, runs no gate (step 5 not re-run), asks nothing (step 6 not re-run), and pushes nothing.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

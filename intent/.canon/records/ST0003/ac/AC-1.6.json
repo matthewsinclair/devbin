@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.6",
+  "text": "A valueless or empty declaration is REFUSED and NAMED, never silently skipped. A key nobody typed and a key typed with no value must not read alike.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

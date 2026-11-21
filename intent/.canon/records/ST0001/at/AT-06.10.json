@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.10",
+  "kind": "test",
+  "covers": [
+    "AC-06.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"a promoted run's reason reaches the seal\""
+  }
+}

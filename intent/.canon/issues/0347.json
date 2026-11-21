@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 347,
+  "schema": "intent/issue@4.0",
+  "id": "0347",
   "slug": "ci-macos-a-lane-fails-with-every-test-ok-when-ba",
   "title": "CI macOS: a lane fails with every test ok when bats-core 1.14.0's parallel forwarder loses a child's status (bats-exec-file:195)",
   "status": "closed",

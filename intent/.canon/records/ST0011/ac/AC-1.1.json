@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.1",
+  "text": "Every sealed run's invocation block records the commit the run stood on, as a commit: line, with the dirty marker when the tree held uncommitted changes.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

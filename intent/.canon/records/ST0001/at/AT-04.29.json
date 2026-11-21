@@ -1,0 +1,12 @@
+{
+  "id": "AT-04.29",
+  "kind": "test",
+  "covers": [
+    "AC-04.6",
+    "AC-04.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"all refuses when there are no options rather than reporting a pass\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 101,
+  "schema": "intent/issue@4.0",
+  "id": "0101",
   "slug": "fleet-upgrade-drops-worktrees-and-dependency-che",
   "title": "fleet upgrade drops worktrees and dependency checkouts without a row or a count",
   "status": "closed",

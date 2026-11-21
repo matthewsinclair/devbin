@@ -1,0 +1,9 @@
+{
+  "id": "04",
+  "title": "Devbin's own workflow: tag trigger and Candidate verdict job removed, lanes from the runner's CPUs, WSL on the candidate",
+  "scope": "S",
+  "status": "done",
+  "objective": "Devbin's own workflow. Now: `.github/workflows/tests.yml` sets `DEVBIN_TEST_JOBS` on the Ubuntu and macOS jobs from the runner's own CPU count, read in a step, never a written number. After WP02b lands: the tag trigger and the Candidate verdict job (0294) are removed, since the tag is made only on green; WSL stays on the candidate (Q6). The config half (dropping `ci.tag`) is WP02b's; `ci.wait: 90m` stays until WP15 measures the macOS leg under lanes. `docs/releasing.md`'s CI section. Serves AC-4.1; lands D64 and D65.\n Ruled 2026-10-31 (vc, on dc's critic findings): no lanes step; bats-lanes takes `DEVBIN_TEST_JOBS=all`, every CPU `cpu_count` reads (the one probe, issue 0190), refusing when it answers nothing; tests.yml sets `env: DEVBIN_TEST_JOBS: all` on the Ubuntu, macOS and WSL suite steps (WSL's through its WSLENV too) and leaves the run lines untouched; arms hold `all` to `cpu_count`'s own answer and every suite step to the value, no number in any quoting.",
+  "body": "",
+  "preamble": ""
+}

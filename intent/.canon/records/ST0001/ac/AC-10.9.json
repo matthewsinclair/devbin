@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.9",
+  "text": "The equivalence evidence compares what each gate EXAMINES, not only its exit code and seal. A gate that silently checks less than the one it replaces passes every exit-code and seal comparison -- `check format` is the known instance (Conflab checks Elixir AND both Rust crates; devbin's row is elixir-only), and the comparison is what catches the unknown ones",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "the examines table in `WP/10/equivalence.md`"
+  }
+}

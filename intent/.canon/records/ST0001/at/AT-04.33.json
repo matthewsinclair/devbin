@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.33",
+  "kind": "test",
+  "covers": [
+    "AC-04.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/data.bats::\"a word that names no sub-handler is an argument, not an error\""
+  }
+}

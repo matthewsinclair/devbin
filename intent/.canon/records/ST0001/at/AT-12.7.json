@@ -1,0 +1,11 @@
+{
+  "id": "AT-12.7",
+  "kind": "test",
+  "covers": [
+    "AC-12.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/documentation.bats::\"every built-in command appears in the README command surface\""
+  }
+}

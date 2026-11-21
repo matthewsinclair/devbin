@@ -1,0 +1,8 @@
+{
+  "id": "AC-4.6",
+  "text": "--dry-run writes nothing and names every refusal it could not reach.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "01",
+  "title": "The release schema, opt-in activation, release check's declaration half, and the argument loop",
+  "scope": "S",
+  "status": "done",
+  "objective": "Give the release core its declaration and its front door before any step exists. An opt-in `release` catalogue row (D35). The `release:` schema, one table in `lib/config` with a default for every key, refusing a key the declared mode never reads (D37). `release check`'s declaration half, and doctor's note on a block nothing reads. An argument loop that parses every argument before anything acts, so that `--help` anywhere never acts and a bare `release` exits 1 (D36). Everything not yet built exits 3, naming the work package that builds it.",
+  "body": "",
+  "preamble": ""
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 250,
+  "schema": "intent/issue@4.0",
+  "id": "0250",
   "slug": "the-remedy-for-an-unset-or-relative-homebrew-pre",
   "title": "The remedy for an unset or relative HOMEBREW_PREFIX is to install devbin with Homebrew, which loops when devbin is installed",
   "status": "closed",

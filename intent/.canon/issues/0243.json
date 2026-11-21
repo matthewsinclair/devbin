@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 243,
+  "schema": "intent/issue@4.0",
+  "id": "0243",
   "slug": "macos-cannot-sign-an-app-that-versions-apart-fro",
   "title": "macos cannot sign an app that versions apart from its project or builds outside the root, and drops its Launch Services records unchecked (Utilz's Menuz)",
   "status": "closed",

@@ -1,0 +1,10 @@
+{
+  "id": "AT-2.2",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-2.1"
+  ],
+  "status": "green",
+  "note": "AC-2.1's clauses WP02a does not hold: the confirm names the tap, and every leg (the candidate, each remote leg) starts after it; WP02b (the loop) turns it green at its landing, its file re-cited with at edit then. WP02b-1 (the loop) landed at ac18a7de89f4a17790b39ab237849426d2f1ac19, run 01M6BFAW5TJB86G7GEVSCKDP4A: the confirm names the candidate push and every leg starts after it, the arms in tests/unit/releasecut.bats. The tap clause is WP02b-2's publish shape, which keeps this row red until it lands. GREEN at the hook-in stack's landing (ST0011/07 at 8a776229bd4102cf9606b132c91f8dd05eaf24cc, read by vc 2026-11-01 17:48Z by date -u). Every clause of AC-2.1 that WP02a did not hold now has its arm in tests/unit/releasecut.bats. The confirm names the tap through the after: commands that run under the yes, as WP02b's approved design names it: 'with nobody at a terminal and no --yes, a cut stops at its confirm step, whose question names the after: commands that would run under the yes, and the tap is untouched (0227, ST0011 WP02)'. The confirm names the candidate's push, which starts after it: '# AT-2.2' over 'a declared publish.candidate names a cut's candidate ref without publish.url, the confirm naming its push before the tag', and 'a candidate push the remote refuses stops the cut at the legs step at once, in git's words, before any other leg starts'. Each remote leg and the macOS stage start with the local gates, which start after the confirm: AT-2.7's arm 'each reached host release.legs names and the macOS stage start with the local gates at the release commit', and 'given --yes, a cut stamps, commits and gates after the confirm step'. Each arm's red is on its own unit's record: the candidate arms' in WP02b-1's run, and the remote legs' arm's at red-05 3c9e5669 in run 01M6C0GKNE2H3SM6TPRM9MCWB6. All five are ok in that run at ba5a8270, under BSD in the whole suite (2966 ok, seal 20261101-1705 empty) and under GNU in releasecut whole (165 of 165). They landed as 8a776229."
+}

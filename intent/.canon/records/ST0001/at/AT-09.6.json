@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.6",
+  "kind": "test",
+  "covers": [
+    "AC-09.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"a freshly installed project runs and reports a surface\""
+  }
+}

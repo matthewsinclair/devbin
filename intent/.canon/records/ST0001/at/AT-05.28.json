@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.28",
+  "kind": "test",
+  "covers": [
+    "AC-05.10"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"a shared option with no export target is a config error, not a silent no-op\""
+  }
+}

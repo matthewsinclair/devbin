@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.8",
+  "text": "An install tree refuses to be run from, exits 3, and does not advise 'devbin install' -- advice that would turn the machine install into a project.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 100,
+  "schema": "intent/issue@4.0",
+  "id": "0100",
   "slug": "fullcycle-s-consent-line-is-written-into-the-run",
   "title": "fullcycle's consent line is written into the run log untagged, against the annotation rule",
   "status": "closed",

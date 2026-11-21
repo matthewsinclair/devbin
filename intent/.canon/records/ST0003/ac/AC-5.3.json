@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.3",
+  "text": "report owns the POPULATION and never implies an estate: it names the domains it SAW. A domain with live MX and no DMARC record cannot appear in any report, so a summary phrased as your estate is clean would be reporting on its own input while sounding like it reported on the estate.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

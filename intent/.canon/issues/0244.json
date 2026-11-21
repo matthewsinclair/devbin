@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 244,
+  "schema": "intent/issue@4.0",
+  "id": "0244",
   "slug": "the-version-line-s-sha-field-is-not-always-twelv",
   "title": "The version line's sha field is not always twelve digits: a recorded commit of 7 to 11 hex digits prints short, and a 64-digit one prints more (T4, latent)",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.2",
+  "text": "Install is idempotent and refuses to clobber: a second run over an existing install stops with the reason and names the flag that overrides it; with that flag the resulting tree is identical to a fresh install",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.2",
+  "text": "release is not offered, and does not run, in a project that has not set commands.release.enabled: true; a release: block in such a project is reported by doctor as declared and inert.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

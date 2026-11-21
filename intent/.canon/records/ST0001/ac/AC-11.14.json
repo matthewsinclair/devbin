@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.14",
+  "text": "The project handlers land under `bin/.devbin/cmd/` with each one's reason recorded in the inventory: the test family including the first NON-ELIXIR gates (shell -- deliberately unsealed, its authored ruling preserved, the `BAIZE_SHELL_SENTINEL_DIR` contract with test/shell/support intact; rust -- the exit-3 stub), the four thin surface handlers (agent ban, config store, real completions path), the db shadow (umbrella subprocess-vs-in-process encoding, prod-stub proxy), docs (Baize's own `index`/`completions` surface), build (four exit-3 stubs), which, publish, cv (caller-CWD path resolution), perf (the load-bearing `--include perf`)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Baize `24733d8`, 19 files, each reason in the inventory's dispositions table; shellcheck clean at warning severity"
+  }
+}

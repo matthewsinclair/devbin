@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.2",
+  "text": "The catalogue carries option-less COMMAND rows in the one table: the row key is `<command>` with no option, `builtin_options_for` still reports no options for such a command, and no second table appears",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

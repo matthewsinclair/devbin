@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 120,
+  "schema": "intent/issue@4.0",
+  "id": "0120",
   "slug": "doctor-stops-at-a-config-validation-failure-and",
   "title": "doctor stops at a config validation failure and never runs its remaining checks or prints its count",
   "status": "closed",

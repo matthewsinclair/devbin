@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.19",
+  "kind": "test",
+  "covers": [
+    "AC-08.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"help scopes the built-in surface to the declared languages\""
+  }
+}

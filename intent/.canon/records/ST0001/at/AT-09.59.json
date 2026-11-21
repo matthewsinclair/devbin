@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.59",
+  "kind": "test",
+  "covers": [
+    "AC-09.14"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/scaffold.bats::\"a scaffolded command resolves on the next invocation\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 349,
+  "schema": "intent/issue@4.0",
+  "id": "0349",
   "slug": "a-brew-keg-loses-its-release-archive-s-metafiles",
   "title": "A brew keg loses its release archive's metafiles to Homebrew's libexec move, so its manifest names files it does not hold",
   "status": "closed",

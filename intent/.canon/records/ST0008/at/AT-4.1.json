@@ -1,0 +1,10 @@
+{
+  "id": "AT-4.1",
+  "kind": "test",
+  "file": "tests/unit/windowspath.bats",
+  "covers": [
+    "AC-4.1"
+  ],
+  "status": "green",
+  "note": "These arms hold what the runtime already did (D48 needed no runtime change); the stubs' recording was driven by hand before the arms were written, and the off-WSL guard and the comparison passed on main as intended. Met at f7b34793: help, help --why, version, -v, doctor, check all, test all, shell-init bash and dvb each succeed and print the same with a Windows PATH appended (Program Files (x86) and System32 entries full of stub .exe files that record any run), and clean names an in-tree entry with spaces and parentheses whole (clean.bats); no stub ran; landing suite 20261017-0636 (vc's landing suite at ca557b4d: 2384 of 2384 ok, 5 skips, .errors empty, 06:36:33Z to 06:45:14Z; seal kept in ~/Devel/scratch/devbin-vc/clone-archive/seals/20261017-0636/)."
+}

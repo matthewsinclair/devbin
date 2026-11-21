@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.8",
+  "text": "Laksa's 15 authored help topics migrate verbatim per `help-migration.md` rules 1/4/5 -- rulings extracted BEFORE the prose moves -- and every file is byte-stable under the project's own pre-commit invocation (`prettier --write`, no prose-wrap flag) from its FIRST commit; the global heredoc dies with its three fragments landed in config",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Laksa `63d77c78`: `prettier --check` clean before the commit, the hook's own run printed \"(unchanged)\" fifteen times during it; the widened/strengthened behaviours are STATED in the topics rather than carried stale; tagline, group annotations and option summaries in `7b8d50ee`"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.2",
+  "text": "The upgrade prompt appears only with a real terminal, tested on BOTH arms (-r /dev/tty AND -t 0) per issue 0058 -- a tty device node is not a human.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-4.3",
+  "text": "While the tag is absent, pre-flight refuses a dirty path outside the owned set and names it, and step 4 commits a dirty path inside it, whether a human or a killed run wrote it.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

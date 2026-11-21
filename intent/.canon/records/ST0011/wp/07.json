@@ -1,0 +1,9 @@
+{
+  "id": "07",
+  "title": "Attach reads the candidate run: assets keyed on the release commit's sha",
+  "scope": "S",
+  "status": "done",
+  "objective": "Attach reads the candidate run. `lib/release.steps`: `release_read_assets_run` is keyed on the release commit's sha, so the assets workflow's run on the candidate is the one read; `lib/cmd/release`: attach is a step of the cut after the object, in parallel over disjoint files with the macOS publish. `docs/releasing.md`. No assets workflow exists in this repository, so the first Intent cut in the new shape is the acceptance run (D66). Serves AC-3.3.",
+  "body": "",
+  "preamble": ""
+}

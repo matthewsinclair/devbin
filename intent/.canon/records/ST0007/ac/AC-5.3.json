@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.3",
+  "text": "A release resumed after step 7 with pushes outstanding prompts before the first push, naming only the remaining pushes and the object; without a tty and without --yes it exits 2 having pushed nothing.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

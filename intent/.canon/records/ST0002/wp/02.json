@@ -1,0 +1,9 @@
+{
+  "id": "02",
+  "title": "Arca/arca_config: migrate scripts/, upstream of arca_cli",
+  "scope": "S",
+  "status": "done",
+  "objective": "Migrate Arca/arca_config (`~/Devel/prj/Arca/arca_config`, elixir) onto devbin -- a published library, recently active, and upstream of BOTH arca_cli and Multiplyer via their GitHub branch deps. Drift risk is low; semver discipline is the point.\n\n**RECLASSIFIED mid-WP, 2026-08-10.** Planned as a fresh install; it is a migration. `scripts/` is hv's older, pre-devbin launcher convention, and the ST0002 survey missed it in four of six projects by searching for the first fleet's `bin/<prj>` shape. This WP is where that was found, so it also runs the migration protocol (inventory -> ACs before code -> install alongside -> equivalence -> delete last) rather than the fresh-install one, and AC-02.4 to AC-02.6 were added when the shape changed.\n\n**Runs second in the thread** (hv, 2026-08-10), ahead of Multiplyer rather than behind it, because everything downstream of it should resolve once against a settled state.",
+  "body": "## Deliverables\n\n- Fence, one install commit, doctor green, `help --why` accounted\n- Baseline -> `mix deps.update --all` -> green, per the WP-01 protocol, seals as the record\n- Any dep resolution that would move the public API: surfaced to hv, not taken\n- Inventory with a disposition per retired script; equivalence proven; `scripts/` deleted last\n- `config.yaml` + authored help in their own commits\n\n## Dependencies\n\n- WP-04 (the proven deps-drift protocol -- WP-01 no longer precedes this one)",
+  "preamble": ""
+}

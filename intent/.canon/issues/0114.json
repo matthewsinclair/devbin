@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 114,
+  "schema": "intent/issue@4.0",
+  "id": "0114",
   "slug": "fleet-upgrade-apply-rewrites-an-estate-s-vendore",
   "title": "fleet upgrade --apply rewrites an estate's vendored runtime under a live dispatch -- it should refuse that estate by name",
   "status": "closed",

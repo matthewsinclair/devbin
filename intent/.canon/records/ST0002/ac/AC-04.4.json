@@ -1,0 +1,9 @@
+{
+  "id": "AC-04.4",
+  "text": "The lua doc-build helper stays out of the declared languages",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "devbin declares `[elixir]` (`d6b14d0`); lua and shell are both absent, and the REASON is the gate-scope ruling in design.md, not the project's 2026-06-25 commit. That commit dropped lua but says \"Baseline restored to elixir + shell\", so Intent declares shell to this day"
+  }
+}

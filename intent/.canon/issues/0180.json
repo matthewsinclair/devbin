@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 180,
+  "schema": "intent/issue@4.0",
+  "id": "0180",
   "slug": "0-1-9-s-ci-is-red-on-ubuntu-0155-s-dying-worker",
   "title": "0.1.9's CI is red on Ubuntu: 0155's dying-worker arm depends on the runner's xargs, and 0158's gate_exec arm requires expect for a half that runs script",
   "status": "closed",

@@ -1,0 +1,9 @@
+{
+  "id": "AC-08.1",
+  "text": "Fence before install; one install commit; doctor green; `help --why` accounted",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "fence `312c3d3` precedes install `e5c7d4f` and was PROVEN rather than assumed"
+  }
+}

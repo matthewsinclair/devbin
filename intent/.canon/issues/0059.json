@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 59,
+  "schema": "intent/issue@4.0",
+  "id": "0059",
   "slug": "the-behind-you-warning-cannot-fire-when-the-sour",
   "title": "The BEHIND-you warning cannot fire when the source is an install, which is now every estate",
   "status": "closed",

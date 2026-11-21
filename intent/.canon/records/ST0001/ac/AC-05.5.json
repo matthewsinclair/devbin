@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.5",
+  "text": "`abs_path` passes an absolute path through and absolutises a relative one against the project root",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

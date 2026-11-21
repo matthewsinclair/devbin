@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.4",
+  "kind": "test",
+  "covers": [
+    "AC-06.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"a red run with nothing parseable falls back to the log tail\""
+  }
+}

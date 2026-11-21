@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 345,
+  "schema": "intent/issue@4.0",
+  "id": "0345",
   "slug": "a-test-run-s-log-names-no-file-s-time-and-no-loa",
   "title": "A test run's log names no file's time and no load, so nobody can say which tests cost a run its time or what the machine was doing",
   "status": "closed",

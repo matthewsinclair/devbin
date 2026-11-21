@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 103,
+  "schema": "intent/issue@4.0",
+  "id": "0103",
   "slug": "upgrade-ignores-flags-that-do-not-apply-to-its-m",
   "title": "upgrade ignores flags that do not apply to its mode, and install ignores the vendor-only ones when publishing",
   "status": "closed",

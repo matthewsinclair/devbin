@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.70",
+  "kind": "test",
+  "covers": [
+    "AC-09.15"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/scaffold.bats::\"new refuses a name that is not a legal command name, and says which rule\""
+  }
+}

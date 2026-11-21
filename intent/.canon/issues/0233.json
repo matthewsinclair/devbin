@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 233,
+  "schema": "intent/issue@4.0",
+  "id": "0233",
   "slug": "readonlygit-bats-s-fixture-commits-start-git-s-b",
   "title": "readonlygit.bats's fixture commits start git's background maintenance, whose repack can land under .git inside an arm's check, so CI's Ubuntu job failed the --version and doctor arms (run 40291928610)",
   "status": "closed",

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 162,
+  "schema": "intent/issue@4.0",
+  "id": "0162",
   "slug": "release-scratch-resolves-its-paths-with-its-own",
   "title": "release_scratch resolves its paths with its own copies of physical_dir's step, and a // root walks past its refusal",
   "status": "closed",

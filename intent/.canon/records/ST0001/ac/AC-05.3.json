@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.3",
+  "text": "The output primitives behave as the corpus did: `die` exits 1 to stderr with the project prefix, `warn` continues, `not_yet` exits 3 naming what unblocks it, `require_tool` dies with the remedy, `init_colors` yields nothing when off or under `NO_COLOR`",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

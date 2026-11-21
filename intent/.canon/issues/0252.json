@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 252,
+  "schema": "intent/issue@4.0",
+  "id": "0252",
   "slug": "hints-name-the-versioned-keg-path-under-cellar-w",
   "title": "Hints name the versioned keg path under Cellar, which brew upgrade deletes: shell-init's rc lines and install's --force remedy",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.22",
+  "kind": "test",
+  "covers": [
+    "AC-14.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"a framework option exports DEVBIN_OPT_ with nothing declared in config\""
+  }
+}

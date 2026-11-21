@@ -1,0 +1,11 @@
+{
+  "id": "AT-17.11",
+  "kind": "test",
+  "covers": [
+    "AC-17.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/version.bats::\"version bump fans out too, not just set\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 145,
+  "schema": "intent/issue@4.0",
+  "id": "0145",
   "slug": "a-directory-find-can-list-but-not-search-is-pass",
   "title": "a directory find can list but not search is passed over in silence on macOS, so every walk but clean's reports a whole answer over part of the tree -- the syntax gate passes over a planted breach and the runtime digest names another runtime, at rc 0",
   "status": "closed",

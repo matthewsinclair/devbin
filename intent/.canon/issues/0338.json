@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 338,
+  "schema": "intent/issue@4.0",
+  "id": "0338",
   "slug": "a-release-s-build-artefacts-are-built-once-at-th",
   "title": "A release's build artefacts are built once at the release commit, and the gates and the after: commands pull them from the cache",
   "status": "closed",

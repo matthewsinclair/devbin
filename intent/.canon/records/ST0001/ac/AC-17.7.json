@@ -1,0 +1,8 @@
+{
+  "id": "AC-17.7",
+  "text": "There is ONE reader. `check` reads sidecars through `read_version` rather than its own extractors -- a reader and a writer that disagree about which line they mean is how `check` comes to pass a file `set` would rewrite differently",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

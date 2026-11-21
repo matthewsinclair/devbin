@@ -1,0 +1,11 @@
+{
+  "id": "AT-16.10",
+  "kind": "test",
+  "covers": [
+    "AC-16.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/data.bats::\"the descent stops at the first word without a handler, mid-chain\""
+  }
+}

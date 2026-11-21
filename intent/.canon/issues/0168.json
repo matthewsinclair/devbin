@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 168,
+  "schema": "intent/issue@4.0",
+  "id": "0168",
   "slug": "fullcycle-s-artefact-check-never-reads-target-tr",
   "title": "fullcycle's artefact check never reads target/<triple>/, so a cross-compiled release reads missing and a lost one reads fine",
   "status": "closed",

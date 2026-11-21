@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 340,
+  "schema": "intent/issue@4.0",
+  "id": "0340",
   "slug": "the-suite-s-parallel-lane-runs-each-file-s-tests",
   "title": "The suite's parallel lane runs each file's tests through bats's shared slot semaphore, which polls with sleep 1, so a host with few slots spends most of its wall time asleep",
   "status": "closed",

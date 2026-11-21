@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 109,
+  "schema": "intent/issue@4.0",
+  "id": "0109",
   "slug": "a-comment-devbin-ships-is-shaped-like-a-home-dir",
   "title": "a comment devbin ships is shaped like a home directory path, and a consumer's guard refuses that estate's own tracked copy",
   "status": "closed",

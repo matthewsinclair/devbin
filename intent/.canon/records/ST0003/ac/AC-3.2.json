@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.2",
+  "text": "Two proposal sources with different availability. The STANDARD leads and applies at any N including 1. The estate MAJORITY falls back only where the standard is silent, and is meaningful only above N=2, so a design tuned to a portfolio does not degenerate at the modal case of one domain.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

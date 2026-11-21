@@ -1,0 +1,8 @@
+{
+  "id": "AC-6.2",
+  "text": "Inside WSL, on a fixture project without intent/ that devbin is vendored into, the smoke list passes: shell-init bash with dvb, check all, test, server started and stopped, package, contract, version check, clean and help.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

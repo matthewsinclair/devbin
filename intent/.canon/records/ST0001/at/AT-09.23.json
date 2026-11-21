@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.23",
+  "kind": "test",
+  "covers": [
+    "AC-09.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"upgrade restores a vendored file someone deleted\""
+  }
+}

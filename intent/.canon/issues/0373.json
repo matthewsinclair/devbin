@@ -1,6 +1,7 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 373,
+  "schema": "intent/issue@4.0",
+  "id": "0373",
+  "realised": true,
   "slug": "six-estates-config-yaml-carry-log-lines-that-res",
   "title": "Six estates' config.yaml carry log: lines that restate devbin's default",
   "status": "open",

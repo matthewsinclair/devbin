@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.11",
+  "text": "An unknown grammar name falls back to `generic` with a warning rather than sealing with an empty extraction; documented aliases resolve to the same source",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

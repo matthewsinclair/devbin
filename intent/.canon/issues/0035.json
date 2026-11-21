@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 35,
+  "schema": "intent/issue@4.0",
+  "id": "0035",
   "slug": "the-seam-is-declared-for-files-but-not-for-decis",
   "title": "The seam is declared for files but not for decisions, so consumers diverge silently",
   "status": "closed",

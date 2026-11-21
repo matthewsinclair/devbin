@@ -1,0 +1,8 @@
+{
+  "id": "AC-09.13",
+  "text": "`devbin_version` in config is a CONSTRAINT the project declares and doctor is what enforces it; a runtime outside the range is named as a mismatch carrying both versions, and the constraint is honoured on both sides of its bound",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 1,
+  "schema": "intent/issue@4.0",
+  "id": "0001",
   "slug": "help-offers-iex-in-projects-where-no-offered",
   "title": "help offers --iex in projects where no offered command can read it",
   "status": "closed",

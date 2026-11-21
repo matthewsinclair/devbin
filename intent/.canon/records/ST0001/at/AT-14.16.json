@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.16",
+  "kind": "test",
+  "covers": [
+    "AC-14.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"config's own summary still overrides the catalogue's wording\""
+  }
+}

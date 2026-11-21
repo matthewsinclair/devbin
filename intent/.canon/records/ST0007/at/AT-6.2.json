@@ -1,0 +1,10 @@
+{
+  "id": "AT-6.2",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-6.2"
+  ],
+  "status": "green",
+  "note": "ci.query: red exits 1 naming the run and the fail-forward remedy, tag and release untouched; pending waited on; no verdict, a non-verdict, a failing or a hung query FAILED, never a quiet 0; asked about the tagged sha; marked # AT-6.2 in tests/unit/releasecut.bats. red first: each arm driven red when built and held by mutation (WP-04: 27 mutants; WP-05 re-drive at ce5989e: 12 of 13 killed, j --force declared invisible; WP-06: 14 of 14, the F-fix 6 of 6, dc's 5 of 6 with m1's weak arm a follow-up). Green: the full suite at df56014, the v0.1.2 release gate, 1556/1556, 2026-09-19. Superseded, kept as satisfied history: ST0011's AC-2.2 retires the fail-forward ci step this row tested, at WP02b-1's landing ac18a7de89f4a17790b39ab237849426d2f1ac19; its successors are ST0011's AT-2.x rows."
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 89,
+  "schema": "intent/issue@4.0",
+  "id": "0089",
   "slug": "fullcycle-never-asks-a-person-before-clean-remov",
   "title": "fullcycle never asks a person before clean removes the build trees: its phases get the phase list on stdin, and since 0088 a nested gate reports no person",
   "status": "closed",

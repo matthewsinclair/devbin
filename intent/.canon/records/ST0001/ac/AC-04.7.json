@@ -1,0 +1,8 @@
+{
+  "id": "AC-04.7",
+  "text": "An `in_all: false` option is excluded from `all` and REPORTED as skipped, and still runs when named directly",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

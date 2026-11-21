@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.10",
+  "text": "Rulings carried in Conflab's prose are EXTRACTED before that prose is rewritten. The known instance is `check clippy` running without `--all-targets` for CI parity, whose reason is a source comment and whose loss is invisible because a stricter gate still passes on a clean tree",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "the ruling lives verbatim in `cmd/.lib/check-clippy` (Conflab `eb9ca92c`) and in the check help topic"
+  }
+}

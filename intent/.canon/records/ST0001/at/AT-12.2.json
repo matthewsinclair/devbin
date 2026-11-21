@@ -1,0 +1,11 @@
+{
+  "id": "AT-12.2",
+  "kind": "test",
+  "covers": [
+    "AC-12.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/documentation.bats::\"the extractor finds no key the validator rejects\""
+  }
+}

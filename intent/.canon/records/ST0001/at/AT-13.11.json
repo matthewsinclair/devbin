@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.11",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R5: a clean install reports nothing unowned\""
+  }
+}

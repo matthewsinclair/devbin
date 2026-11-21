@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 156,
+  "schema": "intent/issue@4.0",
+  "id": "0156",
   "slug": "check-critic-is-active-in-every-project-so-check",
   "title": "check critic is active in every project, so check all fails in one that is not an Intent project",
   "status": "closed",

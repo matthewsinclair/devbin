@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 85,
+  "schema": "intent/issue@4.0",
+  "id": "0085",
   "slug": "a-gate-seal-records-where-its-command-line-came",
   "title": "A gate seal records where its command line came from at one of the five sites that open one, and a comment claims the parity it does not have",
   "status": "closed",

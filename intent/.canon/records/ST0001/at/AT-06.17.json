@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.17",
+  "kind": "test",
+  "covers": [
+    "AC-06.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"in_keepset does exact whole-line matching and tolerates a leading dash\""
+  }
+}

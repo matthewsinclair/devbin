@@ -1,0 +1,8 @@
+{
+  "id": "AC-6.3",
+  "text": "A domain naming a sender the profile never defines is a MALFORMED PROFILE, refused before any network call -- not an estate that could not be measured. The profile is the target state, so a sender named and not described is an incomplete target, and reporting it as an instrument gap understates a fault the operator owns and can fix.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.4",
+  "text": "A staleness check that cannot reach the install SAYS SO rather than rendering as up to date. Absent is not clean.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

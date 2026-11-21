@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.13",
+  "text": "`bin/.devbin/config.yaml` reproduces Baize's declared surface with every entry DERIVED from `WP/11/baize-inventory.md`: the 15 commands of `BAIZE_COMMANDS`, `--env` + `--json` with their exports, `version_from` left at its VERSION default with no sidecars, `languages: [elixir, shell]` with rust/swift DELIBERATELY undeclared (activation would gate trees that do not exist; the stub is Baize's authored answer), `fmt md` disabled per Baize's own no-markdown ruling, and the opt-ins (which, publish); catalogue-matching rows get NO entry",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Baize `28267d7`, each entry citing the inventory; doctor 8/0"
+  }
+}

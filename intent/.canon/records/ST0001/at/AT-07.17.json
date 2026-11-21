@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.17",
+  "kind": "test",
+  "covers": [
+    "AC-07.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"help <cmd> prints the authored file when there is one\""
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 339,
+  "schema": "intent/issue@4.0",
+  "id": "0339",
   "slug": "the-bats-lanes-runner-moves-into-the-core-so-eve",
   "title": "The bats lanes runner moves into the core, so every project's `test shell` can run its suite in parallel",
   "status": "closed",

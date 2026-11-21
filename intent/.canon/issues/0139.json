@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 139,
+  "schema": "intent/issue@4.0",
+  "id": "0139",
   "slug": "a-find-that-discards-its-errors-reads-an-unreada",
   "title": "a find that discards its errors reads an unreadable directory as an empty one: infra profiles says no domain is claimed twice, and devbin's own syntax gate passes, over trees they could not read",
   "status": "closed",

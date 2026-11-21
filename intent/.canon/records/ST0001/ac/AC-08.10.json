@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.10",
+  "text": "A project handler still displaces the whole built-in option set, and is asked about its own options rather than having them vetted against the catalogue",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

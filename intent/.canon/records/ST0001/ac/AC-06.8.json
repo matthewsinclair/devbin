@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.8",
+  "text": "`in_keepset` matches whole lines exactly and tolerates a leading dash; `purge-only` keeps the newest kept run by mtime rather than by name; `--purge` with `--no-out` is refused",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

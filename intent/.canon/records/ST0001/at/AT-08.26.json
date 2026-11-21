@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.26",
+  "kind": "test",
+  "covers": [
+    "AC-08.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"an option with no log: runs bare, so an interactive command is not teed\""
+  }
+}

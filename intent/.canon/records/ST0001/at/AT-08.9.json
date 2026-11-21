@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.9",
+  "kind": "test",
+  "covers": [
+    "AC-08.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"check.parity is deliberately absent from the catalogue\""
+  }
+}

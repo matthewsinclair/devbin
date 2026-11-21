@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.16",
+  "kind": "test",
+  "covers": [
+    "AC-15.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"a project with no formattable language says so and passes\""
+  }
+}

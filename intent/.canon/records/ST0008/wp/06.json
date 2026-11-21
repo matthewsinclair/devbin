@@ -1,0 +1,9 @@
+{
+  "id": "06",
+  "title": "The Windows CI leg running the suite inside WSL, and the fixture smoke list",
+  "scope": "M",
+  "status": "done",
+  "objective": "A GitHub Actions job on a Windows runner sets up WSL, clones the commit inside WSL's filesystem and runs `bin/devbin test all`, on release tags and on demand, named by the WSL version it ran and blocking nothing until hv rules otherwise (D50). The same job vendors devbin into two fixture projects, one without `intent/` and one with it, and runs the smoke list on both (D51); the one with `intent/` passes `check all` only once the job can install Intent's Linux binary (D53). Its first run is read job by job, and the adopting estate's own run on one of its repositories is recorded as received. Depends on WP-01 to WP-04, and AC-6.5 on Intent's Linux binaries. Criteria AC-6.1 to AC-6.5.",
+  "body": "",
+  "preamble": ""
+}

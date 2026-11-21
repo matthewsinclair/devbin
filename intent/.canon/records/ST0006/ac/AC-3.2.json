@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.2",
+  "text": "Every invariant is profile-overridable, so a project whose vendor differs does not have to fork the library.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

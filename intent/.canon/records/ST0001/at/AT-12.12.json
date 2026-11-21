@@ -1,0 +1,10 @@
+{
+  "id": "AT-12.12",
+  "kind": "test",
+  "file": "tests/unit/documentation.bats",
+  "covers": [
+    "AC-12.8"
+  ],
+  "status": "green",
+  "note": "Cites the arm 'a project's own page replaces the generated answer rather than appending to it'. 0113 renamed it at 719e8a1 from 'authored help replaces the generated answer rather than appending to it', the title this row named until it was re-cited on 2026-09-23."
+}

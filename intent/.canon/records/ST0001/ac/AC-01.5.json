@@ -1,0 +1,9 @@
+{
+  "id": "AC-01.5",
+  "text": "Per-command behavioural inventory for the 11 universal + 5 shared commands, sufficient to specify WP-08 without further corpus reading",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`design.md` D18, which tiers every command by BEHAVIOUR and corrects the by-name census"
+  }
+}

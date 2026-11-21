@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.23",
+  "kind": "test",
+  "covers": [
+    "AC-14.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"a project's own export still fires, alongside devbin's canonical name\""
+  }
+}

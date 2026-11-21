@@ -1,0 +1,8 @@
+{
+  "id": "AC-1.10",
+  "text": "A verb invoked with no argument REFUSES with a non-zero status, while an explicit --help still exits 0. Usage text at exit 0 over a missing argument is a false green inside the command written to refuse false greens.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

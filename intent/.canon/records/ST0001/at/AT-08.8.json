@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.8",
+  "kind": "test",
+  "covers": [
+    "AC-08.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"build ships NO option set (D18 tier 4)\""
+  }
+}

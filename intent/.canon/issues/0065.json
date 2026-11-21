@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 65,
+  "schema": "intent/issue@4.0",
+  "id": "0065",
   "slug": "the-log-wrapper-cannot-be-declined-project-side",
   "title": "the log wrapper cannot be declined project-side: every value of log: wraps, and the - sentinel is scoped to the catalogue's value (from Intent 0391)",
   "status": "closed",

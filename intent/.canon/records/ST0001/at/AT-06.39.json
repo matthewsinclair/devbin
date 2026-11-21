@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.39",
+  "kind": "test",
+  "covers": [
+    "AC-06.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"run_gate keeps errexit ON for a caller that had it on\""
+  }
+}

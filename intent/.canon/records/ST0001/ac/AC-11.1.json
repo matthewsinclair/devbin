@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.1",
+  "text": "Devbin installs ALONGSIDE Laksa's launcher with nothing at risk: `bin/devbin` + `bin/.devbin/` touch no `bin/laksa*` path, both launchers answer correctly at the same time, and steps 1-4 stay revertible by doing nothing",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Laksa `a80ff7d5`; the installer refused the real `bin/laksa`; every equivalence run drove both launchers on one tree; nothing outside `bin/devbin` + `bin/.devbin/` changed until `72276f4b`"
+  }
+}

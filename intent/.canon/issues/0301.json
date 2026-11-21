@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 301,
+  "schema": "intent/issue@4.0",
+  "id": "0301",
   "slug": "the-release-fixtures-project-builders-let-a-fail",
   "title": "The release fixtures' project builders let a failed step pass: git_project, cut_project and the builders around them check no step, so a failure inside $(...) reads as a project made",
   "status": "closed",

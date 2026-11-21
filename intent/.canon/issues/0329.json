@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 329,
+  "schema": "intent/issue@4.0",
+  "id": "0329",
   "slug": "the-macos-stage-runs-after-the-tag-and-publishes",
   "title": "The macOS stage runs after the tag and publishes the project's declared assets by name",
   "status": "closed",

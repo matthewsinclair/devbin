@@ -1,0 +1,8 @@
+{
+  "id": "AC-17.1",
+  "text": "`version` reads: bare prints `<name> <version>`, `show` prints the bare number for scripting, and both read the file `project.version_from` names",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

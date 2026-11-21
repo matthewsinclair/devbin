@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.4",
+  "text": "The snapshot names no machine of hv's and no person's home path, the planted fixture lines listed and kept by name, and names hv's projects only as Q5 ruled: Intent, Molt and Utilz (issue 0242).",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "snapshot 2cde3ee6: machine names 0, unshipped names 0; the 14 home-path lines are neutral.bats' and install.bats' planted lines, the 0109 notes and config.yaml's install.prefix, accepted by hv as H9 (2026-10-29)"
+  }
+}

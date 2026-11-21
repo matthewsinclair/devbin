@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.13",
+  "text": "`run_gate` does not change the caller's shell options: errexit is restored to whatever the caller had, on or off",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "16",
+  "title": "Built-ins: Data (db)",
+  "scope": "S",
+  "status": "done",
+  "objective": "Ship the small declarative core of `db` and let the variance land where it belongs. D18 found `db` has the widest project spread in the corpus: the option NAMES agree 3/4 while the commands behind them do not (`mix ash.setup` / `mix setup` / `mix ecto.setup`).",
+  "body": "## Deliverables\n\n- `lib/cmd/db` implementing the catalogued core (`setup`, `migrate`, `reset`, `seed` are already in `lib/builtins`), each overridable in one line of config.\n- `codegen`, `sql` and `proxy` handled as declared options or project handlers rather than shipped defaults -- they are where the corpus disagrees most.\n- **AC-04.12's recursive sub-dispatch** (`db sql <statement>`), carried here from WP-04. This is its natural home: `db sql` is the corpus's only real three-level command, so the general mechanism and its first real user land together rather than the mechanism landing speculatively.\n- BATS coverage, including two projects whose `db setup` differ.\n\n## Dependencies\n\n- WP-04 (dispatch, and AC-04.12 which this WP discharges), WP-08 (catalogue).\n- Blocks WP-10.",
+  "preamble": "Split out of WP-08 (built-in command library) along the family cut WP-08's own notes named."
+}

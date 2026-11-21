@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 172,
+  "schema": "intent/issue@4.0",
+  "id": "0172",
   "slug": "the-vendored-runtime-still-describes-the-operato",
   "title": "The vendored runtime still describes the operator's own fleet, and cites devbin's tracker in text a user reads",
   "status": "closed",

@@ -1,0 +1,9 @@
+{
+  "id": "03",
+  "title": "shell-init bash, both bodies from one source",
+  "scope": "S",
+  "status": "done",
+  "objective": "`shell-init` gains a bash body, so `eval \"$(bin/devbin shell-init bash)\"` gives WSL's default shell the same `dvb` that the zsh line gives zsh (D47). Both bodies render from one source, the zsh-only `--autoload` form stays zsh's, and the same arms run under both shells. Criterion AC-3.1.",
+  "body": "",
+  "preamble": ""
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-16.11",
+  "kind": "test",
+  "covers": [
+    "AC-16.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/data.bats::\"the descent applies to devbin's own handlers too\""
+  }
+}

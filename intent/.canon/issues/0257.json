@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 257,
+  "schema": "intent/issue@4.0",
+  "id": "0257",
   "slug": "the-rendered-formula-in-the-tap-keeps-the-templa",
   "title": "The rendered formula in the tap keeps the template's header, which says it is never installed from and holds placeholders",
   "status": "closed",

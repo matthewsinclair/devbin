@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 223,
+  "schema": "intent/issue@4.0",
+  "id": "0223",
   "slug": "the-release-pre-flight-requires-ci-green-on-the",
   "title": "the release pre-flight requires CI green on the base commit before a cut, so a Linux-only defect is caught before the tag (hv's ruling 2026-10-24)",
   "status": "closed",

@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.5",
+  "text": "`bin/laksa_helpers` (424 lines) is accounted for line by line at deletion: the universal half dies with the file (it IS devbin's lib), the project half relocates to `cmd/.lib/laksa`, and the two extraction grammars are compared against devbin's shipped equivalents with any divergence recorded, not assumed away",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "both grammars diffed BYTE-IDENTICAL to `_DEVBIN_GRAMMAR_MIX`/`_DEVBIN_GRAMMAR_CREDO` (so the runners call `grammar_for`), the mapping stated in `cmd/.lib/laksa`'s header and the inventory; deleted in `72276f4b`"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 317,
+  "schema": "intent/issue@4.0",
+  "id": "0317",
   "slug": "infra-check-s-dig-less-path-farm-fails-where-usr",
   "title": "infra-check's dig-less PATH farm fails where /usr/bin holds a dangling link and /bin is /usr/bin",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-15.3",
+  "kind": "test",
+  "covers": [
+    "AC-15.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/buildfmt.bats::\"build lists its declared targets in help though devbin ships none\""
+  }
+}

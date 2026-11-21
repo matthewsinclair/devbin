@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.14",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R8: a key that opened a map cannot also carry a value\""
+  }
+}

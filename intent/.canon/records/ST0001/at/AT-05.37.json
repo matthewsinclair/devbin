@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.37",
+  "kind": "test",
+  "covers": [
+    "AC-05.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/dispatch.bats::\"a shared option is consumed by the dispatcher and reaches the handler as environment\""
+  }
+}

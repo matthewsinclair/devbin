@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 142,
+  "schema": "intent/issue@4.0",
+  "id": "0142",
   "slug": "infra-check-and-init-take-one-empty-ns-answer-fr",
   "title": "infra check and init take one empty NS answer from the machine's resolver as final, and say no authoritative nameserver answered when none was asked -- a transient miss lists a live domain as unmeasured",
   "status": "closed",

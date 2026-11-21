@@ -1,0 +1,8 @@
+{
+  "id": "AC-4.2",
+  "text": "Under WSL, doctor in a project rooted on a Windows drive reports the location, the cause and the remedy, and does not fail on that alone; held by arms that drive the WSL probe on Linux.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.3",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R3: a root_var that is not an identifier is refused, naming the key\""
+  }
+}

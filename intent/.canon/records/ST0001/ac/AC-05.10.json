@@ -1,0 +1,8 @@
+{
+  "id": "AC-05.10",
+  "text": "A shared option declaring no `export` target is a config error, not a silent no-op",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

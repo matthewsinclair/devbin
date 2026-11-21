@@ -1,0 +1,10 @@
+{
+  "id": "AT-6.3",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-6.3"
+  ],
+  "status": "green",
+  "note": "releasecut.bats's AC-6.3 arm, '# AT-6.3' over it: pre-flight refuses a gate in all whose option its platforms: hold back on every leg the cut will run, naming the gate, the option and its platforms, and a host absent at pre-flight as not counted; a reached host on a platform the option names covers it -- red at the red clone be11b283 (WP08's bank 8a6ee377, main 67a8ae56's tree outside intent/, with WP02c's nine test files and none of its code, red-02c-8a6ee377-1b561da2) in the arms phase of WP02c's run (slot 01M6C76DJ3MVP4K2TZD91H1CJD, 2026-11-01 18:53:42Z to 18:58:38Z by date -u, rc 0): releasecut.bats's three WP-02c arms 0 ok and 3 not ok, this arm among them (the dry run passed pre-flight, exit 0 and no step failed, where pre-flight should refuse the gate), the leg bounded at 60s and not cut off; records ~/Devel/scratch/devbin-dc/wp02c/runs/arms/summary and red-02c-releasecut.tap. Green at 1b561da2 in the same run: under GNU in its arms phase (releasecut.bats's three WP-02c arms, 3 of 3 ok) and its light phase from 18:58:38Z to 19:29:39Z, rc 0 (releasecut.bats whole, 170 of 170 ok), and under BSD in the whole suite through bin/devbin test all (2980 ok, 0 not ok, 5 skipped; its seal 20261101-1858.bats.errors empty), this arm ok in each and skipped in none; landed as 16e83e18cf2ead8171a4b699962819561a59520c, its tree outside intent/ the tested tip's; records ~/Devel/scratch/devbin-dc/wp02c/runs/arms, ~/Devel/scratch/devbin-dc/wp02c/runs/light and ~/Devel/scratch/devbin-dc/wp02c/seals/20261101-1858.bats.out."
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.1",
+  "text": "Every check can go RED on real drift: a TTL differing from the profile, a declared mail domain with no MX, two SPF records where one is allowed, a missing _dmarc where a policy is declared, a live policy differing from the target, and two domains on one mail value carrying different MX forms.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

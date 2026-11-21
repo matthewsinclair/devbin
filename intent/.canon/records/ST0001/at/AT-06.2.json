@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.2",
+  "kind": "test",
+  "covers": [
+    "AC-06.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"a red run seals NON-EMPTY\""
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-02.2",
+  "kind": "test",
+  "covers": [
+    "AC-02.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/harness.bats::\"the temp dir is outside the checkout\""
+  }
+}

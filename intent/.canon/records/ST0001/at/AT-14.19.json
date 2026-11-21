@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.19",
+  "kind": "test",
+  "covers": [
+    "AC-14.10"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"server runs the plain command line, and the iex one under --iex\""
+  }
+}

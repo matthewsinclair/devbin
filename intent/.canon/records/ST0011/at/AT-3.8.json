@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.8",
+  "kind": "test",
+  "file": "tests/unit/releaseattach.bats",
+  "covers": [
+    "AC-3.3"
+  ],
+  "status": "green",
+  "note": "WP07's clause of AC-3.3 (cc): attach reads the assets run by the release commit's sha; red until WP07 lands, when its file is re-cited with at edit and the row marked green. Red at the red clone 6a09815c (the hook-in's bank edada49b with WP07's releaseattach.bats and none of its code) in the arms phase of the hook-in stack's run (slot 01M6C0GKNE2H3SM6TPRM9MCWB6, units ST0011/05, ST0011/04 and ST0011/07, 2026-11-01 16:56:09Z to 17:05:51Z by date -u): releaseattach.bats's four ST0011 WP07 arms, plan 4 met, 3 not ok, the '# AT-3.8' arm (the candidate's run read) among them, and 1 ok, the guard green at the base by construction, held out by GREEN_AT_BASE; the leg bounded at 60s and not cut off; records ~/Devel/scratch/devbin-dc/hookin/runs/arms/summary and red-07-releaseattach.tap. Green at ba5a8270 in the same run: the four arms under GNU in the arms phase, 4 of 4 ok; in the light phase (17:05:51Z to 17:42:09Z, rc 0), releaseattach.bats whole under GNU, 38 of 38 ok, and the whole suite under BSD through bin/devbin test all, 2966 ok and 0 not ok, its seal 20261101-1705.bats.errors empty; the '# AT-3.8' arm ok in each and skipped in none; landed as 8a776229bd4102cf9606b132c91f8dd05eaf24cc, its tree outside intent/ the tested tip's; records ~/Devel/scratch/devbin-dc/hookin/runs/arms, runs/light and build/tmp/test/20261101-1705.bats.out. The '# AT-3.8' line is over releaseattach.bats's arm 'release attach reads the run CI made on the candidate's branch at the release commit'."
+}

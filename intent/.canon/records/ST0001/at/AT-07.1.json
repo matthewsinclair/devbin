@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.1",
+  "kind": "test",
+  "covers": [
+    "AC-07.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"the listing is generated from what resolves, not from a hand-written list\""
+  }
+}

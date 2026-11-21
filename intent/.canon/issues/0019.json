@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 19,
+  "schema": "intent/issue@4.0",
+  "id": "0019",
   "slug": "the-seal-s-verdict-and-its-determinate-fact-live",
   "title": "the seal's verdict and its determinate fact live in different files, and every estate's reading rule predates the split",
   "status": "closed",

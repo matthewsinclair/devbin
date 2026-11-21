@@ -1,0 +1,9 @@
+{
+  "id": "AC-08.2",
+  "text": "Baseline-then-update seals per protocol, green after (elixir path)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "**the update half ran BEFORE the baseline could be sealed, and that is recorded rather than papered over.** Prolix would not compile on Elixir 1.20.3 at all (faker 0.18.0, a raw U+0085 in a string literal), so no sealed baseline was obtainable until the deps moved"
+  }
+}

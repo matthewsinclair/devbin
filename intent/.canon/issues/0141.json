@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 141,
+  "schema": "intent/issue@4.0",
+  "id": "0141",
   "slug": "clean-lists-the-wrong-trees-for-removal-a-newlin",
   "title": "clean lists the wrong trees for removal: a newline in a name lists a tree outside the project, a trailing TAB lists the source directory beside it, and a crate built with --target-dir . lists its own source",
   "status": "closed",

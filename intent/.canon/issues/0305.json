@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 305,
+  "schema": "intent/issue@4.0",
+  "id": "0305",
   "slug": "worktrees-clears-git-s-local-variables-silently",
   "title": "worktrees clears git's local variables silently before remove-landed writes, where the release verbs name what they clear",
   "status": "closed",

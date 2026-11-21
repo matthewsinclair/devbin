@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.15",
+  "kind": "test",
+  "covers": [
+    "AC-14.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"built-in commands carry a summary in help rather than a blank column\""
+  }
+}

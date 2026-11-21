@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 359,
+  "schema": "intent/issue@4.0",
+  "id": "0359",
   "slug": "run-gate-s-signal-handling-has-no-function-a-han",
   "title": "run_gate's signal handling has no function a handler can call: traps, progress name, signal exit and ENDED line are inline",
   "status": "closed",

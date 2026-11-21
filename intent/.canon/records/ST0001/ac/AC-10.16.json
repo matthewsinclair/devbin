@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.16",
+  "text": "What this WP found in devbin's own code is recorded as part of the output, not as an aside. Every WP so far has found a defect in another WP's code; WP-10's preparation alone found issue 0002 before the migration started",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "tasks.md's WP-10 section records issue 0002 (pre-start), the all-dispatch defect (`e0ed389`, AC-04.13 refined in place, AT-04.30), and the precommit blast-radius finding, each with its fix and its red-first test where one applies"
+  }
+}

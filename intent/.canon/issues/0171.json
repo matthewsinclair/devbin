@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 171,
+  "schema": "intent/issue@4.0",
+  "id": "0171",
   "slug": "clean-md-s-cargo-cache-rustc-info-sentence-reads",
   "title": "clean.md's CARGO_CACHE_RUSTC_INFO sentence reads as a fragment",
   "status": "closed",

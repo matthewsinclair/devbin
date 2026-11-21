@@ -1,0 +1,11 @@
+{
+  "id": "AT-13.17",
+  "kind": "test",
+  "covers": [
+    "AC-13.7"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/review.bats::\"R9: replacing an existing file leaves no partial content\""
+  }
+}

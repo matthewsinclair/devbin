@@ -1,0 +1,8 @@
+{
+  "id": "AC-3.1",
+  "text": "The library ships pair-SHAPE and required-record-CLASS invariants, never values. A shipped value commits to an answer nobody has: a vendor include would have been wrong for a live domain on 2026-09-06, and whether that split is account-specific or generational is unresolved.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.24",
+  "text": "The handlers land with each one's reason in the inventory: the four sealed runners on lib/runlog with `grammar_for` (all four grammars byte-compared IDENTICAL before install), the REPL drivers (walk/nlp), the seal preflight ported to fence DEVBIN's purge machinery with the legacy-suffix check dropped for its recorded reason, the `.d` resource trees moved verbatim with only their source stanzas retargeted (three scripts), cli's no-intercept/no-cd rulings kept, and the build/deploy pipeline's runner references retargeted to the test.d siblings",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Lamplight `51cba4635` (30 files); the ported fence ran 10 checks green against devbin's machinery; the residual-reference grep over the moved trees came back clean"
+  }
+}

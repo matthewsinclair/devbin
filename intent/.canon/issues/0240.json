@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 240,
+  "schema": "intent/issue@4.0",
+  "id": "0240",
   "slug": "a-cut-pushes-the-release-to-every-remote-and-the",
   "title": "A cut pushes the release to every remote, and the public repository takes the workroom's name: push the workroom to local only and publish the snapshot through CI (ST0010)",
   "status": "closed",

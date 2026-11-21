@@ -1,0 +1,10 @@
+{
+  "id": "10",
+  "title": "Utilz retires tools/ci-state, post-cut and formula; estate as a recorded gate; macOS legs on candidate/",
+  "scope": "S",
+  "status": "cancelled",
+  "status_reason": "moved to utilz's own thread on hv's ruling 2026-11-13: utilz#ST0031",
+  "objective": "Utilz, after the sweep (design.md section 7; dialog section 6): `tools/ci-state`, `tools/post-cut` and `tools/formula` retire into the core; `bin/.devbin/config.yaml`'s `gates:` gains `test estate` as a recorded gate run in parallel (Q9), `macos:` stays, `after:` is `formula publish`; `.github/workflows/tests.yml` fires its macOS legs on `candidate/` and loses the tag trigger; the hand dispatch and the dry run's `check all` stop; `tools/test-estate` and the CI menuz-app test build stay; `docs/releasing.md`. Serves AC-4.3.\n\n\nRecord (vc, 2026-10-31): Utilz's utilz#ST0031 is the one place this work is written and claimed (ST0031/01 the sweep's Utilz side, /02 the CI tuning bank proven at the sweep's push, /03 menuz reading the stamp rather than the tag at menuz:632, which is ic's lane); this package points at it. From Utilz's inventory (utilz-dc, checked by utilz-vc at 48c0ea54): install.sh:621 install_ci_state is a second CI reader and retires onto bin/devbin ci-state; the tap-pull rule (post-cut:111-123, Utilz ST0030) moves to the built-in formula publish (WP08); the 2.14.8 seal left with no verdict is Devbin issue 0297.",
+  "body": "",
+  "preamble": ""
+}

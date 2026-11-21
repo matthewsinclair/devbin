@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.16",
+  "text": "`bin/baize_helpers` (474 lines) is accounted for line by line at deletion: the universal half dies with the file, the project half relocates to `cmd/.lib/baize` (config store, rack_task/rack_task_sub with the umbrella gotcha documentation, not_yet), and both extraction grammars are byte-compared against devbin's shipped equivalents with any divergence recorded, not assumed away -- the compare ran before install: BOTH byte-identical (devbin's shipped mix grammar already carries the umbrella `==> app` headers; the predicted divergence did not exist)",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "the diff transcript in this session's record; `cmd/.lib/baize` holds the project half with the mapping in its header; the runners call `grammar_for`"
+  }
+}

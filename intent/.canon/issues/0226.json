@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 226,
+  "schema": "intent/issue@4.0",
+  "id": "0226",
   "slug": "a-macos-app-release-developer-id-sign-notarise-s",
   "title": "a macOS app release (Developer ID sign, notarise, staple, verify, attach at the tag) is a per-project command copied between projects: devbin ships it as a shared built-in",
   "status": "closed",

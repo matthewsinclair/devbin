@@ -1,0 +1,9 @@
+{
+  "id": "08",
+  "title": "Utilz, then Conflab, then Intent last, adopt the core",
+  "scope": "S",
+  "status": "done",
+  "objective": "Utilz, then Conflab, then Intent last, each release through the shared core and retire their own orchestrator, so the sequence R-B found written three times is written once. Every adoption is a release: block that validates and a cut made with bin/devbin release; a project-specific branch in the core would be the defect this work package exists to prevent, and Intentv2 is excluded by ruling.\n\nState at 2026-09-20 12:46Z. The preconditions are met: devbin 0.1.2 carries the core (ST0007 WP-01 to WP-07, devbin having adopted it first and cut v0.1.2 with it), and the 0.1.2 sweep has put that runtime into every estate but the two held for their own windows. Each adoption waits on its own estate rather than on this thread: Utilz after its 2.10.0 tag and its sweep, both hv's calls; Conflab after Utilz; Intent last, per hv's decision 28, and at Intent no node pushes. AC-8.2 is the other half and is read across the fleet rather than in one tree: no cmd/release or build.d/release handler may remain in any releasing project except Intentv2.",
+  "body": "",
+  "preamble": ""
+}

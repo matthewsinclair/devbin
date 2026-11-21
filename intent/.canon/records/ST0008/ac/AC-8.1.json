@@ -1,0 +1,8 @@
+{
+  "id": "AC-8.1",
+  "text": "release.verbs decides which release verbs a project offers: undeclared, every verb (cut, status, notes, check, attach). A verb the list leaves out is refused at exit 2, before anything else is read, naming the verb and the list, and usage prints only the verbs offered. An item that is not one of the five verbs, or \"-\", is refused at validation. A release key that no offered verb reads is refused as unread config, read from one table of which verbs read each key.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

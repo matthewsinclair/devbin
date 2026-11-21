@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 224,
+  "schema": "intent/issue@4.0",
+  "id": "0224",
   "slug": "a-vendored-project-is-told-devbin-has-moved-on-w",
   "title": "a vendored project is told devbin \"has moved on\" when the source's commit moved forward but no vendored file changed (doctor's source note and the update notice)",
   "status": "closed",

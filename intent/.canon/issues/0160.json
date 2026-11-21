@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 160,
+  "schema": "intent/issue@4.0",
+  "id": "0160",
   "slug": "an-empty-command-level-run-is-refused-by-all-wit",
   "title": "An empty command-level run: is refused by all with a pointer to a bare command that cannot run",
   "status": "closed",

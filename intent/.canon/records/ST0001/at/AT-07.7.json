@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.7",
+  "kind": "test",
+  "covers": [
+    "AC-07.2"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a group config never named still prints, after the declared ones\""
+  }
+}

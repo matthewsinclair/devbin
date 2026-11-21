@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 209,
+  "schema": "intent/issue@4.0",
+  "id": "0209",
   "slug": "the-release-core-s-steps-and-rows-are-named-by-t",
   "title": "the release core's steps and rows are named by their position (step 6, row 9, steps 7 to 11) in its messages, docs, pages and tests, against hv's rule that nothing is named by its position in a list",
   "status": "closed",

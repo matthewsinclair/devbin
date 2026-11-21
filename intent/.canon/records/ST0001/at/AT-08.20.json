@@ -1,0 +1,11 @@
+{
+  "id": "AT-08.20",
+  "kind": "test",
+  "covers": [
+    "AC-08.10"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/builtins.bats::\"a project handler still displaces the whole built-in option set\""
+  }
+}

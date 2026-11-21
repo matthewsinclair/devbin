@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 128,
+  "schema": "intent/issue@4.0",
+  "id": "0128",
   "slug": "d2-s-project-tiers-are-written-out-by-hand-at-fo",
   "title": "D2's project tiers are written out by hand at four sites beside project_owns_command, and nothing keeps them in step",
   "status": "closed",

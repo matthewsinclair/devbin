@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 44,
+  "schema": "intent/issue@4.0",
+  "id": "0044",
   "slug": "retracted-a-fleet-root-that-does-not-exist-was-c",
   "title": "RETRACTED -- a fleet root that does not exist was claimed to scan as empty; the census already names it ABSENT",
   "status": "closed",

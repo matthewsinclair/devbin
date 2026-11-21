@@ -1,0 +1,9 @@
+{
+  "id": "AC-2.5",
+  "text": "workroom.bats, neutral.bats and the project-name guard (issue 0242) pass on the snapshot.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "workroom.bats and neutral.bats passed in the v0.1.17 cut's test all gate on 420547e3, the snapshot's source; hv ruled 2026-10-29 that no separate run on the snapshot is made"
+  }
+}

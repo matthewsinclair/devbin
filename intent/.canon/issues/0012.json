@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 12,
+  "schema": "intent/issue@4.0",
+  "id": "0012",
   "slug": "install-named-the-launcher-from-the-directory-basename-verbatim",
   "title": "install named the launcher from the directory basename, verbatim",
   "status": "closed",

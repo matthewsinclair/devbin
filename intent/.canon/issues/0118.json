@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 118,
+  "schema": "intent/issue@4.0",
+  "id": "0118",
   "slug": "release-md-documents-an-exit-code-3-no-step-can",
   "title": "release.md documents an exit code 3 no step can return, and says a dry run writes nothing",
   "status": "closed",

@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.38",
+  "kind": "test",
+  "covers": [
+    "AC-06.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"run_gate does not change the caller's errexit\""
+  }
+}

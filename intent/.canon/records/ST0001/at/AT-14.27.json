@@ -1,0 +1,11 @@
+{
+  "id": "AT-14.27",
+  "kind": "test",
+  "covers": [
+    "AC-14.8"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/surfaces.bats::\"cli composes its command line from the project name\""
+  }
+}

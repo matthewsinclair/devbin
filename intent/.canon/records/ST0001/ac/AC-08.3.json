@@ -1,0 +1,8 @@
+{
+  "id": "AC-08.3",
+  "text": "A command line survives the table intact, including embedded `--` and multiple flags; a tier-1 option reports `@builtin` and still carries its other metadata",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

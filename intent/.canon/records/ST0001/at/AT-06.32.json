@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.32",
+  "kind": "test",
+  "covers": [
+    "AC-06.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"run_gate propagates the gate's own exit code\""
+  }
+}

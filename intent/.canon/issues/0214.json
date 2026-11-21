@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 214,
+  "schema": "intent/issue@4.0",
+  "id": "0214",
   "slug": "st0010-s-public-tree-the-mechanical-half-harness",
   "title": "ST0010's public tree, the mechanical half: harness.bats:96 reads intent/llm/MODULES.md (the one arm the candidate suite failed), the MIT licence everywhere (decision 56), DMARC fixtures carrying real addresses, and a README row naming a workroom file",
   "status": "closed",

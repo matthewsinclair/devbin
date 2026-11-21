@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.7",
+  "kind": "test",
+  "file": "tests/unit/releasestatus.bats",
+  "covers": [
+    "AC-3.2"
+  ],
+  "status": "green",
+  "note": "the release commit's tree is materialised under TMPDIR and removed on every exit path, a refusal included, and a TMPDIR inside the project is refused before anything is created; marked # AT-3.7"
+}

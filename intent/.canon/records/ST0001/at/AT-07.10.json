@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.10",
+  "kind": "test",
+  "covers": [
+    "AC-07.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"config's summary beats the handler header and the catalogue\""
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.28",
+  "text": "The 22 authored topics migrate with rulings extracted first, byte-stable under the pre-commit hook's own `prettier --write` (the hook formats staged markdown HERE, unlike Baize) from their first commit",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Lamplight `af2cbdf91`: prettier --check clean on all 22 before the commit, and the hook itself printed \"(unchanged)\" twenty-two times inside it"
+  }
+}

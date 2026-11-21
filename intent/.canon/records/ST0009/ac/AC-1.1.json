@@ -1,0 +1,9 @@
+{
+  "id": "AC-1.1",
+  "text": "The tap's Formula/devbin.rb names the release tag and its commit as revision, and carries no @@ placeholder; the record names the tap commit.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "tap matthewsinclair/homebrew-devbin main 3f2fecf (devbin 0.1.11, published by hv with bin/devbin formula publish, 2026-10-17): Formula/devbin.rb tag v0.1.11, revision 0fc226696548573935dd42e0112fb7167f602a75, 0 @@ placeholders"
+  }
+}

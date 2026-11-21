@@ -1,0 +1,9 @@
+{
+  "id": "AC-04.3",
+  "text": "The `docs` command runs the project's real doc build (read at WP start, not assumed), demonstrated once",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "it is NOT ex_doc; `docs/bin/publish` (mdagg + pandoc + typst) wired at `commands.docs.options.publish` in `d6b14d0` with argv pass-through and `in_all: false`. `bin/mg docs publish 20-concepts` produced the 132KB aggregate + 20MB PDF at v0.1.0, seal `20260810-1011.PUBLISH.errors` 0 bytes; called bare it exits 1 on the publisher's own usage line, seal `20260810-1010.PUBLISH.errors` 136 bytes"
+  }
+}

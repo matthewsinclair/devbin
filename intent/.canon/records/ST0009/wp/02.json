@@ -1,0 +1,9 @@
+{
+  "id": "02",
+  "title": "Installed from the tap on this Mac (rhad)",
+  "scope": "S",
+  "status": "done",
+  "objective": "On rhad, with nothing installed from a checkout for the proof, brew tap matthewsinclair/devbin and brew install devbin fetch over the formula's ssh url (the network half 0195 did not rehearse); brew test devbin passes and the devbin on PATH is the keg's; brew audit --strict is read and each finding fixed or accepted with its reason.",
+  "body": "",
+  "preamble": ""
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 20,
+  "schema": "intent/issue@4.0",
+  "id": "0020",
   "slug": "a-cross-estate-citation-names-a-tracker-that",
   "title": "a cross-estate citation names a tracker that cannot be found from where it is written",
   "status": "closed",

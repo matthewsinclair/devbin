@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 76,
+  "schema": "intent/issue@4.0",
+  "id": "0076",
   "slug": "the-bash-5-floor-is-checked-only-in-the-dispatch",
   "title": "The bash 5 floor is checked only in the dispatcher's process, so a handler exec'd through a PATH that finds bash 3.2 runs on it without refusal",
   "status": "closed",

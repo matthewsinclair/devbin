@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 229,
+  "schema": "intent/issue@4.0",
+  "id": "0229",
   "slug": "the-xcodebuild-test-counter-misses-xctest-s-inde",
   "title": "the xcodebuild test counter misses XCTest's indented summary, undercounts swift-testing, and never promotes an empty selection, so a Swift gate can pass having run nothing",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-2.1",
+  "text": "A consumer whose recorded source has moved ahead prints a staleness notice on every run, at the cost of one file read.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "AT-3.5",
+  "kind": "test",
+  "file": "tests/unit/releasestatus.bats:170",
+  "covers": [
+    "AC-3.3"
+  ],
+  "status": "green",
+  "note": "releasestatus.bats's WP06 arm: a tag whose object the repository lacks stops release status with git's own words, through release_commit, the one reader of R that the cut, release status and macos ask. Red (1 of 1) at the red clone 8dd76d99 in run 3 of 2026-10-31 (slot 01M6922YDEYTDZ3EG4EFFR8WD0, 13:25Z to 14:19Z), record ~/Devel/scratch/devbin-dc/run3c/runs/arms/summary. Green at 8f3d95fe under BSD and GNU in its arms and the whole file (53) in its light phase, record ~/Devel/scratch/devbin-dc/run3c/runs/light/summary; aa2fb1d2 changes only lib/release.legs and tests/unit/helpers.bats from 8f3d95fe, and run 3b (slot 01M696HE2CXGH3SW7HHYCEDCTM, 14:43:07Z to 14:55:30Z), record ~/Devel/scratch/devbin-dc/run3d/runs/light/summary, is green; lands with the stack at aa2fb1d2, WP06b 1f37e5eb under it, by land-stack.sh."
+}

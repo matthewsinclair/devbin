@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.33",
+  "kind": "test",
+  "covers": [
+    "AC-05.11"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"a valued option with nothing after it is refused\""
+  }
+}

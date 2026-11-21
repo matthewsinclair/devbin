@@ -1,0 +1,9 @@
+{
+  "id": "AC-12.1",
+  "text": "`README.md` is the front door: what devbin is and what it replaced, how to install it into a project, the 60-second config, the command surface, the layout of `bin/.devbin/`, and the constraints stated up front -- written for someone who has never seen the four source projects",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`README.md`"
+  }
+}

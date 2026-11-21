@@ -1,0 +1,9 @@
+{
+  "id": "AT-2.3",
+  "kind": "test",
+  "file": "tests/unit/upgradeoffer.bats",
+  "covers": [
+    "AC-2.3"
+  ],
+  "status": "green"
+}

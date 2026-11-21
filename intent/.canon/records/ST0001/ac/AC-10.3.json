@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.3",
+  "text": "`bin/.devbin/config.yaml` reproduces Conflab's full declared surface -- all 18 commands of `CONFLAB_COMMANDS`, both `--env` and `--bin` common options with their value sets, the eight `check` gates, the four `test` gates, and the six version sidecars -- with every entry DERIVED from the inventory rather than invented",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Conflab `eb9ca92c`, each entry citing the inventory; the locks deliberately excluded with the reason at the site (the AC-10.1 correction, hv-ratified)"
+  }
+}

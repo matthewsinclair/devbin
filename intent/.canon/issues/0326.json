@@ -1,6 +1,7 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 326,
+  "schema": "intent/issue@4.0",
+  "id": "0326",
+  "realised": true,
   "slug": "the-core-carries-dev-opt-brew-for-a-project-s-ow",
   "title": "The core carries dev/opt/brew for a project's own binaries, so every Homebrew'd tool runs one implementation of install, use, tree identity and the version line",
   "status": "open",

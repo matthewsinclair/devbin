@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.12",
+  "text": "Devbin installs ALONGSIDE Baize's launcher with nothing at risk: `bin/devbin` + `bin/.devbin/` touch no `bin/baize*` / `bin/bz` / `bin/cli` / `bin/repl` path, both launchers answer correctly at the same time, and everything before the switch stays revertible by doing nothing",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Baize `78f2b08`; the installer refused the real `bin/baize`; every equivalence run drove both launchers on one tree"
+  }
+}

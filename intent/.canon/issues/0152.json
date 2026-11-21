@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 152,
+  "schema": "intent/issue@4.0",
+  "id": "0152",
   "slug": "the-vendored-runtime-names-consumer-projects-ses",
   "title": "The vendored runtime names consumer projects, sessions and other repositories' commits, and ships no licence",
   "status": "closed",

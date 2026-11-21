@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.12",
+  "text": "Built-in commands carry a summary in the generated help, from the catalogue, rather than a blank column",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

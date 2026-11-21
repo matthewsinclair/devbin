@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.4",
+  "text": "Sealing is a no-op when no companion is kept, and a seal whose directory has vanished mid-run warns rather than failing silently",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

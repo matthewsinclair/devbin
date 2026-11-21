@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 98,
+  "schema": "intent/issue@4.0",
+  "id": "0098",
   "slug": "help-why-does-not-name-an-option-the-project-dec",
   "title": "help --why does not name an option the project declared and switched off, though all's count line says it does",
   "status": "closed",

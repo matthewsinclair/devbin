@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 369,
+  "schema": "intent/issue@4.0",
+  "id": "0369",
   "slug": "helpers-bats-s-traps-restore-arm-0311-reads-hup",
   "title": "helpers.bats's traps_restore arm (0311) reads HUP as ignored when the suite is started under nohup, and fails on the launch, not the code",
   "status": "closed",

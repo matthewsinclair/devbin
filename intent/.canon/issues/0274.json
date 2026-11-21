@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 274,
+  "schema": "intent/issue@4.0",
+  "id": "0274",
   "slug": "hand-run-suites-in-several-projects-at-once-cont",
   "title": "Hand-run suites in several projects at once contend for one machine and time out: a run of a project's gates takes a machine-wide lock (not in 0.1.16)",
   "status": "closed",

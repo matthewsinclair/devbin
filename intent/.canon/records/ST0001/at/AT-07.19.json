@@ -1,0 +1,11 @@
+{
+  "id": "AT-07.19",
+  "kind": "test",
+  "covers": [
+    "AC-07.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/help.bats::\"a word with no topic behind it stops the descent and the parent answers\""
+  }
+}

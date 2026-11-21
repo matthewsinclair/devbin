@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 147,
+  "schema": "intent/issue@4.0",
+  "id": "0147",
   "slug": "infra-mail-dmarc-report-calls-every-present-but",
   "title": "infra mail dmarc report calls every present-but-failing DKIM result 'your own mail, failing', though aggregate data cannot tell own mail from a forged or unsigned one, and in Prodinfra's archive all five such records are forged or unsigned",
   "status": "closed",

@@ -1,0 +1,8 @@
+{
+  "id": "AC-6.2",
+  "text": "A platforms: value outside the core's platform words is refused at config read, naming the key and the value, as an unknown key is.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

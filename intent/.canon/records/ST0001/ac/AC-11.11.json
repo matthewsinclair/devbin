@@ -1,0 +1,9 @@
+{
+  "id": "AC-11.11",
+  "text": "What this migration finds in devbin's own code is recorded as part of the output -- every WP has found a defect in another WP's code, and the candidate already on file (the builtin toolchain gate lacking the corpus's Dockerfile arm) is either fixed in devbin or declined with its reason recorded",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "FIXED, on hv's promote call at WP-11 close with the full 4-of-4 data set (three image-bearing carriers, Baize's no-image negative): the builtin gained the image arm (Devbin `e4e80af`, six tests each seen red against the armless builtin; fly.toml-derived missing-Dockerfile strictness; the erlang-vs-image comparison on the FULL pin -- Laksa's copy, D13 takes the strongest) and the fleet re-vendored (Conflab `8949cd97` -- its previously UNGUARDED image pins now green on first run; Laksa `ace8f391`; Baize `75b6773` -- the gate itself now states the no-image fact; Lamplight `6fa7ad0e7`). The two surviving project copies each carry a recorded reason at both comment sites (Laksa: the check-all ordering ruling, declared options being the only ordering mechanism; Lamplight: its rust arm, which the builtin lacks) with divergence-is-a-defect stated. The migrations' full defect record: issues 0005/0006 (fixed earlier), 0007 (closed, option 1 -- the active-set usage lines), 0008 (closed, three parts -- the stability test, the template fix, the fleet fences)"
+  }
+}

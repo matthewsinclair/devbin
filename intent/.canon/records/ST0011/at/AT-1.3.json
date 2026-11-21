@@ -1,0 +1,10 @@
+{
+  "id": "AT-1.3",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-1.2"
+  ],
+  "status": "green",
+  "note": "releasecut.bats's arms, each tagged ST0011: 'a re-run continues: stamp, commit and gates already, the gates' sealed green for the release commit standing for them, no second commit', 'a release commit made again is not the commit the gates' seal stands for: the gates run on it', 'a gates seal left in flight stands for nothing: the next run runs the gates', and release gates under one GATES seal naming the commit it ran on; red at the red clone 755825af in WP01 run of 2026-10-31 11:58Z, record ~/Devel/scratch/devbin-cc/st11-wp01b/run-both.out; green at the bank 8003fb63 under BSD and GNU in the same run; landed as run at bc744227, the same patch-id"
+}

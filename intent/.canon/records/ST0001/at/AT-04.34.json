@@ -1,0 +1,11 @@
+{
+  "id": "AT-04.34",
+  "kind": "test",
+  "covers": [
+    "AC-04.13"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/contract.bats::\"all is synthesised, and a sub-handler named all cannot shadow it\""
+  }
+}

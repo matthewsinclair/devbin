@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.15",
+  "text": "The synthesised `all` points at the seal of every gate that failed, from a ledger the gates append to rather than from a `LATEST_*` pointer",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

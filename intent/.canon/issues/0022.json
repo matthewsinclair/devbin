@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 22,
+  "schema": "intent/issue@4.0",
+  "id": "0022",
   "slug": "d9-reversed-devbin-requires-bash-5-and-refuses",
   "title": "\"D9 reversed: devbin requires bash >= 5 and refuses older, rather than targeting 3.2\"",
   "status": "closed",

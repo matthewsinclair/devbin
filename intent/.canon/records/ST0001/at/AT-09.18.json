@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.18",
+  "kind": "test",
+  "covers": [
+    "AC-09.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"a clean install verifies clean\""
+  }
+}

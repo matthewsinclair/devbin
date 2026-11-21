@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 234,
+  "schema": "intent/issue@4.0",
+  "id": "0234",
   "slug": "targetdir-bats-s-no-cargo-arm-hides-only-the-fir",
   "title": "targetdir.bats's no-cargo arm hides only the first cargo on PATH, and by substring, so on a machine with a second cargo it still finds one and fails (K115 on kovacs)",
   "status": "closed",

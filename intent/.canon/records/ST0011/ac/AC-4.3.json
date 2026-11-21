@@ -1,0 +1,10 @@
+{
+  "id": "AC-4.3",
+  "text": "Utilz, Gtools, Intent, Conflab and Laksa each retire the bespoke machinery design.md section 7 names, or carry it only as a config key, and their test workflows fire on candidate/ and not on tags.",
+  "kind": "non-test",
+  "state": {
+    "is": "withdrawn",
+    "reason": "moved to the consumers' own threads on hv's ruling 2026-11-13: utilz#ST0031, gtools#ST0020, conflab#ST0126 and laksa#0058, with Intent's met through its ST0093/WP-06",
+    "by": "hv"
+  }
+}

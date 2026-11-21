@@ -1,0 +1,8 @@
+{
+  "id": "AC-16.2",
+  "text": "`db` REFUSES `MIX_ENV=prod`, names what it is protecting, and points at the project handler as the way past it rather than a flag. `db reset` drops the database, and only one of the four corpus projects guarded this",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

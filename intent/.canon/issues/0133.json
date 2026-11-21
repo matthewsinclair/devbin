@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 133,
+  "schema": "intent/issue@4.0",
+  "id": "0133",
   "slug": "log-without-a-run-validates-and-does-nothing-and",
   "title": "`log:` without a `run:` validates and does nothing, and check.md and test.md say `log: false` runs a shipped option unsealed",
   "status": "closed",

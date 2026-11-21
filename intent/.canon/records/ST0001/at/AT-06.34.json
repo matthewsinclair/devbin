@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.34",
+  "kind": "test",
+  "covers": [
+    "AC-06.12"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"run_gate requires a suffix and a command\""
+  }
+}

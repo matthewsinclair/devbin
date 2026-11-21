@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 328,
+  "schema": "intent/issue@4.0",
+  "id": "0328",
   "slug": "the-release-commit-carries-a-declared-trailer-so",
   "title": "The release commit carries a declared trailer, so it ends with the house (C) line in every project",
   "status": "closed",

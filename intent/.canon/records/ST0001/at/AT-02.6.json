@@ -1,0 +1,11 @@
+{
+  "id": "AT-02.6",
+  "kind": "test",
+  "covers": [
+    "AC-02.3"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/harness.bats::\"output assertions discriminate\""
+  }
+}

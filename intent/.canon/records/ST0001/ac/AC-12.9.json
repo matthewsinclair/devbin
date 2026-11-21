@@ -1,0 +1,8 @@
+{
+  "id": "AC-12.9",
+  "text": "Every relative cross-link in the documentation resolves to a file that exists",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "AC-6.1",
+  "text": "Under object: ci the core makes no release object, and step 9 reports done only when a release object exists for the tag within object_wait, never on a CI verdict for the commit.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

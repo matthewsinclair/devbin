@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 30,
+  "schema": "intent/issue@4.0",
+  "id": "0030",
   "slug": "the-whiteboard-guards-have-never-been-armed-in",
   "title": "the whiteboard guards have never been armed in this project",
   "status": "closed",

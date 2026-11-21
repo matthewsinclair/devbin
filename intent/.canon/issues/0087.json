@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 87,
+  "schema": "intent/issue@4.0",
+  "id": "0087",
   "slug": "a-wrapper-flag-typed-at-a-command-level-gate-is",
   "title": "A wrapper flag typed at a command-level gate is passed to the tool as an argument, and the gate ignores it",
   "status": "closed",

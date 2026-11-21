@@ -1,0 +1,9 @@
+{
+  "id": "AC-10.4",
+  "text": "The six project-specific commands (`app` `daemon` `use` `release` `macos` `deploy`) are repackaged as project handlers under `bin/.devbin/cmd/` per the devbin protocol, and are the first real exercise of the project-specific path",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "Conflab `73e4fed5`, all six live-probed; `use` and `which all` byte-identical old-vs-new"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 265,
+  "schema": "intent/issue@4.0",
+  "id": "0265",
   "slug": "what-stands-at-a-version-file-or-a-sidecar-is-de",
   "title": "What stands at a version file or a sidecar is decided and worded in several places, by role; one classifier answers for both",
   "status": "closed",

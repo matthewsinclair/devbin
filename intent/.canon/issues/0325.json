@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 325,
+  "schema": "intent/issue@4.0",
+  "id": "0325",
   "slug": "a-cached-app-whose-inputs-leave-out-the-version",
   "title": "A cached app whose inputs leave out the version file is pulled at the old version and fails app-sign",
   "status": "closed",

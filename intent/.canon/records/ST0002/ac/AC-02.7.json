@@ -1,0 +1,9 @@
+{
+  "id": "AC-02.7",
+  "text": "Extends AC-02.2, added 2026-08-10 after WP close: `check toolchain` is LIVE and green, with `.tool-versions` at the fleet's current pins",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "`f3d91c8`. This WP originally left the arm `enabled: false`, reasoning that CI's matrix already owned the fact; hv reversed it the same day. The matrix's top cell had itself drifted (`1.20.2` against a machine running `1.20.3`) and hv's standing policy since 2026-07-28 is fleet-wide"
+  }
+}

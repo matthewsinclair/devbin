@@ -1,0 +1,11 @@
+{
+  "id": "AT-09.16",
+  "kind": "test",
+  "covers": [
+    "AC-09.6"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/install.bats::\"the manifest records every vendored file plus version and source\""
+  }
+}

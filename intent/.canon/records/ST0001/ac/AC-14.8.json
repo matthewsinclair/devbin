@@ -1,0 +1,8 @@
+{
+  "id": "AC-14.8",
+  "text": "`cli` composes its command line from `project.name` rather than the catalogue gaining template substitution",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

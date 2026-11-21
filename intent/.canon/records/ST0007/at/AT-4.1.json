@@ -1,0 +1,10 @@
+{
+  "id": "AT-4.1",
+  "kind": "test",
+  "file": "tests/unit/releasecut.bats",
+  "covers": [
+    "AC-4.1"
+  ],
+  "status": "green",
+  "note": "each step's failure is a non-zero exit naming the step, one arm per step with its command stubbed to fail, steps 1 to 11; marked # AT-4.1 in tests/unit/releasecut.bats. red first: each arm driven red when built and held by mutation (WP-04: 27 mutants; WP-05 re-drive at ce5989e: 12 of 13 killed, j --force declared invisible; WP-06: 14 of 14, the F-fix 6 of 6, dc's 5 of 6 with m1's weak arm a follow-up). Green: the full suite at df56014, the v0.1.2 release gate, 1556/1556, 2026-09-19."
+}

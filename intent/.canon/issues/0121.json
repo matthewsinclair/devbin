@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 121,
+  "schema": "intent/issue@4.0",
+  "id": "0121",
   "slug": "infra-a-missing-devbin-infra-profile-is-silently",
   "title": "infra: a missing DEVBIN_INFRA_PROFILE is silently passed over, profiles never validates, and three smaller defects",
   "status": "closed",

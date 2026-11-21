@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 358,
+  "schema": "intent/issue@4.0",
+  "id": "0358",
   "slug": "the-overview-s-guide-line-names-four-of-the-six",
   "title": "The overview's guide line names four of the six guides, and configuration.md's release step 6 says only the macOS stage's artefact gets a seal cache line",
   "status": "closed",

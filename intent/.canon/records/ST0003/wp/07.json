@@ -1,0 +1,10 @@
+{
+  "id": "07",
+  "title": "Fly runtime leg of check: certs, address agreement, release_command, staged secrets",
+  "scope": "S",
+  "status": "cancelled",
+  "status_reason": "The Fly runtime leg moved to ST0006/WP-04 on 2026-09-08 with AC-7.1, and is unbuilt. AC-7.2, check declaring the leg as a blind spot, landed here and stays satisfied. Cancelled on 2026-09-16 because the descope moved the criteria and left this record open.",
+  "objective": "",
+  "body": "",
+  "preamble": ""
+}

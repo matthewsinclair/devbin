@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 237,
+  "schema": "intent/issue@4.0",
+  "id": "0237",
   "slug": "check-critic-fails-on-intent-s-critic-exit-4-not",
   "title": "check critic fails on Intent's critic exit 4 (nothing judged), so every cut with nothing staged is red",
   "status": "closed",

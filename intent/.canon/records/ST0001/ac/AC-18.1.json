@@ -1,0 +1,8 @@
+{
+  "id": "AC-18.1",
+  "text": "An opt-in built-in is ABSENT from a project that has not asked for it -- not present-and-failing, which is what all five were before this WP",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

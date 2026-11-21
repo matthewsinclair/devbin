@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 200,
+  "schema": "intent/issue@4.0",
+  "id": "0200",
   "slug": "shell-init-puts-the-install-path-into-sed-s-repl",
   "title": "shell-init puts the install path into sed's replacement and then unquoted into the eval'd dvb body, so an & renders a wrong path at rc 0 and a } $ or quote is interpreted as code",
   "status": "closed",

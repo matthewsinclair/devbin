@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 354,
+  "schema": "intent/issue@4.0",
+  "id": "0354",
   "slug": "use-cannot-rehash-its-caller-s-shell-so-an-open",
   "title": "use cannot rehash its caller's shell, so an open zsh or bash that ran the tool keeps the old tree's path after a switch, and nothing says so",
   "status": "closed",

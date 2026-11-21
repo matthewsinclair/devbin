@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.25",
+  "kind": "test",
+  "covers": [
+    "AC-05.9"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"a value outside the declared set is refused, listing what was expected\""
+  }
+}

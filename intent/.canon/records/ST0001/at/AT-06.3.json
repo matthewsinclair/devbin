@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.3",
+  "kind": "test",
+  "covers": [
+    "AC-06.1"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"the seal opens with an in-flight marker, so an aborted run is not green\""
+  }
+}

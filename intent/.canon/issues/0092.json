@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 92,
+  "schema": "intent/issue@4.0",
+  "id": "0092",
   "slug": "devbin-test-bats-ignores-its-paths-and-flags-the",
   "title": "devbin test bats ignores its paths and flags: the handler runs the whole suite, and config's bats option is dead",
   "status": "closed",

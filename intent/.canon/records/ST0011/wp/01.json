@@ -1,0 +1,9 @@
+{
+  "id": "01",
+  "title": "Seal records its commit; gates remember a sealed green for (commit, platform)",
+  "scope": "S",
+  "status": "done",
+  "objective": "The seal records its commit and the gates remember. `lib/runlog`: `note_invocation` writes `commit: <sha>` (with the dirty marker when the whole tree holds uncommitted changes, read through `release_tree_state` moved to where runlog can call it, one function) at open, and the seal writes it again at close; runlog gains the one reader of the line. `lib/cmd/release`, gates step: for each declared gate, read `run_all`'s seal ledger for seals on (the release commit R, this platform), every seal clean and green with both commit lines equal, and mark the gate `already`; otherwise run it; the \"never already\" comment goes. `lib/release.steps`: `release status` reads the same. `docs/releasing.md`, `docs/configuration.md`. `tests/unit` arms: the seal carries the line; a sealed green for R on this platform reads `already`; a seal for another commit does not; a dirty seal never does; an in-flight seal is pending, not green; each seen red first. Serves AC-1.1 and AC-1.2; lands D57 (design.md section 12).",
+  "body": "",
+  "preamble": ""
+}

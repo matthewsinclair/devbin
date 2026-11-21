@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 40,
+  "schema": "intent/issue@4.0",
+  "id": "0040",
   "slug": "updatenotice-bats-says-its-gap-declares-itself-a",
   "title": "updatenotice.bats says its gap declares itself, and the firing test does not exist",
   "status": "closed",

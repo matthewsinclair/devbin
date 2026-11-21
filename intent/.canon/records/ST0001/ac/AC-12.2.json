@@ -1,0 +1,8 @@
+{
+  "id": "AC-12.2",
+  "text": "The README's command surface cannot drift from the catalogue, in BOTH directions: every built-in devbin ships is named there, and every command named there is one devbin ships",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

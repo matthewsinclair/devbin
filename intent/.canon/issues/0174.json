@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 174,
+  "schema": "intent/issue@4.0",
+  "id": "0174",
   "slug": "two-release-notes-name-local-directories-on-the",
   "title": "Two release notes name local directories on the operator's machine",
   "status": "closed",

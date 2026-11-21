@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 217,
+  "schema": "intent/issue@4.0",
+  "id": "0217",
   "slug": "release-git-remote-leaves-git-askpass-ssh-askpas",
   "title": "release_git_remote leaves GIT_ASKPASS, SSH_ASKPASS and core.askPass in force, so a call to a remote can prompt; one no-prompt runner for every remote call",
   "status": "closed",

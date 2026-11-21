@@ -1,0 +1,8 @@
+{
+  "id": "AC-5.6",
+  "text": "parse accepts the containers reporters actually send -- .zip and .xml.gz as well as bare .xml -- and reads the kind from the file's own BYTES rather than its name. Across 17 real reports from three reporters, not one arrived as bare XML, so a parser taking only .xml reads nothing anybody receives.",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

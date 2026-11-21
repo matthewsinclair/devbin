@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 211,
+  "schema": "intent/issue@4.0",
+  "id": "0211",
   "slug": "tests-unit-fullcycle-bats-3654-never-runs-its-e",
   "title": "tests/unit/fullcycle.bats:3654 never runs its [ -e ] check: two statements on one line make the check arguments of refute_output_contains (a false green), and :708 carries a doubled comment line",
   "status": "closed",

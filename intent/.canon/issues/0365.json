@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 365,
+  "schema": "intent/issue@4.0",
+  "id": "0365",
   "slug": "the-cut-and-the-macos-stage-call-devbin-s-own-bu",
   "title": "The cut and the macOS stage call devbin's own built-ins through the project's launcher, so a project command at one of those names stands in for the core's verb (0335's shadow class beyond cache)",
   "status": "closed",

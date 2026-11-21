@@ -1,0 +1,8 @@
+{
+  "id": "AC-06.1",
+  "text": "The seal invariant holds: a green run's `.errors` is empty, a red run's is not, and the companion opens with an in-flight marker so a run aborted before sealing reads as not-green",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

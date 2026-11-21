@@ -1,0 +1,8 @@
+{
+  "id": "AC-13.7",
+  "text": "Nine of the ten findings are FIXED, each covered by a test verified to go RED against the code as it stood at the review. R6 (bare `devbin` exits 0) is kept deliberately: it is a ratified decision and correct, not a defect",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

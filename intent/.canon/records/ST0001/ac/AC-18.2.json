@@ -1,0 +1,8 @@
+{
+  "id": "AC-18.2",
+  "text": "Asking for one says it is shipped but not enabled, and names the config key that enables it. D11's visibility rule, applied to the new axis",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

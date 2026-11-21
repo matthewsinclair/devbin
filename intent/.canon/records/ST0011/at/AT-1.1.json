@@ -1,0 +1,10 @@
+{
+  "id": "AT-1.1",
+  "kind": "test",
+  "file": "tests/unit/runlog.bats",
+  "covers": [
+    "AC-1.1"
+  ],
+  "status": "green",
+  "note": "runlog.bats's arm 'a seal names the commit it ran on at open and again at close: the bare sha on a clean tree, +dirty on a dirty one, unknown outside a checkout (ST0011)'; red at the red clone 755825af in WP01 run of 2026-10-31 11:58Z, record ~/Devel/scratch/devbin-cc/st11-wp01b/run-both.out; green at the bank 8003fb63 under BSD and GNU in the same run; landed as run at bc744227, the same patch-id"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.42",
+  "kind": "test",
+  "covers": [
+    "AC-05.15"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"is_command answers from what actually resolves\""
+  }
+}

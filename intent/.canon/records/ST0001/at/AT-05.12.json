@@ -1,0 +1,11 @@
+{
+  "id": "AT-05.12",
+  "kind": "test",
+  "covers": [
+    "AC-05.5"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/helpers.bats::\"abs_path leaves an absolute path alone\""
+  }
+}

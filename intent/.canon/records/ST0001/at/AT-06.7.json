@@ -1,0 +1,11 @@
+{
+  "id": "AT-06.7",
+  "kind": "test",
+  "covers": [
+    "AC-06.4"
+  ],
+  "status": "green",
+  "legacy": {
+    "raw": "tests/unit/runlog.bats::\"write_errors_file is a no-op when no companion is kept\""
+  }
+}

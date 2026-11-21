@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 360,
+  "schema": "intent/issue@4.0",
+  "id": "0360",
   "slug": "sigterm-to-a-run-whose-stdout-and-stderr-share-o",
   "title": "SIGTERM to a run whose stdout and stderr share one pipe leaves it unsealed at 141; under errexit outside all, a dead stdout ends run_gate at 1",
   "status": "closed",

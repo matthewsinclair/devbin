@@ -1,0 +1,10 @@
+{
+  "id": "AT-8.1",
+  "kind": "test",
+  "file": "tests/unit/releasecore.bats",
+  "covers": [
+    "AC-8.1"
+  ],
+  "status": "green",
+  "note": "minted by vc with WP-08 on 2026-10-23, before any arm exists; the builder re-cites the file with intent at edit if the arms land elsewhere. Red on the base's code (0683a6a8, WP-08's test files copied in, byte-identical to the build's) under BSD and GNU, in cc's series of 2026-10-23 14:58Z to 15:05Z (runs/arm.red.core-new.* and arm.red.core-changed.*): the new arms at releasecore.bats:690, :720, :749, :772, :806 and :844, and the changed arms at :167, :251, :282 and :526, each at its first assertion on what WP-08 adds (release.verbs, the readers column, the attach verb's parse, the new keys); the changed --help arm at :118 passes on the base by its nature, its invariant being the argument loop's. Green at 2dec40a1 under BSD and GNU (cc's runs/arm.green2.release.*); the fix round to 5059a26e changed no line of releasecore.bats, and the full suite of the landing tree passed at 23f5f70e (seal 20261023-2029). Landed at 6bda9690."
+}

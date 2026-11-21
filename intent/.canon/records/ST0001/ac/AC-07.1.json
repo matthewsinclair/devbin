@@ -1,0 +1,8 @@
+{
+  "id": "AC-07.1",
+  "text": "The global listing is GENERATED from what actually resolves: every active command appears with its summary and its active options, and no command list is hand-maintained anywhere (D4)",
+  "kind": "test",
+  "state": {
+    "is": "computed"
+  }
+}

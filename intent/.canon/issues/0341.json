@@ -1,6 +1,6 @@
 {
-  "schema": "intent/issue@3.0",
-  "number": 341,
+  "schema": "intent/issue@4.0",
+  "id": "0341",
   "slug": "a-cut-arm-whose-stop-leaves-a-fake-host-s-leg-ru",
   "title": "A cut arm whose stop leaves a fake host's leg running can race that leg at teardown, so devbin's own cut can stop red on it",
   "status": "closed",
