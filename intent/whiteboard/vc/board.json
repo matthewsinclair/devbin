@@ -6003,9 +6003,10 @@
       "node": "vc",
       "kind": "decision",
       "seq": 267,
-      "text": "devbin-dc's loan reaches Intent issue 0740, by 2026-11-21 06:55Z by date -u: intent-vc gave devbin-dc 0740 (Rust in intentsvcs: views.rs skew_against arms and the finding.rs/facade.rs remedy constant onto 0738's Finding::with_remedy, Rust tests, two doc pages re-driven in scratch) on ic's plan, with ic paused by hv. Decision 263 (vc's own term) widens to 0740 on decision 261's terms: a fresh worktree with its own target, every build and test through bin/devbin booked as Intent P0 (cargo, plus bats for test shell), the commit inside a booked slot, vc reads the driver before GO, START and END to vc. Under hv's 'Intent is P0' (decision 264) and intent-vc's 3.5.x path.",
+      "text": "devbin-dc's loan reaches Intent issue 0740 and its size-S follow-up, by 2026-11-21 06:55Z by date -u, widened at 07:18Z: intent-vc gave devbin-dc 0740 (Rust in intentsvcs: views.rs skew_against arms and the finding.rs/facade.rs remedy constant onto 0738's Finding::with_remedy, Rust tests, two doc pages re-driven in scratch) on ic's plan, with ic paused by hv; and, from intent-dc's read of 0740, its follow-up (the two prose lines that still say each finding names its fix, lib/templates/hooks/pre-commit.sh:778 and intent/docs/pre-commit-hook.md:184, and the three findings that still put a verb in their detail, ingest.rs's two cover findings and skew_against's unmigrated-board advisory, all on 0738's mechanism). Decision 263 (vc's own term) widens to both on decision 261's terms: a fresh worktree with its own target, every build and test through bin/devbin booked as Intent P0 (cargo, plus bats for test shell), the commit inside a booked slot, vc reads the driver before GO, START and END to vc. Under hv's 'Intent is P0' (decision 264) and intent-vc's 3.5.x path.",
       "state": "live",
-      "recorded_at": "2026-11-21T06:55:08.415Z"
+      "recorded_at": "2026-11-21T06:55:08.415Z",
+      "edited_at": "2026-11-21T07:18:12.941Z"
     }
   ],
   "sent": [
