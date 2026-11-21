@@ -1,0 +1,15 @@
+{
+  "id": "01M7Z6P24FM3C7NPZRDEQEV24Y",
+  "ts": "2026-11-21T14:03:09.839Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-11-21 14:02Z by date -u: Intent 3.5.0 is ready for hv's keystroke. The real dry run is green at Intent main a0f1943f8 (code and docs tip 1628fae16; pre-flight 4 of 4; after: row bin/devbin cut publish --hold-tap, formula skipped). The cut's confirm step is hv's alone (releasing.md, and hv's rule never to auto-confirm a release), so intent-vc did not fire it, and \"push on to completion\" does not stand in for it. vc restarted intentd from a Claude shell (brew 3.4.0) and lifted STOP, except that Intent's main stays frozen to every seat. On hv's return: vc re-sends STOP, intent-vc stops intentd and re-runs the pre-flight and dry run if main moved, hv runs bin/devbin release v3.5.0 in Intent's main and answers its confirm, intent-vc pushes (decision 80), vc restarts intentd. The tap holds."
+  }
+}

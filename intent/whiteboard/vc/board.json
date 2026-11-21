@@ -6043,6 +6043,14 @@
       "text": "hv in vc's window, read 2026-11-21 13:38Z by date -u: \"I'm afk for a while. Please push on to completion.\" vc carries Intent 3.5.0 to the cut and intent-vc's push under decisions 264, 265 and hv decision 80: dc's guard fix (records/ layout in lib_at_canon.sh, declared_kind_check.sh, canon_commit_check.sh) with test shell and critic at its commit, the landing, step 3 again, intentd stopped after every vc is told, the real dry run, the cut and the push. The tap does not move: it moves only on hv's word, and this is not one. A ruling only hv can make that would stall is put to hv on return; nothing else public.",
       "state": "live",
       "recorded_at": "2026-11-21T13:38:12.957Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 272,
+      "text": "2026-11-21 14:02Z by date -u: Intent 3.5.0 is ready for hv's keystroke. The real dry run is green at Intent main a0f1943f8 (code and docs tip 1628fae16; pre-flight 4 of 4; after: row bin/devbin cut publish --hold-tap, formula skipped). The cut's confirm step is hv's alone (releasing.md, and hv's rule never to auto-confirm a release), so intent-vc did not fire it, and \"push on to completion\" does not stand in for it. vc restarted intentd from a Claude shell (brew 3.4.0) and lifted STOP, except that Intent's main stays frozen to every seat. On hv's return: vc re-sends STOP, intent-vc stops intentd and re-runs the pre-flight and dry run if main moved, hv runs bin/devbin release v3.5.0 in Intent's main and answers its confirm, intent-vc pushes (decision 80), vc restarts intentd. The tap holds.",
+      "state": "live",
+      "recorded_at": "2026-11-21T14:03:09.839Z"
     }
   ],
   "sent": [
