@@ -6007,6 +6007,14 @@
       "state": "live",
       "recorded_at": "2026-11-21T06:55:08.415Z",
       "edited_at": "2026-11-21T07:18:12.941Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 268,
+      "text": "devbin-dc's loan reaches Intent ST0095 WP-11 AC-11.1, by 2026-11-21 07:45Z by date -u: intent-vc gave devbin-dc the TUI criterion (Rust in intent-cli/src/tui: list, open and move between hashed records; an all-digit shown id keeps its leading zero; with ic's semicolon nit from AC-11.2 in the served page's remedy) since hv has paused ic. Decision 263 (vc's own term) widens to it on decision 261's terms: a plan to intent-dc and intent-vc before any change, a fresh worktree with its own target, every build and test through bin/devbin booked as Intent P0, critic-rust, the commit inside a booked slot, vc reads the driver before GO, START and END to vc. vc told hv in vc's window by 07:45Z that this hand-off was coming, and that an unpaused ic would avoid it; hv has not answered (AFK).",
+      "state": "live",
+      "recorded_at": "2026-11-21T07:45:52.949Z"
     }
   ],
   "sent": [
