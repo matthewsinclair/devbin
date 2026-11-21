@@ -5982,6 +5982,14 @@
       "text": "hv in vc's window, received by 2026-11-21 05:57Z by date -u, on return from the overnight break: Intent 3.5.x is the HIGHEST PRIORITY, finish and ship it urgently. Every seat that is waiting does hv's list: bring the as-written docs into line with the as-built code; close the STs, WPs and issues that can be closed; slim down the PM and intent docs, the whiteboards and the inboxes; close out the hv items or send them to their own vc for sync and synth with hv; clear old worktrees, temp files and build exhaust. Decision 262's Desk hold stands: grant only Intent's release work. By 05:57Z vc had sent the list to intent-vc, devbin-cc, devbin-dc, webber-vc, agentic-engineering-vc and the other estate's vc, each vc with its own open hv item (the phoenix_live_view advisory, AE's 0.5.2 send, bank 64's sign-off). vc archived yesterday's spent plan decisions (199, 250, 253 to 255, 260) and todo 226, which the hold makes moot. intent-vc's path to the 3.5.0 cut: ic todo 78 v3; dc 0743 (gating now in cargo) then WP-12's hook fix; cc A2 with devbin-cc's slice B under one gate (cargo kept for it); ic 0740 and WP-11 AC-11.1; cc's first-hydrate count issue; devbin-dc's tap hold; close-outs; hv's kovacs rehearsal; the cut.",
       "state": "live",
       "recorded_at": "2026-11-21T05:58:06.240Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 265,
+      "text": "hv in vc's question dialog, read by 2026-11-21 06:02Z by date -u, before a few hours AFK, hv's words: \"I want Intent 3.5.x built and shipped TODAY.\" Each answer is the label hv picked. (1) Rehearsal: \"Seats run it (Recommended)\": Intent's seats drive the kovacs rehearsal (WP-12 routing, ST0095 WP-03 screenshots, brew smoke) through kovacs-sysadm, booked on the Desk. (2) Cut: \"Ship it all\": once every gate is green at the exact tip and the rehearsal has passed, 3.5.0 is cut, pushed upstream and published without hv's further word. Caveat sent to intent-vc: the upstream push has needed hv's ! line in kovacs-sysadm's window, so if no other route exists, it stalls there for hv's return. (3) Desk: \"Fill idle windows\": decision 262's hold eases while hv is away. Other estates run only when Intent's lanes are empty and nothing Intent has asked for or announced would overlap; 251 and 257 stand. Told by 06:03Z: intent-vc, webber-vc, agentic-engineering-vc and the other estate's vc. Earlier, by 06:01Z: webber-cc's phoenix_live_view lock move (01M7YB3F, light, no compile) was granted under 262, on vc's reading that a lock-only fetch does not contend. The other estate's next note to the client's architect is drafted and waits for hv's return.",
+      "state": "live",
+      "recorded_at": "2026-11-21T06:02:42.061Z"
     }
   ],
   "sent": [

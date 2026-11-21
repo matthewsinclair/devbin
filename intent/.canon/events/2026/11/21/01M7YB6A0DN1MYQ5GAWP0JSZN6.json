@@ -1,0 +1,15 @@
+{
+  "id": "01M7YB6A0DN1MYQ5GAWP0JSZN6",
+  "ts": "2026-11-21T06:02:42.061Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's question dialog, read by 2026-11-21 06:02Z by date -u, before a few hours AFK, hv's words: \"I want Intent 3.5.x built and shipped TODAY.\" Each answer is the label hv picked. (1) Rehearsal: \"Seats run it (Recommended)\": Intent's seats drive the kovacs rehearsal (WP-12 routing, ST0095 WP-03 screenshots, brew smoke) through kovacs-sysadm, booked on the Desk. (2) Cut: \"Ship it all\": once every gate is green at the exact tip and the rehearsal has passed, 3.5.0 is cut, pushed upstream and published without hv's further word. Caveat sent to intent-vc: the upstream push has needed hv's ! line in kovacs-sysadm's window, so if no other route exists, it stalls there for hv's return. (3) Desk: \"Fill idle windows\": decision 262's hold eases while hv is away. Other estates run only when Intent's lanes are empty and nothing Intent has asked for or announced would overlap; 251 and 257 stand. Told by 06:03Z: intent-vc, webber-vc, agentic-engineering-vc and the other estate's vc. Earlier, by 06:01Z: webber-cc's phoenix_live_view lock move (01M7YB3F, light, no compile) was granted under 262, on vc's reading that a lock-only fetch does not contend. The other estate's next note to the client's architect is drafted and waits for hv's return."
+  }
+}
