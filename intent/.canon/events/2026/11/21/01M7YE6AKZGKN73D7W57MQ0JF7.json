@@ -1,0 +1,15 @@
+{
+  "id": "01M7YE6AKZGKN73D7W57MQ0JF7",
+  "ts": "2026-11-21T06:55:08.415Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "devbin-dc's loan reaches Intent issue 0740, by 2026-11-21 06:55Z by date -u: intent-vc gave devbin-dc 0740 (Rust in intentsvcs: views.rs skew_against arms and the finding.rs/facade.rs remedy constant onto 0738's Finding::with_remedy, Rust tests, two doc pages re-driven in scratch) on ic's plan, with ic paused by hv. Decision 263 (vc's own term) widens to 0740 on decision 261's terms: a fresh worktree with its own target, every build and test through bin/devbin booked as Intent P0 (cargo, plus bats for test shell), the commit inside a booked slot, vc reads the driver before GO, START and END to vc. Under hv's 'Intent is P0' (decision 264) and intent-vc's 3.5.x path."
+  }
+}

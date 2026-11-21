@@ -5998,6 +5998,14 @@
       "text": "hv in vc's window, read by 2026-11-21 06:06Z by date -u: hv told webber-vc that Webber may use gyges for any iOS run. Webber's iOS and simulator runs go to gyges with no rhadamanth Desk slot, replacing decision 190's rhadamanth placement. webber-ic's rhadamanth check-all ask 01M7YBC4 is to be withdrawn and split: the iOS part on gyges now, and any rhadamanth part re-asked for an idle window (decision 265 (3)). Told webber-vc and webber-ic by 06:07Z.",
       "state": "live",
       "recorded_at": "2026-11-21T06:07:08.061Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 267,
+      "text": "devbin-dc's loan reaches Intent issue 0740, by 2026-11-21 06:55Z by date -u: intent-vc gave devbin-dc 0740 (Rust in intentsvcs: views.rs skew_against arms and the finding.rs/facade.rs remedy constant onto 0738's Finding::with_remedy, Rust tests, two doc pages re-driven in scratch) on ic's plan, with ic paused by hv. Decision 263 (vc's own term) widens to 0740 on decision 261's terms: a fresh worktree with its own target, every build and test through bin/devbin booked as Intent P0 (cargo, plus bats for test shell), the commit inside a booked slot, vc reads the driver before GO, START and END to vc. Under hv's 'Intent is P0' (decision 264) and intent-vc's 3.5.x path.",
+      "state": "live",
+      "recorded_at": "2026-11-21T06:55:08.415Z"
     }
   ],
   "sent": [
