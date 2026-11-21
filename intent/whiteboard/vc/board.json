@@ -6051,6 +6051,14 @@
       "text": "2026-11-21 14:02Z by date -u: Intent 3.5.0 is ready for hv's keystroke. The real dry run is green at Intent main a0f1943f8 (code and docs tip 1628fae16; pre-flight 4 of 4; after: row bin/devbin cut publish --hold-tap, formula skipped). The cut's confirm step is hv's alone (releasing.md, and hv's rule never to auto-confirm a release), so intent-vc did not fire it, and \"push on to completion\" does not stand in for it. vc restarted intentd from a Claude shell (brew 3.4.0) and lifted STOP, except that Intent's main stays frozen to every seat. On hv's return: vc re-sends STOP, intent-vc stops intentd and re-runs the pre-flight and dry run if main moved, hv runs bin/devbin release v3.5.0 in Intent's main and answers its confirm, intent-vc pushes (decision 80), vc restarts intentd. The tap holds.",
       "state": "live",
       "recorded_at": "2026-11-21T14:03:09.839Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 273,
+      "text": "hv in vc's window, read 2026-11-21 14:05Z by date -u: asked \"Can you run the cut?\" and \"With --yes?\", then answered two question dialogs: \"Yes, fire with --yes\" for bin/devbin release v3.5.0 --yes in Intent's main at a0f1943f8; and, told that the pre-flight's dev pair migrated main's store to schema 37 (decision 132 breached at 14:01Z, intent-vc's), \"Fire, then move the tap\": fire once intent-dc confirms the cut's commit passes the hook, and after the push the tap moves so brew is 3.5.0, which reads schema 37; no store restore. This is hv's word to move the tap.",
+      "state": "live",
+      "recorded_at": "2026-11-21T14:05:53.187Z"
     }
   ],
   "sent": [

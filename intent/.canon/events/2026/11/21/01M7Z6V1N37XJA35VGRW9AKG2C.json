@@ -1,0 +1,15 @@
+{
+  "id": "01M7Z6V1N37XJA35VGRW9AKG2C",
+  "ts": "2026-11-21T14:05:53.187Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-21 14:05Z by date -u: asked \"Can you run the cut?\" and \"With --yes?\", then answered two question dialogs: \"Yes, fire with --yes\" for bin/devbin release v3.5.0 --yes in Intent's main at a0f1943f8; and, told that the pre-flight's dev pair migrated main's store to schema 37 (decision 132 breached at 14:01Z, intent-vc's), \"Fire, then move the tap\": fire once intent-dc confirms the cut's commit passes the hook, and after the push the tap moves so brew is 3.5.0, which reads schema 37; no store restore. This is hv's word to move the tap."
+  }
+}
