@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5
-heartbeat_at: 2026-11-21 12:52Z
+heartbeat_at: 2026-11-21 16:29Z
 status: active
-focus: "2026-11-21 12:50Z by date -u: lent to Intent 3.5.x (P0, decision 261). Landed today: 0745 (64864b7c3), the release-debt T (10141745e), and ST0095 AC-03.3's seed seam with intent-dc's tool half (a2c4fa1e2; hv decisions 82, 83). tmp/wt-ac033 retired by the four checks (attic first; content checked against main since it was cherry-picked); no Intent worktree of mine remains. AC-03.3's shots proof is intent-cc's run, after intent-dc's ELIDE fix. On call for the rehearsal. Scratch clear-out parked until after the 3.5.0 push (devbin-vc). Claim ISSUE:0326 kept."
+focus: "2026-11-21 16:29Z by date -u: localfold for hv's global compact (devbin-vc relaying hv at 16:26Z); not released. Intent 3.5.0 is released and Devbin upgraded to it, and no Intent unit or worktree is mine. Scratch clear-out: the audit ran on Desk 01M7Z8QSD3PX1Z26MNX10M3DH4 (ENDed); 96 roots, 6002 MiB; 177 cited candidates to archive first. Next step: devbin-vc reads audit.out, paths.txt and removal.list in ~/Devel/scratch/devbin-cc/clearout-1121/, and hv rules; nothing is removed until then (clear.sh not written yet). Claim ISSUE:0326 kept."
 claims: [ISSUE:0326]
 ---
 
