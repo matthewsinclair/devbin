@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "31d7bc64-995d-46af-b1a9-914a003e7f32",
-    "heartbeat_at": "2026-11-21T12:52:50.000Z",
+    "heartbeat_at": "2026-11-21T16:28:08.135Z",
     "status": "active",
-    "focus": "2026-11-21 12:50Z by date -u: LOCALFOLDED for hv's second compact (decision 270); not released. Desk CLOSED to new grants until after the compacts; on the bounce reopen it under 265 (Intent first). Next: Intent's last stack, dc's ELIDE fix then cc's 0746 as the final T's gate (cargo plus bats, commit first), step 3 re-run, the leg-config compare, then the real dry run with intentd stopped (announce to every vc first), hv confirms the hold, the cut and intent-vc's push.",
+    "focus": "2026-11-21 16:27Z by date -u: LOCALFOLDED for hv's global compact (decision 275); not released. Desk CLOSED to new grants until hv is back. Next: collect each fold line (intent-vc, agentic-engineering-vc, the other estate's vc, devbin-cc; dc folded at 2494147d, Webber's five seats folded); read devbin-cc's audit.out, paths.txt and removal.list and put the list to hv; then hv's return items in decision 275.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5865,7 +5865,8 @@
       "kind": "todo",
       "seq": 225,
       "text": "MINTING RULE NOTICE (decision 252), spent when Intent 3.5.x is released: each estate's Claude seats mint threads, work packages and issues only in the estate's main checkout, on main, never in a worktree or on a branch; anything minted elsewhere is checked against main before it merges and renumbered at once if it collides. SENT 2026-11-20 by 06:48Z by date -u: intent-vc (for Intent's seats), the other estate's vc, the estate-level session, devbin's cc and dc; by 06:53Z: agentic-engineering-vc and webber-vc, with the day's order (their sessions started after the 06:3xZ corral). TO SEND at each other estate's next vc session.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T16:27:27.678Z",
       "recorded_at": "2026-11-20T06:47:59.637Z",
       "edited_at": "2026-11-20T06:53:55.618Z"
     },
@@ -6060,7 +6061,8 @@
       "kind": "decision",
       "seq": 273,
       "text": "hv in vc's window, read 2026-11-21 14:05Z by date -u: asked \"Can you run the cut?\" and \"With --yes?\", then answered two question dialogs: \"Yes, fire with --yes\" for bin/devbin release v3.5.0 --yes in Intent's main at a0f1943f8; and, told that the pre-flight's dev pair migrated main's store to schema 37 (decision 132 breached at 14:01Z, intent-vc's), \"Fire, then move the tap\": fire once intent-dc confirms the cut's commit passes the hook, and after the push the tap moves so brew is 3.5.0, which reads schema 37; no store restore. This is hv's word to move the tap.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T16:27:27.238Z",
       "recorded_at": "2026-11-21T14:05:53.187Z"
     },
     {
@@ -6068,8 +6070,18 @@
       "kind": "decision",
       "seq": 274,
       "text": "2026-11-21 14:35Z by date -u: Intent v3.5.0 IS RELEASED. Release commit 940c9535a (re-cut after Xcode 27.2's Intent.xcscheme rewrite, 39f6f1683, on hv's reset ruling), tag v3.5.0 e06de1b3c on upstream, GitHub release not draft with 5 assets; legs macos, local, kovacs and CI green; cut publish --hold-tap ran. vc restarted intentd from a Claude shell and lifted STOP; the cut's slot is released. Decisions 270 to 272 archived as executed. Left: hv runs ! bin/devbin cut tap in intent-vc's window (formula publish takes no --yes), then brew upgrade intent; then Devbin's 3.5.0 upgrade, the intent/.backup/db prune, devbin-cc's scratch clear-out (vc reads the list first) and the worktree retirements.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T16:27:27.471Z",
       "recorded_at": "2026-11-21T14:36:27.365Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 275,
+      "text": "hv in vc's window, read 2026-11-21 16:26Z by date -u: 'Ok. Good result. Please call in a global localfold and compact and I'll pick up when I get home.' THE 3.5.0 FLEET SWEEP IS DONE as far as agents can take it. The tap moved; rhadamanth, kovacs and gyges run brew 3.5.0 with one start route each (gyges by gyges-sysadm on hv's yes); Intent, Devbin (9502c9cf, 9e2d690f), AE (f90bd798, c72316d6, unpushed under its decision 142) and Webber (c97e4e1d, 2b7cca8f, unpushed) are upgraded. Decision 252's minting rule ended with 3.5.0 (todo 225 archived). The fold call went by 16:27Z to intent-vc, webber-vc, agentic-engineering-vc, the other estate's vc, devbin-cc (after its audit's END) and devbin-dc; each sends one line with its fold commit. The Desk takes NO NEW GRANTS until hv is back. HV'S ON RETURN: Pplr and Molt-matts upgrades; the other estate's git commit --only -- AGENTS.md; devbin-dc's .backup/db prune (in dc's window); ST0095's closing Highlander sweep (through intent-vc); rule on devbin-cc's scratch removal.list once vc has read it; Webber's fourth archive (hv's phone check of ced4bc2f, then one gyges lane, before 2026-12-01 11:08Z).",
+      "state": "live",
+      "recorded_at": "2026-11-21T16:27:37.969Z",
+      "edited_at": "2026-11-21T16:28:07.858Z"
     }
   ],
   "sent": [

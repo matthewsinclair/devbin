@@ -1,0 +1,15 @@
+{
+  "id": "01M7ZEYK3HSRE2JBK47DY79JHR",
+  "ts": "2026-11-21T16:27:37.970Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read 2026-11-21 16:26Z by date -u: 'Ok. Good result. Please call in a global localfold and compact and I'll pick up when I get home.' THE 3.5.0 FLEET SWEEP IS DONE as far as agents can take it. The tap moved; rhadamanth, kovacs and gyges run brew 3.5.0 with one start route each (gyges by gyges-sysadm on hv's yes); Intent, Devbin (9502c9cf, 9e2d690f), AE (f90bd798, c72316d6, unpushed under its decision 142) and Webber (c97e4e1d, 2b7cca8f, unpushed) are upgraded. Decision 252's minting rule ended with 3.5.0 (todo 225 archived). The fold call went by 16:27Z to intent-vc, webber-vc, agentic-engineering-vc, the other estate's vc, devbin-cc (after its audit's END) and devbin-dc; each sends one line with its fold commit. The Desk takes NO NEW GRANTS until hv is back. HV'S ON RETURN: Pplr and Molt-matts upgrades; the other estate's git commit --only -- AGENTS.md; devbin-dc's .backup/db prune (in dc's window); ST0095's closing Highlander sweep (through intent-vc); rule on devbin-cc's scratch removal.list once vc has read it; Webber's fourth archive (hv's phone check of ced4bc2f, then one gyges lane, before 2026-12-01 11:08Z)."
+  }
+}
