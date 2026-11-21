@@ -1,0 +1,15 @@
+{
+  "id": "01M7YBEDRXWTH97768Z5N1TWSS",
+  "ts": "2026-11-21T06:07:08.061Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-21 06:06Z by date -u: hv told webber-vc that Webber may use gyges for any iOS run. Webber's iOS and simulator runs go to gyges with no rhadamanth Desk slot, replacing decision 190's rhadamanth placement. webber-ic's rhadamanth check-all ask 01M7YBC4 is to be withdrawn and split: the iOS part on gyges now, and any rhadamanth part re-asked for an idle window (decision 265 (3)). Told webber-vc and webber-ic by 06:07Z."
+  }
+}
