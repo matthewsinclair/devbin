@@ -1,0 +1,15 @@
+{
+  "id": "01M7YNT958DA2P0QECB7PZ5S3K",
+  "ts": "2026-11-21T09:08:22.312Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-21 09:07Z by date -u: context is high in every estate, so an estate-wide localfold+compact cycle runs now; hv runs /compact in each Claude once it is folded and quiesced. vc sent the fold call by 09:08Z to intent-vc (for cc, dc, ic), webber-vc (five seats), agentic-engineering-vc (ac, dc), the other estate's vc (four seats), devbin-cc (scratch audit deferred until after the compacts) and devbin-dc (WP-11 rebase 01M7YJQ7 finishes in cargo, then folds). The Desk is closed to new grants until after the compacts. State at the fold: Intent's tip is nearly complete: landed are the WP-05 stack, 0712+0744, 0740 and its follow-up, the docs unit, the team page and its UPGRADE 8 subsection, W15, AT-06 and the upgrade guard (0149194eb). Left: WP-11 AC-11.1's rebase (running), then intent-vc calls the rehearsal, kovacs first and alone through kovacs-sysadm, which hv says is already running on kovacs (rhadamanth-sysadm read kovacs up at 08:13:55Z), then cargo and bats here. Then the cut, to one hv click at the upstream push (decision 265 (2))."
+  }
+}
