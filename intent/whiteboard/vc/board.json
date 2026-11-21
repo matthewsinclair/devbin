@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "31d7bc64-995d-46af-b1a9-914a003e7f32",
-    "heartbeat_at": "2026-11-20T18:35:38.614Z",
+    "heartbeat_at": "2026-11-21T05:58:06.502Z",
     "status": "active",
-    "focus": "2026-11-20 18:35Z by date -u: LOCALFOLDED for hv's compact; not released. DESK HOLD (decision 262, hv 18:35Z): grant only intent-vc/cc/dc/ic asks, for Intent's release; 251 stands (an Intent ask never waits). Every other ask held, not refused: devbin-dc WP-04 run 4 01M7X3PXSZT2BP2YNWSTJM05NK (driver run-wp04.sh read and approved; hand replay 0 bad), Webber, AE, the other estate. Lent devbin seats inside the hold as worded: put to hv. Finishing, END to vc: Webber ui-floor 01M7WVX7ZNYRXSME2RT10SV52W (heavy, since 18:10Z), devbin-cc 0738 01M7X381RR9E14WTGHCD2626K2 (cargo, since 18:31Z, alone). Landed or green today, landing is intent-vc's: ST0095 WP-07 (62045266e), ST0096 WP-01 (9a87b035c), 0722+WP-08/09 stack green 17:55Z, 0735 v2 green 18:18Z, ST0096/05 A1 green 18:30Z, 0733 v2 green. Practices: read the driver at every ask (stdin </dev/null in step(), paths staged by name); ask intent-vc before a long non-Intent window. Open for hv: AE's GitHub send and two canvas publishes; the other estate's bank 64 sign-off (red = its vc's decision 88); todo 226. Waiters: re-arm desk-waiter.sh and end-waiter.sh after the compact.",
+    "focus": "2026-11-21 05:57Z by date -u: hv back, decision 264: Intent 3.5.x is P0, the highest priority. DESK HOLD (262) stands: grant only Intent's release work; cargo is kept for intent-cc's A2+B gate. Idle seats do hv's list (docs to as-built, closes, lean-out, hv items, exhaust).",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -5338,7 +5338,8 @@
       "kind": "decision",
       "seq": 199,
       "text": "hv's TUI answers in vc's window, read 2026-11-17 06:10Z by date -u, each the recommendation: (1) devbin-vc re-takes the Desk and lifts hv's 03:54Z hold (decision 198), Ccusage first: Ccusage's asks are granted ahead of everything else, and devbin's 0.1.26 pre-cut kit and cut follow once Ccusage's 0.1.10 cut has its tag; kovacs runs one suite at a time either way. (2) Spotlight's load is left alone: nobody looks into it, and the Desk reads the load at each grant. Before them, hv's words read 06:00Z by date -u, in cc's window \"Ok, please finish booting and then hold for instructions from VC.\" and in dc's \"Ok, please hold for instructions from VC.\"; and hv's word to ccusage-vc as ccusage-vc relays it, read 05:58Z: \"I want this fixed and shipped now first thing.\" ccusage-vc reports Ccusage's login repair (ISSUE:0008) done and checked, which meets decision 196's condition. Done before 06:12Z by date -u: control re-taken (same-name take, from the restart's ORPHANED row), hold 01M7KT90EE42BZ2FN273ZWNTMJ released, ccusage-ic's swift-test 01M7M1V8XTR6AR9W6DBKPFDWVF granted heavy at load 4.95 and started; ccusage-cc's cargo-test 01M7M1TTN0ZZ8XEYCZEQGC1DAF waits on its own hold (cc's banked word); Webber's fly-deploy 01M7K0MGZSMKW23YB3SMCKF4RF stays held for hv's sitting. devbin: cc's 0.1.26 note landed at 9655ccf5 and is kept as written, the six open issues under Known limitations as docs/releasing.md asks; 0326 stays open (pplr#0001 and cldr#0001 open, ccusage#0007 closed); refs/bank/cc/0353-1 cleared (its changed lines match a6d261e1's); dc's kit built in scratch (pc0126), not run.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T05:57:43.468Z",
       "recorded_at": "2026-11-17T06:12:18.152Z"
     },
     {
@@ -5838,7 +5839,8 @@
       "kind": "decision",
       "seq": 250,
       "text": "The day's plans, received by vc by 2026-11-20 06:43Z by date -u. (1) The other estate's vc relayed hv's go: hv's note typed into its window, read there between its 06:36Z and 06:39Z clock reads, the words of decision 249 (2) with the same name withheld (and earlier, in its question dialog, hv's \"It's running now\" on how the Desk would come back). The Desk takes the note as the go for that estate's runs at P1 today (decision 230). Its plan, all on rhadamanth, none needing hv: its cc's stamp build (heavy, cargo, a few minutes; asked as 01M7VTYRTSXT3XVVW0J9N5HF6Y); its ic's editor-pass run (light, with headless Chrome, a few minutes, not before the stamp build; asked as 01M7VV3Q4KKJ6RV96CV5WNVEEK); its cc's next bank (heavy, cargo, its longest run, likely late morning, judged at its ask against Intent's cargo runs then waiting or announced). (2) intent-vc's plan, all P0 (ST0095 and ST0096, for a release not cut today): cargo on rhadamanth one at a time, first come, its dc's 0711 gate ahead of its cc if both ask; its cc's ST0095/05+06 iterations (about 5 minutes each, a handful) and a final gate late today at the earliest; its dc's 0711 gate (about 6 minutes, within the hour, gyges if the lane is busy), then the shared release set's rebuild, a bats guard, WP-14 with 0719, 0718 with 0715, and a bats fix to the cut's gate; its ic's runs on gyges book nothing (Intent decision 132); kovacs nothing today; nothing needs hv from the Desk's side. On question 2 intent-vc adds that Intent's hv decision 61 (\"that is pants\") refused a restriction built into the tool, while question 2 is a practice for Claude seats until each estate runs the fixed release, with no tool change; it recommends yes. (3) Load: at 06:41Z by date -u rhadamanth's 1-minute load was 120 on 16 cores with CPU 17% idle, from a Spotlight importer storm (left alone under decision 199 (2)) that began after 06:33Z (10.75 then). The Desk grants no heavy-class run on rhadamanth while it holds: the stamp build is held, not refused, for the first read under about 30 or a re-judgement by 06:52Z, and the editor-pass run waits for the stamp build's END; an Intent heavy ask meanwhile is offered gyges.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T05:57:43.681Z",
       "recorded_at": "2026-11-20T06:43:48.568Z"
     },
     {
@@ -5872,7 +5874,8 @@
       "kind": "decision",
       "seq": 253,
       "text": "AE's and Webber's sessions started just after the morning's corral; both vcs had the day's order, decision 251's rule and decision 252's minting rule by 06:53Z by date -u, with a plan request. agentic-engineering-vc's plan, received by 07:05Z by date -u: hv's go for AE's ST0012/02 runs, given first-hand in its window between its 06:42Z and 07:01Z clock reads (AE's decision 130), the option's label \"Go now (Recommended)\", on its question for the client edition's one rebuild for Intent 3.5's id note (T02, P02 and the ready-reckoners, in English and French), heavy lane, about 15 minutes, behind Intent's P0; its push and two canvas publishes come back to hv as separate words. Taken under decision 230. Its dc's runs, all on rhadamanth: the re-parse 01M7VVMJF9NH3MVGC6GS5AV4V8 (heavy, about 2 minutes, under decision 247's go, which AE's vc reads as covering any re-parse and the Desk takes so); then ST0012/02 (heavy, about 15 minutes: render-pin, the plan run, the full run and the keep check); not yet asked, and only on hv's word, one arm64 build (heavy, about 20 minutes). Its ac and vc take no lane, and its questions for hv go in its own window. AE records the minting rule as its decision 131. Under decision 251 the Desk grants AE's heavy runs in windows with no Intent heavy-class run running, waiting or announced within their length; if that starves them for long, the trade-off goes to hv.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T05:57:43.898Z",
       "recorded_at": "2026-11-20T07:05:31.588Z"
     },
     {
@@ -5880,7 +5883,8 @@
       "kind": "decision",
       "seq": 254,
       "text": "webber-vc's plan, received by 2026-11-20 07:10Z by date -u: hv confirmed the day's order in its window (Webber's decision 260), decision 251's rule stands for every Webber ask, and decision 252's minting rule went to Webber's seats after hv said yes to it there. Nothing is asked of the Desk before hv's Submit: today's release work is hv's phone on TestFlight build 4378, ac's store frames (no build), the vc's uploads, the push with hv present, then hv's Submit. After Submit, in hv's order (Webber's decision 256), each on its vc's relayed go and none asked yet: dc's Creator deploy (a Fly deploy with hv present, no local slot); the catalogue refresh (one xcodebuild, heavy, rhadamanth); the first app build after 1.0 (one sealed run, heavy, rhadamanth, simulators one at a time under decision 190, about two hours); later, door 1. Nothing needs hv from the Desk. Under decision 251 those heavy runs go only in windows with no Intent heavy-class run running, waiting or announced, after any P1 asks then waiting; a two-hour window is unlikely while Intent's fix runs, so the sealed run's placement goes to hv when it is asked if no window exists.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T05:57:44.113Z",
       "recorded_at": "2026-11-20T07:10:19.936Z"
     },
     {
@@ -5888,7 +5892,8 @@
       "kind": "decision",
       "seq": 255,
       "text": "devbin-dc's next work, by 2026-11-20 07:13Z by date -u: intent-vc took up vc's spare-hands offer (decision 251) for one item, Intent's issue 0720 (XS, shell: one primitive both of Intent's commit-time gates source for a guard's three-way exit status, in place of cut/gate's own copy of precommit's tool_verdict), on a brief from Intent's dc, who reads the proof; intent-vc lands it. vc passed the brief verbatim. vc checked first that Intent's bin/.devbin/cmd/ and cut/ are not in devbin's manifest (Intent's manifest.sha256 lists neither), so they are Intent's own files, not devbin's vendored seam, and no sweep overwrites the change. devbin-dc builds in its own worktree of Intent under tmp/, mints nothing (decision 252), stays off Intent's main checkout and store, builds none of Intent's Rust, books its test runs at the Desk as Intent's P0 work, banks under refs/bank/devbin-dc/0720/ and sends the proof to intent-vc and intent-dc. devbin-cc holds. Also by 07:13Z: intent-dc's 0711 gate slipped to about 07:20Z, so AE's 2-minute re-parse (01M7VVMJF9NH3MVGC6GS5AV4V8) was granted into heavy at 07:12Z in the clear window; AE's ST0012/02 rebuild stays held, its placement put to hv.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T05:57:44.323Z",
       "recorded_at": "2026-11-20T07:13:56.282Z"
     },
     {
@@ -5896,7 +5901,8 @@
       "kind": "todo",
       "seq": 226,
       "text": "FOR hv, asked in vc's window by 07:13Z by date -u on 2026-11-20, restated at 07:42Z and after hv's compacts (by 08:12Z): under decision 251 (another estate's heavy-class run starts only while no Intent heavy-class run is running, waiting or announced within its length), may a P1 heavy run go beside Intent's? (a) beside, one P1 run at a time when the load allows (vc's recommendation: Intent's critical path is cc's coding between short runs); (b) strict, P1 waits for clear windows; (c) only P1 runs of about 5 minutes or less go beside. Since 09:12Z intent-vc's decision 257 has intent-cc's full suite and final gate run alone whatever hv rules, so (a) would only let a P1 run start where none of those falls within it. Waiting: the other estate's 25-minute bank 64 full run 01M7W3X295HZ5K79CDBG76HE7M, held since about 09:17Z by date -u; while intent-cc's suites come every 10 to 15 minutes, its window likely opens only when intent-cc's ST0095 WP-05+06 chain lands. Its vc declined gyges (the run reads data that lives only on rhadamanth, and moving it is hv's to rule), waits for the first clear window, and says it needs no answer to this today. Webber's two-hour sealed run after hv's Submit. Earlier today: the other estate's bank 62 run and two short runs went in clear windows found by asking Intent's seats at each Intent END.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T05:57:44.751Z",
       "recorded_at": "2026-11-20T07:49:50.113Z",
       "edited_at": "2026-11-20T09:18:16.394Z"
     },
@@ -5939,7 +5945,8 @@
       "kind": "decision",
       "seq": 260,
       "text": "hv in vc's window, received by 2026-11-20 15:06Z by date -u, hv's words: \"(a), go with Webber's split\", answering vc's placement question for Webber's fourth 1.0 build (decision 254, todo 226), the placement as webber-vc ruled it: gyges (webber-ic, after the bundle, booked --tag gyges on webber-vc's GO) runs build ios, test swift, test ui and test ui-ipad, a green test swift there licensing the landing and a StoreKit-only red rerun on rhadamanth; rhadamanth one heavy slot of 25 to 30 minutes for ui-floor and check all (plus that rerun), and webber-dc's archive (about 10 minutes) after the landing, both placed in windows clear of Intent's suites and gates after the P1 runs waiting (decisions 251 and 257). Told webber-vc by message.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T05:57:44.529Z",
       "recorded_at": "2026-11-20T15:06:57.159Z"
     },
     {
@@ -5967,6 +5974,14 @@
       "state": "live",
       "recorded_at": "2026-11-20T18:55:46.638Z",
       "edited_at": "2026-11-20T19:56:36.278Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 264,
+      "text": "hv in vc's window, received by 2026-11-21 05:57Z by date -u, on return from the overnight break: Intent 3.5.x is the HIGHEST PRIORITY, finish and ship it urgently. Every seat that is waiting does hv's list: bring the as-written docs into line with the as-built code; close the STs, WPs and issues that can be closed; slim down the PM and intent docs, the whiteboards and the inboxes; close out the hv items or send them to their own vc for sync and synth with hv; clear old worktrees, temp files and build exhaust. Decision 262's Desk hold stands: grant only Intent's release work. By 05:57Z vc had sent the list to intent-vc, devbin-cc, devbin-dc, webber-vc, agentic-engineering-vc and the other estate's vc, each vc with its own open hv item (the phoenix_live_view advisory, AE's 0.5.2 send, bank 64's sign-off). vc archived yesterday's spent plan decisions (199, 250, 253 to 255, 260) and todo 226, which the hold makes moot. intent-vc's path to the 3.5.0 cut: ic todo 78 v3; dc 0743 (gating now in cargo) then WP-12's hook fix; cc A2 with devbin-cc's slice B under one gate (cargo kept for it); ic 0740 and WP-11 AC-11.1; cc's first-hydrate count issue; devbin-dc's tap hold; close-outs; hv's kovacs rehearsal; the cut.",
+      "state": "live",
+      "recorded_at": "2026-11-21T05:58:06.240Z"
     }
   ],
   "sent": [
