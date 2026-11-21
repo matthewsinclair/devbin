@@ -1,0 +1,15 @@
+{
+  "id": "01M7ZHGWKWRP44VP77NZ8ZFBYB",
+  "ts": "2026-11-21T17:12:34.684Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "HV BACK, 2026-11-21 17:12Z by date -u (hv's own word in devbin-vc's window): to start the other estate and AE now and crack on Go relayed to the other estate's vc and AE's vc; the Desk is open to grants again, load read before each. Since decision 275: Pplr (66eb5e4, c579d21), Molt-matts (28b1305, 58afa98) and the other estate's AGENTS.md (8eb48028) are upgraded, and dc's backup prune ran on hv's ! line. Still hv's: devbin-cc's clear-out (todo 227), ST0095's sweep, close and ic un-pause, Webber's fourth archive before 2026-12-01 11:08Z. AE's push stays under its decision 142."
+  }
+}

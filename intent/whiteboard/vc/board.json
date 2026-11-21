@@ -5,7 +5,7 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "31d7bc64-995d-46af-b1a9-914a003e7f32",
-    "heartbeat_at": "2026-11-21T16:28:08.135Z",
+    "heartbeat_at": "2026-11-21T17:11:57.371Z",
     "status": "active",
     "focus": "2026-11-21 16:27Z by date -u: LOCALFOLDED for hv's global compact (decision 275); not released. Desk CLOSED to new grants until hv is back. Next: collect each fold line (intent-vc, agentic-engineering-vc, the other estate's vc, devbin-cc; dc folded at 2494147d, Webber's five seats folded); read devbin-cc's audit.out, paths.txt and removal.list and put the list to hv; then hv's return items in decision 275.",
     "claims": [],
@@ -6091,6 +6091,15 @@
       "state": "live",
       "recorded_at": "2026-11-21T16:29:41.004Z",
       "edited_at": "2026-11-21T16:29:48.143Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 276,
+      "text": "HV BACK, 2026-11-21 17:12Z by date -u (hv's own word in devbin-vc's window): to start the other estate and AE now and crack on Go relayed to the other estate's vc and AE's vc; the Desk is open to grants again, load read before each. Since decision 275: Pplr (66eb5e4, c579d21), Molt-matts (28b1305, 58afa98) and the other estate's AGENTS.md (8eb48028) are upgraded, and dc's backup prune ran on hv's ! line. Still hv's: devbin-cc's clear-out (todo 227), ST0095's sweep, close and ic un-pause, Webber's fourth archive before 2026-12-01 11:08Z. AE's push stays under its decision 142.",
+      "state": "live",
+      "recorded_at": "2026-11-21T17:12:34.684Z",
+      "edited_at": "2026-11-21T17:12:48.390Z"
     }
   ],
   "sent": [
