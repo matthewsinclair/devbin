@@ -1,0 +1,15 @@
+{
+  "id": "01M7X6HKYY707K54RSSZM09EDD",
+  "ts": "2026-11-20T19:22:15.390Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Intent issue 0737 (Forge fold), held on intent-dc's ruling (a): run 1 (Desk 01M7X612) was green on its tests, commit 1fc58874a in tmp/wt-0737, and its gate red only on cli_end_to_end's outstanding arm, a coin-flip from ic's WP-10 land. Released when ic's one-line shown() fix is on Intent's main: then rebase 0737 onto main (with 0741 cc82144d3 if landed, keeping its tight after_checkout), one Desk run, one gate. No re-gate as it stands."
+  }
+}

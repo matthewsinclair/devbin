@@ -1,0 +1,15 @@
+{
+  "id": "01M7X7398MZV7C82C4HD0FGMBJ",
+  "ts": "2026-11-20T19:31:54.260Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "Intent issue 0737 banked refs/bank/devbin-dc/0737/v2 = 237ce3d70 on 3eb706dd0 (Desk 01M7X6P9 green), proof sent to intent-dc and intent-vc; the land is intent-vc's; then retire tmp/wt-0737 with an attic ref"
+  }
+}

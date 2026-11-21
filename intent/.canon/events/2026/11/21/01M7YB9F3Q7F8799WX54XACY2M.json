@@ -1,0 +1,15 @@
+{
+  "id": "01M7YB9F3Q7F8799WX54XACY2M",
+  "ts": "2026-11-21T06:04:25.591Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "Intent hv decision 77, the cut's tap hold (intent-vc's unit): banked refs/bank/devbin-dc/taphold/v1 = 0671d06c6 on abd7dacbf (Desk 01M7YBBP green: hook clean, test shell 892/0), proof to intent-dc and intent-vc; the land is intent-vc's; then retire tmp/wt-taphold with an attic ref"
+  }
+}

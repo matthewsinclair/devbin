@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "390b89e0-6c47-4d22-84b6-538fcbc202be",
-    "heartbeat_at": "2026-11-20T18:53:30.380Z",
+    "heartbeat_at": "2026-11-21T05:58:33.154Z",
     "status": "active",
-    "focus": "2026-11-20 18:53Z by date -u: idle, lent to Intent. ST0096 WP-04 AC-04.1 landed at 26c4b0ca0 from my bank d779837ef; tmp/wt-st0096-wp04 retired (attic refs/attic/devbin-dc/wt-st0096-wp04, links removed, checks clean, plain worktree remove). The AT row and AC-04.2 are intent-dc's. Next unit on intent-dc's brief.",
+    "focus": "2026-11-20 20:54Z by date -u: Intent ST0095 WP-13 green and banked (refs/bank/devbin-dc/st0095/wp13/v1 = dd82a641b), proof sent; 0737 banked v2 too; both await intent-vc's land, then worktree retirement.",
     "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -1974,6 +1974,60 @@
       "state": "archived",
       "archived_at": "2026-11-20T18:53:30.168Z",
       "recorded_at": "2026-11-20T17:57:51.635Z"
+    },
+    {
+      "node": "dc",
+      "kind": "hold",
+      "seq": 49,
+      "text": "Intent issue 0737: fold the four older two-clone fixtures (remint's local git, the event log's Clone, the Team in each of a_pull_is_reflected_by_the_next_verb.rs and a_pull_is_repaired_by_one_command.rs) onto intent-cli common's Forge. Released when intent-dc sends its brief with vc's GO; nothing started before.",
+      "state": "archived",
+      "archived_at": "2026-11-20T19:13:27.711Z",
+      "recorded_at": "2026-11-20T18:54:41.141Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 85,
+      "text": "Intent issue 0737 on intent-dc's brief and decision 263: fold the four two-clone tests onto intent-cli common's Forge; worktree tmp/wt-0737 on 42de84456, own target; Desk ask 01M7X612 (cargo) with run-0737.sh for vc's read",
+      "state": "archived",
+      "archived_at": "2026-11-20T19:22:15.165Z",
+      "recorded_at": "2026-11-20T19:13:27.952Z"
+    },
+    {
+      "node": "dc",
+      "kind": "hold",
+      "seq": 50,
+      "text": "Intent issue 0737 (Forge fold), held on intent-dc's ruling (a): run 1 (Desk 01M7X612) was green on its tests, commit 1fc58874a in tmp/wt-0737, and its gate red only on cli_end_to_end's outstanding arm, a coin-flip from ic's WP-10 land. Released when ic's one-line shown() fix is on Intent's main: then rebase 0737 onto main (with 0741 cc82144d3 if landed, keeping its tight after_checkout), one Desk run, one gate. No re-gate as it stands.",
+      "state": "archived",
+      "archived_at": "2026-11-20T19:31:54.046Z",
+      "recorded_at": "2026-11-20T19:22:15.390Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 86,
+      "text": "Intent issue 0737 banked refs/bank/devbin-dc/0737/v2 = 237ce3d70 on 3eb706dd0 (Desk 01M7X6P9 green), proof sent to intent-dc and intent-vc; the land is intent-vc's; then retire tmp/wt-0737 with an attic ref",
+      "state": "archived",
+      "archived_at": "2026-11-21T06:04:24.793Z",
+      "recorded_at": "2026-11-20T19:31:54.260Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 87,
+      "text": "Intent ST0095 WP-13 banked refs/bank/devbin-dc/st0095/wp13/v1 = dd82a641b on 1d8df62e0 (Desk 01M7XBC3 green: gate rust + test shell 884/0), proof to intent-dc and intent-vc; folds 0733's two-skip follow-up; then retire tmp/wt-st0095-wp13 with an attic ref",
+      "state": "archived",
+      "archived_at": "2026-11-21T06:04:25.204Z",
+      "recorded_at": "2026-11-20T20:54:23.767Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 88,
+      "text": "Intent hv decision 77, the cut's tap hold (intent-vc's unit): banked refs/bank/devbin-dc/taphold/v1 = 0671d06c6 on abd7dacbf (Desk 01M7YBBP green: hook clean, test shell 892/0), proof to intent-dc and intent-vc; the land is intent-vc's; then retire tmp/wt-taphold with an attic ref",
+      "state": "live",
+      "recorded_at": "2026-11-21T06:04:25.591Z",
+      "edited_at": "2026-11-21T06:15:55.194Z"
     }
   ],
   "sent": [

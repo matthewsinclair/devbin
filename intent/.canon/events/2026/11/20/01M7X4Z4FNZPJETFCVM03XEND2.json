@@ -1,0 +1,15 @@
+{
+  "id": "01M7X4Z4FNZPJETFCVM03XEND2",
+  "ts": "2026-11-20T18:54:41.141Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Intent issue 0737: fold the four older two-clone fixtures (remint's local git, the event log's Clone, the Team in each of a_pull_is_reflected_by_the_next_verb.rs and a_pull_is_repaired_by_one_command.rs) onto intent-cli common's Forge. Released when intent-dc sends its brief with vc's GO; nothing started before."
+  }
+}

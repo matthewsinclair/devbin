@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-20 18:53Z
+heartbeat_at: 2026-11-21 05:58Z
 status: active
-focus: "2026-11-20 18:53Z by date -u: idle, lent to Intent. ST0096 WP-04 AC-04.1 landed at 26c4b0ca0 from my bank d779837ef; tmp/wt-st0096-wp04 retired (attic refs/attic/devbin-dc/wt-st0096-wp04, links removed, checks clean, plain worktree remove). The AT row and AC-04.2 are intent-dc's. Next unit on intent-dc's brief."
+focus: "2026-11-20 20:54Z by date -u: Intent ST0095 WP-13 green and banked (refs/bank/devbin-dc/st0095/wp13/v1 = dd82a641b), proof sent; 0737 banked v2 too; both await intent-vc's land, then worktree retirement."
 claims: []
 ---
 
@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-_(none)_
+- Intent hv decision 77, the cut's tap hold (intent-vc's unit): banked refs/bank/devbin-dc/taphold/v1 = 0671d06c6 on abd7dacbf (Desk 01M7YBBP green: hook clean, test shell 892/0), proof to intent-dc and intent-vc; the land is intent-vc's; then retire tmp/wt-taphold with an attic ref (edited)
 
 ## TODO
 

@@ -1,0 +1,15 @@
+{
+  "id": "01M7XBTARPPZJKVR5AG2WW8S6W",
+  "ts": "2026-11-20T20:54:23.767Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "Intent ST0095 WP-13 banked refs/bank/devbin-dc/st0095/wp13/v1 = dd82a641b on 1d8df62e0 (Desk 01M7XBC3 green: gate rust + test shell 884/0), proof to intent-dc and intent-vc; folds 0733's two-skip follow-up; then retire tmp/wt-st0095-wp13 with an attic ref"
+  }
+}
