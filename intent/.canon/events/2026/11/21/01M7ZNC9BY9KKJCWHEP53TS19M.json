@@ -1,0 +1,15 @@
+{
+  "id": "01M7ZNC9BY9KKJCWHEP53TS19M",
+  "ts": "2026-11-21T18:19:58.206Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "HV RULED the other estate's pair-end question (its todo 66), 2026-11-21, read 18:19Z by date -u, in devbin-vc's window by AskUserQuestion: option A, side reductions stop being carried into versions dated after their end; holdings after the end stay as records and are counted. Base reductions, fees and options are outside it. Relayed to the other estate's vc to record as hv's."
+  }
+}
