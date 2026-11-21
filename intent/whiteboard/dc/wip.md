@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-- Intent hv decision 77, the cut's tap hold (intent-vc's unit): banked refs/bank/devbin-dc/taphold/v1 = 0671d06c6 on abd7dacbf (Desk 01M7YBBP green: hook clean, test shell 892/0), proof to intent-dc and intent-vc; the land is intent-vc's; then retire tmp/wt-taphold with an attic ref (edited)
+- Intent issue 0740's size-S follow-up (decision 267 widened): banked refs/bank/devbin-dc/0740s/v1 = 9217c6d91 on 2f5c314e3 (Desk 01M7YGGT green: hook clean, gate rust 0, test shell 900/0); proof to intent-dc and intent-vc; the land is intent-vc's; then retire tmp/wt-0740s with an attic ref (plain rm on its release links)
 
 ## TODO
 

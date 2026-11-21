@@ -2025,9 +2025,28 @@
       "kind": "doing",
       "seq": 88,
       "text": "Intent hv decision 77, the cut's tap hold (intent-vc's unit): banked refs/bank/devbin-dc/taphold/v1 = 0671d06c6 on abd7dacbf (Desk 01M7YBBP green: hook clean, test shell 892/0), proof to intent-dc and intent-vc; the land is intent-vc's; then retire tmp/wt-taphold with an attic ref",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-21T07:44:25.577Z",
       "recorded_at": "2026-11-21T06:04:25.591Z",
       "edited_at": "2026-11-21T06:15:55.194Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 89,
+      "text": "Intent issue 0740 v2 (intent-vc's unit, decision 267): banked refs/bank/devbin-dc/0740/v2 = 1dcead690 on intent-cc's 7fe7d5733 (Desk 01M7YFR5: hook clean, gate rust 0, test shell 900/0; at lint 24/26, ST0095 and ST0096 red on WP-05 A2's line drift, not 0740's); the team page is devbin-cc's; proof to intent-dc and intent-vc; land order cc's unit, 0740, cc's page; then the S follow-up (decision 267 widened) and retire tmp/wt-0740",
+      "state": "archived",
+      "archived_at": "2026-11-21T07:44:14.217Z",
+      "recorded_at": "2026-11-21T07:16:37.569Z",
+      "edited_at": "2026-11-21T07:30:22.519Z"
+    },
+    {
+      "node": "dc",
+      "kind": "doing",
+      "seq": 90,
+      "text": "Intent issue 0740's size-S follow-up (decision 267 widened): banked refs/bank/devbin-dc/0740s/v1 = 9217c6d91 on 2f5c314e3 (Desk 01M7YGGT green: hook clean, gate rust 0, test shell 900/0); proof to intent-dc and intent-vc; the land is intent-vc's; then retire tmp/wt-0740s with an attic ref (plain rm on its release links)",
+      "state": "live",
+      "recorded_at": "2026-11-21T07:44:14.746Z"
     }
   ],
   "sent": [

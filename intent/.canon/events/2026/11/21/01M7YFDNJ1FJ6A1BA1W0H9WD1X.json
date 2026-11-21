@@ -1,0 +1,15 @@
+{
+  "id": "01M7YFDNJ1FJ6A1BA1W0H9WD1X",
+  "ts": "2026-11-21T07:16:37.569Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "Intent issue 0740 v2 (intent-vc's unit, decision 267): banked refs/bank/devbin-dc/0740/v2 = 1dcead690 on intent-cc's 7fe7d5733 (Desk 01M7YFR5: hook clean, gate rust 0, test shell 900/0; at lint 24/26, ST0095 and ST0096 red on WP-05 A2's line drift, not 0740's); the team page is devbin-cc's; proof to intent-dc and intent-vc; land order cc's unit, 0740, cc's page; then the S follow-up (decision 267 widened) and retire tmp/wt-0740"
+  }
+}
