@@ -1,0 +1,15 @@
+{
+  "id": "01M7Z8K0V47VHED5JH7SEXF1YM",
+  "ts": "2026-11-21T14:36:27.365Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-11-21 14:35Z by date -u: Intent v3.5.0 IS RELEASED. Release commit 940c9535a (re-cut after Xcode 27.2's Intent.xcscheme rewrite, 39f6f1683, on hv's reset ruling), tag v3.5.0 e06de1b3c on upstream, GitHub release not draft with 5 assets; legs macos, local, kovacs and CI green; cut publish --hold-tap ran. vc restarted intentd from a Claude shell and lifted STOP; the cut's slot is released. Decisions 270 to 272 archived as executed. Left: hv runs ! bin/devbin cut tap in intent-vc's window (formula publish takes no --yes), then brew upgrade intent; then Devbin's 3.5.0 upgrade, the intent/.backup/db prune, devbin-cc's scratch clear-out (vc reads the list first) and the worktree retirements."
+  }
+}
