@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5",
-    "heartbeat_at": "2026-11-20T18:44:21.651Z",
+    "heartbeat_at": "2026-11-21T08:15:48.393Z",
     "status": "active",
-    "focus": "2026-11-20 18:44Z by date -u: LOCALFOLDED, not released. Lent to Intent's release (hv decision 262 as amended: keep both lent seats; Intent decision 76). Intent issue 0738 green on Desk 01M7X381 (END sent 18:43Z), banked refs/bank/devbin-cc/0738/v1-on-809a3471e = aefa6fff3, patch-id 5b27583a, proof to intent-vc and intent-cc; tmp/wt-0738 retires after it lands. Now ST0096 WP-05 slice B in tmp/wt-wp05b (unbuilt): 27 RenderContext literals carry canon_format; upgrade dehydrates undeclared record views; records before each own file; CasePair dropped for 0711's guard (intent-cc (a)); tests in the_upgrade_writes_the_releases_layout.rs. Next: move 0711's guard ahead of encoding, critic-rust, rebase on A1's new bank, Desk ask. Resume note ~/Devel/scratch/devbin-cc/st0096-wp05/RESUME-sliceB.md. Claim 0326 kept.",
+    "focus": "2026-11-21 08:15Z by date -u: lent to Intent 3.5.x (P0, decision 261); my 3.5.0 units are all landed: ST0096 WP-05 B + KeepPackages removal (0709 closed), the docs as-built unit, the team page re-drive + UPGRADE 8, and the upgrade dirty-tree guard (0149194eb). No Intent worktree of mine remains. On call for the release rehearsal. Meanwhile hv's Devbin list via devbin-vc: scratch clear-out, board slim; claim ISSUE:0326 kept (open on its three consumers).",
     "claims": [
       "ISSUE:0326"
     ],
