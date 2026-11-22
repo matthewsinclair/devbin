@@ -6108,6 +6108,15 @@
       "text": "HV RULED the other estate's pair-end question (its todo 66), 2026-11-21, read 18:19Z by date -u, in devbin-vc's window by AskUserQuestion: option A, side reductions stop being carried into versions dated after their end; holdings after the end stay as records and are counted. Base reductions, fees and options are outside it. Relayed to the other estate's vc to record as hv's.",
       "state": "live",
       "recorded_at": "2026-11-21T18:19:58.206Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 278,
+      "text": "HV RULED twice more on the other estate's pair-end question, in devbin-vc's window by AskUserQuestion (the second read 06:27Z on 2026-11-22 by date -u): fees and options, option A, no generator change, the one-day option pairs named as an assumption, and the client asked about fees and two options; one-day side-reduction pairs, option A, left out of decision 277's stop rule, which then covers 1,341 components on 253 pairs, the corrected count. Both relayed to the other estate's vc to record as hv's.",
+      "state": "live",
+      "recorded_at": "2026-11-22T06:27:55.591Z",
+      "edited_at": "2026-11-22T06:28:07.376Z"
     }
   ],
   "sent": [
