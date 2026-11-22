@@ -1,0 +1,15 @@
+{
+  "id": "01M81T5PGYST179FZ95ZNH9CRS",
+  "ts": "2026-11-22T14:22:14.046Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-11-22, read by 14:2xZ by date -u: devbin-cc relayed hv's words in cc's window, \"You're The Desk. You have the pen while I am away.\", and asked vc to release control. vc put it to hv by AskUserQuestion, and hv answered \"No, vc keeps the Desk\". So devbin-vc keeps Desk control and the pen while hv is away. cc was told by its socket, since its session now carries the name devbin-vc. devvm 0.5.2 is out (AE's vc, 13:13:08Z): GitLab v0.5.2 with 19 assets, on Intent 3.5.1 and devbin 0.1.28."
+  }
+}
