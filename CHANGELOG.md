@@ -6,6 +6,22 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.28] - Unreleased
+
+### Changed
+
+#### devbin's own tree
+
+- **devbin's own tree is upgraded to Intent 3.5.0's canon format**, by `intent upgrade` and `intent claude upgrade --apply`: its records moved under `intent/.canon/records/`, `.intentfiles` is gone, the views of records not realised on disk are no longer tracked, `.gitignore` leaves out the two views every clone renders for itself, and `AGENTS.md` is re-rendered. No id changed, and nothing devbin ships reads these paths.
+
+### Fixed
+
+#### reaches every project
+
+- **A cut resumed onto its own release commit checks the note against the day that commit dated it (issue `0372`).** Where HEAD is already the release commit, its stamp in place, the tree clean and the tag absent here and on every remote, pre-flight asks about the note's own day, not today, and the stamp step does not run, so nothing is re-dated and a resume after local midnight goes on. A note not yet dated is checked against today as before, and a note a tag released is not checked at all, since that cut resumes past the tag.
+
+Full note: [RELEASES/0.1.28.md](RELEASES/0.1.28.md)
+
 ## [0.1.27] - 2026-11-18
 
 ### Added
