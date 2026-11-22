@@ -1,0 +1,15 @@
+{
+  "id": "01M814AXZ6M3GDW1FV93DTQ1GK",
+  "ts": "2026-11-22T08:00:36.838Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "devbin v0.1.28 RELEASED, 2026-11-22 08:00Z by date -u: tag v0.1.28 at bb745bb9 pushed to local and upstream, formula published. Three runs: the first red at 06:53Z on runlog.bats 0360 arm under load about 130, the second red at 07:27Z on the same arm in CI macOS shard 2, the third green (local seal reused, kovacs green 07:30Z, CI run 44998535363 green 07:59Z). devbin-cc traced the arm: group_term_run wait loop falls through to the kills before run_gate arms; cc files the issue. Bar lifted for cc and dc. Next: hv runs brew upgrade devbin, then vc runs use brew and the sweep. Also, hv in vc window, read by 06:59Z: \"I want intent 3.5.1 shipped and then I want devvm upgraded to support 3.5.1\"; read by 07:04Z: \"cc can close WP-13; let the devvm run finish\". Relayed to intent-vc and AE vc."
+  }
+}

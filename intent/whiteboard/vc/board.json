@@ -6107,7 +6107,8 @@
       "kind": "decision",
       "seq": 277,
       "text": "HV RULED the other estate's pair-end question (its todo 66), 2026-11-21, read 18:19Z by date -u, in devbin-vc's window by AskUserQuestion: option A, side reductions stop being carried into versions dated after their end; holdings after the end stay as records and are counted. Base reductions, fees and options are outside it. Relayed to the other estate's vc to record as hv's.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-22T08:00:36.627Z",
       "recorded_at": "2026-11-21T18:19:58.206Z"
     },
     {
@@ -6126,6 +6127,14 @@
       "text": "hv gave the go for devbin 0.1.28 in vc window, hv words: \"cut 0.1.28\" and \"Yes, please do it.\" It ships 0372-1 and the move to Intent 3.5.0; the note is at 2f10887a. The cut books bats, cargo and heavy after the other estate run ENDs and runs bin/devbin release v0.1.28 --yes in canon, which pushes, tags and publishes the formula under hv yes. No canon write by any devbin seat from booking to tag.",
       "state": "live",
       "recorded_at": "2026-11-22T06:36:41.760Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 280,
+      "text": "devbin v0.1.28 RELEASED, 2026-11-22 08:00Z by date -u: tag v0.1.28 at bb745bb9 pushed to local and upstream, formula published. Three runs: the first red at 06:53Z on runlog.bats 0360 arm under load about 130, the second red at 07:27Z on the same arm in CI macOS shard 2, the third green (local seal reused, kovacs green 07:30Z, CI run 44998535363 green 07:59Z). devbin-cc traced the arm: group_term_run wait loop falls through to the kills before run_gate arms; cc files the issue. Bar lifted for cc and dc. Next: hv runs brew upgrade devbin, then vc runs use brew and the sweep. Also, hv in vc window, read by 06:59Z: \"I want intent 3.5.1 shipped and then I want devvm upgraded to support 3.5.1\"; read by 07:04Z: \"cc can close WP-13; let the devvm run finish\". Relayed to intent-vc and AE vc.",
+      "state": "live",
+      "recorded_at": "2026-11-22T08:00:36.838Z"
     }
   ],
   "sent": [
