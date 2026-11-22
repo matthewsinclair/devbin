@@ -1,0 +1,15 @@
+{
+  "id": "01M81M3A3G3AM32FA0F0SJSV2S",
+  "ts": "2026-11-22T12:36:04.336Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-11-22, read by 12:35Z by date -u. (1) INTENT 3.5.1 RELEASED: hv fired the cut, CUT END 11:58:50Z, tag v3.5.1 at 1cc654e5a, brew smoke green; Desk row 01M81H408HMHBQ4GGSQZED1JTA. (2) FLEET ON 3.5.1, on hv's order in intent-vc's window: devbin at 6368b76c, Webber at eb1755fd (webber-vc), neither pushed by that step. (3) DEVVM 0.5.2 on hv's words in vc's window, relayed to AE's vc: build 37 ok, rehearsal 64 ok, stage 1 test 34 ok; hv's release word is AE decisions 158 and 160 (cohort upload as dc's scripts do), ships devbin 0.1.28 (vc's answer). (4) hv's fold order in vc's window: doc sync, close-outs, aggressive lean-out, localfolds, globalfold, then push to every remote. Doc sync at the ST0011 views commit; cc folded at bb8246a9, dc at 16277947. (5) hv said yes to devbin-cc's clear-out (todo 227) by AskUserQuestion; cc runs it on hv's yes typed in cc's window. (6) hv chose deleting every .history tree; the commit hook's append-only guard refused it, with no exemption, so the files were restored and stay. Todo 224's notice sent to intent-vc."
+  }
+}
