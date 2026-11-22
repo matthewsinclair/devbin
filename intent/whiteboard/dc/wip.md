@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-21 16:27Z
+heartbeat_at: 2026-11-22 12:32Z
 status: active
-focus: "2026-11-21 16:27Z by date -u: localfolded for hv's compact, not released. Devbin is on Intent 3.5.0 (9502c9cf, 9e2d690f). Next: the intent/.backup/db prune, approved by devbin-vc (8 old backups plus dc's 2026-09-16 pre-noderow store copy; the newest three schema-35 backups stay) but refused by auto mode, so it runs only on hv's yes in dc's window: bash ~/Devel/scratch/devbin-dc/prune-backup-db.sh, then the final ls to devbin-vc. No Intent unit or worktree is dc's. On call."
+focus: "On call, 2026-11-22 12:32Z by date -u: localfolded for hv's fold-and-push (devbin-vc). devbin 0.1.28 is released (bb745bb9). No item, unit, worktree or loan is dc's; nothing new without devbin-vc's word."
 claims: []
 ---
 
