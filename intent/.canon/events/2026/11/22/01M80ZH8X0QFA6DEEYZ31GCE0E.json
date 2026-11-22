@@ -1,0 +1,15 @@
+{
+  "id": "01M80ZH8X0QFA6DEEYZ31GCE0E",
+  "ts": "2026-11-22T06:36:41.760Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv gave the go for devbin 0.1.28 in vc window, hv words: \"cut 0.1.28\" and \"Yes, please do it.\" It ships 0372-1 and the move to Intent 3.5.0; the note is at 2f10887a. The cut books bats, cargo and heavy after the other estate run ENDs and runs bin/devbin release v0.1.28 --yes in canon, which pushes, tags and publishes the formula under hv yes. No canon write by any devbin seat from booking to tag."
+  }
+}
