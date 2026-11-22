@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5",
-    "heartbeat_at": "2026-11-21T16:29:30.936Z",
+    "heartbeat_at": "2026-11-22T08:00:51.784Z",
     "status": "active",
-    "focus": "2026-11-21 16:29Z by date -u: localfold for hv's global compact (devbin-vc relaying hv at 16:26Z); not released. Intent 3.5.0 is released and Devbin upgraded to it, and no Intent unit or worktree is mine. Scratch clear-out: the audit ran on Desk 01M7Z8QSD3PX1Z26MNX10M3DH4 (ENDed); 96 roots, 6002 MiB; 177 cited candidates to archive first. Next step: devbin-vc reads audit.out, paths.txt and removal.list in ~/Devel/scratch/devbin-cc/clearout-1121/, and hv rules; nothing is removed until then (clear.sh not written yet). Claim ISSUE:0326 kept.",
+    "focus": "2026-11-22 08:00Z by date -u: devbin 0.1.28 released (bb745bb9). Filed I1e7c6a9, the 0360 arm flake (group_term_run's wait loop sends TERM before run_gate arms under load); fix waits for devbin-vc's go. Scratch clear-out: devbin-vc recommends approval (todo 227); held for hv's yes in cc's window, clear.sh not written, nothing removed. Claim ISSUE:0326 kept.",
     "claims": [
       "ISSUE:0326"
     ],

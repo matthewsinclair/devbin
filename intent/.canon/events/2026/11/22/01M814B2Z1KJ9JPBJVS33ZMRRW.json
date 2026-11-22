@@ -1,0 +1,15 @@
+{
+  "id": "01M814B2Z1KJ9JPBJVS33ZMRRW",
+  "ts": "2026-11-22T08:00:41.956Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I1e7c6a98844abc66"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "0360's group_term_run sends its TERMs whether or not the probe started, so under load both arms red on a TERM that lands before run_gate arms"
+  }
+}
