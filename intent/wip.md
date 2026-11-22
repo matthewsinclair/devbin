@@ -1,5 +1,5 @@
 ---
-verblock: "22 Nov 2026:v3.99: Matthew Sinclair - globalfold after Intent 3.5.1 and devbin 0.1.28"
+verblock: "22 Nov 2026:v3.100: Matthew Sinclair - globalfold after Intent 3.5.1, devbin 0.1.28 and devvm 0.5.2"
 ---
 
 # Work In Progress
@@ -9,7 +9,6 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 ## DOING
 
 - The Desk (decisions 153, 230 and 249): vc grants rhadamanth's slots on each estate's vc relay of hv's go, reading the load before each grant. Order on contention: Intent first, then the other estate and AE, then Webber.
-- devbin-cc's scratch clear-out (vc todo 227): hv said yes; cc runs clear.sh on hv's yes typed in cc's window.
 
 ## TODO
 
