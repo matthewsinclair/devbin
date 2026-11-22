@@ -2475,6 +2475,13 @@ YAML
 # is run_gate's own first argument. Once the gated command's line is in the
 # run's log, the group and the reader are each sent TERM. Prints the run's
 # exit status.
+#
+# THE TERM WAITS FOR THAT LINE, however long the run takes to start
+# (I1e7c6a9). A wait with a fixed number of rounds fell through to the kills
+# when the run's start-up outran it under load, so the TERM reached the
+# caller's shell before run_gate had armed, and the arm read a red that 0360's
+# code never made. The wait ends only on the line or on the run's own end; a
+# run that ends without the line fails here, saying so, with no TERM sent.
 group_term_run() {
   local d="$1" how="$2"
   mkdir -p "$d"
@@ -2501,8 +2508,16 @@ group_term_run() {
       bash "$d/run.sh" "$d" "$lib" >"$d/fifo" 2>"$d/stderr" &
     fi
     run=$!
-    for _ in $(seq 1 200); do
-      grep -qs started "$d"/logs/*.PROBE.out && break
+    until grep -qs started "$d"/logs/*.PROBE.out; do
+      if ! kill -0 "$run" 2>/dev/null; then
+        st=0
+        wait "$run" || st=$?
+        grep -qs started "$d"/logs/*.PROBE.out && break
+        kill -TERM "$reader" 2>/dev/null
+        wait "$reader" 2>/dev/null
+        printf "the gated command never started: the run ended %s with no \"started\" in its log, so no TERM was sent\n" "$st"
+        exit 1
+      fi
       sleep 0.05
     done
     kill -TERM -- "-$run" 2>/dev/null
@@ -2515,7 +2530,7 @@ group_term_run() {
 
 @test "0360: a TERM to the whole group of a run whose stdout and stderr share one pipe, the pipe's reader among them, still seals it red at 143, writes its ledger row and leaves no progress file" {
   local d="$DEVBIN_TEST_TMPDIR/both" st
-  st="$(group_term_run "$d" both)"
+  st="$(group_term_run "$d" both)" || fail "$st"
   [ "$st" = 143 ] || fail "the run ended $st, not 143: $(cat "$d/rec" 2>&1)"
   grep -q $'^143\tprobe\t' "$d/ledger" || fail "no ledger row for the run: [$(cat "$d/ledger" 2>&1)]"
   grep -qs 'ENDED BY SIGTERM' "$d"/logs/*.PROBE.errors || fail "the seal does not name the signal: $(cat "$d"/logs/*.PROBE.errors 2>&1)"
@@ -2524,7 +2539,7 @@ group_term_run() {
 
 @test "0360: under a caller's errexit, outside all, a run a TERM ended whose stdout has no reader still writes its ledger row, puts back the caller's handler and sends the signal on to it" {
   local d="$DEVBIN_TEST_TMPDIR/out" st
-  st="$(group_term_run "$d" out)"
+  st="$(group_term_run "$d" out)" || fail "$st"
   [ "$st" = 143 ] || fail "the run ended $st, not 143: $(cat "$d/rec" 2>&1) / $(cat "$d/stderr" 2>&1)"
   grep -q $'^143\tprobe\t' "$d/ledger" || fail "no ledger row for the run: [$(cat "$d/ledger" 2>&1)]"
   grep -qx "the caller's TERM handler ran" "$d/rec" || fail "the caller's handler was not put back and sent the signal: $(cat "$d/rec" 2>&1)"
