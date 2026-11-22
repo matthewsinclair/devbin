@@ -1,0 +1,15 @@
+{
+  "id": "01M81XF1PKS2NH13TDMJX2A65W",
+  "ts": "2026-11-22T15:19:46.131Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "CLOSE, 2026-11-22, read by 15:19Z by date -u. hv in vc's window: bring every repo up to date (commit what is outstanding, then upgrade), then 'Push everything. Everywhere. All at once.', then 'Finish whatever is running, then close.' DONE: every estate on Intent 3.5.1 (Apprvr, Laksa, Lamplight, the four Arca, Pipeliner and Gtools, whose client names were reworded to placeholders first on hv's answer, b56c3a78); brew devbin 0.1.28 and canon on brew; the 0.1.28 fleet sweep committed in all 26 estates by path; all 26 pushed to every remote, fast-forward (Cards has no remote; Intent pushed by intent-vc at fcedc0e76 with its four desk fixes, I0005a5f, If81de5f, I4debbb5 and I4d8c964, landed and no release, on hv's 'Do all of that' after hv refused a 3.5.2 round). 0326: Pplr and Cldr units written in their tmp/wt-0326, uncommitted, runs withdrawn unstarted (RESUME.md in devbin-cc's scratch); Gtools I7bd0048, Utilz I59c806c and Molt I7892f34 filed. Every estate closed and released: Intent, AE, Webber, the other estate, devbin-cc and devbin-dc. The Desk is empty."
+  }
+}

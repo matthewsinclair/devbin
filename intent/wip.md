@@ -1,5 +1,5 @@
 ---
-verblock: "22 Nov 2026:v3.100: Matthew Sinclair - globalfold after Intent 3.5.1, devbin 0.1.28 and devvm 0.5.2"
+verblock: "22 Nov 2026:v3.101: Matthew Sinclair - close: fleet on Intent 3.5.1 and devbin 0.1.28, all pushed"
 ---
 
 # Work In Progress
@@ -8,12 +8,13 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- The Desk (decisions 153, 230 and 249): vc grants rhadamanth's slots on each estate's vc relay of hv's go, reading the load before each grant. Order on contention: Intent first, then the other estate and AE, then Webber.
+- Nothing running. Every estate is closed and the Desk is empty (vc decision 283).
 
 ## TODO
 
-- After 0.1.28: hv runs `brew upgrade devbin`, then vc runs `bin/devbin use brew` in canon and the fleet sweep.
-- Notices for each estate's vc at its next session (vc todos 215 and 222): the sweep notices through 0.1.27, 0326's reader notice, Trellis, Prodinfra and the release review's action 2, and Intent's release-target adoption.
+- Issue 0326 (devbin-cc, claim kept): rebase the Pplr and Cldr units in their tmp/wt-0326 onto main, re-ask cargo at the Desk, land after vc's read; then plan Gtools I7bd0048, Utilz I59c806c and Molt I7892f34 one at a time, Molt last. Each tool's T10 dev and opt legs go to hv once its code lands. Resume note: ~/Devel/scratch/devbin-cc/i0326/RESUME.md.
+- Notices for each estate's vc at its next session (vc todos 215 and 222): the sweep notices through 0.1.28, 0326's reader notice, Trellis, Prodinfra, the release review's action 2, Intent's release-target adoption, Baize's unguarded db reset and Prolix's ST0028 state.
 - For hv (vc todo 213): the no-vendor mode (decision 64) and `--ivault` (hold 2) stay parked until hv schedules them.
+- For hv: Webber's phone checks (ic's landing, then dc's fourth archive ced4bc2f), then one gyges run before 2026-12-01 11:08Z.
+- Cards has no git remote, so its 0.1.28 sweep commit (8f6b347) is local only.
 - Issue 0373 (six estates' log: lines) goes in the next fleet sweep.
-- Issue 0326 stays open until pplr#0001 and cldr#0001 close (decision 154).
