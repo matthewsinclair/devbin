@@ -1,0 +1,15 @@
+{
+  "id": "01M84PBN4CMPWPN5JW3XYE06SB",
+  "ts": "2026-11-23T17:13:18.224Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I3ce05faf788459e1"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "release tags and publishes a cut before it checks the formula can render, so a template refusal leaves a public release with no formula"
+  }
+}
