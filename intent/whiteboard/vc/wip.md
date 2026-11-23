@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 31d7bc64-995d-46af-b1a9-914a003e7f32
-heartbeat_at: 2026-11-23 04:23Z
+heartbeat_at: 2026-11-23 12:53Z
 status: active
-focus: "2026-11-23 04:22Z by date -u: Desk OPEN, hv back; gtools-* and utilz-* are working today. Filed I514ea74 (Gtools' brew re-sign gap, blocks 0326 in Gtools). Next: grant gtools-cc's stacked heavy+cargo run on its ask; utilz asks as they come."
+focus: "2026-11-23 12:52Z by date -u: LOCALFOLDED for hv's compact; Desk CLOSED to new grants. Open: Intent 3.5.2 (READY from intent-vc, cut by hv), Molt 1.4.7 on gyges (END to come), 0326 paused. See intent/wip.md."
 claims: []
 ---
 
