@@ -733,6 +733,9 @@ $hits"
   # And lib/bats-lanes's lanes_progress, the last line of its awk, moves the
   # progress line it just wrote beside the gate's progress file over that file,
   # so the heartbeat that reads it never takes half a line (issue 0346).
+  # And lib/cmd/formula's REHASH_SH, the formula's post-install step, moves the
+  # manifest it just re-hashed beside the old one over it, in a program /bin/sh
+  # runs in Homebrew's keg with no terminal (issue I514ea74).
   #
   # WHAT THIS ARM CANNOT SEE: an mv behind a variable, an alias or a function
   # of another name; an mv spelled so its text does not read mv, "m""v" or
@@ -753,6 +756,7 @@ $hits"
   known="$(printf '%s\t%s\n' \
     lib/bats-lanes '  '"'"' "$2" "$1" >"$3.$$" 2>/dev/null && mv -f "$3.$$" "$3" 2>/dev/null' \
     lib/cmd/cache '  mv -f -- "$CACHE_TMP" "$entry" || refuse "the entry for $art $key could not be renamed into place under the cache root $root (above)"' \
+    lib/cmd/formula '  '"'"'mv -f -- "$t" "$m"'"'"'' \
     lib/helpers '  if ! mv -f "$1" "$file"; then' \
     lib/install '  mv -f "$tmp" "$dst" || {' \
     lib/install '  mv -f -- "$root/$rel" "$root/$to" 2>/dev/null || :' \
