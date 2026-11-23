@@ -1,0 +1,15 @@
+{
+  "id": "01M84Z0GF4JM9K2S2FFFYDS6FW",
+  "ts": "2026-11-23T19:44:30.180Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "For hv, not tonight's path: cldr#0001 (0326 in Cldr) code is landed at Cldr 3f55628e; its Done-when needs T10's live proof in Cldr's checkout (bin/devbin install to opt, use dev/opt/brew, doctor), which moves ~/.local/bin and publishes to ~/Devel/opt, so hv says when (Cldr now, or with Pplr's); the brew leg rides cldr's next release."
+  }
+}

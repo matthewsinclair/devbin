@@ -6213,6 +6213,14 @@
       "text": "hv by AskUserQuestion in vc's window, read by 2026-11-23 17:55Z by date -u: devvm 0.5.3's scope is 'glab fix + pwsh 7 fix'. So both dc's glab sign-in fix and the installer's pwsh 7 module-path fix go in, each with its own proof before the build; the cut is still last, after devbin 0.1.29, Intent 3.5.2 and Molt 1.4.8 are out (decision 285).",
       "state": "live",
       "recorded_at": "2026-11-23T17:55:41.233Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 228,
+      "text": "For hv, not tonight's path: cldr#0001 (0326 in Cldr) code is landed at Cldr 3f55628e; its Done-when needs T10's live proof in Cldr's checkout (bin/devbin install to opt, use dev/opt/brew, doctor), which moves ~/.local/bin and publishes to ~/Devel/opt, so hv says when (Cldr now, or with Pplr's); the brew leg rides cldr's next release.",
+      "state": "live",
+      "recorded_at": "2026-11-23T19:44:30.180Z"
     }
   ],
   "sent": [
