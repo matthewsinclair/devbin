@@ -6179,6 +6179,14 @@
       "state": "live",
       "recorded_at": "2026-11-22T15:19:46.131Z",
       "edited_at": "2026-11-22T15:19:51.885Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 284,
+      "text": "hv's ruling, recorded 2026-11-23 11:31Z by date -u, relayed by intent-vc from Intent's hv decision 80 (2026-11-21, hv's words: \"Crack on, tell me when it's ready to push, and you have the authority to push as needed.\") and hv's first-hand word in intent-vc's session today (\"yes, push everything to their remotes.\"): intent-vc pushes Intent's main itself, local then upstream, after a green build all at that HEAD. This replaces decision 76's push-by-devbin-vc; the Desk still books the build.",
+      "state": "live",
+      "recorded_at": "2026-11-23T11:31:20.492Z"
     }
   ],
   "sent": [
