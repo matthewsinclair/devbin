@@ -1,0 +1,15 @@
+{
+  "id": "01M84RK9SNG9EAA9JRX2YXY7ZR",
+  "ts": "2026-11-23T17:52:25.909Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-23 17:52Z by date -u: 'you have my approval across the estate to approve, checkin, commit, push, and cut anything that is needed to get this stuff done _tonight_ ... I want all of these releases cut, done, and dusted TONIGHT.' Read by 17:53Z: '4. And devvm, too. Via agentic-engineering-*.' then 'But only once the other stuff is done.' Standing go for tonight: devbin 0.1.29 (cut on the pre-cut's green, then brew upgrade by vc, then the sweep into Intent and Molt); Intent 3.5.2 (intent-vc holds that its decision 3 makes the tty confirm hv's, so hv confirms in intent-vc's window at READY); Molt 1.4.8 (after 0.1.29's sweep; molt-vc cuts with --yes, Molt decision 13); devvm (AE) last, once the other three are released. Pushes for these, and the commits they need, are covered. A red still stops that line and is fixed forward the same night."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M84RPYFXW43NPDVVDVKKJ11B",
+  "ts": "2026-11-23T17:54:25.405Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-23 17:54Z by date -u: 'Note that gtools is P3. Utilz is P2. Intent, Devbin, Molt are P0. Devvm is P1.' The Desk's order on contention, amending decision 249: P0 Intent, devbin and Molt, each granted on its own with no relay needed, release-path runs first; P1 devvm (AE), and the other estate stays at P1 under 249 since hv did not re-rank it; P2 Utilz; P3 Gtools; Webber is closed for the day. devbin-cc's 0326 runs (Pplr, Cldr) are devbin's work at P0, behind the release path, so they go ahead of utilz-dc's ST0031/01."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M84RS8HG0ZKEHM28SRGQGYE2",
+  "ts": "2026-11-23T17:55:41.233Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-23 17:55Z by date -u: devvm 0.5.3's scope is 'glab fix + pwsh 7 fix'. So both dc's glab sign-in fix and the installer's pwsh 7 module-path fix go in, each with its own proof before the build; the cut is still last, after devbin 0.1.29, Intent 3.5.2 and Molt 1.4.8 are out (decision 285)."
+  }
+}
