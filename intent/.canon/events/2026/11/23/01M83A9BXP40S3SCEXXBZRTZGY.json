@@ -1,0 +1,15 @@
+{
+  "id": "01M83A9BXP40S3SCEXXBZRTZGY",
+  "ts": "2026-11-23T04:23:05.915Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I514ea74a36b0d575"
+  },
+  "payload": {
+    "severity": "high",
+    "title": "brew relocates and re-signs a keg's Mach-O files after the install body hashes them, so doctor fails a clean keg (blocks 0326 in Gtools)"
+  }
+}
