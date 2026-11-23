@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 31d7bc64-995d-46af-b1a9-914a003e7f32
-heartbeat_at: 2026-11-22 15:19Z
-status: paused
-focus: "2026-11-21 16:27Z by date -u: LOCALFOLDED for hv's global compact (decision 275); not released. Desk CLOSED to new grants until hv is back. Next: collect each fold line (intent-vc, agentic-engineering-vc, the other estate's vc, devbin-cc; dc folded at 2494147d, Webber's five seats folded); read devbin-cc's audit.out, paths.txt and removal.list and put the list to hv; then hv's return items in decision 275."
+heartbeat_at: 2026-11-23 04:23Z
+status: active
+focus: "2026-11-23 04:22Z by date -u: Desk OPEN, hv back; gtools-* and utilz-* are working today. Filed I514ea74 (Gtools' brew re-sign gap, blocks 0326 in Gtools). Next: grant gtools-cc's stacked heavy+cargo run on its ask; utilz asks as they come."
 claims: []
 ---
 

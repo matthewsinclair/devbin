@@ -1,5 +1,5 @@
 ---
-verblock: "22 Nov 2026:v3.102: Matthew Sinclair - 0326: Gtools after I514ea74, Utilz after ST0031/01"
+verblock: "23 Nov 2026:v3.102: Matthew Sinclair - 0326: Gtools after I514ea74, Utilz after ST0031/01"
 ---
 
 # Work In Progress
