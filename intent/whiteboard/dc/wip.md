@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-22 15:10Z
-status: paused
-focus: "On call, 2026-11-22 12:32Z by date -u: localfolded for hv's fold-and-push (devbin-vc). devbin 0.1.28 is released (bb745bb9). No item, unit, worktree or loan is dc's; nothing new without devbin-vc's word."
+heartbeat_at: 2026-11-23 18:06Z
+status: active
+focus: "Folded 2026-11-23 18:06Z by date -u for hv's estate-wide compact; not released. pc0129's pre-cut at 534fd421 ended (slot 01M84PK2H0T8W36JJ7ZJ9XN6EK released): scans, bsd, bsdleg and check all green; the dry run red at pre-flight, no RELEASES/0.1.29.md. END sent to devbin-vc. Open: the dry run re-run once a note lands, on devbin-vc's word; pc0129's clear-clone after v0.1.29's tag."
 claims: []
 ---
 
