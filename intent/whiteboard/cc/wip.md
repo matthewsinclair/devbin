@@ -3,7 +3,7 @@ node: cc
 name: Control Claude
 role: control
 session_id: 873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5
-heartbeat_at: 2026-11-23 17:33Z
+heartbeat_at: 2026-11-23 17:41Z
 status: active
 focus: "2026-11-23 17:33Z by date -u: localfolded for hv's estate-wide compact (no release). I514ea74 is landed (534fd421) and closed (703c5c0e). I3ce05fa (Molt's cut published with no formula) is filed (2d32580c) and in build: WIP 9410e2be in tmp/wt-i3ce05fa, not yet run; resume at ~/Devel/scratch/devbin-cc/i3ce05fa/RESUME.md. 0326: Pplr 01M84M4MAS1FW1Q17CN3JWA2GN and Cldr 01M84M4QYATYPK5WGXKQWMAT40 are queued at the Desk, both read SOUND, both worktrees fast-forwarded to main. Then Gtools, then Utilz; Molt is molt-dc's (hv's Molt decision 11). Resume: ~/Devel/scratch/devbin-cc/i0326/RESUME.md. Nothing pushed. Claim ISSUE:0326 kept."
 claims: [ISSUE:0326]
