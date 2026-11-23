@@ -6,6 +6,21 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.29] - Unreleased
+
+### Fixed
+
+#### reaches every project
+
+- **Every formula devbin renders re-hashes its manifest in a `post_install_steps` block (issue `I514ea74`).** Source mode and assets mode alike, the rendered formula now ends with a block written after the template's install, which Homebrew runs once it has relocated and re-signed the keg: at a source install's end and at a bottle's pour. It holds one `run` step, `/bin/sh` over `libexec` and `install.manifest`, that keeps the manifest's `#` lines and order and hashes each listed file again with the tool `lib/helpers`' `SHA256_SH` chooses. A manifest that names a missing file, holds a line that is no file's or lists no file is left as it was, and the step fails. A template that holds its own `post_install` or `post_install_steps` is refused at render. The manifest is then true for every reader, `doctor` included, so a keg without a checkout needs no special case.
+- **An assets formula's install body no longer interpolates its sum (issue `I514ea74`).** brew 7.0.15's `Homebrew/SimpleInterpolation` cop refused it, so `brew style` failed an assets formula devbin had rendered.
+
+#### devbin's own tree
+
+- **0360's signal arms no longer red under load (issue `I1e7c6a9`).** The arms' helper waited a fixed count for the probe's "started" line and then sent its TERMs whether or not the line came, so under heavy load the TERM could reach the caller's shell before `run_gate` had armed, and both arms read "the run ended 0, not 143". It now waits until the line is in the log or the run has ended, and a run that ends without the line fails the arm, saying the gated command never started and that no TERM was sent. `lib/runlog` is unchanged.
+
+Full note: [RELEASES/0.1.29.md](RELEASES/0.1.29.md)
+
 ## [0.1.28] - 2026-11-22
 
 ### Changed
