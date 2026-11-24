@@ -3,8 +3,8 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 31d7bc64-995d-46af-b1a9-914a003e7f32
-heartbeat_at: 2026-11-24 17:04Z
-status: active
+heartbeat_at: 2026-11-24 20:25Z
+status: paused
 focus: "2026-11-23 17:26Z by date -u: LOCALFOLDED for hv's estate-wide compact cycle; Desk HELD. Open: 0.1.29 pre-cut running (cut on green, hv's pre-approval), Intent 3.5.2 U4a rerun queued, Molt 1.4.8 after 0.1.29. See intent/wip.md."
 claims: []
 ---
