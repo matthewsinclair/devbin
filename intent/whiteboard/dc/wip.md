@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-24 16:54Z
-status: active
-focus: "2026-11-24 16:54Z by date -u: localfolded for hv's estate-wide compact (not released). devbin 0.1.31 released at b0c0f348; pc0131's clone removed, its records kept in dc's scratch. No item, unit, worktree, claim or loan is dc's. Hold for vc."
+heartbeat_at: 2026-11-24 20:24Z
+status: paused
+focus: "2026-11-24 20:24Z by date -u: folded at end of day on hv's word. devbin 0.1.32 released at b708be7d. I4133a23 and I75da2cc are closed, and their worktrees and branches are removed. No item, unit, worktree, claim or loan is dc's. Session ended."
 claims: []
 ---
 
