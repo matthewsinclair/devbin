@@ -3330,6 +3330,69 @@ brew_stub() {
     fail "this machine's clone of the tap is not at the tap's main: $(git -C "$clone" log --oneline -2)"
 }
 
+
+# A CUT THAT PUBLISHES A FORMULA RENDERS IT FIRST (issue I3ce05fa). Molt's 1.4.7
+# tagged, pushed and made its release object, and then its after: step's
+# formula publish refused a template with no @@INSTALL@@: a public release and
+# no formula. Pre-flight now runs the built-in's check wherever the built-in is
+# enabled, whatever the cut's own lines say, and its refusal is the cut's,
+# before anything is stamped.
+@test "I3ce05fa: a cut whose after: publishes the formula is refused at pre-flight when its template does not render, naming render's refusal, in a dry run too, and nothing is stamped, tagged, pushed or sent to the tap" {
+  local before
+  publish_project
+  grep -v '^    @@INSTALL@@$' "$proj/packaging/homebrew/demo.rb" >"$proj/packaging/homebrew/demo.rb.new"
+  mv "$proj/packaging/homebrew/demo.rb.new" "$proj/packaging/homebrew/demo.rb"
+  git -C "$proj" commit -qam "a template render refuses" && git -C "$proj" push -q origin main || fail "the fixture's template commit failed"
+  before="$(git -C "$proj" rev-parse HEAD)"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_failure
+  assert_state pre-flight FAILED
+  [[ "$(row_of pre-flight)" == *"this project's formula built-in is enabled, and the formula does not render: "*"packaging/homebrew/demo.rb holds 0 @@INSTALL@@"* ]] ||
+    fail "the pre-flight row does not name the render's refusal: $(row_of pre-flight)"
+  run publish_cut "$proj"
+  assert_failure
+  assert_state pre-flight FAILED
+  [[ "$(row_of pre-flight)" == *"the formula does not render: "*"holds 0 @@INSTALL@@"* ]] ||
+    fail "the pre-flight row does not name the render's refusal: $(row_of pre-flight)"
+  [ "$(git -C "$proj" rev-parse HEAD)" = "$before" ] || fail "the cut committed: $(git -C "$proj" log --oneline -2)"
+  if git -C "$proj" rev-parse -q --verify refs/tags/v1.0.1 >/dev/null; then fail "a tag was made"; fi
+  if git --git-dir="$DEVBIN_TEST_TMPDIR/remote.git" rev-parse -q --verify refs/tags/v1.0.1 >/dev/null; then fail "the remote holds a tag"; fi
+  [ "$(git -C "$TAP" rev-list --count main)" = 1 ] || fail "the tap's main moved"
+}
+
+@test "I3ce05fa: a cut with release.formula true is refused at pre-flight when its template does not render, and one whose template renders is not" {
+  publish_project "  formula: true"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_success
+  refute_output_contains "the formula does not render"
+  grep -v '^    @@INSTALL@@$' "$proj/packaging/homebrew/demo.rb" >"$proj/packaging/homebrew/demo.rb.new"
+  mv "$proj/packaging/homebrew/demo.rb.new" "$proj/packaging/homebrew/demo.rb"
+  git -C "$proj" commit -qam "a template render refuses" && git -C "$proj" push -q origin main || fail "the fixture's template commit failed"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_failure
+  assert_state pre-flight FAILED
+  [[ "$(row_of pre-flight)" == *"the formula does not render: "*"holds 0 @@INSTALL@@"* ]] ||
+    fail "the pre-flight row does not name the render's refusal: $(row_of pre-flight)"
+}
+
+@test "I3ce05fa: a cut whose after: publishes the formula through a project command of its own is refused at pre-flight when its template does not render, as a post-cut or a cut publish does" {
+  # The publish is a line of the project's own command, which no reading of
+  # after: could see: the check asks the built-in, not the cut's lines.
+  publish_project "  after:
+    - bin/devbin post-cut"
+  create_test_command "$proj" post-cut "$(printf '#!/usr/bin/env bash\nexec "$(dirname "$0")/../../devbin" formula publish\n')" >/dev/null
+  grep -v '^    @@INSTALL@@$' "$proj/packaging/homebrew/demo.rb" >"$proj/packaging/homebrew/demo.rb.new"
+  mv "$proj/packaging/homebrew/demo.rb.new" "$proj/packaging/homebrew/demo.rb"
+  git -C "$proj" add -A && git -C "$proj" commit -qm "a wrapped publish, and a template render refuses" && git -C "$proj" push -q origin main ||
+    fail "the fixture's post-cut and template commit failed"
+  run release_in "$proj" v1.0.1 --dry-run
+  assert_failure
+  assert_state pre-flight FAILED
+  [[ "$(row_of pre-flight)" == *"the formula does not render: "*"holds 0 @@INSTALL@@"* ]] ||
+    fail "the pre-flight row does not name the render's refusal: $(row_of pre-flight)"
+  if git -C "$proj" rev-parse -q --verify refs/tags/v1.0.1 >/dev/null; then fail "a tag was made"; fi
+}
+
 # The host triple cut_bins_project's stub rustc names, which the binaries'
 # archive's name carries (release_bin_archive).
 BINS_TRIPLE="aarch64-apple-darwin"
@@ -3967,8 +4030,12 @@ SH
 }
 
 # with_formula <proj> [<name>] -- <proj> enables the formula built-in, naming
-# the formula <name> when one is given, committed and pushed so the cut's
-# pre-flight reads a clean tree level with its remote.
+# the formula <name> when one is given, with devbin's template as its own at
+# packaging/homebrew/<name, else demo>.rb, committed and pushed so the cut's
+# pre-flight reads a clean tree level with its remote. The template is there
+# because pre-flight checks that the formula renders wherever the built-in is
+# enabled (issue I3ce05fa): a project with the built-in and no template would
+# publish no formula.
 with_formula() {
   local cfg="$1/bin/.devbin/config.yaml"
   awk -v name="${2:-}" '
@@ -3976,7 +4043,10 @@ with_formula() {
     /^commands:$/ { print "  formula:"; print "    enabled: true" }
     END { if (name != "") { print "formula:"; print "  name: " name } }
   ' "$cfg" >"$cfg.new" && mv "$cfg.new" "$cfg" || fail "the fixture's formula block failed"
-  git -C "$1" commit -qam "formula" && git -C "$1" push -q origin main || fail "the fixture's formula commit failed"
+  mkdir -p "$1/packaging/homebrew" &&
+    cp "$DEVBIN_HOME/packaging/homebrew/devbin.rb" "$1/packaging/homebrew/${2:-demo}.rb" ||
+    fail "the fixture's formula template could not be written"
+  git -C "$1" add -A && git -C "$1" commit -qm "formula" && git -C "$1" push -q origin main || fail "the fixture's formula commit failed"
 }
 
 @test "a cut that publishes a formula ends on the note back to brew, naming it and the release commit; its dry run does not (0228)" {

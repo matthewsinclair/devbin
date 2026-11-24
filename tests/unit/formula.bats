@@ -1432,3 +1432,47 @@ caveats" ] || fail "the post-install step does not stand between the install and
   assert_output_contains "packaging/homebrew/devbin.rb holds post_install_steps, and the post-install step is devbin's"
   assert_file_not_exists "$DEVBIN_TEST_TMPDIR/steps.rb"
 }
+
+# A CUT FOUND ITS FORMULA COULD NOT RENDER ONLY ONCE IT WAS PUBLIC (issue
+# I3ce05fa): its formula publish runs after the tag. `formula check` runs every
+# check render makes that needs no tag, before one exists, and release's
+# pre-flight runs it (releasecut.bats).
+@test "I3ce05fa: formula check passes a template render fills, in source mode and in assets mode with its cask, naming them, writing nothing and asking gh nothing" {
+  formula_checkout
+  run formula check
+  assert_success
+  assert_output "formula: packaging/homebrew/devbin.rb renders: every check that needs no tag passed"
+  [ -z "$(git -C "$FX" status --porcelain)" ] || fail "check wrote into the checkout: $(git -C "$FX" status --porcelain)"
+  assets_checkout
+  run formula check
+  assert_success
+  assert_output "formula: packaging/homebrew/tool.rb and the cask packaging/homebrew/tool-app.rb render: every check that needs no tag passed"
+  [ -z "$(git -C "$FX" status --porcelain)" ] || fail "check wrote into the checkout: $(git -C "$FX" status --porcelain)"
+  assert_file_not_exists "$DEVBIN_TEST_TMPDIR/gh.calls"
+}
+
+@test "I3ce05fa: formula check refuses what render refuses that needs no tag, in render's words: no @@INSTALL@@, a placeholder render does not fill, an asset placed twice, and an argument" {
+  local t
+  formula_checkout
+  t="$FX/packaging/homebrew/devbin.rb"
+  cp "$t" "$t.orig"
+  grep -v '^    @@INSTALL@@$' "$t.orig" >"$t"
+  run formula check
+  assert_failure
+  assert_output_contains "packaging/homebrew/devbin.rb holds 0 @@INSTALL@@, and a formula holds exactly one, the install body devbin generates"
+  awk '{ print } /^  def caveats$/ { print "    # @@NOPE@@" }' "$t.orig" >"$t"
+  run formula check
+  assert_failure
+  assert_output_contains "packaging/homebrew/devbin.rb: @@NOPE@@ is no placeholder source mode fills, and it would ship as written"
+  cp "$t.orig" "$t"
+  run formula check v0.0.10
+  assert_failure
+  assert_output_contains "usage: bin/devbin formula check"
+  assets_checkout
+  t="$FX/packaging/homebrew/tool-app.rb"
+  awk '{ print } /^  sha256 / { print "  # @@SHA256:tool-aarch64-apple-darwin@@" }' "$t" >"$t.new"
+  mv "$t.new" "$t"
+  run formula check
+  assert_failure
+  assert_output_contains "formula.assets names tool-aarch64-apple-darwin, and the templates hold its @@SHA256:tool-aarch64-apple-darwin@@ 2 time(s), where they hold it exactly once"
+}
