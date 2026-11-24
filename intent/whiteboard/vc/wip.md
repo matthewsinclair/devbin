@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-- THE DESK at 10:42Z by date -u: devvm 0.5.3's arm64 build 01M86HMD runs on heavy; its rehearsal 01M86HMJ follows; then the GitHub amd64 and Windows runs and devvm's cut (via agentic-engineering). Next for devbin: 0.1.31 (I8f31e10 first, then Icbbfa7c, I4d6b25d, I79fb280, I6b3b75f), then Utilz I59c806c and Gtools I7bd0048.
+- THE DESK at 12:13Z by date -u: the estate works from ~/Devel/scratch/estate-plan/PLAN.md (devbin-vc its only writer). Intent b353 v2 01M86Q8E runs (heavy, cargo); next on cargo, Intent's one gate all at cc's line tip, then the other estate's 1f9c (driver read SOUND); Gtools I7bd0048's one-test light rerun when asked. devbin 0.1.31 frozen at six units (devbin-cc after its compact).
 
 ## TODO
 
@@ -67,6 +67,7 @@ claims: []
 - hv in ccusage-vc's window (Ccusage decision 25), relayed by ccusage-vc, answered by 2026-11-24 05:23Z by its date -u: 'Keep use. The 11-06 revert stands. ccusage use NAME stays the account verb and nothing is renamed.' So decision 178(3) (the use-to-activate rename as ruled work) is spent and withdrawn; the dev/opt/brew switch stays bin/devbin use, a devbin verb. Hold 37 is released and archived.
 - hv by AskUserQuestion in vc's window, read by 2026-11-24 06:03Z by date -u: Molt 1.4.9 is cut after Intent 3.5.2's cut ('Cut 1.4.9 after Intent'). It carries Molt I7892f34 (devbin#0326's install and use) and O2 (devbin's lanes runner), both green at the Desk, and template 526e5bc's bash build dependency; molt-vc installs the rendered formula with brew before the cut, and a seat cuts with --yes (Molt decision 10). (edited)
 - hv 2026-11-24 08:44Z-08:52Z (AskUserQuestion, hv's words as chosen): 'I'll cut it now' for Intent 3.5.2 (on intent-vc's READY, after v5); 'Sweep 25, freeze Intent' for devbin 0.1.30 (done); localised test per fix is STANDING; the 0.1.29 reset was one-off; queue Molt 1.4.8 rollout, Gtools/Utilz pushes and cldr#0001 T10 for hv; 'Molt 1.4.9 cuts now', superseding decision 289's order.
+- hv 2026-11-24 11:45Z (in devbin-vc's window): the estate works from one plan, ~/Devel/scratch/estate-plan/PLAN.md, devbin-vc its only writer; rulings D1 to D5 (D1 corrected forward: the shipped 4-hex prefix stays, the course teaches 8 hex). Also hv: Gtools never touches kovacs (Gtools decision 53); Laksa, Lamplight, Conflab, Trellis, Webber and Ccusage get pushes and docs only, and their red CI is ignored today; b353 frozen on hv's 'fix ALL OF THE OUTSTANDING ISSUES in one go'.
 
 ---
 

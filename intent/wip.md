@@ -1,5 +1,5 @@
 ---
-verblock: "24 Nov 2026:v3.107: Matthew Sinclair - localfold: lean-out after the day's four cuts"
+verblock: "24 Nov 2026:v3.108: Matthew Sinclair - localfold: the estate works from one plan file"
 ---
 
 # Work In Progress
@@ -8,17 +8,14 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- devvm 0.5.3 (AE, decisions 285 and 287): the arm64 build runs at the Desk, then its rehearsal, then the GitHub amd64 and Windows runs, then the cut; dc's outward steps on hv's word in dc's window.
-- The Desk: hv's focus after the compact is the other estate's two workstreams, agentic-engineering, devbin, Intent and devvm (hv, 2026-11-24).
+- The estate plan: hv's plan of 2026-11-24 11:45Z by date -u is `~/Devel/scratch/estate-plan/PLAN.md`. devbin-vc is its only writer, and every seat works its chain from it. Read it first after a compact.
+- The Desk: Intent b353 v2 (01M86Q8E, heavy and cargo) runs; next on cargo, Intent's one gate all at the tip of cc's line, then the other estate's STa4d168c/1f9c (driver read: SOUND). Gtools I7bd0048's one-test light rerun comes when gtools-cc asks.
 
 ## TODO
 
-- devbin 0.1.31: I8f31e10 (devbin-cc, plan ready), then Icbbfa7c, I4d6b25d, I79fb280 (T3 amendment; all four estates agreed, with the readers' missing-path condition) and I6b3b75f.
-- Issue 0326 (devbin-cc): Utilz I59c806c (base 74550b16), then Gtools I7bd0048 (drafted, rebased on 0.1.30).
-- For hv: Molt 1.4.10's rollout (brew upgrade molt, then molt upgrade per sleeve).
-- For hv (vc todo 228): cldr#0001's and pplr#0001's live T10 proofs.
-- For hv (vc todo 213): the no-vendor mode (decision 64) and `--ivault` (hold 2) stay parked until hv schedules them.
-- For hv: Webber's phone checks, then one gyges run before 2026-12-01 11:08Z.
-- The 0.1.30 sweep is committed in all 26 estates and not pushed; each estate's vc pushes it with its own work.
-- Devbin's other-estate mirror remote is behind main; push it when hv says.
-- Issue 0373 (six estates' log: lines) goes in the next fleet sweep.
+- devbin 0.1.31 (chain C, scope frozen at 11:49Z): I8f31e10, Icbbfa7c, I4d6b25d, I79fb280, I6b3b75f, I5a905ad (devbin-cc after its compact), then devbin-dc's pre-cut, then devbin-vc's cut, then the sweep (its script reads each tree's attribution.commit).
+- Issue 0326 (devbin-cc): Utilz I59c806c in parallel on base 74550b16 (D4); remove Intent from 0326's adopter list (D5).
+- Intent chain B: after the gate all, devbin-vc pushes Intent's main under decision 76 on intent-vc's word, then hv's 3.5.3 cut.
+- Gtools chain D: I7bd0048 lands, then ST0020/01 (diff 9b4eea5ca721 read SOUND, no kovacs: hv decision 53), then hv's 0.8.4 cut. Gtools never touches kovacs.
+- After 0.1.31: I75da2cc (the sweep's attribution line).
+- hv's hands and hv's rulings: see PLAN.md.

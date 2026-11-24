@@ -1,0 +1,15 @@
+{
+  "id": "01M86QMRTKKXM8D718G3EAZYT9",
+  "ts": "2026-11-24T12:14:14.356Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-11-24 11:45Z (in devbin-vc's window): the estate works from one plan, ~/Devel/scratch/estate-plan/PLAN.md, devbin-vc its only writer; rulings D1 to D5 (D1 corrected forward: the shipped 4-hex prefix stays, the course teaches 8 hex). Also hv: Gtools never touches kovacs (Gtools decision 53); Laksa, Lamplight, Conflab, Trellis, Webber and Ccusage get pushes and docs only, and their red CI is ignored today; b353 frozen on hv's 'fix ALL OF THE OUTSTANDING ISSUES in one go'."
+  }
+}
