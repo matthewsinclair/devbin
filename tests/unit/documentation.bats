@@ -1063,6 +1063,20 @@ edition $edition: $output"
 $own"
 }
 
+# Intent keeps its own publish and switch (issue I4133a23), so the contract
+# does not list it among the tools that follow it, and uses it as no case's
+# example. The one line that names it says how it differs. `intent/`, a
+# project's records directory, is not the tool.
+@test "the contract names Intent only to say that Intent keeps its own publish and switch (I4133a23)" {
+  local doc="$DEVBIN_HOME/docs/dev-opt-brew.md" named rc=0
+  grep -qF -- 'Intent is not one of them: Intent keeps its own publish and switch, `intent install` and `intent use`.' "$doc" ||
+    fail "the contract does not say that Intent keeps its own publish and switch"
+  named="$(grep -nE 'Intent|`intent[ `]|intentd' "$doc" | grep -vF 'Intent keeps its own publish and switch')" || rc=$?
+  [ "$rc" -le 1 ] || fail "grep could not read $doc (status $rc)"
+  [ -z "$named" ] || fail "the contract names Intent as a tool that follows it, or as a case's example:
+$named"
+}
+
 # The published tree carries the product and not the workroom under intent/,
 # so a row naming a file there would lead a reader to nothing.
 @test "the README's documentation table names no file under intent/, which the published tree does not carry" {
