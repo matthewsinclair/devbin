@@ -2473,8 +2473,8 @@ YAML
 # errexit is on, and its own TERM handler notes in <dir>/rec that it ran, by
 # a path set at the script's top: the handler runs inside run_gate, where $1
 # is run_gate's own first argument. Once the gated command's line is in the
-# run's log, the group and the reader are each sent TERM. Prints the run's
-# exit status.
+# run's log, as probe_started reads it, the group and the reader are each
+# sent TERM. Prints the run's exit status.
 #
 # THE TERM WAITS FOR THAT LINE, however long the run takes to start
 # (I1e7c6a9). A wait with a fixed number of rounds fell through to the kills
@@ -2482,6 +2482,25 @@ YAML
 # caller's shell before run_gate had armed, and the arm read a red that 0360's
 # code never made. The wait ends only on the line or on the run's own end; a
 # run that ends without the line fails here, saying so, with no TERM sent.
+#
+# THE LINE IS A WHOLE LINE (I8f31e10). run_gate writes the invocation record
+# into the log before it arms, and the record carries the command's own
+# words, so a match on the bare word could end the wait there. The TERM then
+# met the caller's handler, which does not exit, and the run went on to green.
+
+# probe_started <log>... -- true when a log holds the gated command's own
+# line, `started` and nothing else. No line of the invocation record is that
+# word alone: the record tags its lines, and where it prints the command's
+# `\n` as a line break, the word still has the command's text beside it.
+probe_started() {
+  grep -qsx started "$@"
+}
+
+# The gated command of every run group_term_run makes, and of the arm that
+# reads its invocation record: one value, so the record that arm writes holds
+# the words the runs' records hold.
+GROUP_TERM_PROBE='printf "started\n"; sleep 10'
+
 group_term_run() {
   local d="$1" how="$2"
   mkdir -p "$d"
@@ -2494,12 +2513,13 @@ group_term_run() {
     'export DEVBIN_LIB="$2" PROJECT_ROOT="$1" DEVBIN_SEAL_LEDGER="$1/ledger"' \
     '. "$2/helpers"; . "$2/runlog"' \
     'trap '"'"'echo "the caller'"'"'"'"'"'"'"'"'s TERM handler ran" >>"$rec"'"'"' TERM' \
-    'run_gate --label probe --suffix PROBE --out-dir logs -- bash -c '"'"'printf "started\n"; sleep 10'"'"'' \
+    "run_gate --label probe --suffix PROBE --out-dir logs -- bash -c $(printf '%q' "$GROUP_TERM_PROBE")" \
     'echo "the caller went on" >>"$rec"' >"$d/run.sh"
   # shellcheck disable=SC2016 # the driver's own expansions, made when it runs
   bash -c '
     set -m
     d="$1" lib="$2" how="$3"
+    eval "$4"
     cat "$d/fifo" >/dev/null &
     reader=$!
     if [ "$how" = both ]; then
@@ -2508,11 +2528,11 @@ group_term_run() {
       bash "$d/run.sh" "$d" "$lib" >"$d/fifo" 2>"$d/stderr" &
     fi
     run=$!
-    until grep -qs started "$d"/logs/*.PROBE.out; do
+    until probe_started "$d"/logs/*.PROBE.out; do
       if ! kill -0 "$run" 2>/dev/null; then
         st=0
         wait "$run" || st=$?
-        grep -qs started "$d"/logs/*.PROBE.out && break
+        probe_started "$d"/logs/*.PROBE.out && break
         kill -TERM "$reader" 2>/dev/null
         wait "$reader" 2>/dev/null
         printf "the gated command never started: the run ended %s with no \"started\" in its log, so no TERM was sent\n" "$st"
@@ -2525,7 +2545,7 @@ group_term_run() {
     st=0
     wait "$run" || st=$?
     wait "$reader" 2>/dev/null
-    printf "%s\n" "$st"' _ "$d" "$DEVBIN_LIB_DIR" "$how"
+    printf "%s\n" "$st"' _ "$d" "$DEVBIN_LIB_DIR" "$how" "$(declare -f probe_started)"
 }
 
 @test "0360: a TERM to the whole group of a run whose stdout and stderr share one pipe, the pipe's reader among them, still seals it red at 143, writes its ledger row and leaves no progress file" {
@@ -2543,6 +2563,18 @@ group_term_run() {
   [ "$st" = 143 ] || fail "the run ended $st, not 143: $(cat "$d/rec" 2>&1) / $(cat "$d/stderr" 2>&1)"
   grep -q $'^143\tprobe\t' "$d/ledger" || fail "no ledger row for the run: [$(cat "$d/ledger" 2>&1)]"
   grep -qx "the caller's TERM handler ran" "$d/rec" || fail "the caller's handler was not put back and sent the signal: $(cat "$d/rec" 2>&1)"
+}
+
+@test "I8f31e10: the 0360 arms' wait does not end on the invocation record, which run_gate writes before it arms and which carries the gated command's own words" {
+  # The log as run_gate leaves it before it arms the signals: the real record,
+  # from the real function, of the command the 0360 arms gate. No timing: the
+  # window is held open for as long as the arm reads it.
+  local log="$DEVBIN_TEST_TMPDIR/probe.out"
+  note_invocation "$log" "" bash -c "$GROUP_TERM_PROBE"
+  grep -q started "$log" || fail "the record does not carry the command's words, so this arm proves nothing: $(cat "$log")"
+  if probe_started "$log"; then fail "the wait ends on the invocation record, before run_gate arms: $(cat "$log")"; fi
+  printf 'started\n' >>"$log"
+  probe_started "$log" || fail "the wait does not end on the gated command's own line: $(cat "$log")"
 }
 
 @test "0360: a tool the gated command runs still ends of SIGPIPE when what it writes to has gone, as it did before run_gate ignored SIGPIPE for itself" {
