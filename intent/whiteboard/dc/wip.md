@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-24 08:38Z
+heartbeat_at: 2026-11-24 10:42Z
 status: active
-focus: "2026-11-24 08:38Z by date -u: idle, holding for vc's brief on the devvm 0.5.3 builds, which wait for Intent 3.5.2 on the tap. devbin v0.1.30 is out (5501e164); pc0130 is closed, its clone removed and its records kept. No item, unit, worktree, claim or loan is dc's."
+focus: "2026-11-24 10:42Z by date -u: localfolded for hv's compact (not released). Holding for the devbin 0.1.31 pre-cut, on vc's brief. pc0129 and pc0130 kits removed, runs/ and SEAL kept. I8f31e10's fix is cc's. No item, unit, worktree, claim or loan is dc's."
 claims: []
 ---
 
