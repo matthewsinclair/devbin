@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5
-heartbeat_at: 2026-11-24 13:43Z
+heartbeat_at: 2026-11-24 16:54Z
 status: active
-focus: "2026-11-24 13:43Z by date -u: localfolded for rhadamanth's lid close (not released). I5a905ad's re-run 01M86WCVJBV5SG505HSXVMSJG1 (tip e0389f5c, tmp/wt-i5a905ad, driver ~/Devel/scratch/devbin-cc/i5a905ad/run-fix.sh) is in flight and left to pause: at the wake read runs/summary, send devbin-vc END, and on green the READY. Landed today: I8f31e10, batch B (Icbbfa7c, I79fb280, I6b3b75f), all closed; I4d6b25d closed with no code; D5 done. Then dc's pre-cut and vc's 0.1.31 cut. Utilz I59c806c: worktree ~/Devel/scratch/devbin-cc/i59c806c/wt on 74550b16, no code yet. Nothing pushed by cc. Claim ISSUE:0326 kept."
+focus: "2026-11-24 16:54Z by date -u: localfolded for hv's estate-wide compact (not released). Utilz I59c806c (devbin#0326's Utilz adoption) landed by utilz-vc at b58bb55e on Utilz main; cc's worktree, branch and run clones removed; run logs kept in ~/Devel/scratch/devbin-cc/i59c806c. Open, not cc's: utilz-vc's canon-tree release dry run; the Utilz cut and push are hv's. Next for cc: clearout-1121 after 0.1.31 (keep ~/Devel/scratch/devbin-cc/i7bd0048). Nothing in flight, nothing pushed by cc. Claim ISSUE:0326 kept."
 claims: [ISSUE:0326]
 ---
 
