@@ -848,7 +848,8 @@ EOF
 # An unbounded retry would turn a defect into a hang.
 #
 # Echoes a state line -- `upgraded`, `converged`, or `FAILED<TAB><reason>` --
-# then upgrade_held's rows for what the upgrade left alone.
+# then upgrade_held's rows for what the upgrade left alone, then
+# upgrade_notes' rows for what it said a person must know.
 #
 # THE UPGRADE'S OUTPUT IS READ, NOT DISCARDED (issue 0074). An upgrade that
 # skips a file edited in place exits 0 and still stamps the new source_commit,
@@ -905,6 +906,7 @@ upgrade_one() {
   fi
   printf '%s\n' "$state"
   upgrade_held "$out"
+  upgrade_notes "$out"
   rm -f "$out"
   [ "${state%%	*}" != FAILED ]
 }
@@ -941,6 +943,18 @@ upgrade_held() {
       named = 0
     }
   ' "$1" | awk '!seen[$0]++'
+}
+
+# upgrade_notes <output> -- `note<TAB><text>` per `  note       ` line the passes
+# in <output> printed, once each.
+#
+# A NOTE IS NO HOLD (issue I0702984). upgrade says one where the estate must do
+# something the upgrade cannot, eg copy a file it wrote for the first time into
+# a test's copy of the checkout. The estate is level, so a note neither holds
+# it nor fails the sweep, and the report names it so the estate's own tests do
+# not go red with nobody told why.
+upgrade_notes() {
+  awk '/^  note       / { p = $0; sub(/^  note       /, "", p); printf "note\t%s\n", p }' "$1" | awk '!seen[$0]++'
 }
 
 # provenance_current <root> <want> -- true when an estate records the install's
@@ -994,7 +1008,7 @@ cmd_upgrade() {
   local apply="" prefix root label want state src roots kind outside="" frozen frozen_list nomatch
   local n_level=0 n_work=0 n_repoint=0 n_frozen=0 n_unreachable=0 n_other=0 n_outside=0
   local n_nomanifest=0 n_archive=0 n_nofiles=0 n_unreadable=0 n_done=0 n_conv=0 n_failed=0 n_held=0 result held unvouched
-  local plan="" excluded="" heldrows=""
+  local plan="" excluded="" heldrows="" noterows="" notes note
 
   while [ $# -gt 0 ]; do
     case "$1" in
@@ -1138,6 +1152,8 @@ cmd_upgrade() {
       held="$(printf '%s\n' "$result" | sed -n 's/^held\t//p' | paste -sd ';' - | sed 's/;/; /g')"
       # The rows are rendered with %b, and these paths are estate content.
       held="${held//\\/\\\\}"
+      notes="$(printf '%s\n' "$result" | sed -n 's/^note\t//p')"
+      notes="${notes//\\/\\\\}"
       case "$state" in
         FAILED*)
           n_failed=$((n_failed + 1))
@@ -1149,6 +1165,9 @@ cmd_upgrade() {
           excluded="$excluded$(printf '%s\tFAILED -- its upgrade reported nothing' "$label")\n"
           ;;
         *)
+          while IFS= read -r note; do
+            [ -z "$note" ] || noterows="$noterows$(printf '%s\t%s' "$label" "$note")\n"
+          done <<<"$notes"
           if [ -n "$held" ]; then
             # HELD IS ITS OWN OUTCOME: the estate took the upgrade and is NOT level.
             n_held=$((n_held + 1))
@@ -1203,6 +1222,11 @@ EOF
     printf '  no longer shipped: the manifest no longer lists it, so --force cannot reach\n'
     printf '    it -- delete it if it is dead, or move it out of bin/.devbin/lib/\n\n'
 
+  fi
+  if [ -n "$noterows" ]; then
+    printf 'Notes -- upgraded estates whose upgrade said this, which the estate acts on:\n\n'
+    { printf 'Estate\tNote\n'; printf '%b' "$noterows"; } | md_table
+    printf '\n'
   fi
   if [ -n "$excluded" ]; then
     printf 'Not swept -- named rather than dropped:\n\n'

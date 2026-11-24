@@ -1287,3 +1287,20 @@ build:
   assert_output_contains "wrote      .devbin-tool (the install: block changed; commit it with the block)"
   grep -qx 'manifest: .demo-install' "$proj/.devbin-tool" || fail "upgrade wrote no facts: $(cat "$proj/.devbin-tool" 2>&1)"
 }
+
+@test "I0702984: an upgrade that writes .devbin-tool where there was none says a test's copy of the checkout must copy it, and one that rewrites a stale file does not" {
+  local proj src note=".devbin-tool is new: a test that builds a copy of this checkout to publish from must copy it, or the publish refuses the copy"
+  src="$(mkdevsrc)"
+  run devbin_run "$src" install
+  assert_success
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  rm -f "$proj/.devbin-tool"
+  run devbin_run "$proj" upgrade --from "$DEVBIN_TEST_TMPDIR/opt/devbin"
+  assert_success
+  assert_output_contains "$note"
+  printf 'set: :(literal)elsewhere\n' >>"$proj/.devbin-tool"
+  run devbin_run "$proj" upgrade --from "$DEVBIN_TEST_TMPDIR/opt/devbin"
+  assert_success
+  assert_output_contains "wrote      .devbin-tool (the install: block changed; commit it with the block)"
+  refute_output_contains "$note"
+}

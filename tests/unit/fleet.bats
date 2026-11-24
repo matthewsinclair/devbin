@@ -2549,6 +2549,25 @@ printf "# devbin_version: 0.1.0\n# source: install\n# source_commit: aaaabbbbccc
   assert_output_contains "--force"
 }
 
+@test "I0702984: an upgrade's note is named in the sweep's report, once, and neither holds the estate nor fails the sweep" {
+  export HOME="$DEVBIN_TEST_TMPDIR"
+  prefix="$(mkinstall_prefix)"
+  mkproj_cfg "$prefix"
+  # shellcheck disable=SC2016
+  stub_estate alpha '
+printf "  wrote      .devbin-tool (the install: block changed; commit it with the block)\n" >&2
+printf "  note       .devbin-tool is new: a test that builds a copy of this checkout to publish from must copy it, or the publish refuses the copy\n" >&2
+printf "\n0 added, 0 updated, 5 unchanged, 0 removed, 0 skipped\n"
+printf "# devbin_version: 0.1.0\n# source: install\n# source_commit: aaaabbbbccccdddd\n" >"$d/manifest.sha256"'
+  run_sweep --apply
+  assert_success
+  assert_output_contains "Notes -- upgraded estates whose upgrade said this, which the estate acts on:"
+  [ "$(printf '%s\n' "$output" | grep -c '\.devbin-tool is new: a test that builds a copy of this checkout to publish from must copy it, or the publish refuses the copy')" = 1 ] ||
+    fail "the note was not named exactly once:
+$output"
+  assert_output_contains "1 upgraded (0 needed a second pass to converge provenance), 0 HELD BACK, 0 FAILED"
+}
+
 @test "a held line whose WORDING has moved is still reported, not counted as named (0074)" {
   # critic-shell, second pass: the counter matched `skipped` loosely while the
   # extractor needed upgrade's exact suffix, so a runtime printing a different
