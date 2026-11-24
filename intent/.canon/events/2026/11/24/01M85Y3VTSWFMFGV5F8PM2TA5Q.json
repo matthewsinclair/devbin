@@ -1,0 +1,15 @@
+{
+  "id": "01M85Y3VTSWFMFGV5F8PM2TA5Q",
+  "ts": "2026-11-24T04:48:05.981Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I2bae9ce5b5d54914"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "install.files cannot declare a runtime set with excludes: a directory entry is copied whole by cp -R, so Utilz's and Gtools' adoptions of devbin#0326 would ship their tests and untracked files, or list every file"
+  }
+}
