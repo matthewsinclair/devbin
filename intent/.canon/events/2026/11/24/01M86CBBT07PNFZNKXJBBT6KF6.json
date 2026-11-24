@@ -1,0 +1,15 @@
+{
+  "id": "01M86CBBT07PNFZNKXJBBT6KF6",
+  "ts": "2026-11-24T08:56:51.780Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I8f31e10858bdcbbf"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "0360's group-TERM arms go red on WSL from time to time: the run ends 0, not 143, because the caller's own TERM handler takes the signal after the gated command has started"
+  }
+}
