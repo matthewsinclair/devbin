@@ -3,7 +3,7 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 31d7bc64-995d-46af-b1a9-914a003e7f32
-heartbeat_at: 2026-11-24 04:27Z
+heartbeat_at: 2026-11-24 06:36Z
 status: active
 focus: "2026-11-23 17:26Z by date -u: LOCALFOLDED for hv's estate-wide compact cycle; Desk HELD. Open: 0.1.29 pre-cut running (cut on green, hv's pre-approval), Intent 3.5.2 U4a rerun queued, Molt 1.4.8 after 0.1.29. See intent/wip.md."
 claims: []
@@ -13,19 +13,16 @@ claims: []
 
 ## DOING
 
-- THE DESK (decision 286 order), at 06:33Z by date -u: Intent bank v3 01M862SB (cargo,heavy) runs its gate all alone; at its END, Pplr run 3 01M862H0 (cargo,bats; driver hunks read SOUND), then I2bae9ce 01M863NS (bats; driver read SOUND), then utilz-dc FF5TB4 (cargo,bats), then utilz-cc 01M85XY3 (needs utilz-vc's read of new bytes). Molt 1.4.9 cut 01M862EZ (bats,cargo,heavy) after Intent 3.5.2's cut. On green: land each devbin unit by decision 83 (restore by path, pcommit.sh, blob compare). Open for hv: localised-test-per-fix standing?; the 0.1.29 reset as a one-off.
+- THE DESK at 10:42Z by date -u: devvm 0.5.3's arm64 build 01M86HMD runs on heavy; its rehearsal 01M86HMJ follows; then the GitHub amd64 and Windows runs and devvm's cut (via agentic-engineering). Next for devbin: 0.1.31 (I8f31e10 first, then Icbbfa7c, I4d6b25d, I79fb280, I6b3b75f), then Utilz I59c806c and Gtools I7bd0048.
 
 ## TODO
 
 - HV'S LIST (as of 2026-11-19 05:24Z by date -u, decisions 229 and 230): (e) the no-vendor mode (decision 64) and --ivault (hold 2) stay parked until hv schedules them. With the sysadms, not hv's: kovacs's GNOME re-login check and its share of the five subagents (kovacs-sysadm, message queued), and gyges's share (gyges-sysadm, not reachable from vc); both texts are in ~/Devel/scratch/devbin-vc/20261119/sysadm-handoffs.md for hv to paste. keats is closed (decision 230). Everything else on the list is done or ruled. (edited)
-- NOTICES at each estate's next vc session: sweep notices for 0.1.19, 0.1.20 and 0.1.23 (archived todos 194, 198, 210; shas in ~/Devel/scratch/devbin-vc/0.1.23/aftertag/sweep-commit.summary), 0.1.24 (~/Devel/scratch/devbin-vc/0.1.24/sweep/sweep-commit.summary), 0.1.25 (~/Devel/scratch/devbin-vc/0.1.25/sweep/sweep-commit.summary; 0.1.25 renders a formula's install as cp_r, which broke Intent's brew_formula.bats, so tell each estate with a formula test) and 0.1.26 (decision 204; ~/Devel/scratch/devbin-vc/0.1.26/sweep/sweep-commit.summary; tell each estate with a cargo build about the gate cache's 12G bound, issue 0361; Prodinfra's push is its own, its eight commits sit under the sweep commit); 0326's reader notice to pplr-vc, cldr-vc, cldr-dc and pipeliner-sc (~/Devel/scratch/devbin-cc/i0326/reader-notice-0326.md); trellis-vc, its AGENTS.md swift bug gone in Intent 3.3.0; Prodinfra, infra --profile takes a path; release review action 2 to molt-vc. On hv's word (decision 229): prolix-vc, hv's former todo 36 (Prolix's ST0028: its dependency half, AC-2.1 to 2.4, unstarted while its lockfile moved outside it; the cf06d8e Dockerfile change unbuilt); Baize's vc, hv's former todo 38 (its authored db reset drops with no confirmation or prod refusal while its seed arm is prod-gated; fix before its first deploy). SENT 2026-11-15 11:27Z by date -u: sweep notices to intent-vc, laksa-vc and webber-vc, and action 2 to intent-vc (texts in ~/Devel/scratch/devbin-vc/0.1.25/notices). SENT 2026-11-17 by 10:23Z by date -u: ccusage-vc (its sweeps, 0326's reader notice, decision 178(3)'s rename beside its 2026-11-06 revert) and intent-vc (0.1.26's sweep and its push under decision 76); texts in ~/Devel/scratch/devbin-vc/0.1.26/notices. Laksa still needs 0.1.26's; Webber's went with its sweep commit (decision 213). The rest wait for those estates' vcs. (edited)
-- 0.1.27's NOTICES. 0.1.27 RELEASED 2026-11-18 (tag v0.1.27 at 9cd0fbbd; every leg green; CI Linux green, candidate run 44252951629). hv's brew steps done (devbin 0.1.27 (brew, 9cd0fbbd03ba)). SWEPT 2026-11-18 07:30Z by date -u: 25 estates 0.1.26 to 0.1.27, committed by path (~/Devel/scratch/devbin-vc/0.1.27/sweep/sweep-commit.summary); pushed to local where the sweep was the one commit ahead; Gtools-geodica, Intent, Prodinfra and Webber hold their own unpushed commits under the sweep, so each estate's vc pushes. TO SEND at each estate's next vc session: the 0.1.27 sweep notice; to intent-vc, Intent's adoption of release target (0352, decision 206: add target to Intent's release.verbs, and swap linux-release.yml's interim parse at line 87 for one line, bin/devbin release target --ref "$GITHUB_REF" >> "$GITHUB_ENV"); to every estate with a whiteboard, release.unread's opt-in (decision 207: list intent/whiteboard/ and intent/.canon/events/ so a peer's pickup no longer fails a cut). SENT: Webber's, 2026-11-18 by 14:47Z by date -u (decision 226). The rest wait for those estates' vcs. SENT 2026-11-23 by 10:34Z by date -u: Intent's three (0.1.27 and 0.1.28 sweeps, already pushed with main; release target, 0352; release.unread), to intent-vc; 3.5.2 takes the last two. (edited)
 - For hv, not tonight's path: cldr#0001 (0326 in Cldr) code is landed at Cldr 3f55628e; its Done-when needs T10's live proof in Cldr's checkout (bin/devbin install to opt, use dev/opt/brew, doctor), which moves ~/.local/bin and publishes to ~/Devel/opt, so hv says when (Cldr now, or with Pplr's); the brew leg rides cldr's next release.
 
 ## Holds
 
 - `--ivault`: not to be started until hv says start. (edited)
-- Molt's template stopgap 526e5bc (on_macos depends_on bash => :build) stays until devbin 0.1.30's renderer emits the bash build dependency itself; then molt-vc drops 526e5bc in its 0.1.30 sweep.
 
 ## Watch-outs
 
@@ -69,6 +66,7 @@ claims: []
 - hv by AskUserQuestion in vc's window, read by 2026-11-23 17:55Z by date -u: devvm 0.5.3's scope is 'glab fix + pwsh 7 fix'. So both dc's glab sign-in fix and the installer's pwsh 7 module-path fix go in, each with its own proof before the build; the cut is still last, after devbin 0.1.29, Intent 3.5.2 and Molt 1.4.8 are out (decision 285).
 - hv in ccusage-vc's window (Ccusage decision 25), relayed by ccusage-vc, answered by 2026-11-24 05:23Z by its date -u: 'Keep use. The 11-06 revert stands. ccusage use NAME stays the account verb and nothing is renamed.' So decision 178(3) (the use-to-activate rename as ruled work) is spent and withdrawn; the dev/opt/brew switch stays bin/devbin use, a devbin verb. Hold 37 is released and archived.
 - hv by AskUserQuestion in vc's window, read by 2026-11-24 06:03Z by date -u: Molt 1.4.9 is cut after Intent 3.5.2's cut ('Cut 1.4.9 after Intent'). It carries Molt I7892f34 (devbin#0326's install and use) and O2 (devbin's lanes runner), both green at the Desk, and template 526e5bc's bash build dependency; molt-vc installs the rendered formula with brew before the cut, and a seat cuts with --yes (Molt decision 10). (edited)
+- hv 2026-11-24 08:44Z-08:52Z (AskUserQuestion, hv's words as chosen): 'I'll cut it now' for Intent 3.5.2 (on intent-vc's READY, after v5); 'Sweep 25, freeze Intent' for devbin 0.1.30 (done); localised test per fix is STANDING; the 0.1.29 reset was one-off; queue Molt 1.4.8 rollout, Gtools/Utilz pushes and cldr#0001 T10 for hv; 'Molt 1.4.9 cuts now', superseding decision 289's order.
 
 ---
 

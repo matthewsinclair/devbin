@@ -1,0 +1,15 @@
+{
+  "id": "01M86JC9PYZJBTKE78RBRZ916S",
+  "ts": "2026-11-24T10:42:13.854Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "THE DESK at 10:42Z by date -u: devvm 0.5.3's arm64 build 01M86HMD runs on heavy; its rehearsal 01M86HMJ follows; then the GitHub amd64 and Windows runs and devvm's cut (via agentic-engineering). Next for devbin: 0.1.31 (I8f31e10 first, then Icbbfa7c, I4d6b25d, I79fb280, I6b3b75f), then Utilz I59c806c and Gtools I7bd0048."
+  }
+}

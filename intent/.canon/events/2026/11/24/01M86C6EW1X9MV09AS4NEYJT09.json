@@ -1,0 +1,15 @@
+{
+  "id": "01M86C6EW1X9MV09AS4NEYJT09",
+  "ts": "2026-11-24T08:54:11.073Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-11-24 08:44Z-08:52Z (AskUserQuestion, hv's words as chosen): 'I'll cut it now' for Intent 3.5.2 (on intent-vc's READY, after v5); 'Sweep 25, freeze Intent' for devbin 0.1.30 (done); localised test per fix is STANDING; the 0.1.29 reset was one-off; queue Molt 1.4.8 rollout, Gtools/Utilz pushes and cldr#0001 T10 for hv; 'Molt 1.4.9 cuts now', superseding decision 289's order."
+  }
+}
