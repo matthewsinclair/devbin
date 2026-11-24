@@ -3,7 +3,7 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 31d7bc64-995d-46af-b1a9-914a003e7f32
-heartbeat_at: 2026-11-24 06:36Z
+heartbeat_at: 2026-11-24 12:16Z
 status: active
 focus: "2026-11-23 17:26Z by date -u: LOCALFOLDED for hv's estate-wide compact cycle; Desk HELD. Open: 0.1.29 pre-cut running (cut on green, hv's pre-approval), Intent 3.5.2 U4a rerun queued, Molt 1.4.8 after 0.1.29. See intent/wip.md."
 claims: []
@@ -68,6 +68,8 @@ claims: []
 - hv by AskUserQuestion in vc's window, read by 2026-11-24 06:03Z by date -u: Molt 1.4.9 is cut after Intent 3.5.2's cut ('Cut 1.4.9 after Intent'). It carries Molt I7892f34 (devbin#0326's install and use) and O2 (devbin's lanes runner), both green at the Desk, and template 526e5bc's bash build dependency; molt-vc installs the rendered formula with brew before the cut, and a seat cuts with --yes (Molt decision 10). (edited)
 - hv 2026-11-24 08:44Z-08:52Z (AskUserQuestion, hv's words as chosen): 'I'll cut it now' for Intent 3.5.2 (on intent-vc's READY, after v5); 'Sweep 25, freeze Intent' for devbin 0.1.30 (done); localised test per fix is STANDING; the 0.1.29 reset was one-off; queue Molt 1.4.8 rollout, Gtools/Utilz pushes and cldr#0001 T10 for hv; 'Molt 1.4.9 cuts now', superseding decision 289's order.
 - hv 2026-11-24 11:45Z (in devbin-vc's window): the estate works from one plan, ~/Devel/scratch/estate-plan/PLAN.md, devbin-vc its only writer; rulings D1 to D5 (D1 corrected forward: the shipped 4-hex prefix stays, the course teaches 8 hex). Also hv: Gtools never touches kovacs (Gtools decision 53); Laksa, Lamplight, Conflab, Trellis, Webber and Ccusage get pushes and docs only, and their red CI is ignored today; b353 frozen on hv's 'fix ALL OF THE OUTSTANDING ISSUES in one go'.
+- hv's D5, 2026-11-24 11:45Z by date -u (the estate plan): Intent leaves issue 0326's adopters. This supersedes decision 150 (2)'s clause 'and Intent too while it vendors devbin'. Intent keeps intent use and intent install as its own (Intent's hv decision 36). Record now: 0326's Resolution says so (devbin-cc). Doc: dev-opt-brew.md lines 5 and 150 and its Intent cases are a unit after 0.1.31, whose scope is frozen.
+- hv's AskUserQuestion answers in vc's window, read by 13:18Z by date -u, before hv drives at 17:30 local (13:30Z): (1) devbin 0.1.31: vc cuts and sweeps while hv is away, on a green pre-cut and dry run; a red before the tag stops; nothing after a tag is retried. (2) Gtools ST0020/01 lands on a green Desk run while hv is away; 0.8.4 waits for hv. (3) AE: the amd64 and Windows runs go; the Teams note waits (hv then posted v2 and devvm 0.5.3 released at 13:08Z). (4) The other estate's 902f8e6a: rewrite its history first, as hv; nothing pushed. (5) GH runs now: the Utilz candidate run; devbin main pushed (bea177c0, four remotes); Gtools main pushed (45edccb6); Pipeliner deb58d6, agentic-engineering 1a15401f, sparks level. Each estate's 0.1.30 sweep-commit push is not done: pushing main carries each estate's other unpushed work.
 
 ---
 

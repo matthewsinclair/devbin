@@ -1,0 +1,15 @@
+{
+  "id": "01M86R5QQXJ37KX1WPBCM7Z32K",
+  "ts": "2026-11-24T12:23:30.301Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv's D5, 2026-11-24 11:45Z by date -u (the estate plan): Intent leaves issue 0326's adopters. This supersedes decision 150 (2)'s clause 'and Intent too while it vendors devbin'. Intent keeps intent use and intent install as its own (Intent's hv decision 36). Record now: 0326's Resolution says so (devbin-cc). Doc: dev-opt-brew.md lines 5 and 150 and its Intent cases are a unit after 0.1.31, whose scope is frozen."
+  }
+}
