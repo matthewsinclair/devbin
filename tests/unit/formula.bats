@@ -187,6 +187,13 @@ RUBY
   printf '%s  %s\n' "$SHA_DECOY" Tool-1.2.4.pkg.zip "$SHA_MAC" tool-aarch64-apple-darwin \
     "$SHA_DECOY" tool-aarch64-apple-darwin.tar.gz "$SHA_LIN" tool-1.2.4-aarch64-linux.tar.gz \
     "$SHA_PKG" Tool-1.2.4.pkg >"$SUMS"
+  gh_sums_stub
+}
+
+# gh_sums_stub -- the gh stub, first on PATH under formula_env: it serves $SUMS
+# for `release download` as SHA256SUMS, records every call in gh.calls, and
+# fails any other call.
+gh_sums_stub() {
   mkdir -p "$DEVBIN_TEST_TMPDIR/ghstub"
   cat >"$DEVBIN_TEST_TMPDIR/ghstub/gh" <<SH
 #!/bin/sh
@@ -200,6 +207,36 @@ done
 cp "$SUMS" "\$dir/SHA256SUMS"
 SH
   chmod +x "$DEVBIN_TEST_TMPDIR/ghstub/gh"
+}
+
+# source_cask_checkout -- $FX as formula_checkout makes it, still in source
+# mode, with a cask (issue Iab013e2): release.repo t/devbin, and a cask
+# template pinning the app's zip by @@VERSION@@ and its
+# @@SHA256:Devbin-{version}.zip@@, both committed after the tags; and the
+# release's SHA256SUMS for v0.0.10 at $SUMS, holding the zip and a decoy whose
+# name is near it, served by the gh stub. The config's formula: block is last,
+# so an arm adds a key there by appending it.
+source_cask_checkout() {
+  formula_checkout
+  printf 'project:\n  name: devbin\nrelease:\n  repo: t/devbin\nformula:\n  bash: true\n  cask: packaging/homebrew/devbin-app.rb\n' >"$FX/bin/.devbin/config.yaml"
+  cat >"$FX/packaging/homebrew/devbin-app.rb" <<'RUBY'
+cask "devbin-app" do
+  version "@@VERSION@@"
+  sha256 "@@SHA256:Devbin-{version}.zip@@"
+
+  url "https://example.invalid/download/v#{version}/Devbin-#{version}.zip"
+  name "Devbin"
+
+  depends_on :macos
+
+  app "Devbin.app"
+end
+RUBY
+  git -C "$FX" add -A
+  git -C "$FX" -c user.name=t -c user.email=t@t commit -q -m cask
+  SUMS="$DEVBIN_TEST_TMPDIR/SHA256SUMS"
+  printf '%s  %s\n' "$SHA_DECOY" Devbin-0.0.10.zip.sig "$SHA_PKG" Devbin-0.0.10.zip >"$SUMS"
+  gh_sums_stub
 }
 
 # ruby_keg <formula> [<layout> [<keg>]] -- run <formula>'s install under plain
@@ -1539,4 +1576,61 @@ want_bash_build() {
   run formula check
   assert_failure
   assert_output_contains "packaging/homebrew/devbin.rb depends on bash at the build itself"
+}
+
+# --- Iab013e2: a cask beside a source formula ---------------------------------
+
+@test "Iab013e2: in source mode render writes the cask beside the formula, from the release's version and sums, check names it, and publish pushes both in one commit" {
+  local commit seed out="$DEVBIN_TEST_TMPDIR/devbin.rb" cask="$DEVBIN_TEST_TMPDIR/devbin-app.rb"
+  source_cask_checkout
+  commit="$(git -C "$FX" rev-parse 'v0.0.10^{commit}')"
+  run formula render v0.0.10 "$out" "$cask"
+  assert_success
+  assert_output_contains "wrote $out, devbin v0.0.10 at $commit"
+  assert_output_contains "wrote the cask to $cask"
+  assert_file_contains "$DEVBIN_TEST_TMPDIR/gh.calls" "gh release download --repo t/devbin v0.0.10 --pattern SHA256SUMS --dir"
+  assert_file_contains "$out" "revision: \"$commit\""
+  [[ "$(cat "$cask")" == "$(want_header packaging/homebrew/devbin-app.rb v0.0.10 "$commit")"$'\n''cask "devbin-app" do'$'\n'* ]] ||
+    fail "the rendered cask does not open with the render's header over the template: $(cat "$cask")"
+  assert_file_contains "$cask" '  version "0.0.10"'
+  assert_file_contains "$cask" "  sha256 \"$SHA_PKG\""
+  refute_file_contains "$cask" "$SHA_DECOY"
+  refute_file_contains "$cask" '@@'
+  run formula check
+  assert_success
+  assert_output "formula: packaging/homebrew/devbin.rb and the cask packaging/homebrew/devbin-app.rb render: every check that needs no tag passed"
+  formula_tap
+  seed="$(git -C "$TAP" rev-parse main)"
+  DEVBIN_RELEASE_CONFIRMED=v0.0.10 run formula publish --tap "$TAP"
+  assert_success
+  assert_output_contains "(Formula/devbin.rb Casks/devbin-app.rb)"
+  [ "$(git -C "$TAP" rev-parse main^)" = "$seed" ] || fail "the tap's main is not one commit on the seed"
+  run git -C "$TAP" show main:Casks/devbin-app.rb
+  assert_success
+  assert_output_contains "  sha256 \"$SHA_PKG\""
+  run git -C "$TAP" show main:Formula/devbin.rb
+  assert_success
+  assert_output_contains "revision: \"$commit\""
+  [ -z "$(tmp_left)" ] || fail "publish left its clone behind: $(tmp_left)"
+}
+
+@test "Iab013e2: in source mode a declared cask needs its own path, and formula.repo and formula.assets are still refused, each writing nothing" {
+  local cfg out="$DEVBIN_TEST_TMPDIR/devbin.rb" cask="$DEVBIN_TEST_TMPDIR/devbin-app.rb"
+  source_cask_checkout
+  cfg="$FX/bin/.devbin/config.yaml"
+  cp "$cfg" "$DEVBIN_TEST_TMPDIR/config.base"
+  run formula render v0.0.10 "$out" --sums "$SUMS"
+  assert_failure
+  assert_output_contains "formula.cask names a cask, so the cask needs a path too"
+  printf '  repo: t/devbin-dist\n' >>"$cfg"
+  run formula render v0.0.10 "$out" "$cask" --sums "$SUMS"
+  assert_failure
+  assert_output_contains "formula.repo is declared, and formula.mode is source, which reads it nowhere"
+  cp "$DEVBIN_TEST_TMPDIR/config.base" "$cfg"
+  printf '  assets:\n    - Devbin-{version}.zip\n' >>"$cfg"
+  run formula render v0.0.10 "$out" "$cask" --sums "$SUMS"
+  assert_failure
+  assert_output_contains "formula.assets is declared, and formula.mode is source, which reads it nowhere"
+  assert_file_not_exists "$out"
+  assert_file_not_exists "$cask"
 }
