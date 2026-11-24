@@ -13,5 +13,6 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## TODO
 
+- devbin 0.1.32 carries source-mode `formula.cask` (Gtools I17c1577, devbin-cc's issue). At its release, tell gtools-vc, who tells hv.
 - After 0.1.31: I75da2cc (the sweep's own commit step), I4133a23 (dev-opt-brew.md's Intent cases), and devbin-cc's issue for the fake-checkout note gap.
 - hv's hands: see PLAN.md (the Utilz 2.15.0 cut, the other estate's history rewrite).
