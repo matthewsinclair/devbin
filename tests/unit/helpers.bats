@@ -520,6 +520,33 @@ YAML
   refute_output_contains "brew install bash"
 }
 
+@test "I5a905ad: bash_floor_find returns the first bash that answers at the floor, asked of each in turn, the candidates when given none, and nothing when none does" {
+  local d="$DEVBIN_TEST_TMPDIR/bashes" m
+  mkdir -p "$d" "$HOMEBREW_PREFIX/bin"
+  for m in 3 5 6; do
+    printf '#!/bin/sh\nprintf %s\n' "$m" >"$d/bash$m"
+    chmod 0755 "$d/bash$m"
+  done
+  run bash -c '_DEVBIN_FLOOR_ONLY=1 . "$1/helpers"; bash_floor_find "$2/bash3" "$2/missing" "$2/bash5" "$2/bash6"' _ "$DEVBIN_LIB_DIR" "$d"
+  assert_success
+  [ "$output" = "$d/bash5" ] || fail "the finder chose: $output"
+  run bash -c '_DEVBIN_FLOOR_ONLY=1 . "$1/helpers"; bash_floor_find "$2/bash3" "$2/missing"' _ "$DEVBIN_LIB_DIR" "$d"
+  assert_failure
+  [ -z "$output" ] || fail "the finder named a bash below the floor: $output"
+  # With none given, the candidates: HOMEBREW_PREFIX's bash, a stand-in at 5.
+  cp "$d/bash5" "$HOMEBREW_PREFIX/bin/bash"
+  run bash -c '_DEVBIN_FLOOR_ONLY=1 . "$1/helpers"; bash_floor_find' _ "$DEVBIN_LIB_DIR"
+  assert_success
+  [ "$output" = "$HOMEBREW_PREFIX/bin/bash" ] || fail "the finder chose from the candidates: $output"
+}
+
+@test "I5a905ad: helpers asked for the floor alone loads and answers under /bin/bash, whatever its version, since the lanes runner asks it before it is under a bash at the floor" {
+  [ -x /bin/bash ] || fail "this host has no /bin/bash to read the file with"
+  run /bin/bash -c '_DEVBIN_FLOOR_ONLY=1 . "$1/helpers"; bash_meets_floor 5 && ! bash_meets_floor 3 && bash_floor_candidates' _ "$DEVBIN_LIB_DIR"
+  assert_success
+  [ -n "$output" ] || fail "the candidates are empty under /bin/bash"
+}
+
 # Print /bin/bash's version as MAJORMINOR (eg 302, 503), or nothing if absent.
 # Deliberately NOT $BASH_VERSINFO: that is whichever bash is running bats, which
 # on a Mac is usually a Homebrew bash 5. The version that matters is the system

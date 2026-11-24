@@ -402,6 +402,125 @@ lanes_default() {
   assert_output_contains "lanes: $all test(s) ran in parallel and $serial serially, all $all that bats counts in tests/unit, each once"
 }
 
+# --- I5a905ad: an older-shell gate runs the suite through the runner ---------
+
+# require_old_bin_bash -- skip, naming what was not checked, where this host's
+# /bin/bash meets devbin's floor: no gate can run a suite under an older bash
+# here. macOS ships /bin/bash 3.2, so these arms run there.
+require_old_bin_bash() {
+  local v
+  # shellcheck disable=SC2016 # /bin/bash expands its own BASH_VERSINFO
+  v="$(/bin/bash -c 'printf %s "${BASH_VERSINFO[0]}"' 2>/dev/null)" || v=""
+  # shellcheck source=lib/helpers
+  _DEVBIN_FLOOR_ONLY=1 . "$DEVBIN_LIB/helpers"
+  if bash_meets_floor "$v"; then
+    skip "this host's /bin/bash is bash $v, at devbin's floor, so no older-shell gate can be run here: the runner's re-run under a floor bash was NOT checked"
+  fi
+}
+
+# gate_fixture -- a fixture suite as lanes_fixture's, each test of which
+# appends the BASH_VERSION it runs under to <root>/shells and takes a moment,
+# so each file's time is more than nothing; print its root.
+gate_fixture() {
+  local root="$DEVBIN_TEST_TMPDIR/gate" body
+  # shellcheck disable=SC2016 # the test's own expansions, made when it runs
+  body='{ printf "%s\n" "$BASH_VERSION" >>"$BATS_TEST_DIRNAME/../../shells"; sleep 0.2; }'
+  mkdir -p "$root/tests/unit"
+  : >"$root/shells"
+  printf '%s\n' "@test \"a one\" $body" "@test \"a two\" $body" >"$root/tests/unit/a.bats"
+  printf '%s\n' "@test \"b plain\" $body" '# bats test_tags=serial' "@test \"b serial\" $body" >"$root/tests/unit/b.bats"
+  printf '%s\n' "$root"
+}
+
+# floor_prefix -- a Homebrew prefix whose bin/bash is the bash this test runs
+# under, which meets the floor, since the harness gives each test a Homebrew
+# with no bash; print the prefix.
+floor_prefix() {
+  local p="$DEVBIN_TEST_TMPDIR/floorbrew"
+  mkdir -p "$p/bin"
+  ln -sf "$BASH" "$p/bin/bash"
+  printf '%s\n' "$p"
+}
+
+# gate_run <root> [NAME=value...] -- run the lane runner in <root> as an
+# older-shell gate runs it: /bin first on PATH, and the runner started by
+# /bin/bash, with lanes_run's clearing of the lanes' own variables.
+gate_run() {
+  local root="$1"
+  shift
+  (cd "$root" && env -u DEVBIN_TEST_JOBS -u DEVBIN_JOBS -u DEVBIN_TEST_SHARD -u BATS_PARALLEL_BINARY_NAME -u BATS_NUMBER_OF_PARALLEL_JOBS \
+    -u _LANES_REEXEC -u _LANES_SUITE_BASH -u _LANES_BASH \
+    PATH="/bin:$PATH" "$@" DEVBIN_LIB="$DEVBIN_LIB" \
+    /bin/bash "$DEVBIN_LIB/bats-lanes" tests/unit </dev/null)
+}
+
+@test "I5a905ad: from a gate that puts /bin first on PATH, the runner runs under a bash at the floor and the suite in two lanes under /bin/bash, each test once" {
+  require_command parallel "no GNU parallel on this runner"
+  require_old_bin_bash
+  local root all serial tally old jobs=2
+  root="$(gate_fixture)"
+  tally="$(lanes_tally "$root")" || fail "the fixture's tests could not be counted"
+  read -r all serial <<<"$tally"
+  # shellcheck disable=SC2016 # /bin/bash expands its own BASH_VERSION
+  old="$(/bin/bash -c 'printf %s "$BASH_VERSION"')"
+  run gate_run "$root" HOMEBREW_PREFIX="$(floor_prefix)" DEVBIN_TEST_JOBS="$jobs"
+  assert_success
+  assert_output_contains "found at devbin's floor; the suite under the PATH's bash, $old"
+  assert_output_contains "lanes: two. First $jobs tests at a time under GNU parallel"
+  assert_output_contains "lanes: $((all - serial)) test(s) ran in parallel and $serial serially, all $all that bats counts in tests/unit, each once"
+  [ "$(grep -c . "$root/shells")" -eq "$all" ] || fail "the tests recorded $(grep -c . "$root/shells") shell(s) of the suite's $all: $(cat "$root/shells")"
+  if grep -vxF "$old" "$root/shells" >/dev/null; then fail "a test ran under a bash other than /bin/bash's $old: $(cat "$root/shells")"; fi
+}
+
+@test "I5a905ad: under the gate, the recorder times every file of the parallel lane, each time more than nothing" {
+  require_command parallel "no GNU parallel on this runner"
+  require_old_bin_bash
+  local root f block t
+  root="$(gate_fixture)"
+  run gate_run "$root" HOMEBREW_PREFIX="$(floor_prefix)" DEVBIN_TEST_JOBS=2
+  assert_success
+  block="$(lanes_times_block)"
+  [ -n "$block" ] || fail "the run printed no time-per-file block: $output"
+  for f in "$root"/tests/unit/*.bats; do
+    t="$(sed -n -E "s/^lanes: +([0-9]+\.[0-9])s  ${f##*/}\$/\1/p" <<<"$block")"
+    [ -n "$t" ] || fail "${f##*/} has no time: $block"
+    [ "${t//[!1-9]/}" != "" ] || fail "${f##*/}'s time is nothing, $t s: $block"
+  done
+}
+
+@test "I5a905ad: under the gate with no bash at the floor to be found, the runner refuses, naming where it looked and the one-lane fallback" {
+  require_old_bin_bash
+  local root none="$DEVBIN_TEST_TMPDIR/nobrew"
+  root="$(gate_fixture)"
+  mkdir -p "$none/bin"
+  run gate_run "$root" HOMEBREW_PREFIX="$none"
+  assert_failure
+  assert_output_contains "lanes: this runner needs bash >= 5, and it was started under bash"
+  assert_output_contains "no bash at the floor is at $none/bin/bash"
+  assert_output_contains "lanes: run the suite in one lane instead, with plain bats and the project's own flags, eg: bats tests/unit"
+  [ ! -s "$root/shells" ] || fail "a test ran: $(cat "$root/shells")"
+}
+
+@test "I5a905ad: a bash the search finds that then runs the runner below the floor is refused by name, and the runner runs itself again at most once" {
+  require_old_bin_bash
+  local root fake="$DEVBIN_TEST_TMPDIR/fakebrew"
+  root="$(gate_fixture)"
+  mkdir -p "$fake/bin"
+  # It answers the search's question as a bash at the floor would, and runs
+  # anything else as /bin/bash, logging each run.
+  # shellcheck disable=SC2016 # the fake's own expansions, made when it runs
+  printf '%s\n' '#!/bin/sh' \
+    'if [ "$1" = -c ]; then echo 5; exit 0; fi' \
+    "printf 'run\\n' >>\"$fake/runs\"" \
+    'exec /bin/bash "$@"' >"$fake/bin/bash"
+  chmod +x "$fake/bin/bash"
+  run gate_run "$root" HOMEBREW_PREFIX="$fake"
+  assert_failure
+  assert_output_contains "lanes: $fake/bin/bash was found to meet devbin's floor, bash >= 5, and runs this runner as bash"
+  assert_output_contains "so it is refused rather than looked for again"
+  [ "$(grep -c . "$fake/runs")" -eq 1 ] || fail "the found bash ran the runner $(grep -c . "$fake/runs") time(s): $output"
+}
+
 # lanes_times_block -- the run's time-per-file block from $output: its header
 # and the file lines under it.
 lanes_times_block() {
