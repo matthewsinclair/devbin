@@ -2393,6 +2393,60 @@ $plan"
   [ "$(sed -n 's/^# source_commit: //p' "$estates/one/bin/.devbin/manifest.sha256")" = "$want" ]
 }
 
+@test "I75da2cc: --apply --commit commits each estate by path, ending with the tree's own attribution line, else the sweeping user's" {
+  # HOME outside the TMPDIR, for the reason the --apply arm above gives.
+  export HOME="$DEVBIN_TEST_TMPDIR/elsewhere"
+  mkdir -p "$HOME"
+  src="$(mkdevsrc)"
+  run devbin_run "$src" install
+  assert_success
+  prefix="$DEVBIN_TEST_TMPDIR/opt/devbin"
+  switch_to "$prefix"
+
+  # Two estates, each a repository with its vendored devbin committed, and a
+  # file of its own changed, which the sweep's commit must leave alone. `own`
+  # names its attribution line in its settings.local.json; `user` names none,
+  # so its commit takes the sweeping user's line.
+  estates="$DEVBIN_TEST_TMPDIR/estates"
+  for e in own user; do
+    mkdir -p "$estates/$e"
+    run devbin_run "$src" install --into "$estates/$e" --name "$e"
+    assert_success
+    printf 'kept\n' >"$estates/$e/notes.txt"
+    git -C "$estates/$e" init -q
+    git -C "$estates/$e" add -A
+    git -C "$estates/$e" -c user.email=t@t -c user.name=t -c maintenance.auto=false -c gc.auto=0 commit -q -m fixture
+    printf 'changed\n' >"$estates/$e/notes.txt"
+  done
+  mkdir -p "$estates/own/.claude"
+  printf '{"attribution": {"commit": "(T) the tree line"}}\n' >"$estates/own/.claude/settings.local.json"
+  export CLAUDE_CONFIG_DIR="$DEVBIN_TEST_TMPDIR/claude-config"
+  mkdir -p "$CLAUDE_CONFIG_DIR"
+  printf '{"attribution": {"commit": "(T) the user line"}}\n' >"$CLAUDE_CONFIG_DIR/settings.json"
+
+  mkproj_cfg "$prefix"
+  run env DEVBIN_FLEET_ROOTS="$estates" PROJECT_ROOT="$PROJ" DEVBIN_DIR="$PROJ/bin/.devbin" \
+    DEVBIN_LIB="$DEVBIN_LIB_DIR" GIT_AUTHOR_NAME=t GIT_AUTHOR_EMAIL=t@t GIT_COMMITTER_NAME=t GIT_COMMITTER_EMAIL=t@t \
+    bash "$FLEET" upgrade --apply --commit
+  assert_success
+  assert_output_contains "2 upgraded"
+  assert_output_contains "2 committed, 0 NOT COMMITTED"
+
+  for e in own user; do
+    # One commit on the fixture, holding the swept paths and nothing else.
+    [ "$(git -C "$estates/$e" rev-list --count HEAD)" = 2 ] || fail "$e: the sweep did not make exactly one commit"
+    run git -C "$estates/$e" diff --name-only HEAD~1 HEAD
+    assert_output_contains "bin/.devbin/manifest.sha256"
+    refute_output_contains "notes.txt"
+    [ -z "$(git -C "$estates/$e" status --porcelain -- bin/devbin bin/.devbin)" ] || fail "$e: the swept paths are not all committed"
+    [ "$(cat "$estates/$e/notes.txt")" = changed ] || fail "$e: the sweep touched the estate's own change"
+  done
+  [ "$(git -C "$estates/own" log -1 --format=%B | sed '/^$/d' | sed -n '$p')" = "(T) the tree line" ] ||
+    fail "own: the commit does not end with the tree's line: $(git -C "$estates/own" log -1 --format=%B)"
+  [ "$(git -C "$estates/user" log -1 --format=%B | sed '/^$/d' | sed -n '$p')" = "(T) the user line" ] ||
+    fail "user: the commit does not end with the sweeping user's line: $(git -C "$estates/user" log -1 --format=%B)"
+}
+
 # AT-3.1
 @test "the DRY RUN of that same sweep leaves the estate untouched" {
   # The control for the arm above, and the one that matters: same fixtures, same

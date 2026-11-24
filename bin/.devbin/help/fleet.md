@@ -10,8 +10,10 @@ tree, not in the vendored runtime, so an install cannot enumerate anything.
                     vendored runtime, when it was last vendored, and whether
                     that runtime is committed in the estate
   doc               regenerate intent/docs/devbin-users.md from the same scan
-  upgrade [--apply] upgrade every estate from the machine install. WITHOUT
-                    --apply it prints the plan and writes nothing
+  upgrade [--apply [--commit]]
+                    upgrade every estate from the machine install. WITHOUT
+                    --apply it prints the plan and writes nothing. --commit
+                    commits each estate it upgrades, by path
 
 ## Where it looks
 
@@ -50,6 +52,8 @@ estate, one with no executable bin/devbin, one that has lost its manifest, or wh
 with the reason. An estate that took the upgrade but held back files edited in
 place is HELD, which is not level, and the files are named with the remedy.
 With --apply, any HELD or FAILED estate makes the exit non-zero.
+
+With --commit, the sweep makes one commit in each estate it upgraded, through a private index read from HEAD, so the commit holds only what the sweep changed under bin/devbin, bin/.devbin and .devbin-tool, and nothing else the tree has changed or staged. The tree's own hooks run. The message ends with the line Claude Code would end it with: `attribution.commit` from the tree's .claude/settings.local.json, else its .claude/settings.json, else the sweeping user's settings.json under CLAUDE_CONFIG_DIR (default ~/.claude), and no line when none sets it. An estate is upgraded and NOT COMMITTED, and named with the reason, when its devbin paths had changes before the sweep, when its index holds paths staged, or when its commit fails. A HELD estate is not committed. Any NOT COMMITTED estate makes the exit non-zero. --commit needs --apply, and jq.
 
 A scan that could not read a root in full is refused rather than swept, because
 an estate under that root would leave the sweep without a row (issue 0056).

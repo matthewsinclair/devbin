@@ -1003,25 +1003,144 @@ sweep_prefix_note() {
   warn "DEVBIN_INSTALL_PREFIX names $prefix, and without it $other: in a shell without that variable, an estate this sweep upgrades reads that instead -- run devbin use opt in the devbin checkout to make it the switch's"
 }
 
-# cmd_upgrade [--apply] -- the sweep.
+# --- the sweep's commit (issue I75da2cc) -------------------------------------
+#
+# A SWEEP COMMIT ENDS WITH THE TREE'S OWN ATTRIBUTION LINE. A repository whose
+# Claude settings name `attribution.commit` refuses, at its own promotion gate,
+# a commit that ends with any other line, and the 0.1.12 sweep's commits, made
+# by a script after the sweep, ended five of them with the sweeping user's. So
+# the sweep makes the commit itself, one per tree, by path, and reads the line
+# where Claude Code reads it: the tree's settings.local.json, then its
+# settings.json, then the sweeping user's own settings.
+
+# The paths a sweep writes in an estate, as pathspecs relative to its root.
+SWEEP_PATHS=(bin/devbin bin/.devbin .devbin-tool)
+
+# sweep_changed <root> -- each path under SWEEP_PATHS that differs from HEAD in
+# <root>'s repository, one a line, relative to the repository's top. Fails when
+# git cannot say.
+sweep_changed() {
+  local out
+  out="$(git -C "$1" status --porcelain=v1 --untracked-files=all -- "${SWEEP_PATHS[@]}")" || return 1
+  [ -z "$out" ] || printf '%s\n' "$out" | sed -E 's/^.. //'
+}
+
+# sweep_attribution <top> -- the line a sweep commit in the repository at <top>
+# ends with: the first `attribution.commit` set in <top>/.claude/
+# settings.local.json, <top>/.claude/settings.json and the sweeping user's
+# settings.json, in that order. Empty when none sets it. A settings file that is
+# there and cannot be read fails, naming it, so no commit falls through to
+# another file's line.
+sweep_attribution() {
+  local f line
+  for f in "$1/.claude/settings.local.json" "$1/.claude/settings.json" \
+    "${CLAUDE_CONFIG_DIR:-$HOME/.claude}/settings.json"; do
+    [ -e "$f" ] || continue
+    line="$(jq -r '.attribution.commit // empty' "$f" 2>/dev/null)" || {
+      printf '%s\n' "jq could not read $f"
+      return 1
+    }
+    if [ -n "$line" ]; then
+      printf '%s\n' "$line"
+      return 0
+    fi
+  done
+}
+
+# sweep_commit <root> <subject> -- commit what the sweep changed in <root>'s
+# repository, by path. Echoes one state line: `committed<TAB><sha12><TAB><n>`,
+# `none` when nothing changed, or `FAILED<TAB><reason>`.
+#
+# THE COMMIT GOES THROUGH A PRIVATE INDEX, read from HEAD, so it carries only
+# the sweep's paths, whatever else the tree has staged or changed; the shared
+# index's entries for those paths then follow the new HEAD. A tree whose shared
+# index holds anything staged is not committed, since someone's commit is in
+# flight there. The tree's own hooks run; nothing here passes --no-verify.
+sweep_commit() {
+  local root="$1" subject="$2" top attr n sha idx msg staged changed rc=0
+  local -a paths
+  top="$(git -C "$root" rev-parse --show-toplevel 2>/dev/null)" || {
+    printf 'FAILED\tnot in a git repository\n'
+    return 1
+  }
+  staged="$(git -C "$top" diff --cached --name-only)" || {
+    printf 'FAILED\tgit could not read the index\n'
+    return 1
+  }
+  if [ -n "$staged" ]; then
+    printf 'FAILED\tits index has paths staged, so a commit may be in flight there\n'
+    return 1
+  fi
+  changed="$(sweep_changed "$root")" || {
+    printf 'FAILED\tgit could not say what the sweep changed\n'
+    return 1
+  }
+  paths=()
+  [ -z "$changed" ] || mapfile -t paths <<<"$changed"
+  n="${#paths[@]}"
+  if [ "$n" -eq 0 ]; then
+    printf 'none\n'
+    return 0
+  fi
+  attr="$(sweep_attribution "$top")" || {
+    printf 'FAILED\t%s\n' "$attr"
+    return 1
+  }
+  idx="$(mktemp "${TMPDIR:-/tmp}/devbin-fleet-index.XXXXXX")" || {
+    printf 'FAILED\tcould not create a scratch index\n'
+    return 1
+  }
+  msg="$idx.msg"
+  {
+    printf '%s\n\n' "$subject"
+    printf 'The sweep commits by path (%d paths): it touches nothing else in the tree, and pushes nothing.\n' "$n"
+    [ -z "$attr" ] || printf '\n%s\n' "$attr"
+  } >"$msg"
+  (
+    cd "$top" &&
+      GIT_INDEX_FILE="$idx" git read-tree HEAD &&
+      GIT_INDEX_FILE="$idx" git add -A -- "${paths[@]}" &&
+      GIT_INDEX_FILE="$idx" git commit -q -F "$msg"
+  ) >"$idx.out" 2>&1 || rc=$?
+  if [ "$rc" -ne 0 ]; then
+    printf 'FAILED\tgit commit exited %d: %s\n' "$rc" "$(tr '\n' ' ' <"$idx.out")"
+    rm -f -- "$idx" "$msg" "$idx.out"
+    return 1
+  fi
+  rm -f -- "$idx" "$msg" "$idx.out"
+  git -C "$top" reset -q -- "${paths[@]}" 2>/dev/null ||
+    warn "the index in $top could not follow the sweep's commit; run there: git reset -q -- ${paths[*]}"
+  sha="$(git -C "$top" rev-parse --short=12 HEAD)"
+  printf 'committed\t%s\t%d\n' "$sha" "$n"
+}
+
+# cmd_upgrade [--apply [--commit]] -- the sweep.
 cmd_upgrade() {
   local apply="" prefix root label want state src roots kind outside="" frozen frozen_list nomatch
   local n_level=0 n_work=0 n_repoint=0 n_frozen=0 n_unreachable=0 n_other=0 n_outside=0
   local n_nomanifest=0 n_archive=0 n_nofiles=0 n_unreadable=0 n_done=0 n_conv=0 n_failed=0 n_held=0 result held unvouched
   local plan="" excluded="" heldrows="" noterows="" notes note
+  local commit="" subject="" before cstate n_committed=0 n_uncommitted=0 commitrows=""
 
   while [ $# -gt 0 ]; do
     case "$1" in
       --apply) apply=yes; shift ;;
+      --commit) commit=yes; shift ;;
       -h | --help)
-        printf 'usage: %s fleet upgrade [--apply]\n\n' "${DEVBIN_INVOKE:-bin/devbin}"
+        printf 'usage: %s fleet upgrade [--apply [--commit]]\n\n' "${DEVBIN_INVOKE:-bin/devbin}"
         printf '  Upgrades every estate from the machine install.\n'
         printf '  WITHOUT --apply it prints the plan and writes nothing.\n'
+        printf '  --commit makes one commit by path in each estate the sweep upgrades.\n'
         return 0
         ;;
       *) die "unknown argument '$1' (try: ${DEVBIN_INVOKE:-bin/devbin} fleet upgrade --help)" ;;
     esac
   done
+
+  [ -z "$commit" ] || [ -n "$apply" ] ||
+    die "--commit commits what --apply writes, so it needs --apply"
+  [ -z "$commit" ] || command -v jq >/dev/null 2>&1 ||
+    die "--commit reads each tree's attribution line with jq, and jq is not on PATH"
 
   # The frame, read once for the whole sweep (see the dispatch at the bottom).
   _FLEET_ROOTS="$(fleet_roots_read)"
@@ -1031,6 +1150,8 @@ cmd_upgrade() {
        publish one first:  $DEVBIN_INVOKE install"
   want="$(recorded_commit "$prefix")"
   sweep_prefix_note "$prefix"
+  [ -z "$commit" ] ||
+    subject="devbin: swept to devbin $(devbin_version_of "$prefix") (${want:0:12}) by fleet upgrade --apply --commit, $(date -u +'%Y-%m-%d %H:%MZ') by date -u"
 
   # AN INCOMPLETE SCAN IS NOT SWEPT (issue 0056): an estate beneath a root that
   # could not be read in full would be dropped from the sweep without a row.
@@ -1145,6 +1266,13 @@ cmd_upgrade() {
     n_work=$((n_work + 1))
 
     if [ -n "$apply" ]; then
+      # WHAT THE SWEEP WILL COMMIT IS READ BEFORE IT WRITES: a change already
+      # under its paths is someone's, so that estate is upgraded and not
+      # committed, and named.
+      before=""
+      if [ -n "$commit" ]; then
+        before="$(sweep_changed "$root" 2>/dev/null)" || before="git could not say what had changed"
+      fi
       # `|| true`: upgrade_one's status only repeats the FAILED its first line
       # already carries, and under errexit it would end the sweep mid-estate.
       result="$(upgrade_one "$root" "$prefix" || true)"
@@ -1176,6 +1304,24 @@ cmd_upgrade() {
             n_done=$((n_done + 1)); n_conv=$((n_conv + 1))
           else
             n_done=$((n_done + 1))
+          fi
+          if [ -n "$commit" ] && [ -z "$held" ]; then
+            if [ -n "$before" ]; then
+              cstate="NOT COMMITTED -- its devbin paths had changes before the sweep: ${before//$'\n'/, }"
+            else
+              cstate="$(sweep_commit "$root" "$subject" || true)"
+              case "$cstate" in
+                committed*) cstate="committed $(printf '%s' "$cstate" | cut -f2) ($(printf '%s' "$cstate" | cut -f3) paths)" ;;
+                none) cstate="nothing to commit" ;;
+                *) cstate="NOT COMMITTED -- ${cstate#FAILED	}" ;;
+              esac
+            fi
+            case "$cstate" in
+              NOT*) n_uncommitted=$((n_uncommitted + 1)) ;;
+              committed*) n_committed=$((n_committed + 1)) ;;
+            esac
+            cstate="${cstate//\\/\\\\}"
+            commitrows="$commitrows$(printf '%s\t%s' "$label" "$cstate")\n"
           fi
           ;;
       esac
@@ -1228,6 +1374,11 @@ EOF
     { printf 'Estate\tNote\n'; printf '%b' "$noterows"; } | md_table
     printf '\n'
   fi
+  if [ -n "$commitrows" ]; then
+    printf 'Committed by path:\n\n'
+    { printf 'Estate\tCommit\n'; printf '%b' "$commitrows"; } | md_table
+    printf '\n'
+  fi
   if [ -n "$excluded" ]; then
     printf 'Not swept -- named rather than dropped:\n\n'
     { printf 'Estate\tWhy\n'; printf '%b' "$excluded"; } | md_table
@@ -1240,6 +1391,10 @@ EOF
   if [ -n "$apply" ]; then
     printf '%d upgraded (%d needed a second pass to converge provenance), %d HELD BACK, %d FAILED\n' \
       "$n_done" "$n_conv" "$n_held" "$n_failed"
+    if [ -n "$commit" ]; then
+      printf '%d committed, %d NOT COMMITTED\n' "$n_committed" "$n_uncommitted"
+      [ "$n_uncommitted" -eq 0 ] || return 1
+    fi
     # A held estate is not level, so the sweep did not do what it says on the
     # tin; an operator chaining it into anything must stop (issue 0074).
     [ "$n_failed" -eq 0 ] && [ "$n_held" -eq 0 ] || return 1
