@@ -2,12 +2,12 @@
   "schema": "intent/issue@4.0",
   "id": "Icbbfa7c91a7fad02",
   "origin": "01M86BBBKYKY7B5V0QDPWEE08B",
-  "realised": true,
   "slug": "the-shipped-lib-names-a-fleet-machine-lib-releas",
   "title": "The shipped lib names a fleet machine: lib/release.legs says kovacs in a comment that vendored trees carry",
-  "status": "open",
+  "status": "closed",
   "severity": "medium",
   "created": "2026-11-24",
+  "closed": "2026-11-24",
   "reporter": "Matthew Sinclair",
-  "body": "## Problem\n\nThe shipped lib names a machine of the fleet. lib/release.legs line 42 says \"(on kovacs, zsh's ~/.zshenv)\". Every project that vendors bin/.devbin/lib carries the comment, a client's tree too. A shipped file must say what the code does and name no host, person or project.\n\n## Fix\n\n- Reword the comment to what the code does, eg \"(on a host whose zsh sets it in ~/.zshenv)\".\n- Add a scan arm that refuses any fleet machine name in the shipped lib, so the name cannot come back.\n\n## Evidence\n\nA grep of lib/ for the six fleet machine names at 0.1.30 finds this one line and no other. A peer estate reported it on hv's word.\n"
+  "body": "## Problem\n\nThe shipped lib names a machine of the fleet. lib/release.legs line 42 says \"(on kovacs, zsh's ~/.zshenv)\". Every project that vendors bin/.devbin/lib carries the comment, a client's tree too. A shipped file must say what the code does and name no host, person or project.\n\n## Fix\n\n- Reword the comment to what the code does, eg \"(on a host whose zsh sets it in ~/.zshenv)\".\n- Add a scan arm that refuses any fleet machine name in the shipped lib, so the name cannot come back.\n\n## Evidence\n\nA grep of lib/ for the six fleet machine names at 0.1.30 finds this one line and no other. A peer estate reported it on hv's word.\n\n\n## Resolution\n\nLanded at 3f4e8038 on main (2026-11-24 13:19Z by date -u, landed by devbin-vc). lib/release.legs's comment on the remote half now says what sets the gates' environment, eg zsh's ~/.zshenv where zsh is the host's shell, and names no host. The paragraph is reflowed in the same seven lines, so no cited line number moves.\n\nNo scan arm: a machine name has no shape, so review holds it (tests/unit/neutral.bats header, devbin-vc). The Fix's arm was devbin-vc's wording at filing, not hv's.\n\nRun: Desk 01M86SPB4D4NC2K7W9HYQX6PVC with batch B: releaselegs.bats whole under GNU 15 of 15, test scans, check lint.\n"
 }

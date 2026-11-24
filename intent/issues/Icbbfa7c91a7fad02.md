@@ -1,9 +1,10 @@
 ---
 issue: Icbbfa7c
 title: The shipped lib names a fleet machine: lib/release.legs says kovacs in a comment that vendored trees carry
-status: OPEN
+status: CLOSED
 severity: medium
 created: 2026-11-24
+closed: 2026-11-24
 reporter: Matthew Sinclair
 ---
 
@@ -19,6 +20,15 @@ The shipped lib names a machine of the fleet. lib/release.legs line 42 says "(on
 ## Evidence
 
 A grep of lib/ for the six fleet machine names at 0.1.30 finds this one line and no other. A peer estate reported it on hv's word.
+
+
+## Resolution
+
+Landed at 3f4e8038 on main (2026-11-24 13:19Z by date -u, landed by devbin-vc). lib/release.legs's comment on the remote half now says what sets the gates' environment, eg zsh's ~/.zshenv where zsh is the host's shell, and names no host. The paragraph is reflowed in the same seven lines, so no cited line number moves.
+
+No scan arm: a machine name has no shape, so review holds it (tests/unit/neutral.bats header, devbin-vc). The Fix's arm was devbin-vc's wording at filing, not hv's.
+
+Run: Desk 01M86SPB4D4NC2K7W9HYQX6PVC with batch B: releaselegs.bats whole under GNU 15 of 15, test scans, check lint.
 
 ---
 
