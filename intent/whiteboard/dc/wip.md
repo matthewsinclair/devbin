@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 390b89e0-6c47-4d22-84b6-538fcbc202be
-heartbeat_at: 2026-11-24 13:43Z
+heartbeat_at: 2026-11-24 16:54Z
 status: active
-focus: "2026-11-24 13:43Z by date -u: localfolded for the lid close (not released). pc0131 is built in dc's scratch, its driver sent to vc, nothing asked on the Desk. Hold it until vc names the tip after I5a905ad lands with RELEASES/0.1.31.md. No item, unit, worktree, claim or loan is dc's."
+focus: "2026-11-24 16:54Z by date -u: localfolded for hv's estate-wide compact (not released). devbin 0.1.31 released at b0c0f348; pc0131's clone removed, its records kept in dc's scratch. No item, unit, worktree, claim or loan is dc's. Hold for vc."
 claims: []
 ---
 
