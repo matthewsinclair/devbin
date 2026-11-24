@@ -6,6 +6,33 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.30] - Unreleased
+
+### Added
+
+#### new commands, checks and routes
+
+- **`bin/devbin formula check` (issue `I3ce05fa`).** It takes no argument and writes nothing. It makes every check that render makes and that needs no tag, through the same functions that render calls, so it refuses in render's words. It fills the template with a stand-in tag, version and commit, and in assets mode with a stand-in sum for each asset.
+- **`install.files.<label>.excludes` (issue `I2bae9ce`).** It is a list of globs below a directory entry. git reads each glob as a `:(exclude,glob)` pathspec, so `*` stays in one directory and `**` crosses directories. The publish refuses an exclude that matches no tracked file, and names it, so a renamed directory does not ship whole. It also refuses `excludes` on an entry that is not a tracked directory.
+
+### Changed
+
+#### a script or a config may get a different result
+
+- **An `install.files` entry whose `from` is a directory that git tracks files below ships only those tracked files (issue `I2bae9ce`).** Each file goes at its path below the entry's path, and the manifest lists each file. An untracked file and ignored build output do not ship. A build product is still its own entry, and it ships as it was built. The `+dirty` reader reads the same set, so a change to an excluded file does not make the tree dirty. A project whose directory entries hold only tracked files gets the same install as before.
+- **Linuxbrew users now build a source formula with Homebrew's bash (issue `I5e17433`).** render writes the bash build line on Linux too, because no system bash at devbin's floor is certain there.
+- **render and `formula check` refuse a source template that holds its own `depends_on "bash" => :build` (issue `I5e17433`).** The line now has one home, which is render. A template that added the line as a stopgap must remove it when it moves to this release.
+- **A project that enables the formula built-in with a template that does not render is refused at every cut (issue `I3ce05fa`).** This includes a project that publishes its formula outside its cuts. Fix the template, then cut.
+
+### Fixed
+
+#### reaches every project
+
+- **A cut refuses a formula that does not render, at pre-flight, before it stamps, tags or pushes (issue `I3ce05fa`).** Pre-flight runs the new `formula check` wherever the formula built-in is enabled and the project does not own the `formula` command. It does this whatever the cut's `after:` lines say, because a publish can be inside a project command that an `after:` line runs. A dry run runs the check too. Before this release, a template that render refused was found only at the `after:` step, when the tag was already public.
+- **A source formula's install no longer fails on macOS when its template does not depend on bash (issue `I5e17433`).** render now writes `depends_on "bash" => :build`, with a comment that says why, wherever the template does not depend on bash at runtime. It goes at the formula's top level, before the first dependency, OS block, resource, patch or install, in Homebrew's component order. An assets formula gets no line, because its install does not run `bin/devbin`. devbin's own formula does not change, because its template depends on bash at runtime.
+
+Full note: [RELEASES/0.1.30.md](RELEASES/0.1.30.md)
+
 ## [0.1.29] - 2026-11-23
 
 ### Fixed
