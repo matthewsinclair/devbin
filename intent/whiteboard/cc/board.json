@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5",
-    "heartbeat_at": "2026-11-24T04:29:09.442Z",
+    "heartbeat_at": "2026-11-24T06:33:53.207Z",
     "status": "active",
-    "focus": "2026-11-24 04:28Z by date -u: back after hv's upgrade. cldr#0001's code landed at 3f55628e (Cldr main), worktree and branch removed; it stays open for its T10 legs, held for hv. Pplr 01M84YY37FPTSYYSZKP423EYAW is asked, first grant after Intent 3.5.2's END (driver read SOUND, BASE 721a321). In build: I3ce05fa (head of 0.1.30), WIP 9410e2be in tmp/wt-i3ce05fa: docs and driver next. Then Gtools, then Utilz. Nothing pushed. Claim ISSUE:0326 kept.",
+    "focus": "2026-11-24 06:33Z by date -u: localfolded for hv's compact (no release). 0.1.30: I3ce05fa (a2f12425) and I5e17433 (e606de6a) landed and closed; I2bae9ce (R4) unit c14ccecf in tmp/wt-i2bae9ce, ask 01M863NS after Pplr. Pplr run 3 ask 01M862H0 first at Intent's gate END (driver with EXIT-trap release, read sound). Cldr's code landed (3f55628e), T10 held for hv. Then Utilz I59c806c (plan read sound), then Gtools. Resume: ~/Devel/scratch/devbin-cc/i0326/RESUME.md and i2bae9ce/RESUME.md. Nothing pushed. Claim ISSUE:0326 kept.",
     "claims": [
       "ISSUE:0326"
     ],
