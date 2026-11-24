@@ -1,0 +1,15 @@
+{
+  "id": "01M86136P8M1V800X1CADB27V9",
+  "ts": "2026-11-24T05:40:10.072Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I986862a4bdf67ef3"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "infra mail dmarc report prints spf=pass for a forged message the receiver rejected: the row prints each raw SPF result with no domain and no alignment, and no header From"
+  }
+}
