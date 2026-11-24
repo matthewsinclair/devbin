@@ -1,0 +1,15 @@
+{
+  "id": "01M8644VHRSZQ5CR3QSC5HH7JK",
+  "ts": "2026-11-24T06:33:29.912Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "THE DESK (decision 286 order), at 06:33Z by date -u: Intent bank v3 01M862SB (cargo,heavy) runs its gate all alone; at its END, Pplr run 3 01M862H0 (cargo,bats; driver hunks read SOUND), then I2bae9ce 01M863NS (bats; driver read SOUND), then utilz-dc FF5TB4 (cargo,bats), then utilz-cc 01M85XY3 (needs utilz-vc's read of new bytes). Molt 1.4.9 cut 01M862EZ (bats,cargo,heavy) after Intent 3.5.2's cut. On green: land each devbin unit by decision 83 (restore by path, pcommit.sh, blob compare). Open for hv: localised-test-per-fix standing?; the 0.1.29 reset as a one-off."
+  }
+}

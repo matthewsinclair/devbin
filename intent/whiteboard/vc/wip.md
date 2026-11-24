@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-_(none)_
+- THE DESK (decision 286 order), at 06:33Z by date -u: Intent bank v3 01M862SB (cargo,heavy) runs its gate all alone; at its END, Pplr run 3 01M862H0 (cargo,bats; driver hunks read SOUND), then I2bae9ce 01M863NS (bats; driver read SOUND), then utilz-dc FF5TB4 (cargo,bats), then utilz-cc 01M85XY3 (needs utilz-vc's read of new bytes). Molt 1.4.9 cut 01M862EZ (bats,cargo,heavy) after Intent 3.5.2's cut. On green: land each devbin unit by decision 83 (restore by path, pcommit.sh, blob compare). Open for hv: localised-test-per-fix standing?; the 0.1.29 reset as a one-off.
 
 ## TODO
 
@@ -25,7 +25,6 @@ _(none)_
 ## Holds
 
 - `--ivault`: not to be started until hv says start. (edited)
-- Recording hv's answer on Ccusage's account verb beside decision 178(3), held until ccusage-vc relays it. ccusage-vc puts 178(3) (the use-to-activate rename as ruled work) and hv's 2026-11-06 word (the rename reverted at 977589e, ccusage use the account verb since 0.1.9) to hv at Ccusage's next session start, and no Ccusage seat renames anything until hv says which stands.
 - Molt's template stopgap 526e5bc (on_macos depends_on bash => :build) stays until devbin 0.1.30's renderer emits the bash build dependency itself; then molt-vc drops 526e5bc in its 0.1.30 sweep.
 
 ## Watch-outs
@@ -68,6 +67,8 @@ _(none)_
 - hv in vc's window, read by 2026-11-23 17:52Z by date -u: 'you have my approval across the estate to approve, checkin, commit, push, and cut anything that is needed to get this stuff done _tonight_ ... I want all of these releases cut, done, and dusted TONIGHT.' Read by 17:53Z: '4. And devvm, too. Via agentic-engineering-*.' then 'But only once the other stuff is done.' Standing go for tonight: devbin 0.1.29 (cut on the pre-cut's green, then brew upgrade by vc, then the sweep into Intent and Molt); Intent 3.5.2 (intent-vc holds that its decision 3 makes the tty confirm hv's, so hv confirms in intent-vc's window at READY); Molt 1.4.8 (after 0.1.29's sweep; molt-vc cuts with --yes, Molt decision 13); devvm (AE) last, once the other three are released. Pushes for these, and the commits they need, are covered. A red still stops that line and is fixed forward the same night. (edited)
 - hv in vc's window, read by 2026-11-23 17:54Z by date -u: 'Note that gtools is P3. Utilz is P2. Intent, Devbin, Molt are P0. Devvm is P1.' The Desk's order on contention, amending decision 249: P0 Intent, devbin and Molt, each granted on its own with no relay needed, release-path runs first; P1 devvm (AE), and the other estate stays at P1 under 249 since hv did not re-rank it; P2 Utilz; P3 Gtools; Webber is closed for the day. devbin-cc's 0326 runs (Pplr, Cldr) are devbin's work at P0, behind the release path, so they go ahead of utilz-dc's ST0031/01. (edited)
 - hv by AskUserQuestion in vc's window, read by 2026-11-23 17:55Z by date -u: devvm 0.5.3's scope is 'glab fix + pwsh 7 fix'. So both dc's glab sign-in fix and the installer's pwsh 7 module-path fix go in, each with its own proof before the build; the cut is still last, after devbin 0.1.29, Intent 3.5.2 and Molt 1.4.8 are out (decision 285).
+- hv in ccusage-vc's window (Ccusage decision 25), relayed by ccusage-vc, answered by 2026-11-24 05:23Z by its date -u: 'Keep use. The 11-06 revert stands. ccusage use NAME stays the account verb and nothing is renamed.' So decision 178(3) (the use-to-activate rename as ruled work) is spent and withdrawn; the dev/opt/brew switch stays bin/devbin use, a devbin verb. Hold 37 is released and archived.
+- hv by AskUserQuestion in vc's window, read by 2026-11-24 06:03Z by date -u: Molt 1.4.9 is cut after Intent 3.5.2's cut ('Cut 1.4.9 after Intent'). It carries Molt I7892f34 (devbin#0326's install and use) and O2 (devbin's lanes runner), both green at the Desk, and template 526e5bc's bash build dependency; molt-vc installs the rendered formula with brew before the cut, and a seat cuts with --yes (Molt decision 10). (edited)
 
 ---
 

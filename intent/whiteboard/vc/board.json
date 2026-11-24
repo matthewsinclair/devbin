@@ -5424,7 +5424,8 @@
       "kind": "hold",
       "seq": 37,
       "text": "Recording hv's answer on Ccusage's account verb beside decision 178(3), held until ccusage-vc relays it. ccusage-vc puts 178(3) (the use-to-activate rename as ruled work) and hv's 2026-11-06 word (the rename reverted at 977589e, ccusage use the account verb since 0.1.9) to hv at Ccusage's next session start, and no Ccusage seat renames anything until hv says which stands.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-24T05:24:04.068Z",
       "recorded_at": "2026-11-17T10:37:25.319Z"
     },
     {
@@ -6229,6 +6230,31 @@
       "text": "Molt's template stopgap 526e5bc (on_macos depends_on bash => :build) stays until devbin 0.1.30's renderer emits the bash build dependency itself; then molt-vc drops 526e5bc in its 0.1.30 sweep.",
       "state": "live",
       "recorded_at": "2026-11-24T05:11:38.525Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 288,
+      "text": "hv in ccusage-vc's window (Ccusage decision 25), relayed by ccusage-vc, answered by 2026-11-24 05:23Z by its date -u: 'Keep use. The 11-06 revert stands. ccusage use NAME stays the account verb and nothing is renamed.' So decision 178(3) (the use-to-activate rename as ruled work) is spent and withdrawn; the dev/opt/brew switch stays bin/devbin use, a devbin verb. Hold 37 is released and archived.",
+      "state": "live",
+      "recorded_at": "2026-11-24T05:24:03.809Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 289,
+      "text": "hv by AskUserQuestion in vc's window, read by 2026-11-24 06:03Z by date -u: Molt 1.4.9 is cut after Intent 3.5.2's cut ('Cut 1.4.9 after Intent'). It carries Molt I7892f34 (devbin#0326's install and use) and O2 (devbin's lanes runner), both green at the Desk, and template 526e5bc's bash build dependency; molt-vc installs the rendered formula with brew before the cut, and a seat cuts with --yes (Molt decision 10).",
+      "state": "live",
+      "recorded_at": "2026-11-24T06:03:20.573Z",
+      "edited_at": "2026-11-24T06:03:41.902Z"
+    },
+    {
+      "node": "vc",
+      "kind": "doing",
+      "seq": 89,
+      "text": "THE DESK (decision 286 order), at 06:33Z by date -u: Intent bank v3 01M862SB (cargo,heavy) runs its gate all alone; at its END, Pplr run 3 01M862H0 (cargo,bats; driver hunks read SOUND), then I2bae9ce 01M863NS (bats; driver read SOUND), then utilz-dc FF5TB4 (cargo,bats), then utilz-cc 01M85XY3 (needs utilz-vc's read of new bytes). Molt 1.4.9 cut 01M862EZ (bats,cargo,heavy) after Intent 3.5.2's cut. On green: land each devbin unit by decision 83 (restore by path, pcommit.sh, blob compare). Open for hv: localised-test-per-fix standing?; the 0.1.29 reset as a one-off.",
+      "state": "live",
+      "recorded_at": "2026-11-24T06:33:29.912Z"
     }
   ],
   "sent": [
@@ -8665,7 +8691,8 @@
       "recipient": "cc",
       "body": "For 0326's Gtools plan, read at its start: gtools-dc's review of I7bd0048 (R1 to R13, R1 to R4 would break the adoption) is saved at ~/Devel/scratch/devbin-vc/20261123/i0326/gtools-dc-review.md, with I514ea74 (brew re-signs a keg after the hash) and Utilz's order (I59c806c after Utilz ST0031/01; check with utilz-vc first). R3 (publish builds with no argument) and R4 (install.files has no excludes) are devbin's own calls: say whether Pplr's or Cldr's units already meet them.",
       "fyi": false,
-      "recorded_at": "2026-11-23T04:43:55.899Z"
+      "recorded_at": "2026-11-23T04:43:55.899Z",
+      "archived_at": "2026-11-24T06:33:30.141Z"
     }
   ],
   "handled": [

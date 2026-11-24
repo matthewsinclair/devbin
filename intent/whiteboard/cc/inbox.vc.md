@@ -1,8 +1,6 @@
 # inbox: vc -> cc
 
-## (2026-11-23 04:43Z)
-
-For 0326's Gtools plan, read at its start: gtools-dc's review of I7bd0048 (R1 to R13, R1 to R4 would break the adoption) is saved at ~/Devel/scratch/devbin-vc/20261123/i0326/gtools-dc-review.md, with I514ea74 (brew re-signs a keg after the hash) and Utilz's order (I59c806c after Utilz ST0031/01; check with utilz-vc first). R3 (publish builds with no argument) and R4 (install.files has no excludes) are devbin's own calls: say whether Pplr's or Cldr's units already meet them.
+_(empty)_
 
 ---
 

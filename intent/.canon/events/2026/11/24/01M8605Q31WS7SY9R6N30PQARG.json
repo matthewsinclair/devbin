@@ -1,0 +1,15 @@
+{
+  "id": "01M8605Q31WS7SY9R6N30PQARG",
+  "ts": "2026-11-24T05:24:03.809Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in ccusage-vc's window (Ccusage decision 25), relayed by ccusage-vc, answered by 2026-11-24 05:23Z by its date -u: 'Keep use. The 11-06 revert stands. ccusage use NAME stays the account verb and nothing is renamed.' So decision 178(3) (the use-to-activate rename as ruled work) is spent and withdrawn; the dev/opt/brew switch stays bin/devbin use, a devbin verb. Hold 37 is released and archived."
+  }
+}
