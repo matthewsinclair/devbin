@@ -5,11 +5,13 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5",
-    "heartbeat_at": "2026-11-24T16:54:18.617Z",
+    "heartbeat_at": "2026-11-24T17:21:21.004Z",
     "status": "active",
     "focus": "2026-11-24 16:54Z by date -u: localfolded for hv's estate-wide compact (not released). Utilz I59c806c (devbin#0326's Utilz adoption) landed by utilz-vc at b58bb55e on Utilz main; cc's worktree, branch and run clones removed; run logs kept in ~/Devel/scratch/devbin-cc/i59c806c. Open, not cc's: utilz-vc's canon-tree release dry run; the Utilz cut and push are hv's. Next for cc: clearout-1121 after 0.1.31 (keep ~/Devel/scratch/devbin-cc/i7bd0048). Nothing in flight, nothing pushed by cc. Claim ISSUE:0326 kept.",
     "claims": [
-      "ISSUE:0326"
+      "ISSUE:0326",
+      "ISSUE:Iab013e2477e3da79",
+      "ISSUE:I0702984d05526358"
     ],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-14 22:11Z",
@@ -1798,6 +1800,33 @@
       "archived_at": "2026-11-17T19:30:25.228Z",
       "recorded_at": "2026-11-17T17:25:47.145Z",
       "edited_at": "2026-11-17T18:57:45.045Z"
+    },
+    {
+      "node": "cc",
+      "kind": "todo",
+      "seq": 76,
+      "text": "After clearout-1121: file an issue (devbin-vc's ask, 2026-11-24): 0.1.31's publish refusal for a missing .devbin-tool (I6b3b75f) stays; the sweep's report must name a project test that builds a fake checkout without .devbin-tool, and the next release note's Changed section must say what such a test copies. Utilz main went red, 9 tests.",
+      "state": "archived",
+      "archived_at": "2026-11-24T19:07:57.040Z",
+      "recorded_at": "2026-11-24T17:34:11.516Z"
+    },
+    {
+      "node": "cc",
+      "kind": "todo",
+      "seq": 77,
+      "text": "After clearout-1121: file a second issue beside todo 76 (devbin-vc's ask, 2026-11-24), fix in 0.1.32: a tool's publish writes .devbin-tool into the published tree and keg, but the tool's install manifest (eg .gtools-install) does not list it, so doctor notes an unlisted file and upgrade does not carry it. Fix: the publish lists .devbin-tool in its manifest. One localised arm, red at main, green at the fix. Send vc both ids.",
+      "state": "archived",
+      "archived_at": "2026-11-24T18:43:05.274Z",
+      "recorded_at": "2026-11-24T18:39:46.166Z"
+    },
+    {
+      "node": "cc",
+      "kind": "todo",
+      "seq": 78,
+      "text": "After clearout-1121: file an issue (devbin-vc's ask for Gtools I17c1577, 2026-11-24, P3 behind devvm, size S, devbin 0.1.32): in source mode, bin/devbin formula takes formula.cask as assets mode does (lib/cmd/formula:336-339 refuses it today), renders the cask from the release's SHA256SUMS and pushes it to Casks/; repo and assets stay refused in source mode. Arms: source mode with formula.cask renders both files; refusal still fires for repo and assets. Send vc the id.",
+      "state": "archived",
+      "archived_at": "2026-11-24T19:07:57.244Z",
+      "recorded_at": "2026-11-24T18:55:45.684Z"
     }
   ],
   "sent": [

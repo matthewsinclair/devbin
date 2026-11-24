@@ -1,0 +1,15 @@
+{
+  "id": "01M87EKZGM7RS6TTJG4FC850VE",
+  "ts": "2026-11-24T18:55:45.684Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "After clearout-1121: file an issue (devbin-vc's ask for Gtools I17c1577, 2026-11-24, P3 behind devvm, size S, devbin 0.1.32): in source mode, bin/devbin formula takes formula.cask as assets mode does (lib/cmd/formula:336-339 refuses it today), renders the cask from the release's SHA256SUMS and pushes it to Casks/; repo and assets stay refused in source mode. Arms: source mode with formula.cask renders both files; refusal still fires for repo and assets. Send vc the id."
+  }
+}

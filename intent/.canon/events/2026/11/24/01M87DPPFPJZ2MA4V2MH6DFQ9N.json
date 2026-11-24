@@ -1,0 +1,15 @@
+{
+  "id": "01M87DPPFPJZ2MA4V2MH6DFQ9N",
+  "ts": "2026-11-24T18:39:46.166Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "After clearout-1121: file a second issue beside todo 76 (devbin-vc's ask, 2026-11-24), fix in 0.1.32: a tool's publish writes .devbin-tool into the published tree and keg, but the tool's install manifest (eg .gtools-install) does not list it, so doctor notes an unlisted file and upgrade does not carry it. Fix: the publish lists .devbin-tool in its manifest. One localised arm, red at main, green at the fix. Send vc both ids."
+  }
+}

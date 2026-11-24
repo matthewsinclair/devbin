@@ -1,0 +1,15 @@
+{
+  "id": "01M87FA2CRTB1QQ1NNB5Q07E68",
+  "ts": "2026-11-24T19:07:49.532Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I0702984d05526358"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "0.1.31's sweep and note do not say that a test that builds a copy of a tool's checkout must copy .devbin-tool, so the publish refuses it"
+  }
+}
