@@ -1,0 +1,15 @@
+{
+  "id": "01M870K29P6YZZCAXRBZXVFG7D",
+  "ts": "2026-11-24T14:50:35.702Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 14:50Z by date -u, and given first-hand to every seat: 'I have pre-approved all checkins, commits, pushes, cuts, and brew updates, etc at devbin-vc. When it says go, go. Ok?' So each seat runs the step on devbin-vc's go, with no further word. Recorded first-hand by intent-vc (hv decision 96, which allows 3.5.3's --no-confirm), agentic-engineering-vc (its decision 25), utilz-vc (hv decision 20) and molt-vc. A seat whose session's own classifier refuses a step (Utilz's push) keeps it as a ! line for hv."
+  }
+}
