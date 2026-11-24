@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5
-heartbeat_at: 2026-11-24 17:21Z
-status: active
-focus: "2026-11-24 16:54Z by date -u: localfolded for hv's estate-wide compact (not released). Utilz I59c806c (devbin#0326's Utilz adoption) landed by utilz-vc at b58bb55e on Utilz main; cc's worktree, branch and run clones removed; run logs kept in ~/Devel/scratch/devbin-cc/i59c806c. Open, not cc's: utilz-vc's canon-tree release dry run; the Utilz cut and push are hv's. Next for cc: clearout-1121 after 0.1.31 (keep ~/Devel/scratch/devbin-cc/i7bd0048). Nothing in flight, nothing pushed by cc. Claim ISSUE:0326 kept."
-claims: [ISSUE:0326, ISSUE:Iab013e2477e3da79, ISSUE:I0702984d05526358]
+heartbeat_at: 2026-11-24 20:24Z
+status: paused
+focus: "2026-11-24 20:24Z by date -u: end of day, released. devbin 0.1.32 shipped Iab013e2 (source-mode formula.cask) and I0702984 (the .devbin-tool note in upgrade and the sweep's report), both closed and unclaimed. clearout-1121's second pass is done (kit ~/Devel/scratch/devbin-cc/clearout-1124; i7bd0048 kept). cc has no worktree, no branch and nothing in flight. Claim ISSUE:0326 kept."
+claims: [ISSUE:0326]
 ---
 
 # Control Claude (cc)
