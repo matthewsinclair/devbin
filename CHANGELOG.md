@@ -6,6 +6,30 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.32] - 2026-11-24
+
+### Added
+
+- **A source-mode formula takes `formula.cask` (issue `Iab013e2`).** In source mode, `bin/devbin formula` now reads `formula.cask` and `formula.sums`, as assets mode does.
+  - render writes the cask from the release's version and its SHA256SUMS. A cask takes `@@VERSION@@`, `@@SHA256:<name>@@` and `@@REVISION@@`. It refuses `@@TAG@@`, which only the source formula fills.
+  - publish pushes the cask to `Casks/` in the same commit as the formula, and check checks both files.
+  - The cask's assets are the names its `@@SHA256:<name>@@` placeholders hold, each placed once. The SHA256SUMS that names them is read from the release of `release.repo` for the tag, else from the first declared remote.
+  - The cask's `url` is the template's own text, so it can name a repository other than `release.repo`.
+  - `formula.repo` and `formula.assets` are still refused in source mode. The formula's own source install does not change.
+
+### Changed
+
+#### a script or a config may get a different result
+
+- **upgrade and build say what a test's copy of the checkout must carry (issue `I0702984`).** When `bin/devbin upgrade` or `bin/devbin build` writes `.devbin-tool` where there was none, it prints a note: a test that builds a copy of the checkout to publish from must copy `.devbin-tool`, at the project's root beside `bin/.devbin/config.yaml`. Without it, a publish from that copy refuses with "this checkout's .devbin-tool is missing". The refusal does not change.
+- **`docs/dev-opt-brew.md` names Intent only to say that Intent keeps its own publish and switch (issue `I4133a23`).** Intent is not in the contract's tool list, in its proof or in its examples.
+
+#### devbin's own tree
+
+- **`fleet upgrade --apply --commit` makes the sweep's commit in each estate (issue `I75da2cc`).** Each estate it upgraded gets one commit by path: its changed `bin/devbin`, `bin/.devbin/` and `.devbin-tool`, and nothing else. The commit runs the tree's own hooks. Its message ends with `attribution.commit` from the tree's `.claude/settings.local.json`, else its `.claude/settings.json`, else the sweeping user's settings. An estate whose swept paths were dirty before the sweep, or whose index holds staged paths, gets no commit, and the report names it. The report also carries a Notes table with each estate's upgrade notes. A failed commit makes the sweep exit 1.
+
+Full note: [RELEASES/0.1.32.md](RELEASES/0.1.32.md)
+
 ## [0.1.31] - 2026-11-24
 
 ### Added
