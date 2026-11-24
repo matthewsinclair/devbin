@@ -1080,3 +1080,46 @@ dir_project() {
   assert_output_contains 'install.files.one lists excludes, and its from, share/a.txt, is no directory git tracks files below'
   [ ! -e "$opt" ] || fail "the refused publish wrote $opt"
 }
+
+@test "I79fb280: an opt publish records the checkout it came from as its manifest's source_tree, and a keg's manifest records none" {
+  local proj root opt="$DEVBIN_TEST_TMPDIR/opt-demo" keg="$DEVBIN_TEST_TMPDIR/keg/libexec"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  root="$(cd -P "$proj" && pwd -P)"
+  run devbin_run "$proj" install
+  assert_success
+  [ "$(tool_manifest_field "$opt" .demo-install source_tree)" = "$root" ] ||
+    fail "the opt manifest's source_tree: [$(tool_manifest_field "$opt" .demo-install source_tree)], where the checkout is $root"
+  run devbin_run "$proj" install --prefix "$keg" --managed-by brew
+  assert_success
+  if grep -q '^# source_tree:' "$keg/.demo-install"; then fail "the keg's manifest names a checkout: $(cat "$keg/.demo-install")"; fi
+}
+
+@test "I79fb280: a source_tree whose checkout is gone refuses nothing: use opt, doctor's tree rows and the opt copy's --version read the opt tree as before" {
+  local proj sha opt="$DEVBIN_TEST_TMPDIR/opt-demo" link="$HOME/.local/bin/demo-cli" root n gone="$DEVBIN_TEST_TMPDIR/no-such-checkout"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" install
+  assert_success
+  grep -q '^# source_tree: ' "$opt/.demo-install" || fail "the opt manifest has no source_tree to make stale: $(cat "$opt/.demo-install")"
+  # The header line alone changes, so the body's sums still hold: the checkout
+  # the manifest names is gone, and nothing else is.
+  GONE="$gone" perl -pi -e 's/^# source_tree: .*$/# source_tree: $ENV{GONE}/' "$opt/.demo-install" ||
+    fail "the manifest's source_tree could not be rewritten"
+  [ "$(tool_manifest_field "$opt" .demo-install source_tree)" = "$gone" ] && [ ! -e "$gone" ] ||
+    fail "the manifest does not name a checkout that is gone: $(cat "$opt/.demo-install")"
+  run devbin_run "$proj" use opt
+  assert_success
+  assert_output_contains "demo-cli 1.2.3 (opt, ${sha:0:12})"
+  root="$(cd -P "$opt" && pwd -P)"
+  n="$(grep -v -c '^#' "$opt/.demo-install")"
+  run devbin_run "$proj" doctor
+  assert_output_contains "ok    demo switch: the link $link names opt at $root"
+  assert_output_contains "ok    demo tree: the opt install at $root, $n file(s) as its manifest records"
+  assert_output_contains "ok    demo tree: $root/bin/demo-cli prints its install's line, demo-cli 1.2.3 (opt, ${sha:0:12})"
+  refute_output_contains "$gone"
+  # The fixture's program finds its manifest beside its own path, not through
+  # a link, so the opt copy is run where it is, as doctor runs it.
+  run "$root/bin/demo-cli" --version
+  assert_success
+  [ "$output" = "demo-cli 1.2.3 (opt, ${sha:0:12})" ] || fail "the opt copy prints: $output"
+}

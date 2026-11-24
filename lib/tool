@@ -228,7 +228,7 @@ _tool_set_row() {
 # tree does not hold, and the manifest is written last: T3's four keys, the
 # tree's version line under `line`, and each file's sum.
 tool_publish() {
-  local prefix="${1%/}" force="$2" managed="$3" name m ver sha want set place from kind got word owner files removed line n mine
+  local prefix="${1%/}" force="$2" managed="$3" name m ver sha want set place from kind got word owner files removed line n mine src
   name="$(cfg_formula_name)" || return 1
   m="$(cfg_tool_manifest)" || return 1
   ver="$(read_version "$(cfg_version_from)" version-file 2>/dev/null || true)"
@@ -254,14 +254,17 @@ tool_publish() {
   done <<<"$set"
   word=opt
   owner="$name"
+  src=""
   if [ "$managed" = brew ]; then
     word=brew
     owner=brew
+  else
+    physical_dir "$PROJECT_ROOT" src || die "cannot resolve the checkout $PROJECT_ROOT, which an opt manifest names as its source_tree"
   fi
   removed="$(_tool_publish_write "$prefix" "$m" "$set")" || die "failed to write the install at $prefix (above)"
   files="$(_tool_tree_files "$prefix" "$set")" || die "cannot list what the install at $prefix holds (above)"
   line="$(tool_line "$name" "$ver" "$word" "$sha")"
-  _tool_publish_manifest "$prefix" "$m" "$name" "$ver" "$sha" "$owner" "$line" "$files" ||
+  _tool_publish_manifest "$prefix" "$m" "$name" "$ver" "$sha" "$owner" "$line" "$files" "$src" ||
     die "failed to write the manifest at $prefix/$m (above)"
   n="$(nonempty_lines "$files")"
   printf '  published  %s file(s) to %s\n' "$n" "$prefix"
@@ -360,16 +363,26 @@ _tool_tree_files() {
 }
 
 # _tool_publish_manifest <prefix> <manifest> <name> <version> <sha> <owner>
-# <line> <files> -- the manifest in T3's form: `tool`, `version`,
-# `source_commit` and `managed_by` (<owner>: the tool's name, or brew), then
+# <line> <files> [<source tree>] -- the manifest in T3's form: `tool`,
+# `version`, `source_commit` and `managed_by` (<owner>: the tool's name, or
+# brew), then
 # `line`, the tree's version line, which a compiled binary prints from here,
-# then one `<sha256>  <path>` line a file, in <files>' order.
+# then `source_tree` where <source tree> is given, then one `<sha256>  <path>`
+# line a file, in <files>' order.
+#
+# SOURCE_TREE IS THE CHECKOUT AN OPT TREE WAS PUBLISHED FROM (issue I79fb280),
+# so a tool's dev-only refusal can name where to run. An opt tree stays on its
+# machine, so the path never leaves it, and no tracked file holds it (devbin's
+# own manifest, which every project tracks, records the kind of its source
+# alone: issue 0153). A keg gets none, since brew deletes its build checkout.
+# It informs and nothing more: no reader refuses on a path that is gone.
 _tool_publish_manifest() {
   local p="$1" m="$2" sums row
   sums="$(_sha256_of_set "$p" "$8")" || return 1
   mkdir -p "$(dirname "$p/$m")" || return 1
   {
     printf '# tool: %s\n# version: %s\n# source_commit: %s\n# managed_by: %s\n# line: %s\n' "$3" "$4" "$5" "$6" "$7"
+    [ -z "${9:-}" ] || printf '# source_tree: %s\n' "$9"
     while IFS= read -r row; do
       [ -n "$row" ] && printf '%s  %s\n' "${row%%$'\t'*}" "${row#*$'\t'}"
     done <<<"$sums"
