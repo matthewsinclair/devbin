@@ -1,0 +1,15 @@
+{
+  "id": "01M85ZEZ8X49XVYFQTDXCG6N2A",
+  "ts": "2026-11-24T05:11:38.525Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Molt's template stopgap 526e5bc (on_macos depends_on bash => :build) stays until devbin 0.1.30's renderer emits the bash build dependency itself; then molt-vc drops 526e5bc in its 0.1.30 sweep."
+  }
+}

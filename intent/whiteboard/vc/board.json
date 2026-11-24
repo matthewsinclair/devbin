@@ -6221,6 +6221,14 @@
       "text": "For hv, not tonight's path: cldr#0001 (0326 in Cldr) code is landed at Cldr 3f55628e; its Done-when needs T10's live proof in Cldr's checkout (bin/devbin install to opt, use dev/opt/brew, doctor), which moves ~/.local/bin and publishes to ~/Devel/opt, so hv says when (Cldr now, or with Pplr's); the brew leg rides cldr's next release.",
       "state": "live",
       "recorded_at": "2026-11-23T19:44:30.180Z"
+    },
+    {
+      "node": "vc",
+      "kind": "hold",
+      "seq": 38,
+      "text": "Molt's template stopgap 526e5bc (on_macos depends_on bash => :build) stays until devbin 0.1.30's renderer emits the bash build dependency itself; then molt-vc drops 526e5bc in its 0.1.30 sweep.",
+      "state": "live",
+      "recorded_at": "2026-11-24T05:11:38.525Z"
     }
   ],
   "sent": [

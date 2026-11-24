@@ -26,6 +26,7 @@ _(none)_
 
 - `--ivault`: not to be started until hv says start. (edited)
 - Recording hv's answer on Ccusage's account verb beside decision 178(3), held until ccusage-vc relays it. ccusage-vc puts 178(3) (the use-to-activate rename as ruled work) and hv's 2026-11-06 word (the rename reverted at 977589e, ccusage use the account verb since 0.1.9) to hv at Ccusage's next session start, and no Ccusage seat renames anything until hv says which stands.
+- Molt's template stopgap 526e5bc (on_macos depends_on bash => :build) stays until devbin 0.1.30's renderer emits the bash build dependency itself; then molt-vc drops 526e5bc in its 0.1.30 sweep.
 
 ## Watch-outs
 
