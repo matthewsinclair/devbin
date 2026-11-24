@@ -309,6 +309,25 @@ install:
     fail "devbin declares $(cfg_tool_manifest), and its bootstrap reads $DEVBIN_MANIFEST_REL"
 }
 
+# stamp_facts <proj> -- write the fixture project <proj>'s .devbin-tool from
+# its install: block through lib/tool's own writer, and stage it, as a tool's
+# checkout carries it (issue I6b3b75f). The caller commits it with the block
+# it was written from, as a maintainer does. A no-op for a project that
+# declares no tool, which carries none, and for a block that does not read,
+# which an arm refusing that block makes on purpose: the refusal is its own.
+stamp_facts() {
+  local proj="$1"
+  (
+    export PROJECT_ROOT="$proj" DEVBIN_DIR="$proj/bin/.devbin"
+    . "$DEVBIN_LIB_DIR/helpers" && . "$DEVBIN_LIB_DIR/config" &&
+      cfg_load "$proj/bin/.devbin/config.yaml" >/dev/null || exit 1
+    [ "$(use_target "$proj")" = tool ] || exit 0
+    . "$DEVBIN_LIB_DIR/install" && . "$DEVBIN_LIB_DIR/tool" || exit 1
+    tool_facts_text >/dev/null || exit 0
+    tool_facts_write "$proj" && git -C "$proj" add -- .devbin-tool
+  ) >/dev/null 2>&1
+}
+
 # stamp_project [--no-tool] [--no-prefix] [--deaf] [<yaml>] -- a project,
 # devbin installed and committed in git with target/ ignored, VERSION 1.2.3,
 # whose declared build (tools/build.sh) writes target/release/demo-cli from
@@ -362,6 +381,7 @@ stamp_project() {
   } >"$proj/tools/build.sh" || return 1
   git -C "$proj" init -q >/dev/null 2>&1 || return 1
   git -C "$proj" add -A >/dev/null 2>&1 || return 1
+  stamp_facts "$proj" || return 1
   git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -q -m fixture >/dev/null 2>&1 || return 1
   printf '%s\n' "$proj"
 }
@@ -494,6 +514,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   cfg="$proj/bin/.devbin/config.yaml"
   # shellcheck disable=SC2059 # the head and tail are this arm's own formats
   printf "$head  files:\n    notes:\n      path: share/notes.md\n      from: docs/notes.md\n$tail" "$opt" >"$cfg"
+  stamp_facts "$proj" || fail "the fixture's facts could not be written"
   git -C "$proj" -c user.email=t@t -c user.name=t commit -qam "notes" || fail "the config with notes could not be committed"
   run devbin_run "$proj" install
   assert_success
@@ -503,6 +524,7 @@ $marked" ] || fail "the builds carried, in turn: $(cat "$proj/target/runs")"
   assert_output_contains "demo is already published at $opt"
   # shellcheck disable=SC2059 # the head and tail are this arm's own formats
   printf "$head$tail" "$opt" >"$cfg"
+  stamp_facts "$proj" || fail "the fixture's facts could not be written"
   git -C "$proj" -c user.email=t@t -c user.name=t commit -qam "no notes" || fail "the config with no notes could not be committed"
   run devbin_run "$proj" install --force
   assert_success
@@ -849,6 +871,7 @@ stamp_own() {
   awk -v k="$2" -v c="$3" '{ print } /^install:$/ { print "  " k ": " c }' "$cfg" >"$cfg.new" || return 1
   mv "$cfg.new" "$cfg" || return 1
   grep -qx "  $2: $3" "$cfg" || return 1
+  stamp_facts "$1" || return 1
   git -C "$1" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -qam "the tool's own $2" >/dev/null 2>&1
 }
 
@@ -1037,6 +1060,7 @@ dir_project() {
   printf 'project:\n  name: demo\ninstall:\n  prefix: %s/opt-demo\n  links:\n    demo-cli: target/release/demo-cli\n  files:\n%s\ncommands:\n  build:\n    run: sh tools/build.sh\n' \
     "$DEVBIN_TEST_TMPDIR" "$1" >"$cfg" || return 1
   git -C "$proj" add -A >/dev/null 2>&1 || return 1
+  stamp_facts "$proj" || return 1
   git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -q -m "share" >/dev/null 2>&1 || return 1
   printf 'stray\n' >"$proj/share/stray.txt" || return 1
   printf '%s\n' "$proj"
@@ -1074,6 +1098,7 @@ dir_project() {
   [ ! -e "$opt" ] || fail "the refused publish wrote $opt"
   perl -0pi -e 's/    share:\n      path: share\n      excludes:\n        - "tests\/\*\*"/    one:\n      path: share\/a.txt\n      excludes:\n        - "x"/ or die' "$proj/bin/.devbin/config.yaml" ||
     fail "the fixture's files block could not be rewritten"
+  stamp_facts "$proj" || fail "the fixture's facts could not be written"
   git -C "$proj" -c user.email=t@t -c user.name=t commit -qam "a file entry with excludes" || fail "the rewritten config could not be committed"
   run devbin_run "$proj" install
   assert_failure
@@ -1122,4 +1147,143 @@ dir_project() {
   run "$root/bin/demo-cli" --version
   assert_success
   [ "$output" = "demo-cli 1.2.3 (opt, ${sha:0:12})" ] || fail "the opt copy prints: $output"
+}
+
+# --- I6b3b75f: the tool's facts, .devbin-tool --------------------------------
+
+@test "I6b3b75f: .devbin-tool holds the install: block's manifest and its runtime set as git pathspecs: a tracked file, a directory with its excludes, a declared build input, and no product" {
+  local proj want
+  proj="$(dir_project '    share:
+      path: share
+      excludes:
+        - "test/**"
+    notes:
+      path: share/notes.md
+      from: docs/notes.md
+build:
+  inputs:
+    - src/main.txt')" || fail "the fixture's project could not be made"
+  want="$(printf '%s\n' "# The tool's facts, written by devbin from bin/.devbin/config.yaml's install:" \
+    '# block (docs/dev-opt-brew.md, T1 and T3). Do not edit it: in a checkout,' \
+    '# bin/devbin build and bin/devbin upgrade write it again.' \
+    'manifest: .demo-install' \
+    'set: :(literal)share' \
+    'set: :(exclude,glob)share/test/**' \
+    'set: :(literal)docs/notes.md' \
+    'input: :(literal)src/main.txt')"
+  [ "$(cat "$proj/.devbin-tool")" = "$want" ] || fail "the facts file holds: [$(cat "$proj/.devbin-tool")]"
+  [ -z "$(git -C "$proj" status --porcelain -- .devbin-tool)" ] || fail "the fixture's facts file is not committed"
+}
+
+@test "I6b3b75f: a publish refuses while .devbin-tool is not the block's, naming build, which writes it and says so, and the publish then goes" {
+  local proj cfg opt="$DEVBIN_TEST_TMPDIR/opt-demo"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  cfg="$proj/bin/.devbin/config.yaml"
+  printf 'project:\n  name: demo\ninstall:\n  prefix: %s\n  links:\n    demo-cli: target/release/demo-cli\n  files:\n    notes:\n      path: share/notes.md\n      from: docs/notes.md\ncommands:\n  build:\n    run: sh tools/build.sh\n' "$opt" >"$cfg"
+  git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -qam "notes, with no facts" ||
+    fail "the config could not be committed"
+  run devbin_run "$proj" install
+  assert_failure
+  assert_output_contains "refusing to publish demo: this checkout's .devbin-tool is stale, and the tool reads its facts from it"
+  assert_output_contains "write it, then commit it with the block:  bin/devbin build"
+  [ ! -e "$opt" ] || fail "the refused publish wrote $opt"
+  run devbin_run "$proj" build
+  assert_success
+  assert_output_contains "wrote      .devbin-tool (the install: block changed; commit it with the block)"
+  grep -qx 'set: :(literal)docs/notes.md' "$proj/.devbin-tool" || fail "build did not write the block's set: $(cat "$proj/.devbin-tool")"
+  git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -qam "the facts" ||
+    fail "the facts could not be committed"
+  run devbin_run "$proj" build
+  assert_success
+  refute_output_contains "wrote      .devbin-tool"
+  run devbin_run "$proj" install
+  assert_success
+}
+
+@test "I6b3b75f: a published opt tree and a keg carry .devbin-tool, naming the manifest, which does not list it, and doctor passes the opt tree" {
+  local proj opt="$DEVBIN_TEST_TMPDIR/opt-demo" keg="$DEVBIN_TEST_TMPDIR/keg/libexec" root n t
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" install
+  assert_success
+  run devbin_run "$proj" install --prefix "$keg" --managed-by brew
+  assert_success
+  for t in "$opt" "$keg"; do
+    [ "$(cat "$t/.devbin-tool")" = "$(cat "$proj/.devbin-tool")" ] || fail "$t's facts file is not the checkout's: [$(cat "$t/.devbin-tool" 2>&1)]"
+    grep -qx 'manifest: .demo-install' "$t/.devbin-tool" || fail "$t's facts name no manifest"
+    if grep -q '\.devbin-tool$' "$t/.demo-install"; then fail "$t's manifest lists the facts file: $(cat "$t/.demo-install")"; fi
+  done
+  run devbin_run "$proj" use opt
+  assert_success
+  root="$(cd -P "$opt" && pwd -P)"
+  n="$(grep -v -c '^#' "$opt/.demo-install")"
+  run devbin_run "$proj" doctor
+  assert_output_contains "ok    demo tree: the opt install at $root, $n file(s) as its manifest records"
+}
+
+@test "I6b3b75f: doctor passes a checkout whose .devbin-tool is its block's, and fails one where it is stale or missing, naming build" {
+  local proj
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" doctor
+  assert_output_contains "ok    demo facts: .devbin-tool holds its install: block's manifest and runtime set"
+  printf 'set: :(literal)elsewhere\n' >>"$proj/.devbin-tool"
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo facts: .devbin-tool is stale, and the tool reads its manifest and runtime set from it"
+  assert_output_contains "write it, then commit it with the block:  bin/devbin build"
+  rm -f "$proj/.devbin-tool"
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo facts: .devbin-tool is missing, and the tool reads its manifest and runtime set from it"
+}
+
+@test "I6b3b75f: a change to .devbin-tool alone makes no dev line +dirty, since the file is in no runtime set" {
+  local proj sha
+  proj="$(stamp_project 'build:
+  inputs:
+    - src/main.txt')" || fail "the fixture's project could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  printf '# an edit\n' >>"$proj/.devbin-tool"
+  [ -n "$(git -C "$proj" status --porcelain -- .devbin-tool)" ] || fail "the facts file shows no change to read past"
+  run devbin_run "$proj" build
+  assert_success
+  # The build writes the file back to the block's, and the line it carried was
+  # read before that, over the edited file.
+  [ "$(sed -n 1p "$proj/target/runs")" = "demo 1.2.3 (dev, ${sha:0:12})" ] || fail "the build carried: $(cat "$proj/target/runs")"
+}
+
+@test "I6b3b75f: a reader under the system's /bin/bash reads both facts with read alone, and git reads the set's pathspecs as they are written" {
+  local proj
+  proj="$(dir_project '    share:
+      path: share
+      excludes:
+        - "test/**"')" || fail "the fixture's project could not be made"
+  printf 'changed\n' >>"$proj/share/a.txt"
+  printf 'changed\n' >>"$proj/share/test/t.txt"
+  # shellcheck disable=SC2016 # the reader's own expansions, made when it runs
+  run /bin/bash -c '
+    m="" specs=()
+    while IFS= read -r line; do
+      case "$line" in
+        "manifest: "*) m="${line#manifest: }" ;;
+        "set: "*) specs+=("${line#set: }") ;;
+      esac
+    done <"$1/.devbin-tool"
+    printf "manifest=%s\n" "$m"
+    git -C "$1" status --porcelain --untracked-files=no -- "${specs[@]}"' _ "$proj"
+  assert_success
+  assert_output_contains "manifest=.demo-install"
+  assert_output_contains " M share/a.txt"
+  refute_output_contains "share/test/t.txt"
+  refute_output_contains "share/stray.txt"
+}
+
+@test "I6b3b75f: upgrade writes .devbin-tool in a tool's checkout where it is not the block's, and says so" {
+  local proj src
+  src="$(mkdevsrc)"
+  run devbin_run "$src" install
+  assert_success
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  rm -f "$proj/.devbin-tool"
+  run devbin_run "$proj" upgrade --from "$DEVBIN_TEST_TMPDIR/opt/devbin"
+  assert_success
+  assert_output_contains "wrote      .devbin-tool (the install: block changed; commit it with the block)"
+  grep -qx 'manifest: .demo-install' "$proj/.devbin-tool" || fail "upgrade wrote no facts: $(cat "$proj/.devbin-tool" 2>&1)"
 }

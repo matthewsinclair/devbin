@@ -860,6 +860,14 @@ EOF
 # EVERY PASS IS READ, NOT ONLY THE LAST (critic-shell). A `released` file -- one
 # devbin no longer ships, left because it was edited -- is dropped from the
 # manifest by the pass that releases it, so a second pass never mentions it.
+# estate_declares_tool <root> -- rc 0 when the estate at <root> declares its
+# own tool: its config has a top-level install: block. Read by the line alone,
+# as the estate's config is the estate's runtime's to parse, and a block that
+# does not parse is that runtime's to refuse on the pass this answer adds.
+estate_declares_tool() {
+  grep -q '^install:' "$1/bin/.devbin/config.yaml" 2>/dev/null
+}
+
 upgrade_one() {
   local root="$1" prefix="$2" want out state="" prc=0
   want="$(recorded_commit "$prefix")"
@@ -875,6 +883,16 @@ upgrade_one() {
     state="FAILED	upgrade exited $prc"
   elif provenance_current "$root" "$want"; then
     state=upgraded
+    # A TOOL'S FACTS ARE WRITTEN BY THE RUNTIME JUST DELIVERED (issue
+    # I6b3b75f). The estate's old runtime ran the first pass and knows no
+    # .devbin-tool, so an estate whose config declares a tool gets one more
+    # pass, which runs the new code, copies nothing and writes the file where it
+    # is not its install: block's. The pass is the same command as the first:
+    # its output is read for holds, and its status for failure.
+    if estate_declares_tool "$root"; then
+      ( cd "$root" && ./bin/devbin upgrade --from "$prefix" ) >>"$out" 2>&1 || prc=$?
+      [ "$prc" -eq 0 ] || state="FAILED	upgrade exited $prc on its pass for the tool's facts"
+    fi
   else
     ( cd "$root" && ./bin/devbin upgrade --from "$prefix" ) >>"$out" 2>&1 || prc=$?
     if [ "$prc" -ne 0 ]; then

@@ -1768,6 +1768,41 @@ run_sweep() {
   [ "$(sed -n 's/^# source: //p' "$ROOTS/alpha/bin/.devbin/manifest.sha256")" = install ]
 }
 
+@test "I6b3b75f: --apply runs one more pass in an estate whose config declares a tool, so the runtime it delivered writes the tool's facts, and none in an estate that declares none" {
+  # An estate's first pass runs the runtime it already has, which may know no
+  # .devbin-tool. Each launcher here stands in for the estate's runtime: it
+  # counts its runs and records the install's provenance on each, so the
+  # first pass already converges and only the tool's pass can add a second.
+  local e want
+  export HOME="$DEVBIN_TEST_TMPDIR"
+  prefix="$(mkinstall_prefix)"
+  want="$(sed -n 's/^# source_commit: //p' "$prefix/bin/.devbin/manifest.sha256")"
+  [ -n "$want" ] || fail "the install records no commit to converge on"
+  mkproj_cfg "$prefix"
+  for e in alpha beta; do
+    mkestate "$e"
+    # shellcheck disable=SC2016
+    printf '%s\n' \
+      '#!/usr/bin/env bash' \
+      'd="$(cd "$(dirname "$0")" && pwd)/.devbin"' \
+      'n=$(( $(cat "$d/runs" 2>/dev/null || echo 0) + 1 ))' \
+      'printf "%s\n" "$n" >"$d/runs"' \
+      'printf "# devbin_version: 0.1.0\n# source: install\n# source_commit: '"$want"'\n" >"$d/manifest.sha256"' \
+      >"$ROOTS/$e/bin/devbin"
+    chmod +x "$ROOTS/$e/bin/devbin"
+  done
+  printf 'project:\n  name: alpha\ninstall:\n  prefix: %s/opt-alpha\n' "$DEVBIN_TEST_TMPDIR" >"$ROOTS/alpha/bin/.devbin/config.yaml"
+  printf 'project:\n  name: beta\n' >"$ROOTS/beta/bin/.devbin/config.yaml"
+  run_sweep --apply
+  assert_success
+  assert_output_contains "0 FAILED"
+  local tool_runs plain_runs
+  tool_runs="$(cat "$ROOTS/alpha/bin/.devbin/runs")"
+  plain_runs="$(cat "$ROOTS/beta/bin/.devbin/runs")"
+  [ "$tool_runs" -eq "$((plain_runs + 1))" ] ||
+    fail "the estate that declares a tool ran $tool_runs pass(es), and the one that declares none $plain_runs: $output"
+}
+
 # 0153, 0213
 @test "the sweep refuses when the switch names no install it could distribute (0153, 0213)" {
   # A swept estate finds its install through the switch afterwards, so a sweep
