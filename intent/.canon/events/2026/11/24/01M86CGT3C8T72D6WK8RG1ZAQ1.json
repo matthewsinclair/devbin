@@ -1,0 +1,15 @@
+{
+  "id": "01M86CGT3C8T72D6WK8RG1ZAQ1",
+  "ts": "2026-11-24T08:59:50.254Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.edit",
+  "subject": {
+    "type": "issue",
+    "id": "I8f31e10858bdcbbf"
+  },
+  "payload": {
+    "bytes": 5046,
+    "title": "0360's group-TERM arms go red on WSL from time to time: the arm's wait matches the word in run_gate's invocation record, so its TERM can land before run_gate arms, and the run ends 0, not 143"
+  }
+}

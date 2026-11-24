@@ -1,6 +1,6 @@
 ---
 issue: I8f31e10
-title: 0360's group-TERM arms go red on WSL from time to time: the run ends 0, not 143, because the caller's own TERM handler takes the signal after the gated command has started
+title: 0360's group-TERM arms go red on WSL from time to time: the arm's wait matches the word in run_gate's invocation record, so its TERM can land before run_gate arms, and the run ends 0, not 143
 status: OPEN
 severity: medium
 created: 2026-11-24
@@ -23,13 +23,21 @@ The load was low in each run, so load does not explain the red.
 
 I1e7c6a9 (0.1.29) closed a different window: the arms' helper sent its TERMs before the probe's "started" line was in the log, so the TERM could reach the caller's shell before `run_gate` had armed. The helper now waits for that line, and fails the arm, saying so, if the run ends without it. In both reds above, the helper found "started" and sent the TERM. So `run_gate` had armed and the gated command was running when the signal went out.
 
-## A hypothesis, not a cause
+## The window: the arm's wait matches the invocation record (this replaces the filed hypothesis)
 
-The record shows that the caller's handler ran and `run_gate` returned 0. A possible order is that on WSL, the TERM reaches the caller's shell after `run_gate` has put the caller's handlers back. Then the caller's handler takes the signal, and `run_gate` returns the status it read without the signal. A second possible order is a window in the arm itself. No run has proved either. A read of `run_gate`'s trap set, restore and wait order against the two arms comes next, with a plan.
+This section replaces the hypothesis filed first, that the TERM reached the caller's shell after `run_gate` had put the caller's handlers back. That order does not fit the record. In it, the probe would have been killed, so the run could not have gone on to a green close. devbin-dc found the window by reading `lib/runlog` and `tests/unit/runlog.bats` at main (96875396), without a run. devbin-vc checked the reading.
+
+`group_term_run` waits with a bare `grep -qs started "$d"/logs/*.PROBE.out` (`tests/unit/runlog.bats:2511` and `2515`), and then sends the TERMs. The gated command is `bash -c 'printf "started\n"; sleep 10'`. `run_gate` calls `note_invocation` (`lib/runlog:2384`) before `gate_signals_arm` (`lib/runlog:2419`). `note_invocation` writes the command to the log one argument per line, and the argument `printf "started\n"; sleep 10` holds the word. So the wait can end before `run_gate` has armed.
+
+If the TERM reaches run.sh's shell in that gap, the caller's handler is still in place. It writes "the caller's TERM handler ran" and does not exit, so the signal is used up. `run_gate` then arms, runs the probe in full, seals green and returns 0, and run.sh writes "the caller went on". That is the exact record of both reds. The gap is short (the end of `note_invocation`, and `set +e`), so it needs a scheduler gap, which fits a red on WSL that comes and goes.
+
+The word "started" is in the log before the arm, in the record of the command itself. So this is the same race as I1e7c6a9's, in a second form. No defect in `lib/runlog` is shown, and the fix is in the test.
+
+The fix: one predicate, `probe_started <log>`, a whole-line match (`grep -qsx started`), at both places. The invocation record's lines are tagged and indented, so they never match it. The helper's comment says why. A new arm makes the window certain on any host, with no timing. It writes the real invocation record with `note_invocation` for the probe's arguments, with nothing armed, and asserts that `probe_started` is false. Then it adds the probe's own line and asserts that `probe_started` is true. The base's bare match is true on the record, so the arm goes red every time without the fix. The plan: devbin-dc's scratch, i8f31e10/plan.md.
 
 ## Done when
 
-- The window is named, in `lib/runlog` or in the arm.
+- The wait in `group_term_run` is the whole-line `probe_started`.
 - A localised arm goes red without the fix on any host, because it places the TERM at a fixed point in the window and does not wait for WSL's timing.
 - Both 0360 group-TERM arms and the new arm are green under BSD and GNU.
 - It ships in devbin 0.1.31.
