@@ -1,0 +1,13 @@
+{
+  "schema": "intent/issue@4.0",
+  "id": "I75da2cc48ceb22d3",
+  "origin": "01M86P6VMX2C35RFMCY4Z1Q6RP",
+  "realised": true,
+  "slug": "a-sweep-commit-ends-with-the-sweeping-user-s-lin",
+  "title": "A sweep commit ends with the sweeping user's line, not the line a tree's settings.local.json names for attribution.commit",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-24",
+  "reporter": "Matthew Sinclair",
+  "body": "## Problem\n\nA sweep commit in a repository whose `.claude/settings.local.json` sets `attribution.commit` must end with that line. The 0.1.12 fleet sweep (2026-10-17) ended five such commits with the sweeping user's line instead. The repository's own promotion gate refuses a commit that does not end with its attribution line, so each one had to be made again by hand. The sweep's commits are made by a seat's script after `fleet upgrade --apply`, not by a devbin verb, so devbin has no one place that gets this right.\n\n## Fix\n\n- Give the sweep a commit step in devbin (eg `fleet upgrade --apply --commit`), by path, one commit per tree.\n- It reads `.attribution.commit` from each tree's `.claude/settings.local.json` and ends the message with it. Only when the key is not set does it use the sweeping user's line.\n- An arm: a scratch tree with the key set to a test line; the sweep's commit there ends with that line.\n- Read how the 0.1.12 sweep reached trees that `fleet.roots` did not list, and record it.\n\n## Stopgap\n\ndevbin-vc's sweep script reads the key from 2026-11-24 (no tree swept that day sets a different line).\n"
+}

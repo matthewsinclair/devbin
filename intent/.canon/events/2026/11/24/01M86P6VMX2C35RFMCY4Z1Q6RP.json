@@ -1,0 +1,15 @@
+{
+  "id": "01M86P6VMX2C35RFMCY4Z1Q6RP",
+  "ts": "2026-11-24T11:49:09.922Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I75da2cc48ceb22d3"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "A sweep commit ends with the sweeping user's line, not the line a tree's settings.local.json names for attribution.commit"
+  }
+}
