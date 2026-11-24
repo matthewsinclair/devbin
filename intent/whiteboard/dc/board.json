@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "390b89e0-6c47-4d22-84b6-538fcbc202be",
-    "heartbeat_at": "2026-11-23T18:06:27.644Z",
+    "heartbeat_at": "2026-11-24T04:28:10.442Z",
     "status": "active",
-    "focus": "Folded 2026-11-23 18:06Z by date -u for hv's estate-wide compact; not released. pc0129's pre-cut at 534fd421 ended (slot 01M84PK2H0T8W36JJ7ZJ9XN6EK released): scans, bsd, bsdleg and check all green; the dry run red at pre-flight, no RELEASES/0.1.29.md. END sent to devbin-vc. Open: the dry run re-run once a note lands, on devbin-vc's word; pc0129's clear-clone after v0.1.29's tag.",
+    "focus": "2026-11-24 04:28Z by date -u: idle, holding for vc's word. devbin v0.1.29 is out (164ccc46); pc0129 is closed, its clone removed and its records kept. No item, unit, worktree, claim or loan is dc's.",
     "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
