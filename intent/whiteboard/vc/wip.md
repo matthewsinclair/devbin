@@ -3,7 +3,7 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 31d7bc64-995d-46af-b1a9-914a003e7f32
-heartbeat_at: 2026-11-24 16:54Z
+heartbeat_at: 2026-11-24 17:04Z
 status: active
 focus: "2026-11-23 17:26Z by date -u: LOCALFOLDED for hv's estate-wide compact cycle; Desk HELD. Open: 0.1.29 pre-cut running (cut on green, hv's pre-approval), Intent 3.5.2 U4a rerun queued, Molt 1.4.8 after 0.1.29. See intent/wip.md."
 claims: []
@@ -72,6 +72,7 @@ claims: []
 - hv's AskUserQuestion answers in vc's window, read by 13:18Z by date -u, before hv drives at 17:30 local (13:30Z): (1) devbin 0.1.31: vc cuts and sweeps while hv is away, on a green pre-cut and dry run; a red before the tag stops; nothing after a tag is retried. (2) Gtools ST0020/01 lands on a green Desk run while hv is away; 0.8.4 waits for hv. (3) AE: the amd64 and Windows runs go; the Teams note waits (hv then posted v2 and devvm 0.5.3 released at 13:08Z). (4) The other estate's 902f8e6a: rewrite its history first, as hv; nothing pushed. (5) GH runs now: the Utilz candidate run; devbin main pushed (bea177c0, four remotes); Gtools main pushed (45edccb6); Pipeliner deb58d6, agentic-engineering 1a15401f, sparks level. Each estate's 0.1.30 sweep-commit push is not done: pushing main carries each estate's other unpushed work.
 - hv in vc's window, read 2026-11-24 14:45Z by date -u, before going AFK: 'You have the Pen and the Desk. You have approval across all Claudes here to run whatever is needed to get the unified plan executed.' hv's AskUserQuestion answers, PRE-APPROVED on green gates, with no further word: (1) all three cuts: Intent 3.5.3 (after b353 lands and its dry run), Gtools 0.9.0 (release --minor) and Utilz, each with its push, tap and formula publish; (2) pushes and sweeps: Intent main (decision 76), the 0.1.31 sweep commits, and each estate's 0.1.30 sweep commit, where an estate with other unpushed work is pushed after its vc confirms that work; (3) brew rollouts: molt, gtools and devbin on rhadamanth, molt upgrade per sleeve, and gyges via gyges-sysadm; (4) records and closes of finished threads, packages and issues, and hv's rulings recorded by the pen. A red before a tag still stops and waits. Still hv's own hands: the other estate's history rewrite (hv: 'I'll do them when I get home'), the Utilz spike and live run (hv at the keyboard), the Gtools.app reinstall, Webber's phone checks, Trellis' App Store steps and the T10 live proofs.
 - hv in vc's window, read by 14:50Z by date -u, and given first-hand to every seat: 'I have pre-approved all checkins, commits, pushes, cuts, and brew updates, etc at devbin-vc. When it says go, go. Ok?' So each seat runs the step on devbin-vc's go, with no further word. Recorded first-hand by intent-vc (hv decision 96, which allows 3.5.3's --no-confirm), agentic-engineering-vc (its decision 25), utilz-vc (hv decision 20) and molt-vc. A seat whose session's own classifier refuses a step (Utilz's push) keeps it as a ! line for hv.
+- hv 2026-11-24 17:16Z, live in devbin-vc's session, hv's choice of vc's option: for Intent, rhadamanth's local macOS leg is the macOS proof of a cut. intent-cc drops macOS from Intent's candidate CI (tests.yml test-macos, rust.yml's matrix); workflow_dispatch keeps macOS. Intent 3.5.3 is re-cut on that main. This changes decision 81's whole-matrix rule for Intent only.
 
 ---
 

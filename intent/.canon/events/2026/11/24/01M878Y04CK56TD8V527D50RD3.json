@@ -1,0 +1,15 @@
+{
+  "id": "01M878Y04CK56TD8V527D50RD3",
+  "ts": "2026-11-24T17:16:22.540Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv 2026-11-24 17:16Z, live in devbin-vc's session, hv's choice of vc's option: for Intent, rhadamanth's local macOS leg is the macOS proof of a cut. intent-cc drops macOS from Intent's candidate CI (tests.yml test-macos, rust.yml's matrix); workflow_dispatch keeps macOS. Intent 3.5.3 is re-cut on that main. This changes decision 81's whole-matrix rule for Intent only."
+  }
+}

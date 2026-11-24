@@ -5,7 +5,7 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "31d7bc64-995d-46af-b1a9-914a003e7f32",
-    "heartbeat_at": "2026-11-24T16:54:18.188Z",
+    "heartbeat_at": "2026-11-24T17:04:28.970Z",
     "status": "active",
     "focus": "2026-11-23 17:26Z by date -u: LOCALFOLDED for hv's estate-wide compact cycle; Desk HELD. Open: 0.1.29 pre-cut running (cut on green, hv's pre-approval), Intent 3.5.2 U4a rerun queued, Molt 1.4.8 after 0.1.29. See intent/wip.md.",
     "claims": [],
@@ -6324,6 +6324,14 @@
       "text": "hv in vc's window, read by 14:50Z by date -u, and given first-hand to every seat: 'I have pre-approved all checkins, commits, pushes, cuts, and brew updates, etc at devbin-vc. When it says go, go. Ok?' So each seat runs the step on devbin-vc's go, with no further word. Recorded first-hand by intent-vc (hv decision 96, which allows 3.5.3's --no-confirm), agentic-engineering-vc (its decision 25), utilz-vc (hv decision 20) and molt-vc. A seat whose session's own classifier refuses a step (Utilz's push) keeps it as a ! line for hv.",
       "state": "live",
       "recorded_at": "2026-11-24T14:50:35.702Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 296,
+      "text": "hv 2026-11-24 17:16Z, live in devbin-vc's session, hv's choice of vc's option: for Intent, rhadamanth's local macOS leg is the macOS proof of a cut. intent-cc drops macOS from Intent's candidate CI (tests.yml test-macos, rust.yml's matrix); workflow_dispatch keeps macOS. Intent 3.5.3 is re-cut on that main. This changes decision 81's whole-matrix rule for Intent only.",
+      "state": "live",
+      "recorded_at": "2026-11-24T17:16:22.540Z"
     }
   ],
   "sent": [
