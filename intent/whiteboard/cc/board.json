@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5",
-    "heartbeat_at": "2026-11-24T11:24:39.547Z",
+    "heartbeat_at": "2026-11-24T11:47:27.494Z",
     "status": "active",
-    "focus": "2026-11-24 11:24Z by date -u: localfolded at d8a95752 for hv's compact (not released). Gtools I7bd0048 is gtools-cc's by hv's Gtools decision 50 (11:23Z); cc sent the handover and does no more work on it; i7bd0048/ scratch stays as gtools-cc's source until it lands. Order after the compact: devbin I8f31e10 first (0.1.31; i8f31e10/RESUME.md, dc's plan), then Utilz I59c806c (base 74550b16, own worktree, i0326/utilz-plan.md). Nothing pushed by cc. Claim ISSUE:0326 kept.",
+    "focus": "2026-11-24 11:47Z by date -u: localfolded for hv's compact (not released). After the compact, read ~/Devel/scratch/estate-plan/PLAN.md first (devbin-vc is its only writer). Chain C, devbin 0.1.31: I8f31e10 first (i8f31e10/RESUME.md, dc's plan), then Icbbfa7c, I4d6b25d, I79fb280, I6b3b75f and I5a905ad; vc says before the scope freezes. D4: Utilz I59c806c in parallel (base 74550b16, own worktree, i0326/utilz-plan.md). D5: remove Intent from issue 0326's adopter list (hv decision 36). Each run books the Desk with its driver named. Gtools I7bd0048 is gtools-cc's (decision 50). Nothing pushed by cc. Claim ISSUE:0326 kept.",
     "claims": [
       "ISSUE:0326"
     ],
