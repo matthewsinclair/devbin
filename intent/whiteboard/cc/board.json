@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5",
-    "heartbeat_at": "2026-11-24T11:49:52.815Z",
+    "heartbeat_at": "2026-11-24T13:43:22.149Z",
     "status": "active",
-    "focus": "2026-11-24 11:49Z by date -u: localfolded for hv's compact (not released). After the compact, read ~/Devel/scratch/estate-plan/PLAN.md first (devbin-vc is its only writer). Chain C, devbin 0.1.31, scope FROZEN at 11:49Z: I8f31e10 first (i8f31e10/RESUME.md, dc's plan), then Icbbfa7c, I4d6b25d, I79fb280, I6b3b75f and I5a905ad; nothing else joins (I75da2cc goes after 0.1.31). D4: Utilz I59c806c in parallel (base 74550b16, own worktree, i0326/utilz-plan.md). D5: remove Intent from issue 0326's adopter list (hv decision 36). Each run books the Desk with its driver named. Gtools I7bd0048 is gtools-cc's (decision 50). Nothing pushed by cc. Claim ISSUE:0326 kept.",
+    "focus": "2026-11-24 13:43Z by date -u: localfolded for rhadamanth's lid close (not released). I5a905ad's re-run 01M86WCVJBV5SG505HSXVMSJG1 (tip e0389f5c, tmp/wt-i5a905ad, driver ~/Devel/scratch/devbin-cc/i5a905ad/run-fix.sh) is in flight and left to pause: at the wake read runs/summary, send devbin-vc END, and on green the READY. Landed today: I8f31e10, batch B (Icbbfa7c, I79fb280, I6b3b75f), all closed; I4d6b25d closed with no code; D5 done. Then dc's pre-cut and vc's 0.1.31 cut. Utilz I59c806c: worktree ~/Devel/scratch/devbin-cc/i59c806c/wt on 74550b16, no code yet. Nothing pushed by cc. Claim ISSUE:0326 kept.",
     "claims": [
       "ISSUE:0326"
     ],
