@@ -1,0 +1,15 @@
+{
+  "id": "01M86BBC09HY2D9V29PPEEKXA7",
+  "ts": "2026-11-24T08:39:23.404Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I79fb28011a19ead9"
+  },
+  "payload": {
+    "severity": "low",
+    "title": "An opt manifest has no source_tree, so a tool's dev-only refusals cannot name the checkout to run in"
+  }
+}

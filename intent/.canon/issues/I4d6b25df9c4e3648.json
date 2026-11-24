@@ -1,0 +1,13 @@
+{
+  "schema": "intent/issue@4.0",
+  "id": "I4d6b25df9c4e3648",
+  "origin": "01M86BBBT7VNGBCARQHX69CMR7",
+  "realised": true,
+  "slug": "bin-devbin-use-prints-no-hash-r-hint-so-an-open",
+  "title": "bin/devbin use prints no hash -r hint, so an open shell keeps running the old copy or gives 127 after a switch",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-24",
+  "reporter": "Matthew Sinclair",
+  "body": "## Problem\n\nAfter `bin/devbin use` switches a tool, every open shell keeps its hashed path for the tool. From brew to dev or opt, bash and zsh still run brew's copy. From dev or opt to brew, bash gives 127, because the hashed path is gone. A PATH probe measured both. Each tool's docs now carry their own \"run hash -r\" line, which is one hint in many places.\n\n## Fix\n\n- After each switch, `use` prints one line that tells the user to run `hash -r` (`rehash` in zsh) in each open shell.\n- Tools then drop their own copy of the hint at their next sweep.\n"
+}

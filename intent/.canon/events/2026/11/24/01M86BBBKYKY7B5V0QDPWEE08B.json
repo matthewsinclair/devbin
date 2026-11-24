@@ -1,0 +1,15 @@
+{
+  "id": "01M86BBBKYKY7B5V0QDPWEE08B",
+  "ts": "2026-11-24T08:39:23.010Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "Icbbfa7c91a7fad02"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The shipped lib names a fleet machine: lib/release.legs says kovacs in a comment that vendored trees carry"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "intent/issue@4.0",
+  "id": "I79fb28011a19ead9",
+  "origin": "01M86BBC09HY2D9V29PPEEKXA7",
+  "realised": true,
+  "slug": "an-opt-manifest-has-no-source-tree-so-a-tool-s-d",
+  "title": "An opt manifest has no source_tree, so a tool's dev-only refusals cannot name the checkout to run in",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-24",
+  "reporter": "Matthew Sinclair",
+  "body": "## Problem\n\nThe T3 manifest has no record of the checkout an opt tree was published from. A tool's dev-only refusals (eg a test or scrub verb run from an opt install) can say only \"a checkout\", with no path. A tool's old manifest carried this as source_tree.\n\n## Fix (an amendment to the dev/opt/brew contract, watchout 36)\n\n- An opt publish writes `source_tree: <absolute checkout path>` in the manifest.\n- A brew publish writes none, because brew deletes its build checkout.\n- Every reader treats the line as optional, so old manifests stay valid.\n- An opt tree stays on its machine, so the path does not leave it.\n\n## Agreement\n\nWatchout 36 needs molt-vc, utilz-vc, intent-vc and gtools-vc. Gtools agreed on 2026-11-24. The other three are asked.\n"
+}
