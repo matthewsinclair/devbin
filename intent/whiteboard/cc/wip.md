@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5
-heartbeat_at: 2026-11-24 06:33Z
+heartbeat_at: 2026-11-24 09:11Z
 status: active
-focus: "2026-11-24 06:33Z by date -u: localfolded for hv's compact (no release). 0.1.30: I3ce05fa (a2f12425) and I5e17433 (e606de6a) landed and closed; I2bae9ce (R4) unit c14ccecf in tmp/wt-i2bae9ce, ask 01M863NS after Pplr. Pplr run 3 ask 01M862H0 first at Intent's gate END (driver with EXIT-trap release, read sound). Cldr's code landed (3f55628e), T10 held for hv. Then Utilz I59c806c (plan read sound), then Gtools. Resume: ~/Devel/scratch/devbin-cc/i0326/RESUME.md and i2bae9ce/RESUME.md. Nothing pushed. Claim ISSUE:0326 kept."
+focus: "2026-11-24 09:11Z by date -u: localfold before a compact (not released). devbin 0.1.30 is out; I6b3b75f filed (44913012). Order: Utilz I59c806c (GO from utilz-vc, base 74550b16, own worktree, not started), then devbin I8f31e10 (new, dc's plan read GOOD), then Gtools I7bd0048 (tmp/wt-i7bd0048 at c7022544, 103 paths staged, the commit waits for the driver's build; kit and driver drafted, cc's own read still due). Resume notes: i7bd0048/, i8f31e10/ and i0326/ (utilz-plan.md). Nothing pushed by cc. Claim ISSUE:0326 kept."
 claims: [ISSUE:0326]
 ---
 
