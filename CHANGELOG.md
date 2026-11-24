@@ -6,6 +6,37 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.31] - 2026-11-24
+
+### Added
+
+#### new files and records
+
+- **`<root>/.devbin-tool` (issue `I6b3b75f`).** In a project that declares a tool, devbin writes one plain `key: value` file at the project's root. Its `manifest:` line is `install.manifest`. Each `pathspec:` line is one git pathspec of the runtime set, as the publish and the `+dirty` reader build it. A tool reads it with `while read` under any bash, so it keeps no copy of either fact.
+  - `bin/devbin build` writes it when it differs from the `install:` block, and says so.
+  - `bin/devbin install` refuses to publish while it is stale, and names `bin/devbin build`.
+  - `bin/devbin doctor` fails a checkout whose file is stale.
+  - An opt publish and a keg carry the file beside the manifest.
+  - A change to `.devbin-tool` alone makes no dev line `+dirty`.
+  - `bin/devbin upgrade` writes it in each project that declares a tool. The file is tracked: commit it with the `install:` block.
+- **`source_tree` in a tool's opt manifest (issue `I79fb280`).** An opt publish records the checkout's path as `# source_tree:`. It is for information only. No reader refuses when the path is gone. A keg's manifest has no `source_tree`, and devbin's own manifest still records only the kind of its source.
+
+### Changed
+
+#### a script or a config may get a different result
+
+- **A sweep to 0.1.31 adds `.devbin-tool` to each project that declares a tool (issue `I6b3b75f`).** The file is new and untracked after the sweep. The sweep's commit carries it with `bin/devbin` and `bin/.devbin/`.
+- **The 0360 group-TERM arms wait for the gated command's own line (issue `I8f31e10`).** The arms' wait matched the word in `run_gate`'s invocation record, so a TERM could land before `run_gate` armed, and the arm went red on WSL from time to time. Only the tests change.
+
+### Fixed
+
+#### reaches every project
+
+- **The lanes runner runs a suite whose gate puts an older bash first on PATH (issue `I5a905ad`).** When the runner starts under a bash below devbin's floor, it finds a bash at the floor and runs itself again under that bash, once. bats and every test still run under the PATH's bash. The recorder's timing runs in the runner, so it keeps bash 5's clock. The first line names both shells. When no bash at the floor is installed, the runner refuses, and names what it looked for and the one-lane fallback (plain `bats`). The floor and the search for a floor bash have one home, in `lib/helpers`. No key or variable is new: the gate's PATH chooses the suite's shell.
+- **The shipped lib names no fleet machine (issue `Icbbfa7c`).** A comment in `lib/release.legs` named a host. It now says what sets the gates' environment.
+
+Full note: [RELEASES/0.1.31.md](RELEASES/0.1.31.md)
+
 ## [0.1.30] - 2026-11-24
 
 ### Added
