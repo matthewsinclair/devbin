@@ -5,9 +5,9 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5",
-    "heartbeat_at": "2026-11-24T10:43:07.392Z",
+    "heartbeat_at": "2026-11-24T11:24:39.547Z",
     "status": "active",
-    "focus": "2026-11-24 10:43Z by date -u: localfold for hv's compact (not released). Order after the compact: devbin I8f31e10 first (0.1.31; notes i8f31e10/RESUME.md, dc's plan i8f31e10/plan.md), then Utilz I59c806c (GO from utilz-vc, base 74550b16, own worktree, i0326/utilz-plan.md), then Gtools I7bd0048 (tmp/wt-i7bd0048 at c7022544, 103 paths staged; cc reads run.sh, make-kit.sh and redkit.exs before gtools-vc and the Desk see them; i7bd0048/RESUME.md). Nothing pushed by cc. Claim ISSUE:0326 kept.",
+    "focus": "2026-11-24 11:24Z by date -u: localfolded at d8a95752 for hv's compact (not released). Gtools I7bd0048 is gtools-cc's by hv's Gtools decision 50 (11:23Z); cc sent the handover and does no more work on it; i7bd0048/ scratch stays as gtools-cc's source until it lands. Order after the compact: devbin I8f31e10 first (0.1.31; i8f31e10/RESUME.md, dc's plan), then Utilz I59c806c (base 74550b16, own worktree, i0326/utilz-plan.md). Nothing pushed by cc. Claim ISSUE:0326 kept.",
     "claims": [
       "ISSUE:0326"
     ],
