@@ -1,0 +1,15 @@
+{
+  "id": "01M85XTDKRKJMC80JW54NP5FRT",
+  "ts": "2026-11-24T04:42:56.508Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I5a905ad27ba0ef40"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "The core's bats lanes runner refuses a project's older-bash gate: it sources helpers' bash 5 floor and times files with EPOCHREALTIME, so a /bin/bash 3.2 suite falls back to one lane"
+  }
+}
