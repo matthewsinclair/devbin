@@ -1,9 +1,10 @@
 ---
 issue: I8f31e10
 title: 0360's group-TERM arms go red on WSL from time to time: the arm's wait matches the word in run_gate's invocation record, so its TERM can land before run_gate arms, and the run ends 0, not 143
-status: OPEN
+status: CLOSED
 severity: medium
 created: 2026-11-24
+closed: 2026-11-24
 reporter: Matthew Sinclair
 ---
 
@@ -45,6 +46,17 @@ The fix: one predicate, `probe_started <log>`, a whole-line match (`grep -qsx st
 ## Provenance
 
 Found by devbin-dc in reading the 0.1.30 candidate's CI run, 2026-11-24, on hv's link. Filed on devbin-vc's word. Logs: devbin-dc's scratch, ci0130/wsl.log, wsl-0128.log and wsl-0129.log. No CI job was re-run.
+
+
+## Resolution
+
+Landed at 3f30bfce on main (2026-11-24 12:29Z by date -u, landed by devbin-vc). tests/unit/runlog.bats only; lib/runlog does not change.
+
+- The window: run_gate writes the invocation record into the run's log before it arms the signals, and the record carries the gated command's words. group_term_run's wait, `grep -qs started`, could match that record and send the TERM before the arm. The caller's TERM handler, which does not exit, then took the TERM, and the run went on to a green close. That is the record of both WSL reds.
+- The filed hypothesis, a TERM after traps_restore, is ruled out: in that order the probe is killed, and the run does not close green.
+- The fix: probe_started, a whole-line `grep -qsx started`, is the one wait predicate at both places in group_term_run. GROUP_TERM_PROBE holds the gated command, so the runs and the new arm use the same words.
+- The arm: "I8f31e10: the 0360 arms' wait does not end on the invocation record, which run_gate writes before it arms and which carries the gated command's own words". It writes the real record with note_invocation, with no timing.
+- The run (Desk 01M86R0TDC3J587H1H8VEFG257, rc 0): the arm failed on a mutant that carried the old predicate; runlog.bats whole was 141 of 141 under BSD and under GNU at tip 3cc3b6ef; test scans 61 of 61; check lint 0 breaches.
 
 ---
 
