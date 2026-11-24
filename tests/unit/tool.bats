@@ -1021,3 +1021,62 @@ install:
   assert_output_line "use: an open bash that already ran demo-cli still looks for it at the removed link, until hash -r is run there; zsh looks again by itself"
   refute_output_contains "rehash (zsh)"
 }
+
+# dir_project <files-lines> -- the stamped project (stamp_project) with share/
+# holding three tracked files, one under share/test/, and its install: block's
+# files given <files-lines>, all committed; then share/stray.txt, untracked.
+# Prints the project's root (issue I2bae9ce).
+dir_project() {
+  local proj cfg
+  proj="$(stamp_project)" || return 1
+  cfg="$proj/bin/.devbin/config.yaml"
+  mkdir -p "$proj/share/sub" "$proj/share/test" || return 1
+  printf 'a\n' >"$proj/share/a.txt" || return 1
+  printf 'b\n' >"$proj/share/sub/b.txt" || return 1
+  printf 't\n' >"$proj/share/test/t.txt" || return 1
+  printf 'project:\n  name: demo\ninstall:\n  prefix: %s/opt-demo\n  links:\n    demo-cli: target/release/demo-cli\n  files:\n%s\ncommands:\n  build:\n    run: sh tools/build.sh\n' \
+    "$DEVBIN_TEST_TMPDIR" "$1" >"$cfg" || return 1
+  git -C "$proj" add -A >/dev/null 2>&1 || return 1
+  git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -q -m "share" >/dev/null 2>&1 || return 1
+  printf 'stray\n' >"$proj/share/stray.txt" || return 1
+  printf '%s\n' "$proj"
+}
+
+@test "I2bae9ce: a directory entry ships what git tracks below it, less what its excludes match, each file at its path with its manifest line, and an untracked or excluded file ships nowhere and marks nothing dirty" {
+  local proj opt="$DEVBIN_TEST_TMPDIR/opt-demo"
+  proj="$(dir_project '    share:
+      path: share
+      excludes:
+        - "test/**"')" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" install
+  assert_success
+  [ -f "$opt/share/a.txt" ] && [ -f "$opt/share/sub/b.txt" ] || fail "the tracked files did not ship: $(find "$opt" -type f)"
+  [ ! -e "$opt/share/test" ] || fail "the excluded share/test/ shipped: $(find "$opt/share" -type f)"
+  [ ! -e "$opt/share/stray.txt" ] || fail "the untracked share/stray.txt shipped"
+  [ "$(grep -v '^#' "$opt/.demo-install")" = "$(cd "$opt" && sha256_files bin/demo-cli share/a.txt share/sub/b.txt)" ] ||
+    fail "the manifest's body is not each shipped file at its sha256: $(cat "$opt/.demo-install")"
+  # A change to a file the set leaves out is no input: the republish goes ahead.
+  printf 'changed\n' >>"$proj/share/test/t.txt"
+  run devbin_run "$proj" install --force
+  assert_success
+  refute_output_contains "refusing to publish"
+}
+
+@test "I2bae9ce: an exclude that matches no tracked file, and excludes on an entry that is no tracked directory, refuse the publish by name, writing nothing" {
+  local proj opt="$DEVBIN_TEST_TMPDIR/opt-demo"
+  proj="$(dir_project '    share:
+      path: share
+      excludes:
+        - "tests/**"')" || fail "the fixture's project could not be made"
+  run devbin_run "$proj" install
+  assert_failure
+  assert_output_contains 'install.files.share.excludes: tests/** matches no file git tracks below share'
+  [ ! -e "$opt" ] || fail "the refused publish wrote $opt"
+  perl -0pi -e 's/    share:\n      path: share\n      excludes:\n        - "tests\/\*\*"/    one:\n      path: share\/a.txt\n      excludes:\n        - "x"/ or die' "$proj/bin/.devbin/config.yaml" ||
+    fail "the fixture's files block could not be rewritten"
+  git -C "$proj" -c user.email=t@t -c user.name=t commit -qam "a file entry with excludes" || fail "the rewritten config could not be committed"
+  run devbin_run "$proj" install
+  assert_failure
+  assert_output_contains 'install.files.one lists excludes, and its from, share/a.txt, is no directory git tracks files below'
+  [ ! -e "$opt" ] || fail "the refused publish wrote $opt"
+}
