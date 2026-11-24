@@ -1,5 +1,5 @@
 ---
-verblock: "24 Nov 2026:v3.111: Matthew Sinclair - after the 3.5.3, 0.9.0 and 1.4.12 rollouts"
+verblock: "24 Nov 2026:v3.112: Matthew Sinclair - after devbin 0.1.32 and devvm 0.5.4"
 ---
 
 # Work In Progress
@@ -13,6 +13,5 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## TODO
 
-- devbin 0.1.32 carries source-mode `formula.cask` (Gtools I17c1577, devbin-cc's issue). At its release, tell gtools-vc, who tells hv.
-- After 0.1.31: I75da2cc (the sweep's own commit step), I4133a23 (dev-opt-brew.md's Intent cases), and devbin-cc's issue for the fake-checkout note gap.
+- The 0.1.32 sweep is committed in 25 estates (`fleet upgrade --apply --commit`) and pushed in 21. Still to push: Intent (on intent-vc's word, decision 76), Utilz (hv's `!` line), Gtools-geodica (geodica-estate's other work). Gtools takes 0.1.32 in ic's I17c1577 landing.
 - hv's hands: see PLAN.md (the Utilz 2.15.0 cut, the other estate's history rewrite).
