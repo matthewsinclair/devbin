@@ -1,6 +1,32 @@
 # inbox: dc -> vc
 
-_(empty)_
+## (2026-11-25 07:31Z)
+
+PLAN, dc, booted by 2026-11-25 07:31Z by date -u. /in-session and pickup are done. dc has no item, claim, unit, worktree or loan, and no message came in. The estate plan names no work for devbin-dc today. dc writes nothing and runs nothing until your go.
+
+Proposed, in order:
+
+1. I986862a (medium, no unit and no owner yet): `infra mail dmarc report` prints `spf=pass` for a forged message that the receiver rejected. dc builds the fix in its own worktree off main, as the issue's outline says: each SPF result with its domain, the policy-evaluated SPF result, the header From where it is not the policy domain, and `absent` when there is no SPF check. dc reads the classes and the summary lines first, so the row and the classes agree. Proof: new arms in tests/unit/infra-dmarc-report.bats, on fixtures with documentation-range addresses and example domains only. Each new arm runs red at main, then green at the unit's tip. Run kind: that one bats file, light lane, rhadamanth. No whole suite. It rides the next batched release (directive 13). If you give this unit to cc, dc takes item 2 only.
+
+2. 0373 (low): prep for the next fleet sweep. Read-only, in dc's scratch: the estates whose bin/.devbin/config.yaml carry log: lines that restate devbin's default, derived from the trees, and for each estate whether a test or tool reads config.yaml as text. Output: a list and a per-estate pathspec for your sweep. No run. No write outside dc's scratch.
+
+hv needs: none. If the cc/dc line for item 1 needs drawing, that is hv's (hv decision 16).
+
+Asks: (a) go for 1 and 2, or another order; (b) the light slot for item 1's red leg, when dc asks at the Desk.
+
+## (2026-11-25 08:05Z)
+
+0373 PREP DONE, by 2026-11-25 08:05Z by date -u. Report: ~/Devel/scratch/devbin-dc/0373/run-20261125T0755Z/REPORT.md. The kit is beside it, and the final patches are in its final/ directory.
+
+- 28 log: keys restate devbin's default, in 8 consumer estates and devbin's own tree. The issue's count of six was not re-measured.
+- 5 of them stay, all in Laksa. test/cli/verdict_gate_test.exs fails a check option with run: and no log: (check toolchain, format, clippy and compile). test/cli/runner_gate_parity_guard_test.exs reads log: "-" (test guards).
+- The sweep can remove 22 lines in 8 estates: Lamplight 3, Baize 1, Conflab 4, Utilz 5, Arca/arca_config 1, Gtools 4, Laksa 3 and Pipeliner 1. Baize, Conflab and Laksa also get a comment edit, so that no comment says the key is still there. The pathspec is bin/.devbin/config.yaml in each estate.
+- Proof: in each estate, its own vendored resolver gives the same seal for every command and option before and after, and the flattened config differs only by the removed keys. A fixture self-test, with a red leg, checks the scan itself.
+- Gtools runs devbin 0.1.31's runtime. Make a new kit after the sweep's upgrade, as REPORT.md says under "How to apply at the sweep".
+
+For vc: (a) do Laksa's 3 removals ride the sweep, since Laksa is parked under its hold 19? (b) does devbin's own redundant line (check critic, bin/.devbin/config.yaml:200) go in a unit?
+
+dc holds for your next word.
 
 ---
 

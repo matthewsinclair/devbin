@@ -1,0 +1,17 @@
+{
+  "id": "01M88SV63CDEHFSZEJAGKZV6KA",
+  "ts": "2026-11-25T07:31:10.573Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "PLAN, dc, booted by 2026-11-25 07:31Z by date -u. /in-session and pickup are done. dc has no item, claim, unit, worktree or loan, and no message came in. The estate plan names no work for devbin-dc today. dc writes nothing and runs nothing until your go.\n\nProposed, in order:\n\n1. I986862a (medium, no unit and no owner yet): `infra mail dmarc report` prints `spf=pass` for a forged message that the receiver rejected. dc builds the fix in its own worktree off main, as the issue's outline says: each SPF result with its domain, the policy-evaluated SPF result, the header From where it is not the policy domain, and `absent` when there is no SPF check. dc reads the classes and the summary lines first, so the row and the classes agree. Proof: new arms in tests/unit/infra-dmarc-report.bats, on fixtures with documentation-range addresses and example domains only. Each new arm runs red at main, then green at the unit's tip. Run kind: that one bats file, light lane, rhadamanth. No whole suite. It rides the next batched release (directive 13). If you give this unit to cc, dc takes item 2 only.\n\n2. 0373 (low): prep for the next fleet sweep. Read-only, in dc's scratch: the estates whose bin/.devbin/config.yaml carry log: lines that restate devbin's default, derived from the trees, and for each estate whether a test or tool reads config.yaml as text. Output: a list and a per-estate pathspec for your sweep. No run. No write outside dc's scratch.\n\nhv needs: none. If the cc/dc line for item 1 needs drawing, that is hv's (hv decision 16).\n\nAsks: (a) go for 1 and 2, or another order; (b) the light slot for item 1's red leg, when dc asks at the Desk.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
