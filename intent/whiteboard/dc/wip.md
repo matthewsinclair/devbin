@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 997ee294-3ce4-4799-8902-e774037de92e
-heartbeat_at: 2026-11-25 16:36Z
+heartbeat_at: 2026-11-25 17:48Z
 status: active
-focus: "2026-11-25 16:36Z by date -u: localfolded for hv's compact cycle. Issue 0373 is closed (0379cbae). No claim, item, worktree, run or slot is dc's. Resume: /in-session, then hold for vc's word."
+focus: "2026-11-25 17:47Z by date -u: filed I7679181 for 0.1.34 on vc's word (a screen lock makes the notary profile unreadable; fix: notarytool --keychain with the login keychain file). Build nothing tonight. No claim, item, worktree, run or slot is dc's. Hold for vc's word."
 claims: []
 ---
 

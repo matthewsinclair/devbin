@@ -1,0 +1,15 @@
+{
+  "id": "01M89X46SJFDX7MKKYZMMKM8AJ",
+  "ts": "2026-11-25T17:47:46.358Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I7679181a071c7e3c"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A screen lock makes the notary profile unreadable, so a cut's macOS stage fails at its notary submit when the Mac locks after pre-flight"
+  }
+}
