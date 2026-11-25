@@ -6,6 +6,30 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.33] - 2026-11-25
+
+### Changed
+
+#### a script or a config may get a different result
+
+- **A failed `after:` command stops the `after:` step (issues `I900790a` and `I050cf9c`).** The step runs each `after:` command in order, as before. The first that fails now stops it: the release stands, the commands after it do not run, and the cut names each of them as not run and exits 1. Before, the next command still ran, eg a formula publish after a failed dist publish.
+  - The remedy prints the failed command and each command not run, one a line, to run by hand from the project root, which it names.
+  - Each line carries `DEVBIN_RELEASE_VERSION` and `DEVBIN_RELEASE_TARGET_TAG` with the values the cut gave the command, and each word quoted with `printf %q`, so a shell runs the same words with the same target.
+  - A line does not carry the confirm step's yes (`DEVBIN_RELEASE_CONFIRMED`): a hand run is a new run, and a command that asks asks the person who runs it.
+
+#### devbin's own tree
+
+- **devbin's own `check critic` drops a `log:` key that restated the default (issue `0373`).** An override of a catalogue gate's `run:` takes the row's suffix, so the gate still seals under `CRITIC`.
+
+### Fixed
+
+#### reaches every project
+
+- **The dmarc report names the domain of each SPF check and the receiver's DMARC verdicts (issue `I986862a`).** Each row prints each SPF check as `spf=<result> d=<domain>`, as each DKIM signature prints its `d=` and `s=`. A record with no SPF check prints `spf=absent`, where it printed `spf=` with nothing after it. The row then prints `dkim_aligned=` and `spf_aligned=`, the receiver's verdicts: each passes only for an identifier that authenticated and aligned with the header From. So an SPF pass for a forger's own domain reads `spf=pass` beside `spf_aligned=fail`. A row whose header From is not the policy domain, eg a subdomain under the policy's `sp=`, names it as `from=`. The sections and the summary lines do not change. A script that reads the row by its fields gets the new fields.
+- **Three shipped comments name no other tool of the owner's (issue `I48d1c19`).** Comments in `lib/cmd/release`, `lib/cmd/formula` and `lib/tool` named another of the owner's tools as the case each rule came from. Each now gives the rule's reason alone. No code changes.
+
+Full note: [RELEASES/0.1.33.md](RELEASES/0.1.33.md)
+
 ## [0.1.32] - 2026-11-24
 
 ### Added
