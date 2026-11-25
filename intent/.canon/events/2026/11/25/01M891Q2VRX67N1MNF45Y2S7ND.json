@@ -1,0 +1,16 @@
+{
+  "id": "01M891Q2VRX67N1MNF45Y2S7ND",
+  "ts": "2026-11-25T09:48:44.792Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-25 11:34Z by date -u (decisions 305 and 306): the estate is folded and quiet for hv's second compact. The Desk holds no ask, grant or run, and vc's waiters are stopped. Control is devbin-vc's. Resume from ~/Devel/scratch/estate-plan/PLAN.md, its 'second fold' section: (1) devbin 0.1.33: the kovacs leg on hv's word (dc's kit ~/Devel/scratch/devbin-dc/pc0133/kovacs/, run-kovacs.sh 51b5ea4e2345), then the dry run, then vc cuts, pushes and sweeps; (2) Intent's dc clippy, then its batch gate; (3) the second workstream's review-set bank; (4) Gtools' I42c1317 landing on hv's word and ic's suite; (5) Utilz: arca_swift's push on hv's go. Each seat waits for its vc's word, and each vc for devbin-vc's."
+  }
+}

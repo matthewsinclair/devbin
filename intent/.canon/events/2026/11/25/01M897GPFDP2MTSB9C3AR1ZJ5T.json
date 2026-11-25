@@ -1,0 +1,15 @@
+{
+  "id": "01M897GPFDP2MTSB9C3AR1ZJ5T",
+  "ts": "2026-11-25T11:30:06.958Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-25 11:30Z by date -u, on rhadamanth-sysadm's options for rhadamanth's load (its read-only finding: no Spotlight storm; the steady cost is the Claude status line, npm exec ccstatusline@2.0.12 about 2.4 times a second across about 30 sessions, about 2 cores), hv's words: '> B, D later / Yes, agree. Do that.' B: ccstatusline runs from an installed binary, not npm exec on each refresh. It is a Molt-matts Claude config change, made by the Molt team as its first step after the cycle of decision 305. D: rhadamanth reboots later, at a quiet time hv picks, after the day's runs. rhadamanth-sysadm prepares the steps, and every session restarts. Executed after: rhadamanth-sysadm reports B already done on hv's word in its window (ccstatusline 2.0.12 as an npm global, Molt-matts 2acfbbe runs it before npx, npm exec spawns from 24 to 0, load to about 9; Molt-matts is 1 ahead, its push with hv). C was also done: hv excluded Repositories from Spotlight. D stands for a quiet time."
+  }
+}

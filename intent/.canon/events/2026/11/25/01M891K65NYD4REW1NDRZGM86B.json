@@ -1,0 +1,15 @@
+{
+  "id": "01M891K65NYD4REW1NDRZGM86B",
+  "ts": "2026-11-25T09:46:37.109Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 09:46Z by date -u, after vc's sync of every vc and sc that followed the compacts and the account switch (hv's words: 'Ok, everyone should have banked and folded and now be back from their compacts. Also, /rc should be on with everyone, too. Sync with all VCs and SCs and let me know where we are up to.'). Each is hv's choice of vc's option: (1) 'Resume all (Recommended)': each vc gives its seats their next step, and the Desk grants by decision 286's priority. Utilz's spike waits for hv's 'ready'. Every other cut and push waits for hv's word. (2) devbin 0.1.33, 'Cut on green (Recommended)': vc lands the release note, dc re-derives the pre-cut list, the pre-cut runs (heavy, bats lane), then the dry run. On green, vc cuts, pushes and sweeps. A red before the tag stops and waits for hv. (3) Pushes, 'Molt: 2 fold commits' and 'AE: 8 commits': molt-vc pushes e9caf1d9 and 096c94d5 to local and upstream, and agentic-engineering-vc pushes main cbd24b85 to both remotes, each fast-forward only. Gtools' push to local stays hv's hands. (4) The second workstream's 0381, 'B2, report in rewrite (Recommended)': B2 lists the unconfirmed cause OPEN with its question to the client, and the tier passes. The old measure report goes into hv's history rewrite."
+  }
+}

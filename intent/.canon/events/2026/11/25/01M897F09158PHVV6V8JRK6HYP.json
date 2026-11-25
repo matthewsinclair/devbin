@@ -1,0 +1,15 @@
+{
+  "id": "01M897F09158PHVV6V8JRK6HYP",
+  "ts": "2026-11-25T11:29:11.457Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-25 11:29Z by date -u, hv's words: 'Ok, context is pretty high everywhere now for all Claudes VCs and their teams. Please corral an estate wide localfold+compact cycle for me. I'll run compact in each Claude when they are folded and quiesced. Once everyone is quiesced, I can compact and then we can continue on the bounce.' The second cycle today, run as decision 303's: the Desk grants nothing new from 2026-11-25 11:29Z. A run that started runs to its END. Each queued ask that has not started is withdrawn by its asker and asked again after the cycle. Each vc corrals its own seats to localfold (no release), sets a one-line resume focus, goes quiet and reports to devbin-vc. vc folds last and gives hv the list. Still for hv after the cycle: devbin 0.1.33's kovacs leg (the dry run's pre-flight red; dc's kit is ready), arca_swift's main push (Utilz 0114, step 1), and the status line's options B and D."
+  }
+}
