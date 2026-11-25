@@ -3071,17 +3071,54 @@ $output"
   assert_output_contains "v1.0.1 is released"
 }
 
-@test "a failing after: command leaves the release published, does not stop the next, and exits 1 saying so" {
+# A FAILURE STOPS THE STEP (issue I900790a). A later after: command can depend
+# on an earlier one, as a formula publish does on the publish of its asset, so
+# none runs past a failure, and each is named, in order, as not run.
+@test "I900790a: a failing after: command leaves the release published, stops the step so no later command runs, names each in order as not run, and exits 1" {
   proj="$(ci_project "  after:
     - false
-    - touch $DEVBIN_TEST_TMPDIR/after.two")"
+    - touch $DEVBIN_TEST_TMPDIR/after.two
+    - touch $DEVBIN_TEST_TMPDIR/after.three")"
   run release_in "$proj" v1.0.1 --yes
   [ "$status" -eq 1 ] || fail "want 1, got $status: $output"
   assert_state after FAILED
-  [ -e "$DEVBIN_TEST_TMPDIR/after.two" ] || fail "one failing after: stopped the next"
+  [ ! -e "$DEVBIN_TEST_TMPDIR/after.two" ] && [ ! -e "$DEVBIN_TEST_TMPDIR/after.three" ] ||
+    fail "a command after the failed one ran: $output"
   assert_output_contains "after: false failed"
+  # One line each, in order, so a line pasted into a shell runs one command.
+  local two three
+  two="$(grep -n -F "release: not run: " <<<"$output" | grep -F "after.two" | cut -d: -f1)"
+  three="$(grep -n -F "release: not run: " <<<"$output" | grep -F "after.three" | cut -d: -f1)"
+  [ -n "$two" ] && [ -n "$three" ] && [ "$((two + 1))" -eq "$three" ] ||
+    fail "each command not run is not named on a line of its own, in order: $output"
   assert_output_contains "published"
   assert_released "$proj"
+}
+
+# A HAND RUN IS THE CUT'S RUN (issue I050cf9c). The remedy prints each command
+# left to a hand run as a shell line: the release's target in front, as the cut
+# hands it, and each word quoted, since the cut never evaluates a line's words
+# and a shell would. The word here holds a `$`, a `;` and a quote.
+@test "I050cf9c: an after: line left to a hand run, run by bash from the root the remedy names, gets the cut's target and its words as literal words" {
+  local rec="$DEVBIN_TEST_TMPDIR/hand.rec" word='a$b;c"d' hand root
+  printf '#!/bin/sh\nprintf "%%s\\n" "$DEVBIN_RELEASE_VERSION" "$DEVBIN_RELEASE_TARGET_TAG" "$@" >"%s"\n' "$rec" >"$DEVBIN_TEST_TMPDIR/rec.sh"
+  proj="$(ci_project "  after:
+    - false
+    - sh $DEVBIN_TEST_TMPDIR/rec.sh $word two")"
+  run release_in "$proj" v1.0.1 --yes
+  [ "$status" -eq 1 ] || fail "want 1, got $status: $output"
+  hand="$(awk 'index($0, "release: not run: ") == 1 { sub(/^release: not run: /, ""); print }' <<<"$output")"
+  [ -n "$hand" ] || fail "the remedy prints no line to run by hand: $output"
+  root="$(cd "$proj" && pwd -P)"
+  assert_output_contains "from $root, run by hand"
+  grep -qxF "release: failed: DEVBIN_RELEASE_VERSION=1.0.1 DEVBIN_RELEASE_TARGET_TAG=v1.0.1 false" <<<"$output" ||
+    fail "the failed command is not printed as its own line: $output"
+  rm -f "$rec"
+  (cd "$root" && bash -c "$hand") || fail "the printed line did not run: $hand"
+  [ "$(cat "$rec")" = "1.0.1
+v1.0.1
+$word
+two" ] || fail "the hand run did not get the cut's target and its literal words: $(cat "$rec")"
 }
 
 # THE SEAL CLOSES ON EVERY PATH A CUT ENDS ON (issue 0297): an after: command
