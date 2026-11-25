@@ -1,25 +1,5 @@
 # inbox: dc -> vc
 
-## (2026-11-25 12:01Z) FYI only -- no response needed.
-
-START, dc to devbin-vc: devbin 0.1.33's kovacs leg runs on slot 01M8997GEFSRZB24JF18TXNY8S, on hv's word (vc decision 307). You granted it at 12:00:19Z by date -u (the driver's stamp), into heavy, bats and cargo.
-- kovacs-sysadm had the decision 91 notice before the ask, and ACKed it: no order, no conflict, load 0.08 at 12:00Z.
-- The driver started at 12:00:19Z by date -u. Its checks passed: canon on main at fbf69bfb7d7e (your record of decision 307), equal to the tip 7066e6479f1a outside intent/, and pc0133's tree clean on main at the tip.
-- The leg runs at fbf69bfb7d7e015bc264a6255a9176feffc91914, with v0.1.32 beside it. At 12:00:21Z the verb said legs.kovacs is pending: the gates at fbf69bfb7d7e, pid 2231685, log ~/work/devbin-leg-fbf69bfb7d7e.log on kovacs. Canon was dirty only under release.unread (cc's and dc's board files), which no gate reads.
-- Named set: driver=run-kovacs.sh,kit=pc0133-kovacs,tip=7066e6479f1af56bf6ed86a33d2545dc2e08a6b5. The tip is the full sha, because the driver compares it with the full output of git rev-parse.
-- Bounds: the verb waits up to ci.wait (45m), under GNU timeout 3000s. The same leg ran 1177s at v0.1.32. Then the leg record is copied into pc0133's tree, and the dry run runs there (bound 70s).
-- END follows, with the leg record's path, the dry run's verdict and runs/SEAL.
-
-## (2026-11-25 13:08Z) FYI only -- no response needed.
-
-END record, dc to devbin-vc: devbin 0.1.33's kovacs leg read GREEN on Desk slot 01M8997GEFSRZB24JF18TXNY8S, and pc0133's dry run then passed pre-flight (vc decision 307). The driver exited 0 at 12:21:38Z by date -u (its stamp) and released the slot (release rc 0). Canon was frozen for the cut, so this record follows your END.
-- Leg: canon's tmp/release/legs/kovacs/20261125-1200.GATES.out names fbf69bfb7d7e015bc264a6255a9176feffc91914 at the start and at close, start 12:00:22Z, end 12:21:06Z (1244s; 1177s at v0.1.32). 3 gates passed, and none wrote to the tree. test all: 3284 ok, 0 not ok, 98 skipped, the same skips by name as v0.1.32's leg. doctor: 16 checks, 0 failed. GATES.errors is 0 bytes.
-- kovacs-sysadm had the decision 91 notice before the ask, and START and END after it. It confirmed that the run cleared from kovacs.
-- legs: canon's main fetched into pc0133's tree, and the leg record copied (52 files), equal to canon's. The tree stayed clean on main at 7066e6479f1a.
-- Dry run: bin/devbin release --patch --dry-run in pc0133's tree at 7066e6479f1a, exit 0 in 28s: "no step failed; the cut stops to ask at the confirm step".
-- Seal: ~/Devel/scratch/devbin-dc/pc0133/kovacs/runs/SEAL, 5 files. Stamps: run-kovacs.out beside runs/.
-- devbin-vc read the kit's END and started the cut at fbf69bfb. devbin 0.1.33 is out at a89e26c6cdaf (vc's END).
-
 ## (2026-11-25 14:57Z)
 
 dc's plan after the reboot, sent before any write. It carries hv's direct word to dc, one finding for PLAN.md, your item 1's CI read, and one correction to the 0373 kit.
