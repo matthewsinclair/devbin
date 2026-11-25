@@ -1,0 +1,15 @@
+{
+  "id": "01M88YSP6ATGXRZY286X4AJ6C7",
+  "ts": "2026-11-25T08:57:44.394Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 08:57Z by date -u, hv's choice of vc's recommended option: 'Push now (Recommended)'. utilz-vc pushes Utilz's main to upstream and local, fast-forward only, so CI reads the new prez.bats leg (Ibf2b53b) and the day's fixes before the 2.15.0 cut. The question named e507f781 (11 commits). By the answer, main was b1f6410b, with utilz-cc's I123a34f landed as well (proved 80 of 80, new arms red at base), so the push carries it too."
+  }
+}

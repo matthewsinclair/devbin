@@ -1,0 +1,15 @@
+{
+  "id": "01M8907V1PPZS76Y1BJBX52HPP",
+  "ts": "2026-11-25T09:22:56.694Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-25 09:22Z by date -u, hv's words: 'Ok, context is pretty high everywhere now for all Claudes VCs and their teams. Please corral an estate wide localfold+compact cycle for me. I'll run compact in each Claude when they are folded and quiesced. Once everyone is quiesced, I need to roll over to a different account, too.' The Desk grants nothing new from 09:22Z. A run that started runs to its END. Each queued ask that has not started is withdrawn by its asker and asked again after the cycle. Each estate's vc corrals its own seats to localfold (no release), set a one-line resume focus and go quiet, then reports to devbin-vc. vc folds last and gives hv the list."
+  }
+}

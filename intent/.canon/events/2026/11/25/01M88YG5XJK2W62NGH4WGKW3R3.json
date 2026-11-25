@@ -1,0 +1,16 @@
+{
+  "id": "01M88YG5XJK2W62NGH4WGKW3R3",
+  "ts": "2026-11-25T08:52:32.818Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-25 09:38Z by date -u (decision 303): the estate is folded and quiet for hv's compact and account switch. The Desk holds no ask, grant or run, and vc's waiters are stopped. Control is devbin-vc's; after a restart its row reads ORPHANED, and vc needs hv's word to take it. Resume from ~/Devel/scratch/estate-plan/PLAN.md, its 2026-11-25 fold section: (1) devbin 0.1.33: put the cut to hv (note draft ~/Devel/scratch/devbin-vc/20261125/0.1.33.md; dc's kit pc0133, derived at 63f0b1e8); (2) Gtools: three READYs and ic's suite, each asked again; (3) Intent: cc's b2 bank, then ic's efe0 and the clippy runs; (4) Utilz: CI's prez.bats verdict, then hv's spike and probe. Each seat waits for its vc's word, and each vc waits for devbin-vc's word."
+  }
+}

@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "3c1cce6f-e5ad-47a3-854c-d5c4c9189494",
-    "heartbeat_at": "2026-11-25T07:33:50.242Z",
+    "heartbeat_at": "2026-11-25T09:38:25.245Z",
     "status": "active",
-    "focus": "2026-11-25 07:33Z by date -u: the Desk, held for hv's kickoff (decision 297). devbin's seats and the estates' vcs hold; vc collects one plan from each and puts them to hv together.",
+    "focus": "2026-11-25 09:38Z by date -u: LOCALFOLDED for hv's compact and account switch (decision 303). The estate is folded and quiet, and the Desk holds nothing. Resume at PLAN.md's 2026-11-25 fold section: put devbin 0.1.33's cut to hv first.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -6287,10 +6287,10 @@
       "node": "vc",
       "kind": "doing",
       "seq": 91,
-      "text": "THE DESK, 2026-11-25 07:33Z by date -u (decision 297): control is devbin-vc's, the waiter is armed, and no slot is asked or granted. Every estate holds for hv's kickoff, which devbin-vc relays to each estate's vc. Plans in: devbin-dc. Asked for: devbin-cc, intent-vc, agentic-engineering-vc. At the kickoff, vc puts the plans to hv together, with a proposed order and I986862a's owner (cc or dc). The estate plan is ~/Devel/scratch/estate-plan/PLAN.md, devbin-vc its only writer.",
+      "text": "THE DESK, 2026-11-25 09:38Z by date -u (decision 303): the estate is folded and quiet for hv's compact and account switch. The Desk holds no ask, grant or run, and vc's waiters are stopped. Control is devbin-vc's; after a restart its row reads ORPHANED, and vc needs hv's word to take it. Resume from ~/Devel/scratch/estate-plan/PLAN.md, its 2026-11-25 fold section: (1) devbin 0.1.33: put the cut to hv (note draft ~/Devel/scratch/devbin-vc/20261125/0.1.33.md; dc's kit pc0133, derived at 63f0b1e8); (2) Gtools: three READYs and ic's suite, each asked again; (3) Intent: cc's b2 bank, then ic's efe0 and the clippy runs; (4) Utilz: CI's prez.bats verdict, then hv's spike and probe. Each seat waits for its vc's word, and each vc waits for devbin-vc's word.",
       "state": "live",
       "recorded_at": "2026-11-24T12:14:14.001Z",
-      "edited_at": "2026-11-25T07:33:49.943Z"
+      "edited_at": "2026-11-25T09:38:24.964Z"
     },
     {
       "node": "vc",
@@ -6305,7 +6305,8 @@
       "kind": "decision",
       "seq": 292,
       "text": "hv's D5, 2026-11-24 11:45Z by date -u (the estate plan): Intent leaves issue 0326's adopters. This supersedes decision 150 (2)'s clause 'and Intent too while it vendors devbin'. Intent keeps intent use and intent install as its own (Intent's hv decision 36). Record now: 0326's Resolution says so (devbin-cc). Doc: dev-opt-brew.md lines 5 and 150 and its Intent cases are a unit after 0.1.31, whose scope is frozen.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-25T09:22:56.227Z",
       "recorded_at": "2026-11-24T12:23:30.301Z"
     },
     {
@@ -6329,7 +6330,8 @@
       "kind": "decision",
       "seq": 295,
       "text": "hv in vc's window, read by 14:50Z by date -u, and given first-hand to every seat: 'I have pre-approved all checkins, commits, pushes, cuts, and brew updates, etc at devbin-vc. When it says go, go. Ok?' So each seat runs the step on devbin-vc's go, with no further word. Recorded first-hand by intent-vc (hv decision 96, which allows 3.5.3's --no-confirm), agentic-engineering-vc (its decision 25), utilz-vc (hv decision 20) and molt-vc. A seat whose session's own classifier refuses a step (Utilz's push) keeps it as a ! line for hv.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-25T09:22:56.445Z",
       "recorded_at": "2026-11-24T14:50:35.702Z"
     },
     {
@@ -6381,6 +6383,23 @@
       "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 08:46Z by date -u, hv's choice of vc's recommended option, on Gtools cc hold 34 put again with cc's disagreement in cc's own words: 'Four in code, refresh 3 (Recommended)'. gtools-cc fixes the site header, the Office and PDF reading in the commit gate and the two tracebacks as one unit (M, one cargo and heavy run), and closes finding 3 with one gtools cms refresh per folder site and no code. hv gave the same answer in gtools-vc's window (Gtools hv decision 63, 08:37Z by its date -u). Desk at 08:46Z: granted intent-dc's build all (cargo, heavy), devbin-cc's I48d1c19 scan arms (light), gtools-ic's audit retry (light), utilz-cc's I123a34f bats (bats, heavy); held intent-cc's clippy (next on cargo) and utilz-ic's defects run (needs cargo and bats).",
       "state": "live",
       "recorded_at": "2026-11-25T08:47:04.986Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 302,
+      "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 08:57Z by date -u, hv's choice of vc's recommended option: 'Push now (Recommended)'. utilz-vc pushes Utilz's main to upstream and local, fast-forward only, so CI reads the new prez.bats leg (Ibf2b53b) and the day's fixes before the 2.15.0 cut. The question named e507f781 (11 commits). By the answer, main was b1f6410b, with utilz-cc's I123a34f landed as well (proved 80 of 80, new arms red at base), so the push carries it too.",
+      "state": "archived",
+      "archived_at": "2026-11-25T09:38:24.610Z",
+      "recorded_at": "2026-11-25T08:57:44.394Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 303,
+      "text": "hv in vc's window, read by 2026-11-25 09:22Z by date -u, hv's words: 'Ok, context is pretty high everywhere now for all Claudes VCs and their teams. Please corral an estate wide localfold+compact cycle for me. I'll run compact in each Claude when they are folded and quiesced. Once everyone is quiesced, I need to roll over to a different account, too.' The Desk grants nothing new from 09:22Z. A run that started runs to its END. Each queued ask that has not started is withdrawn by its asker and asked again after the cycle. Each estate's vc corrals its own seats to localfold (no release), set a one-line resume focus and go quiet, then reports to devbin-vc. vc folds last and gives hv the list.",
+      "state": "live",
+      "recorded_at": "2026-11-25T09:22:56.694Z"
     }
   ],
   "sent": [
@@ -9611,6 +9630,51 @@
       "id": "01M7VTMVDEJ2VV2TX8KQ0BABKN",
       "sender": "cc",
       "handled_at": "2026-11-20T06:39:16.741Z"
+    },
+    {
+      "id": "01M88SV63DNNEVHKVEEMP573BQ",
+      "sender": "dc",
+      "handled_at": "2026-11-25T09:36:07.102Z"
+    },
+    {
+      "id": "01M88T0J8C4BF39E1J3C2VQNTK",
+      "sender": "cc",
+      "handled_at": "2026-11-25T09:36:07.309Z"
+    },
+    {
+      "id": "01M88VTFNPAWTCN4YM2RN83BD3",
+      "sender": "dc",
+      "handled_at": "2026-11-25T09:36:07.102Z"
+    },
+    {
+      "id": "01M88WN6NFHYQ75HGW85C14WXV",
+      "sender": "dc",
+      "handled_at": "2026-11-25T09:36:07.102Z"
+    },
+    {
+      "id": "01M88XN3PPVB5X904486SF214P",
+      "sender": "dc",
+      "handled_at": "2026-11-25T09:36:07.102Z"
+    },
+    {
+      "id": "01M88ZAASANX0FVB5ZSJG6FH80",
+      "sender": "dc",
+      "handled_at": "2026-11-25T09:36:07.102Z"
+    },
+    {
+      "id": "01M88ZJADG9CGBTKKVX3EK8SS1",
+      "sender": "dc",
+      "handled_at": "2026-11-25T09:36:07.102Z"
+    },
+    {
+      "id": "01M8902VGPRYZRQHWPSJ2CR72N",
+      "sender": "dc",
+      "handled_at": "2026-11-25T09:36:07.102Z"
+    },
+    {
+      "id": "01M8904G39FQDG2GXRQEJZ5EYV",
+      "sender": "dc",
+      "handled_at": "2026-11-25T09:36:07.102Z"
     }
   ]
 }
