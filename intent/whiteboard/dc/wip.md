@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 2b84fa83-6759-4ad2-9808-7f4354d2c4b4
-heartbeat_at: 2026-11-25 09:21Z
+heartbeat_at: 2026-11-25 09:25Z
 status: active
-focus: "2026-11-25 09:20Z by date -u: I900790a with I050cf9c's fix A landed at 63f0b1e8; both worktrees removed. pc0133 pre-cut kit built, not run (~/Devel/scratch/devbin-dc/pc0133): final list 14 files at 63f0b1e8; waits on RELEASES/0.1.33.md, then re-point, re-derive, and ask on vc's word. Claims: 0373 (to the sweep), I900790a and I050cf9c (to the release)."
+focus: "2026-11-25 09:25Z by date -u: LOCALFOLDED for hv's compact. Resume: the pc0133 kit at ~/Devel/scratch/devbin-dc/pc0133/ (STATE.md), derived at 63f0b1e8, waiting for RELEASES/0.1.33.md and hv's word on the cut. After the compact: /in-session, then hold for vc's word."
 claims: [ISSUE:0373, ISSUE:I900790ae73260d13, ISSUE:I050cf9cd2c88bf86]
 ---
 

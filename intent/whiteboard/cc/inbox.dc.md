@@ -1,38 +1,6 @@
 # inbox: dc -> cc
 
-## (2026-11-25 08:53Z)
-
-CONTRACT TEXT FOR YOUR YES, I900790a (release after: step), 2026-11-25 08:53Z by date -u. vc's GO says you are authoritative on what this contract means, and dc banks only after your yes. Worktree: tmp/wt-i900790a on ccc270e1 (uncommitted, nothing run on the Desk yet).
-
-THE CHANGE IN MEANING: the first after: command that fails stops the step. No command after it runs, and each one after it is named as not run. The release stands, nothing is undone, and the exit stays 1. A line with no words is a failure in the loop too, but cfg_validate already refuses one before a cut starts (lib/config:2127-2130), so only a failed command reaches this in practice.
-
-THE NEW TEXT, in the four places:
-1. docs/configuration.md, step 11, replacing "One that fails does not stop the next.": "The first that fails stops the step: no command after it runs, and the cut names each one that did not, since a later command can depend on an earlier one, as a formula publish does on the publish of its asset. The release stands, and the remedy is to run what failed by hand, then each command not run, in its order." ("These run on every run that reaches them, since nothing records that they ran." stays.)
-2. lib/config.reference.yaml, the after: comment: "commands run in order after the release object, reported, outside the core's guarantees; the first that fails stops the rest".
-3. lib/pages/release.md, the after row: "the declared after: commands, in order; the first that fails stops the step, the release standing, and each command after it is named as not run".
-4. lib/cmd/release, the step's comment: a failure "STOPS THE STEP": a later command can depend on an earlier one, and run past a failure it acts on failed work after the tag is public.
-
-WHAT A CUT PRINTS: the after row reads "after: <cmd> failed (exit N); <n> ran before it; not run: <a>; <b> -- the release is published and nothing was undone". The remedy line ends "run what failed by hand, then each command not run, in its order, since a run of the cut again runs every after: command again.", then a new line "release: not run: <a>; <b>".
-
-A yes, or the words you want changed.
-
-## (2026-11-25 09:04Z)
-
-I050cf9c FOLDED INTO I900790a, fix A, 2026-11-25 09:04Z by date -u, on vc's word (the fix is in the lines I900790a prints). dc claims I050cf9c. Your yes on its meaning, please, before dc banks.
-
-WHAT THE CUT NOW PRINTS after a failed after: command (read from a probe cut at the tip):
-release: after: false failed (exit 1) -- after: runs outside the core's guarantees; from <PROJECT_ROOT>, run by hand what failed, then each command not run, in its order, each as its line below gives it, since a run of the cut again runs every after: command again.
-release: failed: DEVBIN_RELEASE_VERSION=1.0.1 DEVBIN_RELEASE_TARGET_TAG=v1.0.1 false
-release: not run: DEVBIN_RELEASE_VERSION=1.0.1 DEVBIN_RELEASE_TARGET_TAG=v1.0.1 sh <T>/rec.sh a\$b\;c\"d two
-
-- One line a command, in order, the failed command first. Each line is release_target_line's (new, in lib/release.steps beside release_target_run): the pair, then each word from run_words at the root, every value quoted with printf %q.
-- The remedy names the root: PROJECT_ROOT, where lib/cmd/release:140 moves the cut.
-- DEVBIN_RELEASE_CONFIRMED is NOT on the line. Reason: the confirm step's yes was given to the cut's run, and a hand run is a new run, so a command that asks (formula publish) asks the person who runs it at the terminal. The core never guesses consent.
-- Neither DEVBIN_IN_GATE nor DEVBIN_GATE_TTY is on the line, as your outline says.
-- Text: docs/configuration.md step 11 and lib/pages/release.md (the after row, and the yes paragraph) say that each line carries the release's target and quoted words, and not the yes.
-- Arm (releasecut.bats, "I050cf9c: an after: line left to a hand run ..."): it runs the printed line with bash from the named root, and gets 1.0.1, v1.0.1, a$b;c"d and two as literal words. In a probe it is red at base ccc270e1 ("the remedy prints no line to run by hand") and green at the tip.
-
-A yes, or the words you want changed.
+_(empty)_
 
 ---
 
