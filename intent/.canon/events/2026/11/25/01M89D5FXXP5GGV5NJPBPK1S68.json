@@ -1,0 +1,16 @@
+{
+  "id": "01M89D5FXXP5GGV5NJPBPK1S68",
+  "ts": "2026-11-25T13:08:51.261Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, closed out for hv's reboot (decision 309), 2026-11-25 13:08Z by date -u: the Desk holds no ask, grant or run; vc's waiters are stopped; control is released at session end. devbin 0.1.33 is out (a89e26c6cdaf, tag v0.1.33). After the reboot: re-take control on hv's word (decision 153), then resume from ~/Devel/scratch/estate-plan/PLAN.md, its close-out section first: (1) devbin 0.1.33's sweep (Intent frozen until its 3.5.4 cut; Gtools frozen until I17c1577 lands; Utilz, Molt and every other estate swept), then brew on rhadamanth, gyges (gyges-sysadm) and kovacs (on hv's go), and main's CI run 45620203861 read; (2) Intent: dc's clippy (cargo), then its gate and the pre-approved 3.5.4 cut (hv types the release); (3) the second workstream: dc's review-set bank, then cc's bank 3, asked again with new ids; (4) Gtools: cc's I42c1317 landing, then ic's I17c1577 suite (pre-approved on green); (5) Utilz: hv's arca_swift line, its CI, hv's 0.3.0 tag. Each seat waits for its vc's word, and each vc for devbin-vc's."
+  }
+}

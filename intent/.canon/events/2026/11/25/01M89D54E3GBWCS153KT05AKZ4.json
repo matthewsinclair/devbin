@@ -1,0 +1,15 @@
+{
+  "id": "01M89D54E3GBWCS153KT05AKZ4",
+  "ts": "2026-11-25T13:08:39.491Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-25 12:55Z by date -u, hv's words: 'Ok, now I need to move so I want to start to bring everyone in to a safe point to close and shut down as I need to reboot. So this is a full close out with Claudes doing aggressive localfolds, and VCs doing aggressive globalfolds. Once banked and folded, everyone should stay quiet until we reboot.' Then: 'Then LMK when everyone is done. And that involves closing out any running shelss and processes, too.' This brings rhadamanth's reboot (D, decision 306) forward from the evening close. The Desk withdrew the four held asks at 2026-11-25 12:54Z by date -u (the second workstream's review-set bank 01M899DFSDVQSE4T3TSNJX4Z7X and bank 3 01M89A1K04TA5ZSZNNGNR3Z4TB; Gtools' I42c1317 landing 01M899VQ6RT31AJ4CSKWD80KEC and I17c1577 suite 01M899GSCMMXKMZ6KKGHDXWS30); each asks again after the reboot. devbin 0.1.33's cut, in its kovacs leg, runs to its END; its sweep waits until after the reboot (intent-vc: FREEZE, sweep Intent after 3.5.4; utilz-vc: SWEEP). Every seat banks, folds (vcs globalfold), closes every shell and process it started, releases its board and reports to devbin-vc, then stays quiet. Executed: devbin 0.1.33 released at 13:06:52Z by date -u (release commit a89e26c6cdaf, tag v0.1.33 on local and upstream, every leg green, release object made, formula published); the estates reported folded, released and quiet by 2026-11-25 13:08Z by date -u (~/Devel/scratch/devbin-vc/20261125/closeout-tally.md); devbin-vc stopped its own ten orphan log watchers of 12 and 13 Nov. Also: hv chose 'Sync, keep the remotes' in the sc's window (the client remote stays in the Intent and devbin checkouts; the sc synced the client's copies to Intent 3.5.3 and devbin 0.1.32), so the push hold lifted; devbin-vc pushes devbin to named remotes only. kovacs-sysadm reports that an npm global install conflicts with kovacs's rule that software comes from Homebrew, so the kovacs status line route goes back to hv."
+  }
+}

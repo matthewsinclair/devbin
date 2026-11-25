@@ -1,5 +1,5 @@
 ---
-verblock: "24 Nov 2026:v3.112: Matthew Sinclair - after devbin 0.1.32 and devvm 0.5.4"
+verblock: "25 Nov 2026:v3.113: Matthew Sinclair - closed out for rhadamanth's reboot, after devbin 0.1.33"
 ---
 
 # Work In Progress
@@ -8,10 +8,12 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- The estate plan: `~/Devel/scratch/estate-plan/PLAN.md`, its "End of day 2026-11-24" section first. devbin-vc is its only writer and holds the Pen and the Desk (vc decisions 294 to 296). Read it first after a compact.
-- The Desk: grant a run only when it can tell us something we do not know (hv, 2026-11-24 18:00Z).
+- The estate plan: `~/Devel/scratch/estate-plan/PLAN.md`, its close-out section first, then its unified plan. devbin-vc is its only writer and holds the Desk. Read it first after the reboot.
+- The Desk: re-take control on hv's word after the reboot, then grant a run only when it can tell us something we do not know (hv, 2026-11-24 18:00Z).
 
 ## TODO
 
-- The 0.1.32 sweep is committed in 25 estates (`fleet upgrade --apply --commit`) and pushed in all but Gtools-geodica, which waits for geodica-estate's other work. Gtools takes 0.1.32 in ic's I17c1577 landing.
-- hv's hands: see PLAN.md (the Utilz 2.15.0 cut, the other estate's history rewrite).
+- devbin 0.1.33's sweep (`fleet upgrade --apply --commit`): Intent frozen until its 3.5.4 cut, Gtools frozen until I17c1577 lands, every other estate swept. 0373's fleet part and Laksa's 3 removals are decided at the sweep. Then brew on rhadamanth, gyges (gyges-sysadm) and kovacs (on hv's go).
+- Read main's CI run 45620203861 on a89e26c6 (the v0.1.33 push).
+- 0326 waits for its consumers: cldr#0001 and pplr#0001 (hv's T10 live proofs) and ccusage#0007.
+- hv's hands: see PLAN.md.
