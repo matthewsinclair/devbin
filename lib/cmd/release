@@ -2540,8 +2540,8 @@ object_title() {
 # terminal, which runs every check render makes of the templates that needs no
 # tag and writes nothing. Prints the refusal and returns 1 when it fails.
 #
-# A CUT FOUND ITS FORMULA COULD NOT RENDER ONLY ONCE IT WAS PUBLIC: Molt's 1.4.7
-# tagged, pushed and made its release object, and then its after: step's
+# A CUT FOUND ITS FORMULA COULD NOT RENDER ONLY ONCE IT WAS PUBLIC: a tool's
+# cut tagged, pushed and made its release object, and then its after: step's
 # formula publish refused a template holding no @@INSTALL@@, leaving a published
 # release and no formula. Nothing such a refusal turns on depends on the tag, so
 # pre-flight asks it before anything is stamped.
