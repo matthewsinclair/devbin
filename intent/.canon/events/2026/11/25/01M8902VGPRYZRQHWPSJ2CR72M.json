@@ -1,0 +1,17 @@
+{
+  "id": "01M8902VGPRYZRQHWPSJ2CR72M",
+  "ts": "2026-11-25T09:20:13.334Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "PC0133 KIT BUILT, 2026-11-25 09:20Z by date -u, read-only, nothing run: ~/Devel/scratch/devbin-dc/pc0133/ (STATE.md first). Both I900790a worktrees are removed after the four checks; the bank keeps 38d3afc4, and dc's archive keeps the red commit 03f1d541.\n\n- Tree: a fresh clone (--no-local, maintenance.auto false, gc.auto 0), pointed at main 63f0b1e8, with canon's local and upstream remotes and canon's leg record.\n- DERIVED LIST, a PREVIEW at 63f0b1e8 against v0.1.32: 14 files, 865 @test lines of the suite's 3284. (a) test scans, as its own phase. (b) updatenotice. (c) infra-dmarc-report and releasecut. (d) the callers of the dmarc program and of release: infra, ci-workflow, contract, help, release, releasecore, doctor, machinepointer, releaseattach, releasestatus and surfaces. No file carries a serial tag. precut.conf names each file's reasons and each script's source.\n- The list holds nothing for 0373 (devbin's own config is text) or I48d1c19 (comments only). Each was proved in its own unit.\n- Run order: scans; bsd (the files, default TMPDIR); bsdleg (the files, TMPDIR=<tree>.tmp, empty after); gnu (scans and the files); check all; release --patch --dry-run. Everything but the dry run runs with DEVBIN_GATE_CACHE, DEVBIN_RELEASE_VERSION and DEVBIN_RELEASE_TARGET_TAG. The driver refuses unless the list derived at the tip equals derive.out.\n- SIZE: heavy class, bats lane. Measured references from pc0131 (2026-11-24): test scans 108s, check all 109s, test all 985s for 70 files at 24 jobs, and the dry run 31s. These 14 files have not run as one set, so their time is not measured; the run measures it. The bounds are scans and check all 240s each, bsd and bsdleg 2000s each, gnu 2300s and the dry run 70s.\n- WAITING ON: cc's cache get unit, and RELEASES/0.1.33.md on main. Without the note the dry run stops at pre-flight, and ask-pc0133.sh refuses. When both land, dc re-points the tree, derives again with base v0.1.32 and sends you the final list. Then the ask goes on your word.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

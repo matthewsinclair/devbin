@@ -1,0 +1,17 @@
+{
+  "id": "01M88ZJADG9CGBTKKVX3EK8SS0",
+  "ts": "2026-11-25T09:11:11.536Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "END and HANDOVER, I900790a (with I050cf9c's fix A), 2026-11-25 09:11Z by date -u. Slot 01M88Z9X9Z138CSA3PR2CNES7J: the driver ended rc 0 at 09:09:48Z and released the slot (end.json).\n\n- RED, in the red tree 03f1d541 (base ccc270e1's code): plan 1..2, both arms not ok, each for its own reason. I900790a: \"a command after the failed one ran\". I050cf9c: \"the remedy prints no line to run by hand\". Its seal is non-empty.\n- GREEN, at tip 38d3afc4: releasecut 1..6 ok, releasestatus 1..1 ok and releaseattach 1..1 ok. Each seal is empty.\n- Logs: ~/Devel/scratch/devbin-dc/after-stop/run.log, red.log, green.releasecut.log, green.releasestatus.log and green.releaseattach.log. Copies of the seals, which sit inside the worktrees, are in after-stop/seals/.\n- Bank: refs/bank/dc/i900790a = 38d3afc4693b15ac6f8f3c902a49e677f240957c, one commit on base ccc270e19455.\n- Message: ~/Devel/scratch/devbin-dc/after-stop/COMMIT_MSG-I900790a.txt (sha256 7cc7132918b3), byte-equal to the commit's raw body.\n- Paths (6): docs/configuration.md, lib/cmd/release, lib/config.reference.yaml, lib/pages/release.md, lib/release.steps and tests/unit/releasecut.bats. None of them moved on main since the base (main read eeb8ff0d), so the unit lands as run.\n- The landing ships both I900790a and I050cf9c (fix A). Fix B, a verb that runs the rest of the step, stays out. dc can write both Resolutions after the landing, if you want that.\n\ndc's board is committed at 6b7c7616. dc makes no canon commit until you say the unit landed. tmp/wt-i900790a and the red tree tmp/wt-i900790a-red (scratch branch dc/i900790a-red, never to land) stay until then, and dc removes both after the landing.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

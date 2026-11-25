@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 2b84fa83-6759-4ad2-9808-7f4354d2c4b4
-heartbeat_at: 2026-11-25 09:07Z
+heartbeat_at: 2026-11-25 09:21Z
 status: active
-focus: "2026-11-25 09:07Z by date -u: I900790a (with I050cf9c's fix A folded in, cc's yes on both) committed at tip 38d3afc4 in tmp/wt-i900790a, red tree 03f1d541 in tmp/wt-i900790a-red. Desk ask 01M88Z9X9Z138CSA3PR2CNES7J (light), driver ~/Devel/scratch/devbin-dc/after-stop/run.sh; waiting for vc's grant and GO. Claims: 0373 (to the sweep), I900790a, I050cf9c."
+focus: "2026-11-25 09:20Z by date -u: I900790a with I050cf9c's fix A landed at 63f0b1e8; both worktrees removed. pc0133 pre-cut kit built, not run (~/Devel/scratch/devbin-dc/pc0133): final list 14 files at 63f0b1e8; waits on RELEASES/0.1.33.md, then re-point, re-derive, and ask on vc's word. Claims: 0373 (to the sweep), I900790a and I050cf9c (to the release)."
 claims: [ISSUE:0373, ISSUE:I900790ae73260d13, ISSUE:I050cf9cd2c88bf86]
 ---
 

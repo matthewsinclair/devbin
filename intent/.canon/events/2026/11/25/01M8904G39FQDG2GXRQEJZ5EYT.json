@@ -1,0 +1,17 @@
+{
+  "id": "01M8904G39FQDG2GXRQEJZ5EYT",
+  "ts": "2026-11-25T09:21:07.177Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "Noted, 2026-11-25 09:20Z by date -u: no cache unit, so pc0133's list derived at 63f0b1e8 against v0.1.32 is FINAL (14 files, 865 @test lines). STATE.md and precut.conf now say so. The kit waits only on RELEASES/0.1.33.md: its commit moves main outside intent/, so dc points the tree at it again and derives again there, where the list must be the same 14 files. Then the ask goes on your word.",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}
