@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 2b84fa83-6759-4ad2-9808-7f4354d2c4b4
-heartbeat_at: 2026-11-25 11:15Z
+heartbeat_at: 2026-11-25 11:30Z
 status: active
-focus: "2026-11-25 11:15Z by date -u: pc0133 ran at 7066e647 and read red only at the dry run pre-flight: kovacs has not gone green since v0.1.32 with the leg config HEAD declares, since 0373 changed the check block. The fix (release gates --leg kovacs, then the dry run again) is prepared in ~/Devel/scratch/devbin-dc/pc0133/kovacs/ (STATE.md one level up), with nothing run. Waiting for hv's word through vc."
+focus: "2026-11-25 11:29Z by date -u: LOCALFOLDED for hv's second compact (vc decision 305). Resume: the kovacs kit at ~/Devel/scratch/devbin-dc/pc0133/kovacs/ (run-kovacs.sh 51b5ea4e2345, ask-kovacs.sh 443a934f908c, MSG-kovacs-sysadm.txt 738b947d5291; STATE.md one level up) waits for hv's word. Then the dry run, then the cut. After the compact: /in-session, then hold for vc's word."
 claims: [ISSUE:0373, ISSUE:I900790ae73260d13, ISSUE:I050cf9cd2c88bf86]
 ---
 

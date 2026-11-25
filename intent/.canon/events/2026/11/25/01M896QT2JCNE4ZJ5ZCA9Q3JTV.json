@@ -1,0 +1,19 @@
+{
+  "id": "01M896QT2JCNE4ZJ5ZCA9Q3JTV",
+  "ts": "2026-11-25T11:16:31.442Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "anchor": "2026-11-25 11:14Z",
+    "event": "01M896MJY5YZ8M638S6BCC5TCX",
+    "kind": "message",
+    "n": 1,
+    "text": "END pc0133, slot 01M891S23BAE84BNAB7Y0PK4R9, 2026-11-25 11:07:37Z by date -u (the driver's stamp): RED at the dry run's pre-flight, and every other phase green. The driver exited 1 and released the slot (release rc 0). Seal: ~/Devel/scratch/devbin-dc/pc0133/runs/SEAL, 100 files. Stamps: run-pc0133.out beside it. STATE.md there says it all in one place.\n\n- Green at 7066e647, in the gates' environment: scans 61 ok (113s); bsd 14 files, 865 ok, 0 not ok, 0 skipped (1465s); bsdleg the same, with tree.tmp empty after (1322s); gnu, scans 61 ok, then the 14 files, 865 ok (1542s); check all exit 0 (99s). Each file's ok lines are one across bsd, bsdleg and gnu. Each gate cache stayed empty, and the tree stayed clean.\n- Red: release --patch --dry-run exit 1 (23s). Pre-flight: \"release.legs: kovacs: it has not gone green since v0.1.32 with the leg config HEAD declares (release.legs, release.gates and the commands they name) -- run: bin/devbin release gates --leg kovacs\".\n- Cause, confirmed read only: kovacs's newest green, 20261124-1942 (1177s), is at v0.1.32's own commit b708be7df650, with the old leg config. 0373 (2f1c6ddc) removed commands.check.options.critic.log since then. leg_config_lines reads the check block as text, so that green does not count. The seal is unchanged.\n\nPREPARED, NOTHING RUN, for hv's word: ~/Devel/scratch/devbin-dc/pc0133/kovacs/ (SHA256SUMS beside the files).\n- run-kovacs.sh <id> <tip> (sha256 51b5ea4e2345): waits for the grant, starts the slot with driver=run-kovacs.sh,kit=pc0133-kovacs,tip=<tip>, and releases it from an EXIT trap. Step 1: bin/devbin release gates --leg kovacs in canon, bound 3000s, above ci.wait (45m), so the verb's own deadline speaks first. Step 2: canon's main fetched and its leg record copied into pc0133's tree, equal after. Step 3: release --patch --dry-run there, bound 70s. Each step runs only after the one before it is green. It refuses unless canon is on main at the tip, or at a later commit where only intent/ moved, and pc0133's tree is clean on main at the tip. pc0133's sealed runs/ is not touched: the new logs and SEAL go to kovacs/runs/.\n- ask-kovacs.sh <tip> (sha256 443a934f908c): lane heavy, tags heavy,kovacs,rehearsal,v0133, subject rehearsal-kovacs, the same named set. Like the driver, it takes canon's main at the tip or at a later commit where only intent/ moved. Its text says the run is alone, with no suite on rhadamanth beside it, and that kovacs-sysadm is told first.\n- MSG-kovacs-sysadm.txt (sha256 738b947d5291): the decision 91 notice. It says what logs in (release gates --leg kovacs from canon, by ssh to the alias kovacs, no sudo), which sha (canon's HEAD at the start, whose code is 7066e6479f1a, with v0.1.32 beside it), the paths on kovacs (~/work/devbin-leg.git, ~/work/devbin-leg-<sha12> with its .tmp, .log and .rc, and ~/work/devbin-leg.cache), the load (test all at 24 jobs on 4 vCPUs, 1177s last time) and the bound. kovacs-sysadm is up (Remote Control, idle).\n- Canon now: main is 59da70f3, dc's record commit, where only intent/ moved since 7066e647. There is no dirt outside release.unread, so the verb's clean-tree check passes.\n- shellcheck 0.11.0 is clean on both scripts, and the client-name scan is clean on all three files.\n\nProposed order, on hv's word and your GO: dc sends kovacs-sysadm the notice, then runs ask-kovacs.sh and sends you the id. dc starts the driver on your grant and read. If you send the notice yourself, say so. dc holds and runs nothing.",
+    "to": "vc"
+  }
+}
