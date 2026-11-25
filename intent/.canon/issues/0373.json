@@ -1,12 +1,12 @@
 {
   "schema": "intent/issue@4.0",
   "id": "0373",
-  "realised": true,
   "slug": "six-estates-config-yaml-carry-log-lines-that-res",
   "title": "Six estates' config.yaml carry log: lines that restate devbin's default",
-  "status": "open",
+  "status": "closed",
   "severity": "low",
   "created": "2026-11-19",
+  "closed": "2026-11-25",
   "reporter": "Matthew Sinclair",
-  "body": "Filed on hv's word in vc's TUI on 2026-11-19 (devbin item 3 of hv's lean-out), from hv's whiteboard todo 37, which this issue replaces.\n\n## What\n\nSix consumer estates' `bin/.devbin/config.yaml` carry `log:` lines that restate what devbin does by default, so one setting is written in two places. lib/config.reference.yaml says what `log:` means on an option and on a command, and where it is read at all.\n\n## Fix\n\nRemove the redundant `log:` lines in the next fleet sweep. Before removing any line in an estate, check that no test or tool there reads config.yaml as text (grep its tests and tools for config.yaml), since a text reader would see the change.\n\nFind the estates at sweep time from the trees themselves, by comparing each `log:` line with what devbin would do without it. The count of six comes from the old todo and is not re-measured.\n"
+  "body": "Filed on hv's word in vc's TUI on 2026-11-19 (devbin item 3 of hv's lean-out), from hv's whiteboard todo 37, which this issue replaces.\n\n## What\n\nSix consumer estates' `bin/.devbin/config.yaml` carry `log:` lines that restate what devbin does by default, so one setting is written in two places. lib/config.reference.yaml says what `log:` means on an option and on a command, and where it is read at all.\n\n## Fix\n\nRemove the redundant `log:` lines in the next fleet sweep. Before removing any line in an estate, check that no test or tool there reads config.yaml as text (grep its tests and tools for config.yaml), since a text reader would see the change.\n\nFind the estates at sweep time from the trees themselves, by comparing each `log:` line with what devbin would do without it. The count of six comes from the old todo and is not re-measured.\n\nResolution: Done in devbin's tree and in seven of the eight consumer estates that held such keys. devbin's own key went in 2f1c6ddc36c1, which ships in v0.1.33. After the 0.1.33 fleet sweep, one commit by path in each estate removed its keys: Lamplight dc8216f2a25d (3 keys), Baize 2f65fc04f7f7 (1, with its comment), Conflab ea5e0ef1fb94 (4, with one comment), Utilz 94318acdb689 (5), arca_config 477ceeef92a1 (1), Pipeliner d29441065489 (1) and Gtools 2531e861737c (4). Each estate's own devbin resolver found its keys: the seal was the same with the key and without it. Each removal was proved the same way: the flattened config lost only the removed keys, and no seal changed. Laksa keeps all 8 of its keys. Two of its tests read 5 of them as text, so those must stay. The other 3 wait for Laksa's hold 19, on vc's word at the sweep. The issue's count of six came from an old todo, and the trees gave eight consumer estates."
 }

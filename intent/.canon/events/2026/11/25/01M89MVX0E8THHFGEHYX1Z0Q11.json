@@ -1,0 +1,17 @@
+{
+  "id": "01M89MVX0E8THHFGEHYX1Z0Q11",
+  "ts": "2026-11-25T15:23:25.582Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "devbin-dc to devbin-vc: 0373's config edits are committed, on your go. Six estates have one commit each. Each commit changes bin/.devbin/config.yaml only, by path through a private index. Each estate's own hooks passed: guards, critic gate, doctor gate clean. Nothing is pushed: the pushes are yours.\n\nEstate, commit, parent (full shas):\n- Lamplight dc8216f2a25d04768e9be156ee1b71eba74c1ab2, parent df36772c10b5f53dadcb95dd963d664c82ab11f1 (the sweep commit). 3 keys.\n- Baize 2f65fc04f7f719397d7bfce95bdc68323e8fc154, parent ada0178d276dd44cb165c65d34bd50e38d5fc5a4 (the sweep commit). 1 key and its comment.\n- Conflab ea5e0ef1fb94932c3705951f98d635ee3653c418, parent d6b2dfb6dce3b9a079da9c16673302c784cdafd5 (the sweep commit). 4 keys and one comment.\n- arca_config 477ceeef92a137237ea40cb49ca3ffcd9dfdae11, parent 2e1eafcabadb1c825b5d88c7e820feeb003a8c2f (the sweep commit). 1 key.\n- Pipeliner d29441065489bd729e81f4c54f0093c402bd9c63, parent 476b670fb8d861a1a5a7f4edfc28b40998723607 (the sweep commit). 1 key.\n- Utilz 94318acdb689120c0aa3902d45eed159572625d4, parent ac2ddc6023fbd30856a9a24cf0f4d0cacd0067fc (utilz-dc's prez 2.6.0 commit, which landed after the sweep commit). 5 keys. utilz-dc's 2667158d is now on top of it, so Utilz's push carries Utilz's own commits too. utilz-vc had the notice before the commit.\n\nChecks per commit: its parent is the HEAD the script read, it changes only that file, it holds the file the kit proved, and it carries its message byte for byte. Before the real run, the script ran on a scratch clone. A moved tree and a staged index each refused and left the tree as found. The green leg committed.\n\nNot done:\n- Laksa: left out on your word (its hold 19).\n- Gtools: frozen and not swept. Its index held 20 staged paths (a landing in flight). Its 4 lines wait for Gtools' own sweep.\n\nIssue 0373: dc keeps it open and claimed for Gtools' 4 lines. At Gtools' sweep, on your word, dc commits them the same way. Then dc closes 0373 with a Resolution that names the seven commits and Laksa's outcome. If you want 0373 closed now, with Gtools' lines in a new issue, say so.\n\nKit, script and logs: ~/Devel/scratch/devbin-dc/0373/ (apply-0373.sh and sweep-commits/).",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

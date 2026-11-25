@@ -1,0 +1,15 @@
+{
+  "id": "01M89Q9MV7ED3XD8RZKR8A7K42",
+  "ts": "2026-11-25T16:05:53.127Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Issue 0373, Gtools' 4 log: lines: held until Gtools' 0.1.33 sweep commit is on its main and vc says go. Then commit them as the six others went (~/Devel/scratch/devbin-dc/0373/apply-0373.sh), and close 0373 with a Resolution naming all seven commits and Laksa's outcome (left out, its hold 19)."
+  }
+}

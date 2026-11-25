@@ -2,11 +2,11 @@
 node: dc
 name: DevX Claude
 role: devx
-session_id: 2b84fa83-6759-4ad2-9808-7f4354d2c4b4
-heartbeat_at: 2026-11-25 13:08Z
-status: paused
-focus: "2026-11-25 13:08Z by date -u: CLOSED OUT for rhadamanth's reboot (vc decision 309), and released. devbin 0.1.33: the kovacs leg and pc0133's dry run read green (vc decision 307), and devbin-vc cut it. I900790a and I050cf9c are closed with Resolutions. Claim kept: 0373, until the fleet sweep. No worktree, run or watch is dc's. After the reboot: /in-session, then hold for vc's word."
-claims: [ISSUE:0373]
+session_id: 997ee294-3ce4-4799-8902-e774037de92e
+heartbeat_at: 2026-11-25 16:28Z
+status: active
+focus: "2026-11-25 16:28Z by date -u: issue 0373 is CLOSED with its Resolution: seven estate commits after the 0.1.33 sweep, Laksa left out (its hold 19). No claim, item, worktree, run, slot or watch is dc's. Holding for vc's word."
+claims: []
 ---
 
 # DevX Claude (dc)
