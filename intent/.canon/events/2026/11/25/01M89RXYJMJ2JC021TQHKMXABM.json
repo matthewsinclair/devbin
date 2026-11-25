@@ -1,0 +1,15 @@
+{
+  "id": "01M89RXYJMJ2JC021TQHKMXABM",
+  "ts": "2026-11-25T16:34:27.029Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-25 16:34Z by date -u, hv's words: 'resume Molt'. Molt v1.4.13 stopped after its tag at the push step (release commit 85a0e7eb, every leg green, main on local and upstream, the tag on local), because GitHub refused the tag push in its incident from 16:14Z. GitHub's Git Operations reads operational from 16:26Z by date -u. molt-vc resumes with bin/devbin release v1.4.13 on a light slot: the tag push to upstream, the release object and the formula publish only, before 20:00Z, as the note is dated 2026-11-25. This is hv's word for a step after a tag, which vc does not retry on its own. Also at 16:34Z: Gtools is swept to devbin 0.1.33 (759314de) with 0373's four lines (2531e861), both unpushed (Gtools' push is hv's); issue 0373 is closed (devbin-dc, 0379cbae); Intent's ic sweep bank is green on clippy, and cc's runs on cargo."
+  }
+}

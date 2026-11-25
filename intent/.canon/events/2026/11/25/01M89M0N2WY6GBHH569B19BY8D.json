@@ -1,0 +1,15 @@
+{
+  "id": "01M89M0N2WY6GBHH569B19BY8D",
+  "ts": "2026-11-25T15:08:32.732Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 15:05Z by date -u, each hv's choice of vc's recommended option: (1) the estate plan after the reboot (PLAN.md, section 'After the reboot'): 'Approve as written'. Every seat starts in the plan's order, the Desk grants by decision 286's priority, and cuts, pushes and hv's hands stay as marked. (2) kovacs: 'Go after the sweep'. kovacs-sysadm upgrades devbin to 0.1.33 by brew once rhadamanth is swept, and gyges-sysadm does the same on gyges. (3) kovacs's status line: 'Wait for Molt's setting'. No npm global on kovacs; kovacs keeps npm exec until Molt's release ships the one ccstatusline setting, and that setting's brief says how kovacs gets it under kovacs's Homebrew rule. This replaces decision 308's 'npm global now', whose premise failed on that rule. (4) Intent 3.5.4's scope: 'Leave it in ST0084'. The fail-open fix in vocab_adequacy_check.sh waits with parked ST0084; the three other defects dc's critics found ride dc's bank. Then hv in vc's window: 'rhad, gyges, and kovacs rc are all on now' (the three sysadm sessions take messages by Remote Control). Executed from 15:05Z by date -u: the approval went to every vc; the sweep's light slot 01M89KTX6JQXD4JR54X48SQ2MJ started; rhadamanth's brew holds devbin 0.1.33 (a89e26c6cdaf)."
+  }
+}

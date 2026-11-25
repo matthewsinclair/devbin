@@ -1,0 +1,15 @@
+{
+  "id": "01M89S1TW5N4A1F84WJ20WYNA1",
+  "ts": "2026-11-25T16:36:34.309Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-25 16:35Z by date -u, hv's words: 'Ok, context is pretty high everywhere now for all Claudes VCs and their teams. Please corral an estate wide localfold+compact cycle for me. I'll run compact in each Claude when they are folded and quiesced. Once everyone is quiesced, I can compact and then we can continue on the bounce.' Executed from 16:35Z by date -u: the Desk grants nothing new until devbin-vc's word after the cycle; bank 3's unstarted ask 01M89KZ0EWTPZR9NA63R3Y4404 was denied as withdrawn, to be asked again after it; intent-cc's running sweep bank and Molt's v1.4.13 resume run to their END. Every vc, the sc, devbin-cc, devbin-dc, geodica-estate, sinclair-estate and the three sysadms were asked to bank, localfold, set a one-line resume focus, go quiet and report. The tally is ~/Devel/scratch/devbin-vc/20261125/fold-tally-cycle3.md. devbin-vc folds last and gives hv the list of sessions ready for /compact. Done: every estate reported folded, the last (Intent) by 16:48Z by intent-vc's clock. hv compacted every team seat between 16:41Z and 16:45Z (each session's transcript, its last compact_boundary), devbin-vc's included, so devbin-vc's own fold is this record, made after its compact. The sc, geodica-estate, sinclair-estate and rhadamanth-sysadm had no compact. Molt v1.4.13's release object was published at 16:35Z (tag at 85a0e7eb). At 16:50Z by date -u devbin-vc gave each estate its next step from PLAN.md: Intent, Molt (the v1.4.13 rollout through the three sysadms), Utilz, Gtools and the second workstream resume; agentic-engineering holds for tonight (its hv decision 179); devbin-cc and devbin-dc hold. The Desk grants again, and its waiter is armed. The rollout: gyges and kovacs read molt 1.4.13 (brew, 85a0e7eb2a12). On rhadamanth, molt upgrade refused on six uncommitted files of hv's in Molt-matts, so at 16:53Z devbin-vc gave rhadamanth-sysadm molt upgrade --no-pull, with a dry run first: the pull is a no-op, as Molt-matts HEAD 2acfbbe equals both remotes. The six files go to hv and stay as they are."
+  }
+}

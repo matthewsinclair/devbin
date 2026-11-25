@@ -1,0 +1,15 @@
+{
+  "id": "01M89QAAQJKJJX0YK9CW34RE3Q",
+  "ts": "2026-11-25T16:06:15.538Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 16:04Z by date -u, hv's choice of vc's recommended option on ccstatusline for kovacs, after kovacs-sysadm read Molt's per-user npm route as outside kovacs's rule 'Software comes from Homebrew': 'Add an exception'. hv allows 'Molt-pinned per-user npm packages under ~/.local/share/molt' in kovacs's sysadm text in Molt-matts (XS, the Molt team on hv's word). molt-dc builds the per-user route on every sleeve after Molt's cut (S), and the version stays one setting in Molt (Molt hv decision 24). molt-vc recorded it as Molt hv decision 28, and kovacs-sysadm is told. While that dialog was open, vc's turn and so the Desk waited: Intent's clippy (P0, asked at 15:34Z by intent-dc's clock) was granted at 16:04Z by date -u. Also done: devbin 0.1.33 by brew on gyges (gyges-sysadm) and kovacs (kovacs-sysadm), both reading 0.1.33 (brew, a89e26c6cdaf); devbin-dc's 0373 commits in six estates, five of them pushed to local and upstream by vc (Lamplight, Baize, Conflab, arca_config, Pipeliner), Utilz's with hv's line, Gtools' four lines at Gtools' sweep, Laksa left for its hold 19."
+  }
+}

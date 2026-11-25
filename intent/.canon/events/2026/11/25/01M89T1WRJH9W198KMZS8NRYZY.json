@@ -1,0 +1,16 @@
+{
+  "id": "01M89T1WRJH9W198KMZS8NRYZY",
+  "ts": "2026-11-25T16:54:04.818Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-25 16:53Z by date -u: devbin-vc holds control since 14:56Z (decision 310). After compact cycle 3 (decision 315) it grants again by decision 286's priority, and its waiter is armed. Work comes from ~/Devel/scratch/estate-plan/PLAN.md, section 'After the reboot' (approved, decision 311), with its progress line of 16:53Z: Molt's v1.4.13 rollout and molt-dc's ccstatusline build; Intent's close-sweep banks to 3.5.4's READY; Utilz from hv's arca_swift line; Gtools' I0a626d0, then 0.10.0; the second workstream's no-slot work, and bank 3 after hv's prompt. agentic-engineering holds until tomorrow. Control is released only at session end."
+  }
+}

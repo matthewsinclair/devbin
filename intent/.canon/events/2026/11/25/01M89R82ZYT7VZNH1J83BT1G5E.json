@@ -1,0 +1,15 @@
+{
+  "id": "01M89R82ZYT7VZNH1J83BT1G5E",
+  "ts": "2026-11-25T16:22:30.654Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-25 16:22Z by date -u, hv's words: 'leave the census tool in ST0084'. Intent's parked ST0056 census tool (instrument_reach_census.sh), which reads no rows since the canon move and which no gate runs, stays with parked ST0084 and is not in Intent 3.5.4, as intent-vc recommended. Told intent-vc. Intent 3.5.4 also takes three close-sweep fix banks (cc L, ic M, dc L), each one clippy on cargo, under hv's rule that a fix found during the release goes into it. Open for hv: Molt v1.4.13 stopped after its tag at the push step (GitHub incident from 16:14Z, Git Operations degraded); the resume of its push, release object and formula publish waits for hv's word."
+  }
+}

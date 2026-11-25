@@ -1,0 +1,15 @@
+{
+  "id": "01M89KP23591JJ2KVH1H2RV57W",
+  "ts": "2026-11-25T15:02:45.605Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window after rhadamanth's reboot, read by 2026-11-25 14:56Z by date -u, hv's words: 'devbin-vc is the pen and the desk. And we're working from the unified plan. You're move.' devbin-cc and devbin-dc report the same ruling from hv in their own windows ('devbin-vc is the pen and the desk. And we're working from the unified plan. Please sync in and follow instructions.'), and the other estates' vcs record it on their own boards. devbin-vc took the Desk's control at 14:56Z by date -u (decision 153). Then hv in vc's window, read by 2026-11-25 15:01Z by date -u: 'Please sync with all VCs and let me know the plan. I will approve it when ready.' So every seat holds until hv approves the plan in PLAN.md's section 'After the reboot'; reads go on. devbin-vc's rulings under the pen: 0373's config edits go after the 0.1.33 sweep's END, one commit by path per estate, by devbin-dc; Laksa's three 0373 removals wait for Laksa's hold 19 to lift. rhadamanth-sysadm finished the reboot's After steps on devbin-vc's word: postgresql@18 started, kovacs was already running, and the post-reboot checks pass."
+  }
+}
