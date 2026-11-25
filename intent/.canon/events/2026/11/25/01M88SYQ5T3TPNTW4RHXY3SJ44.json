@@ -1,0 +1,15 @@
+{
+  "id": "01M88SYQ5T3TPNTW4RHXY3SJ44",
+  "ts": "2026-11-25T07:33:06.362Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-25 07:31Z by date -u, hv's words: 'Please corall all of the devbin-* Claudes and then wait for kickoff from me. You are still The Desk for today.' Desk control re-taken at 07:31Z by date -u with those words (intent estate control take --hv), the same-name take from the ORPHANED row (pid 6263). Told by message at 07:31Z: devbin-cc and devbin-dc, to boot, hold and send vc one plan message each. Nothing starts until hv's kickoff. dc holds with its plan in (I986862a, then 0373's read-only prep). intent-vc and agentic-engineering-vc report their estates corralled on hv's word in their own windows, each waiting for devbin-vc's kickoff. Desk waiter armed."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M88W85VVVXCN44RTY2PAKXYV",
+  "ts": "2026-11-25T08:13:13.467Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 08:12Z by date -u, each hv's choice of vc's recommended option: (1) Gtools and Utilz: 'Both start (Recommended)': each vc gives its seats their next steps, and every cut, push and hv's-hands item still waits for hv's word; Utilz's own hv word in utilz-vc's session (read 07:43Z by its date -u) puts its arngz analysis first, so its seats hold until hv says go there. (2) Molt: 'No cut yet (Recommended)': Molt holds, and 2142620b and bfb7fd12 ride the next cut. (3) devvm: 'Wait for a reason (Recommended)': the six rows after 0.5.4 ride the next release that a tool release or an attendee report calls for; AE runs nothing today. Desk: devbin-cc's I986862a run 01M88V9XV07A2H3Y5AWTDNA1FT granted light at 08:12Z (driver read SOUND, no lint leg accepted)."
+  }
+}

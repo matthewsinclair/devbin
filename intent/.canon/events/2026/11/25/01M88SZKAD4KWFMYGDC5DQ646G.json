@@ -1,0 +1,16 @@
+{
+  "id": "01M88SZKAD4KWFMYGDC5DQ646G",
+  "ts": "2026-11-25T07:33:35.181Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-25 07:33Z by date -u (decision 297): control is devbin-vc's, the waiter is armed, and no slot is asked or granted. Every estate holds for hv's kickoff, which devbin-vc relays to each estate's vc. Plans in: devbin-dc. Asked for: devbin-cc, intent-vc, agentic-engineering-vc. At the kickoff, vc puts the plans to hv together, with a proposed order and I986862a's owner (cc or dc). The estate plan is ~/Devel/scratch/estate-plan/PLAN.md, devbin-vc its only writer."
+  }
+}

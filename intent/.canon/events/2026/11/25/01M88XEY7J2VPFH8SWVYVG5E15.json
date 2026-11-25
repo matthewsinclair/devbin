@@ -1,0 +1,15 @@
+{
+  "id": "01M88XEY7J2VPFH8SWVYVG5E15",
+  "ts": "2026-11-25T08:34:23.602Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 08:31Z by date -u, each hv's choice of vc's recommended option: (1) Gtools dc hold 10: 'Yes, delete all three (Recommended)'. (2) Gtools cc hold 34: 'The five users meet (Recommended)', put again to hv with cc's disagreement (decision 301). (3) Utilz Ibf2b53b: 'Next release (Recommended)'; SUPERSEDED: hv's earlier word in utilz-vc's session ('Built it now for THIS release. Test it now LOCALLY and make sure it works.') stands, as hv confirmed there (Utilz hv decision 24): prez.bats joins CI now and ships in 2.15.0. intent-vc reports hv approved Intent's Phase 0 in its window ('Approve, build now', Intent hv decision 100). devbin landed I986862a at 3eb11df3 and 0373 at 2f1c6ddc by cherry-pick from their banks, not pushed. Two defects routed the same day, each an issue for the next batched release: three names of hv's tools in lib/ comments (another estate's session's read; directive 14) to devbin-cc, and release's after: running on after a failed command (gtools-dc's find) to devbin-dc."
+  }
+}

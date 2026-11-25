@@ -1,0 +1,15 @@
+{
+  "id": "01M88TKD4NTGJXHYMYPV3AKBQ6",
+  "ts": "2026-11-25T07:44:24.213Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 07:44Z by date -u, hv's choice of vc's recommended option: 'Go all, thread in'. KICKOFF for devbin, Intent and agentic-engineering. devbin: devbin-cc builds I986862a (one light slot, two legs, rides the next batched release) and devbin-dc does 0373's read-only prep; the split is the two seats' own. Intent: 3.5.4 carries the Highlander residue thread ST1c2db93 and I3c24d2a; intent-cc writes Phase 0 and stops for hv's review before any code. agentic-engineering: its dc drafts a devvm contents list, with no run. Molt, Gtools and Utilz reported held after the question, so their start goes to hv next."
+  }
+}

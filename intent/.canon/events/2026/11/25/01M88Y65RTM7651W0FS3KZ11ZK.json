@@ -1,0 +1,15 @@
+{
+  "id": "01M88Y65RTM7651W0FS3KZ11ZK",
+  "ts": "2026-11-25T08:47:04.986Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 08:46Z by date -u, hv's choice of vc's recommended option, on Gtools cc hold 34 put again with cc's disagreement in cc's own words: 'Four in code, refresh 3 (Recommended)'. gtools-cc fixes the site header, the Office and PDF reading in the commit gate and the two tracebacks as one unit (M, one cargo and heavy run), and closes finding 3 with one gtools cms refresh per folder site and no code. hv gave the same answer in gtools-vc's window (Gtools hv decision 63, 08:37Z by its date -u). Desk at 08:46Z: granted intent-dc's build all (cargo, heavy), devbin-cc's I48d1c19 scan arms (light), gtools-ic's audit retry (light), utilz-cc's I123a34f bats (bats, heavy); held intent-cc's clippy (next on cargo) and utilz-ic's defects run (needs cargo and bats)."
+  }
+}
