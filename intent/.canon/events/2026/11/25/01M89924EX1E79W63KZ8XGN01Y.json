@@ -1,0 +1,15 @@
+{
+  "id": "01M89924EX1E79W63KZ8XGN01Y",
+  "ts": "2026-11-25T11:57:06.909Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-25 11:57Z by date -u, after the second cycle's compacts (decision 305), each hv's choice of vc's option: (1) devbin 0.1.33, 'Leg first (Recommended)': dc sends kovacs-sysadm its notice and runs its kit (run-kovacs.sh 51b5ea4e2345): the kovacs leg alone, then the dry run. On green, vc cuts, pushes and sweeps under decision 304. No suite runs on rhadamanth during the leg; Intent's short clippy may go first. (2) Pushes, all four chosen, each fast-forward only: molt-vc pushes Molt's two board-only fold commits (f749f651, 833ca7f2) and Molt-matts 2acfbbe to local and upstream; agentic-engineering-vc pushes main 0f445203 (4 commits) to both remotes; hv types arca_swift main 9bb8543f (no tag) and Utilz main 1cdad894 (33 commits) as ! lines in utilz-vc's window. (3) Gtools, 'Land it (Recommended)': gtools-vc lands cc's I42c1317 (bank 4dddf5e0) as one squash commit by path in its own heavy slot, after the P0 and P1 runs; ic's suite runs too; Gtools' push to local stays hv's hands. (4) The second workstream's history rewrite, 'Trial on a copy (Recommended)': a seat there runs the text replacement of the old measure's totals on a scratch copy and reports what changes and what breaks; nothing is pushed; hv's rewrite uses the result. Then hv's words in vc's window, read by 2026-11-25 11:57Z by date -u: 'Ok, let's go back to our unified plan from the other day. Please corral all VCs to get their \"plan-in-1-line=steps\" plans to you and then lets review. When that's done, I want the unfied plan updated and in sync with what's done, what we're doing, and what's to be done. Ok? I will tell all VCs to respond accordingly.'"
+  }
+}
