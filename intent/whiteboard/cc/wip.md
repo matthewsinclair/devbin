@@ -3,10 +3,10 @@ node: cc
 name: Control Claude
 role: control
 session_id: 857f86f7-6e67-4e45-9188-f703d0c92b34
-heartbeat_at: 2026-11-25 07:34Z
+heartbeat_at: 2026-11-25 08:19Z
 status: active
-focus: "2026-11-25 07:34Z by date -u: booted, holding for vc's GO under hv's corral. Plan sent to vc at (2026-11-25 07:34Z): I986862a asked for (one light arm), and one Resolution line for 0326. No worktree, branch or run. Claim ISSUE:0326 kept."
-claims: [ISSUE:0326, ISSUE:I986862a4bdf67ef3]
+focus: "2026-11-25 08:19Z by date -u: I986862a landed on main at 3eb11df3 (bank refs/bank/cc/I986862a = 96defcd6, Desk run green). Both worktrees and branch cc/i986862a are retired. The issue stays open, and claimed, until the release ships it. 0326's Resolution line is in at b1d238fa. Nothing in flight."
+claims: [ISSUE:0326, ISSUE:I986862a4bdf67ef3, ISSUE:I48d1c1919c33537a]
 ---
 
 # Control Claude (cc)

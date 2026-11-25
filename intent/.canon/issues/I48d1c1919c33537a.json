@@ -1,0 +1,13 @@
+{
+  "schema": "intent/issue@4.0",
+  "id": "I48d1c1919c33537a",
+  "origin": "01M88XNX539G88CMP3NMH8KDCG",
+  "realised": true,
+  "slug": "the-shipped-lib-names-the-owner-s-other-tools-th",
+  "title": "The shipped lib names the owner's other tools: three comments in lib/cmd/release, lib/cmd/formula and lib/tool say Molt or Utilz, which vendored trees carry",
+  "status": "open",
+  "severity": "medium",
+  "created": "2026-11-25",
+  "reporter": "Matthew Sinclair",
+  "body": "## What is wrong\n\nThree comments in the shipped code name another of the owner's tools. Directive 14 on hv's board says that hv's own projects are never named in shipped code (bin/devbin and lib/), and every vendored tree carries these comments:\n\n- lib/cmd/release:2543: `# A CUT FOUND ITS FORMULA COULD NOT RENDER ONLY ONCE IT WAS PUBLIC: Molt's 1.4.7`\n- lib/cmd/formula:426: `# on a newer one. Molt 1.4.8's install failed there. So render writes the`\n- lib/tool:167: `# out of no install that way, and a runtime set such as Utilz's (every tracked`\n\nAll three came in at devbin 0.1.30. hv accepts them for now, by this exact text, as for the machine name that Icbbfa7c removed.\n\n## Fix\n\nKeep each rule and its reason, and remove the tool's name, as Icbbfa7c did for the machine name.\n\nA grep of lib/ and bin/devbin, case-insensitive and by whole word, for the name of each of the owner's projects finds these three lines and no others. Intent's name is in the code by design: the check critic and docs agents built-ins call the intent tool. That is outside this issue.\n\n## Done when\n\n- The three comments keep their rules and name no other tool.\n- A grep of lib/ and bin/devbin for the owner's tool names finds none, Intent's name in the two built-ins aside.\n\n## Provenance\n\nFound by another estate's session in a read of devbin's vendored runtime for client safety, relayed by devbin-vc on 2026-11-25. devbin-cc ran the grep. Low risk: comments only, no behaviour.\n"
+}
