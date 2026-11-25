@@ -248,15 +248,15 @@ section() {
   local failing auth
   failing="$(section 'DKIM PRESENT BUT NOT PASSING' <<<"$output")"
   # The forged selector and the domain's own, told apart by what the row says.
-  [ "$(printf '%s\n' "$failing" | grep -c '198\.51\.100\.217 .*dkim=fail d=alpha\.example s=dkim  spf=softfail$')" -eq 2 ] ||
+  [ "$(printf '%s\n' "$failing" | grep -c '198\.51\.100\.217 .*dkim=fail d=alpha\.example s=dkim  spf=softfail d=alpha\.example  dkim_aligned=fail spf_aligned=fail$')" -eq 2 ] ||
     fail "the forged-selector rows do not name d= and s=:\n$failing"
-  grep -q '203\.0\.113\.9 .*dkim=fail d=bulk\.example s=google  spf=softfail$' <<<"$failing" ||
+  grep -q '203\.0\.113\.9 .*dkim=fail d=bulk\.example s=google  spf=softfail d=alpha\.example  dkim_aligned=fail spf_aligned=fail$' <<<"$failing" ||
     fail "the foreign signer's row does not name it:\n$failing"
-  grep -q '192\.0\.2\.70 .*dkim=fail d=alpha\.example s=google  spf=pass$' <<<"$failing" ||
+  grep -q '192\.0\.2\.70 .*dkim=fail d=alpha\.example s=google  spf=pass d=alpha\.example  dkim_aligned=fail spf_aligned=fail$' <<<"$failing" ||
     fail "the domain's own selector's row does not name it:\n$failing"
   # A passing signature is printed the same way: the row's shape is one shape.
   auth="$(section 'AUTHENTICATED' <<<"$output")"
-  grep -q '192\.0\.2\.10 .*dkim=pass d=alpha\.example s=google  spf=pass$' <<<"$auth" ||
+  grep -q '192\.0\.2\.10 .*dkim=pass d=alpha\.example s=google  spf=pass d=alpha\.example  dkim_aligned=pass spf_aligned=fail$' <<<"$auth" ||
     fail "the passing row does not name its signer:\n$auth"
 }
 
@@ -267,7 +267,7 @@ section() {
   run bash -c 'printf "%s\n" "$1" | "$2" report' _ "$row" "$REPORT"
   assert_success
   failing="$(section 'DKIM PRESENT BUT NOT PASSING' <<<"$output")"
-  grep -q 'dkim=fail d=alpha\.example s=dkim, fail d=alpha\.example s=google  spf=softfail$' <<<"$failing" ||
+  grep -q 'dkim=fail d=alpha\.example s=dkim, fail d=alpha\.example s=google  spf=softfail d=alpha\.example  dkim_aligned=fail spf_aligned=fail$' <<<"$failing" ||
     fail "both signatures are not printed:\n$output"
 }
 
@@ -276,7 +276,7 @@ section() {
   assert_success
   local failing signed row
   failing="$(section 'DKIM PRESENT BUT NOT PASSING' <<<"$output")"
-  grep -q '203\.0\.113\.173 .*dkim=fail d=none s=none  spf=softfail$' <<<"$failing" ||
+  grep -q '203\.0\.113\.173 .*dkim=fail d=none s=none  spf=softfail d=beta\.example  dkim_aligned=fail spf_aligned=fail$' <<<"$failing" ||
     fail "the row with an empty signer does not name it as none:\n$failing"
   # CONTROL: a row with a signer never reads none.
   signed="$(printf '%s\n' "$failing" | grep '198\.51\.100\.217')" || fail "no signed row to read:\n$failing"
@@ -287,14 +287,14 @@ section() {
   run bash -c 'printf "%s\n" "$1" | "$2" report' _ "$row" "$REPORT"
   assert_success
   failing="$(section 'DKIM PRESENT BUT NOT PASSING' <<<"$output")"
-  grep -q 'dkim=fail d=none s=absent  spf=softfail$' <<<"$failing" ||
+  grep -q 'dkim=fail d=none s=absent  spf=softfail d=beta\.example  dkim_aligned=fail spf_aligned=fail$' <<<"$failing" ||
     fail "an absent selector is not named absent:\n$output"
   # An empty RESULT is named too: it is the field that decides the class.
   row="$(jq -c 'select(.source_ip == "192.0.2.70") | .dkim_auth[0].result = ""' "$FIXTURES/rows-signers.jsonl")"
   run bash -c 'printf "%s\n" "$1" | "$2" report' _ "$row" "$REPORT"
   assert_success
   failing="$(section 'DKIM PRESENT BUT NOT PASSING' <<<"$output")"
-  grep -q 'dkim=none d=alpha\.example s=google  spf=pass$' <<<"$failing" ||
+  grep -q 'dkim=none d=alpha\.example s=google  spf=pass d=alpha\.example  dkim_aligned=fail spf_aligned=fail$' <<<"$failing" ||
     fail "an empty result is not named none:\n$output"
 }
 
@@ -320,7 +320,7 @@ section() {
   run bash -c 'printf "%s\n" "$1" | "$2" report' _ "$row" "$REPORT"
   assert_success
   auth="$(section 'AUTHENTICATED' <<<"$output")"
-  grep -q '192\.0\.2\.10 .*dkim=pass d=alpha\.example s=google, fail d=alpha\.example s=dkim  spf=pass$' <<<"$auth" ||
+  grep -q '192\.0\.2\.10 .*dkim=pass d=alpha\.example s=google, fail d=alpha\.example s=dkim  spf=pass d=alpha\.example  dkim_aligned=pass spf_aligned=fail$' <<<"$auth" ||
     fail "the passing record does not print both signers:\n$output"
 }
 
@@ -332,9 +332,51 @@ section() {
   run bash -c 'printf "%s\n" "$1" | "$2" report' _ "$row" "$REPORT"
   assert_success
   unauth="$(section 'UNAUTHENTICATED' <<<"$output")"
-  grep -q '203\.0\.113\.173 .*dkim=absent  spf=softfail$' <<<"$unauth" ||
+  grep -q '203\.0\.113\.173 .*dkim=absent  spf=softfail d=beta\.example  dkim_aligned=fail spf_aligned=fail$' <<<"$unauth" ||
     fail "the unsigned record does not read dkim=absent:\n$output"
-  [[ "$unauth" != *d=* ]] || fail "an unsigned record names a signer:\n$unauth"
+  # The SPF check names its domain with d= too, so this reads the DKIM part of
+  # the row alone: the text before its spf= field.
+  [[ "${unauth%%  spf=*}" != *d=* ]] || fail "an unsigned record names a signer:\n$unauth"
+}
+
+# --- an SPF pass is not a DMARC pass (I986862a) -------------------------------
+#
+# FOUND IN one infra user's report: a forged message that the receiver
+# rejected read `dkim=absent spf=pass`. The pass was for the forger's own
+# domain, and the DMARC verdict on SPF was fail. rows-spf.jsonl carries that
+# record's shape: an SPF pass for a foreign domain, both verdicts fail,
+# disposition reject, and a header From under the policy domain. Beside it is
+# a record with no SPF check at all, whose header From is the policy domain.
+
+@test "I986862a: an SPF pass for another domain prints that domain and the failed DMARC verdict" {
+  run bash -c '"$1" report <"$2"' _ "$REPORT" "$FIXTURES/rows-spf.jsonl"
+  assert_success
+  local unauth
+  unauth="$(section 'UNAUTHENTICATED' <<<"$output")"
+  grep -q '203\.0\.113\.41 .*dkim=absent  spf=pass d=bounce\.forger\.example  dkim_aligned=fail spf_aligned=fail' <<<"$unauth" ||
+    fail "the forged record does not name the SPF domain and the verdicts:\n$unauth"
+}
+
+@test "I986862a: a header From that is not the policy domain is printed, and one that is, is not" {
+  run bash -c '"$1" report <"$2"' _ "$REPORT" "$FIXTURES/rows-spf.jsonl"
+  assert_success
+  local unauth auth
+  unauth="$(section 'UNAUTHENTICATED' <<<"$output")"
+  grep -q '203\.0\.113\.41 .*spf_aligned=fail  from=mail\.alpha\.example$' <<<"$unauth" ||
+    fail "the subdomain From is not printed:\n$unauth"
+  # CONTROL: a record whose header From is the policy domain names no From.
+  auth="$(section 'AUTHENTICATED' <<<"$output")"
+  grep -q '192\.0\.2\.91 ' <<<"$auth" || fail "no row for the record whose From is the policy domain:\n$auth"
+  [[ "$auth" != *from=* ]] || fail "a From that is the policy domain is printed:\n$auth"
+}
+
+@test "I986862a: a record with no SPF check prints spf=absent" {
+  run bash -c '"$1" report <"$2"' _ "$REPORT" "$FIXTURES/rows-spf.jsonl"
+  assert_success
+  local auth
+  auth="$(section 'AUTHENTICATED' <<<"$output")"
+  grep -q '192\.0\.2\.91 .*dkim=pass d=alpha\.example s=google  spf=absent  dkim_aligned=pass spf_aligned=fail$' <<<"$auth" ||
+    fail "the record with no SPF check does not read spf=absent:\n$auth"
 }
 
 # The fixtures are shaped from real reports, and a real report names real
