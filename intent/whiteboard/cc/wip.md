@@ -2,10 +2,10 @@
 node: cc
 name: Control Claude
 role: control
-session_id: 857f86f7-6e67-4e45-9188-f703d0c92b34
-heartbeat_at: 2026-11-25 13:08Z
-status: paused
-focus: "2026-11-25 13:08Z by date -u: RELEASED for rhadamanth's reboot (vc decision 309). I986862a and I48d1c19 shipped in devbin 0.1.33 and are closed with their Resolutions. 0326 waits on pplr#0001, cldr#0001 and ccusage#0007. No worktree, branch, slot or run. On restart: /in-session, then hold for vc's word."
+session_id: 0a873310-9f94-45cf-a7be-07f9fd399ac2
+heartbeat_at: 2026-11-25 16:36Z
+status: active
+focus: "2026-11-25 16:36Z by date -u: FOLDED for hv's compact cycle. On resume: /in-session, then hold for vc's word; 0326 waits for its consumers."
 claims: [ISSUE:0326]
 ---
 

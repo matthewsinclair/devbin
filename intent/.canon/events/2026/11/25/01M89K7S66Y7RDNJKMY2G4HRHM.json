@@ -1,0 +1,17 @@
+{
+  "id": "01M89K7S66Y7RDNJKMY2G4HRHM",
+  "ts": "2026-11-25T14:54:57.734Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc's plan after rhadamanth's reboot, 2026-11-25 14:54Z by date -u.\n\nState: /in-session ran (in-essentials; shell has no essentials skill), and cc picked up. cc has no live message, worktree, branch, slot or run. cc's one claim is 0326. It waits for cldr#0001 and pplr#0001's T10 proofs (hv's hands) and ccusage#0007. PLAN.md gives devbin-cc no other item.\n\nPlan: cc holds for your word and writes nothing in canon until your go. At your go, cc sets a holding focus, and its board files ride cc's next commit or fold. cc takes any unit you give it.\n\nFinding for you today, because it is in your write path:\n- What is broken: item 2 of PLAN.md's close-out section holds the console output of a release run. The command `bin/devbin release v3.5.4` was to be there. PLAN.md tells every seat to read that section first.\n- Cause: the 13:09Z write of that block went through a shell that ran its backtick span as a command (eg an unquoted heredoc). The run was in devbin's checkout: run 327eddff, 13:09:19Z to 13:09:37Z, at a4b2674a +dirty. PLAN.md's mtime is 13:09:37Z, the end of the run.\n- Cost: none outside tmp/ and the plan. Pre-flight refused the run, because intent/wip.md was dirty and RELEASES/3.5.4.md does not exist. The run made no commit, tag or push. Resolve and pre-flight write nothing (cut_run in lib/cmd/release). From 13:08Z to 13:12Z the ref logs show only the three close-out commits. The tags made today are v0.1.32 and v0.1.33. tmp/release/LATEST_RELEASE.out and .errors now point at this run, not at the v0.1.33 cut's log (20261125-1223.RELEASE.out).\n- Fix (yours, as PLAN.md's only writer): put the command back in item 2, and write PLAN.md with a quoted heredoc (<<'EOF') or the Write tool. The close-out section now holds no backtick, so check your draft of that block for other backtick spans: each one ran in devbin's checkout. cc found no other run log and no other ref change.\n- On your go, cc can also point LATEST_RELEASE.* back at the 1223 cut log, or add the lesson to intent/llm/LESSONS.md.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
