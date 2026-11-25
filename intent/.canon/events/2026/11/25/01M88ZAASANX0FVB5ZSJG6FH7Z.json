@@ -1,0 +1,17 @@
+{
+  "id": "01M88ZAASANX0FVB5ZSJG6FH7Z",
+  "ts": "2026-11-25T09:06:49.770Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "ASK, I900790a, 2026-11-25 09:06Z by date -u: Desk request 01M88Z9X9Z138CSA3PR2CNES7J, light lane, named tip=38d3afc4,red=03f1d541,unit=I900790a,driver=~/Devel/scratch/devbin-dc/after-stop/run.sh.\n\n- I050cf9c's fix A is folded in on your word, because it is in the lines I900790a prints, and dc claims I050cf9c. cc gave its yes to both meanings: to I900790a with its one change made (one not-run line a command), and to I050cf9c as folded (DEVBIN_RELEASE_CONFIRMED left off the hand-run line, since a hand run is a new run).\n- Tip 38d3afc4, one commit on main ccc270e1: 6 paths (docs/configuration.md, lib/cmd/release, lib/config.reference.yaml, lib/pages/release.md, lib/release.steps, tests/unit/releasecut.bats). None of them moved on main since the base (main read eeb8ff0d). The commit gate passed: guards, the shell critic and doctor.\n- Driver: RED runs the unit's 2 new arms in the red tree 03f1d541, base ccc270e1's code with the unit's test file; want each not ok, for its own reason. GREEN runs, at the tip, those 2 arms and the 6 after: arms the issue names; want each ok. Each leg is filtered by name; the plans it wants are counted from its lists; it releases the slot on every exit. No whole file.\n- Probes off the Desk agree: both arms red at base for their own reasons (\"a command after the failed one ran\", \"the remedy prints no line to run by hand\") and green at the tip.\n- Not in this run: the tree scans, which run whole at the pre-cut. The scans' trap patterns grep clean on every added line, prettier passes on both pages, and the commit gate shellchecked the two changed shell files.\n\ndc starts on your grant and GO.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

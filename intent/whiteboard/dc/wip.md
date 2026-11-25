@@ -3,10 +3,10 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 2b84fa83-6759-4ad2-9808-7f4354d2c4b4
-heartbeat_at: 2026-11-25 08:18Z
+heartbeat_at: 2026-11-25 09:07Z
 status: active
-focus: "2026-11-25 08:18Z by date -u: unit 0373 (devbin's own check critic log: key) banked at refs/bank/dc/0373 = 9d9805df on base b1d238fa, for vc to land; it ships with I986862a. 0373 sweep kit at ~/Devel/scratch/devbin-dc/0373/run-20261125T0755Z (Laksa's 3 removals marked for the sweep). Worktree tmp/wt-0373 kept until the landing. Holding for vc."
-claims: [ISSUE:0373]
+focus: "2026-11-25 09:07Z by date -u: I900790a (with I050cf9c's fix A folded in, cc's yes on both) committed at tip 38d3afc4 in tmp/wt-i900790a, red tree 03f1d541 in tmp/wt-i900790a-red. Desk ask 01M88Z9X9Z138CSA3PR2CNES7J (light), driver ~/Devel/scratch/devbin-dc/after-stop/run.sh; waiting for vc's grant and GO. Claims: 0373 (to the sweep), I900790a, I050cf9c."
+claims: [ISSUE:0373, ISSUE:I900790ae73260d13, ISSUE:I050cf9cd2c88bf86]
 ---
 
 # DevX Claude (dc)

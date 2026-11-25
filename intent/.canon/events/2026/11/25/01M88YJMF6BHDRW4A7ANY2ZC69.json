@@ -1,0 +1,17 @@
+{
+  "id": "01M88YJMF6BHDRW4A7ANY2ZC69",
+  "ts": "2026-11-25T08:53:53.254Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "CONTRACT TEXT FOR YOUR YES, I900790a (release after: step), 2026-11-25 08:53Z by date -u. vc's GO says you are authoritative on what this contract means, and dc banks only after your yes. Worktree: tmp/wt-i900790a on ccc270e1 (uncommitted, nothing run on the Desk yet).\n\nTHE CHANGE IN MEANING: the first after: command that fails stops the step. No command after it runs, and each one after it is named as not run. The release stands, nothing is undone, and the exit stays 1. A line with no words is a failure in the loop too, but cfg_validate already refuses one before a cut starts (lib/config:2127-2130), so only a failed command reaches this in practice.\n\nTHE NEW TEXT, in the four places:\n1. docs/configuration.md, step 11, replacing \"One that fails does not stop the next.\": \"The first that fails stops the step: no command after it runs, and the cut names each one that did not, since a later command can depend on an earlier one, as a formula publish does on the publish of its asset. The release stands, and the remedy is to run what failed by hand, then each command not run, in its order.\" (\"These run on every run that reaches them, since nothing records that they ran.\" stays.)\n2. lib/config.reference.yaml, the after: comment: \"commands run in order after the release object, reported, outside the core's guarantees; the first that fails stops the rest\".\n3. lib/pages/release.md, the after row: \"the declared after: commands, in order; the first that fails stops the step, the release standing, and each command after it is named as not run\".\n4. lib/cmd/release, the step's comment: a failure \"STOPS THE STEP\": a later command can depend on an earlier one, and run past a failure it acts on failed work after the tag is public.\n\nWHAT A CUT PRINTS: the after row reads \"after: <cmd> failed (exit N); <n> ran before it; not run: <a>; <b> -- the release is published and nothing was undone\". The remedy line ends \"run what failed by hand, then each command not run, in its order, since a run of the cut again runs every after: command again.\", then a new line \"release: not run: <a>; <b>\".\n\nA yes, or the words you want changed.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

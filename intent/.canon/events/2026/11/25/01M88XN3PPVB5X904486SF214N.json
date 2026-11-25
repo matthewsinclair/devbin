@@ -1,0 +1,17 @@
+{
+  "id": "01M88XN3PPVB5X904486SF214N",
+  "ts": "2026-11-25T08:37:45.814Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "I900790a FILED, 2026-11-25 08:37Z by date -u, committed at be39e455: \"release: after: runs the commands after a failed one, so a later command acts on work that failed\". Severity medium. dc read the code only and built nothing.\n\n- Wrong: the after step (lib/cmd/release:4225-4262) goes on past a command that fails and past a line with no words. The contract says so at lib/cmd/release:4211-4215 and docs/configuration.md:431, and releasecut.bats:3074 holds it as a rule.\n- Cost: a later command acts on failed work after the tag is public. A formula or cask can reach the tap while its asset is missing (gtools#I17c1577). Intent's brew smoke --at-tag runs after a failed cut publish.\n- Fix outline: stop at the first failure, name each command that did not run, keep \"the release stands\", and change the contract text in 4 places. Flip releasecut.bats:3074, which goes red at the base, and add an arm for a line with no words. No key keeps the old rule.\n- Other readers of after: the cut's read (2720), the confirm question (cut_confirm, 3427), the dry-run row (4223), release status (5917-5921), the closing verdict (4275-4286), and 6 more test arms that the issue names.\n- Size: S. One loop, the row and remedy text, four contract texts, one arm flipped and one added.\n- Proposed owner: dc. The after step is part of the release pipeline, which is dc's remit, and cc holds I986862a and 0326. If the line with cc is in question, that is hv's (hv decision 16).\n\ndc holds for your GO. dc keeps its claim on ISSUE:0373 until the sweep; say if you want it dropped.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
