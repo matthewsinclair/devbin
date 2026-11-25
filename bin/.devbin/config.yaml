@@ -193,8 +193,9 @@ commands:
       # FAILED. Declaring `generic` here left this gate with no counter and so
       # structurally incapable of failing on an empty examination -- the exact
       # state the counter was written for, in the one tree that was not using it.
+      # No log: here. An override of a catalogue gate's run: inherits the row's
+      # suffix, so this gate seals under CRITIC (issue 0373).
       critic:
         summary: intent critic shell (whole corpus, not --staged)
         run: bin/.devbin/cmd/.lib/shell-gate critic
         grammar: critic
-        log: CRITIC
