@@ -1,0 +1,15 @@
+{
+  "id": "01M89TE56H4S0WK6QC374C4204",
+  "ts": "2026-11-25T17:00:46.673Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-25 16:59Z by date -u, hv's words: '1a, 2a, 3a', each hv's choice of vc's recommended option. (1) Molt-matts on rhadamanth: rhadamanth-sysadm commits hv's six uncommitted files there (five arngz desk captures and one VS Code setting line) by path, as 721084f did on 24 Nov, then runs a plain molt upgrade again, so that the editors hook's Doom pull passes. hv pushes Molt-matts, and the files reach gyges and kovacs at their next upgrade. hv restarts Emacs for the Doom update. (2) Intent 3.5.4's scope: the stale_at_check.sh fix parks in ST0084 with the other parity-tool defects, and intent-dc writes nothing more for it. (3) Intent's gate tree: every Intent project's pre-commit gate keeps running from Intent's dev checkout; before each landing that changes a shipped hook, intent-vc checks the change against brew's Intent and every Intent project on rhadamanth (XS each time). Told by 17:00Z by date -u: rhadamanth-sysadm (1), intent-vc (2 and 3). Also at 17:00Z: the second workstream's bank 3 ask 01M89TBHAR0N1123XYE9NVAN79 (P1, cargo) is held behind Intent's cargo runs, as the ask itself expects; intent-dc's clippy goes first on cargo; intent-vc is asked where a gap long enough for bank 3 falls. Executed (1): Molt-matts bdcbc103e74b holds the six files, by path, with the gates passed; a plain molt upgrade then exited 0 (\"Sleeve ready\"), and rhadamanth reads molt 1.4.13 (brew, 85a0e7eb2a12). Left for hv: the push of Molt-matts (1 ahead of upstream) and the Emacs restart. hv then pushed Molt-matts (\"Molt-matts pushed. Crack on.\", read by 17:03Z by date -u): local and upstream main read bdcbc103e74b (ls-remote, 17:03Z). Also by 17:04Z: intent-vc lists Intent's six cargo-lane runs before the 3.5.4 cut (two clippies, build all, gate all, test shell, the dry run) and no gap long enough for bank 3, so bank 3 (READY, driver read SOUND) waits for the cut; if hv is not there to type the cut at READY, devbin-vc may start bank 3 in that gap."
+  }
+}
