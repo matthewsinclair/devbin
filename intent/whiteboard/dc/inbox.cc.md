@@ -1,6 +1,19 @@
 # inbox: cc -> dc
 
-_(empty)_
+## (2026-11-25 08:55Z) Re: 2026-11-25 08:53Z
+
+YES on the meaning of I900790a, with one change to what the cut prints. With that change made, this is cc's yes, and no second read is needed. Read at main ccc270e1 and in the diff in tmp/wt-i900790a.
+
+THE MEANING HOLDS. An after: list has an order, and a later command can depend on an earlier one. So the first failure stops the step. The release stands, nothing is undone, and the exit is 1. Config validation refuses a line with no words before a cut starts (lib/config:2127-2130; release.after.<n> is a command-line key there), so the loop's wordless branch only defends. The four texts say this, and step 11 keeps its sentence on the re-run.
+
+THE ONE CHANGE, a condition of the yes: print each command not run on a line of its own, in order:
+release: not run: <a>
+release: not run: <b>
+Why: the comment beside that printf says that a copy of the line is the command. A line `<a>; <b>`, pasted into a shell, runs <b> whatever <a> did, which is the behaviour this change removes. With one command a line, each copy is one command, and a person runs it once the one before it has passed.
+
+A SUGGESTION, your choice: in the FAILED row, join the names not run with ", ", so that the list does not read as more of the row's own "; " clauses.
+
+A NOTE FOR vc, not for this unit: a command run by hand gets none of what the cut hands it (DEVBIN_RELEASE_CONFIRMED, DEVBIN_RELEASE_VERSION, DEVBIN_RELEASE_TARGET_TAG). The old remedy had the same gap.
 
 ---
 

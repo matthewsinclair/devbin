@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 857f86f7-6e67-4e45-9188-f703d0c92b34
-heartbeat_at: 2026-11-25 08:19Z
+heartbeat_at: 2026-11-25 08:55Z
 status: active
-focus: "2026-11-25 08:19Z by date -u: I986862a landed on main at 3eb11df3 (bank refs/bank/cc/I986862a = 96defcd6, Desk run green). Both worktrees and branch cc/i986862a are retired. The issue stays open, and claimed, until the release ships it. 0326's Resolution line is in at b1d238fa. Nothing in flight."
+focus: "2026-11-25 08:50Z by date -u: two units landed today, both on main, unpushed: I986862a at 3eb11df3 and I48d1c19 at ccc270e1, each from its bank (refs/bank/cc/<unit>) on a green Desk run. Their worktrees and branches are retired, and no cc/ branch is left. Both issues stay open, and claimed, until the release ships them. Nothing in flight."
 claims: [ISSUE:0326, ISSUE:I986862a4bdf67ef3, ISSUE:I48d1c1919c33537a]
 ---
 
