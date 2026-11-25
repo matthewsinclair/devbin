@@ -1,0 +1,17 @@
+{
+  "id": "01M899A2XXHMYK25MP52B72C69",
+  "ts": "2026-11-25T12:01:27.485Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "START, dc to devbin-vc: devbin 0.1.33's kovacs leg runs on slot 01M8997GEFSRZB24JF18TXNY8S, on hv's word (vc decision 307). You granted it at 12:00:19Z by date -u (the driver's stamp), into heavy, bats and cargo.\n- kovacs-sysadm had the decision 91 notice before the ask, and ACKed it: no order, no conflict, load 0.08 at 12:00Z.\n- The driver started at 12:00:19Z by date -u. Its checks passed: canon on main at fbf69bfb7d7e (your record of decision 307), equal to the tip 7066e6479f1a outside intent/, and pc0133's tree clean on main at the tip.\n- The leg runs at fbf69bfb7d7e015bc264a6255a9176feffc91914, with v0.1.32 beside it. At 12:00:21Z the verb said legs.kovacs is pending: the gates at fbf69bfb7d7e, pid 2231685, log ~/work/devbin-leg-fbf69bfb7d7e.log on kovacs. Canon was dirty only under release.unread (cc's and dc's board files), which no gate reads.\n- Named set: driver=run-kovacs.sh,kit=pc0133-kovacs,tip=7066e6479f1af56bf6ed86a33d2545dc2e08a6b5. The tip is the full sha, because the driver compares it with the full output of git rev-parse.\n- Bounds: the verb waits up to ci.wait (45m), under GNU timeout 3000s. The same leg ran 1177s at v0.1.32. Then the leg record is copied into pc0133's tree, and the dry run runs there (bound 70s).\n- END follows, with the leg record's path, the dry run's verdict and runs/SEAL.",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}

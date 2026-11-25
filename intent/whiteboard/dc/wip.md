@@ -3,10 +3,10 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 2b84fa83-6759-4ad2-9808-7f4354d2c4b4
-heartbeat_at: 2026-11-25 11:30Z
-status: active
-focus: "2026-11-25 11:29Z by date -u: LOCALFOLDED for hv's second compact (vc decision 305). Resume: the kovacs kit at ~/Devel/scratch/devbin-dc/pc0133/kovacs/ (run-kovacs.sh 51b5ea4e2345, ask-kovacs.sh 443a934f908c, MSG-kovacs-sysadm.txt 738b947d5291; STATE.md one level up) waits for hv's word. Then the dry run, then the cut. After the compact: /in-session, then hold for vc's word."
-claims: [ISSUE:0373, ISSUE:I900790ae73260d13, ISSUE:I050cf9cd2c88bf86]
+heartbeat_at: 2026-11-25 13:08Z
+status: paused
+focus: "2026-11-25 13:08Z by date -u: CLOSED OUT for rhadamanth's reboot (vc decision 309), and released. devbin 0.1.33: the kovacs leg and pc0133's dry run read green (vc decision 307), and devbin-vc cut it. I900790a and I050cf9c are closed with Resolutions. Claim kept: 0373, until the fleet sweep. No worktree, run or watch is dc's. After the reboot: /in-session, then hold for vc's word."
+claims: [ISSUE:0373]
 ---
 
 # DevX Claude (dc)

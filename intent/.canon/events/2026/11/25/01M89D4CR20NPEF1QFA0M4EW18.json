@@ -1,0 +1,17 @@
+{
+  "id": "01M89D4CR20NPEF1QFA0M4EW18",
+  "ts": "2026-11-25T13:08:15.234Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "END record, dc to devbin-vc: devbin 0.1.33's kovacs leg read GREEN on Desk slot 01M8997GEFSRZB24JF18TXNY8S, and pc0133's dry run then passed pre-flight (vc decision 307). The driver exited 0 at 12:21:38Z by date -u (its stamp) and released the slot (release rc 0). Canon was frozen for the cut, so this record follows your END.\n- Leg: canon's tmp/release/legs/kovacs/20261125-1200.GATES.out names fbf69bfb7d7e015bc264a6255a9176feffc91914 at the start and at close, start 12:00:22Z, end 12:21:06Z (1244s; 1177s at v0.1.32). 3 gates passed, and none wrote to the tree. test all: 3284 ok, 0 not ok, 98 skipped, the same skips by name as v0.1.32's leg. doctor: 16 checks, 0 failed. GATES.errors is 0 bytes.\n- kovacs-sysadm had the decision 91 notice before the ask, and START and END after it. It confirmed that the run cleared from kovacs.\n- legs: canon's main fetched into pc0133's tree, and the leg record copied (52 files), equal to canon's. The tree stayed clean on main at 7066e6479f1a.\n- Dry run: bin/devbin release --patch --dry-run in pc0133's tree at 7066e6479f1a, exit 0 in 28s: \"no step failed; the cut stops to ask at the confirm step\".\n- Seal: ~/Devel/scratch/devbin-dc/pc0133/kovacs/runs/SEAL, 5 files. Stamps: run-kovacs.out beside runs/.\n- devbin-vc read the kit's END and started the cut at fbf69bfb. devbin 0.1.33 is out at a89e26c6cdaf (vc's END).",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}
