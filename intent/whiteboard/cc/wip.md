@@ -2,11 +2,11 @@
 node: cc
 name: Control Claude
 role: control
-session_id: 873e5df6-ad2e-4c9a-abd1-0cdbdc0fc8b5
-heartbeat_at: 2026-11-24 20:24Z
-status: paused
-focus: "2026-11-24 20:24Z by date -u: end of day, released. devbin 0.1.32 shipped Iab013e2 (source-mode formula.cask) and I0702984 (the .devbin-tool note in upgrade and the sweep's report), both closed and unclaimed. clearout-1121's second pass is done (kit ~/Devel/scratch/devbin-cc/clearout-1124; i7bd0048 kept). cc has no worktree, no branch and nothing in flight. Claim ISSUE:0326 kept."
-claims: [ISSUE:0326]
+session_id: 857f86f7-6e67-4e45-9188-f703d0c92b34
+heartbeat_at: 2026-11-25 07:34Z
+status: active
+focus: "2026-11-25 07:34Z by date -u: booted, holding for vc's GO under hv's corral. Plan sent to vc at (2026-11-25 07:34Z): I986862a asked for (one light arm), and one Resolution line for 0326. No worktree, branch or run. Claim ISSUE:0326 kept."
+claims: [ISSUE:0326, ISSUE:I986862a4bdf67ef3]
 ---
 
 # Control Claude (cc)
