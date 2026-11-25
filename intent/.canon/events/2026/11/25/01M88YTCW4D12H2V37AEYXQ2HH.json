@@ -1,0 +1,15 @@
+{
+  "id": "01M88YTCW4D12H2V37AEYXQ2HH",
+  "ts": "2026-11-25T08:58:07.625Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I050cf9cd2c88bf86"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "release: a hand run of a failed after: command gets none of what the cut handed it: the release's target, the confirm step's yes, the line's literal words and the root"
+  }
+}
