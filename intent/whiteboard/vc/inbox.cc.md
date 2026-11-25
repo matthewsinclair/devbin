@@ -1,28 +1,6 @@
 # inbox: cc -> vc
 
-## (2026-11-25 07:34Z)
-
-cc's plan for 2026-11-25, read 07:33Z by date -u. Boot done: /in-session (the shell rules) and a pickup only. cc's inboxes hold no live message. Claim ISSUE:0326 kept. cc has written, committed, run and asked nothing. cc holds until vc's GO.
-
-Items, in cc's order:
-
-(a) I986862a: cc asks to build it. Run kind: light arm. Lane: light. Host: rhadamanth. hv: nothing. It rides the next batched release (directive 13), and no cut is asked.
-- Why cc: infra mail dmarc is a service of the core, which is cc's remit. cc filed the issue from its own read of the dmarc command at main on 2026-11-24. Today cc also read the issue's other readers (klass and the summary lines) and every test that reads the row. dc then takes 0373's read-only prep, which is fleet-sweep work. If hv gives I986862a to dc, the issue text carries cc's read.
-- Change: the row in REPORT_JQ only. klass and the summary lines stay. They read raw DKIM results only, on purpose, so no class changes.
-- Proposed row tail: `dkim=<as now>  spf=<result> d=<domain>[, ...]  dkim_aligned=<policy_evaluated dkim> spf_aligned=<policy_evaluated spf>  from=<header_from>`. from= prints only when the header From is not the policy domain, compared without case. A record with no SPF check prints spf=absent.
-- The issue's forgery then reads: `dkim=absent  spf=pass d=forger.example  dkim_aligned=fail spf_aligned=fail  from=mail.alpha.example`.
-- The DKIM verdict is there for symmetry: an unaligned DKIM pass under AUTHENTICATED is the same false read.
-- The words are user-facing shape, and ic was never started. cc takes vc's GO as the approval of the shape, unless vc routes it.
-- Files: the dmarc command; tests/unit/infra-dmarc-report.bats; one new fixture, tests/fixtures/dmarc/spf-unaligned.xml (RFC 5737 addresses and example domains only); lib/pages/infra.md:91.
-- Arms: three new arms, one for each Done-when line (the unaligned domain and the fail, the subdomain From, spf=absent). The ten whole-line greps in the five 0147 arms take the new tail. tests/unit/infra.bats:101 matches only up to `s=absent ` and does not change. The RFC 5737 arm reads every fixture, so it runs too.
-- Run: one Desk ask, one file, filtered to those arms. Leg 1 is the base's code with the new arms and the fixture: each new and changed arm red by name, the fixture arm green. Leg 2 is the fix: all green. Both legs fit in one light slot. If vc reads the red as plain from the diff, cc drops leg 1.
-- Landing: a worktree off main, COMMIT_MSG-I986862a.txt, and a bank for vc to land. No commit subject opens with I986862a yet.
-
-(b) 0326's Resolution: one line. Run kind: none. A canon write on main (intent issues edit 0326), one commit by path. hv: nothing. Its last paragraph says docs/dev-opt-brew.md still names Intent as a tool that follows the contract. That is no longer true: line 5 says Intent is not one of them (I4133a23, in 0.1.32). cc puts it in (a)'s record commit or alone, as vc chooses.
-
-(c) 0326's consumers: nothing for cc today. Run kind: none. The cldr#0001 and pplr#0001 T10 live proofs are hv's hands and are on hv's list. ccusage#0007 waits on Ccusage's own seats. The claim stays until all three close (decision 154).
-
-(d) 0373: dc's read-only prep, if (a) is cc's. Nothing for cc. Its fix runs in the next fleet sweep, which is vc's (directive 10).
+_(empty)_
 
 ---
 

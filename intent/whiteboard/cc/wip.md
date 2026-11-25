@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 857f86f7-6e67-4e45-9188-f703d0c92b34
-heartbeat_at: 2026-11-25 09:24Z
+heartbeat_at: 2026-11-25 11:30Z
 status: active
-focus: "2026-11-25 09:24Z by date -u: LOCALFOLDED for hv's estate-wide compact. Claims: 0326 (waits on pplr#0001, cldr#0001 and ccusage#0007), I986862a (landed 3eb11df3) and I48d1c19 (landed ccc270e1), both waiting for the next release. No worktree, branch or run. After the compact: /in-session, then hold for vc's word."
+focus: "2026-11-25 11:30Z by date -u: LOCALFOLDED for hv's estate-wide compact (vc decision 305). Claims: I986862a (landed 3eb11df3) and I48d1c19 (landed ccc270e1) ship in devbin 0.1.33, which waits for hv's word on the kovacs leg. When vc says 0.1.33 is out, close each with a Resolution. 0326 waits on pplr#0001, cldr#0001 and ccusage#0007. No worktree, branch or run. After the compact: /in-session, then hold for vc's word."
 claims: [ISSUE:0326, ISSUE:I986862a4bdf67ef3, ISSUE:I48d1c1919c33537a]
 ---
 
