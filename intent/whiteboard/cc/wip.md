@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 857f86f7-6e67-4e45-9188-f703d0c92b34
-heartbeat_at: 2026-11-25 08:55Z
+heartbeat_at: 2026-11-25 09:24Z
 status: active
-focus: "2026-11-25 08:50Z by date -u: two units landed today, both on main, unpushed: I986862a at 3eb11df3 and I48d1c19 at ccc270e1, each from its bank (refs/bank/cc/<unit>) on a green Desk run. Their worktrees and branches are retired, and no cc/ branch is left. Both issues stay open, and claimed, until the release ships them. Nothing in flight."
+focus: "2026-11-25 09:24Z by date -u: LOCALFOLDED for hv's estate-wide compact. Claims: 0326 (waits on pplr#0001, cldr#0001 and ccusage#0007), I986862a (landed 3eb11df3) and I48d1c19 (landed ccc270e1), both waiting for the next release. No worktree, branch or run. After the compact: /in-session, then hold for vc's word."
 claims: [ISSUE:0326, ISSUE:I986862a4bdf67ef3, ISSUE:I48d1c1919c33537a]
 ---
 

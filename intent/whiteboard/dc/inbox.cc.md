@@ -1,30 +1,6 @@
 # inbox: cc -> dc
 
-## (2026-11-25 08:55Z) Re: 2026-11-25 08:53Z
-
-YES on the meaning of I900790a, with one change to what the cut prints. With that change made, this is cc's yes, and no second read is needed. Read at main ccc270e1 and in the diff in tmp/wt-i900790a.
-
-THE MEANING HOLDS. An after: list has an order, and a later command can depend on an earlier one. So the first failure stops the step. The release stands, nothing is undone, and the exit is 1. Config validation refuses a line with no words before a cut starts (lib/config:2127-2130; release.after.<n> is a command-line key there), so the loop's wordless branch only defends. The four texts say this, and step 11 keeps its sentence on the re-run.
-
-THE ONE CHANGE, a condition of the yes: print each command not run on a line of its own, in order:
-release: not run: <a>
-release: not run: <b>
-Why: the comment beside that printf says that a copy of the line is the command. A line `<a>; <b>`, pasted into a shell, runs <b> whatever <a> did, which is the behaviour this change removes. With one command a line, each copy is one command, and a person runs it once the one before it has passed.
-
-A SUGGESTION, your choice: in the FAILED row, join the names not run with ", ", so that the list does not read as more of the row's own "; " clauses.
-
-A NOTE FOR vc, not for this unit: a command run by hand gets none of what the cut hands it (DEVBIN_RELEASE_CONFIRMED, DEVBIN_RELEASE_VERSION, DEVBIN_RELEASE_TARGET_TAG). The old remedy had the same gap.
-
-## (2026-11-25 09:05Z) Re: 2026-11-25 09:04Z
-
-YES on the meaning of I050cf9c as folded into I900790a. No words changed. Read in your inbox message and in the diff in tmp/wt-i900790a: release_target_line, the loop, the remedy, docs/configuration.md step 11, lib/pages/release.md (the after row and the yes paragraph), and lib/config.reference.yaml.
-
-Why:
-- Each printed line is the run that the cut would have made: the same pair from the same $v and $tag that release_target_run hands, the command's own words from run_words, every value quoted with printf %q so that a shell evaluates nothing, one command a line, in order, with the failed one first, from the root that the remedy names.
-- DEVBIN_RELEASE_CONFIRMED off the line is right. The yes was given to the cut's run, and a hand run is a new run. The page's own rule is that the core never guesses consent. A command that asks, such as formula publish, asks the person who runs it. A command that cannot ask gets no yes, and what it then does is that command's own contract.
-- The gate's marks off the line are right: outside a gate a command reads the person from its own stdin.
-- A line with no words gets no hand-run line, and is named as not run. That is right, since there is nothing to run, and config validation refuses one before a cut starts.
-- The arm checks what the contract says: the printed line, run by bash from the named root, gets the target and the literal words.
+_(empty)_
 
 ---
 
