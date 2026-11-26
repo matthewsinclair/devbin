@@ -57,8 +57,11 @@ LEG_WAIT_SECONDS=20
 # work/demo-leg.cache, add the commit they stand on to its `runs`.
 # gates-tmplog makes them leave a step's log at the top of their TMPDIR, as a
 # gate that keeps a step's output there does, and a file below a directory
-# there, as a private build's target holds. The project does not ignore tmp/,
-# so dirt a read leaves there is seen. Prints the project's path.
+# there, as a private build's target holds. gates-pids makes them write their
+# runner's pid and their own, `<runner> <gates>`, to <worktree>.pids as they
+# start, so an arm can kill the run as a host's reboot does (kill_run). The
+# project does not ignore tmp/, so dirt a read leaves there is seen. Prints
+# the project's path.
 leg_project() {
   local proj="$DEVBIN_TEST_TMPDIR/proj"
   mkdir -p "$proj/bin" || return 1
@@ -69,6 +72,7 @@ leg_project() {
     cat <<'SH'
 [ "$1 $2" = "release gates" ] || { echo "this fake devbin answers release gates alone" >&2; exit 1; }
 if [ -e gates-die ]; then echo "bash 3.2.57 is below devbin's floor of 5"; exit 1; fi
+if [ -e gates-pids ]; then printf '%s %s\n' "$PPID" "$$" >"$PWD.pids" || exit 1; fi
 if [ -e gates-tmpdir ]; then
   printf '%s\n' "${TMPDIR-unset}" >"$PWD.seen-tmpdir" || exit 1
   if [ "${TMPDIR-}" = "$PWD.tmp" ]; then
@@ -141,6 +145,24 @@ leg_wt() { printf '%s/%s/work/demo-leg-%s\n' "$HOSTS" "$1" "${2:0:12}"; }
 release_gates() {
   : >"$1.go"
   await_file "$1.rc"
+}
+
+# kill_run <wt> -- the run at <wt> killed as a host's reboot or the
+# out-of-memory killer ends one: its runner first, so it never writes the
+# gates' exit status, then its gates, each waited for until it is gone. The
+# project's tree must hold gates-pids.
+kill_run() {
+  local runner gates p deadline
+  await_file "$1.pids"
+  read -r runner gates <"$1.pids" || fail "no pids beside $1"
+  for p in "$runner" "$gates"; do
+    kill -KILL "$p" || fail "pid $p of the run at $1 could not be killed"
+    deadline=$((SECONDS + LEG_WAIT_SECONDS))
+    while kill -0 "$p" 2>/dev/null; do
+      [ "$SECONDS" -lt "$deadline" ] || fail "pid $p of the run at $1 outlived its kill"
+      sleep 0.1
+    done
+  done
 }
 
 # leg_word -- the word of the last `run`.
@@ -597,18 +619,24 @@ leg_kept_log() { printf '%s/%s.log\n' "$(release_leg_dir "$proj" kov)" "${1:0:12
 }
 
 @test "0361: a remote leg's start leaves the host's gate cache as it stands while another run of the project is going there, whose gates may be reading it, and names that run in the leg's log" {
-  local proj sha wt cache going
+  local proj first sha wt cache going
   proj="$(leg_project)"
-  sha="$(git -C "$proj" rev-parse HEAD)"
+  first="$(git -C "$proj" rev-parse HEAD)"
   mkdir -p "$HOSTS/kov/work"
   cache="$HOSTS/kov/work/demo-leg.cache"
+  # Another run of the project, its runner alive and its gates going, held.
+  going="$(leg_wt kov "$first")"
+  run release_leg_start "$proj" kov demo "$first"
+  [ "$(leg_word)" = pending ] || fail "the start of the run going: $output"
+  : >"$proj/second"
+  leg_commit "$proj" "a second commit"
+  sha="$(git -C "$proj" rev-parse HEAD)"
   wt="$(leg_wt kov "$sha")"
   mkdir -p "$cache/target"
   head -c 262144 /dev/zero >"$cache/target/big"
-  # Another run's worktree with no exit status beside it, its gates going; an
-  # ended run's, with its status, and a TMPDIR, neither of which is one going.
-  going="$HOSTS/kov/work/demo-leg-0123456789ab"
-  mkdir -p "$going" "$HOSTS/kov/work/demo-leg-ba9876543210" "$HOSTS/kov/work/demo-leg-ba9876543210.tmp"
+  # An ended run's directory, with its status, and a TMPDIR, neither of which
+  # is one going.
+  mkdir -p "$HOSTS/kov/work/demo-leg-ba9876543210" "$HOSTS/kov/work/demo-leg-ba9876543210.tmp"
   printf '0\n' >"$HOSTS/kov/work/demo-leg-ba9876543210.rc"
   run release_leg_start "$proj" kov demo "$sha" "" 64
   [ "$(leg_word)" = pending ] || fail "a start beside a run going: $output"
@@ -618,6 +646,7 @@ leg_kept_log() { printf '%s/%s.log\n' "$(release_leg_dir "$proj" kov)" "${1:0:12
   release_gates "$wt"
   run release_leg_read "$proj" kov demo "$sha"
   [ "$(leg_word)" = green ] || fail "the run beside a run going: $output"
+  release_gates "$going"
   every_call_batch
 }
 
@@ -735,5 +764,173 @@ leg_kept_log() { printf '%s/%s.log\n' "$(release_leg_dir "$proj" kov)" "${1:0:12
   [ -d "$wtf" ] && [ -e "$wtf.rc" ] || fail "an ended run whose log could not be copied was cleared"
   rm -f "$HOSTS/kov/.fail-scp"
   release_gates "$(leg_wt kov "$sha")"
+  every_call_batch
+}
+
+# ============================================================================
+# A RUN WHOSE RUNNER IS GONE (issue I0a62f4a)
+# ============================================================================
+# A run killed with its host, by the out-of-memory killer or by a full disk
+# never writes its exit status. It read as a run going at every later start,
+# which then left the gate cache unbounded, and as running at every read, to
+# the cut's deadline. A run with no status is going only while its runner is
+# alive, found by its command line, and a gone run is cleared as an ended run
+# is. A leg ref no run's worktree holds is deleted.
+
+@test "I0a62f4a: a remote leg's start holds the host's gate cache to its bound beside a run of the project with no exit status and no runner, which is gone and reads no cache" {
+  local proj sha wt cache dead
+  proj="$(leg_project)"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov/work"
+  cache="$HOSTS/kov/work/demo-leg.cache"
+  wt="$(leg_wt kov "$sha")"
+  mkdir -p "$cache/target"
+  head -c 262144 /dev/zero >"$cache/target/big"
+  # A run's directory with no exit status beside it and no runner alive.
+  dead="$HOSTS/kov/work/demo-leg-0123456789ab"
+  mkdir -p "$dead"
+  run release_leg_start "$proj" kov demo "$sha" "" 64
+  [ "$(leg_word)" = pending ] || fail "a start beside a run whose runner is gone: $output"
+  [ ! -e "$cache/target" ] || fail "the cache was left over its bound beside a run whose runner is gone: $(ls -lR "$cache")"
+  grep -qE "^DEVBIN_GATE_CACHE emptied: $cache held [0-9]+ KiB, over its bound of 64 KiB, with [0-9]+ KiB free on its disk, so it is emptied and this run builds cold\$" "$wt.log" ||
+    fail "the leg's log does not say the cache was emptied: $(cat "$wt.log")"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the run beside a run whose runner is gone: $output"
+  every_call_batch
+}
+
+@test "I0a62f4a: a leg's start clears a run of the project at another commit whose runner is gone with no exit status as an ended run, warned of, its log copied back with a last line that says so, and its ref deleted" {
+  local proj killed sha wtk wt dir
+  proj="$(leg_project)"
+  : >"$proj/gates-pids"
+  leg_commit "$proj" "gates that say their pids"
+  killed="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  wtk="$(leg_wt kov "$killed")"
+  run release_leg_start "$proj" kov demo "$killed"
+  [ "$(leg_word)" = pending ] || fail "the start of the run then killed: $output"
+  kill_run "$wtk"
+  : >"$proj/second"
+  leg_commit "$proj" "a second commit"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha"
+  assert_success
+  assert_output_matches $'(^|\n)pending\t'
+  dir="$(release_leg_dir "$proj" kov)"
+  assert_output_contains "the run of demo at ${killed:0:12} on kov has no exit status, and its runner is gone, so it is cleared as an ended run is, its log copied back to $dir first"
+  [ -f "$dir/${killed:0:12}.log" ] || fail "the gone run's log was not copied back to $dir"
+  grep -qE "^--- no exit status, and its runner is gone: read at [0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z by this host's clock ---\$" <<<"$(tail -n 1 "$dir/${killed:0:12}.log")" ||
+    fail "the gone run's log does not end with the line that says so: $(cat "$dir/${killed:0:12}.log")"
+  [ ! -e "$wtk" ] && [ ! -e "$wtk.log" ] || fail "the gone run at ${killed:0:12} was left on the host"
+  if git -C "$HOSTS/kov/work/demo-leg.git" rev-parse -q --verify "refs/devbin/legs/$killed" >/dev/null; then
+    fail "refs/devbin/legs/$killed was left on the host"
+  fi
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the start's own run: $output"
+  every_call_batch
+}
+
+@test "I0a62f4a: a leg's start at the commit of a run whose runner is gone with no exit status clears that run and starts its own afresh, where it waited on the gone run to its deadline" {
+  local proj sha wt dir
+  proj="$(leg_project)"
+  : >"$proj/gates-pids"
+  leg_commit "$proj" "gates that say their pids"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha"
+  [ "$(leg_word)" = pending ] || fail "the first start: $output"
+  kill_run "$wt"
+  rm -f "$wt.pids"
+  run release_leg_start "$proj" kov demo "$sha"
+  assert_success
+  assert_output_matches $'(^|\n)pending\t'
+  dir="$(release_leg_dir "$proj" kov)"
+  assert_output_contains "the run of demo at ${sha:0:12} on kov has no exit status, and its runner is gone, so it is cleared as an ended run is, its log copied back to $dir first"
+  refute_output_contains "was started there before"
+  # The gates of a run started afresh say their pids again.
+  await_file "$wt.pids"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the run started afresh at the gone run's commit: $output"
+  every_call_batch
+}
+
+@test "I0a62f4a: release_leg_read reads a run whose runner is gone with no exit status as unknown, naming it, where it read running to the deadline, and clears it as an ended run, warned of, its log copied back with a last line that says so" {
+  local proj sha wt log
+  proj="$(leg_project)"
+  : >"$proj/gates-pids"
+  leg_commit "$proj" "gates that say their pids"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha"
+  [ "$(leg_word)" = pending ] || fail "the start: $output"
+  kill_run "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  assert_success
+  assert_output_matches $'(^|\n)unknown\tthe gates at '"${sha:0:12}"' on kov have no exit status, and their runner is gone: '
+  assert_output_contains "the run of demo at ${sha:0:12} on kov has no exit status, and its runner is gone, so it is cleared as an ended run is"
+  log="$(leg_kept_log "$sha")"
+  [ -f "$log" ] || fail "the gone run's log was not copied back to $log"
+  grep -qE "^--- no exit status, and its runner is gone: read at [0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z by this host's clock ---\$" <<<"$(tail -n 1 "$log")" ||
+    fail "the gone run's log does not end with the line that says so: $(cat "$log")"
+  [ ! -e "$wt" ] && [ ! -e "$wt.log" ] || fail "the gone run was left on the host"
+  # Read again, the run is this machine's record, unknown from its log.
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = unknown ] || fail "the gone run, read again: $output"
+  every_call_batch
+}
+
+@test "I0a62f4a: a leg's start deletes each leg ref of the project on the host that no run's worktree holds, a stopped start's and a worktree's whose directory is gone, and keeps the ref of a run that is there" {
+  local proj going stopped pruned sha wtg wtp wt repo list
+  proj="$(leg_project)"
+  going="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  repo="$HOSTS/kov/work/demo-leg.git"
+  wtg="$(leg_wt kov "$going")"
+  run release_leg_start "$proj" kov demo "$going"
+  [ "$(leg_word)" = pending ] || fail "the start of a run going: $output"
+  # A start that stopped after its send-pack: the host refused to start it.
+  : >"$proj/second"
+  leg_commit "$proj" "a second commit"
+  stopped="$(git -C "$proj" rev-parse HEAD)"
+  : >"$HOSTS/kov/.fail-start"
+  run release_leg_start "$proj" kov demo "$stopped"
+  [ "$(leg_word)" = unknown ] || fail "a start the host refused: $output"
+  rm -f "$HOSTS/kov/.fail-start"
+  git -C "$repo" rev-parse -q --verify "refs/devbin/legs/$stopped" >/dev/null ||
+    fail "the start the host refused left no ref behind"
+  # An ended run whose worktree's directory is gone: git still lists it.
+  : >"$proj/third"
+  leg_commit "$proj" "a third commit"
+  pruned="$(git -C "$proj" rev-parse HEAD)"
+  wtp="$(leg_wt kov "$pruned")"
+  run release_leg_start "$proj" kov demo "$pruned"
+  [ "$(leg_word)" = pending ] || fail "the start of the run whose directory goes: $output"
+  release_gates "$wtp"
+  rm -rf "$wtp"
+  : >"$proj/fourth"
+  leg_commit "$proj" "a fourth commit"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha"
+  assert_success
+  assert_output_matches $'(^|\n)pending\t'
+  if git -C "$repo" rev-parse -q --verify "refs/devbin/legs/$stopped" >/dev/null; then
+    fail "the ref of the start that stopped after its send-pack was left on the host"
+  fi
+  if git -C "$repo" rev-parse -q --verify "refs/devbin/legs/$pruned" >/dev/null; then
+    fail "the ref of the run whose worktree's directory is gone was left on the host"
+  fi
+  list="$(git -C "$repo" worktree list --porcelain)"
+  ! grep -qF -- "demo-leg-${pruned:0:12}" <<<"$list" || fail "git still lists the worktree whose directory is gone: $list"
+  refute_output_contains "${pruned:0:12}"
+  git -C "$repo" rev-parse -q --verify "refs/devbin/legs/$going" >/dev/null || fail "the ref of the run going was deleted"
+  release_gates "$wtg"
+  release_gates "$wt"
   every_call_batch
 }
