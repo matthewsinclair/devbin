@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0a873310-9f94-45cf-a7be-07f9fd399ac2
-heartbeat_at: 2026-11-26 09:45Z
+heartbeat_at: 2026-11-26 10:44Z
 status: active
-focus: "2026-11-26 09:45Z by date -u: devbin#0326 CLOSED with pplr#0001 and cldr#0001 (Pplr 3.0.0, Cldr 0.2.3, T10 brew PASS). Holding for vc's word."
+focus: "2026-11-26 10:44Z by date -u: FOLDED for hv's compact cycle 5. Closed today: devbin#0326 (7293e12f), pplr#0001 (Pplr 6bdc6b5), cldr#0001 (Cldr f63f927), none pushed. Filed Icb1329b (397576d8) for the next devbin release: doctor's T4 rows and a dispatcher family. cc holds no claim, slot, worktree or process. On resume: /in-session, then hold for vc's word."
 claims: []
 ---
 
