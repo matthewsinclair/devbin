@@ -1,0 +1,15 @@
+{
+  "id": "01M8B70SR7BTTAFTG1G703DNEV",
+  "ts": "2026-11-26T05:59:54.891Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "If738d642828ceac7"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "`<cmd> all <args>` gives the arguments to every option, so `check all --files x` fails at the four check options that take none"
+  }
+}
