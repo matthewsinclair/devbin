@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: 0a873310-9f94-45cf-a7be-07f9fd399ac2
-heartbeat_at: 2026-11-25 16:36Z
+heartbeat_at: 2026-11-26 06:52Z
 status: active
-focus: "2026-11-25 16:36Z by date -u: FOLDED for hv's compact cycle. On resume: /in-session, then hold for vc's word; 0326 waits for its consumers."
+focus: "2026-11-26 06:52Z by date -u: FOLDED for hv's compact cycle. On resume: /in-session, then hold for vc's word. Next: vc sweeps 0.1.34 into Pplr (5af2306) and Cldr (ea907ad); the two cuts per ~/Devel/scratch/devbin-cc/i0326/handover-cuts.md; T10's brew leg; then close pplr#0001, cldr#0001 and 0326."
 claims: [ISSUE:0326]
 ---
 
