@@ -627,7 +627,7 @@ YAML
   assert_output_contains "1 found, team $TEAM"
   assert_output_contains "signs and verifies"
   assert_output_matches "  devbin +PRESENT"$'(\n|$)'
-  [ "$(calls 'notarytool history --keychain-profile devbin')" -eq 1 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  [ "$(calls 'notarytool history .* --keychain-profile devbin$')" -eq 1 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
   no_secret
 }
 
@@ -683,6 +683,36 @@ YAML
   assert_output_contains "store-creds is interactive"
   [ "$(calls 'notarytool store-credentials')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
   [ "$(calls 'add-generic-password')" -eq 0 ] || fail "$(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+}
+
+@test "I7679181: every notarytool call names the notary profile in the login keychain file, store-credentials, submit, log and history alike" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local home="$DEVBIN_TEST_TMPDIR/home" kc n
+  kc="$home/Library/Keychains/login.keychain-db"
+  mkdir -p "$home"
+  proj="$(app_project)"
+  HOME="$home" run macos_in "$proj" doctor
+  assert_success
+  HOME="$home" macos_in "$proj" app-sign >/dev/null
+  printf 'Invalid\n' >"$DEVBIN_TEST_TMPDIR/notary.status"
+  HOME="$home" run macos_in "$proj" app-notarize
+  assert_failure
+  rm "$DEVBIN_TEST_TMPDIR/notary.status"
+  HOME="$home" run macos_in "$proj" app-notarize
+  assert_success
+  # store-creds reads a terminal, so it runs under one.
+  P="$proj" H="$home" TD="$DEVBIN_TEST_TMPDIR/tmp" AP="$APPLE:$DEVBIN_TEST_TMPDIR/stubs:$PATH" run bash -c "$(declare -f run_tty_eof)"'
+    cd "$P" && HOME="$H" TMPDIR="$TD" PATH="$AP" run_tty_eof ./bin/devbin macos store-creds'
+  assert_success
+  for sub in store-credentials submit log history; do
+    [ "$(calls "^xcrun notarytool $sub ")" -ge 1 ] || fail "no notarytool $sub ran: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  done
+  n="$(calls '^xcrun notarytool ')"
+  [ "$(calls " --keychain $kc")" -eq "$n" ] ||
+    fail "a notarytool call did not name $kc: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  assert_output_contains "Storing the notary profile \"devbin\" in $kc"
 }
 
 # ============================================================================
@@ -1124,7 +1154,8 @@ cut_tag() {
   dist="$(stage_of)"
   run macos_in "$proj" app-notarize
   assert_failure
-  assert_output_contains "notarytool gave no submission id under the notary profile devbin -- nothing stapled; store the profile with:"
+  assert_output_contains "notarytool gave no submission id under the notary profile devbin in $HOME/Library/Keychains/login.keychain-db -- nothing stapled; notarytool said: Error: No Keychain password item found for profile: devbin; run "
+  assert_output_contains " store-creds only if doctor reads it NOT USABLE"
   [ ! -e "$dist/Contents/stapled" ] || fail "a submission under a profile the keychain does not hold was stapled"
   store_profile devbin
   run macos_in "$proj" app-notarize
@@ -1723,7 +1754,7 @@ $BIN_APP|$ID_APP"
   : >"$DEVBIN_TEST_TMPDIR/apple.calls"
   run macos_in "$proj" bin-notarize
   assert_failure
-  assert_output_contains "notarytool gave no submission id under the notary profile devbin -- nothing is assessed; store the profile with:"
+  assert_output_contains "notarytool gave no submission id under the notary profile devbin in $HOME/Library/Keychains/login.keychain-db -- nothing is assessed; notarytool said: Error: No Keychain password item found for profile: devbin; run "
   [ "$(calls '^spctl')" -eq 0 ] || fail "a binary was assessed with no submission: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
   store_profile devbin
   : >"$DEVBIN_TEST_TMPDIR/apple.calls"
