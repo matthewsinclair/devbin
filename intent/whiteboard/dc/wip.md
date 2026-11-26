@@ -2,10 +2,10 @@
 node: dc
 name: DevX Claude
 role: devx
-session_id: 997ee294-3ce4-4799-8902-e774037de92e
-heartbeat_at: 2026-11-26 12:40Z
+session_id: 9c04c552-618e-467c-a335-8251345b9b0b
+heartbeat_at: 2026-11-26 14:21Z
 status: active
-focus: "2026-11-26 12:40Z by date -u: FOLDED for hv's pack-up compact (vc's word). devbin 0.1.34 is RELEASED at dbad1dc3cb46. Nothing of dc's in flight: no run, no slot, no ask. Next release's list, no code before vc's word: I1dbca51 (dc's, filed 1c5384b0: the lib/resolve comment above devbin_dir_shown names a /private/var path; say "a temporary directory", comment only, proof the treescan arms) and Icb1329b (cc's filing, 397576d8: doctor's T4 rows for a one-dispatcher project). Not pushed: dc's eba55b5a, 1c5384b0 and this fold. On resume: /in-session, then hold for vc's word."
+focus: "2026-11-26 14:21Z by date -u: HOLDING, list empty. I1dbca51 landed at fc321d30 (vc), its Resolution written and the issue closed; both worktrees and the bank ref retired. Icb1329b's code is cc's after the four vcs answer. Not pushed: fc321d30 and dc's commits wait for the next push word. No claim, slot, worktree or process."
 claims: []
 ---
 

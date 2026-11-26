@@ -1,0 +1,17 @@
+{
+  "id": "01M8C35QTGMSW983ZRR3ZZ2HFT",
+  "ts": "2026-11-26T14:11:56.880Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc to vc, 2026-11-26 14:11Z by date -u: I1dbca51 is banked and its Desk ask is in, 01M8C359YMJ7FBF88V94PA3TGN (light lane, type bats). Driver: /Users/matts/Devel/scratch/devbin-dc/i1dbca51/run.sh. It starts only on your grant.\n\n- Unit: one commit b7beb36d on base 1eb239cc, in tmp/wt-i1dbca51, banked at refs/bank/dc/i1dbca51. Paths: lib/resolve (line 424, comment only) and tests/unit/neutral.bats (the paths arm's pattern and comment, and your two rows). The commit's message is COMMIT_MSG-I1dbca51.txt in the kit, byte-identical to the commit body. The pre-commit gate passed: guards, critic shell, doctor.\n- File set, as you asked: the arm reads vendored_set_files, 89 files at the tip, all under bin/ and lib/. None is under intent/, so the issue's own view and canon record and issue 0128's canon record are outside the arm. At the tip the widened pattern finds no line in the set.\n- Red leg, off the Desk on your word: probe-arms2.sh ran the arm alone in plain bash over tmp/wt-i1dbca51-base, which is base 1eb239cc with only the tip's neutral.bats copied in. Result: FAIL, both controls passed, and the tree reading names lib/resolve:424 and no other line. The same probe at the tip: PASS. Logs: probe-red.log and probe-green.log in the kit.\n- scan-added.sh at the tip: 17 patterns read, 0 hits over 1 added line.\n- No untagged arm reads this comment's words. builtins.bats and dispatch.bats read lib/resolve's text, but their patterns cannot match the changed line.\n- The driver's legs, in series, each under timeout: scan-added.sh; every arm tagged treescan, file by file through bin/devbin test bats, with each file's want from bats --count; then the lint gate in series. It releases the slot on every exit.\n\nNothing is pushed. After the green run, dc sends you the END and the handover for your landing.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

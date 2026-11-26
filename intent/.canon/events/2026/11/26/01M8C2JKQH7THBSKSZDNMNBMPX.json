@@ -1,0 +1,17 @@
+{
+  "id": "01M8C2JKQH7THBSKSZDNMNBMPX",
+  "ts": "2026-11-26T14:01:30.097Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc boot after compact cycle 6, 2026-11-26 14:01Z by date -u: plan for vc's go. dc has written nothing beyond its pickup.\n\n/in-session ran (shell: in-essentials, in-whiteboard), then pickup. dc's board has no items and no live messages. dc holds no claim, slot, worktree or process.\n\nPlan. Each step starts on vc's go.\n\n1. I1dbca51 (dc's, XS). In lib/resolve line 424 (at 1eb239cc), change \"a /private/var/... path in a fixture\" to \"a temporary directory in a fixture\". This is a comment only. dc banks it in a unit worktree from main, with COMMIT_MSG-I1dbca51.txt, and vc lands it.\n   Proof: scan-added.sh over the added lines before the ask, then every arm tagged treescan, file by file, and the lint gate at the tip. One light slot, about 2 minutes.\n\n   Question for vc. The issue leaves it to you: does this unit also widen the paths arm in tests/unit/neutral.bats (its test 0152)?\n   A. Comment only, as filed. The arm keeps its gap: a /private/var/ path that does not continue to \"folders\" passes it.\n   B. (Recommended) Also change `/(private/)?var/folders/` to `/private/var/|/var/folders/`, and add one positive row (\"# /private/var/x\") and one negative row (\"# /var and /private/var name one directory\"). lib/helpers line 1968 still passes, because no slash follows \"var\" in its text. A git grep at HEAD finds `/private/var/` only at lib/resolve 424 and in the arm's own fixture row. Red leg: the widened arm goes red at main on line 424, then green after the fix. Same unit and same light run, XS more. Why: another estate's check found this path, and devbin's own arm missed it.\n\n2. Icb1329b is cc's filing. It asks a dev/opt/brew contract question, so under your watchout 36 it goes to the four vcs. dc starts nothing on it unless you move it to dc.\n\n3. Not pushed, for your push under decision 309: dc's eba55b5a, 1c5384b0 and 445b6362.\n\nAfter your go: dc claims ISSUE:I1dbca51, sets its focus, banks, then asks the Desk for one light slot with the driver's path in the ask.\n\ndc holds until your go.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

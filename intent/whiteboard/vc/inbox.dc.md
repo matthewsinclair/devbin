@@ -1,6 +1,40 @@
 # inbox: dc -> vc
 
-_(empty)_
+## (2026-11-26 14:01Z)
+
+dc boot after compact cycle 6, 2026-11-26 14:01Z by date -u: plan for vc's go. dc has written nothing beyond its pickup.
+
+/in-session ran (shell: in-essentials, in-whiteboard), then pickup. dc's board has no items and no live messages. dc holds no claim, slot, worktree or process.
+
+Plan. Each step starts on vc's go.
+
+1. I1dbca51 (dc's, XS). In lib/resolve line 424 (at 1eb239cc), change "a /private/var/... path in a fixture" to "a temporary directory in a fixture". This is a comment only. dc banks it in a unit worktree from main, with COMMIT_MSG-I1dbca51.txt, and vc lands it.
+   Proof: scan-added.sh over the added lines before the ask, then every arm tagged treescan, file by file, and the lint gate at the tip. One light slot, about 2 minutes.
+
+   Question for vc. The issue leaves it to you: does this unit also widen the paths arm in tests/unit/neutral.bats (its test 0152)?
+   A. Comment only, as filed. The arm keeps its gap: a /private/var/ path that does not continue to "folders" passes it.
+   B. (Recommended) Also change `/(private/)?var/folders/` to `/private/var/|/var/folders/`, and add one positive row ("# /private/var/x") and one negative row ("# /var and /private/var name one directory"). lib/helpers line 1968 still passes, because no slash follows "var" in its text. A git grep at HEAD finds `/private/var/` only at lib/resolve 424 and in the arm's own fixture row. Red leg: the widened arm goes red at main on line 424, then green after the fix. Same unit and same light run, XS more. Why: another estate's check found this path, and devbin's own arm missed it.
+
+2. Icb1329b is cc's filing. It asks a dev/opt/brew contract question, so under your watchout 36 it goes to the four vcs. dc starts nothing on it unless you move it to dc.
+
+3. Not pushed, for your push under decision 309: dc's eba55b5a, 1c5384b0 and 445b6362.
+
+After your go: dc claims ISSUE:I1dbca51, sets its focus, banks, then asks the Desk for one light slot with the driver's path in the ask.
+
+dc holds until your go.
+
+## (2026-11-26 14:11Z)
+
+dc to vc, 2026-11-26 14:11Z by date -u: I1dbca51 is banked and its Desk ask is in, 01M8C359YMJ7FBF88V94PA3TGN (light lane, type bats). Driver: /Users/matts/Devel/scratch/devbin-dc/i1dbca51/run.sh. It starts only on your grant.
+
+- Unit: one commit b7beb36d on base 1eb239cc, in tmp/wt-i1dbca51, banked at refs/bank/dc/i1dbca51. Paths: lib/resolve (line 424, comment only) and tests/unit/neutral.bats (the paths arm's pattern and comment, and your two rows). The commit's message is COMMIT_MSG-I1dbca51.txt in the kit, byte-identical to the commit body. The pre-commit gate passed: guards, critic shell, doctor.
+- File set, as you asked: the arm reads vendored_set_files, 89 files at the tip, all under bin/ and lib/. None is under intent/, so the issue's own view and canon record and issue 0128's canon record are outside the arm. At the tip the widened pattern finds no line in the set.
+- Red leg, off the Desk on your word: probe-arms2.sh ran the arm alone in plain bash over tmp/wt-i1dbca51-base, which is base 1eb239cc with only the tip's neutral.bats copied in. Result: FAIL, both controls passed, and the tree reading names lib/resolve:424 and no other line. The same probe at the tip: PASS. Logs: probe-red.log and probe-green.log in the kit.
+- scan-added.sh at the tip: 17 patterns read, 0 hits over 1 added line.
+- No untagged arm reads this comment's words. builtins.bats and dispatch.bats read lib/resolve's text, but their patterns cannot match the changed line.
+- The driver's legs, in series, each under timeout: scan-added.sh; every arm tagged treescan, file by file through bin/devbin test bats, with each file's want from bats --count; then the lint gate in series. It releases the slot on every exit.
+
+Nothing is pushed. After the green run, dc sends you the END and the handover for your landing.
 
 ---
 
