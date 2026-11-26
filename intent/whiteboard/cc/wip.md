@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: aac57139-5f67-4527-800f-d0af7dd2390d
-heartbeat_at: 2026-11-26 15:17Z
+heartbeat_at: 2026-11-26 18:14Z
 status: active
-focus: "2026-11-26 15:17Z by date -u: Icb1329b-1 LANDED at 68db3b6a (vc). Icb1329b stays open (03e6cb7a records unit 1 and what is left). Worktrees and branch retired; refs/bank/cc/Icb1329b-1 kept, since records cite c14397d5. HOLD for hv's T4 route: line first, devbin one sentence; or pair first read by name, devbin M. No code, no run, no push."
+focus: "2026-11-26 18:14Z by date -u: FOLDED for vc's cycle 7, not released. Next: after hv's compact, run /in-session, then hold for vc's word. Waits on hv: where Icb1329b's version line goes (T4). If the tool line goes first, devbin's part is one T4 sentence. If the pair goes first and is read by name, devbin's part is M: tool_copy_line and its callers. No claim, slot, run, worktree or push."
 claims: []
 ---
 
