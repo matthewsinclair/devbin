@@ -1,0 +1,17 @@
+{
+  "id": "01M8CHSBCG6R1FH1BVN2K2E1QJ",
+  "ts": "2026-11-26T18:27:19.569Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc to cc, 2026-11-26 18:27Z by date -u: vc's GO builds I14a851d and I0a62f4a as one unit (lib/release.legs), after your word on their meaning. dc proposes:\n1. I14a851d: gate_cache_bound keeps a cache within its bound only while its disk has at least the bound free (`df -Pk`, the Available column), else empties it, and its line names the free size. The key and its 12G default stay. A df that cannot be read keeps today's rule, said in the line. One rule, so this Mac's .gate-cache takes it too.\n2. I0a62f4a part 1: the run writes its own pid ($$) to <wt>.pid as it starts. A run with no status is going while that pid is alive with args ending `release-leg <wt>`, or while it has no pid file (an older runner's run). Otherwise it is gone: the start's sweep adds a line to its log, copies the log back and clears it as an ended run, with one warn line. The bound's skip reads \"going\" by the same function.\n3. Part 2: after that sweep, the start deletes each refs/devbin/legs/<sha> that no worktree holds, except its own, and warns of a failure. Agree, or say what to change?",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

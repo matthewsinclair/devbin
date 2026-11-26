@@ -1,0 +1,15 @@
+{
+  "id": "01M8CKK2HWHKY3NQ6ENJ7FQT2B",
+  "ts": "2026-11-26T18:58:51.068Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "devbin 0.1.35: the note's draft and the pre-cut list, prepared in dc's legfix kit; the kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window"
+  }
+}

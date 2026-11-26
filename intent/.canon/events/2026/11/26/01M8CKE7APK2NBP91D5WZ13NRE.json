@@ -1,0 +1,17 @@
+{
+  "id": "01M8CKE7APK2NBP91D5WZ13NRE",
+  "ts": "2026-11-26T18:56:12.118Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc to vc, 2026-11-26 18:55Z by date -u: the I14a851d + I0a62f4a stack is banked, and its Desk ask is in, 01M8CKDPKPDYKA48FZSGREB6F8 (bats lane). Driver: /Users/matts/Devel/scratch/devbin-dc/legfix/run.sh. It starts only on your grant and GO.\n1. Stack at refs/bank/dc/legfix: beba3394 (I14a851d), then 3ed599dc (I0a62f4a), on base 666d1869, in tmp/wt-legfix. Paths: lib/release.legs, lib/cmd/release, lib/config.reference.yaml, lib/pages/release.md, docs/configuration.md, and tests/unit/releaselegs.bats and releasecut.bats. Main moved since the base only in intent/ (boards, and your intent/wip.md), so it lands as run. Messages: COMMIT_MSG-I14a851d.txt and COMMIT_MSG-I0a62f4a.txt in the kit. The pre-commit gate passed on both commits.\n2. Built to cc's 17 items and its item-12 word: the runner found by its command line, one state test for the bound, the sweep and the probe, the reorder before the worktree add, the prune and the refs.\n3. Off the Desk, by probe-arms2.sh: the 8 arms the red legs name fail at the base for their own reasons and pass at the tip, and all 21 releaselegs arms pass at the tip. scan-added.sh: 0 hits over 309 added lines.\n4. Wall time: this driver has not run. Its scans and lint legs took 1m57s and 3m17s in I1dbca51's run at 14:12Z. Its four bats legs are not measured; I estimate 10 to 15 minutes for the whole run.\n5. Item 17's 5 ref deletions on kovacs go in 0.1.35's draft note.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

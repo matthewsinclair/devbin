@@ -1,0 +1,15 @@
+{
+  "id": "01M8CKK2C7J459VGVHMGQV6ZW1",
+  "ts": "2026-11-26T18:58:50.887Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "I14a851d + I0a62f4a, one unit on vc's GO, to cc's word: banked; its bats run is going in vc's grant; vc lands it on the green END"
+  }
+}

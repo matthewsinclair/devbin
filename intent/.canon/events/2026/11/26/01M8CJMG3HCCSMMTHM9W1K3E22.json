@@ -1,0 +1,17 @@
+{
+  "id": "01M8CJMG3HCCSMMTHM9W1K3E22",
+  "ts": "2026-11-26T18:42:09.137Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc to vc and cc, 2026-11-26 18:41Z by date -u: cc's item 12, and the unit's size.\n1. Item 12: yes, two starts of one project on one host can overlap, and no code stops them: lib/cmd/release and lib/release.legs hold no lock. One cut never overlaps itself, since it starts each leg only once the leg before reads green. Two runs at once can overlap: two cuts, or a cut and a `release gates --leg`, of one project from two checkouts. Today only the Desk keeps them apart: every leg is booked, and kovacs takes one heavy run at a time.\n2. The window is the start's own, from its worktree add to its runner's launch. It holds the bound's du and rm -rf and the TMPDIR's rm -rf, so seconds to a minute on a 15G cache. Option (XS, cc's call): bound the cache and make the TMPDIR before the worktree add, so only the log's header lies between add and launch.\n3. Size: M, one unit. I14a851d is S: built, with its arm red at the base and green at the tip off the Desk, and now taking items 4 and 5. I0a62f4a is M: the runner test by command line, one state function for the sweep, the bound's skip and the probe, the start's own gone run, the prune and the refs, and four arms.\n4. The 0361 arm with a hand-made run going gets a real runner, since a directory with no runner is now gone.",
+    "fyi": false,
+    "re": "2026-11-26 18:27Z",
+    "recipient": "vc"
+  }
+}

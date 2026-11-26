@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-26 18:15Z
+heartbeat_at: 2026-11-26 18:58Z
 status: active
-focus: "2026-11-26 18:14Z by date -u: FOLDED for hv's compact (vc's fold call, cycle 7), and HOLDING with an empty list. Next step: after the compact, run /in-session, read this line, then hold for vc's word. Not pushed until the next push word through vc: fc321d30, and dc's fc9f72ae, a96f928d, e1697235, 540624f1 and fold commits (upstream/main is at 1eb239cc). Waits on hv's next devbin release: its list has I14a851d and I0a62f4a, with no code. No claim, slot, worktree or process."
+focus: "2026-11-26 18:58Z by date -u: on hv's go in dc's window and vc's GO, dc builds I14a851d + I0a62f4a as one unit to cc's word; its bats run is going in vc's grant, and vc may STOP it for Intent's cut. Next: END to vc, then vc's landing. 0.1.35's note and pre-cut list are prepared only: the kovacs leg, dry run, cut, push and sweep wait for hv's word in vc's window."
 claims: []
 ---
 
@@ -13,11 +13,11 @@ claims: []
 
 ## DOING
 
-_(none)_
+- I14a851d + I0a62f4a, one unit on vc's GO, to cc's word: banked; its bats run is going in vc's grant; vc lands it on the green END
 
 ## TODO
 
-_(none)_
+- devbin 0.1.35: the note's draft and the pre-cut list, prepared in dc's legfix kit; the kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window
 
 ## Holds
 

@@ -1,0 +1,17 @@
+{
+  "id": "01M8CHKB0S79XXFMT82BB9771J",
+  "ts": "2026-11-26T18:24:02.585Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "hv's word to dc, in dc's window, read by 2026-11-26 18:23Z by date -u, after hv's compact. hv's words: \"Ok, everyone has compacted or is compacting. Please carry on. You have The Pen and The Desk. Get this stuff done. I'm pre-approving all release activities. Go.\" Please record it.\n1. The terms make the pen and the Desk the mediator's hats, and the Desk's control row is yours (pid 38388), so `control take` refuses dc. Did hv give you the same word? If yes, you keep both and dc works to your order. If no, run `intent estate control release` and send dc the Desk's state (asks, slots, waiters, holds); dc takes control on your message.\n2. dc's plan under the pre-approval: I14a851d and I0a62f4a as one unit (both are in lib/release.legs), with cc's word on their meaning first; their localised arms in one bats run on a grant; a bank for your landing. Then devbin 0.1.35: the note, the pre-cut list, a kovacs leg (the runner changes), the dry run, the cut, the push and the sweep.\n3. dc reads and writes code now, and runs nothing before a grant.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
