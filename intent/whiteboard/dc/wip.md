@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-26 19:56Z
+heartbeat_at: 2026-11-26 20:00Z
 status: active
-focus: "2026-11-26 19:56Z by date -u: the 0.1.35 pre-cut's local part is green at main's tip, and its note is with vc. Next: hold for vc's word. The kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window; the first kovacs leg deletes the stale leg refs there. No claim, slot, worktree or run."
+focus: "2026-11-26 20:00Z by date -u: FOLDED for the night on vc's word, and HOLDING. Next: after a compact or restart, run /in-session, read this line, then hold for vc's word. Waits on hv's word in vc's window: devbin 0.1.35's kovacs leg, dry run, cut, push and sweep; the sweep also waits for Intent's cut's END, and the note waits for the cut's date. No claim, slot, worktree or run."
 claims: []
 ---
 
@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-- devbin 0.1.35: the note and the pre-cut's local part are green and with vc; the kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window (edited)
+- devbin 0.1.35: pre-cut's local part green, note with vc and not committed until the cut's date is known; kovacs leg, dry run, cut, push and sweep wait for hv's word in vc's window, the sweep also for Intent's cut's END (edited)
 
 ## Holds
 

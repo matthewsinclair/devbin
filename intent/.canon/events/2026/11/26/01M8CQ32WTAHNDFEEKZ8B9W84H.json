@@ -1,0 +1,16 @@
+{
+  "id": "01M8CQ32WTAHNDFEEKZ8B9W84H",
+  "ts": "2026-11-26T20:00:01.434Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 71,
+    "text": "devbin 0.1.35: pre-cut's local part green, note with vc and not committed until the cut's date is known; kovacs leg, dry run, cut, push and sweep wait for hv's word in vc's window, the sweep also for Intent's cut's END"
+  }
+}
