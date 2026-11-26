@@ -1,0 +1,15 @@
+{
+  "id": "01M8B5JW64QCNPQQQJ6SWMRG33",
+  "ts": "2026-11-26T05:34:50.052Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window on 2026-11-26, after the overnight wait (the screen unlocked at 04:59:33Z by loginwindow's log). (1) Read by 05:25Z by date -u, hv's ruling in summary: every vc reports its status against the unified plan to devbin-vc; all work is synchronised through devbin-vc, to stop repeated work and needless builds or gates; no small releases; all outstanding work is done, built and tested locally before any push or release; hv and devbin-vc review, then the vcs run. devbin-vc sent the sync and a hold on every run at 05:25Z; ten reports came in, kept in ~/Devel/scratch/devbin-vc/20261126/sync-tally.md. (2) Read by 05:33Z, hv's words: 'Yes, let's do devbin first, (and molt, if necessary, too) and then ensure that intent and molt (and anything else we're releasing) has the latest devbin vendored in so we don't need to do _another_ release.' hv asked that issues 0326 and I7679181 close before the devbin cut. (3) Read by 05:34Z, hv's words: 'Yes to both. devbin-cc can work in Pplr and Cldr.' The two: devbin-cc works in Pplr's and Cldr's trees for 0326's consumers' half (Pplr's missing arm; Cldr's whole adoption; Ccusage's issue is closed), and Pplr and Cldr each release once in this round after 0.1.34 is swept in. The order: dc writes I7679181 (told 05:33Z) and cc the consumers' half (told 05:34Z); one sitting with hv at the Mac for the notary live check and T10's proofs; both issues close; one whole gate at the final tip; the 0.1.34 cut; one sweep into every estate; then Intent 3.5.4, Gtools 0.10.0, Utilz 2.15.0, Pplr and Cldr, each cut once at a tip that holds 0.1.34. Molt takes the sweep as one commit and cuts nothing. This replaces decision 317's releases, which waited on hv: the Gtools resume and Intent's cut on 0.1.33 do not run. hv's other rulings (Gtools' reset, Intent's parked scope, the second workstream, the sc's five trees, Utilz's sitting) are still to come."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M8B7X2CX7XJEF9B56BH075Y7",
+  "ts": "2026-11-26T06:15:21.245Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window on 2026-11-26, rulings read between 05:35Z and 06:15Z by date -u, each relayed to its vc at once. (1) Gtools: hv ran git reset --keep 3cb56f43 (the unpushed 0.10.0 release commit is gone); one re-cut after the devbin sweep. (2) Intent 3.5.4: devbin's latest is vendored before the cut; ST0084 stays parked; hv types the cut. (3) 0326 closes after the devbin cut, once Pplr and Cldr are released and T10's brew leg passes; hv's dev-opt sitting passed for both at 05:56Z. Pplr cuts 3.0.0 with pplr#0002 in, shape A ('pplr: <message>' on stderr). (4) The second workstream: the kit's light slot again; its 0.0.3 build whole at L with the charge (option i); the application out of this release; its vc's design point stands. (5) The sc runs its five trees in turn; assent is overridden to the fixed release (option a); PHP 8.6.0 stands; hv's word at 06:11Z: 'Yes, the sc can promote the pins commit' (the pipeline tree's pins commit only). (6) A course attendee's findings: devbin's check all --files goes INTO 0.1.34 (hv: 'Yes, please fix. We can wait. I want to close these outstanding niggles out completely.'), filed as If738d64, built by dc with vc's design (built-ins declare takes_args; run_all refuses first; unit 2 makes docs agents and fmt swift refuse arguments named directly). Intent's small items 1, 3's fix and 4's text are in 3.5.4; finding 2 did not reproduce on 3.5.3; finding 6 was fixed in 3.5.3; three design questions are parked for hv (autopsy recall, an AT with no red on old code, done on an unmerged branch). (7) Utilz: hv does the sitting in utilz-vc's window. agentic-engineering starts its units. (8) I7679181 is landed at 2743dbcd and closed; hv's live check with the unified log as its control proved the fix. (9) Read by 06:15Z, hv's words on the steps that are hv's own (the devbin cut's approval, Intent's cut, the Utilz sittings, intent sync --apply in Gtools, the second workstream's history rewrite, the sc's promotion words): 'Ok, you have my approval for all of this. LMK what I need to do in what Claude session and when'. devbin-vc's reading: the devbin 0.1.34 cut is approved and devbin-vc runs it at a green pre-cut; every step that needs hv's hands is put to hv as one line naming the window and the moment."
+  }
+}
