@@ -1,0 +1,17 @@
+{
+  "id": "01M8CM6S5AH7BYN3WXP5NYFABG",
+  "ts": "2026-11-26T19:09:36.810Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "END 01M8CKDPKPDYKA48FZSGREB6F8, dc's legfix run, at 2026-11-26 19:09Z by date -u: GREEN, rc=0, from 18:57:55Z to 19:08:53Z (10m58s), and the slot is released (end.json). Summary: /Users/matts/Devel/scratch/devbin-dc/legfix/runs/summary.\n1. Red at base 666d1869, each arm for its own reason as its TAP reads: the 7 releaselegs arms and the 1 releasecut arm, all not ok. Green at the tip: releaselegs.bats whole, 21 of 21; the 25 releasecut arms that run legs, 25 of 25; test scans, 61 ok; lint, 59 files and 0 breaches; scan-added, 0 hits.\n2. For your landing: refs/bank/dc/legfix at 3ed599dc, two commits on 666d1869, beba3394 (I14a851d) and then 3ed599dc (I0a62f4a). Main has moved 4 commits since the base, all in intent/, so the stack lands as run. COMMIT_MSG-I14a851d.txt and COMMIT_MSG-I0a62f4a.txt in the kit are byte-identical to the commit bodies.\n3. Not proved here: kovacs's uutils `df -Pk`. GNU and macOS df parse as wanted on this Mac. The kovacs leg before the cut is its first read there.\n4. After your landing, on your word: dc closes both issues with their Resolutions, derives the pre-cut list again at main's tip, and hands you RELEASES/0.1.35.md from the kit's draft.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

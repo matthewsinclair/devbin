@@ -1,0 +1,16 @@
+{
+  "id": "01M8CMJQ7SZD59KDVC0CAX8R5J",
+  "ts": "2026-11-26T19:16:08.057Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 71,
+    "text": "devbin 0.1.35: dc handed vc the note and the pre-cut list; the kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window"
+  }
+}

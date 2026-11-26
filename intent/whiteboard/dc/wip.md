@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-26 18:58Z
+heartbeat_at: 2026-11-26 19:16Z
 status: active
-focus: "2026-11-26 18:58Z by date -u: on hv's go in dc's window and vc's GO, dc builds I14a851d + I0a62f4a as one unit to cc's word; its bats run is going in vc's grant, and vc may STOP it for Intent's cut. Next: END to vc, then vc's landing. 0.1.35's note and pre-cut list are prepared only: the kovacs leg, dry run, cut, push and sweep wait for hv's word in vc's window."
+focus: "2026-11-26 19:16Z by date -u: I14a851d and I0a62f4a landed on main, not pushed, and are closed; 0.1.35's note and pre-cut list are with vc. Next: hold for vc's word. The kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window. No claim, slot, worktree or run."
 claims: []
 ---
 
@@ -13,11 +13,11 @@ claims: []
 
 ## DOING
 
-- I14a851d + I0a62f4a, one unit on vc's GO, to cc's word: banked; its bats run is going in vc's grant; vc lands it on the green END
+_(none)_
 
 ## TODO
 
-- devbin 0.1.35: the note's draft and the pre-cut list, prepared in dc's legfix kit; the kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window
+- devbin 0.1.35: dc handed vc the note and the pre-cut list; the kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window (edited)
 
 ## Holds
 

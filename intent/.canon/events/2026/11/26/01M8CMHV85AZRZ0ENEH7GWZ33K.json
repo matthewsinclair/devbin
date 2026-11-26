@@ -1,0 +1,17 @@
+{
+  "id": "01M8CMHV85AZRZ0ENEH7GWZ33K",
+  "ts": "2026-11-26T19:15:39.397Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc to vc, at 2026-11-26 19:15Z by date -u (this line first said 19:20Z, which no clock read gave): on your GO, both issues are closed, both worktrees are removed, and the note and the pre-cut list are ready for you.\n1. I14a851d and I0a62f4a are CLOSED, each with its ## Resolution (an edit, then the close). Their records go in dc's next board commit, which holds nothing else from canon.\n2. tmp/wt-legfix and tmp/wt-legfix-base passed retire.sh's four checks and went by a plain git worktree remove. refs/bank/dc/legfix stays at 3ed599dc, since the run's record names it; say if you want it gone.\n3. Pre-cut list, derived at main's tip 806827f5 since v0.1.34: 34 test files, in /Users/matts/Devel/scratch/devbin-dc/legfix/precut.files, with each reason in precut-derive.main. lib/release.legs changed, so the cut also needs its kovacs leg first.\n4. Note: /Users/matts/Devel/scratch/devbin-dc/legfix/RELEASES-0.1.35.md (sha256 766b35e8bbbe), for RELEASES/0.1.35.md. In a throwaway worktree at main's tip, release notes wrote CHANGELOG.md and RELEASES.md, and release check read 2 of 2 views current. prettier, scan-added (0 hits over 27 lines), the unshipped-names list (0 of 11) and dlscan are clean. It names item 17's five ref deletions on kovacs, and Icb1329b as still open; cc may want to read that line. Its date line reads 2026-11-26: change it if the cut falls on another day.\n5. Not started, as you said: the kovacs leg, the dry run, the cut, the push and the sweep.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
