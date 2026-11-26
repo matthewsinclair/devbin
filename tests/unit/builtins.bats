@@ -185,13 +185,14 @@ EOF
   [ -z "$bad" ] || fail "@builtin rows with nothing behind them:$bad"
 }
 
-@test "the catalogue's side tables name only what the catalogue has, and answer for it (0132, 0156)" {
+@test "the catalogue's side tables name only what the catalogue has, and answer for it (0132, 0156, If738d64)" {
   # They sit BESIDE the table, keyed by name, so a renamed row would leave an
   # entry naming nothing and the default or the refusal would silently stop
   # applying. Each entry is held to a real row here.
   local e name rest n=0 bad=""
   [ -n "$_DEVBIN_BUILTIN_NOT_IN_ALL" ] || fail "no option is outside all -- this arm would check nothing"
-  for e in $_DEVBIN_BUILTIN_NOT_IN_ALL; do
+  [ -n "$_DEVBIN_BUILTIN_TAKES_NO_ARGS" ] || fail "no option takes no arguments -- this arm would check nothing"
+  for e in $_DEVBIN_BUILTIN_NOT_IN_ALL $_DEVBIN_BUILTIN_TAKES_NO_ARGS; do
     case "$e" in
       ?*.?*) builtin_option_run "${e%%.*}" "${e#*.}" >/dev/null || bad="$bad $e(no option row)" ;;
       *) bad="$bad $e(not <command>.<option>)" ;;

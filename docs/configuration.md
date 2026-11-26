@@ -216,16 +216,17 @@ Undeclared, the restore phase does not run and the cycle says so. That is the fa
 
 ### Option level
 
-| Key                                      | Type             | Default                            | What it is                                   |
-| ---------------------------------------- | ---------------- | ---------------------------------- | -------------------------------------------- |
-| `commands.<cmd>.options.<opt>.run`       | command line     | catalogue                          | what this option runs                        |
-| `commands.<cmd>.options.<opt>.summary`   | string           | sub-handler header, then catalogue | the description in help                      |
-| `commands.<cmd>.options.<opt>.args`      | string           | sub-handler header, then none      | usage hint                                   |
-| `commands.<cmd>.options.<opt>.grammar`   | grammar name     | catalogue                          | which extractor reads the output             |
-| `commands.<cmd>.options.<opt>.log`       | string or `true` | catalogue                          | seal the verdict; names the suffix           |
-| `commands.<cmd>.options.<opt>.in_all`    | boolean          | `true`, but `false` for `db reset` | include this option in the synthesised `all` |
-| `commands.<cmd>.options.<opt>.platforms` | list             | every platform                     | where this option runs: `macos`, `linux`     |
-| `commands.<cmd>.options.<opt>.enabled`   | boolean          | see above                          | offer this option                            |
+| Key                                       | Type             | Default                                           | What it is                                   |
+| ----------------------------------------- | ---------------- | ------------------------------------------------- | -------------------------------------------- |
+| `commands.<cmd>.options.<opt>.run`        | command line     | catalogue                                         | what this option runs                        |
+| `commands.<cmd>.options.<opt>.summary`    | string           | sub-handler header, then catalogue                | the description in help                      |
+| `commands.<cmd>.options.<opt>.args`       | string           | sub-handler header, then none                     | usage hint                                   |
+| `commands.<cmd>.options.<opt>.grammar`    | grammar name     | catalogue                                         | which extractor reads the output             |
+| `commands.<cmd>.options.<opt>.log`        | string or `true` | catalogue                                         | seal the verdict; names the suffix           |
+| `commands.<cmd>.options.<opt>.in_all`     | boolean          | `true`, but `false` for `db reset`                | include this option in the synthesised `all` |
+| `commands.<cmd>.options.<opt>.takes_args` | boolean          | `true`, but `false` for the built-ins named below | the option takes arguments                   |
+| `commands.<cmd>.options.<opt>.platforms`  | list             | every platform                                    | where this option runs: `macos`, `linux`     |
+| `commands.<cmd>.options.<opt>.enabled`    | boolean          | see above                                         | offer this option                            |
 
 **`log:` is what makes an option a gate.** With it, the option runs through the sealed runner and writes `tmp/<command>/<stamp>.<SUFFIX>.{out,errors}`, where the `.errors` companion is empty exactly when that completed run was green. `log: true` names the pair after the option instead of restating it in upper case.
 
@@ -243,7 +244,7 @@ Under `xcodebuild`, a completed test action (`** TEST SUCCEEDED **` or `** TEST 
 
 A gate whose suite may legitimately be empty declares `grammar: generic`, which keeps the seal and drops the counting. A one-off empty run says so at the command line instead: `--allow-empty` is a gate wrapper flag like `--purge`, split from the tool's arguments on any gate, and keeps the grammar for every other run. `fullcycle` does not take it: it accepts only `--dry-run` and `--force`.
 
-**`all` is never declared.** Any command with at least one option gets it, synthesised from the option list in declared order, so an option added here is in `all` in the same edit. Options marked `in_all: false` are reported as **skipped** rather than dropped silently. `fullcycle`'s test phase is `test all`, so `in_all: false` on a test option keeps it out of a full cycle as well. Options inactive here -- a language the project does not declare, `enabled: false`, or a `platforms:` list that leaves out this host -- are counted on `all`'s count line, and `help --why` names them.
+**`all` is never declared.** Any command with at least one option gets it, synthesised from the option list in declared order, so an option added here is in `all` in the same edit. Options marked `in_all: false` are reported as **skipped** rather than dropped silently. Arguments after `all` go to each option it runs. Given arguments, `all` refuses before any option runs when an option it would run takes none, and names each such option, so no option runs without the arguments the others get. An option declared `takes_args: false` takes none, and so do these built-ins: `check format`, `check toolchain`, `check autotests`, `check targetdir`, `docs agents` and `fmt swift`. devbin's own flags, such as `--purge`, are not arguments here. A project's own `run:` line over a built-in option keeps the built-in's default, as `in_all` does: set `takes_args: true` on it when that line takes arguments. `fullcycle`'s test phase is `test all`, so `in_all: false` on a test option keeps it out of a full cycle as well. Options inactive here -- a language the project does not declare, `enabled: false`, or a `platforms:` list that leaves out this host -- are counted on `all`'s count line, and `help --why` names them.
 
 **`platforms:` says where an option is meant to run.** It lists platform words, `macos` and `linux`, which devbin reads from `uname -s`; without it the option runs everywhere. On a host whose word the list leaves out, the option is inactive here: `all` counts it, `help --why` names it with the platforms it runs on and this host's word, and running it by name refuses with the same reason, so it is never failed. A host devbin has no platform word for runs no option whose `platforms:` lists only platform words. It never says whether a host can run the gate: on a platform the list names, a gate that cannot run fails as before. `doctor` refuses a value outside the words, naming the key and the value, and reads a single word written without the list as an unknown key; the command you run reads a list holding such a value as absent, so the option runs everywhere until it is fixed, never skipped in silence. Like any key under an option, `platforms:` declares the option, so on a host the list names a built-in option runs whatever the languages declare. `in_all: false` keeps its one meaning, out of `all` on every platform.
 

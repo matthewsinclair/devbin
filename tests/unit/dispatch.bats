@@ -3675,3 +3675,99 @@ YAML
   assert_exit_code 1
   assert_output_contains "'bin/devbin probe' runs it"
 }
+
+# ============================================================================
+# ARGUMENTS UNDER all (issue If738d64): every option gets the same arguments,
+# so all refuses them, before any option runs, when one it would run takes none
+# ============================================================================
+
+@test "If738d64: check all given arguments refuses before any option runs, naming each option that takes none, and seals nothing" {
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+  languages:
+    - rust
+YAML
+  )"
+  # intent/ there, so critic is offered: it takes arguments, and the refusal
+  # names it among the options that take them.
+  mkdir -p "$proj/intent" "$proj/fakebin"
+  printf '#!/bin/sh\necho "ran:$(basename "$0") $*"\n' >"$proj/fakebin/cargo"
+  cp "$proj/fakebin/cargo" "$proj/fakebin/intent"
+  chmod +x "$proj/fakebin/cargo" "$proj/fakebin/intent"
+  PATH="$proj/fakebin:$PATH" run devbin_run "$proj" check all --files src/lib.rs
+  assert_exit_code 1
+  assert_output_contains "'bin/devbin check all' was given arguments (--files src/lib.rs), and these options take none:"
+  # In the order all runs them: the catalogue's, for the options offered here.
+  assert_output_contains "these options take none: format, autotests, targetdir, toolchain -- nothing ran"
+  assert_output_contains "give the arguments to an option that takes them (clippy, critic): bin/devbin check <option> <args>"
+  assert_output_contains "commands.check.options.<option>.takes_args in bin/.devbin/config.yaml says whether an option takes arguments"
+  refute_output_contains "ran:"
+  [ ! -d "$proj/tmp/check" ] || [ -z "$(ls -A "$proj/tmp/check")" ] ||
+    fail "a seal was written: $(ls -A "$proj/tmp/check")"
+}
+
+@test "If738d64: a wrapper flag alone on check all is not an argument, so all runs" {
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+  languages:
+    - rust
+YAML
+  )"
+  mkdir -p "$proj/fakebin"
+  printf '#!/bin/sh\necho "ran:cargo $*"\n' >"$proj/fakebin/cargo"
+  chmod +x "$proj/fakebin/cargo"
+  PATH="$proj/fakebin:$PATH" run devbin_run "$proj" check all --purge
+  refute_output_contains "was given arguments"
+  assert_output_contains "ran:cargo"
+}
+
+@test "If738d64: a project's own option takes the arguments under all, and one declaring takes_args: false is named and refused, with nothing run" {
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+commands:
+  gate:
+    summary: gates
+    options:
+      scoped:
+        summary: takes paths
+      whole:
+        summary: runs over the tree
+YAML
+  )"
+  create_test_command "$proj" gate '#!/usr/bin/env bash
+printf "ran:%s args:%s\n" "$1" "${*:2}"'
+  run devbin_run "$proj" gate all x.txt
+  assert_success
+  assert_output_contains "ran:scoped args:x.txt"
+  assert_output_contains "ran:whole args:x.txt"
+  printf '        takes_args: false\n' >>"$proj/bin/.devbin/config.yaml"
+  run devbin_run "$proj" gate all x.txt
+  assert_exit_code 1
+  assert_output_contains "these options take none: whole -- nothing ran"
+  assert_output_contains "give the arguments to an option that takes them (scoped): bin/devbin gate <option> <args>"
+  assert_output_contains "commands.gate.options.<option>.takes_args in bin/.devbin/config.yaml says whether an option takes arguments"
+  refute_output_contains "ran:"
+  run devbin_run "$proj" gate all
+  assert_success
+  assert_output_contains "ran:whole args:"
+}
+
+@test "If738d64: clean all --dry-run still hands its flags to each clean option, all of which take them" {
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+  languages:
+    - rust
+YAML
+  )"
+  mkdir -p "$proj/target/debug/.fingerprint"
+  cargo_tag "$proj/target"
+  : >"$proj/Cargo.toml"
+  run devbin_run "$proj" clean all --dry-run
+  assert_success
+  refute_output_contains "was given arguments"
+  [ -d "$proj/target/debug" ] || fail "--dry-run removed the target tree: $output"
+}

@@ -8,6 +8,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [0.1.34] - 2026-11-26
 
+### Changed
+
+#### a script or a config may get a different result
+
+- **`<cmd> all <args>` refuses before any option runs when an option it would run takes no arguments (issue `If738d64`).** `all` gives each option it runs the same arguments. Before, an option that takes none failed or dropped them: `check all --files x` failed at `check format`, `check toolchain`, `check autotests` and `check targetdir`, and `fmt swift` and `docs agents` ignored them. Now `all` exits 1 with nothing run and no seal written. It names each option that takes none and each that takes them, and you give the arguments to one of those by name, eg `bin/devbin check critic --files x`.
+  - devbin's own flags, such as `--purge`, are not arguments here, and `all` with no arguments runs as before.
+  - Each clean option takes arguments, so `clean all --dry-run` runs as before.
+  - A project's own option takes arguments, as before. A new key, `commands.<cmd>.options.<opt>.takes_args: false`, declares that it takes none, and `all` then refuses arguments and names it. A project's own `run:` line over a built-in option keeps the built-in's default: set `takes_args: true` on it when that line takes arguments.
+
 ### Fixed
 
 #### reaches every project
