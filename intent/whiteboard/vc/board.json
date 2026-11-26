@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "45488c21-ad22-4e62-ba61-e2cfc70a39df",
-    "heartbeat_at": "2026-11-26T06:56:47.004Z",
+    "heartbeat_at": "2026-11-26T10:50:49.730Z",
     "status": "active",
-    "focus": "2026-11-26 06:56Z by date -u: FOLDED for compact cycle 4 (hv's word). devbin 0.1.34 is pushed at 679171b3; next is CI run 45770151898 green, the grant of pre-cut pc0134c, then the cut (decision 319). After a reset: /in-session, then PLAN.md's block 'Progress at 2026-11-26' and ~/Devel/scratch/devbin-vc/20261126/fold-tally-cycle4.md.",
+    "focus": "2026-11-26 10:50Z by date -u: FOLDED for compact cycle 5 (hv's word). devbin 0.1.34 is released and swept; nothing of devbin's is in flight. After a reset: /in-session, then PLAN.md's block 'Progress at 2026-11-26 10:50Z' and ~/Devel/scratch/devbin-vc/20261126/fold-tally-cycle5.md, then the Desk waiter. Next on the Desk: one estate's gate, dry run and cut; another's bats run, hv's live check, push and cut; then the rollouts and rustup.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -6536,7 +6536,8 @@
       "kind": "decision",
       "seq": 318,
       "text": "hv in vc's window on 2026-11-26, after the overnight wait (the screen unlocked at 04:59:33Z by loginwindow's log). (1) Read by 05:25Z by date -u, hv's ruling in summary: every vc reports its status against the unified plan to devbin-vc; all work is synchronised through devbin-vc, to stop repeated work and needless builds or gates; no small releases; all outstanding work is done, built and tested locally before any push or release; hv and devbin-vc review, then the vcs run. devbin-vc sent the sync and a hold on every run at 05:25Z; ten reports came in, kept in ~/Devel/scratch/devbin-vc/20261126/sync-tally.md. (2) Read by 05:33Z, hv's words: 'Yes, let's do devbin first, (and molt, if necessary, too) and then ensure that intent and molt (and anything else we're releasing) has the latest devbin vendored in so we don't need to do _another_ release.' hv asked that issues 0326 and I7679181 close before the devbin cut. (3) Read by 05:34Z, hv's words: 'Yes to both. devbin-cc can work in Pplr and Cldr.' The two: devbin-cc works in Pplr's and Cldr's trees for 0326's consumers' half (Pplr's missing arm; Cldr's whole adoption; Ccusage's issue is closed), and Pplr and Cldr each release once in this round after 0.1.34 is swept in. The order: dc writes I7679181 (told 05:33Z) and cc the consumers' half (told 05:34Z); one sitting with hv at the Mac for the notary live check and T10's proofs; both issues close; one whole gate at the final tip; the 0.1.34 cut; one sweep into every estate; then Intent 3.5.4, Gtools 0.10.0, Utilz 2.15.0, Pplr and Cldr, each cut once at a tip that holds 0.1.34. Molt takes the sweep as one commit and cuts nothing. This replaces decision 317's releases, which waited on hv: the Gtools resume and Intent's cut on 0.1.33 do not run. hv's other rulings (Gtools' reset, Intent's parked scope, the second workstream, the sc's five trees, Utilz's sitting) are still to come.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-26T08:11:08.968Z",
       "recorded_at": "2026-11-26T05:34:50.052Z"
     },
     {
@@ -6544,9 +6545,26 @@
       "kind": "decision",
       "seq": 319,
       "text": "hv in vc's window on 2026-11-26, rulings read between 05:35Z and 06:15Z by date -u, each relayed to its vc at once. (1) Gtools: hv ran git reset --keep 3cb56f43 (the unpushed 0.10.0 release commit is gone); one re-cut after the devbin sweep. (2) Intent 3.5.4: devbin's latest is vendored before the cut; ST0084 stays parked; hv types the cut. (3) 0326 closes after the devbin cut, once Pplr and Cldr are released and T10's brew leg passes; hv's dev-opt sitting passed for both at 05:56Z. Pplr cuts 3.0.0 with pplr#0002 in, shape A ('pplr: <message>' on stderr). (4) The second workstream: the kit's light slot again; its 0.0.3 build whole at L with the charge (option i); the application out of this release; its vc's design point stands. (5) The sc runs its five trees in turn; assent is overridden to the fixed release (option a); PHP 8.6.0 stands; hv's word at 06:11Z: 'Yes, the sc can promote the pins commit' (the pipeline tree's pins commit only). (6) A course attendee's findings: devbin's check all --files goes INTO 0.1.34 (hv: 'Yes, please fix. We can wait. I want to close these outstanding niggles out completely.'), filed as If738d64, built by dc with vc's design (built-ins declare takes_args; run_all refuses first; unit 2 makes docs agents and fmt swift refuse arguments named directly). Intent's small items 1, 3's fix and 4's text are in 3.5.4; finding 2 did not reproduce on 3.5.3; finding 6 was fixed in 3.5.3; three design questions are parked for hv (autopsy recall, an AT with no red on old code, done on an unmerged branch). (7) Utilz: hv does the sitting in utilz-vc's window. agentic-engineering starts its units. (8) I7679181 is landed at 2743dbcd and closed; hv's live check with the unified log as its control proved the fix. (9) Read by 06:15Z, hv's words on the steps that are hv's own (the devbin cut's approval, Intent's cut, the Utilz sittings, intent sync --apply in Gtools, the second workstream's history rewrite, the sc's promotion words): 'Ok, you have my approval for all of this. LMK what I need to do in what Claude session and when'. devbin-vc's reading: the devbin 0.1.34 cut is approved and devbin-vc runs it at a green pre-cut; every step that needs hv's hands is put to hv as one line naming the window and the moment.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-26T10:50:49.299Z",
       "recorded_at": "2026-11-26T06:15:21.245Z",
       "edited_at": "2026-11-26T06:15:26.678Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 320,
+      "text": "2026-11-26 08:11Z by date -u: devbin 0.1.34 is RELEASED under hv's approval (decision 319). Pre-cut pc0134c green at 9ff07454 (CI run 45771847672 green first); cut at dbad1dc3cb46, legs local, kovacs and candidate (run 45775370420) green; tag and both remotes pushed; the formula published; CI on main and the tag green; brew upgrade and use brew done. Sweep from brew into 23 estates, committed by path with fleet's sweep_commit (15 paths each), no push; three estates frozen until their vcs' word. The apply ran without --commit, so vc committed with the function copied from cmd/fleet (kit in ~/Devel/scratch/devbin-vc/20261126/sweep0134). Also: hv cancelled another estate's history rewrite, live in that estate's vc window at 07:39Z (relayed by its vc); the Desk's no-run rule for it is lifted and PLAN.md is changed.",
+      "state": "live",
+      "recorded_at": "2026-11-26T08:11:09.180Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 321,
+      "text": "2026-11-26 10:50Z by date -u: compact cycle 5, called by hv; every team is folded (tally: ~/Devel/scratch/devbin-vc/20261126/fold-tally-cycle5.md). hv's rulings given in devbin-vc's window since decision 320, each by the question dialog or typed: another estate's PHP image stays at 8.6.0 and is fixed forward; that estate's step 2 and all promotions on one word (its own session then took hv's word first-hand); 'Yes, push Molt'; rollouts are ONE batch per machine after Utilz 2.15.0; gyges' four tidy items go to the Trash. Rulings hv gave in other windows and their vcs relayed are on those boards. Released since 320: Intent 3.5.4, Gtools 0.10.0, both side estates (hv's hands, T10's brew leg PASS), devvm 0.5.5; 0326 closed; Icb1329b filed. The last sweep commits: Molt 072d9ee872d1, Intent dea19c8cb4d9, Utilz 86448b677557. The keychain rule's reading: it bars sign-in commands, auth probes, direct security calls and a changed HOME, not a signed-in tool's ordinary use. Two faults of vc's own, corrected at the time: two GO stamps not read from a clock (08:22Z for 08:19Z), and one grant of a timing measure before the load had settled.",
+      "state": "live",
+      "recorded_at": "2026-11-26T10:50:49.500Z"
     }
   ],
   "sent": [

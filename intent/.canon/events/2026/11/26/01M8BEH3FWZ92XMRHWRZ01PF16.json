@@ -1,0 +1,15 @@
+{
+  "id": "01M8BEH3FWZ92XMRHWRZ01PF16",
+  "ts": "2026-11-26T08:11:09.180Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-11-26 08:11Z by date -u: devbin 0.1.34 is RELEASED under hv's approval (decision 319). Pre-cut pc0134c green at 9ff07454 (CI run 45771847672 green first); cut at dbad1dc3cb46, legs local, kovacs and candidate (run 45775370420) green; tag and both remotes pushed; the formula published; CI on main and the tag green; brew upgrade and use brew done. Sweep from brew into 23 estates, committed by path with fleet's sweep_commit (15 paths each), no push; three estates frozen until their vcs' word. The apply ran without --commit, so vc committed with the function copied from cmd/fleet (kit in ~/Devel/scratch/devbin-vc/20261126/sweep0134). Also: hv cancelled another estate's history rewrite, live in that estate's vc window at 07:39Z (relayed by its vc); the Desk's no-run rule for it is lifted and PLAN.md is changed."
+  }
+}

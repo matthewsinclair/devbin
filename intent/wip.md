@@ -1,5 +1,5 @@
 ---
-verblock: "26 Nov 2026:v3.115: Matthew Sinclair - compact cycle 4; devbin 0.1.34 waits on CI"
+verblock: "26 Nov 2026:v3.116: Matthew Sinclair - compact cycle 5; devbin 0.1.34 is released and swept"
 ---
 
 # Work In Progress
@@ -8,11 +8,11 @@ DOING and TODO only, one line each. Done work lives in git, `intent issues list`
 
 ## DOING
 
-- The estate plan: `~/Devel/scratch/estate-plan/PLAN.md`, its block "Progress at 2026-11-26" (hv's rulings: vc decisions 318 and 319). devbin-vc is its only writer and holds the Desk. Read it first after any reset.
-- devbin 0.1.34: main is pushed at 679171b3. Next: CI green on it, pre-cut pc0134c (devbin-dc), then the cut by devbin-vc on hv's approval (decision 319), then one sweep into every estate.
-- The Desk: grant by decision 286's priority, and grant a run only when it can tell us something we do not know (hv, 2026-11-24 18:00Z).
+- The estate plan: `~/Devel/scratch/estate-plan/PLAN.md`, its block "Progress at 2026-11-26 10:50Z" (hv's rulings: vc decisions 319 to 321). devbin-vc is its only writer and holds the Desk. Read it first after any reset.
+- devbin 0.1.34 is released at dbad1dc3cb46 and swept into every estate. devbin's own record commits after the release are local and wait for hv's push word.
+- The Desk: grant by decision 286's priority, and grant a run only when it can tell us something we do not know (hv, 2026-11-24 18:00Z). Read a driver and its sha256 against the ask before every grant.
 
 ## TODO
 
-- 0326 closes after Pplr's and Cldr's cuts and T10's brew leg (hv, 2026-11-26); pplr#0001 and cldr#0001 close with it.
+- The next devbin release's list: Icb1329b (doctor's T4 rows and a dispatcher family), and dc's item on the lib/resolve comment that names a temporary path.
 - hv's hands: see PLAN.md.

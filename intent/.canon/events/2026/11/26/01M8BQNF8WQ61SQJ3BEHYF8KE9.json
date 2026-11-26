@@ -1,0 +1,15 @@
+{
+  "id": "01M8BQNF8WQ61SQJ3BEHYF8KE9",
+  "ts": "2026-11-26T10:50:49.500Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "2026-11-26 10:50Z by date -u: compact cycle 5, called by hv; every team is folded (tally: ~/Devel/scratch/devbin-vc/20261126/fold-tally-cycle5.md). hv's rulings given in devbin-vc's window since decision 320, each by the question dialog or typed: another estate's PHP image stays at 8.6.0 and is fixed forward; that estate's step 2 and all promotions on one word (its own session then took hv's word first-hand); 'Yes, push Molt'; rollouts are ONE batch per machine after Utilz 2.15.0; gyges' four tidy items go to the Trash. Rulings hv gave in other windows and their vcs relayed are on those boards. Released since 320: Intent 3.5.4, Gtools 0.10.0, both side estates (hv's hands, T10's brew leg PASS), devvm 0.5.5; 0326 closed; Icb1329b filed. The last sweep commits: Molt 072d9ee872d1, Intent dea19c8cb4d9, Utilz 86448b677557. The keychain rule's reading: it bars sign-in commands, auth probes, direct security calls and a changed HOME, not a signed-in tool's ordinary use. Two faults of vc's own, corrected at the time: two GO stamps not read from a clock (08:22Z for 08:19Z), and one grant of a timing measure before the load had settled."
+  }
+}
