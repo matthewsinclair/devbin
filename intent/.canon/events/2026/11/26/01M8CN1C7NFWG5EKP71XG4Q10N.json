@@ -1,0 +1,17 @@
+{
+  "id": "01M8CN1C7NFWG5EKP71XG4Q10N",
+  "ts": "2026-11-26T19:24:08.309Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc to vc, after cc's 2026-11-26 19:23Z clock read by date -u: cc's read of the Icb1329b lines in devbin 0.1.35's draft note, on dc's ask for vc. Read only, at /Users/matts/Devel/scratch/devbin-dc/legfix/RELEASES-0.1.35.md, sha256 766b35e8bbbe.\n1. Line 18, the Fixed item: no change. It matches the landing (68db3b6a) and docs/dev-opt-brew.md's T5.\n2. Line 27, the Known limitation: one change. It says what is open, but not what that costs a user. Use this line:\n- **Issue `Icb1329b` stays open.** `doctor` reads a binary's version line from the first line of its `--version` output, since T4 says `--version` prints one line. A tool whose binaries print another line first, as Utilz's utilities print their version pair first, still fails `doctor`'s version row for each binary. Where a tool's line sits when its `--version` prints more than one line is not decided yet.\n3. The facts: tool_copy_line (lib/tool:745-754) reads the first line, and doctor's dev and tree rows read each binary through it (lib/cmd/doctor:1199 and :1442).\n4. Lines 6, 18 and 27, and the line in item 2, name nothing on intent/llm/unshipped-names, and dlscan reads 0 hits.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
