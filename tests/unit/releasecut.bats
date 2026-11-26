@@ -4719,7 +4719,7 @@ $output"
   gate_does 'if [ -d "${DEVBIN_GATE_CACHE:-/nonexistent}" ]; then printf "run\n" >>"$DEVBIN_GATE_CACHE/runs"; ls -A "$DEVBIN_GATE_CACHE" >>"'"$DEVBIN_TEST_TMPDIR"'/gate.saw"; fi'
   run release_in "$proj" gates
   assert_success
-  assert_output_matches "release: gates: $d held [0-9]+ KiB, over its bound of 1024 KiB, so it is emptied and this run builds cold"$'(\n|$)'
+  assert_output_matches "release: gates: $d held [0-9]+ KiB, over its bound of 1024 KiB, with [0-9]+ KiB free on its disk, so it is emptied and this run builds cold"$'(\n|$)'
   [ "$(cat "$DEVBIN_TEST_TMPDIR/gate.saw")" = runs ] || fail "the gate was handed a cache not emptied first: $(cat "$DEVBIN_TEST_TMPDIR/gate.saw")"
   run release_in "$proj" gates --rerun
   assert_success

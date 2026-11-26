@@ -568,7 +568,7 @@ leg_kept_log() { printf '%s/%s.log\n' "$(release_leg_dir "$proj" kov)" "${1:0:12
   [ "$(leg_word)" = pending ] || fail "a start over a cache past its bound: $output"
   await_file "$wt/tmp/release/20260101-0000.GATES.errors"
   [ ! -e "$cache/target" ] || fail "the cache over its bound was not emptied: $(ls -lR "$cache")"
-  grep -qE "^DEVBIN_GATE_CACHE emptied: $cache held [0-9]+ KiB, over its bound of 64 KiB, so it is emptied and this run builds cold\$" "$wt.log" ||
+  grep -qE "^DEVBIN_GATE_CACHE emptied: $cache held [0-9]+ KiB, over its bound of 64 KiB, with [0-9]+ KiB free on its disk, so it is emptied and this run builds cold\$" "$wt.log" ||
     fail "the leg's log does not say the cache was emptied: $(cat "$wt.log")"
   release_gates "$wt"
   run release_leg_read "$proj" kov demo "$sha"
@@ -580,7 +580,7 @@ leg_kept_log() { printf '%s/%s.log\n' "$(release_leg_dir "$proj" kov)" "${1:0:12
   wt="$(leg_wt kov "$sha")"
   run release_leg_start "$proj" kov demo "$sha" "" 1048576
   [ "$(leg_word)" = pending ] || fail "a start over a cache within its bound: $output"
-  grep -qE "^DEVBIN_GATE_CACHE kept: $cache holds [0-9]+ KiB, within its bound of 1048576 KiB\$" "$wt.log" ||
+  grep -qE "^DEVBIN_GATE_CACHE kept: $cache holds [0-9]+ KiB, within its bound of 1048576 KiB, with [0-9]+ KiB free on its disk\$" "$wt.log" ||
     fail "the leg's log does not say the cache was kept: $(cat "$wt.log")"
   release_gates "$wt"
   run release_leg_read "$proj" kov demo "$sha"
@@ -618,6 +618,49 @@ leg_kept_log() { printf '%s/%s.log\n' "$(release_leg_dir "$proj" kov)" "${1:0:12
   release_gates "$wt"
   run release_leg_read "$proj" kov demo "$sha"
   [ "$(leg_word)" = green ] || fail "the run beside a run going: $output"
+  every_call_batch
+}
+
+@test "I14a851d: a remote leg's start empties the host's gate cache within its bound while its disk has less than the bound free, naming the free size in the leg's log, so the run cannot fill the disk from a cache kept for it" {
+  local proj sha wt cache huge
+  proj="$(leg_project)"
+  : >"$proj/gates-gatecache"
+  leg_commit "$proj" "gates that keep a line in their cache"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  mkdir -p "$HOSTS/kov"
+  cache="$HOSTS/kov/work/demo-leg.cache"
+  wt="$(leg_wt kov "$sha")"
+  mkdir -p "$cache/target"
+  head -c 262144 /dev/zero >"$cache/target/big"
+  # A bound of 1 EiB: the cache is well within it, and no disk here has it free.
+  huge=1125899906842624
+  run release_leg_start "$proj" kov demo "$sha" "" "$huge"
+  [ "$(leg_word)" = pending ] || fail "a start over a cache within its bound on a disk with less free: $output"
+  await_file "$wt/tmp/release/20260101-0000.GATES.errors"
+  [ ! -e "$cache/target" ] || fail "the cache within its bound, on a disk with less than the bound free, was kept: $(ls -lR "$cache")"
+  grep -qE "^DEVBIN_GATE_CACHE emptied: $cache held [0-9]+ KiB, within its bound of $huge KiB, with [0-9]+ KiB free on its disk, under the bound, so it is emptied and this run builds cold\$" "$wt.log" ||
+    fail "the leg's log does not say the cache was emptied for the disk's free space: $(cat "$wt.log")"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the run after the cache was emptied: $output"
+  [ "$(cat "$cache/runs")" = "$sha" ] || fail "the gates did not find their cache made afresh: $(cat "$cache/runs" 2>&1)"
+  # A disk whose free space cannot be read: the size alone decides, so the
+  # cache within its bound is left as it stands, and the line says why.
+  mkdir -p "$HOSTS/kov/.bin"
+  printf '#!/usr/bin/env bash\necho "df: the disk cannot be read" >&2\nexit 1\n' >"$HOSTS/kov/.bin/df"
+  chmod +x "$HOSTS/kov/.bin/df"
+  printf 'next\n' >"$proj/next"
+  leg_commit "$proj" "the next commit"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  wt="$(leg_wt kov "$sha")"
+  run release_leg_start "$proj" kov demo "$sha" "" "$huge"
+  [ "$(leg_word)" = pending ] || fail "a start on a disk whose free space cannot be read: $output"
+  grep -qE "^DEVBIN_GATE_CACHE refused: $cache holds [0-9]+ KiB, within its bound of $huge KiB, and the free space on its disk could not be read \(df: the disk cannot be read\), so it is left as it stands\$" "$wt.log" ||
+    fail "the leg's log does not say why the cache was left as it stands: $(cat "$wt.log")"
+  [ "$(cat "$cache/runs")" = "$(git -C "$proj" rev-parse HEAD~1)" ] || fail "the cache was not left as it stands: $(cat "$cache/runs" 2>&1)"
+  release_gates "$wt"
+  run release_leg_read "$proj" kov demo "$sha"
+  [ "$(leg_word)" = green ] || fail "the run beside a cache left as it stands: $output"
   every_call_batch
 }
 

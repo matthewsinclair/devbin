@@ -30,7 +30,8 @@
 # config, a plain word (is_host_alias, lib/helpers). What lives on it is this
 # file's recipe, never config: the bare repo work/<project>-leg.git under its
 # home, the gates' own cache work/<project>-leg.cache beside it, held to the
-# bound each start is handed (gate_cache_bound), and each run's worktree
+# bound each start is handed, and emptied on a disk with less than that free
+# (gate_cache_bound), and each run's worktree
 # work/<project>-leg-<sha12>, with its log, its
 # gates' TMPDIR and, once its gates have ended, their exit status. The
 # runner installs and adjusts nothing there: the host carries what the
@@ -183,15 +184,26 @@ _release_leg_remote_init() {
 # gate_cache_bound <dir> <bound> -- the gates' cache at <dir> held to <bound>,
 # a whole number of KiB (issue 0361): a cache over it is emptied, made
 # writable first, since a build can leave read-only directories in it, so the
-# run it is about to serve builds cold; one at or under it is kept. Measured
-# by `du -sk`, which every host's du takes. One line, `kept<TAB><detail>`,
-# `emptied<TAB><detail>` or `refused<TAB><why>`, a cache that could not be
-# measured or emptied, which is left as it stands, since the gates run with
-# their cache whatever its size. THE ONE RULE for a gate cache's size: this
-# machine's (gates_cache_dir, lib/cmd/release) and each host's
-# (_release_leg_remote_start) are held to it alike.
+# run it is about to serve builds cold. One at or under it is kept while its
+# disk has at least <bound> KiB free, and emptied the same way while it has
+# less (issue I14a851d): the bound acts only as a run starts, and the run can
+# grow the cache by a whole build, so a disk with less free than the bound
+# can be filled by the run the cache is kept for. Measured by `du -sk` and
+# `df -Pk`, which every host's du and df take: the disk's free space is df's
+# Available column for the cache's own directory, the field before its
+# Capacity's percentage, so a filesystem whose name holds a space is read
+# alike. Each line names the free space it read. Where it cannot be read, the
+# size alone decides and the line says why: a cache over its bound is
+# emptied, and one within it is `refused`, left as it stands, so this
+# machine's run, which says nothing of a kept cache, warns of it. One line,
+# `kept<TAB><detail>`, `emptied<TAB><detail>` or `refused<TAB><why>`, a cache
+# that could not be measured or emptied, which is left as it stands, since the
+# gates run with their cache whatever its size. THE ONE RULE for a gate
+# cache's size: this machine's (gates_cache_dir, lib/cmd/release) and each
+# host's (_release_leg_remote_start) are held to it alike.
 gate_cache_bound() {
-  local d="$1" bound="$2" kib err
+  local d="$1" bound="$2" kib err out free="" disk why i
+  local -a _gcb_w
   if [ ! -d "$d" ]; then
     printf 'kept\t%s is not there yet, and the run makes it\n' "$d"
     return 0
@@ -201,15 +213,38 @@ gate_cache_bound() {
     return 0
   fi
   kib="${kib%%[[:space:]]*}"
-  if [ "$kib" -le "$bound" ]; then
-    printf 'kept\t%s holds %s KiB, within its bound of %s KiB\n' "$d" "$kib" "$bound"
+  if out="$(df -Pk "$d" 2>&1)"; then
+    read -r -a _gcb_w <<<"${out#*$'\n'}"
+    for ((i = 2; i < ${#_gcb_w[@]}; i++)); do
+      if [[ "${_gcb_w[i]}" =~ ^[0-9]+%$ ]]; then
+        free="${_gcb_w[i - 1]}"
+        break
+      fi
+    done
+    [[ "$free" =~ ^[0-9]+$ ]] || out="df -Pk named no free space: ${out#*$'\n'}"
+  fi
+  if [[ "$free" =~ ^[0-9]+$ ]]; then
+    disk="with $free KiB free on its disk"
+  else
+    free=""
+    disk="and the free space on its disk could not be read (${out%%$'\n'*})"
+  fi
+  if [ "$kib" -gt "$bound" ]; then
+    why="over its bound of $bound KiB, $disk"
+  elif [ -z "$free" ]; then
+    printf 'refused\t%s holds %s KiB, within its bound of %s KiB, %s, so it is left as it stands\n' "$d" "$kib" "$bound" "$disk"
     return 0
+  elif [ "$free" -ge "$bound" ]; then
+    printf 'kept\t%s holds %s KiB, within its bound of %s KiB, %s\n' "$d" "$kib" "$bound" "$disk"
+    return 0
+  else
+    why="within its bound of $bound KiB, $disk, under the bound"
   fi
   if ! err="$({ chmod -R u+w "$d" && rm -rf "$d" && mkdir -p "$d"; } 2>&1)"; then
-    printf 'refused\t%s holds %s KiB, over its bound of %s KiB, and could not be emptied: %s\n' "$d" "$kib" "$bound" "${err%%$'\n'*}"
+    printf 'refused\t%s holds %s KiB, %s, and could not be emptied: %s\n' "$d" "$kib" "$why" "${err%%$'\n'*}"
     return 0
   fi
-  printf 'emptied\t%s held %s KiB, over its bound of %s KiB, so it is emptied and this run builds cold\n' "$d" "$kib" "$bound"
+  printf 'emptied\t%s held %s KiB, %s, so it is emptied and this run builds cold\n' "$d" "$kib" "$why"
 }
 
 # _release_leg_remote_start <project> <sha> [<bound>] -- a worktree of the
@@ -237,7 +272,9 @@ gate_cache_bound() {
 # TMPDIR, and what goes in it is the project's. HELD TO <bound> KiB (issue
 # 0361), where a bound is given, by gate_cache_bound, before the gates start,
 # its line in the leg's log: a cache a build fills grows without end, and one
-# filled a host's disk. Never while another run of the project is going on the
+# filled a host's disk. So is a cache on a disk with less than <bound> KiB
+# free, which the run could fill (issue I14a851d), the free size in the same
+# line. Never while another run of the project is going on the
 # host, a worktree there with no exit status beside it, whose gates may be
 # reading the cache: the log names that run and the cache is left as it is.
 #
