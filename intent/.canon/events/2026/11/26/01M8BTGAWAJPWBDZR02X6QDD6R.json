@@ -1,0 +1,15 @@
+{
+  "id": "01M8BTGAWAJPWBDZR02X6QDD6R",
+  "ts": "2026-11-26T11:40:26.890Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-26 11:40Z by date -u, after vc's sync of every vc, sc and sysadm that followed compact cycle 5: (1) 'Let's kick that off now first of all' for Intent 3.5.5 (gate run granted at Intent main c474424fc46f, then the dry run, then hv's cut). (2) 'Also seems ok to me. Let's crack on with it' for Utilz 2.15.0 (marks, one bats run, hv's live check, landing, hv's push, CI, dispatch, cut). (3) to (5) '3, 4, and 5 seem ok to me. So that can progress': the CI tree's record commit and push; one rollout batch per machine after Utilz 2.15.0, on vc's GO; rustup last by route C, with rhadamanth-sysadm still taking hv's direct yes in its own window."
+  }
+}

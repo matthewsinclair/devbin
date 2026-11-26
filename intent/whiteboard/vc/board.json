@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "45488c21-ad22-4e62-ba61-e2cfc70a39df",
-    "heartbeat_at": "2026-11-26T10:50:49.730Z",
+    "heartbeat_at": "2026-11-26T12:46:26.599Z",
     "status": "active",
-    "focus": "2026-11-26 10:50Z by date -u: FOLDED for compact cycle 5 (hv's word). devbin 0.1.34 is released and swept; nothing of devbin's is in flight. After a reset: /in-session, then PLAN.md's block 'Progress at 2026-11-26 10:50Z' and ~/Devel/scratch/devbin-vc/20261126/fold-tally-cycle5.md, then the Desk waiter. Next on the Desk: one estate's gate, dry run and cut; another's bats run, hv's live check, push and cut; then the rollouts and rustup.",
+    "focus": "FOLDED for compact cycle 6, 2026-11-26 12:46Z by date -u. After the compact: /in-session, read PLAN.md's block 'Progress at 2026-11-26 12:45Z' and fold-tally-cycle6.md, arm the Desk waiter, then tell utilz-vc first that hv is back. Tonight for hv: Utilz fix round and live sitting, push and cut 2.15.0; one word for devvm 0.5.6; rollout batches on vc's GO after Utilz; rustup last. No run is going and every lane is free.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -6555,7 +6555,8 @@
       "kind": "decision",
       "seq": 320,
       "text": "2026-11-26 08:11Z by date -u: devbin 0.1.34 is RELEASED under hv's approval (decision 319). Pre-cut pc0134c green at 9ff07454 (CI run 45771847672 green first); cut at dbad1dc3cb46, legs local, kovacs and candidate (run 45775370420) green; tag and both remotes pushed; the formula published; CI on main and the tag green; brew upgrade and use brew done. Sweep from brew into 23 estates, committed by path with fleet's sweep_commit (15 paths each), no push; three estates frozen until their vcs' word. The apply ran without --commit, so vc committed with the function copied from cmd/fleet (kit in ~/Devel/scratch/devbin-vc/20261126/sweep0134). Also: hv cancelled another estate's history rewrite, live in that estate's vc window at 07:39Z (relayed by its vc); the Desk's no-run rule for it is lifted and PLAN.md is changed.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-26T11:40:26.645Z",
       "recorded_at": "2026-11-26T08:11:09.180Z"
     },
     {
@@ -6563,8 +6564,25 @@
       "kind": "decision",
       "seq": 321,
       "text": "2026-11-26 10:50Z by date -u: compact cycle 5, called by hv; every team is folded (tally: ~/Devel/scratch/devbin-vc/20261126/fold-tally-cycle5.md). hv's rulings given in devbin-vc's window since decision 320, each by the question dialog or typed: another estate's PHP image stays at 8.6.0 and is fixed forward; that estate's step 2 and all promotions on one word (its own session then took hv's word first-hand); 'Yes, push Molt'; rollouts are ONE batch per machine after Utilz 2.15.0; gyges' four tidy items go to the Trash. Rulings hv gave in other windows and their vcs relayed are on those boards. Released since 320: Intent 3.5.4, Gtools 0.10.0, both side estates (hv's hands, T10's brew leg PASS), devvm 0.5.5; 0326 closed; Icb1329b filed. The last sweep commits: Molt 072d9ee872d1, Intent dea19c8cb4d9, Utilz 86448b677557. The keychain rule's reading: it bars sign-in commands, auth probes, direct security calls and a changed HOME, not a signed-in tool's ordinary use. Two faults of vc's own, corrected at the time: two GO stamps not read from a clock (08:22Z for 08:19Z), and one grant of a timing measure before the load had settled.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-26T12:46:26.177Z",
       "recorded_at": "2026-11-26T10:50:49.500Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 322,
+      "text": "hv in vc's window, read by 2026-11-26 11:40Z by date -u, after vc's sync of every vc, sc and sysadm that followed compact cycle 5: (1) 'Let's kick that off now first of all' for Intent 3.5.5 (gate run granted at Intent main c474424fc46f, then the dry run, then hv's cut). (2) 'Also seems ok to me. Let's crack on with it' for Utilz 2.15.0 (marks, one bats run, hv's live check, landing, hv's push, CI, dispatch, cut). (3) to (5) '3, 4, and 5 seem ok to me. So that can progress': the CI tree's record commit and push; one rollout batch per machine after Utilz 2.15.0, on vc's GO; rustup last by route C, with rhadamanth-sysadm still taking hv's direct yes in its own window.",
+      "state": "live",
+      "recorded_at": "2026-11-26T11:40:26.890Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 323,
+      "text": "hv in vc's window, read by 2026-11-26 12:46Z by date -u: (1) after hv's first live Save for Utilz went red, hv chose 'Wait for Save (Recommended)' by AskUserQuestion: 2.15.0 waits for the redesigned Save fix and the machines' rollout batches wait with it. (2) 'devvm has nothing to do with utilz': devvm 0.5.6 depends on nothing open; hv told that estate's vc to prepare and hold, and hv starts the chain tonight. (3) Compact cycle 6, hv's words: 'finish what they are doing now, and bank, fold, and hold. Then LMK when everyone has quiesced, I will comapct them all and close, then we can pick up when I get home.' Every team reported FOLDED by 12:45Z; the tally is fold-tally-cycle6.md in vc's scratch. State: Intent 3.5.5 released (0bab786dc32d); Utilz live Save PASS and apply RED (response write), fix round first at hv's return; another estate's heavy run 2 red at test all.",
+      "state": "live",
+      "recorded_at": "2026-11-26T12:46:26.388Z"
     }
   ],
   "sent": [

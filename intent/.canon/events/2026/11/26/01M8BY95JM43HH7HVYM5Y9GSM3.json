@@ -1,0 +1,15 @@
+{
+  "id": "01M8BY95JM43HH7HVYM5Y9GSM3",
+  "ts": "2026-11-26T12:46:26.388Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-26 12:46Z by date -u: (1) after hv's first live Save for Utilz went red, hv chose 'Wait for Save (Recommended)' by AskUserQuestion: 2.15.0 waits for the redesigned Save fix and the machines' rollout batches wait with it. (2) 'devvm has nothing to do with utilz': devvm 0.5.6 depends on nothing open; hv told that estate's vc to prepare and hold, and hv starts the chain tonight. (3) Compact cycle 6, hv's words: 'finish what they are doing now, and bank, fold, and hold. Then LMK when everyone has quiesced, I will comapct them all and close, then we can pick up when I get home.' Every team reported FOLDED by 12:45Z; the tally is fold-tally-cycle6.md in vc's scratch. State: Intent 3.5.5 released (0bab786dc32d); Utilz live Save PASS and apply RED (response write), fix round first at hv's return; another estate's heavy run 2 red at test all."
+  }
+}
