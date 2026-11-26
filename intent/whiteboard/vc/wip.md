@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 45488c21-ad22-4e62-ba61-e2cfc70a39df
-heartbeat_at: 2026-11-25 16:54Z
+heartbeat_at: 2026-11-26 06:56Z
 status: active
-focus: "2026-11-25 16:53Z by date -u: back from compact cycle 3 (decision 315). Every estate resumed at 16:50Z in PLAN.md's order, and the Desk grants again. After any reset: /in-session and pickup, re-arm the desk waiter, then PLAN.md's section 'After the reboot'."
+focus: "2026-11-26 06:56Z by date -u: FOLDED for compact cycle 4 (hv's word). devbin 0.1.34 is pushed at 679171b3; next is CI run 45770151898 green, the grant of pre-cut pc0134c, then the cut (decision 319). After a reset: /in-session, then PLAN.md's block 'Progress at 2026-11-26' and ~/Devel/scratch/devbin-vc/20261126/fold-tally-cycle4.md."
 claims: []
 ---
 
