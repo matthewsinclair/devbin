@@ -1,0 +1,15 @@
+{
+  "id": "01M8C5AEVMWJ26XRT8NRB2RAB0",
+  "ts": "2026-11-26T14:49:28.696Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I0a62f4a8590ec782"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "A leg's start clears only runs that wrote a status: a killed run turns the cache bound off, and a leg ref with no run is kept"
+  }
+}

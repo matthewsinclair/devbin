@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-26 14:45Z
+heartbeat_at: 2026-11-26 14:49Z
 status: active
-focus: "2026-11-26 14:45Z by date -u: HOLDING, list empty. I1dbca51 landed at fc321d30 and is closed. Filed I14a851d on vc's word (release.gate_cache.max's 12G default can fill a leg host's disk; fix open, cc's meaning). Not pushed: fc321d30 and dc's commits wait for the next push word. No claim, slot, worktree or process."
+focus: "2026-11-26 14:49Z by date -u: HOLDING, list empty. Filed on vc's word for the next release's list, no code: I14a851d (the 12G gate-cache default) and I0a62f4a (a killed leg run turns the cache bound off; a leg ref with no run is kept). I1dbca51 landed and closed. Not pushed: fc321d30 and dc's commits wait for the next push word. No claim, slot, worktree or process."
 claims: []
 ---
 
