@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-26 14:49Z
+heartbeat_at: 2026-11-26 18:15Z
 status: active
-focus: "2026-11-26 14:49Z by date -u: HOLDING, list empty. Filed on vc's word for the next release's list, no code: I14a851d (the 12G gate-cache default) and I0a62f4a (a killed leg run turns the cache bound off; a leg ref with no run is kept). I1dbca51 landed and closed. Not pushed: fc321d30 and dc's commits wait for the next push word. No claim, slot, worktree or process."
+focus: "2026-11-26 18:14Z by date -u: FOLDED for hv's compact (vc's fold call, cycle 7), and HOLDING with an empty list. Next step: after the compact, run /in-session, read this line, then hold for vc's word. Not pushed until the next push word through vc: fc321d30, and dc's fc9f72ae, a96f928d, e1697235, 540624f1 and fold commits (upstream/main is at 1eb239cc). Waits on hv's next devbin release: its list has I14a851d and I0a62f4a, with no code. No claim, slot, worktree or process."
 claims: []
 ---
 
