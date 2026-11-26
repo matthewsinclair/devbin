@@ -277,13 +277,19 @@ NOTARY_PROFILE="$(macos_key notary_profile)"
 # key in it does. So every notarytool call, store-credentials included, names
 # the file through notary_auth, and doctor reads the profile as a submit does.
 # notary_auth -- NOTARY_AUTH set to the options that name the notary profile
-# and the keychain that holds it, for every notarytool call.
+# and the keychain that holds it, for every notarytool call. The file is the
+# one macOS names as the login keychain, `security login-keychain` (issue
+# I7679181), never a path written here: the default keychain is a setting a
+# person can point elsewhere, and the login keychain is the one the session
+# unlocks. `-d user` is not passed, since with it macOS names nothing.
 notary_auth() {
-  case "${HOME:-}" in
+  local said
+  said="$(security login-keychain 2>/dev/null)" || said=""
+  NOTARY_KEYCHAIN="$(awk -F'"' 'NF >= 3 && $2 != "" { print $2; exit }' <<<"$said")"
+  case "$NOTARY_KEYCHAIN" in
     /?*) ;;
-    *) die "macos: HOME (${HOME:-unset}) is not an absolute path, so the login keychain file that holds the notary profile cannot be named" ;;
+    *) die "macos: 'security login-keychain' names no login keychain file, so the notary profile cannot be read from it -- check the login keychain in Keychain Access" ;;
   esac
-  NOTARY_KEYCHAIN="$HOME/Library/Keychains/login.keychain-db"
   NOTARY_AUTH=(--keychain "$NOTARY_KEYCHAIN" --keychain-profile "$NOTARY_PROFILE")
 }
 

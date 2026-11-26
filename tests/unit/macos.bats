@@ -69,6 +69,9 @@ case "\$1" in
   find-identity)
     [ ! -f "$T/kc/identities" ] || cat "$T/kc/identities"
     echo "     0 valid identities found" ;;
+  login-keychain)
+    [ ! -f "$T/kc/no-login" ] || exit 1
+    echo "    \"\$HOME/Library/Keychains/login.keychain-db\"" ;;
   add-generic-password) ;;
   *) exit 1 ;;
 esac
@@ -2101,4 +2104,26 @@ release:
   stage="$(bin_stage_of)"
   [ -n "$stage" ] || fail "no binaries' stage under $XDG_STATE_HOME: $output"
   [ "$(calls "^codesign .*--sign .* $stage/$BIN_PLAIN\$")" -eq 1 ] || fail "the plain binary was not signed: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+}
+
+@test "I7679181-2: the login keychain file is the one security login-keychain names, and with none named no notarytool call runs" {
+  on_macos
+  apple_stubs
+  keychain_full
+  local home="$DEVBIN_TEST_TMPDIR/home" kc
+  kc="$home/Library/Keychains/login.keychain-db"
+  mkdir -p "$home"
+  proj="$(app_project)"
+  HOME="$home" run macos_in "$proj" doctor
+  assert_success
+  [ "$(calls '^security login-keychain$')" -ge 1 ] || fail "macOS was not asked: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  [ "$(calls "^xcrun notarytool history --keychain $kc --keychain-profile devbin$")" -eq 1 ] ||
+    fail "doctor did not read the file security named: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
+  HOME="$home" macos_in "$proj" app-sign >/dev/null
+  : >"$DEVBIN_TEST_TMPDIR/kc/no-login"
+  : >"$DEVBIN_TEST_TMPDIR/apple.calls"
+  HOME="$home" run macos_in "$proj" app-notarize
+  assert_failure
+  assert_output_contains "'security login-keychain' names no login keychain file"
+  [ "$(calls '^xcrun notarytool ')" -eq 0 ] || fail "notarytool ran with no keychain named: $(cat "$DEVBIN_TEST_TMPDIR/apple.calls")"
 }
