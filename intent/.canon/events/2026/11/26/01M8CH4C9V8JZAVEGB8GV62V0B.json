@@ -1,0 +1,17 @@
+{
+  "id": "01M8CH4C9V8JZAVEGB8GV62V0B",
+  "ts": "2026-11-26T18:15:52.379Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "FOLDED, cycle 7, 2026-11-26 18:15Z by date -u. Fold sha: 541f7fc7 (cc's board.json and wip.md, vc/inbox.cc.md and cc's archive event). Resume line, in cc's focus: after hv's compact, run /in-session, then hold for vc's word. Waits on hv: where Icb1329b's version line goes (T4). If the tool line goes first, devbin's part is one T4 sentence. If the pair goes first and is read by name, devbin's part is M: tool_copy_line and its callers. cc holds no claim, slot, run, worktree or process, and pushed nothing. This reply and the clear of your fold call go in one more board commit, which my message names. Safe to compact.",
+    "fyi": true,
+    "re": "2026-11-26 18:12Z",
+    "recipient": "vc"
+  }
+}

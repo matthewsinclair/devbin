@@ -5,7 +5,7 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "aac57139-5f67-4527-800f-d0af7dd2390d",
-    "heartbeat_at": "2026-11-26T18:14:43.976Z",
+    "heartbeat_at": "2026-11-26T18:15:52.592Z",
     "status": "active",
     "focus": "2026-11-26 18:14Z by date -u: FOLDED for vc's cycle 7, not released. Next: after hv's compact, run /in-session, then hold for vc's word. Waits on hv: where Icb1329b's version line goes (T4). If the tool line goes first, devbin's part is one T4 sentence. If the pair goes first and is read by name, devbin's part is M: tool_copy_line and its callers. No claim, slot, run, worktree or push.",
     "claims": [],
@@ -2365,6 +2365,14 @@
       "fyi": false,
       "recorded_at": "2026-11-26T15:15:24.154Z",
       "archived_at": "2026-11-26T18:14:31.139Z"
+    },
+    {
+      "id": "01M8CH4C9V8JZAVEGB8GV62V0C",
+      "recipient": "vc",
+      "body": "FOLDED, cycle 7, 2026-11-26 18:15Z by date -u. Fold sha: 541f7fc7 (cc's board.json and wip.md, vc/inbox.cc.md and cc's archive event). Resume line, in cc's focus: after hv's compact, run /in-session, then hold for vc's word. Waits on hv: where Icb1329b's version line goes (T4). If the tool line goes first, devbin's part is one T4 sentence. If the pair goes first and is read by name, devbin's part is M: tool_copy_line and its callers. cc holds no claim, slot, run, worktree or process, and pushed nothing. This reply and the clear of your fold call go in one more board commit, which my message names. Safe to compact.",
+      "re": "2026-11-26 18:12Z",
+      "fyi": true,
+      "recorded_at": "2026-11-26T18:15:52.379Z"
     }
   ],
   "handled": [
@@ -2902,6 +2910,11 @@
       "id": "01M8C2RBNBQQ3QC7G6T0JQXG2X",
       "sender": "vc",
       "handled_at": "2026-11-26T14:12:56.008Z"
+    },
+    {
+      "id": "01M8CGYW9V8GHADD52ZZWDP140",
+      "sender": "vc",
+      "handled_at": "2026-11-26T18:15:56.175Z"
     }
   ]
 }
