@@ -3,7 +3,7 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 997ee294-3ce4-4799-8902-e774037de92e
-heartbeat_at: 2026-11-26 10:44Z
+heartbeat_at: 2026-11-26 11:13Z
 status: active
 focus: "2026-11-26 10:44Z by date -u: FOLDED for hv's compact cycle 5. devbin 0.1.34 is RELEASED at dbad1dc3cb46, with pre-cut pc0134c green at 9ff07454. Next release's list, dc's item on vc's word: another estate's promotion check flagged the lib/resolve comment above devbin_dir_shown (near line 424) that names a /private/var/... path; read whether the comment should name a path at all, and file an issue if so (no code before vc's word). On resume: /in-session, then hold for vc's word."
 claims: []

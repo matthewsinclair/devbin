@@ -1,0 +1,13 @@
+{
+  "schema": "intent/issue@4.0",
+  "id": "I1dbca5129d4f1d83",
+  "origin": "01M8BS2EH488MSZ2GDAQY8ENAM",
+  "realised": true,
+  "slug": "lib-resolve-the-comment-above-devbin-dir-shown-n",
+  "title": "lib/resolve: the comment above devbin_dir_shown names a /private/var path; say \"a temporary directory\"",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-26",
+  "reporter": "Matthew Sinclair",
+  "body": "## What is wrong\n\nThe comment above `devbin_dir_shown` in `lib/resolve` (line 424 at 03b386c8) names a path on one machine. It says the old reasons printed \"a /private/var/... path in a fixture\". That is the shape of a macOS temporary directory. Another estate's promotion check reads shipped text for such paths, and it flagged this line.\n\nThe comment does not need the path. Its point is that an absolute `DEVBIN_DIR` printed in full, where the relative spelling says the same.\n\n## Fix\n\nChange the words to \"a temporary directory in a fixture\", or the same with no path. Comment only, so no behaviour changes.\n\n## Why devbin's own scan did not catch it\n\nThe paths arm in `tests/unit/neutral.bats` matches `/(private/)?var/folders/`. It does not match `/private/var/...`, where the text stops before `folders`.\n\n`lib/helpers` line 1968 also names `/private/var`, above `cargo_tree_outside_why`. That line is correct and stays: it states a fact about macOS (`/var` and `/private/var` name one directory). So a wider arm must still pass that line. Whether to widen the arm is vc's to decide; this issue asks only for the comment fix.\n\n## Proof\n\nEvery arm tagged treescan, as for a unit that changes only shipped comments.\n"
+}
