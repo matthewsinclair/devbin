@@ -3,7 +3,7 @@ node: cc
 name: Control Claude
 role: control
 session_id: aac57139-5f67-4527-800f-d0af7dd2390d
-heartbeat_at: 2026-11-26 18:38Z
+heartbeat_at: 2026-11-26 18:43Z
 status: active
 focus: "2026-11-26 18:38Z by date -u: vc lifted the cycle-7 hold. cc gave dc and vc its word on what I14a851d and I0a62f4a mean, read only. dc builds them as one unit, and cc answers dc on their meaning. Waits on hv, through vc: where Icb1329b's version line goes (T4). Write no T4 sentence and no reader change before that word. No run without a grant, and no push, tag or cut. No claim, slot, worktree or process."
 claims: []
