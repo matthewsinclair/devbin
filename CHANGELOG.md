@@ -6,6 +6,18 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.34] - 2026-11-26
+
+### Fixed
+
+#### reaches every project
+
+- **Every notarytool call names the notary profile in the login keychain file (issue `I7679181`).** `macos app-notarize`, `macos bin-notarize` and `macos doctor` pass notarytool `--keychain ~/Library/Keychains/login.keychain-db` beside `--keychain-profile`. `macos store-creds` stores the profile in that file. The file stays readable while the screen is locked, as the Developer ID key in it does. So the pre-flight's doctor and the notary submit read the same profile, locked or not.
+  - A submit that gets no submission id names the keychain file and notarytool's `Error:` line. It tells you to run `macos doctor`, and to run `macos store-creds` only if doctor reads the profile NOT USABLE. Before, it told you to store the profile again, though it was stored.
+**Before the next cut with a macOS stage, on each Mac that cuts:** run `bin/devbin macos store-creds` once. A profile that an earlier devbin stored is in the data-protection keychain, and this release does not read it. Until you store it again, `macos doctor` reads the profile NOT USABLE and a cut's pre-flight refuses.
+
+Full note: [RELEASES/0.1.34.md](RELEASES/0.1.34.md)
+
 ## [0.1.33] - 2026-11-25
 
 ### Changed
