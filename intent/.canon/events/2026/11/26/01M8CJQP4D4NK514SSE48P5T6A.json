@@ -1,0 +1,15 @@
+{
+  "id": "01M8CJQP4D4NK514SSE48P5T6A",
+  "ts": "2026-11-26T18:43:53.613Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "watchout",
+    "text": "Two starts of one project's leg on one host are kept apart only by the Desk: lib/cmd/release and lib/release.legs hold no lock (dc and cc, 2026-11-26). Book every leg, and keep one heavy run on kovacs at a time. A lock is a unit of its own, on hv's word."
+  }
+}

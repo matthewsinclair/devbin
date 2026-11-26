@@ -6632,6 +6632,14 @@
       "text": "hv in dc's window, relayed to vc by dc. dc read the words by 2026-11-26 18:23Z by date -u, after hv's compact of dc's window, and vc read dc's relay by 18:26Z. hv's words: 'Ok, everyone has compacted or is compacting. Please carry on. You have The Pen and The Desk. Get this stuff done. I'm pre-approving all release activities. Go.' hv typed no such words in vc's window. vc's reading: the words are meant for the holder of the pen and the Desk, which is vc by hv's first-hand words of today (decisions 325 and 326). vc keeps both, and dc works to vc's order. What vc does on them: compact cycle 7 ends (every team reported FOLDED by 18:25Z; the tally is fold-tally-cycle7.md in vc's scratch), the Desk grants again, and each vc has the word to go on from its resume line. What vc does NOT do on a relayed word: any public step (a push, a tag, a cut, an upload or a promotion), in devbin or by relay to another estate. vc asks hv to confirm the pre-approval and its scope first-hand in vc's window. These stay hv's hands whatever is pre-approved: Intent's cut command (Intent's decision 3), Utilz's live sitting with its two words, and the go that the devvm estate's dc takes only first-hand. Order on the Desk: Intent's cut of 3.5.6 first and alone; dc builds I14a851d and I0a62f4a as one unit meanwhile, with cc's word on their meaning first.",
       "state": "live",
       "recorded_at": "2026-11-26T18:27:15.589Z"
+    },
+    {
+      "node": "vc",
+      "kind": "watchout",
+      "seq": 40,
+      "text": "Two starts of one project's leg on one host are kept apart only by the Desk: lib/cmd/release and lib/release.legs hold no lock (dc and cc, 2026-11-26). Book every leg, and keep one heavy run on kovacs at a time. A lock is a unit of its own, on hv's word.",
+      "state": "live",
+      "recorded_at": "2026-11-26T18:43:53.613Z"
     }
   ],
   "sent": [
@@ -10056,6 +10064,51 @@
       "id": "01M8CHKB0S79XXFMT82BB9771K",
       "sender": "dc",
       "handled_at": "2026-11-26T18:29:54.984Z"
+    },
+    {
+      "id": "01M8CJBZX7PN4CN9W2PVZKQCGP",
+      "sender": "cc",
+      "handled_at": "2026-11-26T19:59:55.891Z"
+    },
+    {
+      "id": "01M8CJMG3HCCSMMTHM9W1K3E23",
+      "sender": "dc",
+      "handled_at": "2026-11-26T19:59:56.071Z"
+    },
+    {
+      "id": "01M8CJQ2JXJAY9VRDBASV2HMSC",
+      "sender": "cc",
+      "handled_at": "2026-11-26T19:59:55.891Z"
+    },
+    {
+      "id": "01M8CKE7APK2NBP91D5WZ13NRF",
+      "sender": "dc",
+      "handled_at": "2026-11-26T19:59:56.071Z"
+    },
+    {
+      "id": "01M8CM6S5AH7BYN3WXP5NYFABH",
+      "sender": "dc",
+      "handled_at": "2026-11-26T19:59:56.071Z"
+    },
+    {
+      "id": "01M8CMHV85AZRZ0ENEH7GWZ33M",
+      "sender": "dc",
+      "handled_at": "2026-11-26T19:59:56.071Z"
+    },
+    {
+      "id": "01M8CMW9Y5HGYJHCN1VBZEE80H",
+      "sender": "dc",
+      "handled_at": "2026-11-26T19:59:56.071Z"
+    },
+    {
+      "id": "01M8CN1C7NFWG5EKP71XG4Q10P",
+      "sender": "cc",
+      "handled_at": "2026-11-26T19:59:55.891Z"
+    },
+    {
+      "id": "01M8CPW1CBQ6H94C384N5J2AYQ",
+      "sender": "dc",
+      "handled_at": "2026-11-26T19:59:56.071Z"
     }
   ]
 }

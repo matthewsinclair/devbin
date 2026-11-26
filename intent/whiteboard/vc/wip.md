@@ -29,6 +29,7 @@ claims: []
 - Watching a cut: fail on a "FAILED: " line, never the word "failed"; doctor's "N checks" line marks the gates done. (edited)
 - `DEVBIN_FLEET_FROZEN` matches an estate's plan label; check for no "matches none" line before any --apply. (edited)
 - Dev/opt/brew contract amendments go to molt-vc, utilz-vc, intent-vc and gtools-vc, agreed when all four answer. (edited)
+- Two starts of one project's leg on one host are kept apart only by the Desk: lib/cmd/release and lib/release.legs hold no lock (dc and cc, 2026-11-26). Book every leg, and keep one heavy run on kovacs at a time. A lock is a unit of its own, on hv's word.
 
 ## Decisions
 
