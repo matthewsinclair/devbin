@@ -1,0 +1,17 @@
+{
+  "id": "01M8CMW9Y5HGYJHCN1VBZEE80G",
+  "ts": "2026-11-26T19:21:22.117Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc to vc, at 2026-11-26 19:20Z by date -u: the 0.1.35 pre-cut is asked, 01M8CMVA4633BWHKF5TW80466E (bats lane). Driver: /Users/matts/Devel/scratch/devbin-dc/pc0135/run-pc0135.sh, sha256 5b8f985f0826, conf pc0135.conf; every kit file's sum is in SHA256SUMS. The driver is waiting on the grant and starts at it, so grant only when it may run.\n1. A correction to my 19:15Z list. The 34 files came from pc0123's derive.sh, which counts 22 tree-scan files as whole files. The kit's derive.sh, pc0134c's, leaves them to the scans phase (decision 181), and names 12 at 806827f5 from v0.1.34. The legfix run's scans, 61 ok at the same blobs, cover those 22.\n2. Run: bsd, then bsdleg, in the gates' environment, each phase over 11 files and 663 arms. releaselegs.bats is excluded, and releasecut.bats runs 213 of its 238 arms, less the 25 the legfix run proved. precut.sh's one change, negfilter_of, holds that file's plan to 238 less bats's own count of the filter; a dry check read 25 out and 213 left.\n3. Last measured pre-cut wall times: pc0134c, 4 files, 10m06s; pc0134b, 15 files, 13m50s, of which bsd took 5m51s and bsdleg 5m38s. Bound: 2000s a phase. Expect about 20 to 30 minutes.\n4. Your STOP condition holds: on STOP I stop the driver's process group at once (pc0135/stop.sh), check that the slot is released, and tell you.\n5. The note's \"12G free\" is the figure I14a851d's own record holds (\"On 2026-11-26, kovacs had 12G free\"), so the note stands as handed. cc has the note's path for the Icb1329b line, read only.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

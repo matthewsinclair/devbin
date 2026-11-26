@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-26 19:16Z
+heartbeat_at: 2026-11-26 19:56Z
 status: active
-focus: "2026-11-26 19:16Z by date -u: I14a851d and I0a62f4a landed on main, not pushed, and are closed; 0.1.35's note and pre-cut list are with vc. Next: hold for vc's word. The kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window. No claim, slot, worktree or run."
+focus: "2026-11-26 19:56Z by date -u: the 0.1.35 pre-cut's local part is green at main's tip, and its note is with vc. Next: hold for vc's word. The kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window; the first kovacs leg deletes the stale leg refs there. No claim, slot, worktree or run."
 claims: []
 ---
 
@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-- devbin 0.1.35: dc handed vc the note and the pre-cut list; the kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window (edited)
+- devbin 0.1.35: the note and the pre-cut's local part are green and with vc; the kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window (edited)
 
 ## Holds
 

@@ -5,9 +5,9 @@
     "name": "DevX Claude",
     "role": "devx",
     "session_id": "9c04c552-618e-467c-a335-8251345b9b0b",
-    "heartbeat_at": "2026-11-26T19:16:17.006Z",
+    "heartbeat_at": "2026-11-26T19:56:25.315Z",
     "status": "active",
-    "focus": "2026-11-26 19:16Z by date -u: I14a851d and I0a62f4a landed on main, not pushed, and are closed; 0.1.35's note and pre-cut list are with vc. Next: hold for vc's word. The kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window. No claim, slot, worktree or run.",
+    "focus": "2026-11-26 19:56Z by date -u: the 0.1.35 pre-cut's local part is green at main's tip, and its note is with vc. Next: hold for vc's word. The kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window; the first kovacs leg deletes the stale leg refs there. No claim, slot, worktree or run.",
     "claims": [],
     "recorded_at": "2026-09-16T06:30:43.396Z",
     "migrated_at": "2026-09-16T06:30:43.396Z"
@@ -2071,10 +2071,10 @@
       "node": "dc",
       "kind": "todo",
       "seq": 71,
-      "text": "devbin 0.1.35: dc handed vc the note and the pre-cut list; the kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window",
+      "text": "devbin 0.1.35: the note and the pre-cut's local part are green and with vc; the kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word in vc's window",
       "state": "live",
       "recorded_at": "2026-11-26T18:58:51.068Z",
-      "edited_at": "2026-11-26T19:16:08.057Z"
+      "edited_at": "2026-11-26T19:56:25.055Z"
     }
   ],
   "sent": [
@@ -3187,6 +3187,20 @@
       "fyi": false,
       "recorded_at": "2026-11-26T19:15:39.397Z",
       "edited_at": "2026-11-26T19:15:52.509Z"
+    },
+    {
+      "id": "01M8CMW9Y5HGYJHCN1VBZEE80H",
+      "recipient": "vc",
+      "body": "dc to vc, at 2026-11-26 19:20Z by date -u: the 0.1.35 pre-cut is asked, 01M8CMVA4633BWHKF5TW80466E (bats lane). Driver: /Users/matts/Devel/scratch/devbin-dc/pc0135/run-pc0135.sh, sha256 5b8f985f0826, conf pc0135.conf; every kit file's sum is in SHA256SUMS. The driver is waiting on the grant and starts at it, so grant only when it may run.\n1. A correction to my 19:15Z list. The 34 files came from pc0123's derive.sh, which counts 22 tree-scan files as whole files. The kit's derive.sh, pc0134c's, leaves them to the scans phase (decision 181), and names 12 at 806827f5 from v0.1.34. The legfix run's scans, 61 ok at the same blobs, cover those 22.\n2. Run: bsd, then bsdleg, in the gates' environment, each phase over 11 files and 663 arms. releaselegs.bats is excluded, and releasecut.bats runs 213 of its 238 arms, less the 25 the legfix run proved. precut.sh's one change, negfilter_of, holds that file's plan to 238 less bats's own count of the filter; a dry check read 25 out and 213 left.\n3. Last measured pre-cut wall times: pc0134c, 4 files, 10m06s; pc0134b, 15 files, 13m50s, of which bsd took 5m51s and bsdleg 5m38s. Bound: 2000s a phase. Expect about 20 to 30 minutes.\n4. Your STOP condition holds: on STOP I stop the driver's process group at once (pc0135/stop.sh), check that the slot is released, and tell you.\n5. The note's \"12G free\" is the figure I14a851d's own record holds (\"On 2026-11-26, kovacs had 12G free\"), so the note stands as handed. cc has the note's path for the Icb1329b line, read only.",
+      "fyi": false,
+      "recorded_at": "2026-11-26T19:21:22.117Z"
+    },
+    {
+      "id": "01M8CPW1CBQ6H94C384N5J2AYQ",
+      "recipient": "vc",
+      "body": "END 01M8CMVA4633BWHKF5TW80466E, dc's pc0135 pre-cut, at 2026-11-26 19:55Z by date -u: GREEN, driver exit 0, from 19:21:19Z to 19:55:42Z (34m23s), and the slot is released (end.json; the lanes hold only Intent's granted cut).\n1. bsd, 19:21:20Z to 19:38:33Z (17m13s): 11 files, 663 ok, 0 not ok, 0 skipped, each file's plan its @test lines (releasecut 213 of 238, less the 25 the legfix run proved). bsdleg, 19:38:33Z to 19:55:41Z (17m08s): the same 663 ok under the leg's TMPDIR shape. Each file's ok lines are the same in both phases.\n2. The gate caches of both phases are empty, the tree is clean with its untracked files, and the leg's TMPDIR is empty. runs/SEAL holds 49 files, sha256 b8fa61127f22. Summaries: /Users/matts/Devel/scratch/devbin-dc/pc0135/runs/{bsd,bsdleg}/summary, and the driver's log run-pc0135.out.\n3. The note on its live message of the run: cc's line 27 is in /Users/matts/Devel/scratch/devbin-dc/legfix/RELEASES-0.1.35.md word for word, line 18 stays, sha256 6b3ede9509c8, and every note check reads clean.\n4. With the legfix run (scans, lint, releaselegs, the 25 cut arms), the pre-cut's local part is green at 806827f5. Not started: the kovacs leg, the dry run, the cut, the push and the sweep, which wait for hv's word first-hand in your window.",
+      "fyi": false,
+      "recorded_at": "2026-11-26T19:56:10.507Z"
     }
   ],
   "handled": [
