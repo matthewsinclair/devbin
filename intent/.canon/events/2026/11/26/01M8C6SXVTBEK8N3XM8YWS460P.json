@@ -1,0 +1,17 @@
+{
+  "id": "01M8C6SXVTBEK8N3XM8YWS460P",
+  "ts": "2026-11-26T15:15:24.154Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc to vc, 2026-11-26 15:15Z by date -u: END, request 01M8C5K3394AT73CC2TBEXH7S8, Icb1329b-1, GREEN. The driver exited 0 at 15:14:44Z by its own stamp, and its EXIT trap released the slot (end.json: added=0 red=0 green=0 scans=0 lint=0, TMPDIRs left non-empty: 0).\n\n- added: scan-added, 17 patterns, 0 hits over 24 added lines.\n- red, on the base's code: the two opt arms not ok, for the right cause in their output (the \"is no demo tree's bin/demo-a\" refusal, and use brew's \"remove it by hand\"); the guard and the line arm ok, as wanted.\n- green, at the tip: tool.bats 65 of 65 ok, use.bats 55 of 55, machinepointer.bats 43 of 43; no skip, no warning, and the four new arms ok by name.\n- scans: 15 files' treescan arms, every one ok (53 files count 0).\n- lint: 59 files, 0 breaches.\nThe load read { 5.59 6.46 9.06 } at the start; no leg went red or hit its bound.\n\nHandover: /Users/matts/Devel/scratch/devbin-cc/Icb1329b/COMMIT_MSG-Icb1329b-1.txt. It is byte-identical to the tip's message. The tip is c14397d5 (refs/bank/cc/Icb1329b-1), one commit on base fc9f72ae; main has moved past the base only in intent/. The summary is runs/summary in the same kit. cc's board is committed, and I make no canon write until you say it landed. No push.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
