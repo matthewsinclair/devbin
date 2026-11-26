@@ -137,12 +137,14 @@ _neutral_hits() {
       ;;
     paths)
       # A machine's own layout: an absolute home (`/Users/x` or `/users/x`, or
-      # `/home/x`), a mounted volume, macOS's per-user temporary tree, or a
+      # `/home/x`), a mounted volume, macOS's per-user temporary tree, a path
+      # beneath /private/var, which is /var as macOS resolves it, or a
       # home-relative path -- `~`, `~user`, `$HOME`, `${HOME}` or `"$HOME"` --
       # into a CAPITALISED directory, which is how a person's own folders are
       # named (Devel, Dropbox, Library). The lower-case dot directories a tool
-      # documents (~/.local, ~/.config) are not one.
-      vendored_scan "$raw" s "/[Uu]sers/[A-Za-z]|/home/[a-z]|/Volumes/|/(private/)?var/folders/|(~[a-z]*|\\\$\\{?HOME\\}?\"?)/[A-Z]" "$@" || return 2
+      # documents (~/.local, ~/.config) are not one, and nor is /private/var
+      # with nothing beneath it, which a fact about macOS can name.
+      vendored_scan "$raw" s "/[Uu]sers/[A-Za-z]|/home/[a-z]|/Volumes/|/private/var/|/var/folders/|(~[a-z]*|\\\$\\{?HOME\\}?\"?)/[A-Z]" "$@" || return 2
       ;;
     credentials)
       # A URI that carries a password, `scheme://user:password@`, whatever
@@ -308,9 +310,9 @@ _neutral_arm() {
   pos="$(_neutral_plant paths.pos '# collected in ~/Devel/prj/x/dmarc' '# /Users/someone/x' \
     '# /home/someone/x' "# \$HOME/Devel/opt/devbin" "# \${HOME}/Devel/x" '# ~/Dropbox/x' \
     '# ~/Library/CloudStorage/x' '# /private/var/folders/ab/T/x' '# /var/folders/ab/T/x' \
-    "# \"\$HOME\"/Devel/x" '# /Volumes/Work/x' '# ~someone/Devel' '# /users/someone')"
+    "# \"\$HOME\"/Devel/x" '# /Volumes/Work/x' '# ~someone/Devel' '# /users/someone' '# /private/var/x')"
   neg="$(_neutral_plant paths.neg '# ~/.local/bin/demo' "# \$HOME/.cache" '# /usr/local/bin' \
-    "# \${XDG_DATA_HOME:-\$HOME/.local/share}/devbin")"
+    "# \${XDG_DATA_HOME:-\$HOME/.local/share}/devbin" '# /var and /private/var name one directory')"
   _neutral_arm paths "carries a path on one machine -- say what the path is, not where it was" "$pos" "$neg"
 }
 
