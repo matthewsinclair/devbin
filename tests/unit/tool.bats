@@ -14,6 +14,8 @@
 # the 0326-6 arms its rows in doctor, and the 0326-9 arm doctor's note when its
 # switch was left off brew. The 0348 arms hold a keg laid before the manifest's
 # line, as brew_keg --flat builds it: Homebrew's answer for it, and its rows.
+# The Icb1329b arms hold a tool whose names are links to one dispatcher in its
+# bin/, read at its tree by the switch, use and doctor.
 #
 # WHAT THIS DOES NOT CATCH, declared so a green is never read as covering it:
 #   - use's own word on a link a login shell does not run: the 0326-6 arm runs
@@ -1303,4 +1305,124 @@ build:
   assert_success
   assert_output_contains "wrote      .devbin-tool (the install: block changed; commit it with the block)"
   refute_output_contains "$note"
+}
+
+# A TOOL WHOSE NAMES ARE LINKS TO ONE DISPATCHER IN ITS BIN/ (issue Icb1329b).
+# The build links each name to demo-cli, whose program prints the tool's line
+# under the name it was run by, and the publish copies each link as a link, so
+# an opt tree or a keg holds bin/<name> -> demo-cli. A link's tree is read from
+# the file its chain ends at: the link serves the tree whose bin/ holds that
+# file, where the tree's own bin/<name> leads to the same file.
+
+# stamp_family <proj> <name>... -- the stamped project <proj> made a dispatcher
+# family, and committed: demo-cli's program is stamp_program's, under the name
+# it was run by, and for each <name> the build links target/release/<name> to
+# demo-cli, declared as a link after demo-cli's, in the order given.
+stamp_family() {
+  local proj="$1" cfg="$1/bin/.devbin/config.yaml" n
+  shift
+  # shellcheck disable=SC2016 # the name is the program's own $0, expanded when it runs
+  stamp_program '$(basename "$0")' >"$proj/tools/demo-cli.in" || return 1
+  for n in "$@"; do
+    printf 'ln -sfn demo-cli target/release/%s\n' "$n" >>"$proj/tools/build.sh" || return 1
+  done
+  awk -v names="$*" '{ print } /^    demo-cli: target\/release\/demo-cli$/ { k = split(names, a, " "); for (i = 1; i <= k; i++) print "    " a[i] ": target/release/" a[i] }' "$cfg" >"$cfg.new" || return 1
+  mv "$cfg.new" "$cfg" || return 1
+  for n in "$@"; do
+    grep -qx "    $n: target/release/$n" "$cfg" || return 1
+  done
+  git -C "$proj" add -A >/dev/null 2>&1 || return 1
+  git -C "$proj" -c user.email=t@t -c user.name=t -c maintenance.auto=false commit -q -m "a dispatcher family" >/dev/null 2>&1
+}
+
+@test "Icb1329b-1: a dispatcher family on opt: use opt points every name, a bare use reports each name's line, and doctor passes each link and each copy" {
+  local proj sha opt="$DEVBIN_TEST_TMPDIR/opt-demo" root n
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  stamp_family "$proj" demo-a demo-b || fail "the fixture's family could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" install
+  assert_success
+  for n in demo-a demo-b; do
+    [ -L "$opt/bin/$n" ] && [ "$(readlink "$opt/bin/$n")" = demo-cli ] || fail "the publish did not keep bin/$n a link to demo-cli: $(ls -l "$opt/bin")"
+  done
+  run devbin_run "$proj" use opt
+  assert_success
+  run devbin_run "$proj" use
+  assert_success
+  for n in demo-cli demo-a demo-b; do
+    assert_output_contains "$n 1.2.3 (opt, ${sha:0:12})"
+  done
+  root="$(cd -P "$opt" && pwd -P)"
+  run devbin_run "$proj" doctor
+  for n in demo-cli demo-a demo-b; do
+    assert_output_contains "ok    demo switch: the link $HOME/.local/bin/$n names opt at $root"
+    assert_output_contains "ok    demo tree: $root/bin/$n prints its install's line, $n 1.2.3 (opt, ${sha:0:12})"
+  done
+  refute_output_contains "which is no demo tree's bin/"
+}
+
+@test "Icb1329b-1: use brew removes a dispatcher family's links into opt once Homebrew's copy would answer for each name" {
+  local proj opt="$DEVBIN_TEST_TMPDIR/opt-demo" n got want
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  stamp_family "$proj" demo-a demo-b || fail "the fixture's family could not be made"
+  run devbin_run "$proj" install
+  assert_success
+  # use opt's own exit is the arm above's. Here it points the links.
+  run devbin_run "$proj" use opt
+  for n in demo-cli demo-a demo-b; do
+    real_path "$HOME/.local/bin/$n" got
+    real_path "$opt/bin/$n" want
+    [ "$got" = "$want" ] || fail "use opt did not point the link $n into the opt tree: it leads to $got"
+  done
+  brew_keg --formula demo --link demo-cli --from "$proj" --linked 1.2.3 || fail "the keg could not be built from the project"
+  # Homebrew's bin links for the other names. brew_keg lays the keg's own bin/
+  # for its one --link, so these lead into libexec, where the publish put each
+  # name as a link to demo-cli.
+  for n in demo-a demo-b; do
+    ln -sfn "../Cellar/demo/1.2.3/libexec/bin/$n" "$HOMEBREW_PREFIX/bin/$n" || fail "Homebrew's bin link for $n could not be made"
+  done
+  PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/bin:$PATH" run devbin_run "$proj" use brew
+  assert_success
+  for n in demo-cli demo-a demo-b; do
+    assert_output_contains "use: no link for $n, so brew"
+    [ ! -e "$HOME/.local/bin/$n" ] && [ ! -L "$HOME/.local/bin/$n" ] || fail "use brew left the link $n"
+  done
+}
+
+@test "Icb1329b-1: a link straight to a tree's dispatcher is no tree's where that tree's own bin/<name> does not lead to the same file" {
+  local proj opt="$DEVBIN_TEST_TMPDIR/opt-demo"
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  stamp_family "$proj" demo-a demo-b || fail "the fixture's family could not be made"
+  run devbin_run "$proj" install
+  assert_success
+  run devbin_run "$proj" use opt
+  # The opt tree's bin/demo-a is made a file of its own, with the dispatcher's
+  # bytes, so it leads to demo-cli no more, and the switch's link for demo-a is
+  # made to lead to demo-cli straight.
+  rm -f "$opt/bin/demo-a"
+  cp "$opt/bin/demo-cli" "$opt/bin/demo-a" || fail "bin/demo-a could not be made a file"
+  ln -sfn "$opt/bin/demo-cli" "$HOME/.local/bin/demo-a" || fail "the link demo-a could not be made"
+  run devbin_run "$proj" doctor
+  assert_output_contains "FAIL  demo switch: the link $HOME/.local/bin/demo-a leads to $opt/bin/demo-cli, which is no demo tree's bin/demo-a"
+}
+
+@test "Icb1329b-1: doctor reads each dev copy of a dispatcher family under the name it was run by, and fails a name the dispatcher does not print" {
+  local proj sha n
+  proj="$(stamp_project)" || fail "the fixture's project could not be made"
+  stamp_family "$proj" demo-a demo-b || fail "the fixture's family could not be made"
+  sha="$(git -C "$proj" rev-parse HEAD)"
+  run devbin_run "$proj" build
+  assert_success
+  [ -L "$proj/target/release/demo-a" ] || fail "the build did not link demo-a to the dispatcher"
+  run devbin_run "$proj" doctor
+  for n in demo-cli demo-a demo-b; do
+    assert_output_contains "ok    demo dev: target/release/$n prints the line a build here carries, $n 1.2.3 (dev, ${sha:0:12})"
+  done
+  # A dispatcher that prints one name, whatever name it was run by: the copy of
+  # each other name fails.
+  printf '#!/bin/sh\necho "demo-cli 1.2.3 (dev, %s)"\n' "${sha:0:12}" >"$proj/target/release/demo-cli"
+  run devbin_run "$proj" doctor
+  assert_output_contains "ok    demo dev: target/release/demo-cli prints the line a build here carries"
+  assert_output_contains "FAIL  demo dev: target/release/demo-a prints "
+  assert_output_contains "FAIL  demo dev: target/release/demo-b prints "
 }
