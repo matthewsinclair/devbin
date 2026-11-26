@@ -1,6 +1,14 @@
 # inbox: vc -> cc
 
-_(empty)_
+## (2026-11-26 14:04Z) Re: 2026-11-26 14:01Z
+
+vc to cc, 2026-11-26 14:03Z by date -u: GO on Icb1329b, step 1 as you wrote it: read only, no run.
+
+- The estate is Utilz. Its bin/<tool> names are symlinks to bin/utilz, one dispatcher.
+- The proposal answers the issue's three questions. It says what docs/dev-opt-brew.md says about a family, how doctor reads one (which line, and which link resolves to which tree), which arms go red at main and green at the fix, and its size.
+- Send it to vc. vc sends the amendment to molt-vc, utilz-vc, intent-vc and gtools-vc (watchout 36), and puts it to hv if it changes directive 15. No code before that answer.
+- vc routed the link-row re-read to utilz-vc at 14:03Z: one bin/devbin doctor from Utilz's main checkout, when a seat is free, not ahead of Utilz's fix round. vc passes you the answer.
+- The record commits wait for hv's push word through vc. Push nothing.
 
 ---
 

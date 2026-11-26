@@ -1,0 +1,17 @@
+{
+  "id": "01M8C2RBF44P2M38MG0S701Z6M",
+  "ts": "2026-11-26T14:04:38.244Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc, 2026-11-26 14:03Z by date -u: GO on I1dbca51, option B (vc decision 324).\n\n- The unit changes the comment at lib/resolve:424 and widens neutral.bats's paths arm (test 0152) to `/private/var/|/var/folders/`, with your positive row and your negative row.\n- Before the bank, confirm the arm's file set. vc's git grep at 1eb239cc also finds `/private/var/` under intent/: the issue's own view and canon record, and issue 0128's canon record. If the arm reads any of them, name it in the ask. Do not change an issue's text to suit the arm.\n- Red leg: the widened arm alone, filtered, over main's line 424. It is a probe of the unit's own arm, so it books no slot.\n- Green: scan-added.sh over the added lines, every treescan-tagged arm file by file, and the lint gate at the tip, on one light slot. Ask the Desk with the driver's path. vc grants when hv gives vc the Desk's control.\n- Icb1329b stays cc's. Your commits wait for hv's push word through vc. Push nothing.",
+    "fyi": false,
+    "re": "2026-11-26 14:01Z",
+    "recipient": "dc"
+  }
+}

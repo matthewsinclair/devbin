@@ -1,0 +1,15 @@
+{
+  "id": "01M8C4FZ4C0HKXPXJBJGX1ETYF",
+  "ts": "2026-11-26T14:35:00.620Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, two messages read by 2026-11-26 14:33Z by date -u, hv's words: (1) 'I'm about to be AFK for an hour while I got to the gym. I want you to close out as mucn as can be closed out now this evening. Ok? Go! You have The Pen and The Desk.' (2) 'You have pre-approval to do what you need to do to that end.' Before them hv told vc 'Ok, sync all of the VC plans and then get ready to go.', and told each vc in its own window to sync its plan with devbin-vc, then gave it the same Go with 'devbin-vc has The Pen and The Desk.' Then hv to vc: 'I want youto sync and coordinate a unified plan across workstreams. Ok? Go!' vc's reading, which stands until hv says otherwise. COVERED: every step of the synced plans (PLAN.md, 'The Desk's slot order for tonight') that needs no hands of hv's and sends nothing outward: builds, banks, Desk runs, landings, issue closes and folds; the heavy starts that the second workstream's dc puts to hv; gyges-sysadm's three repair steps (intentd, the cms restart, the checks); kovacs-sysadm's timesyncd restart and brew cleanup; a local delete of a branch that its vc read as contained in main. NOT COVERED BY vc's RELAY: a push, a pushed tag, an upload or a GitHub run in another estate. vc's own permission check refused its go for devvm 0.5.6's outward steps at 14:35Z, as it refused a push word to Molt on 2026-11-25, so each outward step waits for hv's own word in that estate's window, and vc routes it no other way. NOT COVERED: a cut or a tag that an estate's own rule keeps for hv's keystroke (Intent 3.5.6, Utilz 2.15.0); hv's live sitting for Utilz, and any reversal of hv's Utilz ruling D2; a promotion or a push to a client's remote; an app install; a history rewrite; anything outside the synced plans. vc reports each use to hv at hv's return."
+  }
+}

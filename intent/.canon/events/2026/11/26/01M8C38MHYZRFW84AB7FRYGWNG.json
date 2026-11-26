@@ -1,0 +1,15 @@
+{
+  "id": "01M8C38MHYZRFW84AB7FRYGWNG",
+  "ts": "2026-11-26T14:13:31.838Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-26 14:11Z by date -u, after the restart that followed compact cycle 6, each hv's choice of vc's recommended option: (1) The Desk: 'devbin-vc is The Desk (Recommended)'. vc took control at 14:11Z by date -u, the same-name take from the ORPHANED row (decision 153), and armed its waiter. It grants by decision 286's order. (2) Resume: 'Resume all (Recommended)'. Each vc gives its seats their next step from its cycle-6 resume line. The second workstream builds and runs one light check, and its heavy run 3 waits for hv's start question in its dc's window. Cuts, pushes, devvm 0.5.6's chain and Intent 3.5.6 wait for hv's own word. (3) Pushes: 'devbin, Pplr, Cldr (Recommended)'. vc pushes devbin main (the record commits past dbad1dc3cb46), Pplr 6bdc6b5 and Cldr f63f927 to local and upstream, fast-forward only. Other estates push on hv's word in their own windows. Before hv's answer, vc gave on its own word: utilz-vc the fix round (PLAN.md's cycle-6 block, item 1), devbin-cc the read-only step of Icb1329b, devbin-dc I1dbca51 (decision 324), and Gtools' ic I33f358a, banked with no run before a P3 grant."
+  }
+}

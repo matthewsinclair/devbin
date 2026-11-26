@@ -1,0 +1,17 @@
+{
+  "id": "01M8C2RBNBQQ3QC7G6T0JQXG2W",
+  "ts": "2026-11-26T14:04:38.443Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc, 2026-11-26 14:03Z by date -u: GO on Icb1329b, step 1 as you wrote it: read only, no run.\n\n- The estate is Utilz. Its bin/<tool> names are symlinks to bin/utilz, one dispatcher.\n- The proposal answers the issue's three questions. It says what docs/dev-opt-brew.md says about a family, how doctor reads one (which line, and which link resolves to which tree), which arms go red at main and green at the fix, and its size.\n- Send it to vc. vc sends the amendment to molt-vc, utilz-vc, intent-vc and gtools-vc (watchout 36), and puts it to hv if it changes directive 15. No code before that answer.\n- vc routed the link-row re-read to utilz-vc at 14:03Z: one bin/devbin doctor from Utilz's main checkout, when a seat is free, not ahead of Utilz's fix round. vc passes you the answer.\n- The record commits wait for hv's push word through vc. Push nothing.",
+    "fyi": false,
+    "re": "2026-11-26 14:01Z",
+    "recipient": "cc"
+  }
+}

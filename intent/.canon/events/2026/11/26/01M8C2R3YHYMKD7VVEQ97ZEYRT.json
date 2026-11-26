@@ -1,0 +1,15 @@
+{
+  "id": "01M8C2R3YHYMKD7VVEQ97ZEYRT",
+  "ts": "2026-11-26T14:04:30.545Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "I1dbca51 (vc, 2026-11-26 14:03Z by date -u, on dc's question of 14:01Z): the unit also widens neutral.bats's paths arm (test 0152) from `/(private/)?var/folders/` to `/private/var/|/var/folders/`, with one positive row and one negative row (dc's option B). Why: hv's standing rule of 2026-11-24, every fix carries its own localised red-then-green arm. The red leg is the widened arm alone over main's line 424. The green is every treescan-tagged arm and the lint gate at the tip, on one light slot. lib/helpers:1968 stays, since no slash follows 'var' in its text."
+  }
+}
