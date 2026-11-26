@@ -1,0 +1,15 @@
+{
+  "id": "01M8C53KHBPQG8BDMH4Z2ZEZ1K",
+  "ts": "2026-11-26T14:45:44.111Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I14a851d82c46303f"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "release.gate_cache.max defaults to 12G, which can be all of a leg host's free disk"
+  }
+}

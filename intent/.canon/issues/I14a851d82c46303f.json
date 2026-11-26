@@ -1,0 +1,13 @@
+{
+  "schema": "intent/issue@4.0",
+  "id": "I14a851d82c46303f",
+  "origin": "01M8C53KHBPQG8BDMH4Z2ZEZ1K",
+  "realised": true,
+  "slug": "release-gate-cache-max-defaults-to-12g-which-can",
+  "title": "release.gate_cache.max defaults to 12G, which can be all of a leg host's free disk",
+  "status": "open",
+  "severity": "medium",
+  "created": "2026-11-26",
+  "reporter": "Matthew Sinclair",
+  "body": "## What is wrong\n\n`release.gate_cache.max` sets the size that the gates' cache (DEVBIN_GATE_CACHE) is held to, on the cutting machine and on each host in `release.legs` (lib/config.reference.yaml:654-655). Its default is 12G. Neither devbin's config nor Intent's sets its own value, so both use 12G.\n\nThe bound applies only when a run starts (`gate_cache_bound`, lib/release.legs:193, called at :284): a cache over it is emptied, and one at or under it is kept. A run can then grow its cache past the bound, and the next start empties it. Each project on a host has its own cache, `~/work/<project>-leg.cache`. So one project's cache can use 12G or more before its bound acts, and two projects on one host can use twice that.\n\nOn 2026-11-26, kovacs had 12G free, and ~/work held 15G of the leg runner's bare repositories and caches (kovacs-sysadm's figures, relayed by devbin-vc). The default bound is all of that free space.\n\nIssue 0361 set the bound and its 12 GiB default, after it measured the cache at 15.2 GiB on rhadamanth and 8.1 GiB on kovacs (2026-11-16). The default does not refer to a host's free space.\n\n## What it costs\n\nA leg whose cache fills the host's disk fails in its build or its tests, for a reason that is not in the release. The disk is then full for everything else on the host too. Issue 0361 added the bound because a cache filled a host's disk. With this default, that can still occur on a host with 12G free or less.\n\n## The question\n\nThe fix is open. Two shapes so far:\n\n1. A smaller default for `release.gate_cache.max`.\n2. A bound read from the host's free space when a run starts, eg a part of what `df` reports.\n\ncc is authoritative on what the config key means. Either way, the leg's log keeps its line that says what the bound did.\n\n## Scope\n\nNo code yet. This joins the list for the next devbin release (devbin-vc's word, 2026-11-26 14:44Z by date -u).\n\n## Provenance\n\nFound by devbin-dc, 2026-11-26 14:41Z by date -u, reading lib/release.legs and lib/config.reference.yaml at fc9f72ae for devbin-vc's question about kovacs's disk. Nothing was run, and kovacs was not read. Filed by devbin-dc on devbin-vc's word, 2026-11-26 14:45Z by date -u.\n"
+}
