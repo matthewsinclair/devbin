@@ -116,3 +116,13 @@ YAML
   run devbin_run "$proj" doctor
   assert_output_contains "docs.treeindex_dirs"
 }
+
+@test "If738d64-2: docs agents refuses arguments rather than dropping them unread" {
+  proj="$(demo_project)"
+  local bin
+  bin="$(fake_intent "$proj")"
+  PATH="$bin:$PATH" run devbin_run "$proj" docs agents extra
+  assert_failure
+  assert_output_contains "docs agents takes no arguments (got: extra)"
+  refute_output_contains "intent agents sync"
+}

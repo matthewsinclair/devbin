@@ -1055,3 +1055,21 @@ YAML
   assert_failure
   refute_output_contains "skipping"
 }
+
+@test "If738d64-2: fmt swift refuses arguments rather than dropping them unread" {
+  proj="$(mkproj demo <<'YAML'
+project:
+  name: demo
+  languages:
+    - swift
+YAML
+  )"
+  local bin
+  bin="$(fakebin "$proj" swift-format)"
+  mkdir -p "$proj/Sources"
+  printf 'let x = 1\n' >"$proj/Sources/A.swift"
+  PATH="$bin:$PATH" run devbin_run "$proj" fmt swift Sources/A.swift
+  assert_failure
+  assert_output_contains "fmt swift takes no arguments (got: Sources/A.swift)"
+  refute_output_contains "ran:swift-format"
+}
