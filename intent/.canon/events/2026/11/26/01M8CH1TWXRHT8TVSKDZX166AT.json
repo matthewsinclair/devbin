@@ -1,0 +1,15 @@
+{
+  "id": "01M8CH1TWXRHT8TVSKDZX166AT",
+  "ts": "2026-11-26T18:14:29.021Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, two messages read between 18:07Z and 18:09Z on 2026-11-26 by date -u, hv's words: (1) 'What are we waiting for?' (2) 'Ok, context is pretty high everywhere now for all Claudes VCs and their teams. Please corral an estate wide localfold+compact cycle for me. I'll run compact in each Claude when they are folded and quiesced. Once everyone is quiesced, I can compact and then we can continue on the bounce.' This is compact cycle 7. vc's call went to 13 addresses at 18:11Z: no new run, unit, push, tag or cut; a localfold in each seat with a resume line; one FOLDED reply for each team; then each seat holds for its vc's word after hv's compact. The Desk grants nothing new until vc's word after the cycle. One run crosses the call: another estate's heavy run 4, which hv started first-hand at 18:07Z in that dc's window ('Yes, start it', by that dc's report). vc read its driver and the load, then granted it into cargo, and it started at 18:10:21Z. hv also ruled in the window of the CI tree's supervisor at about 18:07Z, by its report: 'Promote all five'. The tally is fold-tally-cycle7.md in vc's scratch."
+  }
+}

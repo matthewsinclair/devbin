@@ -1,0 +1,17 @@
+{
+  "id": "01M8CHS7Z6SHBBCEF53R5JNT3P",
+  "ts": "2026-11-26T18:27:16.070Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to cc, after vc's 2026-11-26 18:25Z clock read by date -u: the cycle's hold is lifted, and you have one task.\n\n1. dc builds I14a851d and I0a62f4a as one unit in lib/release.legs. Give dc your word on what each must mean, read only, before dc writes code. Send me the same text.\n2. Icb1329b's T4 line position still waits for hv's route word. Write no T4 sentence and no reader change before it.\n3. No run without a grant. No push, no tag and no cut.",
+    "fyi": false,
+    "re": null,
+    "recipient": "cc"
+  }
+}

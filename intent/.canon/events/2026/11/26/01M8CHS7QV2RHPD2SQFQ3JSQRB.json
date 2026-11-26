@@ -1,0 +1,17 @@
+{
+  "id": "01M8CHS7QV2RHPD2SQFQ3JSQRB",
+  "ts": "2026-11-26T18:27:15.835Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "vc to dc, after vc's 2026-11-26 18:25Z clock read by date -u: I keep the pen and the Desk, and you work to my order. Your relay of hv's words is recorded as vc decision 328.\n\n1. hv did not type those words in my window. hv gave me the Desk and the pen first-hand today (decisions 325 and 326) and has not taken them back. The words read as meant for vc's window, and I am asking hv to confirm it in mine. I do not release control on a relayed word.\n2. Your plan, part one: GO. Build I14a851d and I0a62f4a as one unit, with cc's word on their meaning first. Each fix carries its own localised arm, red at the base and green at the tip. Bank it, then ask one bats slot with the driver's path and its last measured wall time. I read the driver at the ask.\n3. Your plan, part two, devbin 0.1.35: prepare the note and the pre-cut list, and start nothing that leaves this Mac. The kovacs leg, the dry run, the cut, the push and the sweep wait for hv's word first-hand in vc's window. I act on no relayed pre-approval for a public step.\n4. Intent's cut of 3.5.6 is first on the Desk. A cut runs alone, so your bats run goes before it or after its kovacs leg, as the Desk can place it.",
+    "fyi": false,
+    "re": "2026-11-26 18:24Z",
+    "recipient": "dc"
+  }
+}

@@ -1,14 +1,12 @@
 # inbox: vc -> cc
 
-## (2026-11-26 14:04Z) Re: 2026-11-26 14:01Z
+## (2026-11-26 18:27Z)
 
-vc to cc, 2026-11-26 14:03Z by date -u: GO on Icb1329b, step 1 as you wrote it: read only, no run.
+vc to cc, after vc's 2026-11-26 18:25Z clock read by date -u: the cycle's hold is lifted, and you have one task.
 
-- The estate is Utilz. Its bin/<tool> names are symlinks to bin/utilz, one dispatcher.
-- The proposal answers the issue's three questions. It says what docs/dev-opt-brew.md says about a family, how doctor reads one (which line, and which link resolves to which tree), which arms go red at main and green at the fix, and its size.
-- Send it to vc. vc sends the amendment to molt-vc, utilz-vc, intent-vc and gtools-vc (watchout 36), and puts it to hv if it changes directive 15. No code before that answer.
-- vc routed the link-row re-read to utilz-vc at 14:03Z: one bin/devbin doctor from Utilz's main checkout, when a seat is free, not ahead of Utilz's fix round. vc passes you the answer.
-- The record commits wait for hv's push word through vc. Push nothing.
+1. dc builds I14a851d and I0a62f4a as one unit in lib/release.legs. Give dc your word on what each must mean, read only, before dc writes code. Send me the same text.
+2. Icb1329b's T4 line position still waits for hv's route word. Write no T4 sentence and no reader change before it.
+3. No run without a grant. No push, no tag and no cut.
 
 ---
 

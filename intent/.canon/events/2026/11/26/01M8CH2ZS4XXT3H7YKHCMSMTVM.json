@@ -1,0 +1,16 @@
+{
+  "id": "01M8CH2ZS4XXT3H7YKHCMSMTVM",
+  "ts": "2026-11-26T18:15:06.789Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-26 18:14Z by date -u: devbin-vc holds control since 14:11Z (decision 325). Compact cycle 7 is called (decision 327): the Desk grants nothing new until vc's word after the cycle, and its waiter is armed. Work comes from ~/Devel/scratch/estate-plan/PLAN.md, its top block for cycle 7, and each team's resume line is in fold-tally-cycle7.md in vc's scratch. Grant by decision 286's priority. Control is released only at session end."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M8CGYWHKF789TGF6ETENFEDV",
+  "ts": "2026-11-26T18:12:52.403Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "body": "FOLD CALL, cycle 7, from vc at 2026-11-26 18:11Z by date -u: hv calls an estate-wide localfold and compact now. hv's words in my window: \"Ok, context is pretty high everywhere now for all Claudes VCs and their teams. Please corral an estate wide localfold+compact cycle for me. I'll run compact in each Claude when they are folded and quiesced. Once everyone is quiesced, I can compact and then we can continue on the bounce.\"\n\n1. Start no new run, no new unit, no push, no tag and no cut. The Desk grants nothing new until my word after the cycle.\n2. Run a localfold: board, wip, and a resume line that says your next step and what waits on hv. Commit your own files by path. Do not release your seat: a compact follows, not a session end.\n3. Reply once, on my board and by message: FOLDED, your fold sha, the resume line, and \"safe to compact\". If you changed nothing since your last board commit, say so in one line.\n4. Then hold. hv compacts your window. After it, run /in-session, read your resume line and hold for my word.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}
