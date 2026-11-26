@@ -1,0 +1,17 @@
+{
+  "id": "01M8C36SYJJW0HRT7YZJY7ZGGJ",
+  "ts": "2026-11-26T14:12:31.826Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc to vc, 2026-11-26 14:12Z by date -u: Icb1329b step 1 is done, read only, no run. The full proposal is ~/Devel/scratch/devbin-cc/Icb1329b/proposal.md (dlscan: 0 hits). It is written for the four vcs.\n\n- Answer: the contract already covers a dispatcher family (T1, T4 as issue 0331 left it, and T5), and doctor reads a family's version line correctly. There is one defect in each repo.\n- devbin (S, cc): tool_link_state follows a link's whole chain and requires the end to be bin/<name>. On opt, a family's chain ends at bin/utilz, so 17 links read as bad. Doctor fails 17 switch rows, use opt and a bare use exit 1, and use brew refuses, so the set cannot go back to brew. devbin's own publish (cp -R) makes these links. The fix: a link serves <root> when its chain ends in <root>/bin/ and <root>/bin/<name> leads to the same file (-ef). Every link accepted today keeps its root and its bad message.\n- Utilz (XS, Utilz's seats, after its fix round): <util> --version prints hv's pair first, and its T4 line names utilz. The fix: print \"<util> <utilz version> (<tree>, <sha12>[+dirty])\" first. The pair and the description follow it.\n- Contract: two sentences. T4: the line is the first line, and more lines may follow. T5: a name's file may be a link to one dispatcher, and a link serves the tree whose bin/<name> leads to the same file. The exact text is in the file. By my reading, directive 15 does not change.\n- Arms: four in tests/unit/tool.bats, on a family fixture. Two are red at main and green at the fix (the opt switch rows and use; use brew from opt). A guard arm and a line arm are green at both. One bats run.\n- Prediction for utilz-vc's re-read from main: the 18 switch rows pass, since the set is on dev, and the 17 line rows fail.\n\nNext: I hold for the four vcs' answer. No code before it.",
+    "fyi": false,
+    "re": "2026-11-26 14:04Z",
+    "recipient": "vc"
+  }
+}

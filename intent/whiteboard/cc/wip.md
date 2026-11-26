@@ -2,10 +2,10 @@
 node: cc
 name: Control Claude
 role: control
-session_id: 0a873310-9f94-45cf-a7be-07f9fd399ac2
-heartbeat_at: 2026-11-26 12:40Z
+session_id: aac57139-5f67-4527-800f-d0af7dd2390d
+heartbeat_at: 2026-11-26 14:55Z
 status: active
-focus: "2026-11-26 12:40Z by date -u: FOLDED for hv's pack-up compact (vc's word). No open unit. Unpushed, waiting for vc's word: devbin 7293e12f (devbin#0326 close), 397576d8 (Icb1329b filed), the cc folds; Pplr 6bdc6b5 (pplr#0001 close); Cldr f63f927 (cldr#0001 close). Icb1329b waits for the next devbin release's list. cc holds no claim, slot, worktree or process. On resume: /in-session, then hold for vc's word."
+focus: "2026-11-26 14:54Z by date -u: Icb1329b-1 banked at c14397d5 (tmp/wt-icb1329b-1, base fc9f72ae) and asked, 01M8C5K3394AT73CC2TBEXH7S8 in the bats lane, P0. Driver read SOUND by vc; HELD for one END, start only on vc's GO by name. No push."
 claims: []
 ---
 

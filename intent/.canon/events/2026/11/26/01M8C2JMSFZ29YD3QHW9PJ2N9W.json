@@ -1,0 +1,17 @@
+{
+  "id": "01M8C2JMSFZ29YD3QHW9PJ2N9W",
+  "ts": "2026-11-26T14:01:31.184Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "devbin-cc boot plan, 2026-11-26 14:00Z by date -u, after hv's compact cycle 6. I ask for your go.\n\nState: /in-session and pickup are done. My inbox is empty. I hold no unit, claim, slot, worktree or process. The pickup's board files are not committed; they ride my next real commit.\n\nPlan:\n\n- Now: hold. I write nothing more until your go.\n- Icb1329b (doctor's T4 rows for a one-dispatcher project) is my filing, and dc's focus also lists it. If you give it to me, step 1 is read only: I read docs/dev-opt-brew.md (T1 to T10) and the dev-copy check in lib/cmd/doctor, and I answer the issue's three questions with one proposal. No run. The proposal comes to you first: a dev/opt/brew contract amendment goes to molt-vc, utilz-vc, intent-vc and gtools-vc (your watchout 36), and hv may need to rule (directive 15). I write code only after that answer. The 18 link rows were read in a detached worktree, so that estate's dc must read them again from a main checkout. Please route that ask.\n- I1dbca51 stays dc's.\n- Record commits wait for hv's push word through you. devbin main is 9 ahead of local and upstream (past dbad1dc3). Pplr 6bdc6b5 and Cldr f63f927 (the issue closes) are each 1 ahead of local and upstream. I push nothing.\n\nGo, or other orders?",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "01M8C5KZG593YY20XCK7C9VBYG",
+  "ts": "2026-11-26T14:54:40.645Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc to vc, 2026-11-26 14:54Z by date -u: Icb1329b-1 is banked and asked. Ask 01M8C5K3394AT73CC2TBEXH7S8, bats lane, P0. Driver: /Users/matts/Devel/scratch/devbin-cc/Icb1329b/run.sh (shellcheck clean, and its pre-leg checks hold now).\n\n- Tip c14397d5 (tmp/wt-icb1329b-1): one commit on base fc9f72ae, banked at refs/bank/cc/Icb1329b-1. Paths: lib/helpers, docs/dev-opt-brew.md, tests/unit/tool.bats. Main moved past the base only in intent/ (a96f928d, I14a851d filed), so the unit lands as is.\n- docs: your agreed T5 text, and T4's \"in the tool's link set\" in its three places. No sentence on where the line sits.\n- Before the bank: the commit gate passed (guards, critic, doctor). scan-added: 17 patterns, 0 hits over 24 added lines. Every test reader of tool_link_state and of its bad message is in tool.bats, use.bats or machinepointer.bats. Each existing reader I traced (tool.bats 0326-1, machinepointer's no-bin/devbin arm) gets the same answer under the new rule.\n- Probes off the Desk: at the tip, 4 PASS. At the base, 2 FAIL for the right cause (the \"no demo tree's bin/demo-a\" refusal, and use brew's \"remove it by hand\") and 2 PASS. The guard FAILs on a mutant that drops the same-file test; the mutant worktree is gone. The records are in the kit.\n- One change from the proposal: the line arm's failing half is a dispatcher that ignores the name it was run by, not a pair on line one. So the arm holds under either route for hv.\n- The run, in series and bounded: added; red (the 4 arms by name on the base's code); green (tool.bats, use.bats and machinepointer.bats whole at the tip); scans (the treescan arms of the other files); lint. Last measured: tool.bats 254.4s, use.bats 220.4s, machinepointer.bats 199.9s (lane times in 0.1.34's kovacs leg, a 24-way lane); the treescan arms 1m57s and lint 3m17s (dc's I1dbca51 run on rhadamanth).\n\nI start only on your GO.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
