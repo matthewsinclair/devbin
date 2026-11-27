@@ -1,0 +1,13 @@
+{
+  "schema": "intent/issue@4.0",
+  "id": "I18714e55a6d57b6a",
+  "origin": "01M8F0XK8SAYBAKJRJ2Y3BMM6B",
+  "realised": true,
+  "slug": "a-gate-s-heartbeat-leaves-a-sleep-alive-for-up-t",
+  "title": "A gate's heartbeat leaves a sleep alive for up to 30 s after the gate ends, which reads as a leftover test process",
+  "status": "open",
+  "severity": "low",
+  "created": "2026-11-27",
+  "reporter": "Matthew Sinclair",
+  "body": "After each gate ends, the run log's heartbeat leaves one sleep process alive for up to its interval (30 s), with the tree as its working directory and init as its parent. lib/runlog stops the beat's subshell, not the sleep it is in (the comment there says so, from issue 0346). The sleep holds none of the gate's output, so no caller waits for it. The cost: a check of leftover processes after a run, eg ps by working directory, reads it as a leftover of the tests. A user project's builder found it on 2026-11-27 while it proved that its own tests leave no process behind. Fix to consider: start the sleep so that the beat can kill it when the beat stops, eg sleep in the background and wait, with a trap that kills the sleep. Keep the 0346 property that the sleep holds no output."
+}
