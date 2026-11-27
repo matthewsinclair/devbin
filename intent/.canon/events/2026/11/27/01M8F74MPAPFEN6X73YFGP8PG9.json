@@ -1,0 +1,15 @@
+{
+  "id": "01M8F74MPAPFEN6X73YFGP8PG9",
+  "ts": "2026-11-27T19:18:58.506Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "Relayed by molt-vc from Molt's hv decision 31, read by 2026-11-27 19:18Z by date -u (hv answered in molt-vc's window, read there by 19:17Z; vc did not see hv's words first-hand): Molt's dc fixes the Utilz fault in Molt's resleeve step now, and its red and green runs come to the Desk as asks. Molt 1.4.15 is then cut on the Desk's GO, which molt-vc reports as hv's word to cut when the proof is green. The three sysadms run Molt's maintain tonight. vc's reading: the Desk grants Molt's runs under decision 230 (an estate's vc relays hv's go from its own window). The Desk's GO for the cut is a slot grant after a green proof, read by vc. It is not vc's approval of the release: the cut's approval is hv's, in molt-vc's window."
+  }
+}

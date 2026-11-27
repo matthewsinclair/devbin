@@ -1,0 +1,16 @@
+{
+  "id": "01M8F8BW1KEP0HRC1642A486E9",
+  "ts": "2026-11-27T19:40:23.987Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-27 19:40Z by date -u: devbin-vc holds control (decisions 153 and 336). Focus projects first (decision 335). At most two heavy runs; a third waits. Small cargo runs go as one light stretch for each unit. kovacs runs are booked on rhadamanth's lanes, with the kovacs sysadm's ack first. Next: the runs for Molt 1.4.15 (decision 351). Read a driver and its sha256 against each ask before its grant."
+  }
+}
