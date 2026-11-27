@@ -1,0 +1,15 @@
+{
+  "id": "01M8ECFRMZXR477C9YSZ3V3RZP",
+  "ts": "2026-11-27T11:33:11.455Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-27 11:32Z by date -u, hv's words: \"You told ae the wrong thing. 'devbin howto {{topic}}' needs to support core howtos that are part of devbin AS WELL AS allow for devbin using projects to add their own howtos that 'devbin howto' knows to use, because they're in a particular part of the devbin dir. THis is the same idea that devbin uses to add project-specific commands.\" vc's reading: this replaces point (1) of decision 342 for project topics. A project's topics live at bin/.devbin/howto/<topic>/index.md, the project's own and auto-discovered, as bin/.devbin/cmd/ and bin/.devbin/help/ are; install and upgrade never write there. There is no docs/howto default and no howto.dir config key. Core topics stay in lib/howto/. The rest of decision 342 stands. vc changed the forllms text, and told devbin-cc and the course project's vc."
+  }
+}

@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "4fe359f4-6410-4489-b5e5-59bee1ac3a79",
-    "heartbeat_at": "2026-11-27T09:48:08.268Z",
+    "heartbeat_at": "2026-11-27T11:23:17.574Z",
     "status": "active",
-    "focus": "2026-11-27 09:42Z by date -u: FOLDED for hv's pack-up and move (decision 344). On the bounce: /in-session; read the plan's top block; intent estate status and slots pending; arm the Desk waiter; collect Intent's and Utilz's CLOSED-OUT; finish the closeout howto text; then devbin 0.1.36 with the howto verb (decisions 341 and 342).",
+    "focus": "2026-11-27 09:53Z by date -u: HOLDING for hv's move (decision 344). All five close-outs are done and pushed. On the bounce: /in-session; read the plan's top block; intent estate status and slots pending; arm the Desk waiter; finish the closeout howto text from the six reports; give cc the word with it; then devbin 0.1.36 (decisions 341 and 342).",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -6806,6 +6806,14 @@
       "text": "hv by AskUserQuestion in vc's window, read by 2026-11-27 09:41Z by date -u, hv's choice: 'Finish, then fold all', on hv's pack-up and move (hv's words as quoted by agentic-engineering-vc: \"bank, fold, and hold here for everyone now, and then continue on the bounce\"). The two live runs finish: Intent's close-out build all and its push, and utilz-cc's last doc test. Then every remaining seat folds and holds, not released, devbin-cc included, and the howto verb, devbin 0.1.36 and the closeout text wait for the bounce. The Desk grants nothing new except those two runs. vc folds last and tells hv. Already folded by 09:41Z: AE, the second workstream and the CI tree's supervisor.",
       "state": "live",
       "recorded_at": "2026-11-27T09:41:42.131Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 345,
+      "text": "hv in vc's window, read by 2026-11-27 11:32Z by date -u, hv's words: \"You told ae the wrong thing. 'devbin howto {{topic}}' needs to support core howtos that are part of devbin AS WELL AS allow for devbin using projects to add their own howtos that 'devbin howto' knows to use, because they're in a particular part of the devbin dir. THis is the same idea that devbin uses to add project-specific commands.\" vc's reading: this replaces point (1) of decision 342 for project topics. A project's topics live at bin/.devbin/howto/<topic>/index.md, the project's own and auto-discovered, as bin/.devbin/cmd/ and bin/.devbin/help/ are; install and upgrade never write there. There is no docs/howto default and no howto.dir config key. Core topics stay in lib/howto/. The rest of decision 342 stands. vc changed the forllms text, and told devbin-cc and the course project's vc.",
+      "state": "live",
+      "recorded_at": "2026-11-27T11:33:11.455Z"
     }
   ],
   "sent": [
@@ -10365,6 +10373,11 @@
       "id": "01M8E68F7DKM0KH0DRKDW5A78K",
       "sender": "cc",
       "handled_at": "2026-11-27T09:44:50.128Z"
+    },
+    {
+      "id": "01M8E6HTYD01J4GGGZ2JM6R9Q1",
+      "sender": "cc",
+      "handled_at": "2026-11-27T09:53:22.708Z"
     }
   ]
 }
