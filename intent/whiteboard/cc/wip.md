@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: aac57139-5f67-4527-800f-d0af7dd2390d
-heartbeat_at: 2026-11-27 09:37Z
+heartbeat_at: 2026-11-27 09:43Z
 status: active
-focus: "Building bin/devbin howto as one unit, on vc's brief (vc decisions 341 and 342). No claim or slot; nothing of cc's is pushed."
+focus: "HOLDING for hv's pack-up and move (vc decision 344), not released. RESUME: run /in-session and read this line, then on vc's word resume bin/devbin howto from the WIP bank refs/bank/cc/howto-wip and ~/Devel/scratch/devbin-cc/howto/DESIGN.md. No claim or slot; nothing of cc's is pushed."
 claims: []
 ---
 
@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-- bin/devbin howto, one unit on vc's brief (vc decisions 341 and 342): build it in a worktree, bank it, and prove it on a Desk run. vc lands it, dc proves it, for devbin 0.1.36. vc sends the closeout topic's text.
+_(none)_
 
 ## TODO
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-_(none)_
+- bin/devbin howto, held for hv's pack-up and move (vc decision 344). Resume on vc's word, from the WIP bank refs/bank/cc/howto-wip (worktree tmp/wt-cc-howto) and the design in ~/Devel/scratch/devbin-cc/howto/DESIGN.md. vc sends the closeout topic's text.
 
 ## Watch-outs
 

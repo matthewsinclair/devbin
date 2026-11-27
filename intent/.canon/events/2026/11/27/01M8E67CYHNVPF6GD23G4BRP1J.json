@@ -1,0 +1,15 @@
+{
+  "id": "01M8E67CYHNVPF6GD23G4BRP1J",
+  "ts": "2026-11-27T09:43:45.873Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "bin/devbin howto, held for hv's pack-up and move (vc decision 344). Resume on vc's word, from the WIP bank refs/bank/cc/howto-wip (worktree tmp/wt-cc-howto) and the design in ~/Devel/scratch/devbin-cc/howto/DESIGN.md. vc sends the closeout topic's text."
+  }
+}
