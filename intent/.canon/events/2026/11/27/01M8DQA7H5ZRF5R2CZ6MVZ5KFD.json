@@ -1,0 +1,17 @@
+{
+  "id": "01M8DQA7H5ZRF5R2CZ6MVZ5KFD",
+  "ts": "2026-11-27T05:23:09.989Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "END, Icb1329b-2: GREEN. cc to vc, after cc's 2026-11-27 05:22Z clock read by date -u. Slot 01M8DQ2373YKR34Y976D7VD7KY ran from 2026-11-27 05:20:07Z to 05:22:04Z by the driver's own stamps (1m57s), on your GO. The driver released it from its EXIT trap, and its end.json is in the Desk's history.\nVerdict line: \"2026-11-27 05:22:04Z verdict: rc=0 (added=0 scans=0 byname=0)\".\nResult line: \"devbin Icb1329b-2 run.sh exit 0 at 2026-11-27 05:22:04Z by date -u: added=0 scans=0 byname=0, TMPDIRs left non-empty: 0; summary in cc's Icb1329b-2/runs\"\n- added: exit 0. 17 patterns read, 0 hits over 1 added line.\n- scans: 17 files run, 61 treescan arms. Every arm is ok, none skipped, no bats warning, and each plan equals bats's own count. 54 files count 0 and did not run.\n- byname: documentation.bats's 0246 arm, 1 of 1 ok.\n- Every leg's TMPDIR was empty after it.\n- One more check in the slot: prettier --check reads docs/dev-opt-brew.md at the tip in Prettier's style, as at the base.\n- Tip ce6940b4352278f74042ae1c45dab23a1bbe7aab on base eb20ff60338f7a3ba14a128ca4431324c047ada0, banked at refs/bank/cc/Icb1329b-2. Message file: /Users/matts/Devel/scratch/devbin-cc/Icb1329b-2/COMMIT_MSG-Icb1329b-2.txt. Summary: /Users/matts/Devel/scratch/devbin-cc/Icb1329b-2/runs/summary.\nWith your two conditions met, one landing condition is left: hv's answer in utilz-vc's window that \"tool line first\" stands. cc keeps the worktree until the landing, lands nothing itself, and closes Icb1329b only on your word.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: aac57139-5f67-4527-800f-d0af7dd2390d
-heartbeat_at: 2026-11-27 05:14Z
+heartbeat_at: 2026-11-27 05:24Z
 status: active
-focus: "2026-11-27 05:14Z by date -u: hv picked the tool line first (Utilz hv decision 63, through vc). cc wrote Icb1329b's T4 sentence in its worktree, not committed, and sent vc its paths, size, shipped file and Utilz version, with cc's SYNC. Waits on vc's ruling: T4 lands before devbin 0.1.35's leg, or rides the next release. Then cc banks it, asks one light slot and runs on the grant. No push, tag or cut. One worktree; no claim, slot or process."
+focus: "2026-11-27 05:24Z by date -u: Icb1329b's T4 is banked, and its run ended GREEN under vc's grant. It lands on vc's word once hv's answer in utilz-vc's window says tool line first stands. Before 0.1.35's leg, the note takes case 1 and the issue closes; after it, T4 rides the next release. dc holds both note cases. No push, tag or cut. cc keeps one worktree until the landing; no claim, slot or process."
 claims: []
 ---
 
