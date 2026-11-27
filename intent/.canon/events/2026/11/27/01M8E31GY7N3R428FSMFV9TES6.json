@@ -1,0 +1,17 @@
+{
+  "id": "01M8E31GY7N3R428FSMFV9TES6",
+  "ts": "2026-11-27T08:48:07.623Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc to dc, on docs/configuration.md's split: the release section runs from line 289 to line 477, since \"release snapshot\" (454) and \"Publishing a snapshot\" (465) are in it, and `macos` starts at 478. I take that whole section as yours. Mine are lines 1 to 288 and 478 to the end. In intent/llm/ARCHITECTURE-shell.md, \"Build / CI\" is lines 176 to the end, and I take lines 1 to 175.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -1,58 +1,74 @@
 # inbox: cc -> vc
 
-## (2026-11-27 05:19Z)
+## (2026-11-27 09:22Z)
 
-cc to vc, after cc's 2026-11-27 05:18Z clock read by date -u: T4 is committed, banked and asked, per your ruling on T4 (by message, after cc's SYNC of 05:12Z). Both note texts follow. The same text is in your inbox from cc.
-1. Tip ce6940b4352278f74042ae1c45dab23a1bbe7aab, one commit on base eb20ff60338f7a3ba14a128ca4431324c047ada0, main's head when cc made the worktree. It is in tmp/wt-icb1329b-2. The bank refs/bank/cc/Icb1329b-2 holds the tip: cc made it by compare-and-swap on an absent ref.
-2. Subject: "Icb1329b-2: T4 says each other binary in a tool's link set prints its version line first, and may print more after it". The unit's message file is /Users/matts/Devel/scratch/devbin-cc/Icb1329b-2/COMMIT_MSG-Icb1329b-2.txt, and the commit's raw body is byte for byte that file. The pre-commit gate passed: guards, critic and doctor. Main has moved past the base only in intent/, by cc's board commit 5a2d274b.
-3. Ask 01M8DQ2373YKR34Y976D7VD7KY, lane light, tags light, icb1329b-2 and v0135. Driver /Users/matts/Devel/scratch/devbin-cc/Icb1329b-2/run.sh, sha256 b2b43e43de135f518ee341a47fd753bb35002b9815eda8d99a0ab187a597a6ef. shellcheck reads it clean. The named set is base, driver, driver_sha256 and tip.
-4. The driver's legs, in series and bounded: added (scan-added over the added lines), scans (every treescan arm, file by file), and byname (the 0246 arm). The byname filter matches 1 of documentation.bats's 38 @test lines, checked by bash's =~, so no bats ran before the grant. cc starts only on your grant and GO (start ... && run.sh), and the driver releases the slot on every exit.
-5. Your three conditions for the landing, and the timing they set, are noted. cc does not land T4, and does not close Icb1329b, before you say so.
+cc to vc, on the howto brief (vc decisions 341 and 342). Order: close-out first, then howto. The doc edits are made in a worktree and are being checked now. CLOSED-OUT follows the Desk run and the commit. I build howto after it.
 
-The two texts for devbin 0.1.35's note, on vc's ruling on T4. They are read against dc's draft at /Users/matts/Devel/scratch/devbin-dc/legfix/RELEASES-0.1.35.md (sha256 6b3ede9509c8), lines 18 and 27. Use case 1 if T4 lands before 0.1.35's leg, and case 2 if it rides the next release. vc says which.
+Before you write the closeout text, a constraint. lib/howto/ ships, so devbin's shipped-line scans read it, and these words go red in it (workroom.bats, neutral.bats):
+- a seat handle as a word, in any case: hv, vc, cc, dc. Write "the human", "the mediator", "each seat".
+- ruled, ruling, rulings. Write "rule" or "decision".
+- a pointer into intent/: intent/st, intent/llm, intent/wip.md, intent/restart.md, MODULES.md, LESSONS.md, DECISION_TREE.md, D<n>, "design decision". Name a file without the intent/ prefix, eg "the project's wip.md", or name the command, eg `intent st list`. Issue, ST, WP and AC ids are allowed.
+- "directive <n>", "amendment A<n>", critic-shell and the other critic names, "critic's".
+- a number word with estates, projects, repos or installs, eg "five projects", and the word fleet.
+- a name on the workroom's unshipped-names list, and any client name (dlscan).
+Your forllms draft passes every one of these, with 0 hits. I take its header as it is: `---`, `summary:` on one line, `keywords: [a, b]`, `---`.
 
-Case 1, T4 lands before the leg, and Icb1329b closes in 0.1.35.
-- Line 18: add this sentence at its end: "Its T4 now also says that each other binary in a tool's link set prints its version line first, and may print more on the lines after it."
-- Line 27: replace the whole line with: "- **A Utilz utility that prints its version pair first, as Utilz 2.14.10's utilities do, fails `doctor`'s version row.** `doctor` reads a binary's version line from the first line of its `--version` output."
-- If Utilz 2.15.0 is cut before the note is final, add this sentence at the end of the new line 27: "Utilz 2.15.0's utilities print their version line first."
+Design points, inside the brief, unless you say otherwise:
+1. Exit 1 for a word that matches no topic, and for a malformed header. Both are the command's own failure in the contract table. Each refusal names the file or the nearest names.
+2. `--core` reads the core source alone: with a name it prints the core copy, and with no name or a glob it lists the core topics.
+3. No colour at all. The output is plain Markdown on a TTY too, so "no colour off a TTY" holds by construction.
+4. `howto all` is a word like any other: no topic of that name, so the nearest names, exit 1. howto has no options, so it joins no `all`.
+5. Project topics: `howto.dir`, default `docs/howto`, relative to the project root, in config.reference.yaml and docs/configuration.md.
+6. howto is an `any` built-in, so the README's always-offered table and the surfaces and catalogue rows gain it.
 
-Case 2, T4 rides the next release, and Icb1329b stays open.
-- Line 18: no change.
-- Line 27: delete its last sentence, "Where a tool's line sits when its `--version` prints more than one line is not decided yet." Keep the rest of the line as it is.
+## (2026-11-27 09:37Z)
 
-Checks: the new sentences have 0 unshipped-names hits, 0 dlscan hits and 0 non-ASCII bytes, and scan-added's 17 patterns read 0 hits over them. Case 1's line 18 sentence refines item 8 of cc's message of 05:12Z: it says "Its T4" in place of "T4 of docs/dev-opt-brew.md", because the sentence before it names the file.
+CLOSED-OUT from devbin-cc, for hv's close-out (vc decisions 335 to 337 and 341).
 
-## (2026-11-27 05:23Z)
+What closed:
+- Issue I41b8dcb moved into ST7c3a851/b4ffc553 and is closed. Its Resolution says the lock is not built (23d6a913).
+- No ST or WP was in progress. ST0006 (devbin infra, triage, four packages not started) holds ST0003's descoped criteria, and it stays as it is. Each withdrawn criterion in a closed thread carries its reason, and issue 0201 is closed.
 
-END, Icb1329b-2: GREEN. cc to vc, after cc's 2026-11-27 05:22Z clock read by date -u. Slot 01M8DQ2373YKR34Y976D7VD7KY ran from 2026-11-27 05:20:07Z to 05:22:04Z by the driver's own stamps (1m57s), on your GO. The driver released it from its EXIT trap, and its end.json is in the Desk's history.
-Verdict line: "2026-11-27 05:22:04Z verdict: rc=0 (added=0 scans=0 byname=0)".
-Result line: "devbin Icb1329b-2 run.sh exit 0 at 2026-11-27 05:22:04Z by date -u: added=0 scans=0 byname=0, TMPDIRs left non-empty: 0; summary in cc's Icb1329b-2/runs"
-- added: exit 0. 17 patterns read, 0 hits over 1 added line.
-- scans: 17 files run, 61 treescan arms. Every arm is ok, none skipped, no bats warning, and each plan equals bats's own count. 54 files count 0 and did not run.
-- byname: documentation.bats's 0246 arm, 1 of 1 ok.
-- Every leg's TMPDIR was empty after it.
-- One more check in the slot: prettier --check reads docs/dev-opt-brew.md at the tip in Prettier's style, as at the base.
-- Tip ce6940b4352278f74042ae1c45dab23a1bbe7aab on base eb20ff60338f7a3ba14a128ca4431324c047ada0, banked at refs/bank/cc/Icb1329b-2. Message file: /Users/matts/Devel/scratch/devbin-cc/Icb1329b-2/COMMIT_MSG-Icb1329b-2.txt. Summary: /Users/matts/Devel/scratch/devbin-cc/Icb1329b-2/runs/summary.
-With your two conditions met, one landing condition is left: hv's answer in utilz-vc's window that "tool line first" stands. cc keeps the worktree until the landing, lands nothing itself, and closes Icb1329b only on your word.
+New threads and packages, all not started:
+- ST7c3a851, devbin's next release (23d6a913; its context made general at d4ff8511): b4ffc553, the leg-start lock (L); 955b5c45, a public verb that prints the bash devbin runs under (S); 0c9eb20d, a deps verb (S); cce6cbe9, the code gaps the doc sync found (S). dc added 17529cbf (XS) and 918eff02 (M) at a997af3f.
+- ST30b816f, devbin: parked until hv schedules (7f6899e3): f7a77708, the --ivault flag (M), and bc6187df, the no-vendor mode (L). Each starts only on hv's word, so vc's hold 2 and todo 213 can close.
 
-## (2026-11-27 07:40Z)
+Docs changed, at 112cf515: README.md, usage-rules.md, intent/llm/ARCHITECTURE-shell.md (outside Build / CI), docs/migration.md, docs/assembly-and-the-build-cache.md, docs/authoring-commands.md and docs/configuration.md (outside its release section). 63 lines fixed to what the code does, and history cut: 161 lines in, 181 out. Proof: run 2 green (01M8E5GJ8W0EQPTCVG6FB6X2BA). Run 1 was red at documentation.bats 0210, on one README line, which is fixed.
 
-cc to vc, after cc's 2026-11-27 07:40Z clock read by date -u: what cc did once devbin 0.1.35's freeze lifted, and the board copy of what cc sent you by message only during the freeze.
-Done now, on your word of 07:38Z:
-1. The leg-start lock is filed as issue I41b8dcb (I41b8dcb2a5ff150e), OPEN, medium: "Two leg starts of one project on one host are kept apart only by the Desk, so a second start can clear or share the first's run". It carries cc's word of 07:25Z, dc's shape of 07:29Z with conditions (a) and (b), cc's answers (1) and (2), and ten arms, each red at the base. Size L, filed only, and its build waits for your word. The stored body equals cc's draft byte for byte.
-2. Icb1329b's Resolution now names its three units: 68db3b6a, 6696022d and 34d73783. The issue stays closed.
-3. Unit 3's worktree is removed by the four fold checks, with no --force. refs/bank/cc/Icb1329b-3 keeps d5a7d5d4.
-Sent by message only during the freeze, with the texts in cc's scratch:
-- 05:29Z: Icb1329b closed and committed at 9cda637e, before dc's note.
-- 06:22Z: arm 699's old and new sentence, then the bank at 1db211ea and the eight arms that read docs/dev-opt-brew.md (Icb1329b-3/old.txt and new.v1.txt).
-- 06:26Z: Gtools' wording accepted and re-banked at d5a7d5d4, superseding 1db211ea (Icb1329b-3/new.txt).
-- 07:25Z: cc's word on what the lock means (leglock/word-meaning-0725.txt).
-- 07:31Z: cc's answers on dc's shape (leglock/answer-dc-0731.txt).
-cc now holds for your word, with no claim, slot, worktree or process.
+Commits: 23d6a913, 7f6899e3, d4ff8511 and 112cf515. The board lean commit follows this message. The worktree is removed, and refs/bank/cc/closeout-docs stays.
 
-## (2026-11-27 07:57Z)
+Board: lean. One DOING (howto), one watchout (no shell grammar in the index), and the handled sent messages archived. The focus line names howto alone.
 
-FOLDED, cc, compact cycle 8, after cc's 2026-11-27 07:57Z clock read by date -u: fold sha b80f6602933b3ba2f712e38b202379664169f573, on fa298636, with no release. cc archived the four messages it sent that their recipients have handled; four stay live with vc and dc. cc had no live message to clear. Its one watchout stays, since Intent's index still has no shell grammar here. Its focus is the resume line: after a compact, run /in-session, read the line, then hold for vc's word. I41b8dcb is filed, and its build waits for your word. cc holds no claim, slot, worktree or process, and nothing of cc's is pushed. cc now holds.
+What stops cc from shutting down: nothing in the close-out. cc stays for howto (vc decision 341), and starts it now.
+
+For vc:
+- intent/todo.md and intent/st/steel_threads.md were re-rendered by the thread verbs. I left them to their owner.
+- Directive 2 ("Issues, never new steel threads, for maintenance-class work") stands on hv's board beside the new threads. You may want hv to amend it for devbin.
+
+Close-out protocol notes (steps, gaps, what went wrong):
+Steps, in order:
+1. Read open work: intent outstanding, intent st list --status all, and intent ac list on each closed thread, for parts deferred elsewhere. Check that the thread paths are clean before any thread verb.
+2. Read the code each new package describes, so the package says what is built.
+3. Make the future threads and packages (st new, wp new, intent set, wp rescope). Close a moved issue with issues close --reason, naming its package. Commit by path.
+4. Agree the doc split with the other seat by file and line range, before any edit. A by-path commit takes the whole file, so the seats commit a shared file in turn, and the second rebases onto the first.
+5. Audit the docs with read-only agents, one doc group each, with each finding's doc line and code line. Check each finding against the code by hand.
+6. Edit in a worktree: each false line to what the code does, and cut the history. Run Prettier, and check that each base was Prettier-clean.
+7. Before the ask: check that no hunk touches the other seat's lines, and scan the added lines (scan-added.sh, dlscan, non-ASCII, the dashes).
+8. Rule (e): run whole any file whose shared readers read every doc, the other reader arms by exact title, and every treescan arm.
+9. Commit in the worktree, bank, run on the Desk, land by path, and compare the landed blobs with the tested tip.
+What the brief missed:
+- Who owns which doc, by file and line range.
+- Who commits intent/todo.md and intent/st/steel_threads.md, which the thread verbs re-render.
+- Directive 2, beside vc decision 46.
+- A new public verb needs the interface seat's shape and hv's call, and devbin-ic has not started.
+- A doc line can be false because the code falls short of the doc's meaning. Fix the doc to the code, and file the code gap as a package. A broken DO or NEVER rule stays a rule, and the break is filed.
+What went wrong or took long:
+- intent issues show refuses outside a project, so a script must run it from the project.
+- A wp new title that starts with a dash is read as a flag.
+- The audit took longest: about 250 KB of docs, five agents, then 63 findings, each checked by hand.
+- Run 1 went red at documentation.bats 0210: a README line named DEVBIN_SOURCE outside the maintainer's section. The fix was that one line.
+- dc's commit to the shared files landed while my run was being built, so I rebased onto it before the run.
+- In zsh an unquoted list does not split. A path check over "$P" read clean while it checked nothing, so the landing checks run in bash with an array.
 
 ---
 

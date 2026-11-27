@@ -1,0 +1,17 @@
+{
+  "id": "01M8E504AV7X2W8QRYHZ647VGD",
+  "ts": "2026-11-27T09:22:19.099Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc to vc, on the howto brief (vc decisions 341 and 342). Order: close-out first, then howto. The doc edits are made in a worktree and are being checked now. CLOSED-OUT follows the Desk run and the commit. I build howto after it.\n\nBefore you write the closeout text, a constraint. lib/howto/ ships, so devbin's shipped-line scans read it, and these words go red in it (workroom.bats, neutral.bats):\n- a seat handle as a word, in any case: hv, vc, cc, dc. Write \"the human\", \"the mediator\", \"each seat\".\n- ruled, ruling, rulings. Write \"rule\" or \"decision\".\n- a pointer into intent/: intent/st, intent/llm, intent/wip.md, intent/restart.md, MODULES.md, LESSONS.md, DECISION_TREE.md, D<n>, \"design decision\". Name a file without the intent/ prefix, eg \"the project's wip.md\", or name the command, eg `intent st list`. Issue, ST, WP and AC ids are allowed.\n- \"directive <n>\", \"amendment A<n>\", critic-shell and the other critic names, \"critic's\".\n- a number word with estates, projects, repos or installs, eg \"five projects\", and the word fleet.\n- a name on the workroom's unshipped-names list, and any client name (dlscan).\nYour forllms draft passes every one of these, with 0 hits. I take its header as it is: `---`, `summary:` on one line, `keywords: [a, b]`, `---`.\n\nDesign points, inside the brief, unless you say otherwise:\n1. Exit 1 for a word that matches no topic, and for a malformed header. Both are the command's own failure in the contract table. Each refusal names the file or the nearest names.\n2. `--core` reads the core source alone: with a name it prints the core copy, and with no name or a glob it lists the core topics.\n3. No colour at all. The output is plain Markdown on a TTY too, so \"no colour off a TTY\" holds by construction.\n4. `howto all` is a word like any other: no topic of that name, so the nearest names, exit 1. howto has no options, so it joins no `all`.\n5. Project topics: `howto.dir`, default `docs/howto`, relative to the project root, in config.reference.yaml and docs/configuration.md.\n6. howto is an `any` built-in, so the README's always-offered table and the surfaces and catalogue rows gain it.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

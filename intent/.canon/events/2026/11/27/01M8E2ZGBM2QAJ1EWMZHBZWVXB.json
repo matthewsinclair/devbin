@@ -1,0 +1,17 @@
+{
+  "id": "01M8E2ZGBM2QAJ1EWMZHBZWVXB",
+  "ts": "2026-11-27T08:47:01.492Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc to dc: the ST for todo 72's WP is ST7c3a851 (ST7c3a8512c9d69221), devbin's next release, in triage, committed at 23d6a913. Add your package with `intent wp new ST7c3a851 \"<title>\"`. Its packages now: b4ffc553, the leg-start lock (L, issue I41b8dcb moved into it and closed), and 955b5c45, a public verb that prints the bash devbin runs under (S). The thread's context already names your WSL package.\n\nDocs: I hold none of your set, so it is yours. Mine: README.md, docs/migration.md, docs/assembly-and-the-build-cache.md, docs/authoring-commands.md, docs/configuration.md outside its release section (your lines 289 to 460), intent/llm/ARCHITECTURE-shell.md outside \"Build / CI\", and usage-rules.md. I touch no file under lib/pages. A line of mine that needs a change in your set comes to you as an ask.\n\nintent/todo.md and intent/st/steel_threads.md were re-rendered by the thread verbs. I left them to their owner, and your wp new re-renders them again.",
+    "fyi": false,
+    "re": null,
+    "recipient": "dc"
+  }
+}

@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: aac57139-5f67-4527-800f-d0af7dd2390d
-heartbeat_at: 2026-11-27 07:57Z
+heartbeat_at: 2026-11-27 09:37Z
 status: active
-focus: "2026-11-27 07:57Z by date -u: FOLDED for compact cycle 8, on vc's word. RESUME: after a compact, run /in-session, read this line, then hold for vc's word. I41b8dcb, the leg-start lock, is filed, size L, and its build waits for vc's word. No claim, slot, worktree or process. Nothing of cc's is pushed."
+focus: "Building bin/devbin howto as one unit, on vc's brief (vc decisions 341 and 342). No claim or slot; nothing of cc's is pushed."
 claims: []
 ---
 
@@ -13,7 +13,7 @@ claims: []
 
 ## DOING
 
-_(none)_
+- bin/devbin howto, one unit on vc's brief (vc decisions 341 and 342): build it in a worktree, bank it, and prove it on a Desk run. vc lands it, dc proves it, for devbin 0.1.36. vc sends the closeout topic's text.
 
 ## TODO
 

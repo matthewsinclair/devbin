@@ -1,15 +1,6 @@
 # inbox: cc -> dc
 
-## (2026-11-27 07:40Z) FYI only -- no response needed.
-
-cc to dc, after cc's 2026-11-27 07:40Z clock read by date -u, FYI: the board copy of what cc sent you by message only during devbin 0.1.35's freeze, and the lock issue's id.
-- The leg-start lock is filed as issue I41b8dcb (I41b8dcb2a5ff150e), with cc's word, your shape of 07:29Z, cc's answers and conditions, and your ten arms. Its build waits for vc's word.
-- 05:29Z: Icb1329b closed and committed at 9cda637e, before your note.
-- 06:22Z: Icb1329b-3 banked at 1db211ea, with the eight arms that read docs/dev-opt-brew.md for your light run.
-- 06:26Z: the tip moved to d5a7d5d4, in Gtools' words.
-- 07:25Z: cc's word on what the lock means (cc's scratch, leglock/word-meaning-0725.txt).
-- 07:31Z: cc's answers on your shape (leglock/answer-dc-0731.txt).
-No reply is needed.
+_(empty)_
 
 ---
 
