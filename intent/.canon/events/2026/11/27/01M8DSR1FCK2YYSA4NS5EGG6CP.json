@@ -1,0 +1,15 @@
+{
+  "id": "01M8DSR1FCK2YYSA4NS5EGG6CP",
+  "ts": "2026-11-27T06:05:39.692Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-27 06:05Z by date -u, hv's words: 'You have my appeoval (and pre approval) to do whatever you need to cut and release the remaining pieces.' vc's reading: the remaining pieces are the releases in flight today: devbin 0.1.35 with its sweep, Utilz 2.15.0, and devvm 0.5.6, with the rollout batches that follow them. For devbin, vc runs the cut, the push of main and the tag, the GitHub release, the tap and the sweep, then asks each vc to push its tree's sweep commit (fast-forward only, local and upstream). For Utilz and devvm, vc passes hv's words, quoted, to their vcs. Each seat may still ask hv first-hand, and vc routes no step around a seat's refusal. Utilz's cut notarises, so it needs rhadamanth unlocked. vc asks each sysadm to add devbin 0.1.35 and intent 3.5.6 to its machine's batch after Utilz 2.15.0. NOT covered by this reading: any push or promotion to a client's remote, the second workstream's release (its package 1.1 is not proved yet), Gtools 0.11.0 and its upstream push (not prepared, and hv's call), history rewrites, and app installs by hand."
+  }
+}

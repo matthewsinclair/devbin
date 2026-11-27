@@ -1,0 +1,15 @@
+{
+  "id": "01M8E04A08GGSAQ5DSS3TQS2R3",
+  "ts": "2026-11-27T07:57:13.096Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-27 07:55Z by date -u, hv's words: 'Ok, context is pretty high everywhere now for all Claudes VCs and their teams. Please corral an estate wide localfold+compact cycle for me. I'll run compact in each Claude when they are folded and quiesced. Once everyone is quiesced, I can compact and then we can continue on the bounce.' This is compact cycle 8. vc's call went to 15 addresses at 07:55Z: no new run, unit, push, tag or cut; a localfold in each seat with a resume line; one FOLDED reply for each team; then each seat holds for vc's word after hv's compact. One run crosses the call: Utilz 2.15.0's cut, which hv started in hv's own terminal at 07:43Z. utilz-vc watches it and folds after its END. The Desk grants nothing new until vc's word after the cycle. Held: the devvm build and the CI tree's design check, which uses headless Chrome and runs alone. The tally is fold-tally-cycle8.md in vc's scratch. Also hv's answers, read by 07:21Z and by 07:22Z by date -u: 'Brew upgrade: me', so the 12:51Z brew upgrade of 26 Nov on gyges and kovacs was hv's own, and both sysadms are told; and 'File it' for the leg-start lock (watchout 40). cc filed it as I41b8dcb, size L. Its build waits for vc's word. State at the call: Intent 3.5.6 released (05:45:59Z) and rolled out; devbin 0.1.35 released (07:38:31Z) with every leg green, the tap published, and its sweep after the cycle; Gtools.app 0.10.0 installed on hv decision 76; the second workstream's package 1.1 landed."
+  }
+}

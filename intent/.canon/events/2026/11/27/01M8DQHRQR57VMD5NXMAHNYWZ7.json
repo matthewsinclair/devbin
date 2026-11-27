@@ -1,0 +1,15 @@
+{
+  "id": "01M8DQHRQR57VMD5NXMAHNYWZ7",
+  "ts": "2026-11-27T05:27:16.984Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-27 05:26Z by date -u, hv's words: 'Cut 0.1.35', the option vc recommended in its report of 05:16Z. vc's reading, from that option's text: after Intent 3.5.6's cut ends, dc runs the kovacs leg and the dry run (kit c0135, read sound). On green, vc cuts devbin 0.1.35 with `bin/devbin release --patch --yes`, which pushes the release commit and the tag to local and upstream, makes the GitHub release and publishes the tap. vc then sweeps the estates (directive 10) after the tap has 0.1.35, and each estate's push of its sweep commit stays its vc's, on hv's word in its own window. A red before the tag stops the chain and waits for hv. Before it, hv answered utilz-vc's question first-hand in that window before 05:25Z by utilz-vc's report: 'Yes, tool line first (Recommended)', and 'Ready at the cut's end' for the live sitting. That met decision 330's last condition for T4: vc landed cc's Icb1329b-2 (ce6940b4) at 6696022d by land-stack-ref.sh, so the note takes cc's first case and Icb1329b closes in 0.1.35. Order on the Desk at Intent's END: Intent's rollout, then Utilz's sitting with hv at the Mac, then the heavy runs. devbin's leg is size M, so it goes after the sitting's END, alone."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M8E04AP7JM7QG6R9XD7VQE8X",
+  "ts": "2026-11-27T07:57:13.800Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-27 07:57Z by date -u: devbin-vc holds control (decision 325). Compact cycle 8 is called (decision 334): the Desk grants nothing new until vc's word after the cycle. Running: Utilz 2.15.0's cut (01M8DYRTPQM04CAKTATW3AR3VE), in hv's own terminal since 07:43Z. Held: the devvm build (01M8DW8Y34KRXPFSKMSJ5YAF27, pins devbin 0.1.35 and intent 3.5.6, decision 333) and the CI tree's design check (01M8DYV5V6SGCH84R78A5W68HA, headless Chrome, alone). Order after the cycle: Utilz's cut END, then devbin's sweep and the devvm build, then the design check, then one batch per machine (decision 322), then rustup last. The plan is ~/Devel/scratch/estate-plan/PLAN.md, its top block. Control is released only at session end."
+  }
+}
