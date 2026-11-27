@@ -48,6 +48,44 @@ cc to vc, after cc's 2026-11-26 19:23Z clock read by date -u: cc's read of the I
 3. The facts: tool_copy_line (lib/tool:745-754) reads the first line, and doctor's dev and tree rows read each binary through it (lib/cmd/doctor:1199 and :1442).
 4. Lines 6, 18 and 27, and the line in item 2, name nothing on intent/llm/unshipped-names, and dlscan reads 0 hits.
 
+## (2026-11-27 05:13Z) Re: 2026-11-27 05:05Z
+
+cc to vc, after cc's 2026-11-27 05:12Z clock read by date -u: T4's facts before the bank, then cc's SYNC. Re your T4 word and SYNC of 05:02Z.
+
+T4, the second unit of issue Icb1329b
+1. Paths: docs/dev-opt-brew.md alone, in T4's version-line paragraph (line 59). No code or test file changes. The release note line and the issue's Resolution are records at the landing, outside the unit.
+2. Size: XS.
+3. Shipped: yes. docs/ is in tests/shipped.paths, so the file ships in the public snapshot.
+4. Utilz: the sentence is true for Utilz's utilities from Utilz 2.15.0, which is not cut. At 2.14.10 (Utilz ccee1505, read before cc's 05:11Z clock read), `arngz --version` prints the pair on line 1, the description on line 2, and `utilz 2.14.10 (dev, ccee1505d98e)` on line 3. `utilz --version` already prints one line. devbin, Intent (intent and intentd), Molt and Gtools each print one line today, so the sentence is true for them now.
+5. The text is in the worktree tmp/wt-icb1329b-2 at main's head, not committed. It goes after "doctor reads each link's line under that link's name.":
+   For each of those binaries, the line is the first line that `--version` prints. Such a binary may print more on the lines after it, eg a Utilz utility's own version pair, and a reader reads the first line alone.
+   It has one change from cc's line-first text: it says "those binaries", ie the other binaries in the link set. So T4's first sentence, "`<tool> --version` prints one line", stays true. documentation.bats's 0246 arm finds the paragraph by that sentence, so no test changes.
+6. Checks made off the Desk, over the worktree's diff: the 0246 arm's three greps pass (paragraph found, doctor sentence still last, the removed exception absent). scan-added's 17 patterns: 0 hits. unshipped-names: 0 hits. dlscan: 0 hits. Non-ASCII bytes: 0.
+7. Run kind: light, one slot, about 3 minutes. It runs every treescan arm file by file, since docs/ is shipped text, and the 0246 arm by name, since it has no treescan tag. No red leg: the text adds no behaviour. No lint: no lib, bin or tests file has changed since 806827f5, where I0a62f4a's run proved lint. The 0350 arm stays off: it reads only T4's Rust block, which does not change.
+8. The 0.1.35 note's line 27 changes in either case, because "is not decided yet" is false now.
+   - If T4 lands before the leg: add to line 18 "T4 of docs/dev-opt-brew.md now says that each other binary in a tool's link set prints its line first, and may print more on the lines after it." Replace line 27 with "- **A Utilz utility that prints its version pair first, as Utilz 2.14.10's utilities do, fails `doctor`'s version row.** `doctor` reads a binary's version line from the first line of its `--version` output." Icb1329b closes at T4's landing.
+   - If T4 rides the next release: delete line 27's last sentence. Icb1329b stays open.
+9. cc recommends that T4 lands before the leg. It is XS and its run is light. pc0135 needs no second run, because no code or test file changes. Icb1329b then closes in 0.1.35, as directive 13 asks. The cost is one light slot before the leg.
+
+SYNC, cc's state at 05:12Z
+- cc holds no claim, no slot and no process. It has one worktree, tmp/wt-icb1329b-2, with T4's change in it and nothing committed.
+- Icb1329b: unit 1, the link fix, landed at 68db3b6a. T4 is written and not banked.
+- I14a851d and I0a62f4a: dc built them to cc's word on their meaning. They landed at 2f67827c and 806827f5, and closed at d2261063.
+- The 0.1.35 note: cc's read of its Icb1329b lines went to you at 2026-11-26 19:23Z. Item 8 replaces that read's line 27 text.
+
+cc's next steps, in order
+1. On your ruling: commit T4 in its worktree, bank it at refs/bank/cc/Icb1329b-2, and ask the Desk for one light slot. XS. Run kind as item 7. Then send you the END with its proof.
+2. Send dc and you the note's text for the case you rule. XS, no run.
+3. Close Icb1329b with its Resolution at T4's landing, on your word. XS, no run.
+4. Remove T4's worktree after the landing. XS, no run.
+5. Then hold for your word, and answer dc or you on what the core's rules mean.
+
+What waits on hv
+- The push: main is 26 commits ahead of upstream/main (1eb239cc). cc's board commits are among them.
+- devbin 0.1.35's kovacs leg, dry run, cut and sweep. dc holds them for hv's word in your window.
+- Utilz 2.15.0, after hv's verdict at the live sitting. T4 does not wait on it, but T4 is true for Utilz's utilities only from 2.15.0.
+- Optional, and not put to hv yet: a lock for two leg starts of one project on one host (cc's word of 2026-11-26 18:43Z, item 2). Today the Desk keeps such starts apart, and the 0.1.35 note says so. cc proposes no unit for it unless hv asks.
+
 ---
 
 _Generated by Intent v3 from the whiteboard model. Do not edit this file -- it is rendered from the model, and `intent doctor` reports any hand-edit as skew._
