@@ -3,8 +3,8 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-27 13:58Z
-status: active
+heartbeat_at: 2026-11-27 14:43Z
+status: paused
 focus: "on vc's word: 0.1.36's pre-cut pc0136 and kovacs leg c0136 both ended green, with the dry run clean; canon is vc's for the cut; dc holds no slot or run"
 claims: []
 ---
