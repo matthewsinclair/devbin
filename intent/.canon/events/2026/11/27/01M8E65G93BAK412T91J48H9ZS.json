@@ -1,0 +1,17 @@
+{
+  "id": "01M8E65G93BAK412T91J48H9ZS",
+  "ts": "2026-11-27T09:42:43.747Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "FOLDED from dc, 2026-11-27 09:42Z by date -u, for hv's pack-up (vc decision 344). Fold sha: b94b67ff. HOLDING, not released. Resume line: after the bounce, /in-session and read the line; then, on vc's word, once cc's howto unit is banked, 0.1.36's derived pre-cut run with that unit, then 0.1.36's kovacs leg. No claim, slot, worktree, bank or run. Nothing is pushed. Safe to compact.",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}
