@@ -35,7 +35,7 @@ The terse DO / NEVER contract for working in this repository. `AGENTS.md` is the
 ## The seam
 
 - **DO** treat `bin/devbin` plus everything under `bin/.devbin/lib/` as devbin's, replaced wholesale.
-- **NEVER** overwrite `config.yaml`, `cmd/` or `help/` from install or upgrade; they are the project's. Install writes a starter `config.yaml` only where there is none, and makes `cmd/` and `help/` empty.
+- **NEVER** overwrite `config.yaml`, `cmd/`, `help/` or `howto/` from install or upgrade; they are the project's. Install writes a starter `config.yaml` only where there is none, and makes `cmd/` and `help/` empty.
 - **DO** enumerate devbin's half only through `vendored_paths`; there is no second list.
 - **NEVER** name, in anything `vendored_paths` lists, a project that uses devbin, a person or session, another repository's issue or CI run, any commit, or a machine-local path. State lessons generically and use the placeholder project `demo`. devbin's own issue numbers and the owner's copyright line stay.
 - **NEVER** keep a list of devbin's consumers, in its runtime or its tests. `tests/unit/neutral.bats` refuses by shape; a name in prose, the manifest, git history and a phrase split across two lines are review's to catch.

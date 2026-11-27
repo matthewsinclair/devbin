@@ -20,9 +20,14 @@ setup() { devbin_setup; }
 teardown() { devbin_teardown; }
 
 # Prints "<line>: <text>" for every second line of a hard-wrapped paragraph:
-# two consecutive lines that are both prose.
+# two consecutive lines that are both prose. A header is not prose: a `---` on
+# line 1 through the next `---` line, the shape a howto topic opens with, which
+# the prettier arm below holds. A `---` block that does not start on line 1,
+# or one with no closing `---`, is read as prose like any other line.
 wrapped_paragraph_lines() {
-  awk '
+  local hdr_end
+  hdr_end="$(awk 'NR == 1 { if ($0 != "---") exit; next } $0 == "---" { print NR; exit }' "$1")"
+  awk -v hdr_end="${hdr_end:-0}" '
     function is_prose(l) {
       if (l == "") return 0
       if (l ~ /^#/) return 0
@@ -33,6 +38,8 @@ wrapped_paragraph_lines() {
       if (l ~ /^> /) return 0
       return 1
     }
+    # The header, when there is one.
+    FNR <= hdr_end + 0 { prev = ""; next }
     # Fenced code blocks are byte-stable under prettier: the fence lines and
     # everything between them are not paragraphs.
     /^```/ { infence = !infence; prev = ""; next }
@@ -64,6 +71,17 @@ wrapped_paragraph_lines() {
   [ -n "$(wrapped_paragraph_lines "$f")" ]
   printf '# t\n\nOne line per paragraph.\n\n    a literal\n    block\n\n- a list\n- stacks\n' >"$f"
   [ -z "$(wrapped_paragraph_lines "$f")" ]
+  # A header on line 1 is not prose, and gives no cover past its closing ---.
+  printf -- '---\nsummary: s\nkeywords: [a]\n---\n\nOne line per paragraph.\n' >"$f"
+  [ -z "$(wrapped_paragraph_lines "$f")" ]
+  printf -- '---\nsummary: s\nkeywords: [a]\n---\nThis paragraph was hand-wrapped\nacross two lines.\n' >"$f"
+  [ -n "$(wrapped_paragraph_lines "$f")" ]
+  # A --- block that does not start on line 1 is no header.
+  printf -- '# t\n\n---\nsummary: s\nkeywords: [a]\n---\n' >"$f"
+  [ -n "$(wrapped_paragraph_lines "$f")" ]
+  # Nor is one with no closing ---.
+  printf -- '---\nsummary: s\nkeywords: [a]\n\nOne line.\n' >"$f"
+  [ -n "$(wrapped_paragraph_lines "$f")" ]
 }
 
 # _prettier_diff <file> -- what prettier's default config would change in

@@ -626,6 +626,7 @@ cli|0|ran:mix args=demo.cli all
 repl|0|mix demo.cli repl all
 build|3|resolves, but nothing here runs it
 worktrees|2|is not a git checkout, so it has no linked worktrees to report
+howto|1|no topic named 'all'
 precommit|3|resolves, but nothing here runs it
 content|3|resolves, but nothing here runs it
 publish|3|resolves, but nothing here runs it

@@ -144,17 +144,18 @@ Built-ins are **offered** by language or on request. A language-scoped command a
 
 Always offered:
 
-| Command     | What it does                                                                       |
-| ----------- | ---------------------------------------------------------------------------------- |
-| `check`     | Read-only gates; each exits non-zero on a breach                                   |
-| `fmt`       | Format sources in place                                                            |
-| `build`     | Build this project's targets, which it declares itself                             |
-| `cache`     | Reuse a built artefact while its inputs are unchanged: key, get, put, list, rm, gc |
-| `worktrees` | Report linked worktrees, landed, held or unknown, and remove the landed ones       |
-| `docs`      | Regenerate generated documentation (AGENTS.md); needs intent/                      |
-| `version`   | Show, set, bump, sync and check the project version                                |
-| `ci-state`  | Read CI's verdict on a commit: green, failed, pending, none or unknown             |
-| `infra`     | Profile and check this estate's DNS and mail configuration                         |
+| Command     | What it does                                                                         |
+| ----------- | ------------------------------------------------------------------------------------ |
+| `check`     | Read-only gates; each exits non-zero on a breach                                     |
+| `fmt`       | Format sources in place                                                              |
+| `build`     | Build this project's targets, which it declares itself                               |
+| `cache`     | Reuse a built artefact while its inputs are unchanged: key, get, put, list, rm, gc   |
+| `worktrees` | Report linked worktrees, landed, held or unknown, and remove the landed ones         |
+| `docs`      | Regenerate generated documentation (AGENTS.md); needs intent/                        |
+| `howto`     | List, search and print instructions written for LLMs: devbin's own and the project's |
+| `version`   | Show, set, bump, sync and check the project version                                  |
+| `ci-state`  | Read CI's verdict on a commit: green, failed, pending, none or unknown               |
+| `infra`     | Profile and check this estate's DNS and mail configuration                           |
 
 `build` is listed in every project and runs nothing until the project says what it builds: `commands.build.run`, options under `commands.build.options`, or a handler, at `bin/.devbin/cmd/build` or mapped with `commands.build.handler`. devbin ships the name only, and doctor notes it as offered with nothing to run until then. A declared language also gives `check` options for elixir and rust, and `fmt` options for elixir, rust and swift.
 
@@ -231,11 +232,12 @@ bin/.devbin/config.yaml          YOURS
 bin/.devbin/cmd/<name>           YOURS -- project commands, auto-discovered
 bin/.devbin/cmd/<name>.d/<sub>   YOURS -- sub-commands, same rule at any depth
 bin/.devbin/help/<name>.md       YOURS -- authored long-form help, read before devbin's
+bin/.devbin/howto/<topic>/       YOURS -- instructions for LLMs, read before devbin's (bin/devbin howto)
 bin/.devbin/lib/                 devbin's runtime, its pages for its built-ins among it
 bin/.devbin/manifest.sha256      checksums of everything devbin owns
 ```
 
-**This split is the seam, and it is the only rule you need to remember.** `bin/devbin` and everything under `bin/.devbin/lib/` belongs to devbin and is replaced wholesale on upgrade. `config.yaml`, `cmd/` and `help/` belong to you and are never overwritten by install or upgrade.
+**This split is the seam, and it is the only rule you need to remember.** `bin/devbin` and everything under `bin/.devbin/lib/` belongs to devbin and is replaced wholesale on upgrade. `config.yaml`, `cmd/`, `help/` and `howto/` belong to you and are never overwritten by install or upgrade.
 
 `manifest.sha256` is what keeps the seam honest. It records a checksum for every file devbin owns, and it lives beside `lib/` rather than inside it so it survives the wholesale replacement of the thing it describes. A vendored file whose checksum has moved was edited in place: `upgrade` reports it, refuses it, and leaves it alone. **The refusal is the feature** -- an upgrade that always wins is one people stop running. Pass `--force` when the edit was a mistake.
 
