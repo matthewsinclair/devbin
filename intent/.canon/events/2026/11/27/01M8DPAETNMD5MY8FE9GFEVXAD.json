@@ -1,0 +1,15 @@
+{
+  "id": "01M8DPAETNMD5MY8FE9GFEVXAD",
+  "ts": "2026-11-27T05:05:48.885Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window on the morning of 2026-11-27, four messages read between 04:53Z and 05:02Z by date -u, hv's words: (1) 'Ok, where are we?' (2) 'Ok, it's the morning. Where are we up to?' (3) 'Ok, everyone is booted and ready now. Please continue.' (4) 'Please do a VC-wide sync with all VC and then synthesise and unify the estate-plan, then be sure to kick things off and then let me know where we are up to.' vc's reading: vc keeps the pen and the Desk. vc asks every vc, the supervisor and the sysadms for one sync message, writes the plan's new top block from the replies, gives each vc its GO, grants by decision 286's order, and reports to hv. The words are a go for work that stays on the Mac. They name no push, tag, cut or upload, so each public step still takes hv's own word: devbin 0.1.35's in vc's window, and each other estate's in its own window. hv's words in other windows this morning, by those seats' reports: Molt's push (main 00a3057d on upstream and local at 04:53Z, which vc read from Molt's remote refs); the push of the CI tree's supervisor (its main 6bf2d4f, its hv decision 42, nothing to the client's remote); Gtools' hv decisions 74 (main to its local remote only) and 75 (hv installs the app 0.10.0 from the cask by hand after Intent's cut); and Utilz's hv decision 63, which vc read at Utilz ccee1505: 'Intent's cut first', 'Tool line first' and 'Add' for the Music desktop. 'Tool line first' amends Utilz ST0015's D2 for 2.15.0: line one of a utility's --version is the tool line and the pair moves to line two, so Icb1329b's T4 takes cc's line-first text and devbin's reader does not change. The Desk at 05:02Z: Intent 3.5.6's cut is granted and not started, and two asks are held on purpose: another estate's heavy run for its package 1.1 (01M8DNKRWMGVWF3S8000A3BG4J; driver read sound; held for its vc's READY, hv's start word in its window and the lanes) and Gtools' by-hand install (01M8DNWEC8R0DKWVQ9E3W5NM81; held for the END of Intent's cut)."
+  }
+}

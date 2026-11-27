@@ -1,0 +1,16 @@
+{
+  "id": "01M8DPY2H6JT0B3MX7J7RR5BC0",
+  "ts": "2026-11-27T05:16:31.654Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-27 05:15Z by date -u: devbin-vc holds control (decision 325). Work comes from ~/Devel/scratch/estate-plan/PLAN.md, its top block 'The unified plan at 2026-11-27 05:10Z', and each sync reply is in ~/Devel/scratch/devbin-vc/20261127/sync-tally-1127.md. Granted: Intent 3.5.6's cut (01M8CHVJHJPTTH5K6PY1A9MNSB) on cargo, bats and heavy, not started; hv types it. Held on purpose: Gtools' by-hand install (01M8DNWEC8R0DKWVQ9E3W5NM81), for the cut's END. Armed: one Desk waiter that passes over the held id, an end-waiter on the cut, and a watch for the cut's process. Order after the cut: Intent's rollout, Utilz's small run and its sitting, the Gtools install, devbin 0.1.35's leg and dry run, then each cut on hv's word. Grant by decision 286's priority. Control is released only at session end."
+  }
+}

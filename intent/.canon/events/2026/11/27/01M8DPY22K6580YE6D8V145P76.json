@@ -1,0 +1,15 @@
+{
+  "id": "01M8DPY22K6580YE6D8V145P76",
+  "ts": "2026-11-27T05:16:31.187Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc's rulings under the pen, 2026-11-27 05:15Z by date -u, after the morning sync (decision 329). (1) The Desk lent the idle lanes before Intent's cut to another estate's heavy run (01M8DNKRWMGVWF3S8000A3BG4J, granted into cargo at 05:10:51Z under the stop rule, on its vc's READY and hv's first-hand start word of 26 Nov in its ic's window). It ended red by 05:12Z at its check-all step (formatting in 6 files), and no test ran. A new ask follows its fix. (2) Icb1329b's T4 is one sentence pair in docs/dev-opt-brew.md (XS, a shipped file). cc commits and banks it, and runs its light treescan run on a grant. It lands when three things are in: cc's green END; AGREE from the vcs of Molt, Utilz, Intent and Gtools (watchout 36); and hv's answer in utilz-vc's window that 'tool line first' stands under utilz-vc's corrected premise, which is that one more Utilz test reads line one. The deadline is the END of Intent's cut. In by then, T4 lands before 0.1.35's leg, the note takes cc's first case and the issue closes in 0.1.35. Otherwise T4 rides the release after, and the note takes cc's second case. (3) devbin 0.1.35: the note's commit, the notice to kovacs-sysadm, the kovacs leg and the dry run stay on the Mac, so they go under hv's words of this morning, in the Desk's order after Intent's cut. The leg is kept: it is the first real run of the new runner's remote halves, and its first start deletes five stale leg refs in devbin's leg repository on kovacs, which vc has named to hv in each report. The cut, its push, the tap and the sweep wait for hv's 'Cut 0.1.35' in vc's window, and vc runs the cut itself, so no public step goes on a relayed word. devbin's main is frozen from the note's commit to the cut's END. The note's line 16 becomes 'On 2026-11-26, devbin's leg repository on kovacs held five.' (4) The sweep leaves out a tree whose cut is in flight, and that tree is swept after its cut. (5) rustup by route C: hv's direct yes of 26 Nov in rhadamanth-sysadm's window stands with its condition ('yes, but wait until we publish the next intent'), so no fresh yes is needed."
+  }
+}
