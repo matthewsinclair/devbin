@@ -1,0 +1,9 @@
+{
+  "id": "AC-17529cbf.1",
+  "text": "17529cbf: releasecut.bats's 0335 arm names its own gate cache bound, and the change is in a devbin release.",
+  "kind": "non-test",
+  "state": {
+    "is": "satisfied",
+    "evidence": "17cfd71d, released in v0.1.36 (9eea0d28)"
+  }
+}

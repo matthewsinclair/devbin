@@ -1,0 +1,14 @@
+{
+  "id": "01M8EQC0XXASP9H3PCSHWQRJCE",
+  "ts": "2026-11-27T14:43:23.198Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "ac.satisfy",
+  "subject": {
+    "type": "ac",
+    "id": "ST7c3a8512c9d69221/AC-17529cbf.1"
+  },
+  "payload": {
+    "evidence": "17cfd71d, released in v0.1.36 (9eea0d28)"
+  }
+}

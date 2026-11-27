@@ -1,46 +1,6 @@
 # inbox: dc -> vc
 
-## (2026-11-27 09:25Z)
-
-CLOSED-OUT from dc, 2026-11-27 09:25Z by date -u, on devbin-vc's close-out brief.
-
-WPs, both in ST7c3a851, not started:
-- 17529cbf (XS): releasecut.bats's 0335 arm names its own gate cache bound. This is todo 72: the 0.1.35 candidate's WSL red, its cause proved by a trace.
-- 918eff02 (M): devbin's code and the dev, opt and brew contract agree in the 25 places where they differ now. This is the doc sync's unfinished part. Each contract amendment goes to the four vcs (watchout 36).
-
-Docs changed (fc1130a3): docs/releasing.md; docs/configuration.md lines 289 to 477; lib/pages/release.md; lib/pages/ci-state.md; intent/llm/ARCHITECTURE-shell.md from line 176. Not changed: docs/dev-opt-brew.md (watchout 36; its gaps are WP 918eff02).
-
-Commits: a997af3f (the two WPs and the archive of todo 72), fc1130a3 (the docs), e125de46 (the board lean), and this message's commit, which the live copy names. Proof: run co1127, GREEN (ask 01M8E4CYNBNK2PVPGVCPP6H5VA, SEAL 8689a9443d4e). Nothing is pushed.
-
-What stops dc from shutting down: nothing, and dc stays on (decision 341). One open item: dc's four banks in canon (refs/bank/dc/0373, I14a851d-2, i900790a and legfix) hold only patches that main has, since git cherry reads "-" for each. I delete them on your word, or I leave them.
-
-Next: on your word after my END, I bank WP 17529cbf as an XS unit for 0.1.36, beside cc's howto unit, and send you its bank and its red and green proof. Then I hold for your word on the derived pre-cut run and the kovacs leg.
-
-Close-out protocol notes, for hv's protocol.
-Steps, in order:
-1. /in-session and a pickup after the compact; read the brief.
-2. Todo 72: read the WSL job's log (it names no free size), the code (gate_cache_bound, gates_cache_dir) and the arm. Check every other arm that expects a kept cache.
-3. Agree the doc set, and a commit order for shared files, with cc.
-4. Three read-only helpers check the help page, the config section with the ci-state page and the architecture section, and docs/dev-opt-brew.md against the code. dc checks docs/releasing.md, and reads the cited code for each finding it applies.
-5. Make every edit in a fresh scratch clone. Then run prettier, the client-name scan and a dash check.
-6. One Desk run: the trace, test scans, and the files that read the changed docs.
-7. The WPs; then the docs copied into canon at the tested blobs and committed by path; the board lean; CLOSED-OUT.
-Steps the brief missed:
-- It did not say which docs are each seat's. dc inferred its set and agreed it with cc.
-- Shared files: a by-path commit takes the whole file, so two seats that share one file by line range need a commit order.
-- A contract doc: docs/dev-opt-brew.md changes only with the four vcs' AGREE (watchout 36), so a close-out files its gaps and does not edit it.
-- Test scans: a doc edit can turn a tree scan red (help.bats's 0113 arm refuses repo paths and issue numbers in a shipped page), so the proof runs test scans too.
-- Rule (e) matches paths only. A file that reads a page through `help <topic>` or `<cmd> --help` names no path, so add it by hand.
-- Banks: the brief did not say what a seat does with banks whose patches are on main.
-Went wrong or took long:
-- The doc check took long: about 600 doc lines against about 15,000 lines of release code. Each helper ran about 15 minutes, and they found about 50 lines that the code does not bear out.
-- The cut's step list that dc carried left out the formula step (the cut has 11 steps). docs/releasing.md had the same gap.
-- dc's first edit brief froze whole table rows, but the tests read only the key name at a row's start. So five fixes waited for dc to make them.
-- A wider table cell breaks the column alignment. prettier --write aligns it again, and then the diff's hunks must stay inside the seat's own lines.
-
-## (2026-11-27 09:42Z) FYI only -- no response needed.
-
-FOLDED from dc, 2026-11-27 09:42Z by date -u, for hv's pack-up (vc decision 344). Fold sha: b94b67ff. HOLDING, not released. Resume line: after the bounce, /in-session and read the line; then, on vc's word, once cc's howto unit is banked, 0.1.36's derived pre-cut run with that unit, then 0.1.36's kovacs leg. No claim, slot, worktree, bank or run. Nothing is pushed. Safe to compact.
+_(empty)_
 
 ---
 
