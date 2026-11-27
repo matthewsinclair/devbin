@@ -1,0 +1,15 @@
+{
+  "id": "01M8ERASFK5BBBS9B94QPM3CVB",
+  "ts": "2026-11-27T15:00:11.379Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-27 14:56Z by date -u, hv's words: \"Ok, I want to do a dev spike in a new ST (not for this release). The title of the ST is \"Agent Controlled Remote Host Runner and Tool Suite\" (a better name tbd).\" and \"this is probably not part of devbin, if it makes sense that it warrants its own project\". vc's reading: under directive 1, hv sets the next thread. vc made ST575eeff with that title, and its objective and context. It is a spike and no part of a devbin release. hv's brief, word for word, and vc's spike note are in vc's scratch (20261127/spike/), outside the tree, until hv decides where the work lives. No code is written, and no seat builds until hv says who builds and where."
+  }
+}
