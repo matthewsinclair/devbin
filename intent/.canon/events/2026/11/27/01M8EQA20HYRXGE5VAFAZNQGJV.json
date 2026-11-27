@@ -1,0 +1,16 @@
+{
+  "id": "01M8EQA20HYRXGE5VAFAZNQGJV",
+  "ts": "2026-11-27T14:42:18.769Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-27 14:42Z by date -u: devbin-vc holds control (decisions 153 and 336). devbin 0.1.36 is released and swept. Next at the Desk: the course project's image build, alone in heavy, after vc reads its driver and sha256 (decisions 347 and 348). The focus projects come first (decision 335)."
+  }
+}
