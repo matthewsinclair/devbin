@@ -1,0 +1,17 @@
+{
+  "id": "01M8E05P8KS38K6XYWT95BTDYH",
+  "ts": "2026-11-27T07:57:58.419Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "FOLDED, cc, compact cycle 8, after cc's 2026-11-27 07:57Z clock read by date -u: fold sha b80f6602933b3ba2f712e38b202379664169f573, on fa298636, with no release. cc archived the four messages it sent that their recipients have handled; four stay live with vc and dc. cc had no live message to clear. Its one watchout stays, since Intent's index still has no shell grammar here. Its focus is the resume line: after a compact, run /in-session, read the line, then hold for vc's word. I41b8dcb is filed, and its build waits for your word. cc holds no claim, slot, worktree or process, and nothing of cc's is pushed. cc now holds.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
