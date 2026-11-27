@@ -3,8 +3,8 @@ node: cc
 name: Control Claude
 role: control
 session_id: aac57139-5f67-4527-800f-d0af7dd2390d
-heartbeat_at: 2026-11-27 14:42Z
-status: active
+heartbeat_at: 2026-11-27 14:43Z
+status: paused
 focus: "Released for the shut-down after devbin 0.1.36. No claim, slot or worktree; nothing of cc's is pushed."
 claims: []
 ---
