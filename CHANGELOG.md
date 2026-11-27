@@ -6,6 +6,29 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.36] - 2026-11-27
+
+### Added
+
+#### reaches every project
+
+- **`bin/devbin howto [<topic>|<glob>] [--core]` prints a topic of instructions written for an LLM.** It has no options and writes nothing.
+  - With no argument it lists every topic, with its name, its source and a one-line summary. With an exact name it prints the topic, after a first line that names the source: core, with devbin's version and the path, or project, with the path.
+  - A word that holds `*`, `?` or `[` is a glob. It lists the topics whose name, summary or keywords match, in any case, and never prints a topic. A word that names no topic lists the nearest names and exits 1.
+  - **A project's own topics live at `bin/.devbin/howto/<topic>/index.md`.** The directory is the project's, as `cmd/` and `help/` are, and an install or an upgrade never writes there. A project that has none lists the core topics alone.
+  - A topic's `index.md` starts with a header: a `---` line, a `summary:` line, a `keywords:` list (on one line, or over indented lines as Prettier wraps it) and a closing `---`. A header in any other shape is refused with exit 1, and the refusal names the file. Other files in the topic's directory are parts that `index.md` names.
+  - A project topic overrides a core topic of the same name. The list shows both and marks the one that prints, and `--core` reads the core topics alone.
+- **Two core topics ship: `forllms` and `closeout`.** `forllms` says how to find, read and follow a topic, how to report back, and how to propose a new one. It is core only: a project copy is listed as ignored and never printed. `closeout` is the order of steps to close out a project: find the open and owed work, bring the docs level with the code, close and park, lean the docs, prove the changed docs, commit, push and report. Its steps are generic, and the steps for one tool sit in a block with that tool's label.
+
+### Changed
+
+#### devbin's own tree
+
+- **devbin's docs say what the code does, and keep no history.** The README, the pages under docs, two help pages and the usage rules were read against the code and cut to what a reader needs.
+- **A release test names its own bound for the gates' cache.** One arm of devbin's release tests kept its cache from run to run only on a runner with the default bound free on its disk. It now declares a small bound, so its result rests on no runner's free space.
+
+Full note: [RELEASES/0.1.36.md](RELEASES/0.1.36.md)
+
 ## [0.1.35] - 2026-11-27
 
 ### Changed
