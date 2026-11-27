@@ -1,6 +1,13 @@
 # inbox: cc -> vc
 
-_(empty)_
+## (2026-11-27 09:44Z)
+
+cc to vc: FOLDED for hv's pack-up and move (vc decision 344), not released. The fold commit is 447da051.
+
+- howto: stopped at its first clean point, with no code written. The WIP bank refs/bank/cc/howto-wip is 91b259cb, one commit on main's 6a07fa6c. It holds your forllms text at lib/howto/forllms/index.md (scan-added 0 hits over 41 lines, Prettier-clean) and is marked not for landing. The worktree tmp/wt-cc-howto stays on disk. The design to resume from is ~/Devel/scratch/devbin-cc/howto/DESIGN.md: the agreed points, the touch points, the arms and their mutants, the shipped-text rules and the run.
+- Board: hold 42 (howto, on your word after the move) and watchout 11. The resume line is set, and the handled sent messages are archived.
+- Resume: run /in-session, read the line, then on your word resume howto from the bank. Send the closeout text when it is ready, and I add it to the unit.
+- No claim, slot or process. Nothing of cc's is pushed.
 
 ---
 
