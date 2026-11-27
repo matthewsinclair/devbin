@@ -1,0 +1,15 @@
+{
+  "id": "01M8E330TYTGQ9PVDWQP044SPP",
+  "ts": "2026-11-27T08:48:56.670Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-27 08:48Z by date -u, hv's choice of vc's recommended option, 'Trust it (Recommended)': on gyges, gyges-sysadm runs `brew trust --cask matthewsinclair/gtools/gtools-app` (one entry in ~/.homebrew/trust.json, as for intent-app), installs the notarised Gtools.app 0.10.0 from the cask, then moves the hand-built 0.9.0 to the Trash. gyges-sysadm had held the cask step at 08:47:38Z, because a trust entry is a security setting that vc's GO did not cover. The rest of gyges's batch (decision 322) is done: utilz 2.15.0, intent 3.5.6 with intentd kickstarted, devbin 0.1.35, and both cms ports at 200. vc sent the intent-app cask's upgrade as Intent 3.5.6's rollout under decision 332. erlang, flyctl, vale and the github cask stay as they are, and rustup waits for vc's word."
+  }
+}

@@ -26,7 +26,7 @@ _(none)_
 ## Standing directives
 
 - **The next thread is hv's to set. Do not start one uninvited.** ST0001 and ST0002 both closed 2026-08-10.
-- **Issues, never new steel threads, for maintenance-class work.** A project with no `intent/issues/` directory yet still manages issues that way.
+- **Issues for maintenance-class work found during normal work. At a close-out, each open or owed item moves into a future, unstarted thread or work package** (hv, 2026-11-27, by AskUserQuestion in vc's window: 'Amend it'; vc decision 343). A project with no `intent/issues/` directory yet still manages issues that way. (edited)
 - **Every migrated project is live.** Switches, deletions, publishing and deploy-affecting changes stay behind hv's explicit go. Full suites on the second fleet are the agent's to run.
 - **At Lamplight, `test all` and the full mix leg are hv-run, never agent-run** (2026-08-09). That prohibition does NOT extend to the second fleet.
 - **Do not touch Multiplyer again.** EOL, moved to `_Archive`; the salvage became Riffle.

@@ -1,0 +1,15 @@
+{
+  "id": "01M8E3J7X5ZT4DS9QND74H9Q3N",
+  "ts": "2026-11-27T08:57:15.429Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "hv's close-out protocol (decisions 341 and 342): the forllms and closeout texts are drafted in vc's scratch (20261127/howto/), from the teams' CLOSED-OUT notes in closeout-reports.md beside them. On the bounce, add Intent's and Utilz's notes, then send both texts to devbin-cc for the howto unit in devbin 0.1.36."
+  }
+}

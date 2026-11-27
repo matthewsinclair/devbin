@@ -1,0 +1,15 @@
+{
+  "id": "01M8E2ZMF4AFJ8CYFCSQ0937YN",
+  "ts": "2026-11-27T08:47:05.700Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-27 08:46Z by date -u, hv's words: \"Ok, one other thing: as for closing out intent, molt, utilz, and gtools; that's what I am hoping for. I will leave the VCs open and I will also leave devbin's VC open with The Pen and The Desk. But if we're not doing any work on the others, then there's no need for those other Claudes in those four teams to just be hanging around.\" vc's reading, with decisions 335 and 336: after its close-out, each of Intent, Molt, Utilz and Gtools keeps its vc open, and devbin-vc stays open with the Pen and the Desk. Every other seat in those teams, and devbin-cc and devbin-dc, shuts down after its part of the close-out. A seat's last acts: its work committed by path, its board leaned, then `intent wb release --node <seat>`, then SHUT-DOWN-READY to its vc. Each vc passes the names to devbin-vc, and vc gives hv the list of windows to close."
+  }
+}

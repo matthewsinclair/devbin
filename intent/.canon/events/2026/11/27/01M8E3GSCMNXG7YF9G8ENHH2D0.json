@@ -1,0 +1,15 @@
+{
+  "id": "01M8E3GSCMNXG7YF9G8ENHH2D0",
+  "ts": "2026-11-27T08:56:27.796Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-27 08:56Z by date -u, hv's choice: 'Drop it'. The GitHub Support purge request of decision 178 (2) is dropped: the three devbin commits of 12 Nov (ed87fd32, 10a45fd2, c13c101a) stay served by GitHub, which still served all three when vc read them by 08:55Z. The draft stays in vc's scratch, and nobody files it. With this, decision 178 is spent, and vc archives it."
+  }
+}

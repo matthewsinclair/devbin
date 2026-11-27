@@ -1,0 +1,15 @@
+{
+  "id": "01M8E618DBQ48C2NXR62CD52W2",
+  "ts": "2026-11-27T09:40:24.619Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-27 09:40Z by date -u, hv's choice of vc's recommended option, 'Amend it (Recommended)', on directive 2 (\"Issues, never new steel threads, for maintenance-class work\"), which devbin-cc's close-out report named beside the new future threads. Directive 2 now reads: issues for maintenance-class work found during normal work; at a close-out, each open or owed item moves into a future, unstarted thread or work package. devbin's two new future threads stand: ST7c3a851 (the next release) and ST30b816f (parked until hv schedules it). vc edited the directive on hv's board under decision 3."
+  }
+}

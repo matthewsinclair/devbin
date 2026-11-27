@@ -1,0 +1,15 @@
+{
+  "id": "01M8E3K6CKX914GV3BHQ521NJ6",
+  "ts": "2026-11-27T08:57:46.643Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-27 08:57Z by date -u, hv's choice of vc's recommended option, 'Delete them (Recommended)', on the hand-off of 19 Nov: on gyges and kovacs, each sysadm checks that the old v1 subagent files elixir.md, intent.md and worker-bee.md in ~/.config/claude/agents/ still match their v1 checksums, then deletes them and the old v1 manifest ~/.local/share/intent/agents/installed-agents.json. If auto mode refuses a delete, hv types the lines. gyges-sysadm had already reinstalled diogenes and socrates from Intent 3.5.6's source by 08:57Z. The question whether Intent's uninstall should honour the v1 record goes to Intent as a future, unstarted WP."
+  }
+}

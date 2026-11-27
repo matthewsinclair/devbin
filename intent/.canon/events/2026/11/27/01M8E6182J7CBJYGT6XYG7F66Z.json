@@ -1,0 +1,16 @@
+{
+  "id": "01M8E6182J7CBJYGT6XYG7F66Z",
+  "ts": "2026-11-27T09:40:24.274Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "hv"
+  },
+  "payload": {
+    "kind": "directive",
+    "seq": 2,
+    "text": "**Issues for maintenance-class work found during normal work. At a close-out, each open or owed item moves into a future, unstarted thread or work package** (hv, 2026-11-27, by AskUserQuestion in vc's window: 'Amend it'; vc decision 343). A project with no `intent/issues/` directory yet still manages issues that way."
+  }
+}

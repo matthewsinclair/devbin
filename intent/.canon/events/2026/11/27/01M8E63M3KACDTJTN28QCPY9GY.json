@@ -1,0 +1,15 @@
+{
+  "id": "01M8E63M3KACDTJTN28QCPY9GY",
+  "ts": "2026-11-27T09:41:42.131Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-27 09:41Z by date -u, hv's choice: 'Finish, then fold all', on hv's pack-up and move (hv's words as quoted by agentic-engineering-vc: \"bank, fold, and hold here for everyone now, and then continue on the bounce\"). The two live runs finish: Intent's close-out build all and its push, and utilz-cc's last doc test. Then every remaining seat folds and holds, not released, devbin-cc included, and the howto verb, devbin 0.1.36 and the closeout text wait for the bounce. The Desk grants nothing new except those two runs. vc folds last and tells hv. Already folded by 09:41Z: AE, the second workstream and the CI tree's supervisor."
+  }
+}

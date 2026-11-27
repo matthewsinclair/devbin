@@ -1,0 +1,15 @@
+{
+  "id": "01M8E4VW5R6P1PYQJGF1H16ANP",
+  "ts": "2026-11-27T09:19:59.672Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-27 09:19Z by date -u, hv's words: \"devbin howto: Yes, agreed to all of that.\" This adopts the design of hv's idea (hv's words before it: \"devbin howto {{topic}}\" as topics written for LLMs, a discovery mode, a glob that lists matching topics, a \"forllms\" topic, core topics added over time, and project-local topics) with vc's five refinements. (1) Core topics ship in devbin's lib/howto/<topic>/, because only lib/ reaches a project; project topics live in the project's docs/howto/<topic>/, and a config key can move that path. (2) Each topic has one entry file, index.md, with a short header (a one-line summary and keywords); the verb prints it after a first line that names the topic's source (core at devbin x.y.z, or the project path). (3) `devbin howto` lists every topic with its name, source and summary; an exact name prints the topic; a glob lists the topics whose name, summary or keywords match; a word that matches nothing lists the nearest names and exits non-zero; a near match is listed, never printed. (4) A project topic overrides a core topic of the same name; the list shows both and marks the winner; --core prints the core copy. (5) forllms is a reserved core topic: how to find, read and follow a howto, how to report back, how to propose a new one, and that hv's words and the project's own rules win over any howto. The first topics are forllms and closeout. cc builds the verb and its tests (M); vc writes the two topic texts; dc proves; vc cuts devbin 0.1.36 and sweeps it, today if nothing goes red (decision 341). A follow-up for Intent: a line in its AGENTS.md template that points every Claude at `devbin howto forllms`."
+  }
+}

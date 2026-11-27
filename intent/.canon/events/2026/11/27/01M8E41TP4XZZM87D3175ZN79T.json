@@ -1,0 +1,15 @@
+{
+  "id": "01M8E41TP4XZZM87D3175ZN79T",
+  "ts": "2026-11-27T09:05:46.180Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv by AskUserQuestion in vc's window, read by 2026-11-27 09:05Z by date -u, hv's choice of vc's recommended option, 'Ship it today (Recommended)', on hv's close-out verb (todo 229): after the five close-outs, vc writes the close-out protocol from the teams' CLOSED-OUT reports. devbin-cc builds `bin/devbin howto closeout`, which prints the protocol text shipped inside devbin's lib, so each project reads the copy that matches its devbin, with its tests (S). devbin-dc proves it. vc then cuts devbin 0.1.36 and sweeps it into every project (M in all). The cut holds the Desk alone. devbin-cc and devbin-dc shut down after that sweep, not after the close-out, so this replaces decision 337 for them."
+  }
+}

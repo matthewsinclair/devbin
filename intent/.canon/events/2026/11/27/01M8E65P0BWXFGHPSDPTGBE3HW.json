@@ -1,0 +1,16 @@
+{
+  "id": "01M8E65P0BWXFGHPSDPTGBE3HW",
+  "ts": "2026-11-27T09:42:49.611Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-27 09:42Z by date -u: devbin-vc holds control (decisions 153 and 336). For hv's pack-up and move (decision 344), the Desk grants nothing new until the bounce. On the bounce, the focus projects come first (decision 335), then devbin 0.1.36 (decisions 341 and 342): devbin-cc's howto unit from its WIP bank, then dc's derived pre-cut run and the kovacs leg, then the cut and the sweep. Read a driver and its sha256 against each ask before its grant."
+  }
+}

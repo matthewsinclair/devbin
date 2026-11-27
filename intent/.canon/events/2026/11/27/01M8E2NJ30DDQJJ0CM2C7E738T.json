@@ -1,0 +1,15 @@
+{
+  "id": "01M8E2NJ30DDQJJ0CM2C7E738T",
+  "ts": "2026-11-27T08:41:35.585Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-27 08:35Z by date -u, hv's words with one name withheld under directive 14: \"Ok, I want to know if I can close out and shut down any of these teams: - molt - devbin - intent - utilz - gtools. If we can, let me know. Before any of them close, I want them all to sync as-written docs to as-built code, close out any STs, WPs, and Issues. In particular, if there are parts of a WP or an Issue that have been deferred to another ST, then we should move it out of the almost done ST/WP/Issue and either put it in a new unstarted ST or WP, or make a new ST and put it in that. Either way, I want anything that is partially done to be pruned and then closed and all unfinished work moved into a future, unstarted ST or WP. Make sense? Once that is done, I want each to do an aggressive lean out of all project docs. I'm espescially interested in ensuring that we are not writing tomes in the verblocks, WIPs, or restart files, and that they ONLY have WIP or TODO items, never DONE stuff. I want to draw a line under this weeks work across all of those projects so I can put all done work to bed and then concentrate on devvm, ae, and the [client] projects.\" vc's reading: compact cycle 8 is over. Molt, devbin, Intent, Utilz and Gtools close out before they shut down. Each team stops new work, syncs its docs to its code, closes each done item, prunes each partly done item to its done part and closes it, and moves each unfinished part, and each item with no work done, into a future, unstarted ST or WP. Then it leans out its docs and boards, so that wip, restart and verblocks hold only DOING and TODO. For devbin, this replaces decision 46's \"every open item is an issue\". Each team commits by path and pushes nothing until hv's push word. The Desk puts devvm, AE and the [client] projects first. vc sent the five briefs by 08:39Z, gave the focus teams their word, and granted the CI tree's design check into light at 08:40Z (load 8.02, 72% idle). The devvm build's first ask would have been refused at its start, because it named driver_sha256 and the driver does not pass it. Its new ask 01M8E2MDD97MEGWMAKA26YWMRK (driver e7d63d8f0910, read sound by vc) replaces it, and the old one is denied as superseded. vc grants the new ask alone after the design check's END."
+  }
+}
