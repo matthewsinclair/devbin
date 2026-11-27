@@ -1,0 +1,15 @@
+{
+  "id": "01M8EFGHTR66X34XQJN0ASMS5J",
+  "ts": "2026-11-27T12:26:02.968Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "doing",
+    "text": "bin/devbin howto unit for devbin 0.1.36 (vc decisions 341, 342 and 345): banked at refs/bank/cc/howto; Desk ask 01M8EFFR8BHKGQPRP8VCH9GTZE waits for vc's grant, then run/run.sh in ~/Devel/scratch/devbin-cc/howto."
+  }
+}

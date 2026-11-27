@@ -6814,6 +6814,39 @@
       "text": "hv in vc's window, read by 2026-11-27 11:32Z by date -u, hv's words: \"You told ae the wrong thing. 'devbin howto {{topic}}' needs to support core howtos that are part of devbin AS WELL AS allow for devbin using projects to add their own howtos that 'devbin howto' knows to use, because they're in a particular part of the devbin dir. THis is the same idea that devbin uses to add project-specific commands.\" vc's reading: this replaces point (1) of decision 342 for project topics. A project's topics live at bin/.devbin/howto/<topic>/index.md, the project's own and auto-discovered, as bin/.devbin/cmd/ and bin/.devbin/help/ are; install and upgrade never write there. There is no docs/howto default and no howto.dir config key. Core topics stay in lib/howto/. The rest of decision 342 stands. vc changed the forllms text, and told devbin-cc and the course project's vc.",
       "state": "live",
       "recorded_at": "2026-11-27T11:33:11.455Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 346,
+      "text": "hv in vc's window, read by 2026-11-27 11:56Z by date -u, hv's words before going AFK: \"Ok, I'm about to AFK for a while. You have approval to do what you need to do to get the next devbin released, and then I want ae to cut a new devvm with all of the latest molt, devbin, and intent releases cut in. Ok? You have The Pen and The Desk.\" vc's reading. (1) devbin 0.1.36: vc may land cc's howto unit on dc's proof, cut the release, push main and the tag to local and upstream, make the GitHub release and the tap update, and sweep it into every project by path, as decision 332 read for 0.1.35. A sweep commit in a project whose vc is closed stays local until that project's next push. (2) devvm: after 0.1.36 is released, vc passes hv's words, quoted, to the course project's vc, which cuts a new devvm pinned to the latest Molt, devbin and Intent releases under its own rules, with the Desk's slots first. (3) NOT covered: any push or promotion to a client's remote, a client edition, a history rewrite, the install of devbin into the course project (its timing is hv's go in that vc's window), and any step a seat's own permission check refuses, which waits for hv. vc routes no step around a seat's refusal.",
+      "state": "live",
+      "recorded_at": "2026-11-27T11:56:53.938Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 347,
+      "text": "hv in vc's window, read by 2026-11-27 11:57Z by date -u, hv's words on the four things decision 346 listed as not covered: \"All of those are approved, to. Let ae know and I'll confirm directkly as well.\" vc's reading: hv approves, for the next devvm, the steps vc had listed as waiting: a push or promotion to the client's remote that the devvm chain needs, a client edition if the chain needs one, and the install of devbin into the course project. hv confirms them first-hand in that project's window. A step that a seat's own permission check refuses still waits for hv's keystrokes or hv's first-hand word there: vc passes hv's words on and asks no session to act around a refusal.",
+      "state": "live",
+      "recorded_at": "2026-11-27T11:57:56.665Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 348,
+      "text": "vc's choice under the Pen, read by 2026-11-27 11:58Z by date -u, on hv's words first-hand in the course project's vc's window, as that vc passed them (\"I've approved all release behaviours. devbin will explain and detail.\"), and hv's words to vc in decision 346 (\"a new devvm with all of the latest molt, devbin, and intent releases cut in\"): option A. devvm 0.5.6 has not shipped, and only its devbin pin moves, so 0.5.6 is re-pinned to devbin 0.1.36 and ships as one release, by hv's batch rule (no small separate releases). The waiting amd64 rerun of the old pins is not run. vc put A and B to hv at 11:58Z; hv had not answered in vc's window, so this stands until hv says otherwise, and it changes nothing that cannot be redone before the build starts. Order: devbin 0.1.36 RELEASED; then the re-pin, the arm64 build with the stage 1 test and the rehearsal in one Desk slot; then the steps at the remote hosts, each on hv's first-hand word there.\n hv confirmed A in vc's window, read by 2026-11-27 11:59Z by date -u, hv's words: \"ok, go with those recs. fewer releases, more functionality per release.\"",
+      "state": "live",
+      "recorded_at": "2026-11-27T11:58:56.881Z",
+      "edited_at": "2026-11-27T11:59:12.632Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 230,
+      "text": "After 0.1.36: add a work package to ST7c3a851 for lib/install's seam comment and printed manifest header, which name config.yaml, cmd/ and help/ but not howto/ (devbin-cc's point, left out of 0.1.36 because the header is in every project's manifest).",
+      "state": "live",
+      "recorded_at": "2026-11-27T12:00:15.610Z"
     }
   ],
   "sent": [

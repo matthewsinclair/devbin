@@ -1,0 +1,15 @@
+{
+  "id": "01M8EE1AQTZVEASHEAGJ7GYQQK",
+  "ts": "2026-11-27T12:00:15.610Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "After 0.1.36: add a work package to ST7c3a851 for lib/install's seam comment and printed manifest header, which name config.yaml, cmd/ and help/ but not howto/ (devbin-cc's point, left out of 0.1.36 because the header is in every project's manifest)."
+  }
+}

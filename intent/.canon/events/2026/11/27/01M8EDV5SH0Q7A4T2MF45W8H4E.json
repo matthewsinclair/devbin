@@ -1,0 +1,15 @@
+{
+  "id": "01M8EDV5SH0Q7A4T2MF45W8H4E",
+  "ts": "2026-11-27T11:56:53.938Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-27 11:56Z by date -u, hv's words before going AFK: \"Ok, I'm about to AFK for a while. You have approval to do what you need to do to get the next devbin released, and then I want ae to cut a new devvm with all of the latest molt, devbin, and intent releases cut in. Ok? You have The Pen and The Desk.\" vc's reading. (1) devbin 0.1.36: vc may land cc's howto unit on dc's proof, cut the release, push main and the tag to local and upstream, make the GitHub release and the tap update, and sweep it into every project by path, as decision 332 read for 0.1.35. A sweep commit in a project whose vc is closed stays local until that project's next push. (2) devvm: after 0.1.36 is released, vc passes hv's words, quoted, to the course project's vc, which cuts a new devvm pinned to the latest Molt, devbin and Intent releases under its own rules, with the Desk's slots first. (3) NOT covered: any push or promotion to a client's remote, a client edition, a history rewrite, the install of devbin into the course project (its timing is hv's go in that vc's window), and any step a seat's own permission check refuses, which waits for hv. vc routes no step around a seat's refusal."
+  }
+}

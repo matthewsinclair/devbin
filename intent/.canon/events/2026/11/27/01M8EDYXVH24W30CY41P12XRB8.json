@@ -1,0 +1,15 @@
+{
+  "id": "01M8EDYXVH24W30CY41P12XRB8",
+  "ts": "2026-11-27T11:58:56.881Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "vc's choice under the Pen, read by 2026-11-27 11:58Z by date -u, on hv's words first-hand in the course project's vc's window, as that vc passed them (\"I've approved all release behaviours. devbin will explain and detail.\"), and hv's words to vc in decision 346 (\"a new devvm with all of the latest molt, devbin, and intent releases cut in\"): option A. devvm 0.5.6 has not shipped, and only its devbin pin moves, so 0.5.6 is re-pinned to devbin 0.1.36 and ships as one release, by hv's batch rule (no small separate releases). The waiting amd64 rerun of the old pins is not run. vc put A and B to hv at 11:58Z; hv had not answered in vc's window, so this stands until hv says otherwise, and it changes nothing that cannot be redone before the build starts. Order: devbin 0.1.36 RELEASED; then the re-pin, the arm64 build with the stage 1 test and the rehearsal in one Desk slot; then the steps at the remote hosts, each on hv's first-hand word there.\n hv confirmed A in vc's window, read by 2026-11-27 11:59Z by date -u, hv's words: \"ok, go with those recs. fewer releases, more functionality per release.\""
+  }
+}
