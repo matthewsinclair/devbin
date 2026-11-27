@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-27 08:39Z
+heartbeat_at: 2026-11-27 09:24Z
 status: active
-focus: "2026-11-27 08:00Z by date -u: FOLDED for compact cycle 8 on vc's word, and HOLDING. devbin 0.1.35 is released; its candidate's WSL job went red at one arm, which blocks nothing. Next: after the compact, run /in-session and read this line, then on vc's word do todo 72: prove the WSL red's cause by a trace and file it as an issue for the next release. vc runs the sweep after the cycle. No claim, slot, worktree or run."
+focus: "2026-11-27 09:24Z by date -u: CLOSED OUT on vc's close-out word (vc decisions 336, 337 and 341), and not shut down. Now, on vc's word: bank WP ST7c3a851/17529cbf, the 0335 arm's own gate cache bound (XS), as a unit for 0.1.36. Then, on vc's word: the proof of bin/devbin howto closeout with the derived pre-cut list, and 0.1.36's kovacs leg. No claim, slot, worktree or run."
 claims: []
 ---
 
