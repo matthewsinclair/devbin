@@ -1,0 +1,16 @@
+{
+  "id": "01M8DZ9KTMQPAXHW49NVCK245X",
+  "ts": "2026-11-27T07:42:38.420Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 71,
+    "text": "devbin 0.1.35 is released: read the candidate's WSL job and main's ShellCheck run on the release commit, and file what they find; the sweep is vc's, after the END of Utilz's cut"
+  }
+}

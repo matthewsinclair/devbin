@@ -1,0 +1,15 @@
+{
+  "id": "01M8E089S0YD09ZY6Q2EVCMQ12",
+  "ts": "2026-11-27T07:59:23.936Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "After the compact, on vc's word: file the 0.1.35 candidate's WSL red (run 45956129632, releasecut.bats's 0335 arm, test 2353) as an issue, with a trace that proves the cause: I14a851d's free-space rule empties a cache whose disk has less than release.gate_cache.max (12G) free, and the arm sets no bound. It rides the next release, with no patch release. Draft: ~/Devel/scratch/devbin-dc/c0135/issue-0335-wsl.md; log: c0135/wsl-0135.log"
+  }
+}

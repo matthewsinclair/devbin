@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-27 05:32Z
+heartbeat_at: 2026-11-27 08:00Z
 status: active
-focus: "2026-11-27 05:31Z by date -u: on vc's decisions 330 and 331 and hv's 'Cut 0.1.35' in vc's window, 0.1.35's note is committed in cc's case 1, on cc's Icb1329b close. Next: at vc's word after the END of Utilz's live sitting, run ask-c0135.sh at the HEAD then and launch the c0135 driver to wait for its grant (the kovacs leg, then the dry run in canon); kovacs-sysadm has acked the notice. vc runs the cut after a green leg and dry run. Nothing lands outside the board trees until the cut's END."
+focus: "2026-11-27 08:00Z by date -u: FOLDED for compact cycle 8 on vc's word, and HOLDING. devbin 0.1.35 is released; its candidate's WSL job went red at one arm, which blocks nothing. Next: after the compact, run /in-session and read this line, then on vc's word do todo 72: prove the WSL red's cause by a trace and file it as an issue for the next release. vc runs the sweep after the cycle. No claim, slot, worktree or run."
 claims: []
 ---
 
@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-- devbin 0.1.35: the note is committed in case 1; next, at vc's word after the END of Utilz's live sitting, ask-c0135.sh and the c0135 driver (the kovacs leg, then the dry run in canon); vc runs the cut after a green leg and dry run; nothing lands outside the board trees until the cut's END (edited)
+- After the compact, on vc's word: file the 0.1.35 candidate's WSL red (run 45956129632, releasecut.bats's 0335 arm, test 2353) as an issue, with a trace that proves the cause: I14a851d's free-space rule empties a cache whose disk has less than release.gate_cache.max (12G) free, and the arm sets no bound. It rides the next release, with no patch release. Draft: ~/Devel/scratch/devbin-dc/c0135/issue-0335-wsl.md; log: c0135/wsl-0135.log
 
 ## Holds
 
