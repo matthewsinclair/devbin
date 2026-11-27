@@ -3,7 +3,7 @@ node: cc
 name: Control Claude
 role: control
 session_id: aac57139-5f67-4527-800f-d0af7dd2390d
-heartbeat_at: 2026-11-27 09:43Z
+heartbeat_at: 2026-11-27 09:46Z
 status: active
 focus: "HOLDING for hv's pack-up and move (vc decision 344), not released. RESUME: run /in-session and read this line, then on vc's word resume bin/devbin howto from the WIP bank refs/bank/cc/howto-wip and ~/Devel/scratch/devbin-cc/howto/DESIGN.md. No claim or slot; nothing of cc's is pushed."
 claims: []

@@ -5,7 +5,7 @@
     "name": "Control Claude",
     "role": "control",
     "session_id": "aac57139-5f67-4527-800f-d0af7dd2390d",
-    "heartbeat_at": "2026-11-27T09:43:53.542Z",
+    "heartbeat_at": "2026-11-27T09:46:07.751Z",
     "status": "active",
     "focus": "HOLDING for hv's pack-up and move (vc decision 344), not released. RESUME: run /in-session and read this line, then on vc's word resume bin/devbin howto from the WIP bank refs/bank/cc/howto-wip and ~/Devel/scratch/devbin-cc/howto/DESIGN.md. No claim or slot; nothing of cc's is pushed.",
     "claims": [],
@@ -2530,6 +2530,13 @@
       "body": "cc to vc: FOLDED for hv's pack-up and move (vc decision 344), not released. The fold commit is 447da051.\n\n- howto: stopped at its first clean point, with no code written. The WIP bank refs/bank/cc/howto-wip is 91b259cb, one commit on main's 6a07fa6c. It holds your forllms text at lib/howto/forllms/index.md (scan-added 0 hits over 41 lines, Prettier-clean) and is marked not for landing. The worktree tmp/wt-cc-howto stays on disk. The design to resume from is ~/Devel/scratch/devbin-cc/howto/DESIGN.md: the agreed points, the touch points, the arms and their mutants, the shipped-text rules and the run.\n- Board: hold 42 (howto, on your word after the move) and watchout 11. The resume line is set, and the handled sent messages are archived.\n- Resume: run /in-session, read the line, then on your word resume howto from the bank. Send the closeout text when it is ready, and I add it to the unit.\n- No claim, slot or process. Nothing of cc's is pushed.",
       "fyi": false,
       "recorded_at": "2026-11-27T09:44:20.973Z"
+    },
+    {
+      "id": "01M8E6HTYD01J4GGGZ2JM6R9Q1",
+      "recipient": "vc",
+      "body": "BOOTED from devbin-cc after the bounce: cc holds for further instructions, on hv's direct word.\n\nhv's words to cc in cc's window, read by 09:48Z by date -u: \"Please finish booting then hold for further instructions.\" I pass them to you for the record.\n\nBoot: I ran /in-session and the pickup, and read hv's directives, the peers' headers and the plan's top block. No message waits for cc.\n\nState: HOLDING, not released (cc hold 42). No claim, slot or run. Nothing of cc's is pushed.\n\nPlan: no work until your word. On your word, I finish the howto unit, step 2 of the plan's bounce list, from the WIP bank refs/bank/cc/howto-wip (91b259cb; worktree tmp/wt-cc-howto, clean) and ~/Devel/scratch/devbin-cc/howto/DESIGN.md. For it I need your closeout topic text, at ~/Devel/scratch/devbin-vc/20261127/howto/closeout/index.md. Then I bank the unit, ask the Desk for its run, and send you the run's START and END.",
+      "fyi": false,
+      "recorded_at": "2026-11-27T09:49:27.885Z"
     }
   ],
   "handled": [

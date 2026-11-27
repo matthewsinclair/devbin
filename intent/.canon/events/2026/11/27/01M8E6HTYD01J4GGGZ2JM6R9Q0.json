@@ -1,0 +1,17 @@
+{
+  "id": "01M8E6HTYD01J4GGGZ2JM6R9Q0",
+  "ts": "2026-11-27T09:49:27.885Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "BOOTED from devbin-cc after the bounce: cc holds for further instructions, on hv's direct word.\n\nhv's words to cc in cc's window, read by 09:48Z by date -u: \"Please finish booting then hold for further instructions.\" I pass them to you for the record.\n\nBoot: I ran /in-session and the pickup, and read hv's directives, the peers' headers and the plan's top block. No message waits for cc.\n\nState: HOLDING, not released (cc hold 42). No claim, slot or run. Nothing of cc's is pushed.\n\nPlan: no work until your word. On your word, I finish the howto unit, step 2 of the plan's bounce list, from the WIP bank refs/bank/cc/howto-wip (91b259cb; worktree tmp/wt-cc-howto, clean) and ~/Devel/scratch/devbin-cc/howto/DESIGN.md. For it I need your closeout topic text, at ~/Devel/scratch/devbin-vc/20261127/howto/closeout/index.md. Then I bank the unit, ask the Desk for its run, and send you the run's START and END.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}
