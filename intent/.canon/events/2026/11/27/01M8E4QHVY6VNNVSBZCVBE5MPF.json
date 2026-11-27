@@ -1,0 +1,15 @@
+{
+  "id": "01M8E4QHVY6VNNVSBZCVBE5MPF",
+  "ts": "2026-11-27T09:17:38.051Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST7c3a8512c9d69221/918eff02"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "devbin's code and the dev, opt and brew contract agree, in the 25 places where they differ now"
+  }
+}

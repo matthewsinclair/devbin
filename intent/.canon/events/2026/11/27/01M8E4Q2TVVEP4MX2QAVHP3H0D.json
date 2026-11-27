@@ -1,0 +1,15 @@
+{
+  "id": "01M8E4Q2TVVEP4MX2QAVHP3H0D",
+  "ts": "2026-11-27T09:17:22.655Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST7c3a8512c9d69221/17529cbf"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "releasecut.bats's 0335 arm names its own gate cache bound, so its keep rests on no runner's free disk"
+  }
+}
