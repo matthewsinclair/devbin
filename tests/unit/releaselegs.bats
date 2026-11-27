@@ -686,10 +686,12 @@ leg_kept_log() { printf '%s/%s.log\n' "$(release_leg_dir "$proj" kov)" "${1:0:12
   [ "$(leg_word)" = pending ] || fail "a start on a disk whose free space cannot be read: $output"
   grep -qE "^DEVBIN_GATE_CACHE refused: $cache holds [0-9]+ KiB, within its bound of $huge KiB, and the free space on its disk could not be read \(df: the disk cannot be read\), so it is left as it stands\$" "$wt.log" ||
     fail "the leg's log does not say why the cache was left as it stands: $(cat "$wt.log")"
-  [ "$(cat "$cache/runs")" = "$(git -C "$proj" rev-parse HEAD~1)" ] || fail "the cache was not left as it stands: $(cat "$cache/runs" 2>&1)"
   release_gates "$wt"
   run release_leg_read "$proj" kov demo "$sha"
   [ "$(leg_word)" = green ] || fail "the run beside a cache left as it stands: $output"
+  # Read only once the gates have ended: they add their own line as they
+  # start, so a read before their end races them.
+  [ "$(cat "$cache/runs")" = "$(git -C "$proj" rev-parse HEAD~1)"$'\n'"$sha" ] || fail "the cache was not left as it stands for this run: $(cat "$cache/runs" 2>&1)"
   every_call_batch
 }
 
