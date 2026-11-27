@@ -1,0 +1,15 @@
+{
+  "id": "01M8ESGH1FWFN2FXCSHW63RVYD",
+  "ts": "2026-11-27T15:20:47.919Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-27 15:20Z by date -u, on the spike of decision 349. hv's words: \"Its' definitely it's own project. I'll set that up quickly now. Then I'll init Intent and Devbin and then launch new cybri-{vc,cc,ic,dc} Claudes and we can hand this over to them.\" and \"I want to hand this over -- everything we know about it -- to cybri-vc now and then close this out here at devbin as this isn't the right spot for it\". hv named the project Cybri, its daemon cybrid, and the daemon's parts cymgr and cywrkr. vc's reading: the work leaves devbin. vc wrote the handover (HANDOVER.md, hv's brief and the spike note, in vc's scratch at 20261127/spike/), and gives it to cybri-vc when that seat starts. ST575eeff is cancelled in devbin with a reason that names the new project. devbin keeps no part of the work."
+  }
+}
