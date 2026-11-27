@@ -27,36 +27,36 @@ tests/lib/*.bash              fixtures and assertions (`test_helper.bash` and co
 
 ## The runtime layers
 
-Read it as a stack: nothing depends upwards.
+Read it as a stack: nothing depends upwards when it loads.
 
-| File            | Depends on                                          | Owns                                                                                                                                                                                                                                  |
-| --------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `helpers`       | nothing                                             | primitives: `die`, `warn`, `abs_path`, `read_version`, `sha256_files`, `run_words`; the bash floor                                                                                                                                    |
-| `builtins`      | `helpers`                                           | THE catalogue: data plus its readers, no side effects; refuses to load without `helpers`                                                                                                                                              |
-| `runlog`        | `helpers`                                           | the sealed-gate subsystem and its extraction grammars                                                                                                                                                                                 |
-| `config`        | `helpers`                                           | one awk pass over YAML, a cached flat table, schema validation                                                                                                                                                                        |
-| `install`       | `helpers`; `config` for `install_prefix_configured` | the vendored file set, the checksum manifest, version constraints                                                                                                                                                                     |
-| `resolve`       | `helpers` `builtins` `config` `runlog`              | resolution, activation, `all`, shared options                                                                                                                                                                                         |
-| `help`          | `resolve` (and so all of the above)                 | the generated listing, authored topics, `--why`                                                                                                                                                                                       |
-| `gatecmd`       | `helpers` `builtins` `runlog`                       | the shared body of every built-in gate command                                                                                                                                                                                        |
-| `infra`         | `helpers` `config`                                  | the infra profile: search order, load, parse-time validation                                                                                                                                                                          |
-| `infra.dns`     | `helpers`                                           | authoritative DNS reads for `infra check` and `infra init`                                                                                                                                                                            |
-| `infra.check`   | `infra` `infra.dns` `config`                        | the DNS and mail legs of `infra check`                                                                                                                                                                                                |
-| `infra.init`    | `helpers` `infra.dns`                               | `infra init`: measure a live estate and propose a profile                                                                                                                                                                             |
-| `release.notes` | `helpers`                                           | the notes providers and their verbs; reads no config, is passed its facts                                                                                                                                                             |
-| `release.steps` | `helpers` `release.notes`                           | the release core's postcondition readers and its remote and gh calls; reads no config                                                                                                                                                 |
-| `release.legs`  | `helpers` `runlog`                                  | the release core's remote legs: R onto a test host by git send-pack, its gates run there detached, the seal pair copied back and read by `seal_verdict`; reads no config                                                              |
-| `cmd/<name>`    | `helpers` or `gatecmd`, plus what its concern needs | one built-in command; eg `release` sources `config`, `runlog`, `resolve`, `release.notes` and `release.steps`; `infra` sources `config` and the `infra*` files; `install` sources `config` and `install`; `upgrade` sources `install` |
-| `tmpl/*`        | nothing (data)                                      | what `new` scaffolds; `tmpl/handler` must itself parse as bash                                                                                                                                                                        |
+| File            | Depends on                                                        | Owns                                                                                                                                                                                                                                  |
+| --------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `helpers`       | nothing at load; `install` on demand, for `_devbin_seam_is_level` | primitives: `die`, `warn`, `abs_path`, `read_version`, `sha256_files`, `run_words`; the bash floor                                                                                                                                    |
+| `builtins`      | `helpers`                                                         | THE catalogue: data plus its readers, no side effects; refuses to load without `helpers`                                                                                                                                              |
+| `runlog`        | `helpers`; `builtins` for `option_seal_from`                      | the sealed-gate subsystem and its extraction grammars                                                                                                                                                                                 |
+| `config`        | `helpers`                                                         | one awk parser over YAML, run twice by `cfg_load` so a torn read is refused, a cached flat table, schema validation                                                                                                                   |
+| `install`       | `helpers`; `config` for `install_prefix_configured`               | the vendored file set, the checksum manifest, version constraints                                                                                                                                                                     |
+| `resolve`       | `helpers` `builtins` `config` `runlog`                            | resolution, activation, `all`, shared options                                                                                                                                                                                         |
+| `help`          | `resolve` (and so all of the above)                               | the generated listing, authored topics, `--why`                                                                                                                                                                                       |
+| `gatecmd`       | `helpers` `builtins` `runlog`                                     | the shared body of every built-in gate command                                                                                                                                                                                        |
+| `infra`         | `helpers` `config`                                                | the infra profile: search order, load, parse-time validation                                                                                                                                                                          |
+| `infra.dns`     | `helpers`                                                         | authoritative DNS reads for `infra check` and `infra init`                                                                                                                                                                            |
+| `infra.check`   | `infra` `infra.dns` `config`                                      | the DNS and mail legs of `infra check`                                                                                                                                                                                                |
+| `infra.init`    | `helpers` `infra` `infra.dns`                                     | `infra init`: measure a live estate and propose a profile                                                                                                                                                                             |
+| `release.notes` | `helpers`                                                         | the notes providers and their verbs; reads no config, is passed its facts                                                                                                                                                             |
+| `release.steps` | `helpers` `release.notes` `runlog`; `config` for `release.tag`    | the release core's postcondition readers and its remote and gh calls; reads config only for `release.tag`, in `release_tree_target`                                                                                                   |
+| `release.legs`  | `helpers` `runlog`                                                | the release core's remote legs: R onto a test host by git send-pack, its gates run there detached, the seal pair copied back and read by `seal_verdict`; reads no config                                                              |
+| `cmd/<name>`    | `helpers` or `gatecmd`, plus what its concern needs               | one built-in command; eg `release` sources `config`, `runlog`, `resolve`, `release.notes` and `release.steps`; `infra` sources `config` and the `infra*` files; `install` sources `config` and `install`; `upgrade` sources `install` |
+| `tmpl/*`        | nothing (data)                                                    | what `new` scaffolds; `tmpl/handler` must itself parse as bash                                                                                                                                                                        |
 
-- `lib/helpers` has no dependencies, by rule: handlers are separate processes that source it alone. Needs config, belongs in `resolve`; needs nothing, belongs in `helpers`.
-- `lib/install` sits beside `config`, not on it: install, upgrade and doctor act on a project other than the one whose config is loaded, so everything it needs about a tree is passed in or read off that tree. The one exception is `install_prefix_configured`, which reads `install.prefix` (devbin's own config) with `cfg_get`; its callers (`install`, `shell-init`, `use`) source `lib/config` first.
+- `lib/helpers` sources nothing when it loads, by rule: handlers are separate processes that source it alone. One function, `_devbin_seam_is_level`, loads `lib/install` when it is asked. Needs config, belongs in `resolve`; needs nothing, belongs in `helpers`.
+- `lib/install` sits beside `config`, not on it: install, upgrade and doctor act on a project other than the one whose config is loaded, so everything it needs about a tree is passed in or read off that tree. The one exception is `install_prefix_configured`, which reads `install.prefix` with `cfg_get` from the config its caller loaded: devbin's own, or a tool project's for its tool; its callers (`install`, `shell-init`, `use`) source `lib/config` first.
 - `lib/infra` sits ON `config`: it reads a profile through the one YAML reader and adds no parser. The profile schema follows `lib/config`'s limits (no dotted keys, flow collections or sequences of maps), so domains are keyed by a handle with the FQDN as a field.
-- A key with no value produces no cache row, so `lib/infra` carries one raw scan that asks only "was this key written" of one block's child keys, and refuses anything invisible. It reads no types, values, nesting or merging.
+- A key with no value produces no cache row, so `lib/infra` carries one raw scan of the whole profile that asks only "was this key written" of every key, and refuses anything invisible. It reads keys and their nesting, and no types, values or merging.
 
 ## Handlers are separate processes
 
-A handler is `exec`'d, not sourced, so:
+A handler runs in its own process, never sourced: it is exec'd on the command route, and is a child of `run_option`, and so of `all`. So:
 
 - **The environment is what crosses**: `DEVBIN_NAME`, `DEVBIN_INVOKE`, `PROJECT_ROOT`, `<NAME>_ROOT`, `DEVBIN_LIB`, `DEVBIN_COMMAND`, `DEVBIN_VERSION_FILE`, `DEVBIN_LANGUAGES`, the run identity (`DEVBIN_RUN_ID`, `DEVBIN_RUN_STAMP`), the shared options, and `DEVBIN_OPT_*` for framework-owned ones. A project handler never needs to read config. A built-in whose concern is the config (eg `doctor`, `release`, `infra`, `install`, `fullcycle`, `dormancy`) sources `lib/config` and calls `cfg_load` in its own process.
 - **Shared options are parsed once**, in the dispatcher, and exported.
@@ -70,7 +70,7 @@ The same order at command and option level, at every depth:
 2. config's own **`run:`** -- at command level it shadows totally too
 3. devbin's own **`lib/cmd/<name>`**
 4. the **catalogue's** default command line
-5. otherwise the refusal, exit 3, naming what would run it (`unrunnable_why`)
+5. otherwise the refusal, exit 3, naming what would run it (`unrunnable_why`); at option level the refusal exits 1 (`option_unrunnable_why`)
 
 Config's `run:` comes before devbin's handler so a built-in never swallows what config declared.
 
@@ -79,7 +79,7 @@ Each level's order is stated once, in `lib/resolve`, and the code that runs acts
 - `arg_route` -- the dispatcher's, for an argument list: `all` (over the options there are; refused over a command-level `run:` with none), a declared option, a deactivated one, the project's handler, then `run_command`.
 - `option_run_tier` -- `run_option`'s; `command_tier` -- `run_command`'s.
 - `option_leaf` -- follows a route to what runs at its end; `help` and `check`'s fmt arms read it, so neither can describe a run the dispatcher does not make.
-- `_run_line` -- the one runner for every config and catalogue command line, sealed or bare.
+- `_run_line` -- the one runner for an option's own `run:`, a command's own line, and a declared option handed to that line, sealed or bare. A catalogue option's line runs in `run_builtin_gate` (`lib/gatecmd`).
 - `project_owns_command` -- the one predicate for project ownership (a handler, mapped or not, or a command-level `run:`); ownership displaces the built-in option set.
 
 **`all`**: devbin sweeps it where there are options. Over no options a project handler or built-in receives `all` as an ordinary word. Over a command-level `run:` with no options, `run_all` refuses, exit 1, naming the bare command, since appending `all` to the line would make a new command.
@@ -102,12 +102,12 @@ Sub-dispatch descends `<handler>.d/<word>` by the same test, at any depth. A wor
 
 ## The machine install
 
-Projects vendor from a **machine install**, not from devbin's working tree. Inside devbin's own tree `install` and `upgrade` act on the install; everywhere else they mean what they always did; each announces its mode before writing.
+Projects vendor from the tree this machine's switch names (`devbin use`): an opt install, Homebrew's, or, after `use dev`, devbin's working tree. Inside devbin's own tree `install` publishes the opt install (`install --force` replaces it) and announces its mode before writing; `upgrade` is refused there.
 
-- The install is consumer-shaped with the project half missing: `bin/devbin`, `bin/.devbin/lib/` and the ordinary manifest, so `is_devbin_source`, `vendored_paths`, `copy_vendored`, `manifest_write` and `upgrade --from` apply unchanged. With no `config.yaml`, `bin/devbin` refuses to start there, so an install is only ever a `--from`. The manifest's `kind: install` header says so explicitly.
+- The install is consumer-shaped with the project half missing: `bin/devbin`, `bin/.devbin/lib/` and the ordinary manifest, so `is_devbin_source`, `vendored_paths`, `copy_vendored`, `manifest_write` and `upgrade --from` apply unchanged. With no `config.yaml`, `bin/devbin` there runs only `install`, `shell-init`, `use`, help and the version forms, and refuses every other verb (exit 5), so an install is only ever a source. The manifest's `kind: install` header says so explicitly.
 - Publishing refuses a dirty tree; there is no `--force`.
 - `source_commit_of` forwards an install's own stamp, so provenance is transitive.
-- Checks that would ask git of the source ask what the source is: the update notice reads `_devbin_source_head`; `source_direction` (the warning that upgrading would revert the runtime) uses `install_direction`, which looks a consumer's commit up in the `ancestry` lines a publish writes into the install's manifest. A commit the install never held stays `unknown`, and upgrade says so when bytes would change.
+- Checks that would ask git of the source ask what the source is: the update notice reads `_devbin_source_head`; `source_direction` (the warning that upgrading would revert the runtime) uses `install_direction`, which looks a consumer's commit up in the `ancestry` lines a publish writes into the install's manifest. A commit the install never held is `unknown` to `install_direction`. `source_direction` then asks the versions (`version_direction`), and stays `unknown` only where they are equal or cannot be read. Upgrade says so when bytes would change.
 
 ## Activation
 
@@ -126,18 +126,18 @@ A built-in is offered when the catalogue's language column says so:
 
 ## Sealed gates
 
-- A gate writes `tmp/<command>/<stamp>.<SUFFIX>.{out,errors}`. `log:` is what makes an option or command a gate; without it, it runs bare (right for a launcher).
+- A gate writes `tmp/<command>/<stamp>.<SUFFIX>.{out,errors}`. `log:`, or for an option devbin ships its catalogue row's suffix, is what makes an option or command a gate; without one, it runs bare (right for a launcher).
 - Log creation is atomic (`set -o noclobber`).
 - **`.errors` is the VERDICT**: empty exactly when a completed run was green.
 - **`.out` is the SCOPE**: any determinate fact ("N file(s) examined", "nothing staged") plus the invocation devbin recorded before the tool started. A verdict read without its scope cannot tell "examined everything" from "examined nothing".
 - `open_run_log` seeds `.errors` with the in-flight marker before the tool starts, so it is non-empty for the whole run; `seal_is_inflight` tells the two apart.
 - `run_gate` promotes a counted run that executed nothing to FAILED unless `--allow-empty` is given. `grammar: generic` declares no counter, so a generic gate's scope lives only in its `.out`.
 - Devbin's own annotations in a run log carry `_DEVBIN_INVOKE_TAG`, and `write_errors_file` strips them before extraction.
-- A gate that examines nothing must fail: `check format` fails when its tool is missing, while `fmt` skips.
+- A gate that examines nothing fails: `check format` fails when its tool is missing, while `fmt swift` and `fmt md` skip. The one exception is `check critic` over its default `--staged` corpus: it passes, and says no tests ran.
 
 ## The bash floor
 
-- Devbin requires bash >= 5. The check sits at the top of `lib/helpers`, ahead of its load guard, so the dispatcher and every built-in handler refuse on their own interpreter with a `brew install bash` remediation. The dispatcher also checks the bash PATH resolves, since `#!/usr/bin/env bash` handlers run on that one. A project handler that sources nothing from devbin is covered only when dispatched.
+- Devbin requires bash >= 5. The check sits at the top of `lib/helpers`, ahead of its load guard, so the dispatcher and every built-in handler refuse on their own interpreter, with a remediation: the PATH that finds a bash at the floor where there is one, else `brew install bash`. The dispatcher also checks the bash PATH resolves, since `#!/usr/bin/env bash` handlers run on that one. A project handler that sources nothing from devbin is covered only when dispatched.
 - The guard block stays parseable by bash 3.2.
 - `lib/helpers` sets `shopt -s inherit_errexit`, unguarded, below the floor check.
 - `doctor` asserts the floor as a check; CI's macOS job proves the refusal against the real `/bin/bash` 3.2.

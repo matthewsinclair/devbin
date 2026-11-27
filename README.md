@@ -4,7 +4,7 @@ Devbin is a dev launcher you **declare** rather than write.
 
 Most projects grow a `bin/devbin` script: a dispatcher, a helpers library beside it, and a help text that has to be updated by hand every time either changes. Devbin is that script, extracted once. A project gets the dispatcher, a runtime library and a `config.yaml`, and the commands it offers follow from what it declared.
 
-It came out of four real projects whose launchers had independently converged on the same shape -- and then drifted. Between them they carried four copies of one helpers library (50-80% identical), four hand-maintained help heredocs totalling roughly 95 KB, and eight hand-written `test_all` / `check_all` functions. A hardening learned in one of them had reached none of the others, and could not, while there were four copies. Devbin is the one copy. All four projects now run on it -- and so does devbin itself, whose own build breaks first if the dispatcher regresses.
+Devbin runs on itself too, so its own build breaks first if the dispatcher regresses.
 
 ```
 $ cd ~/code/myproject
@@ -14,10 +14,10 @@ $ bin/devbin test all
 
 ## What you get
 
-- **A dispatcher** at `bin/devbin`. No launcher named after your project -- that convention was retired because it shadowed the binaries these projects build; see below.
+- **A dispatcher** at `bin/devbin`. No launcher named after your project, because one would shadow a binary the project builds; see below.
 - **Built-in commands** -- `test`, `check`, `fmt`, `clean`, `build`, `version`, `docs`, and the surfaces (`server`, `iex`, `cli`, `repl`) -- scoped to the languages your project declares, so an Elixir project never sees `cargo` gates and a shell project never sees `mix`.
 - **Sealed gates.** A gate's verdict is a **file**, not terminal output: `test all` writes `tmp/test/<stamp>.<SUFFIX>.{out,errors}` per option, and the `.errors` companion is empty exactly when a completed run was green. CI reads the file; you read the scroll.
-- **A toolchain gate that reads the deploy image.** `check toolchain` proves the running versions match the `.tool-versions` pin -- and, when a Dockerfile builds the deploy image, that the image's pinned `ARG` versions agree with the same file. A project with a `fly.toml` and no Dockerfile fails rather than passes, because a deploy nobody can check is a breach, not a gap.
+- **A toolchain gate that reads the deploy image.** `check toolchain` proves the running elixir and erlang match their `.tool-versions` pins -- and, when a Dockerfile builds the deploy image, that the image's pinned `ARG` versions agree with the same file. A project that pins either, with a `fly.toml` and no Dockerfile, fails rather than passes, because a deploy nobody can check is a breach, not a gap.
 - **A free `all`.** Any command with at least one option gets `all` synthesised from the option list. Add an option to config and it is in `all` in the same edit.
 - **Generated help.** `devbin help` is derived from what actually resolves, so it can neither list a command that does not exist nor omit one that does.
 - **Your own commands**, first class. Drop an executable in `bin/.devbin/cmd/` and it is registered -- no config edit, no help edit.
@@ -59,9 +59,7 @@ It writes `bin/devbin` and `bin/.devbin/lib/`, scaffolds `bin/.devbin/{cmd,help}
 
 ### `bin/devbin` is the invocation, in every project
 
-**It writes no launcher named after your project, and that is deliberate.** Install once also created `bin/<project>` and `bin/<alias>` as symlinks to `bin/devbin`, so you typed `bin/myproject test`. That convention collided with the binaries these projects *build* -- one ships a binary under its own name, Intent ships an `intent` -- and a launcher that shadows the product is the wrong default. Intent had already routed around it by calling its shim `int`.
-
-`bin/devbin` was always the real dispatcher and those names were always aliases to it, so this is a **deletion, not a new convention**. It also means one thing you can rely on in any devbin project, without knowing what the project is called:
+**It writes no launcher named after your project, and that is deliberate.** A launcher named after the project collides with a binary the project _builds_ -- Intent ships an `intent`, for one -- and a launcher that shadows the product is the wrong default. So `bin/devbin` is the one thing you can rely on in any devbin project, without knowing what the project is called:
 
 ```
 bin/devbin test all
@@ -86,11 +84,11 @@ Put the line for your shell in its rc. The function is called `dvb`.
 mkdir -p ~/some/new/project && cd ~/some/new/project && dvb install
 ```
 
-A `dvb` emitted by a consumer project's own `bin/devbin` has no machine install written into it, so it falls back only when `DEVBIN_INSTALL_PREFIX` names one.
+A `dvb` emitted by a consumer project's own `bin/devbin` has no machine install written into it, so, outside the maintainer's own setup (below), it falls back only when `DEVBIN_INSTALL_PREFIX` names one.
 
-The fallback runs whatever you typed against that devbin and lets its cwd guard rule on it, so `install` and `shell-init` work and everything else is refused by name rather than acting on the wrong tree. `bin/devbin shell-init --help` is the full statement; this is a pointer to it.
+The fallback runs whatever you typed against that devbin and lets its cwd guard rule on it, so `install`, `shell-init`, `use` and the version forms work, and from the machine install its help too; everything else is refused by name rather than acting on the wrong tree. `bin/devbin shell-init --help` is the full statement; this is a pointer to it.
 
-It used to be a snippet printed here, and that is the reason it is a command now. The snippet carried two defects, the serious one being that a `bin/devbin` which existed but was not executable got stepped over -- so the walk continued into the parent and ran **another project's** launcher, at exit 0. Within an hour of a third copy existing, the three had already diverged: the landed copy was fixed and this file's was not. **A copy-paste snippet has no install step, no version, and no way to reach anyone who already pasted it.** `shell-init` has one source, a test, and a route to every project on the next re-vendor.
+**It is a command, not a snippet to paste, because a snippet has no install step, no version, and no way to reach anyone who already pasted it.** `shell-init` has one source, a test, and a route to every project on the next re-vendor.
 
 ### On Windows: WSL 2, and nothing native
 
@@ -103,7 +101,7 @@ devbin runs on Windows inside WSL 2, as the Linux program it is there. There is 
 5. **Advice, not a requirement:** `appendWindowsPath = false` under `[interop]` in `/etc/wsl.conf` keeps the Windows PATH out of WSL altogether. devbin works without it.
 6. **Behind a VPN**, WSL 2 often does not inherit the VPN's DNS and routes unless its mirrored networking or its DNS tunnelling is on: `networkingMode=mirrored`, or `dnsTunneling=true`, under `[wsl2]` in the Windows-side `.wslconfig`, both on Windows 11 22H2 or later. This is WSL's documented behaviour and has not yet been measured on a real machine here.
 
-**`check all` refuses at the critic gate in a project that carries `intent/`** until Intent's Linux binary is on PATH, which Intent's install page above provides. The gate needs `intent`, and runs a weaker critic without `shellcheck` and `jq`, so install all of them. A rules check that cannot run fails loudly by design. A project that has to run `check all` before then can turn the gate off in its own `bin/.devbin/config.yaml`, which devbin never does by default:
+**`check all` refuses at the critic gate in a project that carries `intent/`** until Intent's Linux binary is on PATH, which Intent's install page above provides. The gate needs `intent` and `jq`, and runs a weaker critic without `shellcheck`, so install all of them. A rules check that cannot run fails loudly by design. A project that has to run `check all` before then can turn the gate off in its own `bin/.devbin/config.yaml`, which devbin never does by default:
 
 ```yaml
 commands:
@@ -136,7 +134,7 @@ commands:
     run: mix phx.server
 ```
 
-That is a working launcher. `test`, `check`, `fmt`, `version` and `docs` are already there with their Elixir options, because `languages: [elixir]` is what activates them. `test all` runs ExUnit and Credo and seals both.
+That is a working launcher. `test`, `check` and `fmt` are already there with their Elixir options, because `elixir` under `project.languages` is what activates them. `version` is there in every project, and `docs` in a project that has an `intent/` directory. `test all` runs ExUnit and Credo and seals both.
 
 Only `project.name` is required. Every key is documented in **[docs/configuration.md](docs/configuration.md)**, and a fully annotated example is vendored into your own project at `bin/.devbin/lib/config.reference.yaml`.
 
@@ -187,11 +185,11 @@ Shipped as names, absent until the project asks for them -- `enabled: true`, or 
 | `content`   | Content pipeline tasks                          |
 | `which`     | Report which binary or build a name resolves to |
 
-`release` is opt-in the same way, and devbin implements it itself: one release sequence shared by every project that releases, declared in a `release:` block ([configuration](docs/configuration.md#release)). It was built under ST0007. `release check` validates and prints the declaration and then checks the notes -- the generated views match their source, and the project's version has a note -- `release notes` regenerates the generated views, and `release status <version>` reads every step of the sequence from the repository, its remotes and the release object and prints where a release stands, writing nothing. A cut resolves the version, pre-flights, asks once (or takes `--yes`), stamps and commits, then starts its legs on the release commit under one wait -- the gates in place and, unless `ci.query` is `-`, CI on that commit pushed to its candidate ref, together, and each host `release.legs` names after the gates, one at a time -- and only when every leg is green tags, pushes, deletes the candidate and makes the release object; a red leg or a timeout leaves no tag and nothing public. It seals its own run as `tmp/release/<stamp>.RELEASE.{out,errors}`; `--dry-run` does the same reads, runs no gate and writes nothing, printing every write as `would`. Under `object: ci` it waits for the project's workflow to make the release object, and makes none itself. It then runs `after:`: the release stands whatever they do, and one that fails exits 1, naming it.
+`release` is opt-in the same way, and devbin implements it itself: one release sequence shared by every project that releases, declared in a `release:` block ([configuration](docs/configuration.md#release)). `release check` validates and prints the declaration and then checks the notes -- the generated views match their source, and the project's version has a note -- `release notes` regenerates the generated views, and `release status <version>` reads every step of the sequence from the repository, its remotes and the release object and prints where a release stands, writing nothing. A cut resolves the version, pre-flights, asks once (or takes `--yes`), stamps and commits, then starts its legs on the release commit under one wait -- the gates in place and, unless `ci.query` is `-`, CI on that commit pushed to its candidate ref, together, and each host `release.legs` names after the gates, one at a time -- and only when every leg is green tags, pushes, deletes the candidate and makes the release object; a red leg or a timeout leaves no tag and nothing public. It seals its own run as `tmp/release/<stamp>.RELEASE.{out,errors}`; `--dry-run` does the same reads, runs no gate and writes nothing, printing every write as `would`. Under `object: ci` it waits for the project's workflow to make the release object, and makes none itself. It then runs `after:`: the release stands whatever they do, and one that fails exits 1, naming it.
 
-| Command   | What it does                                                                                                    |
-| --------- | --------------------------------------------------------------------------------------------------------------- |
-| `release` | Cut a release: confirm once, then stamp, commit, legs under one wait, tag, push, the release object and after:  |
+| Command   | What it does                                                                                                   |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| `release` | Cut a release: confirm once, then stamp, commit, legs under one wait, tag, push, the release object and after: |
 
 `macos` is opt-in the same way, and devbin implements it too: a macOS app's release, on macOS only. It signs a staged copy of the project's `.app` with the Developer ID and the hardened runtime, notarises and staples it, checks it as a download meets it, and attaches it zipped to the release at its tag through `release attach --from`, the core's one way an asset reaches a release. The notary credentials live in the login keychain and nowhere else, and nothing prints a value. It is declared in a `macos:` block ([configuration](docs/configuration.md#macos)), and a project's own `macos` handler or `run:` still wins.
 
@@ -207,23 +205,23 @@ Shipped as names, absent until the project asks for them -- `enabled: true`, or 
 
 Devbin's own lifecycle, always offered:
 
-| Command      | What it does                                                                      |
-| ------------ | --------------------------------------------------------------------------------- |
-| `install`    | Vendor devbin into a project, or in a dev checkout publish its opt install        |
-| `upgrade`    | Re-sync the vendored runtime from the install this machine's switch names         |
-| `vendor`     | Compare the vendored runtime against the devbin it came from                      |
-| `doctor`     | Check this install and report what is wrong with it                               |
-| `new`        | Scaffold a new project command, ready to run                                      |
-| `shell-init` | Emit the shell function that finds the nearest bin/devbin                         |
-| `devbin`     | About devbin itself: the framework's help, not this project's                     |
+| Command      | What it does                                                               |
+| ------------ | -------------------------------------------------------------------------- |
+| `install`    | Vendor devbin into a project, or in a dev checkout publish its opt install |
+| `upgrade`    | Re-sync the vendored runtime from the install this machine's switch names  |
+| `vendor`     | Compare the vendored runtime against the devbin it came from               |
+| `doctor`     | Check this install and report what is wrong with it                        |
+| `new`        | Scaffold a new project command, ready to run                               |
+| `shell-init` | Emit the shell function that finds the nearest bin/devbin                  |
+| `devbin`     | About devbin itself: the framework's help, not this project's              |
 
-Offered only in devbin's own trees -- the dev checkout, an opt install and the keg -- and never by a project's `bin/devbin`, since it chooses which devbin the whole machine runs:
+Offered only in devbin's own trees -- the dev checkout, an opt install and the keg -- since it chooses which devbin the whole machine runs. A project's `bin/devbin` refuses it, unless the project declares its own tool in an `install:` block, where `use` switches that tool's links:
 
 | Command | What it does                                            |
 | ------- | ------------------------------------------------------- |
 | `use`   | Choose which devbin this machine runs: dev, opt or brew |
 
-`devbin help` lists what **your** project actually offers. `devbin help --why` lists that plus everything devbin ships that is not offered here, each with the reason -- because a command scoped out by language is otherwise indistinguishable from a command that is broken.
+`devbin help` lists what **your** project actually offers. `devbin help --why` lists that plus everything else devbin ships that is not offered here, `use` aside, each with the reason -- because a command scoped out by language is otherwise indistinguishable from a command that is broken.
 
 ## What lands in your project
 
@@ -237,7 +235,7 @@ bin/.devbin/lib/                 devbin's runtime, its pages for its built-ins a
 bin/.devbin/manifest.sha256      checksums of everything devbin owns
 ```
 
-**This split is the seam, and it is the only rule you need to remember.** `bin/devbin` and everything under `bin/.devbin/lib/` belongs to devbin and is replaced wholesale on upgrade. `config.yaml`, `cmd/` and `help/` belong to you and are never written by install or upgrade.
+**This split is the seam, and it is the only rule you need to remember.** `bin/devbin` and everything under `bin/.devbin/lib/` belongs to devbin and is replaced wholesale on upgrade. `config.yaml`, `cmd/` and `help/` belong to you and are never overwritten by install or upgrade.
 
 `manifest.sha256` is what keeps the seam honest. It records a checksum for every file devbin owns, and it lives beside `lib/` rather than inside it so it survives the wholesale replacement of the thing it describes. A vendored file whose checksum has moved was edited in place: `upgrade` reports it, refuses it, and leaves it alone. **The refusal is the feature** -- an upgrade that always wins is one people stop running. Pass `--force` when the edit was a mistake.
 
@@ -278,7 +276,7 @@ UPDATE: devbin has moved on since this project vendored it.
         run: bin/devbin upgrade      (silence: DEVBIN_NO_UPDATE_NOTICE=1)
 ```
 
-The comparison is the one `vendor` and `upgrade` already make -- the manifest records which commit the bytes came from, and devbin asks which way the source has moved since -- so what is new is the moment it is made, not the answer. **Only a source that moved forward is called an update, and only when a vendored file changed**: a devbin commit that touched nothing a project vendors, such as coordination state, says nothing (issue 0224). A source BEHIND the project -- a rewound install, a checkout on an older branch -- is reported as behind, and upgrading from it is never suggested, because that upgrade could revert the runtime. A source that differs in no known direction is reported as a difference and not as an update. `doctor` says the same, and the interactive offer to upgrade is made only for the forward case (issue 0079). **Terminal-only is the load-bearing part**: CI logs and sealed gate output are pipes, and devbin parses its own run logs with its extraction grammars, so a version line on stdout would become input to a verdict. A consumer without devbin's source tree on disk sees nothing at all, which is the ordinary case rather than an error.
+The comparison is the one `vendor` and `upgrade` already make -- the manifest records which commit the bytes came from, and devbin asks which way the source has moved since -- so what is new is the moment it is made, not the answer. **Only a source that moved forward is called an update, and only when a vendored file changed**: a devbin commit that touched nothing a project vendors, such as coordination state, says nothing (issue 0224). A source BEHIND the project -- a rewound install, a checkout on an older branch -- is reported as behind when a vendored file differs, and upgrading from it is never suggested, because that upgrade could revert the runtime. A source that differs in no known direction is reported as a difference, not as an update, when a vendored file differs. Where every vendored file matches, neither says anything. `doctor` says the same, and the interactive offer to upgrade is made only for the forward case (issue 0079). **Terminal-only is the load-bearing part**: CI logs and sealed gate output are pipes, and devbin parses its own run logs with its extraction grammars, so a version line on stdout would become input to a verdict. A consumer without devbin's source tree on disk sees nothing at all, which is the ordinary case rather than an error.
 
 ## Cleaning the build surface
 
@@ -291,14 +289,14 @@ $ bin/devbin clean all          # every language the project declares
 
 It refuses more than it removes. A tree that PATH resolves a live binary through is a **refusal**, not a warning, until you accept that risk by name: `--force-blocked` accepts it alone and still asks, `--force` accepts it and skips the asking (`fullcycle` passes both) -- and the refusal keys on what PATH actually resolves, never on a directory name, because the binaries are in `debug/` on one project and `release/` on another. A tree with no manifest beside it to rebuild from is skipped and **reported with its size**: it is not a cache, it may be the only copy. Everything it declined to touch is printed, because a report that lists only its hits cannot be told from one that found nothing.
 
-**Where the built-in ends and a project's own clean begins** (issue 0035). The built-in owns the language artefact trees it names -- cargo `target/`, Elixir `_build/`, Swift `.build/` -- wherever it finds them. A project's own clean scopes to what that project's own build produced and never re-sweeps the built-in's trees. So a project clean that runs an unscoped `cargo clean` is outside its boundary, and that can be seen as a violation, not missed as an omission. Measured in one consuming project: unscoped, that one command took 71090 files and 31.9GiB, against 11146 files and 1001MiB scoped.
+**Where the built-in ends and a project's own clean begins** (issue 0035). The built-in owns the language artefact trees it names -- cargo `target/`, Elixir `_build/`, Swift `.build/` -- wherever it finds them. A project's own clean scopes to what that project's own build produced and never re-sweeps the built-in's trees. So a project clean that runs an unscoped `cargo clean` is outside its boundary, and that can be seen as a violation, not missed as an omission.
 
 ## Constraints, stated up front
 
 - **On Windows, WSL 2 is the prerequisite, and there is no native port** ([On Windows](#on-windows-wsl-2-and-nothing-native)). In a project that carries `intent/`, `check all` refuses at the critic gate there until Intent's Linux binary is installed.
-- **bash >= 5.** `lib/helpers` checks the interpreter of every process that loads it -- the dispatcher and every built-in handler -- and the dispatcher also checks the bash PATH resolves, since that is the one `#!/usr/bin/env bash` handlers run on. Anything older is refused with a `brew install bash, or apt-get install bash` remediation. macOS ships `/bin/bash` 3.2.57, so on a stock Mac you need Homebrew's bash -- that refusal is deliberate. Devbin once targeted 3.2, and the floor was inverted to point at the bash its projects actually run (issue 0022).
-- **No dependencies beyond bash and awk.** In particular **no `yq`**: the config reader is a single awk pass over a restricted YAML subset, so devbin needs nothing else installed. An optional YAML backend was designed and then rejected -- two implementations of "read the config" is a Highlander breach, and the second one was unreachable anyway, because the validator rejects everything the first could not parse.
-- **The YAML subset is enforced, not merely expected.** Two-space indent, nested maps, scalar sequences, comments, quoted scalars. No tabs, no anchors, no block scalars, no flow collections, no sequences of maps. A file outside the subset is refused with the file and line, rather than half-read.
+- **bash >= 5.** `lib/helpers` checks the interpreter of every process that loads it -- the dispatcher and every built-in handler -- and the dispatcher also checks the bash PATH resolves, since that is the one `#!/usr/bin/env bash` handlers run on. Anything older is refused. Where a bash >= 5 is on the machine, the refusal names it and the PATH that finds it; otherwise it gives a `brew install bash, or apt-get install bash` remediation. macOS ships `/bin/bash` 3.2.57, so on a stock Mac you need Homebrew's bash -- that refusal is deliberate.
+- **The config reader needs nothing beyond bash and awk.** In particular **no `yq`**: it is an awk parser over a restricted YAML subset, so reading the config needs nothing else installed. A verb that drives a tool, eg git, jq or gh, needs that tool.
+- **The YAML subset is enforced, not merely expected.** Two-space indent, nested maps, scalar sequences, comments, quoted scalars. No tabs, no block scalars, no sequences of maps, and no anchors or flow collections as a key's value. A file outside the subset is refused with the file and line, rather than half-read. A list item is not checked for anchors or flow collections: `- [a, b]` is read as the text `[a, b]`.
 - **`run:` is split into words and never `eval`'d, and every word is a glob pattern.** Word splitting is wanted, and so is matching `bats opt/*/test` against the directory the command runs from; re-interpreting quotes and redirections out of a config file is not. A command line that needs real quoting needs a handler -- and that is the declarative boundary in one sentence.
 
 ## For the maintainer of a dev checkout
@@ -315,9 +313,9 @@ $HOMEBREW_PREFIX/opt/devbin   brew   the formula, published from a release tag
 
 The dev checkout is the bleeding edge. The opt publish is a working copy of it, which keeps what works apart from what is mid-development, and the maintainer's own projects can vendor from it to try a build before it is released. The brew formula is the one publish to prod: what users install, and what every project seeds from. ("opt" names the tier; Homebrew's own `opt/` path, on the brew line, is a different thing.)
 
-A project once vendored straight out of the working tree devbin is edited in. That tree can be dirty, and five of thirteen projects were running bytes stamped `+dirty -- THESE BYTES MATCH NO COMMIT` -- two of them vendored ten minutes apart from the same dirty tree, carrying byte-identical provenance over three differing files. That is why the opt tier exists, and why a publish refuses a dirty tree.
+A publish refuses a dirty tree, and that is why the opt tier exists: bytes vendored from a dirty working tree are stamped `+dirty -- THESE BYTES MATCH NO COMMIT`, and two vendorings of one dirty tree can carry the same provenance over different files.
 
-**The opt location is configuration, not devbin's.** It comes from `install.prefix` in devbin's own `bin/.devbin/config.yaml`, and there is no built-in default: `install` and `use opt` refuse by name when the key is unset rather than guess a directory under `$HOME`. `install` takes `--prefix <dir>` for a single run, but only in its PUBLISH mode -- inside devbin's own source tree. Passing it to a vendoring run is refused by name rather than ignored, because silently discarding it would publish to the configured location while the operator believed they had redirected it. See `docs/configuration.md`.
+**The opt location is configuration, not devbin's.** It comes from `install.prefix` in devbin's own `bin/.devbin/config.yaml`, and there is no built-in default: `install` and `use opt` refuse by name when the key is unset rather than guess a directory under `$HOME`. `install` takes `--prefix <dir>` for a single run, but only when it publishes: inside devbin's own source tree, or in a project that declares its own tool. Passing it to a vendoring run is refused by name rather than ignored, because silently discarding it would publish to the configured location while the operator believed they had redirected it. See `docs/configuration.md`.
 
 ```zsh
 cd <checkout>
@@ -326,9 +324,9 @@ bin/devbin install --force  # replace the opt install, the one way to re-publish
 bin/devbin use opt          # this machine runs opt (or: use dev, use brew)
 ```
 
-An install is a project-shaped tree with the **project half missing** -- no `config.yaml`, no `cmd/`, no `help/` -- so `bin/devbin` refuses to start in it and it can only be vendored FROM. That refusal is structural rather than a check anyone can disable.
+An install is a project-shaped tree with the **project half missing** -- no `config.yaml`, no `cmd/`, no `help/` -- so `bin/devbin` refuses every project verb in it, and it can only be vendored FROM. Only `install`, `shell-init`, `use`, help and the version forms run there. That refusal is structural rather than a check anyone can disable.
 
-**Which tree the machine runs is `devbin use`'s alone** (`bin/devbin help use`). It keeps one link, `~/.local/bin/devbin`: `use dev` and `use opt` point it at the checkout or its opt install, and `use brew` removes it, so no link means brew. Every project on the machine reads the same switch for its next upgrade -- `DEVBIN_INSTALL_PREFIX`, else the tree the link leads to, else the brew install -- so a publish to opt moves nothing until `use opt` says so, and installing the formula moves nothing while the link names another tree. `use dev` and `use opt` run in the checkout, which knows where it is and its `install.prefix`. A project's own `bin/devbin` does not offer `use` at all: the switch is thrown from devbin itself, so a project's copy refuses it, naming `devbin use`. A bare `use`, and `doctor`, fail when `~/.local/bin` is not ahead of Homebrew's bin on PATH.
+**Which tree the machine runs is `devbin use`'s alone** (`bin/devbin help use`). It keeps one link, `~/.local/bin/devbin`: `use dev` and `use opt` point it at the checkout or its opt install, and `use brew` removes it, so no link means brew. Every project on the machine reads the same switch for its next upgrade -- `DEVBIN_INSTALL_PREFIX`, else the tree the link leads to, else the brew install -- so a publish to opt moves nothing until `use opt` says so, and installing the formula moves nothing while the link names another tree. `use dev` and `use opt` run in the checkout, which knows where it is and its `install.prefix`. A project's own `bin/devbin` does not offer devbin's `use`: the switch is thrown from devbin itself, so a project's copy refuses it, naming `devbin use`. A project that declares its own tool is offered `use`, which switches only that tool's links. A bare `use`, and `doctor`, fail when `~/.local/bin` is not ahead of Homebrew's bin on PATH.
 
 **Do not point the switch at the dev checkout unless you mean to.** `use dev` makes every project's next `upgrade` vendor whatever that tree is mid-development, and the project records `checkout`, with `+dirty` when the tree is dirty, so its manifest says so. `DEVBIN_SOURCE` places no project's source: it names a checkout that `dvb` falls back to when its walk finds nothing (`bin/devbin help shell-init`). Installing into a devbin source tree is refused outright: it runs `lib/` in place, so a vendored copy would sit ahead of the working tree in the search order and every edit would stop taking effect with the suite still green against the copy.
 

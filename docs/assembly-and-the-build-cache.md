@@ -8,15 +8,6 @@ devbin keeps a registry of built artefacts on each machine, keyed on the inputs 
 
 A release builds the same thing more than once. A cut that goes red on one leg is run again after the fix, and the fix usually leaves the build's inputs as they were, so the second cut builds the same bytes again. A pre-push hook that clones the tree cold and builds it rebuilds what the working tree has already built. A deploy that compiles a production release twice compiles the same inputs twice.
 
-When the cache was designed, the release records showed these repeats:
-
-| Project                         | What repeats                                                                   |
-| ------------------------------- | ------------------------------------------------------------------------------ |
-| a Rust command-line tool        | twelve release-profile builds per release, ten of them cold on CI runners      |
-| Intent                          | its pair of binaries built at the tag, then again in its pre-push hook's clone |
-| an Elixir application           | its production release compiled twice per deploy                               |
-| a macOS app with a Rust backend | three cargo builds and one `xcodebuild` per cut                                |
-
 The cache's answer is the one that CI, CD and assembly tools use: record each artefact against the hash of what it was built from, and when that hash comes round again, pull the artefact by its hash instead of rebuilding it.
 
 devbin itself builds nothing. Its suite is a gate, and the gates' seal (`tmp/release/<stamp>.GATES.{out,errors}`) is that gate's cache: a sealed green that stands for the release commit is not run again.
@@ -122,14 +113,14 @@ bin/devbin cache rm <key>
 bin/devbin cache gc [--keep <n>]
 ```
 
-| Verb   | What it does                                                        | What it prints                                                           |
-| ------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `key`  | the artefact's key at the commit, HEAD by default                   | the key, one line                                                        |
-| `get`  | writes the artefact to its path from the registry                   | `pulled <artefact> <key>` at exit 0; `absent <artefact> <key>` at exit 1 |
-| `put`  | records the artefact at its path under HEAD's key                   | `put <artefact> <key>`                                                   |
-| `list` | the registry's entries for this project, or for one artefact        | `<artefact> <key>` for each                                              |
-| `rm`   | removes the entries under one whole key                             | `removed <artefact> <key>` for each, or `absent <key>`                   |
-| `gc`   | keeps the newest entries per artefact and every key a release names | `removed <artefact> <key>` for each, then `freed <n> bytes`              |
+| Verb   | What it does                                                                      | What it prints                                                           |
+| ------ | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `key`  | the artefact's key at the commit, HEAD by default                                 | the key, one line                                                        |
+| `get`  | writes the artefact to its path from the registry                                 | `pulled <artefact> <key>` at exit 0; `absent <artefact> <key>` at exit 1 |
+| `put`  | records the artefact at its path under HEAD's key                                 | `put <artefact> <key>`                                                   |
+| `list` | the registry's entries for this project, or for one artefact                      | `<artefact> <key>` for each                                              |
+| `rm`   | removes the entries under one whole key                                           | `removed <artefact> <key>` for each, or `absent <key>`                   |
+| `gc`   | keeps the newest entries per artefact and every key the newest release seal names | `removed <artefact> <key>` for each, then `freed <n> bytes`              |
 
 `--commit` takes a full commit sha. With it, `key` and `get` read the inputs at that commit, so a dirty working tree does not stop them.
 
@@ -150,11 +141,12 @@ The verb stays devbin's own. A project command named `cache` would answer in its
 **The macOS stage** calls the cache itself. Where the app is the `build:` artefact whose `path` is `macos.app`'s, `app-sign` pulls it from the cache at the release commit and runs no `macos.build`; on a miss it builds the app and puts it. Its output reads:
 
 ```
-pulling app from the artefact cache at <sha12>
+==> pulling app from the artefact cache at <sha12>
+pulled app <key>
   pulled, so macos.build is not run
 ```
 
-A stage whose app is no `build:` artefact builds it uncached, as it did before the cache, and `bin/devbin doctor` notes that.
+A stage whose app is no `build:` artefact builds it uncached, and `bin/devbin doctor` notes that.
 
 **The RELEASE seal names the keys.** Once every leg is green, the cut writes one `cache<TAB><artefact><TAB><key>` line into its RELEASE seal for each artefact the `build:` block declares: its key at the release commit, read through `cache key --commit`. The cut prints one line for each:
 
@@ -162,9 +154,9 @@ A stage whose app is no `build:` artefact builds it uncached, as it did before t
 release: cache: app <key> at <sha12>
 ```
 
-A key that cannot be read is said with why, and the seal names no key for that artefact. These lines are what `gc` reads to keep every key the newest release used.
+A key that cannot be read is said with why, and the seal names no key for that artefact. These lines are what `gc` reads to keep every key the newest release seal names.
 
-**Where it saves a build.** A `put` records under HEAD's key only when every input is committed, so a build made before a release's stamp is committed records nothing. The first build a cut can record is the one at the release commit. A build at the tag reads the release commit's tree, so it pulls. A re-cut after a red leg whose fix touched no input pulls. A second leg on the same inputs, on the same machine, pulls.
+**Where it saves a build.** A `put` records under HEAD's key only when every input is committed. So where the release's stamp writes into an artefact's inputs, a build made before the stamp is committed records nothing, and the first build a cut can record for it is the one at the release commit. A build at the tag reads the release commit's tree, so it pulls. A re-cut after a red leg whose fix touched no input pulls. A second leg on the same inputs, on the same machine, pulls.
 
 **Where it never saves one.** An artefact whose inputs carry a per-cut stamp, such as a version file the release writes into every artefact's inputs, never hits across cuts, by design: its inputs change every cut. Its saving, if any, is inside one cut and in the development loop.
 
@@ -185,7 +177,7 @@ The registry is a cache: its absence costs a build and nothing else, and the lin
 
 - the root it resolves, marked `declared` or `default`, and whether it is writable or will be made at the first `put`;
 - a note when the root cannot be used, naming why, since every build then runs and none is recorded;
-- a failure for each input path the block declares that HEAD does not hold, since no key can read it;
+- one failure that names each input path the block declares that HEAD does not hold, since no key can read it;
 - for the macOS stage, a pass naming the artefact it pulls and puts, or a note that it builds its app uncached.
 
 So a wrong root or a mistyped input is read before a cut, not in one.
@@ -196,12 +188,6 @@ What an entry keeps is under [the registry](#the-registry), and what a pull veri
 
 - A `get` that cannot write the artefact at its path refuses, removing what it wrote of it, rather than answer absent.
 - The registry is the user's own, never shared between users or machines.
-
-## What it has removed so far
-
-No project has adopted the cache yet. Each project's adoption, and the count of builds per release before and after it, is that project's own work.
-
-One project was measured before the cache was built: the macOS app with a Rust backend in the table above. Its three cargo builds are three distinct artefacts, plus the app, each built once per cut after the legs are green, and its release stamp writes the version into every one's inputs. So no cut could pull an earlier cut's artefact, and the one repeat on the same key inside a cut is already a cargo no-op. The cache removes no build from that project's cut. What it could still save there is the development loop's cold restore.
 
 ## Limits
 

@@ -6,12 +6,12 @@ The terse DO / NEVER contract for working in this repository. `AGENTS.md` is the
 
 - **DO** keep one implementation per concern (`IN-AG-HIGHLANDER-001`); search for an existing one before creating anything.
 - **DO** keep the core pure; put I/O, time and external calls in the boundary coordinators (`IN-AG-PFIC-001`).
-- **DO** keep coordinators to parse -> call -> render (`IN-AG-THIN-COORD-001`): `bin/devbin` decides nothing, `lib/resolve` does.
+- **DO** keep coordinators to parse -> call -> render (`IN-AG-THIN-COORD-001`): `bin/devbin` decides only the guards that run before `lib/resolve` loads (the wrong-tree and install-tree refusals), and `lib/resolve` decides the route.
 - **DO** surface every failure (`IN-AG-NO-SILENT-001`); never rescue and swallow.
 
 ## Shell
 
-- **DO** require bash >= 5; the dispatcher refuses older (macOS `/bin/bash` 3.2 included) with a `brew install bash` remediation. Keep the guard block itself parseable by bash 3.2.
+- **DO** require bash >= 5; the dispatcher refuses older (macOS `/bin/bash` 3.2 included), naming the PATH that finds a bash at the floor where there is one, else `brew install bash`. Keep the guard block itself parseable by bash 3.2.
 - **DO** leave existing 3.2 idioms (guarded array expansion, case over associative array) alone; modernise opportunistically, never in bulk.
 - **NEVER** use `${var//pat/repl}` when the replacement may contain `&` unless you mean the matched text: 5.2 reads `&` as the match, 5.0/5.1 literally. Split on the literal placeholder instead (`_subst` in `lib/cmd/new`).
 - **NEVER** use an unquoted heredoc delimiter (`<<EOF`) when the body can contain backticks or `$(...)`; quote it (`<<'EOF'`). The unquoted form runs each span and silently substitutes its output.
@@ -25,23 +25,23 @@ The terse DO / NEVER contract for working in this repository. `AGENTS.md` is the
 
 ## Config and the declarative boundary
 
-- **NEVER** `eval` anything from config. `run:` is split into words by `run_words`, each word a glob matched where the command runs.
+- **NEVER** `eval` anything from config but `project.referent`, which the dispatcher evals by a recorded decision. `run:` is split into words by `run_words`, each word a glob matched where the command runs.
 - **NEVER** let the YAML grow control flow; a declaration that needs an `if` is a script.
 - **DO** name FACTS in config and keep RECIPES in the library (`version_from` names a file; the library reads it). No project config contains a regular expression.
-- **NEVER** add a second config reader or a `yq` dependency: one awk pass, no dependencies.
+- **NEVER** add a second config reader or a `yq` dependency: one awk parser, no dependencies.
 - **DO** put config AHEAD of anything devbin ships, at every level.
 - **DO** add a schema path in `_cfg_path_known` for every key a reader consults; validation must never reject correct config.
 
 ## The seam
 
 - **DO** treat `bin/devbin` plus everything under `bin/.devbin/lib/` as devbin's, replaced wholesale.
-- **NEVER** write `config.yaml`, `cmd/` or `help/` from install or upgrade; they are the project's.
+- **NEVER** overwrite `config.yaml`, `cmd/` or `help/` from install or upgrade; they are the project's. Install writes a starter `config.yaml` only where there is none, and makes `cmd/` and `help/` empty.
 - **DO** enumerate devbin's half only through `vendored_paths`; there is no second list.
 - **NEVER** name, in anything `vendored_paths` lists, a project that uses devbin, a person or session, another repository's issue or CI run, any commit, or a machine-local path. State lessons generically and use the placeholder project `demo`. devbin's own issue numbers and the owner's copyright line stay.
 - **NEVER** keep a list of devbin's consumers, in its runtime or its tests. `tests/unit/neutral.bats` refuses by shape; a name in prose, the manifest, git history and a phrase split across two lines are review's to catch.
 - **DO** ask `vendor` whether a tree is level with its SOURCE and `doctor` whether it is level with what was INSTALLED; a green from one says nothing about the other.
 - **NEVER** read convergence from `upgrade`'s exit status (it stays 0 over refused files); `vendor`'s status answers "is this level".
-- **DO** ask the dirty question of devbin's half, never of the whole tree; `source_commit_of` stamps the vendored bytes.
+- **DO** ask the stamp's dirty question of devbin's half (`source_commit_of` stamps the vendored bytes); the publish gate asks it of the whole tree.
 - **NEVER** shadow a built-in command when an `options:` row would express the difference; a shadow displaces the whole built-in option set. Declare the verb under `commands.<cmd>.options.<verb>` with `run:`, pointing at a project script for real logic.
 - **DO** read `doctor`'s `SUPPORTED overrides` note as a question, not a clearance.
 - **NEVER** build a `git status` pathspec from a `find`-derived file list (a deleted, uncommitted file drops out and reads clean); point it at the directory.
@@ -50,7 +50,7 @@ The terse DO / NEVER contract for working in this repository. `AGENTS.md` is the
 ## Gates and false greens
 
 - **DO** treat a false green as worse than a failure.
-- **DO** make a gate that examines nothing FAIL (`check format` fails without its tool; `fmt` skips).
+- **DO** make a gate that examines nothing FAIL (`check format` fails without its tool; `fmt swift` and `fmt md` skip). `check critic` over `--staged` is the one exception, below.
 - **DO** report how many checks ran when a command's job is checking; fail a run that checked nothing.
 - **DO** ask of every success path what it actually verified; two correct steps can compose into a false green.
 - **DO** exit 1 from a bare command that needs an option; `-h` still exits 0.
@@ -65,7 +65,7 @@ The terse DO / NEVER contract for working in this repository. `AGENTS.md` is the
 - **DO** invoke devbin as `bin/devbin` in every project.
 - **NEVER** create `bin/<project>` as a symlink to devbin (retired; it shadows the project's own binary). A `bin/<alias>` pointing direct at `devbin` is a permitted project choice; devbin creates neither.
 - **DO** use `DEVBIN_NAME` for the project's IDENTITY and `DEVBIN_INVOKE` for what you TYPE.
-- **DO** set `DEVBIN_SOURCE` to a devbin checkout when bootstrapping a project that has no devbin yet; `dvb` otherwise walks up from `$PWD` and finally falls back to the machine install. Through the fallback only `install`, `shell-init` and the version queries run.
+- **DO** set `DEVBIN_SOURCE` to a devbin checkout when bootstrapping a project that has no devbin yet; `dvb` otherwise walks up from `$PWD` and finally falls back to the machine install. Through the fallback only `install`, `shell-init`, `use` and the version queries run, and from the machine install its help too.
 - **NEVER** reimplement the cwd guard's exemption list in the shell function.
 - **DO** install the shortcut with `eval "$(bin/devbin shell-init zsh)"` (or `bash`) in your shell config, never in a project. **NEVER** hand-copy the function body.
 
@@ -92,7 +92,7 @@ The terse DO / NEVER contract for working in this repository. `AGENTS.md` is the
 - **DO** ask what ELSE would make a test green, and what else would make it red.
 - **DO** see a new test go red against a deliberately broken input before accepting it.
 - **DO** prove a mutant APPLIED (print the changed line and neighbours), PARSES (`bash -n`) and that its target arm is among the reds before reading its result.
-- **DO** add `helpers.bats` and `contract.bats` to every targeted run; their tree scans are picked up by no command selection.
+- **DO** run `bin/devbin test scans` beside every targeted run; it runs every test tagged `treescan`, whatever file holds it.
 - **NEVER** pass `--` to `assert_output_contains`, `refute_output_contains` or the `_matches` pair; it becomes the pattern.
 - **NEVER** put backticks or `$(...)` in a test name; bats evaluates every description.
 - **NEVER** read a test run by grepping `^ok` / `^not ok`; `grep -vE "^(ok |not ok |1\.\.|#)"` should print nothing.

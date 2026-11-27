@@ -6,26 +6,28 @@ This page is the **index**: what exists, what it means, what happens if you leav
 
 Only **`project.name`** is required. Everything else has a default or is simply absent.
 
-A test holds this page to the schema: every key the validator accepts must appear here, and every key here must be one the validator accepts. The two cannot drift apart without the suite going red.
+A test holds this page to the schema: every key name the validator accepts appears in a row or a heading here, and every dotted path in a row here is one the validator accepts.
 
 ## The grammar
 
 Config is YAML, but a **restricted subset**, and the restriction is enforced rather than assumed. A file outside the subset is refused with the file and the line, not half-read.
 
-| Supported                           | Refused                         |
-| ----------------------------------- | ------------------------------- |
-| two-space indent                    | tabs, odd indent, jumped indent |
-| nested maps, `key: value`           | duplicate keys                  |
-| scalar sequences (`- item`)         | sequences of maps               |
-| `#` comments, whole-line and inline | anchors and aliases (`&`, `*`)  |
-| quoted scalars, blank lines, `---`  | block scalars                   |
-|                                     | flow collections (`{`, `[`)     |
+| Supported                           | Refused                                         |
+| ----------------------------------- | ----------------------------------------------- |
+| two-space indent                    | tabs, odd indent, jumped indent                 |
+| nested maps, `key: value`           | duplicate keys                                  |
+| scalar sequences (`- item`)         | sequences of maps                               |
+| `#` comments, whole-line and inline | anchors and aliases (`&`, `*`) as a key's value |
+| quoted scalars, blank lines, `---`  | block scalars                                   |
+|                                     | flow collections (`{`, `[`) as a key's value    |
+
+A list item is not checked for anchors or flow collections: `- [a, b]` is read as the text `[a, b]`.
 
 **A list item quoted whole is a scalar, whatever it holds**: `- "Signed-off-by: A B <a@b>"` is one line of text, where `- key: value` and `- "key": "value"` are maps, and refused.
 
 **Unknown keys are an error, not a warning.** A misspelled `sumary:` that is quietly ignored presents much later as "my help text does not appear", in a place that gives no hint about the typo.
 
-**A boolean key takes `true`, `yes` or `1`, or `false`, `no` or `0`, and nothing else** (issue 0080). Those are the words devbin reads a yes or a no from, and `doctor` fails on any other value, naming the key and the value. **Run `doctor` after editing config: the command you run does not validate it** -- the `release` verbs are the one exception, and validate the whole file before they read their block. `enabled: off` is neither word, so a built-in stays active and an opt-in stays off, and only `doctor` says so -- the same as a misspelled key. `log:` and `options.<name>.value` are not boolean keys, and take other words.
+**A boolean key takes `true`, `yes` or `1`, or `false`, `no` or `0`, and nothing else** (issue 0080). Those are the words devbin reads a yes or a no from, and `doctor` fails on any other value, naming the key and the value. **Run `doctor` after editing config: the command you run does not validate it** -- the `release`, `macos`, `cache` and `ci-state` verbs are the exceptions, and validate the whole file before they read it. `enabled: off` is neither word, so a built-in stays active and an opt-in stays off, and only `doctor` and those verbs say so -- the same as a misspelled key. `log:` and `options.<name>.value` are not boolean keys, and take other words.
 
 The subset exists because there is exactly one reader -- a single awk pass, no `yq`, no dependency -- and because keeping every project's config in the same shape is worth more than admitting YAML nobody should be writing by hand.
 
@@ -49,9 +51,9 @@ Who this project is. The only required section.
 
 `cargo_root` is for a project whose cargo workspace sits below its root, eg `cargo_root: native` (issue 0225). devbin runs its catalogue's cargo lines there: `fmt rust`, the rust arm of `check format`, `check clippy`, `test rust`, and `dormancy`'s legs. Each seal's invocation block then names the directory in an `at:` line, which it writes only for a run away from the project root. `check targetdir` takes the shared tree to be the `target` beside that `Cargo.toml`. A project's own `run:` for any of these still runs at the project root, as every `run:` does. The value is relative to the project root, and one naming no directory, or a directory holding no `Cargo.toml`, is refused, naming the path: by `bin/devbin doctor`'s config check, and by each cargo line before cargo runs. With the key absent, every one of these runs at the project root.
 
-`cli_task` exists because two projects broke the `<name>.cli` derivation the first projects all ride: `<family>_cli` declares `Mix.Tasks.<Family>.Cli` (`mix <family>.cli`) and `<family>_config` declares `mix <family>.config`. For `cli` alone a `commands.cli.run:` override would do. `repl` is why this is config instead: its built-in carries the rlwrap history and completions wiring, and overriding the command line to change one word throws all of that away. A difference of one **name** should not cost a project the handler.
+`cli_task` exists for a project whose task name breaks the `<name>.cli` derivation: `<family>_cli` declares `Mix.Tasks.<Family>.Cli` (`mix <family>.cli`), and `<family>_config` declares `mix <family>.config`. For `cli` alone a `commands.cli.run:` override would do. `repl` is why this is config instead: its built-in carries the rlwrap history and completions wiring, and overriding the command line to change one word throws all of that away. A difference of one **name** should not cost a project the handler.
 
-`referent` names a **command**, and devbin never parses its answer. It is `eval`'d once per invocation from the project root, with its stderr discarded and `GIT_OPTIONAL_LOCKS=0` in its environment (issue 0094): a referent is a read, and a `git status` in one otherwise takes git's optional index lock on every devbin command. A referent that sets `GIT_OPTIONAL_LOCKS=1` itself gets the lock back, and the setting never reaches a gate. Whatever it prints is echoed verbatim beneath every verdict as `measured: <answer>`, and written into each sealed log. devbin cannot tell a commit sha from a hostname from a build number, and keeping it that way is the whole design: the project knows what identifies one of its runs, devbin knows only that a reader needs to see it. It exists because a human reading `FAILED: rust` in a summary had no way to know which tree it described. A declared referent that fails or prints nothing reports `REFERENT UNAVAILABLE` rather than falling silent -- an unlabelled verdict and a broken labeller must not look alike.
+`referent` names a **command**, and devbin never parses its answer. It is `eval`'d once per invocation from the project root, with its stderr discarded and `GIT_OPTIONAL_LOCKS=0` in its environment (issue 0094): a referent is a read, and a `git status` in one otherwise takes git's optional index lock on every devbin command. A referent that sets `GIT_OPTIONAL_LOCKS=1` itself gets the lock back, and the setting never reaches a gate. Whatever it prints is echoed verbatim beneath every verdict as `measured: <answer>`, and written into each sealed log. devbin cannot tell a commit sha from a hostname from a build number, and keeping it that way is the whole design: the project knows what identifies one of its runs, devbin knows only that a reader needs to see it. It exists so that a reader of `FAILED: rust` in a summary knows which tree it describes. A declared referent that fails or prints nothing reports `REFERENT UNAVAILABLE` rather than falling silent -- an unlabelled verdict and a broken labeller must not look alike.
 
 `version_from` and `version_sidecars` name **files only**, never how to parse or rewrite them. Devbin knows the recipe for a `VERSION`, a `mix.exs`, a `Cargo.toml`, a `package.json` and an `Info.plist`. That split is deliberate: the config states a fact about the project, the library holds the recipe, and no project's config ever contains a regular expression.
 
@@ -114,7 +116,7 @@ Note that `^` on a `0.x` version admits `0.5.0` for a declared `^0.4.0`, which i
 
 **`install.switch` and `install.publish` let a tool keep a switch and a publish of its own** (issue 0332): each names the tool's own command, which devbin names in its refusals and remedies and never runs. In the tool's checkout `bin/devbin use` refuses, bare or with a tree, naming `install.switch`'s command, and `bin/devbin install` refuses its opt publish, naming `install.publish`'s; `--managed-by brew`, the formula's publish into a keg, and `--into`, the vendor, are not refused. The formula, doctor's rows and the link set still read `install.links`, and the command a key names writes the links and the opt tree where `docs/dev-opt-brew.md` puts them, the opt manifest with its `line`. A key declared with no words is refused.
 
-**There is no default, and that is deliberate.** `lib/install` once carried a path under `$HOME` -- one operator's directory layout, written into the runtime every project vendors. A publish from any of them would have gone to a path named after somebody else's home directory and would have SUCCEEDED, because a publish to the wrong place is indistinguishable from a publish to the right one. `install` and `devbin use opt` now refuse by name when the key is unset, and `install` takes `--prefix <dir>` for a single run.
+**There is no default, and that is deliberate.** A default would be one operator's directory layout, written into the runtime every project vendors, and a publish to the wrong place is indistinguishable from a publish to the right one. `install` and `devbin use opt` refuse by name when the key is unset, and `install` takes `--prefix <dir>` for a single run.
 
 **This key is the maintainer's: it names the opt tier of a dev checkout** (the README's [For the maintainer of a dev checkout](../README.md#for-the-maintainer-of-a-dev-checkout)). A user installs devbin from brew and never sets it. **A project's `install.prefix` is its own tool's** (issue 0326): devbin's own checkout's names devbin's opt tier, and there alone `shell-init` writes it into `dvb` as the machine-install fallback. Another project's names that project's tool's opt tier, which is no devbin install, so `shell-init` writes no fallback from it.
 
@@ -184,7 +186,7 @@ A value outside `values:` is refused, naming what was expected. Omit `values:` t
 
 An `export` name is held to the rule `project.root_var` is: when the option is parsed, a name that is not a shell variable name, that the shell needs, or that devbin exports to handlers itself is refused by name (issue 0081).
 
-This section replaces what the source projects wrote as `_set_env`, `_set_bin` and `_set_fidelity` -- three copies of one function differing only in the answers, whose accepted-value lists had already drifted apart. A project adds `--fidelity` by declaring it, not by writing bash.
+A project adds `--fidelity` by declaring it, not by writing bash.
 
 ## `commands`
 
@@ -208,11 +210,11 @@ Enables and parameterises built-ins, and registers project handlers that need so
 
 `restore` is read by `fullcycle` and by nothing else. That verb is destructive -- `clean rust` removes `target/` including `release/`, and `cargo test` builds debug binaries only -- so on a machine where something on PATH resolves through `target/release/`, the cycle darkens it. The verb watches for exactly that and reports what it could not put back; with `restore` declared it puts it back first.
 
-**Devbin will not guess the command, and that is a measurement rather than caution.** It shipped for one day running `cargo build --release` at the project root, which is correct on most cargo projects and is a new unguarded entrance on at least one: a project whose release path is guarded because several processes invoke the artefact, and where a build from a dirty tree poisons it for all of them. That project's own guard named the line on the first commit that carried it. `build release` is not a portable spelling either -- on that same project the arm is interactive and pushes, so guessing a verb by name would turn a restore into a publish.
+**Devbin will not guess the command.** `cargo build --release` at the project root is correct on most cargo projects, and is an unguarded entrance on a project whose release path is guarded. `build release` is not a portable spelling either: on some projects that arm is interactive and pushes, so guessing a verb by name can turn a restore into a publish.
 
 Undeclared, the restore phase does not run and the cycle says so. That is the fail-closed direction, and it is the rule `fullcycle` already applies when a project declares no build verb at all: it refuses rather than proceeding without one.
 
-`enabled` defaults differ by what the command is: a language-scoped built-in is offered when its language is declared, an opt-in built-in (`precommit`, `publish`, `macos`, `content`, `which`, `release`) is absent until set to `true` -- or until config gives it a `run:` or options of its own, or `cmd/` a handler of its name -- and a project handler is offered by existing. **`enabled: false` wins over everything**, including a project handler of the same name.
+`enabled` defaults differ by what the command is: a language-scoped built-in is offered when its language is declared, an opt-in built-in (`precommit`, `publish`, `macos`, `formula`, `content`, `which`, `release`) is absent until set to `true` -- or until config gives it a `run:` or options of its own, or `cmd/` a handler of its name -- and a project handler is offered by existing. **`enabled: false` wins over everything**, including a project handler of the same name.
 
 ### Option level
 
@@ -477,7 +479,7 @@ A project that declares `release.publish.url` publishes each release as a snapsh
 
 ## `macos`
 
-The built-in `macos` (issue 0226): a macOS app's release, on macOS only. It signs a staged copy of the app with the Developer ID and the hardened runtime, notarises and staples it, checks it as a download meets it, and attaches it zipped to the release at its tag through `release attach --from`. **`macos` is opt-in, like `release`**: enable it with `commands.macos.enabled: true`. A project's own `macos` handler or `run:` still wins. The notary credentials live in the login keychain under `keychain`'s prefix and nowhere else; no key here holds one.
+The built-in `macos` (issue 0226): a macOS app's release, on macOS only. It signs a staged copy of the app with the Developer ID and the hardened runtime, notarises and staples it, checks it as a download meets it, and attaches it zipped to the release at its tag through `release attach --from`. **`macos` is opt-in, like `release`**: enable it with `commands.macos.enabled: true`. A project's own `macos` handler or `run:` still wins. The notary credentials live in the login keychain, in the notarytool profile that `notary_profile` names, and nowhere else; no key here holds one.
 
 | Key                                   | Type          | Default                        | Meaning                                                                                          |
 | ------------------------------------- | ------------- | ------------------------------ | ------------------------------------------------------------------------------------------------ |
@@ -535,7 +537,7 @@ The built-in `formula` (issue 0227): the project's Homebrew formula, rendered fr
 | `formula.cask`     | path              | none: no cask                                                    | either mode: a cask template, from the project root, pushed beside the formula                      |
 | `formula.bash`     | `true` \| `false` | `false`: a link                                                  | true: on macOS each of the tool's links is an env script that puts the formula's bash first on PATH |
 
-The template is the project's own Ruby, so its desc, caveats, any service block and the lines it keeps after `@@INSTALL@@` stay its own, and devbin fills its placeholders from git and the release, never from a person. In source mode it holds exactly one `@@TAG@@` and one `@@REVISION@@`, and a cask beside it holds `@@VERSION@@` and one `@@SHA256:<name>@@` for each file it downloads, read from the release's sums file (issue Iab013e2). In assets mode it holds `@@VERSION@@` and one `@@SHA256:<asset>@@` for each asset in `assets`, read from the release's sums file by its exact name. In both it holds exactly one `@@INSTALL@@`, the install body devbin generates (issue 0326): from a tag's checkout, which holds `bin/devbin`, the core's publish, `bin/devbin install --prefix libexec --managed-by brew`; from the release's assets, each packed rooted at the install root, everything the stage holds into libexec, 0755 on each link at `bin/<name>`, and the manifest in T3's form with the keg's version line; then each link of the tool's set, `install.links`, into bin, or with `bash: true`, on macOS an env script under the formula's bash. Lines the template keeps in its install go after `@@INSTALL@@`, and render refuses a template whose install runs anything before it, blank and comment lines aside, naming the line, since no template lays its assets out by hand (issue 0329); `@@FINISH@@` and `formula.bin` are retired. A key the mode does not read is refused, and so is a placeholder left after filling. `publish` names the tap and asks before it pushes, with no `--yes`; as a cut's `after:` step it takes the yes given at the cut's confirm prompt, and under the cut's `--yes` it publishes nothing. `bin/devbin help formula` has every refusal.
+The template is the project's own Ruby, so its desc, caveats, any service block and the lines it keeps after `@@INSTALL@@` stay its own, and devbin fills its placeholders from git and the release, never from a person. In source mode it holds exactly one `@@TAG@@` and one `@@REVISION@@`, and a cask beside it holds `@@VERSION@@` and one `@@SHA256:<name>@@` for each file it downloads, read from the release's sums file (issue Iab013e2). In assets mode it holds `@@VERSION@@` and one `@@SHA256:<asset>@@` for each asset in `assets`, read from the release's sums file by its exact name. In both it holds exactly one `@@INSTALL@@`, the install body devbin generates (issue 0326): from a tag's checkout, which holds `bin/devbin`, the core's publish, `bin/devbin install --prefix libexec --managed-by brew`; from the release's assets, each packed rooted at the install root, everything the stage holds into libexec, 0755 on each link at `bin/<name>`, and the manifest in T3's form with the keg's version line; then each link of the tool's set, `install.links`, into bin, or with `bash: true`, on macOS an env script under the formula's bash. Lines the template keeps in its install go after `@@INSTALL@@`, and render refuses a template whose install runs anything before it, blank and comment lines aside, naming the line, since no template lays its assets out by hand (issue 0329); `@@FINISH@@` and `formula.bin` are retired. A key the mode does not read is refused, and so is a placeholder left after filling. `publish` names the tap and asks before it pushes, with no `--yes`; as a cut's `after:` step it takes the yes the cut's confirm step was given, at its prompt or by `--yes`, and pushes without a second question. `bin/devbin help formula` has every refusal.
 
 ```yaml
 commands:
@@ -560,6 +562,13 @@ The built-in `worktrees` (issue 0245): a read-only report of each linked worktre
 
 A project whose main branch is not `main` sets `branch`. It is its own key, not `release.branch`: the branch work lands on and the branch a release is cut from differ wherever a project integrates on one and releases from another. A pattern in `banks` matches as `git for-each-ref` matches: `refs/bank` matches every ref beneath it, at any depth, and `refs/bank/*` one level only.
 
+```yaml
+worktrees:
+  branch: main
+  banks:
+    - refs/bank
+```
+
 ## `build`
 
 The built-in `cache` (ST0011 WP-16) keeps this machine's built artefacts under a key made from the inputs a build reads, so a build whose inputs did not change pulls what it built before. A project's `build` handler calls `bin/devbin cache get <artefact>` before it builds and `bin/devbin cache put <artefact>` after. `bin/devbin help cache` has the key, the registry and every answer.
@@ -575,13 +584,6 @@ Every path is relative to the project root and written once, as git names it. Wh
 
 The registry's root is `DEVBIN_CACHE_HOME`, an absolute path, or the XDG cache directory's `devbin` when it is unset or empty. A root that does not exist yet is an empty registry, made by the first `put`; one that cannot be used makes `get` and `put` refuse, saying so, and the build runs. `bin/devbin doctor` names the root it resolves in a project with a `build` block.
 
-```yaml
-worktrees:
-  branch: main
-  banks:
-    - refs/bank
-```
-
 ## What config deliberately cannot do
 
 **The YAML never grows control flow.** If a declaration needs an `if`, it is a script. This is a review gate on every change to devbin, not an aspiration -- the moment config can branch, it is a bad programming language with no debugger.
@@ -590,7 +592,7 @@ worktrees:
 
 **Each word is then matched in the directory the command runs from** -- the project root, or for `release.notes.run` the root it is answering about. A word holding `*`, `?` or `[...]` becomes one word per file it matches, and a word matching nothing is passed through exactly as written. So `run: bats opt/*/test` hands `bats` one directory per match, and **what the command runs depends on the files that are there when it runs**. This is bash's own pathname expansion, and devbin pins the options it happens under, so an inherited `SHELLOPTS` or `BASHOPTS` cannot change what a declared line runs. A pattern matching a dotfile must name the dot, as in any shell.
 
-**A `run:` with no words in it is refused, naming the key.** `run: "   "` and `run: ""` both hold no command, and before this they ran whatever was typed after the command as the command, at exit 0. `doctor` reports them, and the command refuses to run them. `doctor` holds these keys to this: `commands.<cmd>.run`, `commands.<cmd>.options.<opt>.run`, `commands.fullcycle.restore` and `release.notes.run`. The release block's other command lines -- each `derived:`, `gates:` and `after:` item, and `ci.query` -- are split and globbed the same way, and one with no words is refused by the cut at the step that runs it; `doctor` refuses them only when empty.
+**A `run:` with no words in it is refused, naming the key.** `run: "   "` and `run: ""` both hold no command. `doctor` reports them, and the command refuses to run them. `doctor` holds these keys to this: `commands.<cmd>.run`, `commands.<cmd>.options.<opt>.run`, `commands.fullcycle.restore`, `macos.build`, and the release block's command lines: `notes.run`, `ci.query`, and each `derived:`, `gates:` and `after:` item. The release block's lines are split and globbed the same way, and the cut also refuses one with no words at the step that runs it.
 
 **`-h` and `--help` never reach a declared option's `run:`** (issues 0356 and 0370). Anywhere on the command line of an option whose `run:` is the config's, the dispatcher answers them itself, before anything runs, at exit 0: a gate command (`check`, `clean`, `db`, `docs`, `fmt` and `test`) with its usage line, and any other command with what `help <command>` prints, since the option's summary is devbin's and a `run:` line cannot print one. A command-level `run:` and the project's own handler are still handed the flag, which they read themselves. The cost: a declared option's tool that takes `-h` or `--help` as a word of its own, eg a database client's `-h <host>`, no longer gets it from the command line. Write it into the `run:` line, or give the tool its long form.
 

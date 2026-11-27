@@ -34,13 +34,13 @@ One resolution order, applied at every level and at any depth:
 | 5     | the catalogue's command line (`lib/builtins`) | a built-in with one command line and no handler                                    |
 | 6     | -                                             | a command with options prints its usage, exit 1; otherwise exit 3, not implemented |
 
-A name that is not an active command here never reaches this table: the dispatcher refuses it first, exit 2, with a `help` hint. A config `handler:` counts as your handler, as a file in `cmd/` does, so it outranks a `run:` for the same command. A config `handler:` and a `run:` sit **above** the built-in devbin ships deliberately. Putting devbin's own handler first means a built-in silently swallows something your config plainly declared, which is a defect that has been fixed twice here already.
+A name that is not an active command here never reaches this table: the dispatcher refuses it first, at exit 2 (exit 6 for `use` in a project), and says why. A config `handler:` counts as your handler, as a file in `cmd/` does, so it outranks a `run:` for the same command. A config `handler:` and a `run:` sit **above** the built-in devbin ships deliberately. Putting devbin's own handler first means a built-in silently swallows something your config plainly declared.
 
-**Shadowing is total.** When your handler, or a command-level `run:`, takes over a built-in's name, the built-in's *option set* stops applying too -- only config-declared options remain. A project replacing `test` is saying its gates are different, so inheriting `mix|credo|rust` would synthesise an `all` that calls your handler with options it has never heard of. A `run:` line shadows the same way since issue 0128: until then `clean all` in a project whose `commands.clean.run` decided what was removed swept devbin's own arms. A config-declared option with no `run:` of its own is handed to the command's line as its first word, exactly as an undeclared word is.
+**Shadowing is total.** When your handler, or a command-level `run:`, takes over a built-in's name, the built-in's _option set_ stops applying too -- only config-declared options remain. A project replacing `test` is saying its gates are different, so inheriting `mix|credo|rust` would synthesise an `all` that calls your handler with options it has never heard of. A `run:` line shadows the same way. A config-declared option with no `run:` of its own is handed to the command's line as its first word, exactly as an undeclared word is.
 
 ## Naming: when the file and the command differ
 
-The contrived case from the original brief, and the reason `handler:` exists. You have `bin/.devbin/cmd/myls` and you want to type `devbin ls`:
+The case `handler:` exists for: you have `bin/.devbin/cmd/myls` and you want to type `devbin ls`:
 
 ```yaml
 commands:
@@ -50,7 +50,7 @@ commands:
     group: Surfaces
 ```
 
-Without that entry the file registers as `myls` and `devbin ls` does not exist. With it, `devbin ls` runs `cmd/myls`, appears under `Surfaces` in help as `ls`, and `devbin help ls` reads `help/ls.md` -- the **command** name, not the file name, is what everything else keys on.
+Without that entry the file registers as `myls` and `devbin ls` does not exist. With it, `devbin ls` runs `cmd/myls`, appears under `Surfaces` in help as `ls`, and `devbin help ls` reads `help/ls.md` -- help and config key on the **command** name, not the file name. A sub-handler still sits beside the file: `devbin ls <word>` runs `cmd/myls.d/<word>`.
 
 ## Each field, one source
 
@@ -64,7 +64,7 @@ Help shows a command's `summary`, `group` and `args`. Each is read from exactly 
 
 The load-bearing part is that the handler's header and the catalogue never both answer. A command devbin ships is declared by its catalogue row; a command you ship is declared by your handler file. The two sets are disjoint by construction, so there is no precedence question between them to get wrong later.
 
-That is why `lib/cmd/*` carries no header, and a test enforces it. They used to: every shipped handler had a `# devbin: summary = ...` line that nothing read, duplicating the sentence in its catalogue row -- and two copies written at the same time had already drifted by a word before anything came to read one.
+That is why `lib/cmd/*` carries no header, and a test enforces it: a header that nothing reads is a second copy of its catalogue row's sentence, free to drift from it.
 
 ### The header block
 
@@ -99,8 +99,8 @@ The recognised fields are `summary`, `group` and `args` (the usage hint in help'
 | `DEVBIN_LANGUAGES`        | the declared `project.languages`, one per line                                                                           |
 | `DEVBIN_FMT_ARMS`         | how `check format` treats each declared language's fmt arm: space-separated `<lang>=builtin`, `overridden` or `disabled` |
 | `DEVBIN_ACTIVE_<CMD>`     | when running `check`, `clean`, `db`, `docs`, `fmt` or `test`: its active options                                         |
-| `DEVBIN_RUN_ID`           | this invocation's identity, inherited by a child devbin unless the child starts a witness run                            |
-| `DEVBIN_RUN_WITNESS`      | `1` when this invocation is a witness run, which takes an id of its own rather than its parent's; else `0`               |
+| `DEVBIN_RUN_ID`           | this invocation's identity, inherited by a child devbin unless the child is a witness run and its parent is not          |
+| `DEVBIN_RUN_WITNESS`      | `1` when this invocation is a witness run, else `0`; a witness run whose parent is not one takes an id of its own        |
 | `DEVBIN_RUN_STAMP`        | the UTC stamp (`YYYYMMDD-HHMM`) this invocation's sealed logs are named from                                             |
 | `DEVBIN_RUN_REFERENT`     | what `project.referent` printed, when declared; a `REFERENT UNAVAILABLE` line if it printed nothing                      |
 | `DEVBIN_GATE_TTY`         | set by `gate_exec` for what it runs: `1` when a person was at the terminal, else `0`                                     |
@@ -137,17 +137,17 @@ Source `helpers`:
 
 `lib/helpers` has no dependencies by rule, so this costs you nothing. It gives you `die`, `warn`, `abs_path`, `read_version`, colours, and the rest of the primitives, among them:
 
-| Helper                            | What it does                                                                                                                                                                              |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ask_person <question>`           | asks `<question> [y/N]` on `/dev/tty`: 0 for y or yes in any case, 1 for anything else, 2 when nobody can be asked -- no readable `/dev/tty`, or `DEVBIN_GATE_TTY` is not `1`             |
-| `run_words <array> <key> <value>` | fills `<array>` with the words a declared command line runs as: split on space, tab and newline, each word a glob pattern, never eval'd; a value with no words is refused, naming `<key>` |
-| `semver_gt <a> <b>`               | true when X.Y.Z `<a>` is greater than `<b>`, part by part and numerically; 2 when either is not X.Y.Z                                                                                     |
-| `follow_links <path>`             | the file at the end of `<path>`'s chain of links; a link that leads to no file is refused                                                                                                 |
-| `replace_file <file> <cmd>...`    | replaces `<file>` with what `<cmd>` prints, staged beside it and renamed over it; its mode is kept, and a link to it stays a link                                                         |
-| `stage_beside`, `rename_staged`   | the two halves of `replace_file`, for a caller that renames the staged file itself                                                                                                        |
-| `git_readonly <git-args>...`      | git as a read: no optional locks, no fsmonitor, and git's repository-local environment cleared                                                                                            |
-| `generated_doc_write`             | a document section regenerated from your own probes -- see below                                                                                                                          |
-| `gate_exec <cmd>...`              | runs `<cmd>` as a gated tool runs: stdin from /dev/null, and `DEVBIN_GATE_TTY` saying whether a person is there (read from stdin, or kept inside a gate)                                  |
+| Helper                            | What it does                                                                                                                                                                                                     |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ask_person <question>`           | prints `<question> [y/N]` on stdout and reads the answer from `/dev/tty`: 0 for y or yes in any case, 1 for anything else, 2 when nobody can be asked -- no readable `/dev/tty`, or `DEVBIN_GATE_TTY` is not `1` |
+| `run_words <array> <key> <value>` | fills `<array>` with the words a declared command line runs as: split on space, tab and newline, each word a glob pattern, never eval'd; a value with no words is refused, naming `<key>`                        |
+| `semver_gt <a> <b>`               | true when X.Y.Z `<a>` is greater than `<b>`, part by part and numerically; 2 when either is not X.Y.Z                                                                                                            |
+| `follow_links <path>`             | the file at the end of `<path>`'s chain of links; a link that leads to no file is refused                                                                                                                        |
+| `replace_file <file> <cmd>...`    | replaces `<file>` with what `<cmd>` prints, staged beside it and renamed over it; its mode is kept, and a link to it stays a link                                                                                |
+| `stage_beside`, `rename_staged`   | the two halves of `replace_file`, for a caller that renames the staged file itself                                                                                                                               |
+| `git_readonly <git-args>...`      | git as a read: no optional locks, no fsmonitor, and git's repository-local environment cleared                                                                                                                   |
+| `generated_doc_write`             | a document section regenerated from your own probes -- see below                                                                                                                                                 |
+| `gate_exec <cmd>...`              | runs `<cmd>` as a gated tool runs: stdin from /dev/null, and `DEVBIN_GATE_TTY` saying whether a person is there (read from stdin, or kept inside a gate)                                                         |
 
 A handler that runs a gate tool directly -- a formatter, a test runner, anything that might prompt -- runs it through `gate_exec`, so the tool reads EOF rather than blocking on a terminal while `DEVBIN_GATE_TTY` still says whether a person is there; it is in `helpers`, so a scaffolded handler reaches it. A handler that drives a sealed gate itself sources `runlog` as well, which brings `helpers` if it is not loaded yet. That is where `run_gate` lives, which runs its tool through `gate_exec`. `stdin_tty_flag`, in `helpers`, prints `1` when stdin is a terminal and `0` otherwise -- the one rule `DEVBIN_GATE_TTY` is set by. A handler that must ask a person before any gate opens sets the flag from its own stdin for that one call, as `fullcycle` does: `DEVBIN_GATE_TTY="$(stdin_tty_flag)" ask_person "Proceed?"`.
 
@@ -162,7 +162,7 @@ sha="$(git_head_sha)"        # the short sha, or `unknown`
 git_head_watch_paths         # the files whose mtime tracks HEAD, one per line
 ```
 
-The first is the half nobody gets wrong. The second is the half four independent implementations got wrong the same way, by naming git's internals literally:
+The first is the half nobody gets wrong. The second is the half that is easy to get wrong, by naming git's internals literally:
 
     .git/HEAD        .git/refs/heads/
 
@@ -177,9 +177,9 @@ The first is the half nobody gets wrong. The second is the half four independent
 | make      | list them as prerequisites                 |
 | Docker    | `COPY` them into the build context         |
 
-**An empty watch set is a failure and it refuses loudly.** A build that bakes the sha with nothing watched can never refresh it. Before a working watch existed the failure mode was "always rebuild", which hides as a cost rather than a defect; restoring the watch restores caching, so a silently empty list would turn a slow-but-correct build into a fast and possibly wrong one.
+**An empty watch set is a failure and it refuses loudly.** A build that bakes the sha with nothing watched can never refresh it. With no watch at all a build rebuilds every time, which is slow but correct; a silently empty watch set would make it fast and possibly wrong.
 
-If you test your own use of this, **the fixture has to be a real `git worktree add`** -- a test written in a normal checkout passes against the broken literal paths, which is how the defect survived a working day. Assert on the resolved path SET rather than on the sha: under cargo the sha stays correct while the mechanism is entirely broken.
+If you test your own use of this, **the fixture has to be a real `git worktree add`** -- a test written in a normal checkout passes against the broken literal paths. Assert on the resolved path SET rather than on the sha: under cargo the sha stays correct while the mechanism is entirely broken.
 
 ## Exit codes are a contract
 
@@ -198,7 +198,7 @@ This table is the one place devbin's exit codes are listed.
 
 The one worth spelling out: **a bare command that needs an option exits 1, not 0.** It prints its usage either way, but naming no option is a usage error, and `devbin test && deploy` reads a 0 as permission to deploy. An explicit `-h` or `--help` still exits 0 -- that request succeeded.
 
-**A new refusal takes a new code, never a spare one.** Many assertions turn on the 2, so a wrong-tree guard sharing it would let a test that asserts an unknown-command refusal be satisfied by a wrong-tree refusal instead, and a green would stop naming its own cause. Two documents once restated this list, and both went stale in the same instant when the 4 shipped. `tests/unit/documentation.bats` holds this table to the `exit` statements in the source in both directions, so a code shipped without a row here fails the suite, and so does a row naming a code the source cannot return.
+**A new refusal takes a new code, never a spare one.** Many assertions turn on the 2, so a wrong-tree guard sharing it would let a test that asserts an unknown-command refusal be satisfied by a wrong-tree refusal instead, and a green would stop naming its own cause. `tests/unit/documentation.bats` holds this table to the `exit` statements in the source in both directions, so a code shipped without a row here fails the suite, and so does a row naming a code the source cannot return.
 
 ## Sub-commands
 
@@ -230,7 +230,7 @@ Its exit status counts too, and neither hides the other: a non-zero exit with no
 
 ## Sub-options, and the free `all`
 
-Sub-options are the *declarative* alternative to sub-commands, and they are what gates are built from. Declare them in config:
+Sub-options are the _declarative_ alternative to sub-commands, and they are what gates are built from. Declare them in config:
 
 ```yaml
 commands:
@@ -258,12 +258,12 @@ You now have `check compile`, `check format`, and -- without writing it -- **`ch
 - lets each option seal its own verdict; the aggregate summary is a convenience, never the record
 - exits non-zero if any option failed, naming all of them
 - reports options marked `in_all: false` as **skipped**, never dropping them silently
-- prints one count line on every path -- `5 of 10 check options ran; 5 inactive here (bin/devbin help --why names them), 0 skipped (in_all: false)` -- so an option deactivated by language scope or `enabled: false` is counted rather than invisible, and `help --why` names each one with its reason
+- prints one count line on every path but one, the refusal of arguments that an option it would run takes none of -- `5 of 10 check options ran; 5 inactive here (bin/devbin help --why names them), 0 skipped (in_all: false)` -- so an option deactivated by language scope or `enabled: false` is counted rather than invisible, and `help --why` names each one with its reason
 - **refuses a verdict** unless every option the command could offer is accounted for exactly once as ran, skipped or inactive: a summary that covers fewer options than it counts is a false green, so a run that cannot account for one names it and exits non-zero
 
 Adding an option to config puts it in `all` in the same edit. The two cannot disagree, because there is only one list.
 
-`all` is devbin's wherever the command has options to sweep -- config-declared ones compose with a project handler, so the sweep survives the shadow -- and a sub-handler named `all` can never replace it. `devbin help <cmd>` always lists it last. Where there are no options, what happens depends on what runs the command. A full project handler with **no** declared options shadows totally and is handed `all` like any other argument, and a built-in devbin ships with no options answers for itself: `server`, `iex`, `cli` and `repl` hand it to the program they run, and the rest refuse it. A command-level `run:` with no option to run, none declared or every declared one switched off, is refused, exit 1, and the refusal names the bare command: devbin runs that line, and `all` added to it would be a new command. `commands.test.run: cargo test` would run `cargo test all`, a name filter that matches nothing, and pass.
+`all` is devbin's wherever the command has options to sweep -- config-declared ones compose with a project handler, so the sweep survives the shadow -- and a sub-handler named `all` can never replace it. `devbin help <cmd>` lists it last, unless your own page for the command answers: that page stands alone. Where there are no options, what happens depends on what runs the command. A full project handler with **no** declared options shadows totally and is handed `all` like any other argument, and a built-in devbin ships with no options answers for itself: `server`, `iex`, `cli` and `repl` hand it to the program they run, and the rest refuse it. A command-level `run:` with no option to run, none declared or every declared one switched off, is refused, exit 1, and the refusal names the bare command: devbin runs that line, and `all` added to it would be a new command. `commands.test.run: cargo test` would run `cargo test all`, a name filter that matches nothing, and pass.
 
 ## Making your command a sealed gate
 
@@ -278,17 +278,17 @@ The `.errors` companion is **empty exactly when a completed run was green**. Tha
 
 `log:` is read where devbin runs the command line itself: a `run:` in your config. A catalogue option seals on its own row, and a `run:` that overrides one inherits the row's `log:` and `grammar:` unless it declares its own. **Under a project handler `log:` is not read.** A declared option of a command you have a handler for dispatches into that handler with the option's name as its first argument, unsealed, so a handler that wants a seal calls `run_gate` itself. A `log:` that nothing reads, in any of these places, fails `bin/devbin doctor`, which names what runs instead (issue 0133).
 
-**`--purge` keeps the newest five runs of a gate family, not only the current one.** An intermittent failure is diagnosed by diffing a red run against the green one before it, so purging the previous run destroys the differential at the moment it becomes interesting. `RUNLOG_KEEP_RUNS` sets the window and `1` restores the older keep-current-only behaviour. **`0` is refused rather than read as "keep everything"** -- a zero meaning unlimited is not how a variable named KEEP reads, and the refusal is tested to purge *nothing*, because a validator that fails open deletes more than no validator at all.
+**`--purge` keeps the newest five runs of a gate family, not only the current one.** An intermittent failure is diagnosed by diffing a red run against the green one before it, so purging the previous run destroys the differential at the moment it becomes interesting. `RUNLOG_KEEP_RUNS` sets the window and `1` restores the older keep-current-only behaviour. **`0` is refused rather than read as "keep everything"** -- a zero meaning unlimited is not how a variable named KEEP reads, and the refusal is tested to purge _nothing_, because a validator that fails open deletes more than no validator at all.
 
-**These flags belong to the gate, not to the tool: `--purge`, `--purge-only` and `--allow-empty`.** Typed anywhere on a gate's command line they are taken out of the tool's arguments and given to the runner, at every gate devbin runs -- an option's, a catalogue one, and a command-level `run:` with `log:`, which handed them to the tool until issue `0087`. `--purge-only` purges against the newest kept run without running anything. `--allow-empty` says this run executing no tests is intended, so it is not promoted to a failure; declaring `grammar: generic` says the gate is never a counted run at all. Everything else reaches the tool.
+**These flags belong to the gate, not to the tool: `--purge`, `--purge-only` and `--allow-empty`.** Typed after the option, or anywhere after a command whose own `run:` is the gate, they are taken out of the tool's arguments and given to the runner, at every gate devbin runs -- an option's, a catalogue one, and a command-level `run:` with `log:`. Typed before the option, one is read as the option's name and refused. `--purge-only` purges against the newest kept run without running anything. `--allow-empty` says this run executing no tests is intended, so it is not promoted to a failure; declaring `grammar: generic` says the gate is never a counted run at all. Everything else reaches the tool.
 
 `grammar:` names the extractor that turns the tool's output into that file: `mix`, `credo`, `cargo`, `xcodebuild`, `lua`, `shell`, `bats`, `critic`, `generic`. Declare `log:` and `grammar:` together -- a thing is a sealed gate or it is not, never half of one. Devbin's own catalogue holds to that. For an option of your own it is not enforced: a `grammar:` with no `log:` runs unsealed, and the grammar is never read.
 
 **Omit `log:` for anything long-running or interactive.** A server or a REPL never exits, so teeing it would buffer the output you are watching and seal nothing.
 
-**A gated tool reads no input: its stdin is `/dev/null`, from a terminal as from CI.** That covers a sealed `run:` in your config, a catalogue command line, devbin's own built-in verbs, and every tool one of them starts. A gate that handed its tool the terminal measured something different for a person than for an agent or CI: a tool that asks (`Shall I install Hex? [Yn]`) waited at a person's keyboard and read end-of-input everywhere else (issue `0088`). Now every run takes the end-of-input path, so a tool that needs an answer fails the same way everywhere. There is no key to hand such a gate the terminal; a command that needs one runs bare. **The gate still says whether a person is there**: it sets `DEVBIN_GATE_TTY` to `1` when its own stdin is a terminal and `0` otherwise, and `clean`, `fullcycle` and a release cut ask on that flag through `ask_person`, reading the answer from `/dev/tty`. A tool the gate runs keeps that answer, through `DEVBIN_IN_GATE`, so a release's `after:` line can still ask the person who started the cut, while a devbin started inside the gate is a new invocation and reads its own stdin again. A tool that opens `/dev/tty` itself is outside this.
+**A gated tool reads no input: its stdin is `/dev/null`, from a terminal as from CI.** That covers a sealed `run:` in your config, a catalogue command line, devbin's own built-in verbs, and every tool one of them starts. So every run takes the end-of-input path, and a tool that asks (`Shall I install Hex? [Yn]`) fails the same way for a person as for an agent or CI. There is no key to hand such a gate the terminal; a command that needs one runs bare. **The gate still says whether a person is there**: it sets `DEVBIN_GATE_TTY` to `1` when its own stdin is a terminal and `0` otherwise, and `clean`, `fullcycle` and a release cut ask on that flag through `ask_person`, reading the answer from `/dev/tty`. A tool the gate runs keeps that answer, through `DEVBIN_IN_GATE`, so a release's `after:` line can still ask the person who started the cut, while a devbin started inside the gate is a new invocation and reads its own stdin again. A tool that opens `/dev/tty` itself is outside this.
 
-A gate that examines nothing and exits 0 is a false green, which is why `check format` **fails** when its formatter is missing while `fmt` merely skips. The gate asserts a verdict; the formatter does not.
+A gate that examines nothing and exits 0 is a false green, which is why `check format` **fails** when its formatter is missing while `fmt swift` and `fmt md` merely skip. The gate asserts a verdict; the formatter does not.
 
 ## Where help text comes from
 
@@ -330,9 +330,9 @@ An empty page would be the framework declining to say what it plainly knows.
 $ bin/devbin help --why
 ```
 
-This prints the listing with each command annotated by where it resolved from, and then names every command and option devbin ships that is **not** offered here, with the reason -- a language not declared, an opt-in not enabled, or switched off with `enabled: false`. A handler shadowing a built-in is not one of those: it shows in the listing itself, on that command's `from:` line.
+This prints the listing with each command annotated by where it resolved from, and then names every command and option devbin ships that is **not** offered here, `use` aside, with the reason -- a language not declared, an opt-in not enabled, or switched off with `enabled: false`. A handler shadowing a built-in is not one of those: it shows in the listing itself, on that command's `from:` line.
 
-It exists because resolution order and language scoping were computed and never displayed, so a command scoped out of your project showed nothing at all, and absence is indistinguishable from a defect.
+It exists because a command scoped out of your project would otherwise show nothing at all, and absence is indistinguishable from a defect.
 
 ## A worked example, start to finish
 
@@ -369,7 +369,7 @@ commands:
     group: Surfaces
 ```
 
-Now rename the help file. **Help is keyed on the command, not the file**, so it has to become `ls.md` -- and its *contents* are yours to update, since `new` wrote them for a command called `myls`:
+Now rename the help file. **Help is keyed on the command, not the file**, so it has to become `ls.md` -- and its _contents_ are yours to update, since `new` wrote them for a command called `myls`:
 
 ```
 $ mv bin/.devbin/help/myls.md bin/.devbin/help/ls.md
@@ -389,9 +389,9 @@ $ bin/devbin help --why | grep -A1 '^  ls '
 
 `devbin new` writes a stub whose first test asserts the command **resolves** -- the one thing a scaffold can know is true. Some hard-won cautions for the rest:
 
-- **bats evaluates every test description.** Backticks or `$(...)` in a test *name* execute. There is a structural test in this repo refusing that shape, because one such name ran the entire suite from inside a test title and every TAP line still said `ok`.
+- **bats evaluates every test description.** Backticks or `$(...)` in a test _name_ execute. There is a structural test in this repo refusing that shape: such a name can run the entire suite from inside a test title while every TAP line still says `ok`.
 - **Do not read a run by grepping `^ok` / `^not ok`.** Read the non-TAP lines: `grep -vE "^(ok |not ok |1\.\.|#)"` should print nothing.
-- **Ask what else would make your test green.** Tests here have passed for the wrong reason -- one used a project handler to test built-in scoping and so exercised the shadowing path instead of the path under test.
+- **Ask what else would make your test green.** A test can pass for the wrong reason: one that uses a project handler to test built-in scoping exercises the shadowing path instead of the path under test.
 
 ## Rules of thumb
 
@@ -410,8 +410,6 @@ $ bin/devbin help --why | grep -A1 '^  ls '
 ## Do not inline infrastructure identity
 
 A handler that hardcodes a cluster id, a hostname, an org or a bucket is holding a fact that something outside your repository is free to change, and the failure is usually silent rather than loud: the old name keeps resolving to something.
-
-Measured: a `db proxy` handler carried a Fly cluster hostname inline. The provider re-identified the cluster during a migration, the legacy alias went on routing, and the handler resolved a dead identity for five days without a single error. Nothing was broken enough to notice.
 
 Name it in `config.yaml` and read it in the handler. Devbin already draws this line for itself -- `project.version_from` names the file and the library holds the recipe -- and it is the same rule one layer out: **config names FACTS, code holds RECIPES.** A fact that lives in someone else's control panel is exactly the kind that must be nameable without editing a script.
 
@@ -437,7 +435,7 @@ generated_doc_write \
 
 **Devbin does not learn what you are measuring.** Not what a cluster is, not what a pooler is, not that `--json` exists on anything, and not that your document is Markdown -- the markers are opaque delimiters, which is why they are required rather than defaulted. A project on a different provider writes a different producer and none of the above changes.
 
-That split is deliberate and it is the whole rule. The provider verbs are cheap to write and trivial to verify, because you can just run them. What is expensive, and what four projects were each about to reinvent, is the discipline of writing the result down safely.
+That split is deliberate and it is the whole rule. The provider verbs are cheap to write and trivial to verify, because you can just run them. What is expensive is the discipline of writing the result down safely.
 
 ### The refusals, and what each one is for
 
@@ -449,7 +447,7 @@ That split is deliberate and it is the whole rule. The provider verbs are cheap 
 | markers  | prose outside the markers is copied through; both must appear once    |
 | atomic   | assembled in a temp beside the target and renamed, never written open |
 
-**The producer refusal is the determinate-zero doctrine in prose.** A document assembled from failed probes is worse than a stale one, because it looks freshly generated. Measured: a project captured `psql` error text into a runbook and then reported grant counts off it -- a refuted inference wearing the format of a measurement. So your producer must exit non-zero when a measurement failed; that exit status is the only thing standing between a failed probe and a confident-looking document.
+**The producer refusal is the determinate-zero doctrine in prose.** A document assembled from failed probes is worse than a stale one, because it looks freshly generated. So your producer must exit non-zero when a measurement failed; that exit status is the only thing standing between a failed probe and a confident-looking document.
 
 **The secret refusal wants env indirection, not omission.** Emit `postgresql://user:$PGPASSWORD@host/db` -- the shape is documented and the value is not. `--deny-env` then proves you did, mechanically, on every run rather than at review time. Naming a variable that is unset or empty is itself a refusal: a guard that cannot see its secret must not pass silently.
 
