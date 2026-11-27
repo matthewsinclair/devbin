@@ -1,0 +1,10 @@
+{
+  "id": "f7a77708",
+  "origin": "01M8E3MF12G94RH6F6HE2QHJ5Y",
+  "title": "The --ivault flag: devbin resolves the Intent vault references in a command's environment before it runs the command",
+  "scope": "M",
+  "status": "not-started",
+  "objective": "With --ivault, devbin has Intent resolve each intent:// reference that the command's environment holds, before the command runs. hv schedules this package, and it does not start before hv says start.",
+  "body": "## Not before hv's word\n\nhv schedules this package: it does not start before hv says start (vc hold 2). Its trigger is also upstream: stage 0 of the build of Intent's ST0060, with that thread's AC-00.19 (every terminal path resolves, or the flag is refused outright, with no partial). Intent's vc says when that design has stopped moving. No design or spike is made before then.\n\n## What it does\n\n--ivault is a global devbin flag. Before devbin runs a command, it resolves in place, through Intent, each intent:// reference that the process's environment already holds. It never reads a vault entry's key_id.\n\n## The constraints\n\n1. devbin never parses an intent:// reference. It tests for the literal prefix alone, and Intent makes the one parse. The literal test can over-trigger, at the cost of one process, and it cannot under-trigger.\n2. Every terminal path of a command resolves, or the flag is refused outright. No path runs half-resolved.\n3. The seam is in lib/resolve. exec_handler execs a project's or devbin's handler. _run_line runs every config or catalogue command line, bare by exec, or sealed through run_gate. A sealed run returns so that its seal is written, so it cannot be wrapped in an exec.\n4. A dispatch change reaches every project that vendors devbin, so it ships as a release and a sweep, not as one commit.\n\n## Open\n\nIts spelling and its messages are set when Intent's design stops moving, and its size, M, is a first estimate until then. Its shape is devbin-ic's word, and its build is hv's call.\n",
+  "preamble": ""
+}

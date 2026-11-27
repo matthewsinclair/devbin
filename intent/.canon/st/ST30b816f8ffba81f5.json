@@ -1,0 +1,13 @@
+{
+  "schema": "intent/thread@4.0",
+  "id": "ST30b816f8ffba81f5",
+  "origin": "01M8E3M39PDFT9BEZQH483S7PV",
+  "title": "devbin: parked until hv schedules",
+  "slug": "devbin-parked-until-hv-schedules",
+  "status": "triage",
+  "created": "2026-11-27",
+  "objective": "Each devbin feature that hv has parked is a work package of this thread, not started. A package starts only on hv's word. The thread is done when each package has shipped, or has been dropped with hv's reason.",
+  "context": "hv's words of 2026-11-27, through devbin-vc (vc decision 335), move all unfinished work into a future, unstarted thread or work package. vc's hold 2 and todo 213 parked these features until hv schedules them:\n\n- `--ivault`, which also waits on Intent's ST0060.\n- The no-vendor mode, which waited for devbin to be public (vc decision 64).\n\nEach package names hv's word as its start.",
+  "body": "",
+  "preamble": ""
+}

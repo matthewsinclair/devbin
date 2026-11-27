@@ -1,0 +1,10 @@
+{
+  "id": "bc6187df",
+  "origin": "01M8E3M8D2FWZFAX5M0MWGE0E9",
+  "title": "The no-vendor mode: devbin from Homebrew runs a project that carries no vendored copy of devbin",
+  "scope": "L",
+  "status": "not-started",
+  "objective": "devbin, installed from Homebrew and on PATH, runs a project from its working directory: the project's config.yaml, cmd/ and help/, with the install's own lib. hv schedules this package, and it does not start before hv's word.",
+  "body": "## Not before hv's word\n\nhv schedules this package (vc decision 64 and todo 213). It waited for devbin to be public, which it is.\n\n## What it changes\n\nToday a project carries its own runtime: bin/devbin and bin/.devbin/lib, vendored. bin/devbin finds PROJECT_ROOT, DEVBIN_DIR and DEVBIN_LIB from its own place. An install tree, such as Homebrew's keg, refuses every verb but the few it answers for itself, eg install, shell-init and use, with \"this is a devbin INSTALL, not a project\". The mode changes devbin's rule that a project carries its own runtime. Under the seam (ST0001's design), `bin/devbin` and everything under `bin/.devbin/lib/` are devbin's and are vendored into the project, and `config.yaml`, `cmd/` and `help/` are the project's. In the mode, devbin's half stays in the install.\n\n## Where it came from\n\nAnother estate's session, which vendors devbin in many repositories, asked for it on 2026-10-16, and devbin-vc put it to hv. hv ruled on 2026-10-25 that it waits for devbin to be public.\n\n## Open\n\nIts design and its shape (devbin-ic's word) are set when hv schedules it, and its size, L, is a first estimate until then.\n",
+  "preamble": ""
+}
