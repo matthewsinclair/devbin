@@ -1,0 +1,10 @@
+{
+  "id": "cce6cbe9",
+  "origin": "01M8E59PPSQDJJQ8CQGWNH63M6",
+  "title": "The code gaps the close-out's doc sync found, so each doc can say again what it meant",
+  "scope": "S",
+  "status": "not-started",
+  "objective": "Fix each place where the close-out's doc sync found the code short of a stated rule or of what a doc meant. The docs now say what the code does, and each fix brings its doc line back.",
+  "body": "Found by the close-out's doc sync on 2026-11-27, which changed each doc to say what the code does. Each item says what is wrong and what fixes it.\n\n1. The config reader does not check a list item for an anchor, an alias or a flow collection: `- [a, b]` and `- &x y` are read as text (lib/config, the list-item branch), where a key's value refuses them. Fix: the same checks on a list item. Then docs/configuration.md's grammar table and the README's subset line drop \"as a key's value\".\n2. documentation.bats's arm \"every schema key appears in the configuration reference\" compares key segments, not dotted paths, so a removed row whose segments appear in other rows stays green. Fix: compare paths, with their placeholders. Then docs/configuration.md's opening line can say again that the page and the schema cannot drift apart.\n3. Rules that the code breaks (usage-rules.md, and ARCHITECTURE-shell.md's Error handling): lib/cmd/shell-init sets `set -uo pipefail`, with no `-e`; `cfg_list` (lib/config) and `infra_domain_pairs` (lib/infra) end with no explicit `return 0`; `exec_handler` (lib/resolve), and `_git_readonly_exec` and `rlwrap_exec` (lib/helpers), end on an `exec` with no `die` after it. Fix each, or state the exception and its reason beside the rule.\n4. lib/cmd/shell-init's header comment and its usage text say that only `install` and `shell-init` pass the cwd guard. `use` and the version forms pass too, and from the machine install, help. Fix the text.\n\nSize S. Items 1 and 2 change code and tests, so the unit has a red leg for each and a lint leg.\n",
+  "preamble": ""
+}

@@ -1,0 +1,10 @@
+{
+  "id": "0c9eb20d",
+  "origin": "01M8E59PFY5C9JX5ERDPQAD9JR",
+  "title": "A deps verb: devbin fetches a project's dependencies, so a driver need not call the language's own tool",
+  "scope": "S",
+  "status": "not-started",
+  "objective": "devbin fetches each declared language's dependencies, eg `mix deps.get`, so a driver that must fetch them runs `bin/devbin` and not the language's own tool.",
+  "body": "## The gap\n\nAnother workstream's close-out found it on 2026-11-27, and devbin-vc passed it on: devbin has no verb that fetches dependencies, so that workstream's driver called `mix deps.get` directly. A project builds and tests through `bin/devbin` alone, so that call steps outside it.\n\n## What devbin has today\n\n- `check deps` (catalogue row `check.deps`, elixir) runs `mix deps.unlock --check-unused`. It checks, and fetches nothing.\n- `clean elixir` leaves the sources under `deps/`.\n- No catalogue row and no handler fetches dependencies.\n\n## Open\n\n- Its shape, a command or an option of an existing one, is devbin-ic's word, and a new public verb is hv's call.\n- Which languages it covers, eg elixir (`mix deps.get`) and rust (`cargo fetch`), and whether it seals a verdict.\n- Size S, as a first estimate.\n",
+  "preamble": ""
+}

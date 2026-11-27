@@ -7,7 +7,7 @@
   "status": "triage",
   "created": "2026-11-27",
   "objective": "Each piece of work that was open when devbin 0.1.35 was released is a work package of this thread, not started. The thread is done when each package has shipped in a devbin release, or has moved on with a reason.",
-  "context": "hv's words of 2026-11-27, through devbin-vc (vc decision 335): close out the week's work, and move all unfinished work into a future, unstarted thread or work package. This thread holds devbin's:\n\n- The leg-start lock, moved from issue I41b8dcb.\n- A public verb that prints the bash devbin runs under, which utilz/ic asked for.\n- The red WSL job of 0.1.35's candidate, devbin-dc's package.\n\nEach package's build waits for devbin-vc's word.",
+  "context": "hv's words of 2026-11-27, through devbin-vc (vc decision 335): close out the week's work, and move all unfinished work into a future, unstarted thread or work package. This thread holds the work open after devbin 0.1.35 that is meant for a devbin release. Each package's body says what it is and where it came from, and its build waits for devbin-vc's word.",
   "body": "",
   "preamble": ""
 }
