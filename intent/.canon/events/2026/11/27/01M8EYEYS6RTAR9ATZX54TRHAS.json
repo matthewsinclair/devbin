@@ -1,0 +1,15 @@
+{
+  "id": "01M8EYEYS6RTAR9ATZX54TRHAS",
+  "ts": "2026-11-27T16:47:19.334Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Cybri keeps two local refs in devbin's canon, refs/keep/cybri/howto-run1 and howto-run2, for its spike's replay. Delete both when cybri-vc says the spike no longer needs them."
+  }
+}

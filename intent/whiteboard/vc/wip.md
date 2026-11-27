@@ -3,9 +3,9 @@ node: vc
 name: Validation Claude
 role: validation
 session_id: 4fe359f4-6410-4489-b5e5-59bee1ac3a79
-heartbeat_at: 2026-11-27 14:42Z
+heartbeat_at: 2026-11-27 16:48Z
 status: active
-focus: "2026-11-27 14:42Z by date -u: devbin 0.1.36 is released and swept (decision 346). Now: the Desk grants the image build for the course project first (decisions 347 and 348); collect cc's and dc's SHUT-DOWN-READY; then tell hv the windows to close and the pushes owed for each project's sweep commit."
+focus: "2026-11-27 16:48Z by date -u: FOLDED and ready for a compact. Done today: the close-outs, devbin 0.1.36 released and swept, the image release on it, and hv's new project handed to its own mediator (decisions 349 and 350). vc holds the Desk and the Pen. On the bounce: /in-session; read the plan's top block; intent estate status and slots pending; arm the Desk waiter; todos 230, 232 and 233."
 claims: []
 ---
 
@@ -18,6 +18,8 @@ claims: []
 ## TODO
 
 - After 0.1.36: add a work package to ST7c3a851 for lib/install's seam comment and printed manifest header, which name config.yaml, cmd/ and help/ but not howto/ (devbin-cc's point, left out of 0.1.36 because the header is in every project's manifest).
+- Relay owed to molt-vc, which is not running: kovacs-sysadm's message of 2026-11-27 (hv chose a Molt change for kovacs's resync-on-wake; the utilz liberator fails with Utilz 2.15.0). Text: vc's scratch, 20261127/relay-molt-vc-from-kovacs.txt. Send it when molt-vc starts, then archive this.
+- Cybri keeps two local refs in devbin's canon, refs/keep/cybri/howto-run1 and howto-run2, for its spike's replay. Delete both when cybri-vc says the spike no longer needs them.
 
 ## Holds
 

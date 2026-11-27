@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "4fe359f4-6410-4489-b5e5-59bee1ac3a79",
-    "heartbeat_at": "2026-11-27T14:42:18.339Z",
+    "heartbeat_at": "2026-11-27T16:48:40.157Z",
     "status": "active",
-    "focus": "2026-11-27 14:42Z by date -u: devbin 0.1.36 is released and swept (decision 346). Now: the Desk grants the image build for the course project first (decisions 347 and 348); collect cc's and dc's SHUT-DOWN-READY; then tell hv the windows to close and the pushes owed for each project's sweep commit.",
+    "focus": "2026-11-27 16:48Z by date -u: FOLDED and ready for a compact. Done today: the close-outs, devbin 0.1.36 released and swept, the image release on it, and hv's new project handed to its own mediator (decisions 349 and 350). vc holds the Desk and the Pen. On the bounce: /in-session; read the plan's top block; intent estate status and slots pending; arm the Desk waiter; todos 230, 232 and 233.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -6867,6 +6867,31 @@
       "text": "hv in vc's window, read by 2026-11-27 15:20Z by date -u, on the spike of decision 349. hv's words: \"Its' definitely it's own project. I'll set that up quickly now. Then I'll init Intent and Devbin and then launch new cybri-{vc,cc,ic,dc} Claudes and we can hand this over to them.\" and \"I want to hand this over -- everything we know about it -- to cybri-vc now and then close this out here at devbin as this isn't the right spot for it\". hv named the project Cybri, its daemon cybrid, and the daemon's parts cymgr and cywrkr. vc's reading: the work leaves devbin. vc wrote the handover (HANDOVER.md, hv's brief and the spike note, in vc's scratch at 20261127/spike/), and gives it to cybri-vc when that seat starts. ST575eeff is cancelled in devbin with a reason that names the new project. devbin keeps no part of the work.",
       "state": "live",
       "recorded_at": "2026-11-27T15:20:47.919Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 231,
+      "text": "Cybri handover (decision 350): when cybri-vc starts, send it the path ~/Devel/scratch/devbin-vc/20261127/spike/ (HANDOVER.md first), wait for its ACK, then archive this.",
+      "state": "archived",
+      "archived_at": "2026-11-27T16:47:19.110Z",
+      "recorded_at": "2026-11-27T15:20:57.292Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 232,
+      "text": "Relay owed to molt-vc, which is not running: kovacs-sysadm's message of 2026-11-27 (hv chose a Molt change for kovacs's resync-on-wake; the utilz liberator fails with Utilz 2.15.0). Text: vc's scratch, 20261127/relay-molt-vc-from-kovacs.txt. Send it when molt-vc starts, then archive this.",
+      "state": "live",
+      "recorded_at": "2026-11-27T16:18:42.698Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 233,
+      "text": "Cybri keeps two local refs in devbin's canon, refs/keep/cybri/howto-run1 and howto-run2, for its spike's replay. Delete both when cybri-vc says the spike no longer needs them.",
+      "state": "live",
+      "recorded_at": "2026-11-27T16:47:19.334Z"
     }
   ],
   "sent": [

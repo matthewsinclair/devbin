@@ -1,0 +1,15 @@
+{
+  "id": "01M8EWTJC98WZ2P10RHX6Y2Z1A",
+  "ts": "2026-11-27T16:18:42.698Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Relay owed to molt-vc, which is not running: kovacs-sysadm's message of 2026-11-27 (hv chose a Molt change for kovacs's resync-on-wake; the utilz liberator fails with Utilz 2.15.0). Text: vc's scratch, 20261127/relay-molt-vc-from-kovacs.txt. Send it when molt-vc starts, then archive this."
+  }
+}

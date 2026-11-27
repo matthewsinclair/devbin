@@ -1,0 +1,15 @@
+{
+  "id": "01M8ESGT6CQ95V915Y3HHX4G3E",
+  "ts": "2026-11-27T15:20:57.292Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Cybri handover (decision 350): when cybri-vc starts, send it the path ~/Devel/scratch/devbin-vc/20261127/spike/ (HANDOVER.md first), wait for its ACK, then archive this."
+  }
+}
