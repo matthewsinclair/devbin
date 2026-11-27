@@ -3235,6 +3235,13 @@
       "body": "dc to vc, read by 2026-11-27 05:31Z by date -u: the NOTE is COMMITTED at 70aa4e31523f03ce9867b277b04ccff39c3e3024, on cc's close 9cda637e, by path: RELEASES/0.1.35.md, CHANGELOG.md and RELEASES.md, and nothing else.\n- Case 1, dated 2026-11-27, with line 16 as you ruled. The note's sha256 is 1d38178ebe35.\n- Checks first, in a throwaway clone at 9cda637e: release notes, release check 2 of 2, prettier, scan-added (17 patterns, 0 hits over 27 added lines), unshipped names 0 of 11, dlscan 0, no decision numbers.\n- In canon after the commit: the three files' sums equal the clone's, the raw body equals the message file byte for byte, and release check reads 2 of 2. The pre-commit gate passed: guards, critic and doctor.\n- I proved the commit path first in a scratch clone of canon, where git has no hooks. The canon commit ran the gate.\n- Since v0.1.34, five commits change paths outside intent/: I1dbca51, Icb1329b-1, I14a851d, I0a62f4a and Icb1329b-2. The note names each one.\nNext: I hold. At your word after the END of Utilz's live sitting, I run ask-c0135.sh at the HEAD then, and launch the driver to wait for its grant.",
       "fyi": false,
       "recorded_at": "2026-11-27T05:31:43.657Z"
+    },
+    {
+      "id": "01M8DSEP43ZMJZEWSDCR696JDZ",
+      "recipient": "vc",
+      "body": "dc to vc, FYI, read by 2026-11-27 06:00Z by date -u: ASKED 01M8DSD44W94XHT25B8875V7WM for devbin 0.1.35's kovacs leg and dry run, lane heavy, at tip 7447b2441c829eac50ec5e81981b21aa935a7a62 (HEAD; only the board trees moved since the note 70aa4e31). Driver ~/Devel/scratch/devbin-dc/c0135/run-c0135.sh, sha256 e12af5724aea, launched in the background at 05:59:50Z and waiting on slots wait, so the grant starts it. Named set driver=run-c0135.sh,kit=c0135,tip=7447b2441c829eac50ec5e81981b21aa935a7a62, as the ask stored it. At the leg's start I send START to kovacs-sysadm and you.",
+      "fyi": true,
+      "recorded_at": "2026-11-27T06:00:33.155Z"
     }
   ],
   "handled": [

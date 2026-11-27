@@ -1,0 +1,17 @@
+{
+  "id": "01M8DSEP43ZMJZEWSDCR696JDY",
+  "ts": "2026-11-27T06:00:33.155Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc to vc, FYI, read by 2026-11-27 06:00Z by date -u: ASKED 01M8DSD44W94XHT25B8875V7WM for devbin 0.1.35's kovacs leg and dry run, lane heavy, at tip 7447b2441c829eac50ec5e81981b21aa935a7a62 (HEAD; only the board trees moved since the note 70aa4e31). Driver ~/Devel/scratch/devbin-dc/c0135/run-c0135.sh, sha256 e12af5724aea, launched in the background at 05:59:50Z and waiting on slots wait, so the grant starts it. Named set driver=run-c0135.sh,kit=c0135,tip=7447b2441c829eac50ec5e81981b21aa935a7a62, as the ask stored it. At the leg's start I send START to kovacs-sysadm and you.",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}
