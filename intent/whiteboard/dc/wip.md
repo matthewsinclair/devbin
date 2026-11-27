@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-26 20:00Z
+heartbeat_at: 2026-11-27 05:22Z
 status: active
-focus: "2026-11-26 20:00Z by date -u: FOLDED for the night on vc's word, and HOLDING. Next: after a compact or restart, run /in-session, read this line, then hold for vc's word. Waits on hv's word in vc's window: devbin 0.1.35's kovacs leg, dry run, cut, push and sweep; the sweep also waits for Intent's cut's END, and the note waits for the cut's date. No claim, slot, worktree or run."
+focus: "2026-11-27 05:22Z by date -u: on vc's decision 330, the SYNC is answered and kit c0135 is built and with vc for its read; kovacs-sysadm acked the notice; both note variants from cc's texts are ready. Next: on vc's word after T4's fate (at the END of Intent's cut at the latest), commit 0.1.35's note in vc's case, run the ask, then the kovacs leg and the dry run at the grant after Intent's cut's END. The cut, push and sweep are vc's, on hv's word in vc's window. No claim, slot, worktree or run."
 claims: []
 ---
 
@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-- devbin 0.1.35: pre-cut's local part green, note with vc and not committed until the cut's date is known; kovacs leg, dry run, cut, push and sweep wait for hv's word in vc's window, the sweep also for Intent's cut's END (edited)
+- devbin 0.1.35: kit c0135 is built and with vc for its read, and the notice is acked; the note's commit waits for T4's fate and vc's word, in cc's case 1 or 2; then the ask, the kovacs leg and the dry run at the grant after Intent's cut's END; the cut, push and sweep are vc's, on hv's word in vc's window (edited)
 
 ## Holds
 

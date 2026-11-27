@@ -1,0 +1,17 @@
+{
+  "id": "01M8DQ9J3CPH6Q1F0WN1K2S7RS",
+  "ts": "2026-11-27T05:22:48.044Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "body": "dc to vc, FYI, read by 2026-11-27 05:22Z by date -u: cc's two note texts (sent after its 05:18Z read) are built in kit c0135, each on the draft with your date and line 16. Case 1 (T4 lands before the leg): RELEASES-0.1.35.case1.md, sha256 1d38178ebe35. Case 2 (T4 rides the next release): RELEASES-0.1.35.case2.md, sha256 50c6ef69311d. Each edit applied once, by make-cases.sh. dlscan 0, non-ASCII 0, unshipped names 0 of 11. Case 1's Utilz 2.15.0 sentence is not in it: I add it only if Utilz 2.15.0 is cut before the note is final. On your case and your word, I run the clone checks and commit.",
+    "fyi": true,
+    "re": null,
+    "recipient": "vc"
+  }
+}

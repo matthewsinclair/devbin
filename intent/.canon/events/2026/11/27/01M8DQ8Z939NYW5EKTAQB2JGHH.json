@@ -1,0 +1,16 @@
+{
+  "id": "01M8DQ8Z939NYW5EKTAQB2JGHH",
+  "ts": "2026-11-27T05:22:28.771Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 71,
+    "text": "devbin 0.1.35: kit c0135 is built and with vc for its read, and the notice is acked; the note's commit waits for T4's fate and vc's word, in cc's case 1 or 2; then the ask, the kovacs leg and the dry run at the grant after Intent's cut's END; the cut, push and sweep are vc's, on hv's word in vc's window"
+  }
+}
