@@ -6,6 +6,30 @@ All notable changes to devbin are recorded here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and devbin aims at [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.35] - 2026-11-27
+
+### Changed
+
+#### devbin's own tree
+
+- **devbin's own scan of shipped paths finds any path below /private/var (issue `I1dbca51`).** A comment in lib/resolve named such a path, and the scan did not find it. The comment now says "a temporary directory".
+
+### Fixed
+
+#### reaches every project
+
+- **A release gate's cache within its bound is kept only while its disk has the bound free (issue `I14a851d`).** `release.gate_cache.max` is now the most the gates' cache may hold when its gates start, and the least free space its disk must have for the cache to be kept. A cache over it, or on a disk with less than it free, is emptied, and that run builds cold. The free space is the Available column of `df -Pk` for the cache's own directory.
+  - The rule holds this machine's cache and each leg host's. The key and its 12G default do not change.
+  - Each line a leg's log writes for its cache names the free space it read. Where the free space cannot be read, the size alone decides, and the line says why. On this machine, a cache within its bound whose free space cannot be read is warned of.
+- **A leg run whose runner is gone with no exit status is cleared as an ended run (issue `I0a62f4a`).** A leg's runner, the shell that writes its gates' exit status, can die with its host, by the out-of-memory killer or on a full disk. Before, such a run read as going at every later start on that host, so the gate cache's bound stayed off. It read as running at every poll, so the cut waited to its deadline, and a later start at its commit waited on it too.
+  - A run with no exit status is going only while its runner is alive, which devbin finds by its command line. Once the runner is gone, the run is gone.
+  - A read of a gone run answers unknown, naming it and the last line its gates wrote. A start clears a gone run at any commit, its own included, so a cut run again at that commit starts its leg afresh. Either one gives the run's log a last line that says its runner was gone, copies the log back, clears the run and warns once.
+  - A start deletes each leg ref, `refs/devbin/legs/<commit>`, that no run's worktree holds, as a start that stopped after it sent the commit leaves. **The first leg start with this release on a host deletes the leg refs earlier starts left there with no run.** On 2026-11-26, devbin's leg repository on kovacs held five.
+  - A start bounds the cache and makes the run's TMPDIR before it makes the run's worktree. Two starts of one project on one host must not overlap: a cut starts its legs one at a time, so do not start a second cut or `release gates --leg` of the project on that host while one runs.
+- **`use` and `doctor` read a tool whose names are links to one program (issue `Icb1329b`).** A tool can build one program and link it under many names, as Utilz's utilities link to bin/utilz. On an opt tree, `doctor` failed each such link, `use opt` and a bare `use` exited 1, and `use brew` refused to remove the links. Now devbin reads a link's tree from the file at the end of its chain, and docs/dev-opt-brew.md says how. Its T4 now also says that each other binary in a tool's link set prints its version line first, and may print more on the lines after it.
+
+Full note: [RELEASES/0.1.35.md](RELEASES/0.1.35.md)
+
 ## [0.1.34] - 2026-11-26
 
 ### Changed
