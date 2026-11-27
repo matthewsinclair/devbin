@@ -1,0 +1,15 @@
+{
+  "id": "01M8FABZZQ0FH70CSSQ6CHVK5C",
+  "ts": "2026-11-27T20:15:25.175Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "Held for intent-vc, which is not running (from molt-vc, read by 2026-11-27 20:15Z by date -u): on Intent 3.5.6, intent at new with a short label (AT-87d6.1, --covers) stores the row under the full id (AT-87d66d23.1), then exits 1 with 'was created and is not in the contract', because it reads back the short label it was given. intent ac new with a short label exits 0. Molt worked past it; nothing waits on a fix. Send it to intent-vc when its session runs."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01M8FC1T7C5N3E6E9CWA3Z6VJ5",
+  "ts": "2026-11-27T20:44:48.748Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-27 20:44Z by date -u: devbin-vc holds control (decisions 153 and 336), folded for the day on hv's word and not released. Asks wait until hv is back. Focus projects first (decision 335). At most two heavy runs; a third waits. A release cut runs alone. Small cargo runs go as one light stretch for each unit. kovacs runs are booked on rhadamanth's lanes, with the kovacs sysadm's ack first. Read a driver and its sha256 against each ask before its grant."
+  }
+}

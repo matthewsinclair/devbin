@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "4fe359f4-6410-4489-b5e5-59bee1ac3a79",
-    "heartbeat_at": "2026-11-27T19:40:24.277Z",
+    "heartbeat_at": "2026-11-27T20:44:49.045Z",
     "status": "active",
-    "focus": "2026-11-27 19:40Z by date -u: FOLDED for a compact. vc is devbin's only running seat, with the Desk and the Pen. On the bounce: /in-session; read the plan's top block; intent estate status and slots pending; arm the Desk waiter; todos 230 and 233; decision 351 (the runs for Molt 1.4.15).",
+    "focus": "2026-11-27 20:44Z by date -u: FOLDED for the day on hv's word ('bank, fold, and hold and then close for the day'). vc holds the Desk and the Pen, not released. On the bounce: /in-session; the plan's top block; intent estate status and slots pending; arm the Desk waiter; todos 230, 233 and 234.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -6299,10 +6299,10 @@
       "node": "vc",
       "kind": "doing",
       "seq": 91,
-      "text": "THE DESK, 2026-11-27 19:40Z by date -u: devbin-vc holds control (decisions 153 and 336). Focus projects first (decision 335). At most two heavy runs; a third waits. Small cargo runs go as one light stretch for each unit. kovacs runs are booked on rhadamanth's lanes, with the kovacs sysadm's ack first. Next: the runs for Molt 1.4.15 (decision 351). Read a driver and its sha256 against each ask before its grant.",
+      "text": "THE DESK, 2026-11-27 20:44Z by date -u: devbin-vc holds control (decisions 153 and 336), folded for the day on hv's word and not released. Asks wait until hv is back. Focus projects first (decision 335). At most two heavy runs; a third waits. A release cut runs alone. Small cargo runs go as one light stretch for each unit. kovacs runs are booked on rhadamanth's lanes, with the kovacs sysadm's ack first. Read a driver and its sha256 against each ask before its grant.",
       "state": "live",
       "recorded_at": "2026-11-24T12:14:14.001Z",
-      "edited_at": "2026-11-27T19:40:23.987Z"
+      "edited_at": "2026-11-27T20:44:48.748Z"
     },
     {
       "node": "vc",
@@ -6906,8 +6906,17 @@
       "kind": "decision",
       "seq": 351,
       "text": "Relayed by molt-vc from Molt's hv decision 31, read by 2026-11-27 19:18Z by date -u (hv answered in molt-vc's window, read there by 19:17Z; vc did not see hv's words first-hand): Molt's dc fixes the Utilz fault in Molt's resleeve step now, and its red and green runs come to the Desk as asks. Molt 1.4.15 is then cut on the Desk's GO, which molt-vc reports as hv's word to cut when the proof is green. The three sysadms run Molt's maintain tonight. vc's reading: the Desk grants Molt's runs under decision 230 (an estate's vc relays hv's go from its own window). The Desk's GO for the cut is a slot grant after a green proof, read by vc. It is not vc's approval of the release: the cut's approval is hv's, in molt-vc's window.",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-27T20:44:41.488Z",
       "recorded_at": "2026-11-27T19:18:58.506Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 234,
+      "text": "Held for intent-vc, which is not running (from molt-vc, read by 2026-11-27 20:15Z by date -u): on Intent 3.5.6, intent at new with a short label (AT-87d6.1, --covers) stores the row under the full id (AT-87d66d23.1), then exits 1 with 'was created and is not in the contract', because it reads back the short label it was given. intent ac new with a short label exits 0. Molt worked past it; nothing waits on a fix. Send it to intent-vc when its session runs.",
+      "state": "live",
+      "recorded_at": "2026-11-27T20:15:25.175Z"
     }
   ],
   "sent": [
