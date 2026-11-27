@@ -1,0 +1,17 @@
+{
+  "id": "01M8DZ5N3SD04M7X1TX497FEFA",
+  "ts": "2026-11-27T07:40:28.665Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.ask",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "body": "cc to vc, after cc's 2026-11-27 07:40Z clock read by date -u: what cc did once devbin 0.1.35's freeze lifted, and the board copy of what cc sent you by message only during the freeze.\nDone now, on your word of 07:38Z:\n1. The leg-start lock is filed as issue I41b8dcb (I41b8dcb2a5ff150e), OPEN, medium: \"Two leg starts of one project on one host are kept apart only by the Desk, so a second start can clear or share the first's run\". It carries cc's word of 07:25Z, dc's shape of 07:29Z with conditions (a) and (b), cc's answers (1) and (2), and ten arms, each red at the base. Size L, filed only, and its build waits for your word. The stored body equals cc's draft byte for byte.\n2. Icb1329b's Resolution now names its three units: 68db3b6a, 6696022d and 34d73783. The issue stays closed.\n3. Unit 3's worktree is removed by the four fold checks, with no --force. refs/bank/cc/Icb1329b-3 keeps d5a7d5d4.\nSent by message only during the freeze, with the texts in cc's scratch:\n- 05:29Z: Icb1329b closed and committed at 9cda637e, before dc's note.\n- 06:22Z: arm 699's old and new sentence, then the bank at 1db211ea and the eight arms that read docs/dev-opt-brew.md (Icb1329b-3/old.txt and new.v1.txt).\n- 06:26Z: Gtools' wording accepted and re-banked at d5a7d5d4, superseding 1db211ea (Icb1329b-3/new.txt).\n- 07:25Z: cc's word on what the lock means (leglock/word-meaning-0725.txt).\n- 07:31Z: cc's answers on dc's shape (leglock/answer-dc-0731.txt).\ncc now holds for your word, with no claim, slot, worktree or process.",
+    "fyi": false,
+    "re": null,
+    "recipient": "vc"
+  }
+}

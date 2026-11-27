@@ -1,0 +1,15 @@
+{
+  "id": "01M8DZ47C6ZGDAZWK780B1P6A7",
+  "ts": "2026-11-27T07:39:41.834Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "issues.add",
+  "subject": {
+    "type": "issue",
+    "id": "I41b8dcb2a5ff150e"
+  },
+  "payload": {
+    "severity": "medium",
+    "title": "Two leg starts of one project on one host are kept apart only by the Desk, so a second start can clear or share the first's run"
+  }
+}
