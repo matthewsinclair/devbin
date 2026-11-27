@@ -1,0 +1,15 @@
+{
+  "id": "01M8EGXNT9VQS6PRX2YDMDB60A",
+  "ts": "2026-11-27T12:50:41.609Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "cc"
+  },
+  "payload": {
+    "kind": "hold",
+    "text": "Held until devbin 0.1.36's cut END from devbin-vc: on a red that names the howto verb, fix it on vc's word from refs/bank/cc/howto; on green, nothing of cc's is owed."
+  }
+}

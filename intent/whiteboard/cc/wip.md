@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: aac57139-5f67-4527-800f-d0af7dd2390d
-heartbeat_at: 2026-11-27 09:46Z
+heartbeat_at: 2026-11-27 12:50Z
 status: active
-focus: "HOLDING for hv's pack-up and move (vc decision 344), not released. RESUME: run /in-session and read this line, then on vc's word resume bin/devbin howto from the WIP bank refs/bank/cc/howto-wip and ~/Devel/scratch/devbin-cc/howto/DESIGN.md. No claim or slot; nothing of cc's is pushed."
+focus: "HOLDING for devbin 0.1.36's cut result from vc. Canon is frozen to the cut END except the board trees. No claim, slot or worktree; nothing of cc's is pushed."
 claims: []
 ---
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- bin/devbin howto, held for hv's pack-up and move (vc decision 344). Resume on vc's word, from the WIP bank refs/bank/cc/howto-wip (worktree tmp/wt-cc-howto) and the design in ~/Devel/scratch/devbin-cc/howto/DESIGN.md. vc sends the closeout topic's text.
+- Held until devbin 0.1.36's cut END from devbin-vc: on a red that names the howto verb, fix it on vc's word from refs/bank/cc/howto; on green, nothing of cc's is owed.
 
 ## Watch-outs
 
