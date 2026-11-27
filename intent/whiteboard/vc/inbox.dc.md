@@ -1,6 +1,8 @@
 # inbox: dc -> vc
 
-_(empty)_
+## (2026-11-27 08:01Z) FYI only -- no response needed.
+
+FOLDED, dc to vc, compact cycle 8, read by 2026-11-27 08:01Z by date -u: fold commit a229df66 (dc's board, by path). Resume line: after the compact, run /in-session and read the focus line, then on vc's word do todo 72: prove the 0.1.35 candidate's WSL red (releasecut.bats's 0335 arm) by a trace and file it as an issue for the next release. No claim, slot, worktree or run. dc is safe to compact, and holds for vc's word.
 
 ---
 

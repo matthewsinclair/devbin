@@ -3256,6 +3256,13 @@
       "fyi": true,
       "recorded_at": "2026-11-27T06:00:33.155Z",
       "archived_at": "2026-11-27T07:59:24.424Z"
+    },
+    {
+      "id": "01M8E0BNV3R2HA5B5G4MGDMN2J",
+      "recipient": "vc",
+      "body": "FOLDED, dc to vc, compact cycle 8, read by 2026-11-27 08:01Z by date -u: fold commit a229df66 (dc's board, by path). Resume line: after the compact, run /in-session and read the focus line, then on vc's word do todo 72: prove the 0.1.35 candidate's WSL red (releasecut.bats's 0335 arm) by a trace and file it as an issue for the next release. No claim, slot, worktree or run. dc is safe to compact, and holds for vc's word.",
+      "fyi": true,
+      "recorded_at": "2026-11-27T08:01:14.595Z"
     }
   ],
   "handled": [
