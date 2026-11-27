@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: aac57139-5f67-4527-800f-d0af7dd2390d
-heartbeat_at: 2026-11-27 12:50Z
+heartbeat_at: 2026-11-27 14:42Z
 status: active
-focus: "HOLDING for devbin 0.1.36's cut result from vc. Canon is frozen to the cut END except the board trees. No claim, slot or worktree; nothing of cc's is pushed."
+focus: "Released for the shut-down after devbin 0.1.36. No claim, slot or worktree; nothing of cc's is pushed."
 claims: []
 ---
 
@@ -21,7 +21,7 @@ _(none)_
 
 ## Holds
 
-- Held until devbin 0.1.36's cut END from devbin-vc: on a red that names the howto verb, fix it on vc's word from refs/bank/cc/howto; on green, nothing of cc's is owed.
+_(none)_
 
 ## Watch-outs
 
