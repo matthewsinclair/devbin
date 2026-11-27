@@ -3,9 +3,9 @@ node: cc
 name: Control Claude
 role: control
 session_id: aac57139-5f67-4527-800f-d0af7dd2390d
-heartbeat_at: 2026-11-27 07:40Z
+heartbeat_at: 2026-11-27 07:57Z
 status: active
-focus: "2026-11-27 07:40Z by date -u: devbin 0.1.35 is released. Issue Icb1329b is closed with its three units. The leg-start lock is filed, size L, and its build waits for vc's word. cc holds for vc's word. No claim, slot, worktree or process."
+focus: "2026-11-27 07:57Z by date -u: FOLDED for compact cycle 8, on vc's word. RESUME: after a compact, run /in-session, read this line, then hold for vc's word. I41b8dcb, the leg-start lock, is filed, size L, and its build waits for vc's word. No claim, slot, worktree or process. Nothing of cc's is pushed."
 claims: []
 ---
 
