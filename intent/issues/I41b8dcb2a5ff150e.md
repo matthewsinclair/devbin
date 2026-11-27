@@ -1,9 +1,10 @@
 ---
 issue: I41b8dcb
 title: Two leg starts of one project on one host are kept apart only by the Desk, so a second start can clear or share the first's run
-status: OPEN
+status: CLOSED
 severity: medium
 created: 2026-11-27
+closed: 2026-11-27
 reporter: Matthew Sinclair
 ---
 
@@ -87,6 +88,8 @@ Filed only, on hv's word "File it" (2026-11-27, through devbin-vc; vc watchout 4
 ## Provenance
 
 Filed by devbin-cc on devbin-vc's word, after devbin 0.1.35's cut ended. The meaning is devbin-cc's word and the shape devbin-dc's. Both read lib/release.legs and lib/cmd/release at f257282e, read only, and ran nothing. The question first came up in devbin-cc's word on issue I0a62f4a (2026-11-26 18:43Z by date -u, item 2), where a lock was left as a unit of its own.
+
+Resolution: Moved, not fixed: the leg-start lock is work package ST7c3a851/b4ffc553, not started, in thread ST7c3a851 for devbin's next release (hv's words of 2026-11-27, through devbin-vc). That package's body holds this issue's text.
 
 ---
 
