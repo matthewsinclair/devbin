@@ -3,9 +3,9 @@ node: dc
 name: DevX Claude
 role: devx
 session_id: 9c04c552-618e-467c-a335-8251345b9b0b
-heartbeat_at: 2026-11-27 05:22Z
+heartbeat_at: 2026-11-27 05:32Z
 status: active
-focus: "2026-11-27 05:22Z by date -u: on vc's decision 330, the SYNC is answered and kit c0135 is built and with vc for its read; kovacs-sysadm acked the notice; both note variants from cc's texts are ready. Next: on vc's word after T4's fate (at the END of Intent's cut at the latest), commit 0.1.35's note in vc's case, run the ask, then the kovacs leg and the dry run at the grant after Intent's cut's END. The cut, push and sweep are vc's, on hv's word in vc's window. No claim, slot, worktree or run."
+focus: "2026-11-27 05:31Z by date -u: on vc's decisions 330 and 331 and hv's 'Cut 0.1.35' in vc's window, 0.1.35's note is committed in cc's case 1, on cc's Icb1329b close. Next: at vc's word after the END of Utilz's live sitting, run ask-c0135.sh at the HEAD then and launch the c0135 driver to wait for its grant (the kovacs leg, then the dry run in canon); kovacs-sysadm has acked the notice. vc runs the cut after a green leg and dry run. Nothing lands outside the board trees until the cut's END."
 claims: []
 ---
 
@@ -17,7 +17,7 @@ _(none)_
 
 ## TODO
 
-- devbin 0.1.35: kit c0135 is built and with vc for its read, and the notice is acked; the note's commit waits for T4's fate and vc's word, in cc's case 1 or 2; then the ask, the kovacs leg and the dry run at the grant after Intent's cut's END; the cut, push and sweep are vc's, on hv's word in vc's window (edited)
+- devbin 0.1.35: the note is committed in case 1; next, at vc's word after the END of Utilz's live sitting, ask-c0135.sh and the c0135 driver (the kovacs leg, then the dry run in canon); vc runs the cut after a green leg and dry run; nothing lands outside the board trees until the cut's END (edited)
 
 ## Holds
 

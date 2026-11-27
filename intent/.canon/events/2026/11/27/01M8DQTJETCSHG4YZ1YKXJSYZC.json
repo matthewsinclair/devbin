@@ -1,0 +1,16 @@
+{
+  "id": "01M8DQTJETCSHG4YZ1YKXJSYZC",
+  "ts": "2026-11-27T05:32:05.466Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "dc"
+  },
+  "payload": {
+    "kind": "todo",
+    "seq": 71,
+    "text": "devbin 0.1.35: the note is committed in case 1; next, at vc's word after the END of Utilz's live sitting, ask-c0135.sh and the c0135 driver (the kovacs leg, then the dry run in canon); vc runs the cut after a green leg and dry run; nothing lands outside the board trees until the cut's END"
+  }
+}
