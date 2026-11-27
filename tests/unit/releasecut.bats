@@ -4683,7 +4683,16 @@ $output"
 
 @test "0335: release gates hands its gates DEVBIN_GATE_CACHE, .gate-cache in the project's directory under the cache root, made when missing and kept from run to run, and the one the environment names instead" {
   local d mine
-  proj="$(cut_project)"
+  # A BOUND OF ITS OWN (ST7c3a851/17529cbf): a cache within
+  # release.gate_cache.max is kept only while its disk has the bound free
+  # (issue I14a851d). Under the 12G default, "kept from run to run" would rest
+  # on the runner's free disk, and a runner with less free empties the cache
+  # between the runs. 1M is far above the one line the gate writes, and far
+  # below any disk's free space.
+  proj="$(cut_project "  gates:
+    - probe
+  gate_cache:
+    max: 1M")"
   export DEVBIN_CACHE_HOME="$DEVBIN_TEST_TMPDIR/cache"
   d="$DEVBIN_CACHE_HOME/demo/.gate-cache"
   mine="$DEVBIN_TEST_TMPDIR/mine"
