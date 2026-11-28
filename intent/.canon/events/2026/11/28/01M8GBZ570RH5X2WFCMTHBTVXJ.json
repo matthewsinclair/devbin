@@ -1,0 +1,15 @@
+{
+  "id": "01M8GBZ570RH5X2WFCMTHBTVXJ",
+  "ts": "2026-11-28T06:02:36.128Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv from the phone in vc's window, read by 2026-11-28 06:02Z by date -u, hv's words: \"Push devbin\". vc pushes devbin's main, fast-forward only, to local and upstream by name, the remotes of the close-out push under decision 336. No tag, no release, and no other remote."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "01M8G8PBGJCQ9EWNK4B1B39R37",
+  "ts": "2026-11-28T05:05:21.938Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.add",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "todo",
+    "text": "FOR hv at return, from cybri-vc's plan message (read by 2026-11-28 05:05Z by date -u): Cybri's decision 27 says hv's word for a push of main stands, with no new word for each push. cybri-vc holds each push until hv is back, and asks: does that word hold while hv is away? Put it to hv at return and pass the answer to cybri-vc."
+  }
+}

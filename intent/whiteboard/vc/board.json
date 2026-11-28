@@ -6926,6 +6926,23 @@
       "text": "hv in vc's window, read by 2026-11-28 05:01Z by date -u, hv's words: \"You are still The Desk. There's just cybri-* running this morning, so all attention is on that. I'm about to AFK for a little while, so push on in collaboration with cybri-vc.\" vc took control at 05:01Z on the first sentence (intent estate control take --hv). vc's reading: Cybri is the only estate at the Desk this morning. vc grants Cybri's asks as they come, under the Desk's standing rules, and sets their order with cybri-vc. hv's words in vc's window are the Desk's go for Cybri today, so decision 230's relay from cybri-vc's window is not needed. While hv is away, nothing public goes, and a step that needs hv's hands waits for hv.",
       "state": "live",
       "recorded_at": "2026-11-28T05:01:36.113Z"
+    },
+    {
+      "node": "vc",
+      "kind": "todo",
+      "seq": 235,
+      "text": "FOR hv at return, from cybri-vc's plan message (read by 2026-11-28 05:05Z by date -u): Cybri's decision 27 says hv's word for a push of main stands, with no new word for each push. cybri-vc holds each push until hv is back, and asks: does that word hold while hv is away? Put it to hv at return and pass the answer to cybri-vc.",
+      "state": "archived",
+      "archived_at": "2026-11-28T05:06:16.927Z",
+      "recorded_at": "2026-11-28T05:05:21.938Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 353,
+      "text": "hv from the phone in vc's window, read by 2026-11-28 06:02Z by date -u, hv's words: \"Push devbin\". vc pushes devbin's main, fast-forward only, to local and upstream by name, the remotes of the close-out push under decision 336. No tag, no release, and no other remote.",
+      "state": "live",
+      "recorded_at": "2026-11-28T06:02:36.128Z"
     }
   ],
   "sent": [
