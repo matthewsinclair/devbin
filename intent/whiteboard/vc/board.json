@@ -5,9 +5,9 @@
     "name": "Validation Claude",
     "role": "validation",
     "session_id": "d7a4af37-3a15-4de1-a766-e53707c89b3d",
-    "heartbeat_at": "2026-11-28T04:57:11.821Z",
+    "heartbeat_at": "2026-11-28T05:02:11.932Z",
     "status": "active",
-    "focus": "2026-11-27 20:44Z by date -u: FOLDED for the day on hv's word ('bank, fold, and hold and then close for the day'). vc holds the Desk and the Pen, not released. On the bounce: /in-session; the plan's top block; intent estate status and slots pending; arm the Desk waiter; todos 230, 233 and 234.",
+    "focus": "2026-11-28 05:01Z by date -u: the Desk is live on hv's word (decision 352), for Cybri only this morning, with hv away. vc grants Cybri's asks with cybri-vc. Waiting: cybri-vc's plan, and its word on the two kept refs (todo 233). Todo 234 waits for intent-vc.",
     "claims": [],
     "recorded_at": "2026-09-16T06:59:44.787Z",
     "authored_at": "2026-09-09 20:10Z",
@@ -6299,10 +6299,10 @@
       "node": "vc",
       "kind": "doing",
       "seq": 91,
-      "text": "THE DESK, 2026-11-27 20:44Z by date -u: devbin-vc holds control (decisions 153 and 336), folded for the day on hv's word and not released. Asks wait until hv is back. Focus projects first (decision 335). At most two heavy runs; a third waits. A release cut runs alone. Small cargo runs go as one light stretch for each unit. kovacs runs are booked on rhadamanth's lanes, with the kovacs sysadm's ack first. Read a driver and its sha256 against each ask before its grant.",
+      "text": "THE DESK, 2026-11-28 05:01Z by date -u: devbin-vc holds control, re-taken on hv's word (decision 352). Cybri is the only estate at the Desk this morning. vc grants its asks as they come and sets their order with cybri-vc. hv is away. At most two heavy runs; a third waits. A release cut runs alone. Small cargo runs go as one light stretch for each unit. kovacs runs are booked on rhadamanth's lanes, with the kovacs sysadm's ack first (kovacs-sysadm is not running). Read a driver and its sha256 against each ask before its grant.",
       "state": "live",
       "recorded_at": "2026-11-24T12:14:14.001Z",
-      "edited_at": "2026-11-27T20:44:48.748Z"
+      "edited_at": "2026-11-28T05:02:11.658Z"
     },
     {
       "node": "vc",
@@ -6918,6 +6918,14 @@
       "text": "Held for intent-vc, which is not running (from molt-vc, read by 2026-11-27 20:15Z by date -u): on Intent 3.5.6, intent at new with a short label (AT-87d6.1, --covers) stores the row under the full id (AT-87d66d23.1), then exits 1 with 'was created and is not in the contract', because it reads back the short label it was given. intent ac new with a short label exits 0. Molt worked past it; nothing waits on a fix. Send it to intent-vc when its session runs.",
       "state": "live",
       "recorded_at": "2026-11-27T20:15:25.175Z"
+    },
+    {
+      "node": "vc",
+      "kind": "decision",
+      "seq": 352,
+      "text": "hv in vc's window, read by 2026-11-28 05:01Z by date -u, hv's words: \"You are still The Desk. There's just cybri-* running this morning, so all attention is on that. I'm about to AFK for a little while, so push on in collaboration with cybri-vc.\" vc took control at 05:01Z on the first sentence (intent estate control take --hv). vc's reading: Cybri is the only estate at the Desk this morning. vc grants Cybri's asks as they come, under the Desk's standing rules, and sets their order with cybri-vc. hv's words in vc's window are the Desk's go for Cybri today, so decision 230's relay from cybri-vc's window is not needed. While hv is away, nothing public goes, and a step that needs hv's hands waits for hv.",
+      "state": "live",
+      "recorded_at": "2026-11-28T05:01:36.113Z"
     }
   ],
   "sent": [

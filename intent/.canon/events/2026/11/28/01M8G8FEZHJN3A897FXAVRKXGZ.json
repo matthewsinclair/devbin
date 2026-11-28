@@ -1,0 +1,15 @@
+{
+  "id": "01M8G8FEZHJN3A897FXAVRKXGZ",
+  "ts": "2026-11-28T05:01:36.113Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.decide",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "decision",
+    "text": "hv in vc's window, read by 2026-11-28 05:01Z by date -u, hv's words: \"You are still The Desk. There's just cybri-* running this morning, so all attention is on that. I'm about to AFK for a little while, so push on in collaboration with cybri-vc.\" vc took control at 05:01Z on the first sentence (intent estate control take --hv). vc's reading: Cybri is the only estate at the Desk this morning. vc grants Cybri's asks as they come, under the Desk's standing rules, and sets their order with cybri-vc. hv's words in vc's window are the Desk's go for Cybri today, so decision 230's relay from cybri-vc's window is not needed. While hv is away, nothing public goes, and a step that needs hv's hands waits for hv."
+  }
+}

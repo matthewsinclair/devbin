@@ -1,0 +1,16 @@
+{
+  "id": "01M8G8GHPAH7X14QH4F2F0JVSV",
+  "ts": "2026-11-28T05:02:11.658Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wb.edit",
+  "subject": {
+    "type": "node",
+    "id": "vc"
+  },
+  "payload": {
+    "kind": "doing",
+    "seq": 91,
+    "text": "THE DESK, 2026-11-28 05:01Z by date -u: devbin-vc holds control, re-taken on hv's word (decision 352). Cybri is the only estate at the Desk this morning. vc grants its asks as they come and sets their order with cybri-vc. hv is away. At most two heavy runs; a third waits. A release cut runs alone. Small cargo runs go as one light stretch for each unit. kovacs runs are booked on rhadamanth's lanes, with the kovacs sysadm's ack first (kovacs-sysadm is not running). Read a driver and its sha256 against each ask before its grant."
+  }
+}
