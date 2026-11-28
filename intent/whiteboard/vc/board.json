@@ -4,8 +4,8 @@
     "moniker": "vc",
     "name": "Validation Claude",
     "role": "validation",
-    "session_id": "4fe359f4-6410-4489-b5e5-59bee1ac3a79",
-    "heartbeat_at": "2026-11-27T20:44:49.045Z",
+    "session_id": "d7a4af37-3a15-4de1-a766-e53707c89b3d",
+    "heartbeat_at": "2026-11-28T04:57:11.821Z",
     "status": "active",
     "focus": "2026-11-27 20:44Z by date -u: FOLDED for the day on hv's word ('bank, fold, and hold and then close for the day'). vc holds the Desk and the Pen, not released. On the bounce: /in-session; the plan's top block; intent estate status and slots pending; arm the Desk waiter; todos 230, 233 and 234.",
     "claims": [],
@@ -6854,7 +6854,8 @@
       "kind": "todo",
       "seq": 230,
       "text": "After 0.1.36: add a work package to ST7c3a851 for lib/install's seam comment and printed manifest header, which name config.yaml, cmd/ and help/ but not howto/ (devbin-cc's point, left out of 0.1.36 because the header is in every project's manifest).",
-      "state": "live",
+      "state": "archived",
+      "archived_at": "2026-11-28T05:00:08.325Z",
       "recorded_at": "2026-11-27T12:00:15.610Z"
     },
     {

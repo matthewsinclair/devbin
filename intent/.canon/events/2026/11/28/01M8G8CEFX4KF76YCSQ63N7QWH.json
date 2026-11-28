@@ -1,0 +1,15 @@
+{
+  "id": "01M8G8CEFX4KF76YCSQ63N7QWH",
+  "ts": "2026-11-28T04:59:57.313Z",
+  "principal": "Matthew Sinclair <hello@matthewsinclair.com>",
+  "project_id": "853ac2e2-3c94-4ac8-abb4-1f9a62073704",
+  "op": "wp.new",
+  "subject": {
+    "type": "wp",
+    "id": "ST7c3a8512c9d69221/cda1bb85"
+  },
+  "payload": {
+    "scope": "S",
+    "title": "lib/install names howto/ as the project's, with config.yaml, cmd/ and help/, in its seam comment and its manifest header"
+  }
+}

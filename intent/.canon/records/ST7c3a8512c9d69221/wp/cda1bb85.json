@@ -1,0 +1,10 @@
+{
+  "id": "cda1bb85",
+  "origin": "01M8G8CEFX4KF76YCSQ63N7QWH",
+  "title": "lib/install names howto/ as the project's, with config.yaml, cmd/ and help/, in its seam comment and its manifest header",
+  "scope": "XS",
+  "status": "not-started",
+  "objective": "Since devbin 0.1.36, a project's own howto topics live at `bin/.devbin/howto/<topic>/`, on the project's side of the seam. Two texts in `lib/install` still name only `config.yaml`, `cmd/` and `help/` as the project's files:\n\n1. The seam comment near the top of `lib/install` (\"THE SEAM, which is the whole vendoring design in one sentence\").\n2. The header line that `manifest_write` prints into each project's manifest (\"Files not listed here -- config.yaml, cmd/, help/ -- belong to the project.\").\n\nAdd `howto/` to both. The header is in every project's manifest, so the change rewrites each manifest at the next upgrade. For that reason it was not in 0.1.36. Read each other text in `lib/` that names the project's files, eg the install-tree note in `lib/install`, and change it where it needs the same word.\n\nThe package is done when both texts name `howto/` and a devbin release ships them. Source: devbin-cc's point at the 0.1.36 cut, carried as vc todo 230.",
+  "body": "",
+  "preamble": ""
+}

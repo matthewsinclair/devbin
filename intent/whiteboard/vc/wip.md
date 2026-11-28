@@ -2,8 +2,8 @@
 node: vc
 name: Validation Claude
 role: validation
-session_id: 4fe359f4-6410-4489-b5e5-59bee1ac3a79
-heartbeat_at: 2026-11-27 20:44Z
+session_id: d7a4af37-3a15-4de1-a766-e53707c89b3d
+heartbeat_at: 2026-11-28 04:57Z
 status: active
 focus: "2026-11-27 20:44Z by date -u: FOLDED for the day on hv's word ('bank, fold, and hold and then close for the day'). vc holds the Desk and the Pen, not released. On the bounce: /in-session; the plan's top block; intent estate status and slots pending; arm the Desk waiter; todos 230, 233 and 234."
 claims: []
@@ -17,7 +17,6 @@ claims: []
 
 ## TODO
 
-- After 0.1.36: add a work package to ST7c3a851 for lib/install's seam comment and printed manifest header, which name config.yaml, cmd/ and help/ but not howto/ (devbin-cc's point, left out of 0.1.36 because the header is in every project's manifest).
 - Cybri keeps two local refs in devbin's canon, refs/keep/cybri/howto-run1 and howto-run2, for its spike's replay. Delete both when cybri-vc says the spike no longer needs them.
 - Held for intent-vc, which is not running (from molt-vc, read by 2026-11-27 20:15Z by date -u): on Intent 3.5.6, intent at new with a short label (AT-87d6.1, --covers) stores the row under the full id (AT-87d66d23.1), then exits 1 with 'was created and is not in the contract', because it reads back the short label it was given. intent ac new with a short label exits 0. Molt worked past it; nothing waits on a fix. Send it to intent-vc when its session runs.
 
